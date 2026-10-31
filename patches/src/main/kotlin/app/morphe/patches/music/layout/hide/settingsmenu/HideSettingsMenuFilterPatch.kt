@@ -9,6 +9,7 @@ package app.morphe.patches.music.layout.hide.settingsmenu
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.SETTINGS_HEADERS_FRAGMENT_CLASS
@@ -20,10 +21,7 @@ import app.morphe.patches.shared.misc.settingsmenu.HIDE_MATCHING_METHOD
 import app.morphe.patches.shared.misc.settingsmenu.SETTINGS_MENU_FILTER_CLASS
 import app.morphe.patches.shared.misc.settingsmenu.injectHideMatchingHelper
 import app.morphe.patches.shared.misc.settingsmenu.injectSettingsMenuFilterHook
-import app.morphe.util.getFreeRegisterProvider
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/SettingsMenuFilterPatch;"
@@ -57,7 +55,7 @@ val hideSettingsMenuFilterPatch = bytecodePatch(
         // p0 is reassigned to the peer at method entry, so recover the fragment via peer.fragment.
         SettingsHeadersOnCreatePreferencesFingerprint.let {
             val fragmentField = it.instructionMatches.last()
-                .instruction.getReference<FieldReference>()!!
+                .fieldReference
 
             it.method.apply {
                 val insertIndex = implementation!!.instructions.size - 1

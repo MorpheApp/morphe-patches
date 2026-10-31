@@ -17,6 +17,7 @@ import java.util.Objects;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.EngagementPanel;
 
 @SuppressWarnings("unused")
 public class ShortsAutoplayPatch {
@@ -70,14 +71,6 @@ public class ShortsAutoplayPatch {
     }
 
     /**
-     * @return If the app is currently in background PiP mode.
-     */
-    private static boolean isAppInBackgroundPiPMode() {
-        Activity activity = Utils.getActivity();
-        return activity != null && activity.isInPictureInPictureMode();
-    }
-
-    /**
      * Injection point.
      */
     public static void setYTShortsRepeatEnum(Enum<?> ytEnum) {
@@ -95,9 +88,22 @@ public class ShortsAutoplayPatch {
      */
     public static Enum<?> changeShortsRepeatBehavior(Enum<?> original) {
         try {
-            final boolean autoplay = isAppInBackgroundPiPMode()
+            Activity activity = Utils.getActivity();
+            final boolean inBackgroundPiP = activity != null && activity.isInPictureInPictureMode();
+            boolean autoplay = inBackgroundPiP
                     ? Settings.SHORTS_AUTOPLAY_BACKGROUND.get()
                     : Settings.SHORTS_AUTOPLAY.get();
+
+            // Like the app's own auto advance, a Short with a panel open, such as the comments,
+            // is repeated. Otherwise the Short behind the panel keeps the layout of the open panel,
+            // and its overlay is out of place when going back to it.
+            if (autoplay && !inBackgroundPiP) {
+                String panelId = EngagementPanel.getLastOpenedPanelId();
+                if (panelId != null) {
+                    Logger.printDebug(() -> "Not advancing, panel is open: " + panelId);
+                    autoplay = false;
+                }
+            }
 
             ShortsLoopBehavior autoPlayBehavior = VersionCheckPatch.IS_21_10_OR_GREATER
                     ? ShortsLoopBehavior.AUTO_ADVANCE

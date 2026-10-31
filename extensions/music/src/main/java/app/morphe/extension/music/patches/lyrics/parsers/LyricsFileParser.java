@@ -34,7 +34,7 @@ public final class LyricsFileParser {
 
     @Nullable
     public static Lyrics parse(@Nullable String yaml, String providerName,
-            @Nullable String sourceUrl) {
+                               @Nullable String sourceUrl) {
         if (yaml == null || yaml.isEmpty()) {
             return null;
         }
@@ -193,10 +193,6 @@ public final class LyricsFileParser {
         return LyricsLine.NO_TIME;
     }
 
-    private static final class Cursor {
-        int index;
-    }
-
     private static Object readValue(List<String> lines, Cursor cursor, int indent) {
         if (cursor.index >= lines.size()) {
             return new LinkedHashMap<>();
@@ -317,5 +313,9 @@ public final class LyricsFileParser {
             count++;
         }
         return count;
+    }
+
+    private static final class Cursor {
+        int index;
     }
 }

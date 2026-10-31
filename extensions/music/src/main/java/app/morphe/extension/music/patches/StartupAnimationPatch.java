@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/3178
+ * https://github.com/MorpheApp/morphe-patches/pull/4109
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -43,7 +44,7 @@ public class StartupAnimationPatch {
 
     private static void setSplashAnimation(LottieAnimationView view, int resourceId) {
         try {
-            // A custom branding icon replaces the YT Music logo animation with its own.
+            // The Morphe styles replace the YT Music logo animation with the Morphe one.
             if (SplashAnimationPatch.setBrandedSplashAnimation(view)) {
                 return;
             }

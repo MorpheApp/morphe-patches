@@ -40,6 +40,31 @@ public class OpenVideosFullscreenHookPatch {
         fullscreenInterfaceRef = new WeakReference<>(fullscreenInterface);
     }
 
+    private static final int MINIMIZED_START_TIMEOUT_MILLISECONDS = 10_000;
+
+    private record MinimizedStart(String videoId) {}
+
+    @Nullable
+    private static MinimizedStart videoToKeepMinimized;
+
+    /** Explicit queue starts preserve browsing even with automatic fullscreen enabled. */
+    public static void keepVideoMinimized(@Nullable String videoId) {
+        MinimizedStart start = videoId == null ? null : new MinimizedStart(videoId);
+        videoToKeepMinimized = start;
+
+        // The fullscreen patch can be absent, so its playback callback may never
+        // consume this request. Bound its lifetime without expiring a newer start.
+        if (start != null) {
+            Utils.runOnMainThreadDelayed(() -> {
+                if (videoToKeepMinimized == start) videoToKeepMinimized = null;
+            }, MINIMIZED_START_TIMEOUT_MILLISECONDS);
+        }
+    }
+
+    private static boolean keepCurrentVideoMinimized() {
+        return videoToKeepMinimized != null && videoToKeepMinimized.videoId().equals(VideoInformation.getVideoId());
+    }
+
     public static void setOpenNextVideoFullscreen(@Nullable Boolean forceFullScreen) {
         openNextVideoFullscreen = forceFullScreen;
     }
@@ -69,6 +94,7 @@ public class OpenVideosFullscreenHookPatch {
      * Returns negated value.
      */
     public static boolean doNotOpenVideoFullscreenPortrait(boolean original) {
+        if (keepCurrentVideoMinimized()) return true;
         Boolean openFullscreen = openNextVideoFullscreen;
         if (openFullscreen != null) {
             openNextVideoFullscreen = null;
@@ -96,8 +122,14 @@ public class OpenVideosFullscreenHookPatch {
      */
     public static void playerStatusChanged(Enum<?> status) {
         try {
-            if (!shouldEnterFullscreen) return;
             if (status == null || !"VIDEO_PLAYING".equals(status.name())) return;
+            if (keepCurrentVideoMinimized()) {
+                shouldEnterFullscreen = false;
+                videoToKeepMinimized = null;
+                return;
+            }
+            videoToKeepMinimized = null;
+            if (!shouldEnterFullscreen) return;
 
             if (PlayerType.getCurrent() == PlayerType.WATCH_WHILE_FULLSCREEN) {
                 shouldEnterFullscreen = false;

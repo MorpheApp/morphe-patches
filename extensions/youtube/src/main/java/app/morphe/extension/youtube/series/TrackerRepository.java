@@ -468,11 +468,6 @@ public final class TrackerRepository extends SQLiteOpenHelper {
     }
 
     public void saveSeries(
-            String id, String name, String bookmark, CatalogClient.Catalog catalog, long now) {
-        saveSeries(id, name, bookmark, catalog, "", now);
-    }
-
-    public void saveSeries(
             String id,
             String name,
             String bookmark,
@@ -939,6 +934,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
                         s.name(),
                         s.bookmarkId(),
                         s.complete() ? new CatalogClient.Catalog(s.name(), episodes) : null,
+                        "",
                         now);
                 db.execSQL(
                         "UPDATE series SET cursor_id=?,cursor_ordinal=?,cursor_revision=?,"

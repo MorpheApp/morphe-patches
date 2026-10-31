@@ -7,6 +7,8 @@
 
 package app.morphe.extension.youtube.patches.utils.requests;
 
+import android.util.Pair;
+
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -30,7 +32,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
-import kotlin.Pair;
 
 public class GetPlaylistsRequest {
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;

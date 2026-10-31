@@ -11,6 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.all.misc.crashlog.crashLogPatch
 import app.morphe.patches.all.misc.fix.openurllinks.removeLinkVerification
@@ -47,12 +48,9 @@ import app.morphe.patches.youtube.misc.settings.modifyActivityForSettingsInjecti
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.copyXmlNode
-import app.morphe.util.getFreeRegisterProvider
-import app.morphe.util.getReference
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val MUSIC_ACTIVITY_HOOK_CLASS = "Lapp/morphe/extension/music/settings/MusicActivityHook;"
 
@@ -176,6 +174,11 @@ val settingsPatch = bytecodePatch(
         )
 
         PreferenceScreen.MISC.addPreferences(
+            NonInteractivePreference(
+                key = "morphe_settings_new_indicator_days",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                selectable = true
+            ),
             TextPreference(
                 key = null,
                 titleKey = "morphe_pref_import_export_title",
@@ -197,7 +200,7 @@ val settingsPatch = bytecodePatch(
 
         SettingsHeadersOnCreatePreferencesFingerprint.let {
             val fragmentField = it.instructionMatches.last()
-                .instruction.getReference<FieldReference>()!!
+                .fieldReference
 
             it.method.apply {
                 val insertIndex = implementation!!.instructions.size - 1

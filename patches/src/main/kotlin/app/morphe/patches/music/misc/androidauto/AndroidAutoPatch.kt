@@ -16,8 +16,13 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.addFreeRegisters
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.music.interaction.jam.addBridge
 import app.morphe.patches.music.interaction.jam.decode
 import app.morphe.patches.music.interaction.jam.implementsType
@@ -27,13 +32,8 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
-import app.morphe.util.addFreeRegisters
 import app.morphe.util.cloneMutable
-import app.morphe.util.findFreeRegister
 import app.morphe.util.findMutableMethodOf
-import app.morphe.util.getReference
-import app.morphe.util.p0Register
-import app.morphe.util.returnEarly
 import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -200,7 +200,7 @@ private fun BytecodePatchContext.addPhoneBrowseRequestMethod(
     )
 
     val continuationField = phoneBrowseContinuationFingerprint(createPhoneBrowseRequestMethod.returnType)
-        .instructionMatches.last().instruction.getReference<FieldReference>()!!
+        .instructionMatches.last().fieldReference
     phoneBrowseClientClass.addInterfaceMethod(
         interfaceMethod = findInterfaceMethod(
             PHONE_BROWSE_CLIENT,
@@ -274,9 +274,9 @@ internal fun BytecodePatchContext.hookPhoneClientOnServiceCreate(
             .matchAll()
             .map { match ->
                 val (providerFieldMatch, providerGetMatch) = match.instructionMatches
-                val providerField = providerFieldMatch.instruction.getReference<FieldReference>()!!
+                val providerField = providerFieldMatch.fieldReference
                 val providerGetMethod =
-                    providerGetMatch.instruction.getReference<MethodReference>()!!
+                    providerGetMatch.methodReference
                 providerField to providerGetMethod
             }
             .distinctBy { (field, _) -> field }
@@ -423,7 +423,7 @@ private fun BytecodePatchContext.addPhoneBrowseResponseInterface() {
 private fun BytecodePatchContext.addPhoneBrowseTabInterface() {
     val (getSectionListMethod, getSectionRenderersMethod) = PhoneBrowseTabContentsFingerprint
         .instructionMatches.filter { it.instruction.opcode == Opcode.INVOKE_VIRTUAL }
-        .map { it.instruction.getReference<MethodReference>()!! }
+        .map { it.methodReference }
     val phoneBrowseTabClass = mutableClassDefBy(getSectionListMethod.definingClass)
     phoneBrowseTabClass.interfaces.add(PHONE_BROWSE_TAB)
     phoneBrowseTabClass.addInterfaceMethod(
@@ -480,8 +480,7 @@ private fun BytecodePatchContext.patchPhoneBrowseItem(): MethodReference {
     val phoneBrowseItemType = GridRendererItemsFingerprint
         .instructionMatches
         .single { match -> match.instruction.opcode == Opcode.IGET_OBJECT }
-        .instruction
-        .getReference<FieldReference>()!!
+        .fieldReference
         .type
     val phoneBrowseItemFields = classDefBy(phoneBrowseItemType).instanceFields.toList()
 
@@ -507,8 +506,8 @@ private fun BytecodePatchContext.patchPhoneBrowseItem(): MethodReference {
     // The native item builder encodes its command before converting its artwork.
     val (encodeCommandMatch, _, artworkUriMatch) =
         mediaDescriptionFingerprint(thumbnailDetailsField.type).instructionMatches
-    val encodeCommandMediaIdMethod = encodeCommandMatch.instruction.getReference<MethodReference>()!!
-    val createArtworkUriMethod = artworkUriMatch.instruction.getReference<MethodReference>()!!
+    val encodeCommandMediaIdMethod = encodeCommandMatch.methodReference
+    val createArtworkUriMethod = artworkUriMatch.methodReference
     val itemCommandType = encodeCommandMediaIdMethod.parameterTypes.single().toString()
     // Both tap commands are read; resolvePlaylistBrowseId does not depend on their order.
     val commandFields = phoneBrowseItemFields.filter { it.type == itemCommandType }
@@ -856,7 +855,7 @@ private fun BytecodePatchContext.hookLibraryChangeCompletion() {
 
     // Callback and future requests both clear their serialized body after a successful response.
     val completionMethods = requestSuccessCallbackFingerprint(requestBaseType).matchAll()
-        .map { match -> match.instructionMatches.first().instruction.getReference<MethodReference>()!! }
+        .map { match -> match.instructionMatches.first().methodReference }
         .distinct()
     completionMethods.forEach { completionReference ->
         val completionMethod = requestCompletionFingerprint(completionReference).method
@@ -864,7 +863,7 @@ private fun BytecodePatchContext.hookLibraryChangeCompletion() {
         val requestField = requestDataClass.instanceFields.single { field -> field.type == requestBaseType }
         // Read the endpoint field used to build the request URL, rather than its obfuscated name.
         val endpointField = requestUrlFingerprint(requestDataClass.type, endpointOwnerType)
-            .instructionMatches.first().instruction.getReference<FieldReference>()!!
+            .instructionMatches.first().fieldReference
         completionMethod.addInstructions(
             0,
             """

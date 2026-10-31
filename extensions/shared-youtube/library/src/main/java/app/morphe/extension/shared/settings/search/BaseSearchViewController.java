@@ -57,6 +57,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.AppLanguage;
+import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory;
@@ -140,7 +141,10 @@ public abstract class BaseSearchViewController {
         // Initialize components
         initializeSearchView();
         initializeOverlayContainer();
-        initializeSearchHistoryManager();
+        searchHistoryManager = new SearchHistoryManager(activity, overlayContainer, query -> {
+            searchView.setQuery(query, true);
+            hideSearchHistory();
+        });
         setupToolbarMenu();
         setupListeners();
     }
@@ -238,16 +242,6 @@ public abstract class BaseSearchViewController {
         }
     }
 
-    /**
-     * Initializes the search history manager with the specified overlay container and listener.
-     */
-    private void initializeSearchHistoryManager() {
-        searchHistoryManager = new SearchHistoryManager(activity, overlayContainer, query -> {
-            searchView.setQuery(query, true);
-            hideSearchHistory();
-        });
-    }
-
     // Abstract interface for preference fragments.
     public interface BasePreferenceFragment {
         PreferenceScreen getPreferenceScreenForSearch();
@@ -330,7 +324,7 @@ public abstract class BaseSearchViewController {
             if (isSearchActive) {
                 closeSearch();
             } else {
-                activity.finish();
+                BaseActivityHook.closeSettings(activity);
             }
         });
     }

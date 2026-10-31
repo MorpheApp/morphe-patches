@@ -33,9 +33,15 @@ import java.util.concurrent.TimeoutException;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.innertube.ResponseContextOuterClass.*;
-import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.*;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.AudioConfig;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.InlinePlaybackConfig;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayabilityStatus;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerConfig;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerGestureConfig;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerResponse;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.StreamingData;
 import app.morphe.extension.shared.innertube.ReelItemWatchResponseOuterClass.ReelItemWatchResponse;
+import app.morphe.extension.shared.innertube.utils.AuthUtils;
 import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
@@ -146,6 +152,9 @@ public class StreamingDataRequest {
 
     private final String videoId;
     private final boolean isInline;
+    @Nullable
+    private final String authorization;
+    private final ClientType[] clientOrder;
 
     private final Future<StreamData> future;
 
@@ -191,6 +200,8 @@ public class StreamingDataRequest {
                                  boolean includeVideoDetails, ClientType[] clientOrder, boolean isDownload) {
         this.videoId = videoId;
         this.isInline = isInline;
+        this.authorization = playerHeaders.get(AUTHORIZATION_HEADER);
+        this.clientOrder = clientOrder;
         this.future = Utils.submitOnBackgroundThread(
                 () -> fetch(resolveVideoIdToFetch(videoId), isInline, playerHeaders, includeVideoDetails,
                         clientOrder, isDownload));
@@ -201,25 +212,51 @@ public class StreamingDataRequest {
         if (fetchHeaders != null && !fetchHeaders.isEmpty()) {
             lastPlayerHeaders = fetchHeaders;
         }
-        // Always fetch, even if there is an existing request for the same video.
-        cache.put(videoId, new StreamingDataRequest(videoId, isInline, fetchHeaders, false,
-                clientOrderToUse, false));
+        ClientType[] clientOrder = clientOrderToUse;
+        synchronized (cache) {
+            // The app can ask for the same video again while the first fetch is still running.
+            // A fetch that is done is never reused, because its streams can be expired or missing.
+            StreamingDataRequest existing = cache.get(videoId);
+            if (existing != null && existing.isFetchInProgress(isInline, fetchHeaders, clientOrder)) {
+                Logger.printDebug(() -> "Using the fetch in progress for: " + videoId);
+                return;
+            }
+            cache.put(videoId, new StreamingDataRequest(videoId, isInline, fetchHeaders, false,
+                    clientOrder, false));
+        }
+    }
+
+    private boolean isFetchInProgress(boolean isInline, Map<String, String> playerHeaders,
+                                      ClientType[] clientOrder) {
+        return !future.isDone()
+                && this.isInline == isInline
+                && this.clientOrder == clientOrder
+                && Objects.equals(authorization, playerHeaders.get(AUTHORIZATION_HEADER));
     }
 
     /**
-     * Resolves a video that the app never opened, using the latest player headers.
+     * Uses headers captured during playback so a song can be downloaded without first playing it.
      * Deliberately not cached, so downloads cannot evict the streams of videos being watched.
      * <p>
      * The clients are given by the caller instead of taken from the playback order, which stays at
      * the enum default while spoofing is off and then begins with a SABR client that has no urls.
+     *
+     * @param preferredClient Tried first, unless it is a SABR client.
      */
     public static StreamingDataRequest fetchRequestForDownload(String videoId,
                                                                List<ClientType> downloadClients,
                                                                ClientType preferredClient) {
-        ClientType[] clientOrder = buildClientOrder(downloadClients, preferredClient)
-                .toArray(new ClientType[0]);
+        List<ClientType> clients = buildClientOrder(downloadClients, preferredClient);
+        // SABR clients answer without the format urls a download needs,
+        // so the next client would never be tried.
+        clients.removeIf(client -> client.requireSABR);
+        ClientType[] clientOrder = clients.toArray(new ClientType[0]);
         // The video details name the saved file, so the download asks for them as well.
-        return new StreamingDataRequest(videoId, false, lastPlayerHeaders, true, clientOrder, true);
+        // The auth hook keeps the headers even if spoofing is off, but it is not used by all apps.
+        Map<String, String> headers = AuthUtils.getAuthorization().isEmpty()
+                ? lastPlayerHeaders
+                : AuthUtils.getRequestHeader();
+        return new StreamingDataRequest(videoId, false, headers, true, clientOrder, true);
     }
 
     @Nullable
@@ -327,9 +364,17 @@ public class StreamingDataRequest {
                             + responseCode + " response: " + connection.getResponseMessage(),
                     null, showErrorToasts);
         } catch (SocketTimeoutException ex) {
-            handleConnectionError("Connection timeout", ex, showErrorToasts);
+            if (Utils.isNetworkConnected()) {
+                handleConnectionError("Connection timeout", ex, showErrorToasts);
+            } else {
+                Logger.printInfo(() -> "Connection timeout while network disconnected", ex);
+            }
         } catch (IOException ex) {
-            handleConnectionError("Network error", ex, showErrorToasts);
+            if (Utils.isNetworkConnected()) {
+                handleConnectionError("Network error", ex, showErrorToasts);
+            } else {
+                Logger.printInfo(() -> "Network error while network disconnected", ex);
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "send failed", ex);
         } finally {
@@ -475,6 +520,11 @@ public class StreamingDataRequest {
 
     private static StreamData fetch(String videoId, boolean isInline, Map<String, String> playerHeaders,
                                     boolean includeVideoDetails, ClientType[] clientOrder, boolean isDownload) {
+        if (!Utils.isNetworkConnected()) {
+            Logger.printDebug(() -> "Network not connected, skipping stream fetch for: " + videoId);
+            return null;
+        }
+
         final boolean debugEnabled = BaseSettings.DEBUG.get();
         final long fetchStartTime = System.currentTimeMillis();
         String authorization = playerHeaders.get(AUTHORIZATION_HEADER);
@@ -531,6 +581,10 @@ public class StreamingDataRequest {
             return null;
         }
 
+        if (!Utils.isNetworkConnected()) {
+            return null;
+        }
+
         lastSpoofedClientType = null;
         handleConnectionError(str("morphe_spoof_video_streams_no_clients_toast"), null, true);
 
@@ -542,11 +596,6 @@ public class StreamingDataRequest {
         return null;
     }
 
-    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    public boolean fetchIsDone() {
-        return future.isDone();
-    }
-
     @Nullable
     public StreamData getStream() {
         try {
@@ -555,7 +604,7 @@ public class StreamingDataRequest {
             // This is not a concern, since the fetch will always be finished
             // and never block the main thread.
             // But if debugging, then still verify this is the situation.
-            if (BaseSettings.DEBUG.get() && !fetchIsDone() && Utils.isCurrentlyOnMainThread()) {
+            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
                 Logger.printException(() -> "Debug: Blocking main thread");
             }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);

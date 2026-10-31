@@ -21,7 +21,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_13_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -56,7 +56,8 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
         // but only recently has been causing issues.
         is_20_31_or_greater
     },
-    restoreMissingCuepointMethod = { is_20_35_or_greater && !is_21_13_or_greater },
+    // 21.11 and 21.12 do not have the cuepoint list class, and pass the cuepoint list as bytes.
+    restoreMissingCuepointMethod = { is_20_35_or_greater && !is_21_11_or_greater },
     patchProtoRequest = { is_21_02_or_greater },
     patchProtoRequestLegacy = { !is_21_20_or_greater },
 

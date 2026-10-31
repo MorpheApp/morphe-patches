@@ -49,65 +49,20 @@ import app.morphe.extension.shared.ui.Dim;
 public class ExternalDownloaderPreference extends CustomDialogListPreference {
 
     /**
-     * The external downloader is used by the download mode, the player overlay button, or the Download menu.
-     */
-    public static final class ExternalDownloaderAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            return SharedYouTubeSettings.DOWNLOAD_MODE.get() == DownloadMode.EXTERNAL
-                    || SharedYouTubeSettings.EXTERNAL_DOWNLOADER_OVERLAY_BUTTON.get()
-                    || SharedYouTubeSettings.EXTERNAL_DOWNLOADER_MENU.get();
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(SharedYouTubeSettings.DOWNLOAD_MODE,
-                    SharedYouTubeSettings.EXTERNAL_DOWNLOADER_OVERLAY_BUTTON,
-                    SharedYouTubeSettings.EXTERNAL_DOWNLOADER_MENU);
-        }
-    }
-
-    public static void launchExternalDownloader(String videoId, @Nullable Context context, String url) {
-        try {
-            Objects.requireNonNull(videoId);
-            if (context == null) {
-                context = Utils.getActivity();
-            }
-            Context contextFinal = context;
-            Logger.printDebug(() -> "Launching external downloader: " + videoId + " context: " + contextFinal);
-
-            // Trim string to avoid any accidental whitespace.
-            var downloaderPackageName = SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.get().trim();
-
-            // If the package is not installed, show a dialog.
-            if (showDialogIfAppIsNotInstalled(context, downloaderPackageName)) {
-                return;
-            }
-
-            Intent intent = new Intent("android.intent.action.SEND");
-            intent.setType("text/plain");
-            intent.setPackage(downloaderPackageName);
-            intent.putExtra("android.intent.extra.TEXT", url);
-            // Opening the downloader is not the user leaving the app.
-            // Without this flag a playing video enters picture-in-picture,
-            // and the downloader's window opens over the home screen instead of over the video.
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
-            if (!(context instanceof Activity)) {
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            }
-            context.startActivity(intent);
-        } catch (Exception ex) {
-            Logger.printException(() -> "launchExternalDownloader failure", ex);
-        }
-    }
-
-    /**
      * Enum representing supported external downloaders with their display names, package names, and download URLs.
      */
     private enum Downloader {
         YTDLNIS("YTDLnis",
                 "com.deniscerri.ytdl",
                 "https://ytdlnis.org",
+                true,
+                true,
+                false),
+        YTINDIR("YTindir",
+                "com.rl.ytindr",
+                "https://github.com/RAMiK4/ytindir/releases",
+                false,
+                true,
                 true),
         SEAL("Seal",
                 "com.junkfood.seal",
@@ -168,21 +123,139 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
          * if the app is not currently installed.
          */
         public final boolean isPreferred;
+        /**
+         * If the downloader understands the quick download extras of YTDLnis:
+         * {@code TYPE} (audio or video) and {@code BACKGROUND} (queue without showing a window).
+         */
+        public final boolean supportsQuickDownload;
+        /**
+         * If the downloader also applies the requested quality:
+         * {@code VIDEO_QUALITY} (maximum height) and {@code AUDIO_BITRATE} (kbps).
+         */
+        public final boolean supportsQuickDownloadQuality;
 
         Downloader(String name, String packageName, String downloadUrl) {
-            this(name, packageName, downloadUrl, false);
+            this(name, packageName, downloadUrl, false, false, false);
         }
 
         Downloader(String name, @Nullable String packageName, @Nullable String downloadUrl, boolean isPreferred) {
+            this(name, packageName, downloadUrl, isPreferred, false, false);
+        }
+
+        Downloader(String name, @Nullable String packageName, @Nullable String downloadUrl,
+                   boolean isPreferred, boolean supportsQuickDownload, boolean supportsQuickDownloadQuality) {
             this.name = name;
             this.packageName = packageName;
             this.downloadUrl = downloadUrl;
             this.isPreferred = isPreferred;
+            this.supportsQuickDownload = supportsQuickDownload;
+            this.supportsQuickDownloadQuality = supportsQuickDownloadQuality;
+        }
+    }
+
+    /** Maximum video height of a quick video download. */
+    public static final int QUICK_DOWNLOAD_VIDEO_HEIGHT = 1080;
+    /** Bitrate of a quick audio download. */
+    public static final int QUICK_DOWNLOAD_AUDIO_KBPS = 192;
+
+    /**
+     * @return If the chosen downloader can queue a download in the background.
+     */
+    public static boolean supportsQuickDownload() {
+        Downloader downloader = getDownloader();
+        return downloader != null && downloader.supportsQuickDownload;
+    }
+
+    /**
+     * @return If the chosen downloader also applies the requested quality,
+     *         so the quick download menu can show it.
+     */
+    public static boolean supportsQuickDownloadQuality() {
+        Downloader downloader = getDownloader();
+        return downloader != null && downloader.supportsQuickDownloadQuality;
+    }
+
+    @Nullable
+    private static Downloader getDownloader() {
+        return Downloader.findByPackageName(
+                SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.get().trim());
+    }
+
+    /**
+     * The external downloader is used by the download mode, the player overlay button, or the Download menu.
+     */
+    public static final class ExternalDownloaderAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return SharedYouTubeSettings.DOWNLOAD_MODE.get() == DownloadMode.EXTERNAL
+                    || SharedYouTubeSettings.EXTERNAL_DOWNLOADER_OVERLAY_BUTTON.get()
+                    || SharedYouTubeSettings.EXTERNAL_DOWNLOADER_MENU.get();
         }
 
-        public boolean isInstalled() {
-            return packageName != null && isAppInstalledAndEnabled(packageName);
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(SharedYouTubeSettings.DOWNLOAD_MODE,
+                    SharedYouTubeSettings.EXTERNAL_DOWNLOADER_OVERLAY_BUTTON,
+                    SharedYouTubeSettings.EXTERNAL_DOWNLOADER_MENU);
         }
+    }
+
+    /**
+     * @return If the downloader was opened.
+     */
+    public static boolean launchExternalDownloader(String videoId, @Nullable Context context, String url) {
+        return launchExternalDownloader(videoId, context, url, null);
+    }
+
+    /**
+     * @param quickDownloadType If not null, the downloader queues the download in the background
+     *                          as this type ("audio" or "video") using its default settings,
+     *                          capped at {@link #QUICK_DOWNLOAD_VIDEO_HEIGHT} / {@link #QUICK_DOWNLOAD_AUDIO_KBPS}
+     *                          if the downloader supports it.
+     * @return If the downloader was opened.
+     */
+    public static boolean launchExternalDownloader(String videoId, @Nullable Context context, String url,
+                                                   @Nullable String quickDownloadType) {
+        try {
+            Objects.requireNonNull(videoId);
+            if (context == null) {
+                context = Utils.getActivity();
+            }
+            Context contextFinal = context;
+            Logger.printDebug(() -> "Launching external downloader: " + videoId + " context: " + contextFinal);
+
+            // Trim string to avoid any accidental whitespace.
+            var downloaderPackageName = SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.get().trim();
+
+            // If the package is not installed, show a dialog.
+            if (showDialogIfAppIsNotInstalled(context, downloaderPackageName)) {
+                return false;
+            }
+
+            //noinspection ExtractMethodRecommender
+            Intent intent = new Intent("android.intent.action.SEND");
+            intent.setType("text/plain");
+            intent.setPackage(downloaderPackageName);
+            intent.putExtra("android.intent.extra.TEXT", url);
+            if (quickDownloadType != null) {
+                intent.putExtra("TYPE", quickDownloadType);
+                intent.putExtra("BACKGROUND", true);
+                intent.putExtra("VIDEO_QUALITY", QUICK_DOWNLOAD_VIDEO_HEIGHT);
+                intent.putExtra("AUDIO_BITRATE", QUICK_DOWNLOAD_AUDIO_KBPS);
+            }
+            // Opening the downloader is not the user leaving the app.
+            // Without this flag a playing video enters picture-in-picture,
+            // and the downloader's window opens over the home screen instead of over the video.
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+            if (!(context instanceof Activity)) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            }
+            context.startActivity(intent);
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "launchExternalDownloader failure", ex);
+        }
+        return false;
     }
 
     private static boolean isAppInstalledAndEnabled(String packageName) {
@@ -229,7 +302,8 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
         List<CharSequence> entryValues = new ArrayList<>();
 
         for (Downloader downloader : Downloader.values()) {
-            if (downloader.isPreferred || downloader.isInstalled()) {
+            if (downloader.isPreferred || (downloader.packageName != null
+                    && isAppInstalledAndEnabled(downloader.packageName))) {
                 String packageName = downloader.packageName;
 
                 entries.add(downloader.name);
@@ -480,5 +554,10 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
         ).first.show();
 
         return true;
+    }
+
+    @Override
+    public boolean tracksNewEntries() {
+        return false; // Entries depend on the installed apps.
     }
 }

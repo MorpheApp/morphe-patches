@@ -18,49 +18,302 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_style_title">გაშვების ანიმაცია</string>
+  <string name="morphe_splash_screen_style_entry_1">გამორთული</string>
+  <string name="morphe_splash_screen_style_entry_2">ფერი</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe ფერადი</string>
+  <string name="morphe_splash_screen_style_entry_4">მონოქრომული</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe მონოქრომული</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">ახალი პარამეტრების გამოყოფა</string>
+  <string name="morphe_settings_new_indicator_days_summary">დღეების რაოდენობა, რომლის განმავლობაშიც განახლებით დამატებულ პარამეტრებთან და ოფციებთან გამოჩნდება წერტილი</string>
+  <string name="morphe_settings_new_indicator_days_off">გამორთვრა</string>
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">გადატვირთეთ კონფიგურაციის დასასრულებლად</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">აპლიკაციის სახელი</string>
   <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">მუქი თემის ფონი</string>
+  <string name="morphe_theme_color_dark_entry_2">სუფთა შავი</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (სუფთა შავი)</string>
+  <string name="morphe_theme_color_dark_entry_9">კლასიკური YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">მუქი ვარდისფერი</string>
+  <string name="morphe_theme_color_dark_entry_11">მუქი ლურჯი</string>
+  <string name="morphe_theme_color_dark_entry_12">მუქი მწვანე</string>
+  <string name="morphe_theme_color_dark_entry_13">მუქი ყვითელი</string>
+  <string name="morphe_theme_color_dark_entry_14">მუქი ნარინჯისფერი</string>
+  <string name="morphe_theme_color_dark_entry_15">მუქი წითელი</string>
+  <string name="morphe_theme_color_dark_custom_title">საკუთარი მუქი ფონი</string>
+  <string name="morphe_theme_color_dark_custom_summary">განსაზღვრეთ მუქი თემის ფონის ფერი</string>
+  <string name="morphe_theme_color_entry_1">აპლიკაციის ნაგულისხმევი</string>
+  <string name="morphe_theme_color_entry_4">Material You (ნეიტრალური)</string>
+  <string name="morphe_theme_color_entry_5">Material You (ძირითადი)</string>
+  <string name="morphe_theme_color_entry_6">Material You (მეორადი)</string>
+  <string name="morphe_theme_color_entry_7">Material You (მესამე)</string>
+  <string name="morphe_theme_color_custom_entry">საკუთარი</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">ჩამოტვირთულები</string>
   <string name="morphe_download_mode_title">ჩამოტვირთვა რეჟიმი</string>
   <string name="morphe_download_mode_entry_default">ნაგულისხმები</string>
+  <string name="morphe_download_mode_entry_in_app">ჩამოტვირთვა აპლიკაციიდან</string>
+  <string name="morphe_download_mode_entry_external">გარე ჩამტვირთავი</string>
+  <string name="morphe_external_downloader_name_title">დამტვირთვის პაკეტის სახელი</string>
+  <string name="morphe_external_downloader_name_summary">თქვენი დაინსტალირებული გარე დამტვირთვის აპლიკაციის პაკეტის სახელი</string>
+  <string name="morphe_external_downloader_other_item_hint">შეიყვანეთ პაკეტის სახელი</string>
+  <string name="morphe_external_downloader_other_item">სხვა</string>
+  <string name="morphe_external_downloader_not_found_title">აპლიკაცია არ არის დაინსტალირებული</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s არ არის დაინსტალირებული. გთხოვთ, დააინსტალიროთ</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"ვერ მოხერხდა დაინსტალირებული აპლიკაციის პოვნა პაკეტის სახელით: %s
+
+შეამოწმეთ, რომ პაკეტის სახელი სწორია და აპლიკაცია დაინსტალირებულია"</string>
+  <string name="morphe_external_downloader_empty_warning">პაკეტის სახელი არ შეიძლება იყოს ცარიელი</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
+  <string name="morphe_custom_branding_name_entry_5">საკუთარი</string>
+  <string name="morphe_custom_branding_icon_title">აპლიკაციის იქონი</string>
+  <string name="morphe_custom_branding_icon_entry_1">ორიგინალი</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe dark</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe light</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play light</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play black</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_7">საკუთარი</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"ეს ცვლის აპლიკაციების გამშვებში გამოჩენილ ხატულას.
+
+ეს პარამეტრი არ შეცვლის ხატულას შემდეგ ადგილებში:
+• მოწყობილობის სისტემური პარამეტრების აპლიკაციების სია
+• გარკვეული push შეტყობინებები
+• 'გახსენი შემდეგით' აპლიკაციების ამომრჩევი
+• Android Auto-ს ხატულა
+
+ხატულის ყველგან შესაცვლელად, თავიდან გამოიყენეთ პატჩი და შეცვალეთ 'App icon' პატჩის ოფცია"</string>
+  <string name="morphe_custom_branding_notification_icon_title">შეტყობინების ხატულა</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">აპლიკაციის ხატულის შესაბამისობა</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-ის შეტყობინება</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">თქვენი ნახვის ისტორია არ ინახება.&lt;br&gt;&lt;br&gt;ეს, სავარაუდოდ, გამოწვეულია DNS რეკლამის ბლოკირებით ან ქსელური პროქსით.&lt;br&gt;&lt;br&gt;ამის გამოსასწორებლად, დაამატეთ &lt;b&gt;s.youtube.com&lt;/b&gt; თეთრ სიაში ან გამორთეთ ყველა DNS ბლოკერი და პროქსი</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">აღარ გამოჩნდეს</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">ვიდეო ნაკადების იმიტაცია</string>
+  <string name="morphe_spoof_video_streams_screen_summary">გააკონფიგურირეთ კლიენტის იმიტაცია, რათა თავიდან აიცილოთ დაკვრის პრობლემები</string>
+  <string name="morphe_spoof_video_streams_summary">"ასწორებს დაკვრის პრობლემებს მომხმარებელთა უმეტესობისთვის თავსებადი ვიდეო ნაკადის მოთხოვნით
+
+თუ თქვენ ხართ YouTube Premium-ის მომხმარებელი, ეს პარამეტრი შესაძლოა საჭირო არ იყოს"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">კლიენტის სტრიმების ჩატვირთვა ვერ მოხერხდა</string>
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">ნაგულისხმევი კლიენტი არ მუშაობს</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s რამდენჯერმე ზედიზედ არ ამუშავდა, თუმცა %2$s-მა იმუშავა.
+
+გსურთ %2$s გახდეს ნაგულისხმევი კლიენტი?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">გადართვა</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">ამ პარამეტრის გამორთვამ შესაძლოა გამოიწვიოს დაკვრის პრობლემები</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">სცადეთ ჩართვა: ვიდეო სტრიმების იმიტაცია &gt; Android VR-ზე ავტორიზაცია</string>
+  <string name="morphe_spoof_video_streams_client_type_title">ნაგულისხმევი კლიენტი</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR-ზე ავტორიზაცია</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-ში არ ხართ ავტორიზებული. შესასვლელად დააჭირეთ აქ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">ამჟამად ავტორიზებული ხართ Android VR-ში</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">ამ ფუნქციის გამოსაყენებლად, შეცვალეთ \'ნაგულისხმევი კლიენტი\' Android VR-ით</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">ავტორიზება Android VR-ში</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR-ში ავტორიზაციამ შესაძლოა გამოსწოროს დაკვრის პრობლემები ზოგიერთი მომხმარებლისთვის
+
+ავტორიზაციისთვის დააჭირეთ ქვემოთ მოცემულ ღილაკს \"გაგრძელება\""</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">გამოსვლა</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">ინსტრუქციები</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"გააქტიურების კოდი: %s
+
+1. ქვემოთ დააჭირეთ ღილაკს „გახსენით ვებგვერდი“, რათა გახსნათ ვებგვერდი „მოწყობილობის დაკავშირება“
+2. ჩასვით გადმოკლადირებიდან (ან ჩაწერეთ ხელით) ზემოთ მოცემული გააქტიურების კოდი
+3. მოთხოვნის შემთხვევაში, შეйდეთ Google-ში. თუ გაქვთ რამდენიმე ანგარიში, აირჩიეთ YouTube-ის ეს ანგარიში
+4. დააჭირეთ „ნებადართეთ YouTube VR-ისთვის“ წვდომა
+5. შეხვედით ამ აპლიკაციაში მას შემდეგ, რაც დაინახავთ შეტყობინებას „მოწყობილობა დაკავშირებულია“"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">გააქტიურების კოდის გაცემა ვერ მოხერხდა</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">ავთენტიფიკაციის ტოკენის გაცემა ვერ მოხერხდა</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">ავტორიზაცია წარმატებით დასრულდა</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"ავთენტიფიკაცია შენახულია
+
+• თქვენი Morphe-ის პარამეტრები არ მოახდენს Android VR ავთენტიფიკაციის იმპორტს/ექსპორტს
+• თუ ეს აპლიკაცია 6 თვის განმავლობაში არ იქნება გამოყენებული, Google წაშლის ამ ავთენტიფიკაციას
+• დაგჭირდებათ ხელახლა ავტორიზაცია, თუ შეცვლით Google-ის პაროლს ან წაშლით ამ მოწყობილობას თქვენი Google-ის პარამეტრებიდან"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 დროებით მიუწვდომელია (API-ს დრო დასრულდა)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR-ის ავტორიზაციის ვადა ამოიწურა, სცადეთ VR-ში ხელახლა შესვლა</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 დროებით მიუწვდომელია (სტატუსი %s)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 დროებით მიუწვდომელია</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">VR-ში შესვლა შეუძლებელია, ვებსაიტის ავტორიზაცია არ تمت დადასტურება</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">VR-ში შესვლა შეუძლებელია: %s</string>
+  <string name="morphe_oauth2_toast_reset">გადმოწერილი ხართ Android VR-დან</string>
+  <string name="morphe_oauth2_toast_invalid">VR-ის ავტორიზაციის ტოკენი არასწორია, სცადეთ VR-ში ხელახლა შესვლა</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">შეტყობინებების მედია điều khiểnება</string>
+  <string name="morphe_notification_media_screen_summary">მოახდინეთ დაკვრის მართვის ელემენტების პერსონალიზაცია, რომლებიც ჩანს თქვენს ჩაკეტილი ეკრანისა და შეტყობინებების პანელზე</string>
+  <string name="morphe_hide_notification_media_prev_next_title">„წინა“ &amp; „შემდეგი“ ღილაკების დამალვა</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">მალავს „წინა“ და „შემდეგი“ ღილაკებს მედია შეტყობინებაში, ჩაკეტილ ეკრანსა და ყურსაზურის მართვის ელემენტებში</string>
+  <string name="morphe_disable_notification_media_seekbar_title">მითითების ზოლის გათიშვა</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">금კრძალავს მითითების ზოლის გადაადგილებას ჩაკეტილ ეკრანსა და შეტყობინებების პანელზე</string>
+  <string name="morphe_seek_notification_media_prev_next_title">ძებნა \"წინა\" &amp; \"შემდეგი\" ღილაკებით</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">ცვლის მედია შეტყობინების, ჩაკეტილი ეკრანისა და ყურსაზურების მართვის ღილაკებს, რათა ისინი ვიდეოების შეცვლის ნაცვლად განვადების ფუნქციით იმუშაონ</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">უკან გადახვევის ხანგრძლივობა</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">წამები, რის მიხედვითაც მოხდება უკან გადახვევა წინა ღილაკით</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">წინ გადახვევის ხანგრძლივობა</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">წამები, რომლითაც მოხდება გადახვევა წინ \"შემდეგ」 ღილაკით</string>
+  <string name="morphe_seek_notification_media_length_invalid">ძებნის სიგრძე უნდა იყოს 1-დან %s წამამდე. გამოიყენება ნაგულისხმევი მნიშვნელობა</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">გამორთეთ QUIC პროტოკოლი</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">გამორთეთ DRC აუდიო</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">აუდიოს ორიგინალი ენის იძულებითი გამოყენება</string>
+  <string name="morphe_force_original_audio_summary">ყოველთვის ფლეიერებს ვიდეოს ორიგინალ აუდიოტრეკს დუბლირებული ვერსიის ნაცვლად</string>
   <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">სიჩუმის გამოტოვება</string>
+  <string name="morphe_skip_silence_summary">ავტომატურად გამოტოვებს ჩუმ პაუზებს ვიდეოს აუდიოში</string>
+  <string name="morphe_skip_silence_minimum_pause_title">პაუზის მინიმალური სიგრძე</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">მხოლოდ მინიმუმ ამ სიგრძის პაუზები შემცირდება. ძალაში შედის შემდეგი ვიდეოს დაწყებისას</string>
   <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">ქსელის პროქსი</string>
+  <string name="morphe_proxy_screen_summary">გზამკვლევი მხარდაჭერილ ქსელურ მოთხოვნებს პროქსის მეშვეობით წარმართოს</string>
+  <string name="morphe_proxy_enabled_title">პროქსის ჩართვა</string>
+  <string name="morphe_proxy_enabled_summary">მართავს მხარდაჭერილ ქსელურ მოთხოვნებს კონფიგურირებული HTTP ან HTTPS პროქსის მეშვეობით</string>
+  <string name="morphe_proxy_host_title">პროქსის ჰოსტი</string>
+  <string name="morphe_proxy_host_summary">პროქსი სერვერის ჰოსტის სახელი ან IP მისამართი</string>
+  <string name="morphe_proxy_port_title">პროქსის პორტი</string>
+  <string name="morphe_proxy_port_summary">პროქსი სერვერის პორტი</string>
+  <string name="morphe_proxy_https_title">HTTPS პროქსის გამოყენება</string>
+  <string name="morphe_proxy_https_summary">გამოიყენეთ HTTPS პროქსი სერვერთან დასაკავშირებლად HTTP-ის ნაცვლად</string>
+  <string name="morphe_proxy_auth_enabled_title">პროქსის ავტორიზაცია</string>
+  <string name="morphe_proxy_auth_enabled_summary">გზავნის Basic ავტორიზაციას პროქსის მოთხოვნებთან ერთად</string>
+  <string name="morphe_proxy_auth_username_title">პროქსის მომხმარებლის სახელი</string>
+  <string name="morphe_proxy_auth_username_summary">მომხმარებლის სახელი Basic პროქსი ავტორიზაციისთვის</string>
+  <string name="morphe_proxy_auth_password_title">პროქსის პაროლი</string>
+  <string name="morphe_proxy_auth_password_summary">პაროლი Basic პროქსი ავტორიზაციისთვის</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">პირდაპირი კავშირის დაშვება</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">დაუკავშირდით პირდაპირ, თუ პროქსი ვერ იმუშავებს</string>
   <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">მთლიანი ეკრანის რეკლამების დამალვა</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">ამ ფუნქციის გამოსაყენებლად, შეცვალეთ \'Spoof video streams\' ნებისმიერი კლიენტით, გარდა \'Android Studio\'-სა და \'Android VR Downgraded\'-ისა</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">გაზიარების ბმულების გასუფთავება</string>
+  <string name="morphe_sanitize_sharing_links_summary">შესაბამისად ასუფთავებს გაზიარებული ბმულები თრექინგის მოთხოვნის პარამეტრებისგან</string>
+  <string name="morphe_replace_music_with_youtube_title">გაუცვალეთ გაზიარების ბმულები youtube.com-ით</string>
+  <string name="morphe_replace_music_with_youtube_summary">გაზიარებულ ბმულებში music.youtube.com-ს ანაცვლებს youtube.com-ით</string>
+  <string name="morphe_replace_links_with_shortener_title">გაზიარების ბმულების შეცვლა youtu.be-ით</string>
+  <string name="morphe_replace_links_with_shortener_summary">აიძულებს ვიდეოებს გამოიყენონ youtu.be URL-ის შემოკლებული ფორმატი</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_protobuffer_title">Debug log protocol buffer</string>
+  <string name="morphe_debug_protobuffer_summary">ამატებს დამატებით ლოგირების ინფორმაციას დეველოპერებისთვის აპლიკაციის კომპონენტების ამოსაცნობად</string>
+  <string name="morphe_debug_protobuffer_user_dialog_message">"ამ პარამეტრის ჩართვა დააფიქსირებს დამატებით განლაგების მონაცემებს, მათ შორის ეკრანზე არსებულ ტექსტს ზოგიერთი UI კომპონენტისთვის.
+
+ეს დაგეხმარებათ კომპონენტების იდენტიფიცირებაში საკუთარი ფილტრების შექმნისას.
+
+თუმცა, ამის ჩართვა ასევე დააფიქსირებს ზოგიერთ მომხმარებლის მონაცემს, როგორიცაა თქვენი IP მისამართი"</string>
   <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">საკუთარი ფილტრი</string>
+  <string name="morphe_custom_filter_screen_summary">გააკონფიგურირეთ საკუთარი ფილტრები ნებისმიერი კომპონენტის დასამალად</string>
+  <string name="morphe_custom_filter_title">საკუთარი ფილტრის ჩართვა</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">გასაფილტრებელი კომპონენტის გზის შემქმნელ სტრიქონთა სია, განმყოფელად გამოიყენეთ ახალი ხაზი</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">არასწორი საკუთარი ფილტრი: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
+  <string name="morphe_settings_menu_filter_screen_title">პარამეტრების მენიუს ფილტრი</string>
+  <string name="morphe_settings_menu_filter_screen_summary">დამალეთ ელემენტები აპლიკაციის სტანდარტული პარამეტრების ეკრანზე მათი ხილული სახელის მიხედვით</string>
+  <string name="morphe_settings_menu_filter_picker_empty">გახსენით აპლიკაციის სტანდარტული პარამეტრების ეკრანი ერთხელ სიის შესავსებად</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">გააუქმეთ მაყურებლის სიფხიზლიანობის დიალოგი</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">ეს არ გვლის ასაკობრივ შეზღუდვას. ის უბრალოდ ავტომატურად ადასტურებს მას</string>
   <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken-ის პროვაიდერი</string>
+  <string name="morphe_potoken_provider_screen_summary">გააკონფიგურირეთ PoToken-ის პროვაიდერი დაკვრის პრობლემების თავიდან ასაცილებლად</string>
+  <string name="morphe_external_potoken_provider_title">PoToken-ის გარე პროვაიდერი</string>
+  <string name="morphe_external_potoken_provider_summary">"ასწორებს დაკვრის პრობლემებს PoToken-ის გარე მინტერის (minter) გამოყენებით (ექსპერიმენტული)
+
+თუ ხართ YouTube Premium-ის მომხმარებელი, ეს პარამეტრი შესაძლოა არ იყოს საჭირო"</string>
   <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"ასწორებს დაკვრის პრობლემებს გარე PoToken minter-ის გამოყენებით (ექსპერიმენტული)
+
+ამ ფუნქციის გამოსაყენებლად, გამორთეთ 'ვიდეო ნაკადების სპუფინგი'"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">თუ არ მუშაობს, სცადეთ MicroG-ის იძულებითი დახურვა</string>
+  <string name="morphe_external_potoken_provider_settings_summary">PotHelper-ის პარამეტრების გახსნა</string>
+  <string name="morphe_external_potoken_provider_about_summary">"ეს ფუნქცია ამჟამად განვითარების პროცესშია და შესაძლოა არ ამუშაოს
+
+დააჭირეთ აქ PotHelper-ის ჩამოსატვირთად"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper აღარ მუშაობს</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"PotHelper-ის ამ ვერსიაში ჩაშენებული ტოკენი აღარ მუშაობს
+
+გადმოწერის გამოსასწორებლად ჩართეთ \"ვიდეო ნაკადების იმიტაცია\""</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">ჩართვა</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">აპლიკაციის ვერსიის ფალსიფიკაცია</string>
+  <string name="morphe_spoof_app_version_summary">ატყუებს სერვერს, რათა ჩათვალოს, რომ იყენებთ აპლიკაციის ძველ ვერსიას, რათა აღადგინოთ ინტერფეისის ძველი ფუნქციები</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"აპლიკაციის ვერსია ჩანაცვლებული იქნება უფრო ძველი ვერსიით.
+
+ეს შეცვლის აპლიკაციის გარეგნულ მხარესა და ფუნქციებს, თუმცა შესაძლოა წარმოიშვას უცნობი გვერდითი ეფექტები.
+
+გვიანად გამორთვის შემთხვევაში, რეკომენდებულია აპლიკაციის მონაცემების გასუფთავება UI ხარვეზების თავიდან ასაცილებლად"</string>
+  <string name="morphe_spoof_app_version_target_title">აპლიკაციის ვერსიის ფალსიფიკაციის სამიზნე</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">აპლიკაციის განახლების სიხშირე</string>
+  <string name="morphe_app_refresh_rate_default">ნაგულისხმები</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">განახლების სიხშირის გადაფარვა</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">ყოველთვის</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">დაკვრა პორტრეტულ რეჟიმში</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">დაკვრა სრული ეკრანით</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">უკრაინული რეჟიმით და სრული ეკრანით დაკვრა</string>
   <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">ფონტი</string>
+  <string name="morphe_custom_font_type_entry_default">ნაგულისხმები</string>
+  <string name="morphe_custom_font_type_entry_system">მოწყობილობის სისტემური ფონტი</string>
+  <string name="morphe_custom_font_type_entry_custom">ფონტის პერსონალური ფაილი</string>
+  <string name="morphe_custom_font_file_title">ფონტის პერსონალური ფაილი</string>
+  <string name="morphe_custom_font_file_summary">აირჩიეთ TTF ან OTF ფონტის ფაილი</string>
+  <string name="morphe_custom_font_file_invalid">შერჩეული ფაილი არ არის TTF ან OTF ფონტი</string>
+  <string name="morphe_custom_font_failed_to_load">საკუთალ ფონტს ვერ ჩატვირთა და ის გამორთულია</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_ryd_failure_connection_timeout">დისლაიქები დროებით недоступებელია (API-ს დრო დასრულდა)</string>
+  <string name="morphe_ryd_failure_connection_status_code">დისლაიქები nedostupელია (სტატუსი %s)</string>
+  <string name="morphe_ryd_failure_client_rate_limit_requested">დისლაიქები მიუწვდომელია (კლიენტის API ლიმიტი)</string>
+  <string name="morphe_ryd_failure_generic">დისლაიქები მიუწვდომელია (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
+  <string name="morphe_ryd_video_likes_hidden_by_video_owner">მფლობელის მიერ დამალულია</string>
+  <string name="morphe_ryd_accessibility_dislike_count">არ მოეწონათ ამ ვიდეოს, ასევე სხვა %s ადამიანს</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">არ მოეწონათ ამ ვიდეოს, ხმათა %s არის უარყოფითი</string>
+  <string name="morphe_ryd_enabled_title">ჩართეთ Return YouTube Dislike</string>
+  <string name="morphe_ryd_dislike_percentage_title">აჩვენეთ დისლაიქები პროცენტულად</string>
+  <string name="morphe_ryd_dislike_percentage_summary">აჩვენებს დისლაიქებს ლაიქების პროცენტად და არა რაოდენობად</string>
+  <string name="morphe_ryd_estimated_like_title">აჩვენეთ სავარაუდო ლაიქები</string>
+  <string name="morphe_ryd_estimated_like_summary">აჩვენებს ლაიქების სავარაუდო რაოდენობას იმ ვიდეოებზე, სადაც ავტორმა გამორთო ლაიქები</string>
+  <string name="morphe_ryd_toast_on_connection_error_title">კავშირის შეცდომის შეტყობინებების ჩვენება</string>
+  <string name="morphe_ryd_toast_on_connection_error_summary">აჩვენებს შეტყობინებას, როდესაც Return YouTube Dislike-ის სერვერი nedost கிடைக்கადია</string>
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike აღადგენს იმ დისლაიქების რაოდენობას, რომელიც YouTube-მა 2021 წელს დამალა. რაოდენობები მოდის წაშლამდე დაარქივებული მონაცემებიდან, ხოლო ახალი ვიდეოებისთვის ისინი გამოთვლილია მომხმარებელთა ხმების საფუძველზე, ამიტომ ისინი მიახლოებითია და განახლდება რამდენიმე დღეში
+
+ვიდეოს ID, რომელსაც უყურებთ, იგზავნება Return YouTube Dislike-ის API-ზე, ხოლო თქვენი მოწონებები და დისლაიქები იგზავნება ანონიმურად შეფასებების გასაუმჯობესებლად"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
+  <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API-ის სტატისტიკა ამ მოწყობილობისთვის</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-ს პასუხის დრო, საშუალო</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">API-ს პასუხის დრო, მინიმალური</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">API-ს პასუხის დრო, მაქსიმალური</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">API-ის პასუხის დრო, ბოლო მედია</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">დისლაიკები დროებით მიუწვდომელია - მოქმედებს Client API-ის rate limit</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_title">API-ით ხმების წამოღება, გამოძახებების რაოდენობა</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">ქსელური გამოძახებები არ განხორციელებულა</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">გაბმავზე განხორციელდა %s გამოძახება</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API-ით ხმების წამოღება, ტაიმაუტების რაოდენობა</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">ქსელური გამოძახებების ტაიმაუტი არ დაფიქსირებულა</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s ქსელური გამოძახების დრო დასრულდა</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API კლიენტის rate limit-ები</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">კლიენტის rate limit-ები არ დაფიქსირებულა</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">კლიენტის განაკვეთის ლიმიტი შეხვდა %s-ჯერ</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s მილიწამი</string>
 </resources>

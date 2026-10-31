@@ -169,27 +169,54 @@
         <item>@string/morphe_romanize_language_DEFAULT</item>
         <item>አማርኛ</item>
         <item>العربية</item>
+        <item>অসমীয়া</item>
+        <item>بلوچی</item>
         <item>Беларуская</item>
+        <item>Български</item>
         <item>বাংলা</item>
+        <item>བོད་སྐད</item>
+        <item>बर'</item>
+        <item>سۆرانی</item>
+        <item>डोगरी</item>
+        <item>རྫོང་ཁ</item>
         <item>Ελληνικά</item>
         <item>فارسی</item>
+        <item>गोंयची कोंकणी</item>
         <item>ગુજરાતી</item>
+        <item>עברית</item>
         <item>हिन्दी</item>
+        <item>Հայերեն</item>
         <item>日本語</item>
+        <item>ქართული</item>
+        <item>Қазақ тілі</item>
         <item>ಕನ್ನಡ</item>
+        <item>ភាសាខ្មែរ</item>
+        <item>한국어</item>
+        <item>کٲشُر</item>
+        <item>Кыргызча</item>
+        <item>ລາວ</item>
         <item>മലയാളം</item>
+        <item>Македонски</item>
+        <item>मैथिली</item>
         <item>मराठी</item>
+        <item>Монгол</item>
+        <item>ꯃꯤꯇꯩꯂꯣꯟ</item>
         <item>မြန်မာစာ</item>
         <item>नेपाली</item>
         <item>ଓଡ଼ିଆ</item>
         <item>ਪੰਜਾਬੀ</item>
+        <item>پښتو</item>
         <item>Русский</item>
         <item>संस्कृतम्</item>
+        <item>سنڌي</item>
         <item>සිංහල</item>
         <item>Српски</item>
+        <item>ܣܘܪܝܝܐ (CLDR)</item>
         <item>தமிழ்</item>
         <item>తెలుగు</item>
+        <item>ไทย</item>
         <item>ትግርኛ</item>
+        <item>ئۇيغۇرچە</item>
         <item>Українська</item>
         <item>اردو</item>
         <item>中文</item>
@@ -199,30 +226,72 @@
         <item>DEFAULT</item>
         <item>AM</item>
         <item>AR</item>
+        <item>AS</item>
+        <item>BAL</item>
         <item>BE</item>
+        <item>BG</item>
         <item>BN</item>
+        <item>BO</item>
+        <item>BRX</item>
+        <item>CKB</item>
+        <item>DOI</item>
+        <item>DZ</item>
         <item>EL</item>
         <item>FA</item>
+        <item>GOM</item>
         <item>GU</item>
+        <item>HE</item>
         <item>HI</item>
+        <item>HY</item>
         <item>JA</item>
+        <item>KA</item>
+        <item>KK</item>
         <item>KN</item>
+        <item>KM</item>
+        <item>KO</item>
+        <item>KS</item>
+        <item>KY</item>
+        <item>LO</item>
         <item>ML</item>
+        <item>MK</item>
+        <item>MAI</item>
         <item>MR</item>
+        <item>MN</item>
+        <item>MNI</item>
         <item>MY</item>
         <item>NE</item>
         <item>OR</item>
         <item>PA</item>
+        <item>PS</item>
         <item>RU</item>
         <item>SA</item>
+        <item>SD</item>
         <item>SI</item>
         <item>SR</item>
+        <item>SY</item>
         <item>TA</item>
         <item>TE</item>
+        <item>TH</item>
         <item>TI</item>
+        <item>UG</item>
         <item>UK</item>
         <item>UR</item>
         <item>ZH</item>
         <item>YUE</item>
     </string-array>
+    <!-- The character tables a custom Rime word list may fall back to. A build offering another
+         reading adds one row beside its token in the values array; nothing else changes. -->
+    <string-array name="morphe_music_lyrics_rime_char_source_entries">
+        <item>@string/morphe_music_lyrics_rime_char_source_auto</item>
+        <item>@string/morphe_music_lyrics_rime_char_source_cantonese</item>
+        <item>@string/morphe_music_lyrics_rime_char_source_pinyin</item>
+        <item>@string/morphe_music_lyrics_rime_char_source_none</item>
+    </string-array>
+    <string-array name="morphe_music_lyrics_rime_char_source_values">
+        <item>AUTO</item>
+        <item>CANTONESE</item>
+        <item>PINYIN</item>
+        <item>NONE</item>
+    </string-array>
+
 </resources>

@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Startanimation</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Inaktiverad</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Färg</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
+  <string name="morphe_splash_screen_style_title">Startanimation</string>
+  <string name="morphe_splash_screen_style_entry_1">Inaktiverad</string>
+  <string name="morphe_splash_screen_style_entry_2">Färg</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe-färg</string>
+  <string name="morphe_splash_screen_style_entry_4">Monokrom</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monokrom</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Markera nya inställningar</string>
+  <string name="morphe_settings_new_indicator_days_summary">Antal dagar en prick visas bredvid inställningar och alternativ som lagts till via en uppdatering</string>
+  <string name="morphe_settings_new_indicator_days_off">Av</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Starta om för att slutföra konfigureringen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Döljer knapparna Föregående och Nästa i medieaviseringen, på låsskärmen och för hörlursstyrning</string>
   <string name="morphe_disable_notification_media_seekbar_title">Inaktivera sökfältet</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Förhindrar att sökreglaget kan dras på låsskärmen och i aviseringspanelen</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Sök med <b>föregående &amp; nästa</b>-knappar</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Ändrar kontrollerna för meddelandeanvisning, låsskärm och hörlurar så att de söker istället för att byta videor</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Återinspelningslängd</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Antal sekunder för återinspelningsåtgärd med föregående-knapp</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Spola fram-längd</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Antal sekunder för spola fram med nästa-knapp</string>
+  <string name="morphe_seek_notification_media_length_invalid">Söklängden måste vara mellan 1 och %s sekunder. Använder standardvärde</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Inaktivera QUIC-protokoll</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

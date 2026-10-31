@@ -17,21 +17,219 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Тохиргоо</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Та үнэнхүү үргэлжлүүлэх хүсэлтэй байна уу?</string>
+  <string name="morphe_settings_save">Хадгалах</string>
+  <string name="morphe_settings_reset">Сэргээх</string>
+  <string name="morphe_settings_reset_color">Өнгийг сэргээх</string>
+  <string name="morphe_settings_color_invalid">Буруу өнгө</string>
+  <string name="morphe_settings_restart_title">Дахин ачаалах шаардлагатай</string>
+  <string name="morphe_settings_restart_dialog_message">Энэхүү өөрчлөлтийг хэрэгжүүлэхийн тулд аппликейшныг дахин ачааллана уу</string>
+  <string name="morphe_settings_restart">Дахин ачаалах</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">Импортлох</string>
+  <string name="morphe_settings_import_copy">Хуулах</string>
+  <string name="morphe_settings_import_reset">Morphe тохиргоог анхны хэвээр сэргээлээ</string>
+  <string name="morphe_settings_import_success">%s тохиргоог импорт хийлээ</string>
+  <string name="morphe_settings_import_failure_parse">Импортлж чадсангүй: %s</string>
+  <string name="morphe_settings_navigate_up">Дээшээ шилжих</string>
+  <string name="morphe_settings_search_hint">Тохиргоо хайх</string>
+  <string name="morphe_settings_screen_info_title">Тухай</string>
+  <string name="morphe_settings_search_no_results_title">\'%s\' гэсэн үр дүн олдсонгүй</string>
+  <string name="morphe_settings_search_no_results_summary">Өөр түлхүүр үг туршаад үзнэ үү</string>
+  <string name="morphe_settings_search_recent_searches">Сүүлийн хайлтууд</string>
+  <string name="morphe_settings_search_remove_message">Хайлтын түүхээс устгах уу?</string>
+  <string name="morphe_settings_search_remove">Хайлтын түүхээс устгах</string>
+  <string name="morphe_settings_search_clear_history">Хайлтын түүхийг цэвэрлэх</string>
+  <string name="morphe_settings_search_clear_history_message">Хайлтын бүх түүхийг цэвэрлэх гэж байгаадаа итгэлтэй байна уу?</string>
+  <string name="morphe_settings_search_tips_title">Хайлтын зөвлөмж</string>
+  <string name="morphe_settings_search_tips_summary">"• Зам дээр дарж очих
+• Тохиргоог удаан дарж очих
+• Enter дарж хайлтын хүсэлтээ түүхэнд хадгалах
+• Хайлт нь том жижиг үсэг болон цэг тэмдэгт харгалзахгүй
+• Эх тохиргоо нь идэвхгүй дотоод тохиргоонуудын дээр гарч ирнэ"</string>
+  <string name="morphe_settings_search_empty_history_title">Хайлтын түүх хоосон байна</string>
+  <string name="morphe_settings_search_empty_history_summary">Хайлтын түүхийг хадгалахын тулд хайлтын хүсэлтээ бичиж Enter дарна уу</string>
+  <string name="morphe_settings_search_history_title">Тохиргооны хайлтын түүхийг харуулах</string>
+  <string name="morphe_settings_name_title">Morphe тохиргооны нэр</string>
+  <string name="morphe_settings_name_default_item">Анхны</string>
+  <string name="morphe_settings_name_entry_2">Нэмэлт</string>
+  <string name="morphe_settings_name_entry_3">Засвар</string>
+  <string name="morphe_settings_name_entry_4">Хувирлын хугацаа</string>
+  <string name="morphe_settings_name_custom_item">Өөрийн гэсэн</string>
+  <string name="morphe_settings_name_custom_item_hint">Нэрээ оруулна уу</string>
+  <string name="morphe_settings_name_empty_warning">Нэрийг хоосон орхиж болохгүй</string>
+  <string name="morphe_show_menu_icons_title">Morphe тохиргооны дүржлэгүүдийг харуулах</string>
+  <string name="morphe_settings_menu_copy_path">Хууллагдлаа: %s</string>
+  <string name="morphe_language_title">Morphe хэл</string>
+  <string name="morphe_language_user_dialog_message">"Зарим хэлний орчуулга дутуу эсвэл бүрэн буш байж болзошгүй.
+
+Шинэ хэл дээр орчуулах эсвэл байгаа орчуулгаа сайжруулахын тулд morphe.software/translate хаягаар зочилно уу"</string>
+  <string name="morphe_language_DEFAULT">Аппликейшний хэл</string>
+  <string name="morphe_pref_import_export_title">Импорт / Экспорт</string>
+  <string name="morphe_pref_import_export_summary">Morphe тохиргоог импортлох / экспортлох</string>
+  <string name="morphe_settings_import_file">Файлаас импортлох</string>
+  <string name="morphe_settings_import_file_success">Тохиргоог амжилттай импортлолоо, хэрэгжүүлэхийн тулд Хадгалах товчийг дарна уу</string>
+  <string name="morphe_settings_import_file_failed">Тохиргоог импортлох үйлдэл амжилтгүй боллоо</string>
+  <string name="morphe_settings_export_file">Файл руу экспортлох</string>
+  <string name="morphe_settings_export_file_success">Тохиргоог амжилттай экспортлолоо</string>
+  <string name="morphe_settings_export_file_failed">Тохиргоог экспортлох үйлдэл амжилтгүй боллоо</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">Та Morphe Patches-ийн хамгийн сүүлийн &lt;i&gt;%s&lt;/i&gt; хувилбарыг ашиглаж байна</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Та Morphe Patches-ийн &lt;i&gt;%1$s&lt;/i&gt; хувилбарыг ашиглаж байна&lt;br&gt;&lt;br&gt;&lt;b&gt;Шинэчлэлт боломжтой: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Патч-аа шинэчлэхийн тулд Morphe-ийг ашиглан энэ аппликейшнийг дахин патчлахыг хүснэ үү</string>
+  <string name="morphe_settings_about_links_dev_header">Тэмдэглэл</string>
+  <string name="morphe_settings_about_links_dev_body">Энэхүү хувилбар нь албан ёсны бус хувилбар тул гэнэтийн алдаа гарч болзошгүй</string>
+  <string name="morphe_settings_about_links_header">Албан ёсны холбоосууд</string>
+  <string name="morphe_settings_about_links_website">Вэбсайт</string>
+  <string name="morphe_settings_about_links_donate">Хандийлах</string>
+  <string name="morphe_settings_about_links_translations">Орчуулга</string>
+  <string name="morphe_settings_about_links_credits">Зохиогчид</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Шинэчлэгдсэн</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Шинэчлэл боломжтой</string>
+  <string name="morphe_settings_about_contributors_current">Одоогийн хөгжүүлэлт</string>
+  <string name="morphe_settings_about_contributors_prior">Өмнөх хөгжүүлэлт</string>
+  <string name="morphe_settings_about_links_morphe">Идэвхтэй хөгжүүлэлт</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Лицензийн мэдэгдэл</string>
+  <string name="morphe_settings_about_licenses_loading">Тảiжи байна…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Алдаа засах</string>
+  <string name="morphe_debug_screen_summary">Хөгжүүлэгчийн ахисан түвшний тохиргоо болон оношилгооны логуудыг тохируулах</string>
+  <string name="morphe_debug_title">Дибаг логгینگ-ийг идэвхжүүлэх</string>
+  <string name="morphe_debug_stacktrace_title">Debug лог стек трейс</string>
+  <string name="morphe_debug_stacktrace_summary">Алдааг илрүүлэхэд туслах үүднээс дибаг логт стек трейс-ийг багтаана</string>
+  <string name="morphe_debug_toast_on_error_title">Morphe-ийн алдаа гарсан үед мэдэгдэл харуулах</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Алдааны мэдэгдлүүдийг унтрааснаар Morphe-ийн бүх алдааны мэдэгдлүүд хаана.
+
+Таноо гэнэтийн аливаа үйл явдлын талаар мэдэгдэхгүй байх болно"</string>
+  <string name="morphe_debug_export_logs_title">Debug логуудыг экспортлох</string>
+  <string name="morphe_debug_export_logs_summary">Morphe-ийн алдааг засах логуудыг экспортлох</string>
+  <string name="morphe_debug_export_logs_success">Алдааг засах логуудыг амжилттай экспортлолоо</string>
+  <string name="morphe_debug_export_logs_failed">Алдааг засах логуудыг экспортлоход алдаа гарлаа</string>
+  <string name="morphe_debug_logs_search_hint">Алдааны лог хайх…</string>
+  <string name="morphe_debug_export_logs_clear">Цэвэрлэх</string>
+  <string name="morphe_debug_logs_disabled">Алдаа засах лог бүртгэл идэвхгүй байна</string>
+  <string name="morphe_debug_logs_none_found">Алдааг засах лог олдсонгүй</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Алдааг засах логуудыг хууллаа</string>
+  <string name="morphe_debug_logs_failed_to_export">Алдааг засах логуудыг экспортлоход алдаа гарлаа: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Алдааг засах логуудыг цэвэрлэлээ</string>
+  <string name="morphe_debug_feature_flags_manager_title">Боломжуудын тохиргооны менежер</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Boolean төрлийн боломжуудын тохиргоог удирдах</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Боломжуудын төгөөлтийг хайх…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Идэвхгүй (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Идэвхтэй (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Блоклогдсон (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Албадсан (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Автомат</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Үгүй</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Тийм</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Албадан асаах</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Блоклох</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Устгах</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Боломжийн төлөвүүдийг хадгаллаа</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Функцын төлөвүүдийг шинэчлэлээ</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Боломжийн төлөвүүдийг санах ой руу хууллаа</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Энэ тохиргоог ашиглахын тулд апп-ыг дахин ачаална уу</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Экспорт болон импорт</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s функцүүдийг импортлолоо</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Функцийн төг олдсонгүй</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Функцийн тэмдэглэгээг амжилттай экспортлолоо</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Функцийн тэмдэглэгээг экспортлоход алдаа гарлаа</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Функцийн тэмдэглэгээг ачааллаа, хэрэглэхийн тулд Хадгалах товчийг дарна уу</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Файлыг уншиж чадсангүй</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Бинари хайлт</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Аппликейшны үйлдлийг ямар функц-түлхүүр (feature flag) үүсгэж байгааг илрүүлнэ
+
+%s төлөвүүдийн тал нь хаагдах бөгөөд дахин ачалах болгонд уг үйлдэл хэвээр байгаа эсэхийг та хэлнэ
+
+Эхлэхээсээ өмнө үйлдлийг нэг удаа давтан гаргаарай, эсвэл аппликейшны хайлтаас хараагүй төлөвүүд дутагдсан байх болно"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Эхлүүлэх</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Хайх функцийн төг байхгүй байна
+
+Зөвхөн аппликейшн ашигласан бөгөөд одоогоор албадан идэвхжүүлээгүй төгүүдийг хоёртын хайлтад ашиглаж болно"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Алхам %1$s
+
+%2$s төг үлдлээ, үүнээс %3$s төг энэ алхамд хаагдсан байна
+
+Аппликейшнийг дахин ачаалж, тухайн шинж чанар илэрч байгаа эсэхийг шалгаад, доорх асуултад хариулна уу"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Функцийн төг хайж байна</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Шинж чанар илэрч байна</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Шинж чанар илэрээгүй байна</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Хоёртын хайлтыг цуцлах</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Хоёртын хайлт цуцлагдлаа</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"%s функцийн төг уг үйлдлийг үүсгэж байна
+
+Одоо үүнийг хаасан"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Функцийн төг олж чадсангүй
+
+Аппликейшны ажиллагаа нь функцийн төгөөр удирдагдахгүй байгаа бололтой"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Ганц функцийн төг олж чадсангүй
+
+Хайлтын явцад ажиллагаа нь өмнө нь алга болсон тул нэгээс илүү төг хамааралтай байх эсвэл хариултуудын аль нэг нь буруу байх магадлалтай"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">MicroG-ийн тохиргоог нээх</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG суулгаагүй байна. Суулгана уу</string>
+  <string name="gms_core_dialog_title">Үйлдэл шаардлагатай</string>
+  <string name="gms_core_dialog_outdated_message">"Таны MicroG v%1s хувилбар хуучирсан тул асуудал үүсгэж болзошгүй.
+
+MicroG-ийг хамгийн сүүлийн v%2s хувилбар руу шинэчлэнэ үү"</string>
+  <string name="gms_core_dialog_update_text">Шинэчлэх</string>
+  <string name="gms_core_dialog_ignore_text">Үл тоомсорлох</string>
+  <string name="gms_core_dialog_conflict_message">"Суулгасан MicroG нь Morphe-ийн зөвлөсөн хувилбар биш байна:
+
+%1s
+
+Устгахын тулд дарж, дараа нь энэ апп-ыг дахин нээж MicroG RE-ийг суулгаарай"</string>
+  <string name="gms_core_dialog_uninstall_text">Устгах</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG-д арын горимд ажиллах зөвшөөрөл байхгүй байна.
+
+Өөрийн утсанд зориулсан \"Don't kill my app\" зааврыг дагаж, MicroG суулгалтандаа хэрэгжүүлнэ үү.
+
+Энэ нь апп ажиллахад шаардлагатай"</string>
+  <string name="gms_core_dialog_open_website_text">Вэбсайтыг нээх</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Асуудал үүсгэхээс сэргийлэхийн тулд MicroG-ийн батерейны оновчлолыг идэвхгүй болгох ёстой.
+
+MicroG-ийн батерейны оновчлолыг идэвхгүй болгох нь батерейны хэрэглээнд сөргөөр нөлөөлөхгүй.
+
+Үргэлжлүүлэх товчийг дарж, оновчлолын өөрчлөлтийг зөвшөөрнө үү"</string>
+  <string name="gms_core_dialog_continue_text">Үргэлжлүүлэх</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG-ийн батерей оновчлолын цонхыг харуулах</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Үүнийг идэвхгүй болгосноор MicroG-ийн батарейг оптимизошлох саналжийг нуух болно.
+
+Хэрэв батарейны оптимизошлолыг өөрчлөхгүй бол дараах зүйлс гарч болзошгүй:
+• Аппликейшн гэнэт хаагдах
+• Мэдэгдэл ирэхгүй байх
+• Ард тал дээр тоглуулах үйлдэл ажиллахгүй байх"</string>
   <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Апп-ын холбоос хариуцлалт</string>
+  <string name="morphe_link_handling_summary">Холбоосыг энэ апп-д нээх тохиргоо</string>
+  <string name="morphe_link_handling_step1_title">Алхам 1: Эх хувилбарын апп холбоосыг идэвхгүй болгох</string>
+  <string name="morphe_link_handling_step1_message">Эх аппликейшны тохиргоог нээгээд бүх домэйн холбоосыг идэвхгүй болгоно уу</string>
+  <string name="morphe_link_handling_step2_title">Алхам 2: Патч хийсэн апп-ын холбоосыг идэвхжүүлэх</string>
+  <string name="morphe_link_handling_step2_message">Патч хийсэн апп-ын тохиргоог нээгээд бүх домэйн холбоосыг идэвхжүүлнэ үү</string>
+  <string name="morphe_link_handling_open">Тохиргоог нээх</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Туршилтын сэтег 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Та ⚠️ &lt;b&gt;%1$s&lt;/b&gt; апп-ын туршилтын хувилбарыг ашиглаж байна
+&lt;br/&gt;&lt;br/&gt;
+🔧 Энэхүү хувилбарын засуулалтуудыг нарийвчлан тохируулах явцад апп-ын үйл ажиллагааг хачирхалтай эсвэл тодорхойгүй алдаанууд гарч болзошгүйг анхаарна уу.
+&lt;br/&gt;&lt;br/&gt;
+Хэрэв та хамгийн найдвартай туршлагыг хүсэж байгаа бол үүнийг &lt;b&gt;устгаад&lt;/b&gt;, зөвлөсөн ✅ &lt;b&gt;%2$s&lt;/b&gt; хувилбарыг суулгана уу"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Би туршилтын хувилбарыг хүсэж байна</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Би тогтвортой хувилбарыг хүсэж байна</string>
   <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Системийн алдааны лог хэрэглэгчийн баримт бичигт хадгалагдлаа: %s</string>
+  <string name="morphe_crash_log_saved">Системийн алдааны лог хадгалагдлаа: %s</string>
 </resources>

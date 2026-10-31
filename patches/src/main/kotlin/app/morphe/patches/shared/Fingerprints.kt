@@ -20,12 +20,6 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object CastContextFetchFingerprint : Fingerprint(
-    filters = listOf(
-        string("Error fetching CastContext.")
-    )
-)
-
 internal object PrimeMethodFingerprint : Fingerprint(
     filters = listOf(
         string("com.android.vending"),

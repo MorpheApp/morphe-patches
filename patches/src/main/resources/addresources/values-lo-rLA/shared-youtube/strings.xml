@@ -18,46 +18,297 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_style_title">ແອນິເມຊັນຕອນເລີ່ມຕົ້ນ</string>
+  <string name="morphe_splash_screen_style_entry_1">ປິດການໃຊ້ງານ</string>
+  <string name="morphe_splash_screen_style_entry_2">ສີ</string>
+  <string name="morphe_splash_screen_style_entry_4">ໂທນສີຂາວດຳ</string>
+  <!-- misc.settings.settingsPatch -->
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">ເລີ່ມຕົ້ນລະບົບໃໝ່ເພື່ອຕັ້ງຄ່າໃຫ້ສຳເລັດ</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">ຊື່ແອັບ</string>
   <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">ພື້ນຫຼັງຂອງຮູບແບບມືດ</string>
+  <string name="morphe_theme_color_dark_entry_2">ສີດຳລ້ວນ</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (ສີດຳລ້ວນ)</string>
+  <string name="morphe_theme_color_dark_entry_9">YouTube ແບບຄລາສສິກ</string>
+  <string name="morphe_theme_color_dark_entry_10">ສີບົວເຂັ້ມ</string>
+  <string name="morphe_theme_color_dark_entry_11">ສີຟ້າເຂັ້ມ</string>
+  <string name="morphe_theme_color_dark_entry_12">ສີຂຽວເຂັ້ມ</string>
+  <string name="morphe_theme_color_dark_entry_13">ສີເຫຼືອງເຂັ້ມ</string>
+  <string name="morphe_theme_color_dark_entry_14">ສີສົ້ມເຂັ້ມ</string>
+  <string name="morphe_theme_color_dark_entry_15">ສີແດງເຂັ້ມ</string>
+  <string name="morphe_theme_color_dark_custom_title">ພື້ນຫຼັງສີເຂັ້ມແບບກຳໜົດເອງ</string>
+  <string name="morphe_theme_color_dark_custom_summary">ກຳນົດສີພື້ນຫຼັງຂອງຮູບແບບສີເຂັ້ມ</string>
+  <string name="morphe_theme_color_entry_1">ຄ່າເລີ່ມຕົ້ນຂອງແອັບ</string>
+  <string name="morphe_theme_color_entry_4">Material You (ເປັນກາງ)</string>
+  <string name="morphe_theme_color_entry_5">Material You (ຫຼັກ)</string>
+  <string name="morphe_theme_color_entry_6">Material You (ສຳຮອງ)</string>
+  <string name="morphe_theme_color_entry_7">Material You (ສຳຮອງອັນດັບສາມ)</string>
+  <string name="morphe_theme_color_custom_entry">ກຳໜົດເອງ</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">ການດາວໂຫຼດ</string>
+  <string name="morphe_download_mode_title">ໂໝດດາວໂຫຼດ</string>
+  <string name="morphe_download_mode_entry_default">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_download_mode_entry_in_app">ດາວໂຫຼດໃນແອັບ</string>
+  <string name="morphe_download_mode_entry_external">ຕົວດາວໂຫຼດພາຍນອກ</string>
+  <string name="morphe_external_downloader_name_title">ຊື່ແພັກເກັດຂອງຕົວດາວໂຫຼດ</string>
+  <string name="morphe_external_downloader_name_summary">ຊື່ແພັກເກັດຂອງແອັບຕົວດາວໂຫຼດພາຍນອກທີ່ຕິດຕັ້ງໄວ້</string>
+  <string name="morphe_external_downloader_other_item_hint">ປ້ອນຊື່ແພັກເກດ</string>
+  <string name="morphe_external_downloader_other_item">ອື່ນໆ</string>
+  <string name="morphe_external_downloader_not_found_title">ບໍ່ໄດ້ຕິດຕັ້ງແອັບ</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s ບໍ່ໄດ້ຖືກຕິດຕັ້ງ. ກະລຸນາຕິດຕັ້ງມັນ</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"ບໍ່ພົບແອັບທີ່ຕິດຕັ້ງໄວ້ທີ່ມີຊື່ແພັກເກັດ: %s
+
+ກະລຸນາກວດສອບວ່າຊື່ແພັກເກັດຖືກຕ້ອງ ແລະ ແອັບໄດ້ຖືກຕິດຕັ້ງແລ້ວ"</string>
+  <string name="morphe_external_downloader_empty_warning">ຊື່ແພັກເກດບໍ່ສາມາດວ່າງໄດ້</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
+  <string name="morphe_custom_branding_name_entry_5">ກຳນົດເອງ</string>
+  <string name="morphe_custom_branding_icon_title">ໄອຄອນແອັບ</string>
+  <string name="morphe_custom_branding_icon_entry_1">ຕົ້ນສະບັບ</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe ສີດຳ</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe ສີເຂັ້ມ</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe ສີອ່ອນ</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe ຫຼິ້ນໄຟ</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play ສີດຳ</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_7">ກຳນົດເອງ</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"ສິ່ງນີ້ຈະປ່ຽນໄອຄອນທີ່ສະແດງໃນຕົວປ່ອຍແອັບຂອງທ່ານ.
+
+ການຕັ້ງຄ່ານີ້ຈະບໍ່ປ່ຽນໄອຄອນໃນຕຳແໜ່ງເຫຼົ່ານີ້:
+• ລາຍການແອັບໃນການຕັ້ງຄ່າລະບົບຂອງອຸປະກອນ
+• ການແຈ້ງເຕືອນບາງຢ່າງ
+• ຕົວເລືອກແອັບ 'ເປີດດ້ວຍ'
+• ໄອຄອນ Android Auto
+
+ເພື່ອປ່ຽນໄອຄອນໃນທຸກບ່ອນ, ໃຫ້ patch ອີກຄັ້ງ ແລະ ປ່ຽນຕົວເລືອກ patch 'ໄອຄອນແອັບ'"</string>
+  <string name="morphe_custom_branding_notification_icon_title">ໄອຄອນການແຈ້ງເຕືອນ</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">ໃຫ້ຄືກັບໄອຄອນແອັບ</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">ຫຼິ້ນ Morphe</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">ການແຈ້ງເຕືອນຈາກ Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">ປະຫວັດການເບິ່ງຂອງທ່ານບໍ່ຖືກບັນທຶກ&lt;br&gt;&lt;br&gt;ສິ່ງນີ້ອາດເກີດຈາກຕົວບລັອກໂຄສະນາ DNS ຫຼື ພຣັອກຊີເຄືອຂ່າຍ&lt;br&gt;&lt;br&gt;ເພື່ອແກ້ໄຂບັນຫານີ້, ໃຫ້ເພີ່ມ &lt;b&gt;s.youtube.com&lt;/b&gt; ເຂົ້າໃນລາຍຊື່ທີ່ອະນຸຍາດ ຫຼື ປິດຕົວບລັອກ DNS ແລະ ພຣັອກຊີທັງໝົດ</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">ບໍ່ໃຫ້ສະແດງອີກ</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">ປອມແປງສະຕຣີມວິດີໂອ</string>
+  <string name="morphe_spoof_video_streams_screen_summary">ກຳນົດຄ່າການປອມແປງຄລາຍເອັນ ເພື່ອປ້ອງກັນບັນຫາໃນການຫຼິ້ນວິດີໂອ</string>
+  <string name="morphe_spoof_video_streams_summary">"ແກ້ໄຂບັນຫາການຫຼິ້ນສຳລັບຜູ້ໃຊ້ສ່ວນໃຫຍ່ ໂດຍການຮ້ອງຂໍສະຕຣີມວິດີໂອທີ່ເຂົ້າກັນໄດ້
+
+ຖ້າທ່ານເປັນຜູ້ໃຊ້ YouTube Premium, ການຕັ້ງຄ່ານີ້ອາດຈະບໍ່ຈຳເປັນ"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">ບໍ່ສາມາດດຶງຂໍ້ມູນສະຕຣີມຂອງລູກຄ້າໄດ້</string>
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">ຄລາຍເອັນເລີ່ມຕົ້ນບໍ່ເຮັດວຽກ</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s ບໍ່ເຮັດວຽກຫຼາຍຄັ້ງຕິດຕໍ່ກັນ, ແຕ່ %2$s ເຮັດວຽກໄດ້.
+
+ຕັ້ງຄ່າ %2$s ໃຫ້ເປັນຄລາຍເອັນເລີ່ມຕົ້ນບໍ?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">ປ່ຽນ</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">ການປິດການຕັ້ງຄ່ານີ້ອາດເຮັດໃຫ້ເກີດບັນຫາໃນການຫຼິ້ນວິດີໂອ</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">ລອງເປີດໃຊ້: Spoof video streams &gt; ການເຂົ້າສູ່ລະບົບ Android VR</string>
+  <string name="morphe_spoof_video_streams_client_type_title">ໄຄລຽນເລີ່ມຕົ້ນ</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">ການເຂົ້າສູ່ລະບົບ Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">ຍັງບໍ່ທັນໄດ້ເຂົ້າສູ່ລະບົບ Android VR. ແຕະບ່ອນນີ້ເພື່ອເຂົ້າສູ່ລະບົບ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">ປັດຈຸບັນໄດ້ເຂົ້າສູ່ລະບົບ Android VR ແລ້ວ</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">ເພື່ອໃຊ້ຄຸນສົມບັດນີ້, ໃຫ້ປ່ຽນ \'ລູກຄ້າເລີ່ມຕົ້ນ\' ເປັນ Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">ເຂົ້າສູ່ລະບົບ Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"ການເຂົ້າສູ່ລະບົບ Android VR ສາມາດແກ້ໄຂບັນຫາການຫຼິ້ນສຳລັບບາງຜູ້ໃຊ້
+
+ເພື່ອເຂົ້າສູ່ລະບົບ, ໃຫ້ກົດສືບຕໍ່ລຸ່ມນີ້"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">ອອກຈາກລະບົບ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">ຄຳແນະນຳ</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"ລະຫັດການເປີດນຳໃຊ້: %s
+
+1. ແຕະ 'ເປີດເວັບໄຊ' ດ້ານລຸ່ມເພື່ອເປີດເວັບໄຊ 'ເຊື່ອມຕໍ່ອຸປະກອນ'
+2. ວາງລະຫັດການເປີດນຳໃຊ້ທີ່ສະແດງຢູ່ຂ້າງເທິງຈາກຄລິບບອດ (ຫຼື ພິມໃສ່)
+3. ເຂົ້າສູ່ລະບົບ Google ຖ້າມີການຮ້ອງຂໍ. ຖ້າທ່ານມີຫຼາຍບັນຊີ ໃຫ້ເລືອກບັນຊີ YouTube ນີ້
+4. ແຕະ 'ອະນຸຍາດ' ໃຫ້ YouTube VR ເຂົ້າເຖິງ
+5. ກັບຄືນມາທີ່ແອັບນີ້ຫຼັງຈາກເຫັນຂໍ້ຄວາມ 'ເຊື່ອມຕໍ່ອຸປະກອນແລ້ວ'"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">ບໍ່ສາມາດອອກລະຫັດການເປີດນຳໃຊ້ໄດ້</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">ບໍ່ສາມາດອອກໂທເຄັນການຢືນຢັນຕົວຕົນໄດ້</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">ເຂົ້າສູ່ລະບົບສຳເລັດແລ້ວ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"ບັນທຶກການຢືນຢັນຕົວຕົນແລ້ວ
+
+• ການຕັ້ງຄ່າ Morphe ຂອງທ່ານຈະບໍ່ນຳເຂົ້າ/ສົ່ງອອກ ການຢືນຢັນຕົວຕົນ Android VR
+• ຖ້າແອັບນີ້ບໍ່ໄດ້ຖືກນຳໃຊ້ເປັນເວລາ 6 ເດືອນ Google ຈະລຶບການຢືນຢັນຕົວຕົນນີ້ອອກ
+• ທ່ານຈະຕ້ອງເຂົ້າສູ່ລະບົບຄືນໃໝ່ ຖ້າທ່ານປ່ຽນລະຫັດຜ່ານ Google ຫຼື ຍົກເລີກການລົງທະບຽນອຸປະກອນນີ້ຈາກການຕັ້ງຄ່າ Google ຂອງທ່ານ"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ (API หมดເວລາ)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">ການເຂົ້າສູ່ລະບົບ Android VR ໝົດອາຍຸ, ກະລຸນາລອງເຂົ້າສູ່ລະບົບ VR ອີກຄັ້ງ</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 ບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ (ສະຖານະ %s)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 ບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">ບໍ່ສາມາດເຂົ້າສູ່ລະບົບ VR ໄດ້, ການຢືນຢັນຕົວຕົນຜ່ານເວັບໄຊບໍ່ໄດ້ຮັບການອະນຸມັດ</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">ບໍ່ສາມາດເຂົ້າສູ່ລະບົບ VR ໄດ້: %s</string>
+  <string name="morphe_oauth2_toast_reset">ອອກຈາກລະບົບຂອງ Android VR ແລ້ວ</string>
+  <string name="morphe_oauth2_toast_invalid">ໂທເຄັນການເຂົ້າສູ່ລະບົບ VR ບໍ່ຖືກຕ້ອງ, ກະລຸນາລອງເຂົ້າສູ່ລະບົບ VR ອີກຄັ້ງ</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">ການຄວບຄຸມສື່ໃນການແຈ້ງເຕືອນ</string>
+  <string name="morphe_notification_media_screen_summary">ປັບແຕ່ງການຄວບຄຸມການຫຼິ້ນທີ່ສະແດງໃນໜ້າຈໍລັອກ ແລະ ແຜງການແຈ້ງເຕືອນຂອງທ່ານ</string>
+  <string name="morphe_hide_notification_media_prev_next_title">ເຊື່ອງປຸ່ມ ກ່ອນໜ້ານີ້ &amp; ຖັດໄປ</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">ເຊື່ອງປຸ່ມ ກ່ອນໜ້ານີ້ ແລະ ຖັດໄປ ໃນການແຈ້ງເຕືອນສື່, ໜ້າຈໍລັອກ, ແລະ ການຄວບຄຸມຫູຟັງ</string>
+  <string name="morphe_disable_notification_media_seekbar_title">ປິດການໃຊ້ງານ seekbar</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">ປ້ອງກັນການລາກ seekbar ຢູ່ໜ້າຈໍລັອກ ແລະ ແຜງການແຈ້ງເຕືອນ</string>
+  <string name="morphe_seek_notification_media_prev_next_title">ຊອກຫາດ້ວຍປຸ່ມ ກ່ອນໜ້ານີ້ &amp; ຖັດໄປ</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">ປ່ຽນການຄວບຄຸມສຳລັບການແຈ້ງເຕືອນສື່, ໜ້າຈໍລັອກ, ແລະ ຫູຟັງ ເພື່ອຊອກຫາແທນການປ່ຽນວິດີໂອ</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">ຄວາມຍາວໃນການຍ້ອນກັບ</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">ຈຳນວນວິນາທີທີ່ຈະຍ້ອນກັບດ້ວຍປຸ່ມ ກ່ອນໜ້ານີ້</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">ຄວາມຍາວໃນການກ້າວຂ້າມ</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">ຈຳນວນວິນາທີທີ່ຈະກ້າວຂ້າມດ້ວຍປຸ່ມ ຖັດໄປ</string>
+  <string name="morphe_seek_notification_media_length_invalid">ຄວາມຍາວຂອງການ Seek ຕ້ອງຢູ່ລະຫວ່າງ 1 ຫາ %s ວິນາທີ. ຈະໃຊ້ຄ່າເລີ່ມຕົ້ນ</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">ປິດການໃຊ້ງານໂປຣໂຕຄໍ QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">ປິດການໃຊ້ງານສຽງ DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">ບັງຄັບໃຊ້ພາສາສຽງດັ້ງເດີມ</string>
+  <string name="morphe_force_original_audio_summary">ຫຼິ້ນແທຣັກສຽງດັ້ງເດີມຂອງວິດີໂອສະເໝີ ແທນທີ່ເວີຊັນພາກສຽງ</string>
   <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">ຂ້າມຄວາມງຽບ</string>
+  <string name="morphe_skip_silence_summary">ຂ້າມຊ່ວງເວລາທີ່ງຽບໃນສຽງຂອງວິດີໂອໂດຍອັດຕະໂນມັດ</string>
+  <string name="morphe_skip_silence_minimum_pause_title">ຄວາມຍາວຂອງການຢຸດທີ່ຕ່ຳສຸດ</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">ມີພຽງແຕ່ການຢຸດພັກທີ່ຍາວຢ່າງໜ້ອຍເທົ່ານີ້ເທົ່ານັ້ນທີ່ຈະຖືກເຮັດໃຫ້ສັ້ນລົງ. ຈະມີຜົນເມື່ອວິດີໂອຖັດໄປເລີ່ມເຮັດວຽກ</string>
   <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">ພຣັອກຊີເຄືອຂ່າຍ</string>
+  <string name="morphe_proxy_screen_summary">ກຳນົດເສັ້ນທາງການຮ້ອງຂໍເຄືອຂ່າຍທີ່ຮອງຮັບຜ່ານ proxy</string>
+  <string name="morphe_proxy_enabled_title">ເປີດໃຊ້ proxy</string>
+  <string name="morphe_proxy_enabled_summary">ກຳນົດເສັ້ນທາງການຮ້ອງຂໍເຄືອຂ່າຍທີ່ຮອງຮັບຜ່ານ HTTP ຫຼື HTTPS proxy ທີ່ຖືກຕັ້ງຄ່າໄວ້</string>
+  <string name="morphe_proxy_host_title">ໂຮສຂອງ proxy</string>
+  <string name="morphe_proxy_host_summary">ຊື່ໂฮສ ຫຼື ທີ່ຢູ່ IP ຂອງເຊີເວີ proxy</string>
+  <string name="morphe_proxy_port_title">ພອດຂອງ proxy</string>
+  <string name="morphe_proxy_port_summary">ພອດຂອງເຊີເວີ proxy</string>
+  <string name="morphe_proxy_https_title">ໃຊ້ HTTPS proxy</string>
+  <string name="morphe_proxy_https_summary">ໃຊ້ HTTPS ເພື່ອເຊື່ອມຕໍ່ກັບເຊີເວີ proxy ແທນທີ່ HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">ການຢືນຢັນຕົວຕົນຂອງ proxy</string>
+  <string name="morphe_proxy_auth_enabled_summary">ສົ່ງການຢືນຢັນຕົວຕົນແບບ Basic ໄປກັບການຮ້ອງຂໍ proxy</string>
+  <string name="morphe_proxy_auth_username_title">ຊື່ຜູ້ໃຊ້ Proxy</string>
+  <string name="morphe_proxy_auth_username_summary">ຊື່ຜູ້ໃຊ້ສຳລັບການຢືນຢັນຕົວຕົນ proxy ແບບ Basic</string>
+  <string name="morphe_proxy_auth_password_title">ລະຫັດຜ່ານ Proxy</string>
+  <string name="morphe_proxy_auth_password_summary">ລະຫັດຜ່ານສຳລັບການຢືນຢັນຕົວຕົນ proxy ແບບ Basic</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">ອະນຸຍາດໃຫ້ກັບໄປໃຊ້ການເຊື່ອມຕໍ່ໂດຍກົງ</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">ເຊື່ອມຕໍ່ໂດຍກົງ ຖ້າ proxy ຫຼົ້ມເຫຼວ</string>
   <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">ເຊື່ອງໂຄສະນາເຕັມໜ້າຈໍ</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">ເພື່ອໃຊ້ຄຸນສົມບັດນີ້, ໃຫ້ປ່ຽນ \'Spoof video streams\' ເປັນຄລາຍເອນໃດໜຶ່ງ ຍົກເວັ້ນ \'Android Studio\' ແລະ \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">ລຶບຂໍ້ມູນສ່ວນຕົວຈາກລິ້ງແບ່ງປັນ</string>
+  <string name="morphe_sanitize_sharing_links_summary">ລຶບພາຣາມິເຕີການຕິດຕາມອອກຈາກລິ້ງທີ່ແບ່ງປັນ</string>
+  <string name="morphe_replace_music_with_youtube_title">ປ່ຽນລິງກ໌ການແບ່ງປັນເປັນ youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">ປ່ຽນ music.youtube.com ເປັນ youtube.com ໃນລິ້ງທີ່ແບ່ງປັນ</string>
+  <string name="morphe_replace_links_with_shortener_title">ປ່ຽນລິ້ງແບ່ງປັນເປັນ youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">ບັງຄັບໃຫ້ວິດີໂອໃຊ້ຮູບແບບ URL youtu.be ທີ່ສັ້ນລົງ</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_protobuffer_title">ບັນທຶກການດີບັກ protocol buffer</string>
+  <string name="morphe_debug_protobuffer_summary">ເພີ່ມຂໍ້ມູນການບັນທຶກເພີ່ມເຕີມສຳລັບນັກພັດທະນາ ເພື່ອລະບຸສ່ວນປະກອບຂອງແອັບ</string>
+  <string name="morphe_debug_protobuffer_user_dialog_message">"ການເປີດການຕັ້ງຄ່ານີ້ຈະບັນທຶກຂໍ້ມູນເລເອົາທ໌ເພີ່ມເຕີມ, ລວມທັງຂໍ້ຄວາມເທິງໜ້າຈໍສຳລັບບາງສ່ວນປະກອບຂອງ UI.
+
+ສິ່ງນີ້ສາມາດຊ່ວຍລະບຸສ່ວນປະກອບຕ່າງໆ ເມື່ອສ້າງຕົວຕອງທີ່ກຳນົດເອງ.
+
+ຢ່າງໃດກໍຕາມ, ການເປີດໃຊ້ງານສິ່ງນີ້ຈະບັນທຶກຂໍ້ມູນຜູ້ໃຊ້ບາງຢ່າງ ເຊັ່ນ: ທີ່ຢູ່ IP ຂອງທ່ານ"</string>
   <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">ຕົວຕອງແບບກຳນົດເອງ</string>
+  <string name="morphe_custom_filter_screen_summary">ກຳນົດຄ່າຕົວຕອງແບບກຳນົດເອງເພື່ອເຊື່ອງສ່ວນປະກອບໃດໜຶ່ງ</string>
+  <string name="morphe_custom_filter_title">ເປີດໃຊ້ຕົວຕອງແບບກຳນົດເອງ</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">ລາຍການຂອງຂໍ້ຄວາມ component path builder ທີ່ຈະກັ່ນຕອງ, ແຍກດ້ວຍການຂຶ້ນແຖວໃໝ່</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">ຕົວຕອງທີ່ກຳນົດເອງບໍ່ຖືກຕ້ອງ: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
+  <string name="morphe_settings_menu_filter_screen_title">ຕົວຕອງເມນູການຕັ້ງຄ່າ</string>
+  <string name="morphe_settings_menu_filter_screen_summary">ເຊື່ອງລາຍການໃນໜ້າຈໍການຕັ້ງຄ່າແອັບມາດຕະຖານ ໂດຍອີງຕາມຊື່ທີ່ປາກົດ</string>
+  <string name="morphe_settings_menu_filter_picker_empty">ເປີດໜ້າຈໍການຕັ້ງຄ່າແອັບມາດຕະຖານໜຶ່ງຄັ້ງເພື່ອສ້າງລາຍການ</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">ລຶບກ່ອງໂທລະນາຍການພິຈາລະນາຂອງຜູ້ຊົມ</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">ສິ່ງນີ້ບໍ່ໄດ້ຂ້າມການຈຳກັດອາຍຸ. ມັນພຽງແຕ່ຍອມຮັບໂດຍອັດຕະໂນມັດ</string>
   <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">ຜູ້ໃຫ້ບໍລິການ PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">ກຳນົດຄ່າຜູ້ໃຫ້ບໍລິການ PoToken ເພື່ອປ້ອງກັນບັນຫາໃນການຫຼິ້ນ</string>
+  <string name="morphe_external_potoken_provider_title">ຜູ້ໃຫ້ບໍລິການ PoToken ພາຍນອກ</string>
+  <string name="morphe_external_potoken_provider_summary">"ແກ້ໄຂບັນຫາການຫຼິ້ນໂດຍໃຊ້ PoToken minter ພາຍນອກ (ທົດລອງ)
+
+ຖ້າທ່ານເປັນຜູ້ໃຊ້ YouTube Premium, ການຕັ້ງຄ່ານີ້ອາດຈະບໍ່ຈຳເປັນ"</string>
   <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"ແກ້ໄຂບັນຫາການຫຼິ້ນໂດຍໃຊ້ PoToken minter ພາຍນອກ (ທົດລອງ)
+
+ເພື່ອໃຊ້ຄຸນສົມບັດນີ້, ໃຫ້ປິດ 'ປອມແປງສະຕຣີມວິດີໂອ'"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">ຖ້າມັນບໍ່ເຮັດວຽກ, ໃຫ້ລອງປິດ MicroG ແບບບັງຄັບ</string>
+  <string name="morphe_external_potoken_provider_settings_summary">ເປີດການຕັ້ງຄ່າ PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"ຟີເຈີນີ້ກຳລັງຢູ່ໃນຂັ້ນຕອນການພັດທະນາ ແລະ ອາດຈະບໍ່ເຮັດວຽກ
+
+ແຕະທີ່ນີ້ເພື່ອດາວໂຫຼດ PotHelper"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper ບໍ່ເຮັດວຽກອີກຕໍ່ໄປ</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"ໂທເຄັນທີ່ຕິດຕັ້ງມາໃນ PotHelper ເວີຊັນນີ້ ບໍ່ສາມາດໃຊ້ງານໄດ້ອີກຕໍ່ໄປ
+
+ເປີດ 'Spoof video streams' ເພື່ອແກ້ໄຂການຫຼິ້ນວິດີໂອ"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">ເປີດ</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">ປອມແປງເວີຊັນຂອງແອັບ</string>
+  <string name="morphe_spoof_app_version_summary">ຫຼອກເຊີເວີໃຫ້ຄິດວ່າທ່ານກຳລັງໃຊ້ແອັບເວີຊັນເກົ່າ ເພື່ອຟື້ນຟູຄຸນສົມບັດ UI ແບບເກົ່າ</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"ເວີຊັນຂອງແອັບຈະຖືກປອມແປງເປັນເວີຊັນທີ່ເກົ່າກວ່າ.
+
+ສິ່ງນີ້ຈະປ່ຽນຮູບລັກສະນະ ແລະ ຄຸນສົມບັດຂອງແອັບ, ແຕ່ອາດເກີດຜົນຂ້າງຄຽງທີ່ບໍ່ຮູ້ສາເຫດ.
+
+ຫາກປິດການນຳໃຊ້ໃນພາຍຫຼັງ, ແນະນຳໃຫ້ລຶບຂໍ້ມູນແອັບເພື່ອປ້ອງກັນຂໍ້ຜິດພາດຂອງ UI"</string>
+  <string name="morphe_spoof_app_version_target_title">ປອມແປງເວີຊັນເປົ້າໝາຍຂອງແອັບ</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">ອັດຕາການຣີເຟຣຊຂອງແອັບ</string>
+  <string name="morphe_app_refresh_rate_default">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">ປ່ຽນແທນອັດຕາການຣີເຟຣຊ</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">ຕະຫຼອດເວລາ</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">ການຫຼິ້ນແບບແນວຕັ້ງ</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">ຫຼິ້ນແບບເຕັມຈໍ</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">ຫຼິ້ນແບບຕັ້ງ ແລະ ເຕັມຈໍ</string>
   <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">ຟອນ</string>
+  <string name="morphe_custom_font_type_entry_default">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_custom_font_type_entry_system">ຟອນລະບົບຂອງອຸປະກອນ</string>
+  <string name="morphe_custom_font_type_entry_custom">ໄຟລ໌ຟອນທີ່ກຳນົດເອງ</string>
+  <string name="morphe_custom_font_file_title">ໄຟລ໌ຟອນທີ່ກຳນົດເອງ</string>
+  <string name="morphe_custom_font_file_summary">ເລືອກໄຟລ໌ຟອນ TTF ຫຼື OTF</string>
+  <string name="morphe_custom_font_file_invalid">ໄຟລ໌ທີ່ເລືອກບໍ່ແມ່ນຟອນ TTF ຫຼື OTF</string>
+  <string name="morphe_custom_font_failed_to_load">ບໍ່ສາມາດໂຫຼດຟອນຕ໌ທີ່ກຳນົດເອງໄດ້ ແລະ ຖືກປິດການໃຊ້ງານ</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_ryd_failure_connection_timeout">ບໍ່ສາມາດເບິ່ງຈຳນວນ Dislike ໄດ້ຊົ່ວຄາວ (API หมดເວລາ)</string>
+  <string name="morphe_ryd_failure_connection_status_code">ບໍ່ສາມາດນຳໃຊ້ການບໍ່ມັກໄດ້ (ສະຖານະ %s)</string>
+  <string name="morphe_ryd_failure_client_rate_limit_requested">ບໍ່ສາມາດເບິ່ງຈຳນວນ Dislike ໄດ້ (ຂໍ້ຈຳກັດ API ຂອງລູກຄ້າ)</string>
+  <string name="morphe_ryd_failure_generic">ບໍ່ສາມາດເບິ່ງຈຳນວນ Dislike ໄດ້ (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
+  <string name="morphe_ryd_video_likes_hidden_by_video_owner">ຖືກເຊື່ອງໂດຍເຈົ້າຂອງ</string>
+  <string name="morphe_ryd_accessibility_dislike_count">ບໍ່ມັກວິດີໂອນີ້, ພ້ອມກັບອີກ %s ຄົນ</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">ບໍ່ມັກວິດີໂອນີ້, %s ຂອງຄະແນນສຽງແມ່ນບໍ່ມັກ</string>
+  <string name="morphe_ryd_enabled_title">ເປີດໃຊ້ງານ Return YouTube Dislike</string>
+  <string name="morphe_ryd_dislike_percentage_title">ສະແດງການບໍ່ມັກເປັນເປີເຊັນ</string>
+  <string name="morphe_ryd_dislike_percentage_summary">ສະແດງການບໍ່ມັກເປັນເປີເຊັນຂອງການມັກ ແທນທີ່ຈະເປັນຕົວເລກ</string>
+  <string name="morphe_ryd_estimated_like_title">ສະແດງການຄາດຄະເນການມັກ</string>
+  <string name="morphe_ryd_estimated_like_summary">ສະແດງຈຳນວນການຄາດຄະເນການມັກໃນວິດີໂອ ທີ່ຜູ້ສ້າງໄດ້ປິດການມັກ</string>
+  <string name="morphe_ryd_toast_on_connection_error_title">ສະແດງການແຈ້ງເຕືອນຂໍ້ຜິດພາດໃນການເຊື່ອມຕໍ່</string>
+  <string name="morphe_ryd_toast_on_connection_error_summary">ສະແດງການແຈ້ງເຕືອນເມື່ອເຊີບເວີ Return YouTube Dislike ບໍ່ສາມາດນຳໃຊ້ໄດ້</string>
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike ຈະກູ້ຄືນຈຳນວນການບໍ່ມັກທີ່ YouTube ໄດ້ເຊື່ອງໄວ້ໃນປີ 2021. ຈຳນວນເຫຼົ່ານີ້ມາຈາກຂໍ້ມູນທີ່ຖືກເກັບໄວ້ກ່ອນການລຶບອອກ ແລະ ແມ່ນການຄາດຄະເນສຳລັບວິດີໂອໃໝ່ໆ ຈາກການລົງຄະແນນສຽງຂອງຜູ້ໃຊ້, ດັ່ງນັ້ນພວກມັນຈຶ່ງເປັນຄ່າໂດຍປະມານ ແລະ ຈະອັບເດທ໌ທຸກໆ ບໍ່ກີ່ມື້
+
+ID ຂອງວິດີໂອທີ່ທ່ານເບິ່ງຈະຖືກສົ່ງໄປຍັງ Return YouTube Dislike API, ແລະ ການມັກ ແລະ ບໍ່ມັກຂອງທ່ານຈະຖືກສົ່ງແບບບໍ່ລະບຸຕົວຕົນ ເພື່ອປັບປຸງການຄາດຄະເນໃຫ້ດີຂຶ້ນ"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
+  <string name="morphe_ryd_statistics_category_title">ສະຖິຕິ Return YouTube Dislike API ຂອງອຸປະກອນນີ້</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">ເວລາຕອບສະໜອງຂອງ API, ສະເລ່ຍ</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">ເວລາຕອບສະໜອງຂອງ API, ຕ່ຳສຸດ</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">ເວລາຕອບສະໜອງຂອງ API, ສູງສຸດ</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">ເວລາຕອບສະໜອງຂອງ API, ສື່ຫຼ້າສຸດ</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">ບໍ່ສາມາດເບິ່ງຈຳນວນ Dislikes ໄດ້ຊົ່ວຄາວ - ຂໍ້ຈຳກັດອັດຕາ API ຂອງ Client ກຳລັງມີຜົນ</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_title">ການດຶງຂໍ້ມູນຄະແນນ API, ຈຳນວນການເອີ້ນໃຊ້</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">ບໍ່ມີການຮຽກໃຊ້ເຄືອຂ່າຍ</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">ມີການເອີ້ນໃຊ້ເຄືອຂ່າຍ %s ຄັ້ງ</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">ການດຶງຂໍ້ມູນຄະແນນສຽງຈາກ API, ຈຳນວນທີ່ໝົດເວລາ</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">ບໍ່ມີການເອີ້ນເຄືອຂ່າຍທີ່ໝົດເວລາ</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">ການເອີ້ນໃຊ້ເຄືອຂ່າຍ %s ຄັ້ງໝົດເວລາ</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">ຂີດຈຳກັດອັດຕາຂອງ API client</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">ບໍ່ພົບຂີດຈຳກັດອັດຕາຂອງ client</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">ພົບຂໍ້ຈຳກັດອັດຕາການຮ້ອງຂໍຂອງຄລາຍເອນ %s ຄັ້ງ</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s ມິນລິວິນາທີ</string>
 </resources>

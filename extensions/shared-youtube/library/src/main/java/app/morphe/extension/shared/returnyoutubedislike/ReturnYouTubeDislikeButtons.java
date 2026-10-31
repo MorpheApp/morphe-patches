@@ -570,17 +570,6 @@ public final class ReturnYouTubeDislikeButtons {
     private static final int MAX_BAR_DEPTH = 6;
 
     /**
-     * The counts of the old action bar sit in the like button, a neighbor of the dislike button,
-     * and Litho reports the text of one host only, so the whole bar is searched.
-     *
-     * @return If anything in the bar holding this button shows text, such as a count or a label.
-     */
-    private static boolean barShowsText(View host) {
-        View bar = barOf(host);
-        return bar == host ? hostShowsText(host) : subtreeShowsText(bar, 0);
-    }
-
-    /**
      * The height is used rather than the width, since the dislike button is no longer square.
      *
      * @return The bar or pill holding this button, or the button itself if it was not found.
@@ -696,7 +685,10 @@ public final class ReturnYouTubeDislikeButtons {
         private boolean hasOwnLabel() {
             Boolean cached = hasOwnLabel;
             if (cached == null) {
-                hasOwnLabel = cached = barShowsText(host);
+                // The counts of the old action bar sit in the like button, a neighbor of the dislike
+                // button, and Litho reports the text of one host only, so the whole bar is searched.
+                View bar = barOf(host);
+                hasOwnLabel = cached = bar == host ? hostShowsText(host) : subtreeShowsText(bar, 0);
             }
             return cached;
         }

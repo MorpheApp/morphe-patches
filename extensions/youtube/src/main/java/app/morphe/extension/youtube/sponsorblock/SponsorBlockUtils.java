@@ -73,7 +73,7 @@ public class SponsorBlockUtils {
                 SegmentCategory category = SegmentCategory.categoriesWithoutUnsubmitted()[which];
                 final boolean enableButton;
                 if (category.behaviour == CategoryBehaviour.IGNORE) {
-                    Utils.showToastLong(str("morphe_sb_new_segment_disabled_category"));
+                    Utils.showSnackbarLong(str("morphe_sb_new_segment_disabled_category"));
                     enableButton = false;
                 } else {
                     newUserCreatedSegmentCategory = category;
@@ -244,7 +244,7 @@ public class SponsorBlockUtils {
             final boolean hasEnd = newSponsorSegmentEndMillis >= 0;
 
             if (!hasStart && !hasEnd) {
-                Utils.showToastShort(str("morphe_sb_new_segment_mark_locations_first"));
+                Utils.showSnackbarShort(str("morphe_sb_new_segment_mark_locations_first"));
                 return;
             }
 
@@ -270,12 +270,12 @@ public class SponsorBlockUtils {
 
             // Both start and end marked.
             if (newSponsorSegmentStartMillis >= newSponsorSegmentEndMillis) {
-                Utils.showToastShort(str("morphe_sb_new_segment_start_is_before_end"));
+                Utils.showSnackbarShort(str("morphe_sb_new_segment_start_is_before_end"));
                 return;
             }
 
             if (!newSponsorSegmentPreviewed) {
-                Utils.showToastShort(str("morphe_sb_new_segment_preview_segment_first"));
+                Utils.showSnackbarShort(str("morphe_sb_new_segment_preview_segment_first"));
                 return;
             }
 
@@ -320,7 +320,7 @@ public class SponsorBlockUtils {
                 // Button is hidden if no segments exist.
                 // But if prior video had segments, and current video does not,
                 // then the button persists until the overlay fades out (this is intentional, as abruptly hiding the button is jarring).
-                Utils.showToastShort(str("morphe_sb_vote_no_segments"));
+                Utils.showSnackbarShort(str("morphe_sb_vote_no_segments"));
                 return;
             }
 
@@ -354,7 +354,7 @@ public class SponsorBlockUtils {
             }
 
             if (titleList.isEmpty()) {
-                Utils.showToastShort(str("morphe_sb_vote_no_segments"));
+                Utils.showSnackbarShort(str("morphe_sb_vote_no_segments"));
                 return;
             }
 
@@ -394,9 +394,9 @@ public class SponsorBlockUtils {
         try {
             Utils.verifyOnMainThread();
             if (newSponsorSegmentStartMillis < 0 || newSponsorSegmentEndMillis < 0) {
-                Utils.showToastShort(str("morphe_sb_new_segment_mark_locations_first"));
+                Utils.showSnackbarShort(str("morphe_sb_new_segment_mark_locations_first"));
             } else if (newSponsorSegmentStartMillis >= newSponsorSegmentEndMillis) {
-                Utils.showToastShort(str("morphe_sb_new_segment_start_is_before_end"));
+                Utils.showSnackbarShort(str("morphe_sb_new_segment_start_is_before_end"));
             } else {
                 SegmentPlaybackController.removeUnsubmittedSegments(); // If user hits preview more than once before playing.
                 SegmentPlaybackController.addUnsubmittedSegment(
@@ -548,7 +548,7 @@ public class SponsorBlockUtils {
                 } else {
                     time = parseSegmentTime(editText.getText().toString());
                     if (time < 0) {
-                        Utils.showToastLong(str("morphe_sb_new_segment_edit_by_hand_parse_error"));
+                        Utils.showSnackbarLong(str("morphe_sb_new_segment_edit_by_hand_parse_error"));
                         return;
                     }
                 }

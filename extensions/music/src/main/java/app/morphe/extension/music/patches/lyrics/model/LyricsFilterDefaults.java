@@ -13,13 +13,9 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.settings.StringSetting;
 
 /**
- * The user-configurable rules lyrics are cleaned and filtered with, together with the values
- * they start out at.
- *
- * <p>Kept out of {@link Settings} so the rules and the code applying them
- * ({@link LyricsFilter}) read as one unit. {@link Settings} calls {@link #register()} from a
- * static block: touching this class is what puts the three settings into the framework's
- * registry, which the preference screen looks keys up in.
+ * User-configurable lyrics cleaning/filtering rules and their defaults. Kept out of
+ * {@link Settings} so the rules and {@link LyricsFilter} read as one unit; {@link Settings}
+ * calls {@link #register()} from a static block, which loads this class and registers the settings.
  */
 public final class LyricsFilterDefaults {
 
@@ -139,6 +135,9 @@ public final class LyricsFilterDefaults {
             new StringSetting("morphe_music_lyrics_credit_line_regex", DEFAULT_LYRICS_CREDIT_LINE_REGEX, false,
                     parent(Settings.LYRICS_ENABLED));
 
+    private LyricsFilterDefaults() {
+    }
+
     /**
      * Constructs the three settings above by loading this class.
      *
@@ -147,8 +146,5 @@ public final class LyricsFilterDefaults {
      * touching one here would hand that null out for good.
      */
     public static void register() {
-    }
-
-    private LyricsFilterDefaults() {
     }
 }

@@ -18,6 +18,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
@@ -48,9 +50,7 @@ import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.p0Register
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -76,7 +76,7 @@ internal const val EXTENSION_PLAYBACK_SPEED_MENU_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/VideoInformation$PlaybackSpeedMenuInterface;"
 internal const val EXTENSION_EXOPLAYER_INTERFACE =
     "Lapp/morphe/extension/shared/patches/ExoPlayerInterface;"
-private const val EXTENSION_VIDEO_QUALITY_MENU_INTERFACE =
+internal const val EXTENSION_VIDEO_QUALITY_MENU_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/VideoInformation$VideoQualityMenuInterface;"
 internal const val EXTENSION_VIDEO_QUALITY_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/VideoInformation$VideoQualityInterface;"
@@ -258,7 +258,7 @@ val videoInformationPatch = bytecodePatch(
                 method.getInstruction<TwoRegisterInstruction>(index).registerA
 
             val setPlaybackSpeedMethod =
-                instructionMatches.last().instruction.getReference<MethodReference>()!!
+                instructionMatches.last().methodReference
 
             setPlaybackSpeedMethodRef = WeakReference(
                 mutableClassDefBy(
@@ -384,6 +384,11 @@ val videoInformationPatch = bytecodePatch(
                     field.type == "I"
                 }
 
+                // The IDs of the formats of the quality, the last constructor parameter.
+                val formatIdsField = fields.single { field ->
+                    field.type == it.method.parameterTypes.last()
+                }
+
                 // Add interface and helper methods to allow extension code to call obfuscated methods.
                 interfaces.add(EXTENSION_VIDEO_QUALITY_INTERFACE)
                 methods.add(
@@ -430,6 +435,27 @@ val videoInformationPatch = bytecodePatch(
                         )
                     }
                 )
+
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "patch_getFormatIds",
+                        listOf(),
+                        "Ljava/util/Collection;",
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(2),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                iget-object v0, p0, $formatIdsField
+                                return-object v0
+                            """
+                        )
+                    }
+                )
             }
         }
 
@@ -440,8 +466,8 @@ val videoInformationPatch = bytecodePatch(
         val (onQualityItemClickListenerField, setQualityField) =
             with(SetVideoQualityFingerprint) {
                 Pair(
-                    instructionMatches[0].instruction.getReference<FieldReference>()!!,
-                    instructionMatches[1].instruction.getReference<FieldReference>()!!
+                    instructionMatches[0].fieldReference,
+                    instructionMatches[1].fieldReference
                 )
             }
 
@@ -501,19 +527,19 @@ val videoInformationPatch = bytecodePatch(
             val (videoIsLiveMethodCall, channelIdMethodCall) =
                 with(getChannelIdFingerprint(playerResponseType)) {
                     Pair(
-                        instructionMatches[0].instruction.getReference<MethodReference>()!!,
-                        instructionMatches[1].instruction.getReference<MethodReference>()!!
+                        instructionMatches[0].methodReference,
+                        instructionMatches[1].methodReference
                     )
                 }
 
             val channelNameMethodCall = getChannelNameFingerprint(playerResponseType).instructionMatches.last()
-                .instruction.getReference<MethodReference>()!!
+                .methodReference
 
             // The helper this resolves through only exists in later targets, and the title is
             // only used by the minimal miniplayer, which is only rebuilt for those.
             val videoTitleInstructions = if (is_21_29_or_greater) {
                 val videoTitleMethodCall = getVideoTitleFingerprint(playerResponseType)
-                    .instructionMatches.first().instruction.getReference<MethodReference>()!!
+                    .instructionMatches.first().methodReference
 
                 """
                     invoke-interface { p1 }, $videoTitleMethodCall
@@ -574,6 +600,19 @@ val videoInformationPatch = bytecodePatch(
                         "invoke-direct { p0, p1 }, $helperMethod"
                     )
                 }
+
+                // A preloaded playback, such as the next Short, becomes the current one without loadVideo().
+                currentPlaybackFingerprint(playerResponseType).let { currentPlayback ->
+                    currentPlayback.method.apply {
+                        val index = currentPlayback.instructionMatches.last().index
+                        val playerResponseRegister = getInstruction<FiveRegisterInstruction>(index).registerC
+
+                        addInstruction(
+                            index,
+                            "invoke-direct { p0, v$playerResponseRegister }, $helperMethod"
+                        )
+                    }
+                }
             }
         }
 
@@ -599,8 +638,8 @@ internal fun addExoPlayerHooks(extensionClass: String) {
     val playbackParametersSpeedField: FieldReference
     val playbackParametersPitchField: FieldReference
     PlaybackParametersToStringFingerprint.instructionMatches.let {
-        playbackParametersSpeedField = it.first().getFieldAccessed()
-        playbackParametersPitchField = it.last().getFieldAccessed()
+        playbackParametersSpeedField = it.first().fieldReference
+        playbackParametersPitchField = it.last().fieldReference
     }
 
     val setPlaybackParametersFingerprint = getPlaybackParametersSetterFingerprint(playbackParametersType)

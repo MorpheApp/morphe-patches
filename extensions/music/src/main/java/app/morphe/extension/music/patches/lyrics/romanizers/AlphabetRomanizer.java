@@ -17,12 +17,7 @@ import java.util.Map;
  */
 final class AlphabetRomanizer {
 
-    interface Script {
-        boolean contains(char c);
-    }
-
     private static final int COMBINING_DIAERESIS = 0x0308;
-
     private final Script script;
     private final Map<String, String> letters;
     private final Map<String, String> digraphs;
@@ -34,11 +29,27 @@ final class AlphabetRomanizer {
      * @param stripAccents Whether accents only mark stress and are dropped before the lookup.
      */
     AlphabetRomanizer(Script script, Map<String, String> letters, Map<String, String> digraphs,
-            boolean stripAccents) {
+                      boolean stripAccents) {
         this.script = script;
         this.letters = letters;
         this.digraphs = digraphs;
         this.stripAccents = stripAccents;
+    }
+
+    private static String decompose(char c) {
+        return Normalizer.normalize(String.valueOf(c), Normalizer.Form.NFD);
+    }
+
+    /** A capital letter keeps its capital in the reading. */
+    private static String cased(String reading, char source) {
+        if (reading.isEmpty() || !Character.isUpperCase(source)) return reading;
+        return Character.toUpperCase(reading.charAt(0)) + reading.substring(1);
+    }
+
+    private static void append(StringBuilder out, String word) {
+        if (word.isEmpty()) return;
+        if (out.length() > 0) out.append(' ');
+        out.append(word);
     }
 
     String romanize(String line) {
@@ -77,6 +88,11 @@ final class AlphabetRomanizer {
         return out.toString().trim();
     }
 
+    /** How many readings the tables hold, for the settings row's entry count. */
+    int size() {
+        return letters.size() + digraphs.size();
+    }
+
     /** A diaeresis says the vowel is sounded on its own, so it never joins the one before. */
     private boolean pairsWith(char next) {
         if (!script.contains(next)) return false;
@@ -92,19 +108,7 @@ final class AlphabetRomanizer {
         return String.valueOf(lower);
     }
 
-    private static String decompose(char c) {
-        return Normalizer.normalize(String.valueOf(c), Normalizer.Form.NFD);
-    }
-
-    /** A capital letter keeps its capital in the reading. */
-    private static String cased(String reading, char source) {
-        if (reading.isEmpty() || !Character.isUpperCase(source)) return reading;
-        return Character.toUpperCase(reading.charAt(0)) + reading.substring(1);
-    }
-
-    private static void append(StringBuilder out, String word) {
-        if (word.isEmpty()) return;
-        if (out.length() > 0) out.append(' ');
-        out.append(word);
+    interface Script {
+        boolean contains(char c);
     }
 }

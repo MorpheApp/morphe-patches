@@ -16,9 +16,11 @@ import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -30,6 +32,8 @@ import java.util.function.Consumer;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.youtube.patches.utils.LocalQueueSheet;
+import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRoutes;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
@@ -80,7 +84,9 @@ public final class LocalQueuePatch {
     private static volatile Consumer<String> metadataListener;
 
     public static boolean isEnabled() {
-        return Settings.LOCAL_QUEUE.get();
+        // Playback hooks are installed by Add to queue. A retained setting must not
+        // enable this queue when that patch is not included.
+        return AddToQueuePatch.isPatchIncluded() && Settings.QUEUE_TYPE.get() == AddToQueuePatch.QueueType.LOCAL;
     }
 
     public static void setListeners(Runnable onChange, Consumer<String> onMetadata) {
@@ -135,7 +141,7 @@ public final class LocalQueuePatch {
             final boolean playNow = PlayerType.getCurrent().isNoneOrHidden() && size() == 0;
             if (playNow) {
                 if (!startPlayback(videoId)) {
-                    Utils.showToastShort(str("morphe_local_queue_play_failed"));
+                    Utils.showSnackbarShort(str("morphe_local_queue_play_failed"));
                 }
                 return;
             }
@@ -148,7 +154,7 @@ public final class LocalQueuePatch {
                     item = items.remove(existing);
                 } else {
                     if (items.size() >= MAX_ITEMS) {
-                        Utils.showToastShort(str("morphe_local_queue_full"));
+                        Utils.showSnackbarShort(str("morphe_local_queue_full"));
                         return;
                     }
                     item = new Item(videoId, null, null);
@@ -158,7 +164,7 @@ public final class LocalQueuePatch {
                 fetchMetadataIfNeeded(item);
             }
 
-            Utils.showToastShort(str("morphe_local_queue_added"));
+            Utils.showSnackbarShort(str("morphe_local_queue_added"));
             notifyChanged();
         } catch (Exception ex) {
             Logger.printException(() -> "add failure", ex);
@@ -207,7 +213,7 @@ public final class LocalQueuePatch {
             lastAdvanceTime = System.currentTimeMillis();
             remove(videoId);
         } else {
-            Utils.showToastShort(str("morphe_local_queue_play_failed"));
+            Utils.showSnackbarShort(str("morphe_local_queue_play_failed"));
         }
     }
 
@@ -223,6 +229,7 @@ public final class LocalQueuePatch {
             }
 
             final String name = navigationIntent.name();
+            Logger.printDebug(() -> "Navigation intent: " + name);
             final boolean next = "NEXT".equals(name);
             if (!next && !"AUTOPLAY".equals(name) && !"AUTONAV".equals(name)) {
                 return false;
@@ -363,6 +370,21 @@ public final class LocalQueuePatch {
         return -1;
     }
 
+    public static void onVideoChanged() {
+        notifyChanged();
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void onUserLeaveHint() {
+        try {
+            LocalQueueSheet.dismissImmediately();
+        } catch (Exception ex) {
+            Logger.printException(() -> "onUserLeaveHint failure", ex);
+        }
+    }
+
     private static void notifyChanged() {
         Runnable listener = changeListener;
         if (listener != null) {
@@ -428,14 +450,19 @@ public final class LocalQueuePatch {
 
         Utils.runOnBackgroundThread(() -> {
             try {
-                String watchUrl = URLEncoder.encode("https://www.youtube.com/watch?v=" + item.videoId, "UTF-8");
-                HttpURLConnection connection = Requester.openConnection(
-                        "https://www.youtube.com/oembed?format=json&url=" + watchUrl);
-                connection.setConnectTimeout(CONNECTION_TIMEOUT_MILLISECONDS);
-                connection.setReadTimeout(CONNECTION_TIMEOUT_MILLISECONDS);
-                JSONObject json = Requester.parseJSONObjectAndDisconnect(connection);
-                String title = json.optString("title");
-                String author = json.optString("author_name");
+                JSONObject details = fetchOEmbed(item.videoId);
+                String title;
+                String author;
+                if (details != null) {
+                    title = details.optString("title");
+                    author = details.optString("author_name");
+                } else {
+                    // oEmbed has no title for videos whose uploader disabled embedding.
+                    details = fetchPlayerDetails(item.videoId);
+                    if (details == null) return;
+                    title = details.optString("title");
+                    author = details.optString("author");
+                }
                 if (title.isEmpty() && author.isEmpty()) return;
 
                 if (!title.isEmpty()) item.title = title;
@@ -458,5 +485,40 @@ public final class LocalQueuePatch {
                 }
             }
         });
+    }
+
+    @Nullable
+    private static JSONObject fetchOEmbed(String videoId) throws IOException, JSONException {
+        String watchUrl = URLEncoder.encode("https://www.youtube.com/watch?v=" + videoId, "UTF-8");
+        HttpURLConnection connection = Requester.openConnection(
+                "https://www.youtube.com/oembed?format=json&url=" + watchUrl);
+        connection.setConnectTimeout(CONNECTION_TIMEOUT_MILLISECONDS);
+        connection.setReadTimeout(CONNECTION_TIMEOUT_MILLISECONDS);
+        if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
+            Logger.printDebug(() -> "oEmbed request failed for: " + videoId);
+            connection.disconnect();
+            return null;
+        }
+        return Requester.parseJSONObjectAndDisconnect(connection);
+    }
+
+    @Nullable
+    private static JSONObject fetchPlayerDetails(String videoId) throws IOException, JSONException {
+        byte[] requestBody = ChannelIdRoutes.createBody(videoId);
+        HttpURLConnection connection = ChannelIdRoutes.getConnection(ChannelIdRoutes.GET_TITLE);
+        connection.setFixedLengthStreamingMode(requestBody.length);
+        try (OutputStream output = connection.getOutputStream()) {
+            output.write(requestBody);
+        }
+        if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
+            Logger.printDebug(() -> "Player request failed for: " + videoId);
+            connection.disconnect();
+            return null;
+        }
+        JSONObject videoDetails = Requester.parseJSONObjectAndDisconnect(connection).optJSONObject("videoDetails");
+        if (videoDetails == null) {
+            Logger.printDebug(() -> "Player response has no video details for: " + videoId);
+        }
+        return videoDetails;
     }
 }

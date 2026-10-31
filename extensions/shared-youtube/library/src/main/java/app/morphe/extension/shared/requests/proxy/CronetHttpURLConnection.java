@@ -83,7 +83,7 @@ public final class CronetHttpURLConnection extends DelegatingHttpURLConnection {
         // expose the boundary between connecting and reading response headers, so a finite total
         // deadline is only equivalent to HttpURLConnection when both phases are bounded.
         if (connectTimeout == 0 || readTimeout == 0) {
-            return RequestDeadline.none();
+            return RequestDeadline.NONE;
         }
 
         RequestDeadline deadline = connectDeadline;
@@ -109,7 +109,7 @@ public final class CronetHttpURLConnection extends DelegatingHttpURLConnection {
             return operation.execute();
         }
 
-        long remainingNanos = deadline.remainingNanos();
+        long remainingNanos = deadline.timeoutNanos - (System.nanoTime() - deadline.startNanos);
         if (remainingNanos <= 0) {
             disconnectAfterTimeout();
             throw createTimeoutException(null);
@@ -348,10 +348,6 @@ public final class CronetHttpURLConnection extends DelegatingHttpURLConnection {
             this.timeoutNanos = timeoutNanos;
         }
 
-        private static RequestDeadline none() {
-            return NONE;
-        }
-
         private static RequestDeadline afterMillis(long timeoutMillis) {
             return timeoutMillis <= 0
                     ? NONE
@@ -363,10 +359,6 @@ public final class CronetHttpURLConnection extends DelegatingHttpURLConnection {
 
         private boolean isFinite() {
             return timeoutNanos != 0;
-        }
-
-        private long remainingNanos() {
-            return timeoutNanos - (System.nanoTime() - startNanos);
         }
 
         private RequestDeadline extendByMillis(long timeoutMillis) {

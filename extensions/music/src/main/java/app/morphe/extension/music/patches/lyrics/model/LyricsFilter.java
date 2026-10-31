@@ -21,29 +21,22 @@ import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 
 /**
- * Drops the lines a lyrics lookup should not show: the credit block a provider pastes at the
- * end, and whatever {@link LyricsFilterDefaults#LYRICS_TEXT_FILTER} names.
- *
- * <p>Every method is static and holds no state beyond the variant cache, so filtering the
- * same lyrics twice costs nothing beyond re-running the rules. Metadata itself is cleaned
- * separately by {@link MetadataCleaner}.
+ * Drops provider credit blocks and lines matching {@link LyricsFilterDefaults#LYRICS_TEXT_FILTER}.
+ * All methods are static and stateless beyond a variant cache; {@link MetadataCleaner} handles metadata.
  */
 public final class LyricsFilter {
 
-    private LyricsFilter() {
-    }
-
     private static final int MAX_ARTIST_SONG_LINE_LENGTH = 80;
-
     private static final Pattern ARTIST_SONG_PATTERN =
             Pattern.compile("^[^\\-]+\\s*-\\s*[^\\-]+$");
-
     private static final int CREDIT_LINE_GAP_TOLERANCE = 3;
-
     @Nullable
     private static volatile String cachedCreditMarkers;
     @Nullable
     private static volatile List<String> cachedCreditVariants;
+
+    private LyricsFilter() {
+    }
 
     public static Lyrics filterCreditLines(Lyrics lyrics, TrackInfo track) {
         if (lyrics == null || lyrics == Lyrics.NOT_FOUND || lyrics.isEmpty()) {
@@ -402,10 +395,9 @@ public final class LyricsFilter {
 
     /**
      * Applies {@link LyricsFilterDefaults#LYRICS_TEXT_FILTER} to the original lyrics text only.
-     * Translations and romanizations are not run through the filter, but when the filter
-     * drops a line they drop with it so a translation stays under the line it belongs to.
-     * A line the filter does not fire on keeps its provider text rather than a normalized
-     * copy, so fullwidth punctuation is not folded to ASCII.
+     * Translations and romanizations are not filtered themselves, but drop with a filtered line so
+     * a translation stays under the line it belongs to. Unfiltered lines keep their provider text,
+     * so fullwidth punctuation is not folded to ASCII.
      */
     public static Lyrics filterLyricsText(Lyrics lyrics) {
         if (lyrics == null || lyrics == Lyrics.NOT_FOUND) {

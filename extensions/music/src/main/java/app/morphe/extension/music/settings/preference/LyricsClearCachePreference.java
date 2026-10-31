@@ -9,7 +9,6 @@ package app.morphe.extension.music.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.preference.Preference;
 import android.util.AttributeSet;
@@ -20,6 +19,7 @@ import java.util.Locale;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.ui.CustomDialog;
 
 /**
  * The stored lyrics are in the app's own files, so a cache clear no longer reclaims them and this
@@ -55,6 +55,17 @@ public class LyricsClearCachePreference extends Preference {
         // The tap is the whole feature and the row is declared non-selectable, so this is what
         // lets it through.
         setSelectable(true);
+        refreshSummary();
+    }
+
+    /** The size is measured off the main thread; the settings page reopens often enough that
+     * a stale summary never shows for long. */
+    private void refreshSummary() {
+        Utils.runOnBackgroundThread(() -> {
+            final String size = megabytes(LyricsCache.size());
+            Utils.runOnMainThread(() -> setSummary(str(
+                    "morphe_music_lyrics_clear_cache_summary", size)));
+        });
     }
 
     @Override
@@ -62,24 +73,36 @@ public class LyricsClearCachePreference extends Preference {
         if (!isEnabled()) {
             return;
         }
-        try {
-            new AlertDialog.Builder(getContext())
-                    .setTitle(str("morphe_music_lyrics_clear_cache_title"))
-                    .setMessage(str("morphe_music_lyrics_clear_cache_summary"))
-                    .setPositiveButton(android.R.string.ok, (d, w) -> clear())
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .show();
-        } catch (WindowManager.BadTokenException ex) {
-            Logger.printException(() -> "Could not show the clear cache dialog", ex);
-        }
+        // Thousands of files can be stored, so the size is measured off the main thread.
+        Utils.runOnBackgroundThread(() -> {
+            final String size = megabytes(LyricsCache.size());
+            Utils.runOnMainThread(() -> {
+                try {
+                    CustomDialog.create(getContext(),
+                            str("morphe_music_lyrics_clear_cache_title"),
+                            str("morphe_music_lyrics_clear_cache_summary", size),
+                            null,
+                            null,
+                            LyricsClearCachePreference.this::clear,
+                            () -> { },
+                            null,
+                            null,
+                            true).first.show();
+                } catch (WindowManager.BadTokenException ex) {
+                    Logger.printException(() -> "Could not show the clear cache dialog", ex);
+                }
+            });
+        });
     }
 
     /** Thousands of files can be stored, so they are deleted off the main thread. */
-    private static void clear() {
+    private void clear() {
         Utils.runOnBackgroundThread(() -> {
             final String freed = megabytes(LyricsCache.clear());
-            Utils.runOnMainThread(() -> Utils.showToastShort(
-                    str("morphe_music_lyrics_clear_cache_done", freed)));
+            Utils.runOnMainThread(() -> {
+                Utils.showToastShort(str("morphe_music_lyrics_clear_cache_done", freed));
+                refreshSummary();
+            });
         });
     }
 

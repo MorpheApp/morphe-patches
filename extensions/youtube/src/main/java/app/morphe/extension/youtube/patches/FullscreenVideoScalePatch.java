@@ -29,7 +29,6 @@ import app.morphe.extension.youtube.patches.VideoFormat.FormatInterface;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
-import kotlin.Unit;
 
 /**
  * Maps the playing video onto the full display with a compositor transform.
@@ -91,7 +90,6 @@ public class FullscreenVideoScalePatch {
     static {
         PlayerType.getOnChange().addObserver((PlayerType type) -> {
             applyScale();
-            return Unit.INSTANCE;
         });
     }
 
@@ -159,6 +157,7 @@ public class FullscreenVideoScalePatch {
     }
 
     public static void applyScale() {
+        CaptionViewportPatch.onPresentationChanged();
         Utils.runOnMainThread(FullscreenVideoScalePatch::applyScaleOnMainThread);
     }
 
@@ -272,7 +271,10 @@ public class FullscreenVideoScalePatch {
     }
 
     private static float getVideoAspectRatio(View view, int viewW, int viewH) {
-        View child = getVideoView(view);
+        // The video view is sized to the video when the renderer does not letterbox the video itself.
+        View child = view instanceof PlayerViewInterface player
+                ? player.patch_getVideoView()
+                : null;
         if (child != null && child != view && child.getWidth() > 8 && child.getHeight() > 8) {
             float childAR = child.getWidth() / (float) child.getHeight();
             float parentAR = viewW / (float) viewH;
@@ -521,16 +523,6 @@ public class FullscreenVideoScalePatch {
             }
         }
         return null;
-    }
-
-    /**
-     * The video view is sized to the video when the renderer does not letterbox the video itself.
-     */
-    @Nullable
-    private static View getVideoView(View playerView) {
-        return playerView instanceof PlayerViewInterface player
-                ? player.patch_getVideoView()
-                : null;
     }
 
     private static final class SavedClipState {

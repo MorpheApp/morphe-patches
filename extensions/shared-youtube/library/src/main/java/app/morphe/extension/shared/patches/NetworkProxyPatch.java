@@ -191,7 +191,10 @@ public final class NetworkProxyPatch {
                         InetSocketAddress.createUnresolved(config.host, config.port)
                 ))
         );
-        setProxyAuthorizationHeader(connection);
+        String proxyAuthorization = getProxyAuthorizationHeader();
+        if (proxyAuthorization != null) {
+            connection.setRequestProperty(PROXY_AUTHORIZATION_HEADER, proxyAuthorization);
+        }
 
         if (!config.allowDirectFallback) {
             return connection;
@@ -236,13 +239,6 @@ public final class NetworkProxyPatch {
                 PROXY_AUTHORIZATION_HEADER,
                 proxyAuthorization
         ));
-    }
-
-    private static void setProxyAuthorizationHeader(HttpURLConnection connection) {
-        String proxyAuthorization = getProxyAuthorizationHeader();
-        if (proxyAuthorization != null) {
-            connection.setRequestProperty(PROXY_AUTHORIZATION_HEADER, proxyAuthorization);
-        }
     }
 
     private static String getProxyAuthorizationHeader() {

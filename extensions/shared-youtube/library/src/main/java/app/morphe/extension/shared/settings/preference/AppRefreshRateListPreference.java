@@ -60,4 +60,9 @@ public class AppRefreshRateListPreference extends CustomDialogListPreference {
         setEntries(entries.toArray(new CharSequence[0]));
         setEntryValues(values.toArray(new CharSequence[0]));
     }
+
+    @Override
+    public boolean tracksNewEntries() {
+        return false; // Entries depend on the refresh rates of the device.
+    }
 }

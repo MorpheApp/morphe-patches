@@ -67,4 +67,28 @@ public class PreferredCaptionRoutingTest {
         Track hebrew = new Track("iw", "ta.en.iw");
         assertSame(hebrew, find(List.of(hebrew), "he"));
     }
+    @Test public void chineseRegionRulesDoNotRejectOtherLanguages() {
+        Track english = new Track("en-TW", "ta.ar.en-TW");
+        Track german = new Track("de-CN", "ta.ar.de-CN");
+        assertSame(english, find(List.of(english), "en-CN"));
+        assertSame(german, find(List.of(german), "de-HK"));
+    }
+
+    @Test public void explicitChineseScriptTakesPriorityOverRegion() {
+        Track simplified = new Track("zh-Hans-TW", "ta.en.zh-Hans-TW");
+        Track traditional = new Track("zh-Hant-CN", "ta.en.zh-Hant-CN");
+        assertSame(simplified, find(List.of(simplified), "zh-CN"));
+        assertSame(traditional, find(List.of(traditional), "zh-TW"));
+        assertNull(find(List.of(simplified), "zh-Hant"));
+        assertNull(find(List.of(traditional), "zh-Hans"));
+    }
+
+    @Test public void legacyAliasesPreserveExactRegionalSelection() {
+        Track generic = new Track("fil", "ta.en.fil");
+        Track regional = new Track("tl-PH", "ta.en.tl-PH");
+        Track norwegian = new Track("nb", "ta.en.nb");
+        assertSame(regional, find(List.of(generic, regional), "fil-PH"));
+        assertSame(norwegian, find(List.of(norwegian), "no"));
+    }
+
 }

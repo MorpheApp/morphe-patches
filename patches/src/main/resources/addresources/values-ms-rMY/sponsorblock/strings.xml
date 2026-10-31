@@ -17,6 +17,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_appearance_category_title">Penampilan</string>
+  <string name="morphe_sb_square_layout_summary">Menggunakan penjuru segi empat untuk butang dan kawalan SponsorBlock</string>
   <string name="morphe_sb_duration_1s">1 saat</string>
   <string name="morphe_sb_duration_2s">2 saat</string>
   <string name="morphe_sb_duration_3s">3 saat</string>
@@ -36,4 +37,5 @@ Second \"item\" text"</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
   <!-- Shown in the settings preferences, and translations can be any text length. -->
+  <string name="morphe_sb_stats_loading">Memuatkan…</string>
 </resources>

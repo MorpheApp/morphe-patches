@@ -10,12 +10,12 @@ package app.morphe.extension.music.patches.lyrics.ui;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.model.Word;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.Word;
 
 public final class SectionDotsMotion {
 
@@ -23,34 +23,12 @@ public final class SectionDotsMotion {
 
     /** Below this a silence is breathing room, not a break. */
     public static final long MIN_GAP_MS = 3000L;
-
+    public static final State IDLE = new State(1f, false, 0f, new float[DOT_COUNT], 0f);
     private static final long INFERRED_FLOOR_MS = 1200L;
     private static final long INFERRED_MS_PER_CHAR = 90L;
     /** Caps the guess so a long line cannot reach into the next one. */
     private static final int INFERRED_MAX_CHARS = 40;
     private static final long INFERRED_CEILING_MS = 5000L;
-
-    /**
-     * A silence long enough to play the dots, anchored on the line that follows it.
-     *
-     * @param tagLineIndex The line the motion plays on, which is where its label would sit.
-     * @param gapStartMs   Where the previous line stops, or 0 for a silence before the first line.
-     */
-    public record Gap(int tagLineIndex, long gapStartMs, long gapEndMs) {
-    }
-
-    /**
-     * @param pillAlpha  Opacity of the label: 1 outside the gap, 0 while the dots are up.
-     * @param groupAlpha Opacity of the dot row.
-     * @param dotAlpha   Per dot, lighting up and going out in turn.
-     * @param expand     How far a line without a label opens up for the dots, 0 to 1.
-     */
-    public record State(float pillAlpha, boolean dotsVisible, float groupAlpha, float[] dotAlpha,
-                        float expand) {
-    }
-
-    public static final State IDLE = new State(1f, false, 0f, new float[DOT_COUNT], 0f);
-
     /** Reference cycle head at full size, scaled down for shorter gaps. */
     private static final float ENTER_MS = 3000f;
     private static final float DIP_MS = 3000f;
@@ -203,5 +181,24 @@ public final class SectionDotsMotion {
     private static float smooth(float v) {
         final float x = clamp(v);
         return x * x * (3f - 2f * x);
+    }
+
+    /**
+     * A silence long enough to play the dots, anchored on the line that follows it.
+     *
+     * @param tagLineIndex The line the motion plays on, which is where its label would sit.
+     * @param gapStartMs   Where the previous line stops, or 0 for a silence before the first line.
+     */
+    public record Gap(int tagLineIndex, long gapStartMs, long gapEndMs) {
+    }
+
+    /**
+     * @param pillAlpha  Opacity of the label: 1 outside the gap, 0 while the dots are up.
+     * @param groupAlpha Opacity of the dot row.
+     * @param dotAlpha   Per dot, lighting up and going out in turn.
+     * @param expand     How far a line without a label opens up for the dots, 0 to 1.
+     */
+    public record State(float pillAlpha, boolean dotsVisible, float groupAlpha, float[] dotAlpha,
+                        float expand) {
     }
 }

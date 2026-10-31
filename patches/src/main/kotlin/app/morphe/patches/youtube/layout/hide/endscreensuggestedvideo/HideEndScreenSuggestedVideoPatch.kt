@@ -10,10 +10,8 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideEndScreenSuggestedVideoPatch;"
@@ -58,7 +56,7 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
             )
         ).let {
             it.method.apply {
-                val autoNavField = it.instructionMatches.first().instruction.getReference<FieldReference>()!!
+                val autoNavField = it.instructionMatches.first().fieldReference
 
                 addInstructionsWithLabels(
                     0,

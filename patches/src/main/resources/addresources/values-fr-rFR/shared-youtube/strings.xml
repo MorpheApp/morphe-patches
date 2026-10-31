@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Animation de démarrage</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Désactivé</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Coloré</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monochrome</string>
+  <string name="morphe_splash_screen_style_title">Animation de démarrage</string>
+  <string name="morphe_splash_screen_style_entry_1">Désactivé</string>
+  <string name="morphe_splash_screen_style_entry_2">Coloré</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Coloré</string>
+  <string name="morphe_splash_screen_style_entry_4">Monochrome</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Mettre en évidence les nouveaux paramètres</string>
+  <string name="morphe_settings_new_indicator_days_summary">Nombre de jours pendant lesquels un point est affiché à côté des paramètres et options ajoutés par une mise à jour</string>
+  <string name="morphe_settings_new_indicator_days_off">Désactivée</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Redémarrez pour terminer la configuration</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Masque les boutons \'Précédent\' et \'Suivant\' dans la notification multimédia, sur l\'écran de verrouillage et les commandes du casque</string>
   <string name="morphe_disable_notification_media_seekbar_title">Désactiver la barre de progression</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Empêche le déplacement de la barre de progression sur l\'écran de verrouillage et le panneau de notifications</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Naviguer avec les boutons \'Précédent\' &amp; \'Suivant\'</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Change les commandes des notifications multimédias, de l\'écran de verrouillage et du casque pour avancer ou reculer dans la vidéo au lieu de passer d\'une vidéo à l’autre</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Durée du retour en arrière</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Secondes de retour en arrière avec le bouton \'Précédent\'</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Durée de l\'avance rapide</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Secondes d\'avance rapide avec le bouton \'Suivant\'</string>
+  <string name="morphe_seek_notification_media_length_invalid">La durée du saut doit être comprise entre 1 et %s secondes. Utilisation de la valeur par défaut</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Désactiver le protocole QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

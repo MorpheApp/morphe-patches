@@ -32,11 +32,74 @@ import app.morphe.extension.shared.Logger;
 
 public final class OpenAIClient {
 
+    /**
+     * The prompt template sent to the AI endpoint. One template covers both tasks;
+     * {@link #renderPrompt} fills in its variables:
+     * <ul>
+     *   <li>{@code {task}} - "translation" or "romanization"</li>
+     *   <li>{@code {language}} - the target language</li>
+     *   <li>{@code {title}}, {@code {artist}} - the song</li>
+     *   <li>{@code {count}} - the number of lines</li>
+     *   <li>{@code {lines}} - the lyric lines, one per line</li>
+     * </ul>
+     * Unknown variables are left as typed.
+     */
+    public static final String DEFAULT_PROMPT = """
+            You are a professional lyrics {task} engine. Perform {task} on every line below for {language}, keeping the original meaning, tone and punctuation.
+            Song: {title} by {artist}
+            
+            Output format: Number every result on its own line, like:
+            1. first result
+            2. second result
+            
+            CRITICAL RULES:
+            - Output exactly {count} numbered lines (same as input count)
+            - Number format: "N. text" (number, period, space, text)
+            - Do NOT include the original lines in your output
+            - Do NOT use "Line N:" format
+            - Follow the standard {language} conventions for {task}; no annotations, notes or tone marks
+            - If a line already needs no {task}, output one "SKIP" for it
+            - Output ONLY the {task}. No reasoning, no explanations, no step-by-step thinking.
+            
+            {lines}""";
+    /**
+     * The prompt template for the section task. Where {@link #DEFAULT_PROMPT} rewrites each line,
+     * this one labels it: only the line opening a section is named, every other line is skipped,
+     * so the returned list maps onto {@code LyricsLine.songPart()} without any post-processing.
+     */
+    public static final String SECTION_PROMPT = """
+            You are a music structure analyst. Analyze the lyrics below and label the song structure.
+            Song: {title} by {artist}
+            
+            For every line, output the section that line opens. Only the FIRST line of a section carries its name; every other line that continues the same section is output as "SKIP".
+            
+            Use these exact section names:
+            Intro, Verse, Pre-Chorus, Chorus, Hook, Refrain, Bridge, Instrumental, Transition, False-Chorus, Outro, Reprise
+            
+            CRITICAL RULES:
+            - Output exactly {count} numbered lines (same as input count)
+            - Number format: "N. text" (number, period, space, text)
+            - First line of a section: its name. All other lines: "SKIP"
+            - Repeated sections are numbered in order: Verse 1, Verse 2, Chorus 1, Chorus 2
+            - Pick the most specific name from the list above
+            - Output ONLY the labels. No reasoning, no explanations.
+            
+            {lines}""";
     private static final int CONNECT_TIMEOUT_MS = 10_000;
     private static final int READ_TIMEOUT_MS = 45_000;
     private static final int MAX_CHARS = 3000;
-
     private static final String MODELS_PATH_SUFFIX = "/models";
+    private static final String CHAT_PATH = "/chat/completions";
+    private static final String COMPLETIONS_PATH = "/completions";
+    /** "/v1", "/v1beta/openai", "/compatible-mode/v1" and the like. */
+    private static final Pattern VERSION_SEGMENT =
+            Pattern.compile("(?:/[^/]+)*/v\\d+(?:[a-z]+)?(?:/[^/]+)*");
+    private static final Pattern NUMBERED_LINE_PATTERN =
+            Pattern.compile("^(?:Line\\s+)?(\\d{1,4})[.)\\]:\\-]\\s*(.*)$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern PROMPT_VARIABLE = Pattern.compile("\\{(\\w+)\\}");
+
+    private OpenAIClient() {
+    }
 
     public static boolean validateConfig(String baseUrl, String apiToken, String model) {
         if (baseUrl == null || baseUrl.trim().isEmpty()
@@ -50,10 +113,10 @@ public final class OpenAIClient {
             body.put("messages", new JSONArray().put(
                     new JSONObject().put("role", "user").put("content", "hi")));
             body.put("max_tokens", 1);
-            // Asked what the feature will ask it, so a body the feature needs is one the endpoint accepts.
+            // Validate with the same body the feature will send, so what works here works there.
             applyExtraBody(body);
 
-            conn = (HttpURLConnection) new URL(baseUrl.trim()).openConnection();
+            conn = (HttpURLConnection) new URL(chatUrl(baseUrl)).openConnection();
             conn.setRequestMethod("POST");
             conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
             conn.setReadTimeout(READ_TIMEOUT_MS);
@@ -61,6 +124,8 @@ public final class OpenAIClient {
             if (apiToken != null && !apiToken.isEmpty()) {
                 conn.setRequestProperty("Authorization", "Bearer " + apiToken);
             }
+            // Applied last, so user headers override defaults.
+            applyExtraHeaders(conn);
             conn.setDoOutput(true);
 
             byte[] payload = body.toString().getBytes(StandardCharsets.UTF_8);
@@ -81,9 +146,47 @@ public final class OpenAIClient {
     }
 
     public static String[] fetchReasoningEfforts(String baseUrl, String apiToken, String model) {
-        final String url = modelsUrl(baseUrl);
-        if (url == null) {
+        final String models = listModels(baseUrl, apiToken);
+        if (models == null) {
             return new String[0];
+        }
+        try {
+            return parseSupportedEfforts(models, model);
+        } catch (JSONException e) {
+            Logger.printDebug(() -> "Could not read supported reasoning efforts", e);
+            return new String[0];
+        }
+    }
+
+    /** The ids of the models the endpoint lists, empty when it lists none. */
+    public static List<String> fetchModels(String baseUrl, @Nullable String apiToken) {
+        List<String> ids = new ArrayList<>();
+        final String models = listModels(baseUrl, apiToken);
+        if (models == null) {
+            return ids;
+        }
+        try {
+            JSONArray data = new JSONObject(models).optJSONArray("data");
+            if (data != null) {
+                for (int i = 0; i < data.length(); i++) {
+                    String id = data.getJSONObject(i).optString("id", "");
+                    if (!id.isEmpty()) {
+                        ids.add(id);
+                    }
+                }
+            }
+        } catch (JSONException e) {
+            Logger.printDebug(() -> "Could not read the model list", e);
+        }
+        return ids;
+    }
+
+    /** The raw response of the endpoint's model list, or null if it has none. */
+    @Nullable
+    private static String listModels(String baseUrl, @Nullable String apiToken) {
+        final String url = modelsUrl(chatUrl(baseUrl));
+        if (url == null) {
+            return null;
         }
         try {
             HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
@@ -94,47 +197,65 @@ public final class OpenAIClient {
                 if (apiToken != null && !apiToken.isEmpty()) {
                     conn.setRequestProperty("Authorization", "Bearer " + apiToken);
                 }
+                applyExtraHeaders(conn);
                 if (conn.getResponseCode() != 200) {
-                    return new String[0];
+                    return null;
                 }
-                return parseSupportedEfforts(readResponse(conn), model);
+                return readResponse(conn);
             } finally {
                 conn.disconnect();
             }
         } catch (Exception e) {
-            Logger.printDebug(() -> "Could not read supported reasoning efforts", e);
-            return new String[0];
+            Logger.printDebug(() -> "Could not list the models of " + url, e);
+            return null;
         }
     }
 
-    private static String modelsUrl(String baseUrl) {
+    /**
+     * The address to call, whether the user gave the endpoint or the service root. A path ending in
+     * a version segment gets the rest of the endpoint appended; any other path is left alone.
+     */
+    static String chatUrl(@Nullable String baseUrl) {
         if (baseUrl == null) {
             return null;
         }
         String base = baseUrl.trim();
+        if (base.isEmpty()) {
+            return null;
+        }
         while (base.endsWith("/")) {
             base = base.substring(0, base.length() - 1);
+        }
+        if (base.endsWith(CHAT_PATH) || base.endsWith(COMPLETIONS_PATH)) {
+            return base;
         }
         final int scheme = base.indexOf("://");
         final int slash = base.indexOf('/', scheme + 3);
         if (slash < 0) {
+            return base + CHAT_PATH;
+        }
+        final String path = base.substring(slash);
+        if (path.isEmpty() || VERSION_SEGMENT.matcher(path).matches()) {
+            return base + CHAT_PATH;
+        }
+        return base;
+    }
+
+    private static String modelsUrl(@Nullable String chatUrl) {
+        if (chatUrl == null) {
             return null;
         }
-        final String host = base.substring(0, slash);
-        String path = base.substring(slash);
-        for (String chatPath : new String[]{"/chat/completions", "/completions"}) {
-            if (path.endsWith(chatPath)) {
-                path = path.substring(0, path.length() - chatPath.length());
+        String path = chatUrl;
+        for (String suffix : new String[]{CHAT_PATH, COMPLETIONS_PATH}) {
+            if (path.endsWith(suffix)) {
+                path = path.substring(0, path.length() - suffix.length());
                 break;
             }
         }
         while (path.endsWith("/")) {
             path = path.substring(0, path.length() - 1);
         }
-        if (path.endsWith(MODELS_PATH_SUFFIX)) {
-            return base;
-        }
-        return host + path + MODELS_PATH_SUFFIX;
+        return path.endsWith(MODELS_PATH_SUFFIX) ? path : path + MODELS_PATH_SUFFIX;
     }
 
     private static String[] parseSupportedEfforts(String json, String model) throws JSONException {
@@ -234,6 +355,59 @@ public final class OpenAIClient {
     }
 
     /**
+     * A header list has the same shape as a body, but a value has to fit on one line and a name
+     * cannot be blank, so those are refused here rather than left to fail when a request is made.
+     */
+    public static boolean isValidExtraHeaders(@Nullable String headers) {
+        if (headers == null) return true;
+        final String trimmed = headers.trim();
+        if (trimmed.isEmpty()) return true;
+        try {
+            final JSONObject parsed = new JSONObject(trimmed);
+            final Iterator<String> keys = parsed.keys();
+            while (keys.hasNext()) {
+                final String key = keys.next();
+                final Object value = parsed.get(key);
+                if (key.trim().isEmpty() || !(value instanceof String text)
+                        || text.indexOf('\r') >= 0 || text.indexOf('\n') >= 0) {
+                    return false;
+                }
+            }
+            return true;
+        } catch (JSONException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Adds the headers the endpoint asks for. An empty value removes a header we would otherwise
+     * send, so an endpoint that wants its own key instead of a bearer token can drop ours.
+     */
+    private static void applyExtraHeaders(HttpURLConnection conn) {
+        final String extra = Settings.LYRICS_AI_EXTRA_HEADERS.get();
+        if (extra == null) return;
+        final String trimmed = extra.trim();
+        if (trimmed.isEmpty()) return;
+
+        try {
+            final JSONObject overlay = new JSONObject(trimmed);
+            final Iterator<String> keys = overlay.keys();
+            while (keys.hasNext()) {
+                final String key = keys.next();
+                final String value = overlay.optString(key, "");
+                if (value.isEmpty()) {
+                    conn.setRequestProperty(key, null);
+                } else {
+                    conn.setRequestProperty(key, value);
+                }
+            }
+        } catch (JSONException e) {
+            // A header list that will not parse is ignored; it must not take the feature down.
+            Logger.printDebug(() -> "The stored extra request headers are not valid JSON");
+        }
+    }
+
+    /**
      * Two keys stay ours: the model, which has a setting the endpoint was validated against, and the
      * messages, whose length decides where the answer is cut into lines.
      */
@@ -253,12 +427,9 @@ public final class OpenAIClient {
                 body.put(key, overlay.get(key));
             }
         } catch (JSONException e) {
-            // A body that will not parse is left out rather than allowed to take the feature down with it.
+            // An invalid stored body is ignored; it must not take the feature down.
             Logger.printDebug(() -> "The stored extra request body is not valid JSON");
         }
-    }
-
-    private OpenAIClient() {
     }
 
     @Nullable
@@ -278,12 +449,12 @@ public final class OpenAIClient {
                     .put("content", userPrompt));
             body.put("messages", messages);
 
-            // Laid over last, so what the user wrote wins even where it disagrees with the effort.
+            // Applied last, so user body wins even where it disagrees with the effort.
             applyExtraBody(body);
 
             byte[] payload = body.toString().getBytes(StandardCharsets.UTF_8);
 
-            URL url = new URL(baseUrl);
+            URL url = new URL(chatUrl(baseUrl));
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             try {
                 conn.setRequestMethod("POST");
@@ -293,6 +464,7 @@ public final class OpenAIClient {
                 if (apiToken != null && !apiToken.isEmpty()) {
                     conn.setRequestProperty("Authorization", "Bearer " + apiToken);
                 }
+                applyExtraHeaders(conn);
                 conn.setDoOutput(true);
 
                 try (OutputStream os = conn.getOutputStream()) {
@@ -315,7 +487,7 @@ public final class OpenAIClient {
         }
     }
 
-    private static String readResponse(HttpURLConnection conn) throws IOException {
+    static String readResponse(HttpURLConnection conn) throws IOException {
         StringBuilder sb = new StringBuilder(512);
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
@@ -401,8 +573,82 @@ public final class OpenAIClient {
         return sb;
     }
 
-    private static String stripLineNumber(String line) {
-        return line.replaceFirst("^\\d+\\.\\s*", "");
+    public static boolean isSkipToken(@Nullable String s) {
+        if (s == null) return true;
+        String t = s.trim();
+        return t.isEmpty() || t.equalsIgnoreCase("SKIP") || t.equalsIgnoreCase("[SKIP]")
+                || t.equalsIgnoreCase("<SKIP>") || t.equalsIgnoreCase("(SKIP)")
+                || t.equalsIgnoreCase("SKIP.");
+    }
+
+    @Nullable
+    private static List<String> parseNumberedLines(String text, int expectedCount) {
+        if (text == null || expectedCount <= 0) return null;
+        String[] raw = text.split("\n", -1);
+        int end = raw.length;
+        while (end > 0 && raw[end - 1].trim().isEmpty()) {
+            end--;
+        }
+        if (end == 0) return null;
+
+        String[] byIndex = new String[expectedCount];
+        int matchedNumberedCount = 0;
+        boolean anyIndexedNonEmpty = false;
+
+        for (int i = 0; i < end; i++) {
+            String line = raw[i].trim();
+            if (line.isEmpty()) continue;
+            Matcher m = NUMBERED_LINE_PATTERN.matcher(line);
+            if (m.matches()) {
+                int idx = Integer.parseInt(m.group(1)) - 1;
+                if (idx >= 0 && idx < expectedCount) {
+                    matchedNumberedCount++;
+                    String val = m.group(2).trim();
+                    if (isSkipToken(val)) {
+                        byIndex[idx] = "";
+                    } else {
+                        byIndex[idx] = val;
+                        if (!val.isEmpty()) {
+                            anyIndexedNonEmpty = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (matchedNumberedCount >= Math.max(1, expectedCount / 2)) {
+            if (!anyIndexedNonEmpty) {
+                return null;
+            }
+            List<String> indexedList = new ArrayList<>(expectedCount);
+            for (int i = 0; i < expectedCount; i++) {
+                indexedList.add(byIndex[i] != null ? byIndex[i] : "");
+            }
+            return indexedList;
+        }
+
+        List<String> list = new ArrayList<>(expectedCount);
+        boolean anyNonEmpty = false;
+        for (int i = 0; i < end && list.size() < expectedCount; i++) {
+            String line = raw[i].trim();
+            if (line.isEmpty()) continue;
+            line = line.replaceFirst("^\\d+[.)\\]:\\-]\\s*", "").trim();
+            if (isSkipToken(line)) {
+                line = "";
+            } else {
+                anyNonEmpty = true;
+            }
+            list.add(line);
+        }
+
+        if (!anyNonEmpty) {
+            return null;
+        }
+
+        while (list.size() < expectedCount) {
+            list.add("");
+        }
+        return list;
     }
 
     private static boolean isNoteOrEmptyLine(String text) {
@@ -413,112 +659,45 @@ public final class OpenAIClient {
     }
 
     @Nullable
-    static List<String> mapLines(String baseUrl, String apiToken, String model,
-                                 String prompt, List<String> sourceLines) {
+    public static List<String> mapLines(String baseUrl, String apiToken, String model,
+                                        String prompt, List<String> sourceLines) {
+        if (!fitsOneRequest(sourceLines)) {
+            return null;
+        }
+        return mapResponse(request(baseUrl, apiToken, model, prompt), sourceLines);
+    }
+
+    static boolean fitsOneRequest(List<String> sourceLines) {
         int totalChars = 0;
         for (String line : sourceLines) {
             totalChars += line.length() + 1;
         }
-        if (totalChars > MAX_CHARS) {
-            return null;
-        }
-        String response = request(baseUrl, apiToken, model, prompt);
+        return totalChars <= MAX_CHARS;
+    }
+
+    /** Lines up a numbered model response with the source lines, or null if it says nothing. */
+    @Nullable
+    static List<String> mapResponse(@Nullable String response, List<String> sourceLines) {
         if (response == null) {
             return null;
         }
-        String[] result = response.split("\n", -1);
-        int end = result.length;
-        while (end > 0 && result[end - 1].trim().isEmpty()) {
-            end--;
-        }
-        if (end == 0) {
-            return null;
-        }
-        boolean allSkip = true;
-        for (int i = 0; i < end; i++) {
-            result[i] = stripLineNumber(result[i]);
-            if (!result[i].trim().equalsIgnoreCase("SKIP")) {
-                allSkip = false;
-            }
-        }
-        if (allSkip) {
-            return null;
-        }
-        if (end > sourceLines.size() + 2 || end < sourceLines.size() - 2) {
+        List<String> parsed = parseNumberedLines(response, sourceLines.size());
+        if (parsed == null) {
             return null;
         }
         List<String> out = new ArrayList<>(sourceLines.size());
+        boolean anyValid = false;
         for (int i = 0; i < sourceLines.size(); i++) {
-            if (i < end) {
-                String trimmed = result[i].trim();
-                if (trimmed.equalsIgnoreCase("SKIP") || isNoteOrEmptyLine(sourceLines.get(i))) {
-                    out.add("");
-                } else {
-                    out.add(trimmed);
-                }
-            } else {
+            String trimmed = parsed.get(i).trim();
+            if (isSkipToken(trimmed) || isNoteOrEmptyLine(sourceLines.get(i))) {
                 out.add("");
+            } else {
+                out.add(trimmed);
+                anyValid = true;
             }
         }
-        return out;
+        return anyValid ? out : null;
     }
-
-    /**
-     * The prompt template sent to the AI endpoint. One template covers both tasks;
-     * {@link #renderPrompt} fills in its variables:
-     * <ul>
-     *   <li>{@code {task}} - "translation" or "romanization"</li>
-     *   <li>{@code {language}} - the target language</li>
-     *   <li>{@code {title}}, {@code {artist}} - the song</li>
-     *   <li>{@code {count}} - the number of lines</li>
-     *   <li>{@code {lines}} - the lyric lines, one per line</li>
-     * </ul>
-     * Unknown variables are left as typed.
-     */
-    public static final String DEFAULT_PROMPT = """
-            You are a professional lyrics {task} engine. Perform {task} on every line below for {language}, keeping the original meaning, tone and punctuation.
-            Song: {title} by {artist}
-            
-            Output format: Number every result on its own line, like:
-            1. first result
-            2. second result
-            
-            CRITICAL RULES:
-            - Output exactly {count} numbered lines (same as input count)
-            - Number format: "N. text" (number, period, space, text)
-            - Do NOT include the original lines in your output
-            - Do NOT use "Line N:" format
-            - Follow the standard {language} conventions for {task}; no annotations, notes or tone marks
-            - If a line already needs no {task}, output one "SKIP" for it
-            - Output ONLY the {task}. No reasoning, no explanations, no step-by-step thinking.
-            
-            {lines}""";
-
-    /**
-     * The prompt template for the section task. Where {@link #DEFAULT_PROMPT} rewrites each line,
-     * this one labels it: only the line opening a section is named, every other line is skipped,
-     * so the returned list maps onto {@code LyricsLine.songPart()} without any post-processing.
-     */
-    public static final String SECTION_PROMPT = """
-            You are a music structure analyst. Analyze the lyrics below and label the song structure.
-            Song: {title} by {artist}
-
-            For every line, output the section that line opens. Only the FIRST line of a section carries its name; every other line that continues the same section is output as "SKIP".
-
-            Use these exact section names:
-            Intro, Verse, Pre-Chorus, Chorus, Hook, Refrain, Bridge, Instrumental, Transition, False-Chorus, Outro, Reprise
-
-            CRITICAL RULES:
-            - Output exactly {count} numbered lines (same as input count)
-            - Number format: "N. text" (number, period, space, text)
-            - First line of a section: its name. All other lines: "SKIP"
-            - Repeated sections are numbered in order: Verse 1, Verse 2, Chorus 1, Chorus 2
-            - Pick the most specific name from the list above
-            - Output ONLY the labels. No reasoning, no explanations.
-
-            {lines}""";
-
-    private static final Pattern PROMPT_VARIABLE = Pattern.compile("\\{(\\w+)\\}");
 
     public static String renderPrompt(String template, String task, String language,
                                       String title, String artist, List<String> lines) {
@@ -526,8 +705,12 @@ public final class OpenAIClient {
             template = DEFAULT_PROMPT;
         }
         StringBuilder linesText = new StringBuilder();
-        for (String line : lines) {
-            linesText.append(Objects.requireNonNullElse(line, "")).append('\n');
+        for (int i = 0; i < lines.size(); i++) {
+            String line = Objects.requireNonNullElse(lines.get(i), "").trim();
+            if (!line.matches("^\\d+\\.\\s.*")) {
+                linesText.append(i + 1).append(". ");
+            }
+            linesText.append(line.isEmpty() ? "SKIP" : line).append('\n');
         }
         String count = String.valueOf(lines.size());
         Matcher matcher = PROMPT_VARIABLE.matcher(template);

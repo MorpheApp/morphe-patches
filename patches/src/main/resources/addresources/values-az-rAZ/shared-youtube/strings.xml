@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Başlanğıc animasiyası</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Qapalıdı</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Rəng</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Saya</string>
+  <string name="morphe_splash_screen_style_title">Başlanğıc animasiyası</string>
+  <string name="morphe_splash_screen_style_entry_1">Qapalıdı</string>
+  <string name="morphe_splash_screen_style_entry_2">Rəng</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Rəngi</string>
+  <string name="morphe_splash_screen_style_entry_4">Saya</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Saya</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Yeni tənzimləmələri vurğula</string>
+  <string name="morphe_settings_new_indicator_days_summary">Yeniləmə ilə əlavə edilən tənzimləmələr və seçimlər ilə yanaşı nöqtənin göstərildiyi günlərin sayı</string>
+  <string name="morphe_settings_new_indicator_days_off">Qapalı</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Tənzimləməni bitirmək üçün yenidən başlat</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Media bildirişlərində, kilid ekranında və qulaqlıq idarəetmələrində Əvvəlki və Növbəti düyməsini gizlədir</string>
   <string name="morphe_disable_notification_media_seekbar_title">Çevirmə cizgisin qapat</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Kilid ekranında və bildiriş panelində çevirmə cizgisinin sürüklənməsinə mane olur</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Əvvəlki &amp; Növbəti düymələri ilə çevirmə</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Media bildirişi, kilid ekranı və qulaqlıq idarəetməsini videoları dəyişmək əvəzinə çevirmək üçün dəyişir</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Geri çevirmə uzunluğu</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Əvvəlki düymə ilə geri çəkmək üçün saniyə</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Sürətli irəli çəkmə uzunluğu</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Növbəti düyməsi ilə cəld irəliyə çəkmək üçün saniyə</string>
+  <string name="morphe_seek_notification_media_length_invalid">Çevirmə müddəti 1 və %s saniyə arasında olmalıdır. Standartı istifadə edir</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolunu qeyri-aktiv et</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

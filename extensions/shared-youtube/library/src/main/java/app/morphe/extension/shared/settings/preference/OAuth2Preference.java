@@ -116,12 +116,6 @@ public abstract class OAuth2Preference extends Preference implements Preference.
         public void onActivityDestroyed(@NonNull Activity a) {}
     };
 
-    private void registerApplicationOnResumeCallback() {
-        ((Application) getContext().getApplicationContext()).registerActivityLifecycleCallbacks(
-                ACTIVITY_LIFECYCLE_CALLBACKS
-        );
-    }
-
     private void unregisterApplicationOnResumeCallback() {
         ((Application) getContext().getApplicationContext()).unregisterActivityLifecycleCallbacks(
                 ACTIVITY_LIFECYCLE_CALLBACKS
@@ -132,23 +126,15 @@ public abstract class OAuth2Preference extends Preference implements Preference.
     protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
         super.onAttachedToHierarchy(preferenceManager);
         updateUI();
-        addChangeListener();
+        Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(listener);
     }
 
     @Override
     protected void onPrepareForRemoval() {
         super.onPrepareForRemoval();
-        removeChangeListener();
+        Setting.preferences.preferences.unregisterOnSharedPreferenceChangeListener(listener);
         // Remove just in case the user never finished signing in.
         unregisterApplicationOnResumeCallback();
-    }
-
-    private void addChangeListener() {
-        Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(listener);
-    }
-
-    private void removeChangeListener() {
-        Setting.preferences.preferences.unregisterOnSharedPreferenceChangeListener(listener);
     }
 
     protected boolean isRefreshTokenSaved() {
@@ -371,7 +357,9 @@ public abstract class OAuth2Preference extends Preference implements Preference.
 
     private void openInBrowser(Context context, String userCode, String verificationUrl) {
         // Automatically fetch the auth token after the user returns.
-        registerApplicationOnResumeCallback();
+        ((Application) getContext().getApplicationContext()).registerActivityLifecycleCallbacks(
+                ACTIVITY_LIFECYCLE_CALLBACKS
+        );
         Utils.setClipboard(userCode);
         Intent baseIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(verificationUrl));
 

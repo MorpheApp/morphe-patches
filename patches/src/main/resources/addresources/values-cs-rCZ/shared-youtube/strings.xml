@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Animace při spuštění</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Vypnuto</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Barva</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monochromatický</string>
+  <string name="morphe_splash_screen_style_title">Animace při spuštění</string>
+  <string name="morphe_splash_screen_style_entry_1">Vypnuto</string>
+  <string name="morphe_splash_screen_style_entry_2">Barva</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Barevný</string>
+  <string name="morphe_splash_screen_style_entry_4">Monochrom</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochromatický</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Označit nová nastavení</string>
+  <string name="morphe_settings_new_indicator_days_summary">Počet dní, po které se vedle nastavení a možností přidaných aktualizací zobrazuje tečka</string>
+  <string name="morphe_settings_new_indicator_days_off">Vypnuto</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Restartovat pro dokončení nastavení</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Pro přihlášení stiskněte pokračovat níže"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Skrývá tlačítka Předchozí a Další v oznámení o médiích, na zamykací obrazovce a v ovládacích prvcích sluchátek.</string>
   <string name="morphe_disable_notification_media_seekbar_title">Zakázat posuvník</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Zabrání přetahování posuvníku na zamykací obrazovce a v panelu oznámení</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Hledání s předchozími a následujícími tlačítky</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Změna ovládání pro notifikaci médií, zamykací obrazovku a sluchátka pro hledání místo přepínání videí</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Délka rychlého posunu zpět</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Sekundy pro rychlý posun zpět pomocí tlačítka Předchozí</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Délka rychlého posunu vpřed</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Sekundy pro rychlý posun vpřed pomocí tlačítka Další</string>
+  <string name="morphe_seek_notification_media_length_invalid">Délka hledání musí být mezi 1 a %s sekundami. Používá se výchozí hodnota</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Vypnout protokol QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

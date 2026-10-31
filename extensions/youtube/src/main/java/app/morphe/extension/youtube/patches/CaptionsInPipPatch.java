@@ -24,7 +24,7 @@ public class CaptionsInPipPatch {
     }
 
     /**
-     * Injection point. Used by versions before 21.05 that also give overlays the player type.
+     * Injection point. Used by versions before 21.41 that also give overlays the player type.
      *
      * @return If the overlay must be shown, even though the player type hides it.
      */

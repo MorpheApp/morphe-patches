@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">起動時のアニメーション</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">無効</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">カラー</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">モノクロ</string>
+  <string name="morphe_splash_screen_style_title">起動時のアニメーション</string>
+  <string name="morphe_splash_screen_style_entry_1">無効</string>
+  <string name="morphe_splash_screen_style_entry_2">カラー</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe カラー</string>
+  <string name="morphe_splash_screen_style_entry_4">モノクロ</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe モノクローム</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">新しい設定を強調表示</string>
+  <string name="morphe_settings_new_indicator_days_summary">アップデートで追加された設定やオプションの横にドットが表示される日数</string>
+  <string name="morphe_settings_new_indicator_days_off">オフ</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">設定を完了するには再起動してください</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,13 +157,20 @@ YouTube Premium を利用している場合、この設定は必要ない場合�
   <string name="morphe_hide_notification_media_prev_next_summary">通知パネルとロック画面に表示されるプレーヤーの前の動画ボタンと次の動画ボタンを非表示にします。ヘッドホンからの操作によって前の動画 / 次の動画へ移動する機能も無効にします</string>
   <string name="morphe_disable_notification_media_seekbar_title">シークバーでのシーク操作を無効化</string>
   <string name="morphe_disable_notification_media_seekbar_summary">通知パネルとロック画面に表示されるプレーヤーのシークバーでのシーク操作を無効にします</string>
+  <string name="morphe_seek_notification_media_prev_next_title"><b>次</b> &amp; <b>前</b>ボタンでシーク</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">メディア通知、ロック画面、ヘッドフォンの操作を、動画切替ではなくシークに変更します</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">巻き戻し時間</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">前の動画ボタンでの巻き戻し秒数</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">早送り時間</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">次の動画ボタンでの早送り秒数</string>
+  <string name="morphe_seek_notification_media_length_invalid">シーク時間は1〜%s秒の間で指定してください。デフォルト値を使用します</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC プロトコルを無効化</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">オーディオ DRC を無効化</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">オリジナルの音声を常に使用</string>
-  <string name="morphe_force_original_audio_summary">常にオリジナルの音声トラック (言語) を再生します。オートダビングを含む吹き替えの音声トラックは再生されなくなります</string>
+  <string name="morphe_force_original_audio_summary">オリジナルの音声トラック (言語) を常に再生します。オートダビングを含む吹き替えの音声トラックは再生されなくなります</string>
   <!-- misc.audio.silence.skipSilencePatch -->
   <string name="morphe_skip_silence_title">無音の区間をスキップ</string>
   <string name="morphe_skip_silence_summary">動画内の無音の部分や会話などの間を自動的にスキップします</string>

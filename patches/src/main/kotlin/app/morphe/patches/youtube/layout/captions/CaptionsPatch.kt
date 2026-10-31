@@ -62,7 +62,11 @@ val captionsPatch = bytecodePatch(
         captionCookiesPatch,
         transcriptPatch,
         translatedCaptionPensPatch,
+        captionWindowMeasurePatch,
+        stableCaptionBlocksPatch,
+        captionViewportPatch,
         captionsInPipPatch,
+        captionsAfterSeekPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

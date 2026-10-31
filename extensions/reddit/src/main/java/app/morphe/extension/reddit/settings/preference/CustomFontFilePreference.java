@@ -106,7 +106,7 @@ public final class CustomFontFilePreference extends Preference {
 
         // Restart is only needed if custom font rendering is currently active.
         if (Settings.CUSTOM_FONT.get()) {
-            AbstractPreferenceFragment.showRestartDialog(context);
+            AbstractPreferenceFragment.setRestartNeeded();
         }
     }
 

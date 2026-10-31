@@ -19,6 +19,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.ConversionContext;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.NewElement;
+import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -104,6 +105,12 @@ public final class HidePlayerFlyoutMenuPatch {
     public static byte[] hideNativeBottomSheetHeader(byte[] bytes) {
         if (HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER || HIDE_PLAYER_FLYOUT_QUALITY_HEADER) {
             try {
+                // Every element is parsed here otherwise, on the main thread. The identifier of
+                // a header is also in the bytes of its element, see FeedVideoCardsPatch.getElementText().
+                if (!Utils.containsAny(FeedVideoCardsPatch.getElementText(bytes), PLAYER_FLYOUT_HEADER_IDENTIFIERS)) {
+                    return bytes;
+                }
+
                 var newElement = NewElement.parseFrom(bytes).toBuilder();
                 var identifier = newElement.getProperties().getIdentifierProperties().getIdentifier();
 

@@ -12,6 +12,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
@@ -39,8 +40,10 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -57,6 +60,19 @@ import app.morphe.extension.youtube.shared.PipDismissHelper;
 import app.morphe.extension.youtube.shared.PlayerType;
 
 public final class LocalQueueSheet {
+
+    @Nullable
+    private static WeakReference<LocalQueueSheet> current;
+
+    /**
+     * Closes the sheet without the slide animation, so it is not on screen when the player enters Picture-in-Picture.
+     */
+    public static void dismissImmediately() {
+        LocalQueueSheet sheet = current != null ? current.get() : null;
+        if (sheet != null && sheet.dialog.isShowing()) {
+            sheet.dialog.dismissImmediately();
+        }
+    }
 
     public static void show(Context context) {
         try {
@@ -162,7 +178,9 @@ public final class LocalQueueSheet {
         render();
 
         LocalQueuePatch.setListeners(changeListener, metadataListener);
+        current = new WeakReference<>(this);
         PipDismissHelper.dismissOnPip(dialog, () -> {
+            if (current != null && current.get() == this) current = null;
             LocalQueuePatch.clearListeners(changeListener, metadataListener);
             scrollView.setOnScrollChangeListener(null);
             drag = null;
@@ -203,7 +221,7 @@ public final class LocalQueueSheet {
 
         String nowPlayingId = VideoInformation.getVideoId();
         if (!PlayerType.getCurrent().isNoneOrHidden() && !nowPlayingId.isEmpty()) {
-            nowPlayingRow = createNowPlayingRow(nowPlayingId);
+            nowPlayingRow = buildRow(nowPlayingId, -1, null);
             list.addView(nowPlayingRow.root);
         }
 
@@ -212,7 +230,8 @@ public final class LocalQueueSheet {
         }
 
         for (int i = 0, size = items.size(); i < size; i++) {
-            Row row = createRow(items.get(i), i);
+            LocalQueuePatch.Item item = items.get(i);
+            Row row = buildRow(item.videoId, i, item);
             rows.add(row);
             list.addView(row.root);
         }
@@ -289,17 +308,10 @@ public final class LocalQueueSheet {
         }
     }
 
-    private Row createRow(LocalQueuePatch.Item item, int index) {
-        return buildRow(item.videoId, index, item);
-    }
-
-    private Row createNowPlayingRow(String videoId) {
-        return buildRow(videoId, -1, null);
-    }
-
+    @SuppressLint("ClickableViewAccessibility")
     private Row buildRow(String videoId, int index, @Nullable LocalQueuePatch.Item item) {
         final boolean nowPlaying = item == null;
-        final int rowColor = nowPlaying ? blend(backgroundColor, foregroundColor, 0.08f) : backgroundColor;
+        final int rowColor = nowPlaying ? blend(backgroundColor, foregroundColor) : backgroundColor;
 
         SwipeRevealRow root = new SwipeRevealRow(context);
         FrameLayout reveal = new FrameLayout(context);
@@ -459,6 +471,14 @@ public final class LocalQueueSheet {
             }
         }
 
+        // A video that starts playing was requested already as a row of the queue.
+        if (row == nowPlayingRow && (nowPlayingItem == null || !nowPlayingItem.videoId.equals(row.videoId))) {
+            nowPlayingItem = new LocalQueuePatch.Item(row.videoId,
+                    emptyToNull(VideoInformation.getVideoTitle()),
+                    emptyToNull(VideoInformation.getChannelName()));
+            LocalQueuePatch.fetchMetadataIfNeeded(nowPlayingItem);
+        }
+
         if (!requestedVideoIds.add(row.videoId)) return;
 
         if (row.thumbnail.getDrawable() == null) {
@@ -466,11 +486,6 @@ public final class LocalQueueSheet {
         }
         if (row.item != null) {
             LocalQueuePatch.fetchMetadataIfNeeded(row.item);
-        } else if (row == nowPlayingRow) {
-            nowPlayingItem = new LocalQueuePatch.Item(row.videoId,
-                    emptyToNull(VideoInformation.getVideoTitle()),
-                    emptyToNull(VideoInformation.getChannelName()));
-            LocalQueuePatch.fetchMetadataIfNeeded(nowPlayingItem);
         }
     }
 
@@ -590,7 +605,7 @@ public final class LocalQueueSheet {
         dragged.root.setTranslationY(finger);
 
         final float center = session.tops[origin] + finger + session.heights[origin] / 2f;
-        float[] others = new float[Math.max(0, last)];
+        float[] others = new float[last];
         int n = 0;
         for (int j = 0; j <= last; j++) {
             if (j != origin) {
@@ -723,6 +738,12 @@ public final class LocalQueueSheet {
         }
 
         @Override
+        public boolean performClick() {
+            return super.performClick();
+        }
+
+        @SuppressLint("ClickableViewAccessibility")
+        @Override
         public boolean onTouchEvent(MotionEvent event) {
             if (!swiping) return super.onTouchEvent(event);
 
@@ -730,12 +751,14 @@ public final class LocalQueueSheet {
             switch (event.getActionMasked()) {
                 case MotionEvent.ACTION_MOVE:
                     float dx = event.getRawX() - downX;
+                    assert foreground != null;
                     foreground.setTranslationX(dx);
                     foreground.setAlpha(1f - Math.min(0.5f, Math.abs(dx) / Math.max(1, getWidth())));
                     return true;
 
                 case MotionEvent.ACTION_UP:
                 case MotionEvent.ACTION_CANCEL:
+                    assert foreground != null;
                     float offset = foreground.getTranslationX();
                     float velocity = 0;
                     if (velocityTracker != null) {
@@ -754,6 +777,7 @@ public final class LocalQueueSheet {
                                 .setListener(new AnimatorListenerAdapter() {
                                     @Override
                                     public void onAnimationEnd(Animator animation) {
+                                        assert foreground != null;
                                         foreground.animate().setListener(null);
                                         reveal.setVisibility(View.INVISIBLE);
                                         endInteraction();
@@ -768,10 +792,12 @@ public final class LocalQueueSheet {
         }
 
         private void dismiss(int direction) {
+            assert foreground != null;
             foreground.animate().translationX(direction * getWidth()).setDuration(SETTLE_MILLISECONDS)
                     .setListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
+                            assert foreground != null;
                             foreground.animate().setListener(null);
                             collapse();
                         }
@@ -816,7 +842,12 @@ public final class LocalQueueSheet {
         }
 
         @Override
-        protected void onDraw(Canvas canvas) {
+        public boolean performClick() {
+            return super.performClick();
+        }
+
+        @Override
+        protected void onDraw(@NonNull Canvas canvas) {
             final float cx = getWidth() / 2f;
             final float cy = getHeight() / 2f;
             final float half = getWidth() * 0.2f;
@@ -938,10 +969,10 @@ public final class LocalQueueSheet {
         return Color.argb(Math.round(255 * alpha), Color.red(color), Color.green(color), Color.blue(color));
     }
 
-    private static int blend(int base, int over, float amount) {
+    private static int blend(int base, int over) {
         return Color.rgb(
-                Math.round(Color.red(base) * (1 - amount) + Color.red(over) * amount),
-                Math.round(Color.green(base) * (1 - amount) + Color.green(over) * amount),
-                Math.round(Color.blue(base) * (1 - amount) + Color.blue(over) * amount));
+                Math.round(Color.red(base) * (1 - (float) 0.08) + Color.red(over) * (float) 0.08),
+                Math.round(Color.green(base) * (1 - (float) 0.08) + Color.green(over) * (float) 0.08),
+                Math.round(Color.blue(base) * (1 - (float) 0.08) + Color.blue(over) * (float) 0.08));
     }
 }

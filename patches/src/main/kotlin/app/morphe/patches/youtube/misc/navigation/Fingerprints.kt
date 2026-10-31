@@ -12,12 +12,14 @@ package app.morphe.patches.youtube.misc.navigation
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchBeforeAnywhere
 import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import app.morphe.patches.youtube.layout.buttons.navigation.navigationBarPatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -81,6 +83,9 @@ internal object NavigationEnumFingerprint : Fingerprint(
     }
 )
 
+/**
+ * 21.42 and earlier.
+ */
 internal object PivotBarButtonsCreateDrawableViewFingerprint : Fingerprint(
     definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -165,5 +170,43 @@ internal object InitializeBottomBarContainerFingerprint : Fingerprint(
             opcode = Opcode.INVOKE_VIRTUAL,
             smali = $$"Landroid/view/View;->addOnLayoutChangeListener(Landroid/view/View$OnLayoutChangeListener;)V"
         )
+    )
+)
+
+/**
+ * Every browse page is shown by this one fragment, and the endpoint it is handed names the page.
+ * The browse request cannot be used instead, because a page served from cache makes no request.
+ */
+internal object BrowseFragmentOnCreateViewFingerprint : Fingerprint(
+    returnType = "Landroid/view/View;",
+    parameters = listOf(
+        "Landroid/view/LayoutInflater;",
+        "Landroid/view/ViewGroup;",
+        "Landroid/os/Bundle;"
+    ),
+    filters = listOf(
+        string("Browse Fragment was given a navigation endpoint without browse data."),
+        // The endpoint of the page is read before it is checked for browse data.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            location = MatchBeforeAnywhere()
+        )
+    )
+)
+
+/**
+ * The search feed is its own fragment, so it does not go through the browse fragment when
+ * the user returns to it from a channel.
+ */
+internal object SearchResultsFragmentOnCreateViewFingerprint : Fingerprint(
+    returnType = "Landroid/view/View;",
+    parameters = listOf(
+        "Landroid/view/LayoutInflater;",
+        "Landroid/view/ViewGroup;",
+        "Landroid/os/Bundle;"
+    ),
+    filters = listOf(
+        string("search_cache_key")
     )
 )

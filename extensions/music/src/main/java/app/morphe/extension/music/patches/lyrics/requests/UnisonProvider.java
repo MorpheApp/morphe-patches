@@ -26,8 +26,8 @@ import java.util.List;
 import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
-import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
@@ -42,90 +42,6 @@ public final class UnisonProvider implements LyricsProvider {
     private static final String FALLBACK_KEY_ID =
             "0000000000000000000000000000000000000000000000000000000000000000";
     private static volatile String cachedKeyId;
-
-    @Override
-    public String name() {
-        return "Unison";
-    }
-
-    @Nullable
-    @Override
-    public FetchResult fetch(TrackInfo track) throws Exception {
-        final String videoId = VideoInformation.getVideoId();
-        if (videoId.isEmpty()) {
-            return null;
-        }
-        final String title = track.title() != null ? track.title() : "";
-        final String artist = track.artist() != null ? track.artist() : "";
-        final long videoLengthMs = VideoInformation.getVideoLength();
-        final int duration = videoLengthMs > 0
-                ? (int) (videoLengthMs / 1000)
-                : track.durationSeconds();
-        final String album = track.album();
-
-        return FetchResult.of(fetchByVideoId(videoId, title, artist, duration, album));
-    }
-
-    @Nullable
-    private Lyrics fetchByVideoId(String videoId, String title, String artist,
-                                  int duration, String album) {
-        HttpURLConnection connection = null;
-        try {
-            final StringBuilder url = new StringBuilder(BASE_URL)
-                    .append("?v=").append(LyricsRequests.encode(videoId));
-            if (!title.isEmpty()) {
-                url.append("&song=").append(LyricsRequests.encode(title));
-            }
-            if (!artist.isEmpty()) {
-                url.append("&artist=").append(LyricsRequests.encode(artist));
-            }
-            if (duration > 0) {
-                url.append("&duration=").append(duration);
-            }
-            if (album != null && !album.isEmpty()) {
-                url.append("&album=").append(LyricsRequests.encode(album));
-            }
-
-            connection = openUnisonConnection(url.toString());
-            final int code = connection.getResponseCode();
-            if (code == 404) {
-                connection.disconnect();
-                return null;
-            }
-            if (code != 200) {
-                LyricsRequests.logFailure(name(), connection);
-                return null;
-            }
-            JSONObject root = Requester.parseJSONObject(connection);
-            JSONObject data = root.optJSONObject("data");
-            if (data == null) {
-                return null;
-            }
-            final String format = LyricsRequests.optString(data, "format");
-            final String lyrics = LyricsRequests.optString(data, "lyrics");
-            if (format == null || lyrics == null) {
-                return null;
-            }
-            final JSONObject submitter = data.optJSONObject("submitter");
-            final String submitterName = submitter != null
-                    ? LyricsRequests.optString(submitter, "displayName")
-                    : null;
-            return parseLyrics(format, lyrics, videoId, submitterName);
-        } catch (IOException | JSONException ex) {
-            Logger.printDebug(() -> "Could not fetch Unison lyrics", ex);
-            return null;
-        } finally {
-            if (connection != null) {
-                connection.disconnect();
-            }
-        }
-    }
-
-    private static HttpURLConnection openUnisonConnection(String url) throws IOException {
-        final HttpURLConnection connection = LyricsRequests.openConnection(url);
-        connection.setRequestProperty("X-Key-ID", getKeyId());
-        return connection;
-    }
 
     private static String getKeyId() {
         String cached = cachedKeyId;
@@ -184,6 +100,89 @@ public final class UnisonProvider implements LyricsProvider {
         return "https://unison.boidu.dev/song/" + videoId;
     }
 
+    private static Lyrics withSubmitter(@Nullable Lyrics lyrics, @Nullable String submitter) {
+        return LyricsMerge.addSongwriter(lyrics, submitter == null ? null : "Submitted by " + submitter);
+    }
+
+    @Override
+    public String name() {
+        return "Unison";
+    }
+
+    @Nullable
+    @Override
+    public FetchResult fetch(TrackInfo track) throws Exception {
+        final String videoId = VideoInformation.getVideoId();
+        if (videoId.isEmpty()) {
+            return null;
+        }
+        final String title = track.title() != null ? track.title() : "";
+        final String artist = track.artist() != null ? track.artist() : "";
+        final long videoLengthMs = VideoInformation.getVideoLength();
+        final int duration = videoLengthMs > 0
+                ? (int) (videoLengthMs / 1000)
+                : track.durationSeconds();
+        final String album = track.album();
+
+        return FetchResult.of(fetchByVideoId(videoId, title, artist, duration, album));
+    }
+
+    @Nullable
+    private Lyrics fetchByVideoId(String videoId, String title, String artist,
+                                  int duration, String album) {
+        HttpURLConnection connection = null;
+        try {
+            final StringBuilder url = new StringBuilder(BASE_URL)
+                    .append("?v=").append(LyricsRequests.encode(videoId));
+            if (!title.isEmpty()) {
+                url.append("&song=").append(LyricsRequests.encode(title));
+            }
+            if (!artist.isEmpty()) {
+                url.append("&artist=").append(LyricsRequests.encode(artist));
+            }
+            if (duration > 0) {
+                url.append("&duration=").append(duration);
+            }
+            if (album != null && !album.isEmpty()) {
+                url.append("&album=").append(LyricsRequests.encode(album));
+            }
+
+            connection = LyricsRequests.openConnection(url.toString());
+            connection.setRequestProperty("X-Key-ID", getKeyId());
+            final int code = connection.getResponseCode();
+            if (code == 404) {
+                connection.disconnect();
+                return null;
+            }
+            if (code != 200) {
+                LyricsRequests.logFailure(name(), connection);
+                return null;
+            }
+            JSONObject root = Requester.parseJSONObject(connection);
+            JSONObject data = root.optJSONObject("data");
+            if (data == null) {
+                return null;
+            }
+            final String format = LyricsRequests.optString(data, "format");
+            final String lyrics = LyricsRequests.optString(data, "lyrics");
+            if (format == null || lyrics == null) {
+                return null;
+            }
+            final JSONObject submitter = data.optJSONObject("submitter");
+            final String submitterName = submitter != null
+                    ? LyricsRequests.optString(submitter, "displayName")
+                    : null;
+            return parseLyrics(format, lyrics, videoId, submitterName);
+        } catch (IOException | JSONException ex) {
+            Logger.printDebug(() -> "Could not fetch Unison lyrics", ex);
+            return null;
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+    }
+
     @Nullable
     private Lyrics parseLyrics(String format, String lyrics, String videoId,
                                @Nullable String submitter) {
@@ -210,9 +209,5 @@ public final class UnisonProvider implements LyricsProvider {
             default:
                 return null;
         }
-    }
-
-    private static Lyrics withSubmitter(@Nullable Lyrics lyrics, @Nullable String submitter) {
-        return LyricsMerge.addSongwriter(lyrics, submitter == null ? null : "Submitted by " + submitter);
     }
 }

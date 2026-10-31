@@ -17,58 +17,636 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Imepigwa mara ya mwisho</string>
+  <string name="morphe_music_android_auto_subscriptions">Usajili</string>
+  <string name="morphe_music_android_auto_videos">Video</string>
+  <string name="morphe_music_android_auto_other_results">Matokeo mengine</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Nyimbo zilizopakiwa</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Albamu zilizopakiwa</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Wasanii waliopakiwa</string>
   <!-- app.morphe.patches.music.interaction.jam -->
+  <string name="morphe_music_jam_update_host_controls">Sasisha patch ya Jam ya mwenyeji ili kutumia pause na resume</string>
+  <string name="morphe_music_jam_probe_title">Ushirikishaji wa foleni ya Jam</string>
+  <string name="morphe_music_jam_probe_summary">Anza au jiunge na Jam ya karibu na uhariri mfuatano wake kupitia Jam Layer</string>
+  <string name="morphe_music_jam_enabled_title">Washa ushirikishaji wa foleni ya Jam</string>
+  <string name="morphe_music_jam_enabled_summary">Huwezesha utangamano wa Jam baada ya YouTube Music kuanza upya</string>
+  <string name="morphe_music_jam_download_title">Pakia Jam Layer ili ianze kufanya kazi</string>
+  <string name="morphe_music_jam_download_summary">Fungua toleo la hivi karibuni la Jam Layer kwenye kivinjari chako</string>
+  <string name="morphe_music_jam_controls_title">Vidhibiti vya Jam</string>
+  <string name="morphe_music_jam_controls_summary">Andaa au jiunge na Jam ya karibu na usimamizi wa kikao</string>
+  <string name="morphe_music_jam_companion_package_title">Kifurushi cha Jam Layer</string>
+  <string name="morphe_music_jam_companion_package_summary">Chagua programu ya msaidizi iliyosakinishwa inayotumika kwa kushiriki orodha ya kusubiri ya karibu</string>
+  <string name="morphe_music_jam_package_message">Tumia kifurushi cha msaidizi kilichosakinishwa. Kuunganisha kunahitaji idhini yako na tokeni ya uwezo wa ndani</string>
+  <string name="morphe_music_jam_wifi_title">Washa Wi-Fi?</string>
+  <string name="morphe_music_jam_wifi_message">Washa Wi-Fi, kisha jaribu kuanzisha au kujiunga na Jam tena</string>
+  <string name="morphe_music_jam_wifi_settings">Fungua mipangilio ya Wi-Fi</string>
+  <string name="morphe_music_jam_cancel">Ghairi</string>
+  <string name="morphe_music_jam_use_package">Tumia kifurushi</string>
+  <string name="morphe_music_jam_invalid_package">Ingiza jina sahihi la kifurushi cha Android</string>
+  <string name="morphe_music_jam_package_saved">Kifurushi kimehifadhiwa. Sanidi Jam Layer ili kuunganisha</string>
+  <string name="morphe_music_jam_disconnected">Jam imetengwa</string>
+  <string name="morphe_music_jam_enable_layer_first">Washa Jam Layer kwanza</string>
+  <string name="morphe_music_jam_enable_patch_first">Washa ushirikishaji wa foleni ya Jam kwenye mipangilio, kisha anzisha tena YouTube Music</string>
+  <string name="morphe_music_jam_install_layer_first">Sakinisha kifurushi cha Jam Layer kilichochaguliwa kwanza</string>
+  <string name="morphe_music_jam_join_hint">Ingiza nambari inayoonekana kwenye kifaa kinachohost. Wi-Fi Aware inaweza kuunganisha vifaa vya karibu hata kama LAN zao zinatofautiana</string>
+  <string name="morphe_music_jam_join_with_code">Jiunge kwa kutumia nambari ya siri</string>
+  <string name="morphe_music_jam_join">Jiunge</string>
+  <string name="morphe_music_jam_scan_qr">Skeni QR</string>
+  <string name="morphe_music_jam_invalid_invite">Ingiza nambari ya siri ya herufi nane au bandika mwaliko</string>
+  <string name="morphe_music_jam_join_your_jam">Jiunge na Jam yako</string>
+  <string name="morphe_music_jam_copy_code">Nakili nambari</string>
+  <string name="morphe_music_jam_code_clip">Kodi ya Jam</string>
+  <string name="morphe_music_jam_show_qr">Onyesha QR</string>
+  <string name="morphe_music_jam_done">Tayari</string>
+  <string name="morphe_music_jam_invite_title">Alika kwenye Jam yako</string>
+  <string name="morphe_music_jam_invite_message">Skani ili kujiunga na kuhariri mfuatano huu. Kumaliza Jam kunafuta mwaliko</string>
+  <string name="morphe_music_jam_copy_link">Nakili kiungo</string>
+  <string name="morphe_music_jam_invitation_clip">Mwaliko wa Jam</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam inaunganishwa tena; jaribu tena baada ya muda mfupi</string>
+  <string name="morphe_music_jam_added_to_jam">Imeongezwa kwenye Jam</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam haipatikani; nyimbo haikuongezwa</string>
+  <string name="morphe_music_jam_your_jam">Jam Yako</string>
+  <string name="morphe_music_jam_listening_together">Kusikiliza pamoja</string>
+  <string name="morphe_music_jam_joining_jam">Kuungana na Jam</string>
+  <string name="morphe_music_jam_listen_together">Sikilizeni pamoja</string>
+  <string name="morphe_music_jam_updating">Inasasisha Jam…</string>
+  <string name="morphe_music_jam_finding_host">Inatafuta mwenyeji wako kwenye Wi-Fi…</string>
+  <string name="morphe_music_jam_waiting_people">Inasubiri watu</string>
+  <string name="morphe_music_jam_one_connected">mtu %s ameunganishwa</string>
+  <string name="morphe_music_jam_many_connected">watu %s wameunganishwa</string>
+  <string name="morphe_music_jam_code_expires">Ingiza nambari hii kwenye kifaa cha karibu. Wi-Fi Aware inafanya kazi kwenye LAN tofauti inapoungwa mkono. Itaisha katika dakika %s</string>
+  <string name="morphe_music_jam_seek_to">Hama hadi %s?</string>
+  <string name="morphe_music_jam_edits_open">Marekebisho yamefunguliwa</string>
+  <string name="morphe_music_jam_edits_locked">Marekebisho yamefungwa</string>
+  <string name="morphe_music_jam_connected_aware">Imeunganishwa kupitia Wi-Fi Aware</string>
+  <string name="morphe_music_jam_connected_wifi">Imeunganishwa kupitia Wi-Fi</string>
+  <string name="morphe_music_jam_connected_bluetooth">Imeunganishwa kupitia Bluetooth</string>
+  <string name="morphe_music_jam_unsupported">Haiungwi mkono wakati wa Jam</string>
+  <string name="morphe_music_jam_cancelled">Kujiunga kumeghairiwa</string>
+  <string name="morphe_music_jam_reconnecting_host">Inaunganisha tena na mwenyeji wako…</string>
+  <string name="morphe_music_jam_share_prompt">Shiriki mfuatano. Ruhusu kila mtu aongeze nyimbo</string>
+  <string name="morphe_music_jam_invite_people">Alika watu</string>
+  <string name="morphe_music_jam_guest_edits">Wageni wanaweza kuhariri foleni</string>
+  <string name="morphe_music_jam_end_jam">Maliza Jam</string>
+  <string name="morphe_music_jam_participant_help">Mwenyeji anacheza muziki. Ongeza, hamisha au ondoa nyimbo moja kwa moja kwenye mfuatano wa YouTube Music</string>
+  <string name="morphe_music_jam_joining_help">Weka vifaa vyote viwili karibu. Unaweza kufuta wakati tunamtafuta mwenyeji</string>
+  <string name="morphe_music_jam_cancel_joining">Ghairi kujiunga</string>
+  <string name="morphe_music_jam_leave_jam">Ondoka kwenye Jam</string>
+  <string name="morphe_music_jam_start_jam">Anza Jam</string>
+  <string name="morphe_music_jam_setup_layer">Sanidi Tabaka la Jam</string>
+  <string name="morphe_music_jam_manage">Simamia</string>
+  <string name="morphe_music_jam_details">Maelezo</string>
+  <string name="morphe_music_jam_open">Fungua</string>
+  <string name="morphe_music_jam_loading_song_options">Inapakia chaguzi za wimbo…</string>
+  <string name="morphe_music_jam_song_options_unavailable">Chaguzi za wimbo hazipatikani; jaribu tena</string>
+  <string name="morphe_music_jam_song_options_failed">Hakuweza kufungua chaguzi za wimbo</string>
+  <string name="morphe_music_jam_no_browser">Hakuna kivinjari kinachopatikana ili kupakua Jam Layer</string>
+  <string name="morphe_music_jam_waiting_host_queue">Inasubiri foleni ya mwenyeji</string>
+  <string name="morphe_music_jam_open_song_first">Fungua wimbo kwenye YouTube Music kwanza</string>
+  <string name="morphe_music_jam_play_on_host">Cheza kwenye mwenyeji</string>
+  <string name="morphe_music_jam_quit_and_play">Ondoka kwenye Jam na ucheze ndani</string>
+  <string name="morphe_music_jam_play_next">Cheza inayofuata kwenye Jam</string>
+  <string name="morphe_music_jam_add_to_queue">Ongeza kwenye foleni ya Jam</string>
+  <string name="morphe_music_jam_play_track">Cheza wimbo huu wa Jam</string>
+  <string name="morphe_music_jam_choose_playback">Chagua mahali pa kucheza</string>
+  <string name="morphe_music_jam_move_host_here">Hamisha mwenyeji hapa</string>
+  <string name="morphe_music_jam_seek_not_ready">Wimbo haukuwa tayari kutafutwa</string>
+  <string name="morphe_music_jam_queue_changed_gesture">Foleni imebadilika; jaribu ishara tena</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">Nembo ya kichwa</string>
+  <string name="morphe_header_logo_entry_1">Kawaida</string>
+  <string name="morphe_header_logo_entry_3">Maalum</string>
   <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Cheza nyimbo za sauti za albamu</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Cheza toleo la sauti pekee la albamu la nyimbo badala ya video ya muziki. Inahitaji \'Igize video streams\'</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Wezesha swichi ya sauti/video</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Jaribu kubadilisha Toleo la Nyimbo za Sauti na Video Rasmi ya Muziki</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">Pakua video za muziki, podkasti, au nyimbo kwa kutumia programu za kupakulia za upande wa tatu</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Tumia kipakuzi cha nje kwa menyu ya Pakua</string>
+  <string name="morphe_external_downloader_menu_summary">Chaguo la Pakua la menyu litafungua kipakuzi chako cha nje badala yake</string>
+  <string name="morphe_music_downloads_screen_title">Pakua</string>
+  <string name="morphe_music_downloads_empty">"Hakuna mapakua
+Nyimbo zilizopakuliwa zinaonekana hapa"</string>
+  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
+  <string name="morphe_music_downloads_search_hint">Tafuta mapakua</string>
+  <string name="morphe_music_downloads_sort">Panga</string>
+  <string name="morphe_music_downloads_sort_artist">Panga kwa msanii</string>
+  <string name="morphe_music_downloads_sort_title">Panga kwa kichwa</string>
+  <string name="morphe_music_downloads_sort_size">Panga kwa ukubwa</string>
+  <string name="morphe_music_downloads_delete_all">Futa pakua zote</string>
+  <string name="morphe_music_downloads_delete_all_title">Futa pakua zote?</string>
+  <string name="morphe_music_downloads_delete_all_message">Nyimbo zote zilizopakuliwa zitafutwa kwenye kifaa hiki</string>
+  <string name="morphe_music_downloads_all_deleted">Pakua zimefutwa</string>
+  <string name="morphe_music_downloads_nothing_found">Hakuna kilichopatikana</string>
+  <string name="morphe_music_downloads_actions_for">Hatua kwa %s</string>
+  <string name="morphe_music_downloads_play">Cheza</string>
+  <string name="morphe_music_downloads_play_pause">Cheza au pause</string>
+  <string name="morphe_music_downloads_previous">Iliyopita</string>
+  <string name="morphe_music_downloads_next">Inayofuata</string>
+  <string name="morphe_music_downloads_pause">Pause</string>
+  <string name="morphe_music_downloads_close">Funga</string>
+  <string name="morphe_music_downloads_delete">Futa</string>
+  <string name="morphe_music_downloads_delete_track">Futa pakia</string>
+  <string name="morphe_music_downloads_delete_track_title">Futa pakia?</string>
+  <string name="morphe_music_downloads_delete_track_message">%s itafutwa kutoka kwenye kifaa hiki</string>
+  <string name="morphe_music_downloads_track_deleted">Pakia imefutwa</string>
+  <string name="morphe_music_downloads_track_delete_failed">Hakuwezekana kufuta pakia</string>
+  <string name="morphe_music_downloads_play_failed">Hakuwezekana kucheza faili lililopakuliwa</string>
+  <string name="morphe_music_downloads_notification_channel">Pakua sauti</string>
+  <string name="morphe_music_downloads_playback_channel">Uchezaji wakiwa nje ya mtandao</string>
+  <string name="morphe_music_downloads_unknown_track">Hakuweza kutambua wimbo wa kupakua</string>
+  <string name="morphe_music_downloads_already_running">Upakuaji tayari unaendelea</string>
+  <string name="morphe_music_downloads_already_saved">Tayari imepakuliwa</string>
+  <string name="morphe_music_downloads_started">Upakuaji umeanza</string>
+  <string name="morphe_music_downloads_starting">Inaanza kupakua…</string>
+  <string name="morphe_music_downloads_progress">Inapakia %s%%</string>
+  <string name="morphe_music_downloads_complete">Pakia kamili</string>
+  <string name="morphe_music_downloads_failed">Kupakia kumeshindwa</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_0_about_title">Kuhusu Morphe</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Matangazo</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Feed</string>
+  <string name="morphe_settings_music_screen_3_general_title">Kawaida</string>
+  <string name="morphe_settings_music_screen_4_player_title">Kicheza</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">Mashairi</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Mengineyo</string>
+  <string name="morphe_music_app_language_title">Lugha ya YouTube Music</string>
+  <string name="morphe_music_app_language_summary_default">Lugha ya mfumo</string>
+  <string name="morphe_music_app_language_summary_unsupported">Inahitaji Android 13 au baadaye</string>
   <!-- ad.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Ficha lebo ya \'Pata Music Premium\'</string>
+  <string name="morphe_music_hide_music_premium_promotions_title">Ficha matangazo ya Music Premium</string>
+  <string name="morphe_music_hide_video_ads_title">Ficha matangazo ya video</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Ficha kitufe cha Sauti / Video</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Ficha kitufe cha Pakua</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Huficha kitufe cha Pakua katika onyesho la podcast</string>
+  <string name="morphe_music_hide_explore_shelf_title">Ficha rafu ya Explore</string>
+  <string name="morphe_music_hide_filter_bar_title">Ficha upau wa kichujio</string>
+  <string name="morphe_music_hide_grid_shelves_title">Ficha rafu za gridi</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Ficha rafu za mlalo</string>
+  <string name="morphe_music_hide_list_shelves_title">Ficha rafu za orodha</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">Paneli ya mashairi</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Ficha kitufe cha Shiriki</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Ficha kitufe cha Tafsiri</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Ficha rafu ya \"New from\"</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Ficha rafu za orodha ya nyimbo</string>
+  <string name="morphe_music_hide_repeat_button_title">Ficha kitufe cha Kurudia</string>
+  <string name="morphe_music_hide_shuffle_button_title">Ficha kitufe cha Kuchanganya</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Ficha rafu ya \"Speed dial\"</string>
+  <string name="morphe_music_comments_screen_title">Maoni</string>
+  <string name="morphe_music_comments_screen_summary">Chagua ni vipengele gani vionekane katika sehemu ya maoni</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Ficha Mwongozo wa Jumuiya</string>
+  <string name="morphe_music_hide_comments_context_title">Ficha ujumbe wa muktadha</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Ficha kitufe cha Emoji</string>
+  <string name="morphe_music_hide_comments_info_button_title">Ficha kitufe cha Info</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Ficha kitufe cha Muda wa Wakati</string>
   <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Crossfade</string>
+  <string name="morphe_music_crossfade_screen_summary">Unganisha nyimbo kwa ulaini moja baada ya nyingine</string>
+  <string name="morphe_music_crossfade_enabled_title">Washa crossfade</string>
+  <string name="morphe_music_crossfade_curve_title">Mstari wa kufifia</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Nguvu sawa</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Shikilia kidogo</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Rahisisha kwa upole</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Mstari laini wa S</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Inayotoka</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Inayoingia</string>
+  <string name="morphe_music_crossfade_duration_title">Muda wa crossfade</string>
+  <string name="morphe_crossfade_duration_250ms">mili-sekunde 250</string>
+  <string name="morphe_crossfade_duration_500ms">mili-sekunde 500</string>
+  <string name="morphe_crossfade_duration_750ms">mili-sekunde 750</string>
+  <string name="morphe_crossfade_duration_1000ms">sekunde 1</string>
+  <string name="morphe_crossfade_duration_2000ms">sekunde 2</string>
+  <string name="morphe_crossfade_duration_3000ms">sekunde 3</string>
+  <string name="morphe_crossfade_duration_4000ms">sekunde 4</string>
+  <string name="morphe_crossfade_duration_5000ms">sekunde 5</string>
+  <string name="morphe_crossfade_duration_6000ms">sekunde 6</string>
+  <string name="morphe_crossfade_duration_7000ms">sekunde 7</string>
+  <string name="morphe_crossfade_duration_8000ms">sekunde 8</string>
+  <string name="morphe_crossfade_duration_9000ms">sekunde 9</string>
+  <string name="morphe_crossfade_duration_10000ms">sekunde 10</string>
+  <string name="morphe_crossfade_duration_11000ms">sekunde 11</string>
+  <string name="morphe_crossfade_duration_12000ms">sekunde 12</string>
+  <string name="morphe_music_crossfade_on_skip_title">Crossfade wakati wa kuruka kwa mkono</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Hutumia athari ya crossfade unaporuka kwenda kwenye wimbo unaofuata kwa mkono</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Crossfade wakati wa kusonga mbele kiotomatiki</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Hutumia athari ya crossfade wakati wimbo unapoisha kawaida</string>
+  <string name="morphe_music_crossfade_session_control_title">Udhibiti wa kikao</string>
+  <string name="morphe_music_crossfade_session_control_summary">Bonyeza kwa muda kitufe cha shuffle ili kusitisha au kuendelea na crossfade</string>
+  <string name="morphe_music_crossfade_paused_toast">Crossfade imesitishwa kwa kipindi hiki</string>
+  <string name="morphe_music_crossfade_resumed_toast">Crossfade imeendelea</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Hali ya video haipatikani wakati crossfade imewashwa</string>
+  <string name="morphe_music_crossfade_sabr_toast">Crossfade imezimwa wakati wa uchezaji wa SABR</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade imezimwa wakati wa kutuma</string>
+  <string name="morphe_music_crossfade_about_how_title">Inavyofanya kazi</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade huingiliana mwisho wa wimbo mmoja na mwanzo wa wimbo unaofuata, kwa kutumia muda na msururu wako
+
+Inafanya kazi katika utendaji wa auto-advance na kuruka kwa mkono, kila moja ikiwa na kitufe chake. Katika auto-advance, mchanganyiko huanza sekunde chache kabla ya wimbo kuisha"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Vikomo</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Video za muziki hucheza kama sauti pekee wakati crossfade imewashwa. Bonyeza na ushikilie shuffle ili kusitisha crossfade na kutazama video
+
+Video ya muziki inayoanza kucheza hubaki katika hali ya video hadi wimbo unaofuata
+
+Wimbo mfupi kuliko muda wa fade haufanyiwi crossfade
+
+Skrini ya kufunga au taarifa inaweza kuonyesha hali ya zamani kwa muda mfupi katikati ya mpito
+
+Kusitisha crossfade ili kutazama video ya muziki kunaweza kuacha baadhi ya video zikiwa nyeusi. Kusitisha crossfade kabla ya kuchagua wimbo kunazuia jambo hili"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Haiungwi mkono</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Kurusha au kuakisi sauti (Chromecast, kuakisi skrini au sauti)
+
+Uchezaji wa SABR (mitiririko ya video inayofananishwa imezimwa)"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Sifa</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Kipengele cha Crossfade na VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
+  <string name="morphe_music_remember_repeat_state_title">Kumbuka hali ya kurudia</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
+  <string name="morphe_music_remember_shuffle_state_title">Kumbuka hali ya kuchanganya</string>
   <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Kasi ya uchezaji</string>
+  <string name="morphe_music_playback_speed_summary">Kasi inayotumika kwa nyimbo zote. Katika 100% kasi ya programu hutumiwa, kama vile kasi ya uchezaji wa podcast</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Badilisha sauti kulingana na kasi</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Zima upoeshaji wa kutopenda</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Huzuia kurukia wimbo unaofuata wakati kitufe cha kutopenda kinapobonyezwa</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Kitendo cha kugusa wimbo wa orodha ya nyimbo</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Cheza orodha ya nyimbo</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Cheza wimbo ulioteuliwa pekee</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Ongeza wimbo ulioteuliwa kwenye foleni</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">Imeongezwa kwenye foleni</string>
   <!-- layout.buttons.hideButtonsPatch -->
+  <string name="morphe_music_hide_cast_button_title">Ficha kitufe cha Cast</string>
+  <string name="morphe_music_hide_history_button_title">Ficha kitufe cha Historia</string>
+  <string name="morphe_music_hide_notification_button_title">Ficha kitufe cha Taarifa</string>
+  <string name="morphe_music_hide_search_button_title">Ficha kitufe cha Utafutaji</string>
+  <string name="morphe_music_hide_voice_search_button_title">Ficha kitufe cha utafutaji wa sauti</string>
+  <string name="morphe_music_hide_sound_search_button_title">Ficha kitufe cha utafutaji wa sauti ya muziki</string>
+  <string name="morphe_music_hide_library_new_button_title">Ficha kitufe cha Upya</string>
+  <string name="morphe_music_hide_library_new_button_summary">Huficha kitufe cha Upya katika tabo ya Maktaba</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">Vitufe vya utendaji</string>
+  <string name="morphe_music_action_buttons_screen_summary">Chagua vitufe gani vya utendaji vionekane chini ya kidhibiti</string>
+  <string name="morphe_music_hide_action_bar_title">Ficha upau wa utendaji</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Ficha kitufe cha Kupenda na Kutokupenda</string>
+  <string name="morphe_music_hide_comments_button_title">Ficha kitufe cha Maoni</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Ficha kitufe cha \'Rudia soga ya moja kwa moja\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">Ficha kitufe cha Mashairi</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">Ficha kitufe cha Shiriki</string>
   <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">Ficha kitufe cha Hifadhi</string>
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">Ficha kitufe cha Pakua</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">Ficha kitufe cha \'Anza redio\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
+  <string name="morphe_music_hide_flyout_menu_components_screen_title">Menyu ya flyout</string>
+  <string name="morphe_music_hide_flyout_menu_components_screen_summary">Chagua ni vipengele vipi vionekane kwenye menyu za flyout za kidchezaji na foleni</string>
+  <string name="morphe_music_hide_flyout_menu_3_column_component_title">Ficha kipengele cha safu 3</string>
+  <string name="morphe_music_hide_flyout_menu_like_dislike_title">Ficha vitufe vya Kupenda na Kutopenda</string>
+  <string name="morphe_music_hide_flyout_menu_taste_match_title">Ficha menyu ya \'Oanisha ladha\'</string>
+  <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Ficha menyu ya \'Ongeza kwenye orodha ya kucheza ya Sikiliza baadaye\'</string>
+  <string name="morphe_music_hide_flyout_menu_add_to_queue_title">Ficha menyu ya \'Ongeza kwenye foleni\'</string>
+  <string name="morphe_music_hide_flyout_menu_captions_title">Ficha menyu ya Maelezo</string>
+  <string name="morphe_music_hide_flyout_menu_delete_playlist_title">Ficha menyu ya \'Futa orodha ya kucheza\'</string>
+  <string name="morphe_music_hide_flyout_menu_dismiss_queue_title">Ficha menyu ya \'Ondoa foleni\'</string>
+  <string name="morphe_music_hide_flyout_menu_dont_recommend_artist_title">Ficha menyu ya \'Usipendekeze msanii huyu\'</string>
+  <string name="morphe_music_hide_flyout_menu_download_title">Ficha menyu ya Pakua</string>
+  <string name="morphe_music_hide_flyout_menu_edit_playlist_title">Ficha menyu ya \'Hariri orodha ya nyimbo\'</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_album_title">Ficha menyu ya \'Nenda kwenye albamu\'</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_artist_title">Ficha menyu ya \'Nenda kwa msanii\'</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_episode_title">Ficha menyu ya \'Nenda kwenye kipindi\'</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_podcast_title">Ficha menyu ya \'Nenda kwenye podikasti\'</string>
+  <string name="morphe_music_hide_flyout_menu_help_title">Ficha menyu ya Msaada</string>
+  <string name="morphe_music_hide_flyout_menu_mark_episode_as_played_title">Ficha menyu ya \'Weka kipindi kama kilichochezwa\'</string>
+  <string name="morphe_music_hide_flyout_menu_not_interested_title">Ficha menyu ya \'Sivuti\'</string>
+  <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">Ficha menyu ya \'Pin to speed dial\'</string>
+  <string name="morphe_music_hide_flyout_menu_play_next_title">Ficha menyu ya \'Cheza inayofuata\'</string>
+  <string name="morphe_music_hide_flyout_menu_quality_title">Ficha menyu ya Ubora</string>
+  <string name="morphe_music_hide_flyout_menu_remove_from_library_title">Ficha menyu ya \'Ondoa kwenye maktaba\'</string>
+  <string name="morphe_music_hide_flyout_menu_remove_from_playlist_title">Ficha menyu ya \'Ondoa kwenye orodha ya nyimbo\'</string>
+  <string name="morphe_music_hide_flyout_menu_report_title">Ficha menyu ya Ripoti</string>
+  <string name="morphe_music_hide_flyout_menu_save_episode_for_later_save_to_library_title">Ficha menyu ya \'Hifadhi kipindi kwa ajili ya baadaye\' / \'Hifadhi kwenye maktaba\'</string>
+  <string name="morphe_music_hide_flyout_menu_save_to_playlist_title">Ficha menyu ya \'Hifadhi kwenye orodha ya nyimbo\'</string>
+  <string name="morphe_music_hide_flyout_menu_share_title">Ficha menyu ya Shiriki</string>
+  <string name="morphe_music_hide_flyout_menu_shuffle_play_title">Ficha menyu ya \'Cheza kwa kubadilisha\'</string>
+  <string name="morphe_music_hide_flyout_menu_sleep_timer_title">Ficha menyu ya \'Kipima muda cha kulala\'</string>
+  <string name="morphe_music_hide_flyout_menu_start_radio_title">Ficha menyu ya \'Anza redio\'</string>
+  <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">Ficha menyu ya \'Takwimu kwa wataalamu\'</string>
+  <string name="morphe_music_hide_flyout_menu_subscribe_title">Ficha menyu ya Jisajili</string>
+  <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Ficha menyu ya \'Ondoa kwenye namba za haraka\'</string>
+  <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Ficha menyu ya \'Angalia sifa za wimbo\'</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Ukurasa wa kuanzia</string>
+  <string name="morphe_change_start_page_entry_default">Kawaida</string>
+  <string name="morphe_change_start_page_entry_charts">Chati</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Vipindi vya baadaye</string>
+  <string name="morphe_change_start_page_entry_explore">Gundua</string>
+  <string name="morphe_change_start_page_entry_history">Historia</string>
+  <string name="morphe_change_start_page_entry_library">Maktaba</string>
+  <string name="morphe_change_start_page_entry_liked_music">Muziki ulioipenda</string>
+  <string name="morphe_change_start_page_entry_playlists">Orodha za nyimbo</string>
+  <string name="morphe_change_start_page_entry_search">Tafuta</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Usajili</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Lazimisha mwelekeo wa wima</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Huweka programu katika mwelekeo wa wima wakati kifaa kinapozungushwa</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
+  <string name="morphe_music_change_miniplayer_color_title">Badilisha rangi ya miniplayer</string>
+  <string name="morphe_music_change_miniplayer_color_summary">Inalinganisha rangi ya miniplayer na ya kicheza cha skrini nzima</string>
+  <string name="morphe_music_change_navigation_bar_color_title">Badilisha rangi ya baa ya urambazaji</string>
+  <string name="morphe_music_change_navigation_bar_color_summary">Oanisha rangi ya baa ya urambazaji na kicheza muziki cha skrini nzima</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
+  <string name="morphe_music_miniplayer_next_button_title">Onyesha kitufe cha inayofuata kwenye miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Onyesha kitufe cha iliyopita kwenye miniplayer</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Washa miniplayer ya kulazimisha</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Inazuia kicheza kupanuka kiotomatiki hadi skrini nzima wakati wimbo mpya unapoanza</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Washa utelezi ili kuondoa miniplayer</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Inaruhusu kufunga kidchezaji kidogo kwa kukisogeza chini</string>
   <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Upau wa urambazaji</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Chagua ni vitufe gani vionekane kwenye upau wa urambazaji wa chini</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Ficha kitufe cha Nyumbani</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Ficha kitufe cha Sampuli</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Ficha kitufe cha Gundua</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Ficha kitufe cha Maktaba</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Ficha kitufe cha Boresha</string>
+  <string name="morphe_music_hide_navigation_bar_title">Ficha upau wa urambazaji</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Ficha lebo za vitufe vya urambazaji</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary_logged_out">Hujaingia. Gusa ili kusanidi</string>
+  <string name="morphe_music_scrobbling_log_out">Toka</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Umetoka</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_enabled_title">Washa scrobbling</string>
+  <string name="morphe_music_scrobbling_now_playing_title">Tuma hali ya \'Inacheza Sasa\'</string>
+  <string name="morphe_music_scrobbling_min_song_duration_title">Muda wa chini wa wimbo</string>
   <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_min_song_duration_summary">Nyimbo fupi kuliko hapa hazita-scrobbled</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_percent_title">Asilimia ya ucheleweshaji wa scrobble</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_percent_summary">Anzisha scrobble baada ya kusikiliza asilimia hii ya wimbo</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_seconds_title">Sekunde za ucheleweshaji wa scrobble</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_seconds_summary">Anzisha scrobble baada ya kusikiliza kwa sekunde hizi</string>
+  <string name="morphe_music_listenbrainz_token_title">Akaunti ya ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Umeingia. Gusa ili kusimamia akaunti</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Ingiza Token ya Mtumiaji ya ListenBrainz ili kuwezesha scrobbling</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Thibitisha</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Tafadhali weka tokeni</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Inathibitisha…</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Tokeni halali! Mtumiaji: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Tokeni batili: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">haijulikani</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Uhakiki umeshindwa: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Token imefutwa</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Token imehifadhiwa</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Onyo: Token iliyohifadhiwa si sahihi!</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Penda nyimbo zilizopendwa</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Penda nyimbo kwenye Last.fm kiotomatiki unapozipenda kwenye YouTube Music (na ondoa upendo unapoziondoa au kuzichukia)</string>
+  <string name="morphe_music_lastfm_token_title">Akaunti ya Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Umeingia kama %s. Gusa ili kudhibiti akaunti</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Ingiza sifa zako za Last.fm ili kuingia</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Jina la mtumiaji</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Nywila</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Ingia</string>
+  <string name="morphe_music_lastfm_token_status_empty">Tafadhali weka jina la mtumiaji na nywila</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Inaingia…</string>
+  <string name="morphe_music_lastfm_token_status_success">Umeingia kwa mafanikio!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Imeshindwa kupata kikao kutoka Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Kuingia imeshindwa: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Sifa za Last.fm zimehifadhiwa!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Usafishaji wa metadata</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Safisha metadata</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Safisha kiotomatiki machafuko ya kawaida (kama \"Official Video\", \"Remaster\", \"Live\") kutoka kwenye vichwa vya habari, wasanii, na albamu kabla ya scrobbling</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Usafishaji wa regex wa kulingana na mahitaji</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">Ingiza expression ya kawaida ya kistari ili kuondoa maandishi ya ziada kutoka kwenye majina ya nyimbo, wasanii, au albamu. Mfano: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Changanisha msanii na wimbo kutoka kwenye kichwa</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Toa jina la msanii na wimbo kutoka kwenye kichwa cha video kwa kutumia kitenganishi cha \" - \". Inafaa kwa maudhui yaliyopakwa tena ambapo jina la chaneli linaweza kutumika kama msanii</string>
+  <string name="morphe_music_scrobbling_guess_album_title">Jaza albamu inayokosekana</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">Muziki unapokuwa hauna albamu, itafute kwenye Last.fm ili scrobble yako ikamilike</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_about_summary">"Scrobbling husawazisha kiotomatiki matumizi yako ya YouTube Music na wasifu wako wa Last.fm au ListenBrainz
+
+Ili kuhakikisha scrobbling inasawazishwa wakati wa uchezaji wa nyuma, hakikisha kuwa matumizi ya betri ya programu ya YouTube Music yamewekwa kuwa \"Haina vizuizi\""</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">Tumia mashairi ya upande wa tatu</string>
+  <string name="morphe_music_lyrics_enabled_summary">Huonyesha mashairi kutoka kwa huduma ya upande wa tatu, na kurudi kwenye mashairi yaliyojengwa ndani wakati hakuna yanayopatikana</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Weka skrini ikiwa wazi wakati wa kutazama mashairi</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Huzuia kioo kuzima wakati jopo la mashairi likiwa wazi</string>
+  <string name="morphe_music_lyrics_section_service_title">Huduma ya mashairi</string>
+  <string name="morphe_music_lyrics_section_display_title">Onyesha</string>
+  <string name="morphe_music_lyrics_section_sync_title">Usawazishaji</string>
+  <string name="morphe_music_lyrics_section_panel_title">Jopo</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Watoa huduma wote wamezimwa - mashairi yaliyojengwa ndani na mashairi yaliyojumuishwa</string>
+  <string name="morphe_music_lyrics_source_reset_title">Weka upya mpangilio wa watoa huduma?</string>
+  <string name="morphe_music_lyrics_source_reset_message">Rudisha watoa huduma katika mpangilio wa kipaumbele wa asili</string>
+  <string name="morphe_music_lyrics_clear_cache_title">Futa mashairi yaliyohifadhiwa</string>
+  <string name="morphe_music_lyrics_clear_cache_done">Imefuta %1$s MB</string>
+  <string name="morphe_music_token_dialog_get_token">Pata tokeni</string>
+  <string name="morphe_music_apple_music_token_title">Token ya Mtumiaji wa Media ya Apple Music</string>
+  <string name="morphe_music_apple_music_token_dialog_instruction">"Bandika kuki ya media-user-token kutoka music.apple.com
+
+Hatua:
+1. Ingia kwenye music.apple.com kama mtumiaji mwanachama
+2. Fungua DevTools → Application → Cookies → music.apple.com
+3. Nakili thamani ya \"media-user-token\""</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token imehifadhiwa</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token imefutwa</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: media-user-token si sahihi - tafadhali angalia na ujaribu tena</string>
+  <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
+  <string name="morphe_music_spotify_token_dialog_instruction">"Bandika cookie ya sp_dc kutoka Spotify.
+
+Hatua:
+1. Ingia kwenye open.spotify.com
+2. Fungua DevTools → Application → Cookies → open.spotify.com
+3. Nakili thamani ya \"sp_dc\""</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc imehifadhiwa</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc imefutwa</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc si sahihi - tafadhali angalia na ujaribu tena</string>
+  <string name="morphe_music_apple_token_optional_hint">Token ya Apple Music ni ya hiari. Bila hiyo, Lyrically itatumika kama mbadala</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
+  <string name="morphe_music_deezer_arl_dialog_instruction">"Bandika cookie ya arl kutoka Deezer.
+
+Hatua:
+1. Ingia kwenye deezer.com
+2. Fungua DevTools → Application → Cookies → deezer.com
+3. Nakili thamani ya \"arl\""</string>
+  <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl imehifadhiwa</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl imefutwa</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl si sahihi - tafadhali angalia na ujaribu tena</string>
+  <string name="morphe_music_musixmatch_token_title">Token ya Musixmatch</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Ongeza tokeni ili kutumia akaunti yako mwenyewe pekee. Lazima itoke kwenye programu ya Musixmatch ya Android: tokeni zilizonakiliwa kutoka musixmatch.com ni za programu ya zamani ya kompyuta na API hazikubali</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch inafanya kazi bila tokeni, hivyo sehemu hii inaweza kubaki wazi</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">token ya mtumiaji</string>
+  <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: token ya mtumiaji imehifadhiwa</string>
+  <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: token ya mtumiaji imefutwa</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: token ya mtumiaji si sahihi - tafadhali angalia na ujaribu tena</string>
+  <string name="morphe_music_youtube_cookies_title">Kuki za YouTube</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"Bandika kuki za YouTube ili kutafuta maelezo ya maandishi na muda wa maandishi kutoka YouTube.
+
+Hatua:
+1. Fungua youtube.com kwenye kivinjari na uingie
+2. Fungua DevTools (F12) → Application → Cookies → youtube.com
+3. Nakili mfululizo kamili wa kuki (jozi za key=value zinazotenganishwa na nukta mkato)
+
+Kuki zinazohitajika: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
+  <string name="morphe_music_youtube_cookies_toast_saved">YouTube: kuki zimehifadhiwa</string>
+  <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: kuki zimefutwa</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: kuki hazifai - tafadhali kagua na ujaribu tena</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Gusa na ushikilie mstari</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Gusa mstari ili uruke hadi wakati huo katika wimbo, bonyeza kwa muda mrefu ili kunakili neno lililo chini ya kidole chako, au mstari mzima wakati bonyezo halipo kwenye neno. Kuzima huondoa ishara zote mbili</string>
+  <string name="morphe_music_lyrics_show_section_title">Onyesha lebo za sehemu</string>
+  <string name="morphe_music_lyrics_show_section_summary">Weka lebo katika kila sehemu mpya ya mashairi kwa lebo ndogo, kama vile Verse au Chorus</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Onyesha kitufe cha Kunakili</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Gusa ili kunakili mashairi ya awali kama maandishi ya kawaida; bonyeza kwa muda mrefu ili kuhifadhi faili ya chanzo cha mashairi ghafi kwenye Pakua</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">Onyesha kitufe cha Kutafsiri</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Usomaji uko tayari (%1$d entries)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Pakua imefeli - zima na uwashe tena ili kujaribu tena</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Inasoma %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_refresh_button_title">Onyesha kitufe cha Refresh</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Gusa ili kubadilisha kwenda kwa mshindani mwingine wa mashairi; bonyeza kwa muda mrefu ili kutafuta mashairi kwa kichwa cha wimbo na msanii</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Tafuta mashairi</string>
+  <string name="morphe_music_lyrics_search_title_hint">Kichwa cha wimbo</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Msanii</string>
+  <string name="morphe_music_lyrics_search_empty">Ingiza kichwa cha wimbo na msanii</string>
+  <string name="morphe_music_lyrics_search_no_providers">Hakuna mtoa huduma aliyewezeshwa anayeweza kutafuta nyimbo zingine</string>
+  <string name="morphe_music_lyrics_saved">Imehifadhiwa</string>
+  <string name="morphe_music_lyrics_word_sync_title">Angazia maneno au silabi zilizooanishwa</string>
+  <string name="morphe_music_lyrics_word_sync_summary">Toa kipaumbele kwa mashairi ya neno-kwa-neno yanapopatikana. Mashairi yanapokuwa na muda wa neno, yanangazia kila neno au silabi kulingana na wakati wa muziki</string>
+  <string name="morphe_music_lyrics_hide_played_title">Ficha mashairi yaliyochezwa</string>
+  <string name="morphe_music_lyrics_hide_played_summary">Ficha mistari ya mashairi iliyo juu ya mstari unaochezwa sasa</string>
+  <string name="morphe_music_lyrics_hide_unplayed_title">Ficha mashairi ambayo hayajachezwa</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">Ficha mistari ya mashairi chini ya mstari unaocheza sasa</string>
+  <string name="morphe_music_lyrics_mediasession_title">Onyesha Mashairi ya MediaSession kwenye skrini ya kufunga</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Inaonyesha mstari wa sasa kwenye skrini ya kufunga, Android Auto na Bluetooth. Inahitaji Android 11 au mpya zaidi</string>
+  <string name="morphe_music_lyrics_miniplayer_title">Onyesha Mashairi ya Miniplayer</string>
+  <string name="morphe_music_lyrics_miniplayer_summary">Inaonyesha mstari wa sasa katika miniplayer, huku wimbo ukihamishiwa kwenye kichwa kidogo</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Muundo wa kichwa cha wimbo/msanii</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Muundo wa wimbo unaoonyeshwa na mashairi katika Miniplayer na MediaSession. {t} ni kichwa, {a} ni msanii na {v} ni toleo, kama vile Acoustic, wakati chanzo cha mashairi kinapotoa. Maandishi kati ya koloni mbili huonyeshwa tu wakati kila kigezo ndani yake kina thamani; andika \\: kwa ajili ya koloni ya kawaida. Kila mstari huonyeshwa kwa zamu, ukisonga mbele kila mashairi yanapobadilika</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Muundo wa mstari wa shairi</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Muundo wa mstari wa mashairi katika Miniplayer na MediaSession. {lrc} ni mstari na {n} ni idadi ya mara unapoimbwa mfululizo. Maandishi kati ya koloni huonyeshwa tu wakati mstari unajirudia. Tumia \\: kwa ajili ya koloni</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Muundo lazima uwe na {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Kiolezo cha mstari wa msanii na muda wa uhuishaji</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Muda wa chini wa skrini (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Muda wa juu wa skrini (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Kwa uhuishaji wa mistari mingi pekee. Weka kila fremu kwa angalau muda wa chini. Katika kiwango cha juu, songesha mstari wa msanii hata kama mashairi yanabaki vile vile.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Kiwango cha chini lazima kiwe 0 au zaidi. Kiwango cha juu lazima kiwe zaidi ya 0 na angalau sawa na kiwango cha chini.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Mipaka ya urefu wa mstari</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Mipaka ya mistari ya mashairi na msanii, na uzito wa herufi pana</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Mpaka wa mstari wa shairi
+と呼ばれるGawanya mashairi marefu katika nusu zenye usawa. 0 huzima ugawanyaji."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Mpaka wa mstari wa msanii
+Gawanya muundo wa nyimbo uliotumiwa katika fremu zinazozunguka. 0 huzima ugawanyaji."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Uzito wa herufi pana
+Inatumika kwa mipaka yote miwili. Katika 1.75, herufi nne pana zinahesabiwa kama 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Ingiza mipaka ya namba nzima kuanzia 0 hadi 10000 na uzito wa herufi zaidi ya 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Mapumziko ya ala</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Inaonyeshwa kwenye Miniplayer na MediaSession wakati wa mapumziko ya ala. Kila mstari ni fremu moja ya uhuishaji. {t} ni kichwa, {a} ni msanii na {lrc} ni mstari wa mwisho wa mashairi</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Offset ya muda ya Miniplayer na MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Inasogeza wakati mstari unaofuata unapoonyeshwa kwenye Miniplayer na MediaSession. Tumia thamani hasi ikiwa mistari inaonekana kwa kuchelewa, kwa mfano kwenye skrini ya kufungia</string>
+  <string name="morphe_settings_music_lyrics_metadata_title">Vichujio</string>
+  <string name="morphe_music_lyrics_custom_regex_title">Regex ya metadata</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Kielezo cha kawaida (Regular expression) kinachotumika kwenye vichwa, wasanii, na albamu kabla ya kutafuta mashairi na wakati wa kukadiria ikiwa vichwa viwili vinapatana. Acha wazi ili kuzizima zote mbili. Chaguo-msingi huondoa machafuko ya kawaida kama \"Official Video\", \"Remaster\", \"【插曲】\", na \"- Topic\"</string>
+  <string name="morphe_music_lyrics_text_filter_title">Regex ya kichujio cha mashairi</string>
+  <string name="morphe_music_lyrics_text_filter_summary">Regular expression inayotumika kwenye maandishi ya asili ya mashairi pekee (si tafsiri au romanizations). Acha wazi ili kuzima</string>
+  <string name="morphe_music_lyrics_credit_line_regex_title">Alama za mstari wa maelezo</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">Ikiwa mashairi yamechujwa vibaya hadi chini, rekebisha au futa hili. Alama zinazotenganishwa na mkato: mistari yenye alama inayofuatiwa na nukta pacha inaonyeshwa kama taarifa za sifa chini. Acha ikiwa imebaki tupu ili kuzima</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Anza na herufi kubwa</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Inaanza na herufi kubwa kila mstari wa mashairi</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Ondoa alama za uakifishaji za mwisho</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Huondoa nukta, koma, koloni na nukta mkato mwishoni mwa mistari ya mashairi. Alama za kuuliza, alama za mshangao, nukta tatu, alama za nukuu na mabano hubaki</string>
+  <string name="morphe_music_lyrics_text_size_title">Ukubwa wa maandishi</string>
+  <string name="morphe_music_lyrics_text_size_summary">Ukubwa wa maandishi ya mashairi</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Offset ya muda ya kimataifa</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Mashairi yaliyosawazishwa yanafuata uchezaji. Ikiwa yanapishana, rekebisha kiasi cha muda. Sogea mashairi yaliyosawazishwa mbele au nyuma. Tumia thamani chanya ikiwa mashairi yanatangulia wimbo</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Tumia sehemu za SponsorBlock kwa offset ya mashairi</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">Linganisha bila sehemu ambazo SponsorBlock huruka na kusogeza mashairi kwenye sauti iliyotolewa. Ikiwa imezimwa, inajipuuza SponsorBlock kabisa</string>
+  <string name="morphe_music_lyrics_sb_no_video">Wimbo huu hauna id ya video ya kuwasilisha</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">Chanzo: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">Bonyeza na ushikilie kitufe cha kunakili ili kuhifadhi LRC hii; ikiwa unaweza kurekebisha muda na kuyashiriki na watoa huduma wa jamii, tutashukuru</string>
+  <string name="morphe_music_lyrics_translated_by_google">Imetafsiriwa na Google</string>
+  <string name="morphe_music_lyrics_romanized_by_google">Imeandikwa kwa herufi za Kilatini na Google</string>
+  <string name="morphe_music_lyrics_translated_by_ai">Imetafsiriwa na %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">Imeromanishwa na %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">Imeandikwa kwa herufi za Kilatini na %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_hide">Imetafsiriwa</string>
+  <string name="morphe_music_lyrics_translation_language_title">Lugha ya tafsiri</string>
+  <string name="morphe_music_lyrics_translating">Inatafsiri…</string>
+  <string name="morphe_music_lyrics_translate_failed">Hakuweza kutafsiri mashairi</string>
+  <string name="morphe_music_lyrics_romanize_hide">Imeandikwa kwa herufi za Kilatini</string>
+  <string name="morphe_romanize_language_DEFAULT">Kiotomatiki</string>
+  <string name="morphe_music_lyrics_romanizing">Inaandikwa kwa herufi za Kilatini…</string>
+  <string name="morphe_music_lyrics_romanize_failed">Imeshindikana kuandika mashairi kwa herufi za Kilatini</string>
+  <string name="morphe_music_lyrics_translate_only">Imetafsiriwa pekee</string>
+  <string name="morphe_music_lyrics_romanize_only">Iliyoandikwa kwa herufi za Kilatini pekee</string>
+  <string name="morphe_music_lyrics_dual_only">Hali pacha</string>
+  <string name="morphe_music_lyrics_copied">Imenakiliwa kwenye ubao wa kunakili</string>
+  <string name="morphe_music_lyrics_refreshing">Inaboresha</string>
+  <string name="morphe_music_lyrics_refreshed">Imesasishwa</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">Ufunguo wa API ya QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">Ufunguo wa QuickLRC umehifadhiwa. Tumia kitufe cha kusawazisha katika dialog ya utafutaji wa mashairi, au prompt ya jopo wakati wimbo hauna mashairi</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">Ufunguo wa API ya QuickLRC umehifadhiwa</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC haijakubali ufunguo huo</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">Ufunguo wa API ya QuickLRC umefutwa</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC huweka muda wa mashairi ambayo hayana, au hutoa nakala kutoka kwa wimbo, kwa gharama ya credits. Ukiwa na ufunguo uliwekwa, nyimbo zisizo na mashairi hutoa transcription na dialog ya utafutaji hupata kitufe cha usawazishaji</string>
+  <string name="morphe_music_lyrics_transcribe_align">Omba mpangilio wa QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">Inapanga</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">Tumia mpangilio</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">Omba nakala ya QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_working">Inatengeneza nakala</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">Nakala imefutwa</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">Ni nyimbo tu zinazochezwa kutoka YouTube zinazoweza kunukuliwa</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Hakuna mashairi ya kusawazisha - badala yake hutoa nakala</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC haikuweza kuchakata wimbo huu</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">Kredi za QuickLRC zimeisha kwa wimbo huu</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Washa tu watoa huduma unaowatumia, au baki na chaguo-msingi - maombi ya mara kwa mara yanaweza kulemea tovuti ndogo za mashairi za jamii</string>
+  <string name="morphe_music_lyrics_hide_info_title">Ficha mstari wa sifa</string>
+  <string name="morphe_music_lyrics_hide_info_summary">Ficha mstari wa sifa unaoonekana chini ya mashairi</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_title">Badilisha nafasi ya tafsiri na uandishi wa kimatamshi</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Kiolezo cha Prompt</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Viashiria: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt imehifadhiwa</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt imehifadhiwa, lakini kituo cha AI hakiwezi kutumiwa bado. Kusanidi kwanza chini ya Mipangilio ya AI</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Kuweka upya prompt</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Mipangilio ya Tafsiri &amp; Romanization imehifadhiwa</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Mipangilio imerejeshwa katika chaguo-msingi</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">URL ya msingi lazima ianze na http:// au https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Inathibitisha muunganisho…</string>
+  <string name="morphe_music_lyrics_ai_config_fetching_models">Inachukua mifano…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_success">Chagua Mfano</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Imeshindwa kuchukua mifano. Angalia ufunguo wa API au muunganisho.</string>
+  <string name="morphe_music_lyrics_ai_config_model_label">Mfano</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_label">URL ya Msingi</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_label">Ufunguo wa API (hiari)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_label">Mwili wa ziada wa ombi (JSON ya hiari)</string>
+  <string name="morphe_music_lyrics_ai_config_deepl_key_label">Ufunguo wa uthibitishaji (Bure au Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Zima aikoni nzito</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Rudisha tabu za Player Up next, Mashairi, na Zinazohusiana</string>
 </resources>

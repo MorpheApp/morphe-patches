@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Çoxvariantlı</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Köhnə YouTube ayarları görünüşün bərpa et</string>
+  <string name="morphe_native_snackbar_title">Mesajları YouTube bildiriş cərgəsində göstər</string>
+  <string name="morphe_native_snackbar_summary">Morphe mesajları, məsələn oynadıcı düyməsinin təsdiqi, açılan pəncərə əvəzinə YouTube bildiriş cərgəsində göstərilir</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Fon oynatma məhdudiyyətlərini təmizlə</string>
   <string name="morphe_shorts_disable_background_playback_title">Arxa plan oynatmanı qapat</string>
@@ -59,6 +61,7 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_account_menu_title">Kitabxananı / Aşağı menyu filtrinizi aktivləşdirin</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Kitabxana / Aşağı menyu filtriniz</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Filtrləmək üçün Kitabxana / Siz alt menyu adlarını yeni sətirlərlə ayrılmış şəkildə qeyd et</string>
+  <string name="morphe_hide_account_menu_downloads_title">Yükləmələri Gizlət</string>
   <string name="morphe_hide_album_cards_title">Albom kartlarını gizlət</string>
   <string name="morphe_hide_album_cards_summary">Albom kartlarını sənətkar təsviri altında gizlədir</string>
   <string name="morphe_hide_artist_cards_title">Sənətkar kartlarını gizlət</string>
@@ -113,6 +116,9 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_surveys_title">Təftişləri gizlət</string>
   <string name="morphe_hide_surveys_summary">Axın tövsiyəsi dəqiqliyi haqqında təftişləri və xatırlatmaları gizlət</string>
   <string name="morphe_hide_ticket_shelf_title">Bilet bölməsin gizlət</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">\"Əlçatmaz videolar gizlidir\" panelini gizlət</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Pleylistlərdə \"Əlçatmaz videolar gizlidir\" panelini gizlədir</string>
   <string name="morphe_hide_upload_time_title">Yüklənilmə vaxtını gizlət</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Məhdudiyyətlər:
@@ -393,6 +399,9 @@ Məhdudiyyətlər:
   <string name="morphe_hide_shopping_links_title">Alış-veriş linklərini gizlət</string>
   <string name="morphe_hide_video_ads_title">Video reklamlarını gizlət</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium reklamlarını gizlət</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Yüklənir…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Hazırkı kanal:</string>
   <string name="morphe_channel_whitelist_add">Ağ siyahıya əlavə et</string>
@@ -409,6 +418,9 @@ Məhdudiyyətlər:
   <string name="morphe_channel_search_results">Kanal axtarış nəticələri</string>
   <string name="morphe_channel_search_no_results">Bu kanalda heç nə tapılmadı</string>
   <string name="morphe_channel_search_failed">Bu kanalda axtarış etmək olmadı</string>
+  <string name="morphe_channel_search_videos">Videolar</string>
+  <string name="morphe_channel_search_posts">Postlar</string>
+  <string name="morphe_channel_search_no_posts">Bu kanalda uyğun post yoxdur</string>
   <string name="morphe_channel_search_sort_relevance">Uyğunluq</string>
   <string name="morphe_channel_search_sort_most_viewed">Ən çox baxılan</string>
   <string name="morphe_channel_search_sort_least_viewed">Ən az baxılan</string>
@@ -435,6 +447,26 @@ Məhdudiyyətlər:
   <string name="morphe_feed_long_press_menu_summary">Axında videonun istənilən yerinə toxunub saxlamaq onun menyusunu açır</string>
   <string name="morphe_feed_watch_later_button_title">Miniatürlərdə Daha sonra izlə düyməsini göstər</string>
   <string name="morphe_feed_watch_later_button_summary">Daha sonra izlə düyməsi axın videolarının miniatürlərində göstərilir. Ona toxunub saxlamaq Pleylistdə saxlanı açır</string>
+  <!-- interaction.postimages.postImageDownloadPatch -->
+  <string name="morphe_post_image_download_title">Post şəkillərini yüklə</string>
+  <string name="morphe_post_image_download_summary">Yükləmə düyməsi Şəkil və ya GIF olan postların Paylaş düyməsi ilə yanaşı göstərilir və yükləmə elementi menyularına əlavə edilir</string>
+  <string name="morphe_post_image_download_flyout">Şəkilləri yüklə</string>
+  <string name="morphe_post_image_download_flyout_single">Şəkli yüklə</string>
+  <string name="morphe_post_image_download_started">%s şəkli yükləyir…</string>
+  <string name="morphe_post_image_download_started_single">Şəkli yükləyir…</string>
+  <string name="morphe_post_image_download_saved">%1$s şəkil %2$s qovluğunda saxlanıldı</string>
+  <string name="morphe_post_image_download_saved_single">Şəkil %s qovluğunda saxlanıldı</string>
+  <string name="morphe_post_image_download_failed">Şəkli yükləmək olmadı</string>
+  <string name="morphe_post_image_download_not_found">Bu postda şəkil tapılmadı</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Postları tərcümə et</string>
+  <string name="morphe_post_translate_summary">Məzmun yaradıcısı postlarını tərcümə etmək üçün açılan menyu elementi əlavə edir</string>
+  <string name="morphe_post_translate_language_title">Post tərcümə dili</string>
+  <string name="morphe_post_translate_flyout">Tərcümə et</string>
+  <string name="morphe_post_translate_flyout_original">Orijinalı göstər</string>
+  <string name="morphe_post_translate_started">Tərcümə olunur…</string>
+  <string name="morphe_post_translate_failed">Postları tərcümə etmək olmadı</string>
+  <string name="morphe_post_translate_same_language">Post artıq tərcümə dilindədir</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Soruş elementini açılan menyuya əlavə et</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Axın açılan menyusuna video xülasəsi elementi əlavə edir</string>
@@ -454,6 +486,15 @@ Məhdudiyyətlər:
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Axının miniatürünün bəyənmə sayını göstər</string>
   <string name="morphe_ryd_feed_like_ratio_title">Axının miniatürünün bəyənmə faiz nisbətini göstər</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Şərhləri axtar</string>
+  <string name="morphe_search_comments_summary">Yalnız axtarılan sözlərin hamısını ehtiva edən yüklənilmiş şərhləri göstərmək üçün şərhlərdəki axtarış düyməsinə toxun. İfadəni axtarmaq üçün sözləri dırnaq arasında yaz</string>
+  <string name="morphe_search_comments_dialog_title">Şərhləri axtar</string>
+  <string name="morphe_search_comments_hint">Axtarılacaq sözlər</string>
+  <string name="morphe_search_comments_search">Axtarış</string>
+  <string name="morphe_search_comments_clear">Təmizlə</string>
+  <string name="morphe_search_comments_applied">Onları axtarmaq üçün çeşidləmə sırasını dəyişin və ya şərhləri təkrar açın</string>
+  <string name="morphe_search_comments_cleared">Axtarış təmizləndi. Bütün şərhləri göstərmək üçün çeşidləmə sırasını dəyişdir və ya şərhləri təkrar aç</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\"TV-yə daxil ol\" ani pəncərəsini qapat</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\"Cihazlarınızı qoşun\" açılan pəncərəsini qapat</string>
@@ -464,6 +505,34 @@ Məhdudiyyətlər:
   <string name="morphe_external_downloader_screen_summary">Üçüncü tərəf yükləmə tətbiqləri ilə videoları, podkastları və ya mahnıları yüklə</string>
   <string name="morphe_external_downloader_overlay_button_title">Oynadıcı örtüyü yükləmə düyməsini göstər</string>
   <string name="morphe_external_downloader_overlay_button_summary">Video oynadıcıda xarici yükləyicinizi açan düyməni göstərir</string>
+  <string name="morphe_external_downloader_quick_menu_title">Toxunuşda sürətli yüklə</string>
+  <string name="morphe_external_downloader_quick_menu_summary">Fonda yükləmək üçün sorğu göstərir. Yükləyicini açmaq üçün toxunub saxlayın. YTDLnis və YTindir ilə işləyir</string>
+  <string name="morphe_external_downloader_mark_watched_title">Yükləmələri izlənildi kimi işarələ</string>
+  <string name="morphe_external_downloader_mark_watched_summary">Xarici yükləyici ilə yüklənilən videolar YouTube baxış tarixçənizə əlavə edilir</string>
+  <string name="morphe_external_downloader_quick_video_quality">Full HD (1080p)</string>
+  <string name="morphe_external_downloader_quick_audio_quality">Orta (192 kbps)</string>
+  <string name="morphe_external_downloader_quick_menu_header">Sürətli yükləmə</string>
+  <string name="morphe_external_downloader_quick_video">Video</string>
+  <string name="morphe_external_downloader_quick_audio">Səs</string>
+  <string name="morphe_external_downloader_quick_options">Bütün seçimlər</string>
+  <string name="morphe_shorts_download_flyout_button_title">Shorts menyusunda yükləməni göstər</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Shorts oynadıcının menyusuna yükləmə elementi əlavə edir</string>
+  <string name="morphe_shorts_download_flyout_title">Yüklə</string>
+  <string name="morphe_export_download_folder_title">Saxlanılmış videoları ixrac et</string>
+  <string name="morphe_export_download_folder_summary">"Tətbiqdaxili yükləmələr açılan menyusunu istifadə etməklə tətbiqdə saxlanılan videoları cihaz yaddaşınıza ixrac edin. İxrac qovluğunu dəyişdirmək üçün toxunun
+
+İxrac qovluğu: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">İxrac qovluğu</string>
+  <string name="morphe_export_download_folder_change">Qovluğu dəyişdir</string>
+  <string name="morphe_export_download_folder_changed">İxrac qovluğu dəyişdirildi</string>
+  <string name="morphe_export_download_folder_reset">İxrac qovluğu sıfırlandı</string>
+  <string name="morphe_export_download_flyout_title">Cihaza köçür</string>
+  <string name="morphe_export_download_started">Videonu ixrac edir</string>
+  <string name="morphe_export_download_progress">İxrac olunan video: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Video köçürmələri</string>
+  <string name="morphe_export_download_saved">Video %s ünvanına ixrac edildi</string>
+  <string name="morphe_export_download_failed">Videonu ixrac etmək olmadı</string>
+  <string name="morphe_export_download_canceled">İxrac ləğv edildi</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Səs üstələyici tərcümə</string>
   <string name="morphe_vot_screen_summary">Cihazdakı mətni nitqə çevirməni istifadə edərək video titrlərini oynatma ilə sinxronlaşdırıb ucadan oxu</string>
@@ -538,6 +607,19 @@ API açarınız heç vaxt paylaşılmamalıdır. Buna girişi olan hər bir kəs
   <string name="morphe_pip_button_overlay_title">Şəkil içində şəkil düyməsini göstər</string>
   <string name="morphe_pip_button_flyout_title">Şəkil içində şəkil menyusunu göstər</string>
   <string name="morphe_pip_button_flyout_name">Şəkil İçində Şəkilə Keç</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Şəkil içində şəkil fəaliyyətləri</string>
+  <string name="morphe_pip_actions_screen_summary">Şəkil içində şəkildə göstərilən düymələri dəyişdir</string>
+  <string name="morphe_pip_action_left_title">Sol düymə</string>
+  <string name="morphe_pip_action_center_title">Mərkəzi düymə</string>
+  <string name="morphe_pip_action_right_title">Sağ düymə</string>
+  <string name="morphe_pip_action_entry_default">İlkin</string>
+  <string name="morphe_pip_action_entry_previous">Əvvəlki video</string>
+  <string name="morphe_pip_action_entry_next">Növbəti video</string>
+  <string name="morphe_pip_action_entry_rewind">10 saniyə geriyə</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 saniyə sürətlə irəliyə</string>
+  <string name="morphe_pip_action_entry_play_pause">Oynat/dayandır</string>
+  <string name="morphe_pip_action_entry_background_playback">Fon oynatma</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Hamısını oynat düyməsini göstər</string>
   <string name="morphe_play_all_button_summary">"Kanaldan bütün videoların pleylistini yaratmaq üçün toxun, geri almaq üçün toxun və saxla
@@ -570,23 +652,21 @@ Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Daha sonra izləmək üçün saxla</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Oynadıcının tənzimləmələr menyusunda \"Daha sonra İzləmək üçün Saxla\" düyməsini göstər</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Video tənzimləmələri menyusundan cari izlənilən videonu \"Sonra izləyində\" saxlamağa imkan verir</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Uşaq videolarında Daha sonra İzləmək üçün Saxlanı göstər</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Uşaqlarla əlaqəli videoları açılan menyudan \"Sonra izləyin\" bölməsində saxlamağa imkan verir</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Shorts açılan menyusunda \"Daha sonra İzləmək üçün Saxla\" düyməsini göstər</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Shorts-ları açılan menyudan \"Sonra izləyin\" bölməsində saxlamağa imkan verir</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Daha sonra izləni pleylistə yönləndir</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Sonra izlə</string>
   <string name="morphe_queue_flyout_title">Morphe növbəsinə əlavə et</string>
   <string name="morphe_queue_restore_title">​Sessiyalar arasında növbəni qoru</string>
   <string name="morphe_queue_restore_summary">Tətbiq yenidən başladıldıqdan sonra növbə qorunur</string>
   <string name="morphe_swap_save_and_queue_actions_title">Saxla və Növbə fəaliyyətlərini dəyişdir</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Növbə seçimləri üçün toxun, sonra Baxmağa saxlamaq üçün toxun və saxla</string>
-  <string name="morphe_queue_override_flyout_menu_title">Axında açılan növbə düyməsini əvəzlə</string>
-  <string name="morphe_queue_override_flyout_menu_summary">YouTube növbəsi əvəzinə Morphe növbəsini açır</string>
+  <!-- 'Play next in queue' should be translated using the same localized wording YouTube displays the feed flyout item. -->
+  <string name="morphe_queue_type_title">Növbədə növbətidə oynat növü</string>
+  <string name="morphe_queue_type_entry_1">İlkin</string>
+  <string name="morphe_queue_type_entry_2">Yerli növbə</string>
+  <string name="morphe_queue_type_entry_3">Morphe növbəsi</string>
+  <string name="morphe_queue_type_entry_4">Morphe növbəsinin müştəri tərəfi</string>
   <string name="morphe_queue_add_flyout_menu_title">Axına açılan növbə menyusu elementini əlavə et</string>
   <string name="morphe_queue_add_flyout_menu_summary">Əlavə açılan elementi əlavə edir. \"Növbəyə əlavə et\" görünmürsə, bunu aktivləşdir</string>
-  <string name="morphe_local_queue_title">Premium üslubu növbəsi</string>
-  <string name="morphe_local_queue_summary">"Morphe növbəsini cihazda olan, ardıcıl oynadılan və sürüşdürərək sıralana bilən növbə ilə əvəzləyir
-​
-Məlumat: Növbədəki növbəti video yalnız YouTube ekranda olduqda başlayır"</string>
   <string name="morphe_local_queue_sheet_title">Növbə</string>
   <string name="morphe_local_queue_open">Növbə (%s)</string>
   <string name="morphe_local_queue_clear">Hamısını təmizlə</string>
@@ -631,6 +711,20 @@ Məlumat: Növbədəki növbəti video yalnız YouTube ekranda olduqda başlayı
   <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Videonu sil və yenidən yüklə</string>
   <string name="morphe_queue_manager_open_queue">Növbəni aç</string>
   <string name="morphe_queue_manager_save_queue">Növbəni pleylistdə saxla</string>
+  <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_playlist_queue_saved">Pleylist saxlanıldı</string>
+  <string name="morphe_native_playlist_queue_saved_to">%s da saxlanıldı</string>
+  <string name="morphe_native_playlist_queue_clear">Növbəni təmizlə</string>
+  <string name="morphe_native_playlist_queue_cleared">Növbə təmizləndi</string>
+  <string name="morphe_native_playlist_queue_title">Növbə</string>
+  <string name="morphe_native_playlist_queue_last">Növbədə sonuncu oynat</string>
+  <string name="morphe_native_playlist_queue_next">Növbədə növbətidə oynat</string>
+  <string name="morphe_native_playlist_queue_unavailable">YouTube növbəni göstərə bilmədi.</string>
+  <string name="morphe_native_playlist_queue_not_ready">Növbə bu video üçün hazır deyil. Video oynadıcını aç və təkrar cəhd et.</string>
+  <string name="morphe_native_playlist_queue_mix_choice">Miks növbəyə əlavə edilsin, yoxsa Miksə baxılsın?</string>
+  <string name="morphe_native_playlist_queue_watch_mix">Bax</string>
+  <string name="morphe_native_playlist_queue_add_mix">Növbəyə əlavə et</string>
+  <string name="morphe_native_playlist_queue_loading_mix">Miksi Yükləyir…</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Canlı profildən kanalı aç</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Kanalın profilinə toxunduqda canlı yayımın açılmasın əngəlləyir</string>
@@ -782,8 +876,6 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <string name="morphe_auto_captions_style_entry_2">Heç vaxt göstərmə</string>
   <string name="morphe_auto_captions_style_entry_3">Səsli olduqda göstər</string>
   <string name="morphe_auto_captions_style_entry_4">Səssiz olduqda göstər</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Avtomatik titrləri göstər</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Avtomatik titrləri gizlət</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Üstünlük verilmiş titr dili</string>
   <string name="morphe_preferred_caption_language_summary">Əvvəlcə təminatçının altyazılarını seçir, sonra avtomatik üstünlük verilən dilə tərcümə edir</string>
@@ -807,6 +899,8 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <string name="morphe_fix_transcript_title">Transkripti düzəlt</string>
   <string name="morphe_fix_transcript_summary">Transkripti yükləməyə mane ola biləcək ilkin status yoxlanılması uğursuzluğun həll edir</string>
   <string name="morphe_captions_in_pip_title">Şəkil içində şəkildə titrləri göstər</string>
+  <string name="morphe_stable_caption_blocks_title">Stabil titr blokları</string>
+  <string name="morphe_stable_caption_blocks_summary">Avtomatik titrləri sabit, rahat oxunan bloklarda qruplaşdırır. Bəzi sözlər deyilməzdən əvvəl görünə bilər. Yenidən başlatma lazımdır.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Fəaliyyət düymələri</string>
   <string name="morphe_navigation_buttons_screen_summary">Aşağı fəaliyyət cərgəsində hansı düymələr görünür seç</string>
@@ -838,12 +932,18 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <string name="morphe_narrow_navigation_buttons_summary">Düymələr arasında üfüqi boşluğu azaldır</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Etiketsiz fəaliyyət düymələrini qapat</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTube etiketsiz göndərirsə, fəaliyyət düymələrini etiketlərlə göstərir</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Alət cərgəsi fəaliyyət səhifələrini qapat</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">YouTube onu Əsas Səhifənin yuxarısındakı vərəqə köçürərsə, fəaliyyət cərgəsində Abunəlikləri göstərir</string>
   <string name="morphe_navigation_bar_animations_title">Fəaliyyət cərgəsi animasiyalarını aktivləşdir</string>
   <string name="morphe_navigation_bar_animations_summary">Tabellər arasında keçərkən keçidləri canlandırır</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Fəaliyyət cərgəsin avtomatik gizlətməsini qapat</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Sürüşdürərkən fəaliyyət zolağın görünən saxlayır</string>
-  <string name="morphe_disable_translucent_navigation_title">Yarımşəffaf fəaliyyət cərgəsin qapat</string>
-  <string name="morphe_disable_translucent_navigation_summary">Fəaliyyət və status cərgəsini tamamilə qeyri-şəffaf edir</string>
+  <string name="morphe_navigation_bar_style_title">Fəaliyyət cərgəsi üslubu</string>
+  <string name="morphe_navigation_bar_style_entry_1">İlkin</string>
+  <string name="morphe_navigation_bar_style_entry_2">Yarımşəffaf</string>
+  <string name="morphe_navigation_bar_style_entry_3">Şəffaf</string>
+  <string name="morphe_navigation_bar_style_entry_4">Tutqun</string>
+  <string name="morphe_navigation_bar_style_user_dialog_message">Bu üslub cihazınız və ya YouTube versiyanız tərəfindən dəstəklənməyə bilər və tərtibat problemlərinə və ya çökmələrə səbəb ola bilər</string>
   <string name="morphe_toolbar_screen_title">Alət cərgəsi</string>
   <string name="morphe_toolbar_screen_summary">Alətlər zolağında hansı elementlər görünür seç</string>
   <string name="morphe_hide_toolbar_cast_button_title">Yayımla düyməsini gizlət</string>
@@ -1058,6 +1158,7 @@ Planşet tərtibatı
 • Shorts-da Remiks düyməsi və Səs düyməsi mövcud deyil
 • \"Daha çox video\" örtüyü mövcud olmaya bilər
 • Yığılmamış köhnə video fəaliyyət cizgisi göstərilir
+• Açılan menyu elementləri düzgün işləməyə bilər
 
 Avtomobil tərtibatı
 • Axın mövzular və kanallara görə qruplaşdırılır
@@ -1071,7 +1172,6 @@ Avtomobil tərtibatı
   <string name="morphe_tablet_layout_in_player_summary">"Köhnə oynadıcı tərtibatını bərpa edir
 
 Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'Daha çox video' örtüyü mövcud olmaya bilər"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Bunun aktivləşdirilməsi oynadıcı tərtibatının bəzi xüsusiyyətlərini, məsələn, şərh bölməsini və ya oynadıcının altında göstərilən \'Daha çox video\' hissəsini sıradan çıxara bilər</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Köhnə titrlərin davranışını bərpa et</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Köhnə pleylistdə saxlanı bərpa et</string>
@@ -1149,6 +1249,8 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_miniplayer_disable_resuming_summary">Tətbiqin açılışında görünən, YouTube Premium xüsusiyyəti olan \"İzləməyə davam et\" kiçik oynadıcısını qapadır</string>
   <string name="morphe_miniplayer_screen_title">Kiçik oynadıcı</string>
   <string name="morphe_miniplayer_screen_summary">Kiçildilmiş video oynadıcı görünüşünü və davranışını fərdiləşdir</string>
+  <string name="morphe_miniplayer_not_available_title">Əlavə kiçik oynadıcılar</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube bütün əlavə kiçik oynadıcıları sildi. Daha çox kiçik oynadıcı növünü bərpa etmək üçün YouTube 21.28.208-i və ya daha köhnəni yamaqla</string>
   <string name="morphe_miniplayer_type_title">Kiçik oynadıcı növü</string>
   <string name="morphe_miniplayer_hide_title_title">Başlığı və kanalı gizlət</string>
   <string name="morphe_miniplayer_type_entry_0">Qapalıdı</string>
@@ -1189,6 +1291,12 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_fix_status_bar_layout_title">Üst cərgələri örtən status panelini düzəlt</string>
   <string name="morphe_fix_status_bar_layout_summary">Status zolağının tərtibatını sabit saxlayır, beləliklə o, yuxarı zolaqları örtmür və oynadıcı yuxarısında boş yer saxlamır. Tətbiq çöksə və ya yuxarı zolaqlar yanlış görünsə, bunu qapat</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Parlama</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Parıltı 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Parıltı 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Parlaq effektli ekran bu cihaz tərəfindən dəstəklənmir</string>
+  <string name="morphe_splash_screen_duration_title">Başlatma animasiya müddəti</string>
+  <string name="morphe_splash_screen_duration_summary">Parıltılı animasiya nə qədər davam edir. Onu ötürmək üçün animasiyaya toxun</string>
   <string name="morphe_theme_color_light_title">İşıqlı kolorit fonu</string>
   <string name="morphe_theme_color_light_entry_2">Ağ</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Ağ)</string>
@@ -1211,6 +1319,9 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_seekbar_custom_color_accent_summary">Videonun çəkmə cizgisinin ikinci dərəcəli rəngini təyin et</string>
   <string name="morphe_seekbar_custom_color_invalid">Etibarsız çevirmə cizgisi rəng dəyəri</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Orijinal analoq</string>
+  <string name="morphe_custom_branding_icon_entry_9">Orijinal tort</string>
+  <string name="morphe_custom_branding_icon_entry_10">Orijinal metal</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Sərlövhə simvolu</string>
   <string name="morphe_header_logo_entry_1">İlkin</string>
@@ -1339,6 +1450,11 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Yeni ilkin oynatma sürəti saxlanıldıqda bildiriş göstərir</string>
   <string name="morphe_playback_speed_default_title">İlkin oynatma sürəti</string>
   <string name="morphe_shorts_playback_speed_default_title">Shorts-da ilkin oynatma sürəti</string>
+  <string name="morphe_shorts_remember_playback_speed_title">Shorts-da oynatma sürətini xatırla</string>
+  <string name="morphe_shorts_remember_playback_speed_summary">Əllə seçdiyiniz Shorts sürətini bütün gələcək Shorts-a tətbiq edir. Qapadıldıqda, Shorts oynadıcını bağladıqdan sonra sürət standarta qayıdır</string>
+  <string name="morphe_shorts_playback_speed_flyout_button_title">Shorts menyusunda Oynatma sürətini göstər</string>
+  <string name="morphe_shorts_playback_speed_flyout_button_summary">Shorts oynadıcı menyusuna Oynatma sürəti elementi əlavə edir</string>
+  <string name="morphe_shorts_playback_speed_flyout_title">Oynatma sürəti · %s</string>
   <string name="morphe_remember_playback_speed_toast">İlkin oynatma sürəti %s kimi dəyişdirildi</string>
   <string name="morphe_disable_playback_speed_music_title">Musiqi üçün normal sürət istifadə et</string>
   <string name="morphe_disable_playback_speed_music_summary">Musiqi videolarını həmişə 1.0x sürətlə oynat</string>
@@ -1569,4 +1685,17 @@ Məhdudiyyət: Köhnə üslub üçün \"Daha çox video\" örtüyünə qayıdır
   <string name="morphe_series_tracker_no_search_results">Seriya tapılmadı</string>
   <string name="morphe_series_tracker_untitled_episode">Başlıqsız epizod</string>
   <string name="morphe_series_tracker_unavailable_episode">Əlçatmaz epizod</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Niconico şərhləri</string>
+  <string name="morphe_niconico_comments_screen_summary">Canlı söhbəti və təkrar oxudulan söhbəti video üzərində axan şərhlər kimi göstər</string>
+  <string name="morphe_niconico_comments_summary">Video oynadıcıda örtük düyməsini göstərir. Şərhləri göstərmək və ya gizlətmək üçün toxun, sürətli tənzimləmələr üçün basıb saxla</string>
+  <string name="morphe_niconico_comments_font_size_title">Şərh şriftinin ölçüsü</string>
+  <string name="morphe_niconico_comments_font_size_summary">Şərhlərin mətn ölçüsü (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Şərhin qeyri-şəffaflığı</string>
+  <string name="morphe_niconico_comments_opacity_summary">Şərh mətninin və arxa planların qeyri-şəffaflığı</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Səyahət müddəti</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Şərhlərin ekrandan keçməsi üçün tələb olunan saniyə dəyəri. Kiçik dəyərlər daha sürətli hərəkət edir</string>
+  <string name="morphe_niconico_comments_max_length_title">Maksimum şərh uzunluğu</string>
+  <string name="morphe_niconico_comments_max_length_summary">Bundan çox simvolu olan şərhləri gizlədir. Hər bir emoji bir simvol kimi sayılır</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">Limitsiz</string>
 </resources>

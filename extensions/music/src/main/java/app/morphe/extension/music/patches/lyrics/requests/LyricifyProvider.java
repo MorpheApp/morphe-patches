@@ -29,8 +29,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
-import app.morphe.extension.shared.Logger;
 import app.morphe.extension.music.patches.lyrics.parsers.LyricifyParser;
+import app.morphe.extension.shared.Logger;
 
 public final class LyricifyProvider implements LyricsProvider {
 
@@ -48,7 +48,84 @@ public final class LyricifyProvider implements LyricsProvider {
     private static final ConcurrentHashMap<String, Resolved> resolvedCache =
             new ConcurrentHashMap<>();
 
-    private record Resolved(String isrc, List<String> titles, List<String> artists) {}
+    private static HttpURLConnection openApi(String url) throws IOException {
+        final HttpURLConnection conn =
+                (HttpURLConnection) new java.net.URL(url).openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("User-Agent", USER_AGENT);
+        conn.setRequestProperty("Accept", "application/json");
+        conn.setRequestProperty("Accept-Encoding", "gzip");
+        conn.setConnectTimeout(5000);
+        conn.setReadTimeout(8000);
+        return conn;
+    }
+
+    @Nullable
+    private static Resolved resolveFromCreditsFm(String title, String artist) {
+        HttpURLConnection connection = null;
+        try {
+            final String url = "https://api.credits.fm/v1/resolve/track";
+            LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
+            connection = (HttpURLConnection) new java.net.URL(url).openConnection();
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setRequestProperty("Accept-Encoding", "identity");
+            connection.setRequestProperty("User-Agent", USER_AGENT);
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(15000);
+            connection.setDoOutput(true);
+
+            final String body = new JSONObject()
+                    .put("name", title)
+                    .put("artist", artist)
+                    .toString();
+            final byte[] bodyBytes = body.getBytes(StandardCharsets.UTF_8);
+            connection.setFixedLengthStreamingMode(bodyBytes.length);
+            try (OutputStream output = connection.getOutputStream()) {
+                output.write(bodyBytes);
+            }
+
+            final int code = connection.getResponseCode();
+            if (code == 200) {
+                final String responseBody = LyricsRequests.parseGzipString(connection);
+                if (responseBody.isEmpty()) {
+                    return null;
+                }
+                JSONObject response = new JSONObject(responseBody);
+                final String isrc = LyricsRequests.optString(response, "isrc");
+                if (isrc == null || isrc.isEmpty()) {
+                    return null;
+                }
+                final List<String> titles = new ArrayList<>(2);
+                final String recordingTitle =
+                        LyricsRequests.optString(response, "recording_title");
+                if (recordingTitle != null) {
+                    titles.add(recordingTitle);
+                }
+                final String songTitle = LyricsRequests.optString(response, "song_title");
+                if (songTitle != null && !titles.contains(songTitle)) {
+                    titles.add(songTitle);
+                }
+                return new Resolved(isrc, titles,
+                        LyricsRequests.stringList(response, "artist_names"));
+            }
+        } catch (Exception e) {
+            Logger.printDebug(() -> "Could not read the ISRC", e);
+        } finally {
+            if (connection != null) connection.disconnect();
+        }
+        return null;
+    }
+
+    private static String generateUsername() {
+        final int len = 5 + RNG.nextInt(8);
+        final StringBuilder sb = new StringBuilder(len);
+        for (int i = 0; i < len; i++) {
+            sb.append((char) ('a' + RNG.nextInt(26)));
+        }
+        return sb.toString();
+    }
 
     @Override
     public String name() {
@@ -73,7 +150,8 @@ public final class LyricifyProvider implements LyricsProvider {
         final String isrc = resolved.isrc();
 
         final String username = generateUsername();
-        final String isrcParam = base64NoWrap(isrc);
+        final String isrcParam = Base64.encodeToString(
+                isrc.getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
         final String isrcEncoded = LyricsRequests.encode(isrcParam);
 
         final String url = API_BASE
@@ -159,100 +237,19 @@ public final class LyricifyProvider implements LyricsProvider {
 
         final String formatType = isSyllable ? "lys" : "lyl";
         return FetchResult.searched(new Lyrics(
-                lines,
-                name(),
-                true,
-                null,
-                translations,
-                null,
-                creditLines.isEmpty() ? null : creditLines,
-                text,
-                formatType,
-                null),
+                        lines,
+                        name(),
+                        true,
+                        null,
+                        translations,
+                        null,
+                        creditLines.isEmpty() ? null : creditLines,
+                        text,
+                        formatType,
+                        null),
                 resolved.titles(), resolved.artists(), 0L, track);
     }
 
-    private static HttpURLConnection openApi(String url) throws IOException {
-        final HttpURLConnection conn =
-                (HttpURLConnection) new java.net.URL(url).openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("User-Agent", USER_AGENT);
-        conn.setRequestProperty("Accept", "application/json");
-        conn.setRequestProperty("Accept-Encoding", "gzip");
-        conn.setConnectTimeout(5000);
-        conn.setReadTimeout(8000);
-        return conn;
-    }
-
-    @Nullable
-    private static Resolved resolveFromCreditsFm(String title, String artist) {
-        HttpURLConnection connection = null;
-        try {
-            final String url = "https://api.credits.fm/v1/resolve/track";
-            LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
-            connection = (HttpURLConnection) new java.net.URL(url).openConnection();
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("Content-Type", "application/json");
-            connection.setRequestProperty("Accept", "application/json");
-            connection.setRequestProperty("Accept-Encoding", "identity");
-            connection.setRequestProperty("User-Agent", USER_AGENT);
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(15000);
-            connection.setDoOutput(true);
-
-            final String body = new JSONObject()
-                    .put("name", title)
-                    .put("artist", artist)
-                    .toString();
-            final byte[] bodyBytes = body.getBytes(StandardCharsets.UTF_8);
-            connection.setFixedLengthStreamingMode(bodyBytes.length);
-            try (OutputStream output = connection.getOutputStream()) {
-                output.write(bodyBytes);
-            }
-
-            final int code = connection.getResponseCode();
-            if (code == 200) {
-                final String responseBody = LyricsRequests.parseGzipString(connection);
-                if (responseBody.isEmpty()) {
-                    return null;
-                }
-                JSONObject response = new JSONObject(responseBody);
-                final String isrc = LyricsRequests.optString(response, "isrc");
-                if (isrc == null || isrc.isEmpty()) {
-                    return null;
-                }
-                final List<String> titles = new ArrayList<>(2);
-                final String recordingTitle =
-                        LyricsRequests.optString(response, "recording_title");
-                if (recordingTitle != null) {
-                    titles.add(recordingTitle);
-                }
-                final String songTitle = LyricsRequests.optString(response, "song_title");
-                if (songTitle != null && !titles.contains(songTitle)) {
-                    titles.add(songTitle);
-                }
-                return new Resolved(isrc, titles,
-                        LyricsRequests.stringList(response, "artist_names"));
-            }
-        } catch (Exception e) {
-            Logger.printDebug(() -> "Could not read the ISRC", e);
-        } finally {
-            if (connection != null) connection.disconnect();
-        }
-        return null;
-    }
-
-    private static String generateUsername() {
-        final int len = 5 + RNG.nextInt(8);
-        final StringBuilder sb = new StringBuilder(len);
-        for (int i = 0; i < len; i++) {
-            sb.append((char) ('a' + RNG.nextInt(26)));
-        }
-        return sb.toString();
-    }
-
-    private static String base64NoWrap(String input) {
-        return Base64.encodeToString(
-                input.getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
+    private record Resolved(String isrc, List<String> titles, List<String> artists) {
     }
 }

@@ -20,13 +20,6 @@ public class ChangeMiniplayerColorPatch {
     @Nullable
     private static volatile Integer lastMiniplayerColor;
 
-    /**
-     * Baseline color from YTM's empty-state callback at app start; every later
-     *  call carrying this value is treated as "back to empty".
-     */
-    @Nullable
-    private static volatile Integer initialCapturedColor;
-
     private static volatile WeakReference<View> navigationBarRef = new WeakReference<>(null);
 
     @Nullable
@@ -48,22 +41,8 @@ public class ChangeMiniplayerColorPatch {
     public static void setLastMiniplayerColor(int color) {
         if (SystemClock.uptimeMillis() < dismissWindowUntilMs) return;
 
-        final Integer initial = initialCapturedColor;
-        if (initial == null) {
-            initialCapturedColor = color;
-            return;
-        }
-
-        if (color == initial) {
-            if (lastMiniplayerColor == null) return;
-            lastMiniplayerColor = null;
-            final Integer defaultColor = defaultNavigationBarColor;
-            if (defaultColor != null) postNavigationBarColor(defaultColor);
-            return;
-        }
-
         lastMiniplayerColor = color;
-        applyToNavigationBar(color);
+        if (Settings.CHANGE_NAVIGATION_BAR_COLOR.get()) postNavigationBarColor(color);
     }
 
     /**
@@ -94,11 +73,6 @@ public class ChangeMiniplayerColorPatch {
         dismissWindowUntilMs = SystemClock.uptimeMillis() + DISMISS_WINDOW_MS;
         final Integer defaultColor = defaultNavigationBarColor;
         if (defaultColor != null) postNavigationBarColor(defaultColor);
-    }
-
-    private static void applyToNavigationBar(int color) {
-        if (!Settings.CHANGE_NAVIGATION_BAR_COLOR.get()) return;
-        postNavigationBarColor(color);
     }
 
     private static void postNavigationBarColor(int color) {

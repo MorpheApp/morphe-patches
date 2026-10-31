@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">স্টার্টআপ অ্যানিমেশন</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">বন্ধ রাখুন</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">রং</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">একরঙা</string>
+  <string name="morphe_splash_screen_style_title">স্টার্টআপ অ্যানিমেশন</string>
+  <string name="morphe_splash_screen_style_entry_1">বন্ধ রাখুন</string>
+  <string name="morphe_splash_screen_style_entry_2">রং</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe কালার</string>
+  <string name="morphe_splash_screen_style_entry_4">মনোক্রোম</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe মনোক্রোম</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">নতুন সেটিংস হাইলাইট করুন</string>
+  <string name="morphe_settings_new_indicator_days_summary">আপডেটের মাধ্যমে যুক্ত সেটিংস এবং অপশনগুলোর পাশে কত দিন একটি ডট দেখানো হবে</string>
+  <string name="morphe_settings_new_indicator_days_off">বন্ধ</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">সেটআপ সম্পন্ন করতে রিস্টার্ট করুন</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">মিডিয়া বিজ্ঞপ্তিতে, লক স্ক্রিনে এবং হেডফোন নিয়ন্ত্রণে পূর্ববর্তী ও পরবর্তী বোতাম লুকিয়ে রাখে</string>
   <string name="morphe_disable_notification_media_seekbar_title">সিকবার নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_notification_media_seekbar_summary">লক স্ক্রিনে এবং বিজ্ঞপ্তি প্যানেলে সিকবার টেনে সরানো প্রতিরোধ করে</string>
+  <string name="morphe_seek_notification_media_prev_next_title">পূর্ববর্তী ও পরবর্তী বোতাম দিয়ে <b>সিক করুন</b></string>
+  <string name="morphe_seek_notification_media_prev_next_summary">ভিডিও পরিবর্তনের পরিবর্তে মিডিয়া নোটিফিকেশন, লক স্ক্রিন এবং হেডফোনে সিক করার জন্য নিয়ন্ত্রণ পরিবর্তন করুন</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">রিওয়ান্ড দৈর্ঘ্য</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">পূর্ববর্তী বোতাম দিয়ে রিওয়ান্ড করার জন্য সেকেন্ড সংখ্যা</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">ফাস্ট ফরওয়ার্ড দৈর্ঘ্য</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">পরবর্তী বোতাম দিয়ে ফাস্ট ফরওয়ার্ড করার জন্য সেকেন্ড সংখ্যা</string>
+  <string name="morphe_seek_notification_media_length_invalid">সিক দৈর্ঘ্য 1 থেকে %s সেকেন্ডের মধ্যে হতে হবে। ডিফল্ট ব্যবহার করা হচ্ছে</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">কিউআইসি প্রোটোকল বন্ধ করুন</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

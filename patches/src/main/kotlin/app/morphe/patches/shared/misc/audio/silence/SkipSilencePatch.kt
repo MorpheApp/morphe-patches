@@ -46,6 +46,9 @@ internal fun skipSilencePatch(
             )
         )
 
+        val skipSilenceField = ApplySkipSilenceFingerprint.instructionMatches[1]
+            .fieldReference
+
         ApplySkipSilenceFingerprint.apply {
             val match = instructionMatches[1]
             val booleanRegister = match.getInstruction<TwoRegisterInstruction>().registerA
@@ -59,7 +62,7 @@ internal fun skipSilencePatch(
             )
         }
 
-        SetSkipSilenceEnabledFingerprint.method.addInstructions(
+        setSkipSilenceEnabledFingerprint(skipSilenceField).method.addInstructions(
             0,
             """
                 invoke-static { p1 }, $EXTENSION_CLASS->isSkipSilenceEnabled(Z)Z

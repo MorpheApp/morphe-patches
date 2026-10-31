@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Анімація запуску</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Вимкнено</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Кольорова</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Монохромна</string>
+  <string name="morphe_splash_screen_style_title">Анімація запуску</string>
+  <string name="morphe_splash_screen_style_entry_1">Вимкнено</string>
+  <string name="morphe_splash_screen_style_entry_2">Кольорова</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe кольорова</string>
+  <string name="morphe_splash_screen_style_entry_4">Монохромна</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe монохромна</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Підсвічувати нові налаштування</string>
+  <string name="morphe_settings_new_indicator_days_summary">Кількість днів, протягом яких біля налаштувань і параметрів, доданих оновленням, показується крапка</string>
+  <string name="morphe_settings_new_indicator_days_off">Вимк.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Перезавантажте, щоб завершити налаштування</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -147,10 +153,17 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Керування медіа в сповіщеннях</string>
   <string name="morphe_notification_media_screen_summary">Налаштуйте елементи керування відтворенням на екрані блокування та панелі сповіщень</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Приховати кнопки Попереднє та Наступне</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Приховати кнопки \"Попереднє\" та \"Наступне\"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Приховує кнопки \"Попередній\" та \"Наступний\" у сповіщеннях медіа, на екрані блокування та в елементах керування навушниками</string>
   <string name="morphe_disable_notification_media_seekbar_title">Вимкнути смугу перемотування</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Запобігає перетягуванню смуги перемотування на екрані блокування та панелі сповіщень</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Перемотування кнопками \"Попереднє\" та \"Наступне\"</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Змінює елементи керування в медіасповіщенні, на екрані блокування та в навушниках так, щоб вони перемотували замість перемикання відео</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Тривалість перемотування назад</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Кількість секунд для перемотування назад кнопкою \"Попереднє\"</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Тривалість перемотування вперед</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Кількість секунд для перемотування вперед кнопкою \"Наступне\"</string>
+  <string name="morphe_seek_notification_media_length_invalid">Тривалість перемотування має бути від 1 до %s секунд. Використовується типове значення</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Вимкнути протокол QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

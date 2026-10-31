@@ -10,6 +10,15 @@ package app.morphe.extension.youtube.patches;
 
 import androidx.annotation.Nullable;
 
+import org.w3c.dom.Document;
+
+import java.io.ByteArrayInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import app.morphe.extension.shared.Logger;
+
 
 @SuppressWarnings("unused")
 public class TranslatedCaptionPensPatch {
@@ -40,6 +49,11 @@ public class TranslatedCaptionPensPatch {
     private static final ThreadLocal<Boolean> isAutoTranslatedTrack = new ThreadLocal<>();
 
     /**
+     * If the caption track parsed on the current thread is an auto-translated automatic caption track.
+     */
+    private static final ThreadLocal<Boolean> isTranslatedAutomaticTrack = new ThreadLocal<>();
+
+    /**
      * Injection point.
      *
      * Called before a request response or a cached caption file is parsed.
@@ -48,16 +62,52 @@ public class TranslatedCaptionPensPatch {
      */
     public static void setParsedRequest(@Nullable Object request) {
         boolean translated = false;
+        boolean automatic = false;
         try {
-            translated = request instanceof CaptionRequestInterface captionRequest
-                    && captionRequest.patch_getCaptionTrack() instanceof PreferredCaptionLanguagePatch.CaptionTrackInterface track
-                    // Auto-translated vss ids are "t" + source vss id + "." + language code.
-                    && track.patch_getVssId().startsWith("t");
-        } catch (RuntimeException | LinkageError ignored) {
-            // Unknown native layouts must not retain the previous decoder's styling.
+            if (request instanceof CaptionRequestInterface captionRequest
+                    && captionRequest.patch_getCaptionTrack() instanceof PreferredCaptionLanguagePatch.CaptionTrackInterface track) {
+                String vssId = track.patch_getVssId();
+                // Auto-translated vss ids are "t" + source vss id + "." + language code.
+                translated = vssId.startsWith("t");
+                automatic = track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface autoTrack
+                        && AutoTranslateCaptionsPatch.isAutomaticCaption(vssId, autoTrack.patch_getUrl());
+            }
+        } catch (RuntimeException | LinkageError ex) {
+            Logger.printException(() -> "setParsedRequest failure", ex);
         }
-        // A failed native getter must not leave the previous translated state enabled.
+        // A failed native getter must not leave the previous track state enabled.
         isAutoTranslatedTrack.set(translated);
+        isTranslatedAutomaticTrack.set(translated && automatic);
+        StableCaptionBlocks.setAutomaticTrack(automatic);
+    }
+
+    /**
+     * Injection point.
+     *
+     * Called before a caption track file is decoded.
+     */
+    public static InputStream repairInput(@Nullable InputStream input) throws IOException {
+        boolean repair = Boolean.TRUE.equals(isTranslatedAutomaticTrack.get());
+        if (input == null || (!repair && !StableCaptionBlocks.isCapturing())) return input;
+        CaptionInputReplay.Copy copy = CaptionInputReplay.copy(input, CaptionXml.MAX_BYTES);
+        if (!copy.complete) return copy.input;
+        Document document = CaptionXml.read(copy.bytes);
+        // Capture the source captions before the repair removes events from the document.
+        StableCaptionBlocks.capture(document);
+        byte[] repaired = repair
+                ? TranslatedRollingCaptionPolicy.repair(copy.bytes, document)
+                : copy.bytes;
+        if (repaired == copy.bytes) return copy.input;
+        return new FilterInputStream(new ByteArrayInputStream(repaired)) {
+            @Override
+            public void close() throws IOException {
+                try {
+                    super.close();
+                } finally {
+                    input.close();
+                }
+            }
+        };
     }
 
     /**

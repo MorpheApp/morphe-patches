@@ -30,6 +30,7 @@ import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest.DeArrowTitle;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.DeArrowTitlesAvailability;
+import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRoutes;
 
 /**
@@ -149,9 +150,10 @@ final class OriginalTitleRequest {
                             if (originalTitle == null && deArrow.needsOriginalTitle()) {
                                 originalTitle = fetchOriginalTitle(videoId);
                             }
+                            Titles titles = new Titles(deArrow.titleFor(originalTitle), fetchedTitles.originalTitle());
+                            FeedVideoCardsPatch.addVideoText(videoId, titles.deArrowTitle());
                             // Not replaced if the titles were fetched again meanwhile.
-                            cache.replace(videoId, fetchedFuture, CompletableFuture.completedFuture(
-                                    new Titles(deArrow.titleFor(originalTitle), fetchedTitles.originalTitle())));
+                            cache.replace(videoId, fetchedFuture, CompletableFuture.completedFuture(titles));
                         } catch (DeArrowBrandingRequest.DeArrowException ex) {
                             // The DeArrow title is fetched again later,
                             // and the titles fetched before are used meanwhile.
@@ -185,6 +187,12 @@ final class OriginalTitleRequest {
                     }
                     return new Titles(deArrowTitle, fetchOriginal ? originalTitle : null);
                 }, Utils::runOnBackgroundThread);
+                // The cards of the video show the title that replaces its title,
+                // which the elements of the video do not include.
+                future.thenAccept(titles -> {
+                    FeedVideoCardsPatch.addVideoText(videoId, titles.deArrowTitle());
+                    FeedVideoCardsPatch.addVideoText(videoId, titles.originalTitle());
+                });
                 cache.put(videoId, future);
             }
             return future;

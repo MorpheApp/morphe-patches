@@ -331,7 +331,8 @@ public class FeatureFlagsManagerPreference extends Preference {
     private EditText createSearchBox(Context context) {
         EditText search = CustomDialog.createSearchBar(context,
                 str("morphe_debug_feature_flags_manager_search_hint"), query -> {
-            adapter.setSearchQuery(query);
+            adapter.searchQuery = query == null ? "" : query.trim();
+            adapter.refresh();
             listView.clearChoices();
             updateChips();
             updateBottomBar();
@@ -941,13 +942,13 @@ public class FeatureFlagsManagerPreference extends Preference {
     }
 
     /**
-     * Saves the flags and asks to restart.
+     * Saves the flags. The restart dialog is shown when the settings are closed.
      */
     private void saveFlags() {
         persistFlagStates();
         Utils.showToastShort(str("morphe_debug_feature_flags_manager_toast_saved"));
 
-        AbstractPreferenceFragment.showRestartDialog(getContext());
+        AbstractPreferenceFragment.setRestartNeeded();
     }
 
     /**
@@ -958,7 +959,7 @@ public class FeatureFlagsManagerPreference extends Preference {
         SharedYouTubeSettings.FORCED_FEATURE_FLAGS.resetToDefault();
         Utils.showToastShort(str("morphe_debug_feature_flags_manager_toast_reset"));
 
-        AbstractPreferenceFragment.showRestartDialog(getContext());
+        AbstractPreferenceFragment.setRestartNeeded();
     }
 
     /**
@@ -1023,11 +1024,6 @@ public class FeatureFlagsManagerPreference extends Preference {
 
         FlagAdapter(Context context) {
             this.context = context;
-        }
-
-        void setSearchQuery(String query) {
-            searchQuery = query == null ? "" : query.trim();
-            refresh();
         }
 
         void refresh() {

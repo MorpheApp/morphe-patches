@@ -17,21 +17,219 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">⚙️ Konfigurazioa</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Ziur yakin duzu jarraitu nahi duzula?</string>
+  <string name="morphe_settings_save">Gorde</string>
+  <string name="morphe_settings_reset">Berreseta</string>
+  <string name="morphe_settings_reset_color">Kolorea berreseta</string>
+  <string name="morphe_settings_color_invalid">Kolorea baligabe</string>
+  <string name="morphe_settings_restart_title">Berrifuntzatzea beharrezkoa da</string>
+  <string name="morphe_settings_restart_dialog_message">Berr------+ aplikazioa aldaketa honek eragingo izan owndo</string>
+  <string name="morphe_settings_restart">Berrifuntzatzea</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">Importatu</string>
+  <string name="morphe_settings_import_copy">Kopiatu</string>
+  <string name="morphe_settings_import_reset">Morphe konfigurazioa lehenestekoa</string>
+  <string name="morphe_settings_import_success">%s konfigurazioak inportatu dira</string>
+  <string name="morphe_settings_import_failure_parse">Inportatzea huts egin du: %s</string>
+  <string name="morphe_settings_navigate_up">Goizu</string>
+  <string name="morphe_settings_search_hint">Bilatu araukadetan</string>
+  <string name="morphe_settings_screen_info_title">About</string>
+  <string name="morphe_settings_search_no_results_title">Emaitzarik ez da aurkitu \'%s\'erako</string>
+  <string name="morphe_settings_search_no_results_summary">Saiatu beste gako bat</string>
+  <string name="morphe_settings_search_recent_searches">Azken bilaketak</string>
+  <string name="morphe_settings_search_remove_message">Kendu bilaketa historiatik?</string>
+  <string name="morphe_settings_search_remove">Kendu bilaketa historiatik</string>
+  <string name="morphe_settings_search_clear_history">Garbitu bilaketa historia</string>
+  <string name="morphe_settings_search_clear_history_message">Ziur baza bilaketa historia guztia garbitu nahi duzula?</string>
+  <string name="morphe_settings_search_tips_title">Bilaketa Aideak</string>
+  <string name="morphe_settings_search_tips_summary">"• Toka batean sakatu hara joateko
+• Araukada batean sakatu luze hara joateko
+• Enter sakatu bilaketa query-a historian gordeko
+• Bilaketak ez ditu maiuskulak eta puntuazioak kontuan hartzen
+• Araukada gurasoak desaktibatutako araukada semearen gainean agertzen dira"</string>
+  <string name="morphe_settings_search_empty_history_title">Bilaketa historia hutsik dago</string>
+  <string name="morphe_settings_search_empty_history_summary">Bilaketa historia gordetzeko, idatzi bilaketa-galdera bat eta sakatu Enter</string>
+  <string name="morphe_settings_search_history_title">Erakutsi konfigurazioen bilaketa historia</string>
+  <string name="morphe_settings_name_title">Morphe konfigurazioen izena</string>
+  <string name="morphe_settings_name_default_item">Lehenagoa</string>
+  <string name="morphe_settings_name_entry_2">Osagarriak</string>
+  <string name="morphe_settings_name_entry_3">Doiketak</string>
+  <string name="morphe_settings_name_entry_4">Morphing denbora</string>
+  <string name="morphe_settings_name_custom_item">Kustomizatua</string>
+  <string name="morphe_settings_name_custom_item_hint">Sartu izen bat</string>
+  <string name="morphe_settings_name_empty_warning">Izena ez da utzi hutsik</string>
+  <string name="morphe_show_menu_icons_title">Erakutsi Morphe konfigurazio-ikonoak</string>
+  <string name="morphe_settings_menu_copy_path">Kopiatuta: %s</string>
+  <string name="morphe_language_title">Morphe hizkuntza</string>
+  <string name="morphe_language_user_dialog_message">"Batzu eta hizkuntzen itzulpenak faltan egon daitezke edo incomplete
+
+Hizkuntza berriak itzuli edo itzulpen existenteak hobetzeko, bisitatu morphe.software/translate"</string>
+  <string name="morphe_language_DEFAULT">Aplikazioaren hizkuntza</string>
+  <string name="morphe_pref_import_export_title">Inportatu / Esportatu</string>
+  <string name="morphe_pref_import_export_summary">Inportatu / Esportatu Morphe konfigurazioak</string>
+  <string name="morphe_settings_import_file">Fitxutxutik importatu</string>
+  <string name="morphe_settings_import_file_success">⚙️ Konfigurazioa arrakastaz inportatu da, 保存 sakatu aplikatzeko</string>
+  <string name="morphe_settings_import_file_failed">Konfigurazioak inportatzea huts egin du</string>
+  <string name="morphe_settings_export_file">Fitxera batera esportatu</string>
+  <string name="morphe_settings_export_file_success">⚙️ Konfigurazioa arrakastaz esportatu da</string>
+  <string name="morphe_settings_export_file_failed">Konfigurazioa esportatzea huts egin du</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">Morphe Patches-en azken bertsioa erabiltzen ari zara: &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Morphe Patches-en &lt;i&gt;%1$s&lt;/i&gt; bertsioa erabiltzen ari zara&lt;br&gt;&lt;br&gt;&lt;b&gt;Eguneratzea eskuragarri: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Patch-ak eguneratzeko, erabili Morphe aplikazio honek berriz patchatzeko</string>
+  <string name="morphe_settings_about_links_dev_header">Oharra</string>
+  <string name="morphe_settings_about_links_dev_body">Bertsio honek pre-lanzamendu bat da eta arazo ustekabeak izan ditzakezu</string>
+  <string name="morphe_settings_about_links_header">Esteka ofizialak</string>
+  <string name="morphe_settings_about_links_website">Webgunea</string>
+  <string name="morphe_settings_about_links_donate">Donatu</string>
+  <string name="morphe_settings_about_links_translations">Itzulpenak</string>
+  <string name="morphe_settings_about_links_credits">Kredituak</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Eguneratuta</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Eguneratzea eskuragarri</string>
+  <string name="morphe_settings_about_contributors_current">Garapen egunteko</string>
+  <string name="morphe_settings_about_contributors_prior">Garapen aurrekoa</string>
+  <string name="morphe_settings_about_links_morphe">Garapen aktiboa</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Lizentzia-ohartupenak</string>
+  <string name="morphe_settings_about_licenses_loading">Kargatzen…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Debugatzea</string>
+  <string name="morphe_debug_screen_summary">Konfiguratu garapide aurreratuko aukerak eta diagnostiko-logak</string>
+  <string name="morphe_debug_title">Aktibu debug logak</string>
+  <string name="morphe_debug_stacktrace_title">Debug log-en stack trace-a</string>
+  <string name="morphe_debug_stacktrace_summary">Sartzen ditu stack trace-ak debug logetan erroreak identifikatzen laguntzeko</string>
+  <string name="morphe_debug_toast_on_error_title">Erakutsi jakinarazupen laburra Morphe errorean</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Erroen toastak txukituak egiteak Morphe-ren erroen jakinarazpen guztiak ezkutatzen ditu.
+
+Ez zaizkizu ezusteko gertakari batzeik jakinaraziko"</string>
+  <string name="morphe_debug_export_logs_title">Esportatu debug log-ak</string>
+  <string name="morphe_debug_export_logs_summary">Esportatu Morphe-ren debug log-ak</string>
+  <string name="morphe_debug_export_logs_success">Debug log-ak arrakastetsunez esportatu dira</string>
+  <string name="morphe_debug_export_logs_failed">Debug log-ak esportatzea huts egin du</string>
+  <string name="morphe_debug_logs_search_hint">Bilatu debug logetan…</string>
+  <string name="morphe_debug_export_logs_clear">Garbitu</string>
+  <string name="morphe_debug_logs_disabled">Debug logak desaktibatuta daude</string>
+  <string name="morphe_debug_logs_none_found">Ez da debug logikarik aurkitu</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Debug log-ak kopiatuta</string>
+  <string name="morphe_debug_logs_failed_to_export">Debug log-ak esportatzea huts egin du: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Debug log-ak garbituta</string>
+  <string name="morphe_debug_feature_flags_manager_title">Ezaugarri-bandera kudeatzailea</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Kudeatu boolean ezaugarri-banderak</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Bilatu ezaugarri-banderak…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Aktibo ez (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Aktibo (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Blokatuta (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Beharrezkoa (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automatikoa</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Txoelectrico</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Aktiboa</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Beharbehara aktibatu</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Blokeatu</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Kendu</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Ezaugarri-banderak gorde dira</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Ezaugarrien flagak berreseta dira</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Ezaugarrien flagak pantailako kopiatzailean kopiatuta</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Berrifiziatu aplikazioa konfigurazio hau erabiltzeko</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Esportatu eta importatu</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s ezaugarri-bandera inportatu dira</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Ez da ezaugarri-banderaik aurkitu</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Ezaugarri-banderak ar വിജയtsunez esportatuak dira</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Ezaugarri-banderak esportatzea huts egin du</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Ezaugarri-banderak kargatu dira, sakatu Gorde aplikatzeko</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Fitxategia irakurtzea huts egin du</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Bilaketa binarioa</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Zein ezaugarri-banderak eragiten duen aplikazioaren jokabide bat aurkitzen du.
+
+%s banderen halfa blokeatuta daude, eta berrariro bakoitzaren ondoren, jokabidea oraindik present dagoen edo ez esaten duzu.
+
+Hasi aurretik erreproduz jokabidea behin, bestela aplikazioak oraindik ez ditu eskatu banderak bilaketan falta izango dira"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Hasi</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Ez dago bilatu beharreko ezaugarri-banderarik.
+
+Binary bilaketan, aplikazioak erabili dituen eta gaur egun behartuta ez daudenen banderak soilik lagun daitezke"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Urratsa %1$s
+
+%2$s bandera geratzen dira, %3$s blokeatuta daude urrats honetan.
+
+Berrifiziatu aplikazioa, egiaztatu jokabidea present dagoen ala ez, eta erantzun behekoalean"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Ezaugarri-banderen bilaketa martxan dago</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Jokabidea present dago</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Jokabidea ez dago present</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Binary bilaketa bertatu</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Binary bilaketa bertatuta</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"%s ezaugarri-banderak eragiten du jokabidea.
+
+Orain blokeatuta dago"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Ez da feature flag bat aurkitu
+
+Aplikazioaren jokamoduak ez dirudi feature flag batek kontrolatzen"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Ez da feature flag bakar bat aurkitu
+
+Jokamodua bilaketan aurrago desagertu zen, beraz, flag bat baino gehiago egon da behaz eta edo erantzunen bat okerra zen"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">Ireki MicroG-ren konfigurazioa</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG ez dago instalatuta. Instalatu</string>
+  <string name="gms_core_dialog_title">Ekintza behar da</string>
+  <string name="gms_core_dialog_outdated_message">"Zure MicroG v%1s bertsioa zaharkituta dago eta arazoak sor ditzake.
+
+Eguneratu MicroG v%2s azken bertsiora"</string>
+  <string name="gms_core_dialog_update_text">Eguneratu</string>
+  <string name="gms_core_dialog_ignore_text">Ezaintzu</string>
+  <string name="gms_core_dialog_conflict_message">"Instaluratutako MicroG bertsioa ez da Morphe-k gomendatzen duena:
+
+%1s
+
+Sakatu uninstall egiteko, ondoren ireki berri aplikazio hau eta instalatu MicroG RE"</string>
+  <string name="gms_core_dialog_uninstall_text">Desinstalatu</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG-k ez du atzealdeanra egiteko baimenik.
+
+Jarraitu zure telefonorako \"Don't kill my app\" gida eta aplikatu instrukzioak zure MicroG instalazioan.
+
+Horrek aplikazioa funtzionatzeko behar du"</string>
+  <string name="gms_core_dialog_open_website_text">Ireki webgunea</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG-ren bateria optimizazioak desaktibatu behar dira arazoak saihesteko.
+
+MicroG-ren bateria optimizazioak desaktibatzeak ez du eragina negatiboa izango bateriaren erabileraan.
+
+Sakatu jarraitu botoia eta onartu optimizazio aldaketak"</string>
+  <string name="gms_core_dialog_continue_text">Jarraitu</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Erakutsi MicroG bateria optimizazioaren elkarrizuna</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Hau desaktuatzeak MicroG-ren bateria optimizazio-ohartupena ezkutuko du.
+
+Bateria optimizazioak aldatzen ez badira, honako hau gertatu daiteke:
+• App-a ausazki ixteko aukera dago
+• Jakinarazpenek funtzionatu behaz ez dute
+• Atzealdeko erreprodukzioak funtzionatu behaz ez du"</string>
   <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Aplikazio-estek들의 kudeaketa</string>
+  <string name="morphe_link_handling_summary">Konfiguratu estekak aplikazio honetan irekitzeko</string>
+  <string name="morphe_link_handling_step1_title">1. urratsa: Desaktibu aplikazio-esteka originalak</string>
+  <string name="morphe_link_handling_step1_message">Ireki aplikazio originalaren konfigurazioa eta desaktibu domeinu-esteka guztiak</string>
+  <string name="morphe_link_handling_step2_title">2. urratsa: Aktibu patched aplikazioaren estekak</string>
+  <string name="morphe_link_handling_step2_message">Ireki patched aplikazioaren konfigurazioa eta aktibu domeinu-esteka guztiak</string>
+  <string name="morphe_link_handling_open">Ireki konfigurazioa</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Ohartupen Esperimentala 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"⚠️ &lt;b&gt;%1$s&lt;/b&gt; aplikazioaren bertsio esperimental bat erabiltzen ari zara
+&lt;br/&gt;&lt;br/&gt;
+🔧 Aplikazioaren portaera arraroa edo akats ezagun gabekoak espero ditugu bertsio honetako patchingak doitu while ditugun heinean.
+&lt;br/&gt;&lt;br/&gt;
+Esperientzia arazorik gabekoa nahi baduzu, &lt;b&gt;desinstalatu&lt;/b&gt; hau eta ✅ &lt;b&gt;%2$s&lt;/b&gt; bertsio gomendatua patchatu"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Esperimentala nahi dut</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Estabila nahi dut</string>
   <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Erroreen egiztea erabiltzailearen dokumentuetan gorde da: %s</string>
+  <string name="morphe_crash_log_saved">Erroreen egiztea gorde da: %s</string>
 </resources>

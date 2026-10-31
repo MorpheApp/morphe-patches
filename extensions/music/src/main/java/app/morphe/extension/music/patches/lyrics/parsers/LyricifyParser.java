@@ -195,5 +195,6 @@ public final class LyricifyParser {
         return (minutes * 60 + seconds) * 1000 + fractionMs;
     }
 
-    private record TranslatedEntry(long timeMs, String text) {}
+    private record TranslatedEntry(long timeMs, String text) {
+    }
 }

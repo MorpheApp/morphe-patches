@@ -60,7 +60,13 @@ message TertiaryContents {
 }
 
 message Commands {
+    bytes innertubeCommand = 169495254;
+    SerialCommands serialCommand = 170382688;
     ShowSheetCommand showSheetCommand = 443434441;
+}
+
+message SerialCommands {
+    repeated Commands commands = 1;
 }
 
 message ShowSheetCommand {
@@ -235,6 +241,7 @@ message AddToPlaylistButtonViewModel {
 
 message SecondaryButtonViewModel {
     string iconName = 2;
+    Commands onTap = 4;
     optional string accessibilityId = 17;
 }
 
@@ -247,6 +254,7 @@ message CompactChannelBarViewModel {
 }
 
 message DislikeButtonViewModel {
+    RatingToggleContainer toggleButtonViewModel = 1;
     string dislikeEntityKey = 2;
 }
 
@@ -255,7 +263,9 @@ message DownloadButtonViewModel {
 }
 
 message LikeButtonViewModel {
+    RatingToggleContainer toggleButtonViewModel = 1;
     string likeStatusEntityKey = 3;
+    RatingStatusEntity likeStatusEntity = 6;
 }
 
 message OverflowMenuButtonViewModel {
@@ -263,5 +273,32 @@ message OverflowMenuButtonViewModel {
 }
 
 message SegmentedLikeDislikeButtonViewModel {
+    RatingLikeContainer likeButtonViewModel = 1;
+    RatingDislikeContainer dislikeButtonViewModel = 2;
     string teasersOrderEntityKey = 10;
+}
+
+message RatingLikeContainer {
+    LikeButtonViewModel likeButtonViewModel = 484585818;
+}
+
+message RatingDislikeContainer {
+    DislikeButtonViewModel dislikeButtonViewModel = 484590786;
+}
+
+message RatingToggleContainer {
+    RatingToggleViewModel toggleButtonViewModel = 479644279;
+}
+
+message RatingToggleViewModel {
+    RatingButtonContainer defaultButtonViewModel = 1;
+    RatingButtonContainer toggledButtonViewModel = 2;
+}
+
+message RatingButtonContainer {
+    SecondaryButtonViewModel buttonViewModel = 461054335;
+}
+
+message RatingStatusEntity {
+    int32 likeStatus = 2;
 }

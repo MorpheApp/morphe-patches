@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Κινούμενο σχέδιο εκκίνησης</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Απενεργοποιημένο</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Χρωματιστή</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Μονόχρωμο</string>
+  <string name="morphe_splash_screen_style_title">Κινούμενο σχέδιο εκκίνησης</string>
+  <string name="morphe_splash_screen_style_entry_1">Απενεργοποιημένο</string>
+  <string name="morphe_splash_screen_style_entry_2">Χρωματιστή</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Έγχρωμο</string>
+  <string name="morphe_splash_screen_style_entry_4">Μονόχρωμο</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Μονόχρωμο</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Επισημάνιση νέων ρυθμίσεων</string>
+  <string name="morphe_settings_new_indicator_days_summary">Αριθμός ημερών που εμφανίζεται μια τελεία δίπλα στις ρυθμίσεις και τις επιλογές που προστέθηκαν μέσω μιας ενημέρωσης</string>
+  <string name="morphe_settings_new_indicator_days_off">Ανενεργό</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Επανεκκινήστε για να ολοκληρωθεί η διαδικασία</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Αποκρύπτει τα κουμπιά Προηγούμενο και Επόμενο στην ειδοποίηση πολυμέσων, στην οθόνη κλειδώματος και στα χειριστήρια ακουστικών</string>
   <string name="morphe_disable_notification_media_seekbar_title">Απενεργοποίηση γραμμής αναζήτησης</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Αποτρέπει τη μεταφορά της γραμμής αναζήτησης στην οθόνη κλειδώματος και στον πίνακα ειδοποιήσεων</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Αναζήτηση με τα κουμπιά Προηγούμενο &amp; Επόμενο</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Οι ελέγχοι για τις ειδοποιήσεις πολυμέσων, την οθόνη κλειδώματος και τα ακουστικά αναζητούν αντί να αλλάζουν τα βίντεο</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Μήκος επαναφοράς</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Δευτερόλεπτα για επαναφορά με το κουμπί Προηγούμενο</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Μήκος ταχείας προώθησης</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Δευτερόλεπτα για ταχεία προώθηση με το κουμπί Επόμενο</string>
+  <string name="morphe_seek_notification_media_length_invalid">Το μήκος αναζήτησης πρέπει να είναι μεταξύ 1 και %s δευτερολέπτων. Χρήση προεπιλεγμένης τιμής</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Απενεργοποίηση πρωτοκόλλου QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

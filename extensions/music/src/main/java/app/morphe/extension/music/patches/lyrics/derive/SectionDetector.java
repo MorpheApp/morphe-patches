@@ -26,22 +26,15 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 /**
- * Asks the AI which part of the song each lyric line belongs to, for lyrics that ship without any
- * section of their own. A label the provider published beats one inferred from the text, so only
- * lyrics that carry none at all are asked about.
- *
- * <p>The answer arrives one entry per line, with only the line opening a section named, so the
- * list maps straight onto {@link LyricsLine#songPart()}.
+ * Asks the AI which part of the song each lyric line belongs to, only for lyrics that ship
+ * without any section of their own: a provider-published label beats one inferred from the text.
+ * The answer names only the line opening a section, mapping straight onto {@link LyricsLine#songPart()}.
  */
 public final class SectionDetector {
 
     private static final ExecutorService executor = Executors.newCachedThreadPool();
 
     private static final String SKIP = "SKIP";
-
-    public interface Callback {
-        void onSections(@Nullable List<String> sections);
-    }
 
     private SectionDetector() {
     }
@@ -60,7 +53,7 @@ public final class SectionDetector {
     }
 
     public static void detect(TrackInfo track, Lyrics lyrics, BooleanSupplier stillWanted,
-            Callback callback) {
+                              Callback callback) {
         List<LyricsLine> lines = lyrics.lines();
         final List<String> texts = new ArrayList<>(lines.size());
         for (LyricsLine line : lines) {
@@ -100,7 +93,7 @@ public final class SectionDetector {
 
     @Nullable
     private static List<String> aiDetect(List<String> lines, String title, String artist,
-            String baseUrl, String apiToken, String model) {
+                                         String baseUrl, String apiToken, String model) {
         String prompt = OpenAIClient.renderPrompt(Settings.LYRICS_AI_SECTION_PROMPT.get(),
                 "section", "", title, artist, lines);
         return OpenAIClient.mapLines(baseUrl, apiToken, model, prompt, lines);
@@ -148,5 +141,9 @@ public final class SectionDetector {
             }
         }
         return label;
+    }
+
+    public interface Callback {
+        void onSections(@Nullable List<String> sections);
     }
 }

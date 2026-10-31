@@ -36,6 +36,7 @@ import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.NewElement;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
+import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -443,7 +444,10 @@ public class CommentsFilter extends Filter {
      */
     public static byte[] onCommentsLoaded(byte[] bytes) {
         try {
-            if (Settings.HIDE_COMMENTS_CAROUSEL.get() && !commentsCarouselFilterStrings.isEmpty()) {
+            // Every element is parsed here otherwise, on the main thread. The identifier of the carousel
+            // is also in the bytes of its element, see FeedVideoCardsPatch.getElementText().
+            if (Settings.HIDE_COMMENTS_CAROUSEL.get() && !commentsCarouselFilterStrings.isEmpty()
+                    && FeedVideoCardsPatch.getElementText(bytes).contains(VIDEO_METADATA_CAROUSEL_PATH)) {
                 var newElement = NewElement.parseFrom(bytes).toBuilder();
                 var identifier = newElement.getProperties().getIdentifierProperties().getIdentifier();
                 if (identifier != null && identifier.contains(VIDEO_METADATA_CAROUSEL_PATH)) {

@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Animação de inicialização</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Desativado</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Cor</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monocromático</string>
+  <string name="morphe_splash_screen_style_title">Animação de inicialização</string>
+  <string name="morphe_splash_screen_style_entry_1">Desativado</string>
+  <string name="morphe_splash_screen_style_entry_2">Cor</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Color</string>
+  <string name="morphe_splash_screen_style_entry_4">Monocromático</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monocromático</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Destacar novas configurações</string>
+  <string name="morphe_settings_new_indicator_days_summary">Número de dias que um ponto é exibido ao lado de configurações e opções adicionadas por uma atualização</string>
+  <string name="morphe_settings_new_indicator_days_off">Desativado</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Reiniciar para finalizar a configuração</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Para entrar, pressione continuar abaixo"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Oculta os botões Anterior e Próximo na notificação de mídia, na tela de bloqueio e nos controles de fone de ouvido</string>
   <string name="morphe_disable_notification_media_seekbar_title">Desativar a barra de busca</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Impede que a barra de busca seja arrastada na tela de bloqueio e no painel de notificações</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Buscar com botões <b>Anterior &amp; Próximo</b></string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Altera os controles de notificação de mídia, tela de bloqueio e fone de ouvido para buscar em vez de alterar vídeos</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Duração do retrocesso</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Segundos para retroceder com o botão Anterior</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Duração do avanço rápido</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Segundos para avançar com o botão Próximo</string>
+  <string name="morphe_seek_notification_media_length_invalid">O tempo de busca deve ser entre 1 e %s segundos. Usando padrão</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Desativar protocolo QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

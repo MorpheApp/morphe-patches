@@ -17,4 +17,9 @@ public class RecyclerView extends View {
     public int getChildCount() {
         return 0;
     }
+
+    @Override
+    public int computeHorizontalScrollOffset() {
+        return 0;
+    }
 }

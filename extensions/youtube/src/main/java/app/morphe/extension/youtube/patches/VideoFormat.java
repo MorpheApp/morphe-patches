@@ -25,6 +25,7 @@ public final class VideoFormat {
         String patch_getMimeType();
         int patch_getWidth();
         int patch_getHeight();
+        int patch_getItag();
     }
 
     /**

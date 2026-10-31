@@ -29,6 +29,29 @@ public final class AMLLProvider implements LyricsProvider {
 
     private static final AtomicLong lastRequestTime = new AtomicLong(0);
 
+    @Nullable
+    private static String sourceUrl(JSONObject getData, JSONObject best) {
+        String file = firstPath(getData);
+        if (file == null) {
+            file = firstPath(best);
+        }
+        if (file == null || file.isEmpty()) {
+            return null;
+        }
+        return "https://amlldb.bikonoo.com/view-lyric.html?file=" + file;
+    }
+
+    @Nullable
+    private static String firstPath(JSONObject object) {
+        for (String key : new String[]{"path", "file", "filename", "filePath"}) {
+            final String value = LyricsRequests.optString(object, key);
+            if (value != null) {
+                return value;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String name() {
         return "AMLL";
@@ -78,29 +101,6 @@ public final class AMLLProvider implements LyricsProvider {
                 getConnection.disconnect();
             }
         }
-    }
-
-    @Nullable
-    private static String sourceUrl(JSONObject getData, JSONObject best) {
-        String file = firstPath(getData);
-        if (file == null) {
-            file = firstPath(best);
-        }
-        if (file == null || file.isEmpty()) {
-            return null;
-        }
-        return "https://amlldb.bikonoo.com/view-lyric.html?file=" + file;
-    }
-
-    @Nullable
-    private static String firstPath(JSONObject object) {
-        for (String key : new String[]{"path", "file", "filename", "filePath"}) {
-            final String value = LyricsRequests.optString(object, key);
-            if (value != null) {
-                return value;
-            }
-        }
-        return null;
     }
 
     @Nullable

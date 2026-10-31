@@ -13,6 +13,7 @@ import android.graphics.Rect;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
@@ -29,8 +30,10 @@ import app.morphe.extension.shared.sponsorblock.SponsorBlockApi.PlayerStateAdapt
 import app.morphe.extension.shared.sponsorblock.SponsorBlockApi.SettingsAdapter;
 import app.morphe.extension.shared.sponsorblock.SponsorBlockApi.UiBridge;
 import app.morphe.extension.shared.sponsorblock.SponsorBlockApi.VideoInformationAdapter;
+import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
 import app.morphe.extension.shared.sponsorblock.objects.SegmentCategory;
 import app.morphe.extension.shared.sponsorblock.objects.SponsorSegment;
+import app.morphe.extension.youtube.patches.DownloadsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerControlsVisibility;
@@ -40,7 +43,6 @@ import app.morphe.extension.youtube.shared.VideoState;
 import app.morphe.extension.youtube.sponsorblock.ui.SponsorBlockViewController;
 import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
 import app.morphe.extension.youtube.whitelist.WhitelistType;
-import kotlin.Unit;
 
 /**
  * YouTube-side stub class for the SponsorBlock injection points and {@link Configuration}.
@@ -50,6 +52,12 @@ import kotlin.Unit;
 public final class YouTubeSponsorBlockConfig implements Configuration {
 
     private static final YouTubeSponsorBlockConfig INSTANCE = new YouTubeSponsorBlockConfig();
+
+    /**
+     * Names of the app enum values of the offline video endpoint action.
+     */
+    private static final String OFFLINE_VIDEO_ACTION_ADD = "ACTION_ADD";
+    private static final String OFFLINE_VIDEO_ACTION_REMOVE = "ACTION_REMOVE";
 
     private static volatile boolean installed;
 
@@ -64,13 +72,9 @@ public final class YouTubeSponsorBlockConfig implements Configuration {
 
             PlayerType.getOnChange().addObserver((PlayerType type) -> {
                 SegmentPlaybackController.onPlayerTypeChanged();
-                return Unit.INSTANCE;
             });
 
-            VideoInformation.onChannelIdChange.addObserver((String channelId) -> {
-                SegmentPlaybackController.onChannelIdChange(channelId);
-                return Unit.INSTANCE;
-            });
+            VideoInformation.onChannelIdChange.addObserver(SegmentPlaybackController::onChannelIdChange);
 
             // Mirrors the side effects the legacy SponsorBlockPreferenceGroup applied from its
             // updateUI() pass when the user changed an SB setting.
@@ -152,6 +156,31 @@ public final class YouTubeSponsorBlockConfig implements Configuration {
         SegmentPlaybackController.setAdProgressTextVisibility(visibility);
     }
 
+    /**
+     * Injection point.
+     * <p>
+     * Called when a video is saved or removed with the offline video endpoint.
+     * Removing with a prompt is ignored, since the prompt can be cancelled.
+     *
+     * @param action Action of the offline video endpoint.
+     */
+    @SuppressWarnings("unused")
+    public static void offlineVideoAction(String videoId, Enum<?> action) {
+        try {
+            String actionName = action.name();
+            if (actionName.equals(OFFLINE_VIDEO_ACTION_ADD)) {
+                // The external downloader is used instead.
+                if (DownloadsPatch.isDownloadModeHandledByMorphe()) return;
+
+                SponsorBlockOfflineStorage.fetchAndSaveSegments(videoId);
+            } else if (actionName.equals(OFFLINE_VIDEO_ACTION_REMOVE)) {
+                SponsorBlockOfflineStorage.deleteSegments(videoId);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "offlineVideoAction failure", ex);
+        }
+    }
+
     private YouTubeSponsorBlockConfig() {}
 
     @Override public boolean undoToastEnabled()            { return true; }
@@ -180,6 +209,7 @@ public final class YouTubeSponsorBlockConfig implements Configuration {
         @Override public @NonNull BooleanSetting toastOnConnectionError()   { return Settings.SB_TOAST_ON_CONNECTION_ERROR; }
         @Override public @NonNull StringSetting  apiUrl()                   { return Settings.SB_API_URL; }
         @Override public @NonNull BooleanSetting videoLengthWithoutSegments()  { return Settings.SB_VIDEO_LENGTH_WITHOUT_SEGMENTS; }
+        @Override public @NonNull BooleanSetting offlineSegments()             { return Settings.SB_OFFLINE_SEGMENTS; }
         @Override public @NonNull BooleanSetting toastOnWhitelistedChannel()   { return Settings.SB_TOAST_ON_WHITELISTED_CHANNEL; }
         @Override public @NonNull BooleanSetting autoHideSkipButton()          { return Settings.SB_AUTO_HIDE_SKIP_BUTTON; }
         @Override public @NonNull BooleanSetting userIsVip()                   { return Settings.SB_USER_IS_VIP; }

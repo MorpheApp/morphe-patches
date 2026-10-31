@@ -18,43 +18,193 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_entry_1">Dilumpuhkan</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
+  <string name="morphe_splash_screen_style_title">Animasi permulaan</string>
+  <string name="morphe_splash_screen_style_entry_1">Dilumpuhkan</string>
+  <string name="morphe_splash_screen_style_entry_2">Warna</string>
+  <string name="morphe_splash_screen_style_entry_4">Monokrom</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_off">Mati</string>
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Mulakan semula untuk menghabiskan penyediaan</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Nama aplikasi</string>
   <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Latar belakang tema gelap</string>
+  <string name="morphe_theme_color_dark_entry_2">Hitam pekat</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Hitam pekat)</string>
+  <string name="morphe_theme_color_dark_entry_9">YouTube Klasik</string>
+  <string name="morphe_theme_color_dark_entry_10">Merah jambu gelap</string>
+  <string name="morphe_theme_color_dark_entry_11">Biru gelap</string>
+  <string name="morphe_theme_color_dark_entry_12">Hijau gelap</string>
+  <string name="morphe_theme_color_dark_entry_13">Kuning tua</string>
+  <string name="morphe_theme_color_dark_entry_14">Oren tua</string>
+  <string name="morphe_theme_color_dark_entry_15">Merah tua</string>
+  <string name="morphe_theme_color_dark_custom_title">Latar belakang gelap tersuai</string>
+  <string name="morphe_theme_color_dark_custom_summary">Tetapkan warna latar belakang untuk tema gelap</string>
   <string name="morphe_theme_color_entry_1">App default</string>
+  <string name="morphe_theme_color_entry_4">Material You (Neutral)</string>
   <string name="morphe_theme_color_entry_5">Material You (Primary)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Sekunder)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Tertier)</string>
   <string name="morphe_theme_color_custom_entry">Tersuai</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">Muat turun</string>
+  <string name="morphe_download_mode_title">Mod muat turun</string>
   <string name="morphe_download_mode_entry_default">Lalai</string>
+  <string name="morphe_download_mode_entry_in_app">Muat turun dalam aplikasi</string>
+  <string name="morphe_download_mode_entry_external">Pemuat turun luaran</string>
+  <string name="morphe_external_downloader_name_title">Nama pakej pemuat turun</string>
+  <string name="morphe_external_downloader_name_summary">Nama pakej aplikasi pemuat turun luaran yang dipasang</string>
+  <string name="morphe_external_downloader_other_item_hint">Masukkan nama pakej</string>
+  <string name="morphe_external_downloader_other_item">Lain-lain</string>
+  <string name="morphe_external_downloader_not_found_title">Aplikasi tidak dipasang</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s tidak dipasang. Sila pasangkannya</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"Tidak dapat mencari aplikasi yang dipasang dengan nama pakej: %s
+
+Sahkan nama pakej adalah betul dan aplikasi telah dipasang"</string>
+  <string name="morphe_external_downloader_empty_warning">Nama pakej tidak boleh kosong</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Tersuai</string>
+  <string name="morphe_custom_branding_icon_title">Ikon aplikasi</string>
+  <string name="morphe_custom_branding_icon_entry_1">Asal</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe hitam</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe gelap</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe cerah</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play light</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play hitam</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Tersuai</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Ini mengubah ikon yang dipaparkan dalam pelancar aplikasi anda.
+
+Tetapan ini tidak akan mengubah ikon di mana-mana lokasi berikut:
+• Senarai aplikasi tetapan sistem peranti
+• Pemberitahuan tolak tertentu
+• Pemilih aplikasi 'Buka dengan'
+• Ikon Android Auto
+
+Untuk mengubah ikon di semua tempat, tampal semula dan ubah pilihan tampalan 'Ikon aplikasi'"</string>
   <string name="morphe_custom_branding_notification_icon_title">Ikon pemberitahuan</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Padankan ikon aplikasi</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Notis Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Sejarah tontonan anda tidak disimpan.&lt;br&gt;&lt;br&gt;Ini kemungkinan besar disebabkan oleh penyekat iklan DNS atau proksi rangkaian.&lt;br&gt;&lt;br&gt;Untuk membetulkannya, senarai putih &lt;b&gt;s.youtube.com&lt;/b&gt; atau matikan semua penyekat DNS dan proksi</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Jangan tunjukkan lagi</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Tiru penstriman video</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Konfigurasikan penyamaran klien untuk mengelakkan masalah main balik</string>
+  <string name="morphe_spoof_video_streams_summary">"Memperbaiki isu main balik untuk kebanyakan pengguna dengan meminta strim video yang serasi
+
+Jika anda pengguna YouTube Premium, tetapan ini mungkin tidak diperlukan"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Tidak dapat mengambil sebarang penstriman klien</string>
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Klien lalai tidak berfungsi</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s tidak berfungsi beberapa kali berturut-turut, tetapi %2$s berfungsi.
+
+Jadikan %2$s sebagai klien lalai?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Tukar</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Mematikan tetapan ini mungkin menyebabkan masalah main balik</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Cuba dayakan: Spoof penstriman video &gt; Log masuk VR Android</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Klien lalai</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Log masuk VR Android</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Tidak log masuk ke VR Android. Ketik di sini untuk log masuk</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kini log masuk ke Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Untuk menggunakan ciri ini, tukar \'Klien lalai\' kepada Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Log masuk ke Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Log masuk ke Android VR boleh membaiki masalah main balik bagi sesetengah pengguna
+
+Untuk log masuk, tekan teruskan di bawah"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Log keluar</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Panduan</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Kod pengaktifan: %s
+
+1. Ketik 'Buka laman web' di bawah untuk membuka laman web 'Sambungkan peranti'
+2. Tampal daripada papan klip (atau taip) kod pengaktifan yang dipaparkan di atas
+3. Log masuk ke Google jika diminta. Jika anda mempunyai beberapa akaun, pilih akaun YouTube ini
+4. Ketik 'Benarkan akses YouTube VR'
+5. Kembali ke aplikasi ini selepas mencapai mesej 'Peranti disambungkan'"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Gagal mengeluarkan kod pengaktifan</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Gagal mengeluarkan token pengesahan</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Berjaya log masuk</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Pengesahan disimpan
+
+• Tetapan Morphe anda tidak akan mengimport/mengeksport pengesahan Android VR
+• Jika aplikasi ini tidak digunakan selama 6 bulan, Google akan membuang pengesahan ini
+• Anda perlu log masuk semula jika anda menukar kata laluan Google anda atau menyahdaftar peranti ini daripada tetapan Google anda"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 tidak tersedia buat sementara waktu (API tamat masa)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Log masuk VR Android telah tamat tempoh, cuba log masuk ke VR sekali lagi</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 tidak tersedia buat sementara waktu (status %s)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 tidak tersedia buat sementara waktu</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Tidak dapat log masuk ke VR, pengesahan laman web tidak diluluskan</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Tidak dapat log masuk ke VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Log keluar daripada Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Token log masuk VR tidak sah, cuba log masuk ke VR sekali lagi</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Kawalan media pemberitahuan</string>
+  <string name="morphe_notification_media_screen_summary">Sesuaikan kawalan main balik yang dipaparkan pada skrin kunci dan panel pemberitahuan</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Sembunyikan butang Sebelumnya &amp; Seterusnya</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Menyembunyikan butang Sebelumnya dan Seterusnya dalam pemberitahuan media, skrin kunci, dan kawalan fon kepala</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Kecilkan seekbar</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Menghalang penarikan seekbar pada skrin kunci dan panel pemberitahuan</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Cari dengan butang Sebelumnya &amp; Seterusnya</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Mengubah kawalan untuk pemberitahuan media, skrin kunci, dan fon kepala untuk mencari daripada menukar video</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Panjang undur</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Saat untuk mengundur dengan butang Sebelumnya</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Panjang lungsur pantas</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Saat untuk melungsur pantas dengan butang Seterusnya</string>
+  <string name="morphe_seek_notification_media_length_invalid">Panjang carian mestilah antara 1 dan %s saat. Menggunakan lalai</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Nyahaktifkan protokol QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">Nyahaktifkan audio DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Paksa bahasa audio asal</string>
+  <string name="morphe_force_original_audio_summary">Sentiasa mainkan trek audio asal video berbanding versi alih suara</string>
   <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Langkau senyap</string>
+  <string name="morphe_skip_silence_summary">Melangkau jeda senyap secara automatik dalam audio video</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Panjang jeda minimum</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Hanya jeda yang sekurang-kurangnya sepanjang ini akan dipendekkan. Berkesan apabila video seterusnya bermula</string>
   <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Proksi rangkaian</string>
+  <string name="morphe_proxy_screen_summary">Hala permintaan rangkaian yang disokong melalui proksi</string>
+  <string name="morphe_proxy_enabled_title">Dayakan proksi</string>
+  <string name="morphe_proxy_enabled_summary">Menghala permintaan rangkaian yang disokong melalui proksi HTTP atau HTTPS yang dikonfigurasi</string>
+  <string name="morphe_proxy_host_title">Hos proksi</string>
+  <string name="morphe_proxy_host_summary">Nama hos atau alamat IP pelayan proksi</string>
+  <string name="morphe_proxy_port_title">Port proksi</string>
+  <string name="morphe_proxy_port_summary">Port pelayan proksi</string>
+  <string name="morphe_proxy_https_title">Gunakan proksi HTTPS</string>
+  <string name="morphe_proxy_https_summary">Gunakan HTTPS untuk menyambung ke pelayan proksi dan bukannya HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Pengesahan proksi</string>
+  <string name="morphe_proxy_auth_enabled_summary">Menghantar pengesahan Asas dengan permintaan proksi</string>
+  <string name="morphe_proxy_auth_username_title">Nama pengguna proksi</string>
+  <string name="morphe_proxy_auth_username_summary">Nama pengguna untuk pengesahan proksi Asas</string>
+  <string name="morphe_proxy_auth_password_title">Kata laluan proksi</string>
+  <string name="morphe_proxy_auth_password_summary">Kata laluan untuk pengesahan proksi Asas</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Benarkan sandaran terus</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Sambung secara terus jika proksi gagal</string>
   <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Sembunyikan iklan skrin penuh</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Untuk menggunakan ciri ini, tukar \'Spoof video streams\' kepada mana-mana klien kecuali \'Android Studio\' dan \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Bersihkan pautan perkongsian</string>
+  <string name="morphe_sanitize_sharing_links_summary">Alihkan parameter pertanyaan penjejakan daripada pautan yang dikongsi</string>
+  <string name="morphe_replace_music_with_youtube_title">Tukar pautan kongsi ke youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Menggantikan music.youtube.com kepada youtube.com dalam pautan yang dikongsi</string>
+  <string name="morphe_replace_links_with_shortener_title">Tukar pautan kongsi kepada youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Memaksa video menggunakan format URL youtu.be yang dipendekkan</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_protobuffer_title">Protokol penimbal log debug</string>
   <string name="morphe_debug_protobuffer_summary">Menambahkan maklumat log tambahan bagi pembangun untuk mengenal pasti komponen aplikasi</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Mendayakan tetapan ini akan mencatat data tataletak tambahan, termasuklah teks pada skrin untuk beberapa komponen UI.
 
@@ -62,21 +212,104 @@ Ini boleh membantu mengenal pasti komponen apabila mencipta penapis tersuai.
 
 Walau bagaimanapun, mendayakan tetapan ini juga akan mencatat beberapa data pengguna seperti alamat IP anda"</string>
   <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Penapis tersuai</string>
+  <string name="morphe_custom_filter_screen_summary">Konfigurasikan penapis tersuai untuk menyembunyikan sebarang komponen</string>
+  <string name="morphe_custom_filter_title">Dayakan penapis tersuai</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Senarai rentetan pembina laluan komponen untuk ditapis, dipisahkan oleh baris baharu</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Penapis tersuai tidak sah: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
+  <string name="morphe_settings_menu_filter_screen_title">Penapis menu Tetapan</string>
+  <string name="morphe_settings_menu_filter_screen_summary">Sembunyikan item pada skrin tetapan apl standard mengikut nama kelihatan</string>
+  <string name="morphe_settings_menu_filter_picker_empty">Buka skrin tetapan apl standard sekali untuk mengisi senarai</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Alih keluar dialog budi bicara penonton</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Ini tidak akan memirau sekatan umur dan hanya menerimanya secara automatik</string>
   <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">Pembekal PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">Konfigurasikan pembekal PoToken untuk mengelakkan masalah main balik</string>
+  <string name="morphe_external_potoken_provider_title">Pembekal PoToken luaran</string>
+  <string name="morphe_external_potoken_provider_summary">"Membaiki isu main balik menggunakan minter PoToken luaran (Eksperimen)
+
+Jika anda pengguna YouTube Premium, tetapan ini mungkin tidak diperlukan"</string>
   <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Membaiki isu main balik menggunakan minter PoToken luaran (Eksperimen)
+
+Untuk menggunakan ciri ini, matikan 'Spoof strim video'"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Jika ia tidak berfungsi, cuba tutup paksa MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Buka tetapan PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Ciri ini kini dalam pembangunan dan mungkin tidak berfungsi
+
+Ketik di sini untuk memuat turun PotHelper"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper tidak lagi berfungsi</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Token yang terbina dalam versi PotHelper ini tidak lagi berfungsi
+
+ hidupkan 'Spoof video streams' untuk membaiki main balik"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Hidupkan</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Tiru versi apl</string>
+  <string name="morphe_spoof_app_version_summary">Menipu pelayan supaya menganggap anda menggunakan versi apl yang lebih lama untuk memulihkan ciri UI legasi</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Versi aplikasi akan ditiru kepada versi yang lebih lama.
+
+Ini akan mengubah penampilan dan ciri-ciri aplikasi, tetapi kesan sampingan yang tidak diketahui mungkin berlaku.
+
+Jika dimatikan kemudian, anda disyorkan untuk mengosongkan data aplikasi untuk mengelakkan pepijat UI"</string>
+  <string name="morphe_spoof_app_version_target_title">Tiru sasaran versi aplikasi</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Kadar segar semula aplikasi</string>
   <string name="morphe_app_refresh_rate_default">Lalai</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">Atasi kadar penyegaran</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Sentiasa</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Main balik potret</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Main balik skrin penuh</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Main balik potret dan skrin penuh</string>
   <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Fon</string>
   <string name="morphe_custom_font_type_entry_default">Lalai</string>
+  <string name="morphe_custom_font_type_entry_system">Fon sistem peranti</string>
+  <string name="morphe_custom_font_type_entry_custom">Fail fon tersuai</string>
+  <string name="morphe_custom_font_file_title">Fail fon tersuai</string>
+  <string name="morphe_custom_font_file_summary">Pilih fail fon TTF atau OTF</string>
+  <string name="morphe_custom_font_file_invalid">Fail yang dipilih bukan fon TTF atau OTF</string>
+  <string name="morphe_custom_font_failed_to_load">Fon tersuai tidak dapat dimuatkan dan telah dimatikan</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_ryd_failure_connection_timeout">Dislike tidak tersedia buat sementara waktu (API tamat masa)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Tidak suka tidak tersedia (status %s)</string>
+  <string name="morphe_ryd_failure_client_rate_limit_requested">Dislike tidak tersedia (had API klien)</string>
+  <string name="morphe_ryd_failure_generic">Dislike tidak tersedia (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
+  <string name="morphe_ryd_video_likes_hidden_by_video_owner">Disembunyikan oleh pemilik</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Tidak suka video ini, bersama %s orang lain</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Tidak suka video ini, %s daripada undian adalah tidak suka</string>
+  <string name="morphe_ryd_enabled_title">Dayakan Return YouTube Dislike</string>
+  <string name="morphe_ryd_dislike_percentage_title">Tunjukkan tidak suka sebagai peratusan</string>
+  <string name="morphe_ryd_dislike_percentage_summary">Menunjukkan tidak suka sebagai peratusan daripada suka dan bukannya nombor</string>
+  <string name="morphe_ryd_estimated_like_title">Tunjukkan anggaran suka</string>
+  <string name="morphe_ryd_estimated_like_summary">Menunjukkan anggaran jumlah suka pada video di mana pencipta telah menyahaktifkan suka</string>
+  <string name="morphe_ryd_toast_on_connection_error_title">Tunjukkan amaran ralat sambungan</string>
+  <string name="morphe_ryd_toast_on_connection_error_summary">Menunjukkan pemberitahuan apabila pelayan Return YouTube Dislike tidak tersedia</string>
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike mengembalikan jumlah tidak suka yang disembunyikan oleh YouTube pada 2021. Jumlah tersebut datang daripada data yang diarkibkan sebelum pembuangan dan dianggar untuk video yang lebih baharu daripada undian penggunanya, jadi ia adalah anggaran dan dikemas kini setiap beberapa hari
+
+ID video yang anda tonton dihantar ke API Return YouTube Dislike, dan suka serta tidak suka anda dihantar secara tanpa nama untuk menambah baik anggaran tersebut"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
+  <string name="morphe_ryd_statistics_category_title">Statistik API Return YouTube Dislike peranti ini</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Masa tindak balas API, purata</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">Masa tindak balas API, minimum</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">Masa tindak balas API, maksimum</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Masa tindak balas API, media terakhir</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Tidak suka tidak tersedia buat sementara waktu - Had kadar API Klien sedang berkuat kuasa</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_title">API ambil undian, jumlah panggilan</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Tiada panggilan rangkaian dibuat</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s panggilan rangkaian telah dibuat</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API ambil undian, jumlah masa tamat</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Tiada panggilan rangkaian yang tamat masa</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s panggilan rangkaian telah tamat masa</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Had kadar klien API</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Tiada had kadar klien ditemui</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Had kadar klien ditemui %s kali</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s milisaat</string>
 </resources>

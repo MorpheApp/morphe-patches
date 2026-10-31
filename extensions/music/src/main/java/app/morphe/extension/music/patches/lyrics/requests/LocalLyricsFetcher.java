@@ -27,15 +27,12 @@ import java.util.function.IntPredicate;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
-import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 public final class LocalLyricsFetcher {
-
-    private LocalLyricsFetcher() {
-    }
 
     /**
      * Value of {@code MediaMetadataRetriever.METADATA_KEY_LYRICS}. Kept as a literal because the
@@ -43,10 +40,12 @@ public final class LocalLyricsFetcher {
      * the framework on API 30+, so it is used only as a best-effort fallback after direct parsing.
      */
     private static final int METADATA_KEY_LYRICS = 0x104;
-
     private static final int MAX_TAG_BYTES = 16 * 1024 * 1024;
-
     private static final int M4A_TAIL_BYTES = 4 * 1024 * 1024;
+    private static final int MAX_M4A_DEPTH = 32;
+
+    private LocalLyricsFetcher() {
+    }
 
     @Nullable
     public static Lyrics fetch(@Nullable Uri mediaUri) {
@@ -144,11 +143,11 @@ public final class LocalLyricsFetcher {
                 }
                 String selection = MediaStore.Audio.Media.TITLE + " LIKE ? ESCAPE '\\'";
                 Cursor cursor = resolver.query(base, projection, selection,
-                        new String[]{ likeEscape(t) }, null);
+                        new String[]{likeEscape(t)}, null);
                 if (cursor != null && cursor.getCount() == 0) {
                     cursor.close();
                     cursor = resolver.query(base, projection, selection,
-                            new String[]{ "%" + likeEscape(t) + "%" }, null);
+                            new String[]{"%" + likeEscape(t) + "%"}, null);
                 }
                 if (cursor == null) {
                     continue;
@@ -306,7 +305,7 @@ public final class LocalLyricsFetcher {
             }
         }
         if (d.length >= 8 && d[4] == 'f' && d[5] == 't' && d[6] == 'y' && d[7] == 'p') {
-            return parseM4a(d);
+            return walkM4a(d, 0, d.length, 0);
         }
         return null;
     }
@@ -351,7 +350,7 @@ public final class LocalLyricsFetcher {
             final int size = (headerLen == 6)
                     ? (((d[pos + 3] & 0xFF) << 16) | ((d[pos + 4] & 0xFF) << 8) | (d[pos + 5] & 0xFF))
                     : (syncsafeSize ? syncsafe(d[pos + 4], d[pos + 5], d[pos + 6], d[pos + 7])
-                    : readInt32BE(d, pos + 4));
+                       : readInt32BE(d, pos + 4));
             final int bodyOff = pos + headerLen;
             if (size < 0 || bodyOff + size > d.length) {
                 break;
@@ -720,12 +719,6 @@ public final class LocalLyricsFetcher {
         return null;
     }
 
-    private static final int MAX_M4A_DEPTH = 32;
-
-    private static String parseM4a(byte[] d) {
-        return walkM4a(d, 0, d.length, 0);
-    }
-
     @Nullable
     private static String walkM4a(byte[] d, int start, int end, int depth) {
         if (depth > MAX_M4A_DEPTH) {
@@ -930,28 +923,32 @@ public final class LocalLyricsFetcher {
         if (isValidUtf8(b)) {
             return new String(b, StandardCharsets.UTF_8);
         }
-        if (isLikelyGbk(b)) {
+        if (isLikelyDoubleByte(b, c -> c >= 0x81 && c <= 0xFE,
+                c -> c >= 0x40 && c <= 0xFE && c != 0x7F)) {
             try {
                 return new String(b, "GBK");
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not decode GBK text", ex);
             }
         }
-        if (isLikelyBig5(b)) {
+        if (isLikelyDoubleByte(b, c -> c >= 0x81 && c <= 0xFE,
+                c -> (c >= 0x40 && c <= 0x7E) || (c >= 0xA1 && c <= 0xFE))) {
             try {
                 return new String(b, "Big5");
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not decode Big5 text", ex);
             }
         }
-        if (isLikelyShiftJis(b)) {
+        if (isLikelyDoubleByte(b, c -> (c >= 0x81 && c <= 0x9F) || (c >= 0xE0 && c <= 0xEF),
+                c -> (c >= 0x40 && c <= 0x7E) || (c >= 0x80 && c <= 0xFC))) {
             try {
                 return new String(b, "Shift_JIS");
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not decode Shift_JIS text", ex);
             }
         }
-        if (isLikelyEucKr(b)) {
+        if (isLikelyDoubleByte(b, c -> c >= 0x81 && c <= 0xFE,
+                c -> c >= 0x41 && c <= 0xFE)) {
             try {
                 return new String(b, "EUC-KR");
             } catch (Exception ex) {
@@ -999,26 +996,6 @@ public final class LocalLyricsFetcher {
             }
         }
         return true;
-    }
-
-    private static boolean isLikelyGbk(byte[] b) {
-        return isLikelyDoubleByte(b, c -> c >= 0x81 && c <= 0xFE,
-                c -> c >= 0x40 && c <= 0xFE && c != 0x7F);
-    }
-
-    private static boolean isLikelyBig5(byte[] b) {
-        return isLikelyDoubleByte(b, c -> c >= 0x81 && c <= 0xFE,
-                c -> (c >= 0x40 && c <= 0x7E) || (c >= 0xA1 && c <= 0xFE));
-    }
-
-    private static boolean isLikelyShiftJis(byte[] b) {
-        return isLikelyDoubleByte(b, c -> (c >= 0x81 && c <= 0x9F) || (c >= 0xE0 && c <= 0xEF),
-                c -> (c >= 0x40 && c <= 0x7E) || (c >= 0x80 && c <= 0xFC));
-    }
-
-    private static boolean isLikelyEucKr(byte[] b) {
-        return isLikelyDoubleByte(b, c -> c >= 0x81 && c <= 0xFE,
-                c -> c >= 0x41 && c <= 0xFE);
     }
 
     /**

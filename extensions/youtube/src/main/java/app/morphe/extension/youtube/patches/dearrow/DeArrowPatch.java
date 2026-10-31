@@ -262,7 +262,7 @@ public final class DeArrowPatch {
         // Cannot use unsecured 'http', otherwise the connections fail to start and no callbacks hooks are made.
         String scheme = apiURI.getScheme();
         if (scheme == null || scheme.equals("http") || apiURI.getHost() == null) {
-            Utils.showToastLong("Invalid DeArrow API URL. Using default");
+            Utils.showSnackbarLong("Invalid DeArrow API URL. Using default");
             Settings.DEARROW_API_URL.resetToDefault();
             return validateSettings();
         }
@@ -341,7 +341,12 @@ public final class DeArrowPatch {
     @Nullable
     private static String buildYouTubeVideoStillURL(DecodedThumbnailURL decodedURL,
                                                     ThumbnailQuality qualityToUse) {
-        ThumbnailQuality quality = UnavailableQualities.getQualityToTry(decodedURL.videoId, qualityToUse);
+        // The quality if it has not failed to load, a lower quality,
+        // or null if the original thumbnail must be used.
+        UnavailableQualities unavailable = UnavailableQualities.unavailableVideoIdLookup.get(decodedURL.videoId);
+        ThumbnailQuality quality = unavailable == null
+                ? qualityToUse // Unknown if it exists. Use the URL anyway and update afterward if loading fails.
+                : unavailable.getAvailableQuality(decodedURL.videoId, qualityToUse);
         if (quality == null) {
             return null;
         }
@@ -440,7 +445,7 @@ public final class DeArrowPatch {
                 String toastMessage = (statusCode != 0)
                         ? str("morphe_dearrow_error", statusCode)
                         : str("morphe_dearrow_error_generic");
-                Utils.showToastLong(toastMessage);
+                Utils.showSnackbarLong(toastMessage);
             }
             // Load the DeArrow thumbnails again, which now use the fallback thumbnails.
             LithoRelayoutPatch.remountListViews();
@@ -584,14 +589,16 @@ public final class DeArrowPatch {
 
                 Logger.printDebug(() -> "handleCronetSuccess, image not available: " + decodedURL.sanitizedURL);
 
-                ThumbnailQuality quality = ThumbnailQuality.altImageNameToQuality(decodedURL.imageQuality);
+                ThumbnailQuality quality = ThumbnailQuality.altNameToEnum.get(decodedURL.imageQuality);
                 if (quality == null) {
                     // Video is a short or a seekbar thumbnail, but somehow did not load.  Should not happen.
                     Logger.printDebug(() -> "Failed to recognize image quality of URL: " + decodedURL.sanitizedURL);
                     return;
                 }
 
-                UnavailableQualities.setQualityNotAvailable(decodedURL.videoId, quality);
+                UnavailableQualities.unavailableVideoIdLookup.computeIfAbsent(
+                        decodedURL.videoId, key -> new UnavailableQualities()
+                ).setNotAvailable(decodedURL.videoId, quality);
                 LithoRelayoutPatch.remountListViews();
             }
         } catch (Exception ex) {
@@ -663,15 +670,6 @@ public final class DeArrowPatch {
         }
 
         /**
-         * Convert an alt image name to enum.
-         * ie: "hq720_2" returns {@link #HQ720}.
-         */
-        @Nullable
-        static ThumbnailQuality altImageNameToQuality(String altImageName) {
-            return altNameToEnum.get(altImageName);
-        }
-
-        /**
          * Original quality to effective alt quality to use.
          * ie: "sddefault" returns {@link #HQ720}.
          */
@@ -725,25 +723,6 @@ public final class DeArrowPatch {
          */
         private static final Map<String, UnavailableQualities> unavailableVideoIdLookup =
                 Collections.synchronizedMap(Utils.createSizeRestrictedMap(1000));
-
-        /**
-         * @return The quality to try for the video, which is the quality if it has not failed to load,
-         *         a lower quality, or null if the original thumbnail must be used.
-         */
-        @Nullable
-        static ThumbnailQuality getQualityToTry(String videoId, ThumbnailQuality quality) {
-            UnavailableQualities unavailable = unavailableVideoIdLookup.get(videoId);
-            if (unavailable == null) {
-                return quality; // Unknown if it exists. Use the URL anyway and update afterward if loading fails.
-            }
-            return unavailable.getAvailableQuality(videoId, quality);
-        }
-
-        static void setQualityNotAvailable(String videoId, ThumbnailQuality quality) {
-            UnavailableQualities unavailable = unavailableVideoIdLookup.computeIfAbsent(
-                    videoId, key -> new UnavailableQualities());
-            unavailable.setNotAvailable(videoId, quality);
-        }
 
         /**
          * Lowest quality that failed to load. Higher qualities are assumed to also not be available.

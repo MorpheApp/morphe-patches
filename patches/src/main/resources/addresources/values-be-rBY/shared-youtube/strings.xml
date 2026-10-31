@@ -18,48 +18,302 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_entry_1">Адключана</string>
+  <string name="morphe_splash_screen_style_title">Анімацыя запуску</string>
+  <string name="morphe_splash_screen_style_entry_1">Адключана</string>
+  <string name="morphe_splash_screen_style_entry_2">Колер</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Колер</string>
+  <string name="morphe_splash_screen_style_entry_4">Манахромны</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Манахром</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Выдзяляць новыя налады</string>
+  <string name="morphe_settings_new_indicator_days_summary">Колькасць дзён, на працягу якіх кропка паказваецца побач з наладамі і опцыямі, даданымі ў абнаўленні</string>
+  <string name="morphe_settings_new_indicator_days_off">Выкл.</string>
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Перазагрузіце прыладу, каб завяршыць налады</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Назва праграмы</string>
   <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Фон цёмнай тэмы</string>
+  <string name="morphe_theme_color_dark_entry_2">Чыста чорны</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (чыста чорны)</string>
+  <string name="morphe_theme_color_dark_entry_9">Класічны YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">Цёмна-рожавы</string>
+  <string name="morphe_theme_color_dark_entry_11">Цёмна-сіні</string>
+  <string name="morphe_theme_color_dark_entry_12">Цёмна-зялёны</string>
+  <string name="morphe_theme_color_dark_entry_13">Цёмна-жоўты</string>
+  <string name="morphe_theme_color_dark_entry_14">Цёмна-аранжавы</string>
+  <string name="morphe_theme_color_dark_entry_15">Цёмна-чырвоны</string>
+  <string name="morphe_theme_color_dark_custom_title">Уласны цёмны фон</string>
+  <string name="morphe_theme_color_dark_custom_summary">Усталяваць колер фона для цёмнай тэмы</string>
+  <string name="morphe_theme_color_entry_1">Па râмiнне праграмы</string>
+  <string name="morphe_theme_color_entry_4">Material You (нейтральны)</string>
+  <string name="morphe_theme_color_entry_5">Material You (асноўны)</string>
+  <string name="morphe_theme_color_entry_6">Material You (другалепшае)</string>
+  <string name="morphe_theme_color_entry_7">Material You (трэцялепшае)</string>
   <string name="morphe_theme_color_custom_entry">Карыстальніцкае</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">Загрузкі</string>
+  <string name="morphe_download_mode_title">Рэжым спампоўкі</string>
+  <string name="morphe_download_mode_entry_default">Звычайны</string>
+  <string name="morphe_download_mode_entry_in_app">Спампаваць у праграме</string>
+  <string name="morphe_download_mode_entry_external">Зональны загрузчык</string>
+  <string name="morphe_external_downloader_name_title">Назва пакета завантажніка</string>
+  <string name="morphe_external_downloader_name_summary">Назва пакета вашай усталяванай знешняй праграмы-завантажніка</string>
+  <string name="morphe_external_downloader_other_item_hint">Увядзіце назву пакета</string>
+  <string name="morphe_external_downloader_other_item">Іншае</string>
+  <string name="morphe_external_downloader_not_found_title">Праграма не ўсталявана</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s не ўсталяваны. Калі ласка, ўсталюйце яго</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"Не удалось знайсці ўсталяваную праграму з назвай пакета: %s
+
+Пераправерце, ці правільна паказана назва пакета і ці ўсталявана праграма"</string>
+  <string name="morphe_external_downloader_empty_warning">Назва пакета не можа быць пустай</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
+  <string name="morphe_custom_branding_name_entry_5">Карыстальніцкае</string>
+  <string name="morphe_custom_branding_icon_title">Іконка праграмы</string>
+  <string name="morphe_custom_branding_icon_entry_1">Арыгінальная</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe dark</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe light</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play светлы</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play чорны</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_7">Карыстальніцкае</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Гэта змяняе значок, які wyświetляецца ў запускунгу праграм.
+
+Гэтая настройка не змяніць значок у наступных месцах:
+• Спіс праграм у сістэмных наладках прылады
+• Пэўныя push-апавешчэнні
+• Выбар праграмы ў меню \"Адкрыць з дапамогой\"
+• Значок Android Auto
+
+Каб змяніць значок усюды, выканайце патч паўторна і змяніце параметр патча \"Значок праграмы\""</string>
+  <string name="morphe_custom_branding_notification_icon_title">Іконка паведамленняў</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Адпаведнасць іконцы праграмы</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Паведамленне Morphe</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша гісторыя прагляду не захраняецца.&lt;br&gt;&lt;br&gt;Штоўжней, гэта выклікана DNS-блакіроўшчыкам рэкламы або сеткавым проксі.&lt;br&gt;&lt;br&gt;Каб выправіць гэта, дадайце &lt;b&gt;s.youtube.com&lt;/b&gt; у белы спіс або выключайце ўсе DNS-блакіроўшчыкі і проксі</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Больш не паказваць</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Падарабіць відэапатокі</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Наладзіць спафінг кліента, каб пазбегнуць праблем з віднаўленнем</string>
+  <string name="morphe_spoof_video_streams_summary">"Выпраўляе праблемы з відэапрайміўкасцю для więksнасці карыстальнікаў праз запыт сумяшчальнага відэапатока
+
+Калі вы карыстальнік YouTube Premium, гэтая настройка можа быць не патрэбнай"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Не ўдалося атрымаць кліенцкія патокі</string>
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Кліент па змаўчанні не працуе</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s некалькі разоў запаляку не спрацаваў, але %2$s спрацаваў.
+
+Зрабіць %2$s кліентам па змаўчанні?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Пераключыць</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Выключение гэтай налады можа выклікаць праблемы з прайграваннем</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Паспрабуйце ўłączyć: Імітацыя відэапатокаў &gt; Уваход у Android VR</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Кліент па змаўчанні</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Уваход у Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Вы не ўвайшли ў Android VR. Націсніце тут, каб увайсці</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">У дадзены момант вы ўвайшли ў Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Каб скарыстацца гэтай функцыяй, змяніце \"Кліент па змаўчанні\" на Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Увайсці ў Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Уваход у Android VR можа выправіць праблемы з відтворам для некаторых карыстальнікаў
+
+Каб увайти, націсніце «Працягаць» ніжэй"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Выйсці</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Інструкцыі</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Код актывацыі: %s
+
+1. Націсніце «Адкрыць вебсайт» ніжэй, каб адкрыць вебсайт «Падключыць прыладу»
+2. Устаўце з буфера абменью (або ўвядзіце ўручную) код актывацыі, паказаны вышэй
+3. Увайсці ў Google, калі з'явіцца запыт. Калі ў вас некалькі ўлічаных запісаў, выберыце гэты ўлічаны запіс YouTube
+4. Націсніце «Даць доступ YouTube VR»
+5. Верніцеся ў гэтую праграму пасля з'яўлення паведамлення «Прыладу падключана»"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Не ўдалося выдаць код актывацыі</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Не удалось выдаць токен аўтэнтыфікацыі</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Успяхова ўвайшли ў сістэму</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Аўтэнтыфікацыя захавана
+
+• Налады Morphe не будуць імпартаваць/экспартаваць аўтэнтыфікацыю Android VR
+• Калі гэтая праграма не будзе выкарыстоўвацца на працягу 6 месяцаў, Google выдаліць гэтую аўтэнтыфікацыю
+• Вам спатрэбіцца ўвайсці ў сістэму зноў, калі вы змяніце пароль Google або адключаце гэтую прыладу ў наладках Google"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 часова недаступны (таймаўт API)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Тэрмін дзеяння сесіі Android VR скончыўся, паспрабуйце ўвайсці ў VR зноў</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 часова недаступны (статус %s)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 часова недаступны</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Не ўдалося ўвайсці ў VR, аўтэнтыфікацыя на веб-сайце не была пацверджана</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Не ўдалося ўвайсці ў VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Выйшлі з улікову запису Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Нячынны токен уваходу ў VR, паспрабуйце ўвайсці ў VR зноў</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Скіроўка медыя ў паведамленнях</string>
+  <string name="morphe_notification_media_screen_summary">Настройце элементы кіравання прайграваннем, якія адлюстроўваюцца на экране блакіроўкі і ў панэлі паведамленняў</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Схаваць кнопкі \"Папярэдняя\" &amp; \"Наступная\"</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Хавае кнопкі \"Папярэдняя\" і \"Наступная\" ў паведамленні аб медыя, на экране блакіроўкі і ў скіроўцы навушнікоў</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Адключаць палосу пракруткі</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Забараняе перацягванне палосы пракруткі на экране блакіроўкі і ў панэлі паведамленняў</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Пераматыванне кнопкамі \"Назад\" і \"Далей\"</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Змяняе органы кіравання для паведамленняў пра медыя, экрана блакіроўкі і навушнікаў, каб выканаўваць пераматыванне замест змены відэа</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Даўжыня пераматывання назад</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Колькасць секунд для пераматывання назад кнопкай \"Назад\"</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Даўжыня пераматывання ўперёд</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Колькасць секунд для пераматывання ўперёд кнопкай \"Далей\"</string>
+  <string name="morphe_seek_notification_media_length_invalid">Даўжыня пераматывання павінна быць ад 1 да %s секунд. Выкарыстоўваецца значэнне па adapting</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Адключаць пратакол QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">Адключаць DRC-аудыё</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Прымусіць арыгінальную мову аўдыя</string>
+  <string name="morphe_force_original_audio_summary">Заўсёды праграваць арыгінальную аўдыядарожку відэа замест дубляжа</string>
   <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Прапускаць цішыню</string>
+  <string name="morphe_skip_silence_summary">Аўтаматычна прапускае ціхія паўзы ў аўдыядарожцы відэа</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Мінімальная працялосць паўзы</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Скарачаюцца толькі тыя паўзы, якія доўжацца не менш за гэты час. Запрацуе пры запуску наступнага відэа</string>
   <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Сятэвы проксі</string>
+  <string name="morphe_proxy_screen_summary">Накіроўваць падтрыманыя сеткавыя запыты праз проксі</string>
+  <string name="morphe_proxy_enabled_title">Уключаць проксі</string>
+  <string name="morphe_proxy_enabled_summary">Накіроўвае падтрыманыя сеткавыя запыты праз наладжаны HTTP або HTTPS проксі</string>
+  <string name="morphe_proxy_host_title">Хост проксі</string>
+  <string name="morphe_proxy_host_summary">Імя хоста або IP-адрас проксі-сервера</string>
+  <string name="morphe_proxy_port_title">Порт проксі</string>
+  <string name="morphe_proxy_port_summary">Порт праксі-сервера</string>
+  <string name="morphe_proxy_https_title">Выкарыстоўваць HTTPS-праксі</string>
+  <string name="morphe_proxy_https_summary">Выкарыстоўваць HTTPS для падключэння да праксі-сервера замест HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Аўтэнтыфікацыя праксі</string>
+  <string name="morphe_proxy_auth_enabled_summary">Адпраўляць Basic-аўтэнтыфікацыю з запытамі праксі</string>
+  <string name="morphe_proxy_auth_username_title">Імя карыстальніка праксі</string>
+  <string name="morphe_proxy_auth_username_summary">Імя карыстальніка для Basic-аўтэнтыфікацыі праксі</string>
+  <string name="morphe_proxy_auth_password_title">Пароль праксі</string>
+  <string name="morphe_proxy_auth_password_summary">Пароль для Basic-аўтэнтыфікацыі праксі</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Дазволіць прамое падключэнне ў выпадку збою</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Падключацца прама, калі праксі не працуе</string>
   <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Схаваць паўнаэкранную рэкламу</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Каб скарыстацца гэтай функцыяй, змяніце \"Spoof video streams\" на любога кліента, акрамя \"Android Studio\" і \"Android VR Downgraded\"</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Ачысціць спасылкі для падзелу</string>
+  <string name="morphe_sanitize_sharing_links_summary">Выдаляе параметры адсочвання з размерных спасылак</string>
+  <string name="morphe_replace_music_with_youtube_title">Змяніць спасылкі для падзелу на youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Замяняе music.youtube.com на youtube.com у паділеных спасылках</string>
+  <string name="morphe_replace_links_with_shortener_title">Змяніць спасылкі для яго пашырэння на youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Прымушае відэа выкарыстоўваць скарочаны фармат URL youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_protobuffer_title">Протакол буфера адладчыкага лога</string>
+  <string name="morphe_debug_protobuffer_summary">Дадае дадатковую інфармацыю ў логі для распрацоўшчыкаў, каб ідэнтыфікаваць кампаненты праграмы</string>
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Уключанне гэтай налады дазволіць запіс дадатковых даных размяшчання, уключаючы тэкст на экране для некаторых кампанентаў інтэрфейсу.
+
+Гэта можа дапамагчы ідэнтыфікаваць кампаненты пры стварэнні ўласных фільтраў.
+
+Аднак уключанне гэтай функцыі таксама прывядзе да запісу некаторых карыстальніцкіх даных, такіх як ваш IP-адрас"</string>
   <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Спецыяльны фільтр</string>
+  <string name="morphe_custom_filter_screen_summary">Настройце спецыяльныя фільтры, каб схаваць любы кампанент</string>
+  <string name="morphe_custom_filter_title">Уключыць спецыяльны фільтр</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Спіс радкоў пабудоўніка шляху кампанента для фільтрацыі, аддзяленых новымі радкамі</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Няправільны карыстальніцкі фільтр: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
+  <string name="morphe_settings_menu_filter_screen_title">Фільтр меню налад</string>
+  <string name="morphe_settings_menu_filter_screen_summary">Схаваць элементы на стандартным экране налад праграмы па іх бачнай назве</string>
+  <string name="morphe_settings_menu_filter_picker_empty">Адкрыйце стандартны экран налад праграмы адзін раз, каб запоўніць спіс</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Выдаліць дыялогавае акно папярэджання для глядачоў</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Гэта не абыходзіць абмежаванне па ўзросце. Гэта проста прымае яго аўтаматычна</string>
   <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">Постаўшчык PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">Наладзіце пастаўшчыка PoToken, каб пазбегнуць праблем з відэаўтварэннем</string>
+  <string name="morphe_external_potoken_provider_title">Зональны пастаўшчык PoToken</string>
+  <string name="morphe_external_potoken_provider_summary">"Выпраўляе праблемы з відэаўтварэннем з дапамогай знешняга мінтера PoToken (Эксперыментальна)
+
+Калі вы карыстальнік YouTube Premium, гэтая налада можа быць не патрэбнай"</string>
   <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Выпраўляе праблемы з прайграваннем з выкарыстаннем знешняга мінтера PoToken (Эксперыментальна)
+
+Каб скарыстацца гэтай функцыяй, выключайце \"Падмена відэапатокаў\""</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Калі гэта не працуе, паспрабуйце прымусова закрыць MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Адкрыць налады PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Гэтая функцыя цяпер знаходзіцца ў распрацоўцы і можа не працаваць
+
+Націсніце тут, каб спампаваць PotHelper"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper больш не працуе</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Токен, убудаваны ў гэтую версію PotHelper, больш не працуе
+
+Уключыце \"Імітаваць відэапатокі\", каб выправіць працэс прайгравання"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Уключыць</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Імітацыя версіі праграмы</string>
+  <string name="morphe_spoof_app_version_summary">Абманоўвае сервер, прымушаючы яго думаць, што вы выкарыстоўваеце старую версію праграмы, каб аднавіць састарэлыя функцыі інтэрфейсу</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Версія праграмы будзе заменена на больш старую.
+
+Гэта змяніць выгляд і функцыі праграмы, але могуць узнікнуць невядомыя пабачныя эфекты.
+
+Калі пазней выміць гэтую функцыю, рэкамендуецца ачысціць даныя праграмы, каб пазбегнуць памылак інтэрфейсу"</string>
+  <string name="morphe_spoof_app_version_target_title">Цэль імітацыі версіі праграмы</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Частата абнаўлення праграмы</string>
+  <string name="morphe_app_refresh_rate_default">Звычайны</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">Перакрыць частату абнаўлення</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Заўсёды</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Віднаўленне ў партатратным рэжыме</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Працяўканьне на ўвесь экран</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Працяўканьне ў партрэтным рэжыме і на ўвесь экран</string>
   <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Шрыфт</string>
+  <string name="morphe_custom_font_type_entry_default">Звычайны</string>
+  <string name="morphe_custom_font_type_entry_system">Сістэмны шрыфт прылады</string>
+  <string name="morphe_custom_font_type_entry_custom">Свой файл шрыфта</string>
+  <string name="morphe_custom_font_file_title">Свой файл шрыфта</string>
+  <string name="morphe_custom_font_file_summary">Выберыце файл шрыфта TTF або OTF</string>
+  <string name="morphe_custom_font_file_invalid">Выбраны файл не з\'яўляецца шрыфтом TTF або OTF</string>
+  <string name="morphe_custom_font_failed_to_load">Не ўдалося загрузіць спецыяльны шрыфт, яго было выключана</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_ryd_failure_connection_timeout">Дызлайкі часова недаступныя (таймаут API)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Дізлайкі недаступныя (статус %s)</string>
+  <string name="morphe_ryd_failure_client_rate_limit_requested">Дызлайкі недаступныя (ліміт кліенцкага API)</string>
+  <string name="morphe_ryd_failure_generic">Дызлайкі недаступныя (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
+  <string name="morphe_ryd_video_likes_hidden_by_video_owner">Схавана ўладальнікам</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Не падабаецца гэтае відэа, разам з %s іншымі людзьмі</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Не падабаецца гэтае відэа, %s галасаў — гэта негатыўныя ацэнкі</string>
+  <string name="morphe_ryd_enabled_title">Уключыць Return YouTube Dislike</string>
+  <string name="morphe_ryd_dislike_percentage_title">Паказваць дызлайкі ў працэнтах</string>
+  <string name="morphe_ryd_dislike_percentage_summary">Паказвае дызлайкі як працэнт ад лайкаў замест колькасці</string>
+  <string name="morphe_ryd_estimated_like_title">Паказваць прыкладную колькасць лайкаў</string>
+  <string name="morphe_ryd_estimated_like_summary">Паказвае прыблізную колькасць лайкаў у відэа, дзе стваральнік адхіліў лайкі</string>
+  <string name="morphe_ryd_toast_on_connection_error_title">Паказваць папярэджанні пра памылку злучэння</string>
+  <string name="morphe_ryd_toast_on_connection_error_summary">Паказвае паведамленне, калі сервер Return YouTube Dislike недаступны</string>
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike аднаўляе лічыльнікі дызлайкаў, якія YouTube схаваў у 2021 годзе. Лічыльнікі бяруцься з даных, архіваваных да выдалення, а для больш новых відэа яны разлічваюцца на аснове галасаванняў карыстальнікаў, таму яны прыбліжаныя і абнаўляюцца кожныя некалькі дзён
+
+ID відэа, якое вы глядзіце, адпраўляецца ў API Return YouTube Dislike, а вашы лайкі і дызлайкі адпраўляюцца ананімна для палепшання разлікаў"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
+  <string name="morphe_ryd_statistics_category_title">Статыстыка API Return YouTube Dislike гэтага прылады</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Час адказу API, сярэдні</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">Час адказу API, мінімальны</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">Час адказу API, максімальны</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Час адказу API, апошні медыяфайл</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Дыслайкі часова недаступныя — дзейнічае абмежаванне хуткасці Client API</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_title">API атрымання галасаў, колькасць выклікаў</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Сеткавых выклікаў не было</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s сеткавых выклікаў зроблена</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API атрымання галасаў, колькасць таймаўтаў</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Сеткавых выклікаў з таймаўтамі не было</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s сеткавых выклікаў пабылі па часе</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Ліміты частаты запытаў API-кліента</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ліміты частаты запытаў кліента не сустрэкаліся</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Ліміт запытаў кліента перакрачаны %s разоў</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s мілісекундаў</string>
 </resources>

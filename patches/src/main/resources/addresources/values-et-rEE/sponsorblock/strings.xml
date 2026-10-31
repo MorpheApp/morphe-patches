@@ -16,7 +16,221 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_sb_enabled_title">Luba SponsorBlock</string>
+  <string name="morphe_sb_enabled_summary">SponsorBlock on rahvussõnumisel põhinev süsteem YouTube\'i videote ärritavate osade möödamineku jaoks</string>
+  <string name="morphe_sb_appearance_category_title">Välimus</string>
+  <string name="morphe_sb_voting_button_title">Kuva hääletamisnupp</string>
+  <string name="morphe_sb_voting_button_summary">Lisab nupu segmentidele positiivse või negatiivse hääle andmiseks</string>
+  <string name="morphe_sb_square_layout_title">Kasuta ruudukujulist paigutust</string>
+  <string name="morphe_sb_square_layout_summary">Kasutab SponsorBlocki nuppide ja juhtimiste jaoks nurkkasutust</string>
+  <string name="morphe_sb_compact_skip_button_title">Kasuta kompaktnuppu \"Mööda\"</string>
+  <string name="morphe_sb_compact_skip_button_summary">Vähendab nupu \"Mööda\" laialgust, et säästa ruumi</string>
+  <string name="morphe_sb_auto_hide_skip_button_title">Peida \"Jäta üle\" nupp automaatselt</string>
+  <string name="morphe_sb_auto_hide_skip_button_summary">Peidab \"Jäta üle\" nupu mõne sekundi pärast selle asemel, et hoida seda kogu segmendi vältel nähtaval</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_title">\"Jäta üle\" nupu kestus</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_summary">Määra, kui kaua \"Jäta üle\" nupp jääb nähtavaks</string>
+  <string name="morphe_sb_toast_on_skip_title">Kuva teavitus jätmise kohta</string>
+  <string name="morphe_sb_toast_on_skip_summary">Kuvab teavituse, kui segment jäetakse automaatselt üle</string>
+  <string name="morphe_sb_toast_on_skip_duration_title">Jätmise teavituse kestus</string>
+  <string name="morphe_sb_toast_on_skip_duration_summary">Määra, kui kaua undo-teavitus jääb nähtavaks</string>
+  <string name="morphe_sb_duration_1s">1 sekund</string>
+  <string name="morphe_sb_duration_2s">2 sekundit</string>
+  <string name="morphe_sb_duration_3s">3 sekundit</string>
+  <string name="morphe_sb_duration_4s">4 sekundit</string>
+  <string name="morphe_sb_duration_5s">5 sekundit</string>
+  <string name="morphe_sb_duration_6s">6 sekundit</string>
+  <string name="morphe_sb_duration_7s">7 sekundit</string>
+  <string name="morphe_sb_duration_8s">8 sekundit</string>
+  <string name="morphe_sb_duration_9s">9 sekundit</string>
+  <string name="morphe_sb_duration_10s">10 sekundit</string>
+  <string name="morphe_sb_video_length_without_segments_title">Kuva video pikkust ilma segmentiteta</string>
+  <string name="morphe_sb_video_length_without_segments_summary">Käibemajutisse lisatud video kestusest lahutatakse kõik segmendid</string>
+  <string name="morphe_sb_create_segment_category_title">Uute segmentide loomine</string>
+  <string name="morphe_sb_create_new_segment_title">Kuva nupp \"Loo uus segment\"</string>
+  <string name="morphe_sb_create_new_segment_summary">Lisab videovõljatuse nüppi, mis võimaldab esitada uusi SponsorBlock segmente</string>
+  <string name="morphe_sb_create_new_segment_step_title">Aja reguleerimise samm</string>
+  <string name="morphe_sb_create_new_segment_step_summary">Aja reguleerimise nuppide liigutamise kogus (millisekundites)</string>
+  <string name="morphe_sb_create_new_segment_step_invalid">Väärtus peab olema positiivne arv</string>
+  <string name="morphe_sb_guidelines_title">Esitamise juhised</string>
+  <string name="morphe_sb_guidelines_summary">Juhised sisaldavad regleid ja nõuandeid uute segmentide loomiseks</string>
+  <string name="morphe_sb_guidelines_popup_title">Järgige juhiseid</string>
+  <string name="morphe_sb_guidelines_popup_content">Lugege enne uute segmentide loomist SponsorBlock juhiseid</string>
+  <string name="morphe_sb_guidelines_popup_already_read">Juba lugenud</string>
+  <string name="morphe_sb_guidelines_popup_open">Näita mulle</string>
+  <string name="morphe_sb_general_title">Üldine</string>
+  <string name="morphe_sb_offline_segments_title">Salvesta allalaaditud videote segmente</string>
+  <string name="morphe_sb_offline_segments_summary">Võimaldab allalaaditud videote segmente offline režiimis飛ばada</string>
+  <string name="morphe_sb_toast_on_connection_error_title">Kuva ühendusvigade teavitused</string>
+  <string name="morphe_sb_toast_on_connection_error_summary">Kuvab teavituse, kui SponsorBlock server ei ole saadaval</string>
+  <string name="morphe_sb_track_skip_count_title">Luba möödaminekute arvamist</string>
+  <string name="morphe_sb_track_skip_count_summary">Saadab läskamise arvud SponsorBlocki edetabelisse, et jälgida säästetud aega</string>
+  <string name="morphe_sb_min_segment_duration_title">Segmendi minimaalne kestus</string>
+  <string name="morphe_sb_min_segment_duration_summary">Segmente, mis on sellest väärtusest (sekundites) lühemad, ei kuvata ega läskita</string>
+  <string name="morphe_sb_min_segment_duration_invalid">Keelatud aja kestus</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Sinu privaatne kasutaja-ID</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Seda tuleks hoida privaatseks. See on nagu parool ja seda ei tohi kellegagi jagada. Kui keegi selle omab, saab ta end sinuna välja anda</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Privaatne kasutaja-ID peab olema vähemalt 30 märki pikkune</string>
+  <string name="morphe_sb_api_url_title">Muuda API URL-i</string>
+  <string name="morphe_sb_api_url_summary">Aadress, mida SponsorBlock kasutab serveriga suhtlemiseks</string>
+  <string name="morphe_sb_channel_whitelist_title">Kanalite valge nimekirja</string>
+  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock on valge nimekirja kanalite puhuliisvitatud</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_title">Teavita valge nimekirja kanali puhul</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Kuva teavitus, kui SponsorBlock on valge nimekirja kanali puhul tuvitatud</string>
+  <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock on selle kanali puhul tuvitatud</string>
+  <string name="morphe_sb_api_url_reset">API URL lähtestamine</string>
+  <string name="morphe_sb_api_url_invalid">API URL on validity</string>
+  <string name="morphe_sb_api_url_changed">API URL on muutunud</string>
+  <string name="morphe_sb_settings_ie_title">Seadete import / eksport</string>
+  <string name="morphe_sb_settings_copy">Kopeeri</string>
+  <string name="morphe_sb_settings_ie_summary">Teie SponsorBlock JSON-konfiguratsioon, mida saab importida/eksportida Morphe\'i ja teistesse SponsorBlock platvormidesse</string>
+  <string name="morphe_sb_settings_ie_summary_warning">"Teie SponsorBlock JSON-konfiguratsioon, mida saab importida/eksportida Morphe'i ja teistesse SponsorBlock platvormidesse
+
+Selle hulgas on teie privaatne kasutaja ID. Jagage seda targalt"</string>
+  <string name="morphe_sb_settings_import_successful">Seaded eksporteeriti edukalt</string>
+  <string name="morphe_sb_settings_import_failed">Importimine ebaõnnestus: %s</string>
+  <string name="morphe_sb_settings_export_failed">Eksportimine ebaõnnestus: %s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Teie seadistused sisaldavad privaatset SponsorBlock kasutaja ID-d.
+
+Teie kasutaja ID on nagu parool ja seda ei tohi kunagi jagada"</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Ära näita uuesti</string>
+  <string name="morphe_sb_diff_segments_title">Muuda segmendi käitumist</string>
+  <string name="morphe_sb_segments_sponsor">Sponsor</string>
+  <string name="morphe_sb_segments_sponsor_summary">Tasutatud reklaam, tasutatud viitused ja otsesed reklaamid. Mitte enese reklaamimiseks või tasuta reklaamiks põhjustele / loojatele / veebilehtedele / toitetele, mida nad poelavad</string>
+  <string name="morphe_sb_segments_selfpromo">Tasuta / Enese reklaamimine</string>
+  <string name="morphe_sb_segments_selfpromo_summary">Sarnaselt Sponsorile, kuid tasuta / enese reklaamimiseks. Sisaldab jaotiseid merchendise, annetuste või teavet koostööpartnerite kohta</string>
+  <string name="morphe_sb_segments_interaction">Interaktsiooni meeldetuletus (Telli)</string>
+  <string name="morphe_sb_segments_interaction_summary">Lühike meeldetuletus meelda jätta, tellida või jälgida sisu keskel. Kui see on pikk või puudutab midagi konkreetset, peaks see olema jaotises \"enese reklaam\"</string>
+  <string name="morphe_sb_segments_highlight">Olulisem osa</string>
+  <string name="morphe_sb_segments_highlight_summary">Video osa, mida enamik inimesi otsib</string>
+  <string name="morphe_sb_segments_intro">Vahepeatus / sissejuletuse animatsioon</string>
+  <string name="morphe_sb_segments_intro_summary">Intervall ilma tegeliku sisuga. Võib olla paus, staatiline kaader või korduv animatsioon. Ei sisalda infot sisaldavaid üleminekuid</string>
+  <string name="morphe_sb_segments_outro">Lõppkaardid / lõpptiitrid</string>
+  <string name="morphe_sb_segments_outro_summary">Lõpptiitrid või aeg, mil ilmuvad YouTube\'i lõppkaardid. Mitte info sisaldavate kokkuvõtete jaoks</string>
+  <string name="morphe_sb_segments_hook">Püütme / Tervitused</string>
+  <string name="morphe_sb_segments_hook_summary">Kõrvaliselt jutustatud eelse video treilerid, tervitused ja hüvastused. Ei sisalda jaotiseid, mis lisavad täiendavat sisu</string>
+  <string name="morphe_sb_segments_preview">Eelvaade / Kokkuvõte</string>
+  <string name="morphe_sb_segments_preview_summary">Klippide kogumik, mis näitavad, mis on tulemas või mis juhtus videos või sarja teistes videotes, kus kogu info kordub elsewhere</string>
+  <string name="morphe_sb_segments_filler">Kõrvateemad / Jutud</string>
+  <string name="morphe_sb_segments_filler_summary">Kõrvateemad või jutud, mida ei ole vaja video peasisu mõistmiseks. Ei sisalda osa, mis annavad konteksti või taustainfot</string>
+  <string name="morphe_sb_segments_nomusic">Muusika: mitte-muusikaline osa</string>
+  <string name="morphe_sb_segments_nomusic_summary">Kasutada ainult muusikavideote puhul. Muusikavideote osad ilma muusikata, mida ei ole juba teise kategooria alla võetud</string>
+  <string name="morphe_sb_skip_button_compact">Määra mööda</string>
+  <string name="morphe_sb_skip_button_compact_highlight">Rõhuta</string>
+  <string name="morphe_sb_skip_button_sponsor">Määra sponsor mööda</string>
+  <string name="morphe_sb_skip_button_selfpromo">Määra reklaam mööda</string>
+  <string name="morphe_sb_skip_button_interaction">Vaata interaktatsiooni üle</string>
+  <string name="morphe_sb_skip_button_highlight">Hüppa põhipunktide juurde</string>
+  <string name="morphe_sb_skip_button_intro_beginning">Hüppa sissejuhatuse lõpule</string>
+  <string name="morphe_sb_skip_button_intro_middle">Hüppa vaheaja lõpule</string>
+  <string name="morphe_sb_skip_button_intro_end">Hüppa vaheaja lõpule</string>
+  <string name="morphe_sb_skip_button_outro">Vaata lõppu ära</string>
+  <string name="morphe_sb_skip_button_hook">Skippa sissejuhatus</string>
+  <string name="morphe_sb_skip_button_preview_beginning">Vaata eelvaadet ära</string>
+  <string name="morphe_sb_skip_button_preview_middle">Vaata eelvaadet ära</string>
+  <string name="morphe_sb_skip_button_preview_end">Vaata kokkuvõtet ära</string>
+  <string name="morphe_sb_skip_button_filler">Vaata kõrvalteemat ära</string>
+  <string name="morphe_sb_skip_button_nomusic">Vaata üle mitte-muusikat</string>
+  <string name="morphe_sb_skip_button_unsubmitted">Vaata üle segment</string>
+  <string name="morphe_sb_skipped_sponsor">Sponsori osa oli mööda läinud</string>
+  <string name="morphe_sb_skipped_selfpromo">Enese reklaam oli mööda läinud</string>
+  <string name="morphe_sb_skipped_interaction">Tüütu meeldetuletus oli mööda läinud</string>
+  <string name="morphe_sb_skipped_highlight">Hüpatud olulisele osale</string>
+  <string name="morphe_sb_skipped_intro_beginning">Sissejuhatus oli mööda läinud</string>
+  <string name="morphe_sb_skipped_intro_middle">Vaheala oli mööda läinud</string>
+  <string name="morphe_sb_skipped_intro_end">Vaheala oli mööda läinud</string>
+  <string name="morphe_sb_skipped_outro">Lõpposa oli mööda läinud</string>
+  <string name="morphe_sb_skipped_hook">Kutse osa oli mööda läinud</string>
+  <string name="morphe_sb_skipped_preview_beginning">Vaadati eelvaade ära</string>
+  <string name="morphe_sb_skipped_preview_middle">Vaadati eelvaade ära</string>
+  <string name="morphe_sb_skipped_preview_end">Vaadati kokkuvõte ära</string>
+  <string name="morphe_sb_skipped_filler">Vaadati kõrvalteema ära</string>
+  <string name="morphe_sb_skipped_nomusic">Vaidatud ära osa, kus ei ole muusikat</string>
+  <string name="morphe_sb_skipped_unsubmitted">Jäeti mööda esitamata segment</string>
+  <string name="morphe_sb_skipped_multiple_segments">Jäeti mööda mitmeid segmente</string>
+  <string name="morphe_sb_skip_automatically">Jäta automaatselt mööda</string>
+  <string name="morphe_sb_skip_automatically_once">Jäta üks kord automaatselt mööda</string>
+  <string name="morphe_sb_skip_showbutton">Kuva nupp \"Jäta mööda\"</string>
+  <string name="morphe_sb_skip_seekbaronly">Kuva seekbaris</string>
+  <string name="morphe_sb_skip_ignore">Välja lülita</string>
+  <string name="morphe_sb_submit_failed_invalid">Segmendi esitamisel tekkis viga: %s</string>
+  <string name="morphe_sb_submit_failed_timeout">SponsorBlock on ajutiselt unavailable</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Segmendi saatmine ebaõnnestus (staatus: %1$s %2$s)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">Segmendi esitamine ebaõnnestus. Kiirusepiirang (liiga palju samu kasutajat või IP-adresse)</string>
+  <string name="morphe_sb_submit_failed_forbidden">Segmendi ei saa esitada: %s</string>
+  <string name="morphe_sb_submit_failed_duplicate">"Segmendi ei saa esitada.
+See on juba olemas"</string>
+  <string name="morphe_sb_submit_succeeded">Segment esitatud edukalt</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock ei ole ajutiselt saadaval (API aeg läbis)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock ei ole hetkel saadaval (staatus %s)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock ei ole hetkel saadaval</string>
+  <string name="morphe_sb_vote_failed_timeout">Segmendi hääletamine ebaõnnestus (API aeg lõppes)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Hääletamine segmendi eest ebaõnnestus (staatus: %1$s %2$s)</string>
+  <string name="morphe_sb_vote_failed_forbidden">Segmendi hääletamine ebaõnnestus: %s</string>
+  <string name="morphe_sb_vote_upvote">Hääle pluss</string>
+  <string name="morphe_sb_vote_downvote">Hääle miinus</string>
+  <string name="morphe_sb_vote_category">Muuda kategooriat</string>
+  <string name="morphe_sb_vote_no_segments">Hääletamiseks ei ole segmente</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_vote_segment_time_to_from">%1$s kuni %2$s</string>
+  <string name="morphe_sb_new_segment_choose_category">Valige segmendi kategooria</string>
+  <string name="morphe_sb_new_segment_disabled_category">Kategooria on seadistustesietatud. Saatmiseks aktiveerige kategooria</string>
+  <string name="morphe_sb_new_segment_title">Uus SponsorBlock segment</string>
+  <string name="morphe_sb_new_segment_mark_time_as_question">Kas määrata %s uue segmendi alguseks või lõpuks?</string>
+  <string name="morphe_sb_new_segment_mark_start">Algus</string>
+  <string name="morphe_sb_new_segment_mark_end">Lõpp</string>
+  <string name="morphe_sb_new_segment_now">Praegu</string>
+  <string name="morphe_sb_new_segment_time_start">Aeg, millal segment algab</string>
+  <string name="morphe_sb_new_segment_time_end">Aeg, millega segment lõppeb</string>
+  <string name="morphe_sb_new_segment_confirm_title">Kas ajad on õiged?</string>
+  <string name="morphe_sb_new_segment_confirm_content">"Segment on
+
+%1$s
+ kuni
+%2$s
+
+(%3$s)
+
+Kas on valmis esitama?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Saada</string>
+  <string name="morphe_sb_new_segment_start_is_before_end">Algus peab olema lõpust enne</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Märgi esmalt asukoht ajavõtl complimentsul</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">Vaata segmenti eelvaadet ja veendu, et see hüppab sujuvalt</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_title">Muuda segmendi ajastust käsitsi</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_content">Kas soovid muuta segmendi alguse või lõpu ajastust?</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Sisestatud aeg on invalid</string>
+  <string name="morphe_sb_new_segment_highlight_title">Saada märgistus</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Kas märgistuse aeg on õige?
+
+%s
+
+Kui te ei soovi märgistust saata, puudutage nuppu Tühista ja märkige teine asukoht"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Saada märgistus</string>
+  <string name="morphe_sb_stats_title">Statistika</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
+  <string name="morphe_sb_stats_connection_failure">Statistika ei ole hetkel saadaval (API on katkestatud)</string>
+  <string name="morphe_sb_stats_loading">Laaditakse…</string>
+  <string name="morphe_sb_stats_sb_disabled">SponsorBlock oni välja lülitatud</string>
+  <string name="morphe_sb_stats_username">Sinu kasutajanimi: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_username_change">Kasutajanime muutmiseks puuduta siia</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Kasutajanime ei õnnestunud muuta: Staatus: %1$s %2$s</string>
+  <string name="morphe_sb_stats_username_changed">Kasutajanimi on edukalt muutetud</string>
+  <string name="morphe_sb_stats_reputation">Sinu maine on &lt;b&gt;%.2f&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_submissions">Oled loonud &lt;b&gt;%s&lt;/b&gt; segmenti</string>
+  <string name="morphe_sb_stats_submissions_summary">Puuduta siia, et näha oma segmente</string>
+  <string name="morphe_sb_stats_saved_zero">SponsorBlock edukeed</string>
+  <string name="morphe_sb_stats_saved">Oled päästanud inimesi &lt;b&gt;%s&lt;/b&gt; segmendist</string>
+  <string name="morphe_sb_stats_saved_summary_zero">Puuduta siia, et näha globaalseid statistikas ja peamisi panustajaid</string>
+  <string name="morphe_sb_stats_saved_summary">See on &lt;b&gt;%s&lt;/b&gt; nende elust.&lt;br&gt;Puuduta siia, et näha edukeeda</string>
+  <string name="morphe_sb_stats_self_saved">Oled jätnud mööda &lt;b&gt;%s&lt;/b&gt; segmenti</string>
+  <string name="morphe_sb_stats_self_saved_summary">See on &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_self_saved_reset_title">Kas lähtestada möödanud segmentide loendaja?</string>
+  <string name="morphe_sb_stats_saved_hour_format">%1$s tundi %2$s minutit</string>
+  <string name="morphe_sb_stats_saved_minute_format">%1$s minutit %2$s sekundit</string>
+  <string name="morphe_sb_stats_saved_second_format">%s sekundit</string>
+  <string name="morphe_sb_color_opacity_label">Läbipaistvus:</string>
+  <string name="morphe_sb_color_dot_label">Värv:</string>
+  <string name="morphe_sb_about_api_summary">"SponsorBlock on kogukonna poolt loodud videosegmentide andmebaas, mis sisaldab näiteks sponsoreid, sissejuhatusi, lõpptekste ja meeldetuletusi tellimise kohta. Segmente esitab ja hääletab kogukond ning andmebaas on avatud ja tasuta allalaaditav
+
+Vaadatud video ID saadetakse SponsorBlocki API-le, et saada selle segmentid"</string>
 </resources>

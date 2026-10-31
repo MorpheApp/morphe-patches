@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">स्टार्टअप एनीमेशन</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">बंद किया गया</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">रंगीन</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">एक रंग का</string>
+  <string name="morphe_splash_screen_style_title">स्टार्टअप एनीमेशन</string>
+  <string name="morphe_splash_screen_style_entry_1">बंद किया गया</string>
+  <string name="morphe_splash_screen_style_entry_2">रंगीन</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe कलर</string>
+  <string name="morphe_splash_screen_style_entry_4">एक रंग का</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe मोनोक्रोम</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">नई सेटिंग्स को हाइलाइट करें</string>
+  <string name="morphe_settings_new_indicator_days_summary">दिनों की संख्या जब अपडेट द्वारा जोड़ी गई सेटिंग्स और विकल्पों के बगल में एक डॉट दिखाया जाता है</string>
+  <string name="morphe_settings_new_indicator_days_off">बंद</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">सेटिंग को पूरा करने के लिए रीस्टार्ट करें</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">मीडिया नोटिफिकेशन, लॉक स्क्रीन और हेडफ़ोन नियंत्रणों में पिछले और अगले बटन छिपाता है</string>
   <string name="morphe_disable_notification_media_seekbar_title">सीकबार अक्षम करें</string>
   <string name="morphe_disable_notification_media_seekbar_summary">लॉक स्क्रीन और नोटिफिकेशन पैनल पर सीकबार को खींचने से रोकता है</string>
+  <string name="morphe_seek_notification_media_prev_next_title">पिछले और अगले बटनों के साथ खोजें</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">मीडिया नोटिफिकेशन, लॉक स्क्रीन और हेडफ़ोन में वीडियो बदलने के बजाय खोजने के लिए नियंत्रण परिवर्तित करता है</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">रीवाइंड लंबाई</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">पिछले बटन से रीवाइंड करने के लिए सेकंड</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">फास्ट फॉरवर्ड लंबाई</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">अगले बटन से फास्ट-फॉरवर्ड करने के लिए सेकंड</string>
+  <string name="morphe_seek_notification_media_length_invalid">खोज लंबाई 1 और %s सेकंड के बीच होनी चाहिए। डिफ़ॉल्ट का उपयोग किया जा रहा है</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC प्रोटोकॉल को अक्षम करना</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

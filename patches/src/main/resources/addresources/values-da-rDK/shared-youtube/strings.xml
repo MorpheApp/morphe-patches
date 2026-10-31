@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Startanimation</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Deaktiveret</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Farve</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
+  <string name="morphe_splash_screen_style_title">Startanimation</string>
+  <string name="morphe_splash_screen_style_entry_1">Deaktiveret</string>
+  <string name="morphe_splash_screen_style_entry_2">Farve</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Farve</string>
+  <string name="morphe_splash_screen_style_entry_4">Monokrom</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monokrom</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Fremhæv nye indstillinger</string>
+  <string name="morphe_settings_new_indicator_days_summary">Antal dage en prik vises ved siden af indstillinger og valgmuligheder tilføjet af en opdatering</string>
+  <string name="morphe_settings_new_indicator_days_off">Fra</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Genstart for at færdiggøre opsætningen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ For at logge ind, tryk på fortsæt nedenfor"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Skjuler Forrige- og Næste-knapperne i medienotifikationen, på låseskærmen og i hovedtelefonkontrollerne</string>
   <string name="morphe_disable_notification_media_seekbar_title">Deaktiver søgebjælken</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Forhindrer, at søgebjælken kan trækkes på låseskærmen og i meddelelsespanelet</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Søg med knapperne <b>&amp;</b> Forrige &amp; Næste</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Ændrer kontroller for medie-meddelelse, låseskærm og hovedtelefoner til at søge i stedet for at ændre videoer</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Længde for tilbagetspuling</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Sekunder til at spole tilbage med knappen Forrige</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Længde for fremspringning</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Sekunder til at spole fremad med knappen Næste</string>
+  <string name="morphe_seek_notification_media_length_invalid">Søgelængden skal være mellem 1 og %s sekunder. Bruger standardværdi</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Deaktiver QUIC-protokol</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

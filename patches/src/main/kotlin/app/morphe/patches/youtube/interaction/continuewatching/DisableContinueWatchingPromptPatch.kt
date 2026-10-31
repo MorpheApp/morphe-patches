@@ -42,9 +42,12 @@ val disableContinueWatchingPromptPatch = bytecodePatch(
             SwitchPreference("morphe_disable_continue_watching_prompt")
         )
 
-        AutoplayInactivityLimitFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches[3].index
+        mapOf(
+            AutoplayInactivityLimitFingerprint to 3,
+            InactivityLimitFingerprint to 6
+        ).forEach { (fingerprint, matchIndex) ->
+            fingerprint.method.apply {
+                val index = fingerprint.instructionMatches[matchIndex].index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
 
                 addInstructions(

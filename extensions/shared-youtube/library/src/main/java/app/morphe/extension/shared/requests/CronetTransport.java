@@ -98,10 +98,10 @@ public final class CronetTransport {
             boolean allowDirectFallback
     ) throws IOException {
         boolean https = "https".equalsIgnoreCase(url.getProtocol());
-        List<CronetEngine> engines = getEligibleEngines(
-                requireProxy,
-                allowDirectFallback
-        );
+        List<CronetEngine> engines;
+        synchronized (ENGINE_LOCK) {
+            engines = getEligibleEnginesLocked(requireProxy, allowDirectFallback);
+        }
         HttpURLConnection connection = createCronetConnectionChain(url, engines);
         if (connection != null) {
             return addDirectHttpFallback(url, connection, allowDirectFallback);
@@ -212,15 +212,6 @@ public final class CronetTransport {
                     throw new IOException("Interrupted while waiting for a Cronet engine", ex);
                 }
             }
-        }
-    }
-
-    private static List<CronetEngine> getEligibleEngines(
-            boolean requireProxy,
-            boolean allowDirectFallback
-    ) {
-        synchronized (ENGINE_LOCK) {
-            return getEligibleEnginesLocked(requireProxy, allowDirectFallback);
         }
     }
 

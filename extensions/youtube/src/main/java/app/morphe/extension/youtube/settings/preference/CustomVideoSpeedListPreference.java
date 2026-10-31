@@ -55,4 +55,8 @@ public final class CustomVideoSpeedListPreference extends CustomDialogListPrefer
         super(context);
     }
 
+    @Override
+    public boolean tracksNewEntries() {
+        return false; // Entries are the custom speeds of the user.
+    }
 }

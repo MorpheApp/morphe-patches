@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/3178
+ * https://github.com/MorpheApp/morphe-patches/pull/4109
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -39,20 +40,43 @@ public class SplashAnimationPatch {
 
     public enum SplashScreenAnimationStyle {
         // 0 int style exists in target app as a fall through default, but its value is repurposed to be disabled.
-        DISABLED(0),
-        FPS_60_ONE_SECOND(1),
-        FPS_60_TWO_SECOND(2),
-        FPS_60_FIVE_SECOND(3),
-        FPS_60_BLACK_AND_WHITE(4),
-        FPS_30_ONE_SECOND(5),
-        FPS_30_TWO_SECOND(6),
-        FPS_30_FIVE_SECOND(7),
-        FPS_30_BLACK_AND_WHITE(8);
+        DISABLED(0, false),
+        FPS_60_ONE_SECOND(1, false),
+        FPS_60_TWO_SECOND(2, false),
+        FPS_60_FIVE_SECOND(3, false),
+        FPS_60_BLACK_AND_WHITE(4, true),
+        FPS_30_ONE_SECOND(5, false),
+        FPS_30_TWO_SECOND(6, false),
+        FPS_30_FIVE_SECOND(7, false),
+        FPS_30_BLACK_AND_WHITE(8, true),
+        /**
+         * YouTube 21.39+ Rive animation of a logo that comes into focus out of a colored glow.
+         * Low memory devices cannot play it and get the Lottie animation of this style instead.
+         */
+        RIVE_GLOW(1, false),
+        /**
+         * YouTube 21.30+ Rive animation of the Morphe logo coming into focus out of a glow,
+         * played in place of the Rive startup animation of the app.
+         * Low memory devices get the Morphe animation of {@link #MORPHE_COLOR} instead.
+         */
+        RIVE_GLOW_MORPHE(1, false),
+        /**
+         * Another Morphe Glow animation, the same as {@link #RIVE_GLOW_MORPHE} except for the animation played.
+         */
+        RIVE_GLOW_MORPHE_2(1, false),
+        /**
+         * Morphe animation of the launcher icon, which replaces the Lottie animation of the app.
+         */
+        MORPHE_COLOR(1, false),
+        /**
+         * Morphe animation of the launcher icon in the foreground color of the theme.
+         */
+        MORPHE_MONOCHROME(1, true);
         // There exists a 10th JSON style used as the switch statement default,
         // but visually it is identical to 60fps one second.
         //
-        // YT Music has a single animation and no styles, so only the three styles
-        // shown in the settings apply to it: disabled, color and black and white.
+        // YT Music has a single animation and no styles, so only the styles shown in the
+        // settings apply to it: disabled, color, black and white, and the Morphe styles.
 
         @Nullable
         public static SplashScreenAnimationStyle styleFromOrdinal(int style) {
@@ -68,8 +92,28 @@ public class SplashAnimationPatch {
 
         public final int style;
 
-        SplashScreenAnimationStyle(int style) {
+        /**
+         * If the animation is drawn in the foreground color of the theme, or in black and white.
+         */
+        public final boolean isMonochrome;
+
+        SplashScreenAnimationStyle(int style, boolean isMonochrome) {
             this.style = style;
+            this.isMonochrome = isMonochrome;
+        }
+
+        /**
+         * If the style plays a Rive animation, which YouTube 21.30+ can play.
+         */
+        public boolean isRive() {
+            return this == RIVE_GLOW || isRiveGlowMorphe();
+        }
+
+        /**
+         * If the style plays a Morphe Rive animation in place of the Rive startup animation of the app.
+         */
+        public boolean isRiveGlowMorphe() {
+            return this == RIVE_GLOW_MORPHE || this == RIVE_GLOW_MORPHE_2;
         }
     }
 
@@ -81,30 +125,54 @@ public class SplashAnimationPatch {
     private static final String BRAND_SECONDARY_COLOR = "[0,0.686275,0.682353,1]";
     private static final String BRAND_GRADIENT = "[0,0.117647,0.352941,0.658824,1,0,0.686275,0.682353]";
 
-    public static boolean isDisabled() {
-        return SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get()
-                == SplashScreenAnimationStyle.DISABLED;
-    }
-
-    public static boolean isMonochrome() {
-        SplashScreenAnimationStyle style = SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get();
-        return style == SplashScreenAnimationStyle.FPS_30_BLACK_AND_WHITE
-                || style == SplashScreenAnimationStyle.FPS_60_BLACK_AND_WHITE;
+    /**
+     * If the app plays the Rive animations, which YouTube 21.30+ does.
+     */
+    private static boolean isRiveIncluded() {
+        return false; // Modified during patching.
     }
 
     /**
-     * Plays the animation of the branding icon, in the color of the theme if the style asks
-     * for a monochrome animation.
+     * The default style, which is the Morphe glow animation if the app has the Rive animations.
+     */
+    public static SplashScreenAnimationStyle getDefaultStyle() {
+        return isRiveIncluded()
+                ? SplashScreenAnimationStyle.RIVE_GLOW_MORPHE
+                : getDefaultLottieStyle();
+    }
+
+    /**
+     * The default style that is not a Rive animation.
+     */
+    public static SplashScreenAnimationStyle getDefaultLottieStyle() {
+        return CustomBrandingPatch.isPatchIncluded()
+                ? SplashScreenAnimationStyle.MORPHE_COLOR
+                : SplashScreenAnimationStyle.FPS_60_ONE_SECOND;
+    }
+
+    public static boolean isMonochrome() {
+        return SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get().isMonochrome;
+    }
+
+    /**
+     * Plays the Morphe animation if the style asks for it,
+     * in the color of the theme for the monochrome style.
      *
-     * @return If a branded animation was played, and the original one should not be.
+     * @return If a Morphe animation was played, and the original one should not be.
      */
     public static boolean setBrandedSplashAnimation(LottieAnimationView view) {
+        SplashScreenAnimationStyle style = SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get();
+        if (style != SplashScreenAnimationStyle.MORPHE_COLOR && style != SplashScreenAnimationStyle.MORPHE_MONOCHROME
+                && !style.isRiveGlowMorphe()) {
+            return false;
+        }
+
         final int animation = CustomBrandingPatch.getStartupAnimation();
         if (animation == 0) {
             return false;
         }
 
-        if (isMonochrome()) {
+        if (style.isMonochrome) {
             // A gradient of a single color is a flat fill, so the same file
             // also serves as the monochrome animation.
             final int color = ThemeUtils.getAppForegroundColor();
@@ -114,7 +182,7 @@ public class SplashAnimationPatch {
                     BRAND_PRIMARY_COLOR, flatColor,
                     BRAND_SECONDARY_COLOR, flatColor,
                     BRAND_GRADIENT, getGradientStringArray(color)
-            ));
+            ), COLOR_KEYS);
         } else {
             view.patch_setAnimation(animation);
         }
@@ -123,8 +191,12 @@ public class SplashAnimationPatch {
     }
 
     /**
-     * A fixed color is written as the value of a property, and a color that animates as the
-     * value of one of its keyframes.
+     * A fixed color is written as the value of a property.
+     */
+    private static final String[] FIXED_COLOR_KEYS = { "\"k\":" };
+
+    /**
+     * A fixed color, and a color that animates, which is written as the value of one of its keyframes.
      */
     private static final String[] COLOR_KEYS = { "\"k\":", "\"s\":" };
 
@@ -135,14 +207,29 @@ public class SplashAnimationPatch {
      */
     public static void setSplashAnimation(LottieAnimationView view, int resourceId,
                                           Map<String, Integer> replacements) {
+        replaceColorsAndPlay(view, resourceId, getColorStringArrays(replacements), COLOR_KEYS);
+    }
+
+    /**
+     * Plays a Lottie animation with some of the fixed colors of the file replaced.
+     * The colors that animate are kept, so a shape that fades out of a replaced color still
+     * starts with its original color.
+     *
+     * @param replacements The color of the file, as it is written in the JSON, and its replacement.
+     */
+    public static void setSplashAnimationFixedColors(LottieAnimationView view, int resourceId,
+                                                     Map<String, Integer> replacements) {
+        replaceColorsAndPlay(view, resourceId, getColorStringArrays(replacements), FIXED_COLOR_KEYS);
+    }
+
+    private static Map<String, String> getColorStringArrays(Map<String, Integer> replacements) {
         Map<String, String> colors = new LinkedHashMap<>();
         replacements.forEach((original, color) -> colors.put(original, getColorStringArray(color)));
-
-        replaceColorsAndPlay(view, resourceId, colors);
+        return colors;
     }
 
     private static void replaceColorsAndPlay(LottieAnimationView view, int resourceId,
-                                             Map<String, String> replacements) {
+                                             Map<String, String> replacements, String[] colorKeys) {
         String json = loadRawResourceAsString(resourceId);
         String replacement = json;
 
@@ -153,7 +240,7 @@ public class SplashAnimationPatch {
                 Logger.printException(() -> "Could not replace splash animation color: " + original);
             }
 
-            for (String key : COLOR_KEYS) {
+            for (String key : colorKeys) {
                 replacement = replacement.replace(key + original, key + entry.getValue());
             }
         }

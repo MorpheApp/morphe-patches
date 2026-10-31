@@ -43,80 +43,6 @@ public final class RMMProvider implements LyricsProvider {
         return sb.toString();
     }
 
-    @Override
-    public String name() {
-        return "RMM";
-    }
-
-    @Override
-    public boolean hasCandidates() {
-        return true;
-    }
-
-    @Nullable
-    @Override
-    public FetchResult fetch(TrackInfo track) throws Exception {
-        List<JSONObject> candidates = searchItunesCandidates(track);
-        if (candidates.isEmpty()) {
-            return null;
-        }
-        JSONObject best = candidates.get(0);
-        final long trackId = best.optLong("trackId", 0);
-        if (trackId == 0) {
-            return null;
-        }
-        JSONObject root = fetchRmmJson(trackId);
-        if (root == null) {
-            return null;
-        }
-        Lyrics lyrics = buildLyrics(root, trackId);
-        if (lyrics == null) {
-            return null;
-        }
-        return FetchResult.of(lyrics,
-                best.optString("trackName", ""),
-                best.optString("artistName", ""),
-                best.optLong("trackTimeMillis", 0) / 1000,
-                track);
-    }
-
-    @Override
-    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
-        List<JSONObject> candidates = searchItunesCandidates(track);
-        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
-        for (JSONObject item : candidates) {
-            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
-                break;
-            }
-            final long trackId = item.optLong("trackId", 0);
-            if (trackId == 0) {
-                continue;
-            }
-            try {
-                JSONObject root = fetchRmmJson(trackId);
-                if (root == null) {
-                    continue;
-                }
-                Lyrics lyrics = buildLyrics(root, trackId);
-                if (lyrics == null) {
-                    continue;
-                }
-                int score = LyricsRequests.scoreLyricsCandidate(
-                        item.optString("trackName", ""),
-                        item.optString("artistName", ""),
-                        item.optLong("trackTimeMillis", 0) / 1000,
-                        lyrics, track);
-                scored.add(new Lyrics.ScoredLyrics(score, lyrics));
-                if (score >= HIGH_MATCH_SCORE) {
-                    break;
-                }
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "Could not fetch RMM Revival lyrics for a candidate", ex);
-            }
-        }
-        return Lyrics.sortScoredByScore(scored);
-    }
-
     /**
      * Public iTunes search, scored with the shared match scale. Unlike the Apple catalog
      * search this needs no token, so the provider works for anyone who enables it.
@@ -185,9 +111,6 @@ public final class RMMProvider implements LyricsProvider {
         }
     }
 
-    private record ScoredItem(JSONObject item, int score, boolean exact) {
-    }
-
     @Nullable
     private static JSONObject fetchRmmJson(long trackId) {
         HttpURLConnection connection = null;
@@ -208,13 +131,6 @@ public final class RMMProvider implements LyricsProvider {
                 connection.disconnect();
             }
         }
-    }
-
-    /**
-     * The community uploader, when the entry is a SpicyLyrics community sync rather than
-     * Apple lyrics relayed through the same API.
-     */
-    private record Uploader(String username, @Nullable String url) {
     }
 
     /** SpicyLyrics hands the url over without a scheme, which nothing can open. */
@@ -384,5 +300,89 @@ public final class RMMProvider implements LyricsProvider {
         }
 
         return null;
+    }
+
+    @Override
+    public String name() {
+        return "RMM";
+    }
+
+    @Override
+    public boolean hasCandidates() {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public FetchResult fetch(TrackInfo track) throws Exception {
+        List<JSONObject> candidates = searchItunesCandidates(track);
+        if (candidates.isEmpty()) {
+            return null;
+        }
+        JSONObject best = candidates.get(0);
+        final long trackId = best.optLong("trackId", 0);
+        if (trackId == 0) {
+            return null;
+        }
+        JSONObject root = fetchRmmJson(trackId);
+        if (root == null) {
+            return null;
+        }
+        Lyrics lyrics = buildLyrics(root, trackId);
+        if (lyrics == null) {
+            return null;
+        }
+        return FetchResult.of(lyrics,
+                best.optString("trackName", ""),
+                best.optString("artistName", ""),
+                best.optLong("trackTimeMillis", 0) / 1000,
+                track);
+    }
+
+    @Override
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+        List<JSONObject> candidates = searchItunesCandidates(track);
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        for (JSONObject item : candidates) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
+                break;
+            }
+            final long trackId = item.optLong("trackId", 0);
+            if (trackId == 0) {
+                continue;
+            }
+            try {
+                JSONObject root = fetchRmmJson(trackId);
+                if (root == null) {
+                    continue;
+                }
+                Lyrics lyrics = buildLyrics(root, trackId);
+                if (lyrics == null) {
+                    continue;
+                }
+                int score = LyricsRequests.scoreLyricsCandidate(
+                        item.optString("trackName", ""),
+                        item.optString("artistName", ""),
+                        item.optLong("trackTimeMillis", 0) / 1000,
+                        lyrics, track);
+                scored.add(new Lyrics.ScoredLyrics(score, lyrics));
+                if (score >= HIGH_MATCH_SCORE) {
+                    break;
+                }
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not fetch RMM Revival lyrics for a candidate", ex);
+            }
+        }
+        return Lyrics.sortScoredByScore(scored);
+    }
+
+    private record ScoredItem(JSONObject item, int score, boolean exact) {
+    }
+
+    /**
+     * The community uploader, when the entry is a SpicyLyrics community sync rather than
+     * Apple lyrics relayed through the same API.
+     */
+    private record Uploader(String username, @Nullable String url) {
     }
 }

@@ -22,6 +22,10 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.Document
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.matchAllMethodIndicesForEach
+import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
 import app.morphe.patches.shared.layout.theme.lithoDrawableColorHook
@@ -40,6 +44,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_04_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
@@ -52,14 +57,10 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.copyXmlNode
 import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findElementByAttributeValueOrThrow
-import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.getMutableMethod
-import app.morphe.util.getReference
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
-import app.morphe.util.matchAllMethodIndicesForEach
-import app.morphe.util.p0Register
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -422,19 +423,21 @@ val legacyPlayerControlsPatch = bytecodePatch(
             }
         }
 
-        // Override flags that interfere with old player icons override.
-        arrayOf(
-            PlayerCommentTeaserFeatureFlagFingerprint to is_21_15_or_greater,
-            RecycleViewScrollingFlagFingerprint to is_21_15_or_greater
-        ).forEach { (fingerprint, applyChanges) ->
-            if (applyChanges) {
-                fingerprint.matchAll().forEach {
-                    it.method.insertLiteralOverride(
-                        it.instructionMatches.first().index,
-                        "$EXTENSION_CLASS->" +
-                                "allowModernPlayerLayoutFlags(Z)Z"
-                    )
-                }
+        // Comments teaser A/B test: shows a small comments card below the player time bar,
+        // which can be too narrow to read in portrait.
+        // It also crashes the app on startup with the old player icons, so always turn it off.
+        if (is_21_15_or_greater) {
+            PlayerCommentTeaserFeatureFlagFingerprint.matchAllMethodIndicesForEach { index ->
+                insertLiteralOverride(index, false)
+            }
+        }
+
+        // Watch feed resize A/B test: every scroll event of the watch next feed
+        // resizes the player and relayouts the watch page, and scrolling lags.
+        // It also interferes with the old player icons, so always turn it off.
+        if (is_21_11_or_greater) {
+            WatchFeedResizeFeatureFlagFingerprint.matchAllMethodIndicesForEach { index ->
+                insertLiteralOverride(index, false)
             }
         }
 

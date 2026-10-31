@@ -13,21 +13,19 @@ import android.content.SharedPreferences;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
-import app.morphe.extension.shared.Utils;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.shared.Utils;
 
 /**
  * The timing offset the user dragged out for one track, kept so a loop, a trip to another song
  * and a restart all find it again.
  *
- * <p>Keyed by the track alone: a different provider or a refreshed cache must not silently drop a
- * value the user dialled in, and one that no longer fits is corrected by dragging as before.
- *
- * <p>Kept apart from the lyrics on purpose: those are trimmed to a fixed number of entries, and an
- * offset the user dialled in should not be one of the ones that goes.
+ * <p>Keyed by the track alone: a different provider or a refreshed cache must not silently drop
+ * a value the user dialled in. Kept apart from the lyrics on purpose, since those are trimmed to
+ * a fixed number of entries.
  */
 public final class TrackOffsetStore {
 

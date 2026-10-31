@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Zagonska animacija</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Onemogočeno</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Barva</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Enobarvno</string>
+  <string name="morphe_splash_screen_style_title">Zagonska animacija</string>
+  <string name="morphe_splash_screen_style_entry_1">Onemogočeno</string>
+  <string name="morphe_splash_screen_style_entry_2">Barva</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe v barvah</string>
+  <string name="morphe_splash_screen_style_entry_4">Enobarvno</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe monochromaticna</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Izpostavi nove nastavitve</string>
+  <string name="morphe_settings_new_indicator_days_summary">Število dni, ko je ob nastavitvah in možnostih, dodanih z posodobitvijo, prikazana piska</string>
+  <string name="morphe_settings_new_indicator_days_off">Izklopljeno</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Za dokončanje nastavitve znova zaženite aplikacijo</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Pritisnite \"nadaljujte\", da se prijavite"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Skrije gumba za prejšnjo in naslednjo skladbo v medijskem obvestilu, na zaklenjenem zaslonu in v kontrolnikih za slušalke.</string>
   <string name="morphe_disable_notification_media_seekbar_title">Onemogoči drsnik.</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Prepreči vlečenje drsnika na zaklenjenem zaslonu in plošči z obvestili.</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Išči s gumijema <b>Prejšnji</b> in <b>Naslednji</b></string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Spremeni nadzore za obvestilo o medijih, zaklenjen zaslon in slušalke za iskanje namesto spreminjanja videoposnetkov</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Dolžina vračanja</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Sekund za vračanje s gumbom Prejšnji</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Dolžina pospešenega predvajanja</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Sekund za pospešeno predvajanje s gumbom Naslednji</string>
+  <string name="morphe_seek_notification_media_length_invalid">Dolžina iskanja mora biti med 1 in %s sekundami. Uporablja se privzeto vrednost</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Onemogoči protokol QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

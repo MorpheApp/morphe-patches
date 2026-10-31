@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Animacja startowa</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Wyłączona</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Kolorowa</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monochromatyczna</string>
+  <string name="morphe_splash_screen_style_title">Animacja startowa</string>
+  <string name="morphe_splash_screen_style_entry_1">Wyłączona</string>
+  <string name="morphe_splash_screen_style_entry_2">Kolorowa</string>
+  <string name="morphe_splash_screen_style_entry_3">Kolorowa Morphe</string>
+  <string name="morphe_splash_screen_style_entry_4">Monochromatyczna</string>
+  <string name="morphe_splash_screen_style_entry_5">Monochromatyczna Morphe</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Wyróżniaj nowe ustawienia</string>
+  <string name="morphe_settings_new_indicator_days_summary">Liczba dni, przez które obok ustawień i opcji dodanych w aktualizacji wyświetlana jest kropka</string>
+  <string name="morphe_settings_new_indicator_days_off">Wyłączone</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Uruchom ponownie, aby dokończyć konfigurację</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -150,6 +156,13 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Ukrywa przyciski Poprzedni i Następny w powiadomieniu o multimediach, na ekranie blokady i w sterowaniu słuchawkami</string>
   <string name="morphe_disable_notification_media_seekbar_title">Wyłącz pasek postępu</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Zapobiega przeciąganiu paska postępu na ekranie blokady i w panelu powiadomień</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Przewijaj przyciskami Poprzedni i Następny</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Zmienia działanie przycisków w powiadomieniu multimedialnym, na ekranie blokady oraz na słuchawkach na przewijanie zamiast przełączania filmów</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Czas przewijania do tyłu</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Liczba sekund przewijania do tyłu przyciskiem Poprzedni</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Czas przewijania do przodu</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Liczba sekund przewijania do przodu przyciskiem Następny</string>
+  <string name="morphe_seek_notification_media_length_invalid">Czas przewijania musi wynosić od 1 do %s sekund. Użyto wartości domyślnej</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Wyłącz protokół QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

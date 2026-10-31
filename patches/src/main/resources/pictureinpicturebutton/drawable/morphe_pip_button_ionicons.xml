@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Changes made: Added the tap animation.
+
+    Drawn for Morphe in the style of Ionicons (https://github.com/ionic-team/ionicons/tree/d1e2c48641fd5f4910ee42a144dc1c84b1a9a4ee).
+-->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="512"
+            android:viewportHeight="512">
+            <group
+                android:name="icon_group"
+                android:pivotX="256"
+                android:pivotY="256">
+                <path
+                    android:strokeColor="@android:color/white"
+                    android:strokeWidth="32"
+                    android:strokeLineCap="round"
+                    android:strokeLineJoin="round"
+                    android:pathData="M464,232 L464,168 A56,56 0 0 0 408,112 L104,112 A56,56 0 0 0 48,168 L48,344 A56,56 0 0 0 104,400 L208,400" />
+                <path
+                    android:fillColor="@android:color/white"
+                    android:pathData="M296,280 L440,280 A40,40 0 0 1 480,320 L480,408 A40,40 0 0 1 440,448 L296,448 A40,40 0 0 1 256,408 L256,320 A40,40 0 0 1 296,280 Z" />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="icon_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="250"
+                    android:valueFrom="0.8"
+                    android:valueTo="1"
+                    android:interpolator="@android:interpolator/overshoot" />
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="250"
+                    android:valueFrom="0.8"
+                    android:valueTo="1"
+                    android:interpolator="@android:interpolator/overshoot" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

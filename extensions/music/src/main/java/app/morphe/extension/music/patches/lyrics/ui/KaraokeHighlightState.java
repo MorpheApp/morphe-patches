@@ -17,32 +17,9 @@ import java.util.List;
  */
 final class KaraokeHighlightState {
 
-    /** Word timings of the built lines, read without holding their views. */
-    interface Lines {
-        int size();
-
-        boolean wordsEmpty(int line);
-
-        long firstStart(int line);
-
-        long lastEnd(int line);
-    }
-
-    enum Kind {
-        /** Paint the word colors at a position, propagating to background lines. */
-        PAINT,
-        /** Drop the word overlay, background lines included. */
-        CLEAR,
-        CLEAR_FADE,
-        /** Fade to the inactive alpha, word overlay untouched. */
-        FADE,
-        /** Restore non-karaoke colors while word sync is being turned off. */
-        RESET_ACTIVE,
-        RESET_INACTIVE
-    }
-
-    /** One queued effect on one line. */
-    record Action(Kind kind, int line, long posMs, boolean allSung) {}
+    private int lastLine = -1;
+    private int pendingLine = -1;
+    private boolean wasEnabled = true;
 
     static boolean stillLit(Lines lines, int line, long pos) {
         if (line < 0 || line >= lines.size() || lines.wordsEmpty(line)) {
@@ -50,10 +27,6 @@ final class KaraokeHighlightState {
         }
         return pos < lines.lastEnd(line) && pos >= lines.firstStart(line);
     }
-
-    private int lastLine = -1;
-    private int pendingLine = -1;
-    private boolean wasEnabled = true;
 
     /**
      * Runs one tick, appending actions in the order the view has to run them. The caller
@@ -156,5 +129,33 @@ final class KaraokeHighlightState {
     /** Realigns the toggle memory, for the reset path with no tick to notice on. */
     void syncEnabled(boolean enabled) {
         wasEnabled = enabled;
+    }
+
+    enum Kind {
+        /** Paint the word colors at a position, propagating to background lines. */
+        PAINT,
+        /** Drop the word overlay, background lines included. */
+        CLEAR,
+        CLEAR_FADE,
+        /** Fade to the inactive alpha, word overlay untouched. */
+        FADE,
+        /** Restore non-karaoke colors while word sync is being turned off. */
+        RESET_ACTIVE,
+        RESET_INACTIVE
+    }
+
+    /** Word timings of the built lines, read without holding their views. */
+    interface Lines {
+        int size();
+
+        boolean wordsEmpty(int line);
+
+        long firstStart(int line);
+
+        long lastEnd(int line);
+    }
+
+    /** One queued effect on one line. */
+    record Action(Kind kind, int line, long posMs, boolean allSung) {
     }
 }

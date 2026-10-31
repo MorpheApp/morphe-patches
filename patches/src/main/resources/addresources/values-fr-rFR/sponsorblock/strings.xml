@@ -21,7 +21,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_appearance_category_title">Apparence</string>
   <string name="morphe_sb_voting_button_title">Afficher un bouton de vote</string>
   <string name="morphe_sb_voting_button_summary">Ajoute un bouton pour voter positivement ou négativement sur les segments</string>
-  <string name="morphe_sb_square_layout_title">Utiliser la disposition carrée</string>
+  <string name="morphe_sb_square_layout_title">Utiliser la mise en page carrée</string>
   <string name="morphe_sb_square_layout_summary">Utilise des coins carrés pour les boutons et les commandes SponsorBlock</string>
   <string name="morphe_sb_compact_skip_button_title">Utiliser le bouton Passer compact</string>
   <string name="morphe_sb_compact_skip_button_summary">Réduit la largeur du bouton \'Passer\' pour gagner de la place</string>
@@ -58,6 +58,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_guidelines_popup_already_read">Déjà lues</string>
   <string name="morphe_sb_guidelines_popup_open">Montrez-les-moi</string>
   <string name="morphe_sb_general_title">Général</string>
+  <string name="morphe_sb_offline_segments_title">Enregistrer des segments des vidéos téléchargées</string>
+  <string name="morphe_sb_offline_segments_summary">Permet de passer des segments des vidéos téléchargées hors ligne</string>
   <string name="morphe_sb_toast_on_connection_error_title">Afficher les alertes d\'erreur de connexion</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Affiche une notification lorsque le serveur SponsorBlock est indisponible</string>
   <string name="morphe_sb_track_skip_count_title">Activer le compteur de segments passés</string>

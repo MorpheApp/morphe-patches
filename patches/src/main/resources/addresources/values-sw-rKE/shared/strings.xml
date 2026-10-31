@@ -17,21 +17,218 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Mipangilio</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Je, una uhakika unataka kuendelea?</string>
+  <string name="morphe_settings_save">Hifadhi</string>
+  <string name="morphe_settings_reset">Weka upya</string>
+  <string name="morphe_settings_reset_color">Weka upya rangi</string>
+  <string name="morphe_settings_color_invalid">Rangi batili</string>
+  <string name="morphe_settings_restart_title">Kuanzisha upya kunahitajika</string>
+  <string name="morphe_settings_restart_dialog_message">Anzisha upya programu ili mabadiliko haya yaweze kufanya kazi</string>
+  <string name="morphe_settings_restart">Anzisha upya</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">Ingiza</string>
+  <string name="morphe_settings_import_copy">Nakili</string>
+  <string name="morphe_settings_import_reset">Mipangilio ya Morphe imewekwa upya hadi ya awali</string>
+  <string name="morphe_settings_import_success">Mipangilio ya %s imeingizwa</string>
+  <string name="morphe_settings_import_failure_parse">Uingizaji umeshindwa: %s</string>
+  <string name="morphe_settings_navigate_up">Nenda juu</string>
+  <string name="morphe_settings_search_hint">Tafuta mipangilio</string>
+  <string name="morphe_settings_screen_info_title">Kuhusu</string>
+  <string name="morphe_settings_search_no_results_title">Hakuna matokeo yaliyopatikana kwa \'%s\'</string>
+  <string name="morphe_settings_search_no_results_summary">Jaribu neno lingine la utafutaji</string>
+  <string name="morphe_settings_search_recent_searches">Utafutaji wa hivi karibuni</string>
+  <string name="morphe_settings_search_remove_message">Ondoa kwenye historia ya utafutaji?</string>
+  <string name="morphe_settings_search_remove">Ondoa kwenye historia ya utafutaji</string>
+  <string name="morphe_settings_search_clear_history">Futa historia ya utafutaji</string>
+  <string name="morphe_settings_search_clear_history_message">Je, una uhakika unataka kufuta historia yote ya utafutaji?</string>
+  <string name="morphe_settings_search_tips_title">Vidokezo vya Utafutaji</string>
+  <string name="morphe_settings_search_tips_summary">"• Gusa njia ili kuielekea
+• Bonyeza na ushikilie mpangilio ili kuuelekea
+• Bonyeza Enter ili kuhifadhi ombi la utafutaji kwenye historia
+• Utafutaji hautofautishi herufi kubwa na ndogo au alama za uakifishaji
+• Mipangilio mikuu huonekana juu ya mipangilio midogo isiyofanya kazi"</string>
+  <string name="morphe_settings_search_empty_history_title">Historia ya utafutaji haina kitu</string>
+  <string name="morphe_settings_search_empty_history_summary">Ili kuhifadhi historia ya utafutaji, andika ombi la utafutaji na ubonyeze Enter</string>
+  <string name="morphe_settings_search_history_title">Onyesha historia ya utafutaji wa mipangilio</string>
+  <string name="morphe_settings_name_title">Jina la mipangilio ya Morphe</string>
+  <string name="morphe_settings_name_default_item">Chaguo-msingi</string>
+  <string name="morphe_settings_name_entry_2">Ziada</string>
+  <string name="morphe_settings_name_entry_3">Marekebisho</string>
+  <string name="morphe_settings_name_entry_4">Muda wa Morphing</string>
+  <string name="morphe_settings_name_custom_item">Kibinafsi</string>
+  <string name="morphe_settings_name_custom_item_hint">Ingiza jina</string>
+  <string name="morphe_settings_name_empty_warning">Jina haliwezi kuwa tupu</string>
+  <string name="morphe_show_menu_icons_title">Onyesha aikoni za mipangilio ya Morphe</string>
+  <string name="morphe_settings_menu_copy_path">Imenakiliwa: %s</string>
+  <string name="morphe_language_title">Lugha ya Morphe</string>
+  <string name="morphe_language_user_dialog_message">"Tafsiri za baadhi ya lugha zinaweza kuwa hazipo au hazijakamilika.
+
+Ili kutafsiri lugha mpya au kuboresha tafsiri zilizopo, tembelea morphe.software/translate"</string>
+  <string name="morphe_language_DEFAULT">Lugha ya programu</string>
+  <string name="morphe_pref_import_export_title">Agiza / Toa</string>
+  <string name="morphe_pref_import_export_summary">Agiza / Toa mipangilio ya Morphe</string>
+  <string name="morphe_settings_import_file">Import kutoka kwenye faili</string>
+  <string name="morphe_settings_import_file_success">Mipangilio imeingizwa kwa mafanikio, gusa Hifadhi ili kutumia</string>
+  <string name="morphe_settings_import_file_failed">Imeshindwa kuingiza mipangilio</string>
+  <string name="morphe_settings_export_file">Export kwenda kwenye faili</string>
+  <string name="morphe_settings_export_file_success">Mipangilio imetolewa kwa mafanikio</string>
+  <string name="morphe_settings_export_file_failed">Imeshindwa kutoa mipangilio</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">Unatumia toleo la hivi punde la Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Unatumia Morphe Patches toleo la &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Sasisho lipo: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ili kusasisha patch zako, tumia Morphe kuweka patch tena kwa programu hii</string>
+  <string name="morphe_settings_about_links_dev_header">Kumbuka</string>
+  <string name="morphe_settings_about_links_dev_body">Toleo hili ni la awali na unaweza kukumbana na matatizo yasiyotarajiwa</string>
+  <string name="morphe_settings_about_links_header">Viungo rasmi</string>
+  <string name="morphe_settings_about_links_website">Tovuti</string>
+  <string name="morphe_settings_about_links_donate">Changia</string>
+  <string name="morphe_settings_about_links_translations">Tafsiri</string>
+  <string name="morphe_settings_about_links_credits">Kredi</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Imesasishwa</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Sasisho lipo</string>
+  <string name="morphe_settings_about_contributors_current">Maendeleo ya sasa</string>
+  <string name="morphe_settings_about_contributors_prior">Maendeleo ya awali</string>
+  <string name="morphe_settings_about_links_morphe">Maendeleo yanayoendelea</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Ilani za leseni</string>
+  <string name="morphe_settings_about_licenses_loading">Inapakia…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Kutambua hitilafu</string>
+  <string name="morphe_debug_screen_summary">Sanidi chaguzi za juu za msanidi programu na logi za utambuzi</string>
+  <string name="morphe_debug_title">Washa urejeshaji wa debug</string>
+  <string name="morphe_debug_stacktrace_title">Kumbukumbu ya kosa la debug (stack trace)</string>
+  <string name="morphe_debug_stacktrace_summary">Inajumuisha stack traces katika logi za debug ili kusaidia kutambua makosa</string>
+  <string name="morphe_debug_toast_on_error_title">Onyesha taarifu ya toast wakati wa hitilafu ya Morphe</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Kuzima toast za makosa huficha arifa zote za makosa za Morphe.
+
+Hautataarifiwa kuhusu matukio yoyote yasiyotarajiwa"</string>
+  <string name="morphe_debug_export_logs_title">Hamisha logi za debug</string>
+  <string name="morphe_debug_export_logs_summary">Exporta rekodi za debug za Morphe</string>
+  <string name="morphe_debug_export_logs_success">Kumbukumbu za debug zimehamishwa kikamilifu</string>
+  <string name="morphe_debug_export_logs_failed">Imeshindwa kuhamisha kumbukumbu za debug</string>
+  <string name="morphe_debug_logs_search_hint">Tafuta kumbukumbu za debug…</string>
+  <string name="morphe_debug_export_logs_clear">Futa</string>
+  <string name="morphe_debug_logs_disabled">Kurekodi hitilafu kumezimwa</string>
+  <string name="morphe_debug_logs_none_found">Hakuna kumbukumbu za debug zilizopatikana</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Kumbukumbu za debug zimenakiliwa</string>
+  <string name="morphe_debug_logs_failed_to_export">Imeshindwa kuhamisha kumbukumbu za debug: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Kumbukumbu za debug zimefutwa</string>
+  <string name="morphe_debug_feature_flags_manager_title">Meneja wa alama za vipengele</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Simamia alama za boolean za vipengele</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Tafuta bendera za vipengele…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Haitumiki (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Inatumika (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Imezuiliwa (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Ime forced (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Kiotomatiki</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Zima</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Washa</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Washa kwa nguvu</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Zuia</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Ondoa</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Alama za vipengele zimehifadhiwa</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Alama za vipengele zimerejeshwa</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Viwashio vya vipengele vimenakiliwa kwenye ubao wa kunakili</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Washa upya programu ili kutumia mpangilio huu</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Export na import</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Hakuna feature flags zilizopatikana</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Vishika-bendera vya vipengele vimehamishwa kwa mafanikio</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Imeshindwa ku-export feature flags</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Feature flags zimepakia, gusa Hifadhi ili kutumia</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Imeshindikana kusoma faili</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Utafutaji wa binary</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Inatambua ni bendera ya sifa ipi inasababisha tabia ya programu.
+
+Nusu ya bendera %s zimezuiliwa, na baada ya kila kuanzisha upya unataja ikiwa tabia hiyo bado ipo.
+
+Rudia tabia hiyo mara moja kabla ya kuanza, vinginevyo bendera ambazo programu haijaomba bado hazitakuwepo kwenye utafutaji"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Anza</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Hakuna alama za kipengele za kutafuta.
+
+Ni alama tu ambazo programu imefikia na ambazo kwa sasa hazijalazimishwa kuwa zimewashwa ndizo zinazoweza kutumika katika utafutaji wa binary"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Hatua %1$s
+
+Alama %2$s zimebaki, %3$s kati ya hizo zimezuiwa kwa hatua hii.
+
+Anzisha programu upya, angalia kama tabia hiyo ipo, kisha jibu hapa chini"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Utafutaji wa alama ya kipengele unaendelea</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Tabia ipo</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Tabia haipo</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Ghairi utafutaji wa binary</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Utafutaji wa binary umeghairiwa</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Alama ya kipengele %s inasababisha tabia hiyo.
+
+Sasa imezuiwa"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Kushindwa kupata bendera ya kipengele.
+
+Tabia ya programu haionekani kudhibitiwa na bendera ya kipengele"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Kushindwa kupata bendera moja ya kipengele.
+
+Tabia hiyo ilitoweka mapema katika utafutaji, hivyo inawezekana bendera zaidi ya moja zinahusika au moja ya majibu yalikuwa makosa"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">Fungua mipangilio ya MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG haijasakinishwa. Isakinishe</string>
+  <string name="gms_core_dialog_title">Hatua inahitajika</string>
+  <string name="gms_core_dialog_outdated_message">"MicroG v%1s yako imepitwa na wakati na inaweza kusababisha matatizo.
+
+Tafadhali sasisha MicroG hadi toleo jipya v%2s"</string>
+  <string name="gms_core_dialog_update_text">Sasisha</string>
+  <string name="gms_core_dialog_ignore_text">Puuza</string>
+  <string name="gms_core_dialog_conflict_message">"MicroG iliyosakinishwa haipendekezwi na Morphe:
+
+%1s
+
+Gusa ili kuiondoa, kisha fungua tena programu hii na usakinishe MicroG RE"</string>
+  <string name="gms_core_dialog_uninstall_text">Ondoa programu</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG haina ruhusa ya kufanya kazi nyuma ya pazia.
+
+Fuata mwongozo wa \"Don't kill my app\" kwa simu yako, na utumie maelekezo hayo kwenye usanidi wako wa MicroG.
+
+Hii inahitajika ili programu ifanye kazi"</string>
+  <string name="gms_core_dialog_open_website_text">Fungua tovuti</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Uboreshaji wa betri wa MicroG lazima uzimwe ili kuzuia matatizo.
+
+Kuzima uboreshaji wa betri kwa MicroG hakutaathiri matumizi ya betri vibaya.
+
+Gusa kitufe cha kuendelea na uruhusu mabadiliko ya uboreshaji"</string>
+  <string name="gms_core_dialog_continue_text">Endelea</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Onyesha dialog ya uboreshaji wa betri ya MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Kuzima hili kutaficha ombi la uboreshaji wa betri la MicroG.
+
+Ikiwa uboreshaji wa betri hautabadilishwa basi unaweza kupata:
+• Programu inaweza kufungwa bila kutarajia
+• Arifa zinaweza zisifanye kazi
+• Uchezaji wa nyuma unaweza usifanye kazi"</string>
   <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Usimamizi wa viunganishi vya programu</string>
+  <string name="morphe_link_handling_summary">Sanidi viungo vifunguliwe katika programu hii</string>
+  <string name="morphe_link_handling_step1_title">Hatua ya 1: Zima viunganishi vya programu asili</string>
+  <string name="morphe_link_handling_step1_message">Fungua mipangilio ya programu asili na uzime viunganishi vyote vya kikoa</string>
+  <string name="morphe_link_handling_step2_title">Hatua ya 2: Washa viunganishi vya programu iliyorekebishwa</string>
+  <string name="morphe_link_handling_step2_message">Fungua mipangilio ya programu iliyorekebishwa na uwashe viunganishi vyote vya kikoa</string>
+  <string name="morphe_link_handling_open">Fungua mipangilio</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Tahadhari ya Majaribio 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Unatumia toleo la majaribio la programu la ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Tarajia tabia isiyo ya kawaida ya programu au hitilafu zisizojulikana tunapoboresha viraka vya toleo hili la programu.
+&lt;br/&gt;&lt;br/&gt;
+Ikiwa unataka uzoefu usio na matatizo zaidi, basi &lt;b&gt;ondoa&lt;/b&gt; hii na weka toleo la programu linalopendekezwa la ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Nataka ya majaribio</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Nataka thabiti</string>
   <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Kumbukumbu ya hitilafu imehifadhiwa kwenye nyaraka za mtumiaji: %s</string>
+  <string name="morphe_crash_log_saved">Kumbukumbu ya hitilafu imehifadhiwa: %s</string>
 </resources>

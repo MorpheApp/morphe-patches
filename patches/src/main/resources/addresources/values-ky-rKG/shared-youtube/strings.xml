@@ -18,47 +18,294 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_entry_1">Иштен чыгарылган</string>
+  <string name="morphe_splash_screen_style_title">Ишке киргизүү анимациясы</string>
+  <string name="morphe_splash_screen_style_entry_1">Иштен чыгарылган</string>
+  <string name="morphe_splash_screen_style_entry_2">Түсү</string>
+  <string name="morphe_splash_screen_style_entry_4">Монохромдук</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_off">Өчүк</string>
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Орнотууну бүтүрүү үчүн кайра баштаңыз</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Тиркеменин аталышы</string>
   <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Коңуру теманын фону</string>
+  <string name="morphe_theme_color_dark_entry_2">Таза кара</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Таза кара)</string>
+  <string name="morphe_theme_color_dark_entry_9">Классикалык YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">Койу кызгылт</string>
+  <string name="morphe_theme_color_dark_entry_11">Койу көк</string>
+  <string name="morphe_theme_color_dark_entry_12">Койу жашыл</string>
+  <string name="morphe_theme_color_dark_entry_13">Койу сары</string>
+  <string name="morphe_theme_color_dark_entry_14">Койу кызгылт сары</string>
+  <string name="morphe_theme_color_dark_entry_15">Коюу кызыл</string>
+  <string name="morphe_theme_color_dark_custom_title">Custom кара фон</string>
+  <string name="morphe_theme_color_dark_custom_summary">Кара теманын фон түсүн орнотуңуз</string>
+  <string name="morphe_theme_color_entry_1">Тиркеменин стандарттуу жөндөөсү</string>
+  <string name="morphe_theme_color_entry_4">Material You (Нейтралдуу)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Негизги)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Экинчи)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Үчүнчү)</string>
+  <string name="morphe_theme_color_custom_entry">Ыйыкталган</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">Жүктүүлөр</string>
+  <string name="morphe_download_mode_title">Жүктөө режими</string>
+  <string name="morphe_download_mode_entry_default">Жалпы</string>
+  <string name="morphe_download_mode_entry_in_app">Тиркеменин ичинде жүктөө</string>
+  <string name="morphe_download_mode_entry_external">Сырткы жүктөөчү</string>
+  <string name="morphe_external_downloader_name_title">Жүктөөчү пакеттин аталышы</string>
+  <string name="morphe_external_downloader_name_summary">Орнотулган тышкы жүктөөчү колдонмоңуздун пакеттин аталышы</string>
+  <string name="morphe_external_downloader_other_item_hint">Пакеттин атын киргизиңиз</string>
+  <string name="morphe_external_downloader_other_item">Башка</string>
+  <string name="morphe_external_downloader_not_found_title">Тиркеме орнотулган эмес</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s орнотулган эмес. Сураныч, аны орнотуңуз</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"Пакеттин аталышы менен орнотулган тиркеме табылган жок: %s
+
+Пакеттин аталышы туура экенин жана тиркеме орнотулганын текшериңиз"</string>
+  <string name="morphe_external_downloader_empty_warning">Пакеттин аты бош болбошу керек</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
+  <string name="morphe_custom_branding_name_entry_5">Ыйыкталган</string>
+  <string name="morphe_custom_branding_icon_title">Тиркеменин иконкасы</string>
+  <string name="morphe_custom_branding_icon_entry_1">Түп нускасы</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe кара</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe коңуру</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe ачык</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play light</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play black</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_7">Ыйыкталган</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Бул сиздин тиркеме иштеткичиңизде көрсөтүлгөн белгини өзгөртөт.
+
+Бул жөндөө төмөнкү жерлердеги белгини өзгөртпөйт:
+• Түзмөктүн системалык жөндөөлөрүнүн тиркемелер тизмеси
+• Кээ бир push-билдирүүлөр
+• \"Ачуу» тиркеме тандоочусу
+• Android Auto белгиси
+
+Белгини бардык жерде өзгөртүү үчүн, кайра патч жасаңыз жана \"Тиркеме белгиси\" патч опциясын өзгөртүңүз"</string>
+  <string name="morphe_custom_branding_notification_icon_title">Билдирүүнүн белгиси</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Тиркеменин белгисине ылайыкташтыруу</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe билдирүүсү</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Сиздин көрүү тарыхыңыз сакталбай жатат.&lt;br&gt;&lt;br&gt;Бул, кыязы, DNS жарнама бөгөттөөчүсү же тармактык прокси-серверден улам болушу мүмкүн.&lt;br&gt;&lt;br&gt;Муну оңдоо үчүн &lt;b&gt;s.youtube.com&lt;/b&gt; дарегин ак тизмеге кошуңуз же бардык DNS бөгөттөөчүлөрүн жана прокси-серверлерин өчүрүңүз</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Кайра көрсөтпө</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Видео агымдарын имитациялоо</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Плеердин каталарын алдын алуу үчүн клиенттин имитациясын жөндөө</string>
+  <string name="morphe_spoof_video_streams_summary">"Шайкеш видео агымын суроо менен көпчүлүк колдонуучулар үчүн ойнотуу көйгөйлөрүн оңдойт
+
+Эгер сиз YouTube Premium колдонуучусу болсоңуз, бул жөндөө талап кылынбашы мүмкүн"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Клиенттик стримдерди алуу мүмкүн болгон жок</string>
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Ыйык клиент иштебей жатат</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s катар-катар бир нече жолу иштеген жок, бирок %2$s иштеди.
+
+%2$s клиентти ыйык кылуу керекпи?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Алмаштыруу</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Бул жөндөөнү өчүрүү ойнотууда көйгөйлөргө алып келиши мүмкүн</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Активациялоону байкап көрүңүз: Видео стримдерди имитациялоо &gt; Android VR кириш</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Стандарттуу клиент</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR кириш</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-ге кирген жоксуз. Кирүү үчүн бул жерди басыңыз</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Учурда Android VR-ге киргенсиз</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Бул функцияны колдонуу үчүн, \'Негизги клиентти\' Android VR-ге өзгөртүңүз</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR-ге кириңиз</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR'ге кирүү айрым колдонуучулар үчүн ойнотуу көйгөйлөрүн чече алат
+
+Кирүү үчүн төмөндөгү \"улантуу\" баскычын басыңыз"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Чыгуу</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Нускамалар</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Активдештирүү kodu: %s
+
+1. 'Веб-сайтты ачуу' баскычын басып, 'Түзмөктү туташтыруу' веб-сайтына өтүңүз
+2. Жогоруда көрсөтүлгөн активдештирүү кодун алмаштыруу буферинен чаптаңыз (же кол менен жазыңыз)
+3. Суралса, Google аккаунтуңузга кириңиз. Эгерде бир нече аккаунт болсо, ушул YouTube аккаунтун тандаңыз
+4. 'YouTube VR'га уруксат берүү баскычын басыңыз
+5. 'Түзмөк туташтырылды' деген билдирүү чыккандан кийин ушул колдонмого кайтыңыз"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Активдештирүү кодун алуу мүмкүн болгон жок</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Авторизация токенин алуу мүмкүн болгон жок</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Ийгиликтүү кирдиңиз</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Авторизация сакталды
+
+• Сиздин Morphe жөндөөлөрүңүз Android VR авторизациясын импорттобойт/экспорттобойт
+• Эгер бул колдонмо 6 ай бою колдонулбаса, Google бул авторизацияны өчүрөт
+• Эгер сиз Google сырсөзүн өзгөртсөңүз же бул түзмөктү Google жөндөөлөрүнөн алып салсаңыз, кайрадан кирүү керек болот"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 убактылуу жеткиликсиз (API убактысы бүттү)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR кирүү мөөнөтү бүттү, VR\'ге кайра кирүүнү аракет кылып көрүңүз</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 убактылуу жеткиликсиз (статусу %s)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 убактылуу жеткиликсиз</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">VR\'ге кирүү мүмкүн эмес, веб-сайттын аутентификациясы бекитилген жок</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">VR\'ге кирүү мүмкүн эмес: %s</string>
+  <string name="morphe_oauth2_toast_reset">Android VR\'ден чыгылды</string>
+  <string name="morphe_oauth2_toast_invalid">VR кирүү токени жарамсыз, VR\'ге кайра кирүүнү аракет кылып көрүңүз</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Билдирүүнүн медиа башкаруулары</string>
+  <string name="morphe_notification_media_screen_summary">Бөгөттөөчү экранда жана билдирүүлөр панелинде көрсөтүлгөн ойнотуу башкарууларын ылайыктаңыз</string>
+  <string name="morphe_hide_notification_media_prev_next_title">\"Мурунку жана Кийинки баскычтарын жашыруу\"</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">\"Медиа билдирүүлөрүндө, бөгөттөөчү экранда жана кулакчын башкарууларында Мурунку жана Кийинки баскычтарын жашырат\"</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Издөө тилкесин өчүрүү</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Бөгөттөөчү экранда жана билдирүүлөр панелинде издөө тилкесин сүйрөөнү болтурбайт</string>
+  <string name="morphe_seek_notification_media_prev_next_title">\"Мурунку\" &amp; \"Кийинки\" баскычтары менен издөө</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Видеолорду алмаштыруунун ордуна издөө үчүн медиа билдирүүлөрүнүн, кулпуланган экрандын жана кулакчындын башкаруу элементтерин өзгөртөт</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Кайтуу узундугу</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">\"Мурунку\" баскычы менен кайтуу секундтары</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Алдыга жылдыруу узундугу</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">\"Кийинки\" баскычы менен алдыга жылдыруу секундтары</string>
+  <string name="morphe_seek_notification_media_length_invalid">Издөө узундугу 1 жана %s секундтун ортосунда болушу керек. Жөнөкөй маани колдонулууда</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">QUIC протоколун өчүрүү</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">DRC аудиосун өчүрүү</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Түпкү аудио тилин мажбурлоо</string>
+  <string name="morphe_force_original_audio_summary">Дубляждалган версиянын ордуна ар дайым видеонун түпкү аудио жологун ойнотуу</string>
   <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Тыныгууларды өткөрүп жиберүү</string>
+  <string name="morphe_skip_silence_summary">Видео аудиосундагы унсуз тыныгууларды автоматтуу түрдө өткөрүп жиберет</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Тыныгуунун минималдуу узундугу</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Кеминде ушунча узалыктагы тыныгуулар гана кыскартылат. Кийинки видео башталганда күчүнө кирет</string>
   <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Тармак проксиси</string>
+  <string name="morphe_proxy_screen_summary">Колдоого алынган тармактык суроо-талаптарды прокси аркылуу багыттаңыз</string>
+  <string name="morphe_proxy_enabled_title">Проксиyi күйгүзүү</string>
+  <string name="morphe_proxy_enabled_summary">Маршруттар конфигурацияланган HTTP же HTTPS прокси аркылуу тармактык суроо-талаптарды колдойт</string>
+  <string name="morphe_proxy_host_title">Прокси хосту</string>
+  <string name="morphe_proxy_host_summary">Прокси-сервердин хост аты же IP-дареги</string>
+  <string name="morphe_proxy_port_title">Прокси-порт</string>
+  <string name="morphe_proxy_port_summary">Прокси-сервердин порту</string>
+  <string name="morphe_proxy_https_title">HTTPS проксисин колдонуу</string>
+  <string name="morphe_proxy_https_summary">Прокси-серверге туташуу үчүн HTTP ордуна HTTPS колдонуу</string>
+  <string name="morphe_proxy_auth_enabled_title">Прокси-авторизация</string>
+  <string name="morphe_proxy_auth_enabled_summary">Прокси-суроо-билдирүүлөрү менен бирге Basic авторизациясын жөнөтөт</string>
+  <string name="morphe_proxy_auth_username_title">Прокси колдонуучунун аты</string>
+  <string name="morphe_proxy_auth_username_summary">Basic прокси аутентификациясы үчүн колдонуучунун аты</string>
+  <string name="morphe_proxy_auth_password_title">Прокси сырсөзү</string>
+  <string name="morphe_proxy_auth_password_summary">Basic прокси аутентификациясы үчүн сырсөз</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Түз байланышууга уруксат берүү</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Эгерде прокси иштебей калса, түз байланышыңыз</string>
   <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Толук экрандуу жарнамаларды жашыруу</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Бул функцияны колдонуу үчүн, \'Spoof video streams\' параметрин \'Android Studio\' жана \'Android VR Downgraded\' эмес каалаган клиентке өзгөртүңүз</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Бөлүшүү шилтемелерин тазалоо</string>
+  <string name="morphe_sanitize_sharing_links_summary">Бөлүшүлгөн шилтемелерден көзөмөлдөө параметрлерин алып салуу</string>
+  <string name="morphe_replace_music_with_youtube_title">Бөлүшүү шилтемелерин youtube.com сайтына өзгөртүү</string>
+  <string name="morphe_replace_music_with_youtube_summary">Бөлүшүлгөн шилтемелерде music.youtube.com дарегин youtube.com менен алмаштырат</string>
+  <string name="morphe_replace_links_with_shortener_title">Бөлүшүү шилтемелерин youtu.be шилтемелерине алмаштыруу</string>
+  <string name="morphe_replace_links_with_shortener_summary">Видеолорду кыскартылган youtu.be URL форматын колдонууга мажбурлайт</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_protobuffer_title">Debug лог протокол буфери</string>
+  <string name="morphe_debug_protobuffer_summary">Иштеп чыгуучуларга колдонмонун компоненттерин аныктоо үчүн кошумча логгинг маалыматтарын кошот</string>
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Бул жөндөөнү күйгүзүү айрым UI компоненттери үчүн экрандагы текстти кошто uključтап, кошумча макет маалыматтарын жаздырат.
+
+Бул custom фильтрлерди түзүүдө компоненттерди аныктоого жардам берет.
+
+Бирок, муну күйгүзүү сиздин IP дарегиңиз сыяктуу айрым колдонуучунун маалыматтарын да жаздырат"</string>
   <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Custom фильтр</string>
+  <string name="morphe_custom_filter_screen_summary">Кандайдыр бир компонентти жашыруу үчүн custom фильтрлерди жөндөңүз</string>
+  <string name="morphe_custom_filter_title">Custom фильтрди күйгүзүү</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Сүзүү үчүн жаңы саптар менен бөлүнгөн компоненттин жолунун түзүүчү саптарынын тизмеси</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Жарамсыз自定义 сүзгүч: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
+  <string name="morphe_settings_menu_filter_screen_title">Жөндөөлөр менюсунун фильтри</string>
+  <string name="morphe_settings_menu_filter_screen_summary">Стандарттык тиркеме жөндөөлөрү экранындагы элементтерди алардын көрүнүктүү аталышы боюнча жашыруу</string>
+  <string name="morphe_settings_menu_filter_picker_empty">Тизмени толтуруу үчүн стандарттык тиркеме жөндөөлөрү экранын бир жолу ачыңыз</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Көрүүчүлөрдүн ырайымана байланыштуу диалогду алып салуу</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Бул жаш чектөөсүн айланып өтбөйт. Ал аны жөн гана автоматтык түрдө кабыл алат</string>
   <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken провайдери</string>
+  <string name="morphe_potoken_provider_screen_summary">Плеердеги көйгөйлөрдү алдын алуу үчүн PoToken провайдерин конфигурациялаңыз</string>
+  <string name="morphe_external_potoken_provider_title">Сырткы PoToken провайдери</string>
+  <string name="morphe_external_potoken_provider_summary">"Сырткы PoToken minter колдонуу менен ойнотуудагы көйгөйлөрдү оңдойт (Эксперименталдык)
+
+Эгерде сиз YouTube Premium колдонуучусу болсоңуз, бул жөндөө талап кылынбашы мүмкүн"</string>
   <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Тышкы PoToken минтерин колдонуу менен ойнотуу көйгөйлөрүн оңдойт (Эксперименталык)
+
+Бул функцияны колдонуу үчүн, 'Видео агымдарын жасалмалоо' функциясын өчүрүңүз"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Эгерде иштебесе, MicroG тиркемесин мажбурлап жабууну байкап көрүңүз</string>
+  <string name="morphe_external_potoken_provider_settings_summary">PotHelper жөндөөлөрүн ачуу</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Бул функция учурда иштелип жатат жана иштебеши мүмкүн
+
+PotHelper тиркемесин жүктөө үчүн бул жерди басыңыз"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper эми иштебейт</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"PotHelper'дин бул версиясына орнотулган токен эми иштебейт
+
+Плеерди оңдоо үчүн 'Видео агымдарын имитациялоо' функциясын күйгүзүңүз"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Күйгүзүү</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Тиркеменин версиясын жасалгалоо</string>
+  <string name="morphe_spoof_app_version_summary">Эски UI функцияларын калыбына келтирүү үчүн серверди тиркеменин эски версиясын колдонуп жатканыңызга ишендирет</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Тиркеменин версиясы эски версияга окшотулат.
+
+Бул тиркеменин көрүнүшүн жана функцияларын өзгөртөт, бирок белгисиз терс таасирлер болушу мүмкүн.
+
+Кийин өчүрүлсө, интерфейстин каталарын алдын алуу үчүн тиркеменин маалыматтарын тазалоо сунушталат"</string>
+  <string name="morphe_spoof_app_version_target_title">Тиркеменин версиясынын максатын имитациялоо</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Тиркеменин жаңылануу ылдамдыгы</string>
+  <string name="morphe_app_refresh_rate_default">Жанаша</string>
+  <string name="morphe_app_refresh_rate_fps">\"%s FPS\"</string>
+  <string name="morphe_app_refresh_rate_type_title">Жаңылануу ылдамдыгын алмаштыруу</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Дайыма</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Портрет режиминде ойнотуу</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Толук экранда ойнотуу</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Портреттик жана толук экрандуу ойнотуу</string>
   <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Шрифт</string>
+  <string name="morphe_custom_font_type_entry_default">Негизги</string>
+  <string name="morphe_custom_font_type_entry_system">Түзмөктүн системалык шрифти</string>
+  <string name="morphe_custom_font_type_entry_custom">Ыйыкталган шрифт файлы</string>
+  <string name="morphe_custom_font_file_title">Ыйыкталган шрифт файлы</string>
+  <string name="morphe_custom_font_file_summary">TTF же OTF шрифт файлын тандаңыз</string>
+  <string name="morphe_custom_font_file_invalid">Тандалган файл TTF же OTF шрифти эмес</string>
+  <string name="morphe_custom_font_failed_to_load">Custom шрифт жүктөлгөн жок жана өчүрүлдү</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_ryd_failure_connection_timeout">Жакпагандар убактылуу жеткиликсиз (API убактысы бүттү)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Жактырбоолор жеткиликсиз (статусу %s)</string>
+  <string name="morphe_ryd_failure_client_rate_limit_requested">Жакпагандар жеткиликсиз (клиенттик API чектөөсү)</string>
+  <string name="morphe_ryd_failure_generic">Жакпагандар жеткиликсиз (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
+  <string name="morphe_ryd_video_likes_hidden_by_video_owner">Ээси тарабынан жашырылган</string>
+  <string name="morphe_ryd_accessibility_dislike_count">{\"one\":\"Бул видеону сиз жана башка бир адам жактырган жок\",\"other\":\"Бул видеону сиз жана башка %s адам жактырган жок\"}</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Бул видеону жактырбагандыр, добуштардын %s бөлүгү жактырбагандыгы</string>
+  <string name="morphe_ryd_enabled_title">Return YouTube Dislike функциясын күйгүзүү</string>
+  <string name="morphe_ryd_dislike_percentage_title">Жакпагандарды пайыз менен көрсөтүү</string>
+  <string name="morphe_ryd_dislike_percentage_summary">Жакпагандарды сан түрүндө эмес, жактыргандардын пайызы катары көрсөтөт</string>
+  <string name="morphe_ryd_estimated_like_title">Болжолдуу лайктарды көрсөтүү</string>
+  <string name="morphe_ryd_estimated_like_summary">Автор лайктарды өчүрГөн видеолордо болжолдуу лайктардын санын көрсөтөт</string>
+  <string name="morphe_ryd_toast_on_connection_error_title">Байланыш катасы боюнча эскертүүлөрдү көрсөтүү</string>
+  <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike сервери жеткиликсиз болгондо билдирүүнү көрсөтөт</string>
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike YouTube 2021-жылы жашырган жактырбагандордун санын калыбына келтирет. Сандар өчүрүлгөнгө чейин архивделген маалыматтардан алынат жана жаңы видеолор үчүн колдонуучулардын добуштары менен бааланат, ошондуктан алар болжолчо жана бир нече күндө бир жолу жаңыртылып турат
+
+Сиз көрүп жаткан видеонун IDси Return YouTube Dislike APIсине жөнөтүлөт, ал эми сиздин жактырууларыңыз жана жактырбагандарыңыз баалоолорду жакшыртуу үчүн анонимдүү түрдө жөнөтүлөт"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
+  <string name="morphe_ryd_statistics_category_title">Бул түзүлүштүн Return YouTube Dislike API статистикасы</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API жооп берүү убактысы, орточо</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">API жооп берүү убактысы, minimum</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">API жооп берүү убактысы, maximum</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">API жооп берүү убактысы, акыркы медиа</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Жакпагандар убактылуу жеткиликсиз - Client API чектөөсү колдонулууда</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_title">API добуштарды алуу, чакыруулардын саны</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Тармактык чакыруулар жасалган жок</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API добуштарды алуу, убактысы бүткөндөрдүн саны</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Тармак чакырууларынын убактысы бүткөн жок</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API клиенттин чектөөлөрү</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Клиенттин чектөөлөрү боюнча маселелер жок</string>
 </resources>

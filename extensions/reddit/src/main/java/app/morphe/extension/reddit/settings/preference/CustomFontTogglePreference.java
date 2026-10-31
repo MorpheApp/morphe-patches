@@ -25,7 +25,7 @@ public final class CustomFontTogglePreference extends BooleanSettingPreference {
         setOnPreferenceChangeListener((preference, newValue) -> {
             boolean enabling = Boolean.TRUE.equals(newValue);
             if (!enabling) {
-                AbstractPreferenceFragment.showRestartDialog(context);
+                AbstractPreferenceFragment.setRestartNeeded();
                 return true;
             }
 
@@ -50,7 +50,7 @@ public final class CustomFontTogglePreference extends BooleanSettingPreference {
                 }
             }
 
-            AbstractPreferenceFragment.showRestartDialog(context);
+            AbstractPreferenceFragment.setRestartNeeded();
             return true;
         });
     }

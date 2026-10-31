@@ -65,17 +65,17 @@ public class SponsorBlockApiUrlPreference extends Preference {
                     () -> {
                         String serverAddress = editText.getText().toString();
                         if (!SponsorBlockHelpers.isValidSBServerAddress(serverAddress)) {
-                            Utils.showToastLong(str("morphe_sb_api_url_invalid"));
+                            Utils.showSnackbarLong(str("morphe_sb_api_url_invalid"));
                         } else if (!serverAddress.equals(Settings.SB_API_URL.get())) {
                             Settings.SB_API_URL.save(serverAddress);
-                            Utils.showToastLong(str("morphe_sb_api_url_changed"));
+                            Utils.showSnackbarLong(str("morphe_sb_api_url_changed"));
                         }
                     },
                     () -> {},
                     str("morphe_settings_reset"),
                     () -> {
                         Settings.SB_API_URL.resetToDefault();
-                        Utils.showToastLong(str("morphe_sb_api_url_reset"));
+                        Utils.showSnackbarLong(str("morphe_sb_api_url_reset"));
                     },
                     true
             );

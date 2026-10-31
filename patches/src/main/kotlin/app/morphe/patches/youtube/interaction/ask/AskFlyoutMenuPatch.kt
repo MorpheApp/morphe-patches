@@ -19,9 +19,10 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
+import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patcher.util.registersUsed
+import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.FeedFlyoutBufferObjectFingerprint
@@ -37,22 +38,17 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.findMutableMethodOf
-import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
-import app.morphe.util.registersUsed
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.ClassDef
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
@@ -593,35 +589,6 @@ private fun BytecodePatchContext.restoreMenuRowTextConstraints() {
             """
         )
     }
-}
-
-/**
- * Adds a public method to an app class, which implements a method of an extension interface added to the class.
- *
- * @param accessFlags The flags of the method. A default method of an interface cannot be final.
- */
-private fun MutableClass.addBridge(
-    name: String,
-    parameters: List<String>,
-    returnType: String,
-    registerCount: Int,
-    smali: String,
-    accessFlags: Int = AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-) {
-    methods.add(
-        ImmutableMethod(
-            type,
-            name,
-            parameters.map { ImmutableMethodParameter(it, null, null) },
-            returnType,
-            accessFlags,
-            null,
-            null,
-            MutableMethodImplementation(registerCount),
-        ).toMutable().apply {
-            addInstructionsWithLabels(0, smali)
-        }
-    )
 }
 
 private fun MethodReference.toReference() =

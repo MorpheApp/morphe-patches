@@ -8,55 +8,14 @@
 package app.morphe.patches.youtube.interaction.channelsearch
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchBeforeAnywhere
 import app.morphe.patcher.anyInstruction
-import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
-import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-
-/**
- * Every browse page is shown by this one fragment, and the endpoint it is handed names the page.
- * The browse request cannot be used instead, because a page served from cache makes no request.
- */
-internal object BrowseFragmentOnCreateViewFingerprint : Fingerprint(
-    returnType = "Landroid/view/View;",
-    parameters = listOf(
-        "Landroid/view/LayoutInflater;",
-        "Landroid/view/ViewGroup;",
-        "Landroid/os/Bundle;"
-    ),
-    filters = listOf(
-        string("Browse Fragment was given a navigation endpoint without browse data."),
-        // The endpoint of the page is read before it is checked for browse data.
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = "this",
-            location = MatchBeforeAnywhere()
-        )
-    )
-)
-
-/**
- * The search feed is its own fragment, so it does not go through the browse fragment when
- * the user returns to it from a channel.
- */
-internal object SearchResultsFragmentOnCreateViewFingerprint : Fingerprint(
-    returnType = "Landroid/view/View;",
-    parameters = listOf(
-        "Landroid/view/LayoutInflater;",
-        "Landroid/view/ViewGroup;",
-        "Landroid/os/Bundle;"
-    ),
-    filters = listOf(
-        string("search_cache_key")
-    )
-)
 
 /**
  * Picks the hint of the search box. The default hint is loaded last, after the hints of
@@ -83,8 +42,29 @@ internal object SearchSubmitFingerprint : Fingerprint(
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     filters = listOf(
+        methodCall(
+            name = "toByteArray",
+            returnType = "[B"
+        ),
         anyInstruction(
-            methodCall( // 21.31+
+            methodCall( // 21.43+
+                parameters = listOf(
+                    "Ljava/lang/String;",
+                    "[B",
+                    "Ljava/lang/String;",
+                    "I",
+                    "L",
+                    "L",
+                    "Ljava/lang/String;",
+                    "Ljava/lang/String;",
+                    "Ljava/lang/String;",
+                    "Ljava/lang/String;",
+                    "Z",
+                    "Ljava/lang/String;",
+                ),
+                returnType = "V"
+            ),
+            methodCall( // 21.31 - 21.42
                 parameters = listOf(
                     "Ljava/lang/String;",
                     "[B",
@@ -118,7 +98,19 @@ internal object SearchSubmitFingerprint : Fingerprint(
         )
     ),
     custom = { method, _ ->
-        parametersMatch( // 21.31+
+        parametersMatch( // 21.43+
+            method.parameters,
+            listOf(
+                "Ljava/lang/String;",
+                "I",
+                "Ljava/lang/String;",
+                "Ljava/lang/String;",
+                "Ljava/lang/String;",
+                "Ljava/lang/String;",
+                "Z",
+                "Ljava/lang/String;",
+            )
+        ) || parametersMatch( // 21.31 - 21.42
             method.parameters,
             listOf(
                 "Ljava/lang/String;",

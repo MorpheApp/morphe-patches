@@ -11,11 +11,13 @@
 package app.morphe.patches.youtube.misc.settings
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.all.misc.crashlog.crashLogPatch
@@ -46,9 +48,14 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.settingsPatch
+import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.fix.accessibility.fixCaptionsAccessibilityPatch
+import app.morphe.patches.youtube.misc.fix.accessibility.fixShortsAccessibilityPatch
+import app.morphe.patches.youtube.misc.fix.accessibility.fixTouchExplorationPatch
 import app.morphe.patches.youtube.misc.fix.contentprovider.fixContentProviderPatch
 import app.morphe.patches.youtube.misc.fix.likebutton.fixLikeButtonPatch
+import app.morphe.patches.youtube.misc.fix.padding.fixPagePaddingPatch
 import app.morphe.patches.youtube.misc.fix.pipchatbar.fixPipChatBarPatch
 import app.morphe.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhilePlayingPatch
 import app.morphe.patches.youtube.misc.fix.preference.fixPreferenceIconPatch
@@ -62,7 +69,6 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -76,6 +82,7 @@ import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private const val BASE_ACTIVITY_HOOK_CLASS = "Lapp/morphe/extension/shared/settings/BaseActivityHook;"
 private const val YOUTUBE_ACTIVITY_HOOK_CLASS = "Lapp/morphe/extension/youtube/settings/YouTubeActivityHook;"
+private const val NATIVE_SNACKBAR_CLASS = "Lapp/morphe/extension/youtube/patches/NativeSnackbarPatch;"
 
 private val preferences = mutableSetOf<BasePreference>()
 
@@ -215,15 +222,20 @@ val settingsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsResourcePatch,
+        commandRouterHookPatch,
         addResourcesPatch,
         versionCheckPatch,
         // Currently there is no easy way to make patches mandatory,
         // so for now these are all dependents of this patch.
+        fixCaptionsAccessibilityPatch,
+        fixShortsAccessibilityPatch,
+        fixTouchExplorationPatch,
         fixPlaybackSpeedWhilePlayingPatch,
         fixPreferenceIconPatch,
         fixLikeButtonPatch,
         fixContentProviderPatch,
         fixPipChatBarPatch,
+        fixPagePaddingPatch,
         addLicensePatch,
         removeLinkVerification,
         crashLogPatch(
@@ -263,10 +275,16 @@ val settingsPatch = bytecodePatch(
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_settings_search_history"),
             SwitchPreference("morphe_show_menu_icons"),
+            SwitchPreference("morphe_native_snackbar", summary = true),
             customSettingsNamePreference()
         )
 
         PreferenceScreen.MISC.addPreferences(
+            NonInteractivePreference(
+                key = "morphe_settings_new_indicator_days",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                selectable = true
+            ),
             TextPreference(
                 key = null,
                 titleKey = "morphe_pref_import_export_title",
@@ -345,6 +363,13 @@ val settingsPatch = bytecodePatch(
             }
         }
 
+        // Show the extension messages in the YouTube snackbar instead of a toast,
+        // by running the command a server response shows a snackbar with.
+        YouTubeActivityOnCreateFingerprint.method.addInstruction(
+            0,
+            "invoke-static { }, $NATIVE_SNACKBAR_CLASS->initialize()V"
+        )
+
         modifyActivityForSettingsInjection(
             GoogleApiActivityOnCreateFingerprint,
             YOUTUBE_ACTIVITY_HOOK_CLASS,
@@ -408,7 +433,7 @@ internal fun modifyActivityForSettingsInjection(
         )
     }.let(activityOnCreateClass.methods::add)
 
-    // Override finish() to intercept back gesture.
+    // Override finish() to intercept back gesture, and to show the restart dialog if needed.
     ImmutableMethod(
         activityOnCreateClass.type,
         if (isYouTubeMusic) "finish" else "onBackPressed",
@@ -426,11 +451,11 @@ internal fun modifyActivityForSettingsInjection(
         addInstructions(
             0,
             """
-                invoke-static {}, $extensionClassType->$extensionMethodName()Z
+                invoke-static { p0 }, $extensionClassType->$extensionMethodName(Landroid/app/Activity;)Z
                 move-result v0
-                if-nez v0, :search_handled
+                if-nez v0, :handled
                 $invokeFinishOpcode { p0 }, Landroid/app/Activity;->finish()V
-                :search_handled
+                :handled
                 return-void
             """
         )

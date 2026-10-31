@@ -10,6 +10,8 @@ package app.morphe.patches.youtube.shared
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
@@ -18,7 +20,6 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.getFreeRegisterProvider
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.lang.ref.WeakReference
 
@@ -31,6 +32,10 @@ private var videoPlaybackIntentFreeRegister1: Int = 0
 private var videoPlaybackIntentFreeRegister2: Int = 0
 
 private lateinit var shortsPlaybackIntentMethod: WeakReference<MutableMethod>
+
+private val videoIntentContextHooks = mutableListOf<Pair<String, String>>()
+private val videoIntentCommandTransforms = mutableListOf<Pair<String, String>>()
+private val videoIntentInterceptors = mutableListOf<Pair<String, String>>()
 
 @Suppress("unused")
 val openVideoIntentPatch = bytecodePatch(
@@ -45,6 +50,9 @@ val openVideoIntentPatch = bytecodePatch(
     )
 
     execute {
+        videoIntentContextHooks.clear()
+        videoIntentCommandTransforms.clear()
+        videoIntentInterceptors.clear()
         VideoPlaybackIntentFingerprint.let {
             it.method.apply {
                 val match = it.instructionMatches[1]
@@ -77,6 +85,62 @@ val openVideoIntentPatch = bytecodePatch(
             else ShortsPlaybackIntentFingerprintLegacy).method
         )
     }
+
+    finalize {
+        // Existing filtering hooks cache an instruction index during execute.
+        // Insert entry transforms only after all consumers have used that index.
+        val method = videoPlaybackIntentMethod.get()!!
+        videoIntentContextHooks.asReversed().forEach { (classDescriptor, methodName) ->
+            method.addInstructionsAtControlFlowLabel(
+                0,
+                """
+                    invoke-static/range {p1 .. p2}, $classDescriptor->$methodName(Lcom/google/protobuf/MessageLite;Ljava/util/Map;)Ljava/util/Map;
+                    move-result-object p2
+                """
+            )
+        }
+        videoIntentInterceptors.asReversed().forEach { (classDescriptor, methodName) ->
+            val consumed = method.findFreeRegister(0)
+            method.addInstructionsAtControlFlowLabel(
+                0,
+                """
+                    invoke-static/range {p1 .. p2}, $classDescriptor->$methodName(Lcom/google/protobuf/MessageLite;Ljava/util/Map;)Z
+                    move-result v$consumed
+                    if-eqz v$consumed, :continue_video_intent
+                    return-void
+                    :continue_video_intent
+                    nop
+                """
+            )
+        }
+        // Normalize the immutable command before context hooks or the native
+        // descriptor can observe its original playlist. Retain its native type.
+        videoIntentCommandTransforms.asReversed().forEach { (classDescriptor, methodName) ->
+            method.addInstructionsAtControlFlowLabel(
+                0,
+                """
+                    invoke-static/range {p1 .. p2}, $classDescriptor->$methodName(Lcom/google/protobuf/MessageLite;Ljava/util/Map;)Lcom/google/protobuf/MessageLite;
+                    move-result-object p1
+                    check-cast p1, ${method.parameterTypes.first()}
+                """
+            )
+        }
+    }
+}
+
+/** Transform the command context before native watch-descriptor construction, without consuming it. */
+fun hookVideoIntentContext(classDescriptor: String, methodName: String) {
+    videoIntentContextHooks += classDescriptor to methodName
+}
+
+/** Transform the watch command before its context and native playback descriptor are read. */
+fun hookVideoIntentCommandTransform(classDescriptor: String, methodName: String) {
+    videoIntentCommandTransforms += classDescriptor to methodName
+}
+
+/** Intercept a normalized watch command before context mutations or playback starts. */
+fun hookVideoIntentInterceptor(classDescriptor: String, methodName: String) {
+    videoIntentInterceptors += classDescriptor to methodName
 }
 
 /**

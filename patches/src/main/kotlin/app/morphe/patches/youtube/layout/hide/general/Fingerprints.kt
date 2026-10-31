@@ -525,11 +525,6 @@ internal object ChannelTabBuilderLegacyFingerprint : Fingerprint(
 internal object ChannelTabRendererFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(
-        "L",
-        "Ljava/util/List;",
-        "I"
-    ),
     filters = listOf(
         opcode(Opcode.IF_EQ),
         anyInstruction(
@@ -752,15 +747,19 @@ internal object AccountMenuLegacyFingerprint : Fingerprint(
     )
 )
 
-internal object BottomUIContainerFingerprint : Fingerprint(
-    definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;",
+internal object SnackbarDisplayFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("Landroid/view/View;", "L"),
+    parameters = listOf("L"),
     filters = listOf(
         methodCall(
-            definingClass = "this",
-            name = "removeAllViews"
+            parameters = emptyList(),
+            returnType = "Z"
+        ),
+        methodCall(
+            definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;",
+            parameters = listOf("L", "L", "L"),
+            returnType = "V"
         )
     )
 )
@@ -927,18 +926,6 @@ internal object HideTimeBarChapterTitleFingerprint : Fingerprint(
             name = "findViewById"
         ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
-    )
-)
-
-internal object CommentReplyPaddingFeatureFlagFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45752241)
-    )
-)
-
-internal object IncognitoSearchPaddingFeatureFlagFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45724388)
     )
 )
 

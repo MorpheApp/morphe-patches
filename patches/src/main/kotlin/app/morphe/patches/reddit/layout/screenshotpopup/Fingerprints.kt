@@ -8,7 +8,9 @@
 package app.morphe.patches.reddit.layout.screenshotpopup
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -48,4 +50,22 @@ internal object ScreenshotTakenBannerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("Ljava/lang/Object;"),
     filters = SHOULD_SHOW_BANNER_FILTERS
+)
+
+/**
+ * Opens the share sheet after a screenshot, if enabled by a feature flag. Since 2026.33.0.
+ */
+internal object ScreenshotShareSheetFingerprint : Fingerprint(
+    definingClass = $$"Lcom/reddit/sharing/screenshot/RedditScreenshotTriggerSharingListener$openShareSheetOnScreenshot$1;",
+    name = "invokeSuspend",
+    returnType = "Ljava/lang/Object;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf("Ljava/lang/Object;"),
+    filters = listOf(
+        checkCast("Ljava/lang/Boolean;"),
+        methodCall(
+            smali = "Ljava/lang/Boolean;->booleanValue()Z",
+            location = MatchAfterImmediately()
+        )
+    )
 )

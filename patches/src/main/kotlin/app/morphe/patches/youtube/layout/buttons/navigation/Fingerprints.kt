@@ -27,6 +27,8 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+internal const val PIVOT_BAR_CLASS = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;"
+
 private val SET_VISIBILITY_METHOD_CALL = methodCall(
     opcode = Opcode.INVOKE_VIRTUAL,
     smali = "Landroid/view/View;->setVisibility(I)V"
@@ -35,7 +37,7 @@ private val SET_VISIBILITY_METHOD_CALL = methodCall(
 internal object CreatePivotBarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf(
-        "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+        PIVOT_BAR_CLASS,
         "Landroid/widget/TextView;",
         "Ljava/lang/CharSequence;",
     ),
@@ -82,33 +84,29 @@ internal object AutoHideNavigationBarOnFeedScrollingFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Moves the navigation bar out of the screen while the miniplayer is dragged to be dismissed.
+ * Other listeners of the same drag cancel autoplay, so only the navigation bar listener is hooked.
+ * Before 21.23 the method of the navigation bar for this drag is empty.
+ */
 internal object AutoHideNavigationBarOnDismissMiniplayerFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("F"),
     filters = listOf(
-        literal(2),
-        methodCall(
-            smali = "Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;",
-            location = MatchAfterWithin(5)
-        ),
-        methodCall(
-            smali = "Ljava/util/Set;->iterator()Ljava/util/Iterator;",
-            location = MatchAfterWithin(5)
-        ),
-        methodCall(
-            smali = "Ljava/util/Iterator;->hasNext()Z",
-            location = MatchAfterWithin(5)
-        ),
-        methodCall(
-            smali = "Ljava/util/Iterator;->next()Ljava/lang/Object;",
-            location = MatchAfterWithin(5)
-        )
+        opcode(Opcode.IGET),
+        opcode(Opcode.IGET, location = MatchAfterImmediately()),
+        opcode(Opcode.ADD_INT_2ADDR, location = MatchAfterImmediately()),
+        opcode(Opcode.INT_TO_FLOAT, location = MatchAfterImmediately()),
+        opcode(Opcode.MUL_FLOAT_2ADDR, location = MatchAfterImmediately()),
+        opcode(Opcode.IPUT, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
+        opcode(Opcode.RETURN_VOID, location = MatchAfterImmediately())
     )
 )
 
 internal object PivotBarStyleFingerprint : Fingerprint(
-    definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+    definingClass = PIVOT_BAR_CLASS,
     returnType = "V",
     parameters = listOf("L"),
     filters = OpcodesFilter.opcodesToFilters(
@@ -119,12 +117,23 @@ internal object PivotBarStyleFingerprint : Fingerprint(
 )
 
 internal object PivotBarChangedFingerprint : Fingerprint(
-    definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+    definingClass = PIVOT_BAR_CLASS,
     name = "onConfigurationChanged",
     returnType = "V",
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_STATIC,
         Opcode.MOVE_RESULT
+    )
+)
+
+/**
+ * Adds the navigation bar height to the bottom room of the bar fixed at the bottom of some pages,
+ * such as the reply bar of the comment replies. Only read when the navigation bar covers
+ * the system navigation buttons. Not present in older targets.
+ */
+internal object CommentReplyPaddingFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45752241L)
     )
 )
 
@@ -135,9 +144,21 @@ internal object PivotBarChangedFingerprint : Fingerprint(
  */
 internal val TRANSLUCENT_NAVIGATION_BAR_FEATURE_FLAGS = listOf(
     45630927L, // Blurred, translucent background of the navigation bar.
-    45632194L, // Navigation bar also covers the system navigation buttons.
-    45631257L  // Feed laid out behind the navigation bar instead of above it.
+    NAVIGATION_BAR_COVERS_SYSTEM_BUTTONS_FLAG,
+    FEED_BEHIND_NAVIGATION_BAR_FLAG
 )
+
+/**
+ * Navigation bar also covers the system navigation buttons, which adds the room for them
+ * to the navigation bar height.
+ */
+internal const val NAVIGATION_BAR_COVERS_SYSTEM_BUTTONS_FLAG = 45632194L
+
+/**
+ * Feed laid out behind the navigation bar instead of above it. The page then ends at the bottom
+ * of the screen, and its list gets the navigation bar height as bottom padding.
+ */
+internal const val FEED_BEHIND_NAVIGATION_BAR_FLAG = 45631257L
 
 internal object TranslucentNavigationBarFeatureFlagsFingerprint : Fingerprint(
     filters = listOf(
@@ -148,61 +169,27 @@ internal object TranslucentNavigationBarFeatureFlagsFingerprint : Fingerprint(
 /**
  * Sets the bottom padding of the navigation bar to the bottom window inset, the room for
  * the system navigation buttons when the bar is drawn behind them. The bar height also grows
- * by the same value, which is first stored in a field of the bar.
+ * by the same value, which is first stored in a field of the bar and then added to its height.
  */
 internal object NavigationBarBottomPaddingFingerprint : Fingerprint(
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IPUT,
-            definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+            definingClass = PIVOT_BAR_CLASS,
             type = "I"
         ),
+        // Sets the bar height to its content height and the room in the field.
         methodCall(
-            definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = PIVOT_BAR_CLASS,
+            parameters = listOf(),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            definingClass = PIVOT_BAR_CLASS,
             name = "setPadding",
             location = MatchAfterWithin(10)
-        )
-    )
-)
-
-/**
- * Sets the bottom margin of the layout that holds the page and the navigation bar.
- * With the keyboard open and a text field focused, the margin is the keyboard height,
- * otherwise the bottom of the window insets.
- */
-internal object PageBottomMarginFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf("Landroid/graphics/Rect;"),
-    filters = listOf(
-        methodCall(smali = "Landroid/view/View;->findFocus()Landroid/view/View;"),
-        methodCall(
-            smali = "Landroid/view/View;->onCheckIsTextEditor()Z",
-            location = MatchAfterWithin(5)
-        ),
-        fieldAccess(
-            opcode = Opcode.IGET,
-            definingClass = "Landroid/graphics/Rect;",
-            name = "bottom"
-        )
-    )
-)
-
-/**
- * Sets the padding of a feed list. When the feed is laid out behind the navigation bar,
- * the bottom padding holds the navigation bar height and the bottom window inset.
- */
-internal object FeedListPaddingFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf(),
-    filters = listOf(
-        methodCall(
-            definingClass = "Landroid/support/v7/widget/RecyclerView;",
-            name = "setClipToPadding"
-        ),
-        methodCall(
-            definingClass = "Landroid/support/v7/widget/RecyclerView;",
-            name = "setPadding",
-            location = MatchAfterImmediately()
         )
     )
 )
@@ -340,7 +327,8 @@ internal object PivotBarRendererListFingerprint : Fingerprint(
             definingClass = "this",
             type = "L"
         ),
-        literal(45633821L),
+        // The new list is compared to the previous list.
+        methodCall(smali = "Ljava/lang/Class;->isInstance(Ljava/lang/Object;)Z")
     )
 )
 

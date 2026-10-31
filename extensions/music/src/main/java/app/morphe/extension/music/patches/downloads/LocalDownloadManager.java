@@ -467,15 +467,11 @@ public final class LocalDownloadManager {
 
     @Nullable
     private static ResolvedStream resolveStream(String videoId) {
-        StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
-        if (request == null) {
-            Logger.printDebug(() -> "No cached streaming request for download, resolving: " + videoId);
-            // The clients are named here because the playback order is only set up while spoofing
-            // is on, and a download needs a client that answers with plain urls either way.
-            request = StreamingDataRequest.fetchRequestForDownload(videoId,
-                    SpoofVideoStreamsPatch.getAvailableClients(),
-                    Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get());
-        }
+        Logger.printDebug(() -> "Resolving stream and metadata for download: " + videoId);
+        // Cached playback responses omit videoDetails, so fetch streams and song details together.
+        StreamingDataRequest request = StreamingDataRequest.fetchRequestForDownload(videoId,
+                SpoofVideoStreamsPatch.getAvailableClients(),
+                Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get());
 
         StreamingDataRequest.StreamData stream = request.getStream();
         if (stream == null) {

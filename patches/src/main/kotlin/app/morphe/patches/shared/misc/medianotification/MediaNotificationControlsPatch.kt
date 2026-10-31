@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/1322
+ * https://github.com/MorpheApp/morphe-patches/pull/3955
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -13,6 +14,7 @@ import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.MediaSessionSetPlaybackStateFingerprint
+import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -24,6 +26,7 @@ internal const val EXTENSION_CLASS =
 internal fun mediaNotificationControlsPatch(
     block: BytecodePatchBuilder.() -> Unit,
     preferenceScreen: BasePreferenceScreen.Screen,
+    additionalPreferences: Set<BasePreference> = emptySet(),
     executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
     name = "Media notification controls",
@@ -36,10 +39,12 @@ internal fun mediaNotificationControlsPatch(
         preferenceScreen.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_notification_media_screen",
+                // Keep the seek options right below the switch they depend on.
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_notification_media_prev_next", summary = true),
                     SwitchPreference("morphe_disable_notification_media_seekbar", summary = true),
-                )
+                    SwitchPreference("morphe_hide_notification_media_prev_next", summary = true),
+                ) + additionalPreferences
             )
         )
 

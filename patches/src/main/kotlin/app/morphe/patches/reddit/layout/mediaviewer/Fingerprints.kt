@@ -10,7 +10,6 @@ package app.morphe.patches.reddit.layout.mediaviewer
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -192,21 +191,23 @@ internal object VideoPlayerBackgroundFingerprint : Fingerprint(
 )
 
 /**
- * Any read of LocalContext from a composable.
+ * Static initializer of the Android composition locals, which creates LocalContext.
  */
 internal object LocalContextFingerprint : Fingerprint(
+    definingClass = "Landroidx/compose/ui/platform/AndroidCompositionLocals_androidKt;",
+    name = "<clinit>",
     filters = listOf(
         fieldAccess(
             opcode = Opcode.SGET_OBJECT,
-            definingClass = "Landroidx/compose/ui/platform/AndroidCompositionLocals_androidKt;"
+            definingClass = $$"Landroidx/compose/ui/platform/AndroidCompositionLocals_androidKt$LocalContext$1;",
+            name = "INSTANCE"
         ),
-        methodCall(
-            returnType = "Ljava/lang/Object;",
-            parameters = listOf("L"),
-            location = MatchAfterImmediately()
-        ),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        checkCast("Landroid/content/Context;", location = MatchAfterImmediately())
+        // LocalContext field.
+        fieldAccess(
+            opcode = Opcode.SPUT_OBJECT,
+            definingClass = "this",
+            location = MatchAfterWithin(2)
+        )
     )
 )
 

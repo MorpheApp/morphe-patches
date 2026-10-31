@@ -336,14 +336,6 @@ public enum SegmentCategory {
     }
 
     /**
-     * Gets the color with opacity applied (ARGB).
-     */
-    @ColorInt
-    public int getColorWithOpacity() {
-        return color;
-    }
-
-    /**
      * @return The default color with opacity applied.
      */
     @ColorInt
@@ -355,7 +347,7 @@ public enum SegmentCategory {
      * @return The color as a hex string without opacity (#RRGGBB).
      */
     public String getColorStringWithoutOpacity() {
-        final int colorNoOpacity = getColorWithOpacity() & 0x00FFFFFF;
+        final int colorNoOpacity = color & 0x00FFFFFF;
         return String.format(Locale.US, "#%06X", colorNoOpacity);
     }
 
@@ -382,15 +374,8 @@ public enum SegmentCategory {
     /**
      * Returns the category title with a colored dot.
      */
-    public SpannableString getTitleWithColorDot(@ColorInt int categoryColor) {
-        return getCategoryColorDotSpan(" " + title, categoryColor);
-    }
-
-    /**
-     * Returns the category title with a colored dot.
-     */
     public SpannableString getTitleWithColorDot() {
-        return getTitleWithColorDot(color);
+        return getCategoryColorDotSpan(" " + title, color);
     }
 
     /**

@@ -12,7 +12,6 @@ import android.app.Activity;
 import app.morphe.extension.shared.patches.BaseAppRefreshRatePatch;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.VideoState;
-import kotlin.Unit;
 
 @SuppressWarnings("unused")
 public final class AppRefreshRatePatch {
@@ -27,12 +26,10 @@ public final class AppRefreshRatePatch {
 
         VideoState.getOnChange().addObserver((VideoState state) -> {
             updatePlayerIsActive(PlayerType.getCurrent(), state);
-            return Unit.INSTANCE;
         });
 
         PlayerType.getOnChange().addObserver((PlayerType type) -> {
             updatePlayerIsActive(type, VideoState.getCurrent());
-            return Unit.INSTANCE;
         });
     }
 

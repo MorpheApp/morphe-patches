@@ -2,6 +2,7 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/2524
  * https://github.com/MorpheApp/morphe-patches/pull/3684
+ * https://github.com/MorpheApp/morphe-patches/pull/4109
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -20,6 +21,8 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.util.matchAllMethodIndicesForEach
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_DARK
 import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_LIGHT
 import app.morphe.patches.shared.layout.theme.THEME_COLOR_EXTENSION_CLASS
@@ -55,10 +58,7 @@ import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.forEachChildElement
 import app.morphe.util.insertLiteralOverride
-import app.morphe.util.matchAllMethodIndicesForEach
-import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
 
@@ -88,7 +88,15 @@ private val youTubeColorNamesDark = {
             "yt_sys_color_baseline_dark_raised_background",
             "yt_sys_color_baseline_dark_base_background",
             "yt_sys_color_baseline_light_inverted_background",
-            "yt_sys_color_baseline_light_static_black"
+            "yt_sys_color_baseline_light_static_black",
+            // 21.43+ names of 'black3', 'black1' and the menu background.
+            "yt_ref_color_constants_default_grey5",
+            "yt_ref_color_constants_default_grey20",
+            "yt_sys_color_baseline_dark_default_menu_background",
+            // The mainstage color theme of 21.43+, which the app applies over the default one.
+            "yt_ref_color_constants_colors_mainstage_grey5",
+            "yt_ref_color_constants_colors_mainstage_grey20",
+            "yt_ref_color_constants_colors_mainstage_grey25"
         ) else emptySet()
 }
 
@@ -106,9 +114,13 @@ private val youTubeColorNamesLight = {
 //            "yt_ref_color_constants_default_baseline_white_white2",
 //            "yt_ref_color_constants_default_baseline_white_white4",
             "yt_ref_color_constants_default_baseline_white_white3",
+            // 21.43+ name of 'white3'.
+            "yt_ref_color_constants_default_grey95",
             "yt_ref_color_constants_cooler_baseline_white_white3",
 
             "yt_sys_color_baseline_light_menu_background",
+            // 21.43+ name of the menu background.
+            "yt_sys_color_baseline_light_default_menu_background",
 //            "yt_sys_color_baseline_light_static_white",
 //            "yt_sys_color_baseline_light_static_white_background",
 //            "yt_sys_color_baseline_dark_inverted_background",
@@ -449,10 +461,6 @@ val themePatch = baseThemePatch(
             noTitleUnsortedPreferenceCategory(preferences)
         )
 
-        PreferenceScreen.GENERAL.addPreferences(
-            ListPreference("morphe_splash_screen_animation_style")
-        )
-
         // Splash screen is drawn by the system with the theme of the launcher activity, so
         // the activity is handed over as soon as it exists. A patched theme color is
         // already a part of that theme, and no theme is generated to hand over.
@@ -598,44 +606,6 @@ val themePatch = baseThemePatch(
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     false
-                )
-            }
-        }
-
-        // Lottie splash screen exists in earlier versions, but it may not be always on.
-        SplashScreenStyleFingerprint.let {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->getLoadingScreenType(I)I"
-            )
-        }
-
-        ShowSplashScreenFingerprint.let {
-            it.method.apply {
-                val lastIndex = it.instructionMatches.last().index
-                val lastInstruction = getInstruction<TwoRegisterInstruction>(lastIndex)
-                val lastRegisterA = lastInstruction.registerA
-                val lastRegisterB = lastInstruction.registerB
-
-                addInstructions(
-                    lastIndex,
-                    """
-                        invoke-static { v$lastRegisterA, v$lastRegisterB }, $EXTENSION_CLASS->showSplashScreen(II)I
-                        move-result v$lastRegisterA
-                    """
-                )
-
-                val firstIndex = it.instructionMatches[1].index
-                val firstRegister = getInstruction<OneRegisterInstruction>(
-                    firstIndex
-                ).registerA
-
-                addInstructions(
-                    firstIndex + 1,
-                    """
-                        invoke-static { v$firstRegister }, $EXTENSION_CLASS->showSplashScreen(Z)Z
-                        move-result v$firstRegister
-                    """
                 )
             }
         }

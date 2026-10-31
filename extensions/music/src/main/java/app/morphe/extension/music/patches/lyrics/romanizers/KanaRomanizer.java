@@ -14,15 +14,10 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * Hepburn romaji for a run of kana, which is all a phonetic script needs: the readings a
- * dictionary hands back are katakana and come through here too. The work is done a mora at a
- * time, since a character alone says neither whether a small kana belongs to it nor whether it
- * palatalises.
- *
- * <p>The table is read out of the Unicode names, since a kana is named after its own reading
- * and a hand-written table is silently corruptible. Two conventions here are Google's rather
- * than Hepburn's, so that a song does not change shape between the online path and this one:
- * no apostrophe before a vowel, and n before a labial written as m.
+ * Hepburn romaji for a run of kana. Work is done a mora at a time: a character alone says
+ * neither whether a small kana belongs to it nor whether it palatalises. Tables come from the
+ * Unicode names (hand-written tables are silently corruptible); two Google conventions are kept,
+ * so both paths spell a song the same: no apostrophe before a vowel, n before a labial as m.
  */
 public final class KanaRomanizer {
 
@@ -70,13 +65,15 @@ public final class KanaRomanizer {
         while (i < kana.length()) {
             char c = katakana(kana.charAt(i));
 
-            if (isSokuon(c)) {
+            // Small tsu (sokuon).
+            if (c == 0x3063 || c == 0x30C3) {
 
                 geminate = true;
                 i++;
                 continue;
             }
-            if (isProlonged(c)) {
+            // Prolonged sound mark.
+            if (c == 0x30FC || c == 0x2014) {
                 repeatVowel(out);
                 i++;
                 continue;
@@ -187,14 +184,6 @@ public final class KanaRomanizer {
             default:
                 return "o";
         }
-    }
-
-    private static boolean isSokuon(char c) {
-        return c == 0x3063 || c == 0x30C3;
-    }
-
-    private static boolean isProlonged(char c) {
-        return c == 0x30FC || c == 0x2014;
     }
 
     private static boolean isN(char c) {

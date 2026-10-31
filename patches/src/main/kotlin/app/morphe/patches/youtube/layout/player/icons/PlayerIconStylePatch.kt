@@ -19,6 +19,7 @@ import app.morphe.patcher.patch.filePathOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
+import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -31,7 +32,6 @@ import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.fiveRegisters
-import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversed
 import app.morphe.util.inputStreamFromBundledResource
 import com.android.tools.smali.dexlib2.Opcode
@@ -464,8 +464,7 @@ private val playerButtonIconStylePatch = bytecodePatch {
                     val fieldIndex = indexOfFirstInstructionReversed(index) {
                         opcode == Opcode.IGET_OBJECT && (this as TwoRegisterInstruction).registerA == call.registerD
                     }
-                    if (fieldIndex < 0) return false
-                    return getInstruction(fieldIndex).getReference<FieldReference>()?.type !=
+                    return fieldIndex >= 0 && getInstruction(fieldIndex).getReference<FieldReference>()?.type !=
                             "Landroid/graphics/drawable/Drawable;"
                 }
 
@@ -532,11 +531,13 @@ val playerIconStylePatch = resourcePatch(
         copyPlayerIcons("playericons", "morphe_fullscreen_enter", "morphe_fullscreen_exit")
 
         // The app loads these by resource id from code, so the wrapper replaces the resource itself.
+        val decodableDrawables = listDecodableFiles("res/drawable/*.xml").toSet()
         val wrapped = appPlayerIcons.filter { (appName, originalName, wrapperClass) ->
-            val appIcon = get("res/drawable/$appName.xml")
+            val appIconPath = "res/drawable/$appName.xml"
             // Targets before the bold player do not have these icons.
-            if (!appIcon.exists()) return@filter false
+            if (appIconPath !in decodableDrawables) return@filter false
 
+            val appIcon = get(appIconPath)
             appIcon.copyTo(get("res/drawable/$originalName.xml"), overwrite = true)
             appIcon.writeText(appPlayerIconWrapper(wrapperClass))
             true

@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Indítási animáció</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Kikapcsolva</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Színes</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokróm</string>
+  <string name="morphe_splash_screen_style_title">Indítási animáció</string>
+  <string name="morphe_splash_screen_style_entry_1">Kikapcsolva</string>
+  <string name="morphe_splash_screen_style_entry_2">Színes</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Szín</string>
+  <string name="morphe_splash_screen_style_entry_4">Monokróm</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monokróm</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Új beállítások kiemelése</string>
+  <string name="morphe_settings_new_indicator_days_summary">Napok száma, amelyek alatt egy pont jelenik meg a frissítéssel hozzáadott beállítások és opciók mellett</string>
+  <string name="morphe_settings_new_indicator_days_off">Ki</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Indíts újra a beállítások befejezéséhez</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Belépéshez nyomd meg a folytatást alul"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Elrejti az előző és következő gombokat a médiaértesítésben, a lezárási képernyőn és a fejhallgató-vezérlőkben</string>
   <string name="morphe_disable_notification_media_seekbar_title">Seekbar letiltása</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Megakadályozza a seekbar húzását a lezárási képernyőn és az értesítési panelen</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Keresés Előző &amp; Következő gombokkal</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">A médiaesközözök vezérlése helyett a keresést végzi értesítési panelen, zárképernyőn és fülhallgatón</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Visszatekerés hossza</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Másodpercek visszatekerése az Előző gombbal</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Előretekerés hossza</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Másodpercek előretekerése a Következő gombbal</string>
+  <string name="morphe_seek_notification_media_length_invalid">A keresési hossz 1 és %s másodperc közötti érték kell legyen. Az alapértelmezett használatával</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokoll letiltása</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

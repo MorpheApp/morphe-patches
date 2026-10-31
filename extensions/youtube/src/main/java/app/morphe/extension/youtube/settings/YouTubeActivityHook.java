@@ -24,6 +24,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.preference.YouTubePreferenceFragment;
@@ -36,8 +37,8 @@ import app.morphe.extension.youtube.settings.search.YouTubeSearchViewController;
 @SuppressWarnings({"deprecation", "RedundantSuppression"})
 public class YouTubeActivityHook extends BaseActivityHook {
 
-    public static final boolean USE_BOLD_ICONS = Settings.SETTINGS_INITIALIZED.get()
-            && VersionCheckPatch.IS_20_31_OR_GREATER
+    public static final boolean USE_BOLD_ICONS = (VersionCheckPatch.IS_21_36_OR_GREATER ||
+            (Settings.SETTINGS_INITIALIZED.get() && VersionCheckPatch.IS_20_31_OR_GREATER))
             && !SpoofAppVersionPatch.isSpoofingToLessThan("20.31.00")
             && !Settings.RESTORE_OLD_SETTINGS_MENUS.get();
 
@@ -104,7 +105,7 @@ public class YouTubeActivityHook extends BaseActivityHook {
             if (searchViewController != null && searchViewController.isSearchActive()) {
                 searchViewController.handleBackPress();
             } else {
-                activity.finish();
+                closeSettings(activity);
             }
         };
     }
@@ -182,11 +183,11 @@ public class YouTubeActivityHook extends BaseActivityHook {
      * @return if the original activity finish method should be allowed to run.
      */
     @SuppressWarnings("unused")
-    public static boolean handleBackPress() {
+    public static boolean handleBackPress(Activity activity) {
         if (searchViewController != null && searchViewController.isSearchActive()) {
             return searchViewController.handleBackPress();
         }
-        return false;
+        return AbstractPreferenceFragment.showRestartDialogIfNeeded(activity);
     }
 
     /**

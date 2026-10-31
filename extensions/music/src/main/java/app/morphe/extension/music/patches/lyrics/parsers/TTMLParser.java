@@ -25,6 +25,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.TextTrim;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
@@ -51,25 +52,27 @@ public final class TTMLParser {
     private static final String NS_XML = "http://www.w3.org/XML/1998/namespace";
     private static final String NS_TTS = "http://www.w3.org/ns/ttml#styling";
     private static final String NS_AMLL = "http://www.example.com/ns/amll";
+    private static final String NS_COMPOSER = "https://composer.betterlyrics.org/ttml";
+    private static final String NS_COMPOSER_LEGACY = "https://composer.boidu.dev/ttml";
 
     private static final Set<String> AMLL_EXCLUDED_KEYS = Set.of(
             "ncmMusicId", "qqMusicId", "spotifyId", "appleMusicId", "isrc", "ttmlAuthorGithub"
+    );
+
+    private static final Set<String> COMPOSER_EXCLUDED_KEYS = Set.of(
+            "isrc", "songwriter", "songwriters", "ytVideoId", "language"
     );
 
     /** IoU minimum overlap threshold for romanization alignment. */
     private static final double MIN_IOU = 0.1;
     /** Fast-track tolerance: if start times differ by ≤2ms, consider them aligned. */
     private static final long FAST_TRACK_MS = 2;
+    private static final String AGENT_TYPE_PERSON = "person";
+    private static final String AGENT_TYPE_GROUP = "group";
+    private static final String AGENT_TYPE_OTHER = "other";
 
     private TTMLParser() {
     }
-
-    private record HeadMetadata(
-            List<String> songwriters,
-            List<String> amllCredits,
-            Map<String, AgentInfo> agentTypes,
-            Map<String, List<RomajiSyllable>> sidecarRoman,
-            Map<String, SidecarTranslation> sidecarTrans) {}
 
     private static HeadMetadata parseHeadMetadata(String ttml) {
         List<String> songwriters = new ArrayList<>();
@@ -115,13 +118,8 @@ public final class TTMLParser {
                             } else {
                                 songwritersDepth++;
                             }
-                        } else if ("meta".equals(local) && NS_AMLL.equals(p.getNamespace())) {
-                            final String key = getAttr(p, NS_AMLL, "key", "amll:key");
-                            final String value = getAttr(p, NS_AMLL, "value", "amll:value");
-                            if (key != null && value != null && !key.isEmpty() && !value.isEmpty()
-                                    && !AMLL_EXCLUDED_KEYS.contains(key)) {
-                                amllCredits.add(key + ": " + value.trim());
-                            }
+                        } else if ("meta".equals(local) && isMetaNamespace(p)) {
+                            collectMetaCredit(p, amllCredits);
                         } else if ("agent".equals(local)) {
                             agentId = getAttr(p, NS_TTM, "id", "xml:id");
                             agentType = getAttr(p, NS_TTM, "type", "ttm:type");
@@ -169,25 +167,6 @@ public final class TTMLParser {
         return new HeadMetadata(songwriters, amllCredits, agentTypes, sidecarRoman, sidecarTrans);
     }
 
-    private static final String AGENT_TYPE_PERSON = "person";
-    private static final String AGENT_TYPE_GROUP = "group";
-    private static final String AGENT_TYPE_OTHER = "other";
-
-    public record TtmlResult(List<LyricsLine> lines,
-                      @Nullable List<LyricsLine> romanization,
-                      @Nullable Map<String, List<LyricsLine>> translations,
-                      @Nullable Map<String, List<LyricsLine>> romanizations,
-                      @Nullable List<String> songwriters,
-                      @Nullable List<String> amllCreditLines,
-                      @Nullable Map<String, String> agentNames) {}
-
-    private record RomajiSyllable(long startMs, long endMs, String text) {}
-
-    private record AgentInfo(String type, @Nullable String name) {}
-
-    private record SidecarTranslation(String text, @Nullable List<Word> words,
-                                      @Nullable String bgText, @Nullable List<Word> bgWords) {}
-
     @Nullable
     public static TtmlResult parse(String ttml) {
         if (ttml == null || ttml.isEmpty()) {
@@ -198,9 +177,9 @@ public final class TTMLParser {
 
             final List<String> songwriters;
             if (!hm.songwriters().isEmpty()) {
-                StringBuilder sb = new StringBuilder("Written by ");
+                StringBuilder sb = new StringBuilder("Written by: ");
                 for (int i = 0; i < hm.songwriters().size(); i++) {
-                    if (i > 0) sb.append(" · ");
+                    if (i > 0) sb.append(", ");
                     sb.append(hm.songwriters().get(i));
                 }
                 songwriters = List.of(sb.toString());
@@ -253,7 +232,7 @@ public final class TTMLParser {
 
                         final ParsedLine pl = processPElement(p, pBegin, pEnd);
 
-                        if (pl != null && !pl.text().trim().isEmpty()) {
+                        if (pl != null && (!pl.text().trim().isEmpty() || !pl.bgLines().isEmpty())) {
                             final List<RomajiSyllable> lineSidecar =
                                     findSidecarRoman(lineId, sidecarRoman);
                             // Read off the sidecar before the words carry a reading, or the
@@ -264,10 +243,12 @@ public final class TTMLParser {
                                 alignRomajiToWords(pl.words(), lineSidecar);
                             }
 
-                            final LyricsLine line = new LyricsLine(
-                                    pl.begin(), pl.end(), pl.text(), pl.words(),
-                                    agentId, false, false, divSongPart);
-                            lines.add(line);
+                            if (!pl.text().trim().isEmpty()) {
+                                final LyricsLine line = new LyricsLine(
+                                        pl.begin(), pl.end(), pl.text(), pl.words(),
+                                        agentId, false, false, divSongPart);
+                                lines.add(line);
+                            }
                             mainLineCount = lines.size();
 
                             final String bgAgent = pl.bgAgentId() != null ? pl.bgAgentId() : agentId;
@@ -279,8 +260,10 @@ public final class TTMLParser {
                                 lines.add(bgLine);
                             }
 
-                            romanization.add(new LyricsLine(
-                                    LyricsLine.NO_TIME, romaText));
+                            if (!pl.text().trim().isEmpty()) {
+                                romanization.add(new LyricsLine(
+                                        LyricsLine.NO_TIME, romaText));
+                            }
                             for (int i = 0; i < pl.bgLines().size(); i++) {
                                 romanization.add(new LyricsLine(LyricsLine.NO_TIME, ""));
                             }
@@ -417,7 +400,7 @@ public final class TTMLParser {
             boolean isDuet;
 
             if (agentNum > 0) {
-                isDuet = (agentNum % 2 == 0);
+                isDuet = !LyricsLine.isCenteredAgentId(agentId) && (agentNum % 2 == 0);
             } else {
                 final AgentInfo info = agentTypes.get(agentId);
                 final String type = info != null ? info.type() : AGENT_TYPE_PERSON;
@@ -461,7 +444,7 @@ public final class TTMLParser {
     }
 
     private static void collectSidecarTransliterations(XmlPullParser p,
-            Map<String, List<RomajiSyllable>> map)
+                                                       Map<String, List<RomajiSyllable>> map)
             throws XmlPullParserException, IOException {
         int depth = 1;
         while (depth > 0) {
@@ -484,8 +467,8 @@ public final class TTMLParser {
     }
 
     private static void collectOneTransliteration(XmlPullParser p,
-            @Nullable String lang,
-            Map<String, List<RomajiSyllable>> map)
+                                                  @Nullable String lang,
+                                                  Map<String, List<RomajiSyllable>> map)
             throws XmlPullParserException, IOException {
         int depth = 1;
         while (depth > 0) {
@@ -558,7 +541,7 @@ public final class TTMLParser {
     }
 
     private static void collectSidecarTranslations(XmlPullParser p,
-            Map<String, SidecarTranslation> map)
+                                                   Map<String, SidecarTranslation> map)
             throws XmlPullParserException, IOException {
         int depth = 1;
         int eventCount = 0;
@@ -588,7 +571,7 @@ public final class TTMLParser {
     }
 
     private static void collectOneTranslation(XmlPullParser p, String lang,
-            Map<String, SidecarTranslation> map)
+                                              Map<String, SidecarTranslation> map)
             throws XmlPullParserException, IOException {
         int depth = 1;
         while (depth > 0) {
@@ -793,14 +776,6 @@ public final class TTMLParser {
                 bg.isEmpty() ? null : bg, finalBgWords);
     }
 
-    private record ParsedLine(long begin, long end, String text, List<Word> words,
-                              List<LyricsLine> bgLines,
-                              @Nullable String bgAgentId,
-                              @Nullable Map<String, String> inlineTranslations,
-                              @Nullable Map<String, String> inlineRomanizations,
-                              @Nullable Map<String, String> bgInlineTranslations,
-                              @Nullable Map<String, String> bgInlineRomanizations) {}
-
     private static ParsedLine processPElement(XmlPullParser p, long pBegin, long pEnd)
             throws XmlPullParserException, IOException {
 
@@ -959,6 +934,11 @@ public final class TTMLParser {
                             bgWords.add(new Word(bgWordBegin, bgWordEnd, text, null,
                                     endsWithSpace));
                         }
+                    } else if (inBg && bgWrapperDepth > 0) {
+                        bgWrapperDepth--;
+                    } else if (inBg) {
+                        flushBgLine(bgLines, bgWords, bgFullText, bgBeginMs, bgEndMs, pBegin, pEnd);
+                        inBg = false;
                     } else if (inRubyText && inRubyContainer) {
                         inRubyText = false;
                         final String text = normalizeText(rubyTextBuf.toString());
@@ -1046,8 +1026,8 @@ public final class TTMLParser {
             } else if (event == XmlPullParser.TEXT) {
                 final String raw = p.getText();
                 if (raw == null || raw.isEmpty()) continue;
-                final boolean formattingNewline = raw.contains("\n") && raw.trim().isEmpty();
-                final boolean spaceBetweenWords = !raw.contains("\n") && raw.trim().isEmpty();
+                final boolean isWhitespace = raw.trim().isEmpty();
+                final boolean hasNewline = raw.contains("\n");
 
                 if (inBgTranslation) {
                     bgTransBuf.append(raw);
@@ -1060,52 +1040,83 @@ public final class TTMLParser {
                 } else if (inRubyText && inRubyContainer) {
                     rubyTextBuf.append(raw);
                 } else if (inBg && bgWrapperDepth == 0) {
-                    // Formatting newlines (whitespace + \n) between BG word spans
-                    if (!formattingNewline) {
-                        bgFullText.append(raw);
-                    }
-                    // Whitespace-only (non-newline) between BG word spans
-                    if (spaceBetweenWords && !bgWords.isEmpty()) {
-                        final Word prev = bgWords.get(bgWords.size() - 1);
-                        if (!prev.endsWithSpace()) {
-                            bgWords.set(bgWords.size() - 1, new Word(
-                                    prev.startMs(), prev.endMs(),
-                                    prev.text(), prev.romaji(), true));
+                    if (isWhitespace) {
+                        if (!bgWords.isEmpty()) {
+                            final Word prev = bgWords.get(bgWords.size() - 1);
+                            final boolean cjk = isContinuousCjk(prev.text());
+                            if (!hasNewline || !cjk) {
+                                if (bgFullText.length() > 0 && bgFullText.charAt(bgFullText.length() - 1) != ' ') {
+                                    bgFullText.append(' ');
+                                }
+                                if (!prev.endsWithSpace()) {
+                                    bgWords.set(bgWords.size() - 1, new Word(
+                                            prev.startMs(), prev.endMs(),
+                                            prev.text(), prev.romaji(), true));
+                                }
+                            }
                         }
+                    } else {
+                        bgFullText.append(raw);
                     }
                 } else if (inTranslation) {
                     transBuf.append(raw);
                 } else if (inRoman) {
                     romanBuf.append(raw);
-                } else if (inWord) {
+                } else if (inWord && !inRubyContainer) {
                     wordBuf.append(raw);
-                } else if (!inBg) {
-                    // Formatting newlines (whitespace + \n) between word spans - skip entirely
-                    if (!formattingNewline) {
-                        fullText.append(raw);
-                        // Whitespace-only (non-newline) between word spans -> trailing space
-                        if (spaceBetweenWords && !words.isEmpty()) {
+                } else if (!inBg && !inRubyContainer) {
+                    if (isWhitespace) {
+                        if (!words.isEmpty()) {
                             final Word prev = words.get(words.size() - 1);
-                            if (!prev.endsWithSpace()) {
-                                words.set(words.size() - 1, new Word(
-                                        prev.startMs(), prev.endMs(),
-                                        prev.text(), prev.romaji(), true));
+                            final boolean cjk = isContinuousCjk(prev.text());
+                            if (!hasNewline || !cjk) {
+                                if (fullText.length() > 0 && fullText.charAt(fullText.length() - 1) != ' ') {
+                                    fullText.append(' ');
+                                }
+                                if (!prev.endsWithSpace()) {
+                                    words.set(words.size() - 1, new Word(
+                                            prev.startMs(), prev.endMs(),
+                                            prev.text(), prev.romaji(), true));
+                                }
                             }
                         }
+                    } else {
+                        fullText.append(raw);
                     }
                 }
             }
         }
 
-        final String lineText = normalizeText(fullText.toString());
-        if (lineText.trim().isEmpty()) {
+        final String rawLineText = normalizeText(fullText.toString());
+        String lineText = rawLineText;
+        if (lineText.indexOf(' ') < 0 && words.size() > 1 && !isContinuousCjk(words.get(0).text())) {
+            StringBuilder reconstructed = new StringBuilder();
+            for (int i = 0; i < words.size(); i++) {
+                final Word w = words.get(i);
+                if (i > 0) reconstructed.append(' ');
+                reconstructed.append(w.text());
+                final boolean shouldEndWithSpace = (i < words.size() - 1);
+                if (w.endsWithSpace() != shouldEndWithSpace) {
+                    words.set(i, new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), shouldEndWithSpace));
+                }
+            }
+            lineText = reconstructed.toString();
+        }
+
+        // A background vocal that is still open ends with its line.
+        if (inBg) {
+            flushBgLine(bgLines, bgWords, bgFullText, bgBeginMs, bgEndMs, pBegin, pEnd);
+            inBg = false;
+        }
+
+        if (lineText.trim().isEmpty() && bgLines.isEmpty()) {
             return null;
         }
 
-        // Infer time range from children when <p> has no timing
+        // The words give the line its range, so a syllable sung past the line's own end is not cut off.
         long effectiveBegin = pBegin;
         long effectiveEnd = pEnd;
-        if ((effectiveBegin == 0 || effectiveEnd == 0) && !words.isEmpty()) {
+        if (!words.isEmpty()) {
             long minStart = Long.MAX_VALUE;
             long maxEnd = 0;
             for (Word w : words) {
@@ -1120,9 +1131,12 @@ public final class TTMLParser {
                     effectiveEnd = maxEnd;
                 }
             }
+        } else if ((effectiveBegin == 0 || effectiveEnd == 0) && !bgLines.isEmpty()) {
+            effectiveBegin = bgLines.get(0).startTimeMs();
+            effectiveEnd = bgLines.get(bgLines.size() - 1).endTimeMs();
         }
 
-        if (effectiveBegin == 0 && effectiveEnd == 0 && words.isEmpty()) {
+        if (effectiveBegin == 0 && effectiveEnd == 0 && words.isEmpty() && bgLines.isEmpty()) {
             effectiveBegin = LyricsLine.NO_TIME;
             effectiveEnd = LyricsLine.NO_TIME;
         }
@@ -1145,6 +1159,11 @@ public final class TTMLParser {
             // Defensive: only reachable if an x-bg span was never closed.
             flushBgLine(bgLines, bgWords, bgFullText, bgBeginMs, bgEndMs, pBegin, pEnd);
         }
+        for (LyricsLine bg : bgLines) {
+            if (bg.endTimeMs() > effectiveEnd && effectiveEnd > 0) {
+                effectiveEnd = bg.endTimeMs();
+            }
+        }
 
         return new ParsedLine(effectiveBegin, effectiveEnd, lineText, words, bgLines,
                 bgAgentId,
@@ -1154,36 +1173,42 @@ public final class TTMLParser {
                 bgInlineRoma.isEmpty() ? null : bgInlineRoma);
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
-    private static void flushBgLine(List<LyricsLine> bgLines, List<Word> bgWords,
-                                    StringBuilder bgFullText, long bgBeginMs,
-                                    long bgEndMs, long pBegin, long pEnd) {
+    private static void flushBgLine(
+            List<LyricsLine> bgLines,
+            List<Word> bgWords,
+            StringBuilder bgFullText,
+            long bgBeginMs,
+            long bgEndMs,
+            long pBegin,
+            long pEnd) {
         if (bgWords.isEmpty() && bgFullText.length() == 0) {
             return;
         }
         String bgText = normalizeText(bgFullText.toString());
-        if (bgText.trim().isEmpty()) {
-            return;
-        }
-        bgText = bgText.replaceAll("^[(（]+", "").replaceAll("[)）]+$", "").trim();
-        if (bgText.isEmpty()) {
-            return;
-        }
-        stripBgWordParens(bgWords);
-
-        long bgStart = bgBeginMs > 0 ? bgBeginMs : pBegin;
-        long bgEnd = bgEndMs > 0 ? bgEndMs : pEnd;
-        if (bgBeginMs <= 0 && bgEndMs <= 0 && !bgWords.isEmpty()) {
-            long minStart = Long.MAX_VALUE;
-            long maxEnd = 0;
-            for (Word w : bgWords) {
-                if (w.startMs() > 0 && w.startMs() < minStart) minStart = w.startMs();
-                if (w.endMs() > 0 && w.endMs() > maxEnd) maxEnd = w.endMs();
+        if (!bgText.trim().isEmpty()) {
+            String cleanBgText = bgText.replaceAll("^[(（]+", "").replaceAll("[)）]+$", "").trim();
+            stripBgWordParens(bgWords);
+            if (cleanBgText.indexOf(' ') < 0 && bgWords.size() > 1 && !isContinuousCjk(bgWords.get(0).text())) {
+                StringBuilder reconstructed = new StringBuilder();
+                for (int i = 0; i < bgWords.size(); i++) {
+                    final Word w = bgWords.get(i);
+                    if (i > 0) reconstructed.append(' ');
+                    reconstructed.append(w.text());
+                    final boolean shouldEndWithSpace = (i < bgWords.size() - 1);
+                    if (w.endsWithSpace() != shouldEndWithSpace) {
+                        bgWords.set(i, new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), shouldEndWithSpace));
+                    }
+                }
+                cleanBgText = reconstructed.toString();
             }
-            if (minStart < Long.MAX_VALUE) bgStart = minStart;
-            if (maxEnd > 0) bgEnd = maxEnd;
+            if (!cleanBgText.isEmpty()) {
+                final long bgStart = bgBeginMs > 0 ? bgBeginMs : (bgWords.isEmpty() ? pBegin : bgWords.get(0).startMs());
+                final long bgEnd = bgEndMs > 0 ? bgEndMs : (bgWords.isEmpty() ? pEnd : bgWords.get(bgWords.size() - 1).endMs());
+                bgLines.add(new LyricsLine(bgStart, bgEnd, cleanBgText, new ArrayList<>(bgWords)));
+            }
         }
-        bgLines.add(new LyricsLine(bgStart, bgEnd, bgText, new ArrayList<>(bgWords)));
+        bgWords.clear();
+        bgFullText.setLength(0);
     }
 
     private static void stripBgWordParens(List<Word> bgWords) {
@@ -1205,8 +1230,21 @@ public final class TTMLParser {
         }
     }
 
+    public static boolean isContinuousCjk(@Nullable String s) {
+        if (s == null || s.isEmpty()) return false;
+        int cp = s.codePointBefore(s.length());
+        Character.UnicodeBlock b = Character.UnicodeBlock.of(cp);
+        return b == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
+                || b == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
+                || b == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
+                || b == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
+                || b == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION
+                || b == Character.UnicodeBlock.HIRAGANA
+                || b == Character.UnicodeBlock.KATAKANA;
+    }
+
     private static void alignRomajiToWords(List<Word> words,
-            List<RomajiSyllable> sidecar) {
+                                           List<RomajiSyllable> sidecar) {
         if (words.isEmpty() || sidecar.isEmpty()) {
             return;
         }
@@ -1264,7 +1302,7 @@ public final class TTMLParser {
 
     @Nullable
     private static List<RomajiSyllable> findSidecarRoman(String lineId,
-            Map<String, List<RomajiSyllable>> sidecarRoman) {
+                                                         Map<String, List<RomajiSyllable>> sidecarRoman) {
         final List<RomajiSyllable> exact = sidecarRoman.get(lineId);
         if (exact != null) return exact;
         for (Map.Entry<String, List<RomajiSyllable>> e : sidecarRoman.entrySet()) {
@@ -1279,10 +1317,22 @@ public final class TTMLParser {
 
     private static String buildLineRomaji(List<Word> words,
                                           @Nullable List<RomajiSyllable> sidecar) {
+        if (sidecar != null && !sidecar.isEmpty()) {
+            final StringBuilder sb = new StringBuilder();
+            for (RomajiSyllable s : sidecar) {
+                if (s.text().isEmpty()) continue;
+                sb.append(s.text());
+            }
+            final String result = sb.toString().trim();
+            if (!result.isEmpty() && LyricsRomanizer.isPurelyLatinScript(result)) {
+                return result;
+            }
+        }
+
         final StringBuilder perWord = new StringBuilder();
         boolean hasPerWord = false;
         for (Word w : words) {
-            if (w.romaji() != null && !w.romaji().isEmpty()) {
+            if (w.romaji() != null && !w.romaji().isEmpty() && LyricsRomanizer.isPurelyLatinScript(w.romaji())) {
                 hasPerWord = true;
                 break;
             }
@@ -1290,29 +1340,15 @@ public final class TTMLParser {
         if (hasPerWord) {
             for (Word w : words) {
                 String r = w.romaji();
-                if (r != null && !r.isEmpty()) {
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (perWord.length() > 0) perWord.append(' ');
+                if (r != null && !r.isEmpty() && LyricsRomanizer.isPurelyLatinScript(r)) {
                     perWord.append(r);
+                    if (w.endsWithSpace() && !r.endsWith(" ")) {
+                        perWord.append(' ');
+                    }
                 }
             }
-            //noinspection SizeReplaceableByIsEmpty
             if (perWord.length() > 0) {
-                return perWord.toString();
-            }
-        }
-
-        if (sidecar != null && !sidecar.isEmpty()) {
-            final StringBuilder sb = new StringBuilder();
-            for (RomajiSyllable s : sidecar) {
-                if (s.text().isEmpty()) continue;
-                //noinspection SizeReplaceableByIsEmpty
-                if (sb.length() > 0) sb.append(' ');
-                sb.append(s.text());
-            }
-            final String result = sb.toString().trim();
-            if (!result.isEmpty()) {
-                return result;
+                return perWord.toString().trim();
             }
         }
 
@@ -1320,10 +1356,10 @@ public final class TTMLParser {
     }
 
     private static void buildRomanizations(String lineId,
-            Map<String, List<RomajiSyllable>> sidecarRoman,
-            List<Word> words,
-            Map<String, List<LyricsLine>> romanizations,
-            int mainIndex, int bgCount) {
+                                           Map<String, List<RomajiSyllable>> sidecarRoman,
+                                           List<Word> words,
+                                           Map<String, List<LyricsLine>> romanizations,
+                                           int mainIndex, int bgCount) {
         // Keys may be "lang:lineId" or just "lineId" (no language)
         for (Map.Entry<String, List<RomajiSyllable>> entry : sidecarRoman.entrySet()) {
             final String key = entry.getKey();
@@ -1354,9 +1390,10 @@ public final class TTMLParser {
             final StringBuilder sb = new StringBuilder();
             for (Word w : alignedWords) {
                 if (w.romaji() != null && !w.romaji().isEmpty()) {
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (sb.length() > 0) sb.append(' ');
                     sb.append(w.romaji());
+                    if (w.endsWithSpace() && !w.romaji().endsWith(" ")) {
+                        sb.append(' ');
+                    }
                 }
             }
             final String text = sb.toString().trim();
@@ -1367,7 +1404,8 @@ public final class TTMLParser {
                 langLines.add(new LyricsLine(LyricsLine.NO_TIME, ""));
             }
             if (langLines.size() == mainIndex) {
-                langLines.add(new LyricsLine(LyricsLine.NO_TIME, text));
+                String lineContent = (!text.isEmpty() && LyricsRomanizer.isPurelyLatinScript(text)) ? text : "";
+                langLines.add(new LyricsLine(LyricsLine.NO_TIME, lineContent));
             }
         }
         padDerivedTo(romanizations, mainIndex + 1 + bgCount);
@@ -1385,8 +1423,8 @@ public final class TTMLParser {
     }
 
     private static void buildTranslations(String lineId,
-            Map<String, SidecarTranslation> sidecarTrans,
-            Map<String, List<LyricsLine>> translations, int mainIndex, int bgCount) {
+                                          Map<String, SidecarTranslation> sidecarTrans,
+                                          Map<String, List<LyricsLine>> translations, int mainIndex, int bgCount) {
 
         final Map<String, SidecarTranslation> mainByLang = new HashMap<>();
         final Map<String, SidecarTranslation> bgByLang = new HashMap<>();
@@ -1535,8 +1573,30 @@ public final class TTMLParser {
         return colon >= 0 ? name.substring(colon + 1) : name;
     }
 
+    private static boolean isMetaNamespace(XmlPullParser p) {
+        final String ns = p.getNamespace();
+        if (NS_AMLL.equals(ns) || NS_COMPOSER.equals(ns) || NS_COMPOSER_LEGACY.equals(ns)) {
+            return true;
+        }
+        final String raw = p.getName();
+        return raw != null && raw.startsWith("composer:");
+    }
+
+    private static void collectMetaCredit(XmlPullParser p, List<String> credits) {
+        final String ns = p.getNamespace();
+        final String key = getAttr(p, ns, "key", "key");
+        final String value = getAttr(p, ns, "value", "value");
+        if (key == null || value == null || key.isEmpty() || value.isEmpty()) {
+            return;
+        }
+        final Set<String> excluded = NS_AMLL.equals(ns) ? AMLL_EXCLUDED_KEYS : COMPOSER_EXCLUDED_KEYS;
+        if (!excluded.contains(key)) {
+            credits.add(key + ": " + value.trim());
+        }
+    }
+
     private static String getAttr(XmlPullParser p, @Nullable String ns,
-            String local, @Nullable String fallbackQName) {
+                                  String local, @Nullable String fallbackQName) {
         if (ns != null) {
             final String val = p.getAttributeValue(ns, local);
             if (val != null) return val;
@@ -1560,7 +1620,7 @@ public final class TTMLParser {
 
     @Nullable
     public static Lyrics ttmlToLyrics(String ttml, String providerName,
-            @Nullable String sourceUrl) {
+                                      @Nullable String sourceUrl) {
         if (ttml == null || ttml.isEmpty()) return null;
         TtmlResult result = parse(ttml);
         if (result == null || result.lines().isEmpty()) return null;
@@ -1575,7 +1635,7 @@ public final class TTMLParser {
 
     @Nullable
     private static List<String> combineCredits(@Nullable List<String> existing,
-            @Nullable List<String> amllCredits) {
+                                               @Nullable List<String> amllCredits) {
         if (existing == null && amllCredits == null) {
             return null;
         }
@@ -1588,5 +1648,41 @@ public final class TTMLParser {
         List<String> combined = new ArrayList<>(existing);
         combined.addAll(amllCredits);
         return combined;
+    }
+
+    private record HeadMetadata(
+            List<String> songwriters,
+            List<String> amllCredits,
+            Map<String, AgentInfo> agentTypes,
+            Map<String, List<RomajiSyllable>> sidecarRoman,
+            Map<String, SidecarTranslation> sidecarTrans) {
+    }
+
+    public record TtmlResult(List<LyricsLine> lines,
+                             @Nullable List<LyricsLine> romanization,
+                             @Nullable Map<String, List<LyricsLine>> translations,
+                             @Nullable Map<String, List<LyricsLine>> romanizations,
+                             @Nullable List<String> songwriters,
+                             @Nullable List<String> amllCreditLines,
+                             @Nullable Map<String, String> agentNames) {
+    }
+
+    private record RomajiSyllable(long startMs, long endMs, String text) {
+    }
+
+    private record AgentInfo(String type, @Nullable String name) {
+    }
+
+    private record SidecarTranslation(String text, @Nullable List<Word> words,
+                                      @Nullable String bgText, @Nullable List<Word> bgWords) {
+    }
+
+    private record ParsedLine(long begin, long end, String text, List<Word> words,
+                              List<LyricsLine> bgLines,
+                              @Nullable String bgAgentId,
+                              @Nullable Map<String, String> inlineTranslations,
+                              @Nullable Map<String, String> inlineRomanizations,
+                              @Nullable Map<String, String> bgInlineTranslations,
+                              @Nullable Map<String, String> bgInlineRomanizations) {
     }
 }

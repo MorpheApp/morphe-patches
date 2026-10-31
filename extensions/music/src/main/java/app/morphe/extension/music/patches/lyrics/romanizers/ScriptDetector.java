@@ -20,25 +20,10 @@ import java.util.List;
  */
 public final class ScriptDetector {
 
-    public enum Script {
-        /** Han with too little kana to be Japanese, which is how Chinese reads. */
-        HAN,
-        JAPANESE,
-        KOREAN,
-        CYRILLIC,
-        GEORGIAN,
-        ARMENIAN,
-        GREEK,
-        /** Latin script, digits or punctuation only: nothing here needs a romanizer. */
-        OTHER
-    }
-
     private static final Script[] SCRIPTS = Script.values();
-
     /** Kana below this, in a line of Han characters, is a loanword rather than Japanese. */
     private static final int MIN_KANA = 3;
     private static final int KANA_PER_HAN = 6;
-
     /** Hiragana is written for grammar and never for a loanword, so its count settles a line. */
     private static final int HIRAGANA = SCRIPTS.length;
     private static final int COUNTS = SCRIPTS.length + 1;
@@ -80,6 +65,14 @@ public final class ScriptDetector {
                 found[Script.ARMENIAN.ordinal()]++;
             } else if (isGreek(c)) {
                 found[Script.GREEK.ordinal()]++;
+            } else if (isHebrew(c)) {
+                found[Script.HEBREW.ordinal()]++;
+            } else if (isArabic(c)) {
+                found[Script.ARABIC.ordinal()]++;
+            } else if (isEthiopic(c)) {
+                found[Script.ETHIOPIC.ordinal()]++;
+            } else if (isSyriac(c)) {
+                found[Script.SYRIAC.ordinal()]++;
             }
         }
         return found;
@@ -99,6 +92,10 @@ public final class ScriptDetector {
         int georgian = found[Script.GEORGIAN.ordinal()];
         int armenian = found[Script.ARMENIAN.ordinal()];
         int greek = found[Script.GREEK.ordinal()];
+        int hebrew = found[Script.HEBREW.ordinal()];
+        int arabic = found[Script.ARABIC.ordinal()];
+        int ethiopic = found[Script.ETHIOPIC.ordinal()];
+        int syriac = found[Script.SYRIAC.ordinal()];
 
         if (hangul > 0 && hangul * 2 >= han + kana) return Script.KOREAN;
         // Kana with no Han at all is Japanese: nothing else that uses kana has none. Hiragana settles a
@@ -113,7 +110,62 @@ public final class ScriptDetector {
         if (cyrillic > 0) return Script.CYRILLIC;
         if (georgian > 0) return Script.GEORGIAN;
         if (armenian > 0) return Script.ARMENIAN;
-        return greek > 0 ? Script.GREEK : Script.OTHER;
+        if (greek > 0) return Script.GREEK;
+        if (hebrew > 0) return Script.HEBREW;
+        if (arabic > 0) return Script.ARABIC;
+        if (ethiopic > 0) return Script.ETHIOPIC;
+        return syriac > 0 ? Script.SYRIAC : Script.OTHER;
+    }
+
+    public static boolean contains(@Nullable CharSequence text, Character.UnicodeScript... scripts) {
+        if (text == null) return false;
+        for (int i = 0; i < text.length(); ) {
+            final int cp = Character.codePointAt(text, i);
+            i += Character.charCount(cp);
+            final Character.UnicodeScript script = Character.UnicodeScript.of(cp);
+            for (Character.UnicodeScript wanted : scripts) {
+                if (script == wanted) return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean containsKana(@Nullable CharSequence text) {
+        return contains(text, Character.UnicodeScript.HIRAGANA, Character.UnicodeScript.KATAKANA);
+    }
+
+    public static boolean containsCjk(@Nullable CharSequence text) {
+        return contains(text, Character.UnicodeScript.HAN, Character.UnicodeScript.HIRAGANA,
+                Character.UnicodeScript.KATAKANA, Character.UnicodeScript.HANGUL);
+    }
+
+    public static boolean containsRtl(@Nullable CharSequence text) {
+        return contains(text, Character.UnicodeScript.ARABIC, Character.UnicodeScript.HEBREW);
+    }
+
+    /**
+     * Checks if a line predominantly consists of RTL characters (Arabic, Hebrew, Persian, etc.).
+     * Requires RTL characters to meet or exceed LTR characters, avoiding false positives from stray symbols.
+     */
+    public static boolean isLineRtl(@Nullable CharSequence text) {
+        //noinspection SizeReplaceableByIsEmpty
+        if (text == null || text.length() == 0) {
+            return false;
+        }
+        int rtlCount = 0;
+        int ltrCount = 0;
+        final int len = text.length();
+        for (int i = 0; i < len; ) {
+            int cp = Character.codePointAt(text, i);
+            i += Character.charCount(cp);
+            byte dir = Character.getDirectionality(cp);
+            if (dir == Character.DIRECTIONALITY_RIGHT_TO_LEFT || dir == Character.DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC) {
+                rtlCount++;
+            } else if (dir == Character.DIRECTIONALITY_LEFT_TO_RIGHT) {
+                ltrCount++;
+            }
+        }
+        return rtlCount > 0 && rtlCount >= ltrCount;
     }
 
     /** The blocks a modern lyric line is written with. */
@@ -151,5 +203,45 @@ public final class ScriptDetector {
 
     static boolean isArmenian(char c) {
         return c >= 0x0530 && c <= 0x058F;
+    }
+
+    static boolean isHebrew(char c) {
+        return c >= 0x0590 && c <= 0x05FF;
+    }
+
+    static boolean isArabic(char c) {
+        return (c >= 0x0600 && c <= 0x06FF)
+                || (c >= 0x0750 && c <= 0x077F)
+                || (c >= 0x08A0 && c <= 0x08FF)
+                || (c >= 0xFB50 && c <= 0xFDFF)
+                || (c >= 0xFE70 && c <= 0xFEFF);
+    }
+
+    static boolean isEthiopic(char c) {
+        return (c >= 0x1200 && c <= 0x137F)
+                || (c >= 0x1380 && c <= 0x139F)
+                || (c >= 0x2D80 && c <= 0x2DDF)
+                || (c >= 0xAB00 && c <= 0xAB2F);
+    }
+
+    static boolean isSyriac(char c) {
+        return c >= 0x0700 && c <= 0x074F;
+    }
+
+    public enum Script {
+        /** Han with too little kana to be Japanese, which is how Chinese reads. */
+        HAN,
+        JAPANESE,
+        KOREAN,
+        CYRILLIC,
+        GEORGIAN,
+        ARMENIAN,
+        GREEK,
+        HEBREW,
+        ARABIC,
+        ETHIOPIC,
+        SYRIAC,
+        /** Latin script, digits or punctuation only: nothing here needs a romanizer. */
+        OTHER
     }
 }

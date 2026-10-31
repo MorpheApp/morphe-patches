@@ -19,19 +19,19 @@ import java.util.Map;
 /**
  * Lyrics of a single track, either synced (each line carries a timestamp) or plain.
  *
- * @param providerName Provider name shown to the user, for example {@code LRCLIB}.
- * @param translations Embedded translations keyed by BCP-47 language tag (e.g. {@code zh},
- *                     {@code en}, {@code zh-Hans}). A translation entry is a line-level list
- *                     aligned 1:1 with {@link #lines()}; an empty string marks a line with no
- *                     translation. {@code null} when the source ships none.
- * @param romanization Legacy single-language romanization, kept for backward compatibility.
+ * @param providerName  Provider name shown to the user, for example {@code LRCLIB}.
+ * @param translations  Embedded translations keyed by BCP-47 language tag (e.g. {@code zh},
+ *                      {@code en}, {@code zh-Hans}). A translation entry is a line-level list
+ *                      aligned 1:1 with {@link #lines()}; an empty string marks a line with no
+ *                      translation. {@code null} when the source ships none.
+ * @param romanization  Legacy single-language romanization, kept for backward compatibility.
  * @param romanizations Multi-language romanizations keyed by BCP-47 language tag.
- * @param songwriters Songwriter/credits names extracted from TTML metadata.
- * @param rawFormat Decrypted raw lyrics text in the provider's original format (e.g. LRC, QRC, TTML).
- * @param formatType File extension for the raw format (e.g. {@code "lrc"}, {@code "qrc"}, {@code "ttml"}).
- * @param sourceUrl Optional URL to the song page on the provider's platform, opened when the
- *                  source label is clicked.
- * @param about Song description, shown under the credits on the info line.
+ * @param songwriters   Songwriter/credits names extracted from TTML metadata.
+ * @param rawFormat     Decrypted raw lyrics text in the provider's original format (e.g. LRC, QRC, TTML).
+ * @param formatType    File extension for the raw format (e.g. {@code "lrc"}, {@code "qrc"}, {@code "ttml"}).
+ * @param sourceUrl     Optional URL to the song page on the provider's platform, opened when the
+ *                      source label is clicked.
+ * @param about         Song description, shown under the credits on the info line.
  */
 public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced,
                      @Nullable List<LyricsLine> romanization,
@@ -42,6 +42,11 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
                      @Nullable String formatType,
                      @Nullable String sourceUrl,
                      @Nullable String about) {
+
+    /** Marker for a track that was looked up successfully but has no lyrics anywhere. */
+    public static final Lyrics NOT_FOUND = new Lyrics(Collections.emptyList(), "", false,
+            null, null, null, null, null, null, null);
+    public static final String CAPTIONS_PROVIDER = "Captions";
 
     /** Every provider but Genius ships no description, so most call sites keep the shorter form. */
     public Lyrics(List<LyricsLine> lines, String providerName, boolean synced,
@@ -56,25 +61,16 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
                 songwriters, rawFormat, formatType, sourceUrl, null);
     }
 
-    public record ScoredLyrics(int score, Lyrics lyrics) {
-    }
-
-    public static List<ScoredLyrics> sortScoredByScore(List<ScoredLyrics> scored) {
-        scored.sort((a, b) -> b.score - a.score);
-        return scored;
-    }
-
-    /** Marker for a track that was looked up successfully but has no lyrics anywhere. */
-    public static final Lyrics NOT_FOUND = new Lyrics(Collections.emptyList(), "", false,
-            null, null, null, null, null, null, null);
-
-    public static final String CAPTIONS_PROVIDER = "Captions";
-
     public Lyrics {
         lines = Collections.unmodifiableList(lines);
         romanization = (romanization == null) ? null : Collections.unmodifiableList(romanization);
         translations = (translations == null) ? null : unmodifiableTranslations(translations);
         romanizations = (romanizations == null) ? null : unmodifiableTranslations(romanizations);
+    }
+
+    public static List<ScoredLyrics> sortScoredByScore(List<ScoredLyrics> scored) {
+        scored.sort((a, b) -> b.score - a.score);
+        return scored;
     }
 
     private static Map<String, List<LyricsLine>> unmodifiableTranslations(
@@ -85,64 +81,6 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
             out.put(entry.getKey(), value == null ? null : Collections.unmodifiableList(value));
         }
         return Collections.unmodifiableMap(out);
-    }
-
-    public boolean isEmpty() {
-        return lines.isEmpty();
-    }
-
-    /**
-     * Index of the line that should be highlighted at the given playback position,
-     * or -1 if playback has not reached the first line yet.
-     *
-     * <p>No binary search: between two calls the position advances by one line at most,
-     * so the hint answers almost every call in a few comparisons.
-     *
-     * @param positionMs Current playback position.
-     * @param hintIndex  Index returned by the previous call, or -1.
-     */
-    public int indexForPosition(long positionMs, int hintIndex) {
-        if (!synced || lines.isEmpty()) {
-            return -1;
-        }
-
-        final int size = lines.size();
-        int result = -1;
-
-        // Fast path: still inside the hinted line, or moved into the next one.
-        if (hintIndex >= 0 && hintIndex < size) {
-            if (positionMs >= lines.get(hintIndex).startTimeMs()) {
-                final int next = hintIndex + 1;
-                if (next >= size || positionMs < lines.get(next).startTimeMs()) {
-                    result = hintIndex;
-                } else {
-                    final int nextNext = next + 1;
-                    if (nextNext >= size || positionMs < lines.get(nextNext).startTimeMs()) {
-                        result = next;
-                    }
-                }
-            }
-        }
-
-        if (result < 0) {
-            for (int i = 0; i < size; i++) {
-                if (lines.get(i).startTimeMs() > positionMs) {
-                    break;
-                }
-                result = i;
-            }
-        }
-
-        while (result >= 0 && lines.get(result).isBG()) {
-            result--;
-        }
-        return result;
-    }
-
-    @NonNull
-    @Override
-    public String toString() {
-        return "Lyrics{" + providerName + ", synced=" + synced + ", lines=" + lines.size() + "}";
     }
 
     public static List<LyricsLine> fixAnomalousWordTimestamps(List<LyricsLine> lines) {
@@ -275,5 +213,66 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
             }
         }
         return Collections.unmodifiableList(out);
+    }
+
+    public boolean isEmpty() {
+        return lines.isEmpty();
+    }
+
+    /**
+     * Index of the line that should be highlighted at the given playback position,
+     * or -1 if playback has not reached the first line yet.
+     *
+     * <p>No binary search: between two calls the position advances by one line at most,
+     * so the hint answers almost every call in a few comparisons.
+     *
+     * @param positionMs Current playback position.
+     * @param hintIndex  Index returned by the previous call, or -1.
+     */
+    public int indexForPosition(long positionMs, int hintIndex) {
+        if (!synced || lines.isEmpty()) {
+            return -1;
+        }
+
+        final int size = lines.size();
+        int result = -1;
+
+        // Fast path: still inside the hinted line, or moved into the next one.
+        if (hintIndex >= 0 && hintIndex < size) {
+            if (positionMs >= lines.get(hintIndex).startTimeMs()) {
+                final int next = hintIndex + 1;
+                if (next >= size || positionMs < lines.get(next).startTimeMs()) {
+                    result = hintIndex;
+                } else {
+                    final int nextNext = next + 1;
+                    if (nextNext >= size || positionMs < lines.get(nextNext).startTimeMs()) {
+                        result = next;
+                    }
+                }
+            }
+        }
+
+        if (result < 0) {
+            for (int i = 0; i < size; i++) {
+                if (lines.get(i).startTimeMs() > positionMs) {
+                    break;
+                }
+                result = i;
+            }
+        }
+
+        while (result >= 0 && lines.get(result).isBG()) {
+            result--;
+        }
+        return result;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Lyrics{" + providerName + ", synced=" + synced + ", lines=" + lines.size() + "}";
+    }
+
+    public record ScoredLyrics(int score, Lyrics lyrics) {
     }
 }

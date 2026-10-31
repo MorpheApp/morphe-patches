@@ -82,13 +82,18 @@ internal object FeedPostTitleSectionToStringFingerprint : Fingerprint(
 )
 
 /**
- * Reddit's mapper that creates a flair element with a single flair.
+ * Reddit's mapper that creates a flair element with a single flair from a GraphQL fragment.
+ * The feed post mapper creates it the same way, but has no community placeholder strings.
  */
 internal fun postFlairsElementMapperFingerprint(
     presentationModelType: String,
     flairsElementType: String
 ) = Fingerprint(
     returnType = flairsElementType,
+    strings = listOf(
+        "subredditName",
+        "subredditId"
+    ),
     filters = listOf(
         methodCall(
             definingClass = presentationModelType,

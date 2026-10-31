@@ -18,31 +18,20 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_entry_1">បានផ្ដាច់</string>
+  <!-- misc.settings.settingsPatch -->
   <!-- misc.initialization.initializationPatch -->
   <!-- layout.branding.baseCustomBrandingPatch -->
-  <string name="morphe_custom_branding_name_title">ឈ្មោះកម្មវិធី</string>
   <!-- layout.theme.baseThemePatch -->
-  <string name="morphe_theme_color_custom_entry">ផ្ទាល់ខ្លួន</string>
   <!-- interaction.downloads.downloadsPatch -->
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
-  <string name="morphe_custom_branding_name_entry_5">ផ្ទាល់ខ្លួន</string>
-  <string name="morphe_custom_branding_icon_title">អាយខនកម្មវិធី</string>
-  <string name="morphe_custom_branding_icon_entry_1">ច្បាប់ដើម</string>
-  <string name="morphe_custom_branding_icon_entry_2">Morphe ខ្មៅ</string>
-  <string name="morphe_custom_branding_icon_entry_3">Morphe ងងឹត</string>
-  <string name="morphe_custom_branding_icon_entry_4">Morphe ភ្លឺ</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_7">ផ្ទាល់ខ្លួន</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
-  <string name="morphe_check_watch_history_domain_name_dialog_title">កំណត់សម្គាល់ Morphe</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_client_type_title">អតិថូបករណ៍បុរេជម្រើស</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->

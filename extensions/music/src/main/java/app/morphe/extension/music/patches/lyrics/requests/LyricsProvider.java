@@ -25,6 +25,34 @@ public interface LyricsProvider {
      */
     String name();
 
+    /**
+     * Fetches lyrics. Always called off the main thread.
+     *
+     * @return result, or {@code null} if this provider has none for the track.
+     */
+    @Nullable
+    FetchResult fetch(TrackInfo track) throws Exception;
+
+    /**
+     * Returns scored candidate lyrics for the track, the best first.
+     * Scores use the shared match+sync scale from {@link LyricsRequests}.
+     */
+    default List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+        FetchResult result = fetch(track);
+        if (result == null || result.lyrics() == null || result.lyrics() == Lyrics.NOT_FOUND) {
+            return Collections.emptyList();
+        }
+        int score = result.matchScore(track) + LyricsRequests.syncRank(result.lyrics());
+        return Collections.singletonList(new Lyrics.ScoredLyrics(score, result.lyrics()));
+    }
+
+    /**
+     * Whether this provider supports multiple candidates per track.
+     */
+    default boolean hasCandidates() {
+        return false;
+    }
+
     record FetchResult(Lyrics lyrics,
                        @Nullable String sourceTitle,
                        @Nullable String sourceArtist,
@@ -66,6 +94,34 @@ public interface LyricsProvider {
             return new FetchResult(lyrics, title, artist, durationSec, queriedVariant, false);
         }
 
+        @Nullable
+        public static FetchResult searched(@Nullable Lyrics lyrics,
+                                           @Nullable List<String> titles,
+                                           @Nullable List<String> artists,
+                                           long durationSec, TrackInfo track) {
+            if (lyrics == null) {
+                return null;
+            }
+            if (titles == null || titles.isEmpty()) {
+                return blind(lyrics);
+            }
+            final List<String> artistNames =
+                    artists == null || artists.isEmpty() ? List.of("") : artists;
+            for (String title : titles) {
+                if (title == null || title.isEmpty()) {
+                    continue;
+                }
+                for (String artist : artistNames) {
+                    FetchResult result = new FetchResult(lyrics, title,
+                            artist == null ? "" : artist, durationSec, null, false);
+                    if (result.isHighMatch(track)) {
+                        return result;
+                    }
+                }
+            }
+            return blind(lyrics);
+        }
+
         public int matchScore(TrackInfo track) {
             if (sourceTitle != null && !sourceTitle.isEmpty()) {
                 LyricsRequests.MatchVerdict v = LyricsRequests.evaluate(sourceTitle, sourceArtist,
@@ -104,61 +160,5 @@ public interface LyricsProvider {
                     && queriedVariant == null
                     && !videoIdKeyed;
         }
-
-        @Nullable
-        public static FetchResult searched(@Nullable Lyrics lyrics,
-                                           @Nullable List<String> titles,
-                                           @Nullable List<String> artists,
-                                           long durationSec, TrackInfo track) {
-            if (lyrics == null) {
-                return null;
-            }
-            if (titles == null || titles.isEmpty()) {
-                return blind(lyrics);
-            }
-            final List<String> artistNames =
-                    artists == null || artists.isEmpty() ? List.of("") : artists;
-            for (String title : titles) {
-                if (title == null || title.isEmpty()) {
-                    continue;
-                }
-                for (String artist : artistNames) {
-                    FetchResult result = new FetchResult(lyrics, title,
-                            artist == null ? "" : artist, durationSec, null, false);
-                    if (result.isHighMatch(track)) {
-                        return result;
-                    }
-                }
-            }
-            return blind(lyrics);
-        }
-    }
-
-    /**
-     * Fetches lyrics. Always called off the main thread.
-     *
-     * @return result, or {@code null} if this provider has none for the track.
-     */
-    @Nullable
-    FetchResult fetch(TrackInfo track) throws Exception;
-
-    /**
-     * Returns scored candidate lyrics for the track, the best first.
-     * Scores use the shared match+sync scale from {@link LyricsRequests}.
-     */
-    default List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
-        FetchResult result = fetch(track);
-        if (result == null || result.lyrics() == null || result.lyrics() == Lyrics.NOT_FOUND) {
-            return Collections.emptyList();
-        }
-        int score = result.matchScore(track) + LyricsRequests.syncRank(result.lyrics());
-        return Collections.singletonList(new Lyrics.ScoredLyrics(score, result.lyrics()));
-    }
-
-    /**
-     * Whether this provider supports multiple candidates per track.
-     */
-    default boolean hasCandidates() {
-        return false;
     }
 }

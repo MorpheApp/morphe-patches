@@ -15,8 +15,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
-import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.hookVideoStarted
 import app.morphe.patches.youtube.shared.startVideoInformerPatch
@@ -35,21 +33,12 @@ internal val autoCaptionsPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         startVideoInformerPatch,
-        versionCheckPatch,
         videoInformationPatch
     )
 
     execute {
         settingsMenuCaptionGroup.add(
-            if (is_20_26_or_greater) {
-                ListPreference("morphe_auto_captions_style")
-            } else {
-                ListPreference(
-                    key = "morphe_auto_captions_style",
-                    entriesKey = "morphe_auto_captions_style_legacy_entries",
-                    entryValuesKey = "morphe_auto_captions_style_legacy_entry_values"
-                )
-            }
+            ListPreference("morphe_auto_captions_style")
         )
 
         SubtitleManagerFingerprint.let {
@@ -71,14 +60,12 @@ internal val autoCaptionsPatch = bytecodePatch(
 
         hookVideoStarted("$EXTENSION_CLASS->videoInformationLoaded()V")
 
-        if (is_20_26_or_greater) {
-            NoVolumeCaptionsFeatureFlagFingerprint.matchAll().forEach {
-                // 21.30+ inlines the flag lookup and must patch ~4 places.
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->disableMuteAutoCaptions(Z)Z"
-                )
-            }
+        NoVolumeCaptionsFeatureFlagFingerprint.matchAll().forEach {
+            // 21.30+ inlines the flag lookup and must patch ~4 places.
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->disableMuteAutoCaptions(Z)Z"
+            )
         }
     }
 }

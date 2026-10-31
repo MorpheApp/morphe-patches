@@ -31,6 +31,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
+import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
 
@@ -171,8 +172,9 @@ public class MusicActivityHook extends BaseActivityHook {
      * @return if the original activity finish method should be allowed to run.
      */
     @SuppressWarnings("unused")
-    public static boolean handleFinish() {
-        return MusicSearchViewController.handleFinish(searchViewController);
+    public static boolean handleFinish(Activity activity) {
+        return MusicSearchViewController.handleFinish(searchViewController)
+                || AbstractPreferenceFragment.showRestartDialogIfNeeded(activity);
     }
 
     /**

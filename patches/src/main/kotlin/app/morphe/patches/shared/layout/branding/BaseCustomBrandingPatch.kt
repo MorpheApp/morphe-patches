@@ -24,6 +24,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.folderOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
+import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
@@ -40,7 +41,7 @@ import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.removeFromParent
-import app.morphe.util.returnEarly
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
@@ -109,6 +110,38 @@ private val notificationIconPngDirectories = mapOf(
     "drawable-xxxhdpi" to "96x96 px",
 )
 
+/**
+ * The icon files of the custom icon folder at [path], each in the resource folder it goes to, or
+ * null when the folder has none or holds only part of the adaptive icon in a density.
+ * The reason is logged, as a failed option validation does not say what is wrong.
+ */
+private fun customIconFiles(path: String): List<File>? {
+    val folder = File(path.trim())
+    if (!folder.isDirectory) {
+        logger.warning("Custom icon path is not a folder: ${folder.absolutePath}")
+        return null
+    }
+
+    val adaptiveIcons = mipmapDirectories.keys.flatMap { density ->
+        val layers = USER_CUSTOM_ADAPTIVE_FILE_NAMES.map { folder.resolve("$density/$it") }.filter(File::isFile)
+        if (layers.isNotEmpty() && layers.size != USER_CUSTOM_ADAPTIVE_FILE_NAMES.size) {
+            logger.warning("Custom icon folder $density must contain all of " +
+                    "${USER_CUSTOM_ADAPTIVE_FILE_NAMES.joinToString()} but only has ${layers.joinToString { it.name }}")
+            return null
+        }
+        layers
+    }
+    val optionalIcons = listOf(
+        "drawable/$USER_CUSTOM_MONOCHROME_FILE_NAME",
+        "drawable/$USER_CUSTOM_NOTIFICATION_ICON_XML_FILE_NAME"
+    ) + notificationIconPngDirectories.keys.map { "$it/$USER_CUSTOM_NOTIFICATION_ICON_PNG_FILE_NAME" }
+
+    return (adaptiveIcons + optionalIcons.map(folder::resolve).filter(File::isFile)).ifEmpty {
+        logger.warning("Custom icon folder has none of the expected icon files: ${folder.absolutePath}")
+        null
+    }
+}
+
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/CustomBrandingPatch;"
 
 // Must be named in the 'app.morphe' namespace, otherwise the log is not published.
@@ -116,6 +149,10 @@ private val logger = Logger.getLogger(ResourcePatchContext::class.java.name)
 
 /**
  * Shared custom branding patch for YouTube and YT Music.
+ *
+ * @param appLauncherIconNames Launcher icons of the app that can be selected in the app settings,
+ * as the icon style name and the mipmap resource name. They are not patch option values,
+ * because older app versions do not have them.
  */
 internal fun baseCustomBrandingPatch(
     originalLauncherIconName: String,
@@ -128,6 +165,7 @@ internal fun baseCustomBrandingPatch(
     mainActivityName: String,
     activityAliasNameWithIntents: String,
     preferenceScreen: BasePreferenceScreen.Screen,
+    appLauncherIconNames: () -> Map<String, String> = { emptyMap() },
     block: ResourcePatchBuilder.() -> Unit,
     executeBlock: ResourcePatchContext.() -> Unit = {}
 ): ResourcePatch = resourcePatch(
@@ -174,7 +212,9 @@ internal fun baseCustomBrandingPatch(
             - PNG raster images placed in the matching 'drawable-<dpi>' folders:
               ${notificationIconPngDirectories.map { (dpi, dim) -> "- $dpi/$USER_CUSTOM_NOTIFICATION_ICON_PNG_FILE_NAME ($dim)" }.joinToString("\n")}
         """
-    )
+    ) {
+        it == null || customIconFiles(it) != null
+    }
 
     val appIconStyle by stringOption(
         key = "appIcon",
@@ -201,6 +241,9 @@ internal fun baseCustomBrandingPatch(
         fixRecycledBitmapPatch,
         bytecodePatch {
             execute {
+                // Custom branding changes the default splash screen style to the Morphe animation.
+                setExtensionIsPatchIncluded(EXTENSION_CLASS)
+
                 mainActivityOnCreateFingerprint.method.addInstruction(
                     0,
                     "invoke-static { }, $EXTENSION_CLASS->setBranding()V"
@@ -407,6 +450,21 @@ internal fun baseCustomBrandingPatch(
                             )
                         }
 
+                        // Launcher icons of the app. Not enabled here, because they can only be
+                        // selected in the app settings.
+                        appLauncherIconNames().forEach { (style, iconMipmapName) ->
+                            application.appendChild(
+                                createAlias(
+                                    aliasName = aliasName(style),
+                                    iconMipmapName = iconMipmapName,
+                                    appNameIndex = appNameIndex,
+                                    useCustomName = useCustomNameLabel,
+                                    enabled = false,
+                                    intentFilters
+                                )
+                            )
+                        }
+
                         // User provided custom icon.
                         //
                         // Must add all aliases even if the user did not provide a custom icon of their own.
@@ -485,12 +543,15 @@ internal fun baseCustomBrandingPatch(
             ListPreference("morphe_custom_branding_name")
         }
 
+        // YouTube 21.41+ also has launcher icons of its own.
+        val arrayKeySuffix = if (appLauncherIconNames().isEmpty()) "" else "_21_41"
+
         if (useCustomIcon) {
             preferences += ListPreference(
                 key = "morphe_custom_branding_icon",
                 tag = "app.morphe.extension.shared.settings.preference.IconListPreference",
-                entriesKey = "morphe_custom_branding_icon_custom_entries",
-                entryValuesKey = "morphe_custom_branding_icon_custom_entry_values"
+                entriesKey = "morphe_custom_branding_icon${arrayKeySuffix}_custom_entries",
+                entryValuesKey = "morphe_custom_branding_icon${arrayKeySuffix}_custom_entry_values"
             )
             preferences += ListPreference(
                 key = "morphe_custom_branding_notification_icon",
@@ -501,7 +562,9 @@ internal fun baseCustomBrandingPatch(
         } else {
             preferences += ListPreference(
                 key = "morphe_custom_branding_icon",
-                tag = "app.morphe.extension.shared.settings.preference.IconListPreference"
+                tag = "app.morphe.extension.shared.settings.preference.IconListPreference",
+                entriesKey = "morphe_custom_branding_icon${arrayKeySuffix}_entries",
+                entryValuesKey = "morphe_custom_branding_icon${arrayKeySuffix}_entry_values"
             )
             preferences += ListPreference(
                 key = "morphe_custom_branding_notification_icon",
@@ -542,17 +605,6 @@ internal fun baseCustomBrandingPatch(
             )
         )
 
-        // Startup animation of each launcher foreground, played by the app hooks
-        // in place of the original one.
-        copyResources(
-            "custom-branding",
-            ResourceGroup(
-                "raw",
-                "morphe_startup_animation.json",
-                "morphe_startup_animation_play.json"
-            )
-        )
-
         // Copy template icon files.
         mipmapDirectories.keys.forEach { dpi ->
             copyResources(
@@ -568,97 +620,11 @@ internal fun baseCustomBrandingPatch(
         // Copy the user provided icon files here and not in the finalize block, because a mounted
         // installation uses them to replace the icon of the app and that is done while finalizing.
         if (useCustomIcon) {
-            // Copy user provided files
-            val iconPathFile = File(customIcon!!.trim())
-
-            if (!iconPathFile.exists()) {
-                throw PatchException(
-                    "The custom icon path cannot be found: " + iconPathFile.absolutePath
-                )
-            }
-
-            if (!iconPathFile.isDirectory) {
-                throw PatchException(
-                    "The custom icon path must be a folder: " + iconPathFile.absolutePath
-                )
-            }
-
-            val resourceDirectory = get("res")
-            var copiedFiles = false
-
-            // For each source folder, copy the files to the target resource directories.
-            iconPathFile.listFiles {
-                    file -> file.isDirectory && file.name in mipmapDirectories
-            }!!.forEach { dpiSourceFolder ->
-                val targetDpiFolder = resourceDirectory.resolve(dpiSourceFolder.name)
-                if (!targetDpiFolder.exists()) {
-                    // Should never happen.
-                    throw IllegalStateException("Resource not found: $dpiSourceFolder")
-                }
-
-                val customFiles = dpiSourceFolder.listFiles { file ->
-                    file.isFile && file.name in USER_CUSTOM_ADAPTIVE_FILE_NAMES
-                }!!
-
-                if (customFiles.isNotEmpty() && customFiles.size != USER_CUSTOM_ADAPTIVE_FILE_NAMES.size) {
-                    throw PatchException("Must include all required icon files " +
-                            "but only found " + customFiles.map { it.name })
-                }
-
-                customFiles.forEach { imgSourceFile ->
-                    val imgTargetFile = targetDpiFolder.resolve(imgSourceFile.name)
-                    imgSourceFile.copyTo(target = imgTargetFile, overwrite = true)
-
-                    copiedFiles = true
-                }
-            }
-
-            // Copy monochrome icon if provided.
-            val drawableSourceFolder = iconPathFile.resolve("drawable")
-            if (drawableSourceFolder.exists()) {
-                val monochromeFile = drawableSourceFolder.resolve(USER_CUSTOM_MONOCHROME_FILE_NAME)
-                if (monochromeFile.exists()) {
-                    monochromeFile.copyTo(
-                        target = resourceDirectory.resolve("drawable/$USER_CUSTOM_MONOCHROME_FILE_NAME"),
-                        overwrite = true
-                    )
-                    copiedFiles = true
-                }
-
-                // XML vector notification icon.
-                val notificationXml = drawableSourceFolder.resolve(USER_CUSTOM_NOTIFICATION_ICON_XML_FILE_NAME)
-                if (notificationXml.exists()) {
-                    notificationXml.copyTo(
-                        target = resourceDirectory.resolve("drawable/$USER_CUSTOM_NOTIFICATION_ICON_XML_FILE_NAME"),
-                        overwrite = true
-                    )
-                    copiedFiles = true
-                }
-            }
-
-            // PNG notification icons.
-            // If any DPI folder is present, copy what's available.
-            iconPathFile.listFiles { file ->
-                file.isDirectory && file.name in notificationIconPngDirectories
-            }!!.forEach { dpiSourceFolder ->
-                val pngFile = dpiSourceFolder.resolve(USER_CUSTOM_NOTIFICATION_ICON_PNG_FILE_NAME)
-                if (pngFile.exists()) {
-                    val targetFolder = resourceDirectory.resolve(dpiSourceFolder.name)
-                    if (!targetFolder.exists()) {
-                        throw IllegalStateException("Resource directory not found: ${dpiSourceFolder.name}")
-                    }
-                    pngFile.copyTo(
-                        target = targetFolder.resolve(USER_CUSTOM_NOTIFICATION_ICON_PNG_FILE_NAME),
-                        overwrite = true
-                    )
-                    copiedFiles = true
-                }
-            }
-
-            if (!copiedFiles) {
-                throw PatchException("Expected to find directories and files: "
-                        + USER_CUSTOM_ADAPTIVE_FILE_NAMES.contentToString()
-                        + "\nBut none were found in the provided option file path: " + iconPathFile.absolutePath)
+            // Reading the option already checked the folder, see customIconFiles
+            customIconFiles(customIcon!!)!!.forEach { file ->
+                val targetFile = this["res/${file.parentFile.name}/${file.name}"]
+                targetFile.parentFile.mkdirs()
+                file.copyTo(targetFile, overwrite = true)
             }
         }
 
@@ -750,22 +716,6 @@ private fun hasMountedNotificationIcon(iconStyle: String, customIcon: String?): 
 }
 
 /**
- * The resource directories of a type, such as 'drawable' and every 'drawable-<qualifier>',
- * with the files of the name in them decoded.
- *
- * @param fileName The name of the files to decode, which can use wildcards.
- */
-private fun ResourcePatchContext.resourceDirectories(resourceType: String, fileName: String): List<File> {
-    decode("res/$resourceType/$fileName", "res/$resourceType-*/$fileName")
-
-    val directories = get("res").listFiles { file ->
-        file.isDirectory && (file.name == resourceType || file.name.startsWith("$resourceType-"))
-    } ?: throw PatchException("Could not find the app resources")
-
-    return directories.asList()
-}
-
-/**
  * The icon style to use, resolving the 'Automatic' option value.
  */
 private fun resolveIconStyle(appIconStyle: String?, customIcon: String?): String =
@@ -829,11 +779,9 @@ private fun Element.isLauncherEntry(): Boolean =
 private fun ResourcePatchContext.setAppNameResource(resourceName: String, appName: String): Boolean {
     var defaultAppNameSet = false
 
-    resourceDirectories("values", "strings.xml").forEach { valuesDirectory ->
-        if (!valuesDirectory.resolve("strings.xml").exists()) return@forEach
-
-        this["res/${valuesDirectory.name}/strings.xml"].editText { text ->
-            if (valuesDirectory.name != "values") {
+    listDecodableFiles("res/values*/strings.xml").forEach { path ->
+        this[path].editText { text ->
+            if (path != "res/values/strings.xml") {
                 return@editText text.removeStringResource(resourceName)
             }
 
@@ -890,12 +838,10 @@ private fun ResourcePatchContext.setNotificationIconResource(
 
     var removedIcons = 0
 
-    resourceDirectories("drawable", "$originalNotificationIconName.*").forEach { drawableDirectory ->
-        drawableDirectory.listFiles { file ->
-            file.isFile && file.nameWithoutExtension == originalNotificationIconName
-        }?.forEach { iconFile ->
-            if (iconFile.delete()) removedIcons++
-        }
+    val iconsToDelete = listDecodableFiles("res/drawable*/$originalNotificationIconName.*")
+    iconsToDelete.forEach { path ->
+        delete(path)
+        removedIcons++
     }
 
     if (removedIcons == 0) {
@@ -907,19 +853,17 @@ private fun ResourcePatchContext.setNotificationIconResource(
         return false
     }
 
-    val resourceDirectory = get("res")
-
     if (vectorIcon != null) {
-        val drawableDirectory = resourceDirectory.resolve("drawable")
-        drawableDirectory.mkdirs()
-        drawableDirectory.resolve("$originalNotificationIconName.xml").writeBytes(vectorIcon)
+        val targetFile = this["res/drawable/$originalNotificationIconName.xml"]
+        targetFile.parentFile.mkdirs()
+        targetFile.writeBytes(vectorIcon)
     }
 
     rasterIcons.forEach { (dpi, sourceFile) ->
-        val targetDirectory = resourceDirectory.resolve(dpi)
-        targetDirectory.mkdirs()
+        val targetFile = this["res/$dpi/$originalNotificationIconName.png"]
+        targetFile.parentFile.mkdirs()
         sourceFile.copyTo(
-            target = targetDirectory.resolve("$originalNotificationIconName.png"),
+            target = targetFile,
             overwrite = true
         )
     }
@@ -960,13 +904,10 @@ private fun ResourcePatchContext.setLauncherIconResource(
     var replacedIcons = 0
 
     iconReferences.forEach { (resourceType, resourceName) ->
-        resourceDirectories(resourceType, "$resourceName.xml").forEach { typeDirectory ->
+        listDecodableFiles("res/$resourceType*/$resourceName.xml").forEach { path ->
             // Only the adaptive icon is replaced. A raster icon of the same name is used by
             // Android 7 and older, which the target apps no longer support.
-            val iconFile = typeDirectory.resolve("$resourceName.xml")
-            if (!iconFile.exists()) return@forEach
-
-            iconFile.writeBytes(bundledIcon)
+            this[path].writeBytes(bundledIcon)
             replacedIcons++
         }
     }

@@ -21,7 +21,6 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.ButtonVisibility;
-import kotlin.Unit;
 
 public class SponsorBlockViewController {
     public static final int ROUNDED_LAYOUT_MARGIN = 12;
@@ -41,7 +40,6 @@ public class SponsorBlockViewController {
     static {
         PlayerType.getOnChange().addObserver((PlayerType type) -> {
             playerTypeChanged(type);
-            return Unit.INSTANCE;
         });
     }
 
@@ -255,7 +253,10 @@ public class SponsorBlockViewController {
             canShowViewElements = (isWatchFullScreen || playerType == PlayerType.WATCH_WHILE_MAXIMIZED);
 
             NewSegmentLayout newSegmentLayout = newSegmentLayoutRef.get();
-            setNewSegmentLayoutMargins(newSegmentLayout, isWatchFullScreen);
+            if (newSegmentLayout != null) {
+                setLayoutMargins(newSegmentLayout, isWatchFullScreen,
+                        newSegmentLayout.defaultBottomMargin, newSegmentLayout.ctaBottomMargin);
+            }
             setViewVisibility(newSegmentLayout, newSegmentLayoutVisible);
 
             SkipSponsorButton skipHighlightButton = skipHighlightButtonRef.get();
@@ -270,11 +271,6 @@ public class SponsorBlockViewController {
         }
     }
 
-    private static void setNewSegmentLayoutMargins(@Nullable NewSegmentLayout layout, boolean fullScreen) {
-         if (layout != null) {
-            setLayoutMargins(layout, fullScreen, layout.defaultBottomMargin, layout.ctaBottomMargin);
-        }
-    }
     private static void setSkipButtonMargins(@Nullable SkipSponsorButton button, boolean fullScreen) {
         if (button != null) {
             setLayoutMargins(button, fullScreen, button.defaultBottomMargin, button.ctaBottomMargin);

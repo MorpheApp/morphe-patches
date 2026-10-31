@@ -141,6 +141,7 @@ public final class SponsorBlockApi {
         @NonNull StringSetting  apiUrl();
 
         @Nullable BooleanSetting videoLengthWithoutSegments();
+        @Nullable BooleanSetting offlineSegments();
         @Nullable BooleanSetting toastOnWhitelistedChannel();
         @Nullable BooleanSetting autoHideSkipButton();
         @Nullable BooleanSetting userIsVip();

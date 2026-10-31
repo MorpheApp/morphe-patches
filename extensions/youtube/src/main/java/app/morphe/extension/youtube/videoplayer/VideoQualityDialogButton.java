@@ -48,7 +48,6 @@ import app.morphe.extension.youtube.patches.VideoInformation.VideoQualityInterfa
 import app.morphe.extension.youtube.patches.playback.quality.RememberVideoQualityPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
-import kotlin.Unit;
 
 @SuppressWarnings("unused")
 public class VideoQualityDialogButton {
@@ -64,7 +63,6 @@ public class VideoQualityDialogButton {
     static {
         VideoInformation.onQualityChange.addObserver((@Nullable VideoQualityInterface quality) -> {
             updateButtonText(quality);
-            return Unit.INSTANCE;
         });
     }
 
@@ -145,7 +143,7 @@ public class VideoQualityDialogButton {
                     if (resolution != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE &&
                             resolution <= defaultResolution) {
                         Logger.printDebug(() -> "Resetting quality to: " + quality);
-                        VideoInformation.changeQuality(quality);
+                        VideoInformation.changeQuality(RememberVideoQualityPatch.getPlayableQuality(quality));
                         return true;
                     }
                 }
@@ -297,7 +295,8 @@ public class VideoQualityDialogButton {
             // Create ListView for quality selection.
             ListView listView = new ListView(context);
             CustomQualityAdapter adapter = new CustomQualityAdapter(context, qualityLabels);
-            adapter.setSelectedPosition(listViewSelectedIndex);
+            adapter.selectedPosition = listViewSelectedIndex;
+            adapter.notifyDataSetChanged();
             listView.setAdapter(adapter);
             listView.setDivider(null);
 
@@ -308,9 +307,8 @@ public class VideoQualityDialogButton {
             listView.setOnItemClickListener((parent, view, which, id) -> {
                 try {
                     final int originalIndex = which + 1; // Adjust for automatic.
-                    VideoQualityInterface selectedQuality = currentQualities[originalIndex];
-                    RememberVideoQualityPatch.userChangedQuality(selectedQuality.patch_getResolution());
-                    VideoInformation.changeQuality(selectedQuality);
+                    VideoInformation.changeQuality(
+                            RememberVideoQualityPatch.userChangedQuality(currentQualities[originalIndex]));
 
                     dialog.dismiss();
                 } catch (Exception ex) {
@@ -347,11 +345,6 @@ public class VideoQualityDialogButton {
 
         public CustomQualityAdapter(@NonNull Context context, @NonNull List<String> objects) {
             super(context, 0, objects);
-        }
-
-        private void setSelectedPosition(int position) {
-            this.selectedPosition = position;
-            notifyDataSetChanged();
         }
 
         @NonNull

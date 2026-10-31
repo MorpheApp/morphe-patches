@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Başlangıç animasyonu</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Devre dışı</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Renkli</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Tek renk</string>
+  <string name="morphe_splash_screen_style_title">Başlangıç animasyonu</string>
+  <string name="morphe_splash_screen_style_entry_1">Devre dışı</string>
+  <string name="morphe_splash_screen_style_entry_2">Renkli</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Renkli</string>
+  <string name="morphe_splash_screen_style_entry_4">Tek Renk</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Tek Renk</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Yeni ayarları vurgula</string>
+  <string name="morphe_settings_new_indicator_days_summary">Bir güncelleme ile eklenen ayar ve seçeneklerin yanında bir noktanın gösterileceği gün sayısı</string>
+  <string name="morphe_settings_new_indicator_days_off">Kapalı</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Kurulumu tamamlamak için yeniden başlatın</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -150,6 +156,13 @@ Oturum açmak için, devam et butonuna basın."</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Medya bildirimi, kilit ekranı ve kulaklık kontrollerindeki Önceki ve Sonraki butonlarını gizler</string>
   <string name="morphe_disable_notification_media_seekbar_title">İlerleme çubuğunu devre dışı bırak</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Bildirim panelindeki ve kilit ekranındaki ilerleme çubuğunu sürüklemeyi engeller</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Önceki &amp; Sonraki düğmeleriyle sardırma</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Medya bildirimi, kilit ekranı ve kulaklık kontrollerinin videoları değiştirmek yerine sardırma yapmasını sağlar</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Geri sarma süresi</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Önceki düğmesiyle geri sarılacak saniye sayısı</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">İleri sarma süresi</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Sonraki düğmesiyle ileri sarılacak saniye sayısı</string>
+  <string name="morphe_seek_notification_media_length_invalid">Sardırma süresi 1 ile %s saniye arasında olmalıdır. Varsayılan kullanılıyor</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolünü devre dışı bırak</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -282,9 +295,9 @@ Daha sonra bu özellik kapatılırsa, arayüz hatalarını önlemek için uygula
   <string name="morphe_ryd_estimated_like_summary">İçerik üreticisinin beğenmeleri kapattığı videolarda tahmini bir beğeni sayısı gösterir</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Bağlantı hatası uyarılarını göster</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike sunucusu kullanılamadığında bir bildirim gösterir</string>
-  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike, YouTube'un 2021'de gizlediği dislike sayılarını geri getirir. Sayılar, kaldırma işleminden önce arşivlenen verilerden gelir ve daha yeni videolar için kullanıcıların oylarından tahmin edilir, bu nedenle yaklaşıktır ve birkaç günde bir güncellenir.
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike, YouTube'nin 2021 yılında gizlediği beğenilmeme sayılarını geri getirir. Sayılar, kaldırılmasından önce arşivlenen verilerden gelir ve yeni videolar için kullanıcılarının oylarından tahmin edilir, bu nedenle yaklaşık sayılardır ve her birkaç gün güncellenir
 
-İzlediğiniz videonun kimliği Return YouTube Dislike API'sine gönderilir ve beğenileriniz ve beğenmeme işlemleriniz, tahminleri iyileştirmek için anonim olarak gönderilir.}],\"action\":\"translate\"}"</string>
+İzlediğiniz videonun kimliği Return YouTube Dislike API'sine gönderilir, ayrıca tahminleri iyileştirmek için beğeni ve beğenmeme işlemleriniz anonim olarak gönderilir"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Bu cihazın Return YouTube Dislike API istatistikleri</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API yanıt süresi, ortalama</string>

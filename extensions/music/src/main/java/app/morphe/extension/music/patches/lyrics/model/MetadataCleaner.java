@@ -49,6 +49,10 @@ public final class MetadataCleaner {
     private static final ConcurrentMap<String, ResolveTask> pendingResolves = new ConcurrentHashMap<>();
     private static final ExecutorService resolveExecutor = Executors.newFixedThreadPool(1);
     private static final ConcurrentMap<String, Pattern> compiledPatterns = new ConcurrentHashMap<>();
+    private static final String DASH_SEPARATOR = " - ";
+    private static final String[] ARTIST_SEPARATORS =
+            {" & ", ", ", " x ", " X ", " feat. ", " feat ", " ft. ", " ft ", " с ", " 和 ", "/", "×"};
+    private static final Pattern WHITESPACE = Pattern.compile("\\s+");
 
     private MetadataCleaner() {
     }
@@ -89,13 +93,6 @@ public final class MetadataCleaner {
         } catch (Exception ex) {
             Logger.printDebug(() -> "Failed to download setting: " + lookup.trimmed(), ex);
         }
-    }
-
-    /**
-     * Splits a setting value into the value a caller returns as is and whether it is a remote
-     * URL that still has to be resolved; {@code local} holds the resolved answer in that case.
-     */
-    private record SettingLookup(String trimmed, boolean remote, @Nullable String local) {
     }
 
     private static SettingLookup classifySetting(@Nullable String value) {
@@ -139,8 +136,8 @@ public final class MetadataCleaner {
         if (value == null) {
             return "";
         }
-        return collapseWhitespace(
-                applyRegex(value, resolveSetting(LyricsFilterDefaults.LYRICS_CUSTOM_REGEX.get())));
+        return WHITESPACE.matcher(applyRegex(value, resolveSetting(LyricsFilterDefaults.LYRICS_CUSTOM_REGEX.get())))
+                .replaceAll(" ").trim();
     }
 
     static String applyRegex(String input, String regex) {
@@ -160,11 +157,9 @@ public final class MetadataCleaner {
     }
 
     /**
-     * Like {@link #applyRegex}, but a pattern that matches nothing returns the input
-     * untouched instead of its normalized form. Lyrics line text passes through this
-     * before display, so rebuilding an untouched line from the normalizer output would
-     * fold its fullwidth punctuation ({@code ，！？～（）} …) to ASCII even though the
-     * filter never fired on it.
+     * Like {@link #applyRegex}, but returns the input untouched when the pattern matches nothing.
+     * Used on lyrics lines before display: normalizing an untouched line would fold its
+     * fullwidth punctuation ({@code ，！？～（）} …) to ASCII even when the filter never fired.
      */
     public static String applyRegexPreserveOriginal(String input, String regex) {
         if (regex == null || regex.trim().isEmpty()) {
@@ -204,8 +199,6 @@ public final class MetadataCleaner {
         }
     }
 
-    private static final String DASH_SEPARATOR = " - ";
-
     @Nullable
     private static String[] splitDashRaw(@Nullable String rawTitle) {
         if (rawTitle == null) {
@@ -220,16 +213,16 @@ public final class MetadataCleaner {
         if (left.isEmpty() || right.isEmpty()) {
             return null;
         }
-        return new String[]{ left, right };
+        return new String[]{left, right};
     }
 
     public static String[] parseCleanTitleAndArtist(@Nullable String rawTitle, @Nullable String rawArtist) {
-        return new String[]{ cleanArtist(rawArtist), cleanTitle(rawTitle) };
+        return new String[]{cleanArtist(rawArtist), cleanTitle(rawTitle)};
     }
 
     @Nullable
     public static TrackInfo trustedDashSplit(@Nullable String rawTitle, @Nullable String rawArtist,
-                                      @Nullable String album, int durationSeconds) {
+                                             @Nullable String album, int durationSeconds) {
         String[] sides = splitDashRaw(rawTitle);
         if (sides == null || rawArtist == null || rawArtist.trim().isEmpty()) {
             return null;
@@ -247,7 +240,7 @@ public final class MetadataCleaner {
 
     @Nullable
     public static TrackInfo anyDashSplit(@Nullable String rawTitle, @Nullable String album,
-                                  int durationSeconds) {
+                                         int durationSeconds) {
         String[] sides = splitDashRaw(rawTitle);
         if (sides == null) {
             return null;
@@ -257,7 +250,7 @@ public final class MetadataCleaner {
 
     @Nullable
     public static TrackInfo anyDashSplitReversed(@Nullable String rawTitle, @Nullable String album,
-                                          int durationSeconds) {
+                                                 int durationSeconds) {
         String[] sides = splitDashRaw(rawTitle);
         if (sides == null) {
             return null;
@@ -280,9 +273,6 @@ public final class MetadataCleaner {
                 LyricsRequests.normalizeForMatch(rawArtist));
     }
 
-    private static final String[] ARTIST_SEPARATORS =
-            {" & ", ", ", " x ", " X ", " feat. ", " feat ", " ft. ", " ft ", " с ", " 和 ", "/", "×"};
-
     private static int indexOfFirstSeparator(String artist) {
         int result = -1;
         for (String separator : ARTIST_SEPARATORS) {
@@ -304,12 +294,6 @@ public final class MetadataCleaner {
             }
         }
         return parts.toArray(new String[0]);
-    }
-
-    private static final Pattern WHITESPACE = Pattern.compile("\\s+");
-
-    private static String collapseWhitespace(String value) {
-        return WHITESPACE.matcher(value).replaceAll(" ").trim();
     }
 
     @NonNull
@@ -355,6 +339,13 @@ public final class MetadataCleaner {
             }
         }
         return sb;
+    }
+
+    /**
+     * Splits a setting value into the value a caller returns as is and whether it is a remote
+     * URL that still has to be resolved; {@code local} holds the resolved answer in that case.
+     */
+    private record SettingLookup(String trimmed, boolean remote, @Nullable String local) {
     }
 
     private static final class ResolveTask {

@@ -107,7 +107,9 @@ class LicenseTextDialog extends Dialog {
         html.append("<div class=\"license-body\" dir=\"ltr\">");
         for (LicenseContent item : content) {
             html.append("<h2>").append(AboutDialogStyle.escapeHtml(item.title())).append("</h2>");
-            html.append("<pre>").append(AboutDialogStyle.linkifyHtml(item.content())).append("</pre>");
+            // Urls are turned into links, so the addresses named inside a license can be opened.
+            html.append("<pre>").append(AboutDialogStyle.escapeHtml(item.content())
+                    .replaceAll("(https?://[^\\s<>\"]+)", "<a href='$1'>$1</a>")).append("</pre>");
         }
         html.append("</div>").append(AboutDialogStyle.DOCUMENT_END);
 

@@ -16,10 +16,22 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="reddit_privacy_policy">Dasar privasi Reddit</string>
+  <string name="morphe_google_signin_not_available_toast">Log masuk Google tidak tersedia. Gunakan e-mel untuk log masuk</string>
   <string name="morphe_screen_ads_title">Iklan</string>
   <string name="morphe_screen_navigation_bar_title">Bar pandu arah</string>
   <string name="morphe_screen_sidebar_title">Bar sisi</string>
+  <string name="morphe_custom_font_title">Fon tersuai</string>
+  <string name="morphe_custom_font_summary">Muat naik fail fon TTF atau OTF tersuai daripada laluan di bawah. Mengaktifkan ini juga akan mematikan Paksa fon sistem</string>
+  <string name="morphe_custom_font_file_path_title">Fail fon tersuai</string>
+  <string name="morphe_custom_font_file_path_summary">Ketik untuk memilih fail fon TTF atau OTF</string>
+  <string name="morphe_custom_font_selected_font">Fon terpilih - %s</string>
+  <string name="morphe_custom_font_pick_file_first">Pilih fail fon tersuai terlebih dahulu</string>
+  <string name="morphe_custom_font_invalid_file">Sila pilih fail fon .ttf atau .otf</string>
+  <string name="morphe_custom_font_failed_to_load">Gagal memuatkan fon tersuai. Pilih fail yang lain</string>
   <string name="morphe_disable_modern_home_title">Lumpuhkan antara muka laman utama moden</string>
+  <string name="morphe_force_system_font_title">Paksa fon sistem</string>
+  <string name="morphe_force_system_font_summary">Gunakan fon sistem peranti sebagai ganti Reddit Sans atau Roboto. Mengaktifkan ini juga akan mematikan Fon tersuai</string>
   <string name="morphe_screen_miscellaneous_title">Lain-lain</string>
   <string name="morphe_about_title">Mengenai</string>
   <string name="morphe_download_location_folder_default_short">Lalai</string>

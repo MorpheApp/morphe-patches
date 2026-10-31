@@ -58,7 +58,7 @@ jobs:
       - name: Check strings on crowdin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew checkStringResources -PnoProguard
+        run: ./gradlew checkStringResources
 
       # Step 3: Checkout dev branch to prepare for merging
       - name: Checkout dev branch for merge

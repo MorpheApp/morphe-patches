@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Animasi startup</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Dinonaktifkan</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Berwarna</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
+  <string name="morphe_splash_screen_style_title">Animasi startup</string>
+  <string name="morphe_splash_screen_style_entry_1">Dinonaktifkan</string>
+  <string name="morphe_splash_screen_style_entry_2">Berwarna</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Berwarna</string>
+  <string name="morphe_splash_screen_style_entry_4">Monokrom</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monokrom</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Sorot setelan baru</string>
+  <string name="morphe_settings_new_indicator_days_summary">Jumlah hari titik ditampilkan di samping setelan dan opsi yang ditambahkan oleh pembaruan</string>
+  <string name="morphe_settings_new_indicator_days_off">Nonaktif</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Mulai ulang untuk menyelesaikan penyiapan</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Sembunyikan tombol Sebelumnya dan Berikutnya di notifikasi media, layar kunci, dan kontrol headphone</string>
   <string name="morphe_disable_notification_media_seekbar_title">Nonaktifkan bilah geser</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Mencegah penyeretan bilah pencarian di layar kunci dan panel notifikasi</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Geser dengan tombol Sebelumnya &amp; Berikutnya</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Mengubah kontrol untuk notifikasi media, layar kunci, dan headphone menjadi geser alih-alih mengganti video</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Durasi rewind</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Detik untuk rewind dengan tombol Sebelumnya</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Durasi fast forward</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Detik untuk fast-forward dengan tombol Berikutnya</string>
+  <string name="morphe_seek_notification_media_length_invalid">Durasi pencarian harus antara 1 dan %s detik. Menggunakan default</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Nonaktifkan protokol QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

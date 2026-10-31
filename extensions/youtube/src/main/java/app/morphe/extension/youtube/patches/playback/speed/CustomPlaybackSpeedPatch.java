@@ -57,8 +57,6 @@ import app.morphe.extension.youtube.patches.components.PlaybackSpeedMenuFilter;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
 
 @SuppressWarnings("unused")
 public class CustomPlaybackSpeedPatch {
@@ -212,7 +210,7 @@ public class CustomPlaybackSpeedPatch {
     }
 
     private static void showInvalidCustomSpeedToast() {
-        Utils.showToastLong(str("morphe_custom_playback_speeds_invalid", VideoInformation.PLAYBACK_SPEED_MAXIMUM));
+        Utils.showSnackbarLong(str("morphe_custom_playback_speeds_invalid", VideoInformation.PLAYBACK_SPEED_MAXIMUM));
     }
 
     private static float[] loadCustomSpeeds() {
@@ -247,7 +245,7 @@ public class CustomPlaybackSpeedPatch {
             return speeds;
         } catch (Exception ex) {
             Logger.printInfo(() -> "Parse error", ex);
-            Utils.showToastShort(str("morphe_custom_playback_speeds_parse_exception"));
+            Utils.showSnackbarShort(str("morphe_custom_playback_speeds_parse_exception"));
             Settings.CUSTOM_PLAYBACK_SPEEDS.resetToDefault();
             return loadCustomSpeeds();
         }
@@ -430,10 +428,9 @@ public class CustomPlaybackSpeedPatch {
 
             // The first observer to keep label text and slider reactive to speed changes.
             // observer is removed on dialog dismissal in order.
-            Function1<Float, Unit> onSpeedChanged = speed -> {
+            Consumer<Float> onSpeedChanged = speed -> {
                 currentSpeedText.setText(VideoInformation.formatSpeedStringX(speed));
                 speedSlider.setProgress(speedToProgressValue(speed));
-                return Unit.INSTANCE;
             };
 
             VideoInformation.onPlaybackSpeedChange.addObserver(onSpeedChanged);
@@ -529,7 +526,7 @@ public class CustomPlaybackSpeedPatch {
             contentLayout.addView(gridLayout);
 
             // ## Audio pitch UI: link toggle and pitch controls, hidden entirely when disabled.
-            final Function1<Float, Unit> onPitchChanged;
+            final Consumer<Float> onPitchChanged;
             if (Settings.ENABLE_PLAYBACK_AUDIO_PITCH.get()) {
                 // ## Link Button
                 LinearLayout linkLayout = new LinearLayout(context);
@@ -623,7 +620,6 @@ public class CustomPlaybackSpeedPatch {
                 onPitchChanged = pitch -> {
                     currentPitchText.setText(VideoInformation.formatAudioPitchStringX(pitch));
                     pitchSlider.setProgress(pitchToProgressValue(pitch));
-                    return Unit.INSTANCE;
                 };
 
                 VideoInformation.onPlaybackAudioPitchChange.addObserver(onPitchChanged);

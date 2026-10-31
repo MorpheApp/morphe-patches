@@ -84,7 +84,7 @@ val mediaViewerBlackBackgroundPatch = bytecodePatch(
         if (is_2026_20_0_or_greater) {
             // The player is shared with the feed,
             // so the extension checks the composition context is the media viewer.
-            val localContextField = LocalContextFingerprint.instructionMatches.first()
+            val localContextField = LocalContextFingerprint.instructionMatches.last()
                 .getInstruction<ReferenceInstruction>().reference
             VideoPlayerBackgroundFingerprint.let { match ->
                 match.method.apply {

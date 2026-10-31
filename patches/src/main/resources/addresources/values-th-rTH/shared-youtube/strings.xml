@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">แอนิเมชันเริ่มต้น</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">ปิดการใช้งาน</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">สี</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">โมโนโครม</string>
+  <string name="morphe_splash_screen_style_title">แอนิเมชันเริ่มต้น</string>
+  <string name="morphe_splash_screen_style_entry_1">ปิดการใช้งาน</string>
+  <string name="morphe_splash_screen_style_entry_2">สี</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe แบบมีสี</string>
+  <string name="morphe_splash_screen_style_entry_4">โมโนโครม</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe แบบขาวดำ</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">ไฮไลต์การตั้งค่าใหม่</string>
+  <string name="morphe_settings_new_indicator_days_summary">จำนวนวันที่จุดจะปรากฏข้างการตั้งค่าและตัวเลือกที่เพิ่มเข้ามาจากการอัปเดต</string>
+  <string name="morphe_settings_new_indicator_days_off">ปิด</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">รีสตาร์ทเพื่อดำเนินการตั้งค่าให้เสร็จสิ้น</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">ซ่อนปุ่มก่อนหน้าและถัดไปในการแจ้งเตือนสื่อ หน้าจอล็อก และตัวควบคุมหูฟัง</string>
   <string name="morphe_disable_notification_media_seekbar_title">ปิดใช้งานแถบเลื่อน</string>
   <string name="morphe_disable_notification_media_seekbar_summary">ป้องกันการลากแถบเลื่อนบนหน้าจอล็อกและแผงการแจ้งเตือน</string>
+  <string name="morphe_seek_notification_media_prev_next_title">ค้นหาด้วยปุ่มก่อนหน้า &amp; ถัดไป</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">เปลี่ยนการควบคุมสำหรับการแจ้งเตือนสื่อ หน้าจอปิดบัง และหูฟังให้เป็นการเลื่อนแทนที่จะเปลี่ยนวิดีโอ</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">ความยาวของการย้อนกลับ</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">จำนวนวินาทีเพื่อย้อนกลับเมื่อใช้ปุ่มก่อนหน้า</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">ความยาวของการเลื่อนไปข้างหน้า</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">จำนวนวินาทีเพื่อเลื่อนไปข้างหน้าเมื่อใช้ปุ่มถัดไป</string>
+  <string name="morphe_seek_notification_media_length_invalid">ความยาวในการเลื่อนต้องอยู่ระหว่าง 1 ถึง %s วินาที ใช้ค่าเริ่มต้น</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">ปิดใช้งานโพรโทคอล QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

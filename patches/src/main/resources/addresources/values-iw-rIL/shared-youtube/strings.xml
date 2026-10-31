@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">אנימציית אתחול</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">מושבת</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">צבע</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">מונוכרום</string>
+  <string name="morphe_splash_screen_style_title">אנימציית אתחול</string>
+  <string name="morphe_splash_screen_style_entry_1">מושבת</string>
+  <string name="morphe_splash_screen_style_entry_2">צבע</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe צבעוני</string>
+  <string name="morphe_splash_screen_style_entry_4">מונוכרום</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe מונוכרומטי</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">הדגשת הגדרות חדשות</string>
+  <string name="morphe_settings_new_indicator_days_summary">מספר הימים שבהם נקודה תוצג לצד הגדרות ואפשרויות שנוספו בעדכון</string>
+  <string name="morphe_settings_new_indicator_days_off">כבוי</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">הפעל מחדש כדי לסיים את ההגדרות</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">מסתיר את כפתורי הקודם והבא בהתראת המדיה, במסך הנעילה ובפקדי האוזניות</string>
   <string name="morphe_disable_notification_media_seekbar_title">השבת את סרגל ההתקדמות</string>
   <string name="morphe_disable_notification_media_seekbar_summary">מונע גרירה של סרגל ההתקדמות במסך הנעילה ובלוח ההתראות</string>
+  <string name="morphe_seek_notification_media_prev_next_title">חיפוש באמצעות כפתורי הקודם &amp; הבא</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">שינוי בקריאות של התראות מדיה, מסך נעילה ואוזניות לחיפוש במקום החלפת סרטונים</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">אורך הנדסה לאחור</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">שניות להנדסה לאחור עם כפתור הקודם</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">אורך קידום מהיר</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">שניות לקידום מהיר עם כפתור הבא</string>
+  <string name="morphe_seek_notification_media_length_invalid">אורך החיפוש חייב להיות בין 1 ל-%s שניות. בשימוש בברירת מחדל</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">השבת פרוטוקול QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

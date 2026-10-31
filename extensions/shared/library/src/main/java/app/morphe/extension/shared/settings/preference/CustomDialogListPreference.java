@@ -25,9 +25,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.Set;
 import java.util.function.IntConsumer;
 
 import app.morphe.extension.shared.ResourceType;
@@ -54,6 +56,10 @@ public class CustomDialogListPreference extends ListPreference {
 
     private String staticSummary = null;
     private CharSequence[] highlightedEntriesForDialog = null;
+    @Nullable
+    private Set<String> newEntryValues;
+    @ColorInt
+    private int newEntryColor;
 
     /**
      * Set a static summary that will not be overwritten by value changes.
@@ -97,11 +103,40 @@ public class CustomDialogListPreference extends ListPreference {
     }
 
     /**
+     * @return If an entry that was not shown before is a new option added by an update.
+     *         False if the entries depend on the device, installed apps or user data.
+     */
+    public boolean tracksNewEntries() {
+        return true;
+    }
+
+    /**
+     * Sets the entry values that are shown with a dot in the dialog.
+     */
+    public void setNewEntryValues(@Nullable Set<String> values, @ColorInt int color) {
+        this.newEntryValues = values;
+        this.newEntryColor = color;
+    }
+
+    /**
      * Returns entries for display in the dialog.
      * If highlighted entries exist, they are used; otherwise, the original entries are returned.
+     * New entries are shown with a dot.
      */
     protected CharSequence[] getEntriesForDialog() {
-        return highlightedEntriesForDialog != null ? highlightedEntriesForDialog : getEntries();
+        CharSequence[] entries = highlightedEntriesForDialog != null ? highlightedEntriesForDialog : getEntries();
+        CharSequence[] entryValues = getEntryValues();
+        if (newEntryValues == null || entries == null || entryValues == null) {
+            return entries;
+        }
+
+        CharSequence[] marked = entries.clone();
+        for (int i = 0, length = Math.min(entries.length, entryValues.length); i < length; i++) {
+            if (newEntryValues.contains(entryValues[i].toString())) {
+                marked[i] = NewIndicatorSpan.addTo(entries[i], newEntryColor);
+            }
+        }
+        return marked;
     }
 
     /**

@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Hoạt ảnh khởi động</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Tắt</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Màu</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Đơn sắc</string>
+  <string name="morphe_splash_screen_style_title">Hoạt ảnh khởi động</string>
+  <string name="morphe_splash_screen_style_entry_1">Tắt</string>
+  <string name="morphe_splash_screen_style_entry_2">Màu</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Có màu</string>
+  <string name="morphe_splash_screen_style_entry_4">Đơn sắc</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Đơn sắc</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Làm nổi bật các cài đặt mới</string>
+  <string name="morphe_settings_new_indicator_days_summary">Số ngày hiển thị dấu chấm bên cạnh các cài đặt và tùy chọn được thêm vào thông qua bản cập nhật</string>
+  <string name="morphe_settings_new_indicator_days_off">Tắt</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Khởi động lại để hoàn tất thiết lập</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Ẩn các nút Trước và Tiếp theo trong thông báo phương tiện, màn hình khóa và điều khiển tai nghe</string>
   <string name="morphe_disable_notification_media_seekbar_title">Tắt thanh trượt</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Ngăn không cho kéo thanh tiến trình trên màn hình khóa và bảng thông báo</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Tìm kiếm với nút Trước &amp; Sau</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Thay đổi điều khiển cho thông báo phương tiện, màn hình khóa và tai nghe để tua thay vì chuyển video</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Độ dài tua lại</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Giây để tua lại bằng nút Trước</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Độ dài tua nhanh</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Giây để tua nhanh bằng nút Sau</string>
+  <string name="morphe_seek_notification_media_length_invalid">Độ dài tua phải nằm trong khoảng từ 1 đến %s giây. Sử dụng mặc định</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Tắt giao thức QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

@@ -16,7 +16,221 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_sb_enabled_title">SponsorBlockን አግብር</string>
+  <string name="morphe_sb_enabled_summary">SponsorBlock የYouTube ቪዲዮዎች አሰልቺ ክፍሎችን ለመዝለል የሚያገለግል በብዙዎች ተሳትፎ የሚሰራ ስርዓት ነው</string>
+  <string name="morphe_sb_appearance_category_title">መልክ</string>
+  <string name="morphe_sb_voting_button_title">የድምጽ አሰጣጥ ቁልፉን አሳይ</string>
+  <string name="morphe_sb_voting_button_summary">ክፍሎችን ለመደገፍ ወይም ለመቃወም የሚያስችል ቁልፍ ይጨምራል</string>
+  <string name="morphe_sb_square_layout_title">የካሬ አቀማመጥን ይጠቀሙ</string>
+  <string name="morphe_sb_square_layout_summary">ለSponsorBlock ቁልፎች እና መቆጣጠሪያዎች የካሬ ማዕዘኖችን ይጠቀማል</string>
+  <string name="morphe_sb_compact_skip_button_title">አጭር የዝላይ ቁልፍን ይጠቀሙ</string>
+  <string name="morphe_sb_compact_skip_button_summary">ቦታ ለመቆጠብ የዝላይ ቁልፉን ስፋት ይቀንሳል</string>
+  <string name="morphe_sb_auto_hide_skip_button_title">የዝላይ බොተንን በራስ-ሰር ደብቅ</string>
+  <string name="morphe_sb_auto_hide_skip_button_summary">የዝላይ බොተኑን ለሙሉው ክፍል በሚታይ ሁኔታ ከማቆየት ይልቅ ከጥቂት ሰከንዶች በኋላ ይደብቀዋል</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_title">የዝላይ ቦተን የሚቆይበት ጊዜ</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_summary">የዝላይ ቦተኑ ለምን ያህል ጊዜ ይታይ የሚለውን ይወስኑ</string>
+  <string name="morphe_sb_toast_on_skip_title">የዝላይ ማሳወቂያን አሳይ</string>
+  <string name="morphe_sb_toast_on_skip_summary">አንድ ክፍል በራስ-ሰር ሲዘለል ማሳወቂያ ያሳያል</string>
+  <string name="morphe_sb_toast_on_skip_duration_title">የዝላይ ማሳወቂያ የሚቆይበት ጊዜ</string>
+  <string name="morphe_sb_toast_on_skip_duration_summary">የማንሳት ማሳወቂያ ለምን ያህል ጊዜ ይታይ የሚለውን ይወስኑ</string>
+  <string name="morphe_sb_duration_1s">1 ሰከንድ</string>
+  <string name="morphe_sb_duration_2s">2 ሰከንዶች</string>
+  <string name="morphe_sb_duration_3s">3 ሰከንድ</string>
+  <string name="morphe_sb_duration_4s">4 ሰከንድ</string>
+  <string name="morphe_sb_duration_5s">5 ሰከንድ</string>
+  <string name="morphe_sb_duration_6s">6 ሰከንድ</string>
+  <string name="morphe_sb_duration_7s">7 ሰከንድ</string>
+  <string name="morphe_sb_duration_8s">8 ሰከንድ</string>
+  <string name="morphe_sb_duration_9s">9 ሰከንድ</string>
+  <string name="morphe_sb_duration_10s">10 ሰከንድ</string>
+  <string name="morphe_sb_video_length_without_segments_title">የቪዲዮውን ርዝመት ያለ ክፍሎች አሳይ</string>
+  <string name="morphe_sb_video_length_without_segments_summary">በፍለጋ አጥፊው ላይ የሚታየውን አጠቃላይ የቪዲዮ ርዝመት ሁሉንም ክፍሎች ይቀንሳል</string>
+  <string name="morphe_sb_create_segment_category_title">አዳዲስ ክፍሎችን መፍጠር</string>
+  <string name="morphe_sb_create_new_segment_title">\'አዲስ ሴግመንት ፍጠር\' የሚለውን ቁልፍ አሳይ</string>
+  <string name="morphe_sb_create_new_segment_summary">አዳዲስ የSponsorBlock ሴግመንቶችን ለማስገባት የሚያስችል ቁልፍ ወደ ቪዲዮ ማጫወቻው ይጨምራል</string>
+  <string name="morphe_sb_create_new_segment_step_title">የጊዜ ማስተካከያ እርምጃ</string>
+  <string name="morphe_sb_create_new_segment_step_summary">የጊዜ ማስተካከያ ቁልፎች የሚፈልጉት የጊዜ መጠን (በሚሊሰከንድ)</string>
+  <string name="morphe_sb_create_new_segment_step_invalid">እሴቱ አዎንታዊ ቁጥር መሆን አለበት</string>
+  <string name="morphe_sb_guidelines_title">የማስገቢያ መመሪያዎች</string>
+  <string name="morphe_sb_guidelines_summary">መመሪያዎቹ አዳዲስ ሴግመንቶችን ለመፍጠር የሚያስፈልጉ ደንቦችን እና ጠቃሚ ምክሮችን ይይዛሉ</string>
+  <string name="morphe_sb_guidelines_popup_title">መመሪያዎቹን ይከተሉ</string>
+  <string name="morphe_sb_guidelines_popup_content">አዳዲስ ክፍሎችን ከመፍጠርዎ በፊት የSponsorBlock መመሪያዎችን ያንብቡ</string>
+  <string name="morphe_sb_guidelines_popup_already_read">አነበብኩት</string>
+  <string name="morphe_sb_guidelines_popup_open">አሳየኝ</string>
+  <string name="morphe_sb_general_title">ጠቅላላ</string>
+  <string name="morphe_sb_offline_segments_title">የተጫኑ ቪዲዮዎችን ክፍሎች ያስቀምጡ</string>
+  <string name="morphe_sb_offline_segments_summary">በኢንተርኔት ግንኙነት இல்லாதበት ጊዜ የተጫኑ ቪዲዮዎችን ክፍሎች ለመዝለል ያስችላል</string>
+  <string name="morphe_sb_toast_on_connection_error_title">የግንኙነት ስህተት ማስጠንቀቂያዎችን አሳይ</string>
+  <string name="morphe_sb_toast_on_connection_error_summary">የSponsorBlock ሰርቨር በማይገኝበት ጊዜ ማሳወቂያ ያሳያል</string>
+  <string name="morphe_sb_track_skip_count_title">የማለፍ ብዛት ክትትልን አግብር</string>
+  <string name="morphe_sb_track_skip_count_summary">ምን ያህል ጊዜ እንደተቆጠበ ለመከታተል የዝላይ ብዛትን ወደ SponsorBlock ሊደርቦርድ ይልካል</string>
+  <string name="morphe_sb_min_segment_duration_title">ዝቅተኛው የክፍለ-ጊዜ ርዝመት</string>
+  <string name="morphe_sb_min_segment_duration_summary">ከዚህ ዋጋ (በሰከንድ) የሚያንሱ ክፍለ-ጊዜዎች አይታዩም ወይም አይዘለሉም</string>
+  <string name="morphe_sb_min_segment_duration_invalid">ልክ ያልሆነ የጊዜ ርዝመት</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_title">የግል የተጠቃሚ መለያ ቁጥርዎ</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_summary">ይህ በምስጢር መያዝ አለበት። ይህ እንደ የይለፍ ቃል ነው እና ለማንም መጋራት የለበትም። አንድ ሰው ይህ ካለው፣ እርስዎን መስሎ ሊቀርብ ይችላል</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">የግል የተጠቃሚ መለያ ቁጥር ቢያንስ 30 ቁምፊዎች መሆን አለበት</string>
+  <string name="morphe_sb_api_url_title">የ API URL ይቀይሩ</string>
+  <string name="morphe_sb_api_url_summary">SponsorBlock ወደ ሰርቨሩ ጥሪዎችን ለማድረግ የሚጠቀምበት አድራሻ</string>
+  <string name="morphe_sb_channel_whitelist_title">የቻናሎች ነጭ ዝርዝር</string>
+  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock በነጭ ዝርዝር ውስጥ ላሉ ቻናሎች ተዘግቷል</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_title">በነጭ ዝርዝር ውስጥ ባለው ቻናል። ላይ አሳውቅ</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">SponsorBlock በነጭ ዝርዝር ውስጥ ላለ ቻናል። ተዘግቶ በሚገኝበት ጊዜ ማሳወቂያ ያሳያል</string>
+  <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock ለዚህ ቻናል። ተዘግቷል</string>
+  <string name="morphe_sb_api_url_reset">የAPI URL ተቀይሯል</string>
+  <string name="morphe_sb_api_url_invalid">የAPI URL ስህተት ነው</string>
+  <string name="morphe_sb_api_url_changed">የAPI URL ተለውጧል</string>
+  <string name="morphe_sb_settings_ie_title">የማስገቢያ / የማውጫ ቅንብሮች</string>
+  <string name="morphe_sb_settings_copy">ቅዳ</string>
+  <string name="morphe_sb_settings_ie_summary">ወደ Morphe እና ሌሎች SponsorBlock ፕላትፎርሞች ማስገባት / ማውጣት የሚቻል የSponsorBlock JSON ውቅርዎ</string>
+  <string name="morphe_sb_settings_ie_summary_warning">"ወደ Morphe እና ሌሎች SponsorBlock ፕላትፎርሞች ማስገባት / ማውጣት የሚቻል የSponsorBlock JSON ውቅርዎ
+
+ይህ የግል ተጠቃሚ መታወቂያዎን ያካትታል። ይህንን በጥንቃቄ ያጋሩ"</string>
+  <string name="morphe_sb_settings_import_successful">ቅንብሮች በተሳካ ሁኔታ ገብተዋል</string>
+  <string name="morphe_sb_settings_import_failed">ለመጫን አልተቻለም: %s</string>
+  <string name="morphe_sb_settings_export_failed">ለመላክ አልተቻለም: %s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"የእርስዎ ቅንብሮች የግል SponsorBlock የተጠቃሚ መታወቂያ ይዘውበታል።
+
+የተጠቃሚ መታወቂያዎ እንደ የይለፍ ቃል ነው፣ እና በፍጹም መጋራት የለበትም"</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">እንደገና አታሳየኝ</string>
+  <string name="morphe_sb_diff_segments_title">የክፍል ባህሪን ይቀይሩ</string>
+  <string name="morphe_sb_segments_sponsor">ስፖንሰር</string>
+  <string name="morphe_sb_segments_sponsor_summary">የተከፈለ ማስተዋወቂያ፣ የተከፈለ የሪፈራል እና ቀጥታ ማስታወቂያዎች። ለራስ ማስተዋወቂያ ወይም ለሚወዷቸው ጉዳዮች / ፈጣሪዎች / ድረ-ገጾች / ምርቶች ለሚደረጉ ነፃ ማስታወቂያዎች አይደለም</string>
+  <string name="morphe_sb_segments_selfpromo">ያልተከፈለ / የራስ ማስተዋወቂያ</string>
+  <string name="morphe_sb_segments_selfpromo_summary">ያልተከፈለ / የራስ ማስተዋወቂያ ካልሆነ በስተቀር ከስፖንሰር ጋር ተመሳሳይ ነው። ስለ እቃዎች፣ ልገሳዎች ወይም አብረው ስለሰሩት ሰዎች መረጃ የሚሰጡ ክፍሎችን ያካትታል</string>
+  <string name="morphe_sb_segments_interaction">የመስተጋብር ማሳሰቢያ (ሰብስክራይብ ያድርጉ)</string>
+  <string name="morphe_sb_segments_interaction_summary">በይዘቱ መካከል ላይክ እንዲያደርጉ፣ ሰብስክራይብ እንዲያደርጉ ወይም እንዲከተሉ የሚያሳስብ አጭር ማሳሰቢያ። ረጅም ከሆነ ወይም ስለ አንድ የተለየ ነገር ከሆነ፣ በራስ ማስተዋወቅ ስር መሆን አለበት</string>
+  <string name="morphe_sb_segments_highlight">ልዩ ትኩረት</string>
+  <string name="morphe_sb_segments_highlight_summary">አብዛኛው ሰው የሚፈልገው የቪዲዮው ክፍል</string>
+  <string name="morphe_sb_segments_intro">የመክፈቻ አኒሜሽን / የሽግግር ጊዜ</string>
+  <string name="morphe_sb_segments_intro_summary">ትክክለኛ ይዘት የሌለበት የጊዜ ልዩነት። ቆይታ፣ የማይቀየር ምስል ወይም ተደጋጋሚ አኒሜሽን ሊሆን ይችላል። መረጃ የያዙ ሽግግሮችን አያካትትም</string>
+  <string name="morphe_sb_segments_outro">የመዝጊያ ካርዶች / ክሬዲቶች</string>
+  <string name="morphe_sb_segments_outro_summary">ክሬዲቶች ወይም የ YouTube መዝጊያ ካርዶች በሚታዩበት ጊዜ። መረጃ ያላቸውን ማጠቃለያዎች አያካትትም</string>
+  <string name="morphe_sb_segments_hook">ትኩረት ሳቢ / ሰላምታዎች</string>
+  <string name="morphe_sb_segments_hook_summary">ለሚቀጥለው ቪዲዮ የሚቀርቡ ትረካዎች፣ ሰላምታዎች እና የስንብት ንግግሮች። ተጨማሪ ይዘት የሚጨምሩ ክፍሎችን አያካትትም</string>
+  <string name="morphe_sb_segments_preview">ቅድመእይታ / ማጠቃለያ</string>
+  <string name="morphe_sb_segments_preview_summary">በቪዲዮው ውስጥ ወይም በሌሎች ተከታታይ ቪዲዮዎች ውስጥ ምን እንደሚመጣ ወይም ምን እንደተከሰተ የሚያሳዩ የክሊፖች ስብስብ፣ ሁሉም መረጃዎች በሌላ ቦታ ተደግመው የሚገኙበት</string>
+  <string name="morphe_sb_segments_filler">ተያያዥ ጉዳዮች / ቀልዶች</string>
+  <string name="morphe_sb_segments_filler_summary">የቪዲዮውን ዋና ይዘት ለመረዳት የማይፈለጉ ተያያዥ ትዕይንቶች ወይም ቀልዶች። አውድ ወይም ዝርዝር መረጃዎችን የሚሰጡ ክፍሎችን አያካትትም</string>
+  <string name="morphe_sb_segments_nomusic">ሙዚቃ፡ ሙዚቃ የሌለበት ክፍል</string>
+  <string name="morphe_sb_segments_nomusic_summary">ለሙዚቃ ቪዲዮዎች ብቻ የሚያገለግል። በሌላ ዘርፍ ያልተካተቱ ሙዚቃ የሌላቸው የሙዚቃ ቪዲዮ ክፍሎች</string>
+  <string name="morphe_sb_skip_button_compact">飛ばす</string>
+  <string name="morphe_sb_skip_button_compact_highlight">ልዩ ትኩረት</string>
+  <string name="morphe_sb_skip_button_sponsor">ስፖንሰርን 飛ばስ</string>
+  <string name="morphe_sb_skip_button_selfpromo">ማስተዋወቂያውን 飛ばስ</string>
+  <string name="morphe_sb_skip_button_interaction">መስተጋብርን 飛ば</string>
+  <string name="morphe_sb_skip_button_highlight">ወደ ዋናው ክፍል 飛ば</string>
+  <string name="morphe_sb_skip_button_intro_beginning">መግቢያውን 飛ば</string>
+  <string name="morphe_sb_skip_button_intro_middle">እረፍቱን 飛ば</string>
+  <string name="morphe_sb_skip_button_intro_end">እረፍቱን 飛ば</string>
+  <string name="morphe_sb_skip_button_outro">መዝጊያውን 飛ば</string>
+  <string name="morphe_sb_skip_button_hook">መንጠቆውን 飛ば</string>
+  <string name="morphe_sb_skip_button_preview_beginning">ቅድመእይታውን 飛ば</string>
+  <string name="morphe_sb_skip_button_preview_middle">ቅድመእይታውን 飛ば</string>
+  <string name="morphe_sb_skip_button_preview_end">ማጠቃለያውን 飛ば</string>
+  <string name="morphe_sb_skip_button_filler">ተያያዥ ጉዳዮችን 飛ば</string>
+  <string name="morphe_sb_skip_button_nomusic">ሙዚቃ ያልሆኑትን ዝለል</string>
+  <string name="morphe_sb_skip_button_unsubmitted">ክፍሉን ዝለል</string>
+  <string name="morphe_sb_skipped_sponsor">ስፖንሰር ተዘልሏል</string>
+  <string name="morphe_sb_skipped_selfpromo">የራስ ማስተዋወቂያ ተዘልሏል</string>
+  <string name="morphe_sb_skipped_interaction">አሰልቺ ማሳሰቢያ ተዘልሏል</string>
+  <string name="morphe_sb_skipped_highlight">ወደ ዋናው ነጥብ ተዘልሏል</string>
+  <string name="morphe_sb_skipped_intro_beginning">መግቢያ ተዘልሏል</string>
+  <string name="morphe_sb_skipped_intro_middle">የመሃል እረፍት ተዘልሏል</string>
+  <string name="morphe_sb_skipped_intro_end">የመሃል እረፍት ተዘልሏል</string>
+  <string name="morphe_sb_skipped_outro">መውጫ ተዘልሏል</string>
+  <string name="morphe_sb_skipped_hook">መሳቢያ ተዘልሏል</string>
+  <string name="morphe_sb_skipped_preview_beginning">ቅድመ-እይታ ተዘልቷል</string>
+  <string name="morphe_sb_skipped_preview_middle">ቅድመ እይታ ተዘልሏል</string>
+  <string name="morphe_sb_skipped_preview_end">ማጠቃለያ ተዘልሏል</string>
+  <string name="morphe_sb_skipped_filler">ተያያዥ ያልሆነ ንግግር ተዘልሏል</string>
+  <string name="morphe_sb_skipped_nomusic">ሙዚቃ ያልሆነ ክፍል ተዘልሏል</string>
+  <string name="morphe_sb_skipped_unsubmitted">ያልተላከ ክፍል ተዘልሏል</string>
+  <string name="morphe_sb_skipped_multiple_segments">በርካታ ክፍሎች ተዘልለውታል</string>
+  <string name="morphe_sb_skip_automatically">በራስ-ሰር ዝለል</string>
+  <string name="morphe_sb_skip_automatically_once">አንድ ጊዜ በራስ-ሰር ዝለል</string>
+  <string name="morphe_sb_skip_showbutton">የዝለል ቁልፍ አሳይ</string>
+  <string name="morphe_sb_skip_seekbaronly">በseekbar ላይ አሳይ</string>
+  <string name="morphe_sb_skip_ignore">አግድ</string>
+  <string name="morphe_sb_submit_failed_invalid">ክፍሉን ለመላክ አልተቻለም: %s</string>
+  <string name="morphe_sb_submit_failed_timeout">SponsorBlock ለጊዜው ተቋርጧል</string>
+  <string name="morphe_sb_submit_failed_unknown_error">ክፍለ-ጊዜውን ማስገባት አልተቻለም (ሁኔታ: %1$s %2$s)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">ክፍለ-ጊዜውን መላክ አልተቻለም። የላኩት ብዛት ገደቡን አልፏል (ከአንድ ተጠቃሚ ወይም IP ብዙ ጥያቄዎች የቀረቡበት)</string>
+  <string name="morphe_sb_submit_failed_forbidden">ክፍለ-ጊዜውን መላክ አይቻልም: %s</string>
+  <string name="morphe_sb_submit_failed_duplicate">"ክፍለ-ጊዜውን መላክ አይቻልም
+ቀድሞውኑ ይገኛል"</string>
+  <string name="morphe_sb_submit_succeeded">ክፍለ-ጊዜው በተሳካ ሁኔታ ተልኳል</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock ለጊዜው ዝግ ነው (API ጊዜው አልቋል)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock ለጊዜው አይдоступም (ሁኔታ %s)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock ለጊዜው አይገኝም</string>
+  <string name="morphe_sb_vote_failed_timeout">ለክፍለ-ጊዜው ድምጽ ለመስጠት አልተቻለም (API ጊዜው አልቋል)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">ለክፍለ-ጊዜው வாக்கላት አልተቻለም (ሁኔታ: %1$s %2$s)</string>
+  <string name="morphe_sb_vote_failed_forbidden">ለክፍለ-ጊዜው ድምጽ መስጠት አልተቻለም: %s</string>
+  <string name="morphe_sb_vote_upvote">ወደ ላይ ድምጽ ስጥ</string>
+  <string name="morphe_sb_vote_downvote">ወደ ታች ድምጽ ስጥ</string>
+  <string name="morphe_sb_vote_category">ምድብ ይቀይሩ</string>
+  <string name="morphe_sb_vote_no_segments">ድምጽ የሚሰጥባቸው ምንም ክፍለ-ጊዜዎች የሉም</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_vote_segment_time_to_from">ከ %1$s እስከ %2$s</string>
+  <string name="morphe_sb_new_segment_choose_category">የክፍለ-ጊዜውን ምድብ ይምረጡ</string>
+  <string name="morphe_sb_new_segment_disabled_category">ዘርፉ በቅንብሮች ውስጥ ተዘግቷል። ለማስገባት ዘርፉን ያብሩ</string>
+  <string name="morphe_sb_new_segment_title">አዲስ የSponsorBlock ክፍል</string>
+  <string name="morphe_sb_new_segment_mark_time_as_question">%sን እንደ አዲስ ክፍል መጀመሪያ ወይም መጨረሻ ላድርገው?</string>
+  <string name="morphe_sb_new_segment_mark_start">መጀመሪያ</string>
+  <string name="morphe_sb_new_segment_mark_end">መጨረሻ</string>
+  <string name="morphe_sb_new_segment_now">አሁን</string>
+  <string name="morphe_sb_new_segment_time_start">ክፍሉ የሚጀምርበት ሰዓት</string>
+  <string name="morphe_sb_new_segment_time_end">ክፍሉ የሚያበቃበት ሰዓት</string>
+  <string name="morphe_sb_new_segment_confirm_title">ሰዓቶቹ ትክክል ናቸው?</string>
+  <string name="morphe_sb_new_segment_confirm_content">"ክፍሉ ከ
+
+%1$s
+እስከ
+%2$s
+
+(%3$s)
+
+ላ göndть ዝግጁ ነዎት?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">አስገባ</string>
+  <string name="morphe_sb_new_segment_start_is_before_end">መጀመሪያው ከማብቂያው በፊት መሆን አለበት</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">መጀመሪያ በጊዜው ባር ላይ ቦታ ምልክት ያድርጉ</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">ክፍሉን አስቀድመው ይመልከቱ እና በስላሴ እንደሚዘለል ያረጋግጡ</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_title">የክፍሉን ጊዜ በእጅዎ ያርሙ</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_content">የክፍሉን መጀመሪያ ወይም መጨረሻ ጊዜ ማስተካከል ይፈልጋሉ?</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_parse_error">የተሰጠው ጊዜ ትክክል አይደለም</string>
+  <string name="morphe_sb_new_segment_highlight_title">ልዩ ትኩረትን አስገባ</string>
+  <string name="morphe_sb_new_segment_highlight_content">"የልዩ ትኩረት ጊዜው ትክክል ነው?
+
+%s
+
+ልዩ ትኩረት እያላስገቡ ከሆነ፣ ሰርዝ የሚለውን ተጫን እና ሁለተኛውን ቦታ ምልክት አድርግ"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">የተለየውን ክፍል ላክ</string>
+  <string name="morphe_sb_stats_title">ስታቲስቲክስ</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
+  <string name="morphe_sb_stats_connection_failure">ስታቲስቲክስ ለጊዜው አይገኙም (API ተቋርጧል)</string>
+  <string name="morphe_sb_stats_loading">በመጫን ላይ…</string>
+  <string name="morphe_sb_stats_sb_disabled">SponsorBlock ተዘግቷል</string>
+  <string name="morphe_sb_stats_username">የተጠቃሚ ስምዎ፦ &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_username_change">የተጠቃሚ ስምዎን ለመቀየር እዚህ ይጫኑ</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">የተጠቃሚ ስምን ለመቀየር አልተቻለም፡ ሁኔታ: %1$s %2$s</string>
+  <string name="morphe_sb_stats_username_changed">የተጠቃሚ ስም በተሳካ ሁኔታ ተቀይሯል</string>
+  <string name="morphe_sb_stats_reputation">የታዋቂነት ደረጃዎ &lt;b&gt;%.2f&lt;/b&gt; ነው</string>
+  <string name="morphe_sb_stats_submissions">የፈጠሩት ክፍሎች ብዛት &lt;b&gt;%s&lt;/b&gt; ነው</string>
+  <string name="morphe_sb_stats_submissions_summary">የክፍሎችን ዝርዝር ለማየት እዚህ ይንኩ</string>
+  <string name="morphe_sb_stats_saved_zero">የSponsorBlock የደረጃ ሰንጠረዥ</string>
+  <string name="morphe_sb_stats_saved">ሰዎችን ከ&lt;b&gt;%s&lt;/b&gt; ክፍሎች አድነዋል</string>
+  <string name="morphe_sb_stats_saved_summary_zero">አጠቃላይ ስታቲስቲክስን እና ከፍተኛ አስተዋፅዖ አድራጊዎችን ለማየት እዚህ ይንኩ</string>
+  <string name="morphe_sb_stats_saved_summary">ይህም ከህይወታቸው &lt;b&gt;%s&lt;/b&gt; ነው፡፡&lt;br&gt;የደረጃ ሰንጠረዡን ለማየት እዚህ ይንኩ</string>
+  <string name="morphe_sb_stats_self_saved">&lt;b&gt;%s&lt;/b&gt; ክፍሎችን ዘልለው አልፈዋል</string>
+  <string name="morphe_sb_stats_self_saved_summary">ይህም &lt;b&gt;%s&lt;/b&gt; ነው</string>
+  <string name="morphe_sb_stats_self_saved_reset_title">የተዘለሉ ክፍሎች ቆጣሪውን እንደገና ማስጀመር?</string>
+  <string name="morphe_sb_stats_saved_hour_format">%1$s ሰዓት %2$s ደቂቃ</string>
+  <string name="morphe_sb_stats_saved_minute_format">%1$s ደቂቃ %2$s ሰከንድ</string>
+  <string name="morphe_sb_stats_saved_second_format">%s ሰከንድ</string>
+  <string name="morphe_sb_color_opacity_label">ግልጽነት፡</string>
+  <string name="morphe_sb_color_dot_label">ቀለም፡</string>
+  <string name="morphe_sb_about_api_summary">"SponsorBlock እንደ ስፖንሰሮች፣ መግቢያዎች፣ መውጫዎች እና የደንበኝነት ምዝገባ ማስታወሻዎች ያሉ የቪዲዮ ክፍለ ክፍሎች በጋራ የሚሰበሰብ የዳታቤዝ ስብስብ ነው:: ክፍለ ክፍሎቹ በማህበረሰቡ ይላካሉ እንዲሁም ድምጽ ይሰጣቸዋል፣ እንዲሁም ዳታቤዙ ክፍት እና በነጻ የሚወርድ ነው
+
+የሚመለከቱት የቪዲዮ መታወቂያ የቪዲዮ ክፍለ ክፍሎቹን ለማግኘት ወደ SponsorBlock API ይላካል"</string>
 </resources>

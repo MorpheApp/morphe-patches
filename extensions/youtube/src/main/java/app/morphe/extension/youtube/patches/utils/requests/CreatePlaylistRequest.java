@@ -9,6 +9,8 @@ package app.morphe.extension.youtube.patches.utils.requests;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.util.Pair;
+
 import androidx.annotation.Nullable;
 
 import org.json.JSONException;
@@ -29,7 +31,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
-import kotlin.Pair;
 
 public class CreatePlaylistRequest {
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;

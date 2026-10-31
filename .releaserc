@@ -10,6 +10,7 @@
     [
         "@semantic-release/commit-analyzer", {
         "releaseRules": [
+            { "breaking": true, "release": "major" },
             { "type": "fix", "release": "patch" },
             { "type": "feat", "release": "minor" },
             { "type": "bump", "release": "patch" },
@@ -23,10 +24,10 @@
         "preset": "conventionalcommits",
         "presetConfig": {
             "types": [
-                { "type": "fix", "section": "🐛 Bug Fixes", "hidden": false },
                 { "type": "feat", "section": "✨ New Features", "hidden": false },
-                { "type": "bump", "section": "🚀 Updated App Support", "hidden": false },
                 { "type": "perf", "section": "🔧 Improvements",  "hidden": false },
+                { "type": "fix", "section": "🐛 Bug Fixes", "hidden": false },
+                { "type": "bump", "section": "🚀 Updated App Support", "hidden": false },
                 { "type": "build", "hidden": true }
             ]
         }
@@ -37,7 +38,8 @@
         "releaseJson": {
           "path": "patches-bundle.json",
           "downloadUrlTemplate": "https://github.com/${owner}/${repo}/releases/download/v${version}/patches-${version}.mpp",
-          "signatureUrlTemplate": ""
+          "signatureUrlTemplate": "",
+          "publicKeyPath": "morphe-signing.pub"
         }
       }
     ],

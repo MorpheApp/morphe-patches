@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -31,6 +30,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.sponsorblock.SegmentPlaybackController;
 import app.morphe.extension.shared.sponsorblock.objects.SponsorSegment;
@@ -39,33 +39,21 @@ import app.morphe.extension.shared.sponsorblock.requests.SBRoutes;
 /**
  * SponsorBlock skip segments used to align lyrics with playback.
  *
- * <p>Those lyrics are timed against the released audio, but the player reports video time, so
- * segments have to be dropped from playback time ({@link #contentMs}), added back on a seek
- * ({@link #remapTimestamp}) and counted out of the duration asked with ({@link
- * #effectiveDurationMs}).
- *
- * <p>Everything follows the lyrics SponsorBlock switch: off means nothing is requested and
- * every answer is null. Failures are silent and retried after a cooldown, so an unreachable
- * service costs one background round trip; until an own answer exists, the segments
- * SponsorBlock itself downloaded are used ({@link #fromController}).
- *
- * <p>{@link #await} blocks, so only lookup threads may call it. {@link #peek} never blocks.
+ * <p>Lyrics are timed against the released audio but the player reports video time, so segments
+ * are dropped from playback time ({@link #contentMs}), added back on a seek
+ * ({@link #remapTimestamp}) and counted out of the duration asked with
+ * ({@link #effectiveDurationMs}). Off means nothing is requested and every answer is null.
+ * Failures are silent and retried after a cooldown; until an own answer exists the segments
+ * SponsorBlock itself downloaded are used ({@link #fromController}). {@link #await} blocks, so
+ * only lookup threads may call it; {@link #peek} never blocks.
  */
 public final class SkipSegments {
 
-    public record Seg(long startMs, long endMs, @NonNull String category,
-                      long reportedDurationMs) {
-    }
-
     private static final long REPORTED_DURATION_TOLERANCE_MS = 5_000;
-
     private static final int TIMEOUT_TCP_MS = 7000;
     private static final int TIMEOUT_HTTP_MS = 10000;
-
     private static final long AWAIT_TIMEOUT_MS = 4000;
-
     private static final int CACHE_MAX_ENTRIES = 16;
-
     /**
      * Every music relevant category, URL-encoded the way {@code SegmentCategory} builds it.
      * All of them separate the video from the released audio, so all count: whether the
@@ -74,29 +62,18 @@ public final class SkipSegments {
     private static final String FETCH_CATEGORIES = "[%22sponsor%22,%22selfpromo%22,"
             + "%22interaction%22,%22intro%22,%22outro%22,%22preview%22,%22hook%22,"
             + "%22filler%22,%22music_offtopic%22]";
-
     private static final Object LOCK = new Object();
-
     /** Video id to merged segments; empty when the fetch found none. */
-    private static final Map<String, List<Seg>> CACHE = new LinkedHashMap<>(16, 0.75f, true) {
-        @Override
-        protected boolean removeEldestEntry(Map.Entry<String, List<Seg>> eldest) {
-            return size() > CACHE_MAX_ENTRIES;
-        }
-    };
-
+    private static final Map<String, List<Seg>> CACHE = Utils
+            .createSizeRestrictedMap(CACHE_MAX_ENTRIES, true);
     private static final Map<String, FutureTask<List<Seg>>> TASKS = new HashMap<>();
-
     /**
      * When the next attempt after a failed fetch may start. A failure is never cached, so
      * without this the playback path would request every frame.
      */
     private static final Map<String, Long> RETRY_AFTER = new HashMap<>();
-
     private static final Map<String, Integer> FETCH_EPOCH = new HashMap<>();
-
     private static final long RETRY_COOLDOWN_MS = 15_000;
-
     private static final ExecutorService EXECUTOR = Executors.newSingleThreadExecutor(runnable -> {
         Thread thread = new Thread(runnable, "MorpheSkipSegments");
         thread.setDaemon(true);
@@ -133,7 +110,7 @@ public final class SkipSegments {
      *
      * @param durationMs A segment recorded against a different duration is stale, dropped.
      * @return The merged segments; empty when the video has none, null when unavailable or
-     *         off. Both mean no correction applies.
+     * off. Both mean no correction applies.
      */
     @Nullable
     public static List<Seg> await(@Nullable String videoId, long durationMs) {
@@ -248,11 +225,10 @@ public final class SkipSegments {
     }
 
     /**
-     * The check every public answer passes: no answer stays null, a video without segments
-     * is answered with an empty list, and a segment whose reported video duration
-     * disagrees with the playing one is stale - the video was recut since it was submitted
-     * - and is dropped. Nothing is discarded by coverage: identity by video id is exact,
-     * and a long intro and outro can legitimately take half the video.
+     * The check every public answer passes: no answer stays null, a video without segments is
+     * answered with an empty list, and a segment whose reported video duration disagrees with
+     * the playing one is stale - the video was recut - and dropped. Nothing is discarded by
+     * coverage: identity by video id is exact, and a long intro/outro can take half the video.
      */
     @Nullable
     private static List<Seg> applicable(@Nullable List<Seg> segs, long durationMs) {
@@ -288,13 +264,11 @@ public final class SkipSegments {
     }
 
     /**
-     * The segments SponsorBlock downloaded for the video that is currently playing. They
-     * are the same answer the own fetch asks for, available whenever SponsorBlock itself
-     * resolved this video - the fallback for a fetch that has not answered yet. Only the
-     * controller's own video id vouches for them: the controller clears its data when the
-     * video changes, but a reader can still race that clear, so an id of its own is what
-     * makes the segments usable and anything else is ignored. Not cached: the controller
-     * owns the data and refreshes it when its own fetch lands.
+     * The segments SponsorBlock downloaded for the playing video - the same answer the own
+     * fetch asks for, available before it answers. Only the controller's own video id vouches
+     * for them: the controller clears its data on video change but a reader can race that
+     * clear, so anything else is ignored. Not cached: the controller owns the data and
+     * refreshes it when its own fetch lands.
      */
     @Nullable
     private static List<Seg> fromController(@NonNull String videoId) {
@@ -360,7 +334,7 @@ public final class SkipSegments {
 
     /**
      * Asks the SponsorBlock API for the segments of a video. Empty means the video has
-     * none; null means the service could not answer, which is not an answer at all.
+     * none; null means the service could not answer - not an answer at all.
      */
     @Nullable
     private static List<Seg> fetch(String videoId) throws IOException, JSONException {
@@ -397,9 +371,9 @@ public final class SkipSegments {
     }
 
     /**
-     * The segments of {@code base} with one more segment folded in, stored the way the
-     * cache keeps them: sorted and merged. A null or empty base leaves only the extra
-     * segment. Used by the submit dialog to preview its candidate before submission.
+     * The segments of {@code base} with one more folded in, stored sorted and merged like the
+     * cache. A null or empty base leaves only the extra segment. Used by the submit dialog to
+     * preview its candidate before submission.
      */
     @NonNull
     public static List<Seg> withSegment(@Nullable List<Seg> base, @NonNull Seg extra) {
@@ -434,5 +408,9 @@ public final class SkipSegments {
         }
         merged.add(current);
         return Collections.unmodifiableList(merged);
+    }
+
+    public record Seg(long startMs, long endMs, @NonNull String category,
+                      long reportedDurationMs) {
     }
 }

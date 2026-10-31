@@ -7,6 +7,7 @@
 
 package app.morphe.patches.music.interaction.jam
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -14,11 +15,12 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.util.matchAllMethodIndicesForEach
+import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getMutableMethod
 import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.matchAllMethodIndicesForEach
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
@@ -27,6 +29,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.immutable.ImmutableField
 
 private const val CLOCK = "Lapp/morphe/extension/music/patches/jam/JamClock;"
 private const val OBJECT = "Ljava/lang/Object;"
@@ -230,13 +233,16 @@ private fun BytecodePatchContext.installPalette(palette: PaletteAbi) {
             return-void
         """
     )
+    // 9.43+ palette source no longer keeps an extractor, so use the last one the app created.
+    val loadExtractor = palette.extractor?.let { "iget-object v0, p0, $it" }
+        ?: "sget-object v0, ${addExtractorInstanceField(palette.extract.definingClass)}"
     source.addBridge(
         "patch_jamExtract",
         listOf("Landroid/graphics/Bitmap;"),
         "Ljava/lang/Object;",
         3,
         body = """
-            iget-object v0, p0, ${palette.extractor}
+            $loadExtractor
             ${invokeKind(palette.extract)} {v0, p1}, ${palette.extract}
             move-result-object v0
             return-object v0
@@ -256,6 +262,27 @@ private fun BytecodePatchContext.installPalette(palette: PaletteAbi) {
         """
     )
 }
+
+/** Adds a static field to the extractor class that holds the last constructed instance. */
+private fun BytecodePatchContext.addExtractorInstanceField(extractorType: String) =
+    paletteExtractorConstructorFingerprint(extractorType).let {
+        val instanceField = ImmutableField(
+            extractorType,
+            "patch_jamInstance",
+            extractorType,
+            AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
+            null,
+            null,
+            null,
+        ).toMutable()
+
+        it.classDef.staticFields.add(instanceField)
+        it.method.addInstruction(
+            it.instructionMatches.first().index,
+            "sput-object p0, $instanceField"
+        )
+        instanceField
+    }
 
 private fun BytecodePatchContext.installPlayback(playback: PlaybackAbi) {
     playback.routers.forEach { router ->

@@ -12,18 +12,18 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.PlayerTypeEnumFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.findFreeRegister
-import app.morphe.util.getReference
-import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -83,9 +83,10 @@ internal val captionsInPipPatch = bytecodePatch(
             }
         }
 
-        // Before 21.05, overlays are also given the player type, which can be picture-in-picture.
+        // Before 21.41, overlays are also given the player type, which can be picture-in-picture.
+        // 21.05+ only uses it depending on a server flag.
         // Show the captions overlay anyway.
-        if (!is_21_05_or_greater) {
+        if (!is_21_41_or_greater) {
             getPlayerTypeOverlayVisibilityFingerprint(PlayerTypeEnumFingerprint.originalClassDef.type)
                 .matchAll()
                 .forEach {

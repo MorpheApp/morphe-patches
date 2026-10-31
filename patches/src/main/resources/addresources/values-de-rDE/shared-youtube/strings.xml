@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Startanimation</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Deaktiviert</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Farbe</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Einfarbig</string>
+  <string name="morphe_splash_screen_style_title">Startanimation</string>
+  <string name="morphe_splash_screen_style_entry_1">Deaktiviert</string>
+  <string name="morphe_splash_screen_style_entry_2">Farbe</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Farbe</string>
+  <string name="morphe_splash_screen_style_entry_4">Einfarbig</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrom</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Neue Einstellungen hervorheben</string>
+  <string name="morphe_settings_new_indicator_days_summary">Anzahl der Tage, an denen ein Punkt neben den durch ein Update hinzugefügten Einstellungen und Optionen angezeigt wird</string>
+  <string name="morphe_settings_new_indicator_days_off">Aus</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Starte die App neu, um die Einrichtung abzuschließen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Blendet Zurück- und Weiter-Schaltflächen in Medienbenachrichtigung, Sperrbildschirm und Kopfhörersteuerung aus.</string>
   <string name="morphe_disable_notification_media_seekbar_title">Videofortschrittsbalken deaktivieren</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Verhindert das Verschieben der Fortschrittsleiste auf dem Sperrbildschirm und im Benachrichtigungsfeld.</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Mit <b>&amp;</b>-Tasten suchen</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Steuerelemente für Medienbenachrichtigung, Sperrbildschirm und Kopfhörer ändern: Statt Videos zu wechseln, jetzt suchen</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Rückspullänge</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Sekunden zum Rückspulen mit der Vorherige-Taste</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Vorspulänge</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Sekunden zum Vorspulen mit der Nächste-Taste</string>
+  <string name="morphe_seek_notification_media_length_invalid">Suchlänge muss zwischen 1 und %s Sekunden liegen. Verwende Standardwert</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC-Protokoll deaktivieren </string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

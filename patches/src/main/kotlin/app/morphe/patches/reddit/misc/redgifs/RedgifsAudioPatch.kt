@@ -11,13 +11,13 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_33_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.shared.LinkConstructorFingerprint
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
-import app.morphe.util.registersUsed
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -48,8 +48,8 @@ val redgifsAudioPatch = bytecodePatch(
         // The feed is created from feed cells instead of posts.
         // The post url is only in the post header cell, and the video is a separate cell.
         MetadataCellToStringFingerprint.let {
-            val mediaPathField = it.instructionMatches[0].getFieldAccessed()
-            val idField = it.instructionMatches[3].getFieldAccessed()
+            val mediaPathField = it.instructionMatches[0].fieldReference
+            val idField = it.instructionMatches[3].fieldReference
 
             MetadataCellConstructorFingerprint.method.apply {
                 // All registers are unused at the final return.
@@ -66,8 +66,8 @@ val redgifsAudioPatch = bytecodePatch(
         }
 
         VideoElementToStringFingerprint.let {
-            val postIdField = it.instructionMatches[1].getFieldAccessed()
-            val urlField = it.instructionMatches[3].getFieldAccessed()
+            val postIdField = it.instructionMatches[1].fieldReference
+            val urlField = it.instructionMatches[3].fieldReference
 
             videoElementConstructorFingerprint(urlField).method.apply {
                 // All registers are unused at the final return.

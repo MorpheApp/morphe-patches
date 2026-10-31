@@ -17,21 +17,157 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">دوایین جار لێدراوە</string>
   <string name="morphe_music_android_auto_subscriptions">بەشداربوون</string>
+  <string name="morphe_music_android_auto_videos">ڤیدیۆکان</string>
+  <string name="morphe_music_android_auto_other_results">ئەنجامەکانی تر</string>
+  <string name="morphe_music_android_auto_uploaded_songs">گۆرانییەکانی بەرزکراوە</string>
+  <string name="morphe_music_android_auto_uploaded_albums">ئەلبوومە ئەپڵۆدکراوەکان</string>
+  <string name="morphe_music_android_auto_uploaded_artists">ئەرتستە ئەپڵۆدکراوەکان</string>
   <!-- app.morphe.patches.music.interaction.jam -->
+  <string name="morphe_music_jam_update_host_controls">نوێکردنەوەی پاتچی Jamی خازنەکە بۆ بەکارهێنانی ڕاگرتن و بەردەوامکردن</string>
+  <string name="morphe_music_jam_probe_title">بەکارهێنانی ڕیزبەندی Jam</string>
+  <string name="morphe_music_jam_probe_summary">خازنبە یان پەیوەندببە بە Jamێکی نزیک و ڕیزبەندییەکەی لە ڕێگەی Jam Layerـەوە دەستکاری بکە</string>
+  <string name="morphe_music_jam_enabled_title">چالاککردنی بەشی هاوبەشی ڕیزبەندی Jam</string>
+  <string name="morphe_music_jam_enabled_summary">چالاککردنی ئینتگراسیۆنی Jam دوای ڕێستارتکردنەوەی YouTube Music</string>
+  <string name="morphe_music_jam_download_title">چینە Jam دابەزێنە بۆ ئەوەی کار بکات</string>
+  <string name="morphe_music_jam_download_summary">کۆتا وەشانى Jam Layer لە وێبگەڕەکەتدا بکەرەوە</string>
+  <string name="morphe_music_jam_controls_title">کۆنتڕۆڵەکانی Jam</string>
+  <string name="morphe_music_jam_controls_summary">خازنبە یان پەیوەندببە بە Jamێکی نزیک و بەڕێوەبردنی دانیشتنەکە</string>
+  <string name="morphe_music_jam_companion_package_title">پاکەتی Jam Layer</string>
+  <string name="morphe_music_jam_companion_package_summary">ئەپپ هاوەڵە دامەزراوەکە هەڵبژێرە کە بۆ هاوبەشکردنی ڕیزبەندیی نزیک بەکاردێت</string>
+  <string name="morphe_music_jam_package_message">بەکارهێنانی پاکێجێکی هاوەڵە دامەزراو. لێکدانەوە پێویستی بە ڕەزامەندی تۆ و تۆکنی توانای ناوخۆیی هەیە</string>
+  <string name="morphe_music_jam_wifi_title">وای-فای کار پێ بکرێت؟</string>
+  <string name="morphe_music_jam_wifi_message">Wi-Fi چالاک بکە، پاشان دووبارە هەوڵ بدەرەوە بۆ دەستپێکردن یان پەیوەندبوون بە Jam</string>
+  <string name="morphe_music_jam_wifi_settings">کردنەوەی ڕێکخستنەکانی وای-فای</string>
   <string name="morphe_music_jam_cancel">پاشگەز</string>
+  <string name="morphe_music_jam_use_package">بەکارهێنانی پاکەت</string>
+  <string name="morphe_music_jam_invalid_package">ناوەیەکی دروستی پاکەتی Android بنووسە</string>
+  <string name="morphe_music_jam_package_saved">پاکێجەکە پاشکەوت کرا. Jam Layer ڕێکبخە بۆ بەستنەوە</string>
+  <string name="morphe_music_jam_disconnected">Jam پەیوەندی پچڕاوە</string>
+  <string name="morphe_music_jam_enable_layer_first">سەرەتا Jam Layer چالاک بکە</string>
+  <string name="morphe_music_jam_enable_patch_first">بەشەکەی هاوبەسیکردنی ڕیزبەندی Jam لە ڕێکخستنەکاندا چالاک بکە، پاشان YouTube Music دووبارە دەستپێبکەرەوە</string>
+  <string name="morphe_music_jam_install_layer_first">سەرەتا پاکێجی Jam Layer کە هەڵبژێردراوە دابەزێنە</string>
+  <string name="morphe_music_jam_join_hint">کۆدەکەی کە لەسەر میزباندەکە host پیشان دەدرێت بنووسە. Wi-Fi Aware دەتوانێت ئامێرەکانی نزیک بەستنەوە، تەنانەت ئەگەر LAN-ەکانیان جیاواز بن</string>
+  <string name="morphe_music_jam_join_with_code">بە کۆدێک پەیوەند ببە</string>
+  <string name="morphe_music_jam_join">پەیوەندی بکە</string>
+  <string name="morphe_music_jam_scan_qr">سکانکردنی QR</string>
+  <string name="morphe_music_jam_invalid_invite">کۆدی هەشت پیت بنوسە یان بانگهێشتنامەیەک لێرە دابنێ</string>
+  <string name="morphe_music_jam_join_your_jam">بپیوە بە Jam-ەکەت</string>
+  <string name="morphe_music_jam_copy_code">کۆپی کۆدەکە</string>
+  <string name="morphe_music_jam_code_clip">کۆدی Jam</string>
+  <string name="morphe_music_jam_show_qr">نیشاندانی QR</string>
+  <string name="morphe_music_jam_done">تەواو</string>
+  <string name="morphe_music_jam_invite_title">بانگی کەس بکە بۆ Jam-ەکەت</string>
+  <string name="morphe_music_jam_invite_message">سکان بکە بۆ بەشداربوون و دەستکاریکردنی ئەم ڕیزە. کۆتاییهێنان بە Jam بانگهێشتەکە هەڵدگرێتەوە</string>
+  <string name="morphe_music_jam_copy_link">کۆپی لینکەکە</string>
+  <string name="morphe_music_jam_invitation_clip">بانگی Jam</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam دووبارە دەبەسترێتەوە؛ دوای کەمێک دووبارە هەوڵ بدەرەوە</string>
+  <string name="morphe_music_jam_added_to_jam">زیادکرا بۆ Jam</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam بەردەست نییە؛ گۆرانییەکە زیاد نەکرا</string>
+  <string name="morphe_music_jam_your_jam">جەمەکەی تۆ</string>
+  <string name="morphe_music_jam_listening_together">پێکەوە گوێگرتن</string>
+  <string name="morphe_music_jam_joining_jam">بەشداری کردن لە Jam</string>
+  <string name="morphe_music_jam_listen_together">پێکەوە گوێ بگرن</string>
+  <string name="morphe_music_jam_updating">نوێکردنەوەی Jam…</string>
+  <string name="morphe_music_jam_finding_host">گەڕان بەدوای میواندارەکەتدا لەسەر Wi-Fi…</string>
+  <string name="morphe_music_jam_waiting_people">چاوەڕوانی خەڵکە</string>
+  <string name="morphe_music_jam_one_connected">%s کەس بەستراوەتەوە</string>
+  <string name="morphe_music_jam_many_connected">%s کەس بەستراونەتەوە</string>
+  <string name="morphe_music_jam_code_expires">ئەم کۆدە لە ئامێرێکی نزیک بنوسە. Wi-Fi Aware لەسەر LAN-ی جیاواز کار دەکات ئەگەر پشتگیری لێبکرێت. لە %s خولەکدا بەسەردەچێت</string>
+  <string name="morphe_music_jam_seek_to">بڕۆ بۆ %s؟</string>
+  <string name="morphe_music_jam_edits_open">دەستکارییەکان کراوەن</string>
+  <string name="morphe_music_jam_edits_locked">دەستکارییەکان قوفڵکراون</string>
+  <string name="morphe_music_jam_connected_aware">بەڕێوەبراوە لە ڕێگەی Wi-Fi Aware</string>
+  <string name="morphe_music_jam_connected_wifi">پەیوەندکراوە لە ڕێگەی Wi-Fi</string>
+  <string name="morphe_music_jam_connected_bluetooth">پەیوەندکراوە لە ڕێگەی Bluetooth</string>
+  <string name="morphe_music_jam_unsupported">ناپسۆرە لە کاتی Jam</string>
+  <string name="morphe_music_jam_cancelled">بەشداربوون هەڵوەشاوە</string>
+  <string name="morphe_music_jam_reconnecting_host">دووبارە پەیوەندکردن بە میواندارەکەت…</string>
+  <string name="morphe_music_jam_share_prompt">ڕیزێک بەش بکە. ڕێگە بدە هەمووان گۆرانی زیاد بکەن</string>
+  <string name="morphe_music_jam_invite_people">بانوێتی خەڵک بکە</string>
+  <string name="morphe_music_jam_guest_edits">مێوان دەتوانن ڕیزبەندییەکە دەستکاری بکەن</string>
+  <string name="morphe_music_jam_end_jam">کۆتایی هێنان بە Jam</string>
+  <string name="morphe_music_jam_participant_help">میواندار میوزیکەکە لێدەدات. گۆرانییەکان ڕاستەوخۆ لە ڕیزبەندی YouTube Musicدا زیاد بکە، بگۆڕە یان لایببە</string>
+  <string name="morphe_music_jam_joining_help">هەردوو ئامێرەکە لە نزیک یەکتر بگرە. دەتوانیت وەستانێیت لە کاتێکدا ئێمە بەدوای میواندارەکەدا دەگەڕێین</string>
+  <string name="morphe_music_jam_cancel_joining">پاشگەزبوونەوە لە بەشداربوون</string>
+  <string name="morphe_music_jam_leave_jam">جێهێشتنی Jam</string>
+  <string name="morphe_music_jam_start_jam">دەستپێکردنی Jam</string>
+  <string name="morphe_music_jam_setup_layer">ڕێکخستنی چینى Jam</string>
+  <string name="morphe_music_jam_manage">بەڕێوەبردن</string>
   <string name="morphe_music_jam_details">وردەکاری</string>
   <string name="morphe_music_jam_open">کردنەوە</string>
+  <string name="morphe_music_jam_loading_song_options">بارکردنی بژاردەکانی گۆرانی...</string>
+  <string name="morphe_music_jam_song_options_unavailable">بژاردەکانی گۆرانی بەردەست نین؛ دووبارە هەوڵ بدەوە</string>
+  <string name="morphe_music_jam_song_options_failed">نەتوانی ڕیکخستنی گۆرانی بکرێتەوە</string>
+  <string name="morphe_music_jam_no_browser">هیچ وێبگەڕێک بەردەست نییە بۆ دابەزاندنی چینى Jam</string>
+  <string name="morphe_music_jam_waiting_host_queue">چاوەڕوانی ڕیزبەندی میواندار</string>
+  <string name="morphe_music_jam_open_song_first">سەرەتا گۆرانیەک لە YouTube Music بکەرەوە</string>
+  <string name="morphe_music_jam_play_on_host">لەسەر میزباند لێبدە</string>
+  <string name="morphe_music_jam_quit_and_play">جەم جێبهێلە و بە شێوەی خۆماوەی لێبدە</string>
+  <string name="morphe_music_jam_play_next">دواتر لە جەم لێبدە</string>
+  <string name="morphe_music_jam_add_to_queue">بۆ ڕیزی جەم زیاد بکە</string>
+  <string name="morphe_music_jam_play_track">ئەم تراکی جەمە لێبدە</string>
+  <string name="morphe_music_jam_choose_playback">دیاری بکە لە کوێ لێبدە</string>
+  <string name="morphe_music_jam_move_host_here">میزباندەکە بهێنە بۆ ئێرە</string>
+  <string name="morphe_music_jam_seek_not_ready">گۆرانییەکە ئامادەی نەبوو بۆ گەڕان</string>
+  <string name="morphe_music_jam_queue_changed_gesture">ڕیزەکە گۆڕاوە؛ دووبارە هەوڵ بدەوە</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">لۆگۆی سەرەوە</string>
   <string name="morphe_header_logo_entry_1">بنەڕەت</string>
   <string name="morphe_header_logo_entry_3">باو</string>
   <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">لێدانی تڕاکە دەنگییەکانی ئەلبەمەکە</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">لێدانی وەشانە دەنگییەکەی گۆرانییەکانی ئەلبەمەکە لە جیاتی ڤیدیۆ میوزیک. پێویستی بە \'Spoof video streams\' هەیە</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">چالاککردنی گۆڕینی دەنگ/ڤیدیۆ</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">هەوڵ بدە وەشانى تراکى دەنگ و ڤیدیۆی فەرمی مۆسیقاکە بگۆڕیت</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">دابەزاندنی ڤیدیۆی موزیک، پۆدکاست، یان گۆرانی بە بەرنامەکانی دابەزاندنی لایەنی سێیەم</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">بەکارهێنانی دابەزێنەری دەرەکی بۆ مینیو دابەزاندن</string>
+  <string name="morphe_external_downloader_menu_summary">بژاردەی دابەزاندنی مینیوکان لە جیاتی ئەوە دابەزێنەری دەرەکییەکەت دەکاتەوە</string>
+  <string name="morphe_music_downloads_screen_title">دابەزاندنەکان</string>
+  <string name="morphe_music_downloads_empty">"هیچ دابەزاندنێک نییە
+تراکە دابەزێندراوەکان لێرە دەردەکەون"</string>
+  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
+  <string name="morphe_music_downloads_summary">%1$s ট্র্যাক • %2$s MB</string>
+  <string name="morphe_music_downloads_search_hint">گەڕان لە دابەزاندنەکاندا</string>
+  <string name="morphe_music_downloads_sort">ڕیزکردن</string>
+  <string name="morphe_music_downloads_sort_artist">ڕیزکردن بەپێی هونەرمەند</string>
+  <string name="morphe_music_downloads_sort_title">ڕیزکردن بەپێی ناونیشان</string>
+  <string name="morphe_music_downloads_sort_size">ڕیزکردن بەپێی قەبارە</string>
+  <string name="morphe_music_downloads_delete_all">سڕینەوەی هەموو داگرتنییەکان</string>
+  <string name="morphe_music_downloads_delete_all_title">هەموو داگرتنییەکان بسڕینەوە؟</string>
+  <string name="morphe_music_downloads_delete_all_message">هەموو تراکە داگرتراوەکان لەم ئامێرە دەسڕێنەوە</string>
+  <string name="morphe_music_downloads_all_deleted">داگرتنییەکان سڕاونەوە</string>
+  <string name="morphe_music_downloads_nothing_found">هیچ شتێک نەدۆزرایەوە</string>
+  <string name="morphe_music_downloads_actions_for">کردارەکان بۆ %s</string>
+  <string name="morphe_music_downloads_play">لێدان</string>
+  <string name="morphe_music_downloads_play_pause">لێدان یان وەستان</string>
+  <string name="morphe_music_downloads_previous">پێشوو</string>
+  <string name="morphe_music_downloads_next">دواتر</string>
+  <string name="morphe_music_downloads_pause">ڕاگرتن</string>
+  <string name="morphe_music_downloads_close">داخستن</string>
+  <string name="morphe_music_downloads_delete">سڕینەوە</string>
+  <string name="morphe_music_downloads_delete_track">سڕینەوەی دابەزاندنەکە</string>
+  <string name="morphe_music_downloads_delete_track_title">دابەزاندنەکە بسڕینەوە؟</string>
+  <string name="morphe_music_downloads_delete_track_message">%s لەم ئامێرە دەسڕێتەوە</string>
+  <string name="morphe_music_downloads_track_deleted">دابەزاندنەکە سڕایەوە</string>
+  <string name="morphe_music_downloads_track_delete_failed">نەتوانرا دابەزاندنەکە بسڕێتەوە</string>
+  <string name="morphe_music_downloads_play_failed">نەتوانرا داگرتنەکە لێ بدرێت</string>
+  <string name="morphe_music_downloads_notification_channel">دابەزاندنی دەنگ</string>
+  <string name="morphe_music_downloads_playback_channel">لێدانی ئۆفلاین</string>
+  <string name="morphe_music_downloads_unknown_track">نەتوانرا ناساندنی تراكەکە بۆ دابەزاندن</string>
+  <string name="morphe_music_downloads_already_running">دابەزاندن پێشتر دەستی پێکراوە</string>
+  <string name="morphe_music_downloads_already_saved">پێشتر دابەزێنراوە</string>
+  <string name="morphe_music_downloads_started">دابەزاندن دەستی پێکرد</string>
+  <string name="morphe_music_downloads_starting">دەستپێکردنی دابەزاندن…</string>
+  <string name="morphe_music_downloads_progress">دابەزاندنی %s%%</string>
+  <string name="morphe_music_downloads_complete">دابەزاندن تەواو بوو</string>
+  <string name="morphe_music_downloads_failed">دابەزاندنەکە سەرکەوتوو نەبوو</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">دربارە</string>
@@ -39,17 +175,42 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">پێشهات</string>
   <string name="morphe_settings_music_screen_3_general_title">گشتی</string>
   <string name="morphe_settings_music_screen_4_player_title">لێدەر</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">تێکستی گۆرانی</string>
   <string name="morphe_settings_music_screen_9_misc_title">هەمەجۆر</string>
+  <string name="morphe_music_app_language_title">زمانی YouTube Music</string>
+  <string name="morphe_music_app_language_summary_default">زمانی سیستم</string>
+  <string name="morphe_music_app_language_summary_unsupported">پێویستی بە ئەندرۆید ١٣ یان نوێتر هەیە</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">شاردنەوەی پلیتی \'Get Music Premium\'</string>
+  <string name="morphe_music_hide_music_premium_promotions_title">پڕۆمۆشنەکانی Music Premium بشارەوە</string>
   <string name="morphe_music_hide_video_ads_title">شاردنەوەی ڕێکلامی ڤیدیۆکان</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">گۆڕەری Audio / Video بشارەوە</string>
   <string name="morphe_music_hide_podcast_episode_download_button_title">Hide Download button</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">دوگمەی داگرتنی لە پیشاندانی پۆدکاستدا دەشارێتەوە</string>
+  <string name="morphe_music_hide_explore_shelf_title">ڕەفەی Explore بشارەوە</string>
+  <string name="morphe_music_hide_filter_bar_title">شریتی فلتەر بشارەوە</string>
+  <string name="morphe_music_hide_grid_shelves_title">ڕەفەکانی تۆڕەکە بشارەوە</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">ڕەفە ئاسۆییەکان بشارەوە</string>
+  <string name="morphe_music_hide_list_shelves_title">ڕەفەکانی لیستەکە بشارەوە</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">پانێڵی تێکستەکان</string>
   <string name="morphe_music_hide_lyrics_share_button_title">جفيء دسته بتونه</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">دوگمەی وەرگێڕان بشارەوە</string>
+  <string name="morphe_music_hide_new_from_shelf_title">ڕەفەی \'New from\' بشارەوە</string>
+  <string name="morphe_music_hide_playlist_shelves_title">ڕەفەکانی لیستی گۆرانییەکان بشارەوە</string>
+  <string name="morphe_music_hide_repeat_button_title">دوگمەی دووبارەکردنەوە بشارەوە</string>
+  <string name="morphe_music_hide_shuffle_button_title">شاردنەوەی دوگمەی تێکەڵکردن</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">شاردنەوەی ڕەفەی \'پەیوەندی خێرا\'</string>
+  <string name="morphe_music_comments_screen_title">کۆمێنتەکان</string>
   <string name="morphe_music_comments_screen_summary">Choose which components appear in the comments section</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">شاردنەوەی ڕێنماییەکانی کۆمەڵگە</string>
+  <string name="morphe_music_hide_comments_context_title">نامەی کۆنتێکست بشارەوە</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">شاردنەوەی دوگمەی ئیمۆجی</string>
   <string name="morphe_music_hide_comments_info_button_title">دوگمەی شاردنەوەی زانیارییەکان</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">دوگمەی کات و بەرواری تۆمارکردن بشارەوە</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">پەڕینەوە</string>
+  <string name="morphe_music_crossfade_screen_summary">بە شێوەیەکی نەرم گۆرانییەکان تێکەڵ بکە لەگەڵ یەکتر</string>
   <string name="morphe_music_crossfade_enabled_title">چالاککردنی پەڕاندنەوەی یەکتربڕ</string>
   <string name="morphe_music_crossfade_curve_title">کاڵبوونەوەی چەماوە</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">هێزی یەکسان</string>
@@ -57,6 +218,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">ئاسانی نەرم</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">هێڵی لار-S چەماوە</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">دەرچوون</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">حاترکەوتن</string>
   <string name="morphe_music_crossfade_duration_title">ماوەی کڕکاڵبوونەوە</string>
   <string name="morphe_crossfade_duration_250ms">250 میلی چرکە</string>
   <string name="morphe_crossfade_duration_500ms">500 میلی چرکە</string>
@@ -82,20 +245,65 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">پەڕینەوە وەستا بۆ ئەم دانیشتنە</string>
   <string name="morphe_music_crossfade_resumed_toast">پەڕینەوە دەستی پێکردەوە</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">دۆخی ڤیدیۆ بەردەست نیە کاتێک پەڕینەوە چالاک کراوە</string>
+  <string name="morphe_music_crossfade_sabr_toast">Crossfade لە کاتی لێدانی SABR دا کوژاوەتەوە</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade لە کاتی کاستینگدا کوژاوەتەوە</string>
+  <string name="morphe_music_crossfade_about_how_title">چۆنیەتی کارکردنی</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade کۆتایی گۆرانییەک لەگەڵ سەرەتای گۆرانییەکی تردا تێکەڵ دەکات، بە بەکارهێنانی ماوە و خشتەی تۆ
+
+ئەمە لە کاتی پێشکەوتنی خۆکار و گۆڕینی دەستی کاردەکات، هەر یەکێکیان گۆڕینەوەی تایبەتی خۆی هەیە. لە پێشکەوتنی خۆکاردا، تێکەڵکردنەکە چەند چرکەیەک پێش کۆتاییهاتنی گۆرانییەکە دەست پێ دەکات"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">سەرهاتییەکان</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"ڤیدیۆکانی مۆسیقا تەنها وەک دەنگ لێدەدرێن کاتێک crossfade چالاکە. بۆ ڕاگرتنی crossfade و بینینی ڤیدیۆکە، پەستانی درێژ لەسەر shuffle بکە
+
+ئەو ڤیدیۆیەی مۆسیقایەی کە دەست دەکات، لە مۆدی ڤیدیۆدا دەمێنێت تا گۆرانی داهاتووە
+
+ئەو گۆرانیانەی کە ماوەیان لە ماوەی fade کورتترە، crossfade نابن
+
+شاشەی قفڵکردن یان ئاگادارکردنەوە ڕەنگە بۆ ماوەیەکی کورت دۆخێکی کۆنی نیشان بدات لە ناوەڕاستی گۆڕانەکەدا
+
+ڕاگرتنی crossfade بۆ بینینی ڤیدیۆیەکی مۆسیقا ڕەنگە هەندێک ڤیدیۆ ڕەش بکات. ڕاگرتنی crossfade پێش هەڵبژاردنی گۆرانیەکە ڕێگری لێ دەکات"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">پشتیوونی ناکات</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"کاستینگ یان ڕەنگدانەوەی دەنگ (Chromecast، ڕەنگدانەوەی شاشە یان دەنگ)
+
+لێدانی SABR (چەمانەوەی ستریمەکانی ڤیدیۆ کوژاوەتەوە)"</string>
+  <string name="morphe_music_crossfade_about_credit_title">کۆددان</string>
+  <string name="morphe_music_crossfade_about_credit_summary">تایبەتمەندی Crossfade لەلایەن VazerOG-ەوە</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
+  <string name="morphe_music_remember_repeat_state_title">بیرهێنانی دۆخی دووبارەکردنەوە</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
+  <string name="morphe_music_remember_shuffle_state_title">بیرهێنانی دۆخی تێکەڵکردن</string>
   <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">خێرایی لێدانی موزیک</string>
+  <string name="morphe_music_playback_speed_summary">خێرایی بەکارهاتوو بۆ هەموو تراکەکان. لە ١٠٠٪ خێرایی ئەپەکە بەکاردێت، وەک خێرایی لێدانی پۆدکاست</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">گۆڕینی تۆن لەگەڵ خێرایی</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">ڕاگرتنی ئاڕاستەکردنی ناڕەزایەتی</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">ڕێگری دەکات لە ڕۆیشتن بۆ گۆرانییەکی داهاتوو کاتێک دوگمەی ناڕەزایەتی دەخرێتە سەر</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">کردارەی کلیک کردن لەسەر تراکی لیستى گۆرانییەکان</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">لستى گۆرانییەکان لێبدە</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">تەنها تراکە هەڵبژێراوەکە لێبدە</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">تراکە هەڵبژێراوەکە زیاد بکە بۆ ڕیزبەندی</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">زیاد کرا بۆ ڕیزبەندی</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">دوگمەی پەخشکردن بشارەوە</string>
+  <string name="morphe_music_hide_history_button_title">دوگمەی مێژوو بشارەوە</string>
+  <string name="morphe_music_hide_notification_button_title">دوگمەی ئاگاداری بشارەوە</string>
+  <string name="morphe_music_hide_search_button_title">دوگمەی گەڕان بشارەوە</string>
+  <string name="morphe_music_hide_voice_search_button_title">دوگمەی گەڕانی دەنگی بشارەوە</string>
+  <string name="morphe_music_hide_sound_search_button_title">دوگمەی گەڕانی دەنگ بشارەوە</string>
+  <string name="morphe_music_hide_library_new_button_title">شاردنەوەی دوگمەی نوێ</string>
+  <string name="morphe_music_hide_library_new_button_summary">دوگمەی نوێ لە بەشی کتێبخانەدا دەشارێتەوە</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">دووگمەکانی کردار</string>
+  <string name="morphe_music_action_buttons_screen_summary">دیاری بکە کام دووگمەی کردار لە ژێر پلەیەرەکە دەردەکەون</string>
   <string name="morphe_music_hide_action_bar_title">شاردنەوەی باری کردار</string>
+  <string name="morphe_music_hide_like_dislike_button_title">دوگمەی بەدڵخواز و نابەدڵخواز بشارەوە</string>
   <string name="morphe_music_hide_comments_button_title">شاردنەوەی دوگمەی کۆمێنتە</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_live_chat_replay_button_title">دوگم کردن دوگمەی \"دووبارە بینەوەی چاتە زیندییەکە\"</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">دوگمەی تێکستی گۆرانییەکان بشارەوە</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_share_button_title">جفيء دسته بتونه</string>
   <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -103,10 +311,44 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Hide Download button</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">دوگمەی \'ڕادیۆ دەستپێبکە\' بشارەوە</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
+  <string name="morphe_music_hide_flyout_menu_components_screen_title">مەنیوی فلاین ئاوت</string>
+  <string name="morphe_music_hide_flyout_menu_components_screen_summary">دیاری بکە کام پێکهاتەکان لە مەنیو فلاین ئاوتی پلەیەر و ڕیزبەندییەکەدا دەربکەون</string>
+  <string name="morphe_music_hide_flyout_menu_3_column_component_title">شاردنەوەی پێکهاتەی ٣ ستوون</string>
+  <string name="morphe_music_hide_flyout_menu_like_dislike_title">شاردنەوەی دوگمەکانی بەلاڤکردن و نابەلاڤکردن</string>
+  <string name="morphe_music_hide_flyout_menu_taste_match_title">شاردنەوەی مێنیۆی \'گونجانی تام\'</string>
+  <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">شاردنەوەی مەنیوی \'زیادکردن بۆ لیستی گوێگرتنی دواتر\'</string>
+  <string name="morphe_music_hide_flyout_menu_add_to_queue_title">شاردنەوەی مینیۆی \'زیادکردن بۆ ڕیزبەندی\'</string>
   <string name="morphe_music_hide_flyout_menu_captions_title">Hide Captions menu</string>
+  <string name="morphe_music_hide_flyout_menu_delete_playlist_title">شاردنەوەی مینیۆی \'سڕینەوەی لیستی موزیک\'</string>
+  <string name="morphe_music_hide_flyout_menu_dismiss_queue_title">شاردنەوەی مینیۆی \'سڕینەوەی ڕیزبەندی\'</string>
+  <string name="morphe_music_hide_flyout_menu_dont_recommend_artist_title">شاردنەوەی مینیۆی \'پێشنیاری ئەم هونەرمەندە مەکە\'</string>
+  <string name="morphe_music_hide_flyout_menu_download_title">شاردنەوەی مێنیۆی داگرتن</string>
+  <string name="morphe_music_hide_flyout_menu_edit_playlist_title">شاردنەوەی مینیۆی \'دەستکاریکردنی لیستی موزیک\'</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_album_title">شاردنەوەی مینیۆی \'چوون بۆ ئەلبەم\'</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_artist_title">شاردنەوەی مینیو \'بچۆ بۆ هونەرمەند\'</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_episode_title">شاردنەوەی مینیو \'بچۆ بۆ ئەپیزۆد\'</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_podcast_title">شاردنەوەی مینیو \'بچۆ بۆ پۆدکاست\'</string>
+  <string name="morphe_music_hide_flyout_menu_help_title">شاردنەوەی مێنیۆی هاوکاری</string>
+  <string name="morphe_music_hide_flyout_menu_mark_episode_as_played_title">شاردنەوەی مینیو \'ئەپیزۆدەکە وەک بینراو نیشان بدە\'</string>
+  <string name="morphe_music_hide_flyout_menu_not_interested_title">شاردنەوەی مینیو \'سەرنجم ڕاناکێشێت\'</string>
+  <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">شاردنەوەی مینیو \'پێگیراوە بە پەیوەندی خێرا\'</string>
+  <string name="morphe_music_hide_flyout_menu_play_next_title">شاردنەوەی مینیۆی \'پێشتر لێبدە\'</string>
   <string name="morphe_music_hide_flyout_menu_quality_title">Hide Quality menu</string>
+  <string name="morphe_music_hide_flyout_menu_remove_from_library_title">شاردنەوەی مینیۆی \'لابەردانە لە کتێبخانە\'</string>
+  <string name="morphe_music_hide_flyout_menu_remove_from_playlist_title">شاردنەوەی مینیۆی \'لابەردانە لە لیستى لێدان\'</string>
+  <string name="morphe_music_hide_flyout_menu_report_title">شاردنەوەی مێنیۆی ڕاپۆرت</string>
+  <string name="morphe_music_hide_flyout_menu_save_episode_for_later_save_to_library_title">شاردنەوەی مینیۆی \'پاشکەوتکردنی ئەپیزۆد بۆ دواتر\' / \'پاشکەوتکردن لە کتێبخانە\'</string>
+  <string name="morphe_music_hide_flyout_menu_save_to_playlist_title">شاردنەوەی مینیۆی \'پاشکەوتکردن لە لیستی لێدان\'</string>
+  <string name="morphe_music_hide_flyout_menu_share_title">شاردنەوەی مێنیۆی بەشیکردن</string>
+  <string name="morphe_music_hide_flyout_menu_shuffle_play_title">شاردنەوەی مینیۆی \'لێدانی هەڵتەپەسەر\'</string>
   <string name="morphe_music_hide_flyout_menu_sleep_timer_title">Hide \'Sleep timer\' menu</string>
+  <string name="morphe_music_hide_flyout_menu_start_radio_title">شاردنەوەی مێنیۆی \'دەستپێکردنی ڕادیۆ\'</string>
+  <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">شاردنەوەی مێنیۆی \'ئامارەکان بۆ شارەزایان\'</string>
+  <string name="morphe_music_hide_flyout_menu_subscribe_title">شاردنەوەی مێنیۆی سەبسکرایب</string>
+  <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">شاردنەوەی مێنیۆی \'لادانی پین لە پەیوەندی خێرا\'</string>
+  <string name="morphe_music_hide_flyout_menu_view_song_credit_title">شاردنەوەی مێنیۆی \'بینینی زانیارییەکانی گۆرانی\'</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">پەڕەی سەرەتا</string>
   <string name="morphe_change_start_page_entry_default">بنەڕەت</string>
@@ -120,9 +362,13 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_search">گەڕان</string>
   <string name="morphe_change_start_page_entry_subscriptions">بەشداربوون</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">سەپاندنی ئاراستەی ستوونی</string>
+  <string name="morphe_music_force_portrait_orientation_summary">ئەپەکە لە شێوازی ستوونی دەهێڵێت کاتێک ئامێرەکە دەسوڕێنرێت</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">گۆڕینی ڕەنگی miniplayer</string>
   <string name="morphe_music_change_miniplayer_color_summary">ڕەنگی miniplayer لەگەڵ لێدەری پڕ شاشە دەگونجێنێت</string>
+  <string name="morphe_music_change_navigation_bar_color_title">گۆڕینی ڕەنگی شریتی گەڕان</string>
+  <string name="morphe_music_change_navigation_bar_color_summary">ڕەنگی شریتی گەڕان لەگەڵ لێدەری پڕ شاشە دەگونجێنێت</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
   <string name="morphe_music_miniplayer_next_button_title">پیشاندانی دوگمەی داهاتوو لە miniplayer</string>
   <string name="morphe_music_miniplayer_previous_button_title">پیشاندانی دوگمەی پێشوو لە miniplayer</string>
@@ -130,6 +376,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_forced_miniplayer_title">چالاککردنی زۆرەمڵێی miniplayer</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">ناهێڵێت لێدەر بە شێوەیەکی ئۆتۆماتیکی فراوان ببێت بۆ پڕ شاشە کاتێک تراکێکی نوێ دەست پێدەکات</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">چالاککردنی ڕاکێشان بۆ داخستنی مینیپڵەیەر</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">ڕێگە دەدات مینیپڵەیەرەکە بە ڕاکێشانی خوارەوە ببڕیت</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">شریتی گەشتکردن</string>
   <string name="morphe_music_navigation_bar_screen_summary">هەڵبژێرە کام دوگمەیە دەردەکەوێت لە شریتی گەشتکردن</string>
@@ -146,17 +394,261 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_title">شریتی گەشتکردن بشارەوه</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">ناونیشانەکانی دوگمەی گەشتکردن بشارەوە</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary_logged_out">نەچووەتە ژوورەوە. بۆ ڕێکخستن کلیک بکە</string>
+  <string name="morphe_music_scrobbling_log_out">دەرچوون</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">دەرچووە</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_enabled_title">چالاککردنی scrobbling</string>
+  <string name="morphe_music_scrobbling_now_playing_title">ناردنی ستاتوسی \'ئێستا لێدەدرێت\'</string>
+  <string name="morphe_music_scrobbling_min_song_duration_title">کەمترین ماوەی گۆرانی</string>
   <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_min_song_duration_summary">ئەو گۆرانییانەی لەم ماوەیە کورتترن scrobble ناکرێن</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_percent_title">ڕێژەی دواکەوتنی scrobble</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_percent_summary">دوای گوێگرتنی ئەم ڕێژەیەی گۆرانییەکە، scrobble چالاک بکە</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_seconds_title">چرکەی دواکەوتنی scrobble</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_seconds_summary">دوای گوێگرتن بۆ ئەم هەموو چرکەیە scrobble بکە</string>
+  <string name="morphe_music_listenbrainz_token_title">هژماری ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">چووەتە ژوورەوە. بۆ بەڕێوەبردنی هەژمارەکە کلیک بکە</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">تۆکنی بەکارهێنەری ListenBrainz بنوسە بۆ چالاککردنی scrobbling</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">تۆکەن</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">پشکنین</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">تکایە تۆکەنێک بنوسە</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">پشکنین دەکرێت...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">تۆکەنەکە دروستە! بەکارهێنەر: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">تۆکەنەکە هەڵەیە: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">نەناسراو</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">پشکنینەکە شکستی سەند: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">تۆکەنەکە پاککراوە</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">تۆکەنەکە پاشکەوت کرا</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">ئاگاداری: تۆکەنی پاشکەوتکراو هەڵەیە!</string>
+  <string name="morphe_music_lastfm_love_on_like_title">خۆشویستنی گۆرانییە لایککراوەکان</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">بە شێوەیەکی ئۆتۆماتیکی گۆرانییەکان لە Last.fm خۆشەوíst بکە کاتێک لە YouTube Music لایکیان دەکەیت (و خۆشەوístەکە لابدە کاتێک لایکەکەت لادەبەیت یان نا لایک دەکەیت)</string>
+  <string name="morphe_music_lastfm_token_title">ئاکاونتی Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">چووەتە ژوورەوە وەک %s. کلیک بکە بۆ بەڕێوەبردنی ئاکاونتەکە</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">زانیارییەکانی Last.fm بنوسە بۆ چوونه‌وه‌</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">ناوی بەکارهێنەر</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">وشەی نهێنی</string>
+  <string name="morphe_music_lastfm_token_dialog_login">چوونە ژوورەوە</string>
+  <string name="morphe_music_lastfm_token_status_empty">تکایە ناوی بەکارهێنەر و وشەی نهێنی بنووسە</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">چوونە ژوورەوە...</string>
+  <string name="morphe_music_lastfm_token_status_success">بە سەرکەوتوویی چووە ژوورەوە!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">نەتوانرا دانیشتن لە Last.fm وەربگیرێت</string>
+  <string name="morphe_music_lastfm_token_status_failed">چوونە ژوورەوە سەرکەوتوو نەبوو: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">زانیارییەکانی Last.fm پاشکەوت کران!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">پاککردنەوەی مێتاداتا</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">پاککردنەوەی مێتاداتا</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">بە شێوەیەکی ئۆتۆماتیکی شتە زیادەکانی باو (وەک \"Official Video\", \"Remaster\", \"Live\") لە ناونیشانەکان، هونەرمەندان و ئەلبوومەکان پاک بکەرەوە پێش scrobbling</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">پاککردنەوەی تایبەتی regex</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">دەربڕینێکی ڕێکی تایبەت بنووسە بۆ لادانی دەقە زیادەکان لە ناوی گۆرانی، ئەستێد، یان ئەلبوومەکان. نموونە: (?i)\\s*\\((clean|explicit)\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">هونەرمەند و تراک لە ناونیشانەکە وەربگرە</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">ناوی هونەرمەند و گۆرانییەکە لە ناونیشانی ڤیدیۆکە دەربهێنە بە بەکارهێنانی جیاکەری \" - \". ئەمە بەسوودە بۆ ئەو ناوەڕۆکانەی دووبارە 업لۆد کراون کە ناوی کەناڵەکە وەک هونەرمەند بەکاردێت</string>
+  <string name="morphe_music_scrobbling_guess_album_title">پڕکردنەوەی ئەلبەمی ونبوو</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">کاتێک مۆسیقاکە ئەلبومێکی تێدا نەبێت، لە Last.fm بگەڕێ بۆ ئەوەی scrobble-ەکەت تەواو بێت</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_about_summary">"scrobbling بە شێوەیەکی ئۆتۆماتیکی بەکارهێنانی YouTube Music ڕێکدەخات لەگەڵ پرۆفایلی Last.fm یان ListenBrainz
+
+بۆ دڵنیابوون لەوەی scrobbling لە کاتی لێدانی گۆرانی لە پشتپاشان ڕێکدەخرێت، دڵنیاببە کە بەکارهێنانی باتری ئەپی YouTube Music لەسەر \"Unrestricted\" ڕاگراوە"</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">بەکارهێنانی تێکستی گۆرانی لەلایەن لایەنی سێیەمەوە</string>
+  <string name="morphe_music_lyrics_enabled_summary">تێکستی گۆرانی لە خزمەتگوزارییەکی لایەنی سێیەم نیشان دەدات، و ئەگەر هیچێکیان نەدۆزرانەوە دەگەڕێتەوە بۆ تێکستی گۆرانی ناوخۆیی</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">شاشەکە چالوو بهێڵە لە کاتی بینینی تێکستەکاندا</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">رێگری دەکات لە کوژانەوەی شاشەکە کاتێک پانێڵی تێکستەکان کراوەیە</string>
+  <string name="morphe_music_lyrics_section_service_title">خزمەتگوزاری تێکستی گۆرانییەکان</string>
+  <string name="morphe_music_lyrics_section_display_title">پیشاندان</string>
+  <string name="morphe_music_lyrics_section_sync_title">هاوسەنگکردن</string>
+  <string name="morphe_music_lyrics_section_panel_title">پانێڵ</string>
+  <string name="morphe_music_lyrics_source_all_disabled">هەموو دابینکەران ڕاگیراون - دەقە ناوخۆییەکان و دەقە لەناوبووەکان</string>
+  <string name="morphe_music_lyrics_source_reset_title">ڕێکخستنی دابینکەران بگەڕێنرێتەوە بۆ سەرەتایی؟</string>
+  <string name="morphe_music_lyrics_source_reset_message">گەڕاندنەوەی دابینکەران بۆ ڕێکی پێشنیارکراوی سەرەتایی</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">خۆکار</string>
+  <string name="morphe_music_lyrics_clear_cache_title">پاککردنەوەی تێکستە پاشکەوتکراوەکان</string>
+  <string name="morphe_music_lyrics_clear_cache_done">%1$s MB پاککرایەوە</string>
+  <string name="morphe_music_token_dialog_get_token">وەرگرتنی تۆکن</string>
+  <string name="morphe_music_apple_music_token_title">تۆکنی بەکارهێنەری میدیای Apple Music</string>
+  <string name="morphe_music_apple_music_token_dialog_instruction">"کووکی media-user-token لە music.apple.com لێرە دابنێ
+
+ هەنگاوەکان:
+١. لە music.apple.com وەک ئەندام بچۆ ژوورەوە
+٢. DevTools → Application → Cookies → music.apple.com بکەرەوە
+٣. بەهای \"media-user-token\" کۆپی بکە"</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token پاشکەوت کرا</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token پاککراوە</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: media-user-token نادروستە - تکایە پشکنینی بکە و دووبارە هەوڵ بدەرەوە</string>
+  <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
+  <string name="morphe_music_spotify_token_dialog_instruction">"کووکی sp_dc لە Spotify لێرە دابنێ.
+
+هەنگاوەکان:
+١. بچۆوە ناو open.spotify.com و داخڵبە
+٢. DevTools → Application → Cookies → open.spotify.com بکەرەوە
+٣. بەهای \"sp_dc\" کۆپی بکە"</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc پاشکەوت کرا</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc پاککراوە</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc نادروستە - تکایە پشکنینی بکە و دووبارە هەوڵ بدەرەوە</string>
+  <string name="morphe_music_apple_token_optional_hint">تۆکنی Apple Music ئارەزوومەندانەیە. بەبێ ئەوە، Lyrically وەک جێگەیگۆڕە بەکاردێت</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
+  <string name="morphe_music_deezer_arl_dialog_instruction">"کووکی arl لە Deezer لێرە دابنێ.
+
+هەنگاوەکان:
+١. بچۆوە ناو deezer.com و داخڵبە
+٢. DevTools → Application → Cookies → deezer.com بکەرەوە
+٣. بەهای \"arl\" کۆپی بکە"</string>
+  <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl پاشکەوت کرا</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl پاککراوە</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl نادروستە - تکایە پشکنینی بکە و دووبارە هەوڵ بدەرەوە</string>
+  <string name="morphe_music_musixmatch_token_title">تۆکنی Musixmatch</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">تۆکنێک تەنها بۆ ئەوە زیاد بکە کە هەژماری خۆت بەکاربهێنیت. دەبێت لە ئەپڵیکەیشنی Musixmatch بۆ ئەندرۆیدەوە بێت: ئەو تۆکنانەی لە musixmatch.com کۆپی دەکرێن سەر بە کلایانتی دیسکتۆپی کۆنەن و API رەتی دەکاتەوە</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch بەبێ تۆکن کاردەکات، بۆیە ئەم خانەیە دەکرێت بەتاڵ بمێنێت</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">تۆکنی بەکارهێنەر</string>
+  <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: تۆکنی بەکارهێنەر پاشکەوت کرا</string>
+  <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: تۆکنی بەکارهێنەر پاککرا</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: تۆکەنی بەکارهێنەر نادروستە - تکایە پشکنینی بکە و دووبارە هەوڵ بدەرەوە</string>
+  <string name="morphe_music_youtube_cookies_title">کوکیەکانی YouTube</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"کوکییەکانی YouTube لێرە دابنێ بۆ داواکردنی ژێرنووس و دەقی کاتەکان لە YouTube.
+
+هەنگاوەکان:
+1. youtube.com لە وێبگەڕێکدا بکەرەوە و بچۆ ژوورەوە
+2. DevTools (F12) بکەرەوە ← Application ← Cookies ← youtube.com
+3. تەواوی ستێرنگی کوکییەکان کۆپی بکە (جووتەکانی key=value کە بە خاڵ و کۆما جیاکراون)
+
+کوکییە پێویستەکان: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
+  <string name="morphe_music_youtube_cookies_toast_saved">YouTube: کوکییەکان پاشکەوتکران</string>
+  <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: کوکییەکان پاککرانەوە</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: کوکییەکان نادروستن - تکایە پشکنینیان بکە و دووبارە هەوڵ بدەرەوە</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">هێڵێک دابگرە</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">سەر هێڵێک دابگرە بۆ ئەوەی بچیت بۆ ئەو ساتە لە گۆرانییەکەدا، بۆ ماوەیەک دایبگرە بۆ کۆپیکردنی وشەی ژێر پەنجەت، یان هەموو هێڵەکە ئەگەر پەنجەت سەر وشەیەک نەبێت. لێدانی \"کۆتایی\" هەردوو ئەم جوڵەیە لادەبات</string>
+  <string name="morphe_music_lyrics_show_section_title">پیشاندانی تاگی بەشەکان</string>
+  <string name="morphe_music_lyrics_show_section_summary">تاگی بچووک بخە سەر هەر بەشێکی نوێی تێکستی گۆرانییەکان، وەک Verse یان Chorus</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">نیشاندانی دوگمەی کۆپی</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">دابگرە بۆ کۆپیکردنی تێکستی ڕەسەنی گۆرانییەکە وەک تێکستی سادە؛ بۆ ماوەیەک دایبگرە بۆ پاشکەوتکردنی فایلەکەی سەرچاوەی تێکستەکە لە Downloads</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">نیشاندانی دوگمەی وەرگێڕان</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">خوێندنەوەکان ئامادەن (%1$d تۆمار)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">داگرتنی نەسەرکەوت</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">خوێندنەوەی %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_refresh_button_title">نیشاندانی دوگمەی نوێکردنەوە</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">کلیک بکە بۆ گۆڕین بۆ کاندیدی داهاتووی تێکست؛ پەستانی درێژ بکە بۆ گەڕان بەدوای تێکستدا بەپێی ناوی گۆرانی و هونەرمەند</string>
+  <string name="morphe_music_lyrics_search_dialog_title">گەڕانی تێکستەکانی گۆرانی</string>
+  <string name="morphe_music_lyrics_search_title_hint">ناونیشانی گۆرانی</string>
+  <string name="morphe_music_lyrics_search_artist_hint">هونەرمەند</string>
+  <string name="morphe_music_lyrics_search_empty">ناونیشانی گۆرانی و هونەرمەندێک بنووسە</string>
+  <string name="morphe_music_lyrics_search_no_providers">هیچ کام لە دابینکەرە چالاککراوەکان ناتوانن گەڕان بۆ گۆرانییەکانی تر بکەن</string>
+  <string name="morphe_music_lyrics_saved">پاشکەوتکراو</string>
+  <string name="morphe_music_lyrics_word_sync_title">دیاریکردنی وشە یان syllable-ە هاوکاتکراوەکان</string>
+  <string name="morphe_music_lyrics_word_sync_summary">پێشینەدان بە تێکستی وشە بە وشە کاتێک بەردەست بێت. کاتێک تێکستەکە کاتی وشەکانی تێدابێت، هەر وشە یان syllable-ێک لەگەڵ کاتی مۆسیقاکەدا دیاری دەکات</string>
+  <string name="morphe_music_lyrics_hide_played_title">شاردنەوەی تێکستی لێدراو</string>
+  <string name="morphe_music_lyrics_hide_played_summary">شاردنەوەی دێڕەکانی تێکست لەسەر ئەو دێڕەی ئێستا لێ دەدرێت</string>
+  <string name="morphe_music_lyrics_hide_unplayed_title">شاردنەوەی تێکستی نەلێدراو</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">شاردنەوەی دێڕەکانی تێکست لە خوار ئەو دێڕەی ئێستا لێ دەدرێت</string>
+  <string name="morphe_music_lyrics_mediasession_title">پیشاندانی تێکستی MediaSession لە شاشەی قفڵکراو</string>
+  <string name="morphe_music_lyrics_mediasession_summary">دێڕی ئێستا لە شاشەی قفڵ، Android Auto و Bluetooth پیشان دەدات. پێویستی بە Android 11 یان نوێترە</string>
+  <string name="morphe_music_lyrics_miniplayer_title">پیشاندانی تێکستی مینیپڵەیەر</string>
+  <string name="morphe_music_lyrics_miniplayer_summary">هێڵی ئێستا لە پلییەرە بچووکەکەدا پیشان دەدات، لەگەڵ گواستنەوەی تڕاکەکە بۆ ژێرنووسەکە</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">فۆرماتی ناونیشانی گۆرانی/هونەرمەند</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">فۆرماتی تڕاکەکە کە لەگەڵ تێکستەکە لە مینیپڵەیەر و MediaSession پیشان دەدرێت. {t} ناونیشانەکەیە، {a} هونەرمەندەکەیە و {v} وەشانەکەیە، وەک Acoustic، کاتێک سەرچاوەی تێکستەکە دانەیە. تێکستی نێوان دوو کۆلۆن تەنها کاتێک پیشان دەدرێت کە هەموو گۆڕاوەکانی ناوەوەی بەهایان هەبێت؛ بۆ کۆلۆنێکی ئاسایی \\: بنوسە. هەر دێڕێک بە ڕیزبەندی پیشان دەدرێت و دەگۆڕێت هەر کاتێک تێکستەکە بگۆڕێت</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">فۆرماتی دێڕی تێکست</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">شێوازی دێڕی تێکستی گۆرانییەکە لە Miniplayer و MediaSession. {lrc} دێڕەکەیە و {n} ژمارەی جارەکانیەتی کە بە ڕیزبەندی دەوترێت. دەقەکەی نێوان کۆلۆنەکان تەنها کاتێک پیشان دەدرێت کە دێڕەکە دووبارە ببێتەوە. بۆ کۆلۆنێک \\: بەکاربهێنە</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">شێوازەکە دەبێت {lrc} ی تێدابێت</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">قالبى دێڕی هونەرمەند و کاتی ئەنیمەیشن</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">کەمترین کاتی شاشە (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">زۆرترین کاتی شاشە (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">تەنها بۆ ئەنیمەیشنی چەند دێڕی. هەر فریمێک بۆ کەمترین کات دابنێ. لە زۆرترین کاتدا، دێڕی هونەرمەندەکە پێببە تەنانەت ئەگەر تێکستی گۆرانییەکە هەمان شت بووبێت.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">کەمترین دەبێت 0 یان زیاتر بێت. زۆرترین دەبێت زیاتر بێت لە 0 و لانی کەم هەمان کاتی کەمترین بێت.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">سەنگەکانی درێژی دێڕ</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">سەنگەکانی دێڕی تێکست و ئەستەت، و کێشی کارەکتەرە پانەکانیش</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"سەنگی دێڕی تێکست
+تێکستە درێژەکان دابەش بکە بۆ دوو بەشی هاوسەنگ. 0 دابەشکردن ڕادەگرێت."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"سەنگی دێڕی ئەستەت
+فۆرماتی تراکی پڕکراو دابەش بکە بۆ فریمەکانی سوڕانەوە. 0 دابەشکردن ڕادەگرێت."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"کێشی کارەکتەرە پانەکانیش
+بۆ هەردوو سەنگەکە جێبەجێ دەکرێت. لە ١.٧٥، هەر چوار کارەکتەرێکی پان وەک ٧ هەژمار دەکرێن."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">سەنگەکانی ژمارەی تەواو لە ٠ تا ١٠٠٠٠ و کێشی کارەکتەرێک زیاتر لە ٠ بنوسە</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">پشکی ئامرازی مۆسیقا</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">لە مینیپڵەیەر و MediaSession لە کاتی پشکێنی ئامێرەکاندا پیشان دەدرێت. هەر دێڕێک فریمێکی ئەنیمەیشنە. {t} ناونیشانەکەیە، {a} هونەرمەندەکەیە و {lrc} دوا دێڕی تێکستەکەیە</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">کاتی جیاوازی مینیپڵەیەر و MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">کاتەکەی دەگۆڕێت کە دێڕی داهاتوو لە مینیپڵەیەر و MediaSession پیشان دەدرێت. بەهای نەرێنی بەکاربهێنە ئەگەر دێڕەکان بە دواوە دەرکەون، بۆ نموونە لە شاشەی قفڵکردندا</string>
+  <string name="morphe_settings_music_lyrics_metadata_title">فلتەرەکان</string>
+  <string name="morphe_music_lyrics_custom_regex_title">Regex مێتاداتا</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">دەربڕینێکی ڕێگایەکی ئاسایی کە لەسەر ناونیشانەکان، هونەرمەندەکان و ئەلبوومەکان جێبەجێ دەکرێت پێش گەڕان بەدوای تێکستەکانی گۆرانی و لە کاتی هەڵسەنگاندنی ئەوەی ئایا دوو ناونیشان دەگەنە یەک. بۆ لادانی هەردووکیان بە بەتاڵی جێبهێڵە. ڕێکخستنی سەرەکی شتە زیادەی باوەکان لادەبات وەک \"Official Video\", \"Remaster\", \"【插曲】\", و \"- Topic\"</string>
+  <string name="morphe_music_lyrics_text_filter_title">ڕێگاکسپرێشنی فلتەری تێکستی گۆرانییەکان</string>
+  <string name="morphe_music_lyrics_text_filter_summary">ڕێگاکسپرێشنێک کە تەنها لەسەر تێکستی ڕەسەنی گۆرانییەکان جێبەجێ دەکرێت (نەک وەرگێڕانەکان یان ڕۆمانایزەکان). بۆ لایبەرکردنی بەتاڵى بهێڵە</string>
+  <string name="morphe_music_lyrics_credit_line_regex_title">نیشانەکانی هێڵی زانیاری</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">ئەگەر تێکستی گۆرانییەکان بە هەڵە فلتەر کران بۆ خوارەوە، ئەمەی ڕێک بخە یان سڕی up. نیشانەکانی بە کۆما جیاکراون: ئەو هێڵانەی نیشانەیەک تێدایە و دوایش کەلۆن (:) دێت، وەک زانیاریی خاوەنماڵ لە خوارەوە پیشان دەدرێن. بۆ لایبەرکردنی بەتاڵى بهێڵە</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">پیتێکی یەکەمی بە پیتی گەورە بنووسە</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">پیتێکی یەکەمی هەر دێڕێکی تێکست بە پیتی گەورە دەنووسێت</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">لابردنی نیشانەکانی کۆتایی ڕستە</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">خاڵ، کۆما، دووخاڵ و نیوخاڵ لە کۆتایی دێڕەکانی تێکستەکە لادەبات. نیشانەی پرسیار، نیشانەی سەرسوڕمان، سێ خاڵ، نیشانەی کوتاس و کەوانەکان دەمێننەوە</string>
+  <string name="morphe_music_lyrics_text_size_title">قەباره‌ی تێکست</string>
+  <string name="morphe_music_lyrics_text_size_summary">قەباره‌ی تێکستی گۆرانییەکان</string>
+  <string name="morphe_music_lyrics_offset_ms_title">گۆڕانی کاتی گشتی</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">تێکستی گۆرانییە هاوخەونەکان لەگەڵ لێدانی موزیکەکە دەڕۆن. ئەگەر لادان هەبوو، کاتی گۆڕانکاری offset ڕێک بخە. تێکستە هاوخەونەکان بەرەو پێش یان دواوە بگوازرە. بەهای ئەرێنی بەکاربهێنە ئەگەر تێکستەکە پێش موزیکەکە دەڕۆی</string>
+  <string name="morphe_music_lyrics_sb_matching_title">بەکارهێنانی بەشەکانی SponsorBlock بۆ گۆڕینی شوێنی تێکستەکان</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">بەستنەوە بێ ئەو بەشانەی کە SponsorBlock تێپەڕیان دەکات و گواستنەوەی تێکستەکان بۆ سەر دەنگی بڵاوکراوەکە. لایەنی کوژاندنەوە بە تەواوی پشتگوێی SponsorBlock دەکات</string>
+  <string name="morphe_music_lyrics_sb_no_video">ئەم تراکە هیچ ناسنامەیەکی ڤیدیۆی نییە بۆ ناردن</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">سەرچاوە: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">دوگمەی کۆپیەکە بۆ ماوەیەک دابگرە بۆ پاشکەوتکردنی ئەم LRC؛ ئەگەر بتوانی کاتەکانی ڕێک بخەیت و لەگەڵ دابینکەرانی کۆمەڵگەکە بەشیکەیتەوە، سوپاسگوزارت دەبین</string>
+  <string name="morphe_music_lyrics_translated_by_google">وەرگێڕدراوە لەلایەن Google</string>
+  <string name="morphe_music_lyrics_romanized_by_google">ڕۆمانایزکراوە لەلایەن Google</string>
+  <string name="morphe_music_lyrics_translated_by_ai">وەرگێڕدراوە لەلایەن %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">ڕۆمانای کردراوە لەلایەن %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">ڕۆمانیزەکراوە لەلایەن %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_hide">وەرگێڕدراوە</string>
+  <string name="morphe_music_lyrics_translation_language_title">زمانی وەرگێڕان</string>
+  <string name="morphe_music_lyrics_translating">وەرگێڕان دەکرێت…</string>
+  <string name="morphe_music_lyrics_translate_failed">نەتوانرا وەرگێڕانی تێکستەکەی گۆرانییەکە بکرێت</string>
+  <string name="morphe_music_lyrics_romanize_hide">ڕۆمانیزە</string>
   <string name="morphe_romanize_language_DEFAULT">خۆکار</string>
+  <string name="morphe_music_lyrics_romanizing">ڕۆمانیزە دەکرێت…</string>
+  <string name="morphe_music_lyrics_romanize_failed">نەتوانرا تێکستی گۆرانییەکە ڕۆمانیزە بکرێت</string>
+  <string name="morphe_music_lyrics_translate_only">تەنها وەرگێڕدراو</string>
+  <string name="morphe_music_lyrics_romanize_only">تەنها ڕۆمانایز</string>
+  <string name="morphe_music_lyrics_dual_only">مۆدی دوولایەنە</string>
+  <string name="morphe_music_lyrics_copied">کۆپی کرا بۆ ڕوونووسگە</string>
+  <string name="morphe_music_lyrics_refreshing">نوێکردنەوە</string>
+  <string name="morphe_music_lyrics_refreshed">نوێکرا</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">کلیلى API QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">کلیلەکەی QuickLRC پاشکەوت کرا. دوگمەی ڕێکخستن لەناو دایالۆگی گەڕانی تێکستەکان بەکاربهێنە، یان ئامۆژگاری پانێڵەکە کاتێک تراکێک تێکستی نییە</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">کلیلەکانی APIی QuickLRC پاشکەوت کرا</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC ئەو کلێلەی نەناساند</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">کلیلەکانی APIی QuickLRC پاککراەوە</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC کاتی ئەو تێکستانە ڕێکدەخات کە کاتیان نییە، یان لە تراکەکەوە دەینووسێتەوە، بە بەرامبەر بە مەبەلی کرێدیت. بە هەبوونی کلیلێک، ئەو تراکانەی تێکستیان نییە گۆڕینی بۆ نووسین پێشکەش دەکەن و دایالۆگی گەڕان دوگمەی ڕێکخستنی تێدا دەبێت</string>
+  <string name="morphe_music_lyrics_transcribe_align">داواکردنی ڕێکخستنی QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">خەریکی ڕێکخستنە</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">جێبەجێکردنی ڕێکخستن</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">داواکردنی گۆڕینی دەنگ بۆ نووسین لە QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_working">خەریکی گۆڕینی دەنگە بۆ نووسین</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">گۆڕینی دەنگ بۆ نووسین هەڵوەشێندرایەوە</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">تەنها ئەو گۆرانیانەی لە YouTube لێدەدرێن دەکرێت وەربگێڕدرێن بۆ دەق</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">هیچ تێکستێک نییە بۆ ڕێکخستن - لەجیاتی ئەوە دەینووسێتەوە</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC نەیتوانی ئەم گۆرانییە پرۆسە بکات</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">کrédit-ەکانی QuickLRC بۆ ئەم گۆرانییە تەواو بوون</string>
+  <string name="morphe_music_lyrics_source_advice_summary">تەنها ئەو دابینکەرانە چالاک بکە کە بەکاریان دەهێنیت، یان هەر هەر ئێستا هەرکە بنەمکە - داواکارییەکانی بەردەوام دەتوانن فشار بخەنە سەر سایتە بچووکەکانی تێکستی گۆرانی</string>
+  <string name="morphe_music_lyrics_hide_info_title">شاردنەوەی هێڵی ناسنامە</string>
+  <string name="morphe_music_lyrics_hide_info_summary">شاردنەوەی هێڵی ناسنامەی کە لە خوار تێکستی گۆرانییەکەدا پیشان دەدرێت</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_title">گۆڕینی شوێنی وەرگێڕان و ڕۆمانیزە</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_title">قاڵبی پرۆمپت</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">جێنشینەکان: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_saved">پرۆمپتەکە پاشکەوت کرا</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">ئامۆژگارییەکە پاشکەوت کرا، بەڵام خاڵی کۆتایی AI هێشتا بەکارناهێنرێت. سەرەتا لە ڕێکخستنەکانی AI ڕێکی بخە</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_reset">پرۆمپتەکە سفر کرا</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">ڕێکخستنەکانی وەرگێڕان &amp; ڕۆمانیزە کردن پاشکەوتکران</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">ڕێکخستنەکان گەڕانەوە بۆ دۆخی سەرەتایی</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">ناونیشانی بنەڕەتی دەبێت بە http:// یان https:// دەست پێ بکات</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">پشکنینی پەیوەندییەکە دەکرێت…</string>
+  <string name="morphe_music_lyrics_ai_config_fetching_models">هێنانى مۆدێلەکان...</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_success">مۆدێلێک هەڵبژێرە</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_failed">کێشەیەک لە هێنانی مۆدێلەکاندا ڕوویدا. تکایە کلیلی API یان پەیوەندی ئینتەرنێتەکە بپشکنە.</string>
+  <string name="morphe_music_lyrics_ai_config_model_label">مۆدێل</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_label">ناونیشانی بنەڕەتی (Base URL)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_label">کلیلى API (ئارەزوومەندانە)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_label">لەشی گەشتی زیادە (JSON ئارەزوومەندانە)</string>
+  <string name="morphe_music_lyrics_ai_config_deepl_key_label">کۆدی سەلماندنی ناسنامە (بێبەرامبەر یان پرۆ)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - ڕاگرتنی ئایکۆنە ئەستوورەکان</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - گەڕاندنەوەی بەسەکانی Player Up next و Lyrics و Related</string>
 </resources>

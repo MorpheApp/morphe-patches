@@ -17,8 +17,101 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Oxirgi marta ijro etilgan</string>
   <string name="morphe_music_android_auto_subscriptions">Obunalar</string>
+  <string name="morphe_music_android_auto_videos">Videolar</string>
+  <string name="morphe_music_android_auto_other_results">Boshqa natijalar</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Yuklangan qo\'shiqlar</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Yuklangan albomlar</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Yuklangan ijrochilar</string>
   <!-- app.morphe.patches.music.interaction.jam -->
+  <string name="morphe_music_jam_update_host_controls">Tanaffus va davom ettirishdan foydalanish uchun mezbonning Jam patchini yangilang</string>
+  <string name="morphe_music_jam_probe_title">Jam navbatini baham ko\"rish</string>
+  <string name="morphe_music_jam_probe_summary">Yaqindagi Jam-ga mezbonlik qiling yoki qo\'shiling va Jam qatlami orqali uning navbatini tahrirlang</string>
+  <string name="morphe_music_jam_enabled_title">Jam navbatini baham ko\'rishni yoqish</string>
+  <string name="morphe_music_jam_enabled_summary">YouTube Music qayta ishga tushirilgandan so\'ng Jam integratsiyasini yoqadi</string>
+  <string name="morphe_music_jam_download_title">Ishga tushirish uchun Jam Layer-ni yuklab oling</string>
+  <string name="morphe_music_jam_download_summary">Brauzeringizda Jam Layer-ning oxirgi versiyasini oching</string>
+  <string name="morphe_music_jam_controls_title">Jam boshqaruvi</string>
+  <string name="morphe_music_jam_controls_summary">Yaqin atrofdagi Jam-ni boshqaring yoki unga qo\'shiling va sessiyani boshqaring</string>
+  <string name="morphe_music_jam_companion_package_title">Jam Layer paketi</string>
+  <string name="morphe_music_jam_companion_package_summary">Yaqin atrofdagi navbatni baham ko\'rish uchun foydalaniladigan o\'rnatilgan hamroh ilovani tanlang</string>
+  <string name="morphe_music_jam_package_message">O\'rnatilgan hamroh paketidan foydalaning. Juftlash uchun sizning roziligingiz va mahalliy imkoniyat tokeni talab qilinadi</string>
+  <string name="morphe_music_jam_wifi_title">Wi-Fi yoqilsinmi?</string>
+  <string name="morphe_music_jam_wifi_message">Wi-Fi-ni yoqing, so\'ngra Jam-ni qaytadan boshlashga yoki unga qo\'shilishga harakat qiling</string>
+  <string name="morphe_music_jam_wifi_settings">Wi-Fi sozlamalarini ochish</string>
+  <string name="morphe_music_jam_cancel">Bekor qilish</string>
+  <string name="morphe_music_jam_use_package">Paketdan foydalanish</string>
+  <string name="morphe_music_jam_invalid_package">Android paketining to\'g\'ri nomini kiriting</string>
+  <string name="morphe_music_jam_package_saved">Paket saqlandi. Ulanish uchun Jam Layer-ni sozlang</string>
+  <string name="morphe_music_jam_disconnected">Jam uzildi</string>
+  <string name="morphe_music_jam_enable_layer_first">Avval Jam Layer-ni yoqing</string>
+  <string name="morphe_music_jam_enable_patch_first">Sozlamalarda Jam navbati bilan bo\"lishishni yoqing, so\"ng YouTube Music​ni qayta ishga tushiring</string>
+  <string name="morphe_music_jam_install_layer_first">Avval tanlangan Jam Layer paketini o\"rnating</string>
+  <string name="morphe_music_jam_join_hint">Xostda ko\'rsatilgan kodni kiriting. Wi-Fi Aware mahalliy tarmoqlar turlicha bo\'lsa ham yaqin atrofdagi qurilmalarni ulash imkonini beradi</string>
+  <string name="morphe_music_jam_join_with_code">Kod orqali qo\"shilish</string>
+  <string name="morphe_music_jam_join">Qo\"shilish</string>
+  <string name="morphe_music_jam_scan_qr">QR-kodni skanerlash</string>
+  <string name="morphe_music_jam_invalid_invite">Sakkiz belgili kodni kiriting yoki taklifnomani joylang</string>
+  <string name="morphe_music_jam_join_your_jam">Jam-ga qo\"shiling</string>
+  <string name="morphe_music_jam_copy_code">Kodni nusxalash</string>
+  <string name="morphe_music_jam_code_clip">Jam kodi</string>
+  <string name="morphe_music_jam_show_qr">QR-kodni ko\"rsatish</string>
+  <string name="morphe_music_jam_done">Tayyor</string>
+  <string name="morphe_music_jam_invite_title">Jam sessiyangizga taklif qilish</string>
+  <string name="morphe_music_jam_invite_message">Ushbu navbatga qo\'shilish va uni tahrirlash uchun skaner qiling. Jam sessiyasini yakunlash taklifnomani bekor qiladi</string>
+  <string name="morphe_music_jam_copy_link">Havolani nusxalash</string>
+  <string name="morphe_music_jam_invitation_clip">Jam taklifi</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam qayta ulanmoqda; birozdan keyin qayta urinib ko\'ring</string>
+  <string name="morphe_music_jam_added_to_jam">Jamga qo\'shildi</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam mavjud emas; trek qo\'shilmadi</string>
+  <string name="morphe_music_jam_your_jam">Sizning Jam sessiyangiz</string>
+  <string name="morphe_music_jam_listening_together">Birgalikda tinglash</string>
+  <string name="morphe_music_jam_joining_jam">Jamga qo\'shilmoqda</string>
+  <string name="morphe_music_jam_listen_together">Birgalikda tinglash</string>
+  <string name="morphe_music_jam_updating">Jam yangilanmoqda…</string>
+  <string name="morphe_music_jam_finding_host">Wi-Fi orqali xost qidirilmoqda…</string>
+  <string name="morphe_music_jam_waiting_people">Odamlar kutilmoqda</string>
+  <string name="morphe_music_jam_one_connected">%s kishi ulandi</string>
+  <string name="morphe_music_jam_many_connected">%s kishi ulandi</string>
+  <string name="morphe_music_jam_code_expires">Ushbu kodni yaqindagi qurilmaga kiriting. Wi-Fi Aware qo\'llab-quvvatlanganda alohida LANlar orqali ishlaydi. Amal qilish muddati %s daqiqa</string>
+  <string name="morphe_music_jam_seek_to">%s ga o\'tish kerakmi?</string>
+  <string name="morphe_music_jam_edits_open">Tahrirlash ochiq</string>
+  <string name="morphe_music_jam_edits_locked">Tahrirlash bloklangan</string>
+  <string name="morphe_music_jam_connected_aware">Wi-Fi Aware orqali ulandi</string>
+  <string name="morphe_music_jam_connected_wifi">Wi-Fi orqali ulandi</string>
+  <string name="morphe_music_jam_connected_bluetooth">Bluetooth orqali ulandi</string>
+  <string name="morphe_music_jam_unsupported">Jam paytida qo\'llab-quvvatlanmaydi</string>
+  <string name="morphe_music_jam_cancelled">Birlashish bekor qilindi</string>
+  <string name="morphe_music_jam_reconnecting_host">Mezbon bilan qayta bog\'lanilmoqda…</string>
+  <string name="morphe_music_jam_share_prompt">Navbatni ulashing. Hammaga qo\'shiqlar qo\'shish imkonini bering</string>
+  <string name="morphe_music_jam_invite_people">Odamlarni taklif qilish</string>
+  <string name="morphe_music_jam_guest_edits">Mehmonlar navbatni tahrirlashi mumkin</string>
+  <string name="morphe_music_jam_end_jam">Jamni tugatish</string>
+  <string name="morphe_music_jam_participant_help">Musiqani mezbon ijro etadi. YouTube Music navbatiga to\'g\'ridan-to\'g\'ri qo\'shiqlar qo\'shing, ko\'chiring yoki olib tashlang</string>
+  <string name="morphe_music_jam_joining_help">Ikkala qurilmani yaqin holda saqlang. Mezbonni qidirayotganimizda bekor qilishingiz mumkin</string>
+  <string name="morphe_music_jam_cancel_joining">Birlashishni bekor qilish</string>
+  <string name="morphe_music_jam_leave_jam">Jamdan chiqish</string>
+  <string name="morphe_music_jam_start_jam">Jamni boshlash</string>
+  <string name="morphe_music_jam_setup_layer">Jam qatlamini sozlash</string>
+  <string name="morphe_music_jam_manage">Boshqarish</string>
+  <string name="morphe_music_jam_details">Tafsilotlar</string>
+  <string name="morphe_music_jam_open">Ochish</string>
+  <string name="morphe_music_jam_loading_song_options">Qo\"shiq variantlari yuklanmoqda…</string>
+  <string name="morphe_music_jam_song_options_unavailable">Qo\"shiq variantlari mavjud emas; qaytadan urinib ko\"ring</string>
+  <string name="morphe_music_jam_song_options_failed">Qo\"shiq variantlarini ochib bo\"lmadi</string>
+  <string name="morphe_music_jam_no_browser">Jam Layer-ni yuklab olish uchun brauzer mavjud emas</string>
+  <string name="morphe_music_jam_waiting_host_queue">Host navbati kutilmoqda</string>
+  <string name="morphe_music_jam_open_song_first">Avval YouTube Music-da qo\"shiqni oching</string>
+  <string name="morphe_music_jam_play_on_host">Host-da ijro etish</string>
+  <string name="morphe_music_jam_quit_and_play">Jam-dan chiqish va lokal tarzda ijro etish</string>
+  <string name="morphe_music_jam_play_next">Jamda keyingisini ijro etish</string>
+  <string name="morphe_music_jam_add_to_queue">Jam navbatiga qo\'shish</string>
+  <string name="morphe_music_jam_play_track">Ushbu Jam trekini ijro etish</string>
+  <string name="morphe_music_jam_choose_playback">Qayerda ijro etishni tanlang</string>
+  <string name="morphe_music_jam_move_host_here">Mezbonni bu yerga ko\'chirish</string>
+  <string name="morphe_music_jam_seek_not_ready">Qo\'shiqni boshqatirish uchun tayyor emas</string>
+  <string name="morphe_music_jam_queue_changed_gesture">Navbat o\'zgardi; imo-ishorani qaytadan urinib ko\'ring</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Sarlavha logotipi</string>
@@ -29,9 +122,51 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Qo\'shiqlarning faqat audio versiyasini musiqiy video o\'rniga ijro eting. \'Video oqimlarini soxtalashtirish\' talab qiladi.</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Audio/video o\'zgartirgichni yoqish</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Audio trek versiyasi va rasmiy musiqa videosini almashtirishga harakat qilib ko\'ring</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Uchinchi tomon yuklab olish ilovalari yordamida musiqa videolari, podkastlar yoki qo‘shiqlarni yuklab oling</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Yuklab olish menyusi uchun tashqi yuklovchidan foydalanish</string>
+  <string name="morphe_external_downloader_menu_summary">Menyulardagi Yuklab olish opsiyasi o\'rniga tashqi yuklovchingiz ochiladi</string>
+  <string name="morphe_music_downloads_screen_title">Yuklab olishlar</string>
+  <string name="morphe_music_downloads_empty">"Yuklab olishlar yo\"q
+Yuklab olingan treklar shu yerda ko\"rinadi"</string>
+  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
+  <string name="morphe_music_downloads_search_hint">Yuklab olishlar orasidan qidirish</string>
+  <string name="morphe_music_downloads_sort">Saralash</string>
+  <string name="morphe_music_downloads_sort_artist">Ijrochi bo\"yicha saralash</string>
+  <string name="morphe_music_downloads_sort_title">Sarlavha bo\"yicha saralash</string>
+  <string name="morphe_music_downloads_sort_size">Hajmi bo\"yicha saralash</string>
+  <string name="morphe_music_downloads_delete_all">Barcha yuklab olishlarni o\"chirish</string>
+  <string name="morphe_music_downloads_delete_all_title">Barcha yuklab olishlarni o\"chirmoqchimisiz?</string>
+  <string name="morphe_music_downloads_delete_all_message">Barcha yuklab olingan treklar ushbu qurilmadan o\'chiriladi</string>
+  <string name="morphe_music_downloads_all_deleted">Yuklamalar o\'chirildi</string>
+  <string name="morphe_music_downloads_nothing_found">Hech narsa topilmadi</string>
+  <string name="morphe_music_downloads_actions_for">%s uchun harakatlar</string>
+  <string name="morphe_music_downloads_play">Ijro etish</string>
+  <string name="morphe_music_downloads_play_pause">Ijro etish yoki to\'xtatish</string>
+  <string name="morphe_music_downloads_previous">Oldingi</string>
+  <string name="morphe_music_downloads_next">Keyingi</string>
+  <string name="morphe_music_downloads_pause">Tanaffus</string>
+  <string name="morphe_music_downloads_close">Yopish</string>
+  <string name="morphe_music_downloads_delete">O\'chirish</string>
+  <string name="morphe_music_downloads_delete_track">Yuklamani o\'chirish</string>
+  <string name="morphe_music_downloads_delete_track_title">Yuklamani o\'chirasizmi?</string>
+  <string name="morphe_music_downloads_delete_track_message">%s ushbu qurilmadan o\'chiriladi</string>
+  <string name="morphe_music_downloads_track_deleted">Yuklama o\'chirildi</string>
+  <string name="morphe_music_downloads_track_delete_failed">Yuklamani o\'chirib bo\'lmadi</string>
+  <string name="morphe_music_downloads_play_failed">Yuklamani ijro etib bo\'lmadi</string>
+  <string name="morphe_music_downloads_notification_channel">Audio yuklamalar</string>
+  <string name="morphe_music_downloads_playback_channel">Oflayn ijro</string>
+  <string name="morphe_music_downloads_unknown_track">Yuklab olish uchun trekni aniqlab bo\'lmadi</string>
+  <string name="morphe_music_downloads_already_running">Yuklab olish allaqachon davom etmoqda</string>
+  <string name="morphe_music_downloads_already_saved">Allaqachon yuklab olingan</string>
+  <string name="morphe_music_downloads_started">Yuklab olish boshlandi</string>
+  <string name="morphe_music_downloads_starting">Yuklab olish boshlanmoqda…</string>
+  <string name="morphe_music_downloads_progress">Yuklab olinmoqda %s%%</string>
+  <string name="morphe_music_downloads_complete">Yuklab olish yakunlandi</string>
+  <string name="morphe_music_downloads_failed">Yuklab olish muvaffaqiyatsiz tugadi</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Biz haqimizda</string>
@@ -41,6 +176,9 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_player_title">Player</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">Matnlar</string>
   <string name="morphe_settings_music_screen_9_misc_title">Qo‘shimcha</string>
+  <string name="morphe_music_app_language_title">YouTube Music tili</string>
+  <string name="morphe_music_app_language_summary_default">Tizim tili</string>
+  <string name="morphe_music_app_language_summary_unsupported">Android 13 yoki undan keyingi versiya talab qilinadi</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">\'Premiumga ulanish\' yozuvini yashirish</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Musiqa Premium aksiyalarini yashirish</string>
@@ -48,6 +186,7 @@ Second \"item\" text"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Audio / Video ni yashirish tugmasini ko‘rsatish/yashirish</string>
   <string name="morphe_music_hide_podcast_episode_download_button_title">Yuklab olish tugmasini yashirish</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Podkast shousida Yuklab olish tugmasini yashiradi</string>
   <string name="morphe_music_hide_explore_shelf_title">Kashf qilish javoni ni yashirish</string>
   <string name="morphe_music_hide_filter_bar_title">Filtr panelini yashirish</string>
   <string name="morphe_music_hide_grid_shelves_title">Tarmoq javonlarini yashirish</string>
@@ -105,7 +244,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Krosfeyd ushbu seans davomida pauza qilindi</string>
   <string name="morphe_music_crossfade_resumed_toast">Krosfeyd tiklandi</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Krosfeyd yoqilganda video rejimidan foydalanib bo‘lmaydi</string>
+  <string name="morphe_music_crossfade_sabr_toast">SABR ijrosi bilan Crossfade o\"chirilgan</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Translyatsiya paytida Crossfade o\"chirilgan</string>
   <string name="morphe_music_crossfade_about_how_title">Qanday ishlaydi</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Krosfeyd bir qo‘shiqning oxirini keyingi qo‘shiqning boshlanishi bilan ustma-ust qo‘yadi, bunda sizning davomiyligingiz va egri chizig‘ingizdan foydalaniladi
+
+U avtomatik o‘tishda va qo‘lda o‘tkazishda ishlaydi, ularning har biri uchun alohida yoqish/o‘chirish tugmasi mavjud. Avtomatik o‘tishda aralashtirish qo‘shiq tugashidan bir necha soniya oldin boshlanadi"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Cheklovlar</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Krossfeyd yoqilganda musiqa videolari faqat audio ko'rinishida ijro etiladi. Krossfeydni to'xtatish va videoni tomosha qilish uchun \"shuffle\" tugmasini uzoq bosing
+
+Ijro boshlangan musiqa videosi keyingi qo'shiqkacha video rejimida qoladi
+
+Davomiyeti feydlash vaqtidan qisqa bo'lgan qo'shiqlar krossfeyd qilinmaydi
+
+Blok ekran yoki bildirishnoma o'tish jarayonida qisqa muddatga eski holatni ko'rsatishi mumkin
+
+Musiqa videosini tomosha qilish uchun krossfeydni to'xtatish ba'zi videolarni qora ekranda qoldirishi mumkin. Qo'shiqni tanlashdan oldin krossfeydni to'xtatish bunga yo'l qo'ymaydi"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Qo\'llab-quvvatlanmaydi</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Audioni translyatsiya qilish yoki ko'rish (Chromecast, ekranni yoki audioni ko'rish)
+
+SABR ijrosi (Video oqimlarini taqlid qilish o'chirilgan)"</string>
   <string name="morphe_music_crossfade_about_credit_title">Mualliflar</string>
   <string name="morphe_music_crossfade_about_credit_summary">Krosfeyd funksiyasi VazerOG tomonidan yaratilgan</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -113,16 +271,28 @@ Second \"item\" text"</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Tasodifiy rejimini eslab qolish</string>
   <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Ijro tezligi</string>
+  <string name="morphe_music_playback_speed_summary">Barcha treklar uchun foydalaniladigan tezlik. 100% da ilova tezligi, masalan, podkast ijro tezligi ishlatiladi</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Tezlik bilan ohangni o\"zgartirish</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">\"Yoqtirmadi\" tugmasi yo‘naltirilishini o‘chirish</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Yoqmaslik tugmasi bosilganda keyingi trekga o\'tishning oldi olinadi</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Pleylist trekini bosish harakati</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Pleylistni ijro etish</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Faqat tanlangan trekni ijro etish</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Tanlangan trekni navbatga qo\'shish</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">Navbatga qo\'shildi</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Chromecast tugmasini yashirish</string>
   <string name="morphe_music_hide_history_button_title">Ko‘rishlar tarixi tugmasini yashirish</string>
   <string name="morphe_music_hide_notification_button_title">Bildirishnoma tugmasini yashirish</string>
   <string name="morphe_music_hide_search_button_title">Qidiruv tugmasini yashirish</string>
+  <string name="morphe_music_hide_voice_search_button_title">Ovozli qidiruv tugmasini yashirish</string>
+  <string name="morphe_music_hide_sound_search_button_title">Ovoz qidiruv tugmasini yashirish</string>
+  <string name="morphe_music_hide_library_new_button_title">Yangi tugmasini yashirish</string>
+  <string name="morphe_music_hide_library_new_button_summary">Kutubxona vkladkasidagi Yangi tugmasini yashiradi</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Amallar tugmalari</string>
   <string name="morphe_music_action_buttons_screen_summary">Pleyer ostida qaysi amal tugmalari ko‘rinishini tanlang</string>
@@ -191,6 +361,8 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_search">Qidiruv</string>
   <string name="morphe_change_start_page_entry_subscriptions">Obunalar</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Portret orientatsiyasini majburlash</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Qurilma aylantirilganda ilovani portret yo\"nalishida saqlaydi</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Miniplayerning rangini o\'zgartirish</string>
   <string name="morphe_music_change_miniplayer_color_summary">Miniplayerning rangini to\'liq ekran ijrochiga moslashtiradi</string>
@@ -273,6 +445,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Maxsusregex tozalash</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Ro\'yxatdan o\'chirish uchun qo\'shiq nomlari, ijrochilar yoki albomlardan qo\'shimcha matnni olib tashlash uchun moslashtirilgan muntazam ifodani kiriting. Misol: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Ijroni titrdan ajratish</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">\" - \" ajratgichidan foydalanib, video sarlavhasidan ijrochi va trek nomini ajratib olish. Bu kanal nomi ijrochi sifatida ishlatilgan qayta yuklangan kontentlar uchun foydali</string>
+  <string name="morphe_music_scrobbling_guess_album_title">Yetishmayotgan albumni to\'ldirish</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">Musiqada albom ko\'rsatilmagan bo\'lsa, scrobble to\'liq bo\'lishi uchun uni Last.fm dan qidirib toping</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"\"Scrobbling\" sizning YouTube Music foydalanish ma'lumotlaringizni avtomatik ravishda sizning Last.fm yoki ListenBrainz profilingiz bilan sinxronlashtiradi.
 
@@ -280,17 +455,198 @@ Foydalanish ma'lumotlari fon tartibda ham sinxronlashini ta'minlash uchun, YouTu
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Uchinchi tomon matnlaridan foydalanish</string>
   <string name="morphe_music_lyrics_enabled_summary">Uchinchi tomon xizmatidan matnlar ko‘rsatiladi, agar topilmasa, o‘rnatilgan matnlarga qaytadi</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Matnlarni ko\'rayotganda ekranni yoqiq holda saqlash</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Matnlar paneli ochiq bo\'lganda ekranning o\'chishini oldini oladi</string>
+  <string name="morphe_music_lyrics_section_service_title">Matnlar xizmati</string>
+  <string name="morphe_music_lyrics_section_display_title">Ko\'rinishi</string>
+  <string name="morphe_music_lyrics_section_sync_title">Sinxronizatsiya</string>
+  <string name="morphe_music_lyrics_section_panel_title">Panel</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Barcha provayderlar o\'chirildi - ichki va joylashtirilgan matnlar</string>
+  <string name="morphe_music_lyrics_source_reset_title">Provayderlar tartibini tiklash?</string>
+  <string name="morphe_music_lyrics_source_reset_message">Provayderlarni standart ustuvorlik tartibiga qaytarish</string>
+  <string name="morphe_music_lyrics_clear_cache_title">Saqlangan matnlarni tozalash</string>
+  <string name="morphe_music_lyrics_clear_cache_done">%1$s MB tozalandi</string>
   <string name="morphe_music_token_dialog_get_token">Tokenni olish</string>
+  <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
+  <string name="morphe_music_apple_music_token_dialog_instruction">"music.apple.com saytidan \"media-user-token\" cookie-sini joylashtiring
+
+Qadamlar:
+1. music.apple.com saytiga a'zo foydalanuvchi sifatida kiring
+2. DevTools → Application → Cookies → music.apple.com bo'limini oching
+3. \"media-user-token\" qiymatini nusxalang"</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token saqlandi</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token tozalandi</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: noto\'g\'ri media-user-token - iltimos, tekshiring va qayta urunib ko\'ring</string>
+  <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
+  <string name="morphe_music_spotify_token_dialog_instruction">"Spotify
+dan sp_dc cookie-ni joylang.
+
+Qadamlar:
+1. open.spotify.com saytida tizimga kiring
+2. DevTools → Application → Cookies → open.spotify.com bo'limini oching
+3. \"sp_dc\" qiymatini nusxalang"</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc saqlandi</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc tozalandi</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: noto\'g\'ri sp_dc - iltimos, tekshiring va qayta urunib ko\'ring</string>
+  <string name="morphe_music_apple_token_optional_hint">Apple Music tokeni ixtiyoriy. Usiz Lyrically zaxira variant sifatida ishlatiladi</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
+  <string name="morphe_music_deezer_arl_dialog_instruction">"Deezer
+dan arl cookie-ni joylang.
+
+Qadamlar:
+1. deezer.com saytida tizimga kiring
+2. DevTools → Application → Cookies → deezer.com bo'limini oching
+3. \"arl\" qiymatini nusxalang"</string>
+  <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl saqlandi</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl tozalandi</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: noto\'g\'ri arl - iltimos, tekshiring va qaytadan urunib ko\'ring</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch Tokeni</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">O\'z hisobingizdan foydalanish uchun token qo\'shing. U Musixmatch Android ilovasidan olingan bo\'lishi kerak: musixmatch.com saytidan nusxalangan tokenlar eskirgan ish stoliga mo\'ljallangan mijozga tegishli va API ularni rad etadi</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch tokensiz ham ishlaydi, shuning uchun ushbu maydon bo\'sh qolishi mumkin</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">foydalanuvchi tokeni</string>
+  <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: foydalanuvchi tokeni saqlandi</string>
+  <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: foydalanuvchi tokeni tozalandi</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: noto\'g\'ri foydalanuvchi tokeni - iltimos, tekshiring va qaytadan urunib ko\'ring</string>
+  <string name="morphe_music_youtube_cookies_title">YouTube Cookie-lari</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"YouTube dan subtitrlar va vaqt matnlarini so¢rov qilish uchun YouTube cookies ma lumotlarini joylang.
+
+Qadamlar:
+1. Brauzerda youtube.com saytini oching va tizimga kiring
+2. DevTools (F12) → Application → Cookies → youtube.com bo¢limini oching
+3. To¢liq cookie satrini nusxalang (nuqtali vergul bilan ajratilgan kalit=qiymat juftliklari)
+
+Talab qilinadigan cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
+  <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookies saqlandi</string>
+  <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookies tozalandi</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: noto\'g\'ri kukilar - iltimos, tekshiring va qaytadan urunib ko\'ring</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Satrni bosib turing</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Qo\'shiqning o\'sha lahzasiga o\'tish uchun satrni bosing, barmog\'ingiz ostidagi so\'zni yoki bosish so\'z ustida bo\'lmaganda butun satrni nusxalash uchun uni uzoq bosing. O\'chirish har ikkala imo-ishorani olib tashlaydi</string>
+  <string name="morphe_music_lyrics_show_section_title">Bo\'lim teglarini ko\'rsatish</string>
+  <string name="morphe_music_lyrics_show_section_summary">Matnning har bir yangi bo\'limini kichik teglar bilan belgilang, masalan, Kuplet yoki Naqorat</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Nusxalash tugmasini ko‘rsatish</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Asl matnni oddiy matn sifatida nusxalash uchun bosing; xom matn manba faylini Yuklab olishlar papkasiga saqlash uchun uzoq bosib turing</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Tarjima tugmasini ko‘rsatish</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">O\'qilishlar tayyor (%1$d ta yozuv)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Yuklab olish muvaffaqiyatsiz tugadi - qayta urinish uchun buni o\'chirib, yana yoqing</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s o\'qilmoqda: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_refresh_button_title">Yangilash tugmasini ko¢rsatish</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Keyingi matn nomzodiga o\'tish uchun bosing; qo\'shiq nomi va ijrochi bo\'yicha matnni qidirish uchun uzoq bosib turing</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Matnlarni qidirish</string>
+  <string name="morphe_music_lyrics_search_title_hint">Qo\"shiq nomi</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Ijrochi</string>
+  <string name="morphe_music_lyrics_search_empty">Qo\"shiq nomi va ijrochini kiriting</string>
+  <string name="morphe_music_lyrics_search_no_providers">Yoqilgan provayderlarning hech biri boshqa qo\"shiqlarni qidira olmaydi</string>
+  <string name="morphe_music_lyrics_saved">Saqlandi</string>
+  <string name="morphe_music_lyrics_word_sync_title">Sinxronizatsiya qilingan so¢zlarni yoki bo¢g­inlarni belgilash</string>
+  <string name="morphe_music_lyrics_word_sync_summary">Mavjud bo\'lganda, so\'zma-so\'z matnlarga ustunlik bering. Matnlar so\'z vaqti ma\'lumotlarini o\'z ichiga olgan bo\'lsa, musiqaga mos ravishda har bir so\'z yoki bo\'g\'inni belgilaydi</string>
+  <string name="morphe_music_lyrics_hide_played_title">Ijro etilgan matnlarni yashirish</string>
+  <string name="morphe_music_lyrics_hide_played_summary">Hozirda ijro etilayotgan qatordan yuqoridagi matn qatorlarini yashirish</string>
+  <string name="morphe_music_lyrics_hide_unplayed_title">Ijro etilmagan matnlarni yashirish</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">Hozirda ijro etilayotgan qatordan pastdagi matn qatorlarini yashirish</string>
+  <string name="morphe_music_lyrics_mediasession_title">Blokirovka ekranida MediaSession matnlarini ko\'rsatish</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Bloklash ekrani, Android Auto va Bluetooth-da joriy satrni ko\'rsatadi. Android 11 yoki undan yangiroq versiya talab qilinadi</string>
+  <string name="morphe_music_lyrics_miniplayer_title">Miniplayer matnlarini ko\'rsatish</string>
+  <string name="morphe_music_lyrics_miniplayer_summary">Miniplayerda joriy satrni ko\'rsatadi, trek subtitle qismiga ko\'chirilgan</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Qo\"shiq nomi/ijrochi formati</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Miniplayer va MediaSession-da matnlar bilan ko\'rsatiladigan trek formati. {t} - bu nomi, {a} - ijrochi va {v} - versiya, masalan, Acoustic, agar matnlar manbai uni taqdim etsa. Ikki nuqta orasidagi matn faqat ichidagi barcha o\'zgaruvchilar qiymatga ega bo\'lgandagina ko\'rsatiladi; oddiy ikki nuqta uchun \\: yozing. Har bir qator navbat bilan ko\'rsatiladi va matn o\'zgarganda keyingisiga o\'tadi</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Matn qatori formati</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Format {lrc} ni o\'z ichiga olishi kerak</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Artist qatori shabloni va animatsiya vaqti</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Minimal ekran vaqti (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Maksimal ekran vaqti (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Faqat ko\'p qatorli animatsiyalar uchun. Har bir kadrni kamida minimal vaqt davomida saqlang. Maksimal vaqtda, hatto matn o\'zgarmasa ham, artist qatorini oldinga suring.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Minimal qiymat 0 yoki undan katta bo\'lishi kerak. Maksimal qiymat 0 dan katta va kamida minimal qiymatga teng bo\'lishi kerak.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Satr uzunligi chegaralari</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Lirika va ijrochi satri chegaralari hamda to\'liq kenglikdagi belgilarning vazni</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Lirika satri chegarasi
+Uzunroq lirikani muvozanatli ikkita qismga bo'lish. 0 bo'lishni o'chiradi."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Ijrochi satri chegarasi
+To'ldirilgan trek formatini siklli freymlarga bo'lish. 0 bo'lishni o'chiradi."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"To'liq kenglikdagi belgilar vazni
+Ikkala chegaraga ham ta'sir qiladi. 1.75 da to'rtta to'liq kenglikdagi belgi 7 ga teng hisoblanadi."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">0 dan 10000 gacha bo\'lgan butun sonli chegaralarni va 0 dan katta belgi vaznini kiriting</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Instrumental tanaffus</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Instrumental tanafas paytida Miniplayer va MediaSession-da ko\'rsatiladi. Har bir qator bitta animatsiya kadridir. {t} - sarlavha, {a} - ijrochi va {lrc} - oxirgi matn qatori</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Miniplayer va MediaSession vaqt offseti</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Miniplayer va MediaSession-da keyingi qator ko\'rsatiladigan vaqtni suradi. Agar qatorlar kech ko\'rinsa, masalan, blokirovka ekranida, manfiy qiymatdan foydalaning</string>
+  <string name="morphe_settings_music_lyrics_metadata_title">Filtrlar</string>
+  <string name="morphe_music_lyrics_custom_regex_title">Metadata regex</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Matnlarni qidirishdan oldin va ikkita sarlavha mos kelishini aniqlashda sarlavhalar, ijrochilar va albomlarga qo\'llaniladigan muntazam ifoda. Ikkalasini ham o\'chirish uchun bo\'sh qoldiring. Standart sozlama \"Official Video\", \"Remaster\", \"【插曲】\" va \"- Topic\" kabi keng tarqalgan ortiqcha ma\'lumotlarni olib tashlaydi.</string>
+  <string name="morphe_music_lyrics_text_filter_title">Matnlar filtri regex</string>
+  <string name="morphe_music_lyrics_text_filter_summary">Faqat asl matnlarga qo\'llaniladigan muntazam ifoda (tarjimalar yoki romanizatsiyaga emas). O\'chirish uchun bo\'sh qoldiring</string>
+  <string name="morphe_music_lyrics_credit_line_regex_title">Ma\'lumot qatori belgilari</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">Agar matnlar noto\'g\'ri tarzda pastga filtrlangan bo\'lsa, buni sozlang yoki tozalang. Vergul bilan ajratilgan belgilar: belgi va undan keyin ikki nuqta bo\'lgan qatorlar pastda kredit ma\'lumotlari sifatida ko\'rsatiladi. O\'chirish uchun bo\'sh qoldiring</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Birinchi harfni katta qilish</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Matnning har bir qatorining birinchi harfini katta qiladi</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Oxirgi tinish belgilarini olib tashlash</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Lyrics qatorlari oxiridagi nuqta, vergul, ikki nuqta va nuqta-vergullarni olib tashlaydi. So\'roq belgilari, undov belgilari, ko\'p nuqtalar, qo\'shtirnoqlar va qavslar saqlab qolinadi</string>
   <string name="morphe_music_lyrics_text_size_title">Matn hajmi</string>
   <string name="morphe_music_lyrics_text_size_summary">Lirikalar matnining hajmi</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Global vaqt siljishi</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Sinxronizatsiya qilingan matnlar ijroga mos keladi. Agar ular siljisa, vaqt offsetini sozlang. Sinxronizatsiya qilingan matnlarni oldinga yoki orqaga suring. Agar matnlar qo\'shiqdan oldin ketsa, musbat qiymatdan foydalaning</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Matn siljishi uchun SponsorBlock segmentlaridan foydalanish</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">SponsorBlock tashlab ketadigan segmentlarsiz moslashtirish va matnlarni chiqarilgan audyoga surish. O\"chirilgan holatda SponsorBlock butunlay e\'tiborsiz qoldiriladi</string>
+  <string name="morphe_music_lyrics_sb_no_video">Ushbu trekda yuborish uchun video ID mavjud emas</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Manba: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">Ushbu LRCni saqlash uchun nusxalash tugmasini uzoq bosing; agar siz vaqtlarni aniqlashtirib, ularni hamjamiyat provayderlari bilan baham ko\'rsangiz, minnatdor bo\'lar edik</string>
+  <string name="morphe_music_lyrics_translated_by_google">Google tomonidan tarjima qilingan</string>
+  <string name="morphe_music_lyrics_romanized_by_google">Google tomonidan romanizatsiya qilingan</string>
+  <string name="morphe_music_lyrics_translated_by_ai">%s tomonidan tarjima qilingan</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">%s tomonidan romanizatsiya qilingan</string>
+  <string name="morphe_music_lyrics_romanized_by_local">%s tomonidan romanizatsiya qilingan</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_hide">Tarjima qilindi</string>
+  <string name="morphe_music_lyrics_translation_language_title">Tarjima tili</string>
   <string name="morphe_music_lyrics_translating">Tarjima qilinmoqda…</string>
   <string name="morphe_music_lyrics_translate_failed">Lirikalarni tarjima qilib bo‘lmadi</string>
+  <string name="morphe_music_lyrics_romanize_hide">Romanizatsiya qilindi</string>
+  <string name="morphe_romanize_language_DEFAULT">Avtomatik</string>
+  <string name="morphe_music_lyrics_romanizing">Romanizatsiya qilinmoqda…</string>
+  <string name="morphe_music_lyrics_romanize_failed">Matnni romanizatsiya qilib bo\'lmadi</string>
+  <string name="morphe_music_lyrics_translate_only">Faqat tarjima qilingan</string>
+  <string name="morphe_music_lyrics_romanize_only">Faqat romanizatsiya qilingan</string>
+  <string name="morphe_music_lyrics_dual_only">Dual rejim</string>
   <string name="morphe_music_lyrics_copied">Nusxalash quvuriga nusxalandi</string>
+  <string name="morphe_music_lyrics_refreshing">Yangilanmoqda</string>
+  <string name="morphe_music_lyrics_refreshed">Yangilandi</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API kaliti</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC kaliti saqlandi. Matnlarni qidirish dialogidagi moslash tugmasidan yoki trekda matnlar bo\'lmaganda panel taklifidan foydalaning</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API kaliti saqlandi</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC ushbu kalitni qabul qilmadi</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API kaliti tozalandi</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC kreditlar evaziga matni bo\'lmagan qo\'shiqlarning vaqtini belgilaydi yoki ularni trekdan transkripsiya qiladi. Kalit o\'rnatilganda, matni bo\'lmagan treklar transkripsiyani taklif qiladi va qidiruv dialogida moslash tugmasi paydo bo\'ladi</string>
+  <string name="morphe_music_lyrics_transcribe_align">QuickLRC tekisligini so\'rash</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">Tekislanmoqda</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">Tekislikni qo\'llash</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">QuickLRC transkripsiyasini so\'rash</string>
+  <string name="morphe_music_lyrics_transcribe_working">Transkripsiya qilinmoqda</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">Transkripsiya bekor qilindi</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">Faqat YouTube dan ijro etilgan treklar transkripsiya qilinishi mumkin</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Moslash uchun matnlar yo\'q - buning o\'rniga transkripsiya qilinmoqda</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC ushbu trekni qayta ishlay olmadi</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">Ushbu trek uchun QuickLRC kreditlari tugadi</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Faqat foydalanadigan provayderlaringizni yoqing yoki standart holatda qoldiring - doimiy so\'rovlar kichik hamjamiyat matnlari saytlarini yuklama bilan to\'ldirishi mumkin</string>
+  <string name="morphe_music_lyrics_hide_info_title">Mualliflik qatorini yashirish</string>
+  <string name="morphe_music_lyrics_hide_info_summary">Matn ostida ko\'rsatilgan mualliflik qatorini yashirish</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_title">Tarjima va romanizatsiyani almashtirish</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt shabloni</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Pleysholderlar: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt saqlandi</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">So\'rov saqlandi, ammo AI endpoint hali ishlamayapti. Avval uni AI Sozlamalari bo\'limida sozlang</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_reset">So\'rov qayta tiklandi</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Tarjima &amp; romanizatsiya sozlamalari saqlandi</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Sozlamalar standart holatiga qaytarildi</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">Asosiy URL http:// yoki https:// bilan boshlanishi kerak</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Ulanish tekshirilmoqda…</string>
+  <string name="morphe_music_lyrics_ai_config_fetching_models">Modellar yuklanmoqda…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_success">Modelni tanlang</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Modellarni yuklab bo\'lmadi. API kalitini yoki ulanishni tekshiring.</string>
+  <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_label">Asosiy URL</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_label">API kaliti (ixtiyoriy)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_label">Qo\'shimcha so\'rov tanasi (ixtiyoriy JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_deepl_key_label">Autentifikatsiya kaliti (Bepul yoki Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Qalin ikonkalarni o\'chirish</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Playerning Keyingi, Qo\'shiq matni va Tegishli yorliqlarini tiklash</string>

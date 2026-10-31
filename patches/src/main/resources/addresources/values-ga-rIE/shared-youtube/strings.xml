@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Beochan tosaithe</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Díchumasaithe</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Dath</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monacrómach</string>
+  <string name="morphe_splash_screen_style_title">Beochan tosaithe</string>
+  <string name="morphe_splash_screen_style_entry_1">Díchumasaithe</string>
+  <string name="morphe_splash_screen_style_entry_2">Dath</string>
+  <string name="morphe_splash_screen_style_entry_3">Dath Morphe</string>
+  <string name="morphe_splash_screen_style_entry_4">Monacrómach</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monacrómach</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Aibhsigh socruithe nua</string>
+  <string name="morphe_settings_new_indicator_days_summary">Líon na laethanta a thaispeántar ponc in aice le socruithe agus roghanna a cuireadh leis trí nuashonrú</string>
+  <string name="morphe_settings_new_indicator_days_off">As</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Atosaigh chun an socrú a chríochnú</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Folaíonn sé cnaipí Roimhe Seo agus Ar Aghaidh i bhfógraí meán, scáileán glasála, agus rialuithe cluasán</string>
   <string name="morphe_disable_notification_media_seekbar_title">Díchumasaigh an barra cuardaigh</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Coscann sé an barra cuardaigh a tharraingt ar an scáileán glasála agus ar an bpainéal fógraí</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Lorg le cnaipe Roimhe &amp; Ar Aghaidh</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Athraíonn sé rialuithe le haghaidh fógraí meán, scáileán glasála agus cluasáin chun físeáin a lorg in ionad iad a athrú</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Fad an athchasadh</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Soicindí le dul siar leis an gcnaipe Roimhe Seo</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Fad an dul chun cinn tapa</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Soicindí le cur ar aghaidh go tapa leis an gcnaipe Ar Aghaidh</string>
+  <string name="morphe_seek_notification_media_length_invalid">Ní mór fad cuardaigh a bheith idir 1 agus %s soicind. Ag baint úsáide as an réamhshocrú.</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Díchumasaigh prótacal QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

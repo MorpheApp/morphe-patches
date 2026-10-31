@@ -15,13 +15,13 @@ import app.morphe.patcher.patch.InstallerType
 import app.morphe.patcher.patch.PatchAvailability
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -86,31 +86,37 @@ internal fun poTokenProviderPatch(
         }
 
         // Watch media responses for the server rejecting the token the helper made.
+        // While spoofing with debug logging, media requests and responses are logged.
         mutableClassDefBy(HTTP_REQUEST_CLASS_TYPE).apply {
-            // The URL is the only String field of the request.
-            val urlField = instanceFields.single { field -> field.type == "Ljava/lang/String;" }
-
             interfaces.add(EXTENSION_HTTP_REQUEST_INTERFACE)
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "patch_getUrl",
-                    listOf(),
-                    "Ljava/lang/String;",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            iget-object v0, p0, $urlField
-                            return-object v0
-                        """
-                    )
-                }
-            )
+
+            // The URL is the only String field of the request, and the body is the only byte array field.
+            mapOf(
+                "patch_getUrl" to "Ljava/lang/String;",
+                "patch_getBody" to "[B",
+            ).forEach { (methodName, fieldType) ->
+                val field = instanceFields.single { field -> field.type == fieldType }
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        methodName,
+                        listOf(),
+                        fieldType,
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(2),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                iget-object v0, p0, $field
+                                return-object v0
+                            """
+                        )
+                    }
+                )
+            }
         }
 
         NetFetchStartFetchTaskFingerprint.method.addInstruction(

@@ -33,11 +33,9 @@ import app.morphe.extension.shared.requests.Requester;
 
 public final class QuickLRCClient {
 
-    private static final ExecutorService executor = Executors.newSingleThreadExecutor();
-
-    private static final String ENDPOINT = "https://quicklrc.com/api/v1/transcribe";
     public static final String PROVIDER_NAME = "QuickLRC";
-
+    private static final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private static final String ENDPOINT = "https://quicklrc.com/api/v1/transcribe";
     private static final int CONNECT_TIMEOUT_MS = 15_000;
     private static final int READ_TIMEOUT_MS = 180_000;
 
@@ -45,29 +43,7 @@ public final class QuickLRCClient {
 
     private static volatile Future<?> running;
 
-    /** Why a run produced nothing, so the caller can say something more useful than "failed". */
-    public enum Failure {
-        CANCELLED,
-        NO_KEY,
-        UNSUPPORTED_SOURCE,
-        OUT_OF_CREDITS,
-        FAILED
-    }
-
-    /**
-     * What a key check concluded. {@link #REJECTED} is the only one that should refuse a save.
-     */
-    public enum KeyCheck {
-        /** The service read the key and objected to something else. */
-        ACCEPTED,
-        /** The service refused the key itself. */
-        REJECTED,
-        /** The service could not be asked, so the key is neither proven nor disproven. */
-        UNREACHABLE
-    }
-
-    public interface KeyCheckCallback {
-        void onChecked(KeyCheck result);
+    private QuickLRCClient() {
     }
 
     public static void checkKey(String apiKey, KeyCheckCallback callback) {
@@ -106,15 +82,11 @@ public final class QuickLRCClient {
         worker.start();
     }
 
-    public interface Callback {
-        void onTranscribed(@Nullable Lyrics lyrics, @Nullable Failure failure);
-    }
-
-    private QuickLRCClient() {
-    }
-
     @SuppressWarnings("ConstantValue")
     public static boolean isConfigured() {
+        if (!Settings.LYRICS_QUICKLRC_ENABLED.get()) {
+            return false;
+        }
         final String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
         return key != null && !key.trim().isEmpty();
     }
@@ -182,12 +154,6 @@ public final class QuickLRCClient {
         });
     }
 
-    private static final class OutOfCreditsException extends IOException {
-        OutOfCreditsException() {
-            super("QuickLRC credits exhausted");
-        }
-    }
-
     private static String post(String videoId, String lyrics, String apiKey)
             throws IOException, JSONException {
         final JSONObject body = new JSONObject();
@@ -238,13 +204,6 @@ public final class QuickLRCClient {
         return null;
     }
 
-    private record Attempt(int code, String message, String contentType, int contentLength,
-                           String location, String body, String errorBody) {
-        public Attempt {
-            if (message == null) message = "";
-        }
-    }
-
     private static Attempt sendOnce(String url, String json, String apiKey) throws IOException {
         HttpURLConnection conn = null;
         try {
@@ -292,15 +251,13 @@ public final class QuickLRCClient {
 
     /**
      * Drops the gaps the service puts between CJK tokens, as in {@code <t>我 <t>靠 <t>， <t>我}.
-     *
-     * <p>On the body, so the cleaned text becomes the raw format and the cache and the
-     * exporter store it. Hand-scanned: both sides have to agree, and no regex form that looks
-     * that far past the tag matches.
+     * Applied to the body so the cleaned text is what the raw format, cache and exporter store;
+     * hand-rolled because no regex looks that far past the tags.
      */
     private static String dropCjkSeparators(String lrc) {
         final StringBuilder out = new StringBuilder(lrc.length());
         for (int i = 0; i < lrc.length(); ) {
-            if (isWhitespaceAt(lrc, i) && isCjkGap(lrc, i)) {
+            if (Character.isWhitespace(lrc.charAt(i)) && isCjkGap(lrc, i)) {
                 i = skipWhitespace(lrc, i);
                 continue;
             }
@@ -341,10 +298,6 @@ public final class QuickLRCClient {
         }
         final int token = firstNonSpaceAfter(lrc, close + 1);
         return token < lrc.length() ? lrc.charAt(token) : '\0';
-    }
-
-    private static boolean isWhitespaceAt(String text, int index) {
-        return Character.isWhitespace(text.charAt(index));
     }
 
     private static int skipWhitespace(String text, int index) {
@@ -414,6 +367,48 @@ public final class QuickLRCClient {
                     null, body, "lrc", null);
         } catch (Exception ex) {
             return null;
+        }
+    }
+
+    /** Why a run produced nothing, so the caller can say something more useful than "failed". */
+    public enum Failure {
+        CANCELLED,
+        NO_KEY,
+        UNSUPPORTED_SOURCE,
+        OUT_OF_CREDITS,
+        FAILED
+    }
+
+    /**
+     * What a key check concluded. {@link #REJECTED} is the only one that should refuse a save.
+     */
+    public enum KeyCheck {
+        /** The service read the key and objected to something else. */
+        ACCEPTED,
+        /** The service refused the key itself. */
+        REJECTED,
+        /** The service could not be asked, so the key is neither proven nor disproven. */
+        UNREACHABLE
+    }
+
+    public interface KeyCheckCallback {
+        void onChecked(KeyCheck result);
+    }
+
+    public interface Callback {
+        void onTranscribed(@Nullable Lyrics lyrics, @Nullable Failure failure);
+    }
+
+    private static final class OutOfCreditsException extends IOException {
+        OutOfCreditsException() {
+            super("QuickLRC credits exhausted");
+        }
+    }
+
+    private record Attempt(int code, String message, String contentType, int contentLength,
+                           String location, String body, String errorBody) {
+        public Attempt {
+            if (message == null) message = "";
         }
     }
 }

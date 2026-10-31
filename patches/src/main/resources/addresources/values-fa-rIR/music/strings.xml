@@ -462,13 +462,47 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_section_display_title">نمایش</string>
   <string name="morphe_music_lyrics_section_sync_title">همگام‌سازی</string>
   <string name="morphe_music_lyrics_section_panel_title">پنل</string>
-  <string name="morphe_music_lyrics_section_languages_title">زبان‌ها</string>
-  <string name="morphe_music_lyrics_section_ai_endpoint_title">پایانه هوش مصنوعی</string>
   <string name="morphe_music_lyrics_source_all_disabled">تمام ارائه‌دهندگان غیرفعال شده‌اند - متن آهنگ داخلی و تعبیه‌شده</string>
   <string name="morphe_music_lyrics_source_reset_title">بازنشانی ترتیب ارائه‌دهنده‌ها؟</string>
   <string name="morphe_music_lyrics_source_reset_message">بازیابی ارائه‌دهنده‌ها به ترتیب اولویت پیش‌فرض</string>
+  <string name="morphe_music_lyrics_rime_dict_title">لیست کلمات Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"لیست کلمات رایم همچنین به UniDict نیاز دارد: در ارائه‌دهنده واژه‌نامه آفلاین، تیک \"حروف چینی و کانتمنی (UniDict)\" را بزنید و اجازه دهید ابتدا دانلود کامل شود. بدون آن، لیستی که حروف را می‌خواند هیچ خوانشی تولید نمی‌کند.
+
+لیست‌هایی که رایم باید بخواند را انتخاب کنید، سپس برای دانلود آن‌ها روی ذخیره ضربه بزنید. لیستی که اضافه کرده‌اید با برداشتن تیک آن حذف می‌شود.
+
+هر لیست جدول واژه-به-خوانش شخصی شماست، یک فایل .dict.yaml با خطوطی مانند:
+字 ham
+典 din2
+ستون اول واژه است، ستون دوم خوانش آن؛ ستون‌های اضافی و خطوط بدون تب نادیده گرفته می‌شوند."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">هیچ لیست کلمه Rime برای زبان بالا انتخاب نشده است. روی این نام ضربه بزنید تا یکی را انتخاب کنید یا زبانی که دارای لیست است را انتخاب کنید</string>
+  <string name="morphe_music_lyrics_rime_dict_add">افزودن</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">افزودن لیست کلمه Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">یک فایل .dict.yaml یا یک زیپ شامل آن، با خطوطی مانند 字 ham و 典 din2. لیست هنگامی که آن را انتخاب کرده و روی ذخیره ضربه می‌زنید دریافت می‌شود و مجوز آن متعلق به شماست تا بررسی کنید</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">کد زبان</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">دو یا سه حرف، مانند hak یا wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">نام</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">زیر خوانش نشان داده می‌شود، مانند Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">آدرس لیست کلمات</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">آدرس https:// فایل .dict.yaml یا zip آن</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">کاراکترهای خارج از واژه</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">خودکار</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">کاراکترهای کانتونی</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">کاراکترهای ماندارین</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">بدون خوانش کاراکتر</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">کد، نام و آدرس را پر کنید</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">کد باید دو یا سه حرف باشد، مانند hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">آدرس باید با https:// شروع شود</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">نام و آدرس نمی‌توانند شامل خط عمودی باشند</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s از قبل یک جدول واژه دارد</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s توسط رومنایزر داخلی خوانده می‌شود و نمی‌تواند لیست کلمات داشته باشد</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">استفاده نشده: این زبان از قبل خوانش خود را دارد، بنابراین برای حذف آن تیک آن را بردارید</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%1$s اضافه شد - آن را انتخاب کرده و روی ذخیره ضربه بزنید تا دانلود شود</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">لیست‌های کلمات آماده هستند</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">لیست‌های کلمات آماده (%1$d مورد)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">در حال ساخت لیست خوانش: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">دانلود لیست کلمات ناموفق بود - برای تلاش مجدد روی ذخیره ضربه بزنید</string>
   <string name="morphe_music_lyrics_clear_cache_title">پاک کردن حافظه پنهان ترانه‌ها</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">حذف ترانه‌های ذخیره‌شده در این دستگاه</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">حذف %1$s مگابایت متن ترانه نگهداری شده بر روی این دستگاه</string>
   <string name="morphe_music_lyrics_clear_cache_done">%1$s مگابایت پاک شد</string>
   <string name="morphe_music_token_dialog_get_token">دریافت توکن</string>
   <string name="morphe_music_apple_music_token_title">توکن Apple Music Media-user-token</string>
@@ -528,14 +562,22 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_copy_button_title">نمایش دکمهٔ کپی</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">برای کپی کردن ترانه اصلی به صورت متن ساده ضربه بزنید؛ برای ذخیره فایل منبع خام ترانه‌ها در پوشه Downloads، لمس طولانی انجام دهید</string>
   <string name="morphe_music_lyrics_show_translate_button_title">نمایش دکمهٔ ترجمه</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">برای تغییر ترجمه ضربه بزنید؛ فقط برای ترجمه لمس طولانی انجام دهید. از ارائه‌دهنده ترجمه، Google Translate یا یک API سازگار با OpenAI استفاده می‌کند</string>
-  <string name="morphe_music_lyrics_show_romanize_button_title">نمایش دکمهٔ لاتین‌نویسی</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">برای تغییر رومنیزاسیون ضربه بزنید؛ فقط برای رومنیزاسیون لمس طولانی انجام دهید. از ارائه‌دهنده رومنیزاسیون، Google Translate یا یک API سازگار با OpenAI استفاده می‌کند</string>
-  <string name="morphe_music_lyrics_local_romanization_title">رومنیزاسیون محلی و همگام‌سازی</string>
-  <string name="morphe_music_lyrics_local_romanization_summary">رومنیزه کردن روی دستگاه زمانی که ارائه‌دهنده، مدل شما و Google Translate شکست بخورد. خواندن هر کلمه از ترانه زمان‌بندی‌شده دنبال می‌کند؛ هماهنگ‌سازی کلمه باید روشن باشد. چینی، کانتهنی، ژاپنی، کره‌ای، یونانی، روسی، گرجی، ارمنی؛ حدود ۱۲۰ مگابایت</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">خوانش %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">برای تغییر وضعیت ترجمه ضربه بزنید؛ برای فقط ترجمه فشار طولانی دهید. از ارائه‌دهندگان ترجمه فعال به ترتیب ذکر شده استفاده می‌کند</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">نمایش دکمه رومنیزه کردن یا انتقال</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">برای تغییر وضعیت رومنیزه کردن یا انتقال ضربه بزنید؛ برای فقط رومنیزه کردن یا انتقال فشار طولانی دهید. از ارائه‌دهندگان رومنیزه کردن فعال به ترتیب ذکر شده استفاده می‌کند</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">فعال کردن انتقال</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">اجازه دادن به خوانش‌های غیرلاتین از منبع ترانه؛ وقتی خاموش است، فقط حروف لاتین، حروف با علامت diacritic و ارقام تن صدا نگه داشته می‌شوند</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">هر واژه از یک ترانه زمان‌بندی شده را می‌خواند (همگام‌سازی واژه روشن است)؛ کره‌ای نیاز به دانلود ندارد؛ چهارده اسکریپت یک دانلود CLDR مشترک دارند؛ کاراکترهای Han توسط لیست کلمات Rime زمانی که جدول واژه آن زبان را پوشش می‌دهد خوانده می‌شود</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">دانلود دیکشنری‌های خوانش…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">آماده برای خواندن (%1$d مورد)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">دانلود ناموفق - برای تلاش مجدد، این گزینه را خاموش و روشن کنید</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">لغت‌نامه آفلاین</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">ژاپنی (SudachiDict، ~75 مگابایت)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">کاراکترهای چینی و کانتونی (UniDict، ~8 مگابایت)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">واژه‌های چینی (pinyin-pro، ~17 مگابایت)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">روتین یونانی، سریلیک اسلاو (شامل روسی، اوکراینی، بلغاری، صربی، بلاروسی، مقدونی)، گرجی، ارمنی، عبری، عربی، آمهرایی و سورانی انتقال (CLDR، ~0.5 مگابایت)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">خوانش %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">حداقل یک دیکشنری انتخاب کنید</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">نمایش دکمهٔ تازه‌سازی</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">برای رفتن به نامزد بعدی ترانه ضربه بزنید؛ برای جستجوی ترانه بر اساس عنوان آهنگ و هنرمند، لمس طولانی انجام دهید</string>
   <string name="morphe_music_lyrics_search_dialog_title">جستجوی متن ترانه</string>
@@ -546,8 +588,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_saved">ذخیره‌شده</string>
   <string name="morphe_music_lyrics_word_sync_title">برجسته‌کردن واژه‌ها یا هجاهای همگام‌شده</string>
   <string name="morphe_music_lyrics_word_sync_summary">اولویت دادن به متن ترانهٔ واژه‌به‌واژه در صورت وجود. وقتی متن ترانه زمان‌بندی واژه دارد، هر واژه یا هجا را هماهنگ با موسیقی برجسته می‌کند</string>
-  <string name="morphe_music_lyrics_split_background_title">نمایش صداهای پس‌زمینه به صورت جداگانه</string>
-  <string name="morphe_music_lyrics_split_background_summary">یک خط خواندن پس‌زمینه را که در پرانتز نوشته شده است، مانند «(آه) من تو را می‌خواهم»، از خط اصلی خوانده‌شده خارج کرده و به یک خط جداگانه با شدت کمتر منتقل می‌کند</string>
+  <string name="morphe_music_lyrics_line_scale_title">کوچک کردن خطوط غیرفعال</string>
+  <string name="morphe_music_lyrics_line_scale_summary">هر خطی که در حال حاضر خوانده نمی‌شود را کمی کوچک‌تر ترسیم می‌کند، علاوه بر کم‌رنگ کردن آن</string>
+  <string name="morphe_music_lyrics_split_background_title">نمایش آوازهای پس‌زمینه به صورت جداگانه</string>
+  <string name="morphe_music_lyrics_split_background_summary">آوازهای پس‌زمینه و هارمونی را از خط اصلی جدا می‌کند. یک آواز پس‌زمینه که داخل پرانتز نوشته شده است، مانند \"(Oh) I want you\" را از خط خوانده شده خارج کرده و به یک خط کم‌رنگ‌تر اختصاصی آن منتقل می‌کند</string>
   <string name="morphe_music_lyrics_hide_played_title">پنهان‌کردن متن ترانه‌های پخش‌شده</string>
   <string name="morphe_music_lyrics_hide_played_summary">پنهان‌کردن خطوط متن ترانه بالای خطِ در حال پخش</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">پنهان‌کردن متن ترانه‌های پخشنشده</string>
@@ -556,8 +600,29 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_mediasession_summary">خط فعلی را در صفحه قفل، Android Auto و Bluetooth نشان می‌دهد. نیازمند Android 11 یا جدیدتر است</string>
   <string name="morphe_music_lyrics_miniplayer_title">نمایش متن ترانه در پخش‌کنندهٔ کوچک‌شده</string>
   <string name="morphe_music_lyrics_miniplayer_summary">خط فعلی را در پخش‌کننده کوچک نشان می‌دهد، با حرکت ترانه به زیرنویس</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">ترتیب نمایش هنرمند و عنوان</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">ترتیب نمایش هنرمند و عنوان را در پخش‌کنندهٔ کوچک‌شده و MediaSession تغییر دهید. روشن: «هنرمند - عنوان» و خاموش: «عنوان - هنرمند». روی جستجوی متن ترانه تأثیر نمی‌گذارد</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">قالب عنوان آهنگ/هنرمند</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">قالب قطعه‌ای که همراه با متن ترانه در پخش‌کننده کوچک‌شده و MediaSession نمایش داده می‌شود. {t} عنوان، {a} هنرمند و {v} نسخه است، مانند Acoustic، در صورتی که منبع متن ترانه آن را ارائه دهد. متن بین دو دو-نقطه تنها زمانی نمایش داده می‌شود که هر متغیر داخل آن دارای مقدار باشد؛ برای دو-نقطه معمولی از \\: استفاده کنید. هر خط به نوبت نمایش داده می‌شود و با تغییر متن ترانه، به خط بعدی می‌رود</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">قالب خط متن ترانه</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">قالب خط متن ترانه در پخش‌کننده کوچک‌شده و MediaSession. {lrc} همان خط و {n} تعداد دفعاتی است که آن خط به طور متوالی خوانده می‌شود. متن بین دو-نقطه‌ها تنها زمانی نمایش داده می‌شود که خط تکرار شود. برای دو-نقطه از \\: استفاده کنید</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">قالب باید شامل {lrc} باشد</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">قالب خط هنرمند و زمان‌بندی انیمیشن</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">حداقل زمان نمایش (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">حداکثر زمان نمایش (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">فقط برای انیمیشن‌های چندخطی. هر فریم را حداقل به اندازه زمان مینیمم نگه دارید. در زمان حداکثر، حتی اگر متن ترانه ثابت بماند، خط هنرمند جلو می‌رود.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">حداقل باید 0 یا بیشتر باشد. حداکثر باید بیشتر از 0 و حداقل برابر با مقدار مینیمم باشد.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">محدودیت‌های طول خط</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">محدودیت‌های خط ترانه و هنرمند، و وزن نویسه‌های تمام-عرض</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"محدودیت خط ترانه
+ترانه‌های بلندتر را به دو نیمه متوازن تقسیم کنید. 0 تقسیم‌بندی را غیرفعال می‌کند."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"محدودیت خطوط هنرمند
+قالب ترک پر شده را به فریم‌های چرخان تقسیم کنید. مقدار 0 تقسیم‌بندی را غیرفعال می‌کند."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"وزن کاراکترهای تمام-عرض
+برای هر دو محدودیت اعمال می‌شود. در مقدار 1.75، چهار کاراکتر تمام-عرض به عنوان 7 محاسبه می‌شوند."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">محدودیت‌ها را به صورت اعداد صحیح از 0 تا 10000 و وزن کاراکتر را بیشتر از 0 وارد کنید</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">وقفه سازی</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">در پخش‌کننده کوچک‌شده و MediaSession در طول وقفه سازی نمایش داده می‌شود. هر خط یک فریم انیمیشن است. {t} عنوان، {a} هنرمند و {lrc} آخرین خط متن ترانه است</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">آفست زمانی Miniplayer و MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">زمان نمایش خط بعدی در پخش‌کننده کوچک‌شده و MediaSession را تغییر می‌دهد. اگر خطوط با تأخیر نمایش داده می‌شوند، برای مثال در صفحه قفل، از یک مقدار منفی استفاده کنید</string>
   <string name="morphe_settings_music_lyrics_metadata_title">فیلترها</string>
   <string name="morphe_music_lyrics_custom_regex_title">عبارت باقاعدهٔ فراداده</string>
   <string name="morphe_music_lyrics_custom_regex_summary">عبارت باقاعده روی عنوان‌ها، هنرمندان و آلبوم‌ها قبل از جستجوی متن ترانه و هنگام امتیازدهی به تطابق دو عنوان اعمال می‌شود. برای غیرفعال‌کردن هر دو خالی بگذارید. پیش‌فرض موارد رایج اضافی مثل «Official Video»، «Remaster»، «【插曲】» و «- Topic» را حذف می‌کند</string>
@@ -565,6 +630,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_text_filter_summary">عبارت باقاعده فقط روی متن اصلی ترانه اعمال می‌شود (نه ترجمه‌ها یا لاتین‌نویسی‌ها). برای غیرفعال‌کردن خالی بگذارید</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">نشانگرهای خط اطلاعات</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">اگر متن ترانه به‌اشتباه به پایین فیلتر شد، این را تنظیم یا پاک کنید. نشانگرهای جداشده با ویرگول: خطوطی که شامل نشانگری دنبال‌شده با دونقطه هستند به‌عنوان اطلاعات اعتبار در پایین نمایش داده می‌شوند. برای غیرفعال‌کردن خالی بگذارید</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">بزرگ کردن حرف اول</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">حرف اول هر خط از متن ترانه را بزرگ می‌کند</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">حذف علائم نگارشی انتهایی</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">نقطه، ویرگول، دو نقطه و نقطه-ویرگول را از انتهای خطوط ترانه حذف می‌کند. علامت‌های سؤال، تعجب، سه نقطه، نقل‌قول‌ها و پرانتزها حفظ می‌شوند</string>
   <string name="morphe_music_lyrics_text_size_title">اندازهٔ متن</string>
   <string name="morphe_music_lyrics_text_size_summary">اندازهٔ متن آهنگ</string>
   <string name="morphe_music_lyrics_offset_ms_title">جبران زمان سراسری</string>
@@ -580,10 +649,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_ai">ترجمه توسط %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">لاتین‌نویسی توسط %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">روان‌نویسی شده توسط %s</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">رومنیزه شده توسط Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">ترجمه شد</string>
   <string name="morphe_music_lyrics_translation_language_title">زبان ترجمه</string>
-  <string name="morphe_music_lyrics_romanize_language_title">زبان روان‌نویسی</string>
+  <string name="morphe_music_lyrics_romanize_language_title">زبان رومنیزه کردن یا انتقال</string>
+  <string name="morphe_music_lyrics_translation_target_language">"زبان هدف ترجمه:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"زبان هدف رومنیزاسیون یا انتقال خطی:
+%s"</string>
   <string name="morphe_music_lyrics_translating">در حال ترجمه…</string>
   <string name="morphe_music_lyrics_translate_failed">ترجمهٔ متن آهنگ ممکن نشد</string>
   <string name="morphe_music_lyrics_romanize_hide">لاتین‌نویسی‌شده</string>
@@ -597,7 +671,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_refreshing">در حال تازه‌سازی</string>
   <string name="morphe_music_lyrics_refreshed">تازه‌سازی شد</string>
   <string name="morphe_music_lyrics_transcribe_key_title">کلید API QuickLRC</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC اشکال‌زدایی یا زمان‌بندی شعرهای ترک فعلی را انجام می‌دهد. یک سرویس مستقل و مرتبط نیست با نقطه پایانی سازگار با OpenAI در بالا</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC ترانسکریپت یا زمان‌همگام‌سازی ترانه‌ها برای اثر فعلی را انجام می‌دهد</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">کلید QuickLRC ذخیره شد. از دکمه align در دیالوگ جستجوی شعر، یا پیام پنل استفاده کنید وقتی هیچ شعری برای ترک موجود نیست</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">کلید API QuickLRC ذخیره شد</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC آن کلید را قبول نکرد</string>
@@ -613,41 +687,53 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_transcribe_no_text">بدون شعی برای تراز - در حال بازخوانی</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC نمی‌تواند این قطعه را پردازش کند</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">اعتبار QuickLRC برای این قطعه تمام شده است</string>
-  <string name="morphe_music_lyrics_about_summary">"آهنگ‌ها بر اساس عنوان و خواننده تطبیق داده می‌شوند؛ اطلاعات غیرمعمول ممکن است هیچ چیزی یا نسخه اشتباه را پیدا کند. برای تغییر نسخه از تازه‌سازی استفاده کنید. ارائه‌دهندگانی که با * مشخص شده‌اند نیاز به توکن دارند. همه ارائه‌دهندگان فعال همیشه به ترتیب درخواست نمی‌شوند، بلکه بر اساس سرعتشان پاسخ می‌دهند.
+  <string name="morphe_music_lyrics_about_summary">"ترانه‌ها با عنوان و خواننده تطبیق داده می‌شوند؛ metadata غیرمعمول ممکن است نتیجه‌ای پیدا نکند یا نسخه اشتباه را برگرداند. برای تغییر نسخه از گزینه \"رفرش\" استفاده کنید. ارائه‌دهندگانی که با * علامت‌گذاری شده‌اند به توکن نیاز دارند. همیشه از همه ارائه‌دهندگان فعال به ترتیبی که مشخص کرده‌اید درخواست نمی‌شود، بلکه آن‌ها بر اساس سرعت پاسخ می‌دهند.
 
-آهنگ‌ها از سرویس‌های شخص ثالثی تأمین می‌شوند که هیچ ارتباطی با Morphe ندارند، آن‌ها را حمایت یا تأیید نمی‌کنند. هر سرویس همان‌طور که هست استفاده می‌شود: متن آهنگ، دسترسی‌پذیری و مجوزهای آن نزد همان سرویس‌ها و دارندگان مجوز باقی می‌ماند و استفاده از آن‌ها ممکن است مشروط به شرایط خدمات آن‌ها باشد. تنها چیزی که به یک سرویس فعال ارسال می‌شود، جستجویی است که شما درخواست کرده‌اید - یعنی عنوان، خواننده و در صورت نیاز آن سرویس، شناسه ویدیو. نقطه پایانی AI اختیاری و رونوشت QuickLRC تنها پس از پیکربندی توسط شما اجرا می‌شوند و متن آهنگ یا URL ویدیوی ترک را دریافت می‌کنند."</string>
+ترانه‌ها از سرویس‌های شخص ثالث دریافت می‌شوند که هیچ ارتباط، حامی بودن یا تأییدی با Morphe ندارند. هر سرویس به همان شکلی که هست استفاده می‌شود: ترانه‌ها، دسترس‌پذیری و مجوز آن‌ها متعلق به آن سرویس‌ها و دارندگان مجوزشان است و استفاده از آن‌ها ممکن است مشروط به شرایط خدمات آن‌ها باشد. آنچه به یک سرویس فعال فرستاده می‌شود فقط جستجوی درخواستی شماست - عنوان، خواننده و در مواردی که سرویس نیاز دارد، شناسه ویدیو. پایانه AI اختیاری و تبدیل سریع LRC تنها پس از پیکربندی آن‌ها اجرا می‌شوند و متن ترانه یا URL ویدیوی ترک را دریافت می‌کنند."</string>
   <string name="morphe_music_lyrics_source_advice_summary">فقط ارائه‌دهندگانی که استفاده می‌کنید را فعال کنید یا پیش‌فرض را حفظ کنید - درخواست‌های مداوم می‌تواند سایت‌های متن آهنگ جامعه کوچک را دچار اشکال کند</string>
   <string name="morphe_music_lyrics_hide_info_title">پنهان‌کردن خط اعتبار</string>
   <string name="morphe_music_lyrics_hide_info_summary">پنهان‌کردن خط اعتبار نمایش‌داده‌شده در پایین متن ترانه</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">جابجایی ترجمه و لاتین‌نویسی</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">روشن: لاتین‌نویسی زیر متن ترانه و ترجمه بالای آن قرار می‌گیرد؛ خاموش: لاتین‌نویسی بالا و ترجمه پایین می‌ماند</string>
-  <string name="morphe_music_lyrics_use_ai_title">API سازگار با OpenAI</string>
-  <string name="morphe_music_lyrics_use_ai_translation_title">ترجمه هوش مصنوعی</string>
-  <string name="morphe_music_lyrics_use_ai_translation_summary">ترجمه‌ای که ارائه‌کننده ارسال می‌کند را در اولویت قرار می‌دهد، سپس مدل سازگار با OpenAI شما و در نهایت گوگل ترنسلیت</string>
-  <string name="morphe_music_lyrics_use_ai_romanization_title">رومی‌نویسی هوش مصنوعی</string>
-  <string name="morphe_music_lyrics_use_ai_romanization_summary">اولویت با رومانیزاسیونی است که ارائه‌دهنده ارسال می‌کند، سپس مدل سازگار با OpenAI شما و در نهایت گوگل ترنسلیت</string>
-  <string name="morphe_music_lyrics_use_ai_section_title">بخش هوش مصنوعی</string>
-  <string name="morphe_music_lyrics_use_ai_section_summary">تنها زمانی استفاده می‌شود که ارائه‌دهنده هیچ برچسب بخشی مانند Chorus یا Verse را ارسال نکند و مدل سازگار با OpenAI شما آن‌ها را شناس کند</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">تنظیمات هوش مصنوعی</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">نقطه پایانی API سازگار با OpenAI را برای ترجمه، رومش‌سازی و بخش‌بندی هوش مصنوعی شعرها پیکربندی کنید</string>
-  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL نقطهٔ پایان API (مثلاً https://text.pollinations.ai/openai)</string>
-  <string name="morphe_music_lyrics_ai_config_api_token_hint">کلید API (برای دسترسی ناشناس خالی بگذارید)</string>
-  <string name="morphe_music_lyrics_ai_config_model_hint">نام مدل (مثلاً openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">روشن بودن رومنیزه کردن یا انتقال را زیر ترانه و ترجمه را بالای آن قرار می‌دهد; خاموش بودن رومنیزه کردن یا انتقال را بالای ترانه و ترجمه را پایین نگه می‌دارد. یک خوانش که روی هر سیلاب قرار می‌گیرد همراه با آن حرکت می‌کند، از بالای سیلاب به زیر آن</string>
+  <string name="morphe_music_lyrics_force_center_title">همیشه مرکز ترانه‌ها</string>
+  <string name="morphe_music_lyrics_force_center_summary">روشن بودن هر خط را در وسط قرار داده و هم‌ترازی منبع را نادیده می‌گیرد، شامل طرف‌های دیوئلت; خاموش بودن هم‌ترازی درخواست شده توسط ترانه را نگه می‌دارد</string>
+  <string name="morphe_music_lyrics_providers_keep_one">حداقل یک ارائه‌دهنده باید روشن بماند</string>
+  <string name="morphe_music_lyrics_translation_provider_title">ترجمه</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">رومنیزه کردن یا انتقال</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">لغت‌نامه آفلاین</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">لیست کلمات Rime</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">تشخیص بخش‌ها با AI</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">فقط زمانی استفاده می‌شود که ارائه‌دهنده هیچ برچسب بخشی مانند Chorus یا Verse ندارد که مدل سازگار با OpenAI شما سپس تشخیص دهد. ویرایش ردیف همچنین پرامپت آن را باز می‌کند</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL نقطه پایانی API (مثال https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">الگوی پرامپت</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">جای‌گذارهای: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">پرامپت ذخیره شد</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">پرامپت ذخیره شد، اما نقطه پایانی AI هنوز قابل استفاده نیست. ابتدا آن را در تنظیمات AI پیکربندی کنید</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">پرامپت بازنشانی شد</string>
-  <string name="morphe_music_lyrics_ai_extra_body_hint">بدنه درخواست اضافی (JSON، در هر درخواست AI ادغام می‌شود)</string>
-  <string name="morphe_music_lyrics_ai_extra_body_invalid">JSON معتبر نیست. آن را اصلاح کنید یا قبل از ذخیره فیلد را پاک کنید</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">تنظیمات هوش مصنوعی ذخیره شد</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">اتصال به نقطه پایانه AI امکان‌پذیر نبود. لطفا تنظیمات خود را بررسی کنید</string>
-  <string name="morphe_music_lyrics_ai_config_toast_reset">تنظیمات هوش مصنوعی بازنشانی شد</string>
-  <string name="morphe_music_lyrics_ai_config_summary_configured">مدل %1$s پیکربندی شد</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_url">Base URL نمی‌تواند خالی باشد</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">تنظیمات ترجمه &amp; رومانیزه کردن ذخیره شد</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">تنظیمات به پیش‌فرض بازنشانی شد</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Base URL باید با http:// یا https:// شروع شود</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_model">نام مدل نمی‌تواند خالی باشد</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">تنظیمات ناقص است یا توسط ارائه‌دهنده رد شده است</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">در حال بررسی اعتبار اتصال…</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: متصل! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: اتصال ناموفق بود. تنظیمات را بررسی کنید.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">ابتدا کلید API را وارد کنید</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">تست اتصال</string>
+  <string name="morphe_music_lyrics_ai_config_fetching_models">در حال دریافت مدل‌ها…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">دریافت مدل‌ها</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_success">یک مدل را انتخاب کنید</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_failed">دریافت مدل‌ها ناموفق بود. کلید API یا اتصال را بررسی کنید.</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">پرامپت</string>
+  <string name="morphe_music_lyrics_ai_config_model_label">مدل</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_label">Base URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">پیش‌تنظیمات سرویس</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">یک سرویس انتخاب کنید</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_label">کلید API (اختیاری)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_label">بدنه اضافی درخواست (JSON اختیاری)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">سربرگ‌های درخواست اضافی (JSON اختیاری)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">نام‌ها و مقادیر را نقل‌قول کنید، مثلاً {\"api-key\": \"abc\"}. یک مقدار نقل‌قول نشده حاوی / : یا یک عدد رد می‌شود. یک مقدار خالی یک سربرگ را حذف می‌کند.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">نام‌ها و مقادیر را نقل‌قول کنید، مثلاً {\"temperature\": 0.3}. یک مقدار نقل‌قول نشده حاوی / یا : رد می‌شود. مدل و پیام‌ها نمی‌توانند اینجا تنظیم شوند.</string>
+  <string name="morphe_music_lyrics_ai_config_deepl_key_label">کلید احراز هویت (رایگان یا حرفه‌ای)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - غیرفعال‌کردن آیکون‌های پررنگ</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - بازگرداندن برگه‌های بعدی پخش‌کننده، متن آهنگ و مرتبط</string>

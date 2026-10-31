@@ -7,14 +7,19 @@
 
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.youtube.patches.AutoTranslateCaptionsPatch.getLanguageKey;
+import static app.morphe.extension.youtube.patches.AutoTranslateCaptionsPatch.normalizeLanguageCode;
+
+import android.os.SystemClock;
+
 import androidx.annotation.Nullable;
 
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicLong;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -75,7 +80,7 @@ public class PreferredCaptionLanguagePatch {
     private static final long USER_SELECTION_GRACE_PERIOD_MILLISECONDS = 500;
 
     private static final AtomicBoolean userSelectedTrack = new AtomicBoolean(false);
-    private static final AtomicBoolean userInteractionAllowed = new AtomicBoolean(false);
+    private static final AtomicLong userInteractionAllowedAt = new AtomicLong(Long.MAX_VALUE);
     private static volatile long videoStartTime;
 
     @Nullable
@@ -191,7 +196,7 @@ public class PreferredCaptionLanguagePatch {
                                                            @Nullable CaptionTrackInterface track,
                                                            @Nullable Enum<?> selectType) {
         try {
-            final boolean interactionAllowed = userInteractionAllowed.get();
+            final boolean interactionAllowed = SystemClock.uptimeMillis() >= userInteractionAllowedAt.get();
             Logger.printDebug(() -> "onSetSubtitleTrack track: " + track
                     + " selectType: " + selectType
                     + " interactionAllowed: " + interactionAllowed
@@ -200,7 +205,7 @@ public class PreferredCaptionLanguagePatch {
             // Respect explicit user selection only after the initial video load window.
             if (interactionAllowed
                     && selectType != null && PREFERRED_TRACK_SELECT_TYPE.equals(selectType.name())
-                    && System.currentTimeMillis() - videoStartTime > USER_SELECTION_GRACE_PERIOD_MILLISECONDS) {
+                    && SystemClock.uptimeMillis() - videoStartTime > USER_SELECTION_GRACE_PERIOD_MILLISECONDS) {
                 if (isSameTrack(track, lastProgrammaticTrackLang, lastProgrammaticTrackVss)) {
                     Logger.printDebug(() -> "Ignoring PREFERRED_TRACK as it matches programmatic selection");
                     return track;
@@ -237,10 +242,10 @@ public class PreferredCaptionLanguagePatch {
      * Injection point: Video start hook.
      */
     public static void newVideoStarted(VideoInformation.PlaybackController ignoredController) {
-        userInteractionAllowed.set(false);
+        userInteractionAllowedAt.set(Long.MAX_VALUE);
         userSelectedTrack.set(false);
         recordProgrammaticSelection(null);
-        videoStartTime = System.currentTimeMillis();
+        videoStartTime = SystemClock.uptimeMillis();
         Logger.printDebug(() -> "newVideoStarted, user interaction locked startTime: " + videoStartTime);
     }
 
@@ -248,11 +253,8 @@ public class PreferredCaptionLanguagePatch {
      * Injection point: Video information loaded hook.
      */
     public static void videoInformationLoaded() {
-        Logger.printDebug(() -> "videoInformationLoaded, scheduling 300ms unlock");
-        Utils.runOnMainThreadDelayed(() -> {
-            userInteractionAllowed.set(true);
-            Logger.printDebug(() -> "User interaction unlocked");
-        }, 300);
+        // Only the first loaded event starts the window; later events must not re-lock selection.
+        userInteractionAllowedAt.compareAndSet(Long.MAX_VALUE, SystemClock.uptimeMillis() + 300);
     }
 
     private static String getAppLanguage() {
@@ -300,49 +302,16 @@ public class PreferredCaptionLanguagePatch {
                 && (!hasTargetVss || vss.isEmpty());
     }
 
-    private static String normalizeLanguageCode(@Nullable String code) {
-        if (code == null) return "";
-        String s = code.trim().toLowerCase(Locale.ROOT).replace('_', '-');
-
-        // Legacy ISO 639 codes used by Java Locale and YouTube.
-        if (s.equals("iw") || s.startsWith("iw-")) {
-            return "he" + s.substring(2);
-        }
-        if (s.equals("in") || s.startsWith("in-")) {
-            return "id" + s.substring(2);
-        }
-        if (s.equals("ji") || s.startsWith("ji-")) {
-            return "yi" + s.substring(2);
-        }
-        return s;
-    }
-
     private static boolean matchesLanguage(@Nullable String trackLang, String targetLang) {
         if (trackLang == null) return false;
-        String t1 = normalizeLanguageCode(trackLang);
-        String t2 = normalizeLanguageCode(targetLang);
-        if (t1.equals(t2) || t1.startsWith(t2 + "-") || t2.startsWith(t1 + "-")) {
-            return true;
-        }
-
-        // Prevent cross-matching between Simplified and Traditional Chinese.
-        final boolean t1Traditional = isTraditionalChinese(t1);
-        final boolean t1Simplified = isSimplifiedChinese(t1);
-        final boolean t2Traditional = isTraditionalChinese(t2);
-        final boolean t2Simplified = isSimplifiedChinese(t2);
-        if ((t1Simplified && t2Traditional) || (t1Traditional && t2Simplified)) {
-            return false;
-        }
-
-        return getPrimaryLanguage(t1).equals(getPrimaryLanguage(t2));
-    }
-
-    private static boolean isTraditionalChinese(String code) {
-        return code.contains("hant") || code.contains("tw") || code.contains("hk");
-    }
-
-    private static boolean isSimplifiedChinese(String code) {
-        return code.contains("hans") || code.contains("cn");
+        String first = getLanguageKey(trackLang), second = getLanguageKey(targetLang);
+        if (first.equals(second)) return true;
+        String primary = getPrimaryLanguage(first);
+        if (!primary.equals(getPrimaryLanguage(second))) return false;
+        // Only known, opposing Chinese scripts block the usual regional/generic fallback.
+        return !primary.equals("zh")
+                || !(first.equals("zh-hans") && second.equals("zh-hant")
+                        || first.equals("zh-hant") && second.equals("zh-hans"));
     }
 
     private static String getPrimaryLanguage(String code) {

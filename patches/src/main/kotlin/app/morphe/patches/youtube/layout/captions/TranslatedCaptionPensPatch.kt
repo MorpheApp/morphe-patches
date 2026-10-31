@@ -12,8 +12,8 @@ package app.morphe.patches.youtube.layout.captions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
@@ -34,14 +34,14 @@ internal val translatedCaptionPensPatch = bytecodePatch(
     description = "Fixes auto-translated captions of styled caption tracks showing an empty background.",
 ) {
     // Adds the caption track interface.
-    dependsOn(sharedExtensionPatch, preferredCaptionLanguagePatch)
+    dependsOn(sharedExtensionPatch, autoTranslateCaptionsPatch)
 
     execute {
         // Track whether the caption track that is parsed is auto-translated.
         // The track is set from the request being parsed and not from the last requested url,
         // because cached tracks are parsed without a new request.
         CaptionFileParserFingerprint.let {
-            val trackField = it.instructionMatches[1].instruction.getReference<FieldReference>()!!
+            val trackField = it.instructionMatches[1].fieldReference
 
             mutableClassDefBy(trackField.definingClass).apply {
                 interfaces.add(EXTENSION_CAPTION_REQUEST_INTERFACE)
@@ -75,6 +75,16 @@ internal val translatedCaptionPensPatch = bytecodePatch(
                 """
             )
         }
+
+        // Translated automatic captions can have orphan line break events,
+        // and stable caption blocks use the source timing of automatic captions.
+        CaptionFileParserFingerprint.instructionMatches.last().getMethodCalled().addInstructions(
+            0,
+            """
+                invoke-static { p1 }, $EXTENSION_CLASS->repairInput(Ljava/io/InputStream;)Ljava/io/InputStream;
+                move-result-object p1
+            """
+        )
 
         // Every pen lookup of the timed text parser (<pen>, <p> and <s> elements) uses the same method.
         TimedTextSegmentElementFingerprint.instructionMatches[2].getMethodCalled().addInstructions(

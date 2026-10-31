@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">تأثير حركة بدء التشغيل</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">معطّل</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">اللون</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">أحادية اللون</string>
+  <string name="morphe_splash_screen_style_title">تأثير حركة بدء التشغيل</string>
+  <string name="morphe_splash_screen_style_entry_1">معطّل</string>
+  <string name="morphe_splash_screen_style_entry_2">اللون</string>
+  <string name="morphe_splash_screen_style_entry_3">لون Morphe</string>
+  <string name="morphe_splash_screen_style_entry_4">أحادي اللون</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe أحادي اللون</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">تمييز الإعدادات الجديدة</string>
+  <string name="morphe_settings_new_indicator_days_summary">عدد الأيام التي تظهر فيها النقطة بجانب الإعدادات والخيارات التي أُضيفت بواسطة التحديث</string>
+  <string name="morphe_settings_new_indicator_days_off">متوقف</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">إعادة التشغيل لإنهاء الإعداد</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">يخفي أزرار \'السابق\' و \'التالي\' في إشعار الوسائط، شاشة القفل، وعناصر تحكم سماعة الرأس</string>
   <string name="morphe_disable_notification_media_seekbar_title">تعطيل شريط التمرير</string>
   <string name="morphe_disable_notification_media_seekbar_summary">يمنع سحب شريط التقدم على شاشة القفل ولوحة الإشعارات</string>
+  <string name="morphe_seek_notification_media_prev_next_title">التمرير باستخدام أزرار السابق &amp; التالي</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">يغير عناصر التحكم لإشعار الوسائط، قفل الشاشة، وسماعات الرأس للتمرير بدلًا من تغيير الفيديوهات</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">مدة الترجيع</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">عدد الثواني للترجيع باستخدام زر السابق</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">مدة التقديم السريع</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">عدد الثواني للتقديم السريع باستخدام زر التالي</string>
+  <string name="morphe_seek_notification_media_length_invalid">يجب أن تكون مدة التمرير بين 1 و %s ثانية. سيتم استخدام الإعداد الافتراضي</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">تعطيل بروتوكول QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

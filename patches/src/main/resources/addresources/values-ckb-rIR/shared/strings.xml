@@ -24,18 +24,22 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">ڕه‌نگ سازبکه‌</string>
   <string name="morphe_settings_color_invalid">ڕه‌نگ نامه‌رێت</string>
   <string name="morphe_settings_restart_title">ئه‌گه‌رى دووباره‌کردنه‌وه‌ هه‌یه‌</string>
+  <string name="morphe_settings_restart_dialog_message">بۆ ئەوەی ئەم گۆڕانکارییە کار بکات، ئەپڵیکەیشنەکە دووبارە پێداگێڕانەوە بکەرەوە</string>
   <string name="morphe_settings_restart">دووباره‌سه‌ره‌کهێنه‌</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">واردکه‌</string>
   <string name="morphe_settings_import_copy">نوسه‌</string>
   <string name="morphe_settings_import_reset">سازکه‌يه‌كانی Morphe گه‌رى سه‌ره‌وه ببه‌سته</string>
+  <string name="morphe_settings_import_success">ڕێکخستنەکانی %s هاوردە کران</string>
   <string name="morphe_settings_import_failure_parse">به‌خۆشه‌وه‌ `)` نه‌که‌ویته‌وه: %s</string>
+  <string name="morphe_settings_navigate_up">گەڕانەوە بۆ سەرەوە</string>
   <string name="morphe_settings_search_hint">ئه‌لیکه‌ره‌خانه‌يه‌کى ڕاگرتنه‌کان</string>
   <string name="morphe_settings_screen_info_title">دربارە</string>
   <string name="morphe_settings_search_no_results_title">به‌هۆهی هیچ نه‌ماوه‌ بۆ `%s`</string>
   <string name="morphe_settings_search_no_results_summary">به‌ڵكوو وتاره‌كه‌كه‌كێت تيايه‌</string>
   <string name="morphe_settings_search_recent_searches"> به‌ژياره‌كانه‌</string>
   <string name="morphe_settings_search_remove_message">كه‌ ئه‌ى به‌زه‌سرایی مهسةله‌يه‌كه‌ ببه‌ستيه‌ به‌ده‌سته؟</string>
+  <string name="morphe_settings_search_remove">لابردن لە مێژووی گەڕان</string>
   <string name="morphe_settings_search_clear_history">زمووكی به‌ژياره‌كه‌كه‌يه‌كه‌ سه‌ره‌ده‌كامه‌</string>
   <string name="morphe_settings_search_clear_history_message">ئایا خؤت به‌خۆشه‌وه‌ده‌يكه‌ى زه‌مه‌نوه‌كانه‌ به‌ده‌سته؟</string>
   <string name="morphe_settings_search_tips_title">رزگارێ لێکدان</string>
@@ -44,54 +48,148 @@ Second \"item\" text"</string>
 • هەڵکەوتینێ دەربارەوێ بپارێزە بابەتەکە بۆ مێشەڕە
 • لێکۆڵینەوێک نەخوێندراوێتە سەرەتایەک و نیشانەیەک
 • دەستکارییەکانی باوک دەلێن سەردا دەستکارییەکانی منداڵێ نەبێت"</string>
+  <string name="morphe_settings_search_empty_history_title">مێژووی گەڕان بەتاڵە</string>
   <string name="morphe_settings_search_empty_history_summary">دقققبردانه ريستوريان دموسهيةريانه، دقققبردقاريان بررسوريانه إنترار إنترارقه</string>
   <string name="morphe_settings_search_history_title">دۆزینەوەی مێشۆکەکان، تێکستی ڕاگەڕەیی دەربارەی مێشۆکانی دەستکارییەک.</string>
+  <string name="morphe_settings_name_title">ناوی ڕێکخستنەکانی Morphe</string>
   <string name="morphe_settings_name_default_item">بنەڕەت</string>
+  <string name="morphe_settings_name_entry_2">زیادەکان</string>
+  <string name="morphe_settings_name_entry_3">گۆڕانکارییەکان</string>
+  <string name="morphe_settings_name_entry_4">کاتی گۆڕان</string>
   <string name="morphe_settings_name_custom_item">باو</string>
+  <string name="morphe_settings_name_custom_item_hint">ناوێک بنووسە</string>
+  <string name="morphe_settings_name_empty_warning">ناو ناتوانرێت بەتاڵ بێت</string>
   <string name="morphe_show_menu_icons_title">نیشانەکانی ڕێکدالەکانی مورفە بنێرن</string>
+  <string name="morphe_settings_menu_copy_path">کۆپی کرا: %s</string>
   <string name="morphe_language_title">زمانی مورفە</string>
   <string name="morphe_language_user_dialog_message">"فريتة‌ي بة‌شي‌كه‌ي زوانه‌كانيش نه‌بوون، يان بة‌تەواوه‌ نه‌كه‌ون.\n\nبۆ وه‌رگێڕانێكی زوانه‌ تازه‌كان ياخود باشكردنێكی وه‌رگێڕانه‌كانی ئێستا، سه‌رداني morphe.software/translate بكه‌"</string>
   <string name="morphe_language_DEFAULT">زمانی ئەپ</string>
   <string name="morphe_pref_import_export_title">هێنانی / ئەگەڕانەوە</string>
   <string name="morphe_pref_import_export_summary">هێنانی / دەربڕینی ڕێکخستنەکانی Morphe</string>
+  <string name="morphe_settings_import_file">هاوردەکردن لە فایل</string>
+  <string name="morphe_settings_import_file_success">ڕێکخستنەکان بە سەرکەوتوویی هاوردەکران، کلیک لەسەر Save بکە بۆ جێبەجێکردن</string>
   <string name="morphe_settings_import_file_failed">نەگەشت بە هاتنەوەی ڕێکخستنەکان</string>
+  <string name="morphe_settings_export_file">هەناردەکردن بۆ فایل</string>
   <string name="morphe_settings_export_file_success">ئەم فێڵانەی دەستخاتن سەرکەوتێت</string>
   <string name="morphe_settings_export_file_failed">\"نەگەشت بە دەربازبوونی ڕێکخستنەکان\"</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">طلوا جهأست إرا ءا ءعلوا ءأاءة الرسءات &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">تۆ وەشان &lt;i&gt;%1$s&lt;/i&gt;ی Morphe Patches بەکاردەهێنیت&lt;br&gt;&lt;br&gt;&lt;b&gt;نوێکردنەوە بەردەستە: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;بۆ نوێکردنەوەی پاتچەکانت، Morphe بەکاربهێنە بۆ پاتچکردنەوەی ئەم ئەپڵیکەیشنە</string>
   <string name="morphe_settings_about_links_dev_header">نوسین</string>
   <string name="morphe_settings_about_links_dev_body">صورو اين عميادي هستني استماران إسباقريانها إسباقالدها</string>
   <string name="morphe_settings_about_links_header">سەرچاوەکانی ڕەسمی</string>
+  <string name="morphe_settings_about_links_website">وێب سایت</string>
   <string name="morphe_settings_about_links_donate">خۆڵبەخش</string>
+  <string name="morphe_settings_about_links_translations">وەرگێڕانەکان</string>
   <string name="morphe_settings_about_links_credits">کۆددان</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">نوێترین وەشانە</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">نوێکردنەوە بەردەستە</string>
+  <string name="morphe_settings_about_contributors_current">گەشەپێدانی ئێستا</string>
+  <string name="morphe_settings_about_contributors_prior">گەشەپێدانی پێشوو</string>
+  <string name="morphe_settings_about_links_morphe">گەشەپێدانی چالاک</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">دەربارەی نوسینەکانی لایسەنسی</string>
   <string name="morphe_settings_about_licenses_loading">بارکردن…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">سەرپێچوان</string>
+  <string name="morphe_debug_screen_summary">ڕێکخستنی بژاردەکانی پێشکەوتووی گەشەپێدەر و تۆمارەکانی دەستنیشانکردن</string>
+  <string name="morphe_debug_title">چالاککردنی تۆمارکردنی دیباگ</string>
+  <string name="morphe_debug_stacktrace_title">شۆردنی شوێنی هەڵەی لۆگی دیباگ</string>
+  <string name="morphe_debug_stacktrace_summary">شووێنەکان (stack traces) لە تۆمارەکانی دیباگدا دەخاتە ناوەوە بۆ یارمەتیدانی دەستنیشانکردنی هەڵەکان</string>
   <string name="morphe_debug_toast_on_error_title">نیشاندانی ڕێوشوێنی Morphe-ی نیشاده</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"کوژاندنەوەی toastsـی هەڵە هەموو ئاگادارکردنەوەکانی هەڵەی Morphe دەشارێتەوە.
 
  لە هیچ ڕووداوێکی چاوەڕواننەکراو ئاگادار ناکرێیتەوە"</string>
+  <string name="morphe_debug_export_logs_title">هەناردەکردنی لۆگەکانی دیباگ</string>
+  <string name="morphe_debug_export_logs_summary">هەناردەکردنی لۆگەکانی دیباگی Morphe</string>
+  <string name="morphe_debug_export_logs_success">لۆگەکانی دیباگ بە سەرکەوتوویی هەناردەکران</string>
+  <string name="morphe_debug_export_logs_failed">نەگەشت بە هەناردەکردنی لۆگەکانی دیباگ</string>
+  <string name="morphe_debug_logs_search_hint">گەڕان لە تۆمارەکانی دیباگ...</string>
+  <string name="morphe_debug_export_logs_clear">پاککردنەوە</string>
   <string name="morphe_debug_logs_disabled">تۆمارکردنی چاککردنەوە لەکارخراوە</string>
+  <string name="morphe_debug_logs_none_found">هیچ لۆگێکی دیباگ نەدۆزرایەوە</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">لۆگەکانی دیباگ کۆپی کران</string>
+  <string name="morphe_debug_logs_failed_to_export">هەناردەکردنی تۆمارەکانی دیباگی سەرکەوتوو نەبوو: %s</string>
+  <string name="morphe_debug_logs_clear_toast">تۆمارەکانی دیباگ پاککرانەوە</string>
   <string name="morphe_debug_feature_flags_manager_title">پارێژكاري فڵاگەل و مۆر</string>
   <string name="morphe_debug_feature_flags_manager_summary">بەڕێوەبردنی ئاڵای تایبەتمەندی بوولی</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">گەڕان لە نیشانەکانی تایبەتمەندی...</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">چالاک نییە (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">چالاکە (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">بلۆک کراوە (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">سەپاندراوە (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">خۆرا</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">کوژاوە</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">هەڵکراو</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">سەپاندنی چالاککردن</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">بلۆککردن</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">سڕینەوە</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">فڵاگەڵەکانی تایبەتمەندی پاشکەوتکران</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">فڵاگەڵەکانی تایبەتمەندی ڕیسێتکران</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">فڵاگەڵەکانی تایبەتمەندی کۆپی کران بۆ ڕوونووسگە</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">بۆ بەکارهێنانی ئەم ڕێکخستنە، ئەپەکە دووبارە پێداگێڕانەوە بکەرەوە</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">هەناردەکردن و وەردگرتن</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">وەردگرتنی %s نیشانەی تایبەتمەندی</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">هیچ فلیگی تایبەتمەندییەک نەدۆزرایەوە</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">فلیگەکانی تایبەتمەندی بە سەرکەوتوویی هەناردەکران</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">هەناردەکردنی فلیگەکانی تایبەتمەندی سەرکەوتوو نەبوو</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">فلیگەکانی تایبەتمەندی بارکراون، بۆ جێبەجێکردنی کلیک لەسەر پاشکەوتکردن بکە</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">خوێندنەوەی فایلەکە سەرکەوتوو نەبوو</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">گەڕانی باینەری</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"دەدۆزێتەوە کام نیشانەی تایبەتمەندی دەبێتە هۆی ڕەفتارێکی ئەپەکە
+
+نیوەی %s نیشانەکە بلۆک کراون، و دوای هەر ڕێستارتێک دەڵێیت ئایا ڕەفتارەکە هێشتا بوونی هەیە
+
+پێش دەستپێکردن جارێک ڕەفتارەکە دووبارە بکەرەوە، ئەگەر نا ئەو نیشانانەی کە ئەپەکە هێشتا داوای نەکردووە لە گەڕانەکەدا نابین"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">دەستپێکردن</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"هیچ feature flagـێک نییە بۆ گەڕان
+
+تەنها ئەو فلاگانەی کە ئەپەکە بەکاری هێناون و لە ئێستادا بە زۆر چالاک نەکراون دەتوانرێت لە گەڕانی باینەریدا بەکاربهێنرێن"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"هەنگاوی %1$s
+
+%2$s فلاگ ماون، %3$sـیان بۆ ئەم هەنگاوە بلۆک کراون
+
+ئەپەکە ڕێستارت بکەرەوە، بپشکنە ئایا ڕەفتارەکە هەیە، پاشان لە خوارەوە وەڵام بدەرەوە"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">گەڕانی فلایگی feature لە دەرەوشەخاندایە</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">ڕەفتارەکە بوونی هەیە</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">ڕەفتارەکە بوونی نییە</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">پاشگەزبوون لە گەڕانی باینەری</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">گەڕانی باینەری هەڵوەشێندرا</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"فلایگی ڕەوشمی %s دەبێتە هۆی ئەم ڕەفتارە.
+
+ئێستا بلۆک کراوە"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"توانرا هیچ فلایگی ڕەوشمێک نەدۆزرێتەوە.
+
+وادیارە ڕەفتاری ئەپڵیکەیشنەکە لەلایەن فلایگی ڕەوشمێکەوە کۆنترۆڵ ناکرێت"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"توانرا تەنها یەک فلایگی ڕەوشم نەدۆزرێتەوە.
+
+ڕەفتارەکە لە سەرەتای گەڕانەکەدا ون بووە، بۆیە ڕەنگە زیاتر لە یەک فلایگی تێپەڕبووبێت یان یەکێک لە وەڵامەکان هەڵە بووبێت"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">کڕینی ڕێکخستنەکانی MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG نەستاوە. ئەوەی بێخە</string>
   <string name="gms_core_dialog_title">پێویستییه کار</string>
+  <string name="gms_core_dialog_outdated_message">"MicroG v%1s کۆنە و ڕەنگە ببێتە هۆی کێشە.
+
+تکایە MicroG نوێ بکەرەوە بۆ نوێترین وەشانی v%2s"</string>
+  <string name="gms_core_dialog_update_text">نوێکردنەوە</string>
+  <string name="gms_core_dialog_ignore_text">پشتگوێخستن</string>
+  <string name="gms_core_dialog_conflict_message">"ئەو MicroGـەی دامەزراوە لەلایەن Morpheـەوە پێشنیار نەکراوە:
+
+%1s
+
+کلیک بکە بۆ سڕینەوەی، پاشان ئەم ئەپڵیکەیشنە دووبارە بکەرەوە و MicroG RE دامەزرێنە"</string>
+  <string name="gms_core_dialog_uninstall_text">سڕینەوە</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG ڕێگە بەوە نادات لە پشتەوە کار بکات.
 
@@ -105,6 +203,7 @@ Second \"item\" text"</string>
 
  پەنجە بنێ بە دوگمەی بەردەوام و ڕێگە بە گۆڕانکارییەکانی باشترکردن بدە"</string>
   <string name="gms_core_dialog_continue_text">بەردەوامبوون</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">پیشاندانی دیالۆگی ئۆپتیمایزەکردنی باتری MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"لەکارخستنی ئەمە دەبێتە هۆی شاردنەوەی پرۆمپتی باشکردنی پاتری MicroG.
 
  ئەگەر باشکردنی پاتری نەگۆڕدرا ئەوا لەوانەیە تووشی ئەمانە بیت:
@@ -112,12 +211,24 @@ Second \"item\" text"</string>
  • لەوانەیە ئاگادارکردنەوەکان کار نەکەن
  • ڕەنگە پەخشکردنی پاشبنەما کار نەکات"</string>
   <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">بەڕێوەبردنی لینکی ئەپ</string>
+  <string name="morphe_link_handling_summary">ڕێکخستنی لینکەکان بۆ ئەوەی لەم ئەپڵیکەیشنەدا بکرێنەوە</string>
+  <string name="morphe_link_handling_step1_title">قۆناغی ١: ڕاگرتنی لینکە ڕەسەنەکانی ئەپ</string>
+  <string name="morphe_link_handling_step1_message">ڕێکخستنەکانی ئەپی ڕەسەن بکەرەوە و هەموو لینکەکانی دۆمەینەکە ڕابگرە</string>
+  <string name="morphe_link_handling_step2_title">قۆناغی ٢: چالاککردنی لینکەکانی ئەپی دەستکاریکراو</string>
+  <string name="morphe_link_handling_step2_message">ڕێکخستنەکانی ئەپڵیکەیشنی چاککراوەکە بکەرەوە و هەموو لینکەکانی دۆمەین چالاک بکە</string>
+  <string name="morphe_link_handling_open">کردنەوەی ڕێکخستنەکان</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 ئاگاداری تاقیکاری 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"ئةوه
 ئەپى وერსۆنى تاقیكەرەوەى ⚠️ &lt;b&gt;%1$s&lt;/b&gt; دةربخۆیت.
 &lt;br/&gt;&lt;br/&gt;
 🔧 ڕاهێنانی سەرنجدان: ئەپى بەرهەڵەكان یان خۆتێکزارى نادیار دەربخۆیت چونكە خەڵاتەكان دابةزین بۆ ئەم وერსۆنەى ئەپە.
 &lt;br/&gt;&lt;br/&gt;
 ئەگەر تؤیترین توشی هەر كێشەیەك نةبوونى، ئەوا &lt;b&gt;راكړه‌تەر&lt;/b&gt; و بؤ وერსۆنى مسه‌تەبی &lt;b&gt;%2$s&lt;/b&gt;✅ په‌چۆكه"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ تاقیکاری دەمەوێت</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ جێگیر دەمەوێت</string>
   <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">لۆگی هەرستە بڕاوە بۆ بەڵگەنامەکانی بەکارهێنەر: %s</string>
+  <string name="morphe_crash_log_saved">لۆگی هەرستە بڕاوە: %s</string>
 </resources>

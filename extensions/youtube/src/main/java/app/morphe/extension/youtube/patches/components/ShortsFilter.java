@@ -41,7 +41,6 @@ import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
-import kotlin.Unit;
 
 @SuppressWarnings({"unused", "FieldCanBeLocal"})
 public final class ShortsFilter extends Filter {
@@ -776,7 +775,6 @@ public final class ShortsFilter extends Filter {
                             }
                             navigationBar.setLayoutParams(params);
                         }
-                        return Unit.INSTANCE;
                     });
                 }
             }

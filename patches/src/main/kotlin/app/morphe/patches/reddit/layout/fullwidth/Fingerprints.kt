@@ -211,32 +211,46 @@ internal object PostDetailVideoFingerprint : Fingerprint(
 )
 
 /**
- * Gallery in the post details, since 2026.36.0. Its 14th parameter insets the gallery
- * with side padding and rounded corners.
+ * Leading parameters of the gallery in the post details.
+ * Its 14th parameter insets the gallery with side padding and rounded corners.
+ */
+private val POST_DETAIL_GALLERY_PARAMETERS = listOf(
+    "L",
+    "Z",
+    "Lkotlin/jvm/functions/Function1;",
+    "Ljava/lang/String;",
+    "L",
+    "I",
+    "Z",
+    "Z",
+    "Z",
+    "Z",
+    "Z",
+    "Z",
+    "Lkotlin/jvm/functions/Function0;",
+    "Z",
+    "Ljava/lang/Float;"
+)
+
+/**
+ * Gallery in the post details, since 2026.43.0.
  */
 internal object PostDetailGalleryFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(
-        "L",
-        "Z",
-        "Lkotlin/jvm/functions/Function1;",
-        "Ljava/lang/String;",
-        "L",
-        "I",
-        "Z",
-        "Z",
-        "Z",
-        "Z",
-        "Z",
-        "Z",
-        "Lkotlin/jvm/functions/Function0;",
-        "Z",
-        "Ljava/lang/Float;",
-        "L",
-        "I",
-        "I"
-    ),
+    parameters = POST_DETAIL_GALLERY_PARAMETERS + listOf("Z", "L", "I", "I"),
+    filters = listOf(
+        string("post_media_gallery_content")
+    )
+)
+
+/**
+ * Gallery in the post details, 2026.36.0 to 2026.42.0.
+ */
+internal object PostDetailGalleryLegacyFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = POST_DETAIL_GALLERY_PARAMETERS + listOf("L", "I", "I"),
     filters = listOf(
         string("post_media_gallery_content")
     )

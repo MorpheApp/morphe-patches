@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Opstartanimatie</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Uitgeschakeld</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Kleur</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monochroom</string>
+  <string name="morphe_splash_screen_style_title">Opstartanimatie</string>
+  <string name="morphe_splash_screen_style_entry_1">Uitgeschakeld</string>
+  <string name="morphe_splash_screen_style_entry_2">Kleur</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Kleur</string>
+  <string name="morphe_splash_screen_style_entry_4">Monochroom</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Nieuwe instellingen markeren</string>
+  <string name="morphe_settings_new_indicator_days_summary">Aantal dagen dat een stip wordt getoond naast instellingen en opties die door een update zijn toegevoegd</string>
+  <string name="morphe_settings_new_indicator_days_off">Uit</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Herstarten om de installatie te voltooien</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -145,6 +151,13 @@ Om in te loggen, druk je op 'doorgaan' onderaan"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Verbergt de knoppen Vorige en Volgende in mediameldingen, op het vergrendelscherm en in de hoofdtelefoonbediening</string>
   <string name="morphe_disable_notification_media_seekbar_title">Schuifregelaar uitschakelen</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Voorkomt dat de schuifregelaar op het vergrendelscherm en in het meldingspaneel wordt versleept</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Zoeken met knoppen Vorige &amp; Volgende</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Bedieningselementen voor mediemeldingen, vergrendelscherm en koptelefoon wijzigen om te zoeken in plaats van video\'s te veranderen</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Spoellengte achteruit</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Seconden om terug te spoelen met de vorige knop</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Spoellengte vooruit</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Seconden om vooruit te spoelen met de volgende knop</string>
+  <string name="morphe_seek_notification_media_length_invalid">De zoeklengte moet tussen 1 en %s seconden liggen. Standaardwaarde wordt gebruikt</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Uitschakelen van het QUIC-protocol</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

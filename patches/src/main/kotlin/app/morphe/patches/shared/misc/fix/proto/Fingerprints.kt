@@ -14,6 +14,17 @@ import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+/**
+ * A generated protobuf message creates its default instance in its static initializer.
+ */
+internal fun protoDefaultInstanceFingerprint(messageType: String) = Fingerprint(
+    definingClass = messageType,
+    name = "<clinit>",
+    filters = listOf(
+        fieldAccess(definingClass = messageType, type = messageType, opcode = Opcode.SPUT_OBJECT)
+    )
+)
+
 internal object EmptyRegistryFingerprint : Fingerprint(
     definingClass = "Lcom/google/protobuf/ExtensionRegistryLite;",
     name ="getGeneratedRegistry",

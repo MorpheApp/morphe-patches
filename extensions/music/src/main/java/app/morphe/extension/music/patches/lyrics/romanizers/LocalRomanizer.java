@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -23,43 +24,22 @@ import app.morphe.extension.music.settings.Settings;
 /**
  * Romanizes lyrics on the device, for the lines no service could romanize.
  *
- * <p>This runs last, after the provider, the AI endpoint and Google have all come back empty,
- * so what it produces is close to, but not the same as, what a service produces. A line in a
- * script nothing here covers is passed through rather than guessed at.
+ * <p>Runs after the provider, the AI endpoint and Google have all come back empty. A line in
+ * a script nothing here covers is passed through untouched.
  *
- * <p>A word the dictionary does not have is left in the script it was written in, since
- * dropping the line would lose the words around it.
+ * <p>A word the dictionary does not have stays in the script it was written in; dropping
+ * the line would lose the words around it.
  */
 public final class LocalRomanizer {
 
 
-    public static final class Result {
-        /** One line per input line. */
-        public final List<String> lines;
-
-        /** The name shown under the source. */
-        @Nullable
-        public final String dictionary;
-
-        Result(List<String> lines, @Nullable String dictionary) {
-            this.lines = lines;
-            this.dictionary = dictionary;
-        }
-    }
-
-    private record Read(String text, @Nullable String dictionary) {
-    }
-
     private static final String PINYIN = "UniDict, pinyin-pro";
-    private static final String JYUTPING = "UniDict, Rime Cantonese";
     private static final String RULE = "Built-in Romanization";
     private static final String JAPANESE = "SudachiDict";
-
     /** No syllables at all, and a word said with none of them. */
     private static final int[][] NO_TOKENS = new int[0][];
     private static final int[] NO_SYLLABLES = {0, 0};
-
-    /** Words ending in the er character where it is a word of its own rather than the erhua suffix. */
+    /** Words ending in er where er is a word of its own, not the erhua suffix. */
     private static final Set<String> PLAIN_ERHUA = new HashSet<>(Arrays.asList(
             "女儿", "男儿", "婴儿", "幼儿", "孤儿", "少儿", "胎儿", "健儿", "残儿", "弃儿",
             "新生儿", "低能儿", "弱智儿", "托儿", "孕儿"));
@@ -70,16 +50,44 @@ public final class LocalRomanizer {
     /** Null when nothing here applies, which tells the caller to leave the lyrics alone. */
     @Nullable
     public static Result romanize(List<String> lines) {
+        return romanize(lines, false);
+    }
+
+    /**
+     * Same reading, but the Han characters come from the Rime word table of the chosen
+     * language instead of the Mandarin one. This is the Rime Wordlist provider's reading;
+     * the local dictionaries still cover the scripts around the Han.
+     */
+    @Nullable
+    public static Result romanizeRime(List<String> lines) {
+        return romanize(lines, true);
+    }
+
+    /**
+     * The reading of one syllable, or null when it is not read here.
+     *
+     * @param line The line the syllable opens, so a Korean coda reads the way the line reads it.
+     */
+    @Nullable
+    public static String syllableReading(String syllable, @Nullable String line) {
+        if (syllable == null || syllable.isEmpty()) return null;
+        final Script script = ScriptDetector.detect(syllable);
+        if (script == null || script == Script.OTHER) return null;
+        final String reading = readAs(syllable, script, false, line).text().trim();
+        return reading.isEmpty() || reading.equals(syllable) ? null : reading;
+    }
+
+    @Nullable
+    private static Result romanize(List<String> lines, boolean rime) {
         if (lines == null || lines.isEmpty()) return null;
         if (ScriptDetector.detect(lines) == Script.OTHER) return null;
 
-        final boolean cantonese = cantonese();
         boolean changed = false;
         String dictionary = null;
         List<String> result = new ArrayList<>(lines.size());
 
         for (String line : lines) {
-            final Read read = readAs(line, ScriptDetector.detect(line), cantonese);
+            final Read read = readAs(line, ScriptDetector.detect(line), rime);
             if (read.dictionary() != null) dictionary = read.dictionary();
             if (!read.text().equals(line)) changed = true;
             result.add(read.text());
@@ -89,15 +97,16 @@ public final class LocalRomanizer {
     }
 
     /**
-     * Only the reading is added, and only to the lines the source had split: a line it did not
+     * Adds only the reading, and only to the lines the source split. A line the source did not
      * split keeps the whole-line reading passed in.
+     *
+     * <p>Han is read by the word table when the language has one, which is the Rime Wordlist reading.
      */
     @Nullable
     public static List<LyricsLine> alignWords(List<LyricsLine> lines,
-            List<LyricsLine> wholeLine) {
+                                              List<LyricsLine> wholeLine) {
         if (lines == null || wholeLine == null || lines.size() != wholeLine.size()) return null;
 
-        final boolean cantonese = cantonese();
         List<LyricsLine> result = new ArrayList<>(lines.size());
         boolean aligned = false;
 
@@ -106,7 +115,8 @@ public final class LocalRomanizer {
             // Kana is what marks a line Japanese; a word of kanji alone says only Han, and would
             // then be looked up in the wrong dictionary.
             final Script script = ScriptDetector.detect(line.text());
-            List<Word> read = exactReadings(line.words(), script, cantonese);
+            List<Word> read = exactReadings(line.words(), script, RimeDictStore.isActive(),
+                    line.text());
             if (read == null) {
                 read = splitReading(line, wholeLine.get(i).text());
             }
@@ -127,13 +137,20 @@ public final class LocalRomanizer {
     /** Null when not one word could be read, leaving the line to {@link #splitReading}. */
     @Nullable
     private static List<Word> exactReadings(List<Word> words, @Nullable Script script,
-            boolean cantonese) {
+                                            boolean rime) {
+        return exactReadings(words, script, rime, null);
+    }
+
+    /** @param line The line the words sit in, or null when only the words are known. */
+    @Nullable
+    private static List<Word> exactReadings(List<Word> words, @Nullable Script script,
+                                            boolean rime, @Nullable String line) {
         if (words.isEmpty() || script == null) return null;
         final List<Word> read = new ArrayList<>(words.size());
         boolean any = false;
 
         for (Word word : words) {
-            final String reading = readAs(word.text(), script, cantonese).text();
+            final String reading = readAs(word.text(), script, rime, line).text();
             if (reading.equals(word.text())) {
                 read.add(word);
                 continue;
@@ -147,9 +164,9 @@ public final class LocalRomanizer {
     }
 
     /**
-     * A whole reading laid onto the words the source split the line into. Only two shapes place without
-     * guessing: one syllable per spoken character, or one per word; anything else keeps the whole line,
-     * a reading on the wrong word being worse than none.
+     * A whole reading laid onto the words the source split the line into. Only two shapes
+     * place without guessing: one syllable per spoken character, or one per word. Anything
+     * else keeps the whole line; a reading on the wrong word is worse than none.
      */
     @Nullable
     private static List<Word> splitReading(LyricsLine line, @Nullable String wholeLine) {
@@ -199,16 +216,16 @@ public final class LocalRomanizer {
             final int start = at;
             while (at < reading.length() && !Character.isWhitespace(reading.charAt(at))) at++;
             if (at > start && speaks(reading.substring(start, at))) {
-                tokens.add(new int[] {start, at});
+                tokens.add(new int[]{start, at});
             }
         }
         return tokens.isEmpty() ? NO_TOKENS : tokens.toArray(new int[0][]);
     }
 
     /**
-     * Which of those syllables each word is said with, as {@code [from, to)} token indices and an empty
-     * pair for a word of marks only. Null when the reading fits the words neither one syllable per
-     * spoken character nor one per word.
+     * Which of those syllables each word is said with, as {@code [from, to)} token indices and an
+     * empty pair for a word of marks only. Null when the reading fits the words neither one
+     * syllable per spoken character nor one per word.
      *
      * <p>A caller holding only timings gets the same placement by handing over one word per timing.
      */
@@ -237,16 +254,16 @@ public final class LocalRomanizer {
             if (spoken[i] <= 0) continue;
             placed += spoken[i];
             final int end = length == syllables ? placed : token + 1;
-            spread[i] = new int[] {token, end};
+            spread[i] = new int[]{token, end};
             token = end;
         }
         return spread;
     }
 
     /**
-     * How much of a whole reading one word is said with. Han, Hangul and kana are a syllable to the
-     * character, so their count is the characters; every other writing counts as the whole word,
-     * letters being no syllables there and reading them apart cutting a word into pieces.
+     * How much of a whole reading one word is said with. Han, Hangul and kana are a syllable
+     * per character; any other writing counts as one word, since splitting letters apart would
+     * cut a word into pieces.
      */
     private static int units(String word) {
         int characters = 0;
@@ -257,8 +274,9 @@ public final class LocalRomanizer {
             if (isOnePerSyllable(c)) characters++;
         }
         if (characters == 0) return letters > 0 ? 1 : 0;
-        // The erhua suffix rides on the syllable before it, so such a word is said one fewer than written,
-        // unless the er is a word of its own: anything else beside it keeps its syllable, or the er has none.
+        // The erhua suffix rides on the syllable before it, so such a word is said one fewer
+        // than written, unless er is a word of its own: anything else beside it keeps its
+        // syllable, or the er has none.
         if (characters > 1 && letters > 0 && word.endsWith("儿") && !PLAIN_ERHUA.contains(word)) {
             characters--;
         }
@@ -299,12 +317,18 @@ public final class LocalRomanizer {
         return false;
     }
 
-    private static Read readAs(String text, Script script, boolean cantonese) {
+    private static Read readAs(String text, Script script, boolean rime) {
+        return readAs(text, script, rime, null);
+    }
+
+    /** @param line The line the text came from, or null when it is read on its own. */
+    private static Read readAs(String text, Script script, boolean rime, @Nullable String line) {
         switch (script) {
             case HAN:
-                if (cantonese) {
-                    return CantoneseDictStore.isReady()
-                            ? new Read(JyutpingRomanizer.romanize(text), JYUTPING)
+                if (rime) {
+                    return RimeDictStore.isReady()
+                            ? new Read(RimeRomanizer.romanize(text),
+                            "UniDict, " + RimeDictStore.dictionaryName())
                             : new Read(text, null);
                 }
                 return PinyinDictStore.isReady()
@@ -314,23 +338,62 @@ public final class LocalRomanizer {
                 // Kana read by rule are not the dictionary's work, so nothing is credited.
                 return new Read(japanese(text), JapaneseDictStore.isReady() ? JAPANESE : null);
             case KOREAN:
-                return new Read(HangulRomanizer.romanize(text), RULE);
+                return new Read(HangulRomanizer.romanize(text,
+                        line != null ? line : text), RULE);
             case GREEK:
-                return new Read(GreekRomanizer.romanize(text), RULE);
+                return new Read(transliterate(text, "greek"), RULE);
             case CYRILLIC:
-                return new Read(CyrillicRomanizer.romanize(text), RULE);
+                return new Read(transliterate(text, cyrillicScript()), RULE);
             case GEORGIAN:
-                return new Read(GeorgianRomanizer.romanize(text), RULE);
+                return new Read(transliterate(text, "georgian"), RULE);
             case ARMENIAN:
-                return new Read(ArmenianRomanizer.romanize(text), RULE);
+                return new Read(transliterate(text, "armenian"), RULE);
+            case HEBREW:
+                return new Read(transliterate(text, "hebrew"), RULE);
+            case ARABIC:
+                return new Read(transliterate(text, "arabic"), RULE);
+            case ETHIOPIC:
+                return new Read(transliterate(text, "amharic"), RULE);
+            case SYRIAC:
+                return new Read(transliterate(text, "syriac"), RULE);
             default:
                 return new Read(text, null);
         }
     }
 
-    /** Cantonese rather than Chinese, which the Han text itself cannot say. */
-    private static boolean cantonese() {
-        return "YUE".equalsIgnoreCase(Settings.LYRICS_ROMANIZE_LANGUAGE.get());
+    /**
+     * The transliteration of a script read by rule, or the text itself while the CLDR rules
+     * it needs are still being fetched.
+     */
+    private static String transliterate(String text, String script) {
+        AlphabetRomanizer reader = CldrTransforms.reader(script);
+        return reader != null ? reader.romanize(text) : text;
+    }
+
+    /**
+     * The Cyrillic table that reads the language the user asked for: the BGN tables are per
+     * language, and the general table reads whatever remains.
+     */
+    private static String cyrillicScript() {
+        final String language = Settings.LYRICS_ROMANIZE_LANGUAGE.get();
+        if (language == null) return "cyrillic";
+        final String subtag = language.toLowerCase(Locale.ROOT).split("-", 2)[0];
+        switch (subtag) {
+            case "ru":
+                return "russian";
+            case "uk":
+                return "ukrainian";
+            case "be":
+                return "belarusian";
+            case "bg":
+                return "bulgarian";
+            case "mk":
+                return "macedonian";
+            case "sr":
+                return "serbian";
+            default:
+                return "cyrillic";
+        }
     }
 
     /** Kana by rule, everything else out of the dictionary. */
@@ -387,10 +450,12 @@ public final class LocalRomanizer {
         return out.toString().trim();
     }
 
-    /** A run of kana, cut into words: the rule reads it either way, but without the words a
-     * line reads as {@code chottomatte} where Google gives {@code Chotto matte}. */
+    /**
+     * A run of kana, cut into words: the rule reads either way, but without word breaks a
+     * line reads as {@code chottomatte} where Google gives {@code Chotto matte}.
+     */
     private static void kana(String line, int from, int to, WordReadingTable table,
-            StringBuilder out) {
+                             StringBuilder out) {
         int at = from;
         while (at < to) {
             int length = to - at;
@@ -412,5 +477,22 @@ public final class LocalRomanizer {
         if (word.isEmpty()) return;
         if (out.length() > 0) out.append(' ');
         out.append(word);
+    }
+
+    public static final class Result {
+        /** One line per input line. */
+        public final List<String> lines;
+
+        /** The name shown under the source. */
+        @Nullable
+        public final String dictionary;
+
+        Result(List<String> lines, @Nullable String dictionary) {
+            this.lines = lines;
+            this.dictionary = dictionary;
+        }
+    }
+
+    private record Read(String text, @Nullable String dictionary) {
     }
 }

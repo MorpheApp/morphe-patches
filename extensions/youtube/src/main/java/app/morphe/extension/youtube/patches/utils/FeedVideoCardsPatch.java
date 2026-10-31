@@ -10,9 +10,16 @@ package app.morphe.extension.youtube.patches.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.ViewTreeObserver;
+import android.widget.TextView;
 
 import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
@@ -27,6 +34,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,11 +42,13 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.FeedEngagementCountsPatch;
+import app.morphe.extension.youtube.patches.FeedVideoActionsPatch;
 import app.morphe.extension.youtube.patches.FeedViewCountPatch;
+import app.morphe.extension.youtube.patches.PostImageDownloadPatch;
+import app.morphe.extension.youtube.patches.PostTranslatePatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
-import kotlin.Unit;
 
 /**
  * Finds the full width video cards of the feeds, and the video id of each card.
@@ -58,7 +68,21 @@ public final class FeedVideoCardsPatch {
 
     private static final boolean ENABLED = FeedEngagementCountsPatch.ENABLED
             || FeedViewCountPatch.ENABLED
-            || Settings.FEED_WATCH_LATER_BUTTON.get();
+            || Settings.FEED_WATCH_LATER_BUTTON.get()
+            || PostImageDownloadPatch.ENABLED
+            || PostTranslatePatch.ENABLED;
+
+    /**
+     * If the video of every card is needed. The posts are found by their own texts, so with only
+     * the post features on, the elements of the videos are not parsed and the cards are not matched
+     * to their videos. The elements are parsed on the main thread, while the page loads.
+     * {@link FeedVideoActionsPatch} is also given the video of the card for its long press menu.
+     */
+    private static final boolean VIDEO_CARDS = ENABLED
+            && (FeedEngagementCountsPatch.ENABLED
+            || FeedViewCountPatch.ENABLED
+            || Settings.FEED_WATCH_LATER_BUTTON.get()
+            || Settings.FEED_LONG_PRESS_MENU.get());
 
     /**
      * A card must be as wide as a card of a grid of up to three columns, such as the feed in landscape.
@@ -86,6 +110,13 @@ public final class FeedVideoCardsPatch {
      */
     private static final int MAX_RETRIES = 3;
     private static final long RETRY_DELAY_MS = 500;
+    /** Time between checks of the cards that are partly shown, while the list scrolls. */
+    private static final long SCROLL_CHECK_DELAY_MS = 50;
+
+    /** Duration of a turn of the loading spinner of the badges. */
+    private static final long SPINNER_TURN_MS = 1000;
+    private static final float SPINNER_SWEEP_DEGREES = 270;
+    private static final float SPINNER_STROKE_DP = 1.6f;
 
     /**
      * Result of {@link #findVideoId(ComponentHost)} for a video card whose texts are not drawn yet,
@@ -96,6 +127,12 @@ public final class FeedVideoCardsPatch {
 
     /** Value of a text shown by more than one video. */
     private static final String AMBIGUOUS = "";
+
+    /**
+     * Delimiter of the parts of the accessibility description of a video card,
+     * such as "Title - 12 minutes - Channel - 4.7M views - 2 days ago - play video".
+     */
+    private static final String DESCRIPTION_DELIMITER = " - ";
 
     /**
      * Result for a card without a duration on its thumbnail, such as a mix or a playlist,
@@ -110,10 +147,43 @@ public final class FeedVideoCardsPatch {
 
     private static final byte[] THUMBNAIL_PATH = "/vi".getBytes(StandardCharsets.US_ASCII);
 
+    /**
+     * Invisible format characters, such as the ones the elements of the classic layout add
+     * after the title (U+2060 to U+2064), which the card does not show.
+     */
+    private static final Pattern FORMAT_CHARACTERS_PATTERN = Pattern.compile("\\p{Cf}+");
+
     /** Text -> video id, or {@link #AMBIGUOUS}. Oldest texts are removed first. */
     @GuardedBy("itself")
     private static final Map<String, String> textVideoIds = Utils
             .createSizeRestrictedMap(MAX_TEXTS, true);
+
+    /** Titles of the cards whose video was found that are kept. */
+    private static final int MAX_FOUND_TITLES = 1000;
+
+    /**
+     * Title of a card whose video was found -> its video id, or {@link #AMBIGUOUS}.
+     * While other pages are browsed, the texts of their elements replace the texts of the feed,
+     * and the feed can be shown again without its elements being parsed again.
+     * Used only on the main thread.
+     */
+    private static final Map<String, String> foundTitleVideoIds = Utils
+            .createSizeRestrictedMap(MAX_FOUND_TITLES, true);
+
+    /**
+     * Icon of the badge of a live video on its thumbnail, such as 'yt_outline_experimental_live_black_24'.
+     * The live badge text depends on the language, and the avatar of a channel that is live
+     * shows the same text on its other videos.
+     */
+    private static final Pattern LIVE_ICON_PATTERN = Pattern.compile("^yt_\\w+_live_\\w+$");
+
+    /** Number of live videos that are kept. */
+    private static final int MAX_LIVE_VIDEOS = 200;
+
+    /** Live videos, by video id. Oldest videos are removed first. */
+    @GuardedBy("itself")
+    private static final Map<String, Boolean> liveVideoIds = Utils
+            .createSizeRestrictedMap(MAX_LIVE_VIDEOS, true);
 
     /** Root host -> video of the card, of the cards laid out last. Used only on the main thread. */
     private static final Map<ComponentHost, String> cardVideoIds = Collections.synchronizedMap(
@@ -125,26 +195,20 @@ public final class FeedVideoCardsPatch {
             // on the thumbnail is hidden while the video of the card plays in the feed.
             PlayerType.getOnChange().addObserver(type -> {
                 redrawCards();
-                return Unit.INSTANCE;
             });
         }
     }
 
     /**
-     * @return The video of a card that was laid out, or null if it is not known.
+     * @return If what is drawn on the thumbnail of the card is hidden now, because the video plays
+     *         in the feed, where the inline player shows its own buttons over the thumbnail,
+     *         such as the mute and the captions buttons.
      */
-    @Nullable
-    public static String getCardVideoId(ComponentHost host) {
+    public static boolean isCardPlayingInline(ComponentHost host) {
+        // The video of the card that was laid out, or null if it is not known.
         String videoId = cardVideoIds.get(host);
-        return PLAYLIST.equals(videoId) ? null : videoId;
-    }
-
-    /**
-     * @return If the video plays in the feed, where the inline player shows its own buttons
-     *         over the thumbnail, such as the mute and the captions buttons.
-     */
-    public static boolean isPlayingInline(@Nullable String videoId) {
-        if (videoId == null || PlayerType.getCurrent() != PlayerType.INLINE_MINIMAL) {
+        if (videoId == null || PLAYLIST.equals(videoId)
+                || PlayerType.getCurrent() != PlayerType.INLINE_MINIMAL) {
             return false;
         }
         return videoId.equals(VideoInformation.getVideoId())
@@ -152,17 +216,46 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
-     * @return If what is drawn on the thumbnail of the card is hidden now.
-     */
-    public static boolean isCardPlayingInline(ComponentHost host) {
-        return isPlayingInline(getCardVideoId(host));
-    }
-
-    /**
      * @return If the card is a playlist or a mix, which nothing is drawn on.
      */
     public static boolean isPlaylistCard(ComponentHost host) {
         return PLAYLIST.equals(cardVideoIds.get(host));
+    }
+
+    /**
+     * @return If the card is a live video, which has no like count yet and shows its number of viewers.
+     */
+    public static boolean isLiveCard(ComponentHost host) {
+        String videoId = cardVideoIds.get(host);
+        if (videoId == null) {
+            return false;
+        }
+        synchronized (liveVideoIds) {
+            return liveVideoIds.containsKey(videoId);
+        }
+    }
+
+    /**
+     * @return The paint of the loading spinner of a badge, shown until what the badge shows is found.
+     */
+    public static Paint createSpinnerPaint(float density, int color) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(color);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeCap(Paint.Cap.ROUND);
+        paint.setStrokeWidth(SPINNER_STROKE_DP * density);
+        return paint;
+    }
+
+    /**
+     * Draws the loading spinner of a badge, an arc that turns with the time.
+     * The badge draws itself again after it, so the arc keeps turning while it's shown.
+     */
+    public static void drawSpinner(Canvas canvas, RectF oval, Paint paint) {
+        final float inset = paint.getStrokeWidth() / 2;
+        oval.inset(inset, inset);
+        final float start = (SystemClock.uptimeMillis() % SPINNER_TURN_MS) * 360f / SPINNER_TURN_MS;
+        canvas.drawArc(oval, start, SPINNER_SWEEP_DEGREES, false, paint);
     }
 
     private static void redrawCards() {
@@ -192,18 +285,69 @@ public final class FeedVideoCardsPatch {
     private FeedVideoCardsPatch() {
     }
 
-    private static boolean contains(byte[] bytes, byte[] search) {
-        final int last = bytes.length - search.length;
-        outer:
-        for (int i = 0; i <= last; i++) {
-            for (int j = 0; j < search.length; j++) {
-                if (bytes[i + j] != search[j]) {
-                    continue outer;
-                }
+    /**
+     * @return If the bytes include the search bytes, such as an ASCII text of an element.
+     */
+    public static boolean contains(byte[] bytes, byte[] search) {
+        return getElementText(bytes).contains(new String(search, StandardCharsets.ISO_8859_1));
+    }
+
+    /**
+     * @return If a text of the element that includes ".eml", such as the identifier of the element,
+     *         can include the search text. Every text around ".eml" is checked as a whole, from the
+     *         bytes before and after it that are printable ASCII, so any such text that includes
+     *         the search text is found. Faster than parsing the element to read its texts, as words
+     *         such as "post" are found in most elements.
+     */
+    public static boolean emlTextMayContain(byte[] bytes, String search) {
+        String element = getElementText(bytes);
+        int index = element.indexOf(".eml");
+        while (index >= 0) {
+            int start = index;
+            while (start > 0 && element.charAt(start - 1) >= 0x20 && element.charAt(start - 1) <= 0x7E) {
+                start--;
             }
-            return true;
+            int end = index + 4;
+            while (end < element.length() && element.charAt(end) >= 0x20 && element.charAt(end) <= 0x7E) {
+                end++;
+            }
+            final int found = element.indexOf(search, start);
+            if (found >= 0 && found + search.length() <= end) {
+                return true;
+            }
+            index = element.indexOf(".eml", end);
         }
         return false;
+    }
+
+    /**
+     * The bytes of the element last searched on each thread, and their string.
+     */
+    private static final ThreadLocal<Object[]> lastElementText = ThreadLocal.withInitial(() -> new Object[2]);
+
+    /**
+     * The element hooks search every element on the main thread, while the page loads. Every byte is
+     * one character in ISO-8859-1, so the bytes include some bytes when the string of the bytes includes
+     * their string, which is searched in native code. That is much faster than a loop that is not compiled
+     * yet, as when the app starts. The bytes of an element are a buffer of the app that is not changed,
+     * and the hooks are called one after another for it, so the string is made once for all of them.
+     *
+     * @return The bytes as a string with one character for each byte.
+     */
+    public static String getElementText(byte[] bytes) {
+        Object[] last = lastElementText.get();
+        if (last[0] != bytes) {
+            last[1] = new String(bytes, StandardCharsets.ISO_8859_1);
+            last[0] = bytes;
+        }
+        return (String) last[1];
+    }
+
+    /**
+     * @return The text as it's matched between an element and a card.
+     */
+    private static String normalizeText(CharSequence text) {
+        return FORMAT_CHARACTERS_PATTERN.matcher(text).replaceAll("").trim();
     }
 
     private static boolean isVideoText(String text) {
@@ -220,7 +364,7 @@ public final class FeedVideoCardsPatch {
      * Called when an element is parsed. The element is not changed.
      */
     public static byte[] onElementLoaded(byte[] bytes) {
-        if (!ENABLED || bytes == null || !contains(bytes, THUMBNAIL_PATH)) {
+        if (!VIDEO_CARDS || bytes == null || !contains(bytes, THUMBNAIL_PATH)) {
             return bytes;
         }
         try {
@@ -269,24 +413,62 @@ public final class FeedVideoCardsPatch {
                 return bytes;
             }
 
-            synchronized (textVideoIds) {
-                for (ProtoNode node : textNodes) {
-                    String text = node.getText().trim();
-                    if (!isVideoText(text)) {
-                        continue;
-                    }
-                    String previous = textVideoIds.get(text);
-                    if (previous == null) {
-                        textVideoIds.put(text, videoId);
-                    } else if (!previous.equals(videoId)) {
-                        textVideoIds.put(text, AMBIGUOUS);
-                    }
+            boolean live = false;
+            for (ProtoNode node : textNodes) {
+                if (LIVE_ICON_PATTERN.matcher(node.getText()).matches()) {
+                    live = true;
+                    break;
                 }
+            }
+            synchronized (liveVideoIds) {
+                if (live) {
+                    liveVideoIds.put(videoId, Boolean.TRUE);
+                } else {
+                    // The live stream ended.
+                    liveVideoIds.remove(videoId);
+                }
+            }
+
+            for (ProtoNode node : textNodes) {
+                addVideoText(videoId, node.getText());
+            }
+            if (!live) {
+                FeedViewCountPatch.onVideoElementLoaded(videoId, textNodes);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onElementLoaded failure", ex);
         }
         return bytes;
+    }
+
+    /**
+     * Adds a text shown by the cards of a video. Also called for the titles that replace the title
+     * of a video on its cards, such as original titles and DeArrow titles, which the elements
+     * of the video do not include. Can be called on any thread.
+     */
+    public static void addVideoText(String videoId, @Nullable String text) {
+        if (!VIDEO_CARDS || text == null) {
+            return;
+        }
+        String normalized = normalizeText(text);
+        if (!isVideoText(normalized)) {
+            return;
+        }
+        synchronized (textVideoIds) {
+            putVideoText(textVideoIds, normalized, videoId);
+        }
+    }
+
+    /**
+     * Adds the text of the video, or marks it as {@link #AMBIGUOUS} if another video shows it too.
+     */
+    private static void putVideoText(Map<String, String> textVideoIds, String text, String videoId) {
+        String previous = textVideoIds.get(text);
+        if (previous == null) {
+            textVideoIds.put(text, videoId);
+        } else if (!previous.equals(videoId)) {
+            textVideoIds.put(text, AMBIGUOUS);
+        }
     }
 
     public static boolean isVideoShaped(ComponentHost host) {
@@ -371,27 +553,124 @@ public final class FeedVideoCardsPatch {
      * @return If the text is a duration, such as 4:05, or a badge such as the live badge.
      */
     public static boolean isVideoBadgeText(String text) {
-        return (text.length() <= MAX_DURATION_TEXT_LENGTH && DURATION_PATTERN.matcher(text).find())
+        return isDurationText(text)
                 || BADGE_PATTERN.matcher(text).matches();
+    }
+
+    private static boolean isDurationText(String text) {
+        return text.length() <= MAX_DURATION_TEXT_LENGTH && DURATION_PATTERN.matcher(text).find();
+    }
+
+    /**
+     * Classify the actual tapped card without the optional text-to-video cache.
+     * Music-video cards have a duration even when their watch command starts a Mix.
+     * An intentional Mix/playlist card has no duration. Unknown layouts are left alone.
+     * Must be called on the main thread while the tap's source view is still mounted.
+     */
+    public static boolean isIndividualVideoTap(View sender) {
+        ComponentHost root = findTappedRootHost(sender);
+        return root != null && isVideoShaped(root) && !hasHorizontalList(root) && !isInDialog(root)
+                && hasDuration(root);
+    }
+
+    /**
+     * Classify a mounted card whose command already identifies a Mix. Unlike an
+     * individual music video, a Mix card has no duration. Do not impose the full
+     * width feed geometry: Mix cards also appear in smaller library grids/shelves.
+     */
+    public static boolean isPlaylistTap(View sender) {
+        ComponentHost root = findTappedRootHost(sender);
+        return root != null && root.isAttachedToWindow() && !isInDialog(root) && !hasDuration(root);
+    }
+
+    /**
+     * @return The root host of the card that contains the tapped view.
+     */
+    @Nullable
+    public static ComponentHost findTappedRootHost(View sender) {
+        ViewParent parent = sender instanceof ComponentHost host ? host : sender.getParent();
+        while (parent instanceof View view && !(parent instanceof ComponentHost)) {
+            parent = view.getParent();
+        }
+        return parent instanceof ComponentHost host ? findRootHost(host) : null;
+    }
+
+    private static boolean hasDuration(View view) {
+        if (view instanceof ComponentHost host) {
+            TextContent content = host.getTextContent();
+            if (content != null) {
+                for (CharSequence text : content.getTextItems()) {
+                    if (text != null && isDurationText(text.toString().trim())) {
+                        return true;
+                    }
+                }
+            }
+        } else if (view instanceof TextView textView) {
+            CharSequence text = textView.getText();
+            if (text != null && isDurationText(text.toString().trim())) {
+                return true;
+            }
+        }
+        if (view instanceof ViewGroup group) {
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                View child = group.getChildAt(i);
+                if (child.getVisibility() == View.VISIBLE && hasDuration(child)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Largest space between the thumbnail and the left, top and right edges of the card.
+     * Cards of some layouts show the thumbnail inset from their edges, such as by 12 dp.
+     */
+    public static final int MAX_THUMBNAIL_INSET_DP = 16;
+    /** A duration badge larger than this is not the badge itself, but a host around it. */
+    public static final int MAX_DURATION_WIDTH_DP = 120;
+    public static final int MAX_DURATION_HEIGHT_DP = 32;
+
+    /**
+     * @param rect The host that shows a badge text, such as a duration or 'LIVE', relative to the root host.
+     * @return If the text is a badge of the thumbnail: the host is as wide as the thumbnail and starts in it,
+     *         such as the host of the whole thumbnail, or it's as large as a badge, on the side of the duration
+     *         (the right, or the left in right to left languages). Not a badge text elsewhere on the card,
+     *         such as the live badge on the avatar of a channel that is live, at the top of its page.
+     */
+    public static boolean isThumbnailBadge(ComponentHost root, Rect rect) {
+        final float density = root.getResources().getDisplayMetrics().density;
+        final int width = root.getWidth();
+        if (rect.width() >= width - 2 * MAX_THUMBNAIL_INSET_DP * density
+                && rect.top < width * THUMBNAIL_RATIO) {
+            return true;
+        }
+        return rect.width() <= MAX_DURATION_WIDTH_DP * density
+                && rect.height() <= MAX_DURATION_HEIGHT_DP * density
+                && (FeedViewCountPatch.isRtl(root) ? rect.centerX() < width / 2 : rect.centerX() > width / 2);
     }
 
     /**
      * Videos show their duration, or a badge such as the live badge, on the thumbnail.
      * Mixes, playlists and Shorts do not.
      */
-    private static boolean hasVideoBadge(ComponentHost host) {
+    private static boolean hasVideoBadge(ComponentHost root, ComponentHost host, Rect rect) {
         TextContent textContent = host.getTextContent();
         if (textContent != null) {
             for (CharSequence text : textContent.getTextItems()) {
-                if (text != null) {
-                    if (isVideoBadgeText(text.toString().trim())) {
+                if (text != null && isVideoBadgeText(text.toString().trim())) {
+                    rect.set(0, 0, host.getWidth(), host.getHeight());
+                    if (host != root) {
+                        root.offsetDescendantRectToMyCoords(host, rect);
+                    }
+                    if (isThumbnailBadge(root, rect)) {
                         return true;
                     }
                 }
             }
         }
         for (int i = 0, count = host.getChildCount(); i < count; i++) {
-            if (host.getChildAt(i) instanceof ComponentHost child && hasVideoBadge(child)) {
+            if (host.getChildAt(i) instanceof ComponentHost child && hasVideoBadge(root, child, rect)) {
                 return true;
             }
         }
@@ -403,7 +682,7 @@ public final class FeedVideoCardsPatch {
         if (textContent != null) {
             for (CharSequence text : textContent.getTextItems()) {
                 if (text != null) {
-                    String item = text.toString().trim();
+                    String item = normalizeText(text);
                     if (isVideoText(item) && !texts.contains(item)) {
                         texts.add(item);
                     }
@@ -417,37 +696,24 @@ public final class FeedVideoCardsPatch {
         }
     }
 
-    @Nullable
-    private static Activity findActivity(Context context) {
-        while (context instanceof ContextWrapper wrapper) {
-            if (context instanceof Activity activity) {
-                return activity;
-            }
-            context = wrapper.getBaseContext();
-        }
-        return null;
-    }
-
     /**
      * The share sheet and other bottom sheets are dialogs that can show the thumbnail and the texts
      * of the opened video, so they look like a card. Feeds are in the window of the activity.
      */
     public static boolean isInDialog(ComponentHost host) {
-        Activity activity = findActivity(host.getContext());
-        if (activity != null && activity.getWindow() != null) {
+        Context context = host.getContext();
+        while (context instanceof ContextWrapper wrapper && !(context instanceof Activity)) {
+            context = wrapper.getBaseContext();
+        }
+        if (context instanceof Activity activity && activity.getWindow() != null) {
             View decorView = activity.getWindow().peekDecorView();
             if (decorView != null && host.getRootView() != decorView) {
                 return true;
             }
         }
-        return isInBottomSheet(host);
-    }
 
-    /**
-     * Bottom sheets that are shown in the window of the activity.
-     */
-    private static boolean isInBottomSheet(View view) {
-        ViewParent parent = view.getParent();
+        // Bottom sheets that are shown in the window of the activity.
+        ViewParent parent = host.getParent();
         while (parent instanceof View parentView) {
             final int id = parentView.getId();
             // Generated ids, which have no package, are not resources.
@@ -501,7 +767,7 @@ public final class FeedVideoCardsPatch {
         if (texts.isEmpty()) {
             return NOT_READY;
         }
-        if (!hasVideoBadge(root)) {
+        if (!hasVideoBadge(root, root, new Rect())) {
             // A mix or a playlist, which shows a badge without a duration.
             return PLAYLIST;
         }
@@ -517,7 +783,77 @@ public final class FeedVideoCardsPatch {
                 scores.merge(videoId, score, Integer::sum);
             }
         }
+        // The texts of a mix or a playlist, which are never shared with a video.
+        // A single short text can belong to an element of another video that was not seen.
+        String videoId = findBestMatch(scores);
+        if (videoId != null) {
+            for (String text : texts) {
+                if (text.length() >= TITLE_TEXT_LENGTH) {
+                    putVideoText(foundTitleVideoIds, text, videoId);
+                }
+            }
+            return videoId;
+        }
+        return scores.isEmpty() ? findVideoIdByFoundTitles(texts) : null;
+    }
 
+    /**
+     * The texts of the element of the card were removed, so the card is found by the titles
+     * of the cards that were found before. A long text of the card can be shared with another
+     * video of the same channel that was found, such as the channel and the view count,
+     * so at least two texts must match.
+     */
+    @Nullable
+    private static String findVideoIdByFoundTitles(List<String> texts) {
+        Map<String, Integer> scores = new HashMap<>();
+        for (String text : texts) {
+            if (text.length() < TITLE_TEXT_LENGTH) {
+                continue;
+            }
+            String videoId = foundTitleVideoIds.get(text);
+            if (videoId != null && !videoId.equals(AMBIGUOUS)) {
+                scores.merge(videoId, 1, Integer::sum);
+            }
+        }
+        return findBestMatch(scores);
+    }
+
+    /**
+     * Litho draws only the part of a card that is shown, so a card that enters from the bottom
+     * of the list shows its thumbnail before its texts, and its video is not known by its texts.
+     * The accessibility description of the card is set already, and starts with the title,
+     * such as "Title - 12 minutes - Channel - 4.7M views - 2 days ago - play video".
+     *
+     * @return The video of the card found by the start of its description, or null if not known.
+     */
+    @Nullable
+    public static String findVideoIdByDescription(ComponentHost root) {
+        CharSequence description = root.getContentDescription();
+        if (description == null) {
+            return null;
+        }
+        String text = description.toString();
+        synchronized (textVideoIds) {
+            // A title can contain the delimiter too, so the longest start of the description
+            // that is a text of a video is used.
+            for (int end = text.lastIndexOf(DESCRIPTION_DELIMITER); end > 0;
+                 end = text.lastIndexOf(DESCRIPTION_DELIMITER, end - 1)) {
+                String videoId = textVideoIds.get(normalizeText(text.substring(0, end)));
+                if (videoId != null) {
+                    return videoId.equals(AMBIGUOUS) ? null : videoId;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param scores Match -> score of the texts that belong to it, where a long text scores 2.
+     * @return The match with the highest score, or null if there is a tie
+     *         or the best match has only a single short text.
+     */
+    @Nullable
+    public static String findBestMatch(Map<String, Integer> scores) {
         String best = null;
         int bestScore = 0;
         boolean tie = false;
@@ -531,8 +867,6 @@ public final class FeedVideoCardsPatch {
                 tie = true;
             }
         }
-        // The texts of a mix or a playlist, which are never shared with a video.
-        // A single short text can belong to an element of another video that was not seen.
         return tie || bestScore < 2 ? null : best;
     }
 
@@ -558,6 +892,35 @@ public final class FeedVideoCardsPatch {
 
     /** Root host -> number of checks since its last layout. Used only on the main thread. */
     private static final Map<ComponentHost, Integer> retries = new WeakHashMap<>();
+    /** Cards that are checked again after a delay. Used only on the main thread. */
+    private static final Map<ComponentHost, Boolean> pendingRetries = new WeakHashMap<>();
+
+    /**
+     * Root hosts that are checked again when the list scrolls. Litho mounts only the part of a card
+     * that is shown, so what is drawn on it can be found once more of it is shown.
+     * Used only on the main thread.
+     */
+    private static final Set<ComponentHost> scrollChecks = Collections.newSetFromMap(new WeakHashMap<>());
+    /** Tree observers of the windows the scroll listener was added to. Used only on the main thread. */
+    private static final Map<ViewTreeObserver, Boolean> scrollObservers = new WeakHashMap<>();
+    private static boolean scrollCheckScheduled;
+    private static final Rect visibleRect = new Rect();
+
+    private static final Runnable scrollCheckRunnable = () -> {
+        scrollCheckScheduled = false;
+        for (ComponentHost root : scrollChecks.toArray(new ComponentHost[0])) {
+            if (root != null) {
+                scheduleUpdate(root);
+            }
+        }
+    };
+
+    private static final ViewTreeObserver.OnScrollChangedListener scrollListener = () -> {
+        if (!scrollCheckScheduled && !scrollChecks.isEmpty()) {
+            scrollCheckScheduled = true;
+            Utils.runOnMainThreadDelayed(scrollCheckRunnable, SCROLL_CHECK_DELAY_MS);
+        }
+    };
 
     private static void scheduleUpdate(ComponentHost root) {
         rootsToUpdate.put(root, Boolean.TRUE);
@@ -568,20 +931,57 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
-     * Checks the card again a little later, such as when what is drawn on it was not found yet.
+     * Checks the card again when the list scrolls, if the card is partly shown.
+     * Litho mounts only the part of a card that is shown, so what is drawn on it can be found
+     * once more of it is shown. Must be called on the main thread.
+     *
+     * @return If the card is partly shown, so it is checked again.
      */
-    public static void scheduleRetry(ComponentHost root) {
+    public static boolean scheduleScrollCheck(ComponentHost root) {
+        final boolean partlyShown = root.isAttachedToWindow()
+                && (!root.getLocalVisibleRect(visibleRect) || visibleRect.height() < root.getHeight());
+        if (partlyShown) {
+            scrollChecks.add(root);
+            ViewTreeObserver observer = root.getViewTreeObserver();
+            if (observer.isAlive() && scrollObservers.put(observer, Boolean.TRUE) == null) {
+                observer.addOnScrollChangedListener(scrollListener);
+            }
+        }
+        return partlyShown;
+    }
+
+    /**
+     * @return If the card is checked again later, such as while its video is not found yet.
+     *         Must be called on the main thread.
+     */
+    public static boolean isRetryPending(ComponentHost root) {
+        return pendingRetries.containsKey(root);
+    }
+
+    /**
+     * Checks the card again a little later, such as when what is drawn on it was not found yet,
+     * and when the list scrolls while the card is partly shown.
+     * Must be called on the main thread.
+     *
+     * @return If the card is checked again.
+     */
+    public static boolean scheduleRetry(ComponentHost root) {
+        final boolean partlyShown = scheduleScrollCheck(root);
+
         Integer count = retries.get(root);
         final int attempt = count == null ? 0 : count;
         if (attempt >= MAX_RETRIES) {
-            return;
+            return partlyShown;
         }
         retries.put(root, attempt + 1);
+        pendingRetries.put(root, Boolean.TRUE);
         root.postDelayed(() -> {
+            pendingRetries.remove(root);
             if (root.isAttachedToWindow()) {
                 scheduleUpdate(root);
             }
         }, RETRY_DELAY_MS);
+        return true;
     }
 
     private static final Runnable updateRootsRunnable = () -> {
@@ -590,13 +990,27 @@ public final class FeedVideoCardsPatch {
             ComponentHost[] roots = rootsToUpdate.keySet().toArray(new ComponentHost[0]);
             rootsToUpdate.clear();
             for (ComponentHost root : roots) {
-                if (root == null || !root.isAttachedToWindow()
-                        || root.getParent() instanceof ComponentHost) {
+                if (root == null) {
+                    continue;
+                }
+                // Added again below if the card is still checked again.
+                scrollChecks.remove(root);
+                if (!root.isAttachedToWindow() || root.getParent() instanceof ComponentHost) {
+                    continue;
+                }
+                if (!VIDEO_CARDS) {
+                    // Only the post features are on, which do not use the video of the card.
+                    PostImageDownloadPatch.onRootLaidOut(root);
+                    PostTranslatePatch.onRootLaidOut(root);
                     continue;
                 }
                 String videoId = findVideoId(root);
                 if (NOT_READY.equals(videoId)
-                        || (videoId == null && isVideoShaped(root) && !hasHorizontalList(root))) {
+                        || (videoId == null && isVideoShaped(root) && !hasHorizontalList(root))
+                        // A card that enters from the top of the list shows its texts before the
+                        // duration of its thumbnail, so it looks like a mix until its top is shown.
+                        || (PLAYLIST.equals(videoId)
+                        && (!root.getLocalVisibleRect(visibleRect) || visibleRect.top > 0))) {
                     scheduleRetry(root);
                 } else {
                     retries.remove(root);
@@ -612,6 +1026,9 @@ public final class FeedVideoCardsPatch {
                 final String cardVideoId = PLAYLIST.equals(videoId) ? null : videoId;
                 FeedEngagementCountsPatch.onCardLaidOut(root, cardVideoId);
                 FeedViewCountPatch.onCardLaidOut(root, cardVideoId);
+                FeedVideoActionsPatch.onCardLaidOut(root, cardVideoId);
+                PostImageDownloadPatch.onRootLaidOut(root);
+                PostTranslatePatch.onRootLaidOut(root);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "updateRoots failure", ex);

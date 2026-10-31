@@ -38,10 +38,25 @@ import app.morphe.extension.shared.ui.Dim;
 @SuppressWarnings({"unused", "deprecation"})
 public class SeekBarPreference extends Preference {
 
-    public record SeekBarConfig(IntegerSetting setting, int min, int max, int step,
-                                String unit, int divisor) {
+    /**
+     * @param minLabel If not null, shown instead of the number when the value is the min,
+     *                 such as for a min value that means "off".
+     * @param maxLabel If not null, shown instead of the number when the value is the max,
+     *                 such as for a max value that means "no limit".
+     */
+    public record SeekBarConfig(IntegerSetting setting, int min, int max, int step, String unit,
+                                int divisor, @Nullable StringRef minLabel, @Nullable StringRef maxLabel) {
         public SeekBarConfig(IntegerSetting setting, int min, int max, int step, String unit) {
             this(setting, min, max, step, unit, 1);
+        }
+
+        public SeekBarConfig(IntegerSetting setting, int min, int max, int step, String unit, int divisor) {
+            this(setting, min, max, step, unit, divisor, null);
+        }
+
+        public SeekBarConfig(IntegerSetting setting, int min, int max, int step, String unit,
+                             int divisor, @Nullable StringRef maxLabel) {
+            this(setting, min, max, step, unit, divisor, null, maxLabel);
         }
     }
 
@@ -186,7 +201,7 @@ public class SeekBarPreference extends Preference {
 
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
-                getTitle(),
+                getTitle() != null ? getTitle().toString() : "",
                 null,
                 null,
                 null,
@@ -216,6 +231,12 @@ public class SeekBarPreference extends Preference {
     }
 
     private static String formatValue(int value, SeekBarConfig config) {
+        if (value == config.min && config.minLabel != null) {
+            return config.minLabel.toString();
+        }
+        if (value == config.max && config.maxLabel != null) {
+            return config.maxLabel.toString();
+        }
         if (config.divisor == 1) {
             return String.format(Locale.ROOT, "%d%s", value, config.unit);
         }

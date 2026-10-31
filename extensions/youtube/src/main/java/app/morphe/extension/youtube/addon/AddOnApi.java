@@ -23,7 +23,6 @@ import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.shared.VideoState;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
-import kotlin.Unit;
 
 /**
  * Hooks that add-on patch bundles can attach to at runtime.
@@ -129,7 +128,6 @@ public final class AddOnApi {
                         Logger.printException(() -> "Video state listener failure", ex);
                     }
                 }
-                return Unit.INSTANCE;
             });
         }
 

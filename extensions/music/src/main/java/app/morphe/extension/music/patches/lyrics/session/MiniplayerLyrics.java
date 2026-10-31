@@ -19,6 +19,7 @@ import java.lang.ref.WeakReference;
 import java.util.Objects;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
 import app.morphe.extension.music.patches.lyrics.model.MetadataCleaner;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.settings.Settings;
@@ -28,11 +29,9 @@ import app.morphe.extension.shared.ResourceUtils;
 
 /**
  * Mirrors the currently sung lyric line into the in-app miniplayer: the title shows the current
- * line and the subtitle shows {@code "artist - title"}. When no synced or word-level lyrics are
- * available the app's own title and artist are left untouched.
- *
- * <p>The miniplayer view hierarchy is captured from the constructor injection point, and a ticker
- * updates the two {@link TextView}s as playback progresses.
+ * line and the subtitle shows {@code "artist - title"}. Without synced or word-level lyrics the
+ * app's own title and artist are left untouched. The views are captured at the constructor
+ * injection point and updated from a ticker as playback progresses.
  */
 @SuppressWarnings("unused")
 public final class MiniplayerLyrics {
@@ -59,9 +58,6 @@ public final class MiniplayerLyrics {
     @Nullable
     private static String rawDisplayArtist;
 
-    @Nullable
-    private static String cachedSubtitle;
-
     private static boolean mirrored;
 
     @Nullable
@@ -76,16 +72,6 @@ public final class MiniplayerLyrics {
     @Nullable
     private static String lastMirrorSubtitle;
 
-    /** Drives the periodic check that mirrors the current line into the mini player. */
-    private static final LyricsTicker ticker = new LyricsTicker(MiniplayerLyrics::tick);
-
-    /** Listener that re-schedules the ticker immediately when lyrics finish loading. */
-    private static final LyricsManager.Listener lyricsListener = (state, lyrics) -> {
-        if (state == LyricsManager.State.LOADED || state == LyricsManager.State.NOT_FOUND) {
-            ticker.schedule();
-        }
-    };
-
     private MiniplayerLyrics() {
     }
 
@@ -94,6 +80,9 @@ public final class MiniplayerLyrics {
         ticker.stop();
         LyricsManager.getInstance().removeListener(lyricsListener);
     }
+    
+    /** Drives the periodic check that mirrors the current line into the mini player. */
+    private static final LyricsTicker ticker = new LyricsTicker(MiniplayerLyrics::tick);
 
     /**
      * Starts or stops mirroring to match the current settings. Called when a lyrics setting
@@ -101,7 +90,6 @@ public final class MiniplayerLyrics {
      * without recreating the miniplayer.
      */
     public static void onSettingsChanged() {
-        cachedSubtitle = null;
         if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MINIPLAYER.get()
                 || titleRef.get() == null || subtitleRef.get() == null) {
             disableFeature();
@@ -127,7 +115,6 @@ public final class MiniplayerLyrics {
             displayArtist = parsed[0];
             rawDisplayTitle = title;
             rawDisplayArtist = artist;
-            cachedSubtitle = null; // invalidate on track change
 
             android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
             LyricsManager.getInstance().onDisplayedTrackChanged(title, artist, mediaUri);
@@ -136,6 +123,13 @@ public final class MiniplayerLyrics {
             Logger.printException(() -> "onMediaSessionSetMetadata failure", ex);
         }
     }
+    
+    /** Listener that re-schedules the ticker immediately when lyrics finish loading. */
+    private static final LyricsManager.Listener lyricsListener = (state, lyrics) -> {
+        if (state == LyricsManager.State.LOADED || state == LyricsManager.State.NOT_FOUND) {
+            ticker.schedule();
+        }
+    };
 
     /**
      * Injection point. Captures the miniplayer title and subtitle TextViews and (re)starts the
@@ -216,10 +210,9 @@ public final class MiniplayerLyrics {
 
         if (synced) {
             String line = manager.getCurrentLineText();
-            String newTitle = line.isEmpty() ? displayTitleOr(track) : line;
-            if (cachedSubtitle == null) {
-                cachedSubtitle = buildSubtitle(track);
-            }
+            String newTitle = line == null ? displayTitleOr(track) : line;
+            // Built on every tick, as the track format frames take turns.
+            String newSubtitle = buildSubtitle(track);
             if (!mirrored) {
                 preMirrorTitle = title.getText();
                 preMirrorSubtitle = subtitle.getText();
@@ -229,10 +222,10 @@ public final class MiniplayerLyrics {
                 title.setText(newTitle);
             }
             lastMirrorTitle = newTitle;
-            if (!TextUtils.equals(cachedSubtitle, subtitle.getText())) {
-                subtitle.setText(cachedSubtitle);
+            if (!TextUtils.equals(newSubtitle, subtitle.getText())) {
+                subtitle.setText(newSubtitle);
             }
-            lastMirrorSubtitle = cachedSubtitle;
+            lastMirrorSubtitle = newSubtitle;
             mirrored = true;
         } else {
             restoreIfMirrored();
@@ -280,14 +273,13 @@ public final class MiniplayerLyrics {
         final String rawArtist = rawDisplayArtist;
         if (rawTitle == null || rawTitle.trim().isEmpty()
                 || rawArtist == null || rawArtist.trim().isEmpty()) {
-            return track.displayWith(Settings.LYRICS_DISPLAY_ARTIST_FIRST.get());
+            return LyricsPresentation.trackLabel(track.title(), track.artist());
         }
-        return new TrackInfo(rawTitle, rawArtist, "", 0)
-                .displayWith(Settings.LYRICS_DISPLAY_ARTIST_FIRST.get());
+        return LyricsPresentation.trackLabel(rawTitle, rawArtist);
     }
 
     private static void restoreField(TextView view, @Nullable String lastMirrored,
-            @Nullable CharSequence preMirror, @Nullable String fallback) {
+                                     @Nullable CharSequence preMirror, @Nullable String fallback) {
         final CharSequence current = view.getText();
         if (!TextUtils.equals(current, lastMirrored)) {
             return;
@@ -299,4 +291,6 @@ public final class MiniplayerLyrics {
             view.setText(restore);
         }
     }
+
+
 }

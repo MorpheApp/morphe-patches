@@ -10,24 +10,22 @@
 package app.morphe.patches.music.layout.miniplayer
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.getReference
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_32_or_greater
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.findFreeRegister
-import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ChangeMiniplayerColorPatch;"
@@ -52,10 +50,10 @@ val changeMiniplayerColorPatch = bytecodePatch(
 
         if (is_9_32_or_greater) {
             SwitchToggleColorFingerprint.let {
-                val colorMathPlayerFieldReference = it.instructionMatches.last().getFieldAccessed()
+                val colorMathPlayerFieldReference = it.instructionMatches.last().fieldReference
 
                 val colorMathPlayerIGetReference = it.instructionMatches[4]
-                    .getInstruction<ReferenceInstruction>().reference as FieldReference
+                    .fieldReference
 
                 val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow {
                     getReference<MethodReference>()?.name == "getColor"
@@ -66,21 +64,18 @@ val changeMiniplayerColorPatch = bytecodePatch(
                 val colorMathPlayerIPutReference = MiniPlayerConstructorFingerprint.method
                     .getInstruction<ReferenceInstruction>(iPutIndex).reference
 
-                MiniPlayerConstructorFingerprint.classDef.methods.single { method ->
-                    method.accessFlags == AccessFlags.PUBLIC.value or AccessFlags.FINAL.value &&
-                            method.returnType == "V" &&
-                            method.parameters == it.originalMethod.parameters
-                }.apply {
-                    val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.INVOKE_DIRECT)
+                SwitchToggleColorParentFingerprint.method.apply {
+                    val insertIndex = 0
                     val freeRegister = findFreeRegister(insertIndex)
 
                     // Publish the resolved color so the navigation bar can reuse it.
-                    addInstructionsAtControlFlowLabel(
+                    addInstructionsWithLabels(
                         insertIndex,
                         """
                             invoke-static {}, $EXTENSION_CLASS->changeMiniplayerColor()Z
                             move-result v$freeRegister
                             if-eqz v$freeRegister, :off
+                            if-eqz p1, :off
                             iget-object v$freeRegister, p1, $colorMathPlayerFieldReference
                             check-cast v$freeRegister, ${colorMathPlayerIGetReference.definingClass}
                             iget v$freeRegister, v$freeRegister, $colorMathPlayerIGetReference
@@ -98,7 +93,7 @@ val changeMiniplayerColorPatch = bytecodePatch(
                     .getInstruction<ReferenceInstruction>().reference
 
                 val colorMathPlayerIGetReference = it.instructionMatches[4]
-                    .getInstruction<ReferenceInstruction>().reference as FieldReference
+                    .fieldReference
 
                 val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow {
                     getReference<MethodReference>()?.name == "getColor"
@@ -109,21 +104,18 @@ val changeMiniplayerColorPatch = bytecodePatch(
                 val colorMathPlayerIPutReference = MiniPlayerConstructorFingerprint.method
                     .getInstruction<ReferenceInstruction>(iPutIndex).reference
 
-                MiniPlayerConstructorFingerprint.classDef.methods.single { method ->
-                    method.accessFlags == AccessFlags.PUBLIC.value or AccessFlags.FINAL.value &&
-                            method.returnType == "V" &&
-                            method.parameters == it.originalMethod.parameters
-                }.apply {
-                    val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.INVOKE_DIRECT)
+                SwitchToggleColorParentFingerprint.method.apply {
+                    val insertIndex = 0
                     val freeRegister = findFreeRegister(insertIndex)
 
                     // Publish the resolved color so the navigation bar can reuse it.
-                    addInstructionsAtControlFlowLabel(
+                    addInstructionsWithLabels(
                         insertIndex,
                         """
                             invoke-static {}, $EXTENSION_CLASS->changeMiniplayerColor()Z
                             move-result v$freeRegister
                             if-eqz v$freeRegister, :off
+                            if-eqz p1, :off
                             invoke-virtual { p1 }, $colorMathPlayerInvokeVirtualReference
                             move-result-object v$freeRegister
                             check-cast v$freeRegister, ${colorMathPlayerIGetReference.definingClass}
@@ -161,10 +153,8 @@ val changeMiniplayerColorPatch = bytecodePatch(
 
         // Hook the watch-while dismiss callback to drop the cached tint.
         // Fingerprint factory is shared with the swipe-to-dismiss patch.
-        val musicActivityPeerClass = (
-            MusicActivityWidgetFingerprint.instructionMatches[1]
-                .getInstruction<ReferenceInstruction>().reference as FieldReference
-        ).definingClass
+        val musicActivityPeerClass = MusicActivityWidgetFingerprint.instructionMatches[1]
+            .fieldReference.definingClass
 
         watchWhileDismissedFingerprint(musicActivityPeerClass).method.addInstructions(
             0,

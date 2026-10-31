@@ -55,6 +55,256 @@ public final class KuGouProvider implements LyricsProvider {
             64, 71, 97, 119, 94, 50, 116, 71, 81, 54, 49, 45, (byte) 206, (byte) 210, 110, 105
     };
 
+    @Nullable
+    private static SongInfo resolveHash(TrackInfo track) throws IOException, JSONException {
+        String keyword = track.artist() + " " + track.title();
+        String url = SONG_SEARCH_URL + "&keyword=" + LyricsRequests.encode(keyword);
+        HttpURLConnection connection = LyricsRequests.openConnection(url);
+        if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
+            LyricsRequests.logFailure("KuGou", connection);
+            return null;
+        }
+
+        JSONObject root = Requester.parseJSONObject(connection);
+        JSONObject data = root.optJSONObject("data");
+        JSONArray info = data == null ? null : data.optJSONArray("info");
+        if (info == null || info.length() == 0) {
+            return null;
+        }
+
+        String bestHash = null;
+        String bestId = null;
+        String bestTitle = null;
+        String bestArtist = null;
+        int bestDuration = -1;
+        int bestScore = -1;
+        for (int i = 0; i < info.length(); i++) {
+            JSONObject item = info.optJSONObject(i);
+            if (item == null) {
+                continue;
+            }
+            String hash = item.optString("hash", "");
+            if (hash.isEmpty()) {
+                continue;
+            }
+
+            String title = item.optString("songname", "");
+            String artist = item.optString("singername", "");
+            int score = LyricsRequests.scoreTrackCandidate(title, artist,
+                    item.optInt("duration", 0), track);
+            if (score > bestScore) {
+                bestScore = score;
+                bestHash = hash;
+                bestId = item.optString("id", "");
+                bestTitle = title;
+                bestArtist = artist;
+                bestDuration = item.optInt("duration", 0);
+            }
+        }
+        if (bestHash == null || bestScore < LyricsRequests.SOFT_MIN) {
+            return null;
+        }
+        return new SongInfo(bestHash, bestId, bestTitle, bestArtist, bestDuration);
+    }
+
+    private static String decryptKrc(byte[] raw) throws IOException {
+        byte[] body = Arrays.copyOfRange(raw, 4, raw.length);
+        byte[] decoded = new byte[body.length];
+        for (int i = 0; i < body.length; i++) {
+            decoded[i] = (byte) (body[i] ^ KRC_KEY[i % KRC_KEY.length]);
+        }
+
+        InputStream input = new InflaterInputStream(new ByteArrayInputStream(decoded));
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        byte[] buffer = new byte[4096];
+        int read;
+        while ((read = input.read(buffer)) != -1) {
+            out.write(buffer, 0, read);
+        }
+        input.close();
+        //noinspection CharsetObjectCanBeUsed
+        return out.toString(StandardCharsets.UTF_8.name());
+    }
+
+    private static KrcResult parseKrc(String krc) {
+        List<String> creditLines = new ArrayList<>();
+        if (krc == null || krc.isEmpty()) {
+            return new KrcResult(new ArrayList<>(), creditLines, null, null);
+        }
+
+        long fileOffsetMs = 0;
+        String languageTag = null;
+        for (String rawLine : krc.split("\\r?\\n")) {
+            String line = rawLine.trim();
+            if (line.isEmpty() || line.charAt(0) != '[') {
+                continue;
+            }
+
+            Matcher meta = LRCParser.LRC_META.matcher(line);
+            if (meta.matches()) {
+                String key = meta.group(1);
+                String value = meta.group(2);
+                if (key == null || value == null) {
+                    continue;
+                }
+                String name = key.toLowerCase(Locale.ROOT);
+                if (name.equals("offset")) {
+                    try {
+                        fileOffsetMs = -Long.parseLong(value.trim());
+                    } catch (NumberFormatException ex) {
+                        Logger.printDebug(() -> "Could not parse offset in KuGou LRC", ex);
+                    }
+                } else if (name.equals("language")) {
+                    languageTag = value;
+                } else if (LRCParser.CREDIT_META_KEYS.contains(name)) {
+                    String trimmed = value.trim();
+                    if (!trimmed.isEmpty()) {
+                        creditLines.add(key + ":" + trimmed);
+                    }
+                }
+            }
+        }
+
+        List<LyricsLine> lines = applyFileOffset(KRCParser.parse(krc), fileOffsetMs);
+        KrcAuxiliary auxiliary = languageTag == null ? null : parseKrcLanguageTag(languageTag, lines);
+        return new KrcResult(lines, creditLines,
+                auxiliary == null ? null : auxiliary.romanization(),
+                auxiliary == null ? null : auxiliary.translation());
+    }
+
+    /**
+     * Applies the file's {@code [offset]} tag, which belongs to the lyrics themselves rather
+     * than to the offset the user configures. The caller has already negated it, because a
+     * positive tag means the lyrics are shown earlier.
+     */
+    private static List<LyricsLine> applyFileOffset(List<LyricsLine> lines, long offsetMs) {
+        if (offsetMs == 0) {
+            return lines;
+        }
+        List<LyricsLine> shifted = new ArrayList<>(lines.size());
+        for (LyricsLine line : lines) {
+            List<Word> words = new ArrayList<>(line.words().size());
+            for (Word word : line.words()) {
+                words.add(new Word(shift(word.startMs(), offsetMs), shift(word.endMs(), offsetMs),
+                        word.text(), word.romaji(), word.endsWithSpace()));
+            }
+            shifted.add(new LyricsLine(shift(line.startTimeMs(), offsetMs),
+                    shift(line.endTimeMs(), offsetMs), line.text(), words,
+                    line.agentId(), line.isDuet(), line.isBG(), line.songPart()));
+        }
+        return shifted;
+    }
+
+    /** Leaves {@link LyricsLine#NO_TIME} alone and keeps a shift from going negative. */
+    private static long shift(long timeMs, long offsetMs) {
+        return timeMs == LyricsLine.NO_TIME ? timeMs : Math.max(0, timeMs + offsetMs);
+    }
+
+    @Nullable
+    private static KrcAuxiliary parseKrcLanguageTag(String tag, List<LyricsLine> original) {
+        if (tag.isEmpty()) {
+            return null;
+        }
+        try {
+            String decoded = new String(Base64.decode(tag, Base64.DEFAULT), StandardCharsets.UTF_8);
+            JSONObject root = new JSONObject(decoded);
+            JSONArray content = root.optJSONArray("content");
+            if (content == null) {
+                return null;
+            }
+
+            JSONArray romaContent = null;
+            JSONArray transContent = null;
+            for (int i = 0; i < content.length(); i++) {
+                JSONObject item = content.optJSONObject(i);
+                if (item == null) {
+                    continue;
+                }
+                int type = item.optInt("type", -1);
+                if (type == 0) {
+                    romaContent = item.optJSONArray("lyricContent");
+                } else if (type == 1) {
+                    transContent = item.optJSONArray("lyricContent");
+                }
+            }
+
+            List<LyricsLine> romaLines = null;
+            if (romaContent != null) {
+                romaLines = new ArrayList<>();
+                int skippedEmpty = 0;
+                for (int li = 0; li < original.size(); li++) {
+                    LyricsLine line = original.get(li);
+                    if (!lineHasText(line)) {
+                        skippedEmpty++;
+                        continue;
+                    }
+                    int contentIndex = li - skippedEmpty;
+                    if (contentIndex >= 0 && contentIndex < romaContent.length()) {
+                        String text = joinKrcRomaEntry(romaContent.optJSONArray(contentIndex));
+                        if (!text.isEmpty()) {
+                            romaLines.add(new LyricsLine(line.startTimeMs(), text));
+                        }
+                    }
+                }
+                if (romaLines.isEmpty()) {
+                    romaLines = null;
+                }
+            }
+
+            List<LyricsLine> transLines = null;
+            if (transContent != null) {
+                transLines = new ArrayList<>();
+                for (int li = 0; li < original.size(); li++) {
+                    LyricsLine line = original.get(li);
+                    if (li < transContent.length()) {
+                        JSONArray entry = transContent.optJSONArray(li);
+                        String text = (entry != null && entry.length() > 0) ? entry.optString(0, "") : "";
+                        if (text != null && !text.isEmpty()) {
+                            transLines.add(new LyricsLine(line.startTimeMs(), text));
+                        }
+                    }
+                }
+                if (transLines.isEmpty()) {
+                    transLines = null;
+                }
+            }
+
+            if (romaLines == null && transLines == null) {
+                return null;
+            }
+            return new KrcAuxiliary(romaLines, transLines);
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
+    private static boolean lineHasText(LyricsLine line) {
+        for (Word word : line.words()) {
+            if (word.text() != null && !word.text().trim().isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static String joinKrcRomaEntry(@Nullable JSONArray entry) {
+        if (entry == null) {
+            return "";
+        }
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0, length = entry.length(); i < length; i++) {
+            String part = entry.optString(i, "").trim();
+            if (!part.isEmpty()) {
+                //noinspection SizeReplaceableByIsEmpty
+                if (builder.length() > 0) {
+                    builder.append(' ');
+                }
+                builder.append(part);
+            }
+        }
+        return builder.toString();
+    }
+
     @Override
     public String name() {
         return "KuGou";
@@ -195,13 +445,6 @@ public final class KuGouProvider implements LyricsProvider {
                 decoded.formatType(), sourceUrl);
     }
 
-    /** The decoded payload of a download, ready to be turned into lyrics. */
-    private record DecodedKrc(List<LyricsLine> lines, @Nullable List<String> creditLines,
-                              @Nullable List<LyricsLine> attachedRomanization,
-                              @Nullable Map<String, List<LyricsLine>> translations,
-                              String rawFormat, String formatType) {
-    }
-
     @Nullable
     private DecodedKrc decodeContent(String content) throws IOException {
         byte[] raw = Base64.decode(content, Base64.DEFAULT);
@@ -239,75 +482,11 @@ public final class KuGouProvider implements LyricsProvider {
                 attachedRomanization, translations, rawFormat, formatType);
     }
 
-    @Nullable
-    private static SongInfo resolveHash(TrackInfo track) throws IOException, JSONException {
-        String keyword = track.artist() + " " + track.title();
-        String url = SONG_SEARCH_URL + "&keyword=" + LyricsRequests.encode(keyword);
-        HttpURLConnection connection = LyricsRequests.openConnection(url);
-        if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
-            LyricsRequests.logFailure("KuGou", connection);
-            return null;
-        }
-
-        JSONObject root = Requester.parseJSONObject(connection);
-        JSONObject data = root.optJSONObject("data");
-        JSONArray info = data == null ? null : data.optJSONArray("info");
-        if (info == null || info.length() == 0) {
-            return null;
-        }
-
-        String bestHash = null;
-        String bestId = null;
-        String bestTitle = null;
-        String bestArtist = null;
-        int bestDuration = -1;
-        int bestScore = -1;
-        for (int i = 0; i < info.length(); i++) {
-            JSONObject item = info.optJSONObject(i);
-            if (item == null) {
-                continue;
-            }
-            String hash = item.optString("hash", "");
-            if (hash.isEmpty()) {
-                continue;
-            }
-
-            String title = item.optString("songname", "");
-            String artist = item.optString("singername", "");
-            int score = LyricsRequests.scoreTrackCandidate(title, artist,
-                    item.optInt("duration", 0), track);
-            if (score > bestScore) {
-                bestScore = score;
-                bestHash = hash;
-                bestId = item.optString("id", "");
-                bestTitle = title;
-                bestArtist = artist;
-                bestDuration = item.optInt("duration", 0);
-            }
-        }
-        if (bestHash == null || bestScore < LyricsRequests.SOFT_MIN) {
-            return null;
-        }
-        return new SongInfo(bestHash, bestId, bestTitle, bestArtist, bestDuration);
-    }
-
-    private static String decryptKrc(byte[] raw) throws IOException {
-        byte[] body = Arrays.copyOfRange(raw, 4, raw.length);
-        byte[] decoded = new byte[body.length];
-        for (int i = 0; i < body.length; i++) {
-            decoded[i] = (byte) (body[i] ^ KRC_KEY[i % KRC_KEY.length]);
-        }
-
-        InputStream input = new InflaterInputStream(new ByteArrayInputStream(decoded));
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        byte[] buffer = new byte[4096];
-        int read;
-        while ((read = input.read(buffer)) != -1) {
-            out.write(buffer, 0, read);
-        }
-        input.close();
-        //noinspection CharsetObjectCanBeUsed
-        return out.toString(StandardCharsets.UTF_8.name());
+    /** The decoded payload of a download, ready to be turned into lyrics. */
+    private record DecodedKrc(List<LyricsLine> lines, @Nullable List<String> creditLines,
+                              @Nullable List<LyricsLine> attachedRomanization,
+                              @Nullable Map<String, List<LyricsLine>> translations,
+                              String rawFormat, String formatType) {
     }
 
     private record SongInfo(String hash, String id, String title, String artist,
@@ -330,184 +509,5 @@ public final class KuGouProvider implements LyricsProvider {
     /** Romanization (type 0) and translation (type 1) extracted from a KRC {@code [language]} tag. */
     private record KrcAuxiliary(@Nullable List<LyricsLine> romanization,
                                 @Nullable List<LyricsLine> translation) {
-    }
-
-    private static KrcResult parseKrc(String krc) {
-        List<String> creditLines = new ArrayList<>();
-        if (krc == null || krc.isEmpty()) {
-            return new KrcResult(new ArrayList<>(), creditLines, null, null);
-        }
-
-        long fileOffsetMs = 0;
-        String languageTag = null;
-        for (String rawLine : krc.split("\\r?\\n")) {
-            String line = rawLine.trim();
-            if (line.isEmpty() || line.charAt(0) != '[') {
-                continue;
-            }
-
-            Matcher meta = LRCParser.LRC_META.matcher(line);
-            if (meta.matches()) {
-                String key = meta.group(1);
-                String value = meta.group(2);
-                if (key == null || value == null) {
-                    continue;
-                }
-                String name = key.toLowerCase(Locale.ROOT);
-                if (name.equals("offset")) {
-                    try {
-                        fileOffsetMs = -Long.parseLong(value.trim());
-                    } catch (NumberFormatException ex) {
-                        Logger.printDebug(() -> "Could not parse offset in KuGou LRC", ex);
-                    }
-                } else if (name.equals("language")) {
-                    languageTag = value;
-                } else if (LRCParser.CREDIT_META_KEYS.contains(name)) {
-                    String trimmed = value.trim();
-                    if (!trimmed.isEmpty()) {
-                        creditLines.add(key + ":" + trimmed);
-                    }
-                }
-            }
-        }
-
-        List<LyricsLine> lines = applyFileOffset(KRCParser.parse(krc), fileOffsetMs);
-        KrcAuxiliary auxiliary = languageTag == null ? null : parseKrcLanguageTag(languageTag, lines);
-        return new KrcResult(lines, creditLines,
-                auxiliary == null ? null : auxiliary.romanization(),
-                auxiliary == null ? null : auxiliary.translation());
-    }
-
-     /**
-     * Applies the file's {@code [offset]} tag, which belongs to the lyrics themselves rather
-     * than to the offset the user configures. The caller has already negated it, because a
-     * positive tag means the lyrics are shown earlier.
-     */
-    private static List<LyricsLine> applyFileOffset(List<LyricsLine> lines, long offsetMs) {
-        if (offsetMs == 0) {
-            return lines;
-        }
-        List<LyricsLine> shifted = new ArrayList<>(lines.size());
-        for (LyricsLine line : lines) {
-            List<Word> words = new ArrayList<>(line.words().size());
-            for (Word word : line.words()) {
-                words.add(new Word(shift(word.startMs(), offsetMs), shift(word.endMs(), offsetMs),
-                        word.text(), word.romaji(), word.endsWithSpace()));
-            }
-            shifted.add(new LyricsLine(shift(line.startTimeMs(), offsetMs),
-                    shift(line.endTimeMs(), offsetMs), line.text(), words,
-                    line.agentId(), line.isDuet(), line.isBG(), line.songPart()));
-        }
-        return shifted;
-    }
-
-    /** Leaves {@link LyricsLine#NO_TIME} alone and keeps a shift from going negative. */
-    private static long shift(long timeMs, long offsetMs) {
-        return timeMs == LyricsLine.NO_TIME ? timeMs : Math.max(0, timeMs + offsetMs);
-    }
-
-    @Nullable
-    private static KrcAuxiliary parseKrcLanguageTag(String tag, List<LyricsLine> original) {
-        if (tag.isEmpty()) {
-            return null;
-        }
-        try {
-            String decoded = new String(Base64.decode(tag, Base64.DEFAULT), StandardCharsets.UTF_8);
-            JSONObject root = new JSONObject(decoded);
-            JSONArray content = root.optJSONArray("content");
-            if (content == null) {
-                return null;
-            }
-
-            JSONArray romaContent = null;
-            JSONArray transContent = null;
-            for (int i = 0; i < content.length(); i++) {
-                JSONObject item = content.optJSONObject(i);
-                if (item == null) {
-                    continue;
-                }
-                int type = item.optInt("type", -1);
-                if (type == 0) {
-                    romaContent = item.optJSONArray("lyricContent");
-                } else if (type == 1) {
-                    transContent = item.optJSONArray("lyricContent");
-                }
-            }
-
-            List<LyricsLine> romaLines = null;
-            if (romaContent != null) {
-                romaLines = new ArrayList<>();
-                int skippedEmpty = 0;
-                for (int li = 0; li < original.size(); li++) {
-                    LyricsLine line = original.get(li);
-                    if (!lineHasText(line)) {
-                        skippedEmpty++;
-                        continue;
-                    }
-                    int contentIndex = li - skippedEmpty;
-                    if (contentIndex >= 0 && contentIndex < romaContent.length()) {
-                        String text = joinKrcRomaEntry(romaContent.optJSONArray(contentIndex));
-                        if (!text.isEmpty()) {
-                            romaLines.add(new LyricsLine(line.startTimeMs(), text));
-                        }
-                    }
-                }
-                if (romaLines.isEmpty()) {
-                    romaLines = null;
-                }
-            }
-
-            List<LyricsLine> transLines = null;
-            if (transContent != null) {
-                transLines = new ArrayList<>();
-                for (int li = 0; li < original.size(); li++) {
-                    LyricsLine line = original.get(li);
-                    if (li < transContent.length()) {
-                        JSONArray entry = transContent.optJSONArray(li);
-                        String text = (entry != null && entry.length() > 0) ? entry.optString(0, "") : "";
-                        if (text != null && !text.isEmpty()) {
-                            transLines.add(new LyricsLine(line.startTimeMs(), text));
-                        }
-                    }
-                }
-                if (transLines.isEmpty()) {
-                    transLines = null;
-                }
-            }
-
-            if (romaLines == null && transLines == null) {
-                return null;
-            }
-            return new KrcAuxiliary(romaLines, transLines);
-        } catch (Exception ex) {
-            return null;
-        }
-    }
-
-    private static boolean lineHasText(LyricsLine line) {
-        for (Word word : line.words()) {
-            if (word.text() != null && !word.text().trim().isEmpty()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static String joinKrcRomaEntry(@Nullable JSONArray entry) {
-        if (entry == null) {
-            return "";
-        }
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0, length = entry.length(); i < length; i++) {
-            String part = entry.optString(i, "").trim();
-            if (!part.isEmpty()) {
-                //noinspection SizeReplaceableByIsEmpty
-                if (builder.length() > 0) {
-                    builder.append(' ');
-                }
-                builder.append(part);
-            }
-        }
-        return builder.toString();
     }
 }

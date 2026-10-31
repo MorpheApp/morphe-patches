@@ -58,6 +58,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_guidelines_popup_already_read">已读</string>
   <string name="morphe_sb_guidelines_popup_open">展示</string>
   <string name="morphe_sb_general_title">常规</string>
+  <string name="morphe_sb_offline_segments_title">保存已下载视频的分段</string>
+  <string name="morphe_sb_offline_segments_summary">允许在离线状态下跳过已下载视频的分段</string>
   <string name="morphe_sb_toast_on_connection_error_title">显示连接错误提示</string>
   <string name="morphe_sb_toast_on_connection_error_summary">当 SponsorBlock 服务器不可用时显示通知</string>
   <string name="morphe_sb_track_skip_count_title">启用跳过次数跟踪</string>

@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Paleidimo animacija</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Išjungta</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Spalva</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Vienspalvė</string>
+  <string name="morphe_splash_screen_style_title">Paleidimo animacija</string>
+  <string name="morphe_splash_screen_style_entry_1">Išjungta</string>
+  <string name="morphe_splash_screen_style_entry_2">Spalva</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe spalvota versija</string>
+  <string name="morphe_splash_screen_style_entry_4">Vienspalvė</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe monochrominė versija</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Paryškinti naujus nustatymus</string>
+  <string name="morphe_settings_new_indicator_days_summary">Kelių dienų laikotarpiu šalia nustatymų ir parinkčių, pridėtų atnaujinimo metu, bus rodomas taškas</string>
+  <string name="morphe_settings_new_indicator_days_off">Išjungta</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Paleiskite iš naujo, kad užbaigtumėte sąranką</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Norėdami prisijungti, žemiau bakstelėkite „Tęsti“"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Slėpia „Ankstesnis“ ir „Kitas“ mygtukus medijos pranešime, užrakintame ekrane ir ausinių valdikliuose</string>
   <string name="morphe_disable_notification_media_seekbar_title">Išjungti slankiklį</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Neleidžia vilkti slankiklio užrakintame ekrane ir pranešimų skydelyje</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Ieškoti su mygtukais „Ankstesnis“ ir „Kitas”</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Perjungia medijos pranešimo, užrakto ekrano ir ausinių valdymą: vietoj vaizdo įrašų keitimo bus atliekama paieška</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Gręžimo ilgis</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Ankstesnio mygtuko gręžimo sekundžių skaičius</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Greitėjimo ilgis</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Kitu mygtuku greitėjimo sekundžių skaičius</string>
+  <string name="morphe_seek_notification_media_length_invalid">Paieškos ilgis turi būti nuo 1 iki %s sekundžių. Naudos numatytąjį</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Išjungti QUIC protokolą</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

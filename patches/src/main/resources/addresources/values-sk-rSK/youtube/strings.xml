@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Ostatné</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Obnoviť starú obrazovku nastavení YouTube</string>
+  <string name="morphe_native_snackbar_title">Zobraziť správy v snackbari YouTube</string>
+  <string name="morphe_native_snackbar_summary">Správy aplikácie Morphe, ako je napríklad potvrdenie stlačenia tlačidla prehrávania, sa zobrazujú v snackbari YouTube namiesto vyskakovacieho okna</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Odstrániť obmedzenia prehrávania na pozadí</string>
   <string name="morphe_shorts_disable_background_playback_title">Zakázať prehrávanie Shorts na pozadí</string>
@@ -59,6 +61,7 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_account_menu_title">Povoliť knižnicu / Filter v dolnom menu</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Knižnica / Filter v dolnom menu</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Zadajte názvy knižníc / položiek dolného menu, ktoré chcete filtrovať, oddelené novými riadkami</string>
+  <string name="morphe_hide_account_menu_downloads_title">Skryť sťahovania</string>
   <string name="morphe_hide_album_cards_title">Skryť karty albumov</string>
   <string name="morphe_hide_album_cards_summary">Skryje karty albumov pod popisom interpreta</string>
   <string name="morphe_hide_artist_cards_title">Skryť karty interpreta</string>
@@ -113,6 +116,9 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_surveys_title">Skryť prieskumy</string>
   <string name="morphe_hide_surveys_summary">Skryje prieskumy a návrhy týkajúce sa presnosti odporúčania kanála</string>
   <string name="morphe_hide_ticket_shelf_title">Skryť policu lístkov</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Skryť banner „Nedostupné videá sú skryté“</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Skryje banner „Nedostupné videá sú skryté“ v zoznamoch prevzatia</string>
   <string name="morphe_hide_upload_time_title">Skryť čas nahrania</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Obmedzenia:
@@ -393,6 +399,9 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_hide_shopping_links_title">Skryť odkazy na nákupy</string>
   <string name="morphe_hide_video_ads_title">Skryť videoreklamy</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Skryť YouTube Premium promo</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Načítava sa…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Aktuálny kanál:</string>
   <string name="morphe_channel_whitelist_add">Pridať do bielej listiny</string>
@@ -409,6 +418,9 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_channel_search_results">Výsledky vyhľadávania kanálov</string>
   <string name="morphe_channel_search_no_results">Na tomto kanáli sa nič nenašlo</string>
   <string name="morphe_channel_search_failed">Vyhľadávanie v tomto kanáli sa nepodarilo</string>
+  <string name="morphe_channel_search_videos">Videá</string>
+  <string name="morphe_channel_search_posts">Príspevky</string>
+  <string name="morphe_channel_search_no_posts">Na tomto kanáli sa nenašli žiadne príspevky</string>
   <string name="morphe_channel_search_sort_relevance">Relevantnosť</string>
   <string name="morphe_channel_search_sort_most_viewed">Najsledovanejšie</string>
   <string name="morphe_channel_search_sort_least_viewed">Najmenej sledované</string>
@@ -435,6 +447,26 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_feed_long_press_menu_summary">Klepnutím a podrž kdekoľvek na videu v feedi sa otvorí jeho ponuka</string>
   <string name="morphe_feed_watch_later_button_title">Zobraziť tlačidlo „Pozrieť neskôr“ na miniatúrach</string>
   <string name="morphe_feed_watch_later_button_summary">Na miniatúrach videí vo feedi sa zobrazuje tlačidlo Pozrieť neskôr. Klepnutím a podrž ho otvoríš Uloženie do playlistu</string>
+  <!-- interaction.postimages.postImageDownloadPatch -->
+  <string name="morphe_post_image_download_title">Stiahnuť obrázky z príspevkov</string>
+  <string name="morphe_post_image_download_summary">Vedľa tlačidla zdieľať príspevkov s obrázkami alebo GIFmi sa zobrazí tlačidlo sťahovania a do ich menu sa pridá položka sťahovania</string>
+  <string name="morphe_post_image_download_flyout">Stiahnuť obrázky</string>
+  <string name="morphe_post_image_download_flyout_single">Stiahnuť obrázok</string>
+  <string name="morphe_post_image_download_started">Sťahovanie %s obrázkov…</string>
+  <string name="morphe_post_image_download_started_single">Sťahovanie obrázka…</string>
+  <string name="morphe_post_image_download_saved">%1$s obrázkov uložených do %2$s</string>
+  <string name="morphe_post_image_download_saved_single">Obrázok uložený do %s</string>
+  <string name="morphe_post_image_download_failed">Nebolo možné sťahovať obrázok</string>
+  <string name="morphe_post_image_download_not_found">V tomto príspevku nebol nájdený žiadny obrázok</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Prekladať príspevky</string>
+  <string name="morphe_post_translate_summary">Pridáva položku do vysúvacieho menu na preklad príspevkov tvorcov obsahu</string>
+  <string name="morphe_post_translate_language_title">Jazyk prekladu príspevku</string>
+  <string name="morphe_post_translate_flyout">Preložiť</string>
+  <string name="morphe_post_translate_flyout_original">Zobraziť originál</string>
+  <string name="morphe_post_translate_started">Preklad prebieha…</string>
+  <string name="morphe_post_translate_failed">Nepodarilo sa preložiť príspevok</string>
+  <string name="morphe_post_translate_same_language">Príspevok je už v cieľovom jazyku prekladu</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Pridať položku Opýtať sa do rozbaľovacieho menu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Pridá položku na zhrnutie videa do rozbaľovacieho menu predplatného</string>
@@ -454,6 +486,15 @@ Po jednom otvorení videa s tlačidlom Opýtať sa bude funkcia fungovať pre v�
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Zobraziť počítadlo lajkov pre náhľad feedu</string>
   <string name="morphe_ryd_feed_like_ratio_title">Zobraziť percento lajkov pre náhľad feedu</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Vyhľadať v komentároch</string>
+  <string name="morphe_search_comments_summary">Ťuknite na tlačidlo vyhľadávania v komentároch, aby sa zobrazili iba načítané komentáre, ktoré obsahujú všetky hľadané slová. Slová dajte do úvodzoviek, ak chcete hľadať konkrétnu frázu</string>
+  <string name="morphe_search_comments_dialog_title">Vyhľadať v komentároch</string>
+  <string name="morphe_search_comments_hint">Slová na vyhľadanie</string>
+  <string name="morphe_search_comments_search">Hľadať</string>
+  <string name="morphe_search_comments_clear">Vyčistiť</string>
+  <string name="morphe_search_comments_applied">Zmeňte poradie triedenia alebo komentáre znova otvorte, aby ste v nich mohli vyhľadávať</string>
+  <string name="morphe_search_comments_cleared">Vyhľadávanie vymazané. Zmeňte poradie triedenia alebo komentáre znova otvorte, aby sa zobrazili všetky komentáre</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Zakázať vyskakovacie okno \'Prihlásiť sa do TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Zakázať kontextové okno \'Pripojte svoje zariadenia\'</string>
@@ -464,6 +505,34 @@ Po jednom otvorení videa s tlačidlom Opýtať sa bude funkcia fungovať pre v�
   <string name="morphe_external_downloader_screen_summary">Stiahnite si videá, podcasty alebo piesne pomocou aplikácií na sťahovanie tretích strán</string>
   <string name="morphe_external_downloader_overlay_button_title">Zobraziť tlačidlo na stiahnutie preklapiačnej obrazovky prehrávača</string>
   <string name="morphe_external_downloader_overlay_button_summary">Zobrazí tlačidlo v videoprehrávači, ktoré otvorí vašu externú aplikáciu na sťahovanie</string>
+  <string name="morphe_external_downloader_quick_menu_title">Rýchle sťahovanie kliknutím</string>
+  <string name="morphe_external_downloader_quick_menu_summary">Výzvy na stiahnutie na pozadí. Podržaním otvorte sťahovač. Funguje s aplikáciami YTDLnis a YTindir</string>
+  <string name="morphe_external_downloader_mark_watched_title">Označiť sťahovania ako zhliadnuté</string>
+  <string name="morphe_external_downloader_mark_watched_summary">Videá stiahnuté externým sťahovačom sa pridávajú do histórie zhliadnutí na YouTube</string>
+  <string name="morphe_external_downloader_quick_video_quality">Full HD (1080p)</string>
+  <string name="morphe_external_downloader_quick_audio_quality">Stredná kvalita (192 kbps)</string>
+  <string name="morphe_external_downloader_quick_menu_header">Rýchle sťahovanie</string>
+  <string name="morphe_external_downloader_quick_video">Video</string>
+  <string name="morphe_external_downloader_quick_audio">Zvuk</string>
+  <string name="morphe_external_downloader_quick_options">Všetky možnosti</string>
+  <string name="morphe_shorts_download_flyout_button_title">Zobraziť sťahovanie v ponuke Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Pridá položku sťahovania do ponuky prehrávača Shorts</string>
+  <string name="morphe_shorts_download_flyout_title">Stiahnuť</string>
+  <string name="morphe_export_download_folder_title">Exportovať uložené videá</string>
+  <string name="morphe_export_download_folder_summary">"Exportujte videá uložené v aplikácii do úložiska zariadenia pomocou ponuky sťahovaní v aplikácii. Klepnutím zmeníte exportovaciu zložku
+
+Exportovacia zložka: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Exportovacia zložka</string>
+  <string name="morphe_export_download_folder_change">Zmeniť zložku</string>
+  <string name="morphe_export_download_folder_changed">Exportovacia zložka bola zmenená</string>
+  <string name="morphe_export_download_folder_reset">Exportovacia zložka bola resetovaná</string>
+  <string name="morphe_export_download_flyout_title">Exportovať do zariadenia</string>
+  <string name="morphe_export_download_started">Exportovanie videa</string>
+  <string name="morphe_export_download_progress">Exportovanie videa: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Exporty videí</string>
+  <string name="morphe_export_download_saved">Video bolo exportované do %s</string>
+  <string name="morphe_export_download_failed">Nepodarilo sa exportovať video</string>
+  <string name="morphe_export_download_canceled">Export zrušený</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Preklad hlasového komentára</string>
   <string name="morphe_vot_screen_summary">Nahlas prečítajte titulky videa pomocou text-to-speech priamo v zariadení, synchronizovane s prehrávaním</string>
@@ -538,6 +607,19 @@ Váš API kľúč by sa nikdy nemal zdieľať. Každý, kto k nemu má prístup,
   <string name="morphe_pip_button_overlay_title">Zobraziť tlačidlo obraz v obraze</string>
   <string name="morphe_pip_button_flyout_title">Zobraziť ponuku obraz v obraze</string>
   <string name="morphe_pip_button_flyout_name">Prepnúť na obraz v obraze</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Akcie obraz v obraze</string>
+  <string name="morphe_pip_actions_screen_summary">Zmeňte tlačidlá zobrazené v režime obraz v obraze</string>
+  <string name="morphe_pip_action_left_title">Ľavé tlačidlo</string>
+  <string name="morphe_pip_action_center_title">Stredné tlačidlo</string>
+  <string name="morphe_pip_action_right_title">Pravé tlačidlo</string>
+  <string name="morphe_pip_action_entry_default">Predvolený</string>
+  <string name="morphe_pip_action_entry_previous">Predošlé video</string>
+  <string name="morphe_pip_action_entry_next">Nasledujúce video</string>
+  <string name="morphe_pip_action_entry_rewind">Vrátenie o 10 sekúnd</string>
+  <string name="morphe_pip_action_entry_fast_forward">Presun o 10 sekúnd vpred</string>
+  <string name="morphe_pip_action_entry_play_pause">Hrať/pauza</string>
+  <string name="morphe_pip_action_entry_background_playback">Prehrávanie na pozadí</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Zobraziť tlačidlo Prehrať všetko</string>
   <string name="morphe_play_all_button_summary">"Ťuknite na vytvorenie playlistu všetkých videí z kanála, ťuknite a podržte na zrušenie
@@ -570,23 +652,21 @@ Poznámka: Možno nebude fungovať na živých prenosoch"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Uložiť do Pozrieť neskôr</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Zobraziť tlačidlo „Uložiť na pozretie neskôr“ v rozbaľovacej ponuke nastavení prehrávača</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Umožňuje z rozbaľovacej ponuky nastavení videa uložiť aktuálne sledované video do zoznamu „Pozrieť neskôr“</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Zobraziť tlačidlo Uložiť do Pozrieť neskôr v detských videách</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Umožňuje z rozbaľovacej ponuky ukladať videá pre deti do zoznamu „Pozrieť neskôr“</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Zobraziť tlačidlo „Uložiť na pozretie neskôr“ v rozbaľovacej ponuke pre Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Umožňuje z rozbaľovacej ponuky ukladať Shorts do zoznamu „Pozrieť neskôr“</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Presmerovať „Pozrieť neskôr“ do zoznamu prevádzania</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Pozrieť neskôr</string>
   <string name="morphe_queue_flyout_title">Pridať do fronty Morphe</string>
   <string name="morphe_queue_restore_title">Uchovajte si rad medzi reláciami</string>
   <string name="morphe_queue_restore_summary">Rad zostane zachovaný aj po reštarte aplikácie</string>
   <string name="morphe_swap_save_and_queue_actions_title">Zameniť akcie Uložiť a Zaradiť do fronty</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Klepnite pre možnosti frontu, klepnite a podržte pre uloženie do „Pozrieť neskôr“</string>
-  <string name="morphe_queue_override_flyout_menu_title">Nahradiť tlačidlo frontu rozbaľovacieho okna</string>
-  <string name="morphe_queue_override_flyout_menu_summary">Otvára rad Morphe namiesto radu YouTube</string>
+  <!-- 'Play next in queue' should be translated using the same localized wording YouTube displays the feed flyout item. -->
+  <string name="morphe_queue_type_title">Typ zaradenia do rady ďalšieho prehrávania</string>
+  <string name="morphe_queue_type_entry_1">Predvolený</string>
+  <string name="morphe_queue_type_entry_2">Natívna rada</string>
+  <string name="morphe_queue_type_entry_3">Rada Morphe</string>
+  <string name="morphe_queue_type_entry_4">Klientská strana rady Morphe</string>
   <string name="morphe_queue_add_flyout_menu_title">Pridať položku ponuky do rozbaľovacej ponuky fronty informačného kanála</string>
   <string name="morphe_queue_add_flyout_menu_summary">Pridá ďalšiu položku do rozbaľovacej ponuky. Povoľte, ak sa \"Pridať do frontu\" nezobrazuje</string>
-  <string name="morphe_local_queue_title">Fronta v štýle Premium</string>
-  <string name="morphe_local_queue_summary">"Nahrádza frontu Morphe frontou uloženou v zariadení, ktorá sa prehráva sama a dá sa pretiahnutím preusporiadať
-
-Informácia: Ďalšie video vo fronte sa spustí iba vtedy, keď je YouTube na obrazovke"</string>
   <string name="morphe_local_queue_sheet_title">Fronta</string>
   <string name="morphe_local_queue_open">Fronta (%s)</string>
   <string name="morphe_local_queue_clear">Vyčistiť všetko</string>
@@ -631,6 +711,20 @@ Informácia: Ďalšie video vo fronte sa spustí iba vtedy, keď je YouTube na o
   <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Odstrániť z fronty a znovu načítať video</string>
   <string name="morphe_queue_manager_open_queue">Otvoriť frontu</string>
   <string name="morphe_queue_manager_save_queue">Uložiť frontu do zoznamu skladieb</string>
+  <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_playlist_queue_saved">Playlist uložený</string>
+  <string name="morphe_native_playlist_queue_saved_to">Uložené do %s</string>
+  <string name="morphe_native_playlist_queue_clear">Vyčistiť radu</string>
+  <string name="morphe_native_playlist_queue_cleared">Rad vyčistený</string>
+  <string name="morphe_native_playlist_queue_title">Rad</string>
+  <string name="morphe_native_playlist_queue_last">Prehrať posledný v rade</string>
+  <string name="morphe_native_playlist_queue_next">Prehrať ďalší v rade</string>
+  <string name="morphe_native_playlist_queue_unavailable">YouTube nemohol zobraziť rad.</string>
+  <string name="morphe_native_playlist_queue_not_ready">Rad nie je pripravený pre toto video. Otvorte prehrávač videa a skúste to znova.</string>
+  <string name="morphe_native_playlist_queue_mix_choice">Pridať Mix do rady alebo prehrať Mix?</string>
+  <string name="morphe_native_playlist_queue_watch_mix">Prehrať</string>
+  <string name="morphe_native_playlist_queue_add_mix">Pridať do rady</string>
+  <string name="morphe_native_playlist_queue_loading_mix">Načítava sa Mix…</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Otvorte kanál z avatara živého vysielania</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Zabráni otvoreniu živého prenosu pri ťuknutí na avatar kanála</string>
@@ -782,8 +876,6 @@ Ak to chcete vyriešiť, zapnite 'Spoofovať video streamy' a zmeňte 'Predvolen
   <string name="morphe_auto_captions_style_entry_2">Nikdy nezobrazovať</string>
   <string name="morphe_auto_captions_style_entry_3">Zobrazovať, keď je zvuk vypnutý</string>
   <string name="morphe_auto_captions_style_entry_4">Zobraziť, keď je zvuk stlmený</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Zobraziť automatické titulky</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Skryť automatické titulky</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Preferovaný jazyk titulkov</string>
   <string name="morphe_preferred_caption_language_summary">Najprv vyberie titulky poskytovateľa a potom ich automaticky preloží do preferovaného jazyka</string>
@@ -807,6 +899,8 @@ Je potrebné poskytnúť 'Cookies pre titulky'"</string>
   <string name="morphe_fix_transcript_title">Opraviť prepis</string>
   <string name="morphe_fix_transcript_summary">Rieši zlyhanie kontroly predpokladov, ktoré môže zabrániť načítaniu prepisu</string>
   <string name="morphe_captions_in_pip_title">Zobraziť titulky v režime obraz v obraze</string>
+  <string name="morphe_stable_caption_blocks_title">Stabilné bloky popisov</string>
+  <string name="morphe_stable_caption_blocks_summary">Automatické titulky zгрупujte do stabilných a čitateľných blokov. Niektoré slová sa môžu zobraziť predtým, než budú vyslovené. Vyžaduje sa restart.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigačné tlačidlá</string>
   <string name="morphe_navigation_buttons_screen_summary">Vyberte, ktoré tlačidlá sa zobrazia v paneli nástrojov</string>
@@ -838,12 +932,18 @@ Ak chcete získať prístup k Nastaveniam, povoľte tlačidlo Nastavenia cez Vš
   <string name="morphe_narrow_navigation_buttons_summary">Znižuje horizontálnu medzeru medzi tlačidlami</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Zakázať navigačné tlačidlá bez označení</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Zobrazuje navigačné tlačidlá s označeniami, ak ich YouTube pošle bez označení</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Zakázať navigačné karty nástrojového panela</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Zobrazuje Odoberané v navigačnej lište, ak YouTube presunie do karty v hornej časti domovskej stránky</string>
   <string name="morphe_navigation_bar_animations_title">Povoliť animácie navigačného panela</string>
   <string name="morphe_navigation_bar_animations_summary">Animuje prechody pri prechode medzi panelmi</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Zakázať automatické skrytie navigačného panela</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Udržuje navigačnú lištu viditeľnú pri posúvaní</string>
-  <string name="morphe_disable_translucent_navigation_title">Zakázal polopriehľadný navigačný panel</string>
-  <string name="morphe_disable_translucent_navigation_summary">Zabezpečí úplnú nepriehľadnosť navigačného panela a panela stavu</string>
+  <string name="morphe_navigation_bar_style_title">Štýl navigačného panela</string>
+  <string name="morphe_navigation_bar_style_entry_1">Predvolený</string>
+  <string name="morphe_navigation_bar_style_entry_2">Polopriehľadný</string>
+  <string name="morphe_navigation_bar_style_entry_3">Priehľadný</string>
+  <string name="morphe_navigation_bar_style_entry_4">Nepriehľadný</string>
+  <string name="morphe_navigation_bar_style_user_dialog_message">Tento štýl nemusí byť podporovaný vaším zariadením alebo verziou YouTube, čo môže spôsobiť problémy s rozložením alebo pády</string>
   <string name="morphe_toolbar_screen_title">Panel nástrojov</string>
   <string name="morphe_toolbar_screen_summary">Vyberte, ktoré komponenty sa zobrazia v lište nástrojov</string>
   <string name="morphe_hide_toolbar_cast_button_title">Skryť tlačidlo Prenos</string>
@@ -1054,23 +1154,24 @@ Nastavenia → Prehrávanie (alebo Automatické prehrávanie) → Automaticky pr
 
 Rozloženie pre tablet
 • Príspevky komunity sú skryté
-• Nastavenie prehrávania vo feedoch nie je k dispozícii
-• Tlačidlo Remix a tlačidlo Zvuk nie sú v službe Shorts k dispozícii
-• Prekrytie „Ďalšie videá“ nemusí byť k dispozícii
-• Zobrazuje sa rozbalený starý panel akcií videa
+• Nastavenie prehrávania vo feedi nie je k dispozícii
+• Tlačidlá Remixovať a Zvuk nie sú k dispozícii v Shorts
+• Vrstva 'Ďalšie videá' nemusí byť k dispozícii
+• Zobrazuje sa nezbalený starý panel akcií videa
+• Položky vyskakovacieho menu nemusia fungovať správne
 
 Rozloženie pre automobil
-• Feed je usporiadaný podľa tém a kanálov
-• Nastavenie prehrávania vo feedoch nie je k dispozícii
-• Tlačidlo Remix a tlačidlo Zvuk nie sú v službe Shorts k dispozícii
+• Feed je organizovaný podľa tém a kanálov
+• Nastavenie prehrávania vo feedi nie je k dispozícii
+• Tlačidlá Remixovať a Zvuk nie sú k dispozícii v Shorts
+• Vrstva 'Ďalšie videá' nemusí byť k dispozícii
 • Shorts sa otvárajú v bežnom prehrávači
-• Zobrazuje sa rozbalený starý panel akcií videa"</string>
+• Zobrazuje sa nezbalený starý panel akcií videa"</string>
   <string name="morphe_tablet_layout_in_player_title">Povoliť rozloženie tabletu v prehrávači</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Obnoví staré rozloženie prehrávača
 
 Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrstva 'Ďalšie videá' nemusí byť k dispozícii"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Povolenie tejto možnosti môže narušiť niektoré funkcie rozloženia prehrávača, ako je sekcia komentárov alebo \"Viac videí\" zobrazených pod prehrávačom</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Obnoviť staré správanie titulkov</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Obnoví staré ukladanie do zoznamu videí</string>
@@ -1148,8 +1249,14 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <string name="morphe_miniplayer_disable_resuming_summary">Zakáže miniplayer s pokračovaním sledovania, funkciu YouTube Premium, ktorá sa zobrazuje pri spustení aplikácie</string>
   <string name="morphe_miniplayer_screen_title">Miniprehrávač</string>
   <string name="morphe_miniplayer_screen_summary">Prispôsobte vzhľad a správanie zmenšeného prehrávača videa</string>
+  <string name="morphe_miniplayer_not_available_title">Ďalšie miniplayerov</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube odstránilo všetky ďalšie miniplayery. Ak chcete obnoviť viac typov miniplayerov, patchujte YouTube 21.28.208 alebo staršie verzie</string>
   <string name="morphe_miniplayer_type_title">Typ miniprehrávača</string>
   <string name="morphe_miniplayer_hide_title_title">Skryť názov a kanál</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Rozšírenie potkaním nahor</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Potkaním minimalizovaného prehrávača nahor sa prehrávač rozšíri namiesto toho, aby sa minimalizovaný prehrávač presunul na hornú časť obrazovky</string>
+  <string name="morphe_miniplayer_docked_title">Pripnutý minimalizovaný prehrávač</string>
+  <string name="morphe_miniplayer_docked_summary">Przypnú minimalizovaný prehrávač k navigačnej lište a stranám obrazovky namiesto toho, aby nad nimi plával</string>
   <string name="morphe_miniplayer_type_entry_0">Vypnutý</string>
   <string name="morphe_miniplayer_type_entry_1">Predvolený</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalistický</string>
@@ -1188,6 +1295,12 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <string name="morphe_fix_status_bar_layout_title">Opraviť stavový riadok, ktorý zakrýva horné panely</string>
   <string name="morphe_fix_status_bar_layout_summary">Udržuje konzistentné rozloženie stavového riadka, takže nezakrýva horné panely a nenecháva prázdny priestor nad prehrávačom. Toto vypnite, ak sa aplikácia zrúti alebo horné panely vyzerajú nesprávne</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Žiarenie</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Tento zariadenie nepodporuje žiarivý úvodný obrazovku</string>
+  <string name="morphe_splash_screen_duration_title">Dĺžka animácie pri spustení</string>
+  <string name="morphe_splash_screen_duration_summary">Ako dlho sa prehráva animácia žiarenia. Klepnutím na animáciu ju preskočíte</string>
   <string name="morphe_theme_color_light_title">Pozadie svetlého motívu</string>
   <string name="morphe_theme_color_light_entry_2">Biela</string>
   <string name="morphe_theme_color_light_entry_3">Material You (biely)</string>
@@ -1210,6 +1323,9 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <string name="morphe_seekbar_custom_color_accent_summary">Nastavte sekundárnu farbu pruhu priebehu videa</string>
   <string name="morphe_seekbar_custom_color_invalid">Neplatná farba ukazovateľa priebehu</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Pôvodný analóg</string>
+  <string name="morphe_custom_branding_icon_entry_9">Pôvodná torta</string>
+  <string name="morphe_custom_branding_icon_entry_10">Pôvodný kov</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo hlavičky</string>
   <string name="morphe_header_logo_entry_1">Predvolené</string>
@@ -1338,6 +1454,11 @@ Videá sú vyžadované krátkym prefixom hashed video ID, takže server nemôž
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Zobrazí upozornenie, keď sa uloží nová predvolená rýchlosť prehrávania</string>
   <string name="morphe_playback_speed_default_title">Predvolená rýchlosť prehrávania</string>
   <string name="morphe_shorts_playback_speed_default_title">Predvolená rýchlosť prehrávania na Shorts</string>
+  <string name="morphe_shorts_remember_playback_speed_title">Zapamätať rýchlosť prehrávania v Shorts</string>
+  <string name="morphe_shorts_remember_playback_speed_summary">Aplikuje váš manuálny výber rýchlosti Shorts na všetky budúce Shorts. Ak je vypnuté, rýchlosť sa po zatvorení prehrávača Shorts vráti na predvolenú</string>
+  <string name="morphe_shorts_playback_speed_flyout_button_title">Zobrazovať rýchlosť prehrávania v menu Shorts</string>
+  <string name="morphe_shorts_playback_speed_flyout_button_summary">Pridáva položku Rýchlosť prehrávania do menu prehrávača Shorts</string>
+  <string name="morphe_shorts_playback_speed_flyout_title">Rýchlosť prehrávania · %s</string>
   <string name="morphe_remember_playback_speed_toast">Predvolená rýchlosť prehrávania bola zmenená na: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Použite normálnu rýchlosť pre hudbu</string>
   <string name="morphe_disable_playback_speed_music_summary">Hudobné videá vždy prehrajte rýchlosťou 1.0x</string>
@@ -1568,4 +1689,17 @@ Automatické zaznamenávanie je voliteľné. Zastaví sa v režime inkognito ale
   <string name="morphe_series_tracker_no_search_results">Nenašli sa žiadne seriály</string>
   <string name="morphe_series_tracker_untitled_episode">Epizóda bez názvu</string>
   <string name="morphe_series_tracker_unavailable_episode">Epizóda nedostupná</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Komentáre Niconico</string>
+  <string name="morphe_niconico_comments_screen_summary">Zobrazuje živý čet a opakovanie četu ako komentáre, ktoré pretekajú cez video</string>
+  <string name="morphe_niconico_comments_summary">Zobrazuje tlačidlo v prehrávači videa. Klepnutím zobrazíte alebo skryjete komentáre, podržaním otvoríte rýchle nastavenia</string>
+  <string name="morphe_niconico_comments_font_size_title">Veľkosť písma komentárov</string>
+  <string name="morphe_niconico_comments_font_size_summary">Veľkosť textu komentárov (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Nepriehľadnosť komentárov</string>
+  <string name="morphe_niconico_comments_opacity_summary">Nepriehľadnosť textu a pozadia komentárov</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Doba prechodu</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Koľko sekúnd trvá, kým komentáre prejdú cez obrazovku. Nižšie hodnoty znamenajú rýchlejší pohyb</string>
+  <string name="morphe_niconico_comments_max_length_title">Maximálna dĺžka komentára</string>
+  <string name="morphe_niconico_comments_max_length_summary">Skryje komentáre s väčším počtom znakov, ako je uvedené. Každý emoji sa počíta ako jeden znak</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">Bez obmedzenia</string>
 </resources>

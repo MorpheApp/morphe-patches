@@ -156,21 +156,6 @@ public class ReturnYouTubeDislikeAPI {
     } // utility class
 
     /**
-     * Simulates a slow response by doing meaningless calculations.
-     * Used to debug the app UI and verify UI timeout logic works
-     */
-    private static void randomlyWaitIfLocallyDebugging() {
-        final boolean DEBUG_RANDOMLY_DELAY_NETWORK_CALLS = false; // set true to debug UI
-
-        //noinspection ConstantValue
-        if (DEBUG_RANDOMLY_DELAY_NETWORK_CALLS) {
-            final long amountOfTimeToWaste = (long) (Math.random()
-                    * (API_GET_VOTES_TCP_TIMEOUT_MILLISECONDS + API_GET_VOTES_HTTP_TIMEOUT_MILLISECONDS));
-            Utils.doNothingForDuration(amountOfTimeToWaste);
-        }
-    }
-
-    /**
      * Clears any backoff rate limits in effect.
      * Should be called if RYD is turned on/off.
      */
@@ -293,7 +278,16 @@ public class ReturnYouTubeDislikeAPI {
             connection.setConnectTimeout(API_GET_VOTES_TCP_TIMEOUT_MILLISECONDS); // timeout for TCP connection to server
             connection.setReadTimeout(API_GET_VOTES_HTTP_TIMEOUT_MILLISECONDS); // timeout for server response
 
-            randomlyWaitIfLocallyDebugging();
+            // Simulates a slow response by doing meaningless calculations.
+            // Used to debug the app UI and verify UI timeout logic works
+            final boolean DEBUG_RANDOMLY_DELAY_NETWORK_CALLS = false; // set true to debug UI
+
+            //noinspection ConstantValue
+            if (DEBUG_RANDOMLY_DELAY_NETWORK_CALLS) {
+                final long amountOfTimeToWaste = (long) (Math.random()
+                        * (API_GET_VOTES_TCP_TIMEOUT_MILLISECONDS + API_GET_VOTES_HTTP_TIMEOUT_MILLISECONDS));
+                Utils.doNothingForDuration(amountOfTimeToWaste);
+            }
 
             final int responseCode = connection.getResponseCode();
             if (checkIfRateLimitWasHit(responseCode)) {

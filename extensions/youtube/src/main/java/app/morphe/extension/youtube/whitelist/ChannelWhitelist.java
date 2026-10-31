@@ -10,6 +10,7 @@ package app.morphe.extension.youtube.whitelist;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.graphics.drawable.Drawable;
+import android.util.Pair;
 
 import androidx.annotation.Nullable;
 
@@ -26,6 +27,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
+import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRequest;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -70,37 +72,54 @@ public final class ChannelWhitelist {
             Drawable icon,
             int index
     ) {
-        String currentChannelId =
-                !FlyoutUtils.getFlyoutChannelId().isEmpty()
-                        ? FlyoutUtils.getFlyoutChannelId()
-                        : VideoInformation.getChannelId();
-        String currentChannelName =
-                !currentChannelId.isEmpty()
-                        ? FlyoutUtils.getFlyoutChannelName()
-                        : VideoInformation.getChannelName();
+        ChannelIdRequest request = FlyoutUtils.getFlyoutChannelIdRequest();
+        if (request == null) {
+            // Menus without a video of their own, such as the player settings, belong to the playing video.
+            String currentChannelId = VideoInformation.getChannelId();
+            String currentChannelName = VideoInformation.getChannelName();
+            if (currentChannelId.isEmpty()) {
+                return index;
+            }
 
-        if (currentChannelId.isEmpty()) {
-            return index;
+            return FlyoutUtils.addFlyoutButton(
+                    flyoutPanel,
+                    icon,
+                    type.getFlyoutTitle(isChannelWhitelisted(type, currentChannelId)),
+                    v -> {
+                        toggleChannel(type, currentChannelId, currentChannelName);
+                        FlyoutUtils.dismissFlyout();
+                    },
+                    index
+            );
         }
 
-        final boolean isWhitelisted = isChannelWhitelisted(
-                type,
-                currentChannelId
-        );
+        // The button is disabled until the channel is loaded, and is enabled right away if it already is.
         return FlyoutUtils.addFlyoutButton(
                 flyoutPanel,
                 icon,
-                type.getFlyoutTitle(isWhitelisted),
+                type.getFlyoutTitle(false),
                 v -> {
-                    toggleChannel(
-                            type,
-                            currentChannelId,
-                            currentChannelName
-                    );
+                    // The button is only enabled once the request is done, so this does not wait.
+                    Pair<String, String> channelInfo = request.getChannelInfo();
+                    if (channelInfo != null) {
+                        toggleChannel(type, channelInfo.second, channelInfo.first);
+                    }
 
                     FlyoutUtils.dismissFlyout();
                 },
-                index
+                index,
+                new FlyoutUtils.FlyoutButtonResource(request.getFuture(), text -> {
+                    Pair<String, String> channelInfo = request.getChannelInfo();
+                    String channelId = channelInfo == null ? "" : channelInfo.second;
+                    if (channelId.isEmpty()) {
+                        return false;
+                    }
+
+                    if (text != null) {
+                        text.setText(type.getFlyoutTitle(isChannelWhitelisted(type, channelId)));
+                    }
+                    return true;
+                })
         );
     }
 
@@ -136,20 +155,13 @@ public final class ChannelWhitelist {
     public static void toggleChannel(WhitelistType type, String channelId, @Nullable String channelName) {
         if (isChannelWhitelisted(type, channelId)) {
             removeChannel(type, channelId);
-            Utils.showToastShort(str("morphe_channel_whitelist_channel_removed"));
+            Utils.showSnackbarShort(str("morphe_channel_whitelist_channel_removed"));
         } else {
-            addChannel(type, channelId, channelName);
-            Utils.showToastShort(str("morphe_channel_whitelist_channel_added"));
-        }
-    }
-
-    public static void addChannel(WhitelistType type, String channelId, @Nullable String channelName) {
-        if (channelId.isEmpty()) {
-            return;
-        }
-        Map<String, String> channels = new LinkedHashMap<>(getWhitelistedChannels(type));
-        if (channels.put(channelId, channelName == null ? "" : channelName) == null) {
-            save(type, channels);
+            Map<String, String> channels = new LinkedHashMap<>(getWhitelistedChannels(type));
+            if (!channelId.isEmpty() && channels.put(channelId, channelName == null ? "" : channelName) == null) {
+                save(type, channels);
+            }
+            Utils.showSnackbarShort(str("morphe_channel_whitelist_channel_added"));
         }
     }
 

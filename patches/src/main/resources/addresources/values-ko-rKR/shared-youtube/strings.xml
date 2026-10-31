@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">앱 시작 애니메이션</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">사용 안함</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">컬러</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">흑백</string>
+  <string name="morphe_splash_screen_style_title">앱 시작 애니메이션</string>
+  <string name="morphe_splash_screen_style_entry_1">사용 안함</string>
+  <string name="morphe_splash_screen_style_entry_2">컬러</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe 컬러</string>
+  <string name="morphe_splash_screen_style_entry_4">흑백</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe 흑백</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">새 설정 강조 표시하기</string>
+  <string name="morphe_settings_new_indicator_days_summary">업데이트로 추가된 설정 및 옵션 옆에 점이 표시되는 기간을 지정할 수 있습니다 (일수)</string>
+  <string name="morphe_settings_new_indicator_days_off">사용 안함</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">설정을 완료하려면 다시 시작하세요</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <string name="morphe_hide_notification_media_prev_next_summary">미디어 알림, 잠금 화면 그리고 헤드폰 컨트롤에서 이전 및 다음 버튼을 숨깁니다</string>
   <string name="morphe_disable_notification_media_seekbar_title">재생바 비활성화하기</string>
   <string name="morphe_disable_notification_media_seekbar_summary">잠금 화면 및 알림 패널에서 재생바를 드래그하지 못하도록 합니다</string>
+  <string name="morphe_seek_notification_media_prev_next_title">이전 및 다음 버튼으로 탐색하기</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">미디어 알림, 잠금 화면 및 헤드폰 컨트롤 버튼을 사용하여 동영상을 변경하는 대신 재생 위치를 앞뒤로 이동하도록 변경합니다</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">되감기 길이</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">이전 버튼으로 되감기할 시간을 지정할 수 있습니다 (초)</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">빨리 감기 길이</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">다음 버튼으로 빨리 감기할 시간을 지정할 수 있습니다 (초)</string>
+  <string name="morphe_seek_notification_media_length_invalid">탐색 길이는 1-%s 초 사이여야 합니다. 기본값을 사용합니다</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC 프로토콜 비활성화하기</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

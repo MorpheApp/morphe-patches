@@ -25,7 +25,7 @@ public final class ForceFullscreenLandscapePatch {
 
     private static final String FULLSCREEN =
             PlayerType.WATCH_WHILE_FULLSCREEN.name();
-    private static final String SLIDING_TO_FULLSCREEN =
+    private static final String SLIDING_MAXIMIZED_FULLSCREEN =
             PlayerType.WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN.name();
 
     /**
@@ -58,9 +58,13 @@ public final class ForceFullscreenLandscapePatch {
             if (playerType == null) return;
 
             String name = playerType.name();
+            // The player slides between maximized and fullscreen in both directions,
+            // and the gesture can still be cancelled. Wait until the player settles.
+            if (SLIDING_MAXIMIZED_FULLSCREEN.equals(name)) return;
+
             // Cannot use PlayerType.getCurrent() because this hook can run
             // before the player type hook of the same method updates it.
-            boolean isFullscreen = FULLSCREEN.equals(name) || SLIDING_TO_FULLSCREEN.equals(name);
+            boolean isFullscreen = FULLSCREEN.equals(name);
 
             // Phones and other small screens already open fullscreen in landscape,
             // and forcing the orientation fights with the app and endlessly rotates the screen.

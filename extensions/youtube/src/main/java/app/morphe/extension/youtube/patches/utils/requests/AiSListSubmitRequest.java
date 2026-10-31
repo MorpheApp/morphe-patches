@@ -135,7 +135,14 @@ public final class AiSListSubmitRequest {
                 return "morphe_aislist_submit_success";
             }
 
-            String error = readErrorResponse(connection);
+            // The API describes its errors in a plain text body, which is only used for logging.
+            String errorResponse;
+            try {
+                errorResponse = Requester.parseErrorString(connection);
+            } catch (Exception ex) {
+                errorResponse = "";
+            }
+            final String error = errorResponse;
             Logger.printDebug(() -> "Submit failed with code: " + responseCode
                     + " response: " + error);
 
@@ -198,16 +205,5 @@ public final class AiSListSubmitRequest {
         byte[] bytes = body.getBytes(StandardCharsets.UTF_8);
         connection.setFixedLengthStreamingMode(bytes.length);
         connection.getOutputStream().write(bytes);
-    }
-
-    /**
-     * The API describes its errors in a plain text body, which is only used for logging.
-     */
-    private static String readErrorResponse(HttpURLConnection connection) {
-        try {
-            return Requester.parseErrorString(connection);
-        } catch (Exception ex) {
-            return "";
-        }
     }
 }

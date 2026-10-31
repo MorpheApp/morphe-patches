@@ -14,6 +14,7 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 /**
  * DefaultAudioSink's applyAudioProcessorPlaybackParameters,
@@ -47,13 +48,20 @@ internal object ApplySkipSilenceFingerprint : Fingerprint(
 )
 
 /**
- * DefaultAudioSink's setSkipSilenceEnabled.
+ * DefaultAudioSink's setSkipSilenceEnabled, which stores the flag read by [ApplySkipSilenceFingerprint].
+ * Other boolean setters of the class have the same signature.
  */
-internal object SetSkipSilenceEnabledFingerprint : Fingerprint(
-    classFingerprint = ApplySkipSilenceFingerprint,
+internal fun setSkipSilenceEnabledFingerprint(skipSilenceField: FieldReference) = Fingerprint(
+    definingClass = skipSilenceField.definingClass,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("Z")
+    parameters = listOf("Z"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_BOOLEAN,
+            reference = skipSilenceField
+        )
+    )
 )
 
 /**

@@ -115,7 +115,7 @@ public final class MiniplayerPatch {
         // 170 seems to be the smallest that can be used and using less makes no difference.
         final int WIDTH_DIP_MIN = 170; // Seems to be the smallest that works.
         final int HORIZONTAL_PADDING_DIP = 15; // Estimated padding.
-        // Round down to the nearest 5 pixels, to keep any error toasts easier to read.
+        // Round down to the nearest 5 pixels, to keep any error messages easier to read.
         final int estimatedWidthDipMax = 5 * ((deviceDipWidth - HORIZONTAL_PADDING_DIP) / 5);
         // On some ultra-low-end devices the pixel width and density are the same number,
         // which causes the estimate to always give a value of 1.
@@ -128,7 +128,7 @@ public final class MiniplayerPatch {
         int dipWidth = Settings.MINIPLAYER_WIDTH_DIP.get();
 
         if (dipWidth < WIDTH_DIP_MIN || dipWidth > WIDTH_DIP_MAX) {
-            Utils.showToastLong(str("morphe_miniplayer_width_dip_invalid_toast",
+            Utils.showSnackbarLong(str("morphe_miniplayer_width_dip_invalid_toast",
                     WIDTH_DIP_MIN, WIDTH_DIP_MAX));
 
             // Instead of resetting, clamp the size at the bounds.
@@ -166,7 +166,8 @@ public final class MiniplayerPatch {
                     && Settings.MINIPLAYER_HIDE_OVERLAY_BUTTONS.isAvailable();
 
     private static final boolean MINIPLAYER_ROUNDED_CORNERS_ENABLED =
-            CURRENT_TYPE.isModern() && !Settings.MINIPLAYER_DISABLE_ROUNDED_CORNERS.get();
+            CURRENT_TYPE.isModern() && !Settings.MINIPLAYER_DISABLE_ROUNDED_CORNERS.get()
+                    && !(MINIMAL_BAR_SELECTED && Settings.MINIPLAYER_DOCKED.get());
 
     private static final boolean MINIPLAYER_HORIZONTAL_DRAG_ENABLED = DRAG_AND_DROP_ENABLED
             && (MINIMAL_BAR_SELECTED || !Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG.get());
@@ -271,6 +272,19 @@ public final class MiniplayerPatch {
                     Settings.MINIPLAYER_TYPE,
                     Settings.MINIPLAYER_DISABLE_DRAG_AND_DROP
             );
+        }
+    }
+
+    public static final class MiniplayerMinimalBarAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            MiniplayerType type = Settings.MINIPLAYER_TYPE.get();
+            return type == MINIMAL_BAR || type == MINIMAL_BAR_2;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.MINIPLAYER_TYPE);
         }
     }
 
@@ -565,6 +579,39 @@ public final class MiniplayerPatch {
      */
     public static boolean getMaximizeAnimation() {
         return MINIPLAYER_HORIZONTAL_DRAG_ENABLED;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @return The orientation the list is laid out in.
+     */
+    public static int getListOrientation(View list) {
+        return list.getResources().getConfiguration().orientation;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * After an orientation change, YouTube detaches and attaches a list again the next time its
+     * size changes, and the list is empty for a frame until its items are laid out again.
+     * Exiting fullscreen brings the list back with the size and orientation it had before,
+     * so nothing has to be rebuilt. Left pending, the list is rebuilt the next time its size
+     * changes for other reasons, such as when the player shrinks while scrolling the watch page,
+     * or when the home is laid out again after minimizing the player, and the black frame
+     * shows then.
+     *
+     * @param rebuildPending  If the list is rebuilt the next time its size changes.
+     * @param sizeOrientation The orientation the current size of the list was laid out in,
+     *                        or 0 if not known yet.
+     */
+    public static boolean getListRebuildPending(View list, boolean rebuildPending, int sizeOrientation) {
+        if (rebuildPending && sizeOrientation == getListOrientation(list)) {
+            Logger.printDebug(() -> "Skipping rebuild of list with unchanged size and orientation");
+            return false;
+        }
+
+        return rebuildPending;
     }
 
     /**

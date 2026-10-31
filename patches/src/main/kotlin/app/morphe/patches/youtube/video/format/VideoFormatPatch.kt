@@ -10,21 +10,19 @@ package app.morphe.patches.youtube.video.format
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.cloneParameters
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.util.cloneParameters
-import app.morphe.util.findFreeRegister
 import app.morphe.util.findMethodFromToString
-import app.morphe.util.getReference
-import app.morphe.util.numberOfParameterRegistersLogical
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction22c
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import java.lang.ref.WeakReference
 
@@ -43,8 +41,7 @@ val videoFormatPatch = bytecodePatch(
     execute {
         val formatStreamModelFormatField = FormatStreamModelToStringFingerprint
             .instructionMatches[5]
-            .instruction
-            .getReference<FieldReference>()!!
+            .fieldReference
 
         getFormatFingerprint(formatStreamModelFormatField.type).classDef.apply {
             interfaces.add(EXTENSION_FORMAT_INTERFACE)
@@ -52,7 +49,8 @@ val videoFormatPatch = bytecodePatch(
             mapOf(
                 "width" to "patch_getWidth",
                 "height" to "patch_getHeight",
-                "mimeType" to "patch_getMimeType"
+                "mimeType" to "patch_getMimeType",
+                "itag" to "patch_getItag"
             ).forEach { (protoFieldName, patchInterfaceMethodName) ->
                 val targetMethod =
                     FormatStreamModelToStringFingerprint.originalMethod.findMethodFromToString(protoFieldName)

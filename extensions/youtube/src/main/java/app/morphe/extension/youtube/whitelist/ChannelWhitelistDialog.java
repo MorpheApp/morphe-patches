@@ -123,7 +123,7 @@ public final class ChannelWhitelistDialog {
                     false,
                     () -> {
                         ChannelWhitelist.removeChannel(type, channelId);
-                        Utils.showToastShort(str("morphe_channel_whitelist_channel_removed"));
+                        Utils.showSnackbarShort(str("morphe_channel_whitelist_channel_removed"));
                         buildContent(context, type, container);
                     }
             ));

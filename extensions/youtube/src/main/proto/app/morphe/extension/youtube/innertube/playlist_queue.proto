@@ -1,0 +1,368 @@
+syntax = "proto2";
+
+package app.morphe.extension.youtube.innertube.queue;
+
+option java_package = "app.morphe.extension.youtube.innertube.queue";
+option java_outer_classname = "PlaylistQueueRenderer";
+option optimize_for = LITE_RUNTIME;
+
+import "app/morphe/extension/youtube/innertube/icon.proto";
+
+// Subset of YouTube 21.20.405's native playlist renderer and actions.
+message Panel {
+    optional string title = 1;
+    repeated Item items = 2;
+    optional int32 selected_index = 3;
+    optional string playlist_id = 5;
+    optional int32 video_count = 6;
+    optional Menu menu = 26;
+    // Native counters add selected_index - local_selected_index to the row position.
+    // A local queue contains the complete playlist, without a paginated prefix.
+    optional int32 local_selected_index = 27;
+}
+
+// Native queue header and row overflow menus.
+message Menu {
+    optional MenuRenderer menu_renderer = 66439850;
+}
+
+message MenuRenderer {
+    repeated MenuItem items = 1;
+    optional Accessibility accessibility = 10;
+}
+
+message MenuItem {
+    optional MenuNavigationItem menu_navigation_item_renderer = 66441108;
+    optional MenuServiceItem menu_service_item_renderer = 66441155;
+    optional MenuConditionalServiceItem menu_conditional_service_item_renderer = 77258115;
+    optional MenuConditionalNavigationItem menu_conditional_navigation_item_renderer = 77262503;
+}
+
+message MenuNavigationItem {
+    optional Text text = 1;
+    optional app.morphe.extension.youtube.innertube.Icon icon = 2;
+    optional NavigationEndpoint navigation_endpoint = 3;
+    optional app.morphe.extension.youtube.innertube.Icon secondary_icon = 11;
+}
+
+message MenuServiceItem {
+    optional Text text = 1;
+    optional app.morphe.extension.youtube.innertube.Icon icon = 2;
+    optional NavigationEndpoint service_endpoint = 3;
+    optional app.morphe.extension.youtube.innertube.Icon secondary_icon = 9;
+}
+
+// Native feed queue actions use this conditional variant, not MenuServiceItem.
+message MenuConditionalServiceItem {
+    optional Text text = 1;
+    optional app.morphe.extension.youtube.innertube.Icon icon = 2;
+    optional NavigationEndpoint service_endpoint = 3;
+    // Native MDX_CONNECTED=1 and MDX_DISCONNECTED=2. Preserve other conditions.
+    optional int32 visibility = 7;
+    optional app.morphe.extension.youtube.innertube.Icon secondary_icon = 12;
+}
+
+message MenuConditionalNavigationItem {
+    optional Text text = 1;
+    optional app.morphe.extension.youtube.innertube.Icon icon = 2;
+    optional NavigationEndpoint navigation_endpoint = 3;
+    optional int32 visibility = 7;
+}
+
+message Item {
+    optional Video video = 51779701;
+}
+
+message Video {
+    optional Text title = 1;
+    optional Text short_byline_text = 2;
+    optional Thumbnails thumbnails = 3;
+    optional Text length_text = 4;
+    optional bool selected = 6;
+    optional NavigationEndpoint navigation_endpoint = 7;
+    optional string video_id = 10;
+    // Native per-row overflow actions are supplied only for local queue rows.
+    optional Menu menu = 19;
+    repeated SwipeAction swipe_buttons = 22;
+    optional MainAppStyle main_app_style = 27;
+    optional Text video_info = 31;
+    repeated RatingAction action_buttons = 32;
+    // Local rows deliberately omit playlistSetVideoId (26) and edit params (37).
+    // Native drag presentation works without authorizing an account-playlist edit.
+    optional bool can_reorder = 36;
+}
+
+message RatingAction {
+    optional SlimRatingButton slim_metadata_toggle_button = 124608045;
+}
+
+message SlimRatingButton {
+    optional RatingTarget target = 17;
+    optional bool is_like = 20;
+    optional bool is_dislike = 21;
+    optional RatingToggleContainer button = 26;
+    optional string like_status_entity_key = 27;
+}
+
+message RatingToggleContainer {
+    optional RatingToggleButton toggle_button_renderer = 79971800;
+}
+
+message RatingToggleButton {
+    optional bool is_toggled = 3;
+    optional bool is_disabled = 4;
+    optional app.morphe.extension.youtube.innertube.Icon default_icon = 5;
+    // Keep the native endpoints byte-for-byte, including opaque request parameters.
+    optional bytes default_service_endpoint = 7;
+    optional app.morphe.extension.youtube.innertube.Icon toggled_icon = 8;
+    optional bytes toggled_service_endpoint = 10;
+    optional Accessibility accessibility_data = 19;
+    optional Accessibility toggled_accessibility_data = 20;
+}
+
+message Accessibility {
+    optional AccessibilityLabel accessibility_data = 75730170;
+}
+
+message AccessibilityLabel {
+    optional string label = 2;
+}
+
+// Validation-only view of a captured endpoint; the original bytes are rendered.
+message RatingEndpoint {
+    optional LikeEndpoint like_endpoint = 63158558;
+}
+
+message LikeEndpoint {
+    enum Status {
+        LIKE = 0;
+        DISLIKE = 1;
+        INDIFFERENT = 2;
+    }
+    optional Status status = 1;
+    optional RatingTarget target = 2;
+}
+
+message RatingTarget {
+    optional string video_id = 1;
+    optional string playlist_id = 2;
+}
+
+message MainAppStyle {
+    enum Style {
+        UNSPECIFIED = 0;
+        PROMINENT_THUMBNAIL = 2;
+    }
+
+    optional Style value = 1;
+}
+
+message Text {
+    repeated TextRun runs = 1;
+    optional string simple_text = 4;
+}
+
+message TextRun {
+    optional string text = 1;
+}
+
+message Thumbnails {
+    repeated Thumbnail images = 1;
+}
+
+message Thumbnail {
+    optional string url = 1;
+    optional int32 width = 2;
+    optional int32 height = 3;
+}
+
+message NavigationEndpoint {
+    optional WatchEndpoint watch_endpoint = 48687757;
+    optional HideEnclosingAction hide_enclosing_action = 77297742;
+    optional CreatePlaylistDialogEndpoint create_playlist_dialog_endpoint = 85650004;
+    optional AddToPlaylistEndpoint add_to_playlist_endpoint = 69487224;
+    optional OfflineVideoEndpoint offline_video_endpoint = 73080600;
+    optional ElementsCommand elements_command = 204158123;
+    optional ShareEntityServiceEndpoint share_entity_service_endpoint = 387863284;
+    optional GetDownloadActionCommand get_download_action_command = 382320942;
+    optional PlaylistEditEndpoint playlist_edit_endpoint = 60666189;
+    // Extension-owned local selection, never a YouTube request field. Keeping it
+    // in the command preserves it across native protobuf copies/serialization.
+    repeated string queue_save_video_ids = 500000000;
+    optional string queue_save_playlist_title = 500000001;
+    // Local snackbar capability; never dispatched to a YouTube service.
+    optional string queue_undo_token = 500000002;
+    optional AddToToastAction add_to_toast_action = 76623563;
+    optional ShowConfirmationDialogEndpoint show_confirmation_dialog_endpoint = 128200871;
+    // Local dialog capabilities, retained by native protobuf copies.
+    optional string queue_mix_choice_token = 500000003;
+    optional bool queue_mix_add = 500000004;
+}
+
+// Native confirmation renderer consumed by YouTube's shared dialog presenter.
+message ShowConfirmationDialogEndpoint {
+    optional ConfirmationDialog dialog = 127046477;
+}
+
+message ConfirmationDialog {
+    optional ConfirmationDialogRenderer confirm_dialog_renderer = 64099105;
+}
+
+message ConfirmationDialogRenderer {
+    optional Text title = 1;
+    optional SwipeAction confirm_button = 12;
+    optional SwipeAction cancel_button = 13;
+}
+
+message PlaylistEditEndpoint {
+    optional string playlist_id = 1;
+    repeated PlaylistEditAction actions = 2;
+}
+
+message PlaylistEditAction {
+    optional string set_video_id = 3;
+    optional string added_video_id = 2;
+    optional int32 action = 6;
+}
+
+message AddToPlaylistEndpoint {
+    optional string video_id = 1;
+}
+
+message OfflineVideoEndpoint {
+    enum Action {
+        INFER_AUTOMATICALLY = 11;
+    }
+    optional string video_id = 1;
+    optional Action action = 2;
+    optional NavigationEndpoint on_add = 8;
+}
+
+// The named native sheet opens before requesting its contents. The service response
+// supplies an updateActionSheetCommand for this same sheet ID.
+message ElementsCommand {
+    optional NavigationEndpoint innertube_command = 169495254;
+    optional ShowActionSheetCommand show_action_sheet_command = 278463287;
+}
+
+message ShowActionSheetCommand {
+    optional string sheet_id = 4;
+    optional ElementsCommand on_show = 5;
+}
+
+message ShareEntityServiceEndpoint {
+    enum PanelType {
+        // Type 1 returns the legacy unified grid; type 2 updates an action sheet.
+        ACTION_SHEET = 2;
+    }
+    optional string serialized_share_entity = 1;
+    optional PanelType panel_type = 2;
+    optional string sheet_id = 3;
+}
+
+message ShareEntity {
+    optional string video_id = 1;
+}
+
+message GetDownloadActionCommand {
+    optional string video_id = 1;
+    optional string params = 5;
+}
+
+// YouTube handles sign-in, name/privacy entry, creation and result feedback.
+// Supplying IDs (rather than a playlist ID) saves the local order as a new playlist.
+message CreatePlaylistDialogEndpoint {
+    repeated string video_ids = 1;
+    optional string source_playlist_id = 2;
+    optional string video_selection_entity_key = 8;
+}
+
+message WatchEndpoint {
+    optional string video_id = 1;
+    optional string playlist_id = 2;
+    optional uint32 index = 3;
+    optional string playlist_set_video_id = 13;
+}
+
+message HideEnclosingAction {
+    optional bool hack = 1;
+}
+
+message SwipeAction {
+    optional SwipeButton button_renderer = 65153809;
+}
+
+// Native Mix swipe buttons use BLACK_FILLED, DEFAULT, and VISIBILITY_OFF.
+message SwipeButton {
+    enum Style {
+        BLACK_FILLED = 35;
+    }
+    enum Size {
+        DEFAULT = 1;
+    }
+    optional Style style = 1;
+    optional Size size = 2;
+    optional bool is_disabled = 3;
+    optional Text text = 5;
+    optional NavigationEndpoint service_endpoint = 7;
+    optional app.morphe.extension.youtube.innertube.Icon icon = 8;
+    optional NavigationEndpoint navigation_endpoint = 9;
+    optional Accessibility accessibility_data = 16;
+    optional NavigationEndpoint command = 19;
+}
+
+// playlist/get_add_to_playlist response subsets, verified against 21.20.405.
+// Preserve all unknown renderer/command fields when rebinding the owned selection.
+message QueueSaveResponse {
+    repeated QueueSaveResponseItem contents = 2;
+}
+message QueueSaveResponseItem {
+    optional QueueSavePickerRenderer add_to_playlist_renderer = 88978004;
+}
+message QueueSavePickerRenderer {
+    repeated QueueSaveDestinationItem playlists = 1;
+    repeated QueueSaveHeaderItem headers = 2;
+}
+message QueueSaveDestinationItem {
+    optional QueueSaveDestination playlist_add_to_option_renderer = 74079946;
+}
+message QueueSaveDestination {
+    optional Text title = 2;
+    // Native UNKNOWN=0 is an add-and-close destination, with no membership checkbox.
+    optional int32 selection_state = 5;
+    optional NavigationEndpoint add_endpoint = 7;
+    optional NavigationEndpoint remove_endpoint = 8;
+}
+message QueueSaveHeaderItem {
+    optional QueueSaveHeader playlist_add_to_header_renderer = 82258301;
+}
+// Native menu title header: field 2 is the button renderer; field 3 is text.
+message QueueSaveHeader {
+    optional SwipeAction button = 2;
+}
+
+// Native browse/edit_playlist success response and exact added-entry results.
+message QueueSaveEditResponse {
+    optional int32 status = 2;
+    repeated NavigationEndpoint actions = 7;
+    repeated QueueSaveEditResult results = 12;
+}
+message QueueSaveEditResult {
+    optional QueueSaveAddedEntry added_entry = 138418859;
+}
+message QueueSaveAddedEntry {
+    optional string video_id = 1;
+    optional string set_video_id = 2;
+}
+message AddToToastAction {
+    optional QueueToastItem item = 1;
+}
+message QueueToastItem {
+    optional QueueToastRenderer toast_renderer = 96140188;
+}
+message QueueToastRenderer {
+    optional Text response_text = 1;
+    optional SwipeAction action_button = 2;
+    // Local presentation marker; native protobuf parsing preserves it as unknown.
+    optional bool queue_save_confirmation = 500000000;
+}

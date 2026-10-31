@@ -8,17 +8,28 @@
 package app.morphe.patches.youtube.layout.playlistautoplay
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.util.cloneParameters
+import app.morphe.patcher.util.cloneParameters
+import app.morphe.patcher.util.numberOfParameterRegisters
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import com.android.tools.smali.dexlib2.AccessFlags
 
 /**
  * Hooks the method that starts navigation to another video.
  * The extension method receives the navigation intent enum and returns true to cancel the navigation.
+ *
+ * @param includePlayerButtons Also hook the player Next and Previous button handler, which can load a video
+ *                             from a server supplied command without reaching the navigation method.
  */
 context(patchContext: BytecodePatchContext)
-internal fun navigationIntentHook(extensionClass: String, extensionMethod: String) {
+internal fun navigationIntentHook(
+    extensionClass: String,
+    extensionMethod: String,
+    includePlayerButtons: Boolean = false
+) {
     val enumType = NavigationIntentEnumFingerprint.originalClassDef.type
 
     val wrapperClassDef = Fingerprint(
@@ -28,19 +39,9 @@ internal fun navigationIntentHook(extensionClass: String, extensionMethod: Strin
     val wrapperType = wrapperClassDef.type
     val enumField = wrapperClassDef.fields.first { it.type == enumType }
 
-    Fingerprint(
-        returnType = "V",
-        parameters = listOf(wrapperType),
-        custom = { method, classDef ->
-            method.implementation != null && classDef.methods.any { sibling ->
-                sibling.implementation != null &&
-                        sibling.returnType == "I" &&
-                        sibling.parameterTypes.singleOrNull() == wrapperType
-            }
-        }
-    ).matchAll().forEach { match ->
-        var method = match.method
-        if (method.implementation!!.registerCount <= 2) {
+    fun hook(original: MutableMethod) {
+        var method = original
+        if (method.implementation!!.registerCount <= method.numberOfParameterRegisters) {
             method = method.cloneParameters()
         }
 
@@ -56,6 +57,29 @@ internal fun navigationIntentHook(extensionClass: String, extensionMethod: Strin
                 :continue
                 nop
             """
+        )
+    }
+
+    // Matches each implementation of the navigation method. These share no common instructions
+    // (some are empty or only delegate), so the wrapper parameter is what identifies them.
+    Fingerprint(
+        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+        returnType = "V",
+        parameters = listOf(wrapperType)
+    ).matchAll().forEach { hook(it.method) }
+
+    if (includePlayerButtons) {
+        hook(
+            Fingerprint(
+                accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+                returnType = "V",
+                parameters = listOf(wrapperType, "Ljava/lang/Runnable;"),
+                filters = listOf(
+                    methodCall(parameters = listOf(wrapperType), returnType = "Z"),
+                    methodCall(smali = "Ljava/lang/Runnable;->run()V", location = MatchAfterWithin(3)),
+                    methodCall(parameters = listOf(wrapperType), returnType = "V", location = MatchAfterWithin(3))
+                )
+            ).method
         )
     }
 }

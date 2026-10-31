@@ -11,8 +11,8 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.util.fiveRegisters
-import app.morphe.util.matchAllMethodIndicesForEach
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/FixRecycledBitmapPatch;"

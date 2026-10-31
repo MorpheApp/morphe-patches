@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Ræsingarhreyfimynd</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Óvirkt</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Litur</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Einlit</string>
+  <string name="morphe_splash_screen_style_title">Ræsingarhreyfimynd</string>
+  <string name="morphe_splash_screen_style_entry_1">Óvirkt</string>
+  <string name="morphe_splash_screen_style_entry_2">Litur</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Litir</string>
+  <string name="morphe_splash_screen_style_entry_4">Einstafengur</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Einlitur</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Áhersla á nýjar stillingar</string>
+  <string name="morphe_settings_new_indicator_days_summary">Fjöldi daga sem punktur birtist við stillingar og valmögla sem bættust við í uppfærslu</string>
+  <string name="morphe_settings_new_indicator_days_off">Slökkt</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Endurræstu til að lokar á uppsetninguna</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Til að skrá þig inn ýttu á halda áfram hér að neðan"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Felur fyrri og næstu hnappa í spilunartilkynningu, á læsiskjá og í heyrnartólstýringum</string>
   <string name="morphe_disable_notification_media_seekbar_title">Slökkva á framvindustiku</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Kemur í veg fyrir að hægt sé að draga framvindustikuna á læsiskjánum og tilkynningaspjaldinu</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Leita með takköm fyrir fyrra og næsta</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Breytir stjórnun fyrir margmiðlunartilkynningu, lásaskjá og heyrnartól til að leisa frekar en að skipta um myndbönd</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Tilbaka skref</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Sekúndur til að baka með fyrra takkanum</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Fram á við skref</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Sekúndur til að fara fram á við með næsta takkanum</string>
+  <string name="morphe_seek_notification_media_length_invalid">Leisir lengd verður að vera á milli 1 og %s sekúndna. Notar sjálfgefið</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Slökktu á QUIC samskiptareglum</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

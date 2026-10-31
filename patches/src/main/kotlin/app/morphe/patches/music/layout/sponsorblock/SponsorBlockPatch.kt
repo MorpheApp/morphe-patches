@@ -9,6 +9,7 @@ package app.morphe.patches.music.layout.sponsorblock
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -26,9 +27,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.patches.youtube.layout.sponsorblock.categoryPreference
-import app.morphe.util.findFreeRegister
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS =
     "Lapp/morphe/extension/music/sponsorblock/MusicSponsorBlockConfig;"
@@ -63,7 +61,7 @@ val musicSponsorBlockPatch = bytecodePatch(
         // Compact-player seekbar: hook onMeasure to capture the bounding Rect and draw() to paint
         // segment markers over the timeline.
         val rectField = MusicTimeBarOnMeasureFingerprint.instructionMatches.first()
-            .getInstruction<ReferenceInstruction>().reference as FieldReference
+            .fieldReference
 
         MusicTimeBarDrawFingerprint.method.apply {
             // Inject right after super.draw() so the overlay runs every frame regardless of

@@ -528,6 +528,8 @@ public final class RestoreOriginalTitlesPatch {
         if (!REPLACE_TITLES || videoId.isEmpty()) {
             return title;
         }
+        // A title reused from a parsed element can carry this patch's internal marker.
+        title = removeTitleMarker(title);
 
         // The title and the video id can be of different videos while the video changes.
         if (!isTranslatedTitle(title.trim(), videoId)) {
@@ -1237,10 +1239,10 @@ public final class RestoreOriginalTitlesPatch {
                 description = findShortsDescription(field.children, description);
                 continue;
             }
-            if (field.getFieldNumber() != OriginalDescription.TEXT_CONTENT_FIELD || field.getVarint() != null) {
+            if (field.getFieldNumber() != OriginalDescription.TEXT_CONTENT_FIELD) {
                 continue;
             }
-            String text = OriginalDescription.decodeText(field);
+            String text = field.decodeText();
             if (text != null && isLabelCandidate(text) && !ENTITY_KEY_PATTERN.matcher(text).matches()
                     && (description == null || text.length() > description.decodeUtf8().length())) {
                 description = field;
@@ -1785,7 +1787,7 @@ public final class RestoreOriginalTitlesPatch {
                 return false;
             }
             final boolean layoutTitle = findLayoutTitle != null && candidate.equals(findLayoutTitle.get());
-            if (requestCandidateTitle(videoId, texts, candidate) || titles == null) {
+            if (requestCandidateTitle(videoId, texts, candidate, 0) || titles == null) {
                 if (titles != null) {
                     addPendingTitleTexts(texts, videoId, component);
                 }
@@ -1979,15 +1981,9 @@ public final class RestoreOriginalTitlesPatch {
      * The titles of each text found as the title of the video are fetched once, or again if they
      * failed to fetch because of network errors.
      *
-     * @param texts Texts of the element.
-     * @return If the other titles of the text are being fetched.
-     */
-    private static boolean requestCandidateTitle(String videoId, Set<String> texts, String candidate) {
-        return requestCandidateTitle(videoId, texts, candidate, 0);
-    }
-
-    /**
+     * @param texts   Texts of the element.
      * @param retries Number of times the titles were fetched again after failing to fetch.
+     * @return If the other titles of the text are being fetched.
      */
     private static boolean requestCandidateTitle(String videoId, Set<String> texts, String candidate,
                                                  int retries) {

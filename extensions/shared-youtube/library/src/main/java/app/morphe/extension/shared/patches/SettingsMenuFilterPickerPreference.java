@@ -133,7 +133,7 @@ public class SettingsMenuFilterPickerPreference extends Preference {
                 null,
                 null,
                 () -> {
-                    if (changesMade[0]) AbstractPreferenceFragment.showRestartDialog(context);
+                    if (changesMade[0]) AbstractPreferenceFragment.setRestartNeeded();
                 },
                 null,
                 str("morphe_settings_reset"),

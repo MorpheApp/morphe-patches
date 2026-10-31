@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Käynnistysanimaatio</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Pois käytöstä</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Väri</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Yksivärinen</string>
+  <string name="morphe_splash_screen_style_title">Käynnistysanimaatio</string>
+  <string name="morphe_splash_screen_style_entry_1">Pois käytöstä</string>
+  <string name="morphe_splash_screen_style_entry_2">Väri</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Color</string>
+  <string name="morphe_splash_screen_style_entry_4">Monokromi</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Korosta uusia asetuksia</string>
+  <string name="morphe_settings_new_indicator_days_summary">Päivien määrä, jonka ajan piste näkyy päivityksellä lisättyjen asetusten ja vaihtoehtojen vieressä</string>
+  <string name="morphe_settings_new_indicator_days_off">pois</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Käynnistä uudelleen valituksen suorittamiseksi</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Piilottaa Edellinen- ja seuraava-painikkeet mediailmoituksessa, lukitusnäytössä ja kuulokkeiden säätimissä.</string>
   <string name="morphe_disable_notification_media_seekbar_title">Poista kelauspalkki käytöstä</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Estää kelauspalkin vetämisen lukitusnäytössä ja ilmoituspaneelissa.</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Haku edellisen &amp; seuraavan painikkeilla</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Muuttaa mediatilailmoituksen, lukitusnäytön ja kuulokkeiden ohjaimia hakuun videoiden vaihtamisen sijaan</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Kelauksen pituus</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Sekuntimäärä, jolla kelataan taaksepäin Edellinen-painikkeella</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Kelauksen pituus eteenpäin</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Sekuntimäärä, jolla kelataan eteenpäin Seuraava-painikkeella</string>
+  <string name="morphe_seek_notification_media_length_invalid">Kelauksen pituuden on oltava välillä 1 ja %s sekuntia. Käytetään oletusarvoa</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Poista QUIC-protokolla käytöstä</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

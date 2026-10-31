@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.layout.captions
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.getReference
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
@@ -19,11 +20,8 @@ import app.morphe.patches.youtube.shared.hookVideoStarted
 import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.Reference
 
 private const val EXTENSION_CLASS =
@@ -103,13 +101,13 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
         // or the default caption track of the current audio track.
         val translationSourceMethod = CaptionTracksManagerTranslationSourceFingerprint.let {
             val captionTrackType = CaptionTrackBuilderBuildFingerprint.method.returnType
-            val metadataField = it.instructionMatches[0].instruction.getReference<FieldReference>()!!
-            val audioTrackField = it.instructionMatches[1].instruction.getReference<FieldReference>()!!
-            val sourceIndicesField = it.instructionMatches[5].instruction.getReference<FieldReference>()!!
-            val audioCaptionIndicesField = it.instructionMatches[8].instruction.getReference<FieldReference>()!!
-            val captionTracksField = it.instructionMatches[10].instruction.getReference<FieldReference>()!!
-            val getMethod = it.instructionMatches[11].instruction.getReference<MethodReference>()!!
-            val convertMethod = it.instructionMatches[12].instruction.getReference<MethodReference>()!!
+            val metadataField = it.instructionMatches[0].fieldReference
+            val audioTrackField = it.instructionMatches[1].fieldReference
+            val sourceIndicesField = it.instructionMatches[5].fieldReference
+            val audioCaptionIndicesField = it.instructionMatches[8].fieldReference
+            val captionTracksField = it.instructionMatches[10].fieldReference
+            val getMethod = it.instructionMatches[11].methodReference
+            val convertMethod = it.instructionMatches[12].methodReference
             val defaultSourceMethod = CaptionTracksManagerDefaultSourceFingerprint(captionTrackType).method
 
             it.classDef.addHelperMethod(
@@ -156,7 +154,7 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
         DefaultCaptionTrackFingerprint.classDef.apply {
             val tracksManagerField = SubtitleManagerDirectTracksFingerprint(
                 CaptionTracksManagerDirectTracksFingerprint.method
-            ).instructionMatches[0].instruction.getReference<FieldReference>()!!
+            ).instructionMatches[0].fieldReference
 
             interfaces.add(EXTENSION_SUBTITLE_MANAGER_INTERFACE)
 

@@ -152,7 +152,7 @@ public final class JavaScriptManager {
      * instead of after its response.
      */
     public static void warmUpInBackground() {
-        if (cachedPlayerDataExtractor != null || !warmUpStarted.compareAndSet(false, true)) {
+        if (!Utils.isNetworkConnected() || cachedPlayerDataExtractor != null || !warmUpStarted.compareAndSet(false, true)) {
             return;
         }
         Utils.runOnBackgroundThread(() -> {
@@ -183,8 +183,10 @@ public final class JavaScriptManager {
                 String playerJs = getPlayerJs();
                 if (isNotEmpty(playerJs)) {
                     cachedPlayerDataExtractor = new PlayerDataExtractor(playerJs, Objects.requireNonNull(cachedPlayerJsHash));
-                } else {
+                } else if (Utils.isNetworkConnected()) {
                     Logger.printException(() -> "playerJs not found");
+                } else {
+                    Logger.printInfo(() -> "playerJs not found (network disconnected)");
                 }
             }
 
@@ -222,6 +224,11 @@ public final class JavaScriptManager {
                 // There is no player JavaScript save in the cache,
                 // or if there is a player JavaScript, it has been more than 3 days since it was last saved.
                 // Download the latest player JavaScript.
+                if (!Utils.isNetworkConnected()) {
+                    Logger.printInfo(() -> "Cannot download playerJs (network disconnected)");
+                    return null;
+                }
+
                 String playerJs = downloadUrl(playerJsUrl);
                 if (isNotEmpty(playerJs)) {
                     cachedPlayerJs = playerJs;

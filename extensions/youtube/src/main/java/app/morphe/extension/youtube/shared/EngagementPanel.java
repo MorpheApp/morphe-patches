@@ -51,6 +51,14 @@ public final class EngagementPanel {
         return checkIdsInQueue(videoDescriptionPanelName);
     }
 
+    /**
+     * @return The id of the panel opened last, or null if no panel is open.
+     */
+    @Nullable
+    public static String getLastOpenedPanelId() {
+        return engagementPanelIds.peekLast();
+    }
+
     public static boolean checkIdsInQueue(List<String> ids) {
         if (ids == null) {
             return false;

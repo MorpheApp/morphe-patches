@@ -12,7 +12,9 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.util.Pair;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -22,6 +24,8 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.youtube.patches.queue.NativePlaylistQueuePatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.LocalQueueSheet;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
@@ -42,12 +46,66 @@ public final class AddToQueuePatch {
     private static final int SECONDARY_CONTAINER_ID =
             ResourceUtils.getIdentifier(ResourceType.ID, "list_item_secondary_container");
 
+    public enum QueueType {
+        /** No queue features are added. */
+        DEFAULT,
+        /** YouTube's own playlist interface, provided by the Native playlist queue patch. */
+        NATIVE,
+        /** The Morphe queue, stored as a playlist on the YouTube account. */
+        MORPHE,
+        /** The Premium-style queue, stored on the device. */
+        LOCAL
+    }
+
+    public static final class MorpheQueueAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return Settings.QUEUE_TYPE.get() == QueueType.MORPHE;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.QUEUE_TYPE);
+        }
+    }
+
+    public static final class NotLocalQueueAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return Settings.QUEUE_TYPE.get() != QueueType.LOCAL;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.QUEUE_TYPE);
+        }
+    }
+
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
 
-    public static int addFlyoutButton(Object flyoutPanel, int index, String videoId) {
+    /**
+     * @return If the native queue is selected. It handles the stock queue buttons.
+     */
+    public static boolean isNativeQueueEnabled() {
+        return Settings.QUEUE_TYPE.get() == QueueType.NATIVE;
+    }
+
+    /**
+     * @return If the Morphe queue or the Premium-style queue is selected.
+     */
+    public static boolean isCustomQueueEnabled() {
         if (!isPatchIncluded()) {
+            return false;
+        }
+
+        QueueType type = Settings.QUEUE_TYPE.get();
+        return type == QueueType.MORPHE || type == QueueType.LOCAL;
+    }
+
+    public static int addFlyoutButton(Object flyoutPanel, int index, String videoId) {
+        if (!isCustomQueueEnabled()) {
             return index;
         }
 
@@ -74,7 +132,8 @@ public final class AddToQueuePatch {
     }
 
     public static void onListBound(ViewGroup itemList) {
-        if (!isPatchIncluded() || !isFlyoutOverrideEnabled()) {
+        final boolean nativeQueue = isNativeQueueEnabled();
+        if (!isCustomQueueEnabled() && !nativeQueue) {
             return;
         }
 
@@ -85,23 +144,46 @@ public final class AddToQueuePatch {
                 continue;
             }
 
-            final int itemIndex = button.second - 1;
-            if (itemIndex < 0 || itemIndex >= itemList.getChildCount()) {
+            // The row is found by its text, as the index of the button does not always match the rows,
+            // such as when a row of a closed menu was counted. The queue click would then be set on
+            // another row, such as Save to playlist.
+            final String buttonText = FlyoutUtils.getVisibleFlyoutButtonText(buttonName);
+            View item = null;
+            if (buttonText != null) {
+                for (int i = 0, count = itemList.getChildCount(); i < count; i++) {
+                    if (itemList.getChildAt(i) instanceof ViewGroup row && Utils.getChildView(row, true, view ->
+                            view instanceof TextView rowText && buttonText.contentEquals(rowText.getText())) != null) {
+                        item = row;
+                        break;
+                    }
+                }
+            } else {
+                final int itemIndex = button.second - 1;
+                if (itemIndex >= 0 && itemIndex < itemList.getChildCount()) {
+                    item = itemList.getChildAt(itemIndex);
+                }
+            }
+            if (item == null) {
                 continue;
             }
 
-            android.view.View item = itemList.getChildAt(itemIndex);
+            if (nativeQueue && queueButtonOriginalNames.get(1).equals(buttonName)
+                    && !NativePlaylistQueuePatch.canShowFlyoutLast()) {
+                // The queue may have been cleared since the native model was prepared.
+                item.setVisibility(View.GONE);
+                continue;
+            }
             var badge = SECONDARY_CONTAINER_ID == 0 ? null : item.findViewById(SECONDARY_CONTAINER_ID);
-            if (badge != null && badge.getVisibility() != android.view.View.GONE) {
+            if (badge != null && badge.getVisibility() != View.GONE) {
                 Logger.printDebug(() -> "Hiding the menu item secondary icon");
-                badge.setVisibility(android.view.View.GONE);
+                badge.setVisibility(View.GONE);
             }
 
             if (LocalQueuePatch.isEnabled()) {
                 Logger.printDebug(() -> "Queue row " + buttonName + " video id: '" + videoId + "'");
                 item.setOnClickListener(v -> {
                     if (videoId.isEmpty()) {
-                        Utils.showToastShort(str(FlyoutUtils.getFlyoutPlaylistId().isEmpty()
+                        Utils.showSnackbarShort(str(FlyoutUtils.getFlyoutPlaylistId().isEmpty()
                                 ? "morphe_local_queue_unavailable"
                                 : "morphe_local_queue_playlist_unsupported"));
                         FlyoutUtils.dismissFlyout();
@@ -111,10 +193,6 @@ public final class AddToQueuePatch {
                 });
             }
         }
-    }
-
-    private static boolean isFlyoutOverrideEnabled() {
-        return LocalQueuePatch.isEnabled() || Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get();
     }
 
     private static boolean hasFlyoutButton(String buttonName) {
@@ -176,7 +254,12 @@ public final class AddToQueuePatch {
      * Injection point.
      */
     public static Runnable replaceButtonRunnable(Runnable original) {
-        if (!isFlyoutOverrideEnabled()) {
+        if (isNativeQueueEnabled()) {
+            Runnable action = getNativeQueueAction(FlyoutUtils.getCurrentButtonName(),
+                    FlyoutUtils.getFlyoutVideoId());
+            return action == null ? original : action;
+        }
+        if (!isCustomQueueEnabled()) {
             return original;
         }
 
@@ -184,7 +267,7 @@ public final class AddToQueuePatch {
             Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
             if (LocalQueuePatch.isEnabled() && queueButtonOriginalNames.contains(FlyoutUtils.getCurrentButtonName())) {
                 return () -> {
-                    Utils.showToastShort(str("morphe_local_queue_playlist_unsupported"));
+                    Utils.showSnackbarShort(str("morphe_local_queue_playlist_unsupported"));
                     FlyoutUtils.dismissFlyout();
                 };
             }
@@ -200,10 +283,13 @@ public final class AddToQueuePatch {
      */
     public static boolean replaceOnItemClick(Object object) {
         try {
-            if (!isFlyoutOverrideEnabled()) {
+            if (!isCustomQueueEnabled() && !isNativeQueueEnabled()) {
                 return false;
             }
 
+            if (isNativeQueueEnabled() && object instanceof String name) {
+                return flyoutButtonClickLogic(name, FlyoutUtils.getFlyoutVideoId());
+            }
             if (FlyoutUtils.getFlyoutVideoId().isEmpty()) {
                 Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
                 return false;
@@ -253,7 +339,13 @@ public final class AddToQueuePatch {
     }
 
     public static boolean flyoutButtonClickLogic(String buttonName, String videoId) {
+        final boolean nativeAction = isNativeQueueEnabled()
+                && queueButtonOriginalNames.contains(buttonName);
         try {
+            if (nativeAction) {
+                getNativeQueueAction(buttonName, videoId).run();
+                return true;
+            }
             if (queueButtonOriginalNames.contains(buttonName)) {
                 if (LocalQueuePatch.isEnabled()) {
                     LocalQueuePatch.add(videoId, queueButtonOriginalNames.get(0).equals(buttonName));
@@ -277,6 +369,23 @@ public final class AddToQueuePatch {
             Logger.printException(() -> "flyoutButtonClickLogic failure: " + buttonName, ex);
         }
 
-        return false;
+        // An error in a Native-owned action must not dispatch the original
+        // Premium command through the caller's fallback path.
+        return nativeAction;
+    }
+
+    @Nullable
+    private static Runnable getNativeQueueAction(String buttonName, String videoId) {
+        if (!queueButtonOriginalNames.contains(buttonName)) {
+            return null;
+        }
+        Runnable action = NativePlaylistQueuePatch.getFlyoutQueueAction(videoId,
+                queueButtonOriginalNames.get(1).equals(buttonName));
+        // An unsupported/stale menu context cannot silently invoke a Premium or
+        // account-backed queue when the user explicitly selected Native queue.
+        return action != null ? action : () -> {
+            Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
+            FlyoutUtils.dismissFlyout();
+        };
     }
 }

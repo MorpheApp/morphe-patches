@@ -79,15 +79,6 @@ public final class ChangeStartPagePatch extends BaseChangeStartPagePatch {
             this.id = id;
             this.isBrowseId = isBrowseId;
         }
-
-        private boolean isBrowseId() {
-            return TRUE.equals(isBrowseId);
-        }
-
-        @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-        private boolean isIntentAction() {
-            return FALSE.equals(isBrowseId);
-        }
     }
 
     /**
@@ -101,11 +92,11 @@ public final class ChangeStartPagePatch extends BaseChangeStartPagePatch {
     private static final StartPage START_PAGE = Settings.CHANGE_START_PAGE.get();
 
     public static String overrideBrowseId(@NonNull String original) {
-        return processBrowseId(original, START_PAGE.isBrowseId(), START_PAGE.id, START_PAGE.id);
+        return processBrowseId(original, TRUE.equals(START_PAGE.isBrowseId), START_PAGE.id, START_PAGE.id);
     }
 
     public static void overrideIntentAction(@NonNull Intent intent) {
-        if (!START_PAGE.isIntentAction()) {
+        if (!FALSE.equals(START_PAGE.isBrowseId)) {
             return;
         }
 

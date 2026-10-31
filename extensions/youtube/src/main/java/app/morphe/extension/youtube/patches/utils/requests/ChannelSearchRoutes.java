@@ -242,6 +242,31 @@ public final class ChannelSearchRoutes {
         return new byte[0];
     }
 
+    /**
+     * Browse params of the channel "Posts" tab for the web client: {2: "community", 110: {1: {9: {}}}}.
+     * If the server does not take these, the params of the tab are read from the tabs of the response.
+     */
+    public static final String POSTS_TAB_PARAMS = "Egljb21tdW5pdHnyBgQKAkoA";
+
+    /**
+     * The posts tab of a channel, as the web client, which is served it without signing in.
+     *
+     * @param params Params of the posts tab.
+     */
+    public static byte[] createPostsTabBody(String channelId, String params, Locale locale) {
+        try {
+            JSONObject body = new JSONObject();
+            body.put("context", createContext(UPLOADS_CLIENT_NAME, locale));
+            body.put("browseId", channelId);
+            body.put("params", params);
+
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "createPostsTabBody failed", ex);
+        }
+        return new byte[0];
+    }
+
     public static byte[] createBody(String channelId, String query, Locale locale) {
         try {
             JSONObject body = new JSONObject();

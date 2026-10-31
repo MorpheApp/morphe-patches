@@ -9,7 +9,8 @@ package app.morphe.extension.music.patches.lyrics.model;
 
 import androidx.annotation.Nullable;
 
-public record Word(long startMs, long endMs, String text, @Nullable String romaji, boolean endsWithSpace) {
+public record Word(long startMs, long endMs, String text, @Nullable String romaji,
+                   boolean endsWithSpace) {
 
     public Word(long startMs, long endMs, String text) {
         this(startMs, endMs, text, null, false);

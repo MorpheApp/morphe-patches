@@ -12,6 +12,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Pair;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -28,6 +29,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 import app.morphe.extension.shared.Logger;
@@ -48,7 +50,6 @@ import app.morphe.extension.youtube.patches.utils.requests.SavePlaylistRequest;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 import app.morphe.extension.youtube.shared.PlayerType;
-import kotlin.Pair;
 
 @SuppressWarnings({"unused", "StaticFieldLeak"})
 public class PlaylistPatch {
@@ -210,15 +211,15 @@ public class PlaylistPatch {
                     if (request != null) {
                         Pair<String, String> playlistIds = request.getPlaylistId();
                         if (playlistIds != null) {
-                            String createdPlaylistId = playlistIds.getFirst();
-                            String setVideoId = playlistIds.getSecond();
+                            String createdPlaylistId = playlistIds.first;
+                            String setVideoId = playlistIds.second;
                             if (createdPlaylistId != null && setVideoId != null) {
                                 playlistId = createdPlaylistId;
                                 if (Settings.QUEUE_RESTORE.get()) {
                                     Settings.QUEUE_PLAYLIST_ID.save(createdPlaylistId);
                                 }
                                 lastVideoIds.putIfAbsent(currentVideoId, setVideoId);
-                                showToast(fetchSucceededCreate);
+                                showSnackbar(fetchSucceededCreate);
                                 Logger.printDebug(() -> "Queue created, playlistId: "
                                         + createdPlaylistId + ", setVideoId: " + setVideoId);
                                 if (openPlaylist) {
@@ -228,7 +229,7 @@ public class PlaylistPatch {
                             }
                         }
                     }
-                    showToast(fetchFailedCreate);
+                    showSnackbar(fetchFailedCreate);
                 } else {
                     String setVideoId = lastVideoIds.get(currentVideoId);
                     EditPlaylistRequest.fetchRequestIfNeeded(currentVideoId, currentPlaylistId,
@@ -241,20 +242,20 @@ public class PlaylistPatch {
                             if ("".equals(fetchedSetVideoId)) {
                                 lastVideoIds.remove(currentVideoId, setVideoId);
                                 EditPlaylistRequest.clearVideoId(currentVideoId);
-                                showToast(fetchSucceededRemove);
+                                showSnackbar(fetchSucceededRemove);
                                 if (openPlaylist) {
                                     openQueue(context, currentVideoId, openVideo, reload);
                                 }
                                 return;
                             }
-                            showToast(fetchFailedRemove);
+                            showSnackbar(fetchFailedRemove);
                         } else {
                             if (fetchedSetVideoId == null || fetchedSetVideoId.isEmpty()) {
                                 Logger.printDebug(() -> "Playlist not available fetchedSetVideoId: "
                                         + fetchedSetVideoId);
                                 if (!retry) {
                                     // Already retried, give up.
-                                    showToast(fetchFailedAdd);
+                                    showSnackbar(fetchFailedAdd);
                                     return;
                                 }
                                 // Clear saved playlist and try again.
@@ -266,7 +267,7 @@ public class PlaylistPatch {
                             lastVideoIds.putIfAbsent(currentVideoId, fetchedSetVideoId);
                             EditPlaylistRequest.clearVideoId(currentVideoId);
                             Logger.printDebug(() -> "Video added, setVideoId: " + fetchedSetVideoId);
-                            showToast(fetchSucceededAdd);
+                            showSnackbar(fetchSucceededAdd);
                             if (openPlaylist) {
                                 openQueue(context, currentVideoId, openVideo, reload);
                             }
@@ -283,14 +284,21 @@ public class PlaylistPatch {
             handleCheckError(checkFailedQueue);
             return;
         }
+        showPlaylistPicker(context, currentPlaylistId, PlaylistPatch::saveToPlaylist);
+    }
+
+    public static void showPlaylistPicker(Context context, String sourcePlaylistId,
+                                         BiConsumer<String, String> onSelected) {
         try {
             GetPlaylistsRequest request = GetPlaylistsRequest.fetchRequestIfNeeded(
-                    currentPlaylistId, AuthUtils.getRequestHeader());
+                    sourcePlaylistId, AuthUtils.getRequestHeader());
             if (request == null) {
                 return;
             }
-            Utils.runOnBackgroundThread(() ->  {
+            Utils.runOnBackgroundThread(() -> {
                 Pair<String, String>[] playlists = request.getPlaylists();
+                // Fetch again next time, so a failed request can be retried.
+                GetPlaylistsRequest.clear();
                 if (playlists == null || playlists.length == 0) return;
                 Utils.runOnMainThread(() -> {
                     SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog
@@ -302,9 +310,9 @@ public class PlaylistPatch {
                     listContainer.setOrientation(LinearLayout.VERTICAL);
 
                     for (Pair<String, String> playlist : playlists) {
-                        String listId = playlist.getFirst();
-                        String title = playlist.getSecond();
-                        Runnable action = () -> saveToPlaylist(listId, title);
+                        String listId = playlist.first;
+                        String title = playlist.second;
+                        Runnable action = () -> onSelected.accept(listId, title);
                         View itemLayout = createItemLayout(context, title, libraryIconId);
                         actionsMap.put(itemLayout, action);
                         listContainer.addView(itemLayout);
@@ -325,11 +333,10 @@ public class PlaylistPatch {
                         });
                     }
                     dialog.show();
-                    GetPlaylistsRequest.clear();
                 });
             });
         } catch (Exception ex) {
-            Logger.printException(() -> "saveToPlaylist failure", ex);
+            Logger.printException(() -> "showPlaylistPicker failure", ex);
         }
     }
 
@@ -347,11 +354,11 @@ public class PlaylistPatch {
             Utils.runOnBackgroundThread(() -> {
                 Boolean result = request.getResult();
                 if (Boolean.TRUE.equals(result)) {
-                    showToast(String.format(fetchSucceededSave, libraryTitle));
+                    showSnackbar(String.format(fetchSucceededSave, libraryTitle));
                     SavePlaylistRequest.clear();
                     return;
                 }
-                showToast(fetchFailedSave);
+                showSnackbar(fetchFailedSave);
             });
         } catch (Exception ex) {
             Logger.printException(() -> "saveToPlaylist failure", ex);
@@ -403,11 +410,11 @@ public class PlaylistPatch {
     }
 
     private static void handleCheckError(String reason) {
-        showToast(String.format(checkFailedGeneric, reason));
+        showSnackbar(String.format(checkFailedGeneric, reason));
     }
 
-    private static void showToast(String reason) {
-        Utils.showToastShort(reason);
+    private static void showSnackbar(String reason) {
+        Utils.showSnackbarShort(reason);
     }
 
     public enum QueueManager {

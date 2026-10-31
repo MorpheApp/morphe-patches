@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Restablecer cor</string>
   <string name="morphe_settings_color_invalid">Cor non válida</string>
   <string name="morphe_settings_restart_title">Reinicio necesario</string>
+  <string name="morphe_settings_restart_dialog_message">Reinicie a aplicación para que o cambio teña efecto</string>
   <string name="morphe_settings_restart">Reiniciar</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importar</string>
@@ -31,6 +32,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">As configuracións de Morphe se restablecerán os valores predeterminados</string>
   <string name="morphe_settings_import_success">Configuracións %s importadas</string>
   <string name="morphe_settings_import_failure_parse">Importación falida: %s</string>
+  <string name="morphe_settings_navigate_up">Navegar cara arriba</string>
   <string name="morphe_settings_search_hint">Buscar axustes</string>
   <string name="morphe_settings_screen_info_title">Acerca de</string>
   <string name="morphe_settings_search_no_results_title">Sen resultados para \'%s\'</string>
@@ -47,9 +49,34 @@ Second \"item\" text"</string>
 • As buscas ignoran maiúsculas e signos de puntuación
 • Os axustes pais aparecen por riba dos axustes fillos desactivados"</string>
   <string name="morphe_settings_search_empty_history_title">O historial de buscas está baleiro</string>
+  <string name="morphe_settings_search_empty_history_summary">Para gardar o historial de busca, escribe unha consulta de busca e preme Enter</string>
+  <string name="morphe_settings_search_history_title">Amosar o historial de busca da configuración</string>
+  <string name="morphe_settings_name_title">Nome dos axustes de Morphe</string>
   <string name="morphe_settings_name_default_item">Predefinido</string>
+  <string name="morphe_settings_name_entry_2">Extras</string>
+  <string name="morphe_settings_name_entry_3">Ajustes</string>
+  <string name="morphe_settings_name_entry_4">Tempo de morfado</string>
   <string name="morphe_settings_name_custom_item">Personalizado</string>
+  <string name="morphe_settings_name_custom_item_hint">Introduza un nome</string>
+  <string name="morphe_settings_name_empty_warning">O nome non pode estar baleiro</string>
+  <string name="morphe_show_menu_icons_title">Amosar os icones de configuración de Morphe</string>
+  <string name="morphe_settings_menu_copy_path">Copiado: %s</string>
+  <string name="morphe_language_title">Idioma de Morphe</string>
+  <string name="morphe_language_user_dialog_message">"As traducións de algunhas linguas poden faltar ou estar incompletas.
+
+Para traducir novas linguas ou mellorar as traducións existentes, visita morphe.software/translate"</string>
+  <string name="morphe_language_DEFAULT">Idioma da aplicación</string>
+  <string name="morphe_pref_import_export_title">Importar / Exportar</string>
+  <string name="morphe_pref_import_export_summary">Importar / Exportar a configuración de Morphe</string>
+  <string name="morphe_settings_import_file">Importar desde ficheiro</string>
+  <string name="morphe_settings_import_file_success">Ajustes importados con éxito, toca Garda para aplicalos</string>
+  <string name="morphe_settings_import_file_failed">Non se puido importar os axustes</string>
+  <string name="morphe_settings_export_file">Exportar a ficheiro</string>
+  <string name="morphe_settings_export_file_success">Ajustes exportados con éxito</string>
+  <string name="morphe_settings_export_file_failed">Fallo ao exportar os axustes</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">Estás usando a versión máis recente de Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Estás usando a versión &lt;i&gt;%1$s&lt;/i&gt; de Morphe Patches&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualización dispoñible: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Para actualizar os teus parches, usa Morphe para volver a parchear esta aplicación</string>
   <string name="morphe_settings_about_links_dev_header">Nota</string>
   <string name="morphe_settings_about_links_dev_body">Esta é una versión preliminar e podería experimentar problemas inesperados</string>
   <string name="morphe_settings_about_links_header">Ligazóns oficiais</string>
@@ -65,33 +92,144 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Avisos de licenza</string>
+  <string name="morphe_settings_about_licenses_loading">Cargando…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuración</string>
+  <string name="morphe_debug_screen_summary">Configura as opcións avanzadas de desenvolvedor e os rexistros de diagnóstico</string>
+  <string name="morphe_debug_title">Activar o rexistro de depuración</string>
+  <string name="morphe_debug_stacktrace_title">Rastrexamento en pila do rexistro de depuración</string>
+  <string name="morphe_debug_stacktrace_summary">Inclúe seguimentos de pila nos rexistros de depuración para axudar a identificar erros</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar mensaxe toast en caso de erro de Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Desactivar as mensaxes toast en caso de erro ocultará tódalas notificacións de erros de Morphe.
 
 Non se lle notificará de ningún evento inesperado"</string>
   <string name="morphe_debug_export_logs_title">Exportar rexistros de depuración</string>
+  <string name="morphe_debug_export_logs_summary">Exportar rexistros de depuración de Morphe</string>
+  <string name="morphe_debug_export_logs_success">Rexistros de depuración exportados con éxito</string>
+  <string name="morphe_debug_export_logs_failed">Fallo ao exportar os rexistros de depuración</string>
+  <string name="morphe_debug_logs_search_hint">Buscar nos rexistros de depuración…</string>
+  <string name="morphe_debug_export_logs_clear">Limpar</string>
   <string name="morphe_debug_logs_disabled">O rexistro de depuración está desactivado</string>
+  <string name="morphe_debug_logs_none_found">Non se atoparon rexistros de depuración</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Rexistros de depuración copiados</string>
+  <string name="morphe_debug_logs_failed_to_export">Fallo ao exportar os rexistros de depuración: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Rexistros de depuración borrados</string>
+  <string name="morphe_debug_feature_flags_manager_title">Xestor de bandeiras de funcións</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Xestorar as bandeiras de funcións booleanas</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Buscar sinalizadores de funcións…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Non activo (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Activo (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Bloqueado (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Forzado (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automático</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">Off</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">On</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Forzar activación</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Bloquear</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Eliminar</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Indicadores de funcións gardados</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Indicadores de funcións restablecidos</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Indicadores de funcións copiados ao portapapeis</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie a aplicación para usar esta configuración</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Exportar e importar</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Importáronse %s sinalizadores de función</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Non se atoparon sinalizadores de función</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Sinalizadores de función exportados con éxito</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Fallo ao exportar as etiquetas de función</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Etiquetas de función cargadas, toca en Gardar para aplicalas</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Fallo ao ler o ficheiro</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Busca binaria</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Busca cal etiqueta de función causa un comportamento da aplicación
+
+A metade das %s etiquetas están bloqueadas e, despois de cada reinicio, indicas se o comportamento aínda está presente
+
+Reproduce o comportamento unha vez antes de comezar; de contrario, as etiquetas que a aplicación aínda non solicitou non aparecerán na busca"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Comezar</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Non hai etiquetas de función para buscar
+
+Só as etiquetas que a aplicación detectou e que non están forzadas actualmente poden usarse nunha busca binaria"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Paso %1$s
+
+Quedan %2$s sinalizadores, %3$s deles bloqueados para este paso.
+
+Reinicia a aplicación, comproba se o comportamento persiste e responde abaixo"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Búsqueda de sinalizadores de funcións en curso</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">O comportamento está presente</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">O comportamento non está presente</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Cancelar a busca binaria</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Busca binaria cancelada</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"O sinalizador de función %s causa o comportamento.
+
+Agora está bloqueado"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Non se puido atopar ningún sinalizador de funcións.
+
+Parece que o comportamento da aplicación non está controlado por un sinalizador de funcións"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Non se puido atopar ningunha bandeira de función.
+
+O comportamento desapareceu anteriormente na busca, polo que poden estar implicadas máis dunha bandeira ou unha das respostas era incorrecta"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">Abrir os axustes de MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG non está instalado. Instáleo</string>
   <string name="gms_core_dialog_title">Acción necesaria</string>
+  <string name="gms_core_dialog_outdated_message">"A súa versión de MicroG v%1s está obsoleta e pode causar problemas.
+
+Actualice MicroG á última versión v%2s"</string>
+  <string name="gms_core_dialog_update_text">Actualizar</string>
+  <string name="gms_core_dialog_ignore_text">Ignorar</string>
+  <string name="gms_core_dialog_conflict_message">"O MicroG instalado non é recomendado por Morphe:
+
+%1s
+
+Toca para desinstalalo, logo reabre esta aplicación e instala MicroG RE"</string>
+  <string name="gms_core_dialog_uninstall_text">Desinstalar</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG non ten permiso para executarse en segundo plano.
+
+Segue a guía \"Don't kill my app\" para o teu teléfono e aplica as instrucións á túa instalación de MicroG.
+
+Isto é necesario para que a aplicación funcione"</string>
   <string name="gms_core_dialog_open_website_text">Abrir sitio web</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"As optimizacións de batería de MicroG deben desativarse para evitar problemas.
+
+Desativar as optimizacións de batería para MicroG non afectará negativamente ao uso da batería.
+
+Toca o botón de continuar e permite os cambios de optimización"</string>
   <string name="gms_core_dialog_continue_text">Continuar</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Amosar o diálogo de optimización da batería de MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Desactivar isto ocultará o aviso de optimización da batería de MicroG.
+
+Se non se cambian as optimizacións da batería, poderías experimentar:
+• A aplicación pode pecharse aleatoriamente
+• As notificacións poden non funcionar
+• A reprodución en segundo plano pode non funcionar"</string>
   <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Xestión de ligazóns da app</string>
+  <string name="morphe_link_handling_summary">Configurar os ligazóns para que se abran nesta aplicación</string>
+  <string name="morphe_link_handling_step1_title">Paso 1: Desactivar os ligazóns da aplicación orixinal</string>
+  <string name="morphe_link_handling_step1_message">Abra a configuración da aplicación orixinal e desactive todos os ligazóns de dominio</string>
+  <string name="morphe_link_handling_step2_title">Paso 2: Activar as ligazóns da aplicación parcheada</string>
+  <string name="morphe_link_handling_step2_message">Abre a configuración da aplicación parcheada e activa todos os vleos de dominio</string>
+  <string name="morphe_link_handling_open">Abrir configuracións</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Alerta Experimental 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Estás usando unha versión experimental da app de ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Espera comportamentos estraños da app ou erros non identificados mentres axustamos os parches para esta versión da app.
+&lt;br/&gt;&lt;br/&gt;
+Se queres a experiencia sen problemas, &lt;b&gt;desinstala&lt;/b&gt; esta e instala a versión recomendada da app de ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Quero a experimental</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Quero a estable</string>
   <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Rexo do erro gardado nos documentos do usuario: %s</string>
+  <string name="morphe_crash_log_saved">Rexo do erro gardado: %s</string>
 </resources>

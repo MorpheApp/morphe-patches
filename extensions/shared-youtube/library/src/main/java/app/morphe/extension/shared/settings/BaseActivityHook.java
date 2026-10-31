@@ -27,6 +27,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.SettingsNamePatch;
+import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
@@ -87,7 +88,7 @@ public abstract class BaseActivityHook extends Activity {
                     && !ENABLE_PREDICTIVE_BACK_ANIMATION) {
                 activity.getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
                         android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,
-                        activity::finish
+                        () -> closeSettings(activity)
                 );
             }
 
@@ -100,6 +101,15 @@ public abstract class BaseActivityHook extends Activity {
                     .commit();
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);
+        }
+    }
+
+    /**
+     * Closes the settings, after first showing the restart dialog if a changed setting requires it.
+     */
+    public static void closeSettings(Activity activity) {
+        if (!AbstractPreferenceFragment.showRestartDialogIfNeeded(activity)) {
+            activity.finish();
         }
     }
 

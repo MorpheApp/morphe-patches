@@ -18,10 +18,16 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Animasyon sa pagsisimula</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Nakapatay</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Kulay</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokromo</string>
+  <string name="morphe_splash_screen_style_title">Animasyon sa pagsisimula</string>
+  <string name="morphe_splash_screen_style_entry_1">Nakapatay</string>
+  <string name="morphe_splash_screen_style_entry_2">Kulay</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Color</string>
+  <string name="morphe_splash_screen_style_entry_4">Monokromo</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">I-highlight ang mga bagong setting</string>
+  <string name="morphe_settings_new_indicator_days_summary">Bilang ng mga araw na ipapakita ang tuldok sa tabi ng mga setting at opsyon na idinagdag ng isang update</string>
+  <string name="morphe_settings_new_indicator_days_off">Naka-off</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">I-restart upang tapusin ang pag-setup</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -151,6 +157,13 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Itinatago ang mga pindutan ng Previous at Next sa media notification, lock screen, at mga kontrol ng headphone.</string>
   <string name="morphe_disable_notification_media_seekbar_title">I-disable ang seekbar</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Pinipigilan ang pag-drag sa seekbar sa lock screen at notification panel.</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Maghanap gamit ang mga pindutan ng Nakaraan &amp; Susunod</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Binabago ang kontrol para sa media notification, lock screen, at headphone upang maghanap sa halip na baguhin ang video</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Haba ng Rewind</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Segundo upang mag-rewind gamit ang pindutang Nakaraan</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Haba ng Fast forward</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Segundo upang mag-fast-forward gamit ang pindutang Susunod</string>
+  <string name="morphe_seek_notification_media_length_invalid">Dapat nasa pagitan ng 1 at %s segundo ang haba ng paghahanap. Ginagamit ang default</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Patayin ang QUIC protocol</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

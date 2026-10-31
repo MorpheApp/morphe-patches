@@ -1,0 +1,56 @@
+syntax = "proto2";
+
+package app.morphe.extension.youtube.innertube.queue.fullscreen;
+
+option java_package = "app.morphe.extension.youtube.innertube.queue.fullscreen";
+option java_outer_classname = "QueueFullscreenRenderer";
+option optimize_for = LITE_RUNTIME;
+
+// Verified quick_actions.eml binding in YouTube 21.20.405. Unknown fields retain
+// YouTube's template, other actions, theme, logging and experiment configuration.
+message Renderer {
+    optional Element new_element = 172660663;
+}
+
+message Element {
+    optional ElementType type = 1;
+}
+
+message ElementType {
+    optional Component component = 168777401;
+}
+
+message Component {
+    optional Model model = 5;
+}
+
+message Model {
+    optional QuickActions quick_actions = 386137609;
+}
+
+message QuickActions {
+    optional PlaylistButton playlist_button = 17;
+}
+
+message PlaylistButton {
+    optional Button button = 1;
+    optional int32 style = 2;
+}
+
+message Button {
+    optional string icon = 2;
+    optional Command on_tap = 4;
+    optional string accessibility_label = 5;
+}
+
+message Command {
+    optional Endpoint innertube_command = 169495254;
+}
+
+message Endpoint {
+    optional ShowPanel show_engagement_panel = 138681778;
+}
+
+message ShowPanel {
+    optional string panel_id = 1;
+}
