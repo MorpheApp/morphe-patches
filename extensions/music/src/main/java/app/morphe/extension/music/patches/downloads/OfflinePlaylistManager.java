@@ -7,160 +7,159 @@
 
 package app.morphe.extension.music.patches.downloads;
 
+import androidx.annotation.Nullable;
+
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import app.morphe.extension.shared.Logger;
 
-/** Manages local offline playlist storage, retrieval, and updates on disk. */
-public final class OfflinePlaylistManager {
+/**
+ * Stores each local playlist as a JSON file named after its id.
+ * <p>
+ * Tracks are saved by file name, because the absolute path of the app storage changes if the app
+ * is moved to another storage volume. Tracks that no longer exist are skipped when loading, and
+ * are dropped from the file the next time the playlist is saved.
+ */
+final class OfflinePlaylistManager {
+
+    private static final String FILE_EXTENSION = ".json";
+    private static final String KEY_NAME = "name";
+    private static final String KEY_TRACKS = "tracks";
 
     private final File musicRoot;
-    private final File playlistsDir;
+    private final File playlistsDirectory;
 
-    public OfflinePlaylistManager(File musicRoot) {
+    OfflinePlaylistManager(File musicRoot) {
         this.musicRoot = musicRoot;
-        this.playlistsDir = new File(musicRoot, "playlists");
-        if (!playlistsDir.exists()) {
-            //noinspection ResultOfMethodCallIgnored
-            playlistsDir.mkdirs();
-        }
+        this.playlistsDirectory = new File(musicRoot, "playlists");
     }
 
-    /** Loads and parses all local playlist JSON files stored on disk. */
-    public List<OfflinePlaylist> loadPlaylists() {
+    /**
+     * @return All playlists that can be read, sorted by name.
+     */
+    List<OfflinePlaylist> loadPlaylists() {
         List<OfflinePlaylist> playlists = new ArrayList<>();
-        File[] files = playlistsDir.listFiles(f -> f.isFile() && f.getName().endsWith(".json"));
+        File[] files = playlistsDirectory.listFiles(
+                file -> file.isFile() && file.getName().endsWith(FILE_EXTENSION));
         if (files == null) return playlists;
 
         for (File file : files) {
-            try {
-                JSONObject json = new JSONObject(OfflineStorage.readText(file));
-                String id = json.optString("id", file.getName().replace(".json", ""));
-                String name = json.optString("name", "Untitled Playlist");
-
-                List<String> paths = new ArrayList<>();
-                JSONArray pathArray = json.optJSONArray("trackPaths");
-                if (pathArray != null) {
-                    for (int i = 0; i < pathArray.length(); i++) {
-                        String path = pathArray.optString(i, "");
-                        if (!path.isEmpty() && new File(path).isFile()) {
-                            paths.add(path);
-                        }
-                    }
-                }
-                playlists.add(new OfflinePlaylist(id, name, paths));
-            } catch (Exception ex) {
-                Logger.printException(() -> "Failed to load playlist: " + file, ex);
-            }
+            OfflinePlaylist playlist = read(file);
+            if (playlist != null) playlists.add(playlist);
         }
-
-        playlists.sort(Comparator.comparing(p -> p.name().toLowerCase()));
+        playlists.sort(Comparator.comparing(OfflinePlaylist::name, String.CASE_INSENSITIVE_ORDER));
         return playlists;
     }
 
-    public OfflinePlaylist getPlaylist(String playlistId) {
-        for (OfflinePlaylist playlist : loadPlaylists()) {
-            if (playlist.id().equals(playlistId)) {
-                return playlist;
-            }
-        }
-        return null;
+    @Nullable
+    OfflinePlaylist getPlaylist(String id) {
+        File file = fileOf(id);
+        return file.isFile() ? read(file) : null;
     }
 
-    public OfflinePlaylist createNewPlaylist(String name, List<OfflineTrack> selectedTracks) {
+    void createPlaylist(String name, List<String> trackPaths) throws IOException {
         String id = "playlist_" + System.currentTimeMillis();
-        List<String> paths = new ArrayList<>();
-        for (OfflineTrack track : selectedTracks) {
-            String path = track.audioFile().getAbsolutePath();
-            if (!paths.contains(path)) {
-                paths.add(path);
-            }
-        }
-        return new OfflinePlaylist(id, name, paths);
+        save(new OfflinePlaylist(id, name, new ArrayList<>(new LinkedHashSet<>(trackPaths))));
     }
 
-    public OfflinePlaylist createNewPlaylistFromPaths(String name, List<String> trackPaths) {
-        String id = "playlist_" + System.currentTimeMillis();
-        List<String> uniquePaths = new ArrayList<>();
-        for (String path : trackPaths) {
-            if (!uniquePaths.contains(path)) {
-                uniquePaths.add(path);
-            }
-        }
-        return new OfflinePlaylist(id, name, uniquePaths);
+    /**
+     * Tracks that are already in the playlist keep their position.
+     */
+    void addTracks(String id, List<String> trackPaths) throws IOException {
+        OfflinePlaylist playlist = require(id);
+        Set<String> updated = new LinkedHashSet<>(playlist.trackPaths());
+        updated.addAll(trackPaths);
+        setTracks(playlist, new ArrayList<>(updated));
     }
 
-    /** Serializes and saves a playlist object to a JSON file on disk. */
-    public void savePlaylist(OfflinePlaylist playlist) throws IOException {
-        if (!playlistsDir.exists()) {
-            //noinspection ResultOfMethodCallIgnored
-            playlistsDir.mkdirs();
-        }
+    /**
+     * Only changes the playlist. The downloaded file is kept.
+     */
+    void removeTrack(String id, String trackPath) throws IOException {
+        OfflinePlaylist playlist = require(id);
+        List<String> updated = new ArrayList<>(playlist.trackPaths());
+        updated.remove(trackPath);
+        setTracks(playlist, updated);
+    }
+
+    void setTrackOrder(String id, List<String> trackPaths) throws IOException {
+        setTracks(require(id), trackPaths);
+    }
+
+    void renamePlaylist(String id, String name) throws IOException {
+        OfflinePlaylist playlist = require(id);
+        save(new OfflinePlaylist(playlist.id(), name, playlist.trackPaths()));
+    }
+
+    /**
+     * Only removes the playlist. The downloaded files are kept.
+     */
+    void deletePlaylist(String id) {
+        OfflineStorage.delete(fileOf(id));
+    }
+
+    private File fileOf(String id) {
+        return new File(playlistsDirectory, id + FILE_EXTENSION);
+    }
+
+    private OfflinePlaylist require(String id) throws IOException {
+        OfflinePlaylist playlist = getPlaylist(id);
+        if (playlist == null) throw new IOException("Playlist not found: " + id);
+        return playlist;
+    }
+
+    private void setTracks(OfflinePlaylist playlist, List<String> trackPaths) throws IOException {
+        save(new OfflinePlaylist(playlist.id(), playlist.name(), trackPaths));
+    }
+
+    @Nullable
+    private OfflinePlaylist read(File file) {
         try {
-            JSONObject json = new JSONObject();
-            json.put("id", playlist.id());
-            json.put("name", playlist.name());
+            JSONObject json = new JSONObject(OfflineStorage.readText(file));
 
-            JSONArray arr = new JSONArray();
-            for (String path : playlist.trackPaths()) {
-                arr.put(path);
+            List<String> trackPaths = new ArrayList<>();
+            JSONArray tracks = json.getJSONArray(KEY_TRACKS);
+            for (int i = 0; i < tracks.length(); i++) {
+                File track = new File(musicRoot, tracks.getString(i));
+                if (track.isFile()) trackPaths.add(track.getAbsolutePath());
             }
-            json.put("trackPaths", arr);
 
-            File outFile = new File(playlistsDir, playlist.id() + ".json");
-            OfflineStorage.writeText(outFile, json.toString());
-        } catch (Exception ex) {
-            throw new IOException("Could not serialize playlist", ex);
+            String fileName = file.getName();
+            String id = fileName.substring(0, fileName.length() - FILE_EXTENSION.length());
+            return new OfflinePlaylist(id, json.getString(KEY_NAME), trackPaths);
+        } catch (IOException | JSONException ex) {
+            Logger.printException(() -> "Could not read playlist: " + file, ex);
+            return null;
         }
     }
 
-    public void addTrackPathsToPlaylist(String playlistId, List<String> newPaths) throws IOException {
-        OfflinePlaylist existing = getPlaylist(playlistId);
-        if (existing == null) throw new IOException("Playlist not found: " + playlistId);
-
-        List<String> updated = new ArrayList<>(existing.trackPaths());
-        for (String path : newPaths) {
-            if (!updated.contains(path)) {
-                updated.add(path);
-            }
+    private void save(OfflinePlaylist playlist) throws IOException {
+        if (!playlistsDirectory.isDirectory() && !playlistsDirectory.mkdirs()) {
+            throw new IOException("Could not create " + playlistsDirectory);
         }
-        savePlaylist(new OfflinePlaylist(existing.id(), existing.name(), updated));
-    }
 
-    public void removeTrackPathFromPlaylist(String playlistId, String pathToRemove) throws IOException {
-        OfflinePlaylist existing = getPlaylist(playlistId);
-        if (existing == null) return;
+        JSONArray tracks = new JSONArray();
+        for (String trackPath : playlist.trackPaths()) {
+            tracks.put(new File(trackPath).getName());
+        }
 
-        List<String> updated = new ArrayList<>(existing.trackPaths());
-        updated.remove(pathToRemove);
-        savePlaylist(new OfflinePlaylist(existing.id(), existing.name(), updated));
-    }
-
-    /** Updates and persists the new sequence of track paths after reordering. */
-    public void updateTrackOrder(String playlistId, List<String> orderedPaths) throws IOException {
-        OfflinePlaylist existing = getPlaylist(playlistId);
-        if (existing == null) throw new IOException("Playlist not found: " + playlistId);
-
-        savePlaylist(new OfflinePlaylist(existing.id(), existing.name(), orderedPaths));
-    }
-
-        /** Updates the display name of an existing playlist. */
-    public void renamePlaylist(String playlistId, String newName) throws IOException {
-        OfflinePlaylist existing = getPlaylist(playlistId);
-        if (existing == null) throw new IOException("Playlist not found: " + playlistId);
-
-        savePlaylist(new OfflinePlaylist(existing.id(), newName, existing.trackPaths()));
-    }
-
-    public void deletePlaylist(String playlistId) {
-        File file = new File(playlistsDir, playlistId + ".json");
-        OfflineStorage.delete(file);
+        try {
+            JSONObject json = new JSONObject()
+                    .put(KEY_NAME, playlist.name())
+                    .put(KEY_TRACKS, tracks);
+            OfflineStorage.writeText(fileOf(playlist.id()), json.toString());
+        } catch (JSONException ex) {
+            throw new IOException("Could not serialize playlist: " + playlist.id(), ex);
+        }
     }
 }
