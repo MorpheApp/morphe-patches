@@ -924,11 +924,11 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
 
     <!-- layout.captions.preferredCaptionLanguagePatch -->
     <string name="morphe_preferred_caption_language_title">Preferred caption language</string>
-    <string name="morphe_preferred_caption_language_summary">Selects provider subtitles first, then automatically translates to the preferred language</string>
+    <string name="morphe_preferred_caption_language_summary">Automatically selects a caption language for each video.</string>
     <string name="morphe_preferred_caption_language_entry_off">Off</string>
 
     <!-- layout.captions.autoTranslateCaptionsPatch -->
-    <string name="morphe_auto_translate_additional_languages_title">Add additional auto-translate languages</string>
+    <string name="morphe_auto_translate_additional_languages_title">Additional auto-translate languages</string>
     <string name="morphe_auto_translate_additional_languages_summary">Adds more languages to the auto-translate menu</string>
 
     <!-- layout.captions.captionCookiesPatch -->
@@ -1834,10 +1834,14 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_max_length_title">Max comment length</string>
     <string name="morphe_niconico_comments_max_length_summary">Hides comments with more characters than this. Each emoji counts as one character</string>
     <string name="morphe_niconico_comments_max_length_no_limit">No limit</string>
-    <string name="morphe_translate_caption_blocks_summary">A second language uses Microsoft or Google to translate the original caption blocks.</string>
+    <string name="morphe_translate_caption_blocks_summary">Uses online translation for the second caption language.</string>
     <string name="morphe_caption_block_translation_failed">Some caption translations are unavailable. Showing available captions.</string>
     <string name="morphe_secondary_caption_language_title">Secondary caption language (experimental)</string>
     <string name="morphe_dual_caption_scale_title">Caption size</string>
-    <string name="morphe_dual_caption_scale_summary">Scales single-language and bilingual captions relative to your current caption size.</string>
+    <string name="morphe_dual_caption_scale_summary">Applies to single-language and bilingual captions.</string>
     <string name="morphe_caption_blocks_too_large">Both caption languages do not fit in this player. Showing the primary language.</string>
+    <string name="morphe_captions_languages_title">Language and translation</string>
+    <string name="morphe_captions_presentation_title">Appearance and behavior</string>
+    <string name="morphe_captions_advanced_title">Advanced</string>
+    <string name="morphe_captions_advanced_summary">Cookie and transcript options</string>
 </resources>

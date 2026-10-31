@@ -84,6 +84,7 @@ fun settingsPatch (
                 "morphe_settings_toolbar_arrow_left_bold.xml",
             ),
             ResourceGroup("layout",
+                "morphe_preference_category.xml",
                 // Color picker.
                 "morphe_color_dot_widget.xml",
                 // Search.

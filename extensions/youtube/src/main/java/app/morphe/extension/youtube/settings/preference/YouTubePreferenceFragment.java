@@ -11,10 +11,14 @@
 package app.morphe.extension.youtube.settings.preference;
 
 import android.app.Dialog;
+import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.widget.Toolbar;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.StringRef;
+import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.shared.patches.GmsCoreSupportPatch;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.NewSettingsIndicator;
@@ -59,6 +63,15 @@ public class YouTubePreferenceFragment extends ToolbarPreferenceFragment {
             NewSettingsIndicator.markNewPreferences(preferenceScreen);
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);
+        }
+    }
+
+    @Override
+    protected void updatePreferenceAvailability(Preference preference, Setting<?> setting) {
+        super.updatePreferenceAvailability(preference, setting);
+        if (setting == Settings.CAPTION_SCALE) {
+            preference.setSummary(Settings.CAPTION_SCALE.get() + "%\n"
+                    + StringRef.str("morphe_dual_caption_scale_summary"));
         }
     }
 
