@@ -1,3 +1,20 @@
+## [2.1.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0-dev.2...v2.1.0-dev.3) (2026-10-31)
+
+### ✨ New Features
+
+* **YouTube - Minimal miniplayer:** Add "Docked miniplayer" setting ([f89b66f](https://github.com/MorpheApp/morphe-patches/commit/f89b66f2e5c63637346def8aae49858d76bb14dd))
+* **YouTube - Minimal miniplayer:** Add "Expand with swipe up" setting ([e0e36ba](https://github.com/MorpheApp/morphe-patches/commit/e0e36ba3d11e2bd56ba561292887a6c9f626ff72))
+* **YouTube:** Add `Change PiP actions` patch ([#4175](https://github.com/MorpheApp/morphe-patches/issues/4175)) ([d9fc859](https://github.com/MorpheApp/morphe-patches/commit/d9fc85939f31340a2678e38375f2290a8d49da7f))
+
+### 🐛 Bug Fixes
+
+* **YouTube - Downloads:** App can crash when downloading Short in-app ([bae1787](https://github.com/MorpheApp/morphe-patches/commit/bae1787e9d2f56e5d5dc845d1916cc46b5c8c288))
+* **YouTube - Feed video actions:** Inline watch later button performClick logic superseeded by direct app command ([7f343df](https://github.com/MorpheApp/morphe-patches/commit/7f343df16754bec9a4e102076c450bbf585c94a8))
+* **YouTube - Navigation bar:** Swap create with notifications button does not change the toolbar of the You tab ([3c03bbb](https://github.com/MorpheApp/morphe-patches/commit/3c03bbb585c9bcfa05f2cc4d1252e341e0904cb5))
+* **YouTube - Navigation bar:** Swiping the miniplayer does not cancel autoplay with Disable auto hide navigation bar ([136d5bc](https://github.com/MorpheApp/morphe-patches/commit/136d5bcbe4672192be5e3486ee100fe8529453a6))
+* **YouTube - Swipe controls:** Fix double tap to skip chapters ([#4219](https://github.com/MorpheApp/morphe-patches/issues/4219)) ([602533c](https://github.com/MorpheApp/morphe-patches/commit/602533c6f54e5590cd581e977b185b7feaa26eb6))
+* **YouTube Music - Downloads:** Download can fail with "Audio stream unavailable" with TV spoof client ([2406f60](https://github.com/MorpheApp/morphe-patches/commit/2406f60bc256a6dc1848e74b5fd544aec6bb4267))
+
 ## [2.1.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0-dev.1...v2.1.0-dev.2) (2026-10-31)
 
 ### 🐛 Bug Fixes
