@@ -1369,6 +1369,8 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_miniplayer_hide_title_title">Hide title and channel</string>
     <string name="morphe_miniplayer_swipe_up_expand_title">Expand with swipe up</string>
     <string name="morphe_miniplayer_swipe_up_expand_summary">Swiping the miniplayer up expands the player, instead of moving the miniplayer to the top of the screen</string>
+    <string name="morphe_miniplayer_docked_title">Docked miniplayer</string>
+    <string name="morphe_miniplayer_docked_summary">Attaches the miniplayer to the navigation bar and the sides of the screen, instead of floating above them</string>
     <string name="morphe_miniplayer_type_entry_0">Disabled</string>
     <string name="morphe_miniplayer_type_entry_1">Default</string>
     <string name="morphe_miniplayer_type_entry_2">Minimal</string>

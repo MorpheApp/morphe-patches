@@ -95,6 +95,8 @@ public final class MinimalMiniplayerPatch {
             getCurrentMiniplayerType() == MINIMAL_BAR_2
                     && Settings.MINIPLAYER_HIDE_TITLE.get();
 
+    private static final boolean DOCKED = ENABLED && Settings.MINIPLAYER_DOCKED.get();
+
     /**
      * YouTube's own {@code floaty_bar_height}.
      */
@@ -102,8 +104,9 @@ public final class MinimalMiniplayerPatch {
 
     /**
      * Detached from the edges, so the rounded corners the miniplayer already has are visible.
+     * A docked bar has no rounded corners, and sits against the edges.
      */
-    private static final int BAR_MARGIN = Dim.dp8;
+    private static final int BAR_MARGIN = DOCKED ? 0 : Dim.dp8;
 
     /**
      * Type 2 draws the bar on the video, which is dimmed but never light, so the app colors
