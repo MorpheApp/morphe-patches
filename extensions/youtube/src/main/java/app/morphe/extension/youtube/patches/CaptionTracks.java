@@ -109,13 +109,19 @@ public final class CaptionTracks {
      * The native selection is applied again, but a cached original track may not load again.
      */
     static void setDualCaptionsEnabled(boolean enabled) {
+        long playbackTime = Utils.isCurrentlyOnMainThread() ? VideoInformation.getVideoTime() : -1;
         Map<StableCaptionBlocks.State, Long> cached = new LinkedHashMap<>();
         synchronized (CaptionTracks.class) {
+            if (!enabled && translatedSession != null && source != null
+                    && !translatedSession.primaryLanguage.equals(translatedSession.sourceLanguage)) {
+                requestedSource = source;
+                requestedTarget = translatedSession.primaryLanguage;
+            }
             Settings.DUAL_CAPTIONS_ENABLED.save(enabled);
             for (WeakReference<StableCaptionBlocks.State> reference : translatedStates) {
                 StableCaptionBlocks.State state = reference.get();
                 if (state != null && state.captured != null && state.translation != null) {
-                    cached.put(state, state.translation.playbackTime());
+                    cached.put(state, playbackTime >= 0 ? playbackTime : state.translation.playbackTime());
                 }
             }
             invalidateTranslation();
@@ -429,15 +435,13 @@ public final class CaptionTracks {
                                           @Nullable StableCaptionBlocks.State state) {
         if (state == null) return;
 
-        String primary = track.language;
-        if (track.secondary != null) {
-            primary = track.source.equals(requestedSource)
-                    ? requestedTarget
-                    : PreferredCaptionLanguagePatch.blockTranslationTarget(
-                            track.language,
-                            Settings.PREFERRED_CAPTION_LANGUAGE.get(),
-                            PreferredCaptionLanguagePatch.hasUserSelectedTrack(),
-                            Requester.getAppLocale());
+        String primary = track.source.equals(requestedSource) ? requestedTarget : track.language;
+        if (track.secondary != null && !track.source.equals(requestedSource)) {
+            primary = PreferredCaptionLanguagePatch.blockTranslationTarget(
+                    track.language,
+                    Settings.PREFERRED_CAPTION_LANGUAGE.get(),
+                    PreferredCaptionLanguagePatch.hasUserSelectedTrack(),
+                    Requester.getAppLocale());
         }
 
         String key = track.source + "|" + track.language + "|" + primary + "|" + track.secondary;
@@ -454,8 +458,7 @@ public final class CaptionTracks {
                     track.language,
                     primary,
                     track.secondary,
-                    (from, to, texts) -> CaptionBlockTranslator.DEFAULT.translate(
-                            from, to, texts, () -> translatedToken == token),
+                    CaptionBlockTranslator.DEFAULT,
                     Utils::runOnBackgroundThread,
                     () -> translationChanged(token),
                     () -> translationFailed(token));

@@ -14,6 +14,7 @@ import java.util.Objects;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.Executor;
 import java.util.function.LongSupplier;
+import java.util.function.BooleanSupplier;
 
 import app.morphe.extension.shared.Logger;
 
@@ -24,6 +25,16 @@ import app.morphe.extension.shared.Logger;
 final class CaptionSession {
     interface Translator {
         List<String> translate(String source, String target, List<String> texts) throws IOException;
+
+        default List<String> translate(String source, String target, List<String> texts,
+                                       BooleanSupplier active) throws IOException {
+            return translate(source, target, texts);
+        }
+
+        @Nullable
+        default String cached(String source, String target, String text) {
+            return null;
+        }
     }
 
     static final class Snapshot {
@@ -219,7 +230,7 @@ final class CaptionSession {
         }
         if (missing.isEmpty()) return result;
 
-        List<String> translated = translator.translate(sourceLanguage, target, missing);
+        List<String> translated = translator.translate(sourceLanguage, target, missing, this::isActive);
         if (translated == null || translated.size() != missing.size()) {
             throw new CaptionBlockTranslator.Failure("Incomplete caption batch", 0, false);
         }
@@ -360,10 +371,15 @@ final class CaptionSession {
         } else {
             second = output == null ? null : output[SECONDARY_SLOT];
         }
+        if (first == null) first = translator.cached(sourceLanguage, primaryLanguage, cue.text);
+        if (second == null && secondaryLanguage != null)
+            second = translator.cached(sourceLanguage, secondaryLanguage, cue.text);
+        boolean unavailable = FAILED_OUTPUT.equals(first) || (first == null && attempts[found] > 0);
         if (FAILED_OUTPUT.equals(first)) first = null;
         if (secondaryLanguage != null && FAILED_OUTPUT.equals(second)) second = null;
 
-        Snapshot candidate = new Snapshot(cue, first == null ? cue.text : first,
+        // Do not briefly show another language while the requested translation is pending.
+        Snapshot candidate = new Snapshot(cue, first == null ? (unavailable ? cue.text : "") : first,
                 second == null ? "" : second, first != null && second != null);
 
         // Text does not change while it is being read, unless enough of the cue remains.

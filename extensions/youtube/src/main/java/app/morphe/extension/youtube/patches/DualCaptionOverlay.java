@@ -78,7 +78,7 @@ public final class DualCaptionOverlay extends LinearLayout {
 
     static void show(View view, String first, String second, TextPaint paint, int width,
             CaptionSession session, long cueStart, boolean complete) {
-        if (!(view instanceof ViewGroup group)) return;
+        if (!(view instanceof ViewGroup group) || !(view instanceof StableCaptionBlocks.Window window)) return;
         DualCaptionOverlay layer = get(view);
         if (layer == null) {
             layer = new DualCaptionOverlay(view.getContext());
@@ -98,8 +98,9 @@ public final class DualCaptionOverlay extends LinearLayout {
         }
         layer.cueStart = cueStart;
         layer.requestedWidth = width;
-        layer.primary.configure(first, paint, style, reset, !complete);
-        layer.secondary.configure(second, paint, style, reset, !complete);
+        int backgroundColor = window.patch_getCaptionBackgroundColor();
+        layer.primary.configure(first, paint, style, backgroundColor, reset, !complete);
+        layer.secondary.configure(second, paint, style, backgroundColor, reset, !complete);
         ((LayoutParams) layer.secondary.getLayoutParams()).topMargin =
                 Math.max(Dim.dp4, Math.round(paint.getTextSize() * LANGUAGE_MARGIN_TEXT_SIZE));
         layer.forceLayout();
@@ -204,14 +205,14 @@ public final class DualCaptionOverlay extends LinearLayout {
         }
 
         void configure(String text, TextPaint source, CaptioningManager.CaptionStyle style,
-                boolean reset, boolean pending) {
+                int backgroundColor, boolean reset, boolean pending) {
             if (reset) slotHeight = 0;
             this.pending = pending;
             this.text = text;
             this.style = style;
             paint.set(source);
             paint.setColor(style.foregroundColor);
-            background.setColor(style.backgroundColor);
+            background.setColor(backgroundColor);
             setContentDescription(text);
             forceLayout();
         }

@@ -872,6 +872,28 @@ internal object CaptionWindowMeasureFingerprint : Fingerprint(
     )
 )
 
+/** Final font size setter shared by the native caption renderers. */
+internal object CaptionWindowFontSizeFingerprint : Fingerprint(
+    classFingerprint = CaptionWindowMeasureFingerprint,
+    returnType = "V",
+    parameters = listOf("F"),
+    filters = listOf(
+        methodCall(smali = "Ljava/lang/Math;->abs(F)F"),
+        literal(0.01f),
+        fieldAccess(opcode = Opcode.IPUT, definingClass = "this", type = "F")
+    )
+)
+
+/** Resolves the window's effective row background, including native cue overrides. */
+internal object CaptionWindowBackgroundColorFingerprint : Fingerprint(
+    classFingerprint = CaptionWindowMeasureFingerprint,
+    returnType = "I",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(smali = "Ljava/lang/Integer;->intValue()I")
+    )
+)
+
 /**
  * Text layout of a caption row.
  */

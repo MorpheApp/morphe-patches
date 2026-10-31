@@ -17,6 +17,50 @@ public class CaptionSessionTest {
         public void execute(Runnable r) { queue.add(r); }
         void run() { while (!queue.isEmpty()) queue.remove().run(); }
     }
+
+    @Test public void pendingTranslationDoesNotTemporarilyShowSourceLanguage() {
+        Jobs jobs = new Jobs();
+        var session = new CaptionSession(SOURCE, "en", "de", "tr",
+                (from, to, texts) -> texts.stream().map(text -> to + ":" + text).toList(),
+                jobs, () -> {}, () -> {});
+        session.demand(0);
+        assertEquals("", session.snapshot(100).primary);
+        assertEquals("", session.snapshot(100).secondary);
+        jobs.run();
+        assertEquals("de:first source", session.snapshot(200).primary);
+    }
+
+    @Test public void warmTranslationsRemainVisibleWhileReplacementWorkerIsQueued() {
+        Jobs jobs = new Jobs();
+        CaptionSession.Translator cached = new CaptionSession.Translator() {
+            public List<String> translate(String from, String to, List<String> texts) {
+                fail("Snapshot must not start network work");
+                return null;
+            }
+            public String cached(String from, String to, String text) {
+                return to + ":" + text;
+            }
+        };
+        var session = new CaptionSession(SOURCE, "en", "de", "tr", cached,
+                jobs, () -> {}, () -> {});
+        session.demand(0);
+        var cue = session.snapshot(100);
+        assertEquals("de:first source", cue.primary);
+        assertEquals("tr:first source", cue.secondary);
+        assertTrue(cue.complete);
+    }
+    @Test public void secondaryFailureCannotExposeSourceOfAnotherPendingCue() {
+        Jobs jobs = new Jobs();
+        var session = new CaptionSession(SOURCE, "en", "de", "tr", (from, to, texts) -> {
+            if (to.equals("tr")) throw new IOException("secondary unavailable");
+            return texts.stream().map(text -> "de:" + text).toList();
+        }, jobs, () -> {}, () -> {});
+        session.demand(0);
+        jobs.run();
+        session.demand(31000);
+        assertEquals("", session.snapshot(31000).primary);
+    }
+
     @Test public void fastPrefetchCannotCycleThroughEvictedTranslations() {
         assertBoundedPrefetch(1500, 4);
     }
@@ -82,8 +126,8 @@ public class CaptionSessionTest {
     @Test public void latePayloadDoesNotFlashWithTooLittleReadingTime() {
         Jobs jobs=new Jobs();var session=new CaptionSession(SOURCE,"en","de","tr",
                 (f,t,texts)->texts.stream().map(x->t+":"+x).toList(),jobs,()->{},()->{});
-        session.demand(2000);assertEquals("first source",session.snapshot(2000).primary);jobs.run();
-        assertEquals("first source",session.snapshot(2100).primary);
+        session.demand(2000);assertEquals("",session.snapshot(2000).primary);jobs.run();
+        assertEquals("",session.snapshot(2100).primary);
         assertEquals("de:second source",session.snapshot(4100).primary);
         assertEquals("de:first source",session.snapshot(500).primary);
     }
@@ -126,7 +170,7 @@ public class CaptionSessionTest {
         var session = new CaptionSession(SOURCE, "en", "de", null,
                 (from, to, texts) -> texts.stream().map(text -> "de:" + text).toList(), jobs, () -> {}, () -> {});
         session.demand(2900);
-        assertEquals("first source", session.snapshot(2900, true).primary);
+        assertEquals("", session.snapshot(2900, true).primary);
         jobs.run();
         assertEquals("de:first source", session.snapshot(2900, true).primary);
     }
@@ -228,8 +272,8 @@ public class CaptionSessionTest {
     @Test public void lateTranslationGuardUsesWallTimeAtPlaybackSpeed() {
         Jobs jobs = new Jobs(); var session = new CaptionSession(SOURCE, "en", "de", null,
                 (f,t,texts) -> texts.stream().map(x -> "de:" + x).toList(), jobs, () -> {}, () -> {});
-        session.demand(0, 2); assertEquals("first source", session.snapshot(0).primary); jobs.run();
-        assertEquals("first source", session.snapshot(1000).primary);
+        session.demand(0, 2); assertEquals("", session.snapshot(0).primary); jobs.run();
+        assertEquals("", session.snapshot(1000).primary);
         assertEquals("de:first source", session.snapshot(1000, true).primary);
     }
 

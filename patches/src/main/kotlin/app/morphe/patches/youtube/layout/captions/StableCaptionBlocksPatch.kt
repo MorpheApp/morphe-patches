@@ -117,8 +117,8 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
         val defaultSettingsField = getCaptionDefaultSettingsFingerprint(settingsField.type)
             .instructionMatches.first().fieldReference
 
-        // Cues of a block are copies with a frame span, and with the default settings
-        // so blocks always use the default placement.
+        // Frame spans retain source metadata in native mode. Only block layouts use
+        // the default placement; ordinary captions keep the authored settings.
         mutableClassDefBy(cueType).apply {
             interfaces.add(EXTENSION_CUE_INTERFACE)
 
@@ -148,9 +148,14 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                 parameters = listOf(EXTENSION_FRAME_CLASS),
                 freeRegisters = 7,
                 smali = """
-                    # Reuse this cue if it already shows the frame with the default settings.
                     iget-object v6, p0, $settingsField
-                    sget-object v0, $defaultSettingsField
+                    invoke-virtual { p1 }, $EXTENSION_FRAME_CLASS->usesBlockLayout()Z
+                    move-result v0
+                    if-eqz v0, :settings_ready
+                    sget-object v6, $defaultSettingsField
+                    :settings_ready
+                    # Reuse this cue if its frame and placement already match.
+                    iget-object v0, p0, $settingsField
                     if-ne v6, v0, :copy_frame
                     invoke-virtual { p0 }, $type->patch_getBlockFrame()$EXTENSION_FRAME_CLASS
                     move-result-object v0
@@ -170,7 +175,6 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                     move-result-object v4
                     invoke-static { v5, p1 }, $EXTENSION_CLASS->carryFrame(Ljava/lang/CharSequence;$EXTENSION_FRAME_CLASS)Ljava/lang/CharSequence;
                     move-result-object v5
-                    sget-object v6, $defaultSettingsField
                     invoke-direct/range { v0 .. v6 }, $cueConstructor
                     return-object v0
                 """
@@ -230,8 +234,21 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                     ("patch_getCaptionMeasureRow" to getCaptionWindowConstructorFingerprint(rowType)
                         .instructionMatches.first().fieldReference)
 
+            val backgroundColor = CaptionWindowBackgroundColorFingerprint.method
+            val backgroundCall = if (backgroundColor.accessFlags and AccessFlags.PRIVATE.value != 0)
+                "invoke-direct" else "invoke-virtual"
             mutableClassDefBy(SUBTITLE_WINDOW_VIEW_CLASS).apply {
                 interfaces.add(EXTENSION_WINDOW_INTERFACE)
+
+                addHelperMethod(
+                    "patch_getCaptionBackgroundColor",
+                    "I",
+                    smali = """
+                        $backgroundCall { p0 }, $backgroundColor
+                        move-result v0
+                        return v0
+                    """
+                )
 
                 addHelperMethod(
                     "patch_setCaptionMeasuredSize",

@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -36,7 +37,7 @@ import app.morphe.extension.shared.requests.Requester;
  * Blocking translation of an ordered batch of caption text, using Google with Edge as fallback.
  * Must be called on a worker thread. Scheduling belongs to the {@link CaptionSession}.
  */
-final class CaptionBlockTranslator {
+final class CaptionBlockTranslator implements CaptionSession.Translator {
     interface ConnectionFactory {
         HttpURLConnection open(String url) throws IOException;
     }
@@ -98,10 +99,7 @@ final class CaptionBlockTranslator {
         }
     };
     private volatile long microsoftCooldownUntil, googleCooldownUntil;
-    @Nullable
-    private HttpURLConnection pendingConnection;
-    @Nullable
-    private BooleanSupplier pendingActive;
+    private final Map<HttpURLConnection, BooleanSupplier> pendingConnections = new IdentityHashMap<>();
     private long googleCreditMs = GOOGLE_MAX_CREDIT_MS, googleCreditUpdated;
 
     CaptionBlockTranslator(ConnectionFactory connections, Clock clock) {
@@ -111,21 +109,33 @@ final class CaptionBlockTranslator {
     }
 
     /**
-     * Disconnects the pending request if its session is no longer active.
+     * Disconnects pending requests whose sessions are no longer active.
      * Must be called on a worker thread. Does not disconnect a request of a replacement session.
      */
     void cancelInactive() {
-        HttpURLConnection connection;
+        List<HttpURLConnection> inactive = new ArrayList<>();
         synchronized (this) {
-            if (pendingConnection == null || pendingActive.getAsBoolean()) return;
-            connection = pendingConnection;
+            for (var entry : pendingConnections.entrySet()) {
+                if (!entry.getValue().getAsBoolean()) inactive.add(entry.getKey());
+            }
         }
-        connection.disconnect();
+        for (HttpURLConnection connection : inactive) connection.disconnect();
     }
 
-    List<String> translate(String sourceLanguage, String targetLanguage, List<String> sourceTexts)
+    @Override
+    public List<String> translate(String sourceLanguage, String targetLanguage, List<String> sourceTexts)
             throws IOException {
         return translate(sourceLanguage, targetLanguage, sourceTexts, () -> true);
+    }
+
+    /** Memory-only lookup so a caption mode change can reuse already prepared translations. */
+    @Override
+    @Nullable
+    public String cached(String source, String target, String text) {
+        String key = key(source.toLowerCase(Locale.ROOT), target.toLowerCase(Locale.ROOT), text);
+        synchronized (cache) {
+            return cache.get(key);
+        }
     }
 
     /**
@@ -133,8 +143,9 @@ final class CaptionBlockTranslator {
      * @throws IOException If no translation is available.
      * @throws CancellationException If active returns false.
      */
-    List<String> translate(String sourceLanguage, String targetLanguage, List<String> sourceTexts,
-                           BooleanSupplier active) throws IOException {
+    @Override
+    public List<String> translate(String sourceLanguage, String targetLanguage, List<String> sourceTexts,
+                                  BooleanSupplier active) throws IOException {
         checkActive(active);
         String source = language(sourceLanguage);
         String target = language(targetLanguage);
@@ -331,8 +342,7 @@ final class CaptionBlockTranslator {
         try {
             synchronized (this) {
                 checkActive(active);
-                pendingConnection = connection;
-                pendingActive = active;
+                pendingConnections.put(connection, active);
             }
             connection.setConnectTimeout(remaining);
             connection.setReadTimeout(remaining);
@@ -371,10 +381,7 @@ final class CaptionBlockTranslator {
             return readResponse(connection, deadline, active);
         } finally {
             synchronized (this) {
-                if (pendingConnection == connection) {
-                    pendingConnection = null;
-                    pendingActive = null;
-                }
+                pendingConnections.remove(connection);
             }
             closeErrorStream(connection);
             connection.disconnect();

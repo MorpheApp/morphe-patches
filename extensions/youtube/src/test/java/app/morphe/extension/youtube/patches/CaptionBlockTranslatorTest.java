@@ -377,6 +377,40 @@ public class CaptionBlockTranslatorTest {
             } finally { reply.release.countDown(); thread.join(1000); }
         }
     }
+    @Test public void replacementCannotHideAnInactiveConnection() throws Exception {
+        for (boolean microsoft : new boolean[]{false, true}) for (boolean body : new boolean[]{false, true}) {
+            Fixture f = new Fixture();
+            if (microsoft) f.add(500, "unavailable");
+            WaitingReply old = new WaitingReply(body, microsoft ? ms("alt") : google("alt"));
+            WaitingReply replacement = new WaitingReply(false, google("neu"));
+            f.replies.add(old); f.replies.add(replacement);
+            AtomicBoolean active = new AtomicBoolean(true);
+            FutureTask<List<String>> oldTask = new FutureTask<>(() ->
+                    f.translator.translate("en", "de", List.of("old"), active::get));
+            FutureTask<List<String>> newTask = new FutureTask<>(() ->
+                    f.translator.translate("en", "de", List.of("new")));
+            Thread oldThread = new Thread(oldTask), newThread = new Thread(newTask);
+            oldThread.start();
+            try {
+                assertTrue(old.entered.await(1, TimeUnit.SECONDS));
+                active.set(false);
+                newThread.start();
+                assertTrue(replacement.entered.await(1, TimeUnit.SECONDS));
+                f.translator.cancelInactive();
+                assertTrue("Inactive connection must still be tracked", old.disconnected);
+                assertFalse("Replacement must remain connected", replacement.disconnected);
+                ExecutionException failure = assertThrows(ExecutionException.class,
+                        () -> oldTask.get(1, TimeUnit.SECONDS));
+                assertTrue(failure.getCause() instanceof CancellationException);
+                replacement.release.countDown();
+                assertEquals(List.of("neu"), newTask.get(1, TimeUnit.SECONDS));
+            } finally {
+                old.release.countDown(); replacement.release.countDown();
+                oldThread.join(1000); newThread.join(1000);
+            }
+        }
+    }
+
     @Test public void delayedCancellationLeavesReplacementRequestAlive() throws Exception {
         Fixture f = new Fixture();
         for (boolean cancelled : new boolean[]{true, false}) {

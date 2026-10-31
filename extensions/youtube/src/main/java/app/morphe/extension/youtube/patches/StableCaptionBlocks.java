@@ -89,6 +89,8 @@ public final class StableCaptionBlocks {
 
         Object patch_getCaptionMeasureRow();
 
+        int patch_getCaptionBackgroundColor();
+
         List<CharSequence> patch_getFullCaptionLines();
 
         List<CharSequence> patch_getVisibleCaptionLines();
@@ -111,6 +113,15 @@ public final class StableCaptionBlocks {
             this.state = state;
             this.time = time;
             this.key = key;
+        }
+
+        /** Capture stays active in native mode so the bilingual toggle can reuse this timeline. */
+        public boolean usesBlockLayout() {
+            CaptionSession session = state.translation;
+            return CaptionTracks.dualCaptionEnabled()
+                    || (state.automatic && Settings.STABLE_CAPTION_BLOCKS.get())
+                    // Preserve the primary while the native translated track is being selected.
+                    || (session != null && !session.primaryLanguage.equals(session.sourceLanguage));
         }
 
         @Override
@@ -252,31 +263,31 @@ public final class StableCaptionBlocks {
             if (state == null
                     || original == null
                     || original.size() > 1) return original;
-            if (state.translation != null) {
-                if (!state.translation.isActive() && !CaptionTracks.restoreTranslation(state))
-                    return Collections.emptyList();
-                // Native sampling can run ahead on a worker; the player clock is main-thread only.
-                if (Utils.isCurrentlyOnMainThread()) {
-                    long playbackTime = VideoInformation.getVideoTime();
-                    state.translation.demand(playbackTime >= 0 ? playbackTime : time,
-                            VideoInformation.getPlaybackSpeed());
-                }
+            Frame frame = new Frame(state, time, Long.MIN_VALUE);
+            if (state.translation != null && !state.translation.isActive()
+                    && !CaptionTracks.restoreTranslation(state)) return Collections.emptyList();
+            boolean blocks = frame.usesBlockLayout();
+            // Native sampling can run ahead on a worker; the player clock is main-thread only.
+            if (blocks && state.translation != null && Utils.isCurrentlyOnMainThread()) {
+                long playbackTime = VideoInformation.getVideoTime();
+                state.translation.demand(playbackTime >= 0 ? playbackTime : time,
+                        VideoInformation.getPlaybackSpeed());
             }
-            long template = state.policy.templateTime(time);
+            long template = blocks ? state.policy.templateTime(time) : time;
             if (template < 0) return Collections.emptyList();
 
             List<?> source = original;
             //noinspection SizeReplaceableByIsEmpty
-            if (source.isEmpty() || (source.size() == 1 && source.get(0) instanceof Cue c
+            if (blocks && (source.isEmpty() || (source.size() == 1 && source.get(0) instanceof Cue c
                             && (c.patch_getOriginalCaptionVisible() == null
-                                    || c.patch_getOriginalCaptionVisible().length() == 0))) {
+                                    || c.patch_getOriginalCaptionVisible().length() == 0)))) {
                 source = timeline.patch_getOriginalCaptions(template);
             }
             if (source == null || source.size() != 1 || !(source.get(0) instanceof Cue cue))
                 return original;
             Object copy =
                     cue.patch_copyBlockFrame(
-                            new Frame(state, time, template));
+                            blocks ? new Frame(state, time, template) : frame);
             return copy == null ? original : Collections.singletonList(copy);
         } catch (Exception ex) {
             Logger.printException(() -> "present failure", ex);
@@ -295,7 +306,7 @@ public final class StableCaptionBlocks {
         }
         try {
             Frame frame = cue.patch_getBlockFrame();
-            if (frame == null) return original;
+            if (frame == null || !frame.usesBlockLayout()) return original;
             Object copy = cue.patch_copyBlockFrame(frame);
             return copy == null || copy == cue ? original : Collections.singletonList(copy);
         } catch (Exception ex) {
@@ -352,10 +363,12 @@ public final class StableCaptionBlocks {
                 cache = new Cache(probe.getWidth(), probe.getPaint(), frame.state);
                 frame.state.caches.put(view, cache);
                 // A session does not use a measured plan.
-                if (frame.state.translation == null) planBlocks(view, frame.state, cache);
+                if (frame.usesBlockLayout() && frame.state.translation == null)
+                    planBlocks(view, frame.state, cache);
             }
             cache.nativeFull = nativeFull;
             cache.nativeVisible = nativeVisible;
+            if (!frame.usesBlockLayout()) return;
             if (frame.state.translation != null) {
                 renderTranslation(view, frame, cache, full, visible);
                 return;

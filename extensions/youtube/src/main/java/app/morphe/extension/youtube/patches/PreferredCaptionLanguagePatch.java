@@ -112,7 +112,13 @@ public class PreferredCaptionLanguagePatch {
      */
     public static CaptionTrackInterface getPreferredCaptionTrack(
             SubtitleManagerInterface subtitleManager, @Nullable CaptionTrackInterface originalTrack) {
-        rememberSelection(subtitleManager, originalTrack);
+        CaptionTrackInterface selected = choosePreferredCaptionTrack(subtitleManager, originalTrack);
+        rememberSelection(subtitleManager, selected);
+        return selected;
+    }
+
+    private static CaptionTrackInterface choosePreferredCaptionTrack(
+            SubtitleManagerInterface subtitleManager, @Nullable CaptionTrackInterface originalTrack) {
         try {
             // CC off guard: Preserve explicitly disabled caption option.
             if (isExplicitlyDisabled(originalTrack)) {
