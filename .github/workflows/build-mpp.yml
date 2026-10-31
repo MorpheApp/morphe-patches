@@ -3,11 +3,7 @@ name: Build MPP
 on:
   workflow_dispatch:
   push:
-    branches: [livechat, livechat2]
-
-env:
-  # Branch head, not a release tag: the dev branch carries fixes that land between tags.
-  MORPHE_REF: dev
+    branches: [livechat, livechat2, livechat7]
 
 jobs:
   build:
@@ -16,22 +12,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Checkout Morphe dev head and apply live chat patch files
+      - name: Show base and check patch files
         run: |
-          git remote add upstream https://github.com/MorpheApp/morphe-patches.git || true
-          git fetch upstream "$MORPHE_REF"
-          git checkout FETCH_HEAD
           echo "base: $(git log --oneline -1)"
-          git checkout "$GITHUB_SHA" -- \
-            ci/apply_livechat.py \
-            patches/src/main/kotlin/app/morphe/patches/youtube/layout/livechat \
-            extensions/youtube/src/main/java/app/morphe/extension/youtube/patches/LiveChatTranslatePatch.java \
-            extensions/shared-youtube/library/src/main/java/app/morphe/extension/shared/patches/LithoRelayoutPatch.java
-          # Settings.java and strings.xml are upstream plus our entries, so merge them.
-          python3 ci/apply_livechat.py "$MORPHE_REF"
-          echo "--- patch files present ---"
-          ls patches/src/main/kotlin/app/morphe/patches/youtube/layout/livechat
-          grep -c "onLithoTextLoaded" extensions/youtube/src/main/java/app/morphe/extension/youtube/patches/LiveChatTranslatePatch.java
+          grep -c "onLithoTextLoaded" \
+            extensions/youtube/src/main/java/app/morphe/extension/youtube/patches/LiveChatTranslatePatch.java
+          grep -c "LIVE_CHAT_TRANSLATE_COPY_BUTTON" \
+            extensions/youtube/src/main/java/app/morphe/extension/youtube/settings/Settings.java
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
