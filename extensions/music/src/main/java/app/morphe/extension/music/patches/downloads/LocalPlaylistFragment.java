@@ -2,11 +2,16 @@ package app.morphe.extension.music.patches.downloads;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.Outline;
+import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -18,6 +23,7 @@ import android.os.Environment;
 import android.preference.PreferenceFragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
@@ -27,6 +33,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.File;
@@ -40,12 +47,13 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 
-/** Dedicated screen for viewing and playing a local offline playlist. */
+/** Dedicated screen for viewing, reordering, and playing a local offline playlist. */
 @SuppressWarnings("deprecation")
 public final class LocalPlaylistFragment extends PreferenceFragment {
 
     private static final String ARG_PLAYLIST_ID = "arg_playlist_id";
     private static final float SECONDARY_DIM = 0.72f;
+    private static final float PLAYING_ROW_BRIGHTNESS = 1.35f;
     private static final int ROW_ARTWORK_PIXELS = 256;
     private static final int ARTWORK_CORNER_DP = 4;
     private static final int ROW_CORNER_DP = 8;
@@ -57,8 +65,16 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
     private OfflinePlaylist playlist;
     private final List<OfflineTrack> playlistTracks = new ArrayList<>();
 
+    private boolean reorderMode;
+    private int draggedIndex = -1;
+    private int targetIndex = -1;
+    private float dragStartRawY;
+    private int dragStartScrollY;
+
     private TextView titleView;
     private TextView countView;
+    private TextView doneReorderBtn;
+    private ScrollView scrollView;
     private LinearLayout tracksContainer;
     private Runnable onPlaylistChanged;
 
@@ -85,12 +101,14 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
 
         root.addView(createHeader(), new LinearLayout.LayoutParams(-1, -2));
 
-        ScrollView scroll = new ScrollView(getActivity());
+        scrollView = new ScrollView(getActivity());
         tracksContainer = new LinearLayout(getActivity());
         tracksContainer.setOrientation(LinearLayout.VERTICAL);
+        tracksContainer.setClipChildren(false);
+        tracksContainer.setClipToPadding(false);
         tracksContainer.setPadding(dp(8), dp(4), dp(8), dp(16));
-        scroll.addView(tracksContainer);
-        root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
+        scrollView.addView(tracksContainer);
+        root.addView(scrollView, new LinearLayout.LayoutParams(-1, 0, 1));
 
         refreshPlaylistView();
         return root;
@@ -106,7 +124,13 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
 
         TextView backBtn = text("←", 22, foreground());
         backBtn.setPadding(0, dp(4), dp(16), dp(4));
-        backBtn.setOnClickListener(v -> closeScreen());
+        backBtn.setOnClickListener(v -> {
+            if (reorderMode) {
+                setReorderMode(false);
+                return;
+            }
+            closeScreen();
+        });
         topRow.addView(backBtn, new LinearLayout.LayoutParams(-2, -2));
 
         LinearLayout titleColumn = new LinearLayout(getActivity());
@@ -140,8 +164,43 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         deleteBtn.setOnClickListener(v -> confirmDeletePlaylist());
         actionsRow.addView(deleteBtn, new LinearLayout.LayoutParams(-2, -2));
 
+        View spacer2 = new View(getActivity());
+        actionsRow.addView(spacer2, new LinearLayout.LayoutParams(dp(10), dp(1)));
+
+        doneReorderBtn = actionButton("Done", false);
+        doneReorderBtn.setVisibility(View.GONE);
+        doneReorderBtn.setOnClickListener(v -> setReorderMode(false));
+        actionsRow.addView(doneReorderBtn, new LinearLayout.LayoutParams(-2, -2));
+
         header.addView(actionsRow, new LinearLayout.LayoutParams(-1, -2));
         return header;
+    }
+
+    private void setReorderMode(boolean enabled) {
+        if (this.reorderMode == enabled) return;
+        this.reorderMode = enabled;
+        if (doneReorderBtn != null) {
+            doneReorderBtn.setVisibility(enabled ? View.VISIBLE : View.GONE);
+        }
+        updateSubtitleText();
+        refreshActionButtonsState();
+    }
+
+    private void updateSubtitleText() {
+        if (countView == null) return;
+        String baseCount = playlistTracks.size() + (playlistTracks.size() == 1 ? " track" : " tracks");
+        countView.setText(reorderMode ? baseCount + " • Drag handle to reorder" : baseCount);
+    }
+
+    private void refreshActionButtonsState() {
+        for (int i = 0; i < tracksContainer.getChildCount(); i++) {
+            View child = tracksContainer.getChildAt(i);
+            if (!(child instanceof LinearLayout row)) continue;
+            View removeBtn = row.findViewWithTag("remove_btn");
+            View reorderBtn = row.findViewWithTag("reorder_btn");
+            if (removeBtn != null) removeBtn.setVisibility(reorderMode ? View.GONE : View.VISIBLE);
+            if (reorderBtn != null) reorderBtn.setVisibility(reorderMode ? View.VISIBLE : View.GONE);
+        }
     }
 
     private TextView actionButton(String label, boolean primary) {
@@ -181,9 +240,10 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         }
 
         titleView.setText(playlist.name());
-        countView.setText(playlistTracks.size() + (playlistTracks.size() == 1 ? " track" : " tracks"));
+        updateSubtitleText();
 
         if (playlistTracks.isEmpty()) {
+            setReorderMode(false);
             TextView empty = text("No tracks in this playlist", 15, secondary());
             empty.setGravity(Gravity.CENTER);
             empty.setPadding(0, dp(60), 0, 0);
@@ -192,18 +252,17 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         }
 
         for (int i = 0; i < playlistTracks.size(); i++) {
-            final int index = i;
             OfflineTrack track = playlistTracks.get(i);
-            tracksContainer.addView(createTrackRow(track, index));
+            tracksContainer.addView(createTrackRow(track, i));
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private View createTrackRow(OfflineTrack track, int index) {
         LinearLayout row = new LinearLayout(getActivity());
         row.setGravity(Gravity.CENTER_VERTICAL);
         row.setPadding(dp(8), dp(7), dp(8), dp(7));
-        row.setBackground(new RippleDrawable(ColorStateList.valueOf(rippleColor()), null,
-                CustomDialog.createRoundedBackground(ROW_CORNER_DP, Color.WHITE)));
+        row.setBackground(rowBackground(false));
 
         row.addView(artworkView(track.artwork(ROW_ARTWORK_PIXELS)),
                 new LinearLayout.LayoutParams(dp(56), dp(56)));
@@ -224,12 +283,190 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         labels.addView(detail);
         row.addView(labels, new LinearLayout.LayoutParams(0, -2, 1));
 
+        // Delete/Remove button (visible in normal mode)
         ImageButton removeBtn = icon("yt_outline_experimental_trash_can_vd_theme_24", "Remove from playlist");
+        removeBtn.setTag("remove_btn");
+        removeBtn.setVisibility(reorderMode ? View.GONE : View.VISIBLE);
         removeBtn.setOnClickListener(v -> removeTrackFromPlaylist(track));
         row.addView(removeBtn, new LinearLayout.LayoutParams(dp(ICON_BUTTON_DP), dp(ICON_BUTTON_DP)));
 
-        row.setOnClickListener(v -> playFromIndex(index));
+        // Reorder drag handle button (visible in reorder mode)
+        ImageButton reorderBtn = new ImageButton(getActivity());
+        reorderBtn.setTag("reorder_btn");
+        reorderBtn.setImageDrawable(createDragHandleDrawable());
+        reorderBtn.setContentDescription("Drag to reorder");
+        reorderBtn.setScaleType(ImageView.ScaleType.CENTER);
+        reorderBtn.setPadding(dp(10), dp(10), dp(10), dp(10));
+        reorderBtn.setBackground(new RippleDrawable(ColorStateList.valueOf(rippleColor()),
+                null, new ShapeDrawable(new OvalShape())));
+        reorderBtn.setVisibility(reorderMode ? View.VISIBLE : View.GONE);
+        reorderBtn.setOnTouchListener((v, event) -> handleReorderTouch(row, index, event));
+        row.addView(reorderBtn, new LinearLayout.LayoutParams(dp(ICON_BUTTON_DP), dp(ICON_BUTTON_DP)));
+
+        row.setOnClickListener(v -> {
+            if (reorderMode) return;
+            playFromIndex(index);
+        });
+
+        row.setOnLongClickListener(v -> {
+            setReorderMode(!reorderMode);
+            return true;
+        });
+
         return row;
+    }
+
+    private boolean handleReorderTouch(View draggedRow, int startIndex, MotionEvent event) {
+        if (!reorderMode || playlistTracks.size() <= 1) return false;
+
+        switch (event.getActionMasked()) {
+            case MotionEvent.ACTION_DOWN -> {
+                if (scrollView != null) {
+                    scrollView.requestDisallowInterceptTouchEvent(true);
+                    dragStartScrollY = scrollView.getScrollY();
+                }
+                draggedIndex = startIndex;
+                targetIndex = startIndex;
+                dragStartRawY = event.getRawY();
+
+                draggedRow.setElevation(dp(8));
+                draggedRow.setBackground(rowBackground(true));
+                return true;
+            }
+            case MotionEvent.ACTION_MOVE -> {
+                if (draggedIndex < 0) return false;
+
+                if (scrollView != null) {
+                    int[] loc = new int[2];
+                    scrollView.getLocationOnScreen(loc);
+                    int scrollTop = loc[1];
+                    int scrollBottom = scrollTop + scrollView.getHeight();
+                    int edgeZone = dp(48);
+
+                    if (event.getRawY() < scrollTop + edgeZone) {
+                        scrollView.scrollBy(0, -dp(6));
+                    } else if (event.getRawY() > scrollBottom - edgeZone) {
+                        scrollView.scrollBy(0, dp(6));
+                    }
+                }
+
+                int currentScrollY = scrollView != null ? scrollView.getScrollY() : 0;
+                float deltaY = (event.getRawY() - dragStartRawY) + (currentScrollY - dragStartScrollY);
+                draggedRow.setTranslationY(deltaY);
+
+                int rowHeight = Math.max(1, draggedRow.getHeight());
+                int offsetSteps = Math.round(deltaY / rowHeight);
+                targetIndex = Math.max(0, Math.min(playlistTracks.size() - 1, draggedIndex + offsetSteps));
+
+                for (int i = 0; i < tracksContainer.getChildCount(); i++) {
+                    if (i == draggedIndex) continue;
+                    View child = tracksContainer.getChildAt(i);
+                    float targetTranslation = 0f;
+                    if (i > draggedIndex && i <= targetIndex) {
+                        targetTranslation = -rowHeight;
+                    } else if (i < draggedIndex && i >= targetIndex) {
+                        targetTranslation = rowHeight;
+                    }
+                    child.animate().translationY(targetTranslation).setDuration(100).start();
+                }
+                return true;
+            }
+            case MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                if (draggedIndex < 0) return false;
+
+                int from = draggedIndex;
+                int to = targetIndex;
+                draggedIndex = -1;
+                targetIndex = -1;
+
+                for (int i = 0; i < tracksContainer.getChildCount(); i++) {
+                    View child = tracksContainer.getChildAt(i);
+                    child.animate().cancel();
+                    child.setTranslationY(0f);
+                    child.setElevation(0f);
+                }
+                draggedRow.setBackground(rowBackground(false));
+
+                if (from != to && to >= 0 && to < playlistTracks.size()) {
+                    OfflineTrack moved = playlistTracks.remove(from);
+                    playlistTracks.add(to, moved);
+                    saveCurrentTrackOrder();
+                }
+                refreshPlaylistView();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void saveCurrentTrackOrder() {
+        List<String> orderedPaths = new ArrayList<>();
+        for (OfflineTrack track : playlistTracks) {
+            orderedPaths.add(track.audioFile().getAbsolutePath());
+        }
+        try {
+            playlistManager.updateTrackOrder(playlistId, orderedPaths);
+            if (onPlaylistChanged != null) onPlaylistChanged.run();
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to save reordered playlist", ex);
+            Utils.showToastShort("Could not save track order");
+        }
+    }
+
+    private Drawable rowBackground(boolean highlighted) {
+        Drawable card = highlighted
+                ? CustomDialog.createRoundedBackground(ROW_CORNER_DP, Utils.adjustColorBrightness(
+                        ThemeUtils.getAppBackgroundColor(), PLAYING_ROW_BRIGHTNESS))
+                : null;
+        return new RippleDrawable(ColorStateList.valueOf(rippleColor()), card,
+                CustomDialog.createRoundedBackground(ROW_CORNER_DP, Color.WHITE));
+    }
+
+    private Drawable createDragHandleDrawable() {
+        final int size = dp(24);
+        final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(foreground());
+        paint.setStrokeWidth(dp(2));
+        paint.setStrokeCap(Paint.Cap.ROUND);
+
+        return new Drawable() {
+            @Override
+            public void draw(@NonNull Canvas canvas) {
+                float left = getBounds().left + dp(3);
+                float right = getBounds().right - dp(3);
+                float centerY = getBounds().exactCenterY();
+                float gap = dp(5);
+
+                canvas.drawLine(left, centerY - gap, right, centerY - gap, paint);
+                canvas.drawLine(left, centerY, right, centerY, paint);
+                canvas.drawLine(left, centerY + gap, right, centerY + gap, paint);
+            }
+
+            @Override
+            public int getIntrinsicWidth() {
+                return size;
+            }
+
+            @Override
+            public int getIntrinsicHeight() {
+                return size;
+            }
+
+            @Override
+            public void setAlpha(int alpha) {
+                paint.setAlpha(alpha);
+            }
+
+            @Override
+            public void setColorFilter(@Nullable ColorFilter colorFilter) {
+                paint.setColorFilter(colorFilter);
+            }
+
+            @Override
+            public int getOpacity() {
+                return PixelFormat.TRANSLUCENT;
+            }
+        };
     }
 
     private void removeTrackFromPlaylist(OfflineTrack track) {
@@ -275,7 +512,6 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
             queue.add(t.audioFile().getAbsolutePath());
         }
 
-        // Sync active queue with LocalDownloadsFragment mini-player
         LocalDownloadsFragment.setActiveQueue(queue);
 
         OfflineTrack target = playlistTracks.get(startIndex);
