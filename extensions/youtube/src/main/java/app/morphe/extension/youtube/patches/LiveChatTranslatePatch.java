@@ -45,6 +45,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.WeakHashMap;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -303,6 +304,11 @@ public final class LiveChatTranslatePatch {
 
     /** Marks a host that already has the copy listener, so it is not attached twice. */
     private static final int COPY_TAG_ID = 0x4C435452;
+    /** Views that already carry the copy listener, so a rebind only refreshes the stored message. */
+    private static final Set<View> copyListeners =
+            Collections.newSetFromMap(new WeakHashMap<>());
+    /** Resource ids already checked by {@link #isBannerRow(View)}, so the walk runs once per id. */
+    private static final Map<Integer, Boolean> bannerIds = new HashMap<>();
     /** Resource ids already resolved by {@link #isLiveChatId(View, int)}, so it runs once per id. */
     private static final Map<Integer, Boolean> liveChatIds = new HashMap<>();
     private static final AtomicInteger copyListenerScheduled = new AtomicInteger();
@@ -914,8 +920,19 @@ public final class LiveChatTranslatePatch {
         // Re-attached on every scan, so a view rebound by the list gets its listener back. The
         // message is stored with it because a recycled view can be reused for a different row.
         host.setTag(COPY_TAG_ID, originalMessage);
+        // The listener is installed once per view and reads the message from the tag, so a rebind
+        // only refreshes the tag. Installing it again on every scan threw away the listener YouTube
+        // installs on the rows it makes interactive, such as a pinned message that expands when
+        // tapped, which is why those rows stopped responding.
+        if (!copyListeners.add(host)) {
+            return;
+        }
         host.setOnLongClickListener(view -> {
-            copyToClipboard(originalMessage);
+            final Object message = view.getTag(COPY_TAG_ID);
+            if (!(message instanceof String text) || text.isEmpty()) {
+                return false;
+            }
+            copyToClipboard(text);
             showCopiedToast();
             return true;
         });
@@ -961,6 +978,11 @@ public final class LiveChatTranslatePatch {
                 if (spans == null || spans.length == 0) {
                     continue;
                 }
+                // A banner and a pinned message handle their own long press, such as expanding the
+                // pinned text, so they are left alone. Only a plain message row gets copy.
+                if (isBannerRow(host)) {
+                    continue;
+                }
                 final String original = spans[0] instanceof TranslatedChatSpan translated
                         ? translated.messageBody
                         : spans[0] instanceof PendingChatSpan pending ? pending.messageBody : null;
@@ -969,6 +991,38 @@ public final class LiveChatTranslatePatch {
         } catch (Exception ex) {
             Logger.printException(() -> "attachCopyListeners failure", ex);
         }
+    }
+
+    /**
+     * @return If the host belongs to a chat banner or a pinned message, which are interactive rows
+     *         whose long press must not be taken over by the copy listener.
+     */
+    private static boolean isBannerRow(View host) {
+        for (View view = host; view != null; view = view.getParent() instanceof View p ? p : null) {
+            final int id = view.getId();
+            if (id == View.NO_ID || id == 0) {
+                continue;
+            }
+            final Boolean cached = bannerIds.get(id);
+            if (cached != null) {
+                if (cached) {
+                    return true;
+                }
+                continue;
+            }
+            boolean result = false;
+            try {
+                final String name = view.getResources().getResourceEntryName(id);
+                result = name != null && (name.contains("banner") || name.contains("pinned"));
+            } catch (Exception ignored) {
+                // Not a resource id, so it cannot be a banner.
+            }
+            bannerIds.put(id, result);
+            if (result) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
