@@ -13,6 +13,10 @@ import java.util.Map;
 
 /** Encoded content geometry belongs to its video, never to the last prefetched response. */
 final class CaptionViewportPolicy {
+    static float scaleFontSize(float size, int percentage) {
+        return size * Math.max(30, Math.min(150, percentage)) / 100f;
+    }
+
     private final LinkedHashMap<String, Double> aspects = new LinkedHashMap<>(32, 0.75f, true);
     private String selected;
 

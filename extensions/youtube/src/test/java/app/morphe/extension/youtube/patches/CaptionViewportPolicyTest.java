@@ -7,6 +7,19 @@ import org.junit.Test;
 public class CaptionViewportPolicyTest {
     private static final String A = "videoA00001", B = "videoB00002";
 
+    @Test public void scalesEverySliderStepRelativeToNativeFont() {
+        for (int percent = 30; percent <= 150; percent += 5) {
+            assertEquals(80f * percent / 100f,
+                    CaptionViewportPolicy.scaleFontSize(80f, percent), .001f);
+        }
+        assertEquals(72f, CaptionViewportPolicy.scaleFontSize(80f, 90), .001f);
+        assertEquals(80f, CaptionViewportPolicy.scaleFontSize(80f, 100), .001f);
+    }
+
+    @Test public void importedValuesCannotExceedSliderBounds() {
+        assertEquals(24f, CaptionViewportPolicy.scaleFontSize(80f, Integer.MIN_VALUE), .001f);
+        assertEquals(120f, CaptionViewportPolicy.scaleFontSize(80f, Integer.MAX_VALUE), .001f);
+    }
     @Test
     public void fitsRealContentHeightOnFoldFullscreen() {
         CaptionViewportPolicy p = new CaptionViewportPolicy();

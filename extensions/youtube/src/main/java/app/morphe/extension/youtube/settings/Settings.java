@@ -416,6 +416,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DUAL_CAPTIONS_ENABLED = new BooleanSetting("morphe_dual_captions_enabled", TRUE);
     public static final StringSetting SECONDARY_CAPTION_LANGUAGE = new StringSetting("morphe_secondary_caption_language", "off", true,
             () -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && CaptionTracks.isAvailable());
+    // Retain the stored key so existing trial size preferences remain valid.
+    public static final IntegerSetting CAPTION_SCALE = new IntegerSetting("morphe_dual_caption_scale", 100, true);
 
     // Miniplayer
     public static final BooleanSetting MINIPLAYER_DISABLE_RESUMING = new BooleanSetting("morphe_miniplayer_disable_resuming", FALSE, true);
@@ -1191,6 +1193,7 @@ public class Settings extends SharedYouTubeSettings {
     // Register SeekBar UI configs so the single shared SeekBarPreference class knows the
     // range, step, unit, integer setting that uses it.
     static {
+        SeekBarPreference.register(new SeekBarConfig(CAPTION_SCALE, 30, 150, 5, "%"));
         SeekBarPreference.register(new SeekBarConfig(SWIPE_ZONE_WIDTH,
                 5, 50, 1, "%"));
         SeekBarPreference.register(new SeekBarConfig(SWIPE_OVERLAY_OPACITY,

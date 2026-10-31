@@ -1837,5 +1837,7 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_translate_caption_blocks_summary">A second language uses Microsoft or Google to translate the original caption blocks.</string>
     <string name="morphe_caption_block_translation_failed">Some caption translations are unavailable. Showing available captions.</string>
     <string name="morphe_secondary_caption_language_title">Secondary caption language (experimental)</string>
+    <string name="morphe_dual_caption_scale_title">Caption size</string>
+    <string name="morphe_dual_caption_scale_summary">Scales single-language and bilingual captions relative to your current caption size.</string>
     <string name="morphe_caption_blocks_too_large">Both caption languages do not fit in this player. Showing the primary language.</string>
 </resources>

@@ -1676,5 +1676,7 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
     <string name="morphe_translate_caption_blocks_summary">İkinci dil için özgün altyazı blokları Microsoft veya Google ile çevrilir.</string>
     <string name="morphe_caption_block_translation_failed">Bazı altyazı çevirileri kullanılamıyor. Mevcut altyazılar gösteriliyor.</string>
     <string name="morphe_secondary_caption_language_title">İkinci altyazı dili (deneysel)</string>
+    <string name="morphe_dual_caption_scale_title">Altyazı boyutu</string>
+    <string name="morphe_dual_caption_scale_summary">Tek ve çift dilli altyazıları, mevcut altyazı boyutunuza göre ölçeklendirir.</string>
     <string name="morphe_caption_blocks_too_large">İki altyazı dili bu oynatıcıya sığmıyor. Birincil dil gösteriliyor.</string>
 </resources>
