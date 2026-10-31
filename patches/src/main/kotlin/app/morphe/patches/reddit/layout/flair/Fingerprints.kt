@@ -9,13 +9,11 @@ package app.morphe.patches.reddit.layout.flair
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.instanceOf
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -50,8 +48,8 @@ internal object PostFlairFeedPresentationModelToStringFingerprint : Fingerprint(
     parameters = listOf(),
     returnType = "Ljava/lang/String;",
     strings = listOf(
-        string("PostFlairFeedPresentationModel(text=", StringComparisonType.CONTAINS),
-        string(", richText=", StringComparisonType.CONTAINS)
+        "PostFlairFeedPresentationModel(text=",
+        ", richText="
     )
 )
 
@@ -60,8 +58,8 @@ internal object PostFlairsElementToStringFingerprint : Fingerprint(
     parameters = listOf(),
     returnType = "Ljava/lang/String;",
     strings = listOf(
-        string("PostFlairsElement(linkId=", StringComparisonType.CONTAINS),
-        string(", uniqueId=", StringComparisonType.CONTAINS)
+        "PostFlairsElement(linkId=",
+        ", uniqueId="
     )
 )
 
@@ -70,7 +68,7 @@ internal object PostFlairsSectionToStringFingerprint : Fingerprint(
     parameters = listOf(),
     returnType = "Ljava/lang/String;",
     strings = listOf(
-        string("PostFlairsSection(feedElement=", StringComparisonType.CONTAINS)
+        "PostFlairsSection(feedElement="
     )
 )
 
@@ -79,7 +77,7 @@ internal object FeedPostTitleSectionToStringFingerprint : Fingerprint(
     parameters = listOf(),
     returnType = "Ljava/lang/String;",
     strings = listOf(
-        string("FeedPostTitleSection(data=", StringComparisonType.CONTAINS)
+        "FeedPostTitleSection(data="
     )
 )
 
@@ -119,8 +117,8 @@ internal object PostPreviewFeedElementToStringFingerprint : Fingerprint(
     parameters = listOf(),
     returnType = "Ljava/lang/String;",
     strings = listOf(
-        string("PostPreviewFeedElement(linkId=", StringComparisonType.CONTAINS),
-        string(", uniqueId=", StringComparisonType.CONTAINS)
+        "PostPreviewFeedElement(linkId=",
+        ", uniqueId="
     )
 )
 
@@ -195,8 +193,8 @@ internal object FeedPostSectionToStringFingerprint : Fingerprint(
     parameters = listOf(),
     returnType = "Ljava/lang/String;",
     strings = listOf(
-        string("FeedPostSection(linkId=", StringComparisonType.CONTAINS),
-        string(", sections=", StringComparisonType.CONTAINS)
+        "FeedPostSection(linkId=",
+        ", sections="
     )
 )
 

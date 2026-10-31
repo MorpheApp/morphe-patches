@@ -95,6 +95,8 @@ public final class MinimalMiniplayerPatch {
             getCurrentMiniplayerType() == MINIMAL_BAR_2
                     && Settings.MINIPLAYER_HIDE_TITLE.get();
 
+    private static final boolean DOCKED = ENABLED && Settings.MINIPLAYER_DOCKED.get();
+
     /**
      * YouTube's own {@code floaty_bar_height}.
      */
@@ -102,8 +104,9 @@ public final class MinimalMiniplayerPatch {
 
     /**
      * Detached from the edges, so the rounded corners the miniplayer already has are visible.
+     * A docked bar has no rounded corners, and sits against the edges.
      */
-    private static final int BAR_MARGIN = Dim.dp8;
+    private static final int BAR_MARGIN = DOCKED ? 0 : Dim.dp8;
 
     /**
      * Type 2 draws the bar on the video, which is dimmed but never light, so the app colors
@@ -328,7 +331,7 @@ public final class MinimalMiniplayerPatch {
 
             // YouTube reads a gesture against the shape of its own miniplayer, which the bar is not,
             // so the bar answers for itself: a tap expands, a drag moves the bar between the bottom
-            // and the top of the screen, and a drag down from the bottom closes it.
+            // and the top of the screen, or expands if set so, and a drag down from the bottom closes it.
             final int slop = Dim.dp20;
 
             controlsLayout.setClickable(true);
@@ -353,6 +356,9 @@ public final class MinimalMiniplayerPatch {
 
                             if (-draggedUp > slop && !barAtTop) {
                                 closeBar();
+                            } else if (draggedUp > slop && Settings.MINIPLAYER_SWIPE_UP_EXPAND.get()) {
+                                // Goes through the click, so accessibility services see it.
+                                view.performClick();
                             } else if (Math.abs(draggedUp) > slop) {
                                 // Already at the top, a drag up has nowhere to go. Nor while the bar
                                 // is animating, which can be the bar leaving before it is closed.

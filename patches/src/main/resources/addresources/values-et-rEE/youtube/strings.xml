@@ -519,7 +519,7 @@ Kui video, millel on nupp Küsige, on üks kord avatud, töötab see funktsioon 
   <string name="morphe_shorts_download_flyout_button_summary">Lisab Shorts mängija menüüsse allalaadimisvaliku</string>
   <string name="morphe_shorts_download_flyout_title">Laadi alla</string>
   <string name="morphe_export_download_folder_title">Salvestatud videote eksportimine</string>
-  <string name="morphe_export_download_folder_summary">"Ekspordi rakenduses salvestatud videod oma seadme mällu. Ekspordikausta muutmiseks puuduta seda
+  <string name="morphe_export_download_folder_summary">"Ekspordi rakenduses salvestatud videod oma seadme mällu, kasutades rakendusesse integreeritud allalaadimiste menüüd. Ekspordikausta muutmiseks puuduta seda
 
 Ekspordikaust: %s"</string>
   <string name="morphe_export_download_folder_dialog_title">Ekspordikaust</string>
@@ -607,6 +607,19 @@ Teie API võtit ei tohi kunagi jagada. Kõik, kellel on sellele juurdepääs, sa
   <string name="morphe_pip_button_overlay_title">Kuva pildis-pilt nupp</string>
   <string name="morphe_pip_button_flyout_title">Kuva pildis-pilt menüü</string>
   <string name="morphe_pip_button_flyout_name">Lülita pildis-pildile</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Pilt-pildis toimingud</string>
+  <string name="morphe_pip_actions_screen_summary">Muuda pilt-pildis-režiimis kuvatavaid nuppe</string>
+  <string name="morphe_pip_action_left_title">Vasak nupp</string>
+  <string name="morphe_pip_action_center_title">Keskmine nupp</string>
+  <string name="morphe_pip_action_right_title">Parem nupp</string>
+  <string name="morphe_pip_action_entry_default">Vaikimisi</string>
+  <string name="morphe_pip_action_entry_previous">Eelmine video</string>
+  <string name="morphe_pip_action_entry_next">Järgmine video</string>
+  <string name="morphe_pip_action_entry_rewind">Keri 10 sekundit tagasi</string>
+  <string name="morphe_pip_action_entry_fast_forward">Liigu 10 sekundit edasi</string>
+  <string name="morphe_pip_action_entry_play_pause">Esita/peata</string>
+  <string name="morphe_pip_action_entry_background_playback">Taustal esitamine</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Kuva nupp \"Esita kõiki\"</string>
   <string name="morphe_play_all_button_summary">"Puudutage, et luua kõigi kanali videote loend, hoidke all, et tühista
@@ -1240,6 +1253,10 @@ Piirang: kui \"Taasta vana video tegevusriba\" on välja lülitatud, ei pruugi o
   <string name="morphe_miniplayer_not_available_summary">YouTube eemaldas kõik täiendavad minisinuletid. Enam minisinuleti tüüpide taastamiseks paigutage YouTube\'i versioon 21.28.208 või vanem</string>
   <string name="morphe_miniplayer_type_title">Minipleieri tüüp</string>
   <string name="morphe_miniplayer_hide_title_title">Peita pealkiri ja kanal</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Laienda üles tõmbades</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Minimängija üles tõmbamine laiendab mängijat selle asemel, et liigutada minimängijat ekraani ülaosasse</string>
+  <string name="morphe_miniplayer_docked_title">Kinnitatud minimängija</string>
+  <string name="morphe_miniplayer_docked_summary">Kinnitab minimängija navigatsiooniribale ja ekraani külgedele selle asemel, et see nende kohal hõljuks</string>
   <string name="morphe_miniplayer_type_entry_0">Välja lülitatud</string>
   <string name="morphe_miniplayer_type_entry_1">Vaikimisi</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaalne</string>

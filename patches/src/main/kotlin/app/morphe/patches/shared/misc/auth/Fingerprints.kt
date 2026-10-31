@@ -10,7 +10,6 @@ package app.morphe.patches.shared.misc.auth
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchFirst
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -28,8 +27,8 @@ internal object AccountIdentityToStringFingerprint : Fingerprint(
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
     strings = listOf(
-        string(GET_PAGE_ID_STRING, StringComparisonType.CONTAINS),
-        string(IS_INCOGNITO_STRING, StringComparisonType.CONTAINS)
+        GET_PAGE_ID_STRING,
+        IS_INCOGNITO_STRING
     )
 )
 

@@ -84,28 +84,24 @@ internal object AutoHideNavigationBarOnFeedScrollingFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Moves the navigation bar out of the screen while the miniplayer is dragged to be dismissed.
+ * Other listeners of the same drag cancel autoplay, so only the navigation bar listener is hooked.
+ * Before 21.23 the method of the navigation bar for this drag is empty.
+ */
 internal object AutoHideNavigationBarOnDismissMiniplayerFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("F"),
     filters = listOf(
-        literal(2),
-        methodCall(
-            smali = "Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;",
-            location = MatchAfterWithin(5)
-        ),
-        methodCall(
-            smali = "Ljava/util/Set;->iterator()Ljava/util/Iterator;",
-            location = MatchAfterWithin(5)
-        ),
-        methodCall(
-            smali = "Ljava/util/Iterator;->hasNext()Z",
-            location = MatchAfterWithin(5)
-        ),
-        methodCall(
-            smali = "Ljava/util/Iterator;->next()Ljava/lang/Object;",
-            location = MatchAfterWithin(5)
-        )
+        opcode(Opcode.IGET),
+        opcode(Opcode.IGET, location = MatchAfterImmediately()),
+        opcode(Opcode.ADD_INT_2ADDR, location = MatchAfterImmediately()),
+        opcode(Opcode.INT_TO_FLOAT, location = MatchAfterImmediately()),
+        opcode(Opcode.MUL_FLOAT_2ADDR, location = MatchAfterImmediately()),
+        opcode(Opcode.IPUT, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
+        opcode(Opcode.RETURN_VOID, location = MatchAfterImmediately())
     )
 )
 

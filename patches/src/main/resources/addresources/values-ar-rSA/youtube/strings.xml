@@ -519,7 +519,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_summary">يُضيف عنصر تنزيل إلى قائمة مشغل فيديوهات Shorts</string>
   <string name="morphe_shorts_download_flyout_title">تنزيل</string>
   <string name="morphe_export_download_folder_title">تصدير الفيديوهات المحفوظة</string>
-  <string name="morphe_export_download_folder_summary">"تصدير الفيديوهات المحفوظة داخل التطبيق إلى تخزين جهازك. انقر لتغيير مجلد التصدير
+  <string name="morphe_export_download_folder_summary">"تصدير الفيديوهات المحفوظة داخل التطبيق إلى تخزين جهازك باستخدام التنزيل داخل التطبيق بالقائمة المنبثقة. انقر لتغيير مجلد التصدير
 
 مجلد التصدير: %s"</string>
   <string name="morphe_export_download_folder_dialog_title">مجلد التصدير</string>
@@ -610,6 +610,19 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_pip_button_overlay_title">عرض زر صورة داخل صورة</string>
   <string name="morphe_pip_button_flyout_title">عرض قائمة صورة داخل صورة</string>
   <string name="morphe_pip_button_flyout_name">التبديل إلى صورة داخل صورة</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">إجراءات صورة داخل صورة</string>
+  <string name="morphe_pip_actions_screen_summary">تغيير الأزرار التي تظهر في صورة داخل صورة</string>
+  <string name="morphe_pip_action_left_title">الزر الأيسر</string>
+  <string name="morphe_pip_action_center_title">الزر الأوسط</string>
+  <string name="morphe_pip_action_right_title">الزر الأيمن</string>
+  <string name="morphe_pip_action_entry_default">الافتراضي</string>
+  <string name="morphe_pip_action_entry_previous">الفيديو السابق</string>
+  <string name="morphe_pip_action_entry_next">الفيديو التالي</string>
+  <string name="morphe_pip_action_entry_rewind">ترجيع 10 ثواني</string>
+  <string name="morphe_pip_action_entry_fast_forward">تقديم سريع 10 ثواني</string>
+  <string name="morphe_pip_action_entry_play_pause">تشغيل/إيقاف</string>
+  <string name="morphe_pip_action_entry_background_playback">التشغيل في الخلفية</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">عرض زر تشغيل الكل</string>
   <string name="morphe_play_all_button_summary">"انقر لإنشاء قائمة تشغيل لجميع فيديوهات القناة
@@ -1244,6 +1257,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_miniplayer_not_available_summary">أزال YouTube كل مشغلات الفيديو المصغرة الإضافية. لاستعادة المزيد من أنواع المشغلات الصغيرة، يُرجى تعديل YouTube إصدار 21.28.208 أو أقدم</string>
   <string name="morphe_miniplayer_type_title">نوع المشغل المصغر</string>
   <string name="morphe_miniplayer_hide_title_title">إخفاء العنوان والقناة</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">التوسيع بالسحب للأعلى</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">يؤدي سحب المشغل المصغر للأعلى إلى توسيع المشغل، بدلاً من نقل المشغل المصغر إلى أعلى الشاشة</string>
+  <string name="morphe_miniplayer_docked_title">المشغل المصغر المثبت</string>
+  <string name="morphe_miniplayer_docked_summary">يربط المشغل المصغر بشريط التنقل وجوانب الشاشة، بدلاً من جعله يطفو فوقهما</string>
   <string name="morphe_miniplayer_type_entry_0">معطّل</string>
   <string name="morphe_miniplayer_type_entry_1">إفتراضي</string>
   <string name="morphe_miniplayer_type_entry_2">بسيط</string>

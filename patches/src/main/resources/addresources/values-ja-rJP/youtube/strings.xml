@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">ライブラリ / マイページの最下部メニューのフィルタを有効化</string>
   <string name="morphe_hide_account_menu_filter_strings_title">ライブラリ / マイページの最下部メニューのフィルタ</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">非表示にする、ライブラリ / マイページの最下部メニューのメニュー名を改行区切りで入力してください</string>
+  <string name="morphe_hide_account_menu_downloads_title">ダウンロードを非表示にする</string>
   <string name="morphe_hide_album_cards_title">アルバムカードを非表示</string>
   <string name="morphe_hide_album_cards_summary">アーティストの概要欄の下のアルバムカードを非表示にします</string>
   <string name="morphe_hide_artist_cards_title">アーティスト カードを非表示</string>
@@ -516,7 +517,23 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_external_downloader_quick_audio">オーディオ</string>
   <string name="morphe_external_downloader_quick_options">すべてのオプション</string>
   <string name="morphe_shorts_download_flyout_button_title">ショート動画メニューにダウンロードを表示</string>
+  <string name="morphe_shorts_download_flyout_button_summary">ショートプレーヤーのメニューにダウンロード項目を追加します</string>
   <string name="morphe_shorts_download_flyout_title">ダウンロード</string>
+  <string name="morphe_export_download_folder_title">保存済みビデオをエクスポート</string>
+  <string name="morphe_export_download_folder_summary">"アプリ内ダウンロードのフライアウトメニューを使用して、アプリ内で保存したビデオをデバイスのストレージにエクスポートします。タップしてエクスポートフォルダを変更してください
+
+エクスポートフォルダ: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">エクスポートフォルダ</string>
+  <string name="morphe_export_download_folder_change">フォルダを変更</string>
+  <string name="morphe_export_download_folder_changed">エクスポートフォルダが変更されました</string>
+  <string name="morphe_export_download_folder_reset">エクスポートフォルダをリセット</string>
+  <string name="morphe_export_download_flyout_title">デバイスにエクスポート</string>
+  <string name="morphe_export_download_started">ビデオをエクスポート中</string>
+  <string name="morphe_export_download_progress">ビデオをエクスポート中: %d%%</string>
+  <string name="morphe_export_download_notification_channel">ビデオのエクスポート</string>
+  <string name="morphe_export_download_saved">ビデオを %s にエクスポートしました</string>
+  <string name="morphe_export_download_failed">ビデオをエクスポートできませんでした</string>
+  <string name="morphe_export_download_canceled">エクスポートをキャンセルしました</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">吹き替え翻訳</string>
   <string name="morphe_vot_screen_summary">動画字幕を翻訳し、デバイス上のテキスト読み上げ機能で字幕の翻訳を字幕に同期しながら読み上げます</string>
@@ -591,6 +608,19 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_pip_button_overlay_title">ピクチャー イン ピクチャー ボタンを表示</string>
   <string name="morphe_pip_button_flyout_title">「ピクチャー イン ピクチャーで再生」を表示</string>
   <string name="morphe_pip_button_flyout_name">ピクチャー イン ピクチャーで再生</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">ピクチャー イン ピクチャーのアクション</string>
+  <string name="morphe_pip_actions_screen_summary">ピクチャー イン ピクチャーに表示されるボタンを変更します</string>
+  <string name="morphe_pip_action_left_title">左ボタン</string>
+  <string name="morphe_pip_action_center_title">中央ボタン</string>
+  <string name="morphe_pip_action_right_title">右ボタン</string>
+  <string name="morphe_pip_action_entry_default">デフォルト</string>
+  <string name="morphe_pip_action_entry_previous">前のビデオ</string>
+  <string name="morphe_pip_action_entry_next">次のビデオ</string>
+  <string name="morphe_pip_action_entry_rewind">10秒巻き戻し</string>
+  <string name="morphe_pip_action_entry_fast_forward">10秒早送り</string>
+  <string name="morphe_pip_action_entry_play_pause">再生/一時停止</string>
+  <string name="morphe_pip_action_entry_background_playback">バックグラウンド再生</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">「すべて再生」ボタンを表示</string>
   <string name="morphe_play_all_button_summary">"タップするとチャンネルのすべての動画から成るプレイリストを生成します。長押しすると元の状態に戻ります
@@ -1224,6 +1254,10 @@ Automotive レイアウト
   <string name="morphe_miniplayer_not_available_summary">YouTube によってすべての追加のミニプレーヤーが削除されました。より多くのミニプレーヤーの種類を復元するには、YouTube 21.28.208 またはそれ以前のバージョンにパッチを適用してください</string>
   <string name="morphe_miniplayer_type_title">ミニプレーヤーの種類</string>
   <string name="morphe_miniplayer_hide_title_title">タイトルとチャンネル名を非表示</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">上にスワイプして展開</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">ミニプレーヤーを上にスワイプすると、ミニプレーヤーを画面上部に移動させるのではなく、プレーヤーが展開されます</string>
+  <string name="morphe_miniplayer_docked_title">ドッキング済みミニプレーヤー</string>
+  <string name="morphe_miniplayer_docked_summary">ミニプレーヤーを浮かせるのではなく、ナビゲーションバーや画面の端に固定します</string>
   <string name="morphe_miniplayer_type_entry_0">無効</string>
   <string name="morphe_miniplayer_type_entry_1">デフォルト</string>
   <string name="morphe_miniplayer_type_entry_2">横長（旧タイプ）</string>
@@ -1266,6 +1300,8 @@ Automotive レイアウト
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">このデバイスではグロー・スプラッシュ画面はサポートされていません</string>
+  <string name="morphe_splash_screen_duration_title">起動アニメーションの長さ</string>
+  <string name="morphe_splash_screen_duration_summary">グローアニメーションが再生される時間です。アニメーションをタップするとスキップできます</string>
   <string name="morphe_theme_color_light_title">ライトモードのテーマ</string>
   <string name="morphe_theme_color_light_entry_2">ホワイト</string>
   <string name="morphe_theme_color_light_entry_3">Material You（ホワイト）</string>

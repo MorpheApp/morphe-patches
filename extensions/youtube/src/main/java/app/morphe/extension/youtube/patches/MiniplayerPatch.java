@@ -166,7 +166,8 @@ public final class MiniplayerPatch {
                     && Settings.MINIPLAYER_HIDE_OVERLAY_BUTTONS.isAvailable();
 
     private static final boolean MINIPLAYER_ROUNDED_CORNERS_ENABLED =
-            CURRENT_TYPE.isModern() && !Settings.MINIPLAYER_DISABLE_ROUNDED_CORNERS.get();
+            CURRENT_TYPE.isModern() && !Settings.MINIPLAYER_DISABLE_ROUNDED_CORNERS.get()
+                    && !(MINIMAL_BAR_SELECTED && Settings.MINIPLAYER_DOCKED.get());
 
     private static final boolean MINIPLAYER_HORIZONTAL_DRAG_ENABLED = DRAG_AND_DROP_ENABLED
             && (MINIMAL_BAR_SELECTED || !Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG.get());
@@ -271,6 +272,19 @@ public final class MiniplayerPatch {
                     Settings.MINIPLAYER_TYPE,
                     Settings.MINIPLAYER_DISABLE_DRAG_AND_DROP
             );
+        }
+    }
+
+    public static final class MiniplayerMinimalBarAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            MiniplayerType type = Settings.MINIPLAYER_TYPE.get();
+            return type == MINIMAL_BAR || type == MINIMAL_BAR_2;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.MINIPLAYER_TYPE);
         }
     }
 

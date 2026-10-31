@@ -62,6 +62,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_account_menu_title">Kütüphane / Siz alt menü filtresini etkinleştir</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Kütüphane / Siz alt menü filtresi</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Filtrelemek istediğiniz Kütüphane / Siz alt menü adlarını yeni satırlarla ayırarak girin</string>
+  <string name="morphe_hide_account_menu_downloads_title">İndirmeleri Gizle</string>
   <string name="morphe_hide_album_cards_title">Albüm kartlarını gizle</string>
   <string name="morphe_hide_album_cards_summary">Sanatçı açıklamasının altındaki albüm kartlarını gizler</string>
   <string name="morphe_hide_artist_cards_title">Sanatçı kartlarını gizle</string>
@@ -516,7 +517,23 @@ Soru düğmesine sahip olan bir video bir kez açıldıktan sonra bu özellik, m
   <string name="morphe_external_downloader_quick_audio">Ses</string>
   <string name="morphe_external_downloader_quick_options">Tüm seçenekler</string>
   <string name="morphe_shorts_download_flyout_button_title">Shorts menüsünde indiri göster</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Shorts oynatıcısının menüsüne bir indirme öğesi ekler</string>
   <string name="morphe_shorts_download_flyout_title">İndir</string>
+  <string name="morphe_export_download_folder_title">Kaydedilen videoları dışa aktar</string>
+  <string name="morphe_export_download_folder_summary">"Uygulama içi indirmeler açılır menüsünü kullanarak uygulama içinde kaydedilen videoları cihaz depolama alanınıza dışa aktarın. Dışa aktarma klasörünü değiştirmek için dokunun
+
+Dışa aktarma klasörü: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Dışa aktarma klasörü</string>
+  <string name="morphe_export_download_folder_change">Klasörü değiştir</string>
+  <string name="morphe_export_download_folder_changed">Dışa aktarma klasörü değiştirildi</string>
+  <string name="morphe_export_download_folder_reset">Dışa aktarma klasörü sıfırlandı</string>
+  <string name="morphe_export_download_flyout_title">Cihaza dışa aktar</string>
+  <string name="morphe_export_download_started">Video dışa aktarılıyor</string>
+  <string name="morphe_export_download_progress">Video dışa aktarılıyor: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Video dışa aktarımları</string>
+  <string name="morphe_export_download_saved">Video %s konumuna dışa aktarıldı</string>
+  <string name="morphe_export_download_failed">Video dışa aktarılamadı</string>
+  <string name="morphe_export_download_canceled">Dışa aktarma iptal edildi</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Seslendirme çevirisi</string>
   <string name="morphe_vot_screen_summary">Cihaz üzerindeki metin-konuşma özelliğini kullanarak video altyazılarını oynatmayla senkronize bir şekilde yüksek sesle okuyun.</string>
@@ -591,6 +608,19 @@ API anahtarınız asla paylaşılmamalıdır. Ona erişimi olan herkes OpenRoute
   <string name="morphe_pip_button_overlay_title">Resim içinde resim düğmesini göster</string>
   <string name="morphe_pip_button_flyout_title">Resim içinde resim menüsünü göster</string>
   <string name="morphe_pip_button_flyout_name">Resim içinde resme geç</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Resim içinde resim işlemleri</string>
+  <string name="morphe_pip_actions_screen_summary">Resim içinde resimde gösterilen düğmeleri değiştirin</string>
+  <string name="morphe_pip_action_left_title">Sol düğme</string>
+  <string name="morphe_pip_action_center_title">Orta düğme</string>
+  <string name="morphe_pip_action_right_title">Sağ düğme</string>
+  <string name="morphe_pip_action_entry_default">Varsayılan</string>
+  <string name="morphe_pip_action_entry_previous">Önceki video</string>
+  <string name="morphe_pip_action_entry_next">Sonraki video</string>
+  <string name="morphe_pip_action_entry_rewind">10 saniye geri sar</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 saniye ileri sar</string>
+  <string name="morphe_pip_action_entry_play_pause">Oynat/duraklat</string>
+  <string name="morphe_pip_action_entry_background_playback">Arka planda oynatma</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Tümünü oynat düğmesini göster</string>
   <string name="morphe_play_all_button_summary">"Kanaldaki tüm videoların oynatma listesini oluşturmak için dokunun, geri almak için basılı tutun
@@ -1224,6 +1254,10 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_miniplayer_not_available_summary">YouTube tüm ek mini oynatıcıları kaldırdı. Daha fazla mini oynatıcı tiplerini geri getirmek için YouTube 21.28.208 veya daha eskisini yamalayın</string>
   <string name="morphe_miniplayer_type_title">Mini oynatıcı tipi</string>
   <string name="morphe_miniplayer_hide_title_title">Başlığı ve kanalı gizle</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Yukarı kaydırarak genişlet</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Küçültülmüş oynatıcıyı yukarı kaydırmak, küçültülmüş oynatıcıyı ekranın üst kısmına taşımak yerine oynatıcıyı genişletir</string>
+  <string name="morphe_miniplayer_docked_title">Sabitlenmiş küçültülmüş oynatıcı</string>
+  <string name="morphe_miniplayer_docked_summary">Küçültülmüş oynatıcıyı üzerlerinde yüzmek yerine navigasyon çubuğuna ve ekranın kenarlarına sabitler</string>
   <string name="morphe_miniplayer_type_entry_0">Devre dışı</string>
   <string name="morphe_miniplayer_type_entry_1">Varsayılan</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1266,6 +1300,8 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_splash_screen_style_entry_7">Morphe Işıltı 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Işıltı 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Işıltılı açılış ekranı bu cihaz tarafından desteklenmiyor</string>
+  <string name="morphe_splash_screen_duration_title">Başlangıç animasyonu süresi</string>
+  <string name="morphe_splash_screen_duration_summary">Işıma animasyonunun ne kadar süre oynayacağı. Atlamak için animasyona dokunun</string>
   <string name="morphe_theme_color_light_title">Açık tema arka plan</string>
   <string name="morphe_theme_color_light_entry_2">Beyaz</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Beyaz)</string>

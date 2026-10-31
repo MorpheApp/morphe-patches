@@ -79,7 +79,7 @@ internal object CurrentAudioVideoFormatToStringFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
-    strings = listOf(string("currentVideoFormat=", StringComparisonType.CONTAINS))
+    strings = listOf("currentVideoFormat=")
 )
 
 internal object FormatStreamModelToStringFingerprint : Fingerprint(

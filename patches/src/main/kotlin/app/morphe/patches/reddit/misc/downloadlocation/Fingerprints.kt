@@ -9,7 +9,6 @@ package app.morphe.patches.reddit.misc.downloadlocation
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
@@ -46,10 +45,7 @@ private object ImageDownloadParamsToStringFingerprint : Fingerprint(
     name = "toString",
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
-    strings = listOf(
-        string(", isGif=", StringComparisonType.CONTAINS),
-        string(", linkModel=", StringComparisonType.CONTAINS)
-    )
+    strings = listOf(", isGif=", ", linkModel=")
 )
 
 /**

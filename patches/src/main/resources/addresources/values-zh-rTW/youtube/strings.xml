@@ -516,8 +516,21 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">音訊</string>
   <string name="morphe_external_downloader_quick_options">所有選項</string>
   <string name="morphe_shorts_download_flyout_button_title">在 Shorts 選單中顯示下載</string>
+  <string name="morphe_shorts_download_flyout_button_summary">在 Shorts 播放器的選單中新增下載項目</string>
   <string name="morphe_shorts_download_flyout_title">下載</string>
   <string name="morphe_export_download_folder_title">匯出已儲存的影片</string>
+  <string name="morphe_export_download_folder_summary">"使用應用程式內下載彈出式選單，將應用程式內儲存的影片匯出到裝置儲存空間。點選即可更改匯出資料夾
+
+匯出資料夾：%s"</string>
+  <string name="morphe_export_download_folder_dialog_title">匯出資料夾</string>
+  <string name="morphe_export_download_folder_change">更改資料夾</string>
+  <string name="morphe_export_download_folder_changed">匯出資料夾已更改</string>
+  <string name="morphe_export_download_folder_reset">重設匯出資料夾</string>
+  <string name="morphe_export_download_flyout_title">匯出到裝置</string>
+  <string name="morphe_export_download_started">正在匯出影片</string>
+  <string name="morphe_export_download_progress">匯出影片進度： %d%%</string>
+  <string name="morphe_export_download_notification_channel">匯出影片</string>
+  <string name="morphe_export_download_saved">影片匯出進度 %s</string>
   <string name="morphe_export_download_failed">無法匯出影片</string>
   <string name="morphe_export_download_canceled">取消匯出</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
@@ -594,6 +607,19 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">顯示子母畫面按鈕</string>
   <string name="morphe_pip_button_flyout_title">顯示子母畫面選單</string>
   <string name="morphe_pip_button_flyout_name">切換至子母畫面</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">畫中畫操作</string>
+  <string name="morphe_pip_actions_screen_summary">更改畫中畫模式中顯示的按鈕</string>
+  <string name="morphe_pip_action_left_title">左側按鈕</string>
+  <string name="morphe_pip_action_center_title">中間按鈕</string>
+  <string name="morphe_pip_action_right_title">右側按鈕</string>
+  <string name="morphe_pip_action_entry_default">預設</string>
+  <string name="morphe_pip_action_entry_previous">上一部影片</string>
+  <string name="morphe_pip_action_entry_next">下一部影片</string>
+  <string name="morphe_pip_action_entry_rewind">返回10秒</string>
+  <string name="morphe_pip_action_entry_fast_forward">快轉10秒</string>
+  <string name="morphe_pip_action_entry_play_pause">播放/暫停</string>
+  <string name="morphe_pip_action_entry_background_playback">背景播放</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">顯示播放全部按鈕</string>
   <string name="morphe_play_all_button_summary">"點擊播放頻道中的所有影片，長按取消
@@ -1227,6 +1253,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube 移除了所有額外的縮小播放器。若要恢復更多縮小播放器類型，請修補 YouTube 21.28.208 或更早版本</string>
   <string name="morphe_miniplayer_type_title">迷你播放器類型</string>
   <string name="morphe_miniplayer_hide_title_title">隱藏標題與頻道</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">向上滑動展開</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">向上滑動小型播放器將展開播放器，而非將小型播放器移至螢幕頂端</string>
+  <string name="morphe_miniplayer_docked_title">停靠小型播放器</string>
+  <string name="morphe_miniplayer_docked_summary">將小型播放器停靠在導覽列和螢幕兩側，而非使其懸浮在上方</string>
   <string name="morphe_miniplayer_type_entry_0">停用</string>
   <string name="morphe_miniplayer_type_entry_1">預設</string>
   <string name="morphe_miniplayer_type_entry_2">極簡</string>
@@ -1269,6 +1299,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">此裝置不支援發光啟動畫面</string>
+  <string name="morphe_splash_screen_duration_title">啟動動畫時長</string>
+  <string name="morphe_splash_screen_duration_summary">發光動畫的播放時間。點擊動畫即可跳過</string>
   <string name="morphe_theme_color_light_title">淺色主題背景</string>
   <string name="morphe_theme_color_light_entry_2">白色</string>
   <string name="morphe_theme_color_light_entry_3">動態顏色（白色）</string>

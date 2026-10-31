@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">הפעל ספריה / מסנן בתפריט התחתון שלך</string>
   <string name="morphe_hide_account_menu_filter_strings_title">הפעל ספריה / מסנן בתפריט התחתון שלך</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">הזן את שמות התפריטים התחתונים של הספריה שעל פיהם תסנן, מופרדים בשורות חדשות</string>
+  <string name="morphe_hide_account_menu_downloads_title">הסתרת הורדות</string>
   <string name="morphe_hide_album_cards_title">הסתר כרטיסי אלבום</string>
   <string name="morphe_hide_album_cards_summary">מסתיר את כרטיסי האלבומים מתחת לתיאור האמן</string>
   <string name="morphe_hide_artist_cards_title">הסתר כרטיסי אמן</string>
@@ -515,7 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">שמע</string>
   <string name="morphe_external_downloader_quick_options">כל האפשרויות</string>
   <string name="morphe_shorts_download_flyout_button_title">הצג הורדה בתפריט Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">מוסיף פריט הורדה לתפריט של נגן ה-Shorts</string>
   <string name="morphe_shorts_download_flyout_title">הורד</string>
+  <string name="morphe_export_download_folder_title">ייצוא סרטונים שמורים</string>
+  <string name="morphe_export_download_folder_summary">"ייצוא סרטונים שנשמרו באפליקציה לאחסון במכשיר באמצעות תפריט ההורדות באפליקציה. הקישו לשינוי תיקיית הייצוא
+
+תיקיית ייצוא: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">תיקיית ייצוא</string>
+  <string name="morphe_export_download_folder_change">שינוי תיקייה</string>
+  <string name="morphe_export_download_folder_changed">תיקיית הייצוא שונתה</string>
+  <string name="morphe_export_download_folder_reset">תיקיית הייצוא אופסה</string>
+  <string name="morphe_export_download_flyout_title">ייצוא למכשיר</string>
+  <string name="morphe_export_download_started">מייצא סרטון</string>
+  <string name="morphe_export_download_progress">מייצא סרטון: %d%%</string>
+  <string name="morphe_export_download_notification_channel">ייצוא סרטונים</string>
+  <string name="morphe_export_download_saved">הסרטון יוצא ל-%s</string>
+  <string name="morphe_export_download_failed">לא ניתן היה לייצא את הסרטון</string>
+  <string name="morphe_export_download_canceled">הייצוא בוטל</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">תרגום דיבוב</string>
   <string name="morphe_vot_screen_summary">קריאת כתוביות הסרטון בקול רם באמצעות טקסט לדיבור מקומי, בסנכרון עם ההפעלה</string>
@@ -590,6 +607,19 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">הצג כפתור תמונה בתוך תמונה</string>
   <string name="morphe_pip_button_flyout_title">הצג תפריט תמונה בתוך תמונה</string>
   <string name="morphe_pip_button_flyout_name">עבור לתמונה בתוך תמונה</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">פעולות תמונה בתוך תמונה</string>
+  <string name="morphe_pip_actions_screen_summary">שינוי הכפתורים המוצגים בתמונה בתוך תמונה</string>
+  <string name="morphe_pip_action_left_title">כפתור שמאלי</string>
+  <string name="morphe_pip_action_center_title">כפתור מרכזי</string>
+  <string name="morphe_pip_action_right_title">כפתור ימני</string>
+  <string name="morphe_pip_action_entry_default">ברירת מחדל</string>
+  <string name="morphe_pip_action_entry_previous">סרטון קודם</string>
+  <string name="morphe_pip_action_entry_next">סרטון הבא</string>
+  <string name="morphe_pip_action_entry_rewind">החזרה 10 שניות</string>
+  <string name="morphe_pip_action_entry_fast_forward">הקדמה 10 שניות</string>
+  <string name="morphe_pip_action_entry_play_pause">נגן/השהה</string>
+  <string name="morphe_pip_action_entry_background_playback">ניגון ברקע</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">זוכר את רמת הבהירות בעת כניסה או יציאה ממצב מסך מלא</string>
   <string name="morphe_play_all_button_summary">"הקש כדי ליצור רשימת השמעה של כל הסרטונים מהערוץ, הקש והחזק כדי לבטל
@@ -1223,6 +1253,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube הסירה את כל נגני המיני הנוספים. כדי לשחזר סוגי נגני מיני נוספים, יש להפעיל פאץ\' לגרסה 21.28.208 של YouTube או גרסה ישנה יותר</string>
   <string name="morphe_miniplayer_type_title">סוג מיני-נגן</string>
   <string name="morphe_miniplayer_hide_title_title">הסתר כותרת וערוץ</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">הרחבה באמצעות החלקה למעלה</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">החלקה של הנגן הממוזער למעלה מרחיבה את הנגן, במקום להזיז את הנגן הממוזער לחלק העליון של המסך</string>
+  <string name="morphe_miniplayer_docked_title">נגן ממוזער מעוגן</string>
+  <string name="morphe_miniplayer_docked_summary">מעגן את הנגן הממוזער לסרגל הניווט ולדפנות המסך, במקום שירחף מעליהם</string>
   <string name="morphe_miniplayer_type_entry_0">מושבת</string>
   <string name="morphe_miniplayer_type_entry_1">ברירת מחדל</string>
   <string name="morphe_miniplayer_type_entry_2">מינימלי</string>
@@ -1265,6 +1299,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">מסך פתיחה עם אפקט Glow אינו נתמך במכשיר זה</string>
+  <string name="morphe_splash_screen_duration_title">משך אנימציית ההפעלה</string>
+  <string name="morphe_splash_screen_duration_summary">משך הזמן שבו אנימציית הזוהר פועלת. הקישו על האנימציה כדי לדלג עליה</string>
   <string name="morphe_theme_color_light_title">רקע של ערכת נושא בהירה</string>
   <string name="morphe_theme_color_light_entry_2">לבן</string>
   <string name="morphe_theme_color_light_entry_3">Material You (לבן)</string>

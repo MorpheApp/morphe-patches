@@ -16,6 +16,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.booleanOption
@@ -44,6 +45,7 @@ import app.morphe.patches.youtube.misc.fix.padding.BrowseListBottomPaddingFinger
 import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -53,6 +55,7 @@ import app.morphe.patches.youtube.misc.toolbar.hookToolBar
 import app.morphe.patches.youtube.misc.toolbar.toolBarHookPatch
 import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.shared.ToolBarButtonFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.containsLiteralInstruction
 import app.morphe.util.findElementByAttributeValueOrThrow
@@ -69,6 +72,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -448,10 +452,10 @@ val navigationBarPatch = bytecodePatch(
         }
 
         if (is_20_31_or_greater) {
-            listOf(
-                AutoHideNavigationBarOnFeedScrollingFingerprint,
-                AutoHideNavigationBarOnDismissMiniplayerFingerprint,
-            ).forEach {
+            buildList {
+                add(AutoHideNavigationBarOnFeedScrollingFingerprint)
+                if (is_21_23_or_greater) add(AutoHideNavigationBarOnDismissMiniplayerFingerprint)
+            }.forEach {
                 it.method.addInstructionsWithLabels(
                     0,
                     """
@@ -771,6 +775,37 @@ val navigationBarPatch = bytecodePatch(
                 preferences = toolbarPreferences
             )
         )
+
+        // Some pages have their own toolbar, such as the You tab, which the swap of the create button
+        // does not change. The toolbar buttons of all pages are created with their renderer.
+        ToolBarButtonFingerprint.let {
+            val instructions = it.method.instructions.toList()
+            val setShowAsActionIndex = instructions.indexOfFirst { instruction ->
+                instruction.getReference<MethodReference>()?.name == "setShowAsAction"
+            }
+            val rendererType = instructions.drop(setShowAsActionIndex).first { instruction ->
+                instruction.opcode == Opcode.IGET_OBJECT
+            }.getReference<FieldReference>()!!.type
+
+            it.classDef.methods.first { method -> MethodUtil.isConstructor(method) }.apply {
+                val rendererRegister = parameterTypes.indexOfFirst { type -> type.toString() == rendererType } + 1
+                // The ids of the pages whose new content count the button shows, such as of the notifications.
+                val countIdsRegister = rendererRegister + 1
+                check(parameterTypes[countIdsRegister - 1].toString() == "Ljava/util/List;") {
+                    "Unknown parameters of the toolbar button"
+                }
+                addInstructions(
+                    0,
+                    """
+                        invoke-static/range { p$rendererRegister .. p$rendererRegister }, $EXTENSION_CLASS->swapToolbarNotificationButton(Lcom/google/protobuf/MessageLite;)Lcom/google/protobuf/MessageLite;
+                        move-result-object p$rendererRegister
+                        check-cast p$rendererRegister, $rendererType
+                        invoke-static/range { p$rendererRegister .. p$countIdsRegister }, $EXTENSION_CLASS->getToolbarButtonCountIds(Lcom/google/protobuf/MessageLite;Ljava/util/List;)Ljava/util/List;
+                        move-result-object p$countIdsRegister
+                    """
+                )
+            }
+        }
 
         hookToolBar("$EXTENSION_CLASS->hideCreateButton")
         hookToolBar("$EXTENSION_CLASS->hideNotificationButton")

@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Միացնել Գրադարան / Դուք ներքևի մենյուի զտիչը</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Գրադարան / Դուք ներքևի մենյուի զտիչ</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Մուտքագրեք Գրադարան / Դուք ներքևի մենյուի անվանումները զտելու համար՝ բաժանելով նոր տողերով</string>
+  <string name="morphe_hide_account_menu_downloads_title">Թաքցնել ներբեռնումները</string>
   <string name="morphe_hide_album_cards_title">Թաքցնել ալբոմների քարտերը</string>
   <string name="morphe_hide_album_cards_summary">Թաքցնում է ալբոմի քարտերը արտիստի նկարագրության տակ</string>
   <string name="morphe_hide_artist_cards_title">Թաքցնել արտիստների քարտերը</string>
@@ -515,7 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">Աուդիո</string>
   <string name="morphe_external_downloader_quick_options">Բոլոր տարբերակները</string>
   <string name="morphe_shorts_download_flyout_button_title">Ցուցադրել ներբեռնումը Shorts-երի մենյուում</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Ավելացնում է ներբեռնման տարբերակը Shorts-ի նվագարկիչի մենյուին</string>
   <string name="morphe_shorts_download_flyout_title">Ներբեռնել</string>
+  <string name="morphe_export_download_folder_title">Արտահանել պահպանված տեսանյութերը</string>
+  <string name="morphe_export_download_folder_summary">"Արտահանեք հավելվածում պահպանված տեսանյութերը ձեր սարքի հիշողություն՝ օգտագործելով ներբեռնումների թռուցակ-մենյուն: Հպրեք՝ արտահանման թղթապանակը փոխելու համար
+
+Արտահանման թղթապանակ՝ %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Արտահանման թղթապանակ</string>
+  <string name="morphe_export_download_folder_change">Փոխել թղթապանակը</string>
+  <string name="morphe_export_download_folder_changed">Արտահանման թղթապանակը փոփոխված է</string>
+  <string name="morphe_export_download_folder_reset">Արտահանման թղթապանակը վերակայարված է</string>
+  <string name="morphe_export_download_flyout_title">Արտահանել սարքի մեջ</string>
+  <string name="morphe_export_download_started">Տեսանյութն արտահանվում է</string>
+  <string name="morphe_export_download_progress">Տեսանյութի արտահանում՝ %d%%</string>
+  <string name="morphe_export_download_notification_channel">Տեսանյութերի արտահանում</string>
+  <string name="morphe_export_download_saved">Տեսանյութն արտահանվեց դեպի %s</string>
+  <string name="morphe_export_download_failed">Չհաջողվեց արտահանել տեսանյութը</string>
+  <string name="morphe_export_download_canceled">Արտահանումը չեղարկվեց</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ձայնային թարգմանություն</string>
   <string name="morphe_vot_screen_summary">Բարձրաձայն կարդալ տեսանյութի ենթագրերը՝ օգտագործելով սարքի տեքստ-to-speech-ը, համաժամանակեցնելով ընկացման հետ</string>
@@ -590,6 +607,19 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">Ցուցադրել «Պատկերը պատկերի մեջ» կոճակը</string>
   <string name="morphe_pip_button_flyout_title">Ցուցադրել «Պատկերը պատկերի մեջ» մենյուն</string>
   <string name="morphe_pip_button_flyout_name">Անցնել «Պատկերը պատկերի մեջ» ռեժիմին</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">«Նկարը նկարի մեջ» գործողությունները</string>
+  <string name="morphe_pip_actions_screen_summary">Փոխեք «նկարը նկարի մեջ» ռեժիմում ցուցադրվող կոճ apocalypse-ները</string>
+  <string name="morphe_pip_action_left_title">Ձախ կոճակ</string>
+  <string name="morphe_pip_action_center_title">Կենտրոնական կոճակ</string>
+  <string name="morphe_pip_action_right_title">Աջ կոճակ</string>
+  <string name="morphe_pip_action_entry_default">Լռում</string>
+  <string name="morphe_pip_action_entry_previous">Նախորդ տեսանյութ</string>
+  <string name="morphe_pip_action_entry_next">Հաջորդ տեսանյութ</string>
+  <string name="morphe_pip_action_entry_rewind">Հետադարձ 10 վայրկյան</string>
+  <string name="morphe_pip_action_entry_fast_forward">Առաջդարձ 10 վայրկյան</string>
+  <string name="morphe_pip_action_entry_play_pause">Նվագարկել/դադարեցնել</string>
+  <string name="morphe_pip_action_entry_background_playback">Վերնագրի հետ playback</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Ցուցադրել «Նվագարկել բոլորը» կոճակը</string>
   <string name="morphe_play_all_button_summary">"Հպեք՝ ալիքի բոլոր տեսանյութերի վերցուցակ ստեղծելու համար, սեղմեք և պահեք՝ չեղարկելու համար
@@ -1223,6 +1253,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube-ը հեռացրել է բոլոր լրացուցիչ մինիպլեյերները: Ավելի շատ մինիպլեյերի տիպեր վերականգնելու համար փաթեթավորեք (patch) YouTube 21.28.208 կամ ավելի հին տարբերակը</string>
   <string name="morphe_miniplayer_type_title">Մինի-ընտռայցի տիպը</string>
   <string name="morphe_miniplayer_hide_title_title">Թաքցնել վերնագիրը և ալիքը</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Ընդլայնել վերև սրոլով</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Մինի-նվագարկիչը վերև սրոլելը ընդլայնում է նվագարկիչը, փոխարine տեղափոխելու մինի-նվագարկիչը էկրանի վերև</string>
+  <string name="morphe_miniplayer_docked_title">Ֆիքսված մինի-նվագարկիչ</string>
+  <string name="morphe_miniplayer_docked_summary">Կցում է մինի-նվագարկիչը նավիգացիոն վահանակին և էկրանի կողմերին, փոխարine դրանց վրա լողալու</string>
   <string name="morphe_miniplayer_type_entry_0">Անջատված</string>
   <string name="morphe_miniplayer_type_entry_1">Լռելյայն</string>
   <string name="morphe_miniplayer_type_entry_2">Մինիմալ</string>
@@ -1265,6 +1299,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Փայլուն սկսնական էկրանը չի աջակցվում այս սարքի կողմից</string>
+  <string name="morphe_splash_screen_duration_title">Մուտքի անիմացիայի տևողությունը</string>
+  <string name="morphe_splash_screen_duration_summary">Թե որքան ժամանակ է նվագում փայլի անիմացիան: Հպրեք անիմացիային՝ այն բաց թողնելու համար</string>
   <string name="morphe_theme_color_light_title">Լուսավոր թեմայի ֆոն</string>
   <string name="morphe_theme_color_light_entry_2">Սպիտակ</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Սպիտակ)</string>

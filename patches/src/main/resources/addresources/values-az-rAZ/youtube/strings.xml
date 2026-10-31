@@ -61,6 +61,7 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_account_menu_title">Kitabxananı / Aşağı menyu filtrinizi aktivləşdirin</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Kitabxana / Aşağı menyu filtriniz</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Filtrləmək üçün Kitabxana / Siz alt menyu adlarını yeni sətirlərlə ayrılmış şəkildə qeyd et</string>
+  <string name="morphe_hide_account_menu_downloads_title">Yükləmələri Gizlət</string>
   <string name="morphe_hide_album_cards_title">Albom kartlarını gizlət</string>
   <string name="morphe_hide_album_cards_summary">Albom kartlarını sənətkar təsviri altında gizlədir</string>
   <string name="morphe_hide_artist_cards_title">Sənətkar kartlarını gizlət</string>
@@ -518,7 +519,7 @@ Məhdudiyyətlər:
   <string name="morphe_shorts_download_flyout_button_summary">Shorts oynadıcının menyusuna yükləmə elementi əlavə edir</string>
   <string name="morphe_shorts_download_flyout_title">Yüklə</string>
   <string name="morphe_export_download_folder_title">Saxlanılmış videoları ixrac et</string>
-  <string name="morphe_export_download_folder_summary">"Tətbiqdə saxlanılan videoları cihaz yaddaşınıza ixrac edin. İxrac qovluğunu dəyişdirmək üçün toxunun
+  <string name="morphe_export_download_folder_summary">"Tətbiqdaxili yükləmələr açılan menyusunu istifadə etməklə tətbiqdə saxlanılan videoları cihaz yaddaşınıza ixrac edin. İxrac qovluğunu dəyişdirmək üçün toxunun
 
 İxrac qovluğu: %s"</string>
   <string name="morphe_export_download_folder_dialog_title">İxrac qovluğu</string>
@@ -606,6 +607,19 @@ API açarınız heç vaxt paylaşılmamalıdır. Buna girişi olan hər bir kəs
   <string name="morphe_pip_button_overlay_title">Şəkil içində şəkil düyməsini göstər</string>
   <string name="morphe_pip_button_flyout_title">Şəkil içində şəkil menyusunu göstər</string>
   <string name="morphe_pip_button_flyout_name">Şəkil İçində Şəkilə Keç</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Şəkil içində şəkil fəaliyyətləri</string>
+  <string name="morphe_pip_actions_screen_summary">Şəkil içində şəkildə göstərilən düymələri dəyişdir</string>
+  <string name="morphe_pip_action_left_title">Sol düymə</string>
+  <string name="morphe_pip_action_center_title">Mərkəzi düymə</string>
+  <string name="morphe_pip_action_right_title">Sağ düymə</string>
+  <string name="morphe_pip_action_entry_default">İlkin</string>
+  <string name="morphe_pip_action_entry_previous">Əvvəlki video</string>
+  <string name="morphe_pip_action_entry_next">Növbəti video</string>
+  <string name="morphe_pip_action_entry_rewind">10 saniyə geriyə</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 saniyə sürətlə irəliyə</string>
+  <string name="morphe_pip_action_entry_play_pause">Oynat/dayandır</string>
+  <string name="morphe_pip_action_entry_background_playback">Fon oynatma</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Hamısını oynat düyməsini göstər</string>
   <string name="morphe_play_all_button_summary">"Kanaldan bütün videoların pleylistini yaratmaq üçün toxun, geri almaq üçün toxun və saxla
@@ -1281,6 +1295,8 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_splash_screen_style_entry_7">Morphe Parıltı 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Parıltı 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Parlaq effektli ekran bu cihaz tərəfindən dəstəklənmir</string>
+  <string name="morphe_splash_screen_duration_title">Başlatma animasiya müddəti</string>
+  <string name="morphe_splash_screen_duration_summary">Parıltılı animasiya nə qədər davam edir. Onu ötürmək üçün animasiyaya toxun</string>
   <string name="morphe_theme_color_light_title">İşıqlı kolorit fonu</string>
   <string name="morphe_theme_color_light_entry_2">Ağ</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Ağ)</string>

@@ -304,7 +304,7 @@ public final class FlyoutUtils {
      * The icon names of the Save to playlist item, by preference.
      * The item uses the icon of a playlist or of a bookmark, depending on the app version.
      */
-    public static final String[] SAVE_TO_PLAYLIST_ICON_NAMES = {"PLAYLIST_ADD", "ADD_TO_PLAYLIST", "BOOKMARK", "SAVE"};
+    private static final String[] SAVE_TO_PLAYLIST_ICON_NAMES = {"PLAYLIST_ADD", "ADD_TO_PLAYLIST", "BOOKMARK", "SAVE"};
     private static final Pattern APP_SAVE_BUTTON_PATTERN =
             Pattern.compile("WATCH_LATER|" + String.join("|", SAVE_TO_PLAYLIST_ICON_NAMES));
     private static final List<byte[]> SHORTS_VIDEO_ELEMENT_BYTES = List.of(
@@ -462,7 +462,7 @@ public final class FlyoutUtils {
         if (dialog == null) {
             return;
         }
-        FeedVideoActionsPatch.onBottomSheetFlyout(dialog);
+        FeedVideoActionsPatch.onFlyoutCreated();
         flyoutDialog = dialog;
 
         Window window = dialog.getWindow();
@@ -478,7 +478,7 @@ public final class FlyoutUtils {
         if (popupWindow == null) {
             return;
         }
-        FeedVideoActionsPatch.onPopupWindowFlyout(popupWindow);
+        FeedVideoActionsPatch.onFlyoutCreated();
         flyoutPopupWindow = popupWindow;
 
         // The app can set the content view after this call, in the same method that shows the popup.
@@ -740,8 +740,6 @@ public final class FlyoutUtils {
 
             copyListItemTypeface(itemList);
             AddToQueuePatch.onListBound(itemList);
-            FeedVideoActionsPatch.onFlyoutListBound(itemList);
-
         } catch (Exception ex) {
             Logger.printException(() -> "onFlyoutListBound failure", ex);
         }

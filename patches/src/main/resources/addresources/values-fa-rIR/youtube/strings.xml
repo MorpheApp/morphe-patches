@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">فعال‌کردن فیلتر منوی پایین کتابخانه / شما</string>
   <string name="morphe_hide_account_menu_filter_strings_title">فیلتر منوی پایین کتابخانه / شما</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">نام‌های منوی پایین کتابخانه / شما را که باید بر اساس آن‌ها فیلتر شود، هرکدام در یک خط وارد کنید</string>
+  <string name="morphe_hide_account_menu_downloads_title">پنهان‌کردن دانلودها</string>
   <string name="morphe_hide_album_cards_title">پنهان‌کردن کارت‌های آلبوم</string>
   <string name="morphe_hide_album_cards_summary">کارت‌های آلبوم زیر توضیحات هنرمند را پنهان می‌کند</string>
   <string name="morphe_hide_artist_cards_title">پنهان‌کردن کارت‌های هنرمند</string>
@@ -515,7 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">صدا</string>
   <string name="morphe_external_downloader_quick_options">همه گزینه‌ها</string>
   <string name="morphe_shorts_download_flyout_button_title">نمایش دانلود در منوی Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">یک مورد دانلود را به منوی پخش‌کننده Shorts اضافه می‌کند</string>
   <string name="morphe_shorts_download_flyout_title">دانلود</string>
+  <string name="morphe_export_download_folder_title">صادرکردن ویدیوهای ذخیره‌شده</string>
+  <string name="morphe_export_download_folder_summary">"ویدیوهای ذخیره‌شده در برنامه را با استفاده از منوی شناور دانلودها به حافظه دستگاه خود صادر کنید. برای تغییر پوشهٔ صادرکردن ضربه بزنید
+
+پوشهٔ صادرکردن: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">پوشهٔ صادرکردن</string>
+  <string name="morphe_export_download_folder_change">تغییر پوشه</string>
+  <string name="morphe_export_download_folder_changed">پوشهٔ صادرکردن تغییر یافت</string>
+  <string name="morphe_export_download_folder_reset">پوشهٔ صادرکردن بازنشانی شد</string>
+  <string name="morphe_export_download_flyout_title">صادرکردن به دستگاه</string>
+  <string name="morphe_export_download_started">در حال خروجی گرفتن از ویدیو</string>
+  <string name="morphe_export_download_progress">در حال صادرکردن ویدیو: %d%%</string>
+  <string name="morphe_export_download_notification_channel">صادر کردن ویدیوها</string>
+  <string name="morphe_export_download_saved">ویدیو در %s صادر شد</string>
+  <string name="morphe_export_download_failed">صادر کردن ویدیو امکان‌پذیر نبود</string>
+  <string name="morphe_export_download_canceled">صادرکردن لغو شد</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">ترجمهٔ صوتی</string>
   <string name="morphe_vot_screen_summary">زیرنویس‌های ویدئو را با تبدیل متن به گفتار روی دستگاه و همگام با پخش، بلند می‌خواند</string>
@@ -590,6 +607,19 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">نمایش دکمه تصویر در تصویر</string>
   <string name="morphe_pip_button_flyout_title">نمایش منوی تصویر در تصویر</string>
   <string name="morphe_pip_button_flyout_name">تغییر به تصویر در تصویر</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">عملیات تصویر-در-تصویر</string>
+  <string name="morphe_pip_actions_screen_summary">تغییر دکمه‌های نمایش‌داده‌شده در حالت تصویر-در-تصویر</string>
+  <string name="morphe_pip_action_left_title">دکمهٔ چپ</string>
+  <string name="morphe_pip_action_center_title">دکمهٔ وسط</string>
+  <string name="morphe_pip_action_right_title">دکمهٔ راست</string>
+  <string name="morphe_pip_action_entry_default">پیش‌فرض</string>
+  <string name="morphe_pip_action_entry_previous">ویدیوی قبلی</string>
+  <string name="morphe_pip_action_entry_next">ویدیوی بعدی</string>
+  <string name="morphe_pip_action_entry_rewind">عقب‌گرد ۱۰ ثانیه</string>
+  <string name="morphe_pip_action_entry_fast_forward">جلو رفتن ۱۰ ثانیه</string>
+  <string name="morphe_pip_action_entry_play_pause">پخش/مکث</string>
+  <string name="morphe_pip_action_entry_background_playback">پخش در پس‌زمینه</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">نمایش دکمهٔ پخش همه</string>
   <string name="morphe_play_all_button_summary">"برای ساخت فهرست پخش همهٔ ویدئوهای کانال ضربه بزنید؛ برای لغو، لمس طولانی کنید
@@ -1222,6 +1252,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube همهٔ مینی‌پخش‌کننده‌های اضافی را حذف کرده است. برای بازیابی انواع بیشتر مینی‌پخش‌کننده، YouTube نسخهٔ 21.28.208 یا قدیمی‌تر را پچ کنید</string>
   <string name="morphe_miniplayer_type_title">نوع مینی‌پخش‌کننده</string>
   <string name="morphe_miniplayer_hide_title_title">پنهان کردن عنوان و کانال</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">بسط دادن با کشیدن به بالا</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">کشیدن پخش‌کننده کوچک به بالا، به جای انتقال آن به بالای صفحه، پخش‌کننده را می‌بسطاند</string>
+  <string name="morphe_miniplayer_docked_title">پخش‌کننده کوچک متصل</string>
+  <string name="morphe_miniplayer_docked_summary">پخش‌کننده کوچک را به نوار پیمایش و کناره‌های صفحه متصل می‌کند، به جای اینکه روی آن‌ها شناور باشد</string>
   <string name="morphe_miniplayer_type_entry_0">غیرفعال</string>
   <string name="morphe_miniplayer_type_entry_1">پیش‌فرض</string>
   <string name="morphe_miniplayer_type_entry_2">حداقلی</string>
@@ -1264,6 +1298,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">صفحه شروع Glow توسط این دستگاه پشتیبانی نمی‌شود</string>
+  <string name="morphe_splash_screen_duration_title">مدت زمان انیمیشن شروع</string>
+  <string name="morphe_splash_screen_duration_summary">مدت زمانی که انیمیشن درخشش پخش می‌شود. برای رد کردن، روی انیمیشن ضربه بزنید</string>
   <string name="morphe_theme_color_light_title">پس‌زمینهٔ طرح روشن</string>
   <string name="morphe_theme_color_light_entry_2">سفید</string>
   <string name="morphe_theme_color_light_entry_3">Material You (سفید)</string>

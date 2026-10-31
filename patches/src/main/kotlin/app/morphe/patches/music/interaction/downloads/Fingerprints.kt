@@ -8,7 +8,6 @@
 package app.morphe.patches.music.interaction.downloads
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
@@ -56,7 +55,7 @@ internal object OfflineVideoEndpointFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "Ljava/util/Map;"),
-    strings = listOf(string("Object is not an offlineable video: ", StringComparisonType.STARTS_WITH)),
+    strings = listOf("Object is not an offlineable video: %s"),
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_STATIC,

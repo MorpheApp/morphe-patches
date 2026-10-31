@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Увімкнути фільтр нижнього меню \"Бібліотека\" / \"Ви\"</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Фільтр нижнього меню \"Бібліотека\" / \"Ви\"</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Введіть назви елементів нижнього меню \"Бібліотека\" / \"Ви\", які потрібно приховати, кожен з нового рядка</string>
+  <string name="morphe_hide_account_menu_downloads_title">Приховати «Завантаження»</string>
   <string name="morphe_hide_album_cards_title">Приховати картки альбому</string>
   <string name="morphe_hide_album_cards_summary">Приховує картки альбомів під описом виконавця</string>
   <string name="morphe_hide_artist_cards_title">Приховати картки виконавця</string>
@@ -515,7 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">Аудіо</string>
   <string name="morphe_external_downloader_quick_options">Усі параметри</string>
   <string name="morphe_shorts_download_flyout_button_title">Показувати \"Завантаження\" в меню Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Додає пункт завантаження до меню плеєра Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Завантажити</string>
+  <string name="morphe_export_download_folder_title">Експортувати збережені відео</string>
+  <string name="morphe_export_download_folder_summary">"Експортуйте збережені в додатку відео у сховище вашого пристрою за допомогою випадаючого меню завантажень у додатку. Натисніть, щоб змінити папку експорту
+
+Папка експорту: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Папка експорту</string>
+  <string name="morphe_export_download_folder_change">Змінити папку</string>
+  <string name="morphe_export_download_folder_changed">Папку експорту змінено</string>
+  <string name="morphe_export_download_folder_reset">Папку експорту скинуто</string>
+  <string name="morphe_export_download_flyout_title">Експортувати на пристрій</string>
+  <string name="morphe_export_download_started">Експортування відео</string>
+  <string name="morphe_export_download_progress">Експортування відео: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Експорт відео</string>
+  <string name="morphe_export_download_saved">Відео експортовано до %s</string>
+  <string name="morphe_export_download_failed">Не вдалося експортувати відео</string>
+  <string name="morphe_export_download_canceled">Експорт скасовано</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Голосовий переклад</string>
   <string name="morphe_vot_screen_summary">Зачитує субтитри відео вголос за допомогою локального синтезу мовлення, синхронізованого з відтворенням</string>
@@ -590,6 +607,19 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">Показувати кнопку «Картинка в картинці»</string>
   <string name="morphe_pip_button_flyout_title">Показувати меню «Картинка в картинці»</string>
   <string name="morphe_pip_button_flyout_name">Перейти в режим «Картинка в картинці»</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Дії в режимі «Картинка в картинці»</string>
+  <string name="morphe_pip_actions_screen_summary">Змінити кнопки, що відображаються в режимі «Картинка в картинці»</string>
+  <string name="morphe_pip_action_left_title">Ліва кнопка</string>
+  <string name="morphe_pip_action_center_title">Центральна кнопка</string>
+  <string name="morphe_pip_action_right_title">Права кнопка</string>
+  <string name="morphe_pip_action_entry_default">Типові</string>
+  <string name="morphe_pip_action_entry_previous">Попереднє відео</string>
+  <string name="morphe_pip_action_entry_next">Наступне відео</string>
+  <string name="morphe_pip_action_entry_rewind">Перемотати на 10 секунд назад</string>
+  <string name="morphe_pip_action_entry_fast_forward">Перемотати на 10 секунд вперед</string>
+  <string name="morphe_pip_action_entry_play_pause">Відтворити/призупинити</string>
+  <string name="morphe_pip_action_entry_background_playback">Відтворення у фоновому режимі</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Показати кнопку \"Відтворити все\"</string>
   <string name="morphe_play_all_button_summary">"Натисніть, щоб створити список відтворення з усіх відео каналу, утримуйте, щоб скасувати
@@ -1222,6 +1252,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube прибрав усі додаткові мініплеєри. Щоб відновити більше типів мініплеєрів, пропатчте YouTube 21.28.208 або старіший</string>
   <string name="morphe_miniplayer_type_title">Тип мініплеєра</string>
   <string name="morphe_miniplayer_hide_title_title">Приховати назву та канал</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Розгорнути свайпом угору</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Свайп мініплеєра вгору розгортає плеєр замість того, щоб перемістити мініплеєр до верхньої частини екрана</string>
+  <string name="morphe_miniplayer_docked_title">Прикріплений мініплеєр</string>
+  <string name="morphe_miniplayer_docked_summary">Прикріпляє мініплеєр до навігаційної панелі та країв екрана замість того, щоб він плавав над ними</string>
   <string name="morphe_miniplayer_type_entry_0">Вимкнено</string>
   <string name="morphe_miniplayer_type_entry_1">Стандартний</string>
   <string name="morphe_miniplayer_type_entry_2">Мінімальний</string>
@@ -1264,6 +1298,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe сяйво 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe сяйво 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Заставка \"Сяйво\" не підтримується цим пристроєм</string>
+  <string name="morphe_splash_screen_duration_title">Тривалість анімації запуску</string>
+  <string name="morphe_splash_screen_duration_summary">Як довго триває анімація світіння. Натисніть на анімацію, щоб пропустити її</string>
   <string name="morphe_theme_color_light_title">Фон світлої теми</string>
   <string name="morphe_theme_color_light_entry_2">Білий</string>
   <string name="morphe_theme_color_light_entry_3">Material You (білий)</string>

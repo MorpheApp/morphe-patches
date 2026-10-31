@@ -25,10 +25,8 @@ import android.text.TextUtils;
 import android.text.style.CharacterStyle;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.ImageSpan;
 import android.text.style.ReplacementSpan;
 import android.util.Pair;
-import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
@@ -39,14 +37,10 @@ import androidx.annotation.Nullable;
 import com.facebook.litho.ComponentHost;
 import com.facebook.litho.TextContent;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -104,10 +98,6 @@ public final class PostTranslatePatch {
     private static final int MAX_METADATA_LENGTH = 30;
     private static final int MAX_TEXTS = 3000;
     private static final int MAX_TRANSLATIONS = 100;
-    /** Depth of the fields of a host that are searched for its text drawables. */
-    private static final int MAX_FIELD_DEPTH = 5;
-    /** Limits the search of the text drawables of a host, which can reference many objects. */
-    private static final int MAX_SEARCHED_OBJECTS = 2000;
     /** Texts that overlap the first text by more than this are in the header of the post. */
     private static final int HEADER_TOLERANCE_DP = 2;
 
@@ -134,10 +124,7 @@ public final class PostTranslatePatch {
     private static final Map<String, String> originals = new HashMap<>();
 
     /** Drawables that show a translation -> what they showed before. Used only on the main thread. */
-    private static final Map<Drawable, TranslatedDrawable> translatedDrawables = new WeakHashMap<>();
-
-    /** Fields of the text drawable classes, found once for each class. Used only on the main thread. */
-    private static final Map<Class<?>, DrawableFields> drawableFields = new HashMap<>();
+    private static final Map<TextDrawableInterface, TranslatedDrawable> translatedDrawables = new WeakHashMap<>();
 
     /** Normalized original texts that are being translated. Used only on the main thread. */
     private static final Set<String> pendingTranslations = Collections.newSetFromMap(new HashMap<>());
@@ -148,7 +135,7 @@ public final class PostTranslatePatch {
      * @param drawable The drawable that shows the text, or null if it is not known.
      * @param bounds   The bounds of the text in the root host, or null if they are not known.
      */
-    private record ShownText(String text, @Nullable Drawable drawable, @Nullable Rect bounds) {
+    private record ShownText(String text, @Nullable TextDrawableInterface drawable, @Nullable Rect bounds) {
     }
 
     /**
@@ -162,18 +149,35 @@ public final class PostTranslatePatch {
     }
 
     /**
-     * Fields of a text drawable, found by their type as their names are obfuscated.
+     * What a drawable that shows a translation showed before.
      */
-    private record DrawableFields(Field layout, Field text, List<Field> spans) {
+    private record TranslatedDrawable(Layout originalLayout, CharSequence originalText,
+                                      Layout translatedLayout, String key) {
     }
 
     /**
-     * What a drawable that shows a translation showed before.
-     *
-     * @param originalSpans Span field -> the spans of the original text.
+     * Interface added to the Litho component host class during patching.
      */
-    private record TranslatedDrawable(Layout originalLayout, CharSequence originalText,
-                                      Map<Field, Object> originalSpans, Layout translatedLayout, String key) {
+    public interface ComponentHostInterface {
+        /**
+         * @return The contents mounted in the host, such as its drawables and views.
+         */
+        List<Object> patch_getMountedContents();
+    }
+
+    /**
+     * Interface added to the Litho text drawable class during patching.
+     */
+    public interface TextDrawableInterface {
+        @Nullable
+        Layout patch_getLayout();
+
+        void patch_setLayout(Layout layout);
+
+        @Nullable
+        CharSequence patch_getText();
+
+        void patch_setText(CharSequence text);
     }
 
     public static boolean isPatchIncluded() {
@@ -387,85 +391,21 @@ public final class PostTranslatePatch {
 
     // region Drawables
 
-    @Nullable
-    private static DrawableFields getDrawableFields(Drawable drawable) {
-        Class<?> drawableClass = drawable.getClass();
-        if (drawableFields.containsKey(drawableClass)) {
-            return drawableFields.get(drawableClass);
-        }
-
-        List<CharSequence> items = ((TextContent) drawable).getTextItems();
-        CharSequence shownText = items == null || items.isEmpty() ? null : items.get(0);
-
-        Field layoutField = null;
-        Field textField = null;
-        List<Field> spanFields = new ArrayList<>();
-        try {
-            for (Class<?> type = drawableClass; type != null && !isFrameworkClass(type); type = type.getSuperclass()) {
-                for (Field field : type.getDeclaredFields()) {
-                    if (Modifier.isStatic(field.getModifiers())) {
-                        continue;
-                    }
-                    Class<?> fieldType = field.getType();
-                    if (Layout.class.isAssignableFrom(fieldType)) {
-                        field.setAccessible(true);
-                        if (layoutField == null || field.get(drawable) != null) {
-                            layoutField = field;
-                        }
-                    } else if (fieldType == CharSequence.class) {
-                        field.setAccessible(true);
-                        // The field of the shown text, if the drawable has other texts.
-                        if (textField == null || (shownText != null && field.get(drawable) == shownText)) {
-                            textField = field;
-                        }
-                    } else if (fieldType == ClickableSpan[].class || fieldType == ImageSpan[].class) {
-                        field.setAccessible(true);
-                        spanFields.add(field);
-                    }
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "Could not find the fields of the text drawable", ex);
-            layoutField = null;
-        }
-
-        DrawableFields fields = layoutField == null || textField == null
-                ? null
-                : new DrawableFields(layoutField, textField, spanFields);
-        final Field foundLayout = layoutField;
-        final Field foundText = textField;
-        Logger.printDebug(() -> "Text drawable " + drawableClass.getName()
-                + " layout: " + foundLayout + " text: " + foundText);
-        drawableFields.put(drawableClass, fields);
-        return fields;
-    }
-
-    private static boolean isFrameworkClass(Class<?> type) {
-        String name = type.getName();
-        return name.startsWith("java.") || name.startsWith("javax.")
-                || name.startsWith("android.") || name.startsWith("kotlin.");
-    }
-
     /**
      * Collects the texts of the host and its child hosts, with the drawables that show them.
      */
     private static void collectShownTexts(ComponentHost root, ComponentHost host, List<ShownText> texts) {
-        List<Drawable> drawables = new ArrayList<>();
-        try {
-            findTextDrawables(host, drawables);
-        } catch (Exception ex) {
-            Logger.printInfo(() -> "Could not find the text drawables", ex);
-        }
-
         List<CharSequence> drawableTexts = new ArrayList<>();
-        for (Drawable drawable : drawables) {
-            List<CharSequence> items = ((TextContent) drawable).getTextItems();
-            if (items == null || items.isEmpty() || items.get(0) == null) {
+        for (Object content : ((ComponentHostInterface) host).patch_getMountedContents()) {
+            if (!(content instanceof TextDrawableInterface drawable)) {
                 continue;
             }
-            CharSequence text = items.get(0);
+            CharSequence text = drawable.patch_getText();
+            if (text == null) {
+                continue;
+            }
             drawableTexts.add(text);
-            Rect bounds = new Rect(drawable.getBounds());
+            Rect bounds = new Rect(((Drawable) drawable).getBounds());
             root.offsetDescendantRectToMyCoords(host, bounds);
             texts.add(new ShownText(text.toString(), drawable, bounds));
         }
@@ -489,67 +429,6 @@ public final class PostTranslatePatch {
     }
 
     /**
-     * Finds the text drawables mounted in the host. The host keeps its mounted contents
-     * in obfuscated fields, so the fields are searched for drawables that show texts,
-     * the nearest fields first.
-     */
-    private static void findTextDrawables(ComponentHost host, List<Drawable> drawables) throws Exception {
-        Set<Object> visited = Collections.newSetFromMap(new IdentityHashMap<>());
-        List<Object> level = new ArrayList<>();
-        addFieldValues(host, ComponentHost.class, level);
-
-        for (int depth = 1; depth <= MAX_FIELD_DEPTH && !level.isEmpty(); depth++) {
-            List<Object> next = new ArrayList<>();
-            for (Object object : level) {
-                if (object == null || object instanceof View || object instanceof Context
-                        || object instanceof CharSequence || object instanceof Number
-                        || object instanceof Class || !visited.add(object)) {
-                    continue;
-                }
-                if (visited.size() > MAX_SEARCHED_OBJECTS) {
-                    Logger.printDebug(() -> "Stopped searching the text drawables of a host");
-                    return;
-                }
-                if (object instanceof Drawable drawable) {
-                    // A mounted drawable is drawn by its host.
-                    if (drawable instanceof TextContent && drawable.getCallback() == host
-                            && !drawables.contains(drawable)) {
-                        drawables.add(drawable);
-                    }
-                } else if (object instanceof Object[] array) {
-                    next.addAll(Arrays.asList(array));
-                } else if (object instanceof Iterable<?> iterable) {
-                    for (Object item : iterable) {
-                        next.add(item);
-                    }
-                } else if (object instanceof Map<?, ?> map) {
-                    next.addAll(map.values());
-                } else if (object instanceof SparseArray<?> sparseArray) {
-                    for (int i = 0, size = sparseArray.size(); i < size; i++) {
-                        next.add(sparseArray.valueAt(i));
-                    }
-                } else if (!object.getClass().isArray()) {
-                    for (Class<?> type = object.getClass(); type != null && !isFrameworkClass(type);
-                         type = type.getSuperclass()) {
-                        addFieldValues(object, type, next);
-                    }
-                }
-            }
-            level = next;
-        }
-    }
-
-    private static void addFieldValues(Object object, Class<?> type, List<Object> values) throws Exception {
-        for (Field field : type.getDeclaredFields()) {
-            if (Modifier.isStatic(field.getModifiers()) || field.getType().isPrimitive()) {
-                continue;
-            }
-            field.setAccessible(true);
-            values.add(field.get(object));
-        }
-    }
-
-    /**
      * @return A layout of the text with the size of the layout, cut off with an ellipsis if it is longer.
      */
     private static Layout createLayout(Layout layout, CharSequence text) {
@@ -565,79 +444,56 @@ public final class PostTranslatePatch {
 
     /**
      * Shows the translation in the drawable.
-     *
-     * @return If the translation is shown.
      */
-    private static boolean showTranslation(Drawable drawable, String key, String translation) {
+    private static void showTranslation(TextDrawableInterface drawable, String key, String translation) {
         try {
-            DrawableFields fields = getDrawableFields(drawable);
-            if (fields == null) {
-                return false;
-            }
-            Layout layout = (Layout) fields.layout().get(drawable);
-            CharSequence text = (CharSequence) fields.text().get(drawable);
+            Layout layout = drawable.patch_getLayout();
+            CharSequence text = drawable.patch_getText();
             if (layout == null || text == null) {
-                return false;
+                return;
             }
             TranslatedDrawable translated = translatedDrawables.get(drawable);
             if (translated != null && translated.translatedLayout() == layout) {
-                return true; // Already shown.
+                return; // Already shown.
             }
             // The drawable can be used again by another post while the text is translated.
             String original = findPostText(text.toString());
             if (original == null || !normalize(original).equals(key)) {
                 Logger.printDebug(() -> "The drawable shows another text");
-                return false;
+                return;
             }
 
             SpannableString translationText = createTranslationText(text, translation);
             Layout translatedLayout = createLayout(layout, translationText);
-            Map<Field, Object> originalSpans = new HashMap<>();
-            for (Field spanField : fields.spans()) {
-                originalSpans.put(spanField, spanField.get(drawable));
-                // The links and images of the original text are not in the translation.
-                spanField.set(drawable, Array.newInstance(spanField.getType().getComponentType(), 0));
-            }
-            fields.layout().set(drawable, translatedLayout);
-            fields.text().set(drawable, translationText);
-            translatedDrawables.put(drawable,
-                    new TranslatedDrawable(layout, text, originalSpans, translatedLayout, key));
-            drawable.invalidateSelf();
-            return true;
+            drawable.patch_setLayout(translatedLayout);
+            drawable.patch_setText(translationText);
+            translatedDrawables.put(drawable, new TranslatedDrawable(layout, text, translatedLayout, key));
+            ((Drawable) drawable).invalidateSelf();
         } catch (Exception ex) {
             Logger.printException(() -> "Could not show the translation", ex);
         }
-        return false;
     }
 
     /**
      * Shows the original text in the drawable.
      */
-    private static void showOriginal(Drawable drawable, String original) {
+    private static void showOriginal(TextDrawableInterface drawable, String original) {
         try {
-            DrawableFields fields = getDrawableFields(drawable);
-            if (fields == null) {
-                return;
-            }
-            Layout layout = (Layout) fields.layout().get(drawable);
+            Layout layout = drawable.patch_getLayout();
             if (layout == null) {
                 return;
             }
             TranslatedDrawable translated = translatedDrawables.remove(drawable);
             if (translated != null && translated.translatedLayout() == layout) {
-                fields.layout().set(drawable, translated.originalLayout());
-                fields.text().set(drawable, translated.originalText());
-                for (Map.Entry<Field, Object> entry : translated.originalSpans().entrySet()) {
-                    entry.getKey().set(drawable, entry.getValue());
-                }
+                drawable.patch_setLayout(translated.originalLayout());
+                drawable.patch_setText(translated.originalText());
             } else {
                 // The translation was created by Litho.
-                SpannableString originalText = createTranslationText(
-                        (CharSequence) fields.text().get(drawable), original);
-                fields.layout().set(drawable, createLayout(layout, originalText));
-                fields.text().set(drawable, originalText);
+                SpannableString originalText = createTranslationText(drawable.patch_getText(), original);
+                drawable.patch_setLayout(createLayout(layout, originalText));
+                drawable.patch_setText(originalText);
             }
-            drawable.invalidateSelf();
+            ((Drawable) drawable).invalidateSelf();
         } catch (Exception ex) {
             Logger.printException(() -> "Could not show the original text", ex);
         }
@@ -961,8 +817,8 @@ public final class PostTranslatePatch {
     }
 
     private static void showTranslation(PostText postText, String translation, Context context) {
-        Drawable drawable = postText.shown().drawable();
-        if (drawable == null || getDrawableFields(drawable) == null) {
+        TextDrawableInterface drawable = postText.shown().drawable();
+        if (drawable == null) {
             Logger.printDebug(() -> "The translation can not be shown in place");
             showTranslationDialog(context, translation);
             return;
@@ -979,12 +835,12 @@ public final class PostTranslatePatch {
                 originals.remove(normalize(translation));
             }
         }
-        Drawable drawable = postText.shown().drawable();
+        TextDrawableInterface drawable = postText.shown().drawable();
         if (drawable != null) {
             showOriginal(drawable, postText.original());
         }
         // Other drawables that show the translation, such as the same post in another feed.
-        for (Map.Entry<Drawable, TranslatedDrawable> entry : new ArrayList<>(translatedDrawables.entrySet())) {
+        for (Map.Entry<TextDrawableInterface, TranslatedDrawable> entry : new ArrayList<>(translatedDrawables.entrySet())) {
             if (entry.getValue().key().equals(key)) {
                 showOriginal(entry.getKey(), postText.original());
             }

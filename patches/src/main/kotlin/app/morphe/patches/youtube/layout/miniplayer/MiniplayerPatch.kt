@@ -130,6 +130,8 @@ val miniplayerPatch = bytecodePatch(
 
         preferences += SwitchPreference("morphe_miniplayer_disable_resuming", summary = true)
         preferences += SwitchPreference("morphe_miniplayer_hide_title")
+        preferences += SwitchPreference("morphe_miniplayer_swipe_up_expand", summary = true)
+        preferences += SwitchPreference("morphe_miniplayer_docked", summary = true)
         preferences += SwitchPreference("morphe_miniplayer_disable_rounded_corners")
         preferences += SwitchPreference("morphe_miniplayer_disable_drag_and_drop", summary = true)
         preferences += SwitchPreference("morphe_miniplayer_disable_horizontal_drag", summary = true)
