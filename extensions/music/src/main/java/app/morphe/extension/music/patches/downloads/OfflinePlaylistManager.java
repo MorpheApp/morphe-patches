@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/2528
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.music.patches.downloads;
 
 import org.json.JSONArray;
@@ -11,6 +18,7 @@ import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 
+/** Manages local offline playlist storage, retrieval, and updates on disk. */
 public final class OfflinePlaylistManager {
 
     private final File musicRoot;
@@ -25,6 +33,7 @@ public final class OfflinePlaylistManager {
         }
     }
 
+    /** Loads and parses all local playlist JSON files stored on disk. */
     public List<OfflinePlaylist> loadPlaylists() {
         List<OfflinePlaylist> playlists = new ArrayList<>();
         File[] files = playlistsDir.listFiles(f -> f.isFile() && f.getName().endsWith(".json"));
@@ -88,6 +97,7 @@ public final class OfflinePlaylistManager {
         return new OfflinePlaylist(id, name, uniquePaths);
     }
 
+    /** Serializes and saves a playlist object to a JSON file on disk. */
     public void savePlaylist(OfflinePlaylist playlist) throws IOException {
         if (!playlistsDir.exists()) {
             //noinspection ResultOfMethodCallIgnored
@@ -133,6 +143,7 @@ public final class OfflinePlaylistManager {
         savePlaylist(new OfflinePlaylist(existing.id(), existing.name(), updated));
     }
 
+    /** Updates and persists the new sequence of track paths after reordering. */
     public void updateTrackOrder(String playlistId, List<String> orderedPaths) throws IOException {
         OfflinePlaylist existing = getPlaylist(playlistId);
         if (existing == null) throw new IOException("Playlist not found: " + playlistId);
