@@ -2,7 +2,6 @@ package app.morphe.extension.music.patches.downloads;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
@@ -50,6 +49,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
     private static final int ROW_ARTWORK_PIXELS = 256;
     private static final int ARTWORK_CORNER_DP = 4;
     private static final int ROW_CORNER_DP = 8;
+    private static final int PILL_CORNER_DP = 20;
     private static final int ICON_BUTTON_DP = 48;
 
     private String playlistId;
@@ -134,7 +134,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         actionsRow.addView(playAllBtn, new LinearLayout.LayoutParams(-2, -2));
 
         View spacer = new View(getActivity());
-        actionsRow.addView(spacer, new LinearLayout.LayoutParams(dp(12), dp(1)));
+        actionsRow.addView(spacer, new LinearLayout.LayoutParams(dp(10), dp(1)));
 
         TextView deleteBtn = actionButton("Delete playlist", false);
         deleteBtn.setOnClickListener(v -> confirmDeletePlaylist());
@@ -145,19 +145,21 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
     }
 
     private TextView actionButton(String label, boolean primary) {
-        TextView btn = text(label, 14, primary ? background() : foreground());
+        final int fg = foreground();
+        TextView btn = text(label, 14, primary ? background() : fg);
         btn.setTypeface(Typeface.DEFAULT_BOLD);
-        btn.setPadding(dp(16), dp(8), dp(16), dp(8));
+        btn.setPadding(dp(18), dp(8), dp(18), dp(8));
 
         GradientDrawable bg = new GradientDrawable();
-        bg.setCornerRadius(dp(18));
+        bg.setCornerRadius(dp(PILL_CORNER_DP));
         if (primary) {
-            bg.setColor(foreground());
+            bg.setColor(fg);
         } else {
-            bg.setColor(Utils.adjustColorBrightness(background(), 0.08f));
-            bg.setStroke(dp(1), rippleColor());
+            bg.setColor(Color.argb(26, Color.red(fg), Color.green(fg), Color.blue(fg)));
+            bg.setStroke(dp(1), Color.argb(65, Color.red(fg), Color.green(fg), Color.blue(fg)));
         }
-        btn.setBackground(bg);
+        btn.setBackground(new RippleDrawable(ColorStateList.valueOf(rippleColor()), bg,
+                CustomDialog.createRoundedBackground(PILL_CORNER_DP, Color.WHITE)));
         return btn;
     }
 
@@ -222,7 +224,6 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         labels.addView(detail);
         row.addView(labels, new LinearLayout.LayoutParams(0, -2, 1));
 
-        // Remove from playlist only (does NOT delete the audio file)
         ImageButton removeBtn = icon("yt_outline_experimental_trash_can_vd_theme_24", "Remove from playlist");
         removeBtn.setOnClickListener(v -> removeTrackFromPlaylist(track));
         row.addView(removeBtn, new LinearLayout.LayoutParams(dp(ICON_BUTTON_DP), dp(ICON_BUTTON_DP)));
@@ -243,18 +244,24 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
     }
 
     private void confirmDeletePlaylist() {
-        AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                .setTitle("Delete playlist")
-                .setMessage("Delete \"" + (playlist != null ? playlist.name() : "") + "\"? Downloaded songs will not be deleted.")
-                .setPositiveButton("Delete", (d, w) -> {
+        String name = playlist != null ? playlist.name() : "";
+        CustomDialog.create(
+                getActivity(),
+                "Delete playlist?",
+                "Delete \"" + name + "\"? Downloaded songs will not be deleted.",
+                null,
+                str("morphe_music_downloads_delete"),
+                () -> {
                     playlistManager.deletePlaylist(playlistId);
                     if (onPlaylistChanged != null) onPlaylistChanged.run();
                     Utils.showToastShort("Playlist deleted");
                     closeScreen();
-                })
-                .setNegativeButton("Cancel", null)
-                .create();
-        dialog.show();
+                },
+                () -> {},
+                null,
+                null,
+                false
+        ).first.show();
     }
 
     private void playFromIndex(int startIndex) {
