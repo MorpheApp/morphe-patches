@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">启用资料库/您底部的菜单筛选</string>
   <string name="morphe_hide_account_menu_filter_strings_title">启用资料库/您底部的菜单筛选</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">输入要筛选的资料库/您底部菜单名称，用换行符分隔</string>
+  <string name="morphe_hide_account_menu_downloads_title">隐藏下载</string>
   <string name="morphe_hide_album_cards_title">隐藏专辑卡片</string>
   <string name="morphe_hide_album_cards_summary">隐藏艺术家描述下方的专辑卡片</string>
   <string name="morphe_hide_artist_cards_title">隐藏艺人卡片</string>
@@ -515,7 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">音频</string>
   <string name="morphe_external_downloader_quick_options">所有选项</string>
   <string name="morphe_shorts_download_flyout_button_title">在 Shorts 菜单中显示下载</string>
+  <string name="morphe_shorts_download_flyout_button_summary">在 Shorts 播放器菜单中添加下载项</string>
   <string name="morphe_shorts_download_flyout_title">下载</string>
+  <string name="morphe_export_download_folder_title">导出已保存的视频</string>
+  <string name="morphe_export_download_folder_summary">"使用应用内下载弹出菜单将应用内保存的视频导出到设备存储空间。点击以更改导出文件夹
+
+导出文件夹：%s"</string>
+  <string name="morphe_export_download_folder_dialog_title">导出文件夹</string>
+  <string name="morphe_export_download_folder_change">更改文件夹</string>
+  <string name="morphe_export_download_folder_changed">导出文件夹已更改</string>
+  <string name="morphe_export_download_folder_reset">导出文件夹已重置</string>
+  <string name="morphe_export_download_flyout_title">导出至设备</string>
+  <string name="morphe_export_download_started">正在导出视频</string>
+  <string name="morphe_export_download_progress">正在导出视频：%d%%</string>
+  <string name="morphe_export_download_notification_channel">视频导出</string>
+  <string name="morphe_export_download_saved">视频已导出至 %s</string>
+  <string name="morphe_export_download_failed">无法导出视频</string>
+  <string name="morphe_export_download_canceled">导出已取消</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">语音旁白翻译</string>
   <string name="morphe_vot_screen_summary">使用设备上的文本转语音功能朗读视频字幕，并与播放同步</string>
@@ -590,6 +607,19 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">显示画中画按钮</string>
   <string name="morphe_pip_button_flyout_title">显示画中画菜单</string>
   <string name="morphe_pip_button_flyout_name">切换到画中画</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">画中画操作</string>
+  <string name="morphe_pip_actions_screen_summary">更改画中画中显示的按钮</string>
+  <string name="morphe_pip_action_left_title">左侧按钮</string>
+  <string name="morphe_pip_action_center_title">中间按钮</string>
+  <string name="morphe_pip_action_right_title">右侧按钮</string>
+  <string name="morphe_pip_action_entry_default">默认</string>
+  <string name="morphe_pip_action_entry_previous">上一个视频</string>
+  <string name="morphe_pip_action_entry_next">下一个视频</string>
+  <string name="morphe_pip_action_entry_rewind">后退 10 秒</string>
+  <string name="morphe_pip_action_entry_fast_forward">快进 10 秒</string>
+  <string name="morphe_pip_action_entry_play_pause">播放/暂停</string>
+  <string name="morphe_pip_action_entry_background_playback">后台播放</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">需要先按住才能识别滑动势</string>
   <string name="morphe_play_all_button_summary">"点击生成频道中所有视频的播放列表，长按撤销
@@ -1223,6 +1253,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube 移除了所有其他迷你播放器。要恢复更多迷你播放器类型，请补丁 YouTube 21.28.208 或更早版本</string>
   <string name="morphe_miniplayer_type_title">小型播放器类型</string>
   <string name="morphe_miniplayer_hide_title_title">隐藏标题和频道</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">向上滑动展开</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">向上滑动迷你播放器将展开播放器，而不是将迷你播放器移动到屏幕顶部</string>
+  <string name="morphe_miniplayer_docked_title">停靠迷你播放器</string>
+  <string name="morphe_miniplayer_docked_summary">将迷你播放器附加到导航栏和屏幕边缘，而不是漂浮在上方</string>
   <string name="morphe_miniplayer_type_entry_0">已禁用</string>
   <string name="morphe_miniplayer_type_entry_1">默认</string>
   <string name="morphe_miniplayer_type_entry_2">极简</string>
@@ -1265,6 +1299,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">此设备不支持发光启动页</string>
+  <string name="morphe_splash_screen_duration_title">启动动画时长</string>
+  <string name="morphe_splash_screen_duration_summary">发光动画播放的时长。点击动画即可跳过</string>
   <string name="morphe_theme_color_light_title">浅色主题背景</string>
   <string name="morphe_theme_color_light_entry_2">白色</string>
   <string name="morphe_theme_color_light_entry_3">Material You（白色）</string>

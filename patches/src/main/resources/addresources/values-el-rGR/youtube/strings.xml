@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Ενεργοποίηση Βιβλιοθήκης / Φίλτρο στο κάτω μενού σας</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Ενεργοποίηση Βιβλιοθήκης / Φίλτρο στο κάτω μενού σας</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Εισαγάγετε τα ονόματα των βιβλιοθηκών / Φίλτρο στο κάτω μενού για φιλτράρισμα, χωρισμένα με νέες γραμμές</string>
+  <string name="morphe_hide_account_menu_downloads_title">Απόκρυψη λήψεων</string>
   <string name="morphe_hide_album_cards_title">Απόκρυψη καρτών άλμπουμ</string>
   <string name="morphe_hide_album_cards_summary">Απόκρυψη των καρτών άλμπουμ κάτω από την περιγραφή του καλλιτέχνη</string>
   <string name="morphe_hide_artist_cards_title">Απόκρυψη καρτών καλλιτεχνών</string>
@@ -515,7 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">Ήχος</string>
   <string name="morphe_external_downloader_quick_options">Όλες οι επιλογές</string>
   <string name="morphe_shorts_download_flyout_button_title">Εμφάνιση λήψης στο μενού Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Προσθέτει ένα στοιχείο λήψης στο μενού του προγράμματος αναπαραγωγής Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Λήψη</string>
+  <string name="morphe_export_download_folder_title">Εξαγωγή αποθηκευμένων βίντεο</string>
+  <string name="morphe_export_download_folder_summary">"Εξαγάγετε τα βίντεο που αποθηκεύτηκαν στην εφαρμογή στη μνήμη της συσκευής σας χρησιμοποιώντας το αναδυόμενο μενού λήψεων της εφαρμογής. Πατήστε για να αλλάξετε τον φάκελο εξαγωγής
+
+Φάκελος εξαγωγής: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Φάκελος εξαγωγής</string>
+  <string name="morphe_export_download_folder_change">Αλλαγή φακέλου</string>
+  <string name="morphe_export_download_folder_changed">Ο φάκελος εξαγωγής άλλαξε</string>
+  <string name="morphe_export_download_folder_reset">Επαναφορά φακέλου εξαγωγής</string>
+  <string name="morphe_export_download_flyout_title">Εξαγωγή στη συσκευή</string>
+  <string name="morphe_export_download_started">Εξαγωγή βίντεο</string>
+  <string name="morphe_export_download_progress">Εξαγωγή βίντεο: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Εξαγωγές βίντεο</string>
+  <string name="morphe_export_download_saved">Το βίντεο εξήχθη στο %s</string>
+  <string name="morphe_export_download_failed">Δεν ήταν δυνατή η εξαγωγή του βίντεο</string>
+  <string name="morphe_export_download_canceled">Η εξαγωγή ακυρώθηκε</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Μετάφραση φωνής</string>
   <string name="morphe_vot_screen_summary">Διαβάστε τις λεζάντες του βίντεο δυνατά χρησιμοποιώντας το text-to-speech της συσκευής, συγχρονισμένα με την αναπαραγωγή</string>
@@ -590,6 +607,19 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">Εμφάνιση του κουμπιού Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Εμφάνιση του μενού Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_name">Μετάβαση σε Picture-in-Picture</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Ενέργειες εικόνας σε εικόνα</string>
+  <string name="morphe_pip_actions_screen_summary">Αλλαγή των κουμπιών που εμφανίζονται στην εικόνα σε εικόνα</string>
+  <string name="morphe_pip_action_left_title">Αριστερό κουμπί</string>
+  <string name="morphe_pip_action_center_title">Κεντρικό κουμπί</string>
+  <string name="morphe_pip_action_right_title">Δεξί κουμπί</string>
+  <string name="morphe_pip_action_entry_default">Προεπιλογή</string>
+  <string name="morphe_pip_action_entry_previous">Προηγούμενο βίντεο</string>
+  <string name="morphe_pip_action_entry_next">Επόμενο βίντεο</string>
+  <string name="morphe_pip_action_entry_rewind">Πίσω 10 δευτερόλεπτα</string>
+  <string name="morphe_pip_action_entry_fast_forward">Προώθηση κατά 10 δευτερόλεπτα</string>
+  <string name="morphe_pip_action_entry_play_pause">Αναπαραγωγή/παύση</string>
+  <string name="morphe_pip_action_entry_background_playback">Αναπαραγωγή στο παρασκήνιο</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Απαιτείται πίεση και κράτημα πριν αναγνωριστεί μια χειρονομία σάρωσης</string>
   <string name="morphe_play_all_button_summary">"Πατήστε για να δημιουργήσετε μια λίστα αναπαραγωγής με όλα τα βίντεο από το κανάλι, πατήστε και κρατήστε για να αναιρέσετε
@@ -1223,6 +1253,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_not_available_summary">Το YouTube αφαίρεσε όλους τους πρόσθετους miniplayers. Για να επαναφέρετε περισσότερους τύπους miniplayer, κάντε patch στο YouTube 21.28.208 ή παλαιότερη έκδοση</string>
   <string name="morphe_miniplayer_type_title">Τύπος ελαχιστοποιημένης οθόνης αναπαραγωγής</string>
   <string name="morphe_miniplayer_hide_title_title">Απόκρυψη τίτλου και καναλιού</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Επέκταση με σύρσιμο προς τα πάνω</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Το σύρσιμο του ελαχιστοποιημένου προγράμματος αναπαραγωγής προς τα πάνω επεκτείνει τον προγράμματα αναπαραγωγής, αντί να μετακινεί τον ελαχιστοποιημένο πρόγραμμα αναπαραγωγής στο πάνω μέρος της οθόνης</string>
+  <string name="morphe_miniplayer_docked_title">Στερεωμένος ελαχιστοποιημένος πρόγραμμα αναπαραγωγής</string>
+  <string name="morphe_miniplayer_docked_summary">Προσαρμόζει τον ελαχιστοποιημένο πρόγραμμα αναπαραγωγής στη γραμμή πλοήγησης και στις πλευρές της οθόνης, αντί να αιωρείται πάνω από αυτές</string>
   <string name="morphe_miniplayer_type_entry_0">Απενεργοποιημένη</string>
   <string name="morphe_miniplayer_type_entry_1">Προεπιλογή</string>
   <string name="morphe_miniplayer_type_entry_2">Μινιμαλιστική</string>
@@ -1265,6 +1299,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Η οθόνη έναρξης με λάμψη δεν υποστηρίζεται από αυτή τη συσκευή</string>
+  <string name="morphe_splash_screen_duration_title">Διάρκεια animation εκκίνησης</string>
+  <string name="morphe_splash_screen_duration_summary">Πόσο χρόνο αναπαράγεται το animation λάμψης. Πατήστε το animation για να το παραλείψετε</string>
   <string name="morphe_theme_color_light_title">Φόντο φωτεινού θέματος</string>
   <string name="morphe_theme_color_light_entry_2">Λευκό</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Λευκό)</string>

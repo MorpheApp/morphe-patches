@@ -61,6 +61,7 @@ Promjene uključuju:
   <string name="morphe_hide_account_menu_title">Omogući filter donjeg menija Biblioteka / Vi</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Filter donjeg menija Biblioteka / Vi</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Unesite nazive donjeg menija Biblioteka / Vi po kojima želite filtrirati, razdvojene novim redovima</string>
+  <string name="morphe_hide_account_menu_downloads_title">Sakrij preuzimanja</string>
   <string name="morphe_hide_album_cards_title">Sakrij kartice albuma</string>
   <string name="morphe_hide_album_cards_summary">Skriva kartice albuma ispod opisa izvođača</string>
   <string name="morphe_hide_artist_cards_title">Sakrij kartice izvođača</string>
@@ -515,7 +516,23 @@ Nakon što se jednom otvori video s dugmetom Pitaj, funkcija radi sa svim videim
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Sve opcije</string>
   <string name="morphe_shorts_download_flyout_button_title">Prikaži preuzimanje u Shorts meniju</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Dodaje stavku preuzimanja u meni Shorts plejera</string>
   <string name="morphe_shorts_download_flyout_title">Preuzmi</string>
+  <string name="morphe_export_download_folder_title">Izvezi sačukane videozapise</string>
+  <string name="morphe_export_download_folder_summary">"Izvežite u aplikaciji sačukane videozapise u memoriju vašeg uređaja koristeći iskačući meni za preuzimanja. Dodirnite da promijenite folder za izvoz
+
+Folder za izvoz: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Folder za izvoz</string>
+  <string name="morphe_export_download_folder_change">Promijeni folder</string>
+  <string name="morphe_export_download_folder_changed">Folder za izvoz promijenjen</string>
+  <string name="morphe_export_download_folder_reset">Folder za izvoz resetovan</string>
+  <string name="morphe_export_download_flyout_title">Izvezi na uređaj</string>
+  <string name="morphe_export_download_started">Izvoz videozapisa</string>
+  <string name="morphe_export_download_progress">Izvoz videozapisa: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Izvozi videozapisa</string>
+  <string name="morphe_export_download_saved">Videozapisi izvezen u %s</string>
+  <string name="morphe_export_download_failed">Videozapisi nije moguće izvesti</string>
+  <string name="morphe_export_download_canceled">Izvoz otkazan</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Glasovni prevod</string>
   <string name="morphe_vot_screen_summary">Naglas pročitaj titlove videa koristeći uređajnu pretvorbu teksta u govor, sinhronizovano sa reprodukcijom</string>
@@ -590,6 +607,19 @@ Vaš API ključ nikada ne smije biti podijeljen. Svako ko ima pristup njemu mož
   <string name="morphe_pip_button_overlay_title">Prikaži dugme Slika-u-Slici</string>
   <string name="morphe_pip_button_flyout_title">Prikaži meni Slika-u-Slici</string>
   <string name="morphe_pip_button_flyout_name">Prebaci na Slika-u-Slici</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Radnje slika-u-slici</string>
+  <string name="morphe_pip_actions_screen_summary">Promijeni dugmad koja se prikazuju u režimu slika-u-slici</string>
+  <string name="morphe_pip_action_left_title">Lijevo dugme</string>
+  <string name="morphe_pip_action_center_title">Središnje dugme</string>
+  <string name="morphe_pip_action_right_title">Desno dugme</string>
+  <string name="morphe_pip_action_entry_default">The </string>
+  <string name="morphe_pip_action_entry_previous">Prethodni videozapisi</string>
+  <string name="morphe_pip_action_entry_next">Sljedeći videozapisi</string>
+  <string name="morphe_pip_action_entry_rewind">Vrati 10 sekundi</string>
+  <string name="morphe_pip_action_entry_fast_forward">Pomakni unaprijed 10 sekundi</string>
+  <string name="morphe_pip_action_entry_play_pause">Reprodukuj/pauziraj</string>
+  <string name="morphe_pip_action_entry_background_playback">Reprodukcija u pozadini</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Prikaži dugme Pusti sve</string>
   <string name="morphe_play_all_button_summary">"Dodirnite za generisanje plejliste svih video zapisa sa kanala, dodrnite i držite za poništavanje
@@ -1223,6 +1253,10 @@ Ograničenje: Ako je 'Vrati staru traku s akcijama videa' isključeno, preklop '
   <string name="morphe_miniplayer_not_available_summary">YouTube je uklonio sve dodatne mini-plejere. Da biste vratili više tipova mini-plejera, patched-ujte YouTube 21.28.208 ili stariju verziju</string>
   <string name="morphe_miniplayer_type_title">Tip mini-playera</string>
   <string name="morphe_miniplayer_hide_title_title">Sakrij naslov i kanal</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Proširi prevlačenjem prema gore</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Prevlačenjem minimajziranog plejera prema gore proširuje se plejer, umjesto da se minimajziran plejer pomjeri na vrh ekrana</string>
+  <string name="morphe_miniplayer_docked_title">Usidren minimajziran plejer</string>
+  <string name="morphe_miniplayer_docked_summary">Zakačuje minimajziran plejer za navigacionu traku i strane ekrana, umjesto da lebdi iznad njih</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogućeno</string>
   <string name="morphe_miniplayer_type_entry_1">Zadano</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalistički</string>
@@ -1265,6 +1299,8 @@ Ograničenje: Ako je 'Vrati staru traku s akcijama videa' isključeno, preklop '
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Svijetleći početni ekran nije podržan na ovom uređaju</string>
+  <string name="morphe_splash_screen_duration_title">Trajanje početne animacije</string>
+  <string name="morphe_splash_screen_duration_summary">Koliko dugo traje animacija sjaja. Dodirnite animaciju da je preskočite</string>
   <string name="morphe_theme_color_light_title">Pozadina svijetle teme</string>
   <string name="morphe_theme_color_light_entry_2">Bijela</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Bijela)</string>

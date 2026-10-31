@@ -61,6 +61,7 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_account_menu_title">Comhghairdeachas le Leabharlann / Scagaire maidir le roghchláir bunaidh</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Comhghairdeachas le Leabharlann / Scagaire maidir le roghchláir bunaidh</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Cuir isteach ainmneacha na roghchlár fillte le scagadh a dhéanamh orthu, scartha le línte nua</string>
+  <string name="morphe_hide_account_menu_downloads_title">Folaigh Íoslódálaí</string>
   <string name="morphe_hide_album_cards_title">Folaigh cártaí albam</string>
   <string name="morphe_hide_album_cards_summary">Folaíonn sé na cártaí albaim faoin tuairisc ar an ealaíontóir</string>
   <string name="morphe_hide_artist_cards_title">Folaigh cártaí ealaíontóra</string>
@@ -515,7 +516,23 @@ Má oscailtí físeán a bhfuil cnaipe Iarrtas aige uair amháin, beidh an ghné
   <string name="morphe_external_downloader_quick_audio">Fuaim</string>
   <string name="morphe_external_downloader_quick_options">Gach rogha</string>
   <string name="morphe_shorts_download_flyout_button_title">Taispeáin an íoslódáil i roghchlár na Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Cuiríonn sé item íoslódála leis antseomraí i bpiléir Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Íoslódáil</string>
+  <string name="morphe_export_download_folder_title">Easpórtáil físeáin sábháilte</string>
+  <string name="morphe_export_download_folder_summary">"Easpórtáil físeáin sábháilte in-app chuig stoireadh do ghléas ag baint úsáide as antseomraí íoslódála in-app. Tapáil chun an fillteán easpórtála a athrú
+
+Fillteán easpórtála: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Fillteán easpórtála</string>
+  <string name="morphe_export_download_folder_change">Athraigh fillteán</string>
+  <string name="morphe_export_download_folder_changed">Athraíodh fillteán easpórtála</string>
+  <string name="morphe_export_download_folder_reset">Athshocraíodh fillteán easpórtála</string>
+  <string name="morphe_export_download_flyout_title">Easpórtáil chuig an ggléas</string>
+  <string name="morphe_export_download_started">Ag easpórtáil físeáin</string>
+  <string name="morphe_export_download_progress">Ag easpórtáil físeáin: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Easpórtálaí físeáin</string>
+  <string name="morphe_export_download_saved">Easpórtáladh an fhíseáin chuig %s</string>
+  <string name="morphe_export_download_failed">Níorbh fhéidir an físeán a easpórtáil</string>
+  <string name="morphe_export_download_canceled">Cnuilsaithe an easpórtála</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Aistriúchán gutha</string>
   <string name="morphe_vot_screen_summary">Léigh fotheidil físe os ard ag baint úsáide as téacs-go-hurlabhra ar an ngléas, sioncrónaithe le hathsheinm</string>
@@ -590,6 +607,19 @@ Níor cheart d'eochair API a roinnt choíche. Is féidir le duine ar bith a bhfu
   <string name="morphe_pip_button_overlay_title">Taispeáin an cnaipe Pictiúr-i-bPictiúr</string>
   <string name="morphe_pip_button_flyout_title">Taispeáin an roghchlár Pictiúr-i-bPictiúr</string>
   <string name="morphe_pip_button_flyout_name">Athraigh go dtí an modh Pictiúr-i-bPictiúr</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Gníomhartha pictiúr-i-bpictiúr</string>
+  <string name="morphe_pip_actions_screen_summary">Athraigh na cnaipeanna a thaispeantar i bpictiúr-i-bpictiúr</string>
+  <string name="morphe_pip_action_left_title">Cnaipe cluiche left</string>
+  <string name="morphe_pip_action_center_title">Cnaipe lár</string>
+  <string name="morphe_pip_action_right_title">Cnaipe cluiche right</string>
+  <string name="morphe_pip_action_entry_default">Réamhshocrú</string>
+  <string name="morphe_pip_action_entry_previous">Físeán roimhe seo</string>
+  <string name="morphe_pip_action_entry_next">An chéad fhíseán eile</string>
+  <string name="morphe_pip_action_entry_rewind">Scaip 10 second</string>
+  <string name="morphe_pip_action_entry_fast_forward">Scaip 10 second chun cinn</string>
+  <string name="morphe_pip_action_entry_play_pause">Seinn/sos</string>
+  <string name="morphe_pip_action_entry_background_playback">Sealladh cúlraonach</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Taispeáin an cnaipe Seinn Uile</string>
   <string name="morphe_play_all_button_summary">"Tapáil chun seinmliosta de na físeáin go léir ón gcainéal a ghiniúint, tapáil agus coinnigh síos chun cealú
@@ -1223,6 +1253,10 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_miniplayer_not_available_summary">Bhain YouTube gach mionimreoir breise amach. Chun cineálacha breise mionimreoirí a thabhairt ar ais, déan paisteáil ar YouTube 21.28.208 nó leagan níos sine.</string>
   <string name="morphe_miniplayer_type_title">Cineál Mion seinnteoir</string>
   <string name="morphe_miniplayer_hide_title_title">Folaigh an teideal agus an cainéal</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Leathnaigh le sleamhnú suas</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Nuair a shleamhnaítear an píléir bheag suas, leathnaítear an píléir, in ionad an phíléir bheag a bhogadh go dtí barr an scáileáin</string>
+  <string name="morphe_miniplayer_docked_title">Piléir bheag dockaithe</string>
+  <string name="morphe_miniplayer_docked_summary">Ceanglaíonn sé an phíléir bheag leis an ród naistigíochta agus taobhaí an scáileáin, in ionad a bheith ag floating os a aistear</string>
   <string name="morphe_miniplayer_type_entry_0">Díchumasaithe</string>
   <string name="morphe_miniplayer_type_entry_1">Réamhshocrú</string>
   <string name="morphe_miniplayer_type_entry_2">Íosta</string>
@@ -1265,6 +1299,8 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_splash_screen_style_entry_7">Morphe Breo 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Breo 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Ní thacaíonn an gléas seo le scáileán splancscáileáin Breo</string>
+  <string name="morphe_splash_screen_duration_title">Duration beochan tosaithe</string>
+  <string name="morphe_splash_screen_duration_summary">Cé mhéidH anam an bhéochan gloine a sheinneann. Tapáil an beochan chun é a sheachadú</string>
   <string name="morphe_theme_color_light_title">Cúlra téama éadrom</string>
   <string name="morphe_theme_color_light_entry_2">Bán</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Bán)</string>

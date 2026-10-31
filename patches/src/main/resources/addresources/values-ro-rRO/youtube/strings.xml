@@ -61,6 +61,7 @@ Modificările includ:
   <string name="morphe_hide_account_menu_title">Activează Biblioteca / Filtrul din meniul de jos</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Activează Biblioteca / Filtrul din meniul de jos</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Introdu numele meniurilor din Bibliotecă / din meniul de jos, pe care vrei să le filtrezi, separate prin linii noi</string>
+  <string name="morphe_hide_account_menu_downloads_title">Ascunde Descărcările</string>
   <string name="morphe_hide_album_cards_title">Ascundeți cardurile de album</string>
   <string name="morphe_hide_album_cards_summary">Ascunde cardurile de albume de sub descrierea artistului</string>
   <string name="morphe_hide_artist_cards_title">Ascunde cărțile artistului</string>
@@ -515,7 +516,23 @@ După ce un videoclip cu butonul Ask este deschis o dată, funcția funcționeaz
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Toate opțiunile</string>
   <string name="morphe_shorts_download_flyout_button_title">Afișează descărcarea în meniul Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Adaugă un element de descărcare în meniul playerului Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Descărcare</string>
+  <string name="morphe_export_download_folder_title">Exportă videoclipurile salvate</string>
+  <string name="morphe_export_download_folder_summary">"Exportă videoclipurile salvate în aplicație în stocarea dispozitivului tău folosind meniul de descărcări din aplicație. Atinge pentru a schimba dosarul de export
+
+Dosar de export: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Dosar de export</string>
+  <string name="morphe_export_download_folder_change">Schimbă dosarul</string>
+  <string name="morphe_export_download_folder_changed">Dosarul de export a fost schimbat</string>
+  <string name="morphe_export_download_folder_reset">Dosarul de export a fost resetat</string>
+  <string name="morphe_export_download_flyout_title">Exportă pe dispozitiv</string>
+  <string name="morphe_export_download_started">Se exportă videoclipul</string>
+  <string name="morphe_export_download_progress">Se exportă videoclipul: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Exporturi video</string>
+  <string name="morphe_export_download_saved">Videoclip exportat în %s</string>
+  <string name="morphe_export_download_failed">Nu s-a putut exporta videoclipul</string>
+  <string name="morphe_export_download_canceled">Export anulat</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducere cu voce peste</string>
   <string name="morphe_vot_screen_summary">Citește cu voce tare subtitrările video folosind text-to-speech pe dispozitiv, sincronizat cu redarea</string>
@@ -590,6 +607,19 @@ Cheia API nu trebuie niciodată distribuită. Oricine are acces la aceasta poate
   <string name="morphe_pip_button_overlay_title">Afișează butonul Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Afișează meniul Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_name">Comută la Picture-in-Picture</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Acțiuni Picture-in-picture</string>
+  <string name="morphe_pip_actions_screen_summary">Schimbă butoanele afișate în picture-in-picture</string>
+  <string name="morphe_pip_action_left_title">Buton stânga</string>
+  <string name="morphe_pip_action_center_title">Buton centru</string>
+  <string name="morphe_pip_action_right_title">Buton dreapta</string>
+  <string name="morphe_pip_action_entry_default">Implicit</string>
+  <string name="morphe_pip_action_entry_previous">Videoclip anterior</string>
+  <string name="morphe_pip_action_entry_next">Videoclip următor</string>
+  <string name="morphe_pip_action_entry_rewind">Rewind 10 secunde</string>
+  <string name="morphe_pip_action_entry_fast_forward">Fast forward 10 secunde</string>
+  <string name="morphe_pip_action_entry_play_pause">Redare/pauză</string>
+  <string name="morphe_pip_action_entry_background_playback">Redare în fundal</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Reține nivelul luminozității la intrarea/ieșirea din modul ecran complet</string>
   <string name="morphe_play_all_button_summary">"Atinge pentru a genera o listă de redare a tuturor videoclipurilor dintr-un canal, atinge și menține apăsat pentru a anula
@@ -1223,6 +1253,10 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <string name="morphe_miniplayer_not_available_summary">YouTube a eliminat toate miniplayerele suplimentare. Pentru a restaura mai multe tipuri de miniplayer, patch-uiește YouTube 21.28.208 sau o versiune mai veche</string>
   <string name="morphe_miniplayer_type_title">Tip minijucător</string>
   <string name="morphe_miniplayer_hide_title_title">Ascunde titlul și canalul</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Extindere prin glisare în sus</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Glisarea miniplayerului în sus extinde playerul, în loc să mute miniplayerul în partea superioară a ecranului</string>
+  <string name="morphe_miniplayer_docked_title">Miniplayer ancorat</string>
+  <string name="morphe_miniplayer_docked_summary">Atașează miniplayerul de bara de navigare și de marginile ecranului, în loc să plutească deasupra acestora</string>
   <string name="morphe_miniplayer_type_entry_0">Dezactivat</string>
   <string name="morphe_miniplayer_type_entry_1">Implicit</string>
   <string name="morphe_miniplayer_type_entry_2">Minimă</string>
@@ -1265,6 +1299,8 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Ecranul de pornire Glow nu este suportat de acest dispozitiv</string>
+  <string name="morphe_splash_screen_duration_title">Durata animației de pornire</string>
+  <string name="morphe_splash_screen_duration_summary">Cât de mult timp rulează animația de strălucire. Atinge animația pentru a o omite</string>
   <string name="morphe_theme_color_light_title">Fundalul temei luminoase</string>
   <string name="morphe_theme_color_light_entry_2">Alb</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Alb)</string>
