@@ -328,7 +328,7 @@ public final class MinimalMiniplayerPatch {
 
             // YouTube reads a gesture against the shape of its own miniplayer, which the bar is not,
             // so the bar answers for itself: a tap expands, a drag moves the bar between the bottom
-            // and the top of the screen, and a drag down from the bottom closes it.
+            // and the top of the screen, or expands if set so, and a drag down from the bottom closes it.
             final int slop = Dim.dp20;
 
             controlsLayout.setClickable(true);
@@ -353,6 +353,9 @@ public final class MinimalMiniplayerPatch {
 
                             if (-draggedUp > slop && !barAtTop) {
                                 closeBar();
+                            } else if (draggedUp > slop && Settings.MINIPLAYER_SWIPE_UP_EXPAND.get()) {
+                                // Goes through the click, so accessibility services see it.
+                                view.performClick();
                             } else if (Math.abs(draggedUp) > slop) {
                                 // Already at the top, a drag up has nowhere to go. Nor while the bar
                                 // is animating, which can be the bar leaving before it is closed.

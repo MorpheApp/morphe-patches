@@ -274,6 +274,19 @@ public final class MiniplayerPatch {
         }
     }
 
+    public static final class MiniplayerMinimalBarAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            MiniplayerType type = Settings.MINIPLAYER_TYPE.get();
+            return type == MINIMAL_BAR || type == MINIMAL_BAR_2;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.MINIPLAYER_TYPE);
+        }
+    }
+
     public static final class MiniplayerMinimalBar2Availability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
