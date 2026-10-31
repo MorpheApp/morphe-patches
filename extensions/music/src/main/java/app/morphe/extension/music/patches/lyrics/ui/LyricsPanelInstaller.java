@@ -174,7 +174,7 @@ public final class LyricsPanelInstaller {
                     || Settings.LYRICS_HIDE_UNPLAYED.key.equals(key)) {
                 panelView.applyLineOverlaySettings();
             } else if (Settings.LYRICS_DYNAMIC_BACKGROUND.key.equals(key)
-                    || Settings.LYRICS_LIGHTWEIGHT_MODE.key.equals(key)) {
+                    || Settings.LYRICS_DYNAMIC_BACKGROUND_ANIMATED.key.equals(key)) {
                 panelView.applyDynamicBackgroundSettings();
             }
         } catch (Throwable ex) {

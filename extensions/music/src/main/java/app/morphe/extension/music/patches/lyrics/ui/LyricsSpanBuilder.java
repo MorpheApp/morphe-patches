@@ -1320,58 +1320,28 @@ final class LyricsSpanBuilder {
         int romaEnd = -1;
         int transStart = -1;
         int transEnd = -1;
-        // main lyrics always on top, reading and translation put below it
+        // The lyric stays on top with the reading and the translation below it, and the swap only
+        // changes the order of those two.
         final int originalStart = 0;
         builder.append(original);
         final int originalEnd = builder.length();
-        // Swap exchanges the relative order of romanization and translation beneath the main lyrics.
-        // The main lyrics always remains on top.
-        final String firstBelow;
-        final String secondBelow;
-        final boolean firstIsRoma;
-
-        if (romanization != null && translation != null) {
-            firstBelow = swap ? translation : romanization;
-            secondBelow = swap ? romanization : translation;
-            firstIsRoma = !swap;
-        } else if (romanization != null) {
-            firstBelow = romanization;
-            secondBelow = null;
-            firstIsRoma = true;
-        } else if (translation != null) {
-            firstBelow = translation;
-            secondBelow = null;
-            firstIsRoma = false;
-        } else {
-            firstBelow = null;
-            secondBelow = null;
-            firstIsRoma = false;
-        }
-
-        if (firstBelow != null) {
+        if (romanization != null && !swap) {
             builder.append('\n');
-            if (firstIsRoma) {
-                romaStart = builder.length();
-                builder.append(firstBelow);
-                romaEnd = builder.length();
-            } else {
-                transStart = builder.length();
-                builder.append(firstBelow);
-                transEnd = builder.length();
-            }
+            romaStart = builder.length();
+            builder.append(romanization);
+            romaEnd = builder.length();
         }
-
-        if (secondBelow != null) {
+        if (translation != null) {
             builder.append('\n');
-            if (!firstIsRoma) {
-                romaStart = builder.length();
-                builder.append(secondBelow);
-                romaEnd = builder.length();
-            } else {
-                transStart = builder.length();
-                builder.append(secondBelow);
-                transEnd = builder.length();
-            }
+            transStart = builder.length();
+            builder.append(translation);
+            transEnd = builder.length();
+        }
+        if (romanization != null && swap) {
+            builder.append('\n');
+            romaStart = builder.length();
+            builder.append(romanization);
+            romaEnd = builder.length();
         }
 
         SpannableString text = new SpannableString(builder.toString());

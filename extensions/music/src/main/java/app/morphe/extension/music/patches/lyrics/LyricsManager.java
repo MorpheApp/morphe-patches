@@ -486,23 +486,22 @@ public final class LyricsManager {
         runOnLookupThread(() -> TrackOffsetStore.put(track, ms));
     }
 
-    public boolean isPlaying() { return playing; }
+    /** Main thread. */
+    public boolean isPlaying() {
+        return playing;
+    }
 
+    /** The artwork of the current media session track, null if it has none. Main thread. */
     @Nullable
     public Bitmap getCurrentArtworkBitmap() {
         MediaMetadata metadata = currentMetadata;
-        if (metadata != null) {
-            try {
-                Bitmap bmp = metadata.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART);
-                if (bmp == null) bmp = metadata.getBitmap(MediaMetadata.METADATA_KEY_ART);
-                if (bmp == null) bmp = metadata.getBitmap(MediaMetadata.METADATA_KEY_DISPLAY_ICON);
-                if (bmp != null && !bmp.isRecycled()) {
-                    return bmp;
-                }
-            } catch (Exception ignored) {
-            }
+        if (metadata == null) {
+            return null;
         }
-        return null;
+        Bitmap artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART);
+        if (artwork == null) artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_ART);
+        if (artwork == null) artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_DISPLAY_ICON);
+        return artwork != null && !artwork.isRecycled() ? artwork : null;
     }
 
     /** Injection point; main thread. */
