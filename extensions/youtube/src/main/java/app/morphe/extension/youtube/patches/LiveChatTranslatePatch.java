@@ -1405,8 +1405,6 @@ public final class LiveChatTranslatePatch {
             }
         }
 
-        applyTranslationStyle(builder, translatedStart, translatedEnd);
-
         if (builder.length() == 0) {
             // Nothing to show, so the row keeps its original text instead of going blank.
             return baseText;
