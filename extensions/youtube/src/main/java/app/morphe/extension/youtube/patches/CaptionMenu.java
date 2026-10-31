@@ -2,6 +2,10 @@
 package app.morphe.extension.youtube.patches;
 
 import android.app.Dialog;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.ScaleDrawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,22 +100,32 @@ public final class CaptionMenu {
         Switch toggle = new Switch(context);
         toggle.setTag("morphe_dual_captions");
         toggle.setText(StringRef.str("morphe_dual_captions_enabled_title"));
-        ThemeUtils.setThemeTextStyle(toggle, android.R.attr.textAppearanceListItem, android.R.attr.textColorPrimary);
+        int textStyle = ResourceUtils.getIdentifier(ResourceType.ATTR, "yt_sys_typography_typestack_body_l_heavy");
+        ThemeUtils.setThemeTextStyle(toggle, textStyle != 0 ? textStyle : android.R.attr.textAppearanceListItem,
+                android.R.attr.textColorPrimary);
+        if (textStyle == 0) toggle.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
         float density = context.getResources().getDisplayMetrics().density;
         int padding = Math.round(16 * density);
-        toggle.setPaddingRelative(padding, 0, padding, 0);
+        toggle.setPaddingRelative(padding, 0, Math.round(20 * density), 0);
         int iconId = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "quantum_ic_closed_caption_white_24");
         if (iconId != 0) {
             var icon = context.getDrawable(iconId).mutate();
             icon.setTint(ThemeUtils.getAppForegroundColor());
             toggle.setCompoundDrawablesRelativeWithIntrinsicBounds(icon, null, null, null);
-            toggle.setCompoundDrawablePadding(padding);
+            toggle.setCompoundDrawablePadding(Math.round(12 * density));
         }
         int thumb = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "settings_switch_selector");
         int track = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "settings_switch_track");
         if (thumb != 0 && track != 0) {
-            toggle.setThumbDrawable(context.getDrawable(thumb));
-            toggle.setTrackDrawable(context.getDrawable(track));
+            // The native caption row reserves 48dp for a 40x24dp switch glyph.
+            LayerDrawable thumbDrawable = new LayerDrawable(new Drawable[]{context.getDrawable(thumb)});
+            thumbDrawable.setLayerSize(0, Math.round(20 * density), Math.round(20 * density));
+            thumbDrawable.setLayerGravity(0, Gravity.CENTER);
+            toggle.setThumbDrawable(thumbDrawable);
+            ScaleDrawable trackDrawable = new ScaleDrawable(context.getDrawable(track), Gravity.CENTER, 1, 1);
+            trackDrawable.setLevel(9200);
+            toggle.setTrackDrawable(trackDrawable);
+            toggle.setSwitchMinWidth(Math.round(40 * density));
             toggle.setThumbTintList(null);
             toggle.setTrackTintList(null);
             toggle.setShowText(false);
