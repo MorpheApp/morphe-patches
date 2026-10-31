@@ -151,6 +151,14 @@ public final class OfflinePlaylistManager {
         savePlaylist(new OfflinePlaylist(existing.id(), existing.name(), orderedPaths));
     }
 
+        /** Updates the display name of an existing playlist. */
+    public void renamePlaylist(String playlistId, String newName) throws IOException {
+        OfflinePlaylist existing = getPlaylist(playlistId);
+        if (existing == null) throw new IOException("Playlist not found: " + playlistId);
+
+        savePlaylist(new OfflinePlaylist(existing.id(), newName, existing.trackPaths()));
+    }
+
     public void deletePlaylist(String playlistId) {
         File file = new File(playlistsDir, playlistId + ".json");
         OfflineStorage.delete(file);
