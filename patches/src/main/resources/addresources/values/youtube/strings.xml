@@ -1490,6 +1490,18 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_announcements_connection_failed" translatable="false">Failed connecting to announcements provider</string>
     <string name="morphe_announcements_dialog_dismiss" translatable="false">Dismiss</string>
 
+    <!-- misc.announcements.patchesUpdateNoticePatch -->
+    <string name="morphe_patches_update_notice_title">Notify about patches updates</string>
+    <string name="morphe_patches_update_notice_summary">Shows a notice on app startup when new patches with YouTube changes are available</string>
+    <string name="morphe_patches_update_notice_dialog_title">New patches available</string>
+    <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b>%1$s&lt;/b> (current: %2$s)</string>
+    <string name="morphe_patches_update_notice_dialog_features">✨ New features</string>
+    <string name="morphe_patches_update_notice_dialog_fixes">🐛 Bug fixes</string>
+    <string name="morphe_patches_update_notice_dialog_other">🚀 Other changes</string>
+    <string name="morphe_patches_update_notice_dialog_more">…and %d more</string>
+    <string name="morphe_patches_update_notice_dialog_update">Update</string>
+    <string name="morphe_patches_update_notice_dialog_dismiss">Dismiss</string>
+
     <!-- misc.playercontrols.playerControlsPatch -->
     <string name="morphe_restore_old_player_buttons_title">Restore old player button style</string>
     <string name="morphe_restore_old_player_buttons_summary">Reverts the bold video player controls to the older, thinner visual style</string>
