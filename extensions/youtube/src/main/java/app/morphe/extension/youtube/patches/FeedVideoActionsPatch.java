@@ -144,6 +144,8 @@ public final class FeedVideoActionsPatch {
     private static final long PENDING_WATCH_LATER_TIMEOUT_MS = 2000;
     /** Time the hidden menu has to bind its items, before the request is used instead. */
     private static final long NATIVE_ITEM_TIMEOUT_MS = 700;
+    /** Time the app has to replace the hidden menu with the Save to playlist panel, before the menu is shown. */
+    private static final long SAVE_PANEL_TIMEOUT_MS = 2000;
     /** The menu may be created before it is shown, so it is closed after each of these delays. */
     private static final long[] DISMISS_DELAYS_MS = {50, 300};
 
@@ -1018,7 +1020,10 @@ public final class FeedVideoActionsPatch {
         if (pendingWatchLaterUptime == 0) {
             return false;
         }
-        if (SystemClock.uptimeMillis() - pendingWatchLaterUptime > PENDING_WATCH_LATER_TIMEOUT_MS) {
+        // Once the menu is open, the fallback ends the pending tap, and closes or shows the hidden menu.
+        // Otherwise the hidden menu of a slow device could stay open, and take the touches of the app.
+        if (pendingFlyoutRef.get() == null
+                && SystemClock.uptimeMillis() - pendingWatchLaterUptime > PENDING_WATCH_LATER_TIMEOUT_MS) {
             clearPendingWatchLater();
             return false;
         }
@@ -1253,13 +1258,31 @@ public final class FeedVideoActionsPatch {
                 }
                 Object flyout = pendingFlyoutRef.get();
                 clearPendingWatchLater();
-                if (saveToPlaylist) {
-                    // If the panel is shown in the same sheet as the menu, the sheet must be visible again.
-                    // A menu that the app closed is not shown again.
-                    showHiddenMenu(flyout);
-                } else {
+                if (!saveToPlaylist) {
                     dismissSoon(flyout);
+                    return;
                 }
+                // If the panel is shown in the same sheet as the menu, the sheet must be visible again,
+                // but only once the panel replaced the items: the app can close the menu or replace its items
+                // later, and the menu would show instead of the panel. A menu that the app closed is not shown.
+                final long clickUptime = SystemClock.uptimeMillis();
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        final boolean isShowing = flyout instanceof Dialog dialog
+                                ? dialog.isShowing()
+                                : flyout instanceof PopupWindow popupWindow && popupWindow.isShowing();
+                        if (!isShowing) {
+                            return;
+                        }
+                        if (!clickedItem.isShown()
+                                || SystemClock.uptimeMillis() - clickUptime >= SAVE_PANEL_TIMEOUT_MS) {
+                            showHiddenMenu(flyout);
+                            return;
+                        }
+                        handler.postDelayed(this, PENDING_ITEM_CHECK_MS);
+                    }
+                });
             });
         } catch (Exception ex) {
             Logger.printException(() -> "onFlyoutListBound failure", ex);
@@ -1340,19 +1363,13 @@ public final class FeedVideoActionsPatch {
         return best;
     }
 
-    /**
-     * The icon names of the Save to playlist item, by preference.
-     * The item uses the icon of a playlist or of a bookmark, depending on the app version.
-     */
-    private static final String[] SAVE_TO_PLAYLIST_ICON_NAMES = {"PLAYLIST_ADD", "ADD_TO_PLAYLIST", "BOOKMARK", "SAVE"};
-
     private static final Pattern NOT_SAVE_ITEM_PATTERN =
             Pattern.compile("DOWNLOAD|OFFLINE|SHARE|QUEUE|NOT_INTERESTED|DISMISS|FLAG|REPORT|CAST");
 
     @Nullable
     private static Pair<String, Integer> findSaveToPlaylistButton() {
         List<Pair<String, Integer>> buttons = FlyoutUtils.getVisibleFlyoutButtons();
-        for (String iconName : SAVE_TO_PLAYLIST_ICON_NAMES) {
+        for (String iconName : FlyoutUtils.SAVE_TO_PLAYLIST_ICON_NAMES) {
             for (Pair<String, Integer> button : buttons) {
                 String name = button.first;
                 if (name.contains(iconName) && !name.contains("WATCH_LATER") && !name.contains("REMOVE")) {

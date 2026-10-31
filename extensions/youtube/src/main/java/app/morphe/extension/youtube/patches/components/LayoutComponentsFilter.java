@@ -121,6 +121,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final ByteArrayFilterGroupList linearLayoutGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup liveStream;
     private final ByteArrayFilterGroup liveStreamBuffer;
+    private final StringFilterGroup libraryDownloads;
+    private final ByteArrayFilterGroup libraryDownloadsBuffer;
     private final StringFilterGroup notificationsMenuHeader;
     private final ByteArrayFilterGroup notificationsMenuHeaderBuffer;
     private final StringFilterGroup notifyMe;
@@ -204,6 +206,19 @@ public final class LayoutComponentsFilter extends Filter {
                 "yt_outline_experimental_live_black"
         );
 
+        // 'Downloads' item of the You tab. It's a lockup, so the bottom menu filter can't match its name.
+        libraryDownloads = new StringFilterGroup(
+                Settings.HIDE_ACCOUNT_MENU_DOWNLOADS,
+                "video_lockup_with_attachment.e"
+        );
+
+        // The title is localized, but only the 'Downloads' item has this icon.
+        libraryDownloadsBuffer = new ByteArrayFilterGroup(
+                null,
+                "yt_outline_download_black",
+                "yt_outline_experimental_download_black"
+        );
+
         // The hint shown in the player during seek gestures. The identifier is versioned.
         final var seekEduOverlay = new StringFilterGroup(
                 Settings.HIDE_PLAYER_GESTURE_HINTS,
@@ -216,6 +231,7 @@ public final class LayoutComponentsFilter extends Filter {
                 linearLayout,
                 liveChatReplay,
                 liveStream,
+                libraryDownloads,
                 seekEduOverlay
         );
 
@@ -683,6 +699,14 @@ public final class LayoutComponentsFilter extends Filter {
             // Only check the whole lockup. The buffers of its nested components include
             // a shared list of icon names that also has the 'LIVE' badge icon.
             return isLockupRoot(path) && liveStreamBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == libraryDownloads) {
+            // Only check the whole lockup, for the same reason as the live streams.
+            return Settings.HIDE_ACCOUNT_MENU.get()
+                    && isLockupRoot(path)
+                    && NavigationButton.getSelectedNavigationButton(contextInterface) == NavigationButton.LIBRARY
+                    && libraryDownloadsBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == notificationsMenuHeader) {

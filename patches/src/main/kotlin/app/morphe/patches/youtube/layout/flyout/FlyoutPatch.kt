@@ -20,11 +20,9 @@ import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.numberOfParameterRegisters
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
-import app.morphe.patches.youtube.shared.hookVideoStarted
 import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -188,10 +186,6 @@ val flyoutPatch = bytecodePatch(
                 )
             }
         }
-
-        hookVideoStarted("$EXTENSION_UTILS_CLASS->resetVideoMarkedAsForKids()V")
-
-        hookElement("$EXTENSION_UTILS_CLASS->onCommentsLoaded")
 
         // Track and initialize flyout menu buttons generically.
         FeedFlyoutButtonsInitializerFingerprint.clearMatch() // Shared fingerprint.

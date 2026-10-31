@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Активиране на библиотека / Филтър от долното меню</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Активиране на библиотека / Филтър от долното меню</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Въведете имената на библиотеките / Филтър от долното меню, разделени с нови редове</string>
+  <string name="morphe_hide_account_menu_downloads_title">Скрий изтеглянията</string>
   <string name="morphe_hide_album_cards_title">\"Карти на албумите\"</string>
   <string name="morphe_hide_album_cards_summary">Скрива картите на албумите под описанието на изпълнителя</string>
   <string name="morphe_hide_artist_cards_title">Скриване на картите на изпълнителите</string>
@@ -515,7 +516,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">Аудио</string>
   <string name="morphe_external_downloader_quick_options">Всички опции</string>
   <string name="morphe_shorts_download_flyout_button_title">Показване на изтегляне в менюто на Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Добавя елемент за външен инструмент за изтегляне в изскачащото меню на плейъра за Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Изтегляне</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Превод на глас зад кадър</string>
@@ -623,10 +623,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Запазване в „Гледай по-късно“</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Показване на бутона за запазване в „Гледай по-късно“ в изскачащото меню с настройки на плейъра</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Позволява запазването на гледания в момента видеоклип в „Гледай по-късно“ от изскачащото меню с настройките на видеоклипа.</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Показване на бутона „Запазване в Гледай по-късно“ в детски видеоклипове</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Позволява запазването на видеоклипове, свързани с деца, в „Гледай по-късно“ от изскачащото меню.</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Показване на бутона „Запазване в ‘Гледай по-късно’“ в изскачащото меню на Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Позволява запазване на Shorts в „Гледай по-късно“ от изскачащото меню</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Пренасочване на \"Гледай по-късно\" към плейлист</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Гледай по-късно</string>
   <string name="morphe_queue_flyout_title">Добавяне към опашката на Morphe</string>
@@ -1270,6 +1266,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Блясък 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Блясък 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Екранът за зареждане с ефект на сияние не се поддържа от това устройство</string>
+  <string name="morphe_splash_screen_duration_title">Продължителност на анимацията при стартиране</string>
+  <string name="morphe_splash_screen_duration_summary">Колко време продължава анимацията с блясък. Докоснете анимацията, за да я пропуснете.</string>
   <string name="morphe_theme_color_light_title">Фон на светлата тема</string>
   <string name="morphe_theme_color_light_entry_2">Бяло</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Бяло)‎</string>

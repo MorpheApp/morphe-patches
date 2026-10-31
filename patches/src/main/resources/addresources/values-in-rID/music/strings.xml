@@ -718,12 +718,15 @@ Lirik berasal dari layanan pihak ketiga yang tidak berafiliasi, disponsori, atau
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Terhubung! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Koneksi gagal. Periksa pengaturan.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Masukkan kunci API terlebih dahulu</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Uji koneksi</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Mengambil model…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Ambil model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Pilih Model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Gagal mengambil model. Periksa kunci API atau koneksi.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Ajakan</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL Dasar</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Preset layanan</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Pilih layanan</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">Kunci API (opsional)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Body permintaan tambahan (JSON opsional)</string>

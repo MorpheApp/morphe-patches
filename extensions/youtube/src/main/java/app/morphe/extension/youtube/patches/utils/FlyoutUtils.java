@@ -17,8 +17,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -36,6 +34,7 @@ import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
@@ -48,6 +47,7 @@ import java.util.Map;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+import java.util.regex.Pattern;
 import java.util.function.Predicate;
 
 import app.morphe.extension.shared.Logger;
@@ -73,6 +73,7 @@ import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRequest;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
+import app.morphe.extension.youtube.videoplayer.ExportDownloadButton;
 import app.morphe.extension.youtube.videoplayer.PictureinPictureButton;
 import app.morphe.extension.youtube.videoplayer.SaveToWatchLaterButton;
 import app.morphe.extension.youtube.videoplayer.ShortsDownloadButton;
@@ -299,11 +300,13 @@ public final class FlyoutUtils {
             getAsciiBytes(".ytimg.com/vi/"),
             getAsciiBytes("youtube.com/watch?v=")
     );
-    private static final List<byte[]> KIDS_VIDEO_ELEMENTS_BYTES = List.of(
-            getAsciiBytes("video_metadata_carousel.e"),
-            getAsciiBytes("com.google.android.apps.youtube.kids"),
-            getAsciiBytes("https://www.youtube.com/myfamily/#mf-compare")
-    );
+    /**
+     * The icon names of the Save to playlist item, by preference.
+     * The item uses the icon of a playlist or of a bookmark, depending on the app version.
+     */
+    public static final String[] SAVE_TO_PLAYLIST_ICON_NAMES = {"PLAYLIST_ADD", "ADD_TO_PLAYLIST", "BOOKMARK", "SAVE"};
+    private static final Pattern APP_SAVE_BUTTON_PATTERN =
+            Pattern.compile("WATCH_LATER|" + String.join("|", SAVE_TO_PLAYLIST_ICON_NAMES));
     private static final List<byte[]> SHORTS_VIDEO_ELEMENT_BYTES = List.of(
             getAsciiBytes("history-shorts-shelf-item"),
             getAsciiBytes("shorts-shelf-item")
@@ -333,20 +336,32 @@ public final class FlyoutUtils {
      * Text of the visible flyout buttons, by their name, to find the views of the buttons in the menu.
      */
     private static final Map<String, String> visibleFlyoutButtonTexts = new HashMap<>();
+    /**
+     * If the app menu has a save item, also if the item is hidden by a Morphe setting.
+     */
+    private static boolean flyoutHasAppSaveButton;
+    /**
+     * Injected save item. The app menu can bind its items after the injected items are added.
+     */
+    private static WeakReference<View> injectedSaveButtonRef = new WeakReference<>(null);
 
     private static WeakReference<View> senderViewRef = new WeakReference<>(null);
 
-    private static final Handler flyoutVisibilityHandler = new Handler(Looper.getMainLooper());
-    private static boolean flyoutVisibilityHandlerRunning;
-    private static final Handler flyoutIdsResetHandler = new Handler(Looper.getMainLooper());
-    private static boolean flyoutIdsResetHandlerRunning;
 
+    /**
+     * If the elements were added to the open menu. Menus opened on top of it stay as they are.
+     */
+    private static boolean flyoutElementsAdded;
     private static Dialog flyoutDialog;
     private static PopupWindow flyoutPopupWindow;
     private static String flyoutVideoId = "";
     private static String flyoutPlaylistId = "";
+    /**
+     * The buffer of the open menu, if the menu has one.
+     */
+    @Nullable
+    private static byte[] flyoutBuffer;
 
-    private static boolean videoMarkedAsForKids;
     private static boolean isMyTabHistoryFlyout;
     private static boolean isShortFlyout;
     /**
@@ -384,6 +399,36 @@ public final class FlyoutUtils {
     }
 
     /**
+     * Some menus, such as the menus of the downloads list, have no description to find
+     * the video by. Their buffer is of a single video, so its first thumbnail is of that video.
+     *
+     * @return The video of the first thumbnail of the open menu, or an empty string if there is none.
+     */
+    public static String getFlyoutThumbnailVideoId() {
+        byte[] buffer = flyoutBuffer;
+        if (buffer == null) {
+            return "";
+        }
+
+        byte[] prefix = VIDEO_ID_PREFIXES_BYTES.get(0);
+        final int index = byteIndexOf(buffer, prefix);
+        final int videoIdStart = index + prefix.length;
+        if (index < 0 || videoIdStart + VIDEO_ID_LENGTH > buffer.length) {
+            return "";
+        }
+        return new String(buffer, videoIdStart, VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
+    }
+
+    public static boolean hasVisibleFlyoutButton(String buttonName) {
+        for (Pair<String, Integer> button : visibleFlyoutButtons) {
+            if (button.first.equals(buttonName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * @return The channel request of the video of the open menu, or null if the menu has no video,
      *         such as the player settings.
      */
@@ -412,37 +457,6 @@ public final class FlyoutUtils {
 
     /**
      * Injection point.
-     * Detect specific elements for videos marked as for kids, displayed
-     * via the video player's comments button.
-     */
-    public static byte[] onCommentsLoaded(byte[] bytes) {
-        if (bytes == null) {
-            return null;
-        }
-
-        // Every element is searched on the main thread, see FeedVideoCardsPatch.getElementText().
-        int found = 0;
-        for (byte[] search : KIDS_VIDEO_ELEMENTS_BYTES) {
-            if (FeedVideoCardsPatch.contains(bytes, search)) {
-                found++;
-            }
-        }
-        if (found == KIDS_VIDEO_ELEMENTS_BYTES.size() - 1) {
-            videoMarkedAsForKids = true;
-        }
-
-        return bytes;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void resetVideoMarkedAsForKids() {
-        videoMarkedAsForKids = false;
-    }
-
-    /**
-     * Injection point.
      */
     public static void setBottomSheetFlyout(Dialog dialog) {
         if (dialog == null) {
@@ -451,7 +465,10 @@ public final class FlyoutUtils {
         FeedVideoActionsPatch.onBottomSheetFlyout(dialog);
         flyoutDialog = dialog;
 
-        runFlyoutVisibilityHandler();
+        Window window = dialog.getWindow();
+        if (window != null) {
+            addFlyoutElementsWhenShown(dialog, window.getDecorView());
+        }
     }
 
     /**
@@ -464,7 +481,13 @@ public final class FlyoutUtils {
         FeedVideoActionsPatch.onPopupWindowFlyout(popupWindow);
         flyoutPopupWindow = popupWindow;
 
-        runFlyoutVisibilityHandler();
+        // The app can set the content view after this call, in the same method that shows the popup.
+        Utils.runOnMainThreadDelayed(() -> {
+            View contentView = popupWindow.getContentView();
+            if (contentView != null) {
+                addFlyoutElementsWhenShown(popupWindow, contentView);
+            }
+        }, 0);
     }
 
     public static void dismissFlyout() {
@@ -478,86 +501,57 @@ public final class FlyoutUtils {
         }
     }
 
-    private static void runFlyoutVisibilityHandler() {
-        if (flyoutVisibilityHandlerRunning) {
-            return;
-        }
-        flyoutVisibilityHandlerRunning = true;
+    /**
+     * The menu is not shown yet when it is created. The show and dismiss listeners of the menu
+     * are used by the app, while a view can have any number of attach listeners.
+     *
+     * @param flyoutView View that is attached to the window while the menu is open.
+     */
+    private static void addFlyoutElementsWhenShown(Object flyoutPanel, View flyoutView) {
+        Runnable addElements = () -> {
+            if (!flyoutElementsAdded) {
+                flyoutElementsAdded = true;
+                addFlyoutElements(flyoutPanel);
+                onFlyoutListBound(flyoutPanel);
+            }
+        };
 
-        flyoutVisibilityHandler.removeCallbacksAndMessages(null);
-        flyoutVisibilityHandler.post(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        if (flyoutDialog == null && flyoutPopupWindow == null) {
-                            flyoutVisibilityHandlerRunning = false;
-                            return;
-                        }
+        flyoutView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            @Override
+            public void onViewAttachedToWindow(@NonNull View view) {
+                // After the current layout pass, that binds the items of the menu.
+                view.post(addElements);
+            }
 
-                        final boolean isDialogShowing =
-                                flyoutDialog != null && flyoutDialog.isShowing();
-                        final boolean isPopupWindowShowing =
-                                flyoutPopupWindow != null && flyoutPopupWindow.isShowing();
-                        final boolean blockFlyoutVisibilityHandler =
-                                isDialogShowing || isPopupWindowShowing;
-
-                        if (blockFlyoutVisibilityHandler) {
-                            final Object targetPanel = isDialogShowing ? flyoutDialog : flyoutPopupWindow;
-
-                            // give a delay to ensure the flyout animation is finished.
-                            Utils.runOnMainThreadDelayed(
-                                    () -> {
-                                        runFlyoutIdsResetHandler();
-                                        addFlyoutElements(targetPanel);
-                                        onFlyoutListBound(targetPanel);
-                                    },
-                                    30
-                            );
-                        } else {
-                            flyoutVisibilityHandler.postDelayed(this, 10);
-                        }
+            @Override
+            public void onViewDetachedFromWindow(@NonNull View view) {
+                view.removeOnAttachStateChangeListener(this);
+                // A dialog is still showing while its window is removed.
+                Utils.runOnMainThreadDelayed(() -> {
+                    if ((flyoutDialog == null || !flyoutDialog.isShowing())
+                            && (flyoutPopupWindow == null || !flyoutPopupWindow.isShowing())) {
+                        resetFlyoutIds();
                     }
-                }
-        );
-    }
+                }, 0);
+            }
+        });
 
-    private static void runFlyoutIdsResetHandler() {
-        if (flyoutIdsResetHandlerRunning) {
-            return;
+        // The app can show the menu before this call.
+        if (flyoutView.isAttachedToWindow()) {
+            flyoutView.post(addElements);
         }
-        flyoutIdsResetHandlerRunning = true;
-
-        flyoutIdsResetHandler.removeCallbacksAndMessages(null);
-        flyoutIdsResetHandler.post(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        final boolean isDialogClosed =
-                                flyoutDialog == null || !flyoutDialog.isShowing();
-                        final boolean isPopupWindowClosed =
-                                flyoutPopupWindow == null || !flyoutPopupWindow.isShowing();
-                        final boolean blockFlyoutIdsResetHandler =
-                                isDialogClosed && isPopupWindowClosed;
-
-                        if (blockFlyoutIdsResetHandler) {
-                            resetFlyoutIds();
-
-                            flyoutVisibilityHandlerRunning = false;
-                            flyoutIdsResetHandlerRunning = false;
-                        } else {
-                            flyoutIdsResetHandler.postDelayed(this, 10);
-                        }
-                    }
-                }
-        );
     }
 
     private static void resetFlyoutIds() {
+        flyoutElementsAdded = false;
         visibleFlyoutButtons.clear();
         visibleFlyoutButtonTexts.clear();
+        flyoutHasAppSaveButton = false;
+        injectedSaveButtonRef = new WeakReference<>(null);
         currentButtonIndex = 0;
         flyoutVideoId = "";
         flyoutPlaylistId = "";
+        flyoutBuffer = null;
         if (flyoutChannelIdRequest != null) {
             // The buttons waiting for the channel are gone with the menu.
             flyoutChannelIdRequest.cancelIfNotDone();
@@ -693,8 +687,6 @@ public final class FlyoutUtils {
                     flyoutPanel,
                     nextButtonIndex,
                     flyoutVideoId,
-                    videoMarkedAsForKids,
-                    isShortFlyout,
                     PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()
             );
         }
@@ -705,6 +697,14 @@ public final class FlyoutUtils {
                     flyoutPanel,
                     nextButtonIndex,
                     flyoutVideoId
+            );
+        }
+
+        if (ExportDownloadButton.isPatchIncluded()) {
+            nextButtonIndex = ExportDownloadButton.addFlyoutButton(
+                    flyoutPanel,
+                    nextButtonIndex,
+                    allButtonsVideoId
             );
         }
 
@@ -795,6 +795,30 @@ public final class FlyoutUtils {
             int index
     ) {
         return addFlyoutMenuItem(flyoutPanel, icon, text, clickListener, index, false, null);
+    }
+
+    /**
+     * Adds a save item, which is removed if the app menu binds its own save item afterwards.
+     */
+    public static int addFlyoutSaveButton(
+            Object flyoutPanel,
+            Drawable icon,
+            String text,
+            View.OnClickListener clickListener,
+            int index
+    ) {
+        final int nextIndex = addFlyoutButton(flyoutPanel, icon, text, clickListener, index);
+        if (nextIndex >= 0 && !customItemTextRefs.isEmpty()) {
+            injectedSaveButtonRef = new WeakReference<>(customItemTextRefs.get(customItemTextRefs.size() - 1).get());
+        }
+        return nextIndex;
+    }
+
+    /**
+     * @return If the app menu has its own item to save the video. The name of the item does not depend on the language.
+     */
+    public static boolean hasAppSaveButton() {
+        return flyoutHasAppSaveButton;
     }
 
     /**
@@ -907,7 +931,38 @@ public final class FlyoutUtils {
      */
     public static void setCurrentButtonInfo(@Nullable Enum<?> buttonEnum, @Nullable Object buttonInfo,
                                             @Nullable CharSequence buttonText) {
-        if (buttonEnum == null) {
+        // Before the checks below, as a save item hidden by a Morphe setting must not be replaced by the injected one.
+        if (buttonEnum != null && !flyoutHasAppSaveButton) {
+            String name = buttonEnum.name();
+            if (APP_SAVE_BUTTON_PATTERN.matcher(name).find() && !name.contains("REMOVE")) {
+                flyoutHasAppSaveButton = true;
+
+                View view = injectedSaveButtonRef.get();
+                injectedSaveButtonRef = new WeakReference<>(null);
+                while (view != null && view.getParent() instanceof ViewGroup parent) {
+                    if (parent.getParent() instanceof InjectedItemsScrollView injectedItems) {
+                        Utils.hideViewByRemovingFromParentUnderCondition(true, view);
+                        if (parent.getChildCount() == 0) {
+                            // The divider is right after the injected items.
+                            ViewGroup menuContainer = injectedItems.menuContainer;
+                            Utils.hideViewByRemovingFromParentUnderCondition(true,
+                                    menuContainer.getChildAt(menuContainer.indexOfChild(injectedItems) + 1));
+                            Utils.hideViewByRemovingFromParentUnderCondition(true, injectedItems);
+                        }
+                        if (flyoutPopupWindow != null && flyoutPopupWindow.isShowing()) {
+                            flyoutPopupWindow.update();
+                        }
+                        break;
+                    }
+                    view = parent;
+                }
+            }
+        }
+
+        // The menu creates no row for an item without a text, such as an item hidden by a Morphe setting.
+        // It is not counted, so the index of every button matches its row.
+        // The popup menus always give the text, and keep the rows they hide.
+        if (buttonEnum == null || buttonText == null) {
             return;
         }
 
@@ -1235,6 +1290,7 @@ public final class FlyoutUtils {
         byte[] flyoutBuffer = bufferObject instanceof ProtocolBufferFieldInterface bufferInterface
                 ? bufferInterface.patch_getBuffer()
                 : null;
+        FlyoutUtils.flyoutBuffer = flyoutBuffer;
         if (flyoutBuffer == null) {
             return;
         }

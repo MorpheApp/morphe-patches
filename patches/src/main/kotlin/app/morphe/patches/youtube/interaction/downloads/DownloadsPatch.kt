@@ -24,6 +24,7 @@ import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethod
 import app.morphe.patches.shared.misc.fix.proto.protoDefaultInstanceFingerprint
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -61,14 +62,20 @@ private val downloadsResourcePatch = resourcePatch {
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     ListPreference("morphe_download_mode"),
+                    SwitchPreference("morphe_shorts_download_flyout_button", summary = true),
+                    NonInteractivePreference(
+                        "morphe_export_download_folder",
+                        summaryKey = null,
+                        tag = "app.morphe.extension.youtube.settings.preference.ExportFolderPreference",
+                        selectable = true
+                    ),
                     SwitchPreference("morphe_external_downloader_overlay_button", summary = true),
                     TextPreference(
                         "morphe_external_downloader_name",
                         tag = "app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference",
                     ),
                     SwitchPreference("morphe_external_downloader_quick_menu", summary = true),
-                    SwitchPreference("morphe_external_downloader_mark_watched", summary = true),
-                    SwitchPreference("morphe_shorts_download_flyout_button", summary = true)
+                    SwitchPreference("morphe_external_downloader_mark_watched", summary = true)
                 )
             )
         )
@@ -103,6 +110,9 @@ private const val EXTENSION_SPOOF_CLASS = "Lapp/morphe/extension/shared/spoof/Sp
 private const val EXTENSION_SHORTS_DOWNLOAD_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/ShortsDownloadButton;"
 
+private const val EXTENSION_EXPORT_DOWNLOAD_BUTTON =
+    "Lapp/morphe/extension/youtube/videoplayer/ExportDownloadButton;"
+
 private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/ExternalDownloadButton;"
 
 private const val GET_GENERATED_REGISTRY =
@@ -119,7 +129,7 @@ val downloadsPatch = bytecodePatch(
     name = "Downloads",
     description = "Adds support to download videos with an external downloader app " +
         "using the in-app download button or a video player action button, " +
-        "and adds an option to download videos in-app.",
+        "adds an option to download videos in-app, and exports saved videos to the device.",
 ) {
     dependsOn(
         downloadsResourcePatch,
@@ -137,6 +147,7 @@ val downloadsPatch = bytecodePatch(
         initializeTopControl(EXTENSION_BUTTON)
 
         setExtensionIsPatchIncluded(EXTENSION_SHORTS_DOWNLOAD_BUTTON)
+        setExtensionIsPatchIncluded(EXTENSION_EXPORT_DOWNLOAD_BUTTON)
 
         OfflineVideoEndpointFingerprint.method.addInstructionsWithLabels(
             0,

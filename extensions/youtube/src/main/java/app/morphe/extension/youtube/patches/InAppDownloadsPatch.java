@@ -25,10 +25,10 @@ import java.util.concurrent.TimeUnit;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.patches.DownloadMode;
+import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
-import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
 import app.morphe.extension.youtube.innertube.Offline.ButtonCommand;
 import app.morphe.extension.youtube.innertube.Offline.DownloadButtonColor;
 import app.morphe.extension.youtube.innertube.Offline.DownloadButtonLayout;
@@ -514,6 +514,17 @@ public final class InAppDownloadsPatch {
                 .setPersistence(ENTITY_PERSISTENCE)
                 .build();
         return Uri.encode(Base64.encodeToString(key.toByteArray(), Base64.URL_SAFE | Base64.NO_WRAP));
+    }
+
+    /**
+     * Saves a video the same as the Download button of the app, for videos that have no such button.
+     * Must be called from the main thread.
+     */
+    public static void saveVideo(String videoId) {
+        Logger.printDebug(() -> "Saving video: " + videoId);
+        if (!NativeSnackbarPatch.executeCommand(saveVideoCommand(videoId, List.of()).toByteArray())) {
+            Logger.printException(() -> "Could not save the video, no activity is shown: " + videoId);
+        }
     }
 
     /**

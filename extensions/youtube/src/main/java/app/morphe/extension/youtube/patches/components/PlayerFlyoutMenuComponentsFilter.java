@@ -107,10 +107,7 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
 
     private final ByteArrayFilterGroup videoPlayerSettingsQualityButton = new ByteArrayFilterGroup(
             null,
-            "quality_sheet_header.e",
-            "quality_sheet_header",
-            "quick_quality_sheet_content",
-            "overflow_menu_item_Quality"
+            "quality_sheet_header.e"
     );
     private final ByteArrayFilterGroup shortsPlayerSettingsCaptionsButton = new ByteArrayFilterGroup(
             null,
@@ -161,99 +158,75 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 null,
                 "yt_outline_arrow_repeat_1_",
                 "yt_outline_experimental_repeat1_",
-                "yt_outline_experimental_play_circle_black_",
-                "overflow_menu_item_Loop video",
-                "overflow_menu_item_switch_button_Loop video"
+                "yt_outline_experimental_play_circle_black_"
         );
 
         flyoutMenuBufferGroupList.addAll(
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS,
                         "yt_outline_gear_",
-                        "yt_outline_experimental_gear_",
-                        "overflow_menu_item_More"
+                        "yt_outline_experimental_gear_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_AMBIENT_MODE,
                         "yt_outline_screen_light_",
-                        "yt_outline_experimental_ambient_mode_",
-                        "overflow_menu_item_Ambient mode",
-                        "overflow_menu_item_switch_button_Ambient mode"
+                        "yt_outline_experimental_ambient_mode_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK,
                         "yt_outline_person_",
-                        "yt_outline_experimental_person_",
-                        "audio_track_sheet_content",
-                        "overflow_menu_item_Audio Track"
+                        "yt_outline_experimental_person_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_CAPTIONS,
                         "closed_caption_",
-                        "yt_outline_experimental_closed_captions_",
-                        "captions_sheet_content",
-                        "overflow_menu_item_Captions"
+                        "yt_outline_experimental_closed_captions_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_HELP,
                         "yt_outline_question_circle_",
-                        "yt_outline_experimental_help_circle_",
-                        "overflow_menu_item_Help"
+                        "yt_outline_experimental_help_circle_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_LISTEN_WITH_YOUTUBE_MUSIC,
                         "yt_outline_youtube_music_",
-                        "yt_outline_experimental_youtube_music_",
-                        "overflow_menu_item_Listen with YouTube Music"
+                        "yt_outline_experimental_youtube_music_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_LOCK_SCREEN,
                         "yt_outline_lock_",
-                        "yt_outline_experimental_lock_",
-                        "lock_mode_state_entity_key",
-                        "overflow_menu_item_Lock screen"
+                        "yt_outline_experimental_lock_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_ON_THE_GO,
                         "yt_outline_headset_",
-                        "yt_outline_experimental_headset_",
-                        "overflow_menu_item_On-the-go"
+                        "yt_outline_experimental_headset_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_QUALITY,
                         "yt_outline_adjust_",
-                        "yt_outline_experimental_adjust_",
-                        "quick_quality_sheet_content",
-                        "quality_sheet_header",
-                        "overflow_menu_item_Quality"
+                        "yt_outline_experimental_adjust_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_SLEEP_TIMER,
                         "yt_outline_moon_z_",
-                        "yt_outline_experimental_sleep_timer_",
-                        "sleep_timer_sheet_content",
-                        "overflow_menu_item_Sleep timer"
+                        "yt_outline_experimental_sleep_timer_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_SPEED,
                         "yt_outline_play_arrow_half_circle_",
-                        "yt_outline_experimental_play_circle_half_dashed_",
-                        "playback_rate_selector_menu_sheet",
-                        "overflow_menu_item_Playback speed"
+                        "yt_outline_experimental_play_circle_half_dashed_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_STABLE_VOLUME,
                         "volume_stable_",
                         "yt_fill_experimental_stable_volume_",
-                        "yt_outline_experimental_stable_volume_",
-                        "overflow_menu_item_Stable volume",
-                        "overflow_menu_item_switch_button_Stable volume"
+                        "yt_outline_experimental_stable_volume_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_WATCH_IN_VR,
                         "yt_outline_vr_",
-                        "yt_outline_experimental_vr_",
-                        "overflow_menu_item_Watch in VR"
+                        "yt_outline_experimental_vr_"
                 )
         );
     }

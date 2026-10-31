@@ -185,6 +185,20 @@ internal object SplashScreenOnStopFingerprint : Fingerprint(
 )
 
 /**
+ * Schedules the splash screen to close after a timeout of 2.5 seconds.
+ * Must be matched against the method of [SplashScreenStyleFingerprint] or [SplashScreenStyleDelegateFingerprint].
+ */
+internal object SplashScreenTimeoutFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        literal(2500L),
+        methodCall(
+            parameters = listOf("Ljava/lang/Runnable;", "J", "Ljava/util/concurrent/TimeUnit;")
+        )
+    )
+)
+
+/**
  * Removes the splash screen.
  */
 internal object SplashScreenRemoveFingerprint : Fingerprint(

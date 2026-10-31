@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">\'보관함\' / \'내 페이지\' 하단 메뉴 필터 활성화하기</string>
   <string name="morphe_hide_account_menu_filter_strings_title">\'보관함\' / \'내 페이지\' 하단 메뉴 필터</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">필터링할 \'보관함\' / \'내 페이지\' 하단 메뉴 이름을 줄바꿈으로 구분하여 설정하세요</string>
+  <string name="morphe_hide_account_menu_downloads_title">\'오프라인 저장 동영상\' 숨기기</string>
   <string name="morphe_hide_album_cards_title">음악 앨범 카드 숨기기</string>
   <string name="morphe_hide_album_cards_summary">아티스트 설명 아래에서 앨범 카드를 숨깁니다</string>
   <string name="morphe_hide_artist_cards_title">아티스트 카드 숨기기</string>
@@ -515,8 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">오디오</string>
   <string name="morphe_external_downloader_quick_options">모든 옵션</string>
   <string name="morphe_shorts_download_flyout_button_title">Shorts 메뉴에 다운로드 표시하기</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Shorts 플레이어에 외부 다운로더 메뉴 항목을 추가합니다</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Shorts 플레이어 메뉴에 다운로드 항목을 추가합니다</string>
   <string name="morphe_shorts_download_flyout_title">다운로드</string>
+  <string name="morphe_export_download_folder_title">저장된 동영상 내보내기</string>
+  <string name="morphe_export_download_folder_summary">"앱 내부에 저장된 동영상을 기기 저장소로 내보낼 수 있습니다. 내보내기 폴더를 변경하려면 여기를 탭하세요
+
+내보내기 폴더: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">폴더 내보내기</string>
+  <string name="morphe_export_download_folder_change">폴더 변경</string>
+  <string name="morphe_export_download_folder_changed">내보내기 폴더를 변경하였습니다</string>
+  <string name="morphe_export_download_folder_reset">내보내기 폴더 초기화</string>
+  <string name="morphe_export_download_flyout_title">기기로 내보내기</string>
+  <string name="morphe_export_download_started">동영상을 내보내는 중</string>
+  <string name="morphe_export_download_progress">동영상을 내보내는 중: %d%%</string>
+  <string name="morphe_export_download_notification_channel">동영상 내보내기</string>
+  <string name="morphe_export_download_saved">동영상을 \'%s\'로 내보냈습니다</string>
+  <string name="morphe_export_download_failed">동영상을 내보낼 수 없습니다</string>
+  <string name="morphe_export_download_canceled">내보내기가 취소되었습니다</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">음성 번역</string>
   <string name="morphe_vot_screen_summary">기기의 텍스트 음성 변환(TTS)을 사용하여 재생에 맞춰 동기화된 동영상 자막을 읽어줍니다</string>
@@ -625,10 +641,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_save_to_watch_later_flyout_title">나중에 볼 동영상에 저장</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">플레이어 설정 메뉴에 \'나중에 볼 동영상에 저장\' 메뉴 표시하기</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">플레이어 설정 메뉴로 현재 시청 중인 동영상을 \'나중에 볼 동영상’에 저장할 수 있습니다</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Kids 동영상에 \'나중에 볼 동영상에 저장\' 메뉴 표시하기</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">피드 메뉴로 관련 동영상에 있는 Kids 동영상을 \'나중에 볼 동영상\'에 저장할 수 있습니다</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Shorts에 \'나중에 볼 동영상에 저장\' 메뉴 표시하기</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">피드 메뉴로 Shorts를 \'나중에 볼 동영상\'에 저장할 수 있습니다</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">나중에 볼 동영상을 재생목록으로 리디렉션하기</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">나중에 볼 동영상</string>
   <string name="morphe_queue_flyout_title">Morphe 현재 재생목록에 추가</string>
@@ -1271,6 +1283,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_splash_screen_style_entry_7">Morphe 글로우 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe 글로우 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">이 기기에서는 글로우 스플래시 화면을 지원하지 않습니다</string>
+  <string name="morphe_splash_screen_duration_title">앱 시작 애니메이션 지속 시간</string>
+  <string name="morphe_splash_screen_duration_summary">빛나는 애니메이션이 재생되는 시간을 지정하세요. 애니메이션을 건너뛰려면 탭하세요</string>
   <string name="morphe_theme_color_light_title">밝은 테마 배경 색상</string>
   <string name="morphe_theme_color_light_entry_2">하얀색</string>
   <string name="morphe_theme_color_light_entry_3">Material You (하얀색)</string>

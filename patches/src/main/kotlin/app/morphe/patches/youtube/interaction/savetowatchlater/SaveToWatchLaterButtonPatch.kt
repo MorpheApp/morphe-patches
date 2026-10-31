@@ -83,16 +83,11 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
 
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_save_to_watch_later_flyout_button", summary = true),
-            SwitchPreference("morphe_save_to_watch_later_kids_flyout_button", summary = true),
             NonInteractivePreference(
                 "morphe_save_to_watch_later_redirect_playlist_id",
                 tag = "app.morphe.extension.youtube.settings.preference.WatchLaterPlaylistPreference",
                 selectable = true
             )
-        )
-
-        PreferenceScreen.SHORTS.addPreferences(
-            SwitchPreference("morphe_save_to_watch_later_shorts_flyout_button", summary = true)
         )
 
         initializeTopControl(EXTENSION_BUTTON)

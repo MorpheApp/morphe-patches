@@ -713,12 +713,15 @@ Texty piesní pochádzajú zo služieb tretích strán, ktoré nie sú spojené,
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Pripojené! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Pripojenie zlyhalo. Skontrolujte nastavenia.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Najprv zadajte kľúč API</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Testovať pripojenie</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Načítavanie modelov…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Načítať modely</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Vyberte model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Nepodarilo sa načítať modely. Skontrolujte API kľúč alebo pripojenie.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Výzva</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Základná URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Prednastavenia služby</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Vyberte službu</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API kľúč (voliteľné)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Dodatočné telo požiadavky (voliteľné JSON)</string>

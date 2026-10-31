@@ -515,7 +515,6 @@ Dopo aver aperto una volta un video con il pulsante Chiedi, la funzionalità fun
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Tutte le opzioni</string>
   <string name="morphe_shorts_download_flyout_button_title">Mostra il download nel menu Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Aggiunge un elemento di menu flyout per il downloader esterno al player Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Download</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traduzione voice over</string>
@@ -623,10 +622,6 @@ Avviso: Potrebbe non funzionare sui video in diretta"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Salva per guardare più tardi</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Mostra il pulsante Salva in Guarda più tardi nel menu a comparsa delle impostazioni del player</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Consente di salvare il video attualmente in riproduzione in \'Guarda più tardi\' dal menu a comparsa delle impostazioni video</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Mostra il pulsante Salva per guardare più tardi nei video per bambini</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Consente di salvare video per bambini in \'Guarda più tardi\' dal menu a comparsa</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Mostra il pulsante Salva in Guarda più tardi nel menu a comparsa degli Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Consente di salvare gli Shorts in \'Guarda più tardi\' dal menu a comparsa</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Reindirizza Guarda più tardi alla playlist</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Guarda più tardi</string>
   <string name="morphe_queue_flyout_title">Aggiungi alla coda di Morphe</string>

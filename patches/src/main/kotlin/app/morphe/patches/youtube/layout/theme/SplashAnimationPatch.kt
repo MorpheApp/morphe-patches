@@ -23,7 +23,10 @@ import app.morphe.patches.shared.layout.branding.startupAnimationResourcePatch
 import app.morphe.patches.shared.misc.lottie.LOTTIE_ANIMATION_VIEW_CLASS_TYPE
 import app.morphe.patches.shared.misc.lottie.LottieAnimationViewSetAnimationIntFingerprint
 import app.morphe.patches.shared.misc.lottie.lottieAnimationPatch
+import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.seekbar.LottieSplashScreenFeatureFlagFingerprint
 import app.morphe.patches.youtube.layout.seekbar.LottieSplashScreenFeatureFlagLegacyFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -41,6 +44,7 @@ import app.morphe.util.fiveRegisters
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -72,12 +76,24 @@ val splashAnimationPatch = bytecodePatch {
             else -> ""
         }
 
-        PreferenceScreen.GENERAL.addPreferences(
-            ListPreference(
-                key = "morphe_splash_screen_style",
-                entriesKey = "morphe_splash_screen_style${arrayKeySuffix}_entries",
-                entryValuesKey = "morphe_splash_screen_style${arrayKeySuffix}_entry_values"
+        val splashPreferences = mutableSetOf<BasePreference>()
+
+        splashPreferences += ListPreference(
+            key = "morphe_splash_screen_style",
+            entriesKey = "morphe_splash_screen_style${arrayKeySuffix}_entries",
+            entryValuesKey = "morphe_splash_screen_style${arrayKeySuffix}_entry_values"
+        )
+
+        if (is_21_30_or_greater) {
+            splashPreferences += NonInteractivePreference(
+                key = "morphe_splash_screen_duration",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                selectable = true
             )
+        }
+
+        PreferenceScreen.GENERAL.addPreferences(
+            noTitleUnsortedPreferenceCategory(splashPreferences)
         )
 
         // Lottie splash screen exists in earlier versions, but it may not be always on.
@@ -249,7 +265,7 @@ val splashAnimationPatch = bytecodePatch {
             )
 
             // The splash screen is a Runnable that removes it, so the extension can close
-            // the Morphe glow animation when it has played.
+            // the Rive animation when it has played, or when it is tapped.
             SplashScreenRemoveFingerprint.let {
                 it.classDef.apply {
                     interfaces.add("Ljava/lang/Runnable;")
@@ -275,10 +291,26 @@ val splashAnimationPatch = bytecodePatch {
                 }
             }
 
+            // The Rive animation can be shown longer than the timeout of the app.
+            SplashScreenTimeoutFingerprint.match(splashScreenStyleFingerprint.method).let {
+                it.method.apply {
+                    val index = it.instructionMatches.last().index
+                    // The delay is the long after the Runnable.
+                    val delayRegister = getInstruction<FiveRegisterInstruction>(index).registerE
+
+                    addInstructions(
+                        index,
+                        """
+                            invoke-static { v$delayRegister, v${delayRegister + 1} }, $EXTENSION_CLASS->getSplashScreenTimeout(J)J
+                            move-result-wide v$delayRegister
+                        """
+                    )
+                }
+            }
+
             // The Rive animation is loaded in the background, and a home feed that is
             // shown quickly closes the animation before it has drawn anything. On the first
-            // start the animation is instead closed by the timeout of the app, or by the
-            // extension when the Morphe glow animation has played.
+            // start the animation is instead closed by the extension when it has played.
             val riveAnimationShownField = RiveSplashScreenViewFingerprint.instructionMatches[1]
                 .fieldReference
 

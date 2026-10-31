@@ -713,12 +713,15 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: সংযুক্ত! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: সংযোগ ব্যর্থ। সেটিংস পরীক্ষা করুন।</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">প্রথমে API কী লিখুন</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">সংযোগ পরীক্ষা করুন</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">মডেলগুলি ফেচ করা হচ্ছে…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">মডেলগুলি আনুন</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">একটি মডেল নির্বাচন করুন</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">মডেলগুলি ফেচ করতে ব্যর্থ হয়েছে। API কী বা সংযোগ পরীক্ষা করুন।</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">প্রম্পট</string>
   <string name="morphe_music_lyrics_ai_config_model_label">মডেল</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">বেস URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">সার্ভিস প্রিসেট</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">একটি সার্ভিস নির্বাচন করুন</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API কি (ঐচ্ছিক)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">অতিরিক্ত রিকোয়েস্ট বডি (ঐচ্ছিক JSON)</string>

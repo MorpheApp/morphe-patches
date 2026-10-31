@@ -465,7 +465,44 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_source_all_disabled">ყველა პროვაიდერი გათიშულია - ჩაშენებული და ინტეგრირებული ტექსტები</string>
   <string name="morphe_music_lyrics_source_reset_title">მ sağlayებლების თანმიმდევრობის განახლება?</string>
   <string name="morphe_music_lyrics_source_reset_message">მ sağlayებლების პრიორიტეტების აღდგენა ნაგულისხმევ მდგომარეობაში</string>
+  <string name="morphe_music_lyrics_rime_dict_title">Rime-ის სიტყვების სია</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist-ს ასევე სჭირდება UniDict: Offline Dictionary პროვაიდერში მონიშნეთ \"Chinese and Cantonese characters (UniDict)\" და დაელოდეთ ჩამოტვირთვის დასრულებას. მის გარეშე, სიმბოლოების სია არ მოგცემთ წაკითხვის ვარიანტს.
+
+მონიშნეთ სიები, რომლებიც Rime Wordlist-მა უნდა წაიკითხოს, შემდეგ დააჭირეთ Save-ს მათ ჩამოსატვირთად. თქვენ მიერ დამატებული სია იშლება მისი მონიშვნის მოხსნისას.
+
+თითოეული სია არის სიტყვებისა და მათი წაკითხვის საკუთარი ცხრილი, .dict.yaml ფაილი შემდეგი სახის ხაზებით:
+字 ham
+典 din2
+პირველი სვეტია სიტყვა, მეორე კი მისი წაკითხვა; დამატებითი სვეტები და ტაბულაციის გარეშე ხაზები იგნორირებულია."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">ზემოთ მითითებული ენისთვის არცერთი Rime-ის სიტყვების სია არ არის მონიშნული. დააჭირეთ ამ სახელს ერთ-ერთის მოსანიშნად, ან აირჩიეთ ენა, რომელსაც აქვს სია</string>
+  <string name="morphe_music_lyrics_rime_dict_add">დამატება</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">დაამატეთ Rime-ის სიტყვების სია</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml ფაილი, ან zip არქივი, რომელიც შეიცავს მას, ისეთი ხაზებით როგორც 字 ham და 典 din2. სია ჩაიტვირთება, როდესაც მონიშნავთ მას და დააჭერთ Save-ს, ხოლო მისი ლიცენზია თქვენს სურვილზეა დამოკიდებული</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">ენის კოდი</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">ორი ან სამი ასო, მაგალითად hak ან wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">სახელი</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">ჩანს კითხვის ქვემოთ, მაგალითად Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">სიტყვების სიის მისამართი</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">https:// .dict.yaml-ის ან მისი zip ფაილის მისამართი</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">სიმბოლოები, რომლებიც არ არის სიტყვაში</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">ავტომატური</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">კანტონური სიმბოლოები</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">მანდარინული სიმბოლოები</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">სიმბოლოს წაკითხვა არ არის</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">შეავსეთ კოდი, სახელი და მისამართი</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">კოდი უნდა შედგებოდეს ორი ან სამი ასოსგან, მაგალითად hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">მისამართი უნდა იწყებოდეს https://-ით</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">სახელი და მისამართი არ უნდა შეიცავდეს ვერტიკალურ ხაზს</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s უკვე აქვს სიტყვების ცხრილი</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s იკითხება ჩაშენებული რომანიზატორით და არ შეიძლება სიტყვების სიის მიერთება</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">არ გამოიყენება: ამ ენას უკვე აქვს საკუთარი წაკითხვის წესი, ამიტომ მონიშნულობა მოხსენით მის წასაშლელად</string>
+  <string name="morphe_music_lyrics_rime_dict_added">დაემატა %1$s - მონიშნეთ და დააჭირეთ შენახვას მის ჩამოსატვირთად</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">სიტყვების სიები მზად არის</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">სიტყვების სიები მზად არის (%1$d ჩანაწერი)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">სიტყვების სიის წაკითხვა: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">სიტყვების სიის ჩამოტვირთვა ვერ მოხერხდა - ხელახლა სცადეთ შენახვის ღილაკზე დაჭერით</string>
   <string name="morphe_music_lyrics_clear_cache_title">შენახული ტექსტების გასუფთავება</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">წაშალეთ ამ მოწყობილობაზე შენახული %1$s მბ ტექსტი</string>
   <string name="morphe_music_lyrics_clear_cache_done">გასუფთავებულია %1$s მბ</string>
   <string name="morphe_music_token_dialog_get_token">ტოკენის მიღება</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
@@ -525,9 +562,22 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_show_copy_button_title">კოპირების ღილაკის ჩვენება</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">შეეხეთ ორიგინალი ტექსტის ჩვეულებრივ ტექსტად დასაკოპირებლად; გრძლად დააჭირეთ ტექსტის საწყის ფაილს ჩამოტვირთვებში შესანახად</string>
   <string name="morphe_music_lyrics_show_translate_button_title">თარგმნის ღილაკის ჩვენება</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">დააჭირეთ თარგმანის ჩასართავად; გრძელვად დააჭირეთ მხოლოდ თარგმანის სანახავად. გამოიყენება ჩართული თარგმანის პროვაიდერები მითითებული თანმიმდევრობით</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">რომაიზაციის ან ტრანსლიტერაციის ღილაკის ჩვენება</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">დააჭირეთ რომაიზაციის ან ტრანსლიტერაციის ჩასართავად; გრძელვად დააჭირეთ მხოლოდ რომაიზაციის ან ტრანსლიტერაციის სანახავად. გამოიყენება ჩართული რომაიზაციის პროვაიდერები მითითებული თანმიმდევრობით</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">ტრანსლიტერაციის ჩართვა</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">ნებადართული იყოს არალათინური წაკითხვა ტექსტის წყაროდან; გამორთვრისას დატოვებს მხოლოდ ლათინურ ასოებს, აქცენტირებულ ასოებს და ტონალური ციფრებს</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">კითხულობს ტაიმირებული ლირიკის თითოეულ სიტყვას (სიტყვების სინქრონიზაცია ჩართულია); კორეული არ საჭიროებს ჩამოტვირთვას; თოთხმეტი სკრიპტი იყენებს ერთ CLDR ჩამოტვირთვას; ჰანის სიმბოლოებს კითხულობს Rime Wordlist, როდესაც მისი სიტყვების ცხრილი მოიცავს მოცემულ ენას</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">კითხვის ლექსიკონების ჩამოტვირთვა...</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">მონაცემები მზადაა (%1$d ჩანაწერი)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">ჩამოტვირთვა ვერ მოხერხდა - სცადეთ ხელახლა ამ ფუნქციის გამორთვა და ჩართვა</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">ოფლაინ ლექსიკონი</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">იაპონური (SudachiDict, ~75 მბ)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">ჩინური და კანტონური სიმბოლოები (UniDict, ~8 მბ)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">ჩინური სიტყვები (pinyin-pro, ~17 მბ)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">ბერძნული, სლავური კირილიცის (მათ შორის რუსული, უკრაინული, ბულგარული, სერბული, ბელორუსული, მაკედონური), ქართული, სომხური, ებრაული, არაბული, ამჰარული და სირიული ტრანსლიტერაცია (CLDR, ~0.5 მბ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">კითხვა %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">აირჩიეთ სულ მცირე ერთი ლექსიკონი</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">განახლების ღილაკის ჩვენება</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">დააჭირეთ შემდეგი ტექსტის ვარიანტისთვის; გრძელვად დააჭირეთ ტექსტის მოსაძებნად სიმღერის სათაურისა და შემსრულებლის მიხედვით</string>
   <string name="morphe_music_lyrics_search_dialog_title">ტექსტების ძიება</string>
@@ -538,6 +588,10 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_saved">შენახულია</string>
   <string name="morphe_music_lyrics_word_sync_title">სინქრონიზებული სიტყვების ან მარცვლების გამოკვეთა</string>
   <string name="morphe_music_lyrics_word_sync_summary">უპირატესობა მიენიჭება სიტყვა-სიტყვა ტექსტს, როდესაც ის ხელმისაწვდომია. როდესაც ტექსტს აქვს სიტყვების ტაიმინგი, მუსიკის ტემპთან სინქრონულად გამოიკვეთება თითოეული სიტყვა ან მარცვა</string>
+  <string name="morphe_music_lyrics_line_scale_title">ინაქტიური ხაზების შეკუმშვა</string>
+  <string name="morphe_music_lyrics_line_scale_summary">ხაზებს, რომლებიც ამჟამად არ იმღერება, ოდნავ ამცირებს და ამავდროულად აფერმკრთალებს</string>
+  <string name="morphe_music_lyrics_split_background_title">ფონური ვოკალის ცალკე ჩვენება</string>
+  <string name="morphe_music_lyrics_split_background_summary">აფasალებს ფონურ ვოკალსა და ჰარმონიას მთავარი ხაზისგან. ფრჩხილებში ჩაწერილ ფონურ ვოკალს, მაგალითად: \"(Oh) I want you\", გადაიტანს შესრულებული ხაზიდან ცალკე, შეფერმკრთალებულ ხაზში</string>
   <string name="morphe_music_lyrics_hide_played_title">გასათამაშები ტექსტის დამალვა</string>
   <string name="morphe_music_lyrics_hide_played_summary">ტექსტის იმ ხაზების დამალვა, რომლებიც იმყოფება მიმდინარე სათამაშო ხაზის ზემოთ</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">დამალეთ განუთამაშებელი ტექსტი</string>
@@ -595,9 +649,15 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_translated_by_ai">თარგმნილია %s-ის მიერ</string>
   <string name="morphe_music_lyrics_romanized_by_ai">რომანიზირებულია %s-ის მიერ</string>
   <string name="morphe_music_lyrics_romanized_by_local">რომანიზებულია %s-ის მიერ</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">რომანიზებულია Rime-ის მიერ (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">თარგმნილია</string>
   <string name="morphe_music_lyrics_translation_language_title">თარგმანის ენა</string>
+  <string name="morphe_music_lyrics_romanize_language_title">რომანიზაციის ან ტრანსლიტერაციის ენა</string>
+  <string name="morphe_music_lyrics_translation_target_language">"თარგმანის სამიზნე ენა:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"რომანიზაციის ან ტრანსლიტერაციის სამიზნე ენა:
+%s"</string>
   <string name="morphe_music_lyrics_translating">თარგმნა...</string>
   <string name="morphe_music_lyrics_translate_failed">სათytuላო ტექსტის თარგმნა ვერ მოხერხდა</string>
   <string name="morphe_music_lyrics_romanize_hide">რომანიზებულია</string>
@@ -611,6 +671,7 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_refreshing">განახლება</string>
   <string name="morphe_music_lyrics_refreshed">განახლებულია</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API გასაღები</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC ახდენს მიმდინარე ტრეკის ტექსტის ტრანსკრიფციას ან დროში გასწორებას</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC გასაღები შენახულია. გამოიყენეთ გასწორების ღილაკი ტექსტის ძიების დიალოგში, ან პანელის შეტყობინება, როდესაც ტრეკს არ აქვს ტექსტი</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API გასაღები შენახულია</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC-მა არ მიიღო ეს გასაღები</string>
@@ -626,10 +687,24 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_transcribe_no_text">სინქრონიზაციისთვის ტექსტი არ მოიპოვება - ტრანსკრიპირება მიმდინარეობს</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC-მა ვერ დაამუშავა ეს ტრეკი</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">ამ ტრეკისთვის QuickLRC-ის კრედიტები ამოწურულია</string>
+  <string name="morphe_music_lyrics_about_summary">"ტექსტები სრულდება სათაურისა და შემსრულებლის მიხედვით, ungewöhnliche მეტამონაცემებმა შესაძლოა ვერაფერი იპოვოს ან არასწორი ვერსია მოიძებნოს. ვერსიების შესაცვლელად გამოიყენეთ განახლება. * ნიშნით მონიშნული პროვაიდერები საჭიროებენ ტოკენს. ყველა ჩართული პროვაიდერი ყოველთვის არ მოგთხოვთ თქვენი თანმიმდევრობით, არამედ პასუხობენ მათი სიჩქარის მიხედვით.
+
+ტექსტები მოდის მესამე მხარის სერვისებიდან, რომლებიც არ არიან დაკავშირებულნი, სპონსირებულნი ან მხარდაჭერილნი Morphe-ის მიერ. თითოეული მათგანი გამოიყენება ისე, როგორც არის: ტექსტები, მათი ხელმისაწვდომობა და მათი ლიცენზირება რჩება ამ სერვისებისა და მათი ლიცენზმფლობელების საკუთრებაში, ხოლო მათი გამოყენება შეიძლება ექვემდებარებოდეს მათ მომსახურების პირობებს. ჩართულ სერვისამდე აღწევს მხოლოდ თქვენს მიერ მოთხოვნილი ძებნა - სათაური, შემსრულებელი და, იმ შემთხვევაში, როცა სერვისს ეს სჭირდება, ვიდეოს ID. სურვილისამებრ AI endpoint და QuickLRC ტრანსკრიფცია მუშაობს მხოლოდ მას შემდეგ, რაც მათ დააკონფიგურირებთ და მიიღებენ ტექსტის ტექსტს ან ტრეკის ვიდეო URL-ს."</string>
   <string name="morphe_music_lyrics_source_advice_summary">გააქტიურეთ მხოლოდ ის პროვაიდერები, რომლებსაც იყენებთ, ან დატოვეთ ნაგულისხმევი პარამეტრები - მუდმივმა მოთხოვნებმა შესაძლოა გადატვირთოს პატარა საზოგადოებო ტექსტების საიტები</string>
   <string name="morphe_music_lyrics_hide_info_title">მფლობელის ხაზის დამალვა</string>
   <string name="morphe_music_lyrics_hide_info_summary">დამალეთ ტექსტის ქვემოთ მოცემული მფლობელის ხაზი</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">თარგმანისა და რომანიზაციის ადგილების შეცვლა</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON განათავსებს რომანიზაციას ან ტრანსლიტერაციას ტექსტის ქვემოთ, ხოლო თარგმანს - ზემოთ; OFF ტოვებს რომანიზაციას ან ტრანსლიტერაციას ზემოთ, ხოლო თარგმანს - ქვემოთ. თითოეულ მარცვალზე განთავსებული წაკითხვის ფორმა მოყვება მას და გადაინაცვლებს მარცვლის ზემოდან ქვემოთ</string>
+  <string name="morphe_music_lyrics_force_center_title">ტექსტის მუდმივად ცენტრირება</string>
+  <string name="morphe_music_lyrics_force_center_summary">ON განათავსებს ყველა ხაზს ცენტრში და უგულებელყოფს წყაროს გასმას, დუეტის მხარეების ჩათვლით; OFF ინარჩუნებს ტექსტისთვის განსაზღვრულ გასმას</string>
+  <string name="morphe_music_lyrics_providers_keep_one">მინიმუმ ერთი პროვაიდერი უნდა დარჩეს ჩართული</string>
+  <string name="morphe_music_lyrics_translation_provider_title">თარგმანი</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">რომანიზაცია ან ტრანსლიტერაცია</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">ოფლაინ ლექსიკონი</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Rime-ის სიტყვების სია</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">სექციების აღმოჩენა AI-ით</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">გამოიყენება მხოლოდ მაშინ, როდესაც პროვაიდერი არ გზავნის სექციების მარკირებებს, როგორიცაა Chorus ან Verse, რასაც შემდეგ თქვენი OpenAI-ს თავსებადი მოდელი აღმოაჩენს. სტრიქონის რედაქტირება ასევე ხსნის მის პრომპტს</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint-ის URL (მაგ. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">პრომპტის შაბლონი</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">პლეისჰოლდერები: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">პრომპტი შენახულია</string>
@@ -638,14 +713,26 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_ai_config_toast_saved">თარგმნისა &amp; რომანიზაციის პარამეტრები შენახულია</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">პარამეტრები განახლდა ნაგულისხმევ მდგომარეობაში</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">ბაზისური URL უნდა იწყებოდეს http:// ან https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">პარამეტრები არასრულია ან პროვაიდერმა უარყო</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">კავშირის ვალიდაცია…</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: დაკავშირებულია! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: კავშირი ვერ დამყარდა. შეამოწმეთ პარამეტრები.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">ჯერ შეიყვანეთ API გასაღები</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">კავშირის შემოწმება</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">მოდელების ჩატვირთვა…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">მოდელების ჩამოტვირთვა</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">აირჩიეთ მოდელი</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">მოდელების ჩატვირთვა ვერ მოხერხდა. შეამოწმეთ API გასაღები ან კავშირი.</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">პრომპტი</string>
   <string name="morphe_music_lyrics_ai_config_model_label">მოდელი</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">ბაზისური URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">სერვისის წინასწარგანსაზღვრული პარამეტრები</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">აირჩიეთ სერვისი</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API გასაღები (არასავალდებულო)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">მოთხოვნის დამატებითიტექსტი (არასავალდებულო JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">მოთხოვნის დამატებითი ჰედერები (არასავალდებულო JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">სახელები და მნიშვნელობები ჩასვით ბრჭყალებში, მაგ. {\"api-key\": \"abc\"}. მნიშვნელობა ბრჭყალების გარეშე, რომელიც შეიცავს / : ან რიცხვს, იქნება უარყოფილი. ცარიელი მნიშვნელობა შლის ჰედერს.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">სახელები და მნიშვნელობები ჩასვით ბრჭყალებში, მაგ. {\"temperature\": 0.3}. მნიშვნელობა ბრჭყალების გარეშე, რომელიც შეიცავს / ან :, იქნება უარყოფილი. მოდელისა და შეტყობინებების განსაზღვრა აქ შეუძლებელია.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">ავთენტიფიკაციის გასაღები (Free ან Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - სქელი ხაზის ღილაკების გამორთვა</string>

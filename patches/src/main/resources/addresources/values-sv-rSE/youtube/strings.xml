@@ -515,7 +515,6 @@ När en video med Ask-knappen har öppnats en gång fungerar funktionen med alla
   <string name="morphe_external_downloader_quick_audio">Ljud</string>
   <string name="morphe_external_downloader_quick_options">Alla alternativ</string>
   <string name="morphe_shorts_download_flyout_button_title">Visa nedladdning i Shorts-menyn</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Lägger till ett menyalternativ för extern nedladdare i Shorts-spelaren</string>
   <string name="morphe_shorts_download_flyout_title">Ladda ned</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Voice over-översättning</string>
@@ -623,10 +622,6 @@ Information: Kanske inte fungerar i livestreamar"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Spara till Titta senare</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Visa knappen Spara till Titta senare i den utfällbara menyn för spelarinställningar</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Gör det möjligt att spara den video som du tittar på just nu i \'Titta senare\' från den utfällbara menyn för videoinställningar</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Visa knappen Spara till Titta senare i barnvideor</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Gör det möjligt att spara barnrelaterade videor i \'Titta senare\' från den utfällbara menyn</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Visa knappen Spara till Titta senare i den utfällbara menyn för Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Gör det möjligt att spara Shorts i \'Titta senare\' från den utfällbara menyn</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Omdirigera Se senare till spellista</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Titta senare</string>
   <string name="morphe_queue_flyout_title">Lägg till i Morphe-kön</string>

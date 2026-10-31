@@ -515,8 +515,21 @@ Depois que um vídeo com o botão Ask for aberto uma vez, o recurso funciona com
   <string name="morphe_external_downloader_quick_audio">Áudio</string>
   <string name="morphe_external_downloader_quick_options">Todas as opções</string>
   <string name="morphe_shorts_download_flyout_button_title">Mostrar download no menu Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Adiciona um item de menu de flyout de baixador externo ao player Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Adiciona um item de download ao menu do player do Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Baixar</string>
+  <string name="morphe_export_download_folder_title">Exportar vídeos salvos</string>
+  <string name="morphe_export_download_folder_summary">"Exporta vídeos salvos no aplicativo para o armazenamento do seu dispositivo. Toque para alterar a pasta de exportação. Pasta de exportação: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Pasta de exportação</string>
+  <string name="morphe_export_download_folder_change">Alterar pasta</string>
+  <string name="morphe_export_download_folder_changed">Pasta de exportação alterada</string>
+  <string name="morphe_export_download_folder_reset">Pasta de exportação redefinida</string>
+  <string name="morphe_export_download_flyout_title">Exportar para o dispositivo</string>
+  <string name="morphe_export_download_started">Exportando vídeo</string>
+  <string name="morphe_export_download_progress">Exportando vídeo: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Exportações de vídeos</string>
+  <string name="morphe_export_download_saved">Vídeo exportado para %s</string>
+  <string name="morphe_export_download_failed">Não foi possível exportar o vídeo</string>
+  <string name="morphe_export_download_canceled">Exportação cancelada</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Tradução por voz</string>
   <string name="morphe_vot_screen_summary">Leia as legendas do vídeo em voz alta usando a conversão de texto em fala no dispositivo, sincronizada com a reprodução</string>
@@ -623,10 +636,6 @@ Nota: pode não funcionar em transmissões ao vivo"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Salvar em Assistir mais tarde</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Mostrar o botão Salvar em \'Assistir mais tarde\' no menu de configurações do player</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Permite salvar o vídeo que está sendo assistido em \'Assistir mais tarde\' pelo menu de configurações do vídeo</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Mostrar o botão \"Salvar em Assistir mais tarde\" em vídeos infantis</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite salvar vídeos relacionados a crianças em \'Assistir mais tarde\' pelo menu flutuante</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Mostrar o botão Salvar em \'Assistir mais tarde\' no menu de Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permite salvar Shorts em \'Assistir mais tarde\' pelo menu flutuante</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Redirecionar \"Assistir mais tarde\" para a playlist</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Assistir mais tarde</string>
   <string name="morphe_queue_flyout_title">Adicionar à fila do Morphe</string>
