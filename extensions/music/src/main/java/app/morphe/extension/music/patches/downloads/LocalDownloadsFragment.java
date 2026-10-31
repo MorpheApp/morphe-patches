@@ -4,7 +4,7 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.animation.ValueAnimator;
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -23,6 +23,7 @@ import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceFragment;
+import android.util.Pair;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +33,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -72,6 +72,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private static final float SECONDARY_DIM = 0.72f;
     private static final float PLAYING_ROW_BRIGHTNESS = 1.35f;
     private static final int ROW_CORNER_DP = 8;
+    private static final int PILL_CORNER_DP = 20;
     private static final int ROW_ARTWORK_PIXELS = 256;
     private static final int ARTWORK_CORNER_DP = 4;
     private static final int MENU_WIDTH_DP = 220;
@@ -83,6 +84,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private List<OfflinePlaylist> createdPlaylists = new ArrayList<>();
     private final List<String> selectedTrackPaths = new ArrayList<>();
     private boolean selectionMode;
+    private boolean playlistsExpanded;
 
     private ImageView miniArtwork;
     private TextView miniTitle;
@@ -96,7 +98,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private LinearLayout createdPlaylistsContainer;
     private LinearLayout selectionToolbar;
     private TextView selectButton;
-    private ImageButton createAllPlaylistButton;
+    private ImageButton playlistsToggleButton;
 
     private boolean showingPause;
     private List<OfflineTrack> tracks = new ArrayList<>();
@@ -132,22 +134,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         root.addView(createHeader(), new LinearLayout.LayoutParams(-1, -2));
 
         ScrollView scroll = new ScrollView(getActivity());
-        LinearLayout scrollContent = new LinearLayout(getActivity());
-        scrollContent.setOrientation(LinearLayout.VERTICAL);
-        scrollContent.setPadding(dp(8), 0, dp(8), dp(16));
-
-        // 1. Primary section: Downloaded songs list
         songsList = new LinearLayout(getActivity());
         songsList.setOrientation(LinearLayout.VERTICAL);
-        scrollContent.addView(songsList, new LinearLayout.LayoutParams(-1, -2));
-
-        // 2. Second section under Downloads: Created playlists
-        createdPlaylistsContainer = new LinearLayout(getActivity());
-        createdPlaylistsContainer.setOrientation(LinearLayout.VERTICAL);
-        createdPlaylistsContainer.setPadding(dp(8), dp(16), dp(8), dp(8));
-        scrollContent.addView(createdPlaylistsContainer, new LinearLayout.LayoutParams(-1, -2));
-
-        scroll.addView(scrollContent);
+        songsList.setPadding(dp(8), 0, dp(8), dp(12));
+        scroll.addView(songsList);
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
 
         showTracks();
@@ -175,57 +165,95 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         createdPlaylists = playlistManager.loadPlaylists();
     }
 
+    private void toggleCreatedPlaylistsSection() {
+        playlistsExpanded = !playlistsExpanded;
+        if (createdPlaylistsContainer != null) {
+            createdPlaylistsContainer.setVisibility(playlistsExpanded ? View.VISIBLE : View.GONE);
+        }
+        renderCreatedPlaylists();
+    }
+
     private void renderCreatedPlaylists() {
         if (createdPlaylistsContainer == null) return;
         createdPlaylistsContainer.removeAllViews();
+        createdPlaylistsContainer.setVisibility(playlistsExpanded ? View.VISIBLE : View.GONE);
+        if (!playlistsExpanded) return;
+
+        // Top row of collapsible section: Title + "+ New playlist" pill button
+        LinearLayout topBar = new LinearLayout(getActivity());
+        topBar.setGravity(Gravity.CENTER_VERTICAL);
+        topBar.setPadding(dp(4), dp(6), dp(4), dp(6));
+
+        TextView sectionHeader = text("Created playlists (" + createdPlaylists.size() + ")", 15, foreground());
+        sectionHeader.setTypeface(Typeface.DEFAULT_BOLD);
+        topBar.addView(sectionHeader, new LinearLayout.LayoutParams(0, -2, 1));
+
+        TextView newPlaylistBtn = pillButton("+ New playlist", false);
+        newPlaylistBtn.setOnClickListener(v -> createPlaylistFromAllSongsDialog());
+        topBar.addView(newPlaylistBtn, new LinearLayout.LayoutParams(-2, -2));
+
+        createdPlaylistsContainer.addView(topBar, new LinearLayout.LayoutParams(-1, -2));
+
+        if (createdPlaylists.isEmpty()) {
+            TextView empty = text("No local playlists yet", 13, secondary());
+            empty.setPadding(dp(6), dp(8), dp(6), dp(8));
+            createdPlaylistsContainer.addView(empty);
+        } else {
+            ScrollView playlistScroll = new ScrollView(getActivity());
+            LinearLayout listInner = new LinearLayout(getActivity());
+            listInner.setOrientation(LinearLayout.VERTICAL);
+
+            for (OfflinePlaylist playlist : createdPlaylists) {
+                LinearLayout row = new LinearLayout(getActivity());
+                row.setGravity(Gravity.CENTER_VERTICAL);
+                row.setPadding(dp(10), dp(8), dp(10), dp(8));
+                row.setBackground(rowBackground(false));
+
+                LinearLayout labels = new LinearLayout(getActivity());
+                labels.setOrientation(LinearLayout.VERTICAL);
+
+                TextView title = text(playlist.name(), 15, foreground());
+                title.setTypeface(Typeface.DEFAULT_BOLD);
+                title.setSingleLine(true);
+
+                int count = playlist.trackPaths().size();
+                TextView subtitle = text(count + (count == 1 ? " track" : " tracks"), 13, secondary());
+                subtitle.setSingleLine(true);
+
+                labels.addView(title);
+                labels.addView(subtitle);
+                row.addView(labels, new LinearLayout.LayoutParams(0, -2, 1));
+
+                ImageButton playBtn = icon("yt_fill_experimental_play_vd_theme_24", "Play playlist");
+                playBtn.setOnClickListener(v -> playOfflinePlaylist(playlist));
+                row.addView(playBtn, new LinearLayout.LayoutParams(dp(40), dp(40)));
+
+                row.setOnClickListener(v -> openPlaylistPage(playlist));
+                listInner.addView(row);
+            }
+
+            // Cap height so the collapsible list doesn't push songs completely off screen
+            int maxHeight = createdPlaylists.size() > 4 ? dp(210) : ViewGroup.LayoutParams.WRAP_CONTENT;
+            playlistScroll.addView(listInner);
+            createdPlaylistsContainer.addView(playlistScroll, new LinearLayout.LayoutParams(-1, maxHeight));
+        }
+
+        // Collapse button at the bottom of the Created playlists menu
+        LinearLayout bottomCollapseBar = new LinearLayout(getActivity());
+        bottomCollapseBar.setGravity(Gravity.CENTER);
+        bottomCollapseBar.setPadding(0, dp(6), 0, dp(4));
+
+        TextView collapseBtn = pillButton("Hide playlists ▲", false);
+        collapseBtn.setOnClickListener(v -> toggleCreatedPlaylistsSection());
+        bottomCollapseBar.addView(collapseBtn, new LinearLayout.LayoutParams(-2, -2));
+
+        createdPlaylistsContainer.addView(bottomCollapseBar, new LinearLayout.LayoutParams(-1, -2));
 
         View divider = new View(getActivity());
         divider.setBackgroundColor(rippleColor());
         LinearLayout.LayoutParams divParams = new LinearLayout.LayoutParams(-1, dp(1));
-        divParams.bottomMargin = dp(12);
+        divParams.topMargin = dp(6);
         createdPlaylistsContainer.addView(divider, divParams);
-
-        TextView sectionHeader = text("Created playlists", 16, foreground());
-        sectionHeader.setTypeface(Typeface.DEFAULT_BOLD);
-        sectionHeader.setPadding(dp(6), dp(4), dp(6), dp(8));
-        createdPlaylistsContainer.addView(sectionHeader);
-
-        if (createdPlaylists.isEmpty()) {
-            TextView empty = text("No local playlists yet", 13, secondary());
-            empty.setPadding(dp(6), dp(4), dp(6), dp(8));
-            createdPlaylistsContainer.addView(empty);
-            return;
-        }
-
-        for (OfflinePlaylist playlist : createdPlaylists) {
-            LinearLayout row = new LinearLayout(getActivity());
-            row.setGravity(Gravity.CENTER_VERTICAL);
-            row.setPadding(dp(10), dp(10), dp(10), dp(10));
-            row.setBackground(new RippleDrawable(ColorStateList.valueOf(rippleColor()), null,
-                    CustomDialog.createRoundedBackground(ROW_CORNER_DP, Color.WHITE)));
-
-            LinearLayout labels = new LinearLayout(getActivity());
-            labels.setOrientation(LinearLayout.VERTICAL);
-
-            TextView title = text(playlist.name(), 15, foreground());
-            title.setTypeface(Typeface.DEFAULT_BOLD);
-            title.setSingleLine(true);
-
-            int count = playlist.trackPaths().size();
-            TextView subtitle = text(count + (count == 1 ? " track" : " tracks"), 13, secondary());
-            subtitle.setSingleLine(true);
-
-            labels.addView(title);
-            labels.addView(subtitle);
-            row.addView(labels, new LinearLayout.LayoutParams(0, -2, 1));
-
-            ImageButton playBtn = icon("yt_fill_experimental_play_vd_theme_24", "Play playlist");
-            playBtn.setOnClickListener(v -> playOfflinePlaylist(playlist));
-            row.addView(playBtn, new LinearLayout.LayoutParams(dp(40), dp(40)));
-
-            row.setOnClickListener(v -> openPlaylistPage(playlist));
-            createdPlaylistsContainer.addView(row);
-        }
     }
 
     private void openPlaylistPage(OfflinePlaylist playlist) {
@@ -304,10 +332,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         search.setOnClickListener(v -> toggleSearch());
         line.addView(search, new LinearLayout.LayoutParams(dp(40), dp(40)));
 
-        selectButton = text("Select", 14, foreground());
-        selectButton.setPadding(dp(12), dp(6), dp(12), dp(6));
+        selectButton = pillButton("Select", false);
         selectButton.setOnClickListener(v -> toggleSelectionMode());
-        selectButton.setBackground(createTextActionBackground());
         line.addView(selectButton, new LinearLayout.LayoutParams(-2, -2));
 
         ImageButton sort = icon("yt_outline_experimental_sort_vd_theme_24",
@@ -315,11 +341,11 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         sort.setOnClickListener(v -> showSortMenu(sort));
         line.addView(sort, new LinearLayout.LayoutParams(dp(40), dp(40)));
 
-        // Button 1: Create playlist from all visible songs (hidden when in multi-select mode)
-        createAllPlaylistButton = icon("yt_outline_experimental_playlist_vd_theme_24",
-                "Create local playlist from all downloaded songs");
-        createAllPlaylistButton.setOnClickListener(v -> createPlaylistFromAllSongsDialog());
-        line.addView(createAllPlaylistButton, new LinearLayout.LayoutParams(dp(40), dp(40)));
+        // Playlist icon button opens/collapses the Created Playlists section below this menu
+        playlistsToggleButton = icon("yt_outline_experimental_playlist_vd_theme_24",
+                "Toggle created playlists");
+        playlistsToggleButton.setOnClickListener(v -> toggleCreatedPlaylistsSection());
+        line.addView(playlistsToggleButton, new LinearLayout.LayoutParams(dp(40), dp(40)));
 
         ImageButton deleteAll = icon("yt_outline_experimental_trash_can_vd_theme_24",
                 str("morphe_music_downloads_delete_all"));
@@ -328,46 +354,67 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
         header.addView(line, new LinearLayout.LayoutParams(-1, -2));
 
-        // Selection Toolbar (shown only when selectionMode == true)
+        // Selection Toolbar (shown when selectionMode == true)
         selectionToolbar = new LinearLayout(getActivity());
         selectionToolbar.setGravity(Gravity.CENTER_VERTICAL);
         selectionToolbar.setPadding(0, dp(8), 0, dp(4));
         selectionToolbar.setVisibility(View.GONE);
 
-        TextView createFromSelectedBtn = text("Create playlist", 13, foreground());
-        createFromSelectedBtn.setPadding(dp(10), dp(6), dp(10), dp(6));
-        createFromSelectedBtn.setBackground(createTextActionBackground());
+        TextView createFromSelectedBtn = pillButton("Create playlist", false);
         createFromSelectedBtn.setOnClickListener(v -> createPlaylistFromSelectedDialog());
         selectionToolbar.addView(createFromSelectedBtn, new LinearLayout.LayoutParams(-2, -2));
 
         View space1 = new View(getActivity());
         selectionToolbar.addView(space1, new LinearLayout.LayoutParams(dp(8), dp(1)));
 
-        TextView addSelectedBtn = text("Add to playlist", 13, foreground());
-        addSelectedBtn.setPadding(dp(10), dp(6), dp(10), dp(6));
-        addSelectedBtn.setBackground(createTextActionBackground());
+        TextView addSelectedBtn = pillButton("Add to playlist", false);
         addSelectedBtn.setOnClickListener(v -> addSelectedToPlaylist());
         selectionToolbar.addView(addSelectedBtn, new LinearLayout.LayoutParams(-2, -2));
 
         View space2 = new View(getActivity());
         selectionToolbar.addView(space2, new LinearLayout.LayoutParams(dp(8), dp(1)));
 
-        TextView clearSelectionBtn = text("Clear selection", 13, secondary());
-        clearSelectionBtn.setPadding(dp(10), dp(6), dp(10), dp(6));
-        clearSelectionBtn.setBackground(createTextActionBackground());
+        TextView clearSelectionBtn = pillButton("Clear selection", false);
+        clearSelectionBtn.setTextColor(secondary());
         clearSelectionBtn.setOnClickListener(v -> clearSelection());
         selectionToolbar.addView(clearSelectionBtn, new LinearLayout.LayoutParams(-2, -2));
 
         header.addView(selectionToolbar, new LinearLayout.LayoutParams(-1, -2));
+
+        // Collapsible "Created playlists" container directly below the toolbar menu
+        createdPlaylistsContainer = new LinearLayout(getActivity());
+        createdPlaylistsContainer.setOrientation(LinearLayout.VERTICAL);
+        createdPlaylistsContainer.setPadding(0, dp(6), 0, dp(4));
+        createdPlaylistsContainer.setVisibility(View.GONE);
+        header.addView(createdPlaylistsContainer, new LinearLayout.LayoutParams(-1, -2));
+
         return header;
     }
 
-    private Drawable createTextActionBackground() {
-        GradientDrawable background = new GradientDrawable();
-        background.setColor(Utils.adjustColorBrightness(ThemeUtils.getAppBackgroundColor(), 0.08f));
-        background.setCornerRadius(dp(10));
-        background.setStroke(dp(1), rippleColor());
-        return background;
+    /**
+     * Creates a pill-shaped button whose background uses a translucent foreground tint
+     * instead of a fixed dark color, so it automatically adapts to any dynamic background.
+     */
+    private TextView pillButton(String label, boolean primary) {
+        TextView btn = text(label, 13, primary ? background() : foreground());
+        btn.setPadding(dp(14), dp(6), dp(14), dp(6));
+        btn.setBackground(createPillBackground(primary));
+        return btn;
+    }
+
+    private Drawable createPillBackground(boolean primary) {
+        final int fg = foreground();
+        GradientDrawable shape = new GradientDrawable();
+        shape.setCornerRadius(dp(PILL_CORNER_DP));
+        if (primary) {
+            shape.setColor(fg);
+        } else {
+            // Translucent tint blends naturally with any background (black, grey, purple, etc.)
+            shape.setColor(Color.argb(26, Color.red(fg), Color.green(fg), Color.blue(fg)));
+            shape.setStroke(dp(1), Color.argb(65, Color.red(fg), Color.green(fg), Color.blue(fg)));
+        }
+        return new RippleDrawable(ColorStateList.valueOf(rippleColor()), shape,
+                CustomDialog.createRoundedBackground(PILL_CORNER_DP, Color.WHITE));
     }
 
     private void toggleSelectionMode() {
@@ -390,9 +437,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         }
         if (selectionToolbar != null) {
             selectionToolbar.setVisibility(selectionMode ? View.VISIBLE : View.GONE);
-        }
-        if (createAllPlaylistButton != null) {
-            createAllPlaylistButton.setVisibility(selectionMode ? View.GONE : View.VISIBLE);
         }
         renderTracksWithSelectionState();
         refreshRowsSelectionState();
@@ -439,53 +483,85 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         }
     }
 
-    /**
-     * Fixes the black text visibility bug in Screenshot 2 by using a custom ArrayAdapter
-     * styled with ThemeUtils.getAppForegroundColor() (foreground()).
-     */
     private void addSelectedToPlaylist() {
         if (selectedTrackPaths.isEmpty()) {
             Utils.showToastShort("Select songs first");
             return;
         }
+        showAddTracksToPlaylistDialog(new ArrayList<>(selectedTrackPaths), true);
+    }
+
+    /**
+     * Uses CustomDialog.create to match the rounded dialog & pill buttons of "Delete download?".
+     * Tapping any playlist row auto-adds the tracks and dismisses the dialog immediately.
+     */
+    private void showAddTracksToPlaylistDialog(List<String> pathsToAdd, boolean exitSelectOnSave) {
         if (createdPlaylists.isEmpty()) {
-            createPlaylistFromSelectedDialog();
+            showCreatePlaylistDialog("", pathsToAdd, exitSelectOnSave);
             return;
         }
 
-        List<String> pathsToAdd = new ArrayList<>(selectedTrackPaths);
-        String[] names = new String[createdPlaylists.size()];
-        for (int i = 0; i < createdPlaylists.size(); i++) {
-            OfflinePlaylist p = createdPlaylists.get(i);
-            names[i] = p.name() + " (" + p.trackPaths().size() + ")";
+        Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                getActivity(),
+                "Add to playlist",
+                null,
+                null,
+                "New playlist",
+                () -> showCreatePlaylistDialog("", pathsToAdd, exitSelectOnSave),
+                () -> {},
+                null,
+                null,
+                true
+        );
+
+        Dialog dialog = dialogPair.first;
+        LinearLayout dialogRoot = dialogPair.second;
+
+        ScrollView scroll = new ScrollView(getActivity());
+        LinearLayout listContainer = new LinearLayout(getActivity());
+        listContainer.setOrientation(LinearLayout.VERTICAL);
+        listContainer.setPadding(0, dp(4), 0, dp(8));
+
+        for (OfflinePlaylist target : createdPlaylists) {
+            LinearLayout itemRow = new LinearLayout(getActivity());
+            itemRow.setGravity(Gravity.CENTER_VERTICAL);
+            itemRow.setPadding(dp(14), dp(12), dp(14), dp(12));
+            itemRow.setBackground(rowBackground(false));
+
+            TextView nameView = text(target.name(), 15, foreground());
+            nameView.setTypeface(Typeface.DEFAULT_BOLD);
+            nameView.setSingleLine(true);
+            itemRow.addView(nameView, new LinearLayout.LayoutParams(0, -2, 1));
+
+            int count = target.trackPaths().size();
+            TextView countView = text(count + (count == 1 ? " track" : " tracks"), 13, secondary());
+            itemRow.addView(countView, new LinearLayout.LayoutParams(-2, -2));
+
+            itemRow.setOnClickListener(v -> {
+                try {
+                    playlistManager.addTrackPathsToPlaylist(target.id(), pathsToAdd);
+                    refreshCreatedPlaylists();
+                    renderCreatedPlaylists();
+                    if (exitSelectOnSave) {
+                        clearSelection();
+                    }
+                    dialog.dismiss();
+                    Utils.showToastShort("Added to " + target.name());
+                } catch (Exception ex) {
+                    Utils.showToastShort("Could not add songs");
+                }
+            });
+            listContainer.addView(itemRow);
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), 0, names) {
-            @NonNull
-            @Override
-            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                TextView item = text(getItem(position), 16, foreground());
-                item.setPadding(dp(24), dp(14), dp(24), dp(14));
-                return item;
-            }
-        };
+        scroll.addView(listContainer);
+        int maxHeight = createdPlaylists.size() > 5 ? dp(260) : ViewGroup.LayoutParams.WRAP_CONTENT;
+        LinearLayout.LayoutParams scrollParams = new LinearLayout.LayoutParams(-1, maxHeight);
+        scrollParams.bottomMargin = dp(12);
 
-        AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                .setTitle("Add to playlist")
-                .setAdapter(adapter, (d, which) -> {
-                    OfflinePlaylist target = createdPlaylists.get(which);
-                    try {
-                        playlistManager.addTrackPathsToPlaylist(target.id(), pathsToAdd);
-                        refreshCreatedPlaylists();
-                        renderCreatedPlaylists();
-                        clearSelection();
-                        Utils.showToastShort("Added to " + target.name());
-                    } catch (Exception ex) {
-                        Utils.showToastShort("Could not add songs");
-                    }
-                })
-                .setNegativeButton("Cancel", null)
-                .create();
+        // Insert the playlist rows right above the dialog button row
+        int insertIndex = Math.max(1, dialogRoot.getChildCount() - 1);
+        dialogRoot.addView(scroll, insertIndex, scrollParams);
 
         dialog.show();
     }
@@ -512,11 +588,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         showCreatePlaylistDialog("Downloaded songs", allVisiblePaths, false);
     }
 
-    private void addTrackToNewLocalPlaylist(OfflineTrack track) {
-        List<String> singlePath = List.of(track.audioFile().getAbsolutePath());
-        showCreatePlaylistDialog(track.displayTitle(), singlePath, false);
-    }
-
+    /**
+     * Uses CustomDialog.create with an EditText so "Create playlist" matches the rounded
+     * border radius and pill buttons of the rest of the extension.
+     */
     private void showCreatePlaylistDialog(String defaultName, List<String> pathsToSave, boolean exitSelectOnSave) {
         final EditText input = new EditText(getActivity());
         input.setHint("Playlist name");
@@ -525,14 +600,13 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         input.setText(defaultName);
         input.setSingleLine(true);
 
-        FrameLayout container = new FrameLayout(getActivity());
-        container.setPadding(dp(20), dp(8), dp(20), 0);
-        container.addView(input);
-
-        new AlertDialog.Builder(getActivity())
-                .setTitle("Create playlist")
-                .setView(container)
-                .setPositiveButton("Create", (dialog, which) -> {
+        CustomDialog.create(
+                getActivity(),
+                "Create playlist",
+                null,
+                input,
+                "Create",
+                () -> {
                     String title = input.getText() == null ? "" : input.getText().toString().trim();
                     if (title.isEmpty()) {
                         Utils.showToastShort("Playlist name cannot be empty");
@@ -543,6 +617,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                     try {
                         playlistManager.savePlaylist(playlist);
                         refreshCreatedPlaylists();
+                        playlistsExpanded = true;
                         renderCreatedPlaylists();
                         if (exitSelectOnSave) {
                             clearSelection();
@@ -551,9 +626,12 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                     } catch (Exception ex) {
                         Utils.showToastShort("Could not create playlist");
                     }
-                })
-                .setNegativeButton("Cancel", null)
-                .show();
+                },
+                () -> {},
+                null,
+                null,
+                false
+        ).first.show();
     }
 
     private void toggleSearch() {
@@ -834,7 +912,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         };
         showMenu(anchor, items, -1, position -> {
             if (position == 1) {
-                addTrackToNewLocalPlaylist(track);
+                // Opens the Add to playlist picker and auto-adds this track when a playlist is tapped
+                showAddTracksToPlaylistDialog(List.of(track.audioFile().getAbsolutePath()), false);
                 return;
             }
             if (position == 2) {
