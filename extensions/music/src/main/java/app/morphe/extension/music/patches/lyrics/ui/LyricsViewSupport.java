@@ -20,7 +20,6 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.text.Layout;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -40,7 +39,6 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.settings.Settings;
@@ -56,7 +54,7 @@ final class LyricsViewSupport {
     /** Compose LinearOutSlowInEasing. */
     static final TimeInterpolator LINEAR_OUT_SLOW_IN =
             new PathInterpolator(0f, 0f, 0.2f, 1f);
-    /** Compose FastOutSlowInEasing. */
+    /** The Compose FastOutSlowInEasing. */
     static final TimeInterpolator FAST_OUT_SLOW_IN =
             new PathInterpolator(0.4f, 0f, 0.2f, 1f);
     private static final float FOOTER_ALPHA = 0.6f;
@@ -67,20 +65,8 @@ final class LyricsViewSupport {
     private static final float SECTION_TAG_TEXT_SIZE_FACTOR = 0.45f;
     private static final float SECTION_DOT_INSET_FACTOR = 0.18f;
     private static final ArgbEvaluator BUTTON_COLOR_EVALUATOR = new ArgbEvaluator();
-    /**
-     * MIUI and HyperOS draw the bold system font too thin, most visibly on CJK text, so these
-     * devices get a heavier weight on top.
-     */
-    private static final boolean IS_XIAOMI = isXiaomi();
 
     private LyricsViewSupport() {
-    }
-
-    private static boolean isXiaomi() {
-        String manufacturer = Build.MANUFACTURER.toLowerCase(Locale.ROOT);
-        String brand = Build.BRAND.toLowerCase(Locale.ROOT);
-        return manufacturer.contains("xiaomi") || brand.contains("xiaomi")
-                || brand.contains("redmi") || brand.contains("poco");
     }
 
     /** Bolds a paint for lyrics; a typeface set on it afterwards undoes the weight. */
@@ -90,8 +76,8 @@ final class LyricsViewSupport {
                 | Paint.ANTI_ALIAS_FLAG
                 | Paint.SUBPIXEL_TEXT_FLAG
                 | Paint.LINEAR_TEXT_FLAG);
-        paint.setFontVariationSettings(IS_XIAOMI ? "'wght' 750" : "'wght' 700");
-        paint.setFakeBoldText(IS_XIAOMI);
+        paint.setFontVariationSettings(null);
+        paint.setFakeBoldText(false);
     }
 
     /** Draws a line a little tighter, except a joining script, which spacing would break apart. */
