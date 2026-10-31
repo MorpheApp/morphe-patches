@@ -1340,7 +1340,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             final int effectiveLeadIdx = isSec ? currentParentIdx : i;
             final boolean initialActive = !newLyrics.synced()
                     || (reusePrevious && (effectiveLeadIdx == prevHighlighted || i == prevHighlighted));
-            lineView.setActiveLine(initialActive, LyricsColors.secondaryTextColor());
+            lineView.setActiveLine(initialActive);
             lineView.setTextSize(TypedValue.COMPLEX_UNIT_SP,
                     LyricsViewSupport.lineTextSizeSp(isSec, textSize));
             lineView.setTextColor(foregroundColor);
@@ -1356,8 +1356,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             lineView.setPadding(0, isSec ? Dim.dp(2) : Dim.dp(8), 0, isSec ? Dim.dp(2) : Dim.dp(8));
             lineView.setIncludeFontPadding(false);
             lineView.getPaint().setElegantTextHeight(true);
-            lineView.setTypeface(null, Typeface.BOLD);
+            lineView.setTypeface(Typeface.DEFAULT_BOLD);
             LyricsViewSupport.applyLyricsBoldPaint(lineView.getPaint());
+            lineView.setFontVariationSettings(null);
             lineView.setLetterSpacing(LyricsViewSupport.lineLetterSpacing(line.text(), textSize));
 
             if (newLyrics.synced()) {
@@ -2414,10 +2415,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     private void clearActiveLineState() {
-        final int color = LyricsColors.secondaryTextColor();
         for (TextView lineView : lineViews) {
             if (lineView instanceof LyricsLineView view) {
-                view.setActiveLine(false, color);
+                view.setActiveLine(false);
             }
         }
     }
@@ -3559,13 +3559,12 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         if (index < 0 || current == null) {
             return;
         }
-        final int color = LyricsColors.secondaryTextColor();
         if (index < lineViews.size() && lineViews.get(index) instanceof LyricsLineView view) {
-            view.setActiveLine(active, color);
+            view.setActiveLine(active);
         }
         forEachBgLine(index, current, i -> {
             if (lineViews.get(i) instanceof LyricsLineView view) {
-                view.setActiveLine(active, color);
+                view.setActiveLine(active);
             }
         });
     }
@@ -4865,7 +4864,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         for (int i = 0; i < count; i++) {
             if (lineViews.get(i) instanceof LyricsLineView view && view.isSecondary()) {
                 final boolean visible = shouldBgLineBeVisible(current, activeLeadIdx, i, posMs);
-                view.setActiveLine(visible, LyricsColors.secondaryTextColor());
+                    view.setActiveLine(visible);
                 view.animateSecondaryExpansion(visible, false);
             }
         }

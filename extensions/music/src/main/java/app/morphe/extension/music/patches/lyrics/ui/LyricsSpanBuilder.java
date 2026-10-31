@@ -1629,13 +1629,13 @@ final class LyricsSpanBuilder {
         if (romaStart >= 0 && romaEnd > romaStart) {
             text.setSpan(new RelativeSizeSpan(TRANSLATION_RELATIVE_SIZE), romaStart, romaEnd,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            text.setSpan(new ForegroundColorSpan(LyricsColors.secondaryTextColor() | 0xFF000000),
+            text.setSpan(new ForegroundColorSpan(LyricsColors.lineTextColor() | 0xFF000000),
                     romaStart, romaEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         if (transStart >= 0 && transEnd > transStart) {
             text.setSpan(new RelativeSizeSpan(TRANSLATION_RELATIVE_SIZE), transStart, transEnd,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            text.setSpan(new ForegroundColorSpan(LyricsColors.secondaryTextColor() | 0xFF000000),
+            text.setSpan(new ForegroundColorSpan(LyricsColors.lineTextColor() | 0xFF000000),
                     transStart, transEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
