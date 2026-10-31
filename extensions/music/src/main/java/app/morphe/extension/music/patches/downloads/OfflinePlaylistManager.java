@@ -45,18 +45,6 @@ public final class OfflinePlaylistManager {
                             paths.add(path);
                         }
                     }
-                } else {
-                    // Fallback for older playlists saved with videoIds during testing
-                    JSONArray legacyIds = json.optJSONArray("videoIds");
-                    if (legacyIds != null) {
-                        for (int i = 0; i < legacyIds.length(); i++) {
-                            String vid = legacyIds.optString(i, "");
-                            File resolved = resolveAudioFileByVideoId(vid);
-                            if (resolved != null) {
-                                paths.add(resolved.getAbsolutePath());
-                            }
-                        }
-                    }
                 }
                 playlists.add(new OfflinePlaylist(id, name, paths));
             } catch (Exception ex) {
@@ -145,17 +133,15 @@ public final class OfflinePlaylistManager {
         savePlaylist(new OfflinePlaylist(existing.id(), existing.name(), updated));
     }
 
+    public void updateTrackOrder(String playlistId, List<String> orderedPaths) throws IOException {
+        OfflinePlaylist existing = getPlaylist(playlistId);
+        if (existing == null) throw new IOException("Playlist not found: " + playlistId);
+
+        savePlaylist(new OfflinePlaylist(existing.id(), existing.name(), orderedPaths));
+    }
+
     public void deletePlaylist(String playlistId) {
         File file = new File(playlistsDir, playlistId + ".json");
         OfflineStorage.delete(file);
-    }
-
-    private File resolveAudioFileByVideoId(String videoId) {
-        if (videoId.isEmpty()) return null;
-        File webm = new File(musicRoot, videoId + ".webm");
-        if (webm.isFile()) return webm;
-        File m4a = new File(musicRoot, videoId + ".m4a");
-        if (m4a.isFile()) return m4a;
-        return null;
     }
 }
