@@ -3,9 +3,10 @@ package app.morphe.extension.youtube.patches;
 
 import android.app.Dialog;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.ScaleDrawable;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.InsetDrawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,7 +97,20 @@ public final class CaptionMenu {
         list.setPaddingRelative(list.getPaddingStart(), 0, list.getPaddingEnd(), list.getPaddingBottom());
     }
 
-    private static Switch createToggle(android.content.Context context) {
+    private static int switchColor(Context context, String name, int fallback) {
+        int id = ResourceUtils.getIdentifier(ResourceType.COLOR, name);
+        return id == 0 ? fallback : context.getColor(id);
+    }
+
+    private static GradientDrawable switchShape(float density, int width, int height, ColorStateList colors) {
+        GradientDrawable shape = new GradientDrawable();
+        shape.setSize(Math.round(width * density), Math.round(height * density));
+        shape.setCornerRadius(height * density / 2);
+        shape.setColor(colors);
+        return shape;
+    }
+
+    private static Switch createToggle(Context context) {
         Switch toggle = new Switch(context);
         toggle.setTag("morphe_dual_captions");
         toggle.setText(StringRef.str("morphe_dual_captions_enabled_title"));
@@ -114,22 +128,22 @@ public final class CaptionMenu {
             toggle.setCompoundDrawablesRelativeWithIntrinsicBounds(icon, null, null, null);
             toggle.setCompoundDrawablePadding(Math.round(12 * density));
         }
-        int thumb = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "settings_switch_selector");
-        int track = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "settings_switch_track");
-        if (thumb != 0 && track != 0) {
-            // The native caption row reserves 48dp for a 40x24dp switch glyph.
-            LayerDrawable thumbDrawable = new LayerDrawable(new Drawable[]{context.getDrawable(thumb)});
-            thumbDrawable.setLayerSize(0, Math.round(20 * density), Math.round(20 * density));
-            thumbDrawable.setLayerGravity(0, Gravity.CENTER);
-            toggle.setThumbDrawable(thumbDrawable);
-            ScaleDrawable trackDrawable = new ScaleDrawable(context.getDrawable(track), Gravity.CENTER, 1, 1);
-            trackDrawable.setLevel(9200);
-            toggle.setTrackDrawable(trackDrawable);
-            toggle.setSwitchMinWidth(Math.round(40 * density));
-            toggle.setThumbTintList(null);
-            toggle.setTrackTintList(null);
-            toggle.setShowText(false);
-        }
+        int light = switchColor(context, "yt_ref_color_constants_baseline_opaque_white1_overlay10", 0xffe6e6e6);
+        int dark = switchColor(context, "yt_ref_color_constants_baseline_opaque_black3_overlay10", 0xff272727);
+        int inactive = switchColor(context, "yt_ref_color_constants_default_grey50", 0xff717171);
+        boolean lightTheme = !Utils.isDarkModeEnabled();
+        int[][] states = {new int[]{android.R.attr.state_checked}, new int[0]};
+        // Match the native 40x24dp glyph, including its transparent edge margins.
+        toggle.setThumbDrawable(switchShape(density, 18, 18, new ColorStateList(states,
+                new int[]{lightTheme ? light : dark, light})));
+        GradientDrawable track = switchShape(density, 37, 22, new ColorStateList(states,
+                new int[]{lightTheme ? dark : light, inactive}));
+        int insetX = Math.round(1.5f * density), insetY = Math.round(density);
+        toggle.setTrackDrawable(new InsetDrawable(track, insetX, insetY, insetX, insetY));
+        toggle.setSwitchMinWidth(Math.round(40 * density));
+        toggle.setThumbTintList(null);
+        toggle.setTrackTintList(null);
+        toggle.setShowText(false);
         toggle.setGravity(Gravity.CENTER_VERTICAL);
         toggle.setMinHeight(Math.round(48 * density));
         toggle.setChecked(CaptionTracks.dualCaptionEnabled());
