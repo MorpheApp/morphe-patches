@@ -1,8 +1,8 @@
 package app.morphe.patches.youtube.features.layout
 
-import app.morphe.patches.youtube.layout.miniplayer.miniplayerPatch
+import app.morphe.patches.youtube.layout.miniplayer.miniplayerPatch as legacyMiniplayerPatch
 
 /**
  * Migration bridge for the legacy miniplayer patch implementation.
  */
-internal val miniplayerPatch = app.morphe.patches.youtube.layout.miniplayer.miniplayerPatch
+internal val miniplayerPatch = legacyMiniplayerPatch
