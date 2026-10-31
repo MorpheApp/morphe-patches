@@ -15,7 +15,6 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-    <string name="morphe_dual_captions_enabled_title">Bilingual captions</string>
     <!-- misc.settings.settingsPatch -->
 
     <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
@@ -926,6 +925,10 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <!-- layout.captions.captionsPatch -->
     <string name="morphe_captions_screen_title">Captions</string>
     <string name="morphe_captions_screen_summary">Manage automatic captions and caption cookies</string>
+    <string name="morphe_captions_languages_title">Language and translation</string>
+    <string name="morphe_captions_presentation_title">Appearance and behavior</string>
+    <string name="morphe_captions_advanced_title">Advanced</string>
+    <string name="morphe_captions_advanced_summary">Cookie and transcript options</string>
 
     <!-- layout.captions.autoCaptionsPatch -->
     <string name="morphe_auto_captions_style_title">Auto captions visibility</string>
@@ -960,6 +963,19 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_fix_transcript_title">Fix transcript</string>
     <string name="morphe_fix_transcript_summary">Resolves a precondition check failure that can prevent the transcript from loading</string>
     <string name="morphe_captions_in_pip_title">Show captions in picture-in-picture</string>
+
+    <!-- layout.captions.captionViewportPatch -->
+    <string name="morphe_caption_scale_title">Caption size</string>
+    <string name="morphe_caption_scale_summary">Applies to single-language and bilingual captions</string>
+
+    <!-- layout.captions.stableCaptionBlocksPatch -->
+    <string name="morphe_stable_caption_blocks_title">Stable caption blocks</string>
+    <string name="morphe_stable_caption_blocks_summary">Group automatic captions into stable, readable blocks. Some words may appear before they are spoken. Restart required.</string>
+    <string name="morphe_secondary_caption_language_title">Secondary caption language (experimental)</string>
+    <string name="morphe_secondary_caption_language_summary">Shows a second language with the captions, and adds a Bilingual captions toggle to the captions menu. Caption text is sent to Google and Microsoft translation services. Restart required.</string>
+    <string name="morphe_dual_captions_enabled_title">Bilingual captions</string>
+    <string name="morphe_caption_block_translation_failed">Some caption translations are unavailable. Showing available captions.</string>
+    <string name="morphe_caption_blocks_too_large">Both caption languages do not fit in this player. Showing the primary language.</string>
 
     <!-- layout.buttons.navigation.navigationButtonsPatch -->
     <string name="morphe_navigation_buttons_screen_title">Navigation buttons</string>
@@ -1848,14 +1864,4 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_max_length_title">Max comment length</string>
     <string name="morphe_niconico_comments_max_length_summary">Hides comments with more characters than this. Each emoji counts as one character</string>
     <string name="morphe_niconico_comments_max_length_no_limit">No limit</string>
-    <string name="morphe_translate_caption_blocks_summary">Uses online translation for the second caption language.</string>
-    <string name="morphe_caption_block_translation_failed">Some caption translations are unavailable. Showing available captions.</string>
-    <string name="morphe_secondary_caption_language_title">Secondary caption language (experimental)</string>
-    <string name="morphe_dual_caption_scale_title">Caption size</string>
-    <string name="morphe_dual_caption_scale_summary">Applies to single-language and bilingual captions.</string>
-    <string name="morphe_caption_blocks_too_large">Both caption languages do not fit in this player. Showing the primary language.</string>
-    <string name="morphe_captions_languages_title">Language and translation</string>
-    <string name="morphe_captions_presentation_title">Appearance and behavior</string>
-    <string name="morphe_captions_advanced_title">Advanced</string>
-    <string name="morphe_captions_advanced_summary">Cookie and transcript options</string>
 </resources>

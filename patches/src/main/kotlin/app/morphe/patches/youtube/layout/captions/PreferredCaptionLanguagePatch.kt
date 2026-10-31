@@ -105,11 +105,9 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
 
         // Source YouTube uses to translate captions of the current audio track,
         // or the default caption track of the current audio track.
-        val defaultSourceMethod = CaptionTracksManagerDefaultSourceFingerprint(
-            CaptionTrackBuilderBuildFingerprint.method.returnType
-        ).method
+        val captionTrackType = CaptionTrackBuilderBuildFingerprint.method.returnType
+        val defaultSourceMethod = CaptionTracksManagerDefaultSourceFingerprint(captionTrackType).method
         val translationSourceMethod = CaptionTracksManagerTranslationSourceFingerprint.let {
-            val captionTrackType = CaptionTrackBuilderBuildFingerprint.method.returnType
             val metadataField = it.instructionMatches[0].fieldReference
             val audioTrackField = it.instructionMatches[1].fieldReference
             val sourceIndicesField = it.instructionMatches[5].fieldReference
@@ -183,18 +181,22 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
 
             addTracksGetter("patch_getDirectCaptionTracks", CaptionTracksManagerDirectTracksFingerprint)
             addTracksGetter("patch_getAutoTranslateCaptionTracks", CaptionTracksManagerAutoTranslateTracksFingerprint)
-            fun addSourceGetter(name: String, method: String) = addHelperMethod(
-                name,
-                EXTENSION_CAPTION_TRACK_INTERFACE,
-                smali = """
-                    iget-object v0, p0, $tracksManagerField
-                    if-eqz v0, :null
-                    invoke-virtual { v0 }, $method
-                    move-result-object v0
-                    :null
-                    return-object v0
-                """
-            )
+
+            fun addSourceGetter(name: String, method: String) {
+                addHelperMethod(
+                    name,
+                    EXTENSION_CAPTION_TRACK_INTERFACE,
+                    smali = """
+                        iget-object v0, p0, $tracksManagerField
+                        if-eqz v0, :null
+                        invoke-virtual { v0 }, $method
+                        move-result-object v0
+                        :null
+                        return-object v0
+                    """
+                )
+            }
+
             addSourceGetter("patch_getCaptionTranslationSource", translationSourceMethod)
             addSourceGetter("patch_getCurrentAudioCaptionSource", defaultSourceMethod.toString())
         }
@@ -221,20 +223,21 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
             )
         }
 
+        // Native selection of a track, used to apply a change of the bilingual captions toggle.
         if (is_21_10_or_greater) {
-            val setter = SetSubtitleTrackFingerprint.method
-            val selector = CaptionSelectionFingerprint(setter).method
-            val enumType = selector.parameterTypes[1]
-            val defaultReason = captionDefaultSelectionFingerprint(enumType.toString())
+            val selector = CaptionSelectionFingerprint(SetSubtitleTrackFingerprint.method).method
+            val defaultReason = captionDefaultSelectionFingerprint(selector.parameterTypes[1].toString())
                 .instructionMatches.last().fieldReference
+
             SetSubtitleTrackFingerprint.classDef.addHelperMethod(
-                "patch_selectCaptionTrack", "Z", listOf(EXTENSION_CAPTION_TRACK_INTERFACE), freeRegisters = 1,
+                "patch_selectCaptionTrack",
+                "V",
+                parameters = listOf(EXTENSION_CAPTION_TRACK_INTERFACE),
                 smali = """
                     sget-object v0, $defaultReason
                     check-cast p1, $trackType
                     invoke-virtual { p0, p1, v0 }, $selector
-                    const/4 v0, 0x1
-                    return v0
+                    return-void
                 """
             )
         }

@@ -37,8 +37,14 @@ internal val captionViewportPatch = bytecodePatch(
 
         hookVideoId("$EXTENSION_CLASS->onVideoId(Ljava/lang/String;)V")
         hookAdaptiveFormat("$EXTENSION_CLASS->onFormats")
-        settingsMenuCaptionGroup.add(NonInteractivePreference("morphe_dual_caption_scale",
-            tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"))
+
+        settingsMenuCaptionGroup.add(
+            NonInteractivePreference(
+                "morphe_caption_scale",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                selectable = true
+            )
+        )
 
         // Font size is calculated from the overlay size. Use the height of the fitted video instead.
         CaptionFontSizeFingerprint.method.addInstructions(
@@ -48,13 +54,19 @@ internal val captionViewportPatch = bytecodePatch(
                 move-result p3
             """
         )
+
+        // Apply the caption size setting to the calculated font size.
         CaptionFontSizeFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
-                addInstructions(index, """
-                    invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->scaleFontSize(F)F
-                    move-result v$register
-                """)
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->scaleFontSize(F)F
+                        move-result v$register
+                    """
+                )
             }
         }
     }

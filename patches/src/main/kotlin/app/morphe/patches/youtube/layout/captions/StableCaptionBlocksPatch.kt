@@ -13,30 +13,31 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.youtube.layout.hide.player.flyoutmenu.CaptionsOldBottomSheetLayoutInflaterFingerprint
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
+import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.FeedBottomSheetFlyoutFingerprint
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
-import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
-import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
-import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.playservice.is_21_10_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.cloneMutable
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/StableCaptionBlocks;"
+private const val EXTENSION_MENU_CLASS =
+    "Lapp/morphe/extension/youtube/patches/CaptionMenu;"
+private const val EXTENSION_OVERLAY_CLASS =
+    "Lapp/morphe/extension/youtube/patches/DualCaptionOverlay;"
 private const val EXTENSION_STATE_CLASS =
     $$"Lapp/morphe/extension/youtube/patches/StableCaptionBlocks$State;"
 private const val EXTENSION_FRAME_CLASS =
@@ -54,7 +55,13 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
     description = "Shows automatic captions in stable blocks with optional bilingual translation.",
 ) {
     // The window measure method must be patched first, since this inserts instructions before it.
-    dependsOn(versionCheckPatch, translatedCaptionPensPatch, captionWindowMeasurePatch, treeNodeElementHookPatch)
+    dependsOn(
+        versionCheckPatch,
+        translatedCaptionPensPatch,
+        captionTrackCapturePatch,
+        captionWindowMeasurePatch,
+        treeNodeElementHookPatch,
+    )
 
     execute {
         if (!is_21_10_or_greater) {
@@ -63,27 +70,38 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
             )
         }
 
-        settingsMenuCaptionGroup.add(ListPreference(
-            "morphe_secondary_caption_language",
-            tag = "app.morphe.extension.youtube.settings.preference.CaptionLanguagePreference",
-            entriesKey = null,
-            entryValuesKey = null,
+        settingsMenuCaptionGroup.addAll(listOf(
+            SwitchPreference("morphe_stable_caption_blocks", summary = true),
+            ListPreference(
+                "morphe_secondary_caption_language",
+                tag = "app.morphe.extension.youtube.settings.preference.CaptionLanguagePreference",
+                entriesKey = null,
+                entryValuesKey = null,
+            ),
         ))
 
-        CaptionsOldBottomSheetLayoutInflaterFingerprint.matchAll(1 .. 2).forEach { match ->
-            val footer = match.instructionMatches.last()
-            val list = (footer.instruction as FiveRegisterInstruction).registerC
-            match.method.addInstructions(footer.index,
-                "invoke-static { v$list }, Lapp/morphe/extension/youtube/patches/CaptionMenu;->addToggle(Landroid/widget/ListView;)V")
+        // Bilingual captions toggle of the old captions bottom sheet.
+        CaptionsBottomSheetListFingerprint.matchAll(1..2).forEach { match ->
+            val list = match.instructionMatches.first()
+
+            match.method.addInstruction(
+                list.index + 1,
+                "invoke-static { v${list.getInstruction<OneRegisterInstruction>().registerA} }, " +
+                        "$EXTENSION_MENU_CLASS->addToggle(Landroid/widget/ListView;)V"
+            )
         }
 
-        hookTreeNodeResult("Lapp/morphe/extension/youtube/patches/CaptionMenu;->onCaptionSheet",
-            isLazilyConvertedElement = false)
+        // Bilingual captions toggle of the Litho captions bottom sheet.
+        hookTreeNodeResult("$EXTENSION_MENU_CLASS->onCaptionSheet", isLazilyConvertedElement = false)
+
         FeedBottomSheetFlyoutFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
-                addInstruction(index,
-                    "invoke-static { v$register }, Lapp/morphe/extension/youtube/patches/CaptionMenu;->onDialog(Landroid/app/Dialog;)V")
+
+                addInstruction(
+                    index,
+                    "invoke-static { v$register }, $EXTENSION_MENU_CLASS->onDialog(Landroid/app/Dialog;)V"
+                )
             }
         }
 
@@ -191,16 +209,10 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
             val constructorIndex = match.instructionMatches[1].index
             val register = match.method.getInstruction<OneRegisterInstruction>(newInstanceIndex).registerA
 
-            val constructor = match.method.getInstruction<RegisterRangeInstruction>(constructorIndex)
-            if (constructor.registerCount != 8 || constructor.startRegister != register) {
-                throw PatchException("Unsupported StaticLayout constructor register layout")
-            }
-            val firstArgument = constructor.startRegister + 1
-            val lastArgument = constructor.startRegister + constructor.registerCount - 1
             match.method.apply {
                 replaceInstruction(
                     constructorIndex,
-                    "invoke-static/range { v$firstArgument .. v$lastArgument }, " +
+                    "invoke-static/range { v${register + 1} .. v${register + 7} }, " +
                             "$EXTENSION_CLASS->createLayout($CAPTION_STATIC_LAYOUT_PARAMETERS)Landroid/text/StaticLayout;"
                 )
                 addInstruction(constructorIndex + 1, "move-result-object v$register")
@@ -222,19 +234,14 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                 interfaces.add(EXTENSION_WINDOW_INTERFACE)
 
                 addHelperMethod(
-                    "patch_setCaptionMeasuredSize", "V", parameters = listOf("I", "I"),
-                    smali = "invoke-virtual { p0, p1, p2 }, Landroid/view/View;->setMeasuredDimension(II)V\nreturn-void",
+                    "patch_setCaptionMeasuredSize",
+                    "V",
+                    parameters = listOf("I", "I"),
+                    smali = """
+                        invoke-virtual { p0, p1, p2 }, Landroid/view/View;->setMeasuredDimension(II)V
+                        return-void
+                    """
                 )
-                for ((method, hook) in listOf(
-                    CaptionWindowMeasureFingerprint.method to "afterMeasure",
-                    methods.single { it.name == "onLayout" && it.parameterTypes == listOf("Z", "I", "I", "I", "I") } to "afterLayout",
-                )) {
-                    method.implementation!!.instructions.withIndex()
-                        .filter { it.value.opcode == Opcode.RETURN_VOID }
-                        .map { it.index }.reversed().forEach { at ->
-                            method.addInstructions(at, "invoke-static/range { p0 .. p0 }, Lapp/morphe/extension/youtube/patches/DualCaptionOverlay;->$hook(Landroid/view/View;)V")
-                        }
-                }
 
                 windowFields.forEach { (name, field) ->
                     addHelperMethod(
@@ -249,10 +256,29 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
             }
         }
 
-        CaptionWindowMeasureFingerprint.method.addInstructions(
-            0,
-            "invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->prepare(Landroid/view/View;I)V"
-        )
+        CaptionWindowMeasureFingerprint.method.apply {
+            addInstructions(
+                0,
+                "invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->prepare(Landroid/view/View;I)V"
+            )
+
+            // Bilingual captions reserve their height after the native measurement.
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+                addInstruction(
+                    index,
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_OVERLAY_CLASS->afterMeasure(Landroid/view/View;)V"
+                )
+            }
+        }
+
+        CaptionWindowLayoutFingerprint.method.apply {
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+                addInstruction(
+                    index,
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_OVERLAY_CLASS->afterLayout(Landroid/view/View;)V"
+                )
+            }
+        }
 
         // Player subclasses can recreate the cue placement.
         getCaptionOverlayPresenterFingerprint(cueType).method.addInstructions(

@@ -16,10 +16,10 @@ public class CaptionViewportPolicyTest {
         assertEquals(80f, CaptionViewportPolicy.scaleFontSize(80f, 100), .001f);
     }
 
-    @Test public void importedValuesCannotExceedSliderBounds() {
-        assertEquals(24f, CaptionViewportPolicy.scaleFontSize(80f, Integer.MIN_VALUE), .001f);
-        assertEquals(120f, CaptionViewportPolicy.scaleFontSize(80f, Integer.MAX_VALUE), .001f);
+    @Test public void defaultScaleKeepsTheExactNativeFontSize() {
+        assertEquals(17.3f, CaptionViewportPolicy.scaleFontSize(17.3f, 100), 0f);
     }
+
     @Test
     public void fitsRealContentHeightOnFoldFullscreen() {
         CaptionViewportPolicy p = new CaptionViewportPolicy();

@@ -132,6 +132,7 @@ public class PreferredCaptionRoutingTest {
             public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getDirectCaptionTracks() { return List.of(asr, authored); }
             public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getAutoTranslateCaptionTracks() { return List.of(); }
             public PreferredCaptionLanguagePatch.CaptionTrackInterface patch_getCaptionTranslationSource() { return asr; }
+            public PreferredCaptionLanguagePatch.CaptionTrackInterface patch_getCurrentAudioCaptionSource() { return null; }
         };
         assertSame(authored, PreferredCaptionLanguagePatch.blockTranslationSource(manager, authored));
         assertSame(asr, PreferredCaptionLanguagePatch.blockTranslationSource(manager, asr));
@@ -150,6 +151,7 @@ public class PreferredCaptionRoutingTest {
             public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getDirectCaptionTracks() { return List.of(english, german); }
             public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getAutoTranslateCaptionTracks() { return List.of(translated); }
             public PreferredCaptionLanguagePatch.CaptionTrackInterface patch_getCaptionTranslationSource() { return german; }
+            public PreferredCaptionLanguagePatch.CaptionTrackInterface patch_getCurrentAudioCaptionSource() { return null; }
         };
         assertSame(english, PreferredCaptionLanguagePatch.blockTranslationSource(manager, translated));
         Source missing = new Source("fr", english.url.replace("a.en", "a.es").replace("lang=en", "lang=es") + "&tlang=fr", "ta.es.fr");

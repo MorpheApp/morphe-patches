@@ -1,4 +1,10 @@
-/* Copyright 2026 Morphe. See NOTICE for the GPLv3 Section 7 terms. */
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4213
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.patches;
 
 import android.content.Context;
@@ -13,13 +19,30 @@ import android.view.ViewGroup;
 import android.view.accessibility.CaptioningManager;
 import android.widget.LinearLayout;
 
+import androidx.annotation.Nullable;
+
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-/** Player-owned overlay; two independent paragraphs share only their bottom anchor. */
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.StringRef;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.ui.Dim;
+
+/**
+ * Overlay of the caption window that shows both languages of bilingual captions.
+ * The languages are two independent paragraphs that share only their bottom anchor.
+ */
+@SuppressWarnings("unused")
 public final class DualCaptionOverlay extends LinearLayout {
     private static final Map<View, WeakReference<DualCaptionOverlay>> layers = new WeakHashMap<>();
+
+    /**
+     * Space between the languages, as a fraction of the text size.
+     */
+    private static final float LANGUAGE_MARGIN_TEXT_SIZE = .28f;
+
     private final Part primary, secondary;
     private final Map<View, Float> originalAlphas = new WeakHashMap<>();
     private boolean active, sizeNotified;
@@ -37,6 +60,7 @@ public final class DualCaptionOverlay extends LinearLayout {
         addView(secondary, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
     }
 
+    @Nullable
     private static DualCaptionOverlay get(View view) {
         WeakReference<DualCaptionOverlay> reference = layers.get(view);
         return reference == null ? null : reference.get();
@@ -63,10 +87,6 @@ public final class DualCaptionOverlay extends LinearLayout {
         }
         CaptioningManager manager =
                 (CaptioningManager) view.getContext().getSystemService(Context.CAPTIONING_SERVICE);
-        if (manager == null) {
-            begin(view);
-            return;
-        }
         CaptioningManager.CaptionStyle style = manager.getUserStyle();
         layer.setBackgroundColor(style.hasWindowColor() ? style.windowColor : Color.TRANSPARENT);
         boolean newSession = layer.session.get() != session;
@@ -81,64 +101,76 @@ public final class DualCaptionOverlay extends LinearLayout {
         layer.primary.configure(first, paint, style, reset, !complete);
         layer.secondary.configure(second, paint, style, reset, !complete);
         ((LayoutParams) layer.secondary.getLayoutParams()).topMargin =
-                Math.round(
-                        Math.max(
-                                view.getResources().getDisplayMetrics().density * 4,
-                                paint.getTextSize() * .28f));
+                Math.max(Dim.dp4, Math.round(paint.getTextSize() * LANGUAGE_MARGIN_TEXT_SIZE));
         layer.forceLayout();
         layer.active = true;
         layer.setVisibility(VISIBLE);
     }
 
-    /** Invoked after native measurement; reserve height without changing native child types. */
+    /**
+     * Injection point.
+     * Called after the native measurement, and reserves the height of the overlay.
+     */
     public static void afterMeasure(View view) {
-        DualCaptionOverlay layer = get(view);
-        if (layer == null
-                || !layer.active
-                || !(view instanceof ViewGroup group)
-                || !(view instanceof StableCaptionBlocks.Window window)) return;
-        int width = layer.requestedWidth;
-        if (width <= 0) {
-            begin(view);
-            return;
-        }
-        layer.measure(
-                MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY),
-                MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-        if (view.getParent() instanceof View parent) {
-            int height = parent.getHeight() - parent.getPaddingTop() - parent.getPaddingBottom();
-            if (height > 0 && layer.getMeasuredHeight() + view.getPaddingTop()
-                    + view.getPaddingBottom() > height) {
-                begin(view); // Native children already contain the full primary translation.
-                if (!layer.sizeNotified) {
-                    layer.sizeNotified = true;
-                    app.morphe.extension.shared.Utils.showToastShort(
-                            app.morphe.extension.shared.StringRef.str("morphe_caption_blocks_too_large"));
-                }
+        if (!StableCaptionBlocks.isEnabled()) return;
+        try {
+            DualCaptionOverlay layer = get(view);
+            if (layer == null
+                    || !layer.active
+                    || !(view instanceof ViewGroup group)
+                    || !(view instanceof StableCaptionBlocks.Window window)) return;
+
+            final int width = layer.requestedWidth;
+            if (width <= 0) {
+                begin(view);
                 return;
             }
-        }
-        window.patch_setCaptionMeasuredSize(
-                Math.max(
-                        view.getMeasuredWidth(),
-                        width + view.getPaddingLeft() + view.getPaddingRight()),
-                Math.max(
-                        view.getMeasuredHeight(),
-                        layer.getMeasuredHeight()
-                                + view.getPaddingTop()
-                                + view.getPaddingBottom()));
-        place(layer, view, view.getMeasuredWidth(), view.getMeasuredHeight());
-        for (int i = 0; i < group.getChildCount(); i++) {
-            View child = group.getChildAt(i);
-            layer.originalAlphas.put(child, child.getAlpha());
-            child.setAlpha(0f);
+            layer.measure(
+                    MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY),
+                    MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+
+            final int paddedHeight = layer.getMeasuredHeight() + view.getPaddingTop() + view.getPaddingBottom();
+            if (view.getParent() instanceof View parent) {
+                final int height = parent.getHeight() - parent.getPaddingTop() - parent.getPaddingBottom();
+                if (height > 0 && paddedHeight > height) {
+                    // The native children already contain the full primary translation.
+                    begin(view);
+                    if (!layer.sizeNotified) {
+                        layer.sizeNotified = true;
+                        Utils.showToastShort(StringRef.str("morphe_caption_blocks_too_large"));
+                    }
+                    return;
+                }
+            }
+
+            window.patch_setCaptionMeasuredSize(
+                    Math.max(view.getMeasuredWidth(), width + view.getPaddingLeft() + view.getPaddingRight()),
+                    Math.max(view.getMeasuredHeight(), paddedHeight));
+            place(layer, view, view.getMeasuredWidth(), view.getMeasuredHeight());
+
+            for (int i = 0; i < group.getChildCount(); i++) {
+                View child = group.getChildAt(i);
+                layer.originalAlphas.put(child, child.getAlpha());
+                child.setAlpha(0f);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "afterMeasure failure", ex);
         }
     }
 
+    /**
+     * Injection point.
+     */
     public static void afterLayout(View view) {
-        DualCaptionOverlay layer = get(view);
-        if (layer == null || !layer.active) return;
-        place(layer, view, view.getWidth(), view.getHeight());
+        if (!StableCaptionBlocks.isEnabled()) return;
+        try {
+            DualCaptionOverlay layer = get(view);
+            if (layer != null && layer.active) {
+                place(layer, view, view.getWidth(), view.getHeight());
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "afterLayout failure", ex);
+        }
     }
 
     private static void place(DualCaptionOverlay layer, View view, int width, int height) {
@@ -151,7 +183,9 @@ public final class DualCaptionOverlay extends LinearLayout {
                 Math.max(0, y) + layer.getMeasuredHeight());
     }
 
-    /** Drawing each language independently preserves per-paragraph wrapping and direction. */
+    /**
+     * Drawing each language independently preserves per-paragraph wrapping and direction.
+     */
     private static final class Part extends View {
         private final TextPaint paint = new TextPaint();
         private final Paint background = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -166,7 +200,7 @@ public final class DualCaptionOverlay extends LinearLayout {
         Part(Context context, boolean bottom) {
             super(context);
             this.bottom = bottom;
-            padding = context.getResources().getDisplayMetrics().density * 2;
+            padding = Dim.dp2;
         }
 
         void configure(String text, TextPaint source, CaptioningManager.CaptionStyle style,
@@ -184,7 +218,7 @@ public final class DualCaptionOverlay extends LinearLayout {
 
         @Override
         protected void onMeasure(int widthSpec, int heightSpec) {
-            int width = Math.max(1, MeasureSpec.getSize(widthSpec) - Math.round(padding * 2));
+            final int width = Math.max(1, MeasureSpec.getSize(widthSpec) - Math.round(padding * 2));
             layout =
                     StaticLayout.Builder.obtain(text, 0, text.length(), paint, width)
                             .setAlignment(Layout.Alignment.ALIGN_CENTER)
@@ -194,7 +228,7 @@ public final class DualCaptionOverlay extends LinearLayout {
                             .build();
             // Pending translations may arrive mid-cue. Keep their slots until the next cue
             // so completing a translation cannot move text that is already being read.
-            int height = pending
+            final int height = pending
                     ? StaticLayout.Builder.obtain("\n", 0, 1, paint, width)
                             .setIncludePad(true).build().getHeight()
                     : layout.getHeight();

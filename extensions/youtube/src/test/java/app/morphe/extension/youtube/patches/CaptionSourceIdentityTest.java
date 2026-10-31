@@ -26,4 +26,10 @@ public class CaptionSourceIdentityTest {
         assertNull(CaptionTracks.sourceIdentity(track("en",URL.replace("kind=asr","kind=manual"),"a.en")));
         assertNull(CaptionTracks.sourceIdentity(track("en",URL.replace("v=P6pcTK0wTYA","v=bad"),"a.en")));
     }
+    @Test public void translationCheckDoesNotFailForUrlsThatAreNotCaptionUrls() {
+        assertFalse(AutoTranslateCaptionsPatch.isTranslationTrack(track("en",URL,"a.en")));
+        assertTrue(AutoTranslateCaptionsPatch.isTranslationTrack(track("de",URL+"&tlang=de","ta.en.de")));
+        assertFalse(AutoTranslateCaptionsPatch.isTranslationTrack(track("en","https://example.com/","a.en")));
+        assertFalse(AutoTranslateCaptionsPatch.isTranslationTrack(track("en",null,"a.en")));
+    }
 }

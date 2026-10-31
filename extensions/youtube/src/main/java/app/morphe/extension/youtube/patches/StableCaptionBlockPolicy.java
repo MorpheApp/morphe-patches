@@ -9,6 +9,8 @@ package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.youtube.patches.CaptionXml.children;
 
+import androidx.annotation.Nullable;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -27,6 +29,14 @@ import app.morphe.extension.shared.Logger;
 final class StableCaptionBlockPolicy {
     static final int MAX_ATOMS = 20000, MAX_BLOCK_CHARS = 512;
     static final long MAX_PREVIEW_MS = 8000, MIN_DURATION_MS = 1500, MAX_GAP_MS = 2000;
+
+    /**
+     * Languages written without spaces between words, limited by characters instead of words.
+     */
+    private static final List<String> COMPACT_LANGUAGES = List.of("zh", "ja", "ko", "th", "lo", "km", "my");
+    private static final int MAX_COMPACT_SOURCE_CHARS = 30;
+    private static final int MAX_SOURCE_WORDS = 15;
+    private static final int MAX_MULTI_ATOM_SOURCE_CHARS = 80;
 
     interface Fit {
         boolean fits(String text);
@@ -61,6 +71,9 @@ final class StableCaptionBlockPolicy {
     private final List<Atom> atoms;
     private final int[] characters;
     private final boolean[] boundaries;
+    @Nullable
+    private List<Block> sourcePlan;
+    private boolean sourcePlanCompact;
 
     private StableCaptionBlockPolicy(List<Atom> atoms) {
         this.atoms = List.copyOf(atoms);
@@ -309,12 +322,20 @@ final class StableCaptionBlockPolicy {
                 && type != Character.FINAL_QUOTE_PUNCTUATION;
     }
 
-    /** Use the same reading-time planner before either translation or screen measurement. */
-    List<Block> sourceBlocks(String language) {
+    /**
+     * Uses the same reading-time planner before either translation or screen measurement.
+     * The plan is kept, since toggling captions can create a new session on the main thread.
+     */
+    synchronized List<Block> sourceBlocks(String language) {
         String code = Locale.forLanguageTag(language).getLanguage();
-        boolean compact = List.of("zh", "ja", "ko", "th", "lo", "km", "my").contains(code);
-        return plan(text -> (compact ? text.codePointCount(0, text.length())
-                : text.split("\\s+").length) <= (compact ? 30 : 15), true);
+        final boolean compact = COMPACT_LANGUAGES.contains(code);
+        if (sourcePlan == null || sourcePlanCompact != compact) {
+            sourcePlan = plan(text -> (compact
+                    ? text.codePointCount(0, text.length()) <= MAX_COMPACT_SOURCE_CHARS
+                    : text.split("\\s+").length <= MAX_SOURCE_WORDS), true);
+            sourcePlanCompact = compact;
+        }
+        return sourcePlan;
     }
 
     List<Block> plan(Fit fit) {
@@ -348,7 +369,8 @@ final class StableCaptionBlockPolicy {
                 Block candidate = block(from, to, true);
                 long duration = candidate.end - candidate.start;
                 if (duration <= 0 || source && (duration > MAX_PREVIEW_MS
-                        || to > from + 1 && candidate.text.codePointCount(0, candidate.text.length()) > 80)) continue;
+                        || to > from + 1
+                        && candidate.text.codePointCount(0, candidate.text.length()) > MAX_MULTI_ATOM_SOURCE_CHARS)) continue;
                 long missing = shortfall(candidate) + shortfall[to];
                 int chars = candidate.text.codePointCount(0, candidate.text.length());
                 // Relative reading load, not a language-specific characters-per-second limit.

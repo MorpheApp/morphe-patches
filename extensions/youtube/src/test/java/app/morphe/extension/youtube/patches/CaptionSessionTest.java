@@ -57,7 +57,7 @@ public class CaptionSessionTest {
     }
 
     @Test public void oversizedNativeCueIsNotSentToProvider() {
-        String text = "\uD83D\uDE00".repeat(StableCaptionBlockPolicy.MAX_BLOCK_CHARS + 1);
+        String text = "😀".repeat(StableCaptionBlockPolicy.MAX_BLOCK_CHARS + 1);
         var session = new CaptionSession(List.of(new StableCaptionBlockPolicy.Block(0, 3000, text, false)),
                 "en", "de", "fr", (from, to, texts) -> {
                     fail("Provider input limit must be enforced independently of layout hints");

@@ -9,6 +9,8 @@
 
 package app.morphe.extension.youtube.patches;
 
+import androidx.annotation.Nullable;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URLDecoder;
@@ -212,26 +214,31 @@ public final class AutoTranslateCaptionsPatch {
         return preferred != null ? preferred : mixedSources ? null : first;
     }
 
-    static String[] translationLanguages(String selected) {
+    /**
+     * @return Translation languages. If the selected language is an alias of a language
+     *         then the alias is used instead, so the selection is kept.
+     */
+    public static String[] translationLanguages(String selected) {
         String[] codes = TRANSLATION_LANGUAGES.clone();
         String canonical = translationLanguage(selected);
         for (int i = 0; i < codes.length; i++) {
             if (codes[i].equals(canonical)) {
-                codes[i] = selected; // Keep an existing alias selected without rewriting preferences.
+                codes[i] = selected;
                 break;
             }
         }
         return codes;
     }
 
-    static String translationLanguageName(String language, Locale locale) {
+    public static String translationLanguageName(String language, Locale locale) {
         String code = translationLanguage(language);
         if (code == null) code = language;
         // YouTube's generic pt target is Brazilian Portuguese.
         return Locale.forLanguageTag("pt".equals(code) ? "pt-BR" : code).getDisplayName(locale);
     }
 
-    static String translationLanguage(String language) {
+    @Nullable
+    static String translationLanguage(@Nullable String language) {
         if (language == null || !LANGUAGE_CODE_PATTERN.matcher(language).matches()) return null;
         for (String code : TRANSLATION_LANGUAGES) {
             if (code.equalsIgnoreCase(language)) return code;
@@ -269,8 +276,17 @@ public final class AutoTranslateCaptionsPatch {
                 : !fields.containsKey("tlang");
     }
 
+    /**
+     * @return If the track is a translation of another track, according to its validated url.
+     */
+    static boolean isTranslationTrack(CaptionTrackInterface track) {
+        Map<String, String> parameters = captionParameters(track.patch_getUrl());
+        return parameters != null && parameters.containsKey("tlang");
+    }
+
     /** Keep YouTube URL validation shared by original and native translated tracks. */
-    static Map<String, String> captionParameters(String url) {
+    @Nullable
+    static Map<String, String> captionParameters(@Nullable String url) {
         if (url == null) return null;
         try {
             URI uri = URI.create(url);
@@ -290,7 +306,8 @@ public final class AutoTranslateCaptionsPatch {
                 fields.put(key, URLDecoder.decode(split < 0 ? "" : part.substring(split + 1), "UTF-8"));
             }
             return fields;
-        } catch (IllegalArgumentException | UnsupportedEncodingException ignored) {
+        } catch (IllegalArgumentException | UnsupportedEncodingException ex) {
+            Logger.printDebug(() -> "Invalid caption url", ex);
             return null;
         }
     }
@@ -335,7 +352,8 @@ public final class AutoTranslateCaptionsPatch {
                             || !parameter.equals("tlang=" + language)) return -1;
                     found = offset + "tlang=".length();
                 }
-            } catch (IllegalArgumentException | UnsupportedEncodingException ignored) {
+            } catch (IllegalArgumentException | UnsupportedEncodingException ex) {
+                Logger.printDebug(() -> "Invalid caption url parameter", ex);
                 return -1;
             }
             offset = next + 1;

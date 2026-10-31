@@ -849,10 +849,8 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_auto_captions_style_entry_4">Ses kapatıldığında göster</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Tercih edilen altyazı dili</string>
-  <string name="morphe_preferred_caption_language_summary">Videolar için otomatik dil tercihi.</string>
   <string name="morphe_preferred_caption_language_entry_off">Kapalı</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Ek otomatik çeviri dilleri</string>
   <string name="morphe_auto_translate_additional_languages_summary">Otomatik çeviri menüsüne daha fazla dil ekler</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Altyazı çerezlerini ayarla</string>
@@ -1666,14 +1664,4 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_niconico_comments_max_length_title">Maksimum yorum uzunluğu</string>
   <string name="morphe_niconico_comments_max_length_summary">Bunu aşan karakter sayısına sahip yorumları gizler. Her emoji bir karakter olarak sayılır</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sınırsız</string>
-    <string name="morphe_translate_caption_blocks_summary">İkinci altyazı dili için çevrimiçi çeviri kullanır.</string>
-    <string name="morphe_caption_block_translation_failed">Bazı altyazı çevirileri kullanılamıyor. Mevcut altyazılar gösteriliyor.</string>
-    <string name="morphe_secondary_caption_language_title">İkinci altyazı dili (deneysel)</string>
-    <string name="morphe_dual_caption_scale_title">Altyazı boyutu</string>
-    <string name="morphe_dual_caption_scale_summary">Tek ve çift dilli altyazılara uygulanır.</string>
-    <string name="morphe_caption_blocks_too_large">İki altyazı dili bu oynatıcıya sığmıyor. Birincil dil gösteriliyor.</string>
-    <string name="morphe_captions_languages_title">Dil ve çeviri</string>
-    <string name="morphe_captions_presentation_title">Görünüm ve davranış</string>
-    <string name="morphe_captions_advanced_title">Gelişmiş</string>
-    <string name="morphe_captions_advanced_summary">Çerez ve transkript seçenekleri</string>
 </resources>

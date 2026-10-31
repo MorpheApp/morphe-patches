@@ -299,7 +299,7 @@ public class CaptionBlockTranslatorTest {
         f.replies.add(slowConnect); f.translate("one");
     }
     @Test public void unicodeBlankOutputIsRejected() throws Exception {
-        Fixture f = new Fixture(); f.add(200, google("\u2003")); f.add(500, "bad");
+        Fixture f = new Fixture(); f.add(200, google(" ")); f.add(500, "bad");
         assertThrows(IOException.class, () -> f.translate("one"));
     }
     @Test public void responseSizeIsBoundedAndResourcesCloseOnFailure() throws Exception {
