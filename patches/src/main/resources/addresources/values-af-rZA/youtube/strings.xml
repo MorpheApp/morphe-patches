@@ -61,6 +61,7 @@ Veranderinge sluit in:
   <string name="morphe_hide_account_menu_title">Aktiveer Biblioteek / Jy onderste menu filter</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Biblioteek / Jy onderste menu filter</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Voer die Biblioteek / Jy onderste menu name in om volgens te filter, geskei deur nuwe reëls</string>
+  <string name="morphe_hide_account_menu_downloads_title">Verberg Aflaaie</string>
   <string name="morphe_hide_album_cards_title">Verberg albumkaarte</string>
   <string name="morphe_hide_album_cards_summary">Verberg die albumkaarte onder die kunstenaar se beskrywing</string>
   <string name="morphe_hide_artist_cards_title">Verberg kunstenaarskaarte</string>
@@ -515,7 +516,23 @@ Nadat 'n video met die Ask-knoppie een keer oopgemaak is, werk die funksie met a
   <string name="morphe_external_downloader_quick_audio">Klank</string>
   <string name="morphe_external_downloader_quick_options">Alle opsies</string>
   <string name="morphe_shorts_download_flyout_button_title">Wys aflaai in Shorts-kieslys</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Voeg \'n aflaai-item by die Shorts-speler se spyskaart voeg bylaaef 인한</string>
   <string name="morphe_shorts_download_flyout_title">Aflaai</string>
+  <string name="morphe_export_download_folder_title">Voer gestorde video\'s uit</string>
+  <string name="morphe_export_download_folder_summary">"Voer in-app gestorde video's uit na jou toestel se stoorplek deur die in-app aflaai-spyskaart te gebruik. Tik om die uitvoer-ouer te verander
+
+Uitvoer-ouer: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Uitvoer-ouer</string>
+  <string name="morphe_export_download_folder_change">Verander ouer</string>
+  <string name="morphe_export_download_folder_changed">Uitvoer-ouer verander</string>
+  <string name="morphe_export_download_folder_reset">Uitvoer-ouer hergestel</string>
+  <string name="morphe_export_download_flyout_title">Voer uit na toestel</string>
+  <string name="morphe_export_download_started">Voer video uit</string>
+  <string name="morphe_export_download_progress">Voer video uit: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Video-uitvoere</string>
+  <string name="morphe_export_download_saved">Video uitgevoer na %s</string>
+  <string name="morphe_export_download_failed">Kon nie die video uitvoer nie</string>
+  <string name="morphe_export_download_canceled">Uitvoer gekanselleer</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Vertaalde stem over</string>
   <string name="morphe_vot_screen_summary">Lees video-onderskrifte hardop voor met behulp van teks-na-spraak op die toestel, gesinkroniseer met die afspeel</string>
@@ -590,6 +607,19 @@ Jou API-sleutel moet nooit gedeel word nie. Enigeen met toegang daartoe kan jou 
   <string name="morphe_pip_button_overlay_title">Wys die Picture-in-Picture-knoppie</string>
   <string name="morphe_pip_button_flyout_title">Wys die Picture-in-Picture-kieslys</string>
   <string name="morphe_pip_button_flyout_name">Skakel na Picture-in-Picture</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Beeld-in-beeld-aksies</string>
+  <string name="morphe_pip_actions_screen_summary">Verander die knoppies wat in beeld-in-beeld getoon word</string>
+  <string name="morphe_pip_action_left_title">Linker-knoppie</string>
+  <string name="morphe_pip_action_center_title">Senter-knoppie</string>
+  <string name="morphe_pip_action_right_title">Regter-knoppie</string>
+  <string name="morphe_pip_action_entry_default">Verstek</string>
+  <string name="morphe_pip_action_entry_previous">Vorige video</string>
+  <string name="morphe_pip_action_entry_next">Volgende video</string>
+  <string name="morphe_pip_action_entry_rewind">Spoel 10 sekondes terug</string>
+  <string name="morphe_pip_action_entry_fast_forward">Spoel 10 sekondes vorentoe</string>
+  <string name="morphe_pip_action_entry_play_pause">Speel/pouseer</string>
+  <string name="morphe_pip_action_entry_background_playback">Agtergrondterugspeeling</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Laai Speel alle knoppie</string>
   <string name="morphe_play_all_button_summary">"Tik om 'n sn lys van alle video's van kanaal te genereer, tik en hou om ongedaan te maak
@@ -1223,6 +1253,10 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_miniplayer_not_available_summary">YouTube het alle addisionele mini-spelers verwyder. Om meer mini-speler-tipes te herstel, patch YouTube 21.28.208 of ouer</string>
   <string name="morphe_miniplayer_type_title">Mini-speler tipe</string>
   <string name="morphe_miniplayer_hide_title_title">Versteek titel en kanaal</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Brei uit met swipe-op</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Om die minispeler op te swipe, brei die speler uit, in plaas daarvan om die minispeler na die bokant van die skerm te skuif</string>
+  <string name="morphe_miniplayer_docked_title">Gedokte minispeler</string>
+  <string name="morphe_miniplayer_docked_summary">Koppel die minispeler aan die navigasiebalk en die kante van die skerm, in plaas daarvan om bo-oor hulle te dryf</string>
   <string name="morphe_miniplayer_type_entry_0">Gedeaktiveer</string>
   <string name="morphe_miniplayer_type_entry_1">Verstek</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaal</string>
@@ -1265,6 +1299,8 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_splash_screen_style_entry_7">Morphe Gloei 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Gloei 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Glow-spatskerm word nie deur hierdie toestel ondersteun nie</string>
+  <string name="morphe_splash_screen_duration_title">Beginanimasie-duur</string>
+  <string name="morphe_splash_screen_duration_summary">Hoe lank die gloei-animasie speel. Tik op die animasie om dit oor te slaan</string>
   <string name="morphe_theme_color_light_title">Ligte tema-agtergrond</string>
   <string name="morphe_theme_color_light_entry_2">Wit</string>
   <string name="morphe_theme_color_light_entry_3">Jou Materiaal (Wit)     </string>

@@ -61,6 +61,7 @@ Muutoksiin kuuluvat:
   <string name="morphe_hide_account_menu_title">Kirjaston valikko / Suodatin alavalikussa</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Kirjaston valikko / Suodatin alavalikussa</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Kirjoita suodatettavat valikkokohtien nimet, yksi per rivi</string>
+  <string name="morphe_hide_account_menu_downloads_title">Piilota lataukset</string>
   <string name="morphe_hide_album_cards_title">Piilota albumikortit</string>
   <string name="morphe_hide_album_cards_summary">Piilottaa albumikortit artistin kuvauksen alapuolelta</string>
   <string name="morphe_hide_artist_cards_title">Piilota artistikortit</string>
@@ -515,7 +516,23 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <string name="morphe_external_downloader_quick_audio">Ääni</string>
   <string name="morphe_external_downloader_quick_options">Kaikki asetukset</string>
   <string name="morphe_shorts_download_flyout_button_title">Näytä lataus Shorts-valikossa</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Lisää latauskohta Shorts-soittimen valikkoon</string>
   <string name="morphe_shorts_download_flyout_title">Lataa</string>
+  <string name="morphe_export_download_folder_title">Vie tallennetut videot</string>
+  <string name="morphe_export_download_folder_summary">"Vie sovelluksen sisälle tallennetut videot laitteesi tallennustilaan latausten pikavalikon avulla. Napauta vaihtaaksesi viekansionin
+
+Viekansio: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Viekansio</string>
+  <string name="morphe_export_download_folder_change">Vaihda kansio</string>
+  <string name="morphe_export_download_folder_changed">Viekansio muutettu</string>
+  <string name="morphe_export_download_folder_reset">Viekansio nollattu</string>
+  <string name="morphe_export_download_flyout_title">Vie laitteeseen</string>
+  <string name="morphe_export_download_started">Viedään video</string>
+  <string name="morphe_export_download_progress">Viedään video: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Videon vienti</string>
+  <string name="morphe_export_download_saved">Video vietiin kohteeseen %s</string>
+  <string name="morphe_export_download_failed">Videon vienti epäonnistui</string>
+  <string name="morphe_export_download_canceled">Vienti peruttu</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ääniratateksti</string>
   <string name="morphe_vot_screen_summary">Lue videon tekstitykset ääneen laitteen tekstistä puheeksi -toiminnolla, synkronoitu toiston kanssa</string>
@@ -590,6 +607,19 @@ API-avaintasi ei saa koskaan jakaa. Kuka tahansa, jolla on pääsy siihen, voi k
   <string name="morphe_pip_button_overlay_title">Näytä kuva kuvassa -painike</string>
   <string name="morphe_pip_button_flyout_title">Näytä kuva kuvassa -valikko</string>
   <string name="morphe_pip_button_flyout_name">Vaihda kuva kuvassa -tilaan</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Kuvassa kuvana -toiminnot</string>
+  <string name="morphe_pip_actions_screen_summary">Muuta kuvassa kuvana -tilassa näkyviä painikkeita</string>
+  <string name="morphe_pip_action_left_title">Vasen painike</string>
+  <string name="morphe_pip_action_center_title">Keskuspainike</string>
+  <string name="morphe_pip_action_right_title">Oikea painike</string>
+  <string name="morphe_pip_action_entry_default">Oletus</string>
+  <string name="morphe_pip_action_entry_previous">Edellinen video</string>
+  <string name="morphe_pip_action_entry_next">Seuraava video</string>
+  <string name="morphe_pip_action_entry_rewind">Kelaa 10 sekuntia taaksepäin</string>
+  <string name="morphe_pip_action_entry_fast_forward">Kelaa 10 sekuntia eteenpäin</string>
+  <string name="morphe_pip_action_entry_play_pause">Toista/Tauota</string>
+  <string name="morphe_pip_action_entry_background_playback">Taustatoisto</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Näytä Soita kaikki -painike</string>
   <string name="morphe_play_all_button_summary">"Napauta toistaaksesi kaikki kanavan videot, napauta ja pidä painettuna peruuttaaksesi
@@ -1223,6 +1253,10 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <string name="morphe_miniplayer_not_available_summary">YouTube poisti kaikki lisäminisoittimet. Palauttaaksesi useampia minisoitin-tyyppejä, päivitä YouTube-versio 21.28.208 tai sitä vanhempi</string>
   <string name="morphe_miniplayer_type_title">Minisoittimen tyyppi</string>
   <string name="morphe_miniplayer_hide_title_title">Piilota otsikko ja kanava</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Laajenna pyyhkäisemällä ylöspäin</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Minisoittimen pyyhkäiseminen ylöspäin laajentaa soittimen sen sijaan, että minisoitin siirtyisi näytön yläreunaan</string>
+  <string name="morphe_miniplayer_docked_title">Kiinnitetty minisoitin</string>
+  <string name="morphe_miniplayer_docked_summary">Kiinnittää minisoittimen navigointipalkkiin ja näytön reunojen viereen sen sijaan, että se leijuisi niiden päällä</string>
   <string name="morphe_miniplayer_type_entry_0">Pois käytöstä</string>
   <string name="morphe_miniplayer_type_entry_1">Oletus</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaalinen</string>
@@ -1265,6 +1299,8 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Tämä laite ei tue Glow-aloitusnäyttöä</string>
+  <string name="morphe_splash_screen_duration_title">Käynnistysanimaation kesto</string>
+  <string name="morphe_splash_screen_duration_summary">Kuinka kauan hohdeanimaatio kestää. Napauta animaatiota ohittaaksesi sen</string>
   <string name="morphe_theme_color_light_title">Vaalean teeman tausta</string>
   <string name="morphe_theme_color_light_entry_2">Valkoinen</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Valkoinen)()</string>

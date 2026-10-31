@@ -519,7 +519,7 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_shorts_download_flyout_button_summary">Dodaje opcję pobierania do menu odtwarzacza Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Pobierz</string>
   <string name="morphe_export_download_folder_title">Eksportuj zapisane filmy</string>
-  <string name="morphe_export_download_folder_summary">"Eksportuj filmy zapisane w aplikacji do pamięci urządzenia. Dotknij, aby zmienić folder eksportu
+  <string name="morphe_export_download_folder_summary">"Eksportuj filmy zapisane w aplikacji do pamięci urządzenia za pomocą menu rozwijanego pobierania w aplikacji. Dotknij, aby zmienić folder eksportu
 
 Folder eksportu: %s"</string>
   <string name="morphe_export_download_folder_dialog_title">Folder eksportu</string>
@@ -607,6 +607,19 @@ Folder eksportu: %s"</string>
   <string name="morphe_pip_button_overlay_title">Pokaż przycisk obrazu w obrazie</string>
   <string name="morphe_pip_button_flyout_title">Pokaż menu obrazu w obrazie</string>
   <string name="morphe_pip_button_flyout_name">Przełącz na obraz w obrazie</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Akcje obrazu w obrazie</string>
+  <string name="morphe_pip_actions_screen_summary">Zmień przyciski wyświetlane w trybie obrazu w obrazie</string>
+  <string name="morphe_pip_action_left_title">Lewy przycisk</string>
+  <string name="morphe_pip_action_center_title">Środkowy przycisk</string>
+  <string name="morphe_pip_action_right_title">Prawy przycisk</string>
+  <string name="morphe_pip_action_entry_default">Domyślnie</string>
+  <string name="morphe_pip_action_entry_previous">Poprzedni film</string>
+  <string name="morphe_pip_action_entry_next">Następny film</string>
+  <string name="morphe_pip_action_entry_rewind">Cofnij o 10 sekund</string>
+  <string name="morphe_pip_action_entry_fast_forward">Przewiń o 10 sekund do przodu</string>
+  <string name="morphe_pip_action_entry_play_pause">Odtwórz/Wstrzymaj</string>
+  <string name="morphe_pip_action_entry_background_playback">Odtwarzanie w tle</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Pokaż przycisk Odtwórz wszystko</string>
   <string name="morphe_play_all_button_summary">"Dotknij, aby wygenerować playlistę wszystkich filmów z kanału. Przytrzymaj, aby cofnąć
@@ -1239,6 +1252,10 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_miniplayer_not_available_summary">YouTube usunął wszystkie dodatkowe miniodtwarzacze. Aby przywrócić więcej typów miniodtwarzacza, zmodyfikuj YouTube w wersji 21.28.208 lub starszej</string>
   <string name="morphe_miniplayer_type_title">Typ miniodtwarzacza</string>
   <string name="morphe_miniplayer_hide_title_title">Ukryj tytuł i kanał</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Rozwiń poprzez przesunięcie w górę</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Przesunięcie zminimalizowanego odtwarzacza w górę rozwija odtwarzacz, zamiast przesuwać go na górę ekranu</string>
+  <string name="morphe_miniplayer_docked_title">Zadokowany zminimalizowany odtwarzacz</string>
+  <string name="morphe_miniplayer_docked_summary">Przyczepia zminimalizowany odtwarzacz do paska nawigacji i krawędzi ekranu, zamiast wyświetlać go nad nimi</string>
   <string name="morphe_miniplayer_type_entry_0">Wyłączony</string>
   <string name="morphe_miniplayer_type_entry_1">Domyślny</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalny</string>

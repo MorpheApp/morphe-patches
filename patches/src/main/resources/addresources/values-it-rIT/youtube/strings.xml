@@ -61,6 +61,7 @@ Le modifiche includono:
   <string name="morphe_hide_account_menu_title">Abilita filtraggio Libreria/You</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Abilita filtraggio Libreria/Menù inferiore scheda You</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Inserisci i nomi degli elementi del menu da filtrare, separati da nuove righe</string>
+  <string name="morphe_hide_account_menu_downloads_title">Nascondi Download</string>
   <string name="morphe_hide_album_cards_title">Nascondi le schede degli album</string>
   <string name="morphe_hide_album_cards_summary">Nasconde le schede degli album sotto la descrizione dell\'artista</string>
   <string name="morphe_hide_artist_cards_title">Nascondi le schede artista</string>
@@ -515,7 +516,23 @@ Dopo aver aperto una volta un video con il pulsante Chiedi, la funzionalità fun
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Tutte le opzioni</string>
   <string name="morphe_shorts_download_flyout_button_title">Mostra il download nel menu Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Aggiunge una voce di download al menu del player di Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Download</string>
+  <string name="morphe_export_download_folder_title">Esporta video salvati</string>
+  <string name="morphe_export_download_folder_summary">"Esporta i video salvati nell'app nella memoria del tuo dispositivo utilizzando il menu a comparsa dei download dell'app. Tocca per cambiare la cartella di esportazione
+
+Cartella di esportazione: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Cartella di esportazione</string>
+  <string name="morphe_export_download_folder_change">Cambia cartella</string>
+  <string name="morphe_export_download_folder_changed">Cartella di esportazione modificata</string>
+  <string name="morphe_export_download_folder_reset">Cartella di esportazione ripristinata</string>
+  <string name="morphe_export_download_flyout_title">Esporta sul dispositivo</string>
+  <string name="morphe_export_download_started">Esportazione video in corso</string>
+  <string name="morphe_export_download_progress">Esportazione video: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Esportazioni video</string>
+  <string name="morphe_export_download_saved">Video esportato in %s</string>
+  <string name="morphe_export_download_failed">Impossibile esportare il video</string>
+  <string name="morphe_export_download_canceled">Esportazione annullata</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traduzione voice over</string>
   <string name="morphe_vot_screen_summary">Leggi ad alta voce i sottotitoli del video utilizzando la sintesi vocale del dispositivo, sincronizzata con la riproduzione</string>
@@ -590,6 +607,19 @@ La tua chiave API non deve mai essere condivisa. Chiunque vi abbia accesso può 
   <string name="morphe_pip_button_overlay_title">Mostra il pulsante Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Mostra il menu Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_name">Passa a Picture-in-Picture</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Azioni Picture-in-picture</string>
+  <string name="morphe_pip_actions_screen_summary">Cambia i pulsanti mostrati in picture-in-picture</string>
+  <string name="morphe_pip_action_left_title">Pulsante sinistro</string>
+  <string name="morphe_pip_action_center_title">Pulsante centrale</string>
+  <string name="morphe_pip_action_right_title">Pulsante destro</string>
+  <string name="morphe_pip_action_entry_default">Predefinita</string>
+  <string name="morphe_pip_action_entry_previous">Video precedente</string>
+  <string name="morphe_pip_action_entry_next">Video successivo</string>
+  <string name="morphe_pip_action_entry_rewind">Riavvolgi di 10 secondi</string>
+  <string name="morphe_pip_action_entry_fast_forward">Avanti veloce di 10 secondi</string>
+  <string name="morphe_pip_action_entry_play_pause">Riproduci/Pausa</string>
+  <string name="morphe_pip_action_entry_background_playback">Riproduzione in background</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Mostra pulsante Riproduci tutto</string>
   <string name="morphe_play_all_button_summary">"Tocca per generare una playlist di tutti i video del canale, tieni premuto per annullare.
@@ -1222,6 +1252,10 @@ Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivat
   <string name="morphe_miniplayer_not_available_summary">YouTube ha rimosso tutti i miniplayer aggiuntivi. Per ripristinare ulteriori tipologie di miniplayer, è necessario applicare una patch a YouTube versione 21.28.208 o precedente.</string>
   <string name="morphe_miniplayer_type_title">Tipo di Lettore minimizzato</string>
   <string name="morphe_miniplayer_hide_title_title">Nascondi titolo e canale</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Espandi con swipe verso l\'alto</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Klo swipe verso l\'alto del miniplayer, il player si espande invece di spostare il miniplayer nella parte superiore dello schermo</string>
+  <string name="morphe_miniplayer_docked_title">Miniplayer agganciato</string>
+  <string name="morphe_miniplayer_docked_summary">Aggancia il miniplayer alla barra di navigazione e ai lati dello schermo, invece di farlo fluttuare sopra di essi</string>
   <string name="morphe_miniplayer_type_entry_0">Disattivato</string>
   <string name="morphe_miniplayer_type_entry_1">Predefinito</string>
   <string name="morphe_miniplayer_type_entry_2">Minimale</string>
@@ -1264,6 +1298,8 @@ Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivat
   <string name="morphe_splash_screen_style_entry_7">Morphe Luminoso 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Luminoso 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">La schermata di avvio Glow non è supportata da questo dispositivo</string>
+  <string name="morphe_splash_screen_duration_title">Durata animazione di avvio</string>
+  <string name="morphe_splash_screen_duration_summary">Durata dell\'animazione di luminosità. Tocca l\'animazione per saltarla</string>
   <string name="morphe_theme_color_light_title">Sfondo del tema chiaro</string>
   <string name="morphe_theme_color_light_entry_2">Bianco</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Bianco)</string>

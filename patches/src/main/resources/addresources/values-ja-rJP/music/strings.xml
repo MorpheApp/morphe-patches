@@ -31,7 +31,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_enabled_title">Jam キューの共有を有効にする</string>
   <string name="morphe_music_jam_enabled_summary">YouTube Musicの再起動後にJam連携を有効にします</string>
   <string name="morphe_music_jam_download_title">Jam Layer をダウンロードして利用できるようにする</string>
-  <string name="morphe_music_jam_download_summary">最新のJam Layerリリースをブラウザで開きます</string>
+  <string name="morphe_music_jam_download_summary">ブラウザで最新の Jam Layer リリースを開きます</string>
   <string name="morphe_music_jam_controls_title">Jam コントロール</string>
   <string name="morphe_music_jam_controls_summary">近くのJamをホストするか参加して、セッションを管理します</string>
   <string name="morphe_music_jam_companion_package_title">Jam Layer パッケージ</string>
@@ -594,28 +594,28 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_lyrics_miniplayer_title">ミニプレイヤーの歌詞を表示</string>
   <string name="morphe_music_lyrics_miniplayer_summary">ミニプレイヤーで現在行を表示し、トラックをサブタイトルに移動</string>
   <string name="morphe_music_lyrics_mini_track_format_title">曲 / アーティスト行のフォーマット</string>
-  <string name="morphe_music_lyrics_mini_track_format_summary">ミニプレーヤーとメディア コントロールの歌詞行の隣に、曲情報を一行で表示する機能で使用するフォーマット。{t} が曲名、{a} がアーティスト名、{v} がアコースティックなどのバージョンを表す変数です。バージョンは提供されない場合があり、その場合は \{v\} に値が入りません。2 つのコロンで囲まれたテキストは、その中に含まれるすべての変数に値が入っている場合にのみ表示されます。通常のコロンを表示するには、\\: のように記述してください。文字数制限により複数行に分割された場合、歌詞行の歌詞が更新されるたびに行を切り替えながら、各行を一行ずつ順番に表示します</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">ミニプレーヤー / メディア コントロールの歌詞行の隣に、曲情報を一行ずつ表示する機能で使用するフォーマット。{t} は曲名、{a} はアーティスト名、{v} はアコースティックなどのバージョンを表す変数です。バージョンは提供されない場合があり、その場合は \{v\} に値が入りません。2 つのコロンで囲まれたテキストは、その中に含まれるすべての変数に値が入っている場合にのみ表示されます。通常のコロンを表示するには、\\: のように記述してください。複数行のフォーマットを指定した場合または文字数制限により複数行に分割された場合、歌詞行の歌詞が更新されるたびに行を切り替えて巡回しながら、各行を一行ずつ順番に表示します</string>
   <string name="morphe_music_lyrics_mini_encapsulation_title">歌詞行のフォーマット</string>
   <string name="morphe_music_lyrics_mini_encapsulation_summary">ミニプレーヤーとメディア コントロールに、歌詞を一行ずつ表示する機能で使用するフォーマット。{lrc} が一行の歌詞、{n} がその歌詞が連続して繰り返し歌われる回数を表す変数です。2 つのコロンで囲まれたテキストは、\{n\} が 1 より大きい場合にのみ表示されます。通常のコロンを表示するには、\\: のように記述してください</string>
   <string name="morphe_music_lyrics_mini_encapsulation_invalid">このフォーマットには {lrc} が必須です</string>
-  <string name="morphe_music_lyrics_mini_track_format_menu_summary">曲 / アーティスト行のテンプレートと分割表示する場合の表示方法</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">曲 / アーティスト行のテンプレートと複数行の巡回表示を設定します</string>
   <string name="morphe_music_lyrics_mini_artist_min_label">最小表示時間 (ミリ秒)</string>
-  <string name="morphe_music_lyrics_mini_artist_max_label">最大表示時間 (ミリ秒)</string>
-  <string name="morphe_music_lyrics_mini_artist_timing_explanation">複数行アニメーションのみに適用されます。各フレームを少なくとも最小時間分保持します。最大時間に達すると、歌詞が同じままでもアーティスト行を進めます。</string>
-  <string name="morphe_music_lyrics_mini_artist_timing_invalid">最小値は0以上である必要があります。最大値は0より大きく、かつ最小値以上である必要があります。</string>
-  <string name="morphe_music_lyrics_mini_line_limits_title">行の長さ制限</string>
-  <string name="morphe_music_lyrics_mini_line_limits_summary">歌詞とアーティスト行の制限、および全角文字のウェイト</string>
-  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"歌詞の行制限
-長い歌詞をバランスよく半分に分割します。0に設定すると分割を無効にします"</string>
-  <string name="morphe_music_lyrics_mini_line_limits_artist">"アーティストの行数制限
-入力されたトラック形式をサイクリングフレームに分割します。0に設定すると分割を無効にします。"</string>
-  <string name="morphe_music_lyrics_mini_line_limits_weight">"全角文字の重み
-両方の制限に適用されます。1.75に設定した場合、全角文字4文字は7としてカウントされます。"</string>
-  <string name="morphe_music_lyrics_mini_line_limits_invalid">0から10000までの整数値の制限と、0より大きい文字の重みを入力してください</string>
-  <string name="morphe_music_lyrics_mini_instrumental_title">インストゥルメンタル・ブレイク</string>
-  <string name="morphe_music_lyrics_mini_instrumental_summary">インストゥルメンタル・ブレイク中にミニプレイヤーとMediaSessionに表示されます。各行がアニメーションフレームになります。{t}はタイトル、{a}はアーティスト、{lrc}は最後の歌詞の行です</string>
-  <string name="morphe_music_lyrics_mini_next_offset_ms_title">ミニプレイヤーとMediaSessionのタイミングオフセット</string>
-  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">ミニプレイヤーとMediaSessionで次の行が表示されるタイミングをずらします。ロック画面などで表示が遅れる場合は、負の値を指定してください</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">表示時間の上限 (ミリ秒)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">複数の行を一行ずつ巡回しながら表示する場合にのみ適用されます。表示時間が下限値に達するまでの間は、歌詞行の歌詞が更新された場合でも、次の行に切り替えることなく同じ行を表示し続けます。表示時間が上限値に達した場合は、歌詞行の歌詞が更新されるのを待たずに、即座に次の行に切り替えます。</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">下限値は 0 以上である必要があります。上限値は 0 より大きく下限値以上である必要があります。</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">行の文字数制限</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">歌詞行と曲 / アーティスト行の文字数制限と全角文字を半角文字に換算する比率を設定します</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"歌詞行の文字数制限
+この値を超える文字数の歌詞をなるべく均等に 2 つに分割します。0 を指定すると分割処理自体が無効になります。"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"曲 / アーティスト行の文字数制限
+この値を超える文字数の曲情報 (変数に値を代入した曲 / アーティスト行のフォーマット) の行を複数の行に分割して巡回表示のリストに挿入します。0 を指定すると分割処理自体が無効になります。"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"全角文字の換算比率
+両方の文字数制限の判定に使用します。例えば 1.75 を指定した場合、全角文字 4 文字は 7 文字としてカウントされます。"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">文字数制限には 0 から 10000 の整数を、全角文字の換算比率には 0 より大きい値を入力してください</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">間奏中の歌詞表示</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">ミニプレーヤー / メディア コントロールの歌詞行の間奏中のフォーマット。間奏が流れている間、各行を一行ずつ巡回しながら表示します。{t} は曲名、{a} はアーティスト名、{lrc} は間奏の直前に表示された歌詞を表す変数です</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">ミニプレーヤーとメディア コントロールでの歌詞の遅延</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">ミニプレーヤー / メディア コントロールの歌詞行の歌詞を更新するタイミングを遅らせます。歌詞の更新が楽曲に対して遅れている場合は、負の値を指定してください。ロック画面などで遅れることがあります</string>
   <string name="morphe_settings_music_lyrics_metadata_title">フィルタ</string>
   <string name="morphe_music_lyrics_custom_regex_title">メタデータの正規表現</string>
   <string name="morphe_music_lyrics_custom_regex_summary">曲名、アーティスト、アルバムに適用される正規表現です。歌詞の検索前と、2つの曲名が一致するかどうかの判定時に使用されます。空にすると両方が無効になります。デフォルトでは、\"Official Video\"、\"Remaster\"、\"【插曲】\"、\"- Topic\" などのよくある不要な部分を除去します。</string>
@@ -623,10 +623,10 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_lyrics_text_filter_summary">元の歌詞テキストのみに適用される正規表現です（翻訳やローマ字表記には適用されません）。無効にする場合は空欄にしてください。</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">クレジット行の判別マーカー</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">マーカーをカンマ区切りで入力してください。行内にマーカーを含み、その直後にコロン (:) が続く行を、クレジット情報として最下部に表示します。空欄にするとこの機能自体が無効になります。歌詞が誤って最下部に振り分けられてしまう場合は、この設定の値 (文字列) を調整するか空欄にしてください</string>
-  <string name="morphe_music_lyrics_force_capitalize_title">先頭文字を大文字にする</string>
-  <string name="morphe_music_lyrics_force_capitalize_summary">歌詞の各行の先頭文字を大文字にします</string>
-  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">末尾の句読点を削除</string>
-  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">歌詞の行末にあるピリオド、カンマ、コロン、セミコロンを削除します。疑問符、感嘆符、省略記号、引用符、括弧は保持されます</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">行の先頭を大文字化</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">歌詞の各行の先頭の文字を大文字にします</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">行末の句読点を削除</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">歌詞の行末のピリオド、カンマ、セミコロン、コロンなどの句読点を削除して表示します。疑問符 (?)、感嘆符 (!)、3 点リーダー、引用符、括弧などの記号は、そのまま表示されます</string>
   <string name="morphe_music_lyrics_text_size_title">文字サイズ</string>
   <string name="morphe_music_lyrics_text_size_summary">歌詞の文字サイズ</string>
   <string name="morphe_music_lyrics_offset_ms_title">全体のタイミングオフセット</string>
