@@ -302,9 +302,11 @@ public final class CaptionTracks {
     }
 
     private static void invalidateTranslation() {
-        if (translatedSession != null) translatedSession.invalidate();
+        boolean hadSession = translatedSession != null;
+        if (hadSession) translatedSession.invalidate();
         translatedSession = null; translatedPolicy = null; translatedKey = null; translatedToken = null;
         translatedStates.clear();
+        if (hadSession) Utils.runOnBackgroundThread(CaptionBlockTranslator.DEFAULT::cancelInactive);
     }
 
     private static void attachTranslation(Track track, StableCaptionBlockPolicy policy,

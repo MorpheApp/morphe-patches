@@ -45,10 +45,22 @@ final class CaptionBlockTranslator {
         }
     };
     private volatile long microsoftCooldownUntil, googleCooldownUntil;
+    private HttpURLConnection pendingConnection;
+    private BooleanSupplier pendingActive;
 
     CaptionBlockTranslator(ConnectionFactory connections, Clock clock) {
         this.connections = connections;
         this.clock = clock;
+    }
+
+    /** Worker-only: a delayed cancellation must never disconnect a replacement session. */
+    void cancelInactive() {
+        HttpURLConnection connection;
+        synchronized (this) {
+            if (pendingConnection == null || pendingActive.getAsBoolean()) return;
+            connection = pendingConnection;
+        }
+        connection.disconnect();
     }
 
     List<String> translate(String sourceLanguage, String targetLanguage, List<String> sourceTexts)
@@ -182,25 +194,27 @@ final class CaptionBlockTranslator {
         int remaining = remaining(deadline);
         HttpURLConnection connection = connections.open(url);
         try {
+            synchronized (this) {
+                checkActive(active);
+                pendingConnection = connection;
+                pendingActive = active;
+            }
             connection.setConnectTimeout(remaining);
             connection.setReadTimeout(remaining);
             connection.setInstanceFollowRedirects(false);
-            connection.setRequestMethod(body == null ? "GET" : "POST");
-            byte[] payload = body == null ? null : body.getBytes(StandardCharsets.UTF_8);
-            if (payload != null) {
-                connection.setDoOutput(true);
-                boolean google = url.startsWith("https://translate-pa.googleapis.com/");
-                connection.setRequestProperty("Content-Type", google ? "application/json+protobuf" : "application/json; charset=UTF-8");
-                if (google) connection.setRequestProperty("X-Goog-API-Key", GOOGLE_API_KEY);
-                connection.setFixedLengthStreamingMode(payload.length);
-            }
+            connection.setRequestMethod("POST");
+            byte[] payload = body.getBytes(StandardCharsets.UTF_8);
+            connection.setDoOutput(true);
+            boolean google = url.startsWith("https://translate-pa.googleapis.com/");
+            connection.setRequestProperty("Content-Type", google ? "application/json+protobuf" : "application/json; charset=UTF-8");
+            if (google) connection.setRequestProperty("X-Goog-API-Key", GOOGLE_API_KEY);
+            connection.setFixedLengthStreamingMode(payload.length);
+            checkActive(active);
             connection.connect();
             checkActive(active);
             connection.setReadTimeout(remaining(deadline));
-            if (payload != null) {
-                try (OutputStream stream = connection.getOutputStream()) {
-                    stream.write(payload);
-                }
+            try (OutputStream stream = connection.getOutputStream()) {
+                stream.write(payload);
             }
             connection.setReadTimeout(remaining(deadline));
             int status = connection.getResponseCode();
@@ -208,7 +222,11 @@ final class CaptionBlockTranslator {
             if (status == 403 || status == 429) {
                 long seconds = 60;
                 try { seconds = Long.parseLong(connection.getHeaderField("Retry-After")); }
-                catch (NumberFormatException ignored) {}
+                catch (NumberFormatException ignored) {
+                    long retryAt = connection.getHeaderFieldDate("Retry-After", -1);
+                    if (retryAt >= 0) seconds = Math.max(0, (retryAt
+                            - connection.getHeaderFieldDate("Date", System.currentTimeMillis()) + 999) / 1000);
+                }
                 seconds = Math.max(1, Math.min(300, seconds));
                 long until = clock.millis() + seconds * 1000;
                 if (url.startsWith("https://edge.microsoft.com/")) microsoftCooldownUntil = until;
@@ -239,6 +257,12 @@ final class CaptionBlockTranslator {
                 return new String(bytes.toByteArray(), StandardCharsets.UTF_8);
             }
         } finally {
+            synchronized (this) {
+                if (pendingConnection == connection) {
+                    pendingConnection = null;
+                    pendingActive = null;
+                }
+            }
             InputStream error = connection.getErrorStream();
             if (error != null) try { error.close(); } catch (IOException ignored) {}
             connection.disconnect();

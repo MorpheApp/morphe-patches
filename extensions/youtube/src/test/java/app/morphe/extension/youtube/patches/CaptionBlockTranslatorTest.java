@@ -6,6 +6,8 @@ import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 import static org.junit.Assert.*;
 
 public class CaptionBlockTranslatorTest {
@@ -13,7 +15,7 @@ public class CaptionBlockTranslatorTest {
         final byte[] bytes;
         final ByteArrayOutputStream sent = new ByteArrayOutputStream();
         boolean closed, disconnected, outputClosed;
-        String retry, redirect;
+        String retry, redirect, date;
         final Map<String, String> headers = new HashMap<>();
         public void setRequestProperty(String name, String value) { headers.put(name, value); super.setRequestProperty(name, value); }
         Reply(int status, String body) throws Exception {
@@ -23,8 +25,8 @@ public class CaptionBlockTranslatorTest {
         public void connect() {}
         public boolean usingProxy() { return false; }
         public void disconnect() { disconnected = true; }
-        public int getResponseCode() { return responseCode; }
-        public String getHeaderField(String key) { return "Retry-After".equals(key) ? retry : "Location".equals(key) ? redirect : null; }
+        public int getResponseCode() throws IOException { return responseCode; }
+        public String getHeaderField(String key) { return "Retry-After".equals(key) ? retry : "Location".equals(key) ? redirect : "Date".equals(key) ? date : null; }
         public InputStream getInputStream() { return new ByteArrayInputStream(bytes) {
             public void close() throws IOException { closed = true; super.close(); }
         }; }
@@ -158,6 +160,26 @@ public class CaptionBlockTranslatorTest {
         f.add(200, google("neu")); assertEquals(Arrays.asList("neu"), f.translate("one"));
         assertEquals(260, f.urls.size());
     }
+    @Test public void retryAfterDatesUseServerTimeAndRemainBounded() throws Exception {
+        String[] dates = {"Wed, 21 Oct 2015 07:31:00 GMT", "Wed, 21 Oct 2015 07:27:00 GMT",
+                "Wed, 21 Oct 2015 08:28:00 GMT", "invalid"};
+        long[] delays = {180000, 1000, 300000, 60000};
+        for (int i = 0; i < dates.length; i++) {
+            Fixture f = new Fixture();
+            for (int provider = 0; provider < 2; provider++) {
+                Reply reply = f.add(429, "limited");
+                reply.date = "Wed, 21 Oct 2015 07:28:00 GMT";
+                reply.retry = dates[i];
+            }
+            var failure = (CaptionBlockTranslator.Failure) assertThrows(IOException.class, () -> f.translate("one"));
+            assertEquals(delays[i], failure.retryAfterMs);
+            f.now = delays[i] - 1;
+            assertThrows(IOException.class, () -> f.translate("one"));
+            assertEquals(2, f.urls.size());
+            f.now = delays[i]; f.add(200, google("eins"));
+            assertEquals(List.of("eins"), f.translate("one"));
+        }
+    }
     @Test public void providerCooldownsAreBoundedAndIndependent() throws Exception {
         for (int code : new int[]{403,429}) {
             Fixture f = new Fixture(); Reply primary = f.add(code, "blocked"), fallback = f.add(code, "blocked");
@@ -283,6 +305,97 @@ public class CaptionBlockTranslatorTest {
         assertEquals(120000, longer.retryAfterMs);
     }
 
+    private static class WaitingReply extends Reply {
+        final CountDownLatch entered = new CountDownLatch(1), release = new CountDownLatch(1);
+        final boolean body;
+        WaitingReply(boolean body, String response) throws Exception { super(200, response); this.body = body; }
+        void awaitRelease() throws IOException {
+            entered.countDown();
+            try { if (!release.await(3, TimeUnit.SECONDS)) throw new IOException("Test response timed out"); }
+            catch (InterruptedException interrupted) { throw new IOException(interrupted); }
+            if (disconnected) throw new IOException("Disconnected");
+        }
+        public int getResponseCode() throws IOException { if (!body) awaitRelease(); return 200; }
+        public InputStream getInputStream() {
+            if (!body) return super.getInputStream();
+            return new FilterInputStream(new ByteArrayInputStream(bytes)) {
+                public int read(byte[] b, int offset, int length) throws IOException {
+                    awaitRelease();
+                    return super.read(b, offset, length);
+                }
+            };
+        }
+        public InputStream getErrorStream() { return null; }
+        public void disconnect() { super.disconnect(); release.countDown(); }
+    }
+    @Test public void invalidationDisconnectsBlockedResponsesAndNeverStartsFallback() throws Exception {
+        for (boolean microsoft : new boolean[]{false, true}) for (boolean body : new boolean[]{false, true}) {
+            Fixture f = new Fixture(); if (microsoft) f.add(500, "unavailable");
+            WaitingReply reply = new WaitingReply(body, microsoft ? ms("eins") : google("eins"));
+            f.replies.add(reply); AtomicBoolean active = new AtomicBoolean(true);
+            FutureTask<List<String>> task = new FutureTask<>(() -> f.translator.translate("en", "de", List.of("one"), active::get));
+            Thread thread = new Thread(task); thread.start();
+            try {
+                assertTrue(reply.entered.await(1, TimeUnit.SECONDS));
+                active.set(false); f.translator.cancelInactive();
+                ExecutionException failure = assertThrows(ExecutionException.class, () -> task.get(1, TimeUnit.SECONDS));
+                assertTrue(failure.getCause() instanceof CancellationException);
+                assertTrue(reply.disconnected);
+                assertEquals(microsoft ? 2 : 1, f.urls.size());
+            } finally { reply.release.countDown(); thread.join(1000); }
+        }
+    }
+    @Test public void delayedCancellationLeavesReplacementRequestAlive() throws Exception {
+        Fixture f = new Fixture();
+        for (boolean cancelled : new boolean[]{true, false}) {
+            WaitingReply reply = new WaitingReply(false, google("eins")); f.replies.add(reply);
+            AtomicBoolean active = new AtomicBoolean(true);
+            FutureTask<List<String>> task = new FutureTask<>(() -> f.translator.translate("en", "de", List.of("one"), active::get));
+            Thread thread = new Thread(task); thread.start();
+            try {
+                assertTrue(reply.entered.await(1, TimeUnit.SECONDS));
+                if (cancelled) active.set(false);
+                f.translator.cancelInactive();
+                if (cancelled) {
+                    ExecutionException failure = assertThrows(ExecutionException.class, () -> task.get(1, TimeUnit.SECONDS));
+                    assertTrue(failure.getCause() instanceof CancellationException);
+                } else {
+                    assertFalse(reply.disconnected); reply.release.countDown();
+                    assertEquals(List.of("eins"), task.get(1, TimeUnit.SECONDS));
+                }
+            } finally { reply.release.countDown(); thread.join(1000); }
+        }
+    }
+    @Test public void invalidationWhileOpeningPreventsConnectAndClosesConnection() throws Exception {
+        Reply reply = new Reply(200, google("eins")) { public void connect() { fail("Cancelled request must not connect"); } };
+        CountDownLatch opened = new CountDownLatch(1), release = new CountDownLatch(1);
+        AtomicBoolean active = new AtomicBoolean(true);
+        CaptionBlockTranslator translator = new CaptionBlockTranslator(url -> {
+            opened.countDown();
+            try { if (!release.await(3, TimeUnit.SECONDS)) throw new IOException("Test open timed out"); }
+            catch (InterruptedException interrupted) { throw new IOException(interrupted); }
+            return reply;
+        }, () -> 0);
+        FutureTask<List<String>> task = new FutureTask<>(() -> translator.translate("en", "de", List.of("one"), active::get));
+        Thread thread = new Thread(task); thread.start();
+        try {
+            assertTrue(opened.await(1, TimeUnit.SECONDS)); active.set(false); translator.cancelInactive(); release.countDown();
+            ExecutionException failure = assertThrows(ExecutionException.class, () -> task.get(1, TimeUnit.SECONDS));
+            assertTrue(failure.getCause() instanceof CancellationException); assertTrue(reply.disconnected);
+        } finally { release.countDown(); thread.join(1000); }
+    }
+    @Test public void invalidationDuringConfigurationPreventsConnect() throws Exception {
+        Fixture f = new Fixture(); AtomicBoolean active = new AtomicBoolean(true);
+        Reply reply = new Reply(200, google("eins")) {
+            public void setRequestMethod(String method) throws ProtocolException {
+                super.setRequestMethod(method); active.set(false); f.translator.cancelInactive();
+            }
+            public void connect() { fail("Cancelled request must not connect"); }
+        };
+        f.replies.add(reply);
+        assertThrows(CancellationException.class, () -> f.translator.translate("en", "de", List.of("one"), active::get));
+        assertTrue(reply.disconnected); assertEquals(1, f.urls.size());
+    }
     @Test public void cancellationStopsFallbackAndClosesCurrentConnection() throws Exception {
         Fixture f = new Fixture(); boolean[] active = {true};
         Reply interrupted = new Reply(500, "unavailable") {
