@@ -1,6 +1,6 @@
 # YouTube package structure
 
-This package should follow a feature-first architecture instead of a type-first layout.
+This package follows a feature-first architecture with a staged migration strategy.
 
 ## Target layout
 
@@ -30,8 +30,19 @@ patches/src/main/kotlin/app/morphe/patches/youtube/
 │  ├─ subscriptions/
 │  ├─ interaction/
 │  └─ layout/
-└─ YoutubePatchBundle.kt
+├─ YoutubePatchBundle.kt
+├─ YouTubePackageDocs.kt
+└─ MIGRATION_STATUS.md
 ```
+
+## Current migration status
+
+The project is currently in the safe bridge-first migration state:
+
+- new feature entry points exist under `features/`
+- legacy modules remain available during migration
+- imports are gradually redirected to the feature-first package names
+- legacy package folders are removed only after the build is green
 
 ## Rule of thumb
 
@@ -61,8 +72,9 @@ patches/src/main/kotlin/app/morphe/patches/youtube/
 ## Migration strategy
 
 1. Create the new structure
-2. Move feature modules gradually
-3. Update imports after each move
-4. Remove `misc` and legacy vanity folders only after the build stays green
+2. Create bridge entry points for legacy modules
+3. Update imports to the feature-first package names
+4. Validate the build after import updates
+5. Remove legacy `misc` and vanity folders only after the build is green
 
 This is the preferred long-term architecture for the repo.
