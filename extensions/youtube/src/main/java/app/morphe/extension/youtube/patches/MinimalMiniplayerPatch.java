@@ -190,6 +190,12 @@ public final class MinimalMiniplayerPatch {
     private static int barIndexInParent;
 
     /**
+     * A copy of the bar background, drawn beside the video while the player slides.
+     */
+    @Nullable
+    private static Drawable barFill;
+
+    /**
      * Set while pushing bounds of our own, which come back through the hook that reads them.
      */
     private static boolean applyingBounds;
@@ -293,6 +299,17 @@ public final class MinimalMiniplayerPatch {
             if (getCurrentMiniplayerType() == MINIMAL_BAR) {
                 startAfterVideo(title);
                 startAfterVideo(subtitleBar);
+
+                // Taken again for each new layout, as the theme may have changed.
+                if (barFill != null) {
+                    barFill.setBounds(0, 0, 0, 0);
+                    barFill = null;
+                }
+                View barContainer = barContainerRef.get();
+                Drawable barBackground = barContainer != null ? barContainer.getBackground() : null;
+                if (barBackground != null && barBackground.getConstantState() != null) {
+                    barFill = barBackground.getConstantState().newDrawable();
+                }
             } else {
                 // The contents sit on the video rather than beside it, so it is dimmed, and
                 // they take the overlay colors. The buttons alone have a backdrop of their own.
@@ -984,6 +1001,13 @@ public final class MinimalMiniplayerPatch {
             };
 
     /**
+     * The player changes size for every frame of a slide without asking for its bounds.
+     */
+    private static final View.OnLayoutChangeListener watchPlayerLayoutListener =
+            (view, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) ->
+                    updateBarFill(view);
+
+    /**
      * The window bottom the miniplayer was last placed against.
      */
     private static int lastWindowBottom = Integer.MAX_VALUE;
@@ -1196,6 +1220,8 @@ public final class MinimalMiniplayerPatch {
         if (getCurrentMiniplayerType() == MINIMAL_BAR) {
             final int videoWidth = videoWidthFor(height);
 
+            updateBarFill(watchPlayer);
+
             // Only a bar is far wider than the video it holds. Going by the state instead would
             // uncover the video for as long as the player still holds the bar shape. Ads are
             // uncovered as well, their skip button is part of the overlay this hides.
@@ -1236,6 +1262,31 @@ public final class MinimalMiniplayerPatch {
         watchPlayer.setClipBounds(clipBounds);
     }
 
+    /**
+     * While sliding the player is not clipped yet, and YouTube paints it black beside the video
+     * whatever the theme is. The bar background goes over that, so the bar has the same color
+     * from the start of the slide to the end of the morph.
+     * <p>
+     * Taken from the view and not the bounds, which only say where the slide ends. YouTube
+     * moves the player and the video towards there together, so the video stays 16:9.
+     */
+    private static void updateBarFill(View watchPlayer) {
+        if (barFill == null) return;
+
+        final int width = watchPlayer.getWidth();
+        final int height = watchPlayer.getHeight();
+        final int videoWidth = videoWidthFor(height);
+
+        if (PlayerType.getCurrent() != PlayerType.WATCH_WHILE_SLIDING_MINIMIZED_MAXIMIZED
+                || height <= 0 || width <= videoWidth) {
+            barFill.setBounds(0, 0, 0, 0);
+        } else if (Utils.isRightToLeftLocale()) {
+            barFill.setBounds(0, 0, width - videoWidth, height);
+        } else {
+            barFill.setBounds(videoWidth, 0, width, height);
+        }
+    }
+
     @Nullable
     private static View watchPlayer() {
         View watchPlayer = watchPlayerRef.get();
@@ -1250,6 +1301,12 @@ public final class MinimalMiniplayerPatch {
         }
 
         watchPlayerRef = new WeakReference<>(watchPlayer);
+
+        if (barFill != null) {
+            watchPlayer.getOverlay().add(barFill);
+            watchPlayer.removeOnLayoutChangeListener(watchPlayerLayoutListener);
+            watchPlayer.addOnLayoutChangeListener(watchPlayerLayoutListener);
+        }
 
         return watchPlayer;
     }

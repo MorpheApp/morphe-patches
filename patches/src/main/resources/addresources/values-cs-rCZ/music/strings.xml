@@ -706,12 +706,15 @@ Texty pocházejí ze služeb třetích stran, které nejsou spojeny, nesponzorov
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Připojeno! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Připojení selhalo. Zkontrolujte nastavení.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Nejdříve zadejte klíč API</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Otestovat připojení</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Načítání modelů…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Načíst modely</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Vyberte model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Nepodařilo se načíst modely. Zkontrolujte API klíč nebo připojení.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Příkaz</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Základní URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Předvolby služeb</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Vyberte službu</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API klíč (volitelně)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Extra tělo požadavku (volitelné JSON)</string>

@@ -515,7 +515,6 @@ Po jednom otevření videa s tlačítkem Ask funguje funkce se všemi videi, i k
   <string name="morphe_external_downloader_quick_audio">Zvuk</string>
   <string name="morphe_external_downloader_quick_options">Všechny možnosti</string>
   <string name="morphe_shorts_download_flyout_button_title">Zobrazit stahování v menu Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Přidá položku externího stahovače do vysouvacího menu přehrávače Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Stáhnout</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Hlasový překlad</string>
@@ -623,10 +622,6 @@ Upozornění: Možná nebude fungovat u živých přenosů"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Uložit do seznamu Později</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Zobrazit tlačítko Uložit do seznamu Přehrát později v rozbalovací nabídce nastavení přehrávače</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Umožňuje uložit právě sledované video do seznamu „Přehrát později“ z rozbalovací nabídky nastavení videa</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Zobrazit tlačítko Uložit do seznamu Později u videí pro děti</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Umožňuje ukládat videa související s dětmi do seznamu „Přehrát později“ z rozbalovací nabídky</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Zobrazit tlačítko Uložit k přehrání později v nabídce Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Umožňuje ukládat Shorts do seznamu „Přehrát později“ z rozbalovací nabídky</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Přesměrovat \"Sledovat později\" do seznamu přehrávání</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Sledovat později</string>
   <string name="morphe_queue_flyout_title">Přidat do Morphe fronty</string>

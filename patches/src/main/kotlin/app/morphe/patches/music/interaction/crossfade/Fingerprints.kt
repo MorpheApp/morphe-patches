@@ -29,7 +29,10 @@ internal object PlayNextInQueueFingerprint : Fingerprint(
     filters = listOf(
         opcode(Opcode.IGET_OBJECT)
     ),
-    strings = listOf("gapless.seek.next", "playNextInQueue.")
+    strings = listOf(
+        string("gapless.seek.next", StringComparisonType.CONTAINS),
+        string("playNextInQueue.", StringComparisonType.STARTS_WITH)
+    )
 )
 
 internal object AudioVideoToggleFingerprint : Fingerprint(
@@ -46,7 +49,10 @@ internal object PauseVideoFingerprint : Fingerprint(
 
 internal object PlayVideoFingerprint : Fingerprint(
     returnType = "V",
-    strings = listOf("playVideo", "MedialibPlayer.playVideo()")
+    strings = listOf(
+        string("playVideo", StringComparisonType.CONTAINS),
+        string("MedialibPlayer.playVideo()", StringComparisonType.STARTS_WITH)
+    )
 )
 
 /**

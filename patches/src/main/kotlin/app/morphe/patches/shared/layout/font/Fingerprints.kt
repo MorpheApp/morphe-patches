@@ -8,6 +8,8 @@
 package app.morphe.patches.shared.layout.font
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.StringComparisonType
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
 /**
@@ -17,7 +19,7 @@ internal object FontResourceLoaderFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Landroid/graphics/Typeface;",
     parameters = listOf("Landroid/content/Context;", "I", "Landroid/util/TypedValue;", "I", "L", "Z", "Z"),
-    strings = listOf("Font resource ID #0x")
+    strings = listOf(string("Font resource ID #0x", StringComparisonType.STARTS_WITH))
 )
 
 /**

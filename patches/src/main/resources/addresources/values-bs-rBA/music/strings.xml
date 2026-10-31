@@ -465,7 +465,44 @@ Kako biste osigurali da se scrobbling sinhronizuje tokom reprodukcije u pozadini
   <string name="morphe_music_lyrics_source_all_disabled">Svi provajderi su onemogućeni - ugrađeni tekstovi i embedded tekstovi</string>
   <string name="morphe_music_lyrics_source_reset_title">Resetovati redoslijed pružalaca?</string>
   <string name="morphe_music_lyrics_source_reset_message">Vratite pružalace na podrazumijevani redoslijed prioriteta</string>
+  <string name="morphe_music_lyrics_rime_dict_title">Lista rima</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist također zahtijeva UniDict: u provideru Offline Dictionary, označite \"Kineski i kantonski znakovi (UniDict)\" i pričekajte da se preuzimanje završi. Bez toga, lista koja čita znakove neće dati nikakvo čitanje.
+
+Označite liste koje Rime Wordlist treba čitati, zatim dodirnite Spremi kako biste ih preuzeli. Lista koju ste dodali bit će uklonjena kada je odznačite.
+
+Svaka lista je vaša vlastita tabela riječi i čitanja, .dict.yaml sa linijama kao što su:
+字 ham
+典 din2
+Prva kolona je riječ, druga je njeno čitanje; dodatne kolone i linije bez tabulatora bit će ignorisane."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">Nijedna lista rima nije označena za gore navedeni jezik. Dodirnite ovaj naziv da označite jednu, ili odaberite jezik koji ima listu</string>
+  <string name="morphe_music_lyrics_rime_dict_add">Dodaj</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">Dodaj listu rima</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml datoteka, ili zip datoteka koja sadrži jednu takvu, sa linijama poput 字 ham i 典 din2. Lista se preuzima kada je označite i dodirnete Save, a licencu možete provjeriti sami</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">Kod jezika</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">Dva ili tri slova, kao što su hak ili wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">Naziv</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">Prikazuje se ispod čitanja, kao npr. Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">Adresa liste riječi</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">https:// adresa .dict.yaml datoteke ili njenog zip-a</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">Karakteri koji nisu u riječi</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">Automatski</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">Kantonski karakteri</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">Mandarin karakteri</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">Bez čitanja karaktera</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">Popunite kod, ime i adresu</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">Kod mora imati dva ili tri slova, kao npr. hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">Adresa mora početi sa https://</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">Ime i adresa ne smiju sadržavati uspravnu crtu</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s već ima tablicu riječi</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s čita ugrađeni romanizator i ne može primiti listu riječi</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">Nije korišteno: ovaj jezik već ima vlastito čitanje, stoga ga odznačite da biste ga uklonili</string>
+  <string name="morphe_music_lyrics_rime_dict_added">Dodano %1$s - označite ga i dodirnite Spremi da biste ga preuzeli</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">Liste riječi spremne</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Liste riječi spremne (%1$d unosa)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Čitanje liste riječi: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">Preuzimanje liste riječi nije uspjelo - ponovo dodirnite Spremi za ponovni pokušaj</string>
   <string name="morphe_music_lyrics_clear_cache_title">Obriši sačuvane tekstove</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Obrišite %1$s MB teksta pjesama koji se čuva na ovom uređaju</string>
   <string name="morphe_music_lyrics_clear_cache_done">Očišćeno %1$s MB</string>
   <string name="morphe_music_token_dialog_get_token">Preuzmi token</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
@@ -525,9 +562,22 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_copy_button_title">Prikaži dugme Kopiraj</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Dodirnite da kopirate originalni tekst kao običan tekst; dugo pritisnite da sačuvate izvorni fajl teksta u Preuzimanja</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Prikaži dugme Prevedi</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Dodirnite za prebacivanje prijevoda; dugo pritisnite samo za prijevod. Koristi omogućene pružaoce prijevoda prema njihovom navedenom redoslijedu</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Prikaži dugme Romanizuj ili Transliteruj</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Dodirnite za prebacivanje romanizacije ili transliteracije; dugo pritisnite samo za romanizaciju ili transliteraciju. Koristi omogućene pružaoce romanizacije prema njihovom navedenom redoslijedu</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">Omogući transliteraciju</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">Dozvoli ne-latinička čitanja iz izvora teksta pjesama; kada je isključeno, zadržavaju se samo latinična slova, slova s akcentima i cifre tona</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Čita svaku riječ vremenski usklađenog teksta pjesme (sinkronizacija riječi uključena); korejski ne zahtijeva preuzimanje; četrnaest pisama dijeli jedno CLDR preuzimanje; Han znakove čita Rime Wordlist kada njegova tabela riječi pokriva jezik</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">Preuzimanje rječnika za čitanje…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Očitanja su spremna (%1$d unosa)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Preuzimanje nije uspjelo - isključite i ponovo uključite ovu opciju kako biste pokušali ponovo</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Offline rječnik</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japanski (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">Kineski i kantonski znakovi (UniDict, ~8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kineske riječi (pinyin-pro, ~17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grčka, slavenska ćirilica (uklj. ruski, ukrajinski, bugarski, srpski, bjeloruski, makedonski), gruzijski, armenski, hebrejski, arapski, amharski i sirijak transliteracija (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Čitanje %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">Odaberite barem jedan rječnik</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Prikaži dugme za osvježavanje</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Dodirnite za prebacivanje na sljedećeg kandidata za tekst pjesme; dugo pritisnite za pretragu teksta pjesme po naslovu pjesme i izvođaču</string>
   <string name="morphe_music_lyrics_search_dialog_title">Pretraži tekstove pjesama</string>
@@ -538,6 +588,10 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_saved">Sačuvano</string>
   <string name="morphe_music_lyrics_word_sync_title">Istakni sinhronizovane riječi ili slogove</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioritizuj tekst pjesme riječ po riječ kada je dostupan. Kada tekst ima vremensko markiranje riječi, ističe svaku riječ ili slog u skladu s muzikom</string>
+  <string name="morphe_music_lyrics_line_scale_title">Smanji neaktivne linije</string>
+  <string name="morphe_music_lyrics_line_scale_summary">Crtaj svaki red koji se trenutno ne pjeva nešto manjim, uz prigušivanje boje</string>
+  <string name="morphe_music_lyrics_split_background_title">Prikaži prateće vokale odvojeno</string>
+  <string name="morphe_music_lyrics_split_background_summary">Odvaja prateće vokale i harmoniju od glavne linije. Pomjera prateći vokal napisan u zagradama, kao što je \"(Oh) I want you\", iz pjevanog reda u vlastiti, prigušeniji red</string>
   <string name="morphe_music_lyrics_hide_played_title">Sakrij odsvirani tekst pjesme</string>
   <string name="morphe_music_lyrics_hide_played_summary">Sakrij redove teksta iznad reda koji se trenutno pušta</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Sakrij nepuštene tekstove</string>
@@ -595,9 +649,15 @@ Primjenjuje se na oba ograničenja. Na 1.75, četiri karaktera pune širine rač
   <string name="morphe_music_lyrics_translated_by_ai">Preveo %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizovao %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Romanizirao %s</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">Romanizirao Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Prevedeno</string>
   <string name="morphe_music_lyrics_translation_language_title">Jezik prevoda</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Jezik romanizacije ili transliteracije</string>
+  <string name="morphe_music_lyrics_translation_target_language">"Ciljni jezik prijevoda:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"Ciljni jezik romanizacije ili transliteracije:
+%s"</string>
   <string name="morphe_music_lyrics_translating">Prevođenje…</string>
   <string name="morphe_music_lyrics_translate_failed">Nije bilo moguće prevesti tekst pjesme</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanizovano</string>
@@ -611,6 +671,7 @@ Primjenjuje se na oba ograničenja. Na 1.75, četiri karaktera pune širine rač
   <string name="morphe_music_lyrics_refreshing">Osvježavanje</string>
   <string name="morphe_music_lyrics_refreshed">Osvježeno</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API ključ</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transkribuje ili vremenski usklađuje tekst pjesme za trenutnu pjesmu</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC ključ je sačuvan. Koristite dugme za usklađivanje u dijalogu za pretragu tekstova, ili prompt u panelu kada pjesma nema tekst</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API ključ je sačuvan</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC nije prihvatio taj ključ</string>
@@ -626,10 +687,24 @@ Primjenjuje se na oba ograničenja. Na 1.75, četiri karaktera pune širine rač
   <string name="morphe_music_lyrics_transcribe_no_text">Nema tekstova za usklađivanje - umjesto toga se vrši transkripcija</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC nije mogao procesuirati ovu pjesmu</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRC krediti za ovu pjesmu su potrošeni</string>
+  <string name="morphe_music_lyrics_about_summary">"Tekstovi pjesama se podudaraju prema naslovu i izvođaču; neobični metapodaci mogu rezultirati time da ništa nije pronađeno ili da je pronađena pogrešna verzija. Koristite refresh za promjenu verzija. Pružaoci označeni sa * zahtijevaju token. Svi omogućeni pružaoci nisu uvijek pretraživani vašim redoslijedom, već odgovaraju na osnovu svoje brzine.
+
+Tekstovi pjesama dolaze iz usluga trećih strana koje nisu povezane sa Morphe, sponzorisane od strane Morphe ili preporučene od strane Morphe. Svaka se koristi onakvoprivo: tekstovi, njihova dostupnost i njihove licence ostaju kod tih usluga i njihovih licencera, a njihovo korištenje može biti podložno njihovim uslovima korištenja. Ono što stiže do omogućene usluge je samo pretraga koju ste tražili - naslov, izvođač i, gdje ta usluga to zahtijeva, ID videa. Opcionalna AI krajnja tačka i QuickLRC transkripcija rade samo nakon što ih konfigurišete, i primaju tekst pjesme ili URL videa trake."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Omogućite samo pružaoče usluga koje koristite ili zadržite zadane postavke - konstantni zahtjevi mogu preopteretiti manje zajedničke stranice sa tekstovima pjesama</string>
   <string name="morphe_music_lyrics_hide_info_title">Sakrij liniju kredita</string>
   <string name="morphe_music_lyrics_hide_info_summary">Sakrij liniju kredita koja se prikazuje ispod teksta pjesme</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Zamijeni prevod i romanizaciju</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">UKLJUČENO stavlja romanizaciju ili transliteraciju ispod teksta pjesme, a prevod iznad; ISKLJUČENO drži romanizaciju ili transliteraciju iznad, a prevod ispod. Čitanje postavljeno iznad svakog sloga pomjera se s njim, s vrha sloga na dno</string>
+  <string name="morphe_music_lyrics_force_center_title">Uvijek centriraj tekst pjesme</string>
+  <string name="morphe_music_lyrics_force_center_summary">UKLJUČENO stavlja svaki red u sredinu i ignoriše izvorno poravnanje, uključujući strane dueta; ISKLJUČENO zadržava poravnanje koje zahtijeva tekst pjesme</string>
+  <string name="morphe_music_lyrics_providers_keep_one">Barem jedan pružalac mora ostati uključen</string>
+  <string name="morphe_music_lyrics_translation_provider_title">Prevod</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">Romanizacija ili transliteracija</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">Offline rječnik</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Rime lista riječi</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">Detektuj sekcije pomoću AI</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Koristi se samo kada pružalac ne šalje oznake sekcija kao što su Refren ili Strofa, koje zatim detektuje vaš OpenAI kompatibilni model. Uređivanje reda takođe otvara njegov prompt</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (npr. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Šablon prompta</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholderi: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt je sačuvan</string>
@@ -638,14 +713,26 @@ Primjenjuje se na oba ograničenja. Na 1.75, četiri karaktera pune širine rač
   <string name="morphe_music_lyrics_ai_config_toast_saved">Postavke prevoda &amp; romanizacije su sačuvane</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Postavke su vraćene na zadane vrijednosti</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Bazni URL mora početi sa http:// ili https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">Postavke su nepotpune ili odbijene od strane pružaoca</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Validiranje konekcije…</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Povezano! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Veza nije uspostavljena. Provjerite postavke.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">Prvo unesite API ključ</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Testiraj vezu</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Preuzimanje modela…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Preuzmi modele</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Odaberite model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Preuzimanje modela nije uspjelo. Provjerite API ključ ili vezu.</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Osnovni URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Preseti usluge</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Odaberite uslugu</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API ključ (opcionalno)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Dodatno tijelo zahtjeva (opcionalni JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">Dodatni zaglavlja zahtjeva (opcionalni JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Navodnicima označite nazive i vrijednosti, npr. {\"api-key\": \"abc\"}. Vrijednost bez navodnika koja sadrži / : ili broj bit će odbijena. Prazna vrijednost uklanja zaglavlje.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Navodnicima označite nazive i vrijednosti, npr. {\"temperature\": 0.3}. Vrijednost bez navodnika koja sadrži / ili : bit će odbijena. Model i poruke ovdje ne mogu biti postavljeni.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Autentikacijski ključ (Besplatni ili Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Onemogući podebljene ikone</string>

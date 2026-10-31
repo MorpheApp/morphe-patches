@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">besteak</string>
   <string name="morphe_settings_screen_12_video_title">Bideoa</string>
   <string name="morphe_restore_old_settings_menus_title">YouTube konfigurazio-pantaila zaharra berreskuratu</string>
+  <string name="morphe_native_snackbar_title">Mezuak YouTube snackbarrean erakutsi</string>
+  <string name="morphe_native_snackbar_summary">Morphe mezuak, adibidez, sekoialdiko botoi baten berostea, popup baten ordez YouTube snackbarrean erakutsiko dira</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Kendu fondoan erreproduziteko gehikizunak</string>
   <string name="morphe_shorts_disable_background_playback_title">Desgaitu atzeko planeko erreprodukzioa</string>
@@ -514,7 +516,6 @@ Ask botoia duen bideo bat behin ireki ondoren, funtzioak bideo guztiekin funtzio
   <string name="morphe_external_downloader_quick_audio">Audioa</string>
   <string name="morphe_external_downloader_quick_options">Aukera guztiak</string>
   <string name="morphe_shorts_download_flyout_button_title">Erakutsi deskarga Shorts menuan</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Deskargatzaile kanpora egon menu-elementu bat gehitzen dio Shorts atariari</string>
   <string name="morphe_shorts_download_flyout_title">Deskargatu</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ahots-gain translationa</string>
@@ -622,10 +623,6 @@ Informazioa: Agian ez funtzionatzen duen zuzeneko emanbisteetan"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Gorde geroago ikusteko</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Erakutsi \'Gero ikusteko gorde\' botoia seiatzailearen konfigurazio-menuan</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Gaur egungo bideoa \'Gero ikusteko\' gorde sailkatzailearen konfigurazio-menuatik</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Erakutsi \"Gero ikusi\"n gorde botoia haurren bideoetan</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Umeen bideoak \'Gero ikusteko\' gorde menu-txikiatik</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Erakutsi \'Gero ikusteko gorde\' botoia shorts-en menu-txikian</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Shortsak \'Gero ikusi\'n gordetzea ahalbidetzen du menu txikiari bidez</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Bideratu \"Gero ikusi\" zerrendara</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Gero ikusi</string>
   <string name="morphe_queue_flyout_title">Gehitu Morphe zerrendara</string>

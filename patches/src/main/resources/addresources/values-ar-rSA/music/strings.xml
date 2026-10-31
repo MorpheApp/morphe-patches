@@ -703,12 +703,15 @@ tظهر المسارات التي تم تنزيلها هنا"</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: متصل! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: فشل الاتصال. تحقق من الإعدادات.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">أدخل مفتاح API أولاً</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">اختبار الاتصال</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">جاري جلب النماذج...</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">جلب النماذج</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">اختر نموذجاً</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">فشل جلب النماذج. تحقق من مفتاح API أو الاتصال.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">التعليمات</string>
   <string name="morphe_music_lyrics_ai_config_model_label">النموذج</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">عنوان URL الأساسي</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">الإعدادات المسبقة للخدمة</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">اختر خدمة</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">مفتاح API (اختياري)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">جسم طلب إضافي (JSON اختياري)</string>

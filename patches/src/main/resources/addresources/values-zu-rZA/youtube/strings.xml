@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Okunye</string>
   <string name="morphe_settings_screen_12_video_title">Ividiyo</string>
   <string name="morphe_restore_old_settings_menus_title">Buyisela isikrini sezilungiselelo zakudala zeYouTube</string>
+  <string name="morphe_native_snackbar_title">Khombisa imiyalezo ku-YouTube snackbar</string>
+  <string name="morphe_native_snackbar_summary">Imiyalezo ye-Morphe, njengokuqinisekisa inkinobho yomdlali, ikhonywa ku-YouTube snackbar esikhundleni se-popup</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Susa imingcele yokudlala ngemuva</string>
   <string name="morphe_shorts_disable_background_playback_title">Vala ukudlala ngemuva</string>
@@ -513,7 +515,6 @@ Ngemuva kokuvulwa kwevidiyo enenkinobho ethi Buza kanye, le mpawu isebenza kuzo 
   <string name="morphe_external_downloader_quick_audio">Umsindo</string>
   <string name="morphe_external_downloader_quick_options">Zonke izinketho</string>
   <string name="morphe_shorts_download_flyout_button_title">Khombisa ukulandela ku-menu yama-Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Yengeza ithemba loku-downloader langaphandle ku-menu yomdlali wama-Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Landa</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ukuhumusha ngezwi</string>
@@ -621,10 +622,6 @@ Ulwazi: Kungase kungasebenzi kuma-live streams"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Bhala ukuze ubuke kamuva</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Khombisa inkinobho yeSave to Watch later ekuhambelaneni nezilungiselelo zomdlali</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Kuvumela ukuvimba ividiyo obukayo njengamanje ku-\'Buka kamuva\' kusuka ku-flyout yezilungiselelo ze-vidiyo</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Khombisa inkinobho yeBhala ukuze ubuke kamuva kuvidiyo zezingane</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Kuvumela ukuvimba ama-vidiyo ahlobene nezingane ku-\'Buka kamuva\' kusuka ku-flyout menu</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Khombisa inkinobho ye-Save to Watch later ku-shorts flyout</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Kuvumela ukuvimba ama-shorts ku-\'Buka kamuva\' kusuka ku-flyout menu</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Dlulisela uBuka kamuva ku-playlist</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Buka kamuva</string>
   <string name="morphe_queue_flyout_title">Yengeza ohlwini lweMorphe</string>

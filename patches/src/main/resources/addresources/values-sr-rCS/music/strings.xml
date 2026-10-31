@@ -709,12 +709,15 @@ Tekstovi pesama dolaze od usluga trećih strana koje nisu povezane s Morphe-om, 
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Povezano! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Povezivanje nije uspelo. Proverite podešavanja.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Unesite API ključ prvo</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Testuj vezu</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Preuzimanje modela…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Preuzmi modele</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Izaberite model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Preuzimanje modela nije uspelo. Proverite API ključ ili vezu.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Nalog</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Bazni URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Preseti servisa</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Izaberite servis</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API ključ (opciono)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Dodatno telo zahteva (opcioni JSON)</string>

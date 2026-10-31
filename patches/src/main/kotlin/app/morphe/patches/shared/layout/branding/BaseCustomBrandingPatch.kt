@@ -621,9 +621,10 @@ internal fun baseCustomBrandingPatch(
         // installation uses them to replace the icon of the app and that is done while finalizing.
         if (useCustomIcon) {
             // Reading the option already checked the folder, see customIconFiles
-            val resourceDirectory = get("res")
             customIconFiles(customIcon!!)!!.forEach { file ->
-                file.copyTo(resourceDirectory.resolve("${file.parentFile.name}/${file.name}"), overwrite = true)
+                val targetFile = this["res/${file.parentFile.name}/${file.name}"]
+                targetFile.parentFile.mkdirs()
+                file.copyTo(targetFile, overwrite = true)
             }
         }
 
@@ -715,22 +716,6 @@ private fun hasMountedNotificationIcon(iconStyle: String, customIcon: String?): 
 }
 
 /**
- * The resource directories of a type, such as 'drawable' and every 'drawable-<qualifier>',
- * with the files of the name in them decoded.
- *
- * @param fileName The name of the files to decode, which can use wildcards.
- */
-private fun ResourcePatchContext.resourceDirectories(resourceType: String, fileName: String): List<File> {
-    decode("res/$resourceType/$fileName", "res/$resourceType-*/$fileName")
-
-    val directories = get("res").listFiles { file ->
-        file.isDirectory && (file.name == resourceType || file.name.startsWith("$resourceType-"))
-    } ?: throw PatchException("Could not find the app resources")
-
-    return directories.asList()
-}
-
-/**
  * The icon style to use, resolving the 'Automatic' option value.
  */
 private fun resolveIconStyle(appIconStyle: String?, customIcon: String?): String =
@@ -794,11 +779,9 @@ private fun Element.isLauncherEntry(): Boolean =
 private fun ResourcePatchContext.setAppNameResource(resourceName: String, appName: String): Boolean {
     var defaultAppNameSet = false
 
-    resourceDirectories("values", "strings.xml").forEach { valuesDirectory ->
-        if (!valuesDirectory.resolve("strings.xml").exists()) return@forEach
-
-        this["res/${valuesDirectory.name}/strings.xml"].editText { text ->
-            if (valuesDirectory.name != "values") {
+    listDecodableFiles("res/values*/strings.xml").forEach { path ->
+        this[path].editText { text ->
+            if (path != "res/values/strings.xml") {
                 return@editText text.removeStringResource(resourceName)
             }
 
@@ -855,12 +838,10 @@ private fun ResourcePatchContext.setNotificationIconResource(
 
     var removedIcons = 0
 
-    resourceDirectories("drawable", "$originalNotificationIconName.*").forEach { drawableDirectory ->
-        drawableDirectory.listFiles { file ->
-            file.isFile && file.nameWithoutExtension == originalNotificationIconName
-        }?.forEach { iconFile ->
-            if (iconFile.delete()) removedIcons++
-        }
+    val iconsToDelete = listDecodableFiles("res/drawable*/$originalNotificationIconName.*")
+    iconsToDelete.forEach { path ->
+        delete(path)
+        removedIcons++
     }
 
     if (removedIcons == 0) {
@@ -872,19 +853,17 @@ private fun ResourcePatchContext.setNotificationIconResource(
         return false
     }
 
-    val resourceDirectory = get("res")
-
     if (vectorIcon != null) {
-        val drawableDirectory = resourceDirectory.resolve("drawable")
-        drawableDirectory.mkdirs()
-        drawableDirectory.resolve("$originalNotificationIconName.xml").writeBytes(vectorIcon)
+        val targetFile = this["res/drawable/$originalNotificationIconName.xml"]
+        targetFile.parentFile.mkdirs()
+        targetFile.writeBytes(vectorIcon)
     }
 
     rasterIcons.forEach { (dpi, sourceFile) ->
-        val targetDirectory = resourceDirectory.resolve(dpi)
-        targetDirectory.mkdirs()
+        val targetFile = this["res/$dpi/$originalNotificationIconName.png"]
+        targetFile.parentFile.mkdirs()
         sourceFile.copyTo(
-            target = targetDirectory.resolve("$originalNotificationIconName.png"),
+            target = targetFile,
             overwrite = true
         )
     }
@@ -925,13 +904,10 @@ private fun ResourcePatchContext.setLauncherIconResource(
     var replacedIcons = 0
 
     iconReferences.forEach { (resourceType, resourceName) ->
-        resourceDirectories(resourceType, "$resourceName.xml").forEach { typeDirectory ->
+        listDecodableFiles("res/$resourceType*/$resourceName.xml").forEach { path ->
             // Only the adaptive icon is replaced. A raster icon of the same name is used by
             // Android 7 and older, which the target apps no longer support.
-            val iconFile = typeDirectory.resolve("$resourceName.xml")
-            if (!iconFile.exists()) return@forEach
-
-            iconFile.writeBytes(bundledIcon)
+            this[path].writeBytes(bundledIcon)
             replacedIcons++
         }
     }

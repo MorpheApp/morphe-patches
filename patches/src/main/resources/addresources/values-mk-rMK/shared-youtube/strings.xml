@@ -21,8 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Анимација при стартување</string>
   <string name="morphe_splash_screen_style_entry_1">Оневозможено</string>
   <string name="morphe_splash_screen_style_entry_2">Боја</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe боја</string>
   <string name="morphe_splash_screen_style_entry_4">Монохромски</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe монохромски</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Истакни ги новите поставки</string>
+  <string name="morphe_settings_new_indicator_days_summary">Број на денови во кои точката се прикажува покрај поставките и опциите додадени со ажурирањето</string>
   <string name="morphe_settings_new_indicator_days_off">Исклучено</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Рестартирај за да завршиш со поставување</string>

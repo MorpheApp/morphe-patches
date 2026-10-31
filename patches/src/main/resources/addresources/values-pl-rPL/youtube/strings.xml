@@ -29,8 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Pozostałe</string>
   <string name="morphe_settings_screen_12_video_title">Film</string>
   <string name="morphe_restore_old_settings_menus_title">Przywróć stary ekran ustawień YouTube</string>
-  <string name="morphe_native_snackbar_title">Pokaż wiadomości w pasku snackbar YouTube</string>
-  <string name="morphe_native_snackbar_summary">Wiadomości Morphe, takie jak potwierdzenie przycisku odtwarzania, są wyświetlane w pasku snackbar YouTube zamiast okna wyskakującego</string>
+  <string name="morphe_native_snackbar_title">Pokaż komunikaty na pasku YouTube</string>
+  <string name="morphe_native_snackbar_summary">Komunikaty Morphe, takie jak potwierdzenie użycia przycisku odtwarzacza, są wyświetlane na dolnym pasku komunikatów YouTube zamiast w okienku</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Usuń ograniczenia odtwarzania w tle</string>
   <string name="morphe_shorts_disable_background_playback_title">Wyłącz odtwarzanie w tle</string>
@@ -61,6 +61,7 @@ Zmiany obejmują:
   <string name="morphe_hide_account_menu_title">Włącz filtr zakładki Ty / Biblioteka</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Filtr zakładki Ty / Biblioteka</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Wprowadź nazwy elementów do filtrowania, każda w nowej linii</string>
+  <string name="morphe_hide_account_menu_downloads_title">Ukryj Pobrane</string>
   <string name="morphe_hide_album_cards_title">Ukryj karty albumów</string>
   <string name="morphe_hide_album_cards_summary">Ukrywa karty albumów pod opisem artysty</string>
   <string name="morphe_hide_artist_cards_title">Ukryj karty artystów</string>
@@ -458,14 +459,14 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_post_image_download_failed">Nie udało się pobrać obrazu</string>
   <string name="morphe_post_image_download_not_found">Nie znaleziono obrazu w tym poście</string>
   <!-- interaction.posttranslate.postTranslatePatch -->
-  <string name="morphe_post_translate_title">Tłumacz posty</string>
-  <string name="morphe_post_translate_summary">Dodaje element do menu rozwijanego w celu tłumaczenia postów twórców treści</string>
+  <string name="morphe_post_translate_title">Tłumaczenie postów</string>
+  <string name="morphe_post_translate_summary">Dodaje do menu opcję tłumaczenia postów twórców</string>
   <string name="morphe_post_translate_language_title">Język tłumaczenia postów</string>
   <string name="morphe_post_translate_flyout">Przetłumacz</string>
   <string name="morphe_post_translate_flyout_original">Pokaż oryginał</string>
   <string name="morphe_post_translate_started">Tłumaczenie…</string>
   <string name="morphe_post_translate_failed">Nie udało się przetłumaczyć posta</string>
-  <string name="morphe_post_translate_same_language">Post jest już w języku tłumaczenia</string>
+  <string name="morphe_post_translate_same_language">Post jest już w docelowym języku tłumaczenia</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Dodaj opcję \"Zapytaj\" do menu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Dodaje opcję podsumowania filmu do menu na liście</string>
@@ -515,8 +516,23 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_external_downloader_quick_audio">Dźwięk</string>
   <string name="morphe_external_downloader_quick_options">Wszystkie opcje</string>
   <string name="morphe_shorts_download_flyout_button_title">Pokaż pobieranie w menu Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Dodaje opcję zewnętrznej aplikacji do pobierania do menu odtwarzacza Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Dodaje opcję pobierania do menu odtwarzacza Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Pobierz</string>
+  <string name="morphe_export_download_folder_title">Eksportuj zapisane filmy</string>
+  <string name="morphe_export_download_folder_summary">"Eksportuj filmy zapisane w aplikacji do pamięci urządzenia. Dotknij, aby zmienić folder eksportu
+
+Folder eksportu: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Folder eksportu</string>
+  <string name="morphe_export_download_folder_change">Zmień folder</string>
+  <string name="morphe_export_download_folder_changed">Zmieniono folder eksportu</string>
+  <string name="morphe_export_download_folder_reset">Zresetowano folder eksportu</string>
+  <string name="morphe_export_download_flyout_title">Eksportuj na urządzenie</string>
+  <string name="morphe_export_download_started">Eksportowanie filmu</string>
+  <string name="morphe_export_download_progress">Eksportowanie filmu: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Eksportowanie filmów</string>
+  <string name="morphe_export_download_saved">Wyeksportowano film do %s</string>
+  <string name="morphe_export_download_failed">Nie udało się wyeksportować filmu</string>
+  <string name="morphe_export_download_canceled">Anulowano eksportowanie</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Tłumaczenie głosowe</string>
   <string name="morphe_vot_screen_summary">Czyta napisy na głos przy użyciu wbudowanego syntezatora mowy, synchronizując je z odtwarzaniem obrazu</string>
@@ -623,10 +639,6 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Zapisz do obejrzenia</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Pokaż przycisk \"Zapisz do obejrzenia\" w menu ustawień odtwarzacza</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Umożliwia zapisywanie aktualnie oglądanego filmu na liście \"Do obejrzenia\" z poziomu menu ustawień filmu</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Pokaż przycisk Zapisz do obejrzenia w filmach dla dzieci</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Umożliwia zapisywanie filmów przeznaczonych dla dzieci na liście \"Do obejrzenia\" z poziomu menu</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Pokaż przycisk \"Zapisz do obejrzenia\" w menu Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Umożliwia zapisywanie filmów Short na liście \"Do obejrzenia\" z poziomu menu</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Przekieruj \"Do obejrzenia\" na playlistę</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Do obejrzenia</string>
   <string name="morphe_queue_flyout_title">Dodaj do kolejki Morphe</string>
@@ -875,7 +887,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_fix_transcript_summary">Rozwiązuje błąd weryfikacji warunków wstępnych, który może uniemożliwiać wczytanie transkrypcji</string>
   <string name="morphe_captions_in_pip_title">Pokaż napisy w trybie \"Obraz w obrazie\"</string>
   <string name="morphe_stable_caption_blocks_title">Stabilne bloki napisów</string>
-  <string name="morphe_stable_caption_blocks_summary">Grupuj automatyczne napisy w stabilne, czytelne bloki. Niektóre słowa mogą pojawić się przed ich wypowiedzeniem. Wymagany restart.</string>
+  <string name="morphe_stable_caption_blocks_summary">Grupuje napisy automatyczne w stabilne, czytelne bloki. Niektóre słowa mogą pojawiać się, zanim zostaną wypowiedziane. Wymaga ponownego uruchomienia</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Przyciski nawigacji</string>
   <string name="morphe_navigation_buttons_screen_summary">Zdecyduj, które przyciski będą wyświetlane na dolnym pasku nawigacji</string>
@@ -1224,7 +1236,7 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_miniplayer_screen_title">Miniodtwarzacz</string>
   <string name="morphe_miniplayer_screen_summary">Dostosuj wygląd i zachowanie miniodtwarzacza</string>
   <string name="morphe_miniplayer_not_available_title">Dodatkowe miniodtwarzacze</string>
-  <string name="morphe_miniplayer_not_available_summary">YouTube usunął wszystkie dodatkowe miniodtwarzacze. Aby przywrócić więcej typów miniodtwarzaczy, zmodyfikuj YouTube w wersji 21.28.208 lub starszej</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube usunął wszystkie dodatkowe miniodtwarzacze. Aby przywrócić więcej typów miniodtwarzacza, zmodyfikuj YouTube w wersji 21.28.208 lub starszej</string>
   <string name="morphe_miniplayer_type_title">Typ miniodtwarzacza</string>
   <string name="morphe_miniplayer_hide_title_title">Ukryj tytuł i kanał</string>
   <string name="morphe_miniplayer_type_entry_0">Wyłączony</string>
@@ -1269,6 +1281,8 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_splash_screen_style_entry_7">Poświata Morphe 1</string>
   <string name="morphe_splash_screen_style_entry_8">Poświata Morphe 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Animacja startowa \"Poświata\" nie jest obsługiwana przez to urządzenie</string>
+  <string name="morphe_splash_screen_duration_title">Czas trwania animacji startowej</string>
+  <string name="morphe_splash_screen_duration_summary">Jak długo odtwarzana jest animacja \"Poświata\". Dotknij animacji, aby ją pominąć</string>
   <string name="morphe_theme_color_light_title">Tło jasnego motywu</string>
   <string name="morphe_theme_color_light_entry_2">Białe</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Biały)</string>

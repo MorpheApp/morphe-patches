@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Miscelánes</string>
   <string name="morphe_settings_screen_12_video_title">Vídeo</string>
   <string name="morphe_restore_old_settings_menus_title">Restaurar a antiga pantalla de configuración de YouTube</string>
+  <string name="morphe_native_snackbar_title">Mostrar mensaxes na barra de avisos de YouTube</string>
+  <string name="morphe_native_snackbar_summary">As mensaxes de Morphe, como a confirmación dun botón do reprodutor, móstranse na barra de avisos de YouTube en lugar dun popup</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Eliminar as restricións de reprodución en segundo plano</string>
   <string name="morphe_shorts_disable_background_playback_title">Desactivar a reprodución en segundo plano</string>
@@ -513,7 +515,6 @@ Despois de abrir unha vez un vídeo co botón Preguntar, a función funciona con
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Todas as opcións</string>
   <string name="morphe_shorts_download_flyout_button_title">Amosar descarga no menú de Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Engade un elemento ao menú des same do descargador externo no reprodutor de Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Descargar</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Tradución con voz</string>
@@ -621,10 +622,6 @@ Info: Pode que non funcione en transmisións en directo"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Gardar para ver máis tarde</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Mostrar o botón Gardar para ver máis tarde no menú desplegable de axustes do reproductor</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Permite gardar o vídeo que se está a ver no apartado \'Ver máis tarde\' desde o menú desplegable de axustes do vídeo</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Amosar o botón Gardar para ver máis tarde nos vídeos infantis</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite gardar vídeos infantis no apartado \'Ver máis tarde\' desde o menú desplegable</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Mostrar o botón Gardar para ver máis tarde no menú desplegable de shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permite gardar shorts no apartado \'Ver máis tarde\' desde o menú desplegable</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Redirixir Ver máis tarde a unha lista de reprodución</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Ver máis tarde</string>
   <string name="morphe_queue_flyout_title">Engadir á cola de Morphe</string>

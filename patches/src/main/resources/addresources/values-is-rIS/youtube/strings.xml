@@ -505,7 +505,6 @@ Eftir að myndband með Ask hnappi hefur verið opnað einu sinni, virkar eiginl
   <string name="morphe_external_downloader_quick_audio">Hljóð</string>
   <string name="morphe_external_downloader_quick_options">Allar stillingar</string>
   <string name="morphe_shorts_download_flyout_button_title">Sýna niðurhal í Shorts-valmynd</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Bætir við útvíkkuðu niðurhalstæki í Shorts-spilaranum</string>
   <string name="morphe_shorts_download_flyout_title">Niðurhal</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Þýðing á raddsegulmagni</string>
@@ -611,10 +610,6 @@ API lykillinn þinn ætti aldrei að deila. Allir með aðgang að honum geta no
   <string name="morphe_save_to_watch_later_flyout_title">Vista í Horfa síðar</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Sýna hnappinn Vista í Horfa seinna í sprettivalmynd spilarastillinga</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Leyfir að vista myndbandið sem verið er að horfa á núna í \'Horfa seinna\' úr sprettivalmynd myndbandsstillinga</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Sýna hnappinn „Vista í Horfa síðar“ í barnamyndböndum</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Leyfir að vista barnatengd myndbönd í \'Horfa seinna\' úr sprettivalmyndinni</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Sýna hnappinn Vista í Horfa seinna í sprettivalmynd Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Leyfir að vista Shorts í \'Horfa seinna\' úr sprettivalmyndinni</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Stefna „Horfa síðar“ á spilalista</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Horfa síðar</string>
   <string name="morphe_queue_flyout_title">Bæta í Morphe biðröð</string>

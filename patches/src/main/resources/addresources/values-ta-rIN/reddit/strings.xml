@@ -15,4 +15,48 @@
 Second \"item\" text"</string>
 
 -->
-<resources></resources>
+<resources>
+  <string name="morphe_show_flairs_in_home_feed_title">முகப்பு ஃபீடில் ஃபிளயர்களைக் காட்டவும்</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">முகப்பு ஃபீடில் பதிவின் ஃபிளயர் பேட்ஜ்களைக் காட்டும்</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">சில ஃபீட் உருப்படிகளில் ஃபிளயர் தெரியாமல் இருக்கலாம்</string>
+  <string name="morphe_redgifs_audio_title">ஆடியோவுடன் Redgifs-ஐ இயக்கவும்</string>
+  <string name="morphe_redgifs_audio_summary">ஆடியோ இல்லாத Reddit-ன் நகலுக்குப் பதிலாக, அசல் Redgifs வீடியோவை இயக்குகிறது</string>
+  <string name="morphe_redgifs_hd_title">Redgifs HD தரம்</string>
+  <string name="morphe_redgifs_hd_summary">HD Redgifs வீடியோவை இயக்குகிறது. HD வீடியோக்கள் பெரியவை மற்றும் பதிவிறக்கம் செய்ய இடைநிறுத்தப்படலாம்</string>
+  <string name="morphe_download_location_title">பதிவிறக்க இடம்</string>
+  <string name="morphe_download_location_all_title">அனைத்து கணக்குகள்</string>
+  <string name="morphe_download_location_default_summary">Reddit-ன் இயல்புநிலை: படங்கள் Pictures/Reddit-லும், வீடியோக்கள் Download-லும் சேமிக்கப்படும்</string>
+  <string name="morphe_download_location_summary_folder">கோப்புறை: %s</string>
+  <string name="morphe_download_location_summary_pattern">கோப்பு பெயர்: %s</string>
+  <string name="morphe_download_location_pattern_default">Reddit-ன் கோப்பு பெயர்கள்</string>
+  <string name="morphe_download_location_uses_all_summary">\"அனைத்து கணக்குகளையும்\" பயன்படுத்துகிறது</string>
+  <string name="morphe_download_location_own_title">சொந்த இருப்பிடத்தைப் பயன்படுத்தவும்</string>
+  <string name="morphe_download_location_folder_title">இங்கு சேமிக்கவும்</string>
+  <string name="morphe_download_location_folder_default">Reddit-இன் இயல்புநிலை கோப்புறைகள்</string>
+  <string name="morphe_download_location_folder_default_short">இயல்புநிலை</string>
+  <string name="morphe_download_location_subfolder_hint">உபக்கோப்புறை</string>
+  <string name="morphe_download_location_subfolder_tree_hint">கோப்புப் பெயரில் / குறியீட்டைப் பயன்படுத்தி உபக்கோப்புறைகளைச் சேர்க்கவும்</string>
+  <string name="morphe_download_location_browse">தேடுக…</string>
+  <string name="morphe_download_location_no_picker">இந்தக் கருவியில் கோப்புறைத் தேர்வகம் கிடைக்கவில்லை</string>
+  <string name="morphe_download_location_pattern_title">கோப்புப் பெயர்</string>
+  <string name="morphe_download_location_pattern_hint">Reddit-இன் கோப்புப் பெயர்</string>
+  <string name="morphe_download_location_pattern_help">ஒரு டோக்கனை உள்ளிட அதைத் தட்டவும். / ஒரு துணைக்கோப்புறையை உருவாக்கும். தெரியாத மதிப்புகள் \"unknown\" என மாறும்</string>
+  <string name="morphe_download_location_example_images">படங்கள்: %s</string>
+  <string name="morphe_download_location_example_videos">வீடியோக்கள்: %s</string>
+  <string name="morphe_download_location_save">சேமி</string>
+  <string name="morphe_download_location_reset">மீட்டமை</string>
+  <string name="morphe_download_location_delete">நீக்கு</string>
+  <string name="morphe_download_location_reset_confirm">அனைத்து கணக்குகளின் பதிவிறக்க இருப்பிடத்தை Reddit-ன் இயல்பு நிலைக்கு மீட்டமைக்க வேண்டுமா?</string>
+  <string name="morphe_download_location_delete_confirm">%s-ன் பதிவிறக்க இருப்பிடத்தை நீக்க வேண்டுமா?</string>
+  <string name="morphe_download_location_save_failed">பதிவிறக்க இருப்பிடத்தில் சேமிக்க முடியவில்லை. அதற்குப் பதிலாக Reddit-ன் இயல்புநிலை கோப்புறையில் சேமிக்கப்பட்டது</string>
+  <string name="morphe_download_location_folder_unavailable">பதிவிறக்க கோப்புறை இனி கிடைக்கவில்லை. அதற்குப் பதிலாக Reddit-ன் இயல்புநிலை கோப்புறையில் சேமிக்கப்பட்டது</string>
+  <string name="morphe_download_location_video_failed">பதிவிறக்கம் செய்யப்பட்ட வீடியோவைச் சேமிக்க முடியவில்லை</string>
+  <string name="morphe_download_location_invalid_folder">பதிவிறக்கங்களுக்கு இந்த ஃபோல்டரைப் பயன்படுத்த முடியாது</string>
+  <string name="morphe_download_location_account_current">%s (தற்போதைய)</string>
+  <string name="morphe_download_location_account_logged_out">%s (உள்நுழையவில்லை)</string>
+  <string name="morphe_download_location_account_anonymous">பெயர் தெரியாத பயனர் (உள்நுழையவில்லை அல்லது இன்காக்னிட்டோ)</string>
+  <string name="morphe_app_icon_title">செயலி ஐகான்</string>
+  <string name="morphe_app_icon_choose_title">செயலி ஐகானைத் தேர்வு செய்யவும்</string>
+  <string name="morphe_app_icon_default">இயல்பானது</string>
+  <string name="morphe_app_icon_unknown">தெரியவில்லை</string>
+</resources>

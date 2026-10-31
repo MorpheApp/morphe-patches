@@ -19,7 +19,9 @@ import com.google.protobuf.MessageLite;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import app.morphe.extension.shared.Logger;
@@ -105,6 +107,11 @@ public final class InAppDownloadsPatch {
      * Opus audio is not saved, the other audio and all video formats are.
      */
     private static final String UNSAVABLE_AUDIO_MIME_TYPE_PREFIX = "audio/webm";
+
+    /**
+     * Key of the interaction logger, in the context a command is run with.
+     */
+    private static final String INTERACTION_LOGGER_KEY = "com.google.android.libraries.youtube.logging.interaction_logger";
 
     /**
      * Name of the template of the page headers, such as the header of a playlist page.
@@ -522,9 +529,21 @@ public final class InAppDownloadsPatch {
      */
     public static void saveVideo(String videoId) {
         Logger.printDebug(() -> "Saving video: " + videoId);
-        if (!NativeSnackbarPatch.executeCommand(saveVideoCommand(videoId, List.of()).toByteArray())) {
+        // If the formats of the video are loaded first, the command logs to the interaction logger
+        // without checking it is set.
+        Map<String, Object> context = new HashMap<>();
+        context.put(INTERACTION_LOGGER_KEY, getNoOpInteractionLogger());
+        if (!CommandRouterPatch.executeCommand(saveVideoCommand(videoId, List.of()).toByteArray(), context)) {
             Logger.printException(() -> "Could not save the video, no activity is shown: " + videoId);
         }
+    }
+
+    /**
+     * @return The interaction logger of the app that logs nothing.
+     */
+    @Nullable
+    private static Object getNoOpInteractionLogger() {
+        return null; // Modified during patching.
     }
 
     /**

@@ -701,12 +701,15 @@ Versurile provin de la servicii terțe care nu sunt afiliate, sponsorizate sau e
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Conectat! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Conexiunea a eșuat. Verificați setările.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Introduceți mai întâi cheia API</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Test conexiune</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Se preiau modelele…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Preluare modele</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Selectați un model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Eșec la preluarea modelelor. Verificați cheia API sau conexiunea.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Solicitare</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL de bază</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Presete serviciu</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Selectați un serviciu</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">Cheie API (opțional)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Corp de cerere suplimentar (JSON opțional)</string>

@@ -9,6 +9,7 @@ package app.morphe.patches.music.interaction.jam
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
@@ -122,8 +123,8 @@ internal object AccountScopedCommandRouterFingerprint : Fingerprint(
     returnType = "L",
     parameters = listOf("L"),
     strings = listOf(
-        "com.google.android.apps.youtube.app.endpoint.routers.AccountScopeCommandRouterFragment",
-        "Expected delegate to be AccountScopedCommandRouterImpl, but was ",
+        string("com.google.android.apps.youtube.app.endpoint.routers.AccountScopeCommandRouterFragment"),
+        string("Expected delegate to be AccountScopedCommandRouterImpl, but was ", StringComparisonType.STARTS_WITH),
     )
 )
 

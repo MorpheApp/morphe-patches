@@ -515,7 +515,6 @@ După ce un videoclip cu butonul Ask este deschis o dată, funcția funcționeaz
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Toate opțiunile</string>
   <string name="morphe_shorts_download_flyout_button_title">Afișează descărcarea în meniul Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Adaugă o opțiune de meniu flyout pentru descărcator extern în player-ul Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Descărcare</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducere cu voce peste</string>
@@ -623,10 +622,6 @@ Info: S-ar putea să nu funcționeze pe transmisiuni live"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Salvează în Urmărește mai târziu</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Afișează butonul Salvează în Vizionează mai târziu în meniul de setări al playerului</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Permite salvarea videoclipului în curs de vizionare în „Vizionează mai târziu” din meniul de setări al playerului</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Afișează butonul Salvează în Urmărește mai târziu în videoclipurile pentru copii</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite salvarea videoclipurilor pentru copii în „Vizionează mai târziu” din meniul derulant</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Afișează butonul Salvează în Vizionează mai târziu în meniul pentru Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permite salvarea shorts-urilor în „Vizionează mai târziu” din meniul derulant</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Redirecționează „ulterior” către o listă de redare</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Urmărește mai târziu</string>
   <string name="morphe_queue_flyout_title">Adaugă în coada Morphe</string>

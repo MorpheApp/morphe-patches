@@ -708,12 +708,15 @@ As letras vêm de serviços de terceiros que não estão afiliados, patrocinados
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Conectado! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Falha na conexão. Verifique as configurações.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Digite a chave de API primeiro</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Test connection</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Buscando modelos…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Fetch models</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Selecione um Modelo</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Falha ao buscar modelos. Verifique a chave da API ou a conexão.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Solicitação</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Modelo</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL Base</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Service presets</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Escolher um serviço</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">Chave da API (opcional)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Corpo de requisição extra (JSON opcional)</string>

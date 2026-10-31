@@ -713,12 +713,15 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Подключено! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Ошибка подключения. Проверьте настройки.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Сначала введите ключ API</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Проверить соединение</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Загрузка моделей…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Получить модели</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Выберите модель</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Не удалось загрузить модели. Проверьте API-ключ или соединение.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Подсказка</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Модель</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Базовый URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Пресеты сервиса</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Выберите сервис</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API-ключ (необязательно)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Дополнительное тело запроса (необязательный JSON)</string>

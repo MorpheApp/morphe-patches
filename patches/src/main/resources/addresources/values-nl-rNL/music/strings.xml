@@ -708,12 +708,15 @@ Songteksten komen van derde-dienstverleners die niet gelieerd zijn aan, gesponso
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Verbonden! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Verbinding mislukt. Controleer de instellingen.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Voer eerst de API-sleutel in</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Verbinding testen</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Modellen ophalen…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Modellen ophalen</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Selecteer een model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Het ophalen van modellen is mislukt. Controleer de API-sleutel of verbinding.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Basis-URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Service-presets</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Kies een service</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API-sleutel (optioneel)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Extra request body (optionele JSON)</string>

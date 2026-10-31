@@ -516,7 +516,6 @@ Nachdem ein Video mit der Ask-Schaltfläche einmal geöffnet wurde, funktioniert
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Alle Optionen</string>
   <string name="morphe_shorts_download_flyout_button_title">Downloads in Shorts-Menü anzeigen</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Fügt dem Shorts-Player eine externe Download-Option im Flyout-Menü hinzu</string>
   <string name="morphe_shorts_download_flyout_title">Herunterladen</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Sprachausgabe-Übersetzung</string>
@@ -624,10 +623,6 @@ Info: Funktioniert möglicherweise nicht bei Livestreams"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Später ansehen</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Schaltfläche zum Speichern in „Später ansehen“ im Flyout der Player-Einstellungen anzeigen</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Ermöglicht das Speichern des aktuell angesehenen Videos in \'Später ansehen\' über das Flyout der Videoeinstellungen</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Schaltfläche \'Später ansehen\' in Kinder-Videos anzeigen</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Ermöglicht das Speichern von kinderbezogenen Videos in \'Später ansehen\' über das Flyout-Menü</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Zeige die Schaltfläche \'Speichern in Später ansehen\' im Shorts-Flyout</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Ermöglicht das Speichern von Shorts in \'Später ansehen\' über das Flyout-Menü</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">\"Später ansehen\" an Playlist weiterleiten</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Später ansehen</string>
   <string name="morphe_queue_flyout_title">Zur Morphe-Warteschlange hinzufügen</string>

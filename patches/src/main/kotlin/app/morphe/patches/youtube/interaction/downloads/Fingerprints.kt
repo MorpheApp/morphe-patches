@@ -11,6 +11,7 @@
 package app.morphe.patches.youtube.interaction.downloads
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
@@ -173,5 +174,25 @@ internal fun playerResponseGetterFingerprint(playerResponseModelClass: String, p
     definingClass = playerResponseModelClass,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = playerResponse,
+    parameters = listOf()
+)
+
+/**
+ * Reads the interaction logger from the context of a command, as the interaction logger interface.
+ */
+internal object InteractionLoggerContextFingerprint : Fingerprint(
+    filters = listOf(
+        string("com.google.android.libraries.youtube.logging.interaction_logger"),
+        opcode(Opcode.CONST_CLASS, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Extension method, that returns the interaction logger that logs nothing.
+ */
+internal object NoOpInteractionLoggerFingerprint : Fingerprint(
+    definingClass = EXTENSION_IN_APP_DOWNLOADS_CLASS,
+    name = "getNoOpInteractionLogger",
+    returnType = "Ljava/lang/Object;",
     parameters = listOf()
 )

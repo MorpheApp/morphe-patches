@@ -515,7 +515,6 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <string name="morphe_external_downloader_quick_audio">Ääni</string>
   <string name="morphe_external_downloader_quick_options">Kaikki asetukset</string>
   <string name="morphe_shorts_download_flyout_button_title">Näytä lataus Shorts-valikossa</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Lisää ulkoisen lataussovelluksen ponnahdusvalikkokohdan Shorts-soittoehdotukseen</string>
   <string name="morphe_shorts_download_flyout_title">Lataa</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ääniratateksti</string>
@@ -623,10 +622,6 @@ Tieto: Ei välttämättä toimi suoratoistoissa"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Tallenna myöhemmin katsottavaksi</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Näytä Tallenna myöhemmin -painike soittimen asetusten ponnahdusvalikossa</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Sallii parhaillaan katsottavan videon tallentamisen \'Katso myöhemmin\' -luetteloon videoasetusten ponnahdusvalikosta</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Näytä Tallenna myöhemmin katsottavaksi -painike lasten tilassa</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Sallii lapsiin liittyvien videoiden tallentamisen \'Katso myöhemmin\' -luetteloon ponnahdusvalikosta</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Näytä Tallenna myöhemmin -painike Shortsit-ponnahdusvalikossa</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Sallii Shortsien tallentamisen \'Katso myöhemmin\' -luetteloon ponnahdusvalikosta</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Ohjaa Katso myöhemmin -lista soittolistalle</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Katso myöhemmin</string>
   <string name="morphe_queue_flyout_title">Lisää Morphe-jonoon</string>

@@ -718,12 +718,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: متصل! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: اتصال ناموفق بود. تنظیمات را بررسی کنید.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">ابتدا کلید API را وارد کنید</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">تست اتصال</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">در حال دریافت مدل‌ها…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">دریافت مدل‌ها</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">یک مدل را انتخاب کنید</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">دریافت مدل‌ها ناموفق بود. کلید API یا اتصال را بررسی کنید.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">پرامپت</string>
   <string name="morphe_music_lyrics_ai_config_model_label">مدل</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Base URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">پیش‌تنظیمات سرویس</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">یک سرویس انتخاب کنید</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">کلید API (اختیاری)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">بدنه اضافی درخواست (JSON اختیاری)</string>

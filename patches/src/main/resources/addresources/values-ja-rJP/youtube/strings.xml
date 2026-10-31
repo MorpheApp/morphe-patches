@@ -516,7 +516,6 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_external_downloader_quick_audio">オーディオ</string>
   <string name="morphe_external_downloader_quick_options">すべてのオプション</string>
   <string name="morphe_shorts_download_flyout_button_title">ショート動画メニューにダウンロードを表示</string>
-  <string name="morphe_shorts_download_flyout_button_summary">ショート プレーヤーに外部ダウンローダーのフライアウト メニューの項目を追加します</string>
   <string name="morphe_shorts_download_flyout_title">ダウンロード</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">吹き替え翻訳</string>
@@ -624,10 +623,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_save_to_watch_later_flyout_title">[後で見る] に保存</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">プレーヤーのフライアウト メニューに「[後で見る]に保存」を表示</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">プレーヤー オーバーレイの歯車アイコンから呼び出されるフライアウト メニューに「[後で見る]に保存」を表示します。タップすると視聴中の動画を [後で見る] に保存します</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">子ども向け動画の関連動画に「[後で見る] に保存」を表示</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">子ども向け動画の関連動画のフライアウト メニューに「[後で見る] に保存」を表示します</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">ショート動画のフライアウト メニューに「[後で見る] に保存」を表示</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">ショート動画のフライアウト メニューに「[後で見る] に保存」を表示します</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">「後で見る」をプレイリストにリダイレクト</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">後で見る</string>
   <string name="morphe_queue_flyout_title">Morphe キューに追加</string>
