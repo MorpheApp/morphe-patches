@@ -825,6 +825,8 @@ public final class LiveChatTranslatePatch {
     }
 
     private static void remember(CharSequence input, int configHash, CharSequence result) {
+        // Enables the relayout hooks, which otherwise return immediately for every text of the app.
+        LithoRelayoutPatch.setHasRelayoutSpans(true);
         synchronized (instanceResults) {
             if (instanceResults.size() >= MAX_INSTANCE_RESULTS) {
                 // Dropping the whole cache would re-parse every visible row at once, which is a

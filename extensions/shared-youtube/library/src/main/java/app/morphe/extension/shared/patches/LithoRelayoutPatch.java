@@ -100,6 +100,13 @@ public final class LithoRelayoutPatch {
     private static final Set<View> lithoViews = Collections.newSetFromMap(new WeakHashMap<>());
 
     /**
+     * Set while any text with a {@link RelayoutSpan} is registered. The two hooks below run for every
+     * view and text of the app, so they return immediately when no patch ever created such a span,
+     * which is the case on every screen except the one that uses it.
+     */
+    private static final AtomicBoolean hasRelayoutSpans = new AtomicBoolean();
+
+    /**
      * If a relayout is scheduled. Requests can be made on different threads at the same time,
      * such as titles fetched at the same time, so it's set atomically and a single relayout is scheduled.
      */
@@ -196,11 +203,24 @@ public final class LithoRelayoutPatch {
      * Called on the main thread when a Litho view is measured.
      */
     public static void onLithoViewMeasured(View lithoView) {
-        lithoViews.add(lithoView);
+        // This runs for every Litho view the app measures, which is the whole feed while scrolling.
+        // The set only exists so a remount can find the shown views, so nothing is stored while no
+        // remount was requested.
+        if (remountListViewsRequested.get() || lithoViewMeasuredListener != null) {
+            lithoViews.add(lithoView);
+        }
         Runnable listener = lithoViewMeasuredListener;
         if (listener != null) {
             listener.run();
         }
+    }
+
+    /**
+     * Called by a patch that puts {@link RelayoutSpan}s on texts, so the hooks that look for them are
+     * enabled. Without this the hooks return immediately and cost nothing.
+     */
+    public static void setHasRelayoutSpans(boolean hasSpans) {
+        hasRelayoutSpans.set(hasSpans);
     }
 
     /**
@@ -218,6 +238,11 @@ public final class LithoRelayoutPatch {
      */
     public static void onLithoTextMounted(Drawable textDrawable, CharSequence text) {
         try {
+            // Runs for every text the app mounts, so the span walk is skipped while no relayout is
+            // pending: without a registered RelayoutSpan there is nothing to lay out again.
+            if (!hasRelayoutSpans.get()) {
+                return;
+            }
             Boolean outdated = isOutdated(text);
             if (outdated != null) {
                 relayoutTextDrawables.add(textDrawable);
