@@ -34,6 +34,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -54,7 +55,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 
-/** Dedicated screen for viewing, reordering, and playing a local offline playlist. */
+/** Dedicated screen for viewing, renaming, reordering, and playing a local offline playlist. */
 @SuppressWarnings("deprecation")
 public final class LocalPlaylistFragment extends PreferenceFragment {
 
@@ -81,6 +82,8 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
 
     private TextView titleView;
     private TextView countView;
+    private TextView renameBtn;
+    private TextView deleteBtn;
     private TextView doneReorderBtn;
     private ScrollView scrollView;
     private LinearLayout tracksContainer;
@@ -162,7 +165,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
 
         header.addView(topRow, new LinearLayout.LayoutParams(-1, -2));
 
-        // Action buttons row: Play all, Delete playlist, and Done (when reordering)
+        // Action buttons row: Play all, Rename, Delete playlist, and Done (when reordering)
         LinearLayout actionsRow = new LinearLayout(getActivity());
         actionsRow.setGravity(Gravity.CENTER_VERTICAL);
         actionsRow.setPadding(0, dp(12), 0, 0);
@@ -171,15 +174,19 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         playAllBtn.setOnClickListener(v -> playFromIndex(0));
         actionsRow.addView(playAllBtn, new LinearLayout.LayoutParams(-2, -2));
 
-        View spacer = new View(getActivity());
-        actionsRow.addView(spacer, new LinearLayout.LayoutParams(dp(10), dp(1)));
+        View spacer1 = new View(getActivity());
+        actionsRow.addView(spacer1, new LinearLayout.LayoutParams(dp(8), dp(1)));
 
-        TextView deleteBtn = actionButton("Delete playlist", false);
-        deleteBtn.setOnClickListener(v -> confirmDeletePlaylist());
-        actionsRow.addView(deleteBtn, new LinearLayout.LayoutParams(-2, -2));
+        renameBtn = actionButton("Rename", false);
+        renameBtn.setOnClickListener(v -> showRenamePlaylistDialog());
+        actionsRow.addView(renameBtn, new LinearLayout.LayoutParams(-2, -2));
 
         View spacer2 = new View(getActivity());
-        actionsRow.addView(spacer2, new LinearLayout.LayoutParams(dp(10), dp(1)));
+        actionsRow.addView(spacer2, new LinearLayout.LayoutParams(dp(8), dp(1)));
+
+        deleteBtn = actionButton("Delete playlist", false);
+        deleteBtn.setOnClickListener(v -> confirmDeletePlaylist());
+        actionsRow.addView(deleteBtn, new LinearLayout.LayoutParams(-2, -2));
 
         doneReorderBtn = actionButton("Done", false);
         doneReorderBtn.setVisibility(View.GONE);
@@ -194,6 +201,12 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
     private void setReorderMode(boolean enabled) {
         if (this.reorderMode == enabled) return;
         this.reorderMode = enabled;
+        if (renameBtn != null) {
+            renameBtn.setVisibility(enabled ? View.GONE : View.VISIBLE);
+        }
+        if (deleteBtn != null) {
+            deleteBtn.setVisibility(enabled ? View.GONE : View.VISIBLE);
+        }
         if (doneReorderBtn != null) {
             doneReorderBtn.setVisibility(enabled ? View.VISIBLE : View.GONE);
         }
@@ -213,10 +226,10 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         for (int i = 0; i < tracksContainer.getChildCount(); i++) {
             View child = tracksContainer.getChildAt(i);
             if (!(child instanceof LinearLayout row)) continue;
-            View removeBtn = row.findViewWithTag("remove_btn");
-            View reorderBtn = row.findViewWithTag("reorder_btn");
-            if (removeBtn != null) removeBtn.setVisibility(reorderMode ? View.GONE : View.VISIBLE);
-            if (reorderBtn != null) reorderBtn.setVisibility(reorderMode ? View.VISIBLE : View.GONE);
+            View removeTrackBtn = row.findViewWithTag("remove_btn");
+            View reorderTrackBtn = row.findViewWithTag("reorder_btn");
+            if (removeTrackBtn != null) removeTrackBtn.setVisibility(reorderMode ? View.GONE : View.VISIBLE);
+            if (reorderTrackBtn != null) reorderTrackBtn.setVisibility(reorderMode ? View.VISIBLE : View.GONE);
         }
     }
 
@@ -225,7 +238,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         final int fg = foreground();
         TextView btn = text(label, 14, primary ? background() : fg);
         btn.setTypeface(Typeface.DEFAULT_BOLD);
-        btn.setPadding(dp(18), dp(8), dp(18), dp(8));
+        btn.setPadding(dp(16), dp(8), dp(16), dp(8));
 
         GradientDrawable bg = new GradientDrawable();
         bg.setCornerRadius(dp(PILL_CORNER_DP));
@@ -304,24 +317,24 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         row.addView(labels, new LinearLayout.LayoutParams(0, -2, 1));
 
         // Delete/Remove button (visible in normal mode)
-        ImageButton removeBtn = icon("yt_outline_experimental_trash_can_vd_theme_24", "Remove from playlist");
-        removeBtn.setTag("remove_btn");
-        removeBtn.setVisibility(reorderMode ? View.GONE : View.VISIBLE);
-        removeBtn.setOnClickListener(v -> removeTrackFromPlaylist(track));
-        row.addView(removeBtn, new LinearLayout.LayoutParams(dp(ICON_BUTTON_DP), dp(ICON_BUTTON_DP)));
+        ImageButton removeTrackBtn = icon("yt_outline_experimental_trash_can_vd_theme_24", "Remove from playlist");
+        removeTrackBtn.setTag("remove_btn");
+        removeTrackBtn.setVisibility(reorderMode ? View.GONE : View.VISIBLE);
+        removeTrackBtn.setOnClickListener(v -> removeTrackFromPlaylist(track));
+        row.addView(removeTrackBtn, new LinearLayout.LayoutParams(dp(ICON_BUTTON_DP), dp(ICON_BUTTON_DP)));
 
         // Reorder drag handle button (visible in reorder mode)
-        ImageButton reorderBtn = new ImageButton(getActivity());
-        reorderBtn.setTag("reorder_btn");
-        reorderBtn.setImageDrawable(createDragHandleDrawable());
-        reorderBtn.setContentDescription("Drag to reorder");
-        reorderBtn.setScaleType(ImageView.ScaleType.CENTER);
-        reorderBtn.setPadding(dp(10), dp(10), dp(10), dp(10));
-        reorderBtn.setBackground(new RippleDrawable(ColorStateList.valueOf(rippleColor()),
+        ImageButton reorderTrackBtn = new ImageButton(getActivity());
+        reorderTrackBtn.setTag("reorder_btn");
+        reorderTrackBtn.setImageDrawable(createDragHandleDrawable());
+        reorderTrackBtn.setContentDescription("Drag to reorder");
+        reorderTrackBtn.setScaleType(ImageView.ScaleType.CENTER);
+        reorderTrackBtn.setPadding(dp(10), dp(10), dp(10), dp(10));
+        reorderTrackBtn.setBackground(new RippleDrawable(ColorStateList.valueOf(rippleColor()),
                 null, new ShapeDrawable(new OvalShape())));
-        reorderBtn.setVisibility(reorderMode ? View.VISIBLE : View.GONE);
-        reorderBtn.setOnTouchListener((v, event) -> handleReorderTouch(row, index, event));
-        row.addView(reorderBtn, new LinearLayout.LayoutParams(dp(ICON_BUTTON_DP), dp(ICON_BUTTON_DP)));
+        reorderTrackBtn.setVisibility(reorderMode ? View.VISIBLE : View.GONE);
+        reorderTrackBtn.setOnTouchListener((v, event) -> handleReorderTouch(row, index, event));
+        row.addView(reorderTrackBtn, new LinearLayout.LayoutParams(dp(ICON_BUTTON_DP), dp(ICON_BUTTON_DP)));
 
         // Tapping a row plays the track unless reordering is active
         row.setOnClickListener(v -> {
@@ -509,6 +522,46 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         } catch (Exception ex) {
             Utils.showToastShort("Could not remove track");
         }
+    }
+
+    /** Prompts the user to enter a new display name for the current playlist. */
+    private void showRenamePlaylistDialog() {
+        if (playlist == null) return;
+
+        final EditText input = new EditText(getActivity());
+        input.setHint("Playlist name");
+        input.setHintTextColor(secondary());
+        input.setTextColor(foreground());
+        input.setText(playlist.name());
+        input.setSelection(playlist.name().length());
+        input.setSingleLine(true);
+
+        CustomDialog.create(
+                getActivity(),
+                "Rename playlist",
+                null,
+                input,
+                "Save",
+                () -> {
+                    String newName = input.getText() == null ? "" : input.getText().toString().trim();
+                    if (newName.isEmpty()) {
+                        Utils.showToastShort("Playlist name cannot be empty");
+                        return;
+                    }
+                    try {
+                        playlistManager.renamePlaylist(playlistId, newName);
+                        if (onPlaylistChanged != null) onPlaylistChanged.run();
+                        refreshPlaylistView();
+                        Utils.showToastShort("Playlist renamed");
+                    } catch (Exception ex) {
+                        Utils.showToastShort("Could not rename playlist");
+                    }
+                },
+                () -> {},
+                null,
+                null,
+                false
+        ).first.show();
     }
 
     /** Prompts the user for confirmation before deleting the playlist metadata file. */
