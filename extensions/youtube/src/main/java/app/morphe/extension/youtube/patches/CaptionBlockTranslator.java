@@ -24,7 +24,10 @@ import java.util.concurrent.CancellationException;
 /** Blocking, worker-only translation of an ordered source batch. Scheduling belongs to the session. */
 final class CaptionBlockTranslator {
     interface ConnectionFactory { HttpURLConnection open(String url) throws IOException; }
-    interface Clock { long millis(); }
+    interface Clock {
+        long millis();
+        default void pause(long millis) throws InterruptedException { Thread.sleep(millis); }
+    }
     static final class Failure extends IOException {
         final long retryAfterMs;
         final boolean retryable;
@@ -47,10 +50,13 @@ final class CaptionBlockTranslator {
     private volatile long microsoftCooldownUntil, googleCooldownUntil;
     private HttpURLConnection pendingConnection;
     private BooleanSupplier pendingActive;
+    // Twenty initial Google requests, then eight per second; all targets share the allowance.
+    private long googleCreditMs = 2500, googleCreditUpdated;
 
     CaptionBlockTranslator(ConnectionFactory connections, Clock clock) {
         this.connections = connections;
         this.clock = clock;
+        googleCreditUpdated = clock.millis();
     }
 
     /** Worker-only: a delayed cancellation must never disconnect a replacement session. */
@@ -189,8 +195,28 @@ final class CaptionBlockTranslator {
         return values;
     }
 
+    private void paceGoogle(long deadline, BooleanSupplier active) throws IOException {
+        for (;;) {
+            checkActive(active);
+            long wait;
+            synchronized (this) {
+                long now = clock.millis();
+                googleCreditMs = Math.min(2500, googleCreditMs + Math.max(0, now - googleCreditUpdated));
+                googleCreditUpdated = now;
+                if (googleCreditMs >= 125) { googleCreditMs -= 125; return; }
+                wait = Math.min(125 - googleCreditMs, remaining(deadline));
+            }
+            try { clock.pause(wait); }
+            catch (InterruptedException interrupted) {
+                Thread.currentThread().interrupt();
+                throw new CancellationException("Caption pacing interrupted");
+            }
+        }
+    }
+
     private String request(String url, String body, long deadline, BooleanSupplier active) throws IOException {
         checkActive(active);
+        if (url.startsWith("https://translate-pa.googleapis.com/")) paceGoogle(deadline, active);
         int remaining = remaining(deadline);
         HttpURLConnection connection = connections.open(url);
         try {

@@ -39,11 +39,15 @@ public class CaptionBlockTranslatorTest {
         final Deque<Reply> replies = new ArrayDeque<>();
         final List<String> urls = new ArrayList<>();
         long now;
+        Runnable onPause = () -> {};
         final CaptionBlockTranslator translator = new CaptionBlockTranslator(url -> {
             urls.add(url);
             if (replies.isEmpty()) throw new IOException("Unexpected request");
             return replies.remove();
-        }, () -> now);
+        }, new CaptionBlockTranslator.Clock() {
+            public long millis() { return now; }
+            public void pause(long millis) { now += millis; onPause.run(); }
+        });
         Reply add(int code, String body) throws Exception {
             Reply r = new Reply(code, body); replies.add(r); return r;
         }
@@ -73,6 +77,34 @@ public class CaptionBlockTranslatorTest {
         assertEquals("[[[\"&lt;one&gt;&amp;\"],\"en\",\"de\"],\"wt_lib\"]", reply.sent.toString("UTF-8"));
         assertEquals("application/json+protobuf", reply.headers.get("Content-Type"));
         assertFalse(reply.headers.get("X-Goog-API-Key").isBlank());
+    }
+    @Test public void googleAllowsInitialBurstThenReplenishesEightRequestsPerSecond() throws Exception {
+        Fixture f = new Fixture();
+        for (int i = 0; i < 20; i++) { f.add(200, google("eins")); f.translate("text" + i); }
+        assertEquals(0, f.now);
+        for (int i = 20; i < 28; i++) { f.add(200, google("eins")); f.translate("text" + i); }
+        assertEquals(1000, f.now);
+        f.now += 10000;
+        for (int i = 28; i < 48; i++) { f.add(200, google("eins")); f.translate("text" + i); }
+        assertEquals(11000, f.now);
+        f.add(200, google("eins")); f.translate("last");
+        assertEquals(11125, f.now);
+    }
+    @Test public void cancellationDuringPacingDoesNotOpenAnotherConnection() throws Exception {
+        Fixture f = new Fixture();
+        for (int i = 0; i < 20; i++) { f.add(200, google("eins")); f.translate("text" + i); }
+        AtomicBoolean active = new AtomicBoolean(true); f.onPause = () -> active.set(false);
+        assertThrows(CancellationException.class, () -> f.translator.translate("en", "de", List.of("new"), active::get));
+        assertEquals(20, f.urls.size());
+    }
+    @Test public void pacingUsesPrimaryBudgetAndLeavesMicrosoftFallbackAvailable() throws Exception {
+        Fixture f = new Fixture();
+        for (int i = 0; i < 20; i++) { f.add(200, google("eins")); f.translate("text" + i); }
+        f.onPause = () -> f.now += 4000;
+        Reply fallback = f.add(200, ms("zwei"));
+        assertEquals(List.of("zwei"), f.translate("new"));
+        assertEquals(21, f.urls.size()); assertTrue(f.urls.get(20).contains("edge.microsoft.com"));
+        assertTrue(fallback.getReadTimeout() > 0 && fallback.getReadTimeout() < 4000);
     }
     @Test public void sameLanguageReturnsImmutableOriginalWithoutNetwork() throws Exception {
         Fixture f = new Fixture();
