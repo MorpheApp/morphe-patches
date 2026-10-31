@@ -42,6 +42,7 @@ import app.morphe.extension.youtube.patches.BackgroundPlaybackPatch.AutoPauseOnL
 import app.morphe.extension.youtube.patches.ChangeFormFactorPatch.FormFactor;
 import app.morphe.extension.youtube.patches.ChangeFormFactorPatch.TabletLayoutInPlayerAvailability;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch.HeaderLogo;
+import app.morphe.extension.youtube.patches.ChangePipActionsPatch.PipAction;
 import app.morphe.extension.youtube.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.youtube.patches.DisableVideoCodecsPatch.VideoCodec;
 import app.morphe.extension.youtube.patches.ExitFullscreenPatch.FullscreenMode;
@@ -459,6 +460,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting LIVE_CHAT_TRANSLATE_COLOR =
             new StringSetting("morphe_live_chat_translate_color", "#38BDF8",
                     parentsAll(LIVE_CHAT_TRANSLATE, LIVE_CHAT_TRANSLATE_USE_COLOR));
+    /** Shows a copy button on chat rows, so a message can be copied without a long press. */
+    public static final BooleanSetting LIVE_CHAT_TRANSLATE_COPY_BUTTON =
+            new BooleanSetting("morphe_live_chat_translate_copy_button", TRUE, parent(LIVE_CHAT_TRANSLATE));
     /** Messages longer than this are shown untranslated. Zero means no limit. */
     public static final IntegerSetting LIVE_CHAT_TRANSLATE_MAX_LENGTH =
             new IntegerSetting("morphe_live_chat_translate_max_length", 500, parent(LIVE_CHAT_TRANSLATE));
@@ -588,6 +592,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_QUALITY_FOOTER = new BooleanSetting("morphe_hide_player_flyout_quality_footer", FALSE, true, new HideQualityFlyoutMenuHeaderFooterAvailability());
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_QUALITY_HEADER = new BooleanSetting("morphe_hide_player_flyout_quality_header", FALSE, true, new HideQualityFlyoutMenuHeaderFooterAvailability());
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_WATCH_IN_VR = new BooleanSetting("morphe_hide_player_flyout_watch_in_vr", FALSE, parentNot(HIDE_SETTINGS_BUTTON));
+
+    // Picture-in-picture actions
+    public static final EnumSetting<PipAction> PIP_ACTION_LEFT = new EnumSetting<>("morphe_pip_action_left", PipAction.DEFAULT);
+    public static final EnumSetting<PipAction> PIP_ACTION_CENTER = new EnumSetting<>("morphe_pip_action_center", PipAction.DEFAULT);
+    public static final EnumSetting<PipAction> PIP_ACTION_RIGHT = new EnumSetting<>("morphe_pip_action_right", PipAction.DEFAULT);
 
     // General (Layout)
     public static final BooleanSetting DISABLE_LAYOUT_UPDATES = new BooleanSetting("morphe_disable_layout_updates", FALSE, true,"morphe_disable_layout_updates_user_dialog_message");

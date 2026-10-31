@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Эхлэлийн хเคลื่อนхүү дүрслэл</string>
   <string name="morphe_splash_screen_style_entry_1">Идэвхгүй</string>
   <string name="morphe_splash_screen_style_entry_2">Өнгө</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Өнгөт</string>
   <string name="morphe_splash_screen_style_entry_4">Монохром</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Шинэ тохиргоог онцлох</string>
+  <string name="morphe_settings_new_indicator_days_summary">Шинэчлэлтээр нэмэгдсэн тохиргоо болон сонголтуудын хажууд цэг харуулах хоногийн тоо</string>
+  <string name="morphe_settings_new_indicator_days_off">Унтраах</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Тохиргоог дуусгахын тулд дахин ачаална уу</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

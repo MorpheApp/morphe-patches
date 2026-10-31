@@ -500,7 +500,6 @@ Hisobotlar ochiq va kanal ro'yxatga qo'shilishidan oldin ko'rib chiqiladi. O'chi
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Barcha variantlar</string>
   <string name="morphe_shorts_download_flyout_button_title">Shorts menyusida yuklab olishni ko\'rsatish</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Shorts pleyeriga tashqi yuklovchi flyout menyu elementini qo\'shadi</string>
   <string name="morphe_shorts_download_flyout_title">Yuklab olish</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ovozli tarjima</string>
@@ -606,10 +605,6 @@ Ma'lumot: Jonli efirlarda ishlamasligi mumkin"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Keyinroq ko\'rish uchun saqlash</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Pleyer sozlamalari menyusida \"Keyinroq ko\'rish\"ga saqlash tugmasini ko\'rsatish</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Video sozlamalari menyusidan joriy ko\'rilayotgan videoni \"Keyinroq ko\'rish\" bo\'limiga saqlash imkonini beradi</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Bolalar videolarida keyinroq ko\'rish uchun saqlash tugmasini ko\'rsatish</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Menyu orqali bolalar uchun mo\'ljallangan videolarni \"Keyinroq ko\'rish\" bo\'limiga saqlash imkonini beradi</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Shorts menyusida \"Keyinroq ko\'rish\"ga saqlash tugmasini ko\'rsatish</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Menyu orqali shorts videolarni \"Keyinroq ko\'rish\" bo\'limiga saqlash imkonini beradi</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">\"Keyinroq ko\'rish\"ni pleylistga yo\'naltirish</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Keyinroq ko\'rish</string>
   <string name="morphe_queue_flyout_title">Morphe navbatiga qo\'sh</string>

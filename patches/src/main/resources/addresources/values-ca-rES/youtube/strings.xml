@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Miscel·lània</string>
   <string name="morphe_settings_screen_12_video_title">Vídeo</string>
   <string name="morphe_restore_old_settings_menus_title">Restaurar la pantalla de configuració antiga de YouTube</string>
+  <string name="morphe_native_snackbar_title">Mostrar els missatges a la barra de notifications de YouTube</string>
+  <string name="morphe_native_snackbar_summary">Els missatges de Morphe, com la confirmació d\'un botó del reproductor, es mostren a la barra de notifications de YouTube en lloc d\'una finestra emergent</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Eliminar restriccions de reproducció en segon pla</string>
   <string name="morphe_shorts_disable_background_playback_title">Desactivar la reproducció en segon pla</string>
@@ -513,7 +515,6 @@ Un cop s'ha obert un vídeo amb el botó Ask, la funció funciona amb tots els v
   <string name="morphe_external_downloader_quick_audio">Àudio</string>
   <string name="morphe_external_downloader_quick_options">Totes les opcions</string>
   <string name="morphe_shorts_download_flyout_button_title">Mostra la descàrrega al menú de Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Afegeix un element de menú desplegable de descàrrega externa al reproductor de Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Descárrega</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducció de veu en off</string>
@@ -621,10 +622,6 @@ Info: Potser no funcioni en les retransmissions en directe"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Desar a Veure més tard</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Mostra el botó Desar per veure més tard al menú desplegable de configuració del reproductor</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Permet desar el vídeo que s\'està veient actualment a \'Veure més tard\' des del menú desplegable de configuració del vídeo</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Mostrar el botó de Desau a Veure més tard en els vídeos per a nens</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permet desar els vídeos infantils a \'Veure més tard\' des del menú desplegable</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Mostra el botó de desar a Veure més tard al desplegable de shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permet desar els shorts a \'Veure més tard\' des del menú desplegable</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Redirigeix \"Veure més tard\" a una llista de reproducció</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Veure més tard</string>
   <string name="morphe_queue_flyout_title">Afegir a la cua de Morphe</string>

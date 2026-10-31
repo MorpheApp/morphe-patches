@@ -515,7 +515,6 @@ Egy alkalommal megnyitott, Ask gombbal ellátott videó esetén a funkció minde
   <string name="morphe_external_downloader_quick_audio">Hang</string>
   <string name="morphe_external_downloader_quick_options">Összes beállítás</string>
   <string name="morphe_shorts_download_flyout_button_title">Letöltés megjelenítése a Shorts menüben</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Egy külső letöltő alkalmazás menüpontot ad a Shorts lejátszóhoz</string>
   <string name="morphe_shorts_download_flyout_title">Letöltés</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Hangfelirat hangos felolvasása</string>
@@ -623,10 +622,6 @@ Figyelem: Lehet, hogy az élő közvetítéseknél nem működik"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Mentés későbbre</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">A „Mentés a Később nézem listába” gomb megjelenítése a lejátszó beállítási felugró menüjében</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Lehetővé teszi az aktuálisan nézett videó mentését a \'Watch later\' listába a videóbeállítások felugró menüjéből</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Mentés későbbre gomb megjelenítése a gyerekvideókban</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Lehetővé teszi gyerekeknek szóló videók mentését a \'Watch later\' listába a felugró menüből</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">A \'Watch later\' mentése gomb megjelenítése a Shorts felugró menüjében</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Lehetővé teszi a Shorts mentését a \'Watch later\' listába a felugró menüből</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Később megnézem átirányítása lejátszási listára</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Megnézem később</string>
   <string name="morphe_queue_flyout_title">Hozzáadás a Morphe sorhoz</string>

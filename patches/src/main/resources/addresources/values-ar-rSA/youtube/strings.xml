@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">تمكين تصفية قائمة المكتبة / أنت السفلية</string>
   <string name="morphe_hide_account_menu_filter_strings_title">تصفية قائمة المكتبة / أنت السفلية</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">أدخل أسماء قائمة المكتبة / أنت السفلية التي تريد تصفية النتائج بناءً عليها، مفصولة بأسطر جديدة</string>
+  <string name="morphe_hide_account_menu_downloads_title">إخفاء التنزيلات</string>
   <string name="morphe_hide_album_cards_title">إخفاء بطاقات الألبوم</string>
   <string name="morphe_hide_album_cards_summary">يخفي بطاقات الألبوم أسفل وصف الفنان</string>
   <string name="morphe_hide_artist_cards_title">إخفاء بطاقات الفنان</string>
@@ -515,8 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">الصوت</string>
   <string name="morphe_external_downloader_quick_options">كل الخيارات</string>
   <string name="morphe_shorts_download_flyout_button_title">عرض التنزيل في قائمة Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">يضيف عنصر بالقائمة المنبثقة لأداة التنزيل الخارجية إلى مشغل Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">يُضيف عنصر تنزيل إلى قائمة مشغل فيديوهات Shorts</string>
   <string name="morphe_shorts_download_flyout_title">تنزيل</string>
+  <string name="morphe_export_download_folder_title">تصدير الفيديوهات المحفوظة</string>
+  <string name="morphe_export_download_folder_summary">"تصدير الفيديوهات المحفوظة داخل التطبيق إلى تخزين جهازك. انقر لتغيير مجلد التصدير
+
+مجلد التصدير: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">مجلد التصدير</string>
+  <string name="morphe_export_download_folder_change">تغيير المجلد</string>
+  <string name="morphe_export_download_folder_changed">تم تغيير مجلد التصدير</string>
+  <string name="morphe_export_download_folder_reset">إعادة تعيين مجلد التصدير</string>
+  <string name="morphe_export_download_flyout_title">تصدير إلى جهاز</string>
+  <string name="morphe_export_download_started">جارٍ تصدير الفيديو</string>
+  <string name="morphe_export_download_progress">تصدير الفيديو: %d%%</string>
+  <string name="morphe_export_download_notification_channel">تصدير الفيديو</string>
+  <string name="morphe_export_download_saved">تم تصدير الفيديو إلى %s</string>
+  <string name="morphe_export_download_failed">تعذر تصدير الفيديو</string>
+  <string name="morphe_export_download_canceled">تم إلغاء التصدير</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">الترجمة الصوتية</string>
   <string name="morphe_vot_screen_summary">قراءة نصوص ترجمة الفيديو بصوت عالٍ باستخدام تحويل النص إلى كلام على الجهاز، بالتزامن مع التشغيل</string>
@@ -627,10 +643,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_save_to_watch_later_flyout_title">الحفظ في المشاهدة لاحقًا</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">عرض زر الحفظ في قائمة \"المشاهدة لاحقًا\" في قائمة إعدادات المشغّل المنبثقة</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">يتيح حفظ الفيديوهات المتعلقة بالأطفال في قائمة \"المشاهدة لاحقًا\" من قائمة إعدادات الفيديو المنبثقة</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">عرض زر الحفظ في المشاهدة لاحقًا بفيديوهات الأطفال</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">يتيح حفظ فيديوهات Shorts في قائمة \"المشاهدة لاحقًا\" من القائمة المنبثقة</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">عرض زر \"الحفظ للمشاهدة لاحقًا\" في قائمة Shorts المنبثقة</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">يتيح حفظ فيديوهات Shorts في قائمة \"المشاهدة لاحقًا\" من القائمة المنبثقة</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">إعادة توجيه المشاهدة لاحقًا إلى قائمة تشغيل</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">المشاهدة لاحقًا</string>
   <string name="morphe_queue_flyout_title">إضافة الى قائمة المحتوى التالي الخاصة بـ Morphe</string>
@@ -1274,6 +1286,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">شاشة البدء المتوهجة غير مدعومة في هذا الجهاز</string>
+  <string name="morphe_splash_screen_duration_title">مدة تشغيل تأثير الحركة عند البدء</string>
+  <string name="morphe_splash_screen_duration_summary">مدة تشغيل تأثير التوهج المتحرك. انقر على التأثير لتخطيه</string>
   <string name="morphe_theme_color_light_title">خلفية المظهر الفاتح</string>
   <string name="morphe_theme_color_light_entry_2">أبيض</string>
   <string name="morphe_theme_color_light_entry_3">Material You (أبيض)</string>

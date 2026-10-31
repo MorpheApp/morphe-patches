@@ -17,6 +17,13 @@ Second \"item\" text"</string>
 <resources>
     <string name="reddit_privacy_policy">Reddit privacy policy</string>
     <string name="morphe_google_signin_not_available_toast">Google login not available. Use email to login</string>
+    <string name="morphe_app_downgrade_dialog_title">Downgrade not supported</string>
+    <string name="morphe_app_downgrade_dialog_message">"This Reddit installation was downgraded from &lt;b>%1$s&lt;/b> to &lt;b>%2$s&lt;/b>
+&lt;br/>&lt;br/>
+App data from a newer version does not work with an older versions and the app may not work correctly.
+&lt;br/>&lt;br/>
+To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install the older version."</string>
+    <string name="morphe_app_downgrade_dialog_open_app_info">Open app info</string>
 
     <string name="morphe_screen_ads_title">Ads</string>
     <string name="morphe_hide_post_ads_title">Hide feed ads</string>

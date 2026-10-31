@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Разнастайнае</string>
   <string name="morphe_settings_screen_12_video_title">Відэа</string>
   <string name="morphe_restore_old_settings_menus_title">Аднавіць стары экран налад YouTube</string>
+  <string name="morphe_native_snackbar_title">Паказваць паведамленні ў snackbar YouTube</string>
+  <string name="morphe_native_snackbar_summary">Паведамленні Morphe, такія як пацверджанне кнопкі прагравальніка, паказваюцца ў snackbar YouTube замест ўсплывальнага okна</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Выдаліць абмежаванні прайгравання ў фоне</string>
   <string name="morphe_shorts_disable_background_playback_title">Выключаць фоновы працу</string>
@@ -513,7 +515,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">Аудыё</string>
   <string name="morphe_external_downloader_quick_options">Усе параметры</string>
   <string name="morphe_shorts_download_flyout_button_title">Паказваць спампаваць у меню Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Дадае пункт выпадаючага меню з вонкавым загрузчыкам у плеер Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Загрузіць</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Галасовы пераклад</string>
@@ -621,10 +622,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Захаваць у «Глядзець пазней»</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Паказать кнопки \"Зглядеть пазней\" у выпадаусим настройки наградки</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Дазвляе зарахить текущий видеавио у список \"Зглядеть пазней\" з настройки наградки видеавио</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Паказваць кнопку «Захаваць у «Глядзець пазней»» у дзіцячых відэа</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Дазвляе зарахить дети для детей видеавио у список \"Зглядеть пазней\" з выпадаусим меню</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Паказать кнопки \"Зглядеть пазней\" у выпадаусим шортсой</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Дазваляе захаваць Shorts у спіс \"Паглядзець пазней\" праз выпадаючае меню</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Перанакіраваць \"Глядзець пазней\" на плейліст</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Глядзець пазней</string>
   <string name="morphe_queue_flyout_title">Дадаць у чаргу Morphe</string>

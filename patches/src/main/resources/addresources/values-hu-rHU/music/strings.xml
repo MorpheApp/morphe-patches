@@ -718,12 +718,15 @@ A szövegek harmadik fél szolgáltatásaiból származnak, amelyekkel a Morphe-
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Csatlakoztatva! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Kapcsolat sikertelen. Ellenőrizze a beállításokat.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Először adja meg az API kulcsot</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Kapcsolat tesztelése</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Modellek lekérése…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Modellek lekérése</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Válasszon egy modellt</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Sikertetlen modellek lekérése. Ellenorizze az API-kulcsot vagy a kapcsolatot.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Modell</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Alap URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Szolgáltatás előbeállítások</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Válasszon egy szolgáltatót</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API kulcs (opcionális)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Extra kérés törzse (opcionális JSON)</string>

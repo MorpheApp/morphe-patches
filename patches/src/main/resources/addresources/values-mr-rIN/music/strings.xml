@@ -464,7 +464,44 @@ SABR प्लेबॅक (Spoof व्हिडिओ स्ट्रीम्
   <string name="morphe_music_lyrics_source_all_disabled">सर्व प्रोव्हायडर्स अक्षम आहेत - बिल्ट-इन लिरिक्स आणि एम्बेडेड लिरिक्स</string>
   <string name="morphe_music_lyrics_source_reset_title">प्रोव्हायडर क्रम रीसेट करायचा आहे का?</string>
   <string name="morphe_music_lyrics_source_reset_message">प्रोव्हायडर्स डीफॉल्ट प्रायोरिटी क्रमात पुनर्संचयित करा</string>
+  <string name="morphe_music_lyrics_rime_dict_title">Rime शब्दसूची</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist साठी UniDict देखील आवश्यक आहे: ऑफलाइन डिक्शनरी प्रोव्हायडरमध्ये, \"Chinese and Cantonese characters (UniDict)\" वर टिक करा आणि ते आधी डाउनलोड होऊ द्या. त्याशिवाय, अक्षरे वाचणारी यादी कोणतेही वाचन देत नाही.
+
+Rime Wordlist ने कोणत्या याद्या वाचाव्यात त्यावर टिक करा, त्यानंतर त्या डाउनलोड करण्यासाठी Save वर टॅप करा. तुम्ही जोडलेली यादी अनटिक केल्यावर काढून टाकली जाते.
+
+प्रत्येक यादी तुमचे स्वतःचे शब्द-ते-वाचन टेबल आहे, एक .dict.yaml ज्यामध्ये अशा ओळी आहेत:
+字 ham
+典 din2
+पहिला स्तंभ शब्द आहे, दुसरा त्याचे वाचन आहे; अतिरिक्त स्तंभ आणि टॅबशिवायच्या ओळींकडे दुर्लक्ष केले जाते."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">वरील भाषेसाठी कोणतीही Rime शब्दसूची निवडलेली नाही. एक निवडण्यासाठी या नावावर टॅप करा, किंवा सूची असलेली भाषा निवडा</string>
+  <string name="morphe_music_lyrics_rime_dict_add">जोडा</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">Rime शब्दसूची जोडा</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml फाईल, किंवा ती असलेली झिप फाईल, ज्यामध्ये 字 ham आणि 典 din2 सारख्या ओळी आहेत. जेव्हा तुम्ही त्यावर टिक करून Save वर टॅप करता तेव्हा ही यादी मिळवली जाते, आणि त्याचा परवाना तपासणे तुमच्या जबाबदारीवर आहे</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">भाषेचा कोड</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">दोन किंवा तीन अक्षरे, जसे की hak किंवा wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">नाव</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">वाचनाखाली दाखवले जाते, जसे की Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">शब्दसूचीचा पत्ता</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">.dict.yaml किंवा त्याच्या zip चा https:// पत्ता</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">शब्दात नसलेली अक्षरे</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">स्वयंचलित</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">कँटोनीज अक्षरे</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">मँडरीन अक्षरे</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">अक्षरांचे वाचन नाही</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">कोड, नाव आणि पत्ता भरा</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">कोड दोन किंवा तीन अक्षरांचा असावा, जसे की hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">पत्ता https:// ने सुरू झाला पाहिजे</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">नाव आणि पत्त्यामध्ये व्हर्टिकल बार असू शकत नाही</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s कडे आधीच शब्दांची तालिका आहे</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s बिल्ट-इन रोमनझरद्वारे वाचले जाते आणि शब्द यादी घेऊ शकत नाही</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">वापरले नाही: या भाषेचे स्वतःचे वाचन आधीच आहे, त्यामुळे ते काढून टाकण्यासाठी अनटिक करा</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%1$s जोडले - ते डाउनलोड करण्यासाठी टिक करा आणि Save वर टॅप करा</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">शब्दांच्या याद्या तयार आहेत</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">शब्दांच्या याद्या तयार आहेत (%1$d नोंदी)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">शब्द यादी वाचत आहे: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">शब्द सूची डाउनलोड करण्यात अयशस्वी झाले - पुन्हा प्रयत्न करण्यासाठी \'सेव्ह\' वर टॅप करा</string>
   <string name="morphe_music_lyrics_clear_cache_title">स्टोअर केलेले लिरिक्स हटवा</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">या डिव्हाइसवर साठवलेली %1$s MB लिरिक्स हटवा</string>
   <string name="morphe_music_lyrics_clear_cache_done">%1$s MB क्लिअर केले</string>
   <string name="morphe_music_token_dialog_get_token">टोकन मिळवा</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
@@ -524,9 +561,22 @@ SABR प्लेबॅक (Spoof व्हिडिओ स्ट्रीम्
   <string name="morphe_music_lyrics_show_copy_button_title">कॉपी बटण दाखवा</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">मूळ लिरिक्स प्लेन टेक्स्ट म्हणून कॉपी करण्यासाठी टॅप करा; रॉ लिरिक्स सोर्स फाईल डाउनलोड्समध्ये सेव्ह करण्यासाठी दीर्घकाळ दाबा</string>
   <string name="morphe_music_lyrics_show_translate_button_title">भाषांतर बटण दाखवा</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">अनुवाद सुरू किंवा बंद करण्यासाठी टॅप करा; फक्त अनुवादासाठी दीर्घ-दाबून ठेवा. यासाठी सक्षम केलेल्या अनुवाद प्रदात्यांचा त्यांच्या सूचीमधील क्रमाप्रमाणे वापर केला जातो</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">रोमनाइझ किंवा लिप्यंतरण बटण दाखवा</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">रोमनाइझेशन किंवा लिप्यंतरण सुरू किंवा बंद करण्यासाठी टॅप करा; फक्त रोमनाइझेशन किंवा लिप्यंतरणासाठी दीर्घ-दाबून ठेवा. यासाठी सक्षम केलेल्या रोमनाइझेशन प्रदात्यांचा त्यांच्या सूचीमधील क्रमाप्रमाणे वापर केला जातो</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">लिप्यंतरण सक्षम करा</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">लिरिक्स स्त्रोताकडून नॉन-लॅटिन वाचनांना परवानगी द्या; बंद असताना, फक्त लॅटिन अक्षरे, उच्चारित अक्षरे आणि टोन अंक ठेवा</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">टाईम केलेल्या लिरिक्समधील प्रत्येक शब्द वाचतो (वर्ड सिंक सुरू आहे); कोरियनसाठी डाउनलोडची आवश्यकता नाही; चौदा लिपी एका CLDR डाउनलोडद्वारे सामायिक केल्या जातात; जेव्हा Rime वर्डलिस्टचे वर्ड टेबल संबंधित भाषेला कव्हर करते तेव्हा हान अक्षरे वाचली जातात</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">रीडिंग डिक्शनरी डाउनलोड होत आहेत…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">वाचन तयार आहे (%1$d नोंदी)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">डाउनलोड अयशस्वी - पुन्हा प्रयत्न करण्यासाठी हे बंद करून पुन्हा चालू करा</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">ऑफलाइन डिक्शनरी</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">जपानी (SudachiDict, ~७५ MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">चिनी आणि कॅन्टोनीज अक्षरे (UniDict, ~८ MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">चिनी शब्द (pinyin-pro, ~१७ MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">ग्रीक, स्लाव्हिक सिरिलिक (रशियन, युक्रेनियन, बल्गेरियन, सर्बियन, बेलारुशियन, मॅसेडोनियन समाविष्ट), जॉर्जियन, आर्मेनियन, हिब्रू, अरबी, अम्हारिक आणि सिरियाक लिप्यंतरण (CLDR, ~०.५ MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">वाचत आहे %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">किमान एक शब्दकोश निवडा</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">रिफ्रेश बटण दाखवा</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">पुढील लिरिक्स उमेदवाराकडे जाण्यासाठी टॅप करा; गाण्याचे शीर्षक आणि कलाकाराद्वारे लिरिक्स शोधण्यासाठी दीर्घकाळ दाबा</string>
   <string name="morphe_music_lyrics_search_dialog_title">गीत शोधा</string>
@@ -537,6 +587,10 @@ SABR प्लेबॅक (Spoof व्हिडिओ स्ट्रीम्
   <string name="morphe_music_lyrics_saved">जतन केले</string>
   <string name="morphe_music_lyrics_word_sync_title">सिंक केलेले शब्द किंवा शब्दांश हायलाइट करा</string>
   <string name="morphe_music_lyrics_word_sync_summary">शब्द-दर-शब्द लिरिक्स उपलब्ध असल्यास त्यांना प्राधान्य द्या. लिरिक्समध्ये शब्दांच्या वेळेची माहिती असल्यास, संगीताच्या तालात प्रत्येक शब्द किंवा अक्षराला हायलाइट करा</string>
+  <string name="morphe_music_lyrics_line_scale_title">निष्क्रिय ओळी आकुंचित करा</string>
+  <string name="morphe_music_lyrics_line_scale_summary">सध्या गायली जात नसलेली प्रत्येक ओळ थोडी लहान करून दाखवते आणि ती अंधुक देखील करते</string>
+  <string name="morphe_music_lyrics_split_background_title">बॅकग्राउंड व्होकल्स स्वतंत्रपणे दाखवा</string>
+  <string name="morphe_music_lyrics_split_background_summary">बॅकग्राउंड व्होकल्स आणि हार्मनीला मुख्य ओळीपासून वेगळे करते. कंसात लिहिलेले बॅकग्राउंड व्होकल्स, जसे की \"(Oh) I want you\", गायल्या जाणाऱ्या ओळीतून काढून एका स्वतंत्र अंधुक ओळीत हलवते</string>
   <string name="morphe_music_lyrics_hide_played_title">वाजवलेले लिरिक्स लपवा</string>
   <string name="morphe_music_lyrics_hide_played_summary">सध्या वाजत असलेल्या ओळीच्या वरच्या लिरिक्स ओळी लपवा</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">न वाजवलेले लिरिक्स लपवा</string>
@@ -594,9 +648,15 @@ SABR प्लेबॅक (Spoof व्हिडिओ स्ट्रीम्
   <string name="morphe_music_lyrics_translated_by_ai">%s द्वारे अनुवादित</string>
   <string name="morphe_music_lyrics_romanized_by_ai">%s द्वारे रोमनलिपिमध्ये रूपांतरित</string>
   <string name="morphe_music_lyrics_romanized_by_local">%s द्वारे रोमनलाइज्ड</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">Rime द्वारे रोमनलिपीत रूपांतरित (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">अनुवादित</string>
   <string name="morphe_music_lyrics_translation_language_title">अनुवादाची भाषा</string>
+  <string name="morphe_music_lyrics_romanize_language_title">रोमनलिपी किंवा लिप्यंतरण भाषा</string>
+  <string name="morphe_music_lyrics_translation_target_language">"अनुवादाची लक्ष्य भाषा:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"रोमनायझेशन किंवा लिप्यंतरणाची लक्ष्य भाषा:
+%s"</string>
   <string name="morphe_music_lyrics_translating">भाषांतर करत आहे…</string>
   <string name="morphe_music_lyrics_translate_failed">लिरिक्सचे भाषांतर करू शकलो नाही</string>
   <string name="morphe_music_lyrics_romanize_hide">रोमनाइझ्ड</string>
@@ -610,6 +670,7 @@ SABR प्लेबॅक (Spoof व्हिडिओ स्ट्रीम्
   <string name="morphe_music_lyrics_refreshing">रिफ्रेश होत आहे</string>
   <string name="morphe_music_lyrics_refreshed">रिफ्रेश झाले</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API की</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC सध्याच्या ट्रॅकसाठी लिरिक्सचे लिप्यंतरण करते किंवा वेळेनुसार संरेखित करते</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC की सेव्ह केली. लिरिक्स सर्च डायलॉगमधील अलाइन बटण वापरा, किंवा जेव्हा ट्रॅकला लिरिक्स नसतील तेव्हा पॅनेल प्रॉम्प्ट वापरा</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API की जतन केली</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC ने ती की स्वीकारली नाही</string>
@@ -625,10 +686,24 @@ SABR प्लेबॅक (Spoof व्हिडिओ स्ट्रीम्
   <string name="morphe_music_lyrics_transcribe_no_text">अलाइन करण्यासाठी लिरिक्स उपलब्ध नाहीत - त्याऐवजी ट्रान्सक्रिप्शन केले जात आहे</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC या ट्रॅकवर प्रक्रिया करू शकले नाही</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">या ट्रॅकसाठी QuickLRC क्रेडिट्स संपले आहेत</string>
+  <string name="morphe_music_lyrics_about_summary">"गीते शीर्षक आणि कलाकाराद्वारे जुळवली जातात, असामान्य मेटाडेटा मुळे काहीही न मिळण्याची किंवा चुकीची आवृत्ती मिळण्याची शक्यता असते. आवृत्त्या बदलण्यासाठी refresh वापरा. * चिन्हांकित प्रदात्यांसाठी टोकन आवश्यक आहे. सर्व सक्षम केलेले प्रदाते नेहमी तुमच्या क्रमाने विनंती केलेले नसतात, तर ते त्यांच्या वेगावर आधारित प्रतिसाद देतात.
+
+गीते तृतीय-पक्ष सेवांकडून येतात ज्या Morphe शी संलग्न, प्रायोजित किंवा समर्थित नाहीत. प्रत्येकाचा वापर तो जसा आहे तसा केला जातो: गीते, त्यांची उपलब्धता आणि त्यांचे परवाने त्या सेवांकडे आणि त्यांच्या परवानाधारकांकडे राहतात आणि त्यांचा वापर त्यांच्या सेवाशर्तींच्या अधीन असू शकतो. सक्षम सेवेपर्यंत केवळ तुम्ही शोधलेली माहिती पोहोचते - शीर्षक, कलाकार आणि ज्या सेवेला गरज आहे तिथे व्हिडिओ ID. पर्यायी AI एंडपॉइंट आणि QuickLRC ट्रान्सक्रिप्शन केवळ तुम्ही ते कॉन्फिगर केल्यानंतरच चालतात आणि त्यांना गीतांचा मजकूर किंवा ट्रॅकचा व्हिडिओ URL प्राप्त होतो."</string>
   <string name="morphe_music_lyrics_source_advice_summary">तुम्ही वापरत असलेल्या प्रोव्हायडर्सनाच सक्षम करा, किंवा डीफॉल्ट ठेवा - सततच्या विनंत्यांमुळे लहान कम्युनिटी लिरिक्स साइट्सवर ताण येऊ शकतो</string>
   <string name="morphe_music_lyrics_hide_info_title">क्रेडिट लाईन लपवा</string>
   <string name="morphe_music_lyrics_hide_info_summary">गीतांच्या खाली दिसणारी क्रेडिट लाईन लपवा</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">अनुवाद आणि रोमनाइझेशनची अदलाबदल करा</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON केल्यास रोमनायझेशन किंवा लिप्यंतरण गीतांच्या खाली आणि अनुवाद वर येतो; OFF केल्यास रोमनायझेशन किंवा लिप्यंतरण वर आणि अनुवाद खाली राहतो. प्रत्येक अक्षराच्या वर ठेवलेले वाचन त्या अक्षरासोबत वरून खाली सरकते</string>
+  <string name="morphe_music_lyrics_force_center_title">नेहमी गीतांना मध्यभागी ठेवा</string>
+  <string name="morphe_music_lyrics_force_center_summary">ON केल्यास प्रत्येक ओळ मध्यभागी येते आणि सोर्स अलाइनमेंट दुर्लक्षित केली जाते, ज्यामध्ये ड्युएट साइड्सचा समावेश आहे; OFF केल्यास गीतांसाठी विचारलेली अलाइनमेंट कायम राहते</string>
+  <string name="morphe_music_lyrics_providers_keep_one">किमान एक प्रोव्हायडर चालू असणे आवश्यक आहे</string>
+  <string name="morphe_music_lyrics_translation_provider_title">अनुवाद</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">रोमनायझेशन किंवा लिप्यंतरण</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">ऑफलाइन डिक्शनरी</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Rime शब्दसूची</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">AI सह विभाग ओळखा</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">जेव्हा प्रदाता Chorus किंवा Verse सारखे कोणतेही विभाग लेबल पाठवत नाही, तेव्हाच याचा वापर केला जातो, जे तुमचे OpenAI-सुसंगत मॉडेल नंतर शोधते. ओळ संपादित केल्यावर त्याचा प्रॉम्प्ट देखील उघडतो</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API एंडपॉइंट URL (उदा. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">प्रॉम्प्ट टेम्पलेट</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">प्लेसहोल्डर्स: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">प्रॉम्प्ट सेव्ह केला</string>
@@ -637,14 +712,26 @@ SABR प्लेबॅक (Spoof व्हिडिओ स्ट्रीम्
   <string name="morphe_music_lyrics_ai_config_toast_saved">भाषांतर आणि रोमनायझेशन सेटिंग्ज जतन केल्या</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">सेटिंग्ज डीफॉल्टवर रिसेट केल्या</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">बेस URL ची सुरुवात http:// किंवा https:// ने झाली पाहिजे</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">सेटिंग्ज अपूर्ण आहेत किंवा प्रदात्याने नाकारल्या आहेत</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">कनेक्शनची पडताळणी करत आहे…</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: कनेक्ट झाले! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: कनेक्शन अयशस्वी झाले. कृपया सेटिंग्ज तपासा.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">प्रथम API की प्रविष्ट करा</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">कनेक्शन तपासा</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">मॉडेल्स मिळवत आहे…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">मॉडेल्स मिळवा</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">मॉडेल निवडा</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">मॉडेल्स मिळवण्यात अयशस्वी. API की किंवा कनेक्शन तपासा.</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">प्रॉम्प्ट</string>
   <string name="morphe_music_lyrics_ai_config_model_label">मॉडेल</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">बेस URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">सर्व्हिस प्रीसेट्स</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">सेवा निवडा</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API की (पर्यायी)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">अतिरिक्त विनंती बॉडी (पर्यायी JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">अतिरिक्त विनंती हेडर्स (पर्यायी JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">नावे आणि मूल्ये अवतरण चिन्हात लिहा, उदा. {\"api-key\": \"abc\"}. / : किंवा संख्येचे अवतरण नसलेले मूल्य नाकारले जाते. रिकामे मूल्य हेडर काढून टाकते.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">नावे आणि मूल्ये अवतरण चिन्हात लिहा, उदा. {\"temperature\": 0.3}. / किंवा : चे अवतरण नसलेले मूल्य नाकारले जाते. मॉडेल आणि संदेश येथे सेट केले जाऊ शकत नाहीत.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">प्रमाणीकरण की (Free किंवा Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - ठळक चिन्ह अक्षम करा</string>

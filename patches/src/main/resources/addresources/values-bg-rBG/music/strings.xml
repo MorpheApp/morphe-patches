@@ -474,7 +474,7 @@ SABR възпроизвеждане (имитирането на видео по
 字 ham
 典 din2
 Първата колона е думата, втората нейният прочит; допълнителни колони и редове без табулация се игнорират."</string>
-  <string name="morphe_music_lyrics_rime_dict_no_table">No Rime word list is ticked for the language above. Tap this name to tick one, or pick a language that has a list</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">Няма отметнат списък с думи за Rime за езика по-горе. Докоснете това име, за да отметнете такъв, или изберете език, който има списъкNo Rime word list is ticked for the language above. Tap this name to tick one, or pick a language that has a list</string>
   <string name="morphe_music_lyrics_rime_dict_add">Добавяне</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Добавете списък с думи Rime</string>
   <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml файл или архив zip, съдържащ такъв, с редове като 字 ham и 典 din2. Списъкът се зарежда, когато го отметнете и натиснете Save, а лицензът ви позволява да го проверите</string>
@@ -704,12 +704,15 @@ SABR възпроизвеждане (имитирането на видео по
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Свързан! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Свързването бе неуспешно. Проверете настройките.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Първо въведете API ключ</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Тествай връзката</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Извличане на модели…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Зареди моделите</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Изберете модел</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Неуспешно извличане на моделите. Проверете API ключа или връзката.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Подсказка</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Модел</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Базов URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Готови настройки за услуги</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Избор на услуга</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API ключ (по желание)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Допълнително тяло на заявката (опционален JSON)</string>

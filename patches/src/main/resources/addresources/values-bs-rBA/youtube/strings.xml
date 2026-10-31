@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Razno</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Vratite stari ekran s postavkama YouTube-a</string>
+  <string name="morphe_native_snackbar_title">Prikaži poruke u YouTube snackbaru</string>
+  <string name="morphe_native_snackbar_summary">Morphe poruke, kao što je potvrda dugmeta plejera, prikazuju se u YouTube snackbaru umjesto u popup prozoru</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Ukloni ograničenja reprodukcije u pozadini</string>
   <string name="morphe_shorts_disable_background_playback_title">Onemogući reprodukciju u pozadini</string>
@@ -513,7 +515,6 @@ Nakon što se jednom otvori video s dugmetom Pitaj, funkcija radi sa svim videim
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Sve opcije</string>
   <string name="morphe_shorts_download_flyout_button_title">Prikaži preuzimanje u Shorts meniju</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Dodaje stavku menija za eksterni preuzimač u Shorts plejer</string>
   <string name="morphe_shorts_download_flyout_title">Preuzmi</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Glasovni prevod</string>
@@ -621,10 +622,6 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Sačuvaj u Gledaj kasnije</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Prikaži dugme Sačuvaj za kasnije u iskačućem prozoru postavki plejera</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Omogućuje spremanje trenutnog videa koji gledate u \"Gledaj kasnije\" iz iskačućih postavki videa</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Prikaži dugme Sačuvaj u Gledaj kasnije u dječjim videozapisima</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Omogućuje spremanje videa za djecu u \"Gledaj kasnije\" iz iskačućeg izbornika</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Prikaži gumb Spremi za kasnije u iskačućem izborniku za Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Omogućava spremanje Shortsa u \"Gledaj kasnije\" iz izbornika</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Preusmjeri \"Pogledaj kasnije\" na plejlistu</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Pogledaj kasnije</string>
   <string name="morphe_queue_flyout_title">Dodaj u Morphe red čekanja</string>

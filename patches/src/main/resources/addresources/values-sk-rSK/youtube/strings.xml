@@ -515,7 +515,6 @@ Po jednom otvorení videa s tlačidlom Opýtať sa bude funkcia fungovať pre v�
   <string name="morphe_external_downloader_quick_audio">Zvuk</string>
   <string name="morphe_external_downloader_quick_options">Všetky možnosti</string>
   <string name="morphe_shorts_download_flyout_button_title">Zobraziť sťahovanie v ponuke Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Pridá položku externého menu na stiahnutie do prehrávača Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Stiahnuť</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Preklad hlasového komentára</string>
@@ -623,10 +622,6 @@ Poznámka: Možno nebude fungovať na živých prenosoch"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Uložiť do Pozrieť neskôr</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Zobraziť tlačidlo „Uložiť na pozretie neskôr“ v rozbaľovacej ponuke nastavení prehrávača</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Umožňuje z rozbaľovacej ponuky nastavení videa uložiť aktuálne sledované video do zoznamu „Pozrieť neskôr“</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Zobraziť tlačidlo Uložiť do Pozrieť neskôr v detských videách</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Umožňuje z rozbaľovacej ponuky ukladať videá pre deti do zoznamu „Pozrieť neskôr“</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Zobraziť tlačidlo „Uložiť na pozretie neskôr“ v rozbaľovacej ponuke pre Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Umožňuje z rozbaľovacej ponuky ukladať Shorts do zoznamu „Pozrieť neskôr“</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Presmerovať „Pozrieť neskôr“ do zoznamu prevádzania</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Pozrieť neskôr</string>
   <string name="morphe_queue_flyout_title">Pridať do fronty Morphe</string>

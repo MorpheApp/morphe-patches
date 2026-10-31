@@ -515,7 +515,6 @@ Setelah video dengan tombol Tanya dibuka satu kali, fitur ini berfungsi untuk se
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Semua opsi</string>
   <string name="morphe_shorts_download_flyout_button_title">Tampilkan download di menu Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Menambahkan item menu flyout pengunduh eksternal ke pemutar Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Download</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Terjemahan sulih suara</string>
@@ -623,10 +622,6 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Simpan ke Tonton Nanti</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Tampilkan tombol Simpan ke Tonton Nanti di flyout setelan pemutar</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Memungkinkan Anda menyimpan video yang sedang ditonton ke \'Tonton Nanti\' melalui flyout setelan video.</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Tampilkan tombol Simpan ke Tonton Nanti di video anak-anak</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Memungkinkan Anda menyimpan video terkait anak-anak ke \'Tonton Nanti\' melalui menu flyout.</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Tampilkan tombol Simpan ke Tonton Nanti di flyout Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Memungkinkan Anda menyimpan Shorts ke \'Tonton Nanti\' melalui menu flyout.</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Alihkan Tonton nanti ke daftar putar</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Tonton nanti</string>
   <string name="morphe_queue_flyout_title">Tambahkan ke antrean Morphe</string>

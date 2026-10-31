@@ -711,12 +711,15 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s：接続済み！（%2$s）</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s：接続に失敗しました。設定を確認してください。</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">まず API キーを入力してください</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">接続テスト</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">モデルを取得中…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">モデルを取得</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">モデルを選択してください</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">モデルの取得に失敗しました。APIキーまたは接続を確認してください。</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">プロンプト</string>
   <string name="morphe_music_lyrics_ai_config_model_label">モデル</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">ベースURL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">サービスのプリセット</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">サービスを選択</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">APIキー（オプション）</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">追加のリクエストボディ（オプションのJSON）</string>

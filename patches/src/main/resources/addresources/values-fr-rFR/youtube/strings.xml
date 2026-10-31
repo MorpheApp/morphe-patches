@@ -515,8 +515,23 @@ Après avoir ouvert une fois une vidéo avec le bouton 'Posez une question', la 
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Toutes les options</string>
   <string name="morphe_shorts_download_flyout_button_title">Afficher le téléchargement dans le menu Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Ajoute un élément de téléchargement externe dans le menu déroulant du lecteur Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Ajoute un élément de téléchargement au menu du lecteur Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Télécharger</string>
+  <string name="morphe_export_download_folder_title">Exporter les vidéos enregistrées</string>
+  <string name="morphe_export_download_folder_summary">"Exportez les vidéos enregistrées dans l'application vers le stockage de votre appareil. Appuyez pour changer le dossier d'exportation
+
+Dossier d'exportation : %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Dossier d\'exportation</string>
+  <string name="morphe_export_download_folder_change">Changer de dossier</string>
+  <string name="morphe_export_download_folder_changed">Dossier d\'exportation changé</string>
+  <string name="morphe_export_download_folder_reset">Dossier d\'exportation réinitialisé</string>
+  <string name="morphe_export_download_flyout_title">Exporter vers l\'appareil</string>
+  <string name="morphe_export_download_started">Exportation de la vidéo</string>
+  <string name="morphe_export_download_progress">Exportation de la vidéo : %d%%</string>
+  <string name="morphe_export_download_notification_channel">Exportations de vidéos</string>
+  <string name="morphe_export_download_saved">Vidéo exportée vers %s</string>
+  <string name="morphe_export_download_failed">Impossible d\'exporter la vidéo</string>
+  <string name="morphe_export_download_canceled">Exportation annulée</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traduction en voix off</string>
   <string name="morphe_vot_screen_summary">Lisez les sous-titres de la vidéo à voix haute à l\'aide de la synthèse vocale sur l\'appareil, synchronisée avec la lecture</string>
@@ -623,10 +638,6 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Enregistrer dans \'À regarder plus tard\'</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Afficher le bouton \'Enregistrer dans \"À regarder plus tard\"\' dans le menu déroulant du lecteur</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Permet d\'enregistrer la vidéo en cours de visionnage dans \'À regarder plus tard\' depuis le menu déroulant de la vidéo</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Afficher le bouton \'Enregistrer dans \"À regarder plus tard\"\' dans les vidéos pour enfants</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permet d\'enregistrer les vidéos pour enfants dans \'À regarder plus tard\' depuis le menu déroulant</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Afficher le bouton \'Enregistrer dans \"À regarder plus tard\"\' dans le menu déroulant shorts </string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permet d\'enregistrer les shorts dans \'À regarder plus tard\' depuis le menu déroulant</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Rediriger \'À regarder plus tard\' vers une playlist</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">À regarder plus tard</string>
   <string name="morphe_queue_flyout_title">Ajouter à la file d\'attente Morphe</string>
@@ -1271,6 +1282,8 @@ Limitation : Si 'Restaurer l'ancienne barre d'actions vidéo' est désactivé, l
   <string name="morphe_splash_screen_style_entry_7">Morphe Lueur 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Lueur 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">L\'écran de démarrage lueur n\'est pas pris en charge par cet appareil</string>
+  <string name="morphe_splash_screen_duration_title">Durée de l\'animation de démarrage</string>
+  <string name="morphe_splash_screen_duration_summary">Combien de temps l\'animation de lueur se joue. Appuyez sur l\'animation pour la passer</string>
   <string name="morphe_theme_color_light_title">Arrière-plan du thème clair</string>
   <string name="morphe_theme_color_light_entry_2">Blanc</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Blanc)</string>

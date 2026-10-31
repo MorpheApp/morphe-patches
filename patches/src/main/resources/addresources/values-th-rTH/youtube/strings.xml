@@ -515,7 +515,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">เสียง</string>
   <string name="morphe_external_downloader_quick_options">ตัวเลือกทั้งหมด</string>
   <string name="morphe_shorts_download_flyout_button_title">แสดงการดาวน์โหลดในเมนู Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">เพิ่มรายการเมนู Flyout ของโปรแกรมดาวน์โหลดภายนอกในตัวเล่น Shorts</string>
   <string name="morphe_shorts_download_flyout_title">ดาวน์โหลด</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">การแปลเสียงบรรยาย</string>
@@ -623,10 +622,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">บันทึกไปยังดูภายหลัง</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">แสดงปุ่มบันทึกไปยังดูภายหลังในเมนูการตั้งค่าเครื่องเล่น</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">อนุญาตให้บันทึกวิดีโอที่กำลังดูอยู่ไว้ใน \'ดูภายหลัง\' จากเมนูการตั้งค่าวิดีโอ</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">แสดงปุ่ม \'บันทึกไปยังดูภายหลัง\' ในวิดีโอสำหรับเด็ก</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">อนุญาตให้บันทึกวิดีโอที่เกี่ยวข้องกับเด็กไว้ใน \'ดูภายหลัง\' จากเมนูแบบเลื่อนออก</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">แสดงปุ่มบันทึกไปยังดูภายหลังในเมนูแบบเลื่อนออกของ Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">อนุญาตให้บันทึก Shorts ไว้ใน \'ดูภายหลัง\' จากเมนูแบบเลื่อนออก</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">เปลี่ยนเส้นทาง \"ดูภายหลัง\" ไปยังเพลย์ลิสต์</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">ดูต่อภายหลัง</string>
   <string name="morphe_queue_flyout_title">เพิ่มลงในคิว Morphe</string>

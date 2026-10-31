@@ -718,12 +718,15 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s：已連接！（%2$s）</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s：連接失敗。請檢查設置。</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">請先輸入 API 金鑰</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">測試連線</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">正在獲取模型…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">獲取模型</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">選擇模型</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">無法獲取模型。請檢查API金鑰或連線狀態。</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">提示詞</string>
   <string name="morphe_music_lyrics_ai_config_model_label">模型</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">基礎網址</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">服務預設值</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">選擇服務</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API金鑰(選填)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">額外請求主體(選填JSON)</string>

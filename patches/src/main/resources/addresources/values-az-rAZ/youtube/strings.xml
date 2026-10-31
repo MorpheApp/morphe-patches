@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Çoxvariantlı</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Köhnə YouTube ayarları görünüşün bərpa et</string>
+  <string name="morphe_native_snackbar_title">Mesajları YouTube bildiriş cərgəsində göstər</string>
+  <string name="morphe_native_snackbar_summary">Morphe mesajları, məsələn oynadıcı düyməsinin təsdiqi, açılan pəncərə əvəzinə YouTube bildiriş cərgəsində göstərilir</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Fon oynatma məhdudiyyətlərini təmizlə</string>
   <string name="morphe_shorts_disable_background_playback_title">Arxa plan oynatmanı qapat</string>
@@ -513,8 +515,23 @@ Məhdudiyyətlər:
   <string name="morphe_external_downloader_quick_audio">Səs</string>
   <string name="morphe_external_downloader_quick_options">Bütün seçimlər</string>
   <string name="morphe_shorts_download_flyout_button_title">Shorts menyusunda yükləməni göstər</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Shorts oynadıcıya xarici yükləyici açılan menyusu elementi əlavə edir</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Shorts oynadıcının menyusuna yükləmə elementi əlavə edir</string>
   <string name="morphe_shorts_download_flyout_title">Yüklə</string>
+  <string name="morphe_export_download_folder_title">Saxlanılmış videoları ixrac et</string>
+  <string name="morphe_export_download_folder_summary">"Tətbiqdə saxlanılan videoları cihaz yaddaşınıza ixrac edin. İxrac qovluğunu dəyişdirmək üçün toxunun
+
+İxrac qovluğu: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">İxrac qovluğu</string>
+  <string name="morphe_export_download_folder_change">Qovluğu dəyişdir</string>
+  <string name="morphe_export_download_folder_changed">İxrac qovluğu dəyişdirildi</string>
+  <string name="morphe_export_download_folder_reset">İxrac qovluğu sıfırlandı</string>
+  <string name="morphe_export_download_flyout_title">Cihaza köçür</string>
+  <string name="morphe_export_download_started">Videonu ixrac edir</string>
+  <string name="morphe_export_download_progress">İxrac olunan video: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Video köçürmələri</string>
+  <string name="morphe_export_download_saved">Video %s ünvanına ixrac edildi</string>
+  <string name="morphe_export_download_failed">Videonu ixrac etmək olmadı</string>
+  <string name="morphe_export_download_canceled">İxrac ləğv edildi</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Səs üstələyici tərcümə</string>
   <string name="morphe_vot_screen_summary">Cihazdakı mətni nitqə çevirməni istifadə edərək video titrlərini oynatma ilə sinxronlaşdırıb ucadan oxu</string>
@@ -621,10 +638,6 @@ Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Daha sonra izləmək üçün saxla</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Oynadıcının tənzimləmələr menyusunda \"Daha sonra İzləmək üçün Saxla\" düyməsini göstər</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Video tənzimləmələri menyusundan cari izlənilən videonu \"Sonra izləyində\" saxlamağa imkan verir</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Uşaq videolarında Daha sonra İzləmək üçün Saxlanı göstər</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Uşaqlarla əlaqəli videoları açılan menyudan \"Sonra izləyin\" bölməsində saxlamağa imkan verir</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Shorts açılan menyusunda \"Daha sonra İzləmək üçün Saxla\" düyməsini göstər</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Shorts-ları açılan menyudan \"Sonra izləyin\" bölməsində saxlamağa imkan verir</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Daha sonra izləni pleylistə yönləndir</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Sonra izlə</string>
   <string name="morphe_queue_flyout_title">Morphe növbəsinə əlavə et</string>
@@ -873,7 +886,7 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <string name="morphe_fix_transcript_summary">Transkripti yükləməyə mane ola biləcək ilkin status yoxlanılması uğursuzluğun həll edir</string>
   <string name="morphe_captions_in_pip_title">Şəkil içində şəkildə titrləri göstər</string>
   <string name="morphe_stable_caption_blocks_title">Stabil titr blokları</string>
-  <string name="morphe_stable_caption_blocks_summary">Avtomatik titrləri stabil, oxunaqlı bloklara qruplaşdırın. Bəzi sözlər tələffüz edilməmişdən əvvəl görünə bilər. Yenidən başlatmaq tələb olunur.</string>
+  <string name="morphe_stable_caption_blocks_summary">Avtomatik titrləri sabit, rahat oxunan bloklarda qruplaşdırır. Bəzi sözlər deyilməzdən əvvəl görünə bilər. Yenidən başlatma lazımdır.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Fəaliyyət düymələri</string>
   <string name="morphe_navigation_buttons_screen_summary">Aşağı fəaliyyət cərgəsində hansı düymələr görünür seç</string>

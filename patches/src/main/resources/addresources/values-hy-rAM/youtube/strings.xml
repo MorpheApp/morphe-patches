@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Տարբեր</string>
   <string name="morphe_settings_screen_12_video_title">Տեսանյութ</string>
   <string name="morphe_restore_old_settings_menus_title">Վերականգնել YouTube-ի կարգավորումների հին էջը</string>
+  <string name="morphe_native_snackbar_title">Ցուցադրել հաղորդագրությունները YouTube-ի snackbar-ում</string>
+  <string name="morphe_native_snackbar_summary">Morphe-ի հաղորդագրությունները, օրինակ՝ նվագարկիչի կոճակի հաստատումը, ցուցադրվում են YouTube-ի snackbar-ում՝ փոփ-ափ պատուհանի փոխարեն</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Հեռացնել հետին պլանի ընկնող վերարտադրման սահմանափակումները</string>
   <string name="morphe_shorts_disable_background_playback_title">Անջատել ֆոնային նվագումը</string>
@@ -513,7 +515,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">Աուդիո</string>
   <string name="morphe_external_downloader_quick_options">Բոլոր տարբերակները</string>
   <string name="morphe_shorts_download_flyout_button_title">Ցուցադրել ներբեռնումը Shorts-երի մենյուում</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Ավելացնում է արտաքին ներբեռնողի կոճակ Shorts-երի նվագարկիչի լողացող մենյուում</string>
   <string name="morphe_shorts_download_flyout_title">Ներբեռնել</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ձայնային թարգմանություն</string>
@@ -621,10 +622,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Պահպանել ավելի ուշ դիտելու համար</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Ցուցադրել \"Պահպանել ավելի ուշ դիտելու համար\" կոճակը նվագարկիչի կարգավորումների ընտացող մենյուում</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Թույլ է տալիս պահպանել ընթացիկ դիտվող տեսանյութը \"Ավելի ուշ դիտելու\" ցանկում՝ տեսանյութի կարգավորումների ընտացող մենյուից</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Ցուցադրել «Պահպանել ավելի ուշ դիտելու համար» կոճակը երեխաների համար նախատեսված տեսանյութերում</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Թույլ է տալիս պահպանել երեխաներին ուղղված տեսանյութերը \"Ավելի ուշ դիտելու\" ցանկում՝ ընտացող մենյուից</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Ցուցադրել \"Պահպանել ավելի ուշ դիտելու համար\" կոճակը shorts-երի ընտացող մենյուում</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Թույլ է տալիս պահպանել shorts-երը \"Ավելի ուշ դիտելու\" ցանկում՝ ընտացող մենյուից</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Перенаправить «Смотреть позже» в плейлист</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Դիտել ավելի ուշ</string>
   <string name="morphe_queue_flyout_title">Ավելացնել Morphe հերթի մեջ</string>

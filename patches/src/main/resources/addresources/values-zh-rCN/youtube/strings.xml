@@ -515,7 +515,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">音频</string>
   <string name="morphe_external_downloader_quick_options">所有选项</string>
   <string name="morphe_shorts_download_flyout_button_title">在 Shorts 菜单中显示下载</string>
-  <string name="morphe_shorts_download_flyout_button_summary">在 Shorts 播放器中添加外部下载器弹出菜单项</string>
   <string name="morphe_shorts_download_flyout_title">下载</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">语音旁白翻译</string>
@@ -623,10 +622,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">保存到稍后观看</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">在播放器设置弹出菜单中显示“保存到稍后观看”按钮</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">允许从视频设置弹出菜单中将当前观看的视频保存到“稍后观看”</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">在儿童视频中显示“保存到稍后观看”按钮</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">允许从弹出菜单中将与儿童相关的视频保存到“稍后观看”</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">在短视频弹出菜单中显示“保存到稍后观看”按钮</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">允许从弹出菜单中将短视频保存到“稍后观看”</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">将“稍后观看”重定向至播放列表</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">稍后观看</string>
   <string name="morphe_queue_flyout_title">添加到 Morphe 队列</string>

@@ -515,7 +515,6 @@ Nadat een video met de Ask-knop eenmaal is geopend, werkt de functie voor alle v
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Alle opties</string>
   <string name="morphe_shorts_download_flyout_button_title">Download tonen in Shorts-menu</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Voegt een extern downloadmenu-item toe aan de Shorts-speler</string>
   <string name="morphe_shorts_download_flyout_title">Download</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Spraakvertaling</string>
@@ -623,10 +622,6 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Opslaan in Watch later</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Toon de knop \'Opslaan in Later bekijken\' in de instellingenflyout van de speler.</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Hiermee kun je de video die je momenteel bekijkt vanuit het uitklapmenu voor video-instellingen opslaan in \'Later bekijken\'.</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Toon knop Opslaan in Watch later bij kindervideo\'s</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Hiermee kunt u kindgerelateerde video\'s opslaan in \'Later bekijken\' via het flyoutmenu</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Toon de knop \'Opslaan in Later bekijken\' in het flyoutmenu voor Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Hiermee kunt u Shorts opslaan in \'Later bekijken\' via het flyoutmenu</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Stuur \'Later bekijken\' door naar afspeellijst</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Later bekijken</string>
   <string name="morphe_queue_flyout_title">Toevoegen aan Morphe-wachtrij</string>

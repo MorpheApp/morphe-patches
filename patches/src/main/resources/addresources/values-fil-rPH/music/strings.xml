@@ -713,12 +713,15 @@ Ang mga lyrics ay galing sa mga third-party services na walang koneksyon, hindi 
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Nakakonekta! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Nabigo ang koneksyon. Tingnan ang settings.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Ilagay muna ang API key</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">I-test ang koneksyon</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Kukuha ng mga modelo…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Kuhanin ang mga model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Pumili ng Modelo</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Nabigong kuhanin ang mga modelo. Suriin ang API key o koneksyon.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Modelo</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Base URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Mga preset ng serbisyo</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Pumili ng serbisyo</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API key (opsyonal)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Karagdagang request body (opsyonal na JSON)</string>

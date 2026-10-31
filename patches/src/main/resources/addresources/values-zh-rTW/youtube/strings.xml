@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">啟用資料庫 / 您在底部選單中的篩選選項</string>
   <string name="morphe_hide_account_menu_filter_strings_title">啟用資料庫 / 您在底部選單中的篩選選項</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">輸入資料庫 / 您要在底部選單中篩選的名稱，以新行分隔</string>
+  <string name="morphe_hide_account_menu_downloads_title">隱藏下載</string>
   <string name="morphe_hide_album_cards_title">隱藏專輯資訊卡</string>
   <string name="morphe_hide_album_cards_summary">隱藏藝術家描述下方的專輯卡片</string>
   <string name="morphe_hide_artist_cards_title">隱藏藝人資訊卡</string>
@@ -515,8 +516,10 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">音訊</string>
   <string name="morphe_external_downloader_quick_options">所有選項</string>
   <string name="morphe_shorts_download_flyout_button_title">在 Shorts 選單中顯示下載</string>
-  <string name="morphe_shorts_download_flyout_button_summary">在 Shorts 播放器中新增外部下載器的彈出式選單項目</string>
   <string name="morphe_shorts_download_flyout_title">下載</string>
+  <string name="morphe_export_download_folder_title">匯出已儲存的影片</string>
+  <string name="morphe_export_download_failed">無法匯出影片</string>
+  <string name="morphe_export_download_canceled">取消匯出</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">語音轉錄翻譯</string>
   <string name="morphe_vot_screen_summary">使用裝置上的文字轉語音功能朗讀影片字幕，並與播放同步</string>
@@ -623,10 +626,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">儲存至「稍後觀看」</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">在播放器設定彈出視窗中顯示「儲存以稍後觀看」按鈕</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">允許將目前觀看的影片儲存在影片設定彈出視窗的「稍後觀看」中</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">在兒童影片中顯示「稍後觀看」按鈕</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">允許將與兒童相關的影片從彈出式選單儲存到「稍後觀看」中</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">在 Shorts 彈出視窗中顯示「儲存以稍後觀看」按鈕</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">允許將 Shorts 儲存在彈出式選單的「稍後觀看」中</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">將「稍後觀看」重新導向至播放清單</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">稍後觀看</string>
   <string name="morphe_queue_flyout_title">加入 Morphe 佇列</string>

@@ -32,6 +32,7 @@ import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.misc.auth.authHookPatch
+import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
@@ -103,7 +104,7 @@ private val downloadsResourcePatch = resourcePatch {
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/DownloadsPatch;"
 
-private const val EXTENSION_IN_APP_DOWNLOADS_CLASS = "Lapp/morphe/extension/youtube/patches/InAppDownloadsPatch;"
+internal const val EXTENSION_IN_APP_DOWNLOADS_CLASS = "Lapp/morphe/extension/youtube/patches/InAppDownloadsPatch;"
 
 private const val EXTENSION_SPOOF_CLASS = "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
 
@@ -138,7 +139,8 @@ val downloadsPatch = bytecodePatch(
         legacyPlayerControlsPatch,
         fixProtoLibraryPatch,
         elementProtoParserHookPatch,
-        flyoutPatch
+        flyoutPatch,
+        commandRouterHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -355,6 +357,21 @@ val downloadsPatch = bytecodePatch(
                 )
             }
         }
+
+        // Commands run by the extension have no interaction logger, which saving a video
+        // can use without checking it is set. The logger interface has a logger that logs nothing.
+        val interactionLoggerType = InteractionLoggerContextFingerprint.instructionMatches.last()
+            .instruction.getReference<TypeReference>()!!.type
+        val noOpInteractionLogger = classDefBy(interactionLoggerType).fields.single { field ->
+            AccessFlags.STATIC.isSet(field.accessFlags) && field.type == interactionLoggerType
+        }
+        NoOpInteractionLoggerFingerprint.method.addInstructions(
+            0,
+            """
+                sget-object v0, $interactionLoggerType->${noOpInteractionLogger.name}:$interactionLoggerType
+                return-object v0
+            """
+        )
 
         // endregion
     }

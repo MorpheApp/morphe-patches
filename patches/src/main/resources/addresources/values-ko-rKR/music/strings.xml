@@ -720,12 +720,15 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: 연결됨! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: 연결 실패. 설정을 확인하세요.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">먼저 API 키를 입력하세요</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">연결 테스트</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">모델을 가져오는 중…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">모델 가져오기</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">모델 선택</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">모델을 가져올 수 없습니다. API 키 또는 연결을 확인하세요</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">프롬프트</string>
   <string name="morphe_music_lyrics_ai_config_model_label">모델</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">기본 URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">서비스 프리셋</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">서비스 선택</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API 키 (선택 사항)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">추가 요청 본문 (선택 사항 JSON)</string>

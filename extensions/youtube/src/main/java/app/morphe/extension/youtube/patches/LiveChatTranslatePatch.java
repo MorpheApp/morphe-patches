@@ -15,12 +15,16 @@ import app.morphe.extension.shared.settings.BaseActivityHook;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.view.View;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.graphics.Typeface;
+import android.view.View;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.text.style.ImageSpan;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.CharacterStyle;
 import android.text.style.ForegroundColorSpan;
@@ -32,6 +36,7 @@ import android.text.style.TypefaceSpan;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
@@ -45,6 +50,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.WeakHashMap;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -302,7 +308,14 @@ public final class LiveChatTranslatePatch {
     private static final AtomicInteger entryLogs = new AtomicInteger();
 
     /** Marks a host that already has the copy listener, so it is not attached twice. */
-    private static final int COPY_TAG_ID = 0x4C435452;
+    /** Colour of the copy button, dimmed so it does not draw attention from the message. */
+    private static final int COPY_BUTTON_COLOR = 0xFFAAAAAA;
+    /** The button itself. A small square outline, which renders in the chat font. */
+    private static final String COPY_BUTTON_TEXT = "\u29C9";
+    @Nullable
+    private static Drawable copyIcon;
+    private static boolean copyIconLoaded;
+    /** Views that already carry the copy listener, so a rebind only refreshes the stored message. */
     /** Resource ids already resolved by {@link #isLiveChatId(View, int)}, so it runs once per id. */
     private static final Map<Integer, Boolean> liveChatIds = new HashMap<>();
     private static final AtomicInteger copyListenerScheduled = new AtomicInteger();
@@ -753,8 +766,12 @@ public final class LiveChatTranslatePatch {
             }
             if (!shouldTranslate(messageBody, structuredBody)) {
                 logSkip("not translatable", baseText);
-                remember(text, cfgHash, baseText);
-                return baseText;
+                // This row is final: it is never translated, so the button is attached to a text
+                // that does not change again. Attaching it to a pending row is what blanked rows,
+                // as the text changed a second time when the translation arrived.
+                final CharSequence withButton = addCopyButton(baseText, messageBody);
+                remember(text, cfgHash, withButton);
+                return withButton;
             }
 
             if (language == null) {
@@ -770,8 +787,9 @@ public final class LiveChatTranslatePatch {
                     // This row is not translated after all (same text, empty, or excluded). The
                     // pending marker is dropped so the row stops reporting itself as outdated,
                     // which otherwise keeps a relayout running several times per second forever.
-                    remember(text, cfgHash, baseText);
-                    return baseText;
+                    final CharSequence withButton = addCopyButton(baseText, messageBody);
+                    remember(text, cfgHash, withButton);
+                    return withButton;
                 }
                 // The request is made here rather than only from the visible scan: the scan can run
                 // before the row is mounted, and relying on it left rows untranslated forever.
@@ -782,7 +800,7 @@ public final class LiveChatTranslatePatch {
             }
 
             if (skippedLookups.containsKey(key)) {
-                return baseText;
+                return addCopyButton(baseText, messageBody);
             }
 
             final String translated = translationCache.get(key);
@@ -790,12 +808,10 @@ public final class LiveChatTranslatePatch {
                 final CharSequence result =
                         buildTranslatedSpannable(baseText, msgStart, messageBody, translated, cfgHash);
                 remember(text, cfgHash, result);
-                scheduleCopyListener();
                 return result;
             }
 
             queueTranslation(messageBody, language, key);
-            scheduleCopyListener();
             final SpannableString pending =
                     attachPendingSpan(baseText, new PendingChatSpan(baseText, msgStart, messageBody, language, key));
             // Cached too, so a repeated lookup of this row costs one map hit instead of another
@@ -868,23 +884,19 @@ public final class LiveChatTranslatePatch {
     }
 
     /**
-     * @return If the chat list is gone. Only called from the scan, which runs on the main thread at
-     *         most every few hundred milliseconds, as it walks the mounted texts to tell a closed
-     *         chat from a paused one where no new row is created.
+     * @return If the chat list is gone, so the scan can stop. Only called from the scan, which runs
+     *         on the main thread at most every few hundred milliseconds.
+     *         <p>
+     *         A mounted row means the chat is still there. No mounted row does not mean it is gone:
+     *         rows are unmounted while the list scrolls, and a quiet chat creates none, so the scan
+     *         keeps running while a translation is still in flight. Stopping on the first empty look
+     *         left the chat untranslated for the rest of the session.
      */
     private static boolean isChatListGone() {
-        if (isChatIdle()) {
-            return true;
+        if (!isChatIdle()) {
+            return false;
         }
-        for (Object[] entry : LithoRelayoutPatch.findShownTexts()) {
-            if (!(entry[1] instanceof Spanned spanned)) {
-                continue;
-            }
-            if (spanned.getSpans(0, spanned.length(), ChatRowSpan.class).length > 0) {
-                return false;
-            }
-        }
-        return true;
+        return pendingLookups.isEmpty();
     }
 
     private static void scheduleVisibleScan(long delayMs) {
@@ -900,78 +912,117 @@ public final class LiveChatTranslatePatch {
      * Attaches a long press listener to the view that shows a chat row, so the message can be copied.
      * Called on the main thread for the rows the visible scan found.
      *
-     * <p>The listener is attached once per host. Copying uses the original text, so the copied
-     * message is the one the streamer wrote, not the translation.
-     */
     /**
-     * Attaches the copy listener to a chat row.
+     * Appends the copy button to a row that is being built.
      *
-     * <p>The listener is re-attached on every scan instead of once, because the list rebinds views
-     * while scrolling and YouTube sets its own long press listener when it does. That is why the
-     * copy only worked some of the time. The message is refreshed each time for the same reason: a
-     * recycled view can be reused for a different row.
+     * <p>A long press is not used: YouTube installs its own long press on the rows it makes
+     * interactive, such as a pinned message that expands when tapped, and taking that over stopped
+     * those rows from responding. A span of our own cannot conflict with it.
+     *
+     * @param builder  the row text being built
+     * @param message  the message to copy
+     * @return The builder, with the button appended when the setting is on.
      */
-    private static void attachCopyListener(View host, String originalMessage) {
-        if (host == null || originalMessage == null || originalMessage.isEmpty()) {
-            return;
+    /**
+     * @return The row with the copy button appended, or the row as is when the setting is off.
+     *         The row is copied, so the text the app built is never changed.
+     */
+    private static CharSequence addCopyButton(CharSequence baseText, String messageBody) {
+        if (!Settings.LIVE_CHAT_TRANSLATE_COPY_BUTTON.get()
+                || messageBody == null || messageBody.isEmpty()) {
+            return baseText;
         }
-        // Re-attached on every scan, so a view rebound by the list gets its listener back. The
-        // message is stored with it because a recycled view can be reused for a different row.
-        host.setTag(COPY_TAG_ID, originalMessage);
-        host.setOnLongClickListener(view -> {
-            copyToClipboard(originalMessage);
-            showCopiedToast();
-            return true;
-        });
-        // Only longClickable is set. Marking the host clickable makes it draw a ripple and reserve
-        // room for one, which changed the row height and showed up as a gap on other screens that
-        // reuse the same Litho view.
-        host.setLongClickable(true);
+        // A row that already carries a button is returned as is, so the text is loaded again
+        // without appending a second one.
+        if (baseText instanceof Spanned spanned
+                && spanned.getSpans(0, spanned.length(), CopyMessageSpan.class).length > 0) {
+            return baseText;
+        }
+        final SpannableStringBuilder builder = new SpannableStringBuilder(baseText);
+        appendCopyButton(builder, messageBody);
+        return new SpannableString(builder);
+    }
+
+    private static SpannableStringBuilder appendCopyButton(
+            SpannableStringBuilder builder, String message) {
+        if (builder == null || message == null || message.isEmpty()) {
+            return builder;
+        }
+        builder.append(' ');
+        final int start = builder.length();
+        // One character holds the icon. An ImageSpan replaces it, so the span still has a range.
+        builder.append('\u00A0');
+        final int end = builder.length();
+        final Drawable icon = copyIcon();
+        if (icon != null) {
+            final int size = copyIconSize();
+            icon.setBounds(0, 0, size, size);
+            builder.setSpan(new ImageSpan(icon, ImageSpan.ALIGN_CENTER), start, end,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        } else {
+            builder.append(COPY_BUTTON_TEXT);
+        }
+        builder.setSpan(new CopyMessageSpan(message), start, builder.length(),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return builder;
     }
 
     /**
-     * Attaches the copy listener to every shown chat row. The host of a row is the view its text
-     * drawable draws into, which is the view a long press lands on.
+     * @return The copy icon the app ships, or null if it cannot be loaded. Resolved once.
      */
-    /**
-     * Schedules the pass that attaches the copy listener. It runs on the main thread, and only once
-     * at a time, so a chat that creates rows quickly does not queue a pass per row.
-     */
-    private static void scheduleCopyListener() {
-        if (copyListenerScheduled.compareAndSet(0, 1)) {
-            Utils.runOnMainThreadDelayed(() -> {
-                copyListenerScheduled.set(0);
-                attachCopyListeners();
-            }, 120L);
+    @Nullable
+    private static Drawable copyIcon() {
+        if (copyIconLoaded) {
+            return copyIcon;
         }
-    }
-
-    private static void attachCopyListeners() {
+        copyIconLoaded = true;
         try {
-            // Runs on the main thread after a row was translated. While the chat is closed there is
-            // no row to attach to, so the walk over every mounted text is skipped.
-            if (isChatIdle()) {
-                return;
+            final Context context = Utils.getContext();
+            if (context == null) {
+                return null;
             }
-            for (Object[] entry : LithoRelayoutPatch.findShownTexts()) {
-                final View host = (View) entry[0];
-                final CharSequence text = (CharSequence) entry[1];
-                // Only rows that still carry our span are chat rows. A recycled view that now shows
-                // other content has none, so it is left alone.
-                if (!host.isShown() || !(text instanceof Spanned spanned)) {
-                    continue;
-                }
-                final ChatRowSpan[] spans = spanned.getSpans(0, spanned.length(), ChatRowSpan.class);
-                if (spans == null || spans.length == 0) {
-                    continue;
-                }
-                final String original = spans[0] instanceof TranslatedChatSpan translated
-                        ? translated.messageBody
-                        : spans[0] instanceof PendingChatSpan pending ? pending.messageBody : null;
-                attachCopyListener(host, original);
+            final int id = context.getResources().getIdentifier(
+                    "morphe_yt_copy", "drawable", context.getPackageName());
+            if (id == 0) {
+                Logger.printDebug(() -> "copy icon resource not found");
+                return null;
             }
+            final Drawable drawable = context.getDrawable(id);
+            if (drawable != null) {
+                drawable.setTint(COPY_BUTTON_COLOR);
+            }
+            copyIcon = drawable;
         } catch (Exception ex) {
-            Logger.printException(() -> "attachCopyListeners failure", ex);
+            Logger.printDebug(() -> "copy icon not available: " + ex);
+        }
+        return copyIcon;
+    }
+
+    private static int copyIconSize() {
+        return Math.round(14 * Utils.getContext().getResources().getDisplayMetrics().density);
+    }
+
+    /**
+     * Copies its message when tapped. A ClickableSpan is handled by the text view itself, so it works
+     * inside a Litho text without touching the view tree.
+     */
+    private static final class CopyMessageSpan extends ClickableSpan {
+        private final String message;
+
+        CopyMessageSpan(String message) {
+            this.message = message;
+        }
+
+        @Override
+        public void onClick(@NonNull View widget) {
+            copyToClipboard(message);
+            showCopiedToast();
+        }
+
+        @Override
+        public void updateDrawState(@NonNull TextPaint paint) {
+            paint.setColor(COPY_BUTTON_COLOR);
+            paint.setUnderlineText(false);
         }
     }
 
@@ -1043,9 +1094,9 @@ public final class LiveChatTranslatePatch {
     private static void runVisibleScan() {
         scanScheduled.set(0);
         if (isChatListGone()) {
-            // The chat was closed. A translation that already arrived is still written into its row,
-            // as the row can be on screen in a paused replay where no new rows are created. Then the
-            // queued requests are dropped so nothing is sent for a chat that is gone.
+            // No row for a while and nothing in flight. A translation that already arrived is still
+            // written into its row, as the row can be on screen in a paused replay where no new rows
+            // are created. Only then are the queued requests dropped.
             if (hasRowWaitingToApply()) {
                 requestRelayout();
             }
@@ -1075,8 +1126,6 @@ public final class LiveChatTranslatePatch {
             // stay untranslated until a later scan picks them up.
             queueTranslation(span.messageBody, span.language, span.cacheKey);
         }
-
-        attachCopyListeners();
 
         if (hasRowWaitingToApply()) {
             // Rows whose translation is ready but not written yet. Without this the last groups
@@ -1405,14 +1454,17 @@ public final class LiveChatTranslatePatch {
             }
         }
 
-        applyTranslationStyle(builder, translatedStart, translatedEnd);
-
         if (builder.length() == 0) {
             // Nothing to show, so the row keeps its original text instead of going blank.
             return baseText;
         }
 
         applyTranslationStyle(builder, translatedStart, translatedEnd);
+
+        // Appended before the row span, so the button belongs to the row and is laid out with it.
+        if (Settings.LIVE_CHAT_TRANSLATE_COPY_BUTTON.get()) {
+            appendCopyButton(builder, originalMessage);
+        }
 
         builder.setSpan(
                 new TranslatedChatSpan(baseText, msgStart, originalMessage, cfgHash),
@@ -1443,8 +1495,9 @@ public final class LiveChatTranslatePatch {
             return;
         }
         for (Object span : spans) {
-            // Our own spans are rebuilt for the new text.
-            if (span instanceof ChatRowSpan) {
+            // Our own spans are rebuilt for the new text. The copy button is not copied either: it is
+            // appended once per rebuilt row, so copying it would stack buttons on every relayout.
+            if (span instanceof ChatRowSpan || span instanceof CopyMessageSpan) {
                 continue;
             }
             final int start = Math.max(source.getSpanStart(span), srcStart) - srcStart + destStart;

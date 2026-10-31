@@ -29,8 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Otros</string>
   <string name="morphe_settings_screen_12_video_title">Vídeo</string>
   <string name="morphe_restore_old_settings_menus_title">Restaurar antigua pantalla de configuración de YouTube</string>
-  <string name="morphe_native_snackbar_title">Mostrar mensajes en el snackbar de YouTube</string>
-  <string name="morphe_native_snackbar_summary">Los mensajes de Morphe, como la confirmación de un botón del reproductor, se muestran en el snackbar de YouTube en lugar de una ventana emergente</string>
+  <string name="morphe_native_snackbar_title">Mostrar mensajes en barra de notificaciones de YouTube</string>
+  <string name="morphe_native_snackbar_summary">Los mensajes de Morphe, como la confirmación de un botón del reproductor, se muestran en la barra de notificaciones de YouTube en lugar de en una ventana emergente</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Eliminar restricciones de reproducción en segundo plano</string>
   <string name="morphe_shorts_disable_background_playback_title">Desactivar reproducción en segundo plano</string>
@@ -61,6 +61,7 @@ Los cambios incluyen:
   <string name="morphe_hide_account_menu_title">Activar el filtro del menú inferior «Biblioteca / Tú»</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Filtro del menú inferior «Biblioteca / Tú»</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Introduce los nombres de los elementos del menú inferior «Biblioteca / Tú» que quieres filtrar, separados por saltos de línea</string>
+  <string name="morphe_hide_account_menu_downloads_title">Ocultar Descargas</string>
   <string name="morphe_hide_album_cards_title">Ocultar tarjetas de álbum</string>
   <string name="morphe_hide_album_cards_summary">Oculta las tarjetas de álbum debajo de la descripción del artista</string>
   <string name="morphe_hide_artist_cards_title">Ocultar tarjetas de artista</string>
@@ -515,8 +516,23 @@ Después de abrir por primera vez un vídeo con el botón «Preguntar», la func
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Todas las opciones</string>
   <string name="morphe_shorts_download_flyout_button_title">Mostrar descarga en el menú de Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Añade un elemento de menú desplegable del descargador externo al reproductor de Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Añade un elemento de descarga al menú del reproductor de Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Descargar</string>
+  <string name="morphe_export_download_folder_title">Exportar vídeos guardados</string>
+  <string name="morphe_export_download_folder_summary">"Exporta los vídeos guardados en la aplicación al almacenamiento de tu dispositivo. Pulsa para cambiar la carpeta de exportación
+
+Carpeta de exportación: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Carpeta de exportación</string>
+  <string name="morphe_export_download_folder_change">Cambiar carpeta</string>
+  <string name="morphe_export_download_folder_changed">Carpeta de exportación cambiada</string>
+  <string name="morphe_export_download_folder_reset">Restablecer carpeta de exportación</string>
+  <string name="morphe_export_download_flyout_title">Exportar al dispositivo</string>
+  <string name="morphe_export_download_started">Exportando vídeo</string>
+  <string name="morphe_export_download_progress">Exportando vídeo: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Exportaciones de vídeos</string>
+  <string name="morphe_export_download_saved">Vídeo exportado a %s</string>
+  <string name="morphe_export_download_failed">No se ha podido exportar el vídeo</string>
+  <string name="morphe_export_download_canceled">Exportación cancelada</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducción con voz</string>
   <string name="morphe_vot_screen_summary">Lee en voz alta los subtítulos del vídeo mediante la síntesis de texto a voz del dispositivo, sincronizada con la reproducción</string>
@@ -623,10 +639,6 @@ Información: Puede que no funcione en transmisiones en directo"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Guardar en \'Ver más tarde\'</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Mostrar botón \'Guardar para ver más tarde\' en el menú flotante de ajustes del reproductor</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Permite guardar el vídeo que se está viendo en \'Ver más tarde\' desde el menú flotante de ajustes del vídeo</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Mostrar botón \'Guardar para ver más tarde\' en videos infantiles</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite guardar vídeos infantiles en \'Ver más tarde\' desde el menú flotante</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Mostrar botón \'Guardar para ver más tarde\' en el menú flotante de Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permite guardar Shorts en \'Ver más tarde\' desde el menú flotante</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Redirigir \"Ver más tarde\" a una lista de reproducción</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Ver más tarde</string>
   <string name="morphe_queue_flyout_title">Añadir a la cola de Morphe</string>
@@ -1269,6 +1281,8 @@ Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">La pantalla de inicio con efecto de resplandor no es compatible con este dispositivo</string>
+  <string name="morphe_splash_screen_duration_title">Duración de animación de inicio</string>
+  <string name="morphe_splash_screen_duration_summary">Cuánto dura la animación de resplandor. Pulsa la animación para omitirla</string>
   <string name="morphe_theme_color_light_title">Fondo del tema claro</string>
   <string name="morphe_theme_color_light_entry_2">Blanco</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Blanco)</string>

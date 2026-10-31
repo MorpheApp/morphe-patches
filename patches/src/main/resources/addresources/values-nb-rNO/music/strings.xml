@@ -716,12 +716,15 @@ Sanger kommer fra tredjepartstjenester som ikke er tilknyttet, sponsorerer eller
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Tilkobla! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Tilkobling feila. Sjekk innstillingene.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Skriv inn API-nøkkelen først</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Test tilkobling</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Henter modeller…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Hent modeller</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Velg en modell</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Kunne ikke hente modeller. Sjekk API-nøkkel eller tilkobling.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Oppfordring</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Modell</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Base-URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Tjenesteforhåndsinnstillinger</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Velg en tjeneste</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API-nøkkel (valgfritt)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Ekstra forespørselstekst (valgfri JSON)</string>

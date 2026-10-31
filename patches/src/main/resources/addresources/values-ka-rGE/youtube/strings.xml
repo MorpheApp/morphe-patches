@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">სხვადასხვა</string>
   <string name="morphe_settings_screen_12_video_title">ვიდეო</string>
   <string name="morphe_restore_old_settings_menus_title">YouTube-ის პარამეტრების ძველი ეკრანის აღდგენა</string>
+  <string name="morphe_native_snackbar_title">შეტყობინებების ჩვენება YouTube-ის snackbar-ში</string>
+  <string name="morphe_native_snackbar_summary">Morphe-ის შეტყობინებები, მაგალითად, პლეერის ღილაკის დადასტურება, ჩნდება YouTube-ის snackbar-ში და არა popup ფანჯარაში</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">ფონური დაკვრის შეზღუდვების მოხსნა</string>
   <string name="morphe_shorts_disable_background_playback_title">ფონური დაკვრის გათიშვა</string>
@@ -513,7 +515,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">აუდიო</string>
   <string name="morphe_external_downloader_quick_options">ყველა ოფცია</string>
   <string name="morphe_shorts_download_flyout_button_title">ჩამოტვირთვის ჩვენება Shorts-ის მენიუში</string>
-  <string name="morphe_shorts_download_flyout_button_summary">ამატებს გარე ჩამტვირთავის ჩამოსაშლელ მენიუს ელემენტს Shorts-ის ప్ლეიერში</string>
   <string name="morphe_shorts_download_flyout_title">ჩამოტვირთვა</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">ხმის ზედsetოვანი თარგმანი</string>
@@ -621,10 +622,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">შენახვა მოგვიანებით საყურებლად</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">აჩვენეთ ღილაკი „შენახვა მოგვიანებით საყურებლად“ მოთამაშის პარამეტრების მენიუში</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">სტრიმინგის პარამეტრების მენიუდან ამტვირთავს მიმდინარე ვიდეოს სექციაში „მოგვიანებით საყურებლად“</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">აჩვენე ღილაკი „შენახვა მოგვიანებით საყურებლად“ ბავშვების ვიდეოებში</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">სამენიურო პანელიდან ამტვირთავს ბავშვებისთვის განკუთვნილ ვიდეოებს სექციაში „მოგვიანებით საყურებლად“</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">აჩვენეთ ღილაკი „შენახვა მოგვიანებით საყურებლად“ Shorts-ის მენიუში</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">სამენიურო პანელიდან ამტვირთავს Shorts-ებს სექციაში „მოგვიანებით საყურებლად“</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">გადაამისამართეთ „მოგვიანებით ნახვა“ ფლეილისტზე</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">მოგვიანებით ნახვა</string>
   <string name="morphe_queue_flyout_title">დაამატეთ Morphe-ის რიგში</string>

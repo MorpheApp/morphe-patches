@@ -718,12 +718,15 @@ Dainų tekstai ateina iš trečiųjų paslaugų, kurios nėra susietos, remiamos
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Prijungta! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Nepavyko prisijungti. Patikrinkite nustatymus.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Pirmiausia įveskite API raktą</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Patikrinti ryšį</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Gaunama modeliai…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Gauti modelius</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Pasirinkite modelį</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Nepavyko gauti modelių. Patikrinkite API raktą arba ryšį.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Promptas</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Modelis</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Pagrindinis URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Paslaugos išmanieji nustatymai</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Pasirinkite tarnybą</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API raktas (nebūtina)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Papildomas užklausos kūnas (nebūtinas JSON)</string>
