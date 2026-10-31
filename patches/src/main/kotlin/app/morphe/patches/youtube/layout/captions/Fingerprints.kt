@@ -434,6 +434,18 @@ internal class CaptionSelectionFingerprint(setter: MethodReference) : Fingerprin
     filters = listOf(methodCall(reference = setter)),
 )
 
+/** Resolve the native default reason during patching, before injecting its field reference. */
+internal fun captionDefaultSelectionFingerprint(enumType: String) = Fingerprint(
+    definingClass = enumType,
+    name = "<clinit>",
+    filters = listOf(
+        string("DEFAULT"),
+        methodCall(name = "<init>", location = MatchAfterWithin(5)),
+        fieldAccess(opcode = Opcode.SPUT_OBJECT, definingClass = "this", type = enumType,
+            location = MatchAfterImmediately()),
+    ),
+)
+
 internal object SetSubtitleTrackFingerprint : Fingerprint(
     classFingerprint = SubtitleManagerFingerprintClassFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

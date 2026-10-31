@@ -225,14 +225,12 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
             val setter = SetSubtitleTrackFingerprint.method
             val selector = CaptionSelectionFingerprint(setter).method
             val enumType = selector.parameterTypes[1]
+            val defaultReason = captionDefaultSelectionFingerprint(enumType.toString())
+                .instructionMatches.last().fieldReference
             SetSubtitleTrackFingerprint.classDef.addHelperMethod(
-                "patch_selectCaptionTrack", "Z", listOf(EXTENSION_CAPTION_TRACK_INTERFACE), freeRegisters = 2,
+                "patch_selectCaptionTrack", "Z", listOf(EXTENSION_CAPTION_TRACK_INTERFACE), freeRegisters = 1,
                 smali = """
-                    const-class v0, $enumType
-                    const-string v1, "DEFAULT"
-                    invoke-static { v0, v1 }, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
-                    move-result-object v0
-                    check-cast v0, $enumType
+                    sget-object v0, $defaultReason
                     check-cast p1, $trackType
                     invoke-virtual { p0, p1, v0 }, $selector
                     const/4 v0, 0x1

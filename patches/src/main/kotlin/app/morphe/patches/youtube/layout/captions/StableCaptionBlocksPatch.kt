@@ -13,6 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.layout.hide.player.flyoutmenu.CaptionsOldBottomSheetLayoutInflaterFingerprint
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -30,6 +31,7 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import java.util.logging.Logger
 
@@ -189,10 +191,16 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
             val constructorIndex = match.instructionMatches[1].index
             val register = match.method.getInstruction<OneRegisterInstruction>(newInstanceIndex).registerA
 
+            val constructor = match.method.getInstruction<RegisterRangeInstruction>(constructorIndex)
+            if (constructor.registerCount != 8 || constructor.startRegister != register) {
+                throw PatchException("Unsupported StaticLayout constructor register layout")
+            }
+            val firstArgument = constructor.startRegister + 1
+            val lastArgument = constructor.startRegister + constructor.registerCount - 1
             match.method.apply {
                 replaceInstruction(
                     constructorIndex,
-                    "invoke-static/range { v${register + 1} .. v${register + 7} }, " +
+                    "invoke-static/range { v$firstArgument .. v$lastArgument }, " +
                             "$EXTENSION_CLASS->createLayout($CAPTION_STATIC_LAYOUT_PARAMETERS)Landroid/text/StaticLayout;"
                 )
                 addInstruction(constructorIndex + 1, "move-result-object v$register")
