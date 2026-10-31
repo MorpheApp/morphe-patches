@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
+import android.graphics.Bitmap;
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
 import android.net.Uri;
@@ -483,6 +484,24 @@ public final class LyricsManager {
         }
         final int ms = temporaryOffsetMs;
         runOnLookupThread(() -> TrackOffsetStore.put(track, ms));
+    }
+
+    /** Main thread. */
+    public boolean isPlaying() {
+        return playing;
+    }
+
+    /** The artwork of the current media session track, null if it has none. Main thread. */
+    @Nullable
+    public Bitmap getCurrentArtworkBitmap() {
+        MediaMetadata metadata = currentMetadata;
+        if (metadata == null) {
+            return null;
+        }
+        Bitmap artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART);
+        if (artwork == null) artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_ART);
+        if (artwork == null) artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_DISPLAY_ICON);
+        return artwork != null && !artwork.isRecycled() ? artwork : null;
     }
 
     /** Injection point; main thread. */

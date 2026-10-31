@@ -156,6 +156,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private final Runnable updateTranslateLabelRunnable = this::updateTranslateLabel;
     private final Runnable updateRomanizeLabelRunnable = this::updateRomanizeLabel;
 
+    private final DynamicBackgroundView dynamicBackgroundView;
     private final ScrollView scrollView;
     private final LinearLayout linesContainer;
     private final TextView creditView;
@@ -485,6 +486,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     public LyricsPanelView(Context context) {
         super(context);
+
+        dynamicBackgroundView = new DynamicBackgroundView(context);
+        dynamicBackgroundView.setVisibility(Settings.LYRICS_DYNAMIC_BACKGROUND.get() ? VISIBLE : GONE);
+        addView(dynamicBackgroundView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
         final int horizontalPadding = Dim.dp24;
         final int verticalPadding = Dim.dp16;
@@ -874,6 +879,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
             switch (state) {
                 case LOADING:
+                    dynamicBackgroundView.setVideoId(VideoInformation.getVideoId());
                     if (newLyrics == null || newLyrics.isEmpty()) {
                         showLoading();
                     } else {
@@ -889,6 +895,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                             updateRefreshLabel();
                         }
                     } else {
+                        dynamicBackgroundView.setVideoId(VideoInformation.getVideoId());
                         showLyrics(newLyrics);
                         setOverlayVisible(true);
                         if (Settings.LYRICS_TRANSLATE_ONLY.get()) {
@@ -4374,6 +4381,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         final boolean visible = !Settings.LYRICS_HIDE_INFO.get()
                 && info != null && info.length() > 0;
         creditView.setVisibility(visible ? VISIBLE : GONE);
+    }
+
+    public void applyDynamicBackgroundSettings() {
+        dynamicBackgroundView.setVisibility(Settings.LYRICS_DYNAMIC_BACKGROUND.get() ? VISIBLE : GONE);
+        dynamicBackgroundView.onSettingsChanged();
     }
 
     public void applyLineOverlaySettings() {
