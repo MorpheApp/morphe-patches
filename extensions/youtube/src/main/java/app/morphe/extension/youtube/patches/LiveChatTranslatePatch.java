@@ -766,8 +766,12 @@ public final class LiveChatTranslatePatch {
             }
             if (!shouldTranslate(messageBody, structuredBody)) {
                 logSkip("not translatable", baseText);
-                remember(text, cfgHash, baseText);
-                return baseText;
+                // This row is final: it is never translated, so the button is attached to a text
+                // that does not change again. Attaching it to a pending row is what blanked rows,
+                // as the text changed a second time when the translation arrived.
+                final CharSequence withButton = addCopyButton(baseText, messageBody);
+                remember(text, cfgHash, withButton);
+                return withButton;
             }
 
             if (language == null) {
@@ -783,8 +787,9 @@ public final class LiveChatTranslatePatch {
                     // This row is not translated after all (same text, empty, or excluded). The
                     // pending marker is dropped so the row stops reporting itself as outdated,
                     // which otherwise keeps a relayout running several times per second forever.
-                    remember(text, cfgHash, baseText);
-                    return baseText;
+                    final CharSequence withButton = addCopyButton(baseText, messageBody);
+                    remember(text, cfgHash, withButton);
+                    return withButton;
                 }
                 // The request is made here rather than only from the visible scan: the scan can run
                 // before the row is mounted, and relying on it left rows untranslated forever.
@@ -795,7 +800,7 @@ public final class LiveChatTranslatePatch {
             }
 
             if (skippedLookups.containsKey(key)) {
-                return baseText;
+                return addCopyButton(baseText, messageBody);
             }
 
             final String translated = translationCache.get(key);
@@ -918,6 +923,26 @@ public final class LiveChatTranslatePatch {
      * @param message  the message to copy
      * @return The builder, with the button appended when the setting is on.
      */
+    /**
+     * @return The row with the copy button appended, or the row as is when the setting is off.
+     *         The row is copied, so the text the app built is never changed.
+     */
+    private static CharSequence addCopyButton(CharSequence baseText, String messageBody) {
+        if (!Settings.LIVE_CHAT_TRANSLATE_COPY_BUTTON.get()
+                || messageBody == null || messageBody.isEmpty()) {
+            return baseText;
+        }
+        // A row that already carries a button is returned as is, so the text is loaded again
+        // without appending a second one.
+        if (baseText instanceof Spanned spanned
+                && spanned.getSpans(0, spanned.length(), CopyMessageSpan.class).length > 0) {
+            return baseText;
+        }
+        final SpannableStringBuilder builder = new SpannableStringBuilder(baseText);
+        appendCopyButton(builder, messageBody);
+        return new SpannableString(builder);
+    }
+
     private static SpannableStringBuilder appendCopyButton(
             SpannableStringBuilder builder, String message) {
         if (builder == null || message == null || message.isEmpty()) {
