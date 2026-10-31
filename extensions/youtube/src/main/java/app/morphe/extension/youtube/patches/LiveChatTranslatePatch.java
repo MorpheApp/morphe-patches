@@ -868,23 +868,19 @@ public final class LiveChatTranslatePatch {
     }
 
     /**
-     * @return If the chat list is gone. Only called from the scan, which runs on the main thread at
-     *         most every few hundred milliseconds, as it walks the mounted texts to tell a closed
-     *         chat from a paused one where no new row is created.
+     * @return If the chat list is gone, so the scan can stop. Only called from the scan, which runs
+     *         on the main thread at most every few hundred milliseconds.
+     *         <p>
+     *         A mounted row means the chat is still there. No mounted row does not mean it is gone:
+     *         rows are unmounted while the list scrolls, and a quiet chat creates none, so the scan
+     *         keeps running while a translation is still in flight. Stopping on the first empty look
+     *         left the chat untranslated for the rest of the session.
      */
     private static boolean isChatListGone() {
-        if (isChatIdle()) {
-            return true;
+        if (!isChatIdle()) {
+            return false;
         }
-        for (Object[] entry : LithoRelayoutPatch.findShownTexts()) {
-            if (!(entry[1] instanceof Spanned spanned)) {
-                continue;
-            }
-            if (spanned.getSpans(0, spanned.length(), ChatRowSpan.class).length > 0) {
-                return false;
-            }
-        }
-        return true;
+        return pendingLookups.isEmpty();
     }
 
     private static void scheduleVisibleScan(long delayMs) {
@@ -1043,9 +1039,9 @@ public final class LiveChatTranslatePatch {
     private static void runVisibleScan() {
         scanScheduled.set(0);
         if (isChatListGone()) {
-            // The chat was closed. A translation that already arrived is still written into its row,
-            // as the row can be on screen in a paused replay where no new rows are created. Then the
-            // queued requests are dropped so nothing is sent for a chat that is gone.
+            // No row for a while and nothing in flight. A translation that already arrived is still
+            // written into its row, as the row can be on screen in a paused replay where no new rows
+            // are created. Only then are the queued requests dropped.
             if (hasRowWaitingToApply()) {
                 requestRelayout();
             }
