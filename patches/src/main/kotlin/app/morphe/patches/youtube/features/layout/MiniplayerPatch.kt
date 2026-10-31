@@ -1,8 +1,8 @@
 package app.morphe.patches.youtube.features.layout
 
+import app.morphe.patches.youtube.layout.miniplayer.miniplayerPatch
+
 /**
- * Miniplayer-specific layout logic.
+ * Migration bridge for the legacy miniplayer patch implementation.
  */
-object MiniplayerPatch {
-    const val NAME = "MiniplayerPatch"
-}
+internal val miniplayerPatch = app.morphe.patches.youtube.layout.miniplayer.miniplayerPatch

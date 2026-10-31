@@ -1,8 +1,8 @@
 package app.morphe.patches.youtube.features.player
 
+import app.morphe.patches.youtube.video.videoid.videoIdPatch
+
 /**
- * Video ID-related logic for YouTube player integration.
+ * Migration bridge for the legacy video id patch implementation.
  */
-object VideoIdPatch {
-    const val NAME = "VideoIdPatch"
-}
+internal val videoIdPatch = app.morphe.patches.youtube.video.videoid.videoIdPatch
