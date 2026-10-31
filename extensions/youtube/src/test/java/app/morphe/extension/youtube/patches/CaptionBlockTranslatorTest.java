@@ -14,6 +14,8 @@ public class CaptionBlockTranslatorTest {
         final ByteArrayOutputStream sent = new ByteArrayOutputStream();
         boolean closed, disconnected, outputClosed;
         String retry, redirect;
+        final Map<String, String> headers = new HashMap<>();
+        public void setRequestProperty(String name, String value) { headers.put(name, value); super.setRequestProperty(name, value); }
         Reply(int status, String body) throws Exception {
             super(new URL("https://test.invalid")); responseCode = status;
             bytes = body.getBytes(StandardCharsets.UTF_8);
@@ -53,6 +55,23 @@ public class CaptionBlockTranslatorTest {
                 new JSONArray().put(new org.json.JSONObject().put("text", value).put("to", "de"))));
         return out.toString();
     }
+    static String google(String value) throws Exception {
+        return new JSONArray().put(new JSONArray().put(value)).toString();
+    }
+    @Test public void googleSuccessDoesNotContactMicrosoft() throws Exception {
+        Fixture f = new Fixture();
+        f.add(200, google("eins"));
+        assertEquals(List.of("eins"), f.translate("one"));
+        assertEquals(1, f.urls.size());
+        assertTrue(f.urls.get(0).startsWith("https://translate-pa.googleapis.com/"));
+    }
+    @Test public void googleSendsEscapedTextWithExplicitSourceAndTarget() throws Exception {
+        Fixture f = new Fixture(); Reply reply = f.add(200, google("eins"));
+        assertEquals(List.of("eins"), f.translate("<one>&"));
+        assertEquals("[[[\"&lt;one&gt;&amp;\"],\"en\",\"de\"],\"wt_lib\"]", reply.sent.toString("UTF-8"));
+        assertEquals("application/json+protobuf", reply.headers.get("Content-Type"));
+        assertFalse(reply.headers.get("X-Goog-API-Key").isBlank());
+    }
     @Test public void sameLanguageReturnsImmutableOriginalWithoutNetwork() throws Exception {
         Fixture f = new Fixture();
         List<String> input = new ArrayList<>(Arrays.asList("hello"));
@@ -73,7 +92,7 @@ public class CaptionBlockTranslatorTest {
         assertTrue(f.urls.isEmpty());
     }
     @Test public void preservesOrderEscapesRequestAndDecodesExactlyOnce() throws Exception {
-        Fixture f = new Fixture();
+        Fixture f = new Fixture(); f.add(500, "unavailable"); f.add(500, "unavailable");
         Reply r = f.add(200, ms("&amp;lt; &lt; &gt; &amp;", "zwei"));
         assertEquals(Arrays.asList("&lt; < > &", "zwei"), f.translate("<x>&", "two"));
         assertEquals("[\"&lt;x&gt;&amp;\",\"two\"]", r.sent.toString("UTF-8"));
@@ -82,20 +101,27 @@ public class CaptionBlockTranslatorTest {
         assertTrue(r.getConnectTimeout() > 0 && r.getConnectTimeout() <= 8000);
         assertTrue(r.getReadTimeout() > 0 && r.getReadTimeout() <= 8000);
     }
-    @Test public void malformedMicrosoftFallsBackOnceAndJoinsGoogleSegments() throws Exception {
+    @Test public void malformedGoogleFallsBackOnceToMicrosoft() throws Exception {
         Fixture f = new Fixture(); f.add(200, "[]");
-        Reply g = f.add(200, "[[[\"ein\"],[\" zwei\"]],null,\"en\"]");
-        assertEquals(Arrays.asList("ein zwei"), f.translate("one two"));
-        assertEquals(2, f.urls.size()); assertTrue(f.urls.get(1).contains("client=gtx"));
-        assertEquals("GET", g.getRequestMethod()); assertTrue(g.closed && g.disconnected);
+        Reply fallback = f.add(200, ms("ein zwei"));
+        assertEquals(List.of("ein zwei"), f.translate("one two"));
+        assertEquals(2, f.urls.size());
+        assertTrue(f.urls.get(1).startsWith("https://edge.microsoft.com/"));
+        assertEquals("[\"one two\"]", fallback.sent.toString("UTF-8"));
+    }
+    @Test public void googlePreservesWholeTranslationAndClosesConnection() throws Exception {
+        Fixture f = new Fixture();
+        Reply g = f.add(200, google("ein zwei"));
+        assertEquals(List.of("ein zwei"), f.translate("one two"));
+        assertEquals("POST", g.getRequestMethod()); assertTrue(g.closed && g.disconnected);
     }
     @Test public void rejectsPartialNullBlankOversizedAndWrongLanguageWithoutCaching() throws Exception {
         for (String bad : Arrays.asList("[]", ms("only one"), "[null,null]", ms("a","b").replace("\"de\"", "\"tr\""))) {
-            Fixture f = new Fixture(); f.add(200, bad); f.add(500, "error"); f.add(500, "error");
+            Fixture f = new Fixture(); f.add(500, "error"); f.add(500, "error"); f.add(200, bad);
             assertThrows(IOException.class, () -> f.translate("first", "second"));
-            f.add(200, ms("eins", "zwei"));
+            f.add(500, "error"); f.add(500, "error"); f.add(200, ms("eins", "zwei"));
             assertEquals(Arrays.asList("eins", "zwei"), f.translate("first", "second"));
-            assertEquals(4, f.urls.size());
+            assertEquals(6, f.urls.size());
         }
     }
     @Test public void rejectsNonStringMicrosoftFieldsWithoutCaching() throws Exception {
@@ -103,34 +129,33 @@ public class CaptionBlockTranslatorTest {
             for (String invalid : Arrays.asList("null", "42", "{}")) {
                 String text = field.equals("text") ? invalid : "\"eins\"";
                 String language = field.equals("to") ? invalid : "\"de\"";
-                Fixture f = new Fixture();
+                Fixture f = new Fixture(); f.add(500, "Google unavailable");
                 f.add(200, "[{\"translations\":[{\"text\":" + text + ",\"to\":" + language + "}]}]");
-                f.add(500, "fallback failed");
                 assertThrows(IOException.class, () -> f.translate("one"));
-                f.add(200, ms("eins"));
+                f.add(500, "Google unavailable"); f.add(200, ms("eins"));
                 assertEquals(Arrays.asList("eins"), f.translate("one"));
-                assertEquals(3, f.urls.size());
+                assertEquals(4, f.urls.size());
             }
         }
     }
     @Test public void rejectsNonStringGoogleSegmentsWithoutCaching() throws Exception {
         for (String invalid : Arrays.asList("null", "42", "{}")) {
-            Fixture f = new Fixture(); f.add(400, "unsupported");
-            f.add(200, "[[[" + invalid + "]]]");
+            Fixture f = new Fixture(); f.add(200, "[[" + invalid + "]]");
+            f.add(500, "Microsoft unavailable");
             assertThrows(IOException.class, () -> f.translate("one"));
-            f.add(200, ms("eins"));
+            f.add(200, google("eins"));
             assertEquals(Arrays.asList("eins"), f.translate("one"));
             assertEquals(3, f.urls.size());
         }
     }
     @Test public void cacheIncludesSourceTargetAndEvictsOldestBeyond256() throws Exception {
-        Fixture f = new Fixture(); f.add(200, ms("eins")); f.translate("one");
+        Fixture f = new Fixture(); f.add(200, google("eins")); f.translate("one");
         assertEquals(Arrays.asList("eins"), f.translate("one")); assertEquals(1, f.urls.size());
-        f.add(200, ms("anderes")); f.translator.translate("fr", "de", Arrays.asList("one"));
-        f.add(200, ms("anders").replace("\"de\"", "\"nl\""));
+        f.add(200, google("anderes")); f.translator.translate("fr", "de", Arrays.asList("one"));
+        f.add(200, google("anders"));
         f.translator.translate("en", "nl", Arrays.asList("one"));
-        for (int i = 0; i < 256; i++) { f.add(200, ms("text")); f.translate("value" + i); }
-        f.add(200, ms("neu")); assertEquals(Arrays.asList("neu"), f.translate("one"));
+        for (int i = 0; i < 256; i++) { f.add(200, google("text")); f.translate("value" + i); }
+        f.add(200, google("neu")); assertEquals(Arrays.asList("neu"), f.translate("one"));
         assertEquals(260, f.urls.size());
     }
     @Test public void providerCooldownsAreBoundedAndIndependent() throws Exception {
@@ -140,16 +165,16 @@ public class CaptionBlockTranslatorTest {
             assertThrows(IOException.class, () -> f.translate("one"));
             assertThrows(IOException.class, () -> f.translate("another"));
             assertEquals(2, f.urls.size()); assertTrue(primary.disconnected && fallback.disconnected);
-            f.now = 300_000; f.add(200, ms("eins")); f.translate("one"); assertEquals(3, f.urls.size());
+            f.now = 300_000; f.add(200, google("eins")); f.translate("one"); assertEquals(3, f.urls.size());
         }
     }
     @Test public void partialGoogleBatchCachesSuccessfulTextOnly() throws Exception {
-        Fixture f = new Fixture(); f.add(500, "bad");
-        f.add(200, "[[[\"eins\"]]]"); f.add(200, "[[[null]]]");
+        Fixture f = new Fixture();
+        f.add(200, google("eins")); f.add(200, "[[null]]"); f.add(500, "bad");
         assertEquals(Arrays.asList("eins", null), f.translate("one", "two"));
-        Reply missing = f.add(200, ms("zwei"));
+        f.add(200, google("zwei"));
         assertEquals(List.of("eins", "zwei"), f.translate("one", "two"));
-        assertEquals("[\"two\"]", missing.sent.toString("UTF-8"));
+        assertEquals("https://translate-pa.googleapis.com/v1/translateHtml", f.urls.get(3));
         assertEquals(4, f.urls.size());
     }
     @Test public void slowPrimaryLeavesFallbackTimeWithinOverallBudget() throws Exception {
@@ -162,14 +187,15 @@ public class CaptionBlockTranslatorTest {
             }
         };
         f.replies.add(slow);
-        Reply fallback = f.add(200, "[[[\"eins\"]]]");
+        Reply fallback = f.add(200, ms("eins"));
         assertEquals(List.of("eins"), f.translate("one"));
         assertTrue(fallback.getReadTimeout() > 0 && fallback.getReadTimeout() <= 4000);
     }
-    @Test public void verificationRedirectBacksOffOnlyTheBlockedFallback() throws Exception {
-        Fixture f = new Fixture(); f.add(500, "unavailable");
+    @Test public void verificationRedirectBacksOffOnlyGoogle() throws Exception {
+        Fixture f = new Fixture();
         Reply challenge = f.add(302, "verify");
         challenge.redirect = "https://www.google.com/sorry/index?continue=opaque";
+        f.add(500, "unavailable");
         assertThrows(IOException.class, () -> f.translate("one"));
         assertTrue(challenge.disconnected);
         f.add(500, "still unavailable");
@@ -177,9 +203,9 @@ public class CaptionBlockTranslatorTest {
         assertEquals(3, f.urls.size());
         f.add(200, ms("eins"));
         assertEquals(List.of("eins"), f.translate("one"));
-        f.now = 60000; f.add(500, "unavailable"); f.add(200, "[[[\"zwei\"]]]");
+        f.now = 60000; f.add(200, google("zwei"));
         assertEquals(List.of("zwei"), f.translate("two"));
-        assertEquals(6, f.urls.size());
+        assertEquals(5, f.urls.size());
     }
     @Test public void expiredBudgetPreventsFallback() throws Exception {
         Fixture f = new Fixture();
@@ -193,21 +219,23 @@ public class CaptionBlockTranslatorTest {
     @Test public void fallbackDenialDoesNotBlockHealthyPrimary() throws Exception {
         Fixture f = new Fixture(); f.add(400, "unsupported"); f.add(403, "forbidden");
         assertThrows(IOException.class, () -> f.translate("one"));
-        f.now = 59999; f.add(200, ms("eins")); assertEquals(List.of("eins"), f.translate("one"));
+        f.now = 59999; f.add(200, google("eins")); assertEquals(List.of("eins"), f.translate("one"));
         assertEquals(3, f.urls.size());
-        f.now = 60000; f.add(500, "unavailable"); f.add(200, "[[[\"zwei\"]]]");
+        f.now = 60000; f.add(500, "unavailable"); f.add(200, ms("zwei"));
         assertEquals(List.of("zwei"), f.translate("two")); assertEquals(5, f.urls.size());
     }
     @Test public void acceptsCodepointsRatherThanUtf16UnitsAndPreservesLanguageSubtags() throws Exception {
         Fixture f = new Fixture();
         String source = "😀".repeat(512);
-        f.add(200, ms("😀".repeat(4096)).replace("\"de\"", "\"sr-Latn\""));
+        Reply reply = f.add(200, google("😀".repeat(4096)));
         assertEquals(8192, f.translator.translate("zh-Hant", "sr-Latn", Arrays.asList(source)).get(0).length());
-        assertTrue(f.urls.get(0).contains("from=zh-hant&to=sr-latn"));
+        JSONArray request = new JSONArray(reply.sent.toString("UTF-8")).getJSONArray(0);
+        assertEquals("zh-hant", request.getString(1));
+        assertEquals("sr-latn", request.getString(2));
     }
     @Test public void connectionTimeIsRemovedFromResponseTimeout() throws Exception {
         Fixture f = new Fixture();
-        Reply slowConnect = new Reply(200, ms("eins")) {
+        Reply slowConnect = new Reply(200, google("eins")) {
             @Override public void connect() { f.now = 3000; }
             @Override public int getResponseCode() {
                 assertTrue("read timeout includes time already spent connecting", getReadTimeout() <= 1000);
@@ -217,7 +245,7 @@ public class CaptionBlockTranslatorTest {
         f.replies.add(slowConnect); f.translate("one");
     }
     @Test public void unicodeBlankOutputIsRejected() throws Exception {
-        Fixture f = new Fixture(); f.add(200, ms("\u2003")); f.add(500, "bad");
+        Fixture f = new Fixture(); f.add(200, google("\u2003")); f.add(500, "bad");
         assertThrows(IOException.class, () -> f.translate("one"));
     }
     @Test public void responseSizeIsBoundedAndResourcesCloseOnFailure() throws Exception {
@@ -228,17 +256,18 @@ public class CaptionBlockTranslatorTest {
         assertEquals(2, f.urls.size());
     }
     @Test public void partialMicrosoftResultCachesValidSiblingAndRetriesOnlyMissingText() throws Exception {
-        Fixture f = new Fixture(); f.add(200, ms("eins", "")); f.add(500, "unavailable");
+        Fixture f = new Fixture(); f.add(500, "unavailable"); f.add(500, "unavailable");
+        f.add(200, ms("eins", ""));
         assertEquals(Arrays.asList("eins", null), f.translate("one", "two"));
-        Reply missing = f.add(200, ms("zwei"));
+        f.add(500, "unavailable"); Reply missing = f.add(200, ms("zwei"));
         assertEquals(List.of("eins", "zwei"), f.translate("one", "two"));
         assertEquals("[\"two\"]", missing.sent.toString("UTF-8"));
     }
     @Test public void primaryProviderCooldownDoesNotBlockIndependentFallback() throws Exception {
-        Fixture f = new Fixture(); f.add(429, "limited"); f.add(200, "[[[\"eins\"]]]");
+        Fixture f = new Fixture(); f.add(429, "limited"); f.add(200, ms("eins"));
         assertEquals(List.of("eins"), f.translate("one"));
-        f.add(200, "[[[\"zwei\"]]]"); assertEquals(List.of("zwei"), f.translate("two"));
-        assertEquals(3, f.urls.size()); assertTrue(f.urls.get(2).contains("translate.googleapis.com"));
+        f.add(200, ms("zwei")); assertEquals(List.of("zwei"), f.translate("two"));
+        assertEquals(3, f.urls.size()); assertTrue(f.urls.get(2).contains("edge.microsoft.com"));
     }
 
     @Test public void fallbackFailurePreservesLongestProviderRetryDelay() throws Exception {
