@@ -1863,4 +1863,32 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_max_length_title">Max comment length</string>
     <string name="morphe_niconico_comments_max_length_summary">Hides comments with more characters than this. Each emoji counts as one character</string>
     <string name="morphe_niconico_comments_max_length_no_limit">No limit</string>
+
+    <string name="morphe_live_chat_translate_screen_title">Live chat translation</string>
+    <string name="morphe_live_chat_translate_screen_summary">Translate live chat and live chat replay messages</string>
+    <string name="morphe_live_chat_translate_title">Translate live chat</string>
+    <string name="morphe_live_chat_translate_summary">Translates live chat and live chat replay messages</string>
+    <string name="morphe_live_chat_translate_target_title">Translate to</string>
+    <string name="morphe_live_chat_translate_target_summary">Target language code such as id, en, ja. Leave empty to follow the device language</string>
+    <string name="morphe_live_chat_translate_source_title">Translate from</string>
+    <string name="morphe_live_chat_translate_source_summary">Source language code such as ja, ko, en. Leave empty to detect it automatically</string>
+    <string name="morphe_live_chat_translate_exclude_title">Excluded source languages</string>
+    <string name="morphe_live_chat_translate_exclude_summary">Comma separated codes such as id,en. Detected messages in these languages are left as-is</string>
+    <string name="morphe_live_chat_translate_only_visible_title">Translate only visible messages</string>
+    <string name="morphe_live_chat_translate_only_visible_summary">Translates a message once it is on screen. Keeps busy chats and replays smooth</string>
+    <string name="morphe_live_chat_translate_style_title">Translation style</string>
+    <string name="morphe_live_chat_translate_style_summary">How the translation is shown in each chat row</string>
+    <string name="morphe_live_chat_translate_style_translated_only">Translated only</string>
+    <string name="morphe_live_chat_translate_style_original_and_translated">Original (translated)</string>
+    <string name="morphe_live_chat_translate_style_translated_and_original">(Translated) original</string>
+    <string name="morphe_live_chat_translate_copy_button_title">Show copy message button</string>
+    <string name="morphe_live_chat_translate_copy_button_summary">Adds a small copy button to every chat message</string>
+    <string name="morphe_live_chat_translate_bold_title">Bold translated text</string>
+    <string name="morphe_live_chat_translate_bold_summary">Shows the translated text in bold</string>
+    <string name="morphe_live_chat_translate_use_color_title">Custom translated text color</string>
+    <string name="morphe_live_chat_translate_use_color_summary">Applies a custom color to the translated text</string>
+    <string name="morphe_live_chat_translate_color_title">Translated text color</string>
+    <string name="morphe_live_chat_translate_color_summary">Set the hex color of the translated text</string>
+    <string name="morphe_live_chat_translate_max_length_title">Maximum message length</string>
+    <string name="morphe_live_chat_translate_max_length_summary">Longer messages are shown untranslated. Zero means no limit</string>
 </resources>

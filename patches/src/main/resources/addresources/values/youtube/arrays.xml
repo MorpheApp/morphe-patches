@@ -1377,6 +1377,18 @@
         <item>CUSTOM</item>
     </string-array>
 
+    <!-- layout.livechat.liveChatTranslatePatch -->
+    <string-array name="morphe_live_chat_translate_style_entries">
+        <item>@string/morphe_live_chat_translate_style_translated_only</item>
+        <item>@string/morphe_live_chat_translate_style_original_and_translated</item>
+        <item>@string/morphe_live_chat_translate_style_translated_and_original</item>
+    </string-array>
+    <string-array name="morphe_live_chat_translate_style_entry_values">
+        <item>TRANSLATED_ONLY</item>
+        <item>ORIGINAL_AND_TRANSLATED</item>
+        <item>TRANSLATED_AND_ORIGINAL</item>
+    </string-array>
+
     <!-- interaction.pictureinpicture.changePipActionsPatch -->
     <string-array name="morphe_pip_action_entries">
         <item>@string/morphe_pip_action_entry_default</item>
