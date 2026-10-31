@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/2528
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.music.patches.downloads;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -65,18 +72,33 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         implements OfflinePlaybackService.PlaybackListener {
 
     private static final int SEEK_BAR_HEIGHT_DP = 3;
+
+    /** The bar is drawn thin but stays easy to hit. */            
     private static final int SEEK_BAR_TOUCH_DP = 18;
     private static final int SEEK_THUMB_DP = 12;
+                
     private static final int SEARCH_BAR_HEIGHT_DP = 46;
     private static final long SEARCH_ANIMATION_MILLISECONDS = 180;
+
+    /** Dimming the foreground gives a readable secondary on any background. */            
     private static final float SECONDARY_DIM = 0.72f;
+    
+    /** How much the background of the playing row is lifted out of the surrounding one. */           
     private static final float PLAYING_ROW_BRIGHTNESS = 1.35f;
+                
     private static final int ROW_CORNER_DP = 8;
+                
     private static final int PILL_CORNER_DP = 20;
+
+    /** Rows are 56dp, so a sample of the stored cover is already more than enough. */            
     private static final int ROW_ARTWORK_PIXELS = 256;
+                
     private static final int ARTWORK_CORNER_DP = 4;
+                
     private static final int MENU_WIDTH_DP = 220;
     private static final int MENU_CORNER_DP = 12;
+
+    /** Icon buttons are square, otherwise their round ripple is drawn as a stretched oval. */            
     private static final int ICON_BUTTON_DP = 48;
 
     /** Tracks the actual queue sent to OfflinePlaybackService (whether main list or playlist). */
@@ -104,15 +126,23 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private ImageButton playlistsToggleButton;
 
     private boolean showingPause;
+
+    /**
+     * Every downloaded track, read once per refresh instead of on every list or playback update.
+     */            
     private List<OfflineTrack> tracks = new ArrayList<>();
+
+    /** Each row, kept so the playing one can be marked without redrawing the list. */            
     private final List<View> rowViews = new ArrayList<>();
+                
     private List<String> displayedTrackPaths = new ArrayList<>();
     private String playingPath = "";
     private String query = "";
     private TextView summary;
     private EditText searchBar;
-    private boolean userSeeking;
+    private boolean userSeeking;                
 
+    /** How the catalogue is ordered, remembered between visits. */            
     private enum SortOrder {
         ARTIST, TITLE, SIZE;
 
@@ -125,6 +155,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         }
     }
 
+    /** Updates the active playback queue so mini-player skip buttons reference the correct list. */
     static void setActiveQueue(List<String> queue) {
         activeQueuePaths.clear();
         activeQueuePaths.addAll(queue);
@@ -169,10 +200,12 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         super.onStop();
     }
 
+    /** Reloads the list of local playlists from storage. */
     private void refreshCreatedPlaylists() {
         createdPlaylists = playlistManager.loadPlaylists();
     }
 
+    /** Toggles the visibility state of the collapsible created playlists section. */
     private void toggleCreatedPlaylistsSection() {
         playlistsExpanded = !playlistsExpanded;
         if (createdPlaylistsContainer != null) {
@@ -181,6 +214,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         renderCreatedPlaylists();
     }
 
+    /** Renders the collapsible created playlists list view. */
     private void renderCreatedPlaylists() {
         if (createdPlaylistsContainer == null) return;
         createdPlaylistsContainer.removeAllViews();
@@ -266,6 +300,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         createdPlaylistsContainer.addView(divider, divParams);
     }
 
+    /** Opens the dedicated LocalPlaylistFragment page for managing a specific playlist. */
     private void openPlaylistPage(OfflinePlaylist playlist) {
         if (getFragmentManager() == null) return;
         int containerId = android.R.id.content;
@@ -286,6 +321,9 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                 .commit();
     }
 
+    /**
+     * Reads the catalogue from disk. Every other method works off this snapshot.
+     */
     private void loadTracks() {
         tracks = new ArrayList<>();
         File[] files = musicRoot.listFiles(file -> file.isFile()
@@ -304,8 +342,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
         return switch (SortOrder.saved()) {
             case TITLE -> byTitle;
-            case SIZE -> Comparator.comparingLong((OfflineTrack track) -> track.audioFile().length()).reversed();
-            default -> Comparator.comparing((OfflineTrack track) -> track.displayArtist().toLowerCase(Locale.ROOT))
+            case SIZE -> Comparator.comparingLong(
+                    (OfflineTrack track) -> track.audioFile().length()).reversed();
+            default -> Comparator.comparing(
+                    (OfflineTrack track) -> track.displayArtist().toLowerCase(Locale.ROOT))
                     .thenComparing(byTitle);
         };
     }
@@ -316,11 +356,15 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                 || track.displayArtist().toLowerCase(Locale.ROOT).contains(query);
     }
 
+    /**
+     * The search bar and the summary sit above the list, so they survive a redraw of the rows.
+     */
     private LinearLayout createHeader() {
         LinearLayout header = new LinearLayout(getActivity());
         header.setOrientation(LinearLayout.VERTICAL);
         header.setPadding(dp(16), dp(8), dp(16), dp(6));
 
+        // Hidden until asked for, the way the settings screen reveals its own search.
         searchBar = CustomDialog.createSearchBar(getActivity(),
                 str("morphe_music_downloads_search_hint"), text -> {
                     query = text.trim().toLowerCase(Locale.ROOT);
@@ -397,6 +441,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         return header;
     }
 
+    /** Creates a styled pill button matching the app's UI guidelines. */
     private TextView pillButton(String label, boolean primary) {
         TextView btn = text(label, 13, primary ? background() : foreground());
         btn.setPadding(dp(14), dp(6), dp(14), dp(6));
@@ -404,6 +449,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         return btn;
     }
 
+    /** Creates a rounded ripple background for pill buttons that adapts to any theme background. */
     private Drawable createPillBackground(boolean primary) {
         final int fg = foreground();
         GradientDrawable shape = new GradientDrawable();
@@ -418,18 +464,21 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                 CustomDialog.createRoundedBackground(PILL_CORNER_DP, Color.WHITE));
     }
 
+    /** Toggles multi-select mode for batch track operations. */
     private void toggleSelectionMode() {
         selectionMode = !selectionMode;
         selectedTrackPaths.clear();
         updateSelectionUi();
     }
 
+    /** Clears all selected tracks and exits selection mode. */
     private void clearSelection() {
         selectedTrackPaths.clear();
         selectionMode = false;
         updateSelectionUi();
     }
 
+    /** Refreshes UI states when entering or exiting multi-select mode. */
     private void updateSelectionUi() {
         if (newPlaylistSelectButton != null) {
             newPlaylistSelectButton.setText(selectionMode
@@ -443,6 +492,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         refreshRowsSelectionState();
     }
 
+    /** Shows or hides checkboxes on all song rows depending on multi-select state. */
     private void renderTracksWithSelectionState() {
         for (int i = 0; i < songsList.getChildCount(); i++) {
             View child = songsList.getChildAt(i);
@@ -457,6 +507,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         }
     }
 
+    /** Toggles individual track selection state. */
     private void toggleSelected(OfflineTrack track) {
         String path = track.audioFile().getAbsolutePath();
         if (!selectedTrackPaths.remove(path)) {
@@ -468,6 +519,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         refreshRowsSelectionState();
     }
 
+    /** Updates checkbox checked states across visible rows. */
     private void refreshRowsSelectionState() {
         for (int i = 0; i < songsList.getChildCount(); i++) {
             View row = songsList.getChildAt(i);
@@ -484,6 +536,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         }
     }
 
+    /** Triggers adding selected tracks to an existing or new local playlist. */
     private void addSelectedToPlaylist() {
         if (selectedTrackPaths.isEmpty()) {
             Utils.showToastShort("Select songs first");
@@ -492,6 +545,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         showAddTracksToPlaylistDialog(new ArrayList<>(selectedTrackPaths), true);
     }
 
+    /** Displays a dialog allowing the user to pick a target playlist to add songs into. */
     private void showAddTracksToPlaylistDialog(List<String> pathsToAdd, boolean exitSelectOnSave) {
         if (createdPlaylists.isEmpty()) {
             showCreatePlaylistDialog("", pathsToAdd, exitSelectOnSave);
@@ -570,6 +624,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         showCreatePlaylistDialog("", new ArrayList<>(selectedTrackPaths), true);
     }
 
+    /** Opens a dialog to create a new local playlist with the given tracks. */
     private void showCreatePlaylistDialog(String defaultName, List<String> pathsToSave, boolean exitSelectOnSave) {
         final EditText input = new EditText(getActivity());
         input.setHint("Playlist name");
@@ -612,6 +667,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         ).first.show();
     }
 
+    /** Opens the search field, or closes it and drops the query. */
     private void toggleSearch() {
         final boolean opening = searchBar.getVisibility() != View.VISIBLE;
         InputMethodManager keyboard = (InputMethodManager)
@@ -636,6 +692,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                 .withEndAction(() -> searchBar.setVisibility(View.GONE)).start();
     }
 
+    /** The height is animated by hand, since a collapsing child otherwise jumps the list. */
     private void slideSearchBar(int target) {
         ValueAnimator animator = ValueAnimator.ofInt(searchBar.getHeight(), target);
         animator.setDuration(SEARCH_ANIMATION_MILLISECONDS);
@@ -747,6 +804,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         return row;
     }
 
+    /** Lifts the card of the track being played out of the background. */
     private void markPlayingRow() {
         int playingIndex = displayedTrackPaths.indexOf(playingPath);
         for (int i = 0; i < rowViews.size(); i++) {
@@ -754,6 +812,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         }
     }
 
+    /** The ripple is masked to the card, so it does not spill into the neighboring rows. */
     private Drawable rowBackground(boolean playing) {
         Drawable card = playing
                 ? CustomDialog.createRoundedBackground(ROW_CORNER_DP, Utils.adjustColorBrightness(
@@ -774,9 +833,12 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         outer.setOrientation(LinearLayout.VERTICAL);
         outer.setBackgroundColor(ThemeUtils.getDialogBackgroundColor());
 
+        // The surface color of a theme can sit very close to its background, so the bar is
+        // separated by a rule rather than by the fill alone.
         View divider = new View(getActivity());
         divider.setBackgroundColor(rippleColor());
         outer.addView(divider, new LinearLayout.LayoutParams(-1, dp(1)));
+        // Lifts the bar off the gesture area, so the seek bar is not on the screen edge.
         outer.setPadding(0, 0, 0, dp(12));
 
         LinearLayout line = new LinearLayout(getActivity());
@@ -809,6 +871,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
         miniPlay = icon("yt_fill_experimental_play_vd_theme_24",
                 str("morphe_music_downloads_play_pause"));
+        // The morph drawable of the app is 48dp, so whatever the button shows is scaled down to
+        // the 24dp of the icons beside it.
         miniPlay.setScaleType(ImageView.ScaleType.FIT_CENTER);
         miniPlay.setPadding(dp(12), dp(12), dp(12), dp(12));
         miniPlay.setOnClickListener(v -> OfflinePlaybackService.toggle(getActivity()));
@@ -826,8 +890,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private SeekBar createSeekBar() {
         miniSeek = new SeekBar(getActivity());
+        // The bar keeps the gutters of the list, so it reads as a control rather than an edge.
         miniSeek.setPadding(dp(16), 0, dp(16), 0);
         miniSeek.setProgressDrawable(createSeekBarDrawable());
+        // The stock thumb draws a ripple far wider than the bar, so it only appears while dragging.
         miniSeek.setThumb(null);
         miniSeek.setThumbOffset(0);
         miniSeek.setBackground(null);
@@ -862,8 +928,14 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         return thumb;
     }
 
+    /**
+     * The thickness comes from the drawable because {@code setMinHeight} and
+     * {@code setMaxHeight} are only available from API 29.
+     */
     private Drawable createSeekBarDrawable() {
         final int foreground = ThemeUtils.getAppForegroundColor();
+
+        // Dimming the foreground works on any background, unlike lightening a black one.
         Drawable track = roundedBar(Utils.adjustColorBrightness(foreground, 0.3f));
         Drawable played = roundedBar(foreground);
 
@@ -872,6 +944,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         layers.setId(0, android.R.id.background);
         layers.setId(1, android.R.id.progress);
 
+        // A progress drawable is stretched to the view, and the thickness can only be capped
+        // with setMaxHeight from API 29, so the band is inset to the height it should have.
         final int inset = (dp(SEEK_BAR_TOUCH_DP) - dp(SEEK_BAR_HEIGHT_DP)) / 2;
         layers.setLayerInset(0, 0, inset, 0, inset);
         layers.setLayerInset(1, 0, inset, 0, inset);
@@ -901,6 +975,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         });
     }
 
+    /** Starts queue playback for an entire local playlist. */
     private void playOfflinePlaylist(OfflinePlaylist playlist) {
         ArrayList<String> queue = new ArrayList<>();
         for (String path : playlist.trackPaths()) {
@@ -914,7 +989,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             return;
         }
 
-        // Update active queue to the playlist's tracks
         setActiveQueue(queue);
 
         String firstPath = queue.get(0);
@@ -935,6 +1009,9 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         applyTrackVisuals(firstTrack);
     }
 
+    /**
+     * @param selected Index drawn as the active choice, or -1 when the items are plain actions.
+     */
     private void showMenu(View anchor, String[] items, int selected, IntConsumer onPick) {
         ListPopupWindow popup = new ListPopupWindow(getActivity());
         popup.setAnchorView(anchor);
@@ -942,6 +1019,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         popup.setWidth(dp(MENU_WIDTH_DP));
         popup.setModal(true);
         popup.setBackgroundDrawable(menuBackground());
+        // The list draws its own square selector, which would bleed past the rounded background.
         popup.setListSelector(new RippleDrawable(ColorStateList.valueOf(rippleColor()), null,
                 CustomDialog.createRoundedBackground(MENU_CORNER_DP, Color.WHITE)));
         popup.setAdapter(new ArrayAdapter<>(getActivity(), 0, items) {
@@ -961,6 +1039,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         popup.show();
     }
 
+    /**
+     * The surface color of a theme can sit very close to its background, so the menu is outlined
+     * rather than left to rely on the two being far enough apart.
+     */
     private Drawable menuBackground() {
         GradientDrawable background = new GradientDrawable();
         background.setColor(ThemeUtils.getDialogBackgroundColor());
@@ -1053,6 +1135,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             final boolean wasVisible = miniPlayer.getVisibility() == View.VISIBLE;
             miniPlayer.setVisibility(title.isEmpty() ? View.GONE : View.VISIBLE);
 
+            // Decoding the cover on every tick would read the disk twice a second.
             if (!path.equals(playingPath)) {
                 playingPath = path;
                 OfflineTrack track = findByPath(path);
@@ -1071,6 +1154,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             setButtonEnabled(miniPrevious, index > 0);
             setButtonEnabled(miniNext, index >= 0 && index + 1 < currentQueue.size());
 
+            // This runs on every playback tick, so the icon only morphs when the state
+            // actually flips while the bar is on screen to see it happen.
             updatePlayIcon(playing, wasVisible && playing != showingPause);
             miniSeek.setMax(Math.max(1, duration));
             if (!userSeeking) miniSeek.setProgress(position, true);
@@ -1086,8 +1171,13 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                 : "yt_fill_experimental_play_vd_theme_24"));
     }
 
+    /**
+     * The app ships the drawable its own player uses to morph between the two icons.
+     */
     private boolean startIconMorph(boolean playing) {
-        String name = playing ? "player_play_pause_vector_transition" : "player_pause_play_vector_transition";
+        String name = playing
+                ? "player_play_pause_vector_transition"
+                : "player_pause_play_vector_transition";
 
         int identifier = ResourceUtils.getDrawableIdentifier(name + "_delhi");
         if (identifier == 0) identifier = ResourceUtils.getDrawableIdentifier(name);
@@ -1095,6 +1185,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         Activity activity = getActivity();
         if (identifier == 0 || activity == null) return false;
 
+        // It fills itself with a theme attribute of the player, so it has to be read with the
+        // theme of this screen, which defines that attribute as white for the icon tint to work.
         Drawable drawable = activity.getDrawable(identifier);
         if (!(drawable instanceof AnimatedVectorDrawable morph)) return false;
 
@@ -1138,6 +1230,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         return view;
     }
 
+    /** Matches the softly rounded covers the app uses on the home feed. */
     private void roundCorners(View view) {
         final float radius = dp(ARTWORK_CORNER_DP);
         view.setOutlineProvider(new ViewOutlineProvider() {
@@ -1160,10 +1253,12 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private ImageButton icon(String drawable, String description) {
         ImageButton button = icon(ResourceUtils.getDrawable(drawable), description);
+        // Icons of the app carry no color of their own.
         button.setColorFilter(foreground());
         return button;
     }
 
+    /** For drawables that already carry the colors of Morphe. */
     private ImageButton icon(Drawable drawable, String description) {
         ImageButton button = new ImageButton(getActivity());
         button.setImageDrawable(drawable);
