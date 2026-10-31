@@ -69,6 +69,17 @@ public final class LithoRelayoutPatch {
          * @return If the text is outdated, and laying it out again changes it.
          */
         boolean isOutdated();
+
+        /**
+         * Called on the main thread.
+         *
+         * @return If the host of this text may be laid out again. A text drawable is registered
+         *         globally, so a view recycled into another screen still holds it; returning false
+         *         for such a view keeps its screen untouched.
+         */
+        default boolean canRelayoutHost(View host) {
+            return host.isShown();
+        }
     }
 
     /**
@@ -152,6 +163,26 @@ public final class LithoRelayoutPatch {
         return shownSpans;
     }
 
+    /**
+     * Must be called on the main thread.
+     *
+     * @return The host view and the current text of every shown text drawable, so a caller can act
+     *         on the view that displays a text, such as attaching a long press listener.
+     */
+    public static List<Object[]> findShownTexts() {
+        List<Object[]> result = new ArrayList<>();
+        for (Drawable textDrawable : new ArrayList<>(relayoutTextDrawables)) {
+            if (!(textDrawable.getCallback() instanceof View host) || !host.isShown()
+                    || !(textDrawable instanceof TextContent textContent)) {
+                continue;
+            }
+            for (CharSequence text : textContent.getTextItems()) {
+                result.add(new Object[]{host, text});
+            }
+        }
+        return result;
+    }
+
     private static void scheduleRelayout() {
         if (relayoutScheduled.compareAndSet(false, true)) {
             // Delayed, so the layouts calculated in the current frame are mounted.
@@ -216,21 +247,26 @@ public final class LithoRelayoutPatch {
                     relayoutTextDrawables.remove(textDrawable);
                     continue;
                 }
-
                 // Drawables are reused for other texts, so the current texts are checked.
                 boolean showsRelayoutText = false;
                 boolean showsOutdatedText = false;
+                boolean canRelayout = false;
                 for (CharSequence text : textContent.getTextItems()) {
-                    Boolean outdated = isOutdated(text);
-                    if (outdated != null) {
+                    if (!(text instanceof Spanned spanned)) {
+                        continue;
+                    }
+                    for (RelayoutSpan span : spanned.getSpans(0, spanned.length(), RelayoutSpan.class)) {
                         showsRelayoutText = true;
-                        showsOutdatedText |= outdated;
+                        if (span.isOutdated()) {
+                            showsOutdatedText = true;
+                            canRelayout |= span.canRelayoutHost(host);
+                        }
                     }
                 }
 
                 if (!showsRelayoutText) {
                     relayoutTextDrawables.remove(textDrawable);
-                } else if (showsOutdatedText) {
+                } else if (showsOutdatedText && canRelayout) {
                     // The closest Litho view calculates the layout of the host.
                     View view = host;
                     while (!(view instanceof LithoViewInterface) && view.getParent() instanceof View parent) {

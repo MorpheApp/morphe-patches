@@ -4,6 +4,9 @@ pluginManagement {
     repositories {
         mavenLocal()
         gradlePluginPortal()
+        // dl.google.com is unreachable from this machine, so the Google Maven mirror is used.
+        maven { url = uri("https://maven.aliyun.com/repository/google") }
+        maven { url = uri("https://maven.aliyun.com/repository/public") }
         google()
         maven {
             name = "GitHubPackages"
@@ -15,6 +18,26 @@ pluginManagement {
         }
         // Obtain baksmali/smali from source builds - https://github.com/iBotPeaches/smali
         // Remove when official smali releases come out again.
+        maven { url = uri("https://jitpack.io") }
+    }
+}
+
+dependencyResolutionManagement {
+    repositories {
+        mavenLocal()
+        // dl.google.com is unreachable from this machine, so the Google Maven mirror is used.
+        maven { url = uri("https://maven.aliyun.com/repository/google") }
+        maven { url = uri("https://maven.aliyun.com/repository/public") }
+        google()
+        mavenCentral()
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/MorpheApp/registry")
+            credentials {
+                username = providers.gradleProperty("gpr.user").getOrElse(System.getenv("GITHUB_ACTOR"))
+                password = providers.gradleProperty("gpr.key").getOrElse(System.getenv("GITHUB_TOKEN"))
+            }
+        }
         maven { url = uri("https://jitpack.io") }
     }
 }

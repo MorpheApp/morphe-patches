@@ -64,6 +64,7 @@ import app.morphe.extension.youtube.patches.OpenShortsInRegularPlayerPatch.Short
 import app.morphe.extension.youtube.patches.OpenVideosFullscreenHookPatch.OpenFullscreenMode;
 import app.morphe.extension.youtube.patches.PictureinPictureButtonPatch.PipButtonPatchAvailability;
 import app.morphe.extension.youtube.patches.PlaybackBufferPatch.PlaybackBufferSize;
+import app.morphe.extension.youtube.patches.LiveChatTranslatePatch.TranslationStyle;
 import app.morphe.extension.youtube.patches.PlaybackInFeedsPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.WideSearchBarPatch.SearchbarType;
@@ -428,6 +429,39 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting MINIPLAYER_HIDE_OVERLAY_BUTTONS = new BooleanSetting("morphe_miniplayer_hide_overlay_buttons", FALSE, true, new MiniplayerHideOverlayButtonsAvailability());
     public static final IntegerSetting MINIPLAYER_WIDTH_DIP = new IntegerSetting("morphe_miniplayer_width_dip", 192, true, new MiniplayerAnyModernAvailability());
     public static final IntegerSetting MINIPLAYER_OPACITY = new IntegerSetting("morphe_miniplayer_opacity", 100, true, new MiniplayerOverlayOpacityAvailability());
+
+
+    // Live chat translation
+    public static final BooleanSetting LIVE_CHAT_TRANSLATE =
+            new BooleanSetting("morphe_live_chat_translate", FALSE);
+    public static final StringSetting LIVE_CHAT_TRANSLATE_TARGET =
+            new StringSetting("morphe_live_chat_translate_target", "", true, parent(LIVE_CHAT_TRANSLATE));
+    /** Source language code, or empty/auto to let the translator detect it. */
+    public static final StringSetting LIVE_CHAT_TRANSLATE_SOURCE =
+            new StringSetting("morphe_live_chat_translate_source", "", true, parent(LIVE_CHAT_TRANSLATE));
+    /** Comma separated language codes that are left untranslated, such as messages already in your language. */
+    public static final StringSetting LIVE_CHAT_TRANSLATE_EXCLUDE =
+            new StringSetting("morphe_live_chat_translate_exclude", "", true, parent(LIVE_CHAT_TRANSLATE));
+    /**
+     * Only translates rows that are on screen, so a busy chat or a replay backlog does not
+     * queue hundreds of requests and make the chat stutter.
+     */
+    public static final BooleanSetting LIVE_CHAT_TRANSLATE_ONLY_VISIBLE =
+            new BooleanSetting("morphe_live_chat_translate_only_visible", TRUE, parent(LIVE_CHAT_TRANSLATE));
+    /** Whether the row shows only the translation, or the original with it in parentheses. */
+    public static final EnumSetting<TranslationStyle> LIVE_CHAT_TRANSLATE_STYLE =
+            new EnumSetting<>("morphe_live_chat_translate_style",
+                    TranslationStyle.ORIGINAL_AND_TRANSLATED, true, parent(LIVE_CHAT_TRANSLATE));
+    public static final BooleanSetting LIVE_CHAT_TRANSLATE_BOLD =
+            new BooleanSetting("morphe_live_chat_translate_bold", FALSE, parent(LIVE_CHAT_TRANSLATE));
+    public static final BooleanSetting LIVE_CHAT_TRANSLATE_USE_COLOR =
+            new BooleanSetting("morphe_live_chat_translate_use_color", TRUE, parent(LIVE_CHAT_TRANSLATE));
+    public static final StringSetting LIVE_CHAT_TRANSLATE_COLOR =
+            new StringSetting("morphe_live_chat_translate_color", "#38BDF8",
+                    parentsAll(LIVE_CHAT_TRANSLATE, LIVE_CHAT_TRANSLATE_USE_COLOR));
+    /** Messages longer than this are shown untranslated. Zero means no limit. */
+    public static final IntegerSetting LIVE_CHAT_TRANSLATE_MAX_LENGTH =
+            new IntegerSetting("morphe_live_chat_translate_max_length", 500, parent(LIVE_CHAT_TRANSLATE));
 
     // Comments
     public static final BooleanSetting HIDE_COMMENTS_CAROUSEL = new BooleanSetting("morphe_hide_comments_carousel", FALSE);
@@ -918,6 +952,9 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_DISABLE_TRANSLUCENT_NAVIGATION = new BooleanSetting("morphe_disable_translucent_navigation", FALSE);
 
     static {
+        // Live chat messages are short; 0 is the unlimited sentinel the extension checks.
+        SeekBarPreference.register(new SeekBarConfig(LIVE_CHAT_TRANSLATE_MAX_LENGTH,
+                0, 500, 20, " chars"));
         migrateOldSettingToNew(DEPRECATED_BYPASS_URL_REDIRECTS, BYPASS_LINK_REDIRECTS);
         migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL, DEPRECATED_COPY_VIDEO_URL_BUTTON);
         migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL_TIMESTAMP, DEPRECATED_COPY_VIDEO_URL_BUTTON_TIMESTAMP);
