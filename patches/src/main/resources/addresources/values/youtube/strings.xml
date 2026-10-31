@@ -37,6 +37,8 @@ Second \"item\" text"</string>
     <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
     <string name="morphe_remove_background_playback_restrictions_title">Remove background play restrictions</string>
     <string name="morphe_shorts_disable_background_playback_title">Disable background play</string>
+    <string name="morphe_pause_on_audio_interrupt_title">Pause on audio interrupt</string>
+    <string name="morphe_pause_on_audio_interrupt_summary">Pause playback during temporary audio interruptions, such as notifications or navigation, and resume when audio focus returns.</string>
     <string name="morphe_auto_pause_on_screen_lock_title">Auto pause when device is locked</string>
     <string name="morphe_auto_pause_on_screen_lock_off">Off</string>
     <string name="morphe_auto_pause_on_screen_lock_always">Always pause when locked</string>

@@ -102,6 +102,7 @@ import app.morphe.extension.youtube.videoplayer.PlayerIcons;
 
 public class Settings extends SharedYouTubeSettings {
     // Video
+    public static final BooleanSetting PAUSE_ON_AUDIO_INTERRUPT = new BooleanSetting("morphe_pause_on_audio_interrupt", FALSE, true);
     public static final EnumSetting<PlaybackBufferSize> PLAYBACK_BUFFER_SIZE = new EnumSetting<>("morphe_playback_buffer_size", PlaybackBufferSize.DEFAULT, true);
     public static final IntegerSetting VIDEO_DELAY = new IntegerSetting("morphe_video_delay", 0);
     public static final BooleanSetting VIDEO_DELAY_BLUETOOTH_ONLY = new BooleanSetting("morphe_video_delay_bluetooth_only", TRUE);
