@@ -146,8 +146,9 @@ public final class CaptionMenu {
         // Move the off glyph inward without changing the thumb's measured width.
         closedThumb.setLayerInset(0, closedInset, 0, -closedInset, 0);
         StateListDrawable thumbStates = new StateListDrawable();
-        thumbStates.addState(states[0], thumb);
-        thumbStates.addState(states[1], closedThumb);
+        boolean rtl = context.getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+        thumbStates.addState(states[0], rtl ? closedThumb : thumb);
+        thumbStates.addState(states[1], rtl ? thumb : closedThumb);
         int thumbInset = Math.round(density);
         toggle.setThumbDrawable(new InsetDrawable(thumbStates, thumbInset, 0, thumbInset, 0));
         GradientDrawable track = switchShape(density, 37, 22, new ColorStateList(states,
