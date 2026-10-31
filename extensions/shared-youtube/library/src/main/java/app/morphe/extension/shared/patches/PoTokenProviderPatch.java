@@ -25,6 +25,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.LongSetting;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.spoof.SabrMediaLogger;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.ui.ReminderDialog;
 
@@ -34,9 +35,12 @@ public class PoTokenProviderPatch {
      * Added to the media request class of the app, whose fields are obfuscated.
      */
     public interface HttpRequest {
-        // Method is added during patching.
+        // Methods are added during patching.
         @Nullable
         String patch_getUrl();
+
+        @Nullable
+        byte[] patch_getBody();
     }
 
     public static final class PoTokenProviderAvailability implements Setting.Availability {
@@ -138,14 +142,19 @@ public class PoTokenProviderPatch {
      */
     public static void onMediaRequest(HttpRequest request, Object callbacks) {
         try {
-            if (!isHelperInUse()) {
+            final boolean helperInUse = isHelperInUse();
+            final boolean logSabrMedia = SabrMediaLogger.isEnabled();
+            if (!helperInUse && !logSabrMedia) {
                 return;
             }
             String url = request.patch_getUrl();
             // Live streams can have responses without media while the stream waits for new segments.
             if (url != null && url.contains("/videoplayback") && url.contains("sabr=1")
                     && !url.contains("yt_live_broadcast") && !url.contains("yt_premiere_broadcast")) {
-                onSabrRequest(callbacks);
+                if (logSabrMedia) {
+                    SabrMediaLogger.logRequest(url, request.patch_getBody());
+                }
+                onSabrRequest(callbacks, helperInUse, logSabrMedia);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onMediaRequest failure", ex);
@@ -155,9 +164,9 @@ public class PoTokenProviderPatch {
     /**
      * A new request means the previous response is complete.
      */
-    private static synchronized void onSabrRequest(Object callbacks) {
+    private static synchronized void onSabrRequest(Object callbacks, boolean helperInUse, boolean logSabrMedia) {
         SabrResponseReader previous = lastSabrResponseReader;
-        if (previous != null) {
+        if (helperInUse && previous != null) {
             if (previous.sawMedia) {
                 responsesWithoutMedia = 0;
             } else if (++responsesWithoutMedia >= RESPONSES_WITHOUT_MEDIA_LIMIT) {
@@ -165,7 +174,7 @@ public class PoTokenProviderPatch {
                 onTokenRejected("media responses no longer contain media");
             }
         }
-        SabrResponseReader reader = new SabrResponseReader();
+        SabrResponseReader reader = new SabrResponseReader(logSabrMedia);
         sabrResponseReaders.put(callbacks, reader);
         lastSabrResponseReader = reader;
     }
@@ -183,7 +192,7 @@ public class PoTokenProviderPatch {
             return;
         }
         try {
-            if (reader.read(chunk) == ATTESTATION_REQUIRED) {
+            if (reader.read(chunk) == ATTESTATION_REQUIRED && isHelperInUse()) {
                 sabrResponseReaders.remove(callbacks);
                 onTokenRejected("attestation is required");
             }
@@ -223,20 +232,26 @@ public class PoTokenProviderPatch {
     /**
      * Reads a UMP response for its stream protection status and whether it has media. Media parts
      * are skipped without copying them, and parts and headers can be split across any number of chunks.
+     * While spoofing with debug logging, the parts that {@link SabrMediaLogger} logs are also read.
      */
     private static final class SabrResponseReader {
         private static final int PART_MEDIA = 21;
         private static final int PART_STREAM_PROTECTION_STATUS = 58;
-        private static final int MAX_STATUS_PART_SIZE = 1024;
+        private static final int MAX_COPIED_PART_SIZE = 1024;
 
+        private final boolean logControlParts;
         private final byte[] header = new byte[5];
         private int headerLength;
         private long partType = -1;
         private long partRemaining = -1;
         @Nullable
-        private byte[] statusPart;
-        private int statusPartLength;
+        private byte[] copiedPart;
+        private int copiedPartLength;
         volatile boolean sawMedia;
+
+        SabrResponseReader(boolean logControlParts) {
+            this.logControlParts = logControlParts;
+        }
 
         /**
          * @return The status of the last status part completed in this chunk, or -1 if none was.
@@ -255,28 +270,36 @@ public class PoTokenProviderPatch {
                     }
                     if (partType == PART_MEDIA) {
                         sawMedia = true;
-                    } else if (partType == PART_STREAM_PROTECTION_STATUS) {
-                        if (partRemaining > MAX_STATUS_PART_SIZE) {
-                            throw new IllegalStateException("Status part is too large: " + partRemaining);
+                    } else if (partType == PART_STREAM_PROTECTION_STATUS
+                            || (logControlParts && SabrMediaLogger.isLoggedPart(partType))) {
+                        if (partRemaining > MAX_COPIED_PART_SIZE) {
+                            throw new IllegalStateException("Part " + partType + " is too large: " + partRemaining);
                         }
-                        statusPart = new byte[(int) partRemaining];
-                        statusPartLength = 0;
+                        copiedPart = new byte[(int) partRemaining];
+                        copiedPartLength = 0;
                     }
                 }
 
                 final int count = (int) Math.min(partRemaining, buffer.remaining());
-                if (statusPart != null) {
-                    buffer.get(statusPart, statusPartLength, count);
-                    statusPartLength += count;
+                if (copiedPart != null) {
+                    buffer.get(copiedPart, copiedPartLength, count);
+                    copiedPartLength += count;
                 } else {
                     buffer.position(buffer.position() + count);
                 }
                 partRemaining -= count;
 
                 if (partRemaining == 0) {
-                    if (statusPart != null) {
-                        status = readStatus(statusPart);
-                        statusPart = null;
+                    if (copiedPart != null) {
+                        if (partType == PART_STREAM_PROTECTION_STATUS) {
+                            status = readStatus(copiedPart);
+                            if (logControlParts) {
+                                SabrMediaLogger.logProtectionStatus(status);
+                            }
+                        } else {
+                            SabrMediaLogger.logControlPart(partType, copiedPart);
+                        }
+                        copiedPart = null;
                     }
                     partType = -1;
                     partRemaining = -1;

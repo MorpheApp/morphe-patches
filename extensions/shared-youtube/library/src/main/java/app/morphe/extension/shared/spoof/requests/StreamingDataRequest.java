@@ -152,6 +152,9 @@ public class StreamingDataRequest {
 
     private final String videoId;
     private final boolean isInline;
+    @Nullable
+    private final String authorization;
+    private final ClientType[] clientOrder;
 
     private final Future<StreamData> future;
 
@@ -197,6 +200,8 @@ public class StreamingDataRequest {
                                  boolean includeVideoDetails, ClientType[] clientOrder, boolean isDownload) {
         this.videoId = videoId;
         this.isInline = isInline;
+        this.authorization = playerHeaders.get(AUTHORIZATION_HEADER);
+        this.clientOrder = clientOrder;
         this.future = Utils.submitOnBackgroundThread(
                 () -> fetch(resolveVideoIdToFetch(videoId), isInline, playerHeaders, includeVideoDetails,
                         clientOrder, isDownload));
@@ -207,9 +212,26 @@ public class StreamingDataRequest {
         if (fetchHeaders != null && !fetchHeaders.isEmpty()) {
             lastPlayerHeaders = fetchHeaders;
         }
-        // Always fetch, even if there is an existing request for the same video.
-        cache.put(videoId, new StreamingDataRequest(videoId, isInline, fetchHeaders, false,
-                clientOrderToUse, false));
+        ClientType[] clientOrder = clientOrderToUse;
+        synchronized (cache) {
+            // The app can ask for the same video again while the first fetch is still running.
+            // A fetch that is done is never reused, because its streams can be expired or missing.
+            StreamingDataRequest existing = cache.get(videoId);
+            if (existing != null && existing.isFetchInProgress(isInline, fetchHeaders, clientOrder)) {
+                Logger.printDebug(() -> "Using the fetch in progress for: " + videoId);
+                return;
+            }
+            cache.put(videoId, new StreamingDataRequest(videoId, isInline, fetchHeaders, false,
+                    clientOrder, false));
+        }
+    }
+
+    private boolean isFetchInProgress(boolean isInline, Map<String, String> playerHeaders,
+                                      ClientType[] clientOrder) {
+        return !future.isDone()
+                && this.isInline == isInline
+                && this.clientOrder == clientOrder
+                && Objects.equals(authorization, playerHeaders.get(AUTHORIZATION_HEADER));
     }
 
     /**
