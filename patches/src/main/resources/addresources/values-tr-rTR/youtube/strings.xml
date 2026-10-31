@@ -879,10 +879,8 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_auto_captions_style_entry_4">Ses kapatıldığında göster</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Tercih edilen altyazı dili</string>
-  <string name="morphe_preferred_caption_language_summary">Önce sağlayıcı altyazılarını seçer, ardından otomatik olarak tercih edilen dile çevirir</string>
   <string name="morphe_preferred_caption_language_entry_off">Kapalı</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Ek otomatik çeviri dilleri ekleyin</string>
   <string name="morphe_auto_translate_additional_languages_summary">Otomatik çeviri menüsüne daha fazla dil ekler</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Altyazı çerezlerini ayarla</string>
@@ -900,8 +898,6 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_fix_transcript_title">Transkript\'i düzelt</string>
   <string name="morphe_fix_transcript_summary">Transkriptin yüklenmesini engelleyebilecek bir ön koşul denetimi hatasını giderir</string>
   <string name="morphe_captions_in_pip_title">Resim içinde resim modunda altyazıları göster</string>
-  <string name="morphe_stable_caption_blocks_title">Sabit altyazı blokları</string>
-  <string name="morphe_stable_caption_blocks_summary">Otomatik altyazıları sabit, okunabilir bloklar halinde gruplandırın. Bazı kelimeler konuşulmadan önce görünebilir. Yeniden başlatma gerekir.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Gezinme düğmeleri</string>
   <string name="morphe_navigation_buttons_screen_summary">Alt gezinme çubuğunda hangi düğmelerin görüneceğini seçin</string>

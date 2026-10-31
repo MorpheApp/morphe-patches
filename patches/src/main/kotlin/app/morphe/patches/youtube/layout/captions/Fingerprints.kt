@@ -14,15 +14,19 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private object SubtitleManagerFingerprintClassFingerprint : Fingerprint(
@@ -425,6 +429,88 @@ internal fun preferredCaptionsTrackFingerprint() = Fingerprint(
     )
 )
 
+/**
+ * Selects a caption track for a selection reason, and calls [SetSubtitleTrackFingerprint].
+ */
+internal class CaptionSelectionFingerprint(setter: MethodReference) : Fingerprint(
+    classFingerprint = SubtitleManagerFingerprintClassFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = setter.parameterTypes.take(2).map { it.toString() },
+    filters = listOf(methodCall(reference = setter)),
+)
+
+/**
+ * Enum of the caption selection reasons. Matches at the field of the default reason.
+ */
+internal fun captionDefaultSelectionFingerprint(enumType: String) = Fingerprint(
+    definingClass = enumType,
+    name = "<clinit>",
+    filters = listOf(
+        string("DEFAULT"),
+        methodCall(name = "<init>", location = MatchAfterWithin(5)),
+        fieldAccess(
+            opcode = Opcode.SPUT_OBJECT,
+            definingClass = "this",
+            type = enumType,
+            location = MatchAfterImmediately()
+        ),
+    ),
+)
+
+/**
+ * Native caption track handler, matched at the failure callback of its requests.
+ */
+internal object CaptionTrackHandlerErrorFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Exception;"),
+    filters = listOf(
+        string("CabrSubtitleTrackHandler.java"),
+        string("error retrieving subtitle"),
+    )
+)
+
+/**
+ * Track selection of the native caption track handler, which creates the track request.
+ *
+ * @param requestTrack Caption track field of the track request.
+ */
+internal class CaptionTrackHandlerSelectFingerprint(requestTrack: FieldReference) : Fingerprint(
+    classFingerprint = CaptionTrackHandlerErrorFingerprint,
+    returnType = "V",
+    parameters = listOf(requestTrack.type),
+    filters = listOf(
+        methodCall(
+            definingClass = requestTrack.definingClass,
+            name = "<init>",
+            parameters = listOf(requestTrack.type)
+        )
+    )
+)
+
+/**
+ * Result callback of the requests of the native caption track handler.
+ */
+internal object CaptionTrackHandlerResultFingerprint : Fingerprint(
+    classFingerprint = CaptionTrackHandlerErrorFingerprint,
+    returnType = "V",
+    parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
+)
+
+/**
+ * Old captions bottom sheet, matched at its list view. Does not use the list footer method,
+ * since the "Hide player flyout menu components" patch replaces calls of it.
+ */
+internal object CaptionsBottomSheetListFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf("Landroid/view/LayoutInflater;", "Landroid/view/ViewGroup;", "Landroid/os/Bundle;"),
+    filters = listOf(
+        checkCast("Landroid/widget/ListView;"),
+        resourceLiteral(ResourceType.STRING, "subtitle_menu_settings_footer_info"),
+    )
+)
+
 internal object SetSubtitleTrackFingerprint : Fingerprint(
     classFingerprint = SubtitleManagerFingerprintClassFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -638,6 +724,13 @@ internal fun getCaptionChunkLoaderFingerprint(loaderType: String) = object : Fin
 internal const val SUBTITLE_WINDOW_VIEW_CLASS =
     "Lcom/google/android/libraries/youtube/player/subtitles/ui/SubtitleWindowView;"
 
+internal object CaptionWindowLayoutFingerprint : Fingerprint(
+    definingClass = SUBTITLE_WINDOW_VIEW_CLASS,
+    name = "onLayout",
+    returnType = "V",
+    parameters = listOf("Z", "I", "I", "I", "I"),
+)
+
 /**
  * Caption cue of a subtitle window. Matches the id, time, text, full text and settings fields.
  */
@@ -776,6 +869,28 @@ internal object CaptionWindowMeasureFingerprint : Fingerprint(
             opcode(Opcode.IF_NE),
             location = MatchAfterWithin(4)
         )
+    )
+)
+
+/** Final font size setter shared by the native caption renderers. */
+internal object CaptionWindowFontSizeFingerprint : Fingerprint(
+    classFingerprint = CaptionWindowMeasureFingerprint,
+    returnType = "V",
+    parameters = listOf("F"),
+    filters = listOf(
+        methodCall(smali = "Ljava/lang/Math;->abs(F)F"),
+        literal(0.01f),
+        fieldAccess(opcode = Opcode.IPUT, definingClass = "this", type = "F")
+    )
+)
+
+/** Resolves the window's effective row background, including native cue overrides. */
+internal object CaptionWindowBackgroundColorFingerprint : Fingerprint(
+    classFingerprint = CaptionWindowMeasureFingerprint,
+    returnType = "I",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(smali = "Ljava/lang/Integer;->intValue()I")
     )
 )
 

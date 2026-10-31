@@ -6,7 +6,6 @@
  */
 package app.morphe.extension.youtube.patches;
 
-import android.graphics.Paint;
 import android.graphics.text.LineBreaker;
 import android.os.Build;
 import android.text.Layout;
@@ -32,25 +31,39 @@ import java.util.concurrent.CancellationException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.VideoState;
 
-/** Native source timing and phone paint, with complete immutable text between block boundaries. */
+/**
+ * Native source timing and paint, with complete immutable text between block boundaries.
+ * Does nothing unless stable caption blocks or a secondary caption language are enabled.
+ */
 @SuppressWarnings("unused")
 public final class StableCaptionBlocks {
     private static final ThreadLocal<State> parsing = new ThreadLocal<>();
     private static final Object FIXED_PARAGRAPH = new Object();
 
     /**
-     * Text paint measurement comparison requires Android 10.
-     * The setting requires restarting the app.
+     * Block rendering is supported on Android 10 and later. Both settings require a restart.
      */
     private static final boolean ENABLED = isPatchIncluded()
             && Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
-            && Settings.STABLE_CAPTION_BLOCKS.get();
+            && (Settings.STABLE_CAPTION_BLOCKS.get()
+            || AutoTranslateCaptionsPatch.translationLanguage(Settings.SECONDARY_CAPTION_LANGUAGE.get()) != null);
+
+    /**
+     * Number of block plans kept, for the inner, outer portrait and outer landscape displays.
+     * Plans are kept across recreating the native views.
+     */
+    private static final int MAX_READY_PLANS = 3;
 
     private StableCaptionBlocks() {}
 
     private static boolean isPatchIncluded() {
         return false; // Modified during patching.
+    }
+
+    static boolean isEnabled() {
+        return ENABLED;
     }
 
     public interface Timeline {
@@ -76,9 +89,13 @@ public final class StableCaptionBlocks {
 
         Object patch_getCaptionMeasureRow();
 
+        int patch_getCaptionBackgroundColor();
+
         List<CharSequence> patch_getFullCaptionLines();
 
         List<CharSequence> patch_getVisibleCaptionLines();
+
+        void patch_setCaptionMeasuredSize(int width, int height);
     }
 
     public interface Row {
@@ -98,6 +115,15 @@ public final class StableCaptionBlocks {
             this.key = key;
         }
 
+        /** Capture stays active in native mode so the bilingual toggle can reuse this timeline. */
+        public boolean usesBlockLayout() {
+            CaptionSession session = state.translation;
+            return CaptionTracks.dualCaptionEnabled()
+                    || (state.automatic && Settings.STABLE_CAPTION_BLOCKS.get())
+                    // Preserve the primary while the native translated track is being selected.
+                    || (session != null && !session.primaryLanguage.equals(session.sourceLanguage));
+        }
+
         @Override
         public boolean equals(Object other) {
             return other instanceof Frame f && f.state == state && f.key == key;
@@ -110,29 +136,44 @@ public final class StableCaptionBlocks {
     }
 
     public static final class State {
-        StableCaptionBlockPolicy policy;
+        final boolean automatic;
+        @Nullable
+        volatile StableCaptionBlockPolicy policy;
+        @Nullable
+        volatile CaptionSession translation;
+        @Nullable
+        CaptionTracks.Captured captured;
         private final Map<View, Cache> caches = new WeakHashMap<>();
-        // Keep inner, outer portrait and outer landscape plans across native view recreation.
         private final List<Cache> ready = new ArrayList<>();
+
+        State(boolean automatic) {
+            this.automatic = automatic;
+        }
     }
 
     private static final class Cache {
         final int width;
         final TextPaint paint;
+        final StableCaptionBlockPolicy policy;
         volatile List<StableCaptionBlockPolicy.Block> blocks;
         volatile boolean cancelled;
         StableCaptionBlockPolicy.Block last;
         CharSequence text;
         List<CharSequence> nativeFull, nativeVisible;
 
-        Cache(int width, TextPaint paint) {
+        Cache(int width, TextPaint paint, State state) {
+            this.policy = state.policy;
             this.width = width;
             this.paint = new TextPaint();
             this.paint.set(paint);
         }
 
         boolean matches(StaticLayout probe) {
-            return width == probe.getWidth() && equalsForTextMeasurement(paint, probe.getPaint());
+            return width == probe.getWidth() && paint.equalsForTextMeasurement(probe.getPaint());
+        }
+
+        boolean matches(Cache other) {
+            return width == other.width && paint.equalsForTextMeasurement(other.paint);
         }
 
         StaticLayout layout(String text) {
@@ -147,8 +188,8 @@ public final class StableCaptionBlocks {
     static void setAutomaticTrack(boolean automatic) {
         if (!ENABLED) return;
         parsing.remove();
-        if (automatic) {
-            parsing.set(new State());
+        if (CaptionTracks.observing() || automatic) {
+            parsing.set(new State(automatic));
         }
     }
 
@@ -156,9 +197,28 @@ public final class StableCaptionBlocks {
         return parsing.get() != null;
     }
 
-    static void capture(Document document) {
-        State state = parsing.get();
-        if (state != null) state.policy = StableCaptionBlockPolicy.parse(document);
+    static void capture(@Nullable Document document) {
+        try {
+            State state = parsing.get();
+            if (state != null && state.automatic) {
+                state.policy = StableCaptionBlockPolicy.parse(document);
+            }
+            CaptionTracks.observe(document, state);
+        } catch (Exception ex) {
+            // A caption file that cannot be captured uses the native captions.
+            Logger.printException(() -> "capture failure", ex);
+        }
+    }
+
+    static void refreshTranslation(State state, CaptionSession session) {
+        if (state.translation != session || !session.isActive()) return;
+        requestLayout(state);
+    }
+
+    static void requestLayout(State state) {
+        for (View view : new ArrayList<>(state.caches.keySet())) {
+            if (view != null) view.requestLayout();
+        }
     }
 
     /**
@@ -200,20 +260,34 @@ public final class StableCaptionBlocks {
         List<?> original = timeline.patch_getOriginalCaptions(time);
         try {
             State state = timeline.patch_getBlockState();
-            if (state == null || original == null || original.size() > 1) return original;
-            long template = state.policy.templateTime(time);
+            if (state == null
+                    || original == null
+                    || original.size() > 1) return original;
+            Frame frame = new Frame(state, time, Long.MIN_VALUE);
+            if (state.translation != null && !state.translation.isActive()
+                    && !CaptionTracks.restoreTranslation(state)) return Collections.emptyList();
+            boolean blocks = frame.usesBlockLayout();
+            // Native sampling can run ahead on a worker; the player clock is main-thread only.
+            if (blocks && state.translation != null && Utils.isCurrentlyOnMainThread()) {
+                long playbackTime = VideoInformation.getVideoTime();
+                state.translation.demand(playbackTime >= 0 ? playbackTime : time,
+                        VideoInformation.getPlaybackSpeed());
+            }
+            long template = blocks ? state.policy.templateTime(time) : time;
             if (template < 0) return Collections.emptyList();
 
             List<?> source = original;
             //noinspection SizeReplaceableByIsEmpty
-            if (source.isEmpty() || (source.size() == 1 && source.get(0) instanceof Cue c
+            if (blocks && (source.isEmpty() || (source.size() == 1 && source.get(0) instanceof Cue c
                             && (c.patch_getOriginalCaptionVisible() == null
-                                    || c.patch_getOriginalCaptionVisible().length() == 0))) {
+                                    || c.patch_getOriginalCaptionVisible().length() == 0)))) {
                 source = timeline.patch_getOriginalCaptions(template);
             }
             if (source == null || source.size() != 1 || !(source.get(0) instanceof Cue cue))
                 return original;
-            Object copy = cue.patch_copyBlockFrame(new Frame(state, time, template));
+            Object copy =
+                    cue.patch_copyBlockFrame(
+                            blocks ? new Frame(state, time, template) : frame);
             return copy == null ? original : Collections.singletonList(copy);
         } catch (Exception ex) {
             Logger.printException(() -> "present failure", ex);
@@ -232,7 +306,7 @@ public final class StableCaptionBlocks {
         }
         try {
             Frame frame = cue.patch_getBlockFrame();
-            if (frame == null) return original;
+            if (frame == null || !frame.usesBlockLayout()) return original;
             Object copy = cue.patch_copyBlockFrame(frame);
             return copy == null || copy == cue ? original : Collections.singletonList(copy);
         } catch (Exception ex) {
@@ -247,6 +321,7 @@ public final class StableCaptionBlocks {
     public static void prepare(View view, int widthSpec) {
         if (!ENABLED) return;
         try {
+            DualCaptionOverlay.begin(view);
             if (!(view instanceof Window window)
                     || !(window.patch_getCaptionCue() instanceof Cue cue)) return;
             Frame frame = cue.patch_getBlockFrame();
@@ -281,62 +356,27 @@ public final class StableCaptionBlocks {
                     View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
             StaticLayout probe = row.patch_getCaptionLayout();
             if (probe == null || probe.getWidth() <= 0) return;
-            if (cache == null || !cache.matches(probe)) {
+            if (cache == null
+                    || cache.policy != frame.state.policy
+                    || !cache.matches(probe)) {
                 if (cache != null) cache.cancelled = true;
-                cache = new Cache(probe.getWidth(), probe.getPaint());
+                cache = new Cache(probe.getWidth(), probe.getPaint(), frame.state);
                 frame.state.caches.put(view, cache);
-                Cache ready = null;
-                for (Cache prepared : frame.state.ready) {
-                    if (prepared.matches(probe)) {
-                        ready = prepared;
-                        break;
-                    }
-                }
-                if (ready != null) {
-                    frame.state.ready.remove(ready);
-                    frame.state.ready.add(0, ready);
-                    cache.blocks = ready.blocks;
-                } else {
-                    Cache next = cache;
-                    WeakReference<View> redraw = new WeakReference<>(view);
-                    Utils.runOnBackgroundThread(
-                            () -> {
-                                try {
-                                    next.blocks =
-                                            frame.state.policy.plan(
-                                                    text -> next.layout(text).getLineCount() <= 2);
-                                } catch (CancellationException ex) {
-                                    // A newer text layout replaced this cache.
-                                    next.blocks = List.of();
-                                } catch (Exception ex) {
-                                    Logger.printException(() -> "plan failure", ex);
-                                    next.blocks = List.of();
-                                }
-                                Utils.runOnMainThread(
-                                        () -> {
-                                            if (next.cancelled) return;
-                                            if (!next.blocks.isEmpty()) {
-                                                frame.state.ready.removeIf(
-                                                        prepared ->
-                                                                prepared.width == next.width
-                                                                        && equalsForTextMeasurement(
-                                                                                prepared.paint,
-                                                                        next.paint));
-                                                frame.state.ready.add(0, next);
-                                                if (frame.state.ready.size() > 3)
-                                                    frame.state.ready.remove(3);
-                                            }
-                                            View target = redraw.get();
-                                            if (target != null) target.requestLayout();
-                                        });
-                            });
-                }
+                // A session does not use a measured plan.
+                if (frame.usesBlockLayout() && frame.state.translation == null)
+                    planBlocks(view, frame.state, cache);
             }
             cache.nativeFull = nativeFull;
             cache.nativeVisible = nativeVisible;
-            if (cache.blocks == null) return;
+            if (!frame.usesBlockLayout()) return;
+            if (frame.state.translation != null) {
+                renderTranslation(view, frame, cache, full, visible);
+                return;
+            }
             StableCaptionBlockPolicy.Block block =
-                    StableCaptionBlockPolicy.at(cache.blocks, frame.time);
+                    cache.blocks == null
+                            ? null
+                            : StableCaptionBlockPolicy.at(cache.blocks, frame.time);
             if (block == null || !block.fits) return;
             if (cache.last != block) {
                 SpannableStringBuilder text = new SpannableStringBuilder(block.text);
@@ -353,13 +393,71 @@ public final class StableCaptionBlocks {
         }
     }
 
-    private static boolean equalsForTextMeasurement(Paint a, Paint b) {
-        if (a == b) return true;
-        if (a == null || b == null) return false;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            return a.equalsForTextMeasurement(b);
+    /**
+     * Uses a matching plan if one exists, otherwise measures the plan in the background.
+     */
+    private static void planBlocks(View view, State state, Cache cache) {
+        for (Cache previous : state.ready) {
+            if (previous.policy == cache.policy && previous.matches(cache)) {
+                state.ready.remove(previous);
+                state.ready.add(0, previous);
+                cache.blocks = previous.blocks;
+                return;
+            }
         }
-        return false;
+
+        WeakReference<View> redraw = new WeakReference<>(view);
+        StableCaptionBlockPolicy policy = cache.policy;
+        Utils.runOnBackgroundThread(() -> {
+            try {
+                cache.blocks = policy.plan(text -> cache.layout(text).getLineCount() <= 2);
+            } catch (CancellationException ex) {
+                Logger.printDebug(() -> "Plan cancelled");
+                cache.blocks = List.of();
+            } catch (Exception ex) {
+                Logger.printException(() -> "plan failure", ex);
+                cache.blocks = List.of();
+            }
+
+            Utils.runOnMainThread(() -> {
+                if (cache.cancelled || state.policy != policy) return;
+
+                if (!cache.blocks.isEmpty()) {
+                    state.ready.removeIf(cache::matches);
+                    state.ready.add(0, cache);
+                    if (state.ready.size() > MAX_READY_PLANS) state.ready.remove(MAX_READY_PLANS);
+                }
+                View target = redraw.get();
+                if (target != null) target.requestLayout();
+            });
+        });
+    }
+
+    private static void renderTranslation(View view, Frame frame, Cache cache,
+                                          List<CharSequence> full, List<CharSequence> visible) {
+        CaptionSession session = frame.state.translation;
+        long time = VideoInformation.getVideoTime();
+        if (time < 0) time = session.playbackTime();
+        else session.demand(time, VideoInformation.getPlaybackSpeed());
+        CaptionSession.Snapshot cue = session.snapshot(time, VideoState.getCurrent() == VideoState.PAUSED);
+        if (cue == null) {
+            replace(full, visible, "");
+            return;
+        }
+        if (session.secondaryLanguage != null) {
+            DualCaptionOverlay.show(view, cue.primary, cue.secondary, cache.paint, cache.width,
+                    session, cue.start, cue.complete);
+        }
+        replace(full, visible, cue.primary);
+    }
+
+    private static void replace(List<CharSequence> full, List<CharSequence> visible, String text) {
+        SpannableStringBuilder marked = new SpannableStringBuilder(text);
+        marked.setSpan(FIXED_PARAGRAPH, 0, marked.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        full.clear();
+        full.add(marked);
+        visible.clear();
+        visible.add(marked);
     }
 
     @SuppressLint("InlinedApi")
@@ -387,7 +485,8 @@ public final class StableCaptionBlocks {
             float spacingMult,
             float spacingAdd,
             boolean includePad) {
-        if (ENABLED && text instanceof Spanned spans && spans.getSpanStart(FIXED_PARAGRAPH) >= 0) {
+        if (ENABLED
+                && text instanceof Spanned spans && spans.getSpanStart(FIXED_PARAGRAPH) >= 0) {
             return blockLayout(text, paint, width)
                     .setLineSpacing(spacingAdd, spacingMult)
                     .setIncludePad(includePad)

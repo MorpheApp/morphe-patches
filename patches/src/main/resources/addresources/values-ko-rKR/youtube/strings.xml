@@ -901,8 +901,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_fix_transcript_title">스크립트 수정하기</string>
   <string name="morphe_fix_transcript_summary">스크립트가 불러오지 않을 수 있는 사전 조건 검사 실패 문제를 해결할 수 있습니다</string>
   <string name="morphe_captions_in_pip_title">PIP 모드에 자막 표시하기</string>
-  <string name="morphe_stable_caption_blocks_title">안정적인 자막 블록</string>
-  <string name="morphe_stable_caption_blocks_summary">자동 자막을 안정적이고 읽기 쉬운 블록으로 그룹화합니다. 일부 단어는 음성으로 나오기 전에 표시될 수 있습니다. 활성화하려면 앱을 다시 시작해야 합니다</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">하단바 버튼</string>
   <string name="morphe_navigation_buttons_screen_summary">하단바에 표시할 버튼을 설정할 수 있습니다</string>
