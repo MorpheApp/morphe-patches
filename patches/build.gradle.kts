@@ -63,6 +63,9 @@ dependencies {
 tasks {
     test {
         useJUnitPlatform()
+        inputs.file(rootProject.file(
+            "extensions/music/src/main/java/app/morphe/extension/music/patches/lyrics/ui/LyricsTabbedPanelObserver.java"
+        )).withPropertyName("lyricsTabbedPanelObserverSource")
         dependsOn(":extensions:youtube:generateReleaseProto", ":extensions:youtube:compileReleaseJavaWithJavac")
         jamApk.orNull?.let { systemProperty("jamApk", it) }
         // The Android-boundary tests load release bytecode in isolated class loaders.

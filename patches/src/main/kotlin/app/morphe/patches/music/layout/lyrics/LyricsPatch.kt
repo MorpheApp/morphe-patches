@@ -63,6 +63,19 @@ val lyricsPatch = bytecodePatch(
         // that own these resources are applied.
         resourcePatch {
             execute {
+                // The legacy tabbed player lives in a bottom-sheet window, outside the
+                // activity decor searched by the engagement-panel installer.
+                document("res/layout/player_bottom_sheet.xml").use { document ->
+                    document.documentElement.appendChild(
+                        document.createElement(
+                            "app.morphe.extension.music.patches.lyrics.ui.LyricsTabbedPanelObserver"
+                        ).apply {
+                            setAttribute("android:layout_width", "0dp")
+                            setAttribute("android:layout_height", "0dp")
+                            setAttribute("android:importantForAccessibility", "no")
+                        }
+                    )
+                }
                 copyResources(
                     "copyvideolinkbutton",
                     ResourceGroup("drawable", "morphe_yt_copy_bold.xml")

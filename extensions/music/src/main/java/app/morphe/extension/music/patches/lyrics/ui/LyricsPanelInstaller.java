@@ -35,7 +35,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 
 /**
- * Puts the third party lyrics panel into the lyrics engagement panel.
+ * Puts the third party lyrics panel into the lyrics engagement panel or legacy tabbed sheet.
  *
  * <p>It is laid over the built-in content rather than replacing it, so that a track
  * without third party lyrics still shows the built-in ones.
@@ -63,6 +63,9 @@ public final class LyricsPanelInstaller {
     /** Collapses the many component callbacks of one panel opening into one attempt. */
     private static boolean installPending;
     private static WeakReference<LyricsPanelView> panelReference = new WeakReference<>(null);
+    /** The legacy bottom sheet owns a separate window and a dedicated page for lyrics. */
+    private static WeakReference<ViewGroup> tabbedContentReference = new WeakReference<>(null);
+    private static boolean tabbedLyricsSelected;
     /** Panel the app currently has in the engagement panel container. */
     private static WeakReference<Object> currentPanelReference = new WeakReference<>(null);
     /** Panel the lyrics were last built into, kept to recognize it when it comes back. */
@@ -322,13 +325,14 @@ public final class LyricsPanelInstaller {
         if (!Settings.LYRICS_ENABLED.get()) {
             return true;
         }
-        Activity activity = Utils.getActivity();
-        if (activity == null) {
-            return false;
+        ViewGroup panel = tabbedLyricsContent();
+        if (panel == null) {
+            Activity activity = Utils.getActivity();
+            if (activity == null) {
+                return false;
+            }
+            panel = findLyricsPanelContent(activity.getWindow().getDecorView());
         }
-
-        View root = activity.getWindow().getDecorView();
-        ViewGroup panel = findLyricsPanelContent(root);
         if (panel == null) {
             return false;
         }
@@ -369,6 +373,27 @@ public final class LyricsPanelInstaller {
         return current != null && current == lyricsPanelReference.get();
     }
 
+    static void onTabbedLyricsPanelChanged(@Nullable ViewGroup content, boolean selected) {
+        tabbedContentReference = new WeakReference<>(content);
+        tabbedLyricsSelected = selected;
+        LyricsPanelView panelView = panelReference.get();
+        if (panelView != null) {
+            panelView.syncOverlay();
+            panelView.setKeepScreenOn(Settings.LYRICS_KEEP_SCREEN_ON.get() && isLyricsPanelOpen());
+        }
+        if (tabbedLyricsContent() != null && Settings.LYRICS_ENABLED.get() && !installPending) {
+            installPending = true;
+            scheduleInstall(SystemClock.uptimeMillis() + INSTALL_TIMEOUT_MILLISECONDS, 0);
+        }
+    }
+
+    @Nullable
+    private static ViewGroup tabbedLyricsContent() {
+        ViewGroup content = tabbedContentReference.get();
+        return tabbedLyricsSelected && content != null && content.isShown()
+                && content.isAttachedToWindow() ? content : null;
+    }
+
     /**
      * All engagement panels are built into the same content container, so the heading
      * is what tells the lyrics panel from the comments or the live chat one. A panel
@@ -377,6 +402,10 @@ public final class LyricsPanelInstaller {
      * @return Whether the engagement panel currently on screen is the lyrics panel.
      */
     public static boolean isLyricsPanelOpen() {
+        ViewGroup tabbedContent = tabbedContentReference.get();
+        if (tabbedContent != null && tabbedContent.isAttachedToWindow()) {
+            return tabbedLyricsContent() != null;
+        }
         // Asked first because it is answered by identity, which does not move with the language;
         // the heading is read only when there is no panel to go by.
         if (isCurrentPanelLyrics()) {
@@ -391,6 +420,12 @@ public final class LyricsPanelInstaller {
     }
 
     public static boolean isOtherPanelForeground() {
+        ViewGroup tabbedContent = tabbedContentReference.get();
+        if (tabbedContent != null && tabbedContent.isAttachedToWindow()) {
+            // Tab pages have separate containers. Hide the overlay and restore its own
+            // siblings on a tab switch, rather than treating this as a shared panel takeover.
+            return false;
+        }
         Activity activity = Utils.getActivity();
         if (activity == null) {
             return false;
@@ -536,7 +571,7 @@ public final class LyricsPanelInstaller {
      * leave a stale answer behind.
      */
     @Nullable
-    private static String lyricsTitle(@Nullable Context context) {
+    static String lyricsTitle(@Nullable Context context) {
         final int id = ResourceUtils.getStringIdentifier(LYRICS_TITLE_RESOURCE);
         if (id == 0) {
             Logger.printException(() -> "App is missing: " + LYRICS_TITLE_RESOURCE);
