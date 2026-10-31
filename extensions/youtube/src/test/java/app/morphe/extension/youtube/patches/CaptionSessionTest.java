@@ -39,6 +39,34 @@ public class CaptionSessionTest {
         assertEquals("de:cue69", session.snapshot(69L * duration).primary);
         assertTrue(calls.get() <= 15);
     }
+    @Test public void nativeCueOutsidePlanningHintStillUsesSelectedLanguages() {
+        String text = "on my phone okay so you might get this message as you can see we have a got";
+        var source = List.of(new StableCaptionBlockPolicy.Block(116799, 122159, text, false));
+        for (String secondary : new String[]{null, "fr"}) {
+            var session = new CaptionSession(source, "en", "de", secondary,
+                    (from, to, texts) -> texts.stream().map(value -> to + ":" + value).toList(),
+                    Runnable::run, () -> {}, () -> fail("Valid native cue must be translated"));
+            session.demand(116803);
+            var cue = session.snapshot(116803);
+            assertEquals("de:" + text, cue.primary);
+            assertEquals(secondary == null ? "" : "fr:" + text, cue.secondary);
+            assertTrue(cue.complete);
+            assertEquals(116799, cue.start);
+            assertEquals(122159, cue.end);
+        }
+    }
+
+    @Test public void oversizedNativeCueIsNotSentToProvider() {
+        String text = "\uD83D\uDE00".repeat(StableCaptionBlockPolicy.MAX_BLOCK_CHARS + 1);
+        var session = new CaptionSession(List.of(new StableCaptionBlockPolicy.Block(0, 3000, text, false)),
+                "en", "de", "fr", (from, to, texts) -> {
+                    fail("Provider input limit must be enforced independently of layout hints");
+                    return null;
+                }, Runnable::run, () -> {}, () -> {});
+        session.demand(0);
+        assertFalse(session.snapshot(100).complete);
+    }
+
     @Test public void outputsUseOneSourceClockAndOneBoundedDemand() {
         Jobs jobs = new Jobs(); List<String> requests = new ArrayList<>();
         var session = new CaptionSession(SOURCE, "en", "de", "tr",

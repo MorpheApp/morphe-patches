@@ -418,8 +418,7 @@ public final class StableCaptionBlocks {
                         == app.morphe.extension.youtube.shared.VideoState.PAUSED);
         if (cue == null) { replace(full, visible, ""); return; }
         String first = cue.primary, second = cue.secondary;
-        StableCaptionBlockPolicy.Block source = StableCaptionBlockPolicy.at(session.source, time);
-        if (session.secondaryLanguage != null && source != null && source.fits)
+        if (session.secondaryLanguage != null)
             DualCaptionOverlay.show(view, first, second, cache.paint, cache.width,
                     session, cue.start, cue.complete);
         replace(full, visible, first);

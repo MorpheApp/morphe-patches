@@ -103,7 +103,8 @@ final class CaptionSession {
             if (cue.end <= position || status[i] == 1
                     || status[i] == 3 && (attempts[i] >= 3 || clock.getAsLong() < retryAt[i])) continue;
             if (status[i] == 2 && ready.get(i) != null) continue;
-            if (!cue.fits) {
+            // Planning fit hints must not suppress valid native text translations.
+            if (cue.text.codePointCount(0, cue.text.length()) > StableCaptionBlockPolicy.MAX_BLOCK_CHARS) {
                 status[i] = attempts[i] = 3; continue;
             }
             status[i] = 1; batch.add(i);
