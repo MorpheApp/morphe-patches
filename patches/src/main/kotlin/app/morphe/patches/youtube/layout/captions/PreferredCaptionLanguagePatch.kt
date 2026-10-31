@@ -14,6 +14,7 @@ import app.morphe.patcher.util.getReference
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_10_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.hookVideoStarted
@@ -45,7 +46,12 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
 
     execute {
         settingsMenuCaptionGroup.add(
-            ListPreference("morphe_preferred_caption_language")
+            ListPreference(
+                "morphe_preferred_caption_language",
+                tag = "app.morphe.extension.youtube.settings.preference.CaptionLanguagePreference",
+                entriesKey = null,
+                entryValuesKey = null,
+            )
         )
 
         // Add interfaces and helper methods to allow extension code to call obfuscated code.
@@ -99,6 +105,9 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
 
         // Source YouTube uses to translate captions of the current audio track,
         // or the default caption track of the current audio track.
+        val defaultSourceMethod = CaptionTracksManagerDefaultSourceFingerprint(
+            CaptionTrackBuilderBuildFingerprint.method.returnType
+        ).method
         val translationSourceMethod = CaptionTracksManagerTranslationSourceFingerprint.let {
             val captionTrackType = CaptionTrackBuilderBuildFingerprint.method.returnType
             val metadataField = it.instructionMatches[0].fieldReference
@@ -108,7 +117,6 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
             val captionTracksField = it.instructionMatches[10].fieldReference
             val getMethod = it.instructionMatches[11].methodReference
             val convertMethod = it.instructionMatches[12].methodReference
-            val defaultSourceMethod = CaptionTracksManagerDefaultSourceFingerprint(captionTrackType).method
 
             it.classDef.addHelperMethod(
                 "patch_getTranslationSource",
@@ -175,18 +183,20 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
 
             addTracksGetter("patch_getDirectCaptionTracks", CaptionTracksManagerDirectTracksFingerprint)
             addTracksGetter("patch_getAutoTranslateCaptionTracks", CaptionTracksManagerAutoTranslateTracksFingerprint)
-            addHelperMethod(
-                "patch_getCaptionTranslationSource",
+            fun addSourceGetter(name: String, method: String) = addHelperMethod(
+                name,
                 EXTENSION_CAPTION_TRACK_INTERFACE,
                 smali = """
                     iget-object v0, p0, $tracksManagerField
                     if-eqz v0, :null
-                    invoke-virtual { v0 }, $translationSourceMethod
+                    invoke-virtual { v0 }, $method
                     move-result-object v0
                     :null
                     return-object v0
                 """
             )
+            addSourceGetter("patch_getCaptionTranslationSource", translationSourceMethod)
+            addSourceGetter("patch_getCurrentAudioCaptionSource", defaultSourceMethod.toString())
         }
 
         // Override the default caption track.
@@ -207,6 +217,24 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
                     invoke-static { v$subtitleManagerRegister, v$trackRegister }, $EXTENSION_CLASS->getPreferredCaptionTrack($EXTENSION_SUBTITLE_MANAGER_INTERFACE$EXTENSION_CAPTION_TRACK_INTERFACE)$EXTENSION_CAPTION_TRACK_INTERFACE
                     move-result-object v$trackRegister
                     check-cast v$trackRegister, $trackType
+                """
+            )
+        }
+
+        if (is_21_10_or_greater) {
+            val setter = SetSubtitleTrackFingerprint.method
+            val selector = CaptionSelectionFingerprint(setter).method
+            val enumType = selector.parameterTypes[1]
+            val defaultReason = captionDefaultSelectionFingerprint(enumType.toString())
+                .instructionMatches.last().fieldReference
+            SetSubtitleTrackFingerprint.classDef.addHelperMethod(
+                "patch_selectCaptionTrack", "Z", listOf(EXTENSION_CAPTION_TRACK_INTERFACE), freeRegisters = 1,
+                smali = """
+                    sget-object v0, $defaultReason
+                    check-cast p1, $trackType
+                    invoke-virtual { p0, p1, v0 }, $selector
+                    const/4 v0, 0x1
+                    return v0
                 """
             )
         }

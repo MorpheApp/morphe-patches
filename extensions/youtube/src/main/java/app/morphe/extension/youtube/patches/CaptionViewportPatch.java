@@ -32,6 +32,10 @@ public final class CaptionViewportPatch {
 
     private CaptionViewportPatch() {}
 
+    public static float scaleFontSize(float size) {
+        return CaptionViewportPolicy.scaleFontSize(size, Settings.CAPTION_SCALE.get());
+    }
+
     /**
      * Injection point.
      */

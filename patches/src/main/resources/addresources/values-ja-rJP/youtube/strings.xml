@@ -870,8 +870,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_fix_transcript_title">文字起こしの不具合を修正</string>
   <string name="morphe_fix_transcript_summary">文字起こしの読み込み失敗の原因となる前提条件チェックのエラーを修正します</string>
   <string name="morphe_captions_in_pip_title">ピクチャー イン ピクチャーで字幕を表示</string>
-  <string name="morphe_stable_caption_blocks_title">安定した字幕ブロック</string>
-  <string name="morphe_stable_caption_blocks_summary">自動字幕を安定して読みやすいブロックにグループ化します。一部の単語は話される前に表示される場合があります。再起動が必要です。</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">ナビゲーション ボタン</string>
   <string name="morphe_navigation_buttons_screen_summary">画面最下部のバーであるナビゲーション バーに表示するボタンを設定します</string>

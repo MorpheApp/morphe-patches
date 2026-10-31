@@ -871,8 +871,6 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">Исправить транскрипт</string>
   <string name="morphe_fix_transcript_summary">Устраняет сбой проверки предварительных условий, который может помешать загрузке транскрипта</string>
   <string name="morphe_captions_in_pip_title">Показывать субтитры в режиме \"картинка в картинке\"</string>
-  <string name="morphe_stable_caption_blocks_title">Стабильные блоки субтитров</string>
-  <string name="morphe_stable_caption_blocks_summary">Группирует автоматические субтитры в стабильные, читаемые блоки. Некоторые слова могут появляться до того, как они будут произнесены. Требуется перезапуск.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Кнопки навигации</string>
   <string name="morphe_navigation_buttons_screen_summary">Выберите, какие кнопки отображаются на панели инструментов</string>
