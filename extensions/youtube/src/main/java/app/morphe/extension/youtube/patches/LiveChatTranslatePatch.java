@@ -118,8 +118,6 @@ public final class LiveChatTranslatePatch {
 
     /** How often on-screen untranslated rows are looked for. */
     private static final long VISIBLE_SCAN_DELAY_MS = 350L;
-    /** Slow rescan while the chat is open but nothing is waiting, such as a quiet chat. */
-    private static final long VISIBLE_SCAN_IDLE_DELAY_MS = 1500L;
     /** Delay used when rows are waiting on the rate limit instead of on a request already in flight. */
     private static final long VISIBLE_SCAN_SLOW_DELAY_MS = 1_200L;
 
@@ -890,22 +888,14 @@ public final class LiveChatTranslatePatch {
      *         left the chat untranslated for the rest of the session.
      */
     private static boolean isChatListGone() {
-        // A mounted chat row means the chat is open, however long ago the last row was created.
-        // Only the timestamp was checked before, so a chat that went quiet once was treated as
-        // closed and stayed untranslated for the rest of the session.
-        for (Object[] entry : LithoRelayoutPatch.findShownTexts()) {
-            if (!(entry[1] instanceof Spanned spanned)) {
-                continue;
-            }
-            if (spanned.getSpans(0, spanned.length(), ChatRowSpan.class).length > 0) {
-                return false;
-            }
+        if (!isChatIdle()) {
+            return false;
         }
-        return true;
+        return pendingLookups.isEmpty();
     }
 
     private static void scheduleVisibleScan(long delayMs) {
-        if (!Settings.LIVE_CHAT_TRANSLATE_ONLY_VISIBLE.get()) {
+        if (!Settings.LIVE_CHAT_TRANSLATE_ONLY_VISIBLE.get() || isChatIdle()) {
             return;
         }
         if (scanScheduled.compareAndSet(0, 1)) {
@@ -945,7 +935,6 @@ public final class LiveChatTranslatePatch {
             builder.setSpan(new ImageSpan(icon, ImageSpan.ALIGN_CENTER), start, end,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         } else {
-            // The app always ships the icon, so this only happens if its name changed.
             builder.append(COPY_BUTTON_TEXT);
         }
         builder.setSpan(new CopyMessageSpan(message), start, builder.length(),
@@ -954,7 +943,7 @@ public final class LiveChatTranslatePatch {
     }
 
     /**
-     * @return The copy icon of the app, or null if it cannot be loaded. Resolved once.
+     * @return The copy icon the app ships, or null if it cannot be loaded. Resolved once.
      */
     @Nullable
     private static Drawable copyIcon() {
@@ -1125,11 +1114,6 @@ public final class LiveChatTranslatePatch {
             // Rows are on screen but could not be queued (rate limit or full queue). Backing off
             // keeps the scan from walking the mounted texts several times per second.
             scheduleVisibleScan(VISIBLE_SCAN_SLOW_DELAY_MS);
-        } else {
-            // Nothing to do right now, but the chat is still open. The scan keeps running slowly so
-            // a row that arrives while the chat is quiet is still picked up. Stopping here was what
-            // left the chat untranslated for the rest of the session once it went quiet once.
-            scheduleVisibleScan(VISIBLE_SCAN_IDLE_DELAY_MS);
         }
     }
 
@@ -1552,20 +1536,9 @@ public final class LiveChatTranslatePatch {
     }
 
     private static SpannableString attachPendingSpan(CharSequence baseText, PendingChatSpan pendingSpan) {
-        final SpannableString spanned = baseText instanceof SpannableString s
+        SpannableString spanned = baseText instanceof SpannableString s
                 ? new SpannableString(s)
                 : new SpannableString(baseText);
-        // The button is a span on the text, so the row shows it without being rebuilt. It is only
-        // added when the row is returned, never stored, so a row that is loaded again still starts
-        // from the text the app built and does not accumulate buttons.
-        if (Settings.LIVE_CHAT_TRANSLATE_COPY_BUTTON.get()) {
-            final SpannableStringBuilder withButton = new SpannableStringBuilder(spanned);
-            copySpans(spanned, 0, spanned.length(), withButton, 0);
-            appendCopyButton(withButton, pendingSpan.messageBody);
-            final SpannableString result = new SpannableString(withButton);
-            result.setSpan(pendingSpan, 0, result.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            return result;
-        }
         spanned.setSpan(pendingSpan, 0, spanned.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return spanned;
     }
