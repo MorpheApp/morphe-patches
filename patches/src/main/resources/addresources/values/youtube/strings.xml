@@ -572,6 +572,7 @@ Export folder: %s"</string>
     <string name="morphe_export_download_folder_change">Change folder</string>
     <string name="morphe_export_download_folder_changed">Export folder changed</string>
     <string name="morphe_export_download_folder_reset">Export folder reset</string>
+    <string name="morphe_export_download_folder_missing">Could not find export folder %s</string>
     <string name="morphe_export_download_flyout_title">Export to device</string>
     <string name="morphe_export_download_started">Exporting video</string>
     <string name="morphe_export_download_progress">Exporting video: %d%%</string>
