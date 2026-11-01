@@ -127,7 +127,6 @@ final class LyricsLineView extends TextView {
     float lineScale = 1f;
     float fadeTargetAlpha = 1f;
     boolean activeLine;
-    private int secondaryActiveColor;
     ValueAnimator fadeAnimator;
 
     float contentReveal = 1f;
@@ -350,12 +349,11 @@ final class LyricsLineView extends TextView {
         smallRunHoldsWords = holdsWords;
     }
 
-    void setActiveLine(boolean active, int color) {
-        if (activeLine == active && secondaryActiveColor == color) {
+    void setActiveLine(boolean active) {
+        if (activeLine == active) {
             return;
         }
         activeLine = active;
-        secondaryActiveColor = color;
         invalidate();
     }
 
@@ -803,9 +801,8 @@ final class LyricsLineView extends TextView {
                     // exactly when the reading's range is the one present.
                     final boolean runHoldsWords = smallRunHoldsWords ? isRoma == (romaFirst >= 0) : isRoma;
                     final float reveal = isRoma ? romaReveal : transReveal;
-                    drawTextRun(canvas, layout, runStart, runLast,
-                            Math.round((runHoldsWords ? romaAlpha : secondaryAlpha) * reveal),
-                            activeLine ? secondaryActiveColor : 0);
+            drawTextRun(canvas, layout, runStart, runLast,
+                    Math.round((runHoldsWords ? romaAlpha : secondaryAlpha) * reveal), 0);
                 } else {
                     drawTextRun(canvas, layout, runStart, runLast, mainAlpha, 0);
                 }
@@ -1027,9 +1024,8 @@ final class LyricsLineView extends TextView {
 
             // Smallness follows the run beside it, never the words it holds: a dual line hands those to the
             // reading wherever the swap puts it, so a main run without them is still the main run.
-            final int readingColor = (activeLine && secondaryActiveColor != 0
-                    ? secondaryActiveColor : LyricsColors.secondaryTextColor()) | 0xFF000000;
-            final int lyricColor = LyricsColors.lineTextColor() | 0xFF000000;
+        final int lyricColor = LyricsColors.lineTextColor() | 0xFF000000;
+        final int readingColor = (activeLine ? lyricColor : LyricsColors.secondaryTextColor()) | 0xFF000000;
             // A main run holding none of the line's words has no word to light it, so it would sit in
             // the unsung colour for the whole line and then jump white at the last word. Drawn while the
             // line is active instead, and kept once the words are past so it does not fall back.
@@ -2010,8 +2006,9 @@ final class LyricsLineView extends TextView {
         final int romaUnsungAlpha = Math.round(lineAlpha * readingBaseAlpha * contentNow * romaReveal);
 
         final int baseMainRgb = (getCurrentTextColor() | 0xFF000000) & 0x00FFFFFF;
-        final int readingRgb = ((activeLine && secondaryActiveColor != 0
-                ? secondaryActiveColor : LyricsColors.secondaryTextColor()) | 0xFF000000) & 0x00FFFFFF;
+        final int readingRgb = (activeLine
+                ? baseMainRgb
+                : (LyricsColors.secondaryTextColor() | 0xFF000000)) & 0x00FFFFFF;
 
         final int mainUnsungColor = baseMainRgb | (Math.max(0, Math.min(255, mainUnsungAlpha)) << 24);
         final int romaUnsungColor = readingRgb | (Math.max(0, Math.min(255, romaUnsungAlpha)) << 24);
@@ -2152,7 +2149,7 @@ final class LyricsLineView extends TextView {
 
         // Each reading is lit as far as its own syllable is sung.
         if (romaReveal > 0f) {
-            final int romaSungAlpha = Math.round(LyricsColors.ACTIVE_READING_ALPHA * 255f * contentNow * romaReveal);
+            final int romaSungAlpha = Math.round(lineAlpha * LyricsColors.ACTIVE_READING_ALPHA * 255f * contentNow * romaReveal);
             final int romaSungColor = readingRgb | (Math.max(0, Math.min(255, romaSungAlpha)) << 24);
             RomanLineStatics[] romLines = cache.romanLines;
 

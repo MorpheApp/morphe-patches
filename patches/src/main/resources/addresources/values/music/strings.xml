@@ -682,6 +682,10 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_hide_played_summary">Hide lyrics lines above the currently playing line</string>
     <string name="morphe_music_lyrics_hide_unplayed_title">Hide unplayed lyrics</string>
     <string name="morphe_music_lyrics_hide_unplayed_summary">Hide lyrics lines below the currently playing line</string>
+    <string name="morphe_music_lyrics_dynamic_background_title">Dynamic background</string>
+    <string name="morphe_music_lyrics_dynamic_background_summary">Show a blurred background made from the album art behind the lyrics</string>
+    <string name="morphe_music_lyrics_dynamic_background_animated_title">Animate dynamic background</string>
+    <string name="morphe_music_lyrics_dynamic_background_animated_summary">Move the background while playing, and pulse it with the music if YouTube Music has the microphone permission. Turn off for a still background that uses less battery</string>
     <string name="morphe_music_lyrics_mediasession_title">Show MediaSession Lyrics on lock screen</string>
     <string name="morphe_music_lyrics_mediasession_summary">Shows the current line on the lock screen, Android Auto and Bluetooth. Needs Android 11 or newer</string>
     <string name="morphe_music_lyrics_miniplayer_title">Show Miniplayer Lyrics</string>
@@ -780,7 +784,7 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_lyrics_hide_info_title">Hide credit line</string>
     <string name="morphe_music_lyrics_hide_info_summary">Hide the credit line shown below the lyrics</string>
     <string name="morphe_music_lyrics_swap_trans_roma_title">Swap translation and romanization</string>
-    <string name="morphe_music_lyrics_swap_trans_roma_summary">ON puts romanization or transliteration below lyrics and translation above; OFF keeps romanization or transliteration above and translation below. A reading placed over each syllable moves with it, from above its syllable to below it</string>
+    <string name="morphe_music_lyrics_swap_trans_roma_summary">Swaps the display order of translation and romanization below the lyrics</string>
     <string name="morphe_music_lyrics_force_center_title">Always center lyrics</string>
     <string name="morphe_music_lyrics_force_center_summary">ON puts every line in the middle and ignores the source alignment, including duet sides; OFF keeps the alignment the lyrics ask for</string>
     <string name="morphe_music_lyrics_providers_keep_one">At least one provider must stay on</string>
