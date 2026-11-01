@@ -64,6 +64,32 @@ public final class OfflinePlaybackService extends Service {
 
     public static void removeListener(PlaybackListener listener) { listeners.remove(listener); }
 
+    /**
+     * @param queue      The tracks that Previous and Next move through, including this track.
+     * @param queueIndex The position of this track in the queue.
+     */
+    static void play(Context context, OfflineTrack track, ArrayList<String> queue, int queueIndex) {
+        context.startForegroundService(new Intent(context, OfflinePlaybackService.class)
+                .setAction(ACTION_PLAY_FILE)
+                .putExtra(EXTRA_PATH, track.audioFile().getAbsolutePath())
+                .putExtra(EXTRA_TITLE, track.displayTitle())
+                .putExtra(EXTRA_ARTIST, track.displayArtist())
+                .putExtra(EXTRA_ARTWORK_PATH, track.artworkFile().getAbsolutePath())
+                .putStringArrayListExtra(EXTRA_QUEUE, queue)
+                .putExtra(EXTRA_QUEUE_INDEX, queueIndex));
+    }
+
+    static boolean hasPrevious() {
+        OfflinePlaybackService service = instance;
+        return service != null && service.queueIndex > 0;
+    }
+
+    static boolean hasNext() {
+        OfflinePlaybackService service = instance;
+        return service != null && service.queueIndex >= 0
+                && service.queueIndex + 1 < service.queue.size();
+    }
+
     public static void toggle(Context context) {
         context.startService(new Intent(context, OfflinePlaybackService.class).setAction(ACTION_TOGGLE));
     }
