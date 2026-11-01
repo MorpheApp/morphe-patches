@@ -63,19 +63,6 @@ val lyricsPatch = bytecodePatch(
         // that own these resources are applied.
         resourcePatch {
             execute {
-                // The legacy tabbed player lives in a bottom-sheet window, outside the
-                // activity decor searched by the engagement-panel installer.
-                document("res/layout/player_bottom_sheet.xml").use { document ->
-                    document.documentElement.appendChild(
-                        document.createElement(
-                            "app.morphe.extension.music.patches.lyrics.ui.LyricsTabbedPanelObserver"
-                        ).apply {
-                            setAttribute("android:layout_width", "0dp")
-                            setAttribute("android:layout_height", "0dp")
-                            setAttribute("android:importantForAccessibility", "no")
-                        }
-                    )
-                }
                 copyResources(
                     "copyvideolinkbutton",
                     ResourceGroup("drawable", "morphe_yt_copy_bold.xml")
@@ -272,6 +259,13 @@ val lyricsPatch = bytecodePatch(
         // The panel content is built by Elements, so there is no view to hook. The timed
         // lyrics component is the earliest signal that the opened panel is the lyrics one.
         addLithoFilter(LYRICS_PANEL_FILTER)
+
+        // Some accounts get lyrics as a player tab instead of an engagement panel. A tab page can
+        // be built long before it is selected, so the litho filter alone can't install the panel.
+        TabbedViewTabSelectedFingerprint.method.addInstruction(
+            0,
+            "invoke-static { p0 }, $PANEL_INSTALLER_CLASS->onTabSelected(Landroid/view/ViewGroup;)V"
+        )
 
         // Some accounts get the panel without a heading, and then nothing in the view tree
         // tells the lyrics panel from the other panels sharing the same container. The panel

@@ -780,6 +780,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             if (!LyricsPanelInstaller.isOtherPanelForeground()) {
                 restoreHiddenSiblings();
             }
+            LyricsPanelInstaller.onPanelDetached(this);
         } catch (Exception ex) {
             Logger.printException(() -> "onDetachedFromWindow failure", ex);
         }
@@ -1080,6 +1081,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             overlayCacheUptimeMs = now;
             cachedLyricsPanelOpen = LyricsPanelInstaller.isLyricsPanelOpen();
             cachedOtherPanelOpen = LyricsPanelInstaller.isOtherPanelForeground();
+            LyricsPanelInstaller.updateKeepScreenOnInTab(this);
         }
 
         if (cachedOtherPanelOpen) {
