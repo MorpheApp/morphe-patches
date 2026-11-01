@@ -465,13 +465,13 @@ public class FeedCardLayoutPatch {
     private static volatile long commentsRequestTime;
 
     /**
-     * Template of the feed videos that the elements are converted to.
+     * Template that the elements are converted to, such as the feed videos.
      * The uri includes the hash of the template version, and the subscriptions of the element write
      * the theme and the capabilities to fields of the model. Both are taken from the elements of the template
      * that the server sends, so they follow the new versions of the template. Until such an element is seen,
      * the uri is taken from the template cache of the app, and the fields are the known ones.
      */
-    private static final class VideoTemplate {
+    static final class VideoTemplate {
         final String name;
         final int modelField;
         final ByteTrieSearch search;
@@ -2289,7 +2289,7 @@ public class FeedCardLayoutPatch {
                 .build();
     }
 
-    private static TemplateConfig templateConfig(String uri) {
+    static TemplateConfig templateConfig(String uri) {
         return TemplateConfig.newBuilder()
                 .setUriTemplateConfig(UriTemplateConfig.newBuilder().setUri(uri))
                 .build();
@@ -2298,7 +2298,7 @@ public class FeedCardLayoutPatch {
     /**
      * Keeps only the theme and capabilities subscriptions, written to the fields of the new model.
      */
-    private static SubscriptionConfig subscriptionConfig(SubscriptionConfig config, VideoTemplate template) {
+    static SubscriptionConfig subscriptionConfig(SubscriptionConfig config, VideoTemplate template) {
         SubscriptionConfig.Builder builder = SubscriptionConfig.newBuilder();
         if (config.hasThemeSubscriptionConfig()) {
             ThemeSubscriptionConfig theme = config.getThemeSubscriptionConfig();

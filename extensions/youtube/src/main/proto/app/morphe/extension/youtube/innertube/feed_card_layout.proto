@@ -9,6 +9,15 @@ option java_outer_classname = "FeedCardLayoutOuterClass";
 // Bytes of the newElement of an elementRenderer.
 message Element {
     ElementType type = 1;
+    ElementProperties properties = 2;
+}
+
+message ElementProperties {
+    ElementIdentifierProperties identifierProperties = 183314536;
+}
+
+message ElementIdentifierProperties {
+    string identifier = 1;
 }
 
 message ElementType {
@@ -36,6 +45,8 @@ message ElementModel {
     LockupModel lockupModel = 413471385;
     // Action bar of the watch page that is not collapsed, such as on tablets (video_action_bar.eml).
     VideoActionBarModel videoActionBarModel = 389155117;
+    // Channel bar of the watch page, in its own row above the action bar (compact_channel_bar.eml).
+    CompactChannelBarModel compactChannelBarModel = 391108665;
     // Header of the shelves, such as the Shorts shelf (shelf_header.eml).
     ShelfHeaderModel shelfHeaderModel = 229393850;
     // Horizontal shelf of videos, with its header (horizontal_shelf.eml).
@@ -92,8 +103,14 @@ message ShelfHeaderStyle {
 
 // Fills the theme and the capabilities of the model when the element is bound.
 message SubscriptionConfig {
+    EnvironmentSubscriptionConfig environmentSubscriptionConfig = 212323971;
     ThemeSubscriptionConfig themeSubscriptionConfig = 386334485;
     CapabilitiesSubscriptionConfig capabilitiesSubscriptionConfig = 386334486;
+}
+
+message EnvironmentSubscriptionConfig {
+    int32 modelField = 1;
+    int32 resultField = 2;
 }
 
 message ThemeSubscriptionConfig {
@@ -202,6 +219,43 @@ message LockupViewModelHolder {
     VideoActionBarViewModel videoActionBarViewModel = 2185;
 }
 
+message CompactChannelBarModel {
+    ElementContext context = 2;
+    SubscribeState subscribeState = 3;
+    CompactChannelBarViewModelHolder viewModel = 9;
+    bool useThemeFromContext = 11;
+}
+
+message SubscribeState {
+    string key = 1;
+}
+
+message CompactChannelBarViewModelHolder {
+    CompactChannelBarViewModel compactChannelBarViewModel = 1107;
+}
+
+message CompactChannelBarViewModel {
+    SubscribeButtonViewModelHolder subscribeButton = 24;
+    int32 channelBarStyle = 26;
+    ChannelBarHeaderViewModelHolder channelBarHeader = 27;
+}
+
+message SubscribeButtonViewModelHolder {
+    SubscribeButtonViewModel subscribeButtonViewModel = 518912898;
+}
+
+message SubscribeButtonViewModel {
+    string stateEntityStoreKey = 3;
+}
+
+message ChannelBarHeaderViewModelHolder {
+    ChannelBarHeaderViewModel channelBarHeaderViewModel = 477514866;
+}
+
+message ChannelBarHeaderViewModel {
+    int32 style = 5;
+}
+
 message VideoActionBarModel {
     VideoActionBarData videoActionBarData = 17;
 }
@@ -221,6 +275,7 @@ message VideoActionBarViewModel {
 
 message VideoActionBarLayoutConfig {
     bool iconButtons = 6; // Buttons of the minimal layout, with an icon above their text.
+    bool enableMarginStartAdjustment = 7; // Starts the row with the channel further from the start of the screen.
 }
 
 message VideoActionBarSize {

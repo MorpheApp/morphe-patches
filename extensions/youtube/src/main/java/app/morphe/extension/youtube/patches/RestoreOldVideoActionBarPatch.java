@@ -9,6 +9,7 @@ package app.morphe.extension.youtube.patches;
 import android.net.Uri;
 import android.util.Base64;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 
 import java.util.HashMap;
@@ -20,14 +21,19 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.AddToPlaylistButtonViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ButtonViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ButtonViewModelHolder;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CompactChannelBarModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CompactChannelBarViewModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CompactChannelBarViewModelHolder;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ComponentType;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.DislikeButtonViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Element;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.EnvironmentSubscriptionConfig;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LikeButtonViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LikeStatusEntityKey;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LockupModel;
-import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LockupViewModelHolder;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.SubscribeState;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.SubscriptionConfig;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleButtonViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleButtonViewModelHolder;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarItem;
@@ -38,6 +44,10 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActi
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarOverflow;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarSize;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarViewModel;
+import app.morphe.extension.youtube.innertube.NextResponseOuterClass.NewElement;
+import app.morphe.extension.youtube.innertube.NextResponseOuterClass.SecondaryContents;
+import app.morphe.extension.youtube.innertube.NextResponseOuterClass.SlimVideoMetadataSectionRenderer;
+import app.morphe.extension.youtube.innertube.NextResponseOuterClass.TertiaryContents;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.requests.ConfigRequest;
 import app.morphe.extension.youtube.settings.Settings;
@@ -72,6 +82,10 @@ public class RestoreOldVideoActionBarPatch {
          */
         CLASSIC,
         /**
+         * The same buttons of {@link #CLASSIC} in their own row, below a row with the channel and the subscribe button.
+         */
+        CLASSIC_TWO_ROWS,
+        /**
          * Buttons with an icon above their text, and the other buttons in a menu.
          */
         MINIMAL
@@ -86,11 +100,19 @@ public class RestoreOldVideoActionBarPatch {
             || Settings.DISABLE_LAYOUT_UPDATES.get()
             ? VideoActionBarLayout.DEFAULT
             : Settings.VIDEO_ACTION_BAR_LAYOUT.get();
-    private static final boolean FIX_VIDEO_ACTION_BAR = LAYOUT == VideoActionBarLayout.CLASSIC;
+    private static final boolean FIX_VIDEO_ACTION_BAR = LAYOUT == VideoActionBarLayout.CLASSIC
+            || LAYOUT == VideoActionBarLayout.CLASSIC_TWO_ROWS;
 
     private static final String VIDEO_ACTION_BAR_TEMPLATE = "compactify_video_action_bar.eml";
     private static final int LAYOUT_STYLE_CLASSIC = 4;
     private static final int LAYOUT_STYLE_MINIMAL = 6;
+    /**
+     * Channel name beside the avatar, and the subscribe button at the end of the row, as on tablets.
+     */
+    private static final int TWO_ROWS_CHANNEL_BAR_STYLE = 2;
+    private static final FeedCardLayoutPatch.VideoTemplate CHANNEL_BAR_TEMPLATE =
+            new FeedCardLayoutPatch.VideoTemplate("compact_channel_bar.eml", 391108665, 6, 5);
+    private static final int CHANNEL_BAR_ENVIRONMENT_FIELD = 4;
     private static final String SHARE_BUTTON_ID = "id.video.share.button";
     private static final String OVERFLOW_BUTTON_ICON = "yt_outline_experimental_overflow_horizontal_black_24";
     private static final String MORE_ACTIONS_TEXT = "accessibility_more_actions_video";
@@ -172,10 +194,8 @@ public class RestoreOldVideoActionBarPatch {
         try {
             Element element = Element.parseFrom(bytes);
             ComponentType componentType = element.getType().getComponentType();
-            ElementModel model = componentType.getModel();
-            LockupModel lockupModel = model.getLockupModel();
-            LockupViewModelHolder viewModel = lockupModel.getViewModel();
-            VideoActionBarViewModel actionBar = viewModel.getVideoActionBarViewModel();
+            LockupModel lockupModel = componentType.getModel().getLockupModel();
+            VideoActionBarViewModel actionBar = lockupModel.getViewModel().getVideoActionBarViewModel();
             final boolean minimal = LAYOUT == VideoActionBarLayout.MINIMAL;
             if (actionBar.getLayoutStyle() != (minimal ? LAYOUT_STYLE_CLASSIC : LAYOUT_STYLE_MINIMAL)) {
                 return bytes;
@@ -340,23 +360,151 @@ public class RestoreOldVideoActionBarPatch {
                 newActionBar.clearSubscribeButton().clearSize();
             }
 
-            return element.toBuilder()
-                    .setType(element.getType().toBuilder()
-                            .setComponentType(componentType.toBuilder()
-                                    .setModel(model.toBuilder()
-                                            .setLockupModel(lockupModel.toBuilder()
-                                                    .setViewModel(viewModel.toBuilder()
-                                                            .setVideoActionBarViewModel(newActionBar
-                                                                    .setLayoutStyle(minimal ? LAYOUT_STYLE_MINIMAL : LAYOUT_STYLE_CLASSIC)
-                                                                    .setLayoutConfig(actionBar.getLayoutConfig().toBuilder()
-                                                                            .setIconButtons(minimal))))))))
-                    .build()
+            return withActionBar(element, componentType, lockupModel, newActionBar
+                    .setLayoutStyle(minimal ? LAYOUT_STYLE_MINIMAL : LAYOUT_STYLE_CLASSIC)
+                    .setLayoutConfig(actionBar.getLayoutConfig().toBuilder().setIconButtons(minimal))
+                    .build())
                     .toByteArray();
         } catch (Exception ex) {
             Logger.printException(() -> "setVideoActionBarLayout failure", ex);
         }
 
         return bytes;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The channel and the buttons of the phone layouts are one element, so the row of each one is
+     * another element of the section that the watch page shows, as on tablets.
+     *
+     * @return The section with the two rows, or null if the section does not change.
+     */
+    public static byte[] getTwoRowsSection(MessageLite section) {
+        if (LAYOUT != VideoActionBarLayout.CLASSIC_TWO_ROWS) {
+            return null;
+        }
+
+        byte[] sectionBytes;
+        try {
+            sectionBytes = section.toByteArray();
+        } catch (IllegalStateException ex) {
+            // A section that 'Hide related videos' changed in place, which cannot be serialized.
+            return null;
+        }
+
+        try {
+            SecondaryContents contents = SecondaryContents.parseFrom(sectionBytes);
+            if (!contents.hasSlimVideoMetadataSectionRenderer()) {
+                return null;
+            }
+
+            SlimVideoMetadataSectionRenderer renderer = contents.getSlimVideoMetadataSectionRenderer();
+            SlimVideoMetadataSectionRenderer.Builder newRenderer = renderer.toBuilder().clearTertiaryContents();
+            boolean changed = false;
+            for (TertiaryContents row : renderer.getTertiaryContentsList()) {
+                byte[] bytes = row.getElementRenderer().getNewElement().toByteArray();
+                if (!FeedVideoCardsPatch.getElementText(bytes).contains(VIDEO_ACTION_BAR_TEMPLATE)) {
+                    newRenderer.addTertiaryContents(row);
+                    continue;
+                }
+
+                Element element = Element.parseFrom(setVideoActionBarLayout(bytes));
+                ComponentType componentType = element.getType().getComponentType();
+                LockupModel lockupModel = componentType.getModel().getLockupModel();
+                VideoActionBarViewModel actionBar = lockupModel.getViewModel().getVideoActionBarViewModel();
+                // The response has no element of the channel bar, so its uri is taken from the template cache.
+                String channelBarUri = CHANNEL_BAR_TEMPLATE.getUri();
+                if (channelBarUri == null || actionBar.getActionsCount() == 0
+                        || !actionBar.getActions(0).getContent().hasSubscribeButton()) {
+                    newRenderer.addTertiaryContents(row);
+                    continue;
+                }
+
+                // The filters only hide the channel and its buttons inside the action bar.
+                if (!Settings.HIDE_CHANNEL_PROFILE_BUTTON.get() && !Settings.HIDE_ACTION_BAR.get()) {
+                    CompactChannelBarViewModel channel = CompactChannelBarViewModel.parseFrom(
+                            actionBar.getActions(0).getContent().getSubscribeButton());
+                    CompactChannelBarViewModel.Builder newChannel = channel.toBuilder()
+                            .setChannelBarStyle(TWO_ROWS_CHANNEL_BAR_STYLE)
+                            .setChannelBarHeader(channel.getChannelBarHeader().toBuilder()
+                                    .setChannelBarHeaderViewModel(channel.getChannelBarHeader()
+                                            .getChannelBarHeaderViewModel().toBuilder().clearStyle()));
+                    if (Settings.HIDE_CHANNEL_PROFILE_SUBSCRIBE_BUTTON.get()) {
+                        newChannel.clearSubscribeButton();
+                    }
+
+                    SubscriptionConfig config = FeedCardLayoutPatch.subscriptionConfig(
+                            componentType.getSubscriptionConfig(), CHANNEL_BAR_TEMPLATE);
+                    newRenderer.addTertiaryContents(elementRow(row, element.toBuilder()
+                            .setProperties(element.getProperties().toBuilder()
+                                    .setIdentifierProperties(element.getProperties().getIdentifierProperties().toBuilder()
+                                            .setIdentifier(channelBarUri)))
+                            .setType(element.getType().toBuilder()
+                                    .setComponentType(ComponentType.newBuilder()
+                                            .setTemplateConfig(FeedCardLayoutPatch.templateConfig(channelBarUri))
+                                            .setModel(ElementModel.newBuilder()
+                                                    .setCompactChannelBarModel(CompactChannelBarModel.newBuilder()
+                                                            .setContext(lockupModel.getContext())
+                                                            .setSubscribeState(SubscribeState.newBuilder().setKey(channel
+                                                                    .getSubscribeButton().getSubscribeButtonViewModel()
+                                                                    .getStateEntityStoreKey()))
+                                                            .setViewModel(CompactChannelBarViewModelHolder.newBuilder()
+                                                                    .setCompactChannelBarViewModel(newChannel))
+                                                            .setUseThemeFromContext(true)))
+                                            .setSubscriptionConfig(config.toBuilder()
+                                                    .setEnvironmentSubscriptionConfig(EnvironmentSubscriptionConfig.newBuilder()
+                                                            .setModelField(CHANNEL_BAR_TEMPLATE.modelField)
+                                                            .setResultField(CHANNEL_BAR_ENVIRONMENT_FIELD)))))
+                            .build()));
+                }
+
+                VideoActionBarViewModel.Builder buttons = actionBar.toBuilder().clearActions();
+                for (int i = 1, count = actionBar.getActionsCount(); i < count; i++) {
+                    VideoActionBarItem action = actionBar.getActions(i);
+                    VideoActionBarItemContent content = action.getContent();
+                    // The share button has its text, as there is enough room without the channel.
+                    buttons.addActions(SHARE_BUTTON_ID.equals(content.getButton().getTargetId())
+                            ? action.toBuilder().setContent(content.toBuilder().setButton(content.getButton().toBuilder()
+                                    .setTitle(content.getButton().getAccessibilityText()))).build()
+                            : action);
+                }
+
+                // The buttons start where the avatar of the row above starts.
+                buttons.setLayoutConfig(actionBar.getLayoutConfig().toBuilder().clearEnableMarginStartAdjustment());
+                newRenderer.addTertiaryContents(elementRow(row,
+                        withActionBar(element, componentType, lockupModel, buttons.build())));
+                changed = true;
+            }
+
+            return changed
+                    ? contents.toBuilder().setSlimVideoMetadataSectionRenderer(newRenderer).build().toByteArray()
+                    : null;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTwoRowsSection failure", ex);
+        }
+
+        return null;
+    }
+
+    private static Element withActionBar(Element element, ComponentType componentType,
+                                         LockupModel lockupModel, VideoActionBarViewModel actionBar) {
+        return element.toBuilder()
+                .setType(element.getType().toBuilder()
+                        .setComponentType(componentType.toBuilder()
+                                .setModel(componentType.getModel().toBuilder()
+                                        .setLockupModel(lockupModel.toBuilder()
+                                                .setViewModel(lockupModel.getViewModel().toBuilder()
+                                                        .setVideoActionBarViewModel(actionBar))))))
+                .build();
+    }
+
+    private static TertiaryContents elementRow(TertiaryContents row, Element element)
+            throws InvalidProtocolBufferException {
+        return row.toBuilder()
+                .setElementRenderer(row.getElementRenderer().toBuilder()
+                        .setNewElement(NewElement.parseFrom(element.toByteArray())))
+                .build();
     }
 
     /**

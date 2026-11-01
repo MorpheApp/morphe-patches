@@ -437,11 +437,13 @@
     <string-array name="morphe_video_action_bar_layout_entries">
         <item>@string/morphe_video_action_bar_layout_entry_1</item>
         <item>@string/morphe_video_action_bar_layout_entry_2</item>
+        <item>@string/morphe_video_action_bar_layout_entry_4</item>
         <item>@string/morphe_video_action_bar_layout_entry_3</item>
     </string-array>
     <string-array name="morphe_video_action_bar_layout_entry_values">
         <item>DEFAULT</item>
         <item>CLASSIC</item>
+        <item>CLASSIC_TWO_ROWS</item>
         <item>MINIMAL</item>
     </string-array>
 
