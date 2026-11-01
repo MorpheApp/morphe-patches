@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
@@ -19,8 +20,11 @@ import app.morphe.extension.shared.patches.components.StringFilterGroup;
 @SuppressWarnings("unused")
 public final class CommentsFilter extends Filter {
 
+    private static final String COMMENT_PATH = "|comment.e";
+
     private final StringFilterGroup commentComposer;
     private final StringFilterGroup emojiButton;
+    private final StringFilterGroup gifsAndImages;
 
     public CommentsFilter() {
         commentComposer = new StringFilterGroup(
@@ -43,6 +47,16 @@ public final class CommentsFilter extends Filter {
                 "id.comment.quick_emoji.button"
         );
 
+        final StringFilterGroup gifButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_GIF_BUTTON,
+                "composer_gif_button.e"
+        );
+
+        gifsAndImages = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_GIFS_AND_IMAGES,
+                "comment_image_attachment.e"
+        );
+
         final StringFilterGroup timestampButton = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_TIMESTAMP_BUTTON,
                 "composer_timestamp_button.e"
@@ -53,6 +67,8 @@ public final class CommentsFilter extends Filter {
                 commentsContext,
                 communityGuidelines,
                 emojiButton,
+                gifButton,
+                gifsAndImages,
                 timestampButton
         );
     }
@@ -69,6 +85,11 @@ public final class CommentsFilter extends Filter {
                               int contentIndex) {
         if (matchedGroup == commentComposer) {
             return emojiButton.check(accessibility).isFiltered();
+        }
+
+        if (matchedGroup == gifsAndImages) {
+            // Only posted comments and replies, not the preview of an attachment in the composer.
+            return Utils.contains(path, COMMENT_PATH);
         }
 
         return true;

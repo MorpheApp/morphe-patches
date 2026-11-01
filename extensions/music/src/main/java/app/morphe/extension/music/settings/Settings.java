@@ -121,6 +121,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_COMMENTS_COMMUNITY_GUIDELINES = new BooleanSetting("morphe_music_hide_comments_community_guidelines", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_CONTEXT = new BooleanSetting("morphe_music_hide_comments_context", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_EMOJI_BUTTON = new BooleanSetting("morphe_music_hide_comments_emoji_button", FALSE);
+    public static final BooleanSetting HIDE_COMMENTS_GIF_BUTTON = new BooleanSetting("morphe_music_hide_comments_gif_button", FALSE);
+    public static final BooleanSetting HIDE_COMMENTS_GIFS_AND_IMAGES = new BooleanSetting("morphe_music_hide_comments_gifs_and_images", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_INFO_BUTTON = new BooleanSetting("morphe_music_hide_comments_info_button", FALSE, true);
     public static final BooleanSetting HIDE_COMMENTS_TIMESTAMP_BUTTON = new BooleanSetting("morphe_music_hide_comments_timestamp_button", FALSE);
 
