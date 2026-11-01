@@ -52,6 +52,7 @@ val patchesUpdateNoticePatch = bytecodePatch(
     execute {
         PreferenceScreen.MISC.addPreferences(
             SwitchPreference("morphe_patches_update_notice", summary = true),
+            SwitchPreference("morphe_patches_update_notice_dev_releases", summary = true),
         )
 
         YouTubeActivityOnCreateFingerprint.method.addInstruction(

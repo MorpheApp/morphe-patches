@@ -106,13 +106,17 @@ public final class PatchesUpdateNoticePatch {
             checkedThisSession = true;
 
             final String installedVersion = stripVersionPrefix(Utils.getPatchesReleaseVersion());
+            // Dev releases can be published several times a day, so they are only included if enabled.
+            final boolean includeDevReleases = Settings.PATCHES_UPDATE_NOTICE_DEV_RELEASES.get();
             final long now = System.currentTimeMillis();
-            final boolean canFetch = now - Settings.PATCHES_UPDATE_NOTICE_LAST_CHECK_MS.get() >= CHECK_INTERVAL_MS
-                    && Utils.isNetworkConnected();
+            // Check again right away if different patches are installed or the dev releases setting was changed.
+            final boolean checkDue = !isCacheCurrent(installedVersion, includeDevReleases)
+                    || now - Settings.PATCHES_UPDATE_NOTICE_LAST_CHECK_MS.get() >= CHECK_INTERVAL_MS;
+            final boolean canFetch = checkDue && Utils.isNetworkConnected();
 
             if (!canFetch) {
                 // Show the last found update again until it is installed or dismissed.
-                UpdateInfo cached = loadCachedUpdate(installedVersion);
+                UpdateInfo cached = loadCachedUpdate(installedVersion, includeDevReleases);
                 if (cached != null) {
                     // Post, so the dialog is shown after the activity is created.
                     Utils.runOnMainThread(() -> showIfNotDismissed(activity, cached));
@@ -122,9 +126,9 @@ public final class PatchesUpdateNoticePatch {
 
             Utils.runOnBackgroundThread(() -> {
                 try {
-                    UpdateInfo info = fetchUpdateInfo(installedVersion);
+                    UpdateInfo info = fetchUpdateInfo(installedVersion, includeDevReleases);
                     Settings.PATCHES_UPDATE_NOTICE_LAST_CHECK_MS.save(System.currentTimeMillis());
-                    saveCachedUpdate(installedVersion, info);
+                    saveCachedUpdate(installedVersion, includeDevReleases, info);
 
                     Utils.runOnMainThread(() -> showIfNotDismissed(activity, info));
                 } catch (Exception ex) {
@@ -147,15 +151,17 @@ public final class PatchesUpdateNoticePatch {
         showDialog(activity, info);
     }
 
-    private static void saveCachedUpdate(String installedVersion, @Nullable UpdateInfo info) {
+    private static void saveCachedUpdate(String installedVersion, boolean includeDevReleases, @Nullable UpdateInfo info) {
         try {
+            JSONObject json = new JSONObject();
+            json.put("installed", installedVersion);
+            json.put("dev", includeDevReleases);
             if (info == null) {
-                Settings.PATCHES_UPDATE_NOTICE_CACHE.save("");
+                // Nothing to show, but remember for which patches and setting this was checked.
+                Settings.PATCHES_UPDATE_NOTICE_CACHE.save(json.toString());
                 return;
             }
 
-            JSONObject json = new JSONObject();
-            json.put("installed", installedVersion);
             json.put("latest", info.latestVersion);
             json.put("features", new JSONArray(info.features));
             json.put("fixes", new JSONArray(info.fixes));
@@ -167,14 +173,33 @@ public final class PatchesUpdateNoticePatch {
     }
 
     @Nullable
-    private static UpdateInfo loadCachedUpdate(String installedVersion) {
+    private static JSONObject loadCache(String installedVersion, boolean includeDevReleases) {
         try {
             String cache = Settings.PATCHES_UPDATE_NOTICE_CACHE.get();
             if (cache.isEmpty()) return null;
 
             JSONObject json = new JSONObject(cache);
-            // The cache is outdated once different patches are installed.
-            if (!installedVersion.equals(json.optString("installed"))) return null;
+            // The cache is outdated once different patches are installed or the dev releases setting is changed.
+            if (!installedVersion.equals(json.optString("installed"))
+                    || includeDevReleases != json.optBoolean("dev")) {
+                return null;
+            }
+            return json;
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to load patches update cache", ex);
+            return null;
+        }
+    }
+
+    private static boolean isCacheCurrent(String installedVersion, boolean includeDevReleases) {
+        return loadCache(installedVersion, includeDevReleases) != null;
+    }
+
+    @Nullable
+    private static UpdateInfo loadCachedUpdate(String installedVersion, boolean includeDevReleases) {
+        try {
+            JSONObject json = loadCache(installedVersion, includeDevReleases);
+            if (json == null || !json.has("latest")) return null;
 
             UpdateInfo info = new UpdateInfo(json.getString("latest"));
             addAll(info.features, json.optJSONArray("features"));
@@ -199,9 +224,7 @@ public final class PatchesUpdateNoticePatch {
      *         or null if there is no newer release with YouTube changes.
      */
     @Nullable
-    private static UpdateInfo fetchUpdateInfo(String installedVersion) throws Exception {
-        final boolean includePreReleases = Utils.isPreReleasePatches();
-
+    private static UpdateInfo fetchUpdateInfo(String installedVersion, boolean includeDevReleases) throws Exception {
         HttpURLConnection connection = Requester.openConnection(RELEASES_URL);
         connection.setConnectTimeout(5000);
         connection.setReadTimeout(10000);
@@ -223,7 +246,7 @@ public final class PatchesUpdateNoticePatch {
         for (int i = 0, length = releases.length(); i < length; i++) {
             JSONObject release = releases.getJSONObject(i);
             if (release.optBoolean("draft")) continue;
-            if (release.optBoolean("prerelease") && !includePreReleases) continue;
+            if (release.optBoolean("prerelease") && !includeDevReleases) continue;
 
             String version = stripVersionPrefix(release.optString("tag_name"));
             if (compareVersions(version, installedVersion) <= 0) break;
