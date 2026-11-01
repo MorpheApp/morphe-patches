@@ -12,15 +12,19 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.LeadingMarginSpan;
+import android.text.style.LineBackgroundSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.util.Pair;
+import android.util.TypedValue;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
@@ -40,6 +44,7 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
@@ -66,8 +71,13 @@ public final class PatchesUpdateNoticePatch {
      */
     private static final int MAX_LISTED_CHANGES = 6;
 
-    private static final float ITEM_TEXT_SCALE = 0.9f;
-    private static final String BULLET = "•  ";
+    /**
+     * Text size of the dialog message, in sp.
+     */
+    private static final float MESSAGE_TEXT_SIZE_SP = 16;
+    private static final float HEADING_TEXT_SCALE = 1.15f;
+    private static final float MORE_TEXT_SCALE = 0.9f;
+    private static final String BULLET = "\u2022 ";
 
     /**
      * Matches YouTube entries of the release notes, but not YouTube Music entries.
@@ -311,10 +321,20 @@ public final class PatchesUpdateNoticePatch {
                             TextUtils.htmlEncode(stripVersionPrefix(Utils.getPatchesReleaseVersion()))),
                     Html.FROM_HTML_MODE_LEGACY));
 
+            // Wrapped lines of a change start under its text, not under the bullet.
+            Paint bulletPaint = new Paint();
+            bulletPaint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, MESSAGE_TEXT_SIZE_SP,
+                    activity.getResources().getDisplayMetrics()));
+            final int bulletIndent = Math.round(bulletPaint.measureText(BULLET));
+            final int ruleColor = (ThemeUtils.getAppForegroundColor() & 0x00FFFFFF) | 0x33000000;
+
             int remaining = MAX_LISTED_CHANGES;
-            remaining = appendSection(message, str("morphe_patches_update_notice_dialog_features"), info.features, remaining);
-            remaining = appendSection(message, str("morphe_patches_update_notice_dialog_fixes"), info.fixes, remaining);
-            appendSection(message, str("morphe_patches_update_notice_dialog_other"), info.other, remaining);
+            remaining = appendSection(message, str("morphe_patches_update_notice_dialog_features"),
+                    info.features, remaining, bulletIndent, ruleColor);
+            remaining = appendSection(message, str("morphe_patches_update_notice_dialog_fixes"),
+                    info.fixes, remaining, bulletIndent, ruleColor);
+            appendSection(message, str("morphe_patches_update_notice_dialog_other"),
+                    info.other, remaining, bulletIndent, ruleColor);
 
             final int hidden = info.changeCount() - MAX_LISTED_CHANGES;
             if (hidden > 0) {
@@ -322,7 +342,7 @@ public final class PatchesUpdateNoticePatch {
                 final int start = message.length();
                 message.append(str("morphe_patches_update_notice_dialog_more", hidden));
                 message.setSpan(new StyleSpan(Typeface.ITALIC), start, message.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                message.setSpan(new RelativeSizeSpan(ITEM_TEXT_SCALE), start, message.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                message.setSpan(new RelativeSizeSpan(MORE_TEXT_SCALE), start, message.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
 
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
@@ -344,13 +364,26 @@ public final class PatchesUpdateNoticePatch {
         }
     }
 
-    private static int appendSection(SpannableStringBuilder message, String title, List<String> changes, int remaining) {
+    /**
+     * Section titles are bold with a thin, faint rule under them, like the headings of the
+     * release notes on GitHub.
+     */
+    private static int appendSection(SpannableStringBuilder message, String title, List<String> changes,
+                                     int remaining, int bulletIndent, int ruleColor) {
         if (changes.isEmpty() || remaining <= 0) return remaining;
 
         message.append("\n\n");
         final int titleStart = message.length();
         message.append(title);
-        message.setSpan(new StyleSpan(Typeface.BOLD), titleStart, message.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        final int titleEnd = message.length();
+        message.setSpan(new StyleSpan(Typeface.BOLD), titleStart, titleEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        message.setSpan(new RelativeSizeSpan(HEADING_TEXT_SCALE), titleStart, titleEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        message.setSpan(new RuleSpan(ruleColor), titleStart, titleEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        // A short gap between the rule and the changes.
+        final int gapStart = message.length();
+        message.append("\n ");
+        message.setSpan(new RelativeSizeSpan(0.4f), gapStart, message.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         for (String change : changes) {
             if (remaining <= 0) break;
@@ -371,12 +404,35 @@ public final class PatchesUpdateNoticePatch {
                 message.append(change);
             }
 
-            // Smaller text, and wrapped lines aligned after the bullet.
-            message.setSpan(new RelativeSizeSpan(ITEM_TEXT_SCALE), itemStart, message.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            message.setSpan(new LeadingMarginSpan.Standard(0, Dim.dp12), itemStart, message.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            message.setSpan(new LeadingMarginSpan.Standard(0, bulletIndent), itemStart, message.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
         return remaining;
+    }
+
+    /**
+     * Draws a thin line along the bottom of a heading line, across the full width.
+     */
+    private static final class RuleSpan implements LineBackgroundSpan {
+        private final int color;
+
+        RuleSpan(int color) {
+            this.color = color;
+        }
+
+        @Override
+        public void drawBackground(Canvas canvas, Paint paint, int left, int right, int top,
+                                   int baseline, int bottom, CharSequence text, int start, int end,
+                                   int lineNumber) {
+            final int oldColor = paint.getColor();
+            final Paint.Style oldStyle = paint.getStyle();
+            paint.setColor(color);
+            paint.setStyle(Paint.Style.FILL);
+            final float height = Math.max(1, Dim.dp(1));
+            canvas.drawRect(left, bottom - height, right, bottom, paint);
+            paint.setColor(oldColor);
+            paint.setStyle(oldStyle);
+        }
     }
 
     private static void openManager(Activity activity) {

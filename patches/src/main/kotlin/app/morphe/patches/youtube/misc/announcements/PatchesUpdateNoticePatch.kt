@@ -11,6 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -51,8 +52,11 @@ val patchesUpdateNoticePatch = bytecodePatch(
 
     execute {
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("morphe_patches_update_notice", summary = true),
-            SwitchPreference("morphe_patches_update_notice_dev_releases", summary = true),
+            // Kept together, so the dev releases option is shown right under the notice option.
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_patches_update_notice", summary = true),
+                SwitchPreference("morphe_patches_update_notice_dev_releases", summary = true),
+            ),
         )
 
         YouTubeActivityOnCreateFingerprint.method.addInstruction(
