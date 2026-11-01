@@ -1,3 +1,23 @@
+## [2.1.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0-dev.4...v2.1.0-dev.5) (2026-11-01)
+
+### ✨ New Features
+
+* **YouTube - Captions:** Add bilingual captions with synchronized blocks ([#4213](https://github.com/MorpheApp/morphe-patches/issues/4213)) ([0dd8f39](https://github.com/MorpheApp/morphe-patches/commit/0dd8f39adf7bd2960bec992fa661c9a700051a0a))
+* **YouTube - Feed video actions:** Watch later button shows a check mark if the video is saved, and removes the video when tapped ([a976db8](https://github.com/MorpheApp/morphe-patches/commit/a976db85f337ce742fbd9a154b26d9745930738c))
+* **YouTube - Restore old video action bar:** Replace the setting with "Video action bar layout", with the Default, Classic and Minimal layouts ([545cd37](https://github.com/MorpheApp/morphe-patches/commit/545cd37cc0716ff447508ffa2e31ad599800b012))
+* **YouTube:** Add `Translate live chat` patch ([#4222](https://github.com/MorpheApp/morphe-patches/issues/4222)) ([9b598a2](https://github.com/MorpheApp/morphe-patches/commit/9b598a2ce7ff17b2f453fc56f730a734bba1a4e7))
+
+### 🐛 Bug Fixes
+
+* **YouTube - Feed card layout:** Classic layout does not apply to mixes, playlists and posts ([fac7d56](https://github.com/MorpheApp/morphe-patches/commit/fac7d5658a63381fc3f072c7e684b026930109e6))
+* **YouTube - Feed view count:** Badge is shown when the text below the title already shows the view count ([f5faf04](https://github.com/MorpheApp/morphe-patches/commit/f5faf04e505baa84ea57b0de1a77b8dbed5ad891))
+* **YouTube - GmsCore Support:** Allow casting to audio only devices ([#4268](https://github.com/MorpheApp/morphe-patches/issues/4268)) ([ec04b15](https://github.com/MorpheApp/morphe-patches/commit/ec04b153109ec227d52a75f471b3c886606f4f5e))
+* **YouTube - Hide layout components:** Filtered download item of the feed flyout menu appears until its download state is loaded ([be60b7c](https://github.com/MorpheApp/morphe-patches/commit/be60b7c67fd17d9554cca2d1001f2255ba95c903))
+* **YouTube - Hide player flyout menu components:** Fix player flyout menu items not hiding ([#4260](https://github.com/MorpheApp/morphe-patches/issues/4260)) ([74dc44b](https://github.com/MorpheApp/morphe-patches/commit/74dc44b5924c0baa7937cdef000f529e5418b09e))
+* **YouTube - Seekbar:** Videos with their own seekbar style show an image as the seekbar handle and ignore the seekbar color ([e0dcffb](https://github.com/MorpheApp/morphe-patches/commit/e0dcffbb32401e5929ccdbc3d2a2c55506a4e2a8))
+* **YouTube:** Channel whitelist and AiSList report items are missing from the Shorts player flyout menu ([acda216](https://github.com/MorpheApp/morphe-patches/commit/acda21652dbbd533d3395c4ebbe33601d361cbd2))
+* **YouTube:** Fix delayed Subscriptions header on 21.28 & 21.30 ([#4278](https://github.com/MorpheApp/morphe-patches/issues/4278)) ([35c1189](https://github.com/MorpheApp/morphe-patches/commit/35c1189c40298860d830e8a9167523ec1f7e0ca6))
+
 ## [2.1.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0-dev.3...v2.1.0-dev.4) (2026-10-31)
 
 ### 🐛 Bug Fixes
