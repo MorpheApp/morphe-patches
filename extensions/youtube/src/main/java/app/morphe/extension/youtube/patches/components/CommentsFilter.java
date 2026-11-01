@@ -65,6 +65,7 @@ public class CommentsFilter extends Filter {
     private final StringFilterGroup commentsFilterBar;
     private final StringFilterGroup dislikeButton;
     private final StringFilterGroup emojiButton;
+    private final StringFilterGroup gifsAndImages;
     private final StringFilterGroup commentCardsIndicator;
     private final StringFilterGroup menuButton;
     private final StringFilterGroup translateButton;
@@ -158,6 +159,16 @@ public class CommentsFilter extends Filter {
                 "overflow_button.e"
         );
 
+        var gifButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_GIF_BUTTON,
+                "composer_gif_button.e"
+        );
+
+        gifsAndImages = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_GIFS_AND_IMAGES,
+                "comment_image_attachment.e"
+        );
+
         var giftAnimationAndCards = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_GIFT_ANIMATION_AND_CARDS,
                 "gift_overlay.e",
@@ -214,6 +225,8 @@ public class CommentsFilter extends Filter {
                 createAShortButton,
                 dislikeButton,
                 emojiButton,
+                gifButton,
+                gifsAndImages,
                 giftAnimationAndCards,
                 previewComment,
                 commentCardsIndicator,
@@ -259,6 +272,11 @@ public class CommentsFilter extends Filter {
 
         if (matchedGroup == dislikeButton) {
             // Only the buttons of comments and replies.
+            return Utils.contains(path, COMMENT_PATH);
+        }
+
+        if (matchedGroup == gifsAndImages) {
+            // Only posted comments and replies, not the preview of an attachment in the composer.
             return Utils.contains(path, COMMENT_PATH);
         }
 
