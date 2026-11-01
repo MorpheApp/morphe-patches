@@ -1505,32 +1505,6 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static boolean hideSnackbar(boolean skipDisplay) {
-        return skipDisplay || Settings.HIDE_SNACKBAR.get();
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void hideLithoSnackBar(FrameLayout frameLayout) {
-        if (Settings.HIDE_SNACKBAR.get()) {
-            Utils.hideViewByLayoutParams(frameLayout);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void handleLegacySnackbar(View view) {
-        if (Settings.HIDE_SNACKBAR.get()) {
-            Utils.hideViewByLayoutParams(view);
-            view.setVisibility(View.GONE);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
     public static void hideSyncButton(View view) {
         Utils.hideViewBy0dpUnderCondition(Settings.HIDE_SYNC_BUTTON, view);
     }
