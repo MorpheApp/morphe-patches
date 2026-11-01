@@ -130,12 +130,14 @@ message VideoWithContextData {
     bytes inlinePlayback = 6; // Commands that start and stop the inline playback (feed autoplay).
     bool compact = 22; // Thumbnail beside the title, such as the videos of the playlists and the rows of the library.
     bytes attachment = 43; // Content below the video, such as the description and the 'Buy or rent' button of the movies.
+    int32 collectionStack = 38; // Draws a stack behind the thumbnail of the playlists and the mixes.
     bool horizontal = 57; // Thumbnail beside the title and the metadata, such as the search results on tablets.
 }
 
 message VideoData {
     VideoThumbnail thumbnail = 1;
     ChannelAvatar avatar = 3;
+    string url = 6;
     LockupMetadata lockupMetadata = 21;
     LockupImage decoratedAvatar = 23; // Avatar with a ring, such as the avatar of live channels.
     LockupImage avatarStack = 24; // Avatars of the channels of a collaboration.
@@ -147,8 +149,23 @@ message VideoThumbnail {
     int32 badgeStyle = 4; // Same values of the badge style of the cards.
     float progress = 5; // Watched fraction, from 0 to 1.
     string videoCountText = 6; // Playlists.
+    // Only the playlists and the mixes have the following fields.
+    bool isPlaylist = 7;
+    bool isMix = 8;
+    int32 collectionStyle1 = 13;
+    int32 collectionStyle2 = 16;
+    uint32 badgeColor = 22;
+    uint32 badgeDarkColor = 24;
+    int32 badgeIconType = 36;
+    int32 collectionStyle3 = 42;
+    CollectionStackColors stackColors = 55;
     string timestampAccessibilityText = 11;
     string badgeIcon = 19; // Drawable name, such as the live icon.
+}
+
+message CollectionStackColors {
+    uint32 frontColor = 1;
+    uint32 backColor = 2;
 }
 
 message ChannelAvatar {
@@ -197,6 +214,15 @@ message LockupInlinePlayback {
 
 message ContentImage {
     ThumbnailViewModel thumbnailViewModel = 1036;
+    CollectionThumbnailViewModel collectionThumbnailViewModel = 1035; // Playlists and mixes.
+}
+
+message CollectionThumbnailViewModel {
+    CollectionPrimaryThumbnail primaryThumbnail = 1;
+}
+
+message CollectionPrimaryThumbnail {
+    ThumbnailViewModel thumbnailViewModel = 1036;
 }
 
 message ThumbnailViewModel {
@@ -207,6 +233,7 @@ message ThumbnailViewModel {
 message ThumbnailOverlay {
     // Only the badges are shown by lockup_thumbnail.eml.
     ThumbnailBottomOverlayViewModel thumbnailBottomOverlayViewModel = 1214;
+    ThumbnailOverlayBadgeViewModel thumbnailOverlayBadgeViewModel = 1295; // Badges of playlists and mixes.
     ThumbnailElementOverlay thumbnailElementOverlay = 36905;
 }
 
@@ -228,6 +255,10 @@ message ThumbnailOverlayProgressBar {
 message ThumbnailOverlayProgressBarViewModel {
     float progress = 1; // Watched fraction, from 0 to 1.
     int32 style = 6; // 3: at the bottom edge of the thumbnail, without the space below.
+}
+
+message ThumbnailOverlayBadgeViewModel {
+    repeated ThumbnailBadge thumbnailBadges = 1;
 }
 
 message ThumbnailBadge {
