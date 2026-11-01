@@ -68,6 +68,10 @@ public final class LayoutComponentsFilter extends Filter {
 
     private static final List<String> channelTabFilterStrings = Utils.getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
     private static final List<String> flyoutMenuFilterStrings = Utils.getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
+    /**
+     * Texts of the download item of the menus. Newer app versions also have the second text.
+     */
+    private static final String[] FLYOUT_DOWNLOAD_TEXTS = {"add_video_to_offline", "menu_add_to_offline"};
 
     @Nullable
     private static List<?> channelTabs;
@@ -1200,11 +1204,9 @@ public final class LayoutComponentsFilter extends Filter {
 
         String menuTitleString = menuTitleCharSequence.toString();
 
-        for (String filter : flyoutMenuFilterStrings) {
-            if (menuTitleString.equalsIgnoreCase(filter)) {
-                Logger.printDebug(() -> "Hiding: " + menuTitleString);
-                return null;
-            }
+        if (isFlyoutMenuFiltered(menuTitleString)) {
+            Logger.printDebug(() -> "Hiding: " + menuTitleString);
+            return null;
         }
 
         return menuTitleCharSequence;
@@ -1227,12 +1229,35 @@ public final class LayoutComponentsFilter extends Filter {
 
         String menuTitleString = menuTitleCharSequence.toString();
 
+        if (isFlyoutMenuFiltered(menuTitleString)) {
+            Logger.printDebug(() -> "Hiding: " + menuTitleString);
+            Utils.hideViewByLayoutParams(parentView);
+        }
+    }
+
+    /**
+     * The download item shows a placeholder while the state of the download is loaded in the background,
+     * and shows its real text only about a second after the menu opens. A filter of the download text
+     * therefore also hides the placeholder, otherwise the item is shown and then collapses.
+     */
+    private static boolean isFlyoutMenuFiltered(String menuTitle) {
+        final boolean isDownloadPlaceholder = menuTitle.equals(ResourceUtils.getString("menu_offline_placeholder"));
+
         for (String filter : flyoutMenuFilterStrings) {
-            if (menuTitleString.equalsIgnoreCase(filter)) {
-                Logger.printDebug(() -> "Hiding: " + menuTitleString);
-                Utils.hideViewByLayoutParams(parentView);
+            if (menuTitle.equalsIgnoreCase(filter)) {
+                return true;
+            }
+            if (isDownloadPlaceholder) {
+                for (String downloadText : FLYOUT_DOWNLOAD_TEXTS) {
+                    if (ResourceUtils.getStringIdentifier(downloadText) != 0
+                            && filter.equalsIgnoreCase(ResourceUtils.getString(downloadText))) {
+                        return true;
+                    }
+                }
             }
         }
+
+        return false;
     }
 
     /**
