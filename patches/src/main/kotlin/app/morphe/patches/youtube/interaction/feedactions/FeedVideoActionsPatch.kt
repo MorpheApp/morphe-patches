@@ -13,6 +13,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
+import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.feedcards.feedVideoCardsHookPatch
@@ -42,6 +43,8 @@ val feedVideoActionsPatch = bytecodePatch(
         feedVideoCardsHookPatch,
         // Runs the commands of the Watch later button.
         commandRouterHookPatch,
+        // Loads the videos of the Watch later playlist, to show if the video is saved.
+        authHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

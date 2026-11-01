@@ -55,6 +55,10 @@ public final class SaveToWatchLaterPatch {
      */
     public static String getEditPlaylistId(String playlistId, List<MessageLite> actions) {
         try {
+            if (FeedVideoActionsPatch.isPatchIncluded()) {
+                FeedVideoActionsPatch.onPlaylistEdit(playlistId, actions);
+            }
+
             if (!WATCH_LATER_PLAYLIST_ID.equals(playlistId)) {
                 return playlistId;
             }
