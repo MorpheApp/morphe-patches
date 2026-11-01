@@ -1477,6 +1477,8 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <!-- misc.announcements.patchesUpdateNoticePatch -->
     <string name="morphe_patches_update_notice_title">Notify about patches updates</string>
     <string name="morphe_patches_update_notice_summary">Shows a notice on app startup when new patches with YouTube changes are available</string>
+    <string name="morphe_patches_update_notice_dev_releases_title">Include dev releases</string>
+    <string name="morphe_patches_update_notice_dev_releases_summary">Also notifies about dev releases, which can be published several times a day. By default only stable releases are shown</string>
     <string name="morphe_patches_update_notice_dialog_title">New patches available</string>
     <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b>%1$s&lt;/b> (current: %2$s)</string>
     <string name="morphe_patches_update_notice_dialog_features">✨ New features</string>
