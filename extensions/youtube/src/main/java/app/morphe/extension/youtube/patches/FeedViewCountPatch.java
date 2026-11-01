@@ -71,8 +71,8 @@ import app.morphe.extension.youtube.settings.Settings;
  * <p>
  * The same text is used by other lists too, such as the videos of a playlist, where no badge is
  * shown. So the view count is removed from below the title only for the texts of the components
- * that show the badge, known by the Litho path of the text. A path is known when the badge is shown
- * on a card whose text still shows the view count. Other texts keep their view count.
+ * that show the badge, known by the Litho path of the text. A path is known when a card whose text
+ * still shows the view count is found. Other texts keep their view count, and their card has no badge.
  */
 @SuppressWarnings("unused")
 public final class FeedViewCountPatch {
@@ -89,6 +89,8 @@ public final class FeedViewCountPatch {
             Pattern.compile("[ \\t]{2,}|[ \\t\u00A0\u202F]*[\u00B7\u2022][ \\t\u00A0\u202F]*");
     private static final int MAX_SUBTITLE_LENGTH = 150;
     private static final int MAX_SEGMENT_LENGTH = 40;
+    /** The title and the text below it. */
+    private static final int MIN_DRAWN_TEXTS = 2;
 
     /**
      * A number, such as 457, 4,7 or 1 234. Some languages show words before it.
@@ -234,7 +236,7 @@ public final class FeedViewCountPatch {
     }
 
     /**
-     * The badge is shown on a card whose text still shows the view count,
+     * A card shows the view count in its text, instead of the badge,
      * so the view count is removed from the texts of this path from now on.
      */
     private static synchronized void addCardPath(String path) {
@@ -730,6 +732,8 @@ public final class FeedViewCountPatch {
         /** Span of the text below the title, if the text was created with it. */
         @Nullable
         ViewCountSpan span;
+        /** If the text below the title shows the view count, which the Hide view count option removes. */
+        boolean textShowsViewCount;
         @Nullable
         Rect duration;
         /** If the card shows a duration or a live badge, which videos do. */
@@ -759,6 +763,7 @@ public final class FeedViewCountPatch {
                 span = getViewCountSpan(text);
                 if (span != null) {
                     viewCount = span.viewCount;
+                    textShowsViewCount = !span.removed && findViewCount(text.toString(), Locale.getDefault()) != null;
                 }
             }
             String item = text.toString().trim();
@@ -995,6 +1000,7 @@ public final class FeedViewCountPatch {
         }
         String viewCount = null;
         ViewCountSpan span = null;
+        boolean textShowsViewCount = false;
         Rect duration = null;
         Rect thumbnail = null;
         // If the view count is not found yet, but the card is checked again.
@@ -1012,6 +1018,7 @@ public final class FeedViewCountPatch {
             if (videoId != null || info.hasDuration) {
                 viewCount = info.viewCount;
                 span = info.span;
+                textShowsViewCount = info.textShowsViewCount;
                 duration = info.duration;
                 thumbnail = info.thumbnail;
                 if (duration == null && thumbnail == null) {
@@ -1029,6 +1036,7 @@ public final class FeedViewCountPatch {
                         info.texts.removeIf(placed -> placed.top < textsTop);
                     }
                     viewCount = findViewCountInTexts(info.texts);
+                    textShowsViewCount = viewCount != null;
                 }
                 if (viewCount == null) {
                     // The texts below the title are not drawn yet,
@@ -1043,18 +1051,32 @@ public final class FeedViewCountPatch {
                         }
                         if (element != null && element.badgeText.equals(info.badgeText)) {
                             viewCount = element.viewCount;
+                            // Checked again when its texts are drawn, as they can show the view count.
+                            FeedVideoCardsPatch.scheduleScrollCheck(host);
                         }
                     }
                 }
                 final String id = videoId == null ? "unknown" : videoId;
                 if (viewCount == null) {
-                    // The texts can be drawn after the layout of the card.
-                    loading = FeedVideoCardsPatch.scheduleRetry(host);
+                    // The texts can be drawn after the layout of the card. Once the text below the title
+                    // is drawn there is nothing to wait for, so the loading spinner is not shown, even if
+                    // the card is checked again.
+                    loading = FeedVideoCardsPatch.scheduleRetry(host) && info.texts.size() < MIN_DRAWN_TEXTS;
                     logTexts(id, info.texts);
                 } else if (duration == null) {
                     final Rect found = thumbnail;
                     Logger.printDebug(() -> "Duration badge not found: " + id + " thumbnail: " + found);
                 }
+            }
+        }
+
+        if (textShowsViewCount) {
+            // The view count is shown only once.
+            viewCount = null;
+            // The text still shows the view count, as its path was not known yet.
+            // Texts of this path do not show it from now on, and their cards show the badge.
+            if (span != null && !span.removed && span.path != null) {
+                addCardPath(span.path);
             }
         }
 
@@ -1071,12 +1093,6 @@ public final class FeedViewCountPatch {
             badges.put(host, badge);
         }
         badge.bind(host, viewCount, duration, thumbnail);
-
-        if (span != null && !span.removed && span.path != null) {
-            // The badge is shown, but the text below the title still shows the view count,
-            // as its path was not known yet. Texts of this path do not show it from now on.
-            addCardPath(span.path);
-        }
     }
 
     // endregion
