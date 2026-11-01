@@ -7,6 +7,7 @@
 package app.morphe.extension.youtube.patches;
 
 import android.net.Uri;
+import android.util.Base64;
 
 import com.google.protobuf.MessageLite;
 
@@ -14,7 +15,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.AddToPlaylistButtonViewModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ButtonViewModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ButtonViewModelHolder;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ComponentType;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.DislikeButtonViewModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Element;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LikeButtonViewModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LikeStatusEntityKey;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LockupModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LockupViewModelHolder;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleButtonViewModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleButtonViewModelHolder;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarItem;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarItemContent;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarLayoutConfig;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarLikeCount;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarLikeDislike;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarOverflow;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarSize;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarViewModel;
+import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.requests.ConfigRequest;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -38,12 +62,54 @@ public class RestoreOldVideoActionBarPatch {
         String patch_getEndpoint();
     }
 
-    private static final boolean FIX_VIDEO_ACTION_BAR = Settings.RESTORE_OLD_VIDEO_ACTION_BAR.get()
-            // If 'Disable layout updates' is enabled, fix is not required.
-            && !Settings.DISABLE_LAYOUT_UPDATES.get()
-            // Tablets already have a non-collapsed video action bar.
-            // If it does not work on a foldable device, please remove this.
-            && !Utils.isTablet();
+    public enum VideoActionBarLayout {
+        /**
+         * The layout that the server sends to the account.
+         */
+        DEFAULT,
+        /**
+         * Buttons with their text inside a pill, that scroll in a row with the subscribe button.
+         */
+        CLASSIC,
+        /**
+         * Buttons with an icon above their text, and the other buttons in a menu.
+         */
+        MINIMAL
+    }
+
+    /**
+     * Tablets show a non-collapsed video action bar with every layout.
+     * If it does not work on a foldable device, please remove this.
+     */
+    private static final VideoActionBarLayout LAYOUT = Utils.isTablet()
+            // If 'Disable layout updates' is enabled, the layout is not changed.
+            || Settings.DISABLE_LAYOUT_UPDATES.get()
+            ? VideoActionBarLayout.DEFAULT
+            : Settings.VIDEO_ACTION_BAR_LAYOUT.get();
+    private static final boolean FIX_VIDEO_ACTION_BAR = LAYOUT == VideoActionBarLayout.CLASSIC;
+
+    private static final String VIDEO_ACTION_BAR_TEMPLATE = "compactify_video_action_bar.eml";
+    private static final int LAYOUT_STYLE_CLASSIC = 4;
+    private static final int LAYOUT_STYLE_MINIMAL = 6;
+    private static final String SHARE_BUTTON_ID = "id.video.share.button";
+    private static final String OVERFLOW_BUTTON_ICON = "yt_outline_experimental_overflow_horizontal_black_24";
+    private static final String MORE_ACTIONS_TEXT = "accessibility_more_actions_video";
+    private static final int LIKE_COUNT_ENTITY_TYPE = 445;
+    private static final int CLASSIC_BUTTON_TYPE = 5;
+    private static final int CLASSIC_BUTTON_SIZE = 2;
+    private static final int CLASSIC_DOWNLOAD_BUTTON_STYLE = 4;
+    private static final int MINIMAL_BUTTON_TYPE = 3;
+    private static final int MINIMAL_BUTTON_SIZE = 4;
+    private static final int MINIMAL_BUTTON_ICON_STYLE = 1;
+    /**
+     * Values of the action bar of the minimal layout, which are not in the action bar of the classic layout.
+     */
+    private static final VideoActionBarSize MINIMAL_LAYOUT_SIZE = VideoActionBarSize.newBuilder()
+            .setMinButtonsWidth(150)
+            .setMaxButtonsWidth(150)
+            .setButtonSpacing(2)
+            .setMaxVisibleButtons(5)
+            .build();
     private static final String AUTHORIZATION_HEADER = "Authorization";
     /**
      * This field value is fetched when the app is first installed.
@@ -89,6 +155,242 @@ public class RestoreOldVideoActionBarPatch {
         } else {
             needFetch = false;
         }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Both layouts are the same element of the watch page with another style, and the server
+     * chooses the style, so the action bar of the chosen layout is built from the element it sends.
+     */
+    public static byte[] setVideoActionBarLayout(byte[] bytes) {
+        if (LAYOUT == VideoActionBarLayout.DEFAULT
+                || !FeedVideoCardsPatch.getElementText(bytes).contains(VIDEO_ACTION_BAR_TEMPLATE)) {
+            return bytes;
+        }
+
+        try {
+            Element element = Element.parseFrom(bytes);
+            ComponentType componentType = element.getType().getComponentType();
+            ElementModel model = componentType.getModel();
+            LockupModel lockupModel = model.getLockupModel();
+            LockupViewModelHolder viewModel = lockupModel.getViewModel();
+            VideoActionBarViewModel actionBar = viewModel.getVideoActionBarViewModel();
+            final boolean minimal = LAYOUT == VideoActionBarLayout.MINIMAL;
+            if (actionBar.getLayoutStyle() != (minimal ? LAYOUT_STYLE_CLASSIC : LAYOUT_STYLE_MINIMAL)) {
+                return bytes;
+            }
+
+            VideoActionBarViewModel.Builder newActionBar = actionBar.toBuilder().clearActions();
+            if (minimal) {
+                VideoActionBarOverflow.Builder overflow = VideoActionBarOverflow.newBuilder();
+                for (VideoActionBarItem action : actionBar.getActionsList()) {
+                    VideoActionBarItemContent content = action.getContent();
+                    if (content.hasSubscribeButton()) {
+                        newActionBar.setSubscribeButton(content);
+                    } else if (content.hasLikeDislikeButtons()) {
+                        VideoActionBarLikeDislike likeDislike = content.getLikeDislikeButtons();
+                        LikeButtonViewModel likeButton = likeDislike.getLikeButton().getLikeButton();
+                        DislikeButtonViewModel dislikeButton = likeDislike.getDislikeButton().getDislikeButton();
+                        VideoActionBarItemContent minimalLikeButton = VideoActionBarItemContent.newBuilder()
+                                .setLikeButton(likeButton.toBuilder()
+                                        .setToggleButtonViewModel(layoutToggleButton(likeButton.getToggleButtonViewModel(), true))
+                                        .setAnimationEnabled1(true)
+                                        .setAnimationEnabled2(true)
+                                        .setAnimationEnabled3(true)
+                                        .setLikeAnimationUrl(likeDislike.getLikeAnimationUrl())
+                                        .setLikedAnimationUrl(likeDislike.getLikedAnimationUrl())
+                                        .setLikeCountAnimationParams(likeDislike.getLikeCountAnimationParams()))
+                                .build();
+                        VideoActionBarItemContent minimalDislikeButton = VideoActionBarItemContent.newBuilder()
+                                .setDislikeButton(dislikeButton.toBuilder()
+                                        .setToggleButtonViewModel(layoutToggleButton(dislikeButton.getToggleButtonViewModel(), true)))
+                                .build();
+                        newActionBar
+                                .addActions(VideoActionBarItem.newBuilder().setContent(minimalLikeButton))
+                                .addActions(VideoActionBarItem.newBuilder().setContent(minimalDislikeButton));
+                        overflow.addShownItems(minimalLikeButton).addShownItems(minimalDislikeButton);
+                    } else if (content.hasSaveButton()) {
+                        AddToPlaylistButtonViewModel saveButton = content.getSaveButton();
+                        VideoActionBarItemContent minimalSaveButton = content.toBuilder()
+                                .setSaveButton(saveButton.toBuilder()
+                                        .setToggleButtonViewModel(layoutToggleButton(saveButton.getToggleButtonViewModel(), true)))
+                                .build();
+                        newActionBar.addActions(action.toBuilder().setContent(minimalSaveButton));
+                        overflow.addShownItems(minimalSaveButton);
+                    } else if (SHARE_BUTTON_ID.equals(content.getButton().getTargetId())) {
+                        VideoActionBarItemContent minimalShareButton = content.toBuilder()
+                                .setButton(layoutButton(content.getButton(), true))
+                                .build();
+                        newActionBar.addActions(action.toBuilder().setContent(minimalShareButton));
+                        overflow.addShownItems(minimalShareButton);
+                    } else {
+                        overflow.addMenuItems(content);
+                    }
+                }
+
+                if (overflow.getMenuItemsCount() > 0) {
+                    overflow.setMenuButton(ButtonViewModelHolder.newBuilder()
+                                    .setButtonViewModel(layoutButton(ButtonViewModel.newBuilder()
+                                            .setIconName(OVERFLOW_BUTTON_ICON)
+                                            .setAccessibilityText(ResourceUtils.getStringIdentifier(MORE_ACTIONS_TEXT) == 0
+                                                    ? ""
+                                                    : ResourceUtils.getString(MORE_ACTIONS_TEXT))
+                                            .build(), true)))
+                            .setMenuStyle(1);
+                    newActionBar.addActions(VideoActionBarItem.newBuilder()
+                            .setContent(VideoActionBarItemContent.newBuilder().setOverflow(overflow)));
+                }
+
+                newActionBar.setSize(MINIMAL_LAYOUT_SIZE);
+            } else {
+                // The subscribe button is the first item of the classic layout.
+                if (actionBar.hasSubscribeButton()) {
+                    newActionBar.addActions(VideoActionBarItem.newBuilder().setContent(actionBar.getSubscribeButton()));
+                }
+
+                // The items of the minimal layout have no text, but the same items in its overflow have.
+                VideoActionBarOverflow overflow = VideoActionBarOverflow.getDefaultInstance();
+                for (VideoActionBarItem action : actionBar.getActionsList()) {
+                    if (action.getContent().hasOverflow()) {
+                        overflow = action.getContent().getOverflow();
+                    }
+                }
+                VideoActionBarItemContent shownLikeButton = VideoActionBarItemContent.getDefaultInstance();
+                VideoActionBarItemContent shownDislikeButton = VideoActionBarItemContent.getDefaultInstance();
+                VideoActionBarItemContent shownSaveButton = VideoActionBarItemContent.getDefaultInstance();
+                for (VideoActionBarItemContent content : overflow.getShownItemsList()) {
+                    if (content.hasLikeButton()) {
+                        shownLikeButton = content;
+                    } else if (content.hasDislikeButton()) {
+                        shownDislikeButton = content;
+                    } else if (content.hasSaveButton()) {
+                        shownSaveButton = content;
+                    }
+                }
+
+                LikeButtonViewModel likeButton = LikeButtonViewModel.getDefaultInstance();
+                for (VideoActionBarItem action : actionBar.getActionsList()) {
+                    VideoActionBarItemContent content = action.getContent();
+                    if (content.hasLikeButton()) {
+                        likeButton = content.getLikeButton();
+                    } else if (content.hasDislikeButton()) {
+                        // The count of the likes is an entity of the video, with the key of the like status of another type.
+                        LikeStatusEntityKey likeKey = LikeStatusEntityKey.parseFrom(Base64.decode(
+                                likeButton.getLikeStatusEntityKey().replace("%3D", "="), Base64.URL_SAFE));
+                        String likeCountKey = Base64.encodeToString(
+                                        likeKey.toBuilder().setEntityType(LIKE_COUNT_ENTITY_TYPE).build().toByteArray(),
+                                        Base64.URL_SAFE | Base64.NO_WRAP)
+                                .replace("=", "%3D");
+
+                        ToggleButtonViewModelHolder likeToggleButton = shownLikeButton.hasLikeButton()
+                                ? shownLikeButton.getLikeButton().getToggleButtonViewModel()
+                                : likeButton.getToggleButtonViewModel();
+                        ToggleButtonViewModelHolder dislikeToggleButton = shownDislikeButton.hasDislikeButton()
+                                ? shownDislikeButton.getDislikeButton().getToggleButtonViewModel()
+                                : content.getDislikeButton().getToggleButtonViewModel();
+                        newActionBar.addActions(VideoActionBarItem.newBuilder()
+                                .setContent(VideoActionBarItemContent.newBuilder()
+                                        .setLikeDislikeButtons(VideoActionBarLikeDislike.newBuilder()
+                                                .setLikeButton(VideoActionBarItemContent.newBuilder()
+                                                        .setLikeButton(likeButton.toBuilder()
+                                                                .setToggleButtonViewModel(layoutToggleButton(likeToggleButton, false))
+                                                                .clearAnimationEnabled1()
+                                                                .clearAnimationEnabled2()
+                                                                .clearAnimationEnabled3()
+                                                                .clearLikeAnimationUrl()
+                                                                .clearLikedAnimationUrl()
+                                                                .clearLikeCountAnimationParams()))
+                                                .setDislikeButton(VideoActionBarItemContent.newBuilder()
+                                                        .setDislikeButton(content.getDislikeButton().toBuilder()
+                                                                .setToggleButtonViewModel(layoutToggleButton(dislikeToggleButton, false))))
+                                                .setShowLikeCount(true)
+                                                .setLikeCount(VideoActionBarLikeCount.newBuilder().setEntityKey(likeCountKey))
+                                                .setLikeCountAnimationParams(likeButton.getLikeCountAnimationParams())
+                                                .setAnimationEnabled1(true)
+                                                .setAnimationEnabled2(true)
+                                                .setLikeAnimationUrl(likeButton.getLikeAnimationUrl())
+                                                .setLikedAnimationUrl(likeButton.getLikedAnimationUrl()))));
+                    } else if (content.hasSaveButton()) {
+                        ToggleButtonViewModelHolder saveToggleButton = shownSaveButton.hasSaveButton()
+                                ? shownSaveButton.getSaveButton().getToggleButtonViewModel()
+                                : content.getSaveButton().getToggleButtonViewModel();
+                        newActionBar.addActions(action.toBuilder().setContent(content.toBuilder()
+                                .setSaveButton(content.getSaveButton().toBuilder()
+                                        .setToggleButtonViewModel(layoutToggleButton(saveToggleButton, false)))));
+                    } else if (SHARE_BUTTON_ID.equals(content.getButton().getTargetId())) {
+                        newActionBar.addActions(action.toBuilder().setContent(content.toBuilder()
+                                .setButton(layoutButton(content.getButton(), false))));
+                    }
+                }
+
+                // The items of the menu of the minimal layout are in the row of the classic layout.
+                for (VideoActionBarItemContent content : overflow.getMenuItemsList()) {
+                    if (content.hasDownloadButton()) {
+                        newActionBar.addActions(VideoActionBarItem.newBuilder().setContent(content.toBuilder()
+                                .setDownloadButton(content.getDownloadButton().toBuilder()
+                                        .setStyle(CLASSIC_DOWNLOAD_BUTTON_STYLE)
+                                        .clearPremiumOfferText())));
+                    } else if (content.hasButton()) {
+                        newActionBar.addActions(VideoActionBarItem.newBuilder().setContent(content.toBuilder()
+                                .setButton(layoutButton(content.getButton(), false))));
+                    }
+                }
+
+                newActionBar.clearSubscribeButton().clearSize();
+            }
+
+            return element.toBuilder()
+                    .setType(element.getType().toBuilder()
+                            .setComponentType(componentType.toBuilder()
+                                    .setModel(model.toBuilder()
+                                            .setLockupModel(lockupModel.toBuilder()
+                                                    .setViewModel(viewModel.toBuilder()
+                                                            .setVideoActionBarViewModel(newActionBar
+                                                                    .setLayoutStyle(minimal ? LAYOUT_STYLE_MINIMAL : LAYOUT_STYLE_CLASSIC)
+                                                                    .setLayoutConfig(actionBar.getLayoutConfig().toBuilder()
+                                                                            .setIconButtons(minimal))))))))
+                    .build()
+                    .toByteArray();
+        } catch (Exception ex) {
+            Logger.printException(() -> "setVideoActionBarLayout failure", ex);
+        }
+
+        return bytes;
+    }
+
+    /**
+     * The buttons of the minimal layout have the text outside the button, below its icon.
+     * The buttons of the classic layout have the text inside the button.
+     */
+    private static ButtonViewModel layoutButton(ButtonViewModel button, boolean minimal) {
+        ButtonViewModel.Builder builder = button.toBuilder();
+        if (minimal) {
+            builder.clearTitle()
+                    .setType(MINIMAL_BUTTON_TYPE)
+                    .setButtonSize(MINIMAL_BUTTON_SIZE)
+                    .setIconStyle(MINIMAL_BUTTON_ICON_STYLE);
+        } else {
+            // The share button of the classic layout has only its icon.
+            if (SHARE_BUTTON_ID.equals(button.getTargetId())) {
+                builder.clearTitle();
+            }
+            builder.clearIconStyle()
+                    .setType(CLASSIC_BUTTON_TYPE)
+                    .setButtonSize(CLASSIC_BUTTON_SIZE);
+        }
+        return builder.build();
+    }
+
+    private static ToggleButtonViewModelHolder layoutToggleButton(ToggleButtonViewModelHolder holder, boolean minimal) {
+        ToggleButtonViewModel toggleButton = holder.getToggleButtonViewModel();
+        return holder.toBuilder()
+                .setToggleButtonViewModel(toggleButton.toBuilder()
+                        .setDefaultButtonViewModel(toggleButton.getDefaultButtonViewModel().toBuilder()
+                                .setButtonViewModel(layoutButton(toggleButton.getDefaultButtonViewModel().getButtonViewModel(), minimal)))
+                        .setToggledButtonViewModel(toggleButton.getToggledButtonViewModel().toBuilder()
+                                .setButtonViewModel(layoutButton(toggleButton.getToggledButtonViewModel().getButtonViewModel(), minimal))))
+                .build();
     }
 
     /**

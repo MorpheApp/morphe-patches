@@ -1285,10 +1285,10 @@ Automotive layout
 • Shorts open in the regular player
 • Non collapsed old video action bar is shown"</string>
     <string name="morphe_tablet_layout_in_player_title">Enable tablet layout in player</string>
-    <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+    <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
     <string name="morphe_tablet_layout_in_player_summary">"Restores the old player layout
 
-Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' overlay may not be available"</string>
+Limitation: If \'Video action bar layout\' is not Classic, \'More videos\' overlay may not be available"</string>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restore old captions behavior</string>
@@ -1701,10 +1701,11 @@ Video playback with AV1 may stutter or drop frames"</string>
     <string name="morphe_spoof_video_streams_stats_for_nerds_title">Show spoofing in \'Stats for nerds\'</string>
 
     <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-    <string name="morphe_restore_old_video_action_bar_title">Restore old video action bar</string>
-    <string name="morphe_restore_old_video_action_bar_summary">"Fixes video action buttons cannot be hidden
-
-Limitation: Reverts to old style \'More videos\' overlay"</string>
+    <string name="morphe_video_action_bar_layout_title">Video action bar layout</string>
+    <string name="morphe_video_action_bar_layout_entry_1">Default</string>
+    <string name="morphe_video_action_bar_layout_entry_2">Classic</string>
+    <string name="morphe_video_action_bar_layout_entry_3">Minimal</string>
+    <string name="morphe_video_action_bar_layout_user_dialog_message">Limitation: Classic reverts to old style \'More videos\' overlay</string>
 
     <!-- layout.player.icons.playerIconStylePatch -->
     <string name="morphe_player_icon_style_title">Player icon style</string>

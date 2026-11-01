@@ -433,6 +433,18 @@
         <item>CARDS_WITH_ACTION_BUTTONS</item>
     </string-array>
 
+    <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+    <string-array name="morphe_video_action_bar_layout_entries">
+        <item>@string/morphe_video_action_bar_layout_entry_1</item>
+        <item>@string/morphe_video_action_bar_layout_entry_2</item>
+        <item>@string/morphe_video_action_bar_layout_entry_3</item>
+    </string-array>
+    <string-array name="morphe_video_action_bar_layout_entry_values">
+        <item>DEFAULT</item>
+        <item>CLASSIC</item>
+        <item>MINIMAL</item>
+    </string-array>
+
     <!-- layout.flyout.addToQueuePatch -->
     <string-array name="morphe_queue_type_entries">
         <item>@string/morphe_queue_type_entry_1</item>

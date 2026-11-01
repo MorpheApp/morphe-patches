@@ -20,7 +20,8 @@ import app.morphe.patches.shared.BuildInnerTubeProtoRequestUriLegacyFingerprint
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.request.buildRequestPatch
 import app.morphe.patches.shared.misc.request.hookBuildRequest
-import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.proto.hookElement
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.spoof.addMediaSessionOverride
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addClientVersionHook
@@ -30,6 +31,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.ModernRelateVideoOverlayFingerprint
@@ -66,13 +68,18 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
         versionCheckPatch,
         clientContextHookPatch,
         buildRequestPatch,
-        fixProtoLibraryPatch
+        fixProtoLibraryPatch,
+        elementProtoParserHookPatch,
     )
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_restore_old_video_action_bar", summary = true)
+            ListPreference("morphe_video_action_bar_layout")
         )
+
+        // The layout of the action bar is a field of its element, so the Classic and Minimal layouts
+        // do not depend on the layout that the server sends.
+        hookElement("$EXTENSION_CLASS->setVideoActionBarLayout")
 
         if (is_20_39_or_greater) {
             addMediaSessionOverride("$EXTENSION_CLASS->useMediaSessionFeatureFlag(Z)Z")

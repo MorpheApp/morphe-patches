@@ -196,6 +196,77 @@ message LockupViewModelHolder {
     LockupViewModel lockupViewModel = 8179;
     // Model of thumbnail_bottom_overlay.eml.
     ThumbnailBottomOverlayViewModel thumbnailBottomOverlayViewModel = 1214;
+    // Model of compactify_video_action_bar.eml.
+    VideoActionBarViewModel videoActionBarViewModel = 2185;
+}
+
+// Action bar of the watch page, which shows the like button, the share button and the others.
+message VideoActionBarViewModel {
+    repeated VideoActionBarItem actions = 1;
+    int32 layoutStyle = 3;
+    VideoActionBarLayoutConfig layoutConfig = 4;
+    VideoActionBarItemContent subscribeButton = 6; // Beside the buttons of the minimal layout.
+    VideoActionBarSize size = 7;
+}
+
+message VideoActionBarLayoutConfig {
+    bool iconButtons = 6; // Buttons of the minimal layout, with an icon above their text.
+}
+
+message VideoActionBarSize {
+    float minButtonsWidth = 1;
+    float maxButtonsWidth = 2;
+    int32 buttonSpacing = 3;
+    int32 maxVisibleButtons = 4;
+}
+
+message VideoActionBarItem {
+    VideoActionBarItemContent content = 10;
+}
+
+// Only the fields that the layouts place differently are declared.
+message VideoActionBarItemContent {
+    optional bytes subscribeButton = 1107;
+    VideoActionBarLikeDislike likeDislikeButtons = 484586709; // Classic layout.
+    LikeButtonViewModel likeButton = 484585818;
+    DislikeButtonViewModel dislikeButton = 484590786;
+    AddToPlaylistButtonViewModel saveButton = 484598023;
+    ButtonViewModel button = 461054335;
+    VideoActionBarOverflow overflow = 37098; // Minimal layout.
+    VideoActionBarDownloadButton downloadButton = 33561776;
+}
+
+message VideoActionBarDownloadButton {
+    int32 style = 14;
+    optional string premiumOfferText = 34; // Below the text of the item in the overflow menu.
+}
+
+// Like and dislike buttons of the classic layout, joined in one item.
+message VideoActionBarLikeDislike {
+    VideoActionBarItemContent likeButton = 1;
+    VideoActionBarItemContent dislikeButton = 2;
+    bool showLikeCount = 5;
+    VideoActionBarLikeCount likeCount = 7;
+    string likeCountAnimationParams = 10;
+    bool animationEnabled1 = 13;
+    bool animationEnabled2 = 14;
+    string likeAnimationUrl = 15;
+    string likedAnimationUrl = 16;
+}
+
+message VideoActionBarLikeCount {
+    string entityKey = 1;
+}
+
+message DislikeButtonViewModel {
+    ToggleButtonViewModelHolder toggleButtonViewModel = 1;
+}
+
+message VideoActionBarOverflow {
+    ButtonViewModelHolder menuButton = 1;
+    repeated VideoActionBarItemContent menuItems = 2;
+    repeated VideoActionBarItemContent shownItems = 3; // Same as the items of the action bar.
+    int32 menuStyle = 4;
 }
 
 message LockupViewModel {
@@ -384,6 +455,7 @@ message ButtonViewModel {
     int32 buttonSize = 13;
     int32 state = 14;
     string targetId = 17;
+    int32 iconStyle = 40;
 }
 
 message ToggleButtonViewModelHolder {
@@ -401,6 +473,13 @@ message LikeButtonViewModel {
     string likeStatusEntityKey = 3;
     LikeStatusEntity likeStatusEntity = 6;
     int32 likeCountEnabled = 7;
+    // The following fields are of the buttons of the minimal action bar of the watch page.
+    bool animationEnabled1 = 8;
+    bool animationEnabled2 = 9;
+    bool animationEnabled3 = 10;
+    string likeAnimationUrl = 11;
+    string likedAnimationUrl = 12;
+    string likeCountAnimationParams = 14;
 }
 
 message LikeStatusEntity {
