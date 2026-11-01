@@ -20,7 +20,7 @@ pluginManagement {
 }
 
 plugins {
-    id("app.morphe.patches") version "2.1.0-dev.1"
+    id("app.morphe.patches") version "2.1.0"
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
