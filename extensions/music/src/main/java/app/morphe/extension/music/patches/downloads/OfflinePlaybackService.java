@@ -339,7 +339,6 @@ public final class OfflinePlaybackService extends Service {
                 .build();
         focusRequest = new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
                 .setAudioAttributes(attributes)
-                .setWillPauseWhenDucked(true)
                 .setOnAudioFocusChangeListener(change -> {
                     if (change == AudioManager.AUDIOFOCUS_LOSS ||
                             change == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
