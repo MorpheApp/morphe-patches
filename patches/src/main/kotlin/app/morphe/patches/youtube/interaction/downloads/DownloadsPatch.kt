@@ -360,8 +360,9 @@ val downloadsPatch = bytecodePatch(
 
         // Commands run by the extension have no interaction logger, which saving a video
         // can use without checking it is set. The logger interface has a logger that logs nothing.
-        val interactionLoggerType = InteractionLoggerContextFingerprint.instructionMatches.last()
-            .instruction.getReference<TypeReference>()!!.type
+        // Everything reading the logger from a context uses the same type, so any match will do.
+        val interactionLoggerType = InteractionLoggerContextFingerprint.matchAll().first()
+            .instructionMatches.last().instruction.getReference<TypeReference>()!!.type
         val noOpInteractionLogger = classDefBy(interactionLoggerType).fields.single { field ->
             AccessFlags.STATIC.isSet(field.accessFlags) && field.type == interactionLoggerType
         }

@@ -119,6 +119,8 @@ internal object MediaSessionSetMetadataFingerprint : Fingerprint(
 
 internal object MediaSessionSetPlaybackStateFingerprint : Fingerprint(
     filters = listOf(
+        // Extension classes also set the playback state, but have no callbacks to notify.
+        methodCall(smali = "Landroid/os/RemoteCallbackList;->beginBroadcast()I"),
         methodCall(
             definingClass = "Landroid/media/session/MediaSession;",
             name = "setPlaybackState",
