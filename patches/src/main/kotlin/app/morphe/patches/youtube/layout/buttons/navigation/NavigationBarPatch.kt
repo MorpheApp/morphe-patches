@@ -45,8 +45,8 @@ import app.morphe.patches.youtube.misc.fix.padding.BrowseListBottomPaddingFinger
 import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -757,7 +757,6 @@ val navigationBarPatch = bytecodePatch(
         //
 
         val toolbarPreferences = mutableSetOf(
-            SwitchPreference("morphe_hide_toolbar_cast_button"),
             SwitchPreference("morphe_hide_toolbar_chat_button"),
             SwitchPreference("morphe_hide_toolbar_create_button", titleKey = "morphe_hide_create_button_title"),
             SwitchPreference("morphe_hide_toolbar_microphone_button"),
@@ -811,36 +810,6 @@ val navigationBarPatch = bytecodePatch(
         hookToolBar("$EXTENSION_CLASS->hideNotificationButton")
         hookToolBar("$EXTENSION_CLASS->hideSearchButton")
         hookToolBar("$EXTENSION_CLASS->hideChatButton")
-
-        //
-        // Hide cast button
-        //
-        CastMenuItemInitializeFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches.last().index
-                val menuItemRegister = getInstruction<FiveRegisterInstruction>(index).registerC
-
-                addInstruction(
-                    index,
-                    "invoke-static { v$menuItemRegister }, $EXTENSION_CLASS->hideCastButton(Landroid/view/MenuItem;)V"
-                )
-            }
-        }
-
-        CastMenuItemVisibilityFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches.last().index
-                val visibilityRegister = getInstruction<FiveRegisterInstruction>(index).registerD
-
-                addInstructions(
-                    index,
-                    """
-                        invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton(Z)Z
-                        move-result v$visibilityRegister
-                    """
-                )
-            }
-        }
 
         //
         // Hide old search button

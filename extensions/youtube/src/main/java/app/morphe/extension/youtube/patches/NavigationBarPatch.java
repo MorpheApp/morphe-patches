@@ -883,8 +883,6 @@ public final class NavigationBarPatch {
      */
     private static volatile boolean notificationsTabCreated;
 
-    private static final boolean HIDE_TOOLBAR_CAST_BUTTON = Settings.HIDE_TOOLBAR_CAST_BUTTON.get();
-
     private static final boolean HIDE_TOOLBAR_CHAT_BUTTON = Settings.HIDE_TOOLBAR_CHAT_BUTTON.get();
 
     private static final boolean HIDE_TOOLBAR_CREATE_BUTTON = Settings.HIDE_TOOLBAR_CREATE_BUTTON.get();
@@ -908,23 +906,6 @@ public final class NavigationBarPatch {
     }
 
     private static WeakReference<SettingsController> settingsControllerRef = new WeakReference<>(null);
-
-    /**
-     * Injection point.
-     */
-    public static boolean hideCastButton(boolean original) {
-        return !HIDE_TOOLBAR_CAST_BUTTON && original;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void hideCastButton(MenuItem menuItem) {
-        if (HIDE_TOOLBAR_CAST_BUTTON) {
-            menuItem.setVisible(false);
-            menuItem.setEnabled(false);
-        }
-    }
 
     /**
      * Injection point.
