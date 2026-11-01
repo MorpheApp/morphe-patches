@@ -60,6 +60,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -73,7 +75,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.Scanner;
 import java.util.function.Consumer;
 
 import app.morphe.extension.shared.Logger;
@@ -284,6 +285,13 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     private static final int WRITE_TEXT_REQUEST_CODE = 45;
     private static final int READ_TEXT_REQUEST_CODE = 46;
     private static final int PICK_FOLDER_REQUEST_CODE = 47;
+
+    /**
+     * Any file can be picked for import, and a larger file is rejected instead of running out of memory.
+     * The largest valid import is a series backup of 8 million characters, of at most 3 bytes each.
+     */
+    private static final int MAX_IMPORT_TEXT_BYTES = 24 * 1024 * 1024;
+    private static final int IMPORT_BUFFER_BYTES = 8 * 1024;
 
     private String existingSettings = "";
 
@@ -832,15 +840,13 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         pendingTextExportResult = null;
     }
 
-    @SuppressWarnings("CharsetObjectCanBeUsed")
     private void readTextFromUri(Uri uri) {
         if (pendingTextImportResult == null) return;
 
         String text = null;
         try (InputStream in = getContext().getContentResolver().openInputStream(uri)) {
             if (in != null) {
-                Scanner scanner = new Scanner(in, StandardCharsets.UTF_8.name()).useDelimiter("\\A");
-                text = scanner.hasNext() ? scanner.next() : "";
+                text = readImportText(in);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "readTextFromUri failure", ex);
@@ -848,6 +854,26 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
         pendingTextImportResult.accept(text);
         pendingTextImportResult = null;
+    }
+
+    /**
+     * @return The text of the stream, or null if it is larger than {@link #MAX_IMPORT_TEXT_BYTES}.
+     */
+    @Nullable
+    @SuppressWarnings("CharsetObjectCanBeUsed")
+    private static String readImportText(InputStream in) throws IOException {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        byte[] buffer = new byte[IMPORT_BUFFER_BYTES];
+        int read;
+        while ((read = in.read(buffer)) != -1) {
+            if (bytes.size() + read > MAX_IMPORT_TEXT_BYTES) {
+                Logger.printInfo(() -> "Import file is too large");
+                return null;
+            }
+            bytes.write(buffer, 0, read);
+        }
+
+        return bytes.toString(StandardCharsets.UTF_8.name());
     }
 
     private void exportToClipboard(String logsToExport) {
