@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Redditin tietosuojakäytäntö</string>
   <string name="morphe_google_signin_not_available_toast">Google-kirjautuminen ei ole käytettävissä. Kirjaudu sähköpostilla</string>
+  <string name="morphe_app_downgrade_dialog_title">Versionin alentamista ei tueta</string>
+  <string name="morphe_app_downgrade_dialog_message">"Tämä Reddit-asennus on alennettu versiosta &lt;b&gt;%1$s&lt;/b&gt; versioon &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Uudemman version sovellustiedot eivät toimi vanhempien versioiden kanssa, ja sovellus ei välttämättä toimi oikein.
+&lt;br/&gt;&lt;br/&gt;
+Käyttääksesi vanhempaa versiota, sinun on &lt;b&gt;poistettava&lt;/b&gt; Reddit ja asennettava sen jälkeen vanhempi versio."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Avaa sovellustiedot</string>
   <string name="morphe_screen_ads_title">Mainokset</string>
   <string name="morphe_hide_post_ads_title">Piilota syötteen mainokset</string>
   <string name="morphe_hide_comment_ads_title">Piilota kommenttimainokset</string>

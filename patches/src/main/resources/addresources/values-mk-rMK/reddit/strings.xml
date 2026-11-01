@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Политика за приватност на Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Најавувањето преку Google не е достапно. Користете е-пошта за најавување</string>
+  <string name="morphe_app_downgrade_dialog_title">Надоградувањето надолу не е поддржано</string>
+  <string name="morphe_app_downgrade_dialog_message">"Оваа инсталација на Reddit беше надоградена надолу од &lt;b&gt;%1$s&lt;/b&gt; на &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Податоците на апликацијата од понова верзија не работат со постари верзии и апликацијата можеби нема да работи правилно.
+&lt;br/&gt;&lt;br/&gt;
+За да користите постара верзија, морате &lt;b&gt;да ја деинсталирате&lt;/b&gt; апликацијата Reddit, а потоа да ја инсталирате постарата верзија."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Отвори ги информациите за апликацијата</string>
   <string name="morphe_screen_ads_title">Огласи</string>
   <string name="morphe_hide_post_ads_title">Скриј реклами во feed</string>
   <string name="morphe_hide_comment_ads_title">Скриј реклами во коментари</string>

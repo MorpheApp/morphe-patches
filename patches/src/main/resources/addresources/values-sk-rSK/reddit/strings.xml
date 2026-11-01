@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Zásady ochrany súkromia Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Prihlásenie cez Google nie je dostupné. Prihláste sa e-mailom</string>
+  <string name="morphe_app_downgrade_dialog_title">Downgrade nie je podporovaný</string>
+  <string name="morphe_app_downgrade_dialog_message">"Táto inštalácia Redditu bola downgradovaná z &lt;b&gt;%1$s&lt;/b&gt; na &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Údaje aplikácie z novšej verzie nefungujú so staršími verziami a aplikácia nemusí fungovať správne.
+&lt;br/&gt;&lt;br/&gt;
+Ak chcete použiť staršiu verziu, musíte Reddit &lt;b&gt;odinštalovať&lt;/b&gt; a následne nainštalovať staršiu verziu."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Otvoriť info o aplikácii</string>
   <string name="morphe_screen_ads_title">Reklamy</string>
   <string name="morphe_hide_post_ads_title">Skryť reklamy vo feede</string>
   <string name="morphe_hide_comment_ads_title">Skryť reklamy v komentároch</string>

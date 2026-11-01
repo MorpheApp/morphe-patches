@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Boshqalar</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">YouTube-ning eski sozlamalar ekranini tiklash</string>
+  <string name="morphe_native_snackbar_title">Xabarlarni YouTube snackbarida ko\'rsatish</string>
+  <string name="morphe_native_snackbar_summary">Morphe xabarlari, masalan, pleyer tugmasining tasdiqlanishi, popup o\'rniga YouTube snackbarida ko\'rsatiladi</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Fondan oʻynash cheklovlarini olib tashlash</string>
   <string name="morphe_shorts_disable_background_playback_title">Shorts\'da fonda oʻynashni oʻchirish</string>
@@ -59,6 +61,7 @@ O'zgarishlar quyidagilarni o'z ichiga oladi:
   <string name="morphe_hide_account_menu_title">Kutubxona / Siz pastki menyu filtri</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Kutubxona / Siz pastki menyu filtri</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Kutubxona / Siz pastki menyu nomlarini filtirlash uchun, yangi qatorlar bilan ajratilgan holda kiriting</string>
+  <string name="morphe_hide_account_menu_downloads_title">Yuklab olishlarni yashirish</string>
   <string name="morphe_hide_album_cards_title">Albom kartalarini yashirish</string>
   <string name="morphe_hide_album_cards_summary">Ijodkor tavsifi ostidagi albom kartalarini yashiradi</string>
   <string name="morphe_hide_artist_cards_title">Ijodkor kartalarini yashirish</string>
@@ -440,17 +443,26 @@ Hisobotlar ochiq va kanal ro'yxatga qo'shilishidan oldin ko'rib chiqiladi. O'chi
   <string name="morphe_feed_long_press_menu_title">Video menyusini ochish uchun bosing va ushlab turing</string>
   <string name="morphe_feed_long_press_menu_summary">Lenta videosining istalgan joyini bosib ushlab tursangiz, uning menyusi ochiladi</string>
   <string name="morphe_feed_watch_later_button_title">Miniyaturada \"Keyinroq ko\'rish\" tugmasini ko\'rsatish</string>
-  <string name="morphe_feed_watch_later_button_summary">Lenta videolarining kichik rasmlarida \"Keyinroq ko\'rish\" tugmasi ko\'rsatiladi. Uni bosib turish \"Pleylistga saqlash\" menyusini ochadi</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Post rasmlarini yuklab olish</string>
   <string name="morphe_post_image_download_summary">Rasmlar yoki GIF-lar mavjud bo\'lgan postlarning \"Ulash\" tugmasi yonida yuklab olish tugmasi ko\'rsatiladi va ularning menyusiga yuklab olish bandi qo\'shiladi</string>
   <string name="morphe_post_image_download_flyout">Rasmlarni yuklab olish</string>
   <string name="morphe_post_image_download_flyout_single">Rasmni yuklab olish</string>
+  <string name="morphe_post_image_download_started">%s ta rasm yuklanmoqda…</string>
   <string name="morphe_post_image_download_started_single">Rasm yuklanmoqda…</string>
+  <string name="morphe_post_image_download_saved">%1$s ta rasm %2$s manziliga saqlandi</string>
   <string name="morphe_post_image_download_saved_single">Rasm %s manziliga saqlandi</string>
   <string name="morphe_post_image_download_failed">Rasmni yuklab olib bo\"lib bo\"lmadi</string>
   <string name="morphe_post_image_download_not_found">Ushbu postda rasm topilmadi</string>
   <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Postlarni tarjima qilish</string>
+  <string name="morphe_post_translate_summary">Kontent yaratuvchilar postlarini tarjima qilish uchun flyout menyusiga element qo\'shadi</string>
+  <string name="morphe_post_translate_language_title">Post tarjima tili</string>
+  <string name="morphe_post_translate_flyout">Tarjima qilish</string>
+  <string name="morphe_post_translate_flyout_original">Aslini ko\'rsatish</string>
+  <string name="morphe_post_translate_started">Tarjima qilinmoqda…</string>
+  <string name="morphe_post_translate_failed">Postni tarjima qilib bo\'lmadi</string>
+  <string name="morphe_post_translate_same_language">Post allaqachon tarjima tilida</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Yoyilma menyuga \"So\'rash\" elementini qo\'shish</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Lenta yoyilma menyusiga videoni umumlashtirish elementini qo\'shadi</string>
@@ -500,7 +512,23 @@ Hisobotlar ochiq va kanal ro'yxatga qo'shilishidan oldin ko'rib chiqiladi. O'chi
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Barcha variantlar</string>
   <string name="morphe_shorts_download_flyout_button_title">Shorts menyusida yuklab olishni ko\'rsatish</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Shorts pleyeri menyusiga yuklab olish elementini qo\'shadi</string>
   <string name="morphe_shorts_download_flyout_title">Yuklab olish</string>
+  <string name="morphe_export_download_folder_title">Saqlangan videolarni eksport qilish</string>
+  <string name="morphe_export_download_folder_summary">"Ilova ichida saqlangan videolarni yuklab olish menyusi yordamida qurilmangiz xotirasiga eksport qiling. Eksport papkasini o'zgartirish uchun bosing
+
+Eksport papkasi: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Eksport papkasi</string>
+  <string name="morphe_export_download_folder_change">Papkani o\'zgartirish</string>
+  <string name="morphe_export_download_folder_changed">Eksport papkasi o\'zgartirildi</string>
+  <string name="morphe_export_download_folder_reset">Eksport papkasi qayta tiklandi</string>
+  <string name="morphe_export_download_flyout_title">Qurilmaga eksport qilish</string>
+  <string name="morphe_export_download_started">Video eksport qilinmoqda</string>
+  <string name="morphe_export_download_progress">Video eksport qilinmoqda: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Video eksportlari</string>
+  <string name="morphe_export_download_saved">Video %s manziliga eksport qilindi</string>
+  <string name="morphe_export_download_failed">Videoni eksport qilib bo\'lmadi</string>
+  <string name="morphe_export_download_canceled">Eksport bekor qilindi</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ovozli tarjima</string>
   <string name="morphe_vot_screen_summary">O\'ynayotganda matnni ovozga aylantirish orqali video sarlavhalarini o\'qish, o\'ynatish bilan sinxronlashtirilgan</string>
@@ -574,7 +602,18 @@ Sizning API kalitingiz hech kim bilan baham ko'rilmasligi kerak. Uni kirish huqu
   <string name="morphe_pip_button_flyout_title">\"Rasm rasmda\" menyusini ko\'rsatish</string>
   <string name="morphe_pip_button_flyout_name">\"Rasm rasmda\" rejimiga o\'tish</string>
   <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Rasm ichida rasm harakatlari</string>
+  <string name="morphe_pip_actions_screen_summary">Rasm ichida rasm rejimida ko\'rsatiladigan tugmalarni o\'zgartiring</string>
+  <string name="morphe_pip_action_left_title">Chap tugma</string>
+  <string name="morphe_pip_action_center_title">Markaziy tugma</string>
+  <string name="morphe_pip_action_right_title">O\'ng tugma</string>
   <string name="morphe_pip_action_entry_default">Standart</string>
+  <string name="morphe_pip_action_entry_previous">Oldingi video</string>
+  <string name="morphe_pip_action_entry_next">Keyingi video</string>
+  <string name="morphe_pip_action_entry_rewind">10 soniya orqaga qaytarish</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 soniya oldinga surish</string>
+  <string name="morphe_pip_action_entry_play_pause">Ijro etish/to\'xtatish</string>
+  <string name="morphe_pip_action_entry_background_playback">Orqa fonda ijro etish</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Oʻynatish barcha tugmasini koʻrsatish</string>
   <string name="morphe_play_all_button_summary">"Kanalning barcha videolaridan o'yin ro'yxatini yaratish uchun bosing, bekor qilish uchun ushlab turish
@@ -833,10 +872,8 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
   <string name="morphe_auto_captions_style_entry_4">Ovozsiz paytda ko\'rsatish</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Afzal ko\'rilgan subtitrlarning tili</string>
-  <string name="morphe_preferred_caption_language_summary">Avval provayder subtitrlarini tanlaydi, so\'ngra avtomatik ravishda afzal ko\'rilgan tilga tarjima qiladi</string>
   <string name="morphe_preferred_caption_language_entry_off">O\'chirilgan</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Qo\'shimcha avtomatik tarjima tillarini qo\'shish</string>
   <string name="morphe_auto_translate_additional_languages_summary">Avtomatik tarjima menyusiga ko\'proq tillarni qo\'shadi</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Sarlavha kuki-larini belgilash</string>
@@ -854,6 +891,9 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
   <string name="morphe_fix_transcript_title">Transkriptni tuzatish</string>
   <string name="morphe_fix_transcript_summary">\'Doʻkon tugmasini\' yashirish</string>
   <string name="morphe_captions_in_pip_title">Rasmdagi rasm rejimida subtitrlarni ko\'rsatish</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">Barqaror subtitr bloklari</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigatsiya tugmalari</string>
   <string name="morphe_navigation_buttons_screen_summary">Sozlamalar ekrani</string>
@@ -1121,10 +1161,7 @@ Avtomobil maketi
 • Shorts oddiy pleyerda ochiladi
 • Yopilmagan eski video amalari paneli ko'rsatiladi"</string>
   <string name="morphe_tablet_layout_in_player_title">O\'yinchi ichida tablet tartibini yoqish</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Eski o'yinchi tartibini tiklash
-
-Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'proq videolar' qoplamasi mavjud bo'lmasligi mumkin"</string>
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Subtitrlarning eski ishlash tartibini tiklash</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Eski pleyer saqlashni tiklash</string>
@@ -1202,8 +1239,14 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <string name="morphe_miniplayer_disable_resuming_summary">YouTube Premium xususiyati bo\'lgan mini-pleyerning qayta tiklanishini o\'chirish</string>
   <string name="morphe_miniplayer_screen_title">Mini pleyer</string>
   <string name="morphe_miniplayer_screen_summary">Kichraytirilgan video pleerni ko\'rinishi va xulq-atvorini sozlash</string>
+  <string name="morphe_miniplayer_not_available_title">Qo\'shimcha miniplayerlar</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube barcha qo\'shimcha miniplayerlarni olib tashladi. Ko\'proq miniplayer turlarini qayta tiklash uchun YouTube 21.28.208 yoki undan eski versiyasiga patch qiling</string>
   <string name="morphe_miniplayer_type_title">Mini pleyer turi</string>
   <string name="morphe_miniplayer_hide_title_title">Sarlavha va kanalni yashirish</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Yuqoriga surish orqali kengaytirish</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Miniyuloyni yuqoriga surish uni ekranning yuqori qismiga ko\'chirish o\'rniga, pleyerni kengaytiradi</string>
+  <string name="morphe_miniplayer_docked_title">Yopishgan miniyuloy</string>
+  <string name="morphe_miniplayer_docked_summary">Miniyuloyni ularning ustida suzib yurish o\'rniga, navigatsiya paneli va ekranning yon tomonlariga yopishtiradi</string>
   <string name="morphe_miniplayer_type_entry_0">O\'chirilgan</string>
   <string name="morphe_miniplayer_type_entry_1">Standart</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1243,7 +1286,11 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <string name="morphe_fix_status_bar_layout_summary">Holat panelining maketini izchil saqlaydi, shunda u yuqori panellarni yopmaydi va pleyer tepasida bo\'sh joy qoldirmaydi. Agar ilova ishdan chiqsa yoki yuqori panellar noto\'g\'ri ko\'rinsa, buni o\'chiring</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Yorug²lik</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Ushbu qurilma Glow splash ekrani uslubini qo\'llab-quvvatlamaydi</string>
+  <string name="morphe_splash_screen_duration_title">Ishga tushirish animatsiyasi davomiyligi</string>
+  <string name="morphe_splash_screen_duration_summary">Yorug\'lik animatsiyasi qancha vaqt davom etishi. Uni tashlab o\'tish uchun animatsiyaga bosing</string>
   <string name="morphe_theme_color_light_title">Yorug\' mavzu foni</string>
   <string name="morphe_theme_color_light_entry_2">Oq</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Oq)</string>
@@ -1469,10 +1516,7 @@ AV1 bilan video ijrosi qotishi yoki kadrlar tushib qolishi mumkin"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Pleyer JavaScript varianti</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'Stats for nerds\' da soxtalashtirishni ko\'rsatish</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Eski video harakatlar panelini tiklash</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Videodagi amal tugmalarini yashirib bo‘lmaslik muammosi tuzatildi
-
-Cheklov: Eski uslubdagi \"Boshqa videolar\" qatlami qaytariladi"</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Standart</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Pleer belgisi uslubi</string>
   <string name="morphe_player_icon_style_entry_auto">Avtomatik</string>

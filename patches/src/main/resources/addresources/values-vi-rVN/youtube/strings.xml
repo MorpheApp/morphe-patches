@@ -446,7 +446,7 @@ Báo cáo được công khai và được xem xét trước khi một kênh đ�
   <string name="morphe_feed_long_press_menu_title">Chạm và giữ để mở menu video</string>
   <string name="morphe_feed_long_press_menu_summary">Chạm và giữ ở bất kỳ đâu trên video nguồn sẽ mở menu của video đó</string>
   <string name="morphe_feed_watch_later_button_title">Hiển thị nút Xem sau trên hình thu nhỏ</string>
-  <string name="morphe_feed_watch_later_button_summary">Nút Xem sau được hiển thị trên hình thu nhỏ của các video nguồn. Chạm và giữ vào nút này để lưu vào danh sách phát</string>
+  <string name="morphe_feed_watch_later_button_summary">Nút Xem sau được hiển thị trên hình thu nhỏ của các video trong nguồn cấp dữ liệu, với dấu kiểm nếu video đã được lưu. Nhấn vào nút này để lưu hoặc xóa video, và nhấn giữ để mở Lưu vào danh sách phát</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Tải hình ảnh bài đăng</string>
   <string name="morphe_post_image_download_summary">Một nút tải xuống sẽ hiển thị cạnh nút Chia sẻ của các bài đăng có hình ảnh hoặc GIF, và một mục tải xuống sẽ được thêm vào menu của chúng</string>
@@ -870,6 +870,10 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Phụ đề</string>
   <string name="morphe_captions_screen_summary">Quản lý phụ đề tự động và cookie phụ đề</string>
+  <string name="morphe_captions_languages_title">Ngôn ngữ và dịch thuật</string>
+  <string name="morphe_captions_presentation_title">Diện mạo và hành vi</string>
+  <string name="morphe_captions_advanced_title">Nâng cao</string>
+  <string name="morphe_captions_advanced_summary">Tùy chọn cookie và bản ghi</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Tự động hiển thị phụ đề</string>
   <string name="morphe_auto_captions_style_entry_1">Luôn hiển thị</string>
@@ -878,10 +882,10 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_auto_captions_style_entry_4">Hiển thị khi tắt tiếng</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Ngôn ngữ phụ đề ưa thích</string>
-  <string name="morphe_preferred_caption_language_summary">Chọn phụ đề từ nhà cung cấp trước, sau đó tự động dịch sang ngôn ngữ ưa thích</string>
+  <string name="morphe_preferred_caption_language_summary">Tự động chọn ngôn ngữ phụ đề cho mỗi video</string>
   <string name="morphe_preferred_caption_language_entry_off">Tắt</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Thêm ngôn ngữ tự dịch bổ sung</string>
+  <string name="morphe_auto_translate_additional_languages_title">Các ngôn ngữ tự động dịch bổ sung</string>
   <string name="morphe_auto_translate_additional_languages_summary">Thêm nhiều ngôn ngữ hơn vào menu tự dịch</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Thiết lập cookie phụ đề</string>
@@ -899,6 +903,17 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_fix_transcript_title">Sửa bản chép lời</string>
   <string name="morphe_fix_transcript_summary">Khắc phục lỗi kiểm tra tiên quyết có thể ngăn tải bản chép lời</string>
   <string name="morphe_captions_in_pip_title">Hiển thị phụ đề trong chế độ hình ảnh trong hình</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Kích thước phụ đề</string>
+  <string name="morphe_caption_scale_summary">Áp dụng cho phụ đề đơn ngôn ngữ và song ngữ</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">Các khối phụ đề ổn định</string>
+  <string name="morphe_stable_caption_blocks_summary">Nhóm các phụ đề tự động đơn ngôn ngữ thành các khối ổn định, dễ đọc. Phụ đề song ngữ luôn sử dụng các khối. Một số từ có thể xuất hiện trước khi được nói</string>
+  <string name="morphe_secondary_caption_language_title">Ngôn ngữ phụ đề thứ hai</string>
+  <string name="morphe_secondary_caption_language_summary">Hiển thị ngôn ngữ thứ hai cùng với phụ đề và thêm nút bật/tắt phụ đề song ngữ vào menu phụ đề</string>
+  <string name="morphe_dual_captions_enabled_title">Phụ đề song ngữ</string>
+  <string name="morphe_caption_block_translation_failed">Một số bản dịch phụ đề không khả dụng. Đang hiển thị các phụ đề có sẵn.</string>
+  <string name="morphe_caption_blocks_too_large">Cả hai ngôn ngữ phụ đề đều không vừa với trình phát này. Đang hiển thị ngôn ngữ chính.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Nút điều hướng</string>
   <string name="morphe_navigation_buttons_screen_summary">Chọn các nút sẽ hiển thị trong thanh điều hướng dưới cùng</string>
@@ -1166,10 +1181,10 @@ Giao diện ô tô
 • Shorts mở bằng trình phát thông thường
 • Thanh hành động video cũ không thu gọn được hiển thị"</string>
   <string name="morphe_tablet_layout_in_player_title">Bật bố cục máy tính bảng trong trình phát</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Khôi phục bố cục trình phát cũ
 
-Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị tắt, lớp phủ \"Thêm video\" có thể không xuất hiện"</string>
+Hạn chế: Nếu \"Bố cục thanh thao tác video\" không phải là Cổ điển, lớp phủ \"Thêm video\" có thể không khả dụng"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Khôi phục hành vi phụ đề cũ</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Khôi phục ‘Lưu vào danh sách phát’ kiểu cũ</string>
@@ -1529,10 +1544,11 @@ Phát video bằng AV1 có thể bị giật hoặc tụt khung hình"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Biến thể JavaScript của trình phát</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Hiện thông tin giả mạo trong \'Thống kê chi tiết\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Khôi phục thanh thao tác video cũ</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Khắc phục lỗi không thể ẩn các nút hành động video
-
-Hạn chế: Trở về lớp phủ 'Xem thêm video' kiểu cũ"</string>
+  <string name="morphe_video_action_bar_layout_title">Bố cục thanh thao tác video</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Mặc định</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Cổ điển</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Tối giản</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Hạn chế: Kiểu Cổ điển sẽ quay lại lớp phủ \"Thêm video\" kiểu cũ</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Kiểu biểu tượng trình phát</string>
   <string name="morphe_player_icon_style_entry_auto">Tự động</string>
@@ -1700,4 +1716,27 @@ Tự động ghi là tùy chọn. Nó dừng lại khi ở chế độ ẩn danh
   <string name="morphe_niconico_comments_max_length_title">Độ dài bình luận tối đa</string>
   <string name="morphe_niconico_comments_max_length_summary">Ẩn các bình luận có nhiều ký tự hơn giá trị này. Mỗi emoji được tính là một ký tự</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Không giới hạn</string>
+  <string name="morphe_live_chat_translate_screen_title">Dịch trò chuyện trực tiếp</string>
+  <string name="morphe_live_chat_translate_screen_summary">Dịch các tin nhắn trò chuyện trực tiếp và phát lại trò chuyện trực tiếp</string>
+  <string name="morphe_live_chat_translate_title">Dịch trò chuyện trực tiếp</string>
+  <string name="morphe_live_chat_translate_summary">Dịch các tin nhắn trò chuyện trực tiếp và phát lại trò chuyện trực tiếp khi chúng xuất hiện trên màn hình</string>
+  <string name="morphe_live_chat_translate_language_title">Ngôn ngữ dịch</string>
+  <string name="morphe_live_chat_translate_exclude_title">Các ngôn ngữ bị loại trừ</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Các mã ngôn ngữ cách nhau bởi dấu phẩy, ví dụ như id,en. Các tin nhắn bằng những ngôn ngữ này sẽ không được dịch</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Hiện nút sao chép tin nhắn</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Thêm một nút sao chép nhỏ vào mỗi tin nhắn trò chuyện</string>
+  <string name="morphe_live_chat_translate_copied">Đã sao chép tin nhắn vào bảng nhớ tạm</string>
+  <string name="morphe_live_chat_translate_style_title">Kiểu dịch thuật</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Chỉ bản dịch</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Gốc (bản dịch)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Bản dịch) gốc</string>
+  <string name="morphe_live_chat_translate_bold_title">In đậm văn bản dịch</string>
+  <string name="morphe_live_chat_translate_bold_summary">Hiển thị văn bản dịch ở dạng in đậm</string>
+  <string name="morphe_live_chat_translate_use_color_title">Màu văn bản dịch tùy chỉnh</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Áp dụng màu tùy chỉnh cho văn bản dịch</string>
+  <string name="morphe_live_chat_translate_color_title">Màu văn bản dịch</string>
+  <string name="morphe_live_chat_translate_color_summary">Đặt màu hex cho văn bản dịch</string>
+  <string name="morphe_live_chat_translate_max_length_title">Độ dài tin nhắn tối đa</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Các tin nhắn dài hơn sẽ không được dịch</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Không giới hạn</string>
 </resources>

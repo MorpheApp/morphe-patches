@@ -443,7 +443,6 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_title">ແຕະ and ກົດຄ້າງໄວ້ເພື່ອເປີດເມນູວິດີໂອ</string>
   <string name="morphe_feed_long_press_menu_summary">ການແຕະ ແລະ ກົດຄ້າງໄວ້ຢູ່ບ່ອນໃດກໍໄດ້ໃນວິດີໂອຂອງຟີດ ຈະເປີດເມນູຂອງວິດີໂອນັ້ນ</string>
   <string name="morphe_feed_watch_later_button_title">ສະແດງປຸ່ມ ເບິ່ງພາຍຫຼັງ ໃນຮູບຕົວຢ່າງ</string>
-  <string name="morphe_feed_watch_later_button_summary">ປຸ່ມ ເບິ່ງພາຍຫຼັງ ຈະຖືກສະແດງໃນຮູບຕົວຢ່າງຂອງວິດີໂອໃນຟີດ. ການແຕະ ແລະ ກົດຄ້າງໄວ້ທີ່ປຸ່ມນີ້ ຈະເປີດ ບັນທຶກລົງໃນລາຍການຫຼິ້ນ</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">ດາວໂຫຼດຮູບພາບໂພສ</string>
   <string name="morphe_post_image_download_summary">ປຸ່ມດາວໂຫຼດຈະສະແດງຂ້າງປຸ່ມແຊຣ໌ຂອງໂພສທີ່ມີຮູບພາບ ຫຼື GIFs, ແລະ ລາຍການດາວໂຫຼດຈະຖືກເພີ່ມເຂົ້າໃນເມນູຂອງພວກມັນ</string>
@@ -839,10 +838,8 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_entry_4">ສະແດງເມື່ອປິດສຽງ</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">ພາສາຄຳບັນຍາຍທີ່ມັກ</string>
-  <string name="morphe_preferred_caption_language_summary">ເລືອກຄຳບັນຍາຍຈາກຜູ້ໃຫ້ບໍລິການກ່ອນ, ຈາກນັ້ນຈະແປເປັນພາສາທີ່ມັກໂດຍອັດຕະໂນມັດ</string>
   <string name="morphe_preferred_caption_language_entry_off">ປິດ</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">ເພີ່ມພາສາແປອັດຕະໂນມັດເພີ່ມເຕີມ</string>
   <string name="morphe_auto_translate_additional_languages_summary">ເພີ່ມພາສາຫຼາຍຂຶ້ນໃນເມນູແປອັດຕະໂນມັດ</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">ຕັ້ງຄ່າຄຸກກີ້ຂອງຄຳບັນຍາກຳກັບ</string>
@@ -860,6 +857,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">ແກ້ໄຂບົດບັນທຶກ</string>
   <string name="morphe_fix_transcript_summary">ແກ້ໄຂຄວາມລົ້ມເຫຼວຂອງການກວດສອບເງື່ອນໄຂເບື້ອງຕົ້ນ ທີ່ອາດຈະປ້ອງກັນບໍ່ໃຫ້ໂຫຼດບົດບັນທຶກການສົນທະນາໄດ້</string>
   <string name="morphe_captions_in_pip_title">ສະແດງຄຳບັນຍາຍໃນຮູບພາບໃນຮູບພາບ</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <!-- layout.captions.stableCaptionBlocksPatch -->
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">ປຸ່ມນຳທາງ</string>
   <string name="morphe_navigation_buttons_screen_summary">ເລືອກປຸ່ມທີ່ຈະໃຫ້ປາກົດໃນແຖບນຳທາງດ້ານລຸ່ມ</string>
@@ -1127,10 +1126,7 @@ Second \"item\" text"</string>
 • Shorts ຈະເປີດໃນເຄື່ອງຫຼິ້ນປົກກະຕິ
 • ແຖບການເຮັດວິດີໂອແບບເກົ່າທີ່ບໍ່ໄດ້ຍຸບຈະສະແດງຂຶ້ນ"</string>
   <string name="morphe_tablet_layout_in_player_title">ເປີດໃຊ້ການຈັດວາງແບບແທັບເລັດໃນເຄື່ອງຫຼິ້ນ</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"ຟື້ນຟູຮູບແບບເຄື່ອງຫຼິ້ນແບບເກົ່າ
-
-ຂໍ້ຈຳກັດ: ຖ້າ 'ຟື້ນຟູແຖບການເຮັດວຽກຂອງວິດີໂອແບບເກົ່າ' ຖືກປິດ, ປ່ອງຢ້ຽມ 'ວິດີໂອເພີ່ມເຕີມ' ອາດຈະບໍ່ສາມາດໃຊ້ງານໄດ້"</string>
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - ກູ້ຄືນພຶດຕິກຳຂອງຄຳບັນຍາກິດແບບເກົ່າ</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - ກູ້ຄືນການບັນທຶກເກົ່າໄປຍັງລາຍການຫຼິ້ນ</string>
@@ -1480,10 +1476,6 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_player_js_variant_title">ຮຸ່ນ JavaScript ຂອງເຄື່ອງຫຼິ້ນ</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">ສະແດງການປອມແປງໃນ \'ສະຖິຕິສຳລັບນັກຮຽນຮູ້\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">ຄືນຄ່າແຖບການຈັດການວິດີໂອແບບເກົ່າ</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"ແກ້ໄຂປຸ່ມການຈັດການວິດີໂອທີ່ບໍ່ສາມາດເຊື່ອງໄດ້
-
-ຂໍ້ຈຳກັດ: ກັບໄປໃຊ້ຮູບແບບເກົ່າຂອງການວາງຊ້ອນ 'ວິດີໂອເພີ່ມເຕີມ'"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">ຮູບແບບໄອຄອນຂອງເຄື່ອງຫຼິ້ນ</string>
   <string name="morphe_player_icon_style_entry_auto">ອັດຕະໂນມັດ</string>

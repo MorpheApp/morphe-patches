@@ -446,7 +446,7 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_title">ضربه بزنید و نگه دارید تا منوی ویدیو باز شود</string>
   <string name="morphe_feed_long_press_menu_summary">ضربه زدن و نگه داشتن در هر جایی از یک ویدیوی فید، منوی آن را باز می‌کند</string>
   <string name="morphe_feed_watch_later_button_title">نمایش دکمه \"تماشا بعداً\" روی تصاویر بندانگشتی</string>
-  <string name="morphe_feed_watch_later_button_summary">یک دکمه \"تماشا بعداً\" روی تصاویر بندانگشتی ویدیوهای فید نمایش داده می‌شود. ضربه زدن و نگه داشتن آن گزینه ذخیره در لیست پخش را باز می‌کند</string>
+  <string name="morphe_feed_watch_later_button_summary">یک دکمهٔ «تماشای بعدی» روی تصاویر بندانگشتی ویدئوهای فید نمایش داده می‌شود و اگر ویدئو ذخیره شده باشد، یک علامت تیک دارد. ضربه زدن روی آن باعث ذخیره یا حذف ویدئو می‌شود و ضربه طولانی روی آن، گزینهٔ «ذخیره در فهرست پخش» را باز می‌کند</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">دانلود تصاویر پست</string>
   <string name="morphe_post_image_download_summary">یک دکمه دانلود در کنار دکمه اشتراک‌گذاری پست‌های دارای تصویر یا GIF نمایش داده می‌شود و یک گزینه دانلود به منوی آن‌ها اضافه می‌گردد</string>
@@ -870,6 +870,10 @@ Second \"item\" text"</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">زیرنویس‌ها</string>
   <string name="morphe_captions_screen_summary">زیرنویس‌های خودکار و کوکی‌های زیرنویس را مدیریت کنید</string>
+  <string name="morphe_captions_languages_title">زبان و ترجمه</string>
+  <string name="morphe_captions_presentation_title">ظاهر و رفتار</string>
+  <string name="morphe_captions_advanced_title">پیشرفته</string>
+  <string name="morphe_captions_advanced_summary">گزینه‌های کوکی و متن پیاده</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">قابل‌مشاهده‌بودن زیرنویس خودکار</string>
   <string name="morphe_auto_captions_style_entry_1">همیشه نمایش بده</string>
@@ -878,10 +882,10 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_entry_4">هنگام بی‌صدا بودن نمایش بده</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">زبان ترجیحی زیرنویس‌ها</string>
-  <string name="morphe_preferred_caption_language_summary">ابتدا زیرنویس‌های ارائه‌شده را انتخاب می‌کند، سپس به‌طور خودکار به زبان ترجیحی ترجمه می‌کند</string>
+  <string name="morphe_preferred_caption_language_summary">به طور خودکار یک زبان زیرنویس برای هر ویدئو انتخاب می‌کند</string>
   <string name="morphe_preferred_caption_language_entry_off">خاموش</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">افزودن زبان‌های ترجمه خودکار اضافی</string>
+  <string name="morphe_auto_translate_additional_languages_title">زبان‌های ترجمهٔ خودکار اضافی</string>
   <string name="morphe_auto_translate_additional_languages_summary">افزودن زبان‌های بیشتری به منوی ترجمه خودکار</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">تنظیم کوکی‌های زیرنویس</string>
@@ -899,6 +903,17 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">رفع متن پیاده‌شده</string>
   <string name="morphe_fix_transcript_summary">شکست بررسی پیش‌شرطی را که می‌تواند مانع بارگذاری متن پیاده‌شده شود رفع می‌کند</string>
   <string name="morphe_captions_in_pip_title">نمایش زیرنویس‌ها در تصویر در تصویر</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">اندازهٔ زیرنویس</string>
+  <string name="morphe_caption_scale_summary">برای زیرنویس‌های تک‌زبانه و دو زبانه اعمال می‌شود</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">بلاک‌های کپشن پایدار</string>
+  <string name="morphe_stable_caption_blocks_summary">زیرنویس‌های خودکار تک‌زبانه را در بلوک‌های پایدار و خواندنی گروه‌بندی می‌کند. زیرنویس‌های دو زبانه همیشه از بلوک‌ها استفاده می‌کنند. برخی کلمات ممکن است پیش از گفته شدن ظاهر شوند</string>
+  <string name="morphe_secondary_caption_language_title">زبان ثانویهٔ زیرنویس</string>
+  <string name="morphe_secondary_caption_language_summary">زبان دومی را همراه با زیرنویس‌ها نمایش می‌دهد و یک سوئیچ «زیرنویس‌های دو زبانه» به منوی زیرنویس‌ها اضافه می‌کند</string>
+  <string name="morphe_dual_captions_enabled_title">زیرنویس‌های دو زبانه</string>
+  <string name="morphe_caption_block_translation_failed">برخی ترجمه‌های زیرنویس در دسترس نیستند. نمایش زیرنویس‌های موجود.</string>
+  <string name="morphe_caption_blocks_too_large">هر دو زبان زیرنویس در این پخش‌کننده جا نمی‌شوند. نمایش زبان اصلی.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">دکمه‌های پیمایش</string>
   <string name="morphe_navigation_buttons_screen_summary">انتخاب کنید کدام دکمه‌ها در نوار پیمایش پایین نمایش داده شوند</string>
@@ -1165,10 +1180,10 @@ Second \"item\" text"</string>
 • Shorts در پخش‌کنندهٔ معمولی باز می‌شود
 • نوار عملیات قدیمی ویدئو به‌صورت بازشده نمایش داده می‌شود"</string>
   <string name="morphe_tablet_layout_in_player_title">فعال‌کردن طرح‌بندی تبلت در پخش‌کننده</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <string name="morphe_tablet_layout_in_player_summary">"طرح‌بندی قدیمی پخش‌کننده را بازیابی می‌کند
 
-محدودیت: اگر «بازیابی نوار عملیات قدیمی ویدئو» خاموش باشد، ممکن است روی‌هم‌افتادگی «ویدئوهای بیشتر» در دسترس نباشد"</string>
+محدودیت: اگر «طرح‌بندی نوار عملیات ویدئو» روی «کلاسیک» نباشد، ممکن است روی‌هم‌افتادگی «ویدئوهای بیشتر» در دسترس نباشد"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 — بازگردانی رفتار قبلی کپشن‌ها</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - بازیابی ذخیره در فهرست پخش</string>
@@ -1528,10 +1543,11 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_player_js_variant_title">گونهٔ JavaScript پخش‌کننده</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">نمایش جعل در «آمار برای نردها»</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">بازیابی نوار عملیات قدیمی ویدئو</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"رفع مشکل پنهان‌نشدن دکمه‌های اکشن ویدیو
-
-محدودیت: به نمای قدیمی «ویدیوهای بیشتر» بازمی‌گردد"</string>
+  <string name="morphe_video_action_bar_layout_title">طرح‌بندی نوار عملیات ویدئو</string>
+  <string name="morphe_video_action_bar_layout_entry_1">پیش‌فرض</string>
+  <string name="morphe_video_action_bar_layout_entry_2">کلاسیک</string>
+  <string name="morphe_video_action_bar_layout_entry_3">حداقلی</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">محدودیت: حالت کلاسیک، روی‌هم‌افتادگی «ویدئوهای بیشتر» را به سبک قدیمی باز می‌گرداند</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">سبک آیکون پخش‌کننده</string>
   <string name="morphe_player_icon_style_entry_auto">خودکار</string>
@@ -1699,4 +1715,27 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">حداکثر طول نظر</string>
   <string name="morphe_niconico_comments_max_length_summary">نظراتی که کاراکترهای بیشتری از این مقدار دارند را مخفی می‌کند. هر ایموجی به عنوان یک کاراکتر در نظر گرفته می‌شود</string>
   <string name="morphe_niconico_comments_max_length_no_limit">بدون محدودیت</string>
+  <string name="morphe_live_chat_translate_screen_title">ترجمهٔ چت زنده</string>
+  <string name="morphe_live_chat_translate_screen_summary">ترجمهٔ پیام‌های چت زنده و بازپخش چت زنده</string>
+  <string name="morphe_live_chat_translate_title">ترجمهٔ چت زنده</string>
+  <string name="morphe_live_chat_translate_summary">پیام‌های چت زنده و بازپخش چت زنده را به محض نمایش در صفحه ترجمه می‌کند</string>
+  <string name="morphe_live_chat_translate_language_title">زبان ترجمه</string>
+  <string name="morphe_live_chat_translate_exclude_title">زبان‌های مستثنی‌شده</string>
+  <string name="morphe_live_chat_translate_exclude_summary">کدهای زبان با جداکنندهٔ ویرگول، مانند id,en. پیام‌هایی با این زبان‌ها ترجمه نمی‌شوند</string>
+  <string name="morphe_live_chat_translate_copy_button_title">نمایش دکمهٔ کپی پیام</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">یک دکمهٔ کپی کوچک به هر پیام چت اضافه می‌کند</string>
+  <string name="morphe_live_chat_translate_copied">پیام در کلیپ‌بورد کپی شد</string>
+  <string name="morphe_live_chat_translate_style_title">سبک ترجمه</string>
+  <string name="morphe_live_chat_translate_style_translated_only">فقط ترجمه‌شده</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">اصلی (ترجمه‌شده)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(ترجمه‌شده) اصلی</string>
+  <string name="morphe_live_chat_translate_bold_title">ضخیم کردن متن ترجمه‌شده</string>
+  <string name="morphe_live_chat_translate_bold_summary">متن ترجمه‌شده را به صورت ضخیم نمایش می‌دهد</string>
+  <string name="morphe_live_chat_translate_use_color_title">رنگ سفارشی متن ترجمه‌شده</string>
+  <string name="morphe_live_chat_translate_use_color_summary">یک رنگ سفارشی به متن ترجمه‌شده اعمال می‌کند</string>
+  <string name="morphe_live_chat_translate_color_title">رنگ متن ترجمه‌شده</string>
+  <string name="morphe_live_chat_translate_color_summary">رنگ هگس متن ترجمه‌شده را تنظیم کنید</string>
+  <string name="morphe_live_chat_translate_max_length_title">حداکثر طول پیام</string>
+  <string name="morphe_live_chat_translate_max_length_summary">پیام‌های طولانی‌تر بدون ترجمه نمایش داده می‌شوند</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">بدون محدودیت</string>
 </resources>

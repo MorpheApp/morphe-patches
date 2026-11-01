@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit personvernerklæring</string>
   <string name="morphe_google_signin_not_available_toast">Google-innlogging er ikke tilgjengelig. Bruk e-post for å logge inn</string>
+  <string name="morphe_app_downgrade_dialog_title">Nedgradering støttes ikke</string>
+  <string name="morphe_app_downgrade_dialog_message">"Denne Reddit-installasjonen ble nedgradert fra &lt;b&gt;%1$s&lt;/b&gt; til &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+App-data fra en nyere versjon fungerer ikke med eldre versjoner, og appen fungerer kanskje ikke som den skal.
+&lt;br/&gt;&lt;br/&gt;
+For å bruke en eldre versjon må du &lt;b&gt;avinstallere&lt;/b&gt; Reddit og deretter installere den eldre versjonen."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Åpne app-info</string>
   <string name="morphe_screen_ads_title">Annonser</string>
   <string name="morphe_hide_post_ads_title">Skjul annonser i feeden</string>
   <string name="morphe_hide_comment_ads_title">Skjul kommentarfeltannonser</string>

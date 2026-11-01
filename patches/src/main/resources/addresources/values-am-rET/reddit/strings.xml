@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">የReddit የதனጂነት ፖሊሲ</string>
   <string name="morphe_google_signin_not_available_toast">የGoogle መግቢያ አይቻልም። ለመግባት ኢሜል ይጠቀሙ</string>
+  <string name="morphe_app_downgrade_dialog_title">የስሪት ዝቅማት አይደገፍም</string>
+  <string name="morphe_app_downgrade_dialog_message">"ይህ የReddit ጭነት ከ&lt;b&gt;%1$s&lt;/b&gt; ወደ &lt;b&gt;%2$s&lt;/b&gt; ዝቅ ተደርጓል
+&lt;br/&gt;&lt;br/&gt;
+ከአዲስ ስሪት የተገኙ የऐप መረጃዎች ከድሮ ስሪቶች ጋር አይሰሩም እና አፑ በትክክል ላይሰራ ይችላል።
+&lt;br/&gt;&lt;br/&gt;
+የድሮውን ስሪት ለመጠቀም፣ መጀመሪያ Redditን &lt;b&gt;ዘርዝር (uninstall)&lt;/b&gt; ማድረግ እና ከዚያ የድሮውን ስሪት መጫን አለብዎት።"</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">የአፑን መረጃ ክፈት</string>
   <string name="morphe_screen_ads_title">ማስታወቂያዎች</string>
   <string name="morphe_hide_post_ads_title">የፊድ ማስታወቂያዎችን ደብቅ</string>
   <string name="morphe_hide_comment_ads_title">የአስተያየት ማስታወቂያዎችን ደብቅ</string>

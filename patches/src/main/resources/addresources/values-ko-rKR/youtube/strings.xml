@@ -446,7 +446,7 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_title">길게 탭하여 동영상 메뉴 열기</string>
   <string name="morphe_feed_long_press_menu_summary">피드 동영상에서 아무 곳이나 길게 탭하면 해당 동영상 메뉴가 열립니다</string>
   <string name="morphe_feed_watch_later_button_title">썸네일에 \'나중에 볼 동영상에 저장\' 버튼 표시하기</string>
-  <string name="morphe_feed_watch_later_button_summary">피드 동영상 썸네일에 \'나중에 볼 동영상에 저장\' 버튼을 표시합니다. 버튼을 길게 탭하면 재생목록에 저장됩니다</string>
+  <string name="morphe_feed_watch_later_button_summary">피드 동영상의 썸네일에 \'나중에 보기\' 버튼이 표시되며, 동영상이 저장된 경우 체크 표시가 나타납니다. 이 버튼을 탭하면 동영상을 저장하거나 제거하며, 길게 누르면 \'재생목록에 저장\' 메뉴가 열립니다</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">게시물 이미지 다운로드하기</string>
   <string name="morphe_post_image_download_summary">이미지 또는 GIF가 포함된 게시물의 공유 버튼 옆에 다운로드 버튼이 표시되며, 해당 게시물의 메뉴에도 다운로드 항목이 추가됩니다</string>
@@ -872,6 +872,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">자막</string>
   <string name="morphe_captions_screen_summary">자동 자막 및 자막 쿠키를 관리할 수 있습니다</string>
+  <string name="morphe_captions_languages_title">언어 및 번역</string>
+  <string name="morphe_captions_presentation_title">디자인 및 동작</string>
+  <string name="morphe_captions_advanced_title">고급</string>
+  <string name="morphe_captions_advanced_summary">쿠키 및 스크립트 옵션</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">자동 자막 표시 여부</string>
   <string name="morphe_auto_captions_style_entry_1">항상 표시</string>
@@ -880,10 +884,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_auto_captions_style_entry_4">음소거 시 표시</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">선호하는 자막 언어 설정</string>
-  <string name="morphe_preferred_caption_language_summary">제공자가 제공하는 자막을 먼저 선택한 다음, 선호하는 언어로 자동 번역합니다</string>
+  <string name="morphe_preferred_caption_language_summary">동영상마다 자막 언어를 자동으로 선택합니다</string>
   <string name="morphe_preferred_caption_language_entry_off">사용 안함</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">자동 번역 언어 추가하기</string>
+  <string name="morphe_auto_translate_additional_languages_title">추가 자동 번역 언어</string>
   <string name="morphe_auto_translate_additional_languages_summary">자동 번역 메뉴에 언어를 추가합니다</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">자막 쿠키 설정</string>
@@ -901,6 +905,17 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_fix_transcript_title">스크립트 수정하기</string>
   <string name="morphe_fix_transcript_summary">스크립트가 불러오지 않을 수 있는 사전 조건 검사 실패 문제를 해결할 수 있습니다</string>
   <string name="morphe_captions_in_pip_title">PIP 모드에 자막 표시하기</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">자막 크기</string>
+  <string name="morphe_caption_scale_summary">단일 언어 자막과 이중 언어 자막 모두에 적용됩니다</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">안정적인 자막 블록</string>
+  <string name="morphe_stable_caption_blocks_summary">단일 언어 자동 자막은 안정적이고 읽기 쉬운 문장 단위로 묶어 표시합니다. 이중 언어 자막은 항상 문장 단위의 블록으로 표시합니다. 일부 단어는 실제로 발음되기 전에 자막에 먼저 표시될 수 있습니다</string>
+  <string name="morphe_secondary_caption_language_title">보조 자막 언어</string>
+  <string name="morphe_secondary_caption_language_summary">자막과 함께 두 번째 언어를 표시하고, 자막 메뉴에 이중 언어 자막 전환 기능을 추가합니다</string>
+  <string name="morphe_dual_captions_enabled_title">이중 언어 자막</string>
+  <string name="morphe_caption_block_translation_failed">일부 자막은 번역을 제공하지 않습니다. 번역이 제공되는 자막만 표시합니다</string>
+  <string name="morphe_caption_blocks_too_large">이 플레이어에서는 두 가지 자막 언어를 동시에 표시할 공간이 부족합니다. 기본 자막 언어만 표시합니다</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">하단바 버튼</string>
   <string name="morphe_navigation_buttons_screen_summary">하단바에 표시할 버튼을 설정할 수 있습니다</string>
@@ -1167,10 +1182,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
 • Shorts는 일반 플레이어에서 열립니다
 • 접히지 않은 이전 동영상 작업 버튼바가 표시됩니다"</string>
   <string name="morphe_tablet_layout_in_player_title">플레이어에서 태블릿 레이아웃 활성화하기</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"이전 플레이어 레이아웃을 복원합니다
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"이전 플레이어 레이아웃으로 복원합니다
 
-제한 사항: '이전 동영상 작업 버튼바 복원하기'를 비활성화하면, '동영상 더보기' 오버레이를 사용할 수 없을 수 있습니다"</string>
+제한 사항: '동영상 작업 버튼바 레이아웃'이 '클래식'이 아닌 경우, '추가 동영상' 오버레이를 사용할 수 없을 수 있습니다"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 이전 자막 동작을 복원합니다</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 이전 \'재생목록에 저장\'을 복원합니다</string>
@@ -1530,10 +1545,11 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_spoof_video_streams_player_js_variant_title">플레이어 자바스크립트 변형</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">전문 통계에 속이기 정보 표시하기</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">이전 동영상 작업 버튼바 복원하기</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"동영상 작업 버튼을 숨길 수 없는 문제를 수정합니다
-
-제한 사항: 이전 스타일의 '동영상 더보기' 오버레이로 되돌아갑니다"</string>
+  <string name="morphe_video_action_bar_layout_title">동영상 작업 버튼바 레이아웃</string>
+  <string name="morphe_video_action_bar_layout_entry_1">기본값</string>
+  <string name="morphe_video_action_bar_layout_entry_2">클래식</string>
+  <string name="morphe_video_action_bar_layout_entry_3">최소화 1</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">제한 사항: 클래식 설정 시 이전 스타일의 \'추가 동영상\' 오버레이로 되돌아갑니다</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">플레이어 아이콘 스타일</string>
   <string name="morphe_player_icon_style_entry_auto">자동</string>
@@ -1701,4 +1717,27 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_niconico_comments_max_length_title">댓글 최대 길이</string>
   <string name="morphe_niconico_comments_max_length_summary">표시할 댓글의 최대 글자 수를 설정할 수 있습니다. 설정한 글자 수를 초과하는 댓글은 숨겨집니다. 이모티콘 하나는 글자 1개로 계산됩니다</string>
   <string name="morphe_niconico_comments_max_length_no_limit">제한 없음</string>
+  <string name="morphe_live_chat_translate_screen_title">실시간 채팅 번역</string>
+  <string name="morphe_live_chat_translate_screen_summary">실시간 채팅과 실시간 채팅 다시보기 메시지를 번역할 수 있습니다</string>
+  <string name="morphe_live_chat_translate_title">실시간 채팅 번역하기</string>
+  <string name="morphe_live_chat_translate_summary">실시간 채팅 및 실시간 채팅 다시보기 메시지가 화면에 표시되면 번역합니다</string>
+  <string name="morphe_live_chat_translate_language_title">번역 언어</string>
+  <string name="morphe_live_chat_translate_exclude_title">제외된 언어</string>
+  <string name="morphe_live_chat_translate_exclude_summary">쉼표로 구분된 언어 코드를 입력하세요 (예시: id,en). 해당 언어로 작성된 메시지는 번역하지 않습니다</string>
+  <string name="morphe_live_chat_translate_copy_button_title">메시지 복사 버튼 표시하기</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">모든 채팅 메시지에 작은 복사 버튼을 추가합니다</string>
+  <string name="morphe_live_chat_translate_copied">메시지를 클립보드에 복사하였습니다</string>
+  <string name="morphe_live_chat_translate_style_title">번역 스타일</string>
+  <string name="morphe_live_chat_translate_style_translated_only">번역만</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">원본 (번역)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(번역) 원본</string>
+  <string name="morphe_live_chat_translate_bold_title">굵은 번역 텍스트</string>
+  <string name="morphe_live_chat_translate_bold_summary">번역 텍스트를 굵게 표시합니다</string>
+  <string name="morphe_live_chat_translate_use_color_title">사용자 정의 번역 텍스트 색상</string>
+  <string name="morphe_live_chat_translate_use_color_summary">번역된 텍스트에 사용자 정의 색상을 적용합니다</string>
+  <string name="morphe_live_chat_translate_color_title">번역 텍스트 색상</string>
+  <string name="morphe_live_chat_translate_color_summary">번역 텍스트의 헥스 코드를 설정하세요</string>
+  <string name="morphe_live_chat_translate_max_length_title">최대 메시지 길이</string>
+  <string name="morphe_live_chat_translate_max_length_summary">설정한 길이보다 긴 메시지는 번역하지 않고 원본 그대로 표시합니다</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">제한 없음</string>
 </resources>

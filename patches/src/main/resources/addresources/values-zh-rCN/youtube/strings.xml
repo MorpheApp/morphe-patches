@@ -446,7 +446,7 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_title">长按打开视频菜单</string>
   <string name="morphe_feed_long_press_menu_summary">在信息流视频中任意位置长按可打开其菜单</string>
   <string name="morphe_feed_watch_later_button_title">在缩略图上显示稍后观看按钮</string>
-  <string name="morphe_feed_watch_later_button_summary">信息流视频的缩略图上会显示“稍后观看”按钮，点击并长按该按钮可将其保存到播放列表</string>
+  <string name="morphe_feed_watch_later_button_summary">在 Feed 视频的缩略图上显示“稍后观看”按钮，如果视频已保存则显示勾选标记。点击可保存或移除视频，长按可打开“保存到播放列表”</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">下载帖子图片</string>
   <string name="morphe_post_image_download_summary">在带有图片或 GIF 的帖子中，分享按钮旁边会显示下载按钮，并且其菜单中会添加一个下载选项</string>
@@ -870,6 +870,10 @@ Second \"item\" text"</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">字幕</string>
   <string name="morphe_captions_screen_summary">显示搜索按钮</string>
+  <string name="morphe_captions_languages_title">语言与翻译</string>
+  <string name="morphe_captions_presentation_title">外观与行为</string>
+  <string name="morphe_captions_advanced_title">高级</string>
+  <string name="morphe_captions_advanced_summary">Cookie 和转录选项</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">自动字幕可见性</string>
   <string name="morphe_auto_captions_style_entry_1">搜索按钮位置</string>
@@ -878,10 +882,10 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_entry_4">显示静音时的字幕</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">首选字幕语言</string>
-  <string name="morphe_preferred_caption_language_summary">先选择提供方字幕，然后自动翻译为首选语言</string>
+  <string name="morphe_preferred_caption_language_summary">为每个视频自动选择字幕语言</string>
   <string name="morphe_preferred_caption_language_entry_off">关闭</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">添加更多自动翻译语言</string>
+  <string name="morphe_auto_translate_additional_languages_title">额外的自动翻译语言</string>
   <string name="morphe_auto_translate_additional_languages_summary">在自动翻译菜单中添加更多语言</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">设置字幕 Cookie</string>
@@ -899,6 +903,17 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">修复文本</string>
   <string name="morphe_fix_transcript_summary">保持导航栏在滚动时可见</string>
   <string name="morphe_captions_in_pip_title">在画中画模式下显示字幕</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">字幕大小</string>
+  <string name="morphe_caption_scale_summary">适用于单语言和双语字幕</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">稳定字幕块</string>
+  <string name="morphe_stable_caption_blocks_summary">将单语言自动字幕分组为稳定、可读的块。双语字幕始终使用分块。某些单词可能会在说出之前出现</string>
+  <string name="morphe_secondary_caption_language_title">次要字幕语言</string>
+  <string name="morphe_secondary_caption_language_summary">在字幕中显示第二种语言，并在字幕菜单中添加“双语字幕”开关</string>
+  <string name="morphe_dual_captions_enabled_title">双语字幕</string>
+  <string name="morphe_caption_block_translation_failed">部分字幕翻译不可用。正在显示可用字幕。</string>
+  <string name="morphe_caption_blocks_too_large">两种字幕语言都无法适配此播放器。正在显示主要语言。</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">导航栏按钮</string>
   <string name="morphe_navigation_buttons_screen_summary">使状态栏完全不透明</string>
@@ -1166,10 +1181,10 @@ Second \"item\" text"</string>
 • Shorts 在常规播放器中打开
 • 显示未折叠的旧视频操作栏"</string>
   <string name="morphe_tablet_layout_in_player_title">在播放器中启用平板电脑布局</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <string name="morphe_tablet_layout_in_player_summary">"恢复旧版播放器布局
 
-限制：如果关闭“恢复旧版视频操作栏”选项，则“更多视频”叠加层可能不可用"</string>
+限制：如果“视频操作栏布局”不是“经典”，则可能无法使用“更多视频”覆盖层"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 恢复旧版字幕行为</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 恢复旧的保存到播放列表</string>
@@ -1529,10 +1544,11 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_player_js_variant_title">播放器JavaScript变种</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">在“高级统计信息”中显示伪造信息</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">恢复旧版视频操作栏</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"修复视频操作按钮无法隐藏的问题
-
-限制：恢复旧版“更多视频”叠加层"</string>
+  <string name="morphe_video_action_bar_layout_title">视频操作栏布局</string>
+  <string name="morphe_video_action_bar_layout_entry_1">默认</string>
+  <string name="morphe_video_action_bar_layout_entry_2">经典</string>
+  <string name="morphe_video_action_bar_layout_entry_3">极简</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">限制：经典模式将恢复到旧样式的“更多视频”覆盖层</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">播放器图标样式</string>
   <string name="morphe_player_icon_style_entry_auto">自动</string>
@@ -1700,4 +1716,27 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">最大评论长度</string>
   <string name="morphe_niconico_comments_max_length_summary">隐藏字符数超过此限制的评论。每个表情符号计为一个字符</string>
   <string name="morphe_niconico_comments_max_length_no_limit">无限制</string>
+  <string name="morphe_live_chat_translate_screen_title">实时聊天翻译</string>
+  <string name="morphe_live_chat_translate_screen_summary">翻译实时聊天和实时聊天回放消息</string>
+  <string name="morphe_live_chat_translate_title">翻译实时聊天</string>
+  <string name="morphe_live_chat_translate_summary">当实时聊天和实时聊天回放消息出现在屏幕上时对其进行翻译</string>
+  <string name="morphe_live_chat_translate_language_title">翻译目标语言</string>
+  <string name="morphe_live_chat_translate_exclude_title">排除的语言</string>
+  <string name="morphe_live_chat_translate_exclude_summary">由逗号分隔的语言代码，例如 id,en。这些语言的消息将不会被翻译</string>
+  <string name="morphe_live_chat_translate_copy_button_title">显示复制消息按钮</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">为每条聊天消息添加一个小复制按钮</string>
+  <string name="morphe_live_chat_translate_copied">消息已复制到剪贴板</string>
+  <string name="morphe_live_chat_translate_style_title">翻译样式</string>
+  <string name="morphe_live_chat_translate_style_translated_only">仅显示翻译内容</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">原文 (翻译)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(翻译) 原文</string>
+  <string name="morphe_live_chat_translate_bold_title">加粗翻译文本</string>
+  <string name="morphe_live_chat_translate_bold_summary">以加粗形式显示翻译后的文本</string>
+  <string name="morphe_live_chat_translate_use_color_title">自定义翻译文本颜色</string>
+  <string name="morphe_live_chat_translate_use_color_summary">为翻译后的文本应用自定义颜色</string>
+  <string name="morphe_live_chat_translate_color_title">翻译文本颜色</string>
+  <string name="morphe_live_chat_translate_color_summary">设置翻译文本的十六进制颜色代码</string>
+  <string name="morphe_live_chat_translate_max_length_title">最大消息长度</string>
+  <string name="morphe_live_chat_translate_max_length_summary">较长的消息将不被翻译</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">无限制</string>
 </resources>

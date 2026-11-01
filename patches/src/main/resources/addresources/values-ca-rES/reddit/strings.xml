@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Política de privadesa de Reddit</string>
   <string name="morphe_google_signin_not_available_toast">L\'inici de sessió de Google no està disponible. Utilitzeu el correu electrònic per iniciar la sessió</string>
+  <string name="morphe_app_downgrade_dialog_title">No s\'admet la degradació de versió</string>
+  <string name="morphe_app_downgrade_dialog_message">"Aquesta instal·lació de Reddit s'ha degradat de &lt;b&gt;%1$s&lt;/b&gt; a &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Les dades de l'aplicació d'una versió més recent no funcionen amb versions més antigues i l'aplicació pot no funcionar correctament.
+&lt;br/&gt;&lt;br/&gt;
+Per utilitzar una versió més antiga, heu de &lt;b&gt;desinstal·lar&lt;/b&gt; Reddit i després instal·lar la versió més antiga."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Obrir informació de l\'aplicació</string>
   <string name="morphe_screen_ads_title">Publicitat</string>
   <string name="morphe_hide_post_ads_title">Ocultar anuncis del feed</string>
   <string name="morphe_hide_comment_ads_title">Ocultar anuncis dels comentaris</string>

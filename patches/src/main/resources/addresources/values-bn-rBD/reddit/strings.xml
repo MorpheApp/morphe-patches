@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit গোপনীয়তা নীতি</string>
   <string name="morphe_google_signin_not_available_toast">Google লগইন উপলব্ধ নেই। ইমেইল দিয়ে লগইন করুন</string>
+  <string name="morphe_app_downgrade_dialog_title">ডাউনগ্রেড সমর্থিত নয়</string>
+  <string name="morphe_app_downgrade_dialog_message">"এই Reddit ইনস্টলেশনটি &lt;b&gt;%1$s&lt;/b&gt; থেকে &lt;b&gt;%2$s&lt;/b&gt;-এ ডাউনগ্রেড করা হয়েছে
+&lt;br/&gt;&lt;br/&gt;
+নতুন ভার্সনের অ্যাপ ডেটা পুরনো ভার্সনের সাথে কাজ করে না এবং অ্যাপটি সঠিকভাবে কাজ নাও করতে পারে।
+&lt;br/&gt;&lt;br/&gt;
+পুরনো ভার্সন ব্যবহার করতে, আপনাকে Reddit &lt;b&gt;আনইনস্টল&lt;/b&gt; করতে হবে এবং তারপরে পুরনো ভার্সনটি ইনস্টল করতে হবে।"</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">অ্যাপ ইনফো খুলুন</string>
   <string name="morphe_screen_ads_title">বিজ্ঞাপন</string>
   <string name="morphe_hide_post_ads_title">ফিড বিজ্ঞাপন লুকান</string>
   <string name="morphe_hide_comment_ads_title">মন্তব্য বিজ্ঞাপনের লুকান</string>

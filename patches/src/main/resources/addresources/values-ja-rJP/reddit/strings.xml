@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Redditプライバシーポリシー</string>
   <string name="morphe_google_signin_not_available_toast">Google ログインが利用できません。メールアドレスでログインしてください</string>
+  <string name="morphe_app_downgrade_dialog_title">ダウングレードはサポートされていません</string>
+  <string name="morphe_app_downgrade_dialog_message">"この Reddit のインストールは、&lt;b&gt;%1$s&lt;/b&gt; から &lt;b&gt;%2$s&lt;/b&gt; にダウングレードされました
+&lt;br/&gt;&lt;br/&gt;
+新しいバージョンのアプリデータは古いバージョンでは動作せず、アプリが正しく動作しない可能性があります。
+&lt;br/&gt;&lt;br/&gt;
+古いバージョンを使用するには、Reddit を&lt;b&gt;アンインストール&lt;/b&gt;してから、古いバージョンをインストールする必要があります。"</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">アプリ情報を開く</string>
   <string name="morphe_screen_ads_title">広告</string>
   <string name="morphe_hide_post_ads_title">フィード広告を非表示</string>
   <string name="morphe_hide_comment_ads_title">コメント広告を非表示</string>

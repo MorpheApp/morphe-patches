@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_account_menu_downloads_title">பதிவிறக்கங்களை மறைக்கவும்</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
           for the card in the Messages section at the top of the Notifications tab. -->
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
@@ -63,6 +64,8 @@ Second \"item\" text"</string>
   <!-- interaction.copytext.copyTextPatch -->
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <!-- interaction.postimages.postImageDownloadPatch -->
+  <string name="morphe_post_image_download_started">%s படங்கள் பதிவிறக்கம் செய்யப்படுகின்றன…</string>
+  <string name="morphe_post_image_download_saved">%1$s படங்கள் %2$s-இல் சேமிக்கப்பட்டன</string>
   <!-- interaction.posttranslate.postTranslatePatch -->
   <string name="morphe_post_translate_title">பதிவுகளை மொழிபெயர்க்கவும்</string>
   <string name="morphe_post_translate_summary">உள்ளடக்க உருவாக்குநர்களின் பதிவுகளை மொழிபெயர்ப்பதற்கான ஒரு flyout மெனு உருப்படியைச் சேர்க்கிறது</string>
@@ -83,12 +86,40 @@ Second \"item\" text"</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_shorts_download_flyout_button_summary">Shorts பிளேயரின் மெனுவில் பதிவிறக்க உருப்படியைச் சேர்க்கிறது</string>
+  <string name="morphe_export_download_folder_title">சேமிக்கப்பட்ட வீடியோக்களை ஏற்றுமதி செய்</string>
+  <string name="morphe_export_download_folder_summary">"ஆப்பிற்குள் சேமிக்கப்பட்ட வீடியோக்களை, ஆப்பிற்குள் இருக்கும் பதிவிறக்கங்கள் flyout மெனுவைப் பயன்படுத்தி உங்கள் சாதன சேமிப்பகத்திற்கு ஏற்றுமதி செய்யவும். ஏற்றுமதி கோப்புறையை மாற்ற தட்டவும்
+
+ஏற்றுமதி கோப்புறை: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">ஏற்றுமதி கோப்புறை</string>
+  <string name="morphe_export_download_folder_change">கோப்புறையை மாற்றவும்</string>
+  <string name="morphe_export_download_folder_changed">ஏற்றுமதி கோப்புறை மாற்றப்பட்டது</string>
+  <string name="morphe_export_download_folder_reset">ஏற்றுமதி கோப்புறை மீட்டமைக்கப்பட்டது</string>
+  <string name="morphe_export_download_flyout_title">சாதனத்திற்கு ஏற்றுமதி செய்</string>
+  <string name="morphe_export_download_started">வீடியோ ஏற்றுமதி செய்யப்படுகிறது</string>
+  <string name="morphe_export_download_progress">வீடியோ ஏற்றுமதி செய்யப்படுகிறது: %d%%</string>
+  <string name="morphe_export_download_notification_channel">வீடியோ ஏற்றுமதிகள்</string>
+  <string name="morphe_export_download_saved">வீடியோ %s-க்கு ஏற்றுமதி செய்யப்பட்டது</string>
+  <string name="morphe_export_download_failed">வீடியோவை ஏற்றுமதி செய்ய முடியவில்லை</string>
+  <string name="morphe_export_download_canceled">ஏற்றுமதி ரத்து செய்யப்பட்டது</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
   <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.loop.loopVideoButtonPatch -->
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">படம்-உள்ளே-படம் செயல்கள்</string>
+  <string name="morphe_pip_actions_screen_summary">படம்-உள்ளே-படத்தில் காட்டப்படும் பொத்தான்களை மாற்றவும்</string>
+  <string name="morphe_pip_action_left_title">இடது பொத்தான்</string>
+  <string name="morphe_pip_action_center_title">மையப் பொத்தான்</string>
+  <string name="morphe_pip_action_right_title">வலது பொத்தான்</string>
+  <string name="morphe_pip_action_entry_default">இயல்புநிலை</string>
+  <string name="morphe_pip_action_entry_previous">முந்தைய வீடியோ</string>
+  <string name="morphe_pip_action_entry_next">அடுத்த வீடியோ</string>
+  <string name="morphe_pip_action_entry_rewind">10 வினாடிகள் பின்னோக்கிச் செல்</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 வினாடிகள் முன்னோக்கிச் செல்</string>
+  <string name="morphe_pip_action_entry_play_pause">இயக்கு/நிறுத்து</string>
+  <string name="morphe_pip_action_entry_background_playback">பின்னணி இயக்கம்</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
@@ -129,6 +160,9 @@ Second \"item\" text"</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
+  <!-- layout.captions.captionViewportPatch -->
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">நிலையான தலைப்பு தொகுதிகள்</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -185,7 +219,7 @@ Second \"item\" text"</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
@@ -200,12 +234,18 @@ Second \"item\" text"</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_not_available_title">கூடுதல் மினிபிளேயர்கள்</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube அனைத்து கூடுதல் மினிபிளேயர்களையும் நீக்கிவிட்டது. கூடுதல் மினிபிளேயர் வகைகளை மீட்டெடுக்க, YouTube 21.28.208 அல்லது அதற்கு முந்தைய பதிப்பை பேட்ச் செய்யவும்</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">மேலே ஸ்வைப் செய்து விரிவுபடுத்துங்கள்</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">மினி பிளேயரை மேலே ஸ்வைப் செய்வது, அதைத் திரையின் மேலே நகர்த்துவதற்குப் பதிலாக, பிளேயரை விரிவுபடுத்துகிறது</string>
+  <string name="morphe_miniplayer_docked_title">டாக் செய்யப்பட்ட மினிபிளேயர்</string>
+  <string name="morphe_miniplayer_docked_summary">மினிபிளேயரை அதன் மேல் மிதப்பதற்குப் பதிலாக, நேவிகேஷன் பார் மற்றும் திரையின் பக்கங்களுடன் இணைக்கிறது</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.animations.forceAnimationsPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_duration_title">தொடக்க அனிமேஷன் கால அளவு</string>
+  <string name="morphe_splash_screen_duration_summary">ஒளி அனிமேஷன் எவ்வளவு நேரம் இயங்க வேண்டும். அதைத் தவிர்க்க அனிமேஷனைத் தட்டவும்</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
@@ -243,5 +283,6 @@ Second \"item\" text"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <!-- layout.player.icons.playerIconStylePatch -->
   <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s எபிசோட்கள் பார்க்கப்பட்டன</string>
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
 </resources>

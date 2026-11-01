@@ -446,7 +446,7 @@ Pranešimai yra vieši ir peržiūrimi prieš pridedant kanalą į sąrašą. Pa
   <string name="morphe_feed_long_press_menu_title">Paspauskite ir palaikykite, kad atidarytumėte video meniu</string>
   <string name="morphe_feed_long_press_menu_summary">Paspaudus ir palaikius bet kuria feed video vieta, atidaromas jo meniu</string>
   <string name="morphe_feed_watch_later_button_title">Rodyti „Pažiūrėti vėliau“ mygtuką prie miniatiūrų</string>
-  <string name="morphe_feed_watch_later_button_summary">Ant nuotykų srauto vaizdo įrašų miniatiūrų rodomas mygtukas „Pažiūrėti vėliau“. Paspaudus ir laikant jį, atidaroma parinktis „Įtraukti į grojaraštį“</string>
+  <string name="morphe_feed_watch_later_button_summary">Tvėsčių vaizdo įrašų miniaturuose rodomas mygtukas „Žiūrėti vėliau“, o jei vaizdo įrašas išsaugotas – žymė. Paspaudus jį, vaizdo įrašas išsaugo arba ištriniamas, o paspaudus ir laikant – atsidaro „Išsaugoti į grožinį“</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Atsisiųsti įrašų nuotraukas</string>
   <string name="morphe_post_image_download_summary">Šalia įrašų su nuotraukomis arba GIF failais esančio bendrinimo mygtuko rodomas atsisiuntimo mygtukas, o jų meniu pridedama atsisiuntimo parinktis</string>
@@ -870,6 +870,10 @@ Norėdami tai ištaisyti, įjunkite „Maskuoti vaizdo įrašų srautus“ ir pa
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Subtitrai</string>
   <string name="morphe_captions_screen_summary">Tvarkyti automatinius subtitrus ir subtitrų slapukus</string>
+  <string name="morphe_captions_languages_title">Kalba ir vertimas</string>
+  <string name="morphe_captions_presentation_title">Išvaizda ir elgesys</string>
+  <string name="morphe_captions_advanced_title">Išplėstiniai</string>
+  <string name="morphe_captions_advanced_summary">Slapukų ir transkripcijos parinktys</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Automatinų subtitrų matomumas</string>
   <string name="morphe_auto_captions_style_entry_1">Visada rodyti</string>
@@ -878,10 +882,10 @@ Norėdami tai ištaisyti, įjunkite „Maskuoti vaizdo įrašų srautus“ ir pa
   <string name="morphe_auto_captions_style_entry_4">Rodyti, kai garsas išjungtas</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Pageidaujama subtitrų kalba</string>
-  <string name="morphe_preferred_caption_language_summary">Pirmiausia parenka teikėjo subtitrus, tada automatiškai išverčia į pageidaujamą kalbą</string>
+  <string name="morphe_preferred_caption_language_summary">Kiekvienam vaizdo įrašui automatiškai pasirinkite subtitrų kalbą</string>
   <string name="morphe_preferred_caption_language_entry_off">Ne</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Pridėti papildomų automatinio vertimo kalbų</string>
+  <string name="morphe_auto_translate_additional_languages_title">Papildomos automatinio vertimo kalbos</string>
   <string name="morphe_auto_translate_additional_languages_summary">Padidina automatinio vertimo meniu kalbų skaičių</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Nustatyti subtitrų slapukus</string>
@@ -899,6 +903,17 @@ Turi būti pateikti „Subtitrų slapukai“"</string>
   <string name="morphe_fix_transcript_title">Pataisyti transkripciją</string>
   <string name="morphe_fix_transcript_summary">Išsprendžia išankstinės sąlygos patikros gedimą, kuris gali neleisti įkelti transkripcijos</string>
   <string name="morphe_captions_in_pip_title">Rodyti antraštes vaizdo režime „vaizdas už vaizdo“</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Subtitrų dydis</string>
+  <string name="morphe_caption_scale_summary">Taikoma vienos kalbos ir dvilaugių subtitrams</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">Stabilių aprašymų blokai</string>
+  <string name="morphe_stable_caption_blocks_summary">Grupuoja vienos kalbos automatinis subtitrus į stabilius, lengvai skaitomus blokus. Dvilaugių subtitrai visada naudojasi blokais. Kai kurie žodžiai gali pasirodyti prieš juos ištarius</string>
+  <string name="morphe_secondary_caption_language_title">Antrinė subtitrų kalba</string>
+  <string name="morphe_secondary_caption_language_summary">Su subtitrais rodo antrą kalbą ir subtitrų meniu prideda dvilaugių subtitrųjungiklį</string>
+  <string name="morphe_dual_captions_enabled_title">Dvilaugiu subtitrai</string>
+  <string name="morphe_caption_block_translation_failed">Kai kurie subtitrų vertimai nepriedaugiami. Rodomi prieinami subtitrai.</string>
+  <string name="morphe_caption_blocks_too_large">Abi subtitrų kalbos netelpa šiame spustyklituje. Rodoma pagrindinė kalba.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Naršymo mygtukai</string>
   <string name="morphe_navigation_buttons_screen_summary">Pasirinkite, kokie mygtukai turėtų būti rodomi apačioje esančioje naravimo juostoje</string>
@@ -1166,10 +1181,10 @@ Automobilio išdėstymas
 • „Shorts“ atidaromi reguliariame grotuve
 • Rodo nesutrauktą senosios veiksmų juostos vaizdo įrašo"</string>
   <string name="morphe_tablet_layout_in_player_title">Įjungti planšetės išdėstymą grotuve</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Atkuria senąjį grotuvo maketą
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Atkuria senąjį spustyklio išdėvėjimo būdą
 
-Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą“ išjungta, perdanga „Daugiau vaizdo įrašų“ gali būti nepasiekiama"</string>
+Apribojimas: jei „Vaizdo įrašo veiksmų juostos išdėvėjimas“ nėra klasikinio tipo, gali būti neprieinamas „Daugiau vaizdo įrašų“ sluoksnis"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 – Atkurti senąją subtitrų elgseną</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 – atkurti senąjį išsaugojimą į grojaraštį</string>
@@ -1529,10 +1544,11 @@ Vaizdo įrašų atkūrimas su AV1 gali strigti arba praleisti kadras"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Grotuvo JavaScript variantas</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Rodyti maskavimą skiltyje „Stats for nerds“</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Atkurti senąjį vaizdo įrašo veiksmų juostą</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Ištaiso, kad vaizdo įrašo veiksmų mygtukai negali būti paslėpti.
-
-Ribojimas: grąžina prie senosios stiliaus „Daugiau vaizdo įrašų“ perdangos."</string>
+  <string name="morphe_video_action_bar_layout_title">Vaizdo įrašo veiksmų juostos išdėvėjimas</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Numatytasis</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasikinis</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Minimalistinis</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Apribojimas: Klasikinis grąžina senąjį „Daugiau vaizdo įrašų“ sluoksnio stilių</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Leistuvės piktogramos stilius</string>
   <string name="morphe_player_icon_style_entry_auto">Automatinis</string>
@@ -1700,4 +1716,27 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_niconico_comments_max_length_title">Maksimalus komentarų ilgis</string>
   <string name="morphe_niconico_comments_max_length_summary">Paslepia komentarus, kuriuose yra daugiau simbolių nei nustatyta. Kiekvienas emoji skaičiuojamas kaip vienas simbolis</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Be apribojimų</string>
+  <string name="morphe_live_chat_translate_screen_title">Gyvo čato vertimas</string>
+  <string name="morphe_live_chat_translate_screen_summary">Vertinkite gyvo čato ir gyvo čato atkūrimo žinutes</string>
+  <string name="morphe_live_chat_translate_title">Vertinti gyvą čatą</string>
+  <string name="morphe_live_chat_translate_summary">Vertina gyvo čato ir gyvo čato atkūrimo žinutes, kai tik jos pasirodo ekrane</string>
+  <string name="morphe_live_chat_translate_language_title">Vertimo kalba</string>
+  <string name="morphe_live_chat_translate_exclude_title">Išimtos kalbos</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Kvinis atskirti kalbų kodai, pavyzdžiui, id,en. Žinutės šiomis kalbomis nėra verčiamos</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Rodyti žinutės kopijavimo mygtuką</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Kiekvienai čato žinutei prideda mažą kopijavimo mygtuką</string>
+  <string name="morphe_live_chat_translate_copied">Žinutė nukopijuota į iškarpinę</string>
+  <string name="morphe_live_chat_translate_style_title">Vertimo stilius</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Tik išversta</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Originali (išversta)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Išversta) originali</string>
+  <string name="morphe_live_chat_translate_bold_title">Pogrindinis išversta tekstas</string>
+  <string name="morphe_live_chat_translate_bold_summary">Rodo išverstą tekstą pagrindiniu šriftu</string>
+  <string name="morphe_live_chat_translate_use_color_title">Savo pasirinkta išversto teksto spalva</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Išverstam tekstui prideda pasirinktą spalvą</string>
+  <string name="morphe_live_chat_translate_color_title">Išversto teksto spalva</string>
+  <string name="morphe_live_chat_translate_color_summary">Nustatykite išversto teksto spalvą naudojant hex kodą</string>
+  <string name="morphe_live_chat_translate_max_length_title">Maksimalus žinutės ilgis</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Ilgines žinutės rodomos nevertomos</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Be apriboties</string>
 </resources>

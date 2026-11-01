@@ -436,7 +436,7 @@ Prijave su javne i pregledavaju se prije nego što se kanal doda na popis. Uklan
   <string name="morphe_feed_long_press_menu_title">Dodirnite i pritisnite dugo za otvaranje izbornika videa</string>
   <string name="morphe_feed_long_press_menu_summary">Dodirivanjem i pritiskom bilo gdje na videu u pretoku otvara se njegov izbornik</string>
   <string name="morphe_feed_watch_later_button_title">Prikaži gledaj kasnije tipku na minijaturama</string>
-  <string name="morphe_feed_watch_later_button_summary">Tipka gledaj kasnije prikazuje se na minijaturama videa u pretoku. Dodirivanje i pritiskanje otvara Spremi na popis</string>
+  <string name="morphe_feed_watch_later_button_summary">Tipka Gledaj kasnije prikazuje se na sličicama videozapisa u feedu, s kvačicom ako je videozapis spremljen. Dodirivanje sprema ili uklanja videozapis, a dodirivanje i držanje otvara Spremi u listu</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Preuzmi slike objave</string>
   <string name="morphe_post_image_download_summary">Gumb za preuzimanje prikazuje se pokraj gumba Podijeli na objavama s slikama ili GIF-ovima, a stavka za preuzimanje dodana je u njihov izbornik</string>
@@ -860,6 +860,10 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Podnaslovi</string>
   <string name="morphe_captions_screen_summary">Upravljanje automatskim titlovima i kolačićima za titlove</string>
+  <string name="morphe_captions_languages_title">Jezik i prijevod</string>
+  <string name="morphe_captions_presentation_title">Izgled i ponašanje</string>
+  <string name="morphe_captions_advanced_title">Napredno</string>
+  <string name="morphe_captions_advanced_summary">Opcije kolačića i transkripata</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Vidljivost automatskih podnaslova</string>
   <string name="morphe_auto_captions_style_entry_1">Uvijek prikaži</string>
@@ -868,10 +872,10 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
   <string name="morphe_auto_captions_style_entry_4">Prikaži kada je mutirano</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Preferirani jezik titlova</string>
-  <string name="morphe_preferred_caption_language_summary">Prvo odabire titlove pružatelja, a zatim ih automatski prevodi na preferirani jezik</string>
+  <string name="morphe_preferred_caption_language_summary">Automatski odabire jezik titlova za svaki videozapis</string>
   <string name="morphe_preferred_caption_language_entry_off">Isključeno</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Dodaj dodatne jezike za automatski prijevod</string>
+  <string name="morphe_auto_translate_additional_languages_title">Dodatni jezici za auto-prevod</string>
   <string name="morphe_auto_translate_additional_languages_summary">Dodaje više jezika u izbornik za automatski prijevod</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Postavi kolačiće za titlove</string>
@@ -889,6 +893,17 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
   <string name="morphe_fix_transcript_title">Popravi transkript</string>
   <string name="morphe_fix_transcript_summary">Rješava neuspjeh provjere preduvjeta koji može spriječiti učitavanje transkripta</string>
   <string name="morphe_captions_in_pip_title">Prikaži titlove u slici u slici</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Veličina titlova</string>
+  <string name="morphe_caption_scale_summary">Primjenjuje se na jednjezične i dvojezične titlove</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">Stabilni blokovi titlova</string>
+  <string name="morphe_stable_caption_blocks_summary">Grupirajte jednjezične automatske titlove u stabilne, čitljive blokove. Dvojezični titlovi uvijek koriste blokove. Neke riječi mogu se pojaviti prije nego što budu izgovorene</string>
+  <string name="morphe_secondary_caption_language_title">Sekundarni jezik titlova</string>
+  <string name="morphe_secondary_caption_language_summary">Prikazuje drugi jezik uz titlove i dodaje preklopnik za dvojezične titlove u izbornik titlova</string>
+  <string name="morphe_dual_captions_enabled_title">Dvojezični titlovi</string>
+  <string name="morphe_caption_block_translation_failed">Neki prijevodi titlova nisu dostupni. Prikazani su dostupni titlovi.</string>
+  <string name="morphe_caption_blocks_too_large">Oba jezika titlova ne stanu u ovaj player. Prikazan je primarni jezik.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Traka navigacije</string>
   <string name="morphe_navigation_buttons_screen_summary">Odaberite koje će tipke pojaviti u donjoj navigacijskoj traci</string>
@@ -1154,10 +1169,10 @@ Automobilski izgled
 • Shorts videi otvaraju se u običnom playeru
 • Prikazuje se stara traka s radnjama za video koji nije smanjen"</string>
   <string name="morphe_tablet_layout_in_player_title">Omogući tablet izgled u playeru</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Vraća stari izgled playera
 
-Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, overlay 'Više videozapisa' možda neće biti dostupan"</string>
+Ograničenje: Ako \"Izgled trake radnji videozapisa\" nije Klasični, overlay \"Više videozapisa\" možda neće biti dostupan"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Vrati staro ponašanje titlova</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Vrati stari spremi u playlistu</string>
@@ -1515,10 +1530,11 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_player_js_variant_title">Varijanta JavaScript igrača</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Prikaži parodiranje u \'Statistici za nerdove\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Vrati staru traku s radnjama za videozapise</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Popravlja problem što se gumbi radnji videozapisa ne mogu sakriti
-
-Ograničenje: Vraća se na stari stil 'More videos' prekrivača"</string>
+  <string name="morphe_video_action_bar_layout_title">Izgled trake radnji videozapisa</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Zadano</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasični</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Minimalni</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Ograničenje: Klasični vraća stari stil overlaya \"Više videozapisa\"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Stil ikone playera</string>
   <string name="morphe_player_icon_style_entry_auto">Automatski</string>
@@ -1680,4 +1696,27 @@ Ograničenje: Vraća se na stari stil 'More videos' prekrivača"</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimalna duljina komentara</string>
   <string name="morphe_niconico_comments_max_length_summary">Skriva komentare s više znakova od navedenog. Svaki emoji računa se kao jedan znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Bez ograničenja</string>
+  <string name="morphe_live_chat_translate_screen_title">Prijevod chata uživo</string>
+  <string name="morphe_live_chat_translate_screen_summary">Prevedi poruke chata uživo i ponovnice chata uživo</string>
+  <string name="morphe_live_chat_translate_title">Prevedi chat uživo</string>
+  <string name="morphe_live_chat_translate_summary">Prevodi poruke chata uživo i ponovnice chata uživo čim se pojave na zaslonu</string>
+  <string name="morphe_live_chat_translate_language_title">Jezik prijevoda</string>
+  <string name="morphe_live_chat_translate_exclude_title">Izuzeti jezici</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Kodovi jezika odvojeni zarezom, npr. id,en. Poruke na ovim jezicima se ne prevode</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Prikaži tipku Kopiraj poruku</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Dodaje malu tipku za kopiranje svakoj poruci u chatu</string>
+  <string name="morphe_live_chat_translate_copied">Poruka kopirana u međuspremnik</string>
+  <string name="morphe_live_chat_translate_style_title">Stil prijevoda</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Samo prevedeno</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Originalno (prevedeno)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Prevedeno) originalno</string>
+  <string name="morphe_live_chat_translate_bold_title">Boldirani prevedeni tekst</string>
+  <string name="morphe_live_chat_translate_bold_summary">Prikazuje prevedeni tekst boldirano</string>
+  <string name="morphe_live_chat_translate_use_color_title">Prilagođena boja prevedenog teksta</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Primjenjuje prilagođenu boju na prevedeni tekst</string>
+  <string name="morphe_live_chat_translate_color_title">Boja prevedenog teksta</string>
+  <string name="morphe_live_chat_translate_color_summary">Postavite hex boju prevedenog teksta</string>
+  <string name="morphe_live_chat_translate_max_length_title">Maksimalna duljina poruke</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Duže poruke prikazuju se neprevedene</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Bez ograničenja</string>
 </resources>

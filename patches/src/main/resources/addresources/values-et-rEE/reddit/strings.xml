@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Redditi privaatsuspoliitika</string>
   <string name="morphe_google_signin_not_available_toast">Google\'i sisselogimine ei ole saadaval. Kasutage sisselogimiseks e-posti</string>
+  <string name="morphe_app_downgrade_dialog_title">Versiooni alumine lävendamine ei ole toetatud</string>
+  <string name="morphe_app_downgrade_dialog_message">"Selle Reddit'i installatsiooni versioon on alandatud versioonist &lt;b&gt;%1$s&lt;/b&gt; versioonile &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Uuemast versioonist pärit rakenduse andmed ei tööta vanema versiooniga ja rakendus ei prugu õigesti toimida.
+&lt;br/&gt;&lt;br/&gt;
+Vanema versiooni kasutamiseks peate Reddit'i &lt;b&gt;desinstalleerima&lt;/b&gt; ja seejärel installima vanema versiooni."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Ava rakenduse info</string>
   <string name="morphe_screen_ads_title">Reklaamid</string>
   <string name="morphe_hide_post_ads_title">Peida feedi reklaamid</string>
   <string name="morphe_hide_comment_ads_title">Peida kommentaaride reklaamid</string>

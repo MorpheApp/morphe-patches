@@ -22,7 +22,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_01_ads_title">Reklaamid</string>
   <string name="morphe_settings_screen_03_feed_title">Uuendused</string>
   <string name="morphe_settings_screen_04_general_title">Üldine</string>
-  <string name="morphe_settings_screen_05_player_title">Mängija</string>
+  <string name="morphe_settings_screen_05_player_title">Pleier</string>
   <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Otsimisriba</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Liputamisjuhted</string>
@@ -30,7 +30,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Taasta YouTube\'i vana seadete ekraan</string>
   <string name="morphe_native_snackbar_title">Kuva sõnumeid YouTube\'i teavitusribal</string>
-  <string name="morphe_native_snackbar_summary">Morphe’i teated, nagu näiteks mängija nupu kinnitus, kuvatakse hüpikakna asemel YouTube’i teateribal</string>
+  <string name="morphe_native_snackbar_summary">Morphe’i teated, nagu näiteks pleieri nupu kinnitus, kuvatakse hüpikakna asemel YouTube’i teateribal</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Eemalda taustal esituse piirangud</string>
   <string name="morphe_shorts_disable_background_playback_title">Keela taustal esitamine</string>
@@ -48,16 +48,16 @@ Second \"item\" text"</string>
 Mõned serveripoolsed paigutused ei pruugud taastuda.
 
 Muudatused hõlmavad:
-• Mängija kiiremenüü komponendid (või seotud seaded) ei pruugu töötada
-• Liiguvad numbrid ei ole animeeritud
-• Raamatukogu vahekeel on nähtav
+• Pleieri hüpikmenüü komponendid (või seotud seaded) ei pruugu töötada
+• Kevivad numbrid ei ole animeeritud
+• Raamatukogu vahekaart on nähtav
 • Videokirjelduse muusikaosa ei pruugu töötada
-• Mängija kiiremenüü üksusi ei saa peita
-• Kontohalduse nupp ei pruugu Raamatukogu vahekeeles ilmuda"</string>
+• Pleieri hüpikmenüü üksusi ei saa peita
+• Konto vahetamise nupp ei pruugu Raamatukogu vahekaardil ilmuda"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Luba voo hüpikmenüü filter</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Voo hüpikmenüü filter</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Sisestage uue rea abil eraldatud lendmenüü nimed filtreerimiseks</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Sisestage uue rea abil eraldatud hüpikmenüü nimed filtreerimiseks</string>
   <string name="morphe_hide_account_menu_title">Luba Raamatukogu / Sina alumise menüü filter</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Raamatukogu / Sina alumise menüü filter</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Sisestage Raamatukogu / Sina alumise menüü nimed filtreerimiseks, eraldades neid uue rea abil</string>
@@ -237,7 +237,7 @@ Muudatused hõlmavad:
   <string name="morphe_explore_menu_screen_summary">Valige, millised komponendid kuvatakse avastamismenüüs</string>
   <string name="morphe_hide_courses_menu_title">Peita kursuste menüü</string>
   <string name="morphe_hide_explore_button_title">Peita nuppu \"Avasta\"</string>
-  <string name="morphe_hide_fashion_menu_title">Peita menüü \'„Mood &amp; ilu“</string>
+  <string name="morphe_hide_fashion_menu_title">Peita menüü „Mood &amp; ilu“</string>
   <string name="morphe_hide_gaming_menu_title">Peita mängude menüü</string>
   <string name="morphe_hide_hype_menu_title">Peita Hype\'i menüü</string>
   <string name="morphe_hide_learning_menu_title">Peida õppimismenüü</string>
@@ -394,7 +394,7 @@ Teated on avalikud ja neid ülevaadatakse enne kanali nimekirja lisamist. Eemald
   <string name="morphe_hide_general_ads_title">Peida üldised reklaamid</string>
   <string name="morphe_hide_merchandise_banners_title">Peida kauba bännerid</string>
   <string name="morphe_hide_paid_promotion_labels_title">Peida tasulise reklaami märkmeid</string>
-  <string name="morphe_hide_player_popup_ads_title">Peida mängija hüpikakna reklaamid</string>
+  <string name="morphe_hide_player_popup_ads_title">Peida pleieri hüpikakna reklaamid</string>
   <string name="morphe_hide_self_sponsor_ads_title">Peida isiklikud sponsorikaardid</string>
   <string name="morphe_hide_shopping_links_title">Peida ostulingid</string>
   <string name="morphe_hide_video_ads_title">Peida videoreklaamid</string>
@@ -446,7 +446,7 @@ Teated on avalikud ja neid ülevaadatakse enne kanali nimekirja lisamist. Eemald
   <string name="morphe_feed_long_press_menu_title">Puudutage ja hoidke all, et avada video menüü</string>
   <string name="morphe_feed_long_press_menu_summary">Video feedil puudutamine ja hoidmine avab selle menüü</string>
   <string name="morphe_feed_watch_later_button_title">Kuva \"Vaata hiljem\" nupp pikkpõhilistel piltedel</string>
-  <string name="morphe_feed_watch_later_button_summary">Voos olevate videote minipiltedel kuvatakse nupp Hiljem vaatamiseks. Sellele vajutades ja seda all hoides avaned valik Salvesta esitusloendisse</string>
+  <string name="morphe_feed_watch_later_button_summary">Vooguvideode pikkpärsetel piltidel on nähtav nupp \"Vaata hiljem\", mis on märgitud linnuks, kui video on salvestatud. Nupu vajutamine salvestab või eemaldab video ning nupu vajutamine ja hoidmine avab valiku \"Lisa playlisti\"</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Laadi alla postituse pildid</string>
   <string name="morphe_post_image_download_summary">Piltide või GIF-idega postituste \"Jaga\" nupu kõrvale kuvatakse allalaadimise nupp ning nende menüüsse lisatakse allalaadimise üksus</string>
@@ -460,7 +460,7 @@ Teated on avalikud ja neid ülevaadatakse enne kanali nimekirja lisamist. Eemald
   <string name="morphe_post_image_download_not_found">Selle postitusest ei leitud ühtki pilti</string>
   <!-- interaction.posttranslate.postTranslatePatch -->
   <string name="morphe_post_translate_title">Tõlgi postitused</string>
-  <string name="morphe_post_translate_summary">Lisab libisemenüüsse elemendi sisulooja postituse tõlkimiseks</string>
+  <string name="morphe_post_translate_summary">Lisab hüpikmenüüsse elemendi sisulooja postituse tõlkimiseks</string>
   <string name="morphe_post_translate_language_title">Postituse tõlkimise keel</string>
   <string name="morphe_post_translate_flyout">Tõlgi</string>
   <string name="morphe_post_translate_flyout_original">Näita originaali</string>
@@ -468,8 +468,8 @@ Teated on avalikud ja neid ülevaadatakse enne kanali nimekirja lisamist. Eemald
   <string name="morphe_post_translate_failed">Postitust ei õnnestunud tõlkida</string>
   <string name="morphe_post_translate_same_language">Postitus on juba tõlke keeles</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
-  <string name="morphe_ask_summarize_flyout_menu_title">Lisa \"Küsige\" üksus riputmenuusse</string>
-  <string name="morphe_ask_summarize_flyout_menu_summary">Lisab video kokkuvõtte üksuse voo libisemenüü</string>
+  <string name="morphe_ask_summarize_flyout_menu_title">Lisa \"Küsige\" üksus hüpikmenüüsse</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Lisab video kokkuvõtte üksuse voo hüpikmenüüsse</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Küsige nõuab algselt sisselogitud kontot riigis, kus on funktsioon Küsige saadaval.
 
@@ -503,8 +503,8 @@ Kui video, millel on nupp Küsige, on üks kord avatud, töötab see funktsioon 
   <string name="morphe_disable_chapter_skip_double_tap_summary">Keelab kahe sõrmega topeltpuudutuse žesti, mis hüppab peatükkide vahel ja mida võib kogemata ühe sõrmega käivitada</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Laadige alla videoid, podcaste või lugusid kolmandate osapoolte allalaadimisrakendustega</string>
-  <string name="morphe_external_downloader_overlay_button_title">Kuva mängija pealkatte allalaadimisnupp</string>
-  <string name="morphe_external_downloader_overlay_button_summary">Kuvab videomängijasse nupu, mis avab teie välise allalaadija</string>
+  <string name="morphe_external_downloader_overlay_button_title">Kuva pleier pealkatte allalaadimisnupp</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Kuvab videopleierisse nupu, mis avab teie välise allalaadija</string>
   <string name="morphe_external_downloader_quick_menu_title">Kiirallalaadimine puudutusega</string>
   <string name="morphe_external_downloader_quick_menu_summary">Kutsub allalaadima taustal. Allalaadija avamiseks puudutage ja hoidke all. Toetab YTDLnis ja YTindiri</string>
   <string name="morphe_external_downloader_mark_watched_title">Märgi allalaadimised vaadatudaks</string>
@@ -516,7 +516,7 @@ Kui video, millel on nupp Küsige, on üks kord avatud, töötab see funktsioon 
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Kõik valikud</string>
   <string name="morphe_shorts_download_flyout_button_title">Kuva allalaadimine Shorts\'i menüüs</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Lisab Shorts mängija menüüsse allalaadimisvaliku</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Lisab Shorts-pleieri menüüsse allalaadimisvaliku</string>
   <string name="morphe_shorts_download_flyout_title">Laadi alla</string>
   <string name="morphe_export_download_folder_title">Salvestatud videote eksportimine</string>
   <string name="morphe_export_download_folder_summary">"Ekspordi rakenduses salvestatud videod oma seadme mällu, kasutades rakendusesse integreeritud allalaadimiste menüüd. Ekspordikausta muutmiseks puuduta seda
@@ -536,7 +536,7 @@ Ekspordikaust: %s"</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Hääletõlge</string>
   <string name="morphe_vot_screen_summary">Loetakse video altekirju koosal seadme tekst-kõne funktsiooni abil, sünkroonides need esitusega</string>
-  <string name="morphe_vot_enabled_summary">Kuvab videomängija pealisnupu. Puudutage tõlgimise lülitamiseks, hoidke all kiirseadete jaoks</string>
+  <string name="morphe_vot_enabled_summary">Kuvab videopleieris pealisnupu. Puudutage tõlgimise lülitamiseks, hoidke all kiirseadete jaoks</string>
   <string name="morphe_vot_caption_language_title">Keel</string>
   <string name="morphe_vot_translation_service_title">Tõlketeenuse pakkuja</string>
   <string name="morphe_vot_original_audio_volume_title">Originaali heli kõvus</string>
@@ -650,7 +650,7 @@ Info: Ei pruugi töötada võttesaadete puhul"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">See video on juba salvestatud loendisse \"Vaata hiljem\"</string>
   <string name="morphe_save_to_watch_later_error_toast">Seda videot ei saa salvestada loendisse \"Vaata hiljem\"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Salvesta hiljem vaatamiseks</string>
-  <string name="morphe_save_to_watch_later_flyout_button_title">Kuva nupp \"Salvesta hiljem vaatamiseks\" mängija seadete menüüs</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Kuva nupp \"Salvesta hiljem vaatamiseks\" pleier seadete menüüs</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Võimaldab salvestada praegu vaadatavat videot jaotisse \"Hiljem vaadata\" video seadete menüüst</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Suuna \"Vaata hiljem\" plaalistisse</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Vaata hiljem</string>
@@ -665,16 +665,16 @@ Info: Ei pruugi töötada võttesaadete puhul"</string>
   <string name="morphe_queue_type_entry_2">Kohaliku järjekord</string>
   <string name="morphe_queue_type_entry_3">Morphe järjekord</string>
   <string name="morphe_queue_type_entry_4">Morphe\'i kliendipoolne järjekord</string>
-  <string name="morphe_queue_add_flyout_menu_title">Lisa voo liugmenüü järjekorra üksus</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Lisab täiendava liugmenüü üksuse. Aktiveeri see, kui \"Lisa järjekorda\" ei kuvata</string>
+  <string name="morphe_queue_add_flyout_menu_title">Lisa voo hüpikmenüü järjekorra üksus</string>
+  <string name="morphe_queue_add_flyout_menu_summary">Lisab täiendava hüpikmenüü üksuse. Aktiveeri see, kui \"Lisa järjekorda\" ei kuvata</string>
   <string name="morphe_local_queue_sheet_title">Järjekord</string>
   <string name="morphe_local_queue_open">Järjekord (%s)</string>
-  <string name="morphe_local_queue_clear">Kõigi tühistamine</string>
+  <string name="morphe_local_queue_clear">Tühjenda kõik</string>
   <string name="morphe_local_queue_empty">Järjekorras pole midagi</string>
   <string name="morphe_local_queue_empty_hint">Kasuta funktsiooni \"Esita järgmisena\" mõnal või teisel videol</string>
   <string name="morphe_local_queue_now_playing">Praegu mängib</string>
-  <string name="morphe_local_queue_play_next">Esita järgmisena</string>
-  <string name="morphe_local_queue_play_last">Esita järjekorra viimaset</string>
+  <string name="morphe_local_queue_play_next">Esita järjekorras järgmisena</string>
+  <string name="morphe_local_queue_play_last">Esita järjekorras viimasena</string>
   <string name="morphe_local_queue_reorder">Ümberkorralda</string>
   <string name="morphe_local_queue_remove">Eemalda</string>
   <string name="morphe_local_queue_added">Lisatud järjekorda</string>
@@ -682,12 +682,12 @@ Info: Ei pruugi töötada võttesaadete puhul"</string>
   <string name="morphe_local_queue_playlist_unsupported">Playliste ei saa järjekorda lisada</string>
   <string name="morphe_local_queue_full">Järjekord on täis</string>
   <string name="morphe_local_queue_play_failed">Videot ei õnnestunud käivitada</string>
-  <string name="morphe_ads_channel_whitelist_flyout_menu_title">Reklaamide valge nimekiri riputmenuus</string>
-  <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Lisab riputmenu üksuse, mis lubab reklaamid esiteda selle video kanalil</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_title">Reklaamide valge nimekiri hüpikmenüüs</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Lisab hüpikmenüü üksuse, mis lubab reklaamid esiteda selle video kanalil</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
   <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Selle funktsiooni kasutamiseks võib olla vaja PotHelperit või \"Spoof video streams\" muutmist TV-le või Android VR sisselogimisele</string>
-  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Kiiruse valge nimekiri riputmenuus</string>
-  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Lisab ripitmenüüsse üksuse, mis esitab selle video kanali sisu alati kiirusel 1,0x</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Lubatud kiiruste nimekiri hüpikmenüüs</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Lisab hüpikmenüüsse üksuse, mis esitab selle video kanali sisu alati kiirusel 1,0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Ei ole sisselogitud</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Puudub estitusloend ID</string>
   <string name="morphe_queue_manager_check_failed_queue">Järjekord on tühi</string>
@@ -730,13 +730,13 @@ Info: Ei pruugi töötada võttesaadete puhul"</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Hoidab otseütlust avatama, kui puudutatakse kanali avatari</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Keela täpne otsingužest</string>
-  <string name="morphe_disable_precise_seeking_gesture_summary">Keelab täpse otsingurežiimi, mis aktiveerub kerimisriba esiletoomisel</string>
+  <string name="morphe_disable_precise_seeking_gesture_summary">Keelab täpse otsingurežiimi, mis aktiveerub otsimisriba esiletoomisel</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
   <string name="morphe_live_stream_dvr_title">Luba otseülekande DVR</string>
   <string name="morphe_live_stream_dvr_summary">Võimaldab mähistamist kõigis otseülekannetes, isegi neis, kus see on tavaliselt piiratud</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
-  <string name="morphe_seekbar_thumbnail_preview_title">Luba kerimisriba piltide eelvaated</string>
-  <string name="morphe_seekbar_thumbnail_preview_summary">Näitab video minipilt kerimisriba lohistamise ajal</string>
+  <string name="morphe_seekbar_thumbnail_preview_title">Luba otsimisriba piltide eelvaated</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Näitab video minipilt otsimisriba lohistamise ajal</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Kõige rohkem kordatud</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_live_stream_dvr_not_available">"\"Luba otseülekande DVR\" ei pruugi olla saadaval
@@ -753,7 +753,7 @@ Selle parandamiseks lülita sisse 'Videovoogude imiteerimine' ja muuda 'Vaikimis
   <string name="morphe_slide_to_seek_summary">Lülitab sisse kerimise libistamisega, mitte 2-kordse kiirusega esitamise, kui videoesitaja nuppu hoidetakse all</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Luba puudutusega otsing</string>
-  <string name="morphe_tap_to_seek_summary">Puudutage lihtsalt otsinguriiba, et hüpata vastavasse kohta ilma seda lohistamata</string>
+  <string name="morphe_tap_to_seek_summary">Puudutage lihtsalt otsimisriba, et hüpata vastavasse kohta ilma seda lohistamata</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Vasakule pühkimise žest</string>
   <string name="morphe_swipe_right_zone_title">Paremale pühkimise žest</string>
@@ -766,7 +766,7 @@ Selle parandamiseks lülita sisse 'Videovoogude imiteerimine' ja muuda 'Vaikimis
   <string name="morphe_swipe_zone_label_off">Väljas</string>
   <string name="morphe_swipe_ignore_when_locked_title">Ignoreeri pühkimist lukustatud olekul</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
-  <string name="morphe_swipe_ignore_when_locked_summary">Pühkimise žeste ignoreeritakse, kui mängija on lukustatud funktsiooniga \"Ekraani lukustamine\"</string>
+  <string name="morphe_swipe_ignore_when_locked_summary">Pühkimise žeste ignoreeritakse, kui pleier on lukustatud funktsiooniga \"Ekraani lukustamine\"</string>
   <string name="morphe_swipe_press_to_engage_title">Luba pühkimise žest vajutusega</string>
   <string name="morphe_swipe_press_to_engage_summary">Nõuab vajutamist ja hoidmist enne, kui pühkimisžest tuvastatakse</string>
   <string name="morphe_swipe_haptic_feedback_title">Luba haptiline tagasiside</string>
@@ -801,7 +801,7 @@ Selle parandamiseks lülita sisse 'Videovoogude imiteerimine' ja muuda 'Vaikimis
   <string name="morphe_swipe_speed_sensitivity_summary">Kõrgemad väärtused nõuavad rohkem pühkimist ühe kiiruse sammu kohta</string>
   <string name="morphe_swipe_speed_step_title">Kiiruse samm</string>
   <string name="morphe_swipe_speed_zone_height_title">Kiiruse tsooni kõrgus</string>
-  <string name="morphe_swipe_speed_zone_height_summary">Kiiruse žestitsooni kõrgus protsendina mängija kõrgusest (5-75)</string>
+  <string name="morphe_swipe_speed_zone_height_summary">Kiiruse žestitsooni kõrgus protsendina pleieri kõrgusest (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Kiirus</string>
   <string name="morphe_swipe_overlay_style_title">Pühkimise kattekiht stiil</string>
   <string name="morphe_swipe_overlay_style_entry_1">Horisontaalne kattekiht</string>
@@ -870,6 +870,10 @@ Selle parandamiseks lülita sisse 'Videovoogude imiteerimine' ja muuda 'Vaikimis
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Altekirjad</string>
   <string name="morphe_captions_screen_summary">Halda automaatseid suletitreid ja suletitre küpsiseid</string>
+  <string name="morphe_captions_languages_title">Keel ja tõlge</string>
+  <string name="morphe_captions_presentation_title">Välis вид ja käitumine</string>
+  <string name="morphe_captions_advanced_title">Täpsemad seaded</string>
+  <string name="morphe_captions_advanced_summary">Küpsiste ja transkriptide valikud</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Automaatsete altekstide nähtavus</string>
   <string name="morphe_auto_captions_style_entry_1">Näita alati</string>
@@ -878,17 +882,17 @@ Selle parandamiseks lülita sisse 'Videovoogude imiteerimine' ja muuda 'Vaikimis
   <string name="morphe_auto_captions_style_entry_4">Näita, kui heli ole vaigistatud</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Eelistatud altekstide keel</string>
-  <string name="morphe_preferred_caption_language_summary">Valib esmalt pakkuja altekstid ja tõlgib need seejärel automaatselt eelistatud keelde</string>
+  <string name="morphe_preferred_caption_language_summary">Valib igale videole automaatselt subtiitrite keele</string>
   <string name="morphe_preferred_caption_language_entry_off">Väljas</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Lisa täiendavaid automaatse tõlkimise keeli</string>
+  <string name="morphe_auto_translate_additional_languages_title">Lisandkeeled automaatseks tõlgenduseks</string>
   <string name="morphe_auto_translate_additional_languages_summary">Lisab automaatse tõlkimise menüüsse rohkem keeli</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Määra subtiitel küpsised</string>
   <string name="morphe_set_caption_cookies_summary">"Parandab YouTube'i algseadistuses esineva vea, mille tõttu ei pruugi automaatse tõlke subtiitrid puuduvate küpsiste tõttu saadaval olla
 
 'Subtiitrite küpsed' peavad olema edastatud."</string>
-  <string name="morphe_caption_cookies_title">Subtiitrite küpsed</string>
+  <string name="morphe_caption_cookies_title">Subtiitrite küpsised</string>
   <string name="morphe_caption_cookies_summary">Küpsised, mida määratakse Timed Text API (Caption Data API) päringutes</string>
   <string name="morphe_get_caption_cookies_title">Hangi altekirjade küpsised</string>
   <string name="morphe_get_caption_cookies_summary">Klõpsake siia küpsiste hankimiseks</string>
@@ -899,6 +903,17 @@ Selle parandamiseks lülita sisse 'Videovoogude imiteerimine' ja muuda 'Vaikimis
   <string name="morphe_fix_transcript_title">Paranda transkriptsiooni</string>
   <string name="morphe_fix_transcript_summary">Lahendab eeltingimuste kontrolli ebaõnnestumise, mis võib takistada transkriptsiooni laadimist</string>
   <string name="morphe_captions_in_pip_title">Kuva altekstid pildis-pildis</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Subtiitrite suurus</string>
+  <string name="morphe_caption_scale_summary">Rakendub nii ühekeelsetele kui ka kahekeelsetele subtiitritele</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">Stabiilsed pealkirjade plokid</string>
+  <string name="morphe_stable_caption_blocks_summary">Grupeerib ühekeelsed automaatsed subtiitrid stabiilseteks ja loetavatesks blokkideks. Kahekeelse subtiitrid kasutavad alati blokke. Mõned sõnad võivad ilmuda enne nende kõ تلفutamist</string>
+  <string name="morphe_secondary_caption_language_title">Subtiitrite teises keel</string>
+  <string name="morphe_secondary_caption_language_summary">Kuvab subtiitritega koos teist keelt ning lisab subtiitrite menüüsse lüliti kahekeelsete subtiitrite jaoks</string>
+  <string name="morphe_dual_captions_enabled_title">Kahekeelsed subtiitrid</string>
+  <string name="morphe_caption_block_translation_failed">Mõningad subtiitrite tõlked pole saadaval. Kuvatakse saadaval olevad subtiitrid.</string>
+  <string name="morphe_caption_blocks_too_large">Mõlemad subtiitrite keeled ei mahu sellesse pleierisse. Kuvatakse esmase keele subtiitrid.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigeerimisnupud</string>
   <string name="morphe_navigation_buttons_screen_summary">Valige, millised nupud alumises navigatsioonisribas kuvatakse</string>
@@ -950,7 +965,7 @@ Seadetele pääsemiseks aktiveerige seadete nupp jaotises Üldine → Rippbaar �
   <string name="morphe_hide_toolbar_search_button_title">Peida otsingu nupp</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Kui see on sisse lülitatud, avab lühike puudutus Morphe seaded ja pikk vajutus YouTube\'i seaded. Funktsioonide vastupidiseks muutmiseks lülita see välja</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-  <string name="morphe_hide_player_flyout_title">Libisemenüü</string>
+  <string name="morphe_hide_player_flyout_title">Hüpikmenüü</string>
   <string name="morphe_hide_player_flyout_summary">Vali, millised komponendid kuvatakse hüpikmenüüs</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Peida „Lisaseaded“ / „Rohkem“ menüü</string>
@@ -1002,10 +1017,10 @@ Menüü \"Audio Track\" kuvamiseks muutke \"Spoof video streams\" milleks igaks 
   <string name="morphe_hide_cast_button_title">Peida Casti nupp</string>
   <string name="morphe_hide_collapse_button_title">Peida Aheneva nupp</string>
   <string name="morphe_hide_fullscreen_button_title">Peida täisekraani nupp</string>
-  <string name="morphe_hide_player_control_buttons_background_title">Peida mängija juhtimiste taust</string>
+  <string name="morphe_hide_player_control_buttons_background_title">Peida pleieri juhtimiste taust</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Peidab videoesitaja juhtimispaneeli ümbritseva tumeda varjenduse</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Juhtnupude tausta läbipaistvus</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Reguleeri mängija juhtnupude ja ajav riba tausta läbipaistvust (0 on nähtamatu, 100 on läbimääramatu)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Reguleeri pleieri juhtnupude ja ajariba tausta läbipaistvust (0 on nähtamatu, 100 on läbimääramatu)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Peida nupud Eelmine &amp; Järgmine</string>
   <string name="morphe_hide_settings_button_title">Peida seadete nupp</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1023,7 +1038,7 @@ Menüü \"Audio Track\" kuvamiseks muutke \"Spoof video streams\" milleks igaks 
   <string name="morphe_disable_rolling_number_animations_title">Keela jooksva numbri animatsioonid</string>
   <string name="morphe_disable_rolling_number_animations_summary">Peatab meeldimiste ja vaatamiste arvude loendamise animatsiooni</string>
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
-  <string name="morphe_hide_seekbar_title">Peida videomängija otsimisriba</string>
+  <string name="morphe_hide_seekbar_title">Peida videopleieri otsimisriba</string>
   <string name="morphe_hide_seekbar_thumbnail_title">Peida videominiatuuride otsimisriba</string>
   <string name="morphe_hide_seekbar_thumbnail_summary">Peidab vaatamise edenemise riba videote põikpiltedest, mida oled juba vaatanud</string>
   <string name="morphe_fullscreen_large_seekbar_title">Luba täisekraani suur otsimisriba</string>
@@ -1037,7 +1052,7 @@ Menüü \"Audio Track\" kuvamiseks muutke \"Spoof video streams\" milleks igaks 
   <string name="morphe_hide_shorts_subscriptions_title">Peida Tellimuste voos</string>
   <string name="morphe_hide_shorts_video_description_title">Peida video kirjeldusest</string>
   <string name="morphe_hide_shorts_history_title">Peida vaatamisajalugus</string>
-  <string name="morphe_shorts_player_screen_title">Shorts mängija</string>
+  <string name="morphe_shorts_player_screen_title">Shorts pleier</string>
   <string name="morphe_shorts_player_screen_summary">Valige, millised komponendid Shortsi pleieris kuvatakse</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Keela kahekordselt puudutades meeldimise märgistamine</string>
   <string name="morphe_hide_shorts_ai_button_title">Peida AI nupp</string>
@@ -1093,7 +1108,7 @@ Seaded → Esituskiirus (või Automaatne esitus) → Järgmise video automaatne 
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Peida video ajatempel</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
-  <string name="morphe_disable_player_popup_panels_title">Keela mängija hüpikpaneelid</string>
+  <string name="morphe_disable_player_popup_panels_title">Keela pleieri hüpikpaneelid</string>
   <string name="morphe_disable_player_popup_panels_summary">Keelab esitusloendi ja reaalajas vestluse paneelide automaatse avanemise</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Keela loendite automaatne esitus</string>
@@ -1108,10 +1123,10 @@ Seaded → Esituskiirus (või Automaatne esitus) → Järgmise video automaatne 
   <string name="morphe_exit_fullscreen_entry_4">Püstine ja loodipilt</string>
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
   <string name="morphe_force_fullscreen_landscape_title">Sunni maastikurežiim täisekraanil</string>
-  <string name="morphe_force_fullscreen_landscape_summary">Pöörab mängija täisekraanirežiimis maastikurežiimi. See pole saadaval väikese ekraaniga seadmetes, kus täisekraanirežiim avaneb juba maastikurežiimis</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Pöörab pleier täisekraanirežiimis maastikurežiimi. See pole saadaval väikese ekraaniga seadmetes, kus täisekraanirežiim avaneb juba maastikurežiimis</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Täisekraani žestid</string>
-  <string name="morphe_disable_fullscreen_gestures_summary">Mängija žestid täisekraani režiimis</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">Pleieri žestid täisekraani režiimis</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Keela portreitrežiimi ülespidi pühkimise liigutus</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Keela portreitrežiimi allapoole pühkimise liigutus</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Keela maastikurežiimi allapoole pühkimise liigutus</string>
@@ -1134,7 +1149,7 @@ Seaded → Esituskiirus (või Automaatne esitus) → Järgmise video automaatne 
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Näita vaigistamise nuppu</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
-  <string name="morphe_player_overlay_opacity_title">Mängija ülekatte läbipaistvus</string>
+  <string name="morphe_player_overlay_opacity_title">Pleieri ülekatte läbipaistvus</string>
   <string name="morphe_player_overlay_opacity_summary">Reguleeri läbipaistvuse taset (0 on läbipaistev, 100 on läbimatu)</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Otsinguriba</string>
@@ -1166,10 +1181,10 @@ Auto paigutus
 • Shortsid avanevad tavalises pleieris
 • Kuvatakse vana video tegevusriba, mis pole suletud"</string>
   <string name="morphe_tablet_layout_in_player_title">Luba tahvli paigutus pleieris</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Taastab mängija vana paigutuse
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Taastab pleieri vana paigutuse
 
-Piirang: kui \"Taasta vana video tegevusriba\" on välja lülitatud, ei pruugi olla saadaval ülekatet \"Rohkem videoid\""</string>
+Piirang: kui \"Video tegevusriba paigutus\" ei ole Classic, ei pruugi olla saadaval ülekatet \"Rohkem videoid\""</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Taastatakse tekstide vana käitumine</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Taasta vana salvestus loendisse</string>
@@ -1214,9 +1229,9 @@ Piirang: kui \"Taasta vana video tegevusriba\" on välja lülitatud, ei pruugi o
   <string name="morphe_disable_shorts_resuming_on_startup_title">Keela taaskäivitamisel jätkamine</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Ava Shorts rakendusega</string>
-  <string name="morphe_shorts_player_type_shorts">Shorts\'i mängija</string>
+  <string name="morphe_shorts_player_type_shorts">Shorts\'i pleier</string>
   <string name="morphe_shorts_player_type_regular_player">Tavaline mängija</string>
-  <string name="morphe_shorts_player_type_regular_player_fullscreen">Tavaline mängija täisekraanil</string>
+  <string name="morphe_shorts_player_type_regular_player_fullscreen">Tavaline pleier täisekraanil</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Shorts\'i automaatne esitus</string>
   <string name="morphe_shorts_autoplay_summary">Praeguse Shorti kordamise asemel liigub see automaatselt järgmise Shorti juurde</string>
@@ -1244,17 +1259,17 @@ Piirang: kui \"Taasta vana video tegevusriba\" on välja lülitatud, ei pruugi o
   <string name="morphe_feed_card_layout_comments">Kommentaarid</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Keela minipleieri jätkamine</string>
-  <string name="morphe_miniplayer_disable_resuming_summary">Lülitab välja \'Jätka vaatamist\' minimängija, mis on YouTube Premium funktsioon ja ilmub rakenduse käivitamisel</string>
+  <string name="morphe_miniplayer_disable_resuming_summary">Lülitab välja \'Jätka vaatamist\' minipleier, mis on YouTube Premium funktsioon ja ilmub rakenduse käivitamisel</string>
   <string name="morphe_miniplayer_screen_title">Minipleier</string>
   <string name="morphe_miniplayer_screen_summary">Kohandage minimeeritud videopleieri välimust ja käitumist</string>
-  <string name="morphe_miniplayer_not_available_title">Täiendavad minisinuletid</string>
-  <string name="morphe_miniplayer_not_available_summary">YouTube eemaldas kõik täiendavad minisinuletid. Enam minisinuleti tüüpide taastamiseks paigutage YouTube\'i versioon 21.28.208 või vanem</string>
+  <string name="morphe_miniplayer_not_available_title">Täiendavad minipleierid</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube eemaldas kõik täiendavad minipleierid. Enam minipleieri tüüpide taastamiseks installige YouTube\'i versioon 21.28.208 või vanem</string>
   <string name="morphe_miniplayer_type_title">Minipleieri tüüp</string>
   <string name="morphe_miniplayer_hide_title_title">Peita pealkiri ja kanal</string>
   <string name="morphe_miniplayer_swipe_up_expand_title">Laienda üles tõmbades</string>
-  <string name="morphe_miniplayer_swipe_up_expand_summary">Minimängija üles tõmbamine laiendab mängijat selle asemel, et liigutada minimängijat ekraani ülaosasse</string>
-  <string name="morphe_miniplayer_docked_title">Kinnitatud minimängija</string>
-  <string name="morphe_miniplayer_docked_summary">Kinnitab minimängija navigatsiooniribale ja ekraani külgedele selle asemel, et see nende kohal hõljuks</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Minipleier üles tõmbamine laiendab pleierit selle asemel, et liigutada minipleierit ekraani ülaosasse</string>
+  <string name="morphe_miniplayer_docked_title">Kinnitatud minipleier</string>
+  <string name="morphe_miniplayer_docked_summary">Kinnitab minipleieri navigatsiooniribale ja ekraani külgedele selle asemel, et see nende kohal hõljuks</string>
   <string name="morphe_miniplayer_type_entry_0">Välja lülitatud</string>
   <string name="morphe_miniplayer_type_entry_1">Vaikimisi</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaalne</string>
@@ -1272,7 +1287,7 @@ Piirang: kui \"Taasta vana video tegevusriba\" on välja lülitatud, ei pruugi o
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Peatage esitus horisontaalse lohistamisega</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Taastoomine peatub, kui minipleierit lohistatakse ekraanilt välja</string>
   <string name="morphe_miniplayer_disable_horizontal_reposition_title">Lohistamise oleku meeldejätmine</string>
-  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Minimängija ekraanilt lohistamine säilitab selle kasutajaliidese oleku</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Minipleier ekraanilt lohistamine säilitab selle kasutajaliidese oleku</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Peida liidesnupped</string>
   <string name="morphe_miniplayer_width_dip_title">Vaikimisi suurus</string>
   <string name="morphe_miniplayer_width_dip_summary">Määra algne ekraanisuurus pikslites</string>
@@ -1291,7 +1306,7 @@ Piirang: kui \"Taasta vana video tegevusriba\" on välja lülitatud, ei pruugi o
   <string name="morphe_hide_status_bar_title">Peida staatust riba</string>
   <string name="morphe_hide_status_bar_summary">Peidab süsteemi olekuriba. Libista ülevalt alla, et näidata seda hetkeks</string>
   <string name="morphe_fix_status_bar_layout_title">Paranda staatusriba asukoha, et see ei kataks ülaribasid</string>
-  <string name="morphe_fix_status_bar_layout_summary">Hoiab olekuriba paigutuse ühtsena, et see ei kataks ülemisi ribasid ega jätaks mängija kohale tühja ruumi. Lülita see välja, kui rakenduses esineb tõrkeid või kui ülemised ribad kuvatakse valesti.</string>
+  <string name="morphe_fix_status_bar_layout_summary">Hoiab olekuriba paigutuse ühtsena, et see ei kataks ülemisi ribasid ega jätaks pleier kohale tühja ruumi. Lülita see välja, kui rakenduses esineb tõrkeid või kui ülemised ribad kuvatakse valesti.</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Helendav</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Helendav 1</string>
@@ -1315,11 +1330,11 @@ Piirang: kui \"Taasta vana video tegevusriba\" on välja lülitatud, ei pruugi o
   <string name="morphe_gradient_loading_screen_title">Luba gradiendne laadimise ekraan</string>
   <string name="morphe_gradient_loading_screen_summary">Kuva laadimise ekraanil ühtlase värvi asemel gradienttaust</string>
   <string name="morphe_seekbar_custom_color_title">Luba kohandatud sirimiba värv</string>
-  <string name="morphe_seekbar_custom_color_primary_title">Kerimisriba värv</string>
+  <string name="morphe_seekbar_custom_color_primary_title">Otsimisriba värv</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Määra video esituse progressiriba peamine värv</string>
-  <string name="morphe_seekbar_custom_color_accent_title">Edendamisriba aktsentvärv</string>
+  <string name="morphe_seekbar_custom_color_accent_title">Otsimisriba aktsentvärv</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Määra video progressiriba sekundaarne värv</string>
-  <string name="morphe_seekbar_custom_color_invalid">Kerimisriba värvi väärtus on vigane</string>
+  <string name="morphe_seekbar_custom_color_invalid">Otsimisriba värvi väärtus on vigane</string>
   <!-- layout.branding.customBrandingPatch -->
   <string name="morphe_custom_branding_icon_entry_8">Originaalne analoog</string>
   <string name="morphe_custom_branding_icon_entry_9">Originaalkook</string>
@@ -1373,8 +1388,8 @@ Videoid küsitakse räsitud video ID lühikese prefiksi abil, et server ei saaks
   <string name="morphe_dearrow_error_generic">DeArrow ei ole hetkel saadaval</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
-  <string name="morphe_restore_old_player_buttons_title">Taasta mängija nuppide vana stiil</string>
-  <string name="morphe_restore_old_player_buttons_summary">Taastab videomängija juhtnupud vanasse, õhemasse visuaalsesse stiili</string>
+  <string name="morphe_restore_old_player_buttons_title">Taasta pleieri nuppide vana stiil</string>
+  <string name="morphe_restore_old_player_buttons_summary">Taastab videopleieri juhtnupud vanasse, õhemasse visuaalsesse stiili</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Seadme mõõtmete imiteerimine</string>
   <string name="morphe_spoof_device_dimensions_summary">Selle aktiveerimine võib avada kõrgema video kvaliteedid</string>
@@ -1453,9 +1468,9 @@ Videoid küsitakse räsitud video ID lühikese prefiksi abil, et server ei saaks
   <string name="morphe_playback_speed_default_title">Vaikimisi taespide kiirus</string>
   <string name="morphe_shorts_playback_speed_default_title">Vaikimisi taasesituskiirus Shortsis</string>
   <string name="morphe_shorts_remember_playback_speed_title">Mäleta esituskiirus Shorts</string>
-  <string name="morphe_shorts_remember_playback_speed_summary">Rakendab teie käsitsi tehtud Shortsi kiirusevaliku kõigile järgmistele Shorts-videotele. Kui see on välja lülitatud, taastub kiirus pärast Shorts-mängija sulgemist vaikeväärtusele</string>
+  <string name="morphe_shorts_remember_playback_speed_summary">Rakendab teie käsitsi tehtud Shortsi kiirusevaliku kõigile järgmistele Shorts-videotele. Kui see on välja lülitatud, taastub kiirus pärast Shorts-pleier sulgemist vaikeväärtusele</string>
   <string name="morphe_shorts_playback_speed_flyout_button_title">Kuva taasesituskiirus Shorts menüüs</string>
-  <string name="morphe_shorts_playback_speed_flyout_button_summary">Lisab Shorts-mängija menüüsse taasesituskiiruse valiku</string>
+  <string name="morphe_shorts_playback_speed_flyout_button_summary">Lisab Shorts-pleier menüüsse taasesituskiiruse valiku</string>
   <string name="morphe_shorts_playback_speed_flyout_title">Taasesituskiirus · %s</string>
   <string name="morphe_remember_playback_speed_toast">Vaikimisi taasesituskiirus on muutunud väärtuseks: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Kasuta muusika puhul tavakiirust</string>
@@ -1526,13 +1541,14 @@ AV1-i videote esitus võib tõrgetele tunduda või raame kaotada"</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• On vaja sisselogida Android VR-i</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Kvaliteet võib olla piiratud 720p-ga</string>
-  <string name="morphe_spoof_video_streams_player_js_variant_title">Mängija JavaScripti variant</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Pleieri JavaScripti variant</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Kuva imiteerimine jaotises \'Statistika nerdidele\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Taasta vana video tegevusriba</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Parandab probleemi, kus video tegevusnuppe ei saa peita
-
-Piirang: taastab vana stiili \"Rohkem videoid\" pealkatte"</string>
+  <string name="morphe_video_action_bar_layout_title">Video tegevusriba paigutus</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Vaikimisi</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klassika</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Minimalistlik</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Piirang: Classic taastab vana stiili ülekatte \"Rohkem videoid\"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Pleieri ikooni stiil</string>
   <string name="morphe_player_icon_style_entry_auto">Automaatne</string>
@@ -1669,7 +1685,7 @@ Automaatne salvestamine on valikuline. See peatub inkognito režiimis või konto
   <string name="morphe_series_tracker_backup_explanation">Salvastab jälgitud sarjad, episoodide asukohad ja vaatamisvalikud. Salvestamise ja YouTube\'i edenemise loasid ei sisaldata</string>
   <string name="morphe_series_tracker_backup_save">Salvesta varukoopia</string>
   <string name="morphe_series_tracker_backup_restore">Taasta varukoopia</string>
-  <string name="morphe_series_tracker_backup_preview">Lisatakse %1$s sarja. %2$s sarja, mis on juba teie raamatukogas, jäävad alles. Olemasolev videoedenemus säilib</string>
+  <string name="morphe_series_tracker_backup_preview">Lisatakse %1$s sarja. %2$s sarja, mis on juba teie raamatukogus, jäävad alles. Olemasolev videoedenemus säilib</string>
   <string name="morphe_series_tracker_backup_saved">Sarjade varukoopia on salvestatud</string>
   <string name="morphe_series_tracker_backup_restored">Taastatud %1$s sarja</string>
   <string name="morphe_series_tracker_error_backup_invalid">See fail ei ole toetatud sarjade varukoopiaga või on liiga suur. Teie raamatukogu ei muutunud</string>
@@ -1690,7 +1706,7 @@ Automaatne salvestamine on valikuline. See peatub inkognito režiimis või konto
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
   <string name="morphe_niconico_comments_screen_title">Niconico kommentärid</string>
   <string name="morphe_niconico_comments_screen_summary">Kuva otsevestlust ja vestluse taasesitust videol liikuvate kommentaaridena</string>
-  <string name="morphe_niconico_comments_summary">Kuvab videomängijas katendinupp. Puuduta kommentaaride kuvamiseks või peitmiseks, kiirseadete avamiseks vajuta ja hoia all</string>
+  <string name="morphe_niconico_comments_summary">Kuvab videopleieris katendinupp. Puuduta kommentaaride kuvamiseks või peitmiseks, kiirseadete avamiseks vajuta ja hoia all</string>
   <string name="morphe_niconico_comments_font_size_title">Kommentaari teksti suurus</string>
   <string name="morphe_niconico_comments_font_size_summary">Kommentäride teksti suurus (12–40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Kommentaari läbipaistvus</string>
@@ -1700,4 +1716,27 @@ Automaatne salvestamine on valikuline. See peatub inkognito režiimis või konto
   <string name="morphe_niconico_comments_max_length_title">Kommendi maksimaalne pikkus</string>
   <string name="morphe_niconico_comments_max_length_summary">Peidab kommentaare, millel on sellest rohkem märke. Iga emoji loetakse ühe märgi eest</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Piirangut pole</string>
+  <string name="morphe_live_chat_translate_screen_title">Live-chat\'i tõlginne</string>
+  <string name="morphe_live_chat_translate_screen_summary">Tõlgi live-chat\'i ja live-chat\'i korduse sõnumeid</string>
+  <string name="morphe_live_chat_translate_title">Tõlgi live-chat\'i</string>
+  <string name="morphe_live_chat_translate_summary">Tõlgib live-chat\'i ja live-chat\'i korduse sõnumeid pärast seda, kui need ekraanil ilmuvad</string>
+  <string name="morphe_live_chat_translate_language_title">Tõlkimise keel</string>
+  <string name="morphe_live_chat_translate_exclude_title">Välja postiitu keeled</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Komaeraldatud keelekoodid, näiteks id,en. Nende keeltes olevad sõnumid ei tõlgita</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Kuva sõnumi kopeerimise nupp</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Lisab igale chati sõnumile väikese kopeerimise nupu</string>
+  <string name="morphe_live_chat_translate_copied">Sõnum kopeeritud lõikelauale</string>
+  <string name="morphe_live_chat_translate_style_title">Tõlkimise stiil</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Ainult tõlgitud</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Originaal (tõlgitud)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Tõlgitud) originaal</string>
+  <string name="morphe_live_chat_translate_bold_title">Tõlgitud tekst paksus</string>
+  <string name="morphe_live_chat_translate_bold_summary">Kuvab tõlgitud teksti paksus</string>
+  <string name="morphe_live_chat_translate_use_color_title">Custom tõlgitud teksti värv</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Rakendab tõlgitud tekstile custom värvi</string>
+  <string name="morphe_live_chat_translate_color_title">Tõlgitud teksti värv</string>
+  <string name="morphe_live_chat_translate_color_summary">Määra tõlgitud teksti heksavärv</string>
+  <string name="morphe_live_chat_translate_max_length_title">Sõnumi maksimaalne pikkus</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Pikemaid sõnumeid ei tõlgita</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Piiranguvaba</string>
 </resources>

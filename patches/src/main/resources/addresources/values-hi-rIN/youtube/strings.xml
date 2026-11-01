@@ -446,7 +446,7 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_title">वीडियो मेनू खोलने के लिए टैप करें और दबाए रखें</string>
   <string name="morphe_feed_long_press_menu_summary">फीड वीडियो पर कहीं भी टैप करके और दबाकर उसका मेनू खोला जा सकता है</string>
   <string name="morphe_feed_watch_later_button_title">थंबनेल पर \'फिर से देखें\' बटन दिखाएं</string>
-  <string name="morphe_feed_watch_later_button_summary">फीड वीडियो की थंबनेल पर \'फिर से देखें\' बटन दिखाया जाता है। इसे टैप करके और दबाकर प्लेलिस्ट में सहेजें खोला जाता है</string>
+  <string name="morphe_feed_watch_later_button_summary">फीड वीडियो के थंबनेल पर एक \'बाद में देखें\' बटन दिखाया जाता है, यदि वीडियो सहेजा गया है तो चेक मार्क के साथ। इस पर टैप करने से वीडियो सहेजा या हटाया जाता है, और टैप करके रखने से \'प्लेलिस्ट में सहेजें\' खुल जाता है</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">पोस्ट इमेज डाउनलोड करें</string>
   <string name="morphe_post_image_download_summary">इमेज या GIF वाली पोस्ट के शेयर बटन के बगल में एक डाउनलोड बटन दिखाया जाता है, और उनके मेनू में एक डाउनलोड आइटम जोड़ा जाता है</string>
@@ -870,6 +870,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">शीर्षक</string>
   <string name="morphe_captions_screen_summary">स्वचालित कैप्शन और कैप्शन कुकीज़ प्रबंधित करें</string>
+  <string name="morphe_captions_languages_title">भाषा और अनुवाद</string>
+  <string name="morphe_captions_presentation_title">दिखावट और व्यवहार</string>
+  <string name="morphe_captions_advanced_title">अधिक</string>
+  <string name="morphe_captions_advanced_summary">कुकी और ट्रांसक्रिप्ट विकल्प</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">ऑटो कैप्शंस दृश्यता</string>
   <string name="morphe_auto_captions_style_entry_1">हमेशा दिखाएं</string>
@@ -878,10 +882,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_auto_captions_style_entry_4">म्यूट किए हुए दिखाएं</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">पसंदीदा कैप्शन भाषा</string>
-  <string name="morphe_preferred_caption_language_summary">पहले प्रदाता उपशीर्षक चुनता है, फिर स्वतः पसंदीदा भाषा में अनुवाद करता है</string>
+  <string name="morphe_preferred_caption_language_summary">प्रत्येक वीडियो के लिए स्वचालित रूप से एक कैप्शन भाषा चुनता है</string>
   <string name="morphe_preferred_caption_language_entry_off">बंद</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">अतिरिक्त स्वतः अनुवादित भाषाएँ जोड़ें</string>
+  <string name="morphe_auto_translate_additional_languages_title">अतिरिक्त ऑटो-ट्रांसलेट भाषाएँ</string>
   <string name="morphe_auto_translate_additional_languages_summary">स्वतः अनुवाद मेनू में अधिक भाषाएँ जोड़ता है</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">कैप्शन कुकी सेट करें</string>
@@ -899,6 +903,17 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_fix_transcript_title">ट्रांसक्रिप्ट को ठीक करें</string>
   <string name="morphe_fix_transcript_summary">एक पूर्व शर्त जांच विफलता को हल करता है जो ट्रांसक्रिप्ट को लोड होने से रोक सकता है</string>
   <string name="morphe_captions_in_pip_title">पिक्चर-इन-पिक्चर में सबटाइटल्स दिखाएं</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">कैप्शन का आकार</string>
+  <string name="morphe_caption_scale_summary">एकल-भाषा और द्विभाषी कैप्शन पर लागू होता है</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">स्थिर कैप्शन ब्लॉक</string>
+  <string name="morphe_stable_caption_blocks_summary">एकल-भाषा स्वचालित कैप्शन को स्थिर, पठनीय ब्लॉकों में समूहित करें। द्विभाषी कैप्शन हमेशा ब्लॉक का उपयोग करते हैं। कुछ शब्द बोले जाने से पहले दिखाई दे सकते हैं</string>
+  <string name="morphe_secondary_caption_language_title">द्वितीयक कैप्शन भाषा</string>
+  <string name="morphe_secondary_caption_language_summary">कैप्शन के साथ एक दूसरी भाषा दिखाता है, और कैप्शन मेनू में एक द्विभाषी कैप्शन टॉगल जोड़ता है</string>
+  <string name="morphe_dual_captions_enabled_title">द्विभाषी कैप्शन</string>
+  <string name="morphe_caption_block_translation_failed">कुछ कैप्शन अनुवाद उपलब्ध नहीं हैं। उपलब्ध कैप्शन दिखाए जा रहे हैं।</string>
+  <string name="morphe_caption_blocks_too_large">दोनों कैप्शन भाषाएँ इस प्लेयर में फिट नहीं होती हैं। प्राथमिक भाषा दिखाई जा रही है।</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">नविगेशन बटन</string>
   <string name="morphe_navigation_buttons_screen_summary">टूलबार में प्रदर्शित होने वाले घटकों को चुनें</string>
@@ -1166,10 +1181,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
 • शॉर्ट्स नियमित प्लेयर में खुलते हैं
 • गैर-संक्षिप्त पुराना वीडियो एक्शन बार दिखाया जाता है"</string>
   <string name="morphe_tablet_layout_in_player_title">प्लेयर में टैबलेट लेआउट सक्षम करें</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"पुराने प्लेयर लेआउट को पुनर्स्थापित करता है
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"पुराना प्लेयर लेआउट बहाल करता है
 
-सीमा: यदि 'पुराने वीडियो एक्शन बार को पुनर्स्थापित करें' बंद कर दिया गया है, तो 'अधिक वीडियो' ओवरले उपलब्ध नहीं हो सकता है"</string>
+सीमा: यदि 'वीडियो एक्शन बार लेआउट' क्लासिक नहीं है, तो 'अधिक वीडियो' ओवरले उपलब्ध नहीं हो सकता है"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - पुराने कैप्शन व्यवहार को पुनर्स्थापित करें</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - पुराने सेव को प्लेलिस्ट में पुन: स्थापित करें</string>
@@ -1529,10 +1544,11 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_spoof_video_streams_player_js_variant_title">प्लेयर जावास्क्रिप्ट वैरिएंट</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">स्पूफिंग को \'स्टैट्स फॉर नर्ड्स\' में दिखाएं</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">पुराने वीडियो एक्शन बार को पुनर्स्थापित करें</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"वीडियो एक्शन बटन छिपाने की असमर्थता को ठीक करता है
-
-सीमा: पुरानी शैली 'More videos' ओवरले पर वापस लौटता है"</string>
+  <string name="morphe_video_action_bar_layout_title">वीडियो एक्शन बार लेआउट</string>
+  <string name="morphe_video_action_bar_layout_entry_1">डिफ़ॉल्ट</string>
+  <string name="morphe_video_action_bar_layout_entry_2">क्लासिक</string>
+  <string name="morphe_video_action_bar_layout_entry_3">मिनिमल</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">सीमा: क्लासिक पुरानी शैली के \'अधिक वीडियो\' ओवरले पर वापस जाता है</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">प्लेयर आइकन शैली</string>
   <string name="morphe_player_icon_style_entry_auto">स्वचालित</string>
@@ -1700,4 +1716,27 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_niconico_comments_max_length_title">कमेंट की अधिकतम लंबाई</string>
   <string name="morphe_niconico_comments_max_length_summary">इससे अधिक वर्णों वाले कमेंट छुपाएं। प्रत्येक इमोजी को एक वर्ण माना जाएगा</string>
   <string name="morphe_niconico_comments_max_length_no_limit">कोई सीमा नहीं</string>
+  <string name="morphe_live_chat_translate_screen_title">लाइव चैट अनुवाद</string>
+  <string name="morphe_live_chat_translate_screen_summary">लाइव चैट और लाइव चैट रीप्ले संदेशों का अनुवाद करें</string>
+  <string name="morphe_live_chat_translate_title">लाइव चैट का अनुवाद करें</string>
+  <string name="morphe_live_chat_translate_summary">लाइव चैट और लाइव चैट रीप्ले संदेशों का उनके स्क्रीन पर आने के बाद अनुवाद करता है</string>
+  <string name="morphe_live_chat_translate_language_title">अनुवाद भाषा</string>
+  <string name="morphe_live_chat_translate_exclude_title">अपवादित भाषाएँ</string>
+  <string name="morphe_live_chat_translate_exclude_summary">कोमा से अलग किए गए भाषा कोड जैसे id,en। इन भाषाओं के संदेशों का अनुवाद नहीं किया जाता है</string>
+  <string name="morphe_live_chat_translate_copy_button_title">संदेश कॉपी करें बटन दर्शाएँ</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">हर चैट संदेश में एक छोटा कॉपी बटन जोड़ता है</string>
+  <string name="morphe_live_chat_translate_copied">संदेश क्लिपबोर्ड पर कॉपी किया गया</string>
+  <string name="morphe_live_chat_translate_style_title">अनुवाद शैली</string>
+  <string name="morphe_live_chat_translate_style_translated_only">केवल अनुवादित</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">मूल (अनुवादित)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(अनुवादित) मूल</string>
+  <string name="morphe_live_chat_translate_bold_title">अनुवादित टेक्स्ट बोल्ड करें</string>
+  <string name="morphe_live_chat_translate_bold_summary">अनुवादित टेक्स्ट को बोल्ड में दिखाता है</string>
+  <string name="morphe_live_chat_translate_use_color_title">कस्टम अनुवादित टेक्स्ट रंग</string>
+  <string name="morphe_live_chat_translate_use_color_summary">अनुवादित टेक्स्ट पर एक कस्टम रंग लागू करता है</string>
+  <string name="morphe_live_chat_translate_color_title">अनुवादित टेक्स्ट का रंग</string>
+  <string name="morphe_live_chat_translate_color_summary">अनुवादित टेक्स्ट का हेक्स रंग सेट करें</string>
+  <string name="morphe_live_chat_translate_max_length_title">अधिकतम संदेश लंबाई</string>
+  <string name="morphe_live_chat_translate_max_length_summary">लंबे संदेश बिना अनुवाद के दिखाए जाते हैं</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">कोई सीमा नहीं</string>
 </resources>

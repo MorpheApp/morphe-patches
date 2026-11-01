@@ -622,7 +622,7 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_lyrics_mini_instrumental_title">器樂間奏</string>
   <string name="morphe_music_lyrics_mini_instrumental_summary">在器樂間奏期間顯示在迷你播放器和 MediaSession 中。每一行即為一個動畫幀。{t} 是標題，{a} 是歌手，{lrc} 是最後一行歌詞</string>
   <string name="morphe_music_lyrics_mini_next_offset_ms_title">迷你播放器和 MediaSession 時間偏移</string>
-  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">調整迷你播放器與 MediaSession 中顯示下一行歌詞的時間。如果歌詞顯示較慢，例如在鎖定螢幕上，請使用負值</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">調整迷你播放器與 MediaSession 中顯示下一行歌詞的時間。如果歌詞顯示較慢，例如在鎖定畫面上，請使用負值</string>
   <string name="morphe_settings_music_lyrics_metadata_title">篩選器</string>
   <string name="morphe_music_lyrics_custom_regex_title">元資料正規表示式</string>
   <string name="morphe_music_lyrics_custom_regex_summary">套用於標題、演出者和專輯的正規表示式，在查詢歌詞之前以及判斷兩個標題是否相符時使用。留空可同時停用兩者。預設會移除常見的干擾內容，例如「Official Video」、「Remaster」、「【插曲】」和「- Topic」。</string>

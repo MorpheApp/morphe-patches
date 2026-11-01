@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit গোপনীয়তা নীতি</string>
   <string name="morphe_google_signin_not_available_toast">Google লগইন উপলব্ধ নহয়। লগইন কৰিবলৈ ইমেইল ব্যৱহাৰ কৰক</string>
+  <string name="morphe_app_downgrade_dialog_title">ডাউনগ্ৰেড সমৰ্থিত নহয়</string>
+  <string name="morphe_app_downgrade_dialog_message">"এই Reddit সংস্থাপনটো &lt;b&gt;%1$s&lt;/b&gt; ৰ পৰা &lt;b&gt;%2$s&lt;/b&gt; লৈ ডাউনগ্ৰেড কৰা হৈছে
+&lt;br/&gt;&lt;br/&gt;
+এটা নতুন সংস্কৰণৰ এপ ডেটা পুৰণি সংস্কৰণৰ সৈতে কাম নকৰে আৰু এপটোৱে সঠিকভাৱে কাম নকৰিব পাৰে।
+&lt;br/&gt;&lt;br/&gt;
+এটা পুৰণি সংস্কৰণ ব্যৱহাৰ কৰিবলৈ, আপুনি Reddit &lt;b&gt;আনইনষ্টল&lt;/b&gt; কৰিব লাগিব আৰু তাৰ পিছত পুৰণি সংস্কৰণটো সংস্থাপন কৰিব লাগিব।"</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">এপৰ তথ্য খোলক</string>
   <string name="morphe_screen_ads_title">বিজ্ঞাপন</string>
   <string name="morphe_hide_post_ads_title">ফীডৰ বিজ্ঞাপনবোৰ লুকুৱাই ৰাখক</string>
   <string name="morphe_hide_comment_ads_title">মন্তব্যৰ বিজ্ঞাপনবোৰ লুকুৱাই ৰাখক</string>

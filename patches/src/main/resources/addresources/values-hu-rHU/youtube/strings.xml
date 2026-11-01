@@ -446,7 +446,7 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_feed_long_press_menu_title">Koppints és nyomd meg hosszan a videómenü megnyitásához</string>
   <string name="morphe_feed_long_press_menu_summary">A posztfolyamat videóján bárhol koppintás és hosszú nyomás nyitja meg annak menüt</string>
   <string name="morphe_feed_watch_later_button_title">Mutassa a Néssebb később gombot a képkockákon</string>
-  <string name="morphe_feed_watch_later_button_summary">A Néssebb később gomb megjelenik a posztfolyamati videók képkockáján. Koppintás és hosszú nyomása esetén Megnyitás listában lehetőséget nyújt</string>
+  <string name="morphe_feed_watch_later_button_summary">A hírfolyam videóinak thumbnailjein megjelenik egy Később megnézem gomb, pipával, ha a videó mentve van. A rákoppintás menti vagy eltávolítja a videót, a hosszú nyomás pedig megnyitja a Leházrolistába mentés lehetőséget</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Bejegyzési képek letöltése</string>
   <string name="morphe_post_image_download_summary">A képekkel vagy GIF-ekkel rendelkező bejegyzések Megosztás gombja mellett megjelenik egy letöltés gomb, és a menüjükhez egy letöltési elem kerül hozzá</string>
@@ -870,6 +870,10 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Feliratok</string>
   <string name="morphe_captions_screen_summary">A feliratok automatikus fordításának és a feliratok cookie-jainak kezelése</string>
+  <string name="morphe_captions_languages_title">Nyelv és fordítás</string>
+  <string name="morphe_captions_presentation_title">Megjelenés és viselkedés</string>
+  <string name="morphe_captions_advanced_title">Haladó</string>
+  <string name="morphe_captions_advanced_summary">Süti- és átirátolási beállítások</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Automatik feliratok láthatóság</string>
   <string name="morphe_auto_captions_style_entry_1">Mindig megjelenítés</string>
@@ -878,10 +882,10 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_auto_captions_style_entry_4">Mutoltáskor mutat</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Feliratok előnyben részesített nyelve</string>
-  <string name="morphe_preferred_caption_language_summary">Először a szolgáltató feliratait választja ki, majd automatikusan lefordítja az előnyben részesített nyelvre</string>
+  <string name="morphe_preferred_caption_language_summary">Automatikusan választ egy feliratnyelvet minden videóhoz</string>
   <string name="morphe_preferred_caption_language_entry_off">Ki</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">További automatikus fordítási nyelvek hozzáadása</string>
+  <string name="morphe_auto_translate_additional_languages_title">További automatikus fordítási nyelvek</string>
   <string name="morphe_auto_translate_additional_languages_summary">Több nyelv kerül a automatikus fordítás menübe</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Állítsa be a feliratok sütijeit</string>
@@ -899,6 +903,17 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_fix_transcript_title">Átirat javítása</string>
   <string name="morphe_fix_transcript_summary">Megoldja egy előfeltétel-ellenőrzési hibát, amely megakadályozhatja az átirat betöltését</string>
   <string name="morphe_captions_in_pip_title">Képekben a feliratok megjelenítése pip-ben</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Feliratméret</string>
+  <string name="morphe_caption_scale_summary">Egynyelvű és kétnyelvű feliratokra is vonatkozik</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">Stabil feliratsorok</string>
+  <string name="morphe_stable_caption_blocks_summary">Csoportolja az egynyelvű automatikus feliratokat stabil, jól olvasható blokkokba. A kétnyelvű feliratok mindig blokkokat használnak. Egyes szavak megjelenhetnek, mielőtt kimondnák őket</string>
+  <string name="morphe_secondary_caption_language_title">Másodlagos feliratnyelv</string>
+  <string name="morphe_secondary_caption_language_summary">Megjelenít egy második nyelvet a feliratokkal, és hozzáad egy Kétnyelvű feliratok kapcsolót a feliratmenühöz</string>
+  <string name="morphe_dual_captions_enabled_title">Kétnyelvű feliratok</string>
+  <string name="morphe_caption_block_translation_failed">Némely feliratfordítás nem érhető el. A rendelkezésre álló feliratok jelennek meg.</string>
+  <string name="morphe_caption_blocks_too_large">Mindkét feliratnyelv nem fér bele ebbe a lejátszóba. A primer nyelv jelenik meg.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigációs gombok</string>
   <string name="morphe_navigation_buttons_screen_summary">Válassza ki, mely gombok jelenjenek meg a felső eszköztáron</string>
@@ -1166,10 +1181,10 @@ Autószórakoztató rendszer nézet
 • A Shortsok a szabályos lejátszóban nyílnak meg
 • A nem összecsukott régi videóműveletsáv megjelenítése"</string>
   <string name="morphe_tablet_layout_in_player_title">Tablet elrendezés engedélyezése a lejátszóban</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"A régi lejátszó elrendezés visszaállítása
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Visszaállítja a lejátszó régi elrendezését
 
-Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapcsolva, a „További videók” réteg nem jelenhet meg."</string>
+Korlátozás: Ha a „Videószíniszav elrendezése” nem Klasszikus, a „További videók” kiegészítő ablak nem可能是 érhető el"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - A régi felirat-viselkedés visszaállítása</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Visszaállítjuk az régi mentést a lejátslóba</string>
@@ -1529,10 +1544,11 @@ Az AV1-es videólejátszás akadozhat vagy képkockákat ejthet"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Lejátszó JavaScript változata</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Hamisítás megjelenítése a „Stats for nerds” részben</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Régi videós eszköztár visszaállítása</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Javítja azt a problémát, hogy a videó műveletgombjai nem rejthetők el
-
-Korlátozás: Visszaáll a régi stílusú 'További videók' átfedésre"</string>
+  <string name="morphe_video_action_bar_layout_title">Videószíniszav elrendezése</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Alapértelmezett</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasszikus</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Minimális</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Korlátozás: A Klasszikus beállítás visszatér a régi stílusú „További videók” kiegészítő ablakra</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Lejátszó ikonstílusa</string>
   <string name="morphe_player_icon_style_entry_auto">Automatikus</string>
@@ -1700,4 +1716,27 @@ A automatikus rögzítés opcionális. Inkognitó módban vagy a fiókváltás s
   <string name="morphe_niconico_comments_max_length_title">Maximális kommenthossz</string>
   <string name="morphe_niconico_comments_max_length_summary">Rejtőzi a kommenteket, amelyek több karakterből állnak, mint ez. Minden emoji egy karakternek számít</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Nincs korlát</string>
+  <string name="morphe_live_chat_translate_screen_title">Élő csevegés fordítása</string>
+  <string name="morphe_live_chat_translate_screen_summary">Fordítsa az élő csevegés és az élő csevegés lejtszási üzeneteit</string>
+  <string name="morphe_live_chat_translate_title">Élő csevegés fordítása</string>
+  <string name="morphe_live_chat_translate_summary">Lefordítja az élő csevegés és az élő csevegés lejtszási üzeneteit, amint megjelennek a képernyőn</string>
+  <string name="morphe_live_chat_translate_language_title">Fordítási nyelv</string>
+  <string name="morphe_live_chat_translate_exclude_title">Kizárt nyelvek</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Vesszővel elválasztott nyelvjelek, például id,en. Ezek a nyelveken írt üzenetek nem lesznek lefordítva</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Üzenet másolás gomb megjelenítése</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Kisebb másolás gombot ad hozzá minden csevegési üzenethez</string>
+  <string name="morphe_live_chat_translate_copied">Üzenet másolva a vágólapra</string>
+  <string name="morphe_live_chat_translate_style_title">Fordítási stílus</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Csak lefordítva</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Eredeti (lefordítva)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Lefordítva) eredeti</string>
+  <string name="morphe_live_chat_translate_bold_title">Félkövér fordított szöveg</string>
+  <string name="morphe_live_chat_translate_bold_summary">Félkövérben jeleníti meg a lefordított szöveget</string>
+  <string name="morphe_live_chat_translate_use_color_title">Egyedi fordított szöveg színe</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Egyedi színt alkalmaz a lefordított szövegre</string>
+  <string name="morphe_live_chat_translate_color_title">Fordított szöveg színe</string>
+  <string name="morphe_live_chat_translate_color_summary">Állítsa be a lefordított szöveg hex színkódját</string>
+  <string name="morphe_live_chat_translate_max_length_title">Maximum üzenethossz</string>
+  <string name="morphe_live_chat_translate_max_length_summary">A hosszabb üzenetek fordítás nélkül jelennek meg</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Nincs korlát</string>
 </resources>

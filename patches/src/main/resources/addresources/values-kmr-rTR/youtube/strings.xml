@@ -443,7 +443,6 @@ Rapor giştî ne û berî ku kanal bikeve lîsteyê tên kontrolkirin. Jêbirin 
   <string name="morphe_feed_long_press_menu_title">Ji bo vekirina menyuya vîdyoyê, bitikînin û bihêlin</string>
   <string name="morphe_feed_long_press_menu_summary">Bi tikînin û bihêlan li her derê li ser vîdyoyeke feedê, menyuya wê vedibe</string>
   <string name="morphe_feed_watch_later_button_title">Butona \"Paşê temaşe bike\" li ser thumbnailan nîşan bide</string>
-  <string name="morphe_feed_watch_later_button_summary">Bişka \"Paşê temaşe bike\" li ser thumbnailên vîdyoyên feedê tê nîşandan. Bi lêdan û girtina wê, \"Save to playlist\" vedikeve</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Wêne yên postan daxîne</string>
   <string name="morphe_post_image_download_summary">Bişkojeka daxistinê li gel bişkojeka Parvekirinê ya postên bi wêne yan GIF-an re tê nîşandan, û aleyek daxistinê li menuya wan tê zêdekirin</string>
@@ -840,10 +839,8 @@ Ji bo çareserkirina vê, 'Spozîkirina streaming-ên vîdyoyê' vekirin û 'Kl�
   <string name="morphe_auto_captions_style_entry_4">Dibe ku darvekirin</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Zimanê nivîsên binî yê tercîhkirî</string>
-  <string name="morphe_preferred_caption_language_summary">Pêşî nivîsên binî yên dabinkerê dibijêre, paşê bi awayekî otomatîk wergerîne zimanê tercîhkirî</string>
   <string name="morphe_preferred_caption_language_entry_off">Dabe</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Zimanên auto-translate yên zêde lê zêde bike</string>
   <string name="morphe_auto_translate_additional_languages_summary">Zimanên zêdetir lê menyuya auto-translate zêde dike</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Set caption cookies</string>
@@ -861,6 +858,8 @@ Divê 'kukiyên jêrnivîsan' bên peyda kirin."</string>
   <string name="morphe_fix_transcript_title">Sererast بونى ناخش</string>
   <string name="morphe_fix_transcript_summary">Çareserî di qada pêşî de pişkekî ku dikare astengîya nivîskê veşêre</string>
   <string name="morphe_captions_in_pip_title">Captionan di picture-in-picture de nîşan bide</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <!-- layout.captions.stableCaptionBlocksPatch -->
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Gomeqên hevveşan</string>
   <string name="morphe_navigation_buttons_screen_summary">Hilbijêre ku kîjan pêkhateyên di toolbarê de xuya dibe</string>
@@ -1129,10 +1128,7 @@ Layouta otomotîvê
 • Shorts di playerê asayî de vedibin
 • Action barê vîdyoyên kevin ê ne-collapsed tê nîşandan"</string>
   <string name="morphe_tablet_layout_in_player_title">Rêvekirina sêwirana tabletê di lîstikvan de</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Sêwîna lîstikvanê kevnarî dîsa çê bike
-
-Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîtin ne mumkin e"</string>
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Rêveberiya berê ya subtitles vegerîne</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Dabeşîna kevnayî pêl vekişîne ser lîste</string>
@@ -1482,10 +1478,8 @@ Lîstana vîdyoyê bi AV1 dibe ku qutb bibe an framing-an winda bike"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Warianta JavaScriptê lîstikvanê</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Sexandinê di \'Stats for nerds\' de nîşan bide</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Çêkirina dîskê ya pelê vîdyoya kevnê</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Çareser dike ku butonekele aksiyona vîdyoyê nayên veşartin
-
-Sînorkirin: Dizivirîne şêwazê kevin ê 'Vîdyoyên zêdetir' overlay"</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Bixweber</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Kêm</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Stîla îkona Player\'ê</string>
   <string name="morphe_player_icon_style_entry_auto">Otomatîk</string>

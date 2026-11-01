@@ -446,7 +446,7 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_title">輕觸並按住以開啟影片選單</string>
   <string name="morphe_feed_long_press_menu_summary">在資訊流影片的任意位置輕觸並按住，即可開啟其選單</string>
   <string name="morphe_feed_watch_later_button_title">在縮圖上顯示稍後觀看按鈕</string>
-  <string name="morphe_feed_watch_later_button_summary">資訊流影片的縮圖上會顯示「稍後觀看」按鈕。輕觸並按住該按鈕可進入「新增至播放清單」功能</string>
+  <string name="morphe_feed_watch_later_button_summary">在饋送影片的縮圖上會顯示「稍後觀看」按鈕，若影片已儲存則會顯示勾選標記。輕觸按鈕可儲存或移除影片，長按則可開啟「儲存至播放清單」</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">下載貼文圖片</string>
   <string name="morphe_post_image_download_summary">在包含圖片或 GIF 的貼文中，「分享」按鈕旁會顯示下載按鈕，且其選單中會新增下載選項</string>
@@ -464,9 +464,9 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_language_title">貼文翻譯語言</string>
   <string name="morphe_post_translate_flyout">翻譯</string>
   <string name="morphe_post_translate_flyout_original">顯示原文</string>
-  <string name="morphe_post_translate_started">翻譯中……</string>
+  <string name="morphe_post_translate_started">正在翻譯……</string>
   <string name="morphe_post_translate_failed">無法翻譯此貼文</string>
-  <string name="morphe_post_translate_same_language">貼文已是翻譯目標語言</string>
+  <string name="morphe_post_translate_same_language">貼文已翻譯為目標語言</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">在彈出式選單中加入「Ask」項目</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">在資訊流彈出式選單中加入影片摘要項目</string>
@@ -724,7 +724,7 @@ Second \"item\" text"</string>
   <string name="morphe_native_playlist_queue_mix_choice">將混合音樂新增至佇列或觀看混合音樂？</string>
   <string name="morphe_native_playlist_queue_watch_mix">觀看</string>
   <string name="morphe_native_playlist_queue_add_mix">新增至佇列</string>
-  <string name="morphe_native_playlist_queue_loading_mix">載入混合音樂中……</string>
+  <string name="morphe_native_playlist_queue_loading_mix">正在載入混合音樂……</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">從直播形象開啟頻道</string>
   <string name="morphe_open_channel_of_live_avatar_summary">防止點擊頻道形象時開啟直播</string>
@@ -870,6 +870,10 @@ Second \"item\" text"</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">字幕</string>
   <string name="morphe_captions_screen_summary">管理自動字幕和字幕 Cookie</string>
+  <string name="morphe_captions_languages_title">語言與翻譯</string>
+  <string name="morphe_captions_presentation_title">外觀與行為</string>
+  <string name="morphe_captions_advanced_title">進階</string>
+  <string name="morphe_captions_advanced_summary">Cookie與轉錄選項</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">自動字幕可見度</string>
   <string name="morphe_auto_captions_style_entry_1">總是顯示</string>
@@ -878,10 +882,10 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_entry_4">靜音時顯示</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">偏好字幕語言</string>
-  <string name="morphe_preferred_caption_language_summary">先選取提供者提供的字幕，再自動翻譯成偏好語言</string>
+  <string name="morphe_preferred_caption_language_summary">自動選取每個影片的字幕語言。</string>
   <string name="morphe_preferred_caption_language_entry_off">關閉</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">新增額外自動翻譯語言</string>
+  <string name="morphe_auto_translate_additional_languages_title">額外自動翻譯語言</string>
   <string name="morphe_auto_translate_additional_languages_summary">在自動翻譯選單中增加更多語言</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">設定字幕 Cookie</string>
@@ -899,6 +903,17 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">修正轉錄稿</string>
   <string name="morphe_fix_transcript_summary">解決可能阻止載入字幕的預先檢查失敗問題</string>
   <string name="morphe_captions_in_pip_title">在畫中畫模式下顯示字幕</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">字幕大小</string>
+  <string name="morphe_caption_scale_summary">套用於單語言和雙語字幕</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">穩定字幕區塊</string>
+  <string name="morphe_stable_caption_blocks_summary">將單一語言的自動字幕整合為穩定、易讀的區塊。雙語字幕則會使用區塊。有些詞彙可能在被說出之前就出現。</string>
+  <string name="morphe_secondary_caption_language_title">次要字幕語言</string>
+  <string name="morphe_secondary_caption_language_summary">顯示第二種語言的字幕，並在字幕功能表中新增雙語字幕切換開關。</string>
+  <string name="morphe_dual_captions_enabled_title">雙語字幕</string>
+  <string name="morphe_caption_block_translation_failed">部份字幕無法提供。顯示可用的字幕。</string>
+  <string name="morphe_caption_blocks_too_large">兩個字幕語言無法在這個播放器中完整顯示。顯示主要語言。</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">導覽列按鈕</string>
   <string name="morphe_navigation_buttons_screen_summary">選擇要在工具列中顯示哪些元件</string>
@@ -1166,10 +1181,10 @@ Second \"item\" text"</string>
 • Shorts 將在一般播放器中開啟
 • 顯示未摺疊的舊版影片動作欄"</string>
   <string name="morphe_tablet_layout_in_player_title">在播放器中啟用平板版面配置</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"還原舊版播放器版面
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"還原舊版的播放器版面配置
 
-限制：如果關閉「還原舊版影片動作列」，則「更多影片」疊加層可能無法使用。"</string>
+限制：若「影片操作列版面配置」非為「傳統」，則「更多影片」疊層可能無法使用"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 恢復舊版字幕行為</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 復原舊版播放清單</string>
@@ -1528,10 +1543,11 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">播放器 JavaScript 變種</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">在「Stats for nerds」中顯示偽造狀態</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">還原舊版影片動作列</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"修正影片操作按鈕無法隱藏的問題
-
-限制：還原為舊式「更多影片」覆蓋畫面"</string>
+  <string name="morphe_video_action_bar_layout_title">影片操作列版面配置</string>
+  <string name="morphe_video_action_bar_layout_entry_1">預設</string>
+  <string name="morphe_video_action_bar_layout_entry_2">傳統</string>
+  <string name="morphe_video_action_bar_layout_entry_3">極簡</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">限制：「傳統」會還原至舊款的「更多影片」疊層</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">播放器圖示樣式</string>
   <string name="morphe_player_icon_style_entry_auto">自動</string>
@@ -1699,4 +1715,27 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_niconico_comments_max_length_title">最大評論長度</string>
   <string name="morphe_niconico_comments_max_length_summary">隱藏字數超過此限制的評論。每個表情符號計為一個字元</string>
   <string name="morphe_niconico_comments_max_length_no_limit">無限制</string>
+  <string name="morphe_live_chat_translate_screen_title">直播聊天翻譯</string>
+  <string name="morphe_live_chat_translate_screen_summary">翻譯直播聊天與直播重播訊息</string>
+  <string name="morphe_live_chat_translate_title">翻譯直播聊天</string>
+  <string name="morphe_live_chat_translate_summary">當訊息顯示在螢幕上時，翻譯直播聊天和直播聊天重播訊息</string>
+  <string name="morphe_live_chat_translate_language_title">翻譯語言</string>
+  <string name="morphe_live_chat_translate_exclude_title">排除的語言</string>
+  <string name="morphe_live_chat_translate_exclude_summary">以逗號分隔的語言代碼，例如 id、en。這些語言的訊息不會做翻譯。</string>
+  <string name="morphe_live_chat_translate_copy_button_title">顯示複製訊息按鈕</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">在每個聊天訊息中新增一個複製按鈕</string>
+  <string name="morphe_live_chat_translate_copied">訊息已複製到剪貼簿</string>
+  <string name="morphe_live_chat_translate_style_title">翻譯風格</string>
+  <string name="morphe_live_chat_translate_style_translated_only">僅譯文</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">原文（已翻譯）</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(已翻譯) 原文</string>
+  <string name="morphe_live_chat_translate_bold_title">粗體翻譯文字</string>
+  <string name="morphe_live_chat_translate_bold_summary">顯示加粗的翻譯後文字</string>
+  <string name="morphe_live_chat_translate_use_color_title">自訂翻譯文字顏色</string>
+  <string name="morphe_live_chat_translate_use_color_summary">將自訂顏色套用到翻譯的文字</string>
+  <string name="morphe_live_chat_translate_color_title">翻譯文字顏色</string>
+  <string name="morphe_live_chat_translate_color_summary">設定翻譯文字的十六進位顏色</string>
+  <string name="morphe_live_chat_translate_max_length_title">最長訊息長度</string>
+  <string name="morphe_live_chat_translate_max_length_summary">較長的消息將不翻譯顯示</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">無限制</string>
 </resources>

@@ -62,7 +62,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_account_menu_title">Kütüphane / Siz alt menü filtresini etkinleştir</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Kütüphane / Siz alt menü filtresi</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Filtrelemek istediğiniz Kütüphane / Siz alt menü adlarını yeni satırlarla ayırarak girin</string>
-  <string name="morphe_hide_account_menu_downloads_title">İndirmeleri Gizle</string>
+  <string name="morphe_hide_account_menu_downloads_title">İndirmeleri gizle</string>
   <string name="morphe_hide_album_cards_title">Albüm kartlarını gizle</string>
   <string name="morphe_hide_album_cards_summary">Sanatçı açıklamasının altındaki albüm kartlarını gizler</string>
   <string name="morphe_hide_artist_cards_title">Sanatçı kartlarını gizle</string>
@@ -447,7 +447,7 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_feed_long_press_menu_title">Video menüsünü açmak için dokunun ve basılı tutun</string>
   <string name="morphe_feed_long_press_menu_summary">Akış video üzerinde herhangi bir yere dokunup basılı tutmak, menüyü açar</string>
   <string name="morphe_feed_watch_later_button_title">Küçük resimlerde Daha Sonra İzle düğmesini göster</string>
-  <string name="morphe_feed_watch_later_button_summary">Akış videolarının küçük resimlerinde bir Daha Sonra İzle düğmesi gösterilir. Dokunulup basılı tutulduğunda Çalma listesine kaydet açılır</string>
+  <string name="morphe_feed_watch_later_button_summary">Akış videolarının küçük resimlerinde, video kaydedilmişse bir onay işaretiyle birlikte bir \'Daha sonra izle\' düğmesi gösterilir. Buna dokunmak videoyu kaydeder veya kaldırır, basılı tutmak ise \'Oynatma listesine kaydet\' seçeneğini açar</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Gönderi görsellerini indir</string>
   <string name="morphe_post_image_download_summary">Görsel veya GIF içeren gönderilerin Paylaş düğmesinin yanında bir indirme düğmesi gösterilir ve menülerine bir indirme öğesi eklenir</string>
@@ -610,7 +610,7 @@ API anahtarınız asla paylaşılmamalıdır. Ona erişimi olan herkes OpenRoute
   <string name="morphe_pip_button_flyout_name">Resim içinde resme geç</string>
   <!-- interaction.pictureinpicture.changePipActionsPatch -->
   <string name="morphe_pip_actions_screen_title">Resim içinde resim işlemleri</string>
-  <string name="morphe_pip_actions_screen_summary">Resim içinde resimde gösterilen düğmeleri değiştirin</string>
+  <string name="morphe_pip_actions_screen_summary">Resim içinde resim modunda gösterilen düğmeleri değiştirin</string>
   <string name="morphe_pip_action_left_title">Sol düğme</string>
   <string name="morphe_pip_action_center_title">Orta düğme</string>
   <string name="morphe_pip_action_right_title">Sağ düğme</string>
@@ -871,6 +871,10 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Altyazılar</string>
   <string name="morphe_captions_screen_summary">Otomatik altyazıları ve altyazı çerezlerini yönetin</string>
+  <string name="morphe_captions_languages_title">Dil ve çeviri</string>
+  <string name="morphe_captions_presentation_title">Görünüm ve davranış</string>
+  <string name="morphe_captions_advanced_title">Gelişmiş</string>
+  <string name="morphe_captions_advanced_summary">Çerez ve transkript seçenekleri</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Otomatik altyazı görünürlüğü</string>
   <string name="morphe_auto_captions_style_entry_1">Her zaman göster</string>
@@ -879,8 +883,10 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_auto_captions_style_entry_4">Ses kapatıldığında göster</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Tercih edilen altyazı dili</string>
+  <string name="morphe_preferred_caption_language_summary">Her video için otomatik olarak bir altyazı dili seçer</string>
   <string name="morphe_preferred_caption_language_entry_off">Kapalı</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Ek otomatik çeviri dilleri</string>
   <string name="morphe_auto_translate_additional_languages_summary">Otomatik çeviri menüsüne daha fazla dil ekler</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Altyazı çerezlerini ayarla</string>
@@ -898,6 +904,17 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_fix_transcript_title">Transkript\'i düzelt</string>
   <string name="morphe_fix_transcript_summary">Transkriptin yüklenmesini engelleyebilecek bir ön koşul denetimi hatasını giderir</string>
   <string name="morphe_captions_in_pip_title">Resim içinde resim modunda altyazıları göster</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Altyazı boyutu</string>
+  <string name="morphe_caption_scale_summary">Tek ve iki dilli altyazılara uygulanır</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">Sabit altyazı blokları</string>
+  <string name="morphe_stable_caption_blocks_summary">Tek dilli otomatik altyazıları düzgün ve okunabilir bloklar halinde grupla. İki dilli altyazılar her zaman blokları kullanır. Bazı kelimeler konuşulmadan önce gösterilebilir</string>
+  <string name="morphe_secondary_caption_language_title">İkincil altyazı dili</string>
+  <string name="morphe_secondary_caption_language_summary">Altyazılarla birlikte ikinci bir dil gösterir ve altyazılar menüsüne İki dilli altyazılar seçeneği ekler</string>
+  <string name="morphe_dual_captions_enabled_title">İki dilli altyazılar</string>
+  <string name="morphe_caption_block_translation_failed">Bazı altyazı çevirileri kullanılamıyor. Kullanılabilir altyazılar gösteriliyor.</string>
+  <string name="morphe_caption_blocks_too_large">Her iki altyazı dili bu oynatıcıya sığmıyor. Birincil dil gösteriliyor.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Gezinme düğmeleri</string>
   <string name="morphe_navigation_buttons_screen_summary">Alt gezinme çubuğunda hangi düğmelerin görüneceğini seçin</string>
@@ -1165,10 +1182,10 @@ Otomotiv düzeni
 • Shorts, normal oynatıcıda açılır
 • Daraltılmamış eski video eylem çubuğu gösterilir"</string>
   <string name="morphe_tablet_layout_in_player_title">Oynatıcıda tablet düzenini etkinleştir</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Eski oynatıcı düzenini geri yükler
 
-Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha fazla video' katmanı kullanılamayabilir"</string>
+Sınırlama: 'Video eylem çubuğu düzeni' Klasik değilse, 'Daha fazla video' katmanı kullanılamayabilir"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Eski altyazı davranışını geri yükle</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Oynatma listesine kaydetme için eski düzeni geri getir</string>
@@ -1529,10 +1546,11 @@ AV1 ile video oynatma takılabilir veya kare atlayabilir"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Oynatıcı JavaScript varyantı</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'Meraklısı için istatistikler\'de taklit göster</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Eski video eylem çubuğunu geri yükle</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Video eylem düğmelerinin gizlenememesi sorununu düzeltir
-
-Sınırlama: Eski stil 'Diğer videolar' katmanına geri döner"</string>
+  <string name="morphe_video_action_bar_layout_title">Video eylem çubuğu düzeni</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Varsayılan</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasik</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Minimalist</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Sınırlama: Klasik, eski stil \'Daha fazla video\' katmanına geri döner</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Oynatıcı simge stili</string>
   <string name="morphe_player_icon_style_entry_auto">Otomatik</string>
@@ -1700,4 +1718,27 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_niconico_comments_max_length_title">Maksimum yorum uzunluğu</string>
   <string name="morphe_niconico_comments_max_length_summary">Bunu aşan karakter sayısına sahip yorumları gizler. Her emoji bir karakter olarak sayılır</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sınırsız</string>
+  <string name="morphe_live_chat_translate_screen_title">Canlı sohbet çevirisi</string>
+  <string name="morphe_live_chat_translate_screen_summary">Canlı sohbeti ve sohbet tekrar mesajlarını çevir</string>
+  <string name="morphe_live_chat_translate_title">Canlı sohbeti çevir</string>
+  <string name="morphe_live_chat_translate_summary">Canlı sohbet ve sohbet tekrar mesajlarını ekrana geldiklerinde çevirir</string>
+  <string name="morphe_live_chat_translate_language_title">Çeviri dili</string>
+  <string name="morphe_live_chat_translate_exclude_title">Hariç tutulan diller</string>
+  <string name="morphe_live_chat_translate_exclude_summary">id,en gibi virgüllerle ayrılmış dil kodları. Bu dillerdeki mesajlar çevrilmez</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Mesajı kopyala düğmesini göster</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Her sohbet mesajına küçük bir kopyalama düğmesi ekler</string>
+  <string name="morphe_live_chat_translate_copied">Mesaj panoya kopyalandı</string>
+  <string name="morphe_live_chat_translate_style_title">Çeviri tasarımı</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Sadece çevrilmiş</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Orijinal (çevrilmiş)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Çevrilmiş) orijinal</string>
+  <string name="morphe_live_chat_translate_bold_title">Kalın çevrilmiş metin</string>
+  <string name="morphe_live_chat_translate_bold_summary">Çevrilmiş metni kalın harflerle göster</string>
+  <string name="morphe_live_chat_translate_use_color_title">Özel çevrilmiş metin rengi</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Çevrilmiş metne özel bir renk uygular</string>
+  <string name="morphe_live_chat_translate_color_title">Çevrilmiş metin rengi</string>
+  <string name="morphe_live_chat_translate_color_summary">Çevrilmiş metnin hex rengini ayarla</string>
+  <string name="morphe_live_chat_translate_max_length_title">Maksimum mesaj uzunluğu</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Daha uzun mesajlar çevrilmeden gösterilir</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Limitsiz</string>
 </resources>
