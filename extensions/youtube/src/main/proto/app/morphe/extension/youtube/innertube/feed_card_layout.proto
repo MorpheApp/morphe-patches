@@ -34,6 +34,8 @@ message ElementModel {
     VideoWithContextModel videoWithContextModel = 232954548;
     // Feed card video (lockup.eml).
     LockupModel lockupModel = 413471385;
+    // Action bar of the watch page that is not collapsed, such as on tablets (video_action_bar.eml).
+    VideoActionBarModel videoActionBarModel = 389155117;
     // Header of the shelves, such as the Shorts shelf (shelf_header.eml).
     ShelfHeaderModel shelfHeaderModel = 229393850;
     // Horizontal shelf of videos, with its header (horizontal_shelf.eml).
@@ -200,6 +202,14 @@ message LockupViewModelHolder {
     VideoActionBarViewModel videoActionBarViewModel = 2185;
 }
 
+message VideoActionBarModel {
+    VideoActionBarData videoActionBarData = 17;
+}
+
+message VideoActionBarData {
+    repeated VideoActionBarItem actions = 1;
+}
+
 // Action bar of the watch page, which shows the like button, the share button and the others.
 message VideoActionBarViewModel {
     repeated VideoActionBarItem actions = 1;
@@ -234,6 +244,9 @@ message VideoActionBarItemContent {
     ButtonViewModel button = 461054335;
     VideoActionBarOverflow overflow = 37098; // Minimal layout.
     VideoActionBarDownloadButton downloadButton = 33561776;
+    optional bytes accountLinkButton = 492031756;
+    optional bytes clipButton = 490025863;
+    optional bytes menuHeader = 15469; // Item of the overflow menu that is not a button.
 }
 
 message VideoActionBarDownloadButton {
