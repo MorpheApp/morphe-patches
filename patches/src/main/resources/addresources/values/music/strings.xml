@@ -348,6 +348,44 @@ SABR playback (Spoof video streams turned off)"</string>
     <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
     <string name="morphe_music_playlist_track_tap_added_to_queue">Added to queue</string>
 
+    <!-- layout.playlisttags.playlistTagsPatch -->
+    <string name="morphe_music_playlist_tags_screen_title">Playlist tags</string>
+    <string name="morphe_music_playlist_tags_screen_summary">Tag playlists and filter the Library by tag</string>
+    <string name="morphe_music_playlist_tags_title">Enable playlist tags</string>
+    <string name="morphe_music_playlist_tags_summary">Adds a Tags item to the menu of playlists, and a Tags filter button next to the sort button of the Library</string>
+    <string name="morphe_music_playlist_tags_manage_title">Manage playlist tags</string>
+    <string name="morphe_music_playlist_tags_manage_summary">Create, rename and delete tags, and tag the playlists seen in your Library</string>
+    <!-- Title of the row added to the menu of a playlist. -->
+    <string name="morphe_music_playlist_tags_menu_item">Tags</string>
+    <string name="morphe_music_playlist_tags_menu_item_none">No tags</string>
+    <string name="morphe_music_playlist_tags_filter_button">Tags</string>
+    <!-- %s is the name of the tag. -->
+    <string name="morphe_music_playlist_tags_filter_button_only">Tag: %s</string>
+    <!-- %s is the number of hidden tags. -->
+    <string name="morphe_music_playlist_tags_filter_button_hidden">Tags (%s hidden)</string>
+    <!-- %s is the name of the playlist. -->
+    <string name="morphe_music_playlist_tags_assign_title">Tags for %s</string>
+    <string name="morphe_music_playlist_tags_new_tag_hint">New tag</string>
+    <string name="morphe_music_playlist_tags_playlist_count_one">1 playlist</string>
+    <!-- %s is the number of playlists that have the tag. -->
+    <string name="morphe_music_playlist_tags_playlist_count">%s playlists</string>
+    <!-- %s is the name of the tag. -->
+    <string name="morphe_music_playlist_tags_tag_exists">A tag named %s already exists</string>
+    <string name="morphe_music_playlist_tags_filter_title">Filter by tag</string>
+    <string name="morphe_music_playlist_tags_filter_show_only">Show only</string>
+    <string name="morphe_music_playlist_tags_filter_all">All playlists</string>
+    <string name="morphe_music_playlist_tags_filter_visible">Visible tags</string>
+    <string name="morphe_music_playlist_tags_manage">Manage</string>
+    <string name="morphe_music_playlist_tags_none">No tags yet. Long press a playlist and choose Tags to create one</string>
+    <string name="morphe_music_playlist_tags_section_tags">Tags</string>
+    <string name="morphe_music_playlist_tags_section_playlists">Playlists</string>
+    <string name="morphe_music_playlist_tags_no_playlists">Open the Library once so your playlists appear here</string>
+    <string name="morphe_music_playlist_tags_new_tag">New tag</string>
+    <string name="morphe_music_playlist_tags_edit_tag_title">Edit tag</string>
+    <string name="morphe_music_playlist_tags_rename">Rename</string>
+    <string name="morphe_music_playlist_tags_delete">Delete</string>
+    <string name="morphe_music_playlist_tags_hidden">Hidden</string>
+
     <!-- layout.buttons.hideButtonsPatch -->
     <string name="morphe_music_hide_cast_button_title">Hide Cast button</string>
     <string name="morphe_music_hide_history_button_title">Hide History button</string>

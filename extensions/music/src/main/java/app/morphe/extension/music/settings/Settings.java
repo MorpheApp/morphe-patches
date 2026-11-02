@@ -99,6 +99,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting PLAYBACK_SPEED = new IntegerSetting("morphe_music_playback_speed", 100);
     public static final BooleanSetting PLAYBACK_SPEED_CHANGE_PITCH = new BooleanSetting("morphe_music_playback_speed_change_pitch", FALSE);
     public static final EnumSetting<TapAction> PLAYLIST_TRACK_TAP_ACTION = new EnumSetting<>("morphe_music_playlist_track_tap_action", TapAction.DEFAULT);
+
+    // Playlist tags
+    public static final BooleanSetting PLAYLIST_TAGS = new BooleanSetting("morphe_music_playlist_tags", FALSE, true);
+    public static final StringSetting PLAYLIST_TAGS_DATA = new StringSetting("morphe_music_playlist_tags_data", "", false, true);
+    public static final StringSetting PLAYLIST_TAGS_KNOWN_PLAYLISTS = new StringSetting("morphe_music_playlist_tags_known_playlists", "", false, false);
     public static final BooleanSetting REMEMBER_REPEAT_STATE = new BooleanSetting("morphe_music_remember_repeat_state", FALSE, true, parentNot(HIDE_REPEAT_BUTTON));
     public static final BooleanSetting REMEMBER_SHUFFLE_STATE = new BooleanSetting("morphe_music_remember_shuffle_state", FALSE, true, parentNot(HIDE_SHUFFLE_BUTTON));
     public static final BooleanSetting SAVED_SHUFFLE_STATE = new BooleanSetting("morphe_music_saved_shuffle_state", FALSE, parent(REMEMBER_SHUFFLE_STATE));
