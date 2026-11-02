@@ -214,6 +214,41 @@ internal object NavigationBarBlurDrawFingerprint : Fingerprint(
 )
 
 /**
+ * Gives the blurred background of the navigation bar its tint color, read from the theme.
+ * The last filter calls the method that makes the tint paint, [NavigationBarBlurTintFingerprint].
+ */
+internal object NavigationBarBlurTintCallFingerprint : Fingerprint(
+    definingClass = PIVOT_BAR_CLASS,
+    filters = listOf(
+        methodCall(smali = "Landroid/content/res/TypedArray;->getColor(II)I"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("I"),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            smali = "$PIVOT_BAR_CLASS->setBackground(Landroid/graphics/drawable/Drawable;)V",
+            location = MatchAfterWithin(3)
+        )
+    )
+)
+
+/**
+ * Makes the tint paint of the blurred background of the navigation bar, drawn over the blur.
+ * Resolved against the method called by [NavigationBarBlurTintCallFingerprint].
+ */
+internal object NavigationBarBlurTintFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("I"),
+    filters = listOf(
+        methodCall(smali = "Landroid/graphics/Paint;->setColor(I)V"),
+        methodCall(smali = "Landroid/graphics/Paint;->setAlpha(I)V", location = MatchAfterWithin(4))
+    )
+)
+
+/**
  * Applies the system navigation bar color of the app theme to the window.
  */
 internal object SystemNavigationBarColorFingerprint : Fingerprint(

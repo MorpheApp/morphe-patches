@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -489,7 +490,7 @@ public final class NavigationBarPatch {
     private static final int SLIM_STATUS_BAR = ResourceUtils.getIdentifier(
             ResourceType.ID, "slim_status_bar");
 
-    private static final int PIVOT_BAR = ResourceUtils.getIdentifier(
+    static final int PIVOT_BAR = ResourceUtils.getIdentifier(
             ResourceType.ID, "pivot_bar");
 
     /**
@@ -688,9 +689,16 @@ public final class NavigationBarPatch {
      * @param bottom The bottom padding, the room below the buttons.
      */
     public static int getNavigationBarPadding(View navigationBar, int bottom) {
-        if (!GlassNavigationBar.isEnabled()) return bottom;
-
         return GlassNavigationBar.getFloatingRoom(navigationBar, bottom);
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the app makes the tint paint drawn over the blurred background of the navigation bar.
+     */
+    public static void setNavigationBarBlurTint(Paint tint) {
+        GlassNavigationBar.lightenBlurTint(tint);
     }
 
     /**

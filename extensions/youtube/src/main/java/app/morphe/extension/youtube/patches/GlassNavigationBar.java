@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4338
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -30,16 +30,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
-import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.theme.ThemeUtils;
@@ -62,9 +56,15 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
 @SuppressWarnings("unused")
 public final class GlassNavigationBar {
 
-    private static final int PIVOT_BAR = ResourceUtils.getIdentifier(ResourceType.ID, "pivot_bar");
+    private static final int PIVOT_BAR = NavigationBarPatch.PIVOT_BAR;
 
-    private static final boolean ENABLED = isGlassEnabled();
+    /**
+     * The opaque style wins if both are turned on.
+     */
+    private static final boolean ENABLED = Settings.NAVIGATION_BAR_GLASS.get()
+            && Settings.NAVIGATION_BAR_STYLE.get() != NavigationBarStyle.OPAQUE
+            && !Settings.HIDE_NAVIGATION_BAR.get()
+            && PIVOT_BAR != 0;
 
     /**
      * The views of the navigation buttons, by button.
@@ -100,20 +100,6 @@ public final class GlassNavigationBar {
         }
     }
 
-    private static boolean isGlassEnabled() {
-        try {
-            // The opaque style wins if both are turned on.
-            return NavigationBarPatch.isPatchIncluded()
-                    && Settings.NAVIGATION_BAR_GLASS.get()
-                    && Settings.NAVIGATION_BAR_STYLE.get() != NavigationBarStyle.OPAQUE
-                    && !Settings.HIDE_NAVIGATION_BAR.get()
-                    && PIVOT_BAR != 0;
-        } catch (Exception ex) {
-            Logger.printException(() -> "isGlassEnabled failure", ex);
-            return false;
-        }
-    }
-
     static boolean isEnabled() {
         return ENABLED;
     }
@@ -123,6 +109,12 @@ public final class GlassNavigationBar {
      * so the capsule floats above the bottom of the screen.
      */
     private static final int FLOATING_ROOM = Dim.dp10;
+
+    /**
+     * The most alpha of the tint the app draws over its blurred background.
+     */
+    private static final int LIGHT_BLUR_TINT_MAX_ALPHA = Math.round(0.55f * 255);
+    private static final int DARK_BLUR_TINT_MAX_ALPHA = Math.round(0.35f * 255);
 
     private static boolean floatingRoomLogged;
 
@@ -201,6 +193,23 @@ public final class GlassNavigationBar {
         } catch (Exception ex) {
             Logger.printException(() -> "getFloatingRoom failure", ex);
             return room;
+        }
+    }
+
+    /**
+     * Injection point helper.
+     * <p>
+     * The tint the app draws over its blurred background makes the capsule dark,
+     * so its alpha is lowered and more of the blurred content shows.
+     */
+    static void lightenBlurTint(Paint tint) {
+        if (!ENABLED) return;
+
+        final int alpha = tint.getAlpha();
+        final int maxAlpha = Utils.isDarkModeEnabled() ? DARK_BLUR_TINT_MAX_ALPHA : LIGHT_BLUR_TINT_MAX_ALPHA;
+        if (alpha > maxAlpha && alpha < 255) {
+            Logger.printDebug(() -> "Glass navigation bar blur tint alpha: " + alpha + " -> " + maxAlpha);
+            tint.setAlpha(maxAlpha);
         }
     }
 
@@ -363,15 +372,13 @@ public final class GlassNavigationBar {
         private final View host;
 
         static final int MARGIN_HORIZONTAL = Dim.dp12;
-
-        private final int marginHorizontal = MARGIN_HORIZONTAL;
         /**
          * How far the capsule reaches into the room below the buttons.
          */
-        private final int maxMarginBottom = Dim.dp4;
-        private final int indicatorInset = Dim.dp4;
-        private final int indicatorMaxWidth = Dim.dp(96);
-        private final float strokeWidth = Dim.dp1;
+        private static final int MAX_MARGIN_BOTTOM = Dim.dp4;
+        private static final int INDICATOR_INSET = Dim.dp4;
+        private static final int INDICATOR_MAX_WIDTH = Dim.dp(96);
+        private static final float STROKE_WIDTH = Dim.dp1;
 
         private final Paint shadowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -456,7 +463,7 @@ public final class GlassNavigationBar {
             shadowPaint.setStyle(Paint.Style.FILL);
             shadowPaint.setColor(Color.BLACK);
             strokePaint.setStyle(Paint.Style.STROKE);
-            strokePaint.setStrokeWidth(strokeWidth);
+            strokePaint.setStrokeWidth(STROKE_WIDTH);
             indicatorPaint.setStyle(Paint.Style.FILL);
 
             indicatorAnimator.setDuration(INDICATOR_ANIMATION_MILLISECONDS);
@@ -529,73 +536,11 @@ public final class GlassNavigationBar {
                     ? null
                     : background;
             if (appBackground != null) {
-                lightenAppBackgroundTint(appBackground);
                 appBackground.setCallback(appBackgroundCallback);
                 appBackground.setVisible(true, false);
                 appBackground.setBounds(getBounds());
             }
             invalidateSelf();
-        }
-
-        /**
-         * The blurred background of the app draws the translucent color of the bar over the blur,
-         * which makes the capsule dark. Its alpha is lowered, so more of the blurred content shows.
-         * The color is found with reflection in the fields of the background: paints and colors
-         * that are translucent.
-         */
-        private void lightenAppBackgroundTint(Drawable background) {
-            try {
-                final int maxAlpha = Math.round((style == STYLE_LIGHT ? 0.55f : 0.35f) * 255);
-                List<Integer> paintColors = new ArrayList<>();
-                List<Field> intFields = new ArrayList<>();
-
-                for (Class<?> type = background.getClass();
-                     type != null && !type.getName().startsWith("android.") && !type.getName().startsWith("java.");
-                     type = type.getSuperclass()) {
-                    for (Field field : type.getDeclaredFields()) {
-                        if (Modifier.isStatic(field.getModifiers())) continue;
-                        field.setAccessible(true);
-                        Object value = field.get(background);
-
-                        if (value instanceof Paint paint) {
-                            final int color = paint.getColor();
-                            final int alpha = Color.alpha(color);
-                            Logger.printDebug(() -> "Glass app background paint: " + field.getName()
-                                    + " color: " + Integer.toHexString(color) + " shader: " + paint.getShader());
-                            if (paint.getShader() == null && alpha > maxAlpha && alpha < 255) {
-                                paintColors.add(color);
-                                paint.setColor(withAlpha(color, maxAlpha / 255f));
-                            }
-                        } else if (value instanceof ColorDrawable colorDrawable) {
-                            final int color = colorDrawable.getColor();
-                            final int alpha = Color.alpha(color);
-                            Logger.printDebug(() -> "Glass app background color: " + field.getName()
-                                    + " color: " + Integer.toHexString(color));
-                            if (alpha > maxAlpha && alpha < 255) {
-                                paintColors.add(color);
-                                colorDrawable.setColor(withAlpha(color, maxAlpha / 255f));
-                            }
-                        } else if (field.getType() == int.class) {
-                            intFields.add(field);
-                        }
-                    }
-                }
-
-                // A color the paint is given again before every draw.
-                for (Field field : intFields) {
-                    final int value = field.getInt(background);
-                    final int alpha = Color.alpha(value);
-                    if (alpha > maxAlpha && alpha < 255) {
-                        Logger.printDebug(() -> "Glass app background int: " + field.getName()
-                                + " value: " + Integer.toHexString(value));
-                        if (paintColors.contains(value)) {
-                            field.setInt(background, withAlpha(value, maxAlpha / 255f));
-                        }
-                    }
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "lightenAppBackgroundTint failure", ex);
-            }
         }
 
         @Override
@@ -646,8 +591,8 @@ public final class GlassNavigationBar {
                 // and reaches only slightly into that room, so it floats above the gesture handle.
                 final int bottomRoom = host.getPaddingBottom();
                 final float bottom = bounds.bottom - bottomRoom
-                        + Math.max(0, Math.min(bottomRoom - FLOATING_ROOM, maxMarginBottom));
-                capsule.set(bounds.left + marginHorizontal, bounds.top, bounds.right - marginHorizontal, bottom);
+                        + Math.max(0, Math.min(bottomRoom - FLOATING_ROOM, MAX_MARGIN_BOTTOM));
+                capsule.set(bounds.left + MARGIN_HORIZONTAL, bounds.top, bounds.right - MARGIN_HORIZONTAL, bottom);
                 if (capsule.width() <= 0 || capsule.height() <= 0) return;
 
                 final float radius = capsule.height() / 2;
@@ -656,8 +601,8 @@ public final class GlassNavigationBar {
                 // Soft shadow below the capsule.
                 for (int i = SHADOW_LAYERS; i >= 1; i--) {
                     scratch.set(capsule);
-                    scratch.inset(-i * 0.5f * strokeWidth, -i * 0.5f * strokeWidth);
-                    scratch.offset(0, i * strokeWidth);
+                    scratch.inset(-i * 0.5f * STROKE_WIDTH, -i * 0.5f * STROKE_WIDTH);
+                    scratch.offset(0, i * STROKE_WIDTH);
                     shadowPaint.setAlpha(shadowAlpha / i);
                     final float shadowRadius = scratch.height() / 2;
                     canvas.drawRoundRect(scratch, shadowRadius, shadowRadius, shadowPaint);
@@ -692,7 +637,7 @@ public final class GlassNavigationBar {
                 drawIndicator(canvas);
 
                 scratch.set(capsule);
-                scratch.inset(strokeWidth / 2, strokeWidth / 2);
+                scratch.inset(STROKE_WIDTH / 2, STROKE_WIDTH / 2);
                 final float strokeRadius = scratch.height() / 2;
                 canvas.drawRoundRect(scratch, strokeRadius, strokeRadius, strokePaint);
             } catch (Exception ex) {
@@ -718,14 +663,14 @@ public final class GlassNavigationBar {
                 view = parentView;
             }
 
-            final float minLeft = capsule.left + indicatorInset;
-            final float maxRight = capsule.right - indicatorInset;
-            float targetLeft = tabLeft + indicatorInset;
-            float targetRight = tabLeft + tab.getWidth() - indicatorInset;
-            if (targetRight - targetLeft > indicatorMaxWidth) {
+            final float minLeft = capsule.left + INDICATOR_INSET;
+            final float maxRight = capsule.right - INDICATOR_INSET;
+            float targetLeft = tabLeft + INDICATOR_INSET;
+            float targetRight = tabLeft + tab.getWidth() - INDICATOR_INSET;
+            if (targetRight - targetLeft > INDICATOR_MAX_WIDTH) {
                 final float center = (targetLeft + targetRight) / 2;
-                targetLeft = center - indicatorMaxWidth / 2f;
-                targetRight = center + indicatorMaxWidth / 2f;
+                targetLeft = center - INDICATOR_MAX_WIDTH / 2f;
+                targetRight = center + INDICATOR_MAX_WIDTH / 2f;
             }
             targetLeft = Math.max(targetLeft, minLeft);
             targetRight = Math.min(targetRight, maxRight);
@@ -739,7 +684,7 @@ public final class GlassNavigationBar {
             }
             if (right - left <= 0) return;
 
-            scratch.set(left, capsule.top + indicatorInset, right, capsule.bottom - indicatorInset);
+            scratch.set(left, capsule.top + INDICATOR_INSET, right, capsule.bottom - INDICATOR_INSET);
             if (scratch.height() <= 0) return;
             final float radius = scratch.height() / 2;
             canvas.drawRoundRect(scratch, radius, radius, indicatorPaint);

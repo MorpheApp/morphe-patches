@@ -373,33 +373,45 @@ val navigationBarPatch = bytecodePatch(
                 // so the room is kept wherever the padding is set.
                 // The room is added to the height when the bar is measured, also while the app
                 // animates the height of the bar to hide it.
-                if (methods.none { it.name == "onMeasure" }) {
+                addBridge(
+                    "onMeasure", listOf("I", "I"), "V", 3,
+                    """
+                        invoke-static { p0, p2 }, $EXTENSION_CLASS->getNavigationBarHeightMeasureSpec(Landroid/view/View;I)I
+                        move-result p2
+                        invoke-super { p0, p1, p2 }, $superclass->onMeasure(II)V
+                        return-void
+                    """,
+                    AccessFlags.PROTECTED.value
+                )
+
+                listOf("setPadding", "setPaddingRelative").forEach { name ->
                     addBridge(
-                        "onMeasure", listOf("I", "I"), "V", 3,
+                        name, listOf("I", "I", "I", "I"), "V", 5,
                         """
-                            invoke-static { p0, p2 }, $EXTENSION_CLASS->getNavigationBarHeightMeasureSpec(Landroid/view/View;I)I
-                            move-result p2
-                            invoke-super { p0, p1, p2 }, $superclass->onMeasure(II)V
+                            invoke-static { p0, p4 }, $EXTENSION_CLASS->getNavigationBarPadding(Landroid/view/View;I)I
+                            move-result p4
+                            invoke-super { p0, p1, p2, p3, p4 }, $superclass->$name(IIII)V
                             return-void
                         """,
-                        AccessFlags.PROTECTED.value
+                        AccessFlags.PUBLIC.value
                     )
                 }
+            }
+        }
 
-                if (methods.none { it.name == "setPadding" || it.name == "setPaddingRelative" }) {
-                    listOf("setPadding", "setPaddingRelative").forEach { name ->
-                        addBridge(
-                            name, listOf("I", "I", "I", "I"), "V", 5,
-                            """
-                                invoke-static { p0, p4 }, $EXTENSION_CLASS->getNavigationBarPadding(Landroid/view/View;I)I
-                                move-result p4
-                                invoke-super { p0, p1, p2, p3, p4 }, $superclass->$name(IIII)V
-                                return-void
-                            """,
-                            AccessFlags.PUBLIC.value
-                        )
-                    }
-                }
+        // The glass style draws the blurred background of the app inside the capsule. The tint
+        // the app draws over the blur makes the capsule dark, so its alpha is lowered.
+        NavigationBarBlurTintFingerprint.match(
+            NavigationBarBlurTintCallFingerprint.instructionMatches[2].getMethodCalled()
+        ).let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val paintRegister = getInstruction<FiveRegisterInstruction>(index).registerC
+
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$paintRegister }, $EXTENSION_CLASS->setNavigationBarBlurTint(Landroid/graphics/Paint;)V"
+                )
             }
         }
 
