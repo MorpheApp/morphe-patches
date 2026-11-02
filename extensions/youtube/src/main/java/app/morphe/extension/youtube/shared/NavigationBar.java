@@ -667,6 +667,7 @@ public final class NavigationBar {
          * Only shown when 'Show Settings' is turned on.
          */
         SETTINGS("SETTINGS", "SETTINGS_CAIRO"),
+        WATCH_LATER("WATCH_LATER", "WATCH_LATER_FILLED", "WATCH_LATER_CAIRO"),
         /**
          * Only shown when 'Show Series in navigation bar' is turned on.
          */
@@ -706,7 +707,7 @@ public final class NavigationBar {
          */
         boolean closesSearch() {
             return this == HOME || this == SHORTS || this == SUBSCRIPTIONS
-                    || this == NOTIFICATIONS || this == SERIES || this == LIBRARY;
+                    || this == NOTIFICATIONS || this == SERIES || this == WATCH_LATER || this == LIBRARY;
         }
 
         /**

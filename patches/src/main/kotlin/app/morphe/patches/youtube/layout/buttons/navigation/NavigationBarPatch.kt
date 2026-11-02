@@ -190,6 +190,8 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_hide_notifications_button"),
             SwitchPreference("morphe_show_search_button"),
             ListPreference("morphe_show_search_button_index"),
+            SwitchPreference("morphe_show_watch_later_button"),
+            ListPreference("morphe_show_watch_later_button_index"),
             SwitchPreference("morphe_show_settings_button"),
             ListPreference("morphe_show_settings_button_index"),
             SwitchPreference("morphe_show_settings_button_type", summary = true),
@@ -542,12 +544,65 @@ val navigationBarPatch = bytecodePatch(
                         invoke-static { v$pivotBarRendererConstructorStartRegister }, $EXTENSION_CLASS->setPivotBarSettingsRenderer(Ljava/lang/Object;)V
                         :ignore_settings
         
-                        # Restore MessageLite register one last time for safety
+                        # Watch Later keeps a native browse endpoint, parsed with the host registry.
+                        move-object/16 v$messageLiteRegister, v$backupRegister
+                        invoke-static { v$messageLiteRegister }, $EXTENSION_CLASS->captureWatchLaterPivotBarRenderer(Lcom/google/protobuf/MessageLite;)V
+
+                        # Restore the original Home renderer.
                         move-object/16 v$messageLiteRegister, v$backupRegister
                         nop
                     """
                 )
             }
+        }
+
+        // Use the whole native factory, as Series does. Its constructor also receives a decoded
+        // endpoint and tab identity, so copying Home's constructor arguments would still open Home.
+        PivotBarRendererFingerprint.method.let { factory ->
+            val wrapperType = factory.parameterTypes.single().toString()
+            val defaultInstance = classDefBy(wrapperType).fields.single {
+                it.type == wrapperType && AccessFlags.STATIC.isSet(it.accessFlags)
+            }
+            mutableClassDefBy(EXTENSION_CLASS).apply {
+                methods.remove(methods.first { it.name == "buildWatchLaterPivotBarRenderer" })
+                addBridge(
+                    "buildWatchLaterPivotBarRenderer", listOf("[B"), "Ljava/lang/Object;", 3,
+                    """
+                        sget-object v0, $defaultInstance
+                        invoke-static { }, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
+                        move-result-object v1
+                        invoke-static { v0, p0, v1 }, ${parseByteArrayWithRegistryMethodRef.get()!!}
+                        move-result-object v0
+                        check-cast v0, $wrapperType
+                        invoke-static { v0 }, $factory
+                        move-result-object v0
+                        const/4 v1, 0x0
+                        invoke-virtual { v0, v1 }, ${factory.returnType}->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+                        move-result-object v0
+                        return-object v0
+                    """,
+                    accessFlags = AccessFlags.PRIVATE.value or AccessFlags.STATIC.value
+                )
+            }
+        }
+
+        // Identify an already inserted Watch Later tab even if its native wrapper was rebuilt.
+        PivotBarRendererFingerprint.classDef.apply {
+            val rendererField = fields.first { it.type == "Lcom/google/protobuf/MessageLite;" }
+            val rendererType = PivotBarRendererFingerprint.instructionMatches[2]
+                .instruction.getReference<TypeReference>()!!.type
+            interfaces.add("Lapp/morphe/extension/youtube/patches/WatchLaterNavigation\$Renderer;")
+            addBridge(
+                "patch_getWatchLaterPivotBarItemRenderer", listOf(), "Lcom/google/protobuf/MessageLite;", 3,
+                """
+                    iget-object v0, p0, $rendererField
+                    instance-of v1, v0, $rendererType
+                    if-nez v1, :return
+                    const/4 v0, 0x0
+                    :return
+                    return-object v0
+                """
+            )
         }
 
         PivotBarRendererListFingerprint.let {

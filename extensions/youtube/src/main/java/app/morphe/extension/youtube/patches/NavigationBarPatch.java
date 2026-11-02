@@ -33,6 +33,7 @@ import androidx.annotation.Nullable;
 
 import com.google.android.apps.youtube.app.application.Shell_SettingsActivity;
 import com.google.android.gms.common.api.GoogleApiActivity;
+import com.google.protobuf.ByteString;
 import com.google.protobuf.ExtensionRegistryLite;
 import com.google.protobuf.MessageLite;
 
@@ -64,6 +65,7 @@ import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationMo
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesSwitcherRendererHolder;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationEndpoint;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemBytes;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.RendererAccessibilityData;
 import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
@@ -689,6 +691,28 @@ public final class NavigationBarPatch {
 
     private static Object pivotBarSettingsRenderer = null;
 
+    private static final boolean SHOW_WATCH_LATER_BUTTON = Settings.SHOW_WATCH_LATER_BUTTON.get();
+    private static Object pivotBarWatchLaterRenderer = null;
+
+    /** Injection point. Rebuild all native constructor arguments, not just the stored proto. */
+    public static void captureWatchLaterPivotBarRenderer(MessageLite original) {
+        if (!SHOW_WATCH_LATER_BUTTON) return;
+        try {
+            byte[] bytes = WatchLaterNavigation.transform(original.toByteArray(),
+                    str("morphe_watch_later_navigation_label"));
+            if (bytes != null) {
+                pivotBarWatchLaterRenderer = buildWatchLaterPivotBarRenderer(PivotBarItemBytes.newBuilder()
+                        .setPivotBarItemRenderer(ByteString.copyFrom(bytes)).build().toByteArray());
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to create Watch Later navigation tab", ex);
+        }
+    }
+
+    private static Object buildWatchLaterPivotBarRenderer(byte[] bytes) {
+        return null; // Modified during patching to parse with the registry and call the native factory.
+    }
+
     private static final View.OnClickListener openSearchBarOnClickListener = v -> {
         if (NavigationBar.isSearchBarActive() && searchQueryRef.get() != null) {
             // If the search bar is active, simply click on the search query view.
@@ -800,8 +824,9 @@ public final class NavigationBarPatch {
 
         boolean addSearch = SHOW_SEARCH_BUTTON && pivotBarRenderer != null;
         boolean addSettings = SHOW_SETTINGS_BUTTON && pivotBarSettingsRenderer != null;
+        boolean addWatchLater = SHOW_WATCH_LATER_BUTTON && pivotBarWatchLaterRenderer != null;
 
-        if (!addSearch && !addSettings) return list;
+        if (!addSearch && !addSettings && !addWatchLater) return list;
 
         List<Object> newList = new ArrayList<>(list);
 
@@ -819,6 +844,14 @@ public final class NavigationBarPatch {
             newList.add(preferredIndex, pivotBarSettingsRenderer);
         }
 
+        if (addWatchLater) {
+            try {
+                return WatchLaterNavigation.insert(newList, pivotBarWatchLaterRenderer,
+                        Settings.SHOW_WATCH_LATER_BUTTON_INDEX.get());
+            } catch (Exception ex) {
+                Logger.printException(() -> "Failed to insert Watch Later navigation tab", ex);
+            }
+        }
         return newList;
     }
 
