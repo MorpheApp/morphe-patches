@@ -7,7 +7,19 @@
 
 package app.morphe.extension.shared.spoof;
 
-import android.net.Uri;
+import static app.morphe.extension.shared.spoof.SabrRequestBody.CLIENT_INFO_CLIENT_NAME_FIELD;
+import static app.morphe.extension.shared.spoof.SabrRequestBody.CLIENT_INFO_CLIENT_VERSION_FIELD;
+import static app.morphe.extension.shared.spoof.SabrRequestBody.CLIENT_INFO_DEVICE_MAKE_FIELD;
+import static app.morphe.extension.shared.spoof.SabrRequestBody.CLIENT_INFO_DEVICE_MODEL_FIELD;
+import static app.morphe.extension.shared.spoof.SabrRequestBody.CLIENT_INFO_GL_FIELD;
+import static app.morphe.extension.shared.spoof.SabrRequestBody.CLIENT_INFO_HL_FIELD;
+import static app.morphe.extension.shared.spoof.SabrRequestBody.CLIENT_INFO_OS_NAME_FIELD;
+import static app.morphe.extension.shared.spoof.SabrRequestBody.CLIENT_INFO_OS_VERSION_FIELD;
+import static app.morphe.extension.shared.spoof.SabrRequestBody.CLIENT_INFO_VISITOR_DATA_FIELD;
+import static app.morphe.extension.shared.spoof.SabrRequestBody.REQUEST_STREAMER_CONTEXT_FIELD;
+import static app.morphe.extension.shared.spoof.SabrRequestBody.STREAMER_CONTEXT_CLIENT_INFO_FIELD;
+import static app.morphe.extension.shared.spoof.SabrRequestBody.STREAMER_CONTEXT_PO_TOKEN_FIELD;
+
 import android.util.Base64;
 
 import androidx.annotation.Nullable;
@@ -16,28 +28,20 @@ import com.google.protobuf.CodedInputStream;
 import com.google.protobuf.WireFormat;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.BaseSettings;
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 /**
  * Debug logging of SABR media requests and responses while spoofing.
- * <p>
- * The app makes the media requests itself, even when it plays the streams of another client.
- * This logs which client the requests name, and the parts of the responses that are not media.
+ * Logs which client the requests name, and the parts of the responses that are not media.
  */
-public final class SabrMediaLogger {
-    // VideoPlaybackAbrRequest.streamerContext.
-    private static final int REQUEST_STREAMER_CONTEXT_FIELD = 19;
-    // StreamerContext.clientInfo and StreamerContext.poToken.
-    private static final int STREAMER_CONTEXT_CLIENT_INFO_FIELD = 1;
-    private static final int STREAMER_CONTEXT_PO_TOKEN_FIELD = 2;
-    // ClientInfo.visitorData. Only whether it is set is logged.
-    private static final int CLIENT_INFO_VISITOR_DATA_FIELD = 14;
-
+final class SabrMediaLogger {
     // UMP parts of media responses that are logged.
     private static final int PART_SABR_ERROR = 44;
     private static final int PART_RELOAD_PLAYER_RESPONSE = 46;
@@ -45,6 +49,12 @@ public final class SabrMediaLogger {
     private static final int PART_SNACKBAR_MESSAGE = 67;
 
     private static final int STREAM_PROTECTION_STATUS_OK = 1;
+
+    /**
+     * Readers of the responses, by the native callbacks of their request.
+     */
+    private static final Map<Object, SabrResponseReader> responseReaders =
+            Collections.synchronizedMap(new WeakHashMap<>());
 
     /**
      * Media requests repeat every few seconds, so a request is logged only if it differs from the last one.
@@ -57,34 +67,57 @@ public final class SabrMediaLogger {
     private SabrMediaLogger() {
     }
 
-    public static boolean isEnabled() {
-        return BaseSettings.DEBUG.get()
-                && SpoofVideoStreamsPatch.isPatchIncluded()
-                && SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
+    static boolean isEnabled() {
+        return BaseSettings.DEBUG.get();
     }
 
     /**
-     * @param url  Url of a SABR media request, which names the client the streams are from.
-     * @param body The request body the app made.
+     * @param urlClient Client the stream url is for.
+     * @param body      The request body that is sent.
+     * @param callbacks Native callbacks of the request, which are also given the response.
      */
-    public static synchronized void logRequest(String url, @Nullable byte[] body) {
+    static void onRequest(@Nullable String urlClient, @Nullable byte[] body, Object callbacks) {
+        logRequest(urlClient, body);
+        responseReaders.put(callbacks, new SabrResponseReader(SabrMediaLogger::logControlPart,
+                PART_SABR_ERROR, PART_RELOAD_PLAYER_RESPONSE, PART_PLAYBACK_START_POLICY, PART_SNACKBAR_MESSAGE));
+    }
+
+    static void onResponseChunk(Object callbacks, ByteBuffer chunk) {
+        if (responseReaders.isEmpty()) {
+            return;
+        }
+        SabrResponseReader reader = responseReaders.get(callbacks);
+        if (reader == null) {
+            return;
+        }
         try {
-            StringBuilder builder = new StringBuilder("url client: ")
-                    .append(Uri.parse(url).getQueryParameter("c"));
+            final int status = reader.read(chunk);
+            if (status >= 0 && status != STREAM_PROTECTION_STATUS_OK) {
+                Logger.printDebug(() -> "SABR stream protection status: " + status);
+            }
+        } catch (Exception ex) {
+            responseReaders.remove(callbacks);
+            Logger.printInfo(() -> "Could not read media response", ex);
+        }
+    }
+
+    private static synchronized void logRequest(@Nullable String urlClient, @Nullable byte[] body) {
+        try {
+            StringBuilder builder = new StringBuilder("url client: ").append(urlClient);
 
             byte[] streamerContext = body == null
                     ? null
-                    : readMessageField(body, REQUEST_STREAMER_CONTEXT_FIELD);
+                    : SabrRequestBody.readMessageField(body, REQUEST_STREAMER_CONTEXT_FIELD);
             if (streamerContext == null) {
                 builder.append(", no streamer context");
             } else {
-                byte[] clientInfo = readMessageField(streamerContext, STREAMER_CONTEXT_CLIENT_INFO_FIELD);
+                byte[] clientInfo = SabrRequestBody.readMessageField(streamerContext, STREAMER_CONTEXT_CLIENT_INFO_FIELD);
                 if (clientInfo == null) {
                     builder.append(", no client info");
                 } else {
                     appendClientInfo(builder, clientInfo);
                 }
-                byte[] poToken = readMessageField(streamerContext, STREAMER_CONTEXT_PO_TOKEN_FIELD);
+                byte[] poToken = SabrRequestBody.readMessageField(streamerContext, STREAMER_CONTEXT_PO_TOKEN_FIELD);
                 builder.append(", poToken bytes: ").append(poToken == null ? 0 : poToken.length);
             }
 
@@ -101,12 +134,14 @@ public final class SabrMediaLogger {
     @Nullable
     private static String getClientInfoFieldName(int field) {
         return switch (field) {
-            case 12 -> "deviceMake";
-            case 13 -> "deviceModel";
-            case 16 -> "clientName";
-            case 17 -> "clientVersion";
-            case 18 -> "osName";
-            case 19 -> "osVersion";
+            case CLIENT_INFO_DEVICE_MAKE_FIELD -> "deviceMake";
+            case CLIENT_INFO_DEVICE_MODEL_FIELD -> "deviceModel";
+            case CLIENT_INFO_CLIENT_NAME_FIELD -> "clientName";
+            case CLIENT_INFO_CLIENT_VERSION_FIELD -> "clientVersion";
+            case CLIENT_INFO_OS_NAME_FIELD -> "osName";
+            case CLIENT_INFO_OS_VERSION_FIELD -> "osVersion";
+            case CLIENT_INFO_HL_FIELD -> "hl";
+            case CLIENT_INFO_GL_FIELD -> "gl";
             default -> null;
         };
     }
@@ -120,6 +155,7 @@ public final class SabrMediaLogger {
             String name = getClientInfoFieldName(field);
 
             if (field == CLIENT_INFO_VISITOR_DATA_FIELD) {
+                // Only whether it is set is logged.
                 hasVisitorData = true;
                 input.skipField(tag);
             } else if (name != null && wireType == WireFormat.WIRETYPE_VARINT) {
@@ -134,19 +170,6 @@ public final class SabrMediaLogger {
     }
 
     @Nullable
-    private static byte[] readMessageField(byte[] message, int field) throws IOException {
-        CodedInputStream input = CodedInputStream.newInstance(message);
-        for (int tag; (tag = input.readTag()) != 0; ) {
-            if (WireFormat.getTagFieldNumber(tag) == field
-                    && WireFormat.getTagWireType(tag) == WireFormat.WIRETYPE_LENGTH_DELIMITED) {
-                return input.readByteArray();
-            }
-            input.skipField(tag);
-        }
-        return null;
-    }
-
-    @Nullable
     private static String getControlPartName(long partType) {
         return switch ((int) partType) {
             case PART_SABR_ERROR -> "error";
@@ -158,26 +181,13 @@ public final class SabrMediaLogger {
     }
 
     /**
-     * @return If the part of a media response is logged by {@link #logControlPart(long, byte[])}.
-     */
-    public static boolean isLoggedPart(long partType) {
-        return getControlPartName(partType) != null;
-    }
-
-    /**
      * Logs the part as base64, which can be read with 'protoc --decode_raw'.
      * Most responses have the same playback start policy, so a part is logged only if it changed.
      */
-    public static synchronized void logControlPart(long partType, byte[] part) {
+    private static synchronized void logControlPart(long partType, byte[] part) {
         String encoded = Base64.encodeToString(part, Base64.NO_WRAP);
         if (!encoded.equals(lastLoggedControlParts.put(partType, encoded))) {
             Logger.printDebug(() -> "SABR " + getControlPartName(partType) + ": " + encoded);
-        }
-    }
-
-    public static void logProtectionStatus(int status) {
-        if (status != STREAM_PROTECTION_STATUS_OK) {
-            Logger.printDebug(() -> "SABR stream protection status: " + status);
         }
     }
 }
