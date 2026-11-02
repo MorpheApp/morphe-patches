@@ -51,6 +51,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
+import app.morphe.extension.shared.settings.preference.NewSettingsIndicator;
 import app.morphe.extension.shared.settings.preference.URLLinkPreference;
 import app.morphe.extension.shared.sponsorblock.objects.SegmentCategoryPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
@@ -281,6 +282,8 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
                     if (switchPref.getOnPreferenceChangeListener() != null) {
                         switchPref.getOnPreferenceChangeListener().onPreferenceChange(switchPref, newState);
                     }
+                    // Toggled without a click on the preference.
+                    NewSettingsIndicator.markSeen(switchPref);
                     notifyDataSetChanged();
                 },
                 () -> navigateAndScrollToPreference(item));
@@ -627,6 +630,8 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
         }
 
         handlePreferenceClick(item.preference);
+        // The click can remove the new setting dot of the title.
+        notifyDataSetChanged();
     }
 
     /**
