@@ -18,10 +18,12 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.booleanOption
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
@@ -42,6 +44,7 @@ import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.padding.BrowseListBottomPaddingFingerprint
+import app.morphe.patches.youtube.misc.navigation.SetEnumMapFingerprint
 import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
@@ -56,8 +59,10 @@ import app.morphe.patches.youtube.misc.toolbar.toolBarHookPatch
 import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.ToolBarButtonFingerprint
+import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.containsLiteralInstruction
+import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.fiveRegisters
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -109,6 +114,8 @@ private val hideSubscriptionsAppShortcutOption = booleanOption(
 
 private val navigationBarResourcePatch = resourcePatch {
     execute {
+        copyResources("navigationbar", ResourceGroup("drawable", "morphe_watch_later_selected.xml"))
+
         val hideSearchAppShortcut by hideSearchAppShortcutOption
         val hideSubscriptionsAppShortcut by hideSubscriptionsAppShortcutOption
 
@@ -128,6 +135,44 @@ private val navigationBarResourcePatch = resourcePatch {
                 }
             }
         }
+    }
+}
+
+/**
+ * Replaces an extension placeholder method, that takes the bytes of a navigation bar item proto,
+ * with code that creates the navigation bar item with the factory of the app.
+ * The constructor of the item also uses the decoded endpoint and tab identity of the proto,
+ * so the whole factory is used instead of copying the constructor arguments of another item.
+ */
+internal fun BytecodePatchContext.implementPivotBarItemBuilder(placeholder: Fingerprint) {
+    val factory = PivotBarRendererFingerprint.method
+    val pivotBarItemType = factory.parameterTypes.single().toString()
+    val placeholderMethod = placeholder.method
+
+    placeholder.classDef.apply {
+        methods.remove(placeholderMethod)
+        addBridge(
+            placeholderMethod.name,
+            listOf("[B"),
+            "Ljava/lang/Object;",
+            3,
+            """
+                # The endpoints are extensions, which are lost if parsed without the registry.
+                sget-object v0, $pivotBarItemType->a:$pivotBarItemType
+                invoke-static { }, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
+                move-result-object v1
+                invoke-static { v0, p0, v1 }, ${parseByteArrayWithRegistryMethodRef.get()!!}
+                move-result-object v0
+                check-cast v0, $pivotBarItemType
+                invoke-static { v0 }, $factory
+                move-result-object v0
+                const/4 v1, 0x0
+                invoke-virtual { v0, v1 }, ${factory.returnType}->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+                move-result-object v0
+                return-object v0
+            """,
+            placeholderMethod.accessFlags
+        )
     }
 }
 
@@ -190,6 +235,12 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_hide_notifications_button"),
             SwitchPreference("morphe_show_search_button"),
             ListPreference("morphe_show_search_button_index"),
+            SwitchPreference("morphe_show_watch_later_button"),
+            ListPreference(
+                "morphe_show_watch_later_button_index",
+                entriesKey = "morphe_show_search_button_index_entries",
+                entryValuesKey = "morphe_show_search_button_index_entry_values"
+            ),
             SwitchPreference("morphe_show_settings_button"),
             ListPreference("morphe_show_settings_button_index"),
             SwitchPreference("morphe_show_settings_button_type", summary = true),
@@ -245,6 +296,28 @@ val navigationBarPatch = bytecodePatch(
 
         // Hook navigation button created, in order to hide them.
         hookNavigationButtonCreated(EXTENSION_CLASS)
+
+        // The app has no selected icon for the Watch later icon, which the Watch later button uses.
+        val watchLaterIcon = WatchLaterIconEnumFingerprint.instructionMatches.last().getFieldAccessed()
+        SetEnumMapFingerprint.let {
+            // The navigation bar hook patch adds the notification icon fix to the same method.
+            it.clearMatch()
+
+            it.method.apply {
+                val putIndex = it.instructionMatches.last().index
+                val mapRegister = getInstruction<FiveRegisterInstruction>(putIndex).registerC
+                val insertIndex = putIndex + 1
+                val iconRegister = findFreeRegister(insertIndex, mapRegister)
+
+                addInstructions(
+                    insertIndex,
+                    """
+                        sget-object v$iconRegister, $watchLaterIcon
+                        invoke-static { v$mapRegister, v$iconRegister }, $EXTENSION_CLASS->setWatchLaterSelectedIcon(Ljava/util/EnumMap;Ljava/lang/Enum;)V
+                    """
+                )
+            }
+        }
 
         // Hide navigation bar
         addBottomBarContainerHook("$EXTENSION_CLASS->hideNavigationBar(Landroid/view/View;)V")
@@ -542,13 +615,18 @@ val navigationBarPatch = bytecodePatch(
                         invoke-static { v$pivotBarRendererConstructorStartRegister }, $EXTENSION_CLASS->setPivotBarSettingsRenderer(Ljava/lang/Object;)V
                         :ignore_settings
         
-                        # Restore MessageLite register one last time for safety
+                        # Restore MessageLite register one last time
                         move-object/16 v$messageLiteRegister, v$backupRegister
+
+                        # --- 3. WATCH LATER BUTTON ---
+                        invoke-static { v$messageLiteRegister }, $EXTENSION_CLASS->setPivotBarWatchLaterRenderer(Lcom/google/protobuf/MessageLite;)V
                         nop
                     """
                 )
             }
         }
+
+        implementPivotBarItemBuilder(WatchLaterPivotBarItemBuilderFingerprint)
 
         PivotBarRendererListFingerprint.let {
             // The Series tracker patch hooks the same index, which shifts it.

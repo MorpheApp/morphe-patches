@@ -24,10 +24,26 @@ import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.misc.navigation.ImageEnumConstructorFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal const val PIVOT_BAR_CLASS = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;"
+
+internal object WatchLaterIconEnumFingerprint : Fingerprint(
+    classFingerprint = ImageEnumConstructorFingerprint,
+    filters = listOf(
+        string("WATCH_LATER"),
+        opcode(Opcode.SPUT_OBJECT, location = MatchAfterWithin(5))
+    )
+)
+
+internal object WatchLaterPivotBarItemBuilderFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "buildWatchLaterPivotBarItem",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("[B")
+)
 
 private val SET_VISIBILITY_METHOD_CALL = methodCall(
     opcode = Opcode.INVOKE_VIRTUAL,

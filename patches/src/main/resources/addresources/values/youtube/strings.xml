@@ -1010,6 +1010,11 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_hide_notifications_button_title">Hide Notifications button</string>
     <string name="morphe_show_search_button_title">Show Search button</string>
     <string name="morphe_show_search_button_index_title">Search button position</string>
+    <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+    <string name="morphe_show_watch_later_button_title">Show Watch later button</string>
+    <string name="morphe_show_watch_later_button_index_title">Watch later button position</string>
+    <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+    <string name="morphe_watch_later_navigation_label">Watch later</string>
     <string name="morphe_show_settings_button_title">Show Settings button</string>
     <string name="morphe_show_settings_button_index_title">Settings button position</string>
     <string name="morphe_show_settings_button_type_title">Settings button action</string>

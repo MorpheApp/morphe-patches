@@ -51,6 +51,7 @@ import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Accessibility;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.AccessibilityData;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.BrowseEndpoint;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRenderer;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRendererAccessibilityData;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonSheetRenderer;
@@ -63,8 +64,13 @@ import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationMo
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesSwitcherRenderer;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesSwitcherRendererHolder;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationEndpoint;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationType;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemBytes;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRendererBytes;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.RendererAccessibilityData;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Runs;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Title;
 import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
@@ -689,6 +695,14 @@ public final class NavigationBarPatch {
 
     private static Object pivotBarSettingsRenderer = null;
 
+    private static final boolean SHOW_WATCH_LATER_BUTTON = Settings.SHOW_WATCH_LATER_BUTTON.get();
+    private static final IntegerSetting SHOW_WATCH_LATER_BUTTON_INDEX = Settings.SHOW_WATCH_LATER_BUTTON_INDEX;
+    private static final String WATCH_LATER_PIVOT_IDENTIFIER = "morphe_watch_later";
+    private static final String WATCH_LATER_BROWSE_ID = "VLWL";
+
+    @Nullable
+    private static Object pivotBarWatchLaterRenderer = null;
+
     private static final View.OnClickListener openSearchBarOnClickListener = v -> {
         if (NavigationBar.isSearchBarActive() && searchQueryRef.get() != null) {
             // If the search bar is active, simply click on the search query view.
@@ -800,8 +814,9 @@ public final class NavigationBarPatch {
 
         boolean addSearch = SHOW_SEARCH_BUTTON && pivotBarRenderer != null;
         boolean addSettings = SHOW_SETTINGS_BUTTON && pivotBarSettingsRenderer != null;
+        boolean addWatchLater = SHOW_WATCH_LATER_BUTTON && pivotBarWatchLaterRenderer != null;
 
-        if (!addSearch && !addSettings) return list;
+        if (!addSearch && !addSettings && !addWatchLater) return list;
 
         List<Object> newList = new ArrayList<>(list);
 
@@ -817,6 +832,13 @@ public final class NavigationBarPatch {
             preferredIndex = Math.max(0, Math.min(preferredIndex, newList.size()));
 
             newList.add(preferredIndex, pivotBarSettingsRenderer);
+        }
+
+        if (addWatchLater) {
+            int preferredIndex = SHOW_WATCH_LATER_BUTTON_INDEX.get();
+            preferredIndex = Math.max(0, Math.min(preferredIndex, newList.size()));
+
+            newList.add(preferredIndex, pivotBarWatchLaterRenderer);
         }
 
         return newList;
@@ -852,6 +874,71 @@ public final class NavigationBarPatch {
     public static void setPivotBarSettingsRenderer(Object object) {
         if (SHOW_SETTINGS_BUTTON) {
             pivotBarSettingsRenderer = object;
+        }
+    }
+
+    /**
+     * Injection point.
+     * Creates the Watch later button from the home button.
+     *
+     * @param messageLite MessageLite class of PivotBarItemRenderer.
+     */
+    public static void setPivotBarWatchLaterRenderer(MessageLite messageLite) {
+        if (!SHOW_WATCH_LATER_BUTTON) return;
+
+        try {
+            var renderer = PivotBarItemRenderer.parseFrom(messageLite.toByteArray());
+            var iconName = renderer.getIcon().getYtIconType().name();
+            if (!NavigationBar.NavigationButton.HOME.ytEnumNames.contains(iconName)) return;
+
+            String label = str("morphe_watch_later_navigation_label");
+            byte[] watchLaterRenderer = renderer.toBuilder()
+                    .setPivotIdentifier(WATCH_LATER_PIVOT_IDENTIFIER)
+                    .setNavigationEndpoint(NavigationEndpoint.newBuilder()
+                            .setBrowseEndpoint(BrowseEndpoint.newBuilder().setBrowseId(WATCH_LATER_BROWSE_ID)))
+                    .setAccessibility(Accessibility.newBuilder()
+                            .setAccessibilityData(AccessibilityData.newBuilder().setLabel(label)))
+                    .setTitle(Title.newBuilder().setRuns(Runs.newBuilder().setText(label)))
+                    // The Cairo icon has no drawable in some app versions.
+                    .setIcon(Icon.newBuilder().setYtIconType(YTIconType.WATCH_LATER))
+                    .clearTargetId()
+                    .build().toByteArray();
+
+            // The tracking params and thumbnail belong to the home button.
+            var watchLaterRendererBytes = PivotBarItemRendererBytes.parseFrom(watchLaterRenderer).toBuilder()
+                    .clearTrackingParams()
+                    .clearThumbnail()
+                    .setNavigationType(NavigationType.PIVOT_BAR_NAVIGATION_TYPE_SELECT_TAB_VALUE)
+                    .build().toByteString();
+
+            pivotBarWatchLaterRenderer = buildWatchLaterPivotBarItem(PivotBarItemBytes.newBuilder()
+                    .setPivotBarItemRenderer(watchLaterRendererBytes)
+                    .build().toByteArray());
+        } catch (Exception ex) {
+            Logger.printException(() -> "setPivotBarWatchLaterRenderer failure", ex);
+        }
+    }
+
+    /**
+     * Method is modified during patching to create the navigation bar item with the factory of the app.
+     *
+     * @param pivotBarItem Navigation bar item proto.
+     */
+    @Nullable
+    private static Object buildWatchLaterPivotBarItem(byte[] pivotBarItem) {
+        return null;
+    }
+
+    /**
+     * Injection point.
+     * The app has no selected icon for the Watch later icon, so the outline icon is shown
+     * when the Watch later button is selected.
+     */
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public static void setWatchLaterSelectedIcon(EnumMap icons, Enum watchLaterIcon) {
+        if (SHOW_WATCH_LATER_BUTTON) {
+            icons.put(watchLaterIcon, ResourceUtils.getIdentifier(
+                    ResourceType.DRAWABLE, "morphe_watch_later_selected"));
         }
     }
 
