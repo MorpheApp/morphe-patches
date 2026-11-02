@@ -156,8 +156,8 @@ public final class LocalRomanizer {
                 read.add(word);
                 continue;
             }
-                read.add(new Word(word.startMs(), word.endMs(), word.text(), reading,
-                        word.endsWithSpace(), word.ruby()));
+            read.add(new Word(word.startMs(), word.endMs(), word.text(), reading,
+                    word.endsWithSpace(), word.ruby()));
             any = true;
         }
 

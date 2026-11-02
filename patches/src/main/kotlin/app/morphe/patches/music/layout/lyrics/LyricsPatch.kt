@@ -59,7 +59,7 @@ val lyricsPatch = bytecodePatch(
         addResourcesPatch,
         lithoFilterPatch,
         musicVideoInformationPatch,
-        // The copy and romanize buttons need their icons whether the patches
+        // The copy, romanize and furigana buttons need their icons whether the patches
         // that own these resources are applied.
         resourcePatch {
             execute {
@@ -69,11 +69,7 @@ val lyricsPatch = bytecodePatch(
                 )
                 copyResources(
                     "romanisationbutton",
-                    ResourceGroup("drawable", "morphe_yt_romanize.xml")
-                )
-                copyResources(
-                    "romanisationbutton",
-                    ResourceGroup("drawable", "morphe_yt_furigana.xml")
+                    ResourceGroup("drawable", "morphe_yt_romanize.xml", "morphe_yt_furigana.xml")
                 )
             }
         }

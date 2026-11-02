@@ -486,6 +486,7 @@ public final class LyricsCache {
         writeLyricsLineList(
                 aiRomanizationFile(track, source, sourceLines, provider), lines);
     }
+
     @Nullable
     public static List<String> getFuriganaAI(TrackInfo track, String source,
                                              List<String> sourceLines, @Nullable String provider) {
@@ -621,6 +622,7 @@ public final class LyricsCache {
                         + aiConfigKey(Settings.LYRICS_AI_ROMANIZATION_PROMPT.get())
                         + ".rom." + LyricsRequests.romanizationLanguage() + ".txt", sourceLines);
     }
+
     @Nullable
     private static File aiFuriganaFile(TrackInfo track, String source,
                                        List<String> sourceLines, @Nullable String provider) {

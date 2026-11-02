@@ -769,17 +769,6 @@ Lirik berasal dari layanan pihak ketiga yang tidak berafiliasi, disponsori, atau
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Beri nama dan nilai tanda kutip, mis. {\"api-key\": \"abc\"}. Nilai tanpa tanda kutip yang mengandung / : atau angka ditolak. Nilai kosong menghapus header.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Beri nama dan nilai tanda kutip, mis. {\"temperature\": 0.3}. Nilai tanpa tanda kutip yang mengandung / atau : ditolak. Model dan pesan tidak dapat diatur di sini.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Kunci autentikasi (Gratis atau Pro)</string>
-  <string name="morphe_music_lyrics_furigana_provider_title">Furigana</string>
-  <string name="morphe_music_lyrics_furigana_provider_summary">Daftar urutan penyedia untuk menghasilkan bacaan furigana di atas kanji</string>
-  <string name="morphe_music_lyrics_furigana_provider_local">Kamus Offline</string>
-  <string name="morphe_music_lyrics_furigana_style_title">Gaya aksara furigana</string>
-  <string name="morphe_music_lyrics_furigana_style_summary">Tampilkan furigana dalam Hiragana atau Katakana</string>
-  <string name="morphe_music_lyrics_show_furigana_button_title">Tampilkan tombol Furigana</string>
-  <string name="morphe_music_lyrics_show_furigana_button_summary">Tampilkan tombol untuk menyalakan/mematikan furigana di toolbar lirik</string>
-  <string name="morphe_music_lyrics_furigana_button_label">Furigana</string>
-  <string name="morphe_music_lyrics_furigana_generating">Membuat furigana…</string>
-  <string name="morphe_music_lyrics_furigana_hide">Sembunyikan Furigana</string>
-  <string name="morphe_music_lyrics_furigana_show">Tampilkan Furigana</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Nonaktifkan ikon tebal</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Kembalikan tab Pemutar Berikutnya, Lirik, dan Terkait</string>

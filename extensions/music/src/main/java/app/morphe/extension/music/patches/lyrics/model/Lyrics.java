@@ -67,6 +67,7 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
         translations = (translations == null) ? null : unmodifiableTranslations(translations);
         romanizations = (romanizations == null) ? null : unmodifiableTranslations(romanizations);
     }
+
     public Lyrics withLines(List<LyricsLine> newLines) {
         return new Lyrics(newLines, providerName(), synced(), romanization(),
                 translations(), romanizations(), songwriters(), rawFormat(), formatType(),
@@ -153,8 +154,8 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
                     newEnd = newStart + 50;
                 }
 
-                    fixed[j] = new Word(newStart, newEnd, w.text(), w.romaji(),
-                            w.endsWithSpace(), w.ruby());
+                fixed[j] = new Word(newStart, newEnd, w.text(), w.romaji(),
+                        w.endsWithSpace(), w.ruby());
                 prevEnd = newEnd;
                 changed = true;
             }

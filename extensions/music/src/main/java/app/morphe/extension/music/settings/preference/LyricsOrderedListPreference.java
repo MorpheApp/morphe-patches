@@ -201,6 +201,7 @@ public final class LyricsOrderedListPreference extends Preference {
                 default -> id;
             };
         };
+        // The star tells the reader that the name opens a dialog, the same as the source list.
         return opensSettingsDialog(id) ? label + " *" : label;
     }
 
@@ -1116,8 +1117,7 @@ public final class LyricsOrderedListPreference extends Preference {
                 changed = true;
                 continue;
             }
-            if (kind() != Kind.FURIGANA && isLocalProvider(item.id)
-                    && !LyricsLocalRomanizationDownloads.isReady()
+            if (isLocalProvider(item.id) && !LyricsLocalRomanizationDownloads.isReady()
                     && !LyricsLocalRomanizationDownloads.isDownloading()) {
                 item.enabled = false;
                 changed = true;

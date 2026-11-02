@@ -57,85 +57,17 @@ public final class KanaRomanizer {
     private KanaRomanizer() {
     }
 
-    /**
-     * Hepburn romaji with spaces between morae/syllables (e.g. "ノルマ" -> "no ru ma",
-     * "いじょう" -> "i jo u"), used for per-word subscript romaji alignment.
-     */
-    public static String romanizeSyllables(String kana) {
-        if (kana == null || kana.isEmpty()) return "";
-        StringBuilder out = new StringBuilder(kana.length() * 3);
-        boolean geminate = false;
-        int i = 0;
-
-        while (i < kana.length()) {
-            char c = katakana(kana.charAt(i));
-
-            if (c == 0x3063 || c == 0x30C3) {
-                geminate = true;
-                i++;
-                continue;
-            }
-            if (c == 0x30FC || c == 0x2014) {
-                repeatVowel(out);
-                i++;
-                continue;
-            }
-            if (isN(c)) {
-                if (out.length() > 0 && out.charAt(out.length() - 1) != ' ') {
-                    out.append(' ');
-                }
-                appendN(out, kana, i);
-                geminate = false;
-                i++;
-                continue;
-            }
-
-            String reading = FULL_SIZE.get(c);
-            if (reading == null) {
-                if (Character.isWhitespace(c)) {
-                    if (out.length() > 0 && out.charAt(out.length() - 1) != ' ') {
-                        out.append(' ');
-                    }
-                } else {
-                    if (out.length() > 0 && out.charAt(out.length() - 1) != ' ') {
-                        out.append(' ');
-                    }
-                    out.append(kana.charAt(i));
-                }
-                geminate = false;
-                i++;
-                continue;
-            }
-
-            String consonant = consonantOf(reading);
-            String syllable = consonant + reading.substring(consonant.length());
-            int next = i + 1;
-
-            char following = next < kana.length() ? katakana(kana.charAt(next)) : 0;
-            if (isSmallY(following)) {
-                syllable = palatalise(consonant, smallYVowel(following));
-                next++;
-            } else if (consonant.isEmpty() && isSmallVowel(following)) {
-                syllable = readingOf(following);
-                next++;
-            }
-
-            if (out.length() > 0 && out.charAt(out.length() - 1) != ' ') {
-                out.append(' ');
-            }
-            if (geminate) {
-                applyGeminate(out, syllable);
-                geminate = false;
-            }
-            out.append(syllable);
-            i = next;
-        }
-        return out.toString().trim();
+    public static String romanize(String kana) {
+        return romanize(kana, false);
     }
 
+    /** The reading with a space between syllables, such as "no ru ma" for ノルマ. */
+    public static String romanizeSyllables(String kana) {
+        return romanize(kana, true).trim();
+    }
 
-    public static String romanize(String kana) {
-        StringBuilder out = new StringBuilder(kana.length() * 2);
+    private static String romanize(String kana, boolean spaced) {
+        StringBuilder out = new StringBuilder(kana.length() * 3);
         boolean geminate = false;
         int i = 0;
 
@@ -156,6 +88,7 @@ public final class KanaRomanizer {
                 continue;
             }
             if (isN(c)) {
+                if (spaced) separate(out);
                 appendN(out, kana, i);
                 geminate = false;
                 i++;
@@ -165,7 +98,12 @@ public final class KanaRomanizer {
             String reading = FULL_SIZE.get(c);
             if (reading == null) {
                 // An unknown kana, such as an iteration mark, is passed through, not dropped.
-                out.append(c);
+                if (spaced) {
+                    separate(out);
+                }
+                if (!spaced || !Character.isWhitespace(c)) {
+                    out.append(c);
+                }
                 geminate = false;
                 i++;
                 continue;
@@ -184,6 +122,7 @@ public final class KanaRomanizer {
                 next++;
             }
 
+            if (spaced) separate(out);
             if (geminate) {
                 applyGeminate(out, syllable);
                 geminate = false;
@@ -192,6 +131,12 @@ public final class KanaRomanizer {
             i = next;
         }
         return out.toString();
+    }
+
+    private static void separate(StringBuilder out) {
+        if (out.length() > 0 && out.charAt(out.length() - 1) != ' ') {
+            out.append(' ');
+        }
     }
 
     /** Whether a small ya, yu or yo glides or replaces the vowel, which separates kyo from shu. */
@@ -294,95 +239,22 @@ public final class KanaRomanizer {
     }
 
     public static String toHiragana(String kana) {
-        if (kana == null || kana.isEmpty()) return kana;
         char[] chars = kana.toCharArray();
         for (int i = 0; i < chars.length; i++) {
             char c = chars[i];
-            if (c >= 0x30A1 && c <= 0x30F6) {
-                chars[i] = (char) (c - (0x30A1 - 0x3041));
+            if (c >= 'ァ' && c <= 'ヶ') {
+                chars[i] = (char) (c - ('ァ' - 'ぁ'));
             }
         }
         return new String(chars);
     }
 
     public static String toKatakana(String kana) {
-        if (kana == null || kana.isEmpty()) return kana;
         char[] chars = kana.toCharArray();
         for (int i = 0; i < chars.length; i++) {
-            char c = chars[i];
-            if (c >= 0x3041 && c <= 0x3096) {
-                chars[i] = (char) (c + (0x30A1 - 0x3041));
-            }
+            chars[i] = katakana(chars[i]);
         }
         return new String(chars);
-    }
-
-    private static final Map<String, String> ROMAJI_TABLE = new HashMap<>();
-    static {
-        String[][] pairs = {
-            {"a", "あ"}, {"i", "い"}, {"u", "う"}, {"e", "え"}, {"o", "お"},
-            {"ka", "か"}, {"ki", "き"}, {"ku", "く"}, {"ke", "け"}, {"ko", "こ"},
-            {"sa", "さ"}, {"shi", "し"}, {"si", "し"}, {"su", "す"}, {"se", "せ"}, {"so", "そ"},
-            {"ta", "た"}, {"chi", "ち"}, {"ti", "ち"}, {"tsu", "つ"}, {"tu", "つ"}, {"te", "て"}, {"to", "と"},
-            {"na", "な"}, {"ni", "に"}, {"nu", "ぬ"}, {"ne", "ね"}, {"no", "の"},
-            {"ha", "は"}, {"hi", "ひ"}, {"fu", "ふ"}, {"hu", "ふ"}, {"he", "へ"}, {"ho", "ほ"},
-            {"ma", "ま"}, {"mi", "み"}, {"mu", "む"}, {"me", "め"}, {"mo", "も"},
-            {"ya", "や"}, {"yu", "ゆ"}, {"yo", "よ"},
-            {"ra", "ら"}, {"ri", "り"}, {"ru", "る"}, {"re", "れ"}, {"ro", "ろ"},
-            {"wa", "わ"}, {"wo", "を"}, {"n", "ん"}, {"nn", "ん"},
-            {"ga", "が"}, {"gi", "ぎ"}, {"gu", "ぐ"}, {"ge", "げ"}, {"go", "ご"},
-            {"za", "ざ"}, {"ji", "じ"}, {"zi", "じ"}, {"zu", "ず"}, {"ze", "ぜ"}, {"zo", "ぞ"},
-            {"da", "だ"}, {"di", "ぢ"}, {"du", "づ"}, {"de", "で"}, {"do", "ど"},
-            {"ba", "ば"}, {"bi", "び"}, {"bu", "ぶ"}, {"be", "べ"}, {"bo", "ぼ"},
-            {"pa", "ぱ"}, {"pi", "ぴ"}, {"pu", "ぷ"}, {"pe", "ぺ"}, {"po", "ぽ"},
-            {"kya", "きゃ"}, {"kyu", "きゅ"}, {"kyo", "きょ"},
-            {"sha", "しゃ"}, {"shu", "しゅ"}, {"sho", "しょ"},
-            {"cha", "ちゃ"}, {"chu", "ちゅ"}, {"cho", "ちょ"},
-            {"nya", "にゃ"}, {"nyu", "にゅ"}, {"nyo", "にょ"},
-            {"hya", "ひゃ"}, {"hyu", "ひゅ"}, {"hyo", "ひょ"},
-            {"mya", "みゃ"}, {"myu", "みゅ"}, {"myo", "みょ"},
-            {"rya", "りゃ"}, {"ryu", "りゅ"}, {"ryo", "りょ"},
-            {"gya", "ぎゃ"}, {"gyu", "ぎゅ"}, {"gyo", "ぎょ"},
-            {"ja", "じゃ"}, {"ju", "じゅ"}, {"jo", "じょ"},
-            {"bya", "びゃ"}, {"byu", "びゅ"}, {"byo", "びょ"},
-            {"pya", "ぴゃ"}, {"pyu", "ぴゅ"}, {"pyo", "ぴょ"}
-        };
-        for (String[] p : pairs) {
-            ROMAJI_TABLE.put(p[0], p[1]);
-        }
-    }
-
-    public static String romajiToHiragana(String romaji) {
-        if (romaji == null || romaji.isEmpty()) return romaji;
-        String s = romaji.toLowerCase(Locale.ROOT).replace(" ", "");
-        StringBuilder out = new StringBuilder(s.length());
-        int i = 0;
-        while (i < s.length()) {
-            char c = s.charAt(i);
-            if (i + 1 < s.length() && c == s.charAt(i + 1) && "aeioun".indexOf(c) < 0) {
-                out.append('っ');
-                i++;
-                continue;
-            }
-            boolean matched = false;
-            for (int len = 3; len >= 1; len--) {
-                if (i + len <= s.length()) {
-                    String sub = s.substring(i, i + len);
-                    String h = ROMAJI_TABLE.get(sub);
-                    if (h != null) {
-                        out.append(h);
-                        i += len;
-                        matched = true;
-                        break;
-                    }
-                }
-            }
-            if (!matched) {
-                out.append(c);
-                i++;
-            }
-        }
-        return out.toString();
     }
 
     /** Whether a reading fits the one byte packing the dictionary file uses. */

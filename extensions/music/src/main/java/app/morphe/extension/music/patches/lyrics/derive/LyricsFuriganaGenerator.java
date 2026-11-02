@@ -15,8 +15,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -31,11 +29,22 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
+/**
+ * Adds furigana, the reading of each kanji word, to Japanese lyrics as the ruby of its word.
+ *
+ * <p>Ruby the source ships and the offline dictionary readings are added right away. An AI
+ * provider answers in the background and only fills the words still without a reading.
+ */
 public final class LyricsFuriganaGenerator {
 
-    public static final String DEFAULT_AI_FURIGANA_PROMPT =
-            "Untuk setiap baris lirik bahasa Jepang, tambahkan furigana dalam tanda kurung siku tepat setelah kanji, "
-                    + "contoh: 漢字[かんじ]. Jangan ubah kata kana biasa. Output harus persis sama jumlah barisnya.";
+    public enum FuriganaStyle {
+        HIRAGANA,
+        KATAKANA
+    }
+
+    public interface Callback {
+        void onGenerated(Lyrics lyrics);
+    }
 
     private static final ExecutorService WORKER = Executors.newSingleThreadExecutor(runnable -> {
         Thread thread = new Thread(runnable, "lyrics-furigana-generator");
@@ -43,439 +52,232 @@ public final class LyricsFuriganaGenerator {
         return thread;
     });
 
-    private static final Pattern BRACKET_RUBY_PATTERN = Pattern.compile("([^\\s\\[\\]]+)\\[([^\\[\\]]+)\\]");
-
-
-    public interface Callback {
-        void onGenerated(@Nullable Lyrics lyrics, boolean fromAI, @Nullable String model);
-    }
-
     private LyricsFuriganaGenerator() {
     }
 
+    private static List<String> enabledProviders() {
+        return AiProviders.enabledProviders(
+                Settings.LYRICS_FURIGANA_PROVIDERS.get(), AiProviders.FURIGANA_ORDER);
+    }
+
     /**
-     * Synchronously applies embedded ruby formatting and local dictionary furigana
-     * so the UI renders furigana on the very first pass without waiting for an async thread.
+     * The ruby the source ships, or none if that provider is off, plus the offline dictionary
+     * readings once the dictionary is downloaded.
      */
-    @Nullable
-    public static Lyrics generateLocalSync(@Nullable Lyrics lyrics) {
-        if (lyrics == null || lyrics.lines() == null || lyrics.lines().isEmpty()) {
+    public static Lyrics applyLocal(Lyrics lyrics) {
+        if (!hasKanjiOrRuby(lyrics.lines())) {
             return lyrics;
         }
-        if (!hasJapaneseOrRuby(lyrics.lines())) {
-            return lyrics;
-        }
-        final List<String> providers = AiProviders.enabledProviders(
-                Settings.LYRICS_FURIGANA_PROVIDERS.get(),
-                AiProviders.FURIGANA_ORDER);
-        if (providers.isEmpty()) {
-            return lyrics;
-        }
-        final String targetStyle = Settings.LYRICS_FURIGANA_STYLE.get();
-        Lyrics current = lyrics;
-        if (providers.contains(AiProviders.EMBEDDED)) {
-            current = formatExistingRuby(current, targetStyle);
-        }
+        final List<String> providers = enabledProviders();
+        final FuriganaStyle style = Settings.LYRICS_FURIGANA_STYLE.get();
+        Lyrics current = formatEmbeddedRuby(lyrics, providers.contains(AiProviders.EMBEDDED), style);
         if (providers.contains(AiProviders.LOCAL)) {
-            current = enrichFromLocalDict(current, targetStyle);
+            WordReadingTable table = JapaneseDictStore.table();
+            if (table != null) {
+                current = enrichFromDictionary(current, table, style);
+            }
         }
         return current;
     }
 
-    /**
-     * Enriches a single line on demand (used when LyricsSpanBuilder processes a line that has not
-     * yet been segmented into words or is missing Kanji furigana).
-     */
-    public static LyricsLine enrichLineForDisplay(LyricsLine line, long fallbackStartMs, long fallbackEndMs) {
-        if (line == null || line.text() == null || line.text().isEmpty()) {
-            return line;
-        }
-        final String targetStyle = Settings.LYRICS_FURIGANA_STYLE.get();
-        return enrichSingleLineLocal(line, JapaneseDictStore.table(), targetStyle, fallbackStartMs, fallbackEndMs);
-    }
-
-    public static void generate(TrackInfo track, Lyrics lyrics, Callback callback) {
-        if (lyrics == null || lyrics.lines() == null || lyrics.lines().isEmpty()) {
-            callback.onGenerated(lyrics, false, null);
-            return;
-        }
-
-        if (!hasJapaneseOrRuby(lyrics.lines())) {
-            callback.onGenerated(lyrics, false, null);
-            return;
-        }
-
-        final List<String> providers = AiProviders.enabledProviders(
-                Settings.LYRICS_FURIGANA_PROVIDERS.get(),
-                AiProviders.FURIGANA_ORDER);
-
-        if (providers.isEmpty()) {
-            callback.onGenerated(lyrics, false, null);
-            return;
-        }
-
-        final String targetStyle = Settings.LYRICS_FURIGANA_STYLE.get();
-
-        // First perform synchronous local + embedded pass so known Kanji readings are ready
-        Lyrics localPass = generateLocalSync(lyrics);
-        if (localPass == null) {
-            localPass = lyrics;
-        }
-
-        boolean needsAsync = false;
-        for (String provider : providers) {
+    /** Whether {@link #requestAi} has anything to do. */
+    public static boolean usesAi(Lyrics lyrics) {
+        for (String provider : enabledProviders()) {
             if (AiProviders.isAi(provider)) {
-                needsAsync = true;
-                break;
-            }
-            if (AiProviders.LOCAL.equals(provider) && !JapaneseDictStore.isReady()) {
-                needsAsync = true;
-                break;
-            }
-        }
-
-        if (!needsAsync) {
-            callback.onGenerated(localPass, false, null);
-            return;
-        }
-
-        // Immediately deliver the synchronous local pass so Kanji furigana
-        // appears right away while any async dictionary download runs in the background.
-        if (localPass != lyrics) {
-            callback.onGenerated(localPass, false, null);
-        }
-
-        final Lyrics startLyrics = localPass;
-        WORKER.execute(() -> {
-            try {
-                Lyrics currentLyrics = startLyrics;
-                boolean fromAi = false;
-                String aiModel = null;
-
-                for (String provider : providers) {
-                    if (AiProviders.EMBEDDED.equals(provider)) {
-                        currentLyrics = formatExistingRuby(currentLyrics, targetStyle);
-                    } else if (AiProviders.LOCAL.equals(provider)) {
-                        if (!JapaneseDictStore.isReady()) {
-                            JapaneseDictStore.ensure(null);
-                        }
-                        currentLyrics = enrichFromLocalDict(currentLyrics, targetStyle);
-                    } else if (AiProviders.isAi(provider)) {
-                        List<String> rawLines = new ArrayList<>(currentLyrics.lines().size());
-                        for (LyricsLine l : currentLyrics.lines()) {
-                            rawLines.add(l.text() != null ? l.text().trim() : "");
-                        }
-
-                        List<String> aiLines = LyricsCache.getFuriganaAI(track, currentLyrics.providerName(), rawLines, provider);
-                        if (aiLines == null || aiLines.size() != rawLines.size()) {
-                            String prompt = OpenAIClient.renderPrompt(
-                                    Settings.LYRICS_AI_FURIGANA_PROMPT.get(),
-                                    "furigana",
-                                    "Japanese",
-                                    track != null ? track.title() : "",
-                                    track != null ? track.artist() : "",
-                                    rawLines);
-                            AiProviders.Result ai = AiProviders.mapLines(provider, prompt, rawLines);
-                            if (ai != null && ai.lines() != null && ai.lines().size() == rawLines.size()) {
-                                aiLines = ai.lines();
-                                aiModel = ai.model();
-                                fromAi = true;
-                                LyricsCache.putFuriganaAI(track, currentLyrics.providerName(), rawLines, aiLines, provider);
-                            }
-                        } else {
-                            fromAi = true;
-                            aiModel = Settings.LYRICS_AI_MODEL.get();
-                        }
-
-                        if (aiLines != null && aiLines.size() == currentLyrics.lines().size()) {
-                            currentLyrics = enrichFromAiLines(currentLyrics, aiLines, targetStyle);
-                        }
-                    }
-                }
-
-                final Lyrics result = currentLyrics;
-                final boolean finalFromAi = fromAi;
-                final String finalModel = aiModel;
-                Utils.runOnMainThread(() -> callback.onGenerated(result, finalFromAi, finalModel));
-            } catch (Exception ex) {
-                Logger.printInfo(() -> "Furigana generation failed", ex);
-                Utils.runOnMainThread(() -> callback.onGenerated(startLyrics, false, null));
-            }
-        });
-    }
-
-    private static boolean hasJapaneseOrRuby(List<LyricsLine> lines) {
-        for (LyricsLine l : lines) {
-            String text = l.text();
-            if (text != null && (ScriptDetector.containsKana(text)
-                    || ScriptDetector.contains(text, Character.UnicodeScript.HAN))) {
-                return true;
-            }
-            if (l.words() != null) {
-                for (Word w : l.words()) {
-                    if (w.ruby() != null && !w.ruby().isEmpty()) {
-                        return true;
-                    }
-                }
+                return hasKanjiOrRuby(lyrics.lines());
             }
         }
         return false;
     }
 
-
-    public static Lyrics formatExistingRuby(Lyrics lyrics, String targetStyle) {
-        List<LyricsLine> origLines = lyrics.lines();
-        List<LyricsLine> newLines = new ArrayList<>(origLines.size());
-
-        for (LyricsLine line : origLines) {
-            if (!line.hasWords()) {
-                newLines.add(line);
-                continue;
-            }
-
-            List<Word> words = line.words();
-            List<Word> newWords = new ArrayList<>(words.size());
-            boolean changed = false;
-
-            for (Word w : words) {
-                if (w.ruby() != null && !w.ruby().isEmpty()) {
-                    String formatted = formatRuby(w.ruby(), targetStyle);
-                    newWords.add(new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), w.endsWithSpace(), formatted));
-                    changed = true;
-                } else {
-                    newWords.add(w);
+    /**
+     * Asks the enabled AI provider for the readings the lyrics still lack. The callback runs on
+     * the main thread, with the lyrics unchanged if the provider gave no usable answer.
+     */
+    public static void requestAi(TrackInfo track, Lyrics lyrics, Callback callback) {
+        final FuriganaStyle style = Settings.LYRICS_FURIGANA_STYLE.get();
+        WORKER.execute(() -> {
+            Lyrics result = lyrics;
+            try {
+                List<String> lines = new ArrayList<>(lyrics.lines().size());
+                for (LyricsLine line : lyrics.lines()) {
+                    lines.add(line.text().trim());
                 }
-            }
-
-            newLines.add(changed
-                    ? new LyricsLine(line.startTimeMs(), line.endTimeMs(), line.text(), newWords,
-                    line.agentId(), line.isDuet(), line.isBG(), line.songPart())
-                    : line);
-        }
-
-        return lyrics.withLines(newLines);
-    }
-
-    public static Lyrics enrichFromLocalDict(Lyrics lyrics, String targetStyle) {
-        WordReadingTable table = JapaneseDictStore.table();
-
-        List<LyricsLine> origLines = lyrics.lines();
-        List<LyricsLine> newLines = new ArrayList<>(origLines.size());
-
-        for (int li = 0; li < origLines.size(); li++) {
-            LyricsLine line = origLines.get(li);
-            long startMs = line.startTimeMs() >= 0 ? line.startTimeMs() : 0L;
-            long endMs = line.endTimeMs() > startMs ? line.endTimeMs()
-                    : (li + 1 < origLines.size() && origLines.get(li + 1).startTimeMs() > startMs
-                    ? origLines.get(li + 1).startTimeMs()
-                    : startMs + 3000L);
-            newLines.add(enrichSingleLineLocal(line, table, targetStyle, startMs, endMs));
-        }
-
-        return lyrics.withLines(newLines);
-    }
-
-    private static LyricsLine enrichSingleLineLocal(LyricsLine line,
-                                                    @Nullable WordReadingTable table,
-                                                    String targetStyle,
-                                                    long fallbackStartMs,
-                                                    long fallbackEndMs) {
-        String lineText = line.text();
-        if (lineText == null || lineText.isEmpty()) {
-            return line;
-        }
-        final boolean hasHan = ScriptDetector.contains(lineText, Character.UnicodeScript.HAN);
-        final boolean hasKatakana = ScriptDetector.contains(lineText, Character.UnicodeScript.KATAKANA);
-        boolean hasExistingRuby = false;
-        if (line.hasWords()) {
-            for (Word w : line.words()) {
-                if (w.ruby() != null && !w.ruby().isEmpty()) {
-                    hasExistingRuby = true;
+                for (String provider : enabledProviders()) {
+                    if (!AiProviders.isAi(provider)) {
+                        continue;
+                    }
+                    List<String> aiLines = LyricsCache.getFuriganaAI(
+                            track, lyrics.providerName(), lines, provider);
+                    if (aiLines == null) {
+                        String prompt = OpenAIClient.renderPrompt(
+                                Settings.LYRICS_AI_FURIGANA_PROMPT.get(), "furigana", "Japanese",
+                                track.title(), track.artist(), lines);
+                        AiProviders.Result ai = AiProviders.mapLines(provider, prompt, lines);
+                        if (ai == null || ai.lines() == null || ai.lines().size() != lines.size()) {
+                            continue;
+                        }
+                        aiLines = ai.lines();
+                        LyricsCache.putFuriganaAI(track, lyrics.providerName(), lines, aiLines, provider);
+                    }
+                    result = enrichFromAiLines(lyrics, aiLines, JapaneseDictStore.table(), style);
                     break;
                 }
+            } catch (Exception ex) {
+                Logger.printException(() -> "requestAi failure", ex);
+            }
+            final Lyrics generated = result;
+            Utils.runOnMainThread(() -> callback.onGenerated(generated));
+        });
+    }
+
+    private static boolean hasKanjiOrRuby(List<LyricsLine> lines) {
+        for (LyricsLine line : lines) {
+            if (ScriptDetector.contains(line.text(), Character.UnicodeScript.HAN) || hasRuby(line)) {
+                return true;
             }
         }
-        if (!hasHan && !hasKatakana && !hasExistingRuby) {
+        return false;
+    }
+
+    private static boolean hasRuby(LyricsLine line) {
+        for (Word word : line.words()) {
+            if (hasRuby(word)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasRuby(Word word) {
+        return word.ruby() != null && !word.ruby().isEmpty();
+    }
+
+    private static LyricsLine withWords(LyricsLine line, List<Word> words) {
+        return new LyricsLine(line.startTimeMs(), line.endTimeMs(), line.text(), words,
+                line.agentId(), line.isDuet(), line.isBG(), line.songPart());
+    }
+
+    private static Word withRuby(Word word, @Nullable String ruby) {
+        return new Word(word.startMs(), word.endMs(), word.text(), word.romaji(),
+                word.endsWithSpace(), ruby);
+    }
+
+    /** Puts the source's ruby in the chosen script, or drops it when that provider is off. */
+    private static Lyrics formatEmbeddedRuby(Lyrics lyrics, boolean keep, FuriganaStyle style) {
+        List<LyricsLine> lines = new ArrayList<>(lyrics.lines().size());
+        boolean changed = false;
+        for (LyricsLine line : lyrics.lines()) {
+            if (!hasRuby(line)) {
+                lines.add(line);
+                continue;
+            }
+            List<Word> words = new ArrayList<>(line.words().size());
+            for (Word word : line.words()) {
+                words.add(hasRuby(word)
+                        ? withRuby(word, keep ? formatRuby(word.ruby(), style) : null)
+                        : word);
+            }
+            lines.add(withWords(line, words));
+            changed = true;
+        }
+        return changed ? lyrics.withLines(lines) : lyrics;
+    }
+
+    private static Lyrics enrichFromDictionary(Lyrics lyrics, WordReadingTable table,
+                                               FuriganaStyle style) {
+        List<LyricsLine> lines = new ArrayList<>(lyrics.lines().size());
+        for (LyricsLine line : lyrics.lines()) {
+            lines.add(enrichLineFromDictionary(line, table, style));
+        }
+        return lyrics.withLines(lines);
+    }
+
+    private static LyricsLine enrichLineFromDictionary(LyricsLine line, WordReadingTable table,
+                                                       FuriganaStyle style) {
+        if (!ScriptDetector.contains(line.text(), Character.UnicodeScript.HAN)) {
             return line;
         }
-
-        // Segment wordless lines or compound tokens so Kanji and Katakana each get their own slot
-        List<Word> sourceWords = ensureSegmentedWords(line, table, fallbackStartMs, fallbackEndMs);
-        if (sourceWords.isEmpty()) {
-            return line;
-        }
-
-        List<Word> newWords = new ArrayList<>(sourceWords.size());
-        boolean changed = !line.hasWords() || sourceWords.size() != line.words().size();
+        // Each kanji word needs a word of its own to carry its reading.
+        List<Word> words = segmentedWords(line, table);
+        List<Word> read = new ArrayList<>(words.size());
+        boolean changed = words.size() != line.words().size();
 
         int i = 0;
-        while (i < sourceWords.size()) {
-            Word w = sourceWords.get(i);
-            String text = w.text() != null ? w.text().trim() : "";
-
-            if (w.ruby() != null && !w.ruby().isEmpty()) {
-                String formatted = formatRuby(w.ruby(), targetStyle);
-                String rom = w.romaji();
-                if ((rom == null || rom.isEmpty()) && ScriptDetector.containsKana(text)
-                        && !ScriptDetector.contains(text, Character.UnicodeScript.HAN)) {
-                    rom = KanaRomanizer.romanizeSyllables(text);
-                    changed = true;
-                }
-                if (!formatted.equals(w.ruby())) {
-                    changed = true;
-                }
-                newWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace(), formatted));
+        while (i < words.size()) {
+            Word word = words.get(i);
+            String text = word.text().trim();
+            if (hasRuby(word) || !ScriptDetector.contains(text, Character.UnicodeScript.HAN)) {
+                read.add(word);
                 i++;
                 continue;
             }
 
-            // Case B: Pure Hiragana word -> ensure mora-spaced romaji is available for Layer 3
-            if (!text.isEmpty() && !ScriptDetector.contains(text, Character.UnicodeScript.HAN)) {
-                if (w.romaji() == null && ScriptDetector.containsKana(text)) {
-                    String rom = KanaRomanizer.romanizeSyllables(text);
-                    newWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace(), null));
-                    changed = true;
-                } else {
-                    newWords.add(w);
-                }
-                i++;
-                continue;
-            }
-
-            if (text.isEmpty()) {
-                newWords.add(w);
-                i++;
-                continue;
-            }
-
-            // Case C0: 2-kanji compound stored as a single token (e.g. "以下" -> "以"[い/i] + "下"[か/ka],
-            // "以上" -> "以"[い/i] + "上"[じょう/jo u])
-            if (text.equals("以下") || text.equals("以上")) {
-                String pairReading = lookupExactReading(text, table);
-                if (pairReading != null) {
-                    String hiraPair = KanaRomanizer.toHiragana(pairReading);
-                    String[] splitPair = splitTwoKanjiReading(text, hiraPair, table);
-                    if (splitPair != null) {
-                        String r1 = formatRuby(splitPair[0], targetStyle);
-                        String r2 = formatRuby(splitPair[1], targetStyle);
-                        String rom1 = KanaRomanizer.romanizeSyllables(splitPair[0]);
-                        String rom2 = KanaRomanizer.romanizeSyllables(splitPair[1]);
-                        long ws = w.startMs();
-                        long we = Math.max(ws + 2L, w.endMs());
-                        long midMs = ws + (we - ws) / 2L;
-                        newWords.add(new Word(ws, midMs, text.substring(0, 1), rom1, false, r1));
-                        newWords.add(new Word(midMs, we, text.substring(1, 2), rom2, w.endsWithSpace(), r2));
+            // A word timed one kanji at a time, such as 以 and 上, reads as the pair it makes.
+            if (text.length() == 1 && i + 1 < words.size()) {
+                Word next = words.get(i + 1);
+                String nextText = next.text().trim();
+                if (!hasRuby(next) && nextText.length() == 1 && ScriptDetector.isHan(nextText.charAt(0))) {
+                    String pair = text + nextText;
+                    String pairReading = table.reading(pair);
+                    String[] split = pairReading == null || pairReading.isEmpty()
+                            ? null
+                            : splitPairReading(pair, KanaRomanizer.toHiragana(pairReading), table);
+                    if (split != null) {
+                        read.add(withRuby(word, formatRuby(split[0], style)));
+                        read.add(withRuby(next, formatRuby(split[1], style)));
                         changed = true;
-                        i++;
+                        i += 2;
                         continue;
                     }
                 }
             }
 
-            // Case C: 2-kanji compound across two consecutive single-kanji words (e.g. "以" + "下" -> "い" + "か",
-            // "以" + "上" -> "い" + "じょう")
-            if (text.length() == 1 && ScriptDetector.isHan(text.charAt(0)) && i + 1 < sourceWords.size()) {
-                Word nextW = sourceWords.get(i + 1);
-                String nextText = nextW.text() != null ? nextW.text().trim() : "";
-                if ((nextW.ruby() == null || nextW.ruby().isEmpty())
-                        && nextText.length() == 1 && ScriptDetector.isHan(nextText.charAt(0))) {
-                    String pairReading = lookupExactReading(text + nextText, table);
-                    if (pairReading != null) {
-                        String hiraPair = KanaRomanizer.toHiragana(pairReading);
-                        String[] splitPair = splitTwoKanjiReading(text + nextText, hiraPair, table);
-                        if (splitPair != null) {
-                            String r1 = formatRuby(splitPair[0], targetStyle);
-                            String r2 = formatRuby(splitPair[1], targetStyle);
-                            String rom1 = (w.romaji() != null && !w.romaji().isEmpty())
-                                    ? w.romaji() : KanaRomanizer.romanizeSyllables(splitPair[0]);
-                            String rom2 = (nextW.romaji() != null && !nextW.romaji().isEmpty())
-                                    ? nextW.romaji() : KanaRomanizer.romanizeSyllables(splitPair[1]);
-                            newWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom1, w.endsWithSpace(), r1));
-                            newWords.add(new Word(nextW.startMs(), nextW.endMs(), nextW.text(), rom2, nextW.endsWithSpace(), r2));
-                            changed = true;
-                            i += 2;
-                            continue;
-                        }
-                    }
-                }
-            }
-
-            // Case D: Kanji word (single or with okurigana)
             String reading = lookupReading(text, table);
-            if ((reading == null || reading.isEmpty())
-                    && w.romaji() != null && !w.romaji().trim().isEmpty()
-                    && ScriptDetector.containsKana(KanaRomanizer.romajiToHiragana(w.romaji()))) {
-                reading = KanaRomanizer.romajiToHiragana(w.romaji());
-            }
-
-            if (reading != null && !reading.isEmpty()) {
-                String stemRuby = stripOkurigana(text, reading);
-                String formatted = formatRuby(stemRuby, targetStyle);
-                String rom = (w.romaji() != null && !w.romaji().isEmpty())
-                        ? w.romaji()
-                        : KanaRomanizer.romanizeSyllables(KanaRomanizer.toHiragana(reading));
-                newWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace(), formatted));
+            if (reading != null) {
+                read.add(withRuby(word, formatRuby(stripOkurigana(text, reading), style)));
                 changed = true;
             } else {
-                newWords.add(w);
+                read.add(word);
             }
             i++;
         }
-
-        return changed
-                ? new LyricsLine(line.startTimeMs(), line.endTimeMs(), line.text(), newWords,
-                line.agentId(), line.isDuet(), line.isBG(), line.songPart())
-                : line;
+        return changed ? withWords(line, read) : line;
     }
 
-
-    public static boolean isKatakanaChar(char c) {
-        return (c >= 0x30A1 && c <= 0x30FA) || c == 0x30FC || c == 0x30FB;
-    }
-
-    public static boolean isHiraganaChar(char c) {
-        return c >= 0x3041 && c <= 0x3096;
-    }
-
-    private static List<Word> ensureSegmentedWords(LyricsLine line,
-                                                   @Nullable WordReadingTable table,
-                                                   long fallbackStartMs,
-                                                   long fallbackEndMs) {
-        final long lineStart = line.startTimeMs() >= 0 ? line.startTimeMs() : Math.max(0L, fallbackStartMs);
-        final long lineEnd = line.endTimeMs() > lineStart ? line.endTimeMs() : Math.max(lineStart + 1000L, fallbackEndMs);
-
+    /**
+     * The line's words, with a word that mixes katakana and kanji or runs several kanji words
+     * together cut up. A line without words is cut up the same way, and since it has no timing
+     * of its own every word is sung as the line starts, as the line itself is.
+     */
+    private static List<Word> segmentedWords(LyricsLine line, @Nullable WordReadingTable table) {
         if (!line.hasWords()) {
-            return segmentTextIntoWords(line.text(), lineStart, lineEnd, table);
+            final long lineStart = Math.max(0L, line.startTimeMs());
+            return segmentText(line.text(), lineStart, lineStart, table);
         }
 
-        List<Word> orig = line.words();
-        List<Word> expanded = new ArrayList<>(orig.size() + 4);
-        for (Word w : orig) {
-            String t = w.text();
-            if (w.ruby() == null && t != null && needsCompoundSplit(t, table)) {
-                long ws = w.startMs() >= 0 ? w.startMs() : lineStart;
-                long we = w.endMs() > ws ? w.endMs() : Math.max(ws + 200L, lineEnd);
-                List<Word> sub = segmentTextIntoWords(t, ws, we, table);
-                if (sub.size() > 1) {
-                    Word last = sub.get(sub.size() - 1);
-                    if (last.endsWithSpace() != w.endsWithSpace()) {
-                        sub.set(sub.size() - 1, new Word(
-                                last.startMs(), last.endMs(), last.text(), last.romaji(), w.endsWithSpace(), last.ruby()));
-                    }
-                    expanded.addAll(sub);
+        List<Word> expanded = new ArrayList<>(line.words().size());
+        for (Word word : line.words()) {
+            if (!hasRuby(word) && needsSplit(word.text(), table)) {
+                List<Word> parts = segmentText(word.text(), word.startMs(), word.endMs(), table);
+                if (parts.size() > 1) {
+                    Word last = parts.get(parts.size() - 1);
+                    parts.set(parts.size() - 1, new Word(last.startMs(), last.endMs(),
+                            last.text(), last.romaji(), word.endsWithSpace(), null));
+                    expanded.addAll(parts);
                     continue;
                 }
             }
-            expanded.add(w);
+            expanded.add(word);
         }
         return expanded;
     }
 
     /**
-     * Returns true when a token mixes Katakana + Hiragana (e.g. "ノルマは"), mixes Katakana + Kanji
-     * (e.g. "ノルマ以下"), or contains multiple Kanji+Kana transitions (e.g. "深く朱き潤む瞳").
+     * Whether a word mixes katakana with hiragana or kanji, such as ノルマ以下, or holds several
+     * kanji words, such as 深く朱き.
      */
-    private static boolean needsCompoundSplit(String text, @Nullable WordReadingTable table) {
+    private static boolean needsSplit(String text, @Nullable WordReadingTable table) {
         String clean = text.trim();
         if (clean.length() <= 1) {
             return false;
@@ -485,50 +287,41 @@ public final class LyricsFuriganaGenerator {
         boolean hasHan = false;
         for (int i = 0; i < clean.length(); i++) {
             char c = clean.charAt(i);
-            if (isKatakanaChar(c)) hasKatakana = true;
-            else if (isHiraganaChar(c)) hasHiragana = true;
+            if (isKatakana(c)) hasKatakana = true;
+            else if (isHiragana(c)) hasHiragana = true;
             else if (ScriptDetector.isHan(c)) hasHan = true;
         }
-        // Any token mixing Katakana with Hiragana or Kanji should be split so the Katakana word is isolated
         if (hasKatakana && (hasHiragana || hasHan)) {
             return true;
         }
-        if (!hasHan) {
+        if (!hasHan || lookupExactReading(clean, table) != null) {
             return false;
         }
-        if (lookupExactReading(clean, table) != null) {
-            return false;
-        }
-        boolean seenKanaAfterHan = false;
+        // Kanji after kana starts another word.
         boolean seenHan = false;
         for (int i = 0; i < clean.length(); i++) {
             char c = clean.charAt(i);
             if (ScriptDetector.isHan(c)) {
-                if (seenKanaAfterHan || (i > 0 && ScriptDetector.isKana(clean.charAt(i - 1)))) {
+                if (seenHan && ScriptDetector.isKana(clean.charAt(i - 1))) {
                     return true;
                 }
                 seenHan = true;
-            } else if (ScriptDetector.isKana(c) && seenHan) {
-                seenKanaAfterHan = true;
             }
         }
-        return clean.length() >= 4 && seenHan && lookupReading(clean, table) != null
-                && !lookupReading(clean, table).equals(lookupExactReading(clean, table));
+        // A long word the dictionary knows only the start of.
+        return clean.length() >= 4 && lookupReading(clean, table) != null;
     }
 
     /**
-     * Segments a Japanese line or phrase into natural Kanji(+okurigana), Katakana, Hiragana,
-     * and Latin tokens with interpolated timestamps.
+     * Cuts Japanese text into kanji words with their okurigana, katakana runs, hiragana runs and
+     * anything else, each timed by its share of the characters.
      */
-    public static List<Word> segmentTextIntoWords(String text, long startMs, long endMs,
-                                                  @Nullable WordReadingTable table) {
-        if (text == null || text.isEmpty()) {
-            return Collections.emptyList();
-        }
+    private static List<Word> segmentText(String text, long startMs, long endMs,
+                                          @Nullable WordReadingTable table) {
         List<String> tokens = new ArrayList<>();
         List<Boolean> trailingSpaces = new ArrayList<>();
 
-        int n = text.length();
+        final int n = text.length();
         int i = 0;
         while (i < n) {
             while (i < n && Character.isWhitespace(text.charAt(i))) {
@@ -537,96 +330,66 @@ public final class LyricsFuriganaGenerator {
             if (i >= n) break;
 
             char c = text.charAt(i);
-            int tokenEnd;
+            int end;
             if (ScriptDetector.isHan(c)) {
-                tokenEnd = matchKanjiTokenEnd(text, i, table);
-            } else if (isKatakanaChar(c)) {
-                tokenEnd = i + 1;
-                while (tokenEnd < n && isKatakanaChar(text.charAt(tokenEnd))) {
-                    tokenEnd++;
-                }
-            } else if (isHiraganaChar(c)) {
-                tokenEnd = i + 1;
-                while (tokenEnd < n && isHiraganaChar(text.charAt(tokenEnd))) {
-                    tokenEnd++;
-                }
+                end = kanjiWordEnd(text, i, table);
+            } else if (isKatakana(c)) {
+                end = i + 1;
+                while (end < n && isKatakana(text.charAt(end))) end++;
+            } else if (isHiragana(c)) {
+                end = i + 1;
+                while (end < n && isHiragana(text.charAt(end))) end++;
             } else {
-                tokenEnd = i + 1;
-                while (tokenEnd < n
-                        && !Character.isWhitespace(text.charAt(tokenEnd))
-                        && !ScriptDetector.isHan(text.charAt(tokenEnd))
-                        && !ScriptDetector.isKana(text.charAt(tokenEnd))) {
-                    tokenEnd++;
+                end = i + 1;
+                while (end < n && !Character.isWhitespace(text.charAt(end))
+                        && !ScriptDetector.isHan(text.charAt(end))
+                        && !ScriptDetector.isKana(text.charAt(end))) {
+                    end++;
                 }
             }
-
-            // Attach trailing punctuation (other than brackets/spaces) to the token
-            while (tokenEnd < n) {
-                char pc = text.charAt(tokenEnd);
-                if (!Character.isWhitespace(pc) && !Character.isLetterOrDigit(pc)
-                        && !ScriptDetector.isHan(pc) && !ScriptDetector.isKana(pc)) {
-                    tokenEnd++;
-                } else {
+            // Punctuation stays with the word before it.
+            while (end < n) {
+                char p = text.charAt(end);
+                if (Character.isWhitespace(p) || Character.isLetterOrDigit(p)
+                        || ScriptDetector.isHan(p) || ScriptDetector.isKana(p)) {
                     break;
                 }
+                end++;
             }
 
-            boolean hasSpaceAfter = tokenEnd < n && Character.isWhitespace(text.charAt(tokenEnd));
-            tokens.add(text.substring(i, tokenEnd));
-            trailingSpaces.add(hasSpaceAfter);
-            i = tokenEnd;
+            tokens.add(text.substring(i, end));
+            trailingSpaces.add(end < n && Character.isWhitespace(text.charAt(end)));
+            i = end;
         }
-
         if (tokens.isEmpty()) {
             return Collections.emptyList();
         }
 
         int totalChars = 0;
-        for (String tok : tokens) {
-            totalChars += Math.max(1, tok.length());
+        for (String token : tokens) {
+            totalChars += token.length();
         }
-        final long totalDur = Math.max(tokens.size(), endMs - startMs);
+        final long duration = Math.max(0L, endMs - startMs);
         long cursorMs = startMs;
         int seenChars = 0;
-
         List<Word> words = new ArrayList<>(tokens.size());
         for (int idx = 0; idx < tokens.size(); idx++) {
-            String tok = tokens.get(idx);
-            seenChars += Math.max(1, tok.length());
-            long wEnd = (idx == tokens.size() - 1)
-                    ? Math.max(cursorMs + 1L, endMs)
-                    : Math.max(cursorMs + 1L, startMs + (totalDur * seenChars) / totalChars);
-            String rom = ScriptDetector.isKana(tok.charAt(0)) && !ScriptDetector.contains(tok, Character.UnicodeScript.HAN)
-                    ? KanaRomanizer.romanizeSyllables(tok)
-                    : null;
-            words.add(new Word(cursorMs, wEnd, tok, rom, trailingSpaces.get(idx), null));
-            cursorMs = wEnd;
+            seenChars += tokens.get(idx).length();
+            long wordEnd = startMs + duration * seenChars / totalChars;
+            words.add(new Word(cursorMs, wordEnd, tokens.get(idx), null, trailingSpaces.get(idx), null));
+            cursorMs = wordEnd;
         }
         return words;
     }
 
-    private static int matchKanjiTokenEnd(String text, int start, @Nullable WordReadingTable table) {
+    /** The end of the longest dictionary word of kanji and okurigana starting at {@code start}. */
+    private static int kanjiWordEnd(String text, int start, @Nullable WordReadingTable table) {
         final int n = text.length();
-        int maxLen = Math.min(WordReadingTable.MAX_WORD_LENGTH, n - start);
-        for (int len = maxLen; len >= 2; len--) {
-            String sub = text.substring(start, start + len);
-            if (!ScriptDetector.isHan(sub.charAt(0))) continue;
-            boolean invalidJump = false;
-            boolean seenKana = false;
-            for (int k = 0; k < sub.length(); k++) {
-                if (isHiraganaChar(sub.charAt(k))) {
-                    seenKana = true;
-                } else if (ScriptDetector.isHan(sub.charAt(k)) && seenKana) {
-                    invalidJump = true;
-                    break;
-                } else if (!ScriptDetector.isHan(sub.charAt(k))) {
-                    invalidJump = true;
-                    break;
-                }
-            }
-            if (invalidJump) continue;
-            if (lookupExactReading(sub, table) != null) {
-                return start + len;
+        final int maxLength = Math.min(WordReadingTable.MAX_WORD_LENGTH, n - start);
+        for (int length = maxLength; length >= 2; length--) {
+            if (isKanjiWithOkurigana(text, start, start + length)
+                    && lookupExactReading(text.substring(start, start + length), table) != null) {
+                return start + length;
             }
         }
 
@@ -640,197 +403,164 @@ public final class LyricsFuriganaGenerator {
         return end;
     }
 
-    public static String stripOkurigana(String wordText, String reading) {
-        if (wordText == null || reading == null || wordText.isEmpty() || reading.isEmpty()) {
-            return reading;
+    /** Kanji followed by nothing but hiragana. */
+    private static boolean isKanjiWithOkurigana(String text, int start, int end) {
+        boolean seenKana = false;
+        for (int i = start; i < end; i++) {
+            char c = text.charAt(i);
+            if (isHiragana(c)) {
+                seenKana = true;
+            } else if (seenKana || !ScriptDetector.isHan(c)) {
+                return false;
+            }
         }
-        String cleanWord = wordText.trim();
-        String hiraReading = KanaRomanizer.toHiragana(reading.trim());
-        String hiraWord = KanaRomanizer.toHiragana(cleanWord);
+        return true;
+    }
 
-        int wEnd = hiraWord.length();
-        int rEnd = hiraReading.length();
-        while (wEnd > 0 && rEnd > 1) {
-            char wc = hiraWord.charAt(wEnd - 1);
-            char rc = hiraReading.charAt(rEnd - 1);
-            if (ScriptDetector.isKana(wc) && wc == rc) {
-                wEnd--;
-                rEnd--;
-            } else {
+    private static boolean isKatakana(char c) {
+        return (c >= 'ァ' && c <= 'ヺ') || c == '・' || c == 'ー';
+    }
+
+    private static boolean isHiragana(char c) {
+        return c >= 'ぁ' && c <= 'ゖ';
+    }
+
+    /** The reading of the kanji alone, without the okurigana the word ends with. */
+    static String stripOkurigana(String wordText, String reading) {
+        String hiraReading = KanaRomanizer.toHiragana(reading.trim());
+        String hiraWord = KanaRomanizer.toHiragana(wordText.trim());
+
+        int wordEnd = hiraWord.length();
+        int readingEnd = hiraReading.length();
+        while (wordEnd > 0 && readingEnd > 1) {
+            char c = hiraWord.charAt(wordEnd - 1);
+            if (!ScriptDetector.isKana(c) || c != hiraReading.charAt(readingEnd - 1)) {
                 break;
             }
+            wordEnd--;
+            readingEnd--;
         }
-        if (rEnd < hiraReading.length() && rEnd > 0) {
-            return hiraReading.substring(0, rEnd);
-        }
-        return reading;
+        return readingEnd < hiraReading.length() ? hiraReading.substring(0, readingEnd) : reading;
     }
 
+    /** Splits the reading of two kanji between them, starting from the first one's own reading. */
     @Nullable
-    private static String[] splitTwoKanjiReading(String twoKanji, String hiraReading,
-                                                 @Nullable WordReadingTable table) {
-        if (twoKanji.equals("以下") && hiraReading.equals("いか")) {
-            return new String[]{"い", "か"};
-        }
-        if (twoKanji.equals("以上") && hiraReading.equals("いじょう")) {
-            return new String[]{"い", "じょう"};
-        }
-        String firstKanji = twoKanji.substring(0, 1);
-        String firstRead = lookupExactReading(firstKanji, table);
-        if (firstRead != null) {
-            String hiraFirst = KanaRomanizer.toHiragana(firstRead);
-            if (hiraReading.startsWith(hiraFirst) && hiraReading.length() > hiraFirst.length()) {
-                return new String[]{hiraFirst, hiraReading.substring(hiraFirst.length())};
+    private static String[] splitPairReading(String pair, String reading, WordReadingTable table) {
+        String first = table.reading(pair.substring(0, 1));
+        if (first != null && !first.isEmpty()) {
+            String hiraFirst = KanaRomanizer.toHiragana(first);
+            if (reading.startsWith(hiraFirst) && reading.length() > hiraFirst.length()) {
+                return new String[]{hiraFirst, reading.substring(hiraFirst.length())};
             }
         }
-        if (hiraReading.length() == 2) {
-            return new String[]{hiraReading.substring(0, 1), hiraReading.substring(1, 2)};
-        }
-        if (hiraReading.length() >= 3) {
-            return new String[]{hiraReading.substring(0, 1), hiraReading.substring(1)};
+        if (reading.length() >= 2) {
+            return new String[]{reading.substring(0, 1), reading.substring(1)};
         }
         return null;
     }
 
     @Nullable
-    private static String lookupExactReading(String clean, @Nullable WordReadingTable table) {
-        if (clean == null || clean.isEmpty()) return null;
-        if (table != null) {
-            String r = table.reading(clean);
-            if (r != null && !r.isEmpty()) {
-                return r;
+    private static String lookupExactReading(String text, @Nullable WordReadingTable table) {
+        if (table == null) {
+            return null;
+        }
+        String reading = table.reading(text);
+        return reading == null || reading.isEmpty() ? null : reading;
+    }
+
+    /** The reading of the word, or else of the longest start of it the dictionary knows. */
+    @Nullable
+    private static String lookupReading(String text, @Nullable WordReadingTable table) {
+        for (int length = Math.min(WordReadingTable.MAX_WORD_LENGTH, text.length()); length >= 1; length--) {
+            String reading = lookupExactReading(text.substring(0, length), table);
+            if (reading != null) {
+                return reading;
             }
         }
         return null;
     }
 
-    @Nullable
-    public static String lookupKanjiReading(String wordText) {
-        return lookupReading(wordText, JapaneseDictStore.table());
-    }
-
-    @Nullable
-    private static String lookupReading(String wordText, @Nullable WordReadingTable table) {
-        if (wordText == null) return null;
-        String clean = wordText.trim();
-        if (clean.isEmpty()) return null;
-
-        String exact = lookupExactReading(clean, table);
-        if (exact != null && !exact.isEmpty()) {
-            return exact;
-        }
-
-        int limit = Math.min(WordReadingTable.MAX_WORD_LENGTH, clean.length());
-        for (int candidate = limit; candidate >= 1; candidate--) {
-            String prefix = clean.substring(0, candidate);
-            String found = lookupExactReading(prefix, table);
-            if (found != null && !found.isEmpty()) {
-                return found;
-            }
-        }
-        return null;
-    }
-
-    public static Lyrics enrichFromAiLines(Lyrics lyrics, List<String> aiLines, String targetStyle) {
-        List<LyricsLine> origLines = lyrics.lines();
-        List<LyricsLine> newLines = new ArrayList<>(origLines.size());
-        WordReadingTable table = JapaneseDictStore.table();
-
-        for (int li = 0; li < origLines.size(); li++) {
-            LyricsLine line = origLines.get(li);
-            if (li >= aiLines.size()) {
-                newLines.add(line);
+    /** Gives each kanji word without a reading the one the AI wrote in brackets after it. */
+    static Lyrics enrichFromAiLines(Lyrics lyrics, List<String> aiLines,
+                                    @Nullable WordReadingTable table, FuriganaStyle style) {
+        List<LyricsLine> lines = new ArrayList<>(lyrics.lines().size());
+        for (int li = 0; li < lyrics.lines().size(); li++) {
+            LyricsLine line = lyrics.lines().get(li);
+            Map<String, String> readings = li < aiLines.size() && aiLines.get(li) != null
+                    ? parseAiReadings(aiLines.get(li))
+                    : Collections.emptyMap();
+            if (readings.isEmpty()) {
+                lines.add(line);
                 continue;
             }
 
-            String aiLine = aiLines.get(li);
-            if (aiLine == null || aiLine.trim().isEmpty()) {
-                newLines.add(line);
-                continue;
-            }
-
-            Map<String, String> aiRubyMap = parseAiBrackets(aiLine);
-            if (aiRubyMap.isEmpty()) {
-                newLines.add(line);
-                continue;
-            }
-
-            long startMs = line.startTimeMs() >= 0 ? line.startTimeMs() : 0L;
-            long endMs = line.endTimeMs() > startMs ? line.endTimeMs()
-                    : (li + 1 < origLines.size() && origLines.get(li + 1).startTimeMs() > startMs
-                    ? origLines.get(li + 1).startTimeMs()
-                    : startMs + 3000L);
-
-            List<Word> words = ensureSegmentedWords(line, table, startMs, endMs);
-            if (words.isEmpty()) {
-                newLines.add(line);
-                continue;
-            }
-
-            List<Word> newWords = new ArrayList<>(words.size());
-            boolean changed = !line.hasWords() || words.size() != line.words().size();
-
-            for (Word w : words) {
-                if (w.ruby() != null && !w.ruby().isEmpty()) {
-                    newWords.add(w);
-                } else if (w.text() != null && (ScriptDetector.contains(w.text(), Character.UnicodeScript.HAN)
-                        || ScriptDetector.containsKana(w.text()))) {
-                    String clean = w.text().trim();
-                    String reading = aiRubyMap.get(clean);
-                    if (reading == null) {
-                        for (Map.Entry<String, String> e : aiRubyMap.entrySet()) {
-                            if (clean.contains(e.getKey()) || e.getKey().contains(clean)) {
-                                reading = e.getValue();
-                                break;
-                            }
-                        }
-                    }
-                    if (reading != null && !reading.isEmpty()) {
-                        String stemRuby = ScriptDetector.contains(clean, Character.UnicodeScript.HAN)
-                                ? stripOkurigana(clean, reading) : reading;
-                        String formatted = formatRuby(stemRuby, targetStyle);
-                        newWords.add(new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), w.endsWithSpace(), formatted));
-                        changed = true;
-                    } else {
-                        newWords.add(w);
-                    }
+            List<Word> words = segmentedWords(line, table);
+            List<Word> read = new ArrayList<>(words.size());
+            boolean changed = words.size() != line.words().size();
+            for (Word word : words) {
+                String clean = word.text().trim();
+                String reading = hasRuby(word) || !ScriptDetector.contains(clean, Character.UnicodeScript.HAN)
+                        ? null
+                        : aiReading(clean, readings);
+                if (reading == null) {
+                    read.add(word);
                 } else {
-                    newWords.add(w);
+                    read.add(withRuby(word, formatRuby(stripOkurigana(clean, reading), style)));
+                    changed = true;
                 }
             }
-
-            newLines.add(changed
-                    ? new LyricsLine(line.startTimeMs(), line.endTimeMs(), line.text(), newWords,
-                    line.agentId(), line.isDuet(), line.isBG(), line.songPart())
-                    : line);
+            lines.add(changed ? withWords(line, read) : line);
         }
-
-        return lyrics.withLines(newLines);
+        return lyrics.withLines(lines);
     }
 
-    public static Map<String, String> parseAiBrackets(String aiLine) {
-        Map<String, String> map = new HashMap<>();
-        if (aiLine == null) return map;
-        Matcher m = BRACKET_RUBY_PATTERN.matcher(aiLine);
-        while (m.find()) {
-            String base = m.group(1).trim();
-            String ruby = m.group(2).trim();
-            if (!base.isEmpty() && !ruby.isEmpty()) {
-                map.put(base, ruby);
+    @Nullable
+    private static String aiReading(String word, Map<String, String> readings) {
+        String reading = readings.get(word);
+        if (reading != null) {
+            return reading;
+        }
+        // The word may carry punctuation the AI wrote apart from it.
+        for (Map.Entry<String, String> entry : readings.entrySet()) {
+            if (word.startsWith(entry.getKey())) {
+                return entry.getValue();
             }
         }
-        return map;
+        return null;
     }
 
-    public static String formatRuby(String ruby, String targetStyle) {
-        if (ruby == null || ruby.isEmpty()) return ruby;
-        // Preserve pure Latin/English ruby (such as "Normal" above "ノルマ") without altering case/script
+    /**
+     * The readings an AI line holds, by the kanji and okurigana right before each bracket:
+     * 君[きみ]の名前[なまえ] reads 君 and 名前.
+     */
+    private static Map<String, String> parseAiReadings(String aiLine) {
+        Map<String, String> readings = new HashMap<>();
+        int open = aiLine.indexOf('[');
+        while (open >= 0) {
+            final int close = aiLine.indexOf(']', open);
+            if (close < 0) {
+                break;
+            }
+            int start = open;
+            while (start > 0 && ScriptDetector.isKana(aiLine.charAt(start - 1))) start--;
+            final int kanaStart = start;
+            while (start > 0 && ScriptDetector.isHan(aiLine.charAt(start - 1))) start--;
+            String reading = aiLine.substring(open + 1, close).trim();
+            if (start < kanaStart && !reading.isEmpty()) {
+                readings.put(aiLine.substring(start, open), reading);
+            }
+            open = aiLine.indexOf('[', close);
+        }
+        return readings;
+    }
+
+    /** Kana ruby in the chosen script. Other ruby, such as an English gloss, is kept as is. */
+    public static String formatRuby(String ruby, FuriganaStyle style) {
         if (!ScriptDetector.containsKana(ruby)) {
             return ruby;
         }
-        if ("KATAKANA".equalsIgnoreCase(targetStyle)) {
-            return KanaRomanizer.toKatakana(ruby);
-        }
-        return KanaRomanizer.toHiragana(ruby);
+        return style == FuriganaStyle.KATAKANA
+                ? KanaRomanizer.toKatakana(ruby)
+                : KanaRomanizer.toHiragana(ruby);
     }
 }

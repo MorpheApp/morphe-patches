@@ -1150,10 +1150,9 @@ final class LyricsLineView extends TextView {
         final String transText;
         @Nullable
         final StaticLayout transLayout;
-        /** Where the translation and the lyric start; with the swap on the translation goes first. */
-        @Nullable
+        /** The furigana above each line of the lyric. */
         final RomanLineStatics[] rubyLines;
-        final int extraRubyHeightPx;
+        /** Where the translation and the lyric start; with the swap on the translation goes first. */
         final int transTopY;
         final int mainTopY;
         final int totalHeightPx;
@@ -1161,8 +1160,7 @@ final class LyricsLineView extends TextView {
         SyllableRomanCache(int widthPx, float fontSizePx, boolean hasSyllableRomanization,
                            @Nullable String mainText, int lineCount, List<AlignedSyllable> alignedSyllables,
                            int extraRomanHeightPx, List<VisualCluster> clusters, ClusterStatics statics,
-                           RomanLineStatics[] romanLines, @Nullable RomanLineStatics[] rubyLines,
-                           int extraRubyHeightPx, int[] sylLine,
+                           RomanLineStatics[] romanLines, RomanLineStatics[] rubyLines, int[] sylLine,
                            float[] sylShiftedLeadX, float[] sylShiftedTrailX,
                            @Nullable String transText, @Nullable StaticLayout transLayout,
                            int transTopY, int mainTopY, int totalHeightPx) {
@@ -1177,7 +1175,6 @@ final class LyricsLineView extends TextView {
             this.statics = statics;
             this.romanLines = romanLines;
             this.rubyLines = rubyLines;
-            this.extraRubyHeightPx = extraRubyHeightPx;
             this.sylLine = sylLine;
             this.sylShiftedLeadX = sylShiftedLeadX;
             this.sylShiftedTrailX = sylShiftedTrailX;
@@ -1189,11 +1186,12 @@ final class LyricsLineView extends TextView {
             this.totalHeightPx = totalHeightPx;
         }
 
+        /** Remembers that a line has nothing to draw this way, so it is not worked out every frame. */
         static SyllableRomanCache none(int widthPx, float fontSizePx) {
             return new SyllableRomanCache(widthPx, fontSizePx, false, null, 0,
                     Collections.emptyList(), 0, Collections.emptyList(),
                     new ClusterStatics(new float[0], new float[0]),
-                    new RomanLineStatics[0], null, 0, new int[0], new float[0], new float[0],
+                    new RomanLineStatics[0], new RomanLineStatics[0], new int[0], new float[0], new float[0],
                     null, null, 0, 0, 0);
         }
     }
@@ -1257,9 +1255,8 @@ final class LyricsLineView extends TextView {
         romPaint.setTextSize(fontSizePx * LyricsSpanBuilder.TRANSLATION_RELATIVE_SIZE);
         LyricsViewSupport.applyLyricsBoldPaint(romPaint);
         romPaint.setLetterSpacing(0f);
-        final boolean allowTransliteration = Settings.LYRICS_ALLOW_TRANSLITERATION.get();
         TextPaint rubyPaint = new TextPaint(mainPaint);
-        rubyPaint.setTextSize(fontSizePx * 0.50f);
+        rubyPaint.setTextSize(fontSizePx * LyricsSpanBuilder.RUBY_RELATIVE_SIZE);
         LyricsViewSupport.applyLyricsBoldPaint(rubyPaint);
         rubyPaint.setLetterSpacing(0f);
 
@@ -1294,7 +1291,7 @@ final class LyricsLineView extends TextView {
                 alignSyllablesForFormatting(wordTimings, rawMainText, formattedMainText);
         List<RomanizedWordCluster> romanClusters =
                 buildRomanizedWordClusters(alignedSyllables, formattedMainText, mainLayout, romPaint);
-        final boolean enableFurigana = Settings.LYRICS_ENABLE_FURIGANA.get();
+        final boolean enableFurigana = Settings.LYRICS_FURIGANA.get();
         List<RomanizedWordCluster> rubyClusters = enableFurigana
                 ? buildRubyClusters(alignedSyllables, formattedMainText, mainLayout, rubyPaint)
                 : Collections.emptyList();
@@ -1330,10 +1327,11 @@ final class LyricsLineView extends TextView {
         RomanLineStatics[] romanStatics = hasRoman
                 ? buildRomanStatics(romanLines, charXMap, romanStartShift, lineBaselines, lineBottoms,
                 lineLefts, lineStarts, lineCount, fontSizePx, lineExtraHeight, totalW) : new RomanLineStatics[0];
-        List<RomanizedWordCluster>[] rubyLines = hasRuby
-                ? groupRomanClustersByLine(rubyClusters, lineCount) : null;
         RomanLineStatics[] rubyStatics = hasRuby
-                ? buildRubyStatics(rubyLines, charXMap, romanStartShift, lineBaselines, lineLefts, lineStarts, lineCount, fontSizePx, lineExtraHeight, totalW) : null;
+                ? buildRubyStatics(groupRomanClustersByLine(rubyClusters, lineCount), charXMap,
+                romanStartShift, lineBaselines, lineLefts, lineStarts, lineCount, fontSizePx,
+                lineExtraHeight, totalW)
+                : new RomanLineStatics[0];
 
         // Where each syllable's sweep starts and ends, from the same positions it is drawn at.
         final int sylCount = alignedSyllables.size();
@@ -1407,9 +1405,10 @@ final class LyricsLineView extends TextView {
 
         return new SyllableRomanCache(widthPx, fontSizePx, true, rawMainText, lineCount,
                 alignedSyllables, extraRomanHeightPx, clusters, statics,
-                romanStatics, rubyStatics, extraRubyHeightPx, sylLine,
+                romanStatics, rubyStatics, sylLine,
                 sylShiftedLeadX, sylShiftedTrailX, transText, transLayout, transTopY, mainTopY, totalH);
     }
+
     /** Finds each word timing in the laid out text, which may carry bidi marks and added breaks. */
     private static List<AlignedSyllable> alignSyllablesForFormatting(
             List<LyricsSpanBuilder.WordTiming> words,
@@ -1505,7 +1504,7 @@ final class LyricsLineView extends TextView {
 
         List<RomanizedWordCluster> romanClusters =
                 buildRomanizedWordClusters(alignedSyllables, mainText, unconstrained, romPaint);
-        final boolean enableFurigana = Settings.LYRICS_ENABLE_FURIGANA.get();
+        final boolean enableFurigana = Settings.LYRICS_FURIGANA.get();
         List<RomanizedWordCluster> rubyClusters = (enableFurigana && rubyPaint != null)
                 ? buildRubyClusters(alignedSyllables, mainText, unconstrained, rubyPaint)
                 : Collections.emptyList();
@@ -2070,7 +2069,8 @@ final class LyricsLineView extends TextView {
         return result;
     }
 
-    static RomanLineStatics[] buildRubyStatics(
+    /** Where the furigana of each line is drawn, above the words it reads. */
+    private static RomanLineStatics[] buildRubyStatics(
             List<RomanizedWordCluster>[] rubyLines,
             float[] charXMap,
             float[] romanStartShift,
@@ -2081,9 +2081,6 @@ final class LyricsLineView extends TextView {
             float fontSizePx,
             float lineExtraHeight,
             float totalWidth) {
-        if (rubyLines == null) {
-            return null;
-        }
         final int count = Math.min(lineCount, rubyLines.length);
         RomanLineStatics[] lines = new RomanLineStatics[count];
 
@@ -2153,6 +2150,7 @@ final class LyricsLineView extends TextView {
         List<VisualCluster> clusters = cache.clusters;
         ClusterStatics statics = cache.statics;
 
+        // Everything unsung first, then the sung part on top of it.
         if (mainUnsungAlpha > 0) {
             for (int idx = 0; idx < clusters.size(); idx++) {
                 VisualCluster vc = clusters.get(idx);
@@ -2166,50 +2164,14 @@ final class LyricsLineView extends TextView {
             }
         }
 
-        if (cache.romanLines != null && romaReveal > 0f && romaUnsungAlpha > 0) {
-            RomanLineStatics[] romLines = cache.romanLines;
-            for (int li = 0; li < romLines.length; li++) {
-                RomanLineStatics line = romLines[li];
-                if (line == null) {
-                    continue;
-                }
-                List<RomanizedWordCluster> cs = line.clusters();
-                final float topY = mainY + line.y();
-                for (int i = 0; i < cs.size(); i++) {
-                    RomanizedWordCluster rc = cs.get(i);
-                    TextPaint p = rc.subLayout().getPaint();
-                    p.setShader(null);
-                    p.setColor(romaUnsungColor);
-                    canvas.save();
-                    canvas.translate(originX + line.drawX()[i], topY);
-                    rc.subLayout().draw(canvas);
-                    canvas.restore();
-                }
-            }
+        if (romaReveal > 0f && romaUnsungAlpha > 0) {
+            drawUnsungReadings(canvas, cache.romanLines, originX, mainY, romaUnsungColor);
         }
-        final float rubyReveal = Settings.LYRICS_ENABLE_FURIGANA.get() ? 1f : 0f;
-        final int rubyUnsungAlpha = Math.round(lineAlpha * readingBaseAlpha * contentNow * rubyReveal);
-        final int rubyUnsungColor = readingRgb | (Math.max(0, Math.min(255, rubyUnsungAlpha)) << 24);
-        if (cache.rubyLines != null && rubyReveal > 0f && rubyUnsungAlpha > 0) {
-            RomanLineStatics[] rubyLines = cache.rubyLines;
-            for (int li = 0; li < rubyLines.length; li++) {
-                RomanLineStatics line = rubyLines[li];
-                if (line == null) {
-                    continue;
-                }
-                List<RomanizedWordCluster> cs = line.clusters();
-                final float topY = mainY + line.y();
-                for (int i = 0; i < cs.size(); i++) {
-                    RomanizedWordCluster rc = cs.get(i);
-                    TextPaint p = rc.subLayout().getPaint();
-                    p.setShader(null);
-                    p.setColor(rubyUnsungColor);
-                    canvas.save();
-                    canvas.translate(originX + line.drawX()[i], topY);
-                    rc.subLayout().draw(canvas);
-                    canvas.restore();
-                }
-            }
+        final boolean drawRuby = Settings.LYRICS_FURIGANA.get();
+        final int rubyUnsungAlpha = Math.round(lineAlpha * readingBaseAlpha * contentNow);
+        if (drawRuby && rubyUnsungAlpha > 0) {
+            drawUnsungReadings(canvas, cache.rubyLines, originX, mainY,
+                    readingRgb | (Math.max(0, Math.min(255, rubyUnsungAlpha)) << 24));
         }
 
         if (cache.transLayout != null && transReveal > 0f && transAlpha > 0) {
@@ -2307,76 +2269,71 @@ final class LyricsLineView extends TextView {
         }
 
         // Each reading is lit as far as its own syllable is sung.
-        if (cache.romanLines != null && romaReveal > 0f) {
-            final int romaSungAlpha = Math.round(lineAlpha * LyricsColors.ACTIVE_READING_ALPHA * 255f * contentNow * romaReveal);
-            final int romaSungColor = readingRgb | (Math.max(0, Math.min(255, romaSungAlpha)) << 24);
-            RomanLineStatics[] romLines = cache.romanLines;
+        final int sungReadingAlpha = Math.round(lineAlpha * LyricsColors.ACTIVE_READING_ALPHA * 255f * contentNow);
+        if (romaReveal > 0f) {
+            final int romaSungAlpha = Math.round(sungReadingAlpha * romaReveal);
+            drawSungReadings(canvas, cache.romanLines, originX, mainY,
+                    readingRgb | (Math.max(0, Math.min(255, romaSungAlpha)) << 24),
+                    sylProgress, sylCount, allSung);
+        }
+        if (drawRuby) {
+            drawSungReadings(canvas, cache.rubyLines, originX, mainY,
+                    readingRgb | (Math.max(0, Math.min(255, sungReadingAlpha)) << 24),
+                    sylProgress, sylCount, allSung);
+        }
+    }
 
-            for (int li = 0; li < romLines.length; li++) {
-                RomanLineStatics line = romLines[li];
-                if (line == null) {
-                    continue;
-                }
-                List<RomanizedWordCluster> cs = line.clusters();
-                final float topY = mainY + line.y();
-                for (int i = 0; i < cs.size(); i++) {
-                    RomanizedWordCluster rc = cs.get(i);
-                    final float prog = (rc.wordIndex() >= 0 && rc.wordIndex() < sylCount)
-                            ? sylProgress[rc.wordIndex()]
-                            : (allSung ? 1f : 0f);
-                    if (prog <= 0f) {
-                        continue;
-                    }
-                    TextPaint p = rc.subLayout().getPaint();
-                    p.setShader(null);
-                    p.setColor(romaSungColor);
-                    final float rx = originX + line.drawX()[i];
-                    canvas.save();
-                    if (prog < 1f) {
-                        canvas.clipRect(rx, topY - Dim.dp(2),
-                                rx + rc.romanWidth() * prog,
-                                topY + rc.subLayout().getHeight() + Dim.dp(2));
-                    }
-                    canvas.translate(rx, topY);
-                    rc.subLayout().draw(canvas);
-                    canvas.restore();
-                }
+    private static void drawUnsungReadings(Canvas canvas, RomanLineStatics[] lines,
+                                           float originX, float mainY, int color) {
+        for (RomanLineStatics line : lines) {
+            if (line == null) {
+                continue;
+            }
+            List<RomanizedWordCluster> cs = line.clusters();
+            final float topY = mainY + line.y();
+            for (int i = 0; i < cs.size(); i++) {
+                RomanizedWordCluster rc = cs.get(i);
+                TextPaint p = rc.subLayout().getPaint();
+                p.setShader(null);
+                p.setColor(color);
+                canvas.save();
+                canvas.translate(originX + line.drawX()[i], topY);
+                rc.subLayout().draw(canvas);
+                canvas.restore();
             }
         }
-        if (cache.rubyLines != null && rubyReveal > 0f) {
-            final int rubySungAlpha = Math.round(lineAlpha * LyricsColors.ACTIVE_READING_ALPHA * 255f * contentNow * rubyReveal);
-            final int rubySungColor = readingRgb | (Math.max(0, Math.min(255, rubySungAlpha)) << 24);
-            RomanLineStatics[] rubyLines = cache.rubyLines;
+    }
 
-            for (int li = 0; li < rubyLines.length; li++) {
-                RomanLineStatics line = rubyLines[li];
-                if (line == null) {
+    private static void drawSungReadings(Canvas canvas, RomanLineStatics[] lines, float originX,
+                                         float mainY, int color, float[] sylProgress, int sylCount,
+                                         boolean allSung) {
+        for (RomanLineStatics line : lines) {
+            if (line == null) {
+                continue;
+            }
+            List<RomanizedWordCluster> cs = line.clusters();
+            final float topY = mainY + line.y();
+            for (int i = 0; i < cs.size(); i++) {
+                RomanizedWordCluster rc = cs.get(i);
+                final float prog = (rc.wordIndex() >= 0 && rc.wordIndex() < sylCount)
+                        ? sylProgress[rc.wordIndex()]
+                        : (allSung ? 1f : 0f);
+                if (prog <= 0f) {
                     continue;
                 }
-                List<RomanizedWordCluster> cs = line.clusters();
-                final float topY = mainY + line.y();
-                for (int i = 0; i < cs.size(); i++) {
-                    RomanizedWordCluster rc = cs.get(i);
-                    final float prog = (rc.wordIndex() >= 0 && rc.wordIndex() < sylCount)
-                            ? sylProgress[rc.wordIndex()]
-                            : (allSung ? 1f : 0f);
-                    if (prog <= 0f) {
-                        continue;
-                    }
-                    TextPaint p = rc.subLayout().getPaint();
-                    p.setShader(null);
-                    p.setColor(rubySungColor);
-                    final float rx = originX + line.drawX()[i];
-                    canvas.save();
-                    if (prog < 1f) {
-                        canvas.clipRect(rx, topY - Dim.dp(2),
-                                rx + rc.romanWidth() * prog,
-                                topY + rc.subLayout().getHeight() + Dim.dp(2));
-                    }
-                    canvas.translate(rx, topY);
-                    rc.subLayout().draw(canvas);
-                    canvas.restore();
+                TextPaint p = rc.subLayout().getPaint();
+                p.setShader(null);
+                p.setColor(color);
+                final float rx = originX + line.drawX()[i];
+                canvas.save();
+                if (prog < 1f) {
+                    canvas.clipRect(rx, topY - Dim.dp(2),
+                            rx + rc.romanWidth() * prog,
+                            topY + rc.subLayout().getHeight() + Dim.dp(2));
                 }
+                canvas.translate(rx, topY);
+                rc.subLayout().draw(canvas);
+                canvas.restore();
             }
         }
     }

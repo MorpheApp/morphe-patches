@@ -26,7 +26,6 @@ import java.util.Collections;
 import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
-import app.morphe.extension.music.patches.lyrics.derive.LyricsFuriganaGenerator;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.model.LyricsBracketSplitter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -39,11 +38,14 @@ import app.morphe.extension.shared.ui.Dim;
 
 public final class LyricsSpanBuilder {
     static final float TRANSLATION_RELATIVE_SIZE = 0.7f;
+    /** Furigana is drawn at half the size of the kanji it reads. */
+    static final float RUBY_RELATIVE_SIZE = 0.5f;
     static final float MAIN_LINE_SPACING = 1.22f;
 
     /**
      * @param hasTrailingSpace Whether a space follows the word, which a syllable reading keeps so
      *                         the readings of two words do not run together.
+     * @param ruby             The furigana drawn above the word.
      * @param averaged         The line's own time spread evenly over its words, not the source's
      *                         word timings.
      */
@@ -62,6 +64,7 @@ public final class LyricsSpanBuilder {
             this(start, end, startMs, endMs, romaji, hasTrailingSpace, null, averaged);
         }
 
+        /** A reading ending in a space stands for the space after its word. */
         WordTiming(int start, int end, long startMs, long endMs, @Nullable String romaji) {
             this(start, end, startMs, endMs, romaji,
                     romaji != null && romaji.endsWith(" "), null, false);
@@ -135,8 +138,8 @@ public final class LyricsSpanBuilder {
         for (WordTiming word : words) {
             final int start = formatted.offset(word.start() + originalStart) - base;
             final int end = formatted.offset(word.end() + originalStart) - base;
-                if (end > start) mapped.add(new WordTiming(start, end, word.startMs(), word.endMs(),
-                        word.romaji(), word.hasTrailingSpace(), word.ruby()));
+            if (end > start) mapped.add(new WordTiming(start, end, word.startMs(), word.endMs(),
+                    word.romaji(), word.hasTrailingSpace(), word.ruby()));
         }
         return new PresentedLine(new BuildResult(text, raw.unsungSpan(),
                 formatted.offset(raw.transStart()), formatted.offset(raw.transEnd()),
@@ -291,7 +294,7 @@ public final class LyricsSpanBuilder {
                               @Nullable List<LyricsLine> romanizedLines, boolean perWordRomaji,
                               @Nullable List<WordTiming> timings) {
         String orig = displayLineText(line).trim();
-        if (orig.isEmpty() || (!hasAnyRuby(line) && LyricsRomanizer.isPurelyLatinScript(orig))) {
+        if (orig.isEmpty() || LyricsRomanizer.isPurelyLatinScript(orig)) {
             return new Reading(null, null);
         }
         if (perWordRomaji) {
@@ -354,17 +357,8 @@ public final class LyricsSpanBuilder {
         if (timings == null || timings.isEmpty() || mainText.isEmpty()) {
             return null;
         }
-        final boolean enableFurigana = Settings.LYRICS_FURIGANA.get();
         final boolean wantRoman = romanizedLines != null || perWordRomaji;
-        boolean lineHasRuby = false;
-        if (enableFurigana) {
-            for (WordTiming wt : timings) {
-                if (wt.ruby() != null && !wt.ruby().trim().isEmpty()) {
-                    lineHasRuby = true;
-                    break;
-                }
-            }
-        }
+        final boolean lineHasRuby = Settings.LYRICS_FURIGANA.get() && hasAnyRuby(timings);
         if (!lineHasRuby && isEntirelyAveraged(timings)) {
             return null;
         }
@@ -542,14 +536,13 @@ public final class LyricsSpanBuilder {
                 anyRoman = true;
                 r = r + (trailSpace ? " " : "");
             }
-            String rubyVal = (enableFurigana && wt.ruby() != null && !wt.ruby().trim().isEmpty())
-                    ? LyricsFuriganaGenerator.formatRuby(wt.ruby().trim(), Settings.LYRICS_FURIGANA_STYLE.get())
-                    : null;
-            if (rubyVal != null && !rubyVal.isEmpty()) {
+            final String ruby = lineHasRuby && wt.ruby() != null && !wt.ruby().isEmpty()
+                    ? wt.ruby() : null;
+            if (ruby != null) {
                 anyRuby = true;
             }
             out.add(new WordTiming(wt.start(), wt.end(), wt.startMs(), wt.endMs(),
-                    r.isEmpty() ? null : r, trailSpace, rubyVal, wt.averaged()));
+                    r.isEmpty() ? null : r, trailSpace, ruby, wt.averaged()));
         }
 
         return (anyRoman || anyRuby) ? out : null;
@@ -637,39 +630,6 @@ public final class LyricsSpanBuilder {
         if (romanizedLines != null && index < romanizedLines.size()) {
             List<Word> words = romanizedLines.get(index).words();
             if (!words.isEmpty()) {
-                List<Word> origWords = line.words();
-                if (origWords != null && !origWords.isEmpty()) {
-                    boolean origHasRuby = false;
-                    for (Word ow : origWords) {
-                        if (ow.ruby() != null) {
-                            origHasRuby = true;
-                            break;
-                        }
-                    }
-                    if (origHasRuby) {
-                        final boolean sameSize = (words.size() == origWords.size());
-                        List<Word> merged = new ArrayList<>(words.size());
-                        for (int i = 0; i < words.size(); i++) {
-                            Word w = words.get(i);
-                            String ruby = w.ruby();
-                            if (ruby == null) {
-                                if (sameSize && w.text().equals(origWords.get(i).text())) {
-                                    ruby = origWords.get(i).ruby();
-                                } else {
-                                    for (Word ow : origWords) {
-                                        if (ow.ruby() != null && Math.abs(ow.startMs() - w.startMs()) <= 20
-                                                && w.text().equals(ow.text())) {
-                                            ruby = ow.ruby();
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                            merged.add(new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), w.endsWithSpace(), ruby));
-                        }
-                        return merged;
-                    }
-                }
                 return words;
             }
         }
@@ -707,16 +667,7 @@ public final class LyricsSpanBuilder {
                                                boolean splitWordlessLine) {
         LyricsLine line = lines.get(index);
         String lineText = displayLineText(line);
-        if (Settings.LYRICS_ENABLE_FURIGANA.get()
-                && (ScriptDetector.contains(lineText, Character.UnicodeScript.HAN)
-                || ScriptDetector.contains(lineText, Character.UnicodeScript.KATAKANA)
-                || hasAnyRuby(line))) {
-            final long fStart = line.startTimeMs() >= 0 ? line.startTimeMs() : 0L;
-            final long fEnd = line.endTimeMs() > fStart ? line.endTimeMs()
-                    : (index + 1 < lines.size() && lines.get(index + 1).startTimeMs() > fStart
-                    ? lines.get(index + 1).startTimeMs() : fStart + 3000L);
-            line = LyricsFuriganaGenerator.enrichLineForDisplay(line, fStart, fEnd);
-        }
+        // A lone word with furigana stays whole, so its reading sits over all of it.
         if (!hasAnyRuby(line) && countWords(lineText) == 1 && hasTimedWord(line)) {
             long rangeStart = line.startTimeMs();
             if (rangeStart < 0 && line.hasWords()) {
@@ -1294,8 +1245,10 @@ public final class LyricsSpanBuilder {
         // A reading drawn over each word sits where the word's own highlight is painted, so the
         // two land on top of each other. With word sync on, the view draws each syllable's reading
         // under it instead; otherwise the reading goes on a line of its own, and takes its progress
-        // from the same words rather than from a second set of marks.
-        List<WordTiming> syllableRomanTimings = (Settings.LYRICS_WORD_SYNC.get() || Settings.LYRICS_ENABLE_FURIGANA.get())
+        // from the same words rather than from a second set of marks. Furigana is always drawn
+        // over its own word.
+        List<WordTiming> syllableRomanTimings = (Settings.LYRICS_WORD_SYNC.get()
+                || (Settings.LYRICS_FURIGANA.get() && hasAnyRuby(line)))
                 ? buildSyllableRomanizedTimings(line, index, romanizedLines, perWordRomaji, timings, original)
                 : null;
         final boolean showSyllableRomanization = syllableRomanTimings != null;
@@ -1458,7 +1411,7 @@ public final class LyricsSpanBuilder {
             return null;
         }
         String origTrimmed = displayLineText(line).trim();
-        if (origTrimmed.isEmpty() || (!hasAnyRuby(line) && LyricsRomanizer.isPurelyLatinScript(origTrimmed))) {
+        if (origTrimmed.isEmpty() || LyricsRomanizer.isPurelyLatinScript(origTrimmed)) {
             return null;
         }
         String roma = romanizedLines.get(index).text();
@@ -1479,12 +1432,20 @@ public final class LyricsSpanBuilder {
         roma = roma.trim();
         return !roma.isEmpty() && !roma.equalsIgnoreCase(origTrimmed) ? roma : null;
     }
+
     private static boolean hasAnyRuby(LyricsLine line) {
-        if (line.words() != null) {
-            for (Word w : line.words()) {
-                if (w.ruby() != null && !w.ruby().trim().isEmpty()) {
-                    return true;
-                }
+        for (Word word : line.words()) {
+            if (word.ruby() != null && !word.ruby().isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasAnyRuby(List<WordTiming> timings) {
+        for (WordTiming timing : timings) {
+            if (timing.ruby() != null && !timing.ruby().isEmpty()) {
+                return true;
             }
         }
         return false;

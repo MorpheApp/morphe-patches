@@ -49,7 +49,7 @@ public final class AiProviders {
     public static final String DEFAULT_ROMANIZATION_ORDER =
             "embedded,google,-local,-rime,-openai_compatible";
     public static final String DEFAULT_FURIGANA_ORDER =
-            "embedded,local,-openai_compatible";
+            "embedded,-local,-openai_compatible";
     /** Endpoints offered by name, in the order they are listed. */
     public static final List<EndpointPreset> ENDPOINT_PRESETS = List.of(
             EndpointPreset.of("OpenAI", "https://api.openai.com/v1"),

@@ -841,20 +841,14 @@ public final class TTMLParser {
             if (event == XmlPullParser.START_TAG) {
                 depth++;
                 final String local = localName(p.getName());
-                final boolean isRubyElem = "ruby".equals(local) || "rb".equals(local)
-                        || "rt".equals(local) || "rtc".equals(local);
-                if (!"span".equals(local) && !isRubyElem) {
+                final String htmlRuby = htmlRubyRole(local);
+                if (!"span".equals(local) && htmlRuby == null) {
                     continue;
                 }
 
                 final String role = getAttr(p, NS_TTM, "role", "ttm:role");
-                String ruby = getAttr(p, NS_TTS, "ruby", "tts:ruby");
-                if (ruby == null && isRubyElem) {
-                    if ("ruby".equals(local)) ruby = "container";
-                    else if ("rb".equals(local)) ruby = "base";
-                    else if ("rtc".equals(local)) ruby = "textContainer";
-                    else if ("rt".equals(local)) ruby = "text";
-                }
+                final String rubyAttr = getAttr(p, NS_TTS, "ruby", "tts:ruby");
+                final String ruby = rubyAttr != null ? rubyAttr : htmlRuby;
                 final String beginAttr = getAttr(p, null, "begin", "begin");
                 final String endAttr = getAttr(p, null, "end", "end");
 
@@ -885,14 +879,10 @@ public final class TTMLParser {
                     inRubyBase = true;
                     rubyBaseInnerDepth = 0;
                     rubyBaseBuf.setLength(0);
-                    if (beginAttr != null) {
-                        long b = parseTime(beginAttr);
-                        if (b > 0) rubyContainerBegin = b;
-                    }
-                    if (endAttr != null) {
-                        long e = parseTime(endAttr);
-                        if (e > 0) rubyContainerEnd = e;
-                    }
+                    final long b = parseTime(beginAttr);
+                    final long e = parseTime(endAttr);
+                    if (b > 0) rubyContainerBegin = b;
+                    if (e > 0) rubyContainerEnd = e;
                 } else if ("textContainer".equals(ruby) && inRubyContainer) {
                     inRubyTextContainer = true;
                     rubyTextContainerInnerDepth = 0;
@@ -903,9 +893,9 @@ public final class TTMLParser {
                     rubyTextBegin = parseTime(beginAttr);
                     rubyTextEnd = parseTime(endAttr);
                 } else if (inRubyContainer) {
-                    // Nested span inside ruby container/base/text (e.g. per-mora timed span inside base)
-                    long b = beginAttr != null ? parseTime(beginAttr) : 0;
-                    long e = endAttr != null ? parseTime(endAttr) : 0;
+                    // A span nested in the ruby, such as one timing each mora of the base.
+                    final long b = parseTime(beginAttr);
+                    final long e = parseTime(endAttr);
                     if (inRubyText) {
                         rubyTextInnerDepth++;
                         if (b > 0 && (rubyTextBegin == 0 || b < rubyTextBegin)) rubyTextBegin = b;
@@ -963,9 +953,7 @@ public final class TTMLParser {
             } else if (event == XmlPullParser.END_TAG) {
                 final String local = localName(p.getName());
 
-                final boolean isRubyEndElem = "ruby".equals(local) || "rb".equals(local)
-                        || "rt".equals(local) || "rtc".equals(local);
-                if ("span".equals(local) || isRubyEndElem) {
+                if ("span".equals(local) || htmlRubyRole(local) != null) {
                     if (inBgTranslation) {
                         inBgTranslation = false;
                         final String btText = bgTransBuf.toString().trim();
@@ -1027,44 +1015,44 @@ public final class TTMLParser {
                             rubyContainerInnerDepth--;
                         } else {
                             inRubyContainer = false;
-                        final String baseText = normalizeText(rubyBaseBuf.toString());
-                        if (!baseText.isEmpty()) {
-                    long rBegin = 0, rEnd = 0;
-                    if (!rubyTags.isEmpty()) {
-                        rBegin = rubyTags.get(0).startMs();
-                        rEnd = rubyTags.get(rubyTags.size() - 1).endMs();
-                    }
-                    if (rBegin == 0 && rEnd == 0) {
-                        rBegin = rubyContainerBegin;
-                        rEnd = rubyContainerEnd;
-                    }
-                            StringBuilder rRoma = new StringBuilder();
-                            for (RomajiSyllable rs : rubyTags) {
+                            final String baseText = normalizeText(rubyBaseBuf.toString());
+                            if (!baseText.isEmpty()) {
+                                long rBegin = 0, rEnd = 0;
+                                if (!rubyTags.isEmpty()) {
+                                    rBegin = rubyTags.get(0).startMs();
+                                    rEnd = rubyTags.get(rubyTags.size() - 1).endMs();
+                                }
+                                if (rBegin == 0 && rEnd == 0) {
+                                    rBegin = rubyContainerBegin;
+                                    rEnd = rubyContainerEnd;
+                                }
+                                StringBuilder rubyBuilder = new StringBuilder();
+                                for (RomajiSyllable rs : rubyTags) {
+                                    //noinspection SizeReplaceableByIsEmpty
+                                    if (rubyBuilder.length() > 0) rubyBuilder.append(' ');
+                                    rubyBuilder.append(rs.text());
+                                }
                                 //noinspection SizeReplaceableByIsEmpty
-                                if (rRoma.length() > 0) rRoma.append(' ');
-                                rRoma.append(rs.text());
-                            }
-                final String rubyText = rRoma.length() > 0 ? rRoma.toString() : null;
-                final String romaji;
-                if (rubyText != null && ScriptDetector.containsKana(rubyText)) {
-                    romaji = KanaRomanizer.romanizeSyllables(rubyText).trim();
-                } else if (ScriptDetector.containsKana(baseText)) {
-                    // When <span tts:ruby="text"> is Latin/English (e.g. "Normal" above "ノルマ"),
-                    // do NOT store "Normal" in word.romaji(); keep word.romaji() as the pronunciation
-                    // of the base text ("no ru ma").
-                    romaji = KanaRomanizer.romanizeSyllables(baseText).trim();
-                } else {
-                    romaji = null;
-                }
+                                final String rubyText = rubyBuilder.length() > 0 ? rubyBuilder.toString() : null;
+                                // The ruby is drawn as furigana. The romaji reads the kana, which is
+                                // the ruby unless that is a gloss, such as "Normal" over ノルマ.
+                                final String romaji;
+                                if (rubyText != null && ScriptDetector.containsKana(rubyText)) {
+                                    romaji = KanaRomanizer.romanizeSyllables(rubyText);
+                                } else if (ScriptDetector.containsKana(baseText)) {
+                                    romaji = KanaRomanizer.romanizeSyllables(baseText);
+                                } else {
+                                    romaji = null;
+                                }
 
-                // The base is the sung text either way, only the line differs.
-                if (inBg) {
-                    bgFullText.append(baseText);
-                    bgWords.add(new Word(rBegin, rEnd, baseText, romaji, false, rubyText));
-                } else {
-                    fullText.append(baseText);
-                    words.add(new Word(rBegin, rEnd, baseText, romaji, false, rubyText));
-                }
+                                // The base is the sung text either way, only the line differs.
+                                if (inBg) {
+                                    bgFullText.append(baseText);
+                                    bgWords.add(new Word(rBegin, rEnd, baseText, romaji, false, rubyText));
+                                } else {
+                                    fullText.append(baseText);
+                                    words.add(new Word(rBegin, rEnd, baseText, romaji, false, rubyText));
+                                }
                             }
                         }
                     } else if (inBg && bgWrapperDepth > 0) {
@@ -1130,7 +1118,7 @@ public final class TTMLParser {
                 } else if (inRubyText && inRubyContainer) {
                     rubyTextBuf.append(raw);
                 } else if (inRubyContainer) {
-                    // Ignore text outside base & text in ruby container
+                    // Text between the base and the ruby text is only layout whitespace.
                 } else if (inBg && bgWrapperDepth == 0) {
                     if (isWhitespace) {
                         if (!bgWords.isEmpty()) {
@@ -1672,6 +1660,18 @@ public final class TTMLParser {
 
     private static String normalizeText(String s) {
         return normalizeTextRaw(s).trim();
+    }
+
+    /** The tts:ruby role an HTML style ruby element stands for, or null for any other element. */
+    @Nullable
+    private static String htmlRubyRole(String local) {
+        return switch (local) {
+            case "ruby" -> "container";
+            case "rb" -> "base";
+            case "rtc" -> "textContainer";
+            case "rt" -> "text";
+            default -> null;
+        };
     }
 
     private static String localName(String name) {

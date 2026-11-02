@@ -60,6 +60,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
@@ -72,6 +73,8 @@ import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
 import app.morphe.extension.music.patches.lyrics.session.LockScreenLyrics;
 import app.morphe.extension.music.patches.lyrics.session.MiniplayerLyrics;
 import app.morphe.extension.music.patches.lyrics.derive.AiProviders;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsFuriganaGenerator;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsFuriganaGenerator.FuriganaStyle;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsTranslator;
 import app.morphe.extension.music.patches.lyrics.derive.QuickLRCClient;
@@ -148,7 +151,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     /** Shows the pronunciation above each line, which the app's own romanize icon does. */
     private static final String APP_ROMANIZE_ICON = "morphe_yt_romanize";
-    private static final String APP_FURIGANA_ICON = "morphe_yt_furigana";
+
+    /** Own icon of a kana with dots above it. */
+    private static final String FURIGANA_ICON = "morphe_yt_furigana";
+
     private static final String REFRESH_ICON = "ic_mtrl_arrow_circle";
 
     /** Own icon, because the app ships no copy icon of its own. */
@@ -216,6 +222,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     @Nullable
     private TrackInfo lastKnownTrack;
     private final Runnable refreshLabelResetRunnable = this::updateRefreshLabel;
+    private final Runnable furiganaLabelResetRunnable = this::updateFuriganaLabel;
     private boolean translateInProgress;
     private boolean romanizeInProgress;
     private int translateRequestId;
@@ -868,6 +875,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             transcribeRequestId++;
             transcribeBusy = false;
             furiganaRequestId++;
+            updateFuriganaLabel();
             QuickLRCClient.cancel();
             pendingAlignment = null;
             pendingAlignmentTrack = null;
@@ -896,15 +904,12 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                         }
                     } else {
                         dynamicBackgroundView.setVideoId(VideoInformation.getVideoId());
-                        if (Settings.LYRICS_ENABLE_FURIGANA.get()) {
-                            Lyrics syncEnriched = app.morphe.extension.music.patches.lyrics.derive.LyricsFuriganaGenerator
-                                    .generateLocalSync(newLyrics);
-                            if (syncEnriched != null) {
-                                newLyrics = syncEnriched;
-                                lyrics = syncEnriched;
-                            }
+                        if (Settings.LYRICS_FURIGANA.get()) {
+                            applyFurigana(newLyrics);
+                            newLyrics = lyrics;
+                        } else {
+                            showLyrics(newLyrics);
                         }
-                        showLyrics(newLyrics);
                         setOverlayVisible(true);
                         if (Settings.LYRICS_TRANSLATE_ONLY.get()) {
                             requestTranslateOnly(newLyrics);
@@ -915,9 +920,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                             requestRomanizeOnly(newLyrics);
                         } else if (Settings.LYRICS_ROMANIZE.get()) {
                             onRomanizeClicked();
-                        }
-                        if (Settings.LYRICS_ENABLE_FURIGANA.get()) {
-                            triggerFuriganaGeneration(newLyrics, false);
                         }
                         if (refreshInProgress) {
                             refreshInProgress = false;
@@ -2855,175 +2857,75 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     private void updateFuriganaLabel() {
         if (furiganaView != null) {
-            final boolean on = Settings.LYRICS_ENABLE_FURIGANA.get();
-            setButtonLabel(furiganaView, null, on);
+            setButtonLabel(furiganaView, null, Settings.LYRICS_FURIGANA.get());
         }
     }
 
     private void onFuriganaClicked() {
         try {
-            if (furiganaView == null) return;
-            boolean currentOn = Settings.LYRICS_ENABLE_FURIGANA.get();
-            boolean newOn = !currentOn;
-            Settings.LYRICS_ENABLE_FURIGANA.save(newOn);
+            final boolean on = !Settings.LYRICS_FURIGANA.get();
+            Settings.LYRICS_FURIGANA.save(on);
             updateFuriganaLabel();
-
-            Lyrics current = lyrics;
-            if (current != null) {
-                if (newOn) {
-                    Lyrics syncEnriched = app.morphe.extension.music.patches.lyrics.derive.LyricsFuriganaGenerator
-                            .generateLocalSync(current);
-                    if (syncEnriched != null) {
-                        lyrics = syncEnriched;
-                        current = syncEnriched;
-                        showLyrics(current);
-                    }
-                    triggerFuriganaGeneration(current, true);
-                } else {
-                    showLyrics(current);
-                }
+            if (lyrics == null) {
+                return;
+            }
+            if (on) {
+                applyFurigana(lyrics);
+            } else {
+                // The readings stay on the words and are only drawn while the setting is on.
+                furiganaRequestId++;
+                showLyrics(lyrics);
             }
         } catch (Exception ex) {
-            Logger.printInfo(() -> "Furigana button click failed", ex);
+            Logger.printException(() -> "onFuriganaClicked failure", ex);
         }
     }
 
-    private void triggerFuriganaGeneration(Lyrics current, boolean flashLabel) {
-        TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
-        if (current == null) return;
-        if (track == null) {
-            Lyrics syncEnriched = app.morphe.extension.music.patches.lyrics.derive.LyricsFuriganaGenerator
-                    .generateLocalSync(current);
-            if (syncEnriched != null && lyrics == current) {
-                lyrics = syncEnriched;
-                showLyrics(syncEnriched);
-            }
-            updateFuriganaLabel();
-            return;
-        }
-        if (flashLabel && furiganaView != null) {
-            setButtonLabel(furiganaView, str("morphe_music_lyrics_furigana_generating"), true);
-        }
-        final int requestId = ++furiganaRequestId;
-        final Lyrics target = current;
-        app.morphe.extension.music.patches.lyrics.derive.LyricsFuriganaGenerator.generate(
-                track, target, (enriched, fromAi, model) -> {
-                    if (requestId == furiganaRequestId && enriched != null) {
-                        lyrics = enriched;
-                        showLyrics(enriched);
-                    }
-                    updateFuriganaLabel();
-                });
-    }
-
+    /** Switches the readings between hiragana and katakana, and turns them on if they are off. */
     private void onFuriganaLongPressed() {
         try {
-            Context context = getContext();
-            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                    context,
-                    str("morphe_music_lyrics_furigana_style_title"),
-                    null,
-                    null,
-                    null,
-                    null,
-                    () -> {},
-                    "Cancel",
-                    null,
-                    false
-            );
-            Dialog dialog = dialogPair.first;
-            LinearLayout mainLayout = dialogPair.second;
-
-            LinearLayout list = new LinearLayout(context);
-            list.setOrientation(LinearLayout.VERTICAL);
-            LinearLayout.LayoutParams listLp = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            listLp.topMargin = Dim.dp8;
-            listLp.bottomMargin = Dim.dp8;
-
-            final String currentStyle = Settings.LYRICS_FURIGANA_STYLE.get();
-            final String[][] styles = {
-                    {"HIRAGANA", "Hiragana (ひらがな)"},
-                    {"KATAKANA", "Katakana (カタカナ)"}
-            };
-
-            for (String[] opt : styles) {
-                final String code = opt[0];
-                final String label = opt[1];
-                final boolean active = code.equalsIgnoreCase(currentStyle);
-
-                LinearLayout row = new LinearLayout(context);
-                row.setOrientation(LinearLayout.HORIZONTAL);
-                row.setGravity(Gravity.CENTER_VERTICAL);
-                row.setPadding(Dim.dp16, Dim.dp12, Dim.dp16, Dim.dp12);
-                row.setClickable(true);
-                row.setFocusable(true);
-
-                GradientDrawable rowBg = new GradientDrawable();
-                rowBg.setShape(GradientDrawable.RECTANGLE);
-                rowBg.setCornerRadius(Dim.dp10);
-                if (active) {
-                    rowBg.setColor(0x33FFFFFF);
-                    rowBg.setStroke(Dim.dp(1), 0x80FFFFFF);
-                } else {
-                    rowBg.setColor(0x14FFFFFF);
-                }
-                row.setBackground(rowBg);
-
-                LinearLayout.LayoutParams rowLp = new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                rowLp.bottomMargin = Dim.dp8;
-                row.setLayoutParams(rowLp);
-
-                TextView tv = new TextView(context);
-                tv.setText(label);
-                tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-                tv.setTypeface(active ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
-                tv.setTextColor(active ? Color.WHITE : 0xDDFFFFFF);
-                row.addView(tv, new LinearLayout.LayoutParams(
-                        0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
-
-                if (active) {
-                    TextView badge = new TextView(context);
-                    badge.setText("ACTIVE");
-                    badge.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11);
-                    badge.setTypeface(Typeface.DEFAULT_BOLD);
-                    badge.setTextColor(0xFF000000);
-                    badge.setPadding(Dim.dp8, Dim.dp4, Dim.dp8, Dim.dp4);
-                    GradientDrawable badgeBg = new GradientDrawable();
-                    badgeBg.setShape(GradientDrawable.RECTANGLE);
-                    badgeBg.setCornerRadius(Dim.dp6);
-                    badgeBg.setColor(0xFFFFFFFF);
-                    badge.setBackground(badgeBg);
-                    row.addView(badge);
-                }
-
-                row.setOnClickListener(v -> {
-                    Settings.LYRICS_FURIGANA_STYLE.save(code);
-                    if (!Settings.LYRICS_ENABLE_FURIGANA.get()) {
-                        Settings.LYRICS_ENABLE_FURIGANA.save(true);
-                        updateFuriganaLabel();
-                    }
-                    dialog.dismiss();
-                    if (lyrics != null) {
-                        Lyrics syncEnriched = app.morphe.extension.music.patches.lyrics.derive.LyricsFuriganaGenerator
-                                .generateLocalSync(lyrics);
-                        if (syncEnriched != null) {
-                            lyrics = syncEnriched;
-                            showLyrics(syncEnriched);
-                        }
-                        triggerFuriganaGeneration(lyrics, true);
-                    }
-                });
-                list.addView(row);
+            final FuriganaStyle style = Settings.LYRICS_FURIGANA_STYLE.get() == FuriganaStyle.HIRAGANA
+                    ? FuriganaStyle.KATAKANA
+                    : FuriganaStyle.HIRAGANA;
+            Settings.LYRICS_FURIGANA_STYLE.save(style);
+            Settings.LYRICS_FURIGANA.save(true);
+            flashButtonLabel(furiganaView, str("morphe_music_lyrics_furigana_style_entry_"
+                    + style.name().toLowerCase(Locale.US)), furiganaLabelResetRunnable, 1500);
+            if (lyrics != null) {
+                applyFurigana(lyrics);
             }
-
-            mainLayout.addView(list, 1, listLp);
-            dialog.show();
         } catch (Exception ex) {
-            Logger.printInfo(() -> "Furigana long press failed", ex);
+            Logger.printException(() -> "onFuriganaLongPressed failure", ex);
         }
     }
+
+    /**
+     * Shows the readings that are known right away, then asks the AI provider, if one is on,
+     * for the rest.
+     */
+    private void applyFurigana(Lyrics current) {
+        final Lyrics local = LyricsFuriganaGenerator.applyLocal(current);
+        lyrics = local;
+        showLyrics(local);
+
+        final int requestId = ++furiganaRequestId;
+        TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
+        if (track == null || !LyricsFuriganaGenerator.usesAi(local)) {
+            return;
+        }
+        setButtonLabel(furiganaView, str("morphe_music_lyrics_furigana_generating"), true);
+        LyricsFuriganaGenerator.requestAi(track, local, generated -> {
+            if (requestId != furiganaRequestId) {
+                return;
+            }
+            updateFuriganaLabel();
+            if (generated != local) {
+                lyrics = generated;
+                showLyrics(generated);
+            }
+        });
+    }
+
     private void onRefreshClicked() {
         if (refreshView == null) {
             return;
@@ -4415,7 +4317,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 true);
 
         furiganaView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_FURIGANA_BUTTON.get(),
-                APP_FURIGANA_ICON,
+                FURIGANA_ICON,
                 view -> onFuriganaClicked(),
                 view -> {
                     onFuriganaLongPressed();
