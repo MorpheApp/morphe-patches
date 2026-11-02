@@ -694,6 +694,18 @@ public final class NavigationBarPatch {
     private static final boolean SHOW_WATCH_LATER_BUTTON = Settings.SHOW_WATCH_LATER_BUTTON.get();
     private static Object pivotBarWatchLaterRenderer = null;
 
+    /** Injection point. Leave selection and drawable switching to the native PivotBar. */
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public static void setWatchLaterSelectedIcon(EnumMap icons, Enum watchLater) {
+        if (!SHOW_WATCH_LATER_BUTTON) return;
+        try {
+            WatchLaterNavigation.setSelectedIcon(icons, watchLater, ResourceUtils.getIdentifier(
+                    ResourceType.DRAWABLE, "morphe_watch_later_selected"));
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to set Watch Later selected icon", ex);
+        }
+    }
+
     /** Injection point. Rebuild all native constructor arguments, not just the stored proto. */
     public static void captureWatchLaterPivotBarRenderer(MessageLite original) {
         if (!SHOW_WATCH_LATER_BUTTON) return;

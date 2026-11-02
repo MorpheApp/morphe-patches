@@ -17,6 +17,7 @@ import com.google.protobuf.MessageLite;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.EnumMap;
 import java.io.ByteArrayOutputStream;
 
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.*;
@@ -24,6 +25,26 @@ import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
 
 public class WatchLaterNavigationTest {
+    @Test
+    public void selectedClockIsRegisteredWithoutChangingOtherTabs() {
+        EnumMap<YTIconType, Integer> icons = new EnumMap<>(YTIconType.class);
+        icons.put(YTIconType.PIVOT_HOME, 10);
+        WatchLaterNavigation.setSelectedIcon(icons, YTIconType.WATCH_LATER, 20);
+        assertEquals(Integer.valueOf(20), icons.get(YTIconType.WATCH_LATER));
+        assertEquals(Integer.valueOf(10), icons.get(YTIconType.PIVOT_HOME));
+        assertEquals(2, icons.size());
+    }
+
+    @Test
+    public void selectedClockReplacesOutlineFallbackAndIgnoresMissingResource() {
+        EnumMap<YTIconType, Integer> icons = new EnumMap<>(YTIconType.class);
+        icons.put(YTIconType.WATCH_LATER, 10);
+        WatchLaterNavigation.setSelectedIcon(icons, YTIconType.WATCH_LATER, 20);
+        assertEquals(Integer.valueOf(20), icons.get(YTIconType.WATCH_LATER));
+        WatchLaterNavigation.setSelectedIcon(icons, YTIconType.WATCH_LATER, 0);
+        assertEquals(Integer.valueOf(20), icons.get(YTIconType.WATCH_LATER));
+    }
+
     private byte[] home(YTIconType icon) throws Exception {
         byte[] bytes = PivotBarItemRenderer.newBuilder()
                 .setPivotIdentifier("FEwhat_to_watch")
