@@ -19,14 +19,15 @@ import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
 
 import com.facebook.litho.ComponentHost;
 import com.facebook.litho.TextContent;
 
 import java.lang.ref.WeakReference;
-import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
@@ -78,28 +79,18 @@ public final class CopyTextPatch {
     private static final int MIN_TRUNCATED_TEXT_LENGTH = 20;
 
     /**
-     * Texts of the comments laid out recently. Litho can lay out on other threads,
-     * so it is only used while synchronized on itself.
+     * Texts of the comments laid out recently. Litho can lay out on other threads.
      */
+    @GuardedBy("itself")
     private static final Map<String, Boolean> commentTexts =
-            new LinkedHashMap<>(MAX_COMMENTS, 0.75f, true) {
-                @Override
-                protected boolean removeEldestEntry(Map.Entry<String, Boolean> eldest) {
-                    return size() > MAX_COMMENTS;
-                }
-            };
+            Utils.createSizeRestrictedMap(MAX_COMMENTS, true);
 
     /**
      * Normalized texts of the descriptions and posts laid out recently -> the texts.
-     * Only used while synchronized on itself.
      */
+    @GuardedBy("itself")
     private static final Map<String, String> selectableTexts =
-            new LinkedHashMap<>(MAX_SELECTABLE_TEXTS, 0.75f, true) {
-                @Override
-                protected boolean removeEldestEntry(Map.Entry<String, String> eldest) {
-                    return size() > MAX_SELECTABLE_TEXTS;
-                }
-            };
+            Utils.createSizeRestrictedMap(MAX_SELECTABLE_TEXTS, true);
 
     /**
      * The view made long clickable, so the long click is removed again
@@ -148,20 +139,22 @@ public final class CopyTextPatch {
                 return text;
             }
 
-            if (SELECT_TEXT && isSelectableText(contextInterface, text)) {
-                String selectable = text.toString().trim();
+            String trimmed = text.toString().trim();
+            if (trimmed.isEmpty()) {
+                return text;
+            }
+
+            if (SELECT_TEXT && isSelectableText(contextInterface, trimmed)) {
+                String key = normalize(trimmed);
                 synchronized (selectableTexts) {
-                    selectableTexts.put(normalize(selectable), selectable);
+                    selectableTexts.put(key, trimmed);
                 }
             } else if (COPY_COMMENTS && isCommentText(contextInterface)) {
-                String comment = text.toString().trim();
-                if (!comment.isEmpty()) {
-                    synchronized (commentTexts) {
-                        commentTexts.put(comment, Boolean.TRUE);
-                    }
+                synchronized (commentTexts) {
+                    commentTexts.put(trimmed, Boolean.TRUE);
                 }
             } else if (COPY_VIDEO_TITLE && isVideoTitle(contextInterface)) {
-                shownTitle = removeTitleMarker(text.toString().trim());
+                shownTitle = removeTitleMarker(trimmed);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onLithoTextLoaded failure", ex);
@@ -184,19 +177,25 @@ public final class CopyTextPatch {
     /**
      * @return If the text is of a description or a post, which can be selected to copy a part of it.
      */
-    private static boolean isSelectableText(ContextInterface contextInterface, CharSequence text) {
+    private static boolean isSelectableText(ContextInterface contextInterface, String text) {
         String identifier = contextInterface.patch_getIdentifier();
         if (identifier == null) {
             return false;
         }
         if (identifier.startsWith(DESCRIPTION_IDENTIFIER) || identifier.startsWith(SHORTS_DESCRIPTION_IDENTIFIER)) {
-            return text.toString().trim().length() > 0;
+            return true;
+        }
+        if (text.length() < MIN_POST_TEXT_LENGTH) {
+            return false;
+        }
+        // Only the first element of the identifier is the post itself.
+        final int postIndex = identifier.indexOf(POST);
+        final int elementEnd = identifier.indexOf('|');
+        if (postIndex < 0 || (elementEnd >= 0 && postIndex > elementEnd)) {
+            return false;
         }
         // The element of a post can include comments, such as when the post is opened.
-        String element = identifier.substring(0, Math.max(0, identifier.indexOf('|')));
-        return element.contains(POST)
-                && contextInterface.patch_getPathBuilder().indexOf("|comment.e") < 0
-                && text.toString().trim().length() >= MIN_POST_TEXT_LENGTH;
+        return contextInterface.patch_getPathBuilder().indexOf("|comment.e") < 0;
     }
 
     /**
@@ -313,32 +312,32 @@ public final class CopyTextPatch {
                         : isShownText(itemText, title) ? title
                         : null;
                 if (fullTitle != null) {
-                    touchedTextSelectable = false;
-                    touchedText = fullTitle;
-                    touchedToastKey = "morphe_copy_video_title_success";
+                    setTouchedText(fullTitle, "morphe_copy_video_title_success", false);
                     return true;
                 }
             }
             if (COPY_COMMENTS) {
                 String comment = findComment(itemText);
                 if (comment != null) {
-                    touchedTextSelectable = false;
-                    touchedText = comment;
-                    touchedToastKey = "morphe_copy_comments_success";
+                    setTouchedText(comment, "morphe_copy_comments_success", false);
                     return true;
                 }
             }
             if (SELECT_TEXT) {
                 String selectable = findSelectableText(itemText);
                 if (selectable != null) {
-                    touchedTextSelectable = true;
-                    touchedText = selectable;
-                    touchedToastKey = "";
+                    setTouchedText(selectable, "", true);
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    private static void setTouchedText(String text, String toastKey, boolean selectable) {
+        touchedText = text;
+        touchedToastKey = toastKey;
+        touchedTextSelectable = selectable;
     }
 
     /**
@@ -348,21 +347,8 @@ public final class CopyTextPatch {
     private static String findSelectableText(String text) {
         String shown = normalize(text);
         synchronized (selectableTexts) {
-            String exact = selectableTexts.get(shown);
-            if (exact != null || shown.length() < MIN_TRUNCATED_TEXT_LENGTH) {
-                return exact;
-            }
-
-            String best = null;
-            int bestLength = -1;
-            for (Map.Entry<String, String> entry : selectableTexts.entrySet()) {
-                final int length = shownLength(shown, entry.getKey());
-                if (length > bestLength) {
-                    best = entry.getValue();
-                    bestLength = length;
-                }
-            }
-            return best;
+            String key = findShownText(shown, selectableTexts.keySet());
+            return key == null ? null : selectableTexts.get(key);
         }
     }
 
@@ -418,26 +404,34 @@ public final class CopyTextPatch {
     @Nullable
     private static String findComment(String text) {
         synchronized (commentTexts) {
-            if (commentTexts.containsKey(text)) {
-                return text;
-            }
-            if (text.length() < MIN_TRUNCATED_TEXT_LENGTH) {
-                return null;
-            }
-
-            // A comment can start with the comment it quotes,
-            // but the comment that is shown matches for longer.
-            String bestComment = null;
-            int bestLength = -1;
-            for (String comment : commentTexts.keySet()) {
-                final int length = shownLength(text, comment);
-                if (length > bestLength) {
-                    bestComment = comment;
-                    bestLength = length;
-                }
-            }
-            return bestComment;
+            return findShownText(text, commentTexts.keySet());
         }
+    }
+
+    /**
+     * @return The full text that is shown, which can be truncated by Litho, or null if none is.
+     */
+    @Nullable
+    private static String findShownText(String shownText, Set<String> fullTexts) {
+        if (fullTexts.contains(shownText)) {
+            return shownText;
+        }
+        if (shownText.length() < MIN_TRUNCATED_TEXT_LENGTH) {
+            return null;
+        }
+
+        // A text can start with another text, such as a comment that quotes a comment,
+        // but the text that is shown matches for longer.
+        String bestText = null;
+        int bestLength = -1;
+        for (String fullText : fullTexts) {
+            final int length = shownLength(shownText, fullText);
+            if (length > bestLength) {
+                bestText = fullText;
+                bestLength = length;
+            }
+        }
+        return bestText;
     }
 
     private static boolean isShownText(String shownText, String fullText) {
