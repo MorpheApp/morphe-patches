@@ -12,8 +12,6 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.preference.Preference;
 import android.text.InputType;
 import android.util.AttributeSet;
@@ -125,16 +123,7 @@ public class LyricsTranscribeKeyPreference extends Preference {
 
         final Button getKeyButton = CustomDialog.createButton(context, null,
                 str("morphe_music_token_dialog_get_token"),
-                () -> {
-                    try {
-                        final Intent intent = new Intent(Intent.ACTION_VIEW,
-                                Uri.parse(DASHBOARD_URL));
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
-                    } catch (Exception ex) {
-                        Logger.printDebug(() -> "QuickLRC dashboard button failure", ex);
-                    }
-                },
+                () -> ThemedInput.openInBrowser(context, DASHBOARD_URL, "QuickLRC dashboard button"),
                 false, false);
         final LinearLayout.LayoutParams getKeyParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp36);

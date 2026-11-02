@@ -12,8 +12,6 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.text.InputType;
 import android.util.Pair;
 import android.util.TypedValue;
@@ -202,15 +200,9 @@ final class LyricsProviderConfigDialog {
                 Settings.LYRICS_DEEPL_API_KEY.get(), true);
 
         final Button getKeyButton = CustomDialog.createButton(context, null,
-                str("morphe_music_token_dialog_get_token"), () -> {
-                    try {
-                        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(DEEPL_DASHBOARD_URL));
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
-                    } catch (Exception ex) {
-                        Logger.printDebug(() -> "DeepL dashboard button failure", ex);
-                    }
-                }, false, false);
+                str("morphe_music_token_dialog_get_token"),
+                () -> ThemedInput.openInBrowser(context, DEEPL_DASHBOARD_URL, "DeepL dashboard button"),
+                false, false);
         final LinearLayout.LayoutParams getKeyParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp36);
         getKeyParams.topMargin = Dim.dp12;
@@ -269,7 +261,22 @@ final class LyricsProviderConfigDialog {
         final EditText input = addInput(content,
                 "morphe_music_lyrics_ai_config_prompt_label", prompt.get(), false);
         makeMultiLine(input, 4, 8);
+        content.addView(createHint(content.getContext(),
+                "morphe_music_lyrics_ai_prompt_dialog_hint"));
         return new PromptField(prompt, input);
+    }
+
+    static TextView createHint(Context context, String textKey) {
+        final int fg = ThemeUtils.getAppForegroundColor();
+        TextView hint = new TextView(context);
+        hint.setText(str(textKey));
+        hint.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        hint.setTextColor((0x99 << 24) | (fg & 0x00FFFFFF));
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.topMargin = Dim.dp8;
+        hint.setLayoutParams(params);
+        return hint;
     }
 
     interface Validator {

@@ -152,6 +152,7 @@ public final class LyricsBracketSplitter {
             backgroundText.append(text, head.open() + 1, head.close());
         }
         if (tail != null) {
+            //noinspection SizeReplaceableByIsEmpty
             if (backgroundText.length() > 0) {
                 backgroundText.append(' ');
             }

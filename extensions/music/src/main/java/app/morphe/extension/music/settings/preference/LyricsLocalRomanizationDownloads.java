@@ -16,7 +16,6 @@ import androidx.annotation.Nullable;
 import app.morphe.extension.music.patches.lyrics.romanizers.CldrTransformsStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.PinyinDictStore;
-import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.RomanizationDict;
 import app.morphe.extension.music.patches.lyrics.romanizers.UniDictStore;
 import app.morphe.extension.music.settings.Settings;
@@ -62,9 +61,12 @@ public final class LyricsLocalRomanizationDownloads {
     private LyricsLocalRomanizationDownloads() {
     }
 
+    /** A saved choice of none, told apart from never having chosen. */
+    private static final String NONE = "none";
+
     /**
-     * Which providers the user chose, or, until they chose, the ones the romanization language
-     * needs. Automatic covers every script, so it asks for all of them.
+     * The dialog is the only place a dictionary is chosen, so nothing is inferred from the
+     * romanization language.
      */
     public static boolean[] chosen() {
         final String stored = Settings.LYRICS_LOCAL_DICTIONARIES.get();
@@ -72,7 +74,6 @@ public final class LyricsLocalRomanizationDownloads {
             final boolean[] picked = new boolean[4];
             for (String token : stored.split(",")) {
                 switch (token.trim().toLowerCase(Locale.ROOT)) {
-                    // The provider names this build stores.
                     case "sudachi" -> picked[SUDACHI] = true;
                     case "unidict" -> picked[UNIDICT] = true;
                     case "pinyin" -> picked[PINYIN] = true;
@@ -91,31 +92,13 @@ public final class LyricsLocalRomanizationDownloads {
             }
             return picked;
         }
-        final String subtag = primarySubtag(Settings.LYRICS_ROMANIZE_LANGUAGE.get());
-        // Hangul is read by its own algorithm, so Korean needs no dictionary and no rules.
-        // The scripts read by rule from the CLDR data keep that one download on: Greek,
-        // Cyrillic (BGN), Georgian, Armenian, Hebrew, Arabic (also reads Persian),
-        // Ethiopic (also reads Tigrinya) and Syriac.
-        return switch (subtag) {
-            case "ja" -> new boolean[]{true, false, false, false};
-            case "zh" -> new boolean[]{false, true, true, false};
-            // Cantonese has a word table of its own, read by the Rime Wordlist provider, so no local
-            // dictionary reads it: the Mandarin reading would be another language's.
-            case "yue" -> new boolean[]{false, false, false, false};
-            // The remaining languages are read by the online provider (or, for Korean,
-            // by rule), so none of the local dictionaries are needed.
-            case "ko", "th", "km", "as", "bal", "bo", "brx", "ckb", "doi", "dz", "gom",
-                    "kk", "ks", "ky", "lo", "mai", "mn", "mni", "ps", "sd", "ug"
-                    -> new boolean[]{false, false, false, false};
-            case "el", "ru", "be", "uk", "sr", "bg", "mk", "ka", "hy", "he", "iw", "ar", "fa",
-                    "am", "ti", "sy" -> new boolean[]{false, false, false, true};
-            // A language the user added a word list for is read by the Rime Wordlist provider in the
-            // same way, so the local dictionaries have nothing to add there either. Apart from
-            // those, an unknown language keeps every reading.
-            default -> RimeDictStore.hasLanguage(subtag)
-                    ? new boolean[]{false, false, false, false}
-                    : new boolean[]{true, true, true, true};
-        };
+        return new boolean[4];
+    }
+
+    /** A copy that never chose gets an empty checklist rather than one inferred for it. */
+    public static boolean hasChoice() {
+        final String stored = Settings.LYRICS_LOCAL_DICTIONARIES.get();
+        return stored != null && !stored.isBlank();
     }
 
     /** Stores the user's choice. Providers that were on and are now off are deleted, so nothing
@@ -154,7 +137,8 @@ public final class LyricsLocalRomanizationDownloads {
             if (value.length() > 0) value.append(',');
             value.append("cldr");
         }
-        Settings.LYRICS_LOCAL_DICTIONARIES.save(value.toString());
+        // Kept distinct from blank, which is a copy that never chose.
+        Settings.LYRICS_LOCAL_DICTIONARIES.save(value.length() == 0 ? NONE : value.toString());
     }
 
     /** Starts only the providers the choice needs. */
@@ -259,16 +243,6 @@ public final class LyricsLocalRomanizationDownloads {
         if (sink == target) {
             sink = null;
         }
-    }
-
-    private static String primarySubtag(String language) {
-        if (language == null || language.isEmpty()
-                || "DEFAULT".equalsIgnoreCase(language)) {
-            return "";
-        }
-        final String lower = language.toLowerCase(Locale.ROOT);
-        final int dash = lower.indexOf('-');
-        return dash >= 0 ? lower.substring(0, dash) : lower;
     }
 
     private static void start(boolean sudachi, boolean unidict, boolean pinyin, boolean cldr) {

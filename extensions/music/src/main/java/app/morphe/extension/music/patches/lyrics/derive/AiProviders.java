@@ -132,6 +132,7 @@ public final class AiProviders {
     public static String serializeOrder(List<ProviderEntry> entries) {
         StringBuilder sb = new StringBuilder();
         for (ProviderEntry entry : entries) {
+            //noinspection SizeReplaceableByIsEmpty
             if (sb.length() > 0) {
                 sb.append(',');
             }
@@ -159,15 +160,6 @@ public final class AiProviders {
         }
         return changed ? serializeOrder(updated) : stored;
     }
-
-    private static String currentId(String id) {
-        return switch (id) {
-            // An early build named the entry after the endpoint it talks to.
-            case "openai", "openrouter" -> OPENAI_COMPATIBLE;
-            default -> id;
-        };
-    }
-
 
     public static boolean isAi(@Nullable String provider) {
         return OPENAI_COMPATIBLE.equals(provider);

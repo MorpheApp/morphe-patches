@@ -49,6 +49,7 @@ public final class TTMLParser {
 
     private static final String NS_TTM = "http://www.w3.org/ns/ttml#metadata";
     private static final String NS_ITUNES = "http://music.apple.com/lyric-ttml-internal";
+    private static final String NS_LRC_RED = "http://lrc.red/lyric-ttml-internal";
     private static final String NS_XML = "http://www.w3.org/XML/1998/namespace";
     private static final String NS_TTS = "http://www.w3.org/ns/ttml#styling";
     private static final String NS_AMLL = "http://www.example.com/ns/amll";
@@ -214,18 +215,18 @@ public final class TTMLParser {
 
                     if ("tt".equals(local)) {
                         noTiming = "none".equals(
-                                getAttr(p, NS_ITUNES, "timing", "itunes:timing"));
+                                getLyricAttr(p, "timing", "itunes:timing"));
                     } else if ("head".equals(local)) {
                         inHead = true;
                     } else if ("body".equals(local)) {
                         inBody = true;
                     } else if ("div".equals(local) && inBody && !inHead) {
-                        divSongPart = getAttr(p, NS_ITUNES, "songPart", "itunes:songPart");
+                        divSongPart = getLyricAttr(p, "songPart", "itunes:songPart");
                         if (divSongPart == null) {
-                            divSongPart = getAttr(p, NS_ITUNES, "songPart", "itunes:song-part");
+                            divSongPart = getLyricAttr(p, "songPart", "itunes:song-part");
                         }
                     } else if ("p".equals(local) && inBody && !inHead) {
-                        final String lineId = getAttr(p, NS_ITUNES, "key", "itunes:key");
+                        final String lineId = getLyricAttr(p, "key", "itunes:key");
                         final String agentId = getAttr(p, NS_TTM, "agent", "ttm:agent");
                         final long pBegin = noTiming ? 0 : parseTime(getAttr(p, null, "begin", "begin"));
                         final long pEnd = noTiming ? 0 : parseTime(getAttr(p, null, "end", "end"));
@@ -1593,6 +1594,16 @@ public final class TTMLParser {
         if (!excluded.contains(key)) {
             credits.add(key + ": " + value.trim());
         }
+    }
+
+    /**
+     * lrc.red is matched first: the document may also carry Apple's spelling, which the local-name
+     * fallback would otherwise let win.
+     */
+    @Nullable
+    private static String getLyricAttr(XmlPullParser p, String local, @Nullable String fallbackQName) {
+        final String lrcRed = getAttr(p, NS_LRC_RED, local, null);
+        return lrcRed != null ? lrcRed : getAttr(p, NS_ITUNES, local, fallbackQName);
     }
 
     private static String getAttr(XmlPullParser p, @Nullable String ns,

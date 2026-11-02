@@ -30,10 +30,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.Layout;
-import android.text.method.LinkMovementMethod;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
 import android.text.style.AlignmentSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.Pair;
@@ -69,10 +69,11 @@ import java.util.function.IntConsumer;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
+import app.morphe.extension.music.patches.lyrics.session.LockScreenLyrics;
+import app.morphe.extension.music.patches.lyrics.session.MiniplayerLyrics;
 import app.morphe.extension.music.patches.lyrics.derive.AiProviders;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsTranslator;
-import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictStore;
 import app.morphe.extension.music.patches.lyrics.derive.QuickLRCClient;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsBracketSplitter;
@@ -81,6 +82,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
+import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsFileSaver;
 import app.morphe.extension.music.settings.Settings;
@@ -537,6 +539,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             }
             return true;
         });
+        // Tapping the credit of a re-timed lyric puts the earlier one back.
+        creditView.setOnClickListener(v -> LyricsManager.getInstance().revertCurrentPatch());
         LinearLayout.LayoutParams creditParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -847,21 +851,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             if (LyricsManager.getInstance().getTemporaryOffsetMs() != 0) {
                 showOffsetRuler();
             }
-            translatedLines = null;
-            romanizedLines = null;
-            romanizedFromGoogle = false;
-            translatedFromGoogle = false;
-            translatedFromAI = false;
-            romanizedFromAI = false;
-            translatedAiModel = null;
-            romanizedAiModel = null;
-            romanizedLocalDictionary = null;
-            perWordRomaji = false;
-            // The id bump is what makes in-flight callbacks from the previous track drop out.
-            translateRequestId++;
-            romanizeRequestId++;
-            translateInProgress = false;
-            romanizeInProgress = false;
+            // An in-flight callback from the previous track drops out on its id.
+            invalidateTranslate();
+            invalidateRomanize();
+            clearTranslatedData();
+            clearRomanizedData();
             // A transcription in flight belongs to the track that just left.
             transcribeRequestId++;
             transcribeBusy = false;
@@ -872,6 +866,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             // Dual mode keeps the original underneath, so onlyMode resets while the flags stand.
             onlyMode = OnlyMode.NONE;
             updateFooter();
+            updateSessionMainLine();
 
             switch (state) {
                 case LOADING:
@@ -1156,21 +1151,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     @SuppressWarnings({"deprecation", "SizeReplaceableByIsEmpty"})
     private void buildLyrics(Lyrics newLyrics) {
         if (onlyMode != displayedOnlyMode && !contentOutPending && !lineViews.isEmpty()) {
-            contentOutPending = true;
-            wholeFadeNextBuild = true;
             displayedOnlyMode = onlyMode;
-            final int outGeneration = buildGeneration.get();
-            for (TextView lineView : lineViews) {
-                if (lineView instanceof LyricsLineView view) {
-                    view.animateContentOut();
-                }
-            }
-            handler.postDelayed(() -> {
-                contentOutPending = false;
-                if (outGeneration == buildGeneration.get() && lyrics != null) {
-                    showLyrics(lyrics);
-                }
-            }, SECONDARY_REVEAL_MILLISECONDS);
+            fadeOutAndRebuild(newLyrics);
             return;
         }
         displayedOnlyMode = onlyMode;
@@ -1276,6 +1258,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             LyricsLineView lineView = new LyricsLineView(context);
             lineView.setSecondary(isSec);
             lineView.setIsRightAligned(isRightAligned);
+            // A vocal shares its lead line's row and centres with it.
+            lineView.setIsCentered(isSec && curParentForAlign >= 0
+                    ? newLyrics.lines().get(curParentForAlign).isCentered()
+                    : line.isCentered());
             // Plain text first so the panel paints immediately; the karaoke spans are added on a
             // background thread (see the LINE_BUILDER_EXECUTOR pass below). A hide rebuild keeps
             // the surviving regions so its first frame matches the shrunken layout exactly, and a
@@ -1323,7 +1309,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 String rawText = formatted.isEmpty() ? "♪" : formatted;
                 boolean isRtl = ScriptDetector.isLineRtl(rawText);
                 SpannableString initialText = new SpannableString(rawText);
-                initialText.setSpan(new AlignmentSpan.Standard(LyricsSpanBuilder.resolveAlignment(isRtl, isRightAligned)),
+                initialText.setSpan(new AlignmentSpan.Standard(LyricsSpanBuilder.resolveAlignment(
+                                isRtl, isRightAligned, lineView.isCentered())),
                         0, initialText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 lineView.setText(initialText);
             }
@@ -1446,7 +1433,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             lineRow.setClipToPadding(false);
             currentParentRow = lineRow;
 
-            if (isDuetSong) {
+            // A centred line takes neither duet side.
+            if (isDuetSong && !line.isCentered()) {
                 if (isRightAligned) {
                     lineRow.setPadding(duetSideInset, Dim.dp(2), 0, Dim.dp(2));
                 } else {
@@ -1877,7 +1865,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             setButtonLabel(translateView, str("morphe_music_lyrics_translating"), true);
 
             LyricsTranslator.translate(track, current, current.providerName(),
-                    (lines, fromGoogle, fromAI, model) -> {
+                    (lines, fromGoogle, fromAI, model, skipped) -> {
                         if (requestId != translateRequestId || !translateInProgress) {
                             return;
                         }
@@ -1894,7 +1882,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                         if (translatedFromAI && model != null) {
                             translatedAiModel = model;
                         }
-                        if (lines == null) {
+                        if (lines == null && !skipped) {
                             toastError(str("morphe_music_lyrics_translate_failed"));
                         }
                         showLyrics(current);
@@ -1959,8 +1947,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 updateRomanizeLabel();
             }
 
-            translateRequestId++;
-            translateInProgress = false;
+            invalidateTranslate();
             Settings.LYRICS_TRANSLATE_ONLY.save(true);
             Settings.LYRICS_TRANSLATE.save(false);
 
@@ -2012,7 +1999,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         setButtonLabel(translateView, str("morphe_music_lyrics_translating"), true);
 
         LyricsTranslator.translate(track, current, current.providerName(),
-                (lines, fromGoogle, fromAI, model) -> {
+                (lines, fromGoogle, fromAI, model, skipped) -> {
                     // A side the dual mode handed back lands as the small run, not as the line.
                     final boolean asOnly = Settings.LYRICS_TRANSLATE_ONLY.get();
                     if (requestId != translateRequestId || !asOnly && !translateInProgress) {
@@ -2029,7 +2016,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                         translatedAiModel = model;
                     }
                     if (translatedLines == null) {
-                        toastError(str("morphe_music_lyrics_translate_failed"));
+                        // Nothing to translate is not a failure.
+                        if (!skipped) {
+                            toastError(str("morphe_music_lyrics_translate_failed"));
+                        }
                         fallBackFromDualMode(false);
                         return;
                     }
@@ -2065,7 +2055,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         setButtonLabel(translateView, str("morphe_music_lyrics_translating"), true);
 
         LyricsTranslator.translate(track, current, current.providerName(),
-                (lines, fromGoogle, fromAI, model) -> {
+                (lines, fromGoogle, fromAI, model, skipped) -> {
                     if (requestId != translateRequestId || !translateInProgress) {
                         return;
                     }
@@ -2082,7 +2072,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     if (translatedFromAI && model != null) {
                         translatedAiModel = model;
                     }
-                    if (lines == null) {
+                    if (lines == null && !skipped) {
                         toastError(str("morphe_music_lyrics_translate_failed"));
                     }
                     showLyrics(current);
@@ -2096,6 +2086,16 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     private void cancelTranslateOnly() {
         clearTranslateOnlyState();
+        rebuildAfterOnlyEnded();
+    }
+
+    private void cancelRomanizeOnly() {
+        clearRomanizeOnlyState();
+        rebuildAfterOnlyEnded();
+    }
+
+    /** The only mode has just ended, so the lines have to come back without it. */
+    private void rebuildAfterOnlyEnded() {
         Lyrics current = lyrics;
         if (current != null) {
             showLyrics(current);
@@ -2126,47 +2126,30 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         updateFooter();
     }
 
-    /** Clears every only mode and its flags, then rebuilds from the lyrics alone. */
-    private void exitOnlyModes() {
-        Settings.LYRICS_TRANSLATE_ONLY.save(false);
-        Settings.LYRICS_ROMANIZE_ONLY.save(false);
-        Settings.LYRICS_TRANSLATE.save(false);
-        Settings.LYRICS_ROMANIZE.save(false);
-        cancelNormalTranslate();
-        cancelNormalRomanize();
-        onlyMode = OnlyMode.NONE;
-        applyOnlyModeState();
-        updateDualPill();
-        final Lyrics current = lyrics;
-        if (current != null) {
-            showLyrics(current);
+    /** Leaves the modes held by a button that is being hidden, so a mode goes with its button. */
+    public void releaseOnlyModesForHiddenButtons(boolean translateOff, boolean romanizeOff) {
+        final boolean releaseTranslate = translateOff && (onlyMode == OnlyMode.TRANS
+                || onlyMode == OnlyMode.BOTH || dualPillActive);
+        final boolean releaseRomanize = romanizeOff && (onlyMode == OnlyMode.ROMA
+                || onlyMode == OnlyMode.BOTH || dualPillActive);
+        if (releaseTranslate) {
+            if (onlyMode == OnlyMode.NONE) {
+                Settings.LYRICS_TRANSLATE_ONLY.save(false);
+                cancelNormalTranslate();
+                updateTranslateLabel();
+            } else {
+                cancelTranslateOnly();
+            }
         }
-        updateTranslateLabel();
-        updateRomanizeLabel();
-        updateFooter();
-    }
-
-    /**
-     * Leaves the only modes held by a hidden button, so a mode reached from a button goes when
-     * the button does.
-     */
-    public boolean releaseOnlyModesForHiddenButtons(boolean translateOff, boolean romanizeOff) {
-        if (!translateOff && !romanizeOff) {
-            return false;
+        if (releaseRomanize) {
+            if (onlyMode == OnlyMode.NONE) {
+                Settings.LYRICS_ROMANIZE_ONLY.save(false);
+                cancelNormalRomanize();
+                updateRomanizeLabel();
+            } else {
+                cancelRomanizeOnly();
+            }
         }
-        final boolean translateClaims = Settings.LYRICS_TRANSLATE_ONLY.get()
-                || onlyMode == OnlyMode.TRANS
-                || onlyMode == OnlyMode.BOTH || dualPillActive;
-        final boolean romanizeClaims = Settings.LYRICS_ROMANIZE_ONLY.get()
-                || onlyMode == OnlyMode.ROMA
-                || onlyMode == OnlyMode.BOTH || dualPillActive;
-        if (!(translateOff && translateClaims) && !(romanizeOff && romanizeClaims)) {
-            return false;
-        }
-        // Every mode that needed a button is left together: one side of a dual mode cannot stay
-        // while the pill it was shown under is gone.
-        exitOnlyModes();
-        return true;
     }
 
     /**
@@ -2273,40 +2256,54 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     private void disableNormalTranslate() {
         cancelNormalTranslate();
-        if (translateView != null) {
-            setButtonLabel(translateView, null, false);
-        }
+        setButtonLabel(translateView, null, false);
     }
 
     private void disableNormalRomanize() {
         cancelNormalRomanize();
-        if (romanizeView != null) {
-            setButtonLabel(romanizeView, null, false);
-        }
+        setButtonLabel(romanizeView, null, false);
     }
 
-    /** Invalidates an in-flight normal translation and clears its data flags. */
-    private void cancelNormalTranslate() {
+    /** The id bump is what drops an in-flight answer: its callback only lands on the current id. */
+    private void invalidateTranslate() {
         translateRequestId++;
         translateInProgress = false;
-        Settings.LYRICS_TRANSLATE.save(false);
+    }
+
+    private void invalidateRomanize() {
+        romanizeRequestId++;
+        romanizeInProgress = false;
+    }
+
+    /** Drops the kept translation, so its old text can never be drawn again. */
+    private void clearTranslatedData() {
         translatedLines = null;
         translatedFromGoogle = false;
         translatedFromAI = false;
         translatedAiModel = null;
-        updateFooter();
     }
 
-    private void cancelNormalRomanize() {
-        romanizeRequestId++;
-        romanizeInProgress = false;
-        Settings.LYRICS_ROMANIZE.save(false);
+    private void clearRomanizedData() {
         romanizedLines = null;
         perWordRomaji = false;
         romanizedFromGoogle = false;
         romanizedFromAI = false;
         romanizedAiModel = null;
         romanizedLocalDictionary = null;
+    }
+
+    /** Also turns the setting off, so the panel does not ask for the translation again. */
+    private void cancelNormalTranslate() {
+        invalidateTranslate();
+        Settings.LYRICS_TRANSLATE.save(false);
+        clearTranslatedData();
+        updateFooter();
+    }
+
+    private void cancelNormalRomanize() {
+        invalidateRomanize();
+        Settings.LYRICS_ROMANIZE.save(false);
+        clearRomanizedData();
         updateFooter();
     }
 
@@ -2352,12 +2349,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     return;
                 }
                 // A fresh request, not a toggle: the shown translation is the old language.
-                translateRequestId++;
-                translateInProgress = false;
-                translatedLines = null;
-                translatedFromGoogle = false;
-                translatedFromAI = false;
-                translatedAiModel = null;
+                invalidateTranslate();
+                clearTranslatedData();
                 if (onlyMode != OnlyMode.NONE) {
                     requestTranslateOnly(current);
                 } else {
@@ -2371,14 +2364,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     updateFooter();
                     return;
                 }
-                romanizeRequestId++;
-                romanizeInProgress = false;
-                romanizedLines = null;
-                perWordRomaji = false;
-                romanizedFromGoogle = false;
-                romanizedFromAI = false;
-                romanizedAiModel = null;
-                romanizedLocalDictionary = null;
+                invalidateRomanize();
+                clearRomanizedData();
                 if (onlyMode != OnlyMode.NONE) {
                     requestRomanizeOnly(current);
                 } else {
@@ -2406,6 +2393,15 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         karaokeState.resetContent();
         karaokeState.syncEnabled(Settings.LYRICS_WORD_SYNC.get());
         clearActiveLineState();
+        updateSessionMainLine();
+    }
+
+    private void updateSessionMainLine() {
+        LyricsPresentation.setMainLineOnlyState(onlyMode == OnlyMode.TRANS || onlyMode == OnlyMode.BOTH,
+                onlyMode == OnlyMode.ROMA || onlyMode == OnlyMode.BOTH,
+                translatedLines, romanizedLines);
+        MiniplayerLyrics.onSettingsChanged();
+        LockScreenLyrics.onSettingsChanged();
     }
 
     private void clearActiveLineState() {
@@ -2600,7 +2596,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             setButtonLabel(romanizeView, str("morphe_music_lyrics_romanizing"), true);
 
             LyricsRomanizer.romanize(track, current, current.providerName(),
-                    (lines, fromGoogle, fromAI, model, perWord, localDictionary) -> {
+                    (lines, fromGoogle, fromAI, model, perWord, localDictionary, skipped) -> {
                         if (requestId != romanizeRequestId || !romanizeInProgress) {
                             return;
                         }
@@ -2622,7 +2618,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                         // A reading on the words stands on its own: dropping it whenever the
                         // whole-line side came back empty would blank the line with nothing said.
                         perWordRomaji = perWord;
-                        if (!romaOk && !perWord) {
+                        if (!romaOk && !perWord && !skipped) {
                             toastError(str("morphe_music_lyrics_romanize_failed"));
                         }
                         showLyrics(current);
@@ -2680,8 +2676,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
             // In-flight normal romanization is dropped so it cannot apply after ONLY starts;
             // already-fetched lines stay for the ONLY render.
-            romanizeRequestId++;
-            romanizeInProgress = false;
+            invalidateRomanize();
             Settings.LYRICS_ROMANIZE_ONLY.save(true);
             Settings.LYRICS_ROMANIZE.save(false);
 
@@ -2733,7 +2728,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         setButtonLabel(romanizeView, str("morphe_music_lyrics_romanizing"), true);
 
         LyricsRomanizer.romanize(track, current, current.providerName(),
-                (lines, fromGoogle, fromAI, model, perWord, localDictionary) -> {
+                (lines, fromGoogle, fromAI, model, perWord, localDictionary, skipped) -> {
                     final boolean asOnly = Settings.LYRICS_ROMANIZE_ONLY.get();
                     if (requestId != romanizeRequestId || !asOnly && !romanizeInProgress) {
                         return;
@@ -2752,7 +2747,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     romanizedLocalDictionary = romaOk ? localDictionary : null;
                     perWordRomaji = perWord;
                     if (!romaOk && !perWord) {
-                        toastError(str("morphe_music_lyrics_romanize_failed"));
+                        // Nothing to romanize is not a failure.
+                        if (!skipped) {
+                            toastError(str("morphe_music_lyrics_romanize_failed"));
+                        }
                         fallBackFromDualMode(true);
                         return;
                     }
@@ -2790,7 +2788,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         setButtonLabel(romanizeView, str("morphe_music_lyrics_romanizing"), true);
 
         LyricsRomanizer.romanize(track, current, current.providerName(),
-                (lines, fromGoogle, fromAI, model, perWord, localDictionary) -> {
+                (lines, fromGoogle, fromAI, model, perWord, localDictionary, skipped) -> {
                     if (requestId != romanizeRequestId || !romanizeInProgress) {
                         return;
                     }
@@ -2812,7 +2810,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     // A reading on the words stands on its own: dropping it whenever the
                     // whole-line side came back empty would blank the line with nothing said.
                     perWordRomaji = perWord;
-                    if (!romaOk && !perWord) {
+                    if (!romaOk && !perWord && !skipped) {
                         toastError(str("morphe_music_lyrics_romanize_failed"));
                     }
                     showLyrics(current);
@@ -2822,16 +2820,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                                 updateRomanizeLabelRunnable, 3000);
                     }
                 });
-    }
-
-    private void cancelRomanizeOnly() {
-        clearRomanizeOnlyState();
-        Lyrics current = lyrics;
-        if (current != null) {
-            showLyrics(current);
-        }
-        updateRomanizeLabel();
-        updateTranslateLabel();
     }
 
     private void updateRomanizeLabel() {
@@ -3132,7 +3120,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 startTranscription(text);
             });
         }
-
 
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
@@ -3477,11 +3464,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             if (layout == null || end > layout.getText().length()) {
                 continue;
             }
-            final int targetLayoutH = start == 0
-                    ? layout.getHeight()
-                      - layout.getLineBottom(layout.getLineForOffset(end - 1))
-                    : layout.getLineTop(layout.getLineForOffset(start));
-            final int targetH = targetLayoutH + tv.getPaddingTop() + tv.getPaddingBottom()
+            // A row whose region starts lower keeps the rows above it, so it shifts instead.
+            final int freedLayoutH = LyricsViewSupport.trailingRegionSize(layout, start, end);
+            final int targetH = freedLayoutH + tv.getPaddingTop() + tv.getPaddingBottom()
                     + LyricsViewSupport.rowHeightOutsideText(row, tv);
             if (targetH <= 0 || targetH >= oldH - 1) {
                 continue;
@@ -4264,6 +4249,30 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         if (transcribePromptView.getVisibility() == VISIBLE) {
             showOnlyRefreshButton();
         }
+        // Lines laid out against the old row have to be measured again against the new one.
+        final Lyrics current = lyrics;
+        if (dualWasUp && current != null && !current.isEmpty()) {
+            fadeOutAndRebuild(current);
+        }
+    }
+
+    /** Fades the lines out, then builds them again once they are gone. */
+    private void fadeOutAndRebuild(Lyrics current) {
+        contentOutPending = true;
+        wholeFadeNextBuild = true;
+        displayedOnlyMode = onlyMode;
+        final int outGeneration = buildGeneration.get();
+        for (TextView lineView : lineViews) {
+            if (lineView instanceof LyricsLineView view) {
+                view.animateContentOut();
+            }
+        }
+        handler.postDelayed(() -> {
+            contentOutPending = false;
+            if (outGeneration == buildGeneration.get() && lyrics == current) {
+                showLyrics(current);
+            }
+        }, SECONDARY_REVEAL_MILLISECONDS);
     }
 
     /**
@@ -4278,6 +4287,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
         showLyrics(current);
         refreshDualPillIcons();
+        if (onlyMode != OnlyMode.NONE) {
+            updateSessionMainLine();
+        }
     }
 
     /**
@@ -4535,7 +4547,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         setButtonLabel(pill, null, true);
     }
 
-
     private void restoreButtonsFromPill() {
         TextView translate = translateView;
         TextView romanize = romanizeView;
@@ -4567,7 +4578,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     LyricsViewSupport.fadeDualButtonIn(romanize);
                 }).start();
     }
-
 
     private void updateDualPill() {
         if (onlyMode == OnlyMode.BOTH) {

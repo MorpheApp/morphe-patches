@@ -46,12 +46,6 @@ final class AlphabetRomanizer {
         return Character.toUpperCase(reading.charAt(0)) + reading.substring(1);
     }
 
-    private static void append(StringBuilder out, String word) {
-        if (word.isEmpty()) return;
-        if (out.length() > 0) out.append(' ');
-        out.append(word);
-    }
-
     String romanize(String line) {
         StringBuilder out = new StringBuilder(line.length() * 2);
         StringBuilder word = new StringBuilder();
@@ -60,13 +54,13 @@ final class AlphabetRomanizer {
         while (i < line.length()) {
             final char c = line.charAt(i);
             if (!script.contains(c)) {
-                append(out, word.toString());
+                Romanizations.appendWord(out, word.toString());
                 word.setLength(0);
                 int end = i + 1;
                 while (end < line.length() && !script.contains(line.charAt(end))) {
                     end++;
                 }
-                append(out, line.substring(i, end).trim());
+                Romanizations.appendWord(out, line.substring(i, end).trim());
                 i = end;
                 continue;
             }
@@ -84,7 +78,7 @@ final class AlphabetRomanizer {
             word.append(reading != null ? cased(reading, c) : String.valueOf(c));
             i++;
         }
-        append(out, word.toString());
+        Romanizations.appendWord(out, word.toString());
         return out.toString().trim();
     }
 

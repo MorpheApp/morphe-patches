@@ -14,8 +14,6 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.text.InputType;
 import android.util.Pair;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -105,7 +103,7 @@ public final class LyricsRimeDictDialog {
 
         final TextView guidance = new TextView(context);
         guidance.setTextSize(14);
-        guidance.setTextColor(withAlpha(fg, 0x99));
+        guidance.setTextColor(fg);
         guidance.setText(str("morphe_music_lyrics_rime_dict_empty"));
         guidance.setPadding(0, 0, 0, Dim.dp12);
         content.addView(guidance);
@@ -165,7 +163,7 @@ public final class LyricsRimeDictDialog {
 
         // Save writes the choice and closes; the fetch runs in the background and answers with a
         // toast, the same model the Local dictionary dialog uses.
-        final Button ok = button(pair.second, str("morphe_settings_save"));
+        final Button ok = ThemedInput.findButton(pair.second, str("morphe_settings_save"));
         if (ok != null) {
             ok.setOnClickListener(v ->
                     save(rows, builtinCodes, customCodes, pair.first, sink, onChanged));
@@ -347,23 +345,6 @@ public final class LyricsRimeDictDialog {
         });
     }
 
-    /** Found by label because the button row is reordered when the labels do not fit. */
-    @Nullable
-    private static Button button(ViewGroup layout, CharSequence text) {
-        for (int i = 0; i < layout.getChildCount(); i++) {
-            final View child = layout.getChildAt(i);
-            if (child instanceof Button candidate
-                    && text.toString().contentEquals(candidate.getText())) {
-                return candidate;
-            }
-            if (child instanceof ViewGroup group) {
-                final Button found = button(group, text);
-                if (found != null) return found;
-            }
-        }
-        return null;
-    }
-
     /** Starts the form, tolerating a settings screen that has already gone away. */
     private static void showAddSafely(Context context, @Nullable Runnable onChanged,
             @Nullable Runnable onClosed) {
@@ -397,11 +378,10 @@ public final class LyricsRimeDictDialog {
         LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);
 
-        // The hint sits inside the form's own scroll area, in the dimmed note style the list
-        // dialog uses, rather than as the dialog message that would add a second scroll area.
+        // The hint sits inside the form's scroll area; as a dialog message it would add a second one.
         final TextView hint = new TextView(context);
         hint.setTextSize(14);
-        hint.setTextColor(withAlpha(fg, 0x99));
+        hint.setTextColor(fg);
         hint.setText(str("morphe_music_lyrics_rime_dict_add_hint"));
         hint.setPadding(0, 0, 0, Dim.dp12);
         content.addView(hint);
