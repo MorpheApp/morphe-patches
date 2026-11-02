@@ -938,7 +938,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_navigation_bar_style_user_dialog_message">ही शैली तुमच्या डिव्हाइसद्वारे किंवा YouTube आवृत्तीद्वारे समर्थित नसावी, ज्यामुळे लेआउट समस्या किंवा क्रॅश होऊ शकतात</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_toolbar_screen_summary">टूलबारमध्ये कोणते घटक दिसतात ते निवडा</string>
-  <string name="morphe_hide_toolbar_cast_button_title">\'कास्ट\' (Cast) बटण लपवा</string>
   <string name="morphe_hide_toolbar_chat_button_title">\'चॅट\' बटण लपवा</string>
   <string name="morphe_hide_toolbar_microphone_button_title">मायक्रोफोन बटण लपवा</string>
   <string name="morphe_hide_toolbar_search_button_title">शोध बटण लपवा</string>
@@ -1159,8 +1158,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
 • 'अधिक व्हिडिओ' ओव्हरले उपलब्ध नसू शकतो
 • Shorts नियमित प्लेयरमध्ये उघडतात
 • नॉन कोलॅप्स झालेला जुना व्हिडिओ ॲक्शन बार दिसतो"</string>
-  <string name="morphe_tablet_layout_in_player_title">प्लेअरमध्ये टॅबलेट लेआउट सक्षम करा</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">२१.११.४८ - कॅप्शनचे जुने वर्तन पुन्हा स्थापित करा</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - प्लेलिस्टमध्ये जुने सेव्ह वैशिष्ट्य परत आणा</string>

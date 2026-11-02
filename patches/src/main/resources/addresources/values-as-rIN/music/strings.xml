@@ -158,6 +158,38 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_track_deleted">ডাউনলোডটো মচি পেলোৱা হ\'ল</string>
   <string name="morphe_music_downloads_track_delete_failed">ডাউনলোডটো মচিব নোৱাৰিল</string>
   <string name="morphe_music_downloads_play_failed">ডাউনলোডটো বজাব নোৱাৰিল</string>
+  <string name="morphe_music_downloads_playlists">প্লেলিষ্টসমূহ</string>
+  <string name="morphe_music_downloads_playlists_section">তৈৰী কৰা প্লেলিষ্টসমূহ (%s)</string>
+  <string name="morphe_music_downloads_playlists_empty">এতিয়াও কোনো স্থানীয় প্লেলিষ্ট নাই</string>
+  <string name="morphe_music_downloads_playlists_hide">প্লেলিষ্টসমূহ লুকুওক ▲</string>
+  <string name="morphe_music_downloads_playlist_new">+ নতুন প্লেলিষ্ট</string>
+  <string name="morphe_music_downloads_playlist_new_button">নতুন প্লেলিষ্ট</string>
+  <string name="morphe_music_downloads_playlist_selected">নিৰ্বাচিত (%s)</string>
+  <string name="morphe_music_downloads_playlist_select_first">প্ৰথমে গানসমূহ নিৰ্বাচিত কৰক</string>
+  <string name="morphe_music_downloads_playlist_clear_selection">নিৰ্বাচন মুছক</string>
+  <string name="morphe_music_downloads_playlist_create">প্লেলিষ্ট তৈৰী কৰক</string>
+  <string name="morphe_music_downloads_playlist_create_button">তৈৰী কৰক</string>
+  <string name="morphe_music_downloads_playlist_add">প্লেলিষ্টলৈ যোগ কৰক</string>
+  <string name="morphe_music_downloads_playlist_added">%s লৈ যোগ কৰা হৈছে</string>
+  <string name="morphe_music_downloads_playlist_name_hint">প্লেলিষ্টৰ নাম</string>
+  <string name="morphe_music_downloads_playlist_name_empty">প্লেলিষ্টৰ নাম খালী হ\'ব নোৱাৰে</string>
+  <string name="morphe_music_downloads_playlist_save_failed">প্লেলিষ্টটো সংৰক্ষণ কৰিব নোৱাৰিল</string>
+  <string name="morphe_music_downloads_playlist_track_count">%s টা ট্ৰেক</string>
+  <string name="morphe_music_downloads_playlist_track_count_one">১ টা ট্ৰেক</string>
+  <string name="morphe_music_downloads_playlist_no_tracks">এই প্লেলিষ্টত কোনো ট্ৰেক নাই</string>
+  <string name="morphe_music_downloads_playlist_play">প্লেলিষ্টটো প্লে কৰক</string>
+  <string name="morphe_music_downloads_playlist_play_all">সকলোবোৰ প্লে কৰক</string>
+  <string name="morphe_music_downloads_playlist_rename">নাম সলনি কৰক</string>
+  <string name="morphe_music_downloads_playlist_rename_title">প্লেলিষ্টৰ নাম সলনি কৰক</string>
+  <string name="morphe_music_downloads_playlist_save">সংৰক্ষণ কৰক</string>
+  <string name="morphe_music_downloads_playlist_delete">প্লেলিষ্টটো মচি পেলাওক</string>
+  <string name="morphe_music_downloads_playlist_delete_title">প্লেলিষ্টটো মচি পেলাব নেকি?</string>
+  <string name="morphe_music_downloads_playlist_delete_message">%s মচি পেলোৱা হ\'ব। ডাউনলোড কৰা গানবোৰ থাকিব</string>
+  <string name="morphe_music_downloads_playlist_deleted">প্লেলিষ্টটো মচি পেলোৱা হ\'ল</string>
+  <string name="morphe_music_downloads_playlist_remove_track">প্লেলিষ্টৰ পৰা আঁতৰ কৰক</string>
+  <string name="morphe_music_downloads_playlist_drag_track">ক্ৰম সলনি কৰিবলৈ টানি লওক</string>
+  <string name="morphe_music_downloads_playlist_reorder_hint">%s • ক্ৰম সলনি কৰিবলৈ ড্ৰেগ হেণ্ডেলটো টানি লওক</string>
+  <string name="morphe_music_downloads_playlist_reorder_done">সম্পন্ন</string>
   <string name="morphe_music_downloads_notification_channel">অডিঅ ডাউনলোড</string>
   <string name="morphe_music_downloads_playback_channel">অফলাইন প্লেবেক</string>
   <string name="morphe_music_downloads_unknown_track">ডাউনলোড কৰিবলগীয়া ট্ৰেকটো চিনাক্ত কৰিব নোৱাৰিল</string>
@@ -206,6 +238,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">কমিউনিটি গাইডলাইনসমূহ লুকুৱাওক</string>
   <string name="morphe_music_hide_comments_context_title">প্ৰসংগ বাৰ্তাটো লুকুৱাওক</string>
   <string name="morphe_music_hide_comments_emoji_button_title">ইমজি বুটামটো লুকুৱাওক</string>
+  <string name="morphe_music_hide_comments_gif_button_title">GIF বুটাম লুকুৱাওক</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_title">GIF আৰু ছবিসমূহ লুকুৱাওক</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_summary">মন্তব্য আৰু উত্তৰৰ সৈতে সংলগ্ন GIF আৰু ছবিসমূহ লুকুৱায়</string>
   <string name="morphe_music_hide_comments_info_button_title">ইনফো বুটামটো লুকুৱাওক</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">টাইমষ্টেম্প বুটামটো লুকুৱাওক</string>
   <!-- interaction.crossfade.crossfadePatch -->
@@ -465,7 +500,44 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_lyrics_source_all_disabled">সকলো প্ৰদানকাৰী নিষ্ক্ৰিয় কৰা হৈছে - বিল্ট-ইন লিৰিক্স আৰু এমবেডড লিৰিক্স</string>
   <string name="morphe_music_lyrics_source_reset_title">প্ৰোভাইডাৰৰ ক্ৰম ৰিছেট কৰিবনে?</string>
   <string name="morphe_music_lyrics_source_reset_message">প্ৰোভাইডাৰসমূহক ডিফল্ট অগ্ৰাধিকাৰ ক্ৰমত পুনৰুদ্ধাৰ কৰক</string>
+  <string name="morphe_music_lyrics_rime_dict_title">Rime শব্দৰ তালিকা</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist ৰ বাবে UniDict প্ৰয়োজন: অফলাইন অভিধান প্ৰদানকাৰীত, \"Chinese and Cantonese characters (UniDict)\" টিক কৰক আৰু ইয়াক প্ৰথমে ডাউনলোড শেষ কৰিবলৈ দিয়ক। ইয়াৰ অবিহনে, আখৰ পঢ়া তালিকা এটাত কোনো পঢ়ন পোৱা নাযায়।
+
+Rime Wordlist এ পঢ়িবলগীয়া তালিকা কেইটা টিক কৰক, তাৰ পিছত সেইবোৰ ডাউনলোড কৰিবলৈ Save টুন কৰক। আপুনি যোগ কৰা এটা তালিকা আপুনি টিক আঁতৰাই দিলে মচি পেলাব।
+
+প্ৰতিটো তালিকা আপোনাৰ নিজৰ শব্দ-পঢ়নৰ তালিকা, এটা .dict.yaml যাৰ লাইনবোৰ এনেধৰণৰ:
+字 ham
+典 din2
+প্ৰথম কলামটো হ'ল শব্দ, দ্বিতীয়টো ইয়াৰ পঢ়ন; অতিৰিক্ত কলাম আৰু টেবৰ অবিহনে লাইনবোৰক আওকাণ কৰা হয়।"</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">ওপৰৰ ভাষাৰ বাবে কোনো Rime শব্দৰ তালিকা চিন্হ কৰা হোৱা নাই। এটা চিন্হ কৰিবলৈ এই নামটোত টেপ কৰক, অথবা তালিকা থকা ভাষা এটা বাছি লওক</string>
+  <string name="morphe_music_lyrics_rime_dict_add">যোগ কৰক</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">এটা Rime শব্দৰ তালিকা যোগ কৰক</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">এটা .dict.yaml ফাইল, অথবা এটা zip ফাইল যাৰ ভিতৰত এনে এখন ফাইল আছে, আৰু ইয়াত 字 ham আৰু 典 din2 ৰ দৰে লাইন থাকে। যেতিয়া আপুনি ইয়াক টিক্ কৰি Save ট্যাপ কৰিব তেতিয়া তালিকাখন সংগ্ৰহ কৰা হয়, আৰু ইয়াৰ লাইচেন্সটো আপুনি নিজেই পৰীক্ষা কৰিব পাৰিব</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">ভাষাৰ সংকেত</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">দুটা বা তিনিটা আখৰ, যেনে hak বা wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">নাম</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">পাঠটোৰ তলত দেখুওৱা হয়, যেনে Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">শব্দৰ তালিকাৰ ঠিকনা</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">.dict.yaml বা ইয়াৰ zip-ৰ https:// ঠিকনা</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">শব্দত নথকা আখৰসমূহ</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">স্বয়ংক্ৰিয়</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">ক্যান্টোনিজ আখৰসমূহ</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">মান্দাৰিন আখৰসমূহ</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">কোনো আখৰৰ পঠন নাই</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">কোড, নাম আৰু ঠিকনা পূৰণ কৰক</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">কোডটো দুটা বা তিনিটা আখৰৰ হ\'ব লাগে, যেনে hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">ঠিকনাটো https:// ৰে আৰম্ভ হ\'ব লাগিব</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">নাম আৰু ঠিকনাটোত ভাৰ্টিকেল বাৰ থাকিব নোৱাৰে</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s ৰ ইতিমধ্যে এটা শব্দ তালিকা আছে</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s বিল্ট-ইন ৰোমানাইজাৰৰ দ্বাৰা পঢ়া হয় আৰু ই শব্দ তালিকা গ্ৰহণ কৰিব নোৱাৰে</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">ব্যৱহাৰ কৰা হোৱা নাই: এই ভাষাৰ ইতিমধ্যে নিজৰ পঢ়াৰ নিয়ম আছে, সেয়েহে ইয়াক আঁতৰাবলৈ টিক চিহ্নটো আঁতৰাওক</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%1$s যোগ কৰা হৈছে - ইয়াক ডাউনলোড কৰিবলৈ টিক চিহ্ন দিয়ক আৰু Save ত ক্লিক কৰক</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">শব্দ তালিকাৰ সাজু হৈছে</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">শব্দ তালিকাৰ সাজু হৈছে (%1$d প্ৰৱেশ)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">শব্দ তালিকা পঢ়া হৈছে: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">শব্দৰ তালিকা ডাউনলোড কৰাত ব্যৰ্থ হৈছে - পুনৰ চেষ্টা কৰিবলৈ Save ত টেপ কৰক</string>
   <string name="morphe_music_lyrics_clear_cache_title">সংৰক্ষিত কথাৰ স্তৰবোৰ মুছক</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">এই ডিভাইচত সংৰক্ষিত %1$s MB গীতিক ডিলিট কৰক</string>
   <string name="morphe_music_lyrics_clear_cache_done">%1$s MB মুছা হ\'ল</string>
   <string name="morphe_music_token_dialog_get_token">টোকেন লাভ কৰক</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
@@ -525,9 +597,22 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_lyrics_show_copy_button_title">কপি বুটাম দেখুওক</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">মূল গীতৰ কথাখিনি প্লেইন টেক্সট হিচাপে কপি কৰিবলৈ টিপক; ৰ’ ফাইলটো ডাউনলোডচত সংৰক্ষণ কৰিবলৈ দীঘলীয়া সময়লৈ টিপি ধৰক</string>
   <string name="morphe_music_lyrics_show_translate_button_title">অনুবাদ বুটাম দেখুওক</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">অনুবাদৰ বাবে টেপ কৰক; কেৱল অনুবাদৰ বাবে লং-প্ৰেছ কৰক। তালিকাভুক্ত ক্ৰম অনুসৰি সক্ৰিয় অনুবাদ প্ৰদানকাৰীসমূহ ব্যৱহাৰ কৰে</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">ৰোমানাইজ বা লিপ্যন্তৰ কৰক বুটামটো দেখুৱাওক</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">ৰোমানাইজেশ্যন বা লিপ্যন্তৰৰ বাবে টেপ কৰক; কেৱল ৰোমানাইজেশ্যন বা লিপ্যন্তৰৰ বাবে লং-প্ৰেছ কৰক। তালিকাভুক্ত ক্ৰম অনুসৰি সক্ৰিয় ৰোমানাইজেশ্যন প্ৰদানকাৰীসমূহ ব্যৱহাৰ কৰে</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">লিপ্যন্তৰ সক্ৰিয় কৰক</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">গীতৰ উৎসৰ পৰা নন-লেটিন পাঠনৰ অনুমতি দিয়ক; বন্ধ থাকিলে, কেৱল লেটিন আখৰ, একসেন্টেড আখৰ আৰু টোন ডিজিটসমূহ ৰাখক</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">এটা টাইমড লিৰিকৰ প্ৰতিটো শব্দ পঢ়ে (word sync অন আছে); কোৰিয়ানৰ বাবে কোনো ডাউনলোডৰ প্ৰয়োজন নাই; চৈতেৰৰ লিপিৰ বাবে এটা CLDR ডাউনলোড শ্বেয়াৰ কৰা হয়; Han চৰিত্ৰবোৰ Rime Wordlist ৰ দ্বাৰা পঢ়া হয় যেতিয়া ইয়াৰ শব্দৰ তালিকাটোৱে সেই ভাষাটোক কভাৰ কৰে</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">পঢ়াৰ অভিধানসমূহ ডাউনলোড কৰা হৈছে…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">পঢ়াবোৰ সাজু আছে (%1$d খন প্ৰৱেশ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">ডাউনলোড বিফল হৈছে - পুনৰ চেষ্টা কৰিবলৈ ইয়াক বন্ধ কৰি আকৌ অন কৰক</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">অফলাইন অভিধান</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">জাপানী (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">চাইনীজ আৰু কেণ্টনিজ চৰিত্ৰ (UniDict, ~8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">চাইনীজ শব্দ (pinyin-pro, ~17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">গ্ৰীক, স্লাভিক চিৰিলিক (ৰুছিয়ান, ইউক্ৰেইনীয়, বুলগাৰিয়ান, ছাৰ্বিয়ান, বেলৰুছিয়ান, মেচিডোনিয়ান অন্তৰ্ভুক্ত), জৰ্জিয়ান, আৰ্মেনিয়ান, হিব্ৰু, আৰবী, আমহাৰিক আৰু চিৰিয়াক লিপ্যন্তৰ (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s পঢ়ি থকা হৈছে: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">কমপক্ষে এটা অভিধান বাচনি কৰক</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Refresh বুটামটো দেখুৱাওক</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">পিছৰ লিৰিক কেণ্ডিডেটলৈ যাবলৈ টেপ কৰক; গানৰ শিৰোনাম আৰু শিল্পীৰ দ্বাৰা লিৰিক বিচাৰিবলৈ লং-প্ৰেছ কৰক</string>
   <string name="morphe_music_lyrics_search_dialog_title">গীতৰ কথা খোজো</string>
@@ -538,6 +623,10 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_lyrics_saved">সংৰক্ষিত</string>
   <string name="morphe_music_lyrics_word_sync_title">চিঙ্ৰোনাইজ কৰা শব্দ বা শব্দাংশসমূহ হাইলাইট কৰক</string>
   <string name="morphe_music_lyrics_word_sync_summary">উপলব্ধ থাকিলে শব্দ-অনুসৰি লৰিক্সক অগ্ৰাধিকাৰ দিয়ক। যেতিয়া লৰিক্সত শব্দৰ সময় থাকে, ই সংগীতৰ সৈতে মিল খাই প্ৰতিটো শব্দ বা শব্দাংশ হাইলাইট কৰে</string>
+  <string name="morphe_music_lyrics_line_scale_title">নিষ্ক্ৰিয় লাইনবোৰ সংকুচিত কৰক</string>
+  <string name="morphe_music_lyrics_line_scale_summary">বৰ্তমান গোৱা হোৱা নাই তেনে প্ৰতিটো লাইনক অলপ সৰুকৈ আঁকে, লগতে তাক ম্লান কৰি দিয়ে</string>
+  <string name="morphe_music_lyrics_split_background_title">পৃষ্ঠভূমিৰ কণ্ঠবোৰ পৃথককৈ দেখুৱাওক</string>
+  <string name="morphe_music_lyrics_split_background_summary">পৃষ্ঠভূমিৰ কণ্ঠ আৰু সামঞ্জস্যক মুখ্য লাইনৰ পৰা পৃথক কৰে। ব্ৰেকেটত লিখা পৃষ্ঠভূমিৰ কণ্ঠ, যেনে \"(Oh) I want you\", গোৱা লাইনটোৰ পৰা আঁতৰাই ইয়াৰ নিজস্ব এটা ম্লান লাইনলৈ স্থানান্তৰ কৰে</string>
   <string name="morphe_music_lyrics_hide_played_title">বাজি উঠা লৰিক্সসমূহ লুকুৱাওক</string>
   <string name="morphe_music_lyrics_hide_played_summary">বৰ্তমান বাজি থকা লাইনটোৰ ওপৰৰ লৰিক্সৰ লাইনসমূহ লুকুৱাওক</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">নাবাজি উঠা লৰিক্সসমূহ লুকুৱাওক</string>
@@ -595,9 +684,15 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_lyrics_translated_by_ai">%s দ্বাৰা অনুবাদ কৰা হৈছে</string>
   <string name="morphe_music_lyrics_romanized_by_ai">%s দ্বাৰা ৰোমানাইজ কৰা হৈছে</string>
   <string name="morphe_music_lyrics_romanized_by_local">%s ৰ দ্বাৰা ৰোমানাইজ কৰা হৈছে</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">Rime দ্বাৰা ৰোমানাইজ কৰা হৈছে (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">অনুবাদ কৰা হৈছে</string>
   <string name="morphe_music_lyrics_translation_language_title">অনুবাদৰ ভাষা</string>
+  <string name="morphe_music_lyrics_romanize_language_title">ৰোমানাইজেশ্বন বা লিপ্যন্তৰ ভাষা</string>
+  <string name="morphe_music_lyrics_translation_target_language">"অনুবাদৰ লক্ষ্য ভাষা:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"ৰোমানাইজেশান বা লিপ্যন্তৰৰ লক্ষ্য ভাষা:
+%s"</string>
   <string name="morphe_music_lyrics_translating">অনুবাদ কৰা হৈছে…</string>
   <string name="morphe_music_lyrics_translate_failed">গীতৰ কথাৰ অনুবাদ কৰিব নোৱাৰিল</string>
   <string name="morphe_music_lyrics_romanize_hide">ৰোমানাইজ কৰা হৈছে</string>
@@ -611,6 +706,7 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_lyrics_refreshing">ৰিফ্ৰেচ কৰা হৈছে</string>
   <string name="morphe_music_lyrics_refreshed">ৰিফ্ৰেচ কৰা হ\'ল</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API কী</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC-এ বৰ্তমানৰ ট্ৰেকটোৰ বাবে কথাখিনি লিপ্যন্তৰ কৰে বা সময়ৰ সৈতে সংগতি কৰে</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC কি সংৰক্ষণ কৰা হৈছে। লিৰিক্স চাৰ্চ ডায়ালগৰ এলাইন বুটামটো, অথবা ট্ৰেকটোত লিৰিক্স নাথাকিলে পেনেল প্ৰম্পটটো ব্যৱহাৰ কৰক</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API কী সংৰক্ষিত হৈছে</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC-এ সেইটো কী গ্ৰহণ কৰা নাই</string>
@@ -626,10 +722,24 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_lyrics_transcribe_no_text">সংগত কৰিবলৈ কোনো কথাৰ স্তৰ নাই - তাৰ পৰিৱৰ্তে লিপিবদ্ধ কৰা হৈছে</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC-এ এই ট্ৰেকটো প্ৰচেছ কৰিব নোৱাৰিলে</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">এই ট্ৰেকটোৰ বাবে QuickLRC ক্ৰেডিট শেষ হৈছে</string>
+  <string name="morphe_music_lyrics_about_summary">"গীতৰ কথাখিনি শিৰোনাম আৰু শিল্পীৰ নামৰ দ্বাৰা মিলায়া হয়, অস্বাভাৱিক মেটাডেটাৰ ফলত কোনো কথা নচপা বা ভুল সংস্কৰণ পোৱাৰ সম্ভাৱনা থাকে। সংস্কৰণ সলনি কৰিবলৈ refresh ব্যৱহাৰ কৰক। * চিহ্নিত প্ৰদানকাৰীসকলৰ বাবে টোকেনৰ প্ৰয়োজন। সক্ৰিয় কৰা সকলো প্ৰদানকাৰীক সদায় আপোনাৰ নিৰ্দিষ্ট ক্ৰমত অনুৰোধ কৰা নহয়, বৰঞ্চ তেওঁলোকৰ গতিৰ ওপৰত ভিত্তি কৰি উত্তৰ দিয়ে।
+
+গীতৰ কথাখিনি তৃতীয় পক্ষৰ সেৱাৰ পৰা আহে যিবোৰ Morphe ৰ সৈতে জড়িত নহয়, স্পনচৰ কৰা নহয় বা সমৰ্থন কৰা নহয়। প্ৰতিটো সেৱাক ইয়াৰ স্বৰূপত ব্যৱহাৰ কৰা হয়: গীতৰ কথা, ইয়াৰ উপলব্ধতা আৰু ইয়াৰ লাইচেঞ্চিং সেই সেৱাসমূহ আৰু তেওঁলোকৰ লাইচেন্সৰ মালিকৰ হাতত থাকে, আৰু এইবোৰ ব্যৱহাৰ কৰাটো তেওঁলোকৰ সেৱাৰ চৰ্তৰ অধীনত হ'ব পাৰে। এটা সক্ৰিয় সেৱালৈ কেৱল আপুনি বিচৰা তথ্যখিনিহে পঠোৱা হয় - শিৰোনাম, শিল্পী আৰু য’ত সেৱাটোৰ প্ৰয়োজন হয় তাত ভিডিঅ' ID। ঐচ্ছিক AI এনডপইণ্ট আৰু QuickLRC ট্ৰান্সক্ৰিপচন কেৱল আপুনি এইবোৰ কনফিগাৰ কৰাৰ পিছতহে চলে, আৰু গীতৰ কথা বা ট্ৰেকৰ ভিডিঅ' URL লাভ কৰে।"</string>
   <string name="morphe_music_lyrics_source_advice_summary">আপুনি ব্যৱহাৰ কৰা প্ৰদানকাৰকহে সক্ৰিয় কৰক, অথবা ডিফল্ট ৰাখক - ধাৰাবাহিক অনুৰোধে সৰু সম্প্ৰদায়ৰ লৰিক্স సైটবোৰক অতিৰিক্ত বোজা দিব পাৰে</string>
   <string name="morphe_music_lyrics_hide_info_title">ক্ৰেডিট লাইন লুকুৱাওক</string>
   <string name="morphe_music_lyrics_hide_info_summary">গীতৰ তলত দেখুৱা ক্ৰেডিট লাইনটো লুকুৱাওক</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">অনুবাদ আৰু ৰোমানাইজেশ্যন সলনি কৰক</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON কৰিলে গীতিকৰ তলত ৰোমানাইজেশান বা লিপ্যন্তৰ আৰু ওপৰত অনুবাদ থাকে; OFF কৰিলে ৰোমানাইজেশান বা লিপ্যন্তৰ ওপৰত আৰু অনুবাদ তলত থাকে। প্ৰতিটো শব্দাংশৰ ওপৰত থকা পঢ়া নিয়মটো তাৰ সৈতে ওপৰৰ পৰা তললৈ স্থানান্তৰ হয়</string>
+  <string name="morphe_music_lyrics_force_center_title">গীতৰ কথা সদায় কেন্দ্ৰত ৰাখক</string>
+  <string name="morphe_music_lyrics_force_center_summary">ON কৰিলে প্ৰতিটো শাৰী মাজত থাকে আৰু উৎসৰ এলাইনমেণ্টক, ডুয়েটৰ দিশসমূহৰ সৈতে, আওকাণ কৰে; OFF কৰিলে গীতত বিচৰা ধৰণে এলাইনমেণ্ট থাকে</string>
+  <string name="morphe_music_lyrics_providers_keep_one">অন্তত এজন প্ৰদানকাৰী অন থাকিব লাগিব</string>
+  <string name="morphe_music_lyrics_translation_provider_title">অনুবাদ</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">ৰোমানাইজেশান বা লিপ্যন্তৰ</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">অফলাইন অভিধান</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">ৰাইম শব্দ তালিকা</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">AI ৰ সহায়ত সেকচনসমূহ ধৰা হওক</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">কেৱল তেতিয়াহে ব্যৱহাৰ কৰা হয় যেতিয়া প্ৰদানকাৰীয়ে Chorus বা Verse ৰ দৰে কোনো সেকচন লেবেল পঠিয়াই নাপঠিয়ায়, যিবোৰ আপোনাৰ OpenAI-সংগত মডেলটোৱে ধৰিব। ৰো\'টো সম্পাদনা কৰিলে ইয়াৰ প্ৰম্পটটোও খোল খাব</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API اینڈপইণ্ট URL (যেনে https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">প্ৰমপ্ট টেমপ্লেট</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">প্লেচহোল্ডাৰসমূহ: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">প্ৰমপ্ট সংৰক্ষিত হৈছে</string>
@@ -638,14 +748,26 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_lyrics_ai_config_toast_saved">অনুবাদ আৰু ৰোমানাইজেশান ছেটিংছ সংৰক্ষণ কৰা হৈছে</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">ছেটিংছবোৰ ডিফল্টত ৰিছেট কৰা হৈছে</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Base URL টো http:// বা https:// ৰে আৰম্ভ হ\'ব লাগিব</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">ছেটিংছ অসম্পূৰ্ণ অথবা প্ৰদানকাৰীৰ দ্বাৰা নাকৰ কৰা হৈছে</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">সংযোগ বৈধতা পৰীক্ষা কৰা হৈছে…</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: সংযোগ হৈছে! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: সংযোগ বিফল হৈছে। ছেটিংছসমূহ পৰীক্ষা কৰক।</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">প্ৰথমে API কি প্ৰৱেশ কৰক</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">সংযোগ পৰীক্ষা কৰক</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">মডেলসমূহ আহৰণ কৰা হৈছে…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">মডেলসমূহ সংগ্ৰহ কৰক</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">এটা মডেল বাছনি কৰক</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">মডেলসমূহ আহৰণ কৰাত বিফল হৈছে। API কী বা সংযোগ পৰীক্ষা কৰক।</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">প্ৰম্পট</string>
   <string name="morphe_music_lyrics_ai_config_model_label">মডেল</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">বেছ URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">চাৰ্ভিচ প্ৰিছেটসমূহ</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">এটা সেৱা বাছনি কৰক</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API কি (ঐচ্ছিক)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">অতিৰিক্ত অনুৰোধ বডী (ঐচ্ছিক JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">অতিৰিক্ত অনুৰোধ হেদাৰ (ঐচ্ছিক JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">নাম আৰু মানবোৰ উদ্ধৃত কৰক, উদাহৰণস্বৰূপে {\"api-key\": \"abc\"}। / : বা সংখ্যা অন্তৰ্গত উদ্ধৃত নকৰা মানটো নাকৰ কৰা হয়। এটা খালী মানৰ দ্বাৰা হেদাৰটো আঁতৰাই দিয়া হয়।</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">নাম আৰু মানবোৰ উদ্ধৃত কৰক, উদাহৰণস্বৰূপে {\"temperature\": 0.3}। / বা : অন্তৰ্গত উদ্ধৃত নকৰা মানটো নাকৰ কৰা হয়। মডেল আৰু বাৰ্তাসমূহ ইয়াত নিৰ্ধাৰণ কৰিব নোৱাৰি।</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">প্ৰমাণীকৰণ কি (Free বা Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - বোল্ড আইকনসমূহ নিষ্ক্ৰিয় কৰক</string>

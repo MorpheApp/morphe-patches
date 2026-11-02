@@ -277,6 +277,9 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_comments_emoji_button_title">Skryť tlačidlo Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Skryť možnosti panela filtrov</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Skryje všetky možnosti panela filtrov okrem položiek \'Najlepšie\' a \'Najnovšie\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Skryť tlačidlo GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Skryť GIF-y a obrázky</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Skryje GIF-y a obrázky priložené k komentárom a odpovediam</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Skryť animáciu a karty darčeka</string>
   <string name="morphe_hide_comments_gift_button_title">Skryť tlačidlo Darovať</string>
   <string name="morphe_hide_comments_info_button_title">Skryť tlačidlo Info</string>
@@ -526,6 +529,7 @@ Exportovacia zložka: %s"</string>
   <string name="morphe_export_download_folder_change">Zmeniť zložku</string>
   <string name="morphe_export_download_folder_changed">Exportovacia zložka bola zmenená</string>
   <string name="morphe_export_download_folder_reset">Exportovacia zložka bola resetovaná</string>
+  <string name="morphe_export_download_folder_missing">Nepodarilo sa nájsť exportný priečinok %s</string>
   <string name="morphe_export_download_flyout_title">Exportovať do zariadenia</string>
   <string name="morphe_export_download_started">Exportovanie videa</string>
   <string name="morphe_export_download_progress">Exportovanie videa: %d%%</string>
@@ -959,7 +963,6 @@ Ak chcete získať prístup k Nastaveniam, povoľte tlačidlo Nastavenia cez Vš
   <string name="morphe_navigation_bar_style_user_dialog_message">Tento štýl nemusí byť podporovaný vaším zariadením alebo verziou YouTube, čo môže spôsobiť problémy s rozložením alebo pády</string>
   <string name="morphe_toolbar_screen_title">Panel nástrojov</string>
   <string name="morphe_toolbar_screen_summary">Vyberte, ktoré komponenty sa zobrazia v lište nástrojov</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Skryť tlačidlo Prenos</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skryť tlačidlo Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Skryť tlačidlo mikrofónu</string>
   <string name="morphe_hide_toolbar_search_button_title">Skryť tlačidlo vyhľadávania</string>
@@ -1015,6 +1018,7 @@ Ak chcete zobraziť menu 'Audio Track', zmeňte 'Spoofovanie video streamov' na 
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Skryť tlačidlo Titulky</string>
   <string name="morphe_hide_cast_button_title">Skryť tlačidlo Prenos</string>
+  <string name="morphe_hide_cast_button_summary">Skryje tlačidlo Cast vo videoprehrávači a v nástrojnom paneli</string>
   <string name="morphe_hide_collapse_button_title">Skryť tlačidlo zbalenia</string>
   <string name="morphe_hide_fullscreen_button_title">Skryť tlačidlo na celú obrazovku</string>
   <string name="morphe_hide_player_control_buttons_background_title">Skryť pozadie tlačidiel prehrávača</string>
@@ -1180,11 +1184,6 @@ Rozloženie pre automobil
 • Vrstva 'Ďalšie videá' nemusí byť k dispozícii
 • Shorts sa otvárajú v bežnom prehrávači
 • Zobrazuje sa nezbalený starý panel akcií videa"</string>
-  <string name="morphe_tablet_layout_in_player_title">Povoliť rozloženie tabletu v prehrávači</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Obnovuje staré rozloženie prehrávača
-
-Obmedzenie: Ak nie je 'Rozloženie akčného panela videa' nastavené na Klasické, prepisovacia vrstva 'Ďalšie videá' nemusí byť k dispozícii"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Obnoviť staré správanie titulkov</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Obnoví staré ukladanie do zoznamu videí</string>
@@ -1546,9 +1545,10 @@ Pri prehrávaní pomocou AV1 sa video môže zasekávať alebo vynechávať sní
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Rozloženie akčného panela videa</string>
   <string name="morphe_video_action_bar_layout_entry_1">Predvolený</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Klasické</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasický jeden riadok</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimalistický</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Obmedzenie: Klasické vráti prepisovaciu vrstvu \'Ďalšie videá\' k starému štýlu</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klasické dva riadky</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Obmedzenie: Klasické rozloženia sa vrátia k starému štýlu vrstvy \"Viac videí\"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Štýl ikony prehrávača</string>
   <string name="morphe_player_icon_style_entry_auto">Automaticky</string>

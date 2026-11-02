@@ -158,6 +158,38 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_track_deleted">ລຶບໄຟລ໌ທີ່ດາວໂຫຼດແລ້ວ</string>
   <string name="morphe_music_downloads_track_delete_failed">ບໍ່ສາມາດລຶບໄຟລ໌ທີ່ດາວໂຫຼດໄດ້</string>
   <string name="morphe_music_downloads_play_failed">ບໍ່ສາມາດຫຼິ້ນໄຟລ໌ທີ່ດາວໂຫຼດໄດ້</string>
+  <string name="morphe_music_downloads_playlists">ລາຍການເພງ</string>
+  <string name="morphe_music_downloads_playlists_section">ລາຍການເພງທີ່ສ້າງຂຶ້ນ (%s)</string>
+  <string name="morphe_music_downloads_playlists_empty">ຍັງບໍ່ມີລາຍການເພງໃນເຄື່ອງ</string>
+  <string name="morphe_music_downloads_playlists_hide">ເຊື່ອງລາຍການເພງ ▲</string>
+  <string name="morphe_music_downloads_playlist_new">+ ລາຍການເພງໃໝ່</string>
+  <string name="morphe_music_downloads_playlist_new_button">ລາຍການເພງໃໝ່</string>
+  <string name="morphe_music_downloads_playlist_selected">ເລືອກແລ້ວ (%s)</string>
+  <string name="morphe_music_downloads_playlist_select_first">ກະລຸນາເລືອກເພງກ່ອນ</string>
+  <string name="morphe_music_downloads_playlist_clear_selection">ລຶບການເລືອກ</string>
+  <string name="morphe_music_downloads_playlist_create">ສ້າງລາຍການເພງ</string>
+  <string name="morphe_music_downloads_playlist_create_button">ສ້າງ</string>
+  <string name="morphe_music_downloads_playlist_add">ເພີ່ມໃນລາຍການຫຼິ້ນ</string>
+  <string name="morphe_music_downloads_playlist_added">ເພີ່ມໃນ %s ແລ້ວ</string>
+  <string name="morphe_music_downloads_playlist_name_hint">ຊື່ລາຍການຫຼິ້ນ</string>
+  <string name="morphe_music_downloads_playlist_name_empty">ຊື່ລາຍການຫຼິ້ນບໍ່ສາມາດປະຫວ່າງໄດ້</string>
+  <string name="morphe_music_downloads_playlist_save_failed">ບໍ່ສາມາດບັນທຶກລາຍການຫຼິ້ນໄດ້</string>
+  <string name="morphe_music_downloads_playlist_track_count">%s ເພງ</string>
+  <string name="morphe_music_downloads_playlist_track_count_one">1 ເພງ</string>
+  <string name="morphe_music_downloads_playlist_no_tracks">ບໍ່ມີເພງໃນລາຍການຫຼິ້ນນີ້</string>
+  <string name="morphe_music_downloads_playlist_play">ຫຼິ້ນລາຍການຫຼິ້ນ</string>
+  <string name="morphe_music_downloads_playlist_play_all">ຫຼິ້ນທັງໝົດ</string>
+  <string name="morphe_music_downloads_playlist_rename">ປ່ຽນຊື່</string>
+  <string name="morphe_music_downloads_playlist_rename_title">ປ່ຽນຊື່ລາຍຊື່ເພງ</string>
+  <string name="morphe_music_downloads_playlist_save">ບັນທຶກ</string>
+  <string name="morphe_music_downloads_playlist_delete">ລຶບລາຍຊື່ເພງ</string>
+  <string name="morphe_music_downloads_playlist_delete_title">ລຶບລາຍຊື່ເພງບໍ?</string>
+  <string name="morphe_music_downloads_playlist_delete_message">%s ຈະຖືກລຶບ. ເພງທີ່ດາວໂຫຼດໄວ້ຈະຍັງຄົງຢູ່</string>
+  <string name="morphe_music_downloads_playlist_deleted">ລຶບລາຍຊື່ເພງແລ້ວ</string>
+  <string name="morphe_music_downloads_playlist_remove_track">ເອົາອອກຈາກລາຍຊື່ເພງ</string>
+  <string name="morphe_music_downloads_playlist_drag_track">ລາກເພື່ອຈັດລຳດັບໃໝ່</string>
+  <string name="morphe_music_downloads_playlist_reorder_hint">%s • ລາກທີ່ປຸ່ມຈັດການເພື່ອຈັດລຳດັບໃໝ່</string>
+  <string name="morphe_music_downloads_playlist_reorder_done">ສຳເລັດ</string>
   <string name="morphe_music_downloads_notification_channel">ດາວໂຫລດສຽງ</string>
   <string name="morphe_music_downloads_playback_channel">ການຫຼິ້ນແບບອອຟລາຍ</string>
   <string name="morphe_music_downloads_unknown_track">ບໍ່ສາມາດລະບຸເພງທີ່ຈະດາວໂຫຼດໄດ້</string>
@@ -206,6 +238,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">ເຊື່ອງຄຳແນະນຳຂອງຊຸມຊົນ</string>
   <string name="morphe_music_hide_comments_context_title">ເຊື່ອງຂໍ້ຄວາມບໍລິບົດ</string>
   <string name="morphe_music_hide_comments_emoji_button_title">ເຊື່ອງປຸ່ມ Emoji</string>
+  <string name="morphe_music_hide_comments_gif_button_title">ເຊື່ອງປຸ່ມ GIF</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_title">ເຊື່ອງ GIF ແລະ ຮູບພາບ</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_summary">ເຊື່ອງ GIF ແລະ ຮູບພາບທີ່ຄັດຕິດກັບຄຳຄິດເຫັນ ແລະ ການຕອບກັບ</string>
   <string name="morphe_music_hide_comments_info_button_title">ເຊື່ອງປຸ່ມຂໍ້ມູນ</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">ເຊື່ອງປຸ່ມປະທັບເວລາ</string>
   <!-- interaction.crossfade.crossfadePatch -->
@@ -465,7 +500,44 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_source_all_disabled">ປິດການນຳໃຊ້ຜູ້ໃຫ້ບໍລິການທັງໝົດ - ເນື້ອເພງໃນຕົວ ແລະ ເນື້ອເພງທີ່ຝັງມາ</string>
   <string name="morphe_music_lyrics_source_reset_title">ຣີເຊັດລຳດັບຜູ້ໃຫ້ບໍລິການ?</string>
   <string name="morphe_music_lyrics_source_reset_message">ຄືນຄ່າຜູ້ໃຫ້ບໍລິການໄປເປັນລຳດັບຄວາມສຳຄັນເລີ່ມຕົ້ນ</string>
+  <string name="morphe_music_lyrics_rime_dict_title">ລາຍຊື່ຄຳສັບ Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist ຍັງຕ້ອງການ UniDict: ໃນຜູ້ໃຫ້ບໍລິການ Offline Dictionary, ໃຫ້ຕິກ \"Chinese and Cantonese characters (UniDict)\" ແລະ ລໍຖ້າໃຫ້ມັນດາວໂຫຼດໃຫ້ສຳເລັດກ່ອນ. ຖ້າບໍ່ມີມັນ, ລາຍການທີ່ອ່ານຕົວອັກສອນຈະບໍ່ມີຜົນການອ່ານ.
+
+ຕິກລາຍການທີ່ Rime Wordlist ຄວນອ່ານ, ຈາກນັ້ນແຕະ ບັນທຶກ ເພື່ອດາວໂຫຼດພວກມັນ. ລາຍການທີ່ທ່ານເພີ່ມຈະຖືກລົບອອກເມື່ອທ່ານຍົກເລີກການຕິກ.
+
+ແຕ່ລະລາຍການແມ່ນຕາຕະລາງຄຳສັບ-ການອ່ານຂອງທ່ານເອງ, ເຊິ່ງເປັນໄຟລ໌ .dict.yaml ທີ່ມີບັນທັດຄືກັບ:
+字 ham
+典 din2
+ຄໍລຳທຳອິດແມ່ນຄຳສັບ, ຄໍລຳທີສອງແມ່ນການອ່ານຂອງມັນ; ຄໍລຳເພີ່ມເຕີມ ແລະ ບັນທັດທີ່ບໍ່ມີ tab ຈະຖືກລະເວັ້ນ."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">ບໍ່ມີລາຍຊື່ຄຳສັບ Rime ທີ່ຖືກໝາຍໄວ້ສຳລັບພາສາດັ່ງກ່າວ. ແຕະທີ່ຊື່ນີ້ເພື່ອໝາຍລາຍການໃດໜຶ່ງ, ຫຼື ເລືອກພາສາທີ່ມີລາຍຊື່</string>
+  <string name="morphe_music_lyrics_rime_dict_add">ເພີ່ມ</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">ເພີ່ມລາຍຊື່ຄຳສັບ Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">ໄຟລ໌ .dict.yaml, ຫຼື ໄຟລ໌ zip ທີ່ບັນຈຸໄຟລ໌ດັ່ງກ່າວ, ທີ່ມີບັນທັດຄືກັບ 字 ham ແລະ 典 din2. ລາຍການຈະຖືກດຶງມາເມື່ອທ່ານຕິກມັນ ແລະ ແຕະ ບັນທຶກ, ແລະ ທ່ານຕ້ອງກວດສອບໃບອະນຸຍາດຂອງມັນດ້ວຍຕົນເອງ</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">ລະຫັດພາສາ</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">ຕົວອັກສອນສອງ ຫຼື ສາມຕົວ, ເຊັ່ນ hak ຫຼື wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">ຊື່</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">ສະແດງຢູ່ພາຍໃຕ້ການອ່ານ, ເຊັ່ນ Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">ທີ່ຢູ່ຂອງລາຍຊື່ຄຳສັບ</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">https:// ທີ່ຢູ່ຂອງ .dict.yaml ຫຼື ໄຟລ໌ zip ຂອງມັນ</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">ຕົວອັກສອນທີ່ບໍ່ຢູ່ໃນຄຳສັບ</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">ອັດຕະໂນມັດ</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">ຕົວອັກສອນກວາງຕຸ້ງ</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">ຕົວອັກສອນແມນດາຣິນ</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">ບໍ່ມີການອ່ານຕົວອັກສອນ</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">ກະລຸນາຕື່ມລະຫັດ, ຊື່ ແລະ ທີ່ຢູ່</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">ລະຫັດຕ້ອງມີສອງ ຫຼື ສາມຕົວອັກສອນ, ເຊັ່ນ hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">ທີ່ຢູ່ຕ້ອງເລີ່ມດ້ວຍ https://</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">ຊື່ ແລະ ທີ່ຢູ່ ບໍ່ສາມາດມີເຄື່ອງໝາຍຂີດຕັ້ງໄດ້</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s ມີຕາຕະລາງຄຳສັບຢູ່ແລ້ວ</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s ຖືກອ່ານໂດຍ romanizer ທີ່ຕິດຕັ້ງມາໃນຕົວ ແລະ ບໍ່ສາມາດໃຊ້ລາຍການຄຳສັບໄດ້</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">ບໍ່ໄດ້ໃຊ້: ພາສານີ້ມີການອ່ານຂອງມັນເອງຢູ່ແລ້ວ, ດັ່ງນັ້ນ ໃຫ້ຍົກເລີກການໝາຍຕິກເພື່ອລຶບມັນອອກ</string>
+  <string name="morphe_music_lyrics_rime_dict_added">ເພີ່ມ %1$s ແລ້ວ - ໝາຍຕິກ ແລະ ແຕະ ບັນທຶກ ເພື່ອດາວໂຫຼດ</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">ລາຍການຄຳສັບພ້ອມແລ້ວ</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">ລາຍການຄຳສັບພ້ອມແລ້ວ (%1$d ລາຍການ)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">ກຳລັງອ່ານລາຍການຄຳສັບ: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">ການດາວໂຫຼດລາຍການຄຳສັບລົ້ມເຫຼວ - ແຕະ ບັນທຶກ ອີກຄັ້ງເພື່ອລອງໃໝ່</string>
   <string name="morphe_music_lyrics_clear_cache_title">ລຶບເນື້ອເພງທີ່ບັນທຶກໄວ້</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">ລຶບເນື້ອເພງຂະໜາດ %1$s MB ທີ່ເກັບໄວ້ໃນອຸປະກອນນີ້</string>
   <string name="morphe_music_lyrics_clear_cache_done">ລຶບແລ້ວ %1$s MB</string>
   <string name="morphe_music_token_dialog_get_token">ຮັບໂທເຄັນ</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
@@ -525,9 +597,22 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_copy_button_title">ສະແດງປຸ່ມຄັດລອກ</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">ແຕະເພື່ອຄັດລອກເນື້ອເພງຕົ້ນສະບັບເປັນຂໍ້ຄວາມທຳມະດາ; ກົດຄ້າງໄວ້ເພື່ອບັນທຶກໄຟລ໌ແຫຼ່ງເນື້ອເພງດິບລົງໃນ Downloads</string>
   <string name="morphe_music_lyrics_show_translate_button_title">ສະແດງປຸ່ມແປ</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">ແຕະເພື່ອສະຫຼັບການແປ; ກົດຄ້າງໄວ້ເພື່ອໃຫ້ສະແດງສະເພາະການແປ. ໃຊ້ຜູ້ໃຫ້ບໍລິການແປພາສາທີ່ເປີດໃຊ້ງານຕາມລໍາດັບທີ່ລະບຸໄວ້</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">ສະແດງປຸ່ມ Romanize ຫຼື Transliterate</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">ແຕະເພື່ອສະຫຼັບການທຳເປັນອັກສອນໂຣມັນ ຫຼື ການຖອດອັກສອນ; ກົດຄ້າງໄວ້ເພື່ອໃຫ້ສະແດງສະເພາະການທຳເປັນອັກສອນໂຣມັນ ຫຼື ການຖອດອັກສອນ. ໃຊ້ຜູ້ໃຫ້ບໍລິການ Romanization ທີ່ເປີດໃຊ້ງານຕາມລໍາດັບທີ່ລະບຸໄວ້</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">ເປີດໃຊ້ການຖອດອັກສອນ</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">ອະນຸຍາດໃຫ້ມີການອ່ານທີ່ບໍ່ແມ່ນອັກສອນລະຕິນຈາກແຫຼ່ງເນື້ອເພງ; ເມື່ອປິດ, ຈະເກັບໄວ້ສະເພາະຕົວອັກສອນລະຕິນ, ຕົວອັກສອນທີ່ມີເຄື່ອງໝາຍກຳກັບ ແລະ ຕົວເລກບອກສຽງວັນນະຍຸດ</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">ອ່ານແຕ່ລະຄຳຂອງເນື້ອເພງແບບກຳນົດເວລາ (ເປີດການຊິງຄ໌ຄຳ); ພາສາເກົາຫຼີບໍ່ຈຳເປັນຕ້ອງດາວໂຫຼດ; ສິບສີ່ລະບົບການຂຽນໃຊ້ການດາວໂຫຼດ CLDR ຮ່ວມກັນ; ຕົວອັກສອນ Han ຖືກອ່ານໂດຍ Rime Wordlist ເມື່ອຕາຕະລາງຄຳສັບຂອງມັນຄອບຄຸມພາສານັ້ນ</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">ກຳລັງດາວໂຫຼດວັດຈະນານຸກົມການອ່ານ…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">ການອ່ານພ້ອມແລ້ວ (%1$d ລາຍການ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">ການດາວໂຫລດລົ້ມເຫຼວ - ໃຫ້ປິດ ແລະ ເປີດສິ່ງນີ້ອີກຄັ້ງເພື່ອລອງໃໝ່</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">ວັດຈະນານຸກົມແບບອອຟລາຍ</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">ພາສາຢີ່ປຸ່ນ (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">ຕົວອັກສອນຈີນ ແລະ ກວາງຕຸ້ງ (UniDict, ~8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">ຄຳສັບພາສາຈີນ (pinyin-pro, ~17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">ການທັບສັບພາສາກຣີກ, ສະລາວິກ ຊີຣິລລິກ (ລວມທັງ ຣັດເຊຍ, ຢູເຄຣນ, ບູນກາຣີ, ເຊີບີບີອາ, ເບລາຣູສ, ມາເຊໂດເນຍ), 喬ージຍາ, ອາກເມນຍາ, ເຮບຣູ, ອາຣັບ, ອຳဟာຣິກ ແລະ ຊີຣີອັກ (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">ກຳລັງອ່ານ %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">ກະລຸນາເລືອກຢ່າງໜ້ອຍໜຶ່ງວັດຈະນານຸກົມ</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">ສະແດງປຸ່ມ Refresh</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">ແຕະເພື່ອປ່ຽນໄປຫາເນື້ອເພງອື່ນທີ່ເປັນໄປໄດ້; ແຕະຄ້າງໄວ້ເພື່ອຄົ້ນຫາເນື້ອເພງຕາມຊື່ເພງ ແລະ ສິລະປິນ</string>
   <string name="morphe_music_lyrics_search_dialog_title">ຄົ້ນຫາເນື້ອເພງ</string>
@@ -538,6 +623,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_saved">ບັນທຶກແລ້ວ</string>
   <string name="morphe_music_lyrics_word_sync_title">ເນັ້ນຄຳສັບ ຫຼື ພະຍາງທີ່ຊິງຄ໌ແລ້ວ</string>
   <string name="morphe_music_lyrics_word_sync_summary">ໃຫ້ບຸລິມະສິດແກ່ເນື້ອເພງແບບຄຳຕໍ່ຄຳເມື່ອມີໃຫ້. ເມື່ອເນື້ອເພງມີການກຳນົດເວລາຂອງຄຳສັບ, ມັນຈະເນັ້ນແຕ່ລະຄຳ ຫຼື ພະຍາງໃຫ້ຕົງກັບຈັງຫວະເພງ</string>
+  <string name="morphe_music_lyrics_line_scale_title">ຫຍໍ້ແຖວທີ່ບໍ່ໄດ້ໃຊ້ງານ</string>
+  <string name="morphe_music_lyrics_line_scale_summary">ແຕ້ມທຸກໆແຖວທີ່ບໍ່ໄດ້ກຳລັງຮ້ອງຢູ່ໃນປະຈຸບັນໃຫ້ມີຂະໜາດນ້ອຍລົງເລັກນ້ອຍ, ພ້ອມທັງເຮັດໃຫ້ມັນມົວລົງ</string>
+  <string name="morphe_music_lyrics_split_background_title">ສະແດງສຽງຮ້ອງພື້ນຫຼັງແຍກຕ່າງຫາກ</string>
+  <string name="morphe_music_lyrics_split_background_summary">ແຍກສຽງຮ້ອງພື້ນຫຼັງ ແລະ ສຽງປະສານ ອອກຈາກແຖວຫຼັກ. ຍ້າຍສຽງຮ້ອງພື້ນຫຼັງທີ່ຂຽນໃນວົງເລັບ, ເຊັ່ນ \"(Oh) I want you\", ອອກຈາກແຖວທີ່ຮ້ອງ ໄປສູ່ແຖວທີ່ມົວລົງຂອງມັນເອງ</string>
   <string name="morphe_music_lyrics_hide_played_title">ເຊື່ອງເນື້ອເພງທີ່ຫຼິ້ນຜ່ານໄປແລ້ວ</string>
   <string name="morphe_music_lyrics_hide_played_summary">ເຊື່ອງແຖວເນື້ອເພງທີ່ຢູ່ເໜືອແຖວທີ່ກຳລັງຫຼິ້ນຢູ່</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">ເຊື່ອງເນື້ອເພງທີ່ຍັງບໍ່ທັນໄດ້ຫຼິ້ນ</string>
@@ -595,9 +684,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_ai">ແປໂດຍ %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">ທຳນອງອັກສອນໂລມັນໂດຍ %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">ຖອດລະຫັດເປັນອັກສອນໂຣມັນໂດຍ %s</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">ຖອດເປັນອັກສອນໂຣມັນໂດຍ Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">ແປແລ້ວ</string>
   <string name="morphe_music_lyrics_translation_language_title">ພາສາໃນການແປ</string>
+  <string name="morphe_music_lyrics_romanize_language_title">ພາສາການຖອດເປັນອັກສອນໂຣມັນ ຫຼື ການທັບສັບ</string>
+  <string name="morphe_music_lyrics_translation_target_language">"ພາສາເປົ້າໝາຍໃນການແປ:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"ພາສາເປົ້າໝາຍໃນການຂຽນທັບສັບ ຫຼື ຖອດສຽງ:
+%s"</string>
   <string name="morphe_music_lyrics_translating">ກຳລັງແປ…</string>
   <string name="morphe_music_lyrics_translate_failed">ບໍ່ສາມາດແປເນື້ອເພງໄດ້</string>
   <string name="morphe_music_lyrics_romanize_hide">ຖອດສຽງເປັນອັກສອນໂຣມັນ</string>
@@ -611,6 +706,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_refreshing">ກຳລັງຣີເຟຣຊ</string>
   <string name="morphe_music_lyrics_refreshed">ຣີເຟຣຊແລ້ວ</string>
   <string name="morphe_music_lyrics_transcribe_key_title">ຄີ API ຂອງ QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC ຖອດຄວາມ ຫຼື ປັບເວລາຂອງເນື້ອເພງໃຫ້ກົງກັບແທຣັກປະຈຸບັນ</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">ບັນທຶກຄີ QuickLRC ແລ້ວ. ໃຊ້ປຸ່ມ align ໃນບ່ອນຄົ້ນຫາເນື້ອເພງ, ຫຼື ໃຊ້ຄຳແນະນຳໃນແຜງຄວບຄຸມເມື່ອແທຣັກບໍ່ມີເນື້ອເພງ</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">ບັນທຶກຄີ API ຂອງ QuickLRC ແລ້ວ</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC ບໍ່ຍອມຮັບຄີນີ້</string>
@@ -626,10 +722,24 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_transcribe_no_text">ບໍ່ມີເນື້ອເພງທີ່ຈະຈັດຕຳແໜງ - ຈະປ່ຽນເປັນການຖອດສຽງແທນ</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC ບໍ່ສາມາດປະມວນຜົນເພງນີ້ໄດ້</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">ເຄຣດິດ QuickLRC ສໍາລັບເພງນີ້ໄດ້ໝົດແລ້ວ</string>
+  <string name="morphe_music_lyrics_about_summary">"ເນື້ອເພງຖືກຈັບຄູ່ໂດຍຫົວຂໍ້ ແລະ ສິລະປິນ, ຂໍ້ມູນເມຕາທີ່ຜິດປົກກະຕິອາດຈະບໍ່ພົບຫຍັງເລີຍ ຫຼື ພົບເວີຊັນທີ່ຜິດ. ໃຊ້ການຣີເຟຣຊເພື່ອປ່ຽນເວີຊັນ. ຜູ້ໃຫ້ບໍລິການທີ່ໝາຍ * ຕ້ອງມີໂທເຄັນ. ຜູ້ໃຫ້ບໍລິການທີ່ເປີດໃຊ້ງານທັງໝົດຈະບໍ່ຖືກຮ້ອງຂໍຕາມລຳດັບຂອງທ່ານສະເໝີ, ແຕ່ຈະຕອບສະໜອງຕາມຄວາມໄວຂອງພວກເຂົາ.
+
+ເນື້ອເພງມາຈາກບໍລິການຂອງບຸກຄົນທີສາມທີ່ບໍ່ມີສ່ວນກ່ຽວຂ້ອງ, ບໍ່ໄດ້ຮັບການອຸປະຖຳ, ຫຼື ຮັບຮອງໂດຍ Morphe. ແຕ່ລະບໍລິການຖືກນຳໃຊ້ຕາມສະພາບທີ່ເປັນຢູ່: ເນື້ອເພງ, ຄວາມພ້ອມໃນການນຳໃຊ້, ແລະ ການອອກໃບອະນຸຍາດແມ່ນຂຶ້ນກັບບໍລິການເຫຼົ່ານັ້ນ ແລະ ຜູ້ອອກໃບອະນຸຍາດຂອງພວກເຂົາ, ແລະ ການນຳໃຊ້ພວກເຂົາອາດຈະຢູ່ພາຍໃຕ້ເງື່ອນໄຂການບໍລິການຂອງພວກເຂົາ. ສິ່ງທີ່ສົ່ງໄປຫາບໍລິການທີ່ເປີດໃຊ້ງານແມ່ນມີພຽງແຕ່ການຄົ້ນຫາທີ່ທ່ານຮ້ອງຂໍ - ຫົວຂໍ້, ສິລະປິນ, ແລະ ໄອດີວິດີໂອ ໃນກໍລະນີທີ່ບໍລິການນັ້ນຕ້ອງການ. ຈຸດປາຍ AI ທີ່ເປັນທາງເລືອກ ແລະ ການຖອດສຽງ QuickLRC ຈະເຮັດວຽກຫຼັງຈາກທີ່ທ່ານຕັ້ງຄ່າພວກມັນເທົ່ານັ້ນ, ແລະ ຈະໄດ້ຮັບຂໍ້ຄວາມເນື້ອເພງ ຫຼື URL ວິດີໂອຂອງແທຣັກນັ້ນ."</string>
   <string name="morphe_music_lyrics_source_advice_summary">ເປີດໃຊ້ງານສະເພາະຜູ້ໃຫ້ບໍລິການທີ່ທ່ານໃຊ້, ຫຼື ໃຊ້ຄ່າເລີ່ມຕົ້ນ - ການຮ້ອງຂໍຢ່າງຕໍ່ເນື່ອງອາດເຮັດໃຫ້ເວັບໄຊເນື້ອເພງຂອງຊຸມຊົນຂະໜາດນ້ອຍເຮັດວຽກໜັກເກີນໄປ</string>
   <string name="morphe_music_lyrics_hide_info_title">ເຊື່ອງແຖວໃຫ້ເຄຣດິດ</string>
   <string name="morphe_music_lyrics_hide_info_summary">ເຊື່ອງແຖວໃຫ້ເຄຣດິດທີ່ສະແດງຢູ່ລຸ່ມເນື້ອເພງ</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">ສະຫຼັບການແປ ແລະ ການຖອດສຽງ</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ເປີດ ຈະວາງການຖອດເປັນອັກສອນໂຣມັນ ຫຼື ການທັບສັບໄວ້ລຸ່ມເນື້ອເພງ ແລະ ວາງຄຳແປໄວ້ດ້ານເທິງ; ປິດ ຈະຮັກສາການຖອດເປັນອັກສອນໂຣມັນ ຫຼື ການທັບສັບໄວ້ດ້ານເທິງ ແລະ ຄຳແປໄວ້ດ້ານລຸ່ມ. ການອ່ານທີ່ວາງໄວ້ເທິງແຕ່ລະພະຍາງຈະຍ້າຍໄປພ້ອມກັບມັນ, ຈາກດ້ານເທິງພະຍາງໄປສູ່ດ້ານລຸ່ມ</string>
+  <string name="morphe_music_lyrics_force_center_title">ໃຫ້ເນື້ອເພງຢູ່ເຄິ່ງກາງສະເໝີ</string>
+  <string name="morphe_music_lyrics_force_center_summary">ເປີດ ຈະວາງທຸກແຖວໄວ້ເຄິ່ງກາງ ແລະ ບໍ່ສົນໃຈການຈັດວາງຂອງແຫຼ່ງທີ່ມາ, ລວມທັງດ້ານຂອງ duet; ပິດ ຈະຮັກສາການຈັດວາງຕາມທີ່ເນື້ອເພງກຳນົດໄວ້</string>
+  <string name="morphe_music_lyrics_providers_keep_one">ຕ້ອງມີຜູ້ໃຫ້ບໍລິການຢ່າງໜ້ອຍໜຶ່ງລາຍທີ່ເປີດໄວ້</string>
+  <string name="morphe_music_lyrics_translation_provider_title">ການແປ</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">ການຖອດສຽງເປັນອັກສອນໂຣມັນ ຫຼື ການທັບສັບ</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">ວັດຈະນານຸກົມອອຟລາຍ</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">ລາຍການຄຳສັບ Rime</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">ກວດຫາພາກສ່ວນດ້ວຍ AI</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">ໃຊ້ສະເພາະໃນກໍລະນີທີ່ຜູ້ໃຫ້ບໍລິການບໍ່ໄດ້ສົ່ງປ້າຍກຳກັບພາກສ່ວນ ເຊັ່ນ Chorus ຫຼື Verse, ເຊິ່ງໂມເດລທີ່ເຂົ້າກັນໄດ້ກັບ OpenAI ຂອງທ່ານຈະກວດຫາໃຫ້. ການແກ້ໄຂແຖວນີ້ຍັງຈະເປີດ prompt ຂອງມັນນຳອີກ</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL ຂອງ API endpoint (ຕົວຢ່າງ https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">ແມັອບແບບພຣອມພ໌</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">ຕົວແທນ: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">ບັນທຶກພຣອມພ໌ແລ້ວ</string>
@@ -638,14 +748,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">ບັນທຶກການຕັ້ງຄ່າການແປ &amp; ການທັບສັບແລ້ວ</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">ຣີເຊັດການຕັ້ງຄ່າເປັນຄ່າເລີ່ມຕົ້ນແລ້ວ</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Base URL ຕ້ອງເລີ່ມຕົ້ນດ້ວຍ http:// ຫຼື https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">ການຕັ້ງຄ່າບໍ່ສົມບູນ ຫຼື ຖືກປະຕິເສດໂດຍຜູ້ໃຫ້ບໍລິການ</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">ກຳລັງກວດສອບການເຊື່ອມຕໍ່…</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: ເຊື່ອມຕໍ່ແລ້ວ! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: ການເຊື່ອມຕໍ່ລົ້ມເຫຼວ. ກະລຸນາກວດສອບການຕັ້ງຄ່າ.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">ກະລຸນາປ້ອນ API key ກ່ອນ</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">ທົດສອບການເຊື່ອມຕໍ່</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">ກຳລັງດຶງຂໍ້ມູນໂມເດລ…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">ດຶງຂໍ້ມູນໂມເດລ</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">ເລືອກໂມເດລ</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">ດຶງຂໍ້ມູນໂມເດລບໍ່ສຳເລັດ. ກະລຸນາກວດສອບ API key ຫຼື ການເຊື່ອມຕໍ່.</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">ຄຳສັ່ງ (Prompt)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">ໂມເດລ</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Base URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">ການຕັ້ງຄ່າລ່ວງໜ້າຂອງບໍລິການ</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">ເລືອກບໍລິການ</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">ລະຫັດ API key (ທາງເລືອກ)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">ເນື້ອໃນການຮ້ອງຂໍເພີ່ມເຕີມ (JSON ທາງເລືອກ)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">Request headers ເພີ່ມເຕີມ (JSON ທາງເລືອກ)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">ໃສ່ເຄື່ອງໝາຍຄຳເວົ້າໃຫ້ຊື່ ແລະ ຄ່າ, ຕົວຢ່າງ {\"api-key\": \"abc\"}. ຄ່າທີ່ບໍ່ມີເຄື່ອງໝາຍຄຳເວົ້າເຊິ່ງມີ / : ຫຼື ຕົວເລກ ຈະຖືກປະຕິເສດ. ຄ່າທີ່ວ່າງເປົ່າຈະເປັນການລົບ header ອອກ.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">ໃສ່ເຄື່ອງໝາຍຄຳເວົ້າໃຫ້ຊື່ ແລະ ຄ່າ, ຕົວຢ່າງ {\"temperature\": 0.3}. ຄ່າທີ່ບໍ່ມີເຄື່ອງໝາຍຄຳເວົ້າເຊິ່ງມີ / ຫຼື : ຈະຖືກປະຕິເສດ. Model ແລະ ຂໍ້ຄວາມ ບໍ່ສາມາດຕັ້ງຄ່າໄດ້ຢູ່ທີ່ນີ້.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">ລະຫັດຢືນຢັນຕົວຕົນ (ຟຣີ ຫຼື Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - ປິດການໃຊ້ງານໄອຄອນຕົວເຂັ້ມ</string>

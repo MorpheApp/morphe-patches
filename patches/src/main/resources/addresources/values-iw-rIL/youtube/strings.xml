@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">הסתר לחצן אימוג\'י</string>
   <string name="morphe_hide_comments_filter_bar_options_title">הסתר אפשרויות של סרגל הפילטרים</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">מסתיר את כל אפשרויות סרגל הפילטרים למעט \'המומלצים ביותר\' ו\'החדשים ביותר\'</string>
+  <string name="morphe_hide_comments_gif_button_title">הסתר לחצן GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">הסתר GIF-ים ותמונות</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">מסתיר GIF-ים ותמונות המצורפים לתגובות ומענים</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">הסתר הנפשת מתנה וכרטיסים</string>
   <string name="morphe_hide_comments_gift_button_title">הסתר כפתור מתנה</string>
   <string name="morphe_hide_comments_info_button_title">הסתר לחצן מידע</string>
@@ -526,6 +529,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">שינוי תיקייה</string>
   <string name="morphe_export_download_folder_changed">תיקיית הייצוא שונתה</string>
   <string name="morphe_export_download_folder_reset">תיקיית הייצוא אופסה</string>
+  <string name="morphe_export_download_folder_missing">לא ניתן למצוא את תיקיית הייצוא %s</string>
   <string name="morphe_export_download_flyout_title">ייצוא למכשיר</string>
   <string name="morphe_export_download_started">מייצא סרטון</string>
   <string name="morphe_export_download_progress">מייצא סרטון: %d%%</string>
@@ -959,7 +963,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">סגנון זה עשוי שלא להיות נתמך על ידי המכשיר שלך או גרסת ה-YouTube, ועלול לגרום לבעיות פריסה או לקריסות</string>
   <string name="morphe_toolbar_screen_title">סרגל כלים</string>
   <string name="morphe_toolbar_screen_summary">בחר אילו רכיבים יופיעו בסרגל הכלים</string>
-  <string name="morphe_hide_toolbar_cast_button_title">הסתר לחצן העברה</string>
   <string name="morphe_hide_toolbar_chat_button_title">הסתר לחצן צ\'אט</string>
   <string name="morphe_hide_toolbar_microphone_button_title">הסתר כפתור מיקרופון</string>
   <string name="morphe_hide_toolbar_search_button_title">הסתר כפתור חיפוש</string>
@@ -1015,6 +1018,7 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">הסתר לחצן כתוביות</string>
   <string name="morphe_hide_cast_button_title">הסתר לחצן העברה</string>
+  <string name="morphe_hide_cast_button_summary">מסתיר את לחצן ה-Cast בנגן הווידאו ובסרגל הכלים</string>
   <string name="morphe_hide_collapse_button_title">הסתר כפתור קריסה</string>
   <string name="morphe_hide_fullscreen_button_title">הסתר כפתור מסך מלא</string>
   <string name="morphe_hide_player_control_buttons_background_title">הסתר רקע פקדי הנגן</string>
@@ -1180,11 +1184,6 @@ Second \"item\" text"</string>
 • ייתכן ששכבת העל 'סרטונים נוספים' לא תהיה זמינה
 • סרטונים קצרים נפתחים בנגן הרגיל
 • יישור הפעולה הישן לא המקופל של הסרטון מוצג"</string>
-  <string name="morphe_tablet_layout_in_player_title">הפעל פריסת טאבלט בנגן</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"משחזר את פריסת הנגן הישנה
-
-מגבלה: אם \"פריסת סרגל פעולות של סרטון\" אינה קלאסית, ייתכן ששכבת \"סרטונים נוספים\" לא תהיה זמינה"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - שחזור התנהגות הכתוביות הישנה</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - שחזר שפופרות ישנות לפלייליסט</string>
@@ -1546,9 +1545,10 @@ AVC (H.264)
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">פריסת סרגל פעולות של סרטון</string>
   <string name="morphe_video_action_bar_layout_entry_1">ברירת מחדל</string>
-  <string name="morphe_video_action_bar_layout_entry_2">קלאסי</string>
+  <string name="morphe_video_action_bar_layout_entry_2">שורת קלאסיק אחת</string>
   <string name="morphe_video_action_bar_layout_entry_3">מינימלי</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">מגבלה: מצב קלאסי מחזיר את שכבת \"סרטונים נוספים\" לסגנון הישן</string>
+  <string name="morphe_video_action_bar_layout_entry_4">שתי שורות קלאסיק</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">מגבלה: פריסות קלאסיות חוזרות לסגנון הישן של שכבת \'סרטונים נוספים\'</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">סגנון סמל הנגן</string>
   <string name="morphe_player_icon_style_entry_auto">אוטומטי</string>

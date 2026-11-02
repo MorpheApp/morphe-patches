@@ -26,10 +26,45 @@ Second \"item\" text"</string>
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_music_downloads_summary">%1$s பாடல்கள் • %2$s MB</string>
+  <string name="morphe_music_downloads_playlists">பிளேலிஸ்ட்டுகள்</string>
+  <string name="morphe_music_downloads_playlists_section">உருவாக்கப்பட்ட பிளேலிஸ்ட்டுகள் (%s)</string>
+  <string name="morphe_music_downloads_playlists_empty">உள்ளூர் பிளேலிஸ்ட்டுகள் எதுவும் இல்லை</string>
+  <string name="morphe_music_downloads_playlists_hide">பிளேலிஸ்ட்டுகளை மறைக்கவும் ▲</string>
+  <string name="morphe_music_downloads_playlist_new">+ புதிய பிளேலிஸ்ட்</string>
+  <string name="morphe_music_downloads_playlist_new_button">புதிய பிளேலிஸ்ட்</string>
+  <string name="morphe_music_downloads_playlist_selected">தேர்ந்தெடுக்கப்பட்டது (%s)</string>
+  <string name="morphe_music_downloads_playlist_select_first">முதலில் பாடல்களைத் தேர்ந்தெடுக்கவும்</string>
+  <string name="morphe_music_downloads_playlist_clear_selection">தேர்வை நீக்கவும்</string>
+  <string name="morphe_music_downloads_playlist_create">பிளேலிஸ்ட்டை உருவாக்கவும்</string>
+  <string name="morphe_music_downloads_playlist_create_button">உருவாக்கு</string>
+  <string name="morphe_music_downloads_playlist_add">प्लेலிஸ்ட்டில் சேர்க்கவும்</string>
+  <string name="morphe_music_downloads_playlist_added">%s-ல் சேர்க்கப்பட்டது</string>
+  <string name="morphe_music_downloads_playlist_name_hint">प्लेலிஸ்ட் பெயர்</string>
+  <string name="morphe_music_downloads_playlist_name_empty">प्लेலிஸ்ட் பெயர் காலியாக இருக்கக்கூடாது</string>
+  <string name="morphe_music_downloads_playlist_save_failed">प्लेலிஸ்ட்டைச் சேமிக்க முடியவில்லை</string>
+  <string name="morphe_music_downloads_playlist_track_count">%s டிரேக்குகள்</string>
+  <string name="morphe_music_downloads_playlist_track_count_one">1 டிரேக்</string>
+  <string name="morphe_music_downloads_playlist_no_tracks">இந்த பிளேலிஸ்ட்டில் டிரேக்குகள் எதுவும் இல்லை</string>
+  <string name="morphe_music_downloads_playlist_play">प्लेலிஸ்ட்டை இயக்கவும்</string>
+  <string name="morphe_music_downloads_playlist_play_all">அனைத்தையும் இயக்கவும்</string>
+  <string name="morphe_music_downloads_playlist_rename">பெயரை மாற்று</string>
+  <string name="morphe_music_downloads_playlist_rename_title">பிளேலிஸ்டை மறுபெயரிடு</string>
+  <string name="morphe_music_downloads_playlist_save">சேமி</string>
+  <string name="morphe_music_downloads_playlist_delete">பிளேலிஸ்டை நீக்கு</string>
+  <string name="morphe_music_downloads_playlist_delete_title">பிளேலிஸ்டை நீக்க வேண்டுமா?</string>
+  <string name="morphe_music_downloads_playlist_delete_message">%s நீக்கப்படும். பதிவிறக்கம் செய்யப்பட்ட பாடல்கள் அப்படியே இருக்கும்</string>
+  <string name="morphe_music_downloads_playlist_deleted">பிளேலிஸ்ட் நீக்கப்பட்டது</string>
+  <string name="morphe_music_downloads_playlist_remove_track">பிளேலிஸ்டிலிருந்து நீக்கு</string>
+  <string name="morphe_music_downloads_playlist_drag_track">வரிசையை மாற்ற இழுக்கவும்</string>
+  <string name="morphe_music_downloads_playlist_reorder_hint">%s • வரிசையை மாற்ற இழுக்கவும்</string>
+  <string name="morphe_music_downloads_playlist_reorder_done">முடிந்தது</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- ad.hideAdsPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_comments_gif_button_title">GIF பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_title">GIF-கள் மற்றும் படங்களை மறைக்கவும்</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_summary">கருத்துகள் மற்றும் பதில்களில் இணைக்கப்பட்டுள்ள GIF-கள் மற்றும் படங்களை மறைக்கும்</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <!-- Empty string because custom preference handles the title itself -->
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->

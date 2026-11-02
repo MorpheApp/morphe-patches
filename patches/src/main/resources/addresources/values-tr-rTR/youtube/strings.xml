@@ -278,6 +278,9 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_comments_emoji_button_title">Emoji düğmesini gizle</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Filtre çubuğu seçeneklerini gizle</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'En popüler\' ve \'En yeni\' dışındaki tüm filtre çubuğu seçeneklerini gizler</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF düğmesini gizle</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF ve görselleri gizle</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Yorumlara ve yanıtlara ekli GIF ve görselleri gizler</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Hediye animasyonunu ve kartlarını gizle</string>
   <string name="morphe_hide_comments_gift_button_title">Hediye düğmesini gizle</string>
   <string name="morphe_hide_comments_info_button_title">Bilgi düğmesini gizle</string>
@@ -527,6 +530,7 @@ Dışa aktarma klasörü: %s"</string>
   <string name="morphe_export_download_folder_change">Klasörü değiştir</string>
   <string name="morphe_export_download_folder_changed">Dışa aktarma klasörü değiştirildi</string>
   <string name="morphe_export_download_folder_reset">Dışa aktarma klasörü sıfırlandı</string>
+  <string name="morphe_export_download_folder_missing">Dışa aktarma klasörü %s bulunamadı</string>
   <string name="morphe_export_download_flyout_title">Cihaza dışa aktar</string>
   <string name="morphe_export_download_started">Video dışa aktarılıyor</string>
   <string name="morphe_export_download_progress">Video dışa aktarılıyor: %d%%</string>
@@ -960,7 +964,6 @@ Ayarlar'a erişmek için Ayarlar düğmesini Genel → Araç Çubuğu → Ayarla
   <string name="morphe_navigation_bar_style_user_dialog_message">Bu stil, cihazınız veya YouTube sürümünüz tarafından desteklenmiyor olabilir; bu durum yerleşim sorunlarına veya çökmelere neden olabilir</string>
   <string name="morphe_toolbar_screen_title">Araç Çubuğu</string>
   <string name="morphe_toolbar_screen_summary">Araç çubuğunda hangi bileşenlerin görüneceğini seçin</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Yayınla düğmesini gizle</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sohbet düğmesini gizle</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Mikrofon düğmesini gizle</string>
   <string name="morphe_hide_toolbar_search_button_title">Arama düğmesini gizle</string>
@@ -1016,6 +1019,7 @@ Ayarlar'a erişmek için Ayarlar düğmesini Genel → Araç Çubuğu → Ayarla
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Altyazılar düğmesini gizle</string>
   <string name="morphe_hide_cast_button_title">Yayınla düğmesini gizle</string>
+  <string name="morphe_hide_cast_button_summary">Video oynatıcısı ve araç çubuğundaki Yayınlama düğmesini gizler</string>
   <string name="morphe_hide_collapse_button_title">Daraltma düğmesini gizle</string>
   <string name="morphe_hide_fullscreen_button_title">Tam ekran düğmesini gizle</string>
   <string name="morphe_hide_player_control_buttons_background_title">Oynatıcı kontrolleri arka planını gizle</string>
@@ -1181,11 +1185,6 @@ Otomotiv düzeni
 • 'Daha fazla video' paneli kullanılamayabilir
 • Shorts, normal oynatıcıda açılır
 • Daraltılmamış eski video eylem çubuğu gösterilir"</string>
-  <string name="morphe_tablet_layout_in_player_title">Oynatıcıda tablet düzenini etkinleştir</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Eski oynatıcı düzenini geri yükler
-
-Sınırlama: 'Video eylem çubuğu düzeni' Klasik değilse, 'Daha fazla video' katmanı kullanılamayabilir"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Eski altyazı davranışını geri yükle</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Oynatma listesine kaydetme için eski düzeni geri getir</string>
@@ -1548,9 +1547,10 @@ AV1 ile video oynatma takılabilir veya kare atlayabilir"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Video eylem çubuğu düzeni</string>
   <string name="morphe_video_action_bar_layout_entry_1">Varsayılan</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Klasik</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasik Tek Satır</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimalist</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Sınırlama: Klasik, eski stil \'Daha fazla video\' katmanına geri döner</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klasik İki Satır</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Kısıtlama: Klasik düzen, eski tip \'Daha fazla video\' paneline geri döner</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Oynatıcı simge stili</string>
   <string name="morphe_player_icon_style_entry_auto">Otomatik</string>

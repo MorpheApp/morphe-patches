@@ -277,6 +277,9 @@ Các thay đổi bao gồm:
   <string name="morphe_hide_comments_emoji_button_title">Ẩn nút Biểu tượng cảm xúc</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Ẩn các tùy chọn thanh bộ lọc</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Ẩn tất cả các tùy chọn sắp xếp bình luận ngoại trừ \'Nổi bật nhất\' và \'Mới nhất\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Ẩn nút GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Ẩn GIF và hình ảnh</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Ẩn các GIF và hình ảnh đính kèm trong bình luận và phản hồi</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Ẩn hiệu ứng và danh sách quà tặng</string>
   <string name="morphe_hide_comments_gift_button_title">Ẩn nút Quà tặng</string>
   <string name="morphe_hide_comments_info_button_title">Ẩn nút Thông tin</string>
@@ -526,6 +529,7 @@ Thư mục xuất: %s"</string>
   <string name="morphe_export_download_folder_change">Thay đổi thư mục</string>
   <string name="morphe_export_download_folder_changed">Đã thay đổi thư mục xuất</string>
   <string name="morphe_export_download_folder_reset">Đã đặt lại thư mục xuất</string>
+  <string name="morphe_export_download_folder_missing">Không tìm thấy thư mục xuất %s</string>
   <string name="morphe_export_download_flyout_title">Xuất sang thiết bị</string>
   <string name="morphe_export_download_started">Đang xuất video</string>
   <string name="morphe_export_download_progress">Đang xuất video: %d%%</string>
@@ -959,7 +963,6 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Kiểu này có thể không được thiết bị hoặc phiên bản YouTube của bạn hỗ trợ, và có thể gây ra sự cố bố cục hoặc treo ứng dụng</string>
   <string name="morphe_toolbar_screen_title">Thanh công cụ</string>
   <string name="morphe_toolbar_screen_summary">Chọn những thành phần sẽ xuất hiện trên thanh công cụ</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Ẩn nút truyền</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ẩn nút Trò chuyện</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ẩn nút Micro</string>
   <string name="morphe_hide_toolbar_search_button_title">Ẩn nút Tìm kiếm</string>
@@ -1015,6 +1018,7 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Ẩn nút Phụ đề</string>
   <string name="morphe_hide_cast_button_title">Ẩn nút truyền</string>
+  <string name="morphe_hide_cast_button_summary">Ẩn nút Truyền trong trình phát video và thanh công cụ</string>
   <string name="morphe_hide_collapse_button_title">Ẩn nút Thu nhỏ trình phát</string>
   <string name="morphe_hide_fullscreen_button_title">Ẩn nút Toàn màn hình</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ẩn nền điều khiển trình phát</string>
@@ -1180,11 +1184,6 @@ Giao diện ô tô
 • Lớp phủ 'Thêm video' có thể không khả dụng
 • Shorts mở bằng trình phát thông thường
 • Thanh hành động video cũ không thu gọn được hiển thị"</string>
-  <string name="morphe_tablet_layout_in_player_title">Bật bố cục máy tính bảng trong trình phát</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Khôi phục bố cục trình phát cũ
-
-Hạn chế: Nếu \"Bố cục thanh thao tác video\" không phải là Cổ điển, lớp phủ \"Thêm video\" có thể không khả dụng"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Khôi phục hành vi phụ đề cũ</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Khôi phục ‘Lưu vào danh sách phát’ kiểu cũ</string>
@@ -1546,9 +1545,10 @@ Phát video bằng AV1 có thể bị giật hoặc tụt khung hình"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Bố cục thanh thao tác video</string>
   <string name="morphe_video_action_bar_layout_entry_1">Mặc định</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Cổ điển</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Một hàng Cổ điển</string>
   <string name="morphe_video_action_bar_layout_entry_3">Tối giản</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Hạn chế: Kiểu Cổ điển sẽ quay lại lớp phủ \"Thêm video\" kiểu cũ</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Hai hàng cổ điển</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Hạn chế: Bố cục cổ điển sẽ quay lại kiểu lớp phủ \'Xem thêm video\' cũ</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Kiểu biểu tượng trình phát</string>
   <string name="morphe_player_icon_style_entry_auto">Tự động</string>

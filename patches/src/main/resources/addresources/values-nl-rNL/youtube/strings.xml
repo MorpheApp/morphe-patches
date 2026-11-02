@@ -277,6 +277,9 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_emoji_button_title">Emoji-knop verbergen</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Filterbalkopties verbergen</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Verbergt alle filterbalkopties, behalve \'Top\' en \'Nieuwste\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Verberg GIF-knop</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Verberg GIF\'s en afbeeldingen</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Verbergt GIF\'s en afbeeldingen die zijn toegevoegd aan reacties en antwoorden</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Verberg animaties voor cadeaus en kaarten</string>
   <string name="morphe_hide_comments_gift_button_title">Verberg cadeauknop</string>
   <string name="morphe_hide_comments_info_button_title">Verberg Info-knop</string>
@@ -526,6 +529,7 @@ Exportmap: %s"</string>
   <string name="morphe_export_download_folder_change">Map wijzigen</string>
   <string name="morphe_export_download_folder_changed">Exportmap gewijzigd</string>
   <string name="morphe_export_download_folder_reset">Exportmap hersteld</string>
+  <string name="morphe_export_download_folder_missing">Exportmap %s kon niet worden gevonden</string>
   <string name="morphe_export_download_flyout_title">Exporteren naar apparaat</string>
   <string name="morphe_export_download_started">Video exporteren</string>
   <string name="morphe_export_download_progress">Video exporteren: %d%%</string>
@@ -957,7 +961,6 @@ Om Instellingen te openen, schakel je de knop Instellingen in via Algemeen → G
   <string name="morphe_navigation_bar_style_user_dialog_message">Deze stijl wordt mogelijk niet ondersteund door je apparaat of YouTube-versie, wat kan leiden tot lay-outproblemen of crashes</string>
   <string name="morphe_toolbar_screen_title">Werkbalk</string>
   <string name="morphe_toolbar_screen_summary">Kies welke componenten in de werkbalk verschijnen</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Verberg Cast-knop</string>
   <string name="morphe_hide_toolbar_chat_button_title">Verberg Chat-knop</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Verberg Microfoon-knop</string>
   <string name="morphe_hide_toolbar_search_button_title">Verberg Zoek-knop</string>
@@ -1013,6 +1016,7 @@ Om het 'Audio Track'-menu weer te geven, wijzig 'Spoof video streams' naar elke 
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Verberg ondertitelknop</string>
   <string name="morphe_hide_cast_button_title">Verberg Cast-knop</string>
+  <string name="morphe_hide_cast_button_summary">Verbergt de Cast-knop in de videospeler en werkbalk</string>
   <string name="morphe_hide_collapse_button_title">Inklapknop verbergen</string>
   <string name="morphe_hide_fullscreen_button_title">Volledig schermknop verbergen</string>
   <string name="morphe_hide_player_control_buttons_background_title">Achtergrond van spelerbediening verbergen</string>
@@ -1178,11 +1182,6 @@ Auto-indeling
 • Overlay 'Meer video's' is mogelijk niet beschikbaar
 • Shorts worden geopend in de reguliere speler
 • Niet ingeklapte oude actiebalk voor video's wordt weergegeven"</string>
-  <string name="morphe_tablet_layout_in_player_title">Schakel tabletindeling in de speler in</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Herstelt de oude player layout
-
-Beperking: Als \"Video acties balk layout\" niet op Klassiek staat, is de \"Meer video's\" overlay mogelijk niet beschikbaar"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Herstel het oude gedrag van ondertitels</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Herstel oude Shorts-speler pictogrammen</string>
@@ -1544,9 +1543,10 @@ Het afspelen van video met AV1 kan haperen of frames overslaan"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Video acties balk layout</string>
   <string name="morphe_video_action_bar_layout_entry_1">Standaard</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Klassiek</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klassiek één rij</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimaal</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Beperking: Klassiek gaat terug naar de oude stijl van de \"Meer video\'s\" overlay</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klassiek twee rijen</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Beperking: Klassieke lay-outs keren terug naar de oude stijl \'Meer video\'s\' overlay</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Stijl van het pictogram van de speler</string>
   <string name="morphe_player_icon_style_entry_auto">Automatisch</string>

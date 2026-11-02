@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">隱藏表情符號按鈕</string>
   <string name="morphe_hide_comments_filter_bar_options_title">隱藏篩選列選項</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">隱藏篩選列選項，僅保留「熱門」和「最新」</string>
+  <string name="morphe_hide_comments_gif_button_title">隱藏GIF按鈕</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">隱藏GIF和圖片</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">隱藏評論回覆中附帶的GIF及圖片</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">隱藏禮物動畫和卡片</string>
   <string name="morphe_hide_comments_gift_button_title">隱藏禮物按鈕</string>
   <string name="morphe_hide_comments_info_button_title">隱藏資訊按鈕</string>
@@ -526,6 +529,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">更改資料夾</string>
   <string name="morphe_export_download_folder_changed">匯出資料夾已更改</string>
   <string name="morphe_export_download_folder_reset">重設匯出資料夾</string>
+  <string name="morphe_export_download_folder_missing">找不到匯出資料夾 %s</string>
   <string name="morphe_export_download_flyout_title">匯出到裝置</string>
   <string name="morphe_export_download_started">正在匯出影片</string>
   <string name="morphe_export_download_progress">匯出影片進度： %d%%</string>
@@ -959,7 +963,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">您的裝置或 YouTube 版本可能不支援此樣式，這可能會導致版面配置問題或崩潰</string>
   <string name="morphe_toolbar_screen_title">工具列</string>
   <string name="morphe_toolbar_screen_summary">選擇工具列中顯示的元件</string>
-  <string name="morphe_hide_toolbar_cast_button_title">隱藏「投放」按鈕</string>
   <string name="morphe_hide_toolbar_chat_button_title">隱藏聊天按鈕</string>
   <string name="morphe_hide_toolbar_microphone_button_title">隱藏麥克風按鈕</string>
   <string name="morphe_hide_toolbar_search_button_title">隱藏搜尋按鈕</string>
@@ -1015,6 +1018,7 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">隱藏「字幕」按鈕</string>
   <string name="morphe_hide_cast_button_title">隱藏「投放」按鈕</string>
+  <string name="morphe_hide_cast_button_summary">隱藏影片播放器和工具列中的投放影片按鈕</string>
   <string name="morphe_hide_collapse_button_title">隱藏摺疊按鈕</string>
   <string name="morphe_hide_fullscreen_button_title">隱藏全螢幕按鈕</string>
   <string name="morphe_hide_player_control_buttons_background_title">隱藏播放器控制背景</string>
@@ -1180,11 +1184,6 @@ Second \"item\" text"</string>
 • 「更多影片」疊加層可能不可用
 • Shorts 將在一般播放器中開啟
 • 顯示未摺疊的舊版影片動作欄"</string>
-  <string name="morphe_tablet_layout_in_player_title">在播放器中啟用平板版面配置</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"還原舊版的播放器版面配置
-
-限制：若「影片操作列版面配置」非為「傳統」，則「更多影片」疊層可能無法使用"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 恢復舊版字幕行為</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 復原舊版播放清單</string>
@@ -1543,11 +1542,12 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">播放器 JavaScript 變種</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">在「Stats for nerds」中顯示偽造狀態</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_video_action_bar_layout_title">影片操作列版面配置</string>
+  <string name="morphe_video_action_bar_layout_title">影片操作列版面組態</string>
   <string name="morphe_video_action_bar_layout_entry_1">預設</string>
-  <string name="morphe_video_action_bar_layout_entry_2">傳統</string>
-  <string name="morphe_video_action_bar_layout_entry_3">極簡</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">限制：「傳統」會還原至舊款的「更多影片」疊層</string>
+  <string name="morphe_video_action_bar_layout_entry_2">經典單列</string>
+  <string name="morphe_video_action_bar_layout_entry_3">精簡</string>
+  <string name="morphe_video_action_bar_layout_entry_4">經典雙列</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">限制：經典版面會恢復為舊式『更多影片』覆蓋層</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">播放器圖示樣式</string>
   <string name="morphe_player_icon_style_entry_auto">自動</string>

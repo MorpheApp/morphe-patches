@@ -277,6 +277,9 @@ Promene uključuju:
   <string name="morphe_hide_comments_emoji_button_title">Sakrij dugme za emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Sakrij opcije trake filtera</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Sakriva sve opcije trake filtera, osim \"Najbolje\" i \"Najnovije\"</string>
+  <string name="morphe_hide_comments_gif_button_title">Sakrij GIF dugme</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Sakrij GIF-ove i slike</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Skriva GIF-ove i slike priložene uz komentare i odgovore</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Sakrij animaciju poklona i kartice</string>
   <string name="morphe_hide_comments_gift_button_title">Sakrij dugme „Poklon”</string>
   <string name="morphe_hide_comments_info_button_title">Sakrij dugme Инфо</string>
@@ -526,6 +529,7 @@ Folder za izvoz: %s"</string>
   <string name="morphe_export_download_folder_change">Promeni folder</string>
   <string name="morphe_export_download_folder_changed">Folder za izvoz je promenjen</string>
   <string name="morphe_export_download_folder_reset">Folder za izvoz je resetovan</string>
+  <string name="morphe_export_download_folder_missing">Folder za izvoz %s nije pronađen</string>
   <string name="morphe_export_download_flyout_title">Izvezi na uređaj</string>
   <string name="morphe_export_download_started">Izvoz video zapisa</string>
   <string name="morphe_export_download_progress">Izvoz video zapisa: %d%%</string>
@@ -959,7 +963,6 @@ Da biste pristupili Podešavanjima, omogućite dugme Podešavanja putem General 
   <string name="morphe_navigation_bar_style_user_dialog_message">Ovaj stil možda nije podržan na vašem uređaju ili verziji YouTube-a, i može uzrokovati probleme sa rasporedom ili rušenje aplikacije</string>
   <string name="morphe_toolbar_screen_title">Traka za alatke</string>
   <string name="morphe_toolbar_screen_summary">Izaberite koje komponente se pojavljuju u padajućem meniju</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Sakrij dugme „Prebacuj”</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sakrij dugme „Chat“</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Sakrij dugme „Mikrofon”</string>
   <string name="morphe_hide_toolbar_search_button_title">Sakrij dugme „Pretraga”</string>
@@ -1015,6 +1018,7 @@ Da biste prikazali meni 'Audio Track', promenite 'Spoofovanje video tokova' na b
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Sakrij dugme „Titl”</string>
   <string name="morphe_hide_cast_button_title">Sakrij dugme „Prebacuj”</string>
+  <string name="morphe_hide_cast_button_summary">Skriva dugme Cast u video plejeru i alatnoj traci</string>
   <string name="morphe_hide_collapse_button_title">Sakrij dugme „Smanji”</string>
   <string name="morphe_hide_fullscreen_button_title">Sakrij dugme „Puni ekran”</string>
   <string name="morphe_hide_player_control_buttons_background_title">Sakrij pozadinu kontrola plejera</string>
@@ -1180,11 +1184,6 @@ Automotive raspored
 • Preklapanje 'Još videa' možda nije dostupno
 • Shorts se otvara u regularnom plejeru
 • Priказuje se nerasklapana stara akcijska traka za video"</string>
-  <string name="morphe_tablet_layout_in_player_title">Omogući izgled za tablet u plejeru</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Vraća stari izgled plejera
-
-Ograničenje: Ako „Izgled trake sa akcijama videa“ nije Klasičan, preklop „Više videa“ možda neće biti dostupan"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Vrati staro ponašanje titlova</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Vraća stare ikonice Shorts plejera</string>
@@ -1546,9 +1545,10 @@ Reprodukcija videa s AV1 može zastajkivati ili preskakati kadrove"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Izgled trake sa akcijama videa</string>
   <string name="morphe_video_action_bar_layout_entry_1">Подразумеван</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Klasičan</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasični jedan red</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimalan</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Ograničenje: Klasičan vraća preklop „Više videa“ na stari stil</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klasična dva reda</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Ograničenje: Klasični rasporedi se vraćaju na stari stil preklopa „Više video snimaka”</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Stil ikonica plejera</string>
   <string name="morphe_player_icon_style_entry_auto">Automatski</string>

@@ -17,8 +17,18 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_square_layout_summary">Hutumia pembe za mraba kwa vitufe na vidhibiti vya SponsorBlock</string>
+  <string name="morphe_sb_offline_segments_title">Hifadhi vipande vya video zilizopakuliwa</string>
+  <string name="morphe_sb_offline_segments_summary">Inaruhusu kuruka sehemu za video zilizopakuliwa ukiwa nje ya mtandao</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Mipangilio yako ina ID ya siri ya mtumiaji wa SponsorBlock.
+
+ID yako ya mtumiaji ni kama nywila, na haipaswi kushirikiwa kamwe"</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Hakuwezekana kutuma kipande (hali: %1$s %2$s)</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock haipatikani kwa muda (hali %s)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Hakuwezekana kupiga kura kwa kipande (hali: %1$s %2$s)</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_new_segment_disabled_category">Kundi limezimwa kwenye mipangilio. Wezesha kundi ili kutuma</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_loading">Inapakia…</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Hakuwezekana kubadilisha jina la mtumiaji: Hali: %1$s %2$s</string>
 </resources>

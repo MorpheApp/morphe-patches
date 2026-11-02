@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">Emoji ღილაკის დამალვა</string>
   <string name="morphe_hide_comments_filter_bar_options_title">ფილტრის პანელის ოფციების დამალვა</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">მალავს ფილტრის პანელის ყველა ოფციას, გარდა \"ტოპისა\" და \"უახლესისა\"</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF ღილაკის დამალვა</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF-ებისა და სურათების დამალვა</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">მალავს კომენტარებსა და პასუხებს თანდართულ GIF-ებსა და სურათებს</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">საჩუქრების ანიმაციისა და ბარათების დამალვა</string>
   <string name="morphe_hide_comments_gift_button_title">საჩუქრის ღილაკის დამალვა</string>
   <string name="morphe_hide_comments_info_button_title">დამალეთ ინფოს ღილაკი</string>
@@ -526,6 +529,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">საქაღალდის შეცვლა</string>
   <string name="morphe_export_download_folder_changed">ექსპორტის საქაღალდე შეიცვალა</string>
   <string name="morphe_export_download_folder_reset">ექსპორტის საქაღალდე განის resetting-და</string>
+  <string name="morphe_export_download_folder_missing">ექსპორტის საქაღალდე %s ვერ მოიძებნა</string>
   <string name="morphe_export_download_flyout_title">ექსპორტი მოწყობილობაში</string>
   <string name="morphe_export_download_started">ვიდეოს ექსპორტირება</string>
   <string name="morphe_export_download_progress">ვიდეოს ექსპორტირება: %d%%</string>
@@ -959,7 +963,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">ეს სტილი შესაძლოა არ იყოს მხარდაჭერილი თქვენი მოწყობილობის ან YouTube-ის ვერსიის მიერ, რამაც შეიძლება გამოიწვიოს განლაგების პრობლემები ან გათიშვები</string>
   <string name="morphe_toolbar_screen_title">ინსტრუმენტების პანელი</string>
   <string name="morphe_toolbar_screen_summary">აირჩიეთ, რომელი კომპონენტები გამოჩნდეს ხელსაწყოების პანელზე</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Cast ღილაკის დამალვა</string>
   <string name="morphe_hide_toolbar_chat_button_title">დამალეთ ჩატის ღილაკი</string>
   <string name="morphe_hide_toolbar_microphone_button_title">მიკროფონის ღილაკის დამალვა</string>
   <string name="morphe_hide_toolbar_search_button_title">ძებნის ღილაკის დამალვა</string>
@@ -1015,6 +1018,7 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">სუბტიტრების დამალვის ღილაკი</string>
   <string name="morphe_hide_cast_button_title">Cast ღილაკის დამალვა</string>
+  <string name="morphe_hide_cast_button_summary">მალავს Cast ღილაკს ვიდეო პლეერში და εργა cụრიებში</string>
   <string name="morphe_hide_collapse_button_title">Collapse ღილაკის დამალვა</string>
   <string name="morphe_hide_fullscreen_button_title">მთლიან ეკრანზე გადაყვანის ღილაკის დამალვა</string>
   <string name="morphe_hide_player_control_buttons_background_title">მოთამაშის მართვის ღილაკების ფონის დამალვა</string>
@@ -1180,11 +1184,6 @@ Second \"item\" text"</string>
 • „მეტი ვიდეო“ გადაფარვა შესაძლოა არ იყოს ხელმისაწვდომი
 • Shorts იხსნება ჩვეულებრივ პლეერში
 • ჩანს ვიდეოს ძველი მოქმედებების პანელი, რომელიც არ არის ჩაკეცილი"</string>
-  <string name="morphe_tablet_layout_in_player_title">გააქტიურეთ პლანშეტის განლაგება პლეიერში</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"აღადგენს პლეერის ძველ განლაგებას
-
-შეზღუდვა: თუ \"ვიდეო მოქმედებების პანელის განლაგება\" არ არის კლასიკური, შესაძლოა недоступен-ი იყოს \"მეტი ვიდეო\" ზედაფენა"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - სუბტიტრების ძველი ქცევის აღდგენა</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - პლეილისტში შენახვის ძველი ვერსიის აღდგენა</string>
@@ -1546,9 +1545,10 @@ AV1-ით ვიდეოს უკუკვევა შესაძლოა 
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">ვიდეო მოქმედებების პანელის განლაგება</string>
   <string name="morphe_video_action_bar_layout_entry_1">ნაგულისხმები</string>
-  <string name="morphe_video_action_bar_layout_entry_2">კლასიკური</string>
+  <string name="morphe_video_action_bar_layout_entry_2">კლასიკური ერთი ხაზი</string>
   <string name="morphe_video_action_bar_layout_entry_3">მინიმალისტური</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">შეზღუდვა: კლასიკური სტილი უბრუნდება \"მეტი ვიდეოს\" ძველ ზედაფენას</string>
+  <string name="morphe_video_action_bar_layout_entry_4">კლასიკური ორი ხაზი</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">შეზღუდვა: კლასიკური განლაგება უბრუნდება ძველ სტილის \"მეტი ვიდეო\" გადაფარვას</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">პლეიერის ხატულის სტილი</string>
   <string name="morphe_player_icon_style_entry_auto">ავტომატური</string>

@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">Приховати кнопку \"Емодзі\"</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Приховати параметри панелі фільтрів</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Приховує всі варіанти панелі фільтрів, окрім  \"Найпопулярніші\" та \"Найновіші\"</string>
+  <string name="morphe_hide_comments_gif_button_title">Приховати кнопку GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Приховати GIF та зображення</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Приховує GIF та зображення, додані до коментарів і відповідей</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Приховати анімацію подарунків та карток</string>
   <string name="morphe_hide_comments_gift_button_title">Приховати кнопку \"Подарунок\"</string>
   <string name="morphe_hide_comments_info_button_title">Приховати кнопку \"Інфо\"</string>
@@ -446,7 +449,7 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_title">Натисніть та утримуйте, щоб відкрити меню відео</string>
   <string name="morphe_feed_long_press_menu_summary">Натискання та утримування будь-де на відео в стрічці відкриває його меню</string>
   <string name="morphe_feed_watch_later_button_title">Показувати кнопку \"Дивитися пізніше\" на мініатюрах</string>
-  <string name="morphe_feed_watch_later_button_summary">Кнопка \"Дивитися пізніше\" відображається на мініатюрах відеоу стрічці, із галочкою, якщо відео збережено. Натискання на неї зберігає або видаляє відео, а натискання та утримування відкриває меню \"Зберегти в плейлист\"</string>
+  <string name="morphe_feed_watch_later_button_summary">Кнопка \"Дивитися пізніше\" показується на мініатюрах відео в стрічці, із галочкою, якщо відео збережено. Натискання зберігає або видаляє відео, а натискання та утримування відкриває \"Зберегти в список відтворення\"</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Завантажити зображення з допису</string>
   <string name="morphe_post_image_download_summary">Кнопка завантаження показується поруч із кнопкою \"Поділитися\" для дописів із зображеннями або GIF, а до їхнього меню додається пункт завантаження</string>
@@ -526,6 +529,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">Змінити теку</string>
   <string name="morphe_export_download_folder_changed">Теку експорту змінено</string>
   <string name="morphe_export_download_folder_reset">Теку експорту скинуто</string>
+  <string name="morphe_export_download_folder_missing">Не вдалося знайти папку експорту %s</string>
   <string name="morphe_export_download_flyout_title">Експортувати на пристрій</string>
   <string name="morphe_export_download_started">Експорт відео</string>
   <string name="morphe_export_download_progress">Експорт відео: %d%%</string>
@@ -871,9 +875,9 @@ Second \"item\" text"</string>
   <string name="morphe_captions_screen_title">Субтитри</string>
   <string name="morphe_captions_screen_summary">Керування автоматичними субтитрами та cookies субтитрів</string>
   <string name="morphe_captions_languages_title">Мова та переклад</string>
-  <string name="morphe_captions_presentation_title">Зовнішній вигляд та поведінка</string>
+  <string name="morphe_captions_presentation_title">Вигляд і поведінка</string>
   <string name="morphe_captions_advanced_title">Розширені</string>
-  <string name="morphe_captions_advanced_summary">Параметри файлів cookie та розшифровки</string>
+  <string name="morphe_captions_advanced_summary">Параметри файлів cookie та стенограм</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Видимість автоматичних субтитрів</string>
   <string name="morphe_auto_captions_style_entry_1">Завжди показувати</string>
@@ -905,15 +909,15 @@ Second \"item\" text"</string>
   <string name="morphe_captions_in_pip_title">Показувати субтитри в режимі \"Картинка в картинці\"</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Розмір субтитрів</string>
-  <string name="morphe_caption_scale_summary">Застосовується до одномовних та двомовних субтитрів</string>
+  <string name="morphe_caption_scale_summary">Застосовується до одномовних і двомовних субтитрів</string>
   <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Стабільні блоки субтитрів</string>
-  <string name="morphe_stable_caption_blocks_summary">Групує одномовні автоматичні субтитри в стабільні, читабельні блоки. Двомовні субтитри завжди використовують блоки. Деякі слова можуть з\'явитися до того, як вони будуть вимовлені</string>
-  <string name="morphe_secondary_caption_language_title">Другорядна мова субтитрів</string>
-  <string name="morphe_secondary_caption_language_summary">Відображає другу мову разом із субтитрами та додає перемикач \"Двомовні субтитри\" до меню субтитрів</string>
+  <string name="morphe_stable_caption_blocks_summary">Групує одномовні автоматичні субтитри в стабільні, читабельні блоки. Двомовні субтитри завжди використовують блоки. Деякі слова можуть з\'являтися до того, як їх вимовлять</string>
+  <string name="morphe_secondary_caption_language_title">Додаткова мова субтитрів</string>
+  <string name="morphe_secondary_caption_language_summary">Показує другу мову разом із субтитрами та додає перемикач \"Двомовні субтитри\" до меню субтитрів</string>
   <string name="morphe_dual_captions_enabled_title">Двомовні субтитри</string>
-  <string name="morphe_caption_block_translation_failed">Деякі переклади субтитрів недоступні. Відображення доступних субтитрів.</string>
-  <string name="morphe_caption_blocks_too_large">Обидві мови субтитрів не поміщаються в цьому плеєрі. Відображення основної мови.</string>
+  <string name="morphe_caption_block_translation_failed">Деякі переклади субтитрів недоступні. Показано доступні субтитри.</string>
+  <string name="morphe_caption_blocks_too_large">Обидві мови субтитрів не вміщуються в цьому плеєрі. Показано основну мову.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Кнопки панелі навігації</string>
   <string name="morphe_navigation_buttons_screen_summary">Виберіть, які кнопки будуть показуватися на нижній панелі навігації</string>
@@ -959,7 +963,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Цей стиль може не підтримуватися вашим пристроєм або версією YouTube і може спричинити проблеми з макетом або збої</string>
   <string name="morphe_toolbar_screen_title">Панель інструментів</string>
   <string name="morphe_toolbar_screen_summary">Виберіть, які компоненти будуть показуватися на панелі інструментів</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Приховати кнопку \"Трансляція\"</string>
   <string name="morphe_hide_toolbar_chat_button_title">Приховати кнопку \"Чат\"</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Приховати кнопку \"Мікрофон\"</string>
   <string name="morphe_hide_toolbar_search_button_title">Приховати кнопку \"Пошук\"</string>
@@ -1015,6 +1018,7 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Приховати кнопку \"Субтитри\"</string>
   <string name="morphe_hide_cast_button_title">Приховати кнопку \"Трансляція\"</string>
+  <string name="morphe_hide_cast_button_summary">Приховує кнопку \"Трансляція\" у відеоплеєрі та на панелі інструментів</string>
   <string name="morphe_hide_collapse_button_title">Приховати кнопку \"Згорнути\"</string>
   <string name="morphe_hide_fullscreen_button_title">Приховати кнопку \"Повний екран\"</string>
   <string name="morphe_hide_player_control_buttons_background_title">Приховати фон кнопок керування плеєром</string>
@@ -1179,11 +1183,6 @@ Second \"item\" text"</string>
 • Накладка \"Більше відео\" може бути недоступна
 • Shorts відкриваються у звичайному плеєрі
 • Відображається нерозгорнута стара панель дій відео"</string>
-  <string name="morphe_tablet_layout_in_player_title">Увімкнути планшетний макет у плеєрі</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Відновлює старий макет плеєра
-
-Обмеження: якщо \"Макет панелі дій відео\" не встановлено на \"Класичний\", накладка \"Інші відео\" може бути недоступна"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Відновити стару поведінку субтитрів</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Відновити старе збереження до списку відтворення</string>
@@ -1544,10 +1543,11 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Показати підміну в \"Статистиці для сисадмінів\"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Макет панелі дій відео</string>
-  <string name="morphe_video_action_bar_layout_entry_1">Типові</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Класичний</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Типовий</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Класичний однорядковий</string>
   <string name="morphe_video_action_bar_layout_entry_3">Мінімальний</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Обмеження: Класичний стиль повертає стару накладку \"Інші відео\"</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Класичний дворядковий</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Обмеження: класичні макети повертають старий стиль накладки \"Інші відео\"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Стиль іконок плеєра</string>
   <string name="morphe_player_icon_style_entry_auto">Автоматичний</string>
@@ -1716,26 +1716,26 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_summary">Приховує коментарі з більшою кількістю символів, ніж це значення. Кожне емодзі враховується як один символ</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без обмежень</string>
   <string name="morphe_live_chat_translate_screen_title">Переклад живого чату</string>
-  <string name="morphe_live_chat_translate_screen_summary">Перекладати повідомлення живого чату та повторів живого чату</string>
+  <string name="morphe_live_chat_translate_screen_summary">Перекладати повідомлення живого чату та повтору чату</string>
   <string name="morphe_live_chat_translate_title">Перекладати живий чат</string>
-  <string name="morphe_live_chat_translate_summary">Перекладає повідомлення живого чату та повторів живого чату, щойно вони з\'являються на екрані</string>
+  <string name="morphe_live_chat_translate_summary">Перекладає повідомлення живого чату та повтору чату, щойно вони з\'являються на екрані</string>
   <string name="morphe_live_chat_translate_language_title">Мова перекладу</string>
   <string name="morphe_live_chat_translate_exclude_title">Виключені мови</string>
   <string name="morphe_live_chat_translate_exclude_summary">Коди мов, розділені комами, наприклад id,en. Повідомлення цими мовами не перекладаються</string>
   <string name="morphe_live_chat_translate_copy_button_title">Показувати кнопку копіювання повідомлення</string>
-  <string name="morphe_live_chat_translate_copy_button_summary">Додає маленьку кнопку копіювання до кожного повідомлення чату</string>
-  <string name="morphe_live_chat_translate_copied">Повідомлення скопійовано до буфера обміну</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Додає невелику кнопку копіювання до кожного повідомлення чату</string>
+  <string name="morphe_live_chat_translate_copied">Повідомлення скопійовано в буфер обміну</string>
   <string name="morphe_live_chat_translate_style_title">Стиль перекладу</string>
   <string name="morphe_live_chat_translate_style_translated_only">Лише переклад</string>
   <string name="morphe_live_chat_translate_style_original_and_translated">Оригінал (переклад)</string>
   <string name="morphe_live_chat_translate_style_translated_and_original">(Переклад) оригінал</string>
   <string name="morphe_live_chat_translate_bold_title">Жирний шрифт для перекладеного тексту</string>
-  <string name="morphe_live_chat_translate_bold_summary">Відображає перекладений текст жирним шрифтом</string>
-  <string name="morphe_live_chat_translate_use_color_title">Спеціальний колір перекладеного тексту</string>
-  <string name="morphe_live_chat_translate_use_color_summary">Застосовує спеціальний колір до перекладеного тексту</string>
+  <string name="morphe_live_chat_translate_bold_summary">Показує перекладений текст жирним шрифтом</string>
+  <string name="morphe_live_chat_translate_use_color_title">Власний колір перекладеного тексту</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Застосовує власний колір до перекладеного тексту</string>
   <string name="morphe_live_chat_translate_color_title">Колір перекладеного тексту</string>
-  <string name="morphe_live_chat_translate_color_summary">Встановіть hex-колір перекладеного тексту</string>
+  <string name="morphe_live_chat_translate_color_summary">Задайте hex-колір перекладеного тексту</string>
   <string name="morphe_live_chat_translate_max_length_title">Максимальна довжина повідомлення</string>
-  <string name="morphe_live_chat_translate_max_length_summary">Довші повідомлення відображаються без перекладу</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Довші повідомлення показуються без перекладу</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">Без обмежень</string>
 </resources>

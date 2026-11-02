@@ -944,7 +944,6 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_navigation_bar_style_user_dialog_message">Бұл стиль сіздің құрылғыңызда немесе YouTube нұсқасында қолдау табылмауы мүмкін, сондай-ақ ол интерфейстің бұзылуына немесе қосымшаның жабылуына әкелуі мүмкін</string>
   <string name="morphe_toolbar_screen_title">Құралдар жолағы</string>
   <string name="morphe_toolbar_screen_summary">Құрал жолағында қай компоненттер пайда болатынын таңдаңыз</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Трансляция батырмасын жасыру</string>
   <string name="morphe_hide_toolbar_chat_button_title">Чат батырмасын жасыру</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Микрофон батырмасын жасыру</string>
   <string name="morphe_hide_toolbar_search_button_title">Іздеу батырмасын жасыру</string>
@@ -1165,8 +1164,6 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
 • \"Көбірек бейнебаяндар\" қабаты қолжетімді болмауы мүмкін
 • Shorts әдеттегі плеерде ашылады
 • Бейнебаяндардың жинақталмаған ескі әрекеттер жолағы көрсетіледі"</string>
-  <string name="morphe_tablet_layout_in_player_title">Плеерде планшеттің макетін қосу</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Субтитрлердің ескі жұмыс істеу принципін қалпына келтіру</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ескі сақталымды плейлистке қалпына келтіру</string>

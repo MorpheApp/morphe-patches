@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">ซ่อนปุ่มอีโมจิ</string>
   <string name="morphe_hide_comments_filter_bar_options_title">ซ่อนตัวเลือกแถบกรอง</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">ซ่อนตัวเลือกแถบกรองทั้งหมด ยกเว้น \'ยอดนิยม\' และ \'ใหม่ล่าสุด\'</string>
+  <string name="morphe_hide_comments_gif_button_title">ซ่อนปุ่ม GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">ซ่อน GIF และรูปภาพ</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">ซ่อน GIF และรูปภาพที่แนบมากับความคิดเห็นและการตอบกลับ</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">ซ่อนแอนิเมชันและบัตรของขวัญ</string>
   <string name="morphe_hide_comments_gift_button_title">ซ่อนปุ่มของขวัญ</string>
   <string name="morphe_hide_comments_info_button_title">ซ่อนปุ่มข้อมูล</string>
@@ -526,6 +529,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">เปลี่ยนโฟลเดอร์</string>
   <string name="morphe_export_download_folder_changed">เปลี่ยนโฟลเดอร์ส่งออกแล้ว</string>
   <string name="morphe_export_download_folder_reset">รีเซ็ตโฟลเดอร์ส่งออก</string>
+  <string name="morphe_export_download_folder_missing">ไม่พบโฟลเดอร์ส่งออก %s</string>
   <string name="morphe_export_download_flyout_title">ส่งออกไปยังอุปกรณ์</string>
   <string name="morphe_export_download_started">กำลังส่งออกวิดีโอ</string>
   <string name="morphe_export_download_progress">กำลังส่งออกวิดีโอ: %d%%</string>
@@ -959,7 +963,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">สไตล์นี้อาจไม่รองรับโดยอุปกรณ์หรือ YouTube เวอร์ชันของคุณ และอาจทำให้เกิดปัญหาด้านเลย์เอาต์หรือแอปค้างได้</string>
   <string name="morphe_toolbar_screen_title">แถบเครื่องมือ</string>
   <string name="morphe_toolbar_screen_summary">เลือกส่วนประกอบที่จะปรากฏในแถบเครื่องมือ</string>
-  <string name="morphe_hide_toolbar_cast_button_title">ซ่อนปุ่มแคสต์</string>
   <string name="morphe_hide_toolbar_chat_button_title">ซ่อนปุ่มแชท</string>
   <string name="morphe_hide_toolbar_microphone_button_title">ซ่อนปุ่มไมโครโฟน</string>
   <string name="morphe_hide_toolbar_search_button_title">ซ่อนปุ่มค้นหา</string>
@@ -1015,6 +1018,7 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">ซ่อนปุ่มคำบรรยาย</string>
   <string name="morphe_hide_cast_button_title">ซ่อนปุ่มแคสต์</string>
+  <string name="morphe_hide_cast_button_summary">ซ่อนปุ่ม Cast ในเครื่องเล่นวิดีโอและแถบเครื่องมือ</string>
   <string name="morphe_hide_collapse_button_title">ซ่อนปุ่มยุบ</string>
   <string name="morphe_hide_fullscreen_button_title">ซ่อนปุ่มเต็มหน้าจอ</string>
   <string name="morphe_hide_player_control_buttons_background_title">ซ่อนพื้นหลังส่วนควบคุมเครื่องเล่น</string>
@@ -1180,11 +1184,6 @@ Second \"item\" text"</string>
 • ภาพซ้อนทับ 'วิดีโอเพิ่มเติม' อาจไม่ปรากฏ
 • Shorts จะเปิดในเครื่องเล่นปกติ
 • แถบดำเนินการวิดีโอแบบเก่าที่ไม่ยุบจะแสดง"</string>
-  <string name="morphe_tablet_layout_in_player_title">เปิดใช้งานรูปแบบแท็บเล็ตในเครื่องเล่น</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"คืนรูปแบบเครื่องเล่นแบบเก่า
-
-ข้อจำกัด: หาก 'รูปแบบแถบการทำงานของวิดีโอ' ไม่ใช่แบบคลาสสิก ภาพซ้อนทับ 'วิดีโอเพิ่มเติม' อาจใช้งานไม่ได้"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - กู้คืนพฤติกรรมคำบรรยายแบบเดิม</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - คืนค่าไอคอนเครื่องเล่น Shorts เก่า</string>
@@ -1546,9 +1545,10 @@ AVC (H.264)
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">รูปแบบแถบการทำงานของวิดีโอ</string>
   <string name="morphe_video_action_bar_layout_entry_1">ค่าเริ่มต้นThe</string>
-  <string name="morphe_video_action_bar_layout_entry_2">คลาสสิก</string>
+  <string name="morphe_video_action_bar_layout_entry_2">แบบคลาสสิกแถวเดียว</string>
   <string name="morphe_video_action_bar_layout_entry_3">น้อยที่สุด</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">ข้อจำกัด: แบบคลาสสิกจะกลับไปใช้ภาพซ้อนทับ \'วิดีโอเพิ่มเติม\' รูปแบบเก่า</string>
+  <string name="morphe_video_action_bar_layout_entry_4">แบบคลาสสิกสองแถว</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">ข้อจำกัด: เลย์เอาต์แบบคลาสสิกจะกลับไปใช้การซ้อนทับ \'วิดีโอเพิ่มเติม\' แบบเก่า</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">สไตล์ไอคอนเครื่องเล่น</string>
   <string name="morphe_player_icon_style_entry_auto">อัตโนมัติ</string>

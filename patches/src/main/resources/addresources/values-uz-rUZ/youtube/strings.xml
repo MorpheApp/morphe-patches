@@ -939,7 +939,6 @@ Sozlamalarga kirish uchun Umumiy → Asboblar paneli → Sozlamalarni ko'rsatish
   <string name="morphe_navigation_bar_style_user_dialog_message">Ushbu uslub qurilmangiz yoki YouTube versiyasi tomonidan qo\'llab-quvvatlanmasligi mumkin va bu maket muammolariga yoki ilovaning yopilib qolishiga olib kelishi mumkin</string>
   <string name="morphe_toolbar_screen_title">Navigatsiya panelini yashirish</string>
   <string name="morphe_toolbar_screen_summary">Pleerdagi paydo boʻladigan tugmalarni tanlang</string>
-  <string name="morphe_hide_toolbar_cast_button_title">\'Audio Track\' menyusini yashirish</string>
   <string name="morphe_hide_toolbar_chat_button_title">Chat tugmasini yashirish</string>
   <string name="morphe_hide_toolbar_microphone_button_title">\'Captions\' menyusini yashirish</string>
   <string name="morphe_hide_toolbar_search_button_title">\'Captions\' menyusining tepa qismini yashirish</string>
@@ -1160,8 +1159,6 @@ Avtomobil maketi
 • \"Ko'proq videolar\" qatlami mavjud bo'lmasligi mumkin
 • Shorts oddiy pleyerda ochiladi
 • Yopilmagan eski video amalari paneli ko'rsatiladi"</string>
-  <string name="morphe_tablet_layout_in_player_title">O\'yinchi ichida tablet tartibini yoqish</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Subtitrlarning eski ishlash tartibini tiklash</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Eski pleyer saqlashni tiklash</string>

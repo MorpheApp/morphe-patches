@@ -943,7 +943,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Овој стил можеби не е поддржан од вашиот уред или верзијата на YouTube, и може да предизвика проблеми со распоредот или паѓања на апликацијата</string>
   <string name="morphe_toolbar_screen_title">Toolbar</string>
   <string name="morphe_toolbar_screen_summary">Изберете кои компоненти да се појавуваат во лентата со алатки</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Прикријте го копчето Cast</string>
   <string name="morphe_hide_toolbar_chat_button_title">Скриј копче за чет</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Прикријте го копчето Microphone</string>
   <string name="morphe_hide_toolbar_search_button_title">Прикријте го копчето Search</string>
@@ -1164,8 +1163,6 @@ Second \"item\" text"</string>
 • Прекривањето „Повеќе видеа“ може да не биде достапно
 • Shorts се отвораат во вообичаениот плеер
 • Се прикажува стара лента за акции на видео која не е склопена"</string>
-  <string name="morphe_tablet_layout_in_player_title">Овозможи таблет-изглед во плеерот</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Враќање на старото однесување на titlovite</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Врати ја старата постава за зачувување во листа за репродукција</string>

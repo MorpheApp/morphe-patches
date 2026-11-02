@@ -277,6 +277,9 @@ Perubahan mencakup:
   <string name="morphe_hide_comments_emoji_button_title">Sembunyikan tombol Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Sembunyikan opsi bilah penyaring</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Menyembunyikan semua opsi bilah penyaring kecuali \'Teratas\' dan \'Terbaru\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Sembunyikan tombol GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Sembunyikan GIF dan gambar</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Menyembunyikan GIF dan gambar yang terlampir pada komentar dan balasan</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Sembunyikan animasi hadiah dan kartu</string>
   <string name="morphe_hide_comments_gift_button_title">Sembunyikan tombol Hadiah</string>
   <string name="morphe_hide_comments_info_button_title">Sembunyikan tombol Info</string>
@@ -526,6 +529,7 @@ Folder ekspor: %s"</string>
   <string name="morphe_export_download_folder_change">Ganti folder</string>
   <string name="morphe_export_download_folder_changed">Folder ekspor diganti</string>
   <string name="morphe_export_download_folder_reset">Atur ulang folder ekspor</string>
+  <string name="morphe_export_download_folder_missing">Tidak dapat menemukan folder ekspor %s</string>
   <string name="morphe_export_download_flyout_title">Ekspor ke perangkat</string>
   <string name="morphe_export_download_started">Mengekspor video</string>
   <string name="morphe_export_download_progress">Mengekspor video: %d%%</string>
@@ -959,7 +963,6 @@ Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat →
   <string name="morphe_navigation_bar_style_user_dialog_message">Gaya ini mungkin tidak didukung oleh perangkat atau versi YouTube Anda, dan dapat menyebabkan masalah tata letak atau crash</string>
   <string name="morphe_toolbar_screen_title">Bilah alat</string>
   <string name="morphe_toolbar_screen_summary">Pilih komponen mana yang akan ditampilkan di bilah alat</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Sembunyikan tombol Transmisi</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sembunyikan tombol Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Sembunyikan tombol Mikrofon</string>
   <string name="morphe_hide_toolbar_search_button_title">Sembunyikan tombol Telusuri</string>
@@ -1015,6 +1018,7 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Sembunyikan tombol Teks</string>
   <string name="morphe_hide_cast_button_title">Sembunyikan tombol Transmisi</string>
+  <string name="morphe_hide_cast_button_summary">Menyembunyikan tombol Cast di pemutar video dan toolbar</string>
   <string name="morphe_hide_collapse_button_title">Sembunyikan tombol Ciutkan</string>
   <string name="morphe_hide_fullscreen_button_title">Sembunyikan tombol Layar Penuh</string>
   <string name="morphe_hide_player_control_buttons_background_title">Sembunyikan latar belakang kontrol pemutar</string>
@@ -1179,11 +1183,6 @@ Tata letak Otomotif
 • Hamparan 'Video lainnya' mungkin tidak tersedia
 • Shorts terbuka di pemutar reguler
 • Bilah tindakan video lama yang tidak diciutkan ditampilkan"</string>
-  <string name="morphe_tablet_layout_in_player_title">Aktifkan tata letak tablet di pemutar</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Mengembalikan tata letak pemutar lama
-
-Batasan: Jika 'Tata letak bilah tindakan video' bukan Klasik, hamparan 'Video lainnya' mungkin tidak tersedia"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Kembalikan perilaku teks lama</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Kembalikan penyimpanan lama ke daftar putar</string>
@@ -1545,9 +1544,10 @@ Pemutaran video dengan AV1 dapat tersendat atau kehilangan frame"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Tata letak bilah tindakan video</string>
   <string name="morphe_video_action_bar_layout_entry_1">Bawaan</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Klasik</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Satu Baris Klasik</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimalis</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Batasan: Klasik mengembalikan hamparan \'Video lainnya\' ke gaya lama</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Dua Baris Klasik</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Batasan: Tata letak Klasik kembali ke overlay \'Video lainnya\' gaya lama</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Gaya ikon pemutar</string>
   <string name="morphe_player_icon_style_entry_auto">Otomatis</string>

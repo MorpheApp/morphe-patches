@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Uchochezi wa kuanza</string>
   <string name="morphe_splash_screen_style_entry_1">Imezimwa</string>
   <string name="morphe_splash_screen_style_entry_2">Rangi</string>
+  <string name="morphe_splash_screen_style_entry_3">Rangi ya Morphe</string>
   <string name="morphe_splash_screen_style_entry_4">Rangi moja</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Angazia mipangilio mipya</string>
+  <string name="morphe_settings_new_indicator_days_summary">Idadi ya siku ambazo nukta inaonekana kando ya mipangilio na chaguo zilizoongezwa na sasisho</string>
+  <string name="morphe_settings_new_indicator_days_off">Zima</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Anzisha upya ili kumalizia usanidi</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

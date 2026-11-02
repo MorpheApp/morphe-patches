@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">Схаваць кнопку эмодзі</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Схаваць опцыі панэлі фільтраў</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Схаваць усе опцыі панэлі фільтраў, за исключением \"Папулярныя\" і \"Новыя\"</string>
+  <string name="morphe_hide_comments_gif_button_title">Схаваць кнопку GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Схаваць GIF-файлы і выявы</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Схаваць GIF-файлы і выявы, прыкрэпленыя да каментарыяў і адказаў</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Схаваць анімацыю падарункаў і карткі</string>
   <string name="morphe_hide_comments_gift_button_title">Схаваць кнопку \"Падараваць\"</string>
   <string name="morphe_hide_comments_info_button_title">Схаваць кнопку Інфа</string>
@@ -526,6 +529,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">Змяніць папку</string>
   <string name="morphe_export_download_folder_changed">Папку экспарту зменена</string>
   <string name="morphe_export_download_folder_reset">Папку экспарту скінута</string>
+  <string name="morphe_export_download_folder_missing">Не ўдалося знайсці папку экспарту %s</string>
   <string name="morphe_export_download_flyout_title">Экспартаваць на прыладу</string>
   <string name="morphe_export_download_started">Экспартаванне відэа</string>
   <string name="morphe_export_download_progress">Экспартаванне відэа: %d%%</string>
@@ -959,7 +963,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Гэты стыль можа не падтрымлівацца вашай прыладай або версіяй YouTube, што можа прывесці да праблем з макетам або збояў</string>
   <string name="morphe_toolbar_screen_title">Панэль інструментаў</string>
   <string name="morphe_toolbar_screen_summary">Выберыце, якія кампаненты будуць адлюстроўвацца ў панэлі інструментаў</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Схаваць кнопку Cast</string>
   <string name="morphe_hide_toolbar_chat_button_title">Схаваць кнопку чата</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Схаваць кнопку мікрафона</string>
   <string name="morphe_hide_toolbar_search_button_title">Схаваць кнопку пошуку</string>
@@ -1015,6 +1018,7 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Схаваць кнопку \"Субтытры\"</string>
   <string name="morphe_hide_cast_button_title">Схаваць кнопку Cast</string>
+  <string name="morphe_hide_cast_button_summary">Схаваць кнопку Cast у відэаплэеры і панэлі інструментаў</string>
   <string name="morphe_hide_collapse_button_title">Схаваць кнопку \"Згарнуць\"</string>
   <string name="morphe_hide_fullscreen_button_title">Схаваць кнопку \"Паўны экран\"</string>
   <string name="morphe_hide_player_control_buttons_background_title">Схаваць фон элементаў кіравання плеярам</string>
@@ -1180,11 +1184,6 @@ Second \"item\" text"</string>
 • Накладка «Больш відэа» можа быць недаступная
 • Shorts адкрываюцца ў звычайным прагравач
 • Паказваецца старая панэль дзеянняў відэа, якая не згарнута"</string>
-  <string name="morphe_tablet_layout_in_player_title">Уключаць планшэтны размяшчэнне ў плееры</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Аднаўляе стары макет плеяра
-
-Абмежаванне: калі \"Макет панэлі дзеянняў відэа\" не Classic, панэль \"Больш відэа\" можа быць недаступнай"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Вярнуць старую паводзіну субтытраў</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Віднаўленне старога захавання ў плейліст</string>
@@ -1546,9 +1545,10 @@ AVC (H.264)
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Макет панэлі дзеянняў відэа</string>
   <string name="morphe_video_action_bar_layout_entry_1">Звычайны</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Класічны</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Класічны адзін радок</string>
   <string name="morphe_video_action_bar_layout_entry_3">Мінімалістычны</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Абмежаванне: Класічны вяртае стары стыль панэлі \"Больш відэа\"</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Класічны двухрадоўны</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Абмежаванне: Класічныя макетаў вяртаюцца да старога стылю ўлажэння \"Яшчэ відэа\"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Стыль іконкі плеера</string>
   <string name="morphe_player_icon_style_entry_auto">Аўтаматычна</string>

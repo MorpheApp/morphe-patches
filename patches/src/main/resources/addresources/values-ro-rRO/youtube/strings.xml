@@ -277,6 +277,9 @@ Modificările includ:
   <string name="morphe_hide_comments_emoji_button_title">Ascunde butonul Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Ascunde opțiunile barei de filtre</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Ascunde toate opțiunile din bara de filtre, cu excepția \'Top\' și \'Cele mai noi\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Ascunde butonul GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Ascunde GIF-urile și imaginile</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Ascunde GIF-urile și imaginile atașate de comentarii și răspunsuri</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Ascunde animația și felicitările cadou</string>
   <string name="morphe_hide_comments_gift_button_title">Ascunde butonul Cadou</string>
   <string name="morphe_hide_comments_info_button_title">Ascunde butonul Info</string>
@@ -526,6 +529,7 @@ Dosar de export: %s"</string>
   <string name="morphe_export_download_folder_change">Schimbă dosarul</string>
   <string name="morphe_export_download_folder_changed">Dosarul de export a fost schimbat</string>
   <string name="morphe_export_download_folder_reset">Dosarul de export a fost resetat</string>
+  <string name="morphe_export_download_folder_missing">Nu s-a putut găsi folderul de export %s</string>
   <string name="morphe_export_download_flyout_title">Exportă pe dispozitiv</string>
   <string name="morphe_export_download_started">Se exportă videoclipul</string>
   <string name="morphe_export_download_progress">Se exportă videoclipul: %d%%</string>
@@ -959,7 +963,6 @@ Pentru a accesa Setările, activați butonul Setări prin General → Bara de in
   <string name="morphe_navigation_bar_style_user_dialog_message">Acest stil s-ar putea să nu fie suportat de dispozitivul tău sau de versiunea de YouTube și poate cauza probleme de layout sau prăbușiri</string>
   <string name="morphe_toolbar_screen_title">Bara de navigare</string>
   <string name="morphe_toolbar_screen_summary">Ascunde previzualizarea videoclipului următor în ecran complet înainte de începerea redării automate</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Ascunde butonul Distribuție</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ascunde butonul Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ascunde butonul Ecran complet</string>
   <string name="morphe_hide_toolbar_search_button_title">Ascunde butonul de căutare</string>
@@ -1015,6 +1018,7 @@ Pentru a afișa meniul 'Audio Track', schimbă 'Spoof video streams' în orice c
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Ascunderea butonului Subtitrări</string>
   <string name="morphe_hide_cast_button_title">Ascunde butonul Distribuție</string>
+  <string name="morphe_hide_cast_button_summary">Ascunde butonul Cast din playerul video și din bara de instrumente</string>
   <string name="morphe_hide_collapse_button_title">Ascunde butonul de reducere</string>
   <string name="morphe_hide_fullscreen_button_title">Ascunde butonul Ecran complet</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ascunde fundalul controalelor playerului</string>
@@ -1180,11 +1184,6 @@ Aspect pentru automotive
 • Suprapunerea „Alte videoclipuri” poate să nu fie disponibilă
 • Shorts se deschide în playerul obișnuit
 • Se afișează bara de acțiuni video vechi, nepredisată"</string>
-  <string name="morphe_tablet_layout_in_player_title">Activează aspectul tabletă în player</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Restaurează aspectul vechi al playerului
-
-Limitare: Dacă „Aspect bară acțiuni video” nu este pe Classic, suprapunerea „Mai multe videoclipuri” ar putea să nu fie disponibilă"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restabilește comportamentul vechi al subtitrărilor</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restore old save to playlist</string>
@@ -1546,9 +1545,10 @@ Redarea video cu AV1 poate sacada sau pierde cadre"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Aspect bară acțiuni video</string>
   <string name="morphe_video_action_bar_layout_entry_1">Implicit</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Clasic</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Clasic Un singur rând</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimă</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Limitare: Classic revine la stilul vechi de suprapunere „Mai multe videoclipuri”</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Două rânduri clasic</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Limitare: Layout-urile clasice revin la stilul vechi de suprapunere „Mai multe videoclipuri”</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Stilul pictogramei playerului</string>
   <string name="morphe_player_icon_style_entry_auto">Automat</string>
