@@ -291,6 +291,8 @@ We currently accept pull requests for fixes/improvements to YouTube, YT Music, a
 If you have developed patches for other apps, you are encouraged to release your patches in a third party repository.
 See the [Patches template](https://github.com/morpheapp/morphe-patches-template) for more information.  
 
+Before opening a pull request, read the [contribution guidelines](CONTRIBUTING.md).
+
 ## 📜 License
 
 Morphe Patches are licensed under the [GNU General Public License v3.0](LICENSE), with additional conditions under GPLv3 Section 7:
