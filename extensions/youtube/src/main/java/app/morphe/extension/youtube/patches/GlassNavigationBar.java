@@ -1,0 +1,770 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
+package app.morphe.extension.youtube.patches;
+
+import android.animation.ValueAnimator;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LinearGradient;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.PixelFormat;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.view.animation.DecelerateInterpolator;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.youtube.patches.NavigationBarPatch.NavigationBarStyle;
+import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.NavigationBar;
+import app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
+
+/**
+ * Draws the bottom navigation bar as a floating, rounded, translucent capsule.
+ * <p>
+ * No extra copy of the content behind the bar is made. If the app draws its own blurred background
+ * (the translucent navigation bar style, Android 12 and later), that background is kept and clipped
+ * to the capsule. The frosted look otherwise comes from a tinted fill, a soft gradient, a gradient
+ * edge and a shadow, all drawn by one drawable that is set as the background of the navigation bar.
+ * The bar keeps its height and vertical layout, and everything outside the capsule is left transparent.
+ */
+@SuppressWarnings("unused")
+public final class GlassNavigationBar {
+
+    private static final int PIVOT_BAR = ResourceUtils.getIdentifier(ResourceType.ID, "pivot_bar");
+
+    private static final boolean ENABLED = isGlassEnabled();
+
+    /**
+     * The views of the navigation buttons, by button.
+     */
+    private static final Map<NavigationButton, WeakReference<View>> tabViews =
+            new EnumMap<>(NavigationButton.class);
+
+    @Nullable
+    private static volatile NavigationButton selectedButton;
+
+    /**
+     * The drawable of the navigation bar currently on screen.
+     */
+    private static WeakReference<GlassDrawable> currentDrawable = new WeakReference<>(null);
+
+    /**
+     * The navigation bar the glass was last applied to.
+     */
+    private static WeakReference<View> currentPivotBar = new WeakReference<>(null);
+
+    static {
+        if (ENABLED) {
+            NavigationBar.addOnNavigationButtonChangedListener(button -> {
+                selectedButton = button;
+                Logger.printDebug(() -> "Glass selected tab: " + button);
+                Utils.runOnMainThread(() -> {
+                    GlassDrawable drawable = currentDrawable.get();
+                    if (drawable != null) {
+                        drawable.onSelectedTabChanged();
+                    }
+                });
+            });
+        }
+    }
+
+    private static boolean isGlassEnabled() {
+        try {
+            // The opaque style wins if both are turned on.
+            return NavigationBarPatch.isPatchIncluded()
+                    && Settings.NAVIGATION_BAR_GLASS.get()
+                    && Settings.NAVIGATION_BAR_STYLE.get() != NavigationBarStyle.OPAQUE
+                    && !Settings.HIDE_NAVIGATION_BAR.get()
+                    && PIVOT_BAR != 0;
+        } catch (Exception ex) {
+            Logger.printException(() -> "isGlassEnabled failure", ex);
+            return false;
+        }
+    }
+
+    static boolean isEnabled() {
+        return ENABLED;
+    }
+
+    /**
+     * The least room between the bottom of the capsule and the bottom of the bar,
+     * so the capsule floats above the bottom of the screen.
+     */
+    private static final int FLOATING_ROOM = Dim.dp10;
+
+    private static boolean floatingRoomLogged;
+
+    /**
+     * The room below the buttons the app last added to the height of the bar itself,
+     * the room for the system navigation buttons.
+     */
+    private static volatile int appRoom;
+
+    /**
+     * The full height the app gives the bar, without the room below the buttons.
+     */
+    private static volatile int baseHeight;
+
+    static void setAppRoom(int room) {
+        appRoom = room;
+    }
+
+    /**
+     * Injection point helper.
+     * <p>
+     * The room below the buttons that the app did not add to the height of the bar, such as the
+     * floating room without system navigation buttons, is added when the bar is measured.
+     * The app also animates the height of the bar to hide it, so the room is added in proportion,
+     * and the animation is left as it is.
+     */
+    static int getHeightMeasureSpec(View navigationBar, int heightMeasureSpec) {
+        if (!ENABLED) return heightMeasureSpec;
+
+        try {
+            final int base = baseHeight;
+            if (base <= 0 || View.MeasureSpec.getMode(heightMeasureSpec) != View.MeasureSpec.EXACTLY) {
+                return heightMeasureSpec;
+            }
+
+            final int extra = navigationBar.getPaddingBottom() - appRoom;
+            final int height = View.MeasureSpec.getSize(heightMeasureSpec);
+            if (extra <= 0 || height <= 0) return heightMeasureSpec;
+
+            // A navigation rail along the side.
+            if (navigationBar.getWidth() > 0 && navigationBar.getWidth() <= 2 * Math.min(height, base)) {
+                return heightMeasureSpec;
+            }
+
+            final int added = height >= base ? extra : Math.round(extra * (float) height / base);
+            return View.MeasureSpec.makeMeasureSpec(height + added, View.MeasureSpec.EXACTLY);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getHeightMeasureSpec failure", ex);
+            return heightMeasureSpec;
+        }
+    }
+
+    /**
+     * Injection point helper.
+     * <p>
+     * The room below the buttons is the room the app leaves for the system navigation buttons.
+     * Without them, such as with the gesture handle hidden, the capsule would touch the bottom
+     * of the screen, so some room is added, the same way the app adds the room for the system
+     * navigation buttons to the height of the bar. Pages laid out behind the bar follow its height.
+     *
+     * @param room The room the app leaves below the buttons.
+     * @return The room below the buttons.
+     */
+    static int getFloatingRoom(View navigationBar, int room) {
+        if (!ENABLED || room >= FLOATING_ROOM) return room;
+
+        try {
+            final int width = navigationBar.getWidth();
+            if (width > 0 && !isHorizontalBottomBar(navigationBar)) return room;
+
+            if (!floatingRoomLogged) {
+                floatingRoomLogged = true;
+                Logger.printDebug(() -> "Glass navigation bar floating room: " + room + " -> " + FLOATING_ROOM);
+            }
+            return FLOATING_ROOM;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getFloatingRoom failure", ex);
+            return room;
+        }
+    }
+
+    public static final class GlassAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return Settings.NAVIGATION_BAR_STYLE.get() != NavigationBarStyle.OPAQUE;
+        }
+    }
+
+    static void navigationTabCreated(NavigationButton button, View tabView) {
+        if (!ENABLED) return;
+
+        synchronized (tabViews) {
+            tabViews.put(button, new WeakReference<>(tabView));
+        }
+    }
+
+    @Nullable
+    private static View getSelectedTabView() {
+        NavigationButton button = selectedButton;
+        if (button == null) return null;
+
+        WeakReference<View> reference;
+        synchronized (tabViews) {
+            reference = tabViews.get(button);
+        }
+        return reference == null ? null : reference.get();
+    }
+
+    static void apply(View bottomBarContainer) {
+        View pivotBar = bottomBarContainer.findViewById(PIVOT_BAR);
+        if (pivotBar == null || pivotBar == currentPivotBar.get()) return;
+        currentPivotBar = new WeakReference<>(pivotBar);
+
+        GlassDrawable glass = new GlassDrawable(pivotBar);
+        currentDrawable = new WeakReference<>(glass);
+
+        // The height the app gives the bar, without the room below the buttons.
+        ViewGroup.LayoutParams params = pivotBar.getLayoutParams();
+        baseHeight = params != null && params.height > 0 ? params.height - appRoom : 0;
+        Logger.printDebug(() -> "Glass navigation bar base height: " + baseHeight + " app room: " + appRoom);
+
+        // The background the app gave the navigation bar, which is put back if the bar
+        // is not a horizontal bar at the bottom, such as a navigation rail on large screens.
+        Drawable[] appBackground = {pivotBar.getBackground()};
+        boolean[] logged = {false};
+        int[] skippedFrames = {0};
+        // The horizontal padding the app gave the navigation bar.
+        int[] appPadding = {pivotBar.getPaddingLeft(), pivotBar.getPaddingRight()};
+        final int buttonsPadding = GlassDrawable.MARGIN_HORIZONTAL + Dim.dp10;
+
+        // The app hands the navigation bar its own background again, such as on a configuration
+        // change or in the Shorts player, so the glass is put back whenever that happens.
+        pivotBar.getViewTreeObserver().addOnPreDrawListener(() -> {
+            boolean layoutChanged = false;
+            try {
+                Drawable background = pivotBar.getBackground();
+                if (isHorizontalBottomBar(pivotBar)) {
+                    if (background != glass) {
+                        appBackground[0] = background;
+                        pivotBar.setBackground(glass);
+                        // Set after the bar let go of its old background.
+                        glass.setAppBackground(background);
+                        if (!logged[0]) {
+                            logged[0] = true;
+                            Logger.printDebug(() -> {
+                                int[] location = new int[2];
+                                pivotBar.getLocationInWindow(location);
+                                View parent = (View) pivotBar.getParent();
+                                return "Glass navigation bar applied, height: " + pivotBar.getHeight()
+                                        + " bottom padding: " + pivotBar.getPaddingBottom()
+                                        + " room below: " + (pivotBar.getRootView().getHeight() - location[1] - pivotBar.getHeight())
+                                        + " container height: " + parent.getHeight()
+                                        + " container bottom padding: " + parent.getPaddingBottom()
+                                        + " app background: " + (background == null ? null : background.getClass().getName());
+                            });
+                        }
+                    }
+                    glass.updateStyle();
+
+                    // Without system navigation buttons, the app never sets the room below the buttons,
+                    // so it is set here, for the capsule to float above the bottom of the screen.
+                    // The padding is kept by the patched setPadding of the bar. If it is still reset,
+                    // it is put back right before the frame is drawn, so no frame is drawn with the
+                    // buttons moved down.
+                    // The room is added to the height of the bar when it is measured.
+                    final int room = pivotBar.getPaddingBottom();
+                    if (room < FLOATING_ROOM) {
+                        Logger.printDebug(() -> "Glass navigation bar floating room set: " + room + " -> " + FLOATING_ROOM);
+                        pivotBar.setPadding(pivotBar.getPaddingLeft(), pivotBar.getPaddingTop(),
+                                pivotBar.getPaddingRight(), FLOATING_ROOM);
+                        layoutChanged = true;
+                    }
+
+                    // The buttons are moved inside the rounded ends of the capsule.
+                    if (pivotBar.getPaddingLeft() != buttonsPadding || pivotBar.getPaddingRight() != buttonsPadding) {
+                        if (pivotBar.getPaddingLeft() != buttonsPadding) appPadding[0] = pivotBar.getPaddingLeft();
+                        if (pivotBar.getPaddingRight() != buttonsPadding) appPadding[1] = pivotBar.getPaddingRight();
+                        pivotBar.setPadding(buttonsPadding, pivotBar.getPaddingTop(),
+                                buttonsPadding, pivotBar.getPaddingBottom());
+                        layoutChanged = true;
+                    }
+                } else if (background == glass) {
+                    glass.setAppBackground(null);
+                    pivotBar.setBackground(appBackground[0]);
+                    pivotBar.setPadding(appPadding[0], pivotBar.getPaddingTop(),
+                            appPadding[1], pivotBar.getPaddingBottom());
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "Glass navigation bar pre draw failure", ex);
+            }
+
+            // The frame is drawn again after the new layout, instead of once with the old one.
+            // Only a few frames in a row are skipped, so the bar can never stop drawing.
+            if (layoutChanged && skippedFrames[0] < 2) {
+                skippedFrames[0]++;
+                return false;
+            }
+            skippedFrames[0] = 0;
+            return true;
+        });
+    }
+
+    /**
+     * @return If the navigation bar is the bar along the bottom of the screen,
+     *         not a navigation rail along the side.
+     */
+    private static boolean isHorizontalBottomBar(View pivotBar) {
+        final int width = pivotBar.getWidth();
+        final int height = pivotBar.getHeight();
+        return width > 0 && height > 0 && width > 2 * height;
+    }
+
+    @ColorInt
+    private static int withAlpha(@ColorInt int color, float alpha) {
+        return (color & 0x00FFFFFF) | (Math.round(alpha * 255) << 24);
+    }
+
+    @ColorInt
+    private static int blend(@ColorInt int from, @ColorInt int to, float fraction) {
+        final float inverse = 1 - fraction;
+        return Color.rgb(
+                Math.round(Color.red(from) * inverse + Color.red(to) * fraction),
+                Math.round(Color.green(from) * inverse + Color.green(to) * fraction),
+                Math.round(Color.blue(from) * inverse + Color.blue(to) * fraction)
+        );
+    }
+
+    private static final class GlassDrawable extends Drawable {
+        private static final int STYLE_UNKNOWN = -1;
+        private static final int STYLE_LIGHT = 0;
+        private static final int STYLE_DARK = 1;
+        private static final int STYLE_SHORTS = 2;
+
+        private static final int SHADOW_LAYERS = 3;
+
+        private static final long INDICATOR_ANIMATION_MILLISECONDS = 200;
+
+        private final View host;
+
+        static final int MARGIN_HORIZONTAL = Dim.dp12;
+
+        private final int marginHorizontal = MARGIN_HORIZONTAL;
+        /**
+         * How far the capsule reaches into the room below the buttons.
+         */
+        private final int maxMarginBottom = Dim.dp4;
+        private final int indicatorInset = Dim.dp4;
+        private final int indicatorMaxWidth = Dim.dp(96);
+        private final float strokeWidth = Dim.dp1;
+
+        private final Paint shadowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint sheenPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint strokePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint indicatorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+        private final RectF capsule = new RectF();
+        private final Path capsulePath = new Path();
+
+        /**
+         * The blurred background of the app, drawn inside the capsule, or null if the app
+         * gave the bar a plain color.
+         */
+        @Nullable
+        private Drawable appBackground;
+
+        /**
+         * If drawing the background of the app failed, so it is no longer drawn.
+         */
+        private static boolean appBackgroundFailed;
+
+        private final Drawable.Callback appBackgroundCallback = new Drawable.Callback() {
+            @Override
+            public void invalidateDrawable(@NonNull Drawable who) {
+                invalidateSelf();
+            }
+
+            @Override
+            public void scheduleDrawable(@NonNull Drawable who, @NonNull Runnable what, long when) {
+                scheduleSelf(what, when);
+            }
+
+            @Override
+            public void unscheduleDrawable(@NonNull Drawable who, @NonNull Runnable what) {
+                unscheduleSelf(what);
+            }
+        };
+        private final RectF scratch = new RectF();
+
+        private int style = STYLE_UNKNOWN;
+        private int shadowAlpha;
+        @ColorInt
+        private int sheenTopColor;
+        @ColorInt
+        private int strokeTopColor;
+        @ColorInt
+        private int strokeBottomColor;
+
+        /**
+         * The vertical edges of the capsule the gradients were made for.
+         */
+        private float shaderTop = Float.NaN;
+        private float shaderBottom = Float.NaN;
+        private float shaderLeft = Float.NaN;
+        private float shaderRight = Float.NaN;
+
+        @ColorInt
+        private int fillColor;
+        /**
+         * There is no fill over the blurred background of the app, which has its own tint.
+         */
+        private boolean fillOverBlur;
+
+        private final ValueAnimator indicatorAnimator = ValueAnimator.ofFloat(0, 1);
+        private float animationFromLeft;
+        private float animationFromRight;
+        private boolean animationFromValid;
+
+        /**
+         * The horizontal edges of the selected tab indicator in the last frame.
+         */
+        private float lastIndicatorLeft;
+        private float lastIndicatorRight;
+        private boolean lastIndicatorValid;
+
+        GlassDrawable(View host) {
+            this.host = host;
+
+            fillPaint.setStyle(Paint.Style.FILL);
+            sheenPaint.setStyle(Paint.Style.FILL);
+            shadowPaint.setStyle(Paint.Style.FILL);
+            shadowPaint.setColor(Color.BLACK);
+            strokePaint.setStyle(Paint.Style.STROKE);
+            strokePaint.setStrokeWidth(strokeWidth);
+            indicatorPaint.setStyle(Paint.Style.FILL);
+
+            indicatorAnimator.setDuration(INDICATOR_ANIMATION_MILLISECONDS);
+            indicatorAnimator.setInterpolator(new DecelerateInterpolator());
+            indicatorAnimator.addUpdateListener(animation -> invalidateSelf());
+
+            updateStyle();
+        }
+
+        /**
+         * Updates the colors if the theme changed or the Shorts player was opened or closed.
+         */
+        void updateStyle() {
+            final int newStyle = ShortsPlayerState.isOpen()
+                    ? STYLE_SHORTS
+                    : Utils.isDarkModeEnabled() ? STYLE_DARK : STYLE_LIGHT;
+            if (newStyle == style) return;
+            style = newStyle;
+
+            switch (newStyle) {
+                case STYLE_SHORTS -> {
+                    // The Shorts player is always dark, whatever the app theme.
+                    fillColor = withAlpha(Color.BLACK, 0.45f);
+                    sheenTopColor = withAlpha(Color.WHITE, 0.06f);
+                    strokeTopColor = withAlpha(Color.WHITE, 0.20f);
+                    strokeBottomColor = withAlpha(Color.WHITE, 0.05f);
+                    indicatorPaint.setColor(withAlpha(Color.WHITE, 0.15f));
+                    shadowAlpha = Math.round(0.10f * 255);
+                }
+                case STYLE_DARK -> {
+                    final int background = ThemeUtils.getAppBackgroundColor();
+                    fillColor = withAlpha(blend(background, Color.WHITE, 0.14f), 0.60f);
+                    sheenTopColor = withAlpha(Color.WHITE, 0.10f);
+                    strokeTopColor = withAlpha(Color.WHITE, 0.30f);
+                    strokeBottomColor = withAlpha(Color.WHITE, 0.06f);
+                    indicatorPaint.setColor(withAlpha(Color.WHITE, 0.15f));
+                    shadowAlpha = Math.round(0.10f * 255);
+                }
+                default -> {
+                    final int background = ThemeUtils.getAppBackgroundColor();
+                    fillColor = withAlpha(blend(background, Color.WHITE, 0.6f), 0.66f);
+                    sheenTopColor = withAlpha(Color.WHITE, 0.35f);
+                    strokeTopColor = withAlpha(Color.WHITE, 0.95f);
+                    strokeBottomColor = withAlpha(Color.BLACK, 0.07f);
+                    indicatorPaint.setColor(withAlpha(Color.BLACK, 0.08f));
+                    shadowAlpha = Math.round(0.05f * 255);
+                }
+            }
+
+            fillPaint.setColor(fillOverBlur ? Color.TRANSPARENT : fillColor);
+
+            // The gradients are made again with the new colors.
+            shaderTop = Float.NaN;
+            invalidateSelf();
+        }
+
+        /**
+         * @param background The background the app gave the navigation bar.
+         */
+        void setAppBackground(@Nullable Drawable background) {
+            if (appBackground != null && appBackground != background) {
+                appBackground.setCallback(null);
+            }
+
+            // A plain color or an opaque background is the solid bar of the app, such as in
+            // the Shorts player, and is left out so the capsule stays translucent.
+            appBackground = background == null || appBackgroundFailed
+                    || background instanceof ColorDrawable
+                    || background.getOpacity() == PixelFormat.OPAQUE
+                    ? null
+                    : background;
+            if (appBackground != null) {
+                lightenAppBackgroundTint(appBackground);
+                appBackground.setCallback(appBackgroundCallback);
+                appBackground.setVisible(true, false);
+                appBackground.setBounds(getBounds());
+            }
+            invalidateSelf();
+        }
+
+        /**
+         * The blurred background of the app draws the translucent color of the bar over the blur,
+         * which makes the capsule dark. Its alpha is lowered, so more of the blurred content shows.
+         * The color is found with reflection in the fields of the background: paints and colors
+         * that are translucent.
+         */
+        private void lightenAppBackgroundTint(Drawable background) {
+            try {
+                final int maxAlpha = Math.round((style == STYLE_LIGHT ? 0.55f : 0.35f) * 255);
+                List<Integer> paintColors = new ArrayList<>();
+                List<Field> intFields = new ArrayList<>();
+
+                for (Class<?> type = background.getClass();
+                     type != null && !type.getName().startsWith("android.") && !type.getName().startsWith("java.");
+                     type = type.getSuperclass()) {
+                    for (Field field : type.getDeclaredFields()) {
+                        if (Modifier.isStatic(field.getModifiers())) continue;
+                        field.setAccessible(true);
+                        Object value = field.get(background);
+
+                        if (value instanceof Paint paint) {
+                            final int color = paint.getColor();
+                            final int alpha = Color.alpha(color);
+                            Logger.printDebug(() -> "Glass app background paint: " + field.getName()
+                                    + " color: " + Integer.toHexString(color) + " shader: " + paint.getShader());
+                            if (paint.getShader() == null && alpha > maxAlpha && alpha < 255) {
+                                paintColors.add(color);
+                                paint.setColor(withAlpha(color, maxAlpha / 255f));
+                            }
+                        } else if (value instanceof ColorDrawable colorDrawable) {
+                            final int color = colorDrawable.getColor();
+                            final int alpha = Color.alpha(color);
+                            Logger.printDebug(() -> "Glass app background color: " + field.getName()
+                                    + " color: " + Integer.toHexString(color));
+                            if (alpha > maxAlpha && alpha < 255) {
+                                paintColors.add(color);
+                                colorDrawable.setColor(withAlpha(color, maxAlpha / 255f));
+                            }
+                        } else if (field.getType() == int.class) {
+                            intFields.add(field);
+                        }
+                    }
+                }
+
+                // A color the paint is given again before every draw.
+                for (Field field : intFields) {
+                    final int value = field.getInt(background);
+                    final int alpha = Color.alpha(value);
+                    if (alpha > maxAlpha && alpha < 255) {
+                        Logger.printDebug(() -> "Glass app background int: " + field.getName()
+                                + " value: " + Integer.toHexString(value));
+                        if (paintColors.contains(value)) {
+                            field.setInt(background, withAlpha(value, maxAlpha / 255f));
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "lightenAppBackgroundTint failure", ex);
+            }
+        }
+
+        @Override
+        protected void onBoundsChange(@NonNull Rect bounds) {
+            if (appBackground != null) {
+                appBackground.setBounds(bounds);
+            }
+        }
+
+        void onSelectedTabChanged() {
+            animationFromValid = lastIndicatorValid;
+            animationFromLeft = lastIndicatorLeft;
+            animationFromRight = lastIndicatorRight;
+
+            indicatorAnimator.cancel();
+            if (animationFromValid) {
+                indicatorAnimator.start();
+            } else {
+                invalidateSelf();
+            }
+        }
+
+        private void updateShaders() {
+            if (capsule.top == shaderTop && capsule.bottom == shaderBottom
+                    && capsule.left == shaderLeft && capsule.right == shaderRight) return;
+            shaderTop = capsule.top;
+            shaderBottom = capsule.bottom;
+            shaderLeft = capsule.left;
+            shaderRight = capsule.right;
+
+            final float radius = capsule.height() / 2;
+            capsulePath.reset();
+            capsulePath.addRoundRect(capsule, radius, radius, Path.Direction.CW);
+
+            // Only made again when the size of the capsule or the colors change, not on every frame.
+            sheenPaint.setShader(new LinearGradient(0, capsule.top, 0, capsule.bottom,
+                    sheenTopColor, Color.TRANSPARENT, Shader.TileMode.CLAMP));
+            strokePaint.setShader(new LinearGradient(0, capsule.top, 0, capsule.bottom,
+                    strokeTopColor, strokeBottomColor, Shader.TileMode.CLAMP));
+        }
+
+        @Override
+        public void draw(@NonNull Canvas canvas) {
+            try {
+                Rect bounds = getBounds();
+                // The bottom padding of the navigation bar is the room for the system navigation
+                // buttons or gesture handle. The capsule holds the whole height of the buttons
+                // and reaches only slightly into that room, so it floats above the gesture handle.
+                final int bottomRoom = host.getPaddingBottom();
+                final float bottom = bounds.bottom - bottomRoom
+                        + Math.max(0, Math.min(bottomRoom - FLOATING_ROOM, maxMarginBottom));
+                capsule.set(bounds.left + marginHorizontal, bounds.top, bounds.right - marginHorizontal, bottom);
+                if (capsule.width() <= 0 || capsule.height() <= 0) return;
+
+                final float radius = capsule.height() / 2;
+                updateShaders();
+
+                // Soft shadow below the capsule.
+                for (int i = SHADOW_LAYERS; i >= 1; i--) {
+                    scratch.set(capsule);
+                    scratch.inset(-i * 0.5f * strokeWidth, -i * 0.5f * strokeWidth);
+                    scratch.offset(0, i * strokeWidth);
+                    shadowPaint.setAlpha(shadowAlpha / i);
+                    final float shadowRadius = scratch.height() / 2;
+                    canvas.drawRoundRect(scratch, shadowRadius, shadowRadius, shadowPaint);
+                }
+
+                final boolean overBlur = appBackground != null && style != STYLE_SHORTS;
+                if (overBlur != fillOverBlur) {
+                    fillOverBlur = overBlur;
+                    fillPaint.setColor(overBlur ? Color.TRANSPARENT : fillColor);
+                }
+                if (overBlur) {
+                    // The blurred background of the app, only inside the capsule.
+                    final int saveCount = canvas.save();
+                    try {
+                        canvas.clipPath(capsulePath);
+                        appBackground.draw(canvas);
+                    } catch (Exception ex) {
+                        // The background of the app may expect to be drawn by the bar itself.
+                        Logger.printException(() -> "Glass navigation bar app background failure", ex);
+                        appBackgroundFailed = true;
+                        setAppBackground(null);
+                    } finally {
+                        canvas.restoreToCount(saveCount);
+                    }
+                }
+
+                if (Color.alpha(fillPaint.getColor()) != 0) {
+                    canvas.drawRoundRect(capsule, radius, radius, fillPaint);
+                }
+                canvas.drawRoundRect(capsule, radius, radius, sheenPaint);
+
+                drawIndicator(canvas);
+
+                scratch.set(capsule);
+                scratch.inset(strokeWidth / 2, strokeWidth / 2);
+                final float strokeRadius = scratch.height() / 2;
+                canvas.drawRoundRect(scratch, strokeRadius, strokeRadius, strokePaint);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Glass navigation bar draw failure", ex);
+            }
+        }
+
+        private void drawIndicator(Canvas canvas) {
+            lastIndicatorValid = false;
+
+            View tab = getSelectedTabView();
+            if (tab == null || tab.getVisibility() != View.VISIBLE || tab.getWidth() <= 0) return;
+
+            // The position of the tab inside the navigation bar.
+            float tabLeft = 0;
+            View view = tab;
+            while (view != host) {
+                tabLeft += view.getLeft() + view.getTranslationX();
+                ViewParent parent = view.getParent();
+                if (!(parent instanceof View parentView) || view.getVisibility() != View.VISIBLE) {
+                    return;
+                }
+                view = parentView;
+            }
+
+            final float minLeft = capsule.left + indicatorInset;
+            final float maxRight = capsule.right - indicatorInset;
+            float targetLeft = tabLeft + indicatorInset;
+            float targetRight = tabLeft + tab.getWidth() - indicatorInset;
+            if (targetRight - targetLeft > indicatorMaxWidth) {
+                final float center = (targetLeft + targetRight) / 2;
+                targetLeft = center - indicatorMaxWidth / 2f;
+                targetRight = center + indicatorMaxWidth / 2f;
+            }
+            targetLeft = Math.max(targetLeft, minLeft);
+            targetRight = Math.min(targetRight, maxRight);
+
+            float left = targetLeft;
+            float right = targetRight;
+            if (animationFromValid && indicatorAnimator.isRunning()) {
+                final float fraction = (float) indicatorAnimator.getAnimatedValue();
+                left = animationFromLeft + (targetLeft - animationFromLeft) * fraction;
+                right = animationFromRight + (targetRight - animationFromRight) * fraction;
+            }
+            if (right - left <= 0) return;
+
+            scratch.set(left, capsule.top + indicatorInset, right, capsule.bottom - indicatorInset);
+            if (scratch.height() <= 0) return;
+            final float radius = scratch.height() / 2;
+            canvas.drawRoundRect(scratch, radius, radius, indicatorPaint);
+
+            lastIndicatorLeft = left;
+            lastIndicatorRight = right;
+            lastIndicatorValid = true;
+        }
+
+        @Override
+        public void setAlpha(int alpha) {
+            // The glass keeps its own translucency.
+        }
+
+        @Override
+        public void setColorFilter(@Nullable ColorFilter colorFilter) {
+            // The colors come from the theme.
+        }
+
+        @Override
+        public int getOpacity() {
+            return PixelFormat.TRANSLUCENT;
+        }
+    }
+
+    private GlassNavigationBar() {
+    }
+}

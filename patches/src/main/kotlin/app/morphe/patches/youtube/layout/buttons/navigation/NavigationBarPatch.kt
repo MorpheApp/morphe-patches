@@ -259,7 +259,8 @@ val navigationBarPatch = bytecodePatch(
         navPreferences += listOf(
             SwitchPreference("morphe_hide_navigation_new_content_dot"),
             SwitchPreference("morphe_navigation_bar_animations", summary = true),
-            ListPreference("morphe_navigation_bar_style")
+            ListPreference("morphe_navigation_bar_style"),
+            SwitchPreference("morphe_navigation_bar_glass", summary = true)
         )
 
         if (is_20_31_or_greater) {
@@ -366,6 +367,39 @@ val navigationBarPatch = bytecodePatch(
                         return-void
                     """
                 )
+
+                // The glass style keeps some room below the buttons, so the capsule floats above
+                // the bottom of the screen. The padding of the bar is reset from several places,
+                // so the room is kept wherever the padding is set.
+                // The room is added to the height when the bar is measured, also while the app
+                // animates the height of the bar to hide it.
+                if (methods.none { it.name == "onMeasure" }) {
+                    addBridge(
+                        "onMeasure", listOf("I", "I"), "V", 3,
+                        """
+                            invoke-static { p0, p2 }, $EXTENSION_CLASS->getNavigationBarHeightMeasureSpec(Landroid/view/View;I)I
+                            move-result p2
+                            invoke-super { p0, p1, p2 }, $superclass->onMeasure(II)V
+                            return-void
+                        """,
+                        AccessFlags.PROTECTED.value
+                    )
+                }
+
+                if (methods.none { it.name == "setPadding" || it.name == "setPaddingRelative" }) {
+                    listOf("setPadding", "setPaddingRelative").forEach { name ->
+                        addBridge(
+                            name, listOf("I", "I", "I", "I"), "V", 5,
+                            """
+                                invoke-static { p0, p4 }, $EXTENSION_CLASS->getNavigationBarPadding(Landroid/view/View;I)I
+                                move-result p4
+                                invoke-super { p0, p1, p2, p3, p4 }, $superclass->$name(IIII)V
+                                return-void
+                            """,
+                            AccessFlags.PUBLIC.value
+                        )
+                    }
+                }
             }
         }
 
@@ -478,6 +512,10 @@ val navigationBarPatch = bytecodePatch(
         // of turning off the feature flags that drive them. Those flags also switch the app out of
         // edge to edge, which moves the whole window layout and breaks everything measuring against it.
         addBottomBarContainerHook("$EXTENSION_CLASS->setNavigationBarOpaque(Landroid/view/View;)V")
+
+        // The glass style draws the navigation bar as a floating translucent capsule,
+        // as the background of the navigation bar, without changing its height or layout.
+        addBottomBarContainerHook("$EXTENSION_CLASS->setNavigationBarGlass(Landroid/view/View;)V")
 
         // The translucent theme hands the window a transparent color for the system navigation
         // buttons, so an opaque one is swapped in there instead of turning off the feature flag.
