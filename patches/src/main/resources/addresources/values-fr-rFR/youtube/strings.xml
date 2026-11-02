@@ -277,6 +277,9 @@ Les changements incluent :
   <string name="morphe_hide_comments_emoji_button_title">Masquer le bouton \'Émoji\'</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Masquer les options de la barre de filtres</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Masque toutes les options de la barre de filtres, à l\'exception de \'Les plus populaires\' et \'Les plus récents\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Masquer le bouton \'GIF\'</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Masquer les GIF et les images</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Masque les GIF et les images joints aux commentaires et aux réponses</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Masquer l\'animation des cadeaux et les cartes</string>
   <string name="morphe_hide_comments_gift_button_title">Masquer le bouton \'Cadeau\'</string>
   <string name="morphe_hide_comments_info_button_title">Masquer le bouton \'Info\'</string>
@@ -444,9 +447,9 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <string name="morphe_copy_comments_success">Commentaire copié dans le presse-papiers</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Appuyez longuement pour ouvrir le menu vidéo</string>
-  <string name="morphe_feed_long_press_menu_summary">Un appui long n\'importe où sur une vidéo du flux ouvre son menu</string>
+  <string name="morphe_feed_long_press_menu_summary">Appuyer longuement n\'importe où sur une vidéo du flux ouvre son menu</string>
   <string name="morphe_feed_watch_later_button_title">Afficher le bouton \'À regarder plus tard\' sur les miniatures</string>
-  <string name="morphe_feed_watch_later_button_summary">Un bouton \"À regarder plus tard\" s\'affiche sur les miniatures des vidéos du flux, avec une coche si la vidéo est enregistrée. Appuyez dessus pour enregistrer ou supprimer la vidéo, et maintenez l\'appui pour ouvrir \"Enregistrer dans une playlist\"</string>
+  <string name="morphe_feed_watch_later_button_summary">Un bouton \'À regarder plus tard\' s\'affiche sur les miniatures des vidéos du flux, avec une coche si la vidéo a été enregistrée. Appuyez dessus pour enregistrer ou supprimer la vidéo. Appuyez longuement pour ouvrir \'Enregistrer dans une playlist\'</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Télécharger les images des posts</string>
   <string name="morphe_post_image_download_summary">Un bouton de téléchargement s\'affiche à côté du bouton \'Partager\' pour les posts contenant des images ou des GIF, et un élément de téléchargement est ajoutée à leur menu</string>
@@ -526,6 +529,7 @@ Dossier d'exportation : %s"</string>
   <string name="morphe_export_download_folder_change">Changer de dossier</string>
   <string name="morphe_export_download_folder_changed">Dossier d\'exportation changé</string>
   <string name="morphe_export_download_folder_reset">Dossier d\'exportation réinitialisé</string>
+  <string name="morphe_export_download_folder_missing">Impossible de trouver le dossier d\'exportation %s</string>
   <string name="morphe_export_download_flyout_title">Exporter vers l\'appareil</string>
   <string name="morphe_export_download_started">Exportation de la vidéo</string>
   <string name="morphe_export_download_progress">Exportation de la vidéo : %d%%</string>
@@ -959,7 +963,6 @@ Pour accéder aux paramètres, activez le bouton 'Paramètres' via Général →
   <string name="morphe_navigation_bar_style_user_dialog_message">Ce style peut ne pas être pris en charge par votre appareil ou votre version de YouTube, et peut entraîner des problèmes de mise en page ou des plantages</string>
   <string name="morphe_toolbar_screen_title">Barre d\'outils</string>
   <string name="morphe_toolbar_screen_summary">Choisissez les composants qui apparaissent dans la barre d\'outils</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Masquer le bouton \'Caster\'</string>
   <string name="morphe_hide_toolbar_chat_button_title">Masquer le bouton \'Discuter\'</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Masquer le bouton \'Micro\'</string>
   <string name="morphe_hide_toolbar_search_button_title">Masquer le bouton \'Rechercher\'</string>
@@ -1015,6 +1018,7 @@ Pour afficher le menu 'Piste audio', changez 'Falsifier les flux vidéo' et sél
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Masquer le bouton \'Sous-titres\'</string>
   <string name="morphe_hide_cast_button_title">Masquer le bouton \'Caster\'</string>
+  <string name="morphe_hide_cast_button_summary">Masque le bouton \'Caster\' dans le lecteur vidéo et la barre d\'outils</string>
   <string name="morphe_hide_collapse_button_title">Masquer le bouton \'Réduire\'</string>
   <string name="morphe_hide_fullscreen_button_title">Masquer le bouton \'Plein écran\'</string>
   <string name="morphe_hide_player_control_buttons_background_title">Masquer l\'arrière-plan des commandes du lecteur</string>
@@ -1181,11 +1185,6 @@ Mise en page pour automobile
 • L'overlay 'Plus de vidéos' peut ne pas être disponible
 • Les Shorts s'ouvrent dans le lecteur normal
 • L'ancienne barre d’actions vidéo non réduite est affichée"</string>
-  <string name="morphe_tablet_layout_in_player_title">Activer la mise en page pour tablette dans le lecteur</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Restaure l'ancienne mise en page du lecteur
-
-Limitation : Si la \"Mise en page de la barre d'actions vidéo\" n'est pas sur Classique, l'overlay \"Plus de vidéos\" peut ne pas être disponible"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 – Rétabli l\'ancien comportement des sous-titres</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaure l\'ancien enregistrement dans la playlist</string>
@@ -1547,9 +1546,10 @@ La lecture de vidéos en AV1 peut présenter des saccades ou des pertes d'images
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Mise en page de la barre d\'actions vidéo</string>
   <string name="morphe_video_action_bar_layout_entry_1">Par défaut</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Classique</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Classique sur une seule ligne</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimaliste</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Limitation : Le mode Classique revient à l\'ancien style d\'overlay \"Plus de vidéos\"</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Classique sur deux lignes</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Limitation : Les mises en page Classiques rétablissent l\'ancien style d\'overlay \'Plus de vidéos\'</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Style des icônes du lecteur</string>
   <string name="morphe_player_icon_style_entry_auto">Automatique</string>

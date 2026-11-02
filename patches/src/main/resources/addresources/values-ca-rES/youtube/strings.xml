@@ -277,6 +277,9 @@ Els canvis inclouen:
   <string name="morphe_hide_comments_emoji_button_title">Amaga el botó d\'Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Ocultar opcions de la barra de filtres</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Oculta totes les opcions de la barra de filtres exceptu \'Principals\' i \'Més recents\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Ocultar botó GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Ocultar GIFs i imatges</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Oculta els GIFs i les imatges adjuntes als comentaris i les respostes</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Amaga l\'animació i les targetes de regal</string>
   <string name="morphe_hide_comments_gift_button_title">Amaga el botó de Regal</string>
   <string name="morphe_hide_comments_info_button_title">Ocultar el botó d\'Informació</string>
@@ -526,6 +529,7 @@ Carpeta d'exportació: %s"</string>
   <string name="morphe_export_download_folder_change">Canvia la carpeta</string>
   <string name="morphe_export_download_folder_changed">Carpeta d\'exportació canviada</string>
   <string name="morphe_export_download_folder_reset">Carpeta d\'exportació ressetjada</string>
+  <string name="morphe_export_download_folder_missing">No s\'ha pogut trobar la carpeta d\'exportació %s</string>
   <string name="morphe_export_download_flyout_title">Exporta al dispositiu</string>
   <string name="morphe_export_download_started">Exportant el vídeo</string>
   <string name="morphe_export_download_progress">Exportant el vídeo: %d%%</string>
@@ -959,7 +963,6 @@ Per accedir a la Configuració, activa el botó de Configuració a través de Ge
   <string name="morphe_navigation_bar_style_user_dialog_message">És possible que el vostre dispositiu o la versió de YouTube no admetin aquest estil, i això pot causar problemes de disposició o errors</string>
   <string name="morphe_toolbar_screen_title">Barra d\'eines</string>
   <string name="morphe_toolbar_screen_summary">Trieu quins components apareixen a la barra d\'eines</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Ocultar el botó de Cast</string>
   <string name="morphe_hide_toolbar_chat_button_title">Oculta el botó de Xat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ocultar el botó del Micròfon</string>
   <string name="morphe_hide_toolbar_search_button_title">Ocultar el botó de cerca</string>
@@ -1015,6 +1018,7 @@ Per mostrar el menú 'Audio Track', canvia 'Spoof video streams' a qualsevol cli
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Amaga el botó de Subtítols</string>
   <string name="morphe_hide_cast_button_title">Amaga el botó de Cast</string>
+  <string name="morphe_hide_cast_button_summary">Oculta el botó de Cast al reproductor de vídeo i a la barra d\'eines</string>
   <string name="morphe_hide_collapse_button_title">Amaga el botó de Contraure</string>
   <string name="morphe_hide_fullscreen_button_title">Amaga el botó de Pantalla completa</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ocultar el fons dels controls del reproductor</string>
@@ -1180,11 +1184,6 @@ Disseny d'automoció
 • L'estrat 'Més vídeos' pot no estar disponible
 • Els Shorts s'obrin al reproductor habitual
 • Es mostra la barra d'acions de vídeo antiga no col·lapsada"</string>
-  <string name="morphe_tablet_layout_in_player_title">Habilitar la disposició de tauleta al reproductor</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Restaura la disposició antiga del reproductor
-
-Limitació: Si la \"Disposició de la barra d'accions de vídeo\" no és Clàssica, potser la superposició de \"Més vídeos\" no estarà disponible"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restaurar el comportament antic dels subtítols</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar l\'opció antiga de desar a la llista de reproducció</string>
@@ -1546,9 +1545,10 @@ La reproducció de vídeos amb AV1 pot tenir talls o pèrdues de fotogrames"</st
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Disposició de la barra d\'accions de vídeo</string>
   <string name="morphe_video_action_bar_layout_entry_1">Per defecte</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Clàssica</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Clàssic d\'una fila</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimalista</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Limitació: El mode Clàssic torna a l\'estil antic de la superposició de \"Més vídeos\"</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Dues files clàssiques</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Limitació: els dissenys clàssics tornen a l\'estil antic de la capa superposada \"Més vídeos\"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Estil de la icona del reproductor</string>
   <string name="morphe_player_icon_style_entry_auto">Automàtic</string>

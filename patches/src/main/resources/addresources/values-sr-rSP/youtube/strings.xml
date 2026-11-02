@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">Сакриј дугме за емоџије</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Сакиј опције траке филтера</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Сакиј све опције траке филтера осим ‘Најбоље’ и ‘Најновије’</string>
+  <string name="morphe_hide_comments_gif_button_title">Сакриј GIF дугме</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Сакриј GIF-ове и слике</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Скрива GIF-ове и слике прикрепљене уз коментаре и одговоре</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Сакриј анимацију и картице поклона</string>
   <string name="morphe_hide_comments_gift_button_title">Сакриј дугме „Поклон”</string>
   <string name="morphe_hide_comments_info_button_title">Сакриј дугме Инфо</string>
@@ -526,6 +529,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">Промени фолдер</string>
   <string name="morphe_export_download_folder_changed">Фолдер за извоз је промењен</string>
   <string name="morphe_export_download_folder_reset">Фолдер за извоз је ресетован</string>
+  <string name="morphe_export_download_folder_missing">Није могуће пронаћи фолдер за извоз %s</string>
   <string name="morphe_export_download_flyout_title">Извези на уређај</string>
   <string name="morphe_export_download_started">Извоз видеозаписа</string>
   <string name="morphe_export_download_progress">Извоз видео записа: %d%%</string>
@@ -957,7 +961,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Овај стил можда није подржан на вашем уређају или верзији YouTube-а, и може изазвати проблеме са изгледајом или рушење апликације</string>
   <string name="morphe_toolbar_screen_title">Traka za alatke</string>
   <string name="morphe_toolbar_screen_summary">Одаберите које компоненте ће се појавити у траци са алаткама.</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Сакриј дугме „Пребацуј”</string>
   <string name="morphe_hide_toolbar_chat_button_title">Сакриј дугме за ћаскање</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Сакриј дугме „Микрофон“</string>
   <string name="morphe_hide_toolbar_search_button_title">Сакриј дугме „Претрага“</string>
@@ -1013,6 +1016,7 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Сакриј дугме „Титл”</string>
   <string name="morphe_hide_cast_button_title">Сакриј дугме „Пребацуј”</string>
+  <string name="morphe_hide_cast_button_summary">Скрива дугме за пренос у видео плејеру и alatnoj traci</string>
   <string name="morphe_hide_collapse_button_title">Сакриј дугме „Скрати”</string>
   <string name="morphe_hide_fullscreen_button_title">Сакриј дугме „Пребаци на цео екран”</string>
   <string name="morphe_hide_player_control_buttons_background_title">Сакриј позадину контрола плејера</string>
@@ -1178,11 +1182,6 @@ Second \"item\" text"</string>
 • Прекрышће „Више видео снимака“ можда неће бити доступно
 • Shorts се отварају у редовном плејеру
 • Приказана је нерастворена старa трака радњи за видео записе"</string>
-  <string name="morphe_tablet_layout_in_player_title">Укључи таблет распоред у плејеру</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Враћа стари изглед плејера
-
-Ограничење: Ако \"Изглед траке са акцијама видеа\" није Класичан, преклоп \"Више видеоја\" можда неће бити доступан"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Врати старо понашање титлова</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Враћа старе иконице плејера</string>
@@ -1544,9 +1543,10 @@ AVC (H.264)
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Изглед траке са акцијама видеа</string>
   <string name="morphe_video_action_bar_layout_entry_1">Подразумевано</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Класичан</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Класичан један ред</string>
   <string name="morphe_video_action_bar_layout_entry_3">Минималан</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Ограничење: Класичан враћа преклоп \"Више видеоја\" на стари стил</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Класичан два реда</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Ограничење: Класични изгледи се враћају на стари стил прекривача „Више видео снимака”</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Стил иконице плејера</string>
   <string name="morphe_player_icon_style_entry_auto">Аутоматски</string>

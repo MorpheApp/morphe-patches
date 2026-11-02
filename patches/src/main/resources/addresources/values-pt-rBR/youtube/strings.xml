@@ -277,6 +277,9 @@ As mudanças incluem:
   <string name="morphe_hide_comments_emoji_button_title">Ocultar botão Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Ocultar opções da barra de filtros</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Oculta todas as opções da barra de filtros, exceto \'Principais\' e \'Mais recentes\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Ocultar botão GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Ocultar GIFs e imagens</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Oculta GIFs e imagens anexados a comentários e respostas</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Ocultar animação e cartões de presente</string>
   <string name="morphe_hide_comments_gift_button_title">Ocultar botão Presente</string>
   <string name="morphe_hide_comments_info_button_title">Ocultar botão Informações</string>
@@ -526,6 +529,7 @@ Pasta de exportação: %s"</string>
   <string name="morphe_export_download_folder_change">Alterar pasta</string>
   <string name="morphe_export_download_folder_changed">Pasta de exportação alterada</string>
   <string name="morphe_export_download_folder_reset">Pasta de exportação redefinida</string>
+  <string name="morphe_export_download_folder_missing">Não foi possível encontrar a pasta de exportação %s</string>
   <string name="morphe_export_download_flyout_title">Exportar para o dispositivo</string>
   <string name="morphe_export_download_started">Exportando vídeo</string>
   <string name="morphe_export_download_progress">Exportando vídeo: %d%%</string>
@@ -959,7 +963,6 @@ Para acessar as Configurações, ative o botão Configurações via Geral → Ba
   <string name="morphe_navigation_bar_style_user_dialog_message">Este estilo pode não ser suportado pelo seu dispositivo ou versão do YouTube, e pode causar problemas de layout ou travamentos</string>
   <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
   <string name="morphe_toolbar_screen_summary">Escolha quais componentes aparecem na barra de ferramentas</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Ocultar botão Transmitir</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ocultar botão Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ocultar botão de Microfone</string>
   <string name="morphe_hide_toolbar_search_button_title">Ocultar botão Pesquisar</string>
@@ -1015,6 +1018,7 @@ Para mostrar o menu 'Faixa de áudio', altere 'Simular streams de vídeo' para q
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Ocultar botão Legendas</string>
   <string name="morphe_hide_cast_button_title">Ocultar botão Transmitir</string>
+  <string name="morphe_hide_cast_button_summary">Oculta o botão Cast no player de vídeo e na barra de ferramentas</string>
   <string name="morphe_hide_collapse_button_title">Ocultar botão Recolher</string>
   <string name="morphe_hide_fullscreen_button_title">Ocultar botão Tela cheia</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ocultar plano de fundo dos controles do player</string>
@@ -1179,11 +1183,6 @@ Layout automotivo
 • A sobreposição \"Mais vídeos\" pode não estar disponível
 • Os Shorts são abertos no player padrão
 • A barra de ações de vídeo antiga e expandida é exibida"</string>
-  <string name="morphe_tablet_layout_in_player_title">Ativar layout de tablet no player</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Restaura o layout antigo do player
-
-Limitação: Se o \"Layout da barra de ações de vídeo\" não for Clássico, a sobreposição \"Mais vídeos\" pode não estar disponível"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restaurar comportamento antigo de legendas</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar velho save para playlist</string>
@@ -1545,9 +1544,10 @@ A reprodução de vídeos com AV1 pode apresentar travamentos ou perda de frames
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Layout da barra de ações de vídeo</string>
   <string name="morphe_video_action_bar_layout_entry_1">Padrão</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Clássico</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Clássico de Uma Linha</string>
   <string name="morphe_video_action_bar_layout_entry_3">Mínimo</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Limitação: O modo Clássico reverte para a sobreposição \"Mais vídeos\" do estilo antigo</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Duas Linhas Clássicas</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Limitação: Layouts clássicos revertem para a sobreposição antiga de \"Mais vídeos\"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Estilo do ícone do player</string>
   <string name="morphe_player_icon_style_entry_auto">Automático</string>

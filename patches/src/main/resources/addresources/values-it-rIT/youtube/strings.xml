@@ -277,6 +277,9 @@ Le modifiche includono:
   <string name="morphe_hide_comments_emoji_button_title">Nascondi il pulsante Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Nascondi le opzioni della barra dei filtri</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Nasconde tutte le opzioni di ordinamento dei commenti tranne \"In primo piano\" e \"Più recenti\"</string>
+  <string name="morphe_hide_comments_gif_button_title">Nascondi pulsante GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Nascondi GIF e immagini</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Nasconde GIF e immagini allegate a commenti e risposte</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Nascondi animazione e cartoline regalo</string>
   <string name="morphe_hide_comments_gift_button_title">Nascondi pulsante Regalo</string>
   <string name="morphe_hide_comments_info_button_title">Nascondi il pulsante Info</string>
@@ -526,6 +529,7 @@ Cartella di esportazione: %s"</string>
   <string name="morphe_export_download_folder_change">Cambia cartella</string>
   <string name="morphe_export_download_folder_changed">Cartella di esportazione modificata</string>
   <string name="morphe_export_download_folder_reset">Cartella di esportazione ripristinata</string>
+  <string name="morphe_export_download_folder_missing">Impossibile trovare la cartella di esportazione %s</string>
   <string name="morphe_export_download_flyout_title">Esporta sul dispositivo</string>
   <string name="morphe_export_download_started">Esportazione video in corso</string>
   <string name="morphe_export_download_progress">Esportazione video: %d%%</string>
@@ -959,7 +963,6 @@ Per accedere alle Impostazioni, abilita il pulsante delle Impostazioni tramite G
   <string name="morphe_navigation_bar_style_user_dialog_message">Questo stile potrebbe non essere supportato dal tuo dispositivo o dalla versione di YouTube, e può causare problemi di layout o crash</string>
   <string name="morphe_toolbar_screen_title">Barra degli strumenti</string>
   <string name="morphe_toolbar_screen_summary">Scegli quali componenti mostrare nella barra degli strumenti</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Nascondi il pulsante Trasmetti</string>
   <string name="morphe_hide_toolbar_chat_button_title">Nascondi il pulsante Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Nascondi il pulsante Microfono</string>
   <string name="morphe_hide_toolbar_search_button_title">Nascondi il pulsante Cerca</string>
@@ -1015,6 +1018,7 @@ Per mostrare il menu 'Audio Track', cambia 'Falsificazione dei flussi video' in 
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Nascondi il pulsante Sottotitoli</string>
   <string name="morphe_hide_cast_button_title">Nascondi il pulsante Trasmetti</string>
+  <string name="morphe_hide_cast_button_summary">Nasconde il pulsante Cast nel lettore video e nella barra degli strumenti</string>
   <string name="morphe_hide_collapse_button_title">Nascondi il pulsante Comprimi</string>
   <string name="morphe_hide_fullscreen_button_title">Nascondi il pulsante Schermo intero</string>
   <string name="morphe_hide_player_control_buttons_background_title">Nascondi lo sfondo dei controlli del lettore</string>
@@ -1179,11 +1183,6 @@ Layout automotive
 • L'overlay 'Altri video' potrebbe non essere disponibile
 • Gli Short si aprono nel lettore normale
 • Viene mostrata la vecchia barra delle azioni del video non compattata"</string>
-  <string name="morphe_tablet_layout_in_player_title">Abilita layout per tablet nel lettore</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Ripristina il layout precedente del player
-
-Limitazione: se \"Layout barra azioni video\" non è impostato su Classico, la sovrapposizione \"Altri video\" potrebbe non essere disponibile"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Ripristina il vecchio comportamento dei sottotitoli</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ripristina le vecchie icone del player Shorts</string>
@@ -1545,9 +1544,10 @@ La riproduzione video con AV1 potrebbe rallentare o perdere fotogrammi"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Layout barra azioni video</string>
   <string name="morphe_video_action_bar_layout_entry_1">Predefinita</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Classico</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Classico a riga singola</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimale</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Limitazione: Classico ripristina la vecchia sovrapposizione \"Altri video\"</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Classico a due righe</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Limitazione: i layout classici tornano al vecchio stile di sovrapposizione \"Altri video\"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Stile icona del lettore</string>
   <string name="morphe_player_icon_style_entry_auto">Automatico</string>

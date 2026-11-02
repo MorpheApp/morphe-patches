@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">ইমোজি বোতাম লুকান</string>
   <string name="morphe_hide_comments_filter_bar_options_title">ফিল্টার বার অপশন লুকান</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\"Top\" এবং \"Newest\" ছাড়া ফিল্টার বার-এর সমস্ত অপশন লুকায়</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF বোতামটি লুকান</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF এবং ছবিগুলো লুকান</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">মন্তব্য এবং উত্তরের সাথে যুক্ত GIF এবং ছবিগুলো লুকায়</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">গिफ्ट অ্যানিমেশন এবং কার্ড লুকান</string>
   <string name="morphe_hide_comments_gift_button_title">গिफ्ट বোতামটি লুকান</string>
   <string name="morphe_hide_comments_info_button_title">লুকান তথ্য বোতাম</string>
@@ -526,6 +529,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">ফোল্ডার পরিবর্তন করুন</string>
   <string name="morphe_export_download_folder_changed">এক্সপোর্ট ফোল্ডার পরিবর্তিত হয়েছে</string>
   <string name="morphe_export_download_folder_reset">এক্সপোর্ট ফোল্ডার রিসেট করা হয়েছে</string>
+  <string name="morphe_export_download_folder_missing">এক্সপোর্ট ফোল্ডার %s পাওয়া যায়নি</string>
   <string name="morphe_export_download_flyout_title">ডিভাইসে এক্সপোর্ট করুন</string>
   <string name="morphe_export_download_started">ভিডিও এক্সপোর্ট করা হচ্ছে</string>
   <string name="morphe_export_download_progress">ভিডিও এক্সপোর্ট করা হচ্ছে: %d%%</string>
@@ -959,7 +963,6 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_navigation_bar_style_user_dialog_message">এই স্টাইলটি আপনার ডিভাইস বা YouTube ভার্সন দ্বারা সমর্থিত নাও হতে পারে এবং এর ফলে লেআউটে সমস্যা হতে পারে বা ক্র্যাশ করতে পারে</string>
   <string name="morphe_toolbar_screen_title">টুলবার</string>
   <string name="morphe_toolbar_screen_summary">টুলবারে কোন উপাদানগুলো প্রদর্শিত হবে তা নির্বাচন করুন</string>
-  <string name="morphe_hide_toolbar_cast_button_title">কাস্ট বোতামটি লুকান</string>
   <string name="morphe_hide_toolbar_chat_button_title">চ্যাট বাটন লুকিয়ে রাখুন</string>
   <string name="morphe_hide_toolbar_microphone_button_title">মাইক্রোফোন বাটন লুকান</string>
   <string name="morphe_hide_toolbar_search_button_title">অনুসন্ধান বাটন লুকান</string>
@@ -1015,6 +1018,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">ক্যাপশন বোতামটি লুকান</string>
   <string name="morphe_hide_cast_button_title">কাস্ট বোতামটি লুকান</string>
+  <string name="morphe_hide_cast_button_summary">ভিডিও প্লেয়ার এবং টুলবারে কাস্ট বোতামটি লুকায়</string>
   <string name="morphe_hide_collapse_button_title">লুকানো সংকুচিত বোতাম</string>
   <string name="morphe_hide_fullscreen_button_title">Fullscreen বোতামটি লুকান</string>
   <string name="morphe_hide_player_control_buttons_background_title">প্লেয়ার কন্ট্রোল ব্যাকগ্রাউন্ড লুকান</string>
@@ -1180,11 +1184,6 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
 • 'আরও ভিডিও' ওভারলে উপলব্ধ নাও হতে পারে
 • শর্টসগুলো সাধারণ প্লেয়ারে খোলে
 • নন-ক্ল্যাপসড পুরনো ভিডিও অ্যাকশন বার দেখানো হয়"</string>
-  <string name="morphe_tablet_layout_in_player_title">প্লেয়ারে ট্যাবলেট লেআউট চালু করুন</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"পুরানো প্লেয়ার লেআউট ফিরিয়ে আনুন
-
-সীমাবদ্ধতা: যদি 'ভিডিও অ্যাকশন বার লেআউট' ক্লাসিক না হয়, তবে 'আরও ভিডিও' ওভারলেটি পাওয়া নাও যেতে পারে"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - পুরনো ক্যাপশন আচরণ পুনরুদ্ধার করুন</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - প্লেলিস্টে পুরোনো সেভ করার অপশন ফিরিয়ে আনুন</string>
@@ -1546,9 +1545,10 @@ AV1 দিয়ে ভিডিও প্লেব্যেকে বিড়�
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">ভিডিও অ্যাকশন বার লেআউট</string>
   <string name="morphe_video_action_bar_layout_entry_1">ডিফল্ট</string>
-  <string name="morphe_video_action_bar_layout_entry_2">ক্লাসিক</string>
+  <string name="morphe_video_action_bar_layout_entry_2">ক্লাসিক এক-সারি</string>
   <string name="morphe_video_action_bar_layout_entry_3">ন্যূনতম</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">সীমাবদ্ধতা: ক্লাসিক পুরনো শৈলীর \'আরও ভিডিও\' ওভারলেতে ফিরে যায়</string>
+  <string name="morphe_video_action_bar_layout_entry_4">ক্লাসিক দুই-সারি</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">সীমাবদ্ধতা: ক্লাসিক লেআউটগুলো পুরনো স্টাইলের \'আরও ভিডিও\' ওভারলে-তে ফিরে যায়</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">প্লেয়ার আইকন স্টাইল</string>
   <string name="morphe_player_icon_style_entry_auto">স্বয়ংক্রিয়</string>

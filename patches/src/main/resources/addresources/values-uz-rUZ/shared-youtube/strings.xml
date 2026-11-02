@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Ishga tushirish animatsiyasi</string>
   <string name="morphe_splash_screen_style_entry_1">O\"chirilgan</string>
   <string name="morphe_splash_screen_style_entry_2">Rang</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe rangli</string>
   <string name="morphe_splash_screen_style_entry_4">Monoxrom</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe monoxrom</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Yangi sozlamalarni belgilash</string>
+  <string name="morphe_settings_new_indicator_days_summary">Yangilanish orqali qo\'shilgan sozlamalar va variantlar yonida nuqta ko\'rsatiladigan kunlar soni</string>
+  <string name="morphe_settings_new_indicator_days_off">O\'chirilgan</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Sozlashni tugatish uchun qayta ishga tushirish</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -282,6 +287,7 @@ Keyinchalik o'chirilsa, UI xatolarining oldini olish uchun ilova ma'lumotlarini 
   <string name="morphe_ryd_failure_generic">Dislikes mavjud emas (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Egasi tomonidan yashirilgan</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Ushbu videoni siz va yana %s kishi yoqtirmadi</string>
   <string name="morphe_ryd_accessibility_dislike_percentage">Ushbu videoga yoqtirmaslik, ovozlarning %s qismi yoqtirmaganlar</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike ni yoqish</string>
   <string name="morphe_ryd_dislike_percentage_title">Dislike foiz sifatida ko‘rsatish</string>

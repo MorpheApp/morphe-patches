@@ -29,8 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">その他</string>
   <string name="morphe_settings_screen_12_video_title">動画</string>
   <string name="morphe_restore_old_settings_menus_title">YouTube の設定メニューを旧仕様に戻す</string>
-  <string name="morphe_native_snackbar_title">YouTubeのsnackbarにメッセージを表示</string>
-  <string name="morphe_native_snackbar_summary">プレイヤーボタンの確認など、Morpheのメッセージはポップアップの代わりにYouTubeのsnackbarで表示されます</string>
+  <string name="morphe_native_snackbar_title">YouTube のスナックバー通知にメッセージを表示</string>
+  <string name="morphe_native_snackbar_summary">プレーヤー ボタンの確認など、Morphe からのメッセージは、ポップアップではなく YouTube のスナックバー通知に表示されます</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">バックグラウンド再生の制限を解除</string>
   <string name="morphe_shorts_disable_background_playback_title">ショートのバックグラウンド再生を無効化</string>
@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">絵文字ボタンを非表示</string>
   <string name="morphe_hide_comments_filter_bar_options_title">コメント欄で基本のフィルタボタン以外を非表示</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">「人気順」「新しい順」以外の、コメント欄のフィルタボタンをすべて非表示にします</string>
+  <string name="morphe_hide_comments_gif_button_title">GIFボタンを非表示</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIFと画像を非表示</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">コメントや返信に添付されたGIFと画像を非表示にします</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">ギフト アニメーションとギフトカードを非表示</string>
   <string name="morphe_hide_comments_gift_button_title">ギフトボタンを非表示</string>
   <string name="morphe_hide_comments_info_button_title">情報ボタン (i アイコン) を非表示</string>
@@ -461,7 +464,7 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_post_image_download_not_found">この投稿には画像がありません</string>
   <!-- interaction.posttranslate.postTranslatePatch -->
   <string name="morphe_post_translate_title">投稿を翻訳</string>
-  <string name="morphe_post_translate_summary">コンテンツクリエイターの投稿を翻訳するためのフライアウトメニュー項目を追加します</string>
+  <string name="morphe_post_translate_summary">コンテンツ クリエイターの投稿を翻訳するためのフライアウト メニュー項目を追加します</string>
   <string name="morphe_post_translate_language_title">投稿の翻訳言語</string>
   <string name="morphe_post_translate_flyout">翻訳</string>
   <string name="morphe_post_translate_flyout_original">原文を表示</string>
@@ -527,6 +530,7 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_export_download_folder_change">フォルダを変更</string>
   <string name="morphe_export_download_folder_changed">エクスポートフォルダが変更されました</string>
   <string name="morphe_export_download_folder_reset">エクスポートフォルダをリセット</string>
+  <string name="morphe_export_download_folder_missing">書き出しフォルダ %s が見つかりませんでした</string>
   <string name="morphe_export_download_flyout_title">デバイスにエクスポート</string>
   <string name="morphe_export_download_started">ビデオをエクスポート中</string>
   <string name="morphe_export_download_progress">ビデオをエクスポート中: %d%%</string>
@@ -651,7 +655,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_save_to_watch_later_already_exists_toast">この動画は既に「後で見る」に保存されています</string>
   <string name="morphe_save_to_watch_later_error_toast">この動画は「後で見る」に保存できません</string>
   <string name="morphe_save_to_watch_later_flyout_title">[後で見る] に保存</string>
-  <string name="morphe_save_to_watch_later_flyout_button_title">プレーヤーのフライアウト メニューに「[後で見る]に保存」を表示</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">プレーヤーのメニューに「[後で見る]に保存」を表示</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">プレーヤー オーバーレイの歯車アイコンから呼び出されるフライアウト メニューに「[後で見る]に保存」を表示します。タップすると視聴中の動画を [後で見る] に保存します</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">「後で見る」をプレイリストにリダイレクト</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">後で見る</string>
@@ -960,7 +964,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_navigation_bar_style_user_dialog_message">このスタイルは、デバイスや YouTube のバージョンによってはサポートされていない場合があり、レイアウトの問題やクラッシュを引き起こす可能性があります</string>
   <string name="morphe_toolbar_screen_title">ツールバー</string>
   <string name="morphe_toolbar_screen_summary">ツールバーに表示するコンポーネントを設定します</string>
-  <string name="morphe_hide_toolbar_cast_button_title">キャストボタンを非表示</string>
   <string name="morphe_hide_toolbar_chat_button_title">チャットボタンを非表示</string>
   <string name="morphe_hide_toolbar_microphone_button_title">検索の音声入力ボタンを非表示</string>
   <string name="morphe_hide_toolbar_search_button_title">検索ボタンを非表示</string>
@@ -1016,6 +1019,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">字幕ボタンを非表示</string>
   <string name="morphe_hide_cast_button_title">キャストボタンを非表示</string>
+  <string name="morphe_hide_cast_button_summary">ビデオプレーヤーとツールバー内のキャストボタンを非表示にします</string>
   <string name="morphe_hide_collapse_button_title">最小化ボタンを非表示</string>
   <string name="morphe_hide_fullscreen_button_title">全画面表示ボタンを非表示</string>
   <string name="morphe_hide_player_control_buttons_background_title">プレーヤーのコントロールの背景を非表示</string>
@@ -1167,25 +1171,20 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_change_form_factor_user_dialog_message">"以下の変更を伴います:
 
 タブレット レイアウト
-• コミュニティ投稿が表示されません
-• YouTube の設定項目の [フィードで再生] が表示されません
-• ショート動画のリミックス ボタンとサウンドボタンが利用できません
-• 「その他の動画」オーバーレイが表示されない場合があります
-• 動画プレーヤーのアクション ボタンにボタン名が表示されます (旧仕様)
-• フライアウト メニューの項目が正しく機能しない場合があります
+• コミュニティ投稿が表示されない
+• YouTube 側の設定項目の [フィードで再生] が表示されない
+• ショート動画のリミックス ボタンとサウンドボタンが利用できない
+•「その他の動画」オーバーレイが表示されない場合がある
+• 動画プレーヤーのアクション ボタンにボタン名が表示される (旧仕様)
+• フライアウト メニューの項目が正常に動作しない場合がある
 
 Automotive レイアウト
-• フィードがトピックやチャンネルごとに分類された形で表示されます
-• YouTube の設定項目の [フィードで再生] が表示されません
-• ショート動画のリミックス ボタンとサウンドボタンが利用できません
-• 「その他の動画」オーバーレイが表示されない場合があります
-• ショート動画は通常のプレーヤーで再生されます
-• 動画プレーヤーのアクション ボタンにボタン名が表示されます (旧仕様)"</string>
-  <string name="morphe_tablet_layout_in_player_title">プレーヤーにのみタブレット レイアウトを適用</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"動画プレーヤーのレイアウトを以前のスタイルに戻します
-
-制限事項: 「動画アクションバーのレイアウト」が [クラシック] ではない場合、「その他の動画」オーバーレイを利用できない場合があります"</string>
+• フィードがトピックやチャンネルごとに分類された形で表示される
+• YouTube 側の設定項目の [フィードで再生] が表示されない
+• ショート動画のリミックス ボタンとサウンドボタンが利用できない
+•「その他の動画」オーバーレイが表示されない場合がある
+• ショート動画が通常のプレーヤーで再生される
+• 動画プレーヤーのアクション ボタンにボタン名が表示される (旧仕様)"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 字幕の動作を旧仕様に戻す</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 -「再生リストに保存」を旧仕様に戻す</string>
@@ -1362,7 +1361,7 @@ Automotive レイアウト
   <string name="morphe_dearrow_titles_search_title">検索結果</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow アイコンを表示</string>
   <string name="morphe_dearrow_titles_icon_summary">クラウドソースされた動画タイトルに DeArrow アイコンを表示します</string>
-  <string name="morphe_dearrow_casual_mode_title">カジュアルモード</string>
+  <string name="morphe_dearrow_casual_mode_title">カジュアル モード</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow ユーザーが元のタイトルを「いいね」と投票した場合、DeArrow のタイトルではなく元のタイトルが表示されます</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">元のタイトルを表示するためのカジュアル投票の最小数</string>
   <string name="morphe_dearrow_casual_mode_min_votes_summary">元のタイトルを表示するために必要な、面白いやクリエイティブなどの単一カテゴリでのカジュアル投票の数</string>
@@ -1423,7 +1422,7 @@ Automotive レイアウト
   <string name="morphe_video_delay_bluetooth_only_title">Bluetooth オーディオ接続時のみ遅延させる</string>
   <string name="morphe_video_delay_bluetooth_only_summary">Bluetooth オーディオが接続されている間のみ映像を遅延させます。そのため、スマートフォンのスピーカーの音は同期したままになります</string>
   <string name="morphe_video_delay_button_overlay_title">ビデオ遅延ボタンを表示</string>
-  <string name="morphe_video_delay_button_overlay_summary">長押しして遅延を0 msにリセット</string>
+  <string name="morphe_video_delay_button_overlay_summary">タップして長押しすると、遅延が 0 ms にリセットされます</string>
   <string name="morphe_video_delay_button_flyout_title">ビデオ遅延メニューを表示</string>
   <string name="morphe_video_delay_dialog_input_hint">ミリ秒単位の遅延</string>
   <!-- video.quality.rememberVideoQualityPatch -->
@@ -1547,9 +1546,10 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">動画アクションバーのレイアウト</string>
   <string name="morphe_video_action_bar_layout_entry_1">デフォルト</string>
-  <string name="morphe_video_action_bar_layout_entry_2">従来のレイアウト</string>
+  <string name="morphe_video_action_bar_layout_entry_2">クラシック1行</string>
   <string name="morphe_video_action_bar_layout_entry_3">横長（旧タイプ）</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">制限事項: [クラシック] を選択すると、旧スタイルの「その他の動画」オーバーレイに戻ります</string>
+  <string name="morphe_video_action_bar_layout_entry_4">クラシック2行</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">制限：クラシックレイアウトは、旧スタイルの「おすすめ動画」オーバーレイに戻ります</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">プレーヤー アイコンのスタイル</string>
   <string name="morphe_player_icon_style_entry_auto">自動</string>
@@ -1705,7 +1705,7 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_untitled_episode">タイトルなしのエピソード</string>
   <string name="morphe_series_tracker_unavailable_episode">利用不可なエピソード</string>
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
-  <string name="morphe_niconico_comments_screen_title">ニコニコ動画風のコメント表示</string>
+  <string name="morphe_niconico_comments_screen_title">ニコニコ風のコメント表示</string>
   <string name="morphe_niconico_comments_screen_summary">ライブチャットとチャットのリプレイを、ビデオ上を流れるコメントとして表示します</string>
   <string name="morphe_niconico_comments_summary">プレーヤー オーバーレイにボタンを表示します。タップするとニコニコ風コメントの表示 / 非表示を切り替えます。長押しすると簡易設定メニューを表示します</string>
   <string name="morphe_niconico_comments_font_size_title">コメントのフォントサイズ</string>

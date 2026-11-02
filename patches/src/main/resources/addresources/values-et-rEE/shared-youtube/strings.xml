@@ -182,9 +182,9 @@ Sisse logimiseks vajutage allpoolset nuppu Jätka"</string>
   <string name="morphe_proxy_enabled_title">Luba proksi</string>
   <string name="morphe_proxy_enabled_summary">Suunab toetatud võrgupäringud läbi konfigureeritud HTTP- või HTTPS-proksi</string>
   <string name="morphe_proxy_host_title">Proksi host</string>
-  <string name="morphe_proxy_host_summary">Proxüserveri hostnimi või IP-aadress</string>
-  <string name="morphe_proxy_port_title">Proxü port</string>
-  <string name="morphe_proxy_port_summary">Proxüserveri port</string>
+  <string name="morphe_proxy_host_summary">Proksiserveri hostnimi või IP-aadress</string>
+  <string name="morphe_proxy_port_title">Proksiport</string>
+  <string name="morphe_proxy_port_summary">Proksiserveri port</string>
   <string name="morphe_proxy_https_title">Kasuta HTTPS-i proksina</string>
   <string name="morphe_proxy_https_summary">Kasuta proxy-serveriga ühendamiseks HTTP-d asemel HTTPS-i</string>
   <string name="morphe_proxy_auth_enabled_title">Proksi autentimine</string>

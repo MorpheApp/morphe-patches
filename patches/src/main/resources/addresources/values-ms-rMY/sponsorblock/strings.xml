@@ -29,13 +29,23 @@ Second \"item\" text"</string>
   <string name="morphe_sb_duration_9s">9 saat</string>
   <string name="morphe_sb_duration_10s">10 saat</string>
   <string name="morphe_sb_general_title">Umum</string>
+  <string name="morphe_sb_offline_segments_title">Simpan segmen video yang dimuat turun</string>
+  <string name="morphe_sb_offline_segments_summary">Membenarkan melangkau segmen video yang dimuat turun semasa luar talian</string>
   <string name="morphe_sb_channel_whitelist_title">Senarai putih saluran</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock dilumpuhkan untuk saluran di dalam senarai putih</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Beritahu pada saluran di dalam senarai putih</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Menunjukkan pemberitahuan apabila SponsorBlock dilumpuhkan untuk saluran di dalam senarai putih</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock dilumpuhkan untuk saluran ini</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Tetapan anda mengandungi ID pengguna SponsorBlock peribadi.
+
+ID pengguna anda adalah seperti kata laluan, dan ia tidak seharusnya dikongsi"</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Tidak dapat menghantar segmen (status: %1$s %2$s)</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock tidak tersedia buat sementara waktu (status %s)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Tidak dapat mengundi segmen (status: %1$s %2$s)</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_new_segment_disabled_category">Kategori telah dinyahaktifkan dalam tetapan. Aktifkan kategori untuk menghantar</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_loading">Memuatkan…</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Tidak dapat menukar nama pengguna: Status: %1$s %2$s</string>
 </resources>

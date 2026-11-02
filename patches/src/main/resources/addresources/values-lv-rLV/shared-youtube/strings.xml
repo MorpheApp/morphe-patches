@@ -21,8 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Startēšanas animācija</string>
   <string name="morphe_splash_screen_style_entry_1">Atspējots</string>
   <string name="morphe_splash_screen_style_entry_2">Krāsa</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe krāsains</string>
   <string name="morphe_splash_screen_style_entry_4">Monohroms</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe monohroma</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Izcelt jaunus iestatījumus</string>
+  <string name="morphe_settings_new_indicator_days_summary">Dienu skaits, pēc kuras blakus atjauninājumā pievienotiem iestatījumiem un iespējām vairs netiks rādīts punkts</string>
   <string name="morphe_settings_new_indicator_days_off">Izslēgts</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Restartējiet, lai pabeigtu konfigurēšanu</string>
@@ -283,6 +287,7 @@ Ja vēlāk šī funkcija tiek izslēgta, ieteicams izdzēst lietotnes datus, lai
   <string name="morphe_ryd_failure_generic">Nepatīkamie nav pieejami (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Īpašnieks ir paslēpis</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Nepatīkas šis video, līdzīgi kā %s citiem cilvēkiem</string>
   <string name="morphe_ryd_accessibility_dislike_percentage">Šis video nav paticis, %s no balsīm ir negatīvas</string>
   <string name="morphe_ryd_enabled_title">Iespaiot Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Rādīt nepatikšanas kā procentuāli</string>
@@ -303,8 +308,12 @@ Video ID, kuru jūs skatāties, tiek nosūtīts Return YouTube Dislike API, bet 
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Negatīvie vērtējumi pagaidām nav pieejami - spēkā ir klienta API ātruma ierobežojums</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API balsu iegūšana, zvaniðu skaits</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Tīkla zvani netika veikti</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Veikti %s tīkla paziņojumi</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API balsu iegūšana, Time-outu skaits</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Neviena tīkla zvana laika robeža neatseka</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s tīkla paziņojumu laiks beidzies</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API klienta ātruma ierobežojumi</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Klienta ātruma ierobežojumi netika konstatēti</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Klienta ātruma ierobežojums sastaptas %s reizes</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s milisekundes</string>
 </resources>

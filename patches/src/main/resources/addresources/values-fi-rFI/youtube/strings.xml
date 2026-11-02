@@ -277,6 +277,9 @@ Muutoksiin kuuluvat:
   <string name="morphe_hide_comments_emoji_button_title">Piilota emoji-painike</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Piilota suodatinpalkin asetukset</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Piilottaa kaikki suodatinpalkin asetukset paitsi \"Parhaat\" ja \"Uusimmat\"</string>
+  <string name="morphe_hide_comments_gif_button_title">Piilota GIF-painike</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Piilota GIF-kuvat ja kuvat</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Piilottaa kommentteihin ja vastauksiin liitetyt GIF-kuvat ja kuvat</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Piilota lahja-animaatio ja -kortit</string>
   <string name="morphe_hide_comments_gift_button_title">Piilota lahjapainike</string>
   <string name="morphe_hide_comments_info_button_title">Piilota Tietoja-painike</string>
@@ -526,6 +529,7 @@ Viekansio: %s"</string>
   <string name="morphe_export_download_folder_change">Vaihda kansio</string>
   <string name="morphe_export_download_folder_changed">Viekansio muutettu</string>
   <string name="morphe_export_download_folder_reset">Viekansio nollattu</string>
+  <string name="morphe_export_download_folder_missing">Vienti-kansiota %s ei löytynyt</string>
   <string name="morphe_export_download_flyout_title">Vie laitteeseen</string>
   <string name="morphe_export_download_started">Viedään video</string>
   <string name="morphe_export_download_progress">Viedään video: %d%%</string>
@@ -959,7 +963,6 @@ Avataksesi asetukset, ota käyttöön Asetukset-painike kohdasta Yleiset → Ty�
   <string name="morphe_navigation_bar_style_user_dialog_message">Laitteesi tai YouTube-versiosi ei välttämättä tue tätä tyyliä, mikä voi aiheuttaa asetteluongelmia tai kaatumisia</string>
   <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
   <string name="morphe_toolbar_screen_summary">Valitse, mitkä komponentit näkyvät työkalupalkissa</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Piilota Cast-painike</string>
   <string name="morphe_hide_toolbar_chat_button_title">Piilota chat-painike</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Piilota Mikrofoni-painike</string>
   <string name="morphe_hide_toolbar_search_button_title">Piilota Haku-painike</string>
@@ -1015,6 +1018,7 @@ Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetuk
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Piilota Tekstitykset -painike</string>
   <string name="morphe_hide_cast_button_title">Piilota Cast-painike</string>
+  <string name="morphe_hide_cast_button_summary">Piilottaa Cast-painikkeen videosoittimesta ja työkalupalkista</string>
   <string name="morphe_hide_collapse_button_title">Piilota Pienennä-painike</string>
   <string name="morphe_hide_fullscreen_button_title">Piilota kokoruutupainike</string>
   <string name="morphe_hide_player_control_buttons_background_title">Piilota soittimen ohjainten tausta</string>
@@ -1180,11 +1184,6 @@ Auton asettelu
 • \"Lisää videoita\" -peitekerros ei välttämättä ole käytettävissä
 • Shorts-videot avautuvat tavalliseen soittimeen
 • Vanha videon toimintopalkki näkyy laajennettuna"</string>
-  <string name="morphe_tablet_layout_in_player_title">Ota tablettiasettelun käyttöön soittimessa</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Palauttaa vanhan soittimen ulkoasun
-
-Rajoitus: Jos 'Videon toimintopalkin ulkoasu' ei ole Klassinen, 'Lisää videoita' -kerros ei välttämättä ole käytettävissä"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Palauta vanha tekstitysten käyttäytyminen</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Palauta vanhat tallenteet soittimeen</string>
@@ -1546,9 +1545,10 @@ AV1-videon toisto saattaa pätkiä"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Videon toimintopalkin ulkoasu</string>
   <string name="morphe_video_action_bar_layout_entry_1">Oletus</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Klassinen</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klassinen yksi rivi</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimaalinen</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Rajoitus: Klassinen palauttaa vanhan tyylin \'Lisää videoita\' -kerroksen</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klassinen kaksi riviä</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Rajoitus: Klassiset asettelut palautuvat vanhaan \"Lisää videoita\" -peitekerrokseen</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Soittimen kuvakkeen tyyli</string>
   <string name="morphe_player_icon_style_entry_auto">Automaattinen</string>

@@ -944,7 +944,6 @@ Lai piekļūtu iestatījumiem, iespējojiet iestatījumu pogu sadaļā Vispārē
   <string name="morphe_navigation_bar_style_user_dialog_message">Šis stils var nebūt atbalstīts jūsu ierīcē vai YouTube versijā, kas var izraisīt izkārtojuma problēmas vai programmas avārijas</string>
   <string name="morphe_toolbar_screen_title">Rīkjosla</string>
   <string name="morphe_toolbar_screen_summary">Izvēlieties, kuri komponenti parādās rīkjoslā</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Slēpt Cast pogu</string>
   <string name="morphe_hide_toolbar_chat_button_title">Slēpt tērzēšanas pogu</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Slēpt mikrofona pogu</string>
   <string name="morphe_hide_toolbar_search_button_title">Slēpt meklēšanas pogu</string>
@@ -1165,8 +1164,6 @@ Autovietojuma izkārtojums
 • Pārklājums \"Vairāk video\" var nebūt pieejams
 • Shorts tiek atvērtas parastajā skaņotājā
 • Tiek rādīta vecā video rīkjosla, kas nav salikta"</string>
-  <string name="morphe_tablet_layout_in_player_title">I iespējot planšetes izkārtojumu atskaņotājā</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Atjaunot veco titru darbību</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Atjaunot veco saglabājumu sarakstā</string>

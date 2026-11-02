@@ -278,6 +278,9 @@ Liburutegi fitxa erakusten da
   <string name="morphe_hide_comments_emoji_button_title">Ezagutu Emoji botoia</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Ezkutatu iragazki-barrako aukerak</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'Goikoak\' eta \'Berrienak\' ezukez iragazki-barrako gainerako aukerak guztiak ezkutatzen ditu</string>
+  <string name="morphe_hide_comments_gif_button_title">Ezkutatu GIF botoia</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Ezkutatu GIFak eta irudiak</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Komentarioetako eta erantzuneko GIFak eta irudiak ezkutatzen ditu</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Ezkutatu opari-animazioak eta txartelak</string>
   <string name="morphe_hide_comments_gift_button_title">Ezkutatu Opari botoia</string>
   <string name="morphe_hide_comments_info_button_title">Ezkutatu Info botoia</string>
@@ -527,6 +530,7 @@ Exportazio folderra: %s"</string>
   <string name="morphe_export_download_folder_change">Folderra aldatu</string>
   <string name="morphe_export_download_folder_changed">Exportazio folderra aldatuta</string>
   <string name="morphe_export_download_folder_reset">Exportazio folderra berreratuta</string>
+  <string name="morphe_export_download_folder_missing">%s exportazio folder-a ez da aurkitu</string>
   <string name="morphe_export_download_flyout_title">Gailuera exportatu</string>
   <string name="morphe_export_download_started">Bideoa exportatzen</string>
   <string name="morphe_export_download_progress">Bideoa exportatzen: %d%%</string>
@@ -960,7 +964,6 @@ Konfiguraziora sartzeko, aktibu Konfigurazio botoia Oroharra → Barrako tresnak
   <string name="morphe_navigation_bar_style_user_dialog_message">Estilo honek zure gailua edo YouTube bertsioa ez duten supportatu aukera, eta layout-eko arazteak edo crash-ak eragin ditzake</string>
   <string name="morphe_toolbar_screen_title">Barra tresnak</string>
   <string name="morphe_toolbar_screen_summary">Aukeratu toolbarran zein komponentak agerti nahi diren</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Cast botoia ezkutatu</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ezkutatu Txat botoia</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Mikrofono botoia ezkutatu</string>
   <string name="morphe_hide_toolbar_search_button_title">Ezkutatu Bilaketa botoia</string>
@@ -1016,6 +1019,7 @@ Konfiguraziora sartzeko, aktibu Konfigurazio botoia Oroharra → Barrako tresnak
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Ezkutatu Azpianagusiak botoia</string>
   <string name="morphe_hide_cast_button_title">Ezkutatu Cast botoia</string>
+  <string name="morphe_hide_cast_button_summary">Ezduzu Cast botoia ikusiko bideo player-ean eta toolbar-rean</string>
   <string name="morphe_hide_collapse_button_title">Ezkutatu Itxi botoia</string>
   <string name="morphe_hide_fullscreen_button_title">Ezkutatu Pantaila osoa botoia</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ezagutuatzea playback-kontrolen fondoa</string>
@@ -1181,11 +1185,6 @@ Automobilen diseinua
 • 'Bideo gehiago' overlay-a agian ez dago eskuragarri
 • Shorts-ak erreproduzitzaile ohikoan irekitzen dira
 • Bideo zaharren ekintza-barra ez dagoたたtuta"</string>
-  <string name="morphe_tablet_layout_in_player_title">Aktibu tabletaren disenuat playback-ean</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Sekoagarri zaharkatutako layout-a berreskuratzen du
-
-Mugaltzea: 'Bideo ekintza-barra layout-a' ez bada Klasikoa, 'Bideo gehiago' overlay-a agian ez own eskuragarri"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Lehengo kaptuen jokapenari itzuli</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Lorekin gorde zen save zaharra playlistera itzuli</string>
@@ -1547,9 +1546,10 @@ AV1-ekin bideoen erreprodukzioa jolten badau edo frame-ak galdu ditzake"</string
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Bideo ekintza-barra layout-a</string>
   <string name="morphe_video_action_bar_layout_entry_1">Lehenutsia</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Klasikoa</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasikoa, errenada bat</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimalista</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Mugaltzea: Klasikoak \'Bideo gehiago\' overlay estilo zaharrera ekartzen du</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Bi lerro klassikoak</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Muga: Layout klassikoak \'Bideo gehiago\' overlay estilo zaharrera itzultzen dira</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Atarijoko ikonoen estiloa</string>
   <string name="morphe_player_icon_style_entry_auto">Automatikoa</string>

@@ -944,7 +944,6 @@ Settings-লৈ যাবলৈ, General → Toolbar → Show Settings-ৰ জ�
   <string name="morphe_navigation_bar_style_user_dialog_message">এই শৈলীটো আপোনাৰ ডিভাইচ বা YouTube সংস্কৰণৰ দ্বাৰা সমৰ্থিত নহ\'ব পাৰে, আৰু ই লেআউটৰ সমস্যা বা ক্ৰেচৰ কাৰণ হ\'ব পাৰে</string>
   <string name="morphe_toolbar_screen_title">টুলবাৰ</string>
   <string name="morphe_toolbar_screen_summary">টুলবাৰত কোনবোৰ উপাদান দেখা যাব তাৰ বাবে বাছনি কৰক</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Cast বুটাম লুকুৱাওক</string>
   <string name="morphe_hide_toolbar_chat_button_title">চ্যাট বুটামটো লুকুৱাই থওক</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Microphone বুটাম লুকুৱাওক</string>
   <string name="morphe_hide_toolbar_search_button_title">অনুসন্ধান বুটামটো লুকুৱাওক</string>
@@ -1165,8 +1164,6 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
 • 'অধিক ভিডিঅ' অভাৰলে উপলব্ধ নহ’ব পাৰে
 • Shortsবোৰ নিয়মীয়া প্লেয়াৰত খোল খাই থাকে
 • ন-কোল্যাপচড পুৰণি ভিডিঅ এক্সন বাৰটো দেখুৱাইছে"</string>
-  <string name="morphe_tablet_layout_in_player_title">প্লেয়াৰত টেবলেট লেআউট সক্ৰিয় কৰক</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">২১.১১.৪৮ - পুৰণি কেপচনৰ আচৰণ পুনৰুদ্ধাৰ কৰক</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - প্লেলিষ্টলৈ পুৰণি ছেভ পুনৰুদ্ধাৰ কৰক</string>

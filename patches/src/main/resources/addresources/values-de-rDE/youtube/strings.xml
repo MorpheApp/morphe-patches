@@ -278,6 +278,9 @@ Folgende Änderungen sind enthalten:
   <string name="morphe_hide_comments_emoji_button_title">Emoji-Schaltfläche ausblenden</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Filterleistenoptionen ausblenden</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Blendet alle Filterleistenoptionen außer \"Top\" und \"Neueste\" aus</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF-Button ausblenden</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIFs und Bilder ausblenden</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Blendet GIFs und Bilder aus, die an Kommentaren und Antworten angehängt sind</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Geschenkanimation und Karten ausblenden</string>
   <string name="morphe_hide_comments_gift_button_title">Geschenk-Button ausblenden</string>
   <string name="morphe_hide_comments_info_button_title">Info-Schaltfläche ausblenden</string>
@@ -527,6 +530,7 @@ Export-Ordner: %s"</string>
   <string name="morphe_export_download_folder_change">Ordner ändern</string>
   <string name="morphe_export_download_folder_changed">Export-Ordner geändert</string>
   <string name="morphe_export_download_folder_reset">Export-Ordner zurückgesetzt</string>
+  <string name="morphe_export_download_folder_missing">Exportordner %s konnte nicht gefunden werden</string>
   <string name="morphe_export_download_flyout_title">Auf Gerät exportieren</string>
   <string name="morphe_export_download_started">Video wird exportiert</string>
   <string name="morphe_export_download_progress">Video wird exportiert: %d%%</string>
@@ -960,7 +964,6 @@ Um auf Einstellungen zuzugreifen, aktivieren Sie die Schaltfläche „Einstellun
   <string name="morphe_navigation_bar_style_user_dialog_message">Dieser Stil wird möglicherweise von Ihrem Gerät oder Ihrer YouTube-Version nicht unterstützt und kann zu Layoutproblemen oder Abstürzen führen</string>
   <string name="morphe_toolbar_screen_title">Leiste</string>
   <string name="morphe_toolbar_screen_summary">Wähle aus, welche Schaltflächen in der Toolbar erscheinen sollen</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Schaltfläche „Übertragen“ ausblenden</string>
   <string name="morphe_hide_toolbar_chat_button_title">Schaltfläche „Chat“ ausblenden</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Schaltfläche „Mikrofon“ ausblenden</string>
   <string name="morphe_hide_toolbar_search_button_title">Schaltfläche „Suche“ ausblenden</string>
@@ -1016,6 +1019,7 @@ Um das Menü anzuzeigen, ändern Sie \"Video-Streams fälschen\" in einen belieb
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Schaltfläche „Untertitel“ ausblenden</string>
   <string name="morphe_hide_cast_button_title">Schaltfläche „Cast“ ausblenden</string>
+  <string name="morphe_hide_cast_button_summary">Blendet den Cast-Button im Videoplayer und in der Symbolleiste aus</string>
   <string name="morphe_hide_collapse_button_title">Schaltfläche „Einklappen“ ausblenden</string>
   <string name="morphe_hide_fullscreen_button_title">Vollbild-Schaltfläche ausblenden</string>
   <string name="morphe_hide_player_control_buttons_background_title">Hintergrund der Player-Steuerelemente ausblenden</string>
@@ -1181,11 +1185,6 @@ Automobil-Layout
 • Das Overlay \"Weitere Videos\" ist möglicherweise nicht verfügbar
 • Shorts öffnen sich im regulären Player
 • Nicht zusammengeklappte alte Video-Aktionsleiste wird angezeigt"</string>
-  <string name="morphe_tablet_layout_in_player_title">Tablet-Layout im Player aktivieren</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Stellt das alte Player-Layout wieder her
-
-Einschränkung: Wenn das „Video-Aktionsleisten-Layout“ nicht auf „Klassisch“ steht, ist das Overlay „Weitere Videos“ möglicherweise nicht verfügbar"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Altes Untertitelverhalten wiederherstellen</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Alte Shorts Spielersymbole wiederherstellen</string>
@@ -1547,9 +1546,10 @@ Die Videowiedergabe mit AV1 kann stottern oder Bilder überspringen"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Video-Aktionsleisten-Layout</string>
   <string name="morphe_video_action_bar_layout_entry_1">Standard</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Klassisch</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klassisch Ein-Zeile</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimalistisch</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Einschränkung: „Klassisch“ stellt das alte Overlay „Weitere Videos“ wieder her</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klassisch Zwei-Zeilen</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Einschränkung: Klassische Layouts kehren zum alten Stil des \"Weitere Videos\"-Overlays zurück</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Stil der Player-Symbole</string>
   <string name="morphe_player_icon_style_entry_auto">Automatisch</string>

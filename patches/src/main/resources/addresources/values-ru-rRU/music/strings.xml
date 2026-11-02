@@ -158,6 +158,40 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_track_deleted">Загрузка удалена</string>
   <string name="morphe_music_downloads_track_delete_failed">Не удалось удалить загрузку</string>
   <string name="morphe_music_downloads_play_failed">Не удалось воспроизвести загрузку</string>
+  <string name="morphe_music_downloads_playlists">Плейлисты</string>
+  <string name="morphe_music_downloads_playlists_section">Созданные плейлисты (%s)</string>
+  <string name="morphe_music_downloads_playlists_empty">Локальных плейлистов пока нет</string>
+  <string name="morphe_music_downloads_playlists_hide">Скрыть секции плейлистов ▲</string>
+  <string name="morphe_music_downloads_playlist_new">+ Новый плейлист</string>
+  <string name="morphe_music_downloads_playlist_new_button">Новый плейлист</string>
+  <string name="morphe_music_downloads_playlist_selected">Выбрано (%s)</string>
+  <string name="morphe_music_downloads_playlist_select_first">Сначала выберите песни</string>
+  <string name="morphe_music_downloads_playlist_clear_selection">Снять выделение</string>
+  <string name="morphe_music_downloads_playlist_create">Создать плейлист</string>
+  <string name="morphe_music_downloads_playlist_create_button">Создать</string>
+  <string name="morphe_music_downloads_playlist_add">Добавить в плейлист</string>
+  <string name="morphe_music_downloads_playlist_added">Добавлено в %s</string>
+  <string name="morphe_music_downloads_playlist_name_hint">Название плейлиста</string>
+  <string name="morphe_music_downloads_playlist_name_empty">Название плейлиста не может быть пустым</string>
+  <string name="morphe_music_downloads_playlist_save_failed">Не удалось сохранить плейлист</string>
+  <string name="morphe_music_downloads_playlist_track_count_one">{one}1 трек
+{few}{count} трека
+{many}{count} треков
+{other}{count} трека</string>
+  <string name="morphe_music_downloads_playlist_no_tracks">В этом плейлисте нет треков</string>
+  <string name="morphe_music_downloads_playlist_play">Воспроизвести плейлист</string>
+  <string name="morphe_music_downloads_playlist_play_all">Воспроизвести все</string>
+  <string name="morphe_music_downloads_playlist_rename">Переименовать</string>
+  <string name="morphe_music_downloads_playlist_rename_title">Переименовать плейлист</string>
+  <string name="morphe_music_downloads_playlist_save">Сохранить</string>
+  <string name="morphe_music_downloads_playlist_delete">Удалить плейлист</string>
+  <string name="morphe_music_downloads_playlist_delete_title">Удалить плейлист?</string>
+  <string name="morphe_music_downloads_playlist_delete_message">%s будет удален. Загруженные песни сохранятся</string>
+  <string name="morphe_music_downloads_playlist_deleted">Плейлист удален</string>
+  <string name="morphe_music_downloads_playlist_remove_track">Удалить из плейлиста</string>
+  <string name="morphe_music_downloads_playlist_drag_track">Перетащите для изменения порядка</string>
+  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Перетащите за маркер для изменения порядка</string>
+  <string name="morphe_music_downloads_playlist_reorder_done">Готово</string>
   <string name="morphe_music_downloads_notification_channel">Аудиозагрузки</string>
   <string name="morphe_music_downloads_playback_channel">Офлайн-воспроизведение</string>
   <string name="morphe_music_downloads_unknown_track">Не удалось определить трек для скачивания</string>
@@ -206,6 +240,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Скрыть правила сообщества</string>
   <string name="morphe_music_hide_comments_context_title">Скрыть контекстное сообщение</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Скрыть кнопку \"Эмодзи\"</string>
+  <string name="morphe_music_hide_comments_gif_button_title">Скрыть кнопку GIF</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_title">Скрыть GIF и изображения</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_summary">Скрывает GIF и изображения, прикрепленные к комментариям и ответам</string>
   <string name="morphe_music_hide_comments_info_button_title">Скрыть кнопку \"Инфо\"</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">Скрыть кнопку метки времени</string>
   <!-- interaction.crossfade.crossfadePatch -->

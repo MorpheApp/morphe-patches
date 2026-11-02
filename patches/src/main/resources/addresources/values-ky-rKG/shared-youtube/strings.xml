@@ -21,8 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Ишке киргизүү анимациясы</string>
   <string name="morphe_splash_screen_style_entry_1">Иштен чыгарылган</string>
   <string name="morphe_splash_screen_style_entry_2">Түсү</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe түсү</string>
   <string name="morphe_splash_screen_style_entry_4">Монохромдук</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Жаңы жөндөөлөрдү белгилөө</string>
+  <string name="morphe_settings_new_indicator_days_summary">Жаңыртуу аркылуу кошулган жөндөөлөрдүн жана параметрлердин жанында чекит көрсөтүлүүчү күндөрдүн саны</string>
   <string name="morphe_settings_new_indicator_days_off">Өчүк</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Орнотууну бүтүрүү үчүн кайра баштаңыз</string>
@@ -304,8 +308,12 @@ PotHelper тиркемесин жүктөө үчүн бул жерди басы�
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Жакпагандар убактылуу жеткиликсиз - Client API чектөөсү колдонулууда</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API добуштарды алуу, чакыруулардын саны</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Тармактык чакыруулар жасалган жок</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s тармактык чалуу жасалды</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API добуштарды алуу, убактысы бүткөндөрдүн саны</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Тармак чакырууларынын убактысы бүткөн жок</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s тармактык чалуунун убактысы бүттү</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API клиенттин чектөөлөрү</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Клиенттин чектөөлөрү боюнча маселелер жок</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Клиенттин чектөөсү %s жолу кездешти</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s миллисекунда</string>
 </resources>

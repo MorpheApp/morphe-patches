@@ -277,6 +277,9 @@ Spremembe vključujejo:
   <string name="morphe_hide_comments_emoji_button_title">Skrij gumb Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Skrij možnosti vrstice filtrov</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Skrije vse možnosti vrstice filtrov, razen »Najboljši« in »Novejši«</string>
+  <string name="morphe_hide_comments_gif_button_title">Skrij gumb GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Skrij GIF-e in slike</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Skrije GIF-e in slike, priložene k komentarjem in odgovorom</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Skrij animacijo daril in kartice</string>
   <string name="morphe_hide_comments_gift_button_title">Skrij gumb za darila</string>
   <string name="morphe_hide_comments_info_button_title">Skrij gumb Info</string>
@@ -526,6 +529,7 @@ Izvozna mapa: %s"</string>
   <string name="morphe_export_download_folder_change">Spremeni mapo</string>
   <string name="morphe_export_download_folder_changed">Izvozna mapa spremenjena</string>
   <string name="morphe_export_download_folder_reset">Izvozna mapa ponastavljena</string>
+  <string name="morphe_export_download_folder_missing">Mapke za izvoz %s ni bilo mogoče najti</string>
   <string name="morphe_export_download_flyout_title">Izvozi na napravo</string>
   <string name="morphe_export_download_started">Izvoz videoposnetka</string>
   <string name="morphe_export_download_progress">Izvoz videoposnetka: %d%%</string>
@@ -959,7 +963,6 @@ Za dostop do Nastavitev omogočajte gumb Nastavitve prek Splošno → Orodna vrs
   <string name="morphe_navigation_bar_style_user_dialog_message">Ta slog morda ni podprt v vaši napravi ali različici YouTube, kar lahko povzroči težave s pomizbo ali sesuve</string>
   <string name="morphe_toolbar_screen_title">Orodje.</string>
   <string name="morphe_toolbar_screen_summary">Skrij podnapisna stopala menija \'Zvok\'</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Skrij gumb za prenos</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skrij gumb Klepet</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Skrij gumb za mikrofon</string>
   <string name="morphe_hide_toolbar_search_button_title">Skrij gumb za iskanje</string>
@@ -1015,6 +1018,7 @@ Za prikaz menija 'Audio Track' spremenite 'Spoofanje video tokov' v katerega kol
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Skrij gumb za podnapise</string>
   <string name="morphe_hide_cast_button_title">Skrij gumb za prenos</string>
+  <string name="morphe_hide_cast_button_summary">Skrije gumb Cast v predvajalniku videov in vrstici z orodji</string>
   <string name="morphe_hide_collapse_button_title">Skrij gumb za zmanjšanje</string>
   <string name="morphe_hide_fullscreen_button_title">Skrij gumb za celozaslonski način</string>
   <string name="morphe_hide_player_control_buttons_background_title">Skrij ozadje gumbov za nadzor predvajanja</string>
@@ -1180,11 +1184,6 @@ Razporeditev za avtomobile
 • Prekrivno okno 'Več videoposnetkov' morda ne bo na voljo
 • Priloge Shorts se odprejo v običajnem predvajalniku
 • Prikaže se nekompaktirana starejša vrstica dejanj za videoposnetke"</string>
-  <string name="morphe_tablet_layout_in_player_title">Omogoči postavitev za tablične računalnike v predvajalniku</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Vrne stari razvored predvajalnika
-
-Omejitev: Če 'Razvored vrstice z akcijami za video' ni Klasičen, morda preklop 'Več videov' ne bo na voljo"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Obnovi staro obnašanje podnapisov</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ponastavi staro shranjevanje v seznam predvajanja</string>
@@ -1546,9 +1545,10 @@ Predvajanje videoposnetkov z AV1 se lahko trza ali izpusti okvire"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Razvored vrstice z akcijami za video</string>
   <string name="morphe_video_action_bar_layout_entry_1">Privzeto</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Klasičen</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasični enovrstni</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimalističen</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Omejitev: Klasičen razvored vrne stari slog preklopa \'Več videov\'</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klasični dve vrstici</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Omejitev: Klasični razreditki se vrnejo k staremu slogu prekrivanja »Več videov«</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Slog ikon predvajalnika</string>
   <string name="morphe_player_icon_style_entry_auto">Samodejno</string>

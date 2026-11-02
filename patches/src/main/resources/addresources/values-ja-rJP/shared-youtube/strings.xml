@@ -276,9 +276,9 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <string name="morphe_custom_font_type_entry_system">端末のシステム フォント</string>
   <string name="morphe_custom_font_type_entry_custom">カスタム フォント ファイル</string>
   <string name="morphe_custom_font_file_title">カスタム フォント ファイル</string>
-  <string name="morphe_custom_font_file_summary">TTFまたはOTFフォントファイルを選択してください</string>
-  <string name="morphe_custom_font_file_invalid">選択したファイルはTTFまたはOTFフォントではありません</string>
-  <string name="morphe_custom_font_failed_to_load">カスタムフォントを読み込めなかったため、オフになっています</string>
+  <string name="morphe_custom_font_file_summary">TTF または OTF フォント ファイルを選択してください</string>
+  <string name="morphe_custom_font_file_invalid">選択されたファイルは TTF または OTF フォントではありません</string>
+  <string name="morphe_custom_font_failed_to_load">カスタム フォントを読み込めなかったため、無効になっています</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">低評価数表示は一時的に利用できません (API タイムアウト)</string>

@@ -277,6 +277,9 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_comments_emoji_button_title">Itago ang Emoji button</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Itago ang mga opsyon ng filter bar</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Itinatago ang lahat ng mga opsyon ng filter bar maliban sa \'Pinakamahusay\' at \'Pinakabago\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Itago ang button na GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Itago ang mga GIF at imahe</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Itinatago ang mga GIF at imahe na naka-attach sa mga comment at reply</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Itago ang animasyon at mga card ng regalo</string>
   <string name="morphe_hide_comments_gift_button_title">Itago ang button ng Regalo</string>
   <string name="morphe_hide_comments_info_button_title">Itago ang button na Impormasyon</string>
@@ -526,6 +529,7 @@ Export folder: %s"</string>
   <string name="morphe_export_download_folder_change">Baguhin ang folder</string>
   <string name="morphe_export_download_folder_changed">Nabago ang export folder</string>
   <string name="morphe_export_download_folder_reset">Na-reset ang export folder</string>
+  <string name="morphe_export_download_folder_missing">Hindi mahanap ang export folder %s</string>
   <string name="morphe_export_download_flyout_title">I-export sa device</string>
   <string name="morphe_export_download_started">Ine-export ang video</string>
   <string name="morphe_export_download_progress">Ine-export ang video: %d%%</string>
@@ -959,7 +963,6 @@ Para i-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gener
   <string name="morphe_navigation_bar_style_user_dialog_message">Maaaring hindi suportado ang istilong ito ng iyong device o bersyon ng YouTube, at maaaring magdulot ng mga isyu sa layout o crash</string>
   <string name="morphe_toolbar_screen_title">Toolbar</string>
   <string name="morphe_toolbar_screen_summary">Pumili kung aling mga component ang lilitaw sa flyout menu</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Itago ang \'Audio Track\' menu</string>
   <string name="morphe_hide_toolbar_chat_button_title">Itago ang Chat button</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Itago ang Microphone button</string>
   <string name="morphe_hide_toolbar_search_button_title">Itago ang Search button</string>
@@ -1013,6 +1016,7 @@ Para i-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gener
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Itago ang button na Captions</string>
   <string name="morphe_hide_cast_button_title">Itago ang Cast button</string>
+  <string name="morphe_hide_cast_button_summary">Itinatago ang button na Cast sa video player at toolbar</string>
   <string name="morphe_hide_collapse_button_title">Itago ang Collapse button</string>
   <string name="morphe_hide_fullscreen_button_title">Itago ang Fullscreen button</string>
   <string name="morphe_hide_player_control_buttons_background_title">Itago ang background ng player controls</string>
@@ -1178,11 +1182,6 @@ Automotive layout
 • Maaaring hindi available ang overlay na 'Higit pang mga video'
 • Ang mga Shorts ay bumubukas sa regular na player
 • Ipinapakita ang lumang video action bar na hindi collapsed"</string>
-  <string name="morphe_tablet_layout_in_player_title">Paganahin ang layout ng tablet sa player</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Ibinabalik ang lumang layout ng player
-
-Limitasyon: Kung ang 'Layout ng video action bar' ay hindi Classic, maaaring hindi available ang overlay na 'Higit pang mga video'"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Ibalik ang dating pag-uugali ng mga caption</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ibalik ang lumang save sa playlist</string>
@@ -1544,9 +1543,10 @@ Ang video playback na may AV1 ay maaaring mag-stutter o mag-drop ng frames"</str
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Layout ng video action bar</string>
   <string name="morphe_video_action_bar_layout_entry_1">Awtomatiko</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Klasiko</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasikong Isang-Row</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimal</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Limitasyon: Ang Classic ay bumabalik sa lumang estilo ng overlay na \'Higit pang mga video\'</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klasikong Dalawang-Row</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Limitasyon: Ang mga klasikong layout ay babalik sa lumang istilo ng overlay na \'Higit pang mga video\'</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Estilo ng icon ng player</string>
   <string name="morphe_player_icon_style_entry_auto">Awtomatiko</string>

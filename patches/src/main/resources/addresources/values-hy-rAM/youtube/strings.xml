@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">Թաքցնել Emoji կոճակը</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Թաքցնել զտիչների տողի տարբերակները</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Թաքցնում է զտիչների տողի բոլոր տարբերակները, բացի \"Հայտնի\" և \"Ամենանորից\" տարբերակներից</string>
+  <string name="morphe_hide_comments_gif_button_title">Թաքցնել GIF կոճակը</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Թաքցնել GIF-երը և պատկերները</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Թաքցնում է մեկնաբանություններին և պատասխաններին կցված GIF-երը և պատկերները</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Թաքցնել նվերների անիմացիան և քարտերը</string>
   <string name="morphe_hide_comments_gift_button_title">Թաքցնել «Նվեր» կոճակը</string>
   <string name="morphe_hide_comments_info_button_title">Թաքցնել Տեղեկություն կոճակը</string>
@@ -526,6 +529,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">Փոխել թղթապանակը</string>
   <string name="morphe_export_download_folder_changed">Արտահանման թղթապանակը փոփոխված է</string>
   <string name="morphe_export_download_folder_reset">Արտահանման թղթապանակը վերակայարված է</string>
+  <string name="morphe_export_download_folder_missing">Չհաջողվեց գտնել արտահանման թղթապանակը %s</string>
   <string name="morphe_export_download_flyout_title">Արտահանել սարքի մեջ</string>
   <string name="morphe_export_download_started">Տեսանյութն արտահանվում է</string>
   <string name="morphe_export_download_progress">Տեսանյութի արտահանում՝ %d%%</string>
@@ -959,7 +963,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Այս ոճը հնարավոր է չի աջակցվի ձեր սարքի կամ YouTube-ի տարբերակի կողմից, ինչը կարող էបերել դասավորվածության խնդիրների կամ անսպասելի անջատումների</string>
   <string name="morphe_toolbar_screen_title">Գործիքների վահանակ</string>
   <string name="morphe_toolbar_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն գործիքների վահանակում</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Թաքցնել Cast կոճակը</string>
   <string name="morphe_hide_toolbar_chat_button_title">Թաքցնել չաթի կոճակը</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Թաքցնել խոսափողի կոճակը</string>
   <string name="morphe_hide_toolbar_search_button_title">Թաքցնել որոնման կոճակը</string>
@@ -1015,6 +1018,7 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Թաքցնել «Ենթագրեր» կոճակը</string>
   <string name="morphe_hide_cast_button_title">Թաքցնել «Cast» կոճակը</string>
+  <string name="morphe_hide_cast_button_summary">Թաքցնում է Cast կոճակը տեսանյութերի նվագարկիչում և գործիքների панелиում</string>
   <string name="morphe_hide_collapse_button_title">Թաքցնել «Փոքրացնել» կոճակը</string>
   <string name="morphe_hide_fullscreen_button_title">Թաքցնել «Լրիվ էկրան» կոճակը</string>
   <string name="morphe_hide_player_control_buttons_background_title">Թաքցնել նվագարկիչի կառավարման կոճակների հետնամասը</string>
@@ -1180,11 +1184,6 @@ Second \"item\" text"</string>
 • «Ավելի շատ տեսանյութեր» շերտը կարող է հասանելի չլինել
 • Shorts-երը բացվում են սովորական նվագարկիչով
 • Ցուցադրվում է տեսանյութի հին գործողությունների չփոքրացված պատուհանը"</string>
-  <string name="morphe_tablet_layout_in_player_title">Միացնել պլանշետի դասավորությունը նվագարկիչում</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Վերականգնում է նվագարկիչի հին տեսքը
-
-Սահմանափակում. Եթե «Տեսանյութի գործողությունների and bar-ի տեսքը» Classic չէ, ապա «Այլ տեսանյութեր» շերտը կարող է անհասանելի լինել"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Վերականգնել ենթագրերի հին վարքագիծը</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Վերականգնել հին պահպանումը ցուցակում</string>
@@ -1546,9 +1545,10 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Տեսանյութի գործողությունների and bar-ի տեսքը</string>
   <string name="morphe_video_action_bar_layout_entry_1">Լռումով</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Դասական</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Դասական մեկ տող</string>
   <string name="morphe_video_action_bar_layout_entry_3">Մինիմալիստական</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Սահմանափակում. Classic-ը վերադարձնում է «Այլ տեսանյութեր» շերտի հին ոճին</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Դասական երկու տող</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Սահմանափակում. Դասական դասավորությունները վերադառնում են հին ոճի \"Ավելի շատ տեսանյութեր\" շերտին</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Նվագարկիկի ստվարակների ոճը</string>
   <string name="morphe_player_icon_style_entry_auto">Ավտոմատ</string>

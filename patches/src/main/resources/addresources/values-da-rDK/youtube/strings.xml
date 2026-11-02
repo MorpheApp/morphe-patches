@@ -277,6 +277,9 @@ Nogle server-side layouts kan måske ikke gå tilbage.
   <string name="morphe_hide_comments_emoji_button_title">Skjul Emoji-knap</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Skjul filterbjælkeindstillinger</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Skjuler alle filterbjælkeindstillinger undtagen \'Top\' og \'Nyeste\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Skjul GIF-knap</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Skjul GIF\'er og billeder</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Skjuler GIF\'er og billeder vedhæftet til kommentarer og svar</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Skjul gaveanimation og kort</string>
   <string name="morphe_hide_comments_gift_button_title">Skjul gave-knap</string>
   <string name="morphe_hide_comments_info_button_title">Skjul Info-knap</string>
@@ -524,6 +527,7 @@ Eksportermappe: %s"</string>
   <string name="morphe_export_download_folder_change">Skift mappe</string>
   <string name="morphe_export_download_folder_changed">Eksportermappe ændret</string>
   <string name="morphe_export_download_folder_reset">Eksportermappe nulstillet</string>
+  <string name="morphe_export_download_folder_missing">Kunne ikke finde eksportmappen %s</string>
   <string name="morphe_export_download_flyout_title">Eksporter til enhed</string>
   <string name="morphe_export_download_started">Eksporterer video</string>
   <string name="morphe_export_download_progress">Eksporterer video: %d%%</string>
@@ -955,7 +959,6 @@ For at få adgang til Indstillinger skal du aktivere indstillingsknappen via Gen
   <string name="morphe_navigation_bar_style_user_dialog_message">Denne stil understøttes muligvis ikke af din enhed eller YouTube-version og kan forårsage layoutproblemer eller nedbrud</string>
   <string name="morphe_toolbar_screen_title">Værktøjslinje</string>
   <string name="morphe_toolbar_screen_summary">Vælg, hvilke komponenter der vises i værktøjslinjen</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Skjul Cast-knappen</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skjul chat-knappen</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Skjul Mikrofon-knappen</string>
   <string name="morphe_hide_toolbar_search_button_title">Skjul Søg-knappen</string>
@@ -1011,6 +1014,7 @@ For at vise 'Lydspor'-menuen skal du ændre 'Forfalsk videostreams' til enhver k
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Skjul Undertekstknappen</string>
   <string name="morphe_hide_cast_button_title">Skjul Cast-knappen</string>
+  <string name="morphe_hide_cast_button_summary">Skjuler Cast-knappen i videofafspilleren og værktøjslinjen</string>
   <string name="morphe_hide_collapse_button_title">Skjul Kollaps-knappen</string>
   <string name="morphe_hide_fullscreen_button_title">Skjul Fuldskærm-knap</string>
   <string name="morphe_hide_player_control_buttons_background_title">Skjul baggrund for afspilningsknapper</string>
@@ -1176,11 +1180,6 @@ Automotive-layout
 • Overlayet \"Flere videoer\" er muligvis ikke tilgængeligt
 • Shorts åbnes i den normale afspiller
 • Den gamle videoværktøjslinje, der ikke er minimeret, vises"</string>
-  <string name="morphe_tablet_layout_in_player_title">Aktivér tabletlayout i afspilleren</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Gendanner det gamle layout for afspilleren
-
-Begrænsning: Hvis \"Layout for video-handlingslinje\" ikke er Klassisk, er overlayet \"Flere videoer\" muligvis ikke tilgængeligt"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Genopret den gamle adfærd for undertekster</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - gendan old save til spilleliste</string>
@@ -1542,9 +1541,10 @@ Videoafspilning med AV1 kan hakke eller tabe billeder"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Layout for video-handlingslinje</string>
   <string name="morphe_video_action_bar_layout_entry_1">Standard</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Klassisk</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klassisk én række</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimalistisk</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Begrænsning: Klassisk går tilbage til den gamle stil for overlayet \"Flere videoer\"</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klassisk to-rækker</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Begrænsning: Klassiske layouts vender tilbage til den gamle stil for \'Flere videoer\'-overlay</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Ikonstil for afspiller</string>
   <string name="morphe_player_icon_style_entry_auto">Automatisk</string>

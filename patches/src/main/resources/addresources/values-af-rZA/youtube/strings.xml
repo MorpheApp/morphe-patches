@@ -277,6 +277,9 @@ Veranderinge sluit in:
   <string name="morphe_hide_comments_emoji_button_title">Verberg Emoji-knoppie</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Versteek filterbalk-opsies</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Versteek alle filterbalk-opsies behalwe \'Beste\' en \'Nuutste\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Verberg GIF-knoppie</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Verberg GIF\'s en beelde</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Verberg GIF\'s en beelde wat aan kommentaar en antwoorde aangeheg is</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Verberg geskenkanimasie en kaarte</string>
   <string name="morphe_hide_comments_gift_button_title">Verberg Geskenk-knoppie</string>
   <string name="morphe_hide_comments_info_button_title">Verberg Info-knoppie</string>
@@ -526,6 +529,7 @@ Uitvoer-ouer: %s"</string>
   <string name="morphe_export_download_folder_change">Verander ouer</string>
   <string name="morphe_export_download_folder_changed">Uitvoer-ouer verander</string>
   <string name="morphe_export_download_folder_reset">Uitvoer-ouer hergestel</string>
+  <string name="morphe_export_download_folder_missing">Kon nie uitvoergouer %s vind nie</string>
   <string name="morphe_export_download_flyout_title">Voer uit na toestel</string>
   <string name="morphe_export_download_started">Voer video uit</string>
   <string name="morphe_export_download_progress">Voer video uit: %d%%</string>
@@ -959,7 +963,6 @@ Om Instellings toe te gaan, skakel die Instelling-knoppie in via Algemeen → We
   <string name="morphe_navigation_bar_style_user_dialog_message">Hierdie styl word moontlik nie deur jou toestel of YouTube-weergawe ondersteun nie, en kan uitlegprobleme of crashes veroorsaak</string>
   <string name="morphe_toolbar_screen_title">Wenkbalk</string>
   <string name="morphe_toolbar_screen_summary">Kies watter komponente in die lêertooskassie vertoon moet word</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Hide \'Audio Track\' menu footer</string>
   <string name="morphe_hide_toolbar_chat_button_title">Verberg Chat-knoppie</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Hide Captions menu</string>
   <string name="morphe_hide_toolbar_search_button_title">Hide Captions menu header</string>
@@ -1015,6 +1018,7 @@ Om die 'Audio Track'-kieslys te wys, verander 'Vervals videostrome' na enige kli
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Verberg Subtitels-knoppie</string>
   <string name="morphe_hide_cast_button_title">Verberg Cast-knoppie</string>
+  <string name="morphe_hide_cast_button_summary">Verberg die Cast-knoppie in die videospeler en werkbalk</string>
   <string name="morphe_hide_collapse_button_title">Verberg Inklap-knoppie</string>
   <string name="morphe_hide_fullscreen_button_title">Verberg Volskerm-knoppie</string>
   <string name="morphe_hide_player_control_buttons_background_title">Wegspring spelerbeheer knoppie agtergrond</string>
@@ -1180,11 +1184,6 @@ Automotive-uitleg
 • 'Meer video's'-oorvleuning is moontlik nie beskikbaar nie
 • Shorts maak oop in die gewone speler
 • Nie-ingeklapte ou video-aksiebalk word vertoon"</string>
-  <string name="morphe_tablet_layout_in_player_title">Aktiveer tablet-uitleg in die speler</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Herstel die ou spelersindeling
-
-Beperking: As die \"Video aksiebalk-indeling\" nie Klassiek is nie, mag die \"Meer video's\"-oordekking nie beskikbaar wees nie"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Herstel ou onderskrifgedrag</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Herstel ou stoor na snelys</string>
@@ -1546,9 +1545,10 @@ Video-afspeeling met AV1 kan stok of raamwerk val"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Video aksiebalk-indeling</string>
   <string name="morphe_video_action_bar_layout_entry_1">Verstek</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Klassiek</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klassieke een-ry</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimalisties</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Beperking: Klassieke keer terug na die ou styl \"Meer video\'s\"-oordekking</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klassieke Twee-Rye</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Beperking: Klassieke uitlegte gaan terug na ou styl \'Meer video\'s\' oorvleueling</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Speler-ikoonstyl</string>
   <string name="morphe_player_icon_style_entry_auto">Outomaties</string>

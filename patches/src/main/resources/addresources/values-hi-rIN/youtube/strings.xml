@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">इमोजी बटन छुपाएं</string>
   <string name="morphe_hide_comments_filter_bar_options_title">फ़िल्टर बार विकल्प छुपाएं</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'टॉप\' और \'नवीनतम\' के अलावा सभी फ़िल्टर बार विकल्प छुपाता है</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF बटन छिपाएँ</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF और इमेज छिपाएँ</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">कमेंट्स और रिप्लाई से जुड़े GIF और इमेज को छिपाता है</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">उपहार एनीमेशन और कार्ड छिपाएं</string>
   <string name="morphe_hide_comments_gift_button_title">उपहार बटन छिपाएं</string>
   <string name="morphe_hide_comments_info_button_title">छुपाएं जानकारी बटन</string>
@@ -526,6 +529,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">फ़ोल्डर बदलें</string>
   <string name="morphe_export_download_folder_changed">एक्सपोर्ट फ़ोल्डर बदल गया</string>
   <string name="morphe_export_download_folder_reset">एक्सपोर्ट फ़ोल्डर रीसेट किया गया</string>
+  <string name="morphe_export_download_folder_missing">एक्सपोर्ट फ़ोल्डर %s नहीं मिल सका</string>
   <string name="morphe_export_download_flyout_title">डिवाइस पर एक्सपोर्ट करें</string>
   <string name="morphe_export_download_started">वीडियो एक्सपोर्ट हो रहा है</string>
   <string name="morphe_export_download_progress">वीडियो एक्सपोर्ट हो रहा है: %d%%</string>
@@ -959,7 +963,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_navigation_bar_style_user_dialog_message">हो सकता है कि यह स्टाइल आपके डिवाइस या YouTube वर्ज़न द्वारा समर्थित न हो, और इससे लेआउट संबंधी समस्याएं या क्रैश हो सकते हैं</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_toolbar_screen_summary">टूलबार में कौन से घटक दिखाई दें, यह चुनें</string>
-  <string name="morphe_hide_toolbar_cast_button_title">\'ऑडियो ट्रैक\' मेनू फ़ूटर छुपाएं</string>
   <string name="morphe_hide_toolbar_chat_button_title">चैट बटन छुपाएं</string>
   <string name="morphe_hide_toolbar_microphone_button_title">कैप्शन मेनू फ़ूटर छुपाएं</string>
   <string name="morphe_hide_toolbar_search_button_title">खोज छिपाएं</string>
@@ -1015,6 +1018,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">कैप्शन बटन छुपाएं</string>
   <string name="morphe_hide_cast_button_title">कास्ट बटन छुपाएं</string>
+  <string name="morphe_hide_cast_button_summary">वीडियो प्लेयर और टूलबार में Cast बटन को छिपाता है</string>
   <string name="morphe_hide_collapse_button_title">कोलैप्स बटन छुपाएं</string>
   <string name="morphe_hide_fullscreen_button_title">फुलस्क्रीन बटन छुपाएं</string>
   <string name="morphe_hide_player_control_buttons_background_title">प्लेयर नियंत्रण पृष्ठभूमि छिपाएं</string>
@@ -1180,11 +1184,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
 • 'अधिक वीडियो' ओवरले उपलब्ध नहीं हो सकता है
 • शॉर्ट्स नियमित प्लेयर में खुलते हैं
 • गैर-संक्षिप्त पुराना वीडियो एक्शन बार दिखाया जाता है"</string>
-  <string name="morphe_tablet_layout_in_player_title">प्लेयर में टैबलेट लेआउट सक्षम करें</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"पुराना प्लेयर लेआउट बहाल करता है
-
-सीमा: यदि 'वीडियो एक्शन बार लेआउट' क्लासिक नहीं है, तो 'अधिक वीडियो' ओवरले उपलब्ध नहीं हो सकता है"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - पुराने कैप्शन व्यवहार को पुनर्स्थापित करें</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - पुराने सेव को प्लेलिस्ट में पुन: स्थापित करें</string>
@@ -1546,9 +1545,10 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">वीडियो एक्शन बार लेआउट</string>
   <string name="morphe_video_action_bar_layout_entry_1">डिफ़ॉल्ट</string>
-  <string name="morphe_video_action_bar_layout_entry_2">क्लासिक</string>
+  <string name="morphe_video_action_bar_layout_entry_2">क्लासिक एक-पंक्ति</string>
   <string name="morphe_video_action_bar_layout_entry_3">मिनिमल</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">सीमा: क्लासिक पुरानी शैली के \'अधिक वीडियो\' ओवरले पर वापस जाता है</string>
+  <string name="morphe_video_action_bar_layout_entry_4">क्लासिक दो-पंक्तियाँ</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">सीमा: क्लासिक लेआउट पुराने स्टाइल के \'More videos\' ओवरले पर वापस आ जाते हैं</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">प्लेयर आइकन शैली</string>
   <string name="morphe_player_icon_style_entry_auto">स्वचालित</string>

@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">پنهان‌کردن دکمهٔ ایموجی</string>
   <string name="morphe_hide_comments_filter_bar_options_title">پنهان‌کردن گزینه‌های نوار فیلتر</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">همهٔ گزینه‌های نوار فیلتر به‌جز «برترها» و «جدیدترین‌ها» را پنهان می‌کند</string>
+  <string name="morphe_hide_comments_gif_button_title">پنهان‌کردن دکمهٔ GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">پنهان‌کردن GIFها و تصاویر</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">GIFها و تصاویر پیوست‌شده به نظرات و پاسخ‌ها را پنهان می‌کند</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">پنهان‌کردن انیمیشن و کارت‌های هدیه</string>
   <string name="morphe_hide_comments_gift_button_title">پنهان‌کردن دکمهٔ هدیه</string>
   <string name="morphe_hide_comments_info_button_title">پنهان‌کردن دکمهٔ اطلاعات</string>
@@ -526,6 +529,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">تغییر پوشه</string>
   <string name="morphe_export_download_folder_changed">پوشهٔ صادرکردن تغییر یافت</string>
   <string name="morphe_export_download_folder_reset">پوشهٔ صادرکردن بازنشانی شد</string>
+  <string name="morphe_export_download_folder_missing">پوشه خروجی %s یافت نشد</string>
   <string name="morphe_export_download_flyout_title">صادرکردن به دستگاه</string>
   <string name="morphe_export_download_started">در حال خروجی گرفتن از ویدیو</string>
   <string name="morphe_export_download_progress">در حال صادرکردن ویدیو: %d%%</string>
@@ -959,7 +963,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">این استایل ممکن است توسط دستگاه شما یا نسخه YouTube پشتیبانی نشود و می‌تواند باعث بروز مشکلاتی در چیدمان یا کرش شود</string>
   <string name="morphe_toolbar_screen_title">نوار ابزار</string>
   <string name="morphe_toolbar_screen_summary">انتخاب کنید کدام مؤلفه‌ها در نوار ابزار نمایش داده شوند</string>
-  <string name="morphe_hide_toolbar_cast_button_title">پنهان‌کردن دکمهٔ ارسال</string>
   <string name="morphe_hide_toolbar_chat_button_title">پنهان‌کردن دکمهٔ گفت‌وگو</string>
   <string name="morphe_hide_toolbar_microphone_button_title">پنهان‌کردن دکمهٔ میکروفون</string>
   <string name="morphe_hide_toolbar_search_button_title">پنهان‌کردن دکمهٔ جست‌وجو</string>
@@ -1015,6 +1018,7 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">پنهان‌کردن دکمهٔ زیرنویس</string>
   <string name="morphe_hide_cast_button_title">پنهان‌کردن دکمهٔ ارسال</string>
+  <string name="morphe_hide_cast_button_summary">دکمهٔ Cast را در پخش‌کنندهٔ ویدیو و نوار ابزار پنهان می‌کند</string>
   <string name="morphe_hide_collapse_button_title">پنهان‌کردن دکمهٔ جمع‌کردن</string>
   <string name="morphe_hide_fullscreen_button_title">پنهان‌کردن دکمهٔ تمام‌صفحه</string>
   <string name="morphe_hide_player_control_buttons_background_title">پنهان‌کردن پس‌زمینهٔ کنترل‌های پخش‌کننده</string>
@@ -1179,11 +1183,6 @@ Second \"item\" text"</string>
 • ممکن است روی‌هم‌افتادگی «ویدئوهای بیشتر» در دسترس نباشد
 • Shorts در پخش‌کنندهٔ معمولی باز می‌شود
 • نوار عملیات قدیمی ویدئو به‌صورت بازشده نمایش داده می‌شود"</string>
-  <string name="morphe_tablet_layout_in_player_title">فعال‌کردن طرح‌بندی تبلت در پخش‌کننده</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"طرح‌بندی قدیمی پخش‌کننده را بازیابی می‌کند
-
-محدودیت: اگر «طرح‌بندی نوار عملیات ویدئو» روی «کلاسیک» نباشد، ممکن است روی‌هم‌افتادگی «ویدئوهای بیشتر» در دسترس نباشد"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 — بازگردانی رفتار قبلی کپشن‌ها</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - بازیابی ذخیره در فهرست پخش</string>
@@ -1545,9 +1544,10 @@ AVC (H.264)
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">طرح‌بندی نوار عملیات ویدئو</string>
   <string name="morphe_video_action_bar_layout_entry_1">پیش‌فرض</string>
-  <string name="morphe_video_action_bar_layout_entry_2">کلاسیک</string>
+  <string name="morphe_video_action_bar_layout_entry_2">کلاسیک تک‌ردیفه</string>
   <string name="morphe_video_action_bar_layout_entry_3">حداقلی</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">محدودیت: حالت کلاسیک، روی‌هم‌افتادگی «ویدئوهای بیشتر» را به سبک قدیمی باز می‌گرداند</string>
+  <string name="morphe_video_action_bar_layout_entry_4">کلاسیک دوردیفه</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">محدودیت: چیدمان‌های کلاسیک به لایه‌ی قدیمی «ویدیوهای بیشتر» بازمی‌گردند</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">سبک آیکون پخش‌کننده</string>
   <string name="morphe_player_icon_style_entry_auto">خودکار</string>

@@ -277,6 +277,9 @@ Pakeitimai apima:
   <string name="morphe_hide_comments_emoji_button_title">Slėpti „Emoji“ mygtuką</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Slėpti filtrų juostos parinktis</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Paslepia visas filtrų juostos parinktis, išskyrus „Geriausi“ ir „Naujausi“</string>
+  <string name="morphe_hide_comments_gif_button_title">Paslėpti GIF mygtuką</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Paslėpti GIF ir vaizdus</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Paslepia GIF ir vaizdus, pridėtus prie komentarų ir atsakymų</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Slėpti dovanų animaciją ir korteles</string>
   <string name="morphe_hide_comments_gift_button_title">Slėpti dovanų mygtuką</string>
   <string name="morphe_hide_comments_info_button_title">Slėpti informacijos mygtuką</string>
@@ -526,6 +529,7 @@ Eksportavimo aplankas: %s"</string>
   <string name="morphe_export_download_folder_change">Pakeisti aplanką</string>
   <string name="morphe_export_download_folder_changed">Eksportavimo aplankas pakeistas</string>
   <string name="morphe_export_download_folder_reset">Eksportavimo aplankas nustatytas iš naujo</string>
+  <string name="morphe_export_download_folder_missing">Nepavyko rasti eksporto aplanko %s</string>
   <string name="morphe_export_download_flyout_title">Eksportuoti į įrenginį</string>
   <string name="morphe_export_download_started">Vaizdo įrašas eksportuojamas</string>
   <string name="morphe_export_download_progress">Vaizdo įrašas eksportuojamas: %d%%</string>
@@ -959,7 +963,6 @@ Norėdami gauti prieigą prie nustatymų, įgalinkite Nustatymų mygtuką: Bendr
   <string name="morphe_navigation_bar_style_user_dialog_message">Šio stiliaus jūsų įrenginys arba „YouTube“ versija gali nepalaikyti, vilketas gali sukelti išdėstymo problemų arba programos lūžimus</string>
   <string name="morphe_toolbar_screen_title">Įrankių juosta</string>
   <string name="morphe_toolbar_screen_summary">Pasirinkite, kurie komponentai rodomi įrankių juostoje</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Slėpti „Cast“ mygtuką</string>
   <string name="morphe_hide_toolbar_chat_button_title">Paslėpti Pokalbių mygtuką</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Slėpti mikrofono mygtuką</string>
   <string name="morphe_hide_toolbar_search_button_title">Slėpti paieškos mygtuką</string>
@@ -1015,6 +1018,7 @@ Kad būtų rodomas meniu „Garso takelis“, parinktyje „Maskuoti vaizdo įra
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Slėpti subtitrų mygtuką</string>
   <string name="morphe_hide_cast_button_title">Slėpti „Cast“ mygtuką</string>
+  <string name="morphe_hide_cast_button_summary">Paslepia „Cast“ mygtuką vaizdo įrašų grotuve ir įrankių juostoje</string>
   <string name="morphe_hide_collapse_button_title">Slėpti sutraukimo mygtuką</string>
   <string name="morphe_hide_fullscreen_button_title">Slėpti viso ekrano mygtuką</string>
   <string name="morphe_hide_player_control_buttons_background_title">Slėpti grotuvo valdiklių foną</string>
@@ -1180,11 +1184,6 @@ Automobilio išdėstymas
 • „Daugiau video“ persegimas gali būti neprieinamas
 • „Shorts“ atidaromi reguliariame grotuve
 • Rodo nesutrauktą senosios veiksmų juostos vaizdo įrašo"</string>
-  <string name="morphe_tablet_layout_in_player_title">Įjungti planšetės išdėstymą grotuve</string>
-  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Atkuria senąjį spustyklio išdėvėjimo būdą
-
-Apribojimas: jei „Vaizdo įrašo veiksmų juostos išdėvėjimas“ nėra klasikinio tipo, gali būti neprieinamas „Daugiau vaizdo įrašų“ sluoksnis"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 – Atkurti senąją subtitrų elgseną</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 – atkurti senąjį išsaugojimą į grojaraštį</string>
@@ -1546,9 +1545,10 @@ Vaizdo įrašų atkūrimas su AV1 gali strigti arba praleisti kadras"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Vaizdo įrašo veiksmų juostos išdėvėjimas</string>
   <string name="morphe_video_action_bar_layout_entry_1">Numatytasis</string>
-  <string name="morphe_video_action_bar_layout_entry_2">Klasikinis</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasikinis vienos eilutės</string>
   <string name="morphe_video_action_bar_layout_entry_3">Minimalistinis</string>
-  <string name="morphe_video_action_bar_layout_user_dialog_message">Apribojimas: Klasikinis grąžina senąjį „Daugiau vaizdo įrašų“ sluoksnio stilių</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klasikinis dviejų eilučių</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Apribojimas: klasikiniai išdėstymai grįžta prie seno stiliaus „Daugiau vaizdo įrašų“ sluoksnio</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Leistuvės piktogramos stilius</string>
   <string name="morphe_player_icon_style_entry_auto">Automatinis</string>
