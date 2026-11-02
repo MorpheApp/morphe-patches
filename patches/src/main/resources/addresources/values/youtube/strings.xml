@@ -477,6 +477,11 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_copy_comments_title">Copy comments</string>
     <string name="morphe_copy_comments_summary">Tap and hold a comment to copy it</string>
     <string name="morphe_copy_comments_success">Comment copied to clipboard</string>
+    <string name="morphe_copy_select_text_title">Select text of descriptions and posts</string>
+    <string name="morphe_copy_select_text_summary">Tap and hold a video description or a post to select and copy any part of it</string>
+    <string name="morphe_copy_select_text_dialog_title">Select text</string>
+    <string name="morphe_copy_select_text_copy_all">Copy all</string>
+    <string name="morphe_copy_select_text_success">Text copied to clipboard</string>
 
     <!-- interaction.feedactions.feedVideoActionsPatch -->
     <string name="morphe_feed_long_press_menu_title">Tap and hold to open video menu</string>

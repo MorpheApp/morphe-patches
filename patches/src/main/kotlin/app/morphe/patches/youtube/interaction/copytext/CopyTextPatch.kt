@@ -24,7 +24,8 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/CopyT
 @Suppress("unused")
 val copyTextPatch = bytecodePatch(
     name = "Copy text",
-    description = "Adds options to copy the video title and comments by tapping and holding them."
+    description = "Adds options to copy the video title and comments, and to select text of video descriptions " +
+            "and posts, by tapping and holding them."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -39,7 +40,8 @@ val copyTextPatch = bytecodePatch(
     execute {
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_copy_video_title", summary = true),
-            SwitchPreference("morphe_copy_comments", summary = true)
+            SwitchPreference("morphe_copy_comments", summary = true),
+            SwitchPreference("morphe_copy_select_text", summary = true)
         )
 
         // Verify stubbed classes are not obfuscated.
