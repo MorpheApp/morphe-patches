@@ -171,7 +171,9 @@ public class PlayAlbumSongsPatch {
             // and that is still the album playing rather than the music video itself.
             if (track == null || track.playlistId().equals(playlistId)) return;
             albumTracks.remove(videoId);
-    }
+            // Otherwise the length, scrobbles and segments of the song are still used for the music video.
+            songs.remove(videoId);
+        }
         Logger.printDebug(() -> "No longer playing the song version of: " + videoId);
     }
 

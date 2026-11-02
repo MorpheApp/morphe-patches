@@ -23,8 +23,8 @@ import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
+import app.morphe.patches.shared.VideoStreamingDataToStringFingerprint
 import app.morphe.patches.youtube.shared.SeekbarFingerprint
-import app.morphe.patches.youtube.shared.VideoStreamingDataToStringFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
