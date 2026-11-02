@@ -716,6 +716,11 @@ public class Settings extends SharedYouTubeSettings {
     // Miscellaneous
     public static final BooleanSetting ANNOUNCEMENTS = new BooleanSetting("morphe_announcements", TRUE);
     public static final IntegerSetting ANNOUNCEMENT_LAST_ID = new IntegerSetting("morphe_announcement_last_id", -1, false, false);
+    public static final BooleanSetting PATCHES_UPDATE_NOTICE = new BooleanSetting("morphe_patches_update_notice", FALSE);
+    public static final BooleanSetting PATCHES_UPDATE_NOTICE_DEV_RELEASES = new BooleanSetting("morphe_patches_update_notice_dev_releases", FALSE, parent(PATCHES_UPDATE_NOTICE));
+    public static final StringSetting PATCHES_UPDATE_NOTICE_DISMISSED_VERSION = new StringSetting("morphe_patches_update_notice_dismissed_version", "", false, false);
+    public static final StringSetting PATCHES_UPDATE_NOTICE_CACHE = new StringSetting("morphe_patches_update_notice_cache", "", false, false);
+    public static final LongSetting PATCHES_UPDATE_NOTICE_LAST_CHECK_MS = new LongSetting("morphe_patches_update_notice_last_check_ms", 0L, false, false);
     public static final BooleanSetting BACK_BUTTON_ALWAYS_EXITS_FEED = new BooleanSetting("morphe_back_button_always_exits_feed", TRUE, true);
     public static final BooleanSetting DISABLE_SCROLLING_SPEED = new BooleanSetting("morphe_disable_scrolling_speed_limit", TRUE, true);
 
