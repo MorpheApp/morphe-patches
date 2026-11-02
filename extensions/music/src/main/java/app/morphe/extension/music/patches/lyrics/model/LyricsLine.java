@@ -169,11 +169,12 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
         }
         if (words.size() == 1) {
             Word single = words.get(0);
-            // A span over several words is the line's own timing written back out.
-            if (hasMultipleWords(text)) {
+            if (single.endMs() <= single.startMs()) {
                 return false;
             }
-            return single.endMs() > single.startMs();
+            // A span repeating the whole line is line timing; one over some words is still word timing.
+            return !hasMultipleWords(text)
+                    || !compactText(single.text()).equalsIgnoreCase(compactText(text));
         }
         return true;
     }

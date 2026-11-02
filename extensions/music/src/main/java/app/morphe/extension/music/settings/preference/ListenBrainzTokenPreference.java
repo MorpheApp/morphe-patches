@@ -11,8 +11,6 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.preference.Preference;
 import android.util.AttributeSet;
 import android.util.Pair;
@@ -155,15 +153,8 @@ public class ListenBrainzTokenPreference extends Preference {
 
         Button getBtn = CustomDialog.createButton(context, null,
                 str("morphe_music_token_dialog_get_token"),
-                () -> {
-                    try {
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://listenbrainz.org/profile/"));
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
-                    } catch (Exception ex) {
-                        Logger.printException(() -> "ListenBrainzTokenPreference failed to open browser", ex);
-                    }
-                },
+                () -> ThemedInput.openInBrowser(context,
+                        "https://listenbrainz.org/profile/", "ListenBrainz token button"),
                 false, false);
 
         Button verifyBtn = CustomDialog.createButton(context, null,

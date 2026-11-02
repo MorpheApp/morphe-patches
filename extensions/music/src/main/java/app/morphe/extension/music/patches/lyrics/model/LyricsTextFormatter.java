@@ -60,7 +60,11 @@ public final class LyricsTextFormatter {
         return new Result(out.toString(), offsets);
     }
 
-    private static boolean isPunctuation(int cp) {
+    /**
+     * Whether the code point is punctuation in the Unicode sense, which is what both the stripped
+     * line end and the version suffix look for.
+     */
+    public static boolean isPunctuation(int cp) {
         return switch (Character.getType(cp)) {
             case Character.CONNECTOR_PUNCTUATION, Character.DASH_PUNCTUATION,
                  Character.START_PUNCTUATION, Character.END_PUNCTUATION,

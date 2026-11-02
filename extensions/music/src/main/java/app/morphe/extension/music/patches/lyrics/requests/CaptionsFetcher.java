@@ -944,7 +944,7 @@ public final class CaptionsFetcher {
 
     private static List<String> timedtextLanguages() {
         List<String> langs = new ArrayList<>();
-        Locale sys = Locale.getDefault();
+        Locale sys = Requester.getAppLocale();
         String sysLang = sys.getLanguage();
         if (!sysLang.isEmpty() && !langs.contains(sysLang)) {
             langs.add(sysLang);

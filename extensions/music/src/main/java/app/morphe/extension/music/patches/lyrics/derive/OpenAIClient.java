@@ -47,11 +47,11 @@ public final class OpenAIClient {
     public static final String DEFAULT_PROMPT = """
             You are a professional lyrics {task} engine. Perform {task} on every line below for {language}, keeping the original meaning, tone and punctuation.
             Song: {title} by {artist}
-            
+
             Output format: Number every result on its own line, like:
             1. first result
             2. second result
-            
+
             CRITICAL RULES:
             - Output exactly {count} numbered lines (same as input count)
             - Number format: "N. text" (number, period, space, text)
@@ -60,7 +60,7 @@ public final class OpenAIClient {
             - Follow the standard {language} conventions for {task}; no annotations, notes or tone marks
             - If a line already needs no {task}, output one "SKIP" for it
             - Output ONLY the {task}. No reasoning, no explanations, no step-by-step thinking.
-            
+
             {lines}""";
     /**
      * The prompt template for the section task. Where {@link #DEFAULT_PROMPT} rewrites each line,
@@ -70,12 +70,12 @@ public final class OpenAIClient {
     public static final String SECTION_PROMPT = """
             You are a music structure analyst. Analyze the lyrics below and label the song structure.
             Song: {title} by {artist}
-            
+
             For every line, output the section that line opens. Only the FIRST line of a section carries its name; every other line that continues the same section is output as "SKIP".
-            
+
             Use these exact section names:
             Intro, Verse, Pre-Chorus, Chorus, Hook, Refrain, Bridge, Instrumental, Transition, False-Chorus, Outro, Reprise
-            
+
             CRITICAL RULES:
             - Output exactly {count} numbered lines (same as input count)
             - Number format: "N. text" (number, period, space, text)
@@ -83,7 +83,7 @@ public final class OpenAIClient {
             - Repeated sections are numbered in order: Verse 1, Verse 2, Chorus 1, Chorus 2
             - Pick the most specific name from the list above
             - Output ONLY the labels. No reasoning, no explanations.
-            
+
             {lines}""";
     private static final int CONNECT_TIMEOUT_MS = 10_000;
     private static final int READ_TIMEOUT_MS = 45_000;

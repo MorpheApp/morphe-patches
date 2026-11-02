@@ -28,6 +28,7 @@ import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.requests.Requester;
 
 public final class AppleMusicProvider implements LyricsProvider {
 
@@ -170,7 +171,7 @@ public final class AppleMusicProvider implements LyricsProvider {
     private static String lyricsLanguageParam() {
         final String target = LyricsRequests.translationLanguage();
         final String matched = matchSupportedLanguage(Locale.forLanguageTag(target.replace('_', '-')));
-        return matched != null ? matched : matchSupportedLanguage(Locale.getDefault());
+        return matched != null ? matched : matchSupportedLanguage(Requester.getAppLocale());
     }
 
     @Nullable
@@ -574,7 +575,7 @@ public final class AppleMusicProvider implements LyricsProvider {
 
         synchronized (TOKEN_LOCK) {
             if (cachedStorefront == null) {
-                Locale sysLocale = Locale.getDefault();
+                Locale sysLocale = Requester.getAppLocale();
                 String country = sysLocale.getCountry();
                 if (!country.isEmpty()) {
                     cachedStorefront = country.toLowerCase(Locale.ROOT);

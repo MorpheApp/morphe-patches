@@ -38,15 +38,22 @@ public class LyricsLineWordTimingsTest {
         assertFalse(line.hasWordTimings());
     }
 
-    /** A line made of one word repeated is still one word, so its span may be real timing. */
-    @Test public void singleSpanOverARepeatedWordIsNotMistakenForALineSpan() {
+    /** A span that repeats the whole line is line timing, but one over some words is not. */
+    @Test public void singleSpanOverPartOfAMultiWordLineKeepsWordTimings() {
         final LyricsLine line = new LyricsLine(0, 1000, "la la la",
                 List.of(new Word(0, 1000, "la la la")));
         assertFalse(line.hasWordTimings());
 
         final LyricsLine word = new LyricsLine(0, 1000, "Yeah Yeah",
                 List.of(new Word(0, 1000, "Yeah")));
-        assertFalse(word.hasWordTimings());
+        assertTrue(word.hasWordTimings());
+    }
+
+    /** A span covering every word but not the line's punctuation still carries word timing. */
+    @Test public void singleSpanSharingTheLineWordsKeepsWordTimings() {
+        final LyricsLine line = new LyricsLine(0, 1000, "hello beautiful world!",
+                List.of(new Word(0, 950, "hello beautiful world")));
+        assertTrue(line.hasWordTimings());
     }
 
     /**

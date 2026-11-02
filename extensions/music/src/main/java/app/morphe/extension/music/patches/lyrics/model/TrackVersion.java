@@ -37,12 +37,12 @@ public record TrackVersion(String title, String variant) {
         while (!s.isEmpty()) {
             final String core = core(s);
             final int first = s.codePointAt(0);
-            if (isEdgePunctuation(first) && !hasPartner(first, core)) {
+            if (LyricsTextFormatter.isPunctuation(first) && !hasPartner(first, core)) {
                 s = s.substring(Character.charCount(first)).strip();
                 continue;
             }
             final int last = s.codePointBefore(s.length());
-            if (isEdgePunctuation(last) && !hasPartner(last, core)) {
+            if (LyricsTextFormatter.isPunctuation(last) && !hasPartner(last, core)) {
                 s = s.substring(0, s.length() - Character.charCount(last)).strip();
                 continue;
             }
@@ -65,17 +65,7 @@ public record TrackVersion(String title, String variant) {
     }
 
     private static boolean isEdge(int cp) {
-        return isEdgePunctuation(cp) || Character.isWhitespace(cp);
-    }
-
-    private static boolean isEdgePunctuation(int cp) {
-        return switch (Character.getType(cp)) {
-            case Character.CONNECTOR_PUNCTUATION, Character.DASH_PUNCTUATION,
-                 Character.START_PUNCTUATION, Character.END_PUNCTUATION,
-                 Character.INITIAL_QUOTE_PUNCTUATION, Character.FINAL_QUOTE_PUNCTUATION,
-                 Character.OTHER_PUNCTUATION -> true;
-            default -> false;
-        };
+        return LyricsTextFormatter.isPunctuation(cp) || Character.isWhitespace(cp);
     }
 
     private static boolean hasPartner(int cp, String core) {

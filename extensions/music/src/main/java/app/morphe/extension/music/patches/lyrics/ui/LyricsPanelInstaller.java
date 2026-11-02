@@ -154,14 +154,13 @@ public final class LyricsPanelInstaller {
             final boolean romanizeButtonOff =
                     Settings.LYRICS_SHOW_ROMANIZE_BUTTON.key.equals(key)
                             && !Settings.LYRICS_SHOW_ROMANIZE_BUTTON.get();
-            if (translateButtonOff || romanizeButtonOff) {
-                panelView.releaseOnlyModesForHiddenButtons(translateButtonOff, romanizeButtonOff);
-            }
+            final boolean releasesMode = (translateButtonOff || romanizeButtonOff)
+                    && panelView.releaseOnlyModesForHiddenButtons(translateButtonOff, romanizeButtonOff);
             if (Settings.LYRICS_SHOW_COPY_BUTTON.key.equals(key)
                     || Settings.LYRICS_SHOW_TRANSLATE_BUTTON.key.equals(key)
                     || Settings.LYRICS_SHOW_ROMANIZE_BUTTON.key.equals(key)
                     || Settings.LYRICS_SHOW_REFRESH_BUTTON.key.equals(key)) {
-                panelView.applyToolbarButtonSettings();
+                panelView.applyToolbarButtonSettings(releasesMode);
             } else if (Settings.LYRICS_TEXT_SIZE.key.equals(key)
                     || Settings.LYRICS_LINE_SCALE.key.equals(key)) {
                 panelView.applyTextSize();

@@ -50,38 +50,31 @@ import app.morphe.extension.shared.ui.Dim;
 /** All of it is static and reads no state of its own, which is why it lives outside the view. */
 final class LyricsViewSupport {
 
-    private static final float FOOTER_ALPHA = 0.6f;
-
-    private static final long HIGHLIGHT_FADE_DURATION_MILLISECONDS = 320;
-
-    private static final String LYRICS_SOURCE_KEY = "morphe_music_lyrics_source_label";
-
-    private static final float FOOTER_TEXT_SIZE_SP = 16;
-
-    private static final float BACKGROUND_TEXT_SIZE_FACTOR = 0.7f;
-    private static final float SECTION_TAG_TEXT_SIZE_FACTOR = 0.45f;
-
-    private static final float SECTION_DOT_INSET_FACTOR = 0.18f;
-
     /** Lines other than the active one shrink a little, on top of dimming. */
     static final float ACTIVE_LINE_SCALE = 1.0f;
     static final float INACTIVE_LINE_SCALE = 0.95f;
-
-    private static final ArgbEvaluator BUTTON_COLOR_EVALUATOR = new ArgbEvaluator();
-
     /** Compose LinearOutSlowInEasing. */
     static final TimeInterpolator LINEAR_OUT_SLOW_IN =
             new PathInterpolator(0f, 0f, 0.2f, 1f);
-
     /** Compose FastOutSlowInEasing. */
     static final TimeInterpolator FAST_OUT_SLOW_IN =
             new PathInterpolator(0.4f, 0f, 0.2f, 1f);
-
+    private static final float FOOTER_ALPHA = 0.6f;
+    private static final long HIGHLIGHT_FADE_DURATION_MILLISECONDS = 320;
+    private static final String LYRICS_SOURCE_KEY = "morphe_music_lyrics_source_label";
+    private static final float FOOTER_TEXT_SIZE_SP = 16;
+    private static final float BACKGROUND_TEXT_SIZE_FACTOR = 0.7f;
+    private static final float SECTION_TAG_TEXT_SIZE_FACTOR = 0.45f;
+    private static final float SECTION_DOT_INSET_FACTOR = 0.18f;
+    private static final ArgbEvaluator BUTTON_COLOR_EVALUATOR = new ArgbEvaluator();
     /**
      * MIUI and HyperOS draw the bold system font too thin, most visibly on CJK text, so these
      * devices get a heavier weight on top.
      */
     private static final boolean IS_XIAOMI = isXiaomi();
+
+    private LyricsViewSupport() {
+    }
 
     private static boolean isXiaomi() {
         String manufacturer = Build.MANUFACTURER.toLowerCase(Locale.ROOT);
@@ -104,9 +97,6 @@ final class LyricsViewSupport {
     /** Draws a line a little tighter, except a joining script, which spacing would break apart. */
     static float lineLetterSpacing(@Nullable CharSequence text, float textSizeSp) {
         return LyricsSpanBuilder.containsJoiningScript(text) ? 0f : -0.5f / Math.max(12f, textSizeSp);
-    }
-
-    private LyricsViewSupport() {
     }
 
     static int leadingRegionSize(Layout layout, int start, int end) {
@@ -413,13 +403,13 @@ final class LyricsViewSupport {
     }
 
     static CharSequence sourceText(String providerName, boolean translated,
-                                    boolean translatedFromGoogle, boolean translatedFromAI, @Nullable String translatedAiModel,
-                                    boolean romanized, boolean romanizedFromGoogle, boolean romanizedFromAI,
-                                    @Nullable String romanizedAiModel, LyricsPanelView.OnlyMode onlyMode,
-                                    @Nullable String romanizedLocalDictionary,
-                                    @Nullable Runnable onTranslationLanguage,
-                                    @Nullable Runnable onRomanizationLanguage,
-                                    @Nullable Runnable onSourceClicked) {
+                                   boolean translatedFromGoogle, boolean translatedFromAI, @Nullable String translatedAiModel,
+                                   boolean romanized, boolean romanizedFromGoogle, boolean romanizedFromAI,
+                                   @Nullable String romanizedAiModel, LyricsPanelView.OnlyMode onlyMode,
+                                   @Nullable String romanizedLocalDictionary,
+                                   @Nullable Runnable onTranslationLanguage,
+                                   @Nullable Runnable onRomanizationLanguage,
+                                   @Nullable Runnable onSourceClicked) {
         SpannableStringBuilder text = new SpannableStringBuilder();
         appendSourceLine(text, String.format(str(LYRICS_SOURCE_KEY), providerName), onSourceClicked);
 

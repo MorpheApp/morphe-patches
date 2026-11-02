@@ -86,7 +86,7 @@ public final class LyricsRequests {
     }
 
     public static String deviceLanguage() {
-        return Locale.getDefault().getLanguage();
+        return Requester.getAppLocale().getLanguage();
     }
 
     public static String translationLanguage() {
@@ -131,7 +131,7 @@ public final class LyricsRequests {
         if (!region.isEmpty()) {
             return region;
         }
-        final Locale device = Locale.getDefault();
+        final Locale device = Requester.getAppLocale();
         final String script = device.getScript();
         if (script != null && !script.isEmpty()) {
             return script;

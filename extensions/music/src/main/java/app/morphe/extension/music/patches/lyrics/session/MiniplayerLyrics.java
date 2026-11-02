@@ -80,9 +80,6 @@ public final class MiniplayerLyrics {
         ticker.stop();
         LyricsManager.getInstance().removeListener(lyricsListener);
     }
-    
-    /** Drives the periodic check that mirrors the current line into the mini player. */
-    private static final LyricsTicker ticker = new LyricsTicker(MiniplayerLyrics::tick);
 
     /**
      * Starts or stops mirroring to match the current settings. Called when a lyrics setting
@@ -98,6 +95,9 @@ public final class MiniplayerLyrics {
         LyricsManager.getInstance().addListener(lyricsListener);
         ticker.schedule();
     }
+
+    /** Drives the periodic check that mirrors the current line into the mini player. */
+    private static final LyricsTicker ticker = new LyricsTicker(MiniplayerLyrics::tick);
 
     public static void onMediaSessionSetMetadata(MediaSession session, MediaMetadata original) {
         try {
@@ -123,13 +123,6 @@ public final class MiniplayerLyrics {
             Logger.printException(() -> "onMediaSessionSetMetadata failure", ex);
         }
     }
-    
-    /** Listener that re-schedules the ticker immediately when lyrics finish loading. */
-    private static final LyricsManager.Listener lyricsListener = (state, lyrics) -> {
-        if (state == LyricsManager.State.LOADED || state == LyricsManager.State.NOT_FOUND) {
-            ticker.schedule();
-        }
-    };
 
     /**
      * Injection point. Captures the miniplayer title and subtitle TextViews and (re)starts the
@@ -174,6 +167,13 @@ public final class MiniplayerLyrics {
 
         onSettingsChanged();
     }
+
+    /** The track changed, so the next tick has to come at once. */
+    private static final LyricsManager.Listener lyricsListener = (state, lyrics) -> {
+        if (state == LyricsManager.State.LOADED || state == LyricsManager.State.NOT_FOUND) {
+            ticker.schedule();
+        }
+    };
 
     private static void tick() {
         try {
@@ -291,6 +291,4 @@ public final class MiniplayerLyrics {
             view.setText(restore);
         }
     }
-
-
 }

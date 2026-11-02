@@ -27,12 +27,14 @@ import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.romanizers.HangulRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
+import app.morphe.extension.music.patches.lyrics.romanizers.LyricsLanguageDetector;
 import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.translation.TextTranslator;
 
 public final class LyricsRomanizer {
@@ -297,7 +299,16 @@ public final class LyricsRomanizer {
                 Settings.LYRICS_ROMANIZATION_PROVIDERS.get(),
                 AiProviders.ROMANIZATION_ORDER);
         if (providers.isEmpty()) {
-            callback.onRomanized(null, false, false, null, false, null);
+            callback.onRomanized(null, false, false, null, false, null, false);
+            return;
+        }
+
+        // Local readers cost no request and know for themselves whether they have a reading.
+        final boolean hasLocalReader = providers.contains(AiProviders.RIME)
+                || providers.contains(AiProviders.LOCAL);
+        if (!hasLocalReader && !LyricsLanguageDetector.needsRomanization(
+                lyrics.lines(), LyricsRequests.romanizationLanguage())) {
+            callback.onRomanized(null, false, false, null, false, null, true);
             return;
         }
 
@@ -313,7 +324,7 @@ public final class LyricsRomanizer {
             boolean hasWordRomaji = (perWord
                     && hasUsableWordReading(lyrics.lines(), allowTransliteration))
                     || (isWordSynced && hasUsableWordReading(result, allowTransliteration));
-            callback.onRomanized(result, false, false, null, hasWordRomaji, null);
+            callback.onRomanized(result, false, false, null, hasWordRomaji, null, false);
             return;
         }
 
@@ -346,7 +357,7 @@ public final class LyricsRomanizer {
                                 lyrics.lines(), allowTransliteration));
                         Utils.runOnMainThread(() -> callback.onRomanized(
                                 finalResult, result.fromGoogle(), result.fromAI(), result.model(),
-                                hasWordRomaji, result.localDictionary()));
+                                hasWordRomaji, result.localDictionary(), false));
                         return;
                     } catch (Exception ex) {
                         Logger.printInfo(() -> "romanization provider failed: " + provider, ex);
@@ -354,11 +365,11 @@ public final class LyricsRomanizer {
                 }
 
                 Utils.runOnMainThread(
-                        () -> callback.onRomanized(null, false, false, null, false, null));
+                        () -> callback.onRomanized(null, false, false, null, false, null, false));
             } catch (Exception ex) {
                 Logger.printInfo(() -> "romanize failure", ex);
                 Utils.runOnMainThread(
-                        () -> callback.onRomanized(null, false, false, null, false, null));
+                        () -> callback.onRomanized(null, false, false, null, false, null, false));
             }
         });
     }
@@ -792,7 +803,7 @@ public final class LyricsRomanizer {
             boolean fallbackToSungLine) {
         // Keys are xml:lang from the file, with "romaji" standing in for a sidecar that named none.
         String langTag = LyricsRequests.isDefaultRomanizationLanguage()
-                ? Locale.getDefault().toLanguageTag()
+                ? Requester.getAppLocale().toLanguageTag()
                 : LyricsRequests.romanizationLanguage();
         String langCode = LyricsRequests.primarySubtag(langTag);
 
@@ -1502,9 +1513,10 @@ public final class LyricsRomanizer {
     }
 
     public interface Callback {
+        /** @param skipped No provider was asked anything, so a caller reports nothing to do. */
         void onRomanized(@Nullable List<LyricsLine> romanizedLines,
                          boolean fromGoogle, boolean fromAI, @Nullable String aiModel,
-                         boolean perWord, @Nullable String localDictionary);
+                         boolean perWord, @Nullable String localDictionary, boolean skipped);
 
     }
 

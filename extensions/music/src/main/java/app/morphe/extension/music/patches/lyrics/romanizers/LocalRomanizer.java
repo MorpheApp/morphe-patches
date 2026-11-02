@@ -31,8 +31,6 @@ import app.morphe.extension.music.settings.Settings;
  * the line would lose the words around it.
  */
 public final class LocalRomanizer {
-
-
     private static final String PINYIN = "UniDict, pinyin-pro";
     private static final String RULE = "Built-in Romanization";
     private static final String JAPANESE = "SudachiDict";
@@ -434,7 +432,7 @@ public final class LocalRomanizer {
                     i++;
                     continue;
                 }
-                append(out, KanaRomanizer.romanize(reading));
+                Romanizations.appendWord(out, KanaRomanizer.romanize(reading));
                 i += length;
                 continue;
             }
@@ -444,7 +442,7 @@ public final class LocalRomanizer {
                     && !ScriptDetector.isHan(line.charAt(end))) {
                 end++;
             }
-            append(out, line.substring(i, end).trim());
+            Romanizations.appendWord(out, line.substring(i, end).trim());
             i = end;
         }
         return out.toString().trim();
@@ -468,15 +466,9 @@ public final class LocalRomanizer {
                     }
                 }
             }
-            append(out, KanaRomanizer.romanize(line.substring(at, at + length)));
+            Romanizations.appendWord(out, KanaRomanizer.romanize(line.substring(at, at + length)));
             at += length;
         }
-    }
-
-    private static void append(StringBuilder out, String word) {
-        if (word.isEmpty()) return;
-        if (out.length() > 0) out.append(' ');
-        out.append(word);
     }
 
     public static final class Result {

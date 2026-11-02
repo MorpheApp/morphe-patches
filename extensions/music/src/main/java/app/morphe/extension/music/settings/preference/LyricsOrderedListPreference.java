@@ -12,9 +12,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.net.Uri;
 import android.preference.Preference;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -89,7 +87,7 @@ public final class LyricsOrderedListPreference extends Preference {
         PROVIDER_LABELS.put("Spotify", "Spotify *");
         PROVIDER_LABELS.put("Deezer", "Deezer *");
         PROVIDER_LABELS.put("Genius", "Genius");
-        PROVIDER_LABELS.put("LrcRed", "lrc.red");
+        PROVIDER_LABELS.put("LrcRed", "lrc.red (LrcRed)");
         PROVIDER_LABELS.put(QUICKLRC, "QuickLRC *");
     }
 
@@ -179,14 +177,14 @@ public final class LyricsOrderedListPreference extends Preference {
             case TRANSLATION -> switch (id) {
                 case AiProviders.EMBEDDED -> AiProviders.EMBEDDED_LABEL;
                 case AiProviders.GOOGLE -> AiProviders.GOOGLE_LABEL;
-                case AiProviders.OPENAI_COMPATIBLE -> AiProviders.OPENAI_COMPATIBLE_LABEL;
+                case AiProviders.AI -> AiProviders.AI_LABEL;
                 case AiProviders.DEEPL -> AiProviders.DEEPL_LABEL;
                 default -> id;
             };
             case ROMANIZATION -> switch (id) {
                 case AiProviders.EMBEDDED -> AiProviders.EMBEDDED_LABEL;
                 case AiProviders.GOOGLE -> AiProviders.GOOGLE_LABEL;
-                case AiProviders.OPENAI_COMPATIBLE -> AiProviders.OPENAI_COMPATIBLE_LABEL;
+                case AiProviders.AI -> AiProviders.AI_LABEL;
                 default -> str("morphe_music_lyrics_romanization_provider_" + id);
             };
         };
@@ -218,7 +216,7 @@ public final class LyricsOrderedListPreference extends Preference {
             return false;
         }
         return switch (id) {
-            case AiProviders.OPENAI_COMPATIBLE -> true;
+            case AiProviders.AI -> true;
             case AiProviders.DEEPL -> kind() == Kind.TRANSLATION;
             default -> false;
         };
@@ -279,19 +277,17 @@ public final class LyricsOrderedListPreference extends Preference {
      * Local needs its dictionary before it can romanize anything. It is asked for first and only
      * switched on once downloading has started, so a refused download never leaves it enabled.
      */
-    private void enableLocal(Item item, Switch switchV, TextView name,
+    private void enableLocal(Switch switchV, TextView name,
                              Runnable onEnabled, Runnable onRefused) {
         final boolean[] chosen = LyricsLocalRomanizationDownloads.chosen();
-        if (!chosen[LyricsLocalRomanizationDownloads.SUDACHI]
-                && !chosen[LyricsLocalRomanizationDownloads.UNIDICT]
-                && !chosen[LyricsLocalRomanizationDownloads.PINYIN]
-                && !chosen[LyricsLocalRomanizationDownloads.CLDR]) {
-            // Read by rule alone, so there is nothing to ask for.
+        // A saved choice with every dictionary off means the rules alone suffice; never having
+        // chosen waits for the dialog instead.
+        if (!anyChosen(chosen) && LyricsLocalRomanizationDownloads.hasChoice()) {
             enableRow(switchV, name);
             onEnabled.run();
             return;
         }
-        if (LyricsLocalRomanizationDownloads.isReady()) {
+        if (anyChosen(chosen) && LyricsLocalRomanizationDownloads.isReady()) {
             enableRow(switchV, name);
             onEnabled.run();
             LyricsLocalRomanizationDownloads.ensure();
@@ -305,6 +301,15 @@ public final class LyricsOrderedListPreference extends Preference {
             return;
         }
         showDictionaryDialog(context, switchV, name, chosen, onEnabled, onRefused);
+    }
+
+    private static boolean anyChosen(boolean[] chosen) {
+        for (boolean picked : chosen) {
+            if (picked) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /** The name opens the same chooser the switch asks with, without turning the row on. */
@@ -498,13 +503,9 @@ public final class LyricsOrderedListPreference extends Preference {
         // Save writes the choice and closes; the download runs in the background and answers with
         // a toast. Cancel closes without changing anything, and the dismiss listener puts the row
         // back if the dialog went away without an agreed choice.
-        final Button ok = button(mainLayout, str("morphe_settings_save"));
+        final Button ok = ThemedInput.findButton(mainLayout, str("morphe_settings_save"));
         ok.setOnClickListener(v -> {
-            if (!japanese.isChecked() && !unidict.isChecked()
-                    && !chinese.isChecked() && !cldr.isChecked()) {
-                Utils.showToastShort(str("morphe_music_lyrics_local_romanization_dict_empty"));
-                return;
-            }
+            // Saving with nothing ticked is a choice of its own: the rules alone.
             LyricsLocalRomanizationDownloads.saveChoice(
                     japanese.isChecked(), unidict.isChecked(),
                     chinese.isChecked(), cldr.isChecked());
@@ -543,24 +544,6 @@ public final class LyricsOrderedListPreference extends Preference {
             // A download already under way: show it, but a choice is still what starts it again.
             hint.setText(running);
         }
-    }
-
-    /** Found by label because the button row is reordered when the labels do not fit. */
-    private static Button button(ViewGroup layout, CharSequence text) {
-        for (int i = 0; i < layout.getChildCount(); i++) {
-            final View child = layout.getChildAt(i);
-            if (child instanceof Button
-                    && text.toString().contentEquals(((Button) child).getText())) {
-                return (Button) child;
-            }
-            if (child instanceof ViewGroup) {
-                final Button found = button((ViewGroup) child, text);
-                if (found != null) {
-                    return found;
-                }
-            }
-        }
-        return null;
     }
 
     private final List<Item> items = new ArrayList<>();
@@ -739,7 +722,7 @@ public final class LyricsOrderedListPreference extends Preference {
             return Settings.LYRICS_DEEPL_API_KEY.get().isBlank();
         }
         return switch (id) {
-            case AiProviders.OPENAI_COMPATIBLE ->
+            case AiProviders.AI ->
                     Settings.LYRICS_AI_BASE_URL.get().isBlank()
                             || Settings.LYRICS_AI_MODEL.get().isBlank();
             default -> false;
@@ -778,13 +761,7 @@ public final class LyricsOrderedListPreference extends Preference {
     }
 
     private void openUrl(String url) {
-        try {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            getContext().startActivity(intent);
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Failed to open provider site", ex);
-        }
+        ThemedInput.openInBrowser(getContext(), url, "Provider site button");
     }
 
     private void rebuildRows() {
@@ -956,7 +933,7 @@ public final class LyricsOrderedListPreference extends Preference {
                 if (checked && isLocalProvider(item.id)) {
                     // The download dialog decides whether the switch stays on, so the row is
                     // saved only once it closes.
-                    enableLocal(item, switchV, name, () -> {
+                    enableLocal(switchV, name, () -> {
                         item.enabled = true;
                         saveItems();
                         updateSummary();
