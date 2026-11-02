@@ -103,7 +103,10 @@ val niconicoCommentsPatch = bytecodePatch(
                         "morphe_niconico_comments_max_length",
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
                         selectable = true
-                    )
+                    ),
+                    SwitchPreference("morphe_niconico_comments_live_streams", summary = true),
+                    SwitchPreference("morphe_niconico_comments_live_premieres", summary = true),
+                    SwitchPreference("morphe_niconico_comments_ended_premieres", summary = true)
                 )
             )
         )

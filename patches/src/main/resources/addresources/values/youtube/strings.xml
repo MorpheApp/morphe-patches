@@ -1888,6 +1888,12 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_max_length_title">Max comment length</string>
     <string name="morphe_niconico_comments_max_length_summary">Hides comments with more characters than this. Each emoji counts as one character</string>
     <string name="morphe_niconico_comments_max_length_no_limit">No limit</string>
+    <string name="morphe_niconico_comments_live_streams_title">Show on live streams</string>
+    <string name="morphe_niconico_comments_live_streams_summary">Live streams and their replays</string>
+    <string name="morphe_niconico_comments_live_premieres_title">Show on premieres</string>
+    <string name="morphe_niconico_comments_live_premieres_summary">Premieres while they are playing</string>
+    <string name="morphe_niconico_comments_ended_premieres_title">Show on ended premieres</string>
+    <string name="morphe_niconico_comments_ended_premieres_summary">Chat replay of premieres that have ended</string>
 
     <string name="morphe_live_chat_translate_screen_title">Live chat translation</string>
     <string name="morphe_live_chat_translate_screen_summary">Translate live chat and live chat replay messages</string>

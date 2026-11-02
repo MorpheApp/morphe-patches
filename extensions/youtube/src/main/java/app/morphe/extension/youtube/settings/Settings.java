@@ -768,6 +768,9 @@ public class Settings extends SharedYouTubeSettings {
     /** Max comment length slider value that shows all comments. */
     public static final int NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT = 100;
     public static final IntegerSetting NICONICO_COMMENTS_MAX_LENGTH = new IntegerSetting("morphe_niconico_comments_max_length", NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT, parent(NICONICO_COMMENTS));
+    public static final BooleanSetting NICONICO_COMMENTS_LIVE_STREAMS = new BooleanSetting("morphe_niconico_comments_live_streams", TRUE, parent(NICONICO_COMMENTS));
+    public static final BooleanSetting NICONICO_COMMENTS_LIVE_PREMIERES = new BooleanSetting("morphe_niconico_comments_live_premieres", TRUE, parent(NICONICO_COMMENTS));
+    public static final BooleanSetting NICONICO_COMMENTS_ENDED_PREMIERES = new BooleanSetting("morphe_niconico_comments_ended_premieres", TRUE, parent(NICONICO_COMMENTS));
 
     // Voice over translation
     public static final BooleanSetting VOT_ENABLED = new BooleanSetting("morphe_vot_enabled", FALSE, true);
