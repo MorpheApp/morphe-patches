@@ -9,7 +9,6 @@ package app.morphe.extension.music.patches.lyrics.romanizers;
 
 import androidx.annotation.Nullable;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,147 +17,86 @@ import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 
 /**
  * Skips the translation and romanization requests when the lyrics are already written in the
- * language that was asked for. Only the script of each line is read, so no word list is needed,
- * and a line mixing scripts is never skipped, since telling a borrowed word from a change of
- * language would take a guess. Every language written in Latin letters reads as one script.
+ * requested language. Only the script of each line is read, so a translation is skipped only for
+ * languages whose script no other common language shares. Languages written in Latin, Cyrillic,
+ * Arabic or Devanagari can't be told apart by script and are always requested.
  */
 public final class LyricsLanguageDetector {
 
-    /** Zero drops note-only and punctuation-only lines. */
-    private static final int MIN_LETTERS = 1;
-    private static final int MIN_HAN = 1;
     /** Kana below this is a loanword rather than a Japanese line. */
     private static final int MIN_KANA = 2;
+
+    private static final Map<String, Category> UNIQUE_SCRIPT_LANGUAGES = Map.of(
+            "zh", Category.HAN,
+            "ja", Category.KANA,
+            "ko", Category.HANGUL,
+            "el", Category.GREEK,
+            "he", Category.HEBREW,
+            "hy", Category.ARMENIAN,
+            "ka", Category.GEORGIAN,
+            "th", Category.THAI
+    );
 
     private LyricsLanguageDetector() {
     }
 
-    /** Whether translating into {@code language} has anything to do. */
+    /** Whether any line is not already written in {@code language}. */
     public static boolean needsTranslation(List<LyricsLine> lines, @Nullable String language) {
-        final Category[] allowed = scriptsFor(language, translationScripts());
-        return allowed != null && needsRequest(lines, allowed);
-    }
-
-    /** Whether romanizing has anything to do at all. */
-    public static boolean needsRomanization(List<LyricsLine> lines, @Nullable String language) {
-        final Category[] allowed = scriptsFor(language, romanizationScripts());
-        return allowed != null && needsRequest(lines, allowed);
-    }
-
-    private static boolean needsRequest(List<LyricsLine> lines, Category[] allowed) {
-        int total = 0;
-        int foreign = 0;
-        int mixed = 0;
+        final Category target = UNIQUE_SCRIPT_LANGUAGES.get(LyricsRequests.primarySubtag(language));
         for (LyricsLine line : lines) {
             final int[] found = count(line.text());
-            if (letters(found) < MIN_LETTERS) {
-                continue;
-            }
-            total++;
-            if (matchesAny(found, allowed)) {
-                if (isMixed(found, allowed)) {
-                    mixed++;
-                }
-            } else {
-                foreign++;
-            }
-        }
-
-        return total != 0 && (foreign != 0 || mixed != 0);
-    }
-
-    /** A line carrying another script beside the requested one, which a ratio cannot settle. */
-    private static boolean isMixed(int[] found, Category[] allowed) {
-        if (allowed.length != 1) {
-            return false;
-        }
-        final Category lead = allowed[0];
-        if (found[lead.ordinal()] <= 0) {
-            return false;
-        }
-        for (Category category : Category.values()) {
-            if (category == lead || found[category.ordinal()] <= 0) {
-                continue;
-            }
-            // Latin rides along inside every other script without making the line unreadable.
-            if (category == Category.LATIN) {
-                continue;
-            }
-            // Han and kana are one way of writing, not two languages.
-            if ((lead == Category.HAN && category == Category.JAPANESE)
-                    || (lead == Category.JAPANESE && category == Category.HAN)) {
-                continue;
-            }
-            return true;
-        }
-        return false;
-    }
-
-    @Nullable
-    private static Category[] scriptsFor(@Nullable String language, Map<String, Category[]> table) {
-        if (language == null) {
-            return null;
-        }
-        final String primary = LyricsRequests.primarySubtag(language);
-        return primary.isEmpty() ? null : table.get(primary);
-    }
-
-    private static Map<String, Category[]> translationScripts() {
-        final Map<String, Category[]> table = new HashMap<>();
-        add(table, new Category[]{Category.HAN}, "zh");
-        add(table, new Category[]{Category.JAPANESE}, "ja");
-        add(table, new Category[]{Category.KOREAN}, "ko");
-        add(table, new Category[]{Category.CYRILLIC},
-                "ru", "uk", "bg", "be", "kk", "ky", "mk", "mn", "sr");
-        add(table, new Category[]{Category.ARABIC}, "ar", "fa", "ur", "ps", "ckb");
-        add(table, new Category[]{Category.HEBREW}, "he", "yi");
-        add(table, new Category[]{Category.GREEK}, "el");
-        add(table, new Category[]{Category.ARMENIAN}, "hy");
-        add(table, new Category[]{Category.GEORGIAN}, "ka");
-        add(table, new Category[]{Category.ETHIOPIC}, "am", "ti");
-        add(table, new Category[]{Category.DEVANAGARI}, "hi", "mr", "ne", "or");
-        add(table, new Category[]{Category.THAI}, "th");
-        add(table, new Category[]{Category.LATIN},
-                "en", "es", "fr", "de", "it", "pt", "nl", "sv", "da", "nb", "fi",
-                "pl", "cs", "sk", "sl", "hr", "ro", "tr", "vi", "id", "ms", "tl",
-                "sw", "af", "ca", "et", "is", "lt", "lv", "sq", "bs", "eu", "ga",
-                "gl", "zu", "az", "uz", "hu");
-        return table;
-    }
-
-    /** Every romanization target writes its reading in Latin, so one line covers them all. */
-    private static Map<String, Category[]> romanizationScripts() {
-        final Map<String, Category[]> table = new HashMap<>();
-        add(table, new Category[]{Category.LATIN},
-                "ja", "zh", "yue", "ko", "ru", "uk", "bg", "be", "mk", "sr", "el",
-                "he", "ar", "fa", "ur", "hi", "bn", "as", "gu", "kn", "ml", "mr",
-                "ne", "or", "pa", "sa", "si", "ta", "te", "th", "kk", "ky", "mn",
-                "ka", "hy");
-        // A Latin target still romanizes lyrics in another script, so it keeps an entry.
-        add(table, new Category[]{Category.LATIN},
-                "en", "es", "fr", "de", "it", "pt", "nl", "sv", "da", "nb", "fi",
-                "pl", "cs", "sk", "sl", "hr", "ro", "tr", "vi", "id", "ms", "tl",
-                "sw", "af", "ca", "et", "is", "lt", "lv", "sq", "bs", "eu", "ga",
-                "gl", "zu", "az", "uz", "hu");
-        return table;
-    }
-
-    private static void add(Map<String, Category[]> table, Category[] scripts, String... codes) {
-        for (String code : codes) {
-            table.put(code, scripts);
-        }
-    }
-
-    private static boolean matchesAny(int[] found, Category[] allowed) {
-        for (Category category : allowed) {
-            if (matches(found, category)) {
+            if (hasLetters(found) && (target == null || !isWrittenIn(found, target))) {
                 return true;
             }
         }
         return false;
     }
 
-    /** Counts one line by script. Characters in no listed script are not counted. */
+    /** Whether any line has letters outside the Latin script, which is what a reading is written in. */
+    public static boolean needsRomanization(List<LyricsLine> lines) {
+        for (LyricsLine line : lines) {
+            final int[] found = count(line.text());
+            for (Category category : Category.values()) {
+                if (category != Category.LATIN && found[category.ordinal()] > 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * A line mixing in another script is never treated as written in the target language, since
+     * telling a borrowed word from a change of language would be a guess. Latin is allowed beside
+     * any script, and Japanese is written with Han as well as kana.
+     */
+    private static boolean isWrittenIn(int[] found, Category target) {
+        final int targetCount = found[target.ordinal()];
+        if (target == Category.KANA ? targetCount < MIN_KANA : targetCount == 0) {
+            return false;
+        }
+        for (Category category : Category.values()) {
+            if (category == target || category == Category.LATIN
+                    || (target == Category.KANA && category == Category.HAN)) {
+                continue;
+            }
+            if (found[category.ordinal()] > 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean hasLetters(int[] found) {
+        for (int count : found) {
+            if (count > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /** Counts the letters of one line by script. */
     private static int[] count(@Nullable String line) {
         final int[] found = new int[Category.values().length];
         if (line == null) {
@@ -167,71 +105,33 @@ public final class LyricsLanguageDetector {
         for (int i = 0; i < line.length(); ) {
             final int cp = Character.codePointAt(line, i);
             i += Character.charCount(cp);
-            if (cp > Character.MAX_VALUE) {
-                continue;
-            }
-            final char c = (char) cp;
-            if (ScriptDetector.isHan(c)) {
-                found[Category.HAN.ordinal()]++;
-            } else if (ScriptDetector.isKana(c)) {
-                found[Category.JAPANESE.ordinal()]++;
-            } else if (ScriptDetector.isAnyHangul(c)) {
-                found[Category.KOREAN.ordinal()]++;
-            } else if (ScriptDetector.isCyrillic(c)) {
-                found[Category.CYRILLIC.ordinal()]++;
-            } else if (ScriptDetector.isGreek(c)) {
-                found[Category.GREEK.ordinal()]++;
-            } else if (ScriptDetector.isHebrew(c)) {
-                found[Category.HEBREW.ordinal()]++;
-            } else if (ScriptDetector.isArabic(c)) {
-                found[Category.ARABIC.ordinal()]++;
-            } else if (ScriptDetector.isDevanagari(c)) {
-                found[Category.DEVANAGARI.ordinal()]++;
-            } else if (ScriptDetector.isThai(c)) {
-                found[Category.THAI.ordinal()]++;
-            } else if (ScriptDetector.isLatin(c)) {
-                found[Category.LATIN.ordinal()]++;
-            } else if (ScriptDetector.isGeorgian(c)) {
-                found[Category.GEORGIAN.ordinal()]++;
-            } else if (ScriptDetector.isArmenian(c)) {
-                found[Category.ARMENIAN.ordinal()]++;
-            } else if (ScriptDetector.isEthiopic(c)) {
-                found[Category.ETHIOPIC.ordinal()]++;
+            final Category category = categoryOf(cp);
+            if (category != null) {
+                found[category.ordinal()]++;
             }
         }
         return found;
     }
 
-    private static int letters(int[] found) {
-        int total = 0;
-        for (int count : found) {
-            total += count;
+    @Nullable
+    private static Category categoryOf(int cp) {
+        if (cp <= Character.MAX_VALUE) {
+            final char c = (char) cp;
+            if (ScriptDetector.isHan(c)) return Category.HAN;
+            if (ScriptDetector.isKana(c)) return Category.KANA;
+            if (ScriptDetector.isAnyHangul(c)) return Category.HANGUL;
+            if (ScriptDetector.isGreek(c)) return Category.GREEK;
+            if (ScriptDetector.isHebrew(c)) return Category.HEBREW;
+            if (ScriptDetector.isArmenian(c)) return Category.ARMENIAN;
+            if (ScriptDetector.isGeorgian(c)) return Category.GEORGIAN;
+            if (ScriptDetector.isThai(c)) return Category.THAI;
+            if (ScriptDetector.isLatin(c)) return Category.LATIN;
         }
-        return total;
-    }
-
-    private static boolean matches(int[] found, Category category) {
-        final int han = found[Category.HAN.ordinal()];
-        final int kana = found[Category.JAPANESE.ordinal()];
-        final int hangul = found[Category.KOREAN.ordinal()];
-        switch (category) {
-            case HAN:
-                // Han beside kana or Hangul is left to isMixed() and requested anyway.
-                return han >= MIN_HAN;
-            case JAPANESE:
-                return kana >= MIN_KANA;
-            case KOREAN:
-                return hangul >= MIN_HAN;
-            case LATIN:
-                // One letter alone is as likely to be a stray mark as a word.
-                return found[Category.LATIN.ordinal()] >= 2;
-            default:
-                return found[category.ordinal()] >= MIN_HAN;
-        }
+        // Every other script, including Han outside the basic plane.
+        return Character.isLetter(cp) ? Category.OTHER : null;
     }
 
     private enum Category {
-        HAN, JAPANESE, KOREAN, CYRILLIC, GREEK, HEBREW, ARABIC,
-        DEVANAGARI, THAI, LATIN, GEORGIAN, ARMENIAN, ETHIOPIC
+        HAN, KANA, HANGUL, GREEK, HEBREW, ARMENIAN, GEORGIAN, THAI, LATIN, OTHER
     }
 }

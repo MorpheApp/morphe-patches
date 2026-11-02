@@ -10,6 +10,7 @@ package app.morphe.extension.music.patches.lyrics.requests;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -56,8 +58,7 @@ public final class LrcRedProvider implements LyricsProvider {
     private static final long SYNC_RETRY_DELAY_MS = 2_000;
     /** Part of the error body the service sends when pulling the recording failed for now. */
     private static final String SYNC_RETRYABLE_ERROR = "give it a moment";
-    /** A sweep fails for several songs at once, so the failure is throttled. */
-    private static final long SYNC_ERROR_MIN_INTERVAL_MS = 15_000;
+    private static final int SYNC_PENDING_DISPLAY_MAX = 32;
 
     private static final String[] MODIFIER_KEYWORDS = {
             "slowed", "reverb", "remix", "mixed", "dj mix", "mashup",
@@ -85,18 +86,23 @@ public final class LrcRedProvider implements LyricsProvider {
         thread.setDaemon(true);
         return thread;
     });
-    /** Songs the model has already re-timed in this run, so a revisit does not ask again. */
-    private static final Set<String> SYNCED_ISRCS = ConcurrentHashMap.newKeySet();
-    /** Songs the model refused, so the wait is not repeated. */
-    private static final Set<String> SYNC_FAILED_ISRCS = ConcurrentHashMap.newKeySet();
-    /** Songs whose document carried line-level timing only, pending a display to trigger sync. */
-    private static final Map<String, Lyrics> SYNC_PENDING_DISPLAY = new ConcurrentHashMap<>();
-    /** Songs the user put back, not asked about again until the app restarts. */
-    private static final Set<String> SYNC_REVERTED_ISRCS = ConcurrentHashMap.newKeySet();
-    /** Songs with a re-time in flight or queued. */
-    private static final Set<String> SYNC_PENDING_ISRCS = ConcurrentHashMap.newKeySet();
+    /**
+     * Songs a re-time was asked for in this run, whatever the outcome, so a revisit, a refusal or
+     * a lyric the user put back is not asked about again until the app restarts.
+     */
+    private static final Set<String> SYNC_REQUESTED_ISRCS = ConcurrentHashMap.newKeySet();
+    /**
+     * Downloaded songs with line level timing only, waiting to be displayed before a re-time is
+     * asked for. Bounded, since most candidates that are downloaded are never displayed.
+     */
+    private static final Map<String, Lyrics> SYNC_PENDING_DISPLAY = Collections.synchronizedMap(
+            new LinkedHashMap<>() {
+                @Override
+                protected boolean removeEldestEntry(Map.Entry<String, Lyrics> eldest) {
+                    return size() > SYNC_PENDING_DISPLAY_MAX;
+                }
+            });
     private static final AtomicLong SYNC_LAST_REQUEST_MS = new AtomicLong(0);
-    private static final AtomicLong SYNC_ERROR_LAST_MS = new AtomicLong(0);
 
     /** One the search turned up, normalised from either wording before scoring. */
     private record SearchHit(String isrc, String title, String artist, String album,
@@ -124,8 +130,8 @@ public final class LrcRedProvider implements LyricsProvider {
         }
 
         for (SearchHit hit : queryCandidates(track)) {
-            Lyrics lyrics = load(hit);
-            if (lyrics != null && !lyrics.isEmpty()) {
+            Lyrics lyrics = load(hit.isrc());
+            if (lyrics != null) {
                 return FetchResult.of(
                         lyrics,
                         hit.title(),
@@ -147,18 +153,15 @@ public final class LrcRedProvider implements LyricsProvider {
         }
 
         List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
-        int count = 0;
         // Ranked already, and each download costs a song document.
         for (SearchHit hit : hits) {
-            if (count >= LyricsRequests.MAX_CANDIDATES) {
-                break;
-            }
-            if (Thread.currentThread().isInterrupted()) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES
+                    || Thread.currentThread().isInterrupted()) {
                 break;
             }
 
-            Lyrics lyrics = load(hit);
-            if (lyrics != null && !lyrics.isEmpty()) {
+            Lyrics lyrics = load(hit.isrc());
+            if (lyrics != null) {
                 int score = LyricsRequests.scoreLyricsCandidate(
                         hit.title(),
                         hit.artist(),
@@ -167,51 +170,38 @@ public final class LrcRedProvider implements LyricsProvider {
                         track
                 );
                 scored.add(new Lyrics.ScoredLyrics(score, lyrics));
-                count++;
             }
         }
 
         return Lyrics.sortScoredByScore(scored);
     }
 
-    /** Downloads one hit, which queues a model re-time when its timing is line level only. */
-    @Nullable
-    private Lyrics load(SearchHit hit) {
-        if (hit.isrc() == null || hit.isrc().isEmpty()) {
-            return null;
-        }
-        // The document is the only place the timing level is stated; the summary calls it "sync".
-        return load(hit.isrc());
-    }
-
+    /**
+     * Downloads one song. The document is the only place the timing level is stated (the search
+     * summary calls it "sync"), so a song with line level timing is remembered here for a re-time.
+     */
     @Nullable
     private static Lyrics load(String isrc) {
-        return load(isrc, false);
-    }
-
-    /** @param fresh reads past the CDN cache, which holds a song for hours. */
-    @Nullable
-    private static Lyrics load(String isrc, boolean fresh) {
-        final String url = songApi(isrc) + ".song.json"
-                + (fresh ? "?t=" + System.currentTimeMillis() : "");
-        final JSONObject json = readJson(url);
+        final JSONObject json = readJson(songApi(isrc) + ".song.json");
         if (json == null) {
             return null;
         }
 
-        final Lyrics lyrics = readSourceTtml(json);
-        if (lyrics == null) {
-            return null;
-        }
-
-        final String level = json.optString("level", "").trim().toLowerCase(Locale.ROOT);
-        if ("line".equals(level) && !readByModel(json)) {
+        final Lyrics lyrics = parseSong(isrc, json);
+        if (lyrics != null && !readByModel(json)
+                && "line".equalsIgnoreCase(json.optString("level", "").trim())) {
             SYNC_PENDING_DISPLAY.put(isrc, lyrics);
         }
-
-        return withInfoLines(lyrics, json);
+        return lyrics;
     }
 
+    @Nullable
+    private static Lyrics parseSong(String isrc, JSONObject json) {
+        final Lyrics lyrics = readSourceTtml(isrc, json);
+        return lyrics == null ? null : withInfoLines(lyrics, json);
+    }
+
+    /** Asks for a re-time once a song with line level timing is on screen. */
     public static void onDisplayed(@Nullable Lyrics lyrics) {
         if (lyrics == null || !NAME.equals(lyrics.providerName())) {
             return;
@@ -229,15 +219,14 @@ public final class LrcRedProvider implements LyricsProvider {
 
     /** The only copy that carries the sections and the readings. */
     @Nullable
-    private static Lyrics readSourceTtml(JSONObject json) {
+    private static Lyrics readSourceTtml(String isrc, JSONObject json) {
         final String ttml = json.optString("source", "").trim();
         if (ttml.isEmpty()) {
             Logger.printDebug(() -> "lrc.red song document carries no TTML");
             return null;
         }
 
-        final Lyrics full = TTMLParser.ttmlToLyrics(
-                ttml, NAME, songPage(json.optString("isrc", "")));
+        final Lyrics full = TTMLParser.ttmlToLyrics(ttml, NAME, songApi(isrc));
         if (full == null || full.isEmpty()) {
             return null;
         }
@@ -299,52 +288,20 @@ public final class LrcRedProvider implements LyricsProvider {
         return names.isEmpty() ? List.of() : List.of("Written by: " + String.join(", ", names));
     }
 
-    private record SongState(boolean byModel, String level) {
-    }
-
-    @Nullable
-    private static SongState parseLevel(String json) {
-        if (json == null || json.trim().isEmpty()) {
-            return null;
-        }
-        try {
-            final JSONObject root = new JSONObject(json);
-            return new SongState(readByModel(root),
-                    root.optString("level", "").trim().toLowerCase(Locale.ROOT));
-        } catch (Exception ex) {
-            return null;
-        }
-    }
-
     private static boolean readByModel(JSONObject root) {
-        if (!root.has(BY_MODEL_KEY)) {
-            return false;
-        }
         final Object value = root.opt(BY_MODEL_KEY);
-        if (value instanceof Boolean) {
-            return (Boolean) value;
+        if (value instanceof Boolean byModel) {
+            return byModel;
         }
-        return value instanceof String && "true".equalsIgnoreCase(((String) value).trim());
-    }
-
-    /** Stops the song being re-timed again in this run. */
-    public static void markReverted(String isrc) {
-        if (isrc != null && !isrc.isEmpty()) {
-            SYNC_REVERTED_ISRCS.add(isrc);
-        }
+        return value instanceof String text && "true".equalsIgnoreCase(text.trim());
     }
 
     /**
-     * Queues a model re-time of a song showing line level timing. Failures stay silent: the lyric
-     * already on screen is good enough.
+     * Queues a model re-time of a song showing line level timing. Failures are only logged: the
+     * lyric already on screen is good enough.
      */
     private static void scheduleSync(String isrc, Lyrics before) {
-        if (SYNC_REVERTED_ISRCS.contains(isrc)
-                || SYNCED_ISRCS.contains(isrc)
-                || SYNC_FAILED_ISRCS.contains(isrc)) {
-            return;
-        }
-        if (!SYNC_PENDING_ISRCS.add(isrc)) {
+        if (!SYNC_REQUESTED_ISRCS.add(isrc)) {
             return;
         }
 
@@ -352,134 +309,86 @@ public final class LrcRedProvider implements LyricsProvider {
             try {
                 runSync(isrc, before);
             } catch (Exception ex) {
-                Logger.printDebug(() -> "lrc.red sync failed for " + isrc, ex);
-            } finally {
-                SYNC_PENDING_ISRCS.remove(isrc);
+                Logger.printInfo(() -> "lrc.red sync failed for " + isrc, ex);
             }
         });
     }
 
     private static void runSync(String isrc, Lyrics before) {
-        final String[] error = new String[1];
-        final String body = postSync(isrc, /* allowRetry */ true, error);
-        if (body == null) {
-            SYNC_FAILED_ISRCS.add(isrc);
-            reportSyncFailure(readErrorMessage(error[0]));
-            return;
-        }
-
-        // The sync response never carries byModel, so the document is read again.
-        if (!confirmsByModel(isrc)) {
-            SYNC_FAILED_ISRCS.add(isrc);
-            reportSyncFailure("the sync returned but the model credit did not appear");
-            return;
-        }
-
-        // The CDN holds the songs for hours, so the re-timed copy has to be read past it.
-        final Lyrics after = load(isrc, /* fresh */ true);
-        if (after == null || after.isEmpty()) {
-            SYNC_FAILED_ISRCS.add(isrc);
-            reportSyncFailure("the re-timed lyric could not be downloaded");
-            return;
-        }
-
-        SYNCED_ISRCS.add(isrc);
-        Utils.runOnMainThread(() -> LyricsManager.getInstance().patchInPlace(isrc, before, after));
-    }
-
-    @Nullable
-    private static String postSync(String isrc, boolean allowRetry, String[] error) {
-        final String[] attemptError = new String[1];
-        final String body = syncRequest("POST", songApi(isrc) + "/sync", attemptError);
-        if (body != null) {
-            return body;
+        String error = postSync(isrc);
+        if (error != null && error.contains(SYNC_RETRYABLE_ERROR)) {
+            sleep(SYNC_RETRY_DELAY_MS);
+            error = postSync(isrc);
         }
         if (error != null) {
-            error[0] = attemptError[0];
+            logSyncFailure(isrc, error);
+            return;
         }
-        if (allowRetry && attemptError[0] != null && attemptError[0].contains(SYNC_RETRYABLE_ERROR)) {
-            sleep(SYNC_RETRY_DELAY_MS);
-            return postSync(isrc, /* allowRetry */ false, error);
+
+        // The sync response never carries byModel, so the document is read again. The CDN holds
+        // a song for hours, so it is read past the cache.
+        final JSONObject json = readJson(songApi(isrc) + ".song.json?t=" + System.currentTimeMillis());
+        if (json == null || !readByModel(json)) {
+            logSyncFailure(isrc, "the sync returned but the model credit did not appear");
+            return;
         }
-        return null;
+        final Lyrics after = parseSong(isrc, json);
+        if (after == null) {
+            logSyncFailure(isrc, "the re-timed lyric could not be read");
+            return;
+        }
+
+        Utils.runOnMainThread(() -> LyricsManager.getInstance().patchInPlace(before, after));
     }
 
-    private static void reportSyncFailure(@Nullable String detail) {
-        try {
-            final long now = System.currentTimeMillis();
-            final long previous = SYNC_ERROR_LAST_MS.get();
-            if (previous > 0 && now - previous < SYNC_ERROR_MIN_INTERVAL_MS) {
-                return;
-            }
-            if (!SYNC_ERROR_LAST_MS.compareAndSet(previous, now)) {
-                return;
-            }
-            final String reason = detail == null || detail.isEmpty() ? "no response" : detail;
-            Logger.printException(() -> reason);
-        } catch (Throwable ignored) {
-        }
+    private static void logSyncFailure(String isrc, String reason) {
+        Logger.printInfo(() -> "lrc.red sync failed for " + isrc + ": " + reason);
     }
 
-    /** Read from {@code {"error": "..."}} when it parses, as it arrived otherwise. */
+    /** @return Null when the sync succeeded, otherwise why it did not. */
     @Nullable
-    private static String readErrorMessage(@Nullable String body) {
-        if (body == null) {
-            return null;
-        }
-        try {
-            final String error = new JSONObject(body).optString("error", "").trim();
-            return error.isEmpty() ? body.trim() : error;
-        } catch (Exception ignored) {
-            return body.trim();
-        }
-    }
-
-    private static boolean confirmsByModel(String isrc) {
-        final SongState parsed = parseLevel(
-                readText(songApi(isrc) + ".song.json?t=" + System.currentTimeMillis()));
-        return parsed != null && parsed.byModel();
-    }
-
-    @Nullable
-    private static String syncRequest(String method, String url, @Nullable String[] error) {
+    private static String postSync(String isrc) {
         throttleSync();
 
+        final String url = songApi(isrc) + "/sync";
         HttpURLConnection connection = null;
         try {
             connection = Requester.openConnection(url);
-            connection.setRequestMethod(method);
+            connection.setRequestMethod("POST");
             connection.setConnectTimeout(SYNC_CONNECT_TIMEOUT_MS);
             connection.setReadTimeout(SYNC_READ_TIMEOUT_MS);
             connection.setRequestProperty("User-Agent", LyricsRequests.userAgent());
-
-            if ("POST".equals(method)) {
-                // An empty body is all this endpoint takes.
-                connection.setFixedLengthStreamingMode(0);
-                connection.setDoOutput(true);
-                connection.getOutputStream().close();
-            }
+            // An empty body is all this endpoint takes.
+            connection.setFixedLengthStreamingMode(0);
+            connection.setDoOutput(true);
+            connection.getOutputStream().close();
 
             final int code = connection.getResponseCode();
             if (code == Requester.HTTP_STATUS_CODE_SUCCESS) {
-                return Requester.parseString(connection);
+                return null;
             }
-
-            if (error != null) {
-                error[0] = Requester.parseErrorString(connection);
-            }
-            final int status = code;
-            Logger.printDebug(() -> "lrc.red " + method + " " + status + " " + url);
-            return null;
+            return "HTTP " + code + " " + readErrorMessage(Requester.parseErrorString(connection));
         } catch (IOException ex) {
-            if (error != null) {
-                error[0] = ex.getMessage();
-            }
-            Logger.printDebug(() -> "lrc.red " + method + " failed: " + url, ex);
-            return null;
+            return ex.toString();
         } finally {
             if (connection != null) {
                 connection.disconnect();
             }
+        }
+    }
+
+    /** Read from {@code {"error": "..."}} when it parses, as it arrived otherwise. */
+    private static String readErrorMessage(String body) {
+        final String trimmed = body.trim();
+        if (!trimmed.startsWith("{")) {
+            return trimmed;
+        }
+        try {
+            final String error = new JSONObject(trimmed).optString("error", "").trim();
+            return error.isEmpty() ? trimmed : error;
+        } catch (JSONException ex) {
+            Logger.printDebug(() -> "lrc.red error body is not JSON: " + trimmed, ex);
+            return trimmed;
         }
     }
 
@@ -784,11 +693,8 @@ public final class LrcRedProvider implements LyricsProvider {
         }
     }
 
+    /** The song page, which is also the base of its API paths. */
     private static String songApi(String isrc) {
         return API_BASE + "/s/" + isrc;
-    }
-
-    private static String songPage(String isrc) {
-        return songApi(isrc);
     }
 }

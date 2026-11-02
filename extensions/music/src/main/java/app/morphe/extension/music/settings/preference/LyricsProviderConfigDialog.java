@@ -70,7 +70,7 @@ final class LyricsProviderConfigDialog {
         final Dialog dialog;
         try {
             dialog = switch (provider) {
-                case AiProviders.AI -> compatibleDialog(context, prompt, onSaved);
+                case AiProviders.OPENAI_COMPATIBLE -> compatibleDialog(context, prompt, onSaved);
                 case AiProviders.DEEPL -> deepLDialog(context, onSaved);
                 default -> null;
             };
@@ -95,7 +95,7 @@ final class LyricsProviderConfigDialog {
                 boolean valid = false;
                 try {
                     switch (provider) {
-                        case AiProviders.AI -> valid = OpenAIClient.validateConfig(
+                        case AiProviders.OPENAI_COMPATIBLE -> valid = OpenAIClient.validateConfig(
                                 Settings.LYRICS_AI_BASE_URL.get(),
                                 Settings.LYRICS_AI_API_TOKEN.get(),
                                 Settings.LYRICS_AI_MODEL.get());
@@ -154,12 +154,12 @@ final class LyricsProviderConfigDialog {
             test(context, () -> OpenAIClient.validateConfig(url,
                     tokenInput.getText().toString().trim(),
                     modelInput.getText().toString().trim()) ? List.of("ok") : null,
-                    AiProviders.AI_LABEL);
+                    AiProviders.OPENAI_COMPATIBLE_LABEL);
         });
         final PromptField promptField = addPromptSection(content, prompt);
 
         return createDialog(context,
-                AiProviders.AI_LABEL,
+                AiProviders.OPENAI_COMPATIBLE_LABEL,
                 content, onSaved,
                 () -> {
                     final String extraBody = extraBodyInput.getText().toString().trim();

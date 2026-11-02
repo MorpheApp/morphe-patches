@@ -184,7 +184,7 @@ public final class LyricsManager {
      */
     @Nullable
     private volatile String preferredFingerprint;
-    /** The lyric a re-time replaced, so the credit line can put it back. */
+    /** The lyric a re-time replaced, so tapping the credit line can put it back. */
     @Nullable
     private volatile SyncPatch activeSyncPatch;
     /**
@@ -1105,56 +1105,43 @@ public final class LyricsManager {
         return new TrackInfo(title, artist, track.album(), track.durationSeconds());
     }
 
-    /** Refused when the screen has moved on, so a late answer cannot land on another song. */
-    public void patchInPlace(String isrc, @Nullable Lyrics before, @Nullable Lyrics after) {
-        Utils.verifyOnMainThread();
-        if (before == null || after == null || after == Lyrics.NOT_FOUND || after.isEmpty()) {
-            return;
-        }
-        if (!isStillShowing(before)) {
-            return;
-        }
-
-        final Lyrics display;
+    /**
+     * Swaps the shown lyric for its re-timed copy. Refused when the screen has moved on, so a late
+     * answer cannot land on another song.
+     */
+    public void patchInPlace(Lyrics before, Lyrics after) {
         try {
-            display = prepareForDisplay(after);
-        } catch (Throwable ignored) {
-            return;
-        }
-        if (display == null || display == Lyrics.NOT_FOUND || display.isEmpty()) {
-            return;
-        }
+            Utils.verifyOnMainThread();
+            if (!isStillShowing(before)) {
+                return;
+            }
 
-        activeSyncPatch = new SyncPatch(isrc, before, LyricsMatch.fingerprint(display));
-        setState(State.LOADED, display);
+            final Lyrics display = prepareForDisplay(after);
+            if (display == null || display == Lyrics.NOT_FOUND || display.isEmpty()) {
+                return;
+            }
+
+            activeSyncPatch = new SyncPatch(before, LyricsMatch.fingerprint(display));
+            setState(State.LOADED, display);
+        } catch (Exception ex) {
+            Logger.printException(() -> "patchInPlace failure", ex);
+        }
     }
 
-    /** Puts back the lyric a re-time replaced and stops that song being re-timed again this run. */
-    public boolean revertCurrentPatch() {
-        Utils.verifyOnMainThread();
-        final SyncPatch patch = activeSyncPatch;
-        if (patch == null) {
-            return false;
-        }
-
-        final Lyrics shown = currentLyrics;
-        if (shown == null || !patch.afterFingerprint().equals(LyricsMatch.fingerprint(shown))) {
-            // The re-time is no longer what is on screen, so there is nothing to put back.
-            activeSyncPatch = null;
-            return false;
-        }
-
-        final Lyrics restored;
+    /** Puts back the lyric a re-time replaced, while the re-timed copy is still on screen. */
+    public void revertCurrentPatch() {
         try {
-            restored = prepareForDisplay(patch.before());
-        } catch (Throwable ignored) {
-            return false;
+            Utils.verifyOnMainThread();
+            final SyncPatch patch = activeSyncPatch;
+            if (patch == null) {
+                return;
+            }
+            // setState() drops the patch once the re-time is no longer what is shown.
+            activeSyncPatch = null;
+            setState(State.LOADED, prepareForDisplay(patch.before()));
+        } catch (Exception ex) {
+            Logger.printException(() -> "revertCurrentPatch failure", ex);
         }
-
-        activeSyncPatch = null;
-        LrcRedProvider.markReverted(patch.isrc());
-        setState(State.LOADED, restored);
-        return true;
     }
 
     /** By the candidate queue's own comparison, so a re-serialised copy still counts as the same. */
@@ -2379,7 +2366,7 @@ public final class LyricsManager {
                                 @Nullable Uri mediaUri, String videoId) {
     }
 
-    private record SyncPatch(String isrc, Lyrics before, String afterFingerprint) {
+    private record SyncPatch(Lyrics before, String afterFingerprint) {
     }
 
     private record VariantQuery(TrackInfo track, int penalty) {

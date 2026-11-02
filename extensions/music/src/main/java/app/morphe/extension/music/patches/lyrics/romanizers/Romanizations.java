@@ -20,6 +20,7 @@ public final class Romanizations {
         if (word == null || word.isEmpty()) {
             return;
         }
+        //noinspection SizeReplaceableByIsEmpty
         if (out.length() > 0) {
             out.append(' ');
         }

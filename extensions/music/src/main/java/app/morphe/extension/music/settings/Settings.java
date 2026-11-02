@@ -428,12 +428,12 @@ public class Settings extends SharedYouTubeSettings {
         if (DEPRECATED_LYRICS_USE_AI_TRANSLATION.get()) {
             LYRICS_TRANSLATION_PROVIDERS.save(AiProviders.withProviderEnabled(
                     LYRICS_TRANSLATION_PROVIDERS.get(), AiProviders.TRANSLATION_ORDER,
-                    AiProviders.AI, true));
+                    AiProviders.OPENAI_COMPATIBLE, true));
         }
         if (DEPRECATED_LYRICS_USE_AI_ROMANIZATION.get()) {
             LYRICS_ROMANIZATION_PROVIDERS.save(AiProviders.withProviderEnabled(
                     LYRICS_ROMANIZATION_PROVIDERS.get(), AiProviders.ROMANIZATION_ORDER,
-                    AiProviders.AI, true));
+                    AiProviders.OPENAI_COMPATIBLE, true));
         }
         if (DEPRECATED_LYRICS_LOCAL_ROMANIZATION.get()) {
             LYRICS_ROMANIZATION_PROVIDERS.save(AiProviders.withProviderEnabled(

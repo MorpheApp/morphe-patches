@@ -28,24 +28,24 @@ public final class AiProviders {
     public static final String LOCAL = "local";
     /** The Rime word tables, the user's own lists included. Named "Rime Wordlist" in the settings. */
     public static final String RIME = "rime";
-    public static final String AI = "ai";
+    public static final String OPENAI_COMPATIBLE = "openai_compatible";
     public static final String DEEPL = "deepl";
 
     /** Brand names, kept out of the string resources so no translation can restate them. */
     public static final String EMBEDDED_LABEL = "Embedded";
     public static final String GOOGLE_LABEL = "Google Translate";
-    public static final String AI_LABEL = "OpenAI Compatible";
+    public static final String OPENAI_COMPATIBLE_LABEL = "OpenAI Compatible";
     public static final String DEEPL_LABEL = "DeepL";
 
     public static final List<String> TRANSLATION_ORDER =
-            List.of(EMBEDDED, GOOGLE, AI, DEEPL);
+            List.of(EMBEDDED, GOOGLE, OPENAI_COMPATIBLE, DEEPL);
     public static final List<String> ROMANIZATION_ORDER =
-            List.of(EMBEDDED, GOOGLE, LOCAL, RIME, AI);
+            List.of(EMBEDDED, GOOGLE, LOCAL, RIME, OPENAI_COMPATIBLE);
 
     public static final String DEFAULT_TRANSLATION_ORDER =
-            "embedded,google,-ai,-deepl";
+            "embedded,google,-openai_compatible,-deepl";
     public static final String DEFAULT_ROMANIZATION_ORDER =
-            "embedded,google,-local,-rime,-ai";
+            "embedded,google,-local,-rime,-openai_compatible";
     /** Endpoints offered by name, in the order they are listed. */
     public static final List<EndpointPreset> ENDPOINT_PRESETS = List.of(
             EndpointPreset.of("OpenAI", "https://api.openai.com/v1"),
@@ -132,6 +132,7 @@ public final class AiProviders {
     public static String serializeOrder(List<ProviderEntry> entries) {
         StringBuilder sb = new StringBuilder();
         for (ProviderEntry entry : entries) {
+            //noinspection SizeReplaceableByIsEmpty
             if (sb.length() > 0) {
                 sb.append(',');
             }
@@ -161,13 +162,13 @@ public final class AiProviders {
     }
 
     public static boolean isAi(@Nullable String provider) {
-        return AI.equals(provider);
+        return OPENAI_COMPATIBLE.equals(provider);
     }
 
     /** Null when the provider cannot answer, so the caller can try the next one. */
     @Nullable
     static Result mapLines(String provider, String prompt, List<String> lines) {
-        if (!AI.equals(provider)) {
+        if (!OPENAI_COMPATIBLE.equals(provider)) {
             return null;
         }
         final String model = Settings.LYRICS_AI_MODEL.get();

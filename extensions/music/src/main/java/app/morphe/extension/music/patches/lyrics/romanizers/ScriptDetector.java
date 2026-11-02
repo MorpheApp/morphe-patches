@@ -190,7 +190,7 @@ public final class ScriptDetector {
 
     /** A code point written as a syllable of its own: Han, Hangul or kana. */
     public static boolean isCjkCodePoint(int cp) {
-        return cp >= 0 && cp <= Character.MAX_VALUE
+        return cp <= Character.MAX_VALUE
                 && (isHan((char) cp) || isKana((char) cp) || isHangul((char) cp));
     }
 
@@ -250,10 +250,6 @@ public final class ScriptDetector {
                 // Full-width spellings, which a Japanese lyric uses for a title.
                 || (c >= 0xFF21 && c <= 0xFF3A)
                 || (c >= 0xFF41 && c <= 0xFF5A);
-    }
-
-    static boolean isDevanagari(char c) {
-        return c >= 0x0900 && c <= 0x097F;
     }
 
     static boolean isThai(char c) {

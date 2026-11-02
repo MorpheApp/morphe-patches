@@ -177,14 +177,14 @@ public final class LyricsOrderedListPreference extends Preference {
             case TRANSLATION -> switch (id) {
                 case AiProviders.EMBEDDED -> AiProviders.EMBEDDED_LABEL;
                 case AiProviders.GOOGLE -> AiProviders.GOOGLE_LABEL;
-                case AiProviders.AI -> AiProviders.AI_LABEL;
+                case AiProviders.OPENAI_COMPATIBLE -> AiProviders.OPENAI_COMPATIBLE_LABEL;
                 case AiProviders.DEEPL -> AiProviders.DEEPL_LABEL;
                 default -> id;
             };
             case ROMANIZATION -> switch (id) {
                 case AiProviders.EMBEDDED -> AiProviders.EMBEDDED_LABEL;
                 case AiProviders.GOOGLE -> AiProviders.GOOGLE_LABEL;
-                case AiProviders.AI -> AiProviders.AI_LABEL;
+                case AiProviders.OPENAI_COMPATIBLE -> AiProviders.OPENAI_COMPATIBLE_LABEL;
                 default -> str("morphe_music_lyrics_romanization_provider_" + id);
             };
         };
@@ -216,7 +216,7 @@ public final class LyricsOrderedListPreference extends Preference {
             return false;
         }
         return switch (id) {
-            case AiProviders.AI -> true;
+            case AiProviders.OPENAI_COMPATIBLE -> true;
             case AiProviders.DEEPL -> kind() == Kind.TRANSLATION;
             default -> false;
         };
@@ -722,7 +722,7 @@ public final class LyricsOrderedListPreference extends Preference {
             return Settings.LYRICS_DEEPL_API_KEY.get().isBlank();
         }
         return switch (id) {
-            case AiProviders.AI ->
+            case AiProviders.OPENAI_COMPATIBLE ->
                     Settings.LYRICS_AI_BASE_URL.get().isBlank()
                             || Settings.LYRICS_AI_MODEL.get().isBlank();
             default -> false;

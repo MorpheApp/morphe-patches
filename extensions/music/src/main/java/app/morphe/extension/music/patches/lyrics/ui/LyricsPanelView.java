@@ -2123,52 +2123,30 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         updateFooter();
     }
 
-    /**
-     * Leaves the modes held by a button that is being hidden, the normal translation or reading
-     * included, since it is only ever asked for from that button.
-     *
-     * @return Whether anything was left, which is when the lines need rebuilding.
-     */
-    public boolean releaseOnlyModesForHiddenButtons(boolean translateOff, boolean romanizeOff) {
-        if (!translateOff && !romanizeOff) {
-            return false;
-        }
-        final boolean translateHeld = onlyMode == OnlyMode.TRANS
-                || onlyMode == OnlyMode.BOTH || dualPillActive;
-        final boolean romanizeHeld = onlyMode == OnlyMode.ROMA
-                || onlyMode == OnlyMode.BOTH || dualPillActive;
-        if (!(translateOff && translateHeld) && !(romanizeOff && romanizeHeld)) {
-            return false;
-        }
-        // Hiding either button leaves the dual mode, and the flags can outlive the row that set
-        // them, so they are cleared before the mode is read back.
-        final boolean leavingBoth = translateOff && romanizeOff;
-        final boolean leaveTranslate = translateOff && (translateHeld || leavingBoth);
-        final boolean leaveRomanize = romanizeOff && (romanizeHeld || leavingBoth);
-        if (leaveTranslate) {
-            Settings.LYRICS_TRANSLATE_ONLY.save(false);
-        }
-        if (leaveRomanize) {
-            Settings.LYRICS_ROMANIZE_ONLY.save(false);
-        }
-        // With both buttons hidden, a lone side goes as well.
-        if (translateHeld && (leaveTranslate || leavingBoth)) {
+    /** Leaves the modes held by a button that is being hidden, so a mode goes with its button. */
+    public void releaseOnlyModesForHiddenButtons(boolean translateOff, boolean romanizeOff) {
+        final boolean releaseTranslate = translateOff && (onlyMode == OnlyMode.TRANS
+                || onlyMode == OnlyMode.BOTH || dualPillActive);
+        final boolean releaseRomanize = romanizeOff && (onlyMode == OnlyMode.ROMA
+                || onlyMode == OnlyMode.BOTH || dualPillActive);
+        if (releaseTranslate) {
             if (onlyMode == OnlyMode.NONE) {
+                Settings.LYRICS_TRANSLATE_ONLY.save(false);
                 cancelNormalTranslate();
                 updateTranslateLabel();
             } else {
                 cancelTranslateOnly();
             }
         }
-        if (romanizeHeld && (leaveRomanize || leavingBoth)) {
+        if (releaseRomanize) {
             if (onlyMode == OnlyMode.NONE) {
+                Settings.LYRICS_ROMANIZE_ONLY.save(false);
                 cancelNormalRomanize();
                 updateRomanizeLabel();
             } else {
                 cancelRomanizeOnly();
             }
         }
-        return true;
     }
 
     /**
@@ -4243,14 +4221,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     public void applyToolbarButtonSettings() {
-        applyToolbarButtonSettings(false);
-    }
-
-    /**
-     * @param releaseRebuild Rebuilds at once instead of fading out first, for a row that a mode
-     *                       being left has already put out of date.
-     */
-    public void applyToolbarButtonSettings(boolean releaseRebuild) {
         // Every button is about to be thrown away, so the pill goes with them: leaving it up
         // would strand it in a row that no longer holds the two it stands in for.
         final boolean dualWasUp = onlyMode == OnlyMode.BOTH;
@@ -4270,12 +4240,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         // Lines laid out against the old row have to be measured again against the new one.
         final Lyrics current = lyrics;
         if (dualWasUp && current != null && !current.isEmpty()) {
-            if (releaseRebuild) {
-                displayedOnlyMode = onlyMode;
-                showLyrics(current);
-            } else {
-                fadeOutAndRebuild(current);
-            }
+            fadeOutAndRebuild(current);
         }
     }
 

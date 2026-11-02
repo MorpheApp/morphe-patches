@@ -306,8 +306,7 @@ public final class LyricsRomanizer {
         // Local readers cost no request and know for themselves whether they have a reading.
         final boolean hasLocalReader = providers.contains(AiProviders.RIME)
                 || providers.contains(AiProviders.LOCAL);
-        if (!hasLocalReader && !LyricsLanguageDetector.needsRomanization(
-                lyrics.lines(), LyricsRequests.romanizationLanguage())) {
+        if (!hasLocalReader && !LyricsLanguageDetector.needsRomanization(lyrics.lines())) {
             callback.onRomanized(null, false, false, null, false, null, true);
             return;
         }
