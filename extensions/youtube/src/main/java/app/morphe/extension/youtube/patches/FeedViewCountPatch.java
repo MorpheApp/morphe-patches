@@ -1103,7 +1103,7 @@ public final class FeedViewCountPatch {
     /**
      * Dark rounded badge with a play icon and the view count, drawn on the overlay of the card.
      */
-    private static final class ViewCountBadge extends Drawable {
+    private static final class ViewCountBadge extends Drawable implements View.OnAttachStateChangeListener {
         private final Paint backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint iconPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -1114,6 +1114,12 @@ public final class FeedViewCountPatch {
         private final float maxTextSize;
         private final WeakReference<ComponentHost> hostRef;
 
+        /**
+         * False after the card was detached, such as when a list reuses it for something else.
+         * Nothing is drawn until the card is checked again, so the view count of the previous
+         * video is not shown on what the card shows now.
+         */
+        private boolean confirmed = true;
         /** The view count, or null while it's loading. */
         @Nullable
         private String viewCount;
@@ -1126,6 +1132,7 @@ public final class FeedViewCountPatch {
 
         ViewCountBadge(ComponentHost host) {
             hostRef = new WeakReference<>(host);
+            host.addOnAttachStateChangeListener(this);
             density = host.getResources().getDisplayMetrics().density;
             maxTextSize = TEXT_SP * density * host.getResources().getConfiguration().fontScale;
 
@@ -1154,6 +1161,7 @@ public final class FeedViewCountPatch {
          *                     Then a 16:9 thumbnail as wide as the card is used.
          */
         void bind(ComponentHost host, @Nullable String newViewCount, @Nullable Rect duration, @Nullable Rect thumbnail) {
+            confirmed = true;
             // Fades in when shown, or when the card shows another video.
             // Not when the card is only laid out again, and not the loading spinner.
             final boolean changed = newViewCount != null && !newViewCount.equals(viewCount);
@@ -1231,6 +1239,7 @@ public final class FeedViewCountPatch {
         }
 
         void detach(ComponentHost host) {
+            host.removeOnAttachStateChangeListener(this);
             endFadeIn();
             if (added) {
                 host.getOverlay().remove(this);
@@ -1239,7 +1248,26 @@ public final class FeedViewCountPatch {
         }
 
         @Override
+        public void onViewAttachedToWindow(@NonNull View view) {
+            try {
+                // A card that shows the same video may not be laid out again.
+                FeedVideoCardsPatch.requestUpdate((ComponentHost) view);
+            } catch (Exception ex) {
+                Logger.printException(() -> "onViewAttachedToWindow failure", ex);
+            }
+        }
+
+        @Override
+        public void onViewDetachedFromWindow(@NonNull View view) {
+            confirmed = false;
+            endFadeIn();
+        }
+
+        @Override
         public void draw(@NonNull Canvas canvas) {
+            if (!confirmed) {
+                return;
+            }
             ComponentHost host = hostRef.get();
             if (host != null && FeedVideoCardsPatch.isCardPlayingInline(host)) {
                 // The inline player shows its own controls over the thumbnail.
