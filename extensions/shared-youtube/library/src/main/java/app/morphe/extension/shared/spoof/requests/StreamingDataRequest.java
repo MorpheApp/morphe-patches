@@ -135,6 +135,14 @@ public class StreamingDataRequest {
     private static volatile ClientType lastSpoofedClientType;
 
     /**
+     * Clients of the streams given to the player, by video id.
+     * The streams of another video can be given before the player is set up for a video,
+     * so the player chooses SABR from the client of that video and not from the last one.
+     */
+    private static final Map<String, ClientType> playerClients = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(50));
+
+    /**
      * If the last TV SABR response built on the thread is of a live stream, which is fetched again with TV DASH.
      * A fetch runs on a single thread, and other fetches running at the same time must not see this.
      */
@@ -165,10 +173,24 @@ public class StreamingDataRequest {
     }
 
     /**
-     * @param client Client of the streams given to the player, or null if no client could fetch the streams.
+     * @param client Client of the streams given to the player for the video,
+     *               or null if the player uses the streams of the app.
      */
-    public static void setLastSpoofedClient(@Nullable ClientType client) {
+    public static void setPlayerClient(String videoId, @Nullable ClientType client) {
         lastSpoofedClientType = client;
+        if (client == null) {
+            playerClients.remove(videoId);
+        } else {
+            playerClients.put(videoId, client);
+        }
+    }
+
+    /**
+     * @return If the streams given to the player for the video are SABR streams.
+     */
+    public static boolean playerClientUsesSABR(@Nullable String videoId) {
+        ClientType client = videoId == null ? null : playerClients.get(videoId);
+        return client != null && client.requireSABR;
     }
 
     private final String videoId;

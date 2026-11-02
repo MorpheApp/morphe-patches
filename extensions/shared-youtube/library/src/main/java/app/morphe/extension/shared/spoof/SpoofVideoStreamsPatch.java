@@ -282,7 +282,20 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
+     * Called when the player is set up for a video, after its streams were given by {@link #getStreamingData}.
      * Fix audio stuttering in YouTube Music.
+     */
+    public static boolean disableSABR(@Nullable String videoId) {
+        if (!SPOOF_VIDEO_STREAMS) {
+            return false;
+        }
+        final boolean useSABR = StreamingDataRequest.playerClientUsesSABR(videoId);
+        Logger.printDebug(() -> "Player uses SABR: " + useSABR + " for: " + videoId);
+        return !useSABR;
+    }
+
+    /**
+     * @return If SABR is turned off for the streams last given to the player.
      */
     public static boolean disableSABR() {
         return SPOOF_VIDEO_STREAMS && !StreamingDataRequest.getLastSpoofedClientUseSABR();
@@ -410,6 +423,7 @@ public class SpoofVideoStreamsPatch {
 
             if (isOfflinePlayerResponse(videoId, playerProto)) {
                 Logger.printDebug(() -> "Not overriding streaming data (saved offline video): " + videoId);
+                StreamingDataRequest.setPlayerClient(videoId, null);
                 return null;
             }
 
@@ -417,22 +431,20 @@ public class SpoofVideoStreamsPatch {
             // and a video that is saved plays with the streams of its own player response.
             if (!Utils.isNetworkConnected()) {
                 Logger.printDebug(() -> "Not overriding streaming data (network is not connected): " + videoId);
+                StreamingDataRequest.setPlayerClient(videoId, null);
                 return null;
             }
 
             try {
                 StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
-                if (request != null) {
-                    var buffers = request.getStream();
-                    // The player chooses SABR from the client of the streams it is given,
-                    // which are of this video and not of the last video fetched.
-                    StreamingDataRequest.setLastSpoofedClient(buffers == null ? null : buffers.client());
-                    if (buffers != null) {
-                        byte[] stream = buffers.streamingData();
-                        Logger.printDebug(() -> "Overriding video stream: " + videoId
-                                + " with client: " + buffers.client());
-                        return stream;
-                    }
+                var buffers = request == null ? null : request.getStream();
+                // The player chooses SABR from the client of the streams it is given for this video.
+                StreamingDataRequest.setPlayerClient(videoId, buffers == null ? null : buffers.client());
+                if (buffers != null) {
+                    byte[] stream = buffers.streamingData();
+                    Logger.printDebug(() -> "Overriding video stream: " + videoId
+                            + " with client: " + buffers.client());
+                    return stream;
                 }
 
                 Logger.printDebug(() -> "Not overriding streaming data (video stream is null): " + videoId);
