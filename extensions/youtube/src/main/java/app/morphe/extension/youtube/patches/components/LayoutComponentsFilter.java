@@ -85,8 +85,9 @@ public final class LayoutComponentsFilter extends Filter {
 
     /**
      * Browse id of the page that is shown, or empty for the search feed.
+     * Also used by {@link HorizontalShelvesFilter}.
      */
-    private static volatile String browseId = "";
+    static volatile String browseId = "";
 
     /**
      * Injection point.
