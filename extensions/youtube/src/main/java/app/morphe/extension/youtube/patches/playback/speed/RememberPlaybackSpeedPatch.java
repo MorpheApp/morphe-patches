@@ -51,9 +51,6 @@ public final class RememberPlaybackSpeedPatch {
      */
     private static volatile float shortsPlaybackSpeed = -2.0f;
 
-    /** Speed the app plays at while the screen is held. */
-    private static final float SPEEDMASTER_PLAYBACK_SPEED = 2.0f;
-
     /**
      * If the app plays faster while the screen is held, until it sets another speed
      * when the screen is released.
@@ -321,7 +318,8 @@ public final class RememberPlaybackSpeedPatch {
                 return playbackSpeed;
             }
             if (speedmasterActive) {
-                if (playbackSpeed == SPEEDMASTER_PLAYBACK_SPEED) {
+                // 2.0x, or the custom tap and hold speed.
+                if (playbackSpeed == CustomPlaybackSpeedPatch.getTapAndHoldSpeed()) {
                     return playbackSpeed;
                 }
                 // The screen was released, and the app restores the speed it played at before.
