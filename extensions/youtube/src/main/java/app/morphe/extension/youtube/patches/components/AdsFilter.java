@@ -339,6 +339,16 @@ public final class AdsFilter extends Filter {
 
     /**
      * Injection point.
+     * <p>
+     * The ads of the Shorts feed are placed between the Shorts of every channel,
+     * so they are not ads of a whitelisted channel.
+     */
+    public static String hideShortsAds(String osName) {
+        return SpoofOSNamePatch.getOSName(Settings.HIDE_VIDEO_ADS.get());
+    }
+
+    /**
+     * Injection point.
      */
     public static boolean hideVideoAds() {
         if (!Settings.HIDE_VIDEO_ADS.get()) {
