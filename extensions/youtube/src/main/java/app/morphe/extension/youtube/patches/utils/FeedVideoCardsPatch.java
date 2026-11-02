@@ -828,15 +828,18 @@ public final class FeedVideoCardsPatch {
      */
     @Nullable
     public static String findVideoIdByDescription(ComponentHost root) {
-        CharSequence description = root.getContentDescription();
-        if (description == null) {
+        // The host of the card can be inside the root host.
+        View described = root.getContentDescription() != null
+                ? root
+                : Utils.getChildView(root, true, view -> view.getContentDescription() != null);
+        if (described == null) {
             return null;
         }
-        String text = description.toString();
+        String text = described.getContentDescription().toString();
         synchronized (textVideoIds) {
             // A title can contain the delimiter too, so the longest start of the description
-            // that is a text of a video is used.
-            for (int end = text.lastIndexOf(DESCRIPTION_DELIMITER); end > 0;
+            // that is a text of a video is used. The element of a Short has the whole description.
+            for (int end = text.length(); end > 0;
                  end = text.lastIndexOf(DESCRIPTION_DELIMITER, end - 1)) {
                 String videoId = textVideoIds.get(normalizeText(text.substring(0, end)));
                 if (videoId != null) {

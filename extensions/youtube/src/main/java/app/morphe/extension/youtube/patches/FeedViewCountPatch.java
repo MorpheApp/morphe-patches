@@ -67,7 +67,8 @@ import app.morphe.extension.youtube.settings.Settings;
  * The span is copied with the text, so it is kept when the Hide view count option
  * of the Hide layout components patch removes the view count from below the title.
  * No request is made, and the count is the same that YouTube shows. Until the text is drawn,
- * such as while only a part of the card is shown, the badge shows a loading spinner.
+ * such as while only a part of the card is shown, the count of the element of the video is used,
+ * or else the badge shows a loading spinner.
  * <p>
  * The same text is used by other lists too, such as the videos of a playlist, where no badge is
  * shown. So the view count is removed from below the title only for the texts of the components
@@ -153,11 +154,11 @@ public final class FeedViewCountPatch {
     private static final int MAX_VIDEO_VIEW_COUNTS = 200;
 
     /**
-     * View count of the element of a video, and the text of the duration badge on its thumbnail,
-     * such as "12:34". The badge of a card must show the same text, so the view count of
-     * another video is not shown if the card is matched to the wrong video.
+     * View count of the element of a video, and the texts of the element that can be the badge on
+     * its thumbnail, such as "12:34". The badge of a card must show one of them, so the view count
+     * of another video is not shown if the card is matched to the wrong video.
      */
-    private record ElementViewCount(String viewCount, String badgeText) {
+    private record ElementViewCount(String viewCount, Set<String> badgeTexts) {
     }
 
     /**
@@ -635,15 +636,15 @@ public final class FeedViewCountPatch {
         }
         try {
             Set<String> texts = new HashSet<>();
-            String badgeText = null;
+            Set<String> badgeTexts = new HashSet<>();
             for (ProtoNode node : textNodes) {
                 String text = node.getText();
                 texts.add(SPACES_PATTERN.matcher(text).replaceAll(""));
-                if (badgeText == null && FeedVideoCardsPatch.isVideoBadgeText(text.trim())) {
-                    badgeText = text.trim();
+                if (FeedVideoCardsPatch.isVideoBadgeText(text.trim())) {
+                    badgeTexts.add(text.trim());
                 }
             }
-            if (badgeText == null) {
+            if (badgeTexts.isEmpty()) {
                 return;
             }
             Locale locale = Locale.getDefault();
@@ -671,7 +672,7 @@ public final class FeedViewCountPatch {
                 if (match != null
                         && texts.contains(SPACES_PATTERN.matcher(match.parsed.count).replaceAll(""))) {
                     synchronized (videoViewCounts) {
-                        videoViewCounts.put(videoId, new ElementViewCount(match.parsed.count, badgeText));
+                        videoViewCounts.put(videoId, new ElementViewCount(match.parsed.count, badgeTexts));
                     }
                     return;
                 }
@@ -1049,7 +1050,7 @@ public final class FeedViewCountPatch {
                         synchronized (videoViewCounts) {
                             element = videoViewCounts.get(cardVideoId);
                         }
-                        if (element != null && element.badgeText.equals(info.badgeText)) {
+                        if (element != null && element.badgeTexts.contains(info.badgeText)) {
                             viewCount = element.viewCount;
                             // Checked again when its texts are drawn, as they can show the view count.
                             FeedVideoCardsPatch.scheduleScrollCheck(host);
