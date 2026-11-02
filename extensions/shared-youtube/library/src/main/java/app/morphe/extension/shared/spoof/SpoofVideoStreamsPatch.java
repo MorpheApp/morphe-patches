@@ -424,9 +424,13 @@ public class SpoofVideoStreamsPatch {
                 StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
                 if (request != null) {
                     var buffers = request.getStream();
+                    // The player chooses SABR from the client of the streams it is given,
+                    // which are of this video and not of the last video fetched.
+                    StreamingDataRequest.setLastSpoofedClient(buffers == null ? null : buffers.client());
                     if (buffers != null) {
                         byte[] stream = buffers.streamingData();
-                        Logger.printDebug(() -> "Overriding video stream: " + videoId);
+                        Logger.printDebug(() -> "Overriding video stream: " + videoId
+                                + " with client: " + buffers.client());
                         return stream;
                     }
                 }
