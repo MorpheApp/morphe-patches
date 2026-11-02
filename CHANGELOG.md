@@ -1,3 +1,24 @@
+## [2.1.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0-dev.5...v2.1.0-dev.6) (2026-11-02)
+
+### ✨ New Features
+
+* **YouTube - Restore old video action bar:** Add the "Classic Two-Rows" layout to "Video action bar layout", and remove "Enable tablet layout in player" ([73eeadb](https://github.com/MorpheApp/morphe-patches/commit/73eeadb72c35913399e4fc9f5e1abb2ebecf22b4))
+* **YouTube / YouTube Music - Hide layout components:** Add "Hide GIF button" and "Hide GIFs and images" comment settings ([#4289](https://github.com/MorpheApp/morphe-patches/issues/4289)) ([7044284](https://github.com/MorpheApp/morphe-patches/commit/7044284d0b0dd9ea1334652f91923a3f1721e18e))
+* **YouTube Music:** Add playlist creation from downloaded music tracks ([#4232](https://github.com/MorpheApp/morphe-patches/issues/4232)) ([931f427](https://github.com/MorpheApp/morphe-patches/commit/931f4273fa89c6e47a3e6d9850184f8401ce2141))
+* **YouTube:** Show at most one Morphe snackbar message each second ([3569fbc](https://github.com/MorpheApp/morphe-patches/commit/3569fbc184b58d4da4ac19d404da928ec4ba9d1f))
+
+### 🐛 Bug Fixes
+
+* **YouTube - Change start page:** Top bar and navigation bar show the default buttons for 20 seconds without a cached guide ([2e18f68](https://github.com/MorpheApp/morphe-patches/commit/2e18f6885a4cec85da277f219c61fe69e9585ff8))
+* **YouTube - Downloads:** Use default export folder if the picked folder is missing ([e34115d](https://github.com/MorpheApp/morphe-patches/commit/e34115deb3ef00634a387e58c092744e5a7b6952))
+* **YouTube - Feed view count:** Badge of a vertical thumbnail is in the middle of the thumbnail until the title row is drawn ([5d01f60](https://github.com/MorpheApp/morphe-patches/commit/5d01f6024e78c66ca64d2c19cdb1b3d2c987daac))
+* **YouTube - Feed view count:** Loading spinner is shown on cards whose title row is not drawn yet, such as long thumbnails ([0b58b9d](https://github.com/MorpheApp/morphe-patches/commit/0b58b9db57f3c6140e237a59f097ba1434d93335))
+* **YouTube - Feed view count:** View count of the previous video is shown for a moment when a list reuses a card, such as in the notifications ([86cd350](https://github.com/MorpheApp/morphe-patches/commit/86cd3501924a494b128b41f56b4c849b54d27fcc))
+* **YouTube - Search comments:** Improved the check of the comments panels ([ec1c31d](https://github.com/MorpheApp/morphe-patches/commit/ec1c31d1c7e7a85d714ddc2a9ae62b0aad49e1a1))
+* **YouTube Music - Third-party lyrics:** Support tabbed lyrics panels ([#4267](https://github.com/MorpheApp/morphe-patches/issues/4267)) ([a56766b](https://github.com/MorpheApp/morphe-patches/commit/a56766b47feedad72cac55e1d28a507d2f8edbf4))
+* **YouTube:** Consolidate "Hide cast button" into a single setting ([5daa6d6](https://github.com/MorpheApp/morphe-patches/commit/5daa6d6e372d0b72d31f5fa4faea6a74049a92a8))
+* **YouTube:** Crash on Android 12 when closing a settings screen with a new setting ([77911d1](https://github.com/MorpheApp/morphe-patches/commit/77911d167ceeaa6da1501c64072e189a642a846c))
+
 ## [2.1.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0-dev.4...v2.1.0-dev.5) (2026-11-01)
 
 ### ✨ New Features

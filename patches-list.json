@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "2.1.0-dev.5",
+  "version": "2.1.0-dev.6",
   "patches": [
     {
       "name": "AI channel filter",
@@ -7145,7 +7145,7 @@
     },
     {
       "name": "Hide player overlay buttons",
-      "description": "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background.",
+      "description": "Adds options to hide the Cast button, the player Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background.",
       "default": true,
       "category": null,
       "compatiblePackages": [
