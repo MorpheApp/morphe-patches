@@ -28,8 +28,8 @@ import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Shows the messages of {@link Utils#showSnackbar} in the YouTube snackbar, by running the same
- * command a server response uses to show one. At most one message is shown each second:
- * a message is shown at once if it is its turn, or else it waits for its turn.
+ * command a server response uses to show one. At most one message is shown every
+ * {@link #MESSAGE_INTERVAL_MS}: a message is shown at once if it is its turn, or else it waits for its turn.
  */
 @SuppressWarnings("unused")
 public final class NativeSnackbarPatch {
