@@ -95,6 +95,10 @@ public final class WatchLaterPatch {
 
     /** Expand the leading 16dp handle to a 32dp touch target without stretching thumbnails or text. */
     public static void onHostLayout(ComponentHost host) {
+        if (!isWatchLaterActive()) {
+            if (host.getTouchDelegate() instanceof HandleTouchDelegate) host.setTouchDelegate(null);
+            return;
+        }
         // Litho mounts the ImageViews after laying out their host.
         host.post(() -> updateHost(host));
     }
