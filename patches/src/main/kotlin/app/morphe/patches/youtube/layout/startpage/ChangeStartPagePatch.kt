@@ -10,6 +10,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ChangeStartPagePatch;"
@@ -57,5 +58,14 @@ val changeStartPagePatch = bytecodePatch(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS->overrideIntentAction(Landroid/content/Intent;)V",
         )
+
+        // Without a guide in the cache, the top bar and the navigation bar wait for a milestone
+        // that is reached when the homepage is shown.
+        GuideRequestFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->overrideGuideMilestone(I)I"
+            )
+        }
     }
 }
