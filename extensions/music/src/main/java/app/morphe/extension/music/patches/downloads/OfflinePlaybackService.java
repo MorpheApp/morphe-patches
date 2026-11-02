@@ -128,6 +128,7 @@ public final class OfflinePlaybackService extends Service {
     private MediaSession session;
     private AudioManager audioManager;
     private AudioFocusRequest focusRequest;
+    private boolean resumeOnFocusGain;
     private int audioEffectSessionId;
     private String path = "";
     private String publishedMetadataPath = "";
@@ -257,6 +258,7 @@ public final class OfflinePlaybackService extends Service {
     }
 
     private void resume() {
+        resumeOnFocusGain = false;
         if (!playerReady()) return;
         if (audioFocusDenied()) return;
         player.start();
@@ -265,6 +267,11 @@ public final class OfflinePlaybackService extends Service {
     }
 
     private void pause() {
+        resumeOnFocusGain = false;
+        pausePlayer();
+    }
+
+    private void pausePlayer() {
         if (!playerReady() || !player.isPlaying()) return;
         player.pause();
         publishState();
@@ -314,6 +321,7 @@ public final class OfflinePlaybackService extends Service {
     }
 
     private void releasePlayer() {
+        resumeOnFocusGain = false;
         prepared = false;
         progressHandler.removeCallbacks(progressTicker);
         closeAudioEffectSession();
@@ -340,10 +348,23 @@ public final class OfflinePlaybackService extends Service {
         focusRequest = new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
                 .setAudioAttributes(attributes)
                 .setOnAudioFocusChangeListener(change -> {
-                    if (change == AudioManager.AUDIOFOCUS_LOSS ||
-                            change == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
-                            change == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
-                        pause();
+                    switch (change) {
+                        case AudioManager.AUDIOFOCUS_LOSS:
+                            pause();
+                            break;
+                        case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
+                        case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
+                            resumeOnFocusGain |= playerReady() && player.isPlaying();
+                            pausePlayer();
+                            break;
+                        case AudioManager.AUDIOFOCUS_GAIN:
+                            if (resumeOnFocusGain && playerReady()) {
+                                player.start();
+                                publishState();
+                                notifyChanged();
+                            }
+                            resumeOnFocusGain = false;
+                            break;
                     }
                 })
                 .build();
