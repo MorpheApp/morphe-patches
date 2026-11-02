@@ -518,6 +518,17 @@ val themePatch = baseThemePatch(
             }
         }
 
+        // The light theme colors other than white are below that luminance, so the status bar showed
+        // white icons on them (https://github.com/MorpheApp/morphe-patches/issues/1023).
+        // The newer app code that colors the status bar like the top bar uses 0.5, as is done here.
+        StatusBarDarkIconsFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[2].index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+                replaceInstruction(index, "const-wide v$register, 0x3fe0000000000000L")
+            }
+        }
+
         // The app colors its own text and icons with a value, so every place that hands one
         // over is given the color of the selected theme instead.
         FOREGROUND_COLOR_CALLS.forEach { (filter, colorPosition) ->
