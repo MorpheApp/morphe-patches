@@ -1063,8 +1063,11 @@ public final class FeedViewCountPatch {
                 if (viewCount == null) {
                     // The texts can be drawn after the layout of the card. Once the text below the title
                     // is drawn there is nothing to wait for, so the loading spinner is not shown, even if
-                    // the card is checked again.
-                    loading = FeedVideoCardsPatch.scheduleRetry(host) && info.texts.size() < MIN_DRAWN_TEXTS;
+                    // the card is checked again. Rows below the part of the card that is shown are not
+                    // drawn yet, such as the view count below the channel of the cards layout.
+                    final Rect shown = new Rect();
+                    loading = FeedVideoCardsPatch.scheduleRetry(host) && (info.texts.size() < MIN_DRAWN_TEXTS
+                            || !host.getLocalVisibleRect(shown) || shown.bottom < host.getHeight());
                     logTexts(id, info.texts);
                 } else if (duration == null) {
                     final Rect found = thumbnail;
