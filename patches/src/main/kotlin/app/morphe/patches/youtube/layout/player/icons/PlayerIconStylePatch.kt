@@ -464,8 +464,7 @@ private val playerButtonIconStylePatch = bytecodePatch {
                     val fieldIndex = indexOfFirstInstructionReversed(index) {
                         opcode == Opcode.IGET_OBJECT && (this as TwoRegisterInstruction).registerA == call.registerD
                     }
-                    if (fieldIndex < 0) return false
-                    return getInstruction(fieldIndex).getReference<FieldReference>()?.type !=
+                    return fieldIndex >= 0 && getInstruction(fieldIndex).getReference<FieldReference>()?.type !=
                             "Landroid/graphics/drawable/Drawable;"
                 }
 
@@ -532,11 +531,13 @@ val playerIconStylePatch = resourcePatch(
         copyPlayerIcons("playericons", "morphe_fullscreen_enter", "morphe_fullscreen_exit")
 
         // The app loads these by resource id from code, so the wrapper replaces the resource itself.
+        val decodableDrawables = listDecodableFiles("res/drawable/*.xml").toSet()
         val wrapped = appPlayerIcons.filter { (appName, originalName, wrapperClass) ->
-            val appIcon = get("res/drawable/$appName.xml")
+            val appIconPath = "res/drawable/$appName.xml"
             // Targets before the bold player do not have these icons.
-            if (!appIcon.exists()) return@filter false
+            if (appIconPath !in decodableDrawables) return@filter false
 
+            val appIcon = get(appIconPath)
             appIcon.copyTo(get("res/drawable/$originalName.xml"), overwrite = true)
             appIcon.writeText(appPlayerIconWrapper(wrapperClass))
             true

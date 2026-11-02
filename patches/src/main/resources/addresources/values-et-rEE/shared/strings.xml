@@ -20,37 +20,37 @@ Second \"item\" text"</string>
   <string name="morphe_settings_submenu_title">Seaded</string>
   <string name="morphe_settings_confirm_user_dialog_title">Kas olete kindel, et soovite jätkata?</string>
   <string name="morphe_settings_save">Salvesta</string>
-  <string name="morphe_settings_reset">Lä resetting</string>
+  <string name="morphe_settings_reset">Lähtesta</string>
   <string name="morphe_settings_reset_color">Lähtesta värv</string>
   <string name="morphe_settings_color_invalid">Keelatud värv</string>
   <string name="morphe_settings_restart_title">Vajalik taaskäivitus</string>
   <string name="morphe_settings_restart_dialog_message">Selle muudatuse jõustumiseks taaskäivitage rakendus</string>
   <string name="morphe_settings_restart">Taaskäivita</string>
   <!-- String is also duplicated in Reddit import / export preference -->
-  <string name="morphe_settings_import">Importee</string>
+  <string name="morphe_settings_import">Importimine</string>
   <string name="morphe_settings_import_copy">Kopeeri</string>
-  <string name="morphe_settings_import_reset">Morphe seaded lähtestati vaigväärtustele</string>
-  <string name="morphe_settings_import_success">Imporditi %s seadet</string>
+  <string name="morphe_settings_import_reset">Morphe seaded lähtestati vaikiväärtustele</string>
+  <string name="morphe_settings_import_success">Imporditud %s seaded</string>
   <string name="morphe_settings_import_failure_parse">Importimine ebaõnnestus: %s</string>
   <string name="morphe_settings_navigate_up">Navigeeri üles</string>
   <string name="morphe_settings_search_hint">Otsi seadetest</string>
-  <string name="morphe_settings_screen_info_title">INFO</string>
-  <string name="morphe_settings_search_no_results_title">Tulemusi \'%s\' jaoks ei leitud</string>
+  <string name="morphe_settings_screen_info_title">Teave</string>
+  <string name="morphe_settings_search_no_results_title">Tulemusteid otsingu \'%s\' jaoks ei leitud</string>
   <string name="morphe_settings_search_no_results_summary">Proovige teist märksõna</string>
   <string name="morphe_settings_search_recent_searches">Viimased otsingud</string>
-  <string name="morphe_settings_search_remove_message">Eemaldada otsingutooriust?</string>
-  <string name="morphe_settings_search_remove">Eemalda otsinguloolt</string>
-  <string name="morphe_settings_search_clear_history">Tõhista otsingutoorius</string>
-  <string name="morphe_settings_search_clear_history_message">Kas olete kindel, et soovite kogu otsingutooriuse tõhista?</string>
+  <string name="morphe_settings_search_remove_message">Kas soovid otsinguajalugu eemaldada?</string>
+  <string name="morphe_settings_search_remove">Eemalda otsinguloendest</string>
+  <string name="morphe_settings_search_clear_history">Tühjenda otsingajalugu</string>
+  <string name="morphe_settings_search_clear_history_message">Kas olete kindel, et soovite kogu otsinguajalugu tühjendeda?</string>
   <string name="morphe_settings_search_tips_title">Otsingunõuanded</string>
   <string name="morphe_settings_search_tips_summary">"• Puudutage rada, et sellele navigeerida
-• Pikkvajutage seadet, et sellele navigeerida
-• Vajutage Enterit, et salvestada otsingupäring tooriusse
+• Vajutage pikalt seadet, et sellele navigeerida
+• Vajutage Enterit, et salvestada otsingupäring ajalukku
 • Otsing ignoreerib suurt/väikset tähte ja kirjutsümboleid
 • Vanemad seaded kuvatakse üle keelatud alumiste seadete"</string>
-  <string name="morphe_settings_search_empty_history_title">Otsingukugu on tühi</string>
-  <string name="morphe_settings_search_empty_history_summary">Otsingukuguse salvestamiseks sisestage otsingupärisus ja vajutage Enterit</string>
-  <string name="morphe_settings_search_history_title">Kuva seadete otsingukugu</string>
+  <string name="morphe_settings_search_empty_history_title">Otsinguajalugu on tühi</string>
+  <string name="morphe_settings_search_empty_history_summary">Otsinguajalugusse salvestamiseks sisestage otsingupärisus ja vajutage Enterit</string>
+  <string name="morphe_settings_search_history_title">Kuva seadete otsinguajalugu</string>
   <string name="morphe_settings_name_title">Morphe seadete nimi</string>
   <string name="morphe_settings_name_default_item">Vaikimisi</string>
   <string name="morphe_settings_name_entry_2">Lisad</string>
@@ -64,10 +64,10 @@ Second \"item\" text"</string>
   <string name="morphe_language_title">Morphe keel</string>
   <string name="morphe_language_user_dialog_message">"Mõne keele tõlked võivad puududa või olla mittäielikud.
 
-Uute keelte tõlmiseks või olemasolevate tõldete parandamiseks külastage morphe.software/translate"</string>
+Uute keelte tõlkimiseks või olemasolevate tõlgete parandamiseks külastage morphe.software/translate"</string>
   <string name="morphe_language_DEFAULT">Rakenduse keel</string>
   <string name="morphe_pref_import_export_title">Import / Eksport</string>
-  <string name="morphe_pref_import_export_summary">Importeerite / Eksporteeri Morphe seadeid</string>
+  <string name="morphe_pref_import_export_summary">Morphe seadete importimine / eksportimine</string>
   <string name="morphe_settings_import_file">Impordi failist</string>
   <string name="morphe_settings_import_file_success">Seaded imporditi edukalt, rakendamiseks puuduta Salvesta</string>
   <string name="morphe_settings_import_file_failed">Seadete import ebaõnnestus</string>
@@ -76,15 +76,15 @@ Uute keelte tõlmiseks või olemasolevate tõldete parandamiseks külastage morp
   <string name="morphe_settings_export_file_failed">Seadete eksport ebaõnnestus</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Kasutate uusimat Morphe Patches versiooni &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Kasutate Morphe Patches versiooni &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Uuendus saadaval: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Patshide uuendamiseks kasutage Morphe\'i selle rakenduse uuesti patshimiseks</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Kasutate Morphe Patches versiooni &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Uuendus saadaval: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Täiendud uuendamiseks kasutage Morphe\'i selle rakenduse uuesti täienduseks</string>
   <string name="morphe_settings_about_links_dev_header">Märkus</string>
   <string name="morphe_settings_about_links_dev_body">See versioon on eelväljalaskmine ja võite kohata ootamatuid tõrkeid</string>
   <string name="morphe_settings_about_links_header">Ametlikud lingid</string>
   <string name="morphe_settings_about_links_website">Veebisait</string>
-  <string name="morphe_settings_about_links_donate">Doniere</string>
+  <string name="morphe_settings_about_links_donate">Annetage</string>
   <string name="morphe_settings_about_links_translations">Tõlked</string>
   <string name="morphe_settings_about_links_credits">Tunnustused</string>
-  <string name="morphe_settings_about_links_dev_header_up_to_date">Uuimõid puuduvad</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Ajakohane</string>
   <string name="morphe_settings_about_links_dev_header_update_available">Uuendus saadaval</string>
   <string name="morphe_settings_about_contributors_current">Praegune arendus</string>
   <string name="morphe_settings_about_contributors_prior">Eelmine arendus</string>
@@ -96,14 +96,14 @@ Uute keelte tõlmiseks või olemasolevate tõldete parandamiseks külastage morp
   <string name="morphe_settings_about_licenses_loading">Laaditakse…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Veaotsing</string>
-  <string name="morphe_debug_screen_summary">Konfigureerige arendaja täpsemad suvimused ja diagnostikalogid</string>
-  <string name="morphe_debug_title">Luba veaotsingulogid</string>
+  <string name="morphe_debug_screen_summary">Konfigureerige arendaja täpsemaid suvandeid ja diagnostikalogid</string>
+  <string name="morphe_debug_title">Luba veaotsingu logimine</string>
   <string name="morphe_debug_stacktrace_title">Veaotsingu logi stack trace</string>
-  <string name="morphe_debug_stacktrace_summary">Lisab v veaotsingulogidele viitevoodid, et aidata tõrkeid tuvastada</string>
-  <string name="morphe_debug_toast_on_error_title">Kuva Morphe tõrke korral teavitus</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Vea teavituste väljalülitamine peidab kõik Morphe vea teavitused.
+  <string name="morphe_debug_stacktrace_summary">Lisab veaotsingulogidele kaudu lugemised, et aidata tõrkeid tuvastada</string>
+  <string name="morphe_debug_toast_on_error_title">Kuva veateavitus Morphe\'i vea puhul</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Veateavituste väljalülitamine peidab kõik Morphe vea teavitused.
 
-Teid ei teavitatakse ühegi ootamatust sündmusest"</string>
+Teid ei teavitatakse ühegi ootamatutest sündmustest"</string>
   <string name="morphe_debug_export_logs_title">Eksporteeri veaotsingupäevikud</string>
   <string name="morphe_debug_export_logs_summary">Eksporteeri Morphe debug-logid</string>
   <string name="morphe_debug_export_logs_success">Veaotsingupäevikud eksporteeriti edukalt</string>
@@ -115,11 +115,11 @@ Teid ei teavitatakse ühegi ootamatust sündmusest"</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Veaotsingupäevikud kopeeritud</string>
   <string name="morphe_debug_logs_failed_to_export">Veaotsingupäevikute eksport ebaõnnestus: %s</string>
   <string name="morphe_debug_logs_clear_toast">Veaotsingupäevikud tühistatud</string>
-  <string name="morphe_debug_feature_flags_manager_title">Funktsioone lipukite haldard</string>
-  <string name="morphe_debug_feature_flags_manager_summary">Halda boolease funktsioone lipukite</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Otsi funktsioonilippude hulgast…</string>
+  <string name="morphe_debug_feature_flags_manager_title">Funktsioonilippude haldur</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Halda boolease funktsioonilippude</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Otsi funktsioonilippudest…</string>
   <!-- Keep short, four of these are shown in one row. -->
-  <string name="morphe_debug_feature_flags_manager_filter_inactive">Mitte aktiveeritud (%s)</string>
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Mitte aktiivne (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_active">Aktiveeritud (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
@@ -137,44 +137,44 @@ Teid ei teavitatakse ühegi ootamatust sündmusest"</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Eemalda</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funktsiooni lipud salvestatud</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funktsiooni lipud lähtestatud</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Funktsiooni lipud kopeeritud lõikelauale</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Funktsioonilipud kopeeritud lõikelauale</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Selle seade kasutamiseks taaskäivitage rakendus</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">Eksportimine ja importimine</string>
-  <string name="morphe_debug_feature_flags_manager_import_success">Importeeritud %s funktsiooni lippu</string>
-  <string name="morphe_debug_feature_flags_manager_import_failed">Funktsiooni lippe ei leitud</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Importeeritud %s funktsioonilipud</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Funktsioonilülitid ei leitud</string>
   <string name="morphe_debug_feature_flags_manager_export_file_success">Funktsiooni lipud eksporteeriti edukalt</string>
-  <string name="morphe_debug_feature_flags_manager_export_file_failed">Funktsiooni lippude eksport ebaõnnestus</string>
-  <string name="morphe_debug_feature_flags_manager_import_file_success">Funktsiooni lipud laaditi, puudutage \"Salvesta\", et rakendada</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Funktsioonilippude eksport ebaõnnestus</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Funktsioonilipud laaditi, puudutage Salvesta, et rakendada</string>
   <string name="morphe_debug_feature_flags_manager_import_file_failed">Faili lugemine ebaõnnestus</string>
   <string name="morphe_debug_feature_flags_manager_bisect_title">Binaarne otsing</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Leiab, milline funktsiooni lipp põhjustab rakenduse käitumist.
 
-Poolest %s lipud on blokeeritud ja pärast iga taaskäivitamist teatate, kas käitumine on endiselt olemas.
+Pool %s lippest on blokeeritud ja pärast iga taaskäivitamist teatate, kas käitumine on endiselt olemas.
 
-Taastage käitumine üks kord enne alustamist, vastasel juhul puuduvad otsingust lipud, mida rakendus veel ei ole küsitud"</string>
+Taastage käitumine üks kord enne alustamist, vastasel juhul puuduvad otsingust lipud, mida rakendus veel ei ole küsinud"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Alusta</string>
   <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Otsimiseks ei ole funktsiooni lippe
 
 Binaarses otsingus saab kasutada ainult neid lippe, millega rakendus on kokku põlnud ja mis ei ole hetkel sunnitud olema sisselülitatud"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_status">"Samm %1$s
 
-Jäljках on %2$s lippi, millest %3$s on selle sammu jaoks blokeeritud.
+Järelejäänud on %2$s lippi, millest %3$s on selle sammu jaoks blokeeritud.
 
 Taaskäivitage rakendus, kontrollige, kas käitumine esineb, ja vastake allpool"</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Funktsiooni lipi otsing on käigus</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Funktsioonilipu otsing on käigus</string>
   <string name="morphe_debug_feature_flags_manager_bisect_present">Käitumine esineb</string>
   <string name="morphe_debug_feature_flags_manager_bisect_absent">Käitumine ei esine</string>
   <string name="morphe_debug_feature_flags_manager_bisect_cancel">Tühista binaarne otsing</string>
   <string name="morphe_debug_feature_flags_manager_bisect_canceled">Binaarne otsing tühistatud</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_found">"Funktsiooni lipi %s põhjustab käitumist.
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Funktsioonilipu %s põhjustab käitumist.
 
 See on nüüd blokeeritud"</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Nuancesed nüanssilippi ei õnnestunud leida.
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Funktsioonilippu ei õnnestunud leida.
 
-PaistCaractéristiques, et rakenduse käitumist ei owni nüanssiputk kontrollima"</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Ühte nüanssiputke ei õnnestunud leida.
+Rakenduse käitumist ei paista kontrollivat ükski funktsioonilipp"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Ühtegi funktsioonilippu ei õnnestunud leida.
 
-Käitumine kadus otsingul varem, seega võib olla kaasatud rohkem kui üks lipp või oli üks vastustest vale"</string>
+Käitumine kadus otsingu käigus, seega võib olla kaasatud rohkem kui üks lipp või oli üks vastustest vale"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Ava MicroG seaded</string>
@@ -186,7 +186,7 @@ Käitumine kadus otsingul varem, seega võib olla kaasatud rohkem kui üks lipp 
 Palun uuendage MicroG uusimale versioonile %2s"</string>
   <string name="gms_core_dialog_update_text">Uuenda</string>
   <string name="gms_core_dialog_ignore_text">Ignoreeri</string>
-  <string name="gms_core_dialog_conflict_message">"Installitud MicroG versiooni ei soita Morphe:
+  <string name="gms_core_dialog_conflict_message">"Installitud MicroG versioon ei ole Morphe poolt soovitata:
 
 %1s
 
@@ -205,26 +205,26 @@ MicroG akupõhiste optimeerimiste keelamine ei mõjuta negatiivselt aku kulu.
 
 Puudutage jätkamise nuppu ja lubage optimeerimise muudatused"</string>
   <string name="gms_core_dialog_continue_text">Jätka</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Kuva MicroG akupila optimeerimise dialoog</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Kuva MicroG aku optimeerimise dialoog</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Selle väljalülitamine peidab MicroG aku optimeerimise teavituse.
 
 Kui aku optimeerimist ei muudeta, võib esineda järgmist:
 • Rakendus võib juhuslikult sulguda
-• Teavitused ei prugu töötada
-• Taustal taastoomine ei prugu töötada"</string>
+• Teavitused ei pruugi töötada
+• Taustal esitamine ei pruugi töötada"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Rakenduse linkide haldamine</string>
   <string name="morphe_link_handling_summary">Konfigureeri linkide avamine selles rakenduses</string>
   <string name="morphe_link_handling_step1_title">Samm 1: Keela algse rakenduse lingid</string>
   <string name="morphe_link_handling_step1_message">Avage algse rakenduse seaded ja keelake kõik domeenilingid</string>
-  <string name="morphe_link_handling_step2_title">Samm 2: Luba paigatud rakenduse lingid</string>
-  <string name="morphe_link_handling_step2_message">Avage paigatud rakenduse seaded ja lubage kõik domeenilingid</string>
+  <string name="morphe_link_handling_step2_title">Samm 2: Luba parandatud rakendus lingid</string>
+  <string name="morphe_link_handling_step2_message">Avage parandatud rakenduse seaded ja lubage kõik domeenilingid</string>
   <string name="morphe_link_handling_open">Ava seaded</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentaalne teavitus 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Kasutate ⚠️ &lt;b&gt;%1$s&lt;/b&gt; eksperimentaalset rakenduse versiooni
 &lt;br/&gt;&lt;br/&gt;
-🔧 Oodake rakenduse käitumisel erisusi või tuvastamata tõrkeid, kuna me viime selle versiooni plaasterid täpsusele.
+🔧 Oodake rakenduse käitumisel erisusi või tuvastamata tõrkeid, kuna me viime selle versiooni optimeerimise lõpule
 &lt;br/&gt;&lt;br/&gt;
 Kui soovite võimalikult tõrgetemat kogemust, siis &lt;b&gt;eemaldage&lt;/b&gt; see ja paigaldage soovitatud rakenduse versioon ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Soovin eksperimentaalset</string>

@@ -465,44 +465,44 @@ Aby zapewnić ciągłość synchronizacji podczas odtwarzania w tle, upewnij si�
   <string name="morphe_music_lyrics_source_all_disabled">Wszyscy dostawcy wyłączeni. Teksty wbudowane i osadzone</string>
   <string name="morphe_music_lyrics_source_reset_title">Zresetować kolejność dostawców?</string>
   <string name="morphe_music_lyrics_source_reset_message">Przywróć domyślną kolejność priorytetów dla dostawców</string>
-  <string name="morphe_music_lyrics_rime_dict_title">Lista słów Rime</string>
-  <string name="morphe_music_lyrics_rime_dict_empty">"Słownik Rime wymaga również UniDict: w usłudze Offline Dictionary zaznacz opcję „Chinese and Cantonese characters (UniDict)” i poczekaj na zakończenie pobierania. Bez tej listy lista zawierająca znaki nie zwraca czytań.
+  <string name="morphe_music_lyrics_rime_dict_title">Słownik Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Słownik Rime wymaga również pakietu UniDict: w ustawieniach dostawcy \"Słownik offline\" zaznacz \"Znaki chińskie i kantońskie (UniDict)\" i poczekaj na zakończenie pobierania. Bez tego słownik odczytujący pojedyncze znaki nie zwróci żadnej transkrypcji.
 
-Zaznacz listy, które słownik Rime ma odczytywać, a następnie dotknij zapisz, aby je pobrać. Lista, którą dodałeś, zostanie usunięta po odznaczeniu jej.
+Zaznacz słowniki, z których ma korzystać Słownik Rime, a następnie dotknij Zapisz, aby je pobrać. Dodany przez Ciebie słownik zostanie usunięty po jego odznaczeniu.
 
-Każda lista to twoja własna tabela słów do wyrażeń czytań, plik .dict.yaml z liniami takimi jak:
+Każdy słownik to Twoja własna tabela przypisująca transkrypcję do słów, plik .dict.yaml z wierszami w formacie:
 字 ham
 典 din2
-Pierwsza kolumna to słowo, druga to jego wyrażenie; dodatkowe kolumny oraz linie bez znaku tabulacji są ignorowane."</string>
-  <string name="morphe_music_lyrics_rime_dict_no_table">Brak zaznaczonej listy słów Rime dla powyższego języka. Dotknij tej nazwy, aby zaznaczyć jedną, lub wybierz język, który posiada listę</string>
+Pierwsza kolumna to słowo, a druga to jego transkrypcja. Dodatkowe kolumny oraz wiersze bez znaku tabulacji są ignorowane."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">Dla powyższego języka nie zaznaczono żadnego słownika Rime. Dotknij tej nazwy, aby go zaznaczyć, lub wybierz język z przypisanym słownikiem</string>
   <string name="morphe_music_lyrics_rime_dict_add">Dodaj</string>
-  <string name="morphe_music_lyrics_rime_dict_add_title">Dodaj listę słów Rime</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Plik .dict.yaml lub archiwum zip zawierający taki plik, z liniami takimi jak 字 ham i 典 din2. Lista jest pobierana po jej zaznaczeniu i kliknięciu zapisz, a licencja jest dostępna do sprawdzenia</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">Dodaj słownik Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Plik .dict.yaml lub zawierające go archiwum zip z wierszami takimi jak 字 ham oraz 典 din2. Słownik zostanie pobrany po zaznaczeniu go i dotknięciu Zapisz, sprawdzenie jego licencji należy do Ciebie</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Kod języka</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Dwie lub trzy litery, np. hak lub wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Nazwa</string>
-  <string name="morphe_music_lyrics_rime_dict_field_label_hint">Pokazywane pod wymową, np. Hakka (Meixian)</string>
-  <string name="morphe_music_lyrics_rime_dict_field_url">Adres listy słów</string>
-  <string name="morphe_music_lyrics_rime_dict_field_url_hint">Adres https:// pliku .dict.yaml lub jego archiwum zip</string>
-  <string name="morphe_music_lyrics_rime_dict_field_char_source">Znaki niebędące częścią słowa</string>
-  <string name="morphe_music_lyrics_rime_char_source_auto">Automatyczny</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">Pokazywana pod transkrypcją, np. Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">Adres słownika</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">Adres pliku .dict.yaml lub archiwum ZIP</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">Znaki spoza słownika</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">Automatycznie</string>
   <string name="morphe_music_lyrics_rime_char_source_cantonese">Znaki kantońskie</string>
   <string name="morphe_music_lyrics_rime_char_source_pinyin">Znaki mandaryńskie</string>
-  <string name="morphe_music_lyrics_rime_char_source_none">Brak wymowy znaku</string>
-  <string name="morphe_music_lyrics_rime_dict_incomplete">Wypełnij kod, nazwę i adres</string>
-  <string name="morphe_music_lyrics_rime_dict_bad_code">Kod musi mieć dwie lub trzy litery, np. hak</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">Brak transkrypcji znaków</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">Wprowadź kod, nazwę oraz adres</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">Kod musi składać się z dwóch lub trzech liter, np. hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">Adres musi zaczynać się od https://</string>
-  <string name="morphe_music_lyrics_rime_dict_bad_field">Nazwa i adres nie mogą zawierać pionowej kreski</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s już posiada tabelę słów</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s jest wymawiany przez wbudowany system romanizacji i nie może używać listy słów</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved_row">Nie używany: ten język już ma własną wymowę, więc odznacz go, aby go usunąć</string>
-  <string name="morphe_music_lyrics_rime_dict_added">Dodano %1$s - zaznacz go i dotknij Zapisz, aby go pobrać</string>
-  <string name="morphe_music_lyrics_rime_dict_ready">Listy słów gotowe</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">Listy słów gotowe (%1$d wpisów)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">Budowanie listy słów: %1$d%%</string>
-  <string name="morphe_music_lyrics_rime_dict_failed">Pobieranie listy słów nie powiodło się - dotknij ponownie Zapisz, aby spróbować ponownie</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">Nazwa i adres nie mogą zawierać znaku pionowej kreski </string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s ma już przypisany słownik</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s korzysta ze wbudowanego modułu romanizacji i nie obsługuje zewnętrznego słownika</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">Nieużywane: ten język ma już własną obsługę transkrypcji. Odznacz go, aby usunąć wpis</string>
+  <string name="morphe_music_lyrics_rime_dict_added">Dodano %1$s. Zaznacz go i dotknij Zapisz, aby pobrać</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">Słowniki gotowe</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Słowniki gotowe (%1$d wpisów)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Wczytywanie słownika: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">Nie udało się pobrać słownika. Dotknij ponownie Zapisz, aby ponowić</string>
   <string name="morphe_music_lyrics_clear_cache_title">Wyczyść zapisane teksty</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Usuń teksty utworów przechowywane na tym urządzeniu o rozmiarze %1$s MB</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Usuń teksty utworów zapisane na tym urządzeniu (%1$s MB)</string>
   <string name="morphe_music_lyrics_clear_cache_done">Wyczyszczono %1$s MB</string>
   <string name="morphe_music_token_dialog_get_token">Pobierz token</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
@@ -562,20 +562,20 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_copy_button_title">Pokaż przycisk Kopiuj</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Dotknij, aby skopiować oryginalny tekst jako zwykły tekst. Przytrzymaj, aby zapisać surowy plik źródłowy tekstu w folderze Pobrane</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Pokaż przycisk Przetłumacz</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Dotknij, aby przełączyć tłumaczenie; przytrzymaj, aby wyświetlić samo tłumaczenie. Używa włączonych dostawców tłumaczeń w kolejności ich wyświetlania</string>
-  <string name="morphe_music_lyrics_show_romanize_button_title">Pokaż przycisk Romanizacji lub Transliteracji</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Dotknij, aby przełączyć romanizację lub transliterację; przytrzymaj, aby wyświetlić samo romanizację lub transliterację. Używa włączonych dostawców romanizacji w kolejności ich wyświetlania</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Dotknij, aby przełączyć tłumaczenie. Przytrzymaj, aby wyświetlić samo tłumaczenie. Używa włączonych dostawców tłumaczeń w kolejności z listy</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Pokaż przycisk Romanizacja lub Transliteracja</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Dotknij, aby przełączyć romanizację lub transliterację. Przytrzymaj, aby wyświetlić samą romanizację lub transliterację. Używa włączonych dostawców romanizacji w kolejności z listy</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Włącz transliterację</string>
-  <string name="morphe_music_lyrics_allow_transliteration_summary">Zezwalaj na wymowy inne niż łacińskie z źródła tekstu; gdy wyłączone, zachowaj tylko litery łacińskie, litery z diakrytykami i cyfry tonu</string>
-  <string name="morphe_music_lyrics_local_romanization_summary">Czyta każde słowo tekstu timed (synchronizacja słów włączona); koreański nie wymaga pobierania; czternaście skryptów dzieli jedno pobranie CLDR; znaki han są czytane przez Listę słów Rime, gdy jej tabela słów obejmuje język</string>
-  <string name="morphe_music_lyrics_local_romanization_download_started">Pobieranie słowników wymowy…</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">Zezwala na transkrypcję w alfabetach niełacińskich ze źródła tekstu. Gdy wyłączone, zachowywane są tylko litery łacińskie, litery ze znakami diakrytycznymi oraz cyfry tonów</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Transkrybuje każde słowo zsynchronizowanego tekstu (gdy synchronizacja słów jest włączona). Koreański nie wymaga pobierania. Czternaście pism współdzieli jeden pakiet CLDR. Znaki Han są odczytywane przez słownik Rime, o ile obsługuje on dany język</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">Pobieranie słowników transkrypcji…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Dane wymowy gotowe (%1$d wpisów)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Pobieranie się nie powiodło. Wyłącz i włącz tę opcję ponownie, aby ponowić próbę</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Słownik offline</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japoński (SudachiDict, ~75 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_unidict">Znaki chińskie i kantońskie (UniDict, ~8 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_chinese">Chińskie słowa (pinyin-pro, ~17 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliteracja greckiego, słowiańskiego cyrylicy (włącznie z rosyjskim, ukraińskim, bułgarskim, serbskim, białoruskim, macedońskim), gruzińskiego, ormiańskiego, hebrajskiego, arabskiego, amharskiego i syriackiego (CLDR, ~0,5 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japoński (SudachiDict, ok. 75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">Znaki chińskie i kantońskie (UniDict, ok. 8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">Słowa chińskie (pinyin-pro, ok. 17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliteracja alfabetu greckiego, cyrylicy słowiańskiej (w tym rosyjskiego, ukraińskiego, bułgarskiego, serbskiego, białoruskiego i macedońskiego), gruzińskiego, ormiańskiego, hebrajskiego, arabskiego, amharskiego oraz syryjskiego (CLDR, ok. 0,5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Wczytywanie %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_local_romanization_dict_empty">Wybierz co najmniej jeden słownik</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Pokaż przycisk Odśwież</string>
@@ -588,10 +588,10 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_saved">Zapisano</string>
   <string name="morphe_music_lyrics_word_sync_title">Podświetlaj zsynchronizowane słowa lub sylaby</string>
   <string name="morphe_music_lyrics_word_sync_summary">Nadaje priorytet tekstom synchronizowanym słowo po słowie, o ile są dostępne. Gdy tekst zawiera znaczniki czasu, podświetla każde słowo lub sylabę w rytm muzyki</string>
-  <string name="morphe_music_lyrics_line_scale_title">Zmniejsz nieaktywne linie</string>
-  <string name="morphe_music_lyrics_line_scale_summary">Rysuje każdą linię, która nie jest obecnie śpiewana, nieco mniejszą, oprócz przyciemniania</string>
+  <string name="morphe_music_lyrics_line_scale_title">Pomniejszaj nieaktywne wersy</string>
+  <string name="morphe_music_lyrics_line_scale_summary">Oprócz przyciemnienia lekko pomniejsza każdy wers, który nie jest w danej chwili śpiewany</string>
   <string name="morphe_music_lyrics_split_background_title">Pokaż wokal w tle osobno</string>
-  <string name="morphe_music_lyrics_split_background_summary">Oddziela wokale tła i harmonię od linii głównej. Przenosi wokal tła zapisany w nawiasach, np. \"(Och) chcę cię\", z głównego wersu do osobnej, przyciemnionej linii</string>
+  <string name="morphe_music_lyrics_split_background_summary">Oddziela chórki i harmonie od głównego wokalu. Przenosi partie wokalne w tle zapisane w nawiasach, takie jak \"(Och) chcę cię\", ze śpiewanego wersu do osobnego, przyciemnionego wiersza</string>
   <string name="morphe_music_lyrics_hide_played_title">Ukryj odtworzony tekst</string>
   <string name="morphe_music_lyrics_hide_played_summary">Ukrywa linijki tekstu znajdujące się powyżej tej aktualnie odtwarzanej</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Ukryj nieodtworzony tekst</string>
@@ -654,9 +654,9 @@ Dotyczy obu limitów. Przy wartości 1.75 cztery znaki pełnej szerokości licz�
   <string name="morphe_music_lyrics_translate_hide">Przetłumaczone</string>
   <string name="morphe_music_lyrics_translation_language_title">Język tłumaczenia</string>
   <string name="morphe_music_lyrics_romanize_language_title">Język romanizacji lub transliteracji</string>
-  <string name="morphe_music_lyrics_translation_target_language">"Język docelowy tłumaczenia:
+  <string name="morphe_music_lyrics_translation_target_language">"Docelowy język tłumaczenia:
 %s"</string>
-  <string name="morphe_music_lyrics_romanization_target_language">"Język docelowy romanizacji lub transkrypcji:
+  <string name="morphe_music_lyrics_romanization_target_language">"Docelowy język romanizacji lub transliteracji:
 %s"</string>
   <string name="morphe_music_lyrics_translating">Tłumaczenie…</string>
   <string name="morphe_music_lyrics_translate_failed">Nie udało się przetłumaczyć tekstu</string>
@@ -671,7 +671,7 @@ Dotyczy obu limitów. Przy wartości 1.75 cztery znaki pełnej szerokości licz�
   <string name="morphe_music_lyrics_refreshing">Odświeżanie</string>
   <string name="morphe_music_lyrics_refreshed">Odświeżono</string>
   <string name="morphe_music_lyrics_transcribe_key_title">Klucz API QuickLRC</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transkrybuje lub synchronizuje czasowo tekst dla aktualnego utworu</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC dokonuje transkrypcji lub synchronizuje w czasie tekst bieżącego utworu</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">Zapisano klucz QuickLRC. Użyj przycisku synchronizacji w oknie wyszukiwania tekstu lub komunikatu w panelu, gdy utwór nie ma tekstu</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">Zapisano klucz API QuickLRC</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC odrzucił ten klucz</string>
@@ -694,17 +694,17 @@ Teksty pochodzą z zewnętrznych usług, które nie są powiązane z Morphe, prz
   <string name="morphe_music_lyrics_hide_info_title">Ukryj informacje o twórcach</string>
   <string name="morphe_music_lyrics_hide_info_summary">Ukrywa informacje o twórcach wyświetlane pod tekstem</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Zamień miejscami tłumaczenie i romanizację</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON umieszcza romanizację lub transliterację poniżej tekstu, a tłumaczenie nad nim; OFF utrzymuje romanizację lub transliterację powyżej i tłumaczenie poniżej. Wymowa umieszczona nad każdą sylabą przesuwającą się z nią, od góry jej sylaby do dołu</string>
-  <string name="morphe_music_lyrics_force_center_title">Zawsze centruj tekst</string>
-  <string name="morphe_music_lyrics_force_center_summary">ON umieszcza każdą linię na środku i ignoruje alineację źródła, włącznie z partiami duetowymi; OFF utrzymuje alineację żądaną przez tekst</string>
-  <string name="morphe_music_lyrics_providers_keep_one">Co najmniej jeden dostawca musi być wyłączony</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">WŁ.: umieszcza romanizację lub transliterację pod tekstem, a tłumaczenie nad nim. WYŁ.: zachowuje romanizację lub transliterację nad tekstem, a tłumaczenie pod nim. Transkrypcja umieszczona nad poszczególnymi sylabami również zmienia pozycję, z góry na dół</string>
+  <string name="morphe_music_lyrics_force_center_title">Zawsze wyśrodkowuj tekst</string>
+  <string name="morphe_music_lyrics_force_center_summary">WŁ.: wyśrodkowuje każdy wers i ignoruje wyrównanie ze źródła, w tym podział na strony w duetach. WYŁ.: zachowuje oryginalne wyrównanie tekstu</string>
+  <string name="morphe_music_lyrics_providers_keep_one">Co najmniej jeden dostawca musi pozostać włączony</string>
   <string name="morphe_music_lyrics_translation_provider_title">Tłumaczenie</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizacja lub transliteracja</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Słownik offline</string>
-  <string name="morphe_music_lyrics_romanization_provider_rime">Lista słów Rime</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Słownik Rime</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Wykrywaj sekcje za pomocą AI</string>
-  <string name="morphe_music_lyrics_use_ai_section_summary">Używane tylko wtedy, gdy dostawca nie udostępnia etykiet sekcji, takich jak Refren lub zwrotka, które wykrywa Twój model zgodny z OpenAI. Edycja wiersza otwiera również jego podpowiedź</string>
-  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL punktu końcowego API (np. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Używane tylko wtedy, gdy dostawca nie udostępnia oznaczeń sekcji (takich jak Refren czy Zwrotka), wówczas wykrywa je Twój model zgodny z OpenAI. Edycja tego wiersza otwiera również przypisane mu polecenie</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">Adres API (np. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Szablon polecenia</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Zmienne: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Zapisano polecenie</string>
@@ -713,23 +713,26 @@ Teksty pochodzą z zewnętrznych usług, które nie są powiązane z Morphe, prz
   <string name="morphe_music_lyrics_ai_config_toast_saved">Zapisano ustawienia tłumaczenia i romanizacji</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Przywrócono ustawienia domyślne</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Bazowy adres musi zaczynać się od http:// lub https://</string>
-  <string name="morphe_music_lyrics_ai_config_status_invalid">Ustawienia niekompletne lub odrzucone przez dostawcę</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">Ustawienia są niekompletne lub zostały odrzucone przez dostawcę</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Sprawdzanie połączenia…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Połączono! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Połączenie nie powiodło się. Sprawdź ustawienia.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Wprowadź klucz API jako pierwszy</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Połączenie nie powiodło się. Sprawdź ustawienia</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">Najpierw wprowadź klucz API</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Testuj połączenie</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Pobieranie modeli…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Pobierz modele</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Wybierz model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Nie udało się pobrać modeli. Sprawdź klucz API lub połączenie.</string>
-  <string name="morphe_music_lyrics_ai_config_prompt_label">Podpowiedź</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">Polecenie</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Bazowy adres URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Gotowe konfiguracje usług</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Wybierz usługę</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">Klucz API (opcjonalny)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Dodatkowa treść zapytania (opcjonalny JSON)</string>
-  <string name="morphe_music_lyrics_ai_config_extra_headers_label">Nagłówki dodatkowych żądań (opcjonalny JSON)</string>
-  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Cytyuj nazwy i wartości, np. {\"api-key\": \"abc\"}. Niecytowana wartość zawierająca / : lub liczbę jest odrzucana. Pusta wartość usuwa nagłówek.</string>
-  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Cytyuj nazwy i wartości, np. {\"temperature\": 0,3}. Niecytowana wartość zawierająca / lub : jest odrzucana. Model i wiadomości nie mogą być ustawione tutaj.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">Dodatkowe nagłówki żądania (opcjonalny JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Ujmij nazwy i wartości w cudzysłów, np. {\"api-key\": \"abc\"}. Wartość bez cudzysłowu zawierająca znaki /, : lub liczbę zostanie odrzucona. Pusta wartość usuwa nagłówek</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Ujmij nazwy i wartości w cudzysłów, np. {\"temperature\": 0.3}. Wartość bez cudzysłowu zawierająca znak / lub : zostanie odrzucona. Nie można tu ustawić parametrów model ani messages</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Klucz uwierzytelniający (Free lub Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Wyłącza pogrubione ikony</string>

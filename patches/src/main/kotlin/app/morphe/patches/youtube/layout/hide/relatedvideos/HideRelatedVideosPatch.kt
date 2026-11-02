@@ -8,14 +8,12 @@
 package app.morphe.patches.youtube.layout.hide.relatedvideos
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.immutableMethodRef
@@ -29,9 +27,6 @@ import app.morphe.patches.youtube.shared.WatchNextResponseParserFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -58,7 +53,7 @@ val hideRelatedVideosPatch = bytecodePatch(
 
         val continuationsField = with (WatchNextResponseParserFingerprint) {
             clearMatch() // Fingerprint is shared and indexes may no longer be correct.
-            instructionMatches[2].instruction.getReference<FieldReference>()!!
+            instructionMatches[2].fieldReference
         }
         val resultsClass = continuationsField.definingClass
 
@@ -73,40 +68,13 @@ val hideRelatedVideosPatch = bytecodePatch(
                     name = "emptyProtobufList"
                 )
             )
-        ).instructionMatches.last().instruction.getReference<MethodReference>()!!
+        ).instructionMatches.last().methodReference
 
-        val sectionIdentifierField = RelatedItemSectionFingerprint
-            .instructionMatches[1].instruction.getReference<FieldReference>()!!
-
-        val watchNextResponseModelClass = WatchNextResponseModelClassResolverFingerprint
-            .instructionMatches.last().instruction.getReference<TypeReference>()!!.type
-
-        Fingerprint(
-            definingClass = watchNextResponseModelClass,
-            accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
-            returnType = "V",
-            parameters = listOf(resultsClass),
-            filters = listOf(
-                fieldAccess(
-                    opcode = Opcode.IGET_OBJECT,
-                    definingClass = resultsClass,
-                    type = emptyProtobufListMethod.returnType
-                ),
-                methodCall(
-                    opcode = Opcode.INVOKE_INTERFACE,
-                    name = "iterator",
-                    location = MatchAfterImmediately()
-                ),
-                fieldAccess(
-                    opcode = Opcode.IGET_OBJECT,
-                    type = sectionIdentifierField.definingClass
-                )
-            )
-        ).let {
+        watchNextResultsFingerprint(emptyProtobufListMethod.returnType, resultsClass).let {
             val contentsField =
-                it.instructionMatches.first().instruction.getReference<FieldReference>()!!
+                it.instructionMatches.first().fieldReference
             val itemSectionRendererField =
-                it.instructionMatches.last().instruction.getReference<FieldReference>()!!
+                it.instructionMatches.last().fieldReference
             val itemSectionRendererDefaultInstance =
                 "${itemSectionRendererField.type}->a:${itemSectionRendererField.type}"
 
@@ -127,7 +95,7 @@ val hideRelatedVideosPatch = bytecodePatch(
             )
 
             val shelfRendererField = firstHomeThumbnailCrawlerFingerprint.instructionMatches[1]
-                .instruction.getReference<FieldReference>()!!
+                .fieldReference
             val shelfRendererDefaultInstance =
                 "${shelfRendererField.type}->a:${shelfRendererField.type}"
 

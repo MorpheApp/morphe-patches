@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit-privacybeleid</string>
   <string name="morphe_google_signin_not_available_toast">Google-login niet beschikbaar. Gebruik e-mail om in te loggen</string>
+  <string name="morphe_app_downgrade_dialog_title">Downgrade niet ondersteund</string>
+  <string name="morphe_app_downgrade_dialog_message">"Deze Reddit-installatie is gedowngraded van &lt;b&gt;%1$s&lt;/b&gt; naar &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Appgegevens van een nieuwere versie werken niet met oudere versies en de app werkt mogelijk niet correct.
+&lt;br/&gt;&lt;br/&gt;
+Om een oudere versie te gebruiken, moet u Reddit &lt;b&gt;deïnstalleren&lt;/b&gt; en vervolgens de oudere versie installeren."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">App-info openen</string>
   <string name="morphe_screen_ads_title">Advertenties</string>
   <string name="morphe_hide_post_ads_title">Advertenties in de feed verbergen</string>
   <string name="morphe_hide_comment_ads_title">Advertenties in reacties verbergen</string>

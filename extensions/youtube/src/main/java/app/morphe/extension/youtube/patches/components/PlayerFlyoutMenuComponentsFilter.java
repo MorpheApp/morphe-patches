@@ -107,7 +107,8 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
 
     private final ByteArrayFilterGroup videoPlayerSettingsQualityButton = new ByteArrayFilterGroup(
             null,
-            "quality_sheet_header.e"
+            "quality_sheet_header",
+            "quick_quality_sheet_content"
     );
     private final ByteArrayFilterGroup shortsPlayerSettingsCaptionsButton = new ByteArrayFilterGroup(
             null,
@@ -158,7 +159,9 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 null,
                 "yt_outline_arrow_repeat_1_",
                 "yt_outline_experimental_repeat1_",
-                "yt_outline_experimental_play_circle_black_"
+                "yt_outline_experimental_play_circle_black_",
+                // 21.x: Base64-encoded Protobuf entity key fragment for "_video_loop_entity"
+                "X3ZpZGVvX2xvb3BfZW50aXR5"
         );
 
         flyoutMenuBufferGroupList.addAll(
@@ -175,17 +178,20 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK,
                         "yt_outline_person_",
-                        "yt_outline_experimental_person_"
+                        "yt_outline_experimental_person_",
+                        "audio_track_sheet_content"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_CAPTIONS,
                         "closed_caption_",
-                        "yt_outline_experimental_closed_captions_"
+                        "yt_outline_experimental_closed_captions_",
+                        "captions_sheet_content"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_HELP,
                         "yt_outline_question_circle_",
-                        "yt_outline_experimental_help_circle_"
+                        "yt_outline_experimental_help_circle_",
+                        "yt_android_watch"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_LISTEN_WITH_YOUTUBE_MUSIC,
@@ -195,7 +201,9 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_LOCK_SCREEN,
                         "yt_outline_lock_",
-                        "yt_outline_experimental_lock_"
+                        "yt_outline_experimental_lock_",
+                        // 21.x: Base64-encoded Protobuf entity key fragment for "lock_mode_state_entity_key"
+                        "bG9ja19tb2RlX3N0YXRlX2VudGl0eV9rZXkg"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_ON_THE_GO,
@@ -205,17 +213,21 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_QUALITY,
                         "yt_outline_adjust_",
-                        "yt_outline_experimental_adjust_"
+                        "yt_outline_experimental_adjust_",
+                        "quick_quality_sheet_content",
+                        "quality_sheet_header"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_SLEEP_TIMER,
                         "yt_outline_moon_z_",
-                        "yt_outline_experimental_sleep_timer_"
+                        "yt_outline_experimental_sleep_timer_",
+                        "sleep_timer_sheet_content"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_SPEED,
                         "yt_outline_play_arrow_half_circle_",
-                        "yt_outline_experimental_play_circle_half_dashed_"
+                        "yt_outline_experimental_play_circle_half_dashed_",
+                        "playback_rate_selector_menu_sheet"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_STABLE_VOLUME,

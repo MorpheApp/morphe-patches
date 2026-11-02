@@ -260,6 +260,13 @@ val lyricsPatch = bytecodePatch(
         // lyrics component is the earliest signal that the opened panel is the lyrics one.
         addLithoFilter(LYRICS_PANEL_FILTER)
 
+        // Some accounts get lyrics as a player tab instead of an engagement panel. A tab page can
+        // be built long before it is selected, so the litho filter alone can't install the panel.
+        TabbedViewTabSelectedFingerprint.method.addInstruction(
+            0,
+            "invoke-static { p0 }, $PANEL_INSTALLER_CLASS->onTabSelected(Landroid/view/ViewGroup;)V"
+        )
+
         // Some accounts get the panel without a heading, and then nothing in the view tree
         // tells the lyrics panel from the other panels sharing the same container. The panel
         // the app itself put in the container is what tells them apart. Panels with a

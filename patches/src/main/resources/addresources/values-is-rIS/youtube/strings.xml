@@ -51,6 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Virkja síu fyrir neðri valmynd „Safn / Þú“</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Sía fyrir neðri valmynd „Safn / Þú“</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Sláðu inn nöfn atriða í neðri valmynd „Safn / Þú“ sem á að sía eftir, eitt nafn í hverri línu</string>
+  <string name="morphe_hide_account_menu_downloads_title">Fela upphleppningar</string>
   <string name="morphe_hide_album_cards_title">Fela albúmspjöld</string>
   <string name="morphe_hide_album_cards_summary">Felur albúmspjöld undir lýsingu listamannsins</string>
   <string name="morphe_hide_artist_cards_title">Fela listamannaspjöld</string>
@@ -435,7 +436,7 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <string name="morphe_feed_long_press_menu_title">Smellstu og haltu til að opna myndbandsvalmynd</string>
   <string name="morphe_feed_long_press_menu_summary">Þegar þú smeltir og heldur niður einhversstaðar á feed-myndbandi opnast valmynd þess</string>
   <string name="morphe_feed_watch_later_button_title">Sýna hnappinn \"Skjáa síðar\" á þumabörðum</string>
-  <string name="morphe_feed_watch_later_button_summary">Hnappurinn \"Skjáa síðar\" birtist á þumabörðum feed-mynda. Þegar þú smeltir og heldur honum niður opnarðu Vista í spilunarlista</string>
+  <string name="morphe_feed_watch_later_button_summary">Hnappurinn \"Horfa síðar\" er sýnndur á þumblistum myndbanda í feed-num, með haka ef myndbandið er vistað. Með því að smella á hann er myndbandið vistað eða fjarlægt, og með því að halda á honum opnast \"Vista í spilunalista\"</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Sækja niður myndir úr færslum</string>
   <string name="morphe_post_image_download_summary">Sækkjunarhnappur birtist við hliðina á deiluhnappi færslna með myndum eða GIF-um, og sækkjunarmatrixi er bætt við valmynd þeirra</string>
@@ -505,8 +506,23 @@ Eftir að myndband með Ask hnappi hefur verið opnað einu sinni, virkar eiginl
   <string name="morphe_external_downloader_quick_audio">Hljóð</string>
   <string name="morphe_external_downloader_quick_options">Allar stillingar</string>
   <string name="morphe_shorts_download_flyout_button_title">Sýna niðurhal í Shorts-valmynd</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Bætir við útvíkkuðu niðurhalstæki í Shorts-spilaranum</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Bætir upphleppningsatriðis í valmynd Shorts-spilara</string>
   <string name="morphe_shorts_download_flyout_title">Niðurhal</string>
+  <string name="morphe_export_download_folder_title">Flytja vistuð myndbönd</string>
+  <string name="morphe_export_download_folder_summary">"Flytja myndbönd vistuð í forritinu á tækilageymslu með upphleppningsvalmynd forritsins. Ýttu til að breyta útfærslumöppu
+
+Útfærslumappa: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Útfærslumöppu</string>
+  <string name="morphe_export_download_folder_change">Breyta möppu</string>
+  <string name="morphe_export_download_folder_changed">Útfærslumappa breytt</string>
+  <string name="morphe_export_download_folder_reset">Útfærslumappa endurstillt</string>
+  <string name="morphe_export_download_flyout_title">Flytja á tæki</string>
+  <string name="morphe_export_download_started">Að flytja myndband</string>
+  <string name="morphe_export_download_progress">Að flytja myndband: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Myndbandsútfærslur</string>
+  <string name="morphe_export_download_saved">Myndband flutt á %s</string>
+  <string name="morphe_export_download_failed">Gat ekki flutt myndbandið</string>
+  <string name="morphe_export_download_canceled">Útfærslu blisters</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Þýðing á raddsegulmagni</string>
   <string name="morphe_vot_screen_summary">Les upp undirtitla myndbandsins með texta-til-tala á tækinu, samhæmt með endursendingu</string>
@@ -581,6 +597,19 @@ API lykillinn þinn ætti aldrei að deila. Allir með aðgang að honum geta no
   <string name="morphe_pip_button_overlay_title">Sýna mynd-í-mynd-hnapp</string>
   <string name="morphe_pip_button_flyout_title">Sýna mynd-í-mynd-valmynd</string>
   <string name="morphe_pip_button_flyout_name">Skipta yfir í mynd-í-mynd</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Aðgerðir mynd-í-mynd</string>
+  <string name="morphe_pip_actions_screen_summary">Breyta hnappunum sem sýna í mynd-í-mynd</string>
+  <string name="morphe_pip_action_left_title">Vinstri hnappur</string>
+  <string name="morphe_pip_action_center_title">Miðhnappur</string>
+  <string name="morphe_pip_action_right_title">Hægri hnappur</string>
+  <string name="morphe_pip_action_entry_default">Byrgð</string>
+  <string name="morphe_pip_action_entry_previous">Fyrmund myndband</string>
+  <string name="morphe_pip_action_entry_next">Næsta myndband</string>
+  <string name="morphe_pip_action_entry_rewind">Sekkja 10 sekúndur</string>
+  <string name="morphe_pip_action_entry_fast_forward">Spegla 10 sekúndur</string>
+  <string name="morphe_pip_action_entry_play_pause">Seta á/stöðva</string>
+  <string name="morphe_pip_action_entry_background_playback">Bakgrunnshlekkun</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Sýnir Spila allt hnappinn</string>
   <string name="morphe_play_all_button_summary">"Tap til að hrista allar myndasida í reit, tap og haltu til að aftur"</string>
@@ -611,10 +640,6 @@ API lykillinn þinn ætti aldrei að deila. Allir með aðgang að honum geta no
   <string name="morphe_save_to_watch_later_flyout_title">Vista í Horfa síðar</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Sýna hnappinn Vista í Horfa seinna í sprettivalmynd spilarastillinga</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Leyfir að vista myndbandið sem verið er að horfa á núna í \'Horfa seinna\' úr sprettivalmynd myndbandsstillinga</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Sýna hnappinn „Vista í Horfa síðar“ í barnamyndböndum</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Leyfir að vista barnatengd myndbönd í \'Horfa seinna\' úr sprettivalmyndinni</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Sýna hnappinn Vista í Horfa seinna í sprettivalmynd Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Leyfir að vista Shorts í \'Horfa seinna\' úr sprettivalmyndinni</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Stefna „Horfa síðar“ á spilalista</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Horfa síðar</string>
   <string name="morphe_queue_flyout_title">Bæta í Morphe biðröð</string>
@@ -833,6 +858,10 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Textar</string>
   <string name="morphe_captions_screen_summary">Stjórna sjálfvirka undirrita og undirritarsskokkunn</string>
+  <string name="morphe_captions_languages_title">Mál og þýðing</string>
+  <string name="morphe_captions_presentation_title">Útlitið og hegðun</string>
+  <string name="morphe_captions_advanced_title">Hágreiddar stillingar</string>
+  <string name="morphe_captions_advanced_summary">Kökur og valmöguleikar fyrir ritgerðir</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Sýnileiki sjálfkennslu</string>
   <string name="morphe_auto_captions_style_entry_1">Alltaf sýna</string>
@@ -841,10 +870,10 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_auto_captions_style_entry_4">Sýna þegar hljóðlát</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Æskilegt skjátextamál</string>
-  <string name="morphe_preferred_caption_language_summary">Velur skjátexta frá veitanda fyrst, þýðir síðan sjálfkrafa á æskilegt tungumál</string>
+  <string name="morphe_preferred_caption_language_summary">Velur sjálfkrafa mál á texta fyrir hvert myndband</string>
   <string name="morphe_preferred_caption_language_entry_off">Slökkt</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Bæta við íslandsskrum fyrir sjálfvirka þýðingu</string>
+  <string name="morphe_auto_translate_additional_languages_title">Aukmál fyrir sjálfvirka þýðingu</string>
   <string name="morphe_auto_translate_additional_languages_summary">Bætir fleiri tungumálum í menyrnina fyrir sjálfvirka þýðingu</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Stilltu kökkurnar sem þurfa að vera stilltar á Timed Text API (Gögn kökkurdreifur)</string>
@@ -862,8 +891,17 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_fix_transcript_title">Lagfæra afrit</string>
   <string name="morphe_fix_transcript_summary">Leysir vandamál með forskotaskilyrði sem getur komið í veg fyrir að afritirinn hlaðist</string>
   <string name="morphe_captions_in_pip_title">Sýna texta í mynd-mi mynd-tilstandi</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Stærð texta</string>
+  <string name="morphe_caption_scale_summary">Gildir fyrir texta á einu máli og tvíliðu-texta</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Stöðugar textablokkir</string>
-  <string name="morphe_stable_caption_blocks_summary">Hópar sjálfvirkar textabreytur í stöðugum, læsilegum blokkum. Sum orð gætu komið fram áður en þau eru outgrowth. Endurræsing nauðsynleg.</string>
+  <string name="morphe_stable_caption_blocks_summary">Sýnir sjálfvirkan texta á einu máli í stöðugum, leslegum blokkum. Tvíliðu-texti notar alltaf blokkir. Sumt orð gætu komið upp áður en þau eru mörguð</string>
+  <string name="morphe_secondary_caption_language_title">Aukmál fyrir texta</string>
+  <string name="morphe_secondary_caption_language_summary">Sýnir annað mál með textanum og bætir tvíliðu-hnappi í valmynd textans</string>
+  <string name="morphe_dual_captions_enabled_title">Tvíliðu-texti</string>
+  <string name="morphe_caption_block_translation_failed">Sumar þýðingar á texta eru ekki aðgengilegar. Sýni texta sem eru aðgengilegir.</string>
+  <string name="morphe_caption_blocks_too_large">Báð mál á textanum passa ekki inn í þennan spilara. Sýni aðalmál.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Stýrihnappar</string>
   <string name="morphe_navigation_buttons_screen_summary">Veldu hvaða hnappa þú vilt sýna í neðri stjórnarborðinu</string>
@@ -1111,10 +1149,10 @@ Stillingar → Spilun (eða Sjálfvædd spilun) → Sjálfvædd næsta myndband"
   <string name="morphe_change_form_factor_entry_4">Bíll</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Breytingar fela í sér:\n\nSpjaldtölvulag\n• Færslur samfélagsins eru falin\n• Stilling fyrir spilun í flæðum er ekki tiltæk\n• Takkinn Remix og hljóðtakki eru ekki til í Shorts\n• Yfirlag „fleiri myndbönd“ kann að vera ótiltekið\n• Gamalt aðgerðastikur myrkunnar sem ekki er samanbrotið er sýnt\n• Íflýgvalmynd atriði virka kannski ekki rétt\n\nBílalag\n• Flæði er skipulegt eftir efnum og rásum\n• Stilling fyrir spilun í flæðum er ekki tiltæk\n• Takkinn Remix og hljóðtakki eru ekki til í Shorts\n• Yfirlag „fleiri myndbönd“ kann að vera ótiltekið\n• Shorts opnast í venjulega spilaranum\n• Gamalt aðgerðastikur myrkunnar sem ekki er samanbrotið er sýnt"</string>
   <string name="morphe_tablet_layout_in_player_title">Virkja taflalýsing í spilara</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Endurskipar gamla útlit spilarans
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Endurtekur gamla uppsetningu spilara
 
-Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleiri myndbönd' lagskiptarinn ekki verið tiltæk"</string>
+Takmörkun: Ef \"Uppsetning aðgerðarstikunnar fyrir myndband“ er ekki Classic, gæti \"Meira myndband“ yfirsetning ekki verið aðgengileg"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Endurheimta gamla textahegðun</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Endursafnaðu gamla vistun á spilalista</string>
@@ -1196,6 +1234,10 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_miniplayer_not_available_summary">YouTube fjarlægði alla aukna smáspilara. Til að endursetja fleiri gerðir af smáspilarum, vinsamlegast pútta YouTube 21.28.208 eða eldri útgáfu</string>
   <string name="morphe_miniplayer_type_title">Gerð Mini spilara</string>
   <string name="morphe_miniplayer_hide_title_title">Fela titil og rás</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Víkka með uppstrið</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Að striða lágmarkspilara upp víkkar spilarann, í stað þess að flytja lágmarkspilarann upp í efra horn skjásins</string>
+  <string name="morphe_miniplayer_docked_title">Fastur lágmarkspilari</string>
+  <string name="morphe_miniplayer_docked_summary">Festir lágmarkspilara við vistrunarbarinn og hliðir skjásins, í stað þess að svæfa yfir þeim</string>
   <string name="morphe_miniplayer_type_entry_0">Gerðu óvirkt</string>
   <string name="morphe_miniplayer_type_entry_1">Lágmark</string>
   <string name="morphe_miniplayer_type_entry_2">Tafla</string>
@@ -1238,6 +1280,8 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Glow-skjárstýring er ekki studduð af þessu tæki</string>
+  <string name="morphe_splash_screen_duration_title">Tíðni ræsianímasjons</string>
+  <string name="morphe_splash_screen_duration_summary">Hversu lengi glæmanímasjons spilar. Ýttu á anímasjons fyrir að sleppa henni</string>
   <string name="morphe_theme_color_light_title">Ljósþemabakgrunnur</string>
   <string name="morphe_theme_color_light_entry_2">Hvítur</string>
   <string name="morphe_theme_color_light_entry_3">Material You (hvítur)</string>
@@ -1468,10 +1512,11 @@ Myndbandsspilun með AV1 getur hrickast eða skotið ramma"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">JavaScript breyturinnar</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Sýna spoofun í \'Stats for nerds\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Endurstaða gamla myndavélarinnar</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Lagfærir að ekki er hægt að fela myndbandsaðgerðahnappana
-
-Takmörkun: Snýr aftur í gamla 'Fleiri myndbönd' yfirlagsstílinn"</string>
+  <string name="morphe_video_action_bar_layout_title">Uppsetning aðgerðarstikunnar fyrir myndband</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Svo sem</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klassísk</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Lágmarkst</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Takmörkun: Classic snýr aftur að gamla stílnum á \"Meira myndband“ yfirsetningu</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Táknstíll spilara</string>
   <string name="morphe_player_icon_style_entry_auto">Sjálfvirkt</string>
@@ -1633,4 +1678,27 @@ Takmörkun: Snýr aftur í gamla 'Fleiri myndbönd' yfirlagsstílinn"</string>
   <string name="morphe_niconico_comments_max_length_title">Hámarks lengd athugasemdar</string>
   <string name="morphe_niconico_comments_max_length_summary">Fela athugasemdir sem innihalda fleiri staf en þetta. Hver tiltekni tákn taldist eins og einn stafur</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Engin takmörkun</string>
+  <string name="morphe_live_chat_translate_screen_title">Þýðing á beinsendum spjallum</string>
+  <string name="morphe_live_chat_translate_screen_summary">Þýðir skilaboð í beinsendum spjallum og endspilunum þeirra</string>
+  <string name="morphe_live_chat_translate_title">Þýða beinsenda spjall</string>
+  <string name="morphe_live_chat_translate_summary">Þýðir skilaboð í beinsendum spjallum og endspilunum þeirra þegar þau koma upp á skjá</string>
+  <string name="morphe_live_chat_translate_language_title">Þýðingarmál</string>
+  <string name="morphe_live_chat_translate_exclude_title">Undirbætta mál</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Málskóðar aðskaldir með komma, t.d. id,en. Skilaboð á þessum málum eru ekki þýdd</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Sýna hnapp til að afrita skilaboð</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Bætir litlum afritunarhnappi við hvert spjallaskilaboð</string>
+  <string name="morphe_live_chat_translate_copied">Skilaboð afrituð á skoparið</string>
+  <string name="morphe_live_chat_translate_style_title">Stíll á þýðingu</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Aðallega þýdd</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Upprunalegt (þýdd)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Þýdd) upprunalegt</string>
+  <string name="morphe_live_chat_translate_bold_title">Hlaðin þýddur texti</string>
+  <string name="morphe_live_chat_translate_bold_summary">Sýnir þýdda textann í hlaðletri</string>
+  <string name="morphe_live_chat_translate_use_color_title">Sérstakur litur á þýddum texta</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Beitur sérstakan lit á þýdda textann</string>
+  <string name="morphe_live_chat_translate_color_title">Litur þýdds texta</string>
+  <string name="morphe_live_chat_translate_color_summary">Stilla hex-lit þýdds texta</string>
+  <string name="morphe_live_chat_translate_max_length_title">Hæmarslengd skilaboða</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Lengri skilaboð eru sýnd án þýðingar</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Engin takmörkun</string>
 </resources>

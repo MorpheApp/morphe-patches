@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Imigomo yobumfihlo ye-Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Ukungena nge-Google akutholakali. Sebenzisa i-imeyili ukuze ungene</string>
+  <string name="morphe_app_downgrade_dialog_title">Ukwehlisa izinga akusekelwa</string>
+  <string name="morphe_app_downgrade_dialog_message">"Lokhu kufakwa kwe-Reddit kwehliswe kusuka ku-&lt;b&gt;%1$s&lt;/b&gt; kuya ku-&lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Idatha yohlelo lwe-app evela enguqulwini entsha ayisebenzi nezinguqulwana ezindala futhi i-app ingase ingasebenzi ngendlela efanele.
+&lt;br/&gt;&lt;br/&gt;
+Ukuze usebenzise inguqulwana endala, kumele &lt;b&gt;ususe&lt;/b&gt; i-Reddit bese ufaka inguqulwana endala."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Vula imininingwane ye-app</string>
   <string name="morphe_screen_ads_title">Izikhangiso</string>
   <string name="morphe_hide_post_ads_title">Fihla izikhangiso ze-feed</string>
   <string name="morphe_hide_comment_ads_title">Fihla izikhangiso zakomemovo</string>

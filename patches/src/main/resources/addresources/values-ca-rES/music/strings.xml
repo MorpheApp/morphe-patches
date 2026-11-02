@@ -465,8 +465,44 @@ Per assegurar que el scrobbling es sincronitzi durant la reproducció en segon p
   <string name="morphe_music_lyrics_source_all_disabled">Tots els proveïdors desactivats: lletres integrades i lletres incrustades</string>
   <string name="morphe_music_lyrics_source_reset_title">Restaurar l\'ordre del proveïdor?</string>
   <string name="morphe_music_lyrics_source_reset_message">Restaura els proveïdors a l\'ordre de prioritat per defecte</string>
+  <string name="morphe_music_lyrics_rime_dict_title">Llista de paraules de Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"La llista de paraules de Rime també necessita UniDict: al proveïdor del Diccionari fora de línia, marca \"Caracteres xiners i cantonèss (UniDict)\" i deixa que s'acabi de descarregar primer. Sense això, una llista que llegeixi caràcters no produirà cap lectura.
+
+Marca les llistes que la llista de paraules de Rime hagi de llegir i, després, toca Desar per descarregar-les. Una llista que hagis afegit s'elimina quan la desmarques.
+
+Cada llista és la teva pròpia taula de paraula-lectura, un fitxer .dict.yaml amb línies com:
+字 ham
+典 din2
+La primera columna és la paraula i la segona la seva lectura; les columnes addicionals i les línies sense una tabulació s'ignoren."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">No s\'ha seleccionat cap llista de paraules de Rime per a l\'idioma anterior. Toqueu aquest nom per seleccionar-ne una, o trieu un idioma que tingui una llista</string>
+  <string name="morphe_music_lyrics_rime_dict_add">Afegeix</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">Afegeix una llista de paraules de Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Un fitxer .dict.yaml, o un zip que en contingui un, amb línies com 字 ham i 典 din2. La llista es recupera quan la marques i toques Desar, i la llicència és responsabilitat teva de comprovar-la</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">Codi de l\'idioma</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">Dues o tres lletres, com ara hak o wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">Nom</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">S\'està mostra sota la lectura, com ara Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">Adreça de la llista de paraules</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">https:// adreça del .dict.yaml o del seu zip</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">Caracters que no formen part d\'una paraula</string>
   <string name="morphe_music_lyrics_rime_char_source_auto">Automàtic</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">Caracters cantonèsos</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">Caracters mandarins</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">Sense lectura de caràcters</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">Ompliu el codi, el nom i l\'adreça</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">El codi ha de tenir dues o tres lletres, com ara hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">L\'adreça ha de començar per https://</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">El nom i l\'adreça no poden contenir una barra vertical</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s ja té una taula de paraules</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s és llegit pel romanitzador integrat i no pot acceptar una llista de paraules</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">No s\'utilitza: aquest idioma ja té la seva pròpia lectura, així que desmarca\'l per eliminar-lo</string>
+  <string name="morphe_music_lyrics_rime_dict_added">S\'ha afegit %1$s - marca\'l i toca Desar per descarregar-lo</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">Llistes de paraules llestes</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Llistes de paraules llestes (%1$d entrades)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Llegint la llista de paraules: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">Error en la descàrrega de la llista de paraules - torna a tocar Desar per reintentar-ho</string>
   <string name="morphe_music_lyrics_clear_cache_title">Esborrar les lets guardades</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Elimina els %1$s MB de lets guardats en aquest dispositiu</string>
   <string name="morphe_music_lyrics_clear_cache_done">S\'han esborrat %1$s MB</string>
   <string name="morphe_music_token_dialog_get_token">Obté el token</string>
   <string name="morphe_music_apple_music_token_title">Token d\'usuari de mitjans d\'Apple Music</string>
@@ -526,9 +562,22 @@ Cookies requerides: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_show_copy_button_title">Mostrar botó de Copiar</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Toca per copiar la lletra original com a text pla; manté premut per desar el fitxer font de la lletra a Descàrregues</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Mostra el botó de Traduir</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Toca per alternar la traducció; mantingues premut per a la traducció només. Utilitza els proveïdors de traducció habilitats en l\'ordre llistat</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Mostra el botó de Romanitzar o Transliterar</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Toca per alternar la romanització o la transliteració; mantingues premut per a la romanització o la transliteració només. Utilitza els proveïdors de romanització habilitats en l\'ordre llistat</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">Habilita la transliteració</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">Permet lectures no llatines de la font de les lets; quan està desactivat, manté només les lletres llatines, les lletres amb accent i els dígits de tons</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Llegeix cada paraula d\'una lletra sincronitzada (sincronització de paraules activada); el coreà no requereix descàrrega; catorze sistemes d\'escriptura comparteixen una descàrrega de CLDR; els caràcters Han són llegits per Rime Wordlist quan la seva taula de paraules cobreix l\'idioma</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">Descarregant diccionaris de lectura…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">{0, plural, one {Lectures llistes (1 entrada)} other {Lectures llistes (%1$d entrades)}}</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Error de descàrrega: desactivi i torni a activar aquesta opció per reintentar-ho</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Diccionari fora de línia</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japonès (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">Caracteres xinesos i cantonèss (UniDict, ~8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">Paraules xineses (pinyin-pro, ~17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliteració de grec, ciríllic eslav (inclòs rus, ucraïnès, búlgar, serbi, belarús, macedoni), georgià, armeni, hebreu, àrab, amhàric i siriac (CLDR, ~0,5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Llegint %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">Trieu almenys un diccionari</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Mostrar botó d\'actualització</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Toca per canviar al següent candidat de lletres; manté premut per buscar lletres pel títol de la cançó i l\'artista</string>
   <string name="morphe_music_lyrics_search_dialog_title">Cerca lets</string>
@@ -539,6 +588,10 @@ Cookies requerides: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_saved">Desat</string>
   <string name="morphe_music_lyrics_word_sync_title">Resaltar paraules o sílabes sincronitzades</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioritzar les lets paraula per paraula quan estiguin disponibles. Quan les lets tenen temporització de paraules, resalta cada paraula o sílaba al ritme de la música</string>
+  <string name="morphe_music_lyrics_line_scale_title">Reduir les línies inactives</string>
+  <string name="morphe_music_lyrics_line_scale_summary">Dibuixa cada línia que no s\'està cantant actualment una mica més petita, a més d\'atenuar-la</string>
+  <string name="morphe_music_lyrics_split_background_title">Mostra les veus de fons separatament</string>
+  <string name="morphe_music_lyrics_split_background_summary">Separa les veus de fons i l\'harmonia de la línia principal. Desplaça una veu de fons escrita entre parèntesis, com per exemple \"(Oh) I want you\", fora de la línia cantada cap a una línia pròpia més atenuada</string>
   <string name="morphe_music_lyrics_hide_played_title">Ocultar lets reproduïdes</string>
   <string name="morphe_music_lyrics_hide_played_summary">Ocultar les línies de lets per sobre de la línia que s\'està reproduint actualment</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Ocultar lets no reproduïdes</string>
@@ -596,9 +649,15 @@ S'aplica a ambos limits. A 1,75, quatre caracters de ple ampleur compten com a 7
   <string name="morphe_music_lyrics_translated_by_ai">Traduït per %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Romanitzat per %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Romanitzat per %s</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">Romanitzat per Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Traduït</string>
   <string name="morphe_music_lyrics_translation_language_title">Idioma de traducció</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Idioma de romanització o transliteració</string>
+  <string name="morphe_music_lyrics_translation_target_language">"Idioma de destinació de la traducció:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"Idioma de destinació de la romanització o transliteració:
+%s"</string>
   <string name="morphe_music_lyrics_translating">Traduint…</string>
   <string name="morphe_music_lyrics_translate_failed">No s\'han pogut traduir les letres</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanitzat</string>
@@ -612,6 +671,7 @@ S'aplica a ambos limits. A 1,75, quatre caracters de ple ampleur compten com a 7
   <string name="morphe_music_lyrics_refreshing">Actualitzant</string>
   <string name="morphe_music_lyrics_refreshed">Actualitzat</string>
   <string name="morphe_music_lyrics_transcribe_key_title">Clau de l\'API de QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transcribeix o sincronitza temporalment les lletres de la pista actual</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">Clau de QuickLRC des guarded. Utilitzeu el botó d\'alineació al diàleg de cerca de lletres, o l\'avís del panell quan una pista no tingui lletres</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">Clau de l\'API de QuickLRC des guardedada</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC no ha acceptat aquesta clau</string>
@@ -627,10 +687,24 @@ S'aplica a ambos limits. A 1,75, quatre caracters de ple ampleur compten com a 7
   <string name="morphe_music_lyrics_transcribe_no_text">No hi ha lletres per alinear; s\'està transcripció en el seu lloc</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC no ha pogut processar aquesta pista</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">S\'han esgotat els crèdits de QuickLRC per a aquesta pista</string>
+  <string name="morphe_music_lyrics_about_summary">"Les lletres es busquen per títol i artista; les metadades inusuals poden no trobar res o la versió incorrecta. Utilitzeu l'actualització per canviar de versió. Els proveïdors marcats amb * requereixen un token. Els proveïdors activats no sempre es solen sol·licitar en l'ordre indicat, sinó que responen segons la seva velocitat.
+
+Les lletres provenen de serveis de tercers que no estan afiliats, patrocinats ni avalats per Morphe. Cada servei s'utilitza tal com és: les lletres, la seva disponibilitat i la seva llicència recauen en aquests serveis i els seus licenciants, i el seu ús pot estar subjecte als seus termes de servei. El que arriba a un servei activat és només la cerca que heu sol·licitat: el títol, l'artista i, quan el servei ho requereixi, l'ID del vídeo. L'endpoint d'IA opcional i la transcripció QuickLRC s'executen només després de configurar-los i rebreix el text de la lletra o l'URL del vídeo de la cançó."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Activeu només els proveïdors que utilitzeu, o mantingueu els per defecte: les sol·licituds constants poden saturar els lletres de petits llocs comunitaris</string>
   <string name="morphe_music_lyrics_hide_info_title">Ocultar línia de crèdits</string>
   <string name="morphe_music_lyrics_hide_info_summary">Oculta la línia de crèdits que apareix sota la lletra</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Intercanvia la traducció i la romanització</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">L\'opció ON col·loca la romanització o transliteració sota les lletres i la traducció a sobre; l\'opció OFF manté la romanització o transliteració a sobre i la traducció a sota. Una lectura col·locada sobre cada síl·laba es mou amb ella, de sobre de la síl·laba a sota d\'aquesta</string>
+  <string name="morphe_music_lyrics_force_center_title">Centra sempre les lletres</string>
+  <string name="morphe_music_lyrics_force_center_summary">ACTIVAT posa cada línia al centre i ignora l\'alineació d\'origen, incloent els costats del duet; DESACTIVAT manté l\'alineació que indiquen les lletres</string>
+  <string name="morphe_music_lyrics_providers_keep_one">Almenys un proveïdor ha de romandre activat</string>
+  <string name="morphe_music_lyrics_translation_provider_title">Traducció</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">Romanització o transliteració</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">Diccionari fora de línia</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Llista de paraules Rime</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">Detectar seccions amb IA</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Només s\'utilitza quan el proveïdor no envia etiquetes de secció com Estribor o Vers, que el vostre model compatible amb OpenAI detectarà. Editar la fila també obre el seu prompt</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL de l\'endpoint de l\'API (per exemple, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Plantilla del prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Marcadors de posició: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt desat</string>
@@ -639,14 +713,26 @@ S'aplica a ambos limits. A 1,75, quatre caracters de ple ampleur compten com a 7
   <string name="morphe_music_lyrics_ai_config_toast_saved">Configuració de traducció &amp; romanització guardada</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Configuració restableixida per defecte</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">L\'URL base ha de començar per http:// o https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">Configuració incompleta o rebutjada pel proveïdor</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Validant la connexió…</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Connectat! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Error de connexió. Comprova la configuració.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">Introdueix primer la clau de l\'API</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Provar connexió</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Obtint models…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Obtir models</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Seleccioneu un model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">No s\'han pogut obtenir els models. Comproveu la clau API o la connexió.</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">Indicació</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL base</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Preajustats del servei</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Tria un servei</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">Clau de l\'API (opcional)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Cos de la sol·licitud extra (JSON opcional)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">Capçaleres de sol·licitud addicionals (JSON opcional)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Posa cometes als noms i valors, per exemple {\"api-key\": \"abc\"}. S\'està rebutant qualsevol valor sense cometes que contingui / : o un número. Un valor buit elimina un capçalera.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Posa cometes als noms i valors, per exemple {\"temperature\": 0.3}. S\'està rebutant qualsevol valor sense cometes que contingui / o :. El model i els missatges no es poden configurar aquí.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Clau d\'autenticació (Gratuïta o Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Desactiva les icones en negreta</string>

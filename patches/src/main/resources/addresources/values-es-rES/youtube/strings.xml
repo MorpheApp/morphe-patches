@@ -29,8 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Otros</string>
   <string name="morphe_settings_screen_12_video_title">Vídeo</string>
   <string name="morphe_restore_old_settings_menus_title">Restaurar antigua pantalla de configuración de YouTube</string>
-  <string name="morphe_native_snackbar_title">Mostrar mensajes en el snackbar de YouTube</string>
-  <string name="morphe_native_snackbar_summary">Los mensajes de Morphe, como la confirmación de un botón del reproductor, se muestran en el snackbar de YouTube en lugar de una ventana emergente</string>
+  <string name="morphe_native_snackbar_title">Mostrar mensajes en barra de notificaciones de YouTube</string>
+  <string name="morphe_native_snackbar_summary">Los mensajes de Morphe, como la confirmación de un botón del reproductor, se muestran en la barra de notificaciones de YouTube en lugar de en una ventana emergente</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Eliminar restricciones de reproducción en segundo plano</string>
   <string name="morphe_shorts_disable_background_playback_title">Desactivar reproducción en segundo plano</string>
@@ -61,6 +61,7 @@ Los cambios incluyen:
   <string name="morphe_hide_account_menu_title">Activar el filtro del menú inferior «Biblioteca / Tú»</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Filtro del menú inferior «Biblioteca / Tú»</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Introduce los nombres de los elementos del menú inferior «Biblioteca / Tú» que quieres filtrar, separados por saltos de línea</string>
+  <string name="morphe_hide_account_menu_downloads_title">Ocultar Descargas</string>
   <string name="morphe_hide_album_cards_title">Ocultar tarjetas de álbum</string>
   <string name="morphe_hide_album_cards_summary">Oculta las tarjetas de álbum debajo de la descripción del artista</string>
   <string name="morphe_hide_artist_cards_title">Ocultar tarjetas de artista</string>
@@ -445,7 +446,7 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_feed_long_press_menu_title">Toca y mantén pulsado para abrir el menú de vídeo</string>
   <string name="morphe_feed_long_press_menu_summary">Tocar y mantener pulsado en cualquier parte de un vídeo del feed abre su menú</string>
   <string name="morphe_feed_watch_later_button_title">Mostrar botón \"Ver más tarde\" en las miniaturas</string>
-  <string name="morphe_feed_watch_later_button_summary">Se muestra un botón \"Ver más tarde\" en las miniaturas de los vídeos del feed. Tocar y mantener pulsado abre Guardar en lista</string>
+  <string name="morphe_feed_watch_later_button_summary">Se muestra un botón de Ver más tarde en las miniaturas de los vídeos del feed, con una marca de verificación si el vídeo está guardado. Al tocarlo, se guarda o se elimina el vídeo, y al mantenerlo pulsado se abre Guardar en la lista de reproducción</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Descargar imágenes de publicaciones</string>
   <string name="morphe_post_image_download_summary">Se muestra un botón de descarga junto al botón Compartir de las publicaciones con imágenes o GIFs, y se añade un elemento de descarga a su menú</string>
@@ -515,8 +516,23 @@ Después de abrir por primera vez un vídeo con el botón «Preguntar», la func
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Todas las opciones</string>
   <string name="morphe_shorts_download_flyout_button_title">Mostrar descarga en el menú de Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Añade un elemento de menú desplegable del descargador externo al reproductor de Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Añade un elemento de descarga al menú del reproductor de Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Descargar</string>
+  <string name="morphe_export_download_folder_title">Exportar vídeos guardados</string>
+  <string name="morphe_export_download_folder_summary">"Exporta los vídeos guardados en la aplicación al almacenamiento de tu dispositivo utilizando el menú desplegable de descargas de la aplicación. Pulsa para cambiar la carpeta de exportación
+
+Carpeta de exportación: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Carpeta de exportación</string>
+  <string name="morphe_export_download_folder_change">Cambiar carpeta</string>
+  <string name="morphe_export_download_folder_changed">Carpeta de exportación cambiada</string>
+  <string name="morphe_export_download_folder_reset">Restablecer carpeta de exportación</string>
+  <string name="morphe_export_download_flyout_title">Exportar al dispositivo</string>
+  <string name="morphe_export_download_started">Exportando vídeo</string>
+  <string name="morphe_export_download_progress">Exportando vídeo: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Exportaciones de vídeos</string>
+  <string name="morphe_export_download_saved">Vídeo exportado a %s</string>
+  <string name="morphe_export_download_failed">No se ha podido exportar el vídeo</string>
+  <string name="morphe_export_download_canceled">Exportación cancelada</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducción con voz</string>
   <string name="morphe_vot_screen_summary">Lee en voz alta los subtítulos del vídeo mediante la síntesis de texto a voz del dispositivo, sincronizada con la reproducción</string>
@@ -591,6 +607,19 @@ Tu clave API nunca debe compartirse. Cualquiera que tenga acceso a ella puede us
   <string name="morphe_pip_button_overlay_title">Mostrar botón de imagen en imagen</string>
   <string name="morphe_pip_button_flyout_title">Mostrar menú de imagen en imagen</string>
   <string name="morphe_pip_button_flyout_name">Cambiar a imagen en imagen</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Acciones de imagen en imagen</string>
+  <string name="morphe_pip_actions_screen_summary">Cambia los botones que se muestran en la función de imagen en imagen</string>
+  <string name="morphe_pip_action_left_title">Botón izquierdo</string>
+  <string name="morphe_pip_action_center_title">Botón central</string>
+  <string name="morphe_pip_action_right_title">Botón derecho</string>
+  <string name="morphe_pip_action_entry_default">Predeterminada</string>
+  <string name="morphe_pip_action_entry_previous">Vídeo anterior</string>
+  <string name="morphe_pip_action_entry_next">Siguiente vídeo</string>
+  <string name="morphe_pip_action_entry_rewind">Retroceder 10 segundos</string>
+  <string name="morphe_pip_action_entry_fast_forward">Avanzar 10 segundos</string>
+  <string name="morphe_pip_action_entry_play_pause">Reproducir/pausar</string>
+  <string name="morphe_pip_action_entry_background_playback">Reproducción en segundo plano</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Mostrar botón \'Reproducir todo\'</string>
   <string name="morphe_play_all_button_summary">"Pulsa para generar una lista de reproducción de todos los vídeos del canal. Mantén pulsado para deshacer.
@@ -623,10 +652,6 @@ Información: Puede que no funcione en transmisiones en directo"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Guardar en \'Ver más tarde\'</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Mostrar botón \'Guardar para ver más tarde\' en el menú flotante de ajustes del reproductor</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Permite guardar el vídeo que se está viendo en \'Ver más tarde\' desde el menú flotante de ajustes del vídeo</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Mostrar botón \'Guardar para ver más tarde\' en videos infantiles</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite guardar vídeos infantiles en \'Ver más tarde\' desde el menú flotante</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Mostrar botón \'Guardar para ver más tarde\' en el menú flotante de Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permite guardar Shorts en \'Ver más tarde\' desde el menú flotante</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Redirigir \"Ver más tarde\" a una lista de reproducción</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Ver más tarde</string>
   <string name="morphe_queue_flyout_title">Añadir a la cola de Morphe</string>
@@ -845,6 +870,10 @@ Para solucionar esto, activa 'Falsificar transmisiones de vídeo' y cambia 'Clie
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Subtítulos</string>
   <string name="morphe_captions_screen_summary">Administra subtítulos automáticos y cookies de subtítulos</string>
+  <string name="morphe_captions_languages_title">Idioma y traducción</string>
+  <string name="morphe_captions_presentation_title">Aspecto y comportamiento</string>
+  <string name="morphe_captions_advanced_title">Avanzado</string>
+  <string name="morphe_captions_advanced_summary">Opciones de cookies y transcripción</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Visibilidad de subtítulos automáticos</string>
   <string name="morphe_auto_captions_style_entry_1">Mostrar siempre</string>
@@ -853,10 +882,10 @@ Para solucionar esto, activa 'Falsificar transmisiones de vídeo' y cambia 'Clie
   <string name="morphe_auto_captions_style_entry_4">Mostrar cuando está silenciado</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Idioma preferido para subtítulos</string>
-  <string name="morphe_preferred_caption_language_summary">Selecciona primero los subtítulos del proveedor y luego los traduce automáticamente al idioma preferido</string>
+  <string name="morphe_preferred_caption_language_summary">Selecciona automáticamente un idioma para los subtítulos de cada vídeo</string>
   <string name="morphe_preferred_caption_language_entry_off">Desactivado</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Añadir idiomas adicionales de traducción automática</string>
+  <string name="morphe_auto_translate_additional_languages_title">Idiomas adicionales de traducción automática</string>
   <string name="morphe_auto_translate_additional_languages_summary">Añade más idiomas al menú de traducción automática</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Establecer cookies de subtítulos</string>
@@ -874,8 +903,17 @@ Se deben proporcionar 'cookies de subtítulos'"</string>
   <string name="morphe_fix_transcript_title">Corregir transcripción</string>
   <string name="morphe_fix_transcript_summary">Soluciona un fallo de la comprobación de un requisito previo que puede impedir la carga de la transcripción</string>
   <string name="morphe_captions_in_pip_title">Mostrar subtítulos en «imagen en imagen»</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Tamaño de subtítulos</string>
+  <string name="morphe_caption_scale_summary">Se aplica a los subtítulos en un solo idioma y bilingües</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Bloques de subtítulos estables</string>
-  <string name="morphe_stable_caption_blocks_summary">Agrupa los subtítulos automáticos en bloques estables y legibles. Es posible que algunas palabras aparezcan antes de que se pronuncien. Es necesario reiniciar.</string>
+  <string name="morphe_stable_caption_blocks_summary">Agrupa los subtítulos automáticos en un solo idioma en bloques estables y legibles. Los subtítulos bilingües siempre usan bloques. Algunas palabras pueden aparecer antes de que se pronuncien.</string>
+  <string name="morphe_secondary_caption_language_title">Idioma secundario de subtítulos</string>
+  <string name="morphe_secondary_caption_language_summary">Muestra un segundo idioma con los subtítulos y añade una opción para activar/desactivar los subtítulos bilingües en el menú de subtítulos.</string>
+  <string name="morphe_dual_captions_enabled_title">Subtítulos bilingües</string>
+  <string name="morphe_caption_block_translation_failed">Algunas traducciones de subtítulos no están disponibles. Mostrando subtítulos disponibles.</string>
+  <string name="morphe_caption_blocks_too_large">Ambos idiomas de subtítulos no caben en este reproductor. Mostrando el idioma principal.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Botones de navegación</string>
   <string name="morphe_navigation_buttons_screen_summary">Elige qué botones aparecen en la barra de navegación inferior</string>
@@ -1142,10 +1180,10 @@ Diseño para automóviles
 • Los Shorts se abren en el reproductor normal
 • Se muestra la antigua barra de acciones de vídeo sin colapsar"</string>
   <string name="morphe_tablet_layout_in_player_title">Habilitar diseño para tablet en el reproductor</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Restaura el diseño antiguo del reproductor
 
-Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está desactivada, es posible que la superposición 'Más vídeos' no esté disponible"</string>
+Limitación: si el \"Diseño de la barra de acciones de vídeo\" no es Clásico, es posible que la superposición \"Más vídeos\" no esté disponible"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restaurar comportamiento antiguo de los subtítulos</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar guardado antiguo de lista de reproducción</string>
@@ -1227,6 +1265,10 @@ Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está
   <string name="morphe_miniplayer_not_available_summary">YouTube eliminó todos los reproductores en miniatura adicionales. Para restaurar más tipos de reproductores en miniatura, parchea YouTube 21.28.208 o anterior</string>
   <string name="morphe_miniplayer_type_title">Tipo de reproductor en miniatura</string>
   <string name="morphe_miniplayer_hide_title_title">Ocultar título y canal</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Expandir deslizando hacia arriba</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Al deslizar el mini-reproductor hacia arriba se expande el reproductor, en lugar de mover el mini-reproductor a la parte superior de la pantalla</string>
+  <string name="morphe_miniplayer_docked_title">Mini-reproductor anclado</string>
+  <string name="morphe_miniplayer_docked_summary">Ancla el mini-reproductor a la barra de navegación y a los lados de la pantalla, en lugar de flotar sobre ellos</string>
   <string name="morphe_miniplayer_type_entry_0">Desactivado</string>
   <string name="morphe_miniplayer_type_entry_1">Predeterminado</string>
   <string name="morphe_miniplayer_type_entry_2">Mínimo</string>
@@ -1269,6 +1311,8 @@ Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">La pantalla de inicio con efecto de resplandor no es compatible con este dispositivo</string>
+  <string name="morphe_splash_screen_duration_title">Duración de animación de inicio</string>
+  <string name="morphe_splash_screen_duration_summary">Cuánto dura la animación de resplandor. Pulsa la animación para omitirla</string>
   <string name="morphe_theme_color_light_title">Fondo del tema claro</string>
   <string name="morphe_theme_color_light_entry_2">Blanco</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Blanco)</string>
@@ -1499,10 +1543,11 @@ La reproducción de vídeo con AV1 se puede atascar o perder fotogramas"</string
   <string name="morphe_spoof_video_streams_player_js_variant_title">Variante de JavaScript del reproductor</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostrar la falsificación en \'Estadísticas avanzadas\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Restaurar antigua barra de acciones de vídeo</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Corrige que no se puedan ocultar los botones de acción de vídeo
-
-Limitación: Vuelve al antiguo estilo de superposición de 'Más vídeos'"</string>
+  <string name="morphe_video_action_bar_layout_title">Diseño de la barra de acciones de vídeo</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Predeterminada</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Clásico</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Mínimo</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Limitación: la opción Clásico vuelve a la superposición de \"Más vídeos\" del estilo antiguo</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Estilo de iconos del reproductor</string>
   <string name="morphe_player_icon_style_entry_auto">Automático</string>
@@ -1670,4 +1715,27 @@ La grabación automática es opcional. Se detiene en modo incógnito o cuando ca
   <string name="morphe_niconico_comments_max_length_title">Longitud máxima del comentario</string>
   <string name="morphe_niconico_comments_max_length_summary">Oculta los comentarios con más caracteres que este. Cada emoji cuenta como un carácter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sin límite</string>
+  <string name="morphe_live_chat_translate_screen_title">Traducción del chat en directo</string>
+  <string name="morphe_live_chat_translate_screen_summary">Traduce los mensajes del chat en directo y las repeticiones del chat en directo</string>
+  <string name="morphe_live_chat_translate_title">Traducir chat en directo</string>
+  <string name="morphe_live_chat_translate_summary">Traduce los mensajes del chat en directo y las repeticiones del chat en directo una vez que aparecen en pantalla</string>
+  <string name="morphe_live_chat_translate_language_title">Idioma de traducción</string>
+  <string name="morphe_live_chat_translate_exclude_title">Idiomas excluidos</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Códigos de idioma separados por comas, como id,en. Los mensajes en estos idiomas no se traducen</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Mostrar botón de copiar mensaje</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Añade un pequeño botón de copiar a cada mensaje del chat</string>
+  <string name="morphe_live_chat_translate_copied">Mensaje copiado al portapapeles</string>
+  <string name="morphe_live_chat_translate_style_title">Estilo de traducción</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Solo traducido</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Original (traducido)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Traducido) original</string>
+  <string name="morphe_live_chat_translate_bold_title">Texto traducido en negrita</string>
+  <string name="morphe_live_chat_translate_bold_summary">Muestra el texto traducido en negrita</string>
+  <string name="morphe_live_chat_translate_use_color_title">Color del texto traducido personalizado</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Aplica un color personalizado al texto traducido</string>
+  <string name="morphe_live_chat_translate_color_title">Color del texto traducido</string>
+  <string name="morphe_live_chat_translate_color_summary">Establecer el color hexadecimal del texto traducido</string>
+  <string name="morphe_live_chat_translate_max_length_title">Longitud máxima del mensaje</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Los mensajes más largos se muestran sin traducir</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Sin límite</string>
 </resources>

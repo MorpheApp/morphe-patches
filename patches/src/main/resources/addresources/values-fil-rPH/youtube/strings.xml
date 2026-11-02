@@ -61,6 +61,7 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_account_menu_title">Paganahin ang Library / Filter ng iyong menu sa ibaba</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Library / Filter ng iyong menu sa ibaba</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Ilagay ang mga pangalan ng Library / filter ng iyong menu sa ibaba, na pinaghihiwalay ng mga bagong linya</string>
+  <string name="morphe_hide_account_menu_downloads_title">Itago ang mga Download</string>
   <string name="morphe_hide_album_cards_title">Itago ang mga album card</string>
   <string name="morphe_hide_album_cards_summary">Itinatago ang mga album card sa ilalim ng paglalarawan ng artist</string>
   <string name="morphe_hide_artist_cards_title">Itago ang mga artist card</string>
@@ -445,7 +446,7 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_feed_long_press_menu_title">I-tap at hawakan ng matagal upang buksan ang menu ng video</string>
   <string name="morphe_feed_long_press_menu_summary">Ang pagtatakbo at paghawak ng matagal sa kahit saan sa isang feed video ay nagbubukas ng kanyang menu</string>
   <string name="morphe_feed_watch_later_button_title">Ipakita ang Watch later button sa mga thumbnail</string>
-  <string name="morphe_feed_watch_later_button_summary">Isang Watch later button ay ipinapakita sa mga thumbnail ng feed videos. Ang pag-tap at paghawak nito ay nagbubukas ng Save to playlist</string>
+  <string name="morphe_feed_watch_later_button_summary">Isang button na Watch later ang ipinapakita sa mga thumbnail ng mga video sa feed, na may check mark kung naka-save ang video. Ang pagtap dito ay mag-save o mag-aalis ng video, at ang pagtap at pagpigil dito ay magbubukas ng Save to playlist</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">I-download ang mga imahe ng post</string>
   <string name="morphe_post_image_download_summary">May lalabas na button para sa pag-download sa tabi ng button na Share ng mga post na may mga imahe o GIF, at may idaragdag na download item sa kanilang menu</string>
@@ -515,8 +516,23 @@ Pagkatapos buksan ang isang video na may Ask button, gagana ang feature sa lahat
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Lahat ng opsyon</string>
   <string name="morphe_shorts_download_flyout_button_title">Ipakita ang pag-download sa Shorts menu</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Nagdadagdag ng item ng external downloader flyout menu sa Shorts player</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Nagdaragdag ng download item sa menu ng Shorts player</string>
   <string name="morphe_shorts_download_flyout_title">I-download</string>
+  <string name="morphe_export_download_folder_title">I-export ang mga na-save na video</string>
+  <string name="morphe_export_download_folder_summary">"I-export ang mga na-save na video sa app sa storage ng iyong device gamit ang in-app downloads flyout menu. I-tap para baguhin ang export folder
+
+Export folder: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">I-export ang folder</string>
+  <string name="morphe_export_download_folder_change">Baguhin ang folder</string>
+  <string name="morphe_export_download_folder_changed">Nabago ang export folder</string>
+  <string name="morphe_export_download_folder_reset">Na-reset ang export folder</string>
+  <string name="morphe_export_download_flyout_title">I-export sa device</string>
+  <string name="morphe_export_download_started">Ine-export ang video</string>
+  <string name="morphe_export_download_progress">Ine-export ang video: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Mga export ng video</string>
+  <string name="morphe_export_download_saved">Na-export ang video sa %s</string>
+  <string name="morphe_export_download_failed">Hindi ma-export ang video</string>
+  <string name="morphe_export_download_canceled">Kinansela ang export</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Pagsasalin ng boses</string>
   <string name="morphe_vot_screen_summary">Basahin nang malakas ang mga caption ng video gamit ang text-to-speech sa iyong device, na naka-synchronize sa pagpapatugtog</string>
@@ -591,6 +607,19 @@ Hindi dapat ibahagi ang iyong API key. Sinumang may access dito ay maaaring guma
   <string name="morphe_pip_button_overlay_title">Ipakita ang button na Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Ipakita ang menu ng Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_name">Lumipat sa Picture-in-Picture</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Mga aksyon sa picture-in-picture</string>
+  <string name="morphe_pip_actions_screen_summary">Baguhin ang mga button na ipinapakita sa picture-in-picture</string>
+  <string name="morphe_pip_action_left_title">Kaliwang button</string>
+  <string name="morphe_pip_action_center_title">Gitnang button</string>
+  <string name="morphe_pip_action_right_title">Kanang button</string>
+  <string name="morphe_pip_action_entry_default">Awtomatiko</string>
+  <string name="morphe_pip_action_entry_previous">Nakaraang video</string>
+  <string name="morphe_pip_action_entry_next">Susunod na video</string>
+  <string name="morphe_pip_action_entry_rewind">I-rewind nang 10 segundo</string>
+  <string name="morphe_pip_action_entry_fast_forward">I-fast forward nang 10 segundo</string>
+  <string name="morphe_pip_action_entry_play_pause">Play/pause</string>
+  <string name="morphe_pip_action_entry_background_playback">Playback sa background</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Ipakita ang button na magpatugtog ng lahat</string>
   <string name="morphe_play_all_button_summary">"I-tap upang makabuo ng playlist ng lahat ng mga video mula sa channel, i-tap at hawakan upang i-undo
@@ -623,10 +652,6 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_save_to_watch_later_flyout_title">I-save sa Panoorin Mamaya</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Ipakita ang button na I-save sa Panoorin Mamaya sa flyout ng mga setting ng player</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Nagbibigay-daan sa pag-save ng kasalukuyang pinapanood na video sa \'Panoorin Mamaya\' mula sa flyout ng mga setting ng video</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Ipakita ang button na I-save sa Panoorin Mamaya sa mga video ng mga bata</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Nagbibigay-daan sa pag-save ng mga video na nauugnay sa mga bata sa \'Panoorin Mamaya\' mula sa flyout menu</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Ipakita ang button na I-save sa Panoorin Mamaya sa flyout ng shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Nagbibigay-daan sa pag-save ng mga shorts sa \'Panoorin Mamaya\' mula sa flyout menu</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">I-redirect ang \"Panoorin mamaya\" sa playlist</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Panoorin mamaya</string>
   <string name="morphe_queue_flyout_title">Idagdag sa Morphe queue</string>
@@ -845,6 +870,10 @@ Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Mga Pamagat</string>
   <string name="morphe_captions_screen_summary">Pamahalaan ang mga automatic caption at caption cookies</string>
+  <string name="morphe_captions_languages_title">Wika at pagsasalin</string>
+  <string name="morphe_captions_presentation_title">Anyo at gawi</string>
+  <string name="morphe_captions_advanced_title">Pagsulong</string>
+  <string name="morphe_captions_advanced_summary">Mga opsyon sa cookie at transcript</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Pagkakita ng auto captions</string>
   <string name="morphe_auto_captions_style_entry_1">Palaging ipakita</string>
@@ -853,10 +882,10 @@ Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default
   <string name="morphe_auto_captions_style_entry_4">Ipakita kapag naka-mute</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Ginustong wika ng caption</string>
-  <string name="morphe_preferred_caption_language_summary">Pinipili muna ang mga subtitle mula sa provider, pagkatapos ay awtomatikong isinasalin ang mga ito sa ginustong wika</string>
+  <string name="morphe_preferred_caption_language_summary">Awtomatikong pumipili ng wika ng caption para sa bawat video</string>
   <string name="morphe_preferred_caption_language_entry_off">Naka-off</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Magdagdag ng karagdagang awtomatikong isalin na mga wika</string>
+  <string name="morphe_auto_translate_additional_languages_title">Karagdagang mga wika para sa auto-translate</string>
   <string name="morphe_auto_translate_additional_languages_summary">Nagdadagdag ng higit pang mga wika sa menu ng awtomatikong isalin</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Magtakda ng mga caption cookies</string>
@@ -874,8 +903,17 @@ Dapat ibigay ang 'Caption cookies'"</string>
   <string name="morphe_fix_transcript_title">Ayusin ang transcript</string>
   <string name="morphe_fix_transcript_summary">Nilulutas ang isang failure ng precondition check na maaaring pumigil sa pag-load ng transcript</string>
   <string name="morphe_captions_in_pip_title">Ipakita ang mga caption sa picture-in-picture</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Laki ng caption</string>
+  <string name="morphe_caption_scale_summary">Nalalapat sa mga single-language at bilingual na caption</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Stable na mga caption block</string>
-  <string name="morphe_stable_caption_blocks_summary">Igrupo ang mga automatic caption sa mga stable at madaling basahing block. Maaaring lumitaw ang ilang salita bago pa man mabigkas. Kailangang i-restart.</string>
+  <string name="morphe_stable_caption_blocks_summary">Pagsama-samahin ang mga single-language automatic caption sa mga stable at nababasang block. Ang mga bilingual caption ay palaging gumagamit ng mga block. Maaaring lumabas ang ilang salita bago pa man mabigkas</string>
+  <string name="morphe_secondary_caption_language_title">Sekundaryong wika ng caption</string>
+  <string name="morphe_secondary_caption_language_summary">Nagpapakita ng pangalawang wika kasama ang mga caption, at nagdaragdag ng toggle para sa Bilingual captions sa menu ng mga caption</string>
+  <string name="morphe_dual_captions_enabled_title">Bilingual na mga caption</string>
+  <string name="morphe_caption_block_translation_failed">Hindi available ang ilang mga pagsasalin ng caption. Ipinapakita ang mga available na caption.</string>
+  <string name="morphe_caption_blocks_too_large">Hindi kasya ang parehong wika ng caption sa player na ito. Ipinapakita ang primaryang wika.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Mga pindutan ng nabigasyon</string>
   <string name="morphe_navigation_buttons_screen_summary">Pumili kung aling mga component ang lilitaw sa toolbar</string>
@@ -1141,10 +1179,10 @@ Automotive layout
 • Ang mga Shorts ay bumubukas sa regular na player
 • Ipinapakita ang lumang video action bar na hindi collapsed"</string>
   <string name="morphe_tablet_layout_in_player_title">Paganahin ang layout ng tablet sa player</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Ibinabalik ang lumang layout ng player
 
-Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring hindi magamit ang overlay na 'Higit pang mga video'"</string>
+Limitasyon: Kung ang 'Layout ng video action bar' ay hindi Classic, maaaring hindi available ang overlay na 'Higit pang mga video'"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Ibalik ang dating pag-uugali ng mga caption</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ibalik ang lumang save sa playlist</string>
@@ -1226,6 +1264,10 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_miniplayer_not_available_summary">Inalis ng YouTube ang lahat ng karagdagang mga miniplayer. Upang maibalik ang higit pang mga uri ng miniplayer, i-patch ang YouTube 21.28.208 o mas luma</string>
   <string name="morphe_miniplayer_type_title">Uri ng miniplayer</string>
   <string name="morphe_miniplayer_hide_title_title">Itago ang pamagat at channel</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">I-expand gamit ang swipe up</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Ang pag-swipe paitaas sa miniplayer ay mag-e-expand sa player, sa halip na ilipat ang miniplayer sa itaas ng screen</string>
+  <string name="morphe_miniplayer_docked_title">Docked na miniplayer</string>
+  <string name="morphe_miniplayer_docked_summary">Ikinakabit ang miniplayer sa navigation bar at sa mga gilid ng screen, sa halip na lumutang sa ibabaw ng mga ito</string>
   <string name="morphe_miniplayer_type_entry_0">Na-disable</string>
   <string name="morphe_miniplayer_type_entry_1">Default</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1268,6 +1310,8 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Hindi suportado ng device na ito ang glow splash screen</string>
+  <string name="morphe_splash_screen_duration_title">Tagal ng startup animation</string>
+  <string name="morphe_splash_screen_duration_summary">Kung gaano katagal tutugtog ang glow animation. I-tap ang animation para laktawan ito</string>
   <string name="morphe_theme_color_light_title">Likuran ng maliwanag na tema</string>
   <string name="morphe_theme_color_light_entry_2">Puti</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Puti)</string>
@@ -1498,10 +1542,11 @@ Ang video playback na may AV1 ay maaaring mag-stutter o mag-drop ng frames"</str
   <string name="morphe_spoof_video_streams_player_js_variant_title">Variant ng JavaScript ng Player</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Ipakita ang paggagaya sa \'Stats for nerds\'.</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Ibalik ang lumang video action bar</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Inaayos ang isyu kung saan hindi maitatago ang mga pindutan ng aksyon sa video
-
-Limitasyon: Bumabalik sa lumang istilo ng overlay na 'Higit pang mga video'"</string>
+  <string name="morphe_video_action_bar_layout_title">Layout ng video action bar</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Awtomatiko</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasiko</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Minimal</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Limitasyon: Ang Classic ay bumabalik sa lumang estilo ng overlay na \'Higit pang mga video\'</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Estilo ng icon ng player</string>
   <string name="morphe_player_icon_style_entry_auto">Awtomatiko</string>
@@ -1669,4 +1714,27 @@ Optional ang automatic recording. Itinatigil ito sa incognito o kapag nabagyo an
   <string name="morphe_niconico_comments_max_length_title">Maximum na haba ng komento</string>
   <string name="morphe_niconico_comments_max_length_summary">Nagtatago ng mga komento na may mas maraming karakter kaysa dito. Bawat emoji ay itinuturing na isang karakter.</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Walang limitasyon</string>
+  <string name="morphe_live_chat_translate_screen_title">Pagsasalin ng live chat</string>
+  <string name="morphe_live_chat_translate_screen_summary">Isalin ang mga mensahe ng live chat at live chat replay</string>
+  <string name="morphe_live_chat_translate_title">Isalin ang live chat</string>
+  <string name="morphe_live_chat_translate_summary">Isinasalin ang mga mensahe ng live chat at live chat replay kapag nasa screen na ang mga ito</string>
+  <string name="morphe_live_chat_translate_language_title">Wika ng pagsasalin</string>
+  <string name="morphe_live_chat_translate_exclude_title">Mga hindi kasamang wika</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Mga code ng wika na pinaghihiwalay ng kuwit tulad ng id,en. Ang mga mensahe sa mga wikang ito ay hindi isasalin</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Ipakita ang button na kopyahin ang mensahe</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Nagdaragdag ng maliit na copy button sa bawat mensahe ng chat</string>
+  <string name="morphe_live_chat_translate_copied">Kinopya ang mensahe sa clipboard</string>
+  <string name="morphe_live_chat_translate_style_title">Estilo ng pagsasalin</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Isinalin lamang</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Original (isinalin)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Isinalin) original</string>
+  <string name="morphe_live_chat_translate_bold_title">Bold na isinaling teksto</string>
+  <string name="morphe_live_chat_translate_bold_summary">Ipinapakita ang isinaling teksto sa bold</string>
+  <string name="morphe_live_chat_translate_use_color_title">Custom na kulay ng isinaling teksto</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Naglalapat ng custom na kulay sa isinaling teksto</string>
+  <string name="morphe_live_chat_translate_color_title">Kulay ng isinaling teksto</string>
+  <string name="morphe_live_chat_translate_color_summary">Itakda ang hex color ng isinaling teksto</string>
+  <string name="morphe_live_chat_translate_max_length_title">Maximum na haba ng mensahe</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Ang mga mas mahahabang mensahe ay ipinapakitang hindi isinalin</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Walang limitasyon</string>
 </resources>

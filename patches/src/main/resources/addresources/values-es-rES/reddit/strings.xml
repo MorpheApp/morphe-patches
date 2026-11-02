@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Política de privacidad de Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Inicio de sesión con Google no disponible. Usa el correo electrónico para iniciar sesión</string>
+  <string name="morphe_app_downgrade_dialog_title">Degradación de versión no soportada</string>
+  <string name="morphe_app_downgrade_dialog_message">"Esta instalación de Reddit se ha degradado de &lt;b&gt;%1$s&lt;/b&gt; a &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Los datos de la aplicación de una versión más reciente no funcionan con versiones anteriores y es posible que la aplicación no funcione correctamente.
+&lt;br/&gt;&lt;br/&gt;
+Para usar una versión anterior, debes &lt;b&gt;desinstalar&lt;/b&gt; Reddit y luego instalar la versión anterior."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Abrir información de app</string>
   <string name="morphe_screen_ads_title">Anuncios</string>
   <string name="morphe_hide_post_ads_title">Ocultar anuncios en el feed</string>
   <string name="morphe_hide_comment_ads_title">Ocultar anuncios en los comentarios</string>

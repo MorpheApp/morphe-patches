@@ -12,7 +12,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
-import app.morphe.patcher.util.proxy.mutableTypes.MutableField
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
@@ -27,6 +26,7 @@ import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.NarrowLiteralInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import java.util.logging.Logger
@@ -116,12 +116,12 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
         val postPreviewType = PostPreviewFeedElementToStringFingerprint.classDef.type
         val (previewLinkIdField, previewUniqueIdField, previewIdentifierField, previewChildrenField) =
             PostPreviewFeedElementConstructorFingerprint.instructionMatches.let { matches ->
-                listOf(matches[0], matches[1], matches[3], matches[6]).map { it.getFieldAccessed() }
+                listOf(matches[0], matches[1], matches[3], matches[6]).map { it.fieldReference }
             }
 
         val previewCopyFingerprint = postPreviewFeedElementCopyFingerprint(postPreviewType, flairsElementType)
         val previewCopyMethod = previewCopyFingerprint.method
-        val previewFlairsField = previewCopyFingerprint.instructionMatches.last().getFieldAccessed()
+        val previewFlairsField = previewCopyFingerprint.instructionMatches.last().fieldReference
         // Copy method bit mask where all values except the flairs element are copied from the original.
         val previewCopyMask = previewCopyFingerprint.instructionMatches.first()
             .getInstruction<NarrowLiteralInstruction>().narrowLiteral.inv()
@@ -178,7 +178,7 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
 
         val feedPostType = FeedPostSectionToStringFingerprint.classDef.type
         val (sectionLinkIdField, sectionSectionsField, sectionUniqueIdField, sectionIdentifierField) =
-            FeedPostSectionConstructorFingerprint.instructionMatches.map { it.getFieldAccessed() }
+            FeedPostSectionConstructorFingerprint.instructionMatches.map { it.fieldReference }
 
         FeedPostSectionToStringFingerprint.classDef.addCachedPostMethods(
             linkIdField = sectionLinkIdField,
@@ -290,7 +290,7 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
  * @param registerCount Number of local registers used by [addHomeFlairSmali], not including parameters.
  */
 private fun MutableClass.addCachedPostMethods(
-    linkIdField: MutableField,
+    linkIdField: FieldReference,
     registerCount: Int,
     addHomeFlairSmali: String
 ) {

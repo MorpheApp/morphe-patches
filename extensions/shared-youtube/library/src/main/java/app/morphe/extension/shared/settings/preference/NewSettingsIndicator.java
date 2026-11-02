@@ -8,6 +8,7 @@
 package app.morphe.extension.shared.settings.preference;
 
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
@@ -211,12 +212,25 @@ public final class NewSettingsIndicator {
             }
 
             // Categories are not marked, since the new preference is shown right below them.
-            if (isNew && (pref instanceof PreferenceScreen || !(pref instanceof PreferenceGroup))) {
+            final boolean canMark = pref instanceof PreferenceScreen
+                    ? canMarkScreenTitle()
+                    : !(pref instanceof PreferenceGroup);
+            if (isNew && canMark) {
                 pref.setTitle(NewIndicatorSpan.addTo(pref.getTitle(), DOT_COLOR));
             }
             groupHasNew |= isNew;
         }
 
         return groupHasNew;
+    }
+
+    /**
+     * A preference screen opens as a dialog that uses the screen title as its window title.
+     * Android 12 and 12L crash when logging a canceled input event of a window
+     * if the title is not a String, so the title of a screen cannot have a span.
+     */
+    private static boolean canMarkScreenTitle() {
+        return Build.VERSION.SDK_INT != Build.VERSION_CODES.S
+                && Build.VERSION.SDK_INT != Build.VERSION_CODES.S_V2;
     }
 }

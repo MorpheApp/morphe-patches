@@ -9,7 +9,6 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patches.youtube.layout.originaltitles.PlaylistPanelVideoBindFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -28,7 +27,7 @@ internal fun installPlaylistRowPlayback(
     // including all native layouts, and require their shared video model.
     PlaylistPanelVideoBindFingerprint.clearMatch()
     val videoIdFields = PlaylistPanelVideoBindFingerprint.matchAll().map {
-        it.instructionMatches[2].instruction.getReference<FieldReference>()!!
+        it.instructionMatches[2].fieldReference
     }.distinct().toList()
     check(videoIdFields.size == 1) {
         "Native playlist queue: row binders disagree on the native video ID field: $videoIdFields"
@@ -55,16 +54,16 @@ internal fun installPlaylistRowPlayback(
     val click = PlaylistRowClickFingerprint.match()
     val listenerType = click.originalClassDef.type
     val endpointRead = click.instructionMatches[4]
-    val listenerEndpoint = endpointRead.instruction.getReference<FieldReference>()!!
+    val listenerEndpoint = endpointRead.fieldReference
     val endpointType = listenerEndpoint.type
     val rowEndpoint = playlistRowEndpointFingerprint(listenerType, videoType, endpointType).match()
-    val rowListener = rowEndpoint.instructionMatches.first().instruction.getReference<FieldReference>()!!
-    val videoEndpoint = rowEndpoint.instructionMatches.last().instruction.getReference<FieldReference>()!!
+    val rowListener = rowEndpoint.instructionMatches.first().fieldReference
+    val videoEndpoint = rowEndpoint.instructionMatches.last().fieldReference
 
     val factory = playlistItemFactoryFingerprint(videoType).match()
-    val itemVideo = factory.instructionMatches.single().instruction.getReference<FieldReference>()!!
+    val itemVideo = factory.instructionMatches.single().fieldReference
     val contents = playlistContentsFingerprint(panelField.type, factory.originalMethod).match()
-        .instructionMatches.first().instruction.getReference<FieldReference>()!!
+        .instructionMatches.first().fieldReference
 
     val controller = mutableClassDefBy(modelField.definingClass)
     controller.addBridgeMethod(

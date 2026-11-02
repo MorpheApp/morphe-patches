@@ -20,11 +20,9 @@ import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.numberOfParameterRegisters
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
-import app.morphe.patches.youtube.shared.hookVideoStarted
 import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -60,7 +58,7 @@ val flyoutPatch = bytecodePatch(
     execute {
         // Add interface method to get protocol buffer.
         InteractiveStickerRendererGetEditViewFingerprint.let {
-            val bufferField = it.instructionMatches.last().getFieldAccessed()
+            val bufferField = it.instructionMatches.last().fieldReference
 
             mutableClassDefBy(bufferField.definingClass).apply {
                 interfaces.add(EXTENSION_PROTOCOL_BUFFER_INTERFACE)
@@ -101,7 +99,7 @@ val flyoutPatch = bytecodePatch(
                         location = MatchAfterWithin(2)
                     )
                 )
-            ).instructionMatches.last().getFieldAccessed()
+            ).instructionMatches.last().fieldReference
 
             mutableClassDefBy(messageType).apply {
                 interfaces.add(EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE)
@@ -188,10 +186,6 @@ val flyoutPatch = bytecodePatch(
                 )
             }
         }
-
-        hookVideoStarted("$EXTENSION_UTILS_CLASS->resetVideoMarkedAsForKids()V")
-
-        hookElement("$EXTENSION_UTILS_CLASS->onCommentsLoaded")
 
         // Track and initialize flyout menu buttons generically.
         FeedFlyoutButtonsInitializerFingerprint.clearMatch() // Shared fingerprint.

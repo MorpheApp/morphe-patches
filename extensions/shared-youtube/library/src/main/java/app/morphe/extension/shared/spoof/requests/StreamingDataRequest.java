@@ -152,6 +152,9 @@ public class StreamingDataRequest {
 
     private final String videoId;
     private final boolean isInline;
+    @Nullable
+    private final String authorization;
+    private final ClientType[] clientOrder;
 
     private final Future<StreamData> future;
 
@@ -197,6 +200,8 @@ public class StreamingDataRequest {
                                  boolean includeVideoDetails, ClientType[] clientOrder, boolean isDownload) {
         this.videoId = videoId;
         this.isInline = isInline;
+        this.authorization = playerHeaders.get(AUTHORIZATION_HEADER);
+        this.clientOrder = clientOrder;
         this.future = Utils.submitOnBackgroundThread(
                 () -> fetch(resolveVideoIdToFetch(videoId), isInline, playerHeaders, includeVideoDetails,
                         clientOrder, isDownload));
@@ -207,9 +212,26 @@ public class StreamingDataRequest {
         if (fetchHeaders != null && !fetchHeaders.isEmpty()) {
             lastPlayerHeaders = fetchHeaders;
         }
-        // Always fetch, even if there is an existing request for the same video.
-        cache.put(videoId, new StreamingDataRequest(videoId, isInline, fetchHeaders, false,
-                clientOrderToUse, false));
+        ClientType[] clientOrder = clientOrderToUse;
+        synchronized (cache) {
+            // The app can ask for the same video again while the first fetch is still running.
+            // A fetch that is done is never reused, because its streams can be expired or missing.
+            StreamingDataRequest existing = cache.get(videoId);
+            if (existing != null && existing.isFetchInProgress(isInline, fetchHeaders, clientOrder)) {
+                Logger.printDebug(() -> "Using the fetch in progress for: " + videoId);
+                return;
+            }
+            cache.put(videoId, new StreamingDataRequest(videoId, isInline, fetchHeaders, false,
+                    clientOrder, false));
+        }
+    }
+
+    private boolean isFetchInProgress(boolean isInline, Map<String, String> playerHeaders,
+                                      ClientType[] clientOrder) {
+        return !future.isDone()
+                && this.isInline == isInline
+                && this.clientOrder == clientOrder
+                && Objects.equals(authorization, playerHeaders.get(AUTHORIZATION_HEADER));
     }
 
     /**
@@ -218,12 +240,17 @@ public class StreamingDataRequest {
      * <p>
      * The clients are given by the caller instead of taken from the playback order, which stays at
      * the enum default while spoofing is off and then begins with a SABR client that has no urls.
+     *
+     * @param preferredClient Tried first, unless it is a SABR client.
      */
     public static StreamingDataRequest fetchRequestForDownload(String videoId,
                                                                List<ClientType> downloadClients,
                                                                ClientType preferredClient) {
-        ClientType[] clientOrder = buildClientOrder(downloadClients, preferredClient)
-                .toArray(new ClientType[0]);
+        List<ClientType> clients = buildClientOrder(downloadClients, preferredClient);
+        // SABR clients answer without the format urls a download needs,
+        // so the next client would never be tried.
+        clients.removeIf(client -> client.requireSABR);
+        ClientType[] clientOrder = clients.toArray(new ClientType[0]);
         // The video details name the saved file, so the download asks for them as well.
         // The auth hook keeps the headers even if spoofing is off, but it is not used by all apps.
         Map<String, String> headers = AuthUtils.getAuthorization().isEmpty()

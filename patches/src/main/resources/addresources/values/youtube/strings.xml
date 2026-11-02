@@ -67,6 +67,7 @@ Changes include:
     <string name="morphe_hide_account_menu_title">Enable Library / You bottom menu filter</string>
     <string name="morphe_hide_account_menu_filter_strings_title">Library / You bottom menu filter</string>
     <string name="morphe_hide_account_menu_filter_strings_summary">Enter the Library / You bottom menu names to filter by, separated by new lines</string>
+    <string name="morphe_hide_account_menu_downloads_title">Hide Downloads</string>
     <string name="morphe_hide_album_cards_title">Hide album cards</string>
     <string name="morphe_hide_album_cards_summary">Hides the album cards under the artist description</string>
     <string name="morphe_hide_artist_cards_title">Hide artist cards</string>
@@ -288,6 +289,9 @@ Changes include:
     <string name="morphe_hide_comments_emoji_button_title">Hide Emoji button</string>
     <string name="morphe_hide_comments_filter_bar_options_title">Hide filter bar options</string>
     <string name="morphe_hide_comments_filter_bar_options_summary">Hides all filter bar options except \'Top\' and \'Newest\'</string>
+    <string name="morphe_hide_comments_gif_button_title">Hide GIF button</string>
+    <string name="morphe_hide_comments_gifs_and_images_title">Hide GIFs and images</string>
+    <string name="morphe_hide_comments_gifs_and_images_summary">Hides GIFs and images attached to comments and replies</string>
     <string name="morphe_hide_comments_gift_animation_and_cards_title">Hide gift animation and cards</string>
     <string name="morphe_hide_comments_gift_button_title">Hide Gift button</string>
     <string name="morphe_hide_comments_info_button_title">Hide Info button</string>
@@ -478,7 +482,7 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_feed_long_press_menu_title">Tap and hold to open video menu</string>
     <string name="morphe_feed_long_press_menu_summary">Tapping and holding anywhere on a feed video opens its menu</string>
     <string name="morphe_feed_watch_later_button_title">Show Watch later button on thumbnails</string>
-    <string name="morphe_feed_watch_later_button_summary">A Watch later button is shown on the thumbnails of feed videos. Tapping and holding it opens Save to playlist</string>
+    <string name="morphe_feed_watch_later_button_summary">A Watch later button is shown on the thumbnails of feed videos, with a check mark if the video is saved. Tapping it saves or removes the video, and tapping and holding it opens Save to playlist</string>
 
     <!-- interaction.postimages.postImageDownloadPatch -->
     <string name="morphe_post_image_download_title">Download post images</string>
@@ -558,8 +562,24 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_external_downloader_quick_audio">Audio</string>
     <string name="morphe_external_downloader_quick_options">All options</string>
     <string name="morphe_shorts_download_flyout_button_title">Show download in Shorts menu</string>
-    <string name="morphe_shorts_download_flyout_button_summary">Adds an external downloader flyout menu item to the Shorts player</string>
+    <string name="morphe_shorts_download_flyout_button_summary">Adds a download item to the menu of the Shorts player</string>
     <string name="morphe_shorts_download_flyout_title">Download</string>
+    <string name="morphe_export_download_folder_title">Export saved videos</string>
+    <string name="morphe_export_download_folder_summary">"Export in-app saved videos to your device storage using the in-app downloads flyout menu. Tap to change the export folder
+
+Export folder: %s"</string>
+    <string name="morphe_export_download_folder_dialog_title">Export folder</string>
+    <string name="morphe_export_download_folder_change">Change folder</string>
+    <string name="morphe_export_download_folder_changed">Export folder changed</string>
+    <string name="morphe_export_download_folder_reset">Export folder reset</string>
+    <string name="morphe_export_download_folder_missing">Could not find export folder %s</string>
+    <string name="morphe_export_download_flyout_title">Export to device</string>
+    <string name="morphe_export_download_started">Exporting video</string>
+    <string name="morphe_export_download_progress">Exporting video: %d%%</string>
+    <string name="morphe_export_download_notification_channel">Video exports</string>
+    <string name="morphe_export_download_saved">Video exported to %s</string>
+    <string name="morphe_export_download_failed">Could not export the video</string>
+    <string name="morphe_export_download_canceled">Export canceled</string>
 
     <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
     <string name="morphe_vot_screen_title">Voice over translation</string>
@@ -646,6 +666,20 @@ Your API key should never be shared. Anyone with access to it can use your OpenR
     <string name="morphe_pip_button_flyout_title">Show Picture-in-Picture menu</string>
     <string name="morphe_pip_button_flyout_name">Switch to Picture-in-Picture</string>
 
+    <!-- interaction.pictureinpicture.changePipActionsPatch -->
+    <string name="morphe_pip_actions_screen_title">Picture-in-picture actions</string>
+    <string name="morphe_pip_actions_screen_summary">Change the buttons shown in picture-in-picture</string>
+    <string name="morphe_pip_action_left_title">Left button</string>
+    <string name="morphe_pip_action_center_title">Center button</string>
+    <string name="morphe_pip_action_right_title">Right button</string>
+    <string name="morphe_pip_action_entry_default">Default</string>
+    <string name="morphe_pip_action_entry_previous">Previous video</string>
+    <string name="morphe_pip_action_entry_next">Next video</string>
+    <string name="morphe_pip_action_entry_rewind">Rewind 10 seconds</string>
+    <string name="morphe_pip_action_entry_fast_forward">Fast forward 10 seconds</string>
+    <string name="morphe_pip_action_entry_play_pause">Play/pause</string>
+    <string name="morphe_pip_action_entry_background_playback">Background playback</string>
+
     <!-- interaction.playall.playAllButtonPatch -->
     <string name="morphe_play_all_button_title">Show Play all button</string>
     <string name="morphe_play_all_button_summary">"Tap to generate a playlist of all videos from channel, tap and hold to undo
@@ -680,10 +714,6 @@ Info: May not work on live streams"</string>
     <string name="morphe_save_to_watch_later_flyout_title">Save to Watch later</string>
     <string name="morphe_save_to_watch_later_flyout_button_title">Show Save to Watch later button in the player settings flyout</string>
     <string name="morphe_save_to_watch_later_flyout_button_summary">Allows saving the current watching video in the \'Watch later\' from the video settings flyout</string>
-    <string name="morphe_save_to_watch_later_kids_flyout_button_title">Show Save to Watch later button in kids videos</string>
-    <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Allows saving kid related videos in the \'Watch later\' from the flyout menu</string>
-    <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Show Save to Watch later button in the shorts flyout</string>
-    <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Allows saving shorts in the \'Watch later\' from the flyout menu</string>
     <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Redirect Watch later to playlist</string>
     <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Watch later</string>
     <string name="morphe_queue_flyout_title">Add to Morphe queue</string>
@@ -913,6 +943,10 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <!-- layout.captions.captionsPatch -->
     <string name="morphe_captions_screen_title">Captions</string>
     <string name="morphe_captions_screen_summary">Manage automatic captions and caption cookies</string>
+    <string name="morphe_captions_languages_title">Language and translation</string>
+    <string name="morphe_captions_presentation_title">Appearance and behavior</string>
+    <string name="morphe_captions_advanced_title">Advanced</string>
+    <string name="morphe_captions_advanced_summary">Cookie and transcript options</string>
 
     <!-- layout.captions.autoCaptionsPatch -->
     <string name="morphe_auto_captions_style_title">Auto captions visibility</string>
@@ -923,11 +957,11 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
 
     <!-- layout.captions.preferredCaptionLanguagePatch -->
     <string name="morphe_preferred_caption_language_title">Preferred caption language</string>
-    <string name="morphe_preferred_caption_language_summary">Selects provider subtitles first, then automatically translates to the preferred language</string>
+    <string name="morphe_preferred_caption_language_summary">Automatically selects a caption language for each video</string>
     <string name="morphe_preferred_caption_language_entry_off">Off</string>
 
     <!-- layout.captions.autoTranslateCaptionsPatch -->
-    <string name="morphe_auto_translate_additional_languages_title">Add additional auto-translate languages</string>
+    <string name="morphe_auto_translate_additional_languages_title">Additional auto-translate languages</string>
     <string name="morphe_auto_translate_additional_languages_summary">Adds more languages to the auto-translate menu</string>
 
     <!-- layout.captions.captionCookiesPatch -->
@@ -947,8 +981,19 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_fix_transcript_title">Fix transcript</string>
     <string name="morphe_fix_transcript_summary">Resolves a precondition check failure that can prevent the transcript from loading</string>
     <string name="morphe_captions_in_pip_title">Show captions in picture-in-picture</string>
+
+    <!-- layout.captions.captionViewportPatch -->
+    <string name="morphe_caption_scale_title">Caption size</string>
+    <string name="morphe_caption_scale_summary">Applies to single-language and bilingual captions</string>
+
+    <!-- layout.captions.stableCaptionBlocksPatch -->
     <string name="morphe_stable_caption_blocks_title">Stable caption blocks</string>
-    <string name="morphe_stable_caption_blocks_summary">Group automatic captions into stable, readable blocks. Some words may appear before they are spoken. Restart required.</string>
+    <string name="morphe_stable_caption_blocks_summary">Group single-language automatic captions into stable, readable blocks. Bilingual captions always use blocks. Some words may appear before they are spoken</string>
+    <string name="morphe_secondary_caption_language_title">Secondary caption language</string>
+    <string name="morphe_secondary_caption_language_summary">Shows a second language with the captions, and adds a Bilingual captions toggle to the captions menu</string>
+    <string name="morphe_dual_captions_enabled_title">Bilingual captions</string>
+    <string name="morphe_caption_block_translation_failed">Some caption translations are unavailable. Showing available captions.</string>
+    <string name="morphe_caption_blocks_too_large">Both caption languages do not fit in this player. Showing the primary language.</string>
 
     <!-- layout.buttons.navigation.navigationButtonsPatch -->
     <string name="morphe_navigation_buttons_screen_title">Navigation buttons</string>
@@ -996,7 +1041,6 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
 
     <string name="morphe_toolbar_screen_title">Toolbar</string>
     <string name="morphe_toolbar_screen_summary">Choose which components appear in the toolbar</string>
-    <string name="morphe_hide_toolbar_cast_button_title">Hide Cast button</string>
     <string name="morphe_hide_toolbar_chat_button_title">Hide Chat button</string>
     <string name="morphe_hide_toolbar_microphone_button_title">Hide Microphone button</string>
     <string name="morphe_hide_toolbar_search_button_title">Hide Search button</string>
@@ -1055,6 +1099,7 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
     <string name="morphe_hide_captions_button_title">Hide Captions button</string>
     <string name="morphe_hide_cast_button_title">Hide Cast button</string>
+    <string name="morphe_hide_cast_button_summary">Hides the Cast button in the video player and toolbar</string>
     <string name="morphe_hide_collapse_button_title">Hide Collapse button</string>
     <string name="morphe_hide_fullscreen_button_title">Hide Fullscreen button</string>
     <string name="morphe_hide_player_control_buttons_background_title">Hide player controls background</string>
@@ -1243,11 +1288,6 @@ Automotive layout
 • 'More videos' overlay may not be available
 • Shorts open in the regular player
 • Non collapsed old video action bar is shown"</string>
-    <string name="morphe_tablet_layout_in_player_title">Enable tablet layout in player</string>
-    <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-    <string name="morphe_tablet_layout_in_player_summary">"Restores the old player layout
-
-Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' overlay may not be available"</string>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restore old captions behavior</string>
@@ -1341,6 +1381,10 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_miniplayer_not_available_summary">YouTube removed all additional miniplayers. To restore more miniplayer types, then patch YouTube 21.28.208 or older</string>
     <string name="morphe_miniplayer_type_title">Miniplayer type</string>
     <string name="morphe_miniplayer_hide_title_title">Hide title and channel</string>
+    <string name="morphe_miniplayer_swipe_up_expand_title">Expand with swipe up</string>
+    <string name="morphe_miniplayer_swipe_up_expand_summary">Swiping the miniplayer up expands the player, instead of moving the miniplayer to the top of the screen</string>
+    <string name="morphe_miniplayer_docked_title">Docked miniplayer</string>
+    <string name="morphe_miniplayer_docked_summary">Attaches the miniplayer to the navigation bar and the sides of the screen, instead of floating above them</string>
     <string name="morphe_miniplayer_type_entry_0">Disabled</string>
     <string name="morphe_miniplayer_type_entry_1">Default</string>
     <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1387,6 +1431,8 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
     <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
     <string name="morphe_splash_screen_style_glow_not_supported">Glow splash screen is not supported by this device</string>
+    <string name="morphe_splash_screen_duration_title">Startup animation duration</string>
+    <string name="morphe_splash_screen_duration_summary">How long the glow animation plays. Tap the animation to skip it</string>
     <string name="morphe_theme_color_light_title">Light theme background</string>
     <string name="morphe_theme_color_light_entry_2">White</string>
     <string name="morphe_theme_color_light_entry_3">Material You (White)</string>
@@ -1580,7 +1626,7 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_playback_speed_channel_whitelist_summary">Videos from whitelisted channels always play at 1.0x speed</string>
     <string name="morphe_playback_speed_channel_whitelist_flyout_add">Add channel to speed whitelist</string>
     <string name="morphe_playback_speed_channel_whitelist_flyout_remove">Remove channel from speed whitelist</string>
-    <string name="morphe_enable_playback_audio_pitch_controls_title">Enable audio pitch controls</string> 
+    <string name="morphe_enable_playback_audio_pitch_controls_title">Enable audio pitch controls</string>
     <string name="morphe_playback_audio_pitch_default_title">Default playback audio pitch</string>
     <string name="morphe_remember_playback_audio_pitch_toast">Changed default audio pitch to: %s</string>
     <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
@@ -1654,10 +1700,12 @@ Video playback with AV1 may stutter or drop frames"</string>
     <string name="morphe_spoof_video_streams_stats_for_nerds_title">Show spoofing in \'Stats for nerds\'</string>
 
     <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-    <string name="morphe_restore_old_video_action_bar_title">Restore old video action bar</string>
-    <string name="morphe_restore_old_video_action_bar_summary">"Fixes video action buttons cannot be hidden
-
-Limitation: Reverts to old style \'More videos\' overlay"</string>
+    <string name="morphe_video_action_bar_layout_title">Video action bar layout</string>
+    <string name="morphe_video_action_bar_layout_entry_1">Default</string>
+    <string name="morphe_video_action_bar_layout_entry_2">Classic One-Row</string>
+    <string name="morphe_video_action_bar_layout_entry_3">Minimal</string>
+    <string name="morphe_video_action_bar_layout_entry_4">Classic Two-Rows</string>
+    <string name="morphe_video_action_bar_layout_user_dialog_message">Limitation: Classic layouts revert to old style \'More videos\' overlay</string>
 
     <!-- layout.player.icons.playerIconStylePatch -->
     <string name="morphe_player_icon_style_title">Player icon style</string>
@@ -1835,4 +1883,28 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_max_length_title">Max comment length</string>
     <string name="morphe_niconico_comments_max_length_summary">Hides comments with more characters than this. Each emoji counts as one character</string>
     <string name="morphe_niconico_comments_max_length_no_limit">No limit</string>
+
+    <string name="morphe_live_chat_translate_screen_title">Live chat translation</string>
+    <string name="morphe_live_chat_translate_screen_summary">Translate live chat and live chat replay messages</string>
+    <string name="morphe_live_chat_translate_title">Translate live chat</string>
+    <string name="morphe_live_chat_translate_summary">Translates live chat and live chat replay messages once they are on screen</string>
+    <string name="morphe_live_chat_translate_language_title">Translation language</string>
+    <string name="morphe_live_chat_translate_exclude_title">Excluded languages</string>
+    <string name="morphe_live_chat_translate_exclude_summary">Comma separated language codes such as id,en. Messages in these languages are not translated</string>
+    <string name="morphe_live_chat_translate_copy_button_title">Show copy message button</string>
+    <string name="morphe_live_chat_translate_copy_button_summary">Adds a small copy button to every chat message</string>
+    <string name="morphe_live_chat_translate_copied">Message copied to clipboard</string>
+    <string name="morphe_live_chat_translate_style_title">Translation style</string>
+    <string name="morphe_live_chat_translate_style_translated_only">Translated only</string>
+    <string name="morphe_live_chat_translate_style_original_and_translated">Original (translated)</string>
+    <string name="morphe_live_chat_translate_style_translated_and_original">(Translated) original</string>
+    <string name="morphe_live_chat_translate_bold_title">Bold translated text</string>
+    <string name="morphe_live_chat_translate_bold_summary">Shows the translated text in bold</string>
+    <string name="morphe_live_chat_translate_use_color_title">Custom translated text color</string>
+    <string name="morphe_live_chat_translate_use_color_summary">Applies a custom color to the translated text</string>
+    <string name="morphe_live_chat_translate_color_title">Translated text color</string>
+    <string name="morphe_live_chat_translate_color_summary">Set the hex color of the translated text</string>
+    <string name="morphe_live_chat_translate_max_length_title">Maximum message length</string>
+    <string name="morphe_live_chat_translate_max_length_summary">Longer messages are shown untranslated</string>
+    <string name="morphe_live_chat_translate_max_length_no_limit">No limit</string>
 </resources>

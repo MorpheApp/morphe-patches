@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Πολιτική απορρήτου Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Η σύνδεση μέσω Google δεν είναι διαθέσιμη. Χρησιμοποιήστε email για να συνδεθείτε</string>
+  <string name="morphe_app_downgrade_dialog_title">Η αναβάθμιση σε παλαιότερη έκδοση δεν υποστηρίζεται</string>
+  <string name="morphe_app_downgrade_dialog_message">"Αυτή η εγκατάσταση του Reddit υποβημάθηκε από την έκδοση &lt;b&gt;%1$s&lt;/b&gt; στην έκδοση &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Τα δεδομένα της εφαρμογής από μια νεότερη έκδοση δεν λειτουργούν με παλαιότερες εκδόσεις και η εφαρμογή ενδέχεται να μην λειτουργεί σωστά.
+&lt;br/&gt;&lt;br/&gt;
+Για να χρησιμοποιήσετε μια παλαιότερη έκδοση, πρέπει να &lt;b&gt;απεγκαταστήσετε&lt;/b&gt; το Reddit και στη συνέχεια να εγκαταστήσετε την παλαιότερη έκδοση."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Άνοιγμα πληροφοριών εφαρμογής</string>
   <string name="morphe_screen_ads_title">Διαφημίσεις</string>
   <string name="morphe_hide_post_ads_title">Απόκρυψη διαφημίσεων ροής</string>
   <string name="morphe_hide_comment_ads_title">Απόκρυψη διαφημίσεων στα σχόλια</string>

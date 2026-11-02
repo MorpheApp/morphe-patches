@@ -82,15 +82,17 @@ public final class CommentsSearchFilter extends Filter {
     private static final String SEARCH_BUTTON_TAG = "morphe_search_comments_button";
 
     /**
-     * The comments panels of videos and Shorts. Newer app versions use the first id for videos.
+     * Start of the ids of the comments panels of videos, posts and Shorts. Newer app versions use
+     * the first id for videos, and the id of the panel of a post ends with the id of the post.
      * Other panels with "comment" in their id are not searched, such as the replies of a comment,
      * which open in a panel of their own.
      */
-    private static final List<String> COMMENTS_PANEL_IDS = List.of(
+    private static final String[] COMMENTS_PANEL_ID_PREFIXES = {
             "comment-item-section",
             "engagement-panel-comments-section",
+            "post-comments-",
             "shorts-comments-panel"
-    );
+    };
 
     private static final int ID_CLOSE_BUTTON =
             ResourceUtils.getIdentifier(ResourceType.ID, "close_button");
@@ -478,7 +480,7 @@ public final class CommentsSearchFilter extends Filter {
             }
         }
 
-        final boolean isCommentsPanel = COMMENTS_PANEL_IDS.contains(EngagementPanel.getLastOpenedPanelId());
+        final boolean isCommentsPanel = Utils.startsWithAny(EngagementPanel.getLastOpenedPanelId(), COMMENTS_PANEL_ID_PREFIXES);
         searchButton.setVisibility(isCommentsPanel ? View.VISIBLE : View.GONE);
         if (isCommentsPanel) {
             updateSearchButtonIcon(searchButton);

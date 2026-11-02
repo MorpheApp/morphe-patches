@@ -9,6 +9,7 @@ package app.morphe.extension.shared.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
@@ -227,6 +228,7 @@ public final class CustomFontPatch {
         replaceStaticField("SANS_SERIF", regular);
     }
 
+    @SuppressLint("DiscouragedPrivateApi")
     @SuppressWarnings("unchecked")
     private static void replaceSystemFontMap() {
         try {
@@ -257,6 +259,7 @@ public final class CustomFontPatch {
         }
     }
 
+    @SuppressLint("DiscouragedPrivateApi")
     private static void replaceDefaultStyles() {
         try {
             Field field = Typeface.class.getDeclaredField("sDefaults");

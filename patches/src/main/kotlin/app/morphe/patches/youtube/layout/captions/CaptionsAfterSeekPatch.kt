@@ -16,7 +16,6 @@ import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.util.cloneMutable
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 private const val EXTENSION_CLASS =
@@ -37,11 +36,11 @@ internal val captionsAfterSeekPatch = bytecodePatch(
 
     execute {
         val captionTimesField = CaptionWindowsConstructorFingerprint.instructionMatches.last()
-            .instruction.getReference<FieldReference>()!!
+            .fieldReference
         val loaderConstructorFingerprint =
             getCaptionChunkLoaderConstructorFingerprint(captionTimesField.definingClass)
         val captionWindowsField = loaderConstructorFingerprint.instructionMatches.last()
-            .instruction.getReference<FieldReference>()!!
+            .fieldReference
 
         getCaptionChunkLoaderFingerprint(loaderConstructorFingerprint.originalClassDef.type).let {
             it.method.apply {

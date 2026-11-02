@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Бастапқы анимация</string>
   <string name="morphe_splash_screen_style_entry_1">Өшірілген</string>
   <string name="morphe_splash_screen_style_entry_2">Түс</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe түсі</string>
   <string name="morphe_splash_screen_style_entry_4">Монохромды</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Жаңа параметрлерді ерекшелеу</string>
+  <string name="morphe_settings_new_indicator_days_summary">Жаңарту арқылы қосылған параметрлер мен опциялардың жанында нүктенің көрсетілетін күндер саны</string>
+  <string name="morphe_settings_new_indicator_days_off">Өшіру</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Баптауды аяқтау үшін қайта қосыңыз</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

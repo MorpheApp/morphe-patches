@@ -175,7 +175,7 @@ internal fun sharedLithoFilterPatch(
 
         // Find the method call that gets the value of 'buttonViewModel.accessibilityId'.
         val accessibilityIdMethod = AccessibilityIdFingerprint.instructionMatches.first()
-            .instruction.getReference<MethodReference>()!!
+            .methodReference
 
         // There's a method in the same class that gets the value of 'buttonViewModel.accessibilityText'.
         // As this class is abstract, we need to find another method that uses a method call.
@@ -197,7 +197,7 @@ internal fun sharedLithoFilterPatch(
                 // 'public final synthetic' or 'public final bridge synthetic'.
                 AccessFlags.SYNTHETIC.isSet(method.accessFlags)
             }
-        ).instructionMatches.first().instruction.getReference<MethodReference>()!!
+        ).instructionMatches.first().methodReference
 
         Fingerprint(
             returnType = "L",
@@ -337,13 +337,13 @@ internal fun sharedLithoFilterPatch(
             // Give the extension the item that the decorator holds.
             CommandEventDataDecoratorFingerprint.let {
                 val dataType = it.instructionMatches.first()
-                    .instruction.getReference<MethodReference>()!!.definingClass
+                    .methodReference.definingClass
                 val itemField = classDefBy(dataType).fields.single { field ->
                     field.type == "Ljava/lang/Object;"
                 }
 
                 mutableClassDefBy(
-                    it.instructionMatches.last().instruction.getReference<MethodReference>()!!.definingClass
+                    it.instructionMatches.last().methodReference.definingClass
                 ).apply {
                     val dataField = fields.single { field -> field.type == dataType }
 
@@ -388,7 +388,7 @@ internal fun sharedLithoFilterPatch(
             // the related videos, group the items of a section into rows, which the section lays
             // out again when an item is removed.
             ListSectionRemoveItemFingerprint.let {
-                val itemsField = it.instructionMatches[2].getFieldAccessed()
+                val itemsField = it.instructionMatches[2].fieldReference
                 val removeItemMethod = it.method
 
                 // Removing an item does not lay out the rows again when the section is no longer
@@ -397,7 +397,7 @@ internal fun sharedLithoFilterPatch(
                 val (isGridMethod, layOutRowsMethod, updateSectionMethod) =
                     ListSectionUpdateRowsFingerprint.instructionMatches.let { matches ->
                         listOf(0, 3, 4).map { index ->
-                            matches[index].instruction.getReference<MethodReference>()!!
+                            matches[index].methodReference
                         }
                     }
 

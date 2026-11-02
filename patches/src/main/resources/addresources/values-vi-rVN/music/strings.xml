@@ -709,12 +709,15 @@ Lời bài hát đến từ các dịch vụ bên thứ ba không liên quan, t�
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Đã kết nối! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Kết nối thất bại. Hãy kiểm tra cài đặt.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Nhập khóa API trước</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Kiểm tra kết nối</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Đang tải các mô hình…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Lấy danh sách mô hình</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Chọn một mô hình</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Tải các mô hình thất bại. Hãy kiểm tra khóa API hoặc kết nối.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Lời nhắc</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Mẫu</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL cơ sở</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Thiết lập sẵn của dịch vụ</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Chọn một dịch vụ</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">Khóa API (tùy chọn)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Thân yêu cầu bổ sung (JSON tùy chọn)</string>

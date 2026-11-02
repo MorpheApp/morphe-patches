@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">เปิดใช้งานตัวกรองเมนูด้านล่าง คลัง / คุณ</string>
   <string name="morphe_hide_account_menu_filter_strings_title">ตัวกรองเมนูด้านล่าง คลัง / คุณ</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">ป้อนชื่อเมนูด้านล่างคลัง / คุณที่คุณต้องการกรอง คั่นด้วยบรรทัดใหม่</string>
+  <string name="morphe_hide_account_menu_downloads_title">ซ่อนรายการดาวน์โหลด</string>
   <string name="morphe_hide_album_cards_title">ซ่อนการ์ดอัลบั้ม</string>
   <string name="morphe_hide_album_cards_summary">ซ่อนการ์ดอัลบั้มภายใต้คำอธิบายของศิลปิน</string>
   <string name="morphe_hide_artist_cards_title">ซ่อนการ์ดศิลปิน</string>
@@ -445,7 +446,7 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_title">แตะค้างไว้เพื่อเปิดเมนูวิดีโอ</string>
   <string name="morphe_feed_long_press_menu_summary">การแตะและค้างไว้ที่ใดก็ได้บนวิดีโอฟีดจะเปิดเมนูของวิดีโอนั้น</string>
   <string name="morphe_feed_watch_later_button_title">แสดงปุ่มดูภายหลังบนภาพย่อ</string>
-  <string name="morphe_feed_watch_later_button_summary">จะแสดงปุ่มดูภายหลังบนภาพย่อของวิดีโอในฟีด การแตะและค้างไว้จะทำให้บันทึกไปยังเพลย์ลิสต์</string>
+  <string name="morphe_feed_watch_later_button_summary">ปุ่ม \"ดูภายหลัง\" จะแสดงบนภาพตัวอย่างของวิดีโอในฟีด โดยจะมีเครื่องหมายถูกหากวิดีโอถูกบันทึกไว้ การแตะจะบันทึกหรือลบวิดีโอ และการแตะค้างไว้จะเปิด \"บันทึกไปยังเพลย์ลิสต์\"</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">ดาวน์โหลดรูปภาพในโพสต์</string>
   <string name="morphe_post_image_download_summary">ปุ่มดาวน์โหลดจะแสดงขึ้นถัดจากปุ่มแชร์ของโพสต์ที่มีรูปภาพหรือ GIF และจะมีการเพิ่มรายการดาวน์โหลดลงในเมนูของโพสต์ดังกล่าว</string>
@@ -515,8 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">เสียง</string>
   <string name="morphe_external_downloader_quick_options">ตัวเลือกทั้งหมด</string>
   <string name="morphe_shorts_download_flyout_button_title">แสดงการดาวน์โหลดในเมนู Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">เพิ่มรายการเมนู Flyout ของโปรแกรมดาวน์โหลดภายนอกในตัวเล่น Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">เพิ่มรายการดาวน์โหลดลงในเมนูของเครื่องเล่น Shorts</string>
   <string name="morphe_shorts_download_flyout_title">ดาวน์โหลด</string>
+  <string name="morphe_export_download_folder_title">ส่งออกวิดีโอที่บันทึกไว้</string>
+  <string name="morphe_export_download_folder_summary">"ส่งออกวิดีโอที่บันทึกไว้ในแอปไปยังที่เก็บข้อมูลในอุปกรณ์ของคุณโดยใช้เมนูดาวน์โหลดในแอป แตะเพื่อเปลี่ยนโฟลเดอร์ส่งออก
+
+โฟลเดอร์ส่งออก: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">โฟลเดอร์ส่งออก</string>
+  <string name="morphe_export_download_folder_change">เปลี่ยนโฟลเดอร์</string>
+  <string name="morphe_export_download_folder_changed">เปลี่ยนโฟลเดอร์ส่งออกแล้ว</string>
+  <string name="morphe_export_download_folder_reset">รีเซ็ตโฟลเดอร์ส่งออก</string>
+  <string name="morphe_export_download_flyout_title">ส่งออกไปยังอุปกรณ์</string>
+  <string name="morphe_export_download_started">กำลังส่งออกวิดีโอ</string>
+  <string name="morphe_export_download_progress">กำลังส่งออกวิดีโอ: %d%%</string>
+  <string name="morphe_export_download_notification_channel">การส่งออกวิดีโอ</string>
+  <string name="morphe_export_download_saved">ส่งออกวิดีโอไปยัง %s แล้ว</string>
+  <string name="morphe_export_download_failed">ไม่สามารถส่งออกวิดีโอได้</string>
+  <string name="morphe_export_download_canceled">ยกเลิกการส่งออก</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">การแปลเสียงบรรยาย</string>
   <string name="morphe_vot_screen_summary">อ่านคำบรรยายวิดีโอออกเสียงด้วยระบบแปลงข้อความเป็นเสียงบนอุปกรณ์ โดยซิงโครไนซ์กับการเล่น</string>
@@ -591,6 +607,19 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">แสดงปุ่มภาพซ้อนภาพ</string>
   <string name="morphe_pip_button_flyout_title">แสดงเมนูภาพซ้อนภาพ</string>
   <string name="morphe_pip_button_flyout_name">สลับไปยังภาพซ้อนภาพ</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">การดำเนินการของภาพซ้อนภาพ</string>
+  <string name="morphe_pip_actions_screen_summary">เปลี่ยนปุ่มที่แสดงในโหมดภาพซ้อนภาพ</string>
+  <string name="morphe_pip_action_left_title">ปุ่มซ้าย</string>
+  <string name="morphe_pip_action_center_title">ปุ่มกลาง</string>
+  <string name="morphe_pip_action_right_title">ปุ่มขวา</string>
+  <string name="morphe_pip_action_entry_default">ค่าเริ่มต้นThe</string>
+  <string name="morphe_pip_action_entry_previous">วิดีโอก่อนหน้า</string>
+  <string name="morphe_pip_action_entry_next">วิดีโอถัดไป</string>
+  <string name="morphe_pip_action_entry_rewind">ย้อนกลับ 10 วินาที</string>
+  <string name="morphe_pip_action_entry_fast_forward">กรอไปข้างหน้า 10 วินาที</string>
+  <string name="morphe_pip_action_entry_play_pause">เล่น/หยุดชั่วคราว</string>
+  <string name="morphe_pip_action_entry_background_playback">การเล่นพื้นหลัง</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">แสดงปุ่มเล่นทั้งหมด</string>
   <string name="morphe_play_all_button_summary">"แตะเพื่อสร้างเพลย์ลิสต์ของวิดีโอทั้งหมดจากช่อง แตะค้างเพื่อยกเลิก
@@ -623,10 +652,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">บันทึกไปยังดูภายหลัง</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">แสดงปุ่มบันทึกไปยังดูภายหลังในเมนูการตั้งค่าเครื่องเล่น</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">อนุญาตให้บันทึกวิดีโอที่กำลังดูอยู่ไว้ใน \'ดูภายหลัง\' จากเมนูการตั้งค่าวิดีโอ</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">แสดงปุ่ม \'บันทึกไปยังดูภายหลัง\' ในวิดีโอสำหรับเด็ก</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">อนุญาตให้บันทึกวิดีโอที่เกี่ยวข้องกับเด็กไว้ใน \'ดูภายหลัง\' จากเมนูแบบเลื่อนออก</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">แสดงปุ่มบันทึกไปยังดูภายหลังในเมนูแบบเลื่อนออกของ Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">อนุญาตให้บันทึก Shorts ไว้ใน \'ดูภายหลัง\' จากเมนูแบบเลื่อนออก</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">เปลี่ยนเส้นทาง \"ดูภายหลัง\" ไปยังเพลย์ลิสต์</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">ดูต่อภายหลัง</string>
   <string name="morphe_queue_flyout_title">เพิ่มลงในคิว Morphe</string>
@@ -845,6 +870,10 @@ Second \"item\" text"</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">คำบรรยาย</string>
   <string name="morphe_captions_screen_summary">จัดการคำบรรยายอัตโนมัติและคุกกี้คำบรรยาย</string>
+  <string name="morphe_captions_languages_title">ภาษาและการแปล</string>
+  <string name="morphe_captions_presentation_title">รูปลักษณ์และพฤติกรรม</string>
+  <string name="morphe_captions_advanced_title">ขั้นสูง</string>
+  <string name="morphe_captions_advanced_summary">ตัวเลือกคุกกี้และคำถอดความ</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">คำบรรยายแบบอัตโนมัติ</string>
   <string name="morphe_auto_captions_style_entry_1">แสดงเสมอ</string>
@@ -853,10 +882,10 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_entry_4">แสดงเมื่อเงียบเสียง</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">ภาษาคำบรรยายที่ต้องการ</string>
-  <string name="morphe_preferred_caption_language_summary">เลือกคำบรรยายที่ผู้ให้บริการจัดเตรียมไว้ก่อน จากนั้นจึงแปลเป็นภาษาที่ต้องการโดยอัตโนมัติ</string>
+  <string name="morphe_preferred_caption_language_summary">เลือกภาษาคำบรรยายโดยอัตโนมัติสำหรับแต่ละวิดีโอ</string>
   <string name="morphe_preferred_caption_language_entry_off">ปิด</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">เพิ่มภาษาอื่น ๆ สำหรับการแปลอัตโนมัติ</string>
+  <string name="morphe_auto_translate_additional_languages_title">ภาษาแปลอัตโนมัติเพิ่มเติม</string>
   <string name="morphe_auto_translate_additional_languages_summary">เพิ่มภาษาต่าง ๆ ในเมนูการแปลอัตโนมัติ</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">ตั้งค่าคุกกี้คำบรรยาย</string>
@@ -874,8 +903,17 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">แก้ไขข้อความถอดเสียง</string>
   <string name="morphe_fix_transcript_summary">แก้ไขข้อผิดพลาดในการตรวจสอบเงื่อนไขเบื้องต้นที่อาจทำให้การโหลดข้อความถอดเสียงไม่สำเร็จ</string>
   <string name="morphe_captions_in_pip_title">แสดงคำบรรยายในภาพซ้อนภาพ</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">ขนาดคำบรรยาย</string>
+  <string name="morphe_caption_scale_summary">ใช้กับคำบรรยายภาษาเดียวและสองภาษา</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">บล็อกคำบรรยายแบบเสถียร</string>
-  <string name="morphe_stable_caption_blocks_summary">จัดกลุ่มคำบรรยายอัตโนมัติให้เป็นบล็อกที่เสถียรและอ่านง่าย คำบางคำอาจปรากฏขึ้นก่อนที่จะมีการพูด จำเป็นต้องรีสตาร์ท</string>
+  <string name="morphe_stable_caption_blocks_summary">รวมคำบรรยายอัตโนมัติภาษาเดียวให้เป็นบล็อกที่คงที่และอ่านง่าย คำบรรยายสองภาษาจะใช้บล็อกเสมอ คำบางคำอาจปรากฏก่อนที่จะมีการพูด</string>
+  <string name="morphe_secondary_caption_language_title">ภาษาคำบรรยายรอง</string>
+  <string name="morphe_secondary_caption_language_summary">แสดงภาษาที่สองพร้อมกับคำบรรยาย และเพิ่มปุ่มสลับคำบรรยายสองภาษาในเมนูคำบรรยาย</string>
+  <string name="morphe_dual_captions_enabled_title">คำบรรยายสองภาษา</string>
+  <string name="morphe_caption_block_translation_failed">คำแปลคำบรรยายบางส่วนไม่พร้อมใช้งาน กำลังแสดงคำบรรยายที่มีอยู่</string>
+  <string name="morphe_caption_blocks_too_large">ภาษาคำบรรยายทั้งสองภาษาไม่พอดีกับเครื่องเล่นนี้ กำลังแสดงภาษาหลัก</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">ปุ่มนำทาง</string>
   <string name="morphe_navigation_buttons_screen_summary">เลือกปุ่มที่จะปรากฏในแถบนำทางด้านล่าง</string>
@@ -1143,10 +1181,10 @@ Second \"item\" text"</string>
 • Shorts จะเปิดในเครื่องเล่นปกติ
 • แถบดำเนินการวิดีโอแบบเก่าที่ไม่ยุบจะแสดง"</string>
   <string name="morphe_tablet_layout_in_player_title">เปิดใช้งานรูปแบบแท็บเล็ตในเครื่องเล่น</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <string name="morphe_tablet_layout_in_player_summary">"คืนรูปแบบเครื่องเล่นแบบเก่า
 
-ข้อจำกัด: หากปิด 'คืนแถบการทำงานของวิดีโอแบบเก่า' ภาพซ้อนทับ 'วิดีโอเพิ่มเติม' อาจใช้งานไม่ได้"</string>
+ข้อจำกัด: หาก 'รูปแบบแถบการทำงานของวิดีโอ' ไม่ใช่แบบคลาสสิก ภาพซ้อนทับ 'วิดีโอเพิ่มเติม' อาจใช้งานไม่ได้"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - กู้คืนพฤติกรรมคำบรรยายแบบเดิม</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - คืนค่าไอคอนเครื่องเล่น Shorts เก่า</string>
@@ -1228,6 +1266,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube ได้ลบมินิเพลเยอร์เพิ่มเติมทั้งหมดออกแล้ว หากต้องการคืนค่าประเภทมินิเพลเยอร์เพิ่มเติม โปรดลงแพตช์ YouTube เวอร์ชัน 21.28.208 หรือเก่ากว่า</string>
   <string name="morphe_miniplayer_type_title">ประเภทของมินิเพลเยอร์</string>
   <string name="morphe_miniplayer_hide_title_title">ซ่อนชื่อและช่อง</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">ขยายด้วยการปัดขึ้น</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">การปัดเครื่องเล่นย่อขนาดขึ้นจะขยายเครื่องเล่น แทนที่จะเป็นการย้ายเครื่องเล่นย่อขนาดไปที่ด้านบนของหน้าจอ</string>
+  <string name="morphe_miniplayer_docked_title">เครื่องเล่นย่อขนาดแบบยึด</string>
+  <string name="morphe_miniplayer_docked_summary">ยึดเครื่องเล่นย่อขนาดเข้ากับแถบนำทางและด้านข้างของหน้าจอ แทนที่จะลอยอยู่เหนือสิ่งเหล่านั้น</string>
   <string name="morphe_miniplayer_type_entry_0">ปิดการใช้งานอยู่</string>
   <string name="morphe_miniplayer_type_entry_1">ค่าเริ่มต้น</string>
   <string name="morphe_miniplayer_type_entry_2">น้อยที่สุด</string>
@@ -1270,6 +1312,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">อุปกรณ์นี้ไม่รองรับหน้าจอเปิดตัวแบบเรืองแสง</string>
+  <string name="morphe_splash_screen_duration_title">ระยะเวลาแอนิเมชันเริ่มต้น</string>
+  <string name="morphe_splash_screen_duration_summary">ระยะเวลาที่แอนิเมชันเรืองแสงจะเล่น แตะที่แอนิเมชันเพื่อข้าม</string>
   <string name="morphe_theme_color_light_title">พื้นหลังธีมสว่าง</string>
   <string name="morphe_theme_color_light_entry_2">สีขาว</string>
   <string name="morphe_theme_color_light_entry_3">Material You (สีขาว)</string>
@@ -1500,10 +1544,11 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_player_js_variant_title">แปลรูปแบบ JavaScript ของเพลเยอร์</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">แสดงการปลอมแปลงใน \'สถิติสำหรับพวกเนิร์ด\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">กู้คืนแถบการทำงานของวิดีโอแบบเดิม</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"แก้ไขปัญหาที่ปุ่มการทำงานของวิดีโอไม่สามารถซ่อนได้
-
-ข้อจำกัด: ย้อนกลับไปใช้รูปแบบภาพซ้อนทับ 'วิดีโอเพิ่มเติม' แบบเก่า"</string>
+  <string name="morphe_video_action_bar_layout_title">รูปแบบแถบการทำงานของวิดีโอ</string>
+  <string name="morphe_video_action_bar_layout_entry_1">ค่าเริ่มต้นThe</string>
+  <string name="morphe_video_action_bar_layout_entry_2">คลาสสิก</string>
+  <string name="morphe_video_action_bar_layout_entry_3">น้อยที่สุด</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">ข้อจำกัด: แบบคลาสสิกจะกลับไปใช้ภาพซ้อนทับ \'วิดีโอเพิ่มเติม\' รูปแบบเก่า</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">สไตล์ไอคอนเครื่องเล่น</string>
   <string name="morphe_player_icon_style_entry_auto">อัตโนมัติ</string>
@@ -1671,4 +1716,27 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">ความยาวคอมเมนต์สูงสุด</string>
   <string name="morphe_niconico_comments_max_length_summary">ซ่อนคอมเมนต์ที่มีตัวอักษรมากกว่าจำนวนนี้ แต่ละอิโมจิจะนับเป็นหนึ่งตัวอักษร</string>
   <string name="morphe_niconico_comments_max_length_no_limit">ไม่มีขีดจำกัด</string>
+  <string name="morphe_live_chat_translate_screen_title">การแปลแชทสด</string>
+  <string name="morphe_live_chat_translate_screen_summary">แปลข้อความแชทสดและข้อความรีเพลย์แชทสด</string>
+  <string name="morphe_live_chat_translate_title">แปลแชทสด</string>
+  <string name="morphe_live_chat_translate_summary">แปลข้อความแชทสดและข้อความรีเพลย์แชทสดเมื่อข้อความปรากฏบนหน้าจอ</string>
+  <string name="morphe_live_chat_translate_language_title">ภาษาที่ใช้แปล</string>
+  <string name="morphe_live_chat_translate_exclude_title">ภาษาที่ยกเว้น</string>
+  <string name="morphe_live_chat_translate_exclude_summary">รหัสภาษาที่คั่นด้วยเครื่องหมายจุลภาค เช่น id,en ข้อความในภาษาเหล่านี้จะไม่ถูกแปล</string>
+  <string name="morphe_live_chat_translate_copy_button_title">แสดงปุ่มคัดลอกข้อความ</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">เพิ่มปุ่มคัดลอกขนาดเล็กในทุกข้อความแชท</string>
+  <string name="morphe_live_chat_translate_copied">คัดลอกข้อความไปยังคลิปบอร์ดแล้ว</string>
+  <string name="morphe_live_chat_translate_style_title">รูปแบบการแปล</string>
+  <string name="morphe_live_chat_translate_style_translated_only">เฉพาะข้อความที่แปลแล้ว</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">ต้นฉบับ (แปล)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(แปล) ต้นฉบับ</string>
+  <string name="morphe_live_chat_translate_bold_title">ตัวหนาสำหรับข้อความที่แปล</string>
+  <string name="morphe_live_chat_translate_bold_summary">แสดงข้อความที่แปลแล้วเป็นตัวหนา</string>
+  <string name="morphe_live_chat_translate_use_color_title">สีข้อความที่แปลแบบกำหนดเอง</string>
+  <string name="morphe_live_chat_translate_use_color_summary">ใช้สีที่กำหนดเองกับข้อความที่แปล</string>
+  <string name="morphe_live_chat_translate_color_title">สีข้อความที่แปล</string>
+  <string name="morphe_live_chat_translate_color_summary">กำหนดสีรหัส hex ของข้อความที่แปล</string>
+  <string name="morphe_live_chat_translate_max_length_title">ความยาวข้อความสูงสุด</string>
+  <string name="morphe_live_chat_translate_max_length_summary">ข้อความที่ยาวกว่านี้จะแสดงแบบไม่แปล</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">ไม่จำกัด</string>
 </resources>

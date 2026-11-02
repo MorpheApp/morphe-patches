@@ -61,6 +61,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_account_menu_title">Bibliotheek / U onderste menufilter</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Bibliotheek / U onderste menufilter</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Voer de bibliotheek-/U onderste menunamen in om op te filteren, gescheiden door nieuwe regels</string>
+  <string name="morphe_hide_account_menu_downloads_title">Downloaden verbergen</string>
   <string name="morphe_hide_album_cards_title">Verberg albumkaarten</string>
   <string name="morphe_hide_album_cards_summary">Verbergt de albumkaarten onder de artiestbeschrijving</string>
   <string name="morphe_hide_artist_cards_title">Verberg artistkaarten</string>
@@ -445,7 +446,7 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <string name="morphe_feed_long_press_menu_title">Tik en houd ingedrukt om het videoclipmenu te openen</string>
   <string name="morphe_feed_long_press_menu_summary">Korte of lange aanraking ergens op een feedvideo opent het menu</string>
   <string name="morphe_feed_watch_later_button_title">Button \"Later bekijken\" weergeven op miniatuurafbeeldingen</string>
-  <string name="morphe_feed_watch_later_button_summary">Er wordt een knop \"Later bekijken\" weergegeven op de miniatuurafbeeldingen van feedvideo\'s. Tikken en vasthouden opent Opslaan in afspeellijst</string>
+  <string name="morphe_feed_watch_later_button_summary">Er wordt een knop \"Kijk later\" getoond op de miniaturen van feed-video\'s, met een vinkje als de video is opgeslagen. Tikken op de knop slaat de video op of verwijdert deze, en lang drukken opent \"Opslaan in afspeellijst\"</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Berafbeeldingen downloaden</string>
   <string name="morphe_post_image_download_summary">Er wordt een downloadknop getoond naast de deelknop van berichten met afbeeldingen of GIF\'s, en er wordt een downloaditem toegevoegd aan hun menu</string>
@@ -515,8 +516,23 @@ Nadat een video met de Ask-knop eenmaal is geopend, werkt de functie voor alle v
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Alle opties</string>
   <string name="morphe_shorts_download_flyout_button_title">Download tonen in Shorts-menu</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Voegt een extern downloadmenu-item toe aan de Shorts-speler</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Voegt een downloaditem toe aan het menu van de Shorts-speler</string>
   <string name="morphe_shorts_download_flyout_title">Download</string>
+  <string name="morphe_export_download_folder_title">Opgeslagen video\'s exporteren</string>
+  <string name="morphe_export_download_folder_summary">"Exporteer in de app opgeslagen video's naar de opslag van je apparaat via het downloadmenu. Tik om de exportmap te wijzigen
+
+Exportmap: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Exportmap</string>
+  <string name="morphe_export_download_folder_change">Map wijzigen</string>
+  <string name="morphe_export_download_folder_changed">Exportmap gewijzigd</string>
+  <string name="morphe_export_download_folder_reset">Exportmap hersteld</string>
+  <string name="morphe_export_download_flyout_title">Exporteren naar apparaat</string>
+  <string name="morphe_export_download_started">Video exporteren</string>
+  <string name="morphe_export_download_progress">Video exporteren: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Video-exports</string>
+  <string name="morphe_export_download_saved">Video geëxporteerd naar %s</string>
+  <string name="morphe_export_download_failed">Kon de video niet exporteren</string>
+  <string name="morphe_export_download_canceled">Export geannuleerd</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Spraakvertaling</string>
   <string name="morphe_vot_screen_summary">Lees ondertitels hardop voor met behulp van tekst-naar-spraak op het apparaat, gesynchroniseerd met het afspelen</string>
@@ -591,6 +607,19 @@ Uw API-sleutel mag nooit worden gedeeld. Iedereen met toegang tot deze sleutel k
   <string name="morphe_pip_button_overlay_title">Toon Picture-in-Picture-knop</string>
   <string name="morphe_pip_button_flyout_title">Toon Picture-in-Picture-menu</string>
   <string name="morphe_pip_button_flyout_name">Overschakelen naar Picture-in-Picture</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Picture-in-picture acties</string>
+  <string name="morphe_pip_actions_screen_summary">Wijzig de knoppen die in picture-in-picture worden weergegeven</string>
+  <string name="morphe_pip_action_left_title">Linkerknop</string>
+  <string name="morphe_pip_action_center_title">Middenknop</string>
+  <string name="morphe_pip_action_right_title">Rechterknop</string>
+  <string name="morphe_pip_action_entry_default">Standaard</string>
+  <string name="morphe_pip_action_entry_previous">Vorige video</string>
+  <string name="morphe_pip_action_entry_next">Volgende video</string>
+  <string name="morphe_pip_action_entry_rewind">10 seconden terugspoelen</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 seconden vooruitspoelen</string>
+  <string name="morphe_pip_action_entry_play_pause">Afspelen/pauzeren</string>
+  <string name="morphe_pip_action_entry_background_playback">Achtergrondafspeling</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Toon Speel alles-knop</string>
   <string name="morphe_play_all_button_summary">"Tik om een afspeellijst van alle video's van het kanaal te genereren, houd ingedrukt om ongedaan te maken
@@ -623,10 +652,6 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Opslaan in Watch later</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Toon de knop \'Opslaan in Later bekijken\' in de instellingenflyout van de speler.</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Hiermee kun je de video die je momenteel bekijkt vanuit het uitklapmenu voor video-instellingen opslaan in \'Later bekijken\'.</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Toon knop Opslaan in Watch later bij kindervideo\'s</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Hiermee kunt u kindgerelateerde video\'s opslaan in \'Later bekijken\' via het flyoutmenu</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Toon de knop \'Opslaan in Later bekijken\' in het flyoutmenu voor Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Hiermee kunt u Shorts opslaan in \'Later bekijken\' via het flyoutmenu</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Stuur \'Later bekijken\' door naar afspeellijst</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Later bekijken</string>
   <string name="morphe_queue_flyout_title">Toevoegen aan Morphe-wachtrij</string>
@@ -845,6 +870,10 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Ondertitels</string>
   <string name="morphe_captions_screen_summary">Beheer automatische ondertitels en ondertitelcookies</string>
+  <string name="morphe_captions_languages_title">Taal en vertaling</string>
+  <string name="morphe_captions_presentation_title">Uiterlijk en gedrag</string>
+  <string name="morphe_captions_advanced_title">Geavanceerd</string>
+  <string name="morphe_captions_advanced_summary">Opties voor cookies en transcripties</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Automatische ondertitels zichtbaarheid</string>
   <string name="morphe_auto_captions_style_entry_1">Altijd weergeven</string>
@@ -853,10 +882,10 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_auto_captions_style_entry_4">Toon als gemuteerd</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Voorkeurstaal voor ondertiteling</string>
-  <string name="morphe_preferred_caption_language_summary">Selecteert eerst de ondertiteling van de provider en vertaalt deze vervolgens automatisch naar de voorkeurstaal</string>
+  <string name="morphe_preferred_caption_language_summary">Selecteert automatisch een taal voor ondertiteling voor elke video</string>
   <string name="morphe_preferred_caption_language_entry_off">Uit</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Extra talen voor automatische vertaling toevoegen</string>
+  <string name="morphe_auto_translate_additional_languages_title">Extra talen voor automatische vertaling</string>
   <string name="morphe_auto_translate_additional_languages_summary">Voegt meer talen toe aan het menu voor automatische vertaling</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Stel ondertitelcookies in</string>
@@ -872,8 +901,17 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_fix_transcript_title">Transcriptie corrigeren</string>
   <string name="morphe_fix_transcript_summary">Lost een voorwaarde-controlefout op die kan voorkomen dat het transcript wordt geladen</string>
   <string name="morphe_captions_in_pip_title">Bijschriften weergeven in picture-in-picture</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Grootte ondertiteling</string>
+  <string name="morphe_caption_scale_summary">Van toepassing op enkelings- en tweetalige ondertitelingen</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Stabiele bijschriftblokken</string>
-  <string name="morphe_stable_caption_blocks_summary">Groepeer automatische ondertiteling in stabiele, leesbare blokken. Sommige woorden kunnen verschijnen voordat ze worden uitgesproken. Herstarten is vereist.</string>
+  <string name="morphe_stable_caption_blocks_summary">Groepeert automatische enkelings-taalondertitelingen in stabiele, leesbare blokken. Tweetalige ondertitelingen maken altijd gebruik van blokken. Sommige woorden kunnen verschijnen voordat ze worden uitgesproken</string>
+  <string name="morphe_secondary_caption_language_title">Secundaire taal voor ondertiteling</string>
+  <string name="morphe_secondary_caption_language_summary">Toont een tweede taal bij de ondertitelingen en voegt een schakelaar voor tweetalige ondertiteling toe aan het menu voor ondertitelingen</string>
+  <string name="morphe_dual_captions_enabled_title">Tweetalige ondertitelingen</string>
+  <string name="morphe_caption_block_translation_failed">Sommige vertalingen van ondertitelingen zijn niet beschikbaar. Beschikbare ondertitelingen worden getoond.</string>
+  <string name="morphe_caption_blocks_too_large">Beide talen van de ondertiteling passen niet in deze player. De primaire taal wordt getoond.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigatieknoppen</string>
   <string name="morphe_navigation_buttons_screen_summary">Kies welke componenten er in de werkbalk verschijnen</string>
@@ -1141,10 +1179,10 @@ Auto-indeling
 • Shorts worden geopend in de reguliere speler
 • Niet ingeklapte oude actiebalk voor video's wordt weergegeven"</string>
   <string name="morphe_tablet_layout_in_player_title">Schakel tabletindeling in de speler in</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Herstelt de oude player layout
 
-Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer video's\" overlay mogelijk niet beschikbaar"</string>
+Beperking: Als \"Video acties balk layout\" niet op Klassiek staat, is de \"Meer video's\" overlay mogelijk niet beschikbaar"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Herstel het oude gedrag van ondertitels</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Herstel oude Shorts-speler pictogrammen</string>
@@ -1226,6 +1264,10 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_miniplayer_not_available_summary">YouTube heeft alle extra miniplayers verwijderd. Om meer miniplayer-typen te herstellen, patch dan YouTube 21.28.208 of ouder</string>
   <string name="morphe_miniplayer_type_title">\"miniplayer\"-type</string>
   <string name="morphe_miniplayer_hide_title_title">Verberg titel en kanaal</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Uitvouwen door omhoog te vegen</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Door de geminiaturiseerde speler omhoog te vegen, wordt de speler uitgevouwen in plaats van de geminiaturiseerde speler naar de bovenkant van het scherm te verplaatsen</string>
+  <string name="morphe_miniplayer_docked_title">Gekoppelde geminiaturiseerde speler</string>
+  <string name="morphe_miniplayer_docked_summary">Koppelt de geminiaturiseerde speler aan de navigatiebalk en de zijkanten van het scherm, in plaats van eroverheen te zweven</string>
   <string name="morphe_miniplayer_type_entry_0">Uitgeschakeld</string>
   <string name="morphe_miniplayer_type_entry_1">Standaard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaal</string>
@@ -1268,6 +1310,8 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Glow splash screen wordt niet ondersteund door dit apparaat</string>
+  <string name="morphe_splash_screen_duration_title">Duur startanimatie</string>
+  <string name="morphe_splash_screen_duration_summary">Hoe lang de gloei-animatie wordt afgespeeld. Tik op de animatie om deze over te slaan</string>
   <string name="morphe_theme_color_light_title">Achtergrond van het lichtthema</string>
   <string name="morphe_theme_color_light_entry_2">Wit</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Wit)</string>
@@ -1498,10 +1542,11 @@ Het afspelen van video met AV1 kan haperen of frames overslaan"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Player JavaScript variant</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Toon spoofing in \'Stats for nerds\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Herstel oude video acties balk</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Verhelpt dat video-actieknoppen niet kunnen worden verborgen
-
-Beperking: keert terug naar de oude stijl van de overlay 'Meer video's'."</string>
+  <string name="morphe_video_action_bar_layout_title">Video acties balk layout</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Standaard</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klassiek</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Minimaal</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Beperking: Klassiek gaat terug naar de oude stijl van de \"Meer video\'s\" overlay</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Stijl van het pictogram van de speler</string>
   <string name="morphe_player_icon_style_entry_auto">Automatisch</string>
@@ -1669,4 +1714,27 @@ Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een 
   <string name="morphe_niconico_comments_max_length_title">Maximale commentlengte</string>
   <string name="morphe_niconico_comments_max_length_summary">Verbergt comments met meer tekens dan dit. Elke emoji telt als één teken</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Geen limiet</string>
+  <string name="morphe_live_chat_translate_screen_title">Vertaling livechat</string>
+  <string name="morphe_live_chat_translate_screen_summary">Vertaal livechat- en livechat-replayberichten</string>
+  <string name="morphe_live_chat_translate_title">Livechat vertalen</string>
+  <string name="morphe_live_chat_translate_summary">Vertaalt livechat- en livechat-replayberichten zodra ze op het scherm verschijnen</string>
+  <string name="morphe_live_chat_translate_language_title">Vertaaltaal</string>
+  <string name="morphe_live_chat_translate_exclude_title">Uitgesloten talen</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Met komma\'s gescheiden taalcodes zoals id,en. Berichten in deze talen worden niet vertaald</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Knop \"Bericht kopiëren\" weergeven</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Voegt een kleine kopieerknop toe aan elk chatbericht</string>
+  <string name="morphe_live_chat_translate_copied">Bericht naar klembord gekopieerd</string>
+  <string name="morphe_live_chat_translate_style_title">Vertaalstijl</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Alleen vertaald</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Origineel (vertaald)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Vertaald) origineel</string>
+  <string name="morphe_live_chat_translate_bold_title">Vertaalde tekst vetdrukken</string>
+  <string name="morphe_live_chat_translate_bold_summary">Toont de vertaalde tekst in vetdruk</string>
+  <string name="morphe_live_chat_translate_use_color_title">Aangepaste kleur voor vertaalde tekst</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Past een aangepaste kleur toe op de vertaalde tekst</string>
+  <string name="morphe_live_chat_translate_color_title">Kleur vertaalde tekst</string>
+  <string name="morphe_live_chat_translate_color_summary">Stel de hex-kleur van de vertaalde tekst in</string>
+  <string name="morphe_live_chat_translate_max_length_title">Maximale berichtlengte</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Langere berichten worden onvertaald getoond</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Geen limiet</string>
 </resources>

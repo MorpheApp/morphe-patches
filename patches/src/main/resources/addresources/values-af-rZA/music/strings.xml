@@ -713,12 +713,15 @@ Liriek kom van derdeparty diensverskaffers wat nie aan Morphe gelink, gesponsord
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Aangesluit! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Verbindingsmislukking. Kontroleer die instellings.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Gee die API-sleutel eerste</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Toets konneksie</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Haal modelle op…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Haal modelle op</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Kies \'n Model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Kon nie modelle ophaal nie. Gaan API-sleutel of konneksie na.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Spoortjie</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Basis-URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Diensvoorkeure</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Kies \'n diens</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API-sleutel (opsioneel)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Ekstra versoekliggaam (opsionele JSON)</string>

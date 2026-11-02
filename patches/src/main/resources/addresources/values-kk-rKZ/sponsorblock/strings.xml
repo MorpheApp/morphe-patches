@@ -17,8 +17,18 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_square_layout_summary">SponsorBlock батырмалары мен басқару элементтері үшін шаршы тәрізді бұрыштарды қолданады</string>
+  <string name="morphe_sb_offline_segments_title">Жүктелген бейнелердің сегменттерін сақтау</string>
+  <string name="morphe_sb_offline_segments_summary">Офлайн режимінде жүктелген бейнелердің сегменттерін өткізіп жіберуге мүмкіндік береді</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Баптауларыңызда жеке SponsorBlock пайдаланушы ID-і бар.
+
+Пайдаланушы ID-і құпия сөз сияқты, сондықтан оны ешқашан бөліспеңіз"</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Сегментті жіберу мүмкін болмады (мәні: %1$s %2$s)</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock уақытша қолжетімсіз (мәні %s)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Сегментке дауыс беру мүмкін болмады (мәні: %1$s %2$s)</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_new_segment_disabled_category">Баптауларда категория өшірілген. Жіберу үшін категорияны қосыңыз</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_loading">Жүктелуде…</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Пайдаланушы атын өзгерту мүмкін болмады: Мәні: %1$s %2$s</string>
 </resources>

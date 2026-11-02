@@ -22,7 +22,6 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/HideFullscreenAdsPatch;"
 
@@ -51,8 +50,7 @@ internal fun hideFullscreenAdsPatch(
 
         LithoDialogBuilderFingerprint.let {
             it.method.cloneParameters().apply {
-                val dialogClass = it.instructionMatches.first().instruction
-                    .getReference<MethodReference>()!!.definingClass
+                val dialogClass = it.instructionMatches.first().methodReference.definingClass
 
                 val insertIndex = indexOfFirstInstructionReversedOrThrow {
                     opcode == Opcode.IPUT_OBJECT &&

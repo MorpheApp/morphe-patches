@@ -13,7 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -23,7 +23,6 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AutoTranslateCaptionsPatch;"
@@ -47,9 +46,9 @@ internal val autoTranslateCaptionsPatch = bytecodePatch(
         )
 
         val labelField = CaptionTrackBuilderBuildFingerprint.instructionMatches[0]
-            .instruction.getReference<FieldReference>()!!
+            .fieldReference
         val urlField = CaptionTracksManagerAutoTranslateTracksFingerprint.instructionMatches[0]
-            .instruction.getReference<FieldReference>()!!
+            .fieldReference
 
         val setLanguageCodeMethod = CaptionTrackBuilderSetterFingerprint("Null languageCode").method
         val setUrlMethod = CaptionTrackBuilderSetterFingerprint("Null url").method
@@ -127,10 +126,13 @@ internal val autoTranslateCaptionsPatch = bytecodePatch(
             val countMatch = instructionMatches[1]
             val count = countMatch.getInstruction<OneRegisterInstruction>().registerA
             val result = instructionMatches.last().getInstruction<OneRegisterInstruction>().registerA
+            val source = method.findFreeRegister(countMatch.index + 1, count, result)
             method.addInstructions(
                 countMatch.index + 1,
                 """
-                    invoke-static { v$count, v$result }, $EXTENSION_CLASS->getTranslationCount(ILjava/util/List;)I
+                    invoke-virtual/range { p0 .. p0 }, $translationSource
+                    move-result-object v$source
+                    invoke-static { v$count, v$result, v$source }, $EXTENSION_CLASS->getTranslationCount(ILjava/util/List;$PREFERRED_CAPTION_TRACK_INTERFACE)I
                     move-result v$count
                 """
             )

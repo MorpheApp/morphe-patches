@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit गोपनीयता नीति</string>
   <string name="morphe_google_signin_not_available_toast">Google लॉगिन उपलब्ध नहीं है। ईमेल से लॉगिन करें</string>
+  <string name="morphe_app_downgrade_dialog_title">डाउनग्रेड समर्थित नहीं है</string>
+  <string name="morphe_app_downgrade_dialog_message">"इस Reddit इंस्टालेशन को &lt;b&gt;%1$s&lt;/b&gt; से &lt;b&gt;%2$s&lt;/b&gt; पर डाउनग्रेड किया गया था
+&lt;br/&gt;&lt;br/&gt;
+नए वर्ज़न का ऐप डेटा पुराने वर्ज़न के साथ काम नहीं करता है और ऐप सही ढंग से काम नहीं कर सकता है।
+&lt;br/&gt;&lt;br/&gt;
+पुराने वर्ज़न का उपयोग करने के लिए, आपको Reddit को &lt;b&gt;अनइंस्टॉल&lt;/b&gt; करना होगा और फिर पुराना वर्ज़न इंस्टॉल करना होगा।"</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">ऐप जानकारी खोलें</string>
   <string name="morphe_screen_ads_title">विज्ञापन</string>
   <string name="morphe_hide_post_ads_title">फ़ीड विज्ञापन छिपाएँ</string>
   <string name="morphe_hide_comment_ads_title">कमेंट विज्ञापन छिपाएँ</string>

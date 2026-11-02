@@ -11,11 +11,14 @@
 package app.morphe.patches.youtube.misc.navigation
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
@@ -138,13 +141,22 @@ internal val browseIdHookPatch = bytecodePatch(description = "Hooks the browse i
                 val browseDataExtensionField = getInstruction<ReferenceInstruction>(browseDataExtensionIndex)
                     .getReference<FieldReference>()!!
 
-                // Matches two 100% identical methods in the same class, either method works here.
+                // Matches two 100% identical methods, either method works here.
+                // 21.44+ has a third method that reads a different string of the browse data
+                // and checks it is not empty, instead of returning it directly.
                 val browseIdMethod = Fingerprint(
                     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
                     returnType = "Ljava/lang/String;",
                     parameters = listOf(endpointField.type),
                     filters = listOf(
-                        fieldAccess(opcode = Opcode.SGET_OBJECT, reference = browseDataExtensionField)
+                        fieldAccess(opcode = Opcode.SGET_OBJECT, reference = browseDataExtensionField),
+                        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/lang/String;"),
+                        anyInstruction(
+                            opcode(Opcode.RETURN_OBJECT),
+                            // 21.44+ jumps to the return.
+                            opcode(Opcode.GOTO),
+                            location = MatchAfterImmediately()
+                        )
                     )
                 ).matchAll(1..2).first().method
 

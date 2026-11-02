@@ -8,10 +8,15 @@ option java_package = "app.morphe.extension.youtube.innertube";
 // Action of an edit playlist request.
 // Only the fields that are read are declared.
 message PlaylistEditAction {
+    optional string addedVideoId = 2;
+    optional string setVideoId = 3;
+    optional string removedVideoId = 17;
     optional PlaylistEditActionType action = 6;
 }
 
 enum PlaylistEditActionType {
     ACTION_UNKNOWN = 0;
     ACTION_ADD_VIDEO = 1;
+    ACTION_REMOVE_VIDEO = 2;
+    ACTION_REMOVE_VIDEO_BY_VIDEO_ID = 18;
 }

@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Informativa sulla privacy di Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Accesso Google non disponibile. Usa l\'email per accedere.</string>
+  <string name="morphe_app_downgrade_dialog_title">Downgrade non supportato</string>
+  <string name="morphe_app_downgrade_dialog_message">"Questa installazione di Reddit è stata degradata da &lt;b&gt;%1$s&lt;/b&gt; a &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+I dati dell'app di una versione più recente non funzionano con versioni più vecchie e l'app potrebbe non funzionare correttamente.
+&lt;br/&gt;&lt;br/&gt;
+Per utilizzare una versione precedente, devi &lt;b&gt;disinstallare&lt;/b&gt; Reddit e poi installare la versione precedente."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Apri info app</string>
   <string name="morphe_screen_ads_title">Pubblicità</string>
   <string name="morphe_hide_post_ads_title">Nascondi gli annunci nel feed</string>
   <string name="morphe_hide_comment_ads_title">Nascondi gli annunci nei commenti</string>

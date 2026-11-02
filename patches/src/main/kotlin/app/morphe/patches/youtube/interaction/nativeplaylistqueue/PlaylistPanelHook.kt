@@ -11,7 +11,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.p0Register
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -19,7 +18,6 @@ import app.morphe.util.findFieldFromToString
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 // The native model factory initializes queueMode to 1 before accepting a watch response.
 // Keep that neutral mode: rows use ordinary watch endpoints, without attaching
@@ -39,18 +37,18 @@ internal fun installPlaylistPanel(context: BytecodePatchContext) = with(context)
     val controller = mutableClassDefBy(controllerType)
 
     val accept = acceptedPlaylistModelFingerprint(controllerType, modelType, responseVideoField)
-    val modelField = accept.instructionMatches.last().instruction.getReference<FieldReference>()!!
+    val modelField = accept.instructionMatches.last().fieldReference
     val activePlaylistField = playlistControllerIdentityFingerprint(accept.originalMethod)
-        .instructionMatches.first().instruction.getReference<FieldReference>()!!
+        .instructionMatches.first().fieldReference
     val activeVideoMatch = accept.instructionMatches[2]
-    val activeVideoField = activeVideoMatch.instruction.getReference<FieldReference>()!!
+    val activeVideoField = activeVideoMatch.fieldReference
     check(activeVideoMatch.getInstruction<TwoRegisterInstruction>().registerB == accept.originalMethod.p0Register) {
         "Native playlist queue: active video must belong to the playlist controller"
     }
 
     // The collapsed panel view, whose click opens the playlist.
     val collapsedView = playlistControlsCreationFingerprint(controllerType)
-        .instructionMatches.first().instruction.getReference<FieldReference>()!!
+        .instructionMatches.first().fieldReference
 
     val render = playlistPanelRenderFingerprint(modelField)
     val transition = playlistVideoTransitionFingerprint(activeVideoField)
@@ -66,7 +64,7 @@ internal fun installPlaylistPanel(context: BytecodePatchContext) = with(context)
     val constructorRegisters = constructor.originalMethod.p0Register
     val constructorFields = constructor.instructionMatches.sortedBy {
         it.getInstruction<TwoRegisterInstruction>().registerA
-    }.map { it.instruction.getReference<FieldReference>()!! }
+    }.map { it.fieldReference }
     check(
         constructor.instructionMatches.map {
             it.getInstruction<TwoRegisterInstruction>().registerA - constructorRegisters - 1

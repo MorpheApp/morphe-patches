@@ -713,12 +713,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Συνδέθηκε! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Απέτυχε η σύνδεση. Ελέγξτε τις ρυθμίσεις.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Εισάγετε πρώτα το κλειδί API</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Δοκιμή σύνδεσης</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Ανάκτηση μοντέλων…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Ανάκτηση μοντέλων</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Επίλεξε ένα Μοντέλο</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Αποτυχία ανάκτησης μοντέλων. Έλεγξε το API key ή τη σύνδεση.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Μοντέλο</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Βασική διεύθυνση URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Προεπιλογές υπηρεσίας</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Επιλογή υπηρεσίας</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">Κλειδί API (προαιρετικό)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Πρόσθετο σώμα αιτήματος (προαιρετικό JSON)</string>

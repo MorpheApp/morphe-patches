@@ -111,3 +111,13 @@ internal object ShortsWhiteSeekbarFeatureFlagFingerprint : Fingerprint(
         literal(45787913)
     )
 )
+
+/**
+ * Enables the seekbar style of the video, sent by the server for some videos: an image
+ * instead of the seekbar handle (such as the logo of the artist) and the color of the played bar.
+ */
+internal object CustomVideoSeekbarFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45681792L)
+    )
+)

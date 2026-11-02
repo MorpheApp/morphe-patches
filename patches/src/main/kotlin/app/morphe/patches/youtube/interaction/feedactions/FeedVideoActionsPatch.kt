@@ -14,6 +14,7 @@ import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.misc.auth.authHookPatch
+import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.feedcards.feedVideoCardsHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -36,12 +37,14 @@ val feedVideoActionsPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         addResourcesPatch,
-        // Finds the video id of the menu, and hooks the menu dialogs.
+        // Finds the video id of the menu, to learn the description of the menu button.
         flyoutPatch,
-        // Account header for the Watch later request.
-        authHookPatch,
         // Finds the video of each card, to hide the button while it plays in the feed.
         feedVideoCardsHookPatch,
+        // Runs the commands of the Watch later button.
+        commandRouterHookPatch,
+        // Loads the videos of the Watch later playlist, to show if the video is saved.
+        authHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

@@ -18,6 +18,12 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit gizlilik politikası</string>
   <string name="morphe_google_signin_not_available_toast">Google ile giriş yapılamıyor. E-posta ile giriş yapın.}],</string>
+  <string name="morphe_app_downgrade_dialog_title">Eski sürüme düşürme desteklenmiyor</string>
+  <string name="morphe_app_downgrade_dialog_message">"Bu Reddit kurulumu &lt;b&gt;%1$s&lt;/b&gt; sürümünden &lt;b&gt;%2$s&lt;/b&gt; sürümüne düşürüldü&lt;br/&gt;&lt;br/&gt;
+Yeni bir sürümdeki uygulama verisi eski sürümlerle çalışmaz ve uygulama düzgün çalışmayabilir.
+&lt;br/&gt;&lt;br/&gt;
+Daha eski bir sürümü kullanmak için, Reddit'i &lt;b&gt;kaldırıp&lt;/b&gt; eski sürümü yüklemelisiniz."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Uygulama bilgisini aç</string>
   <string name="morphe_screen_ads_title">Reklamlar</string>
   <string name="morphe_hide_post_ads_title">Akış reklamlarını gizle</string>
   <string name="morphe_hide_comment_ads_title">Yorum reklamlarını gizle</string>

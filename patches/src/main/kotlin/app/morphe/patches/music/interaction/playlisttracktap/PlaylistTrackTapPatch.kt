@@ -48,7 +48,7 @@ val playlistTrackTapPatch = bytecodePatch(
 
         val builderMatches = WatchEndpointCommandBuilderFingerprint.instructionMatches
 
-        val watchEndpointDefaultInstanceField = builderMatches[0].getFieldAccessed()
+        val watchEndpointDefaultInstanceField = builderMatches[0].fieldReference
         val watchEndpointClass = watchEndpointDefaultInstanceField.definingClass
 
         // GeneratedMessageLite and its builder, whose method names are not obfuscated.
@@ -56,12 +56,12 @@ val playlistTrackTapPatch = bytecodePatch(
         val messageClass = createBuilderMethod.definingClass
         val messageBuilderClass = createBuilderMethod.returnType
 
-        val playlistIdField = builderMatches[3].getFieldAccessed()
-        val presenceBitsField = builderMatches[5].getFieldAccessed()
-        val playlistIndexField = builderMatches[6].getFieldAccessed()
+        val playlistIdField = builderMatches[3].fieldReference
+        val presenceBitsField = builderMatches[5].fieldReference
+        val playlistIndexField = builderMatches[6].fieldReference
 
-        val commandDefaultInstanceField = builderMatches[7].getFieldAccessed()
-        val watchEndpointExtensionField = builderMatches[8].getFieldAccessed()
+        val commandDefaultInstanceField = builderMatches[7].fieldReference
+        val watchEndpointExtensionField = builderMatches[8].fieldReference
         val commandClass = commandDefaultInstanceField.definingClass
 
         val setExtensionMethod = builderMatches[9].getMethodCalled()
@@ -72,7 +72,7 @@ val playlistTrackTapPatch = bytecodePatch(
         ).method
 
         val queueAddEndpointExtensionField = QueueAddEndpointCommandFingerprint
-            .instructionMatches.first().getFieldAccessed()
+            .instructionMatches.first().fieldReference
         val queueAddEndpointClass = queueAddEndpointExtensionField.definingClass
         val queueAddEndpointDefaultInstanceField = classDefBy(queueAddEndpointClass).fields.first {
             AccessFlags.STATIC.isSet(it.accessFlags) && it.type == queueAddEndpointClass

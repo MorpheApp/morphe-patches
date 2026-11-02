@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit məxfilik siyasəti</string>
   <string name="morphe_google_signin_not_available_toast">Google girişi mövcud deyil. Daxil olmaq üçün e-poçt istifadə et</string>
+  <string name="morphe_app_downgrade_dialog_title">Aşağı salınma dəstəklənmir</string>
+  <string name="morphe_app_downgrade_dialog_message">"Bu Reddit quraşdırılması &lt;b&gt;%1$s&lt;/b&gt; versiyasın &lt;b&gt;%2$s&lt;/b&gt; versiyasına endirib
+&lt;br/&gt;&lt;br/&gt;
+Yeni versiyanın tətbiq məlumatları daha köhnə versiyalarla işləmir və tətbiq düzgün işləməyə bilər.
+&lt;br/&gt;&lt;br/&gt;
+Köhnə versiyanı istifadə etmək üçün Reddit-i &lt;b&gt;silməlisiz&lt;/b&gt; və sonra daha köhnə versiyanı quraşdırmalısınız."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Tətbiq məlumatını aç</string>
   <string name="morphe_screen_ads_title">Reklamlar</string>
   <string name="morphe_hide_post_ads_title">Axın reklamların gizlət</string>
   <string name="morphe_hide_comment_ads_title">Şərh reklamlarını gizlət</string>

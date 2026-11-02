@@ -9,11 +9,9 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 /**
  * Observe the shared native header/row service-menu callback. The callback already validates
@@ -25,7 +23,7 @@ internal fun installPlaylistMenuDispatch(context: BytecodePatchContext, callback
     val callback = dispatch.instructionMatches[1]
     val dismissal = dispatch.instructionMatches[2]
 
-    val endpointType = callback.instruction.getReference<MethodReference>()!!.parameterTypes.first().toString()
+    val endpointType = callback.methodReference.parameterTypes.first().toString()
 
     installQueueSavePicker(this, endpointType)
 

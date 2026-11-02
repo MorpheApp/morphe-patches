@@ -107,17 +107,16 @@ internal object RiveSplashScreenViewFingerprint : Fingerprint(
 
 /**
  * 21.30 - 21.31 and 21.35+ sets the view that the Rive animation is drawn in.
+ * Must be matched against the method of [SplashScreenStyleFingerprint] or [SplashScreenStyleDelegateFingerprint].
  */
 internal object RiveSplashScreenAnimationViewFingerprint : Fingerprint(
-    definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
-    name = "onCreate",
     returnType = "V",
-    parameters = listOf("Landroid/os/Bundle;"),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "rive_animation"),
         methodCall(
             name = "findViewById",
-            location = MatchAfterImmediately()
+            // 21.44+ loads the id before a check.
+            location = MatchAfterWithin(4)
         ),
         opcode(
             opcode = Opcode.MOVE_RESULT_OBJECT,
@@ -183,6 +182,20 @@ internal object SplashScreenOnStopFingerprint : Fingerprint(
     classFingerprint = RiveSplashScreenViewFingerprint,
     name = "onStop",
     returnType = "V"
+)
+
+/**
+ * Schedules the splash screen to close after a timeout of 2.5 seconds.
+ * Must be matched against the method of [SplashScreenStyleFingerprint] or [SplashScreenStyleDelegateFingerprint].
+ */
+internal object SplashScreenTimeoutFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        literal(2500L),
+        methodCall(
+            parameters = listOf("Ljava/lang/Runnable;", "J", "Ljava/util/concurrent/TimeUnit;")
+        )
+    )
 )
 
 /**
@@ -279,13 +292,21 @@ internal object SplashScreenStyleFingerprint : Fingerprint(
 )
 
 /**
- * Matches to the same method as [SplashScreenStyleFingerprint].
+ * 21.44+ sets up the splash screen in a method of the main activity delegate, called from onCreate.
+ */
+internal object SplashScreenStyleDelegateFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        literal(1074339245)
+    )
+)
+
+/**
+ * Must be matched against the method of [SplashScreenStyleFingerprint] or [SplashScreenStyleDelegateFingerprint].
  */
 internal object ShowSplashScreenFingerprint : Fingerprint(
-    definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
-    name = "onCreate",
     returnType = "V",
-    parameters = listOf("Landroid/os/Bundle;"),
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_STATIC,

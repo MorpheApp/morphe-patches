@@ -50,16 +50,26 @@ public class RememberVideoQualityPatch {
     private static final int VIDEO_QUALITY_SETTING_ADVANCED_MENU = 3;
 
     /**
-     * ID of the video whose quality was selected by the user, and the resolution selected.
+     * ID of the regular video whose quality was selected by the user, and the resolution selected.
      * The video ID is used, because a player reload starts the same video again.
      */
-    private static volatile String userSelectedQualityVideoId = "";
-    private static volatile int userSelectedQualityResolution = VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE;
+    private static volatile String regularSelectedQualityVideoId = "";
+    private static volatile int regularSelectedQualityResolution = VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE;
 
     /**
-     * If the quality selected by the user was selected in the Shorts player.
+     * ID of the Short whose quality was selected by the user, and the resolution selected.
+     * The regular player keeps its video while Shorts play, such as in the miniplayer,
+     * so each player keeps the quality selected for its own video.
      */
-    private static volatile boolean userSelectedQualityIsShorts;
+    private static volatile String shortsSelectedQualityVideoId = "";
+    private static volatile int shortsSelectedQualityResolution = VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE;
+
+    /**
+     * If a Short was opened, and the regular player did not play its video again since then.
+     * The video ID is the one of the regular video until the Short starts, so the quality
+     * selected for the regular video is not used meanwhile, otherwise the Short would load with it.
+     */
+    private static volatile boolean shortsOpened;
 
     /**
      * ID of the video whose buffered video is cleared once the player sets the quality
@@ -106,35 +116,49 @@ public class RememberVideoQualityPatch {
         // such as when the video is loaded again after the app returns from the background.
         // A video shown again starts with the default quality.
         ShortsPlayerState.getOnChange().addObserver((Boolean isOpen) -> {
-            if (!isOpen && userSelectedQualityIsShorts) {
-                clearUserSelectedQuality();
+            shortsOpened = isOpen;
+            if (!isOpen) {
+                clearShortsSelectedQuality();
             }
         });
-        // Another Short plays, such as after a swipe. The video of the regular player can change
-        // for a moment while its video plays, such as for an ad, so only the Shorts player is checked.
         VideoInformation.onVideoIdChange.addObserver((String videoId) -> {
-            if (userSelectedQualityIsShorts && ShortsPlayerState.isOpen()
-                    && !videoId.equals(userSelectedQualityVideoId)) {
-                clearUserSelectedQuality();
+            if (!ShortsPlayerState.isOpen() || videoId.equals(regularSelectedQualityVideoId)) {
+                // The regular player plays a video, such as its video again when the Shorts player closes.
+                shortsOpened = false;
+            }
+            // Another Short plays, such as after a swipe. The video of the regular player can change
+            // for a moment while its video plays, such as for an ad, so only the Shorts player is checked.
+            if (ShortsPlayerState.isOpen() && !videoId.equals(shortsSelectedQualityVideoId)) {
+                clearShortsSelectedQuality();
             }
         });
         PlayerType.getOnChange().addObserver((PlayerType type) -> {
-            if (type == PlayerType.NONE && !userSelectedQualityIsShorts) {
-                clearUserSelectedQuality();
+            if (type == PlayerType.NONE) {
+                clearRegularSelectedQuality();
             }
         });
     }
 
-    private static void clearUserSelectedQuality() {
-        userSelectedQualityVideoId = "";
+    private static void clearRegularSelectedQuality() {
+        regularSelectedQualityVideoId = "";
+        clearVideoBufferTimeUs = -1;
+    }
+
+    private static void clearShortsSelectedQuality() {
+        shortsSelectedQualityVideoId = "";
         clearVideoBufferTimeUs = -1;
     }
 
     private static void setUserSelectedQuality(int resolution, boolean isShorts) {
-        userSelectedQualityResolution = resolution;
-        userSelectedQualityIsShorts = isShorts;
-        userSelectedQualityVideoId = VideoInformation.getVideoId();
-        clearVideoBufferVideoId = userSelectedQualityVideoId;
+        final String videoId = VideoInformation.getVideoId();
+        if (isShorts) {
+            shortsSelectedQualityResolution = resolution;
+            shortsSelectedQualityVideoId = videoId;
+        } else {
+            regularSelectedQualityResolution = resolution;
+            regularSelectedQualityVideoId = videoId;
+        }
+        clearVideoBufferVideoId = videoId;
         // The playback time is read on the main thread,
         // as the player may set the video formats on another thread.
         final long videoTime = VideoInformation.getVideoTime();
@@ -237,11 +261,22 @@ public class RememberVideoQualityPatch {
     }
 
     /**
-     * @return If the user selected the quality of the current video.
+     * @return The resolution the user selected for the current video in the player that plays it,
+     *         or null if the user did not select the quality of the current video.
      */
-    private static boolean isQualitySelectedByUser() {
-        String videoId = VideoInformation.getVideoId();
-        return !videoId.isEmpty() && videoId.equals(userSelectedQualityVideoId);
+    @Nullable
+    private static Integer getUserSelectedQuality() {
+        final String videoId = VideoInformation.getVideoId();
+        if (videoId.isEmpty()) {
+            return null;
+        }
+        if (ShortsPlayerState.isOpen() && videoId.equals(shortsSelectedQualityVideoId)) {
+            return shortsSelectedQualityResolution;
+        }
+        if (!shortsOpened && videoId.equals(regularSelectedQualityVideoId)) {
+            return regularSelectedQualityResolution;
+        }
+        return null;
     }
 
     /**
@@ -255,11 +290,12 @@ public class RememberVideoQualityPatch {
      * would start with it. The Short it was selected for keeps it with the formats saved
      * with the quality last selected (see {@link #useSelectedQualityFormats(boolean)}).
      *
-     * @return If the quality selected by the user is used when the video loads again.
+     * @return If the quality selected by the user for the regular video is used when the video loads again.
      */
     private static boolean useUserSelectedQualityOnReload() {
-        return isQualitySelectedByUser() && !userSelectedQualityIsShorts
-                && VideoInformation.getPlayerResponseVideoId().equals(VideoInformation.getVideoId());
+        final String videoId = VideoInformation.getVideoId();
+        return !shortsOpened && !videoId.isEmpty() && videoId.equals(regularSelectedQualityVideoId)
+                && VideoInformation.getPlayerResponseVideoId().equals(videoId);
     }
 
     public static boolean shouldRememberVideoQuality() {
@@ -317,11 +353,27 @@ public class RememberVideoQualityPatch {
      * @return If the video must not be opened, always false.
      */
     public static boolean onVideoIntentLoaded(Map<Object, Object> playbackStartDescriptorMap, String videoId) {
-        if (!userSelectedQualityVideoId.equals(videoId)) {
+        if (!regularSelectedQualityVideoId.equals(videoId)) {
             // Another video is opened. The video ID of the player is updated only once
             // the video starts, so the quality selected for the current video
             // would otherwise be used when the other video starts.
-            clearUserSelectedQuality();
+            clearRegularSelectedQuality();
+        }
+        return false;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when a Short is opened, before it starts. The regular player keeps its video
+     * and the quality selected for it, such as when the video is in the miniplayer.
+     *
+     * @return If the Short must not be opened, always false.
+     */
+    public static boolean onShortsIntentLoaded(Map<Object, Object> playbackStartDescriptorMap, String videoId) {
+        shortsOpened = true;
+        if (!shortsSelectedQualityVideoId.equals(videoId)) {
+            clearShortsSelectedQuality();
         }
         return false;
     }
@@ -339,7 +391,7 @@ public class RememberVideoQualityPatch {
         // the selected quality needs another codec. The reload has no initial quality,
         // or a copy of the default quality used when the video started.
         if (useUserSelectedQualityOnReload()) {
-            final int selectedResolution = userSelectedQualityResolution;
+            final int selectedResolution = regularSelectedQualityResolution;
             Logger.printDebug(() -> "initialVideoQuality selected by the user: " + selectedResolution);
             // With 'Auto' selected, YouTube chooses the quality.
             return selectedResolution > 0
@@ -367,6 +419,9 @@ public class RememberVideoQualityPatch {
      * The Shorts player also loads the next Shorts before they play, while the current Short
      * is still the video of the player, so a quality selected in the Shorts quality menu
      * is used only by the player that loads the Short it was selected for.
+     * The regular player can load its video again after Shorts played, such as when its video
+     * was in the miniplayer, while the player response is still the one of the last Short,
+     * so the video it loads is checked too.
      *
      * @param resolution Initial video quality of the playback start parameters, or null.
      * @param videoId    Video the player loads, or null if not known.
@@ -374,14 +429,17 @@ public class RememberVideoQualityPatch {
      */
     @Nullable
     public static Integer getPlaybackStartVideoQuality(@Nullable Integer resolution, @Nullable String videoId) {
-        final boolean useSelectedQuality = userSelectedQualityIsShorts
-                ? videoId != null && !videoId.isEmpty() && videoId.equals(userSelectedQualityVideoId)
-                : !ShortsPlayerState.isOpen() && useUserSelectedQualityOnReload();
-        if (!useSelectedQuality) {
+        final int selectedResolution;
+        if (videoId != null && !videoId.isEmpty() && videoId.equals(shortsSelectedQualityVideoId)) {
+            selectedResolution = shortsSelectedQualityResolution;
+        } else if (videoId != null
+                ? !videoId.isEmpty() && videoId.equals(regularSelectedQualityVideoId)
+                : !ShortsPlayerState.isOpen() && useUserSelectedQualityOnReload()) {
+            selectedResolution = regularSelectedQualityResolution;
+        } else {
             return resolution;
         }
 
-        final int selectedResolution = userSelectedQualityResolution;
         Logger.printDebug(() -> "Playback start video quality selected by the user: " + selectedResolution);
         // With 'Auto' selected, YouTube chooses the quality.
         return selectedResolution > 0 ? selectedResolution : null;
@@ -402,7 +460,7 @@ public class RememberVideoQualityPatch {
      */
     public static int getLastSelectedVideoQuality() {
         try {
-            if (isQualitySelectedByUser()) {
+            if (getUserSelectedQuality() != null) {
                 return -1;
             }
 
@@ -457,8 +515,8 @@ public class RememberVideoQualityPatch {
             // otherwise the default quality. They are sent unchanged with 'Auto' selected
             // or no default quality.
             final int resolution;
-            if (isQualitySelectedByUser()) {
-                final int selectedResolution = userSelectedQualityResolution;
+            final Integer selectedResolution = getUserSelectedQuality();
+            if (selectedResolution != null) {
                 resolution = selectedResolution > 0 ? selectedResolution : -1;
             } else {
                 resolution = getLastSelectedVideoQuality();
@@ -670,7 +728,8 @@ public class RememberVideoQualityPatch {
      * @return If the formats of the selected quality are saved and used by the player.
      */
     public static boolean useSelectedQualityFormats(boolean original) {
-        return ShortsPlayerState.isOpen() && isQualitySelectedByUser();
+        final String videoId = VideoInformation.getVideoId();
+        return ShortsPlayerState.isOpen() && !videoId.isEmpty() && videoId.equals(shortsSelectedQualityVideoId);
     }
 
     /**

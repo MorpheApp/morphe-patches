@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">سیاست حفظ حریم خصوصی Reddit</string>
   <string name="morphe_google_signin_not_available_toast">ورود با Google در دسترس نیست. برای ورود از ایمیل استفاده کنید</string>
+  <string name="morphe_app_downgrade_dialog_title">کاهش نسخه پشتیبانی نمی‌شود</string>
+  <string name="morphe_app_downgrade_dialog_message">"این نصب Reddit از نسخه &lt;b&gt;%1$s&lt;/b&gt; به &lt;b&gt;%2$s&lt;/b&gt; کاهش یافته است
+&lt;br/&gt;&lt;br/&gt;
+داده‌های برنامه از یک نسخه جدیدتر با نسخه‌های قدیمی‌تر سازگار نیست و ممکن است برنامه به درستی کار نکند.
+&lt;br/&gt;&lt;br/&gt;
+برای استفاده از نسخه قدیمی‌تر، باید Reddit را &lt;b&gt;لغو نصب&lt;/b&gt; کنید و سپس نسخه قدیمی‌تر را نصب نمایید."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">باز کردن اطلاعات برنامه</string>
   <string name="morphe_screen_ads_title">تبلیغات</string>
   <string name="morphe_hide_post_ads_title">پنهان‌کردن تبلیغات خوراک</string>
   <string name="morphe_hide_comment_ads_title">پنهان‌کردن تبلیغات دیدگاه‌ها</string>

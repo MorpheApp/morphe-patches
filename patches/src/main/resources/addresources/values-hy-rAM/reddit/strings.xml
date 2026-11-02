@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit-ի գաղտնիության քաղաքականությունը</string>
   <string name="morphe_google_signin_not_available_toast">Google-ով մուտքը հասանելի չէ: Մուտք գործելու համար օգտագործեք էլ. հասցեն</string>
+  <string name="morphe_app_downgrade_dialog_title">Տարբերակի նվազեցումը չի աջակցվի</string>
+  <string name="morphe_app_downgrade_dialog_message">"Reddit-ի այս տեղադրումը նվազեցվել է &lt;b&gt;%1$s&lt;/b&gt;-ից մինչև &lt;b&gt;%2$s&lt;/b&gt;.
+&lt;br/&gt;&lt;br/&gt;
+Ավելի նոր տարբերակի հավելվածի տվյալները չեն աշխատում ավելի հին տարբերակների հետ, և հավելվածը կարող է ճիշտ չաշխատել:
+&lt;br/&gt;&lt;br/&gt;
+Ավելի հին տարբերակն օգտագործելու համար դուք պետք է &lt;b&gt;ջնջեք&lt;/b&gt; Reddit-ը, ապա տեղադրեք ավելի հին տարբերակը:"</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Բացել հավելվածի տեղեկությունները</string>
   <string name="morphe_screen_ads_title">Գովազդներ</string>
   <string name="morphe_hide_post_ads_title">Թաքցնել լրահոսի գովազդները</string>
   <string name="morphe_hide_comment_ads_title">Թաքցնել մեկնաբանությունների գովազդները</string>

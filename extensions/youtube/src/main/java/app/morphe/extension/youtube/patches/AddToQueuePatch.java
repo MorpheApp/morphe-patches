@@ -12,7 +12,9 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.util.Pair;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -142,22 +144,39 @@ public final class AddToQueuePatch {
                 continue;
             }
 
-            final int itemIndex = button.second - 1;
-            if (itemIndex < 0 || itemIndex >= itemList.getChildCount()) {
+            // The row is found by its text, as the index of the button does not always match the rows,
+            // such as when a row of a closed menu was counted. The queue click would then be set on
+            // another row, such as Save to playlist.
+            final String buttonText = FlyoutUtils.getVisibleFlyoutButtonText(buttonName);
+            View item = null;
+            if (buttonText != null) {
+                for (int i = 0, count = itemList.getChildCount(); i < count; i++) {
+                    if (itemList.getChildAt(i) instanceof ViewGroup row && Utils.getChildView(row, true, view ->
+                            view instanceof TextView rowText && buttonText.contentEquals(rowText.getText())) != null) {
+                        item = row;
+                        break;
+                    }
+                }
+            } else {
+                final int itemIndex = button.second - 1;
+                if (itemIndex >= 0 && itemIndex < itemList.getChildCount()) {
+                    item = itemList.getChildAt(itemIndex);
+                }
+            }
+            if (item == null) {
                 continue;
             }
 
-            android.view.View item = itemList.getChildAt(itemIndex);
             if (nativeQueue && queueButtonOriginalNames.get(1).equals(buttonName)
                     && !NativePlaylistQueuePatch.canShowFlyoutLast()) {
                 // The queue may have been cleared since the native model was prepared.
-                item.setVisibility(android.view.View.GONE);
+                item.setVisibility(View.GONE);
                 continue;
             }
             var badge = SECONDARY_CONTAINER_ID == 0 ? null : item.findViewById(SECONDARY_CONTAINER_ID);
-            if (badge != null && badge.getVisibility() != android.view.View.GONE) {
+            if (badge != null && badge.getVisibility() != View.GONE) {
                 Logger.printDebug(() -> "Hiding the menu item secondary icon");
-                badge.setVisibility(android.view.View.GONE);
+                badge.setVisibility(View.GONE);
             }
 
             if (LocalQueuePatch.isEnabled()) {

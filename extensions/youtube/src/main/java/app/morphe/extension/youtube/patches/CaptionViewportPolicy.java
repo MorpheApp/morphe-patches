@@ -13,6 +13,12 @@ import java.util.Map;
 
 /** Encoded content geometry belongs to its video, never to the last prefetched response. */
 final class CaptionViewportPolicy {
+    private static final int DEFAULT_SCALE_PERCENTAGE = 100;
+
+    static float scaleFontSize(float size, int percentage) {
+        return percentage == DEFAULT_SCALE_PERCENTAGE ? size : size * percentage / DEFAULT_SCALE_PERCENTAGE;
+    }
+
     private final LinkedHashMap<String, Double> aspects = new LinkedHashMap<>(32, 0.75f, true);
     private String selected;
 
@@ -27,7 +33,7 @@ final class CaptionViewportPolicy {
                 || height <= 0
                 || width > 16384
                 || height > 16384) return;
-        double aspect = width / (double) height;
+        final double aspect = width / (double) height;
         if (aspect < 0.1 || aspect > 10) return;
         aspects.put(videoId, aspect);
         if (aspects.size() > 32) {
@@ -41,8 +47,7 @@ final class CaptionViewportPolicy {
         }
     }
 
-    synchronized int height(
-            int width, int height, boolean fullscreenFit, boolean landscapeTransition) {
+    synchronized int height(int width, int height, boolean fullscreenFit, boolean landscapeTransition) {
         if (!fullscreenFit || width <= 0 || height <= 0 || selected == null) return height;
         // Animated bounds cross the stable portrait/near-square guards. The target
         // configuration, rather than one intermediate frame, identifies landscape.

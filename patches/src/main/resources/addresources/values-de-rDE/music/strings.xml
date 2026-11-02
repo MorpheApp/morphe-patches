@@ -713,12 +713,15 @@ Liedtexte stammen von Drittanbieterdiensten, die keine Verbindung zu Morphe habe
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Verbunden! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Verbindung fehlgeschlagen. Überprüfen Sie die Einstellungen.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Geben Sie zuerst den API-Schlüssel ein</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Verbindung testen</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Modelle werden abgerufen…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Modelle abrufen</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Modell auswählen</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Modelle konnten nicht abgerufen werden. Überprüfen Sie den API-Schlüssel oder die Verbindung.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Aufforderung</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Modell</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Basis-URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Service-Presets</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Dienste auswählen</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API-Schlüssel (optional)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Zusätzlicher Request-Body (optionales JSON)</string>

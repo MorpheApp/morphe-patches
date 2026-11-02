@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">besteak</string>
   <string name="morphe_settings_screen_12_video_title">Bideoa</string>
   <string name="morphe_restore_old_settings_menus_title">YouTube konfigurazio-pantaila zaharra berreskuratu</string>
+  <string name="morphe_native_snackbar_title">Mezuak YouTube snackbarrean erakutsi</string>
+  <string name="morphe_native_snackbar_summary">Morphe mezuak, adibidez, sekoialdiko botoi baten berostea, popup baten ordez YouTube snackbarrean erakutsiko dira</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Kendu fondoan erreproduziteko gehikizunak</string>
   <string name="morphe_shorts_disable_background_playback_title">Desgaitu atzeko planeko erreprodukzioa</string>
@@ -60,6 +62,7 @@ Liburutegi fitxa erakusten da
   <string name="morphe_hide_account_menu_title">Aktibatu Liburutegia / Zu beheko menu-iragazkia</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Liburutegia / Zu beheko menu-iragazkia</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Sartu Library / You beheko menuen izenak filtratzeko, berriztatze-lerrekintzatituta</string>
+  <string name="morphe_hide_account_menu_downloads_title">Ezkutatu deskargak</string>
   <string name="morphe_hide_album_cards_title">Ezkutatu album-txartelak</string>
   <string name="morphe_hide_album_cards_summary">Album-txartelak ezkutatzen ditu artista-deskribapenaren azpian</string>
   <string name="morphe_hide_artist_cards_title">Ezkutatu artista-txartelak</string>
@@ -444,7 +447,7 @@ Txostenak publikoak dira eta kanal bat zerrendara gehitu aurretik berrikusi egit
   <string name="morphe_feed_long_press_menu_title">Sakatu eta mantendu bideo-menua irekitzeko</string>
   <string name="morphe_feed_long_press_menu_summary">Feed-eko bideo baten edozein lekuan sakatu eta mantentzeak bere menua irekiko du</string>
   <string name="morphe_feed_watch_later_button_title">Ezagutun geroago botoia erakutsi miniaturetan</string>
-  <string name="morphe_feed_watch_later_button_summary">Ezagutun geroago botoia erakutsi feed-eko bideoen miniaturetan. Sakatu eta mantentzeak \"Playlistean gorde\" aukera irekiko du</string>
+  <string name="morphe_feed_watch_later_button_summary">\"Gero ikusi\" botoia erakutsi izaten da feed bideioen thumbnailetan, check mark batekin bideoa gordaildu bada. Bertan sakatuz bideoa gordetzen edo kentzen da, eta sakatuta mantenduz \"Listan gordetu\" aukera irekitzen da</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Deskargatu postuen irudiak</string>
   <string name="morphe_post_image_download_summary">Deskarga-botoi bat agertzen da irudiak edo GIFak duten postuen Partekitu botoiaren ondoan, eta deskarga-elementu bat gehitzen da haien menuera</string>
@@ -514,8 +517,23 @@ Ask botoia duen bideo bat behin ireki ondoren, funtzioak bideo guztiekin funtzio
   <string name="morphe_external_downloader_quick_audio">Audioa</string>
   <string name="morphe_external_downloader_quick_options">Aukera guztiak</string>
   <string name="morphe_shorts_download_flyout_button_title">Erakutsi deskarga Shorts menuan</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Deskargatzaile kanpora egon menu-elementu bat gehitzen dio Shorts atariari</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Descarga-elementu bat gehitu Shorts playeren menuera</string>
   <string name="morphe_shorts_download_flyout_title">Deskargatu</string>
+  <string name="morphe_export_download_folder_title">Gorde duten bideoak exportatu</string>
+  <string name="morphe_export_download_folder_summary">"Aplikazioan gordutako bideoak zure gailuko bilbidean exportatu aplikazioko deskargak flyout menuaren bidez. Tapatu exportazio folderra aldatzeko
+
+Exportazio folderra: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Exportazio folderra</string>
+  <string name="morphe_export_download_folder_change">Folderra aldatu</string>
+  <string name="morphe_export_download_folder_changed">Exportazio folderra aldatuta</string>
+  <string name="morphe_export_download_folder_reset">Exportazio folderra berreratuta</string>
+  <string name="morphe_export_download_flyout_title">Gailuera exportatu</string>
+  <string name="morphe_export_download_started">Bideoa exportatzen</string>
+  <string name="morphe_export_download_progress">Bideoa exportatzen: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Bideo exportazioak</string>
+  <string name="morphe_export_download_saved">Bideoa %s ra exportatuta</string>
+  <string name="morphe_export_download_failed">Bideoa ezin izan da exportatu</string>
+  <string name="morphe_export_download_canceled">Exportazioaly bertzebe</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ahots-gain translationa</string>
   <string name="morphe_vot_screen_summary">Bideoaren azpitituluak ozen irakurri gailuaren testu-ahots sistemaren bidez, erreprodukzioarekin sinkronizatuta</string>
@@ -590,6 +608,19 @@ Zure API gakoa inoiz ez dela partekat knockout. Hura duen edozeinek zure OpenRou
   <string name="morphe_pip_button_overlay_title">Erdi-irudia botoia erakutsi</string>
   <string name="morphe_pip_button_flyout_title">Erdi-irudia menua erakutsi</string>
   <string name="morphe_pip_button_flyout_name">Erdi-irudiari aldatu</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Irudi-irudiko ekintzak</string>
+  <string name="morphe_pip_actions_screen_summary">Aldatu irudi-irudiko botoiak</string>
+  <string name="morphe_pip_action_left_title">Ezkerreko botoia</string>
+  <string name="morphe_pip_action_center_title">Erdiko botoia</string>
+  <string name="morphe_pip_action_right_title">Eskuineko botoia</string>
+  <string name="morphe_pip_action_entry_default">Lehenerakoa</string>
+  <string name="morphe_pip_action_entry_previous">Bideo aurreragokoa</string>
+  <string name="morphe_pip_action_entry_next">Hurrengo bideoa</string>
+  <string name="morphe_pip_action_entry_rewind">10 segundoko atzerakoa</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 segundoko aurrerakoa</string>
+  <string name="morphe_pip_action_entry_play_pause">Errenditzea/Kertzea</string>
+  <string name="morphe_pip_action_entry_background_playback">Atzeko planeko erreprodukzioa</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Erakutsi Denak jarrai botoia</string>
   <string name="morphe_play_all_button_summary">"Sakatu kanaleko bideo guztien zerrenda sortzeko, sakatu eta mantendu atzean uzteko
@@ -622,10 +653,6 @@ Informazioa: Agian ez funtzionatzen duen zuzeneko emanbisteetan"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Gorde geroago ikusteko</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Erakutsi \'Gero ikusteko gorde\' botoia seiatzailearen konfigurazio-menuan</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Gaur egungo bideoa \'Gero ikusteko\' gorde sailkatzailearen konfigurazio-menuatik</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Erakutsi \"Gero ikusi\"n gorde botoia haurren bideoetan</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Umeen bideoak \'Gero ikusteko\' gorde menu-txikiatik</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Erakutsi \'Gero ikusteko gorde\' botoia shorts-en menu-txikian</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Shortsak \'Gero ikusi\'n gordetzea ahalbidetzen du menu txikiari bidez</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Bideratu \"Gero ikusi\" zerrendara</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Gero ikusi</string>
   <string name="morphe_queue_flyout_title">Gehitu Morphe zerrendara</string>
@@ -844,6 +871,10 @@ Hona konponduz, aktibu 'Bideo-emisioak imitatzea' eta alda 'Beherako bezeroa' 'T
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Kaptuak</string>
   <string name="morphe_captions_screen_summary">Kudeatu azpititulu automatikoak eta azpitituluen cookie-ak</string>
+  <string name="morphe_captions_languages_title">Hizkuntza eta itzulpena</string>
+  <string name="morphe_captions_presentation_title">Itxura eta jokomoduak</string>
+  <string name="morphe_captions_advanced_title">Aurreratuak</string>
+  <string name="morphe_captions_advanced_summary">Cookie eta transkripzio aukerak</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Kaptu automatikoen ikusgarritasuna</string>
   <string name="morphe_auto_captions_style_entry_1">Erakutsi beti</string>
@@ -852,10 +883,10 @@ Hona konponduz, aktibu 'Bideo-emisioak imitatzea' eta alda 'Beherako bezeroa' 'T
   <string name="morphe_auto_captions_style_entry_4">Erakutsi bakitik egon uenean</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Lehenagoa den azpitituluen hizkuntza</string>
-  <string name="morphe_preferred_caption_language_summary">Lehenikly eskaintzailearen azpitituluak hautatzen ditu, eta ondoren automatikoki itzultzen ditu lehenagoa den hizkuntzara</string>
+  <string name="morphe_preferred_caption_language_summary">Automatikoki aukeratzen du azpititulu hizkuntza bat bideo bakoitzarentzat</string>
   <string name="morphe_preferred_caption_language_entry_off">Txerto</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Gehitu auto-itzulpen hizkuntza gehigiz</string>
+  <string name="morphe_auto_translate_additional_languages_title">Auto-itzulpen hizkuntza gehigarriak</string>
   <string name="morphe_auto_translate_additional_languages_summary">Auto-itzulpen menura hizkuntza gehiago gehitzen ditu</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Kaptuen cookie-ak konfiguratu</string>
@@ -873,8 +904,17 @@ Hona konponduz, aktibu 'Bideo-emisioak imitatzea' eta alda 'Beherako bezeroa' 'T
   <string name="morphe_fix_transcript_title">Konpondu transkripzioa</string>
   <string name="morphe_fix_transcript_summary">Transkripzioa kargatzea eragoindu ditzakeen baldintza aurreko egiaztapen hutsbaten arazoa konpondu</string>
   <string name="morphe_captions_in_pip_title">Erakutsi subtituluak irudi-irudian</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Azpititulu neurria</string>
+  <string name="morphe_caption_scale_summary">Hizkuntza bakarkoak eta bilingual azpitituluei aplikatzen zaie</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Kaptuen blokak egonkorrak</string>
-  <string name="morphe_stable_caption_blocks_summary">Kaptuak automatikoak blok egonkor eta irakurgarretan sailatu. Batzuetan hitzak esan baino lehen agertu daitezke. Berrifundatzea beharrezkoa da.</string>
+  <string name="morphe_stable_caption_blocks_summary">Hizkuntza bakarkoak automatikoak bloke egon eta irakurgarrietan grouping egiten ditu. Bilingual azpitituluek blokeak beti erabiltzen dituzte. Hitz batzuk agian hitz egin aurretik agertu dira</string>
+  <string name="morphe_secondary_caption_language_title">Bigarren azpititulu hizkuntza</string>
+  <string name="morphe_secondary_caption_language_summary">Bigarren hizkuntza bat erakusten du azpitituluekin, eta Bilingual azpitituluen toggle bat gehitzen dio azpititulu menuari</string>
+  <string name="morphe_dual_captions_enabled_title">Bilingual azpitituluak</string>
+  <string name="morphe_caption_block_translation_failed">Azpititulu itzulpen batzuk ez daude eskuragarriak. Eskuragarriak erakutsiz.</string>
+  <string name="morphe_caption_blocks_too_large">Bi azpititulu hizkuntzak ez dira sartzen sekoagatik. Lehen hizkuntza erakutsiz.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Nabigazio botoiak</string>
   <string name="morphe_navigation_buttons_screen_summary">Aukeratu zein botoiak agertu behar diren behera navigazio barra</string>
@@ -1142,10 +1182,10 @@ Automobilen diseinua
 • Shorts-ak erreproduzitzaile ohikoan irekitzen dira
 • Bideo zaharren ekintza-barra ez dagoたたtuta"</string>
   <string name="morphe_tablet_layout_in_player_title">Aktibu tabletaren disenuat playback-ean</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Elkarrailtzalearen layout zaharra berreskuratzen du
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Sekoagarri zaharkatutako layout-a berreskuratzen du
 
-Limitazioa: 'Bideo ekintza barra zaharra berreskuratu' tắt dago bada, 'Bideo gehiago' overlay-a agian ez dago eskuragarri"</string>
+Mugaltzea: 'Bideo ekintza-barra layout-a' ez bada Klasikoa, 'Bideo gehiago' overlay-a agian ez own eskuragarri"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Lehengo kaptuen jokapenari itzuli</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Lorekin gorde zen save zaharra playlistera itzuli</string>
@@ -1227,6 +1267,10 @@ Limitazioa: 'Bideo ekintza barra zaharra berreskuratu' tắt dago bada, 'Bideo g
   <string name="morphe_miniplayer_not_available_summary">YouTube-k mini-erreproduzitzaile gehigarri guztiak kendu ditu. Mini-erreproduzitzaile mota gehiago berreskuratzeko, patchatu YouTube 21.28.208 bertsioa edo lehenagokoak</string>
   <string name="morphe_miniplayer_type_title">Mini-jokalariaren mota</string>
   <string name="morphe_miniplayer_hide_title_title">Ezkutatu izenburua eta kanala</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Zuzen goituz zabaltu</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Miniplayerra goituz, playerra zabaltzen da, miniplayerra pantailaren goiko aldera mugistean beherean</string>
+  <string name="morphe_miniplayer_docked_title">Miniplayerra finkatuta</string>
+  <string name="morphe_miniplayer_docked_summary">Miniplayerra nabigazio barrarean eta pantailaren alboetan finkatzen du, gainean flotatzen egiteko beharrean</string>
   <string name="morphe_miniplayer_type_entry_0">Desaktibatuta</string>
   <string name="morphe_miniplayer_type_entry_1">Lehenesteko</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalista</string>
@@ -1269,6 +1313,8 @@ Limitazioa: 'Bideo ekintza barra zaharra berreskuratu' tắt dago bada, 'Bideo g
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Gailu honek ez du distira duten splash screen-ak onartzen</string>
+  <string name="morphe_splash_screen_duration_title">Hasi-animazioaren iraupena</string>
+  <string name="morphe_splash_screen_duration_summary">Glow-animazioak zenbat denbora joku behar duen. Tapatu animazioa saltatzeko</string>
   <string name="morphe_theme_color_light_title">Tema argiaren atzeondoa</string>
   <string name="morphe_theme_color_light_entry_2">Zuria</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Zuria)</string>
@@ -1499,10 +1545,11 @@ AV1-ekin bideoen erreprodukzioa jolten badau edo frame-ak galdu ditzake"</string
   <string name="morphe_spoof_video_streams_player_js_variant_title">Playeren JavaScript bertsioa</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Erakutsi imitazioa \'Stats for nerds\'-en</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Bideo-ekintza barra zaharra berreskuratu</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Bideo-ekintza botoiak ezkutatu ezin izateko konponkortza
-
-Muga: 'Bideo gehiago' overlay zaharkundean itzultzen da"</string>
+  <string name="morphe_video_action_bar_layout_title">Bideo ekintza-barra layout-a</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Lehenutsia</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasikoa</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Minimalista</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Mugaltzea: Klasikoak \'Bideo gehiago\' overlay estilo zaharrera ekartzen du</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Atarijoko ikonoen estiloa</string>
   <string name="morphe_player_icon_style_entry_auto">Automatikoa</string>
@@ -1670,4 +1717,27 @@ Automatiko grabaketa aukeratua da. Inkognito moduan edo kontua aldatzean gelditu
   <string name="morphe_niconico_comments_max_length_title">Iruzkinen luzera maximoa</string>
   <string name="morphe_niconico_comments_max_length_summary">Honek baino karakterak gehiago dituzten iruzkinak ezkutatzen ditu. Emoji bakoitzak karaktera bat kontatzen du</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Mugaik gabe</string>
+  <string name="morphe_live_chat_translate_screen_title">Zirbilizko txatko itzulpena</string>
+  <string name="morphe_live_chat_translate_screen_summary">Zirbilizko txatko eta zirbilizko txatko playback mezuak itzuli</string>
+  <string name="morphe_live_chat_translate_title">Zirbilizko txatkoa itzuli</string>
+  <string name="morphe_live_chat_translate_summary">Zirbilizko txatkoa eta zirbilizko txatko playback mezuak itzultzen ditu pantailan agertzean</string>
+  <string name="morphe_live_chat_translate_language_title">Itzulpen hizkuntza</string>
+  <string name="morphe_live_chat_translate_exclude_title">Ezaguteko hizkuntzak</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Komak hitz astarako hizkuntza-kodeak, adibidez id,en. Hizkuntza hauen mezuak ez dira itzultzen</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Mezua kopiatzeko botoia erakutsi</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Mezu bakoitzari kopiatzeko botoi txiki bat gehitzen dio</string>
+  <string name="morphe_live_chat_translate_copied">Mezua apalabidean kopiatuta</string>
+  <string name="morphe_live_chat_translate_style_title">Itzulpen estiloa</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Itzultua soilik</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Jatorrizkoa (itzultua)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Itzultua) jatorrizkoa</string>
+  <string name="morphe_live_chat_translate_bold_title">Itzulpen testua boldegitu</string>
+  <string name="morphe_live_chat_translate_bold_summary">Itzulpen testua boldegatuta erakusten du</string>
+  <string name="morphe_live_chat_translate_use_color_title">Itzulpen testu kolore pertsonalizatua</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Kolore pertsonalizatu bat aplikatzen dio itzulpen testuari</string>
+  <string name="morphe_live_chat_translate_color_title">Itzulpen testu kolorea</string>
+  <string name="morphe_live_chat_translate_color_summary">Kide itzulpen testuaren hex kolorea datu</string>
+  <string name="morphe_live_chat_translate_max_length_title">Mezu luzera gehieneko</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Mezu luzeagoak itzulten gabe erakutsiko dira</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Mugik Cinematic</string>
 </resources>

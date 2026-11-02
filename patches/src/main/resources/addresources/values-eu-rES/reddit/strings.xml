@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit-en pribatutasun politika</string>
   <string name="morphe_google_signin_not_available_toast">Google-rekin saioa egiteko aukera ez dago. Erabili posta elektronikoa saioa egiteko</string>
+  <string name="morphe_app_downgrade_dialog_title">Bertsio zahagoa instalatzea ez da onartzen</string>
+  <string name="morphe_app_downgrade_dialog_message">"Reddit instalazio hau &lt;b&gt;%1$s&lt;/b&gt; bertsiotik &lt;b&gt;%2$s&lt;/b&gt; bertsiora jaitsi da
+&lt;br/&gt;&lt;br/&gt;
+Bertsio berriago bateko aplikazio datuek ez dute funtzionatzen bertsio zaharrekin eta aplikazioak agian ez du egoki funtzionatu.
+&lt;br/&gt;&lt;br/&gt;
+Bertsio zahago bat erabiltzeko, Reddit &lt;b&gt;desinstalatu&lt;/b&gt; behar duzu eta ondoren bertsio zahagoa instalatu."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Ireki aplikazioaren informazioa</string>
   <string name="morphe_screen_ads_title">Iragarkiak</string>
   <string name="morphe_hide_post_ads_title">Ezkutatu feedeko iragarkiak</string>
   <string name="morphe_hide_comment_ads_title">Ezkutatu komentarioen iragarkiak</string>

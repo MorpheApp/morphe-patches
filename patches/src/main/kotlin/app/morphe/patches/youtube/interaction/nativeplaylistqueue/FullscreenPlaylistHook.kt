@@ -18,7 +18,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal fun installFullscreenPlaylist(context: BytecodePatchContext) = with(context) {
     val container = QuickActionsContainerFingerprint
-        .instructionMatches.last().instruction.getReference<FieldReference>()!!
+        .instructionMatches.last().fieldReference
     val controllerType = container.definingClass
     val callback = quickActionsModelCallbackFingerprint(controllerType).match()
     val setter = callback.instructionMatches.last().getInstruction<Instruction>()

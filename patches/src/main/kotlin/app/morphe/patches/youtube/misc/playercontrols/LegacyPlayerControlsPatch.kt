@@ -423,14 +423,12 @@ val legacyPlayerControlsPatch = bytecodePatch(
             }
         }
 
-        // Override flags that interfere with old player icons override.
+        // Comments teaser A/B test: shows a small comments card below the player time bar,
+        // which can be too narrow to read in portrait.
+        // It also crashes the app on startup with the old player icons, so always turn it off.
         if (is_21_15_or_greater) {
-            PlayerCommentTeaserFeatureFlagFingerprint.matchAll().forEach {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->" +
-                            "allowModernPlayerLayoutFlags(Z)Z"
-                )
+            PlayerCommentTeaserFeatureFlagFingerprint.matchAllMethodIndicesForEach { index ->
+                insertLiteralOverride(index, false)
             }
         }
 

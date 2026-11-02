@@ -181,7 +181,7 @@ public final class LyricsRimeDictDialog {
         pair.first.show();
     }
 
-    /** A ticked row, in the app's own colours rather than the dialog theme's. */
+    /** A ticked row, in the app's own colors rather than the dialog theme's. */
     private static CheckBox checkBox(Context context, int fg, CharSequence text, boolean checked) {
         CheckBox box = new CheckBox(context);
         box.setText(text);
@@ -198,6 +198,7 @@ public final class LyricsRimeDictDialog {
     }
 
     /** A second line under a row, smaller and dimmed, for the notes about what a row is. */
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static void addNote(Context context, int fg, LinearLayout parent,
                                 @Nullable CharSequence text) {
         if (text == null || text.length() == 0) {
@@ -264,10 +265,11 @@ public final class LyricsRimeDictDialog {
     }
 
     /** Writes the choice, then fetches whatever the ticks now ask for. */
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static void apply(Map<String, Boolean> builtinChoice, List<String> keptCustom,
-            List<String> lostReading, Dialog dialog,
-            LyricsLocalRomanizationDownloads.ProgressSink sink,
-            @Nullable Runnable onChanged) {
+                              List<String> lostReading, Dialog dialog,
+                              LyricsLocalRomanizationDownloads.ProgressSink sink,
+                              @Nullable Runnable onChanged) {
         for (Map.Entry<String, Boolean> entry : builtinChoice.entrySet()) {
             RimeDictStore.setBuiltinSelected(entry.getKey(), entry.getValue());
         }
@@ -436,7 +438,7 @@ public final class LyricsRimeDictDialog {
         // form with what was typed, while Cancel and back do not reopen.
         final int[] outcome = {0}; // 0 closed by the user, 1 saved, 2 refused
         // The OK action runs after create() returns, so it reaches the dialog through a holder.
-        final Pair<Dialog, LinearLayout>[] pairBox = new Pair[1];
+        final Dialog[] dialogBox = new Dialog[1];
         final Pair<Dialog, LinearLayout> pair = CustomDialog.create(context,
                 str("morphe_music_lyrics_rime_dict_add_title"),
                 null,
@@ -445,13 +447,13 @@ public final class LyricsRimeDictDialog {
                 () -> {
                     final boolean ok = add(codeInput, labelInput, urlInput, charSource[0]);
                     outcome[0] = ok ? 1 : 2;
-                    if (ok) pairBox[0].first.dismiss();
+                    if (ok) dialogBox[0].dismiss();
                 },
                 () -> {},
                 null,
                 null,
                 true);
-        pairBox[0] = pair;
+        dialogBox[0] = pair.first;
 
         ScrollView scroll = new ScrollView(context);
         scroll.addView(content);
@@ -508,8 +510,9 @@ public final class LyricsRimeDictDialog {
      *
      * @return whether the list was added.
      */
+    @SuppressWarnings("ConstantValue")
     private static boolean add(EditText codeInput, EditText labelInput, EditText urlInput,
-            String charSource) {
+                               String charSource) {
         final String code = codeInput.getText().toString().trim().toLowerCase(Locale.ROOT);
         final String label = labelInput.getText().toString().trim();
         final String url = urlInput.getText().toString().trim();
@@ -522,7 +525,7 @@ public final class LyricsRimeDictDialog {
             Utils.showToastShort(str("morphe_music_lyrics_rime_dict_bad_code"));
             return false;
         }
-        if (!url.startsWith("https://") || url.length() <= "https://".length()) {
+        if (!url.startsWith("https://") || url.length() == "https://".length()) {
             Utils.showToastShort(str("morphe_music_lyrics_rime_dict_bad_url"));
             return false;
         }
@@ -558,6 +561,7 @@ public final class LyricsRimeDictDialog {
     }
 
     /** The BCP-47 primary subtag of the chosen romanization language, or "" for Automatic. */
+    @SuppressWarnings("ConstantValue")
     private static String currentSubtag() {
         final String language = Settings.LYRICS_ROMANIZE_LANGUAGE.get();
         if (language == null || language.isBlank()

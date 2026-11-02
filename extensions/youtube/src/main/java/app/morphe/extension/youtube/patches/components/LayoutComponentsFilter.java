@@ -68,6 +68,10 @@ public final class LayoutComponentsFilter extends Filter {
 
     private static final List<String> channelTabFilterStrings = Utils.getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
     private static final List<String> flyoutMenuFilterStrings = Utils.getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
+    /**
+     * Texts of the download item of the menus. Newer app versions also have the second text.
+     */
+    private static final String[] FLYOUT_DOWNLOAD_TEXTS = {"add_video_to_offline", "menu_add_to_offline"};
 
     @Nullable
     private static List<?> channelTabs;
@@ -121,6 +125,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final ByteArrayFilterGroupList linearLayoutGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup liveStream;
     private final ByteArrayFilterGroup liveStreamBuffer;
+    private final StringFilterGroup libraryDownloads;
+    private final ByteArrayFilterGroup libraryDownloadsBuffer;
     private final StringFilterGroup notificationsMenuHeader;
     private final ByteArrayFilterGroup notificationsMenuHeaderBuffer;
     private final StringFilterGroup notifyMe;
@@ -204,6 +210,19 @@ public final class LayoutComponentsFilter extends Filter {
                 "yt_outline_experimental_live_black"
         );
 
+        // 'Downloads' item of the You tab. It's a lockup, so the bottom menu filter can't match its name.
+        libraryDownloads = new StringFilterGroup(
+                Settings.HIDE_ACCOUNT_MENU_DOWNLOADS,
+                "video_lockup_with_attachment.e"
+        );
+
+        // The title is localized, but only the 'Downloads' item has this icon.
+        libraryDownloadsBuffer = new ByteArrayFilterGroup(
+                null,
+                "yt_outline_download_black",
+                "yt_outline_experimental_download_black"
+        );
+
         // The hint shown in the player during seek gestures. The identifier is versioned.
         final var seekEduOverlay = new StringFilterGroup(
                 Settings.HIDE_PLAYER_GESTURE_HINTS,
@@ -216,6 +235,7 @@ public final class LayoutComponentsFilter extends Filter {
                 linearLayout,
                 liveChatReplay,
                 liveStream,
+                libraryDownloads,
                 seekEduOverlay
         );
 
@@ -683,6 +703,14 @@ public final class LayoutComponentsFilter extends Filter {
             // Only check the whole lockup. The buffers of its nested components include
             // a shared list of icon names that also has the 'LIVE' badge icon.
             return isLockupRoot(path) && liveStreamBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == libraryDownloads) {
+            // Only check the whole lockup, for the same reason as the live streams.
+            return Settings.HIDE_ACCOUNT_MENU.get()
+                    && isLockupRoot(path)
+                    && NavigationButton.getSelectedNavigationButton(contextInterface) == NavigationButton.LIBRARY
+                    && libraryDownloadsBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == notificationsMenuHeader) {
@@ -1176,11 +1204,9 @@ public final class LayoutComponentsFilter extends Filter {
 
         String menuTitleString = menuTitleCharSequence.toString();
 
-        for (String filter : flyoutMenuFilterStrings) {
-            if (menuTitleString.equalsIgnoreCase(filter)) {
-                Logger.printDebug(() -> "Hiding: " + menuTitleString);
-                return null;
-            }
+        if (isFlyoutMenuFiltered(menuTitleString)) {
+            Logger.printDebug(() -> "Hiding: " + menuTitleString);
+            return null;
         }
 
         return menuTitleCharSequence;
@@ -1203,12 +1229,35 @@ public final class LayoutComponentsFilter extends Filter {
 
         String menuTitleString = menuTitleCharSequence.toString();
 
+        if (isFlyoutMenuFiltered(menuTitleString)) {
+            Logger.printDebug(() -> "Hiding: " + menuTitleString);
+            Utils.hideViewByLayoutParams(parentView);
+        }
+    }
+
+    /**
+     * The download item shows a placeholder while the state of the download is loaded in the background,
+     * and shows its real text only about a second after the menu opens. A filter of the download text
+     * therefore also hides the placeholder, otherwise the item is shown and then collapses.
+     */
+    private static boolean isFlyoutMenuFiltered(String menuTitle) {
+        final boolean isDownloadPlaceholder = menuTitle.equals(ResourceUtils.getString("menu_offline_placeholder"));
+
         for (String filter : flyoutMenuFilterStrings) {
-            if (menuTitleString.equalsIgnoreCase(filter)) {
-                Logger.printDebug(() -> "Hiding: " + menuTitleString);
-                Utils.hideViewByLayoutParams(parentView);
+            if (menuTitle.equalsIgnoreCase(filter)) {
+                return true;
+            }
+            if (isDownloadPlaceholder) {
+                for (String downloadText : FLYOUT_DOWNLOAD_TEXTS) {
+                    if (ResourceUtils.getStringIdentifier(downloadText) != 0
+                            && filter.equalsIgnoreCase(ResourceUtils.getString(downloadText))) {
+                        return true;
+                    }
+                }
             }
         }
+
+        return false;
     }
 
     /**

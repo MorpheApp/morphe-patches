@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">ልዩ ልዩ</string>
   <string name="morphe_settings_screen_12_video_title">ቪዲዮ</string>
   <string name="morphe_restore_old_settings_menus_title">የድሮውን የYouTube ቅንብሮች ስክሪን መልስ</string>
+  <string name="morphe_native_snackbar_title">መልእክቶችን በYouTube snackbar ላይ አሳይ</string>
+  <string name="morphe_native_snackbar_summary">የተጫዋች ቁልፍ ማረጋገጫን የመሳሰሉ የMorphe መልእክቶች ከpopup ይልቅ በYouTube snackbar ላይ ይታያሉ</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">የጀርባ ማጫወቻ ገደቦችን አስወግድ</string>
   <string name="morphe_shorts_disable_background_playback_title">የጀርባ ስርጭትን አግድ</string>
@@ -59,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">የላይብረሪ / የእርስዎ የታችኛው ሜኑ ማጣሪያን አብራ</string>
   <string name="morphe_hide_account_menu_filter_strings_title">የላይብረሪ / የእርስዎ የታችኛው ሜኑ ማጣሪያ</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">ለማጣሪያ የሚፈለጉትን የላይብረሪ / የእርስዎ የታችኛው ሜኑ ስሞች በአዲስ መስመር በመለየት ያስገቡ</string>
+  <string name="morphe_hide_account_menu_downloads_title">የተጫኑትን ደብቅ</string>
   <string name="morphe_hide_album_cards_title">የአልበም ካርዶችን ደብቅ</string>
   <string name="morphe_hide_album_cards_summary">ከአርቲስቱ መግለጫ በታች ያሉትን የአልበም ካርዶች ይደብቃል</string>
   <string name="morphe_hide_artist_cards_title">የአርቲስት ካርዶችን ደብቅ</string>
@@ -443,7 +446,6 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_title">የቪዲዮውን ሜኑ ለመክፈት ተጭነው ይያዙ</string>
   <string name="morphe_feed_long_press_menu_summary">በፊድ ቪዲዮ ላይ የትኛውም ቦታ ተጭነው በመያዝ ሜኑውን መክፈት ይቻላል</string>
   <string name="morphe_feed_watch_later_button_title">በጥቃቅን ምስሎች ላይ \"በኋላ እመለከታለሁ\" የሚለውን ቁልፍ አሳይ</string>
-  <string name="morphe_feed_watch_later_button_summary">በፊድ ቪዲዮዎች አሳሳል ላይ \"በኋላ እይ\" የሚል ቁልፍ ይታያል። ተጭነው በመያዝ \"ወደ የቪዲዮ ዝርዝር አስቀምጥ\" የሚለውን ይክፈቱ</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">የፖስት ምስሎችን አውርድ</string>
   <string name="morphe_post_image_download_summary">ምስሎች ወይም GIFs ላሏቸው ፖስቶች ከShare බොተን ጎን የአውርድዳ බොተን ይታያል፣ እንዲሁም በሜኑ ውስጥ የአውርድዳ ንጥል ይጨመራል</string>
@@ -513,8 +515,23 @@ Ask የሚለው ቁልፍ ያለው ቪዲዮ አንዴ ከተከፈተ በኋ�
   <string name="morphe_external_downloader_quick_audio">ድምጽ</string>
   <string name="morphe_external_downloader_quick_options">ሁሉም አማራጮች</string>
   <string name="morphe_shorts_download_flyout_button_title">በ Shorts ዝርዝር ውስጥ ዳውንሎድ አሳይ</string>
-  <string name="morphe_shorts_download_flyout_button_summary">ለ Shorts ማጫወቻ የውጭ ዳውንሎደር ዝርዝር ሜኑ ይጨምራል</string>
+  <string name="morphe_shorts_download_flyout_button_summary">በShorts ተጫዋች ዝርዝር ውስጥ የማውረጃ ስራን ይጨምራል</string>
   <string name="morphe_shorts_download_flyout_title">ዳውንሎድ</string>
+  <string name="morphe_export_download_folder_title">የተቀመጡ ቪዲዮዎችን ላክ</string>
+  <string name="morphe_export_download_folder_summary">"በመተግበሪያው ውስጥ ያሉትን የተቀመጡ ቪዲዮዎች በመተግበሪያው የውርድ ፍላይአውት ሜኑ በመጠቀም ወደ መሳሪያዎ ማከማቻ ይላኩ። የኤክስፖርት ፎልደሩን ለመቀየር ይጫኑ
+
+የኤክስፖርት ፎልደር፦ %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">የላክ ፎልደር</string>
+  <string name="morphe_export_download_folder_change">ፎልደር ቀይር</string>
+  <string name="morphe_export_download_folder_changed">የላክ ፎልደር ተቀይሯል</string>
+  <string name="morphe_export_download_folder_reset">የላክ ፎልደር ተቀናሽ ሆኗል</string>
+  <string name="morphe_export_download_flyout_title">ወደ መሳሪያው ላክ</string>
+  <string name="morphe_export_download_started">ቪዲዮ እየተላከ ነው</string>
+  <string name="morphe_export_download_progress">ቪዲዮ እየተላከ ነው፡ %d%%</string>
+  <string name="morphe_export_download_notification_channel">የቪዲዮ ስርጭቶች</string>
+  <string name="morphe_export_download_saved">ቪዲዮው ወደ %s ተልኳል</string>
+  <string name="morphe_export_download_failed">ቪዲዮውን መላክ አልተቻለም</string>
+  <string name="morphe_export_download_canceled">ስርጭቱ ተሰርዟል</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">የድምፅ ትርጉም</string>
   <string name="morphe_vot_screen_summary">የቪዲዮውን የግርጌ ጽሑፎች በሳቢው መሣሪያ ላይ ባለው የጽሑፍ-ወደ-ድምፅ አገልግሎት በመጠቀም ከቪዲዮው ጋር በተናበበ መልኩ በድምፅ ያንብቡ</string>
@@ -589,6 +606,19 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_pip_button_overlay_title">የስዕል በስዕል ቁልፉን አሳይ</string>
   <string name="morphe_pip_button_flyout_title">የስዕል በስዕል ሜኑን አሳይ</string>
   <string name="morphe_pip_button_flyout_name">ወደ ስዕል በስዕል ቀይር</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">በስዕል ውስጥ ያለ ስዕል ተግባራት</string>
+  <string name="morphe_pip_actions_screen_summary">በpicture-in-picture ውስጥ የሚታዩትን ቁልፎች ይቀይሩ</string>
+  <string name="morphe_pip_action_left_title">የግራ ቁልፍ</string>
+  <string name="morphe_pip_action_center_title">የመሃል ቁልፍ</string>
+  <string name="morphe_pip_action_right_title">የቀኝ ቁልፍ</string>
+  <string name="morphe_pip_action_entry_default">መደበኛ</string>
+  <string name="morphe_pip_action_entry_previous">የቀድሞ ቪዲዮ</string>
+  <string name="morphe_pip_action_entry_next">ቀጣይ ቪዲዮ</string>
+  <string name="morphe_pip_action_entry_rewind">10 ሰከንድ ወደ ኋላ መልስ</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 ሰከንድ ወደ ፊት አሳልፍ</string>
+  <string name="morphe_pip_action_entry_play_pause">አጫውት/አቁም</string>
+  <string name="morphe_pip_action_entry_background_playback">የጀርባ መልሶ ማጫወት</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">ሁሉንም አጫውት ቁልፍን አሳይ</string>
   <string name="morphe_play_all_button_summary">"ከቻናሉ ያሉትን ሁሉንም ቪዲዮዎች የይዘት ዝርዝር ለመፍጠር ይጫኑ፣ ለመሰረዝ ደግሞ ተጭነው ይያዙ
@@ -621,10 +651,6 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_save_to_watch_later_flyout_title">\'በኋላ እመለከተዋለሁ\' ላይ አስቀምጥ</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">በተጫዋች ቅንብሮች ፍላይአውት ውስጥ \"لاحاقاً ይመልከቱ\" ውስጥ ያስቀምጡ የሚለውን ቁልፍ ያሳዩ</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">አሁን እየተመለከቱት ያለውን ቪዲዮ ከቪዲዮ ቅንብሮች ፍላይአውት በኩል \"لاحاقاً ይመልከቱ\" ውስጥ ለማስቀመጥ ያስችላል</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">በልጆች ቪዲዮዎች ውስጥ \'በኋላ እመለከተዋለሁ\' ላይ አስቀምጥ የሚለውን ቁልፍ አሳይ</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">ከልጆች ጋር የተያያዙ ቪዲዮዎችን ከፍላይአውት ሜኑ በኩል \"لاحاقاً ይመልከቱ\" ውስጥ ለማስቀመጥ ያስችላል</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">በሾርቶች ፍላይአውት ውስጥ \"لاحاقاً ይመልከቱ\" ውስጥ ያስቀምጡ የሚለውን ቁልፍ ያሳዩ</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">ሾርቶችን ከፍላይአውት ሜኑ በኩል \"لاحاقاً ይመልከቱ\" ውስጥ ለማስቀመጥ ያስችላል</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">\"በኋላ እይ\"ን ወደ የሙዚቃ ዝርዝር አድጋጋ</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">በኋላ እይ</string>
   <string name="morphe_queue_flyout_title">ወደ Morphe ዝርዝር አክል</string>
@@ -851,10 +877,8 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_auto_captions_style_entry_4">ድምጽ ሲጠፋ አሳይ</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">የሚመረጥ የልባዊ ጽሁፍ ቋንቋ</string>
-  <string name="morphe_preferred_caption_language_summary">መጀመሪያ የአቅራቢውን ንዑስ ርዕስ ይመርጣል፣ ከዚያም ወደሚመረጠው ቋንቋ በራስ-ሰር ይተረጉማል</string>
   <string name="morphe_preferred_caption_language_entry_off">ጠፍቷል</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">ተጨማሪ የራስ-ትርጉም ቋንቋዎችን አክል</string>
   <string name="morphe_auto_translate_additional_languages_summary">ወደ ራስ-ትርጉም ዝርዝር ተጨማሪ ቋንቋዎችን ያክላል</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">የርዕስ ማብራሪያ ኩኪዎችን ያዘጋጁ</string>
@@ -872,8 +896,9 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_fix_transcript_title">የንግግር ጽሁፉን አስተካክል</string>
   <string name="morphe_fix_transcript_summary">የጽሑፍ ትርጉም እንዳይጫን ሊያደርግ የሚችልን ቅድመ ሁኔታ የፍተሻ ስህተት ይፈታዋል</string>
   <string name="morphe_captions_in_pip_title">በምስል ውስጥ ምስል ውስጥ የግርጌ ጽሁፎችን አሳይ</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">የተረጋጋ የርዕስ ብሎኮች</string>
-  <string name="morphe_stable_caption_blocks_summary">ራስ-ሰር የርዕስ ገለጻዎችን ወደ ተረጋጉ እና ሊነበቡ ወደሚችሉ ብሎኮች ያደራጃል። አንዳንድ ቃላት ከመነገራቸው በፊት ሊታዩ ይችላሉ። እንደገና ማስጀመር ያስፈልጋል።</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">የናቪጌሽን ቁልፎች</string>
   <string name="morphe_navigation_buttons_screen_summary">በታችኛው የናቪጌሽን ባር ላይ የትኞቹ ቁልፎች እንደሚታዩ ይምረጡ</string>
@@ -1141,10 +1166,7 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
 • Shorts በመደበኛው ፕሌየር ውስጥ ይከፈታሉ
 • ያልተጨመቀው የድሮ ቪዲዮ አክሽን ባር ይታያል"</string>
   <string name="morphe_tablet_layout_in_player_title">በተጫዋቹ ውስጥ የታብሌት አቀማመጥን አግብር</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"የድሮውን የተጫዋች አቀማመጥ ይመልሳል
-
-ገደብ፦ 'የድሮውን የቪዲዮ ተግባር አሞሌ መልስ' ከተጠፋ፣ 'ተጨማሪ ቪዲዮዎች' የሚለው ሽፋን ላይኖር ይችላል"</string>
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - የድሮውን የግርጌ ጽሁፍ ባህሪ መልስ</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - የድሮውን ወደ playlist ማስቀመጫ መልስ</string>
@@ -1226,6 +1248,10 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube ሁሉንም ተጨማሪ ሚኒ-ፕሌየሮች አስወግዷል። ተጨማሪ የሚኒ-ፕሌየር ዓይነቶችን ለመመለስ፣ YouTube 21.28.208 ወይም ከዚያ በበለጠ የድሮ ስሪትን ፓች ያድርጉ</string>
   <string name="morphe_miniplayer_type_title">የትንሽ ተጫዋች ዓይነት</string>
   <string name="morphe_miniplayer_hide_title_title">ርዕስን እና ቻናሉን ደብቅ</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">ወደ ላይ በማንሸራተት ያስፋፉ</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">ሚኒ ፕሌየሩን ወደ ላይ ማንሸራተት፣ ሚኒ ፕሌየሩን ወደ ስክሪኑ አናት ከማንቀሳቀስ ይልቅ ፕሌየሩን ያስፋፋዋል</string>
+  <string name="morphe_miniplayer_docked_title">የተያያዘ ሚኒ ፕሌየር</string>
+  <string name="morphe_miniplayer_docked_summary">ሚኒ ፕሌየሩ ከናቪጌሽን ባሩ እና ከስክሪኑ ጎኖች በላይ ተንሳፋፊ ከመሆን ይልቅ ከእነሱ ጋር እንዲያያዝ ያደርጋል</string>
   <string name="morphe_miniplayer_type_entry_0">ተዘግቷል</string>
   <string name="morphe_miniplayer_type_entry_1">መደበኛ</string>
   <string name="morphe_miniplayer_type_entry_2">ሚኒማሊስት</string>
@@ -1268,6 +1294,8 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">ይህ መሣሪያ የGlow ስፕላሽ ስክሪንን አይደግፍም</string>
+  <string name="morphe_splash_screen_duration_title">የመጀመሪያ አኒሜሽን ቆይታ</string>
+  <string name="morphe_splash_screen_duration_summary">የብርሃን አኒሜሽኑ ለምን ያህል ጊዜ እንደሚጫወት። አኒሜሽኑን ለመዝለል ይጫኑት</string>
   <string name="morphe_theme_color_light_title">የቀላል ጭብጥ ዳራ</string>
   <string name="morphe_theme_color_light_entry_2">ነጭ</string>
   <string name="morphe_theme_color_light_entry_3">Material You (ነጭ)</string>
@@ -1498,10 +1526,6 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_player_js_variant_title">የተጫዋች JavaScript ስሪት</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">በ \'Stats for nerds\' ውስጥ ማስመሰልን ያሳዩ</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">የድሮውን የቪዲዮ ተግባር አሞሌ መልስ</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"የቪዲዮ የድርጊት አዝራሮች የማይደበቁበትን ችግር ያስተካክላል
-
-ገደብ፡ ወደ አሮጌው ስታይል 'ተጨማሪ ቪዲዮዎች' ኦቨርሌ ይመለሳል"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">የፕሌየር አዶ ስታይል</string>
   <string name="morphe_player_icon_style_entry_auto">ራስ-ሰር</string>

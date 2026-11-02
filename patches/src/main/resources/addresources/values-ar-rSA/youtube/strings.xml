@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">تمكين تصفية قائمة المكتبة / أنت السفلية</string>
   <string name="morphe_hide_account_menu_filter_strings_title">تصفية قائمة المكتبة / أنت السفلية</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">أدخل أسماء قائمة المكتبة / أنت السفلية التي تريد تصفية النتائج بناءً عليها، مفصولة بأسطر جديدة</string>
+  <string name="morphe_hide_account_menu_downloads_title">إخفاء التنزيلات</string>
   <string name="morphe_hide_album_cards_title">إخفاء بطاقات الألبوم</string>
   <string name="morphe_hide_album_cards_summary">يخفي بطاقات الألبوم أسفل وصف الفنان</string>
   <string name="morphe_hide_artist_cards_title">إخفاء بطاقات الفنان</string>
@@ -445,7 +446,7 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_title">الضغط مع الاستمرار لفتح قائمة الفيديو</string>
   <string name="morphe_feed_long_press_menu_summary">يؤدي الضغط مع الاستمرار في أي مكان على فيديو في الخلاصة إلى فتح قائمته</string>
   <string name="morphe_feed_watch_later_button_title">عرض زر \"المشاهدة لاحقًا\" على المصغرات</string>
-  <string name="morphe_feed_watch_later_button_summary">يتم عرض زر المشاهدة لاحقًا على مصغرات فيديوهات الخلاصة. يؤدي الضغط مع الاستمرار عليه إلى فتح الحفظ في قوائم التشغيل</string>
+  <string name="morphe_feed_watch_later_button_summary">يظهر زر \"المشاهدة لاحقًا\" على الصور المصغرة لفيديوهات الخلاصات، مع علامة اختيار إذا كان الفيديو محفوظًا. يؤدي النقر عليه إلى حفظ الفيديو أو إزالته، ويؤدي النقر مع الاستمرار إلى فتح \"حفظ في قائمة التشغيل\"</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">تنزيل صور المنشورات</string>
   <string name="morphe_post_image_download_summary">يظهر زر التنزيل بجانب زر المشاركة في المنشورات التي تحتوي على صور أو ملفات GIF، كما يتم إضافة عنصر تنزيل إلى القائمة الخاصة بها</string>
@@ -515,8 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">الصوت</string>
   <string name="morphe_external_downloader_quick_options">كل الخيارات</string>
   <string name="morphe_shorts_download_flyout_button_title">عرض التنزيل في قائمة Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">يضيف عنصر بالقائمة المنبثقة لأداة التنزيل الخارجية إلى مشغل Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">يُضيف عنصر تنزيل إلى قائمة مشغل فيديوهات Shorts</string>
   <string name="morphe_shorts_download_flyout_title">تنزيل</string>
+  <string name="morphe_export_download_folder_title">تصدير الفيديوهات المحفوظة</string>
+  <string name="morphe_export_download_folder_summary">"تصدير الفيديوهات المحفوظة داخل التطبيق إلى تخزين جهازك باستخدام التنزيل داخل التطبيق بالقائمة المنبثقة. انقر لتغيير مجلد التصدير
+
+مجلد التصدير: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">مجلد التصدير</string>
+  <string name="morphe_export_download_folder_change">تغيير المجلد</string>
+  <string name="morphe_export_download_folder_changed">تم تغيير مجلد التصدير</string>
+  <string name="morphe_export_download_folder_reset">إعادة تعيين مجلد التصدير</string>
+  <string name="morphe_export_download_flyout_title">تصدير إلى جهاز</string>
+  <string name="morphe_export_download_started">جارٍ تصدير الفيديو</string>
+  <string name="morphe_export_download_progress">تصدير الفيديو: %d%%</string>
+  <string name="morphe_export_download_notification_channel">تصدير الفيديو</string>
+  <string name="morphe_export_download_saved">تم تصدير الفيديو إلى %s</string>
+  <string name="morphe_export_download_failed">تعذر تصدير الفيديو</string>
+  <string name="morphe_export_download_canceled">تم إلغاء التصدير</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">الترجمة الصوتية</string>
   <string name="morphe_vot_screen_summary">قراءة نصوص ترجمة الفيديو بصوت عالٍ باستخدام تحويل النص إلى كلام على الجهاز، بالتزامن مع التشغيل</string>
@@ -594,6 +610,19 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_pip_button_overlay_title">عرض زر صورة داخل صورة</string>
   <string name="morphe_pip_button_flyout_title">عرض قائمة صورة داخل صورة</string>
   <string name="morphe_pip_button_flyout_name">التبديل إلى صورة داخل صورة</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">إجراءات صورة داخل صورة</string>
+  <string name="morphe_pip_actions_screen_summary">تغيير الأزرار التي تظهر في صورة داخل صورة</string>
+  <string name="morphe_pip_action_left_title">الزر الأيسر</string>
+  <string name="morphe_pip_action_center_title">الزر الأوسط</string>
+  <string name="morphe_pip_action_right_title">الزر الأيمن</string>
+  <string name="morphe_pip_action_entry_default">الافتراضي</string>
+  <string name="morphe_pip_action_entry_previous">الفيديو السابق</string>
+  <string name="morphe_pip_action_entry_next">الفيديو التالي</string>
+  <string name="morphe_pip_action_entry_rewind">ترجيع 10 ثواني</string>
+  <string name="morphe_pip_action_entry_fast_forward">تقديم سريع 10 ثواني</string>
+  <string name="morphe_pip_action_entry_play_pause">تشغيل/إيقاف</string>
+  <string name="morphe_pip_action_entry_background_playback">التشغيل في الخلفية</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">عرض زر تشغيل الكل</string>
   <string name="morphe_play_all_button_summary">"انقر لإنشاء قائمة تشغيل لجميع فيديوهات القناة
@@ -627,10 +656,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_save_to_watch_later_flyout_title">الحفظ في المشاهدة لاحقًا</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">عرض زر الحفظ في قائمة \"المشاهدة لاحقًا\" في قائمة إعدادات المشغّل المنبثقة</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">يتيح حفظ الفيديوهات المتعلقة بالأطفال في قائمة \"المشاهدة لاحقًا\" من قائمة إعدادات الفيديو المنبثقة</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">عرض زر الحفظ في المشاهدة لاحقًا بفيديوهات الأطفال</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">يتيح حفظ فيديوهات Shorts في قائمة \"المشاهدة لاحقًا\" من القائمة المنبثقة</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">عرض زر \"الحفظ للمشاهدة لاحقًا\" في قائمة Shorts المنبثقة</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">يتيح حفظ فيديوهات Shorts في قائمة \"المشاهدة لاحقًا\" من القائمة المنبثقة</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">إعادة توجيه المشاهدة لاحقًا إلى قائمة تشغيل</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">المشاهدة لاحقًا</string>
   <string name="morphe_queue_flyout_title">إضافة الى قائمة المحتوى التالي الخاصة بـ Morphe</string>
@@ -849,6 +874,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">الترجمة</string>
   <string name="morphe_captions_screen_summary">التحكم في الترجمة التلقائية وملفات تعريف ارتباط الترجمة</string>
+  <string name="morphe_captions_languages_title">اللغة والترجمة</string>
+  <string name="morphe_captions_presentation_title">المظهر والسلوك</string>
+  <string name="morphe_captions_advanced_title">الإعدادات المتقدمة</string>
+  <string name="morphe_captions_advanced_summary">خيارات ملفات تعريف الارتباط والنصوص</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">إمكانية رؤية الترجمة التلقائية</string>
   <string name="morphe_auto_captions_style_entry_1">العرض دائمًا</string>
@@ -857,10 +886,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_auto_captions_style_entry_4">عرضها عند كتم الصوت</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">لغة الترجمة المفضلة</string>
-  <string name="morphe_preferred_caption_language_summary">يقوم باختيار ترجمات المزود أولًا، ثم يترجم تلقائيًا إلى اللغة المفضلة</string>
+  <string name="morphe_preferred_caption_language_summary">يختار تلقائيًا لغة الترجمة لكل فيديو</string>
   <string name="morphe_preferred_caption_language_entry_off">متوقف</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">إضافة لغات إضافية للترجمة التلقائية</string>
+  <string name="morphe_auto_translate_additional_languages_title">لغات إضافية للترجمة التلقائية</string>
   <string name="morphe_auto_translate_additional_languages_summary">يضيف المزيد من اللغات إلى قائمة الترجمة التلقائية</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">تعيين ملفات تعريف ارتباط الترجمة</string>
@@ -878,8 +907,17 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_fix_transcript_title">إصلاح النصوص</string>
   <string name="morphe_fix_transcript_summary">يحل مشكلة فشل التحقق من شرط مسبق قد يمنع تحميل النص</string>
   <string name="morphe_captions_in_pip_title">عرض الترجمة في وضع صورة داخل صورة</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">حجم الترجمة</string>
+  <string name="morphe_caption_scale_summary">ينطبق على الترجمات الأحادية والثنائية اللغة</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">تنسيق الترجمة الآلية</string>
-  <string name="morphe_stable_caption_blocks_summary">تجميع الترجمة الآلية في كتل ثابتة وواضحة للقراءة. قد تظهر بعض الكلمات قبل نطقها. يلزم إعادة تشغيل التطبيق.</string>
+  <string name="morphe_stable_caption_blocks_summary">تجميع الترجمات التلقائية أحادية اللغة في كتل ثابتة وسهلة القراءة. أما الترجمات الثنائية اللغة فتستخدم الكتل دائمًا. قد تظهر بعض الكلمات قبل نطقها</string>
+  <string name="morphe_secondary_caption_language_title">لغة الترجمة الفرعية الثانية</string>
+  <string name="morphe_secondary_caption_language_summary">يعرض لغة ثانية مع الترجمات، ويضيف خيار تمكين الترجمات الثنائية إلى قائمة الترجمات</string>
+  <string name="morphe_dual_captions_enabled_title">ترجمات ثنائية اللغة</string>
+  <string name="morphe_caption_block_translation_failed">بعض ترجمات التسميات التوضيحية غير متاحة. يتم عرض التسميات التوضيحية المتاحة.</string>
+  <string name="morphe_caption_blocks_too_large">كلتا لغتي الترجمة النصية لا تتناسبان مع هذا المشغل. يتم عرض اللغة الأساسية.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">أزرار التنقل</string>
   <string name="morphe_navigation_buttons_screen_summary">اختر الأزرار التي تظهر في شريط التنقل السفلي</string>
@@ -1147,10 +1185,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
 • تفتح فيديوهات Shorts في المشغل العادي
 • يظهر شريط إجراءات الفيديو القديم غير المطوي"</string>
   <string name="morphe_tablet_layout_in_player_title">تمكين تخطيط الجهاز اللوحي في المشغل</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <!-- "Video action bar layout" must be translated the same as morphe_video_action_bar_layout_title -->
   <string name="morphe_tablet_layout_in_player_summary">"استعادة تخطيط المشغل القديم
 
-القيود: إذا تم إيقاف تشغيل 'استعادة شريط إجراءات الفيديو القديم'، فقد لا يتوفر عنصر 'المزيد من الفيديوهات'"</string>
+القيود: إذا لم يكن \"تخطيط شريط إجراءات الفيديو\" كلاسيكيًا، فقد لا يتوفر عنصر \"المزيد من الفيديوهات\" التراكبي"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - استعادة سلوك الترجمة القديم</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - استعادة الحفظ القديم إلى قائمة التشغيل</string>
@@ -1232,6 +1270,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_miniplayer_not_available_summary">أزال YouTube كل مشغلات الفيديو المصغرة الإضافية. لاستعادة المزيد من أنواع المشغلات الصغيرة، يُرجى تعديل YouTube إصدار 21.28.208 أو أقدم</string>
   <string name="morphe_miniplayer_type_title">نوع المشغل المصغر</string>
   <string name="morphe_miniplayer_hide_title_title">إخفاء العنوان والقناة</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">التوسيع بالسحب للأعلى</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">يؤدي سحب المشغل المصغر للأعلى إلى توسيع المشغل، بدلًا من نقل المشغل المصغر إلى أعلى الشاشة</string>
+  <string name="morphe_miniplayer_docked_title">المشغل المصغر المثبت</string>
+  <string name="morphe_miniplayer_docked_summary">يربط المشغل المصغر بشريط التنقل وجوانب الشاشة، بدلًا من جعله يطفو فوقهما</string>
   <string name="morphe_miniplayer_type_entry_0">معطّل</string>
   <string name="morphe_miniplayer_type_entry_1">إفتراضي</string>
   <string name="morphe_miniplayer_type_entry_2">بسيط</string>
@@ -1274,6 +1316,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">شاشة البدء المتوهجة غير مدعومة في هذا الجهاز</string>
+  <string name="morphe_splash_screen_duration_title">مدة تشغيل تأثير الحركة عند البدء</string>
+  <string name="morphe_splash_screen_duration_summary">مدة تشغيل تأثير التوهج المتحرك. انقر على التأثير لتخطيه</string>
   <string name="morphe_theme_color_light_title">خلفية المظهر الفاتح</string>
   <string name="morphe_theme_color_light_entry_2">أبيض</string>
   <string name="morphe_theme_color_light_entry_3">Material You (أبيض)</string>
@@ -1504,10 +1548,11 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_player_js_variant_title">متغير JavaScript الخاص بالمشغل</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">عرض التمويه في \'إحصاءات تقنية\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">استعادة شريط إجراءات الفيديو القديم</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"يُصلح مشكلة عدم إمكانية إخفاء أزرار إجراءات الفيديو
-
-القيود: يعود إلى نمط 'المزيد من الفيديوهات' القديم"</string>
+  <string name="morphe_video_action_bar_layout_title">تخطيط شريط إجراءات الفيديو</string>
+  <string name="morphe_video_action_bar_layout_entry_1">الوضع الافتراضي</string>
+  <string name="morphe_video_action_bar_layout_entry_2">كلاسيكي</string>
+  <string name="morphe_video_action_bar_layout_entry_3">بسيط</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">القيود: يعود النمط الكلاسيكي إلى نمط عنصر \"المزيد من الفيديوهات\" التراكبي القديم</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">نمط أيقونة المشغّل</string>
   <string name="morphe_player_icon_style_entry_auto">تلقائي</string>
@@ -1675,4 +1720,27 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">أقصى طول للتعليق</string>
   <string name="morphe_niconico_comments_max_length_summary">يخفي التعليقات التي تحتوي على عدد أحرف أكثر من هذا الحد. يتم احتساب كل رمز تعبيري كحرف واحد</string>
   <string name="morphe_niconico_comments_max_length_no_limit">بلا حدود</string>
+  <string name="morphe_live_chat_translate_screen_title">ترجمة المحادثة المباشرة</string>
+  <string name="morphe_live_chat_translate_screen_summary">ترجمة رسائل المحادثة المباشرة وإعادة تشغيل المحادثة المباشرة</string>
+  <string name="morphe_live_chat_translate_title">ترجمة المحادثة المباشرة</string>
+  <string name="morphe_live_chat_translate_summary">يترجم رسائل المحادثة المباشرة ورد المحادثة المباشرة بمجرد ظهورها على الشاشة</string>
+  <string name="morphe_live_chat_translate_language_title">لغة الترجمة</string>
+  <string name="morphe_live_chat_translate_exclude_title">اللغات المستبعدة</string>
+  <string name="morphe_live_chat_translate_exclude_summary">رموز اللغات مفصولة بفواصل مثل id,en. الرسائل بهذه اللغات غير مترجمة</string>
+  <string name="morphe_live_chat_translate_copy_button_title">عرض زر نسخ الرسالة</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">يضيف زر نسخ صغير لكل رسالة محادثة</string>
+  <string name="morphe_live_chat_translate_copied">تم نسخ الرسالة إلى الحافظة</string>
+  <string name="morphe_live_chat_translate_style_title">أسلوب الترجمة</string>
+  <string name="morphe_live_chat_translate_style_translated_only">مترجم فقط</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">الأصل (مترجمة)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(مترجمة) الأصل</string>
+  <string name="morphe_live_chat_translate_bold_title">نص مترجم بخط عريض</string>
+  <string name="morphe_live_chat_translate_bold_summary">يعرض النص المترجم بخط عريض</string>
+  <string name="morphe_live_chat_translate_use_color_title">لون النص المترجم المخصص</string>
+  <string name="morphe_live_chat_translate_use_color_summary">يطبق لون مخصص على النص المترجم</string>
+  <string name="morphe_live_chat_translate_color_title">لون النص المترجم</string>
+  <string name="morphe_live_chat_translate_color_summary">تعيين رمز اللون للنص المترجم</string>
+  <string name="morphe_live_chat_translate_max_length_title">الحد الأقصى لطول الرسالة</string>
+  <string name="morphe_live_chat_translate_max_length_summary">الرسائل الطويلة تظهر بدون ترجمة</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">بلا حدود</string>
 </resources>
