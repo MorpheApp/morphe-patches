@@ -30,6 +30,9 @@ import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.request.buildRequestPatch
 import app.morphe.patches.shared.misc.request.hookBuildRequest
+import app.morphe.patches.shared.misc.request.hookMediaRequest
+import app.morphe.patches.shared.misc.request.hookMediaResponseChunk
+import app.morphe.patches.shared.misc.request.mediaRequestPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
@@ -104,7 +107,8 @@ internal fun spoofVideoStreamsPatch(
     dependsOn(
         fixProtoLibraryPatch,
         spoofVideoStreamsResourcePatch,
-        buildRequestPatch
+        buildRequestPatch,
+        mediaRequestPatch
     )
 
     execute {
@@ -172,6 +176,13 @@ internal fun spoofVideoStreamsPatch(
         // region Fetch streaming data.
 
         hookBuildRequest("$EXTENSION_CLASS->fetchStreams")
+
+        // endregion
+
+        // region Make the media requests of the streams of TV clients name the TV client.
+
+        hookMediaRequest("$EXTENSION_CLASS->onMediaRequest", replacesRequest = true)
+        hookMediaResponseChunk("$EXTENSION_CLASS->onMediaResponseChunk")
 
         // endregion
 
