@@ -913,7 +913,7 @@ public final class FeedViewCountPatch {
     }
 
     /**
-     * A view almost as wide as the card at its top, such as a 16:9 or a square thumbnail.
+     * A view almost as wide as the card at its top, such as a 16:9, a square or a vertical thumbnail.
      * Cards of some layouts show the thumbnail inset from their edges, so its shape is
      * checked with its own width.
      */
@@ -926,7 +926,9 @@ public final class FeedViewCountPatch {
                 && root.getWidth() - rect.right <= maxInset
                 && rect.top <= maxInset
                 && rect.height() >= width * FeedVideoCardsPatch.THUMBNAIL_RATIO - TOLERANCE_DP * density
-                && rect.height() <= width + TOLERANCE_DP * density;
+                // Thumbnails can be taller than a square, such as of vertical videos, and have the
+                // texts below them. A background can be as large as the card.
+                && rect.height() < root.getHeight();
     }
 
     /**
