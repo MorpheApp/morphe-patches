@@ -22,10 +22,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
@@ -38,7 +36,7 @@ import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.ui.Dim;
 
-final class LyricsSpanBuilder {
+public final class LyricsSpanBuilder {
     static final float TRANSLATION_RELATIVE_SIZE = 0.7f;
     static final float MAIN_LINE_SPACING = 1.22f;
 
@@ -48,7 +46,7 @@ final class LyricsSpanBuilder {
      * @param averaged         The line's own time spread evenly over its words, not the source's
      *                         word timings.
      */
-    record WordTiming(int start, int end, long startMs, long endMs,
+    public record WordTiming(int start, int end, long startMs, long endMs,
                       @Nullable String romaji, boolean hasTrailingSpace, boolean averaged) {
 
         /** A reading ending in a space stands for the space after its word. */
@@ -437,23 +435,20 @@ final class LyricsSpanBuilder {
             }
 
             List<String> guides = new ArrayList<>(n);
-            List<String> syllables = new ArrayList<>(n);
             for (int i = 0; i < n; i++) {
-                String own = ownWords[i];
-                syllables.add(own);
-                guides.add(phoneticGuideFor(own, mainText, isLatinWord[i]));
+                guides.add(phoneticGuideFor(ownWords[i], mainText, isLatinWord[i]));
             }
 
             if (wholeRoman != null && !wholeRoman.trim().isEmpty()) {
-                List<String> aligned = alignPhoneticRomaji(
-                        stripBidiControls(wholeRoman).trim(), guides, syllables, isLatinWord);
+                String[] aligned = LocalRomanizer.allocateReading(
+                        stripBidiControls(wholeRoman).trim(), n, guides);
                 for (int i = 0; i < n; i++) {
                     if (isLatinWord[i]) {
                         romTexts[i] = "";
                         romTrailingSpaces[i] = false;
                         continue;
                     }
-                    String chunk = i < aligned.size() && aligned.get(i) != null ? aligned.get(i) : "";
+                    String chunk = i < aligned.length && aligned[i] != null ? aligned[i] : "";
                     final boolean chunkTrailingSpace = chunk.endsWith(" ");
                     chunk = chunk.trim();
                     if (chunk.isEmpty() || ScriptDetector.containsCjk(chunk)
@@ -546,200 +541,6 @@ final class LyricsSpanBuilder {
         }
         final String reading = LocalRomanizer.syllableReading(ownWord, fullLineText);
         return reading != null ? reading : "";
-    }
-
-    /**
-     * Cuts a whole-line reading into one piece per syllable, choosing the cuts that make each piece
-     * closest to that syllable's local reading.
-     */
-    private static List<String> alignPhoneticRomaji(
-            String fullRoman,
-            List<String> guides,
-            List<String> syllables,
-            boolean[] isLatinWord) {
-        final int N = fullRoman.length();
-        final int M = guides.size();
-        if (M == 0) {
-            return Collections.emptyList();
-        }
-        if (N == 0) {
-            return new ArrayList<>(Collections.nCopies(M, ""));
-        }
-
-        boolean anyGuide = false;
-        for (String g : guides) {
-            if (g != null && !g.trim().isEmpty()) {
-                anyGuide = true;
-                break;
-            }
-        }
-        if (!anyGuide) {
-            String[] split = fullRoman.trim().split("\\s+");
-            List<String> chunks = new ArrayList<>(M);
-            for (int i = 0; i < M; i++) {
-                final int tokStart = (i * split.length) / M;
-                final int tokEnd = (i == M - 1) ? split.length : (((i + 1) * split.length) / M);
-                StringBuilder sb = new StringBuilder();
-                for (int k = tokStart; k < tokEnd && k < split.length; k++) {
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (sb.length() > 0) sb.append(' ');
-                    sb.append(split[k]);
-                }
-                //noinspection SizeReplaceableByIsEmpty
-                if (i < M - 1 && sb.length() > 0) sb.append(' ');
-                chunks.add(sb.toString());
-            }
-            return chunks;
-        }
-
-        double[][] dp = new double[M + 1][N + 1];
-        int[][] path = new int[M + 1][N + 1];
-        for (int i = 0; i <= M; i++) {
-            Arrays.fill(dp[i], Double.MAX_VALUE);
-            Arrays.fill(path[i], -1);
-        }
-        dp[0][0] = 0.0;
-
-        for (int i = 1; i <= M; i++) {
-            String guideRom = guides.get(i - 1) != null ? guides.get(i - 1) : "";
-            final boolean isLatin = isLatinWord[i - 1];
-            String origSyl = syllables.get(i - 1);
-            final int guideLen = Math.max(1, guideRom.length());
-
-            final int minLen = isLatin ? Math.max(1, guideLen - 1) : 1;
-            final int maxLen = isLatin
-                    ? guideLen + 4
-                    : Math.max(guideLen * 3 + 5, Math.max(origSyl.length() * 5, 16));
-
-            for (int j = 1; j <= N; j++) {
-                double bestCost = Double.MAX_VALUE;
-                int bestPrevJ = -1;
-
-                for (int len = minLen; len <= maxLen; len++) {
-                    final int k = j - len;
-                    if (k < 0) {
-                        break;
-                    }
-                    if (dp[i - 1][k] >= Double.MAX_VALUE * 0.5) {
-                        continue;
-                    }
-                    String candidate = fullRoman.substring(k, j);
-                    if (candidate.charAt(0) == ' ' && candidate.trim().length() > 0) {
-                        continue;
-                    }
-                    final double cost = dp[i - 1][k] + phoneticMatchCost(candidate, guideRom, isLatin);
-                    if (cost < bestCost) {
-                        bestCost = cost;
-                        bestPrevJ = k;
-                    }
-                }
-                dp[i][j] = bestCost;
-                path[i][j] = bestPrevJ;
-            }
-        }
-
-        List<String> results = new ArrayList<>(Collections.nCopies(M, ""));
-        int currJ = N;
-        if (dp[M][N] >= Double.MAX_VALUE * 0.5) {
-            double minEndCost = Double.MAX_VALUE;
-            for (int k = N; k >= 0; k--) {
-                if (dp[M][k] < minEndCost) {
-                    minEndCost = dp[M][k];
-                    currJ = k;
-                }
-            }
-        }
-
-        for (int i = M; i > 0; i--) {
-            final int prevJ = path[i][currJ];
-            if (prevJ < 0) {
-                results.set(i - 1, "");
-            } else {
-                results.set(i - 1, fullRoman.substring(prevJ, currJ));
-                currJ = prevJ;
-            }
-        }
-
-        if (currJ > 0 && !results.isEmpty()) {
-            results.set(0, fullRoman.substring(0, currJ) + results.get(0));
-        }
-        int totalLen = 0;
-        for (String r : results) {
-            totalLen += r.length();
-        }
-        if (totalLen < N && !results.isEmpty()) {
-            final int safeStart = Math.min(N, Math.max(0, totalLen));
-            results.set(M - 1, results.get(M - 1) + fullRoman.substring(safeStart));
-        }
-        return results;
-    }
-
-    private static double phoneticMatchCost(String candidate, String guide, boolean isLatin) {
-        String cTrim = candidate.trim();
-        String gTrim = guide.trim();
-        if (cTrim.isEmpty() && !gTrim.isEmpty()) {
-            return 50.0;
-        }
-        if (isLatin) {
-            final int dist = levenshtein(cTrim.toLowerCase(Locale.ROOT), gTrim.toLowerCase(Locale.ROOT));
-            return dist * 50.0 + Math.abs(cTrim.length() - gTrim.length()) * 0.5;
-        }
-        if (gTrim.isEmpty()) {
-            return cTrim.length() * 1.2 + (candidate.endsWith(" ") ? -0.3 : 0.0);
-        }
-        String cCompact = compactPhonetic(cTrim, false);
-        String gCompact = compactPhonetic(gTrim, false);
-        final int rawDist = levenshtein(cCompact, gCompact);
-        final int phonDist = levenshtein(compactPhonetic(cTrim, true), compactPhonetic(gTrim, true));
-        final double dist = Math.min(rawDist, phonDist + 0.25);
-        final int lenDiff = Math.abs(cCompact.length() - gCompact.length());
-        final double spaceBonus = candidate.endsWith(" ") ? -0.35 : 0.0;
-        return dist * 2.0 + lenDiff * 0.8 + spaceBonus;
-    }
-
-    private static String compactPhonetic(String s, boolean foldConsonants) {
-        StringBuilder sb = new StringBuilder(s.length());
-        for (int i = 0; i < s.length(); i++) {
-            char c = Character.toLowerCase(s.charAt(i));
-            if (c == ' ' || c == '-' || c == '\'') {
-                continue;
-            }
-            if (foldConsonants) {
-                c = switch (c) {
-                    case 'r' -> 'l';
-                    case 'p' -> 'b';
-                    case 'k' -> 'g';
-                    case 't' -> 'd';
-                    default -> c;
-                };
-            }
-            sb.append(c);
-        }
-        return sb.toString();
-    }
-
-    private static int levenshtein(String s1, String s2) {
-        final int len1 = s1.length();
-        final int len2 = s2.length();
-        if (len1 == 0) return len2;
-        if (len2 == 0) return len1;
-        int[] prev = new int[len2 + 1];
-        int[] curr = new int[len2 + 1];
-        for (int j = 0; j <= len2; j++) {
-            prev[j] = j;
-        }
-        for (int i = 1; i <= len1; i++) {
-            curr[0] = i;
-            final char c1 = s1.charAt(i - 1);
-            for (int j = 1; j <= len2; j++) {
-                final int cost = (c1 == s2.charAt(j - 1)) ? 0 : 1;
-                curr[j] = Math.min(Math.min(curr[j - 1] + 1, prev[j] + 1), prev[j - 1] + cost);
-            }
-            int[] tmp = prev;
-            prev = curr;
-            curr = tmp;
-        }
-        return prev[len2];
     }
 
     /**
@@ -1349,7 +1150,7 @@ final class LyricsSpanBuilder {
             attachUniformSpacing(text, spacing);
             if (!content.isEmpty()) {
                 text.setSpan(new AlignmentSpan.Standard(
-                        resolveAlignment(isRtlText(content), isRightAligned, centered)),
+                                resolveAlignment(isRtlText(content), isRightAligned, centered)),
                         0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             return new BuildResult(text, null, transStart, transEnd, -1, -1);
@@ -1365,7 +1166,7 @@ final class LyricsSpanBuilder {
                 return new BuildResult(text, null, -1, -1, -1, -1);
             }
             text.setSpan(new AlignmentSpan.Standard(
-                    resolveAlignment(isRtlText(content), isRightAligned, centered)),
+                            resolveAlignment(isRtlText(content), isRightAligned, centered)),
                     0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             // No bounds reported paints the whole line the lyric colour, and none of the reading's fade.
             List<WordTiming> spans = readsNothing ? timings : roma.spans();
@@ -1394,7 +1195,7 @@ final class LyricsSpanBuilder {
             } else {
                 boolean isRtl = isRtlText(dual);
                 dual.setSpan(new AlignmentSpan.Standard(
-                        resolveAlignment(isRtl, isRightAligned, centered)),
+                                resolveAlignment(isRtl, isRightAligned, centered)),
                         0, dual.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             // A small run carrying the word timings is what is sung, and keeps the reading's
@@ -1553,7 +1354,7 @@ final class LyricsSpanBuilder {
 
     /** The line's own translation, null when it has none or it only repeats the original. */
     @Nullable
-    static String translationAt(LyricsLine line, int index,
+    public static String translationAt(LyricsLine line, int index,
                                 @Nullable List<String> translatedLines) {
         if (translatedLines == null || index >= translatedLines.size()) {
             return null;
@@ -1723,7 +1524,7 @@ final class LyricsSpanBuilder {
 
     /** What a romanization-only line shows: its own, else the per-word one joined up. */
     @Nullable
-    static String romanizationForOnlyMode(LyricsLine line, int index,
+    public static String romanizationForOnlyMode(LyricsLine line, int index,
                                           @Nullable List<LyricsLine> romanizedLines) {
         return romanizedWithTimings(line, index, romanizedLines, null).text();
     }

@@ -430,7 +430,7 @@ public final class LyricsOrderedListPreference extends Preference {
 
         final TextView hint = new TextView(context);
         hint.setTextSize(14);
-        hint.setTextColor(withAlpha(fg, 0x99));
+        hint.setTextColor(fg);
         hint.setText(str("morphe_music_lyrics_local_romanization_summary"));
         hint.setPadding(0, 0, 0, Dim.dp12);
 

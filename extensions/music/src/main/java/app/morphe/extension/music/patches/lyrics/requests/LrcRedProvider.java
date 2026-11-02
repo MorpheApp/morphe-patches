@@ -104,78 +104,6 @@ public final class LrcRedProvider implements LyricsProvider {
             });
     private static final AtomicLong SYNC_LAST_REQUEST_MS = new AtomicLong(0);
 
-    /** One the search turned up, normalised from either wording before scoring. */
-    private record SearchHit(String isrc, String title, String artist, String album,
-                             double durationSeconds) {
-    }
-
-    private record ScoredHit(SearchHit hit, int score) {
-    }
-
-    @Override
-    public String name() {
-        return NAME;
-    }
-
-    @Override
-    public boolean hasCandidates() {
-        return true;
-    }
-
-    @Nullable
-    @Override
-    public FetchResult fetch(TrackInfo track) throws Exception {
-        if (track.title().isEmpty()) {
-            return null;
-        }
-
-        for (SearchHit hit : queryCandidates(track)) {
-            Lyrics lyrics = load(hit.isrc());
-            if (lyrics != null) {
-                return FetchResult.of(
-                        lyrics,
-                        hit.title(),
-                        hit.artist(),
-                        Math.round(hit.durationSeconds()),
-                        track
-                );
-            }
-        }
-
-        return null;
-    }
-
-    @Override
-    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
-        List<SearchHit> hits = queryCandidates(track);
-        if (hits.isEmpty()) {
-            return Collections.emptyList();
-        }
-
-        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
-        // Ranked already, and each download costs a song document.
-        for (SearchHit hit : hits) {
-            if (scored.size() >= LyricsRequests.MAX_CANDIDATES
-                    || Thread.currentThread().isInterrupted()) {
-                break;
-            }
-
-            Lyrics lyrics = load(hit.isrc());
-            if (lyrics != null) {
-                int score = LyricsRequests.scoreLyricsCandidate(
-                        hit.title(),
-                        hit.artist(),
-                        (int) Math.round(hit.durationSeconds()),
-                        lyrics,
-                        track
-                );
-                scored.add(new Lyrics.ScoredLyrics(score, lyrics));
-            }
-        }
-
-        return Lyrics.sortScoredByScore(scored);
-    }
-
     /**
      * Downloads one song. The document is the only place the timing level is stated (the search
      * summary calls it "sync"), so a song with line level timing is remembered here for a re-time.
@@ -409,59 +337,6 @@ public final class LrcRedProvider implements LyricsProvider {
         }
     }
 
-    private List<SearchHit> queryCandidates(TrackInfo track) throws UnsupportedEncodingException {
-        // match.json ranks by the whole track, which keeps covers out; the name goes under its own
-        // parameter, not q.
-        List<SearchHit> hits = matchApi(track);
-        if (!hits.isEmpty()) {
-            return hits;
-        }
-
-        final String cleanTitle = cleanBaseTitle(track.title());
-        if (!cleanTitle.isEmpty() && !cleanTitle.equalsIgnoreCase(normalize(track.title()))) {
-            hits = matchApi(new TrackInfo(cleanTitle, track.artist(),
-                    track.album(), track.durationSeconds()));
-            if (!hits.isEmpty()) {
-                return hits;
-            }
-        }
-
-        if (!track.title().isEmpty() && !track.artist().isEmpty()) {
-            hits = matchApi(new TrackInfo(track.title(), "",
-                    track.album(), track.durationSeconds()));
-            if (!hits.isEmpty()) {
-                return hits;
-            }
-        }
-
-        // search.json searches the whole catalogue, so its order says nothing and hits are scored here.
-        hits = searchApi(track);
-        if (!hits.isEmpty()) {
-            return hits;
-        }
-
-        return cleanTitle.isEmpty() || cleanTitle.equalsIgnoreCase(normalize(track.title()))
-                ? Collections.emptyList()
-                : searchApi(new TrackInfo(cleanTitle, track.artist(),
-                track.album(), track.durationSeconds()));
-    }
-
-    private List<SearchHit> matchApi(TrackInfo track) throws UnsupportedEncodingException {
-        if (track.title().isEmpty()) {
-            return Collections.emptyList();
-        }
-        final JSONObject json = readJson(buildUrl("/match.json", "track", track));
-        return json == null ? Collections.emptyList() : scoreHits(json.optJSONArray("hits"), track);
-    }
-
-    private List<SearchHit> searchApi(TrackInfo track) throws UnsupportedEncodingException {
-        if (track.title().isEmpty()) {
-            return Collections.emptyList();
-        }
-        final JSONObject json = readJson(buildUrl("/search.json", "q", track));
-        return json == null ? Collections.emptyList() : scoreHits(json.optJSONArray("hits"), track);
-    }
-
     private static String buildUrl(String path, String titleKey, TrackInfo track)
             throws UnsupportedEncodingException {
         final StringBuilder url = new StringBuilder(API_BASE)
@@ -477,41 +352,6 @@ public final class LrcRedProvider implements LyricsProvider {
             url.append("&duration=").append(track.durationSeconds());
         }
         return url.toString();
-    }
-
-    private List<SearchHit> scoreHits(@Nullable JSONArray array, TrackInfo track) {
-        if (array == null || array.length() == 0) {
-            return Collections.emptyList();
-        }
-
-        List<ScoredHit> scored = new ArrayList<>();
-        for (int i = 0; i < array.length(); i++) {
-            JSONObject item = array.optJSONObject(i);
-            if (item == null) {
-                continue;
-            }
-            SearchHit hit = new SearchHit(
-                    item.optString("isrc", ""),
-                    item.optString("title", ""),
-                    item.optString("artist", ""),
-                    item.optString("album", ""),
-                    item.optDouble("duration", 0));
-            if (hit.isrc().isEmpty()) {
-                continue;
-            }
-            int score = scoreCandidate(hit, track);
-            if (score > 0) {
-                scored.add(new ScoredHit(hit, score));
-            }
-        }
-
-        scored.sort((a, b) -> Integer.compare(b.score, a.score));
-
-        List<SearchHit> sorted = new ArrayList<>(scored.size());
-        for (ScoredHit sc : scored) {
-            sorted.add(sc.hit());
-        }
-        return sorted;
     }
 
     private static int scoreCandidate(SearchHit item, TrackInfo track) {
@@ -696,5 +536,165 @@ public final class LrcRedProvider implements LyricsProvider {
     /** The song page, which is also the base of its API paths. */
     private static String songApi(String isrc) {
         return API_BASE + "/s/" + isrc;
+    }
+
+    @Override
+    public String name() {
+        return NAME;
+    }
+
+    @Override
+    public boolean hasCandidates() {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public FetchResult fetch(TrackInfo track) throws Exception {
+        if (track.title().isEmpty()) {
+            return null;
+        }
+
+        for (SearchHit hit : queryCandidates(track)) {
+            Lyrics lyrics = load(hit.isrc());
+            if (lyrics != null) {
+                return FetchResult.of(
+                        lyrics,
+                        hit.title(),
+                        hit.artist(),
+                        Math.round(hit.durationSeconds()),
+                        track
+                );
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+        List<SearchHit> hits = queryCandidates(track);
+        if (hits.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        // Ranked already, and each download costs a song document.
+        for (SearchHit hit : hits) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES
+                    || Thread.currentThread().isInterrupted()) {
+                break;
+            }
+
+            Lyrics lyrics = load(hit.isrc());
+            if (lyrics != null) {
+                int score = LyricsRequests.scoreLyricsCandidate(
+                        hit.title(),
+                        hit.artist(),
+                        (int) Math.round(hit.durationSeconds()),
+                        lyrics,
+                        track
+                );
+                scored.add(new Lyrics.ScoredLyrics(score, lyrics));
+            }
+        }
+
+        return Lyrics.sortScoredByScore(scored);
+    }
+
+    private List<SearchHit> queryCandidates(TrackInfo track) throws UnsupportedEncodingException {
+        // match.json ranks by the whole track, which keeps covers out; the name goes under its own
+        // parameter, not q.
+        List<SearchHit> hits = matchApi(track);
+        if (!hits.isEmpty()) {
+            return hits;
+        }
+
+        final String cleanTitle = cleanBaseTitle(track.title());
+        if (!cleanTitle.isEmpty() && !cleanTitle.equalsIgnoreCase(normalize(track.title()))) {
+            hits = matchApi(new TrackInfo(cleanTitle, track.artist(),
+                    track.album(), track.durationSeconds()));
+            if (!hits.isEmpty()) {
+                return hits;
+            }
+        }
+
+        if (!track.title().isEmpty() && !track.artist().isEmpty()) {
+            hits = matchApi(new TrackInfo(track.title(), "",
+                    track.album(), track.durationSeconds()));
+            if (!hits.isEmpty()) {
+                return hits;
+            }
+        }
+
+        // search.json searches the whole catalogue, so its order says nothing and hits are scored here.
+        hits = searchApi(track);
+        if (!hits.isEmpty()) {
+            return hits;
+        }
+
+        return cleanTitle.isEmpty() || cleanTitle.equalsIgnoreCase(normalize(track.title()))
+                ? Collections.emptyList()
+                : searchApi(new TrackInfo(cleanTitle, track.artist(),
+                track.album(), track.durationSeconds()));
+    }
+
+    private List<SearchHit> matchApi(TrackInfo track) throws UnsupportedEncodingException {
+        if (track.title().isEmpty()) {
+            return Collections.emptyList();
+        }
+        final JSONObject json = readJson(buildUrl("/match.json", "track", track));
+        return json == null ? Collections.emptyList() : scoreHits(json.optJSONArray("hits"), track);
+    }
+
+    private List<SearchHit> searchApi(TrackInfo track) throws UnsupportedEncodingException {
+        if (track.title().isEmpty()) {
+            return Collections.emptyList();
+        }
+        final JSONObject json = readJson(buildUrl("/search.json", "q", track));
+        return json == null ? Collections.emptyList() : scoreHits(json.optJSONArray("hits"), track);
+    }
+
+    private List<SearchHit> scoreHits(@Nullable JSONArray array, TrackInfo track) {
+        if (array == null || array.length() == 0) {
+            return Collections.emptyList();
+        }
+
+        List<ScoredHit> scored = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject item = array.optJSONObject(i);
+            if (item == null) {
+                continue;
+            }
+            SearchHit hit = new SearchHit(
+                    item.optString("isrc", ""),
+                    item.optString("title", ""),
+                    item.optString("artist", ""),
+                    item.optString("album", ""),
+                    item.optDouble("duration", 0));
+            if (hit.isrc().isEmpty()) {
+                continue;
+            }
+            int score = scoreCandidate(hit, track);
+            if (score > 0) {
+                scored.add(new ScoredHit(hit, score));
+            }
+        }
+
+        scored.sort((a, b) -> Integer.compare(b.score, a.score));
+
+        List<SearchHit> sorted = new ArrayList<>(scored.size());
+        for (ScoredHit sc : scored) {
+            sorted.add(sc.hit());
+        }
+        return sorted;
+    }
+
+    /** One the search turned up, normalised from either wording before scoring. */
+    private record SearchHit(String isrc, String title, String artist, String album,
+                             double durationSeconds) {
+    }
+
+    private record ScoredHit(SearchHit hit, int score) {
     }
 }

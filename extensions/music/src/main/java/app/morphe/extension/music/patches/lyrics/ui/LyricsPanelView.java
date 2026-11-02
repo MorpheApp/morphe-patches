@@ -69,6 +69,8 @@ import java.util.function.IntConsumer;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
+import app.morphe.extension.music.patches.lyrics.session.LockScreenLyrics;
+import app.morphe.extension.music.patches.lyrics.session.MiniplayerLyrics;
 import app.morphe.extension.music.patches.lyrics.derive.AiProviders;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsTranslator;
@@ -864,6 +866,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             // Dual mode keeps the original underneath, so onlyMode resets while the flags stand.
             onlyMode = OnlyMode.NONE;
             updateFooter();
+            updateSessionMainLine();
 
             switch (state) {
                 case LOADING:
@@ -2390,6 +2393,15 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         karaokeState.resetContent();
         karaokeState.syncEnabled(Settings.LYRICS_WORD_SYNC.get());
         clearActiveLineState();
+        updateSessionMainLine();
+    }
+
+    private void updateSessionMainLine() {
+        LyricsPresentation.setMainLineOnlyState(onlyMode == OnlyMode.TRANS || onlyMode == OnlyMode.BOTH,
+                onlyMode == OnlyMode.ROMA || onlyMode == OnlyMode.BOTH,
+                translatedLines, romanizedLines);
+        MiniplayerLyrics.onSettingsChanged();
+        LockScreenLyrics.onSettingsChanged();
     }
 
     private void clearActiveLineState() {
@@ -4275,6 +4287,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
         showLyrics(current);
         refreshDualPillIcons();
+        if (onlyMode != OnlyMode.NONE) {
+            updateSessionMainLine();
+        }
     }
 
     /**
