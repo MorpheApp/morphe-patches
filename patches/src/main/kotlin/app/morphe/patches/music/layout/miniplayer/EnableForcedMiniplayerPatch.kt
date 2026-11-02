@@ -9,8 +9,8 @@ package app.morphe.patches.music.layout.miniplayer
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -19,7 +19,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/EnableForcedMiniplayerPatch;"
 
@@ -42,10 +41,12 @@ val enableForcedMiniplayerPatch = bytecodePatch(
 
         MinimizedPlayerFingerprint.let {
             val method = it.method
-            val invokeIndex = method.indexOfFirstInstructionOrThrow {
-                opcode == Opcode.INVOKE_VIRTUAL &&
-                        getReference<MethodReference>()?.name == "booleanValue"
-            }
+            val invokeIndex = method.indexOfFirstInstructionOrThrow(
+                methodCall(
+                    opcode = Opcode.INVOKE_VIRTUAL,
+                    name = "booleanValue"
+                )
+            )
 
             val moveResultIndex = invokeIndex + 1
             val moveResultInstr = method.getInstruction<OneRegisterInstruction>(moveResultIndex)

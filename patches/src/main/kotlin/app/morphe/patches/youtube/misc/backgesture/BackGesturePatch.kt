@@ -8,15 +8,14 @@
 package app.morphe.patches.youtube.misc.backgesture
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import java.lang.ref.WeakReference
 
 private lateinit var backPressedMethodRef: WeakReference<MutableMethod>
@@ -44,9 +43,12 @@ fun addBackPressedHook(
     backPressedMethodRef.get()!!.apply {
         if (afterActivityBackPressed) {
             // Index is found again, as other hooks can be inserted before it.
-            val index = indexOfFirstInstructionOrThrow {
-                opcode == Opcode.INVOKE_SUPER && getReference<MethodReference>()?.name == "onBackPressed"
-            } + 1
+            val index = indexOfFirstInstructionOrThrow(
+                methodCall(
+                    opcode = Opcode.INVOKE_SUPER,
+                    name = "onBackPressed"
+                )
+            ) + 1
 
             addInstructionsAtControlFlowLabel(index, hook)
         } else {

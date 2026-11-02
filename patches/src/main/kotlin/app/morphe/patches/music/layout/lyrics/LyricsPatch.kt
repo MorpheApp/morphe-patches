@@ -10,9 +10,9 @@ package app.morphe.patches.music.layout.lyrics
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patcher.util.getReference
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
@@ -37,7 +37,6 @@ import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsPatch;"
@@ -297,12 +296,13 @@ val lyricsPatch = bytecodePatch(
                     // Hooked after the assignment, because the argument is cleared to null
                     // before it when the panel is being closed rather than shown. The panel
                     // is also handed to other objects here, so the owner is checked too.
-                    val assignIndex = indexOfFirstInstructionOrThrow {
-                        opcode == Opcode.IPUT_OBJECT &&
-                            getReference<FieldReference>()?.let { field ->
-                                field.type == panelType && field.definingClass == controllerType
-                            } == true
-                    }
+                    val assignIndex = indexOfFirstInstructionOrThrow(
+                        fieldAccess(
+                            opcode = Opcode.IPUT_OBJECT,
+                            definingClass = controllerType,
+                            type = panelType
+                        )
+                    )
                     addInstruction(
                         assignIndex + 1,
                         "invoke-static { p1 }, " +

@@ -15,10 +15,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField
@@ -60,7 +60,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ThreeRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodImplementation
@@ -136,9 +135,12 @@ val videoInformationPatch = bytecodePatch(
         playerInitMethodRef = WeakReference(playerInitMethod)
 
         // Find the location of the first invoke-direct call and extract the register storing the 'this' object reference.
-        val initThisIndex = playerInitMethod.indexOfFirstInstructionOrThrow {
-            opcode == Opcode.INVOKE_DIRECT && getReference<MethodReference>()?.name == "<init>"
-        }
+        val initThisIndex = playerInitMethod.indexOfFirstInstructionOrThrow(
+            methodCall(
+                opcode = Opcode.INVOKE_DIRECT,
+                name = "<init>"
+            )
+        )
         playerInitInsertRegister = playerInitMethod.getInstruction<FiveRegisterInstruction>(initThisIndex).registerC
         playerInitInsertIndex = initThisIndex + 1
 
@@ -159,9 +161,12 @@ val videoInformationPatch = bytecodePatch(
             val mdxInitMethod = classDef.methods.first { MethodUtil.isConstructor(it) }
             mdxInitMethodRef = WeakReference(mdxInitMethod)
 
-            val initThisIndex = mdxInitMethod.indexOfFirstInstructionOrThrow {
-                opcode == Opcode.INVOKE_DIRECT && getReference<MethodReference>()?.name == "<init>"
-            }
+            val initThisIndex = mdxInitMethod.indexOfFirstInstructionOrThrow(
+                methodCall(
+                    opcode = Opcode.INVOKE_DIRECT,
+                    name = "<init>"
+                )
+            )
             mdxInitInsertRegister = mdxInitMethod.getInstruction<FiveRegisterInstruction>(initThisIndex).registerC
             mdxInitInsertIndex = initThisIndex + 1
 

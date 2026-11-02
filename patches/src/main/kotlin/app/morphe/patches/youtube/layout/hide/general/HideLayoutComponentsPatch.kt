@@ -970,9 +970,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     methodCall(name = "next")
                 )
 
-                val protoObjectIndex = indexOfFirstInstructionOrThrow(nextIndex) {
-                    opcode == Opcode.IGET_OBJECT
-                }
+                val protoObjectIndex = indexOfFirstInstructionOrThrow(nextIndex, Opcode.IGET_OBJECT)
 
                 val protoInstruction = getInstruction<TwoRegisterInstruction>(protoObjectIndex)
                 val protoRegister = protoInstruction.registerA
@@ -988,9 +986,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 val insertIndex = if (isTypedProtoField) {
                     protoObjectIndex + 1
                 } else {
-                    indexOfFirstInstructionOrThrow(protoObjectIndex) {
-                        opcode == Opcode.CHECK_CAST
-                    } + 1
+                    indexOfFirstInstructionOrThrow(protoObjectIndex, Opcode.CHECK_CAST) + 1
                 }
 
                 val checkCastInstruction = if (isTypedProtoField) {

@@ -15,11 +15,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.numberOfParameterRegisters
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
@@ -68,7 +68,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -280,9 +279,12 @@ val miniplayerPatch = bytecodePatch(
             MiniplayerModernConstructorFingerprint.classDef.methods.forEach {
                 it.apply {
                     if (AccessFlags.CONSTRUCTOR.isSet(accessFlags)) {
-                        val iPutIndex = indexOfFirstInstructionOrThrow {
-                            opcode == Opcode.IPUT && getReference<FieldReference>()?.type == "I"
-                        }
+                        val iPutIndex = indexOfFirstInstructionOrThrow(
+                            fieldAccess(
+                                opcode = Opcode.IPUT,
+                                type = "I"
+                            )
+                        )
 
                         val register = getInstruction<TwoRegisterInstruction>(iPutIndex).registerA
                         addInstructionsAtControlFlowLabel(

@@ -1,10 +1,12 @@
 package app.morphe.patches.shared.misc.spoof
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstructionOrNull
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.string
 import app.morphe.patcher.util.getReference
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstruction
@@ -14,7 +16,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.iface.reference.StringReference
 import com.android.tools.smali.dexlib2.immutable.reference.ImmutableStringReference
 
 private const val USER_AGENT_STRING_BUILDER_APPEND_METHOD_REFERENCE =
@@ -34,11 +35,12 @@ fun userAgentClientSpoofPatch(originalPackageName: String) = bytecodePatch(
             custom = { _, classDef -> !classDef.type.startsWith("Lapp/morphe/extension") }
         ).matchAll().forEach { match ->
             match.originalMethod.apply {
-                val resourceOrGmsStringInstructionIndex = indexOfFirstInstruction {
-                    val reference = getReference<StringReference>()
-                    opcode == Opcode.CONST_STRING &&
-                            (reference?.string == "android.resource://" || reference?.string == "gcore_")
-                }
+                val resourceOrGmsStringInstructionIndex = indexOfFirstInstruction(
+                    anyInstruction(
+                        string("android.resource://"),
+                        string("gcore_")
+                    )
+                )
 
                 if (resourceOrGmsStringInstructionIndex >= 0) {
                     return@apply

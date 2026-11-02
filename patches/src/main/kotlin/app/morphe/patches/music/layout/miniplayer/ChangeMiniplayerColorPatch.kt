@@ -12,9 +12,9 @@ package app.morphe.patches.music.layout.miniplayer
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_32_or_greater
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -26,7 +26,6 @@ import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ChangeMiniplayerColorPatch;"
 
@@ -55,9 +54,9 @@ val changeMiniplayerColorPatch = bytecodePatch(
                 val colorMathPlayerIGetReference = it.instructionMatches[4]
                     .fieldReference
 
-                val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow {
-                    getReference<MethodReference>()?.name == "getColor"
-                }
+                val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow(
+                    methodCall(name = "getColor")
+                )
                 val iPutIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionOrThrow(
                     colorGreyIndex, Opcode.IPUT
                 )
@@ -95,9 +94,9 @@ val changeMiniplayerColorPatch = bytecodePatch(
                 val colorMathPlayerIGetReference = it.instructionMatches[4]
                     .fieldReference
 
-                val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow {
-                    getReference<MethodReference>()?.name == "getColor"
-                }
+                val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow(
+                    methodCall(name = "getColor")
+                )
                 val iPutIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionOrThrow(
                     colorGreyIndex, Opcode.IPUT
                 )

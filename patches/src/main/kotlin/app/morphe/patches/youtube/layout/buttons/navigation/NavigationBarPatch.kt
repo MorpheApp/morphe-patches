@@ -18,6 +18,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.booleanOption
@@ -453,9 +454,7 @@ val navigationBarPatch = bytecodePatch(
             // The height of the navigation bar is passed to the object that reserves that room below
             // the Shorts player, right after the view. Other patches can change the height after
             // it's read, so the room is replaced where it's passed.
-            val getHeightIndex = indexOfFirstInstructionOrThrow {
-                getReference<MethodReference>()?.name == "getHeight"
-            }
+            val getHeightIndex = indexOfFirstInstructionOrThrow(methodCall(name = "getHeight"))
             val reserveRoomIndex = indexOfFirstInstructionOrThrow(getHeightIndex, Opcode.INVOKE_DIRECT_RANGE)
             val reserveRoomInstruction = getInstruction<RegisterRangeInstruction>(reserveRoomIndex)
             val parameterTypes = reserveRoomInstruction.getReference<MethodReference>()!!

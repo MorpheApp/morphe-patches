@@ -13,8 +13,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.SpannableStringBuilderFingerprint
@@ -27,7 +27,6 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import java.lang.ref.WeakReference
 
@@ -67,10 +66,12 @@ val inclusiveSpanPatch = bytecodePatch(
         )
 
         SpannableStringBuilderFingerprint.instructionMatches[1].getMethodCalled().apply {
-            val insertIndex = indexOfFirstInstructionReversedOrThrow {
-                opcode == Opcode.INVOKE_VIRTUAL && getReference<MethodReference>().toString() ==
-                        "Landroid/text/SpannableString;->setSpan(Ljava/lang/Object;III)V"
-            }
+            val insertIndex = indexOfFirstInstructionReversedOrThrow(
+                methodCall(
+                    smali = "Landroid/text/SpannableString;->setSpan(Ljava/lang/Object;III)V",
+                    opcode = Opcode.INVOKE_VIRTUAL
+                )
+            )
             replaceInstruction(
                 insertIndex,
                 "invoke-static { ${fiveRegisters(insertIndex)} }, " +
