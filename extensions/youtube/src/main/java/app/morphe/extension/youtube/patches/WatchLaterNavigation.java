@@ -9,6 +9,7 @@ package app.morphe.extension.youtube.patches;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.google.protobuf.MessageLite;
 
@@ -30,6 +31,11 @@ public final class WatchLaterNavigation {
 
     public interface Renderer {
         MessageLite patch_getWatchLaterPivotBarItemRenderer();
+    }
+
+    /** The native selected-icon map falls back to the outline clock without this entry. */
+    static <K> void setSelectedIcon(Map<K, Integer> icons, K watchLater, int drawable) {
+        if (drawable != 0) icons.put(watchLater, drawable);
     }
 
     static byte[] transform(byte[] original, String label) throws Exception {
