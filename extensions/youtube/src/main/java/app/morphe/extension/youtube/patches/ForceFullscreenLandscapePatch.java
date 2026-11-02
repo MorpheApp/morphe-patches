@@ -9,6 +9,7 @@ package app.morphe.extension.youtube.patches;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 
 import androidx.annotation.Nullable;
 
@@ -43,10 +44,23 @@ public final class ForceFullscreenLandscapePatch {
     private ForceFullscreenLandscapePatch() {
     }
 
+    /**
+     * Phones and other small screens already open fullscreen in landscape,
+     * and forcing the orientation fights with the app and endlessly rotates the screen.
+     * <p>
+     * Android 16 and later ignore the orientation requested by an app that targets Android 16
+     * or later on a large screen, so the fullscreen player stays in portrait
+     * (<a href="https://github.com/MorpheApp/morphe-patches/issues/3145">...</a>).
+     */
+    private static boolean canForceOrientation() {
+        return Utils.isTablet() && (Build.VERSION.SDK_INT < Build.VERSION_CODES.BAKLAVA
+                || Utils.getContext().getApplicationInfo().targetSdkVersion < Build.VERSION_CODES.BAKLAVA);
+    }
+
     public static final class LargeScreenAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
-            return Utils.isTablet();
+            return canForceOrientation();
         }
     }
 
@@ -66,9 +80,7 @@ public final class ForceFullscreenLandscapePatch {
             // before the player type hook of the same method updates it.
             boolean isFullscreen = FULLSCREEN.equals(name);
 
-            // Phones and other small screens already open fullscreen in landscape,
-            // and forcing the orientation fights with the app and endlessly rotates the screen.
-            if (isFullscreen && Settings.FORCE_FULLSCREEN_LANDSCAPE.get() && Utils.isTablet()) {
+            if (isFullscreen && Settings.FORCE_FULLSCREEN_LANDSCAPE.get() && canForceOrientation()) {
                 Activity activity = Utils.getActivity();
                 if (activity == null) {
                     Logger.printDebug(() -> "Cannot force landscape orientation (activity is null)");
