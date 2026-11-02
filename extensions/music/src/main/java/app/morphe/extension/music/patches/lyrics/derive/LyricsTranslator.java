@@ -24,6 +24,7 @@ import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.translation.DeepLClient;
 import app.morphe.extension.shared.translation.TextTranslator;
 
 public final class LyricsTranslator {
@@ -231,8 +232,12 @@ public final class LyricsTranslator {
         if (apiKey.isEmpty()) {
             return null;
         }
-        List<String> translated = DeepLClient.translate(lines, language, apiKey);
-        return translated == null ? null : new AiProviders.Result(translated, "DeepL");
+        try {
+            return new AiProviders.Result(DeepLClient.translate(lines, language, apiKey), "DeepL");
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "DeepL request failed", ex);
+            return null;
+        }
     }
 
     @Nullable
