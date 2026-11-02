@@ -13,7 +13,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
@@ -28,7 +27,6 @@ import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/HideFlyoutMenuComponentsPatch;"
@@ -92,32 +90,38 @@ val hideFlyoutMenuComponentsPatch = bytecodePatch(
             )
         )
 
-        MenuItemFingerprint.method.apply {
-            // Register that receives the OR_INT_LIT16 result is free to reuse as the
-            // return value of hideComponents(Enum) before the following instructions run.
-            val freeIndex = indexOfFirstInstructionOrThrow(Opcode.OR_INT_LIT16)
-            val freeRegister = getInstruction<TwoRegisterInstruction>(freeIndex).registerA
+        // Resolve the icon type enum the same way the app does when it sets the item icon,
+        // and skip adding the item view to its container if the item is hidden.
+        val iconMatches = MenuItemIconFingerprint.instructionMatches
+        val menuItemRendererField = iconMatches[1].fieldReference
+        val iconMethod = iconMatches[2].methodReference
+        val iconTypeField = iconMatches[4].fieldReference
+        val iconTypeEnumMethod = iconMatches[5].methodReference
 
-            // The enum is produced by a static (I)L... call resolving an int to the enum instance.
-            val enumIndex = indexOfFirstInstructionOrThrow {
-                opcode == Opcode.INVOKE_STATIC &&
-                    getReference<MethodReference>()?.let { ref ->
-                        ref.parameterTypes.size == 1 &&
-                            ref.parameterTypes.first() == "I" &&
-                            ref.returnType.startsWith("L")
-                    } == true
-            } + 1
-            val enumRegister = getInstruction<OneRegisterInstruction>(enumIndex).registerA
+        MenuItemFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+                val register = it.instructionMatches[1].getInstruction<TwoRegisterInstruction>().registerA
 
-            addInstructionsWithLabels(
-                enumIndex + 1,
-                """
-                    invoke-static { v$enumRegister }, $EXTENSION_CLASS->hideComponents(Ljava/lang/Enum;)Z
-                    move-result v$freeRegister
-                    if-nez v$freeRegister, :hide
-                """,
-                ExternalLabel("hide", getInstruction(implementation!!.instructions.lastIndex))
-            )
+                addInstructionsWithLabels(
+                    index,
+                    """
+                        iget-object v$register, p0, $menuItemRendererField
+                        invoke-static { v$register }, $iconMethod
+                        move-result-object v$register
+                        if-eqz v$register, :show
+                        iget v$register, v$register, $iconTypeField
+                        invoke-static { v$register }, $iconTypeEnumMethod
+                        move-result-object v$register
+                        invoke-static { v$register }, $EXTENSION_CLASS->hideComponents(Ljava/lang/Enum;)Z
+                        move-result v$register
+                        if-nez v$register, :hide
+                        :show
+                        nop
+                    """,
+                    ExternalLabel("hide", getInstruction(implementation!!.instructions.lastIndex))
+                )
+            }
         }
 
         // Legacy View-level hide for older YT Music versions where like/dislike is a
