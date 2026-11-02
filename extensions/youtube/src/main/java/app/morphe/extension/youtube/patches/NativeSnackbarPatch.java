@@ -8,6 +8,9 @@
 package app.morphe.extension.youtube.patches;
 
 import android.os.SystemClock;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import java.util.ArrayDeque;
@@ -92,6 +95,47 @@ public final class NativeSnackbarPatch {
         if (!shown) {
             // The app can no longer show it, such as while it is in the background.
             Utils.showToast(next.message, next.longDuration ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT);
+        }
+    }
+
+    /** Position of the snackbar container in its window. Used only on the main thread. */
+    private static final int[] containerLocation = new int[2];
+
+    /**
+     * Injection point.
+     * <p>
+     * Called after the container of the snackbars has laid them out. YouTube gives it the bottom
+     * window inset as bottom padding also when it ends above the navigation bar or the miniplayer,
+     * which already keep it above the system navigation buttons, so the snackbars are shown that much
+     * above them (<a href="https://github.com/MorpheApp/morphe-patches/issues/4308">...</a>).
+     * Only the part of the padding the container really needs, where it overlaps the inset, is kept.
+     */
+    public static void removeExtraBottomRoom(FrameLayout container) {
+        try {
+            final int paddingBottom = container.getPaddingBottom();
+            if (paddingBottom <= 0) {
+                return;
+            }
+
+            container.getLocationInWindow(containerLocation);
+            final int roomBelow = container.getRootView().getHeight()
+                    - containerLocation[1] - container.getHeight();
+            final int offset = Math.min(paddingBottom, roomBelow);
+            if (offset <= 0) {
+                return;
+            }
+
+            // The moved snackbars are drawn over the padding.
+            container.setClipToPadding(false);
+            for (int i = 0, count = container.getChildCount(); i < count; i++) {
+                View child = container.getChildAt(i);
+                if (child.getLayoutParams() instanceof FrameLayout.LayoutParams params
+                        && (params.gravity & Gravity.VERTICAL_GRAVITY_MASK) == Gravity.BOTTOM) {
+                    child.offsetTopAndBottom(offset);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "removeExtraBottomRoom failure", ex);
         }
     }
 

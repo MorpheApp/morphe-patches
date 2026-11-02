@@ -43,3 +43,14 @@ internal object SettingsPreferenceScreenSyntheticFingerprint : Fingerprint(
         opcode(Opcode.RETURN_VOID)
     )
 )
+
+/**
+ * Lays out the snackbars and the other bottom messages, then keeps the top of the shown one.
+ */
+internal object BottomUiContainerOnLayoutFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;",
+    name = "onLayout",
+    filters = listOf(
+        methodCall(smali = "Landroid/widget/FrameLayout;->onLayout(ZIIII)V")
+    )
+)

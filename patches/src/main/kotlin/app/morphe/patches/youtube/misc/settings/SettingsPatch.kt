@@ -372,6 +372,14 @@ val settingsPatch = bytecodePatch(
             "invoke-static { }, $NATIVE_SNACKBAR_CLASS->initialize()V"
         )
 
+        // Show the snackbars right above the navigation bar and the miniplayer.
+        BottomUiContainerOnLayoutFingerprint.let {
+            it.method.addInstruction(
+                it.instructionMatches.first().index + 1,
+                "invoke-static { p0 }, $NATIVE_SNACKBAR_CLASS->removeExtraBottomRoom(Landroid/widget/FrameLayout;)V"
+            )
+        }
+
         modifyActivityForSettingsInjection(
             GoogleApiActivityOnCreateFingerprint,
             YOUTUBE_ACTIVITY_HOOK_CLASS,
