@@ -10,6 +10,7 @@ package app.morphe.patches.music.layout.hide.settingsmenu
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.getFreeRegisterProvider
+import app.morphe.patcher.util.p0Register
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.SETTINGS_HEADERS_FRAGMENT_CLASS
@@ -21,7 +22,6 @@ import app.morphe.patches.shared.misc.settingsmenu.HIDE_MATCHING_METHOD
 import app.morphe.patches.shared.misc.settingsmenu.SETTINGS_MENU_FILTER_CLASS
 import app.morphe.patches.shared.misc.settingsmenu.injectHideMatchingHelper
 import app.morphe.patches.shared.misc.settingsmenu.injectSettingsMenuFilterHook
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/SettingsMenuFilterPatch;"
@@ -52,16 +52,17 @@ val hideSettingsMenuFilterPatch = bytecodePatch(
         injectSettingsMenuFilterHook(EXTENSION_CLASS)
         injectHideMatchingHelper()
 
-        // p0 is reassigned to the peer at method entry, so recover the fragment via peer.fragment.
+        // Settings patch cloned the parameters, so p0 is the unchanged fragment and the
+        // peer is read again from it.
         SettingsHeadersOnCreatePreferencesFingerprint.let {
+            val peerMethod = it.instructionMatches.first().methodReference
             val fragmentField = it.instructionMatches.last()
                 .fieldReference
 
             it.method.apply {
                 val insertIndex = implementation!!.instructions.size - 1
-                val peerRegister = it.instructionMatches[1].getInstruction<OneRegisterInstruction>().registerA
                 val registerProvider = getFreeRegisterProvider(insertIndex,
-                    3, peerRegister)
+                    3, p0Register)
                 val free1 = registerProvider.getFreeRegister()
                 val free2 = registerProvider.getFreeRegister()
                 val free3 = registerProvider.getFreeRegister()
@@ -69,7 +70,9 @@ val hideSettingsMenuFilterPatch = bytecodePatch(
                 addInstructionsWithLabels(
                     insertIndex,
                     """
-                        iget-object v$free1, v$peerRegister, $fragmentField
+                        invoke-virtual { p0 }, $peerMethod
+                        move-result-object v$free1
+                        iget-object v$free1, v$free1, $fragmentField
                         invoke-virtual { v$free1 }, $SETTINGS_HEADERS_FRAGMENT_CLASS->getPreferenceScreen()Landroidx/preference/PreferenceScreen;
                         move-result-object v$free1
                         if-eqz v$free1, :ignore
