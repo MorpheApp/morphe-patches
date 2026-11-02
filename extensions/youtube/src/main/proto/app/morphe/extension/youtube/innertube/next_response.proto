@@ -302,3 +302,8 @@ message RatingButtonContainer {
 message RatingStatusEntity {
     int32 likeStatus = 2;
 }
+
+message ChannelGuidelinesStateEntityPayload {
+    string key = 1;
+    bool shouldRequireViewerAck = 2;
+}

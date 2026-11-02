@@ -601,6 +601,29 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         //endregion
 
+        // region hide guidelines sheet shown before commenting
+
+        // The parameter register is free after it's copied, and keeps the field number of the payload.
+        // The copy is the first instruction, so the indexes are found again.
+        EntityMutationPayloadFingerprint.method.cloneParameters().apply {
+            val tagIndex = indexOfFirstInstructionOrThrow(Opcode.MOVE_RESULT)
+            val tagRegister = getInstruction<OneRegisterInstruction>(tagIndex).registerA
+            val returnIndex = indexOfFirstInstructionOrThrow(Opcode.RETURN_OBJECT)
+            val payloadRegister = getInstruction<OneRegisterInstruction>(returnIndex).registerA
+
+            addInstructions(
+                returnIndex,
+                """
+                    ushr-int/lit8 p0, p0, 0x3
+                    invoke-static { p0, v$payloadRegister }, $COMMENTS_FILTER->hideGuidelinesSheet(I[B)[B
+                    move-result-object v$payloadRegister
+                """
+            )
+            addInstruction(tagIndex + 1, "move p0, v$tagRegister")
+        }
+
+        // endregion
+
         // region hide crowdfunding box
 
         CrowdfundingBoxFingerprint.let {
