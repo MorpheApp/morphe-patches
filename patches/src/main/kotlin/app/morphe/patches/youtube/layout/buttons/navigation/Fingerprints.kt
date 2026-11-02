@@ -34,8 +34,15 @@ internal object WatchLaterIconEnumFingerprint : Fingerprint(
     classFingerprint = ImageEnumConstructorFingerprint,
     filters = listOf(
         string("WATCH_LATER"),
-        opcode(Opcode.SPUT_OBJECT)
+        opcode(Opcode.SPUT_OBJECT, location = MatchAfterWithin(5))
     )
+)
+
+internal object WatchLaterPivotBarItemBuilderFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "buildWatchLaterPivotBarItem",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("[B")
 )
 
 private val SET_VISIBILITY_METHOD_CALL = methodCall(
