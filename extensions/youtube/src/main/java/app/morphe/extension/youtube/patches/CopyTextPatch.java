@@ -9,23 +9,31 @@ package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
 
 import com.facebook.litho.ComponentHost;
 import com.facebook.litho.TextContent;
 
 import java.lang.ref.WeakReference;
-import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -33,6 +41,27 @@ public final class CopyTextPatch {
 
     private static final boolean COPY_VIDEO_TITLE = Settings.COPY_VIDEO_TITLE.get();
     private static final boolean COPY_COMMENTS = Settings.COPY_COMMENTS.get();
+    private static final boolean SELECT_TEXT = Settings.COPY_SELECT_TEXT.get();
+    private static final boolean ENABLED = COPY_VIDEO_TITLE || COPY_COMMENTS || SELECT_TEXT;
+
+    /**
+     * Element of the description panel, which is a list of segments: texts, and attachments
+     * such as channel cards that replace a link of the description.
+     */
+    private static final String DESCRIPTION_IDENTIFIER = "description_rich_text_list.e";
+    /**
+     * Description of the description panel of a Short, which is a single text.
+     */
+    private static final String SHORTS_DESCRIPTION_IDENTIFIER = "cell_description_body.e";
+    /**
+     * Included in the identifier of the post elements.
+     */
+    private static final String POST = "post";
+    /**
+     * Shorter texts of a post are the counts and the buttons, such as "12" or "Like".
+     */
+    private static final int MIN_POST_TEXT_LENGTH = 8;
+    private static final int MAX_SELECTABLE_TEXTS = 300;
 
     /**
      * The comment text is nested deeper in the comment than the time and the "Pinned by" text.
@@ -50,16 +79,18 @@ public final class CopyTextPatch {
     private static final int MIN_TRUNCATED_TEXT_LENGTH = 20;
 
     /**
-     * Texts of the comments laid out recently. Litho can lay out on other threads,
-     * so it is only used while synchronized on itself.
+     * Texts of the comments laid out recently. Litho can lay out on other threads.
      */
+    @GuardedBy("itself")
     private static final Map<String, Boolean> commentTexts =
-            new LinkedHashMap<>(MAX_COMMENTS, 0.75f, true) {
-                @Override
-                protected boolean removeEldestEntry(Map.Entry<String, Boolean> eldest) {
-                    return size() > MAX_COMMENTS;
-                }
-            };
+            Utils.createSizeRestrictedMap(MAX_COMMENTS, true);
+
+    /**
+     * Normalized texts of the descriptions and posts laid out recently -> the texts.
+     */
+    @GuardedBy("itself")
+    private static final Map<String, String> selectableTexts =
+            Utils.createSizeRestrictedMap(MAX_SELECTABLE_TEXTS, true);
 
     /**
      * The view made long clickable, so the long click is removed again
@@ -78,11 +109,20 @@ public final class CopyTextPatch {
      */
     private static String touchedText = "";
     private static String touchedToastKey = "";
+    /**
+     * If the touched text is shown to select a part of it, instead of copying all of it.
+     */
+    private static boolean touchedTextSelectable;
 
     private static final View.OnLongClickListener LONG_CLICK_LISTENER = view -> {
         String text = touchedText;
         if (text.isEmpty()) {
             return false;
+        }
+
+        if (touchedTextSelectable) {
+            showSelectTextDialog(view.getContext(), text);
+            return true;
         }
 
         Utils.setClipboard(text);
@@ -95,19 +135,26 @@ public final class CopyTextPatch {
      */
     public static CharSequence onLithoTextLoaded(ContextInterface contextInterface, CharSequence text) {
         try {
-            if (text == null || !(COPY_VIDEO_TITLE || COPY_COMMENTS)) {
+            if (text == null || !ENABLED) {
                 return text;
             }
 
-            if (COPY_COMMENTS && isCommentText(contextInterface)) {
-                String comment = text.toString().trim();
-                if (!comment.isEmpty()) {
-                    synchronized (commentTexts) {
-                        commentTexts.put(comment, Boolean.TRUE);
-                    }
+            String trimmed = text.toString().trim();
+            if (trimmed.isEmpty()) {
+                return text;
+            }
+
+            if (SELECT_TEXT && isSelectableText(contextInterface, trimmed)) {
+                String key = normalize(trimmed);
+                synchronized (selectableTexts) {
+                    selectableTexts.put(key, trimmed);
+                }
+            } else if (COPY_COMMENTS && isCommentText(contextInterface)) {
+                synchronized (commentTexts) {
+                    commentTexts.put(trimmed, Boolean.TRUE);
                 }
             } else if (COPY_VIDEO_TITLE && isVideoTitle(contextInterface)) {
-                shownTitle = removeTitleMarker(text.toString().trim());
+                shownTitle = removeTitleMarker(trimmed);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onLithoTextLoaded failure", ex);
@@ -125,6 +172,54 @@ public final class CopyTextPatch {
         return path.indexOf("video_metadata_inner.e") >= 0
                 && path.indexOf("video_subtitle.e") < 0
                 && Utils.endsWith(path, "|TextType|");
+    }
+
+    /**
+     * @return If the text is of a description or a post, which can be selected to copy a part of it.
+     */
+    private static boolean isSelectableText(ContextInterface contextInterface, String text) {
+        String identifier = contextInterface.patch_getIdentifier();
+        if (identifier == null) {
+            return false;
+        }
+        if (identifier.startsWith(DESCRIPTION_IDENTIFIER) || identifier.startsWith(SHORTS_DESCRIPTION_IDENTIFIER)) {
+            return true;
+        }
+        if (text.length() < MIN_POST_TEXT_LENGTH) {
+            return false;
+        }
+        // Only the first element of the identifier is the post itself.
+        final int postIndex = identifier.indexOf(POST);
+        final int elementEnd = identifier.indexOf('|');
+        if (postIndex < 0 || (elementEnd >= 0 && postIndex > elementEnd)) {
+            return false;
+        }
+        // The element of a post can include comments, such as when the post is opened.
+        return contextInterface.patch_getPathBuilder().indexOf("|comment.e") < 0;
+    }
+
+    /**
+     * The shown text can join the lines of the text, or show invisible format characters.
+     */
+    private static String normalize(String text) {
+        StringBuilder builder = new StringBuilder(text.length());
+        boolean space = false;
+        for (int i = 0, length = text.length(); i < length; i++) {
+            final char c = text.charAt(i);
+            if (Character.getType(c) == Character.FORMAT) {
+                continue;
+            }
+            if (Character.isWhitespace(c) || Character.isSpaceChar(c)) {
+                space = builder.length() > 0;
+                continue;
+            }
+            if (space) {
+                builder.append(' ');
+                space = false;
+            }
+            builder.append(c);
+        }
+        return builder.toString();
     }
 
     /**
@@ -158,7 +253,7 @@ public final class CopyTextPatch {
      * Injection point.
      */
     public static void onComponentHostTouch(ComponentHost host, MotionEvent event) {
-        if (!(COPY_VIDEO_TITLE || COPY_COMMENTS) || event.getActionMasked() != MotionEvent.ACTION_DOWN) {
+        if (!ENABLED || event.getActionMasked() != MotionEvent.ACTION_DOWN) {
             return;
         }
 
@@ -179,6 +274,10 @@ public final class CopyTextPatch {
             // The text is drawn by a host that is not clickable itself,
             // and the tap is handled by a parent.
             View clickableView = findClickableView(host);
+            if (clickableView == null && touchedTextSelectable) {
+                // A description is not clickable, except its links.
+                clickableView = host;
+            }
             if (clickableView == null || clickableView.isLongClickable()) {
                 return;
             }
@@ -213,21 +312,90 @@ public final class CopyTextPatch {
                         : isShownText(itemText, title) ? title
                         : null;
                 if (fullTitle != null) {
-                    touchedText = fullTitle;
-                    touchedToastKey = "morphe_copy_video_title_success";
+                    setTouchedText(fullTitle, "morphe_copy_video_title_success", false);
                     return true;
                 }
             }
             if (COPY_COMMENTS) {
                 String comment = findComment(itemText);
                 if (comment != null) {
-                    touchedText = comment;
-                    touchedToastKey = "morphe_copy_comments_success";
+                    setTouchedText(comment, "morphe_copy_comments_success", false);
+                    return true;
+                }
+            }
+            if (SELECT_TEXT) {
+                String selectable = findSelectableText(itemText);
+                if (selectable != null) {
+                    setTouchedText(selectable, "", true);
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    private static void setTouchedText(String text, String toastKey, boolean selectable) {
+        touchedText = text;
+        touchedToastKey = toastKey;
+        touchedTextSelectable = selectable;
+    }
+
+    /**
+     * @return The full text of a description or a post, which can be the start of a collapsed post.
+     */
+    @Nullable
+    private static String findSelectableText(String text) {
+        String shown = normalize(text);
+        synchronized (selectableTexts) {
+            String key = findShownText(shown, selectableTexts.keySet());
+            return key == null ? null : selectableTexts.get(key);
+        }
+    }
+
+    /**
+     * Shows the text in a dialog where any part of it can be selected and copied.
+     */
+    private static void showSelectTextDialog(Context context, String text) {
+        try {
+            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                    context,
+                    str("morphe_copy_select_text_dialog_title"), // Title.
+                    text, // Message.
+                    null, // No EditText.
+                    str("morphe_copy_select_text_copy_all"), // OK button text.
+                    () -> {
+                        Utils.setClipboard(text);
+                        Utils.showSnackbarShort(str("morphe_copy_select_text_success"));
+                    },
+                    () -> {}, // Cancel button action (dismiss only).
+                    null, // No neutral button.
+                    null, // No neutral button action.
+                    true  // Dismiss dialog when onNeutralClick.
+            );
+            TextView messageView = findTextView(dialogPair.second, text);
+            if (messageView != null) {
+                messageView.setTextIsSelectable(true);
+            }
+            dialogPair.first.show();
+        } catch (Exception ex) {
+            Logger.printException(() -> "showSelectTextDialog failure", ex);
+        }
+    }
+
+    @Nullable
+    private static TextView findTextView(View view, String text) {
+        if (view instanceof TextView textView && text.contentEquals(textView.getText())) {
+            return textView;
+        }
+        if (view instanceof ViewGroup group) {
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                TextView found = findTextView(group.getChildAt(i), text);
+                if (found != null) {
+                    return found;
+                }
+            }
+        }
+        return null;
     }
 
     /**
@@ -236,26 +404,34 @@ public final class CopyTextPatch {
     @Nullable
     private static String findComment(String text) {
         synchronized (commentTexts) {
-            if (commentTexts.containsKey(text)) {
-                return text;
-            }
-            if (text.length() < MIN_TRUNCATED_TEXT_LENGTH) {
-                return null;
-            }
-
-            // A comment can start with the comment it quotes,
-            // but the comment that is shown matches for longer.
-            String bestComment = null;
-            int bestLength = -1;
-            for (String comment : commentTexts.keySet()) {
-                final int length = shownLength(text, comment);
-                if (length > bestLength) {
-                    bestComment = comment;
-                    bestLength = length;
-                }
-            }
-            return bestComment;
+            return findShownText(text, commentTexts.keySet());
         }
+    }
+
+    /**
+     * @return The full text that is shown, which can be truncated by Litho, or null if none is.
+     */
+    @Nullable
+    private static String findShownText(String shownText, Set<String> fullTexts) {
+        if (fullTexts.contains(shownText)) {
+            return shownText;
+        }
+        if (shownText.length() < MIN_TRUNCATED_TEXT_LENGTH) {
+            return null;
+        }
+
+        // A text can start with another text, such as a comment that quotes a comment,
+        // but the text that is shown matches for longer.
+        String bestText = null;
+        int bestLength = -1;
+        for (String fullText : fullTexts) {
+            final int length = shownLength(shownText, fullText);
+            if (length > bestLength) {
+                bestText = fullText;
+                bestLength = length;
+            }
+        }
+        return bestText;
     }
 
     private static boolean isShownText(String shownText, String fullText) {
