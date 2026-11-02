@@ -17,6 +17,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import androidx.annotation.Nullable;
 
@@ -179,7 +180,11 @@ public final class NiconicoCommentsToggleButton {
                     Settings.NICONICO_COMMENTS_MAX_LENGTH,
                     foregroundColor,
                     Settings.NICONICO_COMMENTS_MAX_LENGTH::save));
-            mainLayout.addView(contentLayout);
+
+            // Capped so every slider stays reachable in landscape, where height is limited.
+            ScrollView scrollView = SheetBottomDialog.createCappedScrollView(context);
+            scrollView.addView(contentLayout);
+            mainLayout.addView(scrollView);
 
             SheetBottomDialog.SlideDialog dialog = SheetBottomDialog.createSlideDialog(
                     context, mainLayout, LegacyPlayerControlButton.fadeInDuration);
