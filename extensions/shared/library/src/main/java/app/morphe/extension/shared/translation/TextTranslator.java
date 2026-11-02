@@ -8,6 +8,8 @@
 package app.morphe.extension.shared.translation;
 
 import android.content.res.Configuration;
+import android.text.Html;
+import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -60,6 +62,19 @@ public final class TextTranslator {
 
     private static final String GOOGLE_ROMANIZE_FALLBACK_URL =
             "https://translate.googleapis.com/translate_a/single?client=dict-chrome-ex&sl=auto&dt=t&dt=rm&tl=";
+
+    /**
+     * Endpoint of the website translator. It does not answer 429 to a burst of single texts like
+     * {@code gtx} does, so it suits a caller that translates many short texts as they arrive.
+     */
+    private static final String GOOGLE_TRANSLATE_HTML_URL =
+            "https://translate-pa.googleapis.com/v1/translateHtml";
+
+    /**
+     * Public key the website translator sends. If Google replaces it, the requests fail and
+     * {@code gtx} is used instead.
+     */
+    private static final String GOOGLE_TRANSLATE_HTML_API_KEY = "AIzaSyATBXajvzQLTDHEQbcpq0Ihe0vWDHmO520";
 
     /** A translation nobody reads, so the source keeps its own script. */
     private static final String DEFAULT_ROMANIZATION_TARGET = "en";
@@ -201,6 +216,12 @@ public final class TextTranslator {
      * @param targetLanguage Language code such as {@code uk}.
      */
     public static Translation translateText(String text, String targetLanguage) throws Exception {
+        try {
+            return translateHtml(text, targetLanguage);
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Website translator endpoint failed, using gtx", ex);
+        }
+
         return request(text, GOOGLE_TRANSLATE_URL + targetLanguage,
                 GOOGLE_TRANSLATE_FALLBACK_URL + targetLanguage, false, response -> {
                     // Index 2 of the response holds the detected language.
@@ -208,6 +229,29 @@ public final class TextTranslator {
                     return new Translation(joinSentences(response.getJSONArray(0)),
                             detected == null || detected.isEmpty() ? null : detected);
                 });
+    }
+
+    /**
+     * The endpoint takes HTML, so the text is escaped to keep characters such as {@code <} as
+     * they are, and the escaped result is decoded again.
+     */
+    private static Translation translateHtml(String text, String targetLanguage) throws Exception {
+        // Request: [[[texts], source, target], "wt_lib"]
+        JSONArray request = new JSONArray()
+                .put(new JSONArray().put(TextUtils.htmlEncode(text)))
+                .put("auto")
+                .put(targetLanguage);
+        JSONArray body = new JSONArray().put(request).put("wt_lib");
+
+        // Response: [[translated texts], [detected languages]]
+        JSONArray response = new JSONArray(post(GOOGLE_TRANSLATE_HTML_URL,
+                "application/json+protobuf", body.toString(),
+                "X-Goog-API-Key", GOOGLE_TRANSLATE_HTML_API_KEY, "Website translation"));
+        String translated = Html.fromHtml(response.getJSONArray(0).getString(0),
+                Html.FROM_HTML_MODE_LEGACY).toString();
+        JSONArray detected = response.optJSONArray(1);
+        String language = detected == null || detected.isNull(0) ? null : detected.getString(0);
+        return new Translation(translated, language == null || language.isEmpty() ? null : language);
     }
 
 /**
@@ -325,9 +369,24 @@ public final class TextTranslator {
 
     private static <T> T send(String text, String url, boolean romanize,
                               ResponseParser<T> parser) throws Exception {
-        Utils.verifyOffMainThread();
-
         String body = "q=" + URLEncoder.encode(text, "UTF-8");
+        String response = post(url, "application/x-www-form-urlencoded", body, null, null,
+                romanize ? "Romanization" : "Translation");
+        return parser.parse(new JSONArray(response));
+    }
+
+    /**
+     * Sends a POST request. Always call off the main thread.
+     *
+     * @param headerName  Name of an extra header such as the API key, or null for none.
+     * @param requestName Name of the request in the error message.
+     * @return The response body.
+     * @throws TranslationHttpException If the status code is not 200.
+     */
+    static String post(String url, String contentType, String body,
+                       @Nullable String headerName, @Nullable String headerValue,
+                       String requestName) throws Exception {
+        Utils.verifyOffMainThread();
 
         HttpURLConnection connection = null;
         try {
@@ -335,8 +394,11 @@ public final class TextTranslator {
             connection.setRequestMethod("POST");
             connection.setConnectTimeout(CONNECT_TIMEOUT_MILLISECONDS);
             connection.setReadTimeout(READ_TIMEOUT_MILLISECONDS);
-            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            connection.setRequestProperty("Content-Type", contentType);
             connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+            if (headerName != null) {
+                connection.setRequestProperty(headerName, headerValue);
+            }
             connection.setDoOutput(true);
 
             byte[] payload = body.getBytes(StandardCharsets.UTF_8);
@@ -346,8 +408,8 @@ public final class TextTranslator {
             }
 
             final int code = connection.getResponseCode();
-            if (code == 200) {
-                return parser.parse(new JSONArray(Requester.parseString(connection)));
+            if (code == Requester.HTTP_STATUS_CODE_SUCCESS) {
+                return Requester.parseString(connection);
             }
 
             // A non-2xx response: read the body through the error stream, because
@@ -356,8 +418,7 @@ public final class TextTranslator {
             String responseStart = response.substring(0,
                     Math.min(response.length(), MAXIMUM_ERROR_CHARACTERS));
             throw new TranslationHttpException(code,
-                    (romanize ? "Romanization" : "Translation") + " HTTP status: " + code
-                            + " response: " + responseStart);
+                    requestName + " HTTP status: " + code + " response: " + responseStart);
         } finally {
             if (connection != null) {
                 connection.disconnect();

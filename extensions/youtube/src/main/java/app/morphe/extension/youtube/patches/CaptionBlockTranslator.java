@@ -22,8 +22,8 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.IdentityHashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -71,6 +71,8 @@ final class CaptionBlockTranslator implements CaptionSession.Translator {
             url -> Requester.openConnection(url), () -> System.nanoTime() / 1_000_000L);
 
     private static final String GOOGLE_URL = "https://translate-pa.googleapis.com/v1/translateHtml";
+    // Google Translate webpage key. Ubiquitous and used by hundreds of projects
+    // https://github.com/search?q=AIzaSyATBXajvzQLTDHEQbcpq0Ihe0vWDHmO520&type=code
     private static final String GOOGLE_API_KEY = "AIzaSyATBXajvzQLTDHEQbcpq0Ihe0vWDHmO520";
     private static final String MICROSOFT_URL = "https://edge.microsoft.com/translate/translatetext";
 

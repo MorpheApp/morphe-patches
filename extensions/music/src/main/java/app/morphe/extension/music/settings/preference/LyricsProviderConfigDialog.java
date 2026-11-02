@@ -37,13 +37,13 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import app.morphe.extension.music.patches.lyrics.derive.AiProviders;
-import app.morphe.extension.music.patches.lyrics.derive.DeepLClient;
 import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
+import app.morphe.extension.shared.translation.DeepLClient;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
@@ -103,8 +103,8 @@ final class LyricsProviderConfigDialog {
                                 Settings.LYRICS_AI_MODEL.get());
                         case AiProviders.DEEPL -> {
                             final String key = Settings.LYRICS_DEEPL_API_KEY.get();
-                            valid = !key.isEmpty() && DeepLClient.translate(
-                                    Collections.singletonList("hello"), "EN", key) != null;
+                            valid = !key.isEmpty() && !DeepLClient.translate(
+                                    Collections.singletonList("hello"), "EN", key).isEmpty();
                         }
                         default -> {
                         }

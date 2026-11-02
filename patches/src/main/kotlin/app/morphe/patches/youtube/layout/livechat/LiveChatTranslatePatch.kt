@@ -55,6 +55,8 @@ val liveChatTranslatePatch = bytecodePatch(
                         entryValuesKey = "morphe_post_translate_language_entry_values",
                     ),
                     TextPreference("morphe_live_chat_translate_exclude"),
+                    ListPreference("morphe_live_chat_translate_provider"),
+                    TextPreference("morphe_live_chat_translate_deepl_api_key"),
                     SwitchPreference("morphe_live_chat_translate_copy_button", summary = true),
                     ListPreference("morphe_live_chat_translate_style"),
                     SwitchPreference("morphe_live_chat_translate_bold", summary = true),

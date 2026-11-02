@@ -31,6 +31,7 @@ import androidx.annotation.Nullable;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -47,6 +48,9 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
 import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.translation.DeepLClient;
 import app.morphe.extension.shared.translation.TextTranslator;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
@@ -62,6 +66,25 @@ import app.morphe.extension.youtube.settings.Settings;
  */
 @SuppressWarnings("unused")
 public final class LiveChatTranslatePatch {
+
+    public enum TranslationProvider {
+        GOOGLE,
+        /** Needs an API key of the user. Google is used if it fails. */
+        DEEPL,
+    }
+
+    public static final class DeepLAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return Settings.LIVE_CHAT_TRANSLATE.get()
+                    && Settings.LIVE_CHAT_TRANSLATE_PROVIDER.get() == TranslationProvider.DEEPL;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.LIVE_CHAT_TRANSLATE, Settings.LIVE_CHAT_TRANSLATE_PROVIDER);
+        }
+    }
 
     public enum TranslationStyle {
         /** Only the translation is shown. */
@@ -120,7 +143,7 @@ public final class LiveChatTranslatePatch {
     private static final int WORKER_THREADS = 2;
     private static final int WORK_QUEUE_CAPACITY = 24;
     private static final long WORKER_KEEP_ALIVE_SECONDS = 30;
-    /** The endpoint answers 429 above about one request per second. */
+    /** The gtx endpoint the shared translator falls back to answers 429 above about one request per second. */
     private static final long MIN_REQUEST_INTERVAL_MILLISECONDS = 700;
     /** Doubles per failure, and resets after a success. */
     private static final long MIN_BACKOFF_MILLISECONDS = 5_000;
@@ -816,7 +839,7 @@ public final class LiveChatTranslatePatch {
     private static void fetchTranslation(String message, String language, String key) {
         try {
             waitForRequestSlot();
-            TextTranslator.Translation result = TextTranslator.translateText(message, language);
+            final TextTranslator.Translation result = translate(message, language);
             final String translation = result.text().trim();
             final String detected = result.detectedLanguage();
             final boolean isTranslated = !translation.isEmpty() && !translation.equalsIgnoreCase(message)
@@ -828,8 +851,8 @@ public final class LiveChatTranslatePatch {
             Thread.currentThread().interrupt();
             Logger.printInfo(() -> "Translation was interrupted", ex);
         } catch (Exception ex) {
-            // The shared translator wraps every failure in a plain exception, so the status is read
-            // from the message. Its own retry suits a patch that asks once; this one keeps asking.
+            // The shared translator retries on its own, which suits a patch that asks once.
+            // This one keeps asking, so a rate limit backs off for longer.
             final boolean rateLimited = isRateLimited(ex);
             final long now = System.currentTimeMillis();
             if (now >= retryAfterFailureTime) {
@@ -842,15 +865,30 @@ public final class LiveChatTranslatePatch {
         }
     }
 
-    /** @return If the failure was a rate limit, which the shared translator reports in the message. */
+    /** @return If the failure was a rate limit. */
     private static boolean isRateLimited(@Nullable Throwable throwable) {
         for (Throwable t = throwable; t != null; t = t.getCause()) {
-            final String message = t.getMessage();
-            if (message != null && message.contains("429")) {
+            if (t instanceof TextTranslator.TranslationHttpException httpException
+                    && httpException.statusCode == Requester.HTTP_STATUS_CODE_TOO_MANY_REQUESTS) {
                 return true;
             }
         }
         return false;
+    }
+
+    private static TextTranslator.Translation translate(String message, String language) throws Exception {
+        if (Settings.LIVE_CHAT_TRANSLATE_PROVIDER.get() == TranslationProvider.DEEPL) {
+            final String apiKey = Settings.LIVE_CHAT_TRANSLATE_DEEPL_API_KEY.get().trim();
+            if (!apiKey.isEmpty()) {
+                try {
+                    return DeepLClient.translateText(message, language, apiKey);
+                } catch (Exception ex) {
+                    // Such as the monthly character limit of the key being used up.
+                    Logger.printInfo(() -> "DeepL failed, using Google", ex);
+                }
+            }
+        }
+        return TextTranslator.translateText(message, language);
     }
 
     private static void waitForRequestSlot() throws InterruptedException {
