@@ -13,6 +13,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.text.Html;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -29,8 +30,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.Collections;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,6 +47,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Pattern;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
@@ -49,6 +57,7 @@ import app.morphe.extension.shared.patches.LithoRelayoutPatch;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.translation.TextTranslator;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -120,6 +129,10 @@ public final class LiveChatTranslatePatch {
     private static final int WORKER_THREADS = 2;
     private static final int WORK_QUEUE_CAPACITY = 24;
     private static final long WORKER_KEEP_ALIVE_SECONDS = 30;
+    private static final String TRANSLATE_URL =
+            "https://translate-pa.googleapis.com/v1/translateHtml";
+    private static final String DEEPL_URL = "https://api-free.deepl.com/v2/translate";
+
     /** The endpoint answers 429 above about one request per second. */
     private static final long MIN_REQUEST_INTERVAL_MILLISECONDS = 700;
     /** Doubles per failure, and resets after a success. */
@@ -816,11 +829,12 @@ public final class LiveChatTranslatePatch {
     private static void fetchTranslation(String message, String language, String key) {
         try {
             waitForRequestSlot();
-            TextTranslator.Translation result = TextTranslator.translateText(message, language);
-            final String translation = result.text().trim();
-            final String detected = result.detectedLanguage();
+            final TranslationResult result = translateWithFallback(message, language);
+            final String translation = result.text.trim();
             final boolean isTranslated = !translation.isEmpty() && !translation.equalsIgnoreCase(message)
-                    && (detected == null || !(detected.equalsIgnoreCase(language) || isExcludedLanguage(detected)));
+                    && (result.detectedLanguage == null
+                    || !(result.detectedLanguage.equalsIgnoreCase(language)
+                    || isExcludedLanguage(result.detectedLanguage)));
             translations.put(key, isTranslated ? translation : NOT_TRANSLATED);
             backoffMilliseconds = MIN_BACKOFF_MILLISECONDS;
             LithoRelayoutPatch.relayoutOutdatedTexts();
@@ -851,6 +865,164 @@ public final class LiveChatTranslatePatch {
             }
         }
         return false;
+    }
+
+    /**
+     * Translates with the newer endpoint, falling back to the shared translator when it fails.
+     * The newer endpoint needs a key that can be revoked, so a failure there must not leave the
+     * chat untranslated.
+     */
+    private static TranslationResult translateWithFallback(String message, String language) throws Exception {
+        if ("DEEPL".equals(Settings.LIVE_CHAT_TRANSLATE_PROVIDER.get())) {
+            try {
+                return translateDeepL(message, language);
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "DeepL failed, trying the web translator endpoint", ex);
+            }
+        }
+        try {
+            return translate(message, language);
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Web translator endpoint failed, using the shared one", ex);
+        }
+        final TextTranslator.Translation result = TextTranslator.translateText(message, language);
+        return new TranslationResult(result.text(), result.detectedLanguage());
+    }
+
+    /**
+     * @return The Google key, which ships with a working default and can be replaced in settings.
+     *         A failure falls back to the keyless endpoint of the shared translator.
+     */
+    private static String googleApiKey() throws IOException {
+        final String key = Settings.LIVE_CHAT_TRANSLATE_GOOGLE_KEY.get();
+        if (key == null || key.trim().isEmpty()) {
+            throw new IOException("No Google API key");
+        }
+        return key.trim();
+    }
+
+    /**
+     * @return The key the user entered, or throws so the next provider is used. It is never shipped
+     *         with the patch, as a key that is visible to everyone is revoked.
+     */
+    private static String deepLApiKey() throws IOException {
+        final String key = Settings.LIVE_CHAT_TRANSLATE_DEEPL_KEY.get();
+        if (key == null || key.trim().isEmpty()) {
+            throw new IOException("No DeepL API key");
+        }
+        return key.trim();
+    }
+
+    /**
+     * Translates with DeepL, which has a monthly character limit but does not limit requests per
+     * second, so a busy chat does not get refused.
+     */
+    private static TranslationResult translateDeepL(String message, String targetLanguage) throws Exception {
+        Utils.verifyOffMainThread();
+
+        final JSONArray texts = new JSONArray();
+        texts.put(message);
+        final JSONObject body = new JSONObject();
+        body.put("text", texts);
+        // DeepL wants the upper case code, and rejects the source language being sent as auto.
+        body.put("target_lang", targetLanguage.toUpperCase(Locale.ROOT));
+
+        final HttpURLConnection connection = Requester.openConnection(DEEPL_URL);
+        try {
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("Authorization", "DeepL-Auth-Key " + deepLApiKey());
+            connection.setDoOutput(true);
+            try (OutputStream out = connection.getOutputStream()) {
+                out.write(body.toString().getBytes(StandardCharsets.UTF_8));
+            }
+            final int code = connection.getResponseCode();
+            if (code != Requester.HTTP_STATUS_CODE_SUCCESS) {
+                throw new IOException("DeepL HTTP status: " + code);
+            }
+            final String response = Requester.parseStringAndDisconnect(connection);
+            if (response == null) {
+                throw new IOException("Empty DeepL response");
+            }
+            final JSONObject root = new JSONObject(response);
+            final JSONArray translations = root.getJSONArray("translations");
+            if (translations.length() == 0) {
+                throw new IOException("No DeepL translation");
+            }
+            final JSONObject first = translations.getJSONObject(0);
+            // DeepL returns the text as written, so it is not unescaped here.
+            return new TranslationResult(first.getString("text"),
+                    first.optString("detected_source_language", null));
+        } finally {
+            connection.disconnect();
+        }
+    }
+
+    /**
+     * Translates with the endpoint the web translator library uses. Unlike the older endpoint it
+     * takes a list and returns the detected language, and it does not answer 429 for a busy chat.
+     */
+    private static TranslationResult translate(String message, String targetLanguage) throws Exception {
+        Utils.verifyOffMainThread();
+
+        final JSONArray texts = new JSONArray();
+        texts.put(message);
+        // [[texts, source, target], "wt_lib"]
+        final JSONArray request = new JSONArray();
+        request.put(texts);
+        request.put("auto");
+        request.put(targetLanguage);
+        final JSONArray body = new JSONArray();
+        body.put(request);
+        body.put("wt_lib");
+
+        final HttpURLConnection connection = Requester.openConnection(TRANSLATE_URL);
+        try {
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json+protobuf");
+            connection.setRequestProperty("X-Goog-API-Key", googleApiKey());
+            connection.setDoOutput(true);
+            try (OutputStream out = connection.getOutputStream()) {
+                out.write(body.toString().getBytes(StandardCharsets.UTF_8));
+            }
+            final int code = connection.getResponseCode();
+            if (code != Requester.HTTP_STATUS_CODE_SUCCESS) {
+                throw new IOException("Translation HTTP status: " + code);
+            }
+            final String response = Requester.parseStringAndDisconnect(connection);
+            if (response == null) {
+                throw new IOException("Empty translation response");
+            }
+            // [[["translated text"],["detected language"]]]
+            final JSONArray root = new JSONArray(response);
+            final JSONArray translated = root.getJSONArray(0);
+            final JSONArray detected = root.length() > 1 ? root.getJSONArray(1) : null;
+            return new TranslationResult(
+                    unescapeHtml(translated.getString(0)),
+                    detected == null || detected.isNull(0) ? null : detected.getString(0));
+        } finally {
+            connection.disconnect();
+        }
+    }
+
+    /**
+     * @return The text with its HTML entities decoded. The Google endpoint escapes some characters,
+     *         such as {@code &quot;} for a quote, and the chat draws them as they are. The parser
+     *         handles every entity, including the numeric ones a fixed list would miss.
+     */
+    private static String unescapeHtml(String text) {
+        if (text == null || text.indexOf('&') < 0) {
+            return text;
+        }
+        try {
+            return Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY).toString();
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not unescape: " + text, ex);
+            return text;
+        }
+    }
+
+    private record TranslationResult(String text, @Nullable String detectedLanguage) {
     }
 
     private static void waitForRequestSlot() throws InterruptedException {

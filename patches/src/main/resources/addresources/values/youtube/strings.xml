@@ -1893,6 +1893,13 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_live_chat_translate_exclude_summary">Comma separated language codes such as id,en. Messages in these languages are not translated</string>
     <string name="morphe_live_chat_translate_copy_button_title">Show copy message button</string>
     <string name="morphe_live_chat_translate_copy_button_summary">Adds a small copy button to every chat message</string>
+    <string name="morphe_live_chat_translate_provider_title">Translation provider</string>
+    <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+    <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+    <string name="morphe_live_chat_translate_google_key_title">Google API key</string>
+    <string name="morphe_live_chat_translate_google_key_summary">A working key is set by default. Replace it if translation stops working</string>
+    <string name="morphe_live_chat_translate_deepl_key_title">DeepL API key</string>
+    <string name="morphe_live_chat_translate_deepl_key_summary">Your own DeepL key, required when DeepL is selected</string>
     <string name="morphe_live_chat_translate_copied">Message copied to clipboard</string>
     <string name="morphe_live_chat_translate_style_title">Translation style</string>
     <string name="morphe_live_chat_translate_style_translated_only">Translated only</string>
