@@ -32,6 +32,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
 public final class WatchLaterPatch {
+    private static final int DRAG_HANDLE_WIDTH_DP = 32;
     private static volatile boolean watchLaterVisible;
     private static final Map<Object, Boolean> removals = Collections.synchronizedMap(new WeakHashMap<>());
 
@@ -47,7 +48,7 @@ public final class WatchLaterPatch {
         watchLaterVisible = false;
     }
 
-    public static boolean enableLongPressDrag() {
+    public static boolean isWatchLaterActive() {
         return watchLaterVisible && !PlayerType.getCurrent().isMaximizedOrFullscreen();
     }
 
@@ -61,25 +62,26 @@ public final class WatchLaterPatch {
         return false;
     }
 
-    private static boolean hasDragHandle(View view) {
+    private static View findDragHandle(View view, int remainingDepth) {
         int id = ResourceUtils.getIdentifier(ResourceType.STRING, "accessibility_drag_handle");
-        return id != 0 && hasDragHandle(view, view.getResources().getString(id), 0);
+        return id == 0 ? null : findDragHandle(view, view.getResources().getString(id), remainingDepth);
     }
 
-    private static boolean hasDragHandle(View view, String description, int depth) {
-        if (depth > 4) return false;
+    private static View findDragHandle(View view, String description, int remainingDepth) {
+        if (remainingDepth < 0) return null;
         CharSequence text = view.getContentDescription();
-        if (text != null && description.contentEquals(text)) return true;
+        if (text != null && description.contentEquals(text)) return view;
         if (view instanceof ViewGroup group) {
             for (int i = 0; i < group.getChildCount(); i++) {
-                if (hasDragHandle(group.getChildAt(i), description, depth + 1)) return true;
+                View handle = findDragHandle(group.getChildAt(i), description, remainingDepth - 1);
+                if (handle != null) return handle;
             }
         }
-        return false;
+        return null;
     }
 
     public static boolean allowElementDrag(View view) {
-        return !enableLongPressDrag() || hasDropCallback(view) || hasDragHandle(view);
+        return !isWatchLaterActive() || hasDropCallback(view) || findDragHandle(view, 4) != null;
     }
 
     private static final class HandleTouchDelegate extends TouchDelegate {
@@ -98,35 +100,29 @@ public final class WatchLaterPatch {
     }
 
     private static void updateHost(ComponentHost host) {
-        if (enableLongPressDrag()) {
-            int id = ResourceUtils.getIdentifier(ResourceType.STRING, "accessibility_drag_handle");
-            if (id != 0) {
-                String description = host.getResources().getString(id);
-                for (int i = 0; i < host.getChildCount(); i++) {
-                    View child = host.getChildAt(i);
-                    CharSequence text = child.getContentDescription();
-                    if (text == null || !description.contentEquals(text)) continue;
-                    int width = Math.round(32 * host.getResources().getDisplayMetrics().density);
-                    boolean rtl = host.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
-                    Rect area = new Rect(rtl ? host.getWidth() - width : 0, 0,
-                            rtl ? host.getWidth() : width, host.getHeight());
-                    host.setTouchDelegate(new HandleTouchDelegate(area, child));
-                    return;
-                }
+        if (isWatchLaterActive()) {
+            View handle = findDragHandle(host, 1);
+            if (handle != null) {
+                int width = Math.round(DRAG_HANDLE_WIDTH_DP * host.getResources().getDisplayMetrics().density);
+                boolean rtl = host.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+                Rect area = new Rect(rtl ? host.getWidth() - width : 0, 0,
+                        rtl ? host.getWidth() : width, host.getHeight());
+                host.setTouchDelegate(new HandleTouchDelegate(area, handle));
+                return;
             }
         }
         if (host.getTouchDelegate() instanceof HandleTouchDelegate) host.setTouchDelegate(null);
     }
 
     public static boolean interceptHandleTouch(ComponentHost host, MotionEvent event) {
-        return enableLongPressDrag() && event.getActionMasked() == MotionEvent.ACTION_DOWN
+        return isWatchLaterActive() && event.getActionMasked() == MotionEvent.ACTION_DOWN
                 && host.getTouchDelegate() instanceof HandleTouchDelegate delegate
                 && delegate.area.contains((int) event.getX(), (int) event.getY());
     }
 
     public static void widenDragHandle(View handle) {
-        if (!enableLongPressDrag()) return;
-        int width = Math.round(32 * handle.getResources().getDisplayMetrics().density);
+        if (!isWatchLaterActive()) return;
+        int width = Math.round(DRAG_HANDLE_WIDTH_DP * handle.getResources().getDisplayMetrics().density);
         int containerId = ResourceUtils.getIdentifier(ResourceType.ID, "drag_handle_container");
         if (containerId != 0 && handle.getParent() instanceof View container && container.getId() == containerId) {
             ViewGroup.LayoutParams params = container.getLayoutParams();
@@ -146,24 +142,40 @@ public final class WatchLaterPatch {
     }
 
     public static void onEditCreated(Object callback, String playlistId, List<? extends MessageLite> actions) {
-        if (!enableLongPressDrag() || !"WL".equals(playlistId) || actions.isEmpty()) return;
-        try {
-            for (MessageLite nativeAction : actions) {
-                var action = PlaylistEditAction.parseFrom(nativeAction.toByteArray()).getAction();
-                if (action != PlaylistEditActionType.ACTION_REMOVE_VIDEO
-                        && action != PlaylistEditActionType.ACTION_REMOVE_VIDEO_BY_VIDEO_ID) return;
-            }
-            removals.put(callback, true);
-        } catch (Exception ex) {
-            Logger.printException(() -> "Could not identify Watch later removal", ex);
-        }
+        if (isWatchLaterActive() && RemovalFeedback.isWatchLaterRemoval(playlistId, actions)) removals.put(callback, true);
     }
 
     public static MessageLite onEditResult(Callback callback, MessageLite response) {
         if (!removals.containsKey(callback) || !Settings.WATCH_LATER_HIDE_REMOVAL_SNACKBAR.get()) return response;
         try {
             var result = QueueSaveEditResponse.parseFrom(response.toByteArray());
-            if (result.getStatus() != 1) return response;
+            var filtered = RemovalFeedback.filterRemovalSnackbar(result);
+            return filtered == result ? response : callback.patch_parseWatchLaterResult(filtered.toByteArray());
+        } catch (Exception ex) {
+            Logger.printException(() -> "Could not filter Watch later removal snackbar", ex);
+            return response;
+        }
+    }
+
+    /** Protobuf operations kept independent of the native UI classes. */
+    static final class RemovalFeedback {
+        static boolean isWatchLaterRemoval(String playlistId, List<? extends MessageLite> actions) {
+            if (!"WL".equals(playlistId) || actions.isEmpty()) return false;
+            try {
+                for (MessageLite nativeAction : actions) {
+                    var action = PlaylistEditAction.parseFrom(nativeAction.toByteArray()).getAction();
+                    if (action != PlaylistEditActionType.ACTION_REMOVE_VIDEO
+                            && action != PlaylistEditActionType.ACTION_REMOVE_VIDEO_BY_VIDEO_ID) return false;
+                }
+                return true;
+            } catch (Exception ex) {
+                Logger.printException(() -> "Could not identify Watch later removal", ex);
+                return false;
+            }
+        }
+
+        static QueueSaveEditResponse filterRemovalSnackbar(QueueSaveEditResponse result) {
+            if (result.getStatus() != 1) return result;
             var builder = result.toBuilder();
             boolean changed = false;
             for (int i = 0; i < result.getActionsCount(); i++) {
@@ -173,10 +185,7 @@ public final class WatchLaterPatch {
                     changed = true;
                 }
             }
-            return changed ? callback.patch_parseWatchLaterResult(builder.build().toByteArray()) : response;
-        } catch (Exception ex) {
-            Logger.printException(() -> "Could not filter Watch later removal snackbar", ex);
-            return response;
+            return changed ? builder.build() : result;
         }
     }
 }

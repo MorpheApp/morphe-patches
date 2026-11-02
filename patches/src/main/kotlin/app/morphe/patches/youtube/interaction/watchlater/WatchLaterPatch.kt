@@ -8,6 +8,10 @@
 package app.morphe.patches.youtube.interaction.watchlater
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.opcode
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -18,6 +22,9 @@ import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.parseProtoInstructions
+import app.morphe.patches.youtube.interaction.nativeplaylistqueue.QueueSaveEditErrorFingerprint
+import app.morphe.patches.youtube.interaction.nativeplaylistqueue.queueSaveEditSuccessFingerprint
+import app.morphe.patches.youtube.interaction.feedactions.FeedComponentHostLayoutFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.navigation.addBrowseIdHook
 import app.morphe.patches.youtube.misc.navigation.addSearchResultsHook
@@ -26,8 +33,6 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import app.morphe.patcher.util.findFreeRegister
@@ -35,6 +40,28 @@ import app.morphe.patcher.util.cloneParameters
 
 private const val EXTENSION = "Lapp/morphe/extension/youtube/patches/WatchLaterPatch;"
 private const val CALLBACK = "Lapp/morphe/extension/youtube/patches/WatchLaterPatch\$Callback;"
+
+private object ItemTouchHelperLongPressFingerprint : Fingerprint(
+    name = "onLongPress",
+    returnType = "V",
+    parameters = listOf("Landroid/view/MotionEvent;"),
+    filters = listOf(
+        methodCall("Landroid/view/MotionEvent;->getPointerId(I)I"),
+        methodCall("Landroid/view/MotionEvent;->getX(I)F", location = MatchAfterWithin(12)),
+        methodCall("Landroid/view/MotionEvent;->getY(I)F", location = MatchAfterWithin(4)),
+        methodCall(returnType = "Z", parameters = emptyList(), location = MatchAfterWithin(12)),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        methodCall(returnType = "V", parameters = listOf("L", "I"), location = MatchAfterWithin(4)),
+    ),
+)
+
+private fun itemViewFingerprint(holder: String) = Fingerprint(
+    definingClass = holder,
+    name = "<init>",
+    parameters = listOf("Landroid/view/View;"),
+    filters = listOf(fieldAccess(definingClass = holder, type = "Landroid/view/View;", opcode = Opcode.IPUT_OBJECT)),
+)
 
 @Suppress("unused")
 val watchLaterPatch = bytecodePatch(
@@ -52,13 +79,7 @@ val watchLaterPatch = bytecodePatch(
         addSearchResultsHook("$EXTENSION->clearBrowseId()V")
 
         // Discover the obfuscated ItemTouchHelper callback method from its framework listener.
-        val longPress = Fingerprint(
-            name = "onLongPress", parameters = listOf("Landroid/view/MotionEvent;"),
-            filters = listOf(methodCall("Landroid/view/MotionEvent;->getPointerId(I)I")),
-        ).method
-        val enabled = longPress.implementation!!.instructions.mapNotNull {
-            (it as? ReferenceInstruction)?.reference as? MethodReference
-        }.last { it.returnType == "Z" && it.parameterTypes.isEmpty() }
+        val enabled = ItemTouchHelperLongPressFingerprint.instructionMatches[3].methodReference
         val coordinator = Fingerprint(returnType = "L", parameters = listOf("L"),
             filters = listOf(string("DragReorderCoordinator.PRESENT_CONTEXT_KEY")))
             .originalMethod.definingClass
@@ -70,7 +91,7 @@ val watchLaterPatch = bytecodePatch(
             returnType = "Z", parameters = emptyList()).method.addInstructions(
             0,
             """
-                invoke-static {}, $EXTENSION->enableLongPressDrag()Z
+                invoke-static {}, $EXTENSION->isWatchLaterActive()Z
                 move-result v0
                 return v0
             """,
@@ -82,7 +103,7 @@ val watchLaterPatch = bytecodePatch(
             returnType = "Z").matchAll(1..3).forEach { match ->
             match.method.addInstructionsWithLabels(0,
                 """
-                    invoke-static {}, $EXTENSION->enableLongPressDrag()Z
+                    invoke-static {}, $EXTENSION->isWatchLaterActive()Z
                     move-result v0
                     if-eqz v0, :original
                     return v0
@@ -92,7 +113,7 @@ val watchLaterPatch = bytecodePatch(
         }
         // Elements collections also contain headers. Only rows with native drop callbacks may move.
         val holder = movement.parameterTypes.last().toString()
-        val itemView = classDefBy(holder).fields.single { it.type == "Landroid/view/View;" }
+        val itemView = itemViewFingerprint(holder).instructionMatches.single().fieldReference
         Fingerprint(definingClass = elementsCallback, name = movement.name).method.apply {
             val register = findFreeRegister(0)
             addInstructionsWithLabels(0,
@@ -107,7 +128,7 @@ val watchLaterPatch = bytecodePatch(
                 """)
         }
         val hostType = "Lcom/facebook/litho/ComponentHost;"
-        val layout = Fingerprint(definingClass = hostType, name = "onLayout")
+        val layout = FeedComponentHostLayoutFingerprint
         layout.method.cloneParameters()
         layout.clearMatch()
         layout.method.apply {
@@ -140,14 +161,12 @@ val watchLaterPatch = bytecodePatch(
             "invoke-static {p1}, $EXTENSION->widenDragHandle(Landroid/view/View;)V")
 
         // Tag each edit callback with its own playlist/actions, not a timed global suppression flag.
-        val error = Fingerprint(filters = listOf(string("Error editing the playlist")))
-        val callbackType = error.originalMethod.definingClass
+        val callbackType = QueueSaveEditErrorFingerprint.originalMethod.definingClass
         Fingerprint(definingClass = callbackType, name = "<init>").method.apply {
             addInstruction(implementation!!.instructions.count() - 1,
                 "invoke-static {p0, p2, p3}, $EXTENSION->onEditCreated(Ljava/lang/Object;Ljava/lang/String;Ljava/util/List;)V")
         }
-        val success = Fingerprint(definingClass = callbackType, returnType = "V", parameters = listOf("L"),
-            filters = listOf(methodCall("Ljava/util/List;->iterator()Ljava/util/Iterator;"))).method
+        val success = queueSaveEditSuccessFingerprint(callbackType).method
         val responseType = success.parameterTypes.single().toString()
         val callback = mutableClassDefBy(callbackType)
         callback.interfaces.add(CALLBACK)
