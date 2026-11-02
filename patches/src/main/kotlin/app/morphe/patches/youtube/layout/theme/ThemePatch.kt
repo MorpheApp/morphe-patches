@@ -237,6 +237,22 @@ private const val LAUNCHER_THEME_NAME = "Theme.YouTube.Home"
 private const val LAUNCHER_THEME_PARENT = "@style/Base.V27.Theme.YouTube.Home"
 private const val LIGHT_STATUS_BAR_ITEM_NAME = "android:windowLightStatusBar"
 
+/** A values directory of the default configuration or of an Android version. */
+private val VALUES_DIRECTORY_REGEX = Regex("""values(-v\d+)?""")
+private val STYLE_PARENT_REGEX = Regex(""" parent="([^"]*)"""")
+
+/**
+ * Parent of the launcher theme declared in a styles file, or null if the file does not declare it.
+ */
+private fun String.findLauncherThemeParent(): String? {
+    forEachRawResourceElement(this) {
+        if (it.tag == "style" && it.name == LAUNCHER_THEME_NAME) {
+            return STYLE_PARENT_REGEX.find(it.openTag)?.groupValues?.get(1)
+        }
+    }
+    return null
+}
+
 /**
  * Sets a light status bar in the launcher theme, and declares the theme if missing.
  */
@@ -357,10 +373,7 @@ val themePatch = baseThemePatch(
                 // Fix status and navigation bar showing white on some Android devices,
                 // such as SDK 28 Android 10 medium tablet.
                 val colorSplashBackgroundColor = "@color/$splashBackgroundColorKey"
-                val nightStyle = StringBuilder()
-                nightStyle.appendLine(
-                    "    <style name=\"$LAUNCHER_THEME_NAME\" parent=\"$LAUNCHER_THEME_PARENT\">"
-                )
+                val nightItems = StringBuilder()
                 arrayOf(
                     "android:navigationBarColor" to colorSplashBackgroundColor,
                     "android:windowBackground" to colorSplashBackgroundColor,
@@ -368,12 +381,39 @@ val themePatch = baseThemePatch(
                     "colorPrimaryDark" to colorSplashBackgroundColor,
                     "android:windowLightStatusBar" to "false",
                 ).forEach { (name, value) ->
-                    nightStyle.appendLine("        <item name=\"$name\">$value</item>")
+                    nightItems.appendLine("        <item name=\"$name\">$value</item>")
                 }
-                nightStyle.appendLine("    </style>")
 
-                this["res/values-night/styles.xml"].editText {
-                    it.appendResourceElements(nightStyle.toString())
+                // The night theme of each Android version has the parent the app declares for it.
+                // Older app versions declare the parent for Android 8.1 and newer in values-v27
+                // only, so with that parent the night theme has no parent on Android 8.0, and
+                // the app crashes as the activity then has no AppCompat theme.
+                val resourceDirectory = this["res"]
+                resourceDirectory.listFiles { file ->
+                    file.name.matches(VALUES_DIRECTORY_REGEX)
+                }!!.forEach { valuesDirectory ->
+                    val stylesFile = valuesDirectory.resolve("styles.xml")
+                    if (!stylesFile.exists()) return@forEach
+
+                    val parent = stylesFile.readText().findLauncherThemeParent() ?: return@forEach
+
+                    val nightStylesFile = resourceDirectory
+                        .resolve(valuesDirectory.name.replace("values", "values-night"))
+                        .resolve("styles.xml")
+                    if (!nightStylesFile.exists()) {
+                        nightStylesFile.parentFile.mkdirs()
+                        nightStylesFile.writeText(
+                            "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n</resources>\n"
+                        )
+                    }
+
+                    nightStylesFile.editText {
+                        it.appendResourceElements(
+                            "    <style name=\"$LAUNCHER_THEME_NAME\" parent=\"$parent\">\n" +
+                                    nightItems +
+                                    "    </style>\n"
+                        )
+                    }
                 }
 
                 arrayOf(
