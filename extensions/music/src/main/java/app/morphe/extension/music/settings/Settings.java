@@ -244,6 +244,11 @@ public class Settings extends SharedYouTubeSettings {
      * Japanese song. Off accepts only Latin letters, accented letters and tone digits.
      */
     public static final BooleanSetting LYRICS_ALLOW_TRANSLITERATION = new BooleanSetting("morphe_music_lyrics_allow_transliteration", FALSE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_ROMANIZE_BUTTON)));
+    public static final BooleanSetting LYRICS_SHOW_FURIGANA_BUTTON = new BooleanSetting("morphe_music_lyrics_show_furigana_button", TRUE, false, parent(LYRICS_ENABLED));
+    public static final BooleanSetting LYRICS_ENABLE_FURIGANA = new BooleanSetting("morphe_music_lyrics_enable_furigana", TRUE, false, parent(LYRICS_ENABLED));
+    public static final StringSetting LYRICS_FURIGANA_PROVIDERS = new StringSetting("morphe_music_lyrics_furigana_provider", AiProviders.DEFAULT_FURIGANA_ORDER, false, parent(LYRICS_ENABLED));
+    public static final StringSetting LYRICS_FURIGANA_STYLE = new StringSetting("morphe_music_lyrics_furigana_style", "HIRAGANA", false, parent(LYRICS_ENABLED));
+    public static final StringSetting LYRICS_AI_FURIGANA_PROMPT = new StringSetting("morphe_music_lyrics_ai_furigana_prompt", app.morphe.extension.music.patches.lyrics.derive.LyricsFuriganaGenerator.DEFAULT_AI_FURIGANA_PROMPT, false, parent(LYRICS_ENABLED));
 
     public static final StringSetting LYRICS_DEEPL_API_KEY = new StringSetting("morphe_music_lyrics_deepl_api_key", "", false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_REFRESH_BUTTON = new BooleanSetting("morphe_music_lyrics_show_refresh_button", TRUE, false, parent(LYRICS_ENABLED));

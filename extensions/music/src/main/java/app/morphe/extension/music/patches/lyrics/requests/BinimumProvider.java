@@ -90,7 +90,7 @@ public final class BinimumProvider implements LyricsProvider {
                 }
                 reconstructed.append(word.text());
                 boolean hasSpace = (i < words.size() - 1);
-                words.set(i, new Word(word.startMs(), word.endMs(), word.text(), word.romaji(), hasSpace));
+                words.set(i, new Word(word.startMs(), word.endMs(), word.text(), word.romaji(), hasSpace, word.ruby()));
             }
             fullText = reconstructed.toString();
         }
@@ -99,7 +99,7 @@ public final class BinimumProvider implements LyricsProvider {
         if (!words.isEmpty()) {
             Word lastWord = words.get(words.size() - 1);
             if (lastWord.endsWithSpace()) {
-                words.set(words.size() - 1, new Word(lastWord.startMs(), lastWord.endMs(), lastWord.text(), lastWord.romaji(), false));
+                words.set(words.size() - 1, new Word(lastWord.startMs(), lastWord.endMs(), lastWord.text(), lastWord.romaji(), false, lastWord.ruby()));
             }
         }
 

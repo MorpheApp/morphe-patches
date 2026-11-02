@@ -172,13 +172,13 @@ public final class ScriptDetector {
     }
 
     /** The blocks a modern lyric line is written with. */
-    static boolean isHan(char c) {
+    public static boolean isHan(char c) {
         return (c >= 0x4E00 && c <= 0x9FFF)
                 || (c >= 0x3400 && c <= 0x4DBF)
                 || (c >= 0xF900 && c <= 0xFAFF);
     }
 
-    static boolean isKana(char c) {
+    public static boolean isKana(char c) {
         return (c >= 0x3040 && c <= 0x309F)
                 || (c >= 0x30A0 && c <= 0x30FF)
                 || (c >= 0x31F0 && c <= 0x31FF);

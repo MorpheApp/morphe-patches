@@ -486,6 +486,17 @@ public final class LyricsCache {
         writeLyricsLineList(
                 aiRomanizationFile(track, source, sourceLines, provider), lines);
     }
+    @Nullable
+    public static List<String> getFuriganaAI(TrackInfo track, String source,
+                                             List<String> sourceLines, @Nullable String provider) {
+        return readStringList(aiFuriganaFile(track, source, sourceLines, provider), sourceLines);
+    }
+
+    public static void putFuriganaAI(TrackInfo track, String source,
+                                     List<String> sourceLines, List<String> lines,
+                                     @Nullable String provider) {
+        writeStringList(aiFuriganaFile(track, source, sourceLines, provider), lines);
+    }
 
     @Nullable
     private static List<String> readStringList(@Nullable File file, List<String> sourceLines) {
@@ -609,6 +620,15 @@ public final class LyricsCache {
                 ".ai." + providerPrefix
                         + aiConfigKey(Settings.LYRICS_AI_ROMANIZATION_PROMPT.get())
                         + ".rom." + LyricsRequests.romanizationLanguage() + ".txt", sourceLines);
+    }
+    @Nullable
+    private static File aiFuriganaFile(TrackInfo track, String source,
+                                       List<String> sourceLines, @Nullable String provider) {
+        final String providerPrefix = provider == null ? "" : provider + ".";
+        return derivedCacheFile(track, source,
+                ".ai." + providerPrefix
+                        + aiConfigKey(Settings.LYRICS_AI_FURIGANA_PROMPT.get())
+                        + ".furigana.txt", sourceLines);
     }
 
     private static String aiConfigKey(String prompt) {

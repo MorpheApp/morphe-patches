@@ -25,6 +25,7 @@ import app.morphe.patches.shared.MediaSessionSetMetadataFingerprint
 import app.morphe.patches.shared.MediaSessionSetPlaybackStateFingerprint
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.InputType
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -69,6 +70,10 @@ val lyricsPatch = bytecodePatch(
                 copyResources(
                     "romanisationbutton",
                     ResourceGroup("drawable", "morphe_yt_romanize.xml")
+                )
+                copyResources(
+                    "romanisationbutton",
+                    ResourceGroup("drawable", "morphe_yt_furigana.xml")
                 )
             }
         }
@@ -129,6 +134,14 @@ val lyricsPatch = bytecodePatch(
                     ),
                     SwitchPreference("morphe_music_lyrics_allow_transliteration", summary = true),
                     NonInteractivePreference(
+                        key = "morphe_music_lyrics_furigana_provider",
+                        summaryKey = null,
+                        tag = "app.morphe.extension.music.settings.preference.LyricsOrderedListPreference",
+                        selectable = false,
+                        dependency = "morphe_music_lyrics_enabled"
+                    ),
+                    ListPreference("morphe_music_lyrics_furigana_style"),
+                    NonInteractivePreference(
                         key = "morphe_music_lyrics_clear_cache",
                         tag = "app.morphe.extension.music.settings.preference.LyricsClearCachePreference",
                         dependency = "morphe_music_lyrics_enabled"
@@ -175,7 +188,8 @@ val lyricsPatch = bytecodePatch(
                     SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
-                    SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true)
+                    SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
+                    SwitchPreference("morphe_music_lyrics_show_furigana_button", summary = true)
                 )
             ),
             PreferenceCategory(
