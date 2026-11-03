@@ -107,7 +107,7 @@ Changes include:
     <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
     <string name="morphe_hide_notify_me_button_title">Hide \'Notify me\' button</string>
-    <string name="morphe_hide_notify_me_button_summary">Hides the reminder button for scheduled live streams and premieres</string>
+    <string name="morphe_hide_notify_me_button_summary">Hides the reminder button for scheduled live streams and Premieres</string>
     <string name="morphe_hide_playables_title">Hide Playables</string>
     <string name="morphe_hide_playables_summary">Hides the feature that allows you to play games</string>
     <string name="morphe_hide_search_term_thumbnails_title">Hide search term thumbnails</string>
@@ -272,9 +272,8 @@ Changes include:
     <string name="morphe_comments_screen_title">Comments</string>
     <string name="morphe_comments_screen_summary">Choose which components appear in the comments section</string>
     <string name="morphe_hide_comments_carousel_title">Enable comments carousel filter</string>
-    <string name="morphe_hide_comments_carousel_summary">"• Be sure to enter the exact name of the carousel item (e.g., Ask, Hype this video, Listen on YouTube Music)
-• Hiding carousel items may have unintended side effects
-• If all carousel items are hidden, the entire comments section will also be hidden"</string>
+    <string name="morphe_hide_comments_carousel_summary">"• Enter a keyword or full name (e.g., Ask, Community, Hype, Listen)
+• Hiding all items hides the entire comments section</string>
     <string name="morphe_hide_comments_carousel_filter_strings_title">Comments carousel filter</string>
     <string name="morphe_hide_comments_carousel_filter_strings_summary">Enter the comments carousel names to filter by, separated by new lines</string>
     <string name="morphe_hide_comments_ai_chat_summary_title">Hide AI chat summary</string>
@@ -536,7 +535,7 @@ After a video with the Ask button is opened once, the feature works with all vid
 
     <!-- interaction.searchcomments.searchCommentsPatch -->
     <string name="morphe_search_comments_title">Search comments</string>
-    <string name="morphe_search_comments_summary">Tap the search button in the comments to show only the loaded comments that contain all of the searched words. Put words in quotes to search for a phrase</string>
+    <string name="morphe_search_comments_summary">Tap the search button in the comments to show only the loaded comments that contain all the searched words. Put words in quotes to search for a phrase</string>
     <string name="morphe_search_comments_dialog_title">Search comments</string>
     <string name="morphe_search_comments_hint">Words to search for</string>
     <string name="morphe_search_comments_search">Search</string>
@@ -822,11 +821,11 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
 
     <!-- interaction.seekbar.enableSlideToSeekPatch -->
     <string name="morphe_slide_to_seek_title">Enable slide to seek</string>
-    <string name="morphe_slide_to_seek_summary">Enables slide to seek instead of playing at 2x speed when pressing and holding the video player</string>
+    <string name="morphe_slide_to_seek_summary">Press and hold the video to slide and seek instead of playing at 2x speed</string>
 
     <!-- interaction.seekbar.enableTapToSeekPatch -->
     <string name="morphe_tap_to_seek_title">Enable tap to seek</string>
-    <string name="morphe_tap_to_seek_summary">Just tap the seekbar to jump to that position without dragging it</string>
+    <string name="morphe_tap_to_seek_summary">Tap anywhere on the seekbar to jump to that position instead of dragging</string>
 
     <!-- interaction.swipecontrols.swipeControlsPatch -->
     <string name="morphe_swipe_left_zone_title">Left swipe gesture</string>
@@ -1031,7 +1030,7 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_hide_navigation_bar_title">Hide navigation bar</string>
     <string name="morphe_hide_navigation_bar_user_dialog_message">"This completely hides the navigation bar, including the \'You\' tab.
 
-To access Settings, enable the Settings button via General → Toolbar → Show Settings"</string>
+To access Settings, enable the Settings button via General → Toolbar → Show Settings button"</string>
     <string name="morphe_narrow_navigation_buttons_title">Enable narrow navigation buttons</string>
     <string name="morphe_narrow_navigation_buttons_summary">Reduces the horizontal spacing between buttons</string>
     <string name="morphe_disable_icon_only_navigation_buttons_title">Disable navigation buttons without labels</string>
@@ -1899,10 +1898,10 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_max_length_no_limit">No limit</string>
     <string name="morphe_niconico_comments_live_streams_title">Show on live streams</string>
     <string name="morphe_niconico_comments_live_streams_summary">Live streams and their replays</string>
-    <string name="morphe_niconico_comments_live_premieres_title">Show on premieres</string>
+    <string name="morphe_niconico_comments_live_premieres_title">Show on Premieres</string>
     <string name="morphe_niconico_comments_live_premieres_summary">Premieres while they are playing</string>
-    <string name="morphe_niconico_comments_ended_premieres_title">Show on ended premieres</string>
-    <string name="morphe_niconico_comments_ended_premieres_summary">Chat replay of premieres that have ended</string>
+    <string name="morphe_niconico_comments_ended_premieres_title">Show on ended Premieres</string>
+    <string name="morphe_niconico_comments_ended_premieres_summary">Chat replay of Premieres that have ended</string>
 
     <string name="morphe_live_chat_translate_screen_title">Live chat translation</string>
     <string name="morphe_live_chat_translate_screen_summary">Translate live chat and live chat replay messages</string>
