@@ -222,6 +222,22 @@ public final class GlassNavigationBar {
     }
 
     /**
+     * Called from {@link NativeSnackbarPatch}. The app lays the snackbars out above the height it
+     * gives the navigation bar, so they would overlap the room added to it.
+     *
+     * @return The room added to the height of the navigation bar on screen.
+     */
+    static int getAddedRoomOnScreen() {
+        if (!ENABLED) return 0;
+
+        View pivotBar = currentPivotBar.get();
+        if (pivotBar == null || !pivotBar.isShown()) return 0;
+
+        ViewGroup.LayoutParams params = pivotBar.getLayoutParams();
+        return params != null && params.height > 0 ? getAddedRoom(pivotBar, params.height) : 0;
+    }
+
+    /**
      * Injection point helper.
      * <p>
      * The room below the buttons is the room the app leaves for the system navigation buttons.
