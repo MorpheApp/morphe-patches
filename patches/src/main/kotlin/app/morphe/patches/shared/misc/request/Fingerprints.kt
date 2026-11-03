@@ -26,10 +26,15 @@ internal object BuildRequestFingerprint : Fingerprint(
                 "Ljava/util/concurrent/Executor;"
             )
         ),
+        // The body is a parameter, and is not changed before it is uploaded.
+        methodCall(
+            smali = "Lorg/chromium/net/UploadDataProviders;->create([B)Lorg/chromium/net/UploadDataProvider;",
+            location = MatchAfterWithin(6)
+        ),
         methodCall(
             opcode = Opcode.INVOKE_INTERFACE,
             smali = "Ljava/util/Map;->entrySet()Ljava/util/Set;",
-            location = MatchAfterWithin(15)
+            location = MatchAfterWithin(10)
         ),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,

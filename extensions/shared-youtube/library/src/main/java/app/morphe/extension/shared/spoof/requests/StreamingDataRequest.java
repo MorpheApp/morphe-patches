@@ -52,13 +52,11 @@ import app.morphe.extension.shared.spoof.js.JavaScriptManager;
 import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
 
 /**
- * Video streaming data. Fetching is tied to the behavior YT uses,
- * where this class fetches the streams only when YT fetches.
+ * Video streaming data. Fetching starts when the app requests a video, so both requests run at the same time.
  * <p>
- * Effectively the cache expiration of these fetches is the same as the stock app,
- * since the stock app would not use expired streams and therefor
- * the extension replace stream hook is called only if YT
- * did use its own client streams.
+ * The app can also load a video with a request that is not seen, such as the Onesie request,
+ * or play a video again from a response it got earlier. Then the streams are fetched when the app builds
+ * the streams of the video, unless the streams fetched earlier are recent enough.
  */
 public class StreamingDataRequest {
 
@@ -118,6 +116,18 @@ public class StreamingDataRequest {
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
 
     /**
+     * How long fetched streams are given to the player of a video that is loaded again without a request
+     * that is seen. Streams expire some hours after they are fetched.
+     */
+    private static final long MAX_MILLISECONDS_TO_REUSE_STREAMS = 60 * 60 * 1000;
+
+    /**
+     * How long a fetch that found no streams is used for a video that is loaded again without a request
+     * that is seen. The app can build the streams of the same response more than once.
+     */
+    private static final long MAX_MILLISECONDS_TO_REUSE_FAILED_FETCH = 30 * 1000;
+
+    /**
      * Cache limit must be greater than the maximum number of videos open at once,
      * which theoretically is more than 4 (3 Shorts + one regular minimized video).
      * But instead use a much larger value, to handle if a video viewed a while ago
@@ -147,7 +157,11 @@ public class StreamingDataRequest {
      * A fetch runs on a single thread, and other fetches running at the same time must not see this.
      */
     private static final ThreadLocal<Boolean> fallbackWithTVDashOnThread = ThreadLocal.withInitial(() -> false);
-    private static volatile Map<String, String> lastPlayerHeaders = Collections.emptyMap();
+
+    /**
+     * Headers of the latest InnerTube request of the app, which name the account it uses.
+     */
+    private static volatile Map<String, String> lastAppHeaders = Collections.emptyMap();
 
     /**
      * Used only for stats for nerds to show VR sign-in was used.
@@ -198,6 +212,7 @@ public class StreamingDataRequest {
     @Nullable
     private final String authorization;
     private final ClientType[] clientOrder;
+    private final long fetchStartTime = System.currentTimeMillis();
 
     private final Future<StreamData> future;
 
@@ -250,11 +265,18 @@ public class StreamingDataRequest {
                         clientOrder, isDownload));
     }
 
-    public static void fetchRequest(String videoId, boolean isInline, Map<String, String> fetchHeaders) {
-        // Keep the latest player headers so downloads can resolve tracks that were never opened.
-        if (fetchHeaders != null && !fetchHeaders.isEmpty()) {
-            lastPlayerHeaders = fetchHeaders;
+    /**
+     * Keeps the headers of an InnerTube request of the app, for the fetches that are started without
+     * a request, and so downloads can resolve tracks that were never opened.
+     * Called for every InnerTube request, because a video can be loaded before any request for a video is seen.
+     */
+    public static void setAppHeaders(@Nullable Map<String, String> requestHeaders) {
+        if (requestHeaders != null && !requestHeaders.isEmpty()) {
+            lastAppHeaders = requestHeaders;
         }
+    }
+
+    public static void fetchRequest(String videoId, boolean isInline, Map<String, String> fetchHeaders) {
         ClientType[] clientOrder = clientOrderToUse;
         synchronized (cache) {
             // The app can ask for the same video again while the first fetch is still running.
@@ -278,6 +300,59 @@ public class StreamingDataRequest {
     }
 
     /**
+     * Starts fetching the streams of a video that the app loads with a request that is not seen,
+     * unless a fetch for the video can still be used. Not used for inline players.
+     */
+    public static void fetchRequestIfNeeded(String videoId) {
+        synchronized (cache) {
+            StreamingDataRequest existing = cache.get(videoId);
+            // The player config of streams fetched for an inline player starts muted.
+            if (existing == null || existing.isInline || !existing.canReuse()) {
+                fetchWithLastHeaders(videoId);
+            }
+        }
+    }
+
+    /**
+     * @return The fetch of the streams to give to the player of the video. If no fetch can be used,
+     *         a fetch is started now.
+     */
+    public static StreamingDataRequest getOrFetchRequest(String videoId) {
+        synchronized (cache) {
+            StreamingDataRequest existing = cache.get(videoId);
+            if (existing != null && existing.canReuse()) {
+                return existing;
+            }
+            return fetchWithLastHeaders(videoId);
+        }
+    }
+
+    private static StreamingDataRequest fetchWithLastHeaders(String videoId) {
+        Logger.printDebug(() -> "Fetching streams without a player request for: " + videoId);
+        StreamingDataRequest request = new StreamingDataRequest(videoId, false, lastAppHeaders, false,
+                clientOrderToUse, false);
+        cache.put(videoId, request);
+        return request;
+    }
+
+    /**
+     * @return If the streams of this fetch can be given to a player that is set up with the headers
+     *         of the latest request that loads a video.
+     */
+    private boolean canReuse() {
+        // The account can be changed since this fetch.
+        if (!Objects.equals(authorization, lastAppHeaders.get(AUTHORIZATION_HEADER))) {
+            return false;
+        }
+        if (!future.isDone()) {
+            return true;
+        }
+        final long age = System.currentTimeMillis() - fetchStartTime;
+        return age < MAX_MILLISECONDS_TO_REUSE_FAILED_FETCH
+                || (age < MAX_MILLISECONDS_TO_REUSE_STREAMS && getStream() != null);
+    }
+
+    /**
      * Uses headers captured during playback so a song can be downloaded without first playing it.
      * Deliberately not cached, so downloads cannot evict the streams of videos being watched.
      * <p>
@@ -297,7 +372,7 @@ public class StreamingDataRequest {
         // The video details name the saved file, so the download asks for them as well.
         // The auth hook keeps the headers even if spoofing is off, but it is not used by all apps.
         Map<String, String> headers = AuthUtils.getAuthorization().isEmpty()
-                ? lastPlayerHeaders
+                ? lastAppHeaders
                 : AuthUtils.getRequestHeader();
         return new StreamingDataRequest(videoId, false, headers, true, clientOrder, true);
     }
