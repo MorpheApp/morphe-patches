@@ -22,7 +22,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.PixelFormat;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.ClipDrawable;
@@ -44,6 +49,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -74,7 +80,7 @@ import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 
-/** Local catalogue with a compact player matching the stock bottom player of YouTube Music. */
+/** Local catalogue with a compact player and an expandable full player + queue page. */
 @SuppressWarnings("deprecation")
 public final class LocalDownloadsFragment extends PreferenceFragment
         implements OfflinePlaybackService.PlaybackListener {
@@ -96,6 +102,12 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private static final int MENU_WIDTH_DP = 220;
     private static final int MENU_CORNER_DP = 12;
+    private static final int FULL_ARTWORK_PIXELS = 1024;
+
+    private static final int ICON_CHEVRON_DOWN = 1;
+    private static final int ICON_SHUFFLE = 2;
+    private static final int ICON_REPEAT = 3;
+    private static final int ICON_REPEAT_ONE = 4;
 
     private File musicRoot;
     private OfflineUi ui;
@@ -120,6 +132,23 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private ImageButton miniNext;
     private SeekBar miniSeek;
     private LinearLayout miniPlayer;
+
+    private LinearLayout fullPlayerPage;
+    private ImageView fullArtwork;
+    private TextView fullTitle;
+    private TextView fullArtist;
+    private SeekBar fullSeek;
+    private TextView fullCurrentTime;
+    private TextView fullTotalTime;
+    private ImageButton fullPlay;
+    private ImageButton fullPrevious;
+    private ImageButton fullNext;
+    private ImageButton fullShuffle;
+    private ImageButton fullRepeat;
+    private LinearLayout fullQueueList;
+    private boolean fullPlayerOpen;
+    private String lastQueueSignature = "";
+
     private LinearLayout songsList;
     private LinearLayout playlistsSection;
     private View selectionBar;
@@ -190,6 +219,11 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         miniPlayer = createStockMiniPlayer();
         miniPlayer.setVisibility(View.GONE);
         root.addView(miniPlayer, new LinearLayout.LayoutParams(-1, -2));
+
+        fullPlayerPage = createFullPlayerPage();
+        fullPlayerPage.setVisibility(View.GONE);
+        root.addView(fullPlayerPage, new LinearLayout.LayoutParams(-1, -1));
+
         return root;
     }
 
@@ -208,13 +242,36 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     /**
      * Back navigation of every kind ends up here through the finish hook of the activity.
      *
-     * @return If back navigation was used up by the playlist page.
+     * @return If back navigation was used up by the full player or playlist page.
      */
     public boolean handleBack() {
+        if (fullPlayerOpen) {
+            closeFullPlayer();
+            return true;
+        }
         if (playlistPage == null) return false;
 
         if (!playlistPage.handleBack()) closePlaylistPage();
         return true;
+    }
+
+    private void openFullPlayer() {
+        if (playingPath.isEmpty()) return;
+        fullPlayerOpen = true;
+        if (playlistPage != null) playlistPage.view().setVisibility(View.GONE);
+        else catalogue.setVisibility(View.GONE);
+        miniPlayer.setVisibility(View.GONE);
+        fullPlayerPage.setVisibility(View.VISIBLE);
+        updateShuffleRepeatUi();
+        refreshFullQueue();
+    }
+
+    private void closeFullPlayer() {
+        fullPlayerOpen = false;
+        fullPlayerPage.setVisibility(View.GONE);
+        if (playlistPage != null) playlistPage.view().setVisibility(View.VISIBLE);
+        else catalogue.setVisibility(View.VISIBLE);
+        miniPlayer.setVisibility(playingPath.isEmpty() ? View.GONE : View.VISIBLE);
     }
 
     private void openPlaylistPage(OfflinePlaylist playlist) {
@@ -619,7 +676,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         for (OfflineTrack track : tracks) {
             if (track.audioFile().getAbsolutePath().equals(path)) return track;
         }
-        return null;
+        File file = new File(path);
+        return file.isFile() ? OfflineTrack.load(file) : null;
     }
 
     private void showTracks() {
@@ -704,6 +762,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         LinearLayout line = new LinearLayout(getActivity());
         line.setGravity(Gravity.CENTER_VERTICAL);
         line.setPadding(ui.dp(16), 0, 0, 0);
+        line.setOnClickListener(v -> openFullPlayer());
 
         miniArtwork = ui.artworkView(null);
         line.addView(miniArtwork, new LinearLayout.LayoutParams(ui.dp(48), ui.dp(48)));
@@ -746,6 +805,351 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         outer.addView(line, new LinearLayout.LayoutParams(-1, ui.dp(60)));
         outer.addView(createSeekBar(), new LinearLayout.LayoutParams(-1, ui.dp(SEEK_BAR_TOUCH_DP)));
         return outer;
+    }
+
+    private LinearLayout createFullPlayerPage() {
+        LinearLayout page = new LinearLayout(getActivity());
+        page.setOrientation(LinearLayout.VERTICAL);
+        page.setBackgroundColor(background());
+
+        // 1. Hero Artwork + Gradient Scrim + Top Bar + Overlaid Track Title/Artist
+        FrameLayout hero = new FrameLayout(getActivity());
+
+        fullArtwork = new ImageView(getActivity());
+        fullArtwork.setBackgroundColor(Utils.adjustColorBrightness(foreground(), 0.15f));
+        fullArtwork.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        hero.addView(fullArtwork, new FrameLayout.LayoutParams(-1, -1));
+
+        GradientDrawable scrim = new GradientDrawable(
+                GradientDrawable.Orientation.TOP_BOTTOM,
+                new int[]{0x77000000, 0x00000000, background()});
+        View scrimView = new View(getActivity());
+        scrimView.setBackground(scrim);
+        hero.addView(scrimView, new FrameLayout.LayoutParams(-1, -1));
+
+        LinearLayout topBar = new LinearLayout(getActivity());
+        topBar.setGravity(Gravity.CENTER_VERTICAL);
+        topBar.setPadding(ui.dp(8), ui.dp(8), ui.dp(8), 0);
+
+        ImageButton collapseBtn = ui.icon(resolveDrawable(ICON_CHEVRON_DOWN,
+                "yt_outline_chevron_down_vd_theme_24",
+                "yt_outline_experimental_chevron_down_vd_theme_24"), "Minimize");
+        collapseBtn.setColorFilter(foreground());
+        collapseBtn.setOnClickListener(v -> closeFullPlayer());
+        topBar.addView(collapseBtn, new LinearLayout.LayoutParams(ui.dp(ICON_BUTTON_DP), ui.dp(ICON_BUTTON_DP)));
+
+        topBar.addView(new View(getActivity()), new LinearLayout.LayoutParams(0, 0, 1));
+
+        ImageButton menuBtn = ui.icon("yt_outline_experimental_overflow_vertical_vd_theme_24", "More");
+        menuBtn.setOnClickListener(v -> {
+            OfflineTrack current = findByPath(playingPath);
+            if (current != null) showTrackMenu(menuBtn, current);
+        });
+        topBar.addView(menuBtn, new LinearLayout.LayoutParams(ui.dp(ICON_BUTTON_DP), ui.dp(ICON_BUTTON_DP)));
+        hero.addView(topBar, new FrameLayout.LayoutParams(-1, -2, Gravity.TOP));
+
+        LinearLayout titleBlock = new LinearLayout(getActivity());
+        titleBlock.setOrientation(LinearLayout.VERTICAL);
+        titleBlock.setPadding(ui.dp(20), 0, ui.dp(20), ui.dp(10));
+
+        fullTitle = ui.text("", 22, foreground());
+        fullTitle.setTypeface(Typeface.DEFAULT_BOLD);
+        fullTitle.setSingleLine(true);
+
+        fullArtist = ui.text("", 14, secondary());
+        fullArtist.setSingleLine(true);
+
+        titleBlock.addView(fullTitle);
+        titleBlock.addView(fullArtist);
+        hero.addView(titleBlock, new FrameLayout.LayoutParams(-1, -2, Gravity.BOTTOM));
+
+        page.addView(hero, new LinearLayout.LayoutParams(-1, ui.dp(290)));
+
+        // 2. Full Player SeekBar + Time Labels
+        fullSeek = createFullSeekBar();
+        page.addView(fullSeek, new LinearLayout.LayoutParams(-1, ui.dp(SEEK_BAR_TOUCH_DP)));
+
+        LinearLayout timeRow = new LinearLayout(getActivity());
+        timeRow.setPadding(ui.dp(20), 0, ui.dp(20), ui.dp(4));
+        fullCurrentTime = ui.text("0:00", 12, secondary());
+        fullTotalTime = ui.text("0:00", 12, secondary());
+        timeRow.addView(fullCurrentTime, new LinearLayout.LayoutParams(0, -2, 1));
+        timeRow.addView(fullTotalTime, new LinearLayout.LayoutParams(-2, -2));
+        page.addView(timeRow, new LinearLayout.LayoutParams(-1, -2));
+
+        // 3. Transport Controls Row (Shuffle | Prev | Large Play/Pause | Next | Repeat)
+        LinearLayout controls = new LinearLayout(getActivity());
+        controls.setGravity(Gravity.CENTER_VERTICAL);
+        controls.setPadding(ui.dp(16), ui.dp(4), ui.dp(16), ui.dp(12));
+
+        fullShuffle = ui.icon(resolveDrawable(ICON_SHUFFLE,
+                "yt_outline_arrow_shuffle_vd_theme_24",
+                "yt_outline_experimental_shuffle_vd_theme_24"), "Shuffle");
+        fullShuffle.setColorFilter(foreground());
+        fullShuffle.setOnClickListener(v -> {
+            OfflinePlaybackService.toggleShuffle();
+            updateShuffleRepeatUi();
+            refreshFullQueue();
+        });
+        controls.addView(fullShuffle, new LinearLayout.LayoutParams(ui.dp(ICON_BUTTON_DP), ui.dp(ICON_BUTTON_DP)));
+        controls.addView(new View(getActivity()), new LinearLayout.LayoutParams(0, 0, 1));
+
+        fullPrevious = ui.icon("yt_fill_experimental_skip_previous_vd_theme_24",
+                str("morphe_music_downloads_previous"));
+        fullPrevious.setOnClickListener(v -> OfflinePlaybackService.skipPrevious(getActivity()));
+        controls.addView(fullPrevious, new LinearLayout.LayoutParams(ui.dp(ICON_BUTTON_DP), ui.dp(ICON_BUTTON_DP)));
+        controls.addView(new View(getActivity()), new LinearLayout.LayoutParams(0, 0, 1));
+
+        fullPlay = new ImageButton(getActivity());
+        fullPlay.setImageDrawable(ResourceUtils.getDrawable("yt_fill_experimental_play_vd_theme_24"));
+        fullPlay.setColorFilter(background());
+        fullPlay.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        fullPlay.setPadding(ui.dp(16), ui.dp(16), ui.dp(16), ui.dp(16));
+        ShapeDrawable circle = new ShapeDrawable(new OvalShape());
+        circle.getPaint().setColor(foreground());
+        fullPlay.setBackground(new RippleDrawable(ColorStateList.valueOf(rippleColor()), circle, circle));
+        fullPlay.setOnClickListener(v -> OfflinePlaybackService.toggle(getActivity()));
+        controls.addView(fullPlay, new LinearLayout.LayoutParams(ui.dp(64), ui.dp(64)));
+        controls.addView(new View(getActivity()), new LinearLayout.LayoutParams(0, 0, 1));
+
+        fullNext = ui.icon("yt_fill_experimental_skip_next_vd_theme_24",
+                str("morphe_music_downloads_next"));
+        fullNext.setOnClickListener(v -> OfflinePlaybackService.skipNext(getActivity()));
+        controls.addView(fullNext, new LinearLayout.LayoutParams(ui.dp(ICON_BUTTON_DP), ui.dp(ICON_BUTTON_DP)));
+        controls.addView(new View(getActivity()), new LinearLayout.LayoutParams(0, 0, 1));
+
+        fullRepeat = ui.icon(resolveDrawable(ICON_REPEAT,
+                "yt_outline_arrow_repeat_vd_theme_24",
+                "yt_outline_experimental_repeat_vd_theme_24"), "Repeat");
+        fullRepeat.setColorFilter(foreground());
+        fullRepeat.setOnClickListener(v -> {
+            OfflinePlaybackService.cycleRepeatMode();
+            updateShuffleRepeatUi();
+        });
+        controls.addView(fullRepeat, new LinearLayout.LayoutParams(ui.dp(ICON_BUTTON_DP), ui.dp(ICON_BUTTON_DP)));
+
+        page.addView(controls, new LinearLayout.LayoutParams(-1, -2));
+
+        // 4. Pill Handle + Divider above Upcoming Queue
+        LinearLayout handleWrap = new LinearLayout(getActivity());
+        handleWrap.setOrientation(LinearLayout.VERTICAL);
+        handleWrap.setGravity(Gravity.CENTER_HORIZONTAL);
+        View pill = new View(getActivity());
+        pill.setBackground(CustomDialog.createRoundedBackground(4, rippleColor()));
+        LinearLayout.LayoutParams pillParams = new LinearLayout.LayoutParams(ui.dp(36), ui.dp(4));
+        pillParams.bottomMargin = ui.dp(8);
+        handleWrap.addView(pill, pillParams);
+
+        View divider = new View(getActivity());
+        divider.setBackgroundColor(rippleColor());
+        handleWrap.addView(divider, new LinearLayout.LayoutParams(-1, ui.dp(1)));
+        page.addView(handleWrap, new LinearLayout.LayoutParams(-1, -2));
+
+        // 5. Scrollable Upcoming Queue List
+        ScrollView queueScroll = new ScrollView(getActivity());
+        fullQueueList = new LinearLayout(getActivity());
+        fullQueueList.setOrientation(LinearLayout.VERTICAL);
+        fullQueueList.setPadding(ui.dp(8), ui.dp(6), ui.dp(8), ui.dp(12));
+        queueScroll.addView(fullQueueList);
+        page.addView(queueScroll, new LinearLayout.LayoutParams(-1, 0, 1));
+
+        updateShuffleRepeatUi();
+        return page;
+    }
+
+    private SeekBar createFullSeekBar() {
+        SeekBar bar = new SeekBar(getActivity());
+        bar.setPadding(ui.dp(20), 0, ui.dp(20), 0);
+        bar.setProgressDrawable(createSeekBarDrawable());
+        bar.setThumb(createThumb());
+        bar.setThumbOffset(ui.dp(SEEK_THUMB_DP) / 2);
+        bar.setBackground(null);
+        bar.setSplitTrack(false);
+        bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                userSeeking = true;
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                userSeeking = false;
+                OfflinePlaybackService.seekTo(seekBar.getProgress());
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int value, boolean fromUser) {
+                if (fromUser && fullCurrentTime != null) {
+                    fullCurrentTime.setText(formatMillis(value));
+                }
+            }
+        });
+        return bar;
+    }
+
+    private void updateShuffleRepeatUi() {
+        if (fullShuffle != null) {
+            fullShuffle.setAlpha(OfflinePlaybackService.isShuffleEnabled() ? 1.0f : 0.4f);
+        }
+        if (fullRepeat != null) {
+            int mode = OfflinePlaybackService.getRepeatMode();
+            if (mode == OfflinePlaybackService.REPEAT_ONE) {
+                fullRepeat.setImageDrawable(resolveDrawable(ICON_REPEAT_ONE,
+                        "yt_outline_arrow_repeat_one_vd_theme_24",
+                        "yt_outline_experimental_repeat_one_vd_theme_24"));
+            } else {
+                fullRepeat.setImageDrawable(resolveDrawable(ICON_REPEAT,
+                        "yt_outline_arrow_repeat_vd_theme_24",
+                        "yt_outline_experimental_repeat_vd_theme_24"));
+            }
+            fullRepeat.setColorFilter(foreground());
+            fullRepeat.setAlpha(mode == OfflinePlaybackService.REPEAT_OFF ? 0.4f : 1.0f);
+        }
+    }
+
+    private void refreshFullQueue() {
+        if (fullQueueList == null) return;
+        fullQueueList.removeAllViews();
+
+        List<String> queue = OfflinePlaybackService.getQueue();
+        int currentIndex = OfflinePlaybackService.getQueueIndex();
+
+        for (int i = currentIndex + 1; i < queue.size(); i++) {
+            final int targetIndex = i;
+            OfflineTrack track = findByPath(queue.get(i));
+            if (track == null) continue;
+
+            LinearLayout row = ui.trackRow();
+            row.setBackground(ui.rowBackground(false));
+            ui.addTrackInfo(row, track);
+
+            TextView handle = ui.text("=", 20, secondary());
+            handle.setGravity(Gravity.CENTER);
+            row.addView(handle, new LinearLayout.LayoutParams(ui.dp(36), ui.dp(36)));
+
+            row.setOnClickListener(v -> OfflinePlaybackService.playQueueIndex(getActivity(), targetIndex));
+            fullQueueList.addView(row);
+        }
+    }
+
+    private static String formatMillis(int millis) {
+        int totalSeconds = Math.max(0, millis / 1000);
+        String formatted = OfflineUi.formatDuration(totalSeconds);
+        return formatted.isEmpty() ? "0:00" : formatted;
+    }
+
+    /**
+     * Resolves a stock YouTube Music drawable by name, or falls back to a crisp vector path
+     * if the APK version uses a different resource name.
+     */
+    private Drawable resolveDrawable(int fallbackType, String... candidateNames) {
+        for (String name : candidateNames) {
+            int id = ResourceUtils.getDrawableIdentifier(name);
+            if (id != 0) {
+                Drawable d = ResourceUtils.getDrawable(name);
+                if (d != null) return d;
+            }
+        }
+        return createVectorFallback(fallbackType);
+    }
+
+    private Drawable createVectorFallback(int type) {
+        final int sizePx = ui.dp(24);
+        return new Drawable() {
+            private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+            {
+                paint.setColor(foreground());
+                paint.setStyle(Paint.Style.STROKE);
+                paint.setStrokeWidth(ui.dp(2));
+                paint.setStrokeCap(Paint.Cap.ROUND);
+                paint.setStrokeJoin(Paint.Join.ROUND);
+            }
+
+            @Override
+            public void draw(@NonNull Canvas canvas) {
+                float w = getBounds().width();
+                float h = getBounds().height();
+                float s = Math.min(w, h) / 24f;
+                canvas.save();
+                canvas.translate(getBounds().left + (w - 24f * s) / 2f,
+                        getBounds().top + (h - 24f * s) / 2f);
+                canvas.scale(s, s);
+                paint.setStrokeWidth(2f);
+
+                Path path = new Path();
+                if (type == ICON_CHEVRON_DOWN) {
+                    path.moveTo(6f, 9f);
+                    path.lineTo(12f, 15f);
+                    path.lineTo(18f, 9f);
+                    canvas.drawPath(path, paint);
+                } else if (type == ICON_SHUFFLE) {
+                    path.moveTo(16f, 3f);
+                    path.lineTo(21f, 3f);
+                    path.lineTo(21f, 8f);
+                    path.moveTo(4f, 20f);
+                    path.lineTo(21f, 3f);
+                    path.moveTo(21f, 16f);
+                    path.lineTo(21f, 21f);
+                    path.lineTo(16f, 21f);
+                    path.moveTo(15f, 15f);
+                    path.lineTo(21f, 21f);
+                    path.moveTo(4f, 4f);
+                    path.lineTo(9f, 9f);
+                    canvas.drawPath(path, paint);
+                } else if (type == ICON_REPEAT || type == ICON_REPEAT_ONE) {
+                    path.moveTo(17f, 1f);
+                    path.lineTo(21f, 5f);
+                    path.lineTo(17f, 9f);
+                    path.moveTo(3f, 11f);
+                    path.lineTo(3f, 9f);
+                    path.quadTo(3f, 5f, 7f, 5f);
+                    path.lineTo(21f, 5f);
+                    path.moveTo(7f, 23f);
+                    path.lineTo(3f, 19f);
+                    path.lineTo(7f, 15f);
+                    path.moveTo(21f, 13f);
+                    path.lineTo(21f, 15f);
+                    path.quadTo(21f, 19f, 17f, 19f);
+                    path.lineTo(3f, 19f);
+                    canvas.drawPath(path, paint);
+                    if (type == ICON_REPEAT_ONE) {
+                        Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                        textPaint.setColor(paint.getColor());
+                        textPaint.setTextSize(8.5f);
+                        textPaint.setTypeface(Typeface.DEFAULT_BOLD);
+                        textPaint.setTextAlign(Paint.Align.CENTER);
+                        canvas.drawText("1", 12f, 14.8f, textPaint);
+                    }
+                }
+                canvas.restore();
+            }
+
+            @Override
+            public int getIntrinsicWidth() {
+                return sizePx;
+            }
+
+            @Override
+            public int getIntrinsicHeight() {
+                return sizePx;
+            }
+
+            @Override
+            public void setAlpha(int alpha) {
+                paint.setAlpha(alpha);
+            }
+
+            @Override
+            public void setColorFilter(@Nullable ColorFilter colorFilter) {
+                paint.setColorFilter(colorFilter);
+            }
+
+            @Override
+            public int getOpacity() {
+                return PixelFormat.TRANSLUCENT;
+            }
+        };
     }
 
     private SeekBar createSeekBar() {
@@ -954,15 +1358,22 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
         getActivity().runOnUiThread(() -> {
             if (miniPlayer == null) return;
+            if (title.isEmpty() && fullPlayerOpen) {
+                closeFullPlayer();
+            }
             final boolean wasVisible = miniPlayer.getVisibility() == View.VISIBLE;
-            miniPlayer.setVisibility(title.isEmpty() ? View.GONE : View.VISIBLE);
+            miniPlayer.setVisibility((title.isEmpty() || fullPlayerOpen) ? View.GONE : View.VISIBLE);
 
             // Decoding the cover on every tick would read the disk twice a second.
             if (!path.equals(playingPath)) {
                 playingPath = path;
                 OfflineTrack track = findByPath(path);
-                if (track != null) applyTrackVisuals(track);
-                else miniTitle.setText(title);
+                if (track != null) {
+                    applyTrackVisuals(track);
+                } else {
+                    miniTitle.setText(title);
+                    if (fullTitle != null) fullTitle.setText(title);
+                }
 
                 markPlayingRow();
                 if (playlistPage != null) playlistPage.markPlayingRow(path);
@@ -971,12 +1382,33 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             // Not only on a new track, since the same track can be played from another queue.
             setButtonEnabled(miniPrevious, OfflinePlaybackService.hasPrevious());
             setButtonEnabled(miniNext, OfflinePlaybackService.hasNext());
+            setButtonEnabled(fullPrevious, OfflinePlaybackService.hasPrevious());
+            setButtonEnabled(fullNext, OfflinePlaybackService.hasNext());
 
             // This runs on every playback tick, so the icon only morphs when the state
             // actually flips while the bar is on screen to see it happen.
             updatePlayIcon(playing, wasVisible && playing != showingPause);
+            fullPlay.setImageDrawable(ResourceUtils.getDrawable(playing
+                    ? "yt_fill_experimental_pause_vd_theme_24"
+                    : "yt_fill_experimental_play_vd_theme_24"));
+
             miniSeek.setMax(Math.max(1, duration));
-            if (!userSeeking) miniSeek.setProgress(position, true);
+            fullSeek.setMax(Math.max(1, duration));
+            if (!userSeeking) {
+                miniSeek.setProgress(position, true);
+                fullSeek.setProgress(position, true);
+            }
+            fullCurrentTime.setText(formatMillis(position));
+            fullTotalTime.setText(formatMillis(duration));
+            updateShuffleRepeatUi();
+
+            String queueSig = OfflinePlaybackService.getQueueIndex() + ":"
+                    + OfflinePlaybackService.getQueue().size() + ":"
+                    + OfflinePlaybackService.isShuffleEnabled();
+            if (!queueSig.equals(lastQueueSignature)) {
+                lastQueueSignature = queueSig;
+                refreshFullQueue();
+            }
         });
     }
 
@@ -1017,16 +1449,37 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         miniTitle.setText(track.displayTitle());
         miniArtist.setText(track.displayArtist());
 
-        Bitmap bitmap = track.artwork(ROW_ARTWORK_PIXELS);
-        if (bitmap == null) return;
+        if (fullTitle != null) {
+            fullTitle.setText(track.displayTitle());
+            fullArtist.setText(track.displayArtist());
+        }
 
-        miniArtwork.clearColorFilter();
-        miniArtwork.setPadding(0, 0, 0, 0);
-        miniArtwork.setImageBitmap(bitmap);
-        miniArtwork.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        Bitmap bitmap = track.artwork(ROW_ARTWORK_PIXELS);
+        if (bitmap != null) {
+            miniArtwork.clearColorFilter();
+            miniArtwork.setPadding(0, 0, 0, 0);
+            miniArtwork.setImageBitmap(bitmap);
+            miniArtwork.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        }
+
+        if (fullArtwork != null) {
+            Bitmap largeBitmap = track.artwork(FULL_ARTWORK_PIXELS);
+            if (largeBitmap != null) {
+                fullArtwork.clearColorFilter();
+                fullArtwork.setPadding(0, 0, 0, 0);
+                fullArtwork.setImageBitmap(largeBitmap);
+                fullArtwork.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            } else {
+                fullArtwork.setImageDrawable(
+                        ResourceUtils.getDrawable("yt_fill_experimental_play_circle_vd_theme_24"));
+                fullArtwork.setColorFilter(foreground());
+                fullArtwork.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            }
+        }
     }
 
     private void setButtonEnabled(ImageButton button, boolean enabled) {
+        if (button == null) return;
         button.setEnabled(enabled);
         button.setAlpha(enabled ? 1f : .35f);
     }
