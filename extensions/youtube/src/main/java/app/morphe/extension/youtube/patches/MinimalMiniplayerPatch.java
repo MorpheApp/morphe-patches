@@ -655,8 +655,9 @@ public final class MinimalMiniplayerPatch {
             dockedBottom = top - origin;
         }
 
+        // Above a snackbar, the margin it keeps above itself is the one between them.
         final int bottom = Math.min(dockedBottom, windowBottomFor(playerLayout))
-                - BAR_MARGIN - bottomUiHeight;
+                - Math.max(BAR_MARGIN, bottomUiHeight);
 
         updateBarSpan();
         barBounds.set(barSpan.left + BAR_MARGIN, bottom - BAR_HEIGHT,
