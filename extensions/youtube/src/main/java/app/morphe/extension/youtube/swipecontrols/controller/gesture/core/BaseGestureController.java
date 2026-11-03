@@ -276,7 +276,7 @@ public abstract class BaseGestureController extends GestureDetector.SimpleOnGest
                 return true;
             }
             // The movement that started the swipe does not seek.
-            return isInSeekArea(origin) && seek.start();
+            return isInSeekArea(origin) && seek.start(controller.getConfig().getSwipeSeekSensitivity());
         }
 
         switch (action) {

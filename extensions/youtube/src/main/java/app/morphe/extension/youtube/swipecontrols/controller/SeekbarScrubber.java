@@ -21,7 +21,11 @@ public interface SeekbarScrubber {
      */
     int patch_startScrub();
 
-    void patch_moveScrub(int x);
+    /**
+     * @return Time of the scrubber after moving it, in milliseconds.
+     *         It does not change while x is past the start or end of the time bar.
+     */
+    long patch_moveScrub(int x);
 
     /**
      * Ends scrubbing, and seeks to the time at the position.

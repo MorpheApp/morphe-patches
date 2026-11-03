@@ -328,6 +328,13 @@ public final class SwipeControlsConfigurationProvider {
     }
 
     /**
+     * How far the seekbar moves for each pixel swiped. 1 moves it as far as the finger.
+     */
+    public float getSwipeSeekSensitivity() {
+        return SeekBarPreference.clampToRange(Settings.SWIPE_SEEK_SENSITIVITY) / 100f;
+    }
+
+    /**
      * The sensitivity of speed swipe gestures, controlling how much physical movement is needed per step.
      * Resets to default if below 1 to guard against direct SharedPreferences manipulation.
      */

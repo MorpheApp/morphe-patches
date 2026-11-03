@@ -20,6 +20,12 @@ import app.morphe.extension.youtube.patches.VideoInformation;
  */
 public final class SwipeSeekController {
 
+    /**
+     * Distance the scrubber is moved without its time changing, at which it is at the start or end of the time bar.
+     * More than one pixel, as the time bar can scale the position, which can leave the time unchanged for a pixel.
+     */
+    private static final int EDGE_PIXELS = 2;
+
     private static WeakReference<SeekbarScrubber> scrubberRef = new WeakReference<>(null);
 
     private static boolean swipeSeeking;
@@ -54,20 +60,35 @@ public final class SwipeSeekController {
     private int startX;
 
     /**
-     * Horizontal distance swiped since the swipe started.
+     * How far the scrubber moves for each pixel swiped.
      */
-    private float swipedX;
+    private float sensitivity;
 
+    /**
+     * Distance the scrubber moved from the start position.
+     */
+    private float scrubbedX;
+
+    /**
+     * Last position the scrubber was moved to.
+     */
     private int lastX;
+
+    /**
+     * Last position that changed the time of the scrubber, and that time.
+     */
+    private int lastTimeX;
+    private long lastTime;
 
     public boolean isScrubbing() {
         return scrubber != null;
     }
 
     /**
+     * @param sensitivity How far the scrubber moves for each pixel swiped. 1 moves it as far as the finger.
      * @return If scrubbing started.
      */
-    public boolean start() {
+    public boolean start(float sensitivity) {
         SeekbarScrubber current = scrubberRef.get();
         if (current == null) {
             Logger.printDebug(() -> "Cannot swipe to seek, the time bar is not available");
@@ -78,6 +99,8 @@ public final class SwipeSeekController {
         swipeSeeking = true;
         try {
             startX = current.patch_startScrub();
+            // Moving to the same position does not move the scrubber, and gets its time.
+            lastTime = current.patch_moveScrub(startX);
         } catch (Exception ex) {
             Logger.printException(() -> "start failure", ex);
             swipeSeeking = false;
@@ -85,8 +108,10 @@ public final class SwipeSeekController {
         }
 
         scrubber = current;
-        swipedX = 0;
+        this.sensitivity = sensitivity;
+        scrubbedX = 0;
         lastX = startX;
+        lastTimeX = startX;
         return true;
     }
 
@@ -96,13 +121,23 @@ public final class SwipeSeekController {
     public void move(float distanceX) {
         if (scrubber == null) return;
 
-        swipedX += distanceX;
-        final int x = startX + Math.round(swipedX);
+        scrubbedX += distanceX * sensitivity;
+        final int x = startX + Math.round(scrubbedX);
         if (x == lastX) return;
 
         try {
-            scrubber.patch_moveScrub(x);
+            final long time = scrubber.patch_moveScrub(x);
+
             lastX = x;
+            if (time != lastTime) {
+                lastTime = time;
+                lastTimeX = x;
+            } else if (Math.abs(x - lastTimeX) >= EDGE_PIXELS) {
+                // The scrubber is at the start or end of the time bar.
+                // Continue from the end, so swiping back moves it right away.
+                scrubbedX = lastTimeX - startX;
+                lastX = lastTimeX;
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "move failure", ex);
         }

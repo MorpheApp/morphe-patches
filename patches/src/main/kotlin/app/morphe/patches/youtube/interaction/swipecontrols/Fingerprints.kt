@@ -12,6 +12,7 @@ package app.morphe.patches.youtube.interaction.swipecontrols
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -58,7 +59,7 @@ internal object PlayerOverlayContainerFingerprint : Fingerprint(
 
 /**
  * Where slide to seek starts scrubbing the time bar:
- * it reads the time bar bounds, then the position of the scrubber.
+ * it reads the time bar bounds, the position of the scrubber, then the time of the scrubber.
  */
 internal object SlideSeekbarStartScrubFingerprint : Fingerprint(
     classFingerprint = SlideSeekbarHandlerConstructorFingerprint,
@@ -76,6 +77,12 @@ internal object SlideSeekbarStartScrubFingerprint : Fingerprint(
             parameters = listOf(),
             returnType = "V",
             location = MatchAfterImmediately()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf(),
+            returnType = "J",
+            location = MatchAfterWithin(8)
         )
     )
 )

@@ -95,6 +95,10 @@ private val swipeControlsResourcePatch = resourcePatch {
             ),
             SwitchPreference("morphe_swipe_seek", summary = true),
             NonInteractivePreference(
+                key = "morphe_swipe_seek_sensitivity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
+            ),
+            NonInteractivePreference(
                 key = "morphe_swipe_zone_width",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
@@ -251,13 +255,15 @@ private fun BytecodePatchContext.addSeekbarScrubber() {
     }
     val updatePointMethod = SeekbarUpdatePointFingerprint.method
 
-    val (getBoundsMethod, startUpdatePointMethod) = SlideSeekbarStartScrubFingerprint.instructionMatches.map {
-        it.getInstruction<ReferenceInstruction>().getReference<MethodReference>()!!
-    }
+    val (getBoundsMethod, startUpdatePointMethod, getScrubTimeMethod) =
+        SlideSeekbarStartScrubFingerprint.instructionMatches.map {
+            it.getInstruction<ReferenceInstruction>().getReference<MethodReference>()!!
+        }
     if (startUpdatePointMethod.definingClass != scrubStateClass.type
         || startUpdatePointMethod.name != updatePointMethod.name
+        || getScrubTimeMethod.definingClass != timeBarType
     ) {
-        throw PatchException("Unexpected scrub start: $startUpdatePointMethod")
+        throw PatchException("Unexpected scrub start: $startUpdatePointMethod $getScrubTimeMethod")
     }
 
     val (startScrubMethod, moveScrubMethod, completeScrubMethod) = listOf(
@@ -303,11 +309,13 @@ private fun BytecodePatchContext.addSeekbarScrubber() {
             """
         )
         addScrubberMethod(
-            "patch_moveScrub", listOf("I"), "V", 1,
+            "patch_moveScrub", listOf("I"), "J", 2,
             """
                 $getTimeBar
                 invoke-interface { v0, p1 }, $moveScrubMethod
-                return-void
+                invoke-interface { v0 }, $getScrubTimeMethod
+                move-result-wide v0
+                return-wide v0
             """
         )
         addScrubberMethod(
