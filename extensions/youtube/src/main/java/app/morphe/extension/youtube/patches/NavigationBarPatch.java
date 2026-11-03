@@ -37,18 +37,26 @@ import com.google.android.gms.common.api.GoogleApiActivity;
 import com.google.protobuf.ExtensionRegistryLite;
 import com.google.protobuf.MessageLite;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.EnumMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
-import app.morphe.extension.shared.settings.IntegerSetting;
+import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Accessibility;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.AccessibilityData;
@@ -743,22 +751,21 @@ public final class NavigationBarPatch {
 
     // Navigation search and settings button
     private static final boolean SHOW_SEARCH_BUTTON = Settings.SHOW_SEARCH_BUTTON.get();
-    private static final IntegerSetting SHOW_SEARCH_BUTTON_INDEX = Settings.SHOW_SEARCH_BUTTON_INDEX;
 
     private static volatile WeakReference<TextView> searchQueryRef = new WeakReference<>(null);
 
+    public static final String SEARCH_PIVOT_IDENTIFIER = "morphe_search";
     private static Object pivotBarRenderer = null;
     private static View.OnClickListener openSearchBar = null;
 
     private static final boolean SHOW_SETTINGS_BUTTON = Settings.SHOW_SETTINGS_BUTTON.get();
-    private static final IntegerSetting SHOW_SETTINGS_BUTTON_INDEX = Settings.SHOW_SETTINGS_BUTTON_INDEX;
     private static final boolean SHOW_SETTINGS_BUTTON_TYPE = Settings.SHOW_SETTINGS_BUTTON_TYPE.get();
 
+    public static final String SETTINGS_PIVOT_IDENTIFIER = "morphe_settings";
     private static Object pivotBarSettingsRenderer = null;
 
     private static final boolean SHOW_WATCH_LATER_BUTTON = Settings.SHOW_WATCH_LATER_BUTTON.get();
-    private static final IntegerSetting SHOW_WATCH_LATER_BUTTON_INDEX = Settings.SHOW_WATCH_LATER_BUTTON_INDEX;
-    private static final String WATCH_LATER_PIVOT_IDENTIFIER = "morphe_watch_later";
+    public static final String WATCH_LATER_PIVOT_IDENTIFIER = "morphe_watch_later";
     private static final String WATCH_LATER_BROWSE_ID = "VLWL";
 
     @Nullable
@@ -817,166 +824,193 @@ public final class NavigationBarPatch {
     }
 
     /**
-     * Injection point.
-     *
-     * @param messageLite MessageLite class of PivotBarItemRenderer.
+     * Order of the navigation buttons, as their pivot identifiers. Empty to keep the order of the server.
      */
-    @Nullable
-    public static byte[] parsePivotBarItemRenderer(MessageLite messageLite) {
-        if (SHOW_SEARCH_BUTTON) {
+    private static final List<String> NAVIGATION_BUTTONS_ORDER = Settings.NAVIGATION_BUTTONS_ORDER.get().isEmpty()
+            ? Collections.emptyList()
+            : Arrays.asList(Settings.NAVIGATION_BUTTONS_ORDER.get().split(","));
+
+    /**
+     * Navigation buttons seen in the navigation bar, as id and label, in the order they were seen.
+     * Synchronized on itself.
+     */
+    public static final Map<String, String> discoveredNavigationButtons =
+            loadDiscoveredButtons(Settings.NAVIGATION_BUTTONS_DISCOVERED);
+
+    /**
+     * Ids of the navigation buttons of the last navigation bar, in their order.
+     */
+    public static volatile List<String> navigationButtons = Collections.emptyList();
+
+    private static Map<String, String> loadDiscoveredButtons(StringSetting setting) {
+        Map<String, String> buttons = new LinkedHashMap<>();
+        if (setting.get().isEmpty()) return buttons;
+
+        try {
+            JSONArray array = new JSONArray(setting.get());
+            for (int i = 0, length = array.length(); i < length; i++) {
+                JSONObject button = array.getJSONObject(i);
+                buttons.put(button.getString("id"), button.getString("label"));
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "loadDiscoveredButtons failure", ex);
+        }
+        return buttons;
+    }
+
+    /**
+     * Saves a button that is seen for the first time, or whose label changed,
+     * so the order setting can show it.
+     */
+    private static void discoverButton(StringSetting setting, Map<String, String> buttons,
+                                       String id, @Nullable String label) {
+        if (label == null || label.isEmpty()) label = id;
+
+        synchronized (buttons) {
+            if (label.equals(buttons.get(id))) return;
+            buttons.put(id, label);
+
             try {
-                var pivotBarItemBuilder = PivotBarItemRenderer.parseFrom(messageLite.toByteArray()).toBuilder();
-                var iconName = pivotBarItemBuilder.getIcon().getYtIconType().name();
-
-                // Check the icon name to see if it is the PivotBarItemRenderer of the home button.
-                // If other buttons besides the home button are used, the code becomes more complex.
-                if (NavigationBar.NavigationButton.HOME.ytEnumNames.contains(iconName)) {
-                    // Change the label and icon of the navigation button.
-                    var newAccessibilityData = AccessibilityData.newBuilder().setLabel(str("menu_search")).build();
-                    var newAccessibility = Accessibility.newBuilder().setAccessibilityData(newAccessibilityData).build();
-                    var ytIconType = Utils.appIsUsingBoldIcons() ? YTIconType.SEARCH_BOLD : YTIconType.SEARCH_CAIRO;
-                    var newIcon = Icon.newBuilder().setYtIconType(ytIconType).build();
-
-                    pivotBarItemBuilder.clearAccessibility();
-                    pivotBarItemBuilder.setAccessibility(newAccessibility);
-                    pivotBarItemBuilder.clearIcon();
-                    pivotBarItemBuilder.setIcon(newIcon);
-
-                    return pivotBarItemBuilder.build().toByteArray();
+                JSONArray array = new JSONArray();
+                for (Map.Entry<String, String> button : buttons.entrySet()) {
+                    array.put(new JSONObject().put("id", button.getKey()).put("label", button.getValue()));
                 }
+                setting.save(array.toString());
             } catch (Exception ex) {
-                Logger.printException(() -> "Failed to parse PivotBarItemRenderer", ex);
+                Logger.printException(() -> "discoverButton failure", ex);
             }
         }
-
-        return null;
     }
 
     /**
      * Injection point.
-     * Called after {@link #parsePivotBarItemRenderer(MessageLite)}.
-     *
-     * @param object Classes used in YouTube with MessageLite.
-     */
-    public static void setPivotBarRenderer(Object object) {
-        if (SHOW_SEARCH_BUTTON) {
-            pivotBarRenderer = object;
-        }
-    }
-
-    /**
-     * Injection point.
-     * Called after {@link #setPivotBarRenderer(Object)}.
+     * Called after {@link #createPivotBarItems(MessageLite)}.
      *
      * @param list Proto list containing PivotBarRenderer.
      */
     public static List<Object> getPivotBarRendererList(List<Object> list) {
         if (list == null || list.isEmpty()) return list;
 
-        boolean addSearch = SHOW_SEARCH_BUTTON && pivotBarRenderer != null;
-        boolean addSettings = SHOW_SETTINGS_BUTTON && pivotBarSettingsRenderer != null;
-        boolean addWatchLater = SHOW_WATCH_LATER_BUTTON && pivotBarWatchLaterRenderer != null;
-
-        if (!addSearch && !addSettings && !addWatchLater) return list;
-
         List<Object> newList = new ArrayList<>(list);
 
-        if (addSearch) {
-            int preferredIndex = SHOW_SEARCH_BUTTON_INDEX.get();
-            preferredIndex = Math.max(0, Math.min(preferredIndex, newList.size()));
-
-            newList.add(preferredIndex, pivotBarRenderer);
+        // The buttons added by Morphe are before You, unless a navigation buttons order is set.
+        int index = ClassicSubscriptionsLayoutPatch.indexOfLibraryButton(newList);
+        if (SHOW_WATCH_LATER_BUTTON && pivotBarWatchLaterRenderer != null) {
+            newList.add(index++, pivotBarWatchLaterRenderer);
+        }
+        if (SHOW_SEARCH_BUTTON && pivotBarRenderer != null) {
+            newList.add(index++, pivotBarRenderer);
+        }
+        if (SHOW_SETTINGS_BUTTON && pivotBarSettingsRenderer != null) {
+            newList.add(index, pivotBarSettingsRenderer);
         }
 
-        if (addSettings) {
-            int preferredIndex = SHOW_SETTINGS_BUTTON_INDEX.get();
-            preferredIndex = Math.max(0, Math.min(preferredIndex, newList.size()));
+        String[] ids = new String[newList.size()];
+        for (int i = 0; i < ids.length; i++) {
+            var info = ClassicSubscriptionsLayoutPatch.getPivotBarItemInfo(newList.get(i));
+            if (info == null || info.id().isEmpty()) continue;
 
-            newList.add(preferredIndex, pivotBarSettingsRenderer);
+            ids[i] = info.id();
+            discoverButton(Settings.NAVIGATION_BUTTONS_DISCOVERED, discoveredNavigationButtons, info.id(), info.label());
         }
 
-        if (addWatchLater) {
-            int preferredIndex = SHOW_WATCH_LATER_BUTTON_INDEX.get();
-            preferredIndex = Math.max(0, Math.min(preferredIndex, newList.size()));
-
-            newList.add(preferredIndex, pivotBarWatchLaterRenderer);
+        // The buttons in the order setting are sorted in the positions they take in the list.
+        // Other buttons, such as the buttons of other patches, stay in their position.
+        List<Integer> positions = new ArrayList<>(ids.length);
+        for (int i = 0; i < ids.length; i++) {
+            if (ids[i] != null && NAVIGATION_BUTTONS_ORDER.contains(ids[i])) {
+                positions.add(i);
+            }
         }
+        if (!positions.isEmpty()) {
+            List<Integer> sortedPositions = new ArrayList<>(positions);
+            sortedPositions.sort(Comparator.comparingInt(i -> NAVIGATION_BUTTONS_ORDER.indexOf(ids[i])));
+
+            List<Object> items = new ArrayList<>(newList);
+            String[] originalIds = ids.clone();
+            for (int i = 0, count = positions.size(); i < count; i++) {
+                newList.set(positions.get(i), items.get(sortedPositions.get(i)));
+                ids[positions.get(i)] = originalIds[sortedPositions.get(i)];
+            }
+        }
+
+        List<String> buttons = new ArrayList<>(ids.length);
+        for (String id : ids) {
+            if (id != null) buttons.add(id);
+        }
+        navigationButtons = buttons;
 
         return newList;
     }
 
-    @Nullable
-    public static byte[] parseSettingsPivotBarItemRenderer(MessageLite messageLite) {
-        if (SHOW_SETTINGS_BUTTON) {
-            try {
-                var pivotBarItemBuilder = PivotBarItemRenderer.parseFrom(messageLite.toByteArray()).toBuilder();
-                var iconName = pivotBarItemBuilder.getIcon().getYtIconType().name();
-
-                if (NavigationBar.NavigationButton.HOME.ytEnumNames.contains(iconName)) {
-                    var newAccessibilityData = AccessibilityData.newBuilder().setLabel(str("menu_settings")).build();
-                    var newAccessibility = Accessibility.newBuilder().setAccessibilityData(newAccessibilityData).build();
-
-                    var newIcon = Icon.newBuilder().setYtIconType(YTIconType.SETTINGS_CAIRO).build();
-
-                    pivotBarItemBuilder.clearAccessibility();
-                    pivotBarItemBuilder.setAccessibility(newAccessibility);
-                    pivotBarItemBuilder.clearIcon();
-                    pivotBarItemBuilder.setIcon(newIcon);
-
-                    return pivotBarItemBuilder.build().toByteArray();
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "Failed to parse Settings PivotBarItemRenderer", ex);
-            }
-        }
-        return null;
-    }
-
-    public static void setPivotBarSettingsRenderer(Object object) {
-        if (SHOW_SETTINGS_BUTTON) {
-            pivotBarSettingsRenderer = object;
-        }
-    }
-
     /**
      * Injection point.
-     * Creates the Watch later button from the home button.
+     * Creates the Search, Settings and Watch later buttons from the home button.
+     * The buttons are created with the factory of the app, so the app reads their own pivot identifier.
      *
      * @param messageLite MessageLite class of PivotBarItemRenderer.
      */
-    public static void setPivotBarWatchLaterRenderer(MessageLite messageLite) {
-        if (!SHOW_WATCH_LATER_BUTTON) return;
+    public static void createPivotBarItems(MessageLite messageLite) {
+        if (!SHOW_SEARCH_BUTTON && !SHOW_SETTINGS_BUTTON && !SHOW_WATCH_LATER_BUTTON) return;
 
         try {
             var renderer = PivotBarItemRenderer.parseFrom(messageLite.toByteArray());
             var iconName = renderer.getIcon().getYtIconType().name();
             if (!NavigationBar.NavigationButton.HOME.ytEnumNames.contains(iconName)) return;
 
-            String label = str("morphe_watch_later_navigation_label");
-            byte[] watchLaterRenderer = renderer.toBuilder()
-                    .setPivotIdentifier(WATCH_LATER_PIVOT_IDENTIFIER)
-                    .setNavigationEndpoint(NavigationEndpoint.newBuilder()
-                            .setBrowseEndpoint(BrowseEndpoint.newBuilder().setBrowseId(WATCH_LATER_BROWSE_ID)))
-                    .setAccessibility(Accessibility.newBuilder()
-                            .setAccessibilityData(AccessibilityData.newBuilder().setLabel(label)))
-                    .setTitle(Title.newBuilder().setRuns(Runs.newBuilder().setText(label)))
-                    // The Cairo icon has no drawable in some app versions.
-                    .setIcon(Icon.newBuilder().setYtIconType(YTIconType.WATCH_LATER))
-                    .clearTargetId()
-                    .build().toByteArray();
+            if (SHOW_SEARCH_BUTTON) {
+                var searchRenderer = renderer.toBuilder()
+                        .setPivotIdentifier(SEARCH_PIVOT_IDENTIFIER)
+                        .setAccessibility(Accessibility.newBuilder()
+                                .setAccessibilityData(AccessibilityData.newBuilder().setLabel(str("menu_search"))))
+                        .setIcon(Icon.newBuilder().setYtIconType(Utils.appIsUsingBoldIcons()
+                                ? YTIconType.SEARCH_BOLD
+                                : YTIconType.SEARCH_CAIRO))
+                        .build().toByteString();
+                pivotBarRenderer = buildPivotBarItem(PivotBarItemBytes.newBuilder()
+                        .setPivotBarItemRenderer(searchRenderer)
+                        .build().toByteArray());
+            }
 
-            // The tracking params and thumbnail belong to the home button.
-            var watchLaterRendererBytes = PivotBarItemRendererBytes.parseFrom(watchLaterRenderer).toBuilder()
-                    .clearTrackingParams()
-                    .clearThumbnail()
-                    .setNavigationType(NavigationType.PIVOT_BAR_NAVIGATION_TYPE_SELECT_TAB_VALUE)
-                    .build().toByteString();
+            if (SHOW_SETTINGS_BUTTON) {
+                var settingsRenderer = renderer.toBuilder()
+                        .setPivotIdentifier(SETTINGS_PIVOT_IDENTIFIER)
+                        .setAccessibility(Accessibility.newBuilder()
+                                .setAccessibilityData(AccessibilityData.newBuilder().setLabel(str("menu_settings"))))
+                        .setIcon(Icon.newBuilder().setYtIconType(YTIconType.SETTINGS_CAIRO))
+                        .build().toByteString();
+                pivotBarSettingsRenderer = buildPivotBarItem(PivotBarItemBytes.newBuilder()
+                        .setPivotBarItemRenderer(settingsRenderer)
+                        .build().toByteArray());
+            }
 
-            pivotBarWatchLaterRenderer = buildWatchLaterPivotBarItem(PivotBarItemBytes.newBuilder()
-                    .setPivotBarItemRenderer(watchLaterRendererBytes)
-                    .build().toByteArray());
+            if (SHOW_WATCH_LATER_BUTTON) {
+                String label = str("morphe_watch_later_navigation_label");
+                byte[] watchLaterRenderer = renderer.toBuilder()
+                        .setPivotIdentifier(WATCH_LATER_PIVOT_IDENTIFIER)
+                        .setNavigationEndpoint(NavigationEndpoint.newBuilder()
+                                .setBrowseEndpoint(BrowseEndpoint.newBuilder().setBrowseId(WATCH_LATER_BROWSE_ID)))
+                        .setAccessibility(Accessibility.newBuilder()
+                                .setAccessibilityData(AccessibilityData.newBuilder().setLabel(label)))
+                        .setTitle(Title.newBuilder().setRuns(Runs.newBuilder().setText(label)))
+                        // The Cairo icon has no drawable in some app versions.
+                        .setIcon(Icon.newBuilder().setYtIconType(YTIconType.WATCH_LATER))
+                        .clearTargetId()
+                        .build().toByteArray();
+
+                // The tracking params and thumbnail belong to the home button.
+                var watchLaterRendererBytes = PivotBarItemRendererBytes.parseFrom(watchLaterRenderer).toBuilder()
+                        .clearTrackingParams()
+                        .clearThumbnail()
+                        .setNavigationType(NavigationType.PIVOT_BAR_NAVIGATION_TYPE_SELECT_TAB_VALUE)
+                        .build().toByteString();
+
+                pivotBarWatchLaterRenderer = buildPivotBarItem(PivotBarItemBytes.newBuilder()
+                        .setPivotBarItemRenderer(watchLaterRendererBytes)
+                        .build().toByteArray());
+            }
         } catch (Exception ex) {
-            Logger.printException(() -> "setPivotBarWatchLaterRenderer failure", ex);
+            Logger.printException(() -> "createPivotBarItems failure", ex);
         }
     }
 
@@ -986,7 +1020,7 @@ public final class NavigationBarPatch {
      * @param pivotBarItem Navigation bar item proto.
      */
     @Nullable
-    private static Object buildWatchLaterPivotBarItem(byte[] pivotBarItem) {
+    private static Object buildPivotBarItem(byte[] pivotBarItem) {
         return null;
     }
 
@@ -1016,7 +1050,10 @@ public final class NavigationBarPatch {
             "TAB_ACTIVITY" // Old layout.
     };
 
-    private static final String SETTING_BUTTON_ENUM_NAME = "SETTINGS_CAIRO";
+    /**
+     * Icon of the Settings button of Morphe, which is also its id in the toolbar buttons order.
+     */
+    public static final String SETTING_BUTTON_ENUM_NAME = "SETTINGS_CAIRO";
 
     /**
      * The toolbar of some pages, such as the You tab, comes from their own response, which still has
@@ -1042,7 +1079,25 @@ public final class NavigationBarPatch {
     private static final boolean HIDE_TOOLBAR_MICROPHONE_BUTTON = Settings.HIDE_TOOLBAR_MICROPHONE_BUTTON.get();
 
     private static final boolean SHOW_TOOLBAR_SETTINGS_BUTTON = Settings.SHOW_TOOLBAR_SETTINGS_BUTTON.get();
-    private static final IntegerSetting SHOW_TOOLBAR_SETTINGS_BUTTON_INDEX = Settings.SHOW_TOOLBAR_SETTINGS_BUTTON_INDEX;
+
+    /**
+     * Order of the toolbar buttons, as their ids. Empty to keep the order of the server.
+     */
+    private static final List<String> TOOLBAR_BUTTONS_ORDER = Settings.TOOLBAR_BUTTONS_ORDER.get().isEmpty()
+            ? Collections.emptyList()
+            : Arrays.asList(Settings.TOOLBAR_BUTTONS_ORDER.get().split(","));
+
+    /**
+     * Toolbar buttons seen in the toolbars, as id and label, in the order they were seen.
+     * Synchronized on itself.
+     */
+    public static final Map<String, String> discoveredToolbarButtons =
+            loadDiscoveredButtons(Settings.TOOLBAR_BUTTONS_DISCOVERED);
+
+    /**
+     * Ids of the buttons of the last toolbar, in their order.
+     */
+    public static volatile List<String> toolbarButtons = Collections.emptyList();
     private static final boolean SHOW_TOOLBAR_SETTINGS_BUTTON_TYPE = Settings.SHOW_TOOLBAR_SETTINGS_BUTTON_TYPE.get();
 
     /**
@@ -1327,17 +1382,76 @@ public final class NavigationBarPatch {
     }
 
     /**
-     * Injection point.
+     * @return Id of the toolbar button: the page it opens, or its icon.
      */
-    public static void applyToolbarSettingsButtonIndex(List<MessageLite> rawButtonList) {
-        if (!SHOW_TOOLBAR_SETTINGS_BUTTON || rawButtonList == null || rawButtonList.isEmpty()) return;
+    private static String getToolbarButtonId(ButtonRenderer buttonRenderer) {
+        String iconName = buttonRenderer.getIcon().getYtIconType().name();
+        // The Settings button of Morphe is a copy of another button, with its navigation endpoint.
+        if (SETTING_BUTTON_ENUM_NAME.equals(iconName)) return iconName;
 
-        int targetIndex = SHOW_TOOLBAR_SETTINGS_BUTTON_INDEX.get() - 1;
+        String browseId = buttonRenderer.getNavigationEndpoint().getBrowseEndpoint().getBrowseId();
+        return browseId.isEmpty() ? iconName : browseId;
+    }
 
-        targetIndex = Math.max(0, Math.min(targetIndex, rawButtonList.size() - 1));
+    /**
+     * Injection point.
+     * Called after the hidden buttons are removed and the Settings button is added.
+     */
+    public static void applyToolbarButtonsOrder(List<MessageLite> rawButtonList) {
+        if (rawButtonList == null || rawButtonList.isEmpty()) return;
 
-        MessageLite settingsButton = rawButtonList.remove(rawButtonList.size() - 1);
-        rawButtonList.add(targetIndex, settingsButton);
+        try {
+            List<String> ids = new ArrayList<>(rawButtonList.size());
+            for (MessageLite rawButton : rawButtonList) {
+                Buttons buttons = Buttons.parseFrom(rawButton.toByteArray());
+                // The chat and notifications buttons can be top bar buttons, which contain their button.
+                if (buttons.hasTopbarButtonRenderer()) {
+                    buttons = buttons.getTopbarButtonRenderer().getButtons();
+                }
+                ids.add(buttons.hasButtonRenderer() ? getToolbarButtonId(buttons.getButtonRenderer()) : null);
+            }
+
+            // Without an order, the Settings button is the third button, as it was before the order setting.
+            // With an order, the toolbar buttons are sorted by getToolbarButtonOrder().
+            final int settingsIndex = ids.indexOf(SETTING_BUTTON_ENUM_NAME);
+            if (TOOLBAR_BUTTONS_ORDER.isEmpty() && settingsIndex >= 0) {
+                final int targetIndex = Math.min(2, ids.size() - 1);
+                rawButtonList.add(targetIndex, rawButtonList.remove(settingsIndex));
+                ids.add(targetIndex, ids.remove(settingsIndex));
+            }
+
+            ids.removeIf(Objects::isNull);
+            toolbarButtons = ids;
+        } catch (Exception ex) {
+            Logger.printException(() -> "applyToolbarButtonsOrder failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     * The order of the menu items sets the order of the buttons of every toolbar,
+     * including the toolbars that are not created from the toolbar of the guide, such as of the You tab.
+     *
+     * @param original       Order of the button, from the order the buttons were created in.
+     * @param buttonRenderer ButtonRenderer of the toolbar button.
+     */
+    public static int getToolbarButtonOrder(int original, MessageLite buttonRenderer) {
+        try {
+            ButtonRenderer renderer = ButtonRenderer.parseFrom(buttonRenderer.toByteArray());
+            String id = getToolbarButtonId(renderer);
+            discoverButton(Settings.TOOLBAR_BUTTONS_DISCOVERED, discoveredToolbarButtons,
+                    id, renderer.getButtonRendererAccessibilityData().getLabel());
+
+            final int rank = TOOLBAR_BUTTONS_ORDER.indexOf(id);
+            if (rank >= 0) {
+                // The original order is at least 1000, so the buttons in the order setting
+                // are before the other buttons.
+                return 1000 - TOOLBAR_BUTTONS_ORDER.size() + rank;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getToolbarButtonOrder failure", ex);
+        }
+        return original;
     }
 
     /**

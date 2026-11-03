@@ -36,6 +36,7 @@ message ButtonRenderer {
 }
 
 message TopbarButtonRenderer {
+    Buttons buttons = 1;
 }
 
 message RendererAccessibilityData {

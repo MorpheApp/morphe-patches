@@ -134,7 +134,7 @@ final class NavigationProto {
 
     static byte[] series(byte[] home, String title) {
         // With the History identifier, the app opens every History page in this tab.
-        byte[] item = replace(home, 1, "morphe_series_tracker".getBytes(StandardCharsets.UTF_8));
+        byte[] item = replace(home, 1, HistoryNavigation.PIVOT_IDENTIFIER.getBytes(StandardCharsets.UTF_8));
         item = replace(item, 2, field(BROWSE, text(2, "FEhistory")));
         item = replace(item, 3, field(1, text(1, title)));
         item = replace(item, 4, field(75730170, text(2, title)));
