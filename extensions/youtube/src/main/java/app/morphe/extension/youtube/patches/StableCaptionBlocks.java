@@ -168,10 +168,12 @@ public final class StableCaptionBlocks {
             this.paint.set(paint);
         }
 
+        @SuppressLint("NewApi")
         boolean matches(StaticLayout probe) {
             return width == probe.getWidth() && paint.equalsForTextMeasurement(probe.getPaint());
         }
 
+        @SuppressLint("NewApi")
         boolean matches(Cache other) {
             return width == other.width && paint.equalsForTextMeasurement(other.paint);
         }
@@ -256,6 +258,7 @@ public final class StableCaptionBlocks {
      * Injection point.
      * Called instead of the caption sampler, if the timeline has a block state.
      */
+    @SuppressWarnings("DataFlowIssue")
     public static List<?> present(Timeline timeline, long time) {
         List<?> original = timeline.patch_getOriginalCaptions(time);
         try {
@@ -433,6 +436,7 @@ public final class StableCaptionBlocks {
         });
     }
 
+    @SuppressWarnings("DataFlowIssue")
     private static void renderTranslation(View view, Frame frame, Cache cache,
                                           List<CharSequence> full, List<CharSequence> visible) {
         CaptionSession session = frame.state.translation;

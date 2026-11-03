@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.patches;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -19,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.accessibility.CaptioningManager;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
@@ -76,6 +78,7 @@ public final class DualCaptionOverlay extends LinearLayout {
         layer.originalAlphas.clear();
     }
 
+    @SuppressLint("NewApi")
     static void show(View view, String first, String second, TextPaint paint, int width,
             CaptionSession session, long cueStart, boolean complete) {
         if (!(view instanceof ViewGroup group) || !(view instanceof StableCaptionBlocks.Window window)) return;
@@ -217,6 +220,7 @@ public final class DualCaptionOverlay extends LinearLayout {
             forceLayout();
         }
 
+        @SuppressLint("WrongConstant")
         @Override
         protected void onMeasure(int widthSpec, int heightSpec) {
             final int width = Math.max(1, MeasureSpec.getSize(widthSpec) - Math.round(padding * 2));
@@ -240,7 +244,7 @@ public final class DualCaptionOverlay extends LinearLayout {
         }
 
         @Override
-        protected void onDraw(Canvas canvas) {
+        protected void onDraw(@NonNull Canvas canvas) {
             if (layout == null || text.isEmpty()) return;
             canvas.save();
             canvas.translate(
