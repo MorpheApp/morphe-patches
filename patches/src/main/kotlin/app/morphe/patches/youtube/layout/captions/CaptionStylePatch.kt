@@ -185,8 +185,10 @@ val captionStylePatch = bytecodePatch(
     )
 
     // The native percentage-size control is installed by CaptionViewportPatch on 21.10+.
-    compatibleWith(COMPATIBILITY_YOUTUBE.copy(
-        targets = COMPATIBILITY_YOUTUBE.targets.filter { it >= AppTarget(version = "21.10") }
+    compatibleWith(COMPATIBILITY_YOUTUBE.excluding(
+        *COMPATIBILITY_YOUTUBE.targets
+            .filter { it < AppTarget(version = "21.10") }
+            .map { it.version }.toTypedArray()
     ))
 
     execute {
