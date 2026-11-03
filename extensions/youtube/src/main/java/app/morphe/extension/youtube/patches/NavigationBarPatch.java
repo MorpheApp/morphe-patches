@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -162,6 +163,8 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static void navigationTabCreated(NavigationBar.NavigationButton button, View tabView) {
+        GlassNavigationBar.navigationTabCreated(button, tabView);
+
         if (button == NavigationBar.NavigationButton.NOTIFICATIONS) {
             notificationsTabCreated = true;
         }
@@ -471,6 +474,9 @@ public final class NavigationBarPatch {
             }
 
             padding = setSlimStatusBarRoom(navigationBar, padding);
+            padding = GlassNavigationBar.getFloatingRoom(navigationBar, padding);
+            // The value is also stored as the room the bar adds to its height.
+            GlassNavigationBar.setAppRoom(padding);
         } catch (Exception ex) {
             Logger.printException(() -> "getNavigationBarBottomPadding failure", ex);
         }
@@ -484,7 +490,7 @@ public final class NavigationBarPatch {
     private static final int SLIM_STATUS_BAR = ResourceUtils.getIdentifier(
             ResourceType.ID, "slim_status_bar");
 
-    private static final int PIVOT_BAR = ResourceUtils.getIdentifier(
+    static final int PIVOT_BAR = ResourceUtils.getIdentifier(
             ResourceType.ID, "pivot_bar");
 
     /**
@@ -562,8 +568,10 @@ public final class NavigationBarPatch {
                         View navigationBar = (View) access;
                         final int room = systemButtonsRoom;
                         view.post(() -> {
-                            final int navigationBarRoom = setSlimStatusBarRoom(navigationBar, room);
+                            final int navigationBarRoom = GlassNavigationBar.getFloatingRoom(
+                                    navigationBar, setSlimStatusBarRoom(navigationBar, room));
                             access.patch_setSystemButtonsRoom(navigationBarRoom);
+                            GlassNavigationBar.setAppRoom(navigationBarRoom);
                             navigationBar.setPadding(navigationBar.getPaddingLeft(), navigationBar.getPaddingTop(),
                                     navigationBar.getPaddingRight(), navigationBarRoom);
                         });
@@ -661,6 +669,59 @@ public final class NavigationBarPatch {
             OpaqueSystemBars.apply(bottomBarContainer);
         } catch (Exception ex) {
             Logger.printException(() -> "setNavigationBarOpaque failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called whenever the navigation bar is measured.
+     */
+    public static int getNavigationBarHeightMeasureSpec(View navigationBar, int heightMeasureSpec) {
+        return GlassNavigationBar.getHeightMeasureSpec(navigationBar, heightMeasureSpec);
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called whenever the vertical translation of the navigation bar is set.
+     */
+    public static float getNavigationBarTranslationY(View navigationBar, float translationY) {
+        return GlassNavigationBar.getTranslationY(navigationBar, translationY);
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called whenever the padding of the navigation bar is set.
+     *
+     * @param bottom The bottom padding, the room below the buttons.
+     */
+    public static int getNavigationBarPadding(View navigationBar, int bottom) {
+        return GlassNavigationBar.getFloatingRoom(navigationBar, bottom);
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the app makes the tint paint drawn over the blurred background of the navigation bar.
+     */
+    public static void setNavigationBarBlurTint(Paint tint) {
+        GlassNavigationBar.lightenBlurTint(tint);
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param bottomBarContainer The container of the navigation bar.
+     */
+    public static void setNavigationBarGlass(View bottomBarContainer) {
+        if (!GlassNavigationBar.isEnabled()) return;
+
+        try {
+            GlassNavigationBar.apply(bottomBarContainer);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setNavigationBarGlass failure", ex);
         }
     }
 

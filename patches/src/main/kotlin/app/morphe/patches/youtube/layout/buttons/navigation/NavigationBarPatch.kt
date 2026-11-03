@@ -36,6 +36,7 @@ import app.morphe.patches.shared.misc.fix.proto.mutableCopyMethodRef
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -259,7 +260,12 @@ val navigationBarPatch = bytecodePatch(
         navPreferences += listOf(
             SwitchPreference("morphe_hide_navigation_new_content_dot"),
             SwitchPreference("morphe_navigation_bar_animations", summary = true),
-            ListPreference("morphe_navigation_bar_style")
+            ListPreference("morphe_navigation_bar_style"),
+            SwitchPreference("morphe_navigation_bar_glass", summary = true),
+            NonInteractivePreference(
+                key = "morphe_navigation_bar_glass_opacity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
+            )
         )
 
         if (is_20_31_or_greater) {
@@ -365,6 +371,65 @@ val navigationBarPatch = bytecodePatch(
                         invoke-virtual { p0 }, $updateHeightMethod
                         return-void
                     """
+                )
+
+                // The glass style keeps some room below the buttons, so the capsule floats above
+                // the bottom of the screen. The padding of the bar is reset from several places,
+                // so the room is kept wherever the padding is set.
+                // The room is added to the height when the bar is measured, also while the app
+                // animates the height of the bar to hide it.
+                addBridge(
+                    "onMeasure", listOf("I", "I"), "V", 3,
+                    """
+                        invoke-static { p0, p2 }, $EXTENSION_CLASS->getNavigationBarHeightMeasureSpec(Landroid/view/View;I)I
+                        move-result p2
+                        invoke-super { p0, p1, p2 }, $superclass->onMeasure(II)V
+                        return-void
+                    """,
+                    AccessFlags.PROTECTED.value
+                )
+
+                // The app moves the bar out of the screen by the height it gives the bar, while the
+                // player is dragged and when the bar is hidden on scroll, so the room added to the
+                // height would stay on screen. The bar is moved down by that room as well.
+                addBridge(
+                    "setTranslationY", listOf("F"), "V", 2,
+                    """
+                        invoke-static { p0, p1 }, $EXTENSION_CLASS->getNavigationBarTranslationY(Landroid/view/View;F)F
+                        move-result p1
+                        invoke-super { p0, p1 }, $superclass->setTranslationY(F)V
+                        return-void
+                    """,
+                    AccessFlags.PUBLIC.value
+                )
+
+                listOf("setPadding", "setPaddingRelative").forEach { name ->
+                    addBridge(
+                        name, listOf("I", "I", "I", "I"), "V", 5,
+                        """
+                            invoke-static { p0, p4 }, $EXTENSION_CLASS->getNavigationBarPadding(Landroid/view/View;I)I
+                            move-result p4
+                            invoke-super { p0, p1, p2, p3, p4 }, $superclass->$name(IIII)V
+                            return-void
+                        """,
+                        AccessFlags.PUBLIC.value
+                    )
+                }
+            }
+        }
+
+        // The glass style draws the blurred background of the app inside the capsule. The tint
+        // the app draws over the blur makes the capsule dark, so its alpha is lowered.
+        NavigationBarBlurTintFingerprint.match(
+            NavigationBarBlurTintCallFingerprint.instructionMatches[2].getMethodCalled()
+        ).let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val paintRegister = getInstruction<FiveRegisterInstruction>(index).registerC
+
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$paintRegister }, $EXTENSION_CLASS->setNavigationBarBlurTint(Landroid/graphics/Paint;)V"
                 )
             }
         }
@@ -478,6 +543,10 @@ val navigationBarPatch = bytecodePatch(
         // of turning off the feature flags that drive them. Those flags also switch the app out of
         // edge to edge, which moves the whole window layout and breaks everything measuring against it.
         addBottomBarContainerHook("$EXTENSION_CLASS->setNavigationBarOpaque(Landroid/view/View;)V")
+
+        // The glass style draws the navigation bar as a floating translucent capsule,
+        // as the background of the navigation bar, without changing its height or layout.
+        addBottomBarContainerHook("$EXTENSION_CLASS->setNavigationBarGlass(Landroid/view/View;)V")
 
         // The translucent theme hands the window a transparent color for the system navigation
         // buttons, so an opaque one is swapped in there instead of turning off the feature flag.
