@@ -205,13 +205,18 @@ internal object SeekbarUpdatePointFingerprint : Fingerprint (
     )
 )
 
+/**
+ * Constructor of the touch handler of slide to seek (press and hold the player, then slide).
+ */
+internal object SlideSeekbarHandlerConstructorFingerprint : Fingerprint (
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
+        resourceLiteral(ResourceType.DIMEN, "seek_easy_horizontal_touch_offset_to_start_scrubbing")
+    )
+)
+
 internal object SlideSeekbarHandlerOnTouchFingerprint : Fingerprint (
-    classFingerprint = Fingerprint (
-        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-        filters = listOf(
-            resourceLiteral(ResourceType.DIMEN, "seek_easy_horizontal_touch_offset_to_start_scrubbing")
-        )
-    ),
+    classFingerprint = SlideSeekbarHandlerConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf("Landroid/view/View;", "Landroid/view/MotionEvent;")

@@ -15,7 +15,6 @@ import android.view.MotionEvent;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.youtube.shared.PlayerControlsVisibilityObserver;
-import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeZoneAction;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity;
 import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.BaseGestureController;
 import app.morphe.extension.youtube.swipecontrols.misc.Point;
@@ -46,8 +45,7 @@ public final class ClassicSwipeController extends BaseGestureController {
     @Override
     protected boolean shouldForceInterceptEvents() {
         if (lastOnDownEvent == null) return false;
-        Point origin = Point.fromMotionEvent(lastOnDownEvent);
-        return swipeActionAt(origin, getCurrentSwipe()) != SwipeZoneAction.OFF;
+        return isSwipeControlled(Point.fromMotionEvent(lastOnDownEvent));
     }
 
     @Override
@@ -65,8 +63,9 @@ public final class ClassicSwipeController extends BaseGestureController {
             return true;
         }
 
-        // ignore gestures when player controls are visible
-        return playerControlsVisibilityObserver.arePlayerControlsVisible();
+        // ignore gestures when player controls are visible,
+        // except a seek swipe, which shows the controls itself
+        return !isSeeking() && playerControlsVisibilityObserver.arePlayerControlsVisible();
     }
 
     @Override

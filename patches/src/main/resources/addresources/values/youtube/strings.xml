@@ -832,6 +832,8 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_left_zone_title">Left swipe gesture</string>
     <string name="morphe_swipe_right_zone_title">Right swipe gesture</string>
     <string name="morphe_swipe_top_zone_title">Top swipe gesture</string>
+    <string name="morphe_swipe_seek_title">Swipe to seek</string>
+    <string name="morphe_swipe_seek_summary">Swipe left or right on the fullscreen player to move the seekbar, and release to seek</string>
     <string name="morphe_swipe_zone_preview_title" translatable="false"> </string>
     <string name="morphe_swipe_zone_width_title">Left/Right zone width</string>
     <string name="morphe_swipe_zone_width_summary">Percentage of each screen edge reserved for left and right swipe gestures (5-50)</string>

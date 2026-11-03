@@ -38,6 +38,7 @@ import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
+import app.morphe.extension.youtube.swipecontrols.controller.SwipeSeekController;
 
 @SuppressWarnings("unused")
 public class SeekbarThumbnailPreviewPatch {
@@ -542,7 +543,8 @@ public class SeekbarThumbnailPreviewPatch {
      * Injection point.
      */
     public static boolean disableBigBoardUpdate() {
-        return Settings.THUMBNAIL_PREVIEW.get();
+        // Swipe to seek keeps the large preview of the app, as the finger is not on the seekbar.
+        return Settings.THUMBNAIL_PREVIEW.get() && !SwipeSeekController.isSwipeSeeking();
     }
 
     /**
