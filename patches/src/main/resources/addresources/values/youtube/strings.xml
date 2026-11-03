@@ -1019,16 +1019,15 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_hide_notifications_button_title">Hide Notifications button</string>
     <string name="morphe_show_search_button_title">Show Search button</string>
-    <string name="morphe_show_search_button_index_title">Search button position</string>
     <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
     <string name="morphe_show_watch_later_button_title">Show Watch later button</string>
-    <string name="morphe_show_watch_later_button_index_title">Watch later button position</string>
     <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
     <string name="morphe_watch_later_navigation_label">Watch later</string>
     <string name="morphe_show_settings_button_title">Show Settings button</string>
-    <string name="morphe_show_settings_button_index_title">Settings button position</string>
     <string name="morphe_show_settings_button_type_title">Settings button action</string>
     <string name="morphe_show_settings_button_type_summary">Opens Morphe settings when enabled, or YouTube settings when disabled</string>
+    <string name="morphe_navigation_buttons_order_title">Navigation buttons order</string>
+    <string name="morphe_navigation_buttons_order_summary">Drag the buttons to change their order in the navigation bar</string>
     <string name="morphe_swap_create_with_notifications_button_title">Swap Create button with Notifications button</string>
     <string name="morphe_swap_create_with_notifications_button_summary">If changing this setting does not take effect, try switching to Incognito mode</string>
     <string name="morphe_hide_navigation_button_labels_title">Hide navigation button labels</string>
@@ -1064,6 +1063,8 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_hide_toolbar_microphone_button_title">Hide Microphone button</string>
     <string name="morphe_hide_toolbar_search_button_title">Hide Search button</string>
     <string name="morphe_show_toolbar_settings_button_type_summary">When enabled, tap opens Morphe settings and long press opens YouTube settings, disable to swap</string>
+    <string name="morphe_toolbar_buttons_order_title">Toolbar buttons order</string>
+    <string name="morphe_toolbar_buttons_order_summary">Drag the buttons to change their order in the toolbar</string>
 
     <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
     <string name="morphe_hide_player_flyout_title">Flyout menu</string>
