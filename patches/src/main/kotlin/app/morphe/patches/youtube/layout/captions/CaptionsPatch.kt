@@ -54,7 +54,8 @@ val captionsPatch = bytecodePatch(
     name = "Captions",
     description = "Adds options to disable captions from being automatically enabled, " +
             "select a preferred and a secondary caption language, add more auto-translate languages, " +
-            "and show captions in stable blocks and in picture-in-picture.",
+            "and show captions in stable blocks and in picture-in-picture. " +
+            "Stable blocks and bilingual captions require YouTube 21.10+ and Android 10+.",
 ) {
     dependsOn(
         autoCaptionsPatch,

@@ -50,7 +50,7 @@ public final class DualCaptionOverlay extends LinearLayout {
     private boolean active, sizeNotified;
     private int requestedWidth;
     private WeakReference<CaptionSession> session = new WeakReference<>(null);
-    private long cueStart = Long.MIN_VALUE;
+    private long firstKey = Long.MIN_VALUE, secondKey = Long.MIN_VALUE;
 
     private DualCaptionOverlay(Context context) {
         super(context);
@@ -80,7 +80,7 @@ public final class DualCaptionOverlay extends LinearLayout {
 
     @SuppressLint("NewApi")
     static void show(View view, String first, String second, TextPaint paint, int width,
-            CaptionSession session, long cueStart, boolean complete) {
+            CaptionSession session, long firstKey, long secondKey, boolean complete) {
         if (!(view instanceof ViewGroup group) || !(view instanceof StableCaptionBlocks.Window window)) return;
         DualCaptionOverlay layer = get(view);
         if (layer == null) {
@@ -93,17 +93,18 @@ public final class DualCaptionOverlay extends LinearLayout {
         CaptioningManager.CaptionStyle style = manager.getUserStyle();
         layer.setBackgroundColor(style.hasWindowColor() ? style.windowColor : Color.TRANSPARENT);
         boolean newSession = layer.session.get() != session;
-        boolean reset = newSession || layer.cueStart != cueStart || layer.requestedWidth != width
+        boolean reset = newSession || layer.requestedWidth != width
                 || !layer.primary.paint.equalsForTextMeasurement(paint);
         if (newSession) {
             layer.session = new WeakReference<>(session);
             layer.sizeNotified = false;
         }
-        layer.cueStart = cueStart;
         layer.requestedWidth = width;
         int backgroundColor = window.patch_getCaptionBackgroundColor();
-        layer.primary.configure(first, paint, style, backgroundColor, reset, !complete);
-        layer.secondary.configure(second, paint, style, backgroundColor, reset, !complete);
+        layer.primary.configure(first, paint, style, backgroundColor, reset || layer.firstKey != firstKey, !complete);
+        layer.secondary.configure(second, paint, style, backgroundColor, reset || layer.secondKey != secondKey, !complete);
+        layer.firstKey = firstKey;
+        layer.secondKey = secondKey;
         ((LayoutParams) layer.secondary.getLayoutParams()).topMargin =
                 Math.max(Dim.dp4, Math.round(paint.getTextSize() * LANGUAGE_MARGIN_TEXT_SIZE));
         layer.forceLayout();
@@ -154,7 +155,7 @@ public final class DualCaptionOverlay extends LinearLayout {
 
             for (int i = 0; i < group.getChildCount(); i++) {
                 View child = group.getChildAt(i);
-                layer.originalAlphas.put(child, child.getAlpha());
+                layer.originalAlphas.putIfAbsent(child, child.getAlpha());
                 child.setAlpha(0f);
             }
         } catch (Exception ex) {
@@ -170,10 +171,30 @@ public final class DualCaptionOverlay extends LinearLayout {
         try {
             DualCaptionOverlay layer = get(view);
             if (layer != null && layer.active) {
+                // Native control avoidance may leave a paused, resized window below PiP bounds.
+                if (view.getParent() instanceof View parent) {
+                    final int top = parent.getPaddingTop();
+                    final int bottom = parent.getHeight() - parent.getPaddingBottom() - view.getHeight();
+                    if (bottom >= top) {
+                        view.offsetTopAndBottom(Math.max(top, Math.min(bottom, view.getTop())) - view.getTop());
+                    }
+                }
                 place(layer, view, view.getWidth(), view.getHeight());
             }
         } catch (Exception ex) {
             Logger.printException(() -> "afterLayout failure", ex);
+        }
+    }
+
+    /** Child bounds may stay unchanged while a paused PiP viewport shrinks. */
+    public static void afterViewportLayout(View view) {
+        if (!StableCaptionBlocks.isEnabled()) return;
+        try {
+            if (view instanceof ViewGroup parent) {
+                for (int i = 0; i < parent.getChildCount(); i++) afterLayout(parent.getChildAt(i));
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "afterViewportLayout failure", ex);
         }
     }
 

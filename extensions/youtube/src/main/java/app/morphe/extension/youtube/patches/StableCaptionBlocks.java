@@ -72,6 +72,10 @@ public final class StableCaptionBlocks {
 
         @Nullable
         State patch_getBlockState();
+
+        Timeline patch_mergeWith(Timeline other);
+
+        List<Long> patch_getCaptionEventTimes();
     }
 
     public interface Cue {
@@ -265,7 +269,7 @@ public final class StableCaptionBlocks {
             State state = timeline.patch_getBlockState();
             if (state == null
                     || original == null
-                    || original.size() > 1) return original;
+                    || original.size() > 1 && !CaptionTracks.hasOriginalTracks()) return original;
             Frame frame = new Frame(state, time, Long.MIN_VALUE);
             if (state.translation != null && !state.translation.isActive()
                     && !CaptionTracks.restoreTranslation(state)) return Collections.emptyList();
@@ -275,6 +279,16 @@ public final class StableCaptionBlocks {
                 long playbackTime = VideoInformation.getVideoTime();
                 state.translation.demand(playbackTime >= 0 ? playbackTime : time,
                         VideoInformation.getPlaybackSpeed());
+            }
+            if (CaptionTracks.hasOriginalTracks()) {
+                for (Object candidate : original) {
+                    if (candidate instanceof Cue cue && cue.patch_getOriginalCaptionVisible() != null
+                            && cue.patch_getOriginalCaptionVisible().length() > 0) {
+                        Object copy = cue.patch_copyBlockFrame(new Frame(state, time, time));
+                        return copy == null ? original : Collections.singletonList(copy);
+                    }
+                }
+                return Collections.emptyList();
             }
             long template = blocks ? state.policy.templateTime(time) : time;
             if (template < 0) return Collections.emptyList();
@@ -443,6 +457,13 @@ public final class StableCaptionBlocks {
         long time = VideoInformation.getVideoTime();
         if (time < 0) time = session.playbackTime();
         else session.demand(time, VideoInformation.getPlaybackSpeed());
+        AuthoredCaptionPair.Frame authored = CaptionTracks.originalFrame(frame.time, session);
+        if (authored != null) {
+            DualCaptionOverlay.show(view, authored.primary(), authored.secondary(), cache.paint, cache.width,
+                    session, authored.firstKey(), authored.secondKey(), true);
+            replace(full, visible, authored.primary());
+            return;
+        }
         CaptionSession.Snapshot cue = session.snapshot(time, VideoState.getCurrent() == VideoState.PAUSED);
         if (cue == null) {
             replace(full, visible, "");
@@ -450,7 +471,7 @@ public final class StableCaptionBlocks {
         }
         if (session.secondaryLanguage != null) {
             DualCaptionOverlay.show(view, cue.primary, cue.secondary, cache.paint, cache.width,
-                    session, cue.start, cue.complete);
+                    session, cue.start, cue.start, cue.complete);
         }
         replace(full, visible, cue.primary);
     }

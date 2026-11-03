@@ -484,6 +484,11 @@ internal class CaptionTrackHandlerSelectFingerprint(requestTrack: FieldReference
             definingClass = requestTrack.definingClass,
             name = "<init>",
             parameters = listOf(requestTrack.type)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf(requestTrack.definingClass, "L"),
+            returnType = "V"
         )
     )
 )
@@ -491,10 +496,21 @@ internal class CaptionTrackHandlerSelectFingerprint(requestTrack: FieldReference
 /**
  * Result callback of the requests of the native caption track handler.
  */
-internal object CaptionTrackHandlerResultFingerprint : Fingerprint(
+internal class CaptionTrackHandlerResultFingerprint(requestTrack: FieldReference) : Fingerprint(
     classFingerprint = CaptionTrackHandlerErrorFingerprint,
     returnType = "V",
     parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
+    filters = listOf(checkCast(requestTrack.definingClass))
+)
+
+/** Updates the installed caption renderer from the player's clock. */
+internal object CaptionTrackHandlerTimeFingerprint : Fingerprint(
+    classFingerprint = CaptionTrackHandlerErrorFingerprint,
+    returnType = "V",
+    parameters = listOf("J", "F"),
+    filters = listOf(
+        methodCall(parameters = listOf("J", "F"), returnType = "V")
+    )
 )
 
 /**
@@ -789,6 +805,7 @@ internal fun getCaptionSamplerFingerprint(cueType: String) = object : Fingerprin
     returnType = "Ljava/util/List;",
     parameters = listOf("J"),
     filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this", type = "Ljava/util/List;"),
         newInstance(cueType),
         methodCall(definingClass = cueType, name = "<init>")
     )
@@ -947,6 +964,14 @@ internal fun getCaptionOverlayPresenterFingerprint(cueType: String) = object : F
             returnType = "V"
         )
     )
+) {}
+
+/** Android layout callback of the overlay that owns the native caption windows. */
+internal fun getCaptionOverlayLayoutFingerprint(cueType: String) = object : Fingerprint(
+    classFingerprint = getCaptionOverlayPresenterFingerprint(cueType),
+    name = "onLayout",
+    returnType = "V",
+    parameters = listOf("Z", "I", "I", "I", "I")
 ) {}
 
 /**

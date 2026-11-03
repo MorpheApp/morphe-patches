@@ -305,6 +305,13 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                 move-result-object p1
             """
         )
+        getCaptionOverlayLayoutFingerprint(cueType).method.apply {
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+                replaceInstruction(index,
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_OVERLAY_CLASS->afterViewportLayout(Landroid/view/View;)V")
+                addInstruction(index + 1, "return-void")
+            }
+        }
 
         // Each parsed track keeps the block state of its source captions.
         CaptionWindowsConstructorFingerprint.let {
@@ -346,7 +353,31 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                     )
                 }
 
-                val sampler = getCaptionSamplerFingerprint(cueType).method
+                val samplerFingerprint = getCaptionSamplerFingerprint(cueType)
+                val sampler = samplerFingerprint.method
+                val windows = samplerFingerprint.instructionMatches[0].fieldReference
+                val events = it.instructionMatches.last().fieldReference
+                addHelperMethod("patch_getCaptionEventTimes", "Ljava/util/List;", smali = """
+                    iget-object v0, p0, $events
+                    return-object v0
+                """)
+                addHelperMethod("patch_mergeWith", EXTENSION_TIMELINE_INTERFACE,
+                    parameters = listOf(EXTENSION_TIMELINE_INTERFACE), freeRegisters = 3,
+                    smali = """
+                        check-cast p1, $timelineType
+                        new-instance v0, Ljava/util/ArrayList;
+                        invoke-direct { v0 }, Ljava/util/ArrayList;-><init>()V
+                        iget-object v1, p0, $windows
+                        invoke-virtual { v0, v1 }, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
+                        iget-object v1, p1, $windows
+                        invoke-virtual { v0, v1 }, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
+                        new-instance v1, $timelineType
+                        invoke-direct { v1, v0 }, $timelineType-><init>(Ljava/util/List;)V
+                        iget-object v2, p0, $stateField
+                        iput-object v2, v1, $stateField
+                        return-object v1
+                    """
+                )
                 methods.add(sampler.cloneMutable(name = "patch_getOriginalCaptions"))
 
                 sampler.addInstructionsWithLabels(

@@ -116,6 +116,33 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
             val getMethod = it.instructionMatches[11].methodReference
             val convertMethod = it.instructionMatches[12].methodReference
 
+            // Uploaded output languages can belong to a different audio track.
+            it.classDef.addHelperMethod(
+                "patch_getAllCaptionTracks", "Ljava/util/List;", freeRegisters = 4,
+                smali = """
+                    new-instance v0, Ljava/util/ArrayList;
+                    invoke-direct { v0 }, Ljava/util/ArrayList;-><init>()V
+                    iget-object v1, p0, $metadataField
+                    if-eqz v1, :done
+                    iget-object v1, v1, $captionTracksField
+                    invoke-interface { v1 }, Ljava/util/List;->iterator()Ljava/util/Iterator;
+                    move-result-object v1
+                    :next
+                    invoke-interface { v1 }, Ljava/util/Iterator;->hasNext()Z
+                    move-result v2
+                    if-eqz v2, :done
+                    invoke-interface { v1 }, Ljava/util/Iterator;->next()Ljava/lang/Object;
+                    move-result-object v2
+                    check-cast v2, ${convertMethod.parameterTypes.single()}
+                    invoke-direct { p0, v2 }, $convertMethod
+                    move-result-object v2
+                    invoke-virtual { v0, v2 }, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+                    goto :next
+                    :done
+                    return-object v0
+                """
+            )
+
             it.classDef.addHelperMethod(
                 "patch_getTranslationSource",
                 captionTrackType,
@@ -180,6 +207,17 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
             }
 
             addTracksGetter("patch_getDirectCaptionTracks", CaptionTracksManagerDirectTracksFingerprint)
+            addHelperMethod(
+                "patch_getAllCaptionTracks", "Ljava/util/List;",
+                smali = """
+                    iget-object v0, p0, $tracksManagerField
+                    if-eqz v0, :done
+                    invoke-virtual { v0 }, ${CaptionTracksManagerDirectTracksFingerprint.classDef.type}->patch_getAllCaptionTracks()Ljava/util/List;
+                    move-result-object v0
+                    :done
+                    return-object v0
+                """
+            )
             addTracksGetter("patch_getAutoTranslateCaptionTracks", CaptionTracksManagerAutoTranslateTracksFingerprint)
 
             fun addSourceGetter(name: String, method: String) {
