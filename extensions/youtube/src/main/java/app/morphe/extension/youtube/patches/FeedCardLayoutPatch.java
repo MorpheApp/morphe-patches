@@ -38,8 +38,8 @@ import com.google.protobuf.WireFormat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
@@ -57,6 +57,8 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.utils.AuthUtils;
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.AccessibilityContext;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ActionButton;
@@ -140,8 +142,8 @@ import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter;
 import app.morphe.extension.youtube.patches.theme.SeekbarColorPatch;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
-import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
+import app.morphe.extension.youtube.patches.utils.requests.PlaylistRoutes;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -285,6 +287,27 @@ public class FeedCardLayoutPatch {
     private static final int WATCH_ENDPOINT_VIDEO_ID_FIELD = 1;
     private static final int SHOW_ENGAGEMENT_PANEL_ENDPOINT_FIELD = 138681778;
     private static final int SHOW_ENGAGEMENT_PANEL_ENDPOINT_PANEL_ID_FIELD = 1;
+    private static final int SHOW_ENGAGEMENT_PANEL_ENDPOINT_PANEL_FIELD = 2;
+    private static final int SHOW_ENGAGEMENT_PANEL_ENDPOINT_IDENTIFIER_FIELD = 10;
+    /**
+     * Fields of the engagement panels of the watch next response.
+     */
+    private static final int WATCH_NEXT_ENGAGEMENT_PANELS_FIELD = 25;
+    private static final int ENGAGEMENT_PANEL_SECTION_LIST_RENDERER_FIELD = 138681066;
+    private static final int ENGAGEMENT_PANEL_PANEL_ID_FIELD = 1;
+    private static final int ENGAGEMENT_PANEL_HEADER_FIELD = 2;
+    private static final int ENGAGEMENT_PANEL_TITLE_HEADER_RENDERER_FIELD = 138681548;
+    private static final int ENGAGEMENT_PANEL_TITLE_HEADER_SUBHEADER_FIELD = 19;
+    private static final int ENGAGEMENT_PANEL_VISIBILITY_FIELD = 9;
+    private static final int ENGAGEMENT_PANEL_VISIBILITY_EXPANDED = 1;
+    private static final int ENGAGEMENT_PANEL_IDENTIFIER_FIELD = 18;
+    private static final int ENGAGEMENT_PANEL_IDENTIFIER_SURFACE_FIELD = 1;
+    private static final int ENGAGEMENT_PANEL_IDENTIFIER_TAG_FIELD = 3;
+    /**
+     * The panels of this surface can be shown over the feed, and load their content with 'next' requests,
+     * as the comments of Shorts.
+     */
+    private static final int ENGAGEMENT_PANEL_SURFACE_SHORTS = 4;
 
     private static final String WATCH_LATER_PLAYLIST_ID = "WL";
     /**
@@ -294,17 +317,9 @@ public class FeedCardLayoutPatch {
     private static final StringRef SAVE_TO_PLAYLIST = StringRef.sfc("accessibility_save_to_playlists");
     private static final String SENDER_VIEW_KEY = "com.google.android.libraries.youtube.rendering.elements.sender_view";
     /**
-     * Comments panel of the watch page. Newer app versions use the first id.
+     * Comments panel of the watch page. Newer clients use the first id.
      */
     private static final String[] COMMENTS_PANEL_IDS = {"comment-item-section", "engagement-panel-comments-section"};
-    /**
-     * Id of the comments panel of other app versions, looked for if the response has none of the known ids.
-     */
-    private static final Pattern COMMENTS_PANEL_ID_PATTERN = Pattern.compile("[a-z][a-z-]*comment[a-z-]*-section");
-    /**
-     * Maximum time between the tap on the comment button and the loading of the watch page.
-     */
-    private static final long COMMENTS_OPEN_TIMEOUT_MILLIS = 30_000;
 
     /**
      * Invisible characters at the end of the accessibility labels of the cards and of their comment button.
@@ -475,9 +490,6 @@ public class FeedCardLayoutPatch {
                 }
             };
     private static int feedId;
-    @Nullable
-    private static volatile String commentsVideoId;
-    private static volatile long commentsRequestTime;
 
     /**
      * Template that the elements are converted to, such as the feed videos.
@@ -2186,93 +2198,126 @@ public class FeedCardLayoutPatch {
 
     /**
      * Injection point.
-     * Called when a video is opened.
+     * The comment button of the cards opens the comments panel of the video over the feed,
+     * the same as the comment button of the cards of the server, instead of opening the video.
+     *
+     * @return If the command was handled, and the video is not opened.
      */
-    public static void onWatchCommand(@Nullable Object command, @Nullable Map<?, ?> map) {
+    public static boolean openCommentsPanel(MessageLite command, @Nullable Map<?, ?> map) {
         try {
-            if (!ACTION_BUTTONS || map == null) {
-                return;
-            }
-
-            commentsVideoId = null;
             // The app keeps only the known fields of the commands, so the button is found by its label.
-            if (!(map.get(SENDER_VIEW_KEY) instanceof View senderView)
-                    || !endsWith(senderView.getContentDescription(), COMMENT_BUTTON_LABEL_MARKER)
-                    || !(command instanceof MessageLite message)) {
-                return;
+            if (!ACTION_BUTTONS || map == null
+                    || !(map.get(SENDER_VIEW_KEY) instanceof View senderView)
+                    || !endsWith(senderView.getContentDescription(), COMMENT_BUTTON_LABEL_MARKER)) {
+                return false;
             }
 
-            List<ProtoNode> fields = ProtoNode.parse(message.toByteArray());
+            byte[] watchCommand = command.toByteArray();
+            List<ProtoNode> fields = ProtoNode.parse(watchCommand);
             ProtoNode videoIdField = fields == null ? null : ProtoNode.field(
                     ProtoNode.message(fields, WATCH_ENDPOINT_FIELD), WATCH_ENDPOINT_VIDEO_ID_FIELD);
             if (videoIdField == null || !videoIdField.isText()) {
-                return;
+                return false;
             }
 
             String videoId = videoIdField.getText();
-            Logger.printDebug(() -> "Opening the comments of: " + videoId);
-            commentsVideoId = videoId;
-            commentsRequestTime = System.currentTimeMillis();
-        } catch (Exception ex) {
-            Logger.printException(() -> "onWatchCommand failure", ex);
-        }
-    }
+            Logger.printDebug(() -> "Opening the comments panel of: " + videoId);
+            // The headers of the account that is signed in now, not when the request runs.
+            Map<String, String> authHeaders = AuthUtils.getRequestHeader();
 
-    /**
-     * Injection point.
-     * Called when the watch page of a video is loaded.
-     *
-     * @return The command that opens the comments panel, or null.
-     */
-    @Nullable
-    public static byte[] getCommentsCommand(@Nullable Object watchNextResponse) {
-        try {
-            String videoId = commentsVideoId;
-            if (videoId == null || !(watchNextResponse instanceof MessageLite message)) {
-                return null;
-            }
-            if (System.currentTimeMillis() - commentsRequestTime > COMMENTS_OPEN_TIMEOUT_MILLIS) {
-                commentsVideoId = null;
-                return null;
-            }
+            Utils.runOnBackgroundThread(() -> {
+                byte[] panelCommand = null;
+                try {
+                    // The comments panel of the watch page has the token that loads the comments.
+                    byte[] requestBody = PlaylistRoutes.videoBody(videoId);
+                    HttpURLConnection connection = PlaylistRoutes.getConnection(
+                            PlaylistRoutes.GET_ENGAGEMENT_PANELS, authHeaders);
+                    connection.setFixedLengthStreamingMode(requestBody.length);
+                    connection.getOutputStream().write(requestBody);
 
-            byte[] response = message.toByteArray();
-            if (FlyoutUtils.byteIndexOf(response, videoId.getBytes(StandardCharsets.UTF_8)) < 0) {
-                return null; // Response of another video.
-            }
-            commentsVideoId = null;
+                    final int responseCode = connection.getResponseCode();
+                    List<ProtoNode> response = responseCode == Requester.HTTP_STATUS_CODE_SUCCESS
+                            ? ProtoNode.parse(Requester.parseBytes(connection))
+                            : null;
+                    if (response == null) {
+                        Logger.printInfo(() -> "Engagement panels request failed with code: " + responseCode);
+                    } else {
+                        for (ProtoNode panel : response) {
+                            if (panel.getFieldNumber() != WATCH_NEXT_ENGAGEMENT_PANELS_FIELD
+                                    || panel.children == null) continue;
 
-            for (String panelId : COMMENTS_PANEL_IDS) {
-                if (FlyoutUtils.byteIndexOf(response, panelId.getBytes(StandardCharsets.UTF_8)) >= 0) {
-                    Logger.printDebug(() -> "Opening comments panel: " + panelId);
-                    return showEngagementPanelCommand(panelId);
+                            ProtoNode renderer = ProtoNode.field(panel.children,
+                                    ENGAGEMENT_PANEL_SECTION_LIST_RENDERER_FIELD);
+                            ProtoNode panelIdField = renderer == null || renderer.children == null
+                                    ? null
+                                    : ProtoNode.field(renderer.children, ENGAGEMENT_PANEL_PANEL_ID_FIELD);
+                            if (panelIdField == null || !panelIdField.isText()
+                                    || !Utils.equalsAny(panelIdField.getText(), COMMENTS_PANEL_IDS)) continue;
+
+                            String panelId = panelIdField.getText();
+                            // The panel is shown over the feed, which hides the panels of other surfaces.
+                            ByteArrayOutputStream identifier = new ByteArrayOutputStream();
+                            CodedOutputStream identifierOutput = CodedOutputStream.newInstance(identifier);
+                            identifierOutput.writeEnum(ENGAGEMENT_PANEL_IDENTIFIER_SURFACE_FIELD,
+                                    ENGAGEMENT_PANEL_SURFACE_SHORTS);
+                            identifierOutput.writeString(ENGAGEMENT_PANEL_IDENTIFIER_TAG_FIELD, panelId);
+                            identifierOutput.flush();
+
+                            // The sort chips of the header are an Elements component, whose template comes with
+                            // the other templates of the watch page, which the response does not have.
+                            // Without its template, the component is an empty space.
+                            ProtoNode subheader = ProtoNode.field(ProtoNode.message(renderer.children,
+                                            ENGAGEMENT_PANEL_HEADER_FIELD, ENGAGEMENT_PANEL_TITLE_HEADER_RENDERER_FIELD),
+                                    ENGAGEMENT_PANEL_TITLE_HEADER_SUBHEADER_FIELD);
+                            if (subheader != null) {
+                                subheader.remove();
+                            }
+
+                            // The panels of the watch page are hidden until the watch page shows them.
+                            ByteArrayOutputStream shownRenderer = new ByteArrayOutputStream();
+                            CodedOutputStream rendererOutput = CodedOutputStream.newInstance(shownRenderer);
+                            rendererOutput.writeRawBytes(ProtoNode.write(renderer.children));
+                            rendererOutput.writeEnum(ENGAGEMENT_PANEL_VISIBILITY_FIELD,
+                                    ENGAGEMENT_PANEL_VISIBILITY_EXPANDED);
+                            rendererOutput.writeByteArray(ENGAGEMENT_PANEL_IDENTIFIER_FIELD, identifier.toByteArray());
+                            rendererOutput.flush();
+
+                            ByteArrayOutputStream engagementPanel = new ByteArrayOutputStream();
+                            CodedOutputStream panelOutput = CodedOutputStream.newInstance(engagementPanel);
+                            panelOutput.writeByteArray(ENGAGEMENT_PANEL_SECTION_LIST_RENDERER_FIELD,
+                                    shownRenderer.toByteArray());
+                            panelOutput.flush();
+
+                            ByteArrayOutputStream endpoint = new ByteArrayOutputStream();
+                            CodedOutputStream endpointOutput = CodedOutputStream.newInstance(endpoint);
+                            endpointOutput.writeString(SHOW_ENGAGEMENT_PANEL_ENDPOINT_PANEL_ID_FIELD, panelId);
+                            endpointOutput.writeByteArray(SHOW_ENGAGEMENT_PANEL_ENDPOINT_PANEL_FIELD,
+                                    engagementPanel.toByteArray());
+                            endpointOutput.writeByteArray(SHOW_ENGAGEMENT_PANEL_ENDPOINT_IDENTIFIER_FIELD,
+                                    identifier.toByteArray());
+                            endpointOutput.flush();
+
+                            ByteArrayOutputStream commandBytes = new ByteArrayOutputStream();
+                            CodedOutputStream commandOutput = CodedOutputStream.newInstance(commandBytes);
+                            commandOutput.writeByteArray(SHOW_ENGAGEMENT_PANEL_ENDPOINT_FIELD, endpoint.toByteArray());
+                            commandOutput.flush();
+                            panelCommand = commandBytes.toByteArray();
+                            break;
+                        }
+                    }
+                } catch (Exception ex) {
+                    Logger.printInfo(() -> "Engagement panels request failed: " + videoId, ex);
                 }
-            }
 
-            Matcher panelId = COMMENTS_PANEL_ID_PATTERN.matcher(new String(response, StandardCharsets.ISO_8859_1));
-            if (panelId.find()) {
-                String foundId = panelId.group();
-                Logger.printDebug(() -> "Opening unknown comments panel: " + foundId);
-                return showEngagementPanelCommand(foundId);
-            }
-            Logger.printDebug(() -> "Comments panel not found");
+                // Without the comments panel, such as when the comments are turned off, the video is opened.
+                byte[] commandToRun = panelCommand != null ? panelCommand : watchCommand;
+                Utils.runOnMainThread(() -> CommandRouterPatch.executeCommand(commandToRun, new HashMap<>()));
+            });
+            return true;
         } catch (Exception ex) {
-            Logger.printException(() -> "getCommentsCommand failure", ex);
+            Logger.printException(() -> "openCommentsPanel failure", ex);
         }
-        return null;
-    }
-
-    private static byte[] showEngagementPanelCommand(String panelId) throws IOException {
-        ByteArrayOutputStream endpoint = new ByteArrayOutputStream();
-        CodedOutputStream endpointOutput = CodedOutputStream.newInstance(endpoint);
-        endpointOutput.writeString(SHOW_ENGAGEMENT_PANEL_ENDPOINT_PANEL_ID_FIELD, panelId);
-        endpointOutput.flush();
-
-        ByteArrayOutputStream command = new ByteArrayOutputStream();
-        CodedOutputStream commandOutput = CodedOutputStream.newInstance(command);
-        commandOutput.writeByteArray(SHOW_ENGAGEMENT_PANEL_ENDPOINT_FIELD, endpoint.toByteArray());
-        commandOutput.flush();
-        return command.toByteArray();
+        return false;
     }
 
     /**
