@@ -155,6 +155,10 @@ import app.morphe.extension.youtube.shared.PlayerType;
 public class FeedCardLayoutPatch {
 
     public enum FeedCardLayout {
+        /**
+         * The layout that the server sends to the account.
+         */
+        DEFAULT,
         CLASSIC,
         CARDS,
         CARDS_WITH_ACTION_BUTTONS
@@ -168,8 +172,10 @@ public class FeedCardLayoutPatch {
         byte[] patch_getElementBytes();
     }
 
-    private static final boolean CARD_LAYOUT = Settings.FEED_CARD_LAYOUT.get() != FeedCardLayout.CLASSIC;
-    private static final boolean ACTION_BUTTONS = Settings.FEED_CARD_LAYOUT.get() == FeedCardLayout.CARDS_WITH_ACTION_BUTTONS;
+    private static final FeedCardLayout LAYOUT = Settings.FEED_CARD_LAYOUT.get();
+    private static final boolean CARD_LAYOUT = LAYOUT == FeedCardLayout.CARDS
+            || LAYOUT == FeedCardLayout.CARDS_WITH_ACTION_BUTTONS;
+    private static final boolean ACTION_BUTTONS = LAYOUT == FeedCardLayout.CARDS_WITH_ACTION_BUTTONS;
 
     /**
      * Template names, followed by "|hash" or by a suffix and "|hash" (newer app versions), such as "-fe|hash".
@@ -581,6 +587,10 @@ public class FeedCardLayoutPatch {
      * Injection point.
      */
     public static byte[] setFeedCardLayout(byte[] bytes) {
+        if (LAYOUT == FeedCardLayout.DEFAULT) {
+            return bytes;
+        }
+
         try {
             final String elementText = FeedVideoCardsPatch.getElementText(bytes);
             if (!Utils.containsAny(elementText, elementTemplates)) {
