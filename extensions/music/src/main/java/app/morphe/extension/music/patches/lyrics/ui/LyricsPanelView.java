@@ -73,8 +73,8 @@ import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
 import app.morphe.extension.music.patches.lyrics.session.LockScreenLyrics;
 import app.morphe.extension.music.patches.lyrics.session.MiniplayerLyrics;
 import app.morphe.extension.music.patches.lyrics.derive.AiProviders;
-import app.morphe.extension.music.patches.lyrics.derive.LyricsFuriganaGenerator;
-import app.morphe.extension.music.patches.lyrics.derive.LyricsFuriganaGenerator.FuriganaStyle;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsRubyGenerator;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsRubyGenerator.RubyStyle;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsTranslator;
 import app.morphe.extension.music.patches.lyrics.derive.QuickLRCClient;
@@ -153,7 +153,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private static final String APP_ROMANIZE_ICON = "morphe_yt_romanize";
 
     /** Own icon of a kana with dots above it. */
-    private static final String FURIGANA_ICON = "morphe_yt_furigana";
+    private static final String RUBY_ICON = "morphe_yt_ruby";
 
     private static final String REFRESH_ICON = "ic_mtrl_arrow_circle";
 
@@ -174,7 +174,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     @Nullable
     private TextView romanizeView;
     @Nullable
-    private TextView furiganaView;
+    private TextView rubyView;
     /** The pill standing in for both buttons while the dual mode is up. */
     @Nullable
     private TextView dualPillView;
@@ -222,13 +222,13 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     @Nullable
     private TrackInfo lastKnownTrack;
     private final Runnable refreshLabelResetRunnable = this::updateRefreshLabel;
-    private final Runnable furiganaLabelResetRunnable = this::updateFuriganaLabel;
+    private final Runnable rubyLabelResetRunnable = this::updateRubyLabel;
     private boolean translateInProgress;
     private boolean romanizeInProgress;
     private int translateRequestId;
     private int romanizeRequestId;
     private int transcribeRequestId;
-    private int furiganaRequestId;
+    private int rubyRequestId;
     /** Set while a run is going, so the affordances can say so before the client knows it. */
     private boolean transcribeBusy;
     /** The aligned lyrics waiting to be applied, and the track they belong to. */
@@ -874,8 +874,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             // A transcription in flight belongs to the track that just left.
             transcribeRequestId++;
             transcribeBusy = false;
-            furiganaRequestId++;
-            updateFuriganaLabel();
+            rubyRequestId++;
+            updateRubyLabel();
             QuickLRCClient.cancel();
             pendingAlignment = null;
             pendingAlignmentTrack = null;
@@ -904,8 +904,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                         }
                     } else {
                         dynamicBackgroundView.setVideoId(VideoInformation.getVideoId());
-                        if (Settings.LYRICS_FURIGANA.get()) {
-                            applyFurigana(newLyrics);
+                        if (Settings.LYRICS_RUBY.get()) {
+                            applyRuby(newLyrics);
                             newLyrics = lyrics;
                         } else {
                             showLyrics(newLyrics);
@@ -2855,47 +2855,50 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
     }
 
-    private void updateFuriganaLabel() {
-        if (furiganaView != null) {
-            setButtonLabel(furiganaView, null, Settings.LYRICS_FURIGANA.get());
+    private void updateRubyLabel() {
+        if (rubyView != null) {
+            setButtonLabel(rubyView, null, Settings.LYRICS_RUBY.get());
         }
     }
 
-    private void onFuriganaClicked() {
+    private void onRubyClicked() {
         try {
-            final boolean on = !Settings.LYRICS_FURIGANA.get();
-            Settings.LYRICS_FURIGANA.save(on);
-            updateFuriganaLabel();
+            if (rubyView == null) {
+                return;
+            }
+            final boolean on = !Settings.LYRICS_RUBY.get();
+            Settings.LYRICS_RUBY.save(on);
+            updateRubyLabel();
             if (lyrics == null) {
                 return;
             }
             if (on) {
-                applyFurigana(lyrics);
+                applyRuby(lyrics);
             } else {
                 // The readings stay on the words and are only drawn while the setting is on.
-                furiganaRequestId++;
+                rubyRequestId++;
                 showLyrics(lyrics);
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "onFuriganaClicked failure", ex);
+            Logger.printException(() -> "onRubyClicked failure", ex);
         }
     }
 
     /** Switches the readings between hiragana and katakana, and turns them on if they are off. */
-    private void onFuriganaLongPressed() {
+    private void onRubyLongPressed() {
         try {
-            final FuriganaStyle style = Settings.LYRICS_FURIGANA_STYLE.get() == FuriganaStyle.HIRAGANA
-                    ? FuriganaStyle.KATAKANA
-                    : FuriganaStyle.HIRAGANA;
-            Settings.LYRICS_FURIGANA_STYLE.save(style);
-            Settings.LYRICS_FURIGANA.save(true);
-            flashButtonLabel(furiganaView, str("morphe_music_lyrics_furigana_style_entry_"
-                    + style.name().toLowerCase(Locale.US)), furiganaLabelResetRunnable, 1500);
+            final RubyStyle style = Settings.LYRICS_RUBY_STYLE.get() == RubyStyle.HIRAGANA
+                    ? RubyStyle.KATAKANA
+                    : RubyStyle.HIRAGANA;
+            Settings.LYRICS_RUBY_STYLE.save(style);
+            Settings.LYRICS_RUBY.save(true);
+            flashButtonLabel(rubyView, str("morphe_music_lyrics_ruby_style_entry_"
+                    + style.name().toLowerCase(Locale.US)), rubyLabelResetRunnable, 1500);
             if (lyrics != null) {
-                applyFurigana(lyrics);
+                applyRuby(lyrics);
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "onFuriganaLongPressed failure", ex);
+            Logger.printException(() -> "onRubyLongPressed failure", ex);
         }
     }
 
@@ -2903,22 +2906,22 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
      * Shows the readings that are known right away, then asks the AI provider, if one is on,
      * for the rest.
      */
-    private void applyFurigana(Lyrics current) {
-        final Lyrics local = LyricsFuriganaGenerator.applyLocal(current);
+    private void applyRuby(Lyrics current) {
+        final Lyrics local = LyricsRubyGenerator.applyLocal(current);
         lyrics = local;
         showLyrics(local);
 
-        final int requestId = ++furiganaRequestId;
+        final int requestId = ++rubyRequestId;
         TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
-        if (track == null || !LyricsFuriganaGenerator.usesAi(local)) {
+        if (track == null || !LyricsRubyGenerator.usesAi(local)) {
             return;
         }
-        setButtonLabel(furiganaView, str("morphe_music_lyrics_furigana_generating"), true);
-        LyricsFuriganaGenerator.requestAi(track, local, generated -> {
-            if (requestId != furiganaRequestId) {
+        setButtonLabel(rubyView, str("morphe_music_lyrics_ruby_generating"), true);
+        LyricsRubyGenerator.requestAi(track, local, generated -> {
+            if (requestId != rubyRequestId) {
                 return;
             }
-            updateFuriganaLabel();
+            updateRubyLabel();
             if (generated != local) {
                 lyrics = generated;
                 showLyrics(generated);
@@ -4316,11 +4319,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 },
                 true);
 
-        furiganaView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_FURIGANA_BUTTON.get(),
-                FURIGANA_ICON,
-                view -> onFuriganaClicked(),
+        rubyView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_RUBY_BUTTON.get(),
+                RUBY_ICON,
+                view -> onRubyClicked(),
                 view -> {
-                    onFuriganaLongPressed();
+                    onRubyLongPressed();
                     return true;
                 },
                 true);
@@ -4348,7 +4351,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         createToolbarButtons();
         updateTranslateLabel();
         updateRomanizeLabel();
-        updateFuriganaLabel();
+        updateRubyLabel();
         updateRefreshLabel();
         if (transcribePromptView.getVisibility() == VISIBLE) {
             showOnlyRefreshButton();

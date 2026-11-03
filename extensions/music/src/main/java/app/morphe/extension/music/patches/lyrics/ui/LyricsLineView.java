@@ -1291,8 +1291,8 @@ final class LyricsLineView extends TextView {
                 alignSyllablesForFormatting(wordTimings, rawMainText, formattedMainText);
         List<RomanizedWordCluster> romanClusters =
                 buildRomanizedWordClusters(alignedSyllables, formattedMainText, mainLayout, romPaint);
-        final boolean enableFurigana = Settings.LYRICS_FURIGANA.get();
-        List<RomanizedWordCluster> rubyClusters = enableFurigana
+        final boolean enableRuby = Settings.LYRICS_RUBY.get();
+        List<RomanizedWordCluster> rubyClusters = enableRuby
                 ? buildRubyClusters(alignedSyllables, formattedMainText, mainLayout, rubyPaint)
                 : Collections.emptyList();
         if (romanClusters.isEmpty() && rubyClusters.isEmpty()) {
@@ -1504,8 +1504,8 @@ final class LyricsLineView extends TextView {
 
         List<RomanizedWordCluster> romanClusters =
                 buildRomanizedWordClusters(alignedSyllables, mainText, unconstrained, romPaint);
-        final boolean enableFurigana = Settings.LYRICS_FURIGANA.get();
-        List<RomanizedWordCluster> rubyClusters = (enableFurigana && rubyPaint != null)
+        final boolean enableRuby = Settings.LYRICS_RUBY.get();
+        List<RomanizedWordCluster> rubyClusters = (enableRuby && rubyPaint != null)
                 ? buildRubyClusters(alignedSyllables, mainText, unconstrained, rubyPaint)
                 : Collections.emptyList();
         if (romanClusters.isEmpty() && rubyClusters.isEmpty()) {
@@ -2167,7 +2167,7 @@ final class LyricsLineView extends TextView {
         if (romaReveal > 0f && romaUnsungAlpha > 0) {
             drawUnsungReadings(canvas, cache.romanLines, originX, mainY, romaUnsungColor);
         }
-        final boolean drawRuby = Settings.LYRICS_FURIGANA.get();
+        final boolean drawRuby = Settings.LYRICS_RUBY.get();
         final int rubyUnsungAlpha = Math.round(lineAlpha * readingBaseAlpha * contentNow);
         if (drawRuby && rubyUnsungAlpha > 0) {
             drawUnsungReadings(canvas, cache.rubyLines, originX, mainY,

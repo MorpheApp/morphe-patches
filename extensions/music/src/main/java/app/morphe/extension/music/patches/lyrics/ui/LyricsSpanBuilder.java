@@ -358,7 +358,7 @@ public final class LyricsSpanBuilder {
             return null;
         }
         final boolean wantRoman = romanizedLines != null || perWordRomaji;
-        final boolean lineHasRuby = Settings.LYRICS_FURIGANA.get() && hasAnyRuby(timings);
+        final boolean lineHasRuby = Settings.LYRICS_RUBY.get() && hasAnyRuby(timings);
         if (!lineHasRuby && isEntirelyAveraged(timings)) {
             return null;
         }
@@ -1248,7 +1248,7 @@ public final class LyricsSpanBuilder {
         // from the same words rather than from a second set of marks. Furigana is always drawn
         // over its own word.
         List<WordTiming> syllableRomanTimings = (Settings.LYRICS_WORD_SYNC.get()
-                || (Settings.LYRICS_FURIGANA.get() && hasAnyRuby(line)))
+                || (Settings.LYRICS_RUBY.get() && hasAnyRuby(line)))
                 ? buildSyllableRomanizedTimings(line, index, romanizedLines, perWordRomaji, timings, original)
                 : null;
         final boolean showSyllableRomanization = syllableRomanTimings != null;

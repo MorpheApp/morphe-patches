@@ -35,9 +35,9 @@ import app.morphe.extension.shared.Utils;
  * <p>Ruby the source ships and the offline dictionary readings are added right away. An AI
  * provider answers in the background and only fills the words still without a reading.
  */
-public final class LyricsFuriganaGenerator {
+public final class LyricsRubyGenerator {
 
-    public enum FuriganaStyle {
+    public enum RubyStyle {
         HIRAGANA,
         KATAKANA
     }
@@ -47,17 +47,17 @@ public final class LyricsFuriganaGenerator {
     }
 
     private static final ExecutorService WORKER = Executors.newSingleThreadExecutor(runnable -> {
-        Thread thread = new Thread(runnable, "lyrics-furigana-generator");
+        Thread thread = new Thread(runnable, "lyrics-ruby-generator");
         thread.setDaemon(true);
         return thread;
     });
 
-    private LyricsFuriganaGenerator() {
+    private LyricsRubyGenerator() {
     }
 
     private static List<String> enabledProviders() {
         return AiProviders.enabledProviders(
-                Settings.LYRICS_FURIGANA_PROVIDERS.get(), AiProviders.FURIGANA_ORDER);
+                Settings.LYRICS_RUBY_PROVIDERS.get(), AiProviders.RUBY_ORDER);
     }
 
     /**
@@ -69,7 +69,7 @@ public final class LyricsFuriganaGenerator {
             return lyrics;
         }
         final List<String> providers = enabledProviders();
-        final FuriganaStyle style = Settings.LYRICS_FURIGANA_STYLE.get();
+        final RubyStyle style = Settings.LYRICS_RUBY_STYLE.get();
         Lyrics current = formatEmbeddedRuby(lyrics, providers.contains(AiProviders.EMBEDDED), style);
         if (providers.contains(AiProviders.LOCAL)) {
             WordReadingTable table = JapaneseDictStore.table();
@@ -95,7 +95,7 @@ public final class LyricsFuriganaGenerator {
      * the main thread, with the lyrics unchanged if the provider gave no usable answer.
      */
     public static void requestAi(TrackInfo track, Lyrics lyrics, Callback callback) {
-        final FuriganaStyle style = Settings.LYRICS_FURIGANA_STYLE.get();
+        final RubyStyle style = Settings.LYRICS_RUBY_STYLE.get();
         WORKER.execute(() -> {
             Lyrics result = lyrics;
             try {
@@ -107,18 +107,18 @@ public final class LyricsFuriganaGenerator {
                     if (!AiProviders.isAi(provider)) {
                         continue;
                     }
-                    List<String> aiLines = LyricsCache.getFuriganaAI(
+                    List<String> aiLines = LyricsCache.getRubyAI(
                             track, lyrics.providerName(), lines, provider);
                     if (aiLines == null) {
                         String prompt = OpenAIClient.renderPrompt(
-                                Settings.LYRICS_AI_FURIGANA_PROMPT.get(), "furigana", "Japanese",
+                                Settings.LYRICS_AI_RUBY_PROMPT.get(), "furigana", "Japanese",
                                 track.title(), track.artist(), lines);
                         AiProviders.Result ai = AiProviders.mapLines(provider, prompt, lines);
                         if (ai == null || ai.lines() == null || ai.lines().size() != lines.size()) {
                             continue;
                         }
                         aiLines = ai.lines();
-                        LyricsCache.putFuriganaAI(track, lyrics.providerName(), lines, aiLines, provider);
+                        LyricsCache.putRubyAI(track, lyrics.providerName(), lines, aiLines, provider);
                     }
                     result = enrichFromAiLines(lyrics, aiLines, JapaneseDictStore.table(), style);
                     break;
@@ -164,7 +164,7 @@ public final class LyricsFuriganaGenerator {
     }
 
     /** Puts the source's ruby in the chosen script, or drops it when that provider is off. */
-    private static Lyrics formatEmbeddedRuby(Lyrics lyrics, boolean keep, FuriganaStyle style) {
+    private static Lyrics formatEmbeddedRuby(Lyrics lyrics, boolean keep, RubyStyle style) {
         List<LyricsLine> lines = new ArrayList<>(lyrics.lines().size());
         boolean changed = false;
         for (LyricsLine line : lyrics.lines()) {
@@ -185,7 +185,7 @@ public final class LyricsFuriganaGenerator {
     }
 
     private static Lyrics enrichFromDictionary(Lyrics lyrics, WordReadingTable table,
-                                               FuriganaStyle style) {
+                                               RubyStyle style) {
         List<LyricsLine> lines = new ArrayList<>(lyrics.lines().size());
         for (LyricsLine line : lyrics.lines()) {
             lines.add(enrichLineFromDictionary(line, table, style));
@@ -194,7 +194,7 @@ public final class LyricsFuriganaGenerator {
     }
 
     private static LyricsLine enrichLineFromDictionary(LyricsLine line, WordReadingTable table,
-                                                       FuriganaStyle style) {
+                                                       RubyStyle style) {
         if (!ScriptDetector.contains(line.text(), Character.UnicodeScript.HAN)) {
             return line;
         }
@@ -482,7 +482,7 @@ public final class LyricsFuriganaGenerator {
 
     /** Gives each kanji word without a reading the one the AI wrote in brackets after it. */
     static Lyrics enrichFromAiLines(Lyrics lyrics, List<String> aiLines,
-                                    @Nullable WordReadingTable table, FuriganaStyle style) {
+                                    @Nullable WordReadingTable table, RubyStyle style) {
         List<LyricsLine> lines = new ArrayList<>(lyrics.lines().size());
         for (int li = 0; li < lyrics.lines().size(); li++) {
             LyricsLine line = lyrics.lines().get(li);
@@ -555,11 +555,11 @@ public final class LyricsFuriganaGenerator {
     }
 
     /** Kana ruby in the chosen script. Other ruby, such as an English gloss, is kept as is. */
-    public static String formatRuby(String ruby, FuriganaStyle style) {
+    public static String formatRuby(String ruby, RubyStyle style) {
         if (!ScriptDetector.containsKana(ruby)) {
             return ruby;
         }
-        return style == FuriganaStyle.KATAKANA
+        return style == RubyStyle.KATAKANA
                 ? KanaRomanizer.toKatakana(ruby)
                 : KanaRomanizer.toHiragana(ruby);
     }

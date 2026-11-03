@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import app.morphe.extension.music.patches.lyrics.derive.LyricsFuriganaGenerator.FuriganaStyle;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsRubyGenerator.RubyStyle;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsBracketSplitter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -16,7 +16,7 @@ import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer;
 
-public class LyricsFuriganaGeneratorTest {
+public class LyricsRubyGeneratorTest {
 
     @Test
     public void testKanaRomanizeSyllables() {
@@ -27,10 +27,10 @@ public class LyricsFuriganaGeneratorTest {
 
     @Test
     public void testFormatRuby() {
-        assertEquals("Normal", LyricsFuriganaGenerator.formatRuby("Normal", FuriganaStyle.HIRAGANA));
-        assertEquals("Normal", LyricsFuriganaGenerator.formatRuby("Normal", FuriganaStyle.KATAKANA));
-        assertEquals("じょう", LyricsFuriganaGenerator.formatRuby("ジョウ", FuriganaStyle.HIRAGANA));
-        assertEquals("ジョウ", LyricsFuriganaGenerator.formatRuby("じょう", FuriganaStyle.KATAKANA));
+        assertEquals("Normal", LyricsRubyGenerator.formatRuby("Normal", RubyStyle.HIRAGANA));
+        assertEquals("Normal", LyricsRubyGenerator.formatRuby("Normal", RubyStyle.KATAKANA));
+        assertEquals("じょう", LyricsRubyGenerator.formatRuby("ジョウ", RubyStyle.HIRAGANA));
+        assertEquals("ジョウ", LyricsRubyGenerator.formatRuby("じょう", RubyStyle.KATAKANA));
     }
 
     @Test
@@ -41,8 +41,8 @@ public class LyricsFuriganaGeneratorTest {
         );
         LyricsLine line = new LyricsLine(1000, 5000, "深く 朱き", inWords);
         Lyrics lyrics = new Lyrics(Collections.singletonList(line), "LRCLIB", true, null, null, null, null, null, null, null);
-        Lyrics enriched = LyricsFuriganaGenerator.enrichFromAiLines(
-                lyrics, Collections.singletonList("深く[ふかく] 朱き[あかき]"), null, FuriganaStyle.HIRAGANA);
+        Lyrics enriched = LyricsRubyGenerator.enrichFromAiLines(
+                lyrics, Collections.singletonList("深く[ふかく] 朱き[あかき]"), null, RubyStyle.HIRAGANA);
 
         List<Word> words = enriched.lines().get(0).words();
         StringBuilder sb = new StringBuilder();

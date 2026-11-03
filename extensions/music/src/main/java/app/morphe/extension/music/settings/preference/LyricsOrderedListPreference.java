@@ -60,8 +60,8 @@ public final class LyricsOrderedListPreference extends Preference {
             "morphe_music_lyrics_translation_provider";
     private static final String KEY_ROMANIZATION_PROVIDER =
             "morphe_music_lyrics_romanization_provider";
-    private static final String KEY_FURIGANA_PROVIDER =
-            "morphe_music_lyrics_furigana_provider";
+    private static final String KEY_RUBY_PROVIDER =
+            "morphe_music_lyrics_ruby_provider";
 
     /** The fixed last row of the service list; it is not a lookup source and holds no order. */
     private static final String QUICKLRC = "QuickLRC";
@@ -119,7 +119,7 @@ public final class LyricsOrderedListPreference extends Preference {
     }
 
     private enum Kind {
-        SOURCE, TRANSLATION, ROMANIZATION, FURIGANA
+        SOURCE, TRANSLATION, ROMANIZATION, RUBY
     }
 
     private static final class Item {
@@ -154,8 +154,8 @@ public final class LyricsOrderedListPreference extends Preference {
         if (KEY_ROMANIZATION_PROVIDER.equals(key)) {
             return Kind.ROMANIZATION;
         }
-        if (KEY_FURIGANA_PROVIDER.equals(key)) {
-            return Kind.FURIGANA;
+        if (KEY_RUBY_PROVIDER.equals(key)) {
+            return Kind.RUBY;
         }
         return Kind.SOURCE;
     }
@@ -165,7 +165,7 @@ public final class LyricsOrderedListPreference extends Preference {
             case SOURCE -> SOURCE_PROVIDER_ORDER;
             case TRANSLATION -> AiProviders.TRANSLATION_ORDER;
             case ROMANIZATION -> AiProviders.ROMANIZATION_ORDER;
-            case FURIGANA -> AiProviders.FURIGANA_ORDER;
+            case RUBY -> AiProviders.RUBY_ORDER;
         };
     }
 
@@ -174,7 +174,7 @@ public final class LyricsOrderedListPreference extends Preference {
             case SOURCE -> Settings.LYRICS_SOURCE;
             case TRANSLATION -> Settings.LYRICS_TRANSLATION_PROVIDERS;
             case ROMANIZATION -> Settings.LYRICS_ROMANIZATION_PROVIDERS;
-            case FURIGANA -> Settings.LYRICS_FURIGANA_PROVIDERS;
+            case RUBY -> Settings.LYRICS_RUBY_PROVIDERS;
         };
     }
 
@@ -194,9 +194,9 @@ public final class LyricsOrderedListPreference extends Preference {
                 case AiProviders.OPENAI_COMPATIBLE -> AiProviders.OPENAI_COMPATIBLE_LABEL;
                 default -> str("morphe_music_lyrics_romanization_provider_" + id);
             };
-            case FURIGANA -> switch (id) {
+            case RUBY -> switch (id) {
                 case AiProviders.EMBEDDED -> AiProviders.EMBEDDED_LABEL;
-                case AiProviders.LOCAL -> str("morphe_music_lyrics_furigana_provider_local");
+                case AiProviders.LOCAL -> str("morphe_music_lyrics_ruby_provider_local");
                 case AiProviders.OPENAI_COMPATIBLE -> AiProviders.OPENAI_COMPATIBLE_LABEL;
                 default -> id;
             };
@@ -258,7 +258,7 @@ public final class LyricsOrderedListPreference extends Preference {
         return switch (kind) {
             case TRANSLATION -> Settings.LYRICS_AI_TRANSLATION_PROMPT;
             case ROMANIZATION -> Settings.LYRICS_AI_ROMANIZATION_PROMPT;
-            case FURIGANA -> Settings.LYRICS_AI_FURIGANA_PROMPT;
+            case RUBY -> Settings.LYRICS_AI_RUBY_PROMPT;
             case SOURCE -> null;
         };
     }

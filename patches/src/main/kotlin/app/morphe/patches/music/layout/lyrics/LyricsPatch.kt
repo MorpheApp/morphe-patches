@@ -69,7 +69,7 @@ val lyricsPatch = bytecodePatch(
                 )
                 copyResources(
                     "romanisationbutton",
-                    ResourceGroup("drawable", "morphe_yt_romanize.xml", "morphe_yt_furigana.xml")
+                    ResourceGroup("drawable", "morphe_yt_romanize.xml", "morphe_yt_ruby.xml")
                 )
             }
         }
@@ -130,13 +130,13 @@ val lyricsPatch = bytecodePatch(
                     ),
                     SwitchPreference("morphe_music_lyrics_allow_transliteration", summary = true),
                     NonInteractivePreference(
-                        key = "morphe_music_lyrics_furigana_provider",
+                        key = "morphe_music_lyrics_ruby_provider",
                         summaryKey = null,
                         tag = "app.morphe.extension.music.settings.preference.LyricsOrderedListPreference",
                         selectable = false,
                         dependency = "morphe_music_lyrics_enabled"
                     ),
-                    ListPreference("morphe_music_lyrics_furigana_style"),
+                    ListPreference("morphe_music_lyrics_ruby_style"),
                     NonInteractivePreference(
                         key = "morphe_music_lyrics_clear_cache",
                         tag = "app.morphe.extension.music.settings.preference.LyricsClearCachePreference",
@@ -185,7 +185,7 @@ val lyricsPatch = bytecodePatch(
                     SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
-                    SwitchPreference("morphe_music_lyrics_show_furigana_button", summary = true)
+                    SwitchPreference("morphe_music_lyrics_show_ruby_button", summary = true)
                 )
             ),
             PreferenceCategory(

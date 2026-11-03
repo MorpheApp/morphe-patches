@@ -488,15 +488,15 @@ public final class LyricsCache {
     }
 
     @Nullable
-    public static List<String> getFuriganaAI(TrackInfo track, String source,
-                                             List<String> sourceLines, @Nullable String provider) {
-        return readStringList(aiFuriganaFile(track, source, sourceLines, provider), sourceLines);
+    public static List<String> getRubyAI(TrackInfo track, String source,
+                                         List<String> sourceLines, @Nullable String provider) {
+        return readStringList(aiRubyFile(track, source, sourceLines, provider), sourceLines);
     }
 
-    public static void putFuriganaAI(TrackInfo track, String source,
-                                     List<String> sourceLines, List<String> lines,
-                                     @Nullable String provider) {
-        writeStringList(aiFuriganaFile(track, source, sourceLines, provider), lines);
+    public static void putRubyAI(TrackInfo track, String source,
+                                 List<String> sourceLines, List<String> lines,
+                                 @Nullable String provider) {
+        writeStringList(aiRubyFile(track, source, sourceLines, provider), lines);
     }
 
     @Nullable
@@ -624,13 +624,13 @@ public final class LyricsCache {
     }
 
     @Nullable
-    private static File aiFuriganaFile(TrackInfo track, String source,
-                                       List<String> sourceLines, @Nullable String provider) {
+    private static File aiRubyFile(TrackInfo track, String source,
+                                   List<String> sourceLines, @Nullable String provider) {
         final String providerPrefix = provider == null ? "" : provider + ".";
         return derivedCacheFile(track, source,
                 ".ai." + providerPrefix
-                        + aiConfigKey(Settings.LYRICS_AI_FURIGANA_PROMPT.get())
-                        + ".furigana.txt", sourceLines);
+                        + aiConfigKey(Settings.LYRICS_AI_RUBY_PROMPT.get())
+                        + ".ruby.txt", sourceLines);
     }
 
     private static String aiConfigKey(String prompt) {

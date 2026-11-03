@@ -86,10 +86,10 @@ public final class OpenAIClient {
 
             {lines}""";
     /**
-     * The prompt template for furigana. Each line comes back as it was, with the reading of every
-     * kanji word in brackets right after it, which {@code LyricsFuriganaGenerator} then reads.
+     * The prompt template for ruby. Each line comes back as it was, with the reading of every
+     * kanji word in brackets right after it, which {@code LyricsRubyGenerator} then reads.
      */
-    public static final String FURIGANA_PROMPT = """
+    public static final String RUBY_PROMPT = """
             You are a Japanese reading engine. Add the hiragana reading of every word written with kanji to each lyric line below.
             Song: {title} by {artist}
 
