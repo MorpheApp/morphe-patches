@@ -684,6 +684,15 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      * <p>
+     * Called whenever the vertical translation of the navigation bar is set.
+     */
+    public static float getNavigationBarTranslationY(View navigationBar, float translationY) {
+        return GlassNavigationBar.getTranslationY(navigationBar, translationY);
+    }
+
+    /**
+     * Injection point.
+     * <p>
      * Called whenever the padding of the navigation bar is set.
      *
      * @param bottom The bottom padding, the room below the buttons.

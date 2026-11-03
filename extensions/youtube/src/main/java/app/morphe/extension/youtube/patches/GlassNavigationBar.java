@@ -159,26 +159,66 @@ public final class GlassNavigationBar {
         if (!ENABLED) return heightMeasureSpec;
 
         try {
-            final int base = baseHeight;
-            if (base <= 0 || View.MeasureSpec.getMode(heightMeasureSpec) != View.MeasureSpec.EXACTLY) {
+            if (View.MeasureSpec.getMode(heightMeasureSpec) != View.MeasureSpec.EXACTLY) {
                 return heightMeasureSpec;
             }
 
-            final int extra = navigationBar.getPaddingBottom() - appRoom;
             final int height = View.MeasureSpec.getSize(heightMeasureSpec);
-            if (extra <= 0 || height <= 0) return heightMeasureSpec;
+            final int added = getAddedRoom(navigationBar, height);
+            if (added <= 0) return heightMeasureSpec;
 
-            // A navigation rail along the side.
-            if (navigationBar.getWidth() > 0 && navigationBar.getWidth() <= 2 * Math.min(height, base)) {
-                return heightMeasureSpec;
-            }
-
-            final int added = height >= base ? extra : Math.round(extra * (float) height / base);
             return View.MeasureSpec.makeMeasureSpec(height + added, View.MeasureSpec.EXACTLY);
         } catch (Exception ex) {
             Logger.printException(() -> "getHeightMeasureSpec failure", ex);
             return heightMeasureSpec;
         }
+    }
+
+    /**
+     * Injection point helper.
+     * <p>
+     * The app moves the bar out of the screen by the height it gives the bar: by translation while
+     * the player is dragged, and by a negative bottom margin when the bar is hidden on scroll.
+     * The room added to the height is not part of it, so the top of the capsule would stay on screen.
+     * The bar is moved down by the same part of that room, and is not moved while it is shown.
+     */
+    static float getTranslationY(View navigationBar, float translationY) {
+        if (!ENABLED) return translationY;
+
+        try {
+            ViewGroup.LayoutParams params = navigationBar.getLayoutParams();
+            if (params == null || params.height <= 0) return translationY;
+
+            final int added = getAddedRoom(navigationBar, params.height);
+            if (added <= 0) return translationY;
+
+            final int marginOffset = params instanceof ViewGroup.MarginLayoutParams margins
+                    ? Math.max(0, -margins.bottomMargin)
+                    : 0;
+            final float hidden = Math.min(1, Math.max(0, translationY + marginOffset) / params.height);
+            return translationY + added * hidden;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTranslationY failure", ex);
+            return translationY;
+        }
+    }
+
+    /**
+     * @param height The height the app gives the bar.
+     * @return The room below the buttons that the app did not add to the height of the bar, in
+     *         proportion to that height, as the app also animates the height of the bar to hide it.
+     */
+    private static int getAddedRoom(View navigationBar, int height) {
+        final int base = baseHeight;
+        final int extra = navigationBar.getPaddingBottom() - appRoom;
+        if (base <= 0 || extra <= 0 || height <= 0) return 0;
+
+        // A navigation rail along the side.
+        if (navigationBar.getWidth() > 0 && navigationBar.getWidth() <= 2 * Math.min(height, base)) {
+            return 0;
+        }
+
+        return height >= base ? extra : Math.round(extra * (float) height / base);
     }
 
     /**

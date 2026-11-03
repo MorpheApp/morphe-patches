@@ -389,6 +389,20 @@ val navigationBarPatch = bytecodePatch(
                     AccessFlags.PROTECTED.value
                 )
 
+                // The app moves the bar out of the screen by the height it gives the bar, while the
+                // player is dragged and when the bar is hidden on scroll, so the room added to the
+                // height would stay on screen. The bar is moved down by that room as well.
+                addBridge(
+                    "setTranslationY", listOf("F"), "V", 2,
+                    """
+                        invoke-static { p0, p1 }, $EXTENSION_CLASS->getNavigationBarTranslationY(Landroid/view/View;F)F
+                        move-result p1
+                        invoke-super { p0, p1 }, $superclass->setTranslationY(F)V
+                        return-void
+                    """,
+                    AccessFlags.PUBLIC.value
+                )
+
                 listOf("setPadding", "setPaddingRelative").forEach { name ->
                     addBridge(
                         name, listOf("I", "I", "I", "I"), "V", 5,
