@@ -130,6 +130,56 @@ public final class OfflinePlaybackService extends Service {
                 .putExtra(EXTRA_TARGET_INDEX, index));
     }
 
+    public static void moveQueueItem(int fromIndex, int toIndex) {
+        OfflinePlaybackService service = instance;
+        if (service == null) return;
+        int size = service.queue.size();
+        if (fromIndex < 0 || fromIndex >= size || toIndex < 0 || toIndex >= size || fromIndex == toIndex) {
+            return;
+        }
+        String moved = service.queue.remove(fromIndex);
+        service.queue.add(toIndex, moved);
+
+        if (fromIndex == service.queueIndex) {
+            service.queueIndex = toIndex;
+        } else if (fromIndex < service.queueIndex && toIndex >= service.queueIndex) {
+            service.queueIndex--;
+        } else if (fromIndex > service.queueIndex && toIndex <= service.queueIndex) {
+            service.queueIndex++;
+        }
+        service.publishState();
+    }
+
+    public static void removeQueueItem(Context context, int index) {
+        OfflinePlaybackService service = instance;
+        if (service == null || index < 0 || index >= service.queue.size()) return;
+
+        String removed = service.queue.remove(index);
+        service.originalQueue.remove(removed);
+
+        if (service.queue.isEmpty()) {
+            service.queueIndex = -1;
+            service.stopPlayback();
+            return;
+        }
+
+        if (index < service.queueIndex) {
+            service.queueIndex--;
+            service.publishState();
+        } else if (index == service.queueIndex) {
+            if (service.queueIndex >= service.queue.size()) {
+                service.queueIndex = 0;
+            }
+            OfflineTrack nextTrack = OfflineTrack.load(new File(service.queue.get(service.queueIndex)));
+            service.playFile(nextTrack.audioFile().getAbsolutePath(),
+                    nextTrack.displayTitle(),
+                    nextTrack.displayArtist(),
+                    nextTrack.artworkFile().getAbsolutePath());
+        } else {
+            service.publishState();
+        }
+    }
+
     public static void toggleShuffle() {
         OfflinePlaybackService service = instance;
         shuffleEnabled = !shuffleEnabled;
@@ -352,6 +402,8 @@ public final class OfflinePlaybackService extends Service {
             player.setOnCompletionListener(mp -> {
                 if (mp != player) return;
                 if (repeatMode == REPEAT_ONE) {
+                    // Repeat once, then switch back to normal playback mode.
+                    repeatMode = REPEAT_OFF;
                     mp.seekTo(0);
                     mp.start();
                     publishState();
