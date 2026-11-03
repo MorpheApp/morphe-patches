@@ -15,6 +15,7 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -26,6 +27,7 @@ import java.lang.ref.WeakReference;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
@@ -189,6 +191,24 @@ public final class NiconicoCommentsToggleButton {
             SheetBottomDialog.SlideDialog dialog = SheetBottomDialog.createSlideDialog(
                     context, mainLayout, LegacyPlayerControlButton.fadeInDuration);
             PipDismissHelper.dismissOnPip(dialog);
+
+            Button resetButton = CustomDialog.createButton(context, dialog,
+                    str("morphe_settings_reset"),
+                    () -> {
+                        Settings.NICONICO_COMMENTS_FONT_SIZE.resetToDefault();
+                        Settings.NICONICO_COMMENTS_OPACITY.resetToDefault();
+                        Settings.NICONICO_COMMENTS_TRAVEL_DURATION.resetToDefault();
+                        Settings.NICONICO_COMMENTS_MAX_LENGTH.resetToDefault();
+                        NiconicoCommentsController.updateViewState();
+                        // Reopen so the sliders show the default values.
+                        showQuickSettings(context);
+                    },
+                    false, true);
+            LinearLayout.LayoutParams resetParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp36);
+            resetParams.topMargin = Dim.dp16;
+            contentLayout.addView(resetButton, resetParams);
+
             dialog.show();
         } catch (Exception ex) {
             Logger.printException(() -> "showQuickSettings failure", ex);
