@@ -17,6 +17,7 @@ import static app.morphe.extension.music.patches.downloads.OfflineUi.secondary;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -25,6 +26,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PixelFormat;
@@ -43,8 +45,13 @@ import android.preference.PreferenceFragment;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -93,6 +100,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private static final int SEARCH_BAR_HEIGHT_DP = 46;
     private static final long SEARCH_ANIMATION_MILLISECONDS = 180;
+    private static final long PLAYER_TRANSITION_MS = 260;
 
     /** The list of playlists scrolls in its own fixed height once it has more rows than this. */
     private static final int MAX_UNSCROLLED_PLAYLISTS = 4;
@@ -103,6 +111,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private static final int MENU_WIDTH_DP = 220;
     private static final int MENU_CORNER_DP = 12;
     private static final int FULL_ARTWORK_PIXELS = 1024;
+    private static final int HERO_HEIGHT_DP = 340;
 
     private static final int ICON_CHEVRON_DOWN = 1;
     private static final int ICON_SHUFFLE = 2;
@@ -119,7 +128,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private boolean selectionMode;
     private boolean playlistsExpanded;
 
-    private LinearLayout root;
+    private FrameLayout root;
+    private LinearLayout mainContainer;
     private LinearLayout catalogue;
     @Nullable
     private LocalPlaylistPage playlistPage;
@@ -145,8 +155,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private ImageButton fullNext;
     private ImageButton fullShuffle;
     private ImageButton fullRepeat;
+    private ScrollView fullQueueScroll;
     private LinearLayout fullQueueList;
     private boolean fullPlayerOpen;
+    private boolean isInteractingWithQueue;
     private String lastQueueSignature = "";
 
     private LinearLayout songsList;
@@ -196,9 +208,11 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         playlistManager = new OfflinePlaylistManager(musicRoot);
         playlists = playlistManager.loadPlaylists();
 
-        root = new LinearLayout(getActivity());
-        root.setOrientation(LinearLayout.VERTICAL);
+        root = new FrameLayout(getActivity());
         root.setBackgroundColor(background());
+
+        mainContainer = new LinearLayout(getActivity());
+        mainContainer.setOrientation(LinearLayout.VERTICAL);
 
         catalogue = new LinearLayout(getActivity());
         catalogue.setOrientation(LinearLayout.VERTICAL);
@@ -212,17 +226,19 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         songsList.setPadding(ui.dp(8), 0, ui.dp(8), ui.dp(10));
         scroll.addView(songsList);
         catalogue.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
-        root.addView(catalogue, new LinearLayout.LayoutParams(-1, 0, 1));
+        mainContainer.addView(catalogue, new LinearLayout.LayoutParams(-1, 0, 1));
 
         showTracks();
 
         miniPlayer = createStockMiniPlayer();
         miniPlayer.setVisibility(View.GONE);
-        root.addView(miniPlayer, new LinearLayout.LayoutParams(-1, -2));
+        mainContainer.addView(miniPlayer, new LinearLayout.LayoutParams(-1, -2));
+
+        root.addView(mainContainer, new FrameLayout.LayoutParams(-1, -1));
 
         fullPlayerPage = createFullPlayerPage();
         fullPlayerPage.setVisibility(View.GONE);
-        root.addView(fullPlayerPage, new LinearLayout.LayoutParams(-1, -1));
+        root.addView(fullPlayerPage, new FrameLayout.LayoutParams(-1, -1));
 
         return root;
     }
@@ -236,6 +252,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     @Override
     public void onStop() {
         OfflinePlaybackService.removeListener(this);
+        setHostToolbarVisible(true);
         super.onStop();
     }
 
@@ -256,34 +273,99 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     }
 
     private void openFullPlayer() {
-        if (playingPath.isEmpty()) return;
+        if (playingPath.isEmpty() || fullPlayerOpen) return;
         fullPlayerOpen = true;
-        if (playlistPage != null) playlistPage.view().setVisibility(View.GONE);
-        else catalogue.setVisibility(View.GONE);
-        miniPlayer.setVisibility(View.GONE);
-        fullPlayerPage.setVisibility(View.VISIBLE);
+        setHostToolbarVisible(false);
         updateShuffleRepeatUi();
-        refreshFullQueue();
+        refreshFullQueue(true);
+
+        fullPlayerPage.animate().cancel();
+        fullPlayerPage.setVisibility(View.VISIBLE);
+
+        int height = root.getHeight() > 0
+                ? root.getHeight()
+                : getResources().getDisplayMetrics().heightPixels;
+        fullPlayerPage.setTranslationY(height * 0.85f);
+        fullPlayerPage.setAlpha(0.3f);
+        fullPlayerPage.animate()
+                .translationY(0f)
+                .alpha(1f)
+                .setDuration(PLAYER_TRANSITION_MS)
+                .setInterpolator(new DecelerateInterpolator(1.6f))
+                .withEndAction(() -> miniPlayer.setVisibility(View.GONE))
+                .start();
     }
 
     private void closeFullPlayer() {
+        if (!fullPlayerOpen) return;
         fullPlayerOpen = false;
-        fullPlayerPage.setVisibility(View.GONE);
-        if (playlistPage != null) playlistPage.view().setVisibility(View.VISIBLE);
-        else catalogue.setVisibility(View.VISIBLE);
+        setHostToolbarVisible(true);
         miniPlayer.setVisibility(playingPath.isEmpty() ? View.GONE : View.VISIBLE);
+
+        int height = root.getHeight() > 0
+                ? root.getHeight()
+                : getResources().getDisplayMetrics().heightPixels;
+        fullPlayerPage.animate().cancel();
+        fullPlayerPage.animate()
+                .translationY(height * 0.85f)
+                .alpha(0f)
+                .setDuration(PLAYER_TRANSITION_MS - 30)
+                .setInterpolator(new AccelerateInterpolator(1.5f))
+                .withEndAction(() -> {
+                    if (!fullPlayerOpen) {
+                        fullPlayerPage.setVisibility(View.GONE);
+                        fullPlayerPage.setTranslationY(0f);
+                        fullPlayerPage.setAlpha(1f);
+                    }
+                })
+                .start();
+    }
+
+    /**
+     * Hides the parent Activity's "<- Downloads" toolbar while the full-screen player is open
+     * so the album artwork starts cleanly at the top edge of the view.
+     */
+    private void setHostToolbarVisible(boolean visible) {
+        Activity activity = getActivity();
+        if (activity == null) return;
+        if (activity.getActionBar() != null) {
+            if (visible) activity.getActionBar().show();
+            else activity.getActionBar().hide();
+        }
+        if (root == null) return;
+        View content = activity.findViewById(android.R.id.content);
+        ViewParent parent = root.getParent();
+        while (parent instanceof ViewGroup group && parent != content) {
+            for (int i = 0; i < group.getChildCount(); i++) {
+                View child = group.getChildAt(i);
+                if (!isDescendantOf(root, child)) {
+                    child.setVisibility(visible ? View.VISIBLE : View.GONE);
+                }
+            }
+            parent = group.getParent();
+        }
+    }
+
+    private boolean isDescendantOf(View target, View potentialAncestor) {
+        if (target == potentialAncestor) return true;
+        ViewParent parent = target.getParent();
+        while (parent != null) {
+            if (parent == potentialAncestor) return true;
+            parent = parent.getParent();
+        }
+        return false;
     }
 
     private void openPlaylistPage(OfflinePlaylist playlist) {
         playlistPage = new LocalPlaylistPage(this, getActivity(), ui, playlistManager,
                 playlist.id(), playingPath);
         catalogue.setVisibility(View.GONE);
-        root.addView(playlistPage.view(), 0, new LinearLayout.LayoutParams(-1, 0, 1));
+        mainContainer.addView(playlistPage.view(), 0, new LinearLayout.LayoutParams(-1, 0, 1));
         playlistPage.refresh();
     }
 
     void closePlaylistPage() {
-        root.removeView(playlistPage.view());
+        mainContainer.removeView(playlistPage.view());
         playlistPage = null;
         catalogue.setVisibility(View.VISIBLE);
         reloadPlaylists();
@@ -811,25 +893,34 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         LinearLayout page = new LinearLayout(getActivity());
         page.setOrientation(LinearLayout.VERTICAL);
         page.setBackgroundColor(background());
+        page.setClickable(true);
 
         // 1. Hero Artwork + Gradient Scrim + Top Bar + Overlaid Track Title/Artist
         FrameLayout hero = new FrameLayout(getActivity());
 
-        fullArtwork = new ImageView(getActivity());
+        // Top-aligned crop preserves the upper portion of square album covers.
+        fullArtwork = new ImageView(getActivity()) {
+            @Override
+            protected boolean setFrame(int l, int t, int r, int b) {
+                boolean changed = super.setFrame(l, t, r, b);
+                applyTopCropMatrix(this, r - l, b - t);
+                return changed;
+            }
+        };
         fullArtwork.setBackgroundColor(Utils.adjustColorBrightness(foreground(), 0.15f));
-        fullArtwork.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        fullArtwork.setScaleType(ImageView.ScaleType.MATRIX);
         hero.addView(fullArtwork, new FrameLayout.LayoutParams(-1, -1));
 
         GradientDrawable scrim = new GradientDrawable(
                 GradientDrawable.Orientation.TOP_BOTTOM,
-                new int[]{0x77000000, 0x00000000, background()});
+                new int[]{0x66000000, 0x00000000, background()});
         View scrimView = new View(getActivity());
         scrimView.setBackground(scrim);
         hero.addView(scrimView, new FrameLayout.LayoutParams(-1, -1));
 
         LinearLayout topBar = new LinearLayout(getActivity());
         topBar.setGravity(Gravity.CENTER_VERTICAL);
-        topBar.setPadding(ui.dp(8), ui.dp(8), ui.dp(8), 0);
+        topBar.setPadding(ui.dp(8), ui.dp(10), ui.dp(8), 0);
 
         ImageButton collapseBtn = ui.icon(resolveDrawable(ICON_CHEVRON_DOWN,
                 "yt_outline_chevron_down_vd_theme_24",
@@ -863,7 +954,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         titleBlock.addView(fullArtist);
         hero.addView(titleBlock, new FrameLayout.LayoutParams(-1, -2, Gravity.BOTTOM));
 
-        page.addView(hero, new LinearLayout.LayoutParams(-1, ui.dp(290)));
+        page.addView(hero, new LinearLayout.LayoutParams(-1, ui.dp(HERO_HEIGHT_DP)));
 
         // 2. Full Player SeekBar + Time Labels
         fullSeek = createFullSeekBar();
@@ -880,7 +971,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         // 3. Transport Controls Row (Shuffle | Prev | Large Play/Pause | Next | Repeat)
         LinearLayout controls = new LinearLayout(getActivity());
         controls.setGravity(Gravity.CENTER_VERTICAL);
-        controls.setPadding(ui.dp(16), ui.dp(4), ui.dp(16), ui.dp(12));
+        controls.setPadding(ui.dp(16), ui.dp(4), ui.dp(16), ui.dp(10));
 
         fullShuffle = ui.icon(resolveDrawable(ICON_SHUFFLE,
                 "yt_outline_arrow_shuffle_vd_theme_24",
@@ -889,7 +980,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         fullShuffle.setOnClickListener(v -> {
             OfflinePlaybackService.toggleShuffle();
             updateShuffleRepeatUi();
-            refreshFullQueue();
+            refreshFullQueue(true);
         });
         controls.addView(fullShuffle, new LinearLayout.LayoutParams(ui.dp(ICON_BUTTON_DP), ui.dp(ICON_BUTTON_DP)));
         controls.addView(new View(getActivity()), new LinearLayout.LayoutParams(0, 0, 1));
@@ -930,31 +1021,33 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
         page.addView(controls, new LinearLayout.LayoutParams(-1, -2));
 
-        // 4. Pill Handle + Divider above Upcoming Queue
-        LinearLayout handleWrap = new LinearLayout(getActivity());
-        handleWrap.setOrientation(LinearLayout.VERTICAL);
-        handleWrap.setGravity(Gravity.CENTER_HORIZONTAL);
-        View pill = new View(getActivity());
-        pill.setBackground(CustomDialog.createRoundedBackground(4, rippleColor()));
-        LinearLayout.LayoutParams pillParams = new LinearLayout.LayoutParams(ui.dp(36), ui.dp(4));
-        pillParams.bottomMargin = ui.dp(8);
-        handleWrap.addView(pill, pillParams);
-
-        View divider = new View(getActivity());
-        divider.setBackgroundColor(rippleColor());
-        handleWrap.addView(divider, new LinearLayout.LayoutParams(-1, ui.dp(1)));
-        page.addView(handleWrap, new LinearLayout.LayoutParams(-1, -2));
-
-        // 5. Scrollable Upcoming Queue List
-        ScrollView queueScroll = new ScrollView(getActivity());
+        // 4. Scrollable Full Queue List (Previous + Current + Upcoming)
+        fullQueueScroll = new ScrollView(getActivity());
         fullQueueList = new LinearLayout(getActivity());
         fullQueueList.setOrientation(LinearLayout.VERTICAL);
-        fullQueueList.setPadding(ui.dp(8), ui.dp(6), ui.dp(8), ui.dp(12));
-        queueScroll.addView(fullQueueList);
-        page.addView(queueScroll, new LinearLayout.LayoutParams(-1, 0, 1));
+        fullQueueList.setPadding(ui.dp(8), ui.dp(4), ui.dp(8), ui.dp(16));
+        fullQueueScroll.addView(fullQueueList);
+        page.addView(fullQueueScroll, new LinearLayout.LayoutParams(-1, 0, 1));
 
         updateShuffleRepeatUi();
         return page;
+    }
+
+    private static void applyTopCropMatrix(ImageView view, int viewWidth, int viewHeight) {
+        Drawable drawable = view.getDrawable();
+        if (drawable == null || viewWidth <= 0 || viewHeight <= 0) return;
+        int dWidth = drawable.getIntrinsicWidth();
+        int dHeight = drawable.getIntrinsicHeight();
+        if (dWidth <= 0 || dHeight <= 0) return;
+
+        Matrix matrix = new Matrix();
+        float scale = Math.max((float) viewWidth / dWidth, (float) viewHeight / dHeight);
+        float dx = (viewWidth - dWidth * scale) * 0.5f;
+        // Anchor near the top (10% vertical offset) so top text/heads on square covers are never clipped.
+        float dy = (viewHeight - dHeight * scale) * 0.10f;
+        matrix.setScale(scale, scale);
+        matrix.postTranslate(Math.round(dx), Math.round(dy));
+        view.setImageMatrix(matrix);
     }
 
     private SeekBar createFullSeekBar() {
@@ -1007,29 +1100,217 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         }
     }
 
-    private void refreshFullQueue() {
+    private void refreshFullQueue(boolean scrollToCurrent) {
         if (fullQueueList == null) return;
+        final int savedScrollY = fullQueueScroll != null ? fullQueueScroll.getScrollY() : 0;
         fullQueueList.removeAllViews();
 
         List<String> queue = OfflinePlaybackService.getQueue();
         int currentIndex = OfflinePlaybackService.getQueueIndex();
 
-        for (int i = currentIndex + 1; i < queue.size(); i++) {
-            final int targetIndex = i;
+        for (int i = 0; i < queue.size(); i++) {
             OfflineTrack track = findByPath(queue.get(i));
             if (track == null) continue;
 
             LinearLayout row = ui.trackRow();
-            row.setBackground(ui.rowBackground(false));
+            boolean isPlaying = (i == currentIndex);
+            row.setBackground(ui.rowBackground(isPlaying));
+            row.setAlpha(i < currentIndex ? 0.72f : 1.0f);
             ui.addTrackInfo(row, track);
 
             TextView handle = ui.text("=", 20, secondary());
             handle.setGravity(Gravity.CENTER);
-            row.addView(handle, new LinearLayout.LayoutParams(ui.dp(36), ui.dp(36)));
+            row.addView(handle, new LinearLayout.LayoutParams(ui.dp(40), ui.dp(48)));
 
-            row.setOnClickListener(v -> OfflinePlaybackService.playQueueIndex(getActivity(), targetIndex));
+            attachQueueRowInteractions(row, handle);
             fullQueueList.addView(row);
         }
+
+        if (fullQueueScroll != null) {
+            fullQueueScroll.post(() -> {
+                if (scrollToCurrent && currentIndex >= 0 && currentIndex < fullQueueList.getChildCount()) {
+                    View targetRow = fullQueueList.getChildAt(currentIndex);
+                    if (targetRow != null) {
+                        fullQueueScroll.smoothScrollTo(0, targetRow.getTop());
+                    }
+                } else {
+                    fullQueueScroll.scrollTo(0, savedScrollY);
+                }
+            });
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void attachQueueRowInteractions(LinearLayout row, View dragHandle) {
+        final int touchSlop = ViewConfiguration.get(getActivity()).getScaledTouchSlop();
+
+        // 1. Horizontal Swipe-to-Remove + Tap-to-Play on the Row
+        row.setOnTouchListener(new View.OnTouchListener() {
+            private float downRawX;
+            private float downRawY;
+            private boolean swiping;
+            private float baseAlpha = 1f;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getActionMasked()) {
+                    case MotionEvent.ACTION_DOWN -> {
+                        downRawX = event.getRawX();
+                        downRawY = event.getRawY();
+                        swiping = false;
+                        baseAlpha = row.getAlpha();
+                        row.setPressed(true);
+                        return true;
+                    }
+                    case MotionEvent.ACTION_MOVE -> {
+                        float dx = event.getRawX() - downRawX;
+                        float dy = event.getRawY() - downRawY;
+                        if (!swiping && Math.abs(dx) > touchSlop && Math.abs(dx) > Math.abs(dy) * 1.25f) {
+                            swiping = true;
+                            isInteractingWithQueue = true;
+                            row.setPressed(false);
+                            if (fullQueueScroll != null) {
+                                fullQueueScroll.requestDisallowInterceptTouchEvent(true);
+                            }
+                        }
+                        if (swiping) {
+                            row.setTranslationX(dx);
+                            float progress = Math.min(1f, Math.abs(dx) / Math.max(1f, row.getWidth() * 0.75f));
+                            row.setAlpha(baseAlpha * (1f - progress * 0.85f));
+                            return true;
+                        }
+                        if (Math.abs(dy) > touchSlop) {
+                            row.setPressed(false);
+                        }
+                        return false;
+                    }
+                    case MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                        row.setPressed(false);
+                        if (swiping) {
+                            float dx = event.getRawX() - downRawX;
+                            if (fullQueueScroll != null) {
+                                fullQueueScroll.requestDisallowInterceptTouchEvent(false);
+                            }
+                            if (event.getActionMasked() == MotionEvent.ACTION_UP
+                                    && Math.abs(dx) > row.getWidth() * 0.32f) {
+                                int removeIndex = fullQueueList.indexOfChild(row);
+                                row.animate()
+                                        .translationX(dx > 0 ? row.getWidth() : -row.getWidth())
+                                        .alpha(0f)
+                                        .setDuration(180)
+                                        .withEndAction(() -> {
+                                            isInteractingWithQueue = false;
+                                            if (removeIndex >= 0) {
+                                                OfflinePlaybackService.removeQueueItem(getActivity(), removeIndex);
+                                                refreshFullQueue(false);
+                                            }
+                                        })
+                                        .start();
+                            } else {
+                                row.animate()
+                                        .translationX(0f)
+                                        .alpha(baseAlpha)
+                                        .setDuration(180)
+                                        .withEndAction(() -> isInteractingWithQueue = false)
+                                        .start();
+                            }
+                            return true;
+                        } else if (event.getActionMasked() == MotionEvent.ACTION_UP) {
+                            float dx = Math.abs(event.getRawX() - downRawX);
+                            float dy = Math.abs(event.getRawY() - downRawY);
+                            if (dx < touchSlop && dy < touchSlop) {
+                                int clickedIndex = fullQueueList.indexOfChild(row);
+                                if (clickedIndex >= 0) {
+                                    OfflinePlaybackService.playQueueIndex(getActivity(), clickedIndex);
+                                }
+                            }
+                        }
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+        // 2. Vertical Drag-to-Reorder on the '=' Handle
+        dragHandle.setOnTouchListener(new View.OnTouchListener() {
+            private float lastRawY;
+            private int startIndex = -1;
+            private int currentIndex = -1;
+            private float baseAlpha = 1f;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getActionMasked()) {
+                    case MotionEvent.ACTION_DOWN -> {
+                        startIndex = fullQueueList.indexOfChild(row);
+                        if (startIndex < 0) return false;
+                        currentIndex = startIndex;
+                        lastRawY = event.getRawY();
+                        baseAlpha = row.getAlpha();
+                        isInteractingWithQueue = true;
+                        if (fullQueueScroll != null) {
+                            fullQueueScroll.requestDisallowInterceptTouchEvent(true);
+                        }
+                        row.setScaleX(1.02f);
+                        row.setScaleY(1.02f);
+                        row.setAlpha(0.9f);
+                        row.setElevation(ui.dp(6));
+                        return true;
+                    }
+                    case MotionEvent.ACTION_MOVE -> {
+                        if (currentIndex < 0) return false;
+                        float dy = event.getRawY() - lastRawY;
+                        row.setTranslationY(row.getTranslationY() + dy);
+                        lastRawY = event.getRawY();
+
+                        int rowHeight = Math.max(1, row.getHeight());
+                        float currentTranslation = row.getTranslationY();
+
+                        if (currentTranslation > rowHeight * 0.6f
+                                && currentIndex + 1 < fullQueueList.getChildCount()) {
+                            fullQueueList.removeViewAt(currentIndex);
+                            currentIndex++;
+                            fullQueueList.addView(row, currentIndex);
+                            row.setTranslationY(currentTranslation - rowHeight);
+                        } else if (currentTranslation < -rowHeight * 0.6f
+                                && currentIndex - 1 >= 0) {
+                            fullQueueList.removeViewAt(currentIndex);
+                            currentIndex--;
+                            fullQueueList.addView(row, currentIndex);
+                            row.setTranslationY(currentTranslation + rowHeight);
+                        }
+                        return true;
+                    }
+                    case MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                        if (fullQueueScroll != null) {
+                            fullQueueScroll.requestDisallowInterceptTouchEvent(false);
+                        }
+                        final int from = startIndex;
+                        final int to = currentIndex;
+                        row.animate()
+                                .translationY(0f)
+                                .scaleX(1f)
+                                .scaleY(1f)
+                                .alpha(baseAlpha)
+                                .setDuration(150)
+                                .withEndAction(() -> {
+                                    row.setElevation(0f);
+                                    isInteractingWithQueue = false;
+                                    if (from >= 0 && to >= 0 && from != to) {
+                                        OfflinePlaybackService.moveQueueItem(from, to);
+                                        refreshFullQueue(false);
+                                    }
+                                })
+                                .start();
+                        startIndex = -1;
+                        currentIndex = -1;
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     private static String formatMillis(int millis) {
@@ -1364,8 +1645,9 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             final boolean wasVisible = miniPlayer.getVisibility() == View.VISIBLE;
             miniPlayer.setVisibility((title.isEmpty() || fullPlayerOpen) ? View.GONE : View.VISIBLE);
 
+            final boolean trackChanged = !path.equals(playingPath);
             // Decoding the cover on every tick would read the disk twice a second.
-            if (!path.equals(playingPath)) {
+            if (trackChanged) {
                 playingPath = path;
                 OfflineTrack track = findByPath(path);
                 if (track != null) {
@@ -1402,12 +1684,14 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             fullTotalTime.setText(formatMillis(duration));
             updateShuffleRepeatUi();
 
+            List<String> currentQueue = OfflinePlaybackService.getQueue();
             String queueSig = OfflinePlaybackService.getQueueIndex() + ":"
-                    + OfflinePlaybackService.getQueue().size() + ":"
+                    + currentQueue.size() + ":"
+                    + currentQueue.hashCode() + ":"
                     + OfflinePlaybackService.isShuffleEnabled();
-            if (!queueSig.equals(lastQueueSignature)) {
+            if (!isInteractingWithQueue && !queueSig.equals(lastQueueSignature)) {
                 lastQueueSignature = queueSig;
-                refreshFullQueue();
+                refreshFullQueue(trackChanged);
             }
         });
     }
@@ -1467,8 +1751,9 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             if (largeBitmap != null) {
                 fullArtwork.clearColorFilter();
                 fullArtwork.setPadding(0, 0, 0, 0);
+                fullArtwork.setScaleType(ImageView.ScaleType.MATRIX);
                 fullArtwork.setImageBitmap(largeBitmap);
-                fullArtwork.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                applyTopCropMatrix(fullArtwork, fullArtwork.getWidth(), fullArtwork.getHeight());
             } else {
                 fullArtwork.setImageDrawable(
                         ResourceUtils.getDrawable("yt_fill_experimental_play_circle_vd_theme_24"));
