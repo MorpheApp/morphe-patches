@@ -445,6 +445,11 @@ Prijave so javne in so pregledane, preden je kanal dodan na seznam. Odstranitev 
   <string name="morphe_copy_comments_title">Kopiraj komentarje</string>
   <string name="morphe_copy_comments_summary">Tapnite in pridržite komentar, da ga kopirate</string>
   <string name="morphe_copy_comments_success">Komentar je kopiran v odložišče</string>
+  <string name="morphe_copy_select_text_title">Izberite besedilo opisov in objav</string>
+  <string name="morphe_copy_select_text_summary">Pridržite prst na opisu videa ali objavi, da izberete in kopirate kateri koli del besedila</string>
+  <string name="morphe_copy_select_text_dialog_title">Izberite besedilo</string>
+  <string name="morphe_copy_select_text_copy_all">Kopiraj vse</string>
+  <string name="morphe_copy_select_text_success">Besedilo je kopirano vlepilno ploščico</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Dotaknite se in držite za odpiranje menija videa</string>
   <string name="morphe_feed_long_press_menu_summary">Če povsod na videu v toku dotaknete se in držite, se odpre njegov meni</string>
@@ -933,6 +938,11 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_hide_notifications_button_title">Prikaži gumb za nastavitve</string>
   <string name="morphe_show_search_button_title">Položaj gumba za nastavitve</string>
   <string name="morphe_show_search_button_index_title">Ko je omogočeno, se ob tapkanju odprejo nastavitve Morphe, ko pa je onemogočeno, se odprejo nastavitve YouTube</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Pokaži gumb Glej pozneje</string>
+  <string name="morphe_show_watch_later_button_index_title">Kratica gumba Glej pozneje</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Glej pozneje</string>
   <string name="morphe_show_settings_button_title">Zmanjša horizontalni razmak med gumbi</string>
   <string name="morphe_show_settings_button_index_title">Animira prehode pri preklapljanju med zavihki</string>
   <string name="morphe_show_settings_button_type_title">Akcija gumba Nastavitve</string>
@@ -1716,6 +1726,12 @@ Samodejni zapis je opcijski. Ustavi se v zasebnem načinu ali ob spremembi raču
   <string name="morphe_niconico_comments_max_length_title">Največja dolžina komentarja</string>
   <string name="morphe_niconico_comments_max_length_summary">Skrije komentarje, ki imajo več znakov kot ta vrednost. Vsak emoji se šteje za en znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Brez omejitev</string>
+  <string name="morphe_niconico_comments_live_streams_title">Pokaži v neposrednih prenosih</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Neposredni prenosi in njihove ponovitve</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Pokaži v premierah</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premiere med predvajanjem</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Prikaži končane premiere</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Ponovnica klepeta premier, ki so se končale</string>
   <string name="morphe_live_chat_translate_screen_title">Prevajanje klepetalja v živo</string>
   <string name="morphe_live_chat_translate_screen_summary">Prevaja sporočila v klepetalju v živo in ponovnice klepetalja v živo</string>
   <string name="morphe_live_chat_translate_title">Prevajaj klepet v živo</string>
@@ -1723,6 +1739,11 @@ Samodejni zapis je opcijski. Ustavi se v zasebnem načinu ali ob spremembi raču
   <string name="morphe_live_chat_translate_language_title">Jezik prevajanja</string>
   <string name="morphe_live_chat_translate_exclude_title">Izključeni jeziki</string>
   <string name="morphe_live_chat_translate_exclude_summary">Z pomaljajem oddeljene kode jezikov, npr. id,en. Sporočil v teh jezikih se ne prevaja</string>
+  <string name="morphe_live_chat_translate_provider_title">Ponudnik prevodov</string>
+  <string name="morphe_live_chat_translate_provider_google">Google prevajalnik</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API ključ</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Vaš DeepL API ključ. Google prevajalnik se uporabi, če DeepL odpove, na primer, ko je dosežena mesečna omejitev ključa</string>
   <string name="morphe_live_chat_translate_copy_button_title">Prikaži gumb za kopiranje sporočila</string>
   <string name="morphe_live_chat_translate_copy_button_summary">K vsakemu sporočilu v klepetalju doda majhen gumb za kopiranje</string>
   <string name="morphe_live_chat_translate_copied">Sporočilo je kopirano v vznamnik</string>

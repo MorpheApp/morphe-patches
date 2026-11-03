@@ -612,7 +612,6 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">漢語詞彙（pinyin-pro，約 17 MB）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">希臘語、斯拉夫語西里爾字母（包括俄語、烏克蘭語、保加利亞語、塞爾維亞語、白俄羅斯語、馬其頓語）、格魯吉亞語、亞美尼亞語、希伯來語、阿拉伯語、阿姆哈拉語和敘利亞語轉寫（CLDR，約 0.5 MB）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">正在建立讀音 %1$s：%2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">請至少選擇一個字典</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">顯示重新整理按鈕</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">輕觸切換至下一個歌詞候選項目；長按依歌曲標題及藝人搜尋歌詞</string>
   <string name="morphe_music_lyrics_search_dialog_title">搜尋歌詞</string>
@@ -741,7 +740,7 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">僅在使用者提供的提供者未提供如副歌或主歌等段落標記，而由您的 OpenAI 相容模型檢測時使用。編輯此行也會打開其提示詞</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API 端點 URL（例如 https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions）</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">提示詞範本</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">佔位符：{language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">預留位置：{task}、{language}、{title}、{artist}、{count}、{lines}。未知項目將維持原樣</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">已儲存提示詞</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">已儲存提示，但 AI 端點尚無法使用。請先在「AI 設定」中進行配置</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">已重設提示詞</string>

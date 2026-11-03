@@ -445,6 +445,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">کپی کردن نظرات</string>
   <string name="morphe_copy_comments_summary">برای کپی کردن نظر، آن را لمس کنید و نگه دارید</string>
   <string name="morphe_copy_comments_success">نظر در کلیپ‌بورد کپی شد</string>
+  <string name="morphe_copy_select_text_title">انتخاب متن توضیحات و پست‌ها</string>
+  <string name="morphe_copy_select_text_summary">برای انتخاب و کپی کردن هر بخشی از توضیحات ویدیو یا یک پست، آن را لمس کرده و نگه دارید</string>
+  <string name="morphe_copy_select_text_dialog_title">انتخاب متن</string>
+  <string name="morphe_copy_select_text_copy_all">کپی همه</string>
+  <string name="morphe_copy_select_text_success">متن در کلیپ‌بورد کپی شد</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">ضربه بزنید و نگه دارید تا منوی ویدیو باز شود</string>
   <string name="morphe_feed_long_press_menu_summary">ضربه زدن و نگه داشتن در هر جایی از یک ویدیوی فید، منوی آن را باز می‌کند</string>
@@ -933,6 +938,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">پنهان‌کردن دکمهٔ اعلان‌ها</string>
   <string name="morphe_show_search_button_title">نمایش دکمهٔ جست‌وجو</string>
   <string name="morphe_show_search_button_index_title">جایگاه دکمهٔ جست‌وجو</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">بعداً تماشا می‌کنم</string>
   <string name="morphe_show_settings_button_title">نمایش دکمهٔ تنظیمات</string>
   <string name="morphe_show_settings_button_index_title">جایگاه دکمهٔ تنظیمات</string>
   <string name="morphe_show_settings_button_type_title">عملیات دکمهٔ تنظیمات</string>
@@ -1722,6 +1730,11 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">زبان ترجمه</string>
   <string name="morphe_live_chat_translate_exclude_title">زبان‌های مستثنی‌شده</string>
   <string name="morphe_live_chat_translate_exclude_summary">کدهای زبان با جداکنندهٔ ویرگول، مانند id,en. پیام‌هایی با این زبان‌ها ترجمه نمی‌شوند</string>
+  <string name="morphe_live_chat_translate_provider_title">ارائه‌دهندهٔ ترجمه</string>
+  <string name="morphe_live_chat_translate_provider_google">ترجمه گوگل</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">کلید API DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">کلید API DeepL شما. در صورتی که DeepL با خطا مواجه شود، مثلاً زمانی که سقف ماهانه کلید تمام شود، از ترجمه گوگل استفاده می‌شود</string>
   <string name="morphe_live_chat_translate_copy_button_title">نمایش دکمهٔ کپی پیام</string>
   <string name="morphe_live_chat_translate_copy_button_summary">یک دکمهٔ کپی کوچک به هر پیام چت اضافه می‌کند</string>
   <string name="morphe_live_chat_translate_copied">پیام در کلیپ‌بورد کپی شد</string>

@@ -445,6 +445,11 @@ Os reportes son públicos e revísanse antes de que unha canle sexa engadida a u
   <string name="morphe_copy_comments_title">Copiar comentarios</string>
   <string name="morphe_copy_comments_summary">Mantén premido un comentario para copialo</string>
   <string name="morphe_copy_comments_success">Comentario copiado ao portapapeis</string>
+  <string name="morphe_copy_select_text_title">Seleccionar texto de descricións e publicacións</string>
+  <string name="morphe_copy_select_text_summary">Mantenga premida unha descrición de vídeo ou unha publicación para seleccionar e copiar calquera parte da mesma</string>
+  <string name="morphe_copy_select_text_dialog_title">Seleccionar texto</string>
+  <string name="morphe_copy_select_text_copy_all">Copiar todo</string>
+  <string name="morphe_copy_select_text_success">Texto copiado ao portapapeis</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Mantén premido para abrir o menú do vídeo</string>
   <string name="morphe_feed_long_press_menu_summary">Ao manter premido en calquera parte dun vídeo do feed ábrese o seu menú</string>
@@ -933,6 +938,11 @@ Deben proporcionarse as 'cookies de subtitulacións'"</string>
   <string name="morphe_hide_notifications_button_title">Ocultar botón de notificacións</string>
   <string name="morphe_show_search_button_title">Mostrar botón de busca</string>
   <string name="morphe_show_search_button_index_title">Posición do botón de busca</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Amosar botón de Ver máis tarde</string>
+  <string name="morphe_show_watch_later_button_index_title">Posición do botón de Ver máis tarde</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Ver máis tarde</string>
   <string name="morphe_show_settings_button_title">Mostrar botón de Axustes</string>
   <string name="morphe_show_settings_button_index_title">Posición do botón de Axustes</string>
   <string name="morphe_show_settings_button_type_title">Acción do botón de Axustes</string>
@@ -1715,6 +1725,12 @@ A gravación automática é opcional. Detense en modo incógnito ou cando cambie
   <string name="morphe_niconico_comments_max_length_title">Lonxitude máxima do comentario</string>
   <string name="morphe_niconico_comments_max_length_summary">Oculta os comentarios con máis caracteres que este. Cada emoji conta como un carácter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sen límite</string>
+  <string name="morphe_niconico_comments_live_streams_title">Amosar en transmisións en directo</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Transmisións en directo e as súas repeticións</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Amosar en estreas</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Estreas mentres se reproducen</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Amosar en estreas finalizadas</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Reprodución do chat de estreas que xa remataron</string>
   <string name="morphe_live_chat_translate_screen_title">Tradución do chat en vivo</string>
   <string name="morphe_live_chat_translate_screen_summary">Traducir as mensaxes do chat en vivo e as mensaxes de reprodución do chat en vivo</string>
   <string name="morphe_live_chat_translate_title">Traducir chat en vivo</string>
@@ -1722,6 +1738,11 @@ A gravación automática é opcional. Detense en modo incógnito ou cando cambie
   <string name="morphe_live_chat_translate_language_title">Lingua de tradución</string>
   <string name="morphe_live_chat_translate_exclude_title">Linguas excluídas</string>
   <string name="morphe_live_chat_translate_exclude_summary">Códigos de lingua separados por comas como id,en. As mensaxes nestas linguas non se traducen</string>
+  <string name="morphe_live_chat_translate_provider_title">Proveedor de tradución</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">Clave API de DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">A súa clave API de DeepL. Google Translate úsase se DeepL falla, como cando se alcanza o límite mensual da clave</string>
   <string name="morphe_live_chat_translate_copy_button_title">Mostrar botón de copiar mensaxe</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Engade un botón pequeno de copiar a cada mensaxe do chat</string>
   <string name="morphe_live_chat_translate_copied">Mensaxe copiada ao portapapeis</string>

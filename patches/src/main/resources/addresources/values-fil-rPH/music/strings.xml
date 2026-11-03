@@ -607,7 +607,6 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Mga salitang Chinese (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliteration para sa Greek, Slavic Cyrillic (kasama ang Russian, Ukrainian, Bulgarian, Serbian, Belarusian, Macedonian), Georgian, Armenian, Hebrew, Arabic, Amharic at Syriac (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Pagbabasa %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Pumili ng hindi bababa sa isang dictionary</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Ipakita ang button na Refresh</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Pindutin para lumipat sa susunod na lyrics candidate; long-press para maghanap ng lyrics gamit ang pamagat ng kanta at artist</string>
   <string name="morphe_music_lyrics_search_dialog_title">Maghanap ng lyrics</string>
@@ -736,7 +735,7 @@ Ang mga lyrics ay galing sa mga third-party services na walang koneksyon, hindi 
   <string name="morphe_music_lyrics_use_ai_section_summary">Ginagamit lamang kapag ang provider ay walang label ng section tulad ng Chorus o Verse, na detektahin ng iyong OpenAI-compatible model pagkatapos. Ang pag-edit ng row ay bubukas din ng prompt nito</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (hal. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Template ng Prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Mga Placeholder: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Mga Placeholder: {task}, {language}, {title}, {artist}, {count}, {lines}. Ang mga hindi kilala ay mananatili kung paano ito itinaype</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Nai-save na ang prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Na-save ang prompt, ngunit hindi pa gagamit ang AI endpoint. I-configure muna ito sa ilalim ng AI Settings.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Na-reset na ang prompt</string>

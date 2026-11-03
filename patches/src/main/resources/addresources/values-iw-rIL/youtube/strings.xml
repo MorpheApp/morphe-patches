@@ -445,6 +445,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">העתקת תגובות</string>
   <string name="morphe_copy_comments_summary">הקש והחזק תגובה כדי להעתיק אותה</string>
   <string name="morphe_copy_comments_success">התגובה הועתקה ללוח</string>
+  <string name="morphe_copy_select_text_title">בחירת טקסט מתיאורים ופוסטים</string>
+  <string name="morphe_copy_select_text_summary">לחץ והחזק על תיאור סרטון או פוסט כדי לבחור ולהעתיק כל חלק ממנו</string>
+  <string name="morphe_copy_select_text_dialog_title">בחר טקסט</string>
+  <string name="morphe_copy_select_text_copy_all">העתק הכל</string>
+  <string name="morphe_copy_select_text_success">הטקסט הועתק אל הלוח</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">חיפוש ועורך להזמן מהשיר וישדור</string>
   <string name="morphe_feed_long_press_menu_summary">חיפוש ועורך בכל מקום בודק המשיר פתחם את מהשיר שלו</string>
@@ -933,6 +938,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">הסתר כפתור התראות</string>
   <string name="morphe_show_search_button_title">הצג כפתור חיפוש</string>
   <string name="morphe_show_search_button_index_title">מיקום כפתור החיפוש</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">הצג לחצן צפייה מאוחר יותר</string>
+  <string name="morphe_show_watch_later_button_index_title">מיקום כפתור צפייה מאוחר יותר</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">לצפייה בהמשך</string>
   <string name="morphe_show_settings_button_title">הצג כפתור הגדרות</string>
   <string name="morphe_show_settings_button_index_title">מיקום כפתור ההגדרות</string>
   <string name="morphe_show_settings_button_type_title">פעולה של כפתור הגדרות</string>
@@ -1716,6 +1726,12 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">אורך תגובה מקסימלי</string>
   <string name="morphe_niconico_comments_max_length_summary">מסתיר תגובות עם יותר תווים מזה. כל אימוג\'י נחשב כתו אחד</string>
   <string name="morphe_niconico_comments_max_length_no_limit">ללא הגבלה</string>
+  <string name="morphe_niconico_comments_live_streams_title">הצג בשידורים חיים</string>
+  <string name="morphe_niconico_comments_live_streams_summary">שידורים חיים וההקלטות שלהם</string>
+  <string name="morphe_niconico_comments_live_premieres_title">הצג בבכורות</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">בכורות בזמן שהן רצות</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">הצג בבכורות שהסתיימו</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">השמעה חוזרת של צ\'אט מבצירות שהסתיימו</string>
   <string name="morphe_live_chat_translate_screen_title">תרגום צ\'אט חי</string>
   <string name="morphe_live_chat_translate_screen_summary">תרגום הודעות בצ\'אט חי ובניגון חוזר של צ\'אט חי</string>
   <string name="morphe_live_chat_translate_title">תרגם צ\'אט חי</string>
@@ -1723,6 +1739,11 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">שפת תרגום</string>
   <string name="morphe_live_chat_translate_exclude_title">שפות מוחרגות</string>
   <string name="morphe_live_chat_translate_exclude_summary">קודי שפות מופרדים בפסיקים, כגון id,en. הודעות בשפות אלו לא יתורגמו</string>
+  <string name="morphe_live_chat_translate_provider_title">ספק תרגום</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">מפתח API של DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">מפתח ה-API של DeepL שלך. Google Translate משמש במקרה ש-DeepL נכשל, למשל כאשר הגעת למכסה החודשית של המפתח</string>
   <string name="morphe_live_chat_translate_copy_button_title">הצג לחצן העתקת הודעה</string>
   <string name="morphe_live_chat_translate_copy_button_summary">מוסיף לחצן העתקה קטן לכל הודעת צ\'אט</string>
   <string name="morphe_live_chat_translate_copied">ההודעה הועתקה ללוח</string>

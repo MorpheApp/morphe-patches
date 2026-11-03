@@ -445,6 +445,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">टिप्पणियाँ कॉपी करें</string>
   <string name="morphe_copy_comments_summary">किसी टिप्पणी को कॉपी करने के लिए, उसे देर तक दबाकर रखें</string>
   <string name="morphe_copy_comments_success">टिप्पणी क्लिपबोर्ड पर कॉपी की गई</string>
+  <string name="morphe_copy_select_text_title">विवरण और पोस्ट का टेक्स्ट चुनें</string>
+  <string name="morphe_copy_select_text_summary">किसी वीडियो विवरण या पोस्ट के किसी भी हिस्से को चुनने और कॉपी करने के लिए उसे दबाकर रखें</string>
+  <string name="morphe_copy_select_text_dialog_title">टेक्स्ट चुनें</string>
+  <string name="morphe_copy_select_text_copy_all">सभी कॉपी करें</string>
+  <string name="morphe_copy_select_text_success">टेक्स्ट क्लिपबोर्ड में कॉपी किया गया है</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">वीडियो मेनू खोलने के लिए टैप करें और दबाए रखें</string>
   <string name="morphe_feed_long_press_menu_summary">फीड वीडियो पर कहीं भी टैप करके और दबाकर उसका मेनू खोला जा सकता है</string>
@@ -933,6 +938,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_hide_notifications_button_title">खोज बटन छुपाएं</string>
   <string name="morphe_show_search_button_title">सेटिंग बटन दिखाएं</string>
   <string name="morphe_show_search_button_index_title">सेटिंग बटन स्थिति</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">जब सक्षम हो तो मोर्फ सेटिंग खोलता है, या अक्षम होने पर YouTube सेटिंग खोलता है</string>
   <string name="morphe_show_settings_button_index_title">बटन के बीच क्षैतिज रिक्ति को कम करता है</string>
   <string name="morphe_show_settings_button_type_title">सेटिंग बटन कार्रवाई</string>
@@ -1723,6 +1730,11 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_live_chat_translate_language_title">अनुवाद भाषा</string>
   <string name="morphe_live_chat_translate_exclude_title">अपवादित भाषाएँ</string>
   <string name="morphe_live_chat_translate_exclude_summary">कोमा से अलग किए गए भाषा कोड जैसे id,en। इन भाषाओं के संदेशों का अनुवाद नहीं किया जाता है</string>
+  <string name="morphe_live_chat_translate_provider_title">अनुवाद प्रदाता</string>
+  <string name="morphe_live_chat_translate_provider_google">गूगल ट्रांसलेट</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API कुंजी</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">आपकी DeepL API कुंजी। यदि DeepL विफल हो जाता है, जैसे कि जब कुंजी की मासिक सीमा समाप्त हो जाती है, तो Google Translate का उपयोग किया जाता है</string>
   <string name="morphe_live_chat_translate_copy_button_title">संदेश कॉपी करें बटन दर्शाएँ</string>
   <string name="morphe_live_chat_translate_copy_button_summary">हर चैट संदेश में एक छोटा कॉपी बटन जोड़ता है</string>
   <string name="morphe_live_chat_translate_copied">संदेश क्लिपबोर्ड पर कॉपी किया गया</string>

@@ -612,7 +612,6 @@ Kukiyên pêwîst: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Peyvên Çînî (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliterasyona Yewnanî, Slavî Kirîlî (bi Rusî, Ukrayînî, Bulgarî, Serbî, Belarusî, Makedonî), Gurcî, Ermenî, Îbranî, Erebî, Amharî û Suryanî (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Xwendina %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Kêmî ferhengekê hilbijêre</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Bişkoja Nûkirinê nîşan bide</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Ji bo guhartina berhevê gotinên din bitapîne; ji bo lêgerîna gotinan bi navê stran û hunermend dirêj bitapîne</string>
   <string name="morphe_music_lyrics_search_dialog_title">Gotinên stranê bigere</string>
@@ -741,7 +740,7 @@ Gotinên stranê ji xizmetên third-party tên ku bi Morphe ve girêdayî nîn i
   <string name="morphe_music_lyrics_use_ai_section_summary">Tenê tê bikaranîn gava dabinker tuyî nivîsên beşan wekî Chorus yan Verse nafiriste, ku modela we ya li gorî OpenAI piştrast dike. Edîtkirina rêyê her wiha prompta wê vekire</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-ê endpoint-ê API (mînak: https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Şablonê Promptê</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Şûneke vekirî: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholder: {task}, {language}, {title}, {artist}, {count}, {lines}. Yênên nezan hatine hiştin wekî ku hatine nivîsandin</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt hat tomar kirin</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt hat save kirin, lê endpointa AI hîşta neyê bikaranîn. Berê wê di Settingsên AI de configure bike</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt hat vegerandin</string>

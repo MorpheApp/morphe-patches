@@ -445,6 +445,11 @@ Izibiko zivulekile futhi zibuyekezwa ngaphambi kokuba ishネル yengeke ohlwini.
   <string name="morphe_copy_comments_title">Kopisha imibono</string>
   <string name="morphe_copy_comments_summary">Thinta ubambe umbono ukuze uwukopishe</string>
   <string name="morphe_copy_comments_success">Umbono ukopishwe ku-clipboard</string>
+  <string name="morphe_copy_select_text_title">Khetha Umbhalo wezincazelo nezithombe</string>
+  <string name="morphe_copy_select_text_summary">Thinta ubambe incazelo yevidiyo noma isithombe ukuze ukhethe ukukopisha noma iyiphi ingxenye yayo</string>
+  <string name="morphe_copy_select_text_dialog_title">Khetha umbhalo</string>
+  <string name="morphe_copy_select_text_copy_all">Kopisha konke</string>
+  <string name="morphe_copy_select_text_success">Umbhalo ukopishwe ku-clipboard</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Thinta ubambe ukuze uvule imenyu yevidiyo</string>
   <string name="morphe_feed_long_press_menu_summary">Ukuchofoza nokubamba noma kuphi ku-feed yevidiyo kuvula imenyu yayo</string>
@@ -933,6 +938,11 @@ Kumele kunikezwe ama-'Caption cookies'"</string>
   <string name="morphe_hide_notifications_button_title">Fihla inkinobho yeZaziso</string>
   <string name="morphe_show_search_button_title">Khombisa inkinobho yeKhumbuza</string>
   <string name="morphe_show_search_button_index_title">Indawo yenkinobho yeKhumbuza</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Khombisa inkinobho ethi Buka kamuva</string>
+  <string name="morphe_show_watch_later_button_index_title">Isikhundla senkinobho ethi Buka kamuva</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Buka kamuva</string>
   <string name="morphe_show_settings_button_title">Khombisa inkinobho yeSettings</string>
   <string name="morphe_show_settings_button_index_title">Indawo yenkinobho yeSettings</string>
   <string name="morphe_show_settings_button_type_title">Isenzo senkinobha yezilungiselelo</string>
@@ -1716,6 +1726,12 @@ Ukuqopha ngokuzenzakalelayo kuyinketho. Kuyama ku-incognito noma lapho i-account
   <string name="morphe_niconico_comments_max_length_title">Ubude obukhulu bembhalo</string>
   <string name="morphe_niconico_comments_max_length_summary">Ifihla imibhalo enezinhlamu ezingaphezu kwalena. I-emoji ngayinye ibalwa njengohlamvu olulodwa</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Alikho unyamezelo</string>
+  <string name="morphe_niconico_comments_live_streams_title">Khombisa kuma-live streams</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Ama-live streams kanye nokudlala futhi kwazo</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Khombisa kuma-premieres</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Ama-premieres ngenkathi edlala</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Khombisa kuma-premieres aphelile</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Ukudlala futhi kwe-chat yama-premieres asephile</string>
   <string name="morphe_live_chat_translate_screen_title">Ukuhumusha i-chat yokuqhubeka</string>
   <string name="morphe_live_chat_translate_screen_summary">Humusha imilayezo ye-chat yokuqhubeka kanye nemilayezo efishwe kabusha ye-chat yokuqhubeka</string>
   <string name="morphe_live_chat_translate_title">Humusha i-chat yokuqhubeka</string>
@@ -1723,6 +1739,11 @@ Ukuqopha ngokuzenzakalelayo kuyinketho. Kuyama ku-incognito noma lapho i-account
   <string name="morphe_live_chat_translate_language_title">Ulimi lokuhumusha</string>
   <string name="morphe_live_chat_translate_exclude_title">Izilimi ezingafakiwe</string>
   <string name="morphe_live_chat_translate_exclude_summary">Amakhodi olimi ahlukaniswe amakhoma afana no-id,en. Imilayezo kulolu limi ayihumushiwe</string>
+  <string name="morphe_live_chat_translate_provider_title">Umhlinzeki wokuhumusha</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">Ikeyi ye-DeepL API</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Ikeyi yakho ye-DeepL API. I-Google Translate isetshenziswaUma i-DeepL ihluleka, njengalapho kufikelelwe khona emingceleni yenyanga yekeyi</string>
   <string name="morphe_live_chat_translate_copy_button_title">Khombisa inkinobho yokukopisha umlayezo</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Yenza inkinobho encane yokukopisha kumlayezo wonke we-chat</string>
   <string name="morphe_live_chat_translate_copied">Umlayezo ukopishwe ekubhalweni</string>

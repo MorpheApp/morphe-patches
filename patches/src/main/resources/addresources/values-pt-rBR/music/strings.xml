@@ -602,7 +602,6 @@ Cookies necessários: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Palavras chinesas (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliteração grega, eslava cirílica (incl. russo, ucraniano, búlgaro, sérvio, bielorrusso, macedônio), georgiano, armênio, hebraico, árabe, amárico e siríaco (CLDR, ~0,5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Lendo %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Escolha pelo menos um dicionário</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Mostrar botão para atualizar</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Toque para alternar para a próxima opção de letra; segure para pesquisar letras pelo título da música e artista</string>
   <string name="morphe_music_lyrics_search_dialog_title">Pesquisar letras</string>
@@ -731,7 +730,7 @@ As letras vêm de serviços de terceiros que não estão afiliados, patrocinados
   <string name="morphe_music_lyrics_use_ai_section_summary">Usado apenas quando o provedor não envia rótulos de seção como Refrão ou Verso, que seu modelo compatível com OpenAI detecta. Editar a linha também abre seu prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL do ponto de extremidade da API (ex. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Template do Prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Espaços reservados: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Espaços reservados: {task}, {language}, {title}, {artist}, {count}, {lines}. Os desconhecidos são mantidos como digitados</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt salvo</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt salvo, mas o endpoint de IA ainda não está utilizável. Configure-o em Configurações de IA primeiro</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt redefinido</string>

@@ -445,6 +445,11 @@ As denúncias são públicas e são analisadas antes de um canal ser adicionado 
   <string name="morphe_copy_comments_title">Copiar comentários</string>
   <string name="morphe_copy_comments_summary">Toque e segure um comentário para copiá-lo</string>
   <string name="morphe_copy_comments_success">Comentário copiado para a área de transferência</string>
+  <string name="morphe_copy_select_text_title">Selecionar texto de descrições e posts</string>
+  <string name="morphe_copy_select_text_summary">Toque e segure a descrição de um vídeo ou um post para selecionar e copiar qualquer parte dele</string>
+  <string name="morphe_copy_select_text_dialog_title">Selecionar texto</string>
+  <string name="morphe_copy_select_text_copy_all">Copiar tudo</string>
+  <string name="morphe_copy_select_text_success">Texto copiado para a área de transferência</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Toque e segure para abrir o menu do vídeo</string>
   <string name="morphe_feed_long_press_menu_summary">O toque e a segurança em qualquer parte de um vídeo do feed abrem seu menu</string>
@@ -933,6 +938,9 @@ Para corrigir isso, ative 'Falsificar streams de vídeo' e altere o 'Cliente pad
   <string name="morphe_hide_notifications_button_title">Ocultar botão \'Notificações\'</string>
   <string name="morphe_show_search_button_title">Mostrar botão \'Pesquisar\'</string>
   <string name="morphe_show_search_button_index_title">Posição do botão de pesquisa</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Assistir depois</string>
   <string name="morphe_show_settings_button_title">Mostrar botão \'Configurações\'</string>
   <string name="morphe_show_settings_button_index_title">Posição do botão de configurações</string>
   <string name="morphe_show_settings_button_type_title">Ação do botão de configurações</string>
@@ -1723,6 +1731,11 @@ A gravação automática é opcional. Ela pára no modo anônimo ou quando a con
   <string name="morphe_live_chat_translate_language_title">Idioma de tradução</string>
   <string name="morphe_live_chat_translate_exclude_title">Idiomas excluídos</string>
   <string name="morphe_live_chat_translate_exclude_summary">Códigos de idioma separados por vírgula, como id,en. Mensagens nestes idiomas não serão traduzidas</string>
+  <string name="morphe_live_chat_translate_provider_title">Provedor de tradução</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Tradutor</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">Chave de API do DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Sua chave de API do DeepL. O Google Tradutor é usado se o DeepL falhar, como quando o limite mensal da chave é atingido</string>
   <string name="morphe_live_chat_translate_copy_button_title">Mostrar botão de copiar mensagem</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Adiciona um pequeno botão de copiar a cada mensagem do chat</string>
   <string name="morphe_live_chat_translate_copied">Mensagem copiada para a área de transferência</string>

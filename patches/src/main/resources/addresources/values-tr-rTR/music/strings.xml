@@ -159,7 +159,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_track_delete_failed">İndirilen silinemedi</string>
   <string name="morphe_music_downloads_play_failed">İndirilen oynatılamadı</string>
   <string name="morphe_music_downloads_playlists">Oynatma listeleri</string>
-  <string name="morphe_music_downloads_playlists_section">Oynatma listeleri oluşturuldu (%s)</string>
+  <string name="morphe_music_downloads_playlists_section">Oluşturulan oynatma listeleri (%s)</string>
   <string name="morphe_music_downloads_playlists_empty">Şu anda yerel oynatma listesi yok</string>
   <string name="morphe_music_downloads_playlists_hide">Oynatma listelerini gizle ▲</string>
   <string name="morphe_music_downloads_playlist_new">+ Yeni oynatma listesi</string>
@@ -514,7 +514,7 @@ Her liste sizin kelime-okuma tablonuz olan ve aşağıdaki gibi satırları içe
   <string name="morphe_music_lyrics_rime_dict_add_title">Rime Kelime Listesi ekle</string>
   <string name="morphe_music_lyrics_rime_dict_add_hint">字 ham ve 典 din2 gibi satırları içeren bir .dict.yaml dosyası veya bunu içeren bir zip. Liste, onu işaretlediğinizde ve Kaydet\'e tıkladığınızda çekilir ve lisansın kontrolünü sağlamak size kalmıştır</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Dil kodu</string>
-  <string name="morphe_music_lyrics_rime_dict_field_code_hint">iki veya üç harfli olmalı, örn. hak veya wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">İki veya üç harf, örn. hak veya wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Ad</string>
   <string name="morphe_music_lyrics_rime_dict_field_label_hint">Hakka (Meixian) örneğindeki gibi okunmanın altında gösterilir</string>
   <string name="morphe_music_lyrics_rime_dict_field_url">Kelime listesi adresi</string>
@@ -537,7 +537,7 @@ Her liste sizin kelime-okuma tablonuz olan ve aşağıdaki gibi satırları içe
   <string name="morphe_music_lyrics_rime_dict_building">Kelime listesi okunuyor: %1$d%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">Kelime listesi indirilemedi - yeniden denemek için tekrar Kaydet\'e dokunun</string>
   <string name="morphe_music_lyrics_clear_cache_title">Saklanan şarkı sözlerini temizle</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Bu cihazda saklanan şarkı sözlerinin %1$s MB\'ını sil</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Bu cihazda saklanan %1$s MB şarkı sözlerini sil</string>
   <string name="morphe_music_lyrics_clear_cache_done">%1$s MB temizlendi</string>
   <string name="morphe_music_token_dialog_get_token">Token alın</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
@@ -612,7 +612,6 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Çince kelimeler (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Yunan, Slav Kiril alfabesi (Rusça, Ukraynaca, Bulgarca, Sırpça, Beyaz Rusça, Makedonca dahil), Gürcü, Ermeni, İbranice, Arapça, Amharca ve Süryanice transkripsiyon (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Okuma %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">En az bir sözlük seçin</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Yenile düğmesini göster</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Sonraki şarkı sözleri adayına geçmek için dokunun, şarkı sözlerini şarkı başlığı ve sanatçı ile aramak için basılı tutun</string>
   <string name="morphe_music_lyrics_search_dialog_title">Şarkı sözü ara</string>
@@ -741,7 +740,7 @@ Her iki sınır için de geçerlidir. 1,75 değerinde, dört tam genişlikteki k
   <string name="morphe_music_lyrics_use_ai_section_summary">Yalnızca sağlayıcı Nakarat veya Verse gibi bölüm etiketleri göndermediğinde kullanılır; bu durumda bunları OpenAI-uyumlu modeliniz tespit eder. Satırı düzenlemek onun istemini de açar</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API uç noktası URL\'si (örn. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">İstem Şablonu</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Yer tutucular: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Yer tutucular: {task}, {language}, {title}, {artist}, {count}, {lines}. Bilinmeyenler yazıldığı gibi bırakılır</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">İstem kaydedildi</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">İstem kaydedildi, ancak AI uç noktası henüz kullanılabilir değil. Önce AI ayarlarından yapılandırın.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">İstem sıfırlandı</string>

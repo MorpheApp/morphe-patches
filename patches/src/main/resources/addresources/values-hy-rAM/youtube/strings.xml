@@ -445,6 +445,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">Պատճենել մեկնաբանությունները</string>
   <string name="morphe_copy_comments_summary">Սեղմեք և պահեք մեկնաբանությունը՝ այն պատճենելու համար</string>
   <string name="morphe_copy_comments_success">Մեկնաբանությունը պատճենվեց հիշողության մեջ</string>
+  <string name="morphe_copy_select_text_title">Ընտրել նկարագրությունների և հրապարակումների տեքստը</string>
+  <string name="morphe_copy_select_text_summary">Սեղմեք և պահեք տեսանյութի նկարագրությունը կամ հրապարակումը՝ դրա ցանկացած մասը ընտրելու և պատճենելու համար</string>
+  <string name="morphe_copy_select_text_dialog_title">Ընտրել տեքստը</string>
+  <string name="morphe_copy_select_text_copy_all">Պատճենել ամբողջը</string>
+  <string name="morphe_copy_select_text_success">Տեքստը պատճենվեց հիշողության մեջ</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Սեղմեք և պահեք՝ տեսանյութի մենյուն բացելու համար</string>
   <string name="morphe_feed_long_press_menu_summary">Լիգայի տեսանյութի ցանկացած հատվածի վրա սեղմելը և պահելը բացում է դրա մենյուն</string>
@@ -933,6 +938,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">Թաքցնել «Ծանուցումներ» կոճակը</string>
   <string name="morphe_show_search_button_title">Ցուցադրել «Որոնում» կոճակը</string>
   <string name="morphe_show_search_button_index_title">Որոնման կոճակի դիրքը</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Ցուցադրել \"Դիտել ավելի ուշ\" կոճակը</string>
+  <string name="morphe_show_watch_later_button_index_title">\"Դիտել ավելի ուշ\" կոճակի դիրքը</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Դիտել ավելի ուշ</string>
   <string name="morphe_show_settings_button_title">Ցուցադրել կարգավորումների կոճակը</string>
   <string name="morphe_show_settings_button_index_title">Կարգավորումների կոճակի դիրքը</string>
   <string name="morphe_show_settings_button_type_title">Կարգավորումների կոճակի գործողությունը</string>
@@ -1716,6 +1726,12 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <string name="morphe_niconico_comments_max_length_title">Մեկնաբանության առավելագույն երկարությունը</string>
   <string name="morphe_niconico_comments_max_length_summary">Թաքցնում է այն մեկնաբանությունները, որոնք ունեն այսքանից ավելի նիշեր: Յուրաքանչյուր էմոջին հաշվարկվում է որպես մեկ նիշ</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Առանց սահմանափակման</string>
+  <string name="morphe_niconico_comments_live_streams_title">Ցուցադրել ուղիղ եթերների ժամանակ</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Ուղիղ եթերներ և դրանց կրկնությունները</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Ցուցադրել պրեմիերաների ժամանակ</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Պրեմիերաները, քանի դեռ դրանք ցուցադրվում են</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Ցուցադրել ավարտված պրեմիերաների ժամանակ</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Ավարտված պրեմիերաների չաթի կրկնությունները</string>
   <string name="morphe_live_chat_translate_screen_title">Ուղիղ միացման չաթի թարգմանություն</string>
   <string name="morphe_live_chat_translate_screen_summary">Թարգմանել ուղիղ միացման չաթի և չաթի կրկնաթափման հաղորդագրությունները</string>
   <string name="morphe_live_chat_translate_title">Թարգմանել ուղիղ միացման չաթը</string>
@@ -1723,6 +1739,11 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <string name="morphe_live_chat_translate_language_title">Թարգմանության լեզուն</string>
   <string name="morphe_live_chat_translate_exclude_title">Բացառված լեզուներ</string>
   <string name="morphe_live_chat_translate_exclude_summary">Ստորակետներով բաժանված լեզվական կոդեր, օրինակ՝ id,en: Այս լեզուներով հաղորդագրությունները չեն թարգմանվում</string>
+  <string name="morphe_live_chat_translate_provider_title">Թարգմանչի ծառայություն</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API բանալի</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Ձեր DeepL API բանալին: Google Translate-ն օգտագործվում է, եթե DeepL-ը ձախողվում է, օրինակ՝ երբ բանալու ամսական սահմանաչափն է սպառվել</string>
   <string name="morphe_live_chat_translate_copy_button_title">Ցուցադրել հաղորդագրությունը պատճենելու կոպիլը</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Ավելացնում է պատճենման փոքր կոպիլ յուրաքանչյուր չաթի հաղորդագրության համար</string>
   <string name="morphe_live_chat_translate_copied">Հաղորդագրությունը պատճենվեց հիշողության մեջ</string>

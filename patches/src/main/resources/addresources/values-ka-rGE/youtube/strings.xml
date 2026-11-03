@@ -445,6 +445,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">კომენტარების კოპირება</string>
   <string name="morphe_copy_comments_summary">დააჭირეთ და გეჭირავთ კომენტარს მის საკოპირებლად</string>
   <string name="morphe_copy_comments_success">კომენტარი კოპირებულია ბუფერში</string>
+  <string name="morphe_copy_select_text_title">აღწერილობებისა და პოსტების ტექსტის მონიშვნა</string>
+  <string name="morphe_copy_select_text_summary">დააჭირეთ და გეჭირავთ ვიდეოს აღწერილობას ან პოსტს, რათა მონიშნოთ და დააკოპიროთ მისი ნებისმიერი ნაწილი</string>
+  <string name="morphe_copy_select_text_dialog_title">ტექსტის მონიშვნა</string>
+  <string name="morphe_copy_select_text_copy_all">ყველას კოპირება</string>
+  <string name="morphe_copy_select_text_success">ტექსტი დაკოპირდა clipboard-ში</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">დააჭირეთ და გეჭიროთ ვიდეოს მენიუს გასახსნელად</string>
   <string name="morphe_feed_long_press_menu_summary">ფიდის ვიდეოს ნებისმიერ ადგილას დაჭერით და გეჭიროთ მისი მენიუს გახსნა</string>
@@ -933,6 +938,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">დამალეთ შეტყობინებების ღილაკი</string>
   <string name="morphe_show_search_button_title">აჩვენეთ ძიების ღილაკი</string>
   <string name="morphe_show_search_button_index_title">ძიების ღილაკის პოზიცია</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">აჩვენე ღილაკი „მოგვიანებით ნახვა“</string>
+  <string name="morphe_show_watch_later_button_index_title">ღილაკის „მოგვიანებით ნახვა“ პოზიცია</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">მოგვიანებით ნახვა</string>
   <string name="morphe_show_settings_button_title">აჩვენეთ პარამეტრების ღილაკი</string>
   <string name="morphe_show_settings_button_index_title">პარამეტრების ღილაკის პოზიცია</string>
   <string name="morphe_show_settings_button_type_title">პარამეტრების ღილაკის მოქმედება</string>
@@ -1716,6 +1726,12 @@ AV1-ით ვიდეოს უკუკვევა შესაძლოა 
   <string name="morphe_niconico_comments_max_length_title">კომენტარის მაქსიმალური სიგრძე</string>
   <string name="morphe_niconico_comments_max_length_summary">მალავს კომენტარებს, რომელთაც ამაზე მეტი სიმბოლო აქვთ. თითოეული ემოჯი ითვლება როგორც ერთი სიმბოლო</string>
   <string name="morphe_niconico_comments_max_length_no_limit">შეზღუდვის გარეშე</string>
+  <string name="morphe_niconico_comments_live_streams_title">აჩვენე პირდაპირ ეთერებში</string>
+  <string name="morphe_niconico_comments_live_streams_summary">პირდაპირ ეთერები და მათი ჩანაწერები</string>
+  <string name="morphe_niconico_comments_live_premieres_title">აჩვენე პრემიერებზე</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">პრემიერები მათიle播放ის დროს</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">აჩვენე დასრულებულ პრემიერებზე</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">დასრულებული პრემიერების ჩატის ჩანაწერი</string>
   <string name="morphe_live_chat_translate_screen_title">ცოცხალი ჩატის თარგმნა</string>
   <string name="morphe_live_chat_translate_screen_summary">თარგმნეთ ცოცხალი ჩატისა და ჩატის ჩანაწერების შეტყობინებები</string>
   <string name="morphe_live_chat_translate_title">ცოცხალი ჩატის თარგმნა</string>
@@ -1723,6 +1739,11 @@ AV1-ით ვიდეოს უკუკვევა შესაძლოა 
   <string name="morphe_live_chat_translate_language_title">თარგმნის ენა</string>
   <string name="morphe_live_chat_translate_exclude_title">გამორიცხული ენები</string>
   <string name="morphe_live_chat_translate_exclude_summary">მძიმით გამოყოფილი ენის კოდები, მაგალითად: id,en. ამ ენებზე დაწერილი შეტყობინებები არ თარგმნება</string>
+  <string name="morphe_live_chat_translate_provider_title">თარგმანის პროვაიდერი</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API გასაღები</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">თქვენი DeepL API გასაღები. Google Translate გამოიყენება იმ შემთხვევაში, თუ DeepL ვერ იმუშავებს, მაგალითად, როდესაც გასაღების ყოველთვიური ლიმიტი ამოიწურება</string>
   <string name="morphe_live_chat_translate_copy_button_title">შეტყობინების კოპირების ღილაკის ჩვენება</string>
   <string name="morphe_live_chat_translate_copy_button_summary">ამატებს კოპირების პატარა ღილაკს ჩატის თითოეულ შეტყობინებაში</string>
   <string name="morphe_live_chat_translate_copied">შეტყობინება დაკოპირდა</string>

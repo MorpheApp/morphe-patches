@@ -606,7 +606,6 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kinesiske ord (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grsk, slavisk kyrillisk (inkl. russisk, ukrainsk, bulgarsk, serbisk, hviderussisk, makedonsk), georgisk, armensk, hebraisk, arabisk, amharisk og syrisk translitering (CLDR, ~0,5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Læsning %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Vælg mindst én ordbog</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Vis opdateringsknap</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Tryk for at skifte til næste tekst kandidat; tryk længe for at søge efter tekster baseret på sangtitel og kunstner</string>
   <string name="morphe_music_lyrics_search_dialog_title">Søg efter sangtekster</string>
@@ -735,7 +734,7 @@ Linjer stammer fra tredjepartstjenester, som ikke er tilknyttet, sponsoreret ell
   <string name="morphe_music_lyrics_use_ai_section_summary">Bruges kun når udbyderen leverer ingen sektionsetiketter som Omkvæd eller Vers, som din OpenAI-kompatible model derefter detektører. Redigering af rækken åbner også dens prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-endepunkt URL (f.eks. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt-skabelon</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Pladsholdere: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Pladsholdere: {task}, {language}, {title}, {artist}, {count}, {lines}. Ukendte bevares som indtastet</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt gemt</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt gemt, men AI-endpointet er endnu ikke brugbart. Konfigurer det under AI-indstillinger først</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt nulstillet</string>

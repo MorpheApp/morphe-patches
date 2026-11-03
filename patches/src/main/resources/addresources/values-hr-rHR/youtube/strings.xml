@@ -435,6 +435,11 @@ Prijave su javne i pregledavaju se prije nego što se kanal doda na popis. Uklan
   <string name="morphe_copy_comments_title">Kopiraj komentare</string>
   <string name="morphe_copy_comments_summary">Dodirnite i držite komentar da biste ga kopirali</string>
   <string name="morphe_copy_comments_success">Komentar kopiran u međuspremnik</string>
+  <string name="morphe_copy_select_text_title">Odaberite tekst opisa i objava</string>
+  <string name="morphe_copy_select_text_summary">Dodirnite i zadržite opis videozapisa ili objavu kako biste odabrali i kopirali bilo koji njezin dio</string>
+  <string name="morphe_copy_select_text_dialog_title">Odaberite tekst</string>
+  <string name="morphe_copy_select_text_copy_all">Kopiraj sve</string>
+  <string name="morphe_copy_select_text_success">Tekst je kopiran u međuspremnik</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Dodirnite i pritisnite dugo za otvaranje izbornika videa</string>
   <string name="morphe_feed_long_press_menu_summary">Dodirivanjem i pritiskom bilo gdje na videu u pretoku otvara se njegov izbornik</string>
@@ -923,6 +928,11 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
   <string name="morphe_hide_notifications_button_title">Sakrij gumb Obavijesti</string>
   <string name="morphe_show_search_button_title">Prikaži tipku za pretraživanje</string>
   <string name="morphe_show_search_button_index_title">Pozicija gumba za pretraživanje</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Prikaži tipku Gledaj kasnije</string>
+  <string name="morphe_show_watch_later_button_index_title">Pozicija gumba Gledaj kasnije</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Gledaj kasnije</string>
   <string name="morphe_show_settings_button_title">Prikaži gumb Postavke</string>
   <string name="morphe_show_settings_button_index_title">Pozicija gumba Postavke</string>
   <string name="morphe_show_settings_button_type_title">Radnja tipke Postavke</string>
@@ -1696,6 +1706,12 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">Maksimalna duljina komentara</string>
   <string name="morphe_niconico_comments_max_length_summary">Skriva komentare s više znakova od navedenog. Svaki emoji računa se kao jedan znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Bez ograničenja</string>
+  <string name="morphe_niconico_comments_live_streams_title">Prikaži na prijenosima uživo</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Prijenosi uživo i njihove ponovnice</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Prikaži na premierama</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premiere dok se reproduciraju</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Prikaži na završenim premierama</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Ponovnica chata premijera koje su završile</string>
   <string name="morphe_live_chat_translate_screen_title">Prijevod chata uživo</string>
   <string name="morphe_live_chat_translate_screen_summary">Prevedi poruke chata uživo i ponovnice chata uživo</string>
   <string name="morphe_live_chat_translate_title">Prevedi chat uživo</string>
@@ -1703,6 +1719,11 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">Jezik prijevoda</string>
   <string name="morphe_live_chat_translate_exclude_title">Izuzeti jezici</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kodovi jezika odvojeni zarezom, npr. id,en. Poruke na ovim jezicima se ne prevode</string>
+  <string name="morphe_live_chat_translate_provider_title">Davatelj prijevoda</string>
+  <string name="morphe_live_chat_translate_provider_google">Google prevoditelj</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API ključ</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Vaš DeepL API ključ. Google Translate se koristi ako DeepL ne uspije, primjerice kada se dosegne mjesečni limit ključa</string>
   <string name="morphe_live_chat_translate_copy_button_title">Prikaži tipku Kopiraj poruku</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Dodaje malu tipku za kopiranje svakoj poruci u chatu</string>
   <string name="morphe_live_chat_translate_copied">Poruka kopirana u međuspremnik</string>

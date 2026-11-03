@@ -600,7 +600,6 @@ Požadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Čínská slova (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Řecká, slovanská cyrilice (včetně ruštiny, ukrajinštiny, bulharštiny, srbštiny, běloruštiny, makedonštiny), gruzínština, arménština, hebrejština, arabština, amharština a syrská transkripce (CLDR, ~0,5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Čtení %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Vyberte alespoň jeden slovník</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Klepnutím přepnete na další navrhovaný text; […] : \"Uloženo\"</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Klepnutím přepněte na další kandidáta textu; dlouhým stiskem hledejte text podle názvu písně a interpreta</string>
   <string name="morphe_music_lyrics_search_dialog_title">Vyhledat text písně</string>
@@ -729,7 +728,7 @@ Texty pocházejí ze služeb třetích stran, které nejsou spojeny, nesponzorov
   <string name="morphe_music_lyrics_use_ai_section_summary">Používá se pouze tehdy, když poskytovatel neposkytuje žádné popisky sekci, jako Refrén nebo Verse, které pak detekuje váš kompatibilní model OpenAI. Úprava řádku také otevře jeho prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">Adresy URL koncového bodu API (např. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Šablona promptu</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Zástupné znaky: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Zástupné symboly: {task}, {language}, {title}, {artist}, {count}, {lines}. Neznámé zůstávají tak, jak byly napsány</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt uložen</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Výzva byla uložena, ale koncový bod AI zatím není použitelný. Nejprve jej nakonfigurujte pod Nastavení AI</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt resetován</string>

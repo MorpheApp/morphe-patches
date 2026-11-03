@@ -445,6 +445,11 @@ Rapporter er offentlige og blir gjennomgått før en kanal legges til en liste. 
   <string name="morphe_copy_comments_title">Kopier kommentarer</string>
   <string name="morphe_copy_comments_summary">Trykk og hold på en kommentar for å kopiere den</string>
   <string name="morphe_copy_comments_success">Kommentaren er kopiert til utklippstavlen</string>
+  <string name="morphe_copy_select_text_title">Marker tekst i beskrivelser og innlegg</string>
+  <string name="morphe_copy_select_text_summary">Trykk og hold på en videobeskrivelse eller et innlegg for å markere og kopiere hvilken som helst del av det</string>
+  <string name="morphe_copy_select_text_dialog_title">Marker tekst</string>
+  <string name="morphe_copy_select_text_copy_all">Kopier alt</string>
+  <string name="morphe_copy_select_text_success">Tekst kopiert til utklippstavlen</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Trykk og hold for å åpne videomenyen</string>
   <string name="morphe_feed_long_press_menu_summary">Å trykke og holde nede hvor som helst på en feed-video åpner menyen for den</string>
@@ -933,6 +938,8 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_hide_notifications_button_title">Skjul Varsler-knapp</string>
   <string name="morphe_show_search_button_title">Vis Søk-knapp</string>
   <string name="morphe_show_search_button_index_title">Søk-knappposisjon</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">Vis Innstillinger-knapp</string>
   <string name="morphe_show_settings_button_index_title">Innstillinger-knappposisjon</string>
   <string name="morphe_show_settings_button_type_title">Innstillingsknapp handling</string>
@@ -1723,6 +1730,11 @@ Automatisk opptak er valgfritt. Det stoppes i inkognito-modus eller når kontoen
   <string name="morphe_live_chat_translate_language_title">Oversettelsesspråk</string>
   <string name="morphe_live_chat_translate_exclude_title">Ekskluderte språk</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kommaseparerte språkkoder som id,en. Meldinger på disse språkene blir ikke oversatt</string>
+  <string name="morphe_live_chat_translate_provider_title">Oversettelsesleverandør</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API-nøkkel</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Din DeepL API-nøkkel. Google Translate brukes hvis DeepL feiler, for eksempel når den månedlige grensen for nøkkelen er nådd</string>
   <string name="morphe_live_chat_translate_copy_button_title">Vis knapp for å kopiere melding</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Legger til en liten kopieringsknapp til hver chatmelding</string>
   <string name="morphe_live_chat_translate_copied">Melding kopiert til utklippstavlen</string>

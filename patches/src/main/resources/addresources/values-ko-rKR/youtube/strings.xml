@@ -445,6 +445,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">댓글 복사</string>
   <string name="morphe_copy_comments_summary">댓글을 길게 탭하여 복사할 수 있도록 합니다</string>
   <string name="morphe_copy_comments_success">댓글이 클립보드에 복사되었습니다</string>
+  <string name="morphe_copy_select_text_title">설명 및 게시물 텍스트 선택하기</string>
+  <string name="morphe_copy_select_text_summary">동영상 설명이나 게시물을 길게 탭하면 원하는 부분을 선택하여 복사할 수 있습니다</string>
+  <string name="morphe_copy_select_text_dialog_title">텍스트 선택하기</string>
+  <string name="morphe_copy_select_text_copy_all">모두 복사</string>
+  <string name="morphe_copy_select_text_success">텍스트를 클립보드에 복사하였습니다</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">길게 탭하여 동영상 메뉴 열기</string>
   <string name="morphe_feed_long_press_menu_summary">피드 동영상에서 아무 곳이나 길게 탭하면 해당 동영상 메뉴가 열립니다</string>
@@ -879,7 +884,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_captions_languages_title">언어 및 번역</string>
   <string name="morphe_captions_presentation_title">디자인 및 동작</string>
   <string name="morphe_captions_advanced_title">고급</string>
-  <string name="morphe_captions_advanced_summary">쿠키 및 스크립트 옵션</string>
+  <string name="morphe_captions_advanced_summary">쿠키 및 자막 옵션</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">자동 자막 표시 여부</string>
   <string name="morphe_auto_captions_style_entry_1">항상 표시</string>
@@ -935,6 +940,11 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_hide_notifications_button_title">알림 버튼 숨기기</string>
   <string name="morphe_show_search_button_title">검색 버튼 표시하기</string>
   <string name="morphe_show_search_button_index_title">검색 버튼 위치</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">\'나중에 볼 동영상\' 버튼 표시하기</string>
+  <string name="morphe_show_watch_later_button_index_title">\'나중에 볼 동영상\' 버튼 위치</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">나중에 볼 동영상</string>
   <string name="morphe_show_settings_button_title">설정 버튼 표시하기</string>
   <string name="morphe_show_settings_button_index_title">설정 버튼 위치</string>
   <string name="morphe_show_settings_button_type_title">설정 버튼 작업</string>
@@ -1646,7 +1656,7 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_series_tracker_error_storage_unavailable">저장 공간을 사용할 수 없습니다. 저장된 데이터는 그대로 유지되었습니다</string>
   <string name="morphe_series_tracker_error_storage_save">변경 사항을 저장할 수 없습니다. YouTube를 닫기 전에 저장을 다시 시도하세요</string>
   <string name="morphe_series_tracker_error_conflict">이 시리즈는 이미 저장되어 있거나 재생목록이 변경되었습니다. 다시 열어 주세요</string>
-  <string name="morphe_series_tracker_error_series_changed">시리즈가 변경되었거나 삭제되었습니다. 라이브러리를 다시 열으세요</string>
+  <string name="morphe_series_tracker_error_series_changed">시리즈가 변경되었거나 삭제되었습니다. 보관함을 다시 여세요</string>
   <string name="morphe_series_tracker_error_playlist_changed">재생목록이 변경되었습니다. 에피소드를 다시 선택하세요</string>
   <string name="morphe_series_tracker_error_episode_unavailable">이 에피소드는 사용할 수 없습니다. 다른 것을 선택하세요</string>
   <string name="morphe_series_tracker_error_name_required">시리즈 이름을 입력하세요</string>
@@ -1682,11 +1692,11 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_series_tracker_sync_failed">YouTube 진행 상황이 사용할 수 없습니다. 저장된 진행 상황을 사용합니다</string>
   <string name="morphe_series_tracker_sync_partial">일부 YouTube 진행 상황이 사용할 수 없습니다. 저장된 위치는 유지됩니다</string>
   <string name="morphe_series_tracker_backup_title">백업 및 복원</string>
-  <string name="morphe_series_tracker_backup_summary">시리즈 라이브러리를 파일에 저장하거나 백업에서 복원</string>
+  <string name="morphe_series_tracker_backup_summary">시리즈 보관함을 파일로 저장하거나 백업을 복원하세요</string>
   <string name="morphe_series_tracker_backup_explanation">팔로우 중인 시리즈, 에피소드 위치 및 시청 선택을 저장합니다. 기록 및 YouTube 진행 권한은 포함되지 않습니다</string>
   <string name="morphe_series_tracker_backup_save">백업 저장</string>
   <string name="morphe_series_tracker_backup_restore">백업 복원</string>
-  <string name="morphe_series_tracker_backup_preview">%1$s개의 시리즈 추가. 라이브러리에 이미 있는 %2$s개의 시리즈는 유지됩니다. 기존 비디오 진행 상황은 유지됩니다</string>
+  <string name="morphe_series_tracker_backup_preview">%1$s 개의 시리즈를 추가합니다. 보관함에 이미 있는 %2$s 개의 시리즈는 유지됩니다. 기존 동영상 진행 상황은 유지됩니다</string>
   <string name="morphe_series_tracker_backup_saved">시리즈 백업이 저장되었습니다</string>
   <string name="morphe_series_tracker_backup_restored">%1$s개의 시리즈 복원됨</string>
   <string name="morphe_series_tracker_error_backup_invalid">이 파일은 지원되는 시리즈 백업이 아니거나 너무 큽니다. 라이브러리가 변경되지 않았습니다</string>
@@ -1717,6 +1727,12 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_niconico_comments_max_length_title">댓글 최대 길이</string>
   <string name="morphe_niconico_comments_max_length_summary">표시할 댓글의 최대 글자 수를 설정할 수 있습니다. 설정한 글자 수를 초과하는 댓글은 숨겨집니다. 이모티콘 하나는 글자 1개로 계산됩니다</string>
   <string name="morphe_niconico_comments_max_length_no_limit">제한 없음</string>
+  <string name="morphe_niconico_comments_live_streams_title">실시간 스트림에서 표시하기</string>
+  <string name="morphe_niconico_comments_live_streams_summary">실시간 스트림 및 다시보기에서 표시합니다</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Premieres 동영상에서 표시하기</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premieres 동영상이 진행되는 동안 표시합니다</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">종료된 Premieres 동영상에서 표시하기</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">종료된 Premieres 동영상의 채팅 다시보기에서 표시합니다</string>
   <string name="morphe_live_chat_translate_screen_title">실시간 채팅 번역</string>
   <string name="morphe_live_chat_translate_screen_summary">실시간 채팅과 실시간 채팅 다시보기 메시지를 번역할 수 있습니다</string>
   <string name="morphe_live_chat_translate_title">실시간 채팅 번역하기</string>
@@ -1724,6 +1740,11 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_live_chat_translate_language_title">번역 언어</string>
   <string name="morphe_live_chat_translate_exclude_title">제외된 언어</string>
   <string name="morphe_live_chat_translate_exclude_summary">쉼표로 구분된 언어 코드를 입력하세요 (예시: id,en). 해당 언어로 작성된 메시지는 번역하지 않습니다</string>
+  <string name="morphe_live_chat_translate_provider_title">번역 제공자</string>
+  <string name="morphe_live_chat_translate_provider_google">Google 번역</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API 키</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">DeepL API 키를 입력하세요. DeepL 번역에 실패할 경우 Google 번역이 대신 사용됩니다 (예시: API 키의 월간 사용 한도에 도달한 경우)</string>
   <string name="morphe_live_chat_translate_copy_button_title">메시지 복사 버튼 표시하기</string>
   <string name="morphe_live_chat_translate_copy_button_summary">모든 채팅 메시지에 작은 복사 버튼을 추가합니다</string>
   <string name="morphe_live_chat_translate_copied">메시지를 클립보드에 복사하였습니다</string>

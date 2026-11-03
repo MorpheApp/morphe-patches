@@ -120,7 +120,7 @@ Second \"item\" text"</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">앨범 오디오 트랙 재생하기</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">뮤직 비디오 대신 앨범 오디오 버전만 재생합니다. \'동영상 스트림 속이기\'가 필요합니다</string>
+  <string name="morphe_music_play_album_songs_summary">뮤직비디오 대신 앨범 오디오 버전만 재생합니다. \'동영상 스트림 속이기\'가 필요합니다</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">오디오/동영상 스위치 활성화하기</string>
   <string name="morphe_music_enable_audio_video_switch_summary">오디오 트랙 버전과 공식 뮤직비디오를 서로 전환할 수 있습니다</string>
@@ -614,7 +614,6 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">중국 단어 (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">그리스어, 슬라브어 키릴 문자 (러시아, 우크라이나, 불가리아, 세르비아, 벨라루시, 마케도니아 포함), 조지아어, 아르메니아어, 히브리어, 아랍어, 암하라어, 시리아어 음차 (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s 읽는 중: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">사전을 하나 이상 선택하세요</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">새로고침 버튼 표시하기</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">버튼을 탭하여 다음 우선순위의 가사 제공자로 전환할 수 있고, 길게 탭하면 노래 제목과 아티스트로 가사를 검색할 수 있습니다</string>
   <string name="morphe_music_lyrics_search_dialog_title">가사 검색</string>
@@ -743,7 +742,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">제공자가 후렴이나 절과 같은 섹션 레이블을 제공하지 않는 경우에만 사용되며, 이때 OpenAI 호환 모델이 해당 구간을 자동으로 감지합니다. 해당 행을 편집하면 프롬프트도 함께 열립니다</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API 엔드포인트 URL (예시: https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">프롬프트 템플릿</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">자리 표시자: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">자리 표시자: {task}, {language}, {title}, {artist}, {count}, {lines}. 알 수 없는 항목은 입력한 그대로 유지됩니다</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">프롬프트 저장됨</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">프롬프트가 저장되었지만 AI 엔드포인트는 아직 사용할 수 없습니다. 먼저 AI 설정에서 구성하세요</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">프롬프트 초기화</string>

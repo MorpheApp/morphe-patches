@@ -605,7 +605,6 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">中国語単語（pinyin-pro、約17 MB）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">ギリシャ語、スラヴ系キリル文字（ロシア語、ウクライナ語、ブルガリア語、セルビア語、ベラルーシ語、マケドニア語を含む）、ジョージア語、アルメニア語、ヘブライ語、アラビア語、アムハラ語、シリア語の翻記（CLDR、約0.5 MB）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s を読み込み中: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">少なくとも1つの辞書を選択してください</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">更新ボタンを表示</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">タップして次の歌詞候補に切り替え、長押しで曲名とアーティストから歌詞を検索</string>
   <string name="morphe_music_lyrics_search_dialog_title">歌詞を検索</string>
@@ -734,7 +733,7 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_lyrics_use_ai_section_summary">プロバイダーがコーラスやヴァースなどのセクションラベルを提供しない場合にのみ使用されます。その後、あなたの OpenAI 互換モデルが検出します。行を編集するとプロンプトも開きます</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API エンドポイント URL（例：https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions）</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">プロンプト テンプレート</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">プレースホルダー: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">プレースホルダー: {task}, {language}, {title}, {artist}, {count}, {lines}。それ以外は入力したままになります</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">プロンプトを保存しました</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">プロンプトは保存されましたが、AIエンドポイントはまだ使用できません。まずAI設定で構成してください</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">プロンプトをリセットしました</string>

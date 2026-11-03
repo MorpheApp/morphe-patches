@@ -445,6 +445,11 @@ Pranešimai yra vieši ir peržiūrimi prieš pridedant kanalą į sąrašą. Pa
   <string name="morphe_copy_comments_title">Kopijuoti komentarus</string>
   <string name="morphe_copy_comments_summary">Palieskite ir palaikykite komentarą, kad jį nukopijuotumėte</string>
   <string name="morphe_copy_comments_success">Komentaras nukopijuotas į iškarpinę</string>
+  <string name="morphe_copy_select_text_title">Pasirinkti aprašymų ir įrašų tekstą</string>
+  <string name="morphe_copy_select_text_summary">Bakstelėkite ir palaikykite pirštą ant vaizdo įrašo aprašymo arba įrašo, kad pasirinktumėte ir nukopijuotumėte bet kurią jo dalį</string>
+  <string name="morphe_copy_select_text_dialog_title">Pasirinkti tekstą</string>
+  <string name="morphe_copy_select_text_copy_all">Kopijuoti viską</string>
+  <string name="morphe_copy_select_text_success">Tekstas nukopijuotas į iškarpinę</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Paspauskite ir palaikykite, kad atidarytumėte video meniu</string>
   <string name="morphe_feed_long_press_menu_summary">Paspaudus ir palaikius bet kuria feed video vieta, atidaromas jo meniu</string>
@@ -933,6 +938,8 @@ Turi būti pateikti „Subtitrų slapukai“"</string>
   <string name="morphe_hide_notifications_button_title">Slėpti pranešimų mygtuką</string>
   <string name="morphe_show_search_button_title">Rodyti paieškos mygtuką</string>
   <string name="morphe_show_search_button_index_title">Paieškos mygtuko vieta</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">Rodyti nustatymų mygtuką</string>
   <string name="morphe_show_settings_button_index_title">Nustatymų mygtuko vieta</string>
   <string name="morphe_show_settings_button_type_title">Nustatymų mygtuko veiksmas</string>
@@ -1723,6 +1730,11 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_live_chat_translate_language_title">Vertimo kalba</string>
   <string name="morphe_live_chat_translate_exclude_title">Išimtos kalbos</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kvinis atskirti kalbų kodai, pavyzdžiui, id,en. Žinutės šiomis kalbomis nėra verčiamos</string>
+  <string name="morphe_live_chat_translate_provider_title">Vertimo teikėjas</string>
+  <string name="morphe_live_chat_translate_provider_google">„Google Translate“</string>
+  <string name="morphe_live_chat_translate_provider_deepl">„DeepL“</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">„DeepL“ API raktas</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Jūsų „DeepL“ API raktas. Jei „DeepL“ neveikia, pavyzdžiui, pasiekta mėnesio raktų riba, naudojamas „Google Translate“</string>
   <string name="morphe_live_chat_translate_copy_button_title">Rodyti žinutės kopijavimo mygtuką</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Kiekvienai čato žinutei prideda mažą kopijavimo mygtuką</string>
   <string name="morphe_live_chat_translate_copied">Žinutė nukopijuota į iškarpinę</string>

@@ -445,6 +445,11 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_copy_comments_title">Kopyahin ang mga komento</string>
   <string name="morphe_copy_comments_summary">Pindutin nang matagal ang isang komento upang kopyahin ito</string>
   <string name="morphe_copy_comments_success">Nakopya ang komento sa clipboard</string>
+  <string name="morphe_copy_select_text_title">Piliin ang teksto ng mga deskripsyon at post</string>
+  <string name="morphe_copy_select_text_summary">I-tap at i-hold ang deskripsyon ng video o isang post upang piliin at kopyahin ang anumang bahagi nito</string>
+  <string name="morphe_copy_select_text_dialog_title">Piliin ang teksto</string>
+  <string name="morphe_copy_select_text_copy_all">Kopyahin lahat</string>
+  <string name="morphe_copy_select_text_success">Nakopya ang teksto sa clipboard</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">I-tap at hawakan ng matagal upang buksan ang menu ng video</string>
   <string name="morphe_feed_long_press_menu_summary">Ang pagtatakbo at paghawak ng matagal sa kahit saan sa isang feed video ay nagbubukas ng kanyang menu</string>
@@ -933,6 +938,11 @@ Dapat ibigay ang 'Caption cookies'"</string>
   <string name="morphe_hide_notifications_button_title">Itago ang Notifications button</string>
   <string name="morphe_show_search_button_title">Ipakita ang Search button</string>
   <string name="morphe_show_search_button_index_title">Posisyon ng Search button</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Ipakita ang button na Panoorin mamaya</string>
+  <string name="morphe_show_watch_later_button_index_title">Posisyon ng button na Panoorin mamaya</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Panoorin mamaya</string>
   <string name="morphe_show_settings_button_title">Ipakita ang Settings button</string>
   <string name="morphe_show_settings_button_index_title">Posisyon ng Settings button</string>
   <string name="morphe_show_settings_button_type_title">Aksyon ng buton ng Mga Setting</string>
@@ -1714,6 +1724,12 @@ Optional ang automatic recording. Itinatigil ito sa incognito o kapag nabagyo an
   <string name="morphe_niconico_comments_max_length_title">Maximum na haba ng komento</string>
   <string name="morphe_niconico_comments_max_length_summary">Nagtatago ng mga komento na may mas maraming karakter kaysa dito. Bawat emoji ay itinuturing na isang karakter.</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Walang limitasyon</string>
+  <string name="morphe_niconico_comments_live_streams_title">Ipakita sa mga live stream</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Mga live stream at ang kanilang mga replay</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Ipakita sa mga premiere</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Mga premiere habang nagpe-play ang mga ito</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Ipakita sa mga tapos nang premiere</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Chat replay ng mga premiere na natapos na</string>
   <string name="morphe_live_chat_translate_screen_title">Pagsasalin ng live chat</string>
   <string name="morphe_live_chat_translate_screen_summary">Isalin ang mga mensahe ng live chat at live chat replay</string>
   <string name="morphe_live_chat_translate_title">Isalin ang live chat</string>
@@ -1721,6 +1737,11 @@ Optional ang automatic recording. Itinatigil ito sa incognito o kapag nabagyo an
   <string name="morphe_live_chat_translate_language_title">Wika ng pagsasalin</string>
   <string name="morphe_live_chat_translate_exclude_title">Mga hindi kasamang wika</string>
   <string name="morphe_live_chat_translate_exclude_summary">Mga code ng wika na pinaghihiwalay ng kuwit tulad ng id,en. Ang mga mensahe sa mga wikang ito ay hindi isasalin</string>
+  <string name="morphe_live_chat_translate_provider_title">Provider ng pagsasalin</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API key</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Ang iyong DeepL API key. Ginagamit ang Google Translate kung nabigo ang DeepL, gaya ng kapag naabot na ang buwanang limitasyon ng key</string>
   <string name="morphe_live_chat_translate_copy_button_title">Ipakita ang button na kopyahin ang mensahe</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Nagdaragdag ng maliit na copy button sa bawat mensahe ng chat</string>
   <string name="morphe_live_chat_translate_copied">Kinopya ang mensahe sa clipboard</string>

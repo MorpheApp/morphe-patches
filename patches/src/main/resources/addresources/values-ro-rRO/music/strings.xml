@@ -594,7 +594,6 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Cuvinte chinezești (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliterare greacă, slavă chirilică (inclusiv rusă, ucraineană, bulgară, sârbă, belarusă, macedoneană), georgiană, armeană, ebraică, arabă, amharică și siriacă (CLDR, ~0,5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Citire %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Selectați cel puțin un dicționar</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Afișați butonul Reîmprospătare.</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Atinge pentru a comuta la candidatul următor pentru versuri; apasă lung pentru a căuta versurile după titlu și artist</string>
   <string name="morphe_music_lyrics_search_dialog_title">Căutare versuri</string>
@@ -723,7 +722,7 @@ Versurile provin de la servicii terțe care nu sunt afiliate, sponsorizate sau e
   <string name="morphe_music_lyrics_use_ai_section_summary">Utilizat doar atunci când furnizorul nu furnizează etichete de secțiuni precum Refren sau Vers, pe care modelul compatibil OpenAI le detectează. Editarea rândului deschide și promptul său</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-ul endpoint-ului API (de ex. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Șablon de Prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholder-e: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholder-e: {task}, {language}, {title}, {artist}, {count}, {lines}. Cele necunoscute sunt lăsate așa cum au fost tastate</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt salvat</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt salvat, dar endpoint-ul AI nu este încă utilizabil. Configurează-l mai întâi la Setări AI</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt resetat</string>

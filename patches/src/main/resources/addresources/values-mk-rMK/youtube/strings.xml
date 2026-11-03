@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">Скриј копче за емотикони</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Скриј ги опциите на лентата за филтрирање</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Ги крие сите опции на лентата за филтрирање освен „Најдобри“ и „Најнови“</string>
+  <string name="morphe_hide_comments_gif_button_title">Скриј копче за GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Скриј GIF-и и слики</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Ги крие GIF-ите и сликите прикачени кон коментарите и одговорите</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Скриј ја анимацијата за подароци и картичките</string>
   <string name="morphe_hide_comments_gift_button_title">Скриј го копчето за подарок</string>
   <string name="morphe_hide_comments_info_button_title">Скриј копче за информации</string>
@@ -442,10 +445,16 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">Копирај коментари</string>
   <string name="morphe_copy_comments_summary">Допрете и држете некој коментар за да го копирате</string>
   <string name="morphe_copy_comments_success">Коментарот е копиран во работната област</string>
+  <string name="morphe_copy_select_text_title">Изберете текст од описите и објавите</string>
+  <string name="morphe_copy_select_text_summary">Допрете и задржете на описот на видеото или на објавата за да изберете и копирате кој било дел од нив</string>
+  <string name="morphe_copy_select_text_dialog_title">Избери текст</string>
+  <string name="morphe_copy_select_text_copy_all">Копирај сè</string>
+  <string name="morphe_copy_select_text_success">Текстот е копиран во клипбордот</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Допрете и држете за да го отворите менито за видео</string>
   <string name="morphe_feed_long_press_menu_summary">Допирот и држењето било каде на видеото во фидото го отвора неговото мени</string>
   <string name="morphe_feed_watch_later_button_title">Прикажи го копчето „Гледај подоцна“ на сликите во минијатура</string>
+  <string name="morphe_feed_watch_later_button_summary">Копчето „Гледај подоцна“ се прикажува на сликите од видеата во фидот, со ознака за штиклирање доколку видеото е зачувано. Допирот на копчето го зачувува или го отстранува видеото, а допирот и држењето го отвора менито „Зачувај во плејлиста“</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Преземај слики од објави</string>
   <string name="morphe_post_image_download_summary">Копче за преземање се прикажува покрај копчето за споделување на објавите со слики или GIF-ови, а ставка за преземање е додадена во нивното мени</string>
@@ -525,6 +534,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">Промени го фолдерот</string>
   <string name="morphe_export_download_folder_changed">Фолдерот за eksport е променет</string>
   <string name="morphe_export_download_folder_reset">Фолдерот за eksport е ресетиран</string>
+  <string name="morphe_export_download_folder_missing">Не можеше да се најде папката за извоз %s</string>
   <string name="morphe_export_download_flyout_title">Експортирај на уредот</string>
   <string name="morphe_export_download_started">Експортирање видео</string>
   <string name="morphe_export_download_progress">Експортирање видео: %d%%</string>
@@ -867,7 +877,10 @@ Second \"item\" text"</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Титри</string>
   <string name="morphe_captions_screen_summary">Управувајте со автоматските титри и колачињата за титри</string>
+  <string name="morphe_captions_languages_title">Јазик и превод</string>
+  <string name="morphe_captions_presentation_title">Изглед и однесување</string>
   <string name="morphe_captions_advanced_title">Напредно</string>
+  <string name="morphe_captions_advanced_summary">Опции за колачиња и транскрипти</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Видливост на автоматските титри</string>
   <string name="morphe_auto_captions_style_entry_1">Секогаш прикажи</string>
@@ -876,8 +889,10 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_entry_4">Покажи кога е исклучен звукот</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Препочитан јазик за титлови</string>
+  <string name="morphe_preferred_caption_language_summary">Автоматски избира јазик за титлови за секое видео</string>
   <string name="morphe_preferred_caption_language_entry_off">Исклучено</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Дополнителни јазици за автоматски превод</string>
   <string name="morphe_auto_translate_additional_languages_summary">Додава повеќе јазици во менито за автоматски превод</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Поставете колачиња за натписи</string>
@@ -896,8 +911,16 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_summary">Отстранува проблем со претходни услови што може да спречи да се вчита транскрипт</string>
   <string name="morphe_captions_in_pip_title">Прикажи написи во слика-во-слика</string>
   <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Големина на титловите</string>
+  <string name="morphe_caption_scale_summary">Се применува за еднојазични и двојазични титлови</string>
   <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Стабилни блокови на титлови</string>
+  <string name="morphe_stable_caption_blocks_summary">Групирајте ги автоматските титлови на еден јазик во стабилни, читливи блокови. Двојазичните титлови секогаш користат блокови. Некои зборови може да се појават пред да бидат изговорени</string>
+  <string name="morphe_secondary_caption_language_title">Секундарен јазик за титлови</string>
+  <string name="morphe_secondary_caption_language_summary">Прикажува втор јазик заедно со титловите и додава прекинувач за двојазични титлови во менито за титлови</string>
+  <string name="morphe_dual_captions_enabled_title">Двојазични титлови</string>
+  <string name="morphe_caption_block_translation_failed">Некои преводи на титловите не се достапни. Се прикажуваат достапните титлови.</string>
+  <string name="morphe_caption_blocks_too_large">Двата јазика за титлови не се собираат во овој плеер. Се прикажува примарниот јазик.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Копчиња за навигација</string>
   <string name="morphe_navigation_buttons_screen_summary">Изберете кои копчиња да се појавуваат во лентата за навигација</string>
@@ -913,6 +936,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">Прикријте го копчето Notifications</string>
   <string name="morphe_show_search_button_title">Прикажи копче за пребарување</string>
   <string name="morphe_show_search_button_index_title">Позиција на копчето за пребарување</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">Прикажи копче Settings</string>
   <string name="morphe_show_settings_button_index_title">Позиција на копчето Settings</string>
   <string name="morphe_show_settings_button_type_title">Акција на копчето за поставки</string>
@@ -998,6 +1023,7 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Прикријте го копчето Captions</string>
   <string name="morphe_hide_cast_button_title">Прикријте го копчето Cast</string>
+  <string name="morphe_hide_cast_button_summary">Го крие копчето за Cast во видео плеерот и алатката</string>
   <string name="morphe_hide_collapse_button_title">Прикријте го копчето Collapse</string>
   <string name="morphe_hide_fullscreen_button_title">Прикријте го копчето Fullscreen</string>
   <string name="morphe_hide_player_control_buttons_background_title">Скриј ја позадината на копчињата на плеер</string>
@@ -1522,7 +1548,12 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_player_js_variant_title">Варијанта на JavaScript на плеерот</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Прикажи симулирање во „Stats for nerds“</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_video_action_bar_layout_title">Распоред на лентата за акции на видеото</string>
   <string name="morphe_video_action_bar_layout_entry_1">Стандардно</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Класичен со еден ред</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Минималистички</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Класичен со два реда</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Ограничување: Класичните распореди се враќаат на стариот стил на прекривање \'Повеќе видеа\'</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Стил на иконата на плеерот</string>
   <string name="morphe_player_icon_style_entry_auto">Автоматски</string>
@@ -1689,4 +1720,32 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">Максимална должина на коментарот</string>
   <string name="morphe_niconico_comments_max_length_summary">Ги крие коментарите со повеќе карактери од оваа вредност. Секој емотикон се брои како еден карактер</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без ограничување</string>
+  <string name="morphe_live_chat_translate_screen_title">Превод на разговор во живо</string>
+  <string name="morphe_live_chat_translate_screen_summary">Преведи пораки од чет во живо и репродукција на чет во живо</string>
+  <string name="morphe_live_chat_translate_title">Преведи чет во живо</string>
+  <string name="morphe_live_chat_translate_summary">Преведува пораки од чет во живо и репродукција на чет во живо штом ќе се појават на екранот</string>
+  <string name="morphe_live_chat_translate_language_title">Јазик за превод</string>
+  <string name="morphe_live_chat_translate_exclude_title">Исклучени јазици</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Кодови на јазици одделени со запирка, како на пр. id,en. Пораките на овие јазици не се преведуваат</string>
+  <string name="morphe_live_chat_translate_provider_title">Давлач на превод</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API клуч</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Вашиот DeepL API клуч. Google Translate се користи доколку DeepL не успее, на пример кога е достигнат месечниот лимит на клучот</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Прикажи копче за копирање порака</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Додава мало копче за копирање до секоја порака во чатот</string>
+  <string name="morphe_live_chat_translate_copied">Пораката е копирана во клипбордот</string>
+  <string name="morphe_live_chat_translate_style_title">Стил на превод</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Само преведено</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Оригинал (преведен)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Преведен) оригинал</string>
+  <string name="morphe_live_chat_translate_bold_title">Згустен преведен текст</string>
+  <string name="morphe_live_chat_translate_bold_summary">Го прикажува преведениот текст во згустен формат</string>
+  <string name="morphe_live_chat_translate_use_color_title">Прилагодена боја на преведениот текст</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Применува прилагодена боја на преведениот текст</string>
+  <string name="morphe_live_chat_translate_color_title">Боја на преведениот текст</string>
+  <string name="morphe_live_chat_translate_color_summary">Поставете ја hex бојата на преведениот текст</string>
+  <string name="morphe_live_chat_translate_max_length_title">Максимална должина на пораката</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Подолгите пораки се прикажуваат без превод</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Без ограничување</string>
 </resources>

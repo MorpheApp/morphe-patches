@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">Emoji түймесін жасыру</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Сүзу жолағы параметрлерін жасыру</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\"Танымал\" және \"Жаңасы\" параметрлерінен басқа барлық сүзу жолағы параметрлерін жасырады</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF түймесін жасыру</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF-тер мен суреттерді жасыру</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Пікірлер мен жауаптарға тіркелген GIF-тер мен суреттерді жасырады</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Сыйлық анимациясы мен карталарын жасыру</string>
   <string name="morphe_hide_comments_gift_button_title">Сыйлық батырмасын жасыру</string>
   <string name="morphe_hide_comments_info_button_title">Ақпарат батырмасын жасыру</string>
@@ -442,10 +445,16 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">Пікірлерді көшіру</string>
   <string name="morphe_copy_comments_summary">Пікірді көшіру үшін оны басып тұрыңыз</string>
   <string name="morphe_copy_comments_success">Пікір алмасу буферіне көшірілді</string>
+  <string name="morphe_copy_select_text_title">Сипаттамалар мен жазбалар мәтінін таңдау</string>
+  <string name="morphe_copy_select_text_summary">Видео сипаттамасын немесе жазбаны таңдап, оның кез келген бөлігін көшіру үшін басып тұрыңыз</string>
+  <string name="morphe_copy_select_text_dialog_title">Мәтінді таңдау</string>
+  <string name="morphe_copy_select_text_copy_all">Барлығын көшіру</string>
+  <string name="morphe_copy_select_text_success">Мәтін алмасу буферіне көшірілді</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Бейнеменюді ашу үшін басып тұрыңыз</string>
   <string name="morphe_feed_long_press_menu_summary">Тапбағаш бейнесінің кез келген жерін басып тұру оның мәзірін ашады</string>
   <string name="morphe_feed_watch_later_button_title">Шағын суреттерде «Кейінірек көру» батырмасын көрсету</string>
+  <string name="morphe_feed_watch_later_button_summary">Лентадағы бейнелердің мұқабаларында «Кейінірек көру» батырмасы көрсетіледі, ал бейне сақталған болса, құсбелгі пайда болады. Оны басу бейнені сақтайды немесе жояды, ал басып тұру «Плейлистке сақтау» бөлімін ашады</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Жазба суреттерін жүктеу</string>
   <string name="morphe_post_image_download_summary">Суреттері немесе GIF-тері бар жазбалардың «Бөлісу» батырмасының жанында жүктеу батырмасы көрсетіледі және олардың мәзіріне жүктеу элементі қосылады</string>
@@ -525,6 +534,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">Папканы өзгерту</string>
   <string name="morphe_export_download_folder_changed">Экспорттау папкасы өзгертілді</string>
   <string name="morphe_export_download_folder_reset">Экспорттау папкасы sıғырылды</string>
+  <string name="morphe_export_download_folder_missing">%s экспорттау папкасы табылмады</string>
   <string name="morphe_export_download_flyout_title">Құрылғыға экспорттау</string>
   <string name="morphe_export_download_started">Видео экспортталуда</string>
   <string name="morphe_export_download_progress">Видео экспортталуда: %d%%</string>
@@ -869,6 +879,10 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Субтитрлер</string>
   <string name="morphe_captions_screen_summary">Автоматты субтитрлерді және субтитр куки-файлдарын басқару</string>
+  <string name="morphe_captions_languages_title">Тіл және аударма</string>
+  <string name="morphe_captions_presentation_title">Сыртқы түрі мен мінез-құлқы</string>
+  <string name="morphe_captions_advanced_title">Кеңейтілген</string>
+  <string name="morphe_captions_advanced_summary">Cookie және транскрипт параметрлері</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Автоматты субтитрлердің көрінуі</string>
   <string name="morphe_auto_captions_style_entry_1">Әрқашан көрсету</string>
@@ -877,8 +891,10 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_auto_captions_style_entry_4">Дыбыс өшірілгенде көрсету</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Субтитрлердің күндізгі тілі</string>
+  <string name="morphe_preferred_caption_language_summary">Әрбір бейне үшін субтитр тілін автоматты түрде таңдайды</string>
   <string name="morphe_preferred_caption_language_entry_off">Өшіру</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Қосымша автоматты аудару тілдері</string>
   <string name="morphe_auto_translate_additional_languages_summary">Авто-аударма мәзіріне көбірек тілдерді қосады</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Субтитрлер үшін cookie файлдарын орнату</string>
@@ -897,8 +913,16 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_fix_transcript_summary">Транскрипт жүктелуіне кедергі келтіруі мүмкін алдын ала тексерудің сәтсіздігін жояды</string>
   <string name="morphe_captions_in_pip_title">Суреттегі сурет режимінде субтитрлерді көрсету</string>
   <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Субтитр өлшемі</string>
+  <string name="morphe_caption_scale_summary">Бір тілді және екі тілді субтитрлерге қолданылады</string>
   <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Тұрақты субтитрлер блоктары</string>
+  <string name="morphe_stable_caption_blocks_summary">Бір тілді автоматты субтитрлерді тұрақты, оқылымды блоктарға топтастыру. Екі тілді субтитрлер әрқашан блоктарды қолданады. Кейбір сөздер айтылғанға дейін пайда болуы мүмкін</string>
+  <string name="morphe_secondary_caption_language_title">Субтитрлердің қосалқы тілі</string>
+  <string name="morphe_secondary_caption_language_summary">Субтитрлермен бірге екінші тілді көрсетеді және субтитрлер мәзіріне «Екі тілді субтитрлер» ауыстырып-қосқышын қосады</string>
+  <string name="morphe_dual_captions_enabled_title">Екі тілді субтитрлер</string>
+  <string name="morphe_caption_block_translation_failed">Кейбір субтитрлер аудармалары қолжетімсіз. Қолжетімді субтитрлер көрсетілуде.</string>
+  <string name="morphe_caption_blocks_too_large">Субтитрлердің екі тілі де бұл плеерге сыймайды. Негізгі тіл көрсетілуде.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Навигациялық түймелер</string>
   <string name="morphe_navigation_buttons_screen_summary">Төменгі навигациялық панельде қай түймелер пайда болатынын таңдаңыз</string>
@@ -914,6 +938,8 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_hide_notifications_button_title">Хабарламалар түймесін жасыру</string>
   <string name="morphe_show_search_button_title">Іздеу түймесін көрсету</string>
   <string name="morphe_show_search_button_index_title">Іздеу түймесінің орны</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">Баптаулар түймесін көрсету</string>
   <string name="morphe_show_settings_button_index_title">Баптаулар түймесінің орны</string>
   <string name="morphe_show_settings_button_type_title">Баптаулар батырмасының әрекеті</string>
@@ -999,6 +1025,7 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Субтитрлер түймесін жасыру</string>
   <string name="morphe_hide_cast_button_title">Трансляция түймесін жасыру</string>
+  <string name="morphe_hide_cast_button_summary">Бейне ойнатқышы мен құрал жолағындағы Cast түймесін жасырады</string>
   <string name="morphe_hide_collapse_button_title">Жинақтау түймесін жасыру</string>
   <string name="morphe_hide_fullscreen_button_title">Толық экран түймесін жасыру</string>
   <string name="morphe_hide_player_control_buttons_background_title">Плеер басқару элементтерінің фонын жасыру</string>
@@ -1523,6 +1550,12 @@ AV1-мен бейнеойнату кезінде секірулер болуы �
   <string name="morphe_spoof_video_streams_player_js_variant_title">Плеердің JavaScript нұсқасы</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'Нердтерге арналған статистикада\' имитациялауды көрсету</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_video_action_bar_layout_title">Бейне әрекеттер жолағының макеті</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Әдепті</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Классикалық бір жолды</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Минималистік</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Классикалық екі жолды</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Шектеу: Классикалық макеттер ескі стильдегі «Көбірек бейнелер» қабатына қайтады</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Плеер белгішесінің стилі</string>
   <string name="morphe_player_icon_style_entry_auto">Автоматты</string>
@@ -1689,4 +1722,32 @@ AV1-мен бейнеойнату кезінде секірулер болуы �
   <string name="morphe_niconico_comments_max_length_title">Пікірдің максималды ұзындығы</string>
   <string name="morphe_niconico_comments_max_length_summary">Таңдалған санынан көп таңбасы бар пікірлерді жасырады. Әр эмодзи бір таңба ретінде есептеледі</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Шектеу жоқ</string>
+  <string name="morphe_live_chat_translate_screen_title">Тікелей чат аудармасы</string>
+  <string name="morphe_live_chat_translate_screen_summary">Тікелей чат пен тікелей чат қайталау хабарламаларын аудару</string>
+  <string name="morphe_live_chat_translate_title">Тікелей чатты аудару</string>
+  <string name="morphe_live_chat_translate_summary">Тікелей чат пен тікелей чат қайталау хабарламалары экранда пайда болғанда оларды аударады</string>
+  <string name="morphe_live_chat_translate_language_title">Аудару тілі</string>
+  <string name="morphe_live_chat_translate_exclude_title">Жалпылама тілдер</string>
+  <string name="morphe_live_chat_translate_exclude_summary">id,en сияқты үтірмен бөлінген тіл кодтары. Бұл тілдердегі хабарламалар аударылмайды</string>
+  <string name="morphe_live_chat_translate_provider_title">Аударма провайдері</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API кілті</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Сіздің DeepL API кілтіңіз. Егер DeepL жұмыс істемесе, мысалы, кілттің айлық лимитіне жеткенде, Google Translate қолданылады</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Хабарламаны көшіру батырмасын көрсету</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Әрбір чат хабарламасына кішігірім көшіру батырмасын қосады</string>
+  <string name="morphe_live_chat_translate_copied">Хабарлама алмасу буферіне көшірілді</string>
+  <string name="morphe_live_chat_translate_style_title">Аударма стилі</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Тек аударылғандары</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Түпнұсқа (аударылған)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Аударылған) түпнұсқа</string>
+  <string name="morphe_live_chat_translate_bold_title">Аударылған мәтінді жуан қара字体</string>
+  <string name="morphe_live_chat_translate_bold_summary">Аударылған мәтінді жуан қаріппен көрсетеді</string>
+  <string name="morphe_live_chat_translate_use_color_title">Аударылған мәтіннің жеке түсі</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Аударылған мәтінге жеке түсті қолдайды</string>
+  <string name="morphe_live_chat_translate_color_title">Аударылған мәтіннің түсі</string>
+  <string name="morphe_live_chat_translate_color_summary">Аударылған мәтіннің hex түсін орнатыңыз</string>
+  <string name="morphe_live_chat_translate_max_length_title">Хабарламаның максималды ұзындығы</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Ұзын хабарламалар аударылмаған күйінде көрсетіледі</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Шектеу жоқ</string>
 </resources>

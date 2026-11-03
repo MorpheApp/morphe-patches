@@ -614,7 +614,6 @@ Talab qilinadigan cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Xitoy so\'zlari (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grek, slavyan kirill (jumladan rus, ukrain, bolgar, serb, belarus, makedon tillari), gruzin, arman, ivrit, arab, amhar va suryaniy transliteratsiyasi (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s o\'qilmoqda: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Kamida bitta lugātni tanlang</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Yangilash tugmasini ko¢rsatish</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Keyingi matn nomzodiga o\'tish uchun bosing; qo\'shiq nomi va ijrochi bo\'yicha matnni qidirish uchun uzoq bosib turing</string>
   <string name="morphe_music_lyrics_search_dialog_title">Matnlarni qidirish</string>
@@ -742,7 +741,7 @@ Matnlar Morphe bilan bog\"liq bo\"lmagan, u tomonidan homiylik qilinmagan yoki t
   <string name="morphe_music_lyrics_use_ai_section_summary">Faqat provayder Naqarot yoki Kuplet kabi bo\'lim belgilarini yubormagan va ularni OpenAI bilan mos keladigan modelingiz aniqlagan holatlarda ishlatiladi. Qatorni tahrirlash uning promptini ham ochadi</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL manzili (masalan, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt shabloni</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Pleysholderlar: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Pleysholderlar: {task}, {language}, {title}, {artist}, {count}, {lines}. Noma\'lumlar yozilganidek qoldiriladi</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt saqlandi</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">So\'rov saqlandi, ammo AI endpoint hali ishlamayapti. Avval uni AI Sozlamalari bo\'limida sozlang</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">So\'rov qayta tiklandi</string>

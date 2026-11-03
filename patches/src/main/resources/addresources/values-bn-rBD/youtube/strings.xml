@@ -445,6 +445,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">মন্তব্য কপি করুন</string>
   <string name="morphe_copy_comments_summary">একটি মন্তব্য কপি করতে ট্যাপ করে ধরে রাখুন</string>
   <string name="morphe_copy_comments_success">মন্তব্য ক্লিপবোর্ডে কপি করা হয়েছে</string>
+  <string name="morphe_copy_select_text_title">বর্ণনা এবং পোস্টের টেক্সট নির্বাচন করুন</string>
+  <string name="morphe_copy_select_text_summary">কোনো ভিডিওর বর্ণনা বা পোস্টের যেকোনো অংশ নির্বাচন এবং কপি করতে সেটি চেপে ধরে রাখুন</string>
+  <string name="morphe_copy_select_text_dialog_title">টেক্সট নির্বাচন করুন</string>
+  <string name="morphe_copy_select_text_copy_all">সব কপি করুন</string>
+  <string name="morphe_copy_select_text_success">টেক্সট ক্লিপবোর্ডে অনুলিপি করা হয়েছে</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">ভিডিও মেনু খুলতে ট্যাপ করুন এবং ধরে রাখুন</string>
   <string name="morphe_feed_long_press_menu_summary">ফিডের যেকোনো ভিডিওতে ট্যাপ করে ধরে রাখলে এর মেনুটি খুলে যায়</string>
@@ -933,6 +938,11 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_hide_notifications_button_title">বিজ্ঞপ্তি বাটন লুকান</string>
   <string name="morphe_show_search_button_title">অনুসন্ধান বাটন দেখান</string>
   <string name="morphe_show_search_button_index_title">অনুসন্ধান বাটন এর অবস্থান</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">\'পরে দেখুন\' বাটন দেখান</string>
+  <string name="morphe_show_watch_later_button_index_title">\'পরে দেখুন\' বাটনের অবস্থান</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">পরে দেখুন</string>
   <string name="morphe_show_settings_button_title">সেটিংস দেখানোর বোতাম</string>
   <string name="morphe_show_settings_button_index_title">সেটিংস বোতামের অবস্থান</string>
   <string name="morphe_show_settings_button_type_title">সেটিংস বোতাম অ্যাকশন</string>
@@ -1716,6 +1726,12 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_niconico_comments_max_length_title">কমেন্টের সর্বোচ্চ দৈর্ঘ্য</string>
   <string name="morphe_niconico_comments_max_length_summary">এর থেকে বেশি ক্যারেক্টারের কমেন্টগুলো হাইড করে। প্রতিটি ইমোজি একটি ক্যারেক্টার হিসেবে গণ্য হবে</string>
   <string name="morphe_niconico_comments_max_length_no_limit">কোনো সীমা নেই</string>
+  <string name="morphe_niconico_comments_live_streams_title">লাইভ স্ট্রিমে দেখান</string>
+  <string name="morphe_niconico_comments_live_streams_summary">লাইভ স্ট্রিম এবং সেগুলোর রিপ্লে</string>
+  <string name="morphe_niconico_comments_live_premieres_title">প্রিমিয়ারে দেখান</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">প্রিমিয়ারগুলো যখন চলছে</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">শেষ হয়ে যাওয়া প্রিমিয়ারগুলোতে দেখান</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">শেষ হয়ে যাওয়া প্রিমিয়ারগুলোর চ্যাট রিপ্লে</string>
   <string name="morphe_live_chat_translate_screen_title">লাইভ চ্যাট অনুবাদ</string>
   <string name="morphe_live_chat_translate_screen_summary">লাইভ চ্যাট এবং লাইভ চ্যাট রিপ্লে মেসেজ অনুবাদ করুন</string>
   <string name="morphe_live_chat_translate_title">লাইভ চ্যাট অনুবাদ করুন</string>
@@ -1723,6 +1739,11 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_live_chat_translate_language_title">অনুবাদ ভাষা</string>
   <string name="morphe_live_chat_translate_exclude_title">বাদ দেওয়া ভাষা</string>
   <string name="morphe_live_chat_translate_exclude_summary">কমা দিয়ে আলাদা করা ল্যাঙ্গুয়েজ কোড যেমন id,en। এই ভাষাগুলোর মেসেজ অনুবাদ করা হবে না</string>
+  <string name="morphe_live_chat_translate_provider_title">অনুবাদ প্রদানকারী</string>
+  <string name="morphe_live_chat_translate_provider_google">গুগল ট্রান্সলেট</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API কী</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">আপনার DeepL API কী। DeepL ব্যর্থ হলে, যেমন যখন কী-এর মাসিক সীমা শেষ হয়ে যায়, তখন Google Translate ব্যবহৃত হয়</string>
   <string name="morphe_live_chat_translate_copy_button_title">মেসেজ কপি বোতাম দেখান</string>
   <string name="morphe_live_chat_translate_copy_button_summary">প্রতিটি চ্যাট মেসেজে একটি ছোট কপি বোতাম যোগ করে</string>
   <string name="morphe_live_chat_translate_copied">মেসেজ ক্লিপবোর্ডে কপি করা হয়েছে</string>

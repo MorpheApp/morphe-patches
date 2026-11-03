@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">Emoji товчийг нуух</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Шүүлтүүрийн мөрийн сонголтуудыг нуух</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'Шилдэг\' болон \'Хамгийн сүүлийн\' гэсэн сонголтоос бусад бүх шүүлтүүрийн мөрийн сонголтуудыг нууна</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF товчийг нуух</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF болон зургуудыг нуух</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Сэтгэгдэл болон хариултад хавсаргасан GIF болон зургуудыг нуух</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Бэлгийн хเคลื่อนгөлгөө болон картуудыг нуух</string>
   <string name="morphe_hide_comments_gift_button_title">Бэлгийн товчийг нуух</string>
   <string name="morphe_hide_comments_info_button_title">Мэдээллийн товчийг нуух</string>
@@ -442,10 +445,16 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">Сэтгэгдлийг хуулах</string>
   <string name="morphe_copy_comments_summary">Сэтгэгдэл дээрээ удаан дарж хуулна уу</string>
   <string name="morphe_copy_comments_success">Сэтгэгдлийг санах ой руу хууллаа</string>
+  <string name="morphe_copy_select_text_title">Тайлбар болон постудын текстийг сонгох</string>
+  <string name="morphe_copy_select_text_summary">Видеоны тайлбар эсвэл постыг дараад тэрийлж барьснаар дурын хэсгийг нь сонгож хуулж авна</string>
+  <string name="morphe_copy_select_text_dialog_title">Текст сонгох</string>
+  <string name="morphe_copy_select_text_copy_all">Бүгдийг хуулах</string>
+  <string name="morphe_copy_select_text_success">Текстийг санах ой руу хууллаа</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Видео цэсийг нээхдээ дараад тэрийлгэнэ үү</string>
   <string name="morphe_feed_long_press_menu_summary">Фидийн видеоны хаана ч дараад тэрийлгэхэд цэс нь нээгдэнэ</string>
   <string name="morphe_feed_watch_later_button_title">Ногадуур дээр \"Дараа үзэх\" товчийг харуулах</string>
+  <string name="morphe_feed_watch_later_button_summary">Фийдийн видеонуудын эсиг зураг дээр \"Дараа үзэх\" товчлуур харагдах бөгөөд видео хадгалагдсан бол чагттай тэмдэглэгээнэ. Үүнийг товшилсноор видеог хадгалах эсвэл устгах бөгөөд удаан дарвал \"Жагсаалтад хадгалах\" цэсийг нээнэ</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Постын зургуудыг татаж авах</string>
   <string name="morphe_post_image_download_summary">Зураг эсвэл GIF бүхий постудын Хуваалцах товчлуурын хажууд татаж авах товч харагдах бөгөөд тэдгээрийн цэсэнд татаж авах сонголт нэмэгдэнэ</string>
@@ -524,6 +533,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">Хавтсыг өөрчлөх</string>
   <string name="morphe_export_download_folder_changed">Экспортын хавтас өөрчлөгдлөө</string>
   <string name="morphe_export_download_folder_reset">Экспортын хавтас шинэчлэгдлээ</string>
+  <string name="morphe_export_download_folder_missing">Экспортыг хийх хавтас %s-ийг олж чадсангүй</string>
   <string name="morphe_export_download_flyout_title">Төхөөрөмж рүү экспортлох</string>
   <string name="morphe_export_download_started">Видеог экспортлож байна</string>
   <string name="morphe_export_download_progress">Видео гаргаж байна: %d%%</string>
@@ -868,6 +878,10 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Хаяг</string>
   <string name="morphe_captions_screen_summary">Автомат хадмал орчуулга болон хадмал орчуулгын кукиг удирдах</string>
+  <string name="morphe_captions_languages_title">Хэл болон орчуулга</string>
+  <string name="morphe_captions_presentation_title">Гадаж харагдах байдал болон зан төлөв</string>
+  <string name="morphe_captions_advanced_title">Нэмэлт</string>
+  <string name="morphe_captions_advanced_summary">Cookie болон бичвэрийн сонголтууд</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Автомат хадмалтын харагдац</string>
   <string name="morphe_auto_captions_style_entry_1">Үргэлж харуулах</string>
@@ -876,8 +890,10 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_auto_captions_style_entry_4">Дууг хаасан үед харуулах</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Харуулах дээрх хэдэн хэлний сонголт</string>
+  <string name="morphe_preferred_caption_language_summary">Видео бүрт хадмал орчуулгын хэлийг автоматаар сонгоно</string>
   <string name="morphe_preferred_caption_language_entry_off">Унтраах</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Автоматаар орчуулах нэмэлт хэлнүүд</string>
   <string name="morphe_auto_translate_additional_languages_summary">Автоматаар орчуулах цэсэнд илүү олон хэл нэмнэ</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Хаягллын cookie-г тохируулах</string>
@@ -896,8 +912,16 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_fix_transcript_summary">Тэмдэглэлийг ачаалахад саад болдог урьдчилсан шалгалтын алдааг засна</string>
   <string name="morphe_captions_in_pip_title">Дүрсэн зураг доторх хадмал гарчгийг харуулах</string>
   <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Хадмал орчуулгын хэмжээ</string>
+  <string name="morphe_caption_scale_summary">Нэг хэлтэй болон хоёр хэлтэй хадмал орчуулгад хамаарна</string>
   <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Тогтвортой хадмал текстийн блокууд</string>
+  <string name="morphe_stable_caption_blocks_summary">Нэг хэлтэй автоматаар үүсгэсэн хадмал орчуулгаг тогтвортой, уншихад хялбар хэсгүүдэд бүлэглэнэ. Хоёр хэлтэй хадмал орчуулга нь үргэлж хэсгүүдийг ашигладаг. Зарим үг хэлэгдэхээс өмнө гарч ирж болно</string>
+  <string name="morphe_secondary_caption_language_title">Хадмал орчуулгын туслах хэл</string>
+  <string name="morphe_secondary_caption_language_summary">Хадмал орчуулгатай хамт хоёр дахь хэлийг харуулах бөгөөд хадмал орчуулгын цэсэнд \"Хоёр хэлтэй хадмал орчуулга\" товчлуурыг нэмнэ</string>
+  <string name="morphe_dual_captions_enabled_title">Хоёр хэлтэй хадмал орчуулга</string>
+  <string name="morphe_caption_block_translation_failed">Хадмал орчуулгын зарим орчуулга боломжгүй байна. Боломжтой хадмал орчуулгуудыг харуулж байна.</string>
+  <string name="morphe_caption_blocks_too_large">Хадмал орчуулгын хоёр хэл энэ тоглуулагчид багтахгүй байна. Үндсэн хэлийг харуулж байна.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Навигацийн товчлуурууд</string>
   <string name="morphe_navigation_buttons_screen_summary">Доод навигацийн хэсэгт аль товчнуудыг харуулахыг сонгоно уу</string>
@@ -913,6 +937,8 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_hide_notifications_button_title">Мэдэгдэл товчийг нуух</string>
   <string name="morphe_show_search_button_title">Хайлт товчийг харуулах</string>
   <string name="morphe_show_search_button_index_title">Хайлт товчны байрлал</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">Тохиргоо товчийг харуулах</string>
   <string name="morphe_show_settings_button_index_title">Тохиргоо товчны байрлал</string>
   <string name="morphe_show_settings_button_type_title">Тохиргооны товчны үйлдэл</string>
@@ -998,6 +1024,7 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Хаягдлыг нуух товчлуур</string>
   <string name="morphe_hide_cast_button_title">Cast товчлуурыг нуух</string>
+  <string name="morphe_hide_cast_button_summary">Видео тоглуулагч болон хэрэгслийн мөрний Cast товчийг нуух</string>
   <string name="morphe_hide_collapse_button_title">Хумигдуулгах товчлуурыг нуух</string>
   <string name="morphe_hide_fullscreen_button_title">Дүүрэн дэлгэцийн товчлуурыг нуух</string>
   <string name="morphe_hide_player_control_buttons_background_title">Тоглуулагчийн удирдлагын арын дэвсгэрийг нуух</string>
@@ -1522,6 +1549,12 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_spoof_video_streams_player_js_variant_title">Тоглуулагчийн JavaScript хувилбар</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'Stats for nerds\'-д хуурамчаж харуулах</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_video_action_bar_layout_title">Видеоны үйлдэл хийх мөрийн бүтэц</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Үндсэн</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Сонгодог нэг мөр</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Минимал</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Сонгодог хоёр мөр</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Хязгаарлалт: Сонгодог бүтцийн тохиргоо нь хуучин загварын \'Илүү видео\' давхарлагч руу шилжинэ</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Тоглуулагчийн дүрсний загвар</string>
   <string name="morphe_player_icon_style_entry_auto">Автомат</string>
@@ -1687,4 +1720,32 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_niconico_comments_max_length_title">Сэтгэгдлийн дээд урт</string>
   <string name="morphe_niconico_comments_max_length_summary">Үүнээс илүү тэмдэгттэй сэтгэгдлүүдийг нуух. Эможи бүрийг нэг тэмдэгт гэж тооцно</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Хязгаарлахгүй</string>
+  <string name="morphe_live_chat_translate_screen_title">Шууд чатын орчуулга</string>
+  <string name="morphe_live_chat_translate_screen_summary">Шууд чат болон шууд чатын давтлага дээрх зурвасуудыг орчуулах</string>
+  <string name="morphe_live_chat_translate_title">Шууд чатыг орчуулах</string>
+  <string name="morphe_live_chat_translate_summary">Шууд чат болон шууд чатын давтлага дээрх зурвасуудыг дэлгэцэнд гарч ирэх үед орчуулна</string>
+  <string name="morphe_live_chat_translate_language_title">Орчуулах хэл</string>
+  <string name="morphe_live_chat_translate_exclude_title">Хасах хэлнүүд</string>
+  <string name="morphe_live_chat_translate_exclude_summary">id,en гэх мэт таслалаар тугаарсан хэлний кодууд. Эдгээр хэл дээрх зурвасуудыг орчуулахгүй</string>
+  <string name="morphe_live_chat_translate_provider_title">Орчуулгын үйлчилгээ үзүүлэгч</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API түлхүүр</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Таны DeepL API түлхүүр. Хэрэв DeepL ажиллахгүй бол, жишээлбэл түлхүүрийн сарын лимит дуусах үед Google Translate-ийг ашиглана</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Зурвас хуулах товчийг харуулах</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Чатны зурвас бүрт хуулж авах жижиг товч нэмнэ</string>
+  <string name="morphe_live_chat_translate_copied">Зурвас хадгалах санд хуулагдлаа</string>
+  <string name="morphe_live_chat_translate_style_title">Орчуулгын загвар</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Зөвхөн орчуулгыг харуулах</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Эх хувилбар (орчуулгатай)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Орчуулга) эх хувилбар</string>
+  <string name="morphe_live_chat_translate_bold_title">Орчуулсан текстийг тод болгох</string>
+  <string name="morphe_live_chat_translate_bold_summary">Орчуулсан текстийг тод хэлбэрээр харуулна</string>
+  <string name="morphe_live_chat_translate_use_color_title">Орчуулсан текстийн өнгө</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Орчуулсан текстэд тусгай өнгө онооно</string>
+  <string name="morphe_live_chat_translate_color_title">Орчуулсан текстийн өнгө</string>
+  <string name="morphe_live_chat_translate_color_summary">Орчуулсан текстийн hex өнгийг тохируулах</string>
+  <string name="morphe_live_chat_translate_max_length_title">Зурвасын дээд урт</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Урт зурвасуудыг орчуулгагүйгээр харуулна</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Хязгааргүй</string>
 </resources>

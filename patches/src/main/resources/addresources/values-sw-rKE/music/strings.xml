@@ -612,7 +612,6 @@ Kuki zinazohitajika: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Maneno ya Kichina (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Utafsiri wa Kigiriki, Kislaviki ya Cyrillic (ikiwemo Kirusi, Kiukraine, Kibulgari, Kiserbia, Kibelarusi, Kimakedonia), Kijorjia, Kiarmeania, Kiebrania, Kiarabu, Kiamhari na Kisiriyaki (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Inasoma %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Chagua kamusi angalau moja</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Onyesha kitufe cha Refresh</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Gusa ili kubadilisha kwenda kwa mshindani mwingine wa mashairi; bonyeza kwa muda mrefu ili kutafuta mashairi kwa kichwa cha wimbo na msanii</string>
   <string name="morphe_music_lyrics_search_dialog_title">Tafuta mashairi</string>
@@ -741,7 +740,7 @@ Mashairi yanatoka kwa huduma za upande wa tatu ambazo hazihusiani, hazifadhiliwi
   <string name="morphe_music_lyrics_use_ai_section_summary">Hutumika tu wakati mtoa huduma hatumi lebo za sehemu kama vile Chorus au Verse, ambazo kisha model yako inayooana na OpenAI huzigundua. Kuhariri mstari pia hufungua prompt yake</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL ya endpoint ya API (mfano https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Kiolezo cha Prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Viashiria: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Viashiria: {task}, {language}, {title}, {artist}, {count}, {lines}. Visivyojulikana huachwa kama vilivyoandikwa</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt imehifadhiwa</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt imehifadhiwa, lakini kituo cha AI hakiwezi kutumiwa bado. Kusanidi kwanza chini ya Mipangilio ya AI</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Kuweka upya prompt</string>

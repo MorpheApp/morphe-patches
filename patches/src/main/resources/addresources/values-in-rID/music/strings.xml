@@ -612,7 +612,6 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kata Tionghoa (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliterasi Yunani, Slavia Cyrillic (termasuk Rusia, Ukraina, Bulgaria, Serbia, Belarusia, Makedonia), Georgia, Armenia, Ibrani, Arab, Amharik, dan Syria (CLDR, ~0,5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Membaca %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Pilih setidaknya satu kamus</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Tampilkan tombol Segarkan</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Ketuk untuk beralih ke kandidat lirik berikutnya; tekan lama untuk mencari lirik berdasarkan judul lagu dan artis</string>
   <string name="morphe_music_lyrics_search_dialog_title">Cari lirik</string>
@@ -741,7 +740,7 @@ Lirik berasal dari layanan pihak ketiga yang tidak berafiliasi, disponsori, atau
   <string name="morphe_music_lyrics_use_ai_section_summary">Hanya digunakan ketika penyedia tidak menyertakan label bagian seperti Refrain atau Strofa, yang kemudian dideteksi oleh model kompatibel OpenAI Anda. Mengedit baris juga membuka promtnya</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL titik akhir API (mis. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Templat Prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholder: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholder: {task}, {language}, {title}, {artist}, {count}, {lines}. Yang tidak dikenal akan tetap seperti yang diketik</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt disimpan</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Permintaan disimpan, tetapi endpoint AI belum dapat digunakan. Konfigurasikan terlebih dahulu di Pengaturan AI</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt diatur ulang</string>

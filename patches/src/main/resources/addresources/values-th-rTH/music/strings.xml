@@ -612,7 +612,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">คำภาษาจีน (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">การถอดรหัสภาษากรีก ไวยาيليةสลาฟ (รวมถึงรัสเซีย ยูเครน บัลแกเรีย เซอร์เบีย เบลารุส มาซิโดเนีย), จอร์เจีย อาร์เมเนียน ฮีบรู อาหรับ อัมฮาริก และซีรีแอค (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">กำลังสร้างคำอ่าน %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">เลือกพจนานุกรมอย่างน้อยหนึ่งรายการ</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">แสดงปุ่มรีเฟรช</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">แตะเพื่อสลับไปยังตัวเลือกเนื้อเพลงถัดไป; กดค้างเพื่อค้นหาเนื้อเพลงตามชื่อเพลงและศิลปิน</string>
   <string name="morphe_music_lyrics_search_dialog_title">ค้นหาเนื้อเพลง</string>
@@ -741,7 +740,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">ใช้ก็ต่อเมื่อผู้ให้บริการไม่มีป้ายส่วน เช่น Chorus หรือ Verse ซึ่งโมเดลที่เข้ากันได้กับ OpenAI ของคุณจะตรวจจับ การแก้ไขแถวจะเปิดพรอมต์ของมันด้วย</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL จุดสิ้นสุด API (เช่น https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">เทมเพลตคำสั่ง</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">ตัวแทน: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">ตัวสำรอง: {task}, {language}, {title}, {artist}, {count}, {lines}. ส่วนที่ไม่รู้จักจะคงไว้ตามที่พิมพ์</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">บันทึกคำสั่งแล้ว</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">บันทึก Prompt แล้ว แต่จุดปลายทาง AI ยังใช้งานไม่ได้ โปรดกำหนดค่าภายใต้การตั้งค่า AI ก่อน</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">รีเซ็ตคำสั่งแล้ว</string>

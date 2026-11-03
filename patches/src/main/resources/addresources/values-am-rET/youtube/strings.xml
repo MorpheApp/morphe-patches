@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">የኢሞጂ ቁልፉን ደብቅ</string>
   <string name="morphe_hide_comments_filter_bar_options_title">የማጣሪያ አሞሌ አማራጮችን ደብቅ</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'ከፍተኛ\' እና \'አዲስ\' ካሉ በስተቀር ሁሉንም የማጣሪያ አሞሌ አማራጮች ይደብቃል</string>
+  <string name="morphe_hide_comments_gif_button_title">የGIF ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF-ዎችን እና ምስሎችን ደብቅ</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">በአስተያየቶች እና በምላሾች ላይ የተያያዙ GIFs እና ምስሎችን ይደብቃል</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">የስጦታ አኒሜሽን እና ካርዶችን ደብቅ</string>
   <string name="morphe_hide_comments_gift_button_title">የስጦታ ቁልፍን ደብቅ</string>
   <string name="morphe_hide_comments_info_button_title">የመረጃ ቁልፉን ደብቅ</string>
@@ -442,10 +445,16 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">አስተያየቶችን ቅዳ</string>
   <string name="morphe_copy_comments_summary">አንድን አስተያየት ለመቅዳው ተጭነው ይያዙ</string>
   <string name="morphe_copy_comments_success">አስተያየቱ ወደ ክሊፕቦርድ ተቅዳበታል</string>
+  <string name="morphe_copy_select_text_title">የመግለጫዎችን እና የፖስቶችን ጽሑፍ ይምረጡ</string>
+  <string name="morphe_copy_select_text_summary">የማንኛውንም ክፍል ለመምረጥ እና ኮፒ ለማድረግ የቪዲዮ መግለጫን ወይም ፖስትን ተጭነው ይያዙ</string>
+  <string name="morphe_copy_select_text_dialog_title">ጽሑፍን ይምረጡ</string>
+  <string name="morphe_copy_select_text_copy_all">ሁሉንም ኮፒ ያድርጉ</string>
+  <string name="morphe_copy_select_text_success">ጽሑፉ ወደ ክሊፕቦርድ ተቀድቷል</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">የቪዲዮውን ሜኑ ለመክፈት ተጭነው ይያዙ</string>
   <string name="morphe_feed_long_press_menu_summary">በፊድ ቪዲዮ ላይ የትኛውም ቦታ ተጭነው በመያዝ ሜኑውን መክፈት ይቻላል</string>
   <string name="morphe_feed_watch_later_button_title">በጥቃቅን ምስሎች ላይ \"በኋላ እመለከታለሁ\" የሚለውን ቁልፍ አሳይ</string>
+  <string name="morphe_feed_watch_later_button_summary">በፊድ ቪዲዮዎች ትምኒለር ላይ \"ቆይቼ አየዋለሁ\" የሚል ቁልፍ ይታያል፣ ቪዲዮው ከተቀመጠ የቼክ ምልክት ይኖረዋል። እሱን በመጫን ቪዲዮውን ማስቀመጥ ወይም ማስወገድ ይቻላል፣ በመጫን እና በመያዝ ደግሞ \"ወደ የቪዲዮ ዝርዝር ያስቀምጡ\" የሚለው ይከፈታል</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">የፖስት ምስሎችን አውርድ</string>
   <string name="morphe_post_image_download_summary">ምስሎች ወይም GIFs ላሏቸው ፖስቶች ከShare බොተን ጎን የአውርድዳ බොተን ይታያል፣ እንዲሁም በሜኑ ውስጥ የአውርድዳ ንጥል ይጨመራል</string>
@@ -525,6 +534,7 @@ Ask የሚለው ቁልፍ ያለው ቪዲዮ አንዴ ከተከፈተ በኋ�
   <string name="morphe_export_download_folder_change">ፎልደር ቀይር</string>
   <string name="morphe_export_download_folder_changed">የላክ ፎልደር ተቀይሯል</string>
   <string name="morphe_export_download_folder_reset">የላክ ፎልደር ተቀናሽ ሆኗል</string>
+  <string name="morphe_export_download_folder_missing">የኤክስፖርት ፎልደር %s ማግኘት አልተቻለም</string>
   <string name="morphe_export_download_flyout_title">ወደ መሳሪያው ላክ</string>
   <string name="morphe_export_download_started">ቪዲዮ እየተላከ ነው</string>
   <string name="morphe_export_download_progress">ቪዲዮ እየተላከ ነው፡ %d%%</string>
@@ -869,6 +879,10 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">የግርጌ ጽሁፎች</string>
   <string name="morphe_captions_screen_summary">ራስ-ሰር የጽሑፍ መግለጫዎችን እና የጽሑፍ መግለጫ ኩኪዎችን ያจัดการுங்கள்</string>
+  <string name="morphe_captions_languages_title">ቋንቋ እና ትርጉም</string>
+  <string name="morphe_captions_presentation_title">መልከዓና ባህሪ</string>
+  <string name="morphe_captions_advanced_title">የላቀ</string>
+  <string name="morphe_captions_advanced_summary">የኩኪ እና የትራንስክሪፕት አማራጮች</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">አውቶማቲክ የግርጌ ጽሁፎች ታይነት</string>
   <string name="morphe_auto_captions_style_entry_1">ሁልጊዜ አሳይ</string>
@@ -877,8 +891,10 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_auto_captions_style_entry_4">ድምጽ ሲጠፋ አሳይ</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">የሚመረጥ የልባዊ ጽሁፍ ቋንቋ</string>
+  <string name="morphe_preferred_caption_language_summary">ለእያንዳንዱ ቪዲዮ የርዕስ ጽሑፍ ቋንቋን በራስ-ሰር ይመርጣል</string>
   <string name="morphe_preferred_caption_language_entry_off">ጠፍቷል</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">ተጨማሪ የራስ-ሰር ትርጉም ቋንቋዎች</string>
   <string name="morphe_auto_translate_additional_languages_summary">ወደ ራስ-ትርጉም ዝርዝር ተጨማሪ ቋንቋዎችን ያክላል</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">የርዕስ ማብራሪያ ኩኪዎችን ያዘጋጁ</string>
@@ -897,8 +913,16 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_fix_transcript_summary">የጽሑፍ ትርጉም እንዳይጫን ሊያደርግ የሚችልን ቅድመ ሁኔታ የፍተሻ ስህተት ይፈታዋል</string>
   <string name="morphe_captions_in_pip_title">በምስል ውስጥ ምስል ውስጥ የግርጌ ጽሁፎችን አሳይ</string>
   <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">የርዕስ ጽሑፍ መጠን</string>
+  <string name="morphe_caption_scale_summary">ለነጠላ-ቋንቋ እና ለሁለት-ቋንቋ የግርጌ ጽሁፎች ተፈጻሚ ይሆናል</string>
   <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">የተረጋጋ የርዕስ ብሎኮች</string>
+  <string name="morphe_stable_caption_blocks_summary">የነጠላ-ቋንቋ አውቶማቲክ የግርጌ ጽሁፎችን ወደ ተረጋጉ እና ሊነበቡ ወደሚችሉ ብሎኮች ያቧክናል። የሁለት-ቋንቋ የግርጌ ጽሁፎች ሁል ጊዜ ብሎኮችን ይጠቀማሉ። አንዳንድ ቃላት ከመነገራቸው በፊት ሊታዩ ይችላሉ</string>
+  <string name="morphe_secondary_caption_language_title">ሁለተኛ የግርጌ ጽሁፍ ቋንቋ</string>
+  <string name="morphe_secondary_caption_language_summary">ከግርጌ ጽሁፎቹ ጋር ሁለተኛ ቋንቋ ያሳያል፣ እና በግርጌ ጽሁፎች ሜኑ ውስጥ የሁለት-ቋንቋ የግርጌ ጽሁፎች ማብሪያ/ማጥፊያ ይጨምራል</string>
+  <string name="morphe_dual_captions_enabled_title">የሁለት-ቋንቋ የግርጌ ጽሁፎች</string>
+  <string name="morphe_caption_block_translation_failed">አንዳንድ የግርጌ ጽሁፍ ትርጉሞች አይገኙም። የሚገኙት የግርጌ ጽሁፎች እየታዩ ነው።</string>
+  <string name="morphe_caption_blocks_too_large">ሁለቱም የግርጌ ጽሁፍ ቋንቋዎች በዚህ ፕሌየር ውስጥ አይሰፍኑም። ዋናው ቋንቋ እየታየ ነው።</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">የናቪጌሽን ቁልፎች</string>
   <string name="morphe_navigation_buttons_screen_summary">በታችኛው የናቪጌሽን ባር ላይ የትኞቹ ቁልፎች እንደሚታዩ ይምረጡ</string>
@@ -914,6 +938,11 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_hide_notifications_button_title">የማሳወቂያዎች ቁልፍን ደብቅ</string>
   <string name="morphe_show_search_button_title">የፍለጋ ቁልፍን አሳይ</string>
   <string name="morphe_show_search_button_index_title">የፍለጋ ቁልፍ ቦታ</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">የቆየው ቪዲዮዎችን በኋላ ላይ ተመልከት ቁልፍን አሳይ</string>
+  <string name="morphe_show_watch_later_button_index_title">የቆየው ቪዲዮዎችን በኋላ ላይ ተመልከት ቁልፍ ቦታ</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">በኋላ ላይ ተመልከት</string>
   <string name="morphe_show_settings_button_title">የቅንብሮች ቁልፍን አሳይ</string>
   <string name="morphe_show_settings_button_index_title">የቅንብሮች ቁልፍ ቦታ</string>
   <string name="morphe_show_settings_button_type_title">የቅንብሮች ቁልፍ ተግባር</string>
@@ -999,6 +1028,7 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">የመግለጫዎች ቁልፍን ደብቅ</string>
   <string name="morphe_hide_cast_button_title">የካስት ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_cast_button_summary">በቪዲዮ ማጫወቻው እና በቱልባሩ ውስጥ የካስት ቁልፍን ይደብቃል</string>
   <string name="morphe_hide_collapse_button_title">የማጠፍ ቁልፍን ደብቅ</string>
   <string name="morphe_hide_fullscreen_button_title">የሙሉ ስክሪን ቁልፍን ደብቅ</string>
   <string name="morphe_hide_player_control_buttons_background_title">የተጫዋች መቆጣጠሪያዎች የጀርባ ምስልን ደብቅ</string>
@@ -1523,6 +1553,12 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_player_js_variant_title">የተጫዋች JavaScript ስሪት</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">በ \'Stats for nerds\' ውስጥ ማስመሰልን ያሳዩ</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_video_action_bar_layout_title">የቪዲዮ አክሽን ባር አቀማመጥ</string>
+  <string name="morphe_video_action_bar_layout_entry_1">መደበኛ</string>
+  <string name="morphe_video_action_bar_layout_entry_2">ክላሲክ የአንድ መስመር</string>
+  <string name="morphe_video_action_bar_layout_entry_3">ሚኒማል</string>
+  <string name="morphe_video_action_bar_layout_entry_4">ክላሲክ የሁለት መስመሮች</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">ገደብ፦ ክላሲክ አቀማመጦች ወደ አሮጌው ስታይል \'ተጨማሪ ቪዲዮዎች\' ኦቨርሌ ይመለሳሉ</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">የፕሌየር አዶ ስታይል</string>
   <string name="morphe_player_icon_style_entry_auto">ራስ-ሰር</string>
@@ -1690,4 +1726,38 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">የአስተያየት ከፍተኛ ርዝመት</string>
   <string name="morphe_niconico_comments_max_length_summary">ከዚህ የበለጠ ቁምፊዎች ያላቸውን አስተያየቶች ይደብቃል። እያንዳንዱ ኢሞጂ እንደ አንድ ቁምፊ ይቆጠራል</string>
   <string name="morphe_niconico_comments_max_length_no_limit">ገደብ የለም</string>
+  <string name="morphe_niconico_comments_live_streams_title">በቀጥታ ስርጭቶች ላይ አሳይ</string>
+  <string name="morphe_niconico_comments_live_streams_summary">ቀጥታ ስርጭቶች እና ተደጋጋሚ ስርጭቶቻቸው</string>
+  <string name="morphe_niconico_comments_live_premieres_title">በቅድመ ምርጫዎች ላይ አሳይ</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">ቅድመ ምርጫዎች በሚታዩበት ጊዜ</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">በተጠናቀቁ ቅድመ ምርጫዎች ላይ አሳይ</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">የተጠናቀቁ የቅድመ ምርጫዎች የውይይት ትዝታ</string>
+  <string name="morphe_live_chat_translate_screen_title">የቀጥታ የውይይት ትርጉም</string>
+  <string name="morphe_live_chat_translate_screen_summary">የቀጥታ የውይይት እና የቀጥታ የውይይት መልሶ ማጫወቻ መልዕክቶችን ተርጉም</string>
+  <string name="morphe_live_chat_translate_title">የቀጥታ ውይይትን ተርጉም</string>
+  <string name="morphe_live_chat_translate_summary">የቀጥታ የውይይት እና የቀጥታ የውይይት መልሶ ማጫወቻ መልዕክቶች በስክሪኑ ላይ ሲታዩ ይተረጉማል</string>
+  <string name="morphe_live_chat_translate_language_title">የትርጉም ቋንቋ</string>
+  <string name="morphe_live_chat_translate_exclude_title">የተገለሉ ቋንቋዎች</string>
+  <string name="morphe_live_chat_translate_exclude_summary">በኮማ የተለዩ የቋንቋ ኮዶች ለምሳሌ id,en። በእነዚህ ቋንቋዎች ያሉ መልዕክቶች አይተረጎሙም</string>
+  <string name="morphe_live_chat_translate_provider_title">የትርጉም አቅራቢ</string>
+  <string name="morphe_live_chat_translate_provider_google">የጉግል ትርጉም</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">የDeepL API ቁልፍ</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">የእርስዎ የDeepL API ቁልፍ። DeepL ካልሰራ ለምሳሌ የቁልፉ የወር ገደብ ሲጠናቀቅ የጉግል ትርጉም ጥቅም ላይ ይውላል</string>
+  <string name="morphe_live_chat_translate_copy_button_title">መልዕክትን የሚገለብጥ ቁልፍ አሳይ</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">ለእያንዳንዱ የውይይት መልዕክት ትንሽ የቅጂ ቁልፍ ይጨምራል</string>
+  <string name="morphe_live_chat_translate_copied">መልዕክቱ ወደ ክሊፕቦርድ ተገለበጠ</string>
+  <string name="morphe_live_chat_translate_style_title">የትርጉም ስታይል</string>
+  <string name="morphe_live_chat_translate_style_translated_only">የተተረጎመው ብቻ</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">ዋናው (የተተረጎመው)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(የተተረጎመው) ዋናው</string>
+  <string name="morphe_live_chat_translate_bold_title">የተተረጎመውን ጽሑፍ በደመቀ ሁኔታ አሳይ</string>
+  <string name="morphe_live_chat_translate_bold_summary">የተተረጎመውን ጽሑፍ በደመቀ ሁኔታ ያሳያል</string>
+  <string name="morphe_live_chat_translate_use_color_title">የተተረጎመው ጽሑፍ የባለቤት ቀለም</string>
+  <string name="morphe_live_chat_translate_use_color_summary">ለተተረጎመው ጽሑፍ የተለየ ቀለም ይሰጣል</string>
+  <string name="morphe_live_chat_translate_color_title">የተተረጎመው ጽሑፍ ቀለም</string>
+  <string name="morphe_live_chat_translate_color_summary">የተተረጎመው ጽሑፍ የሄክስ ቀለም ይወስኑ</string>
+  <string name="morphe_live_chat_translate_max_length_title">የመልእክቱ ከፍተኛ ርዝመት</string>
+  <string name="morphe_live_chat_translate_max_length_summary">ረጅም መልእክቶች ሳይተረጎሙ ይታያሉ</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">ገደብ የለም</string>
 </resources>

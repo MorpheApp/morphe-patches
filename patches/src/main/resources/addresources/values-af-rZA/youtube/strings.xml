@@ -445,6 +445,11 @@ Verslae is openbaar en word nagegaan voordat 'n kanaal by 'n lys gevoeg word. Ve
   <string name="morphe_copy_comments_title">Kopieer kommentaar</string>
   <string name="morphe_copy_comments_summary">Raak \'n kommentaar aan en hou dit vas om dit te kopieer</string>
   <string name="morphe_copy_comments_success">Kommentaar na knipbord gekopieer</string>
+  <string name="morphe_copy_select_text_title">Kies teks van beskrywings en plasings</string>
+  <string name="morphe_copy_select_text_summary">Tik en hou \'n video-beskrywing of \'n plasing in om enige deel daarvan te kies en te kopieer</string>
+  <string name="morphe_copy_select_text_dialog_title">Kies teks</string>
+  <string name="morphe_copy_select_text_copy_all">Kopieer alles</string>
+  <string name="morphe_copy_select_text_success">Teks gekopieer na knipbord</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Tik en hou om die videomenu oop te maak</string>
   <string name="morphe_feed_long_press_menu_summary">Tik en hou enige plek op ’n voedingsvideo open sy menu</string>
@@ -933,6 +938,11 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_hide_notifications_button_title">Hide Search button</string>
   <string name="morphe_show_search_button_title">Show Settings button</string>
   <string name="morphe_show_search_button_index_title">Settings button position</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Wys \'Kyk later\'-knoppie</string>
+  <string name="morphe_show_watch_later_button_index_title">\'Kyk later\'-knoppie posisie</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Kyk later</string>
   <string name="morphe_show_settings_button_title">When enabled, tap opens Morphe settings and long press opens YouTube settings, disable to swap</string>
   <string name="morphe_show_settings_button_index_title">Reduces the horizontal spacing between buttons</string>
   <string name="morphe_show_settings_button_type_title">Instellings-knoppie aksie</string>
@@ -1716,6 +1726,12 @@ Automaties opname is opsioneel. Dit stop in incognito of wanneer die rekening ve
   <string name="morphe_niconico_comments_max_length_title">Maksimum kommentarlengte</string>
   <string name="morphe_niconico_comments_max_length_summary">Steek kommentaar weg met meer karakters as hierdie. Elke emoji tel as een karakter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Geen limiet</string>
+  <string name="morphe_niconico_comments_live_streams_title">Wys op regstreme</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Regstreme en hul herhalings</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Wys op premières</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premières terwyl hulle speel</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Wys op beëindigde premières</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Kletsspoor van premières wat beëindig het</string>
   <string name="morphe_live_chat_translate_screen_title">Lewendige geselsvertaling</string>
   <string name="morphe_live_chat_translate_screen_summary">Vertaal lewendige gesels- en terugspelboodskappe</string>
   <string name="morphe_live_chat_translate_title">Vertaal lewendige gesels</string>
@@ -1723,6 +1739,11 @@ Automaties opname is opsioneel. Dit stop in incognito of wanneer die rekening ve
   <string name="morphe_live_chat_translate_language_title">Vertaaltaal</string>
   <string name="morphe_live_chat_translate_exclude_title">Uitgesluit tale</string>
   <string name="morphe_live_chat_translate_exclude_summary">Komma-geskeide taalkodes soos id,en. Boodskappe in hierdie tale word nie vertaal nie</string>
+  <string name="morphe_live_chat_translate_provider_title">Vertalingsverskaffer</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API-sleutel</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Jou DeepL API-sleutel. Google Translate word gebruik as DeepL misluk, byvoorbeeld wanneer die maandelikse limiet van die sleutel bereik is</string>
   <string name="morphe_live_chat_translate_copy_button_title">Wys kopieer-knoppie</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Voeg ’n klein kopieer-knoppie by elke boodskap by</string>
   <string name="morphe_live_chat_translate_copied">Boodskap na knipbord gekopieer</string>

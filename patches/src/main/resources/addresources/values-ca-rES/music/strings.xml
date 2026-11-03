@@ -612,7 +612,6 @@ Cookies requerides: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Paraules xineses (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliteració de grec, ciríllic eslav (inclòs rus, ucraïnès, búlgar, serbi, belarús, macedoni), georgià, armeni, hebreu, àrab, amhàric i siriac (CLDR, ~0,5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Llegint %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Trieu almenys un diccionari</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Mostrar botó d\'actualització</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Toca per canviar al següent candidat de lletres; manté premut per buscar lletres pel títol de la cançó i l\'artista</string>
   <string name="morphe_music_lyrics_search_dialog_title">Cerca lets</string>
@@ -741,7 +740,7 @@ Les lletres provenen de serveis de tercers que no estan afiliats, patrocinats ni
   <string name="morphe_music_lyrics_use_ai_section_summary">Només s\'utilitza quan el proveïdor no envia etiquetes de secció com Estribor o Vers, que el vostre model compatible amb OpenAI detectarà. Editar la fila també obre el seu prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL de l\'endpoint de l\'API (per exemple, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Plantilla del prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Marcadors de posició: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Marcadors de posició: {task}, {language}, {title}, {artist}, {count}, {lines}. Els desconeguts es deixen tal com s\'han escrit</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt desat</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt guardat, però l\'endpoint de la IA encara no és utilitzable. Configureu-lo primer a l\'apartat de Configuració de la IA</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt reiniciat</string>

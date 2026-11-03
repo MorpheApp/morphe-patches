@@ -602,7 +602,6 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Chinese woorden (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grieks, Slavisch Cyrillisch (inclusief Russisch, Oekraïens, Bulgaars, Servisch, Wit-Russisch, Macedonisch), Georgisch, Armeens, Hebreeuws, Arabisch, Amharsiërs en Syrisch transliteratie (CLDR, ~0,5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Uitspraak %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Kies ten minste één woordenboek</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Vernieuwknop weergeven</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Tik om over te schakelen naar de volgende songtekstkandidaat; lang drukken om songteksten te zoeken op titel en artiest</string>
   <string name="morphe_music_lyrics_search_dialog_title">Zoek songteksten</string>
@@ -731,7 +730,7 @@ Songteksten komen van derde-dienstverleners die niet gelieerd zijn aan, gesponso
   <string name="morphe_music_lyrics_use_ai_section_summary">Alleen gebruikt wanneer de aanbieder geen sectielabels zoals Refrein of Strofe aanbiedt, die uw OpenAI-compatibele model dan detecteert. Het bewerken van de rij opent ook de prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-eindpunt-URL (bijv. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt-sjabloon</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholders: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholders: {task}, {language}, {title}, {artist}, {count}, {lines}. Onbekende placeholders blijven ongewijzigd</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt opgeslagen</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt opgeslagen, maar het AI-endpoint is nog niet bruikbaar. Configureer het eerst onder AI-instellingen</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt gereset</string>

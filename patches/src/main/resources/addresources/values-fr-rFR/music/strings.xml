@@ -238,7 +238,7 @@ Les morceaux téléchargés apparaîtront ici"</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Masquer les règles de la communauté</string>
   <string name="morphe_music_hide_comments_context_title">Masquer le message de contexte</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Masquer le bouton \'Émoji\'</string>
-  <string name="morphe_music_hide_comments_gif_button_title">Masquer le bouton GIF</string>
+  <string name="morphe_music_hide_comments_gif_button_title">Masquer le bouton \'GIF\'</string>
   <string name="morphe_music_hide_comments_gifs_and_images_title">Masquer les GIF et les images</string>
   <string name="morphe_music_hide_comments_gifs_and_images_summary">Masque les GIF et les images joints aux commentaires et aux réponses</string>
   <string name="morphe_music_hide_comments_info_button_title">Masquer le bouton \'Info\'</string>
@@ -612,7 +612,6 @@ Cookies nécessaires : SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Mots chinois (pinyin-pro, ~17 Mo)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Translittération du Grec, Cyrillique Slave (y compris le Russe, l\'Ukrainien, le Bulgare, le Serbe, le Biélorusse et le Macédonien), Géorgien, Arménien, Hébreu, Arabe, Amharique et Syriaque (CLDR, ~0,5 Mo)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Lecture %1$s : %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Choisissez au moins un dictionnaire</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Afficher un bouton \'Actualiser\'</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Appuyez pour passer aux paroles candidates suivantes ; appuyez longuement pour rechercher les paroles par titre de chanson et artiste</string>
   <string name="morphe_music_lyrics_search_dialog_title">Rechercher des paroles</string>
@@ -741,7 +740,7 @@ Les paroles proviennent de services tiers qui ne sont ni affiliés, ni sponsoris
   <string name="morphe_music_lyrics_use_ai_section_summary">Utilisé uniquement lorsque le fournisseur ne fournit pas d\'étiquettes de section, comme \'Refrain\' ou \'Couplet\', que votre modèle compatible avec OpenAI détecte ensuite. Modifier la ligne ouvre également son prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL du point de terminaison de l\'API (par ex. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Modèle de prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Variables de remplacement : {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Espaces réservés : {task}, {language}, {title}, {artist}, {count}, {lines}. Ceux qui sont inconnus sont laissés tels quels</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt enregistré</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt enregistré, mais le point de terminaison de l\'IA n\'est pas encore utilisable. Configurez-le d\'abord dans \'Paramètres de l\'IA\'</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt réinitialisé</string>

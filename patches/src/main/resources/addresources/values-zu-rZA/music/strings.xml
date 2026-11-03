@@ -612,7 +612,6 @@ I-cookies ezidingekayo: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Amazwi esiShayina (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Ukuhumusha kwesiGreki, i-Slavic Cyrillic (kuhlanganise ne-Russian, Ukrainian, Bulgarian, Serbian, Belarusian, Macedonian), i-Georgian, Armenian, Hebrew, Arabic, Amharic ne-Syriac (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Kufundwa %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Khetha okukodwa okubalulekile kwedikshenari</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Khombisa inkinobho ye-Refresh</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Chofoza ukushintshela kumelwe amazwi alandelayo; cindezela isikhathi eside ukuze useshe amazwi ngesihloko sengoma nomculi</string>
   <string name="morphe_music_lyrics_search_dialog_title">Funa amagama engoma</string>
@@ -741,7 +740,7 @@ Amazwi ingoma avela ezinkundleni zangaphandle ezingahlobene ne-Morphe, ezingaxha
   <string name="morphe_music_lyrics_use_ai_section_summary">Kusetshenziswa kuphela lapho umhlinzeki engithumeli izilabelo zezigaba njenge-Chorus noma i-Verse, okuzotholwa yi-model yakho ehambisana ne-OpenAI. Ukuhlela umugqa kuvula i-prompt yawo</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL ye-API endpoint (isib. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Ithempulethi ye-Prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Izindawo zokugcina: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Izindawo zokugcwalisa: {task}, {language}, {title}, {artist}, {count}, {lines}. Izingane ezingaziwa ziyashiya njengoba zibhaliwe</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">I-Prompt igcinwe</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">I-prompt igcinwe, kodwa i-AI endpoint ayikawukwazi ukusetshenziswa. Isethe ukuqala ngaphansi kwe-AI Settings</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">I-Prompt ibuyiselwe emva</string>

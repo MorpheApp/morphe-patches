@@ -445,6 +445,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">Копиране на коментарите</string>
   <string name="morphe_copy_comments_summary">Докоснете и задръжте коментар, за да го копирате</string>
   <string name="morphe_copy_comments_success">Коментарът е копиран в клипборда</string>
+  <string name="morphe_copy_select_text_title">Избери текст от описанията и публикациите</string>
+  <string name="morphe_copy_select_text_summary">Докоснете и задръжте върху описание на видео или публикация, за да изберете и копирате която и да е част от него</string>
+  <string name="morphe_copy_select_text_dialog_title">Избери текст</string>
+  <string name="morphe_copy_select_text_copy_all">Копирай всичко</string>
+  <string name="morphe_copy_select_text_success">Текстът е копиран в клипборда</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Пдокоснете и задържте, за да отворите видеомению</string>
   <string name="morphe_feed_long_press_menu_summary">Докасването и задържането навсякъде по видео в лентата отваря неговото меню</string>
@@ -933,6 +938,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">Скрий менюто „Таймер за заспиване“</string>
   <string name="morphe_show_search_button_title">Скрий менюто „Повторение на видео“</string>
   <string name="morphe_show_search_button_index_title">Скрий менюто „Режим на околната среда“</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Показване на бутона „Гледайте по-късно\"</string>
+  <string name="morphe_show_watch_later_button_index_title">Позиция на бутона „Гледайте по-късно\"</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Гледайте по-късно</string>
   <string name="morphe_show_settings_button_title">Скрий менюто „Стабилна сила на звука“</string>
   <string name="morphe_show_settings_button_index_title">Скрий менюто „Помощ и обратна връзка“</string>
   <string name="morphe_show_settings_button_type_title">Действие на бутона за Настройки</string>
@@ -1716,6 +1726,12 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">Максимална дължина на коментара</string>
   <string name="morphe_niconico_comments_max_length_summary">Скрива коментари с повече знаци от посочения брой. Всеки емоджи се брои за един знак</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без ограничение</string>
+  <string name="morphe_niconico_comments_live_streams_title">Показване при предавания на живо</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Предавания на живо и записите от тях</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Показване при премиери</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Премиери, докато се възпроизвеждат</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Показване при приключили премиери</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Повторение на чата за приключили премиери</string>
   <string name="morphe_live_chat_translate_screen_title">Превод на чата на живо</string>
   <string name="morphe_live_chat_translate_screen_summary">Превеждай съобщенията от чата на живо и повторението на чата</string>
   <string name="morphe_live_chat_translate_title">Преведи чата на живо</string>
@@ -1723,6 +1739,11 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">Език за превод</string>
   <string name="morphe_live_chat_translate_exclude_title">Изключени езици</string>
   <string name="morphe_live_chat_translate_exclude_summary">Кодове на езици, разделени със запетая, като например id,en. Съобщенията на тези езици не се превеждат.</string>
+  <string name="morphe_live_chat_translate_provider_title">Доставчик на превод</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Превод</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">API ключ за DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Вашият API ключ за DeepL. Google Преводач се използва, ако DeepL не успее, например когато месечният лимит на ключа бъде достигнат</string>
   <string name="morphe_live_chat_translate_copy_button_title">Показване на бутон за копиране на съобщението</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Добавя малък бутон за копиране на всяко съобщение в чата.</string>
   <string name="morphe_live_chat_translate_copied">Съобщението е копирано в клипборда</string>

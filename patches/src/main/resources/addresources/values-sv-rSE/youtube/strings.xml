@@ -445,6 +445,11 @@ Rapporter är offentliga och granskas innan en kanal läggs till i en lista. Bor
   <string name="morphe_copy_comments_title">Kopiera kommentarer</string>
   <string name="morphe_copy_comments_summary">Tryck och håll på en kommentar för att kopiera den</string>
   <string name="morphe_copy_comments_success">Kommentaren kopierad till urklipp</string>
+  <string name="morphe_copy_select_text_title">Markera text i beskrivningar och inlägg</string>
+  <string name="morphe_copy_select_text_summary">Tryck och håll kvar på en videobeskrivning eller ett inlägg för att markera och kopiera valfri del av texten</string>
+  <string name="morphe_copy_select_text_dialog_title">Markera text</string>
+  <string name="morphe_copy_select_text_copy_all">Kopiera alla</string>
+  <string name="morphe_copy_select_text_success">Text kopierad till urklipp</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Tryck länge för att öppna videomenyn</string>
   <string name="morphe_feed_long_press_menu_summary">Genom att trycka och hålla någonstans på en flödesvideo öppnas dess meny</string>
@@ -933,6 +938,11 @@ För att åtgärda detta, aktivera 'Spoofa videoströmmar' och ändra 'Standardk
   <string name="morphe_hide_notifications_button_title">Dölj knappen Aviseringar</string>
   <string name="morphe_show_search_button_title">Dölj knappen Sök</string>
   <string name="morphe_show_search_button_index_title">Position för knappen Sök</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Visa knappen Titta senare</string>
+  <string name="morphe_show_watch_later_button_index_title">Position för knappen Titta senare</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Titta senare</string>
   <string name="morphe_show_settings_button_title">Visa knappen Inställningar</string>
   <string name="morphe_show_settings_button_index_title">Position för knappen Inställningar</string>
   <string name="morphe_show_settings_button_type_title">Åtgärd för knappen Inställningar</string>
@@ -1716,6 +1726,12 @@ Automatisk inspelning är valfri. Den stoppas i inkognito-läge eller när konto
   <string name="morphe_niconico_comments_max_length_title">Max kommentarlängd</string>
   <string name="morphe_niconico_comments_max_length_summary">Döljer kommentarer som har fler tecken än detta. Varje emoji räknas som ett tecken</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Ingen gräns</string>
+  <string name="morphe_niconico_comments_live_streams_title">Visa på liveströmmar</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Liveströmmar och deras repriser</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Visa på premiärer</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premiärer medan de spelas upp</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Visa på avslutade premiärer</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Chatt-uppspelning av premiärer som har avslutats</string>
   <string name="morphe_live_chat_translate_screen_title">Översättning av livechatt</string>
   <string name="morphe_live_chat_translate_screen_summary">Översätt meddelanden i livechatt och uppspelning av livechatt</string>
   <string name="morphe_live_chat_translate_title">Översätt livechatt</string>
@@ -1723,6 +1739,11 @@ Automatisk inspelning är valfri. Den stoppas i inkognito-läge eller när konto
   <string name="morphe_live_chat_translate_language_title">Översättningsspråk</string>
   <string name="morphe_live_chat_translate_exclude_title">Exkluderade språk</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kommaseparerade språkkoder, till exempel id,en. Meddelanden på dessa språk översätts inte</string>
+  <string name="morphe_live_chat_translate_provider_title">Översättningsleverantör</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API-nyckel</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Din DeepL API-nyckel. Google Translate används om DeepL misslyckas, till exempel när nyckelns månatliga gräns har uppnåtts</string>
   <string name="morphe_live_chat_translate_copy_button_title">Visa knapp för att kopiera meddelande</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Lägger till en liten kopieringsknapp till varje chattmeddelande</string>
   <string name="morphe_live_chat_translate_copied">Meddelande kopierat till urklipp</string>

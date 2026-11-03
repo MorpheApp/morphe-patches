@@ -443,6 +443,11 @@ Rapporter er offentlige og gennemgås, før en kanal tilføjes til en liste. Fje
   <string name="morphe_copy_comments_title">Kopiér kommentarer</string>
   <string name="morphe_copy_comments_summary">Tryk og hold på en kommentar for at kopiere den</string>
   <string name="morphe_copy_comments_success">Kommentar kopieret til udklipsholderen</string>
+  <string name="morphe_copy_select_text_title">Marker tekst i beskrivelser og indlæg</string>
+  <string name="morphe_copy_select_text_summary">Tryk og hold en videobeskrivelse eller et indlæg for at markere og kopiere en valgfri del af det</string>
+  <string name="morphe_copy_select_text_dialog_title">Marker tekst</string>
+  <string name="morphe_copy_select_text_copy_all">Kopier alt</string>
+  <string name="morphe_copy_select_text_success">Tekst kopieret til udklipsholder</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Tryk og hold for at åbne video menu</string>
   <string name="morphe_feed_long_press_menu_summary">At trykke og holde et vilkårligt sted på en feed-video åbner dens menu</string>
@@ -929,6 +934,11 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
   <string name="morphe_hide_notifications_button_title">Skjul Notifikationer-knappen</string>
   <string name="morphe_show_search_button_title">Vis Søg-knappen</string>
   <string name="morphe_show_search_button_index_title">Søg-knappens position</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Vis knap til Se senere</string>
+  <string name="morphe_show_watch_later_button_index_title">Position for knap til Se senere</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Se senere</string>
   <string name="morphe_show_settings_button_title">Vis Indstillinger-knappen</string>
   <string name="morphe_show_settings_button_index_title">Indstillinger-knappens position</string>
   <string name="morphe_show_settings_button_type_title">Indstillinger-knappen vises</string>
@@ -1712,6 +1722,12 @@ Automatisk optagelse er valgfri. Den stopper i inkognito eller når kontoen ænd
   <string name="morphe_niconico_comments_max_length_title">Maksimal kommentarlængde</string>
   <string name="morphe_niconico_comments_max_length_summary">Skjuler kommentarer med flere tegn end dette. Hver emoji tæller som ét tegn</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Ingen grænse</string>
+  <string name="morphe_niconico_comments_live_streams_title">Vis på live-streams</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Live-streams og deres gengivelser</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Vis på premierer</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premierer mens de afspilles</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Vis på afsluttede premierer</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Chat-gengivelse af premierer, der er afsluttet</string>
   <string name="morphe_live_chat_translate_screen_title">Oversættelse af livechat</string>
   <string name="morphe_live_chat_translate_screen_summary">Oversæt beskeder fra livechat og livechat-afspilning</string>
   <string name="morphe_live_chat_translate_title">Oversæt livechat</string>
@@ -1719,6 +1735,11 @@ Automatisk optagelse er valgfri. Den stopper i inkognito eller når kontoen ænd
   <string name="morphe_live_chat_translate_language_title">Oversættelsessprog</string>
   <string name="morphe_live_chat_translate_exclude_title">Ekskluderede sprog</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kommaseparerede sprogkoder som f.eks. id,en. Beskeder på disse sprog bliver ikke oversat</string>
+  <string name="morphe_live_chat_translate_provider_title">Oversættelsesudbyder</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Oversæt</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API-nøgle</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Din DeepL API-nøgle. Google Oversæt bruges, hvis DeepL fejler, for eksempel når den månedlige grænse for nøglen er nået</string>
   <string name="morphe_live_chat_translate_copy_button_title">Vis knap til at kopiere besked</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Tilføjer en lille kopieringsknap til hver chatbesked</string>
   <string name="morphe_live_chat_translate_copied">Besked kopieret til udklipsholder</string>

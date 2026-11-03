@@ -445,6 +445,11 @@ Məhdudiyyətlər:
   <string name="morphe_copy_comments_title">Şərhləri köçür</string>
   <string name="morphe_copy_comments_summary">Şərhi köçürmək üçün toxunub saxla</string>
   <string name="morphe_copy_comments_success">Şərh buferə köçürüldü</string>
+  <string name="morphe_copy_select_text_title">Təsvirlərin və postların mətnini seç</string>
+  <string name="morphe_copy_select_text_summary">Video təsvirini və ya postu seçmək və onun istənilən hissəsini köçürmək üçün ona toxunub saxla</string>
+  <string name="morphe_copy_select_text_dialog_title">Mətni seç</string>
+  <string name="morphe_copy_select_text_copy_all">Hamısını köçür</string>
+  <string name="morphe_copy_select_text_success">Mətn buferə köçürüldü</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Video menyusunu açmaq üçün toxunub saxla</string>
   <string name="morphe_feed_long_press_menu_summary">Axında videonun istənilən yerinə toxunub saxlamaq onun menyusunu açır</string>
@@ -933,6 +938,11 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <string name="morphe_hide_notifications_button_title">Bildirişlər düyməsin gizlət</string>
   <string name="morphe_show_search_button_title">Axtarış düyməsini göstər</string>
   <string name="morphe_show_search_button_index_title">Axtarış düyməsi mövqeyi</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Sonra izləyin düyməsini göstər</string>
+  <string name="morphe_show_watch_later_button_index_title">Sonra izləyin düyməsinin mövqeyi</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Sonra izləyin</string>
   <string name="morphe_show_settings_button_title">Ayarlar düyməsini göstər</string>
   <string name="morphe_show_settings_button_index_title">Ayarlar düyməsi mövqeyi</string>
   <string name="morphe_show_settings_button_type_title">Ayarlar düyməsi fəaliyyəti</string>
@@ -1716,6 +1726,12 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimum şərh uzunluğu</string>
   <string name="morphe_niconico_comments_max_length_summary">Bundan çox simvolu olan şərhləri gizlədir. Hər bir emoji bir simvol kimi sayılır</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Limitsiz</string>
+  <string name="morphe_niconico_comments_live_streams_title">Canlı yayımlarda göstər</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Canlı yayımlar və onların təkrar oxunması</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Premyeralarda göstər</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Oynadılan zaman premyeralar</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Sonlanmış premyeralarda göstər</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Sonlanmış premyeraların söhbət təkrarı</string>
   <string name="morphe_live_chat_translate_screen_title">Canlı söhbət tərcüməsi</string>
   <string name="morphe_live_chat_translate_screen_summary">Canlı söhbət və canlı söhbətin təkrar mesajlarını tərcümə et</string>
   <string name="morphe_live_chat_translate_title">Canlı söhbəti tərcümə et</string>
@@ -1723,6 +1739,11 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_live_chat_translate_language_title">Tərcümə dili</string>
   <string name="morphe_live_chat_translate_exclude_title">İstisna edilmiş dillər</string>
   <string name="morphe_live_chat_translate_exclude_summary">Vergüllə ayrılmış, məsələn; id,en kimi dil kodları. Bu dillərdəki mesajlar tərcümə olunmur</string>
+  <string name="morphe_live_chat_translate_provider_title">Tərcümə təminatçısı</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Tərcümə</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API açarı</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">DeepL API açarınız. Google Tərcümə, DeepL uğursuz olduqda, məsələn, açarın aylıq limitinə çatıldıqda istifadə olunur</string>
   <string name="morphe_live_chat_translate_copy_button_title">Mesajı köçür düyməsini göstər</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Hər söhbət mesajına kiçik köçürmə düyməsi əlavə edir </string>
   <string name="morphe_live_chat_translate_copied">Mesaj buferə köçürüldü</string>

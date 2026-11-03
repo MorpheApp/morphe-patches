@@ -445,6 +445,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">Скапіяваць каментары</string>
   <string name="morphe_copy_comments_summary">Націсніце і ўтрымайце каментар, каб скапіяваць яго</string>
   <string name="morphe_copy_comments_success">Каментар скопіраваны ў буфер абмену</string>
+  <string name="morphe_copy_select_text_title">Выбраць тэкст апісанняў і пастоў</string>
+  <string name="morphe_copy_select_text_summary">Націсніце і ўтрымайце апісанне відэа або пост, каб выбраць і скапіяваць любую яго частку</string>
+  <string name="morphe_copy_select_text_dialog_title">Выбраць тэкст</string>
+  <string name="morphe_copy_select_text_copy_all">Скапіяваць усё</string>
+  <string name="morphe_copy_select_text_success">Тэкст скапіяваны ў буфер абмену</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Націсніце і ўтрымайце, каб адкрыць меню відэа</string>
   <string name="morphe_feed_long_press_menu_summary">Доўгае націсканне ў любым месці відэа ў стужцы адкрывае яго меню</string>
@@ -933,6 +938,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">Схаваць кнопку \"Апавяшчэнні\"</string>
   <string name="morphe_show_search_button_title">Паказаць кнопку пошуку</string>
   <string name="morphe_show_search_button_index_title">Пазіцыя кнопкі пошуку</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Паказваць кнопку \"Глядзець пазней\"</string>
+  <string name="morphe_show_watch_later_button_index_title">Пазіцыя кнопкі \"Глядзець пазней\"</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Глядзець пазней</string>
   <string name="morphe_show_settings_button_title">Паказаць кнопку налад</string>
   <string name="morphe_show_settings_button_index_title">Пазіцыя кнопкі налад</string>
   <string name="morphe_show_settings_button_type_title">Дзеянне кнопкі Налад</string>
@@ -1716,6 +1726,12 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">Максимальная даўжыня каментара</string>
   <string name="morphe_niconico_comments_max_length_summary">Схаваць каментары, у якіх больш сімвалаў, чым гэтая колькасць. Кожны эмодзі лічыцца за адзін сімвал</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без абмежавання</string>
+  <string name="morphe_niconico_comments_live_streams_title">Паказваць у прамых трансляцыях</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Прамыя трансляцыі і іх паўторы</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Паказваць на прэм\'ерах</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Прэм\'еры падчас іх прагляду</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Паказваць на завершаных прэм\'ерах</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Паўтор чата прэм\'ер, якія завяршыліся</string>
   <string name="morphe_live_chat_translate_screen_title">Пераклад жывога чата</string>
   <string name="morphe_live_chat_translate_screen_summary">Перакладаць паведамленні жывога чата і паўтораў жывога чата</string>
   <string name="morphe_live_chat_translate_title">Перакласці жывы чат</string>
@@ -1723,6 +1739,11 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">Мова перакладу</string>
   <string name="morphe_live_chat_translate_exclude_title">Выключаныя мовы</string>
   <string name="morphe_live_chat_translate_exclude_summary">Коды моў, аддзеленыя коскамі, напрыклад, id,en. Паведамленні гэтымі мовамі не перакладацца</string>
+  <string name="morphe_live_chat_translate_provider_title">Пастаўшчык перакладу</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">API-ключ DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Ваш API-ключ DeepL. Google Translate выкарыстоўваецца, калі DeepL не спрацоўвае, напрыклад, пры дасягненні штомесячнага ліміту ключа</string>
   <string name="morphe_live_chat_translate_copy_button_title">Паказваць кнопку капіявання паведамлення</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Дадае маленькую кнопку капіявання да кожнага паведамлення чата</string>
   <string name="morphe_live_chat_translate_copied">Паведамленне скапіравана ў буфер абмену</string>

@@ -612,7 +612,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">מילים סיניות (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">יוונית, סלאביים קיריליים (כולל רוסי, אוקראיני, בולגרי, סרבי, בלארוסי, מקדוני), גיאורגי, ארמני, עברי, ערבית, אמארית וסורית האברה (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">קריאה %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">בחר לפחות מילון אחד</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">הצג את כפתור הרענון</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">לחץ כדי לעבור למועמד השירים הבא; לחיצה ארוכה לחפש שיריות לפי שם השיר ואמן</string>
   <string name="morphe_music_lyrics_search_dialog_title">חפש מילים</string>
@@ -741,7 +740,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">משמש רק כאשר הספק לא מכיל תוויות קטע כמו Chorus או Verse, שהדגם התואם OpenAI שלך מאתר לאחר מכן. עריכת השורה פותחת גם את הפוקט שלו</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL נקודת API (למשל https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">תבנית הנחיה</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">ממלאי מקום: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">ממלאי מקום: {task}, {language}, {title}, {artist}, {count}, {lines}. אלו שאינם מוכרים יישארו כפי שהוקלדו</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">ההנחיה נשמרה</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">ההנחיה נשמרה, אך נקודת הקצה של AI אינה ניתנת לשימוש עדיין. הגדר אותה תחת הגדרות AI ראשון</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">ההנחיה אופסה</string>

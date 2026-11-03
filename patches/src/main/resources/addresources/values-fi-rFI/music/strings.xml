@@ -607,7 +607,6 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kiinan sanat (pinyin-pro, n. 17 Mt)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Kreikka, slaavilaiset kyrilliset (myös venäjä, ukrainaksi, bulgariksi, serbiaksi, belorussiksi, makedoniksi), georgia, armenia, heprea, arabia, amhara ja syrian transkriptio (CLDR, n. 0,5 Mt)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Äänteet %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Valitse vähintään yksi sanasto</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Napauta vaihtaaksesi seuraavaan sanoitusehdotukseen; pitkä painallus päivittää.</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Napauta vaihtaaksesi seuraavaan sanojen ehdokkaaseen; Paina pitkänä hakeaksesi sanoja kappaleen nimen ja artistin mukaan</string>
   <string name="morphe_music_lyrics_search_dialog_title">Hae sanoituksia</string>
@@ -736,7 +735,7 @@ Laulutekstit tulevat kolmannen osapuolen palveluista, jotka eivät ole Morphen a
   <string name="morphe_music_lyrics_use_ai_section_summary">Käytetään vain silloin, kun provider ei sisällä osiotarroja, kuten Refraani tai Särje, jotka sitten avoimet AI-yhteensopivat mallit tunnistavat. Rivin muokkaaminen avaa myös sen promptin</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-päätepisteen URL (esim. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Kehotepohja</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Paikkamerkit: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Paikkamerkit: {task}, {language}, {title}, {artist}, {count}, {lines}. Tuntemattomat jätetään sellaisinaan</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Kehote tallennettu</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Kehoitus tallennettu, mutta tekoälypäätepiste ei ole vielä käytettävissä. Määritä se ensin Teekohtaisista asetuksista</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Kehote nollattu</string>

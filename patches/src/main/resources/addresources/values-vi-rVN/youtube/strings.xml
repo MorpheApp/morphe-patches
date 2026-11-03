@@ -445,6 +445,11 @@ Báo cáo được công khai và được xem xét trước khi một kênh đ�
   <string name="morphe_copy_comments_title">Sao chép bình luận</string>
   <string name="morphe_copy_comments_summary">Chạm và giữ một bình luận để sao chép</string>
   <string name="morphe_copy_comments_success">Đã sao chép bình luận vào bảng tạm</string>
+  <string name="morphe_copy_select_text_title">Chọn văn bản của mô tả và bài đăng</string>
+  <string name="morphe_copy_select_text_summary">Nhấn và giữ mô tả video hoặc một bài đăng để chọn và sao chép bất kỳ phần nào của nội dung đó</string>
+  <string name="morphe_copy_select_text_dialog_title">Chọn văn bản</string>
+  <string name="morphe_copy_select_text_copy_all">Sao chép tất cả</string>
+  <string name="morphe_copy_select_text_success">Đã sao chép văn bản vào bảng nhớ tạm</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Chạm và giữ để mở menu video</string>
   <string name="morphe_feed_long_press_menu_summary">Chạm và giữ ở bất kỳ đâu trên video nguồn sẽ mở menu của video đó</string>
@@ -933,6 +938,11 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_hide_notifications_button_title">Ẩn nút Thông báo</string>
   <string name="morphe_show_search_button_title">Hiện nút Tìm kiếm</string>
   <string name="morphe_show_search_button_index_title">Vị trí nút Tìm kiếm</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Hiện nút Xem sau</string>
+  <string name="morphe_show_watch_later_button_index_title">Vị trí nút Xem sau</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Xem sau</string>
   <string name="morphe_show_settings_button_title">Hiện nút Cài đặt</string>
   <string name="morphe_show_settings_button_index_title">Vị trí nút Cài đặt</string>
   <string name="morphe_show_settings_button_type_title">Thao tác nút cài đặt</string>
@@ -1716,6 +1726,12 @@ Tự động ghi là tùy chọn. Nó dừng lại khi ở chế độ ẩn danh
   <string name="morphe_niconico_comments_max_length_title">Độ dài bình luận tối đa</string>
   <string name="morphe_niconico_comments_max_length_summary">Ẩn các bình luận có nhiều ký tự hơn giá trị này. Mỗi emoji được tính là một ký tự</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Không giới hạn</string>
+  <string name="morphe_niconico_comments_live_streams_title">Hiện trên các luồng trực tiếp</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Các luồng trực tiếp và bản phát lại của chúng</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Hiện trên các buổi công chiếu</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Các buổi công chiếu trong khi đang phát</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Hiện trên các buổi công chiếu đã kết thúc</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Phát lại chat của các buổi công chiếu đã kết thúc</string>
   <string name="morphe_live_chat_translate_screen_title">Dịch trò chuyện trực tiếp</string>
   <string name="morphe_live_chat_translate_screen_summary">Dịch các tin nhắn trò chuyện trực tiếp và phát lại trò chuyện trực tiếp</string>
   <string name="morphe_live_chat_translate_title">Dịch trò chuyện trực tiếp</string>
@@ -1723,6 +1739,11 @@ Tự động ghi là tùy chọn. Nó dừng lại khi ở chế độ ẩn danh
   <string name="morphe_live_chat_translate_language_title">Ngôn ngữ dịch</string>
   <string name="morphe_live_chat_translate_exclude_title">Các ngôn ngữ bị loại trừ</string>
   <string name="morphe_live_chat_translate_exclude_summary">Các mã ngôn ngữ cách nhau bởi dấu phẩy, ví dụ như id,en. Các tin nhắn bằng những ngôn ngữ này sẽ không được dịch</string>
+  <string name="morphe_live_chat_translate_provider_title">Dịch vụ dịch thuật</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Dịch</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">Khóa API DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Khóa API DeepL của bạn. Google Translate sẽ được sử dụng nếu DeepL bị lỗi, ví dụ như khi đạt đến giới hạn hàng tháng của khóa</string>
   <string name="morphe_live_chat_translate_copy_button_title">Hiện nút sao chép tin nhắn</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Thêm một nút sao chép nhỏ vào mỗi tin nhắn trò chuyện</string>
   <string name="morphe_live_chat_translate_copied">Đã sao chép tin nhắn vào bảng nhớ tạm</string>

@@ -445,6 +445,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">Αντιγραφή σχολίων</string>
   <string name="morphe_copy_comments_summary">Πατήστε παρατεταμένα ένα σχόλιο για να το αντιγράψετε</string>
   <string name="morphe_copy_comments_success">Το σχόλιο αντιγράφηκε στο πρόχειρο</string>
+  <string name="morphe_copy_select_text_title">Επιλογή κειμένου περιγραφών και αναρτήσεων</string>
+  <string name="morphe_copy_select_text_summary">Πατήστε και κρατήστε μια περιγραφή βίντεο ή μια ανάρτηση για να επιλέξετε και να αντιγράψετε οποιοδήποτε μέρος της</string>
+  <string name="morphe_copy_select_text_dialog_title">Επιλογή κειμένου</string>
+  <string name="morphe_copy_select_text_copy_all">Αντιγραφή όλων</string>
+  <string name="morphe_copy_select_text_success">Το κείμενο αντιγράφηκε στο πρόχειρο</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Πατήστε και κρατήστε πατημένο για να ανοίξετε το μενού βίντεο</string>
   <string name="morphe_feed_long_press_menu_summary">Το πάτημα και το κράτημα πατημένο οπουδήποτε σε ένα βίντεο feed ανοίγει το μενού του</string>
@@ -933,6 +938,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">Εμφανίζει μεταβάσεις κατά την εναλλαγή μεταξύ των καρτελών</string>
   <string name="morphe_show_search_button_title">Κρατάει τη γραμμή πλοήγησης ορατή κατά την κύλιση</string>
   <string name="morphe_show_search_button_index_title">Κάνει τη γραμμή κατάστασης πλήρως αδιαφανή</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Εμφάνιση κουμπιού \"Δείτε αργότερα\"</string>
+  <string name="morphe_show_watch_later_button_index_title">Θέση κουμπιού \"Δείτε αργότερα\"</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Παρακολούθηση αργότερα</string>
   <string name="morphe_show_settings_button_title">Κάνει τη γραμμή πλοήγησης πλήρως αδιαφανή σε λειτουργία φωτός</string>
   <string name="morphe_show_settings_button_index_title">Κάνει τη γραμμή πλοήγησης πλήρως αδιαφανή σε λειτουργία σκοτείνου</string>
   <string name="morphe_show_settings_button_type_title">Δείκτης κουμπιού Ρυθμίσεων</string>
@@ -1716,6 +1726,12 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">Μέγιστο μήκος σχολίου</string>
   <string name="morphe_niconico_comments_max_length_summary">Αποκρύπτει σχόλια με περισσότερους χαρακτήρες από αυτόν. Κάθε emoji μετράται ως ένας χαρακτήρας</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Χωρίς όριο</string>
+  <string name="morphe_niconico_comments_live_streams_title">Εμφάνιση σε ζωντανές μεταδόσεις</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Ζωντανές μεταδόσεις και οι επαναλήψεις τους</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Εμφάνιση σε πρεμιέρες</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Πρεμιέρες κατά τη διάρκεια της αναπαραγωγής τους</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Εμφάνιση σε ολοκληρωμένες πρεμιέρες</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Αναπαραγωγή συνομιλίας για πρεμιέρες που έχουν ολοκληρωθεί</string>
   <string name="morphe_live_chat_translate_screen_title">Μετάφραση ζωντανής συνομιλίας</string>
   <string name="morphe_live_chat_translate_screen_summary">Μετάφραση μηνυμάτων της ζωντανής συνομιλίας και των αναπαραγώγων της</string>
   <string name="morphe_live_chat_translate_title">Μετάφραση ζωντανής συνομιλίας</string>
@@ -1723,6 +1739,11 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">Γλώσσα μετάφρασης</string>
   <string name="morphe_live_chat_translate_exclude_title">Εξairekrétες γλώσσες</string>
   <string name="morphe_live_chat_translate_exclude_summary">Κώδικες γλωσσών χωρισμένοι με κόμμα, όπως id,en. Τα μηνύματα σε αυτές τις γλώσσες δεν μεταφράζονται</string>
+  <string name="morphe_live_chat_translate_provider_title">Πάροχος μετάφρασης</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">Κλειδί API DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Το κλειδί API DeepL σας. Το Google Translate χρησιμοποιείται εάν το DeepL αποτύχει, όπως όταν γίνει የተlepτο το μηνιαίο όριο του κλειδιού</string>
   <string name="morphe_live_chat_translate_copy_button_title">Εμφάνιση κουμπιού αντιγραφής μηνύματος</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Προσθέτει ένα μικρό κουμπί αντιγραφής σε κάθε μήνυμα συνομιλίας</string>
   <string name="morphe_live_chat_translate_copied">Το μήνυμα αντιγράφηκε στο πρόχειρο</string>

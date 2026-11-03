@@ -446,9 +446,14 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_copy_comments_title">Yorumları kopyala</string>
   <string name="morphe_copy_comments_summary">Bir yorumu kopyalamak için dokunup basılı tutun</string>
   <string name="morphe_copy_comments_success">Yorum panoya kopyalandı</string>
+  <string name="morphe_copy_select_text_title">Açıklamaların ve gönderilerin metnini seç</string>
+  <string name="morphe_copy_select_text_summary">Herhangi bir kısmını kopyalamak için video açıklamasına veya gönderiye dokunup basılı tutun</string>
+  <string name="morphe_copy_select_text_dialog_title">Metin seç</string>
+  <string name="morphe_copy_select_text_copy_all">Tümünü kopyala</string>
+  <string name="morphe_copy_select_text_success">Metin panoya kopyalandı</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Video menüsünü açmak için dokunun ve basılı tutun</string>
-  <string name="morphe_feed_long_press_menu_summary">Akış video üzerinde herhangi bir yere dokunup basılı tutmak, menüyü açar</string>
+  <string name="morphe_feed_long_press_menu_summary">Akış videosu üzerinde herhangi bir yere dokunup basılı tutmak, menüsünü açar</string>
   <string name="morphe_feed_watch_later_button_title">Küçük resimlerde Daha Sonra İzle düğmesini göster</string>
   <string name="morphe_feed_watch_later_button_summary">Akış videolarının küçük resimlerinde, video kaydedilmişse bir onay işaretiyle birlikte bir \'Daha sonra izle\' düğmesi gösterilir. Buna dokunmak videoyu kaydeder veya kaldırır, basılı tutmak ise \'Oynatma listesine kaydet\' seçeneğini açar</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
@@ -934,6 +939,11 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_hide_notifications_button_title">Bildirimler düğmesini gizle</string>
   <string name="morphe_show_search_button_title">Arama düğmesini göster</string>
   <string name="morphe_show_search_button_index_title">Arama düğmesi konumu</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Daha sonra izle düğmesini göster</string>
+  <string name="morphe_show_watch_later_button_index_title">Daha sonra izle düğmesi konumu</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Daha sonra izle</string>
   <string name="morphe_show_settings_button_title">Ayarlar düğmesini göster</string>
   <string name="morphe_show_settings_button_index_title">Ayarlar düğmesi konumu</string>
   <string name="morphe_show_settings_button_type_title">Ayarlar düğmesi işlevi</string>
@@ -1718,6 +1728,12 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_niconico_comments_max_length_title">Maksimum yorum uzunluğu</string>
   <string name="morphe_niconico_comments_max_length_summary">Bunu aşan karakter sayısına sahip yorumları gizler. Her emoji bir karakter olarak sayılır</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sınırsız</string>
+  <string name="morphe_niconico_comments_live_streams_title">Canlı yayınlarda göster</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Canlı yayınlar ve tekrarları</string>
+  <string name="morphe_niconico_comments_live_premieres_title">İlk gösterimlerde göster</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Aktif olarak gerçekleşen ilk gösterimler</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Bitmiş ilk gösterimlerde göster</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Bitmiş ilk gösterimlerin sohbet tekrarları</string>
   <string name="morphe_live_chat_translate_screen_title">Canlı sohbet çevirisi</string>
   <string name="morphe_live_chat_translate_screen_summary">Canlı sohbeti ve sohbet tekrar mesajlarını çevir</string>
   <string name="morphe_live_chat_translate_title">Canlı sohbeti çevir</string>
@@ -1725,10 +1741,15 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_live_chat_translate_language_title">Çeviri dili</string>
   <string name="morphe_live_chat_translate_exclude_title">Hariç tutulan diller</string>
   <string name="morphe_live_chat_translate_exclude_summary">id,en gibi virgüllerle ayrılmış dil kodları. Bu dillerdeki mesajlar çevrilmez</string>
+  <string name="morphe_live_chat_translate_provider_title">Çeviri sağlayıcısı</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Çeviri</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API anahtarı</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">DeepL API anahtarınız. Anahtarın aylık limitine ulaşılması gibi durumlarda DeepL başarısız olursa Google Çeviri kullanılır</string>
   <string name="morphe_live_chat_translate_copy_button_title">Mesajı kopyala düğmesini göster</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Her sohbet mesajına küçük bir kopyalama düğmesi ekler</string>
   <string name="morphe_live_chat_translate_copied">Mesaj panoya kopyalandı</string>
-  <string name="morphe_live_chat_translate_style_title">Çeviri tasarımı</string>
+  <string name="morphe_live_chat_translate_style_title">Çeviri stili</string>
   <string name="morphe_live_chat_translate_style_translated_only">Sadece çevrilmiş</string>
   <string name="morphe_live_chat_translate_style_original_and_translated">Orijinal (çevrilmiş)</string>
   <string name="morphe_live_chat_translate_style_translated_and_original">(Çevrilmiş) orijinal</string>

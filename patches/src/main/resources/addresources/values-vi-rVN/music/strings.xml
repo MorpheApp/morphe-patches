@@ -603,7 +603,6 @@ Các bước:
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Từ tiếng Trung (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Phiên âm ngôn ngữ Hy Lạp, Cyrillic Slavơ (bao gồm Nga, Ukraina, Bungari, Serbia, Belarus, Macedonia), Georgia, Armenia, Hebrew, Ả Rập, Amharic và Syriac (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Đang đọc %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Chọn ít nhất một từ điển</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Hiển thị nút Làm mới</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Chạm để chuyển sang ứng viên lời tiếp theo; nhấn giữ để tìm kiếm lời theo tên bài hát và nghệ sĩ</string>
   <string name="morphe_music_lyrics_search_dialog_title">Tìm kiếm lời bài hát</string>
@@ -732,7 +731,7 @@ Lời bài hát đến từ các dịch vụ bên thứ ba không liên quan, t�
   <string name="morphe_music_lyrics_use_ai_section_summary">Chỉ được sử dụng khi nhà cung cấp không gửi nhãn phần như Chorus hoặc Verse, do mô hình tương thích OpenAI của bạn phát hiện. Chỉnh sửa hàng cũng sẽ mở lời nhắc của nó</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL điểm cuối API (ví dụ: https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Mẫu Prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Trình giữ chỗ: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Trình giữ chỗ: {task}, {language}, {title}, {artist}, {count}, {lines}. Những trình giữ chỗ không xác định sẽ được giữ nguyên như khi nhập</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Đã lưu prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Đã lưu lời nhắc, nhưng điểm cuối AI vẫn chưa thể sử dụng. Hãy cấu hình nó trong Cài đặt AI trước</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Đã đặt lại prompt</string>

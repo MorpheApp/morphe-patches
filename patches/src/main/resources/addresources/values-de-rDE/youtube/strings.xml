@@ -446,6 +446,11 @@ Meldungen sind öffentlich und werden überprüft, bevor ein Kanal zu einer List
   <string name="morphe_copy_comments_title">Kommentare kopieren</string>
   <string name="morphe_copy_comments_summary">Tippe und halte einen Kommentar, um ihn zu kopieren</string>
   <string name="morphe_copy_comments_success">Kommentar in die Zwischenablage kopiert</string>
+  <string name="morphe_copy_select_text_title">Text von Beschreibungen und Beiträgen auswählen</string>
+  <string name="morphe_copy_select_text_summary">Halten Sie eine Videobeschreibung oder einen Beitrag gedrückt, um einen beliebigen Teil davon auszuwählen und zu kopieren</string>
+  <string name="morphe_copy_select_text_dialog_title">Text auswählen</string>
+  <string name="morphe_copy_select_text_copy_all">Alles kopieren</string>
+  <string name="morphe_copy_select_text_success">Text in Zwischenablage kopiert</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Tippen und gedrückt halten, um das Videomenü zu öffnen</string>
   <string name="morphe_feed_long_press_menu_summary">Das Tippen und Gedrückthalten irgendwo auf einem Feed-Video öffnet dessen Menü</string>
@@ -934,6 +939,11 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <string name="morphe_hide_notifications_button_title">Schaltfläche „Benachrichtigungen“ ausblenden</string>
   <string name="morphe_show_search_button_title">Schaltfläche „Suche“ anzeigen</string>
   <string name="morphe_show_search_button_index_title">Position der Suchschaltfläche</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Schaltfläche „Später ansehen“ anzeigen</string>
+  <string name="morphe_show_watch_later_button_index_title">Position der „Später ansehen“-Schaltfläche</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Später ansehen</string>
   <string name="morphe_show_settings_button_title">Schaltfläche „Einstellungen“ anzeigen</string>
   <string name="morphe_show_settings_button_index_title">Position der Schaltfläche „Einstellungen“</string>
   <string name="morphe_show_settings_button_type_title">Aktion der Schaltfläche „Einstellungen“</string>
@@ -1717,6 +1727,12 @@ Die automatische Aufzeichnung ist optional. Sie stoppt im Inkognito-Modus oder b
   <string name="morphe_niconico_comments_max_length_title">Maximale Kommentarlänge</string>
   <string name="morphe_niconico_comments_max_length_summary">Blendet Kommentare aus, die mehr Zeichen als diese Anzahl enthalten. Jedes Emoji zählt als ein Zeichen</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Keine Begrenzung</string>
+  <string name="morphe_niconico_comments_live_streams_title">Bei Live-Streams anzeigen</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Live-Streams und deren Wiederholungen</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Bei Premieren anzeigen</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premieren während der Wiedergabe</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Bei beendeten Premieren anzeigen</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Chat-Wiedergabe von beendeten Premieren</string>
   <string name="morphe_live_chat_translate_screen_title">Live-Chat-Übersetzung</string>
   <string name="morphe_live_chat_translate_screen_summary">Live-Chat- und Live-Chat-Wiedergabenachrichten übersetzen</string>
   <string name="morphe_live_chat_translate_title">Live-Chat übersetzen</string>
@@ -1724,6 +1740,11 @@ Die automatische Aufzeichnung ist optional. Sie stoppt im Inkognito-Modus oder b
   <string name="morphe_live_chat_translate_language_title">Übersetzungssprache</string>
   <string name="morphe_live_chat_translate_exclude_title">Ausgeschlossene Sprachen</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kommagetrennte Sprachcodes wie id,en. Nachrichten in diesen Sprachen werden nicht übersetzt</string>
+  <string name="morphe_live_chat_translate_provider_title">Übersetzungsanbieter</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Übersetzer</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API-Schlüssel</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Ihr DeepL API-Schlüssel. Google Übersetzer wird verwendet, wenn DeepL fehlschlägt, z. B. wenn das monatliche Limit des Schlüssels erreicht ist</string>
   <string name="morphe_live_chat_translate_copy_button_title">Schaltfläche zum Kopieren der Nachricht anzeigen</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Fügt jeder Chat-Nachricht eine kleine Kopierschaltfläche hinzu</string>
   <string name="morphe_live_chat_translate_copied">Nachricht in die Zwischenablage kopiert</string>

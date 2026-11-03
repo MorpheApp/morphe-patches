@@ -445,6 +445,11 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <string name="morphe_copy_comments_title">Copiază comentariile</string>
   <string name="morphe_copy_comments_summary">Atingeți și țineți apăsat pe un comentariu pentru a-l copia</string>
   <string name="morphe_copy_comments_success">Comentariul a fost copiat în clipboard</string>
+  <string name="morphe_copy_select_text_title">Selectarea textului din descrieri și postări</string>
+  <string name="morphe_copy_select_text_summary">Apasă și menține apăsată o descriere de videoclip sau o postare pentru a selecta și a copia orice parte din aceasta</string>
+  <string name="morphe_copy_select_text_dialog_title">Selectare text</string>
+  <string name="morphe_copy_select_text_copy_all">Copiază tot</string>
+  <string name="morphe_copy_select_text_success">Text copiat în clipboard</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Atinge și menține apăsat pentru a deschide meniul video</string>
   <string name="morphe_feed_long_press_menu_summary">Atingerea și menținerea apăsării oriunde pe un video din feed deschide meniul acestuia</string>
@@ -933,6 +938,9 @@ Trebuie furnizate „Cookie-uri pentru subtitrări”"</string>
   <string name="morphe_hide_notifications_button_title">Ascunde meniul Temporizator de somn</string>
   <string name="morphe_show_search_button_title">Ascunde meniul Repetă video</string>
   <string name="morphe_show_search_button_index_title">Ascunde meniul Mod ambient</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Urmărește mai târziu</string>
   <string name="morphe_show_settings_button_title">Ascunde meniul Volum stabil</string>
   <string name="morphe_show_settings_button_index_title">Ascunde meniul Ajutor și feedback</string>
   <string name="morphe_show_settings_button_type_title">Acțiune buton Setări</string>
@@ -1723,6 +1731,11 @@ Această bibliotecă este stocată pe acest dispozitiv și partajată între con
   <string name="morphe_live_chat_translate_language_title">Limba de traducere</string>
   <string name="morphe_live_chat_translate_exclude_title">Limbi excluse</string>
   <string name="morphe_live_chat_translate_exclude_summary">Coduri de limbă separate prin virgulă, cum ar fi id,en. Mesajele în aceste limbi nu sunt traduse</string>
+  <string name="morphe_live_chat_translate_provider_title">Furnizor de traducere</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">Cheia API DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Cheia ta API DeepL. Google Translate este utilizat dacă DeepL eșuează, de exemplu, atunci când limita lunară a cheii este atinsă</string>
   <string name="morphe_live_chat_translate_copy_button_title">Afișare buton copiere mesaj</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Adaugă un buton mic de copiere pentru fiecare mesaj de chat</string>
   <string name="morphe_live_chat_translate_copied">Mesajul a fost copiat în clipboard</string>

@@ -607,7 +607,6 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Кинеске речи (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Грчки, словенски кирилични (укљ. руски, украјински, бугарски, српски, белоруски, македонски), грузијски, Јерменски, Хебрејски, Арапски, Амхарски и Сиријски транслитерација (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Читање %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Изаберите најмање један речник</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Прикажите дугме за освежавање</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Додирните да преbacи на следећег кандидата текста; дуго притисните да претражујете текст по наслову и извођачу</string>
   <string name="morphe_music_lyrics_search_dialog_title">Претрага текстова</string>
@@ -736,7 +735,7 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_use_ai_section_summary">Користи се само када провајдер не испоручује ознаке секција као што су Припеви или Стихови, које онда открива ваш модел компатибилан са OpenAI. Уређивање реда отвара и његов позив</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL крајње тачке API-ја (нпр. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Шаблон промпта</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Заменичи: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Заменители: {task}, {language}, {title}, {artist}, {count}, {lines}. Непознати се остављају такви какви јесу</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Промпт је сачуван</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Упутство је сачувано, али AI крајња тачка још увек није доступна. Подесите је прво у подешавањима AI-ја</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Промпт је ресетован</string>

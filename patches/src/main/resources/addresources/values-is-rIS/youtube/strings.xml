@@ -435,6 +435,11 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <string name="morphe_copy_comments_title">Afrita athugasemdir</string>
   <string name="morphe_copy_comments_summary">Snertu athugasemd og haltu henni til að afrita hana</string>
   <string name="morphe_copy_comments_success">Athugasemd afrituð á klippiborð</string>
+  <string name="morphe_copy_select_text_title">Veldu texta í lýsingum og færslum</string>
+  <string name="morphe_copy_select_text_summary">Snertu og haltu á lýsingu myndbands eða færslu til að velja og afrita hvaða hluta sem er af henni</string>
+  <string name="morphe_copy_select_text_dialog_title">Velja texta</string>
+  <string name="morphe_copy_select_text_copy_all">Afrita allt</string>
+  <string name="morphe_copy_select_text_success">Texti afritaður í klippiborð</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Smellstu og haltu til að opna myndbandsvalmynd</string>
   <string name="morphe_feed_long_press_menu_summary">Þegar þú smeltir og heldur niður einhversstaðar á feed-myndbandi opnast valmynd þess</string>
@@ -921,6 +926,8 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_hide_notifications_button_title">Felur Tilkynninga hnappinn</string>
   <string name="morphe_show_search_button_title">Sýnir Leita hnappinn</string>
   <string name="morphe_show_search_button_index_title">Leita hnappur staðsetning</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">Sýnir Stillingar hnappinn</string>
   <string name="morphe_show_settings_button_index_title">Stillingar hnappur staðsetning</string>
   <string name="morphe_show_settings_button_type_title">Starfa árásnstjórnstikur</string>
@@ -1685,6 +1692,11 @@ Myndbandsspilun með AV1 getur hrickast eða skotið ramma"</string>
   <string name="morphe_live_chat_translate_language_title">Þýðingarmál</string>
   <string name="morphe_live_chat_translate_exclude_title">Undirbætta mál</string>
   <string name="morphe_live_chat_translate_exclude_summary">Málskóðar aðskaldir með komma, t.d. id,en. Skilaboð á þessum málum eru ekki þýdd</string>
+  <string name="morphe_live_chat_translate_provider_title">Þýðingarveiti</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API lykill</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">DeepL API lykill þinn. Google Translate er notað ef DeepL mistekist, til dæmis þegar mánadarlymörkum lyklins er náð</string>
   <string name="morphe_live_chat_translate_copy_button_title">Sýna hnapp til að afrita skilaboð</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Bætir litlum afritunarhnappi við hvert spjallaskilaboð</string>
   <string name="morphe_live_chat_translate_copied">Skilaboð afrituð á skoparið</string>

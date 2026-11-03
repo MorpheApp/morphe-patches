@@ -277,6 +277,9 @@ Perubahan termasuk:
   <string name="morphe_hide_comments_emoji_button_title">Sorokkan butang Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Sembunyikan pilihan bar penapis</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Menyembunyikan semua pilihan bar penapis kecuali \'Utama\' dan \'Terbaharu\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Sorokkan butang GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Sorokkan GIF dan imej</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Menyembunyikan GIF dan imej yang dilampirkan pada komen dan balasan</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Sorokkan animasi dan kad hadiah</string>
   <string name="morphe_hide_comments_gift_button_title">Sorokkan butang Hadiah</string>
   <string name="morphe_hide_comments_info_button_title">Sorokkan butang Info</string>
@@ -442,10 +445,16 @@ Laporan adalah awam dan disemak sebelum saluran ditambah ke senarai. Penyingkira
   <string name="morphe_copy_comments_title">Salin komen</string>
   <string name="morphe_copy_comments_summary">Ketik dan tahan komen untuk menyalinnya</string>
   <string name="morphe_copy_comments_success">Komen disalin ke papan keratan</string>
+  <string name="morphe_copy_select_text_title">Pilih teks penerangan dan hantaran</string>
+  <string name="morphe_copy_select_text_summary">Ketik dan tahan penerangan video atau hantaran untuk memilih dan menyalin mana-mana bahagian daripadanya</string>
+  <string name="morphe_copy_select_text_dialog_title">Pilih teks</string>
+  <string name="morphe_copy_select_text_copy_all">Salin semua</string>
+  <string name="morphe_copy_select_text_success">Teks disalin ke papan keratan</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Ketik dan tahan untuk membuka menu video</string>
   <string name="morphe_feed_long_press_menu_summary">Mengetik dan menahan di mana-mana pada video suapan akan membuka menunya</string>
   <string name="morphe_feed_watch_later_button_title">Tunjukkan butang Tonton kemudian pada imej kenit</string>
+  <string name="morphe_feed_watch_later_button_summary">Butang Tonton kemudian dipaparkan pada imej kecil video feed, dengan tanda semak jika video disimpan. Mengetiknya akan menyimpan atau mengeluarkan video, dan mengetik serta menahannya akan membuka Simpan ke senarai main</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Muat turun imej hantaran</string>
   <string name="morphe_post_image_download_summary">Butang muat turun dipaparkan bersebelahan dengan butang Kongsi bagi hantaran dengan imej atau GIF, dan item muat turun ditambah ke menu mereka</string>
@@ -525,6 +534,7 @@ Folder eksport: %s"</string>
   <string name="morphe_export_download_folder_change">Tukar folder</string>
   <string name="morphe_export_download_folder_changed">Folder eksport telah ditukar</string>
   <string name="morphe_export_download_folder_reset">Tetapkan semula folder eksport</string>
+  <string name="morphe_export_download_folder_missing">Tidak dapat mencari folder eksport %s</string>
   <string name="morphe_export_download_flyout_title">Eksport ke peranti</string>
   <string name="morphe_export_download_started">Mengeksport video</string>
   <string name="morphe_export_download_progress">Mengeksport video: %d%%</string>
@@ -869,7 +879,10 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Sarikata</string>
   <string name="morphe_captions_screen_summary">Urus sari kata automatik dan kuki sari kata</string>
+  <string name="morphe_captions_languages_title">Bahasa dan terjemahan</string>
+  <string name="morphe_captions_presentation_title">Rupa dan tingkah laku</string>
   <string name="morphe_captions_advanced_title">Lebih mahir</string>
+  <string name="morphe_captions_advanced_summary">Pilihan kuki dan transkrip</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Keterlihatan sari kata automatik</string>
   <string name="morphe_auto_captions_style_entry_1">Sentiasa tunjuk</string>
@@ -878,8 +891,10 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <string name="morphe_auto_captions_style_entry_4">Tunjukkan apabila disenyapkan</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Bahasa sari kata pilihan</string>
+  <string name="morphe_preferred_caption_language_summary">Memilih bahasa sari kata secara automatik untuk setiap video</string>
   <string name="morphe_preferred_caption_language_entry_off">Mati</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Bahasa terjemahan automatik tambahan</string>
   <string name="morphe_auto_translate_additional_languages_summary">Menambah lebih banyak bahasa ke menu terjemahan automatik</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Tetapkan kuki sari kata</string>
@@ -898,8 +913,16 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <string name="morphe_fix_transcript_summary">Menyelesaikan kegagalan pemeriksaan prasyarat yang boleh menghalang transkrip daripada dimuatkan</string>
   <string name="morphe_captions_in_pip_title">Tunjukkan kapsyen dalam gambar-dalam-gambar</string>
   <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Saiz sari kata</string>
+  <string name="morphe_caption_scale_summary">Terpakai untuk sari kata satu bahasa dan dwibahasa</string>
   <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Blok sari kata stabil</string>
+  <string name="morphe_stable_caption_blocks_summary">Kumpulkan sari kata automatik satu bahasa menjadi blok yang stabil dan mudah dibaca. Sari kata dwibahasa sentiasa menggunakan blok. Sesetengah perkataan mungkin muncul sebelum diucapkan</string>
+  <string name="morphe_secondary_caption_language_title">Bahasa sari kata sekunder</string>
+  <string name="morphe_secondary_caption_language_summary">Menunjukkan bahasa kedua bersama sari kata, dan menambah suis sari kata Dwibahasa pada menu sari kata</string>
+  <string name="morphe_dual_captions_enabled_title">Sari kata dwibahasa</string>
+  <string name="morphe_caption_block_translation_failed">Sesetengah terjemahan sari kata tidak tersedia. Menunjukkan sari kata yang tersedia.</string>
+  <string name="morphe_caption_blocks_too_large">Kedua-dua bahasa sari kata tidak muat dalam pemain ini. Menunjukkan bahasa utama.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Butang pandu arah</string>
   <string name="morphe_navigation_buttons_screen_summary">Memilih butang yang akan muncul pada bar pandu arah bawah</string>
@@ -915,6 +938,8 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <string name="morphe_hide_notifications_button_title">Sorokkan butang Pemberitahuan</string>
   <string name="morphe_show_search_button_title">Tunjukkan butang Carian</string>
   <string name="morphe_show_search_button_index_title">Kedudukan butang Carian</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">Tunjukkan butang Tetapan</string>
   <string name="morphe_show_settings_button_index_title">Kedudukan butang Tetapan</string>
   <string name="morphe_show_settings_button_type_title">Tindakan butang Tetapan</string>
@@ -1000,6 +1025,7 @@ Untuk memaparkan menu 'Audio Track', tukar 'Spoof video streams' kepada mana-man
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Sorokkan butang Sari kata</string>
   <string name="morphe_hide_cast_button_title">Sorokkan butang siaran</string>
+  <string name="morphe_hide_cast_button_summary">Menyembunyikan butang Cast dalam pemain video dan toolbar</string>
   <string name="morphe_hide_collapse_button_title">Sorokkan butang Kecilkan</string>
   <string name="morphe_hide_fullscreen_button_title">Sorokkan butang Skrin penuh</string>
   <string name="morphe_hide_player_control_buttons_background_title">Sorokkan latar belakang kawalan pemain</string>
@@ -1524,7 +1550,12 @@ Playback video dengan AV1 mungkin tersekat-sekat atau mengalami keguguran bingka
   <string name="morphe_spoof_video_streams_player_js_variant_title">Varian JavaScript Pemain</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Tunjukkan penyamaran dalam \'Statistik untuk pakar\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_video_action_bar_layout_title">Tata letak bar tindakan video</string>
   <string name="morphe_video_action_bar_layout_entry_1">Lalai</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasik Satu Baris</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Minimalis</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klasik Dua Baris</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Had: Tata letak Klasik kembali ke gaya lama tindanan \'Lebih banyak video\'</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Gaya ikon Pemain</string>
   <string name="morphe_player_icon_style_entry_auto">Automatik</string>
@@ -1692,4 +1723,32 @@ Rakaman automatik adalah pilihan. Ia terhenti dalam mod inkognito atau apabila a
   <string name="morphe_niconico_comments_max_length_title">Panjang komen maksimum</string>
   <string name="morphe_niconico_comments_max_length_summary">Sembunyikan komen dengan aksara yang lebih banyak daripada ini. Setiap emoji dikira sebagai satu aksara</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Tiada had</string>
+  <string name="morphe_live_chat_translate_screen_title">Terjemahan sembang langsung</string>
+  <string name="morphe_live_chat_translate_screen_summary">Terjemahkan mesej sembang langsung dan ulangan sembang langsung</string>
+  <string name="morphe_live_chat_translate_title">Terjemahkan sembang langsung</string>
+  <string name="morphe_live_chat_translate_summary">Menterjemah mesej sembang langsung dan ulangan sembang langsung sebaik sahaja ia dipaparkan pada skrin</string>
+  <string name="morphe_live_chat_translate_language_title">Bahasa terjemahan</string>
+  <string name="morphe_live_chat_translate_exclude_title">Bahasa yang dikecualikan</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Kod bahasa yang dipisahkan dengan koma seperti id,en. Mesej dalam bahasa ini tidak akan diterjemahkan</string>
+  <string name="morphe_live_chat_translate_provider_title">Pembekal terjemahan</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">Kunci API DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Kunci API DeepL anda. Google Translate akan digunakan jika DeepL gagal, seperti apabila had bulanan kunci dicapai</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Tunjukkan butang salin mesej</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Menambah butang salin kecil pada setiap mesej sembang</string>
+  <string name="morphe_live_chat_translate_copied">Mesej disalin ke papan keratan</string>
+  <string name="morphe_live_chat_translate_style_title">Gaya terjemahan</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Terjemahan sahaja</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Asal (terjemahan)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Terjemahan) asal</string>
+  <string name="morphe_live_chat_translate_bold_title">Teks terjemahan tebal</string>
+  <string name="morphe_live_chat_translate_bold_summary">Menunjukkan teks terjemahan dalam bentuk tebal</string>
+  <string name="morphe_live_chat_translate_use_color_title">Warna teks terjemahan tersuai</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Menggunakan warna tersuai untuk teks terjemahan</string>
+  <string name="morphe_live_chat_translate_color_title">Warna teks diterjemah</string>
+  <string name="morphe_live_chat_translate_color_summary">Tetapkan warna heks teks yang diterjemah</string>
+  <string name="morphe_live_chat_translate_max_length_title">Panjang mesej maksimum</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Mesej yang lebih panjang dipaparkan tanpa terjemahan</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Tiada had</string>
 </resources>

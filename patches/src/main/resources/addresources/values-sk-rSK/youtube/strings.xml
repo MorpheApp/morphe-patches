@@ -445,6 +445,11 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_copy_comments_title">Kopírovať komentáre</string>
   <string name="morphe_copy_comments_summary">Ak chcete skopírovať komentár, ťuknite naň a podržte ho</string>
   <string name="morphe_copy_comments_success">Komentár bol skopírovaný do schránky</string>
+  <string name="morphe_copy_select_text_title">Vyberať text popisov a príspevkov</string>
+  <string name="morphe_copy_select_text_summary">Klepnutím a podržaním popisu videa alebo príspevku môžete vybrať a kopírovať akúkoľvek jeho časť</string>
+  <string name="morphe_copy_select_text_dialog_title">Vybrať text</string>
+  <string name="morphe_copy_select_text_copy_all">Kopírovať všetko</string>
+  <string name="morphe_copy_select_text_success">Text skopírovaný do schránky</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Klepnutím a podrž otvorte ponuku videa</string>
   <string name="morphe_feed_long_press_menu_summary">Klepnutím a podrž kdekoľvek na videu v feedi sa otvorí jeho ponuka</string>
@@ -933,6 +938,11 @@ Je potrebné poskytnúť 'Cookies pre titulky'"</string>
   <string name="morphe_hide_notifications_button_title">Zobraziť tlačidlo Nastavenia</string>
   <string name="morphe_show_search_button_title">Pozícia tlačidla Nastavenia</string>
   <string name="morphe_show_search_button_index_title">Keď je zapnuté, klepnutím otvoríte nastavenia Morphe a podržaním nastavenia YouTube, vypnite, aby ste ich vymenili</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Zobraziť tlačidlo Pozrieť neskôr</string>
+  <string name="morphe_show_watch_later_button_index_title">Pozícia tlačidla Pozrieť neskôr</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Pozrieť neskôr</string>
   <string name="morphe_show_settings_button_title">Zmenšuje horizontálne rozostupy medzi tlačidlami</string>
   <string name="morphe_show_settings_button_index_title">Animuje prechody pri prepínaní medzi kartami</string>
   <string name="morphe_show_settings_button_type_title">Akcia tlačidla Nastavenia</string>
@@ -1716,6 +1726,12 @@ Automatické zaznamenávanie je voliteľné. Zastaví sa v režime inkognito ale
   <string name="morphe_niconico_comments_max_length_title">Maximálna dĺžka komentára</string>
   <string name="morphe_niconico_comments_max_length_summary">Skryje komentáre s väčším počtom znakov, ako je uvedené. Každý emoji sa počíta ako jeden znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Bez obmedzenia</string>
+  <string name="morphe_niconico_comments_live_streams_title">Zobraziť v živých streamoch</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Živé streamy a ich opakovania</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Zobraziť v premiérach</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premiéry počas ich prehrávania</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Zobraziť v ukončených premiérach</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Opakovanie chatu premiér, ktoré sa skončili</string>
   <string name="morphe_live_chat_translate_screen_title">Preklad živého chatu</string>
   <string name="morphe_live_chat_translate_screen_summary">Preklad správ z živého chatu a jeho opakovaní</string>
   <string name="morphe_live_chat_translate_title">Prekladať živý chat</string>
@@ -1723,6 +1739,11 @@ Automatické zaznamenávanie je voliteľné. Zastaví sa v režime inkognito ale
   <string name="morphe_live_chat_translate_language_title">Jazyk prekladu</string>
   <string name="morphe_live_chat_translate_exclude_title">Vylúčené jazyky</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kódy jazykov oddelené čiarkou, napríklad id,en. Správy v týchto jazykoch sa neprekladajú</string>
+  <string name="morphe_live_chat_translate_provider_title">Poskytovateľ prekladu</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Preklad</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">API kľúč DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Váš API kľúč DeepL. Ak DeepL zlyhá, napríklad pri dosiahnutí mesačného limitu kľúča, použije sa Google Translate</string>
   <string name="morphe_live_chat_translate_copy_button_title">Zobraziť tlačidlo kopírovania správy</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Pridá malé tlačidlo kopírovania ku každej správe v chate</string>
   <string name="morphe_live_chat_translate_copied">Správa skopírovaná do schránky</string>

@@ -445,6 +445,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">複製留言</string>
   <string name="morphe_copy_comments_summary">長按留言即可複製</string>
   <string name="morphe_copy_comments_success">留言已複製到剪貼簿</string>
+  <string name="morphe_copy_select_text_title">選取說明和貼文的文字</string>
+  <string name="morphe_copy_select_text_summary">長按影片說明或貼文，即可選取並複製其中任何部分</string>
+  <string name="morphe_copy_select_text_dialog_title">選取文字</string>
+  <string name="morphe_copy_select_text_copy_all">複製全部</string>
+  <string name="morphe_copy_select_text_success">已將文字複製到剪貼簿</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">輕觸並按住以開啟影片選單</string>
   <string name="morphe_feed_long_press_menu_summary">在資訊流影片的任意位置輕觸並按住，即可開啟其選單</string>
@@ -933,6 +938,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">隱藏通知按鈕</string>
   <string name="morphe_show_search_button_title">顯示搜尋按鈕</string>
   <string name="morphe_show_search_button_index_title">搜尋按鈕位置</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">顯示「稍後觀看」按鈕</string>
+  <string name="morphe_show_watch_later_button_index_title">「稍後觀看」按鈕位置</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">稍後觀看</string>
   <string name="morphe_show_settings_button_title">顯示設定按鈕</string>
   <string name="morphe_show_settings_button_index_title">設定按鈕位置</string>
   <string name="morphe_show_settings_button_type_title">設定按鈕動作</string>
@@ -1715,6 +1725,12 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_niconico_comments_max_length_title">最大評論長度</string>
   <string name="morphe_niconico_comments_max_length_summary">隱藏字數超過此限制的評論。每個表情符號計為一個字元</string>
   <string name="morphe_niconico_comments_max_length_no_limit">無限制</string>
+  <string name="morphe_niconico_comments_live_streams_title">在直播中顯示</string>
+  <string name="morphe_niconico_comments_live_streams_summary">直播及其回放</string>
+  <string name="morphe_niconico_comments_live_premieres_title">在首播中顯示</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">首播播放時顯示</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">在已結束的首播中顯示</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">已結束首播的聊天回放</string>
   <string name="morphe_live_chat_translate_screen_title">直播聊天翻譯</string>
   <string name="morphe_live_chat_translate_screen_summary">翻譯直播聊天與直播重播訊息</string>
   <string name="morphe_live_chat_translate_title">翻譯直播聊天</string>
@@ -1722,6 +1738,11 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_live_chat_translate_language_title">翻譯語言</string>
   <string name="morphe_live_chat_translate_exclude_title">排除的語言</string>
   <string name="morphe_live_chat_translate_exclude_summary">以逗號分隔的語言代碼，例如 id、en。這些語言的訊息不會做翻譯。</string>
+  <string name="morphe_live_chat_translate_provider_title">翻譯來源</string>
+  <string name="morphe_live_chat_translate_provider_google">Google 翻譯</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API 金鑰</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">您的 DeepL API 金鑰。如果 DeepL 失敗（例如達到金鑰的每月上限），將使用 Google 翻譯</string>
   <string name="morphe_live_chat_translate_copy_button_title">顯示複製訊息按鈕</string>
   <string name="morphe_live_chat_translate_copy_button_summary">在每個聊天訊息中新增一個複製按鈕</string>
   <string name="morphe_live_chat_translate_copied">訊息已複製到剪貼簿</string>

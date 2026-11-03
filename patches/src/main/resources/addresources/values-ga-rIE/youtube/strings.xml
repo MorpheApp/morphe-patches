@@ -277,9 +277,9 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_comments_emoji_button_title">Cnaipe Folaigh Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Folaigh roghanna barra scagaire</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Folaíonn sé gach rogha barra scagaire seachas \'Barr\' agus \'Nua\'</string>
-  <string name="morphe_hide_comments_gif_button_title">Folaigh cnaipe GIF</string>
+  <string name="morphe_hide_comments_gif_button_title">Folaigh an cnaipe GIF</string>
   <string name="morphe_hide_comments_gifs_and_images_title">Folaigh GIFanna agus íomhánna</string>
-  <string name="morphe_hide_comments_gifs_and_images_summary">Folaíonn sé GIFanna agus íomhánna atá nasctha le tráchtanna agus freagraí</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Folaíonn sé GIFanna agus íomhánna atá ceangailte le tráchtanna agus freagraí</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Folaigh beochan bronntanais agus cártaí</string>
   <string name="morphe_hide_comments_gift_button_title">Folaigh cnaipe Bronntanais</string>
   <string name="morphe_hide_comments_info_button_title">Cnaipe Folaigh Faisnéise</string>
@@ -445,6 +445,11 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_copy_comments_title">Cóipeáil tráchtanna</string>
   <string name="morphe_copy_comments_summary">Tapaigh agus coinnigh trácht chun é a chóipeáil</string>
   <string name="morphe_copy_comments_success">Cóipeáladh trácht chuig an ngearrthaisce</string>
+  <string name="morphe_copy_select_text_title">Roghnaigh téacs cur Súraí agus postála</string>
+  <string name="morphe_copy_select_text_summary">Tapáil agus coinlligh cur Súraí físeáin nó post chun aon chuid den téacs a roghnú agus a chóipeáil</string>
+  <string name="morphe_copy_select_text_dialog_title">Roghnaigh téacs</string>
+  <string name="morphe_copy_select_text_copy_all">Cóipeáil gach rud</string>
+  <string name="morphe_copy_select_text_success">Cóipeálta an téacs chuig an ghearrthaisce</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Beartaigh agus coinnigh chun roghchlár físe a oscailt</string>
   <string name="morphe_feed_long_press_menu_summary">Má dhéanann tú sconadh agus coinneáil in áit ar bith ar fhíseán sa bhfotha, osclófar a roghchlár</string>
@@ -529,7 +534,7 @@ Fillteán easpórtála: %s"</string>
   <string name="morphe_export_download_folder_change">Athraigh fillteán</string>
   <string name="morphe_export_download_folder_changed">Athraíodh fillteán easpórtála</string>
   <string name="morphe_export_download_folder_reset">Athshocraíodh fillteán easpórtála</string>
-  <string name="morphe_export_download_folder_missing">Níor féidir phásta eagraú %s a aimsiú</string>
+  <string name="morphe_export_download_folder_missing">Níorbh fhéidir an fillteán onnmhairithe %s a aimsiú</string>
   <string name="morphe_export_download_flyout_title">Easpórtáil chuig gléas</string>
   <string name="morphe_export_download_started">Ag easpórtáil físeáin</string>
   <string name="morphe_export_download_progress">Ag easpórtáil físeáin: %d%%</string>
@@ -933,6 +938,11 @@ Ní mór 'fianáin fotheidil' a sholáthar."</string>
   <string name="morphe_hide_notifications_button_title">Folaigh cnaipe Fógraí</string>
   <string name="morphe_show_search_button_title">Taispeáin an cnaipe Cuardaigh</string>
   <string name="morphe_show_search_button_index_title">Suíomh an chnaipe cuardaigh</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Taispeáin an cnaipe Féach Níos Déanaí</string>
+  <string name="morphe_show_watch_later_button_index_title">Seasamh an chnaipe Féach Níos Déanaí</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Féach níos déanaí</string>
   <string name="morphe_show_settings_button_title">Taispeáin an cnaipe Socruithe</string>
   <string name="morphe_show_settings_button_index_title">Suíomh an chnaipe socruithe</string>
   <string name="morphe_show_settings_button_type_title">Gníomh cnaipe socruithe</string>
@@ -1716,6 +1726,12 @@ Tá taifeadadh uathoibríoch roghnach. Stopann sé i mód incognito nó nuair a 
   <string name="morphe_niconico_comments_max_length_title">Uasfhad tráchtaireachta</string>
   <string name="morphe_niconico_comments_max_length_summary">Folaíonn sé tuairimí a bhfuil níos mó carachtar iontu ná an méid seo. Áirítear gach emoji mar charachtar amháin</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Gan teorainn</string>
+  <string name="morphe_niconico_comments_live_streams_title">Taispeáin ar shruthanna beo</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Sruthanna beo agus a n-athsheinmí</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Taispeáin ag an gcéad taibhiú</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Céadléirithe agus iad ag seinm</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Taispeáin ar céadléirithe críochnaithe</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Athsheinm comhrá de céadléirithe atá críochnaithe</string>
   <string name="morphe_live_chat_translate_screen_title">Aistriúchán comhrá beo</string>
   <string name="morphe_live_chat_translate_screen_summary">Aistrigh teachtaireachtaí comhrá beo agus athsheinm comhrá beo</string>
   <string name="morphe_live_chat_translate_title">Aistrigh comhrá beo</string>
@@ -1723,6 +1739,11 @@ Tá taifeadadh uathoibríoch roghnach. Stopann sé i mód incognito nó nuair a 
   <string name="morphe_live_chat_translate_language_title">Teanga an aistriúcháin</string>
   <string name="morphe_live_chat_translate_exclude_title">Teangacha eisiaite</string>
   <string name="morphe_live_chat_translate_exclude_summary">Cóid teanga scartha le camóga, ar nós id,en. Ní aistrítear teachtaireachtaí sna teangacha seo.</string>
+  <string name="morphe_live_chat_translate_provider_title">Soláthraí aistriúcháin</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">Eochair API DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Do eochair API DeepL. Úsáidtear Google Translate má shéanann DeepL, mar shampla nuair a shlánaítear an teorainn mhiseoga an eochaire</string>
   <string name="morphe_live_chat_translate_copy_button_title">Taispeáin an cnaipe chun teachtaireacht a chóipeáil</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Cuireann sé cnaipe beag cóipeála le gach teachtaireacht comhrá</string>
   <string name="morphe_live_chat_translate_copied">Cóipeáladh an teachtaireacht chuig an ngearrthaisce</string>

@@ -445,6 +445,11 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_copy_comments_title">Hozzászólások másolása</string>
   <string name="morphe_copy_comments_summary">Tartsd lenyomva a hozzászólást a másoláshoz</string>
   <string name="morphe_copy_comments_success">A hozzászólás a vágólapra lett másolva</string>
+  <string name="morphe_copy_select_text_title">Leírások és bejegyzések szövegének kijelölése</string>
+  <string name="morphe_copy_select_text_summary">Nyomja hosszan egy videó leírását vagy egy bejegyzést a kijelöléshez és bármely részének kimásolásához</string>
+  <string name="morphe_copy_select_text_dialog_title">Szöveg kijelölése</string>
+  <string name="morphe_copy_select_text_copy_all">Összes kimásolása</string>
+  <string name="morphe_copy_select_text_success">Szöveg a vágólapra másolva</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Koppints és nyomd meg hosszan a videómenü megnyitásához</string>
   <string name="morphe_feed_long_press_menu_summary">A posztfolyamat videóján bárhol koppintás és hosszú nyomás nyitja meg annak menüt</string>
@@ -933,6 +938,9 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_hide_notifications_button_title">Értesítések gomb elrejtése</string>
   <string name="morphe_show_search_button_title">Keresés gomb megjelenítése</string>
   <string name="morphe_show_search_button_index_title">Keresés gomb pozíciója</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Megnézem később</string>
   <string name="morphe_show_settings_button_title">Beállítások gomb megjelenítése</string>
   <string name="morphe_show_settings_button_index_title">Beállítások gomb pozíciója</string>
   <string name="morphe_show_settings_button_type_title">Beállítások gomb művelete</string>
@@ -1723,6 +1731,11 @@ A automatikus rögzítés opcionális. Inkognitó módban vagy a fiókváltás s
   <string name="morphe_live_chat_translate_language_title">Fordítási nyelv</string>
   <string name="morphe_live_chat_translate_exclude_title">Kizárt nyelvek</string>
   <string name="morphe_live_chat_translate_exclude_summary">Vesszővel elválasztott nyelvjelek, például id,en. Ezek a nyelveken írt üzenetek nem lesznek lefordítva</string>
+  <string name="morphe_live_chat_translate_provider_title">Fordítási szolgáltató</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Fordító</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API kulcs</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">A DeepL API kulcsa. A Google Fordító zostanie használata, ha a DeepL hibát jelez, például ha a kulcs havi limitje lejárt</string>
   <string name="morphe_live_chat_translate_copy_button_title">Üzenet másolás gomb megjelenítése</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Kisebb másolás gombot ad hozzá minden csevegési üzenethez</string>
   <string name="morphe_live_chat_translate_copied">Üzenet másolva a vágólapra</string>

@@ -445,6 +445,11 @@ Prijave su javne i pregledaju se pre nego što kanal bude dodat na listu. Uklanj
   <string name="morphe_copy_comments_title">Kopiraj komentare</string>
   <string name="morphe_copy_comments_summary">Dodirnite i zadržite komentar da biste ga kopirali</string>
   <string name="morphe_copy_comments_success">Komentar je kopiran u privremenu memoriju</string>
+  <string name="morphe_copy_select_text_title">Izaberi tekst opisa i objava</string>
+  <string name="morphe_copy_select_text_summary">Dodirnite i zadržite opis videa ili objavu da biste izabrali i kopirali bilo koji njen deo</string>
+  <string name="morphe_copy_select_text_dialog_title">Izaberi tekst</string>
+  <string name="morphe_copy_select_text_copy_all">Kopiraj sve</string>
+  <string name="morphe_copy_select_text_success">Tekst je kopiran u privremenu memoriju</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Dodirnite i držite da biste otvorili meni za video</string>
   <string name="morphe_feed_long_press_menu_summary">Dodirivanjem i držanjem bilo gde na videu u protoku otvara se njegov meni</string>
@@ -933,6 +938,9 @@ Da biste to popravili, uključite 'Spoof video strimovi' i promenite 'Podrazumev
   <string name="morphe_hide_notifications_button_title">Sakrij dugme „Obaveštenja”</string>
   <string name="morphe_show_search_button_title">Prikaži dugme „Pretraga”</string>
   <string name="morphe_show_search_button_index_title">Položaj dugmeta „Pretraga”</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Za kasnije</string>
   <string name="morphe_show_settings_button_title">Prikaži dugme „Podešavanja”</string>
   <string name="morphe_show_settings_button_index_title">Položaj dugmeta „Podešavanja”</string>
   <string name="morphe_show_settings_button_type_title">Akcija dugmeta za podešavanja</string>
@@ -1723,6 +1731,11 @@ Automatsko snimanje je opciono. Zaustavlja se u privatnom modu ili kada se nalog
   <string name="morphe_live_chat_translate_language_title">Jezik prevoda</string>
   <string name="morphe_live_chat_translate_exclude_title">Isključeni jezici</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kodovi jezika odvojeni zarezom, kao što su id,en. Poruke na ovim jezicima se ne prevode</string>
+  <string name="morphe_live_chat_translate_provider_title">Provajder prevoda</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API ključ</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Vaš DeepL API ključ. Google Translate se koristi ako DeepL ne uspe, na primer kada se dostigne mesečni limit ključa</string>
   <string name="morphe_live_chat_translate_copy_button_title">Prikaži dugme za kopiranje poruke</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Dodaje malo dugme za kopiranje svakoj poruci u ćaskanju</string>
   <string name="morphe_live_chat_translate_copied">Poruka je kopirana u međumemoriju</string>

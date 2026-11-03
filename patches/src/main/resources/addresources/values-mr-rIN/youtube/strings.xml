@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">लायब्ररी सक्षम करा / तुम्ही तळाशी मेनू फिल्टर करा</string>
   <string name="morphe_hide_account_menu_filter_strings_title">लायब्ररी सक्षम करा / तुम्ही तळाशी मेनू फिल्टर करा</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">नवीन ओळींनी विभक्त केलेल्या फिल्टरसाठी लायब्ररी / तुम्ही तळाशी मेनू नावे प्रविष्ट करा</string>
+  <string name="morphe_hide_account_menu_downloads_title">डाउनलोड्स लपवा</string>
   <string name="morphe_hide_album_cards_title">अल्बम कार्ड्स लपवा</string>
   <string name="morphe_hide_album_cards_summary">कलाकाराच्या वर्णनाखालील अल्बम कार्ड लपवते</string>
   <string name="morphe_hide_artist_cards_title">कलाकार कार्ड्स लपवा</string>
@@ -276,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">इमोजी बटण लपवा</string>
   <string name="morphe_hide_comments_filter_bar_options_title"> फिल्टर बार पर्याय लपवा</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'टॉप\' आणि \'नवीनतम\' वगळता सर्व फिल्टर बार पर्याय लपवते</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF बटण लपवा</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIFs आणि प्रतिमा लपवा</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">कमेंट्स आणि रिप्लायसोबत जोडलेले GIFs आणि इमेजेस लपवते</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">\',\'उपहार ॲनिमेशन आणि कार्ड्स लपवा\',\'</string>
   <string name="morphe_hide_comments_gift_button_title">\',\'\'गिफ्ट\' बटण लपवा\',\'</string>
   <string name="morphe_hide_comments_info_button_title">माहिती बटण लपवा</string>
@@ -441,10 +445,16 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">कमेंट्स कॉपी करा</string>
   <string name="morphe_copy_comments_summary">कमेंट कॉपी करण्यासाठी त्यावर दाबून धरा</string>
   <string name="morphe_copy_comments_success">कमेंट क्लिपबोर्डवर कॉपी केली</string>
+  <string name="morphe_copy_select_text_title">वर्णन आणि पोस्टमधील मजकूर निवडा</string>
+  <string name="morphe_copy_select_text_summary">व्हिडिओ वर्णन किंवा पोस्टचा कोणताही भाग निवडण्यासाठी आणि कॉपी करण्यासाठी त्यावर दाबून धरा</string>
+  <string name="morphe_copy_select_text_dialog_title">मजकूर निवडा</string>
+  <string name="morphe_copy_select_text_copy_all">सर्व कॉपी करा</string>
+  <string name="morphe_copy_select_text_success">मजकूर क्लिपबोर्डवर कॉपी केला</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">व्हिडिओ मेनू उघडण्यासाठी दाबून धरा</string>
   <string name="morphe_feed_long_press_menu_summary">फीड व्हिडिओवर कोठेही दाबून धरल्यास त्याचे मेनू उघडते</string>
   <string name="morphe_feed_watch_later_button_title">थंबनेलवर \'नंतर पहा\' बटण दाखवा</string>
+  <string name="morphe_feed_watch_later_button_summary">फीडमधील व्हिडिओंच्या थंबनॅल्सवर \'नंतर पहा\' बटण दाखवले जाते, आणि व्हिडिओ सेव्ह असल्यास तिथे चेक मार्क असतो. त्यावर टॅप केल्यावर व्हिडिओ सेव्ह होतो किंवा काढला जातो, आणि टॅप करून धरून ठेवल्यास \'प्लेलिस्टमध्ये सेव्ह करा\' हा पर्याय उघडतो</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">पोस्टची चित्रे डाउनलोड करा</string>
   <string name="morphe_post_image_download_summary">चित्रे किंवा GIFs असलेल्या पोस्टच्या शेअर बटणाजवळ डाउनलोड बटण दिसते आणि त्यांच्या मेनूमध्ये डाउनलोड पर्याय जोडला जातो</string>
@@ -524,12 +534,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_change">फोल्डर बदला</string>
   <string name="morphe_export_download_folder_changed">एक्सपोर्ट फोल्डर बदलले</string>
   <string name="morphe_export_download_folder_reset">एक्सपोर्ट फोल्डर रीसेट केले</string>
+  <string name="morphe_export_download_folder_missing">एक्सपोर्ट फोल्डर %s सापडले नाही</string>
   <string name="morphe_export_download_flyout_title">डिव्हाइसवर एक्सपोर्ट करा</string>
   <string name="morphe_export_download_started">व्हिडिओ एक्सपोर्ट होत आहे</string>
   <string name="morphe_export_download_progress">व्हिडिओ एक्सपोर्ट होत आहे: %d%%</string>
   <string name="morphe_export_download_notification_channel">व्हिडिओ एक्सपोर्ट्स</string>
   <string name="morphe_export_download_saved">व्हिडिओ %s मध्ये एक्सपोर्ट केला</string>
   <string name="morphe_export_download_failed">व्हिडिओ एक्सपोर्ट करता आला नाही</string>
+  <string name="morphe_export_download_canceled">एक्सपोर्ट रद्द केला</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">व्हॉईस ओव्हर भाषांतर</string>
   <string name="morphe_vot_screen_summary">डिव्हाइसवरील टेक्स्ट-टू-स्पीच वापरून व्हिडिओ कॅप्शन मोठ्याने वाचा, जे प्लेबॅकसह सिंक्रोनाइझ केलेले असेल.</string>
@@ -605,6 +617,10 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_pip_button_flyout_title">पिक्चर-इन-पिक्चर मेनू दाखवा</string>
   <string name="morphe_pip_button_flyout_name">पिक्चर-इन-पिक्चरवर स्विच करा</string>
   <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">पिक्चर-इन-पिक्चर क्रिया</string>
+  <string name="morphe_pip_actions_screen_summary">पिक्चर-इन-पिक्चरमध्ये दिसणारी बटणे बदला</string>
+  <string name="morphe_pip_action_left_title">डावे बटण</string>
+  <string name="morphe_pip_action_center_title">मध्यभागीचे बटण</string>
   <string name="morphe_pip_action_right_title">उजवे बटण</string>
   <string name="morphe_pip_action_entry_default">डिफॉल्ट</string>
   <string name="morphe_pip_action_entry_previous">मागील व्हिडिओ</string>
@@ -863,6 +879,10 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">लेबल्स</string>
   <string name="morphe_captions_screen_summary">स्वयंचलित कॅप्शन आणि कॅप्शन कुकीज व्यवस्थापित करा</string>
+  <string name="morphe_captions_languages_title">भाषा आणि भाषांतर</string>
+  <string name="morphe_captions_presentation_title">स्वरूप आणि वर्तन</string>
+  <string name="morphe_captions_advanced_title">प्रगत</string>
+  <string name="morphe_captions_advanced_summary">कुकी आणि ट्रान्सक्रिप्ट पर्याय</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">ऑटो कॅप्शनची दृश्यता</string>
   <string name="morphe_auto_captions_style_entry_1">नेहमी दर्शवा</string>
@@ -871,8 +891,10 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_auto_captions_style_entry_4">शांत असताना दाखवा</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">पसंतीची कॅप्शन भाषा</string>
+  <string name="morphe_preferred_caption_language_summary">प्रत्येक व्हिडिओसाठी कॅप्शनची भाषा आपोआप निवडते</string>
   <string name="morphe_preferred_caption_language_entry_off">बंद</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">अतिरिक्त ऑटो-ट्रान्सलेट भाषा</string>
   <string name="morphe_auto_translate_additional_languages_summary">ऑटो-ट्रान्सलेट मेनूमध्ये अधिक भाषा जोडते</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">कॅपशन कुकीज सेट करा</string>
@@ -891,8 +913,16 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_fix_transcript_summary">ट्रान्सक्रिप्ट लोड होण्यापासून प्रतिबंधित करणारी अट तपासणी अपयश दूर करते</string>
   <string name="morphe_captions_in_pip_title">पिक्चर-इन-पिक्चरमध्ये कॅप्शन्स दाखवा</string>
   <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">कॅप्शनचा आकार</string>
+  <string name="morphe_caption_scale_summary">एकेरी-भाषा आणि द्विभाषिक कॅप्शन्ससाठी लागू होते</string>
   <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">स्थिर कॅप्शन ब्लॉक्स</string>
+  <string name="morphe_stable_caption_blocks_summary">एकेरी-भाषेचे स्वयंचलित कॅप्शन्स स्थिर, वाचनीय ब्लॉक्समध्ये गटबद्ध करा. द्विभाषिक कॅप्शन्स नेहमी ब्लॉक्स वापरतात. काही शब्द बोलले जाण्यापूर्वी दिसू शकतात</string>
+  <string name="morphe_secondary_caption_language_title">दुय्यम कॅप्शन भाषा</string>
+  <string name="morphe_secondary_caption_language_summary">कॅप्शन्ससोबत दुसरी भाषा दाखवते आणि कॅप्शन मेनूमध्ये द्विभाषिक कॅप्शन्स टॉगल जोडते</string>
+  <string name="morphe_dual_captions_enabled_title">द्विभाषिक कॅप्शन्स</string>
+  <string name="morphe_caption_block_translation_failed">काही कॅप्शन भाषांतरे उपलब्ध नाहीत. उपलब्ध कॅप्शन्स दाखवत आहे.</string>
+  <string name="morphe_caption_blocks_too_large">कॅप्शनच्या दोन्ही भाषा या प्लेयरमध्ये बसत नाहीत. प्राथमिक भाषा दाखवत आहे.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">नेव्हिगेशन बटणे</string>
   <string name="morphe_navigation_buttons_screen_summary">तळाच्या नेव्हिगेशन बारमध्ये कोणते घटक दिसतात ते निवडा</string>
@@ -908,6 +938,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_hide_notifications_button_title">\'सूचना\' बटण लपवा</string>
   <string name="morphe_show_search_button_title">\'शोध\' बटण दर्शवा</string>
   <string name="morphe_show_search_button_index_title">शोध बटणाची स्थिती</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">\'सेटिंग्ज\' बटण दर्शवा</string>
   <string name="morphe_show_settings_button_index_title">सेटिंग्ज बटणाची स्थिती</string>
   <string name="morphe_show_settings_button_type_title">सेटिंग्स बटण क्रिया</string>
@@ -993,6 +1025,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">कॅपशन्स बटण लपवा</string>
   <string name="morphe_hide_cast_button_title">कास्ट बटण लपवा</string>
+  <string name="morphe_hide_cast_button_summary">व्हिडिओ प्लेयर आणि टूलबारमधील कास्ट बटण लपवते</string>
   <string name="morphe_hide_collapse_button_title">कोलॅप्स (Collapse) बटण लपवा</string>
   <string name="morphe_hide_fullscreen_button_title">फुलस्क्रीन बटण लपवा</string>
   <string name="morphe_hide_player_control_buttons_background_title">प्लेअर नियंत्रणांचे पार्श्वभूमी लपवा</string>
@@ -1285,6 +1318,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">या डिव्हाइसद्वारे ग्लो स्प्लॅश स्क्रीनला सपोर्ट मिळत नाही</string>
+  <string name="morphe_splash_screen_duration_title">स्टार्टअप ॲनिमेशन कालावधी</string>
+  <string name="morphe_splash_screen_duration_summary">ग्लो ॲनिमेशन किती वेळ चालावे. ते वगळण्यासाठी ॲनिमेशनवर टॅप करा</string>
   <string name="morphe_theme_color_light_title">लाइट थीम पार्श्वभूमी</string>
   <string name="morphe_theme_color_light_entry_2">पांढरा</string>
   <string name="morphe_theme_color_light_entry_3">मटेरिअल यू (पांढरा)</string>
@@ -1515,6 +1550,12 @@ AV1 सह व्हिडिओ प्लेबॅक अडखळू शकत
   <string name="morphe_spoof_video_streams_player_js_variant_title">प्लेअर जावास्क्रिप्ट प्रकार</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'Stats for nerds\' मध्ये स्पूफिंग दाखवा</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_video_action_bar_layout_title">व्हिडिओ ॲक्शन बार लेआउट</string>
+  <string name="morphe_video_action_bar_layout_entry_1">डिफॉल्ट</string>
+  <string name="morphe_video_action_bar_layout_entry_2">क्लासिक एक-ओळ</string>
+  <string name="morphe_video_action_bar_layout_entry_3">मिनिमल</string>
+  <string name="morphe_video_action_bar_layout_entry_4">क्लासिक दोन-ओळी</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">मर्यादा: क्लासिक लेआउट्स जुन्या शैलीतील \'अधिक व्हिडिओ\' ओव्हरलेवर परत जातात</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">प्लेअर आयकॉनची शैली</string>
   <string name="morphe_player_icon_style_entry_auto">स्वयंचलित</string>
@@ -1681,4 +1722,32 @@ AV1 सह व्हिडिओ प्लेबॅक अडखळू शकत
   <string name="morphe_niconico_comments_max_length_title">कमेंटची कमाल लांबी</string>
   <string name="morphe_niconico_comments_max_length_summary">यापेक्षा जास्त अक्षरे असलेल्या कमेंट्स लपवते. प्रत्येक इमोजी एक अक्षर मानला जातो</string>
   <string name="morphe_niconico_comments_max_length_no_limit">कोणतीही मर्यादा नाही</string>
+  <string name="morphe_live_chat_translate_screen_title">लाईव्ह चॅट भाषांतर</string>
+  <string name="morphe_live_chat_translate_screen_summary">लाईव्ह चॅट आणि लाईव्ह चॅट रिप्ले संदेशांचे भाषांतर करा</string>
+  <string name="morphe_live_chat_translate_title">लाईव्ह चॅटचे भाषांतर करा</string>
+  <string name="morphe_live_chat_translate_summary">लाईव्ह चॅट आणि लाईव्ह चॅट रिप्ले संदेश स्क्रीनवर आल्यावर त्यांचे भाषांतर करते</string>
+  <string name="morphe_live_chat_translate_language_title">भाषांतराची भाषा</string>
+  <string name="morphe_live_chat_translate_exclude_title">वगळलेल्या भाषा</string>
+  <string name="morphe_live_chat_translate_exclude_summary">स्वल्पविरामाने वेगळे केलेले भाषा कोड जसे की id,en. या भाषांमधील संदेशांचे भाषांतर केले जात नाही</string>
+  <string name="morphe_live_chat_translate_provider_title">अनुवाद प्रदाता</string>
+  <string name="morphe_live_chat_translate_provider_google">गुगल ट्रान्सलेट</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API की</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">तुमची DeepL API की. जर DeepL अयशस्वी झाले, जसे की कीची मासिक मर्यादा संपली असेल, तर Google Translate वापरले जाते</string>
+  <string name="morphe_live_chat_translate_copy_button_title">संदेश कॉपी करा बटण दाखवा</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">प्रत्येक चॅट संदेशासाठी एक लहान कॉपी बटण जोडते</string>
+  <string name="morphe_live_chat_translate_copied">संदेश क्लिपबोर्डवर कॉपी केला</string>
+  <string name="morphe_live_chat_translate_style_title">भाषांतराची शैली</string>
+  <string name="morphe_live_chat_translate_style_translated_only">केवळ भाषांतरित</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">मूळ (अनुवादित)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(अनुवादित) मूळ</string>
+  <string name="morphe_live_chat_translate_bold_title">अनुवादित मजकूर ठळक करा</string>
+  <string name="morphe_live_chat_translate_bold_summary">अनुवादित मजकूर ठळक अक्षरात दर्शवते</string>
+  <string name="morphe_live_chat_translate_use_color_title">सानुकूल अनुवादित मजकूर रंग</string>
+  <string name="morphe_live_chat_translate_use_color_summary">अनुवादित मजकुराला सानुकूल रंग लागू करते</string>
+  <string name="morphe_live_chat_translate_color_title">अनुवादित मजकुराचा रंग</string>
+  <string name="morphe_live_chat_translate_color_summary">अनुवादित मजकुराचा हेक्स रंग सेट करा</string>
+  <string name="morphe_live_chat_translate_max_length_title">संदेशाची कमाल लांबी</string>
+  <string name="morphe_live_chat_translate_max_length_summary">जास्त लांबीचे संदेश अनुवादित न करता दर्शवले जातात</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">कोणतीही मर्यादा नाही</string>
 </resources>

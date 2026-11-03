@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວຂອງ Reddit</string>
   <string name="morphe_google_signin_not_available_toast">ບໍ່ສາມາດເຂົ້າສູ່ລະບົບດ້ວຍ Google ໄດ້. ກະລຸນາໃຊ້ ອີເມວ ເພື່ອເຂົ້າສູ່ລະບົບ</string>
+  <string name="morphe_app_downgrade_dialog_title">ບໍ່ຮອງຮັບການຫຼຸດເວີຊັນ</string>
+  <string name="morphe_app_downgrade_dialog_message">"ການຕິດຕັ້ງ Reddit ນີ້ຖືກຫຼຸດເວີຊັນຈາກ &lt;b&gt;%1$s&lt;/b&gt; ມາເປັນ &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+ຂໍ້ມູນແອັບຈາກເວີຊັນທີ່ໃໝ່ກວ່າ ຈະບໍ່ສາມາດເຮັດວຽກກັບເວີຊັນທີ່ເກົ່າກວ່າໄດ້ ແລະ ແອັບອາດຈະເຮັດວຽກບໍ່ຖືກຕ້ອງ.
+&lt;br/&gt;&lt;br/&gt;
+ເພື່ອໃຊ້ເວີຊັນທີ່ເກົ່າກວ່າ, ທ່ານຕ້ອງ &lt;b&gt;ຖອນການຕິດຕັ້ງ&lt;/b&gt; Reddit ແລ້ວຈຶ່ງຕິດຕັ້ງເວີຊັນທີ່ເກົ່າກວ່ານັ້ນ."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">ເປີດຂໍ້ມູນແອັບ</string>
   <string name="morphe_custom_font_title">ຟອນທີ່ກຳນົດເອງ</string>
   <string name="morphe_custom_font_summary">ໂຫຼດໄຟລ໌ຟອນ TTF ຫຼື OTF ທີ່ກຳນົດເອງຈາກທີ່ຢູ່ດ້ານລຸ່ມ. ການເປີດໃຊ້ງານສິ່ງນີ້ ຈະປິດການໃຊ້ງານບັງຄັບໃຊ້ຟອນຂອງລະບົບນຳດ້ວຍ</string>
   <string name="morphe_custom_font_file_path_title">ໄຟລ໌ຟອນທີ່ກຳນົດເອງ</string>
@@ -28,4 +35,47 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_failed_to_load">ໂຫຼດຟອນທີ່ກຳນົດເອງບໍ່ສຳເລັດ. ກະລຸນາເລືອກໄຟລ໌ອື່ນ</string>
   <string name="morphe_force_system_font_title">ບັງຄັບໃຊ້ຟອນຂອງລະບົບ</string>
   <string name="morphe_force_system_font_summary">ໃຊ້ຟອນຂອງລະບົບອຸປະກອນ ແທນ Reddit Sans ຫຼື Roboto. ການເປີດໃຊ້ງານສິ່ງນີ້ ຈະປິດການໃຊ້ງານຟອນທີ່ກຳນົດເອງນຳດ້ວຍ</string>
+  <string name="morphe_show_flairs_in_home_feed_title">ສະແດງ flair ໃນຟີດໜ້າຫຼັກ</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">ສະແດງປ້າຍ flair ຂອງໂພສໃນຟີດໜ້າຫຼັກ</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">ບາງລາຍການໃນຟີດອາດຈະບໍ່ສະແດງ flair</string>
+  <string name="morphe_redgifs_audio_title">ຫຼິ້ນ Redgifs ພ້ອມສຽງ</string>
+  <string name="morphe_redgifs_audio_summary">ຫຼິ້ນວິດີໂອ Redgifs ຕົ້ນສະບັບ ແທນທີ່ຈະເປັນສຳເນົາຂອງ Reddit, ເຊິ່ງມັກຈະບໍ່ມີສຽງ</string>
+  <string name="morphe_redgifs_hd_title">ຄຸນນະພາບ Redgifs HD</string>
+  <string name="morphe_redgifs_hd_summary">ຫຼິ້ນວິດີໂອ Redgifs HD. ວິດີໂອ HD ຈະມີຂະໜາດໃຫຍ່ກວ່າ ແລະ ອາດຈະມີການຢຸດເພື່ອໂຫຼດ</string>
+  <string name="morphe_download_location_title">ສະຖານທີ່ດາວໂຫຼດ</string>
+  <string name="morphe_download_location_all_title">ທຸກບັນຊີ</string>
+  <string name="morphe_download_location_default_summary">ຄ່າເລີ່ມຕົ້ນຂອງ Reddit: ຮູບພາບຢູ່ໃນ Pictures/Reddit, ວິດີໂອຢູ່ໃນ Download</string>
+  <string name="morphe_download_location_summary_folder">ໂຟນເດີ: %s</string>
+  <string name="morphe_download_location_summary_pattern">ຊື່ໄຟລ໌: %s</string>
+  <string name="morphe_download_location_pattern_default">ຊື່ໄຟລ໌ຂອງ Reddit</string>
+  <string name="morphe_download_location_uses_all_summary">ໃຊ້ \"ບັນຊີທັງໝົດ\"</string>
+  <string name="morphe_download_location_own_title">ໃຊ້ຕຳແໜ່ງຂອງຕົນເອງ</string>
+  <string name="morphe_download_location_folder_title">ບັນທຶກໄປທີ່</string>
+  <string name="morphe_download_location_folder_default">ໂຟນເດີເລີ່ມຕົ້ນຂອງ Reddit</string>
+  <string name="morphe_download_location_folder_default_short">ເລີ່ມຕົ້ນ</string>
+  <string name="morphe_download_location_subfolder_hint">ໂຟນເດີຍ່ອຍ</string>
+  <string name="morphe_download_location_subfolder_tree_hint">ເພີ່ມໂຟນເດີຍ່ອຍດ້ວຍ / ໃນຊື່ໄຟລ໌</string>
+  <string name="morphe_download_location_browse">ຊອກຫາ…</string>
+  <string name="morphe_download_location_no_picker">ບໍ່ມີຕົວເລືອກໂຟນເດີໃຫ້ໃຊ້ງານໃນອຸປະກອນນີ້</string>
+  <string name="morphe_download_location_pattern_title">ຊື່ໄຟລ໌</string>
+  <string name="morphe_download_location_pattern_hint">ຊື່ໄຟລ໌ຂອງ Reddit</string>
+  <string name="morphe_download_location_pattern_help">ແຕະທີ່ token ເພື່ອແທຣກມັນ. / ຈະສ້າງໂຟນເດີຍ່ອຍ. ຄ່າທີ່ບໍ່ຮູ້ຈັກຈະກາຍເປັນ \"unknown\"</string>
+  <string name="morphe_download_location_example_images">ຮູບພາບ: %s</string>
+  <string name="morphe_download_location_example_videos">ວິດີໂອ: %s</string>
+  <string name="morphe_download_location_save">ບັນທຶກ</string>
+  <string name="morphe_download_location_reset">ຣີເຊັດ</string>
+  <string name="morphe_download_location_delete">ລຶບ</string>
+  <string name="morphe_download_location_reset_confirm">ຣີເຊັດສະຖານທີ່ດາວໂຫຼດຂອງທຸກບັນຊີໃຫ້ເປັນຄ່າເລີ່ມຕົ້ນຂອງ Reddit ຫຼື ບໍ່?</string>
+  <string name="morphe_download_location_delete_confirm">ລຶບສະຖານທີ່ດາວໂຫຼດຂອງ %s ຫຼື ບໍ່?</string>
+  <string name="morphe_download_location_save_failed">ບໍ່ສາມາດບັນທຶກລົງໃນສະຖານທີ່ດາວໂຫຼດໄດ້. ໄດ້ບັນທຶກລົງໃນໂຟນເດີເລີ່ມຕົ້ນຂອງ Reddit ແທນ</string>
+  <string name="morphe_download_location_folder_unavailable">ໂຟນເດີດາວໂຫຼດບໍ່ສາມາດນຳໃຊ້ໄດ້ອີກຕໍ່ໄປ. ໄດ້ບັນທຶກລົງໃນໂຟນເດີເລີ່ມຕົ້ນຂອງ Reddit ແທນ</string>
+  <string name="morphe_download_location_video_failed">ບໍ່ສາມາດບັນທຶກວິດີໂອທີ່ດາວໂຫຼດໄດ້</string>
+  <string name="morphe_download_location_invalid_folder">ໂຟນເດີນີ້ບໍ່ສາມາດໃຊ້ສຳລັບການດາວໂຫຼດໄດ້</string>
+  <string name="morphe_download_location_account_current">%s (ປັດຈຸບັນ)</string>
+  <string name="morphe_download_location_account_logged_out">%s (ບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ)</string>
+  <string name="morphe_download_location_account_anonymous">ບໍ່ລະບຸຕົວຕົນ (ອອກຈາກລະບົບ ຫຼື ໂໝດບໍ່ລະບຸຕົວຕົນ)</string>
+  <string name="morphe_app_icon_title">ໄອຄອນແອັບ</string>
+  <string name="morphe_app_icon_choose_title">ເລືອກໄອຄອນແອັບ</string>
+  <string name="morphe_app_icon_default">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_app_icon_unknown">ບໍ່ຮູ້ຈັກ</string>
 </resources>

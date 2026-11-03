@@ -445,6 +445,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">نسخ التعليقات</string>
   <string name="morphe_copy_comments_summary">اضغط مع الاستمرار على تعليق لنسخه</string>
   <string name="morphe_copy_comments_success">تم نسخ التعليق إلى الحافظة</string>
+  <string name="morphe_copy_select_text_title">تحديد نص الأوصاف والمنشورات</string>
+  <string name="morphe_copy_select_text_summary">اضغط مع الاستمرار على وصف فيديو أو منشور لتحديد ونسخ أي جزء منه</string>
+  <string name="morphe_copy_select_text_dialog_title">تحديد النص</string>
+  <string name="morphe_copy_select_text_copy_all">نسخ الكل</string>
+  <string name="morphe_copy_select_text_success">تم نسخ النص إلى الحافظة</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">الضغط مع الاستمرار لفتح قائمة الفيديو</string>
   <string name="morphe_feed_long_press_menu_summary">يؤدي الضغط مع الاستمرار في أي مكان على فيديو في الخلاصة إلى فتح قائمته</string>
@@ -937,6 +942,11 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_hide_notifications_button_title">إخفاء زر الإشعارات</string>
   <string name="morphe_show_search_button_title">عرض زر البحث</string>
   <string name="morphe_show_search_button_index_title">موضع زر البحث</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">عرض زر المشاهدة لاحقًا</string>
+  <string name="morphe_show_watch_later_button_index_title">موضع زر المشاهدة لاحقًا</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">المشاهدة لاحقًا</string>
   <string name="morphe_show_settings_button_title">عرض زر الإعدادات</string>
   <string name="morphe_show_settings_button_index_title">موضع زر الإعدادات</string>
   <string name="morphe_show_settings_button_type_title">إجراء زر الإعدادات</string>
@@ -1720,6 +1730,12 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">أقصى طول للتعليق</string>
   <string name="morphe_niconico_comments_max_length_summary">يخفي التعليقات التي تحتوي على عدد أحرف أكثر من هذا الحد. يتم احتساب كل رمز تعبيري كحرف واحد</string>
   <string name="morphe_niconico_comments_max_length_no_limit">بلا حدود</string>
+  <string name="morphe_niconico_comments_live_streams_title">عرض على البثوث المباشرة</string>
+  <string name="morphe_niconico_comments_live_streams_summary">البثوث المباشرة وردودها</string>
+  <string name="morphe_niconico_comments_live_premieres_title">عرض على عروض البث الأولى</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">العرض الأول بينما يتم تشغيلها</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">عرض على عروض البث الأولى المنتهية</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">إعادة المحادثة لعروض البث الأولى التي انتهت</string>
   <string name="morphe_live_chat_translate_screen_title">ترجمة المحادثة المباشرة</string>
   <string name="morphe_live_chat_translate_screen_summary">ترجمة رسائل المحادثة المباشرة وإعادة تشغيل المحادثة المباشرة</string>
   <string name="morphe_live_chat_translate_title">ترجمة المحادثة المباشرة</string>
@@ -1727,6 +1743,11 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">لغة الترجمة</string>
   <string name="morphe_live_chat_translate_exclude_title">اللغات المستبعدة</string>
   <string name="morphe_live_chat_translate_exclude_summary">رموز اللغات مفصولة بفواصل مثل id,en. الرسائل بهذه اللغات غير مترجمة</string>
+  <string name="morphe_live_chat_translate_provider_title">مزوّد الترجمة</string>
+  <string name="morphe_live_chat_translate_provider_google">ترجمة Google</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">مفتاح DeepL API</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">مفتاح DeepL API الخاص بك. يتم استخدام ترجمة Google في حال فشل DeepL، كما هو الحال عند الوصول إلى الحد الشهري للمفتاح</string>
   <string name="morphe_live_chat_translate_copy_button_title">عرض زر نسخ الرسالة</string>
   <string name="morphe_live_chat_translate_copy_button_summary">يضيف زر نسخ صغير لكل رسالة محادثة</string>
   <string name="morphe_live_chat_translate_copied">تم نسخ الرسالة إلى الحافظة</string>

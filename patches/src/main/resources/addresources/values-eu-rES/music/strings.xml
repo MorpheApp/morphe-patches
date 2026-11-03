@@ -612,7 +612,6 @@ Cookie beharrezkoak: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Tzinerazko hitzak (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grezierazko, eslavia ziriloazko (errusiera, ukrainera, bulgara, serbia, bielorrusia eta mazedoniera barne), georgierazko, armeniarazko, hebreaerazko, arabierazko, amharazko eta siriakozko transliterazioak (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s irakurtzen: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Aukeratu gutxienez hiztegi bat</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Aktualizatzeko botoia erakutsi</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Sakatu hurrengo letra kandidatora aldatzeko; sakatu luze abestuaren izenaren eta artistaren arabera letra bilatzeko</string>
   <string name="morphe_music_lyrics_search_dialog_title">Bilatu letraak</string>
@@ -741,7 +740,7 @@ Letak Morphe-rekin lotura, patroinatu edo onartuta ez dauden hirugarren party ze
   <string name="morphe_music_lyrics_use_ai_section_summary">Soilik hornitzaileak Estribilloa edo Bertsoa bezalako atzespen-etiketak bidaltzen ez dituen kasuetan erabiltzen da, zure OpenAI-rekin compatible modeloak detektatuko ditu. Lerroa editatzeak bere prompt-a ere irekiko du</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL-a (adib. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt-txantilokia</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Lehenkideak: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Lehenkideak: {task}, {language}, {title}, {artist}, {count}, {lines}. Ezagunak ez direnak idatzitako moduan geratzen dira</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompta gorde da</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompta gorde da, baina AI endpoint-a ez da erabili nahi. Konfiguratu lehen AI E設定etan</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompta berreskuratuta</string>

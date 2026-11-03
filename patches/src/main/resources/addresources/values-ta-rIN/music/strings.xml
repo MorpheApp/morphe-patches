@@ -154,7 +154,6 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">சீன மற்றும் காண்டனீஸ் எழுத்துக்கள் (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">சீன வார்த்தைகள் (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">கிரேக்க, ஸ்லாவிக் சிரிலிக் (ரஷ்யன், உக்ரேனியன், பல்கேரியன், செர்பியன், பெலாரூசியன், மாகிடோனியன் உட்பட), ஜார்ஜியன், அர்மேனியன், ஹீப்ரு, அரபு, அம்ஹாரிக் மற்றும் சிரியாக் ஒலிபெயர்ப்பு (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">குறைந்தது ஒரு அகராதியையாவது தேர்வு செய்யவும்</string>
   <string name="morphe_music_lyrics_line_scale_title">செயலில் இல்லாத வரிகளைக் குறுக்கவும்</string>
   <string name="morphe_music_lyrics_line_scale_summary">தற்போது பாடப்படாத ஒவ்வொரு வரியையும் சற்று சிறியதாக வரைந்து, அதே சமயம் மங்கலாகக் காட்டும்</string>
   <string name="morphe_music_lyrics_split_background_title">பின்னணி குரல்களைத் தனியாகக் காட்டவும்</string>
@@ -182,6 +181,7 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_use_ai_section_title">AI மூலம் பிரிவுகளைக் கண்டறியவும்</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Chorus அல்லது Verse போன்ற பிரிவு லேபிள்களை வழங்குநர் அனுப்பாதபோது மட்டுமே இது பயன்படுத்தப்படும், அவற்றை உங்கள் OpenAI-க்கு இணக்கமான மாடல் கண்டறியும். வரிசையைத் திருத்துவது அதன் தூண்டுதலையும் திறக்கும்</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (உதாரணமாக https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholders: {task}, {language}, {title}, {artist}, {count}, {lines}. தெரியாதவை தட்டச்சு செய்யப்பட்டவாறே விடப்படும்</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">அமைப்புகள் முழுமையற்றவை அல்லது வழங்குநரால் நிராகரிக்கப்பட்டன</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: இணைக்கப்பட்டது! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: இணைப்பு தோல்வியடைந்தது. அமைப்புகளைச் சரிபார்க்கவும்.</string>

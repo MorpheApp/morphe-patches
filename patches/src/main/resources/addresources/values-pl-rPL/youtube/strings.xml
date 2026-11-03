@@ -445,6 +445,11 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_copy_comments_title">Kopiuj komentarze</string>
   <string name="morphe_copy_comments_summary">Przytrzymaj komentarz, aby go skopiować</string>
   <string name="morphe_copy_comments_success">Skopiowano komentarz do schowka</string>
+  <string name="morphe_copy_select_text_title">Zaznacz tekst opisów i postów</string>
+  <string name="morphe_copy_select_text_summary">Przytrzymaj opis filmu lub post, aby zaznaczyć i skopiować dowolny jego fragment</string>
+  <string name="morphe_copy_select_text_dialog_title">Zaznacz tekst</string>
+  <string name="morphe_copy_select_text_copy_all">Skopiuj wszystko</string>
+  <string name="morphe_copy_select_text_success">Skopiowano tekst do schowka</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Przytrzymaj, aby otworzyć menu filmu</string>
   <string name="morphe_feed_long_press_menu_summary">Przytrzymanie filmu w dowolnym miejscu na liście otwiera jego menu</string>
@@ -933,6 +938,11 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_hide_notifications_button_title">Ukryj przycisk Powiadomienia</string>
   <string name="morphe_show_search_button_title">Pokaż przycisk Szukaj</string>
   <string name="morphe_show_search_button_index_title">Pozycja przycisku Szukaj</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Pokaż przycisk \"Do obejrzenia\"</string>
+  <string name="morphe_show_watch_later_button_index_title">Pozycja przycisku \"Do obejrzenia\"</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Do obejrzenia</string>
   <string name="morphe_show_settings_button_title">Pokaż przycisk Ustawienia</string>
   <string name="morphe_show_settings_button_index_title">Pozycja przycisku Ustawienia</string>
   <string name="morphe_show_settings_button_type_title">Działanie przycisku Ustawienia</string>
@@ -1715,6 +1725,12 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_niconico_comments_max_length_title">Maksymalna długość komentarza</string>
   <string name="morphe_niconico_comments_max_length_summary">Ukrywa komentarze przekraczające podaną liczbę znaków. Każda emotka liczy się jako jeden znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Bez limitu</string>
+  <string name="morphe_niconico_comments_live_streams_title">Pokaż na transmisjach na żywo</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Transmisje na żywo i ich powtórki</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Pokaż na premierach</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premiery w trakcie ich trwania</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Pokaż na zakończonych premierach</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Powtórka czatu z zakończonych premier</string>
   <string name="morphe_live_chat_translate_screen_title">Tłumaczenie czatu na żywo</string>
   <string name="morphe_live_chat_translate_screen_summary">Tłumacz wiadomości na czacie na żywo oraz w powtórce czatu</string>
   <string name="morphe_live_chat_translate_title">Tłumacz czat na żywo</string>
@@ -1722,6 +1738,11 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_live_chat_translate_language_title">Język tłumaczenia</string>
   <string name="morphe_live_chat_translate_exclude_title">Wykluczone języki</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kody języków oddzielone przecinkami, np. id,en. Wiadomości w tych językach nie są tłumaczone</string>
+  <string name="morphe_live_chat_translate_provider_title">Dostawca tłumaczeń</string>
+  <string name="morphe_live_chat_translate_provider_google">Tłumacz Google</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">Klucz API DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Twój klucz API DeepL. W razie błędu DeepL (np. po osiągnięciu miesięcznego limitu klucza) używany jest Tłumacz Google</string>
   <string name="morphe_live_chat_translate_copy_button_title">Pokaż przycisk kopiowania wiadomości</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Dodaje mały przycisk kopiowania przy każdej wiadomości na czacie</string>
   <string name="morphe_live_chat_translate_copied">Skopiowano wiadomość do schowka</string>

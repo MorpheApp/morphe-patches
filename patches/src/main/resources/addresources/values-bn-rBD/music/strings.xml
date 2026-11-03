@@ -607,7 +607,6 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">চীনা শব্দ (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">গ্রিক, স্লাভিক সাইরিলিক (রাশিয়ান, ইউক্রেনিয়ান, বলগেরিয়ান, সার্বিয়ান, বেলারুশিয়ান, ম্যাসেডোনিয়ান সহ), জর্জিয়ান, আর্মেনিয়ান, হিব্রু, আরবি, আমহারিক এবং সিরিয়াক ট্রান্সলিটারেশন (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">পাঠ %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">কমপক্ষে একটি অভিধান নির্বাচন করুন</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">রিফ্রেশ বোতাম দেখান</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">পরবর্তী লিরিক্স প্রার্থীতে পরিবর্তন করতে ট্যাপ করুন; গানের নাম এবং শিল্পী দিয়ে লিরিক্স খুঁজতে দীর্ঘক্ষণ চাপুন</string>
   <string name="morphe_music_lyrics_search_dialog_title">গানের কথা অনুসন্ধান</string>
@@ -736,7 +735,7 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_use_ai_section_summary">শুধুমাত্র তখনই ব্যবহৃত হয় যখন প্রদানকারীর কাছে কোনো বিভাগ লেবেল যেমন Chorus বা Verse থাকে না, যা আপনার OpenAI-সঙ্গতিপন্ন মডেল তখন সনাক্ত করে। সারি সম্পাদনা করাও এর প্রম্পট খোলে</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API এন্ডপয়েন্ট URL (উদাহরণস্বরূপ https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">প্রম্পট টেমপ্লেট</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">প্লেসহোল্ডার: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">প্লেসহোল্ডারগুলি: {task}, {language}, {title}, {artist}, {count}, {lines}। অজানাগুলি টাইপ করা অনুযায়ী রাখা হয়েছে</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">প্রম্পট সংরক্ষিত হয়েছে</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">প্রম্পট সংরক্ষিত হয়েছে, কিন্তু AI এন্ডপয়েন্ট এখনও ব্যবহারযোগ্য নয়। প্রথমে এটি AI সেটিংস-এ কনফিগার করুন</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">প্রম্পট রিসেট করা হয়েছে</string>

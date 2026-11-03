@@ -606,7 +606,6 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kinesiska ord (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grekiska, slaviska kyrilliska (inklusive ryska, ukrainska, bulgariska, serbiska, belarusiska, makedonska), georgiska, armeniska, hebreiska, arabiska, amhariska och syrisk translitterering (CLDR, ~0,5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Läsning %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Välj minst en ordbok</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Visa uppdatera-knappen</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Tryck för att växla till nästa textkandidat; långtryck för att söka text efter låttitel och artist</string>
   <string name="morphe_music_lyrics_search_dialog_title">Sök sångtext</string>
@@ -735,7 +734,7 @@ Låttexter kommer från tredjeparts tjänster som inte är anslutna till, sponsr
   <string name="morphe_music_lyrics_use_ai_section_summary">Används endast när tjänsten inte levererar sektionsetiketter som Topp eller Vers, vilket din OpenAI-kompatibla modell då upptäcker. Att redigera raden öppnar också dess prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-slutpunkts-URL (t.ex. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Mall för prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Platshållare: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Platshållare: {task}, {language}, {title}, {artist}, {count}, {lines}. Okända lämnas som de är skrivna</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt sparad</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt sparad, men AI-slutpunkten är fortfarande inte användbar. Konfigurera den under AI-inställningar först</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt återställd</string>

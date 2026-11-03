@@ -445,6 +445,11 @@ Le segnalazioni sono pubbliche e vengono esaminate prima che un canale venga agg
   <string name="morphe_copy_comments_title">Copia commenti</string>
   <string name="morphe_copy_comments_summary">Tocca e tieni premuto un commento per copiarlo</string>
   <string name="morphe_copy_comments_success">Commento copiato negli appunti</string>
+  <string name="morphe_copy_select_text_title">Seleziona testo di descrizioni e post</string>
+  <string name="morphe_copy_select_text_summary">Tieni premuta la descrizione di un video o un post per selezionare e copiare qualsiasi parte di esso</string>
+  <string name="morphe_copy_select_text_dialog_title">Seleziona testo</string>
+  <string name="morphe_copy_select_text_copy_all">Copia tutto</string>
+  <string name="morphe_copy_select_text_success">Testo copiato negli appunti</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Tocca e tieni premuto per aprire il menu video</string>
   <string name="morphe_feed_long_press_menu_summary">Toccare e tenere premuto ovunque su un video nel feed apre il relativo menu</string>
@@ -933,6 +938,9 @@ Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' 
   <string name="morphe_hide_notifications_button_title">Nascondi il pulsante Notifiche</string>
   <string name="morphe_show_search_button_title">Mostra il pulsante Ricerca</string>
   <string name="morphe_show_search_button_index_title">Posizione pulsante Cerca</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Guarda più tardi</string>
   <string name="morphe_show_settings_button_title">Mostra il pulsante Impostazioni</string>
   <string name="morphe_show_settings_button_index_title">Posizione del pulsante Impostazioni</string>
   <string name="morphe_show_settings_button_type_title">Azione pulsante Impostazioni</string>
@@ -1722,6 +1730,11 @@ La registrazione automatica è facoltativa. Si arresta in modalità incognito o 
   <string name="morphe_live_chat_translate_language_title">Lingua di traduzione</string>
   <string name="morphe_live_chat_translate_exclude_title">Lingue escluse</string>
   <string name="morphe_live_chat_translate_exclude_summary">Codici lingua separati da virgola, come id,en. I messaggi in queste lingue non vengono tradotti</string>
+  <string name="morphe_live_chat_translate_provider_title">Fornitore di traduzione</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">Chiave API DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">La tua chiave API DeepL. Google Translate viene utilizzato se DeepL fallisce, ad esempio quando viene raggiunto il limite mensile della chiave</string>
   <string name="morphe_live_chat_translate_copy_button_title">Mostra pulsante copia messaggio</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Aggiunge un piccolo pulsante copia a ogni messaggio della chat</string>
   <string name="morphe_live_chat_translate_copied">Messaggio copiato negli appunti</string>

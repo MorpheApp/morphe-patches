@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Sernêşe</string>
   <string name="morphe_settings_screen_12_video_title">Vîdeo</string>
   <string name="morphe_restore_old_settings_menus_title">Restore old YouTube settings screen</string>
+  <string name="morphe_native_snackbar_title">Peyamên di snackbarê YouTube de nîşan bide</string>
+  <string name="morphe_native_snackbar_summary">Peyamên Morphe, wekî piştrastkirina bişkokeke playerê, li şûma pop-upê di snackbarê YouTube de tên nîşandan</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Hilbijartina parastina ji bo lîstikê di binê de tunekirin</string>
   <string name="morphe_shorts_disable_background_playback_title">Lêkirina lîstikê paşnavê veqetîne</string>
@@ -59,6 +61,7 @@ Guherînle ev in:
   <string name="morphe_hide_account_menu_title">Mîze Bike / Fîlterê menuya jorîn</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Mîze Bike / Fîlterê menuya jorîn</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Navên menuya jorîn ku bi rêyên nû veqetandî ne, têxin da ku bi wan veqetînin</string>
+  <string name="morphe_hide_account_menu_downloads_title">Daxistinên veşêre</string>
   <string name="morphe_hide_album_cards_title">Kartên album hidin</string>
   <string name="morphe_hide_album_cards_summary">Kartên albûmê di bin nivîsa hunermend de veşêrin</string>
   <string name="morphe_hide_artist_cards_title">Kartên hunermend hidin</string>
@@ -274,6 +277,9 @@ Guherînle ev in:
   <string name="morphe_hide_comments_emoji_button_title">Şîrkirina Butona Emojiyê</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Vebijarkên barekê veşêre</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Vebijarkên barekê ji bilî \'Herî jor\' û \'Nûترین\' veşêre</string>
+  <string name="morphe_hide_comments_gif_button_title">Butona GIF veşerîne</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF û wêneyan veşerîne</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">GIF û wêneyên ku bi koment û bersivan re hatine girêdan veşerîne</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Şîrkirina animasyonê û kartên hediyê veşêrin</string>
   <string name="morphe_hide_comments_gift_button_title">Butona Hediyê veşêrin</string>
   <string name="morphe_hide_comments_info_button_title">Dîmena Butona Agahî</string>
@@ -439,10 +445,16 @@ Rapor giştî ne û berî ku kanal bikeve lîsteyê tên kontrolkirin. Jêbirin 
   <string name="morphe_copy_comments_title">Komentan kopî bike</string>
   <string name="morphe_copy_comments_summary">Ji bo kopîkirina şîroveyekê, lê bitikîne û bihêle</string>
   <string name="morphe_copy_comments_success">Şîrove hate kopîkirin</string>
+  <string name="morphe_copy_select_text_title">Teksta şirove û postan hilbijêre</string>
+  <string name="morphe_copy_select_text_summary">Ji bo ku beşek ji şiroveya vîdyoyê an postekê hilbijêrî û kopî bikî, lê bitikîne û bihêle</string>
+  <string name="morphe_copy_select_text_dialog_title">Tekstê hilbijêre</string>
+  <string name="morphe_copy_select_text_copy_all">Hemû kopî bike</string>
+  <string name="morphe_copy_select_text_success">Tekst ji bo clipboard hat kopîkirin</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Ji bo vekirina menyuya vîdyoyê, bitikînin û bihêlin</string>
   <string name="morphe_feed_long_press_menu_summary">Bi tikînin û bihêlan li her derê li ser vîdyoyeke feedê, menyuya wê vedibe</string>
   <string name="morphe_feed_watch_later_button_title">Butona \"Paşê temaşe bike\" li ser thumbnailan nîşan bide</string>
+  <string name="morphe_feed_watch_later_button_summary">Bişkokeke \"Paşê temaşe bike\" li ser thumbnailên vîdyoyên feedê tê nîşandan, û heger vîdyo hatibe savekirin, nîşanekî rast heye. Bi lêdanê vîdyo tê savekirin an jêhatin, û bi lêdan û girtinê \"Save bike di playlistê de\" vedibe</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Wêne yên postan daxîne</string>
   <string name="morphe_post_image_download_summary">Bişkojeka daxistinê li gel bişkojeka Parvekirinê ya postên bi wêne yan GIF-an re tê nîşandan, û aleyek daxistinê li menuya wan tê zêdekirin</string>
@@ -455,6 +467,14 @@ Rapor giştî ne û berî ku kanal bikeve lîsteyê tên kontrolkirin. Jêbirin 
   <string name="morphe_post_image_download_failed">Nekir hat wêne danê</string>
   <string name="morphe_post_image_download_not_found">Di vê postê de tu wêne nehat dîtin</string>
   <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Postan wergerîne</string>
+  <string name="morphe_post_translate_summary">Xaleke menyuyê lê zêde dike ji bo wergerandina postên afirînerên naverîkê</string>
+  <string name="morphe_post_translate_language_title">Zimanê wergerandina postê</string>
+  <string name="morphe_post_translate_flyout">Wergerîne</string>
+  <string name="morphe_post_translate_flyout_original">Yê orjînal nîşan bide</string>
+  <string name="morphe_post_translate_started">Wergerandine...</string>
+  <string name="morphe_post_translate_failed">Post nehat wergerandin</string>
+  <string name="morphe_post_translate_same_language">Post jixwe bi zimanê wergerandine</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Karekê Askê lê menuyê flyout zêde bike</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Karekê kurteya vîdyoyê lê menuyê flyout ê feed zêde dike</string>
@@ -504,7 +524,24 @@ Piştî ku vîdyoyek bi butonka Askê carekê hat vekirin, ev taybetmendî bi he
   <string name="morphe_external_downloader_quick_audio">Deng</string>
   <string name="morphe_external_downloader_quick_options">Hemû vebijark</string>
   <string name="morphe_shorts_download_flyout_button_title">Daxînan di menyuya Shorts de nîşan bide</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Bendeya daxistinê li menyuya lîstikera Shorts zêde dike</string>
   <string name="morphe_shorts_download_flyout_title">Daxîne</string>
+  <string name="morphe_export_download_folder_title">Vîdyoyên savekirî eksport bike</string>
+  <string name="morphe_export_download_folder_summary">"Vîdyoyên li hundurê aplikasyonê yên savekirî bi rêya menyuya daxezan a li hundurê aplikasyonê bi storage'a amûrê xwe ve exporters bike. Ji bo guhartina foldera exportê lê bitikîne
+
+Foldera exportê: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Foldera eksportê</string>
+  <string name="morphe_export_download_folder_change">Folderê biguherîne</string>
+  <string name="morphe_export_download_folder_changed">Foldera eksportê hat guhertin</string>
+  <string name="morphe_export_download_folder_reset">Foldera eksportê hat resetkirin</string>
+  <string name="morphe_export_download_folder_missing">Folderê exportê %s nehat dîtin</string>
+  <string name="morphe_export_download_flyout_title">Eksport bike ser amûrê</string>
+  <string name="morphe_export_download_started">Eksportkirina vîdyoyê</string>
+  <string name="morphe_export_download_progress">Eksportkirina vîdyoyê: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Eksportên vîdyoyê</string>
+  <string name="morphe_export_download_saved">Vîdyo hate eksportkirin bo %s</string>
+  <string name="morphe_export_download_failed">Nexweş bû eksportkirina vîdyoyê</string>
+  <string name="morphe_export_download_canceled">Eksport hat betalkirin</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Wergerê dîtinî</string>
   <string name="morphe_vot_screen_summary">Jê wergirê nivîskên vîdyoyê bi teknolojîya veguherandina nivîsê ya cîhazê, bi hevdîtina lîstikê, bi dengî bixîne</string>
@@ -580,7 +617,18 @@ Divê anahtara we ne were parve kirin. Kesê ku bigihe wê dikare bikar bîne kr
   <string name="morphe_pip_button_flyout_title">Menûya Wêne-di-Wêne nîşan bide</string>
   <string name="morphe_pip_button_flyout_name">Biguherîneye Picture-in-Picture</string>
   <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Çalakiyên wêneyê-di-nav-wêneyî</string>
+  <string name="morphe_pip_actions_screen_summary">Bişkoan ên di wêneyê-di-nav-wêneyî de hatine nîşandan biguhere</string>
+  <string name="morphe_pip_action_left_title">Bişka çep</string>
+  <string name="morphe_pip_action_center_title">Bişka navîn</string>
+  <string name="morphe_pip_action_right_title">Buttona rast</string>
   <string name="morphe_pip_action_entry_default">Bixweber</string>
+  <string name="morphe_pip_action_entry_previous">Vîdyoya berê</string>
+  <string name="morphe_pip_action_entry_next">Vîdyoya paşê</string>
+  <string name="morphe_pip_action_entry_rewind">10 saniyeyan vegerîne</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 saniyeyan berê bike</string>
+  <string name="morphe_pip_action_entry_play_pause">Play/rawestîne</string>
+  <string name="morphe_pip_action_entry_background_playback">Lîstana li piştperdeye</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Butona hemûyan lîstik bike nîşan bide</string>
   <string name="morphe_play_all_button_summary">"Tap to generate a playlist of all videos from channel, tap and hold to undo
@@ -831,6 +879,10 @@ Ji bo çareserkirina vê, 'Spozîkirina streaming-ên vîdyoyê' vekirin û 'Kl�
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Navnîşanan</string>
   <string name="morphe_captions_screen_summary">Serişteya nivîskî ya otomatikî yê veşêirin</string>
+  <string name="morphe_captions_languages_title">Ziman û werger</string>
+  <string name="morphe_captions_presentation_title">Dexarûn û tevger</string>
+  <string name="morphe_captions_advanced_title">Pêşketî</string>
+  <string name="morphe_captions_advanced_summary">Veçarkên kuşkî û nivîsên axaftinê</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Astê nîşerê otomatîk</string>
   <string name="morphe_auto_captions_style_entry_1">Her tim nîşan bide</string>
@@ -839,8 +891,10 @@ Ji bo çareserkirina vê, 'Spozîkirina streaming-ên vîdyoyê' vekirin û 'Kl�
   <string name="morphe_auto_captions_style_entry_4">Dibe ku darvekirin</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Zimanê nivîsên binî yê tercîhkirî</string>
+  <string name="morphe_preferred_caption_language_summary">Ji bo her vîdyoyekê bi awayekî otomatîk zimanê nivîsên jêrîn dijêre</string>
   <string name="morphe_preferred_caption_language_entry_off">Dabe</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Zimanên din ên wergera otomatîk</string>
   <string name="morphe_auto_translate_additional_languages_summary">Zimanên zêdetir lê menyuya auto-translate zêde dike</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Set caption cookies</string>
@@ -859,7 +913,16 @@ Divê 'kukiyên jêrnivîsan' bên peyda kirin."</string>
   <string name="morphe_fix_transcript_summary">Çareserî di qada pêşî de pişkekî ku dikare astengîya nivîskê veşêre</string>
   <string name="morphe_captions_in_pip_title">Captionan di picture-in-picture de nîşan bide</string>
   <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Mezinahiya nivîsên jêrîn</string>
+  <string name="morphe_caption_scale_summary">Ji bo nivîsên jêrîn ên bi yek ziman û du zimanan tê sepandin</string>
   <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">Blokên nivîsên jêrîn ên stabîl</string>
+  <string name="morphe_stable_caption_blocks_summary">Kaptîyonên otomatîk ên zimanê tekî di blokanên îsek û xwendbare de kom bike. Kaptîyonên duzimanî her tim blokan bikar tînin. Dibe ku hinek peyv berî ku werin gotin derkevin</string>
+  <string name="morphe_secondary_caption_language_title">Zimanê kaptîyonê yê ducî</string>
+  <string name="morphe_secondary_caption_language_summary">Zimanekî ducî ligel kaptîyonan nîşan dide, û guhertoyekê ya kaptîyonên duzimanî li menuya kaptîyonan zêde dike</string>
+  <string name="morphe_dual_captions_enabled_title">Kaptîyonên duzimanî</string>
+  <string name="morphe_caption_block_translation_failed">Hinek wergera kaptîyonan tune ne. Kaptîyonên heye tên nîşandan.</string>
+  <string name="morphe_caption_blocks_too_large">Her du zimanên kaptîyonan di vê playerê de nayên guncankirin. Zimanê sereke tê nîşandan.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Gomeqên hevveşan</string>
   <string name="morphe_navigation_buttons_screen_summary">Hilbijêre ku kîjan pêkhateyên di toolbarê de xuya dibe</string>
@@ -875,6 +938,9 @@ Divê 'kukiyên jêrnivîsan' bên peyda kirin."</string>
   <string name="morphe_hide_notifications_button_title">Butona agahî veşêrin</string>
   <string name="morphe_show_search_button_title">Butona lêgerînê nîşan bide</string>
   <string name="morphe_show_search_button_index_title">Helkefta butona lêgerîn</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Dîrûvaniya paş</string>
   <string name="morphe_show_settings_button_title">Butona serişteyê nîşan bide</string>
   <string name="morphe_show_settings_button_index_title">Helkefta butona serişteyê</string>
   <string name="morphe_show_settings_button_type_title">Çalakiya butona Mîhengê</string>
@@ -960,6 +1026,7 @@ Ji bo nîşandana menûya 'Audio Track', 'Spoof video streams' biguherîne her c
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Butona nivîskê veşêre</string>
   <string name="morphe_hide_cast_button_title">Butona birêveberînê veşêre</string>
+  <string name="morphe_hide_cast_button_summary">Butona Cast di playerê vîdyoyê û toolbarê de veşerîne</string>
   <string name="morphe_hide_collapse_button_title">Dîmena Butona Berfirehkirinê</string>
   <string name="morphe_hide_fullscreen_button_title">Dîmena Butona Tam Ekranê</string>
   <string name="morphe_hide_player_control_buttons_background_title">Pêşgîhastî bajarê kontrolên lîstikê veşêre</string>
@@ -1203,8 +1270,14 @@ Layouta otomotîvê
   <string name="morphe_miniplayer_disable_resuming_summary">Mînîlîstê \'Devamkirina dîkirinê\' asteng dike, fektorek premîum a YouTube ku di destpêka sepanê de xuya dibe</string>
   <string name="morphe_miniplayer_screen_title">Minileýner</string>
   <string name="morphe_miniplayer_screen_summary">Sazkirina şeffafiyê (0 şeffaf e, 100 neşeffaf e)</string>
+  <string name="morphe_miniplayer_not_available_title">Miniplayerên zêde</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube hemû miniplayerên zêde rakir. Ji bo zêdekirina cureyên miniplayeran, YouTube 21.28.208 an ya pêşî patch bike</string>
   <string name="morphe_miniplayer_type_title">Minileýner</string>
   <string name="morphe_miniplayer_hide_title_title">Nav û kanal veşêre</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Bi kişandina jor ve fireh bike</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Kişandina miniplayerê ber bi jor ve playerê fireh dike, li şûma ku miniplayerê biçe serê ekranê</string>
+  <string name="morphe_miniplayer_docked_title">Miniplayerê girêdayî</string>
+  <string name="morphe_miniplayer_docked_summary">Miniplayerê girê dide şirîta navberê û aliyên ekranê, li şûma ku li ser wan bimeşe</string>
   <string name="morphe_miniplayer_type_entry_0">Vemirandî</string>
   <string name="morphe_miniplayer_type_entry_1">Bixweber</string>
   <string name="morphe_miniplayer_type_entry_2">Kêm</string>
@@ -1244,7 +1317,11 @@ Layouta otomotîvê
   <string name="morphe_fix_status_bar_layout_summary">Layouta status barê li hev digire, da ku şirîtên jorîn nediposhîne û li ser playerê tu qada vala nêhêle. Heke app crash bibe an şirîtên jorîn şaş xuya bin, vê veguherîne</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Ronahî</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Ekranê destpêkê ya tîrêjî ji hêla vê amûrê ve nayê piştkirin</string>
+  <string name="morphe_splash_screen_duration_title">Dirêjahiya animasyona destpêkê</string>
+  <string name="morphe_splash_screen_duration_summary">Animasyona ronahiyê heta çi demê dilîze. Ji bo derbas kirinê li animasyonê bitikîne</string>
   <string name="morphe_theme_color_light_title">Paşxaneya temaya ronî</string>
   <string name="morphe_theme_color_light_entry_2">Spî</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Spî)²,</string>
@@ -1475,8 +1552,12 @@ Lîstana vîdyoyê bi AV1 dibe ku qutb bibe an framing-an winda bike"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Warianta JavaScriptê lîstikvanê</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Sexandinê di \'Stats for nerds\' de nîşan bide</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_video_action_bar_layout_title">Layoutê action barê vîdyoyê</string>
   <string name="morphe_video_action_bar_layout_entry_1">Bixweber</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasîk Yek-Rêz</string>
   <string name="morphe_video_action_bar_layout_entry_3">Kêm</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klasîk Du-Rêz</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Sînorkirin: Layoutên klasîk vedigerin ser şêwazê kevin ê overlayê \'Vîdyoyên din\'</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Stîla îkona Player\'ê</string>
   <string name="morphe_player_icon_style_entry_auto">Otomatîk</string>
@@ -1644,4 +1725,32 @@ Tomarkirina otomatîk di moda incognito de, gava nasnameya hesabê tune be, yan 
   <string name="morphe_niconico_comments_max_length_title">Dirêjiya herî zêde ya komentan</string>
   <string name="morphe_niconico_comments_max_length_summary">Komentên ku ji vê hejmarê karakteran zêdetir bin veşerîne. Her emoji wekî yek karakter tê hesabkirin</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Tu sînor nînîn</string>
+  <string name="morphe_live_chat_translate_screen_title">Wergera chatê ya zindî</string>
+  <string name="morphe_live_chat_translate_screen_summary">Namên chatê ya zindî û namên replayê ya chatê ya zindî wergerîne</string>
+  <string name="morphe_live_chat_translate_title">Wergera chatê ya zindî</string>
+  <string name="morphe_live_chat_translate_summary">Chat\'a zindî û peyamên replay\'a chat\'a zindî wergerîne gava ew li ekranê ne</string>
+  <string name="morphe_live_chat_translate_language_title">Zimanê wergerê</string>
+  <string name="morphe_live_chat_translate_exclude_title">Zimanên derveyî</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Kodên zimanên ku bi komayê hatine veqetandin wekî id,en. Namên bi van zimanî nayên wergerandin</string>
+  <string name="morphe_live_chat_translate_provider_title">Dabinkira wergerê</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">Kîla API ya DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Kîla API ya we ya DeepL. Ger DeepL bi neveger bibe, wekî gava sînorê mehane yê kîlê tê gihîştin, Google Translate tê bikaranîn</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Bişka kopîkirina nameyê nîşan bide</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Bişkekî piçûk ê kopîkirinê li her nameya chatê zêde dike</string>
+  <string name="morphe_live_chat_translate_copied">Name hat kopîkirin Clipboard-ê</string>
+  <string name="morphe_live_chat_translate_style_title">Şêwazê wergerê</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Tenê wergera kirî</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Original (wergerandî)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Wergerandî) orîjînal</string>
+  <string name="morphe_live_chat_translate_bold_title">Nivîsa wergerandî ya bold</string>
+  <string name="morphe_live_chat_translate_bold_summary">Nîşan dide ku nivîsa wergêrandî bi tûxî ye</string>
+  <string name="morphe_live_chat_translate_use_color_title">Rengê nivîsa wergêrandiyê ya taybet</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Rengekî taybet li nivîsa wergêrandiyê aplîke dike</string>
+  <string name="morphe_live_chat_translate_color_title">Rengê nivîsa wergêrandiyê</string>
+  <string name="morphe_live_chat_translate_color_summary">Rengê hex ê nivîsa wergêrandiyê belge bike</string>
+  <string name="morphe_live_chat_translate_max_length_title">Dirêjahiya herî zêde ya peyamê</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Namên dirêjtir bê werger têne nîşandan</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Tu sînor nîn e</string>
 </resources>

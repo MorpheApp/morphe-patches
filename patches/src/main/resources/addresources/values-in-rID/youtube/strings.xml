@@ -445,6 +445,11 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_copy_comments_title">Salin komentar</string>
   <string name="morphe_copy_comments_summary">Ketuk dan tahan komentar untuk menyalinnya</string>
   <string name="morphe_copy_comments_success">Komentar disalin ke papan klip</string>
+  <string name="morphe_copy_select_text_title">Pilih teks deskripsi dan postingan</string>
+  <string name="morphe_copy_select_text_summary">Tekan dan tahan deskripsi video atau postingan untuk memilih dan menyalin bagian mana pun darinya</string>
+  <string name="morphe_copy_select_text_dialog_title">Pilih teks</string>
+  <string name="morphe_copy_select_text_copy_all">Salin semua</string>
+  <string name="morphe_copy_select_text_success">Teks disalin ke papan klip</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Ketuk dan tahan untuk membuka menu video</string>
   <string name="morphe_feed_long_press_menu_summary">Mengetuk dan menahan di mana saja pada video feed membuka menunya</string>
@@ -933,6 +938,9 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_hide_notifications_button_title">Sembunyikan tombol Notifikasi</string>
   <string name="morphe_show_search_button_title">Tampilkan tombol Telusuri</string>
   <string name="morphe_show_search_button_index_title">Posisi tombol Telusuri</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Tonton nanti</string>
   <string name="morphe_show_settings_button_title">Tampilkan tombol Setelan</string>
   <string name="morphe_show_settings_button_index_title">Posisi tombol Setelan</string>
   <string name="morphe_show_settings_button_type_title">Tindakan tombol setelan</string>
@@ -1722,6 +1730,11 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_live_chat_translate_language_title">Bahasa terjemahan</string>
   <string name="morphe_live_chat_translate_exclude_title">Bahasa yang dikecualikan</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kode bahasa yang dipisahkan dengan koma, contohnya: id,en. Pesan dalam bahasa tersebut tidak diterjemahkan</string>
+  <string name="morphe_live_chat_translate_provider_title">Penyedia terjemahan</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">Kunci API DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Kunci API DeepL Anda. Google Translate digunakan jika DeepL gagal, seperti saat batas bulanan kunci tercapai</string>
   <string name="morphe_live_chat_translate_copy_button_title">Tampilkan tombol salin pesan</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Menambahkan tombol salin kecil pada setiap pesan chat</string>
   <string name="morphe_live_chat_translate_copied">Pesan disalin ke papan klip</string>

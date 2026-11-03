@@ -445,6 +445,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">Копировать комментарии</string>
   <string name="morphe_copy_comments_summary">Нажмите и удерживайте комментарий, чтобы скопировать его</string>
   <string name="morphe_copy_comments_success">Комментарий скопирован в буфер обмена</string>
+  <string name="morphe_copy_select_text_title">Выделение текста в описаниях и постах</string>
+  <string name="morphe_copy_select_text_summary">Нажмите и удерживайте описание видео или пост, чтобы выделить и скопировать любую его часть</string>
+  <string name="morphe_copy_select_text_dialog_title">Выделить текст</string>
+  <string name="morphe_copy_select_text_copy_all">Копировать всё</string>
+  <string name="morphe_copy_select_text_success">Текст скопирован в буфер обмена</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Нажмите и удерживайте, чтобы открыть меню видео</string>
   <string name="morphe_feed_long_press_menu_summary">Нажатие и удержание в любом месте видео из ленты открывает его меню</string>
@@ -935,6 +940,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">Скрыть кнопку \"Уведомлений\"</string>
   <string name="morphe_show_search_button_title">Показать кнопку \"Поиск\"</string>
   <string name="morphe_show_search_button_index_title">Положение кнопки поиска</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Смотреть позже</string>
   <string name="morphe_show_settings_button_title">Показать кнопку \"Настройки\"</string>
   <string name="morphe_show_settings_button_index_title">Положение кнопки \"Настройки\"</string>
   <string name="morphe_show_settings_button_type_title">Действие кнопки \"Настройки\"</string>
@@ -1724,6 +1732,11 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">Язык перевода</string>
   <string name="morphe_live_chat_translate_exclude_title">Исключенные языки</string>
   <string name="morphe_live_chat_translate_exclude_summary">Коды языков через запятую, например id,en. Сообщения на этих языках не будут переводиться</string>
+  <string name="morphe_live_chat_translate_provider_title">Поставщик перевода</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Переводчик</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">API-ключ DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Ваш API-ключ DeepL. Google Переводчик используется, если DeepL не срабатывает, например, при достижении месячного лимита ключа</string>
   <string name="morphe_live_chat_translate_copy_button_title">Показать кнопку копирования сообщения</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Добавляет маленькую кнопку копирования к каждому сообщению чата</string>
   <string name="morphe_live_chat_translate_copied">Сообщение скопировано в буфер обмена</string>

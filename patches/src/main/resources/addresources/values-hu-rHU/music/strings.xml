@@ -611,7 +611,6 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kínai szavak (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Görög, szláv cirill (beleértve az orosz, ukrán, bolgár, szerb, belorusz, macedon), grúz, örmény, héber, arab, amhara és szír ábécésítés (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Olvasás %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Válasszon legalább egy szótárt</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Frissítés gomb megjelenítése</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Érintse meg a következő dalszöveg-jelöltre váltáshoz; nyomja meg hosszan a dalszöveg kereséséhez a dal címe és előadója alapján</string>
   <string name="morphe_music_lyrics_search_dialog_title">Dalszöveg keresése</string>
@@ -740,7 +739,7 @@ A szövegek harmadik fél szolgáltatásaiból származnak, amelyekkel a Morphe-
   <string name="morphe_music_lyrics_use_ai_section_summary">Csak akkor használatos, ha a szolgáltató nem szállít részcímkéket, mint például Refrén vagy Vers, amelyeket az OpenAI-kompatibilis modelljeDetektál. A sor szerkesztése során megnyílik az adott prompt is</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API végpont URL (például https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt sablon</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Helyőrzők: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Helyőrzők: {task}, {language}, {title}, {artist}, {count}, {lines}. Az ismeretlenek úgy maradnak, ahogy be vannak írva</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt mentve</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Bejegyzés elmentve, de az AI végpont még nem használható. Először konfigurálja az AI beállításokban</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt alapértékekre visszaállítva</string>

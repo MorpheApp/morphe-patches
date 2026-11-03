@@ -17,8 +17,18 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_square_layout_summary">ໃຊ້ມຸມສີ່ຫຼ່ຽມສຳລັບປຸ່ມ ແລະ ຕົວຄວບຄຸມຂອງ SponsorBlock</string>
+  <string name="morphe_sb_offline_segments_title">ບັນທຶກສ່ວນຂອງວິດີໂອທີ່ດາວໂຫຼດມາ</string>
+  <string name="morphe_sb_offline_segments_summary">ອະນຸຍາດໃຫ້ຂ້າມບາງສ່ວນຂອງວິດີໂອທີ່ດາວໂຫຼດໄວ້ ໃນຂະນະທີ່ອອຟລາຍ</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"ການຕັ້ງຄ່າຂອງທ່ານມີ ID ຜູ້ໃຊ້ SponsorBlock ສ່ວນຕົວ.
+
+ID ຜູ້ໃຊ້ຂອງທ່ານປຽບດັ່ງລະຫັດຜ່ານ, ແລະ ບໍ່ຄວນແບ່ງປັນໃຫ້ຜູ້ອື່ນຢ່າງເດັດຂາດ"</string>
+  <string name="morphe_sb_submit_failed_unknown_error">ບໍ່ສາມາດສົ່ງສ່ວນຂອງວິດີໂອໄດ້ (ສະຖານະ: %1$s %2$s)</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock ບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ (ສະຖານະ %s)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">ບໍ່ສາມາດລົງຄະແນນໃຫ້ສ່ວນຂອງວິດີໂອໄດ້ (ສະຖານະ: %1$s %2$s)</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_new_segment_disabled_category">ໝວດໝູ່ຖືກປິດໃຊ້ງານໃນການຕັ້ງຄ່າ. ກະລຸນາເປີດໃຊ້ງານໝວດໝູ່ເພື່ອສົ່ງຂໍ້ມູນ</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_loading">ກຳລັງໂຫຼດ…</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">ບໍ່ສາມາດປ່ຽນຊື່ຜູ້ໃຊ້ໄດ້: ສະຖານະ: %1$s %2$s</string>
 </resources>

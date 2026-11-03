@@ -597,7 +597,6 @@ Zahtevani piškotki: SID, HSID, SSID, SAPISID, __Secure-3APISID, __Secure-1APISI
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kitajske besede (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grščina, slovanski cirilici (vključno z rusko, ukrajinsko, bolgarsko, srbsko, belorusko, makedonsko), gruzijska, armenska, hebrejska, arabska, amharska in sirijaska transliteracija (CLDR, ~0,5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Branje %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Izberite vsaj en slovar</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Prikaži gumb Osveži</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Kliknite za preklop na naslednjega kandidata za besedilo; dolgotrajni klik išče besedila po naslovu pesmi in izvajalcu</string>
   <string name="morphe_music_lyrics_search_dialog_title">Iskanje besedila</string>
@@ -726,7 +725,7 @@ Besedila prihajajo iz storitev tretjih oseb, ki niso povezane s podjetjem Morphe
   <string name="morphe_music_lyrics_use_ai_section_summary">Uporablja se samo, ko ponudnik ne prejme oznak razdelkov, kot so Refren ali Kitica, ki jih nato zazna vaš model združljiv z OpenAI-jem. Urejanje vrstice odpre tudi njen prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL končne točke API (npr. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Predloga za poziv</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Zastopniki: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Zastavki: {task}, {language}, {title}, {artist}, {count}, {lines}. Neznani ostanejo v pisanem obliki</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Poziv shranjen</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Poziv je shranjen, vendar končna točka AI še ni uporabna. Najprejo jo konfigurirajte pod Nastavitve AI</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Poziv ponastavljen</string>

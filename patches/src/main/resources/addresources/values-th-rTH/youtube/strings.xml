@@ -445,6 +445,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">คัดลอกความคิดเห็น</string>
   <string name="morphe_copy_comments_summary">แตะค้างที่ความคิดเห็นเพื่อคัดลอก</string>
   <string name="morphe_copy_comments_success">คัดลอกความคิดเห็นไปยังคลิปบอร์ดแล้ว</string>
+  <string name="morphe_copy_select_text_title">เลือกข้อความของคำอธิบายและโพสต์</string>
+  <string name="morphe_copy_select_text_summary">แตะค้างที่คำอธิบายวิดีโอหรือโพสต์เพื่อเลือกและคัดลอกส่วนใดส่วนหนึ่ง</string>
+  <string name="morphe_copy_select_text_dialog_title">เลือกข้อความ</string>
+  <string name="morphe_copy_select_text_copy_all">คัดลอกทั้งหมด</string>
+  <string name="morphe_copy_select_text_success">คัดลอกข้อความไปยังคลิปบอร์ด</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">แตะค้างไว้เพื่อเปิดเมนูวิดีโอ</string>
   <string name="morphe_feed_long_press_menu_summary">การแตะและค้างไว้ที่ใดก็ได้บนวิดีโอฟีดจะเปิดเมนูของวิดีโอนั้น</string>
@@ -933,6 +938,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">ซ่อนปุ่มการแจ้งเตือน</string>
   <string name="morphe_show_search_button_title">แสดงปุ่มค้นหา</string>
   <string name="morphe_show_search_button_index_title">ตำแหน่งปุ่มค้นหา</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">แสดงปุ่มดูภายหลัง</string>
+  <string name="morphe_show_watch_later_button_index_title">ตำแหน่งปุ่มดูภายหลัง</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">ดูต่อภายหลัง</string>
   <string name="morphe_show_settings_button_title">แสดงปุ่มการตั้งค่า</string>
   <string name="morphe_show_settings_button_index_title">ตำแหน่งปุ่มการตั้งค่า</string>
   <string name="morphe_show_settings_button_type_title">การดำเนินการปุ่มการตั้งค่า</string>
@@ -1716,6 +1726,12 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">ความยาวคอมเมนต์สูงสุด</string>
   <string name="morphe_niconico_comments_max_length_summary">ซ่อนคอมเมนต์ที่มีตัวอักษรมากกว่าจำนวนนี้ แต่ละอิโมจิจะนับเป็นหนึ่งตัวอักษร</string>
   <string name="morphe_niconico_comments_max_length_no_limit">ไม่มีขีดจำกัด</string>
+  <string name="morphe_niconico_comments_live_streams_title">แสดงในสตรีมสด</string>
+  <string name="morphe_niconico_comments_live_streams_summary">สตรีมสดและการเล่นซ้ำ</string>
+  <string name="morphe_niconico_comments_live_premieres_title">แสดงในการรอบปฐมทัศน์</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">การรอบปฐมทัศน์ในขณะที่กำลังเล่น</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">แสดงในการพรีเมียร์ที่สิ้นสุดแล้ว</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">การเล่นแชทซ้ำของการพรีเมียร์ที่สิ้นสุดแล้ว</string>
   <string name="morphe_live_chat_translate_screen_title">การแปลแชทสด</string>
   <string name="morphe_live_chat_translate_screen_summary">แปลข้อความแชทสดและข้อความรีเพลย์แชทสด</string>
   <string name="morphe_live_chat_translate_title">แปลแชทสด</string>
@@ -1723,6 +1739,11 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">ภาษาที่ใช้แปล</string>
   <string name="morphe_live_chat_translate_exclude_title">ภาษาที่ยกเว้น</string>
   <string name="morphe_live_chat_translate_exclude_summary">รหัสภาษาที่คั่นด้วยเครื่องหมายจุลภาค เช่น id,en ข้อความในภาษาเหล่านี้จะไม่ถูกแปล</string>
+  <string name="morphe_live_chat_translate_provider_title">ผู้ให้บริการการแปล</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">คีย์ API ของ DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">คีย์ API ของ DeepL ของคุณ จะมีการใช้ Google Translate หาก DeepL ล้มเหลว เช่น เมื่อถึงขีดจำกัดรายเดือนของคีย์</string>
   <string name="morphe_live_chat_translate_copy_button_title">แสดงปุ่มคัดลอกข้อความ</string>
   <string name="morphe_live_chat_translate_copy_button_summary">เพิ่มปุ่มคัดลอกขนาดเล็กในทุกข้อความแชท</string>
   <string name="morphe_live_chat_translate_copied">คัดลอกข้อความไปยังคลิปบอร์ดแล้ว</string>

@@ -117,8 +117,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_summary">フィードのおすすめ精度に関するアンケートやフィードバック要求を非表示にします</string>
   <string name="morphe_hide_ticket_shelf_title">チケット欄を非表示</string>
   <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
-  <string name="morphe_hide_unavailable_videos_hidden_banner_title">「利用できない動画は非表示になっています」バナーを非表示にする</string>
-  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">プレイリスト内の「利用できない動画は非表示になっています」バナーを非表示にします</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">「利用できない動画が非表示になっています」バナーを非表示</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">プレイリストの最上部に表示される「x 本の利用できない動画が非表示になっています」バナーを非表示にします</string>
   <string name="morphe_hide_upload_time_title">公開からの経過時間 / 予定時間を非表示</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"制限事項:
@@ -446,6 +446,11 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_copy_comments_title">コメントをコピー</string>
   <string name="morphe_copy_comments_summary">コメントを長押しするとコピーできます</string>
   <string name="morphe_copy_comments_success">コメントをクリップボードにコピーしました</string>
+  <string name="morphe_copy_select_text_title">説明文と投稿のテキストを選択</string>
+  <string name="morphe_copy_select_text_summary">動画の説明文または投稿を長押しして、任意の部分を選択してコピーします</string>
+  <string name="morphe_copy_select_text_dialog_title">テキストを選択</string>
+  <string name="morphe_copy_select_text_copy_all">すべてコピー</string>
+  <string name="morphe_copy_select_text_success">テキストをクリップボードにコピーしました</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">長押しで動画のメニューを開く</string>
   <string name="morphe_feed_long_press_menu_summary">フィードの動画をどこでもよいので長押しすると、フライアウト メニューを開きます</string>
@@ -657,7 +662,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_save_to_watch_later_flyout_title">[後で見る] に保存</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">プレーヤーのメニューに「[後で見る]に保存」を表示</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">プレーヤー オーバーレイの歯車アイコンから呼び出されるフライアウト メニューに「[後で見る]に保存」を表示します。タップすると視聴中の動画を [後で見る] に保存します</string>
-  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">「後で見る」をプレイリストにリダイレクト</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">[後で見る] の保存先</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">後で見る</string>
   <string name="morphe_queue_flyout_title">Morphe キューに追加</string>
   <string name="morphe_queue_restore_title">セッションをまたいでキューを保持</string>
@@ -934,6 +939,9 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hide_notifications_button_title">通知ボタンを非表示</string>
   <string name="morphe_show_search_button_title">検索ボタンを表示</string>
   <string name="morphe_show_search_button_index_title">検索ボタンの表示位置</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">後で見る</string>
   <string name="morphe_show_settings_button_title">設定ボタンを表示</string>
   <string name="morphe_show_settings_button_index_title">設定ボタンの表示位置</string>
   <string name="morphe_show_settings_button_type_title">設定ボタンの動作</string>
@@ -1308,10 +1316,10 @@ Automotive レイアウト
   <string name="morphe_fix_status_bar_layout_title">ステータスバーが上部のバーを覆っている問題を修正</string>
   <string name="morphe_fix_status_bar_layout_summary">ステータスバーのレイアウトを統一し、上部のバーが覆われないようにして、プレイヤーの上に空白ができないようにします。アプリがクラッシュしたり、上部のバーの表示がおかしい場合は、これをオフにしてください</string>
   <!-- layout.theme.themePatch -->
-  <string name="morphe_splash_screen_style_entry_6">グロウ</string>
-  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
-  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
-  <string name="morphe_splash_screen_style_glow_not_supported">このデバイスではグロー・スプラッシュ画面はサポートされていません</string>
+  <string name="morphe_splash_screen_style_entry_6">フラッシュ</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe（フラッシュ 1）</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe （フラッシュ 2）</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">このデバイスはフラッシュ系の起動アニメーションには対応していません</string>
   <string name="morphe_splash_screen_duration_title">起動アニメーションの長さ</string>
   <string name="morphe_splash_screen_duration_summary">グローアニメーションが再生される時間です。アニメーションをタップするとスキップできます</string>
   <string name="morphe_theme_color_light_title">ライトモードのテーマ</string>
@@ -1336,9 +1344,9 @@ Automotive レイアウト
   <string name="morphe_seekbar_custom_color_accent_summary">動画の現在の再生位置を示すプログレスバーのセカンドカラーを設定します</string>
   <string name="morphe_seekbar_custom_color_invalid">シークバーの色の値が無効です</string>
   <!-- layout.branding.customBrandingPatch -->
-  <string name="morphe_custom_branding_icon_entry_8">オリジナルアナログ</string>
-  <string name="morphe_custom_branding_icon_entry_9">オリジナルケーキ</string>
-  <string name="morphe_custom_branding_icon_entry_10">オリジナルメタル</string>
+  <string name="morphe_custom_branding_icon_entry_8">オリジナル（アナログ）</string>
+  <string name="morphe_custom_branding_icon_entry_9">オリジナル（ケーキ）</string>
+  <string name="morphe_custom_branding_icon_entry_10">オリジナル（メタリック）</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">ヘッダーロゴ</string>
   <string name="morphe_header_logo_entry_1">デフォルト</string>
@@ -1706,17 +1714,17 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_unavailable_episode">利用不可なエピソード</string>
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
   <string name="morphe_niconico_comments_screen_title">ニコニコ風のコメント表示</string>
-  <string name="morphe_niconico_comments_screen_summary">ライブチャットとチャットのリプレイを、ビデオ上を流れるコメントとして表示します</string>
+  <string name="morphe_niconico_comments_screen_summary">ライブ配信と配信のアーカイブのチャットを、映像を横切って流れるニコニコ風コメントとして表示します</string>
   <string name="morphe_niconico_comments_summary">プレーヤー オーバーレイにボタンを表示します。タップするとニコニコ風コメントの表示 / 非表示を切り替えます。長押しすると簡易設定メニューを表示します</string>
-  <string name="morphe_niconico_comments_font_size_title">コメントのフォントサイズ</string>
-  <string name="morphe_niconico_comments_font_size_summary">コメントのテキストサイズ (12-40 sp)</string>
-  <string name="morphe_niconico_comments_opacity_title">コメントの不透明度</string>
-  <string name="morphe_niconico_comments_opacity_summary">コメントのテキストと背景の不透明度</string>
-  <string name="morphe_niconico_comments_travel_duration_title">移動時間</string>
-  <string name="morphe_niconico_comments_travel_duration_summary">コメントが画面を横切るまでの秒数です。値を小さくすると移動速度が上がります</string>
-  <string name="morphe_niconico_comments_max_length_title">コメントの文字数の上限</string>
-  <string name="morphe_niconico_comments_max_length_summary">この値より文字数が多いコメントを非表示にします。絵文字はそれぞれ 1 文字としてカウントされます</string>
-  <string name="morphe_niconico_comments_max_length_no_limit">上限なし</string>
+  <string name="morphe_niconico_comments_font_size_title">コメントの大きさ</string>
+  <string name="morphe_niconico_comments_font_size_summary">ニコニコ風コメントのフォントサイズ (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">コメントの濃さ</string>
+  <string name="morphe_niconico_comments_opacity_summary">ニコニコ風コメントのテキストおよび背景の透明度 (値が小さいほど透明)</string>
+  <string name="morphe_niconico_comments_travel_duration_title">表示時間</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">ニコニコ風コメントが表示されてから画面を横切って消えるまでの時間 (秒)。この値を小さくすると、コメントの移動速度が速くなります</string>
+  <string name="morphe_niconico_comments_max_length_title">コメントの文字数制限</string>
+  <string name="morphe_niconico_comments_max_length_summary">この値より文字数が多いニコニコ風コメントを非表示にします。絵文字はそれぞれ 1 文字としてカウントされます</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">制限なし</string>
   <string name="morphe_live_chat_translate_screen_title">ライブチャット翻訳</string>
   <string name="morphe_live_chat_translate_screen_summary">ライブチャットとライブチャットのリプレイメッセージを翻訳します</string>
   <string name="morphe_live_chat_translate_title">ライブチャットを翻訳</string>
@@ -1724,6 +1732,11 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_live_chat_translate_language_title">翻訳言語</string>
   <string name="morphe_live_chat_translate_exclude_title">除外する言語</string>
   <string name="morphe_live_chat_translate_exclude_summary">id、en のようにカンマで区切った言語コードを入力してください。これらの言語のメッセージは翻訳されません</string>
+  <string name="morphe_live_chat_translate_provider_title">翻訳サービス</string>
+  <string name="morphe_live_chat_translate_provider_google">Google 翻訳</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL APIキー</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">DeepL APIキー。キーの月間制限に達した場合など、DeepLで失敗した場合はGoogle翻訳が使用されます</string>
   <string name="morphe_live_chat_translate_copy_button_title">メッセージのコピーボタンを表示</string>
   <string name="morphe_live_chat_translate_copy_button_summary">すべてのチャットメッセージに小さなコピーボタンを追加します</string>
   <string name="morphe_live_chat_translate_copied">メッセージをクリップボードにコピーしました</string>

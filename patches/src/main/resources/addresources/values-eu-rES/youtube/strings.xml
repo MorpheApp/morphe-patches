@@ -446,6 +446,11 @@ Txostenak publikoak dira eta kanal bat zerrendara gehitu aurretik berrikusi egit
   <string name="morphe_copy_comments_title">Kopioatu komentarioak</string>
   <string name="morphe_copy_comments_summary">Sakatu eta eutsi komentario batean kopiatzeko</string>
   <string name="morphe_copy_comments_success">Komentarioa kopiatu da klima-papan</string>
+  <string name="morphe_copy_select_text_title">Deskribapen eta postuen testua hautatu</string>
+  <string name="morphe_copy_select_text_summary">Sakatu eta eutsi bideo deskribapen batean edo postu batean haiztatu eta kopiatu nahi duzun partea</string>
+  <string name="morphe_copy_select_text_dialog_title">Testua hautatu</string>
+  <string name="morphe_copy_select_text_copy_all">Denak kopiatu</string>
+  <string name="morphe_copy_select_text_success">Testua portapaperean kopiatuta</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Sakatu eta mantendu bideo-menua irekitzeko</string>
   <string name="morphe_feed_long_press_menu_summary">Feed-eko bideo baten edozein lekuan sakatu eta mantentzeak bere menua irekiko du</string>
@@ -934,6 +939,11 @@ Hona konponduz, aktibu 'Bideo-emisioak imitatzea' eta alda 'Beherako bezeroa' 'T
   <string name="morphe_hide_notifications_button_title">Ezagutazi Jakinarazpenak botoia</string>
   <string name="morphe_show_search_button_title">Erakutsi Bilaketa botoia</string>
   <string name="morphe_show_search_button_index_title">Bilaketa botoiaren posizioa</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Erakutsi Gero ikusi botoia</string>
+  <string name="morphe_show_watch_later_button_index_title">Gero ikusi botoiaren kokapena</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Gero ikusi</string>
   <string name="morphe_show_settings_button_title">Konfigurazio botoia erakutsi</string>
   <string name="morphe_show_settings_button_index_title">Konfigurazio botoiaren posizioa</string>
   <string name="morphe_show_settings_button_type_title">⚙️ botoiaren ekintza</string>
@@ -1717,6 +1727,12 @@ Automatiko grabaketa aukeratua da. Inkognito moduan edo kontua aldatzean gelditu
   <string name="morphe_niconico_comments_max_length_title">Iruzkinen luzera maximoa</string>
   <string name="morphe_niconico_comments_max_length_summary">Honek baino karakterak gehiago dituzten iruzkinak ezkutatzen ditu. Emoji bakoitzak karaktera bat kontatzen du</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Mugaik gabe</string>
+  <string name="morphe_niconico_comments_live_streams_title">Erakutsi zuzeneko transmisioetan</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Zuzeneko transmisioak eta hauen errepasoak</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Erakutsi estretuetan</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Estretuak erreproduzitzen ari diren bitartean</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Erakutsi amaitutako estretuetan</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Amaiitutako estretuen txat-errepasoa</string>
   <string name="morphe_live_chat_translate_screen_title">Zirbilizko txatko itzulpena</string>
   <string name="morphe_live_chat_translate_screen_summary">Zirbilizko txatko eta zirbilizko txatko playback mezuak itzuli</string>
   <string name="morphe_live_chat_translate_title">Zirbilizko txatkoa itzuli</string>
@@ -1724,6 +1740,11 @@ Automatiko grabaketa aukeratua da. Inkognito moduan edo kontua aldatzean gelditu
   <string name="morphe_live_chat_translate_language_title">Itzulpen hizkuntza</string>
   <string name="morphe_live_chat_translate_exclude_title">Ezaguteko hizkuntzak</string>
   <string name="morphe_live_chat_translate_exclude_summary">Komak hitz astarako hizkuntza-kodeak, adibidez id,en. Hizkuntza hauen mezuak ez dira itzultzen</string>
+  <string name="morphe_live_chat_translate_provider_title">Itzulpen hornitzailea</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API giltzea</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Zure DeepL API giltzea. Google Translate erabiltzen da DeepL-ek falla egitean, adibidez, giltzearen hilabeteko limitea lortzen denean</string>
   <string name="morphe_live_chat_translate_copy_button_title">Mezua kopiatzeko botoia erakutsi</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Mezu bakoitzari kopiatzeko botoi txiki bat gehitzen dio</string>
   <string name="morphe_live_chat_translate_copied">Mezua apalabidean kopiatuta</string>

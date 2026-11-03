@@ -609,7 +609,6 @@ Obligātās cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Ķīnas vārdi (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grieķu, slāvu kirillu (tostad krievu, ukraiņu, bulgāru, serbu, baltkrievu, maķedoniešu), gruzīnu, armēņu, ebreju, arābu, amharu un siru transliterācija (CLDR, ~0,5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Lasīšana %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Izvēlieties vismaz vienu vārdnīcu</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Rādīt atjaunināšanas pogu</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Kliediet, lai pārslēgtos uz nākamo dziesmu teksta variantu; aizturiet, lai meklētu dziesmu tekstu pēc dziesmas nosaukuma un izpildītāja</string>
   <string name="morphe_music_lyrics_search_dialog_title">Meklēt dziesmu tekstu</string>
@@ -738,7 +737,7 @@ Dziesmu teksti nāk no trešo pušu pakalpojumiem, kas nav saistīti ar Morphe, 
   <string name="morphe_music_lyrics_use_ai_section_summary">Tiek izmantots tikai tad, ja pakalpojumu sniedzējs nenomsūta sadaļas apzīmējumus, piemēram, Prijiedienums vai Vers, kurus pēc tam nosaka jūsu OpenAI saderīgais modelis. Labojot rindu, tiek atvērts arī tās uzvedne</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API gala punkta URL (piem., https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Uzvednes šablons</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Vietneces: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Rezervslēgas: {task}, {language}, {title}, {artist}, {count}, {lines}. Nezināmas tiek atstātas neattranslūcidotas</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Uzvedne saglabāta</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Aicinājums saglabāts, taču AI gala punkts vēl nav izmantojams. Vispirms konfigurējiet to AI iestatījumos</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Uzvedne atiestatīta</string>

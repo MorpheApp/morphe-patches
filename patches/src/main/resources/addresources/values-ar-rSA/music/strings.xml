@@ -596,7 +596,6 @@ tظهر المسارات التي تم تنزيلها هنا"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">الكلمات الصينية (pinyin-pro، ~17 ميغابايت)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">النقل الحرفي للغات اليونانية والسلافية السييريانية (بما في ذلك الروسية والأوكرانية والبلغارية والصربية والبيلاروسية والمقدونية)، والجورجية والأرمنية والعبرية والعربية والعفرية والسريانية (CLDR، ~0.5 ميغابايت)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">جاري قراءة %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">اختر قاموسًا واحدًا على الأقل</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">إظهار زر التحديث</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">انقر للتبديل إلى مرشح الكلمات التالي؛ اضغط مطولاً للبحث عن الكلمات بعنوان الأغنية والفنان</string>
   <string name="morphe_music_lyrics_search_dialog_title">البحث عن الكلمات</string>
@@ -725,7 +724,7 @@ tظهر المسارات التي تم تنزيلها هنا"</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">يستخدم فقط عندما لا يقدم مقدم الخدمة أي تسميات للأقسام مثل الجوقة أو الآية، والتي يكتشفها نموذجك المتوافق مع OpenAI بعد ذلك. تعديل الصف يفتح أيضًا تعليماته</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL نقطة نهاية API (مثل https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">قالب المطالبة</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">العناصر النائبة: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">عناصر نائبة: {task}، {language}، {title}، {artist}، {count}، {lines}. تترك العناصر غير المعروفة كما هي مكتوبة</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">تم حفظ المطالبة</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">تم حفظ الموجه، لكن نقطة نهاية الذكاء الاصطناعي غير صالحة للاستخدام بعد. قم بتكوينها تحت إعدادات الذكاء الاصطناعي أولاً</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">تم إعادة تعيين المطالبة</string>

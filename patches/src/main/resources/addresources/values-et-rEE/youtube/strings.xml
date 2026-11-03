@@ -142,7 +142,7 @@ Muudatused hõlmavad:
   <string name="morphe_hide_youtube_doodles_user_dialog_message">YouTube Doodles\'i kuvamine võib takistada kohandatud päisete pistikute kuvamist</string>
   <string name="morphe_hide_channel_bar_title">Peida kanali riba</string>
   <string name="morphe_hide_channel_watermark_title">Peida kanali vesimärki</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Peita peatükid ja nupp \'Selles videos\'</string>
+  <string name="morphe_hide_chapters_timeline_button_title">Peita peatükid ja nupp \"Selles videos\"</string>
   <string name="morphe_hide_crowdfunding_box_title">Peida ühisrahastus plokk</string>
   <string name="morphe_hide_emergency_box_title">Peida häirekastid</string>
   <string name="morphe_hide_info_panels_title">Peida info paneelid</string>
@@ -237,13 +237,13 @@ Muudatused hõlmavad:
   <string name="morphe_explore_menu_screen_summary">Valige, millised komponendid kuvatakse avastamismenüüs</string>
   <string name="morphe_hide_courses_menu_title">Peita kursuste menüü</string>
   <string name="morphe_hide_explore_button_title">Peita nuppu \"Avasta\"</string>
-  <string name="morphe_hide_fashion_menu_title">Peita menüü „Mood &amp; ilu“</string>
+  <string name="morphe_hide_fashion_menu_title">Peita menüü \"Mood &amp; ilu\"</string>
   <string name="morphe_hide_gaming_menu_title">Peita mängude menüü</string>
   <string name="morphe_hide_hype_menu_title">Peita Hype\'i menüü</string>
   <string name="morphe_hide_learning_menu_title">Peida õppimismenüü</string>
   <string name="morphe_hide_live_menu_title">Peita otseülekande menüü</string>
   <string name="morphe_hide_memberships_menu_title">Peita liitumisemenüü</string>
-  <string name="morphe_hide_movies_menu_title">Peida menüü \'Filmid &amp; TV\'</string>
+  <string name="morphe_hide_movies_menu_title">Peida menüü \"Filmid &amp; TV\"</string>
   <string name="morphe_hide_music_menu_title">Peida muusika menüü</string>
   <string name="morphe_hide_news_menu_title">Peita uudiste menüüd</string>
   <string name="morphe_hide_playables_menu_title">Peida Playables menüü</string>
@@ -445,6 +445,11 @@ Teated on avalikud ja neid ülevaadatakse enne kanali nimekirja lisamist. Eemald
   <string name="morphe_copy_comments_title">Kopeeri kommentärid</string>
   <string name="morphe_copy_comments_summary">Kopeerimiseks puudutage ja hoidke sõrmel kommentaari</string>
   <string name="morphe_copy_comments_success">Kommentaar kopeeriti lõikelauale</string>
+  <string name="morphe_copy_select_text_title">Vali kirjelduste ja postituste tekst</string>
+  <string name="morphe_copy_select_text_summary">Puuduta ja hoia all video kirjeldust või postitust, et valida ja kopeerida sellest mis tahes osa</string>
+  <string name="morphe_copy_select_text_dialog_title">Vali tekst</string>
+  <string name="morphe_copy_select_text_copy_all">Kopeeri kõik</string>
+  <string name="morphe_copy_select_text_success">Tekst kopeeriti lõikelauale</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Puudutage ja hoidke all, et avada video menüü</string>
   <string name="morphe_feed_long_press_menu_summary">Video feedil puudutamine ja hoidmine avab selle menüü</string>
@@ -499,7 +504,7 @@ Kui video, millel on nupp Küsige, on üks kord avatud, töötab see funktsioon 
   <string name="morphe_search_comments_applied">Muutke sorteerimist või avage kommentaarid uuesti, et neid otsida</string>
   <string name="morphe_search_comments_cleared">Otsing puhastatud. Muutke sorteerimiskorda või avage kommentaarid uuesti, et näidata kõiki kommentaare</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
-  <string name="morphe_disable_sign_in_to_tv_popup_title">Keela hüpikaken \'Logi sisse telerisse\'</string>
+  <string name="morphe_disable_sign_in_to_tv_popup_title">Keela hüpikaken \"Logi sisse telerisse\"</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Keela riistmete ühendamise hüpikaken</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Keela peatükide möödahüpamine topeltpuudutusega</string>
@@ -689,7 +694,7 @@ Info: Ei pruugi töötada võttesaadete puhul"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Reklaamide valge nimekiri hüpikmenüüs</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Lisab hüpikmenüü üksuse, mis lubab reklaamid esiteda selle video kanalil</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Selle funktsiooni kasutamiseks võib olla vaja PotHelperit või \"Spoof video streams\" muutmist TV-le või Android VR sisselogimisele</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Selle funktsiooni kasutamiseks võib olla vaja PotHelperit või \"Videovoogude imiteerimine\" muutmist TV-le või Android VR sisselogimisele</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Lubatud kiiruste nimekiri hüpikmenüüs</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Lisab hüpikmenüüsse üksuse, mis esitab selle video kanali sisu alati kiirusel 1,0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Ei ole sisselogitud</string>
@@ -745,13 +750,13 @@ Info: Ei pruugi töötada võttesaadete puhul"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_live_stream_dvr_not_available">"\"Luba otseülekande DVR\" ei pruugi olla saadaval
 
-Selle parandamiseks luba \"Imiteeri videovogusid\" ja muuda \"Vaikimiskliendi\" väärtuseks \"TV Simply\" või \"visionOS\""</string>
+Selle parandamiseks luba \"Videovoogude imiteerimine\" ja muuda \"Vaikimiskliendi\" väärtuseks \"TV Simply\" või \"visionOS\""</string>
   <string name="morphe_expand_live_stream_dvr_duration_title">Laienda otseülekande DVR-i kestust</string>
   <string name="morphe_expand_live_stream_dvr_duration_summary">Võimaldab otseülekandeid kuni 7 päeva tagasi kerida</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_live_stream_dvr_duration_not_available">"'Otseülekande DVR-i kestuse laiendamine' ei ole saadaval
 
-Selle parandamiseks lülita sisse 'Videovoogude imiteerimine' ja muuda 'Vaikimiskliendiks' 'TV Simply' või 'visionOS'"</string>
+Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaikimiskliendiks\" \"TV Simply\" või \"visionOS\""</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Luba libistamine otsingu jaoks</string>
   <string name="morphe_slide_to_seek_summary">Lülitab sisse libistamise abil otsingule liikumise, mitte 2-kordse kiirusega esitamise, kui videopleieri nuppu hoidetakse all</string>
@@ -933,6 +938,11 @@ Selle parandamiseks lülita sisse 'Videovoogude imiteerimine' ja muuda 'Vaikimis
   <string name="morphe_hide_notifications_button_title">Peida nupu \"Teavitused\"</string>
   <string name="morphe_show_search_button_title">Näita Otsi-nuppu</string>
   <string name="morphe_show_search_button_index_title">Otsingu nupu asukoht</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Kuva nupp \"Vaata Hiljem\"</string>
+  <string name="morphe_show_watch_later_button_index_title">Nupu \"Vaata Hiljem\" asukoht</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Vaata Hiljem</string>
   <string name="morphe_show_settings_button_title">Kuva seadete nupp</string>
   <string name="morphe_show_settings_button_index_title">Seadete nupu asukoht</string>
   <string name="morphe_show_settings_button_type_title">Seadistuste nupu tegevus</string>
@@ -978,7 +988,7 @@ Seadetele pääsemiseks aktiveerige seadete nupp jaotises Üldine → Rippbaar �
          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menüü \"Audio Track\" on peidetud
 
-Menüü \"Audio Track\" kuvamiseks muutke \"Spoof video streams\" milleks igaks kliendiks peale \"Android Studio\" ja \"Android VR Downgraded\""</string>
+Menüü \"Audio Track\" kuvamiseks muutke \"Videovoogude imiteerimine\" suvaliseks kliendiks peale \"Android Studio\" ja \"Android VR Downgraded\""</string>
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_audio_track_title">Peida menüü \"Helirada\"</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Peida menüü \"Helirada\" jaluse</string>
@@ -1107,8 +1117,8 @@ Seaded → Esituskiirus (või Automaatne esitus) → Järgmise video automaatne 
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <string name="morphe_hide_player_related_videos_title">Peida seotud videod</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_player_related_videos_overlay_title">Peida «Rohkem videoid» üleskatte</string>
-  <string name="morphe_hide_player_related_videos_overlay_summary">Peidab \'Rohkem videoid\' ülekate, mis kuvatakse täisekraani režiimis ülespidi pühkimisel</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Peida \"Rohkem videoid\" üleskatte</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary">Peidab \"Rohkem videoid\" ülekate, mis kuvatakse täisekraani režiimis ülespidi pühkimisel</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Peida video ajatempel</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
@@ -1500,13 +1510,13 @@ Piirangud:
   <string name="morphe_video_codec_title">Video koodek</string>
   <string name="morphe_video_codec_entry_default">Vaikimisi</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_video_codec_avc_not_available">AVC-i sundmiseks muuda «Imiteeri videovogusid« väärtuseks «Android Studio«, «Android VR« või «visionOS«</string>
+  <string name="morphe_video_codec_avc_not_available">AVC-i sundmiseks muuda \"Videovoogude imiteerimine\" väärtuseks \"Android Studio\", \"Android VR\" või \"visionOS\"</string>
   <string name="morphe_video_codec_user_dialog_message">"VP9
 • Võib pikendada aku tööiga ja vähendada video taasesituse katkendlikkust
 • Kasutab rohkem internetiandmeid kui AV1
 
 AVC (H.264)
-• Nõuab videovoo kliendi identiteedi võltsimist, kasutades väärtust „Android Studio“, „Android VR“ või „visionOS“
+• Nõuab videovoo kliendi identiteedi võltsimist, kasutades väärtust \"Android Studio\", \"Android VR\" või \"visionOS\"
 • Võib aku tööiga veelgi pikendada
 • Võib taastada vanemates seadmetes puuduvad video eraldusvõimed
 • Maksimaalne eraldusvõime on 1080p
@@ -1522,14 +1532,14 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">Prioritiseerib kõige kõrgemat saadaval olevat video kvaliteeti kodeki efektiivsuse asemel</string>
   <string name="morphe_video_quality_prioritize_dialog">Kui see seade on väljas, siis vanematel videodel ei pruugi olla video kvaliteedi valikuid</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Luba \'Android VR\' / visionOS AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Luba tarkvaraline AV1 dekodeerimine, kui kasutatakse \'Android VR\' / visionOS klienti</string>
+  <string name="morphe_spoof_video_streams_av1_title">Luba \"Android VR\" / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Luba tarkvaraline AV1 dekodeerimine, kui kasutatakse \"Android VR\'\"/ visionOS klienti</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Selle seade aktiveerimine võib kasutada tarkvaralist AV1 dekoodimist.
 
 AV1-i videote esitus võib tõrgetele tunduda või raame kaotada"</string>
   <string name="morphe_spoof_video_streams_about_title">Võltsimise kõrvaltoimed</string>
   <string name="morphe_spoof_video_streams_about_failure">• Esitlus võib katkeda 1. minutil</string>
-  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menüü \'Helirada\' puudub</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menüü \"Helirada\" puudub</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Puudub AV1 videokoodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR imersiivne režiim ei ole saadaval</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabiilne helitugevus ei ole saadaval</string>
@@ -1541,7 +1551,7 @@ AV1-i videote esitus võib tõrgetele tunduda või raame kaotada"</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Kvaliteet võib olla piiratud 720p-ga</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Pleieri JavaScripti variant</string>
-  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Kuva imiteerimine jaotises \'Statistika nerdidele\'</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Kuva imiteerimine jaotises \"Statistika nerdidele\"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_video_action_bar_layout_title">Video tegevusriba paigutus</string>
   <string name="morphe_video_action_bar_layout_entry_1">Vaikimisi</string>
@@ -1716,6 +1726,12 @@ Automaatne salvestamine on valikuline. See peatub inkognito režiimis või konto
   <string name="morphe_niconico_comments_max_length_title">Kommendi maksimaalne pikkus</string>
   <string name="morphe_niconico_comments_max_length_summary">Peidab kommentaare, millel on sellest rohkem märke. Iga emoji loetakse ühe märgi eest</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Piirangut pole</string>
+  <string name="morphe_niconico_comments_live_streams_title">Näita otseülekannetes</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Otseülekanded ja nende kordused</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Näita esilinastusel</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Esilinastused mängimise ajal</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Kuva lõppenud esilinastused</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Lõppenud esilinastuste vestluse kordus</string>
   <string name="morphe_live_chat_translate_screen_title">Live-chat\'i tõlginne</string>
   <string name="morphe_live_chat_translate_screen_summary">Tõlgi live-chat\'i ja live-chat\'i korduse sõnumeid</string>
   <string name="morphe_live_chat_translate_title">Tõlgi live-chat\'i</string>
@@ -1723,6 +1739,11 @@ Automaatne salvestamine on valikuline. See peatub inkognito režiimis või konto
   <string name="morphe_live_chat_translate_language_title">Tõlkimise keel</string>
   <string name="morphe_live_chat_translate_exclude_title">Välja postiitu keeled</string>
   <string name="morphe_live_chat_translate_exclude_summary">Komaeraldatud keelekoodid, näiteks id,en. Nende keeltes olevad sõnumid ei tõlgita</string>
+  <string name="morphe_live_chat_translate_provider_title">Tõlketeenuse pakkuja</string>
+  <string name="morphe_live_chat_translate_provider_google">Google\'i tõlge</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL\'i tõlge</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API võti</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Teie DeepL-i API-võti. Kui DeepL-i kasutamine ebaõnnestub, näiteks kui API-võtme igakuine limiit on täis, kasutatakse Google\'i tõlge.</string>
   <string name="morphe_live_chat_translate_copy_button_title">Kuva sõnumi kopeerimise nupp</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Lisab igale chati sõnumile väikese kopeerimise nupu</string>
   <string name="morphe_live_chat_translate_copied">Sõnum kopeeritud lõikelauale</string>

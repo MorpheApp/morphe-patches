@@ -610,7 +610,6 @@ Nauðsynlegar vafrakökur: SID, HSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kínverskir orð (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Gríska, Slavneska kýrillískt (þ.á.m. rússneska, úkraínska, bulgaríska, serbneska, hvíta-rússneska, makedónska), georgíska, armenska, hebreska, arabíska, amhara og sýríska rómanisering (CLDR, ~0,5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Les %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Veldu að minnsta kosti eina orðabók</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Settu inn gildar vafrakökur til að leyfa YouTube-tengingu.</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Ýttuðu til að skipta yfir í næstu lagatextamöguleika; haltu lengi til að leita að lagatexta eftir lagi og listamanni</string>
   <string name="morphe_music_lyrics_search_dialog_title">Leita að texta</string>
@@ -739,7 +738,7 @@ Ljóð koma frá þriðja aðila þjónustu sem eru ekki tengd, stuðluð eða v
   <string name="morphe_music_lyrics_use_ai_section_summary">Aðeins notað þegar veitandinn sendir engin hlutanúmer eins og Chorus eða Verse, sem OpenAI samhæft módelið þitt greinir þá. Breytinga röðinni opnar líka spurninguna</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API enda punkts URL (t.d. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Sniðmát fyrir fyrirspurn</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Plasshaldar: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Plássgaldrar: {task}, {language}, {title}, {artist}, {count}, {lines}. Óþekktir eru skilin óbreytt</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Fyrirspurn vistuð</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt vistað, en AI-endipunktur er enn ekki notanlegur. Uppsettu hann undir AI-stillingar fyrst</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Fyrirspurn endurstillt</string>

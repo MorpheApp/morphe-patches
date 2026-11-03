@@ -21,9 +21,9 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">起動時のアニメーション</string>
   <string name="morphe_splash_screen_style_entry_1">無効</string>
   <string name="morphe_splash_screen_style_entry_2">カラー</string>
-  <string name="morphe_splash_screen_style_entry_3">Morphe カラー</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe（カラー）</string>
   <string name="morphe_splash_screen_style_entry_4">モノクロ</string>
-  <string name="morphe_splash_screen_style_entry_5">Morphe モノクローム</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe（モノクロ）</string>
   <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_new_indicator_days_title">新しい設定を強調表示</string>
   <string name="morphe_settings_new_indicator_days_summary">アップデートで追加された設定やオプションの横にドットが表示される日数</string>
@@ -80,15 +80,15 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe Play（ブラック）</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">カスタム</string>
-  <string name="morphe_custom_branding_icon_user_dialog_message">"この設定により、アプリ ランチャーに表示されるアイコンが変更されます。
+  <string name="morphe_custom_branding_icon_user_dialog_message">"この設定は、アプリ ランチャーに表示されるアイコンを変更します。
 
-この設定では、次の場所のアイコンは変更されません:
-• 端末のシステム設定のアプリ一覧
+以下の場所に表示されるアイコンは変更しません:
+• デバイスの「設定」のアプリ一覧
 • 一部のプッシュ通知
-• 「アプリで開く」ピッカー
-• Android Auto アイコン
+•「\"アプリ名\"で開く」のアプリ選択画面
+• Android Auto のアイコン
 
-アイコンをすべての場所で変更するには、再度パッチを適用し、「アプリアイコン」パッチ オプションを変更してください"</string>
+アイコンをすべての場所で変更するには、「App icon」パッチのパッチ オプションで変更した上で再度パッチを適用してください"</string>
   <string name="morphe_custom_branding_notification_icon_title">通知アイコン</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">アプリアイコンに合わせる</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>

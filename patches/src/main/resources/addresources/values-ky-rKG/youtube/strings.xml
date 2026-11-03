@@ -277,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">Эмодзи баскычын жашыруу</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Фильтр панелинин параметрлерин жашыруу</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'Эң мыкты\' жана \'Жаңы\' параметрлеринден башка бардык фильтр панелинин параметрлерин жашырат</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF баскычын жашыруу</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF-терди жана сүрөттөрдү жашыруу</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Комментарийлерге жана жоопторго тиркелген GIF-терди жана сүрөттөрдү жашырат</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Белектердин анимациясын жана карталарын жашыруу</string>
   <string name="morphe_hide_comments_gift_button_title">Белек баскычын жашыруу</string>
   <string name="morphe_hide_comments_info_button_title">Маалымат баскычын жашыруу</string>
@@ -442,10 +445,16 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <string name="morphe_copy_comments_title">Пыкирлерди көчүрүү</string>
   <string name="morphe_copy_comments_summary">Пыкирди көчүрүү үчүн аны басып туруңуз</string>
   <string name="morphe_copy_comments_success">Пыкир алмаштыруу буферге көчүрүлдү</string>
+  <string name="morphe_copy_select_text_title">Сүрөттөмөлөрдүн жана посттордун текстин тандоо</string>
+  <string name="morphe_copy_select_text_summary">Видеонун сүрөттөмөсүн же постту белгилүү бир бөлүгүн тандоо жана көчүрүү үчүн аны басып туруңуз</string>
+  <string name="morphe_copy_select_text_dialog_title">Текстти тандоо</string>
+  <string name="morphe_copy_select_text_copy_all">Баарын көчүрүү</string>
+  <string name="morphe_copy_select_text_success">Текст алмашкачыга көчүрүлдү</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Видео менюсун ачуу үчүн басып тургула</string>
   <string name="morphe_feed_long_press_menu_summary">Лентадагы видеонун каалаган жерин басып тургуңуз, анда анын менюсу ачылат</string>
   <string name="morphe_feed_watch_later_button_title">Миниатюраларда «Кийинчерээк көрүү» баскычын көрсөтүү</string>
+  <string name="morphe_feed_watch_later_button_summary">Лентадагы видеолордун кичинекей сүрөттөрүндө «Кийин көрүү» баскычы көрсөтүлөт, ал эми видео сакталса, белги белгиси пайда болот. Аны бассаңыз видео сакталат же өчүрүлөт, ал эми басып турсаңыз «Плейлистке сактоо» менюсу ачылат</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Посттогу сүрөттөрдү жүктөө</string>
   <string name="morphe_post_image_download_summary">Сүрөттөрү же GIF-тери бар посттордун \"Бөлүшүү\" баскычынын жанында жүктөө баскычы пайда болот жана алардын менюсуна жүктөө пункту кошулат</string>
@@ -525,6 +534,7 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <string name="morphe_export_download_folder_change">Папканы өзгөртүү</string>
   <string name="morphe_export_download_folder_changed">Экспорттоо папкасы өзгөртүлдү</string>
   <string name="morphe_export_download_folder_reset">Экспорттоо папкасы кайтарылды</string>
+  <string name="morphe_export_download_folder_missing">Экспорттоо папкасын таптыруу мүмкүн болбоду %s</string>
   <string name="morphe_export_download_flyout_title">Түзмөктке экспорттоо</string>
   <string name="morphe_export_download_started">Видео экспорттолууда</string>
   <string name="morphe_export_download_progress">Видео экспорттолууда: %d%%</string>
@@ -869,6 +879,10 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Субтитрлер</string>
   <string name="morphe_captions_screen_summary">Автоматтык субтитрлерди жана субтитр кукилерини башкаруу</string>
+  <string name="morphe_captions_languages_title">Тил жана котормо</string>
+  <string name="morphe_captions_presentation_title">Сырткы көрүнүшү жана жүрүм-туруму</string>
+  <string name="morphe_captions_advanced_title">Жашыруун</string>
+  <string name="morphe_captions_advanced_summary">Cookie жана транскрипт опциялары</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Автоматтык субтитрлердин көрүнүүсү</string>
   <string name="morphe_auto_captions_style_entry_1">Дайыма көрсөтүү</string>
@@ -877,8 +891,10 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_auto_captions_style_entry_4">Үнү өчкөндө көрсөтүү</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Көчникардын артыкчылыктуу тили</string>
+  <string name="morphe_preferred_caption_language_summary">Ар бир видео үчүн субтитр тилин автоматтык түрдө тандайт</string>
   <string name="morphe_preferred_caption_language_entry_off">Өчүк</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Кошумча авто-котормо тилдери</string>
   <string name="morphe_auto_translate_additional_languages_summary">Авто-котормо менюсуна көбүрөөк тилдерди кошот</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Субтитр кукилерин орнотуу</string>
@@ -897,8 +913,16 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_fix_transcript_summary">Транскрипттин жүктөлүшүнө тоскоол болгон алдын ала текшерүүнүн катасын жоёт</string>
   <string name="morphe_captions_in_pip_title">Сүрөттөгү сүрөттө субтитрлерди көрсөтүү</string>
   <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Субтитрдин өлчөмү</string>
+  <string name="morphe_caption_scale_summary">Бир тилдеги жана эки тилдеш субтитрлерге колдонулат</string>
   <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Туруктуу субтитр блоктору</string>
+  <string name="morphe_stable_caption_blocks_summary">Бир тилдеги автоматтык субтитрлерди туруктуу, окууга ыңгайлуу блокторго топтойт. Эки тилдеш субтитрлер дайыма блокторду колдонот. Кээ бир сөздөр айтылганга чейин пайда болушу мүмкүн</string>
+  <string name="morphe_secondary_caption_language_title">Субтитрлердин экинчи тили</string>
+  <string name="morphe_secondary_caption_language_summary">Субтитрлер менен бирге экинчи тилди көрсөтөт жана субтитрлер менюсуна «Эки тилдеш субтитрлер» которуучусун кошот</string>
+  <string name="morphe_dual_captions_enabled_title">Эки тилдеш субтитрлер</string>
+  <string name="morphe_caption_block_translation_failed">Кээ бир субтитр котормолору жеткиликсиз. Жеткиликтүү субтитрлер көрсөтүлүүдө.</string>
+  <string name="morphe_caption_blocks_too_large">Субтитрлердин эки тили тең бул плеерге батпай жатат. Негизги тил көрсөтүлүүдө.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Навигациялык баскычтар</string>
   <string name="morphe_navigation_buttons_screen_summary">Төмөнкү навигациялык панелде кайсы баскычтар көрүнөөрүн тандаңыз</string>
@@ -914,6 +938,8 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_hide_notifications_button_title">Билдирүүлөр баскычын жашыруу</string>
   <string name="morphe_show_search_button_title">Издөө баскычын көрсөтүү</string>
   <string name="morphe_show_search_button_index_title">Издөө баскычынын оорду</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">Оңдоолор баскычын көрсөтүү</string>
   <string name="morphe_show_settings_button_index_title">Оңдоолор баскычынын оорду</string>
   <string name="morphe_show_settings_button_type_title">Жөндөөлөр баскычынын аракеттери</string>
@@ -999,6 +1025,7 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Субтитрлер баскычын жашыруу</string>
   <string name="morphe_hide_cast_button_title">Cast баскычын жашыруу</string>
+  <string name="morphe_hide_cast_button_summary">Видео ойноткучудагы жана куралдар панелиндеги Cast баскычын жашырат</string>
   <string name="morphe_hide_collapse_button_title">Жыгуу баскычын жашыруу</string>
   <string name="morphe_hide_fullscreen_button_title">Толук экран баскычын жашыруу</string>
   <string name="morphe_hide_player_control_buttons_background_title">Плеер башкаруу баскычтарынын фонун жашыруу</string>
@@ -1523,6 +1550,12 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_spoof_video_streams_player_js_variant_title">Плеердин JavaScript варианты</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'Нерддер үчүн статистикада\' имитациялоону көрсөтүү</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_video_action_bar_layout_title">Видеонун иш-аракеттер панелинин макетти</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Стандарттуу</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Классикалык бир катардуу</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Минималисттик</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Классикалык эки катардуу</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Чектөө: Классикалык макеттер эски стильдеги \"Көбүрөөк видеолор\" катмарына кайтып келет</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Плеердин иконкасынын стили</string>
   <string name="morphe_player_icon_style_entry_auto">Өзүнөн өзү</string>
@@ -1688,4 +1721,32 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_niconico_comments_max_length_title">Комментардын максималдуу узундугу</string>
   <string name="morphe_niconico_comments_max_length_summary">Бул жердегиден көп белгиси бар комментарларды жашырат. Ар бир эмодзи бир белги катары эсептелет</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Чектелбеген</string>
+  <string name="morphe_live_chat_translate_screen_title">Түз эфирдеги чаттын котормосу</string>
+  <string name="morphe_live_chat_translate_screen_summary">Түз эфирдеги чатты жана түз эфирдеги чаттын кайталоо билдирүүлөрүн которуу</string>
+  <string name="morphe_live_chat_translate_title">Түз эфирдеги чатты которуу</string>
+  <string name="morphe_live_chat_translate_summary">Түз эфирдеги чатты жана түз эфирдеги чаттын кайталоо билдирүүлөрүн экранга чыкканда которат</string>
+  <string name="morphe_live_chat_translate_language_title">Которуу тили</string>
+  <string name="morphe_live_chat_translate_exclude_title">Жалпыланган тилдер</string>
+  <string name="morphe_live_chat_translate_exclude_summary">id,en сыяктуу үтүр менен бөлүнгөн тил коддору. Бул тилдеги билдирүүлөр которулбайт</string>
+  <string name="morphe_live_chat_translate_provider_title">Котормо sağlayучу</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API ачкычы</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Сиздин DeepL API ачкычыңыз. Эгер DeepL иштебесе, мисалы, ачкычтын айлыктык лимити түгөнсө, Google Translate колдонулат</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Билдирүүнү көчүрүү баскычын көрсөтүү</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Ар бир чат билдирүүсүнө кичинекей көчүрүү баскычын кошот</string>
+  <string name="morphe_live_chat_translate_copied">Билдирүү алмашкартка көчүрүлдү</string>
+  <string name="morphe_live_chat_translate_style_title">Котормо стили</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Которулгандары гана</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Түп нуска (которолгон)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Которолгон) түп нуска</string>
+  <string name="morphe_live_chat_translate_bold_title">Которолгон текстти калың кылуу</string>
+  <string name="morphe_live_chat_translate_bold_summary">Которолгон текстти калың шрифт менен көрсөтөт</string>
+  <string name="morphe_live_chat_translate_use_color_title">Которолгон тексттин自定义 түсү</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Которолгон текстке自定义 түстү колдонот</string>
+  <string name="morphe_live_chat_translate_color_title">Которолгон тексттин түсү</string>
+  <string name="morphe_live_chat_translate_color_summary">Которолгон тексттин hex түсүн белгилеңиз</string>
+  <string name="morphe_live_chat_translate_max_length_title">Билдирүүнүн максималдуу узундугу</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Узун билдирүүлөр которулбаган бойдон көрсөтүлөт</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Чектөө жок</string>
 </resources>

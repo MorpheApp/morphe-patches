@@ -445,6 +445,11 @@ Els informes són públics i es revisen abans d'afegir un canal a una llista. L'
   <string name="morphe_copy_comments_title">Copia els comentaris</string>
   <string name="morphe_copy_comments_summary">Mantingueu premt un comentari per copiar-lo</string>
   <string name="morphe_copy_comments_success">Comentari copiat al porta papers</string>
+  <string name="morphe_copy_select_text_title">Seleccionar text de descripcions i publicacions</string>
+  <string name="morphe_copy_select_text_summary">Manteneu premuda una descripció de vídeo o una publicació per seleccionar i copiar qualsevol part d\'ella</string>
+  <string name="morphe_copy_select_text_dialog_title">Seleccionar text</string>
+  <string name="morphe_copy_select_text_copy_all">Copiar tot</string>
+  <string name="morphe_copy_select_text_success">Text copiat al porta-retalls</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Manté premut per obrir el menú del vídeo</string>
   <string name="morphe_feed_long_press_menu_summary">Si mantens premut qualsevol part d\'un vídeo del feed, s\'obrirà el seu menú</string>
@@ -933,6 +938,11 @@ Cal proporcionar les 'cookies de subtítols'"</string>
   <string name="morphe_hide_notifications_button_title">Amaga el botó de Notificacions</string>
   <string name="morphe_show_search_button_title">Mostra el botó de Cerca</string>
   <string name="morphe_show_search_button_index_title">Posició del botó de Cerca</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Mostrar el botó Veure més tard</string>
+  <string name="morphe_show_watch_later_button_index_title">Posició del botó Veure més tard</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Veure més tard</string>
   <string name="morphe_show_settings_button_title">Mostra el botó de Configuració</string>
   <string name="morphe_show_settings_button_index_title">Posició del botó de Configuració</string>
   <string name="morphe_show_settings_button_type_title">Acció del botó de Configuració</string>
@@ -1716,6 +1726,12 @@ El registre automàtic és opcional. S'atura en mode incògnit o quan canvia el 
   <string name="morphe_niconico_comments_max_length_title">Longitud màxima del comentari</string>
   <string name="morphe_niconico_comments_max_length_summary">Amaga els comentaris que tinguin més caràcters que aquest. Cada emoji compta com a un caràcter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sense límit</string>
+  <string name="morphe_niconico_comments_live_streams_title">Mostrar en transmissions en directe</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Transmissions en directe i les seves repeticions</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Mostrar en estrenes</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Estrenes mentre s\'estan reproduint</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Mostrar en estrenes finalitzades</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Repetició del xat d\'estrenes que han finalitzat</string>
   <string name="morphe_live_chat_translate_screen_title">Traducció del xat en directe</string>
   <string name="morphe_live_chat_translate_screen_summary">Traduïu els missatges del xat en directe i les reproduccions del xat en directe</string>
   <string name="morphe_live_chat_translate_title">Traduïu el xat en directe</string>
@@ -1723,6 +1739,11 @@ El registre automàtic és opcional. S'atura en mode incògnit o quan canvia el 
   <string name="morphe_live_chat_translate_language_title">Idioma de traducció</string>
   <string name="morphe_live_chat_translate_exclude_title">Idiomes exclosos</string>
   <string name="morphe_live_chat_translate_exclude_summary">Codis d\'idioma separats per Virgules, com ara id,en. Els missatges en aquests idiomes no es tradueixen</string>
+  <string name="morphe_live_chat_translate_provider_title">Proveïdor de traducció</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">Clau API de DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">La vostra clau API de DeepL. S\'utilitza Google Translate si DeepL falla, per exemple, quan s\'ha assolit el límit mensual de la clau</string>
   <string name="morphe_live_chat_translate_copy_button_title">Mostra el botó de copiar missatge</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Afegeix un petit botó de copiar a cada missatge del xat</string>
   <string name="morphe_live_chat_translate_copied">Missatge copiat al portaaparells</string>

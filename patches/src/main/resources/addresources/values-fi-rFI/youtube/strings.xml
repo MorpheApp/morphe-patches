@@ -445,6 +445,11 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_copy_comments_title">Kopioi kommentit</string>
   <string name="morphe_copy_comments_summary">Pidä kommenttia painettuna kopioidaksesi sen</string>
   <string name="morphe_copy_comments_success">Kommentti kopioitu leikepöydälle</string>
+  <string name="morphe_copy_select_text_title">Valitse kuvauksien ja postausten tekstiä</string>
+  <string name="morphe_copy_select_text_summary">Napauta ja pidä painettuna videon kuvausta tai postausta valitaksesi ja kopioidaksesi mistä tahansa kohdasta</string>
+  <string name="morphe_copy_select_text_dialog_title">Valitse teksti</string>
+  <string name="morphe_copy_select_text_copy_all">Kopioi kaikki</string>
+  <string name="morphe_copy_select_text_success">Teksti kopioitiin leikepöydälle</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Paina ja pidä pohjassa avataksesi videomenu</string>
   <string name="morphe_feed_long_press_menu_summary">Kosketus ja pitopohjassa missä tahansa syötteiden videolla avaa sen valikon</string>
@@ -933,6 +938,11 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
   <string name="morphe_hide_notifications_button_title">Asetukset-painikkeen sijainti</string>
   <string name="morphe_show_search_button_title">Kun se on käytössä, napautus avaa Morphen asetukset ja pitkä painallus avaa YouTuben asetukset, poista käytöstä vaihtaaaksesi ne</string>
   <string name="morphe_show_search_button_index_title">Pienentää painikkeiden välistä vaakasuuntaista väliä</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Näytä Katso myöhemmin -painike</string>
+  <string name="morphe_show_watch_later_button_index_title">Katso myöhemmin -painikkeen sijainti</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Katso myöhemmin</string>
   <string name="morphe_show_settings_button_title">Näytä Asetukset-painike</string>
   <string name="morphe_show_settings_button_index_title">Asetusten painikkeen sijainti</string>
   <string name="morphe_show_settings_button_type_title">Asetusten painikkeen toiminto</string>
@@ -1716,6 +1726,12 @@ Automaattinen tallennus on valinnaista. Se pysähtyy incognito-tilissä tai tili
   <string name="morphe_niconico_comments_max_length_title">Maksimit kommentin pituus</string>
   <string name="morphe_niconico_comments_max_length_summary">Piilottaa kommentit, jotka ovat tämän merkkimäärän pidempiä. Jokainen emojimerkki lasketaan yhdeksi merkiksi</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Ei rajoitusta</string>
+  <string name="morphe_niconico_comments_live_streams_title">Näytä suorissa lähetyksissä</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Suorat lähetykset ja niiden uusinnat</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Näytä ensiilloissa</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Ensiillat niiden toiston aikana</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Näytä päättyneissä ensiilloissa</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Päättyneiden ensi-iltojen chat-toisto</string>
   <string name="morphe_live_chat_translate_screen_title">Live-chatin kääntäminen</string>
   <string name="morphe_live_chat_translate_screen_summary">Käännä live-chatin ja live-chatin toiston viestit</string>
   <string name="morphe_live_chat_translate_title">Käännä live-chat</string>
@@ -1723,6 +1739,11 @@ Automaattinen tallennus on valinnaista. Se pysähtyy incognito-tilissä tai tili
   <string name="morphe_live_chat_translate_language_title">Käännöskieli</string>
   <string name="morphe_live_chat_translate_exclude_title">Poissuljetut kielet</string>
   <string name="morphe_live_chat_translate_exclude_summary">Pilkulla erotetut kielikoodit, kuten id,en. Näillä kielillä olevia viestejä ei käännetä</string>
+  <string name="morphe_live_chat_translate_provider_title">Käännöspalvelu</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Kääntäjä</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API -avain</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">DeepL API -avaimesi. Google Kääntäjää käytetään, jos DeepL epäonnistuu, esimerkiksi kun avaimen kuukausittainen raja on täyttynyt</string>
   <string name="morphe_live_chat_translate_copy_button_title">Näytä viestin kopiointipainike</string>
   <string name="morphe_live_chat_translate_copy_button_summary">Lisää pieni kopiointipainike jokaiseen chat-viestiin</string>
   <string name="morphe_live_chat_translate_copied">Viesti kopioitu leikepöydälle</string>

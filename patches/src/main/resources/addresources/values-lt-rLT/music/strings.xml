@@ -611,7 +611,6 @@ Reikalingi slapukai: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kinų žodžiai (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Graikų, slavų kirilikos (įskaitant rusų, ukrainiečių, bulgarų, serbų, baltarusių, makedonų), gruzinų, armėnų, hebrajų, arabų, amharų ir sirų kalbų transliteravimas (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Skaitmenų %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Pasirinkite bent vieną žodyną</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Rodyti atnaujinimo mygtuką</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Paspauskite, kad pereitumėte prie kitos teksto kandidatūros; ilgai paspauskite, kad ieškotumėte tekstų pagal dainos pavadinimą ir atlikėją</string>
   <string name="morphe_music_lyrics_search_dialog_title">Ieškoti dainų tekstų</string>
@@ -740,7 +739,7 @@ Dainų tekstai ateina iš trečiųjų paslaugų, kurios nėra susietos, remiamos
   <string name="morphe_music_lyrics_use_ai_section_summary">Naudojama tik tada, kai tiekėjas neturi jokių sekcijų etikečių, pavyzdžiui, Chorus arba Verse, kurios tada aptinka jūsų OpenAI suderinamas modelis. Eilutės redagavimas taip pat atveria jos promptą</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API pabaigos taško URL (pvz., https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Uždaužo šablonas</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Vietiniai kintamieji: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholderiai: {task}, {language}, {title}, {artist}, {count}, {lines}. Nežinomi paliekami tokie, kokie buvo įvesti</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Uždauža išsaugota</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Užklausa išsaugota, bet AI galinė taškolis dar naudojamasi. Pirmiausia ją nustatykite AI nustatymuose</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Uždauža nustatyta iš naujo</string>

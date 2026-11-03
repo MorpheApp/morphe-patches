@@ -21,8 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Anîmasyona destpêkê</string>
   <string name="morphe_splash_screen_style_entry_1">Vemirandî</string>
   <string name="morphe_splash_screen_style_entry_2">Reng</string>
+  <string name="morphe_splash_screen_style_entry_3">Rengê Morphe</string>
   <string name="morphe_splash_screen_style_entry_4">Monokrom</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Nîşandana mîhengên nû</string>
+  <string name="morphe_settings_new_indicator_days_summary">Hejmara rojan ku xaleke li kêleka mîheng û vebijardeyên ku bi nûkirinekê hatine zêdekirin tê nîşandan</string>
   <string name="morphe_settings_new_indicator_days_off">Dabe</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Dest pê bike ku sazkirinê temam bike</string>

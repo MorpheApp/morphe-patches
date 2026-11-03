@@ -607,7 +607,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Λέξεις Κινέζικα (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Ρωμαϊσμός/Μεταγραφή Ελληνικά, Σλαβικά Κυριλλικά (περ. Ρωσική, Ουκρανική, Βουλγαρική, Σερβική, Λευκορωσική, Μακεδονική), Γεωργιανά, Αρμενικά, Εβραϊκά, Αραβικά, Αμχαρικά και Συριακά (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Ανάγνωση %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Επιλέξτε τουλάχιστον ένα λεξικό</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Εμφάνιση κουμπιού ανανέωσης</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Πατήστε για εναλλαγή στον επόμενο υποψήφιο στίχο· παρατεταμένο πάτημα για αναζήτηση στίχων με τίτλο τραγουδιού και καλλιτέχνη</string>
   <string name="morphe_music_lyrics_search_dialog_title">Αναζήτηση στίχων</string>
@@ -736,7 +735,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Χρησιμοποιείται μόνο όταν ο πάροχος δεν παρέχει ετικέτες τμημάτων όπως Refrain ή Στροφή, τις οποίες τότε εντοπίζει το μοντέλο συμβατό με OpenAI. Η επεξεργασία της γραμμής ανοίγει επίσης το prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL τελικού σημείου API (π.χ. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Πρότυπο Prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Υποκαταστάτες: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Δεῖγματα: {task}, {language}, {title}, {artist}, {count}, {lines}. Τα άγνωστα παραμένουν όπως πληκτρολογήθηκαν</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Το prompt αποθηκεύτηκε</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Η εκκίνηση αποθηκεύτηκε, αλλά το τελικό σημείο AI δεν είναι ακόμα διαθέσιμο. Πριν το χρησιμοποιήσετε, ρυθμίστε το στις Ρυθμίσεις AI</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Το prompt επαναφέρθηκε</string>
