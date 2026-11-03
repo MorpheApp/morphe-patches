@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -24,17 +25,15 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.google.protobuf.MessageLite;
+
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.WeakHashMap;
-import java.util.concurrent.ConcurrentHashMap;
 
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
@@ -78,6 +77,13 @@ public final class PlaylistTagsPatch {
     }
 
     /**
+     * Added to the class that wraps some Library grid items by the patch.
+     */
+    public interface MessageWrapper {
+        MessageLite patch_getMessage();
+    }
+
+    /**
      * The unfiltered items of a grid presenter. The renderer the presenter holds is only the
      * last page it loaded, so the grid is rebuilt from the items of all pages instead.
      */
@@ -103,17 +109,6 @@ public final class PlaylistTagsPatch {
     private static WeakReference<Object> buildingGridPresenter = new WeakReference<>(null);
 
     /**
-     * GeneratedMessageLite.toByteArray() of each proto class. The method name is not obfuscated.
-     */
-    private static final Map<Class<?>, Method> toByteArrayMethods = new ConcurrentHashMap<>();
-
-    /**
-     * Field holding the proto of each item wrapper class, and the wrapper classes holding none.
-     */
-    private static final Map<Class<?>, Field> wrappedMessageFields = new ConcurrentHashMap<>();
-    private static final Set<Class<?>> classesWithoutMessage = ConcurrentHashMap.newKeySet();
-
-    /**
      * Filter buttons currently shown, so their text can be updated after the filter changes.
      */
     private static final List<WeakReference<TextView>> filterButtons = new ArrayList<>();
@@ -125,53 +120,16 @@ public final class PlaylistTagsPatch {
         return Settings.PLAYLIST_TAGS.get();
     }
 
-    private static boolean isMessage(Class<?> type) {
-        if (toByteArrayMethods.containsKey(type)) return true;
-        try {
-            toByteArrayMethods.put(type, type.getMethod("toByteArray"));
-            return true;
-        } catch (NoSuchMethodException ex) {
-            return false;
-        }
-    }
-
     /**
-     * @return The serialized proto of an item that is a proto, or wraps one such as the grid view
+     * @return The serialized proto of an item that is a proto, or wraps one such as some grid view
      *         items, or null if the item holds no proto, such as a header.
      */
     @Nullable
     private static byte[] serialize(@Nullable Object item) {
-        if (item == null) return null;
-        Class<?> itemClass = item.getClass();
-        try {
-            Object message = item;
-            if (!isMessage(itemClass)) {
-                Field field = wrappedMessageFields.get(itemClass);
-                if (field == null) {
-                    if (classesWithoutMessage.contains(itemClass)) return null;
-                    for (Field candidate : itemClass.getDeclaredFields()) {
-                        if (Modifier.isStatic(candidate.getModifiers())
-                                || candidate.getType().isPrimitive()
-                                || !isMessage(candidate.getType())) continue;
-                        candidate.setAccessible(true);
-                        field = candidate;
-                        break;
-                    }
-                    if (field == null) {
-                        classesWithoutMessage.add(itemClass);
-                        return null;
-                    }
-                    wrappedMessageFields.put(itemClass, field);
-                }
-                message = field.get(item);
-                if (message == null) return null;
-            }
-            Class<?> messageClass = message.getClass();
-            return isMessage(messageClass) ? (byte[]) toByteArrayMethods.get(messageClass).invoke(message) : null;
-        } catch (Exception ex) {
-            Logger.printException(() -> "Could not serialize: " + itemClass.getName(), ex);
-            return null;
+        if (item instanceof MessageWrapper wrapper) {
+            item = wrapper.patch_getMessage();
         }
+        return item instanceof MessageLite message ? message.toByteArray() : null;
     }
 
     /**
@@ -193,10 +151,7 @@ public final class PlaylistTagsPatch {
      * Called when a presenter of the Library list or grid view is created.
      */
     public static void registerLibraryPresenter(Object presenter) {
-        if (!(presenter instanceof LibraryPresenter) && !(presenter instanceof LibraryGridPresenter)) {
-            Logger.printException(() -> "Not a Library presenter: " + presenter);
-            return;
-        }
+        if (!isEnabled()) return;
         addWeakReference(libraryPresenters, presenter);
     }
 
@@ -209,6 +164,7 @@ public final class PlaylistTagsPatch {
      * Called when a grid presenter clears its rows, before it builds them again.
      */
     public static void onGridItemsReset(Object presenter) {
+        if (!isEnabled()) return;
         synchronized (gridItems) {
             getGridItems(presenter).resetPending = true;
         }
@@ -219,6 +175,7 @@ public final class PlaylistTagsPatch {
      * Called when a grid presenter lays out items in rows. Items it builds after this are added to the rows.
      */
     public static void onGridItemsBound(Object presenter) {
+        if (!isEnabled()) return;
         synchronized (gridItems) {
             getGridItems(presenter).resetPending = false;
         }
@@ -229,6 +186,7 @@ public final class PlaylistTagsPatch {
      * Called when a grid presenter starts to build the items of a renderer.
      */
     public static void onGridItemsBuilding(Object presenter) {
+        if (!isEnabled()) return;
         buildingGridPresenter = new WeakReference<>(presenter);
     }
 
@@ -239,16 +197,22 @@ public final class PlaylistTagsPatch {
      * @return The items without the playlists hidden by the tag filter.
      */
     public static List<Object> filterGridItems(List<Object> items) {
-        Object presenter = buildingGridPresenter.get();
-        if (presenter != null && items != null) {
-            synchronized (gridItems) {
-                GridItems kept = getGridItems(presenter);
-                if (kept.resetPending) {
-                    kept.items.clear();
-                    kept.resetPending = false;
+        if (!isEnabled()) return items;
+
+        try {
+            Object presenter = buildingGridPresenter.get();
+            if (presenter != null) {
+                synchronized (gridItems) {
+                    GridItems kept = getGridItems(presenter);
+                    if (kept.resetPending) {
+                        kept.items.clear();
+                        kept.resetPending = false;
+                    }
+                    kept.items.addAll(items);
                 }
-                kept.items.addAll(items);
             }
+        } catch (Exception ex) {
+            Logger.printException(() -> "filterGridItems failure", ex);
         }
         return filterLibraryItems(items);
     }
@@ -260,18 +224,21 @@ public final class PlaylistTagsPatch {
      * @return The items without the playlists hidden by the tag filter. While only one tag
      *         is shown, items that are not playlists, such as mixes and artists, are removed too.
      */
-    public static List<Object> filterLibraryItems(List<Object> items) {
+    @Nullable
+    public static List<Object> filterLibraryItems(@Nullable List<Object> items) {
+        // The items restored from a saved state can be null.
         if (!isEnabled() || items == null) return items;
 
         try {
             List<Object> filtered = new ArrayList<>(items.size());
+            Map<String, String> seenPlaylists = new LinkedHashMap<>();
             boolean showOnlyTag = !PlaylistTagsStore.getOnlyTag().isEmpty();
             for (Object item : items) {
                 byte[] bytes = serialize(item);
                 PlaylistTagsProto.GridItem playlist = bytes == null ? null : PlaylistTagsProto.readGridItem(bytes);
 
                 if (playlist != null) {
-                    PlaylistTagsStore.rememberPlaylist(playlist.playlistId(), playlist.title());
+                    seenPlaylists.put(playlist.playlistId(), playlist.title());
                     if (PlaylistTagsStore.isPlaylistHidden(playlist.playlistId())) {
                         Logger.printDebug(() -> "Hiding playlist: " + playlist.title()
                                 + " (" + playlist.playlistId() + ")");
@@ -284,6 +251,7 @@ public final class PlaylistTagsPatch {
                 }
                 filtered.add(item);
             }
+            PlaylistTagsStore.rememberPlaylists(seenPlaylists);
             return filtered;
         } catch (Exception ex) {
             Logger.printException(() -> "filterLibraryItems failure", ex);
@@ -299,7 +267,7 @@ public final class PlaylistTagsPatch {
      * @param playlistId The id of the playlist.
      */
     public static void onPlaylistRemoved(@Nullable String playlistId) {
-        if (playlistId == null) return;
+        if (!isEnabled() || playlistId == null) return;
         try {
             // Browse ids of playlists start with VL.
             String id = playlistId.startsWith("VL") ? playlistId.substring(2) : playlistId;
@@ -485,7 +453,7 @@ public final class PlaylistTagsPatch {
 
     private static boolean isInsideList(View view) {
         for (ViewParent parent = view.getParent(); parent != null; parent = parent.getParent()) {
-            if (parent.getClass().getName().endsWith("RecyclerView")) return true;
+            if (parent instanceof RecyclerView) return true;
         }
         return false;
     }

@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -149,7 +148,6 @@ final class PlaylistTagsStore {
         }
     }
 
-    @NonNull
     static String normalizeTagName(@Nullable String name) {
         return name == null ? "" : name.trim().replaceAll("\\s+", " ");
     }
@@ -230,7 +228,6 @@ final class PlaylistTagsStore {
         return true;
     }
 
-    @NonNull
     static synchronized String getOnlyTag() {
         loadIfNeeded();
         return onlyTag;
@@ -314,22 +311,27 @@ final class PlaylistTagsStore {
     }
 
     /**
-     * Remembers the title of a playlist seen in the Library.
+     * Remembers the titles of playlists seen in the Library.
+     *
+     * @param playlists Playlist id to title. An empty title is replaced by the id.
      */
-    static synchronized void rememberPlaylist(String playlistId, @Nullable String title) {
+    static synchronized void rememberPlaylists(Map<String, String> playlists) {
         loadIfNeeded();
-        if (title == null || title.isEmpty()) title = playlistId;
-        if (title.equals(knownPlaylists.get(playlistId))) return;
+        boolean changed = false;
+        for (Map.Entry<String, String> playlist : playlists.entrySet()) {
+            String playlistId = playlist.getKey();
+            String title = playlist.getValue().isEmpty() ? playlistId : playlist.getValue();
+            if (title.equals(knownPlaylists.get(playlistId))) continue;
 
-        knownPlaylists.put(playlistId, title);
-        if (knownPlaylists.size() > MAX_KNOWN_PLAYLISTS) {
-            // Forget the oldest untagged playlist.
-            for (Iterator<String> ids = knownPlaylists.keySet().iterator(); ids.hasNext(); ) {
-                if (!playlistTags.containsKey(ids.next())) {
-                    ids.remove();
-                    break;
-                }
-            }
+            knownPlaylists.put(playlistId, title);
+            changed = true;
+        }
+        if (!changed) return;
+
+        // Forget the oldest untagged playlists.
+        for (Iterator<String> ids = knownPlaylists.keySet().iterator();
+             knownPlaylists.size() > MAX_KNOWN_PLAYLISTS && ids.hasNext(); ) {
+            if (!playlistTags.containsKey(ids.next())) ids.remove();
         }
         saveKnownPlaylists();
     }
@@ -348,7 +350,6 @@ final class PlaylistTagsStore {
         return tagged || known;
     }
 
-    @NonNull
     static synchronized String getPlaylistTitle(String playlistId) {
         loadIfNeeded();
         String title = knownPlaylists.get(playlistId);

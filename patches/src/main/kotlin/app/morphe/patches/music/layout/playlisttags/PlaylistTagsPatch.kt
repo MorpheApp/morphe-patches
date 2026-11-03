@@ -10,13 +10,14 @@ package app.morphe.patches.music.layout.playlisttags
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.instructions
-import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.opcode
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
-import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
+import app.morphe.patcher.util.findInstructionIndicesReversedOrThrow
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.music.misc.androidauto.GridRendererItemsFingerprint
 import app.morphe.patches.music.misc.androidauto.addInterfaceMethod
 import app.morphe.patches.music.misc.androidauto.findInterfaceMethod
@@ -29,22 +30,24 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.Instruction
+import com.android.tools.smali.dexlib2.iface.ClassDef
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/PlaylistTagsPatch;"
-private const val EXTENSION_LIBRARY_GRID_PRESENTER_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/PlaylistTagsPatch$LibraryGridPresenter;"
 private const val EXTENSION_LIBRARY_PRESENTER_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/PlaylistTagsPatch$LibraryPresenter;"
+private const val EXTENSION_LIBRARY_GRID_PRESENTER_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/PlaylistTagsPatch$LibraryGridPresenter;"
+private const val EXTENSION_MESSAGE_WRAPPER_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/PlaylistTagsPatch$MessageWrapper;"
+
+private const val FILTER_LIBRARY_ITEMS =
+    "$EXTENSION_CLASS->filterLibraryItems(Ljava/util/List;)Ljava/util/List;"
+private const val FILTER_GRID_ITEMS =
+    "$EXTENSION_CLASS->filterGridItems(Ljava/util/List;)Ljava/util/List;"
 
 @Suppress("unused")
 val playlistTagsPatch = bytecodePatch(
@@ -78,36 +81,24 @@ val playlistTagsPatch = bytecodePatch(
         // region Library: hide the playlists of hidden tags.
 
         // The list view and the grid view of the Library each have their own presenter.
-        val reloadMethod = findInterfaceMethod(EXTENSION_LIBRARY_PRESENTER_INTERFACE, "patch_reloadLibrary")
-        val rebindItemsMethod = findInterfaceMethod(EXTENSION_LIBRARY_GRID_PRESENTER_INTERFACE, "patch_rebindItems")
-        GridRendererItemsFingerprint.let { it.classDef.hookLibraryListPresenter(it.method, reloadMethod) }
-        LibraryGridItemsFingerprint.let { it.classDef.hookLibraryGridPresenter(it.method, rebindItemsMethod) }
+        hookLibraryListPresenter()
+        hookLibraryGridPresenter()
 
         // endregion
 
         // region Library: forget the tags of deleted playlists.
 
-        // The event keeps the removed item, if any, and the id of the playlist.
         val deleteEventType = HandleDeletePlaylistEventFingerprint.method.parameterTypes.first().toString()
-        mutableClassDefBy(deleteEventType).methods.filter { method ->
-            method.name == "<init>" && method.parameterTypes.map { type -> type.toString() }.let { types ->
-                types.size == 2 && types[1] == "Ljava/lang/String;"
-            }
-        }.ifEmpty {
-            throw PatchException("Could not find the constructor of the deleted playlist event")
-        }.forEach { constructor ->
-            constructor.addInstruction(
-                0,
-                "invoke-static { p2 }, $EXTENSION_CLASS->onPlaylistRemoved(Ljava/lang/String;)V"
-            )
-        }
+        deletePlaylistEventConstructorFingerprint(deleteEventType).method.addInstruction(
+            0,
+            "invoke-static { p2 }, $EXTENSION_CLASS->onPlaylistRemoved(Ljava/lang/String;)V"
+        )
 
         // endregion
 
         // region Flyout menu: add a 'Tags' row to the menu of a playlist.
 
-        val menuField = MenuBottomSheetItemsFingerprint.instructionMatches.first()
-            .instruction.getReference<FieldReference>()!!
+        val menuField = MenuBottomSheetItemsFingerprint.instructionMatches.first().fieldReference
 
         MenuBottomSheetOnStartFingerprint.let {
             it.method.apply {
@@ -147,29 +138,12 @@ val playlistTagsPatch = bytecodePatch(
     }
 }
 
-private const val FILTER_LIBRARY_ITEMS =
-    "$EXTENSION_CLASS->filterLibraryItems(Ljava/util/List;)Ljava/util/List;"
-
-private fun Method.smaliReference() =
-    "$definingClass->$name(${parameterTypes.joinToString("")})$returnType"
-
-private fun Instruction.calls(method: Method) =
-    (opcode == Opcode.INVOKE_STATIC || opcode == Opcode.INVOKE_DIRECT) &&
-            getReference<MethodReference>()?.let { reference ->
-                reference.definingClass == method.definingClass && reference.name == method.name &&
-                        reference.parameterTypes.map { type -> type.toString() } ==
-                        method.parameterTypes.map { type -> type.toString() }
-            } == true
-
 /**
  * Filters the items the method returns. Loops exit by branching to the return instructions,
  * so the labels must move to the hooks.
  */
-private fun MutableMethod.filterReturnedItems(filterMethod: String = FILTER_LIBRARY_ITEMS) {
-    // Added from the last one, so the indexes of the earlier ones stay valid.
-    instructions.withIndex().filter { (_, instruction) ->
-        instruction.opcode == Opcode.RETURN_OBJECT
-    }.map { it.index }.reversed().forEach { index ->
+private fun MutableMethod.filterReturnedItems(filterMethod: String) {
+    findInstructionIndicesReversedOrThrow(opcode(Opcode.RETURN_OBJECT)).forEach { index ->
         val listRegister = getInstruction<OneRegisterInstruction>(index).registerA
         addInstructionsAtControlFlowLabel(
             index,
@@ -182,102 +156,76 @@ private fun MutableMethod.filterReturnedItems(filterMethod: String = FILTER_LIBR
 }
 
 /**
- * Registers each new presenter with the extension, and filters the items a presenter restores
- * from the saved state of a previous one.
+ * Registers each new presenter with the extension, so it can be rebound after the filter changes.
+ *
+ * @param restoredItemsField Field the constructor sets to the items restored from the saved state
+ *                           of a previous presenter, which are filtered again.
  */
-private fun MutableClass.registerLibraryPresenter(restoredItemsField: FieldReference?) {
-    // The constructor may reuse p0 as a scratch register after calling the super constructor,
-    // so register the presenter right after that call, using the register it was called with.
-    val superclassType = superclass
-    methods.filter { method -> method.name == "<init>" }.forEach { constructor ->
-        val superInitIndex = constructor.instructions.indexOfFirst { instruction ->
-            (instruction.opcode == Opcode.INVOKE_DIRECT || instruction.opcode == Opcode.INVOKE_DIRECT_RANGE)
-                    && instruction.getReference<MethodReference>()?.let { reference ->
-                        reference.name == "<init>" && reference.definingClass == superclassType
-                    } == true
-        }
-        if (superInitIndex < 0) throw PatchException("Could not find the super constructor call of $type")
-
-        val superInit = constructor.getInstruction<Instruction>(superInitIndex)
-        val thisRegister = if (superInit is RegisterRangeInstruction) {
-            superInit.startRegister
-        } else {
-            (superInit as FiveRegisterInstruction).registerC
-        }
-
-        if (restoredItemsField != null) {
-            // Added from the last one, so the indexes of the earlier ones stay valid.
-            constructor.instructions.withIndex().filter { (_, instruction) ->
-                instruction.opcode == Opcode.IPUT_OBJECT &&
-                        instruction.getReference<FieldReference>() == restoredItemsField
-            }.map { it.index }.reversed().forEach { index ->
-                val listRegister = constructor.getInstruction<TwoRegisterInstruction>(index).registerA
-                constructor.addInstructions(
-                    index,
-                    """
-                        invoke-static/range { v$listRegister .. v$listRegister }, $FILTER_LIBRARY_ITEMS
-                        move-result-object v$listRegister
-                    """
-                )
+private fun BytecodePatchContext.registerLibraryPresenter(
+    presenterClass: ClassDef,
+    restoredItemsField: FieldReference? = null,
+) {
+    libraryPresenterConstructorFingerprint(presenterClass).let {
+        it.method.apply {
+            // Added from the last one, so the index of the super constructor call stays valid.
+            restoredItemsField?.let { field ->
+                findInstructionIndicesReversedOrThrow(
+                    fieldAccess(reference = field, opcode = Opcode.IPUT_OBJECT)
+                ).forEach { index ->
+                    val listRegister = getInstruction<TwoRegisterInstruction>(index).registerA
+                    addInstructions(
+                        index,
+                        """
+                            invoke-static/range { v$listRegister .. v$listRegister }, $FILTER_LIBRARY_ITEMS
+                            move-result-object v$listRegister
+                        """
+                    )
+                }
             }
-        }
 
-        constructor.addInstruction(
-            superInitIndex + 1,
-            "invoke-static/range { v$thisRegister .. v$thisRegister }, " +
-                    "$EXTENSION_CLASS->registerLibraryPresenter(Ljava/lang/Object;)V"
-        )
+            // The constructor may reuse p0 as a scratch register after calling the super constructor,
+            // so register the presenter right after that call, using the register it was called with.
+            val superInitMatch = it.instructionMatches.first()
+            val thisRegister = superInitMatch.instruction.registersUsed.first()
+            addInstruction(
+                superInitMatch.index + 1,
+                "invoke-static/range { v$thisRegister .. v$thisRegister }, " +
+                        "$EXTENSION_CLASS->registerLibraryPresenter(Ljava/lang/Object;)V"
+            )
+        }
     }
 }
 
 /**
  * Hooks the presenter of the Library list view.
- *
- * @param itemsMethod Static method that builds the items from the grid renderer.
  */
-private fun MutableClass.hookLibraryListPresenter(itemsMethod: MutableMethod, reloadMethod: Method) {
-    val rendererType = itemsMethod.parameterTypes.first().toString()
-    itemsMethod.filterReturnedItems()
+private fun BytecodePatchContext.hookLibraryListPresenter() {
+    val itemsMethod = GridRendererItemsFingerprint.method
+    itemsMethod.filterReturnedItems(FILTER_LIBRARY_ITEMS)
 
-    // The method that binds a new response, which keeps the renderer and the items in fields.
-    val bindMethod = methods.firstOrNull { method ->
-        method.returnType == "V" &&
-                method.parameterTypes.map { type -> type.toString() } == listOf(rendererType, "Z") &&
-                method.instructions.any { instruction -> instruction.calls(itemsMethod) }
-    } ?: throw PatchException("Could not find the Library list bind method")
-
-    val rendererField = bindMethod.instructions.firstNotNullOfOrNull { instruction ->
-        if (instruction.opcode != Opcode.IPUT_OBJECT) return@firstNotNullOfOrNull null
-        instruction.getReference<FieldReference>()?.takeIf { reference ->
-            reference.definingClass == type && reference.type == rendererType
-        }
-    } ?: throw PatchException("Could not find the Library list renderer field")
-
-    val itemsCallIndex = bindMethod.instructions.indexOfFirst { instruction -> instruction.calls(itemsMethod) }
-    val itemsListField = bindMethod.instructions.drop(itemsCallIndex).firstNotNullOfOrNull { instruction ->
-        if (instruction.opcode != Opcode.IPUT_OBJECT) return@firstNotNullOfOrNull null
-        instruction.getReference<FieldReference>()?.takeIf { reference ->
-            reference.definingClass == type && reference.type == "Ljava/util/List;"
-        }
-    } ?: throw PatchException("Could not find the Library list items field")
+    val bindFingerprint = libraryListBindFingerprint(GridRendererItemsFingerprint.originalMethod)
+    val bindMethod = bindFingerprint.method
+    val rendererField = bindFingerprint.instructionMatches.first().fieldReference
+    val itemsField = bindFingerprint.instructionMatches.last().fieldReference
 
     // Requesting a reload from the server does nothing when the Library has no pending request,
     // so bind the renderer the presenter holds again, as the constructor does. This also clears
     // the headers that binding adds again.
-    interfaces.add(EXTENSION_LIBRARY_PRESENTER_INTERFACE)
-    addInterfaceMethod(
-        reloadMethod,
+    val presenterClass = GridRendererItemsFingerprint.classDef
+    presenterClass.interfaces.add(EXTENSION_LIBRARY_PRESENTER_INTERFACE)
+    presenterClass.addInterfaceMethod(
+        findInterfaceMethod(EXTENSION_LIBRARY_PRESENTER_INTERFACE, "patch_reloadLibrary"),
         3,
         """
             iget-object v0, p0, $rendererField
             if-eqz v0, :no_renderer
             const/4 v1, 0x0
-            invoke-direct { p0, v0, v1 }, $type->${bindMethod.name}(${rendererType}Z)V
+            invoke-direct { p0, v0, v1 }, $bindMethod
             :no_renderer
             return-void
         """
     )
-    registerLibraryPresenter(itemsListField)
+    registerLibraryPresenter(presenterClass, itemsField)
 }
 
 /**
@@ -285,78 +233,63 @@ private fun MutableClass.hookLibraryListPresenter(itemsMethod: MutableMethod, re
  *
  * The presenter keeps only the last page of items it loaded in its renderer field, so the
  * extension keeps the items of all pages, and rebinds the grid from them after the filter changes.
- *
- * @param itemsMethod Method that builds the items from the grid renderer.
  */
-private fun MutableClass.hookLibraryGridPresenter(itemsMethod: MutableMethod, rebindItemsMethod: Method) {
-    val rendererType = itemsMethod.parameterTypes.first().toString()
-
-    itemsMethod.filterReturnedItems("$EXTENSION_CLASS->filterGridItems(Ljava/util/List;)Ljava/util/List;")
-    itemsMethod.addInstruction(
-        0,
-        "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->onGridItemsBuilding(Ljava/lang/Object;)V"
-    )
-
-    val rendererField = fields.firstOrNull { field ->
-        !AccessFlags.STATIC.isSet(field.accessFlags) && field.type == rendererType
-    } ?: throw PatchException("Could not find the Library grid renderer field")
-
-    // The method that rebuilds the grid after an item is removed. It keeps the renderer,
-    // clears the rows, builds the items and lays them out in rows.
-    val rebuildMethod = methods.firstOrNull { method ->
-        method.returnType == "V" &&
-                method.parameterTypes.map { type -> type.toString() } == listOf("Ljava/lang/Object;") &&
-                method.instructions.any { instruction -> instruction.calls(itemsMethod) }
-    } ?: throw PatchException("Could not find the Library grid rebuild method")
-
-    val rebuildCalls = rebuildMethod.instructions.filter { instruction ->
-        instruction.opcode == Opcode.INVOKE_DIRECT
-    }.mapNotNull { instruction -> instruction.getReference<MethodReference>() }
-
-    fun findMethod(reference: MethodReference) = methods.first { method ->
-        method.name == reference.name &&
-                method.parameterTypes.map { type -> type.toString() } ==
-                reference.parameterTypes.map { type -> type.toString() }
+private fun BytecodePatchContext.hookLibraryGridPresenter() {
+    LibraryGridItemsFingerprint.method.apply {
+        filterReturnedItems(FILTER_GRID_ITEMS)
+        addInstruction(
+            0,
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->onGridItemsBuilding(Ljava/lang/Object;)V"
+        )
     }
 
-    // Of the methods called with the renderer, the one that keeps the renderer writes its field.
-    val clearRowsMethod = rebuildCalls.filter { reference ->
-        reference.definingClass == type && reference.returnType == "V" &&
-                reference.parameterTypes.map { parameter -> parameter.toString() } == listOf(rendererType)
-    }.map(::findMethod).firstOrNull { method ->
-        method.instructions.none { instruction ->
-            instruction.opcode == Opcode.IPUT_OBJECT && instruction.getReference<FieldReference>() == rendererField
-        }
-    } ?: throw PatchException("Could not find the Library grid clear rows method")
+    // Some items wrap their proto, so the extension needs a getter to read it.
+    val wrapItemMethod = LibraryGridItemsFingerprint.instructionMatches.first().methodReference
+    val wrapperType = wrapItemMethod.returnType
+    val messageType = wrapItemMethod.parameterTypes.first().toString()
+    val messageField = libraryGridItemWrapperConstructorFingerprint(wrapperType, messageType)
+        .instructionMatches.first().fieldReference
+    mutableClassDefBy(wrapperType).apply {
+        interfaces.add(EXTENSION_MESSAGE_WRAPPER_INTERFACE)
+        addInterfaceMethod(
+            findInterfaceMethod(EXTENSION_MESSAGE_WRAPPER_INTERFACE, "patch_getMessage"),
+            1,
+            """
+                iget-object p0, p0, $messageField
+                return-object p0
+            """
+        )
+    }
 
-    val layoutRowsMethod = rebuildCalls.firstOrNull { reference ->
-        reference.definingClass == type && reference.returnType == "V" &&
-                reference.parameterTypes.map { parameter -> parameter.toString() } ==
-                listOf("Ljava/util/List;", rendererType)
-    }?.let(::findMethod) ?: throw PatchException("Could not find the Library grid layout rows method")
+    // The configuration change method clears the rows and lays out the items again, as the rebind does.
+    val (rendererMatch, clearRowsMatch, layOutRowsMatch) = LibraryGridConfigurationChangedFingerprint.instructionMatches
+    val rendererField = rendererMatch.fieldReference
+    val clearRowsMethod = clearRowsMatch.methodReference
+    val layOutRowsMethod = layOutRowsMatch.methodReference
 
-    clearRowsMethod.addInstruction(
+    // Items built after the rows are cleared replace the kept items, and later pages are added to them.
+    clearRowsMatch.getMethodCalled().addInstruction(
         0,
         "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->onGridItemsReset(Ljava/lang/Object;)V"
     )
-    layoutRowsMethod.addInstruction(
+    layOutRowsMatch.getMethodCalled().addInstruction(
         0,
         "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->onGridItemsBound(Ljava/lang/Object;)V"
     )
 
-    // Clears the rows and lays out the items in p1, with the header of the renderer.
-    interfaces.add(EXTENSION_LIBRARY_GRID_PRESENTER_INTERFACE)
-    addInterfaceMethod(
-        rebindItemsMethod,
+    val presenterClass = LibraryGridItemsFingerprint.classDef
+    presenterClass.interfaces.add(EXTENSION_LIBRARY_GRID_PRESENTER_INTERFACE)
+    presenterClass.addInterfaceMethod(
+        findInterfaceMethod(EXTENSION_LIBRARY_GRID_PRESENTER_INTERFACE, "patch_rebindItems"),
         3,
         """
             iget-object v0, p0, $rendererField
             if-eqz v0, :no_renderer
-            invoke-direct { p0, v0 }, ${clearRowsMethod.smaliReference()}
-            invoke-direct { p0, p1, v0 }, ${layoutRowsMethod.smaliReference()}
+            invoke-direct { p0, v0 }, $clearRowsMethod
+            invoke-direct { p0, p1, v0 }, $layOutRowsMethod
             :no_renderer
             return-void
         """
     )
-    registerLibraryPresenter(null)
+    registerLibraryPresenter(presenterClass)
 }
