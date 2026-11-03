@@ -7,328 +7,296 @@
 
 package app.morphe.extension.youtube.patches;
 
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Outline;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.Objects;
+import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.StringSetting;
+import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class SnackbarPatch {
-    private static final int YT_BLACK_TEXT = 0xFF0F0F0F;
-    private static final int YT_WHITE_BACKGROUND = 0xFFF1F1F1;
 
-    private SnackbarPatch() {}
+    private static final boolean HIDE_SNACKBAR = Settings.HIDE_SNACKBAR.get();
 
-    public static boolean isHideSnackbar() {
-        return Settings.HIDE_SNACKBAR.get();
+    private static final boolean CUSTOM_THEME = !HIDE_SNACKBAR && Settings.CUSTOM_SNACKBAR_THEME.get();
+
+    /**
+     * Text color on a dark background. The snackbar of the light theme uses it.
+     */
+    private static final int LIGHT_TEXT_COLOR = Color.WHITE;
+
+    /**
+     * Text color on a light background. The snackbar of the dark theme uses it.
+     */
+    private static final int DARK_TEXT_COLOR = 0xFF0F0F0F;
+
+    private static final int STROKE_WIDTH = Dim.dp1;
+
+    private static final int DARK_BACKGROUND_COLOR;
+    private static final int LIGHT_BACKGROUND_COLOR;
+    private static final int STROKE_COLOR;
+    private static final int CORNER_RADIUS;
+
+    static {
+        if (CUSTOM_THEME) {
+            DARK_BACKGROUND_COLOR = loadColor(Settings.CUSTOM_SNACKBAR_COLOR_DARK);
+            LIGHT_BACKGROUND_COLOR = loadColor(Settings.CUSTOM_SNACKBAR_COLOR_LIGHT);
+            STROKE_COLOR = loadColor(Settings.CUSTOM_SNACKBAR_STROKE_COLOR);
+            CORNER_RADIUS = Dim.dp(loadCornerRadius());
+        } else {
+            DARK_BACKGROUND_COLOR = 0;
+            LIGHT_BACKGROUND_COLOR = 0;
+            STROKE_COLOR = 0;
+            CORNER_RADIUS = 0;
+        }
     }
 
-    public static boolean isCustomSnackbarThemeEnabled() {
-        return !isHideSnackbar() && Settings.CUSTOM_SNACKBAR_THEME.get();
+    /**
+     * The Litho snackbar that was created last. Used only on the main thread.
+     */
+    private static WeakReference<View> lithoSnackbarRef = new WeakReference<>(null);
+
+    private SnackbarPatch() {
     }
 
-    public static boolean isInvertSnackbarThemeEnabled() {
-        return !isHideSnackbar() && Settings.INVERT_SNACKBAR_THEME.get();
+    @ColorInt
+    private static int loadColor(StringSetting setting) {
+        try {
+            return Color.parseColor(setting.get());
+        } catch (IllegalArgumentException ex) {
+            Logger.printException(() -> "Invalid snackbar color: " + setting.get(), ex);
+            return Color.parseColor(setting.resetToDefault());
+        }
     }
 
-    public static boolean hideSnackbar() {
-        return isHideSnackbar();
+    private static int loadCornerRadius() {
+        final int radius = Settings.CUSTOM_SNACKBAR_CORNER_RADIUS.get();
+        if (radius < 0) {
+            Logger.printException(() -> "Invalid snackbar corner radius: " + radius);
+            return Settings.CUSTOM_SNACKBAR_CORNER_RADIUS.resetToDefault();
+        }
+        return radius;
     }
 
-    public static void setLithoSnackBarBackgroundColor(@Nullable FrameLayout frameLayout, int originalColor) {
-        if (frameLayout == null) return;
+    @ColorInt
+    private static int getBackgroundColor() {
+        return Utils.isDarkModeEnabled() ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
+    }
 
-        if (isHideSnackbar()) {
+    /**
+     * @return The text color with the higher contrast ratio on the background, as defined by WCAG.
+     */
+    @ColorInt
+    private static int getTextColor(@ColorInt int backgroundColor) {
+        final float background = Color.luminance(backgroundColor) + 0.05f;
+        final float dark = Color.luminance(DARK_TEXT_COLOR) + 0.05f;
+        final float light = Color.luminance(LIGHT_TEXT_COLOR) + 0.05f;
+        return background / dark > light / background ? DARK_TEXT_COLOR : LIGHT_TEXT_COLOR;
+    }
+
+    /**
+     * @return The color of the snackbar text, or null if the text keeps its color.
+     */
+    @Nullable
+    public static Integer getTextColor() {
+        return CUSTOM_THEME ? getTextColor(getBackgroundColor()) : null;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideSnackbar(boolean skipDisplay) {
+        return skipDisplay || HIDE_SNACKBAR;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideLithoSnackbar(FrameLayout frameLayout) {
+        if (HIDE_SNACKBAR) {
             Utils.hideViewByLayoutParams(frameLayout);
-            frameLayout.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideSnackbarView(View view) {
+        if (HIDE_SNACKBAR) {
+            Utils.hideViewByLayoutParams(view);
+            view.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when a snackbar that is not drawn by Litho is created, before its content is added.
+     */
+    public static void onSnackbarCreated(View snackbar) {
+        hideSnackbarView(snackbar);
+        if (!CUSTOM_THEME) {
             return;
         }
 
-        DisplayMetrics metrics = frameLayout.getResources() != null
-                ? frameLayout.getResources().getDisplayMetrics()
-                : Resources.getSystem().getDisplayMetrics();
-        float radiusPx = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, getCornerRadiusDp(), metrics);
-
-        if (isCustomSnackbarThemeEnabled()) {
-            try {
-                applyCustomThemeToView(frameLayout);
-                frameLayout.post(() -> applyCustomThemeToView(frameLayout));
-            } catch (Exception e) {
-                Logger.printException(() -> "setLithoSnackBarBackgroundColor failure", e);
-                frameLayout.setBackgroundColor(originalColor);
-                applyCornerRadius(frameLayout, radiusPx);
-            }
-        } else if (isInvertSnackbarThemeEnabled()) {
-            try {
-                applyInvertedThemeToLegacyView(frameLayout);
-                frameLayout.post(() -> applyInvertedThemeToLegacyView(frameLayout));
-            } catch (Exception e) {
-                Logger.printException(() -> "setLithoSnackBarBackgroundColor failure", e);
-                frameLayout.setBackgroundColor(originalColor);
-                applyCornerRadius(frameLayout, radiusPx);
-            }
-        } else {
-            frameLayout.setBackgroundColor(originalColor);
-            applyCornerRadius(frameLayout, radiusPx);
-            frameLayout.post(() -> applyCornerRadius(frameLayout, radiusPx));
-        }
-    }
-
-    public static void handleLegacySnackbar(@Nullable View view) {
-        if (view == null) return;
         try {
-            if (isHideSnackbar()) {
-                Utils.hideViewByLayoutParams(view);
-                view.setVisibility(View.GONE);
-                return;
-            }
-
-            if (isCustomSnackbarThemeEnabled()) {
-                applyCustomThemeToView(view);
-                view.post(() -> applyCustomThemeToView(view));
-
-                view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
-                    @Override
-                    public void onViewAttachedToWindow(@NonNull View v) {
-                        applyCustomThemeToView(v);
-                    }
-
-                    @Override
-                    public void onViewDetachedFromWindow(@NonNull View v) {}
-                });
-            } else if (isInvertSnackbarThemeEnabled()) {
-                applyInvertedThemeToLegacyView(view);
-                view.post(() -> applyInvertedThemeToLegacyView(view));
-
-                view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
-                    @Override
-                    public void onViewAttachedToWindow(@NonNull View v) {
-                        applyInvertedThemeToLegacyView(v);
-                    }
-
-                    @Override
-                    public void onViewDetachedFromWindow(@NonNull View v) {}
-                });
-            } else {
-                DisplayMetrics metrics = view.getResources() != null
-                        ? view.getResources().getDisplayMetrics()
-                        : Resources.getSystem().getDisplayMetrics();
-                float radiusPx = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, getCornerRadiusDp(), metrics);
-                applyCornerRadius(view, radiusPx);
-                view.post(() -> applyCornerRadius(view, radiusPx));
-            }
-        } catch (Exception e) {
-            Logger.printException(() -> "handleLegacySnackbar failure", e);
-        }
-    }
-
-    private static float getCornerRadiusDp() {
-        String radiusStr = Settings.CUSTOM_SNACKBAR_CORNER_RADIUS.get();
-        if (Utils.isNotEmpty(radiusStr)) {
-            try {
-                return Float.parseFloat(radiusStr);
-            } catch (NumberFormatException ignored) {}
-        }
-        return 8.0f;
-    }
-
-    private static void applyCornerRadius(@Nullable View view, float radiusPx) {
-        if (view == null) return;
-        try {
-            view.setOutlineProvider(new ViewOutlineProvider() {
+            snackbar.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
                 @Override
-                public void getOutline(View v, Outline outline) {
-                    if (v != null && outline != null) {
-                        outline.setRoundRect(0, 0, v.getWidth(), v.getHeight(), radiusPx);
+                public void onViewAttachedToWindow(@NonNull View view) {
+                    try {
+                        // The theme can change while the snackbar is kept.
+                        final int backgroundColor = getBackgroundColor();
+                        view.setBackground(createBackground(backgroundColor));
+                        if (view instanceof ViewGroup group) {
+                            setContentColors(group, getTextColor(backgroundColor));
+                        }
+                    } catch (Exception ex) {
+                        Logger.printException(() -> "onViewAttachedToWindow failure", ex);
+                    }
+                }
+
+                @Override
+                public void onViewDetachedFromWindow(@NonNull View view) {
+                }
+            });
+        } catch (Exception ex) {
+            Logger.printException(() -> "onSnackbarCreated failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the view that holds a Litho snackbar is created.
+     */
+    public static void onLithoSnackbarCreated(FrameLayout snackbar) {
+        if (!CUSTOM_THEME) {
+            return;
+        }
+
+        try {
+            // Litho mounts the component after the view is added to the window. The view is
+            // forgotten once removed, so the color hook does no work while no snackbar is shown.
+            lithoSnackbarRef = new WeakReference<>(snackbar);
+            snackbar.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+                @Override
+                public void onViewAttachedToWindow(@NonNull View view) {
+                }
+
+                @Override
+                public void onViewDetachedFromWindow(@NonNull View view) {
+                    if (lithoSnackbarRef.get() == view) {
+                        lithoSnackbarRef = new WeakReference<>(null);
                     }
                 }
             });
-            view.setClipToOutline(true);
-        } catch (Exception e) {
-            Logger.printException(() -> "applyCornerRadius failure", e);
-        }
-    }
 
-    private static int parseColor(String colorString, int defaultColor) {
-        if (colorString == null || colorString.isEmpty()) {
-            return defaultColor;
-        }
-        try {
-            return Color.parseColor(colorString);
-        } catch (Exception e) {
-            return defaultColor;
-        }
-    }
-
-    private static void applyCustomThemeToView(@Nullable View view) {
-        if (view == null) return;
-        try {
-            GradientDrawable drawable = new GradientDrawable();
-
-            boolean isDark = Utils.isDarkModeEnabled();
-            String customColorString = isDark
-                    ? Settings.CUSTOM_SNACKBAR_COLOR_DARK.get()
-                    : Settings.CUSTOM_SNACKBAR_COLOR_LIGHT.get();
-
-            int defaultBg = isDark ? 0xFF181825 : 0xFFE6E9EF;
-            int backgroundColor = parseColor(customColorString, defaultBg);
-
-            drawable.setColor(backgroundColor);
-
-            float radiusDp = getCornerRadiusDp();
-            DisplayMetrics metrics = view.getResources() != null
-                    ? view.getResources().getDisplayMetrics()
-                    : Resources.getSystem().getDisplayMetrics();
-            float radiusPx = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, radiusDp, metrics);
-            drawable.setCornerRadius(radiusPx);
-
-            String strokeColorStr = Settings.CUSTOM_SNACKBAR_STROKE_COLOR.get();
-            if (Utils.isNotEmpty(strokeColorStr)) {
-                try {
-                    int strokeColor = parseColor(strokeColorStr, Color.TRANSPARENT);
-                    if (Color.alpha(strokeColor) != 0) {
-                        int strokePx = (int) TypedValue.applyDimension(
-                                TypedValue.COMPLEX_UNIT_DIP, 1.0f, metrics);
-                        drawable.setStroke(strokePx, strokeColor);
-                    }
-                } catch (Exception ignored) {}
+            // The Litho component draws over this background, which then shows only
+            // where the corners of the component are rounder than the outline.
+            snackbar.setBackgroundColor(getBackgroundColor());
+            if (Color.alpha(STROKE_COLOR) != 0) {
+                GradientDrawable stroke = new GradientDrawable();
+                stroke.setCornerRadius(CORNER_RADIUS);
+                stroke.setStroke(STROKE_WIDTH, STROKE_COLOR);
+                snackbar.setForeground(stroke);
             }
-
-            view.setBackground(drawable);
-            applyCornerRadius(view, radiusPx);
-
-            applyTextColorToTextViews(view, getCalculatedTextColor(backgroundColor), 0);
-        } catch (Exception e) {
-            Logger.printException(() -> "applyCustomThemeToView failure", e);
+            setCornerRadius(snackbar);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onLithoSnackbarCreated failure", ex);
         }
     }
 
-    private static void applyInvertedThemeToLegacyView(@Nullable View view) {
-        if (view == null) return;
-        try {
-            boolean isDark = Utils.isDarkModeEnabled();
-            // Stock YouTube displays inverted contrast: light snackbar in dark mode, dark in light mode.
-            // With invert snackbar theme enabled, reverse that inversion so:
-            // - Dark mode app -> dark snackbar (matching dark mode)
-            // - Light mode app -> light snackbar (matching light mode)
-            int backgroundColor = isDark ? YT_BLACK_TEXT : YT_WHITE_BACKGROUND;
-            int textColor = isDark ? YT_WHITE_BACKGROUND : YT_BLACK_TEXT;
-
-            GradientDrawable drawable = new GradientDrawable();
-            drawable.setColor(backgroundColor);
-
-            float radiusDp = getCornerRadiusDp();
-            DisplayMetrics metrics = view.getResources() != null
-                    ? view.getResources().getDisplayMetrics()
-                    : Resources.getSystem().getDisplayMetrics();
-            float radiusPx = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, radiusDp, metrics);
-            drawable.setCornerRadius(radiusPx);
-
-            view.setBackground(drawable);
-            applyCornerRadius(view, radiusPx);
-
-            applyTextColorToTextViews(view, textColor, 0);
-        } catch (Exception e) {
-            Logger.printException(() -> "applyInvertedThemeToLegacyView failure", e);
+    /**
+     * Injection point.
+     * <p>
+     * Called with the color of every Litho background.
+     */
+    public static int getLithoColor(Drawable drawable, int color) {
+        if (!CUSTOM_THEME) {
+            return color;
         }
-    }
-
-    private static void applyTextColorToTextViews(@Nullable View view, int textColor, int depth) {
-        if (view == null || depth > 6) return;
 
         try {
-            if (depth > 0 && ((view instanceof Button) || view.isClickable())) {
-                // Do not touch action buttons or modify their inner views, text colors, or ripples.
-                return;
+            View snackbar = lithoSnackbarRef.get();
+            if (snackbar == null) {
+                return color;
             }
 
-            if (depth > 0 && view.getBackground() != null) {
-                view.setBackgroundColor(Color.TRANSPARENT);
+            // The background is drawn by the Litho root view,
+            // which is inside the view that holds the Litho tree.
+            View host = getDrawableView(drawable);
+            if (host != null && host.getParent() instanceof View lithoView
+                    && lithoView.getParent() == snackbar) {
+                // The theme patch replaces some exact colors after this hook, such as the gray
+                // backgrounds of the dark theme. The lowest bit of blue is not visible.
+                return getBackgroundColor() ^ 1;
             }
-
-            if (view instanceof TextView) {
-                ((TextView) view).setTextColor(textColor);
-            } else if (view instanceof ViewGroup group) {
-                for (int i = 0; i < group.getChildCount(); i++) {
-                    applyTextColorToTextViews(group.getChildAt(i), textColor, depth + 1);
-                }
-            }
-        } catch (Exception e) {
-            Logger.printException(() -> "applyTextColorToTextViews failure", e);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getLithoColor failure", ex);
         }
-    }
-
-    private static int getCalculatedTextColor(int currentBackgroundColor) {
-        String customTextString = Settings.CUSTOM_SNACKBAR_TEXT_COLOR.get();
-        if (Utils.isNotEmpty(customTextString)) {
-            try {
-                return parseColor(customTextString, Color.WHITE);
-            } catch (Exception ignored) {}
-        }
-
-        double luminance = (0.299 * Color.red(currentBackgroundColor)
-                + 0.587 * Color.green(currentBackgroundColor)
-                + 0.114 * Color.blue(currentBackgroundColor)) / 255.0;
-        return luminance > 0.5 ? Color.BLACK : Color.WHITE;
+        return color;
     }
 
     @Nullable
-    public static Integer getTextColorForSpans() {
-        try {
-            if (isCustomSnackbarThemeEnabled()) {
-                boolean isDark = Utils.isDarkModeEnabled();
-                String customColorString = isDark
-                        ? Settings.CUSTOM_SNACKBAR_COLOR_DARK.get()
-                        : Settings.CUSTOM_SNACKBAR_COLOR_LIGHT.get();
-                int defaultBg = isDark ? 0xFF181825 : 0xFFE6E9EF;
-                int backgroundColor = parseColor(customColorString, defaultBg);
-                return getCalculatedTextColor(backgroundColor);
-            }
-
-            if (isInvertSnackbarThemeEnabled()) {
-                return Utils.isDarkModeEnabled() ? Color.WHITE : Color.BLACK;
-            }
-        } catch (Exception e) {
-            Logger.printException(() -> "getTextColorForSpans failure", e);
+    private static View getDrawableView(Drawable drawable) {
+        Drawable.Callback callback = drawable.getCallback();
+        while (callback instanceof Drawable parent) {
+            callback = parent.getCallback();
         }
-
-        return null;
+        return callback instanceof View view ? view : null;
     }
 
-    public static Enum<?> invertSnackBarTheme(Enum<?> appTheme, Enum<?> darkTheme) {
-        try {
-            if (isInvertSnackbarThemeEnabled()) {
-                if (appTheme == darkTheme) {
-                    for (Object constant : Objects.requireNonNull(appTheme.getClass().getEnumConstants())) {
-                        if (constant != darkTheme) {
-                            return (Enum<?>) constant;
-                        }
-                    }
-                    return null;
-                } else {
-                    return darkTheme;
-                }
-            }
-        } catch (Exception e) {
-            Logger.printException(() -> "invertSnackBarTheme failure", e);
+    private static GradientDrawable createBackground(@ColorInt int backgroundColor) {
+        GradientDrawable background = new GradientDrawable();
+        background.setColor(backgroundColor);
+        background.setCornerRadius(CORNER_RADIUS);
+        if (Color.alpha(STROKE_COLOR) != 0) {
+            background.setStroke(STROKE_WIDTH, STROKE_COLOR);
         }
-        return appTheme;
+        return background;
+    }
+
+    private static void setCornerRadius(View view) {
+        view.setOutlineProvider(new ViewOutlineProvider() {
+            @Override
+            public void getOutline(View outlineView, Outline outline) {
+                outline.setRoundRect(0, 0, outlineView.getWidth(), outlineView.getHeight(), CORNER_RADIUS);
+            }
+        });
+        view.setClipToOutline(true);
+    }
+
+    /**
+     * Removes the backgrounds of the content, which can cover the background of the snackbar,
+     * and colors the text. The action keeps its background, which shows when it is pressed.
+     */
+    private static void setContentColors(ViewGroup group, @ColorInt int textColor) {
+        for (int i = 0, count = group.getChildCount(); i < count; i++) {
+            View child = group.getChildAt(i);
+            if (!child.isClickable()) {
+                child.setBackground(null);
+            }
+            if (child instanceof TextView textView) {
+                textView.setTextColor(textColor);
+            } else if (child instanceof ViewGroup childGroup) {
+                setContentColors(childGroup, textColor);
+            }
+        }
     }
 }

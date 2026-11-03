@@ -729,12 +729,10 @@ public class Settings extends SharedYouTubeSettings {
     // Snackbar
     public static final BooleanSetting HIDE_SNACKBAR = new BooleanSetting("morphe_hide_snackbar", FALSE, true);
     public static final BooleanSetting CUSTOM_SNACKBAR_THEME = new BooleanSetting("morphe_custom_snackbar_theme", FALSE, true, parentNot(HIDE_SNACKBAR));
-    public static final StringSetting CUSTOM_SNACKBAR_CORNER_RADIUS = new StringSetting("morphe_custom_snackbar_corner_radius", "8.0", true, parentNot(HIDE_SNACKBAR));
-    public static final StringSetting CUSTOM_SNACKBAR_COLOR_DARK = new StringSetting("morphe_custom_snackbar_color_dark", "#FF181825", true, parent(CUSTOM_SNACKBAR_THEME));
-    public static final StringSetting CUSTOM_SNACKBAR_COLOR_LIGHT = new StringSetting("morphe_custom_snackbar_color_light", "#FFE6E9EF", true, parent(CUSTOM_SNACKBAR_THEME));
-    public static final StringSetting CUSTOM_SNACKBAR_STROKE_COLOR = new StringSetting("morphe_custom_snackbar_stroke_color", "#00000000", true, parent(CUSTOM_SNACKBAR_THEME));
-    public static final StringSetting CUSTOM_SNACKBAR_TEXT_COLOR = new StringSetting("morphe_custom_snackbar_text_color", "#FFFFFFFF", true, parent(CUSTOM_SNACKBAR_THEME));
-    public static final BooleanSetting INVERT_SNACKBAR_THEME = new BooleanSetting("morphe_invert_snackbar_theme", FALSE, true, parentNot(HIDE_SNACKBAR));
+    public static final StringSetting CUSTOM_SNACKBAR_COLOR_DARK = new StringSetting("morphe_custom_snackbar_color_dark", "#212121", true, parentsAll(parentNot(HIDE_SNACKBAR), parent(CUSTOM_SNACKBAR_THEME)));
+    public static final StringSetting CUSTOM_SNACKBAR_COLOR_LIGHT = new StringSetting("morphe_custom_snackbar_color_light", "#F1F1F1", true, parentsAll(parentNot(HIDE_SNACKBAR), parent(CUSTOM_SNACKBAR_THEME)));
+    public static final StringSetting CUSTOM_SNACKBAR_STROKE_COLOR = new StringSetting("morphe_custom_snackbar_stroke_color", "#00000000", true, parentsAll(parentNot(HIDE_SNACKBAR), parent(CUSTOM_SNACKBAR_THEME)));
+    public static final IntegerSetting CUSTOM_SNACKBAR_CORNER_RADIUS = new IntegerSetting("morphe_custom_snackbar_corner_radius", 8, true, parentsAll(parentNot(HIDE_SNACKBAR), parent(CUSTOM_SNACKBAR_THEME)));
 
     // Miscellaneous
     public static final BooleanSetting ANNOUNCEMENTS = new BooleanSetting("morphe_announcements", TRUE);

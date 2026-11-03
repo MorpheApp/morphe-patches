@@ -10,20 +10,23 @@ package app.morphe.extension.youtube.patches.spans;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 
-import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.spans.SpanFilter;
 import app.morphe.extension.shared.patches.spans.SpanType;
 import app.morphe.extension.shared.patches.spans.StringSpanFilterGroup;
 import app.morphe.extension.youtube.patches.SnackbarPatch;
+import app.morphe.extension.youtube.settings.Settings;
 
-@SuppressWarnings({"unused", "FieldCanBeLocal"})
+/**
+ * Colors the text of a Litho snackbar to match its custom background.
+ */
+@SuppressWarnings("unused")
 public final class SnackbarFilter extends SpanFilter {
 
     public SnackbarFilter() {
         addCallbacks(
                 new StringSpanFilterGroup(
-                        null,
-                        "snackbar"
+                        Settings.CUSTOM_SNACKBAR_THEME,
+                        "snackbar.eml"
                 )
         );
     }
@@ -31,22 +34,16 @@ public final class SnackbarFilter extends SpanFilter {
     @Override
     public boolean skip(String identifier, CharSequence path, SpannableString spannableString, Object span,
                         int start, int end, int flags, boolean isWord, SpanType spanType, StringSpanFilterGroup matchedGroup) {
-        try {
-            if (spanType == SpanType.FOREGROUND_COLOR && span instanceof ForegroundColorSpan) {
-                Integer targetColor = SnackbarPatch.getTextColorForSpans();
-                if (targetColor != null) {
-                    spannableString.setSpan(
-                            new ForegroundColorSpan(targetColor),
-                            start,
-                            end,
-                            flags
-                    );
-                    return true;
-                }
-            }
-        } catch (Exception e) {
-            Logger.printException(() -> "skip failure", e);
+        if (spanType != SpanType.FOREGROUND_COLOR) {
+            return false;
         }
-        return false;
+
+        Integer textColor = SnackbarPatch.getTextColor();
+        if (textColor == null) {
+            return false;
+        }
+
+        spannableString.setSpan(new ForegroundColorSpan(textColor), start, end, flags);
+        return true;
     }
 }

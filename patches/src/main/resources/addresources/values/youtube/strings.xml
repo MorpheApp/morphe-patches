@@ -166,25 +166,6 @@ Changes include:
     <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
     <string name="morphe_hide_player_gesture_hints_summary">Hides the hints shown during player gestures, such as \'Pull up for precise seeking\', \'Release to cancel\' and \'2x\'</string>
-    <string name="morphe_snackbar_screen_title">Snackbar</string>
-    <string name="morphe_snackbar_screen_summary">Hide or change snackbar related components</string>
-    <string name="morphe_custom_snackbar_theme_title">Enable custom snackbar</string>
-    <string name="morphe_custom_snackbar_theme_summary_on">Custom background, radius, and stroke are applied</string>
-    <string name="morphe_custom_snackbar_theme_summary_off">Default YouTube snackbar is used</string>
-    <string name="morphe_custom_snackbar_corner_radius_title">Corner radius</string>
-    <string name="morphe_custom_snackbar_corner_radius_summary">Specify a corner radius in dp</string>
-    <string name="morphe_custom_snackbar_color_dark_title">Dark theme background color</string>
-    <string name="morphe_custom_snackbar_color_dark_summary">Set the background color for dark mode</string>
-    <string name="morphe_custom_snackbar_color_light_title">Light theme background color</string>
-    <string name="morphe_custom_snackbar_color_light_summary">Set the background color for light mode</string>
-    <string name="morphe_custom_snackbar_stroke_color_title">Stroke color</string>
-    <string name="morphe_custom_snackbar_stroke_color_summary">Set the border stroke color</string>
-    <string name="morphe_custom_snackbar_text_color_title">Text color</string>
-    <string name="morphe_custom_snackbar_text_color_summary">Set the text color</string>
-    <string name="morphe_invert_snackbar_theme_title">Invert snackbar theme</string>
-    <string name="morphe_invert_snackbar_theme_summary">Inverts YouTube\'s default contrast: applies dark theme when app UI is dark and light theme when app UI is light</string>
-
-    <string name="morphe_hide_snackbar_title">Hide snackbar</string>
     <string name="morphe_hide_subscribers_community_guidelines_title">Hide subscribers guidelines</string>
     <string name="morphe_hide_sync_button_title">Hide \'Sync to video\' button</string>
     <string name="morphe_hide_tap_and_hold_gradient_title">Hide tap and hold gradient</string>
@@ -419,6 +400,21 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_aislist_submit_failed_rate_limit">Too many reports were sent, try again later</string>
     <string name="morphe_aislist_submit_failed_rejected">AiSList rejected the report</string>
     <string name="morphe_aislist_submit_failed">Report failed, check your connection</string>
+
+    <!-- layout.snackbar.snackbarPatch -->
+    <string name="morphe_snackbar_screen_title">Snackbar</string>
+    <string name="morphe_snackbar_screen_summary">Hide snackbars or change their colors and shape</string>
+    <string name="morphe_hide_snackbar_title">Hide snackbar</string>
+    <string name="morphe_custom_snackbar_theme_title">Custom snackbar</string>
+    <string name="morphe_custom_snackbar_theme_summary">Snackbars use the colors and corner radius below instead of the colors of the opposite theme</string>
+    <string name="morphe_custom_snackbar_color_dark_title">Dark theme background color</string>
+    <string name="morphe_custom_snackbar_color_dark_summary">Background color of snackbars in the dark theme. The text is black or white, whichever is easier to read</string>
+    <string name="morphe_custom_snackbar_color_light_title">Light theme background color</string>
+    <string name="morphe_custom_snackbar_color_light_summary">Background color of snackbars in the light theme. The text is black or white, whichever is easier to read</string>
+    <string name="morphe_custom_snackbar_stroke_color_title">Border color</string>
+    <string name="morphe_custom_snackbar_stroke_color_summary">Color of the border around snackbars. A transparent color shows no border</string>
+    <string name="morphe_custom_snackbar_corner_radius_title">Corner radius</string>
+    <string name="morphe_custom_snackbar_corner_radius_summary">Corner radius of snackbars in dp</string>
 
     <!-- ad.hideAdsPatch -->
     <string name="morphe_ads_channel_whitelist_title">Channel ad whitelist</string>
