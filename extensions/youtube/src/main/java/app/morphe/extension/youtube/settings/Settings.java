@@ -91,6 +91,9 @@ import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTransl
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch.OpenRouterServiceAvailability;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
 import app.morphe.extension.youtube.sponsorblock.YouTubeSponsorBlockConfig;
+import app.morphe.extension.youtube.patches.CaptionStylePatch.CaptionStylePreset;
+import app.morphe.extension.youtube.patches.CaptionStylePatch.NextPlayerStyleAvailability;
+import app.morphe.extension.youtube.patches.CaptionStylePatch.CaptionFontFamily;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.AnySwipeZoneAvailability;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SideSwipeZonesAvailability;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeActionAvailability;
@@ -735,6 +738,18 @@ public class Settings extends SharedYouTubeSettings {
     public static final EnumSetting<ClientType> SPOOF_VIDEO_STREAMS_CLIENT_TYPE = new EnumSetting<>("morphe_spoof_video_streams_client_type", ClientType.TV_SIMPLY, true, parent(SPOOF_VIDEO_STREAMS));
     public static final BooleanSetting SPOOF_VIDEO_STREAMS_AV1 = new BooleanSetting("morphe_spoof_video_streams_av1", FALSE, true,
             "morphe_spoof_video_streams_av1_user_dialog_message", new SpoofClientAv1Availability());
+
+    // Caption appearance
+    public static final EnumSetting<CaptionStylePreset> CAPTION_STYLE_PRESET =
+            new EnumSetting<>("morphe_caption_style_preset", CaptionStylePreset.DEFAULT, true);
+    public static final EnumSetting<CaptionFontFamily> CAPTION_FONT_FAMILY =
+            new EnumSetting<>("morphe_caption_font_family", CaptionFontFamily.DEFAULT, true, new NextPlayerStyleAvailability());
+    public static final BooleanSetting CAPTION_TEXT_BOLD =
+            new BooleanSetting("morphe_caption_text_bold", TRUE, true, new NextPlayerStyleAvailability());
+    public static final BooleanSetting CAPTION_BACKGROUND =
+            new BooleanSetting("morphe_caption_background", FALSE, true, new NextPlayerStyleAvailability());
+    public static final BooleanSetting CAPTION_APPLY_EMBEDDED_STYLES =
+            new BooleanSetting("morphe_caption_apply_embedded_styles", TRUE, true, new NextPlayerStyleAvailability());
 
     // Swipe controls
     public static final BooleanSetting SWIPE_CHANGE_VIDEO = new BooleanSetting("morphe_swipe_change_video", FALSE, true);

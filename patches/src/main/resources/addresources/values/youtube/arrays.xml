@@ -1267,4 +1267,28 @@
         <item>PLAY_PAUSE</item>
         <item>BACKGROUND_PLAYBACK</item>
     </string-array>
+
+    <!-- Subtitle appearance -->
+    <string-array name="morphe_caption_style_preset_entries">
+        <item>@string/morphe_caption_preset_default</item>
+        <item>@string/morphe_caption_preset_next_player</item>
+        <item>@string/morphe_caption_preset_reference</item>
+    </string-array>
+    <string-array name="morphe_caption_style_preset_entry_values">
+        <item>DEFAULT</item>
+        <item>NEXT_PLAYER</item>
+        <item>REFERENCE</item>
+    </string-array>
+    <string-array name="morphe_caption_font_family_entries">
+        <item>@string/morphe_caption_font_family_default</item>
+        <item>@string/morphe_caption_font_family_sans_serif</item>
+        <item>@string/morphe_caption_font_family_serif</item>
+        <item>@string/morphe_caption_font_family_monospace</item>
+    </string-array>
+    <string-array name="morphe_caption_font_family_entry_values">
+        <item>DEFAULT</item>
+        <item>SANS_SERIF</item>
+        <item>SERIF</item>
+        <item>MONOSPACE</item>
+    </string-array>
 </resources>

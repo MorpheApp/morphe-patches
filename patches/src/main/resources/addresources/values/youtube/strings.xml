@@ -1928,4 +1928,23 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_live_chat_translate_max_length_title">Maximum message length</string>
     <string name="morphe_live_chat_translate_max_length_summary">Longer messages are shown untranslated</string>
     <string name="morphe_live_chat_translate_max_length_no_limit">No limit</string>
+
+    <!-- Subtitle appearance -->
+    <string name="morphe_caption_style_preview_title">Subtitle preview</string>
+    <string name="morphe_caption_style_preview_text">Subtitle appearance preview</string>
+    <string name="morphe_caption_style_preset_title">Subtitle style</string>
+    <string name="morphe_caption_preset_default">System default</string>
+    <string name="morphe_caption_preset_next_player">Next Player</string>
+    <string name="morphe_caption_preset_reference">White bold italic</string>
+    <string name="morphe_caption_font_family_title">Subtitle font</string>
+    <string name="morphe_caption_font_family_default">Default</string>
+    <string name="morphe_caption_font_family_sans_serif">Sans serif</string>
+    <string name="morphe_caption_font_family_serif">Serif</string>
+    <string name="morphe_caption_font_family_monospace">Monospace</string>
+    <string name="morphe_caption_text_bold_title">Bold subtitle text</string>
+    <string name="morphe_caption_background_title">Subtitle background</string>
+    <string name="morphe_caption_apply_embedded_styles_title">Apply embedded styles</string>
+    <string name="morphe_caption_text_bold_summary">Use bold text in the Next Player style</string>
+    <string name="morphe_caption_background_summary">Show a black background behind Next Player subtitles</string>
+    <string name="morphe_caption_apply_embedded_styles_summary">Allow video caption colors and backgrounds in the Next Player style</string>
 </resources>

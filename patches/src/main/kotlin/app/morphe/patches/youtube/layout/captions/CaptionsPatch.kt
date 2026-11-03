@@ -19,6 +19,9 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
  */
 internal val settingsMenuCaptionGroup = mutableSetOf<BasePreference>()
 
+/** Presentation preferences can also be added by optional dependent caption patches. */
+internal val settingsMenuCaptionPresentationGroup = mutableSetOf<BasePreference>()
+
 /**
  * Adds a public final method.
  *
@@ -82,12 +85,12 @@ val captionsPatch = bytecodePatch(
             "morphe_secondary_caption_language",
             "morphe_auto_translate_additional_languages",
         )
-        val presentation = take(
+        settingsMenuCaptionPresentationGroup.addAll(take(
             "morphe_caption_scale",
             "morphe_stable_caption_blocks",
             "morphe_auto_captions_style",
             "morphe_captions_in_pip",
-        )
+        ))
 
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
@@ -102,7 +105,7 @@ val captionsPatch = bytecodePatch(
                     PreferenceCategory(
                         key = "morphe_captions_presentation",
                         sorting = PreferenceScreenPreference.Sorting.UNSORTED,
-                        preferences = presentation
+                        preferences = settingsMenuCaptionPresentationGroup
                     ),
                     PreferenceScreenPreference(
                         key = "morphe_captions_advanced",
