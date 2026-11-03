@@ -343,6 +343,10 @@ public class FeedCardLayoutPatch {
      */
     private static final char VIDEO_SHELF_ROW_LABEL_MARKER = '\u2061';
     /**
+     * Invisible character before the marker of the cards, in the label of the cards without inline playback.
+     */
+    private static final char NO_INLINE_PLAYBACK_CARD_LABEL_MARKER = '\u2062';
+    /**
      * Icon of the Shorts shelf header, which the modern header of the card layout doesn't show.
      */
     private static final String SHORTS_SHELF_ICON = "ic_youtube_shorts";
@@ -964,6 +968,13 @@ public class FeedCardLayoutPatch {
                                                             button(icons.saved, "", saveOnTap)))));
                         }
 
+                        // The template draws the background below the thumbnail only for the cards with inline
+                        // playback, so the list draws it for the other cards, such as the playlists.
+                        String label = data.getAccessibilityText();
+                        if (data.getInlinePlayback().isEmpty()) {
+                            label += NO_INLINE_PLAYBACK_CARD_LABEL_MARKER;
+                        }
+
                         LockupViewModel.Builder lockupViewModel = LockupViewModel.newBuilder()
                                 .setContentImage(ContentImage.newBuilder().setThumbnailViewModel(thumbnailViewModel))
                                 .setMetadata(LockupMetadata.newBuilder().setLockupMetadataViewModel(metadata))
@@ -971,7 +982,7 @@ public class FeedCardLayoutPatch {
                                 .setContentType(isPlaylist ? LOCKUP_CONTENT_TYPE_PLAYLIST : LOCKUP_CONTENT_TYPE_VIDEO)
                                 .setRendererContext(RendererContext.newBuilder()
                                         .setAccessibilityContext(AccessibilityContext.newBuilder()
-                                                .setLabel(data.getAccessibilityText() + CARD_LABEL_MARKER))
+                                                .setLabel(label + CARD_LABEL_MARKER))
                                         .setCommandContext(CommandContext.newBuilder().setOnTap(data.getOnTap())));
                         // The cards play the video inline (feed autoplay) with the same commands of the classic layout.
                         if (!data.getInlinePlayback().isEmpty()) {
@@ -1777,14 +1788,18 @@ public class FeedCardLayoutPatch {
 
                 View header = item;
                 final boolean shelfHeader = isShelfHeader(header);
-                if (!shelfHeader && !shelfCardItems.containsKey(item)) {
+                // The cards without inline playback, such as the playlists, have no background below the thumbnail.
+                CharSequence label = item.getContentDescription();
+                final boolean cardWithoutBackground = isCardLabel(label) && label.length() > 1
+                        && label.charAt(label.length() - 2) == NO_INLINE_PLAYBACK_CARD_LABEL_MARKER;
+                if (!shelfHeader && !shelfCardItems.containsKey(item) && !cardWithoutBackground) {
                     continue;
                 }
 
                 // The horizontal shelves have the header and the videos in the same list item,
                 // which is a card like the videos of the feed. The header is not mounted while
                 // it is scrolled out of the list, and the item is then found by its element.
-                if (hasNestedList(header, 0)) {
+                if (cardWithoutBackground || hasNestedList(header, 0)) {
                     setCardOutline(header, CARD_OUTLINE);
                     final float x = header.getX();
                     final float y = header.getY();
