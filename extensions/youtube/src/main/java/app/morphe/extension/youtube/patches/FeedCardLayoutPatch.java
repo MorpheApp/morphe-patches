@@ -47,6 +47,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.WeakHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -393,7 +394,7 @@ public class FeedCardLayoutPatch {
     );
 
     /**
-     * Minimum time between the lookups of a template that is not cached yet.
+     * Minimum time between the lookups of a template in the template cache of the app.
      */
     private static final long TEMPLATE_LOOKUP_INTERVAL_MILLIS = 10_000;
     /**
@@ -527,13 +528,17 @@ public class FeedCardLayoutPatch {
 
         @Nullable
         String getUri() {
-            if (uri == null) {
-                final long now = System.currentTimeMillis();
-                if (now - cacheLookupTime > TEMPLATE_LOOKUP_INTERVAL_MILLIS) {
-                    cacheLookupTime = now;
-                    // The uri of a template includes the hash of its version, so it's taken from the template
-                    // cache of the app, which has the templates the app received. The last cached version
-                    // of the template is used, or none if the template is not cached.
+            // The app drops the older versions of the templates from its cache, also while it runs,
+            // and the elements of a template version that is no longer cached are not shown.
+            // So the version taken from the cache is looked up again once in a while.
+            // The version of an element is the one the server sends now, and is kept.
+            final long now = System.currentTimeMillis();
+            if (!fromElement && now - cacheLookupTime > TEMPLATE_LOOKUP_INTERVAL_MILLIS) {
+                cacheLookupTime = now;
+                // The uri of a template includes the hash of its version, so it's taken from the template
+                // cache of the app, which has the templates the app received. The last cached version
+                // of the template is used, or none if the template is not cached.
+                Runnable lookup = () -> {
                     String cached = null;
                     try {
                         File metadata = new File(Utils.getContext().getFilesDir(), "ElementsResourceCacheMetadata");
@@ -562,18 +567,23 @@ public class FeedCardLayoutPatch {
                                     }
                                 }
                             }
-
-                            String found = cached;
-                            Logger.printDebug(() -> "Cached template: " + found);
                         }
                     } catch (Exception ex) {
                         cached = null;
                         Logger.printException(() -> "getUri failure", ex);
                     }
                     // An element of the template can be seen while the cache is read.
-                    if (uri == null) {
+                    if (!fromElement && !Objects.equals(uri, cached)) {
+                        String found = cached;
+                        Logger.printDebug(() -> "Cached template: " + found);
                         uri = cached;
                     }
+                };
+                // The first lookup gives the uri to the element that is converted now.
+                if (uri == null) {
+                    lookup.run();
+                } else {
+                    Utils.runOnBackgroundThread(lookup);
                 }
             }
             return uri;
