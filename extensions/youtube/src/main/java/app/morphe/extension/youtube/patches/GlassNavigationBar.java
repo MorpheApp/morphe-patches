@@ -466,11 +466,18 @@ public final class GlassNavigationBar {
         private static final int INDICATOR_INSET = Dim.dp4;
         private static final int INDICATOR_MAX_WIDTH = Dim.dp(96);
         private static final float STROKE_WIDTH = Dim.dp1;
+        /**
+         * The rim of the capsule, lit from outside, and the dark line inside it, which give the glass its thickness.
+         */
+        private static final float RIM_WIDTH = Dim.dp(1.5f);
+        private static final float BEVEL_WIDTH = Dim.dp1;
 
         private final Paint shadowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint sheenPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint strokePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint rimPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint bevelPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint indicatorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
         private final RectF capsule = new RectF();
@@ -514,6 +521,13 @@ public final class GlassNavigationBar {
         private int strokeTopColor;
         @ColorInt
         private int strokeBottomColor;
+        /**
+         * The rim is brightest at the rounded ends of the capsule, where the light hits the edge.
+         */
+        @ColorInt
+        private int rimEndColor;
+        @ColorInt
+        private int rimMiddleColor;
 
         /**
          * The vertical edges of the capsule the gradients were made for.
@@ -551,6 +565,10 @@ public final class GlassNavigationBar {
             shadowPaint.setColor(Color.BLACK);
             strokePaint.setStyle(Paint.Style.STROKE);
             strokePaint.setStrokeWidth(STROKE_WIDTH);
+            rimPaint.setStyle(Paint.Style.STROKE);
+            rimPaint.setStrokeWidth(RIM_WIDTH);
+            bevelPaint.setStyle(Paint.Style.STROKE);
+            bevelPaint.setStrokeWidth(BEVEL_WIDTH);
             indicatorPaint.setStyle(Paint.Style.FILL);
 
             indicatorAnimator.setDuration(INDICATOR_ANIMATION_MILLISECONDS);
@@ -577,6 +595,9 @@ public final class GlassNavigationBar {
                     sheenTopColor = withAlpha(Color.WHITE, 0.06f);
                     strokeTopColor = withAlpha(Color.WHITE, 0.20f);
                     strokeBottomColor = withAlpha(Color.WHITE, 0.05f);
+                    rimEndColor = withAlpha(Color.WHITE, 0.45f);
+                    rimMiddleColor = withAlpha(Color.WHITE, 0.10f);
+                    bevelPaint.setColor(withAlpha(Color.BLACK, 0.35f));
                     indicatorPaint.setColor(withAlpha(Color.WHITE, 0.15f));
                     shadowAlpha = Math.round(0.10f * 255);
                 }
@@ -586,6 +607,9 @@ public final class GlassNavigationBar {
                     sheenTopColor = withAlpha(Color.WHITE, 0.10f);
                     strokeTopColor = withAlpha(Color.WHITE, 0.30f);
                     strokeBottomColor = withAlpha(Color.WHITE, 0.06f);
+                    rimEndColor = withAlpha(Color.WHITE, 0.50f);
+                    rimMiddleColor = withAlpha(Color.WHITE, 0.12f);
+                    bevelPaint.setColor(withAlpha(Color.BLACK, 0.35f));
                     indicatorPaint.setColor(withAlpha(Color.WHITE, 0.15f));
                     shadowAlpha = Math.round(0.10f * 255);
                 }
@@ -595,6 +619,9 @@ public final class GlassNavigationBar {
                     sheenTopColor = withAlpha(Color.WHITE, 0.35f);
                     strokeTopColor = withAlpha(Color.WHITE, 0.95f);
                     strokeBottomColor = withAlpha(Color.BLACK, 0.07f);
+                    rimEndColor = withAlpha(Color.WHITE, 0.95f);
+                    rimMiddleColor = withAlpha(Color.WHITE, 0.50f);
+                    bevelPaint.setColor(withAlpha(Color.BLACK, 0.08f));
                     indicatorPaint.setColor(withAlpha(Color.BLACK, 0.08f));
                     shadowAlpha = Math.round(0.05f * 255);
                 }
@@ -667,6 +694,10 @@ public final class GlassNavigationBar {
                     sheenTopColor, Color.TRANSPARENT, Shader.TileMode.CLAMP));
             strokePaint.setShader(new LinearGradient(0, capsule.top, 0, capsule.bottom,
                     strokeTopColor, strokeBottomColor, Shader.TileMode.CLAMP));
+            final float end = Math.min(0.5f, radius / capsule.width());
+            rimPaint.setShader(new LinearGradient(capsule.left, 0, capsule.right, 0,
+                    new int[]{rimEndColor, rimMiddleColor, rimMiddleColor, rimEndColor},
+                    new float[]{0, end, 1 - end, 1}, Shader.TileMode.CLAMP));
         }
 
         @Override
@@ -733,10 +764,18 @@ public final class GlassNavigationBar {
 
                 drawIndicator(canvas);
 
+                // The dark line inside the rim.
                 scratch.set(capsule);
-                scratch.inset(STROKE_WIDTH / 2, STROKE_WIDTH / 2);
-                final float strokeRadius = scratch.height() / 2;
-                canvas.drawRoundRect(scratch, strokeRadius, strokeRadius, strokePaint);
+                scratch.inset(RIM_WIDTH + BEVEL_WIDTH / 2, RIM_WIDTH + BEVEL_WIDTH / 2);
+                final float bevelRadius = scratch.height() / 2;
+                canvas.drawRoundRect(scratch, bevelRadius, bevelRadius, bevelPaint);
+
+                // The rim lit from outside, brighter at the top.
+                scratch.set(capsule);
+                scratch.inset(RIM_WIDTH / 2, RIM_WIDTH / 2);
+                final float rimRadius = scratch.height() / 2;
+                canvas.drawRoundRect(scratch, rimRadius, rimRadius, rimPaint);
+                canvas.drawRoundRect(scratch, rimRadius, rimRadius, strokePaint);
             } catch (Exception ex) {
                 Logger.printException(() -> "Glass navigation bar draw failure", ex);
             }
