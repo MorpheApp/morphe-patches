@@ -92,6 +92,7 @@ import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTransl
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
 import app.morphe.extension.youtube.sponsorblock.YouTubeSponsorBlockConfig;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.AnySwipeZoneAvailability;
+import app.morphe.extension.youtube.swipecontrols.controller.SwipeSeekSession;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SideSwipeZonesAvailability;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeActionAvailability;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeOverlayStyle;
@@ -738,8 +739,7 @@ public class Settings extends SharedYouTubeSettings {
 
     // Swipe controls
     public static final BooleanSetting SWIPE_SEEK_ENABLED = new BooleanSetting("morphe_swipe_seek_enabled", FALSE, true);
-    public static final IntegerSetting SWIPE_SEEK_SENSITIVITY = new IntegerSetting("morphe_swipe_seek_sensitivity", 30, true, parent(SWIPE_SEEK_ENABLED));
-    public static final StringSetting SWIPE_OVERLAY_SEEK_COLOR = new StringSetting("morphe_swipe_overlay_progress_seek_color", "#FFFF5252", true, parent(SWIPE_SEEK_ENABLED));
+    public static final IntegerSetting SWIPE_SEEK_SENSITIVITY = new IntegerSetting("morphe_swipe_seek_sensitivity_percent", SwipeSeekSession.DEFAULT_SENSITIVITY_PERCENT, true, parent(SWIPE_SEEK_ENABLED));
     public static final BooleanSetting SWIPE_CHANGE_VIDEO = new BooleanSetting("morphe_swipe_change_video", FALSE, true);
     public static final EnumSetting<SwipeZoneAction> SWIPE_LEFT_ZONE = new EnumSetting<>("morphe_swipe_left_zone", SwipeZoneAction.OFF, true);
     public static final EnumSetting<SwipeZoneAction> SWIPE_RIGHT_ZONE = new EnumSetting<>("morphe_swipe_right_zone", SwipeZoneAction.OFF, true);
@@ -1239,7 +1239,7 @@ public class Settings extends SharedYouTubeSettings {
         SeekBarPreference.register(new SeekBarConfig(CAPTION_SCALE,
                 30, 150, 5, "%"));
         SeekBarPreference.register(new SeekBarConfig(SWIPE_SEEK_SENSITIVITY,
-                1, 120, 1, "s"));
+                SwipeSeekSession.MIN_SENSITIVITY_PERCENT, SwipeSeekSession.MAX_SENSITIVITY_PERCENT, 1, "%"));
         SeekBarPreference.register(new SeekBarConfig(SWIPE_ZONE_WIDTH,
                 5, 50, 1, "%"));
         SeekBarPreference.register(new SeekBarConfig(SWIPE_OVERLAY_OPACITY,

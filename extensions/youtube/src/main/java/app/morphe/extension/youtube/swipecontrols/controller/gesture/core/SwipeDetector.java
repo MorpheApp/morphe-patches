@@ -68,19 +68,22 @@ public final class SwipeDetector {
      * @param to   End event.
      */
     public void submitForSwipe(MotionEvent from, MotionEvent to) {
-        if (currentSwipe == SwipeDirection.NONE) {
-            // no swipe direction was detected yet, try to detect one
-            // if the user did not swipe far enough, we cannot detect what direction they swiped
-            // so we wait until a greater distance was swiped
-            // NOTE: sqrt() can be high- cost, so using squared magnitudes here
-            final float deltaX = Math.abs(to.getX() - from.getX());
-            final float deltaY = Math.abs(to.getY() - from.getY());
-            final float swipeMagnitudeSquared = deltaX * deltaX + deltaY * deltaY;
-            if (swipeMagnitudeSquared > swipeMagnitudeThreshold * swipeMagnitudeThreshold) {
-                currentSwipe = deltaY > deltaX
-                        ? SwipeDirection.VERTICAL
-                        : SwipeDirection.HORIZONTAL;
-            }
+        submitForSwipe(from, to, swipeMagnitudeThreshold);
+    }
+
+    public void submitForSwipe(MotionEvent from, MotionEvent to, double horizontalThreshold) {
+        submitDisplacement(to.getX() - from.getX(), to.getY() - from.getY(), horizontalThreshold);
+    }
+
+    /** Direction arbitration; vertical gestures retain their configured threshold. */
+    public void submitDisplacement(float dx, float dy, double horizontalThreshold) {
+        if (currentSwipe != SwipeDirection.NONE) return;
+        if (!Float.isFinite(dx) || !Float.isFinite(dy)) return;
+        final float deltaX = Math.abs(dx);
+        final float deltaY = Math.abs(dy);
+        final double threshold = deltaY > deltaX ? swipeMagnitudeThreshold : horizontalThreshold;
+        if (deltaX * deltaX + deltaY * deltaY > threshold * threshold) {
+            currentSwipe = deltaY > deltaX ? SwipeDirection.VERTICAL : SwipeDirection.HORIZONTAL;
         }
     }
 

@@ -45,4 +45,10 @@ public final class SwipeControlsUtils {
         }
         return String.format(java.util.Locale.ROOT, "%02d:%02d", minutes, seconds);
     }
+    /** Signed seconds, with tenths for fine seeking and no snapping to fixed jump intervals. */
+    public static String formatSeekSeconds(long offsetMs) {
+        String value = String.format(java.util.Locale.ROOT, "%+.1f", offsetMs / 1000d);
+        return value.endsWith(".0") ? value.substring(0, value.length() - 2) : value;
+    }
+
 }

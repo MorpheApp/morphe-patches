@@ -7,14 +7,19 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.HapticFeedbackConstants;
+import android.view.Gravity;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -59,9 +64,8 @@ public final class SwipeControlsOverlayLayout extends RelativeLayout implements 
     private final Drawable normalVolumeIcon;
     private final Drawable fullVolumeIcon;
     private final Drawable speedIcon;
-    private final Drawable seekIcon;
-    private final Drawable forwardIcon;
-    private final Drawable rewindIcon;
+
+    private final TextView seekFeedbackView;
 
     // Progress bars.
     private final CircularProgressView circularProgressView;
@@ -87,9 +91,6 @@ public final class SwipeControlsOverlayLayout extends RelativeLayout implements 
         normalVolumeIcon = getDrawable("morphe_ic_sc_volume_normal");
         fullVolumeIcon = getDrawable("morphe_ic_sc_volume_high");
         speedIcon = getDrawable("morphe_ic_sc_speed");
-        seekIcon = getDrawable("morphe_ic_sc_seek");
-        forwardIcon = getDrawable("morphe_ic_sc_forward");
-        rewindIcon = getDrawable("morphe_ic_sc_rewind");
 
         SwipeOverlayStyle overlayStyle = config.getOverlayStyle();
 
@@ -171,7 +172,24 @@ public final class SwipeControlsOverlayLayout extends RelativeLayout implements 
         verticalVolumeProgressView.setVisibility(GONE); // Initially hidden.
         addView(verticalVolumeProgressView);
 
+        // Next Player uses centered text feedback rather than a seek progress bar.
+        seekFeedbackView = new TextView(context);
+        seekFeedbackView.setGravity(Gravity.CENTER);
+        seekFeedbackView.setTextColor(Color.WHITE);
+        seekFeedbackView.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+        seekFeedbackView.setTextSize(TypedValue.COMPLEX_UNIT_SP,
+                Math.max(24f, config.getOverlayTextSize() * 2f));
+        seekFeedbackView.setShadowLayer(toDisplayPixels(2f), 0, toDisplayPixels(1f), Color.BLACK);
+        seekFeedbackView.setPadding((int) toDisplayPixels(16f), (int) toDisplayPixels(8f),
+                (int) toDisplayPixels(16f), (int) toDisplayPixels(8f));
+        LayoutParams seekParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        seekParams.addRule(CENTER_IN_PARENT, TRUE);
+        seekFeedbackView.setLayoutParams(seekParams);
+        seekFeedbackView.setVisibility(GONE);
+        addView(seekFeedbackView);
+
         feedbackHideCallback = () -> {
+            ViewAnimations.fadeOut(seekFeedbackView, FADE_DURATION_MILLIS);
             ViewAnimations.fadeOut(circularProgressView, FADE_DURATION_MILLIS);
             ViewAnimations.fadeOut(horizontalProgressView, FADE_DURATION_MILLIS);
             ViewAnimations.fadeOut(verticalBrightnessProgressView, FADE_DURATION_MILLIS);
@@ -195,6 +213,7 @@ public final class SwipeControlsOverlayLayout extends RelativeLayout implements 
      */
     private void showFeedbackView(String value, int progress, int max, Drawable icon,
                                   boolean isBrightness, boolean isBoosted) {
+        hideSeekFeedback();
         feedbackHideHandler.removeCallbacks(feedbackHideCallback);
         feedbackHideHandler.postDelayed(feedbackHideCallback, config.getOverlayShowTimeoutMillis());
 
@@ -230,6 +249,7 @@ public final class SwipeControlsOverlayLayout extends RelativeLayout implements 
      * Always uses the horizontal bar (or circular for circular styles) to match the horizontal gesture.
      */
     private void showSpeedFeedbackView(float speed) {
+        hideSeekFeedback();
         feedbackHideHandler.removeCallbacks(feedbackHideCallback);
         feedbackHideHandler.postDelayed(feedbackHideCallback, config.getOverlayShowTimeoutMillis());
 
@@ -245,41 +265,26 @@ public final class SwipeControlsOverlayLayout extends RelativeLayout implements 
         ViewAnimations.fadeIn(viewToShow, FADE_DURATION_MILLIS);
     }
 
-    /**
-     * Displays the progress bar for swipe seeking feedback.
-     */
-    private void showSeekFeedbackView(long targetTimeMs, long videoLengthMs, long seekOffsetMs) {
-        feedbackHideHandler.removeCallbacks(feedbackHideCallback);
-        // Keep the release preview visible while the finger is held still.
-        // onSeekEnded schedules its dismissal after release or cancellation.
-
-        final int progress = videoLengthMs > 0
-                ? (int) Math.max(0, Math.min(100, (targetTimeMs * 100) / videoLengthMs))
-                : 0;
-
-        String formattedTarget = SwipeControlsUtils.formatTime(targetTimeMs);
-        String formattedLength = SwipeControlsUtils.formatTime(videoLengthMs);
-        long offsetSec = seekOffsetMs / 1000;
-        String offsetStr = (offsetSec >= 0 ? "+" : "") + offsetSec + "s";
-        String displayText = formattedTarget + " / " + formattedLength + " (" + offsetStr + ")";
-
-        AbstractProgressView viewToShow = config.getOverlayStyle().isCircular()
-                ? circularProgressView
-                : horizontalProgressView;
-
-        final Drawable icon;
-        if (seekOffsetMs > 0) {
-            icon = forwardIcon != null ? forwardIcon : seekIcon;
-        } else if (seekOffsetMs < 0) {
-            icon = rewindIcon != null ? rewindIcon : seekIcon;
-        } else {
-            icon = seekIcon;
+    private void hideSeekFeedback() {
+        if (seekFeedbackView.getVisibility() == VISIBLE) {
+            seekFeedbackView.animate().cancel();
+            seekFeedbackView.setVisibility(GONE);
         }
+    }
 
-        viewToShow.setProgressColor(config.getOverlaySeekProgressColor());
-        viewToShow.setProgress(progress, 100, displayText, false);
-        viewToShow.icon = icon;
-        ViewAnimations.fadeIn(viewToShow, FADE_DURATION_MILLIS);
+    /** Signed jump and target, centered on the video and visible until the gesture ends. */
+    private void showSeekFeedbackView(long targetTimeMs, long seekOffsetMs) {
+        feedbackHideHandler.removeCallbacks(feedbackHideCallback);
+        circularProgressView.setVisibility(GONE);
+        horizontalProgressView.setVisibility(GONE);
+        verticalBrightnessProgressView.setVisibility(GONE);
+        verticalVolumeProgressView.setVisibility(GONE);
+        String offset = str("morphe_swipe_seek_offset_seconds",
+                SwipeControlsUtils.formatSeekSeconds(seekOffsetMs));
+        seekFeedbackView.setText(offset + "\n[" + SwipeControlsUtils.formatTime(targetTimeMs) + "]");
+        if (seekFeedbackView.getVisibility() != VISIBLE) {
+            ViewAnimations.fadeIn(seekFeedbackView, FADE_DURATION_MILLIS);
+        }
     }
 
     // Handle volume change.
@@ -348,8 +353,8 @@ public final class SwipeControlsOverlayLayout extends RelativeLayout implements 
 
     // Handle seek change.
     @Override
-    public void onSeekChanged(long targetTimeMs, long videoLengthMs, long seekOffsetMs) {
-        showSeekFeedbackView(targetTimeMs, videoLengthMs, seekOffsetMs);
+    public void onSeekChanged(long targetTimeMs, long seekOffsetMs) {
+        showSeekFeedbackView(targetTimeMs, seekOffsetMs);
     }
 
     @Override

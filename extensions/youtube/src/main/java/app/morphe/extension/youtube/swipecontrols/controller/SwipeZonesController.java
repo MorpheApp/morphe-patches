@@ -107,15 +107,6 @@ public final class SwipeZonesController {
     }
 
     /**
-     * The width of the player in pixels, or fallback screen width.
-     */
-    public int getPlayerWidth() {
-        maybeAttachPlayerBoundsListener();
-        Rectangle p = playerRect != null ? playerRect : fallbackScreenRect.get();
-        return p.width;
-    }
-
-    /**
      * The rectangle of the left control zone.
      */
     public Rectangle getLeft() {
