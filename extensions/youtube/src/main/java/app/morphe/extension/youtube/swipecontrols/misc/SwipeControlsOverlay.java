@@ -38,6 +38,20 @@ public interface SwipeControlsOverlay {
     void onSpeedChanged(float speed);
 
     /**
+     * Called when the video seek position changes during a swipe gesture.
+     *
+     * @param targetTimeMs  The target seek time in milliseconds.
+     * @param videoLengthMs The total video length in milliseconds.
+     * @param seekOffsetMs  The seek offset relative to start position in milliseconds (can be positive or negative).
+     */
+    void onSeekChanged(long targetTimeMs, long videoLengthMs, long seekOffsetMs);
+
+    /**
+     * Called when a seek gesture ends or is cancelled.
+     */
+    void onSeekEnded();
+
+    /**
      * Called when a new swipe session has started.
      */
     void onEnterSwipeSession();

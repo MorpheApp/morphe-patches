@@ -28,4 +28,21 @@ public final class SwipeControlsUtils {
                 context.getResources().getDisplayMetrics()
         ));
     }
+
+    /**
+     * Formats a duration in milliseconds to a time string (e.g. "01:23" or "01:02:03").
+     *
+     * @param ms The duration in milliseconds.
+     * @return Formatted time string.
+     */
+    public static String formatTime(long ms) {
+        long totalSeconds = Math.max(0, ms / 1000);
+        long hours = totalSeconds / 3600;
+        long minutes = (totalSeconds % 3600) / 60;
+        long seconds = totalSeconds % 60;
+        if (hours > 0) {
+            return String.format(java.util.Locale.ROOT, "%02d:%02d:%02d", hours, minutes, seconds);
+        }
+        return String.format(java.util.Locale.ROOT, "%02d:%02d", minutes, seconds);
+    }
 }

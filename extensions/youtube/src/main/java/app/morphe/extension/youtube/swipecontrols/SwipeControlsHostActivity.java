@@ -31,6 +31,7 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.swipecontrols.controller.AudioVolumeController;
 import app.morphe.extension.youtube.swipecontrols.controller.ScreenBrightnessController;
+import app.morphe.extension.youtube.swipecontrols.controller.SwipeSeekController;
 import app.morphe.extension.youtube.swipecontrols.controller.SwipeZonesController;
 import app.morphe.extension.youtube.swipecontrols.controller.VolumeKeysController;
 import app.morphe.extension.youtube.swipecontrols.controller.gesture.ClassicSwipeController;
@@ -75,6 +76,12 @@ public class SwipeControlsHostActivity extends Activity {
      */
     @Nullable
     private ScreenBrightnessController screen;
+
+    /**
+     * Current instance of {@link SwipeSeekController}.
+     */
+    @Nullable
+    private SwipeSeekController seek;
 
     /**
      * Current instance of {@link SwipeControlsConfigurationProvider}.
@@ -170,6 +177,11 @@ public class SwipeControlsHostActivity extends Activity {
         return screen;
     }
 
+    @Nullable
+    public SwipeSeekController getSeek() {
+        return seek;
+    }
+
     public SwipeControlsConfigurationProvider getConfig() {
         return config;
     }
@@ -221,6 +233,9 @@ public class SwipeControlsHostActivity extends Activity {
         // create overlay
         overlay = new SwipeControlsOverlayLayout(this, config);
         getContentRoot().addView(overlay);
+
+        // create seek controller
+        seek = new SwipeSeekController(overlay);
 
         // create swipe zone controller
         zones = new SwipeZonesController(this, () -> {

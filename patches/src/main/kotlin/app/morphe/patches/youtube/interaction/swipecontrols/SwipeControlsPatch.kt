@@ -101,6 +101,11 @@ private val swipeControlsResourcePatch = resourcePatch {
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
             ListPreference("morphe_swipe_speed_step"),
+            SwitchPreference("morphe_swipe_seek_enabled", summary = true),
+            NonInteractivePreference(
+                key = "morphe_swipe_seek_sensitivity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
+            ),
             SwitchPreference("morphe_swipe_ignore_when_locked", summary = true),
             SwitchPreference("morphe_swipe_press_to_engage", summary = true),
             SwitchPreference("morphe_swipe_haptic_feedback"),
@@ -123,6 +128,10 @@ private val swipeControlsResourcePatch = resourcePatch {
                 tag = "app.morphe.extension.shared.settings.preference.ColorPickerWithOpacitySliderPreference",
                 inputType = InputType.TEXT_CAP_CHARACTERS
             ),
+            TextPreference("morphe_swipe_overlay_progress_seek_color",
+                tag = "app.morphe.extension.shared.settings.preference.ColorPickerWithOpacitySliderPreference",
+                inputType = InputType.TEXT_CAP_CHARACTERS
+            ),
             NonInteractivePreference(
                 key = "morphe_swipe_text_overlay_size",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
@@ -142,7 +151,10 @@ private val swipeControlsResourcePatch = resourcePatch {
             "morphe_ic_sc_volume_low",
             "morphe_ic_sc_volume_mute",
             "morphe_ic_sc_volume_normal",
-            "morphe_ic_sc_speed"
+            "morphe_ic_sc_speed",
+            "morphe_ic_sc_seek",
+            "morphe_ic_sc_forward",
+            "morphe_ic_sc_rewind"
         )
     }
 }
@@ -150,7 +162,7 @@ private val swipeControlsResourcePatch = resourcePatch {
 @Suppress("unused")
 val swipeControlsPatch = bytecodePatch(
     name = "Swipe controls",
-    description = "Adds options to enable and configure volume and brightness swipe controls."
+    description = "Adds configurable swipe controls for seeking, volume, brightness, and playback speed."
 ) {
     dependsOn(
         sharedExtensionPatch,

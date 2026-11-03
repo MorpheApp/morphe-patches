@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeZoneAction;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity;
 import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.BaseGestureController;
+import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.SwipeDetector.SwipeDirection;
 import app.morphe.extension.youtube.swipecontrols.misc.Point;
 
 /**
@@ -40,7 +41,11 @@ public final class PressToSwipeController extends BaseGestureController {
     @Override
     protected boolean shouldForceInterceptEvents() {
         if (swipeSessionOrigin == null) return false;
-        return swipeActionAt(swipeSessionOrigin, getCurrentSwipe()) != SwipeZoneAction.OFF;
+        SwipeDirection direction = getCurrentSwipe();
+        if (direction == SwipeDirection.HORIZONTAL && isSeekGesture(swipeSessionOrigin)) {
+            return true;
+        }
+        return swipeActionAt(swipeSessionOrigin, direction) != SwipeZoneAction.OFF;
     }
 
     @Override
@@ -74,6 +79,6 @@ public final class PressToSwipeController extends BaseGestureController {
         // cancel if not in swipe session
         if (swipeSessionOrigin == null) return false;
 
-        return applySwipeAction(from, distanceX, distanceY);
+        return applySwipeAction(from, to, distanceX, distanceY);
     }
 }

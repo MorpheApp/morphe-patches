@@ -45,19 +45,21 @@ public final class SwipeControlsConfigurationProvider {
     }
 
     /**
-     * Availability based on any zone having an action assigned.
+     * Availability when any swipe control is enabled.
      */
     public static class AnySwipeZoneAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
-            return Settings.SWIPE_LEFT_ZONE.get() != SwipeZoneAction.OFF
+            return Settings.SWIPE_SEEK_ENABLED.get()
+                    || Settings.SWIPE_LEFT_ZONE.get() != SwipeZoneAction.OFF
                     || Settings.SWIPE_RIGHT_ZONE.get() != SwipeZoneAction.OFF
                     || Settings.SWIPE_TOP_ZONE.get() != SwipeZoneAction.OFF;
         }
 
         @Override
         public List<Setting<?>> getParentSettings() {
-            return List.of(Settings.SWIPE_LEFT_ZONE, Settings.SWIPE_RIGHT_ZONE, Settings.SWIPE_TOP_ZONE);
+            return List.of(Settings.SWIPE_LEFT_ZONE, Settings.SWIPE_RIGHT_ZONE, Settings.SWIPE_TOP_ZONE,
+                    Settings.SWIPE_SEEK_ENABLED);
         }
     }
 
@@ -122,7 +124,7 @@ public final class SwipeControlsConfigurationProvider {
      * Returns true if either volume or brightness controls are enabled and the video is in fullscreen or multi-window mode.
      */
     public boolean isSwipeControlsEnabled() {
-        return (isVolumeControlEnabled() || isBrightnessControlEnabled() || isSpeedControlEnabled())
+        return (isVolumeControlEnabled() || isBrightnessControlEnabled() || isSpeedControlEnabled() || isSwipeSeekEnabled())
                 && (isFullscreenOrMultiWindowVideo() || isVideoSliding());
     }
 
@@ -340,6 +342,25 @@ public final class SwipeControlsConfigurationProvider {
     public int getSpeedStepInt() {
         return Settings.SWIPE_SPEED_STEP.get().getStepInt();
     }
+
+    /**
+     * Indicates whether screen-wide swipe seeking is enabled.
+     */
+    public boolean isSwipeSeekEnabled() {
+        return Settings.SWIPE_SEEK_ENABLED.get();
+    }
+
+    /**
+     * The sensitivity of the swipe seek gesture, representing seconds to seek across the full player width.
+     * Clamped between 1 and 120 seconds, defaulting to 30.
+     */
+    public int getSwipeSeekSensitivity() {
+        final int sensitivity = Settings.SWIPE_SEEK_SENSITIVITY.get();
+        if (sensitivity < 1 || sensitivity > 120) {
+            return Math.max(1, Math.min(120, sensitivity));
+        }
+        return sensitivity;
+    }
     //endregion
 
     //region overlay adjustments
@@ -400,6 +421,13 @@ public final class SwipeControlsConfigurationProvider {
      */
     public int getOverlaySpeedProgressColor() {
         return getSettingColor(Settings.SWIPE_OVERLAY_SPEED_COLOR);
+    }
+
+    /**
+     * The color of the progress indicator in the overlay for swipe seeking.
+     */
+    public int getOverlaySeekProgressColor() {
+        return getSettingColor(Settings.SWIPE_OVERLAY_SEEK_COLOR);
     }
 
     private static int getSettingColor(StringSetting setting) {

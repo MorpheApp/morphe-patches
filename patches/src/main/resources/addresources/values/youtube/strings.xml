@@ -878,6 +878,12 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_speed_zone_height_title">Speed zone height</string>
     <string name="morphe_swipe_speed_zone_height_summary">Height of the speed gesture zone as a percentage of the player height (5-75)</string>
     <string name="morphe_swipe_zone_label_speed">Speed</string>
+    <string name="morphe_swipe_seek_enabled_title">Swipe to seek</string>
+    <string name="morphe_swipe_seek_enabled_summary">Swipe horizontally across the fullscreen player to seek</string>
+    <string name="morphe_swipe_seek_sensitivity_title">Seek swipe sensitivity</string>
+    <string name="morphe_swipe_seek_sensitivity_summary">Seconds to seek when swiping across the full player width</string>
+    <string name="morphe_swipe_overlay_progress_seek_color_title">Swipe overlay seek color</string>
+    <string name="morphe_swipe_overlay_progress_seek_color_summary">Set the color of the seek controls progress bar</string>
     <string name="morphe_swipe_overlay_style_title">Swipe overlay style</string>
     <string name="morphe_swipe_overlay_style_entry_1">Horizontal overlay</string>
     <string name="morphe_swipe_overlay_style_entry_2">Horizontal overlay (minimal - top)</string>

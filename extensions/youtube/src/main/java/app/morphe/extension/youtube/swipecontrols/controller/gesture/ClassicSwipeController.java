@@ -18,6 +18,7 @@ import app.morphe.extension.youtube.shared.PlayerControlsVisibilityObserver;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeZoneAction;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity;
 import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.BaseGestureController;
+import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.SwipeDetector.SwipeDirection;
 import app.morphe.extension.youtube.swipecontrols.misc.Point;
 
 /**
@@ -33,8 +34,6 @@ public final class ClassicSwipeController extends BaseGestureController {
     @Nullable
     private MotionEvent lastOnDownEvent;
 
-    private boolean lastOnDownWasConsumed;
-
     /**
      * @param controller Reference to the main swipe controller.
      */
@@ -47,18 +46,19 @@ public final class ClassicSwipeController extends BaseGestureController {
     protected boolean shouldForceInterceptEvents() {
         if (lastOnDownEvent == null) return false;
         Point origin = Point.fromMotionEvent(lastOnDownEvent);
-        return swipeActionAt(origin, getCurrentSwipe()) != SwipeZoneAction.OFF;
+        SwipeDirection direction = getCurrentSwipe();
+        if (direction == SwipeDirection.HORIZONTAL && isSeekGesture(origin)) {
+            return true;
+        }
+        return swipeActionAt(origin, direction) != SwipeZoneAction.OFF;
     }
 
     @Override
     protected boolean shouldDropMotion(MotionEvent motionEvent) {
-        // Leave gestures with more than one pointer to the player.
-        // Replay the initial DOWN only if swipe controls consumed it.
+        // ignore gestures with more than one pointer
+        // when such a gesture is detected, dispatch the first event of the gesture to downstream
         if (motionEvent.getPointerCount() > 1) {
             if (lastOnDownEvent != null) {
-                if (lastOnDownWasConsumed) {
-                    controller.dispatchDownstreamTouchEvent(lastOnDownEvent);
-                }
                 lastOnDownEvent.recycle();
             }
             lastOnDownEvent = null;
@@ -86,37 +86,12 @@ public final class ClassicSwipeController extends BaseGestureController {
         }
         lastOnDownEvent = MotionEvent.obtain(motionEvent);
 
-        // must be inside swipe zone
-        lastOnDownWasConsumed = isInSwipeZone(motionEvent);
-        return lastOnDownWasConsumed;
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent motionEvent) {
-        MotionEvent event = MotionEvent.obtain(motionEvent);
-        event.setAction(MotionEvent.ACTION_DOWN);
-        controller.dispatchDownstreamTouchEvent(event);
-        event.recycle();
-
-        return false;
-    }
-
-    @Override
-    public boolean onDoubleTapEvent(MotionEvent motionEvent) {
-        MotionEvent event = MotionEvent.obtain(motionEvent);
-        controller.dispatchDownstreamTouchEvent(event);
-        event.recycle();
-
-        return super.onDoubleTapEvent(motionEvent);
-    }
-
-    @Override
-    public void onLongPress(MotionEvent motionEvent) {
-        MotionEvent event = MotionEvent.obtain(motionEvent);
-        controller.dispatchDownstreamTouchEvent(event);
-        event.recycle();
-
-        super.onLongPress(motionEvent);
+        // Deliver DOWN once, even when direction arbitration later leaves the gesture to YouTube.
+        boolean inZone = isInSwipeZone(motionEvent);
+        if (inZone) {
+            controller.dispatchDownstreamTouchEvent(motionEvent);
+        }
+        return inZone;
     }
 
     @Override
@@ -126,6 +101,6 @@ public final class ClassicSwipeController extends BaseGestureController {
         // cancel if the swipe does not belong to any zone
         if (!shouldForceInterceptEvents()) return false;
 
-        return applySwipeAction(from, distanceX, distanceY);
+        return applySwipeAction(from, to, distanceX, distanceY);
     }
 }

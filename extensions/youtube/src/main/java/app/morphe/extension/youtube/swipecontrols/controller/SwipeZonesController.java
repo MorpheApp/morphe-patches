@@ -95,7 +95,7 @@ public final class SwipeZonesController {
     /**
      * Rectangle of the area that is effectively usable for swipe controls.
      */
-    private Rectangle getEffectiveSwipeRect() {
+    public Rectangle getEffectiveSwipeRect() {
         maybeAttachPlayerBoundsListener();
         Rectangle p = playerRect != null ? playerRect : fallbackScreenRect.get();
         return new Rectangle(
@@ -104,6 +104,15 @@ public final class SwipeZonesController {
                 p.width - 2 * dp20,
                 p.height - dp20 - dp80
         );
+    }
+
+    /**
+     * The width of the player in pixels, or fallback screen width.
+     */
+    public int getPlayerWidth() {
+        maybeAttachPlayerBoundsListener();
+        Rectangle p = playerRect != null ? playerRect : fallbackScreenRect.get();
+        return p.width;
     }
 
     /**

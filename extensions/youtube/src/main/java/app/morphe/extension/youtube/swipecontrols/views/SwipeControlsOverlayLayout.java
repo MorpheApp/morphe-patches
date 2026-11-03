@@ -26,6 +26,7 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeOverlayStyle;
 import app.morphe.extension.youtube.swipecontrols.misc.SwipeControlsOverlay;
+import app.morphe.extension.youtube.swipecontrols.misc.SwipeControlsUtils;
 import app.morphe.extension.youtube.videoplayer.PlayerIcons;
 
 /**
@@ -58,6 +59,9 @@ public final class SwipeControlsOverlayLayout extends RelativeLayout implements 
     private final Drawable normalVolumeIcon;
     private final Drawable fullVolumeIcon;
     private final Drawable speedIcon;
+    private final Drawable seekIcon;
+    private final Drawable forwardIcon;
+    private final Drawable rewindIcon;
 
     // Progress bars.
     private final CircularProgressView circularProgressView;
@@ -83,6 +87,9 @@ public final class SwipeControlsOverlayLayout extends RelativeLayout implements 
         normalVolumeIcon = getDrawable("morphe_ic_sc_volume_normal");
         fullVolumeIcon = getDrawable("morphe_ic_sc_volume_high");
         speedIcon = getDrawable("morphe_ic_sc_speed");
+        seekIcon = getDrawable("morphe_ic_sc_seek");
+        forwardIcon = getDrawable("morphe_ic_sc_forward");
+        rewindIcon = getDrawable("morphe_ic_sc_rewind");
 
         SwipeOverlayStyle overlayStyle = config.getOverlayStyle();
 
@@ -238,6 +245,43 @@ public final class SwipeControlsOverlayLayout extends RelativeLayout implements 
         ViewAnimations.fadeIn(viewToShow, FADE_DURATION_MILLIS);
     }
 
+    /**
+     * Displays the progress bar for swipe seeking feedback.
+     */
+    private void showSeekFeedbackView(long targetTimeMs, long videoLengthMs, long seekOffsetMs) {
+        feedbackHideHandler.removeCallbacks(feedbackHideCallback);
+        // Keep the release preview visible while the finger is held still.
+        // onSeekEnded schedules its dismissal after release or cancellation.
+
+        final int progress = videoLengthMs > 0
+                ? (int) Math.max(0, Math.min(100, (targetTimeMs * 100) / videoLengthMs))
+                : 0;
+
+        String formattedTarget = SwipeControlsUtils.formatTime(targetTimeMs);
+        String formattedLength = SwipeControlsUtils.formatTime(videoLengthMs);
+        long offsetSec = seekOffsetMs / 1000;
+        String offsetStr = (offsetSec >= 0 ? "+" : "") + offsetSec + "s";
+        String displayText = formattedTarget + " / " + formattedLength + " (" + offsetStr + ")";
+
+        AbstractProgressView viewToShow = config.getOverlayStyle().isCircular()
+                ? circularProgressView
+                : horizontalProgressView;
+
+        final Drawable icon;
+        if (seekOffsetMs > 0) {
+            icon = forwardIcon != null ? forwardIcon : seekIcon;
+        } else if (seekOffsetMs < 0) {
+            icon = rewindIcon != null ? rewindIcon : seekIcon;
+        } else {
+            icon = seekIcon;
+        }
+
+        viewToShow.setProgressColor(config.getOverlaySeekProgressColor());
+        viewToShow.setProgress(progress, 100, displayText, false);
+        viewToShow.icon = icon;
+        ViewAnimations.fadeIn(viewToShow, FADE_DURATION_MILLIS);
+    }
+
     // Handle volume change.
     @Override
     public void onVolumeChanged(int newVolume, int maximumVolume, int boostStep) {
@@ -300,6 +344,18 @@ public final class SwipeControlsOverlayLayout extends RelativeLayout implements 
     @Override
     public void onSpeedChanged(float speed) {
         showSpeedFeedbackView(speed);
+    }
+
+    // Handle seek change.
+    @Override
+    public void onSeekChanged(long targetTimeMs, long videoLengthMs, long seekOffsetMs) {
+        showSeekFeedbackView(targetTimeMs, videoLengthMs, seekOffsetMs);
+    }
+
+    @Override
+    public void onSeekEnded() {
+        feedbackHideHandler.removeCallbacks(feedbackHideCallback);
+        feedbackHideHandler.postDelayed(feedbackHideCallback, config.getOverlayShowTimeoutMillis());
     }
 
     // Begin swipe session.
