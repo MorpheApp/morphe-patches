@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Polityka prywatności Reddita</string>
   <string name="morphe_google_signin_not_available_toast">Logowanie przez Google niedostępne. Użyj e-maila, aby się zalogować</string>
+  <string name="morphe_app_downgrade_dialog_title">Instalacja starszej wersji nie jest obsługiwana</string>
+  <string name="morphe_app_downgrade_dialog_message">"Ta instalacja aplikacji Reddit została cofnięta z wersji &lt;b&gt;%1$s&lt;/b&gt; do &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Dane z nowszej wersji nie są zgodne ze starszymi wersjami, przez co aplikacja może nie działać prawidłowo.
+&lt;br/&gt;&lt;br/&gt;
+Aby korzystać ze starszej wersji, musisz &lt;b&gt;odinstalować&lt;/b&gt; aplikację Reddit, a następnie zainstalować starszą wersję."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Otwórz informacje o aplikacji</string>
   <string name="morphe_screen_ads_title">Reklamy</string>
   <string name="morphe_hide_post_ads_title">Ukryj reklamy na stronie głównej</string>
   <string name="morphe_hide_comment_ads_title">Ukryj reklamy w komentarzach</string>

@@ -16,6 +16,7 @@ import android.text.TextUtils;
 import android.text.style.ReplacementSpan;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
@@ -50,6 +51,33 @@ public class NewIndicatorSpan extends ReplacementSpan {
         return spannable;
     }
 
+    /**
+     * @return If the text has a dot.
+     */
+    public static boolean isIn(@Nullable CharSequence text) {
+        return text instanceof Spanned spanned
+                && spanned.getSpans(0, spanned.length(), NewIndicatorSpan.class).length > 0;
+    }
+
+    /**
+     * @return A copy of the text without the dot, or the text itself if it has no dot.
+     *         A String if the text has no other spans.
+     */
+    @Nullable
+    public static CharSequence removeFrom(@Nullable CharSequence text) {
+        if (!isIn(text)) {
+            return text;
+        }
+
+        SpannableString spannable = new SpannableString(text);
+        for (NewIndicatorSpan span : spannable.getSpans(0, spannable.length(), NewIndicatorSpan.class)) {
+            spannable.removeSpan(span);
+        }
+        return spannable.getSpans(0, spannable.length(), Object.class).length == 0
+                ? spannable.toString()
+                : spannable;
+    }
+
     @ColorInt
     private final int color;
     private final boolean rtl;
@@ -65,7 +93,7 @@ public class NewIndicatorSpan extends ReplacementSpan {
     }
 
     @Override
-    public int getSize(Paint paint, CharSequence text, int start, int end,
+    public int getSize(@NonNull Paint paint, CharSequence text, int start, int end,
                        @Nullable Paint.FontMetricsInt fm) {
         if (fm != null) {
             paint.getFontMetricsInt(fm);
@@ -74,7 +102,7 @@ public class NewIndicatorSpan extends ReplacementSpan {
     }
 
     @Override
-    public void draw(Canvas canvas, CharSequence text, int start, int end,
+    public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end,
                      float x, int top, int y, int bottom, Paint paint) {
         final float textWidth = paint.measureText(text, start, end);
         final float dotWidth = dotWidth(paint);

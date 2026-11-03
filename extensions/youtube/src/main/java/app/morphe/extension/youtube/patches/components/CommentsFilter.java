@@ -34,6 +34,7 @@ import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
+import app.morphe.extension.youtube.innertube.NextResponseOuterClass.ChannelGuidelinesStateEntityPayload;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.NewElement;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
@@ -43,6 +44,10 @@ import app.morphe.extension.youtube.shared.PlayerType;
 @SuppressWarnings("unused")
 public class CommentsFilter extends Filter {
 
+    /**
+     * Type of the entity that tells if the channel guidelines must be acknowledged before commenting.
+     */
+    private static final int CHANNEL_GUIDELINES_STATE_ENTITY_TYPE = 263;
     private static final String CHIP_BAR_PATH_PREFIX = "chip_bar.e";
     private static final String COMMENT_COMPOSER_PATH = "comment_composer.e";
     private static final String COMMENT_PATH = "|comment.e";
@@ -65,6 +70,7 @@ public class CommentsFilter extends Filter {
     private final StringFilterGroup commentsFilterBar;
     private final StringFilterGroup dislikeButton;
     private final StringFilterGroup emojiButton;
+    private final StringFilterGroup gifsAndImages;
     private final StringFilterGroup commentCardsIndicator;
     private final StringFilterGroup menuButton;
     private final StringFilterGroup translateButton;
@@ -158,6 +164,16 @@ public class CommentsFilter extends Filter {
                 "overflow_button.e"
         );
 
+        var gifButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_GIF_BUTTON,
+                "composer_gif_button.e"
+        );
+
+        gifsAndImages = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_GIFS_AND_IMAGES,
+                "comment_image_attachment.e"
+        );
+
         var giftAnimationAndCards = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_GIFT_ANIMATION_AND_CARDS,
                 "gift_overlay.e",
@@ -214,6 +230,8 @@ public class CommentsFilter extends Filter {
                 createAShortButton,
                 dislikeButton,
                 emojiButton,
+                gifButton,
+                gifsAndImages,
                 giftAnimationAndCards,
                 previewComment,
                 commentCardsIndicator,
@@ -262,6 +280,11 @@ public class CommentsFilter extends Filter {
             return Utils.contains(path, COMMENT_PATH);
         }
 
+        if (matchedGroup == gifsAndImages) {
+            // Only posted comments and replies, not the preview of an attachment in the composer.
+            return Utils.contains(path, COMMENT_PATH);
+        }
+
         if (matchedGroup == translateButton) {
             return accessibility.startsWith(TRANSLATE_BUTTON_ACCESSIBILITY_ID)
                     && Utils.contains(path, COMMENT_PATH);
@@ -280,6 +303,35 @@ public class CommentsFilter extends Filter {
         }
 
         return true;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The channel guidelines and the Community Guidelines are shown in a sheet that must be
+     * acknowledged before the comment composer opens, as long as the state entity of the channel
+     * requires it. The state is changed as if they are acknowledged already, so the composer and
+     * the reply buttons open at once.
+     *
+     * @param entityType Field number of the payload in its mutation, the type of the entity.
+     */
+    public static byte[] hideGuidelinesSheet(int entityType, byte[] payload) {
+        if (entityType != CHANNEL_GUIDELINES_STATE_ENTITY_TYPE
+                || !Settings.HIDE_COMMENTS_COMMUNITY_GUIDELINES.get()) {
+            return payload;
+        }
+
+        try {
+            var state = ChannelGuidelinesStateEntityPayload.parseFrom(payload);
+            if (state.getShouldRequireViewerAck()) {
+                Logger.printDebug(() -> "Hiding guidelines sheet of: " + state.getKey());
+                return state.toBuilder().setShouldRequireViewerAck(false).build().toByteArray();
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideGuidelinesSheet failure", ex);
+        }
+
+        return payload;
     }
 
     /**

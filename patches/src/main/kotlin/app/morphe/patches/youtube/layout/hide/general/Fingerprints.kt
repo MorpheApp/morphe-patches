@@ -588,6 +588,14 @@ internal object InformationButtonFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Reads the payload of an entity sent by the server. Its field number is the type of the entity.
+ */
+internal object EntityMutationPayloadFingerprint : Fingerprint(
+    returnType = "[B",
+    strings = listOf("There can be only one field in EntityMutationPayload")
+)
+
 internal object CreateSearchSuggestionsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

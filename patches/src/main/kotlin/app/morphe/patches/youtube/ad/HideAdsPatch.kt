@@ -251,13 +251,17 @@ val hideAdsPatch = bytecodePatch(
         setOf(
             Endpoint.GET_WATCH,
             Endpoint.PLAYER,
-            Endpoint.REEL,
         ).forEach { endpoint ->
             addOSNameHook(
                 endpoint,
                 "$EXTENSION_CLASS->hideVideoAds(Ljava/lang/String;)Ljava/lang/String;"
             )
         }
+
+        addOSNameHook(
+            Endpoint.REEL,
+            "$EXTENSION_CLASS->hideShortsAds(Ljava/lang/String;)Ljava/lang/String;"
+        )
 
         addOSNameHook(
             Endpoint.GUIDE,

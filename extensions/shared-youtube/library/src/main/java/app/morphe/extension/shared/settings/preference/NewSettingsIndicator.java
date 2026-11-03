@@ -8,6 +8,7 @@
 package app.morphe.extension.shared.settings.preference;
 
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
@@ -26,7 +27,8 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 /**
  * Shows a dot next to settings and list entries that are new to the user,
- * for the number of days set with {@link SharedYouTubeSettings#SETTINGS_NEW_INDICATOR_DAYS}.
+ * for the number of days set with {@link SharedYouTubeSettings#SETTINGS_NEW_INDICATOR_DAYS}
+ * or until the user opens or changes the setting.
  * <p>
  * A setting is new from the first time its key is in the settings menu.
  * The first time this runs, all current keys are saved as already known,
@@ -211,12 +213,96 @@ public final class NewSettingsIndicator {
             }
 
             // Categories are not marked, since the new preference is shown right below them.
-            if (isNew && (pref instanceof PreferenceScreen || !(pref instanceof PreferenceGroup))) {
+            final boolean canMark = pref instanceof PreferenceScreen
+                    ? canMarkScreenTitle()
+                    : !(pref instanceof PreferenceGroup);
+            if (isNew && canMark) {
                 pref.setTitle(NewIndicatorSpan.addTo(pref.getTitle(), DOT_COLOR));
+
+                if (!(pref instanceof PreferenceGroup)) {
+                    // Called after the preference handles the click, so a list dialog
+                    // is already showing its new entries.
+                    Preference.OnPreferenceClickListener listener = pref.getOnPreferenceClickListener();
+                    pref.setOnPreferenceClickListener(clicked -> {
+                        markSeen(clicked);
+                        return listener != null && listener.onPreferenceClick(clicked);
+                    });
+                }
             }
             groupHasNew |= isNew;
         }
 
         return groupHasNew;
+    }
+
+    /**
+     * Removes the dot of a new preference the user opened or changed, and the dot of
+     * the screens that contain it if nothing else in them is new.
+     * The preference and its list entries are not new again.
+     */
+    public static void markSeen(Preference pref) {
+        try {
+            CharSequence title = pref.getTitle();
+            if (!NewIndicatorSpan.isIn(title)) {
+                return;
+            }
+
+            String key = pref.getKey();
+            Logger.printDebug(() -> "New setting seen: " + key);
+
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.remove(FIRST_SEEN_KEY_PREFIX + key);
+            if (pref instanceof CustomDialogListPreference listPref) {
+                CharSequence[] entryValues = listPref.getEntryValues();
+                if (entryValues != null) {
+                    for (CharSequence entryValue : entryValues) {
+                        editor.remove(FIRST_SEEN_KEY_PREFIX + listEntryId(key, entryValue));
+                    }
+                }
+                listPref.setNewEntryValues(null, DOT_COLOR);
+            }
+            editor.apply();
+
+            pref.setTitle(NewIndicatorSpan.removeFrom(title));
+
+            for (PreferenceGroup parent = pref.getParent(); parent != null; parent = parent.getParent()) {
+                if (containsNew(parent)) {
+                    // The screens above contain the same new preference.
+                    break;
+                }
+                CharSequence parentTitle = parent.getTitle();
+                if (NewIndicatorSpan.isIn(parentTitle)) {
+                    parent.setTitle(NewIndicatorSpan.removeFrom(parentTitle));
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "markSeen failure", ex);
+        }
+    }
+
+    /**
+     * @return If the group contains a preference with a dot.
+     *         Only preferences are checked, since the title of a screen may not have a dot.
+     */
+    private static boolean containsNew(PreferenceGroup group) {
+        for (int i = 0, count = group.getPreferenceCount(); i < count; i++) {
+            Preference pref = group.getPreference(i);
+            if (pref instanceof PreferenceGroup subGroup
+                    ? containsNew(subGroup)
+                    : NewIndicatorSpan.isIn(pref.getTitle())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * A preference screen opens as a dialog that uses the screen title as its window title.
+     * Android 12 and 12L crash when logging a canceled input event of a window
+     * if the title is not a String, so the title of a screen cannot have a span.
+     */
+    private static boolean canMarkScreenTitle() {
+        return Build.VERSION.SDK_INT != Build.VERSION_CODES.S
+                && Build.VERSION.SDK_INT != Build.VERSION_CODES.S_V2;
     }
 }

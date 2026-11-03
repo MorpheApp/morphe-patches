@@ -10,7 +10,6 @@ package app.morphe.extension.music.patches.lyrics.derive;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -27,19 +26,21 @@ import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.romanizers.HangulRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
+import app.morphe.extension.music.patches.lyrics.romanizers.LyricsLanguageDetector;
 import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.translation.TextTranslator;
 
 public final class LyricsRomanizer {
 
     private static final String RULE_BASED_DICTIONARY = "Local (Rule-based)";
     /** A provider reading must cover at least this share of the lyric to be usable. */
-    private static final double MIN_READING_COVERAGE = 0.40;
+    private static final double MIN_READING_COVERAGE = 0.20;
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     private LyricsRomanizer() {
@@ -131,7 +132,9 @@ public final class LyricsRomanizer {
                 } else if (ScriptDetector.contains(reading, Character.UnicodeScript.HANGUL)) {
                     reading = HangulRomanizer.romanize(reading).trim();
                 } else if (ScriptDetector.containsKana(reading)) {
-                    reading = KanaRomanizer.romanize(reading).trim();
+                    if (!allowTransliteration) {
+                        reading = KanaRomanizer.romanize(reading).trim();
+                    }
                 }
                 if (allowTransliteration || isPurelyLatinScript(reading)) {
                     return reading;
@@ -145,7 +148,7 @@ public final class LyricsRomanizer {
             if (ScriptDetector.contains(original, Character.UnicodeScript.HANGUL)) {
                 fallback = HangulRomanizer.romanize(original).trim();
             } else if (ScriptDetector.containsKana(original)) {
-                fallback = KanaRomanizer.romanize(original).trim();
+                fallback = allowTransliteration ? original.trim() : KanaRomanizer.romanize(original).trim();
             }
             if (fallback != null && (allowTransliteration || isPurelyLatinScript(fallback))) {
                 return fallback;
@@ -297,7 +300,15 @@ public final class LyricsRomanizer {
                 Settings.LYRICS_ROMANIZATION_PROVIDERS.get(),
                 AiProviders.ROMANIZATION_ORDER);
         if (providers.isEmpty()) {
-            callback.onRomanized(null, false, false, null, false, null);
+            callback.onRomanized(null, false, false, null, false, null, false);
+            return;
+        }
+
+        // Local readers cost no request and know for themselves whether they have a reading.
+        final boolean hasLocalReader = providers.contains(AiProviders.RIME)
+                || providers.contains(AiProviders.LOCAL);
+        if (!hasLocalReader && !LyricsLanguageDetector.needsRomanization(lyrics.lines())) {
+            callback.onRomanized(null, false, false, null, false, null, true);
             return;
         }
 
@@ -313,7 +324,7 @@ public final class LyricsRomanizer {
             boolean hasWordRomaji = (perWord
                     && hasUsableWordReading(lyrics.lines(), allowTransliteration))
                     || (isWordSynced && hasUsableWordReading(result, allowTransliteration));
-            callback.onRomanized(result, false, false, null, hasWordRomaji, null);
+            callback.onRomanized(result, false, false, null, hasWordRomaji, null, false);
             return;
         }
 
@@ -346,7 +357,7 @@ public final class LyricsRomanizer {
                                 lyrics.lines(), allowTransliteration));
                         Utils.runOnMainThread(() -> callback.onRomanized(
                                 finalResult, result.fromGoogle(), result.fromAI(), result.model(),
-                                hasWordRomaji, result.localDictionary()));
+                                hasWordRomaji, result.localDictionary(), false));
                         return;
                     } catch (Exception ex) {
                         Logger.printInfo(() -> "romanization provider failed: " + provider, ex);
@@ -354,11 +365,11 @@ public final class LyricsRomanizer {
                 }
 
                 Utils.runOnMainThread(
-                        () -> callback.onRomanized(null, false, false, null, false, null));
+                        () -> callback.onRomanized(null, false, false, null, false, null, false));
             } catch (Exception ex) {
                 Logger.printInfo(() -> "romanize failure", ex);
                 Utils.runOnMainThread(
-                        () -> callback.onRomanized(null, false, false, null, false, null));
+                        () -> callback.onRomanized(null, false, false, null, false, null, false));
             }
         });
     }
@@ -690,14 +701,10 @@ public final class LyricsRomanizer {
                 romanizedGuides.add("");
             }
 
-            List<String> originalSyllables = new ArrayList<>(count);
-            for (Word w : origWords) {
-                originalSyllables.add(w.text() != null ? w.text() : "");
-            }
-
             globalSyllableIndex += count;
 
-            List<String> alignedChunks = alignRomanizationAnchors(fullLineRom, romanizedGuides, originalSyllables);
+            List<String> alignedChunks = List.of(LocalRomanizer.allocateReading(
+                    fullLineRom, count, romanizedGuides));
 
             List<Word> romanizedWords = new ArrayList<>(count);
             StringBuilder lineRomBuilder = new StringBuilder();
@@ -705,8 +712,15 @@ public final class LyricsRomanizer {
             for (int wIdx = 0; wIdx < count; wIdx++) {
                 Word w = origWords.get(wIdx);
                 String rom = (wIdx < alignedChunks.size() && alignedChunks.get(wIdx) != null) ? alignedChunks.get(wIdx) : "";
-                romanizedWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace()));
+                romanizedWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace(), w.ruby()));
+                romanizedWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace(), w.ruby()));
+                if (lineRomBuilder.length() > 0 && lineRomBuilder.charAt(lineRomBuilder.length() - 1) != ' ') {
+                    lineRomBuilder.append(' ');
+                }
                 lineRomBuilder.append(rom);
+                if (w.endsWithSpace()) {
+                    lineRomBuilder.append(' ');
+                }
             }
 
             String finalLineRom = !fullLineRom.isEmpty() ? fullLineRom : lineRomBuilder.toString().trim();
@@ -792,7 +806,7 @@ public final class LyricsRomanizer {
             boolean fallbackToSungLine) {
         // Keys are xml:lang from the file, with "romaji" standing in for a sidecar that named none.
         String langTag = LyricsRequests.isDefaultRomanizationLanguage()
-                ? Locale.getDefault().toLanguageTag()
+                ? Requester.getAppLocale().toLanguageTag()
                 : LyricsRequests.romanizationLanguage();
         String langCode = LyricsRequests.primarySubtag(langTag);
 
@@ -950,26 +964,11 @@ public final class LyricsRomanizer {
             }
             return false;
         }
-        // A counter reading left with its digit, such as 1-ri, 1-tsu or 2nin.
-        if (s.matches("^\\d+-[a-z]+$") || s.matches("^\\d+[a-z]+$")) {
-            return true;
-        }
-        // A sokuon written as a symbol, such as ~tsu or -tsu.
-        if (s.contains("-tsu")) {
-            return true;
-        }
-        if (!allowTilde && (s.contains("~tsu") || s.contains("～tsu")
-                || s.endsWith("~") || s.startsWith("~") || s.contains("～") || s.contains("~"))) {
-            return true;
-        }
         // A symbol or punctuation mark on its own.
         if (s.equals("-") || s.equals("^") || s.equals("_")
                 || (!allowTilde && (s.equals("~") || s.equals("～")))) {
             return true;
         }
-        // Pinyin is checked at the track level, where a majority of syllables is needed. A
-        // single token is not enough evidence and would reject valid Japanese readings.
-
         // A doubled consonant on its own, which is a sokuon split from its mora.
         return s.equals("pp") || s.equals("tt") || s.equals("kk") || s.equals("ss")
                 || s.equals("cc") || s.equals("dd") || s.equals("bb") || s.equals("ff")
@@ -1055,7 +1054,8 @@ public final class LyricsRomanizer {
                     }
                     totalTokens++;
                     totalChars += t.length();
-                    if (t.length() == 1 && Character.isLetter(t.charAt(0))) {
+                    if (t.length() == 1 && Character.isLetter(t.charAt(0))
+                            && !(japaneseSource && isJapaneseSingleLetterMora(t.charAt(0)))) {
                         singleLetterTokens++;
                         allSingleLetterTokens++;
                     }
@@ -1132,7 +1132,8 @@ public final class LyricsRomanizer {
                             }
                             totalWordTokens++;
                             charWordTokens += t.length();
-                            if (t.length() == 1 && Character.isLetter(t.charAt(0))) {
+                            if (t.length() == 1 && Character.isLetter(t.charAt(0))
+                                    && !(japaneseSource && isJapaneseSingleLetterMora(t.charAt(0)))) {
                                 singleWordTokens++;
                                 allSingleWordTokens++;
                             }
@@ -1171,6 +1172,13 @@ public final class LyricsRomanizer {
         return false;
     }
 
+    private static boolean isJapaneseSingleLetterMora(char c) {
+        return switch (Character.toLowerCase(c)) {
+            case 'a', 'i', 'u', 'e', 'o', 'n' -> true;
+            default -> false;
+        };
+    }
+
     private static List<LyricsLine> alignLinesToWordSync(@Nullable Lyrics lyrics, @Nullable List<LyricsLine> rLines) {
         if (lyrics == null || lyrics.lines() == null || rLines == null) {
             return rLines;
@@ -1194,12 +1202,13 @@ public final class LyricsRomanizer {
                 continue;
             }
             List<Word> origWords = orig.words();
-            List<String> alignedChunks = alignRomanizationAnchors(origWords, fullRoma);
+            List<String> alignedChunks = List.of(LocalRomanizer.allocateReading(
+                    fullRoma, origWords.size(), guidesForWords(origWords, fullRoma)));
             List<Word> rWords = new ArrayList<>(origWords.size());
             for (int w = 0; w < origWords.size(); w++) {
                 Word ow = origWords.get(w);
                 String chunk = (w < alignedChunks.size()) ? alignedChunks.get(w) : "";
-                rWords.add(new Word(ow.startMs(), ow.endMs(), ow.text(), chunk, ow.endsWithSpace()));
+                rWords.add(new Word(ow.startMs(), ow.endMs(), ow.text(), chunk, ow.endsWithSpace(), ow.ruby()));
             }
             out.add(new LyricsLine(orig.startTimeMs(), orig.endTimeMs(), fullRoma, rWords,
                     orig.agentId(), orig.isDuet(), orig.isBG(), orig.songPart()));
@@ -1242,269 +1251,31 @@ public final class LyricsRomanizer {
         return true;
     }
 
-    private static int levenshteinDistance(String s1, String s2) {
-        int len1 = s1.length();
-        int len2 = s2.length();
-        int[] prev = new int[len2 + 1];
-        int[] curr = new int[len2 + 1];
-        for (int j = 0; j <= len2; j++) prev[j] = j;
-        for (int i = 1; i <= len1; i++) {
-            curr[0] = i;
-            char c1 = s1.charAt(i - 1);
-            for (int j = 1; j <= len2; j++) {
-                char c2 = s2.charAt(j - 1);
-                int cost = (c1 == c2) ? 0 : 1;
-                curr[j] = Math.min(Math.min(curr[j - 1] + 1, prev[j] + 1), prev[j - 1] + cost);
-            }
-            System.arraycopy(curr, 0, prev, 0, len2 + 1);
-        }
-        return prev[len2];
-    }
-
-    private static List<String> alignRomanizationAnchors(
-            @Nullable List<Word> origWords,
-            @Nullable String fullText) {
-        if (origWords == null || origWords.isEmpty()) return Collections.emptyList();
-        final int count = origWords.size();
+    /** A local reading per word, used only to choose which whole tokens belong together. */
+    private static List<String> guidesForWords(List<Word> words, String fullText) {
         final boolean allowTransliteration = Settings.LYRICS_ALLOW_TRANSLITERATION.get();
         final boolean targetHasCjk = ScriptDetector.containsCjk(fullText);
-        List<String> originalSyllables = new ArrayList<>(count);
-        List<String> romanizedGuides = new ArrayList<>(count);
-        for (Word w : origWords) {
+        List<String> guides = new ArrayList<>(words.size());
+        for (Word w : words) {
             String text = w.text() != null ? w.text() : "";
-            originalSyllables.add(text);
             String guide = wordReading(w, allowTransliteration);
-            // A Han word reading cannot guide a Latin line reading. Fall back to the word's
-            // own pronunciation, the same reading the line is likely built from.
+            // A Han word reading cannot guide a Latin line reading.
             if (!targetHasCjk && ScriptDetector.containsCjk(guide)) {
                 guide = wordReading(w, false);
             }
             if (guide.isEmpty() && isPurelyLatinScript(text)) {
                 guide = text.trim();
             }
-            romanizedGuides.add(guide);
+            guides.add(guide);
         }
-        return alignRomanizationAnchors(fullText != null ? fullText : "", romanizedGuides, originalSyllables);
-    }
-
-    /**
-     * Partitions fullText into M segments that phonetically match the guides while preserving spaces.
-     */
-    private static List<String> alignRomanizationAnchors(
-            String fullText,
-            List<String> romanizedGuides,
-            List<String> originalSyllables) {
-        final String target = fullText;
-        final int N = target.length();
-        final int M = romanizedGuides.size();
-
-        if (M == 0) return Collections.emptyList();
-        if (N == 0) {
-            List<String> empty = new ArrayList<>(M);
-            for (int i = 0; i < M; i++) empty.add("");
-            return empty;
-        }
-
-        boolean anyGuide = false;
-        for (String g : romanizedGuides) {
-            if (g != null && !g.trim().isEmpty()) {
-                anyGuide = true;
-                break;
-            }
-        }
-        if (!anyGuide && !target.trim().isEmpty()) {
-            String[] split = target.trim().split("\\s+");
-            List<String> chunks = new ArrayList<>(M);
-            if (split.length == M) {
-                for (int i = 0; i < M; i++) {
-                    chunks.add(split[i] + (i < M - 1 ? " " : ""));
-                }
-                return chunks;
-            } else if (split.length > 0) {
-                if (split.length < M) {
-                    // When the source words are all Han/kana and the reading has fewer
-                    // space-separated pieces than words, split the reading by characters.
-                    // Otherwise a one-word reading such as "你的名字" would be assigned
-                    // entirely to the last word and the other words would show the lyric.
-                    if (ScriptDetector.containsCjk(target) || isAllCjk(originalSyllables)) {
-                        return splitReadingByCharacter(target, M);
-                    }
-                    for (int i = 0; i < M; i++) {
-                        int tokStart = (i * split.length) / M;
-                        int tokEnd = ((i + 1) * split.length) / M;
-                        String rom = (tokEnd > tokStart && tokStart < split.length) ? split[tokStart] : "";
-                        chunks.add(rom + (!rom.isEmpty() && i < M - 1 ? " " : ""));
-                    }
-                } else {
-                    for (int i = 0; i < M; i++) {
-                        int tokStart = (i * split.length) / M;
-                        int tokEnd = (i == M - 1) ? split.length : (((i + 1) * split.length) / M);
-                        StringBuilder sb = new StringBuilder();
-                        for (int k = tokStart; k < tokEnd && k < split.length; k++) {
-                            if (sb.length() > 0) sb.append(" ");
-                            sb.append(split[k]);
-                        }
-                        if (i < M - 1) sb.append(" ");
-                        chunks.add(sb.toString());
-                    }
-                }
-                return chunks;
-            }
-        }
-
-        double[][] dp = new double[M + 1][N + 1];
-        int[][] path = new int[M + 1][N + 1];
-
-        for (int i = 0; i <= M; i++) {
-            Arrays.fill(dp[i], Double.MAX_VALUE);
-            Arrays.fill(path[i], -1);
-        }
-
-        dp[0][0] = 0.0;
-
-        for (int i = 1; i <= M; i++) {
-            String guideRom = romanizedGuides.get(i - 1);
-            boolean isLatin = (i - 1 < originalSyllables.size()) && isPurelyLatinScript(originalSyllables.get(i - 1));
-            int guideLen = guideRom.length();
-
-            // A Latin word reads as itself, so its length barely changes; other scripts may change a lot.
-            int minLen = isLatin ? Math.max(1, guideLen - 1) : 1;
-            int maxLen = isLatin ? guideLen + 3 : Math.max(guideLen * 3 + 3, 15);
-
-            for (int j = 1; j <= N; j++) {
-                double bestLocalCost = Double.MAX_VALUE;
-                int bestPrevJ = -1;
-
-                for (int len = minLen; len <= maxLen; len++) {
-                    int k = j - len;
-                    if (k < 0) break;
-
-                    if (dp[i - 1][k] == Double.MAX_VALUE) continue;
-
-                    String candidate = target.substring(k, j);
-                    double segmentCost = calculateMatchCost(candidate, guideRom, isLatin);
-                    double totalCost = dp[i - 1][k] + segmentCost;
-
-                    if (totalCost < bestLocalCost) {
-                        bestLocalCost = totalCost;
-                        bestPrevJ = k;
-                    }
-                }
-
-                dp[i][j] = bestLocalCost;
-                path[i][j] = bestPrevJ;
-            }
-        }
-
-        List<String> results = new ArrayList<>(Collections.nCopies(M, ""));
-        int currJ = N;
-
-        // If no partition covers the whole text, the cheapest one that gets furthest is used.
-        if (dp[M][N] == Double.MAX_VALUE) {
-            double minEndCost = Double.MAX_VALUE;
-            for (int k = N; k >= 0; k--) {
-                if (dp[M][k] < minEndCost) {
-                    minEndCost = dp[M][k];
-                    currJ = k;
-                }
-            }
-        }
-
-        for (int i = M; i > 0; i--) {
-            int prevJ = path[i][currJ];
-            if (prevJ == -1) {
-                results.set(i - 1, "");
-            } else {
-                results.set(i - 1, target.substring(prevJ, currJ));
-                currJ = prevJ;
-            }
-        }
-
-        // Characters no partition covered go to the first or the last piece.
-        if (currJ > 0 && !results.isEmpty()) {
-            results.set(0, target.substring(0, currJ) + results.get(0));
-        }
-        int totalLen = 0;
-        for (String r : results) totalLen += r.length();
-        if (totalLen < N && !results.isEmpty()) {
-            int safeStart = Math.min(target.length(), Math.max(0, totalLen));
-            results.set(results.size() - 1, results.get(results.size() - 1) + target.substring(safeStart));
-        }
-
-        return results;
-    }
-
-    /** Whether every written word is in a script that does not put spaces between words. */
-    private static boolean isAllCjk(List<String> syllables) {
-        if (syllables.isEmpty()) {
-            return false;
-        }
-        for (String syllable : syllables) {
-            if (syllable == null || syllable.trim().isEmpty()
-                    || !ScriptDetector.containsCjk(syllable)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Splits a reading across words by code point. Used when a CJK reading has fewer spaces
-     * than there are words, since a Han syllable or a romanized kana syllable is a character
-     * rather than a whitespace-delimited token.
-     */
-    private static List<String> splitReadingByCharacter(String text, int count) {
-        StringBuilder compact = new StringBuilder(text.length());
-        for (int i = 0; i < text.length(); ) {
-            int cp = Character.codePointAt(text, i);
-            i += Character.charCount(cp);
-            if (!Character.isWhitespace(cp)) {
-                compact.appendCodePoint(cp);
-            }
-        }
-        text = compact.toString();
-
-        List<String> chunks = new ArrayList<>(count);
-        final int total = text.codePointCount(0, text.length());
-        int at = 0;
-        for (int i = 0; i < count; i++) {
-            int endCodePoint = (int) ((long) total * (i + 1) / count);
-            int end = text.offsetByCodePoints(0, endCodePoint);
-            String chunk = text.substring(at, end);
-            if (!chunk.isEmpty() && i < count - 1) {
-                chunk += " ";
-            }
-            chunks.add(chunk);
-            at = end;
-        }
-        return chunks;
-    }
-
-    private static double calculateMatchCost(String candidate, String guide, boolean isLatin) {
-        String cTrim = candidate.trim();
-        String gTrim = guide.trim();
-
-        if (cTrim.isEmpty() && !gTrim.isEmpty()) return 50.0;
-
-        String cLower = cTrim.toLowerCase(Locale.ROOT);
-        String gLower = gTrim.toLowerCase(Locale.ROOT);
-        int dist = levenshteinDistance(cLower, gLower);
-
-        if (isLatin) {
-            return dist * 50.0 + (Math.abs(candidate.length() - guide.length()) * 0.5);
-        }
-
-        int lenDiff = Math.abs(cTrim.length() - gTrim.length());
-        boolean hasTrailingSpace = candidate.endsWith(" ");
-        double bonus = hasTrailingSpace ? -0.5 : 0.0;
-
-        return dist + (lenDiff * 0.8) + bonus;
+        return guides;
     }
 
     public interface Callback {
+        /** @param skipped No provider was asked anything, so a caller reports nothing to do. */
         void onRomanized(@Nullable List<LyricsLine> romanizedLines,
                          boolean fromGoogle, boolean fromAI, @Nullable String aiModel,
-                         boolean perWord, @Nullable String localDictionary);
+                         boolean perWord, @Nullable String localDictionary, boolean skipped);
 
     }
 

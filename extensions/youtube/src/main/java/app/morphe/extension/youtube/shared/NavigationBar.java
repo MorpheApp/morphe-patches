@@ -668,6 +668,10 @@ public final class NavigationBar {
          */
         SETTINGS("SETTINGS", "SETTINGS_CAIRO"),
         /**
+         * Only shown when 'Show Watch later' is turned on.
+         */
+        WATCH_LATER("WATCH_LATER", "WATCH_LATER_FILLED", "WATCH_LATER_CAIRO"),
+        /**
          * Only shown when 'Show Series in navigation bar' is turned on.
          */
         SERIES("PLAYLISTS"),
@@ -706,7 +710,7 @@ public final class NavigationBar {
          */
         boolean closesSearch() {
             return this == HOME || this == SHORTS || this == SUBSCRIPTIONS
-                    || this == NOTIFICATIONS || this == SERIES || this == LIBRARY;
+                    || this == NOTIFICATIONS || this == SERIES || this == WATCH_LATER || this == LIBRARY;
         }
 
         /**

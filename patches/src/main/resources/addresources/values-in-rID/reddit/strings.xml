@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Kebijakan privasi Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Google login tidak tersedia. Gunakan email untuk login</string>
+  <string name="morphe_app_downgrade_dialog_title">Downgrade tidak didukung</string>
+  <string name="morphe_app_downgrade_dialog_message">"Instalasi Reddit ini diturunkan versinya dari &lt;b&gt;%1$s&lt;/b&gt; ke &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Data aplikasi dari versi yang lebih baru tidak berfungsi dengan versi yang lebih lama dan aplikasi mungkin tidak berjalan dengan benar.
+&lt;br/&gt;&lt;br/&gt;
+Untuk menggunakan versi yang lebih lama, Anda harus &lt;b&gt;mencopot pemasangan&lt;/b&gt; Reddit lalu instal versi yang lebih lama tersebut."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Buka info aplikasi</string>
   <string name="morphe_screen_ads_title">Iklan</string>
   <string name="morphe_hide_post_ads_title">Sembunyikan iklan feed</string>
   <string name="morphe_hide_comment_ads_title">Sembunyikan iklan komentar</string>

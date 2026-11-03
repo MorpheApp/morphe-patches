@@ -63,9 +63,11 @@ public class TranslatedCaptionPensPatch {
     public static void setParsedRequest(@Nullable Object request) {
         boolean translated = false;
         boolean automatic = false;
+        Object parsedTrack = null;
         try {
             if (request instanceof CaptionRequestInterface captionRequest
                     && captionRequest.patch_getCaptionTrack() instanceof PreferredCaptionLanguagePatch.CaptionTrackInterface track) {
+                parsedTrack = track;
                 String vssId = track.patch_getVssId();
                 // Auto-translated vss ids are "t" + source vss id + "." + language code.
                 translated = vssId.startsWith("t");
@@ -78,6 +80,7 @@ public class TranslatedCaptionPensPatch {
         // A failed native getter must not leave the previous track state enabled.
         isAutoTranslatedTrack.set(translated);
         isTranslatedAutomaticTrack.set(translated && automatic);
+        CaptionTracks.setTrack(parsedTrack);
         StableCaptionBlocks.setAutomaticTrack(automatic);
     }
 
@@ -88,7 +91,7 @@ public class TranslatedCaptionPensPatch {
      */
     public static InputStream repairInput(@Nullable InputStream input) throws IOException {
         boolean repair = Boolean.TRUE.equals(isTranslatedAutomaticTrack.get());
-        if (input == null || (!repair && !StableCaptionBlocks.isCapturing())) return input;
+        if (input == null || (!repair && !StableCaptionBlocks.isCapturing() && !CaptionTracks.observing())) return input;
         CaptionInputReplay.Copy copy = CaptionInputReplay.copy(input, CaptionXml.MAX_BYTES);
         if (!copy.complete) return copy.input;
         Document document = CaptionXml.read(copy.bytes);

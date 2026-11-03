@@ -135,14 +135,14 @@ Teid ei teavitatakse ühegi ootamatutest sündmustest"</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Sunni sisse</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Blokeeri</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Eemalda</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Funktsiooni lipud salvestatud</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Funktsiooni lipud lähtestatud</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Funktsioonilipud salvestatud</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Funktsioonilipud lähtestatud</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funktsioonilipud kopeeritud lõikelauale</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Selle seade kasutamiseks taaskäivitage rakendus</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">Eksportimine ja importimine</string>
   <string name="morphe_debug_feature_flags_manager_import_success">Importeeritud %s funktsioonilipud</string>
   <string name="morphe_debug_feature_flags_manager_import_failed">Funktsioonilülitid ei leitud</string>
-  <string name="morphe_debug_feature_flags_manager_export_file_success">Funktsiooni lipud eksporteeriti edukalt</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Funktsioonilipud eksporteeriti edukalt</string>
   <string name="morphe_debug_feature_flags_manager_export_file_failed">Funktsioonilippude eksport ebaõnnestus</string>
   <string name="morphe_debug_feature_flags_manager_import_file_success">Funktsioonilipud laaditi, puudutage Salvesta, et rakendada</string>
   <string name="morphe_debug_feature_flags_manager_import_file_failed">Faili lugemine ebaõnnestus</string>
@@ -153,7 +153,7 @@ Pool %s lippest on blokeeritud ja pärast iga taaskäivitamist teatate, kas käi
 
 Taastage käitumine üks kord enne alustamist, vastasel juhul puuduvad otsingust lipud, mida rakendus veel ei ole küsinud"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Alusta</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Otsimiseks ei ole funktsiooni lippe
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Otsimiseks ei ole funktsioonilippud
 
 Binaarses otsingus saab kasutada ainult neid lippe, millega rakendus on kokku põlnud ja mis ei ole hetkel sunnitud olema sisselülitatud"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_status">"Samm %1$s
@@ -217,7 +217,7 @@ Kui aku optimeerimist ei muudeta, võib esineda järgmist:
   <string name="morphe_link_handling_summary">Konfigureeri linkide avamine selles rakenduses</string>
   <string name="morphe_link_handling_step1_title">Samm 1: Keela algse rakenduse lingid</string>
   <string name="morphe_link_handling_step1_message">Avage algse rakenduse seaded ja keelake kõik domeenilingid</string>
-  <string name="morphe_link_handling_step2_title">Samm 2: Luba parandatud rakendus lingid</string>
+  <string name="morphe_link_handling_step2_title">Samm 2: Luba parandatud rakenduse lingid</string>
   <string name="morphe_link_handling_step2_message">Avage parandatud rakenduse seaded ja lubage kõik domeenilingid</string>
   <string name="morphe_link_handling_open">Ava seaded</string>
   <!-- misc.checks.experimentalAppNoticePatch -->

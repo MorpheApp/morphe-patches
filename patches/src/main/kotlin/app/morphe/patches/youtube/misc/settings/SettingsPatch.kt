@@ -54,6 +54,7 @@ import app.morphe.patches.youtube.misc.fix.accessibility.fixCaptionsAccessibilit
 import app.morphe.patches.youtube.misc.fix.accessibility.fixShortsAccessibilityPatch
 import app.morphe.patches.youtube.misc.fix.accessibility.fixTouchExplorationPatch
 import app.morphe.patches.youtube.misc.fix.contentprovider.fixContentProviderPatch
+import app.morphe.patches.youtube.misc.fix.guidecache.fixGuideCachePatch
 import app.morphe.patches.youtube.misc.fix.likebutton.fixLikeButtonPatch
 import app.morphe.patches.youtube.misc.fix.padding.fixPagePaddingPatch
 import app.morphe.patches.youtube.misc.fix.pipchatbar.fixPipChatBarPatch
@@ -234,6 +235,7 @@ val settingsPatch = bytecodePatch(
         fixPreferenceIconPatch,
         fixLikeButtonPatch,
         fixContentProviderPatch,
+        fixGuideCachePatch,
         fixPipChatBarPatch,
         fixPagePaddingPatch,
         addLicensePatch,
@@ -369,6 +371,14 @@ val settingsPatch = bytecodePatch(
             0,
             "invoke-static { }, $NATIVE_SNACKBAR_CLASS->initialize()V"
         )
+
+        // Show the snackbars right above the navigation bar and the miniplayer.
+        BottomUiContainerOnLayoutFingerprint.let {
+            it.method.addInstruction(
+                it.instructionMatches.first().index + 1,
+                "invoke-static { p0 }, $NATIVE_SNACKBAR_CLASS->removeExtraBottomRoom(Landroid/widget/FrameLayout;)V"
+            )
+        }
 
         modifyActivityForSettingsInjection(
             GoogleApiActivityOnCreateFingerprint,

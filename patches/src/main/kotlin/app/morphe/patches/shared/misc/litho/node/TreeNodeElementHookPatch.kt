@@ -11,23 +11,16 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatch
-import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.getFreeRegisterProvider
-import app.morphe.patcher.util.getReference
-import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import java.lang.ref.WeakReference
@@ -52,8 +45,7 @@ private lateinit var lazilyConvertedElementLoadedMethodRef: WeakReference<Mutabl
 internal fun createTreeNodeElementHookPatch(
     sharedExtensionPatchDep: BytecodePatch,
     conversionContextPatchDep: BytecodePatch,
-    addLithoContainerInterface: Boolean,
-    useLegacyContextRegister: BytecodePatchBuilder.() -> Boolean
+    addLithoContainerInterface: Boolean
 ): BytecodePatch = bytecodePatch(
     description = "Hooks the tree node element lists to the extension."
 ) {
@@ -121,21 +113,7 @@ internal fun createTreeNodeElementHookPatch(
             }
 
             TreeNodeListHelperConstructorFingerprint.let {
-                val index = if (useLegacyContextRegister()) {
-                    val p2 = it.method.p0Register + 2
-                    it.method.indexOfFirstInstructionOrThrow {
-                        opcode == Opcode.IPUT_OBJECT && (this as TwoRegisterInstruction).registerA == p2
-                    }
-                } else {
-                    it.method.indexOfFirstInstructionOrThrow {
-                        opcode == Opcode.IPUT_OBJECT
-                    }
-                }
-
-                val field = it.method.getInstruction<ReferenceInstruction>(index)
-                    .getReference<FieldReference>()!!
-
-                addLithoContainerInterface(it.classDef, field)
+                addLithoContainerInterface(it.classDef, it.instructionMatches[1].fieldReference)
             }
         }
     }

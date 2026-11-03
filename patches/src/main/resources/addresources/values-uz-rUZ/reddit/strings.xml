@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit maxfiylik siyosati</string>
   <string name="morphe_google_signin_not_available_toast">Google orqali kirish mavjud emas. Elektron pochtadan foydalanib kiring.</string>
+  <string name="morphe_app_downgrade_dialog_title">Versiyani pasaytirish qo\'llab-quvvatlanmaydi</string>
+  <string name="morphe_app_downgrade_dialog_message">"Ushbu Reddit ilovasi &lt;b&gt;%1$s&lt;/b&gt; versiyasidan &lt;b&gt;%2$s&lt;/b&gt; versiyasigacha pasaytirildi
+&lt;br/&gt;&lt;br/&gt;
+Yangi versiyadagi ilova ma'lumotlari eski versiyalar bilan ishlamaydi va ilova noto'g'ri ishlashi mumkin.
+&lt;br/&gt;&lt;br/&gt;
+Eski versiyadan foydalanish uchun, Reddit ilovasini &lt;b&gt;o'chirishingiz&lt;/b&gt; va so'ngra eski versiyani o'rnatishingiz kerak."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Ilova ma\'lumotlarini ochish</string>
   <string name="morphe_screen_ads_title">Reklama</string>
   <string name="morphe_hide_post_ads_title">Yashirish: Lentadagi reklamalar</string>
   <string name="morphe_hide_comment_ads_title">Yashirish: Izohlardagi reklamalar</string>
@@ -55,6 +62,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Lenta va qidirish takliflaridan Trending javonlarni yashiradi</string>
   <string name="morphe_remove_notification_dialog_title">Bildirishnoma taklif dialogini olib tashlash</string>
   <string name="morphe_remove_notification_dialog_summary">Subredditga tashrif buyurganingizda bildirishnoma taklif dialogini avtomatik ravishda yopib qo\'yadi</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Bosh sahifa lentasida flayrlarni ko\'rsatish</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Bosh sahifa lentasida post flayr belgilari ko\'rsatiladi</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Lenta elementlarining ba\'zilarida flayr ko\'rinmasligi mumkin</string>
   <string name="morphe_show_view_count_title">Postlardagi ko\'rishlar sonini ko\'rsatish</string>
   <string name="morphe_show_view_count_summary">Cheklash: Agar API javobi ko\'rishlar sonini o\'z ichiga olsa,gina mavjud.</string>
   <string name="morphe_remove_nsfw_dialog_title">NSFW ogohlantirish dialogini olib tashlash</string>
@@ -66,8 +76,46 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_summary">O\'rtoqlashgan havolalardan kuzatuv parametrlarini olib tashlaydi</string>
   <string name="morphe_open_links_directly_title">Havolalarni to\'g\'ridan ochish</string>
   <string name="morphe_open_links_directly_summary">Tashqi havolalarni ochganda yo\'naltirish URL-larini bypass qiladi</string>
+  <string name="morphe_redgifs_audio_title">Redgifs\'larni audio bilan ijro etish</string>
+  <string name="morphe_redgifs_audio_summary">Reddit nusxasi o´rniga asl Redgifs videosini ijro etadi, chunki nusxada ko´p hollarda audio bo´lmaydi</string>
+  <string name="morphe_redgifs_hd_title">Redgifs HD sifati</string>
+  <string name="morphe_redgifs_hd_summary">HD Redgifs videosini ijro etadi. HD videolar hajmi kattaroq bo´lib, yuklanish uchun to´xtab qolishi mumkin</string>
+  <string name="morphe_download_location_title">Yuklab olish joyi</string>
+  <string name="morphe_download_location_all_title">Barcha akkauntlar</string>
+  <string name="morphe_download_location_default_summary">Reddit standarti: tasvirlar Pictures/Reddit papkasiga, videolar Download papkasiga</string>
+  <string name="morphe_download_location_summary_folder">Papka: %s</string>
+  <string name="morphe_download_location_summary_pattern">Fayl nomi: %s</string>
+  <string name="morphe_download_location_pattern_default">Reddit fayl nomlari</string>
+  <string name="morphe_download_location_uses_all_summary">\"Barcha akkauntlar\"dan foydalanadi</string>
+  <string name="morphe_download_location_own_title">O\"z joylashuvidan foydalanish</string>
+  <string name="morphe_download_location_folder_title">Saqlash joyi</string>
+  <string name="morphe_download_location_folder_default">Reddit\'ning standart papkalari</string>
   <string name="morphe_download_location_folder_default_short">Standart</string>
+  <string name="morphe_download_location_subfolder_hint">Quyi papka</string>
+  <string name="morphe_download_location_subfolder_tree_hint">Fayl nomida / belgisi orqali quyi papkalar qo\"shing</string>
+  <string name="morphe_download_location_browse">Ko\"rish…</string>
+  <string name="morphe_download_location_no_picker">Ushbu qurilmada papka tanlagich mavjud emas</string>
+  <string name="morphe_download_location_pattern_title">Fayl nomi</string>
+  <string name="morphe_download_location_pattern_hint">Reddit\'ning fayl nomi</string>
+  <string name="morphe_download_location_pattern_help">Kiritish uchun tokenni bosing. / belgisi quyi papka yaratadi. Noma\"lum qiymatlar \"unknown\"ga aylanadi</string>
+  <string name="morphe_download_location_example_images">Rasmlar: %s</string>
+  <string name="morphe_download_location_example_videos">Videolar: %s</string>
+  <string name="morphe_download_location_save">Saqlash</string>
+  <string name="morphe_download_location_reset">Tiklash</string>
+  <string name="morphe_download_location_delete">O\'chirish</string>
+  <string name="morphe_download_location_reset_confirm">Barcha akkauntlarning yuklab olish joyini Reddit\'ning standart holatiga qaytarishmi?</string>
+  <string name="morphe_download_location_delete_confirm">%s yuklab olish joyini o\'chirishmi?</string>
+  <string name="morphe_download_location_save_failed">Yuklab olish joyiga saqlab bo\'lmadi. Buning o\'rniga Reddit\'ning standart papkasiga saqlandi</string>
+  <string name="morphe_download_location_folder_unavailable">Yuklab olish papkasi endi mavjud emas. Buning o\'rniga Reddit\'ning standart papkasiga saqlandi</string>
+  <string name="morphe_download_location_video_failed">Yuklab olingan videoni saqlab bo\'lmadi</string>
+  <string name="morphe_download_location_invalid_folder">Ushbu papkadan yuklab olishlar uchun foydalanib bo\'lmaydi</string>
+  <string name="morphe_download_location_account_current">%s (hozirgi)</string>
+  <string name="morphe_download_location_account_logged_out">%s (tizimga kirmagan)</string>
+  <string name="morphe_download_location_account_anonymous">Anonim (tizimdan chiqqan yoki inkognito rejimida)</string>
   <string name="morphe_open_links_externally_title">Havolalarni tashqi ko\'rinishda ochish</string>
   <string name="morphe_open_links_externally_summary">Havolalarni ilovadan tashqaridagi brauzeringizda ochadi</string>
+  <string name="morphe_app_icon_title">Ilova belgisi</string>
+  <string name="morphe_app_icon_choose_title">Ilova belgisini tanlang</string>
   <string name="morphe_app_icon_default">Standart</string>
+  <string name="morphe_app_icon_unknown">Noma\'lum</string>
 </resources>

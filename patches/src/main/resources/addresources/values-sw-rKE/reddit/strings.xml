@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Sera ya faragha ya Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Kuingia kwa Google hakupatikani. Tumia barua pepe kuingia</string>
+  <string name="morphe_app_downgrade_dialog_title">Kushusha toleo hakungumiwi</string>
+  <string name="morphe_app_downgrade_dialog_message">"Usakinishaji huu wa Reddit ulishushwa toleo kutoka &lt;b&gt;%1$s&lt;/b&gt; hadi &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Data ya programu kutoka kwa toleo jipya haifanyi kazi na matoleo ya zamani na programu inaweza isifanye kazi kwa usahihi.
+&lt;br/&gt;&lt;br/&gt;
+Ili kutumia toleo la zamani, lazima &lt;b&gt;uondoe&lt;/b&gt; Reddit na kisha usakinishe toleo la zamani."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Fungua info ya programu</string>
   <string name="morphe_custom_font_title">Font ya kistaili</string>
   <string name="morphe_custom_font_summary">Pakia faili la font la TTF au OTF la kistaili kutoka kwenye njia iliyo hapa chini. Kuziwezesha hizi pia kuzima Lazimisha font ya mfumo</string>
   <string name="morphe_custom_font_file_path_title">Faili la font ya kistaili</string>
@@ -28,4 +35,47 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_failed_to_load">Imeshindwa kupakia font ya kistaili. Chagua faili tofauti</string>
   <string name="morphe_force_system_font_title">Lazimisha fonti ya mfumo</string>
   <string name="morphe_force_system_font_summary">Tumia font ya mfumo wa kifaa badala ya Reddit Sans au Roboto. Kuziwezesha hizi pia kuzima Font ya kistaili</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Onyesha flairs kwenye feed ya nyumbani</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Inaonyesha beji za flair za chapisho kwenye feed ya nyumbani</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Baadhi ya vipengele vya feed vinaweza visionyeshe flair</string>
+  <string name="morphe_redgifs_audio_title">Cheza Redgifs ikiwa na sauti</string>
+  <string name="morphe_redgifs_audio_summary">Inacheza video asilia ya Redgifs badala ya nakala ya Reddit, ambayo mara nyingi haina sauti</string>
+  <string name="morphe_redgifs_hd_title">Ubora wa HD ya Redgifs</string>
+  <string name="morphe_redgifs_hd_summary">Inacheza video ya HD ya Redgifs. Video za HD ni kubwa zaidi na zinaweza kusimama ili kupakia</string>
+  <string name="morphe_download_location_title">Mahali pa kupakulia</string>
+  <string name="morphe_download_location_all_title">Akaunti zote</string>
+  <string name="morphe_download_location_default_summary">Chaguo-msingi la Reddit: picha katika Pictures/Reddit, video katika Download</string>
+  <string name="morphe_download_location_summary_folder">Folda: %s</string>
+  <string name="morphe_download_location_summary_pattern">Jina la faili: %s</string>
+  <string name="morphe_download_location_pattern_default">Majina ya faili ya Reddit</string>
+  <string name="morphe_download_location_uses_all_summary">Inatumia \"Akaunti zote\"</string>
+  <string name="morphe_download_location_own_title">Tumia eneo lako mwenyewe</string>
+  <string name="morphe_download_location_folder_title">Hifadhi kwenye</string>
+  <string name="morphe_download_location_folder_default">Folda za kawaida za Reddit</string>
+  <string name="morphe_download_location_folder_default_short">Kawaida</string>
+  <string name="morphe_download_location_subfolder_hint">Folda ndogo</string>
+  <string name="morphe_download_location_subfolder_tree_hint">Ongeza folda ndogo kwa kutumia / kwenye jina la faili</string>
+  <string name="morphe_download_location_browse">Tafuta…</string>
+  <string name="morphe_download_location_no_picker">Hakuna chagua-folda kinachopatikana kwenye kifaa hiki</string>
+  <string name="morphe_download_location_pattern_title">Jina la faili</string>
+  <string name="morphe_download_location_pattern_hint">Jina la faili la Reddit</string>
+  <string name="morphe_download_location_pattern_help">Gusa token ili kuiweka. Alama ya / hutengeneza folda ndogo. Thamani zisizojulikana huwa \"unknown\"</string>
+  <string name="morphe_download_location_example_images">Picha: %s</string>
+  <string name="morphe_download_location_example_videos">Video: %s</string>
+  <string name="morphe_download_location_save">Hifadhi</string>
+  <string name="morphe_download_location_reset">Rutubisha</string>
+  <string name="morphe_download_location_delete">Futa</string>
+  <string name="morphe_download_location_reset_confirm">Rutubisha eneo la kupakulia la akaunti zote kwenda kwenye chaguo-msingi la Reddit?</string>
+  <string name="morphe_download_location_delete_confirm">Futa eneo la kupakulia la %s?</string>
+  <string name="morphe_download_location_save_failed">Hakuweza kuhifadhi kwenye eneo la kupakulia. Badala yake limehifadhiwa kwenye folda ya chaguo-msingi ya Reddit</string>
+  <string name="morphe_download_location_folder_unavailable">Folda ya kupakulia haipatikaniki tena. Badala yake limehifadhiwa kwenye folda ya chaguo-msingi ya Reddit</string>
+  <string name="morphe_download_location_video_failed">Hakuwezi kuhifadhi video iliyopakuliwa</string>
+  <string name="morphe_download_location_invalid_folder">Folda hii haiwezi kutumika kwa pakua</string>
+  <string name="morphe_download_location_account_current">%s (ya sasa)</string>
+  <string name="morphe_download_location_account_logged_out">%s (hajaingia)</string>
+  <string name="morphe_download_location_account_anonymous">Hutambuliki (hajaingia au umo katika hali ya siri)</string>
+  <string name="morphe_app_icon_title">Aikoni ya programu</string>
+  <string name="morphe_app_icon_choose_title">Chagua aikoni ya programu</string>
+  <string name="morphe_app_icon_default">Kawaida</string>
+  <string name="morphe_app_icon_unknown">Haijulikani</string>
 </resources>

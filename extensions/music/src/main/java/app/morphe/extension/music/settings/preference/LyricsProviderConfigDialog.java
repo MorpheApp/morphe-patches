@@ -12,8 +12,6 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.text.InputType;
 import android.util.Pair;
 import android.util.TypedValue;
@@ -37,13 +35,13 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import app.morphe.extension.music.patches.lyrics.derive.AiProviders;
-import app.morphe.extension.music.patches.lyrics.derive.DeepLClient;
 import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
+import app.morphe.extension.shared.translation.DeepLClient;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
@@ -103,8 +101,8 @@ final class LyricsProviderConfigDialog {
                                 Settings.LYRICS_AI_MODEL.get());
                         case AiProviders.DEEPL -> {
                             final String key = Settings.LYRICS_DEEPL_API_KEY.get();
-                            valid = !key.isEmpty() && DeepLClient.translate(
-                                    Collections.singletonList("hello"), "EN", key) != null;
+                            valid = !key.isEmpty() && !DeepLClient.translate(
+                                    Collections.singletonList("hello"), "EN", key).isEmpty();
                         }
                         default -> {
                         }
@@ -202,15 +200,9 @@ final class LyricsProviderConfigDialog {
                 Settings.LYRICS_DEEPL_API_KEY.get(), true);
 
         final Button getKeyButton = CustomDialog.createButton(context, null,
-                str("morphe_music_token_dialog_get_token"), () -> {
-                    try {
-                        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(DEEPL_DASHBOARD_URL));
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
-                    } catch (Exception ex) {
-                        Logger.printDebug(() -> "DeepL dashboard button failure", ex);
-                    }
-                }, false, false);
+                str("morphe_music_token_dialog_get_token"),
+                () -> ThemedInput.openInBrowser(context, DEEPL_DASHBOARD_URL, "DeepL dashboard button"),
+                false, false);
         final LinearLayout.LayoutParams getKeyParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp36);
         getKeyParams.topMargin = Dim.dp12;
@@ -269,7 +261,22 @@ final class LyricsProviderConfigDialog {
         final EditText input = addInput(content,
                 "morphe_music_lyrics_ai_config_prompt_label", prompt.get(), false);
         makeMultiLine(input, 4, 8);
+        content.addView(createHint(content.getContext(),
+                "morphe_music_lyrics_ai_prompt_dialog_hint"));
         return new PromptField(prompt, input);
+    }
+
+    static TextView createHint(Context context, String textKey) {
+        final int fg = ThemeUtils.getAppForegroundColor();
+        TextView hint = new TextView(context);
+        hint.setText(str(textKey));
+        hint.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        hint.setTextColor((0x99 << 24) | (fg & 0x00FFFFFF));
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.topMargin = Dim.dp8;
+        hint.setLayoutParams(params);
+        return hint;
     }
 
     interface Validator {

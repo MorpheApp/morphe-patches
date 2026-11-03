@@ -8,6 +8,7 @@
 package app.morphe.patches.shared.misc.litho.node
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
@@ -112,6 +113,11 @@ internal object TreeNodeListHelperConstructorFingerprint : Fingerprint(
     classFingerprint = TreeNodeListHelperParentFingerprint,
     name = "<init>",
     filters = listOf(
-        fieldAccess(opcode = Opcode.IPUT_OBJECT)
+        // The class can be a merged lambda, and the constructor of the other lambda
+        // only stores two objects before the int.
+        fieldAccess(opcode = Opcode.IPUT_OBJECT),
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IPUT, location = MatchAfterImmediately())
     )
 )

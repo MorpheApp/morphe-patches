@@ -7,9 +7,15 @@
 
 package app.morphe.extension.shared.translation;
 
+import android.content.res.Configuration;
+import android.text.Html;
+import android.text.TextUtils;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -57,6 +63,19 @@ public final class TextTranslator {
     private static final String GOOGLE_ROMANIZE_FALLBACK_URL =
             "https://translate.googleapis.com/translate_a/single?client=dict-chrome-ex&sl=auto&dt=t&dt=rm&tl=";
 
+    /**
+     * Endpoint of the website translator. It does not answer 429 to a burst of single texts like
+     * {@code gtx} does, so it suits a caller that translates many short texts as they arrive.
+     */
+    private static final String GOOGLE_TRANSLATE_HTML_URL =
+            "https://translate-pa.googleapis.com/v1/translateHtml";
+
+    /**
+     * Public key the website translator sends. If Google replaces it, the requests fail and
+     * {@code gtx} is used instead.
+     */
+    private static final String GOOGLE_TRANSLATE_HTML_API_KEY = "AIzaSyATBXajvzQLTDHEQbcpq0Ihe0vWDHmO520";
+
     /** A translation nobody reads, so the source keeps its own script. */
     private static final String DEFAULT_ROMANIZATION_TARGET = "en";
 
@@ -82,7 +101,22 @@ public final class TextTranslator {
     /** A rate limited response is a whole HTML page, of which only the start is worth logging. */
     private static final int MAXIMUM_ERROR_CHARACTERS = 200;
 
+    /** Language setting value for the language of the device. */
+    private static final String DEVICE_LANGUAGE = "default";
+
     private TextTranslator() {
+    }
+
+    /**
+     * A translated text.
+     *
+     * @param detectedLanguage The language of the original text, or null if it is not known.
+     */
+    public record Translation(String text, @Nullable String detectedLanguage) {
+    }
+
+    private interface ResponseParser<T> {
+        T parse(JSONArray response) throws JSONException;
     }
 
     /**
@@ -96,6 +130,41 @@ public final class TextTranslator {
             super(message);
             this.statusCode = statusCode;
         }
+    }
+
+    /**
+     * @param language The value of a language setting, either a language code or {@code default}
+     *                 for the language of the device.
+     * @return The language as a Google Translate language code.
+     */
+    public static String resolveLanguage(String language) {
+        if (DEVICE_LANGUAGE.equalsIgnoreCase(language)) {
+            Configuration configuration = Utils.getContext().getResources().getConfiguration();
+            language = getLanguageCode(configuration.getLocales().isEmpty()
+                    ? Locale.getDefault()
+                    : configuration.getLocales().get(0));
+        }
+        return switch (language.toLowerCase(Locale.ROOT)) {
+            case "fil" -> "tl";
+            case "nb", "nn" -> "no";
+            case "in" -> "id";
+            case "iw" -> "he";
+            case "ji" -> "yi";
+            default -> language;
+        };
+    }
+
+    private static String getLanguageCode(Locale locale) {
+        String language = locale.getLanguage();
+        if ("zh".equals(language)) {
+            String country = locale.getCountry();
+            return "Hant".equals(locale.getScript()) || "TW".equals(country)
+                    || "HK".equals(country) || "MO".equals(country) ? "zh-TW" : "zh-CN";
+        }
+        if ("pt".equals(language) && "PT".equals(locale.getCountry())) {
+            return "pt-PT";
+        }
+        return language.isEmpty() ? "en" : language;
     }
 
     /**
@@ -138,6 +207,51 @@ public final class TextTranslator {
             throws Exception {
         return requestLines(lines, GOOGLE_TRANSLATE_URL + targetLanguage,
                 GOOGLE_TRANSLATE_FALLBACK_URL + targetLanguage, false, false, "\n");
+    }
+
+    /**
+     * Translates a single text and reports the language it was written in.
+     * Always call off the main thread.
+     *
+     * @param targetLanguage Language code such as {@code uk}.
+     */
+    public static Translation translateText(String text, String targetLanguage) throws Exception {
+        try {
+            return translateHtml(text, targetLanguage);
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Website translator endpoint failed, using gtx", ex);
+        }
+
+        return request(text, GOOGLE_TRANSLATE_URL + targetLanguage,
+                GOOGLE_TRANSLATE_FALLBACK_URL + targetLanguage, false, response -> {
+                    // Index 2 of the response holds the detected language.
+                    String detected = response.isNull(2) ? null : response.getString(2);
+                    return new Translation(joinSentences(response.getJSONArray(0)),
+                            detected == null || detected.isEmpty() ? null : detected);
+                });
+    }
+
+    /**
+     * The endpoint takes HTML, so the text is escaped to keep characters such as {@code <} as
+     * they are, and the escaped result is decoded again.
+     */
+    private static Translation translateHtml(String text, String targetLanguage) throws Exception {
+        // Request: [[[texts], source, target], "wt_lib"]
+        JSONArray request = new JSONArray()
+                .put(new JSONArray().put(TextUtils.htmlEncode(text)))
+                .put("auto")
+                .put(targetLanguage);
+        JSONArray body = new JSONArray().put(request).put("wt_lib");
+
+        // Response: [[translated texts], [detected languages]]
+        JSONArray response = new JSONArray(post(GOOGLE_TRANSLATE_HTML_URL,
+                "application/json+protobuf", body.toString(),
+                "X-Goog-API-Key", GOOGLE_TRANSLATE_HTML_API_KEY, "Website translation"));
+        String translated = Html.fromHtml(response.getJSONArray(0).getString(0),
+                Html.FROM_HTML_MODE_LEGACY).toString();
+        JSONArray detected = response.optJSONArray(1);
+        String language = detected == null || detected.isNull(0) ? null : detected.getString(0);
+        return new Translation(translated, language == null || language.isEmpty() ? null : language);
     }
 
 /**
@@ -200,6 +314,29 @@ public final class TextTranslator {
                                              boolean romanize,
                                              boolean preferTranslatedRomanization,
                                              @NonNull String lineSeparator) throws Exception {
+        StringBuilder joined = new StringBuilder(100 * lines.size());
+        for (String line : lines) {
+            //noinspection SizeReplaceableByIsEmpty
+            if (joined.length() > 0) {
+                joined.append(lineSeparator);
+            }
+            joined.append(line);
+        }
+
+        return request(joined.toString(), url, fallbackUrl, romanize, response -> {
+            // Response: [[["translated","original",null,"romanized",...],...],...]
+            JSONArray sentences = response.getJSONArray(0);
+            return romanize
+                    ? extractRomanizedLines(sentences, preferTranslatedRomanization, lineSeparator)
+                    : Arrays.asList(joinSentences(sentences).split("\n", -1));
+        });
+    }
+
+    /**
+     * Sends one text and parses the response, with the retries described in {@link #requestLines}.
+     */
+    private static <T> T request(String text, String url, String fallbackUrl, boolean romanize,
+                                 ResponseParser<T> parser) throws Exception {
         Exception lastFailure = null;
         for (int attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
             if (attempt > 0) {
@@ -211,7 +348,7 @@ public final class TextTranslator {
             }
 
             try {
-                return sendBatch(lines, url, romanize, preferTranslatedRomanization, lineSeparator);
+                return send(text, url, romanize, parser);
             } catch (TranslationHttpException ex) {
                 lastFailure = ex;
                 if (!isRetryable(ex.statusCode)) break;
@@ -221,7 +358,7 @@ public final class TextTranslator {
         }
 
         try {
-            return sendBatch(lines, fallbackUrl, romanize, preferTranslatedRomanization, lineSeparator);
+            return send(text, fallbackUrl, romanize, parser);
         } catch (Exception fallbackFailure) {
             Logger.printDebug(() -> "The fallback client failed as well", fallbackFailure);
         }
@@ -230,24 +367,26 @@ public final class TextTranslator {
                 (romanize ? "Romanization" : "Translation") + " failed after " + MAX_ATTEMPTS + " attempts");
     }
 
-    @NonNull
-    private static List<String> sendBatch(@NonNull List<String> lines,
-                                          @NonNull String url,
-                                          boolean romanize,
-                                          boolean preferTranslatedRomanization,
-                                          @NonNull String lineSeparator) throws Exception {
+    private static <T> T send(String text, String url, boolean romanize,
+                              ResponseParser<T> parser) throws Exception {
+        String body = "q=" + URLEncoder.encode(text, "UTF-8");
+        String response = post(url, "application/x-www-form-urlencoded", body, null, null,
+                romanize ? "Romanization" : "Translation");
+        return parser.parse(new JSONArray(response));
+    }
+
+    /**
+     * Sends a POST request. Always call off the main thread.
+     *
+     * @param headerName  Name of an extra header such as the API key, or null for none.
+     * @param requestName Name of the request in the error message.
+     * @return The response body.
+     * @throws TranslationHttpException If the status code is not 200.
+     */
+    static String post(String url, String contentType, String body,
+                       @Nullable String headerName, @Nullable String headerValue,
+                       String requestName) throws Exception {
         Utils.verifyOffMainThread();
-
-        StringBuilder joined = new StringBuilder(100 * lines.size());
-        for (String line : lines) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (joined.length() > 0) {
-                joined.append(lineSeparator);
-            }
-            joined.append(line);
-        }
-
-        String body = "q=" + URLEncoder.encode(joined.toString(), "UTF-8");
 
         HttpURLConnection connection = null;
         try {
@@ -255,8 +394,11 @@ public final class TextTranslator {
             connection.setRequestMethod("POST");
             connection.setConnectTimeout(CONNECT_TIMEOUT_MILLISECONDS);
             connection.setReadTimeout(READ_TIMEOUT_MILLISECONDS);
-            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            connection.setRequestProperty("Content-Type", contentType);
             connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+            if (headerName != null) {
+                connection.setRequestProperty(headerName, headerValue);
+            }
             connection.setDoOutput(true);
 
             byte[] payload = body.getBytes(StandardCharsets.UTF_8);
@@ -266,19 +408,8 @@ public final class TextTranslator {
             }
 
             final int code = connection.getResponseCode();
-            if (code == 200) {
-                // Response: [[["translated","original",null,"romanized",...],...],...]
-                JSONArray sentences = new JSONArray(Requester.parseString(connection)).getJSONArray(0);
-                if (romanize) {
-                    return extractRomanizedLines(sentences, preferTranslatedRomanization, lineSeparator);
-                }
-
-                StringBuilder result = new StringBuilder();
-                for (int i = 0, length = sentences.length(); i < length; i++) {
-                    result.append(sentences.getJSONArray(i).getString(0));
-                }
-
-                return Arrays.asList(result.toString().split("\n", -1));
+            if (code == Requester.HTTP_STATUS_CODE_SUCCESS) {
+                return Requester.parseString(connection);
             }
 
             // A non-2xx response: read the body through the error stream, because
@@ -287,13 +418,20 @@ public final class TextTranslator {
             String responseStart = response.substring(0,
                     Math.min(response.length(), MAXIMUM_ERROR_CHARACTERS));
             throw new TranslationHttpException(code,
-                    (romanize ? "Romanization" : "Translation") + " HTTP status: " + code
-                            + " response: " + responseStart);
+                    requestName + " HTTP status: " + code + " response: " + responseStart);
         } finally {
             if (connection != null) {
                 connection.disconnect();
             }
         }
+    }
+
+    private static String joinSentences(JSONArray sentences) throws JSONException {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0, length = sentences.length(); i < length; i++) {
+            result.append(sentences.getJSONArray(i).getString(0));
+        }
+        return result.toString();
     }
 
     /**

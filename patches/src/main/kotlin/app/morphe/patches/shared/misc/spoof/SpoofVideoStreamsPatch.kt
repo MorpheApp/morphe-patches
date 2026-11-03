@@ -26,10 +26,15 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.BuildInnerTubeProtoRequestUriFingerprint
 import app.morphe.patches.shared.BuildInnerTubeProtoRequestUriLegacyFingerprint
+import app.morphe.patches.shared.VideoStreamingDataConstructorFingerprint
+import app.morphe.patches.shared.VideoStreamingDataToStringFingerprint
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.request.buildRequestPatch
 import app.morphe.patches.shared.misc.request.hookBuildRequest
+import app.morphe.patches.shared.misc.request.hookMediaRequest
+import app.morphe.patches.shared.misc.request.hookMediaResponseChunk
+import app.morphe.patches.shared.misc.request.mediaRequestPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
@@ -104,7 +109,8 @@ internal fun spoofVideoStreamsPatch(
     dependsOn(
         fixProtoLibraryPatch,
         spoofVideoStreamsResourcePatch,
-        buildRequestPatch
+        buildRequestPatch,
+        mediaRequestPatch
     )
 
     execute {
@@ -172,6 +178,13 @@ internal fun spoofVideoStreamsPatch(
         // region Fetch streaming data.
 
         hookBuildRequest("$EXTENSION_CLASS->fetchStreams")
+
+        // endregion
+
+        // region Make the media requests of the streams of TV clients name the TV client.
+
+        hookMediaRequest("$EXTENSION_CLASS->onMediaRequest", replacesRequest = true)
+        hookMediaResponseChunk("$EXTENSION_CLASS->onMediaResponseChunk")
 
         // endregion
 
@@ -509,6 +522,11 @@ internal fun spoofVideoStreamsPatch(
             val sabrFieldReference = getInstruction<ReferenceInstruction>(sabrFieldIndex)
                 .reference as FieldReference
 
+            // Several videos are set up at once, such as the next track of the queue,
+            // so the choice is made from the streams of the video the decision is for.
+            val videoStreamingDataType = VideoStreamingDataToStringFingerprint.classDef.type
+            val videoIdField = VideoStreamingDataConstructorFingerprint.instructionMatches[1].fieldReference
+
             Fingerprint(
                 returnType = definingClass,
                 filters = opcodesToFilters(
@@ -516,12 +534,15 @@ internal fun spoofVideoStreamsPatch(
                     Opcode.RETURN_OBJECT,
                 ),
                 custom = { method, _ ->
-                    method.parameterTypes.isNotEmpty()
+                    // Player config and the streaming data of the video.
+                    method.parameterTypes.size == 2
+                            && method.parameterTypes[1].toString() == videoStreamingDataType
                 }
             ).method.addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static { }, $EXTENSION_CLASS->disableSABR()Z
+                    iget-object v0, p2, $videoIdField
+                    invoke-static { v0 }, $EXTENSION_CLASS->disableSABR(Ljava/lang/String;)Z
                     move-result v0
                     if-eqz v0, :ignore
                     sget-object v0, $sabrFieldReference

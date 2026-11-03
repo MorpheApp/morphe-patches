@@ -24,10 +24,26 @@ import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.misc.navigation.ImageEnumConstructorFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal const val PIVOT_BAR_CLASS = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;"
+
+internal object WatchLaterIconEnumFingerprint : Fingerprint(
+    classFingerprint = ImageEnumConstructorFingerprint,
+    filters = listOf(
+        string("WATCH_LATER"),
+        opcode(Opcode.SPUT_OBJECT, location = MatchAfterWithin(5))
+    )
+)
+
+internal object WatchLaterPivotBarItemBuilderFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "buildWatchLaterPivotBarItem",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("[B")
+)
 
 private val SET_VISIBILITY_METHOD_CALL = methodCall(
     opcode = Opcode.INVOKE_VIRTUAL,
@@ -44,24 +60,6 @@ internal object CreatePivotBarFingerprint : Fingerprint(
     filters = listOf(
         methodCall(definingClass = "Landroid/widget/TextView;", name = "setText"),
         opcode(Opcode.RETURN_VOID)
-    )
-)
-
-internal object CastMenuItemInitializeFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "castmediaroutebutton"),
-        methodCall(name = "setShowAsAction")
-    )
-)
-
-internal object CastMenuItemVisibilityFingerprint : Fingerprint(
-    classFingerprint = CastMenuItemInitializeFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    filters = listOf(
-        methodCall(name = "setVisible")
     )
 )
 
@@ -212,6 +210,41 @@ internal object NavigationBarBlurDrawFingerprint : Fingerprint(
         methodCall(smali = "Landroid/graphics/Canvas;->isHardwareAccelerated()Z"),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
         methodCall(smali = "Landroid/view/View;->draw(Landroid/graphics/Canvas;)V")
+    )
+)
+
+/**
+ * Gives the blurred background of the navigation bar its tint color, read from the theme.
+ * The last filter calls the method that makes the tint paint, [NavigationBarBlurTintFingerprint].
+ */
+internal object NavigationBarBlurTintCallFingerprint : Fingerprint(
+    definingClass = PIVOT_BAR_CLASS,
+    filters = listOf(
+        methodCall(smali = "Landroid/content/res/TypedArray;->getColor(II)I"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("I"),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            smali = "$PIVOT_BAR_CLASS->setBackground(Landroid/graphics/drawable/Drawable;)V",
+            location = MatchAfterWithin(3)
+        )
+    )
+)
+
+/**
+ * Makes the tint paint of the blurred background of the navigation bar, drawn over the blur.
+ * Resolved against the method called by [NavigationBarBlurTintCallFingerprint].
+ */
+internal object NavigationBarBlurTintFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("I"),
+    filters = listOf(
+        methodCall(smali = "Landroid/graphics/Paint;->setColor(I)V"),
+        methodCall(smali = "Landroid/graphics/Paint;->setAlpha(I)V", location = MatchAfterWithin(4))
     )
 )
 

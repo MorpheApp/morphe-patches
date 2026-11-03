@@ -174,7 +174,13 @@ public class MusicActivityHook extends BaseActivityHook {
     @SuppressWarnings("unused")
     public static boolean handleFinish(Activity activity) {
         return MusicSearchViewController.handleFinish(searchViewController)
+                || handleDownloadsBack(activity)
                 || AbstractPreferenceFragment.showRestartDialogIfNeeded(activity);
+    }
+
+    private static boolean handleDownloadsBack(Activity activity) {
+        return activity.getFragmentManager().findFragmentById(ID_MORPHE_SETTINGS_FRAGMENTS)
+                instanceof LocalDownloadsFragment downloads && downloads.handleBack();
     }
 
     /**

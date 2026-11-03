@@ -13,10 +13,8 @@ import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
-import app.morphe.patches.youtube.shared.VideoStreamingDataToStringFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -26,28 +24,6 @@ internal object HookAdaptiveFormatsFingerprint : Fingerprint(
     definingClass = EXTENSION_CLASS,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     name = "privateHookAdaptiveFormats"
-)
-
-internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
-    classFingerprint = VideoStreamingDataToStringFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;"
-        ),
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = "this",
-            type = "Ljava/lang/String;"
-        ),
-        newInstance("Ljava/util/ArrayList;"),
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;"
-        )
-    ),
 )
 
 internal fun getFormatStreamModelMethodFingerprint(

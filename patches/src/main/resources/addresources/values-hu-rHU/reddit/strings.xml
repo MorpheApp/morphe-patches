@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit adatvédelmi szabályzata</string>
   <string name="morphe_google_signin_not_available_toast">A Google-bejelentkezés nem érhető el. Jelentkezzen be e-maillel</string>
+  <string name="morphe_app_downgrade_dialog_title">A verzióvisszavonás nem támogatott</string>
+  <string name="morphe_app_downgrade_dialog_message">"Ez a Reddit telepítés vissza lett csökkentve a(z) &lt;b&gt;%1$s&lt;/b&gt; verzióról a(z) &lt;b&gt;%2$s&lt;/b&gt; verzióra
+&lt;br/&gt;&lt;br/&gt;
+A újabb verzióból származó alkalmazásadatok nem működnek régebbi verziókkal, és az alkalmazás nem működhet megfelelően.
+&lt;br/&gt;&lt;br/&gt;
+A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet, majd telepítenie a régebbi verziót."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Alkalmazásinformációk megnyitása</string>
   <string name="morphe_screen_ads_title">Hirdetések</string>
   <string name="morphe_hide_post_ads_title">Hirdetések elrejtése</string>
   <string name="morphe_hide_comment_ads_title">Hozzászólás hirdetések elrejtése</string>

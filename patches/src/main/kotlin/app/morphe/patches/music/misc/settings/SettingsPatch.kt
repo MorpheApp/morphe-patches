@@ -11,7 +11,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.getFreeRegisterProvider
+import app.morphe.patcher.util.p0Register
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.all.misc.crashlog.crashLogPatch
 import app.morphe.patches.all.misc.fix.openurllinks.removeLinkVerification
@@ -50,7 +52,6 @@ import app.morphe.util.copyResources
 import app.morphe.util.copyXmlNode
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val MUSIC_ACTIVITY_HOOK_CLASS = "Lapp/morphe/extension/music/settings/MusicActivityHook;"
 
@@ -199,14 +200,15 @@ val settingsPatch = bytecodePatch(
         )
 
         SettingsHeadersOnCreatePreferencesFingerprint.let {
+            val peerMethod = it.instructionMatches.first().methodReference
             val fragmentField = it.instructionMatches.last()
                 .fieldReference
 
-            it.method.apply {
+            // 9.44+ overwrites the peer register before returning, so the peer is
+            // read again from the unchanged p0.
+            it.method.cloneParameters().apply {
                 val insertIndex = implementation!!.instructions.size - 1
-                val peerRegister = it.instructionMatches[1]
-                    .getInstruction<OneRegisterInstruction>().registerA
-                val registerProvider = getFreeRegisterProvider(insertIndex, 3, peerRegister)
+                val registerProvider = getFreeRegisterProvider(insertIndex, 3, p0Register)
                 val screenRegister = registerProvider.getFreeRegister()
                 val preferenceRegister = registerProvider.getFreeRegister()
                 val nameRegister = registerProvider.getFreeRegister()
@@ -215,7 +217,9 @@ val settingsPatch = bytecodePatch(
                     insertIndex,
                     customSettingsNameInstructions(
                         getPreferenceScreen = """
-                            iget-object v$screenRegister, v$peerRegister, $fragmentField
+                            invoke-virtual { p0 }, $peerMethod
+                            move-result-object v$screenRegister
+                            iget-object v$screenRegister, v$screenRegister, $fragmentField
                             invoke-virtual { v$screenRegister }, $SETTINGS_HEADERS_FRAGMENT_CLASS->getPreferenceScreen()Landroidx/preference/PreferenceScreen;
                             move-result-object v$screenRegister
                         """,
@@ -225,6 +229,9 @@ val settingsPatch = bytecodePatch(
                     )
                 )
             }
+
+            // Other patches hook the cloned method.
+            it.clearMatch()
         }
 
         modifyActivityForSettingsInjection(

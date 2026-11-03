@@ -31,8 +31,6 @@ import app.morphe.extension.music.settings.Settings;
  * the line would lose the words around it.
  */
 public final class LocalRomanizer {
-
-
     private static final String PINYIN = "UniDict, pinyin-pro";
     private static final String RULE = "Built-in Romanization";
     private static final String JAPANESE = "SudachiDict";
@@ -71,7 +69,10 @@ public final class LocalRomanizer {
     @Nullable
     public static String syllableReading(String syllable, @Nullable String line) {
         if (syllable == null || syllable.isEmpty()) return null;
-        final Script script = ScriptDetector.detect(syllable);
+        Script script = ScriptDetector.detect(syllable);
+        if (script == Script.HAN && line != null && ScriptDetector.detect(line) == Script.JAPANESE) {
+            script = Script.JAPANESE;
+        }
         if (script == null || script == Script.OTHER) return null;
         final String reading = readAs(syllable, script, false, line).text().trim();
         return reading.isEmpty() || reading.equals(syllable) ? null : reading;
@@ -156,7 +157,7 @@ public final class LocalRomanizer {
                 continue;
             }
             read.add(new Word(word.startMs(), word.endMs(), word.text(), reading,
-                    word.endsWithSpace()));
+                    word.endsWithSpace(), word.ruby()));
             any = true;
         }
 
@@ -196,7 +197,7 @@ public final class LocalRomanizer {
                 syllables.append(reading, tokens[at][0], tokens[at][1]);
             }
             read.add(new Word(word.startMs(), word.endMs(), word.text(), syllables.toString(),
-                    word.endsWithSpace()));
+                    word.endsWithSpace(), word.ruby()));
         }
         return read;
     }
@@ -261,6 +262,134 @@ public final class LocalRomanizer {
     }
 
     /**
+     * Token-level only: spaces are word boundaries; never split inside a token.
+     * Short readings spread (emptySlotCost > merge penalty) rather than pile up.
+     */
+    public static String[] allocateReading(String reading, int slots,
+                                           @Nullable List<String> guides) {
+        String[] out = new String[Math.max(0, slots)];
+        Arrays.fill(out, "");
+        if (out.length == 0 || reading == null) {
+            return out;
+        }
+        final int[][] tokens = readingTokens(reading);
+        if (tokens.length == 0) {
+            return out;
+        }
+        final int T = tokens.length;
+        final int M = out.length;
+
+        // An empty slot costs more than doubling up tokens, so a short reading spreads before it
+        // piles up: "bān-sū jû-ì" over four syllables keeps both words rather than joining them.
+        final double emptySlotCost = 4.0;
+        double[][] dp = new double[M + 1][T + 1];
+        int[][] path = new int[M + 1][T + 1];
+        for (int i = 0; i <= M; i++) {
+            Arrays.fill(dp[i], Double.MAX_VALUE);
+            Arrays.fill(path[i], -1);
+        }
+        dp[0][0] = 0.0;
+        for (int i = 1; i <= M; i++) {
+            final String guide = guides != null && i - 1 < guides.size()
+                    ? guides.get(i - 1) : null;
+            for (int t = 0; t <= T; t++) {
+                if (dp[i - 1][t] < Double.MAX_VALUE * 0.5) {
+                    final double cost = dp[i - 1][t] + emptySlotCost
+                            + tokenMatchCost("", guide);
+                    if (cost < dp[i][t]) {
+                        dp[i][t] = cost;
+                        path[i][t] = t;
+                    }
+                }
+                for (int k = 0; k < t; k++) {
+                    if (dp[i - 1][k] >= Double.MAX_VALUE * 0.5) {
+                        continue;
+                    }
+                    String piece = joinTokens(reading, tokens, k, t);
+                    double cost = dp[i - 1][k] + tokenMatchCost(piece, guide)
+                            + (t - k - 1) * 0.5;
+                    if (cost < dp[i][t]) {
+                        dp[i][t] = cost;
+                        path[i][t] = k;
+                    }
+                }
+            }
+        }
+
+        int end = T;
+        if (dp[M][T] >= Double.MAX_VALUE * 0.5) {
+            double best = Double.MAX_VALUE;
+            for (int t = T; t >= 0; t--) {
+                if (dp[M][t] < best) {
+                    best = dp[M][t];
+                    end = t;
+                }
+            }
+        }
+        for (int i = M; i > 0; i--) {
+            final int k = path[i][end];
+            if (k < 0) {
+                break;
+            }
+            out[i - 1] = joinTokens(reading, tokens, k, end);
+            end = k;
+        }
+        if (end > 0) {
+            out[0] = joinTokens(reading, tokens, 0, end) + out[0];
+        }
+        return out;
+    }
+
+    private static String joinTokens(String reading, int[][] tokens, int from, int to) {
+        StringBuilder sb = new StringBuilder();
+        for (int t = from; t < to; t++) {
+            if (sb.length() > 0) {
+                sb.append(' ');
+            }
+            sb.append(reading, tokens[t][0], tokens[t][1]);
+        }
+        // Preserve a trailing space that followed the last token in the source, so the
+        // romanization does not collapse into an unreadable compact string.
+        if (to > from && to <= tokens.length) {
+            int lastEnd = tokens[to - 1][1];
+            if (lastEnd < reading.length() && Character.isWhitespace(reading.charAt(lastEnd))) {
+                sb.append(' ');
+            }
+        }
+        return sb.toString();
+    }
+
+    private static double tokenMatchCost(String piece, @Nullable String guide) {
+        // No guide: any slot matches equally; empty cost lets DP spread freely.
+        if (guide == null || guide.trim().isEmpty()) {
+            return 0.0;
+        }
+        String a = piece.toLowerCase(Locale.ROOT).replaceAll("[\\s\\-']", "");
+        String b = guide.toLowerCase(Locale.ROOT).replaceAll("[\\s\\-']", "");
+        return levenshtein(a, b) + Math.abs(a.length() - b.length()) * 0.3;
+    }
+
+    private static int levenshtein(String s1, String s2) {
+        final int n = s2.length();
+        int[] prev = new int[n + 1];
+        int[] curr = new int[n + 1];
+        for (int j = 0; j <= n; j++) {
+            prev[j] = j;
+        }
+        for (int i = 1; i <= s1.length(); i++) {
+            curr[0] = i;
+            for (int j = 1; j <= n; j++) {
+                curr[j] = Math.min(Math.min(curr[j - 1] + 1, prev[j] + 1),
+                        prev[j - 1] + (s1.charAt(i - 1) == s2.charAt(j - 1) ? 0 : 1));
+            }
+            int[] swap = prev;
+            prev = curr;
+            curr = swap;
+        }
+        return prev[n];
+    }
+
+    /**
      * How much of a whole reading one word is said with. Han, Hangul and kana are a syllable
      * per character; any other writing counts as one word, since splitting letters apart would
      * cut a word into pieces.
@@ -300,10 +429,10 @@ public final class LocalRomanizer {
                 if (previous.romaji() == null || previous.romaji().isEmpty()) continue;
                 if (!previous.romaji().endsWith(text)) {
                     read.set(at, new Word(previous.startMs(), previous.endMs(), previous.text(),
-                            previous.romaji() + text, previous.endsWithSpace()));
+                            previous.romaji() + text, previous.endsWithSpace(), previous.ruby()));
                 }
                 read.set(i, new Word(read.get(i).startMs(), read.get(i).endMs(),
-                        read.get(i).text(), "", read.get(i).endsWithSpace()));
+                        read.get(i).text(), "", read.get(i).endsWithSpace(), read.get(i).ruby()));
                 break;
             }
         }
@@ -412,17 +541,12 @@ public final class LocalRomanizer {
                 continue;
             }
             if (ScriptDetector.isHan(c)) {
-                if (table == null) {
-                    out.append(c);
-                    i++;
-                    continue;
-                }
                 // The longest entry that fits: a shorter one inside a longer word reads it wrong.
                 int limit = Math.min(WordReadingTable.MAX_WORD_LENGTH, line.length() - i);
                 String reading = null;
                 int length = 0;
                 for (int candidate = limit; candidate >= 1; candidate--) {
-                    String found = table.reading(line.substring(i, i + candidate));
+                    String found = table != null ? table.reading(line.substring(i, i + candidate)) : null;
                     if (found != null && !found.isEmpty()) {
                         reading = found;
                         length = candidate;
@@ -434,7 +558,7 @@ public final class LocalRomanizer {
                     i++;
                     continue;
                 }
-                append(out, KanaRomanizer.romanize(reading));
+                Romanizations.appendWord(out, KanaRomanizer.romanize(reading));
                 i += length;
                 continue;
             }
@@ -444,7 +568,7 @@ public final class LocalRomanizer {
                     && !ScriptDetector.isHan(line.charAt(end))) {
                 end++;
             }
-            append(out, line.substring(i, end).trim());
+            Romanizations.appendWord(out, line.substring(i, end).trim());
             i = end;
         }
         return out.toString().trim();
@@ -468,15 +592,9 @@ public final class LocalRomanizer {
                     }
                 }
             }
-            append(out, KanaRomanizer.romanize(line.substring(at, at + length)));
+            Romanizations.appendWord(out, KanaRomanizer.romanize(line.substring(at, at + length)));
             at += length;
         }
-    }
-
-    private static void append(StringBuilder out, String word) {
-        if (word.isEmpty()) return;
-        if (out.length() > 0) out.append(' ');
-        out.append(word);
     }
 
     public static final class Result {

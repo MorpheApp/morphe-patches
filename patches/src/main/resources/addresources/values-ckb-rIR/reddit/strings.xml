@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">سیاسەتی تایبەتیی ڕێدیت</string>
   <string name="morphe_google_signin_not_available_toast">چوونەژوورەوەی گووگڵ بەردەست نییە. ئیمەیڵ بەکاربهێنە بۆ چوونەژوورەوە</string>
+  <string name="morphe_app_downgrade_dialog_title">داشکاندنی وەشان پشتگیرنیکراوە</string>
+  <string name="morphe_app_downgrade_dialog_message">"ئەم وەشانەی Reddit لە &lt;b&gt;%1$s&lt;/b&gt; بۆ &lt;b&gt;%2$s&lt;/b&gt; داشکاندراوە
+&lt;br/&gt;&lt;br/&gt;
+داتای ئەپڵیکەیشن لە وەشانێکی نوێترەوە لەگەڵ وەشانە کۆنەکاندا کار ناکات و ڕەنگە ئەپەکە بە شێوەیەکی ڕاست نەکات
+&lt;br/&gt;&lt;br/&gt;
+بۆ بەکارهێنانی وەشانێکی کۆنتر، دەبێت Reddit &lt;b&gt;بڕێی بکەیت&lt;/b&gt; و پاشان وەشانە کۆنەکە دابەزێنیت."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">کڕینی زانیاری ئەپ</string>
   <string name="morphe_screen_ads_title">ڕێکلام</string>
   <string name="morphe_hide_post_ads_title">هێڵپەڕەکانی بڵاوکردنەوە قایپ بکه</string>
   <string name="morphe_hide_comment_ads_title">دابەزاندنی ڕاوەستێنانی کۆمێنتەکان</string>
@@ -48,14 +55,54 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">دۆزینەوەی پەیامگە دەربخۆ</string>
   <string name="morphe_hide_ask_button_summary">دوگمەی پرسیار (Ask) لە ناو ڕیزبەندی گەڕان دەشارێتەوە</string>
   <string name="morphe_remove_notification_dialog_title">دیالۆگی پێشنیاری ئاگادارکردنەوە لابەرە</string>
+  <string name="morphe_show_flairs_in_home_feed_title">پیشاندانی فلێرەکان لە فیدى سەرەکی</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">نیشانەکانی فلێری پۆستەکان لە فیدى سەرەکی پیشان دەدات</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">ڕەنگە هەندێک لە بابەتەکانی فید فلێریان نەبێت</string>
   <string name="morphe_screen_miscellaneous_title">جۆراوجۆر</string>
   <string name="morphe_about_title">دەربارە</string>
   <string name="morphe_about_summary">وەشانەی پاتچ و لینکە فەرمییەکان</string>
   <string name="morphe_sanitize_sharing_links_summary">پارامیتەرەکانی بەدواکەوتنی پرس لە لینکە هاوبەشەکان لادەبات</string>
   <string name="morphe_open_links_directly_title">کردنەوەی بەستەرەکان ڕاستەوخۆ</string>
+  <string name="morphe_redgifs_audio_title">لێدانی Redgifs بە دەنگ</string>
+  <string name="morphe_redgifs_audio_summary">ڤیدیۆ ڕەسەنی Redgifs لێدەدات لە جیاتی کۆپیی Reddit، کە زۆرجار دەنگی نییە</string>
+  <string name="morphe_redgifs_hd_title">کوالیتی HDی Redgifs</string>
+  <string name="morphe_redgifs_hd_summary">ڤیدیۆی HDی Redgifs لێدەدات. ڤیدیۆکانی HD گەورەترن و ڕەنگە بۆ بارکردن بوەستن</string>
+  <string name="morphe_download_location_title">شوێنی داگرتن</string>
+  <string name="morphe_download_location_all_title">هەموو هەژمارەکان</string>
+  <string name="morphe_download_location_default_summary">کەلتەی Reddit: وێنەکان لە Pictures/Reddit، ڤیدیۆکان لە Download</string>
+  <string name="morphe_download_location_summary_folder">فۆڵدەر: %s</string>
+  <string name="morphe_download_location_summary_pattern">ناوی فایل: %s</string>
+  <string name="morphe_download_location_pattern_default">ناوی فایلەکانی Reddit</string>
+  <string name="morphe_download_location_uses_all_summary">بەکارهێنانی \"هەموو ئەکاونتەکان\"</string>
+  <string name="morphe_download_location_own_title">بەکارهێنانی شوێنی تایبەت</string>
+  <string name="morphe_download_location_folder_title">پاشکەوتکردن لە</string>
+  <string name="morphe_download_location_folder_default">فۆڵدەرە پێشنیارکراوەکانی Reddit</string>
   <string name="morphe_download_location_folder_default_short">بنەڕەت</string>
+  <string name="morphe_download_location_subfolder_hint">فۆڵدەرێکی لاوەکی</string>
+  <string name="morphe_download_location_subfolder_tree_hint">فۆڵدەرە لاوەکییەکان زیاد بکە بە بەکارهێنانی / لە ناو ناوی فایلەکەدا</string>
+  <string name="morphe_download_location_browse">گەڕان...</string>
+  <string name="morphe_download_location_no_picker">هیچ هەڵبژاردەرێکی فۆڵدەر لەم ئامێرەدا بەردەست نییە</string>
+  <string name="morphe_download_location_pattern_title">ناوی فایل</string>
+  <string name="morphe_download_location_pattern_hint">ناوی فایلی Reddit</string>
+  <string name="morphe_download_location_pattern_help">تۆکەنێک دابگرە بۆ زیادکردنی. / فۆڵدەرێکی لاوەکی دروست دەکات. بەها نەناسراوەکان دەبن بە \"نەناسراو\"</string>
+  <string name="morphe_download_location_example_images">وێنەکان: %s</string>
+  <string name="morphe_download_location_example_videos">ڤیدیۆکان: %s</string>
+  <string name="morphe_download_location_save">پاشکەوتکردن</string>
+  <string name="morphe_download_location_reset">سەرەتاوکردنەوە</string>
+  <string name="morphe_download_location_delete">سڕینەوە</string>
+  <string name="morphe_download_location_reset_confirm">شوێنی دابەزاندنی هەموو ئەکاونتەکان بگەڕێنرێتەوە بۆ شوێنی پێشنیارکراوی Reddit؟</string>
+  <string name="morphe_download_location_delete_confirm">شوێنی دابەزاندنی %s بسڕێتەوە؟</string>
+  <string name="morphe_download_location_save_failed">نەتوانرا لە شوێنی دابەزاندنەکە پاشکەوت بکرێت. لەجیاتی ئەوە لە فۆڵدەرە پێشنیارکراوەکەی Reddit پاشکەوت کرا</string>
+  <string name="morphe_download_location_folder_unavailable">فۆڵدەرەکەی دابەزاندن ئیتر بەردەست نییە. لەجیاتی ئەوە لە فۆڵدەرە پێشنیارکراوەکەی Reddit پاشکەوت کرا</string>
+  <string name="morphe_download_location_video_failed">نەتوانرا ڤیدیۆی داگردراو پاشکەوت بکرێت</string>
+  <string name="morphe_download_location_invalid_folder">ئەم فۆڵدەرە ناتوانرێت بۆ داگرتن بەکاربهێنرێت</string>
+  <string name="morphe_download_location_account_current">%s (ئێستا)</string>
+  <string name="morphe_download_location_account_logged_out">%s (چوونەدەرەوە)</string>
+  <string name="morphe_download_location_account_anonymous">بەنکناس (چوونەدەرەوە یان شێوازی نادەستنەگیر)</string>
   <string name="morphe_open_links_externally_title">لینکەکان لە دەرەوە بکرێنەوە</string>
   <string name="morphe_open_links_externally_summary">Opens links in your browser instead of the in-app browser</string>
   <string name="morphe_app_icon_title">وێنۆچکەی ئەپ</string>
+  <string name="morphe_app_icon_choose_title">وێنۆچکەی ئەپەکە هەڵبژێرە</string>
   <string name="morphe_app_icon_default">بنەڕەت</string>
+  <string name="morphe_app_icon_unknown">نەناسراو</string>
 </resources>

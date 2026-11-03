@@ -95,6 +95,8 @@ public final class MinimalMiniplayerPatch {
             getCurrentMiniplayerType() == MINIMAL_BAR_2
                     && Settings.MINIPLAYER_HIDE_TITLE.get();
 
+    private static final boolean DOCKED = ENABLED && Settings.MINIPLAYER_DOCKED.get();
+
     /**
      * YouTube's own {@code floaty_bar_height}.
      */
@@ -102,8 +104,9 @@ public final class MinimalMiniplayerPatch {
 
     /**
      * Detached from the edges, so the rounded corners the miniplayer already has are visible.
+     * A docked bar has no rounded corners, and sits against the edges.
      */
-    private static final int BAR_MARGIN = Dim.dp8;
+    private static final int BAR_MARGIN = DOCKED ? 0 : Dim.dp8;
 
     /**
      * Type 2 draws the bar on the video, which is dimmed but never light, so the app colors
@@ -212,6 +215,12 @@ public final class MinimalMiniplayerPatch {
      * minimized, so a change of the window keeps it there, and dropped once it is expanded.
      */
     private static boolean barAtTop;
+
+    /**
+     * The height the snackbars and the other bottom messages take, which YouTube moves its own
+     * miniplayer up by.
+     */
+    private static int bottomUiHeight;
 
     /**
      * Do not set it to 1.00f, otherwise it will cause artifacts (e.g: with the controls fading).
@@ -328,12 +337,19 @@ public final class MinimalMiniplayerPatch {
 
             // YouTube reads a gesture against the shape of its own miniplayer, which the bar is not,
             // so the bar answers for itself: a tap expands, a drag moves the bar between the bottom
-            // and the top of the screen, and a drag down from the bottom closes it.
+            // and the top of the screen, or expands if set so, and a drag down from the bottom closes it.
             final int slop = Dim.dp20;
 
             controlsLayout.setClickable(true);
             controlsLayout.setContentDescription(ACCESSIBILITY_MINIPLAYER_VIEW_STRING);
-            controlsLayout.setOnClickListener(v -> expandPlayer());
+            controlsLayout.setOnClickListener(v -> {
+                if (clickModernButton(modernExpandButtonRef, "expand")) return;
+
+                ViewGroup controls = controlsRef.get();
+                if (controls != null && controls.getParent() instanceof View floatyBar) {
+                    floatyBar.performClick();
+                }
+            });
 
             controlsLayout.setOnTouchListener(new View.OnTouchListener() {
                 float downX;
@@ -353,6 +369,9 @@ public final class MinimalMiniplayerPatch {
 
                             if (-draggedUp > slop && !barAtTop) {
                                 closeBar();
+                            } else if (draggedUp > slop && Settings.MINIPLAYER_SWIPE_UP_EXPAND.get()) {
+                                // Goes through the click, so accessibility services see it.
+                                view.performClick();
                             } else if (Math.abs(draggedUp) > slop) {
                                 // Already at the top, a drag up has nowhere to go. Nor while the bar
                                 // is animating, which can be the bar leaving before it is closed.
@@ -636,7 +655,9 @@ public final class MinimalMiniplayerPatch {
             dockedBottom = top - origin;
         }
 
-        final int bottom = Math.min(dockedBottom, windowBottomFor(playerLayout)) - BAR_MARGIN;
+        // Above a snackbar, the margin it keeps above itself is the one between them.
+        final int bottom = Math.min(dockedBottom, windowBottomFor(playerLayout))
+                - Math.max(BAR_MARGIN, bottomUiHeight);
 
         updateBarSpan();
         barBounds.set(barSpan.left + BAR_MARGIN, bottom - BAR_HEIGHT,
@@ -801,6 +822,25 @@ public final class MinimalMiniplayerPatch {
 
     /**
      * Injection point.
+     * <p>
+     * Called with the height a snackbar takes for every frame it slides, and when it is gone.
+     * YouTube moves its own miniplayer up by it, and the bar is moved the same way.
+     */
+    public static void setBottomUiHeight(int height) {
+        if (!ENABLED || bottomUiHeight == height) return;
+
+        try {
+            bottomUiHeight = height;
+            if (barShapeApplied) {
+                reapplyBarBounds();
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "setBottomUiHeight failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
      */
     public static void setBoundsController(MiniplayerBoundsController controller) {
         // Also kept for the other miniplayer types, to move them above the keyboard.
@@ -935,15 +975,6 @@ public final class MinimalMiniplayerPatch {
                 : Dim.getScreenHeight() - currentBounds.top);
 
         runMorph(false, () -> clickModernButton(modernCloseButtonRef, "close"));
-    }
-
-    private static void expandPlayer() {
-        if (clickModernButton(modernExpandButtonRef, "expand")) return;
-
-        ViewGroup controls = controlsRef.get();
-        if (controls != null && controls.getParent() instanceof View floatyBar) {
-            floatyBar.performClick();
-        }
     }
 
     @SuppressLint("ClickableViewAccessibility")

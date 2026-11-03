@@ -20,10 +20,12 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
+import app.morphe.extension.music.patches.lyrics.romanizers.LyricsLanguageDetector;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.translation.DeepLClient;
 import app.morphe.extension.shared.translation.TextTranslator;
 
 public final class LyricsTranslator {
@@ -110,7 +112,13 @@ public final class LyricsTranslator {
                 Settings.LYRICS_TRANSLATION_PROVIDERS.get(),
                 AiProviders.TRANSLATION_ORDER);
         if (providers.isEmpty()) {
-            callback.onTranslated(null, false, false, null);
+            callback.onTranslated(null, false, false, null, false);
+            return;
+        }
+
+        // Nothing is sent and no failure is reported, since no provider was asked.
+        if (!LyricsLanguageDetector.needsTranslation(lyrics.lines(), language)) {
+            callback.onTranslated(null, false, false, null, true);
             return;
         }
 
@@ -120,7 +128,7 @@ public final class LyricsTranslator {
 
         // Embedded translation is already in memory, so keep the old synchronous result.
         if (AiProviders.EMBEDDED.equals(providers.get(0)) && embedded != null) {
-            callback.onTranslated(embedded, false, false, null);
+            callback.onTranslated(embedded, false, false, null, false);
             return;
         }
 
@@ -136,17 +144,19 @@ public final class LyricsTranslator {
                         if (result != null) {
                             Utils.runOnMainThread(() -> callback.onTranslated(
                                     result.lines(), result.fromGoogle(), result.fromAI(),
-                                    result.model()));
+                                    result.model(), false));
                             return;
                         }
                     } catch (Exception ex) {
                         Logger.printInfo(() -> "translation provider failed: " + provider, ex);
                     }
                 }
-                Utils.runOnMainThread(() -> callback.onTranslated(null, false, false, null));
+                Utils.runOnMainThread(
+                        () -> callback.onTranslated(null, false, false, null, false));
             } catch (Exception ex) {
                 Logger.printInfo(() -> "translate failure", ex);
-                Utils.runOnMainThread(() -> callback.onTranslated(null, false, false, null));
+                Utils.runOnMainThread(
+                        () -> callback.onTranslated(null, false, false, null, false));
             }
         });
     }
@@ -231,8 +241,12 @@ public final class LyricsTranslator {
         if (apiKey.isEmpty()) {
             return null;
         }
-        List<String> translated = DeepLClient.translate(lines, language, apiKey);
-        return translated == null ? null : new AiProviders.Result(translated, "DeepL");
+        try {
+            return new AiProviders.Result(DeepLClient.translate(lines, language, apiKey), "DeepL");
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "DeepL request failed", ex);
+            return null;
+        }
     }
 
     @Nullable
@@ -248,8 +262,10 @@ public final class LyricsTranslator {
     }
 
     public interface Callback {
+        /** @param skipped No provider was asked anything, so a caller reports nothing to do. */
         void onTranslated(@Nullable List<String> translatedLines,
-                          boolean fromGoogle, boolean fromAI, @Nullable String aiModel);
+                          boolean fromGoogle, boolean fromAI, @Nullable String aiModel,
+                          boolean skipped);
     }
 
     private record ProviderTranslation(List<String> lines, boolean fromGoogle,

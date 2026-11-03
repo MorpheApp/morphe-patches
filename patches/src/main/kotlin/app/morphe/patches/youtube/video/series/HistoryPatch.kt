@@ -17,9 +17,9 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
-import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
 import app.morphe.patches.youtube.layout.buttons.navigation.PivotBarRendererFingerprint
 import app.morphe.patches.youtube.layout.buttons.navigation.PivotBarRendererListFingerprint
+import app.morphe.patches.youtube.layout.buttons.navigation.implementPivotBarItemBuilder
 import app.morphe.patches.youtube.misc.backgesture.YouTubeMainActivityOnBackPressedFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
@@ -36,48 +36,9 @@ private const val OUR_NAV = "${SERIES_TRACKER_EXTENSION_PREFIX}HistoryNavigation
 
 internal fun BytecodePatchContext.wireHistory() {
     // Build the Series navigation button from the same renderer factory YouTube uses.
-    val factory = PivotBarRendererFingerprint.method
-    val registeredParse = parseByteArrayWithRegistryMethodRef.get()!!
-    val registry = GeneratedRegistryFingerprint.method
-    val wrapperType = factory.parameterTypes.single().toString()
-    val default = classDefBy(wrapperType).fields.single {
-        it.type == wrapperType && AccessFlags.STATIC.isSet(it.accessFlags)
-    }
+    implementPivotBarItemBuilder(HistoryNavigationBuilderFingerprint)
 
-    // Replace the extension placeholder with a method that calls the obfuscated factory.
-    HistoryNavigationBuilderFingerprint.let {
-        it.classDef.methods.remove(it.method)
-        it.classDef.methods.add(
-            ImmutableMethod(
-                OUR_NAV,
-                "buildNative",
-                listOf(ImmutableMethodParameter("[B", null, null)),
-                "Ljava/lang/Object;",
-                AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
-                null,
-                null,
-                MutableMethodImplementation(3),
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        sget-object v0, $default
-                        invoke-static { }, $registry
-                        move-result-object v1
-                        invoke-static { v0, p0, v1 }, $registeredParse
-                        move-result-object v0
-                        check-cast v0, $wrapperType
-                        invoke-static { v0 }, $factory
-                        move-result-object v0
-                        const/4 v1, 0x0
-                        invoke-virtual { v0, v1 }, ${factory.returnType}->orElse(Ljava/lang/Object;)Ljava/lang/Object;
-                        move-result-object v0
-                        return-object v0
-                    """
-                )
-            }
-        )
-    }
+    val factory = PivotBarRendererFingerprint.method
 
     // Capture each native pivot item together with the renderer it was built from.
     factory.findInstructionIndicesReversedOrThrow(

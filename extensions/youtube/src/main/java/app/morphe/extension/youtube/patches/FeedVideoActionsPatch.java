@@ -36,6 +36,7 @@ import androidx.annotation.Nullable;
 
 import com.facebook.litho.ComponentHost;
 import com.facebook.litho.TextContent;
+import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -44,16 +45,21 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.WeakHashMap;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.utils.AuthUtils;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
+import app.morphe.extension.youtube.innertube.PlaylistEdit;
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
+import app.morphe.extension.youtube.patches.utils.requests.GetPlaylistItemsRequest;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -65,9 +71,10 @@ import app.morphe.extension.youtube.settings.Settings;
  * (on the right, or on the left in right to left languages).
  * <ul>
  *   <li>Tap and hold anywhere on the video: clicks the menu button of the video.</li>
- *   <li>Watch later button: drawn on the overlay of the root host. Tapping it saves the video to
- *       Watch later, and tapping and holding it opens the Save to playlist panel. Both run the
- *       command of the app directly, so they do not depend on the menu of the video.</li>
+ *   <li>Watch later button: drawn on the overlay of the root host, with a check mark if the video is
+ *       in Watch later. Tapping it saves the video to Watch later or removes it, and tapping and holding
+ *       it opens the Save to playlist panel. All run the command of the app directly, so they do not
+ *       depend on the menu of the video.</li>
  * </ul>
  * The content description of the menu button is localized and contains the title of its
  * video. The texts of the video are removed from it, and the remaining pattern is learned
@@ -137,8 +144,11 @@ public final class FeedVideoActionsPatch {
     private static final Pattern LETTERS_PATTERN = Pattern.compile("\\p{L}{2,}");
     private static final Pattern VIDEO_ID_PATTERN = Pattern.compile("^[\\w-]{11}$");
 
-    /** {@code ACTION_ADD_VIDEO} of a playlist edit. */
-    private static final int PLAYLIST_ACTION_ADD_VIDEO = 1;
+    /**
+     * The videos saved from this device are known right away, so
+     * the playlist is only loaded again for the changes from other devices.
+     */
+    private static final long SAVED_VIDEOS_REFRESH_INTERVAL_MS = 30 * 60 * 1000;
 
     private static final StringRef VIDEO_ID_NOT_FOUND = StringRef.sfc("morphe_queue_manager_check_failed_video_id");
 
@@ -183,6 +193,26 @@ public final class FeedVideoActionsPatch {
 
     @Nullable
     private static Drawable clockIcon;
+    @Nullable
+    private static Drawable checkIcon;
+
+    /**
+     * The videos of the Watch later playlist, with the id of their entry in the playlist if it's known.
+     */
+    private static final Map<String, String> savedVideos = new ConcurrentHashMap<>();
+    /** Used only on the main thread. */
+    private static long savedVideosFetchTime;
+    /** Used only on the main thread. */
+    private static boolean savedVideosFetching;
+    /**
+     * Headers of the account that the saved videos were loaded for. Used only on the main thread.
+     */
+    @Nullable
+    private static Map<String, String> savedVideosRequestHeader;
+    /**
+     * Number of changes of the saved videos, to not replace a change with an older list of the videos.
+     */
+    private static final AtomicInteger savedVideosChanges = new AtomicInteger();
 
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
@@ -234,10 +264,13 @@ public final class FeedVideoActionsPatch {
 
     /**
      * Round dark button with the clock icon of the app, like on the desktop site.
+     * The icon is a check mark if the video is in Watch later.
      */
     private static final class WatchLaterBadge extends Drawable {
         private final Paint backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private boolean pressed;
+        @Nullable
+        String videoId;
         WeakReference<ComponentHost> hostRef = new WeakReference<>(null);
 
         WatchLaterBadge() {
@@ -264,7 +297,7 @@ public final class FeedVideoActionsPatch {
             canvas.drawCircle(bounds.exactCenterX(), bounds.exactCenterY(),
                     bounds.width() / 2f, backgroundPaint);
 
-            Drawable icon = getClockIcon();
+            Drawable icon = getBadgeIcon(videoId != null && savedVideos.containsKey(videoId));
             if (icon != null) {
                 final int iconSize = bounds.width() * BADGE_ICON_DP / BADGE_SIZE_DP;
                 final int left = bounds.centerX() - iconSize / 2;
@@ -289,18 +322,24 @@ public final class FeedVideoActionsPatch {
     }
 
     @Nullable
-    private static Drawable getClockIcon() {
-        if (clockIcon == null) {
-            Drawable icon = ResourceUtils.getDrawable(USE_EXPERIMENTAL_ICONS
-                    ? "yt_outline_experimental_clock_vd_theme_24"
-                    : "yt_outline_clock_black_24");
+    private static Drawable getBadgeIcon(boolean saved) {
+        Drawable icon = saved ? checkIcon : clockIcon;
+        if (icon == null) {
+            String name = saved
+                    ? (USE_EXPERIMENTAL_ICONS ? "yt_outline_experimental_check_vd_theme_24" : "yt_outline_check_black_24")
+                    : (USE_EXPERIMENTAL_ICONS ? "yt_outline_experimental_clock_vd_theme_24" : "yt_outline_clock_black_24");
+            icon = ResourceUtils.getDrawable(name);
             if (icon != null) {
                 icon = icon.mutate();
                 icon.setColorFilter(new PorterDuffColorFilter(BADGE_ICON_COLOR, PorterDuff.Mode.SRC_IN));
             }
-            clockIcon = icon;
+            if (saved) {
+                checkIcon = icon;
+            } else {
+                clockIcon = icon;
+            }
         }
-        return clockIcon;
+        return icon;
     }
 
     private static int dp(View view, int dp) {
@@ -683,6 +722,12 @@ public final class FeedVideoActionsPatch {
             }
             if (card.thumbnailTop >= 0) {
                 card.placeBadge(host);
+                final String videoId = findCardVideoId(host);
+                if (!TextUtils.equals(card.badge.videoId, videoId)) {
+                    card.badge.videoId = videoId;
+                    card.badge.invalidateSelf();
+                }
+                fetchSavedVideosIfNeeded();
             } else {
                 card.removeBadge(host);
             }
@@ -970,37 +1015,167 @@ public final class FeedVideoActionsPatch {
     }
 
     /**
+     * @return The video of the card, or null if it is not known.
+     */
+    @Nullable
+    private static String findCardVideoId(ComponentHost host) {
+        String cardVideoId = FeedVideoCardsPatch.findVideoId(host);
+        // The texts of a card that is not fully shown may not be drawn.
+        return cardVideoId != null && VIDEO_ID_PATTERN.matcher(cardVideoId).matches()
+                ? cardVideoId
+                : FeedVideoCardsPatch.findVideoIdByDescription(host);
+    }
+
+    /**
+     * @return The playlist that the Watch later button saves to, which can be redirected by a setting.
+     */
+    private static String getSavedVideosPlaylistId() {
+        return SaveToWatchLaterPatch.isPatchIncluded()
+                ? SaveToWatchLaterPatch.getWatchLaterPlaylistId()
+                : SaveToWatchLaterPatch.WATCH_LATER_PLAYLIST_ID;
+    }
+
+    /**
+     * Loads the saved videos, if they are not loaded yet or the account has changed.
+     */
+    private static void fetchSavedVideosIfNeeded() {
+        if (savedVideosFetching || AuthUtils.isNotLoggedIn()) {
+            return;
+        }
+        final Map<String, String> requestHeader = AuthUtils.getRequestHeader();
+        final long now = System.currentTimeMillis();
+        if (savedVideosFetchTime != 0 && requestHeader.equals(savedVideosRequestHeader)
+                && now - savedVideosFetchTime < SAVED_VIDEOS_REFRESH_INTERVAL_MS) {
+            return;
+        }
+
+        savedVideosFetching = true;
+        savedVideosFetchTime = now;
+        savedVideosRequestHeader = requestHeader;
+        final int changes = savedVideosChanges.get();
+        final String playlistId = getSavedVideosPlaylistId();
+        Utils.runOnBackgroundThread(() -> {
+            final Map<String, String> videos = GetPlaylistItemsRequest.fetchVideoIds(playlistId, requestHeader);
+            Utils.runOnMainThread(() -> {
+                savedVideosFetching = false;
+                if (changes != savedVideosChanges.get()) {
+                    savedVideosFetchTime = 0; // The list may not have the change, so it's loaded again.
+                } else if (videos != null) {
+                    savedVideos.clear();
+                    savedVideos.putAll(videos);
+                    updateWatchLaterBadges();
+                }
+            });
+        });
+    }
+
+    private static void updateWatchLaterBadges() {
+        for (VideoCard card : cards.values()) {
+            card.badge.invalidateSelf();
+        }
+    }
+
+    /**
+     * Called by {@link SaveToWatchLaterPatch} when the app edits a playlist, such as with the items of its menus.
+     *
+     * @param playlistId Playlist of the request, before it's redirected to the playlist of the setting.
+     */
+    public static void onPlaylistEdit(String playlistId, List<MessageLite> actions) {
+        if (!WATCH_LATER_BUTTON) {
+            return;
+        }
+        try {
+            final String savedPlaylistId = getSavedVideosPlaylistId();
+            final boolean isSavedPlaylist = savedPlaylistId.equals(playlistId);
+            final boolean isWatchLater = SaveToWatchLaterPatch.WATCH_LATER_PLAYLIST_ID.equals(playlistId);
+            if (!isSavedPlaylist && !isWatchLater) {
+                return;
+            }
+
+            boolean unknownVideoRemoved = false;
+            for (MessageLite message : actions) {
+                PlaylistEdit.PlaylistEditAction action = PlaylistEdit.PlaylistEditAction.parseFrom(message.toByteArray());
+                switch (action.getAction()) {
+                    // Additions to Watch later are redirected to the playlist of the setting.
+                    case ACTION_ADD_VIDEO -> savedVideos.putIfAbsent(action.getAddedVideoId(), "");
+                    case ACTION_REMOVE_VIDEO -> {
+                        // The entry of a video saved after the videos were loaded is not known.
+                        if (isSavedPlaylist && !savedVideos.values().remove(action.getSetVideoId())) {
+                            unknownVideoRemoved = true;
+                        }
+                    }
+                    case ACTION_REMOVE_VIDEO_BY_VIDEO_ID -> {
+                        if (isSavedPlaylist) {
+                            savedVideos.remove(action.getRemovedVideoId());
+                        }
+                    }
+                    default -> {
+                        continue;
+                    }
+                }
+                savedVideosChanges.incrementAndGet();
+            }
+
+            final boolean loadSavedVideos = unknownVideoRemoved;
+            Utils.runOnMainThread(() -> {
+                if (loadSavedVideos) {
+                    savedVideosFetchTime = 0;
+                }
+                updateWatchLaterBadges();
+            });
+        } catch (Exception ex) {
+            Logger.printException(() -> "onPlaylistEdit failure", ex);
+        }
+    }
+
+    /**
      * Runs the command of the app that its own menu items run, with the video of the card.
      *
      * @param saveToPlaylist If the Save to playlist panel is opened.
-     *                       Otherwise the video is saved to Watch later.
+     *                       Otherwise the video is saved to Watch later, or removed if it's saved.
      */
     private static void runVideoCommand(ComponentHost host, boolean saveToPlaylist) {
-        String cardVideoId = FeedVideoCardsPatch.findVideoId(host);
-        // The texts of a card that is not fully shown may not be drawn.
-        final String videoId = cardVideoId != null && VIDEO_ID_PATTERN.matcher(cardVideoId).matches()
-                ? cardVideoId
-                : FeedVideoCardsPatch.findVideoIdByDescription(host);
+        final String videoId = findCardVideoId(host);
         if (videoId == null) {
-            Logger.printDebug(() -> "Video of the card not found: " + cardVideoId);
+            Logger.printDebug(() -> "Video of the card not found");
             Utils.showSnackbarShort(VIDEO_ID_NOT_FOUND.toString());
             return;
         }
 
-        Logger.printDebug(() -> (saveToPlaylist ? "Opening Save to playlist: " : "Saving to Watch later: ") + videoId);
+        final boolean saved = savedVideos.containsKey(videoId);
+        Logger.printDebug(() -> (saveToPlaylist ? "Opening Save to playlist: "
+                : saved ? "Removing from Watch later: " : "Saving to Watch later: ") + videoId);
         var command = PlaylistQueueRenderer.NavigationEndpoint.newBuilder();
         if (saveToPlaylist) {
             command.setAddToPlaylistEndpoint(PlaylistQueueRenderer.AddToPlaylistEndpoint.newBuilder()
                     .setVideoId(videoId));
+        } else if (saved) {
+            command.setPlaylistEditEndpoint(PlaylistQueueRenderer.PlaylistEditEndpoint.newBuilder()
+                    .setPlaylistId(getSavedVideosPlaylistId())
+                    .addActions(PlaylistQueueRenderer.PlaylistEditAction.newBuilder()
+                            .setAction(PlaylistEdit.PlaylistEditActionType.ACTION_REMOVE_VIDEO_BY_VIDEO_ID_VALUE)
+                            .setRemovedVideoId(videoId)));
         } else {
             command.setPlaylistEditEndpoint(PlaylistQueueRenderer.PlaylistEditEndpoint.newBuilder()
                     .setPlaylistId(SaveToWatchLaterPatch.WATCH_LATER_PLAYLIST_ID)
                     .addActions(PlaylistQueueRenderer.PlaylistEditAction.newBuilder()
-                            .setAction(PLAYLIST_ACTION_ADD_VIDEO)
+                            .setAction(PlaylistEdit.PlaylistEditActionType.ACTION_ADD_VIDEO_VALUE)
                             .setAddedVideoId(videoId)));
         }
         if (!CommandRouterPatch.executeCommand(command.build().toByteArray(), new HashMap<>())) {
             Logger.printDebug(() -> "No command router of a shown activity");
+            return;
+        }
+
+        if (!saveToPlaylist) {
+            // Updated right away. The command does not tell if it worked, but the app shows its own message.
+            if (saved) {
+                savedVideos.remove(videoId);
+            } else {
+                savedVideos.put(videoId, "");
+            }
+            savedVideosChanges.incrementAndGet();
+            updateWatchLaterBadges();
         }
     }
 

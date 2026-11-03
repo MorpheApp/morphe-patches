@@ -8,13 +8,11 @@
 package app.morphe.patches.music.misc.litho.node
 
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
-import app.morphe.patches.music.misc.playservice.is_9_32_or_greater
 import app.morphe.patches.shared.misc.litho.context.conversionContextPatch
 import app.morphe.patches.shared.misc.litho.node.createTreeNodeElementHookPatch
 
 val treeNodeElementHookPatch = createTreeNodeElementHookPatch(
     sharedExtensionPatch,
     conversionContextPatch,
-    true,
-    useLegacyContextRegister = { !is_9_32_or_greater }
+    true
 )

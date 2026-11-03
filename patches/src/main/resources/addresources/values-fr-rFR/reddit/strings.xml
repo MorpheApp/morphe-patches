@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Politique de confidentialité de Reddit</string>
   <string name="morphe_google_signin_not_available_toast">La connexion avec Google n\'est pas disponible. Utilisez votre adresse e-mail pour vous connecter</string>
+  <string name="morphe_app_downgrade_dialog_title">Rétrogradation non prise en charge</string>
+  <string name="morphe_app_downgrade_dialog_message">"Cette installation de Reddit a été rétrogradée de &lt;/b&gt;%1$s&lt;b&gt; vers &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Les données d'une application d'une version plus récente ne fonctionnent pas avec les anciennes versions et l'application risque de ne pas fonctionner correctement.
+&lt;br/&gt;&lt;br/&gt;
+Pour utiliser une ancienne version, vous devez &lt;b&gt;désinstaller&lt;/b&gt; Reddit, puis installer l'ancienne version."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Ouvrir les informations de l\'application</string>
   <string name="morphe_screen_ads_title">Publicités</string>
   <string name="morphe_hide_post_ads_title">Masquer les publicités du flux</string>
   <string name="morphe_hide_comment_ads_title">Masquer les publicités dans les commentaires</string>

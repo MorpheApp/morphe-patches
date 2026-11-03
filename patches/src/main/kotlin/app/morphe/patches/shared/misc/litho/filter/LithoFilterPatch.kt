@@ -26,7 +26,6 @@ import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.getFreeRegisterProvider
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.context.ConversionContextToStringFingerprint
@@ -41,7 +40,6 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
@@ -452,11 +450,13 @@ internal fun sharedLithoFilterPatch(
                     // Only the constructors that call the constructor of the superclass,
                     // the others call those.
                     methods.filter { method -> MethodUtil.isConstructor(method) }.forEach { constructor ->
-                        val superConstructorIndex = constructor.indexOfFirstInstruction {
-                            opcode == Opcode.INVOKE_DIRECT && getReference<MethodReference>()?.let { reference ->
-                                reference.name == "<init>" && reference.definingClass == superclass
-                            } == true
-                        }
+                        val superConstructorIndex = constructor.indexOfFirstInstruction(
+                            methodCall(
+                                opcode = Opcode.INVOKE_DIRECT,
+                                definingClass = superclass,
+                                name = "<init>"
+                            )
+                        )
                         if (superConstructorIndex < 0) return@forEach
 
                         // The instance the superclass was initialized with.

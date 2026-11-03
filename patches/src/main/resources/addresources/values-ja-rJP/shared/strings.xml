@@ -181,9 +181,9 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG がインストールされていません。インストールしてください</string>
   <string name="gms_core_dialog_title">操作が必要です</string>
-  <string name="gms_core_dialog_outdated_message">"インストールされている MicroG v%1s は古く、問題を引き起こす可能性があります。
+  <string name="gms_core_dialog_outdated_message">"お使いの MicroG v%1s は古くなっており、問題が発生する可能性があります。
 
-最新版 v%2s に MicroG を更新してください"</string>
+MicroG を最新バージョン v%2s に更新してください"</string>
   <string name="gms_core_dialog_update_text">更新</string>
   <string name="gms_core_dialog_ignore_text">無視</string>
   <string name="gms_core_dialog_conflict_message">"インストールされている MicroG は Morphe が推奨していません：

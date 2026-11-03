@@ -53,7 +53,7 @@ internal fun mediaNotificationControlsPatch(
             it.clearMatch()
 
             it.method.apply {
-                val index = it.instructionMatches.first().index
+                val index = it.instructionMatches.last().index
                 val register = getInstruction<FiveRegisterInstruction>(index).registerD
 
                 addInstructions(

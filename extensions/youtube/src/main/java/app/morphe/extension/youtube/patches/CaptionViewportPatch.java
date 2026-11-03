@@ -15,6 +15,7 @@ import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -35,6 +36,13 @@ public final class CaptionViewportPatch {
     /**
      * Injection point.
      */
+    public static float scaleFontSize(float size) {
+        return CaptionViewportPolicy.scaleFontSize(size, SeekBarPreference.clampToRange(Settings.CAPTION_SCALE));
+    }
+
+    /**
+     * Injection point.
+     */
     public static void onVideoId(String videoId) {
         policy.select(videoId);
         remeasure();
@@ -51,8 +59,8 @@ public final class CaptionViewportPatch {
             for (VideoFormat.FormatInterface format : formats) {
                 String mimeType = format.patch_getMimeType();
                 if (mimeType == null || !mimeType.startsWith("video/")) continue;
-                int width = format.patch_getWidth(), height = format.patch_getHeight();
-                long area = (long) width * height;
+                final int width = format.patch_getWidth(), height = format.patch_getHeight();
+                final long area = (long) width * height;
                 if (area > bestArea) {
                     bestArea = area;
                     bestWidth = width;
@@ -95,7 +103,7 @@ public final class CaptionViewportPatch {
 
     /** A paused cue must be resized even when no new subtitle or format arrives. */
     public static synchronized void onPresentationChanged() {
-        boolean fullscreen = PlayerType.getCurrent() == PlayerType.WATCH_WHILE_FULLSCREEN;
+        final boolean fullscreen = PlayerType.getCurrent() == PlayerType.WATCH_WHILE_FULLSCREEN;
         FullscreenVideoScalePatch.VideoScaleMode scale = Settings.FULLSCREEN_VIDEO_SCALE.get();
         if (fullscreen == lastFullscreen && scale == lastScale) return;
         lastFullscreen = fullscreen;

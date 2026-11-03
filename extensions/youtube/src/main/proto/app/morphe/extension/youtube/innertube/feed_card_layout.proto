@@ -9,6 +9,15 @@ option java_outer_classname = "FeedCardLayoutOuterClass";
 // Bytes of the newElement of an elementRenderer.
 message Element {
     ElementType type = 1;
+    ElementProperties properties = 2;
+}
+
+message ElementProperties {
+    ElementIdentifierProperties identifierProperties = 183314536;
+}
+
+message ElementIdentifierProperties {
+    string identifier = 1;
 }
 
 message ElementType {
@@ -34,6 +43,10 @@ message ElementModel {
     VideoWithContextModel videoWithContextModel = 232954548;
     // Feed card video (lockup.eml).
     LockupModel lockupModel = 413471385;
+    // Action bar of the watch page that is not collapsed, such as on tablets (video_action_bar.eml).
+    VideoActionBarModel videoActionBarModel = 389155117;
+    // Channel bar of the watch page, in its own row above the action bar (compact_channel_bar.eml).
+    CompactChannelBarModel compactChannelBarModel = 391108665;
     // Header of the shelves, such as the Shorts shelf (shelf_header.eml).
     ShelfHeaderModel shelfHeaderModel = 229393850;
     // Horizontal shelf of videos, with its header (horizontal_shelf.eml).
@@ -90,8 +103,14 @@ message ShelfHeaderStyle {
 
 // Fills the theme and the capabilities of the model when the element is bound.
 message SubscriptionConfig {
+    EnvironmentSubscriptionConfig environmentSubscriptionConfig = 212323971;
     ThemeSubscriptionConfig themeSubscriptionConfig = 386334485;
     CapabilitiesSubscriptionConfig capabilitiesSubscriptionConfig = 386334486;
+}
+
+message EnvironmentSubscriptionConfig {
+    int32 modelField = 1;
+    int32 resultField = 2;
 }
 
 message ThemeSubscriptionConfig {
@@ -130,12 +149,14 @@ message VideoWithContextData {
     bytes inlinePlayback = 6; // Commands that start and stop the inline playback (feed autoplay).
     bool compact = 22; // Thumbnail beside the title, such as the videos of the playlists and the rows of the library.
     bytes attachment = 43; // Content below the video, such as the description and the 'Buy or rent' button of the movies.
+    int32 collectionStack = 38; // Draws a stack behind the thumbnail of the playlists and the mixes.
     bool horizontal = 57; // Thumbnail beside the title and the metadata, such as the search results on tablets.
 }
 
 message VideoData {
     VideoThumbnail thumbnail = 1;
     ChannelAvatar avatar = 3;
+    string url = 6;
     LockupMetadata lockupMetadata = 21;
     LockupImage decoratedAvatar = 23; // Avatar with a ring, such as the avatar of live channels.
     LockupImage avatarStack = 24; // Avatars of the channels of a collaboration.
@@ -147,8 +168,23 @@ message VideoThumbnail {
     int32 badgeStyle = 4; // Same values of the badge style of the cards.
     float progress = 5; // Watched fraction, from 0 to 1.
     string videoCountText = 6; // Playlists.
+    // Only the playlists and the mixes have the following fields.
+    bool isPlaylist = 7;
+    bool isMix = 8;
+    int32 collectionStyle1 = 13;
+    int32 collectionStyle2 = 16;
+    uint32 badgeColor = 22;
+    uint32 badgeDarkColor = 24;
+    int32 badgeIconType = 36;
+    int32 collectionStyle3 = 42;
+    CollectionStackColors stackColors = 55;
     string timestampAccessibilityText = 11;
     string badgeIcon = 19; // Drawable name, such as the live icon.
+}
+
+message CollectionStackColors {
+    uint32 frontColor = 1;
+    uint32 backColor = 2;
 }
 
 message ChannelAvatar {
@@ -179,6 +215,126 @@ message LockupViewModelHolder {
     LockupViewModel lockupViewModel = 8179;
     // Model of thumbnail_bottom_overlay.eml.
     ThumbnailBottomOverlayViewModel thumbnailBottomOverlayViewModel = 1214;
+    // Model of compactify_video_action_bar.eml.
+    VideoActionBarViewModel videoActionBarViewModel = 2185;
+}
+
+message CompactChannelBarModel {
+    ElementContext context = 2;
+    SubscribeState subscribeState = 3;
+    CompactChannelBarViewModelHolder viewModel = 9;
+    bool useThemeFromContext = 11;
+}
+
+message SubscribeState {
+    string key = 1;
+}
+
+message CompactChannelBarViewModelHolder {
+    CompactChannelBarViewModel compactChannelBarViewModel = 1107;
+}
+
+message CompactChannelBarViewModel {
+    SubscribeButtonViewModelHolder subscribeButton = 24;
+    int32 channelBarStyle = 26;
+    ChannelBarHeaderViewModelHolder channelBarHeader = 27;
+}
+
+message SubscribeButtonViewModelHolder {
+    SubscribeButtonViewModel subscribeButtonViewModel = 518912898;
+}
+
+message SubscribeButtonViewModel {
+    string stateEntityStoreKey = 3;
+}
+
+message ChannelBarHeaderViewModelHolder {
+    ChannelBarHeaderViewModel channelBarHeaderViewModel = 477514866;
+}
+
+message ChannelBarHeaderViewModel {
+    int32 style = 5;
+}
+
+message VideoActionBarModel {
+    VideoActionBarData videoActionBarData = 17;
+}
+
+message VideoActionBarData {
+    repeated VideoActionBarItem actions = 1;
+}
+
+// Action bar of the watch page, which shows the like button, the share button and the others.
+message VideoActionBarViewModel {
+    repeated VideoActionBarItem actions = 1;
+    int32 layoutStyle = 3;
+    VideoActionBarLayoutConfig layoutConfig = 4;
+    VideoActionBarItemContent subscribeButton = 6; // Beside the buttons of the minimal layout.
+    VideoActionBarSize size = 7;
+}
+
+message VideoActionBarLayoutConfig {
+    bool iconButtons = 6; // Buttons of the minimal layout, with an icon above their text.
+    bool enableMarginStartAdjustment = 7; // Starts the row with the channel further from the start of the screen.
+}
+
+message VideoActionBarSize {
+    float minButtonsWidth = 1;
+    float maxButtonsWidth = 2;
+    int32 buttonSpacing = 3;
+    int32 maxVisibleButtons = 4;
+}
+
+message VideoActionBarItem {
+    VideoActionBarItemContent content = 10;
+}
+
+// Only the fields that the layouts place differently are declared.
+message VideoActionBarItemContent {
+    optional bytes subscribeButton = 1107;
+    VideoActionBarLikeDislike likeDislikeButtons = 484586709; // Classic layout.
+    LikeButtonViewModel likeButton = 484585818;
+    DislikeButtonViewModel dislikeButton = 484590786;
+    AddToPlaylistButtonViewModel saveButton = 484598023;
+    ButtonViewModel button = 461054335;
+    VideoActionBarOverflow overflow = 37098; // Minimal layout.
+    VideoActionBarDownloadButton downloadButton = 33561776;
+    optional bytes accountLinkButton = 492031756;
+    optional bytes clipButton = 490025863;
+    optional bytes menuHeader = 15469; // Item of the overflow menu that is not a button.
+}
+
+message VideoActionBarDownloadButton {
+    int32 style = 14;
+    optional string premiumOfferText = 34; // Below the text of the item in the overflow menu.
+}
+
+// Like and dislike buttons of the classic layout, joined in one item.
+message VideoActionBarLikeDislike {
+    VideoActionBarItemContent likeButton = 1;
+    VideoActionBarItemContent dislikeButton = 2;
+    bool showLikeCount = 5;
+    VideoActionBarLikeCount likeCount = 7;
+    string likeCountAnimationParams = 10;
+    bool animationEnabled1 = 13;
+    bool animationEnabled2 = 14;
+    string likeAnimationUrl = 15;
+    string likedAnimationUrl = 16;
+}
+
+message VideoActionBarLikeCount {
+    string entityKey = 1;
+}
+
+message DislikeButtonViewModel {
+    ToggleButtonViewModelHolder toggleButtonViewModel = 1;
+}
+
+message VideoActionBarOverflow {
+    ButtonViewModelHolder menuButton = 1;
+    repeated VideoActionBarItemContent menuItems = 2;
+    repeated VideoActionBarItemContent shownItems = 3; // Same as the items of the action bar.
+    int32 menuStyle = 4;
 }
 
 message LockupViewModel {
@@ -197,6 +353,15 @@ message LockupInlinePlayback {
 
 message ContentImage {
     ThumbnailViewModel thumbnailViewModel = 1036;
+    CollectionThumbnailViewModel collectionThumbnailViewModel = 1035; // Playlists and mixes.
+}
+
+message CollectionThumbnailViewModel {
+    CollectionPrimaryThumbnail primaryThumbnail = 1;
+}
+
+message CollectionPrimaryThumbnail {
+    ThumbnailViewModel thumbnailViewModel = 1036;
 }
 
 message ThumbnailViewModel {
@@ -207,6 +372,7 @@ message ThumbnailViewModel {
 message ThumbnailOverlay {
     // Only the badges are shown by lockup_thumbnail.eml.
     ThumbnailBottomOverlayViewModel thumbnailBottomOverlayViewModel = 1214;
+    ThumbnailOverlayBadgeViewModel thumbnailOverlayBadgeViewModel = 1295; // Badges of playlists and mixes.
     ThumbnailElementOverlay thumbnailElementOverlay = 36905;
 }
 
@@ -228,6 +394,10 @@ message ThumbnailOverlayProgressBar {
 message ThumbnailOverlayProgressBarViewModel {
     float progress = 1; // Watched fraction, from 0 to 1.
     int32 style = 6; // 3: at the bottom edge of the thumbnail, without the space below.
+}
+
+message ThumbnailOverlayBadgeViewModel {
+    repeated ThumbnailBadge thumbnailBadges = 1;
 }
 
 message ThumbnailBadge {
@@ -353,6 +523,7 @@ message ButtonViewModel {
     int32 buttonSize = 13;
     int32 state = 14;
     string targetId = 17;
+    int32 iconStyle = 40;
 }
 
 message ToggleButtonViewModelHolder {
@@ -370,6 +541,13 @@ message LikeButtonViewModel {
     string likeStatusEntityKey = 3;
     LikeStatusEntity likeStatusEntity = 6;
     int32 likeCountEnabled = 7;
+    // The following fields are of the buttons of the minimal action bar of the watch page.
+    bool animationEnabled1 = 8;
+    bool animationEnabled2 = 9;
+    bool animationEnabled3 = 10;
+    string likeAnimationUrl = 11;
+    string likedAnimationUrl = 12;
+    string likeCountAnimationParams = 14;
 }
 
 message LikeStatusEntity {

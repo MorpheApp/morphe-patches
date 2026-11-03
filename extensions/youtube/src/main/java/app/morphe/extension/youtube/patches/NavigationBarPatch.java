@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -51,6 +52,7 @@ import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Accessibility;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.AccessibilityData;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.BrowseEndpoint;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRenderer;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRendererAccessibilityData;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonSheetRenderer;
@@ -63,8 +65,13 @@ import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationMo
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesSwitcherRenderer;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesSwitcherRendererHolder;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationEndpoint;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationType;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemBytes;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRendererBytes;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.RendererAccessibilityData;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Runs;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Title;
 import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
@@ -156,6 +163,8 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static void navigationTabCreated(NavigationBar.NavigationButton button, View tabView) {
+        GlassNavigationBar.navigationTabCreated(button, tabView);
+
         if (button == NavigationBar.NavigationButton.NOTIFICATIONS) {
             notificationsTabCreated = true;
         }
@@ -465,6 +474,9 @@ public final class NavigationBarPatch {
             }
 
             padding = setSlimStatusBarRoom(navigationBar, padding);
+            padding = GlassNavigationBar.getFloatingRoom(navigationBar, padding);
+            // The value is also stored as the room the bar adds to its height.
+            GlassNavigationBar.setAppRoom(padding);
         } catch (Exception ex) {
             Logger.printException(() -> "getNavigationBarBottomPadding failure", ex);
         }
@@ -478,7 +490,7 @@ public final class NavigationBarPatch {
     private static final int SLIM_STATUS_BAR = ResourceUtils.getIdentifier(
             ResourceType.ID, "slim_status_bar");
 
-    private static final int PIVOT_BAR = ResourceUtils.getIdentifier(
+    static final int PIVOT_BAR = ResourceUtils.getIdentifier(
             ResourceType.ID, "pivot_bar");
 
     /**
@@ -556,8 +568,10 @@ public final class NavigationBarPatch {
                         View navigationBar = (View) access;
                         final int room = systemButtonsRoom;
                         view.post(() -> {
-                            final int navigationBarRoom = setSlimStatusBarRoom(navigationBar, room);
+                            final int navigationBarRoom = GlassNavigationBar.getFloatingRoom(
+                                    navigationBar, setSlimStatusBarRoom(navigationBar, room));
                             access.patch_setSystemButtonsRoom(navigationBarRoom);
+                            GlassNavigationBar.setAppRoom(navigationBarRoom);
                             navigationBar.setPadding(navigationBar.getPaddingLeft(), navigationBar.getPaddingTop(),
                                     navigationBar.getPaddingRight(), navigationBarRoom);
                         });
@@ -660,6 +674,59 @@ public final class NavigationBarPatch {
 
     /**
      * Injection point.
+     * <p>
+     * Called whenever the navigation bar is measured.
+     */
+    public static int getNavigationBarHeightMeasureSpec(View navigationBar, int heightMeasureSpec) {
+        return GlassNavigationBar.getHeightMeasureSpec(navigationBar, heightMeasureSpec);
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called whenever the vertical translation of the navigation bar is set.
+     */
+    public static float getNavigationBarTranslationY(View navigationBar, float translationY) {
+        return GlassNavigationBar.getTranslationY(navigationBar, translationY);
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called whenever the padding of the navigation bar is set.
+     *
+     * @param bottom The bottom padding, the room below the buttons.
+     */
+    public static int getNavigationBarPadding(View navigationBar, int bottom) {
+        return GlassNavigationBar.getFloatingRoom(navigationBar, bottom);
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the app makes the tint paint drawn over the blurred background of the navigation bar.
+     */
+    public static void setNavigationBarBlurTint(Paint tint) {
+        GlassNavigationBar.lightenBlurTint(tint);
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param bottomBarContainer The container of the navigation bar.
+     */
+    public static void setNavigationBarGlass(View bottomBarContainer) {
+        if (!GlassNavigationBar.isEnabled()) return;
+
+        try {
+            GlassNavigationBar.apply(bottomBarContainer);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setNavigationBarGlass failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
      *
      * @param original The color the app theme gives the system navigation buttons.
      */
@@ -688,6 +755,14 @@ public final class NavigationBarPatch {
     private static final boolean SHOW_SETTINGS_BUTTON_TYPE = Settings.SHOW_SETTINGS_BUTTON_TYPE.get();
 
     private static Object pivotBarSettingsRenderer = null;
+
+    private static final boolean SHOW_WATCH_LATER_BUTTON = Settings.SHOW_WATCH_LATER_BUTTON.get();
+    private static final IntegerSetting SHOW_WATCH_LATER_BUTTON_INDEX = Settings.SHOW_WATCH_LATER_BUTTON_INDEX;
+    private static final String WATCH_LATER_PIVOT_IDENTIFIER = "morphe_watch_later";
+    private static final String WATCH_LATER_BROWSE_ID = "VLWL";
+
+    @Nullable
+    private static Object pivotBarWatchLaterRenderer = null;
 
     private static final View.OnClickListener openSearchBarOnClickListener = v -> {
         if (NavigationBar.isSearchBarActive() && searchQueryRef.get() != null) {
@@ -800,8 +875,9 @@ public final class NavigationBarPatch {
 
         boolean addSearch = SHOW_SEARCH_BUTTON && pivotBarRenderer != null;
         boolean addSettings = SHOW_SETTINGS_BUTTON && pivotBarSettingsRenderer != null;
+        boolean addWatchLater = SHOW_WATCH_LATER_BUTTON && pivotBarWatchLaterRenderer != null;
 
-        if (!addSearch && !addSettings) return list;
+        if (!addSearch && !addSettings && !addWatchLater) return list;
 
         List<Object> newList = new ArrayList<>(list);
 
@@ -817,6 +893,13 @@ public final class NavigationBarPatch {
             preferredIndex = Math.max(0, Math.min(preferredIndex, newList.size()));
 
             newList.add(preferredIndex, pivotBarSettingsRenderer);
+        }
+
+        if (addWatchLater) {
+            int preferredIndex = SHOW_WATCH_LATER_BUTTON_INDEX.get();
+            preferredIndex = Math.max(0, Math.min(preferredIndex, newList.size()));
+
+            newList.add(preferredIndex, pivotBarWatchLaterRenderer);
         }
 
         return newList;
@@ -855,6 +938,71 @@ public final class NavigationBarPatch {
         }
     }
 
+    /**
+     * Injection point.
+     * Creates the Watch later button from the home button.
+     *
+     * @param messageLite MessageLite class of PivotBarItemRenderer.
+     */
+    public static void setPivotBarWatchLaterRenderer(MessageLite messageLite) {
+        if (!SHOW_WATCH_LATER_BUTTON) return;
+
+        try {
+            var renderer = PivotBarItemRenderer.parseFrom(messageLite.toByteArray());
+            var iconName = renderer.getIcon().getYtIconType().name();
+            if (!NavigationBar.NavigationButton.HOME.ytEnumNames.contains(iconName)) return;
+
+            String label = str("morphe_watch_later_navigation_label");
+            byte[] watchLaterRenderer = renderer.toBuilder()
+                    .setPivotIdentifier(WATCH_LATER_PIVOT_IDENTIFIER)
+                    .setNavigationEndpoint(NavigationEndpoint.newBuilder()
+                            .setBrowseEndpoint(BrowseEndpoint.newBuilder().setBrowseId(WATCH_LATER_BROWSE_ID)))
+                    .setAccessibility(Accessibility.newBuilder()
+                            .setAccessibilityData(AccessibilityData.newBuilder().setLabel(label)))
+                    .setTitle(Title.newBuilder().setRuns(Runs.newBuilder().setText(label)))
+                    // The Cairo icon has no drawable in some app versions.
+                    .setIcon(Icon.newBuilder().setYtIconType(YTIconType.WATCH_LATER))
+                    .clearTargetId()
+                    .build().toByteArray();
+
+            // The tracking params and thumbnail belong to the home button.
+            var watchLaterRendererBytes = PivotBarItemRendererBytes.parseFrom(watchLaterRenderer).toBuilder()
+                    .clearTrackingParams()
+                    .clearThumbnail()
+                    .setNavigationType(NavigationType.PIVOT_BAR_NAVIGATION_TYPE_SELECT_TAB_VALUE)
+                    .build().toByteString();
+
+            pivotBarWatchLaterRenderer = buildWatchLaterPivotBarItem(PivotBarItemBytes.newBuilder()
+                    .setPivotBarItemRenderer(watchLaterRendererBytes)
+                    .build().toByteArray());
+        } catch (Exception ex) {
+            Logger.printException(() -> "setPivotBarWatchLaterRenderer failure", ex);
+        }
+    }
+
+    /**
+     * Method is modified during patching to create the navigation bar item with the factory of the app.
+     *
+     * @param pivotBarItem Navigation bar item proto.
+     */
+    @Nullable
+    private static Object buildWatchLaterPivotBarItem(byte[] pivotBarItem) {
+        return null;
+    }
+
+    /**
+     * Injection point.
+     * The app has no selected icon for the Watch later icon, so the outline icon is shown
+     * when the Watch later button is selected.
+     */
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public static void setWatchLaterSelectedIcon(EnumMap icons, Enum watchLaterIcon) {
+        if (SHOW_WATCH_LATER_BUTTON) {
+            icons.put(watchLaterIcon, ResourceUtils.getIdentifier(
+                    ResourceType.DRAWABLE, "morphe_watch_later_selected"));
+        }
+    }
+
     // Toolbar
     private static final String CHAT_BUTTON_ENUMS = "MESSAGE_BUBBLE_OVERLAP";
 
@@ -883,8 +1031,6 @@ public final class NavigationBarPatch {
      */
     private static volatile boolean notificationsTabCreated;
 
-    private static final boolean HIDE_TOOLBAR_CAST_BUTTON = Settings.HIDE_TOOLBAR_CAST_BUTTON.get();
-
     private static final boolean HIDE_TOOLBAR_CHAT_BUTTON = Settings.HIDE_TOOLBAR_CHAT_BUTTON.get();
 
     private static final boolean HIDE_TOOLBAR_CREATE_BUTTON = Settings.HIDE_TOOLBAR_CREATE_BUTTON.get();
@@ -908,23 +1054,6 @@ public final class NavigationBarPatch {
     }
 
     private static WeakReference<SettingsController> settingsControllerRef = new WeakReference<>(null);
-
-    /**
-     * Injection point.
-     */
-    public static boolean hideCastButton(boolean original) {
-        return !HIDE_TOOLBAR_CAST_BUTTON && original;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void hideCastButton(MenuItem menuItem) {
-        if (HIDE_TOOLBAR_CAST_BUTTON) {
-            menuItem.setVisible(false);
-            menuItem.setEnabled(false);
-        }
-    }
 
     /**
      * Injection point.

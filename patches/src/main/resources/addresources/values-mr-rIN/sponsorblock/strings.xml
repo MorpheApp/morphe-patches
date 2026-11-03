@@ -17,9 +17,19 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_square_layout_summary">स्पॉन्सर ब्लॉक बटणे आणि नियंत्रकांसाठी स्क्वेअर कोपरे वापरते</string>
+  <string name="morphe_sb_offline_segments_title">डाउनलोड केलेल्या व्हिडिओंचे सेगमेंट्स सेव्ह करा</string>
+  <string name="morphe_sb_offline_segments_summary">ऑफलाइन असताना डाउनलोड केलेल्या व्हिडिओंचे काही भाग वगळण्याची परवानगी देते</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"तुमच्या सेटिंग्जमध्ये खाजगी SponsorBlock युजर आयडी आहे.
+
+तुमचा युजर आयडी पासवर्डसारखा आहे आणि तो कधीही शेअर करू नये"</string>
+  <string name="morphe_sb_submit_failed_unknown_error">सेगमेंट सबमिट करण्यात अक्षम (स्थिती: %1$s %2$s)</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock तात्पुरते उपलब्ध नाही (स्थिती %s)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">सेगमेंटसाठी मतदान करण्यात अक्षम (स्थिती: %1$s %2$s)</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_new_segment_disabled_category">सेटिंग्जमध्ये श्रेणी अक्षम आहे. सबमिट करण्यासाठी श्रेणी सक्षम करा</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_loading">लोड होत आहे…</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">युजरनेम बदलण्यात अक्षम: स्थिती: %1$s %2$s</string>
   <string name="morphe_sb_stats_saved_summary">ते त्यांच्या जीवनातील &lt;b&gt;%s&lt;/b&gt; आहे.&lt;br&gt;लीडरबोर्ड पाहण्यासाठी येथे टॅप करा</string>
 </resources>

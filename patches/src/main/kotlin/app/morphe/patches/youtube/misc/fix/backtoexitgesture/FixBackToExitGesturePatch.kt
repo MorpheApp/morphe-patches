@@ -11,8 +11,8 @@
 package app.morphe.patches.youtube.misc.fix.backtoexitgesture
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.backgesture.addBackPressedHook
 import app.morphe.patches.youtube.misc.backgesture.addPredictiveBackGestureHook
@@ -26,7 +26,6 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FixBackToExitGesturePatch;"
@@ -64,10 +63,12 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
         }
 
         ScrollPositionFingerprint.instructionMatches[1].getMethodCalled().apply {
-            val index = indexOfFirstInstructionOrThrow {
-                opcode == Opcode.INVOKE_VIRTUAL && getReference<MethodReference>()?.definingClass ==
-                        "Landroid/support/v7/widget/RecyclerView;"
-            }
+            val index = indexOfFirstInstructionOrThrow(
+                methodCall(
+                    opcode = Opcode.INVOKE_VIRTUAL,
+                    definingClass = "Landroid/support/v7/widget/RecyclerView;"
+                )
+            )
 
             addInstruction(
                 index,

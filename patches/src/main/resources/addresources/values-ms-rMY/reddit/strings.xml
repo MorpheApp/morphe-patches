@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Dasar privasi Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Log masuk Google tidak tersedia. Gunakan e-mel untuk log masuk</string>
+  <string name="morphe_app_downgrade_dialog_title">Penurunan versi tidak disokong</string>
+  <string name="morphe_app_downgrade_dialog_message">"Pemasangan Reddit ini telah diturunkan versinya daripada &lt;b&gt;%1$s&lt;/b&gt; kepada &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Data apl daripada versi yang lebih baharu tidak berfungsi dengan versi yang lebih lama dan apl mungkin tidak berfungsi dengan betul.
+&lt;br/&gt;&lt;br/&gt;
+Untuk menggunakan versi yang lebih lama, anda mesti &lt;b&gt;nyahpasang&lt;/b&gt; Reddit dan kemudian pasang versi yang lebih lama."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Buka info apl</string>
   <string name="morphe_screen_ads_title">Iklan</string>
   <string name="morphe_screen_navigation_bar_title">Bar pandu arah</string>
   <string name="morphe_screen_sidebar_title">Bar sisi</string>
@@ -32,9 +39,49 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">Lumpuhkan antara muka laman utama moden</string>
   <string name="morphe_force_system_font_title">Paksa fon sistem</string>
   <string name="morphe_force_system_font_summary">Gunakan fon sistem peranti sebagai ganti Reddit Sans atau Roboto. Mengaktifkan ini juga akan mematikan Fon tersuai</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Tunjukkan flair dalam feed utama</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Menunjukkan lencana flair hantaran dalam feed utama</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Sesetengah item feed mungkin tidak menunjukkan flair</string>
   <string name="morphe_screen_miscellaneous_title">Lain-lain</string>
   <string name="morphe_about_title">Mengenai</string>
+  <string name="morphe_redgifs_audio_title">Mainkan Redgifs dengan audio</string>
+  <string name="morphe_redgifs_audio_summary">Memainkan video asal Redgifs dan bukannya salinan Reddit, yang sering kali tiada audio</string>
+  <string name="morphe_redgifs_hd_title">Kualiti HD Redgifs</string>
+  <string name="morphe_redgifs_hd_summary">Memainkan video Redgifs HD. Video HD lebih besar dan mungkin terhenti seketika untuk dimuatkan</string>
+  <string name="morphe_download_location_title">Lokasi muat turun</string>
+  <string name="morphe_download_location_all_title">Semua akaun</string>
+  <string name="morphe_download_location_default_summary">Lalai Reddit: imej dalam Pictures/Reddit, video dalam Download</string>
+  <string name="morphe_download_location_summary_folder">Folder: %s</string>
+  <string name="morphe_download_location_summary_pattern">Nama fail: %s</string>
+  <string name="morphe_download_location_pattern_default">Nama fail Reddit</string>
+  <string name="morphe_download_location_uses_all_summary">Menggunakan \"Semua akaun\"</string>
+  <string name="morphe_download_location_own_title">Gunakan lokasi sendiri</string>
+  <string name="morphe_download_location_folder_title">Simpan ke</string>
+  <string name="morphe_download_location_folder_default">Folder lalai Reddit</string>
   <string name="morphe_download_location_folder_default_short">Lalai</string>
+  <string name="morphe_download_location_subfolder_hint">Subfolder</string>
+  <string name="morphe_download_location_subfolder_tree_hint">Tambah subfolder dengan / dalam nama fail</string>
+  <string name="morphe_download_location_browse">Semak…</string>
+  <string name="morphe_download_location_no_picker">Tiada pemilih folder tersedia pada peranti ini</string>
+  <string name="morphe_download_location_pattern_title">Nama fail</string>
+  <string name="morphe_download_location_pattern_hint">Nama fail Reddit</string>
+  <string name="morphe_download_location_pattern_help">Ketik token untuk memasukkannya. / mencipta subfolder. Nilai yang tidak diketahui akan menjadi \"unknown\"</string>
+  <string name="morphe_download_location_example_images">Imej: %s</string>
+  <string name="morphe_download_location_example_videos">Video: %s</string>
+  <string name="morphe_download_location_save">Simpan</string>
+  <string name="morphe_download_location_reset">Set semula</string>
+  <string name="morphe_download_location_delete">Padam</string>
+  <string name="morphe_download_location_reset_confirm">Set semula lokasi muat turun semua akaun ke lalai Reddit?</string>
+  <string name="morphe_download_location_delete_confirm">Padam lokasi muat turun %s?</string>
+  <string name="morphe_download_location_save_failed">Tidak dapat menyimpan ke lokasi muat turun. Disimpan ke folder lalai Reddit sebagai ganti</string>
+  <string name="morphe_download_location_folder_unavailable">Folder muat turun tidak lagi tersedia. Disimpan ke folder lalai Reddit sebagai ganti</string>
+  <string name="morphe_download_location_video_failed">Tidak dapat menyimpan video yang dimuat turun</string>
+  <string name="morphe_download_location_invalid_folder">Folder ini tidak boleh digunakan untuk muat turun</string>
+  <string name="morphe_download_location_account_current">%s (semasa)</string>
+  <string name="morphe_download_location_account_logged_out">%s (tidak log masuk)</string>
+  <string name="morphe_download_location_account_anonymous">Tanpa nama (log keluar atau inkognito)</string>
+  <string name="morphe_app_icon_title">Ikon aplikasi</string>
+  <string name="morphe_app_icon_choose_title">Pilih ikon aplikasi</string>
   <string name="morphe_app_icon_default">Lalai</string>
   <string name="morphe_app_icon_unknown">Tidak diketahui</string>
 </resources>

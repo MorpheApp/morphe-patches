@@ -318,15 +318,6 @@ internal object VideoQualityChangedFingerprint : Fingerprint(
     )
 )
 
-internal object VideoStreamingDataToStringFingerprint : Fingerprint(
-    name = "toString",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/String;",
-    filters = listOf(
-        string("VideoStreamingData(itags=")
-    )
-)
-
 internal object WatchNextResponseParserFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("Ljava/lang/Object;"),

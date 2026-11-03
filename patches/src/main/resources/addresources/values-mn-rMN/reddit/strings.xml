@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit-ийн нууцлалын бодлого</string>
   <string name="morphe_google_signin_not_available_toast">Google-ээр нэвтрэх боломжгүй байна. Имэйл ашиглан нэвтэрнэ үү</string>
+  <string name="morphe_app_downgrade_dialog_title">Хуучин хувилбар руу шилжүүлэхийг дэмжихгүй</string>
+  <string name="morphe_app_downgrade_dialog_message">"Энэхүү Reddit-ийн суулгалт &lt;b&gt;%1$s&lt;/b&gt;-оос &lt;b&gt;%2$s&lt;/b&gt; хувилбар руу буурууллаа
+&lt;br/&gt;&lt;br/&gt;
+Шинэ хувилбарын апп-ын өгөгдөл хуучин хувилбартай нийцэхгүй тул апп зөв ажиллахгүй байж болзошгүй.
+&lt;br/&gt;&lt;br/&gt;
+Хуучин хувилбарыг ашиглахын тулд та Reddit-ийг &lt;b&gt;устгаад&lt;/b&gt;, дараа нь хуучин хувилбарыг суулгах шаардлагатай."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Апп-ын мэдээллийг нээх</string>
   <string name="morphe_custom_font_title">Өөрийн загварчласан фонт</string>
   <string name="morphe_custom_font_summary">Доорх замаас өөрийн загварчласан TTF эсвэл OTF фонт файлыг ачаална. Үүнийг идэвхжүүлснээр \"Системийн фонтыг албадлах\" সেটিнг унтраана</string>
   <string name="morphe_custom_font_file_path_title">Өөрийн загварчласан фонт файл</string>

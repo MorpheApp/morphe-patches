@@ -366,7 +366,7 @@ public final class FlyoutUtils {
     private static boolean isShortFlyout;
     /**
      * If the open menu is the menu of the Shorts player, which has another layout
-     * and only gets the playback speed item.
+     * and only gets the items that apply to the playing Short.
      */
     private static boolean isShortsPlayerFlyout;
 
@@ -434,9 +434,15 @@ public final class FlyoutUtils {
      */
     @Nullable
     public static ChannelIdRequest getFlyoutChannelIdRequest() {
-        // The menus of the full history list are not litho elements, so their request starts here.
-        if (flyoutChannelIdRequest == null && !flyoutVideoId.isEmpty()) {
-            flyoutChannelIdRequest = ChannelIdRequest.fetchRequestIfNeeded(flyoutVideoId);
+        // The menus of the full history list are not litho elements, and the menu
+        // of the Shorts player belongs to the playing Short, so their request starts here.
+        if (flyoutChannelIdRequest == null) {
+            final String videoId = isShortsPlayerFlyout && flyoutVideoId.isEmpty()
+                    ? VideoInformation.getVideoId()
+                    : flyoutVideoId;
+            if (!videoId.isEmpty()) {
+                flyoutChannelIdRequest = ChannelIdRequest.fetchRequestIfNeeded(videoId);
+            }
         }
         return flyoutChannelIdRequest;
     }
@@ -567,9 +573,7 @@ public final class FlyoutUtils {
         // onto whatever this call adds instead.
         customItemTextRefs.clear();
 
-        isShortsPlayerFlyout = (ShortsPlaybackSpeedFlyoutPatch.isPatchIncluded()
-                || ShortsDownloadButton.isPatchIncluded())
-                && isShortsPlayerMenu();
+        isShortsPlayerFlyout = isShortsPlayerMenu();
         if (isShortsPlayerFlyout) {
             nextButtonIndex = addShortsPlayerFlyoutButtons(flyoutPanel, nextButtonIndex);
         } else {
@@ -610,16 +614,16 @@ public final class FlyoutUtils {
             nextButtonIndex = ShortsPlaybackSpeedFlyoutPatch.addFlyoutButton(flyoutPanel, nextButtonIndex);
         }
 
+        final String flyoutVideoId = getFlyoutVideoId();
+        final String shortVideoId = flyoutVideoId.isEmpty() ? VideoInformation.getVideoId() : flyoutVideoId;
+
         if (ShortsDownloadButton.isPatchIncluded()) {
-            final String flyoutVideoId = getFlyoutVideoId();
-            nextButtonIndex = ShortsDownloadButton.addFlyoutButton(
-                    flyoutPanel,
-                    nextButtonIndex,
-                    flyoutVideoId.isEmpty() ? VideoInformation.getVideoId() : flyoutVideoId
-            );
+            nextButtonIndex = ShortsDownloadButton.addFlyoutButton(flyoutPanel, nextButtonIndex, shortVideoId);
         }
 
-        return nextButtonIndex;
+        nextButtonIndex = AiSListSubmitDialog.addFlyoutButton(flyoutPanel, nextButtonIndex, shortVideoId);
+
+        return ChannelWhitelist.addFlyoutButtons(flyoutPanel, nextButtonIndex, false);
     }
 
     private static int addVideoFlyoutButtons(Object flyoutPanel, int nextButtonIndex) {

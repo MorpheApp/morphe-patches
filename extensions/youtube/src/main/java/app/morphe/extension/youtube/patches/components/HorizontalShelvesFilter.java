@@ -37,16 +37,47 @@ public final class HorizontalShelvesFilter extends Filter {
     private static final Set<String> hiddenShelfIdentifiers = Collections.synchronizedSet(
             Collections.newSetFromMap(Utils.createSizeRestrictedMap(100)));
 
+    /**
+     * Browse id of the Movies page of the Explore menu.
+     */
+    private static final String MOVIES_PAGE_BROWSE_ID = "FEstorefront";
+
+    /**
+     * Pages of the Explore menu, other than the pages ending with {@link #EXPLORE_PAGE_BROWSE_ID_SUFFIX},
+     * such as Podcasts. Music, Live, Gaming, Sports, News, Fashion &amp; beauty and Learning are
+     * channels of YouTube.
+     */
+    private static final Set<String> EXPLORE_PAGE_BROWSE_IDS = Set.of(
+            MOVIES_PAGE_BROWSE_ID,
+            "FEchannel_memberships",
+            "FEhype_leaderboard",
+            "UC-9-kyTW8ZkZNDHQJ6FgpwQ",
+            "UC4R8DWoMoI7CAwX8_LjQHig",
+            "UCOpNcN46UbXVtpKMrmU4Abg",
+            "UCEgdi0XIXXZ-qJOFPf4JSKw",
+            "UCYfdidRxbB8Qhf0Nx7ioOYw",
+            "UCrpQ4p1Ql_hG8rKXIKM1MOQ",
+            "UCtFRv9O2AHqOZjjynzrv-xg"
+    );
+
+    private static final String EXPLORE_PAGE_BROWSE_ID_SUFFIX = "_destination";
+
     private final ByteArrayFilterGroupList descriptionBuffers = new ByteArrayFilterGroupList();
     private final ByteArrayFilterGroupList generalBuffers = new ByteArrayFilterGroupList();
+    private final ByteArrayFilterGroup moviesSection;
 
     public HorizontalShelvesFilter() {
+        StringFilterGroup forYouShelf = new StringFilterGroup(
+                null,
+                "mixed_content_shelf.e"
+        );
+
         StringFilterGroup horizontalShelves = new StringFilterGroup(
                 null,
                 "horizontal_shelf.e"
         );
 
-        addPathCallbacks(horizontalShelves);
+        addPathCallbacks(forYouShelf, horizontalShelves);
 
         descriptionBuffers.addAll(
                 new ByteArrayFilterGroup(
@@ -70,10 +101,6 @@ public final class HorizontalShelvesFilter extends Filter {
                         "FEhistory"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_MOVIES_SECTION,
-                        "movie_card.e"
-                ),
-                new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYABLES,
                         "FEmini_app_destination"
                 ),
@@ -81,6 +108,11 @@ public final class HorizontalShelvesFilter extends Filter {
                         Settings.HIDE_TICKET_SHELF,
                         "ticket_item.e"
                 )
+        );
+
+        moviesSection = new ByteArrayFilterGroup(
+                Settings.HIDE_MOVIES_SECTION,
+                "movie_card.e"
         );
     }
 
@@ -91,10 +123,15 @@ public final class HorizontalShelvesFilter extends Filter {
         if (isPlayerOrDescription()) {
             return identifier != null && hiddenShelfIdentifiers.contains(identifier);
         }
-        final boolean hide = contextInterface.isHomeFeedOrRelatedVideo()
+        // The pages of the Explore menu show their videos in horizontal shelves, so hiding the shelves
+        // left them empty (https://github.com/MorpheApp/morphe-patches/issues/1362).
+        final String browseId = LayoutComponentsFilter.browseId;
+        final boolean hide = !(EXPLORE_PAGE_BROWSE_IDS.contains(browseId)
+                || browseId.endsWith(EXPLORE_PAGE_BROWSE_ID_SUFFIX))
+                && (contextInterface.isHomeFeedOrRelatedVideo()
                 || NavigationBar.isSearchBarActive()
                 || NavigationBar.isBackButtonVisible()
-                || NavigationButton.getSelectedNavigationButton() != NavigationButton.LIBRARY;
+                || NavigationButton.getSelectedNavigationButton() != NavigationButton.LIBRARY);
         if (identifier != null) {
             // Shelves of different feeds can have the same identifier, such as the History shelf of
             //  the 'You' tab, so the last feed where the shelf was loaded decides.
@@ -128,6 +165,11 @@ public final class HorizontalShelvesFilter extends Filter {
             return false;
         }
         if (generalBuffers.check(buffer).isFiltered()) {
+            return true;
+        }
+        // The movies of the Movies page are its content.
+        if (!MOVIES_PAGE_BROWSE_ID.equals(LayoutComponentsFilter.browseId)
+                && moviesSection.check(buffer).isFiltered()) {
             return true;
         }
         if (descriptionBuffers.check(buffer).isFiltered()) {

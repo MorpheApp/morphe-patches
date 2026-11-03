@@ -68,6 +68,10 @@ public final class LayoutComponentsFilter extends Filter {
 
     private static final List<String> channelTabFilterStrings = Utils.getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
     private static final List<String> flyoutMenuFilterStrings = Utils.getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
+    /**
+     * Texts of the download item of the menus. Newer app versions also have the second text.
+     */
+    private static final String[] FLYOUT_DOWNLOAD_TEXTS = {"add_video_to_offline", "menu_add_to_offline"};
 
     @Nullable
     private static List<?> channelTabs;
@@ -81,8 +85,9 @@ public final class LayoutComponentsFilter extends Filter {
 
     /**
      * Browse id of the page that is shown, or empty for the search feed.
+     * Also used by {@link HorizontalShelvesFilter}.
      */
-    private static volatile String browseId = "";
+    static volatile String browseId = "";
 
     /**
      * Injection point.
@@ -126,6 +131,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup notificationsMenuHeader;
     private final ByteArrayFilterGroup notificationsMenuHeaderBuffer;
     private final StringFilterGroup notifyMe;
+    private final StringFilterGroup playables;
     private final StringFilterGroup searchFriction;
     private final StringFilterGroup singleItemInformationPanel;
     private final StringFilterGroup subscribedChannelsBarName;
@@ -206,7 +212,7 @@ public final class LayoutComponentsFilter extends Filter {
                 "yt_outline_experimental_live_black"
         );
 
-        // 'Downloads' item of the You tab. It's a lockup, so the bottom menu filter can't match its name.
+        // 'Downloads' item of the 'You' tab. It's a lockup, so the bottom menu filter can't match its name.
         libraryDownloads = new StringFilterGroup(
                 Settings.HIDE_ACCOUNT_MENU_DOWNLOADS,
                 "video_lockup_with_attachment.e"
@@ -376,11 +382,6 @@ public final class LayoutComponentsFilter extends Filter {
                 "PAfeedback_genai"
         );
 
-        final var forYouShelf = new StringFilterGroup(
-                Settings.HIDE_HORIZONTAL_SHELVES,
-                "mixed_content_shelf"
-        );
-
         final var imageShelf = new StringFilterGroup(
                 Settings.HIDE_IMAGE_SHELF,
                 "image_shelf"
@@ -411,7 +412,7 @@ public final class LayoutComponentsFilter extends Filter {
                 "set_reminder_button"
         );
 
-        final var playables = new StringFilterGroup(
+        playables = new StringFilterGroup(
                 Settings.HIDE_PLAYABLES,
                 "horizontal_gaming_shelf.e",
                 "mini_game_card.e"
@@ -516,7 +517,6 @@ public final class LayoutComponentsFilter extends Filter {
                 crowdfundingBox,
                 emergencyBox,
                 expandableMetadata,
-                forYouShelf,
                 imageShelf,
                 infoPanel,
                 medicalPanel,
@@ -712,6 +712,10 @@ public final class LayoutComponentsFilter extends Filter {
         if (matchedGroup == notificationsMenuHeader) {
             return Utils.startsWith(path, "subscribe_menu_notifications.e")
                     && notificationsMenuHeaderBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == playables) {
+            return !("FEmini_app_destination".equals(browseId));
         }
 
         // This identifier is used not only in players but also in search results: Until 2024, medical
@@ -1200,11 +1204,9 @@ public final class LayoutComponentsFilter extends Filter {
 
         String menuTitleString = menuTitleCharSequence.toString();
 
-        for (String filter : flyoutMenuFilterStrings) {
-            if (menuTitleString.equalsIgnoreCase(filter)) {
-                Logger.printDebug(() -> "Hiding: " + menuTitleString);
-                return null;
-            }
+        if (isFlyoutMenuFiltered(menuTitleString)) {
+            Logger.printDebug(() -> "Hiding: " + menuTitleString);
+            return null;
         }
 
         return menuTitleCharSequence;
@@ -1227,12 +1229,35 @@ public final class LayoutComponentsFilter extends Filter {
 
         String menuTitleString = menuTitleCharSequence.toString();
 
+        if (isFlyoutMenuFiltered(menuTitleString)) {
+            Logger.printDebug(() -> "Hiding: " + menuTitleString);
+            Utils.hideViewByLayoutParams(parentView);
+        }
+    }
+
+    /**
+     * The download item shows a placeholder while the state of the download is loaded in the background,
+     * and shows its real text only about a second after the menu opens. A filter of the download text
+     * therefore also hides the placeholder, otherwise the item is shown and then collapses.
+     */
+    private static boolean isFlyoutMenuFiltered(String menuTitle) {
+        final boolean isDownloadPlaceholder = menuTitle.equals(ResourceUtils.getString("menu_offline_placeholder"));
+
         for (String filter : flyoutMenuFilterStrings) {
-            if (menuTitleString.equalsIgnoreCase(filter)) {
-                Logger.printDebug(() -> "Hiding: " + menuTitleString);
-                Utils.hideViewByLayoutParams(parentView);
+            if (menuTitle.equalsIgnoreCase(filter)) {
+                return true;
+            }
+            if (isDownloadPlaceholder) {
+                for (String downloadText : FLYOUT_DOWNLOAD_TEXTS) {
+                    if (ResourceUtils.getStringIdentifier(downloadText) != 0
+                            && filter.equalsIgnoreCase(ResourceUtils.getString(downloadText))) {
+                        return true;
+                    }
+                }
             }
         }
+
+        return false;
     }
 
     /**

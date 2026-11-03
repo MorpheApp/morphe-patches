@@ -13,12 +13,12 @@ package app.morphe.patches.youtube.layout.hide.shorts
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.booleanOption
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.returnLate
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
@@ -43,7 +43,6 @@ import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.removeFromParent
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal val hideShortsAppShortcutOption = booleanOption(
     key = "hideShortsAppShortcut",
@@ -191,9 +190,10 @@ val hideShortsComponentsPatch = bytecodePatch(
             resourceLiteral(
                 ResourceType.DIMEN, "reel_player_right_pivot_v2_size"
             ).matchAllMethodIndicesForEach { literalInstructionIndex ->
-                val targetIndex = indexOfFirstInstructionOrThrow(literalInstructionIndex) {
-                    getReference<MethodReference>()?.name == "getDimensionPixelSize"
-                } + 1
+                val targetIndex = indexOfFirstInstructionOrThrow(
+                    literalInstructionIndex,
+                    methodCall(name = "getDimensionPixelSize")
+                ) + 1
 
                 val sizeRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
 

@@ -386,6 +386,7 @@ val crossfadePatch = bytecodePatch(
 
         val sharedStateClass = if (AccessFlags.INTERFACE.isSet(sharedStateInterfaceClass.accessFlags)) {
             Fingerprint(
+                name = "<init>",
                 interfaces = listOf(sharedStateFieldRef.type),
                 custom = { _, classDef ->
                     !AccessFlags.INTERFACE.isSet(classDef.accessFlags)
@@ -405,6 +406,7 @@ val crossfadePatch = bytecodePatch(
             || AccessFlags.ABSTRACT.isSet(sharedCallbackInterfaceClass.accessFlags)
         ) {
             Fingerprint(
+                name = "<init>",
                 custom = { _, classDef ->
                     !AccessFlags.INTERFACE.isSet(classDef.accessFlags)
                             && !AccessFlags.ABSTRACT.isSet(classDef.accessFlags)
@@ -443,6 +445,7 @@ val crossfadePatch = bytecodePatch(
         }
 
         val videoSurfaceClass = Fingerprint(
+            name = "<init>",
             custom = { _, classDef ->
                 !AccessFlags.INTERFACE.isSet(classDef.accessFlags)
                         && classDef.fields.any {
@@ -583,6 +586,7 @@ val crossfadePatch = bytecodePatch(
         // PlaybackInfo. The interface check rules out the internal player, which has similar fields.
         val exoImplFields = allFieldsInHierarchy(exoPlayerImplClass.type)
         val playbackInfoClass = Fingerprint(
+            name = "<init>",
             custom = { _, classDef ->
                 classDef.interfaces.isEmpty()
                         && classDef.fields.count { it.type == "I" } >= 3

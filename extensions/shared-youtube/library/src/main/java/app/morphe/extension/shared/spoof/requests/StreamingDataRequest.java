@@ -62,7 +62,11 @@ import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
  */
 public class StreamingDataRequest {
 
-    public record StreamData(byte[] streamingData, @Nullable byte[] playerConfig, boolean hasAndroidMedia) {
+    /**
+     * @param client Client the streams are of.
+     */
+    public record StreamData(byte[] streamingData, @Nullable byte[] playerConfig, boolean hasAndroidMedia,
+                             ClientType client) {
     }
 
     private static volatile ClientType[] clientOrderToUse = ClientType.values();
@@ -123,8 +127,26 @@ public class StreamingDataRequest {
     private static final Map<String, StreamingDataRequest> cache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(50));
 
+    /**
+     * Client of the streams last given to the player.
+     * Several videos are fetched at once, such as the inline previews of the search results
+     * or the next track of the queue, so the last fetch to finish can be of another video.
+     */
     private static volatile ClientType lastSpoofedClientType;
-    private static volatile boolean fallbackWithTVDash;
+
+    /**
+     * Clients of the streams given to the player, by video id.
+     * The streams of another video can be given before the player is set up for a video,
+     * so the player chooses SABR from the client of that video and not from the last one.
+     */
+    private static final Map<String, ClientType> playerClients = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(50));
+
+    /**
+     * If the last TV SABR response built on the thread is of a live stream, which is fetched again with TV DASH.
+     * A fetch runs on a single thread, and other fetches running at the same time must not see this.
+     */
+    private static final ThreadLocal<Boolean> fallbackWithTVDashOnThread = ThreadLocal.withInitial(() -> false);
     private static volatile Map<String, String> lastPlayerHeaders = Collections.emptyMap();
 
     /**
@@ -150,8 +172,32 @@ public class StreamingDataRequest {
         return client != null && client.requireSABR;
     }
 
+    /**
+     * @param client Client of the streams given to the player for the video,
+     *               or null if the player uses the streams of the app.
+     */
+    public static void setPlayerClient(String videoId, @Nullable ClientType client) {
+        lastSpoofedClientType = client;
+        if (client == null) {
+            playerClients.remove(videoId);
+        } else {
+            playerClients.put(videoId, client);
+        }
+    }
+
+    /**
+     * @return If the streams given to the player for the video are SABR streams.
+     */
+    public static boolean playerClientUsesSABR(@Nullable String videoId) {
+        ClientType client = videoId == null ? null : playerClients.get(videoId);
+        return client != null && client.requireSABR;
+    }
+
     private final String videoId;
     private final boolean isInline;
+    @Nullable
+    private final String authorization;
+    private final ClientType[] clientOrder;
 
     private final Future<StreamData> future;
 
@@ -197,6 +243,8 @@ public class StreamingDataRequest {
                                  boolean includeVideoDetails, ClientType[] clientOrder, boolean isDownload) {
         this.videoId = videoId;
         this.isInline = isInline;
+        this.authorization = playerHeaders.get(AUTHORIZATION_HEADER);
+        this.clientOrder = clientOrder;
         this.future = Utils.submitOnBackgroundThread(
                 () -> fetch(resolveVideoIdToFetch(videoId), isInline, playerHeaders, includeVideoDetails,
                         clientOrder, isDownload));
@@ -207,9 +255,26 @@ public class StreamingDataRequest {
         if (fetchHeaders != null && !fetchHeaders.isEmpty()) {
             lastPlayerHeaders = fetchHeaders;
         }
-        // Always fetch, even if there is an existing request for the same video.
-        cache.put(videoId, new StreamingDataRequest(videoId, isInline, fetchHeaders, false,
-                clientOrderToUse, false));
+        ClientType[] clientOrder = clientOrderToUse;
+        synchronized (cache) {
+            // The app can ask for the same video again while the first fetch is still running.
+            // A fetch that is done is never reused, because its streams can be expired or missing.
+            StreamingDataRequest existing = cache.get(videoId);
+            if (existing != null && existing.isFetchInProgress(isInline, fetchHeaders, clientOrder)) {
+                Logger.printDebug(() -> "Using the fetch in progress for: " + videoId);
+                return;
+            }
+            cache.put(videoId, new StreamingDataRequest(videoId, isInline, fetchHeaders, false,
+                    clientOrder, false));
+        }
+    }
+
+    private boolean isFetchInProgress(boolean isInline, Map<String, String> playerHeaders,
+                                      ClientType[] clientOrder) {
+        return !future.isDone()
+                && this.isInline == isInline
+                && this.clientOrder == clientOrder
+                && Objects.equals(authorization, playerHeaders.get(AUTHORIZATION_HEADER));
     }
 
     /**
@@ -218,12 +283,17 @@ public class StreamingDataRequest {
      * <p>
      * The clients are given by the caller instead of taken from the playback order, which stays at
      * the enum default while spoofing is off and then begins with a SABR client that has no urls.
+     *
+     * @param preferredClient Tried first, unless it is a SABR client.
      */
     public static StreamingDataRequest fetchRequestForDownload(String videoId,
                                                                List<ClientType> downloadClients,
                                                                ClientType preferredClient) {
-        ClientType[] clientOrder = buildClientOrder(downloadClients, preferredClient)
-                .toArray(new ClientType[0]);
+        List<ClientType> clients = buildClientOrder(downloadClients, preferredClient);
+        // SABR clients answer without the format urls a download needs,
+        // so the next client would never be tried.
+        clients.removeIf(client -> client.requireSABR);
+        ClientType[] clientOrder = clients.toArray(new ClientType[0]);
         // The video details name the saved file, so the download asks for them as well.
         // The auth hook keeps the headers even if spoofing is off, but it is not used by all apps.
         Map<String, String> headers = AuthUtils.getAuthorization().isEmpty()
@@ -422,7 +492,7 @@ public class StreamingDataRequest {
             if ((clientType == ClientType.TV_SABR || clientType == ClientType.TV_SABR_WII_U)
                     && Utils.containsAny(streamingData.getServerAbrStreamingUrl(), "yt_live_broadcast", "yt_premiere_broadcast")) {
                 Logger.printDebug(() -> "Live stream detected, fallback to TV dash");
-                fallbackWithTVDash = true;
+                fallbackWithTVDashOnThread.set(true);
                 return null;
             }
 
@@ -476,7 +546,7 @@ public class StreamingDataRequest {
                 playerConfigBuffer = playerConfigBuilder.build().toByteArray();
             }
 
-            return new StreamData(streamingDataBuffer, playerConfigBuffer, hasAndroidMedia);
+            return new StreamData(streamingDataBuffer, playerConfigBuffer, hasAndroidMedia, clientType);
         } catch (IOException ex) {
             Logger.printException(() -> "Failed to write player response for video stream", ex);
             return null;
@@ -519,10 +589,12 @@ public class StreamingDataRequest {
 
             HttpURLConnection connection =
                     send(clientType, videoId, authorization, showErrorToast, includeVideoDetails);
+            fallbackWithTVDashOnThread.set(false);
             StreamData streamingData = buildPlayerResponseBuffer(clientType, connection, videoId, isInline);
 
-            if ((clientType == ClientType.TV_SABR || clientType == ClientType.TV_SABR_WII_U) && fallbackWithTVDash) {
-                fallbackWithTVDash = false;
+            if ((clientType == ClientType.TV_SABR || clientType == ClientType.TV_SABR_WII_U)
+                    && fallbackWithTVDashOnThread.get()) {
+                fallbackWithTVDashOnThread.set(false);
                 clientType = ClientType.TV_DASH;
                 HttpURLConnection fallBackConnection =
                         send(clientType, videoId, authorization, showErrorToast, includeVideoDetails);
@@ -530,9 +602,9 @@ public class StreamingDataRequest {
             }
 
             if (streamingData != null) {
-                // Stats for nerds describes what is playing, which a download never changes.
+                // Stats for nerds and the SABR choice describe what is playing,
+                // so the client is set when the streams are given to the player, and not here.
                 if (!isDownload) {
-                    lastSpoofedClientType = clientType;
                     // The first attempt is with the default client.
                     PreferredClientCheck.onStreamsFetched(videoId, i == 1, clientType);
                 }
@@ -558,7 +630,6 @@ public class StreamingDataRequest {
             return null;
         }
 
-        lastSpoofedClientType = null;
         handleConnectionError(str("morphe_spoof_video_streams_no_clients_toast"), null, true);
 
         ClientType preferredClient = clientOrder[0];

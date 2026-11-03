@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Patakaran sa privacy ng Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Hindi available ang Google login. Gamitin ang email upang mag-login</string>
+  <string name="morphe_app_downgrade_dialog_title">Hindi suportado ang downgrade</string>
+  <string name="morphe_app_downgrade_dialog_message">"Ang Reddit installation na ito ay na-downgrade mula sa &lt;b&gt;%1$s&lt;/b&gt; patungong &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Ang data ng app mula sa mas bagong bersyon ay hindi gumagana sa mga mas lumang bersyon at maaaring hindi gumana nang tama ang app.
+&lt;br/&gt;&lt;br/&gt;
+Para gumamit ng mas lumang bersyon, kailangang &lt;b&gt;i-uninstall&lt;/b&gt; ang Reddit at pagkatapos ay i-install ang mas lumang bersyon."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Buksan ang impormasyon ng app</string>
   <string name="morphe_screen_ads_title">Patalastas</string>
   <string name="morphe_hide_post_ads_title">Itago ang mga patalastas sa feed</string>
   <string name="morphe_hide_comment_ads_title">Itago ang mga patalastas sa komento</string>

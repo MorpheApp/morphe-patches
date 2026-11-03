@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">מדיניות הפרטיות של Reddit</string>
   <string name="morphe_google_signin_not_available_toast">התחברות עם Google אינה זמינה. התחבר באמצעות דוא\"ל</string>
+  <string name="morphe_app_downgrade_dialog_title">שדרוג לאחור אינו נתמך</string>
+  <string name="morphe_app_downgrade_dialog_message">"התקנה זו של Reddit שודרגה לאחור מ-&lt;b&gt;%1$s&lt;/b&gt; ל-&lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+נתוני אפליקציה מגרסה חדשה יותר אינם עובדים עם גרסאות ישנות יותר והאפליקציה עשויה שלא לעבוד כראוי.
+&lt;br/&gt;&lt;br/&gt;
+כדי להשתמש בגרסה ישנה יותר, עליך &lt;b&gt;להסיר התקנה&lt;/b&gt; של Reddit ואז להתקין את הגרסה הישנה יותר."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">פתח את מידע האפליקציה</string>
   <string name="morphe_screen_ads_title">מודעות</string>
   <string name="morphe_hide_post_ads_title">הסתר מודעות פיד</string>
   <string name="morphe_hide_comment_ads_title">הסתר מודעות תגובות</string>

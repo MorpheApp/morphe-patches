@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Politika zasebnosti Reddita</string>
   <string name="morphe_google_signin_not_available_toast">Prijava z Googlom ni mogoče. Uporabite email za prijavo</string>
+  <string name="morphe_app_downgrade_dialog_title">Razstopitev ni podprta</string>
+  <string name="morphe_app_downgrade_dialog_message">"Ta namestitev Reddita je bila razstopljena z različice &lt;b&gt;%1$s&lt;/b&gt; na &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Podatki aplikacije iz novejše različice ne delujejo s starejšimi različnicami in aplikacija morda ne bo delovala pravilno.
+&lt;br/&gt;&lt;br/&gt;
+Če želite uporabljati starejšo različico, morate &lt;b&gt;odnamestiti&lt;/b&gt; Reddit in nato namestiti starejšo različico."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Odpri informacije o aplikaciji</string>
   <string name="morphe_screen_ads_title">Oglasi</string>
   <string name="morphe_hide_post_ads_title">Skrij oglase v viru</string>
   <string name="morphe_hide_comment_ads_title">Skrij oglase v komentarjih</string>

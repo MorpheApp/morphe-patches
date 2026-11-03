@@ -61,6 +61,7 @@ Veranderinge sluit in:
   <string name="morphe_hide_account_menu_title">Aktiveer Biblioteek / Jy onderste menu filter</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Biblioteek / Jy onderste menu filter</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Voer die Biblioteek / Jy onderste menu name in om volgens te filter, geskei deur nuwe reëls</string>
+  <string name="morphe_hide_account_menu_downloads_title">Verberg Aflaaie</string>
   <string name="morphe_hide_album_cards_title">Verberg albumkaarte</string>
   <string name="morphe_hide_album_cards_summary">Verberg die albumkaarte onder die kunstenaar se beskrywing</string>
   <string name="morphe_hide_artist_cards_title">Verberg kunstenaarskaarte</string>
@@ -276,6 +277,9 @@ Veranderinge sluit in:
   <string name="morphe_hide_comments_emoji_button_title">Verberg Emoji-knoppie</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Versteek filterbalk-opsies</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Versteek alle filterbalk-opsies behalwe \'Beste\' en \'Nuutste\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Verberg GIF-knoppie</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Verberg GIF\'s en beelde</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Verberg GIF\'s en beelde wat aan kommentaar en antwoorde aangeheg is</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Verberg geskenkanimasie en kaarte</string>
   <string name="morphe_hide_comments_gift_button_title">Verberg Geskenk-knoppie</string>
   <string name="morphe_hide_comments_info_button_title">Verberg Info-knoppie</string>
@@ -441,11 +445,16 @@ Verslae is openbaar en word nagegaan voordat 'n kanaal by 'n lys gevoeg word. Ve
   <string name="morphe_copy_comments_title">Kopieer kommentaar</string>
   <string name="morphe_copy_comments_summary">Raak \'n kommentaar aan en hou dit vas om dit te kopieer</string>
   <string name="morphe_copy_comments_success">Kommentaar na knipbord gekopieer</string>
+  <string name="morphe_copy_select_text_title">Kies teks van beskrywings en plasings</string>
+  <string name="morphe_copy_select_text_summary">Tik en hou \'n video-beskrywing of \'n plasing in om enige deel daarvan te kies en te kopieer</string>
+  <string name="morphe_copy_select_text_dialog_title">Kies teks</string>
+  <string name="morphe_copy_select_text_copy_all">Kopieer alles</string>
+  <string name="morphe_copy_select_text_success">Teks gekopieer na knipbord</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Tik en hou om die videomenu oop te maak</string>
   <string name="morphe_feed_long_press_menu_summary">Tik en hou enige plek op ’n voedingsvideo open sy menu</string>
   <string name="morphe_feed_watch_later_button_title">Wys Kiek later-knoop by duimborde</string>
-  <string name="morphe_feed_watch_later_button_summary">\'n Koppeling \"Later kyk\" word op die kortprentjies van voedvideo\'s vertoon. Tik en hou dit in om \"Bewaar by afspeellys\" te open</string>
+  <string name="morphe_feed_watch_later_button_summary">’n Kiek Later-knoppie word op die skuinsbaken van voerkonnte getoon, met ’n vinkjie as die video gestoor is. Tik dit om die video te stoor of te verwyder, en tik en hou dit open Opslaan na afspeellys</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Laai plasingsbeelde af</string>
   <string name="morphe_post_image_download_summary">\'n Aflaai-knoppie word langs die Deel-knoppie van plasinge met beelde of GIF\'s vertoon, en \'n aflaai-item word by hul spyskaart gevoeg</string>
@@ -515,7 +524,24 @@ Nadat 'n video met die Ask-knoppie een keer oopgemaak is, werk die funksie met a
   <string name="morphe_external_downloader_quick_audio">Klank</string>
   <string name="morphe_external_downloader_quick_options">Alle opsies</string>
   <string name="morphe_shorts_download_flyout_button_title">Wys aflaai in Shorts-kieslys</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Voeg \'n aflaai-item by die Shorts-speler se spyskaart voeg bylaaef 인한</string>
   <string name="morphe_shorts_download_flyout_title">Aflaai</string>
+  <string name="morphe_export_download_folder_title">Voer gestorde video\'s uit</string>
+  <string name="morphe_export_download_folder_summary">"Voer in-app gestorde video's uit na jou toestel se stoorplek deur die in-app aflaai-spyskaart te gebruik. Tik om die uitvoer-ouer te verander
+
+Uitvoer-ouer: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Uitvoer-ouer</string>
+  <string name="morphe_export_download_folder_change">Verander ouer</string>
+  <string name="morphe_export_download_folder_changed">Uitvoer-ouer verander</string>
+  <string name="morphe_export_download_folder_reset">Uitvoer-ouer hergestel</string>
+  <string name="morphe_export_download_folder_missing">Kon nie uitvoergouer %s vind nie</string>
+  <string name="morphe_export_download_flyout_title">Voer uit na toestel</string>
+  <string name="morphe_export_download_started">Voer video uit</string>
+  <string name="morphe_export_download_progress">Voer video uit: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Video-uitvoere</string>
+  <string name="morphe_export_download_saved">Video uitgevoer na %s</string>
+  <string name="morphe_export_download_failed">Kon nie die video uitvoer nie</string>
+  <string name="morphe_export_download_canceled">Uitvoer gekanselleer</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Vertaalde stem over</string>
   <string name="morphe_vot_screen_summary">Lees video-onderskrifte hardop voor met behulp van teks-na-spraak op die toestel, gesinkroniseer met die afspeel</string>
@@ -590,6 +616,19 @@ Jou API-sleutel moet nooit gedeel word nie. Enigeen met toegang daartoe kan jou 
   <string name="morphe_pip_button_overlay_title">Wys die Picture-in-Picture-knoppie</string>
   <string name="morphe_pip_button_flyout_title">Wys die Picture-in-Picture-kieslys</string>
   <string name="morphe_pip_button_flyout_name">Skakel na Picture-in-Picture</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Beeld-in-beeld-aksies</string>
+  <string name="morphe_pip_actions_screen_summary">Verander die knoppies wat in beeld-in-beeld getoon word</string>
+  <string name="morphe_pip_action_left_title">Linker-knoppie</string>
+  <string name="morphe_pip_action_center_title">Senter-knoppie</string>
+  <string name="morphe_pip_action_right_title">Regter-knoppie</string>
+  <string name="morphe_pip_action_entry_default">Verstek</string>
+  <string name="morphe_pip_action_entry_previous">Vorige video</string>
+  <string name="morphe_pip_action_entry_next">Volgende video</string>
+  <string name="morphe_pip_action_entry_rewind">Spoel 10 sekondes terug</string>
+  <string name="morphe_pip_action_entry_fast_forward">Spoel 10 sekondes vorentoe</string>
+  <string name="morphe_pip_action_entry_play_pause">Speel/pouseer</string>
+  <string name="morphe_pip_action_entry_background_playback">Agtergrondterugspeeling</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Laai Speel alle knoppie</string>
   <string name="morphe_play_all_button_summary">"Tik om 'n sn lys van alle video's van kanaal te genereer, tik en hou om ongedaan te maak
@@ -840,6 +879,10 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Ondertitels</string>
   <string name="morphe_captions_screen_summary">Manage automatic captions and caption cookies</string>
+  <string name="morphe_captions_languages_title">Taal en vertaling</string>
+  <string name="morphe_captions_presentation_title">Verskyning en gedrag</string>
+  <string name="morphe_captions_advanced_title">Gevorderd</string>
+  <string name="morphe_captions_advanced_summary">Koekie- en transkripsieopsies</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Outo-onderskrifte sigbaarheid</string>
   <string name="morphe_auto_captions_style_entry_1">Always show</string>
@@ -848,10 +891,10 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_auto_captions_style_entry_4">Wys wanneer gedemp</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Voorkeur-onderskriftaal</string>
-  <string name="morphe_preferred_caption_language_summary">Kies eers verskaffer-onderskrifte, en vertaal hulle dan outomaties na die voorkeurtaal</string>
+  <string name="morphe_preferred_caption_language_summary">Selekteer outomaties ’n ondertitelingspraak vir elke video</string>
   <string name="morphe_preferred_caption_language_entry_off">Af</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Voeg bykomende outo-vertalings tale by</string>
+  <string name="morphe_auto_translate_additional_languages_title">Aanvullende outo-vertaaltale</string>
   <string name="morphe_auto_translate_additional_languages_summary">Voeg meer tale by die outo-vertalings kieslys</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Stel onderskrifkoekies in</string>
@@ -869,8 +912,17 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_fix_transcript_title">Regstel transkripsie</string>
   <string name="morphe_fix_transcript_summary">Resolves a precondition check failure that can prevent the transcript from loading</string>
   <string name="morphe_captions_in_pip_title">Wys onderskrifte in prent-in-prent</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Ondertitelgrootte</string>
+  <string name="morphe_caption_scale_summary">Dien enkel- en tweetalig ondertitels</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Stabiele byskrifblokke</string>
-  <string name="morphe_stable_caption_blocks_summary">Groepeer outomatiese onderskrifte in stabiele, leesbare blokke. Sommige woorde mag verskyn voordat dit gespreek word. Herbegin word vereis.</string>
+  <string name="morphe_stable_caption_blocks_summary">Groeper enkel- outomatiese ondertitels in stabiele, leesbare blokke. Tweetalige ondertitels gebruik altyd blokke. Sommige woorde kan verskyn voordat hulle gespreek word</string>
+  <string name="morphe_secondary_caption_language_title">Sekondêre ondertitaaltaal</string>
+  <string name="morphe_secondary_caption_language_summary">Wys ’n tweede taal saam met die ondertitels, en voeg ’n bilinguale ondertitelskakelaar by die ondertitelmenu</string>
+  <string name="morphe_dual_captions_enabled_title">Bilinguale ondertitels</string>
+  <string name="morphe_caption_block_translation_failed">Sommige ondertitelvertalings is nie beskikbaar nie. Wys beskikbare ondertitels.</string>
+  <string name="morphe_caption_blocks_too_large">Beide ondertitalinge pas nie in hierdie speler nie. Wys die primêre taal.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigasieknoppies</string>
   <string name="morphe_navigation_buttons_screen_summary">Choose which components appear in the toolbar</string>
@@ -886,6 +938,11 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_hide_notifications_button_title">Hide Search button</string>
   <string name="morphe_show_search_button_title">Show Settings button</string>
   <string name="morphe_show_search_button_index_title">Settings button position</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Wys \'Kyk later\'-knoppie</string>
+  <string name="morphe_show_watch_later_button_index_title">\'Kyk later\'-knoppie posisie</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Kyk later</string>
   <string name="morphe_show_settings_button_title">When enabled, tap opens Morphe settings and long press opens YouTube settings, disable to swap</string>
   <string name="morphe_show_settings_button_index_title">Reduces the horizontal spacing between buttons</string>
   <string name="morphe_show_settings_button_type_title">Instellings-knoppie aksie</string>
@@ -916,7 +973,6 @@ Om Instellings toe te gaan, skakel die Instelling-knoppie in via Algemeen → We
   <string name="morphe_navigation_bar_style_user_dialog_message">Hierdie styl word moontlik nie deur jou toestel of YouTube-weergawe ondersteun nie, en kan uitlegprobleme of crashes veroorsaak</string>
   <string name="morphe_toolbar_screen_title">Wenkbalk</string>
   <string name="morphe_toolbar_screen_summary">Kies watter komponente in die lêertooskassie vertoon moet word</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Hide \'Audio Track\' menu footer</string>
   <string name="morphe_hide_toolbar_chat_button_title">Verberg Chat-knoppie</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Hide Captions menu</string>
   <string name="morphe_hide_toolbar_search_button_title">Hide Captions menu header</string>
@@ -972,6 +1028,7 @@ Om die 'Audio Track'-kieslys te wys, verander 'Vervals videostrome' na enige kli
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Verberg Subtitels-knoppie</string>
   <string name="morphe_hide_cast_button_title">Verberg Cast-knoppie</string>
+  <string name="morphe_hide_cast_button_summary">Verberg die Cast-knoppie in die videospeler en werkbalk</string>
   <string name="morphe_hide_collapse_button_title">Verberg Inklap-knoppie</string>
   <string name="morphe_hide_fullscreen_button_title">Verberg Volskerm-knoppie</string>
   <string name="morphe_hide_player_control_buttons_background_title">Wegspring spelerbeheer knoppie agtergrond</string>
@@ -1137,11 +1194,6 @@ Automotive-uitleg
 • 'Meer video's'-oorvleuning is moontlik nie beskikbaar nie
 • Shorts maak oop in die gewone speler
 • Nie-ingeklapte ou video-aksiebalk word vertoon"</string>
-  <string name="morphe_tablet_layout_in_player_title">Aktiveer tablet-uitleg in die speler</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Herstel die ou speleruitleg
-
-Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer video's' oorvleueling nie beskikbaar wees nie"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Herstel ou onderskrifgedrag</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Herstel ou stoor na snelys</string>
@@ -1223,6 +1275,10 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_miniplayer_not_available_summary">YouTube het alle addisionele mini-spelers verwyder. Om meer mini-speler-tipes te herstel, patch YouTube 21.28.208 of ouer</string>
   <string name="morphe_miniplayer_type_title">Mini-speler tipe</string>
   <string name="morphe_miniplayer_hide_title_title">Versteek titel en kanaal</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Brei uit met swipe-op</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Om die minispeler op te swipe, brei die speler uit, in plaas daarvan om die minispeler na die bokant van die skerm te skuif</string>
+  <string name="morphe_miniplayer_docked_title">Gedokte minispeler</string>
+  <string name="morphe_miniplayer_docked_summary">Koppel die minispeler aan die navigasiebalk en die kante van die skerm, in plaas daarvan om bo-oor hulle te dryf</string>
   <string name="morphe_miniplayer_type_entry_0">Gedeaktiveer</string>
   <string name="morphe_miniplayer_type_entry_1">Verstek</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaal</string>
@@ -1265,6 +1321,8 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_splash_screen_style_entry_7">Morphe Gloei 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Gloei 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Glow-spatskerm word nie deur hierdie toestel ondersteun nie</string>
+  <string name="morphe_splash_screen_duration_title">Beginanimasie-duur</string>
+  <string name="morphe_splash_screen_duration_summary">Hoe lank die gloei-animasie speel. Tik op die animasie om dit oor te slaan</string>
   <string name="morphe_theme_color_light_title">Ligte tema-agtergrond</string>
   <string name="morphe_theme_color_light_entry_2">Wit</string>
   <string name="morphe_theme_color_light_entry_3">Jou Materiaal (Wit)     </string>
@@ -1495,10 +1553,12 @@ Video-afspeeling met AV1 kan stok of raamwerk val"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Speler JavaScript variant</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Wys verfraaiing in \'Statistieke vir nerds\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Herstel ou video-aksiebalk</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Maak reg dat video-aksieknoppies nie versteek kan word nie
-
-Beperking: Keer terug na ou-styl 'Meer video's'-oorleg"</string>
+  <string name="morphe_video_action_bar_layout_title">Video aksiebalk-indeling</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Verstek</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klassieke een-ry</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Minimalisties</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klassieke Twee-Rye</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Beperking: Klassieke uitlegte gaan terug na ou styl \'Meer video\'s\' oorvleueling</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Speler-ikoonstyl</string>
   <string name="morphe_player_icon_style_entry_auto">Outomaties</string>
@@ -1666,4 +1726,38 @@ Automaties opname is opsioneel. Dit stop in incognito of wanneer die rekening ve
   <string name="morphe_niconico_comments_max_length_title">Maksimum kommentarlengte</string>
   <string name="morphe_niconico_comments_max_length_summary">Steek kommentaar weg met meer karakters as hierdie. Elke emoji tel as een karakter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Geen limiet</string>
+  <string name="morphe_niconico_comments_live_streams_title">Wys op regstreme</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Regstreme en hul herhalings</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Wys op premières</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premières terwyl hulle speel</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Wys op beëindigde premières</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Kletsspoor van premières wat beëindig het</string>
+  <string name="morphe_live_chat_translate_screen_title">Lewendige geselsvertaling</string>
+  <string name="morphe_live_chat_translate_screen_summary">Vertaal lewendige gesels- en terugspelboodskappe</string>
+  <string name="morphe_live_chat_translate_title">Vertaal lewendige gesels</string>
+  <string name="morphe_live_chat_translate_summary">Vertaal lewendige gesels- en terugspelboodskappe sodra hulle op die skerm is</string>
+  <string name="morphe_live_chat_translate_language_title">Vertaaltaal</string>
+  <string name="morphe_live_chat_translate_exclude_title">Uitgesluit tale</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Komma-geskeide taalkodes soos id,en. Boodskappe in hierdie tale word nie vertaal nie</string>
+  <string name="morphe_live_chat_translate_provider_title">Vertalingsverskaffer</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API-sleutel</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Jou DeepL API-sleutel. Google Translate word gebruik as DeepL misluk, byvoorbeeld wanneer die maandelikse limiet van die sleutel bereik is</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Wys kopieer-knoppie</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Voeg ’n klein kopieer-knoppie by elke boodskap by</string>
+  <string name="morphe_live_chat_translate_copied">Boodskap na knipbord gekopieer</string>
+  <string name="morphe_live_chat_translate_style_title">Vertaalstyl</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Slegs vertaal</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Oorspronklik (vertaal)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Vertaalde) oorspronklik</string>
+  <string name="morphe_live_chat_translate_bold_title">Vet druk die vertaalde teks</string>
+  <string name="morphe_live_chat_translate_bold_summary">Wys die vertaalde teks in vet druk</string>
+  <string name="morphe_live_chat_translate_use_color_title">Goeie kleur vir vertaalde teks</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Pas ’n aangepaste kleur op die vertaalde teks toe</string>
+  <string name="morphe_live_chat_translate_color_title">Kleur van vertaalde teks</string>
+  <string name="morphe_live_chat_translate_color_summary">Stel die hekskleur van die vertaalde teks</string>
+  <string name="morphe_live_chat_translate_max_length_title">Maksimum boodskaplengte</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Langer boodskappe word onvertoon vertoon</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Geen limiet nie</string>
 </resources>

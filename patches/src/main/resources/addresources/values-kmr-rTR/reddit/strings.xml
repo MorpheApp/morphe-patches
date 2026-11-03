@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Siyaseta taybetiyê ya Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Têketina Google ne berdest e. Ji bo têketinê bi e-nameyê bikar bînin</string>
+  <string name="morphe_app_downgrade_dialog_title">Kêşanve nayê piştgirîkirin</string>
+  <string name="morphe_app_downgrade_dialog_message">"Ev sazkirina Reddit ji &lt;b&gt;%1$s&lt;/b&gt; ber bi &lt;b&gt;%2$s&lt;/b&gt; hat kêşanve
+&lt;br/&gt;&lt;br/&gt;
+Daneyên aplikasyona ji versiyoneke nûtir bi versiyonên kevin re naxebitin û dibe ku aplikasyon rast nexebite.
+&lt;br/&gt;&lt;br/&gt;
+Ji bo bikaranîna versiyoneke kevin, divê hûn Reddit &lt;b&gt;jêderkeşin&lt;/b&gt; û piştre versiyona kevin sazkirin."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Agahiyên aplikasyon veke</string>
   <string name="morphe_screen_ads_title">Reklam</string>
   <string name="morphe_hide_post_ads_title">Postan reklaman veşêre</string>
   <string name="morphe_hide_comment_ads_title">Reklaman li komentaran veşêre</string>
@@ -55,6 +62,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Li ser fîdê û pêşniyarên lêgerînê şelfên \"Trending\" (Têne kilkirin) veşêrin</string>
   <string name="morphe_remove_notification_dialog_title">Ragihînerê îfadekirinê derxiste</string>
   <string name="morphe_remove_notification_dialog_summary">Bi serî de pêşniyara daxuyaniya agahiyê paşde dikit dema ku tu subredditê dîsan serdan dikî</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Flairan di fîda malê de nîşan bide</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Nîşaneyên flairên postan di fîda malê de nîşan dide</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Hinek nayên fîdayê dibe ku flairekê nîşan nedin</string>
   <string name="morphe_show_view_count_title">Nîşana hejmara dîtinan li ser postan nîşan bide</string>
   <string name="morphe_show_view_count_summary">Sînordar: Tenê heke bersiva API hejmara dîtinan veda bike, peyda dibe</string>
   <string name="morphe_remove_nsfw_dialog_title">Ragihînerê îfadekirinê ji holê erxe</string>
@@ -66,8 +76,46 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_summary">Parametreyên pirsê yên şopandinê ji girêdên parvekirî têne nehevkirin</string>
   <string name="morphe_open_links_directly_title">Lînkên bi rastî veke</string>
   <string name="morphe_open_links_directly_summary">Dema vekirina girêdên derî, Url-ên veguherînî derbas dike</string>
+  <string name="morphe_redgifs_audio_title">Redgifs bi deng bîne</string>
+  <string name="morphe_redgifs_audio_summary">Li şûyê kopiya Reddit\'ê, ku pir caran dengê wê tune ye, vîdyoya orîjînal a Redgifs lî dike</string>
+  <string name="morphe_redgifs_hd_title">Kîjanîya HD ya Redgifs</string>
+  <string name="morphe_redgifs_hd_summary">Vîdyoya HD ya Redgifs lî dike. Vîdyoyên HD mezin hơn in û dibe ku ji bo barkirinan rawestin</string>
+  <string name="morphe_download_location_title">Cihê daxistinê</string>
+  <string name="morphe_download_location_all_title">Hemû hesab</string>
+  <string name="morphe_download_location_default_summary">Default\'ê Reddit: wêne di Pictures/Reddit, vîdyo di Download</string>
+  <string name="morphe_download_location_summary_folder">Folgera: %s</string>
+  <string name="morphe_download_location_summary_pattern">Navê dosyeyê: %s</string>
+  <string name="morphe_download_location_pattern_default">Navên dosyeyên Reddit</string>
+  <string name="morphe_download_location_uses_all_summary">\"Hemû hesab\" bikar tîne</string>
+  <string name="morphe_download_location_own_title">Şûnê xwe bikar bîne</string>
+  <string name="morphe_download_location_folder_title">Save bikeye</string>
+  <string name="morphe_download_location_folder_default">Folderên default ên Reddit</string>
   <string name="morphe_download_location_folder_default_short">Bixweber</string>
+  <string name="morphe_download_location_subfolder_hint">Jêbirka bin</string>
+  <string name="morphe_download_location_subfolder_tree_hint">Bi / di nav navê dosyeyê de subfolderan zêde bike</string>
+  <string name="morphe_download_location_browse">Digere…</string>
+  <string name="morphe_download_location_no_picker">Di vê ampirê de tu folder picker tune ye</string>
+  <string name="morphe_download_location_pattern_title">Navê dosyeyê</string>
+  <string name="morphe_download_location_pattern_hint">Navê dosyeyê yê Reddit</string>
+  <string name="morphe_download_location_pattern_help">Li tokenekê bitikîne da ku wê zêde bike. / subfolderê çêdike. Nirxên nayên naskirin dibin \"unknown\"</string>
+  <string name="morphe_download_location_example_images">Wêne: %s</string>
+  <string name="morphe_download_location_example_videos">Vîdyoyan: %s</string>
+  <string name="morphe_download_location_save">Save bike</string>
+  <string name="morphe_download_location_reset">Reset bike</string>
+  <string name="morphe_download_location_delete">Jêbîre</string>
+  <string name="morphe_download_location_reset_confirm">Şûya daxistina hemû hesaban vegere ser defaulta Reddit?</string>
+  <string name="morphe_download_location_delete_confirm">Şûya daxistina %s jêbîr bike?</string>
+  <string name="morphe_download_location_save_failed">Nەkarî li şûya daxistinê were save kirin. Li şûya wê di foldera default a Reddit de hat save kirin</string>
+  <string name="morphe_download_location_folder_unavailable">Foldera daxistinê êdî berdest nîn e. Li şûya wê di foldera default a Reddit de hat save kirin</string>
+  <string name="morphe_download_location_video_failed">Nekarî vîdyoya daxistî save bike</string>
+  <string name="morphe_download_location_invalid_folder">Ev folder nayê bikaranîn ji bo daxistinê</string>
+  <string name="morphe_download_location_account_current">%s (niha)</string>
+  <string name="morphe_download_location_account_logged_out">%s (nehatine qederkirin)</string>
+  <string name="morphe_download_location_account_anonymous">Bênav (derketine yan incognito)</string>
   <string name="morphe_open_links_externally_title">Linskan derve evîn veşartîne</string>
   <string name="morphe_open_links_externally_summary">Girêdan di gerînendê da vekirin li şûna gerînendeya nav de</string>
+  <string name="morphe_app_icon_title">Îkona aplikasyonê</string>
+  <string name="morphe_app_icon_choose_title">Îkona appê hilbijêre</string>
   <string name="morphe_app_icon_default">Bixweber</string>
+  <string name="morphe_app_icon_unknown">Nenas</string>
 </resources>

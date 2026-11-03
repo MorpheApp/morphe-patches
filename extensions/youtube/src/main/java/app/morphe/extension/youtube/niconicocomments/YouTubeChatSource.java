@@ -32,6 +32,7 @@ import java.util.Set;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Fetches the public live chat or chat replay of a video.
@@ -112,6 +113,11 @@ final class YouTubeChatSource implements Runnable {
         }
         if (state == null || state.continuation == null) {
             Logger.printDebug(() -> "No public live/replay continuation found for " + videoId);
+            return;
+        }
+        VideoType videoType = state.videoType;
+        if (!videoType.isShown()) {
+            Logger.printDebug(() -> "Comments are turned off for " + videoType + ": " + videoId);
             return;
         }
 
@@ -344,8 +350,9 @@ final class YouTubeChatSource implements Runnable {
             );
         }
 
+        VideoType videoType = getVideoType(playerResponse);
         if (liveChatRenderer == null) {
-            return new PageState(apiKey, clientVersion, context, null, false);
+            return new PageState(apiKey, clientVersion, context, null, false, videoType);
         }
         if (replayContinuation != null) {
             try {
@@ -364,7 +371,8 @@ final class YouTubeChatSource implements Runnable {
                     clientVersion,
                     context,
                     replayContinuation,
-                    true
+                    true,
+                    videoType
             );
         }
 
@@ -374,7 +382,7 @@ final class YouTubeChatSource implements Runnable {
                 "invalidationContinuationData",
                 "reloadContinuationData"
         );
-        return new PageState(apiKey, clientVersion, context, continuation, false);
+        return new PageState(apiKey, clientVersion, context, continuation, false, videoType);
     }
 
     private Continuation fetchAllMessagesReplayContinuation(String continuation)
@@ -654,7 +662,10 @@ final class YouTubeChatSource implements Runnable {
         return null;
     }
 
-    private static JSONObject getObjectPath(JSONObject root, String... path) {
+    private static JSONObject getObjectPath(@Nullable JSONObject root, String... path) {
+        if (root == null) {
+            return null;
+        }
         JSONObject value = root;
         for (String key : path) {
             value = value.optJSONObject(key);
@@ -713,6 +724,29 @@ final class YouTubeChatSource implements Runnable {
         return accessibilityData == null
                 ? ""
                 : accessibilityData.optString("label", "");
+    }
+
+    /**
+     * Premieres carry live broadcast details like a live stream, but are not live content.
+     * The broadcast end time then tells a running premiere from one that has ended.
+     */
+    static VideoType getVideoType(@Nullable JSONObject playerResponse) {
+        JSONObject videoDetails = getObjectPath(playerResponse, "videoDetails");
+        JSONObject liveDetails = getObjectPath(
+                playerResponse,
+                "microformat",
+                "playerMicroformatRenderer",
+                "liveBroadcastDetails"
+        );
+        if (videoDetails == null || liveDetails == null || !videoDetails.has("isLiveContent")) {
+            return VideoType.UNKNOWN;
+        }
+        if (videoDetails.optBoolean("isLiveContent")) {
+            return VideoType.LIVE_STREAM;
+        }
+        return liveDetails.optString("endTimestamp", "").isEmpty()
+                ? VideoType.LIVE_PREMIERE
+                : VideoType.ENDED_PREMIERE;
     }
 
     private static boolean isEndedLiveBroadcast(JSONObject playerResponse) {
@@ -1061,25 +1095,52 @@ final class YouTubeChatSource implements Runnable {
         }
     }
 
+    enum VideoType {
+        /** A live stream or the replay of one. */
+        LIVE_STREAM,
+        /** A premiere while it is being shown. */
+        LIVE_PREMIERE,
+        /** A premiere that has ended, which plays like a regular video with a chat replay. */
+        ENDED_PREMIERE,
+        /** The player response did not say. Comments stay on, as before this setting existed. */
+        UNKNOWN;
+
+        boolean isShown() {
+            switch (this) {
+                case LIVE_STREAM:
+                    return Settings.NICONICO_COMMENTS_LIVE_STREAMS.get();
+                case LIVE_PREMIERE:
+                    return Settings.NICONICO_COMMENTS_LIVE_PREMIERES.get();
+                case ENDED_PREMIERE:
+                    return Settings.NICONICO_COMMENTS_ENDED_PREMIERES.get();
+                default:
+                    return true;
+            }
+        }
+    }
+
     private static final class PageState {
         final String apiKey;
         final String clientVersion;
         final JSONObject context;
         final Continuation continuation;
         final boolean replay;
+        final VideoType videoType;
 
         PageState(
                 String apiKey,
                 String clientVersion,
                 JSONObject context,
                 Continuation continuation,
-                boolean replay
+                boolean replay,
+                VideoType videoType
         ) {
             this.apiKey = apiKey;
             this.clientVersion = clientVersion;
             this.context = context;
             this.continuation = continuation;
             this.replay = replay;
+            this.videoType = videoType;
         }
     }
 

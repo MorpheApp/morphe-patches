@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">นโยบายความเป็นส่วนตัวของ Reddit</string>
   <string name="morphe_google_signin_not_available_toast">ไม่สามารถเข้าสู่ระบบด้วย Google ได้ กรุณาใช้อีเมลเพื่อเข้าสู่ระบบ</string>
+  <string name="morphe_app_downgrade_dialog_title">ไม่รองรับการลดเวอร์ชัน</string>
+  <string name="morphe_app_downgrade_dialog_message">"การติดตั้ง Reddit นี้ถูกลดเวอร์ชันจาก &lt;b&gt;%1$s&lt;/b&gt; เป็น &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+ข้อมูลแอปจากเวอร์ชันที่ใหม่กว่าไม่สามารถใช้งานกับเวอร์ชันที่เก่ากว่าได้ และแอปอาจทำงานไม่ถูกต้อง
+&lt;br/&gt;&lt;br/&gt;
+หากต้องการใช้เวอร์ชันที่เก่ากว่า คุณต้อง &lt;b&gt;ถอนการติดตั้ง&lt;/b&gt; Reddit จากนั้นจึงติดตั้งเวอร์ชันที่เก่ากว่า"</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">เปิดข้อมูลแอป</string>
   <string name="morphe_screen_ads_title">โฆษณา</string>
   <string name="morphe_hide_post_ads_title">ซ่อนโฆษณาในฟีด</string>
   <string name="morphe_hide_comment_ads_title">ซ่อนโฆษณาในความคิดเห็น</string>

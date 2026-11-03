@@ -10,10 +10,10 @@ package app.morphe.patches.shared.ad
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -21,7 +21,6 @@ import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/HideFullscreenAdsPatch;"
 
@@ -52,10 +51,12 @@ internal fun hideFullscreenAdsPatch(
             it.method.cloneParameters().apply {
                 val dialogClass = it.instructionMatches.first().methodReference.definingClass
 
-                val insertIndex = indexOfFirstInstructionReversedOrThrow {
-                    opcode == Opcode.IPUT_OBJECT &&
-                            getReference<FieldReference>()?.type == dialogClass
-                }
+                val insertIndex = indexOfFirstInstructionReversedOrThrow(
+                    fieldAccess(
+                        opcode = Opcode.IPUT_OBJECT,
+                        type = dialogClass
+                    )
+                )
                 val insertRegister = getInstruction<TwoRegisterInstruction>(insertIndex).registerA
                 val freeRegister = findFreeRegister(insertIndex, insertRegister)
 

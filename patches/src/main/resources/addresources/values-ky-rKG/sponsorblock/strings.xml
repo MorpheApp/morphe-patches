@@ -18,8 +18,18 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_square_layout_summary">SponsorBlock баскычтары жана башкаруу элементтери үчүн тик бурчтуу бурчтарды колдонуу</string>
   <string name="morphe_sb_general_title">Жалпы</string>
+  <string name="morphe_sb_offline_segments_title">Жүктөлгөн видеолордун сегменттерин сактоо</string>
+  <string name="morphe_sb_offline_segments_summary">Оффлайн режиминде жүктөлгөн видеолордун сегменттерин аттоо мүмкүнчүлүгүн берет</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Сиздин жөндөөлөрүңүз жеке SponsorBlock колдонуучу IDсин камтыйт.
+
+Сиздин колдонуучу IDңыз сырсөзгө окшош, аны эч качан бөлүшпөңүз"</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Сегментти жөнөтүү мүмкүн болгон жок (статус: %1$s %2$s)</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock убактылуу жеткиликсиз (статус %s)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Сегментке добуш берүү мүмкүн болгон жок (статус: %1$s %2$s)</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_new_segment_disabled_category">Категория жөндөөлөрдө өчүрүлгөн. Жөнөтүү үчүн категорияны күйгүзүңүз</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_loading">Жүктөлүүдө…</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Колдонуучунун атын өзгөртүү мүмкүн болгон жок: Статус: %1$s %2$s</string>
 </resources>

@@ -14,24 +14,30 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
+import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.flyout.FeedBottomSheetFlyoutFingerprint
+import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_10_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.cloneMutable
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/StableCaptionBlocks;"
+private const val EXTENSION_MENU_CLASS =
+    "Lapp/morphe/extension/youtube/patches/CaptionMenu;"
+private const val EXTENSION_OVERLAY_CLASS =
+    "Lapp/morphe/extension/youtube/patches/DualCaptionOverlay;"
 private const val EXTENSION_STATE_CLASS =
     $$"Lapp/morphe/extension/youtube/patches/StableCaptionBlocks$State;"
 private const val EXTENSION_FRAME_CLASS =
@@ -46,10 +52,16 @@ private const val EXTENSION_TIMELINE_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/StableCaptionBlocks$Timeline;"
 
 internal val stableCaptionBlocksPatch = bytecodePatch(
-    description = "Adds an option to show automatic captions in stable two-line blocks.",
+    description = "Shows automatic captions in stable blocks with optional bilingual translation.",
 ) {
     // The window measure method must be patched first, since this inserts instructions before it.
-    dependsOn(versionCheckPatch, translatedCaptionPensPatch, captionWindowMeasurePatch)
+    dependsOn(
+        versionCheckPatch,
+        translatedCaptionPensPatch,
+        captionTrackCapturePatch,
+        captionWindowMeasurePatch,
+        treeNodeElementHookPatch,
+    )
 
     execute {
         if (!is_21_10_or_greater) {
@@ -58,24 +70,55 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
             )
         }
 
-        settingsMenuCaptionGroup.add(
-            SwitchPreference("morphe_stable_caption_blocks", summary = true)
-        )
+        settingsMenuCaptionGroup.addAll(listOf(
+            SwitchPreference("morphe_stable_caption_blocks", summary = true),
+            ListPreference(
+                "morphe_secondary_caption_language",
+                tag = "app.morphe.extension.youtube.settings.preference.CaptionLanguagePreference",
+                entriesKey = null,
+                entryValuesKey = null,
+            ),
+        ))
+
+        // Bilingual captions toggle of the old captions bottom sheet.
+        CaptionsBottomSheetListFingerprint.matchAll(1..2).forEach { match ->
+            val list = match.instructionMatches.first()
+
+            match.method.addInstruction(
+                list.index + 1,
+                "invoke-static { v${list.getInstruction<OneRegisterInstruction>().registerA} }, " +
+                        "$EXTENSION_MENU_CLASS->addToggle(Landroid/widget/ListView;)V"
+            )
+        }
+
+        // Bilingual captions toggle of the Litho captions bottom sheet.
+        hookTreeNodeResult("$EXTENSION_MENU_CLASS->onCaptionSheet", isLazilyConvertedElement = false)
+
+        FeedBottomSheetFlyoutFingerprint.method.apply {
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstruction(
+                    index,
+                    "invoke-static { v$register }, $EXTENSION_MENU_CLASS->onDialog(Landroid/app/Dialog;)V"
+                )
+            }
+        }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
 
         // Cue fields in the order: id, time, visible text, full text, settings.
         val cueFields = CaptionCueToStringFingerprint.instructionMatches.take(5).map {
-            it.instruction.getReference<FieldReference>()!!
+            it.fieldReference
         }
         val (idField, timeField, visibleTextField, fullTextField, settingsField) = cueFields
         val cueType = idField.definingClass
         val cueConstructor = CaptionCueConstructorFingerprint.method
         val defaultSettingsField = getCaptionDefaultSettingsFingerprint(settingsField.type)
-            .instructionMatches.first().instruction.getReference<FieldReference>()!!
+            .instructionMatches.first().fieldReference
 
-        // Cues of a block are copies with a frame span, and with the default settings
-        // so blocks always use the default placement.
+        // Frame spans retain source metadata in native mode. Only block layouts use
+        // the default placement; ordinary captions keep the authored settings.
         mutableClassDefBy(cueType).apply {
             interfaces.add(EXTENSION_CUE_INTERFACE)
 
@@ -105,9 +148,14 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                 parameters = listOf(EXTENSION_FRAME_CLASS),
                 freeRegisters = 7,
                 smali = """
-                    # Reuse this cue if it already shows the frame with the default settings.
                     iget-object v6, p0, $settingsField
-                    sget-object v0, $defaultSettingsField
+                    invoke-virtual { p1 }, $EXTENSION_FRAME_CLASS->usesBlockLayout()Z
+                    move-result v0
+                    if-eqz v0, :settings_ready
+                    sget-object v6, $defaultSettingsField
+                    :settings_ready
+                    # Reuse this cue if its frame and placement already match.
+                    iget-object v0, p0, $settingsField
                     if-ne v6, v0, :copy_frame
                     invoke-virtual { p0 }, $type->patch_getBlockFrame()$EXTENSION_FRAME_CLASS
                     move-result-object v0
@@ -127,7 +175,6 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                     move-result-object v4
                     invoke-static { v5, p1 }, $EXTENSION_CLASS->carryFrame(Ljava/lang/CharSequence;$EXTENSION_FRAME_CLASS)Ljava/lang/CharSequence;
                     move-result-object v5
-                    sget-object v6, $defaultSettingsField
                     invoke-direct/range { v0 .. v6 }, $cueConstructor
                     return-object v0
                 """
@@ -183,12 +230,35 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                 "patch_getCaptionCue" to it.instructionMatches[0],
                 "patch_getVisibleCaptionLines" to it.instructionMatches[1],
                 "patch_getFullCaptionLines" to it.instructionMatches[3],
-            ).map { (name, match) -> name to match.instruction.getReference<FieldReference>()!! } +
+            ).map { (name, match) -> name to match.fieldReference } +
                     ("patch_getCaptionMeasureRow" to getCaptionWindowConstructorFingerprint(rowType)
-                        .instructionMatches.first().instruction.getReference<FieldReference>()!!)
+                        .instructionMatches.first().fieldReference)
 
+            val backgroundColor = CaptionWindowBackgroundColorFingerprint.method
+            val backgroundCall = if (backgroundColor.accessFlags and AccessFlags.PRIVATE.value != 0)
+                "invoke-direct" else "invoke-virtual"
             mutableClassDefBy(SUBTITLE_WINDOW_VIEW_CLASS).apply {
                 interfaces.add(EXTENSION_WINDOW_INTERFACE)
+
+                addHelperMethod(
+                    "patch_getCaptionBackgroundColor",
+                    "I",
+                    smali = """
+                        $backgroundCall { p0 }, $backgroundColor
+                        move-result v0
+                        return v0
+                    """
+                )
+
+                addHelperMethod(
+                    "patch_setCaptionMeasuredSize",
+                    "V",
+                    parameters = listOf("I", "I"),
+                    smali = """
+                        invoke-virtual { p0, p1, p2 }, Landroid/view/View;->setMeasuredDimension(II)V
+                        return-void
+                    """
+                )
 
                 windowFields.forEach { (name, field) ->
                     addHelperMethod(
@@ -203,10 +273,29 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
             }
         }
 
-        CaptionWindowMeasureFingerprint.method.addInstructions(
-            0,
-            "invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->prepare(Landroid/view/View;I)V"
-        )
+        CaptionWindowMeasureFingerprint.method.apply {
+            addInstructions(
+                0,
+                "invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->prepare(Landroid/view/View;I)V"
+            )
+
+            // Bilingual captions reserve their height after the native measurement.
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+                addInstruction(
+                    index,
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_OVERLAY_CLASS->afterMeasure(Landroid/view/View;)V"
+                )
+            }
+        }
+
+        CaptionWindowLayoutFingerprint.method.apply {
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+                addInstruction(
+                    index,
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_OVERLAY_CLASS->afterLayout(Landroid/view/View;)V"
+                )
+            }
+        }
 
         // Player subclasses can recreate the cue placement.
         getCaptionOverlayPresenterFingerprint(cueType).method.addInstructions(

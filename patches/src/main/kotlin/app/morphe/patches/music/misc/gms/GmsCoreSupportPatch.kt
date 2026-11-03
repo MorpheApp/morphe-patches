@@ -22,6 +22,7 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
     extensionPatch = sharedExtensionPatch,
     gmsCoreSupportResourcePatchFactory = ::gmsCoreSupportResourcePatch,
     executeBlock = {
+        allowCastingToAudioOnlyDevices()
         hidePlayServicesCastRoutes()
         sendQueueMovesToReceiver()
         skipQueueRestorationWhileCasting()

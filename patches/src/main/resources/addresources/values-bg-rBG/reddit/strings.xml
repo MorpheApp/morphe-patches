@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Политика за поверителност на Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Входът с Google не е наличен. Използвайте имейл, за да влезете</string>
+  <string name="morphe_app_downgrade_dialog_title">Намаляването на версията не се поддържа</string>
+  <string name="morphe_app_downgrade_dialog_message">"Тази инсталация на Reddit беше downgraded от &lt;b&gt;%1$s&lt;/b&gt; до &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Данните на приложението от по-нова версия не работят с по-стари версии и приложението може да не работи правилно.
+&lt;br/&gt;&lt;br/&gt;
+За да използвате по-стара версия, трябва да &lt;b&gt;деинсталирате&lt;/b&gt; Reddit и след това да инсталирате по-старата версия."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Отвори информация за приложението</string>
   <string name="morphe_screen_ads_title">Реклами</string>
   <string name="morphe_hide_post_ads_title">Скриване на рекламите в потока</string>
   <string name="morphe_hide_comment_ads_title">Скриване на реклами в коментари</string>

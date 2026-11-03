@@ -15,11 +15,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.numberOfParameterRegisters
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
@@ -68,7 +68,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -130,6 +129,8 @@ val miniplayerPatch = bytecodePatch(
 
         preferences += SwitchPreference("morphe_miniplayer_disable_resuming", summary = true)
         preferences += SwitchPreference("morphe_miniplayer_hide_title")
+        preferences += SwitchPreference("morphe_miniplayer_swipe_up_expand", summary = true)
+        preferences += SwitchPreference("morphe_miniplayer_docked", summary = true)
         preferences += SwitchPreference("morphe_miniplayer_disable_rounded_corners")
         preferences += SwitchPreference("morphe_miniplayer_disable_drag_and_drop", summary = true)
         preferences += SwitchPreference("morphe_miniplayer_disable_horizontal_drag", summary = true)
@@ -278,9 +279,12 @@ val miniplayerPatch = bytecodePatch(
             MiniplayerModernConstructorFingerprint.classDef.methods.forEach {
                 it.apply {
                     if (AccessFlags.CONSTRUCTOR.isSet(accessFlags)) {
-                        val iPutIndex = indexOfFirstInstructionOrThrow {
-                            opcode == Opcode.IPUT && getReference<FieldReference>()?.type == "I"
-                        }
+                        val iPutIndex = indexOfFirstInstructionOrThrow(
+                            fieldAccess(
+                                opcode = Opcode.IPUT,
+                                type = "I"
+                            )
+                        )
 
                         val register = getInstruction<TwoRegisterInstruction>(iPutIndex).registerA
                         addInstructionsAtControlFlowLabel(
@@ -675,6 +679,14 @@ val miniplayerPatch = bytecodePatch(
                     """
                 )
             }
+        }
+
+        // The bar is moved up by the same height as YouTube's own miniplayer.
+        BottomUiContainerReportHeightFingerprint.let {
+            it.method.addInstruction(
+                it.instructionMatches.first().index,
+                "invoke-static { p1 }, $MINIMAL_EXTENSION_CLASS->setBottomUiHeight(I)V"
+            )
         }
 
         // Exposed so the bar shape can be applied on demand. Only this setter runs the

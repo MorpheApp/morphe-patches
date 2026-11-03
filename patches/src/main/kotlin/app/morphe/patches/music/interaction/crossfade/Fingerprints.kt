@@ -51,10 +51,11 @@ internal object PlayVideoFingerprint : Fingerprint(
 
 /**
  * A synthetic Runnable also logs with the "ExoPlayerImpl" tag, so the interface check is required.
+ * Matches seekTo, since newer app versions log with this tag in more than one method.
  */
 internal object ExoPlayerImplFingerprint : Fingerprint(
     interfaces = listOf(EXO_PLAYER_TYPE),
-    strings = listOf("ExoPlayerImpl")
+    strings = listOf("ExoPlayerImpl", "seekTo ignored because an ad is playing")
 )
 
 internal object LoadVideoFingerprint : Fingerprint(

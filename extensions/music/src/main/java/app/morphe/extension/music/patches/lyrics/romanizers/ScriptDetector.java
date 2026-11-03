@@ -17,6 +17,9 @@ import java.util.List;
  * a song mixes scripts, which is what a verdict for the whole song gets wrong.
  *
  * <p>The counters are indexed by {@link Script}, so a new script only needs a line in {@link #classify}.
+ *
+ * <p>The per-character checks below are the only place these blocks are listed, so another reader
+ * of scripts, such as {@link LyricsLanguageDetector}, counts them here rather than repeating them.
  */
 public final class ScriptDetector {
 
@@ -169,13 +172,13 @@ public final class ScriptDetector {
     }
 
     /** The blocks a modern lyric line is written with. */
-    static boolean isHan(char c) {
+    public static boolean isHan(char c) {
         return (c >= 0x4E00 && c <= 0x9FFF)
                 || (c >= 0x3400 && c <= 0x4DBF)
                 || (c >= 0xF900 && c <= 0xFAFF);
     }
 
-    static boolean isKana(char c) {
+    public static boolean isKana(char c) {
         return (c >= 0x3040 && c <= 0x309F)
                 || (c >= 0x30A0 && c <= 0x30FF)
                 || (c >= 0x31F0 && c <= 0x31FF);
@@ -183,6 +186,17 @@ public final class ScriptDetector {
 
     static boolean isHangul(char c) {
         return c >= 0xAC00 && c <= 0xD7A3;
+    }
+
+    /** A code point written as a syllable of its own: Han, Hangul or kana. */
+    public static boolean isCjkCodePoint(int cp) {
+        return cp <= Character.MAX_VALUE
+                && (isHan((char) cp) || isKana((char) cp) || isHangul((char) cp));
+    }
+
+    /** Hangul syllables, jamo and compatibility jamo, which is every way Korean is spelled. */
+    static boolean isAnyHangul(char c) {
+        return isHangul(c) || (c >= 0x1100 && c <= 0x11FF) || (c >= 0x3130 && c <= 0x318F);
     }
 
     static boolean isHiragana(char c) {
@@ -226,6 +240,20 @@ public final class ScriptDetector {
 
     static boolean isSyriac(char c) {
         return c >= 0x0700 && c <= 0x074F;
+    }
+
+    static boolean isLatin(char c) {
+        return (c >= 0x0041 && c <= 0x005A)
+                || (c >= 0x0061 && c <= 0x007A)
+                || (c >= 0x00C0 && c <= 0x024F)
+                || (c >= 0x1E00 && c <= 0x1EFF)
+                // Full-width spellings, which a Japanese lyric uses for a title.
+                || (c >= 0xFF21 && c <= 0xFF3A)
+                || (c >= 0xFF41 && c <= 0xFF5A);
+    }
+
+    static boolean isThai(char c) {
+        return c >= 0x0E00 && c <= 0x0E7F;
     }
 
     public enum Script {

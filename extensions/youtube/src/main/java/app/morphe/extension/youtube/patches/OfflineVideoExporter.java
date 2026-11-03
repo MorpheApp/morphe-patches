@@ -20,6 +20,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.UriPermission;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Icon;
@@ -96,6 +97,8 @@ public final class OfflineVideoExporter {
     private static final int AES_BLOCK_SIZE = 16;
 
     private static final String SAVE_FOLDER = "Morphe videos";
+    private static final int FOLDER_PERMISSIONS =
+            Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
     private static final int MAX_FILE_NAME_LENGTH = 100;
     /**
      * How many numbered names are tried if a file with the name already exists.
@@ -212,6 +215,65 @@ public final class OfflineVideoExporter {
         return separator < 0 || separator == documentId.length() - 1
                 ? documentId
                 : documentId.substring(separator + 1);
+    }
+
+    /**
+     * @param folder The tree uri of the folder to export to, or null to use the default folder.
+     */
+    public static void setFolder(@Nullable Uri folder) {
+        ContentResolver resolver = Utils.getContext().getContentResolver();
+
+        // Only one folder is used, so the access to the previous folder is no longer needed.
+        String previous = Settings.EXPORT_DOWNLOAD_FOLDER.get();
+        for (UriPermission permission : resolver.getPersistedUriPermissions()) {
+            if (permission.getUri().toString().equals(previous)) {
+                resolver.releasePersistableUriPermission(permission.getUri(), FOLDER_PERMISSIONS);
+            }
+        }
+
+        if (folder == null) {
+            Settings.EXPORT_DOWNLOAD_FOLDER.resetToDefault();
+        } else {
+            resolver.takePersistableUriPermission(folder, FOLDER_PERMISSIONS);
+            Settings.EXPORT_DOWNLOAD_FOLDER.save(folder.toString());
+        }
+    }
+
+    /**
+     * @return The folder the user picked, or null to use the default folder.
+     *         If the picked folder can't be used anymore, the default folder is used from now on.
+     */
+    @Nullable
+    private static Uri getPickedFolder(ContentResolver resolver) {
+        String pickedFolder = Settings.EXPORT_DOWNLOAD_FOLDER.get();
+        if (pickedFolder.isEmpty()) {
+            return null;
+        }
+
+        Uri tree = Uri.parse(pickedFolder);
+        Uri folder = DocumentsContract.buildDocumentUriUsingTree(tree, DocumentsContract.getTreeDocumentId(tree));
+        if (isFolderAvailable(resolver, folder)) {
+            return folder;
+        }
+
+        Logger.printInfo(() -> "Export folder is not available: " + tree);
+        Utils.showToastLong(str("morphe_export_download_folder_missing", getFolderName()));
+        setFolder(null);
+        return null;
+    }
+
+    /**
+     * The access to a folder is kept if the folder is deleted, and is missing if the
+     * folder is from imported settings. A documents provider returns no document for a missing folder.
+     */
+    private static boolean isFolderAvailable(ContentResolver resolver, Uri folder) {
+        try (Cursor cursor = resolver.query(folder,
+                new String[]{DocumentsContract.Document.COLUMN_DOCUMENT_ID}, null, null, null)) {
+            return cursor != null && cursor.moveToFirst();
+        } catch (SecurityException ex) {
+            Logger.printInfo(() -> "No access to export folder: " + folder, ex);
+            return false;
+        }
     }
 
     /**
@@ -541,15 +603,12 @@ public final class OfflineVideoExporter {
         static OutputFile create(String name, String extension, String mimeType) throws IOException {
             ContentResolver resolver = Utils.getContext().getContentResolver();
 
-            String pickedFolder = Settings.EXPORT_DOWNLOAD_FOLDER.get();
-            if (!pickedFolder.isEmpty()) {
-                Uri tree = Uri.parse(pickedFolder);
-                Uri folder = DocumentsContract.buildDocumentUriUsingTree(
-                        tree, DocumentsContract.getTreeDocumentId(tree));
+            Uri pickedFolder = getPickedFolder(resolver);
+            if (pickedFolder != null) {
                 // The documents provider adds a number to a name that is taken.
-                Uri uri = DocumentsContract.createDocument(resolver, folder, mimeType, name + extension);
+                Uri uri = DocumentsContract.createDocument(resolver, pickedFolder, mimeType, name + extension);
                 if (uri == null) {
-                    throw new IOException("Could not create file: " + name + extension + " in: " + tree);
+                    throw new IOException("Could not create file: " + name + extension + " in: " + pickedFolder);
                 }
                 ParcelFileDescriptor descriptor = resolver.openFileDescriptor(uri, "rw");
                 if (descriptor == null) {

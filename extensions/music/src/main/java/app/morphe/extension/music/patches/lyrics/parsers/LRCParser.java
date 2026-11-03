@@ -441,7 +441,7 @@ public final class LRCParser {
             int lastIdx = words.size() - 1;
             Word last = words.get(lastIdx);
             if (pendingStart > last.startMs()) {
-                words.set(lastIdx, new Word(last.startMs(), pendingStart, last.text(), last.romaji(), last.endsWithSpace()));
+                words.set(lastIdx, new Word(last.startMs(), pendingStart, last.text(), last.romaji(), last.endsWithSpace(), last.ruby()));
             }
         }
 
@@ -482,7 +482,7 @@ public final class LRCParser {
         final Word previous = words.get(words.size() - 1);
         if (!previous.endsWithSpace()) {
             words.set(words.size() - 1, new Word(previous.startMs(), previous.endMs(),
-                    previous.text(), previous.romaji(), true));
+                    previous.text(), previous.romaji(), true, previous.ruby()));
         }
     }
 
@@ -515,7 +515,7 @@ public final class LRCParser {
         if (remainder.isEmpty()) {
             stripped.remove(0);
         } else {
-            stripped.set(0, new Word(first.startMs(), first.endMs(), remainder));
+            stripped.set(0, new Word(first.startMs(), first.endMs(), remainder, first.romaji(), first.endsWithSpace(), first.ruby()));
         }
         return stripped;
     }
@@ -784,7 +784,7 @@ public final class LRCParser {
                 // Only the end time is filled in, so the reading and the trailing space stay as
                 // they were: losing either costs a word boundary at the next write.
                 words.set(i, new Word(word.startMs(), words.get(i + 1).startMs(),
-                        word.text(), word.romaji(), word.endsWithSpace()));
+                        word.text(), word.romaji(), word.endsWithSpace(), word.ruby()));
             }
         }
         if (!words.isEmpty()) {
@@ -793,7 +793,7 @@ public final class LRCParser {
             if (lastWord.endMs() == LyricsLine.NO_TIME) {
                 words.set(last, new Word(lastWord.startMs(),
                         lastWord.startMs() + lastFallbackMs,
-                        lastWord.text(), lastWord.romaji(), lastWord.endsWithSpace()));
+                        lastWord.text(), lastWord.romaji(), lastWord.endsWithSpace(), lastWord.ruby()));
             }
         }
     }

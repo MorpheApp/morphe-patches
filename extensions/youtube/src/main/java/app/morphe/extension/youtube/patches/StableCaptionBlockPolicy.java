@@ -9,14 +9,19 @@ package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.youtube.patches.CaptionXml.children;
 
+import androidx.annotation.Nullable;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+import java.text.BreakIterator;
 
 import app.morphe.extension.shared.Logger;
 
@@ -24,6 +29,14 @@ import app.morphe.extension.shared.Logger;
 final class StableCaptionBlockPolicy {
     static final int MAX_ATOMS = 20000, MAX_BLOCK_CHARS = 512;
     static final long MAX_PREVIEW_MS = 8000, MIN_DURATION_MS = 1500, MAX_GAP_MS = 2000;
+
+    /**
+     * Languages written without spaces between words, limited by characters instead of words.
+     */
+    private static final List<String> COMPACT_LANGUAGES = List.of("zh", "ja", "ko", "th", "lo", "km", "my");
+    private static final int MAX_COMPACT_SOURCE_CHARS = 30;
+    private static final int MAX_SOURCE_WORDS = 15;
+    private static final int MAX_MULTI_ATOM_SOURCE_CHARS = 80;
 
     interface Fit {
         boolean fits(String text);
@@ -57,16 +70,78 @@ final class StableCaptionBlockPolicy {
 
     private final List<Atom> atoms;
     private final int[] characters;
+    private final boolean[] boundaries;
+    @Nullable
+    private List<Block> sourcePlan;
+    private boolean sourcePlanCompact;
 
     private StableCaptionBlockPolicy(List<Atom> atoms) {
         this.atoms = List.copyOf(atoms);
         characters = new int[atoms.size() + 1];
-        for (int i = 0; i < atoms.size(); i++)
+        boundaries = new boolean[atoms.size() + 1];
+        int[] offsets = new int[atoms.size()];
+        StringBuilder text = new StringBuilder();
+        for (int i = 0; i < atoms.size(); i++) {
+            String raw = atoms.get(i).text;
+            offsets[i] = text.length() + raw.length() - raw.stripLeading().length();
+            text.append(raw);
             characters[i + 1] =
                     characters[i] + atoms.get(i).text.codePointCount(0, atoms.get(i).text.length());
+        }
+        BreakIterator lines = BreakIterator.getLineInstance(Locale.ROOT);
+        lines.setText(text.toString());
+        for (int i = 1; i < atoms.size(); i++) boundaries[i] = lines.isBoundary(offsets[i]);
+    }
+
+    /** Accept ordinary bottom-center authored captions, leaving special layouts native. */
+    static StableCaptionBlockPolicy parseManual(Document document) {
+        if (document == null) return null;
+        for (String tag : List.of("wp", "ws")) {
+            NodeList definitions = document.getElementsByTagName(tag);
+            for (int i = 0; i < definitions.getLength(); i++) {
+                Element e = (Element) definitions.item(i);
+                if (!children(e).isEmpty()) return null;
+                if (tag.equals("wp")) {
+                    if (!attributes(e, "id", "ap", "ah", "av", "rc", "cc")
+                            || !defaultValue(e, "ap", "7") || !defaultValue(e, "ah", "50")
+                            || !defaultValue(e, "av", "100")) return null;
+                } else if (!attributes(e, "id", "ju") || !defaultValue(e, "ju", "2")) return null;
+            }
+        }
+        NodeList windows = document.getElementsByTagName("w");
+        for (int i = 0; i < windows.getLength(); i++) {
+            Element window = (Element) windows.item(i);
+            if (!attributes(window, "t", "id", "wp", "ws")) return null;
+            for (String tag : List.of("wp", "ws")) {
+                if (!window.hasAttribute(tag)) continue;
+                NodeList definitions = document.getElementsByTagName(tag);
+                int matches = 0;
+                for (int j = 0; j < definitions.getLength(); j++)
+                    if (window.getAttribute(tag).equals(((Element) definitions.item(j)).getAttribute("id"))) matches++;
+                if (matches != 1) return null;
+            }
+        }
+        return parse(document, false, true);
+    }
+
+    private static boolean defaultValue(Element element, String name, String value) {
+        return !element.hasAttribute(name) || element.getAttribute(name).equals(value);
     }
 
     static StableCaptionBlockPolicy parse(Document d) {
+        return parse(d, false);
+    }
+
+    /** Native ASR may contain untimed line wraps; retain its paragraph clock. */
+    static StableCaptionBlockPolicy parseSource(Document d) {
+        return parse(d, true);
+    }
+
+    private static StableCaptionBlockPolicy parse(Document d, boolean source) {
+        return parse(d, source, false);
+    }
+
+    private static StableCaptionBlockPolicy parse(Document d, boolean source, boolean manual) {
         try {
             if (d == null || d.getElementsByTagName("pen").getLength() != 0) return null;
             Element root = d.getDocumentElement(), body = null;
@@ -76,13 +151,13 @@ final class StableCaptionBlockPolicy {
                     body = e;
                 }
             if (body == null) return null;
-            String window = null;
+            String window = manual ? "" : null;
             List<Atom> atoms = new ArrayList<>();
             long previousParagraph = -1;
             boolean barrier = false;
             for (Element e : children(body)) {
                 if (e.getTagName().equals("w")) {
-                    if (window != null || number(e, "t") != 0 || e.getAttribute("id").isEmpty())
+                    if (window != null && !window.isEmpty() || number(e, "t") != 0 || e.getAttribute("id").isEmpty())
                         return null;
                     window = e.getAttribute("id");
                     continue;
@@ -99,18 +174,31 @@ final class StableCaptionBlockPolicy {
                 long start = number(e, "t"), duration = number(e, "d");
                 if (start < 0
                         || start <= previousParagraph
-                        || start > 7200000
                         || duration <= 0
-                        || duration > 600000) return null;
+                        || duration > 600000
+                        || start > Long.MAX_VALUE - duration) return null;
                 previousParagraph = start;
                 List<Element> segments = children(e);
                 if (segments.size() > 2048) return null;
+                if (manual) {
+                    if (e.hasAttribute("p") || e.hasAttribute("a")
+                            || !atoms.isEmpty() && start < atoms.get(atoms.size() - 1).end) return null;
+                    for (Element segment : segments)
+                        if (!segment.getTagName().equals("s") || !children(segment).isEmpty()
+                                || !attributes(segment, "t", "ac")
+                                || segment.hasAttribute("t") && number(segment, "t") != 0) return null;
+                    if (!add(atoms, start, start + duration,
+                            e.getTextContent().replaceAll("[\\r\\n]+", " "), true, true)) return null;
+                    continue;
+                }
                 int before = atoms.size();
                 long previousOffset = -1;
                 boolean first = true;
                 StringBuilder whitespace = new StringBuilder();
                 if (segments.isEmpty()) {
-                    if (!add(atoms, start, start + duration, e.getTextContent(), true, barrier))
+                    String text = e.getTextContent();
+                    if (source) text = text.replaceAll("[\\r\\n]+", " ");
+                    if (!add(atoms, start, start + duration, text, true, barrier))
                         return null;
                 } else {
                     for (Node n = e.getFirstChild(); n != null; n = n.getNextSibling())
@@ -125,6 +213,7 @@ final class StableCaptionBlockPolicy {
                         if (offset < 0 || offset < previousOffset || offset >= duration) return null;
                         previousOffset = offset;
                         String text = segment.getTextContent();
+                        if (source) text = text.replaceAll("[\\r\\n]+", " ");
                         if (text.isBlank()) {
                             if (text.indexOf('\n') >= 0 || text.indexOf('\r') >= 0) return null;
                             whitespace.append(text);
@@ -222,10 +311,9 @@ final class StableCaptionBlockPolicy {
     }
 
     private boolean boundary(int at) {
-        if (at >= atoms.size()) return true;
-        String before = atoms.get(at - 1).text, raw = atoms.get(at).text;
-        if (!Character.isWhitespace(before.charAt(before.length() - 1))
-                && !Character.isWhitespace(raw.charAt(0))) return false;
+        if (at >= atoms.size() || atoms.get(at).barrierBefore) return true;
+        if (!boundaries[at]) return false;
+        String raw = atoms.get(at).text;
         String next = raw.stripLeading();
         if (next.isEmpty()) return false;
         int first = next.codePointAt(0), type = Character.getType(first);
@@ -234,7 +322,27 @@ final class StableCaptionBlockPolicy {
                 && type != Character.FINAL_QUOTE_PUNCTUATION;
     }
 
+    /**
+     * Uses the same reading-time planner before either translation or screen measurement.
+     * The plan is kept, since toggling captions can create a new session on the main thread.
+     */
+    synchronized List<Block> sourceBlocks(String language) {
+        String code = Locale.forLanguageTag(language).getLanguage();
+        final boolean compact = COMPACT_LANGUAGES.contains(code);
+        if (sourcePlan == null || sourcePlanCompact != compact) {
+            sourcePlan = plan(text -> (compact
+                    ? text.codePointCount(0, text.length()) <= MAX_COMPACT_SOURCE_CHARS
+                    : text.split("\\s+").length <= MAX_SOURCE_WORDS), true);
+            sourcePlanCompact = compact;
+        }
+        return sourcePlan;
+    }
+
     List<Block> plan(Fit fit) {
+        return plan(fit, false);
+    }
+
+    private List<Block> plan(Fit fit, boolean source) {
         int size = atoms.size();
         int[] next = new int[size];
         boolean[] supported = new boolean[size];
@@ -260,7 +368,9 @@ final class StableCaptionBlockPolicy {
                 if (!boundary(to)) continue;
                 Block candidate = block(from, to, true);
                 long duration = candidate.end - candidate.start;
-                if (duration <= 0) continue;
+                if (duration <= 0 || source && (duration > MAX_PREVIEW_MS
+                        || to > from + 1
+                        && candidate.text.codePointCount(0, candidate.text.length()) > MAX_MULTI_ATOM_SOURCE_CHARS)) continue;
                 long missing = shortfall(candidate) + shortfall[to];
                 int chars = candidate.text.codePointCount(0, candidate.text.length());
                 // Relative reading load, not a language-specific characters-per-second limit.
@@ -279,7 +389,9 @@ final class StableCaptionBlockPolicy {
             }
             if (next[from] == 0) {
                 int to = from + 1;
-                while (to < size && !boundary(to)) to++;
+                while (to < size && !boundary(to) && (!source
+                        || !atoms.get(to).barrierBefore
+                                && atoms.get(to).start - atoms.get(to - 1).end <= MAX_GAP_MS)) to++;
                 next[from] = to;
                 Block nativeBlock = block(from, to, false);
                 bestShort = shortfall(nativeBlock) + shortfall[to];

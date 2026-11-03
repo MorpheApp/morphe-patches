@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">سياسة خصوصية Reddit</string>
   <string name="morphe_google_signin_not_available_toast">تسجيل الدخول عبر Google غير متاح. استخدم البريد الإلكتروني لتسجيل الدخول</string>
+  <string name="morphe_app_downgrade_dialog_title">تنزيل إصدار أقدم غير مدعوم</string>
+  <string name="morphe_app_downgrade_dialog_message">"تم تنزيل إصدار تثبيت Reddit هذا من &lt;b&gt;%1$s&lt;/b&gt; إلى &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+بيانات التطبيق من إصدار أحدث لا تعمل مع الإصدارات الأقدم وقد لا يعمل التطبيق بشكل صحيح.
+&lt;br/&gt;&lt;br/&gt;
+لاستخدام إصدار أقدم، يجب عليك &lt;b&gt;إلغاء تثبيت&lt;/b&gt; Reddit ثم تثبيت الإصدار الأقدم."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">فتح معلومات التطبيق</string>
   <string name="morphe_screen_ads_title">الإعلانات</string>
   <string name="morphe_hide_post_ads_title">إخفاء إعلانات الموجز</string>
   <string name="morphe_hide_comment_ads_title">إخفاء إعلانات التعليقات</string>

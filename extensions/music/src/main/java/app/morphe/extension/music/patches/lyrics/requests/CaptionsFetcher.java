@@ -944,7 +944,7 @@ public final class CaptionsFetcher {
 
     private static List<String> timedtextLanguages() {
         List<String> langs = new ArrayList<>();
-        Locale sys = Locale.getDefault();
+        Locale sys = Requester.getAppLocale();
         String sysLang = sys.getLanguage();
         if (!sysLang.isEmpty() && !langs.contains(sysLang)) {
             langs.add(sysLang);
@@ -1032,12 +1032,12 @@ public final class CaptionsFetcher {
         for (int k = 0; k < total - 1; k++) {
             Word word = words.get(k);
             words.set(k, new Word(word.startMs(), words.get(k + 1).startMs(), word.text(),
-                    null, word.endsWithSpace()));
+                    word.romaji(), word.endsWithSpace(), word.ruby()));
         }
         Word last = words.get(total - 1);
         words.set(total - 1, new Word(last.startMs(),
                 eventEndMs > last.startMs() ? eventEndMs : last.startMs(), last.text(),
-                null, last.endsWithSpace()));
+                last.romaji(), last.endsWithSpace(), last.ruby()));
         return words;
     }
 

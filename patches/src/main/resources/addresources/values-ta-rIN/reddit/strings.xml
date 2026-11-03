@@ -16,6 +16,13 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_app_downgrade_dialog_title">பதிப்பு குறைப்பு ஆதரிக்கப்படவில்லை</string>
+  <string name="morphe_app_downgrade_dialog_message">"இந்த Reddit நிறுவல் &lt;b&gt;%1$s&lt;/b&gt;-லிருந்து &lt;b&gt;%2$s&lt;/b&gt; ஆகக் குறைக்கப்பட்டுள்ளது
+&lt;br/&gt;&lt;br/&gt;
+புதிய பதிப்பின் செயலி தரவு பழைய பதிப்புகளுடன் வேலை செய்யாது மற்றும் செயலி சரியாக வேலை செய்யாமல் போகலாம்.
+&lt;br/&gt;&lt;br/&gt;
+பழைய பதிப்பைப் பயன்படுத்த, நீங்கள் Reddit-ஐ &lt;b&gt;நீக்கிவிட்டு&lt;/b&gt; அதன் பிறகு பழைய பதிப்பை நிறுவ வேண்டும்."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">செயலி தகவலைத் திறக்கவும்</string>
   <string name="morphe_show_flairs_in_home_feed_title">முகப்பு ஃபீடில் ஃபிளயர்களைக் காட்டவும்</string>
   <string name="morphe_show_flairs_in_home_feed_summary">முகப்பு ஃபீடில் பதிவின் ஃபிளயர் பேட்ஜ்களைக் காட்டும்</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">சில ஃபீட் உருப்படிகளில் ஃபிளயர் தெரியாமல் இருக்கலாம்</string>

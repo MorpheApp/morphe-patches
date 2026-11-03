@@ -62,13 +62,6 @@ internal object CurrentAccountProviderFingerprint : Fingerprint(
     )
 )
 
-internal object GeneratedRegistryFingerprint : Fingerprint(
-    definingClass = "Lcom/google/protobuf/ExtensionRegistryLite;",
-    name = "getGeneratedRegistry",
-    parameters = listOf(),
-    returnType = "Lcom/google/protobuf/ExtensionRegistryLite;",
-)
-
 internal object HistoryNavigationBuilderFingerprint : Fingerprint(
     definingClass = "Lapp/morphe/extension/youtube/series/HistoryNavigation;",
     name = "buildNative",

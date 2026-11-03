@@ -68,6 +68,12 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
         romanizations = (romanizations == null) ? null : unmodifiableTranslations(romanizations);
     }
 
+    public Lyrics withLines(List<LyricsLine> newLines) {
+        return new Lyrics(newLines, providerName(), synced(), romanization(),
+                translations(), romanizations(), songwriters(), rawFormat(), formatType(),
+                sourceUrl(), about());
+    }
+
     public static List<ScoredLyrics> sortScoredByScore(List<ScoredLyrics> scored) {
         scored.sort((a, b) -> b.score - a.score);
         return scored;
@@ -149,7 +155,7 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
                 }
 
                 fixed[j] = new Word(newStart, newEnd, w.text(), w.romaji(),
-                        w.endsWithSpace());
+                        w.endsWithSpace(), w.ruby());
                 prevEnd = newEnd;
                 changed = true;
             }
@@ -206,7 +212,7 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
             if (effectiveEnd != lastWord.endMs()) {
                 List<Word> newWords = new ArrayList<>(words);
                 newWords.set(lastIdx, new Word(lastWord.startMs(), effectiveEnd,
-                        lastWord.text(), lastWord.romaji(), lastWord.endsWithSpace()));
+                        lastWord.text(), lastWord.romaji(), lastWord.endsWithSpace(), lastWord.ruby()));
                 out.set(i, new LyricsLine(line.startTimeMs(), line.endTimeMs(),
                         line.text(), newWords, line.agentId(), line.isDuet(),
                         line.isBG(), line.songPart()));

@@ -17,8 +17,18 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_square_layout_summary">SponsorBlock товчлуур болон хянах хэрэгслүүдэд дөрвөлжин булан ашиглана</string>
+  <string name="morphe_sb_offline_segments_title">Татаж авсан видеонуудын сегментүүдийг хадгалах</string>
+  <string name="morphe_sb_offline_segments_summary">Офлайн горимд татсан видеонуудын зарим хэсгийг алгасах боломжийг олгоно</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Таны тохиргоонд SponsorBlock-ийн хувийн хэрэглэгчийн ID багтсан байна.
+
+Таны хэрэглэгчийн ID нь нууц үгтэй адил бөгөөд үүнийг хэзээ ч бусдад хуваалж болохгүй"</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Сегментийг илгээж чадсангүй (төлөв: %1$s %2$s)</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock түр хугацаагаар ажиллахгүй байна (төлөв %s)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Сегментэд санал өгөх боломжгүй байна (төлөв: %1$s %2$s)</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_new_segment_disabled_category">Тохиргоонд ангилал идэвхгүй байна. Илгээхийн тулд ангиллыг идэвхжүүлнэ үү</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_loading">Уншиж байна…</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Хэрэглэгчийн нэрийг өөрчилж чадсангүй: Төлөв: %1$s %2$s</string>
 </resources>
