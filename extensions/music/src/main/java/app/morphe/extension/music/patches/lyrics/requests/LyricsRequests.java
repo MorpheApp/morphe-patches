@@ -230,7 +230,8 @@ public final class LyricsRequests {
                         word.endMs() + offsetMs,
                         word.text(),
                         word.romaji(),
-                        word.endsWithSpace()));
+                        word.endsWithSpace(),
+                        word.ruby()));
             }
             adjusted.add(new LyricsLine(newStart, newEnd, line.text(), adjustedWords,
                     line.agentId(), line.isDuet(), line.isBG(), line.songPart()));

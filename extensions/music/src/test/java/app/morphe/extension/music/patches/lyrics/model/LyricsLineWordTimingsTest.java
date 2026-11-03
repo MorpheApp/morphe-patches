@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics.model;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -64,5 +65,25 @@ public class LyricsLineWordTimingsTest {
         final LyricsLine line = new LyricsLine(0, 1000, "你好世界",
                 List.of(new Word(0, 1000, "你好世界")));
         assertTrue(line.hasWordTimings());
+    }
+
+    @Test public void wordPreservesRubyAndRomajiTogether() {
+        final Word word = new Word(1000, 2000, "抉", "egu", false, "えぐ");
+        assertEquals("抉", word.text());
+        assertEquals("egu", word.romaji());
+        assertEquals("えぐ", word.ruby());
+        assertFalse(word.endsWithSpace());
+    }
+
+    @Test public void katakanaWordWithLatinRubyGlossPreservesBoth() {
+        final Word word = new Word(1000, 2000, "ノルマ", "no ru ma", false, "Normal");
+        assertEquals("ノルマ", word.text());
+        assertEquals("no ru ma", word.romaji());
+        assertEquals("Normal", word.ruby());
+    }
+
+    @Test public void kanaHiraganaKatakanaConversions() {
+        assertEquals("ふかく", app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer.toHiragana("フカク"));
+        assertEquals("フカク", app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer.toKatakana("ふかく"));
     }
 }

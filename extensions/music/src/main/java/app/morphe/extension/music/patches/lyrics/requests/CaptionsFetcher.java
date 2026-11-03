@@ -1032,12 +1032,12 @@ public final class CaptionsFetcher {
         for (int k = 0; k < total - 1; k++) {
             Word word = words.get(k);
             words.set(k, new Word(word.startMs(), words.get(k + 1).startMs(), word.text(),
-                    null, word.endsWithSpace()));
+                    word.romaji(), word.endsWithSpace(), word.ruby()));
         }
         Word last = words.get(total - 1);
         words.set(total - 1, new Word(last.startMs(),
                 eventEndMs > last.startMs() ? eventEndMs : last.startMs(), last.text(),
-                null, last.endsWithSpace()));
+                last.romaji(), last.endsWithSpace(), last.ruby()));
         return words;
     }
 
