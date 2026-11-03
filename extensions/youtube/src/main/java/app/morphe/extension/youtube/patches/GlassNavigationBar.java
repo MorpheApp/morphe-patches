@@ -36,6 +36,7 @@ import java.util.Map;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.NavigationBarPatch.NavigationBarStyle;
@@ -113,8 +114,21 @@ public final class GlassNavigationBar {
     /**
      * The most alpha of the tint the app draws over its blurred background.
      */
-    private static final int LIGHT_BLUR_TINT_MAX_ALPHA = Math.round(0.55f * 255);
-    private static final int DARK_BLUR_TINT_MAX_ALPHA = Math.round(0.35f * 255);
+    private static final float LIGHT_BLUR_TINT_ALPHA = 0.50f;
+    private static final float DARK_BLUR_TINT_ALPHA = 0.40f;
+
+    /**
+     * How opaque the glass is, from the opacity slider. The slider is at 50 by default, which
+     * keeps the default alphas, and every alpha is scaled by it: 0 is fully clear, 100 doubles them.
+     */
+    private static final float OPACITY_SCALE = SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_OPACITY) / 50f;
+
+    /**
+     * @return The alpha scaled by the opacity slider, at most fully opaque.
+     */
+    private static float scaledAlpha(float alpha) {
+        return Math.max(0, Math.min(1, alpha * OPACITY_SCALE));
+    }
 
     private static boolean floatingRoomLogged;
 
@@ -199,17 +213,21 @@ public final class GlassNavigationBar {
     /**
      * Injection point helper.
      * <p>
-     * The tint the app draws over its blurred background makes the capsule dark,
-     * so its alpha is lowered and more of the blurred content shows.
+     * The tint the app draws over its blurred background makes the capsule dark, so its alpha
+     * is set from the opacity slider, and by default more of the blurred content shows.
      */
     static void lightenBlurTint(Paint tint) {
         if (!ENABLED) return;
 
         final int alpha = tint.getAlpha();
-        final int maxAlpha = Utils.isDarkModeEnabled() ? DARK_BLUR_TINT_MAX_ALPHA : LIGHT_BLUR_TINT_MAX_ALPHA;
-        if (alpha > maxAlpha && alpha < 255) {
-            Logger.printDebug(() -> "Glass navigation bar blur tint alpha: " + alpha + " -> " + maxAlpha);
-            tint.setAlpha(maxAlpha);
+        // Only the translucent tint, not a solid bar color.
+        if (alpha <= 0 || alpha >= 255) return;
+
+        final int newAlpha = Math.round(255 * scaledAlpha(
+                Utils.isDarkModeEnabled() ? DARK_BLUR_TINT_ALPHA : LIGHT_BLUR_TINT_ALPHA));
+        if (alpha != newAlpha) {
+            Logger.printDebug(() -> "Glass navigation bar blur tint alpha: " + alpha + " -> " + newAlpha);
+            tint.setAlpha(newAlpha);
         }
     }
 
@@ -486,7 +504,7 @@ public final class GlassNavigationBar {
             switch (newStyle) {
                 case STYLE_SHORTS -> {
                     // The Shorts player is always dark, whatever the app theme.
-                    fillColor = withAlpha(Color.BLACK, 0.45f);
+                    fillColor = withAlpha(Color.BLACK, scaledAlpha(0.45f));
                     sheenTopColor = withAlpha(Color.WHITE, 0.06f);
                     strokeTopColor = withAlpha(Color.WHITE, 0.20f);
                     strokeBottomColor = withAlpha(Color.WHITE, 0.05f);
@@ -495,7 +513,7 @@ public final class GlassNavigationBar {
                 }
                 case STYLE_DARK -> {
                     final int background = ThemeUtils.getAppBackgroundColor();
-                    fillColor = withAlpha(blend(background, Color.WHITE, 0.14f), 0.60f);
+                    fillColor = withAlpha(blend(background, Color.WHITE, 0.14f), scaledAlpha(0.50f));
                     sheenTopColor = withAlpha(Color.WHITE, 0.10f);
                     strokeTopColor = withAlpha(Color.WHITE, 0.30f);
                     strokeBottomColor = withAlpha(Color.WHITE, 0.06f);
@@ -504,7 +522,7 @@ public final class GlassNavigationBar {
                 }
                 default -> {
                     final int background = ThemeUtils.getAppBackgroundColor();
-                    fillColor = withAlpha(blend(background, Color.WHITE, 0.6f), 0.66f);
+                    fillColor = withAlpha(blend(background, Color.WHITE, 0.6f), scaledAlpha(0.50f));
                     sheenTopColor = withAlpha(Color.WHITE, 0.35f);
                     strokeTopColor = withAlpha(Color.WHITE, 0.95f);
                     strokeBottomColor = withAlpha(Color.BLACK, 0.07f);
