@@ -20,6 +20,7 @@ import app.morphe.patches.shared.misc.textcomponent.hookLithoSpannableString
 import app.morphe.patches.shared.misc.textcomponent.lithoSpannableStringPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
+import app.morphe.patches.youtube.video.videoid.hookBackgroundPlayVideoId
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -52,6 +53,7 @@ internal val videoTitlesHookPatch = bytecodePatch(
         // The original description is fetched when the video is opened,
         // and replaced when the description panel is opened.
         hookVideoId("$EXTENSION_CLASS->newVideoLoaded(Ljava/lang/String;)V")
+        hookBackgroundPlayVideoId("$EXTENSION_CLASS->newVideoLoaded(Ljava/lang/String;)V")
 
         // The title of the media notification.
         MediaSessionSetMetadataFingerprint.let {
