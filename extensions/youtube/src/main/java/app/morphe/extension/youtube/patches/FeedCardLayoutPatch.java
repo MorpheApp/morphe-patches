@@ -55,6 +55,7 @@ import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.AccessibilityContext;
@@ -102,6 +103,7 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LockupVie
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LockupViewModelHolder;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.MetadataPart;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.MetadataRow;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.OpenPopupAction;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.RendererContext;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ShelfHeaderData;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ShelfHeaderModel;
@@ -131,6 +133,10 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoData
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoThumbnail;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoWithContextData;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoWithContextModel;
+import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
+import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.youtube.innertube.PlaylistEdit;
+import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter;
 import app.morphe.extension.youtube.patches.theme.SeekbarColorPatch;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
@@ -264,19 +270,22 @@ public class FeedCardLayoutPatch {
     private static final int LIKE_STATUS_LIKE = 0;
     private static final int LIKE_STATUS_INDIFFERENT = 2;
     private static final int LIKE_STATUS_ENTITY_TYPE = 62;
+    private static final int ACTION_ADD_VIDEO = PlaylistEdit.PlaylistEditActionType.ACTION_ADD_VIDEO_VALUE;
 
     /**
      * Fields of the innertube commands.
      */
-    private static final int INNERTUBE_COMMAND_FIELD = 169495254;
     private static final int WATCH_ENDPOINT_FIELD = 48687757;
     private static final int WATCH_ENDPOINT_VIDEO_ID_FIELD = 1;
-    private static final int PLAYLIST_EDIT_ENDPOINT_FIELD = 60666189;
-    private static final int PLAYLIST_EDIT_ENDPOINT_PLAYLIST_ID_FIELD = 1;
     private static final int SHOW_ENGAGEMENT_PANEL_ENDPOINT_FIELD = 138681778;
     private static final int SHOW_ENGAGEMENT_PANEL_ENDPOINT_PANEL_ID_FIELD = 1;
 
     private static final String WATCH_LATER_PLAYLIST_ID = "WL";
+    /**
+     * Menu items that the menu of the cards with a save button doesn't have.
+     */
+    private static final StringRef SAVE_TO_WATCH_LATER = StringRef.sfc("morphe_save_to_watch_later_flyout_title");
+    private static final StringRef SAVE_TO_PLAYLIST = StringRef.sfc("accessibility_save_to_playlists");
     private static final String SENDER_VIEW_KEY = "com.google.android.libraries.youtube.rendering.elements.sender_view";
     /**
      * Comments panel of the watch page. Newer app versions use the first id.
@@ -890,29 +899,15 @@ public class FeedCardLayoutPatch {
                             }
 
                             // The command of the 'Save to Watch later' item of the menu.
-                            InnertubeCommandHolder saveOnTap = null;
-                            List<ProtoNode> message = ProtoNode.parse(data.getMenuOnTap().toByteArray());
-                            if (message != null) {
-                                for (ProtoNode endpoint
-                                        : ProtoNode.findMessages(message, PLAYLIST_EDIT_ENDPOINT_FIELD)) {
-                                    ProtoNode playlistId = ProtoNode.field(
-                                            endpoint.children, PLAYLIST_EDIT_ENDPOINT_PLAYLIST_ID_FIELD);
-                                    ProtoNode command = endpoint.getParent();
-                                    if (playlistId != null && WATCH_LATER_PLAYLIST_ID.equals(playlistId.getText())
-                                            && command != null && command.children != null) {
-                                        ByteArrayOutputStream commandBytes = new ByteArrayOutputStream();
-                                        CodedOutputStream output = CodedOutputStream.newInstance(commandBytes);
-                                        output.writeByteArray(INNERTUBE_COMMAND_FIELD,
-                                                ProtoNode.write(command.children));
-                                        output.flush();
-                                        saveOnTap = InnertubeCommandHolder.parseFrom(commandBytes.toByteArray());
-                                        break;
-                                    }
-                                }
-                            }
-                            if (saveOnTap == null) {
-                                // Without the item, such as in some menus, the button opens the menu.
-                                saveOnTap = InnertubeCommandHolder.parseFrom(data.getMenuOnTap());
+                            // Without the item, such as in some menus, the button opens the menu.
+                            PlaylistQueueRenderer.NavigationEndpoint watchLaterCommand = findWatchLaterCommand(
+                                    PlaylistQueueRenderer.Menu.parseFrom(menuOnTap.getInnertubeCommand()
+                                            .getOpenPopupAction().getPopup()).getMenuRenderer());
+                            InnertubeCommandHolder saveOnTap = menuOnTap;
+                            if (watchLaterCommand != null) {
+                                saveOnTap = InnertubeCommandHolder.newBuilder()
+                                        .setInnertubeCommand(InnertubeCommand.parseFrom(watchLaterCommand.toByteString()))
+                                        .build();
                             }
 
                             String entityKey = Base64.encodeToString(LikeStatusEntityKey.newBuilder()
@@ -1171,6 +1166,59 @@ public class FeedCardLayoutPatch {
                     }
 
                     ButtonViewModel menuButton = metadata.getMenuButton().getButtonViewModel();
+                    InnertubeCommandHolder menuOnTap = menuButton.getOnTap();
+                    // The cards with a save button have no save items in the menu,
+                    // so the items are added to the menu of the classic layout, which has no save button.
+                    boolean hasSaveButton = false;
+                    for (ActionButton button : metadata.getActionButtonsList()) {
+                        hasSaveButton |= button.hasAddToPlaylistButtonViewModel();
+                    }
+                    OpenPopupAction openPopupAction = menuOnTap.getInnertubeCommand().getOpenPopupAction();
+                    PlaylistQueueRenderer.Menu popup = hasSaveButton && !isPlaylist
+                            ? PlaylistQueueRenderer.Menu.parseFrom(openPopupAction.getPopup())
+                            : PlaylistQueueRenderer.Menu.getDefaultInstance();
+                    PlaylistQueueRenderer.MenuRenderer menu = popup.getMenuRenderer();
+                    if (menu.getItemsCount() > 0 && findWatchLaterCommand(menu) == null) {
+                        // The save items follow the items shown by a condition, such as the queue items.
+                        int saveItemsIndex = 0;
+                        while (saveItemsIndex < menu.getItemsCount()
+                                && (menu.getItems(saveItemsIndex).hasMenuConditionalServiceItemRenderer()
+                                || menu.getItems(saveItemsIndex).hasMenuConditionalNavigationItemRenderer())) {
+                            saveItemsIndex++;
+                        }
+
+                        // The commands of the save items of the classic layout.
+                        final String videoId = lockupViewModel.getContentId();
+                        var saveToWatchLater = PlaylistQueueRenderer.MenuServiceItem.newBuilder()
+                                .setText(PlaylistQueueRenderer.Text.newBuilder()
+                                        .setSimpleText(SAVE_TO_WATCH_LATER.toString()))
+                                .setIcon(Icon.newBuilder().setYtIconType(YTIconType.ADD_TO_WATCH_LATER))
+                                .setServiceEndpoint(PlaylistQueueRenderer.NavigationEndpoint.newBuilder()
+                                        .setPlaylistEditEndpoint(PlaylistQueueRenderer.PlaylistEditEndpoint.newBuilder()
+                                                .setPlaylistId(WATCH_LATER_PLAYLIST_ID)
+                                                .addActions(PlaylistQueueRenderer.PlaylistEditAction.newBuilder()
+                                                        .setAction(ACTION_ADD_VIDEO)
+                                                        .setAddedVideoId(videoId))));
+                        var saveToPlaylist = PlaylistQueueRenderer.MenuNavigationItem.newBuilder()
+                                .setText(PlaylistQueueRenderer.Text.newBuilder()
+                                        .setSimpleText(SAVE_TO_PLAYLIST.toString()))
+                                .setIcon(Icon.newBuilder().setYtIconType(YTIconType.BOOKMARK_BORDER))
+                                .setNavigationEndpoint(PlaylistQueueRenderer.NavigationEndpoint.newBuilder()
+                                        .setAddToPlaylistEndpoint(PlaylistQueueRenderer.AddToPlaylistEndpoint.newBuilder()
+                                                .setVideoId(videoId)));
+                        menu = menu.toBuilder()
+                                .addItems(saveItemsIndex, PlaylistQueueRenderer.MenuItem.newBuilder()
+                                        .setMenuServiceItemRenderer(saveToWatchLater))
+                                .addItems(saveItemsIndex + 1, PlaylistQueueRenderer.MenuItem.newBuilder()
+                                        .setMenuNavigationItemRenderer(saveToPlaylist))
+                                .build();
+
+                        menuOnTap = menuOnTap.toBuilder()
+                                .setInnertubeCommand(menuOnTap.getInnertubeCommand().toBuilder()
+                                        .setOpenPopupAction(openPopupAction.toBuilder()
+                                                .setPopup(popup.toBuilder().setMenuRenderer(menu).build().toByteString())))
+                                .build();
+                    }
                     RendererContext rendererContext = lockupViewModel.getRendererContext();
                     VideoWithContextModel classic = VideoWithContextModel.newBuilder()
                             .setData(VideoWithContextData.newBuilder()
@@ -1179,7 +1227,7 @@ public class FeedCardLayoutPatch {
                                     .setAccessibilityText(rendererContext.getAccessibilityContext().getLabel())
                                     .setMenuAccessibilityText(menuButton.getAccessibilityText())
                                     .setOnTap(rendererContext.getCommandContext().getOnTap())
-                                    .setMenuOnTap(menuButton.getOnTap().toByteString())
+                                    .setMenuOnTap(menuOnTap.toByteString())
                                     .setInlinePlayback(lockupViewModel.getInlinePlayback().getInlinePlayback()))
                             .setContext(setCardExperiments(card.getContext(), false))
                             .setEnvironment(card.getEnvironment())
@@ -2253,6 +2301,21 @@ public class FeedCardLayoutPatch {
                 .setAccessibilityText(data.getAccessibilityText() + SHELF_HEADER_LABEL_MARKER)
                 .setStyle(data.getStyle().toBuilder().setModernType(true))
                 .build();
+    }
+
+    /**
+     * @return The command of the 'Save to Watch later' item of the menu, or null if the menu has no such item.
+     */
+    @Nullable
+    private static PlaylistQueueRenderer.NavigationEndpoint findWatchLaterCommand(
+            PlaylistQueueRenderer.MenuRenderer menu) {
+        for (PlaylistQueueRenderer.MenuItem item : menu.getItemsList()) {
+            PlaylistQueueRenderer.NavigationEndpoint command = item.getMenuServiceItemRenderer().getServiceEndpoint();
+            if (WATCH_LATER_PLAYLIST_ID.equals(command.getPlaylistEditEndpoint().getPlaylistId())) {
+                return command;
+            }
+        }
+        return null;
     }
 
     private static InnertubeCommandHolder likeCommand(String videoId, int status) {

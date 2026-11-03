@@ -566,6 +566,13 @@ message InnertubeCommandHolder {
 message InnertubeCommand {
     BrowseEndpoint browseEndpoint = 48687626;
     LikeEndpoint likeEndpoint = 63158558;
+    OpenPopupAction openPopupAction = 98150882;
+}
+
+// Command of the menu button of the feed videos.
+message OpenPopupAction {
+    // Menu (PlaylistQueueRenderer.Menu), parsed only where it is read, because every feed video has one.
+    bytes popup = 1;
 }
 
 message BrowseEndpoint {
