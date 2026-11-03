@@ -788,6 +788,8 @@ public class Settings extends SharedYouTubeSettings {
     /** Max comment length slider value that shows all comments. */
     public static final int NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT = 100;
     public static final IntegerSetting NICONICO_COMMENTS_MAX_LENGTH = new IntegerSetting("morphe_niconico_comments_max_length", NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT, parent(NICONICO_COMMENTS));
+    public static final int NICONICO_COMMENTS_MAX_REFRESH_RATE_NO_LIMIT = 150;
+    public static final IntegerSetting NICONICO_COMMENTS_MAX_REFRESH_RATE = new IntegerSetting("morphe_niconico_comments_max_refresh_rate", NICONICO_COMMENTS_MAX_REFRESH_RATE_NO_LIMIT, parent(NICONICO_COMMENTS));
     public static final BooleanSetting NICONICO_COMMENTS_LIVE_STREAMS = new BooleanSetting("morphe_niconico_comments_live_streams", TRUE, parent(NICONICO_COMMENTS));
     public static final BooleanSetting NICONICO_COMMENTS_LIVE_PREMIERES = new BooleanSetting("morphe_niconico_comments_live_premieres", TRUE, parent(NICONICO_COMMENTS));
     public static final BooleanSetting NICONICO_COMMENTS_ENDED_PREMIERES = new BooleanSetting("morphe_niconico_comments_ended_premieres", TRUE, parent(NICONICO_COMMENTS));
@@ -1350,6 +1352,9 @@ public class Settings extends SharedYouTubeSettings {
                 3, 15, 1, "s"));
         SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_MAX_LENGTH,
                 10, NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT, 10, "", 1,
+                StringRef.sf("morphe_niconico_comments_max_length_no_limit")));
+        SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_MAX_REFRESH_RATE,
+                30, NICONICO_COMMENTS_MAX_REFRESH_RATE_NO_LIMIT, 30, "Hz", 1,
                 StringRef.sf("morphe_niconico_comments_max_length_no_limit")));
         SeekBarPreference.register(new SeekBarConfig(LIVE_CHAT_TRANSLATE_MAX_LENGTH,
                 20, LIVE_CHAT_TRANSLATE_MAX_LENGTH_NO_LIMIT, 20, "", 1,
