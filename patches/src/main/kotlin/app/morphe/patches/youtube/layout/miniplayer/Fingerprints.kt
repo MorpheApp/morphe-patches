@@ -545,3 +545,17 @@ internal object MiniplayerControlsVisibilityFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * Reports the height the snackbars and the other bottom messages take, for every frame they slide.
+ * The first call passes it on, once every check has allowed it. YouTube moves its own miniplayer
+ * up by it.
+ */
+internal object BottomUiContainerReportHeightFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;",
+    returnType = "V",
+    parameters = listOf("I"),
+    filters = listOf(
+        methodCall(parameters = listOf("L", "I"), returnType = "V")
+    )
+)

@@ -681,6 +681,14 @@ val miniplayerPatch = bytecodePatch(
             }
         }
 
+        // The bar is moved up by the same height as YouTube's own miniplayer.
+        BottomUiContainerReportHeightFingerprint.let {
+            it.method.addInstruction(
+                it.instructionMatches.first().index,
+                "invoke-static { p1 }, $MINIMAL_EXTENSION_CLASS->setBottomUiHeight(I)V"
+            )
+        }
+
         // Exposed so the bar shape can be applied on demand. Only this setter runs the
         // pass that lays the player out, the plain one records the rect and nothing redraws.
         MiniplayerHorizontalRepositionFingerprint.let { fingerprint ->
