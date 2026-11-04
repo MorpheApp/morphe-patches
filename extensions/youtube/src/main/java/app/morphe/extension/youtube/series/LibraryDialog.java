@@ -346,6 +346,7 @@ final class LibraryDialog {
                 service.unlisten(listener);
                 root.removeCallbacks(syncTick);
                 for (Dialog child : new ArrayList<>(children)) child.dismiss();
+                ThumbnailLoader.evictAll();
             }
         });
         label(content, UiText.get("morphe_series_tracker_ui_loading_saved_series"), 16);
