@@ -8,7 +8,6 @@
 package app.morphe.extension.music.patches.downloads;
 
 import static app.morphe.extension.music.patches.downloads.OfflineUi.ICON_BUTTON_DP;
-import static app.morphe.extension.music.patches.downloads.OfflineUi.ROW_ARTWORK_PIXELS;
 import static app.morphe.extension.music.patches.downloads.OfflineUi.background;
 import static app.morphe.extension.music.patches.downloads.OfflineUi.foreground;
 import static app.morphe.extension.music.patches.downloads.OfflineUi.formatSize;
@@ -21,11 +20,11 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -42,12 +41,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListPopupWindow;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -60,9 +63,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.IntConsumer;
 
@@ -74,7 +79,14 @@ import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 
-/** Local catalogue with a compact player matching the stock bottom player of YouTube Music. */
+/**
+ * Local catalogue with a compact player matching the stock bottom player of YouTube Music.
+ * <p>
+ * A whole liked music library can be downloaded, so the catalogue may hold thousands of tracks.
+ * It is read off the main thread, only the rows on screen are built, and their covers are decoded
+ * in the background. Doing any of this for every track while the screen opens blocks the app long
+ * enough for the system to close it.
+ */
 @SuppressWarnings("deprecation")
 public final class LocalDownloadsFragment extends PreferenceFragment
         implements OfflinePlaybackService.PlaybackListener {
@@ -96,6 +108,12 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private static final int MENU_WIDTH_DP = 220;
     private static final int MENU_CORNER_DP = 12;
+
+    private static final int EMPTY_TOP_PADDING_DP = 80;
+    private static final int LOADING_INDICATOR_DP = 40;
+
+    /** Downloads can finish every second, so the list is refreshed a moment after the last. */
+    private static final long REFRESH_DELAY_MILLISECONDS = 2000;
 
     private File musicRoot;
     private OfflineUi ui;
@@ -120,7 +138,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private ImageButton miniNext;
     private SeekBar miniSeek;
     private LinearLayout miniPlayer;
-    private LinearLayout songsList;
+    private ListView songsList;
+    private TrackAdapter adapter;
+    private TextView emptyView;
+    private ProgressBar loadingIndicator;
     private LinearLayout playlistsSection;
     private View selectionBar;
     /** Part of the playlists section, so it only exists while that has been expanded. */
@@ -129,18 +150,32 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private boolean showingPause;
 
-    /**
-     * Every downloaded track, read once per refresh instead of on every list or playback update.
-     */
+    /** Every downloaded track, sorted, as read by the last load. */
     private List<OfflineTrack> tracks = new ArrayList<>();
+    private final Map<String, OfflineTrack> tracksByPath = new HashMap<>();
+    private long totalBytes;
 
-    /** Each row, kept so the playing one can be marked without redrawing the list. */
-    private final List<View> rowViews = new ArrayList<>();
+    /** The tracks that match the search. */
+    private final List<OfflineTrack> displayedTracks = new ArrayList<>();
 
-    /** In the same order as {@link #displayedTrackPaths}. */
-    private final List<CheckBox> rowCheckBoxes = new ArrayList<>();
-
+    /** Paths of {@link #displayedTracks}, the queue that playing from the list moves through. */
     private List<String> displayedTrackPaths = new ArrayList<>();
+
+    /** Lets a load that finishes after the view was destroyed, or reloaded, be ignored. */
+    private int loadGeneration;
+    /** If a read of the folder is under way, so another is not started on top of it. */
+    private boolean reading;
+    /** The snapshot the list shows, so the same one is not sorted and drawn again. */
+    @Nullable
+    private OfflineCatalogue.Snapshot appliedSnapshot;
+
+    /** Lists the downloads that finished while the screen is open. */
+    private final Runnable refresh = () -> {
+        if (reading) scheduleRefresh();
+        else loadCatalogue();
+    };
+    private final Runnable onTrackSaved = this::scheduleRefresh;
+
     private String playingPath = "";
     private String query = "";
     private TextView summary;
@@ -162,30 +197,22 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
-        musicRoot = new File(getActivity().getExternalFilesDir(Environment.DIRECTORY_MUSIC), "Morphe");
-        ui = new OfflineUi(getActivity());
+        Activity activity = getActivity();
+        musicRoot = new File(activity.getExternalFilesDir(Environment.DIRECTORY_MUSIC), "Morphe");
+        ui = new OfflineUi(activity);
         playlistManager = new OfflinePlaylistManager(musicRoot);
-        playlists = playlistManager.loadPlaylists();
 
-        root = new LinearLayout(getActivity());
+        root = new LinearLayout(activity);
         root.setOrientation(LinearLayout.VERTICAL);
         root.setBackgroundColor(background());
 
-        catalogue = new LinearLayout(getActivity());
+        catalogue = new LinearLayout(activity);
         catalogue.setOrientation(LinearLayout.VERTICAL);
 
         // The header stays out of the list, so typing a query does not rebuild the search bar.
         catalogue.addView(createHeader(), new LinearLayout.LayoutParams(-1, -2));
-
-        ScrollView scroll = new ScrollView(getActivity());
-        songsList = new LinearLayout(getActivity());
-        songsList.setOrientation(LinearLayout.VERTICAL);
-        songsList.setPadding(ui.dp(8), 0, ui.dp(8), ui.dp(10));
-        scroll.addView(songsList);
-        catalogue.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
+        catalogue.addView(createSongsList(), new LinearLayout.LayoutParams(-1, 0, 1));
         root.addView(catalogue, new LinearLayout.LayoutParams(-1, 0, 1));
-
-        showTracks();
 
         miniPlayer = createStockMiniPlayer();
         miniPlayer.setVisibility(View.GONE);
@@ -197,12 +224,37 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     public void onStart() {
         super.onStart();
         OfflinePlaybackService.addListener(this);
+        LocalDownloadManager.addSavedListener(onTrackSaved);
+    }
+
+    private void scheduleRefresh() {
+        root.removeCallbacks(refresh);
+        root.postDelayed(refresh, REFRESH_DELAY_MILLISECONDS);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Also lists the downloads that finished while the screen was away. Only the files the
+        // catalogue did not have are read, so this is cheap when nothing changed.
+        if (!reading) loadCatalogue();
     }
 
     @Override
     public void onStop() {
+        LocalDownloadManager.removeSavedListener(onTrackSaved);
+        root.removeCallbacks(refresh);
         OfflinePlaybackService.removeListener(this);
+        OfflineArtworkLoader.evictAll();
         super.onStop();
+    }
+
+    @Override
+    public void onDestroyView() {
+        // A load still running reports to views that are gone.
+        loadGeneration++;
+        OfflineArtworkLoader.cancelPending(ui);
+        super.onDestroyView();
     }
 
     /**
@@ -327,30 +379,104 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     }
 
     /**
-     * Reads the catalogue from disk. Every other method works off this snapshot.
+     * Reads the catalogue off the main thread. The catalogue read on the last visit is shown
+     * meanwhile, if there is one.
      */
-    private void loadTracks() {
-        tracks = new ArrayList<>();
-        File[] files = musicRoot.listFiles(file -> file.isFile()
-                && (file.getName().endsWith(".webm") || file.getName().endsWith(".m4a")));
-        if (files == null) return;
+    private void loadCatalogue() {
+        final int generation = ++loadGeneration;
+        File directory = musicRoot;
+        OfflinePlaylistManager manager = playlistManager;
+        reading = true;
 
-        for (File file : files) {
-            tracks.add(OfflineTrack.load(file));
-        }
-        tracks.sort(comparator());
+        OfflineCatalogue.Snapshot cached = OfflineCatalogue.cached();
+        if (cached == null) setLoading(true);
+        else if (cached != appliedSnapshot) applyCatalogue(cached);
+
+        Utils.runOnBackgroundThread(() -> {
+            try {
+                // The playlists are a few small files, so they are shown before the tracks are
+                // read.
+                List<OfflinePlaylist> loadedPlaylists = manager.loadPlaylists();
+                Utils.runOnMainThread(() -> {
+                    if (generation != loadGeneration) return;
+                    playlists = loadedPlaylists;
+                    renderPlaylistsSection();
+                });
+
+                OfflineCatalogue.update(directory);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Could not read the downloads", ex);
+            }
+
+            Utils.runOnMainThread(() -> {
+                if (generation != loadGeneration) return;
+                reading = false;
+                // What the catalogue now holds, which may come from another read, such as the
+                // one of the screen before a rotation, or from a track deleted meanwhile.
+                OfflineCatalogue.Snapshot latest = OfflineCatalogue.cached();
+                if (latest != appliedSnapshot) applyCatalogue(latest);
+                setLoading(false);
+            });
+        });
     }
 
+    /**
+     * @param snapshot The catalogue to show, or null for an empty one.
+     */
+    private void applyCatalogue(@Nullable OfflineCatalogue.Snapshot snapshot) {
+        appliedSnapshot = snapshot;
+        List<OfflineTrack> sorted = snapshot == null
+                ? new ArrayList<>()
+                : new ArrayList<>(snapshot.tracks());
+        sorted.sort(comparator());
+        tracks = sorted;
+        indexTracks();
+        showTracks();
+
+        // The track playing may have been reported before the catalogue was read.
+        OfflineTrack playing = findByPath(playingPath);
+        if (playing != null) applyTrackVisuals(playing);
+    }
+
+    private void indexTracks() {
+        tracksByPath.clear();
+        long total = 0;
+        for (OfflineTrack track : tracks) {
+            tracksByPath.put(track.audioFile().getAbsolutePath(), track);
+            total += track.sizeBytes();
+        }
+        totalBytes = total;
+    }
+
+    private void setLoading(boolean value) {
+        loadingIndicator.setVisibility(value ? View.VISIBLE : View.GONE);
+        updateEmptyView();
+    }
+
+    private void updateEmptyView() {
+        final boolean empty = loadingIndicator.getVisibility() != View.VISIBLE
+                && displayedTracks.isEmpty();
+        emptyView.setVisibility(empty ? View.VISIBLE : View.GONE);
+        if (empty) {
+            emptyView.setText(str(tracks.isEmpty()
+                    ? "morphe_music_downloads_empty"
+                    : "morphe_music_downloads_nothing_found"));
+        }
+    }
+
+    /**
+     * Compares without allocating, since sorting thousands of tracks compares tens of thousands
+     * of times, on the main thread when the sort order changes.
+     */
     private Comparator<OfflineTrack> comparator() {
-        Comparator<OfflineTrack> byTitle =
-                Comparator.comparing(track -> track.displayTitle().toLowerCase(Locale.ROOT));
+        Comparator<OfflineTrack> byTitle = Comparator.comparing(
+                OfflineTrack::displayTitle, String.CASE_INSENSITIVE_ORDER);
 
         return switch (SortOrder.saved()) {
             case TITLE -> byTitle;
-            case SIZE -> Comparator.comparingLong(
-                    (OfflineTrack track) -> track.audioFile().length()).reversed();
-            default -> Comparator.comparing(
-                    (OfflineTrack track) -> track.displayArtist().toLowerCase(Locale.ROOT))
+            case SIZE -> Comparator.<OfflineTrack>comparingLong(OfflineTrack::sizeBytes).reversed();
+            default -> Comparator.<OfflineTrack, String>comparing(
+                    OfflineTrack::displayArtist, String.CASE_INSENSITIVE_ORDER)
                     .thenComparing(byTitle);
         };
     }
@@ -374,6 +500,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                 str("morphe_music_downloads_search_hint"), text -> {
                     query = text.trim().toLowerCase(Locale.ROOT);
                     showTracks();
+                    songsList.setSelection(0);
                 });
         searchBar.setVisibility(View.GONE);
         searchBar.setAlpha(0f);
@@ -432,6 +559,41 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         return header;
     }
 
+    /**
+     * Only the rows on screen exist, and they are reused while scrolling, since the catalogue
+     * can hold thousands of tracks.
+     */
+    private View createSongsList() {
+        Activity activity = getActivity();
+        FrameLayout frame = new FrameLayout(activity);
+
+        songsList = new ListView(activity);
+        songsList.setDivider(null);
+        // Each row draws its own rounded ripple.
+        songsList.setSelector(new ColorDrawable(Color.TRANSPARENT));
+        songsList.setItemsCanFocus(true);
+        songsList.setPadding(ui.dp(8), 0, ui.dp(8), ui.dp(10));
+        songsList.setClipToPadding(false);
+        adapter = new TrackAdapter();
+        songsList.setAdapter(adapter);
+        frame.addView(songsList, new FrameLayout.LayoutParams(-1, -1));
+
+        emptyView = ui.text("", 16, secondary());
+        emptyView.setGravity(Gravity.CENTER);
+        emptyView.setPadding(0, ui.dp(EMPTY_TOP_PADDING_DP), 0, 0);
+        emptyView.setVisibility(View.GONE);
+        frame.addView(emptyView, new FrameLayout.LayoutParams(-1, -2));
+
+        loadingIndicator = new ProgressBar(activity);
+        loadingIndicator.setIndeterminateTintList(ColorStateList.valueOf(foreground()));
+        loadingIndicator.setVisibility(View.GONE);
+        FrameLayout.LayoutParams indicatorParams = new FrameLayout.LayoutParams(
+                ui.dp(LOADING_INDICATOR_DP), ui.dp(LOADING_INDICATOR_DP), Gravity.CENTER_HORIZONTAL);
+        indicatorParams.topMargin = ui.dp(EMPTY_TOP_PADDING_DP);
+        frame.addView(loadingIndicator, indicatorParams);
+        return frame;
+    }
+
     private String selectionButtonLabel() {
         return selectionMode
                 ? str("morphe_music_downloads_playlist_selected", selectedTrackPaths.size())
@@ -455,12 +617,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private void updateSelectionUi() {
         if (selectionButton != null) selectionButton.setText(selectionButtonLabel());
         selectionBar.setVisibility(selectionMode ? View.VISIBLE : View.GONE);
-
-        for (int i = 0; i < rowCheckBoxes.size(); i++) {
-            CheckBox checkBox = rowCheckBoxes.get(i);
-            checkBox.setVisibility(selectionMode ? View.VISIBLE : View.GONE);
-            checkBox.setChecked(selectedTrackPaths.contains(displayedTrackPaths.get(i)));
-        }
+        // The rows on screen show their check boxes again, the others when they are reused.
+        adapter.notifyDataSetChanged();
     }
 
     private void createPlaylistFromSelection() {
@@ -609,83 +767,131 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         };
         showMenu(anchor, items, SortOrder.saved().ordinal(), position -> {
             Settings.DOWNLOADS_SORT.save(SortOrder.values()[position].name());
+            tracks.sort(comparator());
             showTracks();
+            songsList.setSelection(0);
         });
     }
 
     @Nullable
     private OfflineTrack findByPath(String path) {
         if (path.isEmpty()) return null;
-        for (OfflineTrack track : tracks) {
-            if (track.audioFile().getAbsolutePath().equals(path)) return track;
-        }
-        return null;
+        return tracksByPath.get(path);
     }
 
+    /** The track of an audio file, from the catalogue if it has been read, or else from disk. */
+    OfflineTrack trackFor(String path) {
+        OfflineTrack track = findByPath(path);
+        return track != null ? track : OfflineTrack.load(new File(path));
+    }
+
+    /** Filters the catalogue in memory, so typing a query does not read the disk again. */
     private void showTracks() {
-        loadTracks();
-        songsList.removeAllViews();
-        rowViews.clear();
-        rowCheckBoxes.clear();
-        displayedTrackPaths = new ArrayList<>();
-
-        long totalBytes = 0;
-        for (OfflineTrack track : tracks) {
-            totalBytes += track.audioFile().length();
-        }
-        summary.setText(str("morphe_music_downloads_summary",
-                tracks.size(), formatSize(totalBytes)));
-
+        displayedTracks.clear();
+        List<String> paths = new ArrayList<>();
         for (OfflineTrack track : tracks) {
             if (!matchesQuery(track)) continue;
-            displayedTrackPaths.add(track.audioFile().getAbsolutePath());
-            songsList.addView(songRow(track));
+            displayedTracks.add(track);
+            paths.add(track.audioFile().getAbsolutePath());
         }
+        displayedTrackPaths = paths;
 
-        if (displayedTrackPaths.isEmpty()) {
-            TextView empty = ui.text(str(tracks.isEmpty()
-                    ? "morphe_music_downloads_empty"
-                    : "morphe_music_downloads_nothing_found"), 16, secondary());
-            empty.setGravity(Gravity.CENTER);
-            empty.setPadding(0, ui.dp(80), 0, 0);
-            songsList.addView(empty);
-            return;
-        }
-        markPlayingRow();
+        summary.setText(str("morphe_music_downloads_summary",
+                tracks.size(), formatSize(totalBytes)));
+        adapter.notifyDataSetChanged();
+        updateEmptyView();
     }
 
-    private View songRow(OfflineTrack track) {
+    /** The views of one row, kept with it so the row can be reused for another track. */
+    private static final class RowViews {
+        final LinearLayout row;
+        final CheckBox checkBox;
+        final OfflineUi.TrackInfoViews info;
+        final ImageButton menu;
+
+        /** Which card the row shows, so a redraw does not cut the ripple of a tap short. */
+        boolean highlighted;
+
+        RowViews(LinearLayout row, CheckBox checkBox, OfflineUi.TrackInfoViews info,
+                 ImageButton menu) {
+            this.row = row;
+            this.checkBox = checkBox;
+            this.info = info;
+            this.menu = menu;
+        }
+    }
+
+    private final class TrackAdapter extends BaseAdapter {
+        @Override
+        public int getCount() {
+            return displayedTracks.size();
+        }
+
+        @Override
+        public OfflineTrack getItem(int position) {
+            return displayedTracks.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, @Nullable View convertView, ViewGroup parent) {
+            RowViews views = convertView != null && convertView.getTag() instanceof RowViews reused
+                    ? reused
+                    : createRow();
+            bindRow(views, displayedTracks.get(position));
+            return views.row;
+        }
+    }
+
+    private RowViews createRow() {
         LinearLayout row = ui.trackRow();
-        rowViews.add(row);
+        row.setBackground(ui.rowBackground(false));
 
         CheckBox checkBox = new CheckBox(getActivity());
         checkBox.setButtonTintList(ColorStateList.valueOf(foreground()));
-        checkBox.setVisibility(selectionMode ? View.VISIBLE : View.GONE);
-        checkBox.setChecked(selectedTrackPaths.contains(track.audioFile().getAbsolutePath()));
-        checkBox.setOnClickListener(v -> toggleSelected(track));
         row.addView(checkBox, new LinearLayout.LayoutParams(ui.dp(40), ui.dp(40)));
-        rowCheckBoxes.add(checkBox);
 
-        ui.addTrackInfo(row, track);
+        OfflineUi.TrackInfoViews info = ui.createTrackInfo(row);
 
-        ImageButton menu = ui.icon("yt_outline_experimental_overflow_vertical_vd_theme_24",
-                str("morphe_music_downloads_actions_for", track.displayTitle()));
-        menu.setOnClickListener(v -> showTrackMenu(menu, track));
+        ImageButton menu = ui.icon("yt_outline_experimental_overflow_vertical_vd_theme_24", "");
         row.addView(menu, new LinearLayout.LayoutParams(ui.dp(ICON_BUTTON_DP), ui.dp(ICON_BUTTON_DP)));
 
-        row.setOnClickListener(v -> {
+        RowViews views = new RowViews(row, checkBox, info, menu);
+        row.setTag(views);
+        return views;
+    }
+
+    private void bindRow(RowViews views, OfflineTrack track) {
+        String path = track.audioFile().getAbsolutePath();
+
+        views.checkBox.setVisibility(selectionMode ? View.VISIBLE : View.GONE);
+        views.checkBox.setChecked(selectedTrackPaths.contains(path));
+        views.checkBox.setOnClickListener(v -> toggleSelected(track));
+
+        ui.bindTrackInfo(views.info, track);
+
+        views.menu.setContentDescription(str("morphe_music_downloads_actions_for", track.displayTitle()));
+        views.menu.setOnClickListener(v -> showTrackMenu(views.menu, track));
+
+        views.row.setOnClickListener(v -> {
             if (selectionMode) toggleSelected(track);
             else play(track, displayedTrackPaths);
         });
-        return row;
+
+        final boolean highlighted = path.equals(playingPath);
+        if (views.highlighted != highlighted) {
+            views.highlighted = highlighted;
+            views.row.setBackground(ui.rowBackground(highlighted));
+        }
     }
 
     /** Lifts the card of the track being played out of the background. */
     private void markPlayingRow() {
-        int playingIndex = displayedTrackPaths.indexOf(playingPath);
-        for (int i = 0; i < rowViews.size(); i++) {
-            rowViews.get(i).setBackground(ui.rowBackground(i == playingIndex));
-        }
+        adapter.notifyDataSetChanged();
     }
 
     private LinearLayout createStockMiniPlayer() {
@@ -705,7 +911,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         line.setGravity(Gravity.CENTER_VERTICAL);
         line.setPadding(ui.dp(16), 0, 0, 0);
 
-        miniArtwork = ui.artworkView(null);
+        miniArtwork = ui.artworkView();
         line.addView(miniArtwork, new LinearLayout.LayoutParams(ui.dp(48), ui.dp(48)));
 
         LinearLayout labels = new LinearLayout(getActivity());
@@ -838,7 +1044,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             Utils.showToastShort(str("morphe_music_downloads_playlist_no_tracks"));
             return;
         }
-        play(OfflineTrack.load(new File(queue.get(0))), queue);
+        play(trackFor(queue.get(0)), queue);
     }
 
     /**
@@ -901,33 +1107,59 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                 }, null, null, false).first.show();
     }
 
+    /** Thousands of files take a while to remove, so the disk is left to a background thread. */
     private void deleteAll() {
-        for (OfflineTrack track : new ArrayList<>(tracks)) {
-            OfflineStorage.delete(track.audioFile());
-            deleteSidecars(track.videoId());
-        }
+        List<OfflineTrack> deleted = new ArrayList<>(tracks);
+        File directory = musicRoot;
+        final int generation = ++loadGeneration;
+
         setSelectionMode(false);
-        showTracks();
-        reloadPlaylists();
-        Utils.showToastShort(str("morphe_music_downloads_all_deleted"));
+        // A read under way must not bring the tracks back once they are gone, and no other read
+        // starts while they go.
+        OfflineCatalogue.clear();
+        applyCatalogue(null);
+        reading = true;
+        setLoading(true);
+
+        Utils.runOnBackgroundThread(() -> {
+            try {
+                for (OfflineTrack track : deleted) {
+                    OfflineStorage.delete(track.audioFile());
+                    deleteSidecars(directory, track.videoId());
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "Could not delete every download", ex);
+            }
+            OfflineCatalogue.clear();
+
+            Utils.runOnMainThread(() -> {
+                Utils.showToastShort(str("morphe_music_downloads_all_deleted"));
+                if (generation != loadGeneration) return;
+                // Whatever could not be deleted is listed again, with the playlists left.
+                loadCatalogue();
+            });
+        });
     }
 
-    private void deleteSidecars(String videoId) {
-        OfflineStorage.delete(new File(musicRoot, videoId + ".json"));
-        OfflineStorage.delete(new File(musicRoot, videoId + ".jpg"));
-        OfflineStorage.delete(new File(musicRoot, videoId + ".webm.part"));
-        OfflineStorage.delete(new File(musicRoot, videoId + ".m4a.part"));
+    private static void deleteSidecars(File directory, String videoId) {
+        OfflineStorage.delete(new File(directory, videoId + ".json"));
+        OfflineStorage.delete(new File(directory, videoId + ".jpg"));
+        OfflineStorage.delete(new File(directory, videoId + ".webm.part"));
+        OfflineStorage.delete(new File(directory, videoId + ".m4a.part"));
     }
 
     private void deleteTrack(OfflineTrack track) {
         final boolean deleted = track.audioFile().delete();
-        deleteSidecars(track.videoId());
+        deleteSidecars(musicRoot, track.videoId());
 
         if (!deleted) {
             Utils.showToastShort(str("morphe_music_downloads_track_delete_failed"));
             return;
         }
         selectedTrackPaths.remove(track.audioFile().getAbsolutePath());
+        tracks.remove(track);
+        indexTracks();
+        appliedSnapshot = OfflineCatalogue.edited(tracks);
         showTracks();
         reloadPlaylists();
         Utils.showToastShort(str("morphe_music_downloads_track_deleted"));
@@ -1016,14 +1248,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private void applyTrackVisuals(OfflineTrack track) {
         miniTitle.setText(track.displayTitle());
         miniArtist.setText(track.displayArtist());
-
-        Bitmap bitmap = track.artwork(ROW_ARTWORK_PIXELS);
-        if (bitmap == null) return;
-
-        miniArtwork.clearColorFilter();
-        miniArtwork.setPadding(0, 0, 0, 0);
-        miniArtwork.setImageBitmap(bitmap);
-        miniArtwork.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        // Shares the cover decoded for the row of the track, which is usually on screen.
+        OfflineArtworkLoader.load(miniArtwork, track.artworkFile(), ui.rowArtworkPixels(), ui);
     }
 
     private void setButtonEnabled(ImageButton button, boolean enabled) {

@@ -17,28 +17,37 @@ import java.io.File;
 
 import app.morphe.extension.shared.Logger;
 
-/** Persistent metadata paired with one locally downloaded audio file. */
+/**
+ * Persistent metadata paired with one locally downloaded audio file.
+ *
+ * @param sizeBytes Size of the audio file when the metadata was read, so lists and sorting do not
+ *                  ask the file system again for every track.
+ */
 public record OfflineTrack(String videoId, String title, String artist, String album,
-                           int durationSeconds, File audioFile, File artworkFile) {
+                           int durationSeconds, File audioFile, File artworkFile, long sizeBytes) {
 
+    /**
+     * Reads the disk, so a whole catalogue must be loaded off the main thread.
+     */
     public static OfflineTrack load(File audioFile) {
         String fileName = audioFile.getName();
         int dot = fileName.lastIndexOf('.');
         String videoId = dot > 0 ? fileName.substring(0, dot) : fileName;
         File metadata = new File(audioFile.getParentFile(), videoId + ".json");
         File artwork = new File(audioFile.getParentFile(), videoId + ".jpg");
+        final long sizeBytes = audioFile.length();
 
         try {
             if (metadata.isFile()) {
                 JSONObject json = new JSONObject(OfflineStorage.readText(metadata));
                 return new OfflineTrack(videoId, json.optString("title", videoId),
                         json.optString("artist", ""), json.optString("album", ""),
-                        json.optInt("durationSeconds", 0), audioFile, artwork);
+                        json.optInt("durationSeconds", 0), audioFile, artwork, sizeBytes);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "Could not read offline metadata: " + metadata, ex);
         }
-        return new OfflineTrack(videoId, videoId, "", "", 0, audioFile, artwork);
+        return new OfflineTrack(videoId, videoId, "", "", 0, audioFile, artwork, sizeBytes);
     }
 
     public static void save(File directory, String videoId, String title, String artist,
@@ -62,11 +71,6 @@ public record OfflineTrack(String videoId, String title, String artist, String a
         } catch (Exception ex) {
             Logger.printException(() -> "Could not save offline metadata: " + videoId, ex);
         }
-    }
-
-    @Nullable
-    public Bitmap artwork(int maxSize) {
-        return OfflineStorage.decodeArtwork(artworkFile, maxSize);
     }
 
     public String displayTitle() {
