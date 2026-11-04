@@ -1174,94 +1174,6 @@ public final class NavigationBarPatch {
     }
 
     /**
-     * Injection point.
-     * <p>
-     * The toolbar create button of the Android Automotive layout, which swaps the create button with the
-     * notifications button, opens a bottom sheet whose video button uses the upload endpoint, which the app
-     * handles only in the creation modes. The upload endpoint is opened in the creation modes instead,
-     * as the create button of the phone layout does.
-     */
-    public static void fixToolbarCreateButtonUpload(List<MessageLite> rawButtonList) {
-        if (HIDE_TOOLBAR_CREATE_BUTTON || rawButtonList == null || rawButtonList.isEmpty()) return;
-
-        try {
-            for (int i = 0, size = rawButtonList.size(); i < size; i++) {
-                MessageLite rawButtons = rawButtonList.get(i);
-                Buttons buttons = Buttons.parseFrom(rawButtons.toByteArray());
-                if (!buttons.hasButtonRenderer() || !buttons.getButtonRenderer().hasIcon()
-                        || !Utils.equalsAny(buttons.getButtonRenderer().getIcon().getYtIconType().name(),
-                        CREATE_BUTTON_ENUMS)) {
-                    continue;
-                }
-
-                // The upload buttons of the create button open the upload endpoint in the creation modes.
-                // Nothing is changed if the create button has no upload button.
-                ButtonRenderer createButton = buttons.getButtonRenderer();
-                NavigationEndpoint endpoint = createButton.getNavigationEndpoint();
-                if (!endpoint.hasCreationEntrySheetEndpoint()) {
-                    return;
-                }
-                CreationEntrySheetEndpoint sheetEndpoint = endpoint.getCreationEntrySheetEndpoint();
-                ButtonSheetRenderer sheet = sheetEndpoint.getButtonSheetSupportedRenderers().getButtonSheetRenderer();
-                ButtonSheetRenderer.Builder sheetBuilder = sheet.toBuilder();
-                boolean replaced = false;
-
-                for (int j = 0, count = sheet.getButtonsCount(); j < count; j++) {
-                    Buttons button = sheet.getButtons(j);
-                    ButtonRenderer buttonRenderer = button.getButtonRenderer();
-                    NavigationEndpoint uploadEndpoint = buttonRenderer.getNavigationEndpoint();
-                    if (!button.hasButtonRenderer() || !uploadEndpoint.hasShortsCreationEndpoint()) {
-                        continue;
-                    }
-
-                    // The only mode button of the creation modes opens the upload endpoint.
-                    ButtonRenderer modeButton = buttonRenderer.toBuilder()
-                            .clearNavigationEndpoint()
-                            .setCommand(uploadEndpoint)
-                            .build();
-                    CreationModesSwitcherRenderer switcher = CreationModesSwitcherRenderer.newBuilder()
-                            .addModeButtons(Buttons.newBuilder().setButtonRenderer(modeButton))
-                            .addModes(CreationMode.CREATION_MODE_UPLOADS)
-                            .setDefaultMode(CreationMode.CREATION_MODE_UPLOADS)
-                            .build();
-                    CreationModesCommand creationModesCommand = CreationModesCommand.newBuilder()
-                            .setCreationModesControlsRenderer(CreationModesControlsRendererHolder.newBuilder()
-                                    .setCreationModesControlsRenderer(CreationModesControlsRenderer.newBuilder()
-                                            .setCreationModesSwitcherRenderer(CreationModesSwitcherRendererHolder.newBuilder()
-                                                    .setCreationModesSwitcherRenderer(switcher))))
-                            .build();
-
-                    NavigationEndpoint creationModesEndpoint = uploadEndpoint.toBuilder()
-                            .clearShortsCreationEndpoint()
-                            .setCreationModesCommand(creationModesCommand)
-                            .build();
-                    sheetBuilder.setButtons(j, button.toBuilder().setButtonRenderer(
-                            buttonRenderer.toBuilder().setNavigationEndpoint(creationModesEndpoint)));
-                    replaced = true;
-                }
-                if (!replaced) {
-                    return;
-                }
-
-                CreationEntrySheetEndpoint creationModesSheetEndpoint = sheetEndpoint.toBuilder()
-                        .setButtonSheetSupportedRenderers(sheetEndpoint.getButtonSheetSupportedRenderers().toBuilder()
-                                .setButtonSheetRenderer(sheetBuilder))
-                        .build();
-                ButtonRenderer creationModesCreateButton = createButton.toBuilder()
-                        .setNavigationEndpoint(endpoint.toBuilder().setCreationEntrySheetEndpoint(creationModesSheetEndpoint))
-                        .build();
-                rawButtonList.set(i, parseWithRegistry(rawButtons,
-                        buttons.toBuilder().setButtonRenderer(creationModesCreateButton).build().toByteArray(),
-                        getGeneratedRegistry()));
-                Logger.printDebug(() -> "Toolbar create button opens the upload in the creation modes");
-                return;
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "fixToolbarCreateButtonUpload failure", ex);
-        }
-    }
-
-    /**
      * Parses a message with the extension registry. The commands of the buttons are extensions,
      * which are lost if the message is parsed without the registry.
      *
@@ -1280,28 +1192,94 @@ public final class NavigationBarPatch {
 
     /**
      * Injection point.
-     * Called when a toolbar button is created, on any page.
+     * Called when a toolbar button is created, on any page, also on the pages whose toolbar comes
+     * from their own response, such as the channel pages and the You tab.
+     * <p>
+     * The toolbar create button of the Android Automotive layout, which swaps the create button with the
+     * notifications button, opens a bottom sheet whose video button uses the upload endpoint, which the app
+     * handles only in the creation modes. The upload endpoint is opened in the creation modes instead,
+     * as the create button of the phone layout does.
      *
      * @param buttonRenderer The renderer of the button.
      * @return The renderer the button is created with.
      */
-    public static MessageLite swapToolbarNotificationButton(MessageLite buttonRenderer) {
-        if (!SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON || buttonRenderer == null) {
+    public static MessageLite getToolbarButtonRenderer(MessageLite buttonRenderer) {
+        if (buttonRenderer == null || (HIDE_TOOLBAR_CREATE_BUTTON && !SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON)) {
             return buttonRenderer;
         }
+
         try {
-            String iconName = ButtonRenderer.parseFrom(buttonRenderer.toByteArray()).getIcon().getYtIconType().name();
+            ButtonRenderer renderer = ButtonRenderer.parseFrom(buttonRenderer.toByteArray());
+            String iconName = renderer.getIcon().getYtIconType().name();
+
             if (Utils.equalsAny(iconName, CREATE_BUTTON_ENUMS)) {
-                toolbarCreateButton = buttonRenderer;
-            } else if (Utils.equalsAny(iconName, NOTIFICATION_BUTTON_ENUMS) && notificationsTabCreated
-                    && !HIDE_NAVIGATION_BAR && !Settings.HIDE_NOTIFICATIONS_BUTTON.get()) {
+                NavigationEndpoint endpoint = renderer.getNavigationEndpoint();
+                if (!HIDE_TOOLBAR_CREATE_BUTTON && endpoint.hasCreationEntrySheetEndpoint()) {
+                    CreationEntrySheetEndpoint sheetEndpoint = endpoint.getCreationEntrySheetEndpoint();
+                    ButtonSheetRenderer sheet = sheetEndpoint.getButtonSheetSupportedRenderers().getButtonSheetRenderer();
+                    ButtonSheetRenderer.Builder sheetBuilder = sheet.toBuilder();
+                    boolean replaced = false;
+
+                    for (int i = 0, count = sheet.getButtonsCount(); i < count; i++) {
+                        Buttons button = sheet.getButtons(i);
+                        ButtonRenderer buttonRendererOfSheet = button.getButtonRenderer();
+                        NavigationEndpoint uploadEndpoint = buttonRendererOfSheet.getNavigationEndpoint();
+                        if (!button.hasButtonRenderer() || !uploadEndpoint.hasShortsCreationEndpoint()) {
+                            continue;
+                        }
+
+                        // The only mode button of the creation modes opens the upload endpoint.
+                        ButtonRenderer modeButton = buttonRendererOfSheet.toBuilder()
+                                .clearNavigationEndpoint()
+                                .setCommand(uploadEndpoint)
+                                .build();
+                        CreationModesSwitcherRenderer switcher = CreationModesSwitcherRenderer.newBuilder()
+                                .addModeButtons(Buttons.newBuilder().setButtonRenderer(modeButton))
+                                .addModes(CreationMode.CREATION_MODE_UPLOADS)
+                                .setDefaultMode(CreationMode.CREATION_MODE_UPLOADS)
+                                .build();
+                        CreationModesCommand creationModesCommand = CreationModesCommand.newBuilder()
+                                .setCreationModesControlsRenderer(CreationModesControlsRendererHolder.newBuilder()
+                                        .setCreationModesControlsRenderer(CreationModesControlsRenderer.newBuilder()
+                                                .setCreationModesSwitcherRenderer(CreationModesSwitcherRendererHolder.newBuilder()
+                                                        .setCreationModesSwitcherRenderer(switcher))))
+                                .build();
+
+                        NavigationEndpoint creationModesEndpoint = uploadEndpoint.toBuilder()
+                                .clearShortsCreationEndpoint()
+                                .setCreationModesCommand(creationModesCommand)
+                                .build();
+                        sheetBuilder.setButtons(i, button.toBuilder().setButtonRenderer(
+                                buttonRendererOfSheet.toBuilder().setNavigationEndpoint(creationModesEndpoint)));
+                        replaced = true;
+                    }
+
+                    // Nothing is changed if the create button has no upload button.
+                    if (replaced) {
+                        CreationEntrySheetEndpoint creationModesSheetEndpoint = sheetEndpoint.toBuilder()
+                                .setButtonSheetSupportedRenderers(sheetEndpoint.getButtonSheetSupportedRenderers().toBuilder()
+                                        .setButtonSheetRenderer(sheetBuilder))
+                                .build();
+                        buttonRenderer = parseWithRegistry(buttonRenderer, renderer.toBuilder()
+                                        .setNavigationEndpoint(endpoint.toBuilder().setCreationEntrySheetEndpoint(creationModesSheetEndpoint))
+                                        .build().toByteArray(),
+                                getGeneratedRegistry());
+                        Logger.printDebug(() -> "Toolbar create button opens the upload in the creation modes");
+                    }
+                }
+
+                if (SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON) {
+                    toolbarCreateButton = buttonRenderer;
+                }
+            } else if (SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON && Utils.equalsAny(iconName, NOTIFICATION_BUTTON_ENUMS)
+                    && notificationsTabCreated && !HIDE_NAVIGATION_BAR && !Settings.HIDE_NOTIFICATIONS_BUTTON.get()) {
                 MessageLite createButton = toolbarCreateButton;
                 if (createButton != null) {
                     return createButton;
                 }
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "swapToolbarNotificationButton failure", ex);
+            Logger.printException(() -> "getToolbarButtonRenderer failure", ex);
         }
         return buttonRenderer;
     }

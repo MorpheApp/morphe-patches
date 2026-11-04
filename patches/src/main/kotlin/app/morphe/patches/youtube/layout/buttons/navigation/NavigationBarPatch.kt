@@ -793,8 +793,9 @@ val navigationBarPatch = bytecodePatch(
             )
         )
 
-        // Some pages have their own toolbar, such as the You tab, which the swap of the create button
-        // does not change. The toolbar buttons of all pages are created with their renderer.
+        // Some pages have their own toolbar, such as the You tab and the channel pages, which the swap
+        // of the create button and the fix of its upload button do not change in the toolbar of the guide.
+        // The toolbar buttons of all pages are created with their renderer.
         ToolBarButtonFingerprint.let {
             val instructions = it.method.instructions.toList()
             val setShowAsActionIndex = instructions.indexOfFirst { instruction ->
@@ -815,7 +816,7 @@ val navigationBarPatch = bytecodePatch(
                 addInstructions(
                     0,
                     """
-                        invoke-static/range { p$rendererRegister .. p$rendererRegister }, $EXTENSION_CLASS->swapToolbarNotificationButton(Lcom/google/protobuf/MessageLite;)Lcom/google/protobuf/MessageLite;
+                        invoke-static/range { p$rendererRegister .. p$rendererRegister }, $EXTENSION_CLASS->getToolbarButtonRenderer(Lcom/google/protobuf/MessageLite;)Lcom/google/protobuf/MessageLite;
                         move-result-object p$rendererRegister
                         check-cast p$rendererRegister, $rendererType
                         invoke-static/range { p$rendererRegister .. p$countIdsRegister }, $EXTENSION_CLASS->getToolbarButtonCountIds(Lcom/google/protobuf/MessageLite;Ljava/util/List;)Ljava/util/List;
@@ -1021,9 +1022,6 @@ val navigationBarPatch = bytecodePatch(
                         # If mutable, copy the ProtoList.
                         invoke-static { v$protoListRegister }, ${mutableCopyMethodRef.get()}
                         move-result-object v$protoListRegister
-                        
-                        # Replace the create button whose video button has an endpoint the app does not handle.
-                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS->fixToolbarCreateButtonUpload(Ljava/util/List;)V
                         
                         # Generate Settings Button Bytes (BEFORE modifying list)
                         invoke-static { v$protoListRegister }, $EXTENSION_CLASS->createToolbarSettingsButton(Ljava/util/List;)[B
