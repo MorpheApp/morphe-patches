@@ -1346,9 +1346,14 @@ public class FeedCardLayoutPatch {
                 View view = getDrawableView(drawable);
                 while (view != null) {
                     // The card can be drawn before it's added to the list.
-                    CardOutlineProvider outline = getCardOutline(view.getContentDescription());
-                    if (outline != null) {
-                        setCardOutline(view, outline);
+                    if (isCardLabel(view.getContentDescription())) {
+                        // The label can be on a view inside the list item, which the padding of the card
+                        // already moves in, so the outline is set on the list item.
+                        View item = view;
+                        while (item.getParent() instanceof View parentView && !(parentView instanceof RecyclerView)) {
+                            item = parentView;
+                        }
+                        setCardOutline(item, CARD_OUTLINE);
                         inCard = true;
                         break;
                     }
@@ -1481,7 +1486,8 @@ public class FeedCardLayoutPatch {
     }
 
     private static void updateCardOutline(View child) {
-        CardOutlineProvider outline = getCardOutline(child.getContentDescription());
+        // The label is on the list item, or on a view inside it.
+        CardOutlineProvider outline = hasLabelMarker(child, CARD_LABEL_MARKER, 0) ? CARD_OUTLINE : null;
         // The items of the feed are cards, also the ones that YouTube sends as cards and are not converted.
         if (outline == null && child.getParent() instanceof RecyclerView recyclerView
                 && recyclerView.getId() == getFeedId() && !isChipBar(child)) {
@@ -1516,14 +1522,7 @@ public class FeedCardLayoutPatch {
     /**
      * The accessibility label of the converted videos ends with an invisible character,
      * to find the cards in lists that have other items.
-     *
-     * @return The outline of the card, or null if the label is not the label of a card.
      */
-    @Nullable
-    private static CardOutlineProvider getCardOutline(@Nullable CharSequence label) {
-        return isCardLabel(label) ? CARD_OUTLINE : null;
-    }
-
     private static boolean isCardLabel(@Nullable CharSequence label) {
         return endsWith(label, CARD_LABEL_MARKER);
     }
