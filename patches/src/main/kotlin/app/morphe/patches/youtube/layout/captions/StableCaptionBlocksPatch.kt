@@ -118,16 +118,44 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
         val defaultSettingsField = getCaptionDefaultSettingsFingerprint(settingsField.type)
             .instructionMatches.first().fieldReference
 
+        val visibleSettingsField = getCaptionSettingsVisibilityFingerprint(settingsField.type)
+            .instructionMatches.first().fieldReference
+
         // Frame spans retain source metadata in native mode. Only block layouts use
         // the default placement; ordinary captions keep the authored settings.
         mutableClassDefBy(cueType).apply {
             interfaces.add(EXTENSION_CUE_INTERFACE)
 
             addHelperMethod(
+                "patch_getCaptionId", "I",
+                smali = """
+                    iget v0, p0, $idField
+                    return v0
+                """
+            )
+
+            addHelperMethod(
+                "patch_isCaptionVisible", "Z",
+                smali = """
+                    iget-object v0, p0, $settingsField
+                    iget-boolean v0, v0, $visibleSettingsField
+                    return v0
+                """
+            )
+
+            addHelperMethod(
                 "patch_getOriginalCaptionVisible",
                 "Ljava/lang/CharSequence;",
                 smali = """
                     iget-object v0, p0, $visibleTextField
+                    return-object v0
+                """
+            )
+
+            addHelperMethod(
+                "patch_getOriginalCaptionFull", "Ljava/lang/CharSequence;",
+                smali = """
+                    iget-object v0, p0, $fullTextField
                     return-object v0
                 """
             )
@@ -169,6 +197,8 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                     :copy_frame
                     new-instance v0, $type
                     iget v1, p0, $idField
+                    invoke-virtual { p1, v1 }, $EXTENSION_FRAME_CLASS->captionId(I)I
+                    move-result v1
                     iget-wide v2, p0, $timeField
                     iget-object v4, p0, $visibleTextField
                     iget-object v5, p0, $fullTextField
@@ -344,6 +374,15 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                     smali = """
                         iget-object v0, p0, $stateField
                         return-object v0
+                    """
+                )
+
+                addHelperMethod(
+                    "patch_setBlockState", "V",
+                    parameters = listOf(EXTENSION_STATE_CLASS),
+                    smali = """
+                        iput-object p1, p0, $stateField
+                        return-void
                     """
                 )
 

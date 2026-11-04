@@ -142,6 +142,9 @@ public class StableCaptionBlockPolicyTest {
     public void alreadyCenteredFrameRetainsItsNativeList() {
         var frame = new StableCaptionBlocks.Frame(new StableCaptionBlocks.State(false), 0, 0);
         var cue = new StableCaptionBlocks.Cue() {
+            @Override public CharSequence patch_getOriginalCaptionFull() { return "native"; }
+            @Override public boolean patch_isCaptionVisible() { return true; }
+            @Override public int patch_getCaptionId() { return 0; }
             @Override public CharSequence patch_getOriginalCaptionVisible() { return "native"; }
             @Override public StableCaptionBlocks.Frame patch_getBlockFrame() { return frame; }
             @Override public Object patch_copyBlockFrame(StableCaptionBlocks.Frame requested) {

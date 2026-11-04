@@ -17,6 +17,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringRef;
@@ -40,6 +41,7 @@ public final class CaptionTracks {
      */
     private static final long UPLOADED_TRACK_TIMEOUT_MS = 5000;
 
+    private static final Map<StableCaptionBlocks.Timeline, Object> nativeSourceRequests = new WeakHashMap<>();
     private static final ThreadLocal<Track> parsing = new ThreadLocal<>();
     private static final List<WeakReference<StableCaptionBlocks.State>> translatedStates = new ArrayList<>();
 
@@ -191,6 +193,8 @@ public final class CaptionTracks {
                 StableCaptionBlocks.requestLayout(state);
             }
         }
+        // A cached styled track may already be selected, including when both outputs are translations.
+        if (enabled) reloadUploaded();
     }
 
     static synchronized boolean isCurrentVideo(@Nullable String id) {
@@ -285,6 +289,7 @@ public final class CaptionTracks {
 
         PreferredCaptionLanguagePatch.forgetSelectionForVideo(id);
         invalidateUploaded();
+        nativeSourceRequests.clear();
         video = id;
         source = null;
         selectedInputLanguage = null;
@@ -405,11 +410,15 @@ public final class CaptionTracks {
                     || !(result instanceof StableCaptionBlocks.Timeline timeline)) return;
 
             Track track = track(captionRequest.patch_getCaptionTrack());
+            if (track == null || !isCurrent(track)) return;
             StableCaptionBlocks.State state = timeline.patch_getBlockState();
+            if (state == null && dualCaptionEnabled() && !track.automatic && !track.translated
+                    && !(primaryUploadPlanned && secondaryUploadPlanned)) {
+                captureNativeSource(track, timeline);
+                return;
+            }
             Captured captured = state == null ? null : state.captured;
-            if (track == null
-                    || captured == null
-                    || !isCurrent(track)
+            if (captured == null
                     || !track.source.equals(captured.track.source)
                     || !track.language.equals(captured.track.language)) return;
 
@@ -433,10 +442,15 @@ public final class CaptionTracks {
                         || !(result instanceof StableCaptionBlocks.Timeline timeline)) return;
                 Track selected = track(captionRequest.patch_getCaptionTrack());
                 StableCaptionBlocks.State state = timeline.patch_getBlockState();
-                if (selected == null || state == null) return;
+                if (selected == null) return;
                 synchronized (CaptionTracks.class) {
-                    if (handler != uploadedHandler.get() || !isCurrent(selected)
-                            || state.translation == null || state.translation != translatedSession
+                    if (handler != uploadedHandler.get() || !isCurrent(selected)) return;
+                    if (state == null || state.nativeSource && !dualCaptionEnabled()) {
+                        // Turning bilingual captions off can install a cached styled primary.
+                        if (dualCaptionEnabled()) return;
+                    } else if (state.nativePair != null) {
+                        if (!isCurrentNativePair(state.nativePair)) return;
+                    } else if (state.translation == null || state.translation != translatedSession
                             || !state.translation.isActive()) return;
                 }
                 final long time = VideoInformation.getVideoTime();
@@ -447,6 +461,40 @@ public final class CaptionTracks {
             } catch (Exception ex) {
                 Logger.printException(() -> "onNativeResultReady failure", ex);
             }
+        });
+    }
+
+    /** Sample immutable native windows off the UI thread; cache source metadata on the parsed result. */
+    private static void captureNativeSource(Track track, StableCaptionBlocks.Timeline timeline) {
+        if (nativeSourceRequests.containsKey(timeline) || nativeSourceRequests.size() >= MAX_BOUND_STATES) return;
+        Object token = new Object();
+        nativeSourceRequests.put(timeline, token);
+        Utils.runOnBackgroundThread(() -> {
+            StableCaptionBlockPolicy captured = null;
+            try {
+                captured = StableCaptionBlockPolicy.fromNative(timeline, () -> {
+                    synchronized (CaptionTracks.class) {
+                        return nativeSourceRequests.get(timeline) == token && isCurrent(track);
+                    }
+                });
+            } catch (Exception ex) {
+                Logger.printException(() -> "captureNativeSource failure", ex);
+            }
+            StableCaptionBlockPolicy policy = captured;
+            Utils.runOnMainThread(() -> {
+                synchronized (CaptionTracks.class) {
+                    if (nativeSourceRequests.get(timeline) != token) return;
+                    nativeSourceRequests.remove(timeline);
+                    if (policy == null || !isCurrent(track)) return;
+                    StableCaptionBlocks.State state = new StableCaptionBlocks.State(false);
+                    state.nativeSource = true;
+                    state.policy = policy;
+                    state.captured = new Captured(track, policy);
+                    timeline.patch_setBlockState(state);
+                    if (dualCaptionEnabled()) attachTranslation(track.withSecondary(secondaryLanguage()), policy, state);
+                }
+                if (dualCaptionEnabled()) reloadUploaded();
+            });
         });
     }
 
@@ -756,6 +804,26 @@ public final class CaptionTracks {
 
         try {
             if (!(result instanceof StableCaptionBlocks.Timeline timeline) || !hasUploadedTracks()) return result;
+            if (requiresNativeWindows()) {
+                // Keep uploaded windows native; a missing output uses a separate translated window.
+                // Cached windows and event lists remain unchanged.
+                StableCaptionBlocks.Timeline sourceTimeline = timeline;
+                boolean fallback = uploaded.first() == null || uploaded.second() == null;
+                StableCaptionBlocks.State sourceState = sourceTimeline.patch_getBlockState();
+                if (fallback) {
+                    if (uploaded.first() != null) timeline = timeline.patch_mergeWith(uploaded.first());
+                    if (uploaded.second() != null) timeline = timeline.patch_mergeWith(uploaded.second());
+                } else timeline = uploaded.first().patch_mergeWith(uploaded.second());
+                StableCaptionBlocks.State state = new StableCaptionBlocks.State(false);
+                state.nativePair = new NativeCaptionPair(uploaded, fallback ? sourceTimeline : null);
+                if (fallback && sourceState != null && sourceState.captured != null) {
+                    Captured captured = sourceState.captured;
+                    state.captured = captured;
+                    attachTranslation(captured.track.withSecondary(secondaryLanguage()), captured.policy, state);
+                }
+                timeline.patch_setBlockState(state);
+                return timeline;
+            }
             if (uploaded.first() != null) timeline = timeline.patch_mergeWith(uploaded.first());
             if (uploaded.second() != null) timeline = timeline.patch_mergeWith(uploaded.second());
             return timeline;
@@ -763,6 +831,20 @@ public final class CaptionTracks {
             Logger.printException(() -> "mergeUploadedTracks failure", ex);
             return result;
         }
+    }
+
+    private static synchronized boolean requiresNativeWindows() {
+        return hasUploadedTracks() && (nativeWindows(uploaded.first()) || nativeWindows(uploaded.second()));
+    }
+
+    private static boolean nativeWindows(@Nullable StableCaptionBlocks.Timeline timeline) {
+        if (timeline == null) return false;
+        StableCaptionBlocks.State state = timeline.patch_getBlockState();
+        return state == null || state.nativeSource;
+    }
+
+    static synchronized boolean isCurrentNativePair(NativeCaptionPair pair) {
+        return uploadedEnabled() && uploaded == pair.tracks;
     }
 
     /**

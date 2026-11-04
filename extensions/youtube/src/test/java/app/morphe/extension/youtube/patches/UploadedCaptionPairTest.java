@@ -18,6 +18,9 @@ import java.util.List;
 
 public class UploadedCaptionPairTest {
     private record NativeCue(String text) implements StableCaptionBlocks.Cue {
+        public boolean patch_isCaptionVisible() { return true; }
+        public int patch_getCaptionId() { return 0; }
+        public CharSequence patch_getOriginalCaptionFull() { return text; }
         public CharSequence patch_getOriginalCaptionVisible() {
             return text;
         }
@@ -34,6 +37,7 @@ public class UploadedCaptionPairTest {
                 var block = StableCaptionBlockPolicy.at(blocks, time);
                 return List.of(new NativeCue(block == null ? "" : block.text));
             }
+            public void patch_setBlockState(StableCaptionBlocks.State state) { throw new UnsupportedOperationException(); }
             public StableCaptionBlocks.State patch_getBlockState() {
                 return null;
             }

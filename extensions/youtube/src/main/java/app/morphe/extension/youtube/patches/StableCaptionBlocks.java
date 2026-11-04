@@ -73,14 +73,22 @@ public final class StableCaptionBlocks {
         @Nullable
         State patch_getBlockState();
 
+        void patch_setBlockState(State state);
+
         Timeline patch_mergeWith(Timeline other);
 
         List<Long> patch_getCaptionEventTimes();
     }
 
     public interface Cue {
+        int patch_getCaptionId();
+
+        boolean patch_isCaptionVisible();
+
         // Methods are added during patching.
         CharSequence patch_getOriginalCaptionVisible();
+
+        CharSequence patch_getOriginalCaptionFull();
 
         Frame patch_getBlockFrame();
 
@@ -112,15 +120,24 @@ public final class StableCaptionBlocks {
     public static final class Frame {
         final State state;
         final long time, key;
+        final boolean nativeStyle;
+        private final int language;
 
         Frame(State state, long time, long key) {
+            this(state, time, key, -1, false);
+        }
+
+        Frame(State state, long time, long key, int language, boolean nativeStyle) {
             this.state = state;
             this.time = time;
             this.key = key;
+            this.language = language;
+            this.nativeStyle = nativeStyle;
         }
 
         /** Capture stays active in native mode so the bilingual toggle can reuse this timeline. */
         public boolean usesBlockLayout() {
+            if (nativeStyle) return false;
             CaptionSession session = state.translation;
             return CaptionTracks.dualCaptionEnabled()
                     || (state.automatic && Settings.STABLE_CAPTION_BLOCKS.get())
@@ -128,19 +145,34 @@ public final class StableCaptionBlocks {
                     || (session != null && !session.primaryLanguage.equals(session.sourceLanguage));
         }
 
+        /** Injection point: native styled windows need a separate id for each language. */
+        public int captionId(int original) {
+            if (state.nativePair == null) return original;
+            return nativeStyle ? (int) key : language == 1 ? -1 : -2;
+        }
+
+        boolean secondaryNativeCaption() {
+            return state.nativePair != null && language == 1;
+        }
+
         @Override
         public boolean equals(Object other) {
-            return other instanceof Frame f && f.state == state && f.key == key;
+            return other instanceof Frame f && f.state == state && f.key == key
+                    && f.language == language && f.nativeStyle == nativeStyle;
         }
 
         @Override
         public int hashCode() {
-            return 31 * System.identityHashCode(state) + Long.hashCode(key);
+            int hash = 31 * System.identityHashCode(state) + Long.hashCode(key);
+            hash = 31 * hash + language;
+            return 31 * hash + Boolean.hashCode(nativeStyle);
         }
     }
 
     public static final class State {
         final boolean automatic;
+        @Nullable NativeCaptionPair nativePair;
+        boolean nativeSource;
         @Nullable
         volatile StableCaptionBlockPolicy policy;
         @Nullable
@@ -267,9 +299,15 @@ public final class StableCaptionBlocks {
         List<?> original = timeline.patch_getOriginalCaptions(time);
         try {
             State state = timeline.patch_getBlockState();
-            if (state == null || original == null) return original;
+            if (state != null && state.nativePair != null) {
+                if (!CaptionTracks.isCurrentNativePair(state.nativePair)) return Collections.emptyList();
+                if (state.translation != null && !state.translation.isActive()) CaptionTracks.restoreTranslation(state);
+                return state.nativePair.at(time, state);
+            }
+            if (state == null || original == null
+                    || state.nativeSource && !CaptionTracks.dualCaptionEnabled()) return original;
             final boolean uploaded = CaptionTracks.hasUploadedTracks();
-            if (original.size() > 1 && !uploaded) return original;
+            if (original.size() > 1 && !uploaded && !state.nativeSource) return original;
             Frame frame = new Frame(state, time, Long.MIN_VALUE);
             if (state.translation != null && !state.translation.isActive()
                     && !CaptionTracks.restoreTranslation(state)) return Collections.emptyList();
@@ -280,7 +318,8 @@ public final class StableCaptionBlocks {
                 state.translation.demand(playbackTime >= 0 ? playbackTime : time,
                         VideoInformation.getPlaybackSpeed());
             }
-            if (uploaded) {
+            if (uploaded || state.nativeSource) {
+                if (state.nativeSource && state.policy.templateTime(time) < 0) return Collections.emptyList();
                 // The merged timeline has the cues of all languages, and the overlay shows the text.
                 // Keep one visible cue as the window of the overlay.
                 for (Object candidate : original) {
@@ -345,7 +384,7 @@ public final class StableCaptionBlocks {
             if (!(view instanceof Window window)
                     || !(window.patch_getCaptionCue() instanceof Cue cue)) return;
             Frame frame = cue.patch_getBlockFrame();
-            if (frame == null) return;
+            if (frame == null || frame.nativeStyle) return;
             Cache cache = frame.state.caches.get(view);
             List<CharSequence> full = window.patch_getFullCaptionLines(),
                     visible = window.patch_getVisibleCaptionLines();
@@ -460,6 +499,19 @@ public final class StableCaptionBlocks {
         long time = VideoInformation.getVideoTime();
         if (time < 0) time = session.playbackTime();
         else session.demand(time, VideoInformation.getPlaybackSpeed());
+        if (frame.state.nativePair != null) {
+            CaptionSession.Snapshot cue = session.snapshot(time, VideoState.getCurrent() == VideoState.PAUSED);
+            if (cue == null) {
+                replace(full, visible, "");
+                return;
+            }
+            UploadedCaptionPair.Frame fallback = frame.state.nativePair.fallback(cue);
+            DualCaptionOverlay.show(view, fallback.primary(), fallback.secondary(), cache.paint, cache.width,
+                    session, fallback.firstKey(), fallback.secondKey(), cue.complete,
+                    frame.state.nativePair.tracks.first() == null, frame.state.nativePair.tracks.second() == null);
+            replace(full, visible, fallback.primary());
+            return;
+        }
         UploadedCaptionPair.Frame uploaded = CaptionTracks.uploadedFrame(frame.time, session);
         if (uploaded != null) {
             DualCaptionOverlay.show(view, uploaded.primary(), uploaded.secondary(), cache.paint, cache.width,

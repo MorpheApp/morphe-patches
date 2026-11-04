@@ -820,6 +820,18 @@ internal object CaptionCueConstructorFingerprint : Fingerprint(
     parameters = listOf("I", "J", "Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;", "L")
 )
 
+/** Caption window visibility is independent from its nonempty styled text. */
+internal fun getCaptionSettingsVisibilityFingerprint(settingsType: String) = object : Fingerprint(
+    definingClass = settingsType,
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_BOOLEAN, definingClass = "this", type = "Z"),
+        string("ap=%d, ah=%d, av=%d, vs=%b, sd=%b")
+    )
+) {}
+
 /**
  * Matches at the default caption window settings.
  */

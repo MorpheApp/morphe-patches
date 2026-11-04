@@ -81,6 +81,13 @@ public final class DualCaptionOverlay extends LinearLayout {
     @SuppressLint("NewApi")
     static void show(View view, String first, String second, TextPaint paint, int width,
             CaptionSession session, long firstKey, long secondKey, boolean complete) {
+        show(view, first, second, paint, width, session, firstKey, secondKey, complete, true, true);
+    }
+
+    @SuppressLint("NewApi")
+    static void show(View view, String first, String second, TextPaint paint, int width,
+            CaptionSession session, long firstKey, long secondKey, boolean complete,
+            boolean primarySlot, boolean secondarySlot) {
         if (!(view instanceof ViewGroup group) || !(view instanceof StableCaptionBlocks.Window window)) return;
         DualCaptionOverlay layer = get(view);
         if (layer == null) {
@@ -101,15 +108,30 @@ public final class DualCaptionOverlay extends LinearLayout {
         }
         layer.requestedWidth = width;
         int backgroundColor = window.patch_getCaptionBackgroundColor();
+        layer.primary.setVisibility(primarySlot ? VISIBLE : GONE);
+        layer.secondary.setVisibility(secondarySlot ? VISIBLE : GONE);
         layer.primary.configure(first, paint, style, backgroundColor, reset || layer.firstKey != firstKey, !complete);
         layer.secondary.configure(second, paint, style, backgroundColor, reset || layer.secondKey != secondKey, !complete);
         layer.firstKey = firstKey;
         layer.secondKey = secondKey;
         ((LayoutParams) layer.secondary.getLayoutParams()).topMargin =
-                Math.max(Dim.dp4, Math.round(paint.getTextSize() * LANGUAGE_MARGIN_TEXT_SIZE));
+                primarySlot && secondarySlot
+                        ? Math.max(Dim.dp4, Math.round(paint.getTextSize() * LANGUAGE_MARGIN_TEXT_SIZE)) : 0;
         layer.forceLayout();
         layer.active = true;
         layer.setVisibility(VISIBLE);
+    }
+
+    /** A pending blank translation is not an obstacle for an authored native window. */
+    static boolean hasText(View view) {
+        DualCaptionOverlay layer = get(view);
+        if (layer != null && layer.active
+                && (!layer.primary.text.isEmpty() || !layer.secondary.text.isEmpty())) return true;
+        if (view instanceof StableCaptionBlocks.Window window) {
+            for (CharSequence text : window.patch_getVisibleCaptionLines())
+                if (text != null && text.length() > 0) return true;
+        }
+        return false;
     }
 
     /**
@@ -198,6 +220,7 @@ public final class DualCaptionOverlay extends LinearLayout {
         try {
             if (view instanceof ViewGroup parent) {
                 for (int i = 0; i < parent.getChildCount(); i++) afterLayout(parent.getChildAt(i));
+                NativeCaptionPlacement.afterLayout(parent);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "afterViewportLayout failure", ex);
