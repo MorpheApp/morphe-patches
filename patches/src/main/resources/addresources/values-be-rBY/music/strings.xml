@@ -630,6 +630,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_played_summary">Схаваць радкі тэксту вышэй за той, які праграваецца ў дадзены момант</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Схаваць непраграныя радкі тэксту</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Схаваць радкі тэксту ніжэй за бягучы</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Дынамічны фон</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Паказваць размыты фон, створаны з абложки альбома, за тэкстам песні</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Анімацыя дынамічнага фона</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Рухаць фон падчас прайгравання і пульсаваць яго у такт музыцы, калі YouTube Music мае дазвол на выкарыстанне мікрафона. Выключайце для статычнага фона, які спатрэбляе менш зарада батарэі</string>
   <string name="morphe_music_lyrics_mediasession_title">Паказваць тэксты MediaSession на экране блакіроўкі</string>
   <string name="morphe_music_lyrics_mediasession_summary">Паказвае бягучы радок на экране блакіроўкі, у Android Auto і Bluetooth. Патрабуецца Android 11 або новее</string>
   <string name="morphe_music_lyrics_miniplayer_title">Паказваць тэксты ў мініплэеры</string>
@@ -728,7 +732,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">Схаваць інфармацыю аб аўтарах</string>
   <string name="morphe_music_lyrics_hide_info_summary">Схаваць інфармацыю аб аўтарах, якая паказваецца пад тэкстам песні</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Паменять месцамі пераклад і раманізацыю</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON размяшчае раманізацыю або транслітарацыю пад тэкстам, а пераклад — над ім; OFF пакідае раманізацыю або транслітарацыю зверху, а пераклад — знизу. Чытанне, размешчанае над кожным складам, перамяшчаецца разам з ім: зверху склада ўніз</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Змяняе парадак адлюстравання перакладу і раманізацыі пад тэкстам песні</string>
   <string name="morphe_music_lyrics_force_center_title">Заўсёды цэнтраваць тэкст</string>
   <string name="morphe_music_lyrics_force_center_summary">ON размяшчае кожную лінію па цэнтры і ігнаруе арыгінальнае выраўніванне, уключаючы бакі дуэтаў; OFF захаўвае выраўніванне, пазначанае ў тэкстах песень</string>
   <string name="morphe_music_lyrics_providers_keep_one">Павінна застацца ўключанай прынаймені адна служба</string>
@@ -736,6 +740,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Раманізацыя або транслітарацыя</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Афлайн-слованік</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Спіс слоў Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Афлайн-слованік</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby-скрыпт</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хірагана (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Кнопка паказу ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Націсніце, каб уключаць/выключаць ruby-чытанні над тэкстам песень; утрымайце для пераключэння паміж хіраганай і катаканай. Выкарыстоўваюцца ўключаныя ruby-правайдэры ў паэкірадковай последоўнасці</string>
+  <string name="morphe_music_lyrics_ruby_generating">Генерацыя ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Вызначэнне секцый з дапамогай AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Выкарыстоўваецца толькі ў выпадку, калі служба не пасылае пазначэнні секцый, такія як Прыспеў або Куплет, якія затым вызначае ваша сумяшчальная з OpenAI мадэль. Рэдагаванне радка таксама адкрывае яго прампт</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-адрас API endpoint (напрыклад, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

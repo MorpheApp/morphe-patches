@@ -625,6 +625,10 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_hide_played_summary">वर्तमान में चल रही पंक्ति के ऊपर की गीत पंक्तियों को छिपाएँ</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">नहीं बजाए गए गीत छिपाएँ</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">वर्तमान में चल रही पंक्ति के नीचे की गीत पंक्तियाँ छिपाएँ</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">डायनामिक बैकग्राउंड</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">लिरिक्स के पीछे एल्बम आर्ट से बना एक धुंधला बैकग्राउंड दिखाएं</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">डायनामिक बैकग्राउंड को एनिमेट करें</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">चलाते समय बैकग्राउंड को मूव करें, और यदि YouTube Music के पास माइक्रोफ़ोन अनुमति है तो इसे संगीत के साथ पल्स करें। कम बैटरी उपयोग करने वाले स्थिर बैकग्राउंड के लिए इसे बंद करें</string>
   <string name="morphe_music_lyrics_mediasession_title">लॉक स्क्रीन पर MediaSession गीत दिखाएँ</string>
   <string name="morphe_music_lyrics_mediasession_summary">ब्लूटूथ, Android Auto और लॉक स्क्रीन पर वर्तमान पंक्ति दिखाता है। Android 11 या उससे नया चाहिए</string>
   <string name="morphe_music_lyrics_miniplayer_title">मिनीप्लेयर गीत दिखाएँ</string>
@@ -723,7 +727,7 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_hide_info_title">क्रेडिट लाइन छिपाएँ</string>
   <string name="morphe_music_lyrics_hide_info_summary">गीतों के नीचे दिखाई जाने वाली क्रेडिट लाइन छिपाएँ</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">अनुवाद और रोमनीकरण आपस में बदलें</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON रोमाइज़ेशन या ट्रान्सलिटरेशन को लिरिक्स के नीचे और अनुवाद ऊपर रखता है; OFF रोमाइज़ेशन या ट्रान्सलिटरेशन को ऊपर और अनुवाद को नीचे रखता है। प्रत्येक सिल्बिल पर रखा गया उच्चारण उसके साथ चलता है, अपने सिल्बिल से नीचे से ऊपर</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">लिरिक्स के नीचे अनुवाद और रोमनकरण के डिस्प्ले क्रम को बदलें</string>
   <string name="morphe_music_lyrics_force_center_title">हमेशा लिरिक्स को केंद्रित रखें</string>
   <string name="morphe_music_lyrics_force_center_summary">ON प्रत्येक रेखा को मध्य में रखता है और स्रोत अनुपालन को नजरअंदाज़ करता है, ड्यूलेट पक्षों सहित; OFF लिरिक्स द्वारा मांगे गए अनुपालन को रखता है</string>
   <string name="morphe_music_lyrics_providers_keep_one">कम से कम एक प्रदाता चालू रहना चाहिए</string>
@@ -731,6 +735,14 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_romanization_provider_title">रोमाइज़ेशन या ट्रान्सलिटरेशन</string>
   <string name="morphe_music_lyrics_romanization_provider_local">ऑफ़लाइन शब्दकोष</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">राइम शब्द सूची</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">रूबी</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">ऑफ़लाइन डिक्शनरी</string>
+  <string name="morphe_music_lyrics_ruby_style_title">रूबी स्क्रिप्ट</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">हिरागाना (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">काताकाना (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">रूबी बटन दिखाएँ</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">लिरिक्स के ऊपर रूबी रीडिंग टॉगल करने के लिए टैप करें; हिरागाना और काताकाना के बीच स्विच करने के लिए लॉन्ग-प्रेस करें। यह सक्षम रूबी प्रोवाइडर्स का उनके सूचीबद्ध क्रम में उपयोग करता है</string>
+  <string name="morphe_music_lyrics_ruby_generating">रूबी जेनरेट हो रहा है…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI के साथ अनुभागों का पता लगाएं</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">केवल तभी उपयोग किया जाता है जब प्रदाता किसी अनुभाग लेबल जैसे कि कोरस या वर्स नहीं भेजता, जिसका आपका OpenAI-अनुकूल मॉडेल तब पता लगाता है। पंक्ति को संपादित करना भी इसके प्रॉम्प्ट को खोलता है</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (उदाहरण के लिए https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

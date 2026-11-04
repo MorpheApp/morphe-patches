@@ -238,9 +238,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Приховати правила спільноти</string>
   <string name="morphe_music_hide_comments_context_title">Приховати контекстне повідомлення</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Приховати кнопку \"Емодзі\"</string>
-  <string name="morphe_music_hide_comments_gif_button_title">Приховати кнопку \"GIF\"</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_title">Приховати GIF-файли та зображення</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_summary">Приховує GIF-файли та зображення, додані до коментарів і відповідей</string>
+  <string name="morphe_music_hide_comments_gif_button_title">Приховати кнопку GIF</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_title">Приховати GIF та зображення</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_summary">Приховує GIF та зображення, додані до коментарів і відповідей</string>
   <string name="morphe_music_hide_comments_info_button_title">Приховати кнопку \"Інфо\"</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">Приховати кнопку позначки часу</string>
   <!-- interaction.crossfade.crossfadePatch -->
@@ -630,6 +630,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_played_summary">Приховувати рядки тексту пісні над рядком, що зараз відтворюється</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Приховувати ще не відтворені рядки тексту</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Приховувати рядки тексту пісні під рядком, що зараз відтворюється</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Динамічний фон</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Показувати розмитий фон, створений на основі обкладинки альбому, за текстом пісні</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Анімувати динамічний фон</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Переміщувати фон під час відтворення та пульсувати в такт музиці, якщо YouTube Music має дозвіл на використання мікрофона. Вимкніть для статичного фону, щоб заощадити заряд батареї</string>
   <string name="morphe_music_lyrics_mediasession_title">Показувати текст пісні MediaSession на екрані блокування</string>
   <string name="morphe_music_lyrics_mediasession_summary">Показує поточний рядок на екрані блокування, в Android Auto та через Bluetooth. Потрібен Android 11 або новіший</string>
   <string name="morphe_music_lyrics_miniplayer_title">Показувати текст пісні в мініплеєрі</string>
@@ -728,7 +732,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">Приховати рядок з інформацією про авторів</string>
   <string name="morphe_music_lyrics_hide_info_summary">Приховати рядок з інформацією про авторів, що показується під текстом пісні</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Поміняти місцями переклад і романізацію</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Увімкнено: романізація або транслітерація під текстом, переклад над ним; вимкнено: романізація або транслітерація над текстом, переклад під ним. Читання, розміщене над кожним складом, рухається разом із ним: з-над складу під нього</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Змінює порядок відображення перекладу та романизації під текстом пісні</string>
   <string name="morphe_music_lyrics_force_center_title">Завжди центрувати текст пісні</string>
   <string name="morphe_music_lyrics_force_center_summary">Увімкнено: кожен рядок розташовується посередині, а вирівнювання з джерела ігнорується, зокрема сторони дуету; вимкнено: зберігається вирівнювання, яке задає текст пісні</string>
   <string name="morphe_music_lyrics_providers_keep_one">Принаймні один постачальник має залишатися увімкненим</string>
@@ -736,11 +740,19 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Романізація або транслітерація</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Офлайн-словник</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Список слів Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Офлайн-словник</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Скрипт Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хірагана (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Показувати кнопку Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Натисніть, щоб увімкнути/вимкнути ruby-читання над текстом пісні; утримуйте, щоб перемикатися між хіраганою та катаканою. Використовуються увімкнені ruby-провайдери в порядку їхнього переліку</string>
+  <string name="morphe_music_lyrics_ruby_generating">Генерація ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Визначати розділи за допомогою ШІ</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Використовується лише тоді, коли постачальник не надає позначок розділів, таких як \"Приспів\" або \"Куплет\", які тоді визначає ваша модель, сумісна з OpenAI. Редагування цього рядка також відкриває його запит</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-адреса кінцевої точки API (наприклад, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Шаблон запиту</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Плейсхолдери: {task}, {language}, {title}, {artist}, {count}, {lines}. Невідомі залишаються без змін</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Заповнювачі: {task}, {language}, {title}, {artist}, {count}, {lines}. Невідомі залишаються як введено</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Запит збережено</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Запит збережено, але кінцева точка ШІ ще непридатна до використання. Спочатку налаштуйте її в розділі \"Налаштування ШІ\"</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Запит скинуто</string>

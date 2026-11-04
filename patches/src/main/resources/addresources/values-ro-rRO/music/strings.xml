@@ -612,6 +612,10 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_hide_played_summary">Ascundeți rândurile de versuri de mai jos.</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Ascundeți versurile necunoscute.</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Ascundeți rândurile de versuri de mai jos.</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Fundal dinamic</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Afișează un fundal blurat creat din coperta albumului în spatele versurilor</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animarea fundalului dinamic</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Mișcă fundalul în timpul redării și fă-l să pulseze în ritmul muzicii dacă YouTube Music are permisiunea pentru microfon. Dezactivează pentru un fundal static care consumă mai puțină baterie</string>
   <string name="morphe_music_lyrics_mediasession_title">Afișați versurile MediaSession pe ecranul de blocare.</string>
   <string name="morphe_music_lyrics_mediasession_summary">Afișează linia curentă pe ecranul de blocare, Android Auto și Bluetooth. Necesită Android 11 sau versiuni mai noi</string>
   <string name="morphe_music_lyrics_miniplayer_title">Afișați versurile miniplayer.</string>
@@ -710,7 +714,7 @@ Versurile provin de la servicii terțe care nu sunt afiliate, sponsorizate sau e
   <string name="morphe_music_lyrics_hide_info_title">Redare în curs pe acest dispozitiv.</string>
   <string name="morphe_music_lyrics_hide_info_summary">Redare în curs pe un alt dispozitiv.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Redare în curs pe acest dispozitiv.</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON plasează romanizarea sau transliterarea sub versuri și traducerea deasupra; OFF păstrează romanizarea sau transliterarea deasupra și traducerea jos. O citire plasată peste fiecare silabă se mișcă împreună cu aceasta, de deasupra silabei spre dedesubtul acesteia</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Schimbă ordinea de afișare a traducerii și a romanizării sub versuri</string>
   <string name="morphe_music_lyrics_force_center_title">Centrare forțată a versurilor</string>
   <string name="morphe_music_lyrics_force_center_summary">ON plasează fiecare linie în mijloc și ignora aliniamentul sursei, inclusiv părțile duetului; OFF păstrează aliniamentul cerut de versuri</string>
   <string name="morphe_music_lyrics_providers_keep_one">Cel puțin un furnizor trebuie să rămână activ</string>
@@ -718,6 +722,14 @@ Versurile provin de la servicii terțe care nu sunt afiliate, sponsorizate sau e
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizare sau transliterare</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Dicționar Offline</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Lista de cuvinte Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Dicționar offline</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Script Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Buton Afișare Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Apasă pentru a comuta citirile ruby deasupra versurilor; apasă lung pentru a comuta între hiragana și katakana. Utilizează furnizorii ruby activați în ordinea listată</string>
+  <string name="morphe_music_lyrics_ruby_generating">Generare ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Detectarea secțiunilor cu AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Utilizat doar atunci când furnizorul nu furnizează etichete de secțiuni precum Refren sau Vers, pe care modelul compatibil OpenAI le detectează. Editarea rândului deschide și promptul său</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-ul endpoint-ului API (de ex. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

@@ -260,9 +260,8 @@ I measc na n-athruithe tá:
   <string name="morphe_comments_screen_title">Tráchtanna</string>
   <string name="morphe_comments_screen_summary">Roghnaigh cé na comhpháirteanna a thaispeánfar sa chuid tuairimí</string>
   <string name="morphe_hide_comments_carousel_title">Cumasaigh scagaire carúséil tráchtanna</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Bí cinnte ainm cruinn mhír an chairréiséil a iontráil (m.sh., Fiafraigh, Déan an físeán seo a fhógairt, Éist ar YouTube Music)
-• D’fhéadfadh fo-iarsmaí neamhbheartaithe a bheith ag baint le míreanna chairréiséil a cheilt
-• Má tá gach mír chairréiséil i bhfolach, beidh an chuid tuairimí ar fad i bhfolach freisin"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Cuir fhocal eochair nó ainm iomlán isteach (m.sh., Ask, Community, Hype, Listen)
+• Má chuirtear foghlaim ar gach rud, cuirtear an rále comhrá ar fad i bhfolach"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Scagaire carúséil tráchtanna</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Cuir isteach ainmneacha na gcarúsal tráchtanna le scagadh a dhéanamh orthu, scartha le línte nua</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Folaigh achoimre comhrá IS</string>
@@ -496,7 +495,7 @@ Má oscailtí físeán a bhfuil cnaipe Iarrtas aige uair amháin, beidh an ghné
   <string name="morphe_ryd_feed_like_ratio_title">Taispeáin mionsamhail beatha cosúil le céatadán</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Cuardaigh tuairimí</string>
-  <string name="morphe_search_comments_summary">Tapáil an cnaipe cuardaigh sna tráchtanna chun gan ach na tráchtanna atá luchtaithe agus ina bhfuil na focail chuardaigh ar fad a thaispeáint. Cuir focail idir comharthaí athfhriotail chun frása a chuardach.</string>
+  <string name="morphe_search_comments_summary">Tapáil an cnaipe cuardaigh sna tráchtanna chun gan ach na tráchtanna atá luchtaithe agus ina bhfuil na focail chuardaigh ar fad a thaispeáint. Cuir focail idir comharthaí athfhriotail chun frása a chuardach</string>
   <string name="morphe_search_comments_dialog_title">Cuardaigh tuairimí</string>
   <string name="morphe_search_comments_hint">Focail le cuardach</string>
   <string name="morphe_search_comments_search">Cuardaigh</string>
@@ -595,6 +594,11 @@ Níor cheart d'eochair API a roinnt choíche. Is féidir le duine ar bith a bhfu
   <string name="morphe_vot_mymemory_quota_message_no_email">Tá cuóta aistriúcháin saor in aisce MyMemory (5,000 carachtar) úsáidte agat inniu. Cuir ríomhphost MyMemory leis sna socruithe chun an teorainn laethúil a ardú go 50,000 carachtar, nó aistrigh chuig seirbhís aistriúcháin eile.</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Tá cuóta aistriúcháin MyMemory (50,000 carachtar) úsáidte agat inniu. Athraigh chuig seirbhís aistriúcháin eile nó déan iarracht arís amárach.</string>
   <string name="morphe_vot_mymemory_error">Theip ar aistriúchán MyMemory (stádas %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Leathnaigh láimaí tarraing Feic ansin</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Tá na láimaí tarraing de na físeáin i Feic ansin níos éasaí a ghrabbáil</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Cuir follaigh snackbar bhualadh as Feic ansin</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Ní thaispeántar an dearbhú tar éis físeán a bhualadh as Feic ansin</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Cumasaigh físeán lúbtha</string>
   <string name="morphe_do_not_remember_loop_video_title">Ná cuir i gcuimhne físeán lúpa</string>
@@ -759,10 +763,10 @@ Chun é seo a shocrú, cuir 'Spoof video streams' ar siúl agus athraigh an 'Cli
 Chun é seo a shocrú, cuir 'Spoof video streams' ar siúl agus athraigh an 'Cliant réamhshocraithe' go 'TV Simply' nó 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Cumasaigh sleamhnán a lorg</string>
-  <string name="morphe_slide_to_seek_summary">Cumasaíonn sé seo an sleamhnán chun cuardach a dhéanamh in ionad é a sheinm ag luas 2x nuair a bhrúnn tú agus a choinníonn tú an seinnteoir físe</string>
+  <string name="morphe_slide_to_seek_summary">Brúigh agus coinlligh an físeán chun sleamhnú agus cuardach a dhéanamh in ionad é a sheinnú ag 2x luas</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Cumasaigh tapáil chun cuardach a dhéanamh</string>
-  <string name="morphe_tap_to_seek_summary">Níl le déanamh ach an barra cuardaigh a thapáil chun léim go dtí an suíomh sin gan é a tharraingt</string>
+  <string name="morphe_tap_to_seek_summary">Tapáil aon áit ar an barra cuardaigh chun léim go dtí an suíomh sin in ionad é a tharraingt</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gotha svaidhpeála ar chlé</string>
   <string name="morphe_swipe_right_zone_title">Gotha svaidhpeála ar dheis</string>
@@ -937,16 +941,15 @@ Ní mór 'fianáin fotheidil' a sholáthar."</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Folaigh cnaipe Fógraí</string>
   <string name="morphe_show_search_button_title">Taispeáin an cnaipe Cuardaigh</string>
-  <string name="morphe_show_search_button_index_title">Suíomh an chnaipe cuardaigh</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Taispeáin an cnaipe Féach Níos Déanaí</string>
-  <string name="morphe_show_watch_later_button_index_title">Seasamh an chnaipe Féach Níos Déanaí</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Féach níos déanaí</string>
   <string name="morphe_show_settings_button_title">Taispeáin an cnaipe Socruithe</string>
-  <string name="morphe_show_settings_button_index_title">Suíomh an chnaipe socruithe</string>
   <string name="morphe_show_settings_button_type_title">Gníomh cnaipe socruithe</string>
   <string name="morphe_show_settings_button_type_summary">Osclaíonn socruithe Morphe nuair a bhíonn siad cumasaithe, nó socruithe YouTube nuair a bhíonn siad díchumasaithe</string>
+  <string name="morphe_navigation_buttons_order_title">Ord na cnaipí nascleanúna</string>
+  <string name="morphe_navigation_buttons_order_summary">Tarraing na cnaipí chun a n-ord a athrú sa bharr nascleanúna</string>
   <string name="morphe_swap_create_with_notifications_button_title">Malartaigh an cnaipe Cruthaigh leis an gcnaipe Fógraí</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Mura dtiocfaidh athrú ar an socrú seo i bhfeidhm, déan iarracht aistriú go mód Incognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Folaigh lipéid na gcnaipí nascleanúna</string>
@@ -954,7 +957,7 @@ Ní mór 'fianáin fotheidil' a sholáthar."</string>
   <string name="morphe_hide_navigation_bar_title">Folaigh an barra nascleanúna</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Folaíonn sé seo an barra nascleanúna go hiomlán, an cluaisín 'Tú' san áireamh.
 
-Chun rochtain a fháil ar na Socruithe, cuir an cnaipe Socruithe ar chumas trí Ginearálta → Barra Uirlisí → Taispeáin Socruithe."</string>
+Chun rochtain a fháil ar na Socruithe, cuir an cnaipe Socruithe ar chumas trí Ginearálta → Barra Uirlisí → Taispeáin cnaipe Socruithe"</string>
   <string name="morphe_narrow_navigation_buttons_title">Cumasaigh cnaipí nascleanúna caola</string>
   <string name="morphe_narrow_navigation_buttons_summary">Laghdaíonn an spásáil chothrománach idir cnaipí</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Díchumasaigh cnaipí nascleanúna gan lipéid</string>
@@ -971,12 +974,18 @@ Chun rochtain a fháil ar na Socruithe, cuir an cnaipe Socruithe ar chumas trí 
   <string name="morphe_navigation_bar_style_entry_3">Trédhearcach</string>
   <string name="morphe_navigation_bar_style_entry_4">Teimhneach</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">D’fhéadfadh sé nach dtacaíonn do ghléas nó do leagan de YouTube leis an stíl seo, rud a d’fhéadfadh fadhbanna leagan amach nó tuairteanna a chruthú.</string>
+  <string name="morphe_navigation_bar_glass_title">Cumasaigh barra nascleanúna gloine</string>
+  <string name="morphe_navigation_bar_glass_summary">Taispeánann sé an barra nascleanúna mar chapsúl tréshoilseach, cruinnithe, ag snámh. Níl sé ar fáil leis an stíl barra nascleanúna Teimhneach</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Trédhearcacht gloine</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Coigeartaigh leibhéal trédhearcachta barra nascleanúna gloine (is é 0 trédhearcach, is é 100 teimhneach)</string>
   <string name="morphe_toolbar_screen_title">Barra Uirlisí</string>
   <string name="morphe_toolbar_screen_summary">Roghnaigh cé na comhpháirteanna a thaispeántar sa bharra uirlisí</string>
   <string name="morphe_hide_toolbar_chat_button_title">Folaigh cnaipe Comhrá</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Folaigh an cnaipe Micreafón</string>
   <string name="morphe_hide_toolbar_search_button_title">Folaigh an cnaipe Cuardaigh</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Nuair a bhíonn sé cumasaithe, osclaíonn tapáil socruithe Morphe agus brúigh fada osclaíonn socruithe YouTube, díchumasaigh chun malartú</string>
+  <string name="morphe_toolbar_buttons_order_title">Ord na cnaipí toolbar</string>
+  <string name="morphe_toolbar_buttons_order_summary">Tarraing na cnaipí chun a n-ord a athrú sa toolbar</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Roghchlár Flyout</string>
   <string name="morphe_hide_player_flyout_summary">Roghnaigh cé na comhpháirteanna a thaispeántar sa roghchlár sleamhnáin</string>

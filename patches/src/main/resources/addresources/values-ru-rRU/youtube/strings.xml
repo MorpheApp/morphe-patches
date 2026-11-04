@@ -260,9 +260,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">Комментарии</string>
   <string name="morphe_comments_screen_summary">Выберите, какие компоненты отображать в разделе комментариев</string>
   <string name="morphe_hide_comments_carousel_title">Включить фильтр карусели комментариев</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Введите точное название элемента карусели (например, «Спросить», «Захайпить», «Слушать на YouTube Music»)
-• Скрытие элементов карусели может иметь нежелательные побочные эффекты
-• Если все элементы карусели скрыты, раздел комментариев также будет скрыт"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Введите ключевое слово или полное имя (например, Ask, Community, Hype, Listen)
+• Скрытие всех элементов скрывает весь раздел комментариев"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Фильтр карусели комментариев</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Введите имена карусели комментариев для фильтрации, разделенные новыми строками</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Скрыть секцию ИИ сводки чата</string>
@@ -595,6 +594,11 @@ Second \"item\" text"</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Вы использовали сегодняшнюю бесплатную квоту перевода MyMemory (5000 символов). Добавьте адрес электронной почты MyMemory в настройках, чтобы увеличить ежедневный лимит до 50 000 символов, или переключитесь на другую службу перевода</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Вы использовали сегодняшнюю квоту перевода MyMemory (50 000 символов). Переключитесь на другую службу перевода или попробуйте снова завтра</string>
   <string name="morphe_vot_mymemory_error">Сбой перевода MyMemory (статус %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Расширить маркеры перетаскивания в «Смотреть позже»</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Маркеры перетаскивания видео в списке «Смотреть позже» становится легче захватить</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Скрыть уведомление об удалении из «Смотреть позже»</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Подтверждение не отображается после удаления видео из списка «Смотреть позже»</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Включить повтор воспроизведения</string>
   <string name="morphe_do_not_remember_loop_video_title">Не запоминать зацикливание видео</string>
@@ -761,10 +765,10 @@ Second \"item\" text"</string>
 Чтобы исправить эту проблему, включите параметр 'Подделка видео потоков» и измените 'Клиент по умолчанию» на 'TV Simply' или 'visionOS'."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Включить перемотку видео слайдом</string>
-  <string name="morphe_slide_to_seek_summary">Включает перемотку с помощью свайпа вместо воспроизведения с удвоенной скоростью при нажатии и удержании видеоплеера</string>
+  <string name="morphe_slide_to_seek_summary">Нажмите и удерживайте видео, чтобы перемещаться по шкале времени вместо воспроизведения с ускорением 2x</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Включить перемотку нажатием</string>
-  <string name="morphe_tap_to_seek_summary">Просто нажмите на индикатор хода воспроизведения, чтобы перейти к этой позиции, не перетаскивая его</string>
+  <string name="morphe_tap_to_seek_summary">Нажмите в любом месте полосы прокрутки, чтобы мгновенно перейти к этому моменту вместо перетаскивания</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Жест смахивания влево</string>
   <string name="morphe_swipe_right_zone_title">Жест смахивания вправо</string>
@@ -939,14 +943,14 @@ Second \"item\" text"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Скрыть кнопку \"Уведомлений\"</string>
   <string name="morphe_show_search_button_title">Показать кнопку \"Поиск\"</string>
-  <string name="morphe_show_search_button_index_title">Положение кнопки поиска</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Смотреть позже</string>
   <string name="morphe_show_settings_button_title">Показать кнопку \"Настройки\"</string>
-  <string name="morphe_show_settings_button_index_title">Положение кнопки \"Настройки\"</string>
   <string name="morphe_show_settings_button_type_title">Действие кнопки \"Настройки\"</string>
   <string name="morphe_show_settings_button_type_summary">При включении нажатие открывает настройки Morphe, а удержание — настройки YouTube, отключение меняет поведение</string>
+  <string name="morphe_navigation_buttons_order_title">Порядок кнопок навигации</string>
+  <string name="morphe_navigation_buttons_order_summary">Перетаскивайте кнопки, чтобы изменить их порядок на панели навигации</string>
   <string name="morphe_swap_create_with_notifications_button_title">Заменяет кнопку «Создать» кнопкой «Уведомления»</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Если изменение этой настройки не получило эффекта, попробуйте переключиться в режим Инкогнито</string>
   <string name="morphe_hide_navigation_button_labels_title">Скрыть подписи кнопок навигации</string>
@@ -954,7 +958,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_bar_title">Скрыть панель навигации</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Это полностью скрывает панель навигации, включая вкладку «Вы».
 
-Чтобы получить доступ к настройкам, включите кнопку «Настройки» через Общие → Панель инструментов → Показывать настройки"</string>
+Чтобы перейти в Настройки, включите кнопку Настроек через Общие → Панель инструментов → Показать кнопку Настроек"</string>
   <string name="morphe_narrow_navigation_buttons_title">Включить узкие кнопки навигации</string>
   <string name="morphe_narrow_navigation_buttons_summary">Уменьшает горизонтальное расстояние между кнопками</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Отключить кнопки навигации без подписей</string>
@@ -971,12 +975,18 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_entry_3">Прозрачный</string>
   <string name="morphe_navigation_bar_style_entry_4">Непрозрачный</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Этот стиль может не поддерживаться вашим устройством или версией YouTube, что может привести к проблемам с разметкой или сбоям</string>
+  <string name="morphe_navigation_bar_glass_title">Включить стеклянную панель навигации</string>
+  <string name="morphe_navigation_bar_glass_summary">Отображает панель навигации в виде плавающей скругленной полупрозрачной капсулы. Недоступно при использовании непрозраного стиля панели навигации</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Непрозрачность стекла</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Настройте уровень прозрачности стеклянной панели навигации (0 — прозрачная, 100 — непрозрачная)</string>
   <string name="morphe_toolbar_screen_title">Панель инструментов</string>
   <string name="morphe_toolbar_screen_summary">Выберите, какие компоненты отображаются на панели инструментов</string>
   <string name="morphe_hide_toolbar_chat_button_title">Скрыть кнопку чата</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Скрыть кнопку \"Микрофон\"</string>
   <string name="morphe_hide_toolbar_search_button_title">Скрыть кнопку \"Поиск\"</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">При включении нажатие открывает настройки Morphe, а удержание — настройки YouTube, отключение меняет поведение</string>
+  <string name="morphe_toolbar_buttons_order_title">Порядок кнопок панели инструментов</string>
+  <string name="morphe_toolbar_buttons_order_summary">Перетаскивайте кнопки, чтобы изменить их порядок на панели инструментов</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Выдвижное меню плеера</string>
   <string name="morphe_hide_player_flyout_summary">Выберите, какие компоненты отображаются в выпадающем меню плеера</string>
@@ -1725,6 +1735,9 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">Максимальная длина комментария</string>
   <string name="morphe_niconico_comments_max_length_summary">Скрывает комментарии, длина которых превышает это значение. Каждый эмодзи считается за один символ</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без ограничений</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Показывать на премьерах</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Показывать на завершенных премьерах</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Повтор чата премьер, которые уже завершились</string>
   <string name="morphe_live_chat_translate_screen_title">Перевод живого чата</string>
   <string name="morphe_live_chat_translate_screen_summary">Перевод сообщений живого чата и повторов живого чата</string>
   <string name="morphe_live_chat_translate_title">Переводить живой чат</string>

@@ -101,7 +101,7 @@ Second \"item\" text"</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'አሳውቀኝ\' የሚለውን ቁልፍ ደብቅ</string>
-  <string name="morphe_hide_notify_me_button_summary">ለታቀዱ የቀጥታ ስርጭቶች እና የመጀመሪያ ትርኢቶች የማስታወሻ ቁልፉን ይደብቃል</string>
+  <string name="morphe_hide_notify_me_button_summary">ለታቀዱ የቀጥታ ስርጭቶች እና ለፕሪሚየሮች የማስታወሻ ቁልፉን ይደብቃል</string>
   <string name="morphe_hide_playables_title">Playablesን ደብቅ</string>
   <string name="morphe_hide_playables_summary">ጨዋታዎችን እንዲጫወቱ የሚያስችለውን ባህሪ ይደብቃል</string>
   <string name="morphe_hide_search_term_thumbnails_title">የፍለጋ ቃላት ምስሎችን ደብቅ</string>
@@ -260,9 +260,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">አስተያየቶች</string>
   <string name="morphe_comments_screen_summary">በአስተያየቶች ክፍል ውስጥ የትኞቹ ክፍሎች እንደሚታዩ ይምረጡ</string>
   <string name="morphe_hide_comments_carousel_title">የአስተያየቶች ካሩሴል ማጣሪያን አብራ</string>
-  <string name="morphe_hide_comments_carousel_summary">"• የካሩሴል ንጥሉን ትክክለኛ ስም ማስገባትዎን ያረጋግጡ (ለምሳሌ፦ Ask, Hype this video, Listen on YouTube Music)
-• የካሩሴል ንጥሎችን መደበቅ ያልተፈለጉ የጎንዮሽ ተፅእኖዎች ሊኖሩት ይችላል
-• ሁሉም የካሩሴል ንጥሎች ከተደበቁ፣ አጠቃላይ የትያቄዎች ክፍልም አብሮ ይደበቃል"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• ቁልፍ ቃል ወይም ሙሉ ስም ያስገቡ (ለምሳሌ Ask, Community, Hype, Listen)
+• ሁሉንም እቃዎች መደበቅ ሙሉውን የ bình comments ክፍል ይደብቃል"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">የአስተያየቶች ካሩሴል ማጣሪያ</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">ለመለየት የሚፈልጓቸውን የአስተያየቶች ካሩሰል ስሞች በአዳዲስ መስመሮች በመለየት ያስገቡ</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">የAI የውይይት ማጠቃለያን ደብቅ</string>
@@ -496,7 +495,7 @@ Ask የሚለው ቁልፍ ያለው ቪዲዮ አንዴ ከተከፈተ በኋ�
   <string name="morphe_ryd_feed_like_ratio_title">የፊድ ታምብነል የላይክ መቶኛን አሳይ</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">አስተያየቶችን ፈልግ</string>
-  <string name="morphe_search_comments_summary">የተፈለጉትን ቃላት ሁሉ የያዙትን የተጫኑ አስተያየቶች ብቻ ለማሳየት በአስተያየቶች ውስጥ ያለውን የፍለጋ ቁልፍ ይጫኑ። ሐረጎችን ለመፈለግ ቃላቱን በጥቅስ ውስጥ ያስገቡ</string>
+  <string name="morphe_search_comments_summary">የተፈለጉትን ቃላት ሁሉ የያዙትን የተጫኑ bình luậnዎች ብቻ ለማሳየት በ bình luậnዎች ውስጥ የፍለጋ ቁልፉን ይጫኑ። ሀረግን ለመፈለግ ቃላቱን በኮቴ ውስጥ ያስቀምጡ</string>
   <string name="morphe_search_comments_dialog_title">አስተያየቶችን ፈልግ</string>
   <string name="morphe_search_comments_hint">የሚፈለጉ ቃላት</string>
   <string name="morphe_search_comments_search">ፈልግ</string>
@@ -595,6 +594,11 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">የዛሬውን ነፃ የ MyMemory ትርጉም ኮታ (5,000 ቁምፊዎች) ተጠቅመዋል። የዕለት ገደቡን ወደ 50,000 ቁምፊዎች ለማሳደግ በቅንብሮች ውስጥ የ MyMemory ኢሜይል ያክሉ፣ ወይም ወደ ሌላ የትርጉም አገልግሎት ይቀይሩ</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">የዛሬውን የ MyMemory ትርጉም ኮታ (50,000 ቁምፊዎች) ተጠቅመዋል። ወደ ሌላ የትርጉም አገልግሎት ይቀይሩ ወይም ነገ እንደገና ይሞክሩ</string>
   <string name="morphe_vot_mymemory_error">የMyMemory ትርጉም አልተሳካም (ሁኔታ %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">የ\'በኋላ እይ\' የመጎተት አያያዦችን አስፋ</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">የ\'በኋላ እይ\' ቪዲዮዎች የመጎተቻ አያያዦች በቀላሉ ለመያዝ ይመቻሉ</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">የ\'በኋላ እይ\' ማስወገጃ snackbarን ደብቅ</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">ቪዲዮ ከ\'በኋላ እይ\' ከተሰረዘ በኋላ ማረጋገጫ አይታይም</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">ቪዲዮን ደጋግሞ ማጫወት አብራ</string>
   <string name="morphe_do_not_remember_loop_video_title">ቪዲዮን መድገምን አትያዝ</string>
@@ -759,10 +763,10 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
 ይህንን ለማስተካከል 'የቪዲዮ ስርጭቶችን አስመስል' የሚለውን አብራ እና 'መደበኛ ደንበኛን' ወደ 'TV Simply' ወይም 'visionOS' ቀይር"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">በማስቀየር ፍለጋን አግብር</string>
-  <string name="morphe_slide_to_seek_summary">የቪዲዮ ማጫወቻውን ተጭነው ሲይዙ በ 2x ፍጥነት ከማጫወት ይልቅ ወደ ፍለጋ እንዲሸጋገር ያደርጋል</string>
+  <string name="morphe_slide_to_seek_summary">በ 2x ፍጥነት ከመጫወት ይልቅ ለማንሸራተት እና ለመፈለግ ቪዲዮውን ተጭነው ይያዙ</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">መንካትን ለመፈለግ ያብሩ</string>
-  <string name="morphe_tap_to_seek_summary">ያለ ምንም ስحب በቀጥታ ወደዚያ ቦታ ለመሄድ ሲክባሩን ይንኩት</string>
+  <string name="morphe_tap_to_seek_summary">ከማስeret ይልቅ ወደዚያ ቦታ ለመዝለል በ ፍለጋ አሞልያው ላይ የትም ቦታ ይጫኑ</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">ወደ ግራ የመጥረግ ምልክት</string>
   <string name="morphe_swipe_right_zone_title">ወደ ቀኝ የመጥረግ ምልክት</string>
@@ -937,16 +941,15 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">የማሳወቂያዎች ቁልፍን ደብቅ</string>
   <string name="morphe_show_search_button_title">የፍለጋ ቁልፍን አሳይ</string>
-  <string name="morphe_show_search_button_index_title">የፍለጋ ቁልፍ ቦታ</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">የቆየው ቪዲዮዎችን በኋላ ላይ ተመልከት ቁልፍን አሳይ</string>
-  <string name="morphe_show_watch_later_button_index_title">የቆየው ቪዲዮዎችን በኋላ ላይ ተመልከት ቁልፍ ቦታ</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">በኋላ ላይ ተመልከት</string>
   <string name="morphe_show_settings_button_title">የቅንብሮች ቁልፍን አሳይ</string>
-  <string name="morphe_show_settings_button_index_title">የቅንብሮች ቁልፍ ቦታ</string>
   <string name="morphe_show_settings_button_type_title">የቅንብሮች ቁልፍ ተግባር</string>
   <string name="morphe_show_settings_button_type_summary">ሲበራ የ Morphe ቅንብሮችን፣ ሲጠፋ ደግሞ የ YouTube ቅንብሮችን ይከፍታል</string>
+  <string name="morphe_navigation_buttons_order_title">የናቪጌሽን ቁልፎች ቅደም ተከተል</string>
+  <string name="morphe_navigation_buttons_order_summary">በናቪጌሽን ባሩ ውስጥ ያለውን ቅደም ተከተል ለመቀየር ቁልፎቹን ይጎትቱ</string>
   <string name="morphe_swap_create_with_notifications_button_title">የመፍጠሪያውን ቁልፍ ከማሳወቂያዎች ቁልፍ ጋር ይቀያይሩ</string>
   <string name="morphe_swap_create_with_notifications_button_summary">ይህንን ቅንብር መቀየር ውጤት ካላመጣ፣ ወደ Incognito ሁነታ ለመቀየር ይሞክሩ</string>
   <string name="morphe_hide_navigation_button_labels_title">የናቪጌሽን ቁልፍ ሌብሎችን ደብቁ</string>
@@ -954,7 +957,7 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_hide_navigation_bar_title">የናቪጌሽን ባርን ደብቅ</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"ይህ 'እርስዎ' የሚለውን ታብ ጨምሮ የናቪጌሽን ባሩን ሙሉ በሙሉ ይደብቃል።
 
-ወደ ቅንብሮች ለመግባት፣ General → Toolbar → Show Settings በኩል የቅንብሮች ቁልፍን ያግብሩ"</string>
+ሴቲንግስን ለማግኘት፣ General → Toolbar → Show Settings button በኩል የሴቲንግስ ቁልፉን ያብሩ"</string>
   <string name="morphe_narrow_navigation_buttons_title">ጠባብ የትራንስፖርት ቁልፎችን አግብር</string>
   <string name="morphe_narrow_navigation_buttons_summary">በቁልፎች መካከል ያለውን አግድም ርቀት ይቀንሳል</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">መለያ የሌላቸውን የንቅናቄ ቁልፎች አግድ</string>
@@ -971,12 +974,18 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_navigation_bar_style_entry_3">ግልጽ</string>
   <string name="morphe_navigation_bar_style_entry_4">ደመቅ ያለ</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">ይህ ስታይል በኮምፒውተርዎ ወይም በYouTube ስሪት ላይ ላይደገፍ ይችላል፣ እና የንድፍ ችግሮችን ወይም መቋረጥን ሊያስከትል ይችላል</string>
+  <string name="morphe_navigation_bar_glass_title">የመስታወት አሰሳ አሞሌን አብራ</string>
+  <string name="morphe_navigation_bar_glass_summary">የአሰሳ አሞሌውን እንደ ተንሳፋፊ፣ ክብ እና ግልጽ ካፕሱል ያሳያል። ከማይበይኑ የአሰሳ አሞሌ ስታይል ጋር አይሰራም</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">የብርጭቆ ጥርኝነት</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">የብርጭቆ አሰሳ አሞሌውን የግልጽነት ደረጃ ያስተካክሉ (0 ግልጽ ነው፣ 100 የማይበይን ነው)</string>
   <string name="morphe_toolbar_screen_title">የመሳሪያ ባር</string>
   <string name="morphe_toolbar_screen_summary">በቱልባሩ ላይ የትኞቹ ክፍሎች እንደሚታዩ ይምረጡ</string>
   <string name="morphe_hide_toolbar_chat_button_title">የቻት ቁልፍን ደብቅ</string>
   <string name="morphe_hide_toolbar_microphone_button_title">የማይክሮፎን ቁልፍን ደብቅ</string>
   <string name="morphe_hide_toolbar_search_button_title">የፍለጋ ቁልፍን ደብቅ</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">ሲበራ፣ አንድ ጊዜ በመንካት የ Morphe ቅንብሮችን እና ረጅም ጊዜ በመጫን የ YouTube ቅንብሮችን ይከፍታል፤ ለመቀያየር ያጥፉት</string>
+  <string name="morphe_toolbar_buttons_order_title">የቱልባር ቁልፎች ቅደም ተከተል</string>
+  <string name="morphe_toolbar_buttons_order_summary">በቱልባሩ ውስጥ ያለውን ቅደም ተከተል ለመቀየር ቁልፎቹን ይጎትቱ</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">የፍላይአውት ሜኑ</string>
   <string name="morphe_hide_player_flyout_summary">በተንሳፋፊው ሜኑ ውስጥ የትኞቹ ክፍሎች እንዲታዩ እንደሚፈልጉ ይምረጡ</string>
@@ -1728,10 +1737,10 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_no_limit">ገደብ የለም</string>
   <string name="morphe_niconico_comments_live_streams_title">በቀጥታ ስርጭቶች ላይ አሳይ</string>
   <string name="morphe_niconico_comments_live_streams_summary">ቀጥታ ስርጭቶች እና ተደጋጋሚ ስርጭቶቻቸው</string>
-  <string name="morphe_niconico_comments_live_premieres_title">በቅድመ ምርጫዎች ላይ አሳይ</string>
+  <string name="morphe_niconico_comments_live_premieres_title">በፕሪሚየሮች ላይ አሳይ</string>
   <string name="morphe_niconico_comments_live_premieres_summary">ቅድመ ምርጫዎች በሚታዩበት ጊዜ</string>
-  <string name="morphe_niconico_comments_ended_premieres_title">በተጠናቀቁ ቅድመ ምርጫዎች ላይ አሳይ</string>
-  <string name="morphe_niconico_comments_ended_premieres_summary">የተጠናቀቁ የቅድመ ምርጫዎች የውይይት ትዝታ</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">በተጠናቀቁ ፕሪሚየሮች ላይ አሳይ</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">ያበቁ የPremieres የቻት መልሶ ማጫወቻ</string>
   <string name="morphe_live_chat_translate_screen_title">የቀጥታ የውይይት ትርጉም</string>
   <string name="morphe_live_chat_translate_screen_summary">የቀጥታ የውይይት እና የቀጥታ የውይይት መልሶ ማጫወቻ መልዕክቶችን ተርጉም</string>
   <string name="morphe_live_chat_translate_title">የቀጥታ ውይይትን ተርጉም</string>

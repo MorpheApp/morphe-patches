@@ -625,6 +625,10 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_hide_played_summary">Itago ang mga linya ng lyrics sa itaas ng linyang kasalukuyang pinapatugtog</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Itago ang mga lyrics na hindi pa na-play.</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Itago ang mga linya ng lyrics sa ibaba ng screen ng kasalukuyang nagpe-play […].</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dynamic na background</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Magpakita ng blurred na background mula sa album art sa likod ng mga liriko</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">I-animate ang dynamic na background</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Igalaw ang background habang nagpapatugtog, at i-pulse ito kasabay ng musika kung may permiso ang YouTube Music sa mikropono. I-off para sa isang hindi gumagalaw na background na mas matipid sa baterya</string>
   <string name="morphe_music_lyrics_mediasession_title">Ipakita ang MediaSession Lyrics sa lock screen</string>
   <string name="morphe_music_lyrics_mediasession_summary">Ipakita ang current line sa lock screen, Android Auto at Bluetooth. Kailangan ng Android 11 o mas baga</string>
   <string name="morphe_music_lyrics_miniplayer_title">Ipakita ang Lyrics sa Miniplayer</string>
@@ -723,7 +727,7 @@ Ang mga lyrics ay galing sa mga third-party services na walang koneksyon, hindi 
   <string name="morphe_music_lyrics_hide_info_title">Itago ang linya ng kredito</string>
   <string name="morphe_music_lyrics_hide_info_summary">Itago ang linya ng kredito na ipinapakita sa ibaba ng lyrics.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Pagpalitin ang pagsasalin at romanisasyon.</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON ay naglalagay ng romanization o transliteration sa ilalim ng mga lyrics at translation sa itaas; OFF ay pinapanatili ang romanization o transliteration sa itaas at translation sa ilalim. Ang pagbasa na inilagay sa itaas ng bawat syllable ay gumagalaw kasama ito, mula sa itaas ng kanyang syllage patungo sa ilalim nito</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Pagpapalitin ang pagkakasunod-sunod ng pagpapakita ng translation at romanization sa ibaba ng mga liriko</string>
   <string name="morphe_music_lyrics_force_center_title">Palaging i-center ang mga lyrics</string>
   <string name="morphe_music_lyrics_force_center_summary">ON ay naglalagay ng bawat line sa gitna at naiiwalat ang source alignment, kasama ang duet sides; OFF ay pinapanatili ang alignment na hiningi ng mga lyrics</string>
   <string name="morphe_music_lyrics_providers_keep_one">Dapat napanatiling on ang hindi bababa sa isang provider</string>
@@ -731,6 +735,14 @@ Ang mga lyrics ay galing sa mga third-party services na walang koneksyon, hindi 
   <string name="morphe_music_lyrics_romanization_provider_title">Romanization o transliteration</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Offline Dictionary</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Talaan ng mga salita sa Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Offline na Diksyunaryo</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby script</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Ipakita ang button na Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">I-tap para i-toggle ang mga ruby reading sa itaas ng lyrics; i-long-press para lumipat sa pagitan ng hiragana at katakana. Ginagamit ang mga enabled na ruby provider sa pagkakasunod-sunod ng mga ito</string>
+  <string name="morphe_music_lyrics_ruby_generating">Bumubuo ng ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Detektahin ang sections gamit ang AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Ginagamit lamang kapag ang provider ay walang label ng section tulad ng Chorus o Verse, na detektahin ng iyong OpenAI-compatible model pagkatapos. Ang pag-edit ng row ay bubukas din ng prompt nito</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (hal. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

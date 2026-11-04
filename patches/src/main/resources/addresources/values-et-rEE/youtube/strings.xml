@@ -101,7 +101,7 @@ Muudatused hõlmavad:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Peida nuppu \"Teavita mind\"</string>
-  <string name="morphe_hide_notify_me_button_summary">Peidab meeldetuletuse nupu planeeritud otseülekannete ja esmalingidele</string>
+  <string name="morphe_hide_notify_me_button_summary">Peidab ajastatud otseülekannete ja esmaesitluste meeldetuletusnupu</string>
   <string name="morphe_hide_playables_title">Peida interaktiivsed mängud</string>
   <string name="morphe_hide_playables_summary">Peidab funktsiooni, mis võimaldab mängida mängusid</string>
   <string name="morphe_hide_search_term_thumbnails_title">Peida otsingutermini minipildid</string>
@@ -260,9 +260,8 @@ Muudatused hõlmavad:
   <string name="morphe_comments_screen_title">Kommentaarid</string>
   <string name="morphe_comments_screen_summary">Valige, millised komponendid kuvatakse kommentaaride jaotises</string>
   <string name="morphe_hide_comments_carousel_title">Luba kommentaaride karusselli filter</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Veenduge, et sisestate karusselli üksuse täpse nime (nt Küsi, Hype'i see video, Kuula YouTube Musicis)
-• Karusselli üksuste peitmisel võib olla tahtmatuid kõrvaltoimeid
-• Kui kõik karusselli üksused on peidetud, peidetakse ka kogu kommentaaride jaotis"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Sisesta märksõna või täisnimi (nt Ask, Community, Hype, Listen)
+• Kõigi üksuste peitmine varjab kogu kommentaaride jaotise"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Kommentaaride karusselli filter</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Sisestage kommentaaride karusselli nimed filtreerimiseks, eraldades need uue rea abil</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Peida AI vestluse kokkuvõtet</string>
@@ -496,7 +495,7 @@ Kui video, millel on nupp Küsige, on üks kord avatud, töötab see funktsioon 
   <string name="morphe_ryd_feed_like_ratio_title">Kuva voo minipildil meeldimiste protsent</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Otsi kommentaaridest</string>
-  <string name="morphe_search_comments_summary">Puudutage kommentaarides otsingunuppu, et näidata ainult laaditud kommentaare, mis sisaldavad kõiki otsitavaid sõnu. Fraasi otsimiseks pange sõnad tsitaatidesse</string>
+  <string name="morphe_search_comments_summary">Puudutage kommentaaride alas olevat otsingunuppu, et kuvada ainult need laaditud kommentaarid, mis sisaldavad kõiki otsitud sõnu. Fraasi otsimiseks pange sõnad jutumärkidesse</string>
   <string name="morphe_search_comments_dialog_title">Otsi kommentaaridest</string>
   <string name="morphe_search_comments_hint">Otsitavad sõnad</string>
   <string name="morphe_search_comments_search">Otsi</string>
@@ -595,6 +594,11 @@ Teie API võtit ei tohi kunagi jagada. Kõik, kellel on sellele juurdepääs, sa
   <string name="morphe_vot_mymemory_quota_message_no_email">Olete kasutanud tänase tasuta MyMemory tõlkekvooti (5000 märki). Lisage seadetesse MyMemory e-posti aadress, et tõsta päevast piirangut 50 000 märgile, või lülitage teisele tõlke teenusele</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Olete kasutanud tänast MyMemory tõlkekvooti (50 000 märki). Vaheldage tõlketeenust või proovige homme uuesti</string>
   <string name="morphe_vot_mymemory_error">MyMemory tõlge ebaõnnestus (staatus %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Laienda funktsiooni Vaata hiljem lohistamiskäepidemeid</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Vaata hiljem videode lohistamiskäepidemetest on lihtsam kinni haarata</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Peida Vaata hiljem eemaldamise teavitusriba</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Kinnitust ei kuvata pärast video eemaldamist loendist Vaata hiljem</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Luba videolupp</string>
   <string name="morphe_do_not_remember_loop_video_title">Ära mäleta videoluppi</string>
@@ -759,10 +763,10 @@ Selle parandamiseks luba \"Videovoogude imiteerimine\" ja muuda \"Vaikimiskliend
 Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaikimiskliendiks\" \"TV Simply\" või \"visionOS\""</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Luba libistamine otsingu jaoks</string>
-  <string name="morphe_slide_to_seek_summary">Lülitab sisse libistamise abil otsingule liikumise, mitte 2-kordse kiirusega esitamise, kui videopleieri nuppu hoidetakse all</string>
+  <string name="morphe_slide_to_seek_summary">Vajuta ja hoia videot, et kerida, selle asemel et esitada seda kahekordse kiirusega</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Luba puudutusega otsing</string>
-  <string name="morphe_tap_to_seek_summary">Puudutage lihtsalt otsimisriba, et hüpata vastavasse kohta ilma seda lohistamata</string>
+  <string name="morphe_tap_to_seek_summary">Puuduta kerimisribal suvalist kohta, et liikuda otse sellesse asukohta lohistamise asemel</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Vasakule pühkimise žest</string>
   <string name="morphe_swipe_right_zone_title">Paremale pühkimise žest</string>
@@ -937,24 +941,23 @@ Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaiki
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Peida nupu \"Teavitused\"</string>
   <string name="morphe_show_search_button_title">Näita Otsi-nuppu</string>
-  <string name="morphe_show_search_button_index_title">Otsingu nupu asukoht</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Kuva nupp \"Vaata Hiljem\"</string>
-  <string name="morphe_show_watch_later_button_index_title">Nupu \"Vaata Hiljem\" asukoht</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Vaata Hiljem</string>
   <string name="morphe_show_settings_button_title">Kuva seadete nupp</string>
-  <string name="morphe_show_settings_button_index_title">Seadete nupu asukoht</string>
   <string name="morphe_show_settings_button_type_title">Seadistuste nupu tegevus</string>
   <string name="morphe_show_settings_button_type_summary">Avab Morphe seaded, kui on aktiveeritud, või YouTube seaded, kui on väljatud</string>
+  <string name="morphe_navigation_buttons_order_title">Navigeerimisnuppude järjekord</string>
+  <string name="morphe_navigation_buttons_order_summary">Lohistage nuppe, et muuta nende järjekorda navigeerimisribas</string>
   <string name="morphe_swap_create_with_notifications_button_title">Vaheta Loo nuppu Teavituste nupuga</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Kui selle seade muutmise tõttu midagi ei muutu, proovi lülitada Incognito režiimi</string>
   <string name="morphe_hide_navigation_button_labels_title">Peida navigeerimisnuppude märgid</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Peida uue sisu märk</string>
   <string name="morphe_hide_navigation_bar_title">Peida navigatsiooniriba</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"See peidab täielikult navigatsiooniriba, sealhulgas vahekaardi \"Sina\".
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"See peidab navigeerimisriba täielikult, sealhulgas vahekaardi \"Sina\".
 
-Seadetele pääsemiseks aktiveerige seadete nupp jaotises Üldine → Rippbaar → Näita seadeid"</string>
+Seadetele ligipääsemiseks luba seadete nupp menüüs: Üldine → Tööriistariba → Kuva seadete nupp"</string>
   <string name="morphe_narrow_navigation_buttons_title">Luba kitsad navigeerimisnupud</string>
   <string name="morphe_narrow_navigation_buttons_summary">Vähendab nuppude vahelist horisontaalset vahe</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Keela navigatsiooninupud ilma märgistusteta</string>
@@ -971,17 +974,23 @@ Seadetele pääsemiseks aktiveerige seadete nupp jaotises Üldine → Rippbaar �
   <string name="morphe_navigation_bar_style_entry_3">Läbipaistev</string>
   <string name="morphe_navigation_bar_style_entry_4">Katteline</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Seda stiili ei prugu teie seade või YouTube\'i versioon toetada, mis võib põhjustada paigutuse probleeme või rakenduse kokkujärge</string>
+  <string name="morphe_navigation_bar_glass_title">Luba klaasist navigeerimisriba</string>
+  <string name="morphe_navigation_bar_glass_summary">Kuvab navigeerimisriba ujuva, ümarate nurkadega ja poolläbipaistva kapslina. Ei ole saadaval, kui navigeerimisriba stiliks on valitud läbipaistmatu</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Klaasi läbipaistmatus</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Reguleeri klaasist navigeerimisriba läbipaistvust (0 on läbipaistev, 100 on läbipaistmatu)</string>
   <string name="morphe_toolbar_screen_title">Rippriba</string>
   <string name="morphe_toolbar_screen_summary">Valige, millised komponendid kuvatakse tööriistapaneelil</string>
   <string name="morphe_hide_toolbar_chat_button_title">Peida vestluse nupp</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Peida mikrofoni nupp</string>
   <string name="morphe_hide_toolbar_search_button_title">Peida otsingu nupp</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Kui see on sisse lülitatud, avab lühike puudutus Morphe seaded ja pikk vajutus YouTube\'i seaded. Funktsioonide vastupidiseks muutmiseks lülita see välja</string>
+  <string name="morphe_toolbar_buttons_order_title">Rippribanuppude järjekord</string>
+  <string name="morphe_toolbar_buttons_order_summary">Lohistage nuppe, et muuta nende järjekorda rippribas</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Hüpikmenüü</string>
   <string name="morphe_hide_player_flyout_summary">Vali, millised komponendid kuvatakse hüpikmenüüs</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Peida „Lisaseaded“ / „Rohkem“ menüü</string>
+  <string name="morphe_hide_player_flyout_additional_settings_title">Peida \"Lisaseaded\" / \"Rohkem\" menüü</string>
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_ambient_mode_title">Peida menüü \"Ümbritsev režiim\"</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
@@ -1003,7 +1012,7 @@ Menüü \"Audio Track\" kuvamiseks muutke \"Videovoogude imiteerimine\" suvalise
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_lock_screen_title">Peida menüüt \"Ekraani lukustamine\"</string>
   <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">Peida menüü \'Video kordus\'</string>
+  <string name="morphe_hide_player_flyout_loop_video_title">Peida menüü \"Video kordus\"</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_on_the_go_title">Peida menüü \"Liikumise ajal\"</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1533,7 +1542,7 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_dialog">Kui see seade on väljas, siis vanematel videodel ei pruugi olla video kvaliteedi valikuid</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Luba \"Android VR\" / visionOS AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Luba tarkvaraline AV1 dekodeerimine, kui kasutatakse \"Android VR\'\"/ visionOS klienti</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Luba tarkvaraline AV1 dekodeerimine, kui kasutatakse \"Android VR\"/ visionOS klienti</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Selle seade aktiveerimine võib kasutada tarkvaralist AV1 dekoodimist.
 
 AV1-i videote esitus võib tõrgetele tunduda või raame kaotada"</string>
@@ -1730,7 +1739,7 @@ Automaatne salvestamine on valikuline. See peatub inkognito režiimis või konto
   <string name="morphe_niconico_comments_live_streams_summary">Otseülekanded ja nende kordused</string>
   <string name="morphe_niconico_comments_live_premieres_title">Näita esilinastusel</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Esilinastused mängimise ajal</string>
-  <string name="morphe_niconico_comments_ended_premieres_title">Kuva lõppenud esilinastused</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Näita lõppenud esilinastustel</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Lõppenud esilinastuste vestluse kordus</string>
   <string name="morphe_live_chat_translate_screen_title">Live-chat\'i tõlginne</string>
   <string name="morphe_live_chat_translate_screen_summary">Tõlgi live-chat\'i ja live-chat\'i korduse sõnumeid</string>

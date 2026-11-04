@@ -21,9 +21,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_android_auto_subscriptions">訂閱內容</string>
   <string name="morphe_music_android_auto_videos">影片</string>
   <string name="morphe_music_android_auto_other_results">其他結果</string>
-  <string name="morphe_music_android_auto_uploaded_songs">上載的歌曲</string>
-  <string name="morphe_music_android_auto_uploaded_albums">上載的專輯</string>
-  <string name="morphe_music_android_auto_uploaded_artists">上載的藝人</string>
+  <string name="morphe_music_android_auto_uploaded_songs">上傳的歌曲</string>
+  <string name="morphe_music_android_auto_uploaded_albums">上傳的專輯</string>
+  <string name="morphe_music_android_auto_uploaded_artists">上傳的藝人</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">更新主機的 Jam 修補程式以使用暫停與繼續</string>
   <string name="morphe_music_jam_probe_title">Jam 佇列分享</string>
@@ -36,14 +36,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_controls_summary">主持或加入附近的 Jam 並管理工作階段</string>
   <string name="morphe_music_jam_companion_package_title">Jam Layer 套件</string>
   <string name="morphe_music_jam_companion_package_summary">選擇用於附近佇列共享的已安裝配套應用程式</string>
-  <string name="morphe_music_jam_package_message">使用已安裝的配套軟體包。配對需要你的批准和本機相容的Token。</string>
+  <string name="morphe_music_jam_package_message">使用已安裝的配套軟體包。配對需要您的批准和本地授權令牌。</string>
   <string name="morphe_music_jam_wifi_title">要開啟 Wi-Fi 嗎？</string>
   <string name="morphe_music_jam_wifi_message">開啟 Wi-Fi，然後再次嘗試發起或加入 Jam</string>
   <string name="morphe_music_jam_wifi_settings">開啟 Wi-Fi 設定</string>
   <string name="morphe_music_jam_cancel">取消</string>
   <string name="morphe_music_jam_use_package">使用套件</string>
   <string name="morphe_music_jam_invalid_package">輸入有效的 Android 套件名稱</string>
-  <string name="morphe_music_jam_package_saved">已儲存軟體包。設定 Jam Layer 以進行連線</string>
+  <string name="morphe_music_jam_package_saved">已儲存套件。設定 Jam Layer 以進行連線</string>
   <string name="morphe_music_jam_disconnected">Jam 已中斷連線</string>
   <string name="morphe_music_jam_enable_layer_first">請先啟用 Jam Layer</string>
   <string name="morphe_music_jam_enable_patch_first">請先在設定中啟用 Jam 佇列分享，然後重新啟動 YouTube Music</string>
@@ -630,6 +630,10 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_lyrics_hide_played_summary">隱藏目前播放中那一行上方的歌詞行</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">隱藏未播放的歌詞</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">隱藏目前播放中畫面下方的歌詞行</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">動態背景</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">在歌詞後方顯示由專輯封面產生的模糊背景</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">動態背景動畫</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">播放時移動背景，且若 YouTube Music 擁有麥克風權限，則隨音樂律動。關閉此選項可使用靜止背景以節省電量</string>
   <string name="morphe_music_lyrics_mediasession_title">在鎖定畫面上顯示 MediaSession 歌詞</string>
   <string name="morphe_music_lyrics_mediasession_summary">在鎖定螢幕、Android Auto 和藍牙上顯示當前行。需要 Android 11 或更新版本</string>
   <string name="morphe_music_lyrics_miniplayer_title">顯示迷你播放器的歌詞</string>
@@ -728,7 +732,7 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_lyrics_hide_info_title">隱藏來源標示</string>
   <string name="morphe_music_lyrics_hide_info_summary">在歌詞畫面中隱藏來源標示</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">交換翻譯和羅馬拼音</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">開啟時，羅馬拼音或轉寫位於歌詞下方，翻譯位於上方；關閉時，羅馬拼音或轉寫位於上方，翻譯位於下方。放置在每個音節上方的發音會隨之移動，從音節上方移至下方</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">切換歌詞下方翻譯與羅馬拼音的顯示順序</string>
   <string name="morphe_music_lyrics_force_center_title">始終居中顯示歌詞</string>
   <string name="morphe_music_lyrics_force_center_summary">開啟時，將每行置於中間並忽略源對齊方式（包括對唱部分）；關閉時，保持歌詞請求的對齊方式</string>
   <string name="morphe_music_lyrics_providers_keep_one">至少必須保留一個提供者</string>
@@ -736,6 +740,14 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">羅馬拼音或轉寫</string>
   <string name="morphe_music_lyrics_romanization_provider_local">離線字典</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime 詞表</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">注音</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">離線字典</string>
+  <string name="morphe_music_lyrics_ruby_style_title">注音指令碼</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">平假名 (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">片假名 (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">顯示注音按鈕</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">點擊以切換歌詞上方的注音讀音；長按以在平假名和片假名之間切換。將按列出的順序使用已啟用的注音提供者</string>
+  <string name="morphe_music_lyrics_ruby_generating">正在產生注音……</string>
   <string name="morphe_music_lyrics_use_ai_section_title">使用 AI 檢測段落</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">僅在使用者提供的提供者未提供如副歌或主歌等段落標記，而由您的 OpenAI 相容模型檢測時使用。編輯此行也會打開其提示詞</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API 端點 URL（例如 https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions）</string>

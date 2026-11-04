@@ -629,6 +629,10 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_hide_played_summary">Minilejátszó dalszövegének megjelenítése</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">A még el nem hangzott dalszövegek elrejtése</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Dalszövegsorok elrejtése a jelenleg lejátszott […] képernyőn.</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dinamikus háttér</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Mutasson egy az albumborítóból készített homályos hátteret a dalszöveg mögött</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Dinamikus háttér animálása</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Mozgasson a hátteret lejátszás közben, és pulzálissa a zeneに合わせて, ha a YouTube Music rendelkezik mikrofon engedéllyel. Kapcsolja ki a kevésbé akkumulátort fogyasztó, statikus háttér érdekében</string>
   <string name="morphe_music_lyrics_mediasession_title">MediaSession-dalszövegek megjelenítése a lezáróképernyőn</string>
   <string name="morphe_music_lyrics_mediasession_summary">Jelenlegi sor megjelenítése a zárolási képernyőn, Android Autóban és Bluetoothon. Android 11 vagy újabb szükséges</string>
   <string name="morphe_music_lyrics_miniplayer_title">Dalszöveg megjelenítése a minilejátszóban</string>
@@ -727,7 +731,7 @@ A szövegek harmadik fél szolgáltatásaiból származnak, amelyekkel a Morphe-
   <string name="morphe_music_lyrics_hide_info_title">Forrásmegjelölés elrejtése</string>
   <string name="morphe_music_lyrics_hide_info_summary">A dalszöveg alatt látható forrásmegjelölés elrejtése</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">A fordítás és a romanizáció felcserélése</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">BEKapcsoláskor az ábécésítés/áiratranszkripció a dalszöveg alá, a fordítás pedig fölé jelenik meg; KAPCSOLATLAN mód megtartja az ábécésítést/fordítást felül és a fordítást alul. Egy szótagra helyezett kiejtése követi azt, attól függően, hogy felette vagy alatta van</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Megcseréli a fordítás és a romanizáció megjelenítési sorrendjét a dalszöveg alatt</string>
   <string name="morphe_music_lyrics_force_center_title">Mindig középen legyen a dalszöveg</string>
   <string name="morphe_music_lyrics_force_center_summary">BE kapcsolt módban minden sort középre helyez, és figyelmen kívül hagyja a forrás rendezését, beleértve a duett oldalakat is; KAPCSOLATLAN módban megtartja a dalszöveg által kért rendezést</string>
   <string name="morphe_music_lyrics_providers_keep_one">Legalább egy szolgáltatónak aktívnak kell maradnia</string>
@@ -735,6 +739,14 @@ A szövegek harmadik fél szolgáltatásaiból származnak, amelyekkel a Morphe-
   <string name="morphe_music_lyrics_romanization_provider_title">Ábécésítés vagy átirat</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Offline szótár</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime szótár</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Offline szótár</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby betűk</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Ruby gomb megjelenítése</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Koppints a szöveg feletti ruby olvasások váltásához; tartson nyomva a hiragana és katakana közötti váltáshoz. A bekapcsolt ruby szolgáltatókat a felsorolt sorrendben használja</string>
+  <string name="morphe_music_lyrics_ruby_generating">Ruby generálása…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Részek detektálása AI segítségével</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Csak akkor használatos, ha a szolgáltató nem szállít részcímkéket, mint például Refrén vagy Vers, amelyeket az OpenAI-kompatibilis modelljeDetektál. A sor szerkesztése során megnyílik az adott prompt is</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API végpont URL (például https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

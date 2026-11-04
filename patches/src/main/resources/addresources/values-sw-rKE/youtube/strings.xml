@@ -101,7 +101,7 @@ Mabadiliko ni pamoja na:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ficha kitufe cha \"Nijulishe\"</string>
-  <string name="morphe_hide_notify_me_button_summary">Huficha kitufe cha kikumbusho kwa utiririshaji wa moja kwa moja uliopangwa na uzinduko wa video</string>
+  <string name="morphe_hide_notify_me_button_summary">Huficha kitufe cha kikumbusho kwa utiririshaji wa moja kwa moja uliopangwa na Premieres</string>
   <string name="morphe_hide_playables_title">Ficha Playables</string>
   <string name="morphe_hide_playables_summary">Huficha kipengele kinachokuruhusu kucheza michezo</string>
   <string name="morphe_hide_search_term_thumbnails_title">Ficha picha ndogo za maneno ya utafutaji</string>
@@ -260,9 +260,8 @@ Mabadiliko ni pamoja na:
   <string name="morphe_comments_screen_title">Maoni</string>
   <string name="morphe_comments_screen_summary">Chagua vipengele vinavyoonekana katika sehemu ya maoni</string>
   <string name="morphe_hide_comments_carousel_title">Washa kichujio cha mzunguko wa maoni</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Hakikisha kuwa umeingiza jina sahihi la kipengele cha carousel (mfano, Uliza, Hype video hii, Sikiliza kwenye YouTube Music)
-• Kuficha vipengele vya carousel kunaweza kuwa na madhara yasiyokusudiwa
-• Ikiwa vipengele vyote vya carousel vimefichwa, sehemu nzima ya maoni pia itafichwa"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Ingiza neno muhimu au jina kamili (kwa mfano, Ask, Community, Hype, Listen)
+• Kuficha vitu vyote huficha sehemu nzima ya maoni"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Kichujio cha mzunguko wa maoni</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Ingiza majina ya carousel ya maoni ya kuchuja, yakitenganishwa kwa mistari mipya</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Ficha muhtasari wa AI wa soga</string>
@@ -496,7 +495,7 @@ Baada ya video yenye kitufe cha Ask kufunguliwa mara moja, kipengele hiki hufany
   <string name="morphe_ryd_feed_like_ratio_title">Onyesha asilimia ya like za thumbnail ya feed</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Tafuta maoni</string>
-  <string name="morphe_search_comments_summary">Gusa kitufe cha utafutaji kwenye maoni ili kuonyesha tu maoni yaliyopakia ambayo yana maneno yote yaliyotafutwa. Weka maneno kwenye alama za nukuu ili kutafuta fungu la maneno</string>
+  <string name="morphe_search_comments_summary">Gusa kitufe cha utafutaji katika maoni ili kuonyesha tu maoni yaliyopakia yanayojumuisha maneno yote yaliyotafutwa. Weka maneno kwenye alama za nukuu ili kutafuta fungu la maneno</string>
   <string name="morphe_search_comments_dialog_title">Tafuta maoni</string>
   <string name="morphe_search_comments_hint">Maneno ya kutafuta</string>
   <string name="morphe_search_comments_search">Tafuta</string>
@@ -595,6 +594,11 @@ Ufunguo wako wa API usishirikishwe kamwe. Mtu yeyote mwenye ufikiaji nao anaweza
   <string name="morphe_vot_mymemory_quota_message_no_email">Umetumia quota ya tafsiri ya bure ya MyMemory ya leo (herufi 5,000). Ongeza barua pepe ya MyMemory kwenye mipangilio ili kuongeza kikomo cha kila siku hadi herufi 50,000, au badilisha kwenda huduma nyingine ya tafsiri</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Umetumia quota ya tafsiri ya MyMemory ya leo (herufi 50,000). Badilisha kwenda huduma nyingine ya tafsiri au jaribu tena kesho</string>
   <string name="morphe_vot_mymemory_error">Tafsiri ya MyMemory imeshindwa (hali %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Panua vishikio vya kuburuta vya Tazama baadaye</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Vishikio vya kuburuta vya video za Tazama baadaye ni rahisi zaidi kuvishika</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Ficha snackbar ya kuondoa Tazama baadaye</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Uthibitisho hauonyeshwi baada ya video kuondolewa kwenye Tazama baadaye</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Washa mzunguko wa video</string>
   <string name="morphe_do_not_remember_loop_video_title">Usikumbuke video inayojirudia</string>
@@ -759,10 +763,10 @@ Ili kurekebisha hili, washa 'Ghushi utiririshaji wa video' na ubadilishe 'Kiteka
 Ili kurekebisha hili, washa 'Ghadhabu ya utiririko wa video' na ubadilishe 'Klijenti ya chaguo-msingi' kuwa 'TV Simply' au 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Washa utelezaji ili kutafuta</string>
-  <string name="morphe_slide_to_seek_summary">Huwezesha kutelezesha ili kutafuta badala ya kucheza kwa kasi ya 2x unapobonyeza na kushikilia kicheza video</string>
+  <string name="morphe_slide_to_seek_summary">Bonyeza na ushikilie video ili kutelezesha na kutafuta badala ya kucheza kwa kasi ya 2x</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Washa kugusa ili kutafuta</string>
-  <string name="morphe_tap_to_seek_summary">Gusa tu seekbar ili uruke hadi nafasi hiyo bila kuivuta</string>
+  <string name="morphe_tap_to_seek_summary">Gusa popote kwenye bar ya utafutaji ili kuruka hadi nafasi hiyo badala ya kuburuta</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Ishara ya kutelezesha kushoto</string>
   <string name="morphe_swipe_right_zone_title">Ishara ya kutelezesha kulia</string>
@@ -937,24 +941,23 @@ Ili kurekebisha hili, washa 'Ghadhabu ya utiririko wa video' na ubadilishe 'Klij
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Ficha kitufe cha Arifa</string>
   <string name="morphe_show_search_button_title">Onyesha kitufe cha Tafuta</string>
-  <string name="morphe_show_search_button_index_title">Nafasi ya kitufe cha Tafuta</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Onyesha kitufe cha Tazama baadaye</string>
-  <string name="morphe_show_watch_later_button_index_title">Nafasi ya kitufe cha Tazama baadaye</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Tazama baadaye</string>
   <string name="morphe_show_settings_button_title">Onyesha kitufe cha Mipangilio</string>
-  <string name="morphe_show_settings_button_index_title">Nafasi ya kitufe cha Mipangilio</string>
   <string name="morphe_show_settings_button_type_title">Utendaji wa kitufe cha mipangilio</string>
   <string name="morphe_show_settings_button_type_summary">Inafungua mipangilio ya Morphe inapowezeshwa, au mipangilio ya YouTube inapozimwa</string>
+  <string name="morphe_navigation_buttons_order_title">Mpangilio wa vitufe vya urambazaji</string>
+  <string name="morphe_navigation_buttons_order_summary">Buruta vitufe ili kubadilisha mpangilio wake kwenye baa ya urambazaji</string>
   <string name="morphe_swap_create_with_notifications_button_title">Badilisha kitufe cha Create na kitufe cha Arifa</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Ikiwa kubadilisha mpangilio huu hakuleti matokeo, jaribu kubadilisha kwenda kwenye hali ya Incognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Ficha lebo za vitufe vya urambazaji</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ficha nukta ya maudhui mapya</string>
   <string name="morphe_hide_navigation_bar_title">Ficha baa ya urambazaji</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Hii inaficha kabisa baa ya urambazaji, ikiwa ni pamoja na tab ya 'Wewe'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Hii huficha kabisa bar ya urambazaji, ikiwemo tab ya 'Wewe'.
 
-Ili kufikia Mipangilio, wezesha kitufe cha Mipangilio kupitia General → Toolbar → Show Settings"</string>
+Ili kufikia Mipangilio, wezesha kitufe cha Mipangilio kupitia General → Toolbar → Show Settings button"</string>
   <string name="morphe_narrow_navigation_buttons_title">Washa vitufe vya urambazaji vyembamba</string>
   <string name="morphe_narrow_navigation_buttons_summary">Inapunguza nafasi ya mlalo kati ya vitufe</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Zima vitufe vya urambazaji visivyo na lebo</string>
@@ -971,12 +974,18 @@ Ili kufikia Mipangilio, wezesha kitufe cha Mipangilio kupitia General → Toolba
   <string name="morphe_navigation_bar_style_entry_3">Uwazi</string>
   <string name="morphe_navigation_bar_style_entry_4">Isiyopitisha mwanga</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Mtindo huu huenda usiungwe mkono na kifaa chako au toleo la YouTube, na unaweza kusababisha matatizo ya mpangilio au kufunga kwa programu</string>
+  <string name="morphe_navigation_bar_glass_title">Washa bar ya urambazaji ya kioo</string>
+  <string name="morphe_navigation_bar_glass_summary">Inaonyesha bar ya urambazaji kama kapsuli inayoelea, yenye pembe zilizoviringishwa na inayopitisha mwanga. Haipatikani ikiwa mtindo wa bar ya urambazaji isiyopitisha mwanga umetumiwa</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Uwazi wa kioo</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Rekebisha kiwango cha uwazi cha bar ya urambazaji ya kioo (0 ni wazi, 100 isiyopitisha mwanga)</string>
   <string name="morphe_toolbar_screen_title">Upau wa zana</string>
   <string name="morphe_toolbar_screen_summary">Chagua ni vipengele gani vionekane kwenye baa ya zana</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ficha kitufe cha Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ficha kitufe cha Maikrofoni</string>
   <string name="morphe_hide_toolbar_search_button_title">Ficha kitufe cha Tafuta</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Inapowezeshwa, kugusa hufungua mipangilio ya Morphe na kubonyeza kwa muda mrefu hufungua mipangilio ya YouTube, zima ili kubadilisha</string>
+  <string name="morphe_toolbar_buttons_order_title">Mpangilio wa vitufe vya baa ya zana</string>
+  <string name="morphe_toolbar_buttons_order_summary">Buruta vitufe ili kubadilisha mpangilio wake kwenye baa ya zana</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menyu ya flyout</string>
   <string name="morphe_hide_player_flyout_summary">Chagua ni vipengele gani vionekane kwenye menyu ya flyout</string>
@@ -1728,10 +1737,10 @@ Kurekodi kiotomatiki ni hiari. Inasimama katika hali ya siri au wakati akaunti i
   <string name="morphe_niconico_comments_max_length_no_limit">Hakuna kikomo</string>
   <string name="morphe_niconico_comments_live_streams_title">Onyesha kwenye matiririko ya moja kwa moja</string>
   <string name="morphe_niconico_comments_live_streams_summary">Matiririko ya moja kwa moja na marudio yake</string>
-  <string name="morphe_niconico_comments_live_premieres_title">Onyesha kwenye uzinduzi wa awali</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Onyesha kwenye Premieres</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Uzinduzi wa awali wakati zinachezwa</string>
-  <string name="morphe_niconico_comments_ended_premieres_title">Onyesha kwenye uzinduzi wa awali uliomalizika</string>
-  <string name="morphe_niconico_comments_ended_premieres_summary">Marudio ya soga ya uzinduzi wa awali uliomalizika</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Onyesha kwenye Premieres zilizomalizika</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Rudia soga ya Premieres zilizokwisha</string>
   <string name="morphe_live_chat_translate_screen_title">Tafsiri ya soga ya moja kwa moja</string>
   <string name="morphe_live_chat_translate_screen_summary">Tafsiri ujumbe wa soga ya moja kwa moja na urejeshaji wa soga ya moja kwa moja</string>
   <string name="morphe_live_chat_translate_title">Tafsiri soga ya moja kwa moja</string>

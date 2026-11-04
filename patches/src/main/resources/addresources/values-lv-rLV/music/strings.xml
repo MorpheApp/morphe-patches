@@ -627,6 +627,10 @@ Obligātās cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_hide_played_summary">Slēpt teksta rindas virs pašlaik atskaņātās rindas</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Slēpt neatskaņotus teksta fragmentus</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Slēpt teksta rindas zem pašlaik atskaņātās rindas</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dinamiskais fons</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Rādīt izpludinātu fona attēlu, kas izveidots no albuma vrsla, aiz teksta</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animēt dinamisko fonu</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Kustināt fonu atskaņošanas laikā un pulsēt to kopā ar mūziku, ja YouTube Music ir piešķirta mikrofona piekļuve. Izslēgt, lai fons būtu statisks un patērētu mazāk akumulatora</string>
   <string name="morphe_music_lyrics_mediasession_title">Rādīt MediaSession tekstu bloķēšanas ekrānā</string>
   <string name="morphe_music_lyrics_mediasession_summary">Rāda pašreizējo rindu ekrāna bloķētājā, Android Auto un Bluetooth. Nepieciešams Android 11 vai jaunāks</string>
   <string name="morphe_music_lyrics_miniplayer_title">Rādīt dziesmu vārdus minimspēlētājā</string>
@@ -725,7 +729,7 @@ Dziesmu teksti nāk no trešo pušu pakalpojumiem, kas nav saistīti ar Morphe, 
   <string name="morphe_music_lyrics_hide_info_title">Slēpt kredītlīniju</string>
   <string name="morphe_music_lyrics_hide_info_summary">Slēpt kredītlīniju, kas parādās zem dziesmu teksta</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Mainīt tulkojuma un romanizācijas vietas</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">IESLĒGTS novieto romanizāciju vai transliterāciju zem dziesmu vārdiem un tulkojumu virs; IZSLĒGTS atvieno romanizāciju vai transliterāciju virs un tulkojumu zem. Lasīšana, kas novietota virs katra syllable, pārvietojas kopā ar to, no sava syllable augšpuses uz apakšpusi</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Mainīt tulkojuma un romanizācijas rādīšanas secību zem teksta</string>
   <string name="morphe_music_lyrics_force_center_title">Vienmēr centru dziesmu vārdus</string>
   <string name="morphe_music_lyrics_force_center_summary">IESLĒGTS novietojumā vidū uzstāda katru rindu un ignorē izsēkmes izlīdzinājumu, ieskaitot dueta puses; IZSLĒGTS saglabā dziesmu vārdiem pieprasīto izlīdzinājumu</string>
   <string name="morphe_music_lyrics_providers_keep_one">Jāatliek vismaz viens pakalpojumu sniedzējs</string>
@@ -733,6 +737,14 @@ Dziesmu teksti nāk no trešo pušu pakalpojumiem, kas nav saistīti ar Morphe, 
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizācija vai transliterācija</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Klintne vārnām bezsaistē</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime vārdu saraksts</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Bezsaites vārdnīca</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby rakstīšana</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Rādīt Ruby pogu</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Kārstie spiežiet, lai pārslēgtu ruby lasījumus virs dziesmu teksta; ilgi spiežiet, lai pārslēgtos starp hiragana un katakana. Izmanto iespējotos ruby pakalpojumu sniedzējus norādītajā secībā</string>
+  <string name="morphe_music_lyrics_ruby_generating">Ģenerē ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Atklāt sadaļas ar AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Tiek izmantots tikai tad, ja pakalpojumu sniedzējs nenomsūta sadaļas apzīmējumus, piemēram, Prijiedienums vai Vers, kurus pēc tam nosaka jūsu OpenAI saderīgais modelis. Labojot rindu, tiek atvērts arī tās uzvedne</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API gala punkta URL (piem., https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

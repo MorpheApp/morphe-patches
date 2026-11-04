@@ -32,6 +32,7 @@ Second \"item\" text"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
+  <string name="morphe_hide_notify_me_button_summary">திட்டமிடப்பட்ட நேரடி ஒளிபரப்புகள் மற்றும் பிரீமியர்களுக்கான நினைவூட்டல் பொத்தானை மறைக்கிறது</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
@@ -50,6 +51,8 @@ Second \"item\" text"</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_comments_carousel_summary">"• ஒரு முக்கிய வார்த்தையை அல்லது முழுப் பெயரை உள்ளிடவும் (உதாரணமாக, Ask, Community, Hype, Listen)
+• அனைத்து உருப்படிகளையும் மறைப்பது முழு கருத்துப் பிரிவையும் மறைக்கும்"</string>
   <string name="morphe_hide_comments_gif_button_title">GIF பொத்தானை மறைக்கவும்</string>
   <string name="morphe_hide_comments_gifs_and_images_title">GIF-கள் மற்றும் படங்களை மறைக்கவும்</string>
   <string name="morphe_hide_comments_gifs_and_images_summary">கருத்துகள் மற்றும் பதில்களில் இணைக்கப்பட்டுள்ள GIF-கள் மற்றும் படங்களை மறைக்கிறது</string>
@@ -92,6 +95,7 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_summary">தேடப்பட்ட அனைத்து வார்த்தைகளையும் கொண்ட பதிவேற்றப்பட்ட கருத்துகளை மட்டும் காண்பிக்க, கருத்துகளில் உள்ள தேடல் பொத்தானைத் தட்டவும். ஒரு சொற்றொடரைத் தேட வார்த்தைகளை மேற்கோள் குறிக்குள் இடவும்</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -114,6 +118,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_canceled">ஏற்றுமதி ரத்து செய்யப்பட்டது</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Watch later டிராக் ஹேண்டில்களை விரிவுபடுத்துங்கள்</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Watch later வீடியோக்களின் டிராக் ஹேண்டில்களை எளிதாகப் பிடிக்க முடியும்</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Watch later நீக்குதல் ஸ்நாக்பாரை மறைக்கவும்</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Watch later-லிருந்து ஒரு வீடியோ நீக்கப்பட்ட பிறகு உறுதிப்படுத்தல் காட்டப்படாது</string>
   <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.loop.loopVideoButtonPatch -->
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
@@ -143,7 +152,9 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_summary">2x வேகத்தில் இயக்குவதற்குப் பதிலாக, ஸ்லைடு செய்து தேடுவதற்கு வீடியோவை அழுத்திப் பிடிக்கவும்</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_summary">இழுப்பதற்குப் பதிலாக அந்த இடத்திற்கு நேரடியாகச் செல்ல சீக் பாரில் எங்காவது தட்டவும்</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <!-- layout.buttons.action.hideButtonsPatch -->
@@ -195,9 +206,19 @@ Second \"item\" text"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">\'பின்னாளும் பாருங்கள்\' பொத்தானைக் காட்டு</string>
-  <string name="morphe_show_watch_later_button_index_title">\'பின்னாளும் பாருங்கள்\' பொத்தானின் இடம்</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">பின்னாளும் பாருங்கள்</string>
+  <string name="morphe_navigation_buttons_order_title">வழிசெலுத்தல் பொத்தான்களின் வரிசை</string>
+  <string name="morphe_navigation_buttons_order_summary">வழிசெலுத்தல் பட்டையில் பொத்தான்களின் வரிசையை மாற்ற அவற்றை இழுக்கவும்</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"இது 'You' டேப் உட்பட நேவிகேஷன் பாரை முழுமையாக மறைக்கிறது.
+
+Settings-ஐ அணுக, General → Toolbar → Show Settings button மூலம் Settings பொத்தானைச் செயல்படுத்தவும்"</string>
+  <string name="morphe_navigation_bar_glass_title">கிளாஸ் நேவிகேஷன் பாரை இயக்கவும்</string>
+  <string name="morphe_navigation_bar_glass_summary">நேவிகேஷன் பாரை மிதக்கும், வட்ட வடிவ, ஒளிபுகும் கேப்சூல் போலக் காட்டும். Opaque நேவிகேஷன் பார் ஸ்டைலில் இது கிடைக்காது</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">கிளாஸ் ஒளிபுகும் தன்மை</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">கிளாஸ் நேவிகேஷன் பாரின் வெளிப்படைத்தன்மை அளவை சரிசெய்யவும் (0 என்பது வெளிப்படையானது, 100 என்பது ஒளிபுகாவானது)</string>
+  <string name="morphe_toolbar_buttons_order_title">கருவிப்பட்டை பொத்தான்களின் வரிசை</string>
+  <string name="morphe_toolbar_buttons_order_summary">கருவிப்பட்டையில் பொத்தான்களின் வரிசையை மாற்ற அவற்றை இழுக்கவும்</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -322,10 +343,10 @@ Second \"item\" text"</string>
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
   <string name="morphe_niconico_comments_live_streams_title">நேரடி ஒளிபரப்புகளில் காட்டு</string>
   <string name="morphe_niconico_comments_live_streams_summary">நேரடி ஒளிபரப்புகள் மற்றும் அவற்றின் மறுபதிவுகள்</string>
-  <string name="morphe_niconico_comments_live_premieres_title">முன்னோட்டங்களில் காட்டு</string>
+  <string name="morphe_niconico_comments_live_premieres_title">பிரீமியர்களில் காண்பி</string>
   <string name="morphe_niconico_comments_live_premieres_summary">முன்னோட்டங்கள் இயங்கிக் கொண்டிருக்கும்போது</string>
-  <string name="morphe_niconico_comments_ended_premieres_title">முடிவடைந்த முன்னோட்டங்களில் காட்டு</string>
-  <string name="morphe_niconico_comments_ended_premieres_summary">முடிவடைந்த முன்னோட்டங்களின் அரட்டை மறுபதிவு</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">முடிவடைந்த பிரீமியர்களில் காண்பி</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">முடிவடைந்த Premiere-களின் சேட் ரீப்ளே</string>
   <string name="morphe_live_chat_translate_screen_title">நேரலை அரட்டை மொழிபெயர்ப்பு</string>
   <string name="morphe_live_chat_translate_screen_summary">நேரலை அரட்டை மற்றும் நேரலை அரட்டை மறுஇயக்க செய்திகளை மொழிபெயர்க்கவும்</string>
   <string name="morphe_live_chat_translate_title">நேரலை அரட்டையை மொழிபெயர்க்கவும்</string>

@@ -630,6 +630,10 @@ Cookie beharrezkoak: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_hide_played_summary">Ezikusi gaur egun dozen linearen gaindiko hitz-lerroak</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Ezagutu gabeko letra ezkutatu</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Ezkutatu gaur egun erreproduzitzen ari den lerroaren beheko letra lerroak</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Atzeondo dinamikoa</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Letren atzean albumeko artearekin egindako atzeondo borropilotu bat erakutsi</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Atzeondo dinamikoa animatu</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">erreproduktu bitartean mugitu atzeondoa, eta musikari jedez pulsatu YouTube Music-ek mikrofonoaren baimena baduenean. Itzali bateria gutxiago erabiltzen duen atzeondo estatiko bat izateko</string>
   <string name="morphe_music_lyrics_mediasession_title">MediaSession letrak erakutsi blokeatutako pantailan</string>
   <string name="morphe_music_lyrics_mediasession_summary">Lock screen-ean, Android Auto-n eta Bluetooth-en erakusten du egungo lerroa. Android 11 edo bertsio berriagoa behar du</string>
   <string name="morphe_music_lyrics_miniplayer_title">Erakutsi mini-sekoialdiko letraak</string>
@@ -728,7 +732,7 @@ Letak Morphe-rekin lotura, patroinatu edo onartuta ez dauden hirugarren party ze
   <string name="morphe_music_lyrics_hide_info_title">Ezagutze-lerra ezkutatu</string>
   <string name="morphe_music_lyrics_hide_info_summary">Ezkututu letraen azpian agertzen den kreditu-lerroa</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Truka itzulpena eta romanizazioa</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON aktibatzean, romanizazioa edo transliterazioa letraren behean eta itzulpena gainean jartzen dira; OFF desaktibatzean, romanizazioa edo transliterazioa gainean eta itzulpena behean geratzen dira. Silaba bakoitzaren gainean jartzen den irakurketa silabari laguntzen zaio, gainetik behera mugilduta</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Letren beheko itzulpenaren eta romanizazioaren bisturatze ordena aldau</string>
   <string name="morphe_music_lyrics_force_center_title">Letrak beti erdigunean jarri</string>
   <string name="morphe_music_lyrics_force_center_summary">ON aktibatzean, lerro guztiak erdigunean jartzen dira eta iturriko lerraketaz ez da kontatzen, duetten aldeak barne; OFF desaktibatzean, letrek eskatzen duten lerraketa mantentzen da</string>
   <string name="morphe_music_lyrics_providers_keep_one">Gutxienez hornitzaile bat aktibo izan behar da</string>
@@ -736,6 +740,14 @@ Letak Morphe-rekin lotura, patroinatu edo onartuta ez dauden hirugarren party ze
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizazioa edo transliterazioa</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Hiztegi offline</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime hitz-zerrenda</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Hiztegi offline</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby scripta</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Erakutsi Ruby botoia</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Sakatu letraren gainean ruby irakurketa aktibatzeko edo desaktibatzeko; sakatu luze hiragana eta katakanaren artean aldatzeko. Aktibatutako ruby hornitzaileak erabiltzen ditu zerrendatutako orden own</string>
+  <string name="morphe_music_lyrics_ruby_generating">Ruby sortzen...</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Atzespenak AI-rekin detektatu</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Soilik hornitzaileak Estribilloa edo Bertsoa bezalako atzespen-etiketak bidaltzen ez dituen kasuetan erabiltzen da, zure OpenAI-rekin compatible modeloak detektatuko ditu. Lerroa editatzeak bere prompt-a ere irekiko du</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL-a (adib. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

@@ -260,9 +260,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">टिप्पण्या</string>
   <string name="morphe_comments_screen_summary">टिप्पणी विभागात कोणते घटक दिसतात ते निवडा</string>
   <string name="morphe_hide_comments_carousel_title">टिप्पणी कॅरोसेल फिल्टर सक्षम करा</string>
-  <string name="morphe_hide_comments_carousel_summary">"• कॅरोसेल आयटमचे अचूक नाव प्रविष्ट करण्याची खात्री करा (उदा., Ask, Hype this video, Listen on YouTube Music)
-• कॅरोसेल आयटम लपवण्याचे अनपेक्षित दुष्परिणाम होऊ शकतात
-• सर्व कॅरोसेल आयटम लपवले असल्यास, संपूर्ण टिप्पणी विभाग देखील लपविला जाईल"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• कीवर्ड किंवा पूर्ण नाव प्रविष्ट करा (उदा. Ask, Community, Hype, Listen)
+• सर्व आयटम्स लपवल्यास संपूर्ण कमेंट्स विभाग लपवला जातो"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">टिप्पणी कॅरोसेल फिल्टर</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">टिप्पणी कॅरोसेल नावांची फिल्टर करण्यासाठी प्रविष्ट करा, प्रत्येक ओळ नवीन ओळीने विभाजित करा</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">एआय चॅट सारांश लपवा</string>
@@ -496,7 +495,7 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_like_ratio_title">फीड थंबनेल लाईक टक्केवारी दाखवा</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">कमेंट्स शोधा</string>
-  <string name="morphe_search_comments_summary">केवळ शोधलेले सर्व शब्द असलेल्या लोड केलेल्या कमेंट्स पाहण्यासाठी कमेंट्समधील सर्च बटणावर टॅप करा. एखाद्या विशिष्ट वाक्यासाठी शब्द अवतरण चिन्हात लिहा</string>
+  <string name="morphe_search_comments_summary">केवळ शोधलेले सर्व शब्द असलेल्या लोड केलेल्या कमेंट्स दाखवण्यासाठी कमेंट्समधील सर्च बटणावर टॅप करा. वाक्यांश शोधण्यासाठी शब्द अवतरण चिन्हात लिहा</string>
   <string name="morphe_search_comments_dialog_title">कमेंट्स शोधा</string>
   <string name="morphe_search_comments_hint">शोधण्यासाठी शब्द</string>
   <string name="morphe_search_comments_search">शोधा</string>
@@ -595,6 +594,11 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_vot_mymemory_quota_message_no_email">तुम्ही आजचे विनामूल्य MyMemory भाषांतर कोटा (5,000 वर्ण) वापरले आहे. दररोजची मर्यादा 50,000 वर्णांपर्यंत वाढवण्यासाठी सेटिंग्जमध्ये MyMemory ईमेल जोडा, किंवा भिन्न भाषांतर सेवा स्विच करा</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">तुम्ही आजचे MyMemory भाषांतर कोटा (50,000 वर्ण) वापरले आहे. भिन्न भाषांतर सेवा स्विच करा किंवा उद्या पुन्हा प्रयत्न करा</string>
   <string name="morphe_vot_mymemory_error">MyMemory भाषांतर अयशस्वी झाले (स्थिती %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">\'नंतर पहा\' ड्रॅग हँडल्स रुंद करा</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">\'नंतर पहा\' व्हिडिओंचे ड्रॅग हँडल्स पकडणे आता अधिक सोपे झाले आहे</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">\'नंतर पहा\' मधून काढल्याचा स्नॅackbar लपवा</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">व्हिडिओ \'नंतर पहा\' मधून काढल्यानंतर पुष्टीकरण दाखवले जात नाही</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">व्हिडिओ लूप करा</string>
   <string name="morphe_do_not_remember_loop_video_title">लूप व्हिडिओ लक्षात ठेवू नका</string>
@@ -759,10 +763,10 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
 हे ठीक करण्यासाठी, 'व्हिडिओ स्ट्रीम्स स्पूफ करा' चालू करा आणि 'डिफॉल्ट क्लायंट' बदलून 'TV Simply' किंवा 'visionOS' करा"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">स्लाइड टू सीक सक्षम करा</string>
-  <string name="morphe_slide_to_seek_summary">व्हिडिओ प्लेयरवर दाबून धरल्यावर 2x वेगाने प्ले करण्याऐवजी स्लाइड टू सीक सक्षम करा</string>
+  <string name="morphe_slide_to_seek_summary">2x स्पीडने प्ले करण्याऐवजी, स्लाइड करून सीक करण्यासाठी व्हिडिओ दाबून धरा</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">टॅप टू सीक सक्षम करा</string>
-  <string name="morphe_tap_to_seek_summary">सिBar ला ड्रॅग न करता त्या स्थितीत जाण्यासाठी फक्त टॅप करा</string>
+  <string name="morphe_tap_to_seek_summary">ड्रॅग करण्याऐवजी त्या पोझिशनवर जाण्यासाठी सीकबारवर कुठेही टॅप करा</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">डावीकडे स्वाइप करण्याची कृती</string>
   <string name="morphe_swipe_right_zone_title">उजवीकडे स्वाइप करण्याची कृती</string>
@@ -937,21 +941,21 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">\'सूचना\' बटण लपवा</string>
   <string name="morphe_show_search_button_title">\'शोध\' बटण दर्शवा</string>
-  <string name="morphe_show_search_button_index_title">शोध बटणाची स्थिती</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">\'सेटिंग्ज\' बटण दर्शवा</string>
-  <string name="morphe_show_settings_button_index_title">सेटिंग्ज बटणाची स्थिती</string>
   <string name="morphe_show_settings_button_type_title">सेटिंग्स बटण क्रिया</string>
   <string name="morphe_show_settings_button_type_summary">सक्षम केल्यावर मोर्फ सेटिंग्ज उघडते, अक्षम केल्यावर YouTube सेटिंग्ज उघडते</string>
+  <string name="morphe_navigation_buttons_order_title">नेव्हिगेशन बटणांचा क्रम</string>
+  <string name="morphe_navigation_buttons_order_summary">नेव्हिगेशन बारमधील बटणांचा क्रम बदलण्यासाठी ती ड्रॅग करा</string>
   <string name="morphe_swap_create_with_notifications_button_title">क्रिएट (Create) बटण आणि नोटिफिकेशन (Notifications) बटण बदला</string>
   <string name="morphe_swap_create_with_notifications_button_summary">जर ही सेटिंग बदलल्याचा परिणाम झाला नाही, तर इन्कॉग्निटो मोड वापरून पहा.</string>
   <string name="morphe_hide_navigation_button_labels_title">नेव्हिगेशन बटण लेबल्स लपवा</string>
   <string name="morphe_hide_navigation_new_content_dot_title">नवीन सामग्रीचा डॉट लपवा</string>
   <string name="morphe_hide_navigation_bar_title">नेव्हिगेशन बार लपवा</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"हे 'तुम्ही' टॅबसह नेव्हिगेशन बार पूर्णपणे लपवते.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"हे 'You' टॅबसह नेव्हिगेशन बार पूर्णपणे लपवते.
 
-सेटिंग्जमध्ये जाण्यासाठी, General → Toolbar → Show Settings द्वारे सेटिंग्ज बटण सक्षम करा"</string>
+सेटिंग्समध्ये जाण्यासाठी, General → Toolbar → Show Settings button द्वारे सेटिंग्ज बटण सक्षम करा"</string>
   <string name="morphe_narrow_navigation_buttons_title">नॅरो नेव्हिगेशन बटणे सक्षम करा</string>
   <string name="morphe_narrow_navigation_buttons_summary">बटणांमधील क्षैतिज अंतर कमी करते</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">लेबल नसलेली नेव्हिगेशन बटणे अक्षम करा</string>
@@ -968,12 +972,18 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_navigation_bar_style_entry_3">पारदर्शक</string>
   <string name="morphe_navigation_bar_style_entry_4">अपारदर्शक</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">ही शैली तुमच्या डिव्हाइसद्वारे किंवा YouTube आवृत्तीद्वारे समर्थित नसावी, ज्यामुळे लेआउट समस्या किंवा क्रॅश होऊ शकतात</string>
+  <string name="morphe_navigation_bar_glass_title">ग्लास नेव्हिगेशन बार सक्षम करा</string>
+  <string name="morphe_navigation_bar_glass_summary">नेव्हिगेशन बार एक तरंगता, गोलाकार, अर्धपारदर्शक कॅप्सूल म्हणून दर्शवतो. ओपेक नेव्हिगेशन बार स्टाईलसह उपलब्ध नाही</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">ग्लास अपॅसिटी</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">ग्लास नेव्हिगेशन बारची पारदर्शकता पातळी समायोजित करा (० पारदर्शक आहे, १०० अपॅक आहे)</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_toolbar_screen_summary">टूलबारमध्ये कोणते घटक दिसतात ते निवडा</string>
   <string name="morphe_hide_toolbar_chat_button_title">\'चॅट\' बटण लपवा</string>
   <string name="morphe_hide_toolbar_microphone_button_title">मायक्रोफोन बटण लपवा</string>
   <string name="morphe_hide_toolbar_search_button_title">शोध बटण लपवा</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">सक्षम केल्यावर मोर्फ सेटिंग्ज उघडते आणि धरल्यास YouTube सेटिंग्ज उघडते, स्वॅप करण्यासाठी अक्षम करा</string>
+  <string name="morphe_toolbar_buttons_order_title">टूलबार बटणांचा क्रम</string>
+  <string name="morphe_toolbar_buttons_order_summary">टूलबारमधील बटणांचा क्रम बदलण्यासाठी ती ड्रॅग करा</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">पॉपआउट मेनू</string>
   <string name="morphe_hide_player_flyout_summary">प्लेअर फ्लायआउटमध्ये कोणते घटक दिसतात ते निवडा</string>
@@ -1722,6 +1732,9 @@ AV1 सह व्हिडिओ प्लेबॅक अडखळू शकत
   <string name="morphe_niconico_comments_max_length_title">कमेंटची कमाल लांबी</string>
   <string name="morphe_niconico_comments_max_length_summary">यापेक्षा जास्त अक्षरे असलेल्या कमेंट्स लपवते. प्रत्येक इमोजी एक अक्षर मानला जातो</string>
   <string name="morphe_niconico_comments_max_length_no_limit">कोणतीही मर्यादा नाही</string>
+  <string name="morphe_niconico_comments_live_premieres_title">प्रीमियर्सवर दाखवा</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">संपलेल्या प्रीमियरवर दाखवा</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">संपलेल्या प्रीमियरची चॅट रिप्ले</string>
   <string name="morphe_live_chat_translate_screen_title">लाईव्ह चॅट भाषांतर</string>
   <string name="morphe_live_chat_translate_screen_summary">लाईव्ह चॅट आणि लाईव्ह चॅट रिप्ले संदेशांचे भाषांतर करा</string>
   <string name="morphe_live_chat_translate_title">लाईव्ह चॅटचे भाषांतर करा</string>

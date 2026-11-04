@@ -260,9 +260,8 @@ Wijzigingen zijn:
   <string name="morphe_comments_screen_title">Reacties</string>
   <string name="morphe_comments_screen_summary">Kies welke componenten verschijnen in de commentaarsectie</string>
   <string name="morphe_hide_comments_carousel_title">Schakel filter voor commentaarcarrousel in</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Zorg ervoor dat u de exacte naam van het carrouselitem invoert (bijv. Vraag, Hype deze video, Luister op YouTube Music)
-• Het verbergen van carrouselitems kan onbedoelde gevolgen hebben
-• Als alle carrouselitems verborgen zijn, wordt de gehele commentaarsectie ook verborgen"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Voer een trefwoord of volledige naam in (bijv. Ask, Community, Hype, Listen)
+• Het verbergen van alle items verbergt de gehele sectie met reacties"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Commenten carrousel filter</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Voer de namen van de commentaarcarrusel in om op te filteren, gescheiden door nieuwe regels</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI-chatsamenvatting verbergen</string>
@@ -595,6 +594,11 @@ Uw API-sleutel mag nooit worden gedeeld. Iedereen met toegang tot deze sleutel k
   <string name="morphe_vot_mymemory_quota_message_no_email">U heeft de gratis MyMemory-vertaling-quotum van vandaag bereikt (5.000 tekens). Voeg een MyMemory-e-mailadres toe in de instellingen om de dagelijkse limiet te verhogen tot 50.000 tekens, of schakel over naar een andere vertaaldienst</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">U heeft de MyMemory-vertaling-quotum van vandaag bereikt (50.000 tekens). Schakel over naar een andere vertaaldienst of probeer het morgen opnieuw</string>
   <string name="morphe_vot_mymemory_error">MyMemory-vertaling mislukt (status %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Sleepgrepen voor \'Later bekijken\' verbreden</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">De sleepgrepen van de video\'s in \'Later bekijken\' zijn makkelijker vast te pakken</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Snackbar voor verwijderen uit \'Later bekijken\' verbergen</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">De bevestiging wordt niet getoond nadat een video is verwijderd uit \'Later bekijken\'</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Loopvideo inschakelen</string>
   <string name="morphe_do_not_remember_loop_video_title">Loop video niet onthouden</string>
@@ -759,10 +763,10 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
 Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaardclient' naar 'TV Simply' of 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Schuiven om te zoeken inschakelen</string>
-  <string name="morphe_slide_to_seek_summary">Schakelt \'Schuif om te zoeken\' in in plaats van af te spelen op 2x snelheid wanneer je op de videospeler drukt en vasthoudt</string>
+  <string name="morphe_slide_to_seek_summary">Houd de video ingedrukt om te schuiven en te zoeken in plaats van af te spelen op 2x snelheid</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Tikken om te zoeken inschakelen</string>
-  <string name="morphe_tap_to_seek_summary">Tik gewoon op de schuifbalk om naar die positie te springen zonder deze te slepen</string>
+  <string name="morphe_tap_to_seek_summary">Tik overal op de zoekbalk om naar die positie te springen in plaats van te slepen</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Veeggebaar naar links</string>
   <string name="morphe_swipe_right_zone_title">Veeggebaar naar rechts</string>
@@ -935,24 +939,23 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Verberg Meldingen-knop</string>
   <string name="morphe_show_search_button_title">Toon Zoek-knop</string>
-  <string name="morphe_show_search_button_index_title">Zoek-knop positie</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Toon knop \'Later bekijken\'</string>
-  <string name="morphe_show_watch_later_button_index_title">Positie knop \'Later bekijken\'</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Later bekijken</string>
   <string name="morphe_show_settings_button_title">Toon Instellingen-knop</string>
-  <string name="morphe_show_settings_button_index_title">Instellingen-knop positie</string>
   <string name="morphe_show_settings_button_type_title">Actie van de instellingenknop</string>
   <string name="morphe_show_settings_button_type_summary">Opent Morphe-instellingen indien ingeschakeld, of YouTube-instellingen indien uitgeschakeld</string>
+  <string name="morphe_navigation_buttons_order_title">Volgorde van navigatieknoppen</string>
+  <string name="morphe_navigation_buttons_order_summary">Sleep de knoppen om hun volgorde in de navigatiebalk te wijzigen</string>
   <string name="morphe_swap_create_with_notifications_button_title">Wissel de knop \'Maken\' om met de knop \'Meldingen\'</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Als het wijzigen van deze instelling geen effect heeft, probeer dan over te schakelen naar de Incognitomodus</string>
   <string name="morphe_hide_navigation_button_labels_title">Navigatieknoppenlabels verbergen</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Verberg nieuwe contentstip</string>
   <string name="morphe_hide_navigation_bar_title">Verberg de navigatiebalk</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Hiermee wordt de navigatiebalk volledig verborgen, inclusief het tabblad 'Jij'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dit verbergt de navigatiebalk volledig, inclusief het tabblad 'Jij'.
 
-Om Instellingen te openen, schakel je de knop Instellingen in via Algemeen → Gereedschapsbalk → Instellingen weergeven"</string>
+Om toegang te krijgen tot Instellingen, schakel de Instellingen-knop in via Algemeen → Werkbalk → Toon Instellingen-knop"</string>
   <string name="morphe_narrow_navigation_buttons_title">Smalle navigatieknoppen inschakelen</string>
   <string name="morphe_narrow_navigation_buttons_summary">Vermindert de horizontale ruimte tussen knoppen</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Navigatieknoppen zonder labels uitschakelen</string>
@@ -969,12 +972,18 @@ Om Instellingen te openen, schakel je de knop Instellingen in via Algemeen → G
   <string name="morphe_navigation_bar_style_entry_3">Transparant</string>
   <string name="morphe_navigation_bar_style_entry_4">Ondoorzichtig</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Deze stijl wordt mogelijk niet ondersteund door je apparaat of YouTube-versie, wat kan leiden tot lay-outproblemen of crashes</string>
+  <string name="morphe_navigation_bar_glass_title">Glazen navigatiebalk inschakelen</string>
+  <string name="morphe_navigation_bar_glass_summary">Toont de navigatiebalk als een zwevende, afgeronde, doorschijnende capsule. Niet beschikbaar bij de ondoorzichtige stijl van de navigatiebalk</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Dekking van het glas</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Pas het transparantieniveau van de glazen navigatiebalk aan (0 is transparant, 100 is ondoorzichtig)</string>
   <string name="morphe_toolbar_screen_title">Werkbalk</string>
   <string name="morphe_toolbar_screen_summary">Kies welke componenten in de werkbalk verschijnen</string>
   <string name="morphe_hide_toolbar_chat_button_title">Verberg Chat-knop</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Verberg Microfoon-knop</string>
   <string name="morphe_hide_toolbar_search_button_title">Verberg Zoek-knop</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Wanneer ingeschakeld, opent tikken Morphe-instellingen en ingedrukt houden opent YouTube-instellingen, uitschakelen om te wisselen</string>
+  <string name="morphe_toolbar_buttons_order_title">Volgorde van werkbalkknoppen</string>
+  <string name="morphe_toolbar_buttons_order_summary">Sleep de knoppen om hun volgorde in de werkbalk te wijzigen</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Uitklapmenu</string>
   <string name="morphe_hide_player_flyout_summary">Vermindert de horizontale spatiëring tussen knoppen</string>
@@ -1729,7 +1738,7 @@ Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een 
   <string name="morphe_niconico_comments_live_premieres_title">Tonen bij premières</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Premières terwijl ze worden afgespeeld</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Tonen bij beëindigde premières</string>
-  <string name="morphe_niconico_comments_ended_premieres_summary">Chat-herhaling van premières die zijn beëindigd</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Chat-replay van beëindigde premières</string>
   <string name="morphe_live_chat_translate_screen_title">Vertaling livechat</string>
   <string name="morphe_live_chat_translate_screen_summary">Vertaal livechat- en livechat-replayberichten</string>
   <string name="morphe_live_chat_translate_title">Livechat vertalen</string>

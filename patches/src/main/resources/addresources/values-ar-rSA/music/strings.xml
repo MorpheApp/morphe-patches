@@ -614,6 +614,10 @@ tظهر المسارات التي تم تنزيلها هنا"</string>
   <string name="morphe_music_lyrics_hide_played_summary">إخفاء سطور الكلمات الموجودة فوق السطر الحالي</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">إخفاء الكلمات غير المشغّلة</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">إخفاء أسطر الكلمات أسفل السطر الجاري تشغيله على الشاشة.</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">خلفية ديناميكية</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">إظهار خلفية ضبابية مكونة من غلاف الألبوم خلف كلمات الأغاني</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">تحريك الخلفية الديناميكية</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">تحريك الخلفية أثناء التشغيل، وجعلها تنبض مع الموسيقى إذا كان لدى YouTube Music إذن الوصول إلى الميكروفون. قم بإيقاف التشغيل للحصول على خلفية ثابتة تستهلك طاقة أقل من البطارية</string>
   <string name="morphe_music_lyrics_mediasession_title">أظهار كلمات \"MediaSession\" في شاشة القفل</string>
   <string name="morphe_music_lyrics_mediasession_summary">يعرض السطر الحالي على شاشة القفل وAndroid Auto والبلوتوث. يتطلب Android 11 أو أحدث</string>
   <string name="morphe_music_lyrics_miniplayer_title">إظهار الكلمات في المشغّل المصغّر</string>
@@ -712,7 +716,7 @@ tظهر المسارات التي تم تنزيلها هنا"</string>
   <string name="morphe_music_lyrics_hide_info_title">إخفاء سطر الإسناد</string>
   <string name="morphe_music_lyrics_hide_info_summary">إخفاء سطر الإسناد الظاهر أسفل الكلمات.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">تبديل موضع الترجمة والرومنة</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">وضع ON يضع التعريب أو النقل الحرفي أسفل كلمات الأغنية والترجمة أعلى؛ وضع OFF يحافظ على التعريب أو النقل الحرفي أعلى والترجمة أسفل. يتم نقل القراءة الموضوعة فوق كل مقطعي معها، من فوق المقطع إلى أسفله</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">تبديل ترتيب عرض الترجمة والرومنة أسفل كلمات الأغاني</string>
   <string name="morphe_music_lyrics_force_center_title">توسيط كلمات الأغنية دائمًا</string>
   <string name="morphe_music_lyrics_force_center_summary">وضع ON يضع كل سطر في المنتصف ويتجاهل محاذاة المصدر، بما في ذلك جوانب الثنائي؛ وضع OFF يحافظ على المحاذاة التي تطلبها كلمات الأغنية</string>
   <string name="morphe_music_lyrics_providers_keep_one">يجب أن يبقى مقدم خدمة واحد على الأقل مفعّلًا</string>
@@ -720,6 +724,14 @@ tظهر المسارات التي تم تنزيلها هنا"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">التعريب أو النقل الحرفي</string>
   <string name="morphe_music_lyrics_romanization_provider_local">قاموس غير متصل</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">قائمة كلمات Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">روبي</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">قاموس بدون اتصال</string>
+  <string name="morphe_music_lyrics_ruby_style_title">نص روبي</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">هيراغانا (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">كاتاكانا (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">عرض زر روبي</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">انقر لتبديل قراءات روبي فوق كلمات الأغاني؛ اضغط مطولاً للتبديل بين الهيراغانا والكاتاكانا. يستخدم مزودي روبي المُمكّنين حسب ترتيبهم المذكور</string>
+  <string name="morphe_music_lyrics_ruby_generating">جاري إنشاء روبي...</string>
   <string name="morphe_music_lyrics_use_ai_section_title">اكتشاف الأقسام باستخدام الذكاء الاصطناعي</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">يستخدم فقط عندما لا يقدم مقدم الخدمة أي تسميات للأقسام مثل الجوقة أو الآية، والتي يكتشفها نموذجك المتوافق مع OpenAI بعد ذلك. تعديل الصف يفتح أيضًا تعليماته</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL نقطة نهاية API (مثل https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

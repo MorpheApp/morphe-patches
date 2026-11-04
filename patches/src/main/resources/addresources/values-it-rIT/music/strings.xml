@@ -623,6 +623,10 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_hide_played_summary">Nascondi le righe dei testi sopra la riga attualmente in riproduzione</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Copia i testi</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Salva il file sorgente dei testi</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Sfondo dinamico</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Mostra uno sfondo sfocato creato dalla copertina dell\'album dietro i testi</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Anima sfondo dinamico</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Sposta lo sfondo durante la riproduzione e fallo pulsare a ritmo di musica se YouTube Music ha l\'autorizzazione al microfono. Disattiva per uno sfondo statico che consumi meno batteria</string>
   <string name="morphe_music_lyrics_mediasession_title">Mostra i testi di MediaSession sulla schermata di blocco</string>
   <string name="morphe_music_lyrics_mediasession_summary">Mostra la riga corrente sullo schermo di blocco, Android Auto e Bluetooth. Richiede Android 11 o versioni successive</string>
   <string name="morphe_music_lyrics_miniplayer_title">Mostra i testi nel mini-player</string>
@@ -721,7 +725,7 @@ I testi provengono da servizi di terze parti che non sono affiliati, sponsorizza
   <string name="morphe_music_lyrics_hide_info_title">Nascondi la riga dei crediti</string>
   <string name="morphe_music_lyrics_hide_info_summary">Caricamento testi...</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Scambia traduzione e romanizzazione</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON mette la romanizzazione o la traslitterazione sotto i testi e la traduzione sopra; OFF mantiene la romanizzazione o la traslitterazione sopra e la traduzione sotto. Una lettura posizionata sopra ogni sillaba si muove con essa, dall\'alto della sua sillaba al basso di essa</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Inverte l\'ordine di visualizzazione di traduzione e romanizzazione sotto i testi</string>
   <string name="morphe_music_lyrics_force_center_title">Centra sempre i testi</string>
   <string name="morphe_music_lyrics_force_center_summary">ON mette ogni riga al centro e ignora l\'allineamento della sorgente, inclusi i lati del duetto; OFF mantiene l\'allineamento richiesto dai testi</string>
   <string name="morphe_music_lyrics_providers_keep_one">Almeno un provider deve rimanere acceso</string>
@@ -729,6 +733,14 @@ I testi provengono da servizi di terze parti che non sono affiliati, sponsorizza
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizzazione o traslitterazione</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Dizionario Offline</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Elenco parole Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Dizionario offline</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Script Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Mostra il pulsante Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Tocca per attivare/disattivare le letture ruby sopra i testi; tieni premuto per passare da hiragana a katakana. Utilizza i provider ruby abilitati nell\'ordine elencato</string>
+  <string name="morphe_music_lyrics_ruby_generating">Generazione ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Rileva sezioni con IA</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Utilizzato solo quando il provider non fornisce etichette di sezione come Ritornello o Strofa, che il tuo modello compatibile con OpenAI rileva. La modifica della riga apre anche il suo prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL endpoint API (es. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

@@ -630,6 +630,10 @@ Kukiyên pêwîst: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_hide_played_summary">Hêlên gotinên li ser hêla lêdanê ya niha veşêre</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Gotînên neyeşandî veşêre</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Hêlên gotinên stranê yên xwarê ya niha ya lêdanê veşire</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Paşbingehê dînamîk</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Paşbingeheke xizîb ku ji hunera albûmê li pişt gotinên stranê hatî çêkirin nîşan bide</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Paşbingehê dînamîk animate bike</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Di dema lîstkirinê de paşbingehê biherikîne, û heger YouTube Music destûra mîkrofonê hebe, wê li gorî muzîkê bi lêdan bide. Ji bo paşbingeheke bêtevî ku kêm bataryayê bi kar bîne, vê veguherîne</string>
   <string name="morphe_music_lyrics_mediasession_title">Gotinên MediaSession ên li ser ekranê ya qiflockê nîşan bide</string>
   <string name="morphe_music_lyrics_mediasession_summary">Hêla niha li ser ekrana qulîkirî, Android Auto û Bluetooth nîşan dide. Android 11 an nûtir pêwîst e</string>
   <string name="morphe_music_lyrics_miniplayer_title">Gotinên miniplayer-î nîşan bide</string>
@@ -728,7 +732,7 @@ Gotinên stranê ji xizmetên third-party tên ku bi Morphe ve girêdayî nîn i
   <string name="morphe_music_lyrics_hide_info_title">Xuşana xeta kredê veşêre</string>
   <string name="morphe_music_lyrics_hide_info_summary">Hêla kredîtê ya ku li xwarê gotinên stranê tê nîşandan veşire</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Wergera û romanîzasyonê biguherîne</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">VE romanîzekirinê an translîterasyonê li bin gotinên stranê û wergêran li ser datîne; GIRTÎ romanîzekirinê an translîterasyonê li ser û wergêran li bin diheleve. Xwendineka ku li ser her heca hatiye danîn, bi wê re diçe, ji ser heca xwe ber bi binê wê ve</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Rêza nîşandana wergera û romanîzasyonê li bin gotinên stranê diguhêre</string>
   <string name="morphe_music_lyrics_force_center_title">Hemişê gotinên stranê navendî bike</string>
   <string name="morphe_music_lyrics_force_center_summary">ON her rêyê dike navîn û hevlîna çavkaniyê (bi tevba aliyên duetê re) paşguh nake; OFF hevlîna ku gotinên stranê dixwazin diparêze</string>
   <string name="morphe_music_lyrics_providers_keep_one">Divê herî kêm yek dabinker vekirî be</string>
@@ -736,6 +740,14 @@ Gotinên stranê ji xizmetên third-party tên ku bi Morphe ve girêdayî nîn i
   <string name="morphe_music_lyrics_romanization_provider_title">Romanîzakî yan translîterasyon</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Ferhenga Oflaîn</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Lîsteya Peyvên Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Ferhenga Offline</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Skrîpta Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Bişkoja nîşandana Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Ji bo vekirin/girtina xwendinên ruby li ser gotinên stranê lê bide; ji bo guherandina navbera hiragana û katakana dirêj bistê. Dabînkerên ruby yên çalak bi rêzî yên nivîsî bikar tîne</string>
+  <string name="morphe_music_lyrics_ruby_generating">Ruby tê hilberandin…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Beşan bi AI detekte bike</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Tenê tê bikaranîn gava dabinker tuyî nivîsên beşan wekî Chorus yan Verse nafiriste, ku modela we ya li gorî OpenAI piştrast dike. Edîtkirina rêyê her wiha prompta wê vekire</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-ê endpoint-ê API (mînak: https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

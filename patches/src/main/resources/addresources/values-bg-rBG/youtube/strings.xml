@@ -101,7 +101,7 @@ Second \"item\" text"</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Скриване на бутона \"Уведоми ме\"</string>
-  <string name="morphe_hide_notify_me_button_summary">Скрива бутона за напомняне за насрочени потоци на живо и премиери</string>
+  <string name="morphe_hide_notify_me_button_summary">Скрива бутона за напомняне за планирани стриймове на живо и премиери</string>
   <string name="morphe_hide_playables_title">Игри в YouTube</string>
   <string name="morphe_hide_playables_summary">Скрива функцията, която ви позволява да играете игри</string>
   <string name="morphe_hide_search_term_thumbnails_title">Скрий миниатюрите на условията за търсене</string>
@@ -260,9 +260,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">Коментари</string>
   <string name="morphe_comments_screen_summary">Изберете кои компоненти да се показват в секцията с коментари</string>
   <string name="morphe_hide_comments_carousel_title">Активиране на филтър за кръгли прегледи на коментари</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Уверете се, че въвеждате точното име на елемента на карусела (напр. Попитай, Харесай това видео, Слушай в YouTube Music)
-• Скриването на елементи от карусела може да има непредвидени странични ефекти
-• Ако всички елементи от карусела са скрити, цялата секция с коментари също ще бъде скрита"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Въведете ключова дума или пълно име (напр. Ask, Community, Hype, Listen)
+• Скриването на всички елементи крие целия раздел с коментари"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Активиране на филтър за кръгли прегледи на коментари</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Въведете имената на каруселите с коментари, за да филтрирате, разделени с нови редове</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Скрийте или покажете AI чат сумари</string>
@@ -595,6 +594,11 @@ Second \"item\" text"</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Използвахте дневната безплатна квота за превод на MyMemory (5000 знака). Добавете имейл адрес на MyMemory в настройките, за да увеличите дневния лимит до 50 000 знака, или превключете към друга услуга за превод</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Използвахте дневната квота за превод на MyMemory (50 000 знака). Превключете към друга услуга за превод или опитайте отново утре</string>
   <string name="morphe_vot_mymemory_error">MyMemory преводът не успя (състояние %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Разширяване на дръжките за плъзгане в \"Гледайте по-късно\"</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Дръжките за плъзгане на видеоклиповете в \"Гледайте по-късно\" са по-лесни за хващане</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Скриване на известието при премахване от \"Гледайте по-късно\"</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Потвърждението не се показва след премахване на видеоклип от \"Гледайте по-късно\"</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Версията е фалшира</string>
   <string name="morphe_do_not_remember_loop_video_title">Не запомни цикъла на видеото</string>
@@ -759,10 +763,10 @@ Second \"item\" text"</string>
 За да поправите това, включете „Заместване на видео потоци“ и променете „клиент по подразбиране“ на „TV Simply“ или „visionOS“"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Зареждаването ще има твърд фон</string>
-  <string name="morphe_slide_to_seek_summary">Активира плъзгане за търсене вместо възпроизвеждане със скорост 2x при натискане и задържане на видео плейъра</string>
+  <string name="morphe_slide_to_seek_summary">Натиснете и задръжте видеото, за да плъзгате и търсите вместо да възпроизвеждате с двойна скорост 2x</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Прецизно сваляне на позиция е включено</string>
-  <string name="morphe_tap_to_seek_summary">Просто докоснете лентата за търсене, за да отидете до тази позиция, без да я плъзгате</string>
+  <string name="morphe_tap_to_seek_summary">Докоснете където угодно върху лентата за търсене, за да скочите до тази позиция вместо да плъзгате</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Жест за плъзгане наляво</string>
   <string name="morphe_swipe_right_zone_title">Жест за плъзгане надясно</string>
@@ -937,24 +941,23 @@ Second \"item\" text"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Скрий менюто „Таймер за заспиване“</string>
   <string name="morphe_show_search_button_title">Скрий менюто „Повторение на видео“</string>
-  <string name="morphe_show_search_button_index_title">Скрий менюто „Режим на околната среда“</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Показване на бутона „Гледайте по-късно\"</string>
-  <string name="morphe_show_watch_later_button_index_title">Позиция на бутона „Гледайте по-късно\"</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Гледайте по-късно</string>
   <string name="morphe_show_settings_button_title">Скрий менюто „Стабилна сила на звука“</string>
-  <string name="morphe_show_settings_button_index_title">Скрий менюто „Помощ и обратна връзка“</string>
   <string name="morphe_show_settings_button_type_title">Действие на бутона за Настройки</string>
   <string name="morphe_show_settings_button_type_summary">Скрий менюто „Скорост на възпроизвеждане“</string>
+  <string name="morphe_navigation_buttons_order_title">Ред на бутоните за навигация</string>
+  <string name="morphe_navigation_buttons_order_summary">Плъзгайте бутоните, за да промените техния ред в навигационната лента</string>
   <string name="morphe_swap_create_with_notifications_button_title">Разменя бутона \"Създаване\" с бутона \"Известия\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Ако промяната на тази настройка не влезе в сила, опитайте да превключите в режим на инкогнито</string>
   <string name="morphe_hide_navigation_button_labels_title">Етикетите са скрити</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Скриване на точката за ново съдържание</string>
   <string name="morphe_hide_navigation_bar_title">Скриване на лентата за навигация</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Това напълно скрива навигационната лента, включително раздела „Вие“.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Това напълно скрива навигационната лента, включително раздела \"Вие\".
 
-За достъп до Настройки, активирайте бутона Настройки чрез Общи → Лента с инструменти → Покажи настройки"</string>
+За достъп до Настройки активирайте бутона Настройки чрез Общи → Инструменти → Показване на бутона Настройки"</string>
   <string name="morphe_narrow_navigation_buttons_title">Включи тесни навигационни бутони</string>
   <string name="morphe_narrow_navigation_buttons_summary">Скрий менюто „Заключване на екрана“</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Деактивиране на навигационните бутони без етикети</string>
@@ -971,12 +974,18 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_entry_3">Прозрачен</string>
   <string name="morphe_navigation_bar_style_entry_4">Непрозрачен</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Този стил може да не се поддържа от вашето устройство или версия на YouTube и може да причини проблеми с оформянето или сривове</string>
+  <string name="morphe_navigation_bar_glass_title">Активирай навигационната лента със стъклен ефект.</string>
+  <string name="morphe_navigation_bar_glass_summary">Показва навигационната лента като плаваща, заоблена, полупрозрачна капсула. Не е налично при стила \"Непрозрачна\" навигационна лента</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Непрозрачност на стъклото</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Регулирайте нивото на прозрачност на стъклената навигационна лента (0 е прозрачно, 100 е непрозрачно)</string>
   <string name="morphe_toolbar_screen_title">Тойбър</string>
   <string name="morphe_toolbar_screen_summary">Изберете кои компоненти да се показват в лентата с инструменти</string>
   <string name="morphe_hide_toolbar_chat_button_title">Скрий бутона за чат</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Плаващ бутон за микрофона</string>
   <string name="morphe_hide_toolbar_search_button_title">Скриване на бутона за Търсене</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Когато е активирано, докосването отваря настройките на Morphe, а продължителното натискане отваря настройките на YouTube, деактивирайте, за да ги размените</string>
+  <string name="morphe_toolbar_buttons_order_title">Ред на бутоните в лентата с инструменти</string>
+  <string name="morphe_toolbar_buttons_order_summary">Плъзгайте бутоните, за да промените техния ред в лентата с инструменти</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Бутонът за коментари се показва</string>
   <string name="morphe_hide_player_flyout_summary">Изберете кои компоненти да се показват в падащото меню</string>

@@ -630,6 +630,10 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_hide_played_summary">ტექსტის იმ ხაზების დამალვა, რომლებიც იმყოფება მიმდინარე სათამაშო ხაზის ზემოთ</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">დამალეთ განუთამაშებელი ტექსტი</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">დამალეთ ტექსტის სტრიქონები მიმდინარე სტრიქონის ქვემოთ</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">დინამიკური ფონი</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">აჩვენეთ ალბომის გარეკანისგან შექმნილი ბუნდოვანი ფონი ტექსტის უკან</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">დინამიკური ფონის ანიმაცია</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">გადააადგილეთ ფონი დაკვრისას და დაამთხვიეთ იგი მუსიკას, თუ YouTube Music-ს აქვს მიკროფონის უფლება. გამორთეთ სტატიკური ფონისთვის, რომელიც ნაკლებ ელემენტს მოიხმარს</string>
   <string name="morphe_music_lyrics_mediasession_title">აჩვენე MediaSession-ის ტექსტები ჩაკეტილ ეკრანზე</string>
   <string name="morphe_music_lyrics_mediasession_summary">აჩვენებს მიმდინარე ხაზს ბლოკირების ეკრანზე, Android Auto-სა და Bluetooth-ზე. საჭიროა Android 11 ან უფრო ახალი ვერსია</string>
   <string name="morphe_music_lyrics_miniplayer_title">აჩვენე მინი-პლეიერის ტექსტები</string>
@@ -728,7 +732,7 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_hide_info_title">მფლობელის ხაზის დამალვა</string>
   <string name="morphe_music_lyrics_hide_info_summary">დამალეთ ტექსტის ქვემოთ მოცემული მფლობელის ხაზი</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">თარგმანისა და რომანიზაციის ადგილების შეცვლა</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON განათავსებს რომანიზაციას ან ტრანსლიტერაციას ტექსტის ქვემოთ, ხოლო თარგმანს - ზემოთ; OFF ტოვებს რომანიზაციას ან ტრანსლიტერაციას ზემოთ, ხოლო თარგმანს - ქვემოთ. თითოეულ მარცვალზე განთავსებული წაკითხვის ფორმა მოყვება მას და გადაინაცვლებს მარცვლის ზემოდან ქვემოთ</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ცვლის თარგმანისა და რომანიზაციის ჩვენების თანმიმდევრობას ტექსტის ქვემოთ</string>
   <string name="morphe_music_lyrics_force_center_title">ტექსტის მუდმივად ცენტრირება</string>
   <string name="morphe_music_lyrics_force_center_summary">ON განათავსებს ყველა ხაზს ცენტრში და უგულებელყოფს წყაროს გასმას, დუეტის მხარეების ჩათვლით; OFF ინარჩუნებს ტექსტისთვის განსაზღვრულ გასმას</string>
   <string name="morphe_music_lyrics_providers_keep_one">მინიმუმ ერთი პროვაიდერი უნდა დარჩეს ჩართული</string>
@@ -736,6 +740,14 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_romanization_provider_title">რომანიზაცია ან ტრანსლიტერაცია</string>
   <string name="morphe_music_lyrics_romanization_provider_local">ოფლაინ ლექსიკონი</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime-ის სიტყვების სია</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">ოფლაინ ლექსიკონი</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby სკრიპტი</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">ჰირაღანა (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">კატაკანა (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Ruby-ს ჩვენების ღილაკი</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">დააჭირეთ ტექსტის ზემოთ ruby ჩანაწერების ჩასართავად/მოსაშორებლად; გრძელი დაჭერით გადაირთვეთ ჰირაღანასა და კატაკანას შორის. გამოიყენება ჩართული ruby პროვაიდერები მითითებული თანმიმდევრობით</string>
+  <string name="morphe_music_lyrics_ruby_generating">ruby-ს გენერირება…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">სექციების აღმოჩენა AI-ით</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">გამოიყენება მხოლოდ მაშინ, როდესაც პროვაიდერი არ გზავნის სექციების მარკირებებს, როგორიცაა Chorus ან Verse, რასაც შემდეგ თქვენი OpenAI-ს თავსებადი მოდელი აღმოაჩენს. სტრიქონის რედაქტირება ასევე ხსნის მის პრომპტს</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint-ის URL (მაგ. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

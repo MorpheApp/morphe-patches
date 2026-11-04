@@ -91,7 +91,7 @@ Second \"item\" text"</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Fela \"Láttu mig vita\" hnappinn</string>
-  <string name="morphe_hide_notify_me_button_summary">Felur áminningarhnappinn fyrir áætlaðar útsendingar í beinni og frumsýningar.</string>
+  <string name="morphe_hide_notify_me_button_summary">Fela áminningahnappinn fyrir fyrirframskipaðum beinum streymingum og úrvinnuvídeókum</string>
   <string name="morphe_hide_playables_title">Fela Playables</string>
   <string name="morphe_hide_playables_summary">Hyl komstu</string>
   <string name="morphe_hide_search_term_thumbnails_title">Fela leitarniðurstöðum</string>
@@ -250,9 +250,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">Athugasemdir</string>
   <string name="morphe_comments_screen_summary">Veldu hvaða þættir birtast í athugasmdakassanum</string>
   <string name="morphe_hide_comments_carousel_title">Vírúð athugasemda karolínum</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Gakktu úr skugga um að slá inn nákvæmt nafn á hringekjuhlutnum (td. Ask, Hype this video, Listen on YouTube Music)
-• Það að fela hringekjuhluti getur haft óvæntar aukaverkanir
-• Ef allir hringekjuhlutir eru falnir, verður allur athugasemdakaflinn einnig falinn"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Sláðu inn lykilorð eða fullt nafn (t.d. Ask, Community, Hype, Listen)
+• Ef allum atriðum er falið er öll athugasemdadeildin falin"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Athugasemda karolínum</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Sláðu inn athugasmdahreyfingar nöfnin til að síðast, aðskilin með nýjar línur</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Fela gerviræðissamanbréf</string>
@@ -486,7 +485,7 @@ Eftir að myndband með Ask hnappi hefur verið opnað einu sinni, virkar eiginl
   <string name="morphe_ryd_feed_like_ratio_title">Sýna hlutfall einskorðunar viðmyndar fæðis</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Leita í athugasmdum</string>
-  <string name="morphe_search_comments_summary">Ýttu á leitunarhnappinn í athugasemdum til að sýna aðeins hlaðnar athugasemdir sem innihalda öll leitarlitin. Settu orð í gegnsemi til að leita að setningu</string>
+  <string name="morphe_search_comments_summary">Snertu leitahnappinn í athugasemdum til að sýna aðeins hlaðnar athugasemdir sem innihalda öll leitarljórsónin. Settu orð í gæslum til að leita að setningu</string>
   <string name="morphe_search_comments_dialog_title">Leita í athugasmdum</string>
   <string name="morphe_search_comments_hint">Leitaorð</string>
   <string name="morphe_search_comments_search">Leita</string>
@@ -585,6 +584,11 @@ API lykillinn þinn ætti aldrei að deila. Allir með aðgang að honum geta no
   <string name="morphe_vot_mymemory_quota_message_no_email">Þú hefur notað daglegu frí þýðingatakmörkun MyMemory (5.000 stafir). Bættu við MyMemory netfangi í stillingum til að auka daglegu takmarkanirnar í 50.000 stafir, eða skiptu yfir á annan þýðingarþjónustu</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Þú hefur notað MyMemory þýðingatakmörkun dagsins (50.000 stafir). Skiptu yfir á annan þýðingarþjónustu eða reyndu aftur á morgun</string>
   <string name="morphe_vot_mymemory_error">MyMemory þýðing mistókst (staða %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Víkka draga- og sleppa-hnappi fyrir Horfa síðar</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Draga- og sleppa-hnappir fyrir myndband í Horfa síðar eru auðveldari í meðhöndlun</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Fela tilkynningu um fjalskilning frá Horfa síðar</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Staðfesting er ekki sýnd eftir að myndbandi er fjarlægt úr Horfa síðar</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Vírúð lykkjuframkvæmd myndbandsins</string>
   <string name="morphe_do_not_remember_loop_video_title">Kemur í veg fyrir að múnari útforðagildumgrunnur</string>
@@ -747,10 +751,10 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
 Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefnu forriti' í 'TV Simply' eða 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Vírúð renna til leit</string>
-  <string name="morphe_slide_to_seek_summary">Virkar að slá til breytilegrar sem þurfa að vera haldar eða halda vídeó leikmanninum</string>
+  <string name="morphe_slide_to_seek_summary">Ef þú heldur niðri á myndbandinu geturðu rennslunni til að leita í stað þess að spila í 2x hraða</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Virkja snertu til að leita</string>
-  <string name="morphe_tap_to_seek_summary">Stilltu tákn kökkur</string>
+  <string name="morphe_tap_to_seek_summary">Snertu hvar sem er á leitarstikunni til að hoppa beint í það staðsetningu í stað þess að draga</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Hnigun til vinstra</string>
   <string name="morphe_swipe_right_zone_title">Hægri sveifluherðing</string>
@@ -925,19 +929,21 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Felur Tilkynninga hnappinn</string>
   <string name="morphe_show_search_button_title">Sýnir Leita hnappinn</string>
-  <string name="morphe_show_search_button_index_title">Leita hnappur staðsetning</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">Sýnir Stillingar hnappinn</string>
-  <string name="morphe_show_settings_button_index_title">Stillingar hnappur staðsetning</string>
   <string name="morphe_show_settings_button_type_title">Starfa árásnstjórnstikur</string>
   <string name="morphe_show_settings_button_type_summary">Opnar Morphe stillingar þegar virkjað, eða YouTube stillingar þegar óvirkt</string>
+  <string name="morphe_navigation_buttons_order_title">Röð vistræðistækja</string>
+  <string name="morphe_navigation_buttons_order_summary">Dragið hnappana til að breyta röð þeirra í vistræðisstangunni</string>
   <string name="morphe_swap_create_with_notifications_button_title">Skildu við skipti Create hnappinn og Notifications hnappinn</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Ef breyting á þessari stillingu hefur ekki áhrif skaltu prófa að skipta yfir í leynistillinga ham</string>
   <string name="morphe_hide_navigation_button_labels_title">Fela stýrihnappamerki</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Fela punkt fyrir nýtt efni</string>
   <string name="morphe_hide_navigation_bar_title">Fela stjórnstikur</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Þetta felir aðallega leiðsagnarstikuna alveg, þar á meðal flipann „Þú“. \n\nTil að fá aðgang að Stillingum, virkjaðu hnappinn Stillingar í gegnum Almennt → Verkfærastika → Sýna stillingar"</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Þetta felur siglingarslána algjörlega, þar á meðal flipann \"Þú\".
+
+Til að fá aðgang að Stillingum, virkjaðu stillingahnappinn í gegnum Almennt → Verkfæratól → Sýna stillingahnapp"</string>
   <string name="morphe_narrow_navigation_buttons_title">Virkja þrengri stjórnunarhnappa</string>
   <string name="morphe_narrow_navigation_buttons_summary">Minnkar horna fjarlægð milli hnappa</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Slökkva á flakkhnöppum án merkimiða</string>
@@ -954,12 +960,18 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_navigation_bar_style_entry_3">Gagnsætt</string>
   <string name="morphe_navigation_bar_style_entry_4">Ógagnsætt</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Þessi stíll gæti ekki ráðinn af tækinu þínu eða YouTube útgáfunni og getur valdið vandamálum við uppsetningu eða hruni</string>
+  <string name="morphe_navigation_bar_glass_title">Virkja glerstigið í vistræðisstangu</string>
+  <string name="morphe_navigation_bar_glass_summary">Sýnir vistunarbjálkana sem svifandi, rounded, gjalfæran capsule. Ekki aðgengilegt með Opaque vistunarbjálkastíl</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Gjalfærni gleris</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Stilltu gegnsæi gler-vistunarbjálkans (0 er gegnsætt, 100 er ógegnsætt)</string>
   <string name="morphe_toolbar_screen_title">Tólaborð</string>
   <string name="morphe_toolbar_screen_summary">Veldu hvaða þættir birtast á verkfærastikunni</string>
   <string name="morphe_hide_toolbar_chat_button_title">Fela chat á hnappinn</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Felur Hljóðnema hnappinn</string>
   <string name="morphe_hide_toolbar_search_button_title">Felur Leita hnappinn</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Þegar virkt, opnar ýta á Morphe stillingar og langt ýta á YouTube stillingar, óvirkt til að skipta út</string>
+  <string name="morphe_toolbar_buttons_order_title">Röð hnappa í tólstangunni</string>
+  <string name="morphe_toolbar_buttons_order_summary">Dragið hnappana til að breyta röð þeirra í tólstangunni</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flytandi valmynd</string>
   <string name="morphe_hide_player_flyout_summary">Veldu hvaða þættir birtast í fljótandi glugganum</string>
@@ -1685,6 +1697,9 @@ Myndbandsspilun með AV1 getur hrickast eða skotið ramma"</string>
   <string name="morphe_niconico_comments_max_length_title">Hámarks lengd athugasemdar</string>
   <string name="morphe_niconico_comments_max_length_summary">Fela athugasemdir sem innihalda fleiri staf en þetta. Hver tiltekni tákn taldist eins og einn stafur</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Engin takmörkun</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Sýna í úrvinnuvídeókum</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Sýna í endaðum úrvinnuvídeókum</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Spilun aftur á spjalli fyrir úrvinnuðar frumsýningar</string>
   <string name="morphe_live_chat_translate_screen_title">Þýðing á beinsendum spjallum</string>
   <string name="morphe_live_chat_translate_screen_summary">Þýðir skilaboð í beinsendum spjallum og endspilunum þeirra</string>
   <string name="morphe_live_chat_translate_title">Þýða beinsenda spjall</string>

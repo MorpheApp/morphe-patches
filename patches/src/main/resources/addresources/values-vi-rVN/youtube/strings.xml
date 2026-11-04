@@ -101,7 +101,7 @@ Các thay đổi bao gồm:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ẩn nút \"Thông báo cho tôi\"</string>
-  <string name="morphe_hide_notify_me_button_summary">Ẩn nút nhắc nhở cho các buổi phát trực tiếp và buổi ra mắt đã lên lịch</string>
+  <string name="morphe_hide_notify_me_button_summary">Ẩn nút thông báo các buổi phát trực tiếp và video sắp diễn ra</string>
   <string name="morphe_hide_playables_title">Ẩn Chơi game</string>
   <string name="morphe_hide_playables_summary">Ẩn tính năng cho phép bạn chơi game trên Youtube</string>
   <string name="morphe_hide_search_term_thumbnails_title">Ẩn hình thu nhỏ của từ khóa tìm kiếm</string>
@@ -260,9 +260,8 @@ Các thay đổi bao gồm:
   <string name="morphe_comments_screen_title">Bình luận</string>
   <string name="morphe_comments_screen_summary">Chọn những thành phần sẽ hiển thị trong phần bình luận</string>
   <string name="morphe_hide_comments_carousel_title">Bật bộ lọc bình luận</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Hãy chắc chắn rằng bạn nhập chính xác tên mục (ví dụ: Đặt câu hỏi, Nghe trên YouTube Music)
-• Ẩn các mục cũng có thể gây lỗi giao diện
-• Nếu ẩn tất cả các mục thì toàn bộ phần bình luận cũng bị ẩn theo"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Nhập từ khóa hoặc tên đầy đủ (ví dụ: Ask, Community, Hype, Listen)
+• Ẩn tất cả các mục sẽ ẩn toàn bộ phần bình luận"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Cài đặt bộ lọc</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Nhập tên mục bình luận mà bạn muốn lọc, mỗi dòng một mục</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Ẩn tóm tắt cuộc trò chuyện do AI tạo</string>
@@ -595,6 +594,11 @@ Tuyệt đối không được chia sẻ khoá API. Bởi vì, bất kỳ ai có
   <string name="morphe_vot_mymemory_quota_message_no_email">Bạn đã dùng hết hạn mức dịch miễn phí của MyMemory cho hôm nay (5.000 ký tự). Hãy thêm email MyMemory trong phần Cài đặt để nâng giới hạn hằng ngày lên 50.000 ký tự hoặc chuyển sang dịch vụ dịch khác</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Bạn đã dùng hết hạn mức dịch miễn phí của MyMemory cho hôm nay (5.000 ký tự). Hãy chuyển sang dịch vụ dịch khác hoặc thử lại vào ngày mai</string>
   <string name="morphe_vot_mymemory_error">Dịch qua MyMemory thất bại (trạng thái %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Mở rộng tay cầm kéo Xem sau</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Các tay cầm kéo của video Xem sau sẽ dễ nắm bắt hơn</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Ẩn thông báo xóa Xem sau</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Thông báo xác nhận sẽ không hiển thị sau khi một video bị xóa khỏi Xem sau</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Bật video lặp lại</string>
   <string name="morphe_do_not_remember_loop_video_title">Không ghi nhớ trạng thái lặp lại video</string>
@@ -759,10 +763,10 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
 Để khắc phục, hãy bật 'Giả mạo các luồng video' và đổi 'Máy khách mặc định' thành 'TV Simply' hoặc 'visionOS'."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Bật vuốt để tua</string>
-  <string name="morphe_slide_to_seek_summary">Bật vuốt để tua thay vì phát video 2x khi bấm giữ trong trình phát</string>
+  <string name="morphe_slide_to_seek_summary">Nhấn và giữ video để trượt và tua thay vì phát ở tốc độ 2x</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Bật chạm để tua</string>
-  <string name="morphe_tap_to_seek_summary">Chỉ cần chạm vào thanh tiến trình để tua tới vị trí đó chứ không cần kéo</string>
+  <string name="morphe_tap_to_seek_summary">Nhấn vào bất kỳ đâu trên thanh tua để nhảy đến vị trí đó thay vì kéo</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Cử chỉ vuốt bên trái</string>
   <string name="morphe_swipe_right_zone_title">Cử chỉ vuốt bên phải</string>
@@ -937,24 +941,23 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Ẩn nút Thông báo</string>
   <string name="morphe_show_search_button_title">Hiện nút Tìm kiếm</string>
-  <string name="morphe_show_search_button_index_title">Vị trí nút Tìm kiếm</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Hiện nút Xem sau</string>
-  <string name="morphe_show_watch_later_button_index_title">Vị trí nút Xem sau</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Xem sau</string>
   <string name="morphe_show_settings_button_title">Hiện nút Cài đặt</string>
-  <string name="morphe_show_settings_button_index_title">Vị trí nút Cài đặt</string>
   <string name="morphe_show_settings_button_type_title">Thao tác nút cài đặt</string>
   <string name="morphe_show_settings_button_type_summary">Mở cài đặt Morphe khi bật, hoặc mở cài đặt YouTube khi tắt</string>
+  <string name="morphe_navigation_buttons_order_title">Thứ tự các nút điều hướng</string>
+  <string name="morphe_navigation_buttons_order_summary">Kéo các nút để thay đổi thứ tự của chúng trong thanh điều hướng</string>
   <string name="morphe_swap_create_with_notifications_button_title">Đổi chỗ nút Tạo với nút Thông báo</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Nếu tắt đi bật lại cài đặt này cũng không có thay đổi gì, bạn có thể thử chuyển sang chế độ Ẩn danh</string>
   <string name="morphe_hide_navigation_button_labels_title">Ẩn tên nút điều hướng</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ẩn dấu chấm nội dung mới</string>
   <string name="morphe_hide_navigation_bar_title">Ẩn thanh điều hướng</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Thao tác này hoàn toàn ẩn thanh điều hướng, bao gồm cả tab 'Bạn'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Thao tác này sẽ ẩn hoàn toàn thanh điều hướng, bao gồm cả tab 'Bạn'.
 
-Để truy cập Cài đặt, hãy bật nút Cài đặt qua Tổng quát → Thanh công cụ → Hiển thị Cài đặt"</string>
+Để truy cập Cài đặt, hãy bật nút Cài đặt qua Cài đặt chung → Thanh công cụ → Hiển thị nút Cài đặt"</string>
   <string name="morphe_narrow_navigation_buttons_title">Thu hẹp nút điều hướng</string>
   <string name="morphe_narrow_navigation_buttons_summary">Giảm khoảng cách ngang giữa các nút</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Tắt các nút điều hướng không có nhãn</string>
@@ -971,12 +974,18 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_navigation_bar_style_entry_3">Trong suốt</string>
   <string name="morphe_navigation_bar_style_entry_4">Đục</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Kiểu này có thể không được thiết bị hoặc phiên bản YouTube của bạn hỗ trợ, và có thể gây ra sự cố bố cục hoặc treo ứng dụng</string>
+  <string name="morphe_navigation_bar_glass_title">Bật thanh điều hướng dạng kính</string>
+  <string name="morphe_navigation_bar_glass_summary">Hiển thị thanh điều hướng dưới dạng một viên nang mờ, bo góc và nổi. Không khả dụng với kiểu thanh điều hướng Đục</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Độ mờ của kính</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Điều chỉnh mức độ trong suốt của thanh điều hướng dạng kính (0 là trong suốt, 100 là mờ)</string>
   <string name="morphe_toolbar_screen_title">Thanh công cụ</string>
   <string name="morphe_toolbar_screen_summary">Chọn những thành phần sẽ xuất hiện trên thanh công cụ</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ẩn nút Trò chuyện</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ẩn nút Micro</string>
   <string name="morphe_hide_toolbar_search_button_title">Ẩn nút Tìm kiếm</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Khi bật, bấm sẽ mở Cài đặt Morphe và giữ sẽ mở Cài đặt YouTube, tắt để đổi ngược lại</string>
+  <string name="morphe_toolbar_buttons_order_title">Thứ tự các nút thanh công cụ</string>
+  <string name="morphe_toolbar_buttons_order_summary">Kéo các nút để thay đổi thứ tự của chúng trong thanh công cụ</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu tuỳ chọn</string>
   <string name="morphe_hide_player_flyout_summary">Chọn những thành phần sẽ xuất hiện trong menu tùy chọn</string>
@@ -1728,10 +1737,10 @@ Tự động ghi là tùy chọn. Nó dừng lại khi ở chế độ ẩn danh
   <string name="morphe_niconico_comments_max_length_no_limit">Không giới hạn</string>
   <string name="morphe_niconico_comments_live_streams_title">Hiện trên các luồng trực tiếp</string>
   <string name="morphe_niconico_comments_live_streams_summary">Các luồng trực tiếp và bản phát lại của chúng</string>
-  <string name="morphe_niconico_comments_live_premieres_title">Hiện trên các buổi công chiếu</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Hiển thị trên Video sắp diễn ra</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Các buổi công chiếu trong khi đang phát</string>
-  <string name="morphe_niconico_comments_ended_premieres_title">Hiện trên các buổi công chiếu đã kết thúc</string>
-  <string name="morphe_niconico_comments_ended_premieres_summary">Phát lại chat của các buổi công chiếu đã kết thúc</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Hiển thị trên các buổi Công chiếu đã kết thúc</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Phát lại chat của các buổi Công chiếu đã kết thúc</string>
   <string name="morphe_live_chat_translate_screen_title">Dịch trò chuyện trực tiếp</string>
   <string name="morphe_live_chat_translate_screen_summary">Dịch các tin nhắn trò chuyện trực tiếp và phát lại trò chuyện trực tiếp</string>
   <string name="morphe_live_chat_translate_title">Dịch trò chuyện trực tiếp</string>

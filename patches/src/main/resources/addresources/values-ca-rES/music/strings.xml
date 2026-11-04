@@ -630,6 +630,10 @@ Cookies requerides: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_hide_played_summary">Ocultar les línies de lets per sobre de la línia que s\'està reproduint actualment</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Ocultar lets no reproduïdes</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Ocultar les línies de lets per sota de la línia que s\'està reproduint actualment</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Fons dinàmic</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Mostra un fons desenfocat creat a partir de la portada de l\'àlbum darrere de les lletres</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animar el fons dinàmic</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Mou el fons mentre es reprodueix, i haz-lo pulsar amb la música si YouTube Music té el permís del micròfon. Desactiva\'ho per tenir un fons estàtic que consumeixi menys bateria</string>
   <string name="morphe_music_lyrics_mediasession_title">Mostrar les lets de MediaSession a la pantalla de bloqueig</string>
   <string name="morphe_music_lyrics_mediasession_summary">Mostra la línia actual a la pantalla de bloqueig, Android Auto i Bluetooth. Requereix Android 11 o posterior</string>
   <string name="morphe_music_lyrics_miniplayer_title">Mostrar lletres al miniplayer</string>
@@ -728,7 +732,7 @@ Les lletres provenen de serveis de tercers que no estan afiliats, patrocinats ni
   <string name="morphe_music_lyrics_hide_info_title">Ocultar línia de crèdits</string>
   <string name="morphe_music_lyrics_hide_info_summary">Oculta la línia de crèdits que apareix sota la lletra</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Intercanvia la traducció i la romanització</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">L\'opció ON col·loca la romanització o transliteració sota les lletres i la traducció a sobre; l\'opció OFF manté la romanització o transliteració a sobre i la traducció a sota. Una lectura col·locada sobre cada síl·laba es mou amb ella, de sobre de la síl·laba a sota d\'aquesta</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Intercanvia l\'ordre d\'exhibició de la traducció i la romanització sota les lletres</string>
   <string name="morphe_music_lyrics_force_center_title">Centra sempre les lletres</string>
   <string name="morphe_music_lyrics_force_center_summary">ACTIVAT posa cada línia al centre i ignora l\'alineació d\'origen, incloent els costats del duet; DESACTIVAT manté l\'alineació que indiquen les lletres</string>
   <string name="morphe_music_lyrics_providers_keep_one">Almenys un proveïdor ha de romandre activat</string>
@@ -736,6 +740,14 @@ Les lletres provenen de serveis de tercers que no estan afiliats, patrocinats ni
   <string name="morphe_music_lyrics_romanization_provider_title">Romanització o transliteració</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Diccionari fora de línia</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Llista de paraules Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Diccionari fora de línia</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Script Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Mostrar botó Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Toca per alternar les lectures ruby sobre les lletres; mantingues premut per canviar entre hiragana i katakana. Utilitza els proveïdors ruby habilitats en l\'ordre llistat</string>
+  <string name="morphe_music_lyrics_ruby_generating">Generant ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Detectar seccions amb IA</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Només s\'utilitza quan el proveïdor no envia etiquetes de secció com Estribor o Vers, que el vostre model compatible amb OpenAI detectarà. Editar la fila també obre el seu prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL de l\'endpoint de l\'API (per exemple, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

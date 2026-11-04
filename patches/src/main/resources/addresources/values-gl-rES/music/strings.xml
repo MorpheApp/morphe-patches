@@ -630,6 +630,10 @@ Cookies necesarias: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_hide_played_summary">Ocultar as liñas de letras por riba da liña que se está reproducindo</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Ocultar letras non reproducidas</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Ocultar as liñas de letras por baixo da liña que se está reproducindo</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Fondo dinámico</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Amosar un fondo desenfocado creado a partir da arte do álbum detrás da letra</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animar o fondo dinámico</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Mover o fondo durante a reprodución e facelo pulsar coa música se YouTube Music ten o permiso do micrófono. Desactívao para ter un fondo estático que consuma menos batería</string>
   <string name="morphe_music_lyrics_mediasession_title">Mostrar letras de MediaSession na pantalla de bloqueo</string>
   <string name="morphe_music_lyrics_mediasession_summary">Amosa a liña actual na pantalla de bloqueo, Android Auto e Bluetooth. Require Android 11 ou posterior</string>
   <string name="morphe_music_lyrics_miniplayer_title">Mostrar letras no miniplayer</string>
@@ -728,7 +732,7 @@ As letras provén de servizos de terceiros que non están afiliados, patrocinado
   <string name="morphe_music_lyrics_hide_info_title">Ocultar liña de créditos</string>
   <string name="morphe_music_lyrics_hide_info_summary">Ocultar a liña de créditos que aparece debaxo das letras</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Trocar a tradución e a romanización</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON coloca a romanización ou transliteración baixo as letras e a tradución arriba; OFF mantén a romanización ou transliteración arriba e a tradución baixo. Unha lectura colocada sobre cada sílaba móvese con ela, de arriba da sílaba a baixo</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Intercambia a orde de visualización da tradución e a romanización debaxo da letra</string>
   <string name="morphe_music_lyrics_force_center_title">Centrar sempre as letras</string>
   <string name="morphe_music_lyrics_force_center_summary">ACTIVADO coloca cada liña no centro e ignora a alineación orixinal, incluído os lados do dúo; DESACTIVADO mantén a alineación que piden as letras</string>
   <string name="morphe_music_lyrics_providers_keep_one">Polo menos un provedor debe permanecer activo</string>
@@ -736,6 +740,14 @@ As letras provén de servizos de terceiros que non están afiliados, patrocinado
   <string name="morphe_music_lyrics_romanization_provider_title">Romanización ou transliteración</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Dicionario sen conexión</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Lista de palabras Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Dicionario sen conexión</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Script Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Botón Mostrar Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Toca para alternar as lecturas ruby sobre as letras; mantén premido para cambiar entre hiragana e katakana. Utiliza os provedores ruby activados na orde listada</string>
+  <string name="morphe_music_lyrics_ruby_generating">Xerando ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Detectar seccións con IA</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Só se usa cando o provedor non envía etiquetas de sección como Estribillo ou Verso, que o seu modelo compatible con OpenAI detecta. Editar a fila tamén abre o seu prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL do endpoint da API (ex. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

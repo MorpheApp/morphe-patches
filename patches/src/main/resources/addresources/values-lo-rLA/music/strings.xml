@@ -630,6 +630,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_played_summary">ເຊື່ອງແຖວເນື້ອເພງທີ່ຢູ່ເໜືອແຖວທີ່ກຳລັງຫຼິ້ນຢູ່</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">ເຊື່ອງເນື້ອເພງທີ່ຍັງບໍ່ທັນໄດ້ຫຼິ້ນ</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">ເຊື່ອງແຖວເນື້ອເພງທີ່ຢູ່ລຸ່ມແຖວທີ່ກຳລັງຫຼິ້ນຢູ່</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">ພື້ນຫຼັງແບບໄດນາມິກ</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">ສະແດງພື້ນຫຼັງແບບມົວ ທີ່ສ້າງຈາກຮູບໜ້າປົກຂອງອັລບັ້ມ ຢູ່ທາງຫຼັງເນື້ອເພງ</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">ເຮັດໃຫ້ພື້ນຫຼັງແບບໄດນາມິກເຄື່ອນໄຫວ</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">ເຄື່ອນໄຫວພື້ນຫຼັງໃນຂະນະທີ່ກຳລັງຫຼິ້ນ, ແລະ ໃຫ້ມັນເຕັ້ນຕາມຈັງຫວະເພງ ຖ້າ YouTube Music ໄດ້ຮັບອະນຸຍາດໃຫ້ໃຊ້ໄມໂຄຣໂຟນ. ປິດເພື່ອໃຊ້ພື້ນຫຼັງແບບນິ່ງ ເຊິ່ງຈະຊ່ວຍປະຢັດແບັດເຕີຣີຫຼາຍຂຶ້ນ</string>
   <string name="morphe_music_lyrics_mediasession_title">ສະແດງເນື້ອເພງ MediaSession ຢູ່ໃນໜ້າຈໍລັອກ</string>
   <string name="morphe_music_lyrics_mediasession_summary">ສະແດງແຖວປັດຈຸບັນໃນໜ້າຈໍລັອກ, Android Auto ແລະ Bluetooth. ຕ້ອງໃຊ້ Android 11 ຫຼື ໃໝ່ກວ່ານັ້ນ</string>
   <string name="morphe_music_lyrics_miniplayer_title">ສະແດງເນື້ອເພງໃນ Miniplayer</string>
@@ -728,7 +732,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">ເຊື່ອງແຖວໃຫ້ເຄຣດິດ</string>
   <string name="morphe_music_lyrics_hide_info_summary">ເຊື່ອງແຖວໃຫ້ເຄຣດິດທີ່ສະແດງຢູ່ລຸ່ມເນື້ອເພງ</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">ສະຫຼັບການແປ ແລະ ການຖອດສຽງ</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ເປີດ ຈະວາງການຖອດເປັນອັກສອນໂຣມັນ ຫຼື ການທັບສັບໄວ້ລຸ່ມເນື້ອເພງ ແລະ ວາງຄຳແປໄວ້ດ້ານເທິງ; ປິດ ຈະຮັກສາການຖອດເປັນອັກສອນໂຣມັນ ຫຼື ການທັບສັບໄວ້ດ້ານເທິງ ແລະ ຄຳແປໄວ້ດ້ານລຸ່ມ. ການອ່ານທີ່ວາງໄວ້ເທິງແຕ່ລະພະຍາງຈະຍ້າຍໄປພ້ອມກັບມັນ, ຈາກດ້ານເທິງພະຍາງໄປສູ່ດ້ານລຸ່ມ</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ສະຫຼັບລຳດັບການສະແດງຂອງຄຳແປ ແລະ ການຖອດສຽງໂຣມັນ ຢູ່ລຸ່ມເນື້ອເພງ</string>
   <string name="morphe_music_lyrics_force_center_title">ໃຫ້ເນື້ອເພງຢູ່ເຄິ່ງກາງສະເໝີ</string>
   <string name="morphe_music_lyrics_force_center_summary">ເປີດ ຈະວາງທຸກແຖວໄວ້ເຄິ່ງກາງ ແລະ ບໍ່ສົນໃຈການຈັດວາງຂອງແຫຼ່ງທີ່ມາ, ລວມທັງດ້ານຂອງ duet; ပິດ ຈະຮັກສາການຈັດວາງຕາມທີ່ເນື້ອເພງກຳນົດໄວ້</string>
   <string name="morphe_music_lyrics_providers_keep_one">ຕ້ອງມີຜູ້ໃຫ້ບໍລິການຢ່າງໜ້ອຍໜຶ່ງລາຍທີ່ເປີດໄວ້</string>
@@ -736,6 +740,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">ການຖອດສຽງເປັນອັກສອນໂຣມັນ ຫຼື ການທັບສັບ</string>
   <string name="morphe_music_lyrics_romanization_provider_local">ວັດຈະນານຸກົມອອຟລາຍ</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">ລາຍການຄຳສັບ Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">ວັດຈະນານຸກົມອອຟລາຍ</string>
+  <string name="morphe_music_lyrics_ruby_style_title">ສະຄຣິບ Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">ປຸ່ມສະແດງ Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">ແຕະເພື່ອປ່ຽນການສະແດງການອ່ານ ruby ເທິງເນື້ອເພງ; ກົດຄ້າງໄວ້ເພື່ອປ່ຽນລະຫວ່າງ hiragana ແລະ katakana. ໃຊ້ຜູ້ໃຫ້ບໍລິການ ruby ທີ່ເປີດໃຊ້ງານຕາມລຳດັບທີ່ລະບຸໄວ້</string>
+  <string name="morphe_music_lyrics_ruby_generating">ກຳລັງສ້າງ ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">ກວດຫາພາກສ່ວນດ້ວຍ AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">ໃຊ້ສະເພາະໃນກໍລະນີທີ່ຜູ້ໃຫ້ບໍລິການບໍ່ໄດ້ສົ່ງປ້າຍກຳກັບພາກສ່ວນ ເຊັ່ນ Chorus ຫຼື Verse, ເຊິ່ງໂມເດລທີ່ເຂົ້າກັນໄດ້ກັບ OpenAI ຂອງທ່ານຈະກວດຫາໃຫ້. ການແກ້ໄຂແຖວນີ້ຍັງຈະເປີດ prompt ຂອງມັນນຳອີກ</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL ຂອງ API endpoint (ຕົວຢ່າງ https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

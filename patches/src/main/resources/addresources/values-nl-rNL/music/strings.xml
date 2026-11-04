@@ -620,6 +620,10 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_hide_played_summary">Verberg songtekstregels boven de regel die momenteel wordt afgespeeld</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Verberg niet-afgespeelde songteksten</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Verberg songtekstregels onder het momenteel afgespeelde […] scherm</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dynamische achtergrond</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Toon een vervaagde achtergrond gemaakt van de albumhoes achter de songteksten</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Dynamische achtergrond animeren</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Beweeg de achtergrond tijdens het afspelen, en laat deze pulseren op de muziek als YouTube Music toestemming heeft voor de microfoon. Schakel dit uit voor een stilstaande achtergrond die minder batterij verbruikt</string>
   <string name="morphe_music_lyrics_mediasession_title">MediaSession-songteksten op het vergrendelscherm weergeven</string>
   <string name="morphe_music_lyrics_mediasession_summary">Toont de huidige regel op het vergrendelscherm, Android Auto en Bluetooth. Vereist Android 11 of nieuwer</string>
   <string name="morphe_music_lyrics_miniplayer_title">Toon miniplayer-songteksten</string>
@@ -718,7 +722,7 @@ Songteksten komen van derde-dienstverleners die niet gelieerd zijn aan, gesponso
   <string name="morphe_music_lyrics_hide_info_title">Verberg creditregel</string>
   <string name="morphe_music_lyrics_hide_info_summary">Verberg de creditregel die onder de songteksten wordt weergegeven</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Wissel vertaling en romanisatie om</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON plaatst romanisering of transliteratie onder de lyrics en vertaling bovenaan; OFF houdt romanisering of transliteratie boven en vertaling onder. Een uitspraak die boven elke lettergreep staat, bewaagt mee met de lettergreep, van boven naar beneden</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Wisselt de weergavevolgorde van vertaling en romanisatie onder de songteksten</string>
   <string name="morphe_music_lyrics_force_center_title">Altijd lyrics centreren</string>
   <string name="morphe_music_lyrics_force_center_summary">ON plaatst elke regel in het midden en negeert de bronalignement, inclusief duet-partijen; OFF behoudt de alignement zoals de lyrics vragen</string>
   <string name="morphe_music_lyrics_providers_keep_one">Minstens één aanbieder moet ingeschakeld blijven</string>
@@ -726,6 +730,14 @@ Songteksten komen van derde-dienstverleners die niet gelieerd zijn aan, gesponso
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisering of transliteratie</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Offline woordenboek</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime-woordlijst</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Offline woordenboek</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby-script</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Toon Ruby-knop</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Tik om ruby-uitlezingen boven songteksten aan/uit te schakelen; houd lang ingedrukt om te wisselen tussen hiragana en katakana. Gebruikt de ingeschakelde ruby-providers in de vermelde volgorde</string>
+  <string name="morphe_music_lyrics_ruby_generating">Ruby genereren…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Secties detecteren met AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Alleen gebruikt wanneer de aanbieder geen sectielabels zoals Refrein of Strofe aanbiedt, die uw OpenAI-compatibele model dan detecteert. Het bewerken van de rij opent ook de prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-eindpunt-URL (bijv. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

@@ -630,6 +630,10 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_hide_played_summary">隐藏当前播放行之上的歌词行</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">隐藏未播歌词</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">隐藏当前播放行之下的歌词行</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">动态背景</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">在歌词下方显示由专辑封面生成的模糊背景</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">动态背景动画</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">在播放时移动背景；如果 YouTube Music 拥有麦克风权限，背景将随音乐律动。关闭此项可使用静态背景以节省电量</string>
   <string name="morphe_music_lyrics_mediasession_title">在锁屏上显示媒体通知卡片歌词</string>
   <string name="morphe_music_lyrics_mediasession_summary">在锁屏界面、Android Auto 和蓝牙中显示当前行。需要 Android 11 或更高版本</string>
   <string name="morphe_music_lyrics_miniplayer_title">显示迷你播放器歌词</string>
@@ -728,7 +732,7 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_hide_info_title">隐藏署名行</string>
   <string name="morphe_music_lyrics_hide_info_summary">隐藏显示在歌词下方的署名行</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">交换翻译和音译</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">开启时将罗马化或意译置于歌词下方，翻译置于上方；关闭时将罗马化或意译置于上方，翻译置于下方。放置在每个音节上的读音会随之移动，从其音节上方移至下方</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">交换歌词下方翻译和罗马字的显示顺序</string>
   <string name="morphe_music_lyrics_force_center_title">始终居中歌词</string>
   <string name="morphe_music_lyrics_force_center_summary">开启时将每一行置于中间，忽略源对齐方式，包括对唱部分；关闭时保持歌词要求的对齐方式</string>
   <string name="morphe_music_lyrics_providers_keep_one">必须至少保留一个提供商开启</string>
@@ -736,6 +740,14 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">罗马化或意译</string>
   <string name="morphe_music_lyrics_romanization_provider_local">离线字典</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime词表</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">注音</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">离线词典</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby 脚本</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">平假名 (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">片假名 (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">显示 Ruby 按钮</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">点击以切换歌词上方的 ruby 读音；长按以在平假名和片假名之间切换。将按列出顺序使用已启用的 ruby 提供者</string>
+  <string name="morphe_music_lyrics_ruby_generating">正在生成注音……</string>
   <string name="morphe_music_lyrics_use_ai_section_title">使用AI检测段落</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">仅在提供商未提供诸如副歌或主歌等段落标签时使用，然后由你的兼容OpenAI模型进行检测。编辑该行也会打开其提示词</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API端点URL（例如 https://api.openai.com/v1/chat/completions，https://api.anthropic.com/v1/chat/completions，https://generativelanguage.googleapis.com/v1beta/openai/chat/completions）</string>

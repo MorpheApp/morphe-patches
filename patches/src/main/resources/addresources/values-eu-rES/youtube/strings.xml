@@ -102,7 +102,7 @@ Liburutegi fitxa erakusten da
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ezagutu \'Jakinarazi niri\' botoia</string>
-  <string name="morphe_hide_notify_me_button_summary">Programatutako zuzenekarretako eta estreko gogorarazpen botoia ezkutatzen du</string>
+  <string name="morphe_hide_notify_me_button_summary">Ezkutatzen du gogorarazpen botoia programatutako zuzeneko streameden eta Premiere-en</string>
   <string name="morphe_hide_playables_title">Ezkutatu Playables</string>
   <string name="morphe_hide_playables_summary">Jokoak jorateko aukera ematen duen funtzionalitatea ezkutatzen du</string>
   <string name="morphe_hide_search_term_thumbnails_title">Ezkutatu bilaketa-termiko miniatureak</string>
@@ -261,9 +261,8 @@ Liburutegi fitxa erakusten da
   <string name="morphe_comments_screen_title">Komentarioak</string>
   <string name="morphe_comments_screen_summary">Aukeratu zein komponentek agertu behar duten iruzkinen sekzioan</string>
   <string name="morphe_hide_comments_carousel_title">Aktibu iruzkinen karusel-iragazkia</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Beharrezkoa da carousel-eko elementuaren izen zehatza sartzea (adib. Galdetu, Hype bideo hau, Entzun YouTube Music-en)
-• Carousel-eko elementuak ezkutatzeak side-effect ez-nahikoak izan ditzake
-• Carousel-eko elementu guztiak ezkutatzen badira, iruzkinak atal osoa ere ezkutuko da"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Sartu giltza-hitz bat edo izen osoa (adib. Ask, Community, Hype, Listen)
+• Elementu guztiak ezkutatzeak iruzkinen atal osoa ezkutatzen du"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Iruzkinen karusel-iragazkia</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Sartu iruzkinen karrusel izenak filtratzeko, berrizhasiak erabiliz bereizita</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI txat laburpena ezkutatu</string>
@@ -497,7 +496,7 @@ Ask botoia duen bideo bat behin ireki ondoren, funtzioak bideo guztiekin funtzio
   <string name="morphe_ryd_feed_like_ratio_title">Erakutsi feed-eko miniaturaren gustu ehunekoa</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Ibilasi komentarioak</string>
-  <string name="morphe_search_comments_summary">Sakatu iruzkinen bilaketa botoia bilatutako hitz guztiak dituzten kargatutako iruzkinak soilik ikusteko. Esaldia bat bilatzeko, jarri hitzak aipatetan</string>
+  <string name="morphe_search_comments_summary">Sakatu iruzkinen bilaketa botoia bilatutako hitz guztiak daukan kargatutako iruzkinak soilik ikusteko. Frase bat bilatzeko, jarri hitzak aipatoen artean</string>
   <string name="morphe_search_comments_dialog_title">Iruzkinak bilatu</string>
   <string name="morphe_search_comments_hint">Bilatu nahi dituzun hitzak</string>
   <string name="morphe_search_comments_search">Bilatu</string>
@@ -596,6 +595,11 @@ Zure API gakoa inoiz ez dela partekat knockout. Hura duen edozeinek zure OpenRou
   <string name="morphe_vot_mymemory_quota_message_no_email">Gaurko MyMemory-ren doako itzulpen kuotaa (5.000 carattere) erabili duzu. Ezugarapenetan MyMemory-ren posta elektroniko bat gehitu eguneroko limitea 50.000 karakterera igotzeko, edo itzulpen zerbitzu beste bat choose egin</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Gaurko MyMemory-ren itzulpen kuotaa (50.000 carattere) erabili duzu. Itzulpen zerbitzu beste batean aldatu edo bihar saiatu berriz</string>
   <string name="morphe_vot_mymemory_error">MyMemory itzulpena huts egin du (egoera %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Gero ikusikoen arrastatzeko saihestekoak zabaltu</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Gero ikusikoen bideoen arrastatzeko saihestekoak eramateko errazagoak dira</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Gero ikusikoen ezabapen-jakinarazupena ezkutatu</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Bideo bat Gero ikusikoen zerrendatik kendu ondoren, konfirmazioa ez da erakutsiko</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Gaitu bideo-buclesa</string>
   <string name="morphe_do_not_remember_loop_video_title">Ez gogoratu bideo-bucles</string>
@@ -760,10 +764,10 @@ Horretarako, gaituren 'Bideo-fluxuak imitatu' eta aldatu 'Klerente lehenetsua' '
 Hona konponduz, aktibu 'Bideo-emisioak imitatzea' eta alda 'Beherako bezeroa' 'TV Simply' edo 'visionOS'ra"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktibu irrasiraz bilatzeko aukera</string>
-  <string name="morphe_slide_to_seek_summary">Aktibatzen du iritsateko irrasiro, bideo jarlatzaia sakatu eta mantendu underminean 2x abiadurean jokoan jartzearen ordez</string>
+  <string name="morphe_slide_to_seek_summary">Sakatu eta eutsi bideoak iritsan eta bilatzeko, 2x abiadurean jokatzearen ordez</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Gaitu ukitu eta bilatu aukera</string>
-  <string name="morphe_tap_to_seek_summary">Sakatu soilik bilatzailean posizio hura lortzeko, arrastatu gabe</string>
+  <string name="morphe_tap_to_seek_summary">Sakatu bilaketa-barran edozein lekutan posizio hura joateko, arrastatzearen ordez</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Ezkerreko irrasteko gesturea</string>
   <string name="morphe_swipe_right_zone_title">Eskuineko irrasteko gesturea</string>
@@ -938,24 +942,23 @@ Hona konponduz, aktibu 'Bideo-emisioak imitatzea' eta alda 'Beherako bezeroa' 'T
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Ezagutazi Jakinarazpenak botoia</string>
   <string name="morphe_show_search_button_title">Erakutsi Bilaketa botoia</string>
-  <string name="morphe_show_search_button_index_title">Bilaketa botoiaren posizioa</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Erakutsi Gero ikusi botoia</string>
-  <string name="morphe_show_watch_later_button_index_title">Gero ikusi botoiaren kokapena</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Gero ikusi</string>
   <string name="morphe_show_settings_button_title">Konfigurazio botoia erakutsi</string>
-  <string name="morphe_show_settings_button_index_title">Konfigurazio botoiaren posizioa</string>
   <string name="morphe_show_settings_button_type_title">⚙️ botoiaren ekintza</string>
   <string name="morphe_show_settings_button_type_summary">Aktibatuta dagoenean Morphe konfigurazioak irekitzen ditu, edo desaktibatuta dagoenean YouTube konfigurazioak</string>
+  <string name="morphe_navigation_buttons_order_title">Nabigazio botoien ordena</string>
+  <string name="morphe_navigation_buttons_order_summary">Arrastatu botoiak nabigazio barranen ordena aldatzeko</string>
   <string name="morphe_swap_create_with_notifications_button_title">Eskutatu Sortu botoia Jakinarazpen botoiarekin</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Aukera hau aldatzeak ez badu eragina duenean, saiatu Inkognito modura aldatzen</string>
   <string name="morphe_hide_navigation_button_labels_title">Ezkutatu nabigazio botoien etiketak</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ezkutu eduki berriaren puntua</string>
   <string name="morphe_hide_navigation_bar_title">Ezkutatu nabigazio-barra</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Honek nabigazio barra guztiz ezkutatzen du, \"Zu\" fitxa barne.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Honek nabigazio-barra guztiz ezkutatzen du, 'Zu' fitxa barne.
 
-Konfiguraziora sartzeko, aktibu Konfigurazio botoia Oroharra → Barrako tresnak → Konfigurazioa erakutsi bidean"</string>
+Konfiguraziora sartzeko, aktibatu Konfigurazio botoia Orokorra → Barra nagusia → Erakutsi Konfigurazio botoia bidez"</string>
   <string name="morphe_narrow_navigation_buttons_title">Gaitu nabigazio botoi estuagoak</string>
   <string name="morphe_narrow_navigation_buttons_summary">Botoien artekodistantzia horizontala murrizten du</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Labelik gabeko nabigazio botoiak desaktibatu</string>
@@ -972,12 +975,18 @@ Konfiguraziora sartzeko, aktibu Konfigurazio botoia Oroharra → Barrako tresnak
   <string name="morphe_navigation_bar_style_entry_3">Klaratua</string>
   <string name="morphe_navigation_bar_style_entry_4">Opakoa</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Estilo honek zure gailua edo YouTube bertsioa ez duten supportatu aukera, eta layout-eko arazteak edo crash-ak eragin ditzake</string>
+  <string name="morphe_navigation_bar_glass_title">Gactivate nabigazio-barra beiratsua</string>
+  <string name="morphe_navigation_bar_glass_summary">Nabigazio barraFLOATING, birbildu eta transluzente kapsulari bezala erakusten du. Ez dago eskuragarri Nabigazio barra opa estiloarekin</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Itsasaren opakoitasuna</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Doitu itsas nabigazio barraren transparenzia maila (0 garduna da, 100 opa)</string>
   <string name="morphe_toolbar_screen_title">Barra tresnak</string>
   <string name="morphe_toolbar_screen_summary">Aukeratu toolbarran zein komponentak agerti nahi diren</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ezkutatu Txat botoia</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Mikrofono botoia ezkutatu</string>
   <string name="morphe_hide_toolbar_search_button_title">Ezkutatu Bilaketa botoia</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Gaitzituta dagoenean, ukitzeak Morphe konfigurazioa irekiko du eta sakadura luzeak YouTube konfigurazioa irekiko du; txaldatumoldatzeko desaktibatu</string>
+  <string name="morphe_toolbar_buttons_order_title">Barrako botoien ordena</string>
+  <string name="morphe_toolbar_buttons_order_summary">Arrastatu botoiak barranen ordena aldatzeko</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout menua</string>
   <string name="morphe_hide_player_flyout_summary">Aukeratu zein komponentei eman diezaizkien flywheel menuan</string>
@@ -1729,10 +1738,10 @@ Automatiko grabaketa aukeratua da. Inkognito moduan edo kontua aldatzean gelditu
   <string name="morphe_niconico_comments_max_length_no_limit">Mugaik gabe</string>
   <string name="morphe_niconico_comments_live_streams_title">Erakutsi zuzeneko transmisioetan</string>
   <string name="morphe_niconico_comments_live_streams_summary">Zuzeneko transmisioak eta hauen errepasoak</string>
-  <string name="morphe_niconico_comments_live_premieres_title">Erakutsi estretuetan</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Erakutsi Estrenetan</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Estretuak erreproduzitzen ari diren bitartean</string>
-  <string name="morphe_niconico_comments_ended_premieres_title">Erakutsi amaitutako estretuetan</string>
-  <string name="morphe_niconico_comments_ended_premieres_summary">Amaiitutako estretuen txat-errepasoa</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Erakutsi amaitutako Estrenetan</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Amaiutako Premieren txat-berrakuntza</string>
   <string name="morphe_live_chat_translate_screen_title">Zirbilizko txatko itzulpena</string>
   <string name="morphe_live_chat_translate_screen_summary">Zirbilizko txatko eta zirbilizko txatko playback mezuak itzuli</string>
   <string name="morphe_live_chat_translate_title">Zirbilizko txatkoa itzuli</string>

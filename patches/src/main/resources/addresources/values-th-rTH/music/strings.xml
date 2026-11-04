@@ -630,6 +630,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_played_summary">ซ่อนบรรทัดเนื้อเพลงที่อยู่เหนือบรรทัดที่กำลังเล่น</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">ซ่อนเนื้อเพลงที่ยังไม่เล่น</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">ซ่อนเนื้อเพลงที่อยู่ต่ำกว่าบรรทัดที่กำลังเล่น […] หน้าจอ</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">พื้นหลังแบบไดนามิก</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">แสดงพื้นหลังแบบเบลอที่สร้างจากภาพหน้าปกอัลบั้มไว้ด้านหลังเนื้อเพลง</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">เคลื่อนไหวพื้นหลังแบบไดนามิก</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">เคลื่อนย้ายพื้นหลังขณะเล่น และทำให้พื้นหลังเต้นตามจังหวะเพลงหาก YouTube Music ได้รับการอนุญาตให้เข้าถึงไมโครโฟน ปิดเพื่อใช้พื้นหลังแบบนิ่งซึ่งจะช่วยประหยัดแบตเตอรี่มากขึ้น</string>
   <string name="morphe_music_lyrics_mediasession_title">แสดงเนื้อเพลง MediaSession บนหน้าจอล็อก</string>
   <string name="morphe_music_lyrics_mediasession_summary">แสดงบรรทัดปัจจุบันบนหน้าจอล็อค Android Auto และบลูทูธ ต้องการ Android 11 หรือใหม่กว่า</string>
   <string name="morphe_music_lyrics_miniplayer_title">แสดงเนื้อเพลงในมินิเพลเยอร์</string>
@@ -728,7 +732,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">ซ่อนบรรทัดเครดิต</string>
   <string name="morphe_music_lyrics_hide_info_summary">ซ่อนบรรทัดเครดิตที่แสดงใต้เนื้อเพลง</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">สลับคำแปลและการโรมาไนซ์</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON ใส่การแปลงอักษรโรมันหรือถอดรหัสไว้ด้านล่างเนื้อเพลงและการแปลไว้ด้านบน; OFF คงการแปลงอักษรโรมันหรือถอดรหัสไว้ด้านบนและการแปลไว้ด้านล่าง เสียงอ่านที่วางเหนือพยางค์ใดจะเคลื่อนไปกับมัน จากเหนือพยางค์ไปยังใต้พยางค์</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">สลับลำดับการแสดงผลของการแปลและการถอดเสียงโรมันใต้เนื้อเพลง</string>
   <string name="morphe_music_lyrics_force_center_title">จัดข้อความกลางเสมอ</string>
   <string name="morphe_music_lyrics_force_center_summary">ON จัดบรรทัดทุกบรรทัดตรงกลางและละเลยการจัดตำแหน่งต้นฉบับ รวมถึงด้านคู่ дуэт; OFF คงการจัดตำแหน่งตามที่ต้องการโดยเนื้อเพลง</string>
   <string name="morphe_music_lyrics_providers_keep_one">ต้องมีผู้ให้บริการอย่างน้อยหนึ่งรายการที่เปิดอยู่</string>
@@ -736,6 +740,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">การแปลงอักษรโรมันหรือถอดรหัส</string>
   <string name="morphe_music_lyrics_romanization_provider_local">พจนานุกรมออฟไลน์</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">รายการคำ Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">รูบี้</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">พจนานุกรมแบบออฟไลน์</string>
+  <string name="morphe_music_lyrics_ruby_style_title">สคริปต์ Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">ฮิรางานะ (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">คาตาคานะ (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">แสดงปุ่ม Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">แตะเพื่อสลับการแสดงคำอ่าน ruby เหนือเนื้อเพลง; กดค้างเพื่อสลับระหว่าง hiragana และ katakana โดยจะใช้ผู้ให้บริการ ruby ที่เปิดใช้งานตามลำดับที่ระบุไว้</string>
+  <string name="morphe_music_lyrics_ruby_generating">กำลังสร้าง ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">ตรวจจับส่วนด้วย AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">ใช้ก็ต่อเมื่อผู้ให้บริการไม่มีป้ายส่วน เช่น Chorus หรือ Verse ซึ่งโมเดลที่เข้ากันได้กับ OpenAI ของคุณจะตรวจจับ การแก้ไขแถวจะเปิดพรอมต์ของมันด้วย</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL จุดสิ้นสุด API (เช่น https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

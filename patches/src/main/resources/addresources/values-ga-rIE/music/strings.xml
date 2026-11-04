@@ -630,6 +630,10 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_hide_played_summary">Folaigh línte na liricí os cionn na líne atá á seinm faoi láthair</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Folaigh liricí nár seinneadh</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Folaigh línte na liricí faoin líne atá á seinm faoi láthair</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Cúlra dinimiciúil</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Taispeáin cúlra DOE-ála déanta as ealaín an albums taobh thiar den líric</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animaigh cúlra dinimiciúil</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Bog an cúlra agus é ag seinle, agus pulse é le ceol má tá cead an micreafóin ag YouTube Music. Múch go hágean le haghaidh cúlra suganach a úsáideann níos lactic bataraí</string>
   <string name="morphe_music_lyrics_mediasession_title">Taispeáin liricí MediaSession ar an scáileán glasála</string>
   <string name="morphe_music_lyrics_mediasession_summary">Taispeánann sé an líne reatha ar an scáileán glasála, ar Android Auto agus trí Bluetooth. Teastaíonn Android 11 nó níos nuaí</string>
   <string name="morphe_music_lyrics_miniplayer_title">Taispeáin liricí an mhionimreora</string>
@@ -728,7 +732,7 @@ Tagann liricí ó sheirbhísí tríú páirtí nach bhfuil cleamhnaithe le, urra
   <string name="morphe_music_lyrics_hide_info_title">Folaigh an líne chreidmheasa</string>
   <string name="morphe_music_lyrics_hide_info_summary">Folaigh an líne aitheantais a thaispeántar faoi na liricí</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Malartaigh an t-aistriúchán agus an rómánú</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Cuireann AR an Rómánú nó an Traslitriú faoi na liricí agus an t-aistriúchán thuas; AS coinníonn an Rómánú nó an Traslitriú thuas agus an t-aistriúchán thíos. Bogann léamh a chuirtear os cionn gach siolla leis, ó os cionn a shiolla go dtí faoi.</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Athraíonn ord taispeána an aistriúcháin agus na rómánaíocht faoin líric</string>
   <string name="morphe_music_lyrics_force_center_title">Cuir na liricí sa lár i gcónaí</string>
   <string name="morphe_music_lyrics_force_center_summary">Cuireann ON gach líne sa lár agus déanann sé neamhaird de ailíniú an bhunábhair, lena n-áirítear taobhanna dé-amhrán; coinníonn OFF an t-ailíniú a éilíonn na liricí.</string>
   <string name="morphe_music_lyrics_providers_keep_one">Caithfidh soláthraí amháin ar a laghad fanacht</string>
@@ -736,6 +740,14 @@ Tagann liricí ó sheirbhísí tríú páirtí nach bhfuil cleamhnaithe le, urra
   <string name="morphe_music_lyrics_romanization_provider_title">Rómhánú nó traslitriú</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Foclóir As Líne</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Liosta Focal Ríme</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Foclóir As Líne</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Scrípte Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Taispeáin cnaip Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Tapáil chun léitheánais ruby os cionn na liryics a th toggal; brúig go fada chun idir hiragana agus katakana a athrú. Úsáideann sé soláthraithe ruby cumasaithe ina n-ord an lists</string>
+  <string name="morphe_music_lyrics_ruby_generating">Tá ruby á ghiniúint…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Aimsigh rannóga le hintleacht shaorga</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Ní úsáidtear é ach amháin nuair nach seolann an soláthraí lipéid rannóige ar nós Cór nó Véarsa, rud a bhraitheann do mhúnla atá comhoiriúnach le OpenAI ansin. Osclaítear a leid freisin nuair a chuirtear an tsraith in eagar.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL críochphointe API (m.sh. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

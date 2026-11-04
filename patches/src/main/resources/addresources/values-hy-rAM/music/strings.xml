@@ -630,6 +630,10 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_hide_played_summary">Թաքցնել տեքստի տողերը, որոնք գտնվում են ընթացիկ տողից վերև</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Թաքցնել չհնչեցված տեքստերը</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Թաքցնել տեքստի տողերը, որոնք գտնվում են ընթացիկ տողից ներքև</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Դինամիկ ֆոն</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Ցուցադրել ալբոմի շապիկից ստացված լղկված ֆոն տեքստի հետևում</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Անիմացիայի դինամիկ ֆոն</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Շարժեք ֆոնը նվագման ժամանակ և պուլսացրեք այն երաժշտության հետ, եթե YouTube Music-ը ունի միկրոֆոնի թույլտվություն: Անջատեք՝ անշարժ ֆոնի համար, որն ավելի քիչ է ծախսում մարտկոցը</string>
   <string name="morphe_music_lyrics_mediasession_title">Ցուցադրել MediaSession-ի տեքստերը կողպված էկրանին</string>
   <string name="morphe_music_lyrics_mediasession_summary">Ցուցադրում է ընթացիկ տողը կողպելու էկրանին, Android Auto-ում և Bluetooth-ի միջոցով: Պահանջվում է Android 11 կամ ավելի նոր տարբերակ</string>
   <string name="morphe_music_lyrics_miniplayer_title">Ցուցադրել մինի-նվագարկիչի տեքստերը</string>
@@ -728,7 +732,7 @@ Lyrics-ները տրամադրվում են երրորդ կողմի ծառայո
   <string name="morphe_music_lyrics_hide_info_title">Թաքցնել հեղինակության տողը</string>
   <string name="morphe_music_lyrics_hide_info_summary">Թաքցնել տեքստի ներքևում ցուցադրվող հեղինակության տողը</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Փոխել թարգմանության և տառադարձման տեղերը</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ՄԻԱՑՎԱԾ վիճակում ռոմանիզացիան կամ տրանսլիտերացիան տեղադրվում է երգի տեքստի ներքևում, իսկ թարգմանությունը՝ վերևում. ԱՆՋԱՏՎԱԾ վիճակում ռոմանիզացիան կամ տրանսլիտերացիան մնում է վերևում, իսկ թարգմանությունը՝ ներքևում: Յուրաքանչյուր վանկի վրա տեղադրված ընթերցումը շարժվում է դրա հետ՝ վանկի վերևից դեպի ներքև</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Փոխում է թարգմանության և ռոմանիզացիայի ցուցադրման հերթականությունը տեքստի ներքևում</string>
   <string name="morphe_music_lyrics_force_center_title">Միշտ կենտրոնացնել երգի տեքստը</string>
   <string name="morphe_music_lyrics_force_center_summary">ՄԻԱՑՎԱԾ վիճակում յուրաքանչյուր տողը տեղադրվում է կենտրոնում և անտեսվում է սկզբնական հավասարեցումը, ներառյալ դուետի կողմերը, իսկ ԱՆՋԱՏՎԱԾ վիճակում պահպանվում է երգի տեքստի համար նախատեսված հավասարեցումը</string>
   <string name="morphe_music_lyrics_providers_keep_one">Առնվազն մեկ մատակարար պետք է մնա միացված</string>
@@ -736,6 +740,14 @@ Lyrics-ները տրամադրվում են երրորդ կողմի ծառայո
   <string name="morphe_music_lyrics_romanization_provider_title">Ռոմանիզացիա կամ տրանսլիտերացիա</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Անցանցային բառարան</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime բառերի ցուցակ</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Օֆլայն բառարան</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby սկրիպտ</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Հիրագանա (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Կատականա (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Ցույց տալ Ruby կոճակը</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Հպեք՝ տեքստի վերևում ruby ընթերցումները միացնելու կամ անջատելու համար. երկար սեղմեք՝ հիրագանայի և կատականայի միջև անցում կատարելու համար: Օգտագործում է միացված ruby պրովայդերները նշված հերթականությամբ</string>
+  <string name="morphe_music_lyrics_ruby_generating">Գեներացվում է ruby-ն…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Հայտնաբերել հատվածները AI-ի միջոցով</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Օգտագործվում է միայն այն դեպքում, երբ մատակարարը չի տրամադրում հատվածների պիտակներ, ինչպիսիք են Կրկներգը կամ Տունը, որոնք այնուհետև հայտնաբերվում են ձեր OpenAI-နှင့် համատեղելի մոդելի կողմից: Տողի խմբագրումը նաև բացում է դրա հուշումը</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint-ի URL-ը (օրինակ՝ https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

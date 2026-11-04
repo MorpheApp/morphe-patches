@@ -624,6 +624,10 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_lyrics_hide_played_summary">Skjul sangtekstlinjer over den aktuelt afspillede linje</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Skjul ikke-afspillede tekster</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Skjul tekstlinjer under den aktuelt afspillede […] skærm</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dynamisk baggrund</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Vis en sløret baggrund baseret på albumcoveret bag teksterne</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animer dynamisk baggrund</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Flyt baggrunden under afspilning, og lad den pulsere med musikken, hvis YouTube Music har mikrofontilladelse. Slå det fra for en statisk baggrund, der bruger mindre batteri</string>
   <string name="morphe_music_lyrics_mediasession_title">Vis MediaSession-sangtekster på låseskærmen</string>
   <string name="morphe_music_lyrics_mediasession_summary">Viser den nuværende linje på låseskærmen, Android Auto og Bluetooth. Kræver Android 11 eller nyere</string>
   <string name="morphe_music_lyrics_miniplayer_title">Vis Miniplayer-tekster</string>
@@ -722,7 +726,7 @@ Linjer stammer fra tredjepartstjenester, som ikke er tilknyttet, sponsoreret ell
   <string name="morphe_music_lyrics_hide_info_title">Skjul kreditlinje</string>
   <string name="morphe_music_lyrics_hide_info_summary">Skjul kreditlinjen, der vises under teksterne</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Byt om på oversættelse og romanisering</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">TIL sætter romanisering eller transliteration under sangtekst og oversættelse over; FRA holder romanisering eller transliteration over og oversættelse under. En udtale placeret over hver stavelse flytter sammen med den, fra over sin stavelse til under den</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Bytter om på visningsrækkefølgen af oversættelse og romanisering under sangteksten</string>
   <string name="morphe_music_lyrics_force_center_title">Centrér altid sangtekst</string>
   <string name="morphe_music_lyrics_force_center_summary">TIL sætter enhver linje midt imellem og ignorerer kildeafligningen, inklusiv duet-sider; FRA holder afligningen sangteksten beder om</string>
   <string name="morphe_music_lyrics_providers_keep_one">Mindst én udbyder skal holdes aktiv</string>
@@ -730,6 +734,14 @@ Linjer stammer fra tredjepartstjenester, som ikke er tilknyttet, sponsoreret ell
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisering eller translitteration</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Offline Ordbog</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime Orddliste</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Offline-ordbog</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby-script</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Vis Ruby-knap</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Tryk for at skifte mellem ruby-læsninger over sangteksterne; hold nede for at skifte mellem hiragana og katakana. Bruger de aktiverede ruby-udbydere i den angivne rækkefølge</string>
+  <string name="morphe_music_lyrics_ruby_generating">Genererer ruby...</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Detektér sektioner med AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Bruges kun når udbyderen leverer ingen sektionsetiketter som Omkvæd eller Vers, som din OpenAI-kompatible model derefter detektører. Redigering af rækken åbner også dens prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-endepunkt URL (f.eks. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
