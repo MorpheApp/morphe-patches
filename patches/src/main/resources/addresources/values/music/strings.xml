@@ -212,6 +212,26 @@ Downloaded tracks appear here"</string>
     <string name="morphe_music_downloads_progress">Downloading %s%%</string>
     <string name="morphe_music_downloads_complete">Download complete</string>
     <string name="morphe_music_downloads_failed">Download failed</string>
+    <string name="morphe_music_downloads_playlist_download_title">Playlist download</string>
+    <string name="morphe_music_downloads_playlist_download_listing">Listing tracks…</string>
+    <string name="morphe_music_downloads_playlist_download_listed">%s listed…</string>
+    <string name="morphe_music_downloads_playlist_download_listing_failed">Could not list the tracks of the playlist</string>
+    <string name="morphe_music_downloads_playlist_download_all_saved">Already downloaded: %s</string>
+    <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s in this playlist, %2$s not downloaded yet.
+
+They are downloaded one at a time, which can take a long time and needs about %3$s of free space"</string>
+    <string name="morphe_music_downloads_playlist_download_confirm_button">Download</string>
+    <string name="morphe_music_downloads_playlist_download_progress">Downloading track %1$s of %2$s</string>
+    <string name="morphe_music_downloads_playlist_download_complete">%s downloaded</string>
+    <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s downloaded, %2$s could not be downloaded</string>
+    <string name="morphe_music_downloads_playlist_download_already_running">Playlist download already in progress</string>
+    <string name="morphe_music_downloads_playlist_download_needs_account">Your account is not known yet. Try again in a moment</string>
+    <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listed, all already downloaded</string>
+    <string name="morphe_music_downloads_playlist_download_incomplete">Only part of the playlist could be listed. Tap Download again later to get the rest</string>
+    <string name="morphe_music_downloads_playlist_download_started">Downloading %s in the background</string>
+    <string name="morphe_music_downloads_playlist_download_no_network">No network connection</string>
+    <string name="morphe_music_downloads_playlist_download_waiting_network">Waiting for the network…</string>
+    <string name="morphe_music_downloads_playlist_download_stopped">Stopped after %1$s of %2$s. Tap Download again to continue</string>
 
     <!-- misc.settings.settingsPatch -->
 

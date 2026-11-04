@@ -11,6 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.cloneParameters
+import app.morphe.patches.music.misc.auth.authHookPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -25,15 +26,22 @@ import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
-private val OFFLINE_PLAYBACK_PERMISSIONS = listOf(
+private val DOWNLOADS_PERMISSIONS = listOf(
     "android.permission.WAKE_LOCK",
     "android.permission.FOREGROUND_SERVICE",
     "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+    "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
     "android.permission.POST_NOTIFICATIONS",
 )
 
-private const val OFFLINE_PLAYBACK_SERVICE =
-    "app.morphe.extension.music.patches.downloads.OfflinePlaybackService"
+/**
+ * Foreground services and their types. The tracks of a playlist are downloaded by a service,
+ * so the download outlives the app.
+ */
+private val DOWNLOADS_SERVICES = mapOf(
+    "app.morphe.extension.music.patches.downloads.OfflinePlaybackService" to "mediaPlayback",
+    "app.morphe.extension.music.patches.downloads.PlaylistDownloadService" to "dataSync",
+)
 
 private val downloadsResourcePatch = resourcePatch {
     dependsOn(settingsPatch)
@@ -60,7 +68,7 @@ private val downloadsResourcePatch = resourcePatch {
         // YouTube Music already declares most of these, so each one is added only when missing.
         // The whole attribute is matched, since FOREGROUND_SERVICE is a prefix of
         // FOREGROUND_SERVICE_MEDIA_PLAYBACK and would otherwise look like it is already there.
-        for (permission in OFFLINE_PLAYBACK_PERMISSIONS) {
+        for (permission in DOWNLOADS_PERMISSIONS) {
             val declaration = "android:name=\"$permission\""
             if (!xml.contains(declaration)) {
                 xml = xml.replace(
@@ -70,12 +78,14 @@ private val downloadsResourcePatch = resourcePatch {
             }
         }
 
-        if (!xml.contains(OFFLINE_PLAYBACK_SERVICE)) {
-            xml = xml.replace(
-                "</application>",
-                "<service android:name=\"$OFFLINE_PLAYBACK_SERVICE\" " +
-                    "android:exported=\"false\" android:foregroundServiceType=\"mediaPlayback\" />\n</application>"
-            )
+        for ((service, type) in DOWNLOADS_SERVICES) {
+            if (!xml.contains(service)) {
+                xml = xml.replace(
+                    "</application>",
+                    "<service android:name=\"$service\" " +
+                        "android:exported=\"false\" android:foregroundServiceType=\"$type\" />\n</application>"
+                )
+            }
         }
 
         manifest.writeText(xml)
@@ -90,14 +100,16 @@ private const val EXTENSION_PROTOCOL_BUFFER_INTERFACE =
 @Suppress("unused")
 val downloadsPatch = bytecodePatch(
     name = "Downloads",
-    description = "Adds support to download songs using the in-app download button, " +
-        "either with an external downloader app or inside YouTube Music.",
+    description = "Adds support to download songs, albums and playlists using the in-app " +
+        "download button, either with an external downloader app or inside YouTube Music.",
 ) {
     dependsOn(
         downloadsResourcePatch,
         settingsPatch,
         textComponentPatch,
-        musicVideoInformationPatch
+        musicVideoInformationPatch,
+        // Liked music and private playlists are listed with the account of the app.
+        authHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
@@ -137,6 +149,22 @@ val downloadsPatch = bytecodePatch(
                     if-eqz v1, :show_native_downloader
                     return-void
                     :show_native_downloader
+                    nop
+                """
+            )
+        }
+
+        OfflinePlaylistEndpointFingerprint.method.apply {
+            // The command is the one the resolver hook above gave the buffer interface to.
+            // v0 is set before it is read at the start of the method.
+            addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->offlinePlaylistEndpointOnClick(Ljava/lang/Object;)Z
+                    move-result v0
+                    if-eqz v0, :save_offline_playlist
+                    return-void
+                    :save_offline_playlist
                     nop
                 """
             )
