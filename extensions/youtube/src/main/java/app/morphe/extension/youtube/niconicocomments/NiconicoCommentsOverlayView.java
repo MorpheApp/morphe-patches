@@ -11,7 +11,9 @@
 
 package app.morphe.extension.youtube.niconicocomments;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -19,8 +21,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.os.Build;
+import android.view.Display;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 
@@ -66,7 +70,9 @@ final class NiconicoCommentsOverlayView extends View {
     private String videoId = "";
     private boolean overlayActive;
     private boolean videoPlaying;
-    private boolean highFrameRateRequested;
+    @Nullable
+    private Window activityWindow;
+    private float highestRefreshRate;
     private int fontSizeSp = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_FONT_SIZE);
     private int opacityPercent = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_OPACITY);
     private float laneHeight;
@@ -111,6 +117,9 @@ final class NiconicoCommentsOverlayView extends View {
         }
         overlayActive = active;
         setVisibility(active ? VISIBLE : GONE);
+        if (!active) {
+            setHighFrameRate(false);
+        }
         requestNextFrame();
     }
 
@@ -249,18 +258,67 @@ final class NiconicoCommentsOverlayView extends View {
     }
 
     /**
-     * The display can lower its refresh rate to match the video frame rate (often 30 Hz),
-     * which makes the scrolling comments choppy. Request a high refresh rate only while
-     * comments are moving across the screen.
+     * The display can lower its refresh rate to match the video frame rate (often 24 or 30 Hz),
+     * which makes the scrolling comments choppy. Request the highest refresh rate for the window
+     * only while comments are moving across the screen.
+     * <p>
+     * A view frame rate category is not used, because some devices ignore it.
      */
     private void setHighFrameRate(boolean high) {
-        if (highFrameRateRequested == high || Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+        Window window = activityWindow;
+        if (window == null) {
             return;
         }
-        highFrameRateRequested = high;
-        setRequestedFrameRate(high
-                ? REQUESTED_FRAME_RATE_CATEGORY_HIGH
-                : REQUESTED_FRAME_RATE_CATEGORY_DEFAULT);
+        WindowManager.LayoutParams params = window.getAttributes();
+        // The App refresh rate setting uses a display mode, which takes priority.
+        if (params.preferredDisplayModeId != 0) {
+            return;
+        }
+        if (highestRefreshRate == 0) {
+            highestRefreshRate = getHighestRefreshRate();
+            if (highestRefreshRate == 0) {
+                return;
+            }
+        }
+        // Leave a refresh rate that was set by something else.
+        if (params.preferredRefreshRate != (high ? 0 : highestRefreshRate)) {
+            return;
+        }
+        params.preferredRefreshRate = high ? highestRefreshRate : 0;
+        window.setAttributes(params);
+    }
+
+    private float getHighestRefreshRate() {
+        Display display = getDisplay();
+        if (display == null) {
+            return 0;
+        }
+        Display.Mode current = display.getMode();
+        float highest = 0;
+        for (Display.Mode mode : display.getSupportedModes()) {
+            if (mode.getPhysicalWidth() == current.getPhysicalWidth()
+                    && mode.getPhysicalHeight() == current.getPhysicalHeight()) {
+                highest = Math.max(highest, mode.getRefreshRate());
+            }
+        }
+        return highest;
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        Context context = getContext();
+        while (context instanceof ContextWrapper && !(context instanceof Activity)) {
+            context = ((ContextWrapper) context).getBaseContext();
+        }
+        activityWindow = context instanceof Activity activity ? activity.getWindow() : null;
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        setHighFrameRate(false);
+        activityWindow = null;
     }
 
     private void applyFontSize() {
