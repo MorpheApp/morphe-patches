@@ -474,16 +474,55 @@ internal object CaptionTrackHandlerErrorFingerprint : Fingerprint(
  * Track selection of the native caption track handler, which creates the track request.
  *
  * @param requestTrack Caption track field of the track request.
+ * @param subtitleManagerType Class of [SubtitleManagerFingerprint].
  */
-internal class CaptionTrackHandlerSelectFingerprint(requestTrack: FieldReference) : Fingerprint(
+internal class CaptionTrackHandlerSelectFingerprint(
+    requestTrack: FieldReference,
+    subtitleManagerType: String
+) : Fingerprint(
     classFingerprint = CaptionTrackHandlerErrorFingerprint,
     returnType = "V",
     parameters = listOf(requestTrack.type),
     filters = listOf(
+        // Loader of the track requests.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this"),
         methodCall(
             definingClass = requestTrack.definingClass,
             name = "<init>",
-            parameters = listOf(requestTrack.type)
+            parameters = listOf(requestTrack.type),
+            location = MatchAfterWithin(4)
+        ),
+        // Request of the loader, with the request and its callback.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf(requestTrack.definingClass, "L"),
+            returnType = "V",
+            location = MatchAfterWithin(4)
+        ),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this", type = subtitleManagerType)
+    )
+)
+
+/**
+ * Track selection event of the subtitle manager, the same method as [SubtitleManagerFingerprint].
+ * Matches at the field of the selected track.
+ *
+ * @param trackType Caption track class.
+ */
+internal class SubtitleManagerSelectedTrackFingerprint(trackType: String) : Fingerprint(
+    classFingerprint = SubtitleManagerFingerprintClassFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        string(""),
+        // Track of the selection event.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = trackType, location = MatchAfterWithin(5)),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = trackType,
+            location = MatchAfterWithin(3)
         )
     )
 )
@@ -491,10 +530,23 @@ internal class CaptionTrackHandlerSelectFingerprint(requestTrack: FieldReference
 /**
  * Result callback of the requests of the native caption track handler.
  */
-internal object CaptionTrackHandlerResultFingerprint : Fingerprint(
+internal class CaptionTrackHandlerResultFingerprint(requestTrack: FieldReference) : Fingerprint(
     classFingerprint = CaptionTrackHandlerErrorFingerprint,
     returnType = "V",
     parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
+    filters = listOf(checkCast(requestTrack.definingClass))
+)
+
+/**
+ * Updates the installed caption renderer with the playback time and speed.
+ */
+internal object CaptionTrackHandlerTimeFingerprint : Fingerprint(
+    classFingerprint = CaptionTrackHandlerErrorFingerprint,
+    returnType = "V",
+    parameters = listOf("J", "F"),
+    filters = listOf(
+        methodCall(parameters = listOf("J", "F"), returnType = "V")
+    )
 )
 
 /**
@@ -768,6 +820,18 @@ internal object CaptionCueConstructorFingerprint : Fingerprint(
     parameters = listOf("I", "J", "Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;", "L")
 )
 
+/** Caption window visibility is independent from its nonempty styled text. */
+internal fun getCaptionSettingsVisibilityFingerprint(settingsType: String) = object : Fingerprint(
+    definingClass = settingsType,
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_BOOLEAN, definingClass = "this", type = "Z"),
+        string("ap=%d, ah=%d, av=%d, vs=%b, sd=%b")
+    )
+) {}
+
 /**
  * Matches at the default caption window settings.
  */
@@ -789,6 +853,7 @@ internal fun getCaptionSamplerFingerprint(cueType: String) = object : Fingerprin
     returnType = "Ljava/util/List;",
     parameters = listOf("J"),
     filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this", type = "Ljava/util/List;"),
         newInstance(cueType),
         methodCall(definingClass = cueType, name = "<init>")
     )
@@ -947,6 +1012,16 @@ internal fun getCaptionOverlayPresenterFingerprint(cueType: String) = object : F
             returnType = "V"
         )
     )
+) {}
+
+/**
+ * Layout of the subtitle overlay, which contains the caption windows.
+ */
+internal fun getCaptionOverlayLayoutFingerprint(cueType: String) = object : Fingerprint(
+    classFingerprint = getCaptionOverlayPresenterFingerprint(cueType),
+    name = "onLayout",
+    returnType = "V",
+    parameters = listOf("Z", "I", "I", "I", "I")
 ) {}
 
 /**

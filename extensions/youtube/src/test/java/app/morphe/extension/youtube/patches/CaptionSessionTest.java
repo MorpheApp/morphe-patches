@@ -288,4 +288,73 @@ public class CaptionSessionTest {
         assertEquals("eins", session.snapshot(200).primary);
     }
 
+
+    @Test public void uploadedPrimaryTranslatesOnlyMissingSecondary() {
+        Jobs jobs = new Jobs(); List<String> targets = new ArrayList<>(); AtomicInteger failures = new AtomicInteger();
+        var session = new CaptionSession(SOURCE, "en", "tr", "de", (from, to, texts) -> {
+            targets.add(to); return texts.stream().map(text -> to + ":" + text).toList();
+        }, jobs, () -> {}, failures::incrementAndGet, false, true);
+        session.demand(0); jobs.run();
+        assertEquals(List.of("de"), targets);
+        var cue = session.snapshot(100);
+        assertEquals("", cue.primary); assertEquals("de:first source", cue.secondary);
+        assertTrue(cue.complete); assertEquals(0, failures.get());
+    }
+
+    @Test public void uploadedSecondaryTranslatesOnlyMissingPrimary() {
+        Jobs jobs = new Jobs(); List<String> targets = new ArrayList<>();
+        var session = new CaptionSession(SOURCE, "en", "tr", "de", (from, to, texts) -> {
+            targets.add(to); return texts.stream().map(text -> to + ":" + text).toList();
+        }, jobs, () -> {}, () -> {}, true, false);
+        session.demand(0); jobs.run();
+        assertEquals(List.of("tr"), targets);
+        var cue = session.snapshot(100);
+        assertEquals("tr:first source", cue.primary); assertEquals("", cue.secondary);
+        assertTrue(cue.complete);
+    }
+
+    @Test public void bothUploadedOutputsDoNotQueueOrReadTranslations() {
+        Jobs jobs = new Jobs();
+        CaptionSession.Translator translator = new CaptionSession.Translator() {
+            public List<String> translate(String from, String to, List<String> texts) {
+                throw new AssertionError("Both outputs are uploaded");
+            }
+            public String cached(String from, String to, String text) {
+                throw new AssertionError("Uploaded slots do not need translation cache reads");
+            }
+        };
+        var session = new CaptionSession(SOURCE, "en", "tr", "de", translator,
+                jobs, () -> {}, () -> {}, false, false);
+        session.demand(0); assertTrue(jobs.queue.isEmpty());
+        var cue = session.snapshot(100);
+        assertEquals("", cue.primary); assertEquals("", cue.secondary); assertTrue(cue.complete);
+    }
+
+    @Test public void missingOutputFailureDoesNotExposeSourceInUploadedSlot() {
+        Jobs jobs = new Jobs(); List<String> targets = new ArrayList<>(); AtomicInteger failures = new AtomicInteger();
+        var session = new CaptionSession(SOURCE, "en", "tr", "de", (from, to, texts) -> {
+            targets.add(to); throw new IOException("Missing output unavailable");
+        }, jobs, () -> {}, failures::incrementAndGet, false, true);
+        session.demand(0); jobs.run();
+        assertEquals(List.of("de"), targets); assertEquals(1, failures.get());
+        var cue = session.snapshot(100);
+        assertEquals("", cue.primary); assertEquals("", cue.secondary); assertFalse(cue.complete);
+    }
+
+    @Test public void replacementAfterUploadFailureRequestsTheFormerlyOwnedSlot() {
+        Jobs jobs = new Jobs(); List<String> targets = new ArrayList<>();
+        CaptionSession.Translator translator = (from, to, texts) -> {
+            targets.add(to); return texts.stream().map(text -> to + ":" + text).toList();
+        };
+        var old = new CaptionSession(SOURCE, "en", "tr", "de", translator,
+                jobs, () -> {}, () -> {}, false, true);
+        old.demand(0); old.invalidate();
+        var replacement = new CaptionSession(SOURCE, "en", "tr", "de", translator,
+                jobs, () -> {}, () -> {}, true, true);
+        replacement.demand(0); jobs.run();
+        assertEquals(List.of("tr", "de"), targets);
+        assertEquals("tr:first source", replacement.snapshot(100).primary);
+        assertEquals("de:first source", replacement.snapshot(100).secondary);
+        assertFalse(old.isActive());
+    }
 }

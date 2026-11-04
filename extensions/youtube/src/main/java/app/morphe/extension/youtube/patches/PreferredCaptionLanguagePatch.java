@@ -41,6 +41,13 @@ public class PreferredCaptionLanguagePatch {
         List<CaptionTrackInterface> patch_getDirectCaptionTracks();
 
         /**
+         * @return All caption tracks of the video, including the tracks of other audio tracks.
+         *         Null if no video is loaded.
+         */
+        @Nullable
+        List<CaptionTrackInterface> patch_getAllCaptionTracks();
+
+        /**
          * @return Auto-translated caption tracks. Null if no video is loaded.
          */
         @Nullable
@@ -237,12 +244,15 @@ public class PreferredCaptionLanguagePatch {
     public static CaptionTrackInterface onSetSubtitleTrack(SubtitleManagerInterface subtitleManager,
                                                            @Nullable CaptionTrackInterface track,
                                                            @Nullable Enum<?> selectType) {
-        rememberSelection(subtitleManager, track);
         try {
             final boolean interactionAllowed = SystemClock.uptimeMillis() >= userInteractionAllowedAt.get();
             final boolean userSelection = interactionAllowed && selectType != null
                     && PREFERRED_TRACK_SELECT_TYPE.equals(selectType.name())
                     && SystemClock.uptimeMillis() - videoStartTime > USER_SELECTION_GRACE_PERIOD_MILLISECONDS;
+            if (userSelection && CaptionTracks.dualCaptionEnabled()
+                    && track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface original
+                    && CaptionTracks.sourceIdentity(original) != null) userSelectedTrack.set(true);
+            rememberSelection(subtitleManager, track);
             if (CaptionTracks.dualCaptionEnabled()
                     && track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface translated
                     && AutoTranslateCaptionsPatch.isTranslationTrack(translated)) {
@@ -329,6 +339,12 @@ public class PreferredCaptionLanguagePatch {
      */
     private static void rememberSelection(SubtitleManagerInterface manager, @Nullable CaptionTrackInterface track) {
         if (!StableCaptionBlocks.isEnabled() || Boolean.TRUE.equals(replayingSelection.get())) return;
+
+        try {
+            CaptionTracks.inspectUploadedTracks(manager, track);
+        } catch (Exception ex) {
+            Logger.printException(() -> "inspectUploadedTracks failure", ex);
+        }
 
         activeManager = new WeakReference<>(manager);
         activeTrack = track;
