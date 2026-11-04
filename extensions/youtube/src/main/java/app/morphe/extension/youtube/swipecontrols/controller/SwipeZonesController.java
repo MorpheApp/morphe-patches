@@ -95,7 +95,7 @@ public final class SwipeZonesController {
     /**
      * Rectangle of the area that is effectively usable for swipe controls.
      */
-    private Rectangle getEffectiveSwipeRect() {
+    public Rectangle getEffectiveSwipeRect() {
         maybeAttachPlayerBoundsListener();
         Rectangle p = playerRect != null ? playerRect : fallbackScreenRect.get();
         return new Rectangle(

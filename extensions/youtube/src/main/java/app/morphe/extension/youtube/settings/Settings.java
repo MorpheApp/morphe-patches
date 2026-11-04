@@ -754,6 +754,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final EnumSetting<SwipeZoneAction> SWIPE_LEFT_ZONE = new EnumSetting<>("morphe_swipe_left_zone", SwipeZoneAction.OFF, true);
     public static final EnumSetting<SwipeZoneAction> SWIPE_RIGHT_ZONE = new EnumSetting<>("morphe_swipe_right_zone", SwipeZoneAction.OFF, true);
     public static final EnumSetting<SwipeZoneAction> SWIPE_TOP_ZONE = new EnumSetting<>("morphe_swipe_top_zone", SwipeZoneAction.OFF, true);
+    public static final BooleanSetting SWIPE_SEEK = new BooleanSetting("morphe_swipe_seek", FALSE, true);
+    public static final IntegerSetting SWIPE_SEEK_SENSITIVITY = new IntegerSetting("morphe_swipe_seek_sensitivity", 100, parent(SWIPE_SEEK));
     public static final BooleanSetting SWIPE_IGNORE_WHEN_LOCKED = new BooleanSetting("morphe_swipe_ignore_when_locked", FALSE, new AnySwipeZoneAvailability());
     public static final BooleanSetting SWIPE_PRESS_TO_ENGAGE = new BooleanSetting("morphe_swipe_press_to_engage", FALSE, true, new AnySwipeZoneAvailability());
     public static final BooleanSetting SWIPE_HAPTIC_FEEDBACK = new BooleanSetting("morphe_swipe_haptic_feedback", TRUE, true, new AnySwipeZoneAvailability());
@@ -1324,6 +1326,8 @@ public class Settings extends SharedYouTubeSettings {
                 1, 10, 1, ""));
         SeekBarPreference.register(new SeekBarConfig(SWIPE_SPEED_SENSITIVITY,
                 1, 50, 1, ""));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_SEEK_SENSITIVITY,
+                50, 300, 10, "%"));
         SeekBarPreference.register(new SeekBarConfig(SWIPE_SPEED_ZONE_HEIGHT,
                 5, 75, 1, "%"));
         SeekBarPreference.register(new SeekBarConfig(QUICK_ACTIONS_TOP_MARGIN,
