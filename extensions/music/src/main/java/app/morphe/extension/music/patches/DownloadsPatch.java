@@ -94,11 +94,6 @@ public final class DownloadsPatch {
      */
     private static final ByteArrayFilterGroup PREMIUM_UPSELL_COMMAND =
             new ByteArrayFilterGroup(null, "premium_upsell");
-    /**
-     * In the path of the text of a song row that shows the artist, the album and the length,
-     * under its title.
-     */
-    private static final String SONG_ROW_DETAILS_PATH = "badged_text.";
     /** Field of the renderer of a native song row that holds the command of a tap on the row. */
     private static final int ROW_TAP_COMMAND = 5;
     /** Extension of a command that holds the watch endpoint, with the video ID in its field 1. */
@@ -113,13 +108,17 @@ public final class DownloadsPatch {
 
     /**
      * Injection point.
-     * Usually is called off the main thread. Called when a litho text is created, and again when
-     * the app reuses it, such as a row scrolled off and back on screen.
+     * Usually is called off the main thread, when a litho text is created and its style runs
+     * are applied.
      *
      * @return The text, with the downloaded mark if it is the details text of a downloaded song.
      */
     public static CharSequence onLithoTextLoaded(ContextInterface conversionContext, CharSequence original) {
         try {
+            // Such as the text of an icon only button.
+            //noinspection SizeReplaceableByIsEmpty
+            if (original.length() == 0) return original;
+
             StringBuilder path = conversionContext.patch_getPathBuilder();
             if (isFlyoutMenuOverridden()
                     && downloadButtonLabel.isEmpty()
@@ -128,10 +127,7 @@ public final class DownloadsPatch {
                 Logger.printDebug(() -> "Found download button label: " + downloadButtonLabel);
             }
 
-            if (inAppDownloads() && Settings.DOWNLOADS_MARK.get()
-                    && Utils.contains(path, DownloadedMarkFilter.SONG_ROW_PATH)
-                    && Utils.contains(path, SONG_ROW_DETAILS_PATH)
-                    && DownloadedMarkFilter.downloadedRow() != null) {
+            if (DownloadedMark.isEnabled() && DownloadedMarkFilter.isDownloadedSongDetails(path)) {
                 return DownloadedMark.addTo(original);
             }
         } catch (Exception ex) {
@@ -150,7 +146,7 @@ public final class DownloadsPatch {
      */
     public static void onTwoColumnItemBound(TextView details, Object renderer) {
         try {
-            if (!inAppDownloads() || !Settings.DOWNLOADS_MARK.get()
+            if (!DownloadedMark.isEnabled()
                     || !(renderer instanceof ProtocolBufferFieldInterface message)) {
                 return;
             }
@@ -161,10 +157,10 @@ public final class DownloadsPatch {
             if (videoId.isEmpty()) {
                 videoId = row.messageField(ROW_PLAYLIST_ITEM).stringField(PLAYLIST_ITEM_VIDEO_ID);
             }
-            // The rows of albums, artists and playlists open a page instead.
-            if (!VIDEO_ID.matcher(videoId).matches() || !DownloadedMark.isDownloaded(videoId)) return;
-
-            details.setText(DownloadedMark.addTo(details.getText()));
+            // The rows of albums, artists and playlists have no video ID, and open a page instead.
+            if (DownloadedMark.isDownloaded(videoId)) {
+                details.setText(DownloadedMark.addTo(details.getText()));
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "onTwoColumnItemBound failure", ex);
         }
@@ -187,7 +183,7 @@ public final class DownloadsPatch {
                 || Settings.EXTERNAL_DOWNLOADER_MENU.get();
     }
 
-    public static boolean inAppDownloads() {
+    private static boolean inAppDownloads() {
         return Settings.DOWNLOAD_MODE.get() == DownloadMode.IN_APP;
     }
 

@@ -9,41 +9,38 @@ package app.morphe.extension.music.patches.components;
 
 import androidx.annotation.Nullable;
 
-import com.google.protobuf.WireFormat;
-
 import java.nio.charset.StandardCharsets;
 
-import app.morphe.extension.music.patches.DownloadsPatch;
 import app.morphe.extension.music.patches.downloads.DownloadedMark;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 
 /**
- * Finds the song rows of a downloaded track, so the Downloads patch can mark their texts.
- * Nothing is hidden here.
+ * Finds the litho song rows of the downloaded songs, such as of the albums and of the mixed
+ * search results, so the Downloads patch can mark their details text. Nothing is hidden here.
  */
 @SuppressWarnings("unused")
 public final class DownloadedMarkFilter extends Filter {
 
     /** In the path of a song row and of every component inside it. */
-    public static final String SONG_ROW_PATH = "music_list_item.";
+    private static final String SONG_ROW_PATH = "music_list_item.";
+    /** In the path of the text under the title of a song row, with the artist and the length. */
+    private static final String SONG_DETAILS_PATH = "badged_text.";
     /**
      * Separators after {@link #SONG_ROW_PATH} in the path of the row itself, such as
      * "music_list_item.eml-fe|e1bdbb31ea4fcde4|CellType|". The components inside the row have more.
      */
     private static final int ROW_PATH_SEPARATORS = 3;
 
-    /** A one byte tag and a one byte length, which is all a field of a video id needs. */
-    private static final int FIELD_HEADER_LENGTH = 2;
-
     /**
      * The downloaded song of the row being built on this thread, or null if the row is not of a
      * downloaded song. The components of a row are built one after the other on the same thread,
-     * the row itself first, and each text right after its own component.
+     * the row itself first, and each text along with its own component.
      */
     private static final ThreadLocal<String> downloadedRow = new ThreadLocal<>();
 
@@ -51,61 +48,53 @@ public final class DownloadedMarkFilter extends Filter {
         addPathCallbacks(new StringFilterGroup(Settings.DOWNLOADS_MARK, SONG_ROW_PATH));
     }
 
+    /**
+     * @param path Path of a litho text.
+     * @return If the text is the details text of the song row being built on this thread,
+     *         and the song is downloaded.
+     */
+    public static boolean isDownloadedSongDetails(CharSequence path) {
+        return downloadedRow.get() != null
+                && Utils.contains(path, SONG_DETAILS_PATH)
+                && Utils.contains(path, SONG_ROW_PATH);
+    }
+
     @Override
     public boolean isFiltered(ContextInterface contextInterface, String identifier, String accessibility,
                               CharSequence path, byte[] buffer, BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup, FilterContentType contentType,
                               int contentIndex) {
-        if (!DownloadsPatch.inAppDownloads()) return false;
-
-        if (isRow(path, contentIndex)) {
-            String videoId = downloadedIdIn(buffer);
+        if (DownloadedMark.isEnabled() && isRow(path, contentIndex)) {
+            String videoId = findDownloadedVideoId(buffer);
             downloadedRow.set(videoId);
-            if (videoId != null) Logger.printDebug(() -> "Downloaded song row of " + videoId);
+            if (videoId != null) Logger.printDebug(() -> "Downloaded song row: " + videoId);
         }
         return false;
     }
 
-    private static boolean isRow(CharSequence path, int matchIndex) {
+    private static boolean isRow(CharSequence path, int rowPathIndex) {
         int separators = 0;
-        for (int i = matchIndex, length = path.length(); i < length; i++) {
+        for (int i = rowPathIndex, length = path.length(); i < length; i++) {
             if (path.charAt(i) == '|') separators++;
         }
         return separators == ROW_PATH_SEPARATORS;
     }
 
     /**
-     * @return The downloaded song of the row whose text is being built on this thread, or null if
-     *         the row is not of a downloaded song.
-     */
-    @Nullable
-    public static String downloadedRow() {
-        return downloadedRow.get();
-    }
-
-    /**
-     * Looks through the component of a song row for a video id of a downloaded track. The row
-     * holds its song in the video id of its play endpoint and of the endpoints of its menu, each
-     * a length delimited field of 11 characters.
+     * The row holds its song in the video ID of its play endpoint and of the endpoints of its
+     * menu. The byte before a string field is its length.
      *
-     * @return The video id, or null if the row is not of a downloaded song.
+     * @return The first video ID of the row that is downloaded, or null if there is none.
      */
     @Nullable
-    private static String downloadedIdIn(byte[] buffer) {
-        final int videoIdLength = SongMenuFilter.VIDEO_ID_LENGTH;
-        for (int i = 0, last = buffer.length - FIELD_HEADER_LENGTH - videoIdLength; i <= last; i++) {
-            if (buffer[i + 1] != videoIdLength || !isStringFieldTag(buffer[i])) continue;
-            final int start = i + FIELD_HEADER_LENGTH;
-            if (!SongMenuFilter.isVideoId(buffer, start)) continue;
+    private static String findDownloadedVideoId(byte[] buffer) {
+        final int length = SongMenuFilter.VIDEO_ID_LENGTH;
+        for (int i = 1, last = buffer.length - length; i <= last; i++) {
+            if (buffer[i - 1] != length || !SongMenuFilter.isVideoId(buffer, i)) continue;
 
-            String videoId = new String(buffer, start, videoIdLength, StandardCharsets.US_ASCII);
+            String videoId = new String(buffer, i, length, StandardCharsets.US_ASCII);
             if (DownloadedMark.isDownloaded(videoId)) return videoId;
         }
         return null;
-    }
-
-    /** A single byte tag, of the fields 1 to 15, with the length delimited wire type. */
-    private static boolean isStringFieldTag(byte tag) {
-        return tag > 0 && WireFormat.getTagWireType(tag) == WireFormat.WIRETYPE_LENGTH_DELIMITED;
     }
 }

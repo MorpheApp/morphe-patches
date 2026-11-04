@@ -28,11 +28,13 @@ import app.morphe.patches.shared.misc.litho.context.conversionContextClassDef
 import app.morphe.patches.shared.misc.litho.context.conversionContextPatch
 import app.morphe.patches.youtube.layout.returnyoutubedislike.TextComponentDataFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Field
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import java.lang.ref.WeakReference
 
@@ -201,6 +203,31 @@ internal fun hookSpannableString(
         addInstruction(
             spannedIndex++,
             "invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)V"
+        )
+    }
+}
+
+/**
+ * Hooks the same texts as [hookSpannableString], where they are returned once their style runs
+ * are applied as spans. Unlike [hookSpannableString], this also includes the texts without any
+ * style runs. The extension method returns the text to use, and text it inserts with a
+ * SpannableStringBuilder keeps the spans in place.
+ */
+internal fun hookSpannableStringResult(
+    classDescriptor: String,
+    methodName: String = "onLithoTextLoaded"
+) = spannedMethodRef.get()!!.apply {
+    findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { returnIndex ->
+        val textRegister = getInstruction<OneRegisterInstruction>(returnIndex).registerA
+        val contextRegister = findFreeRegister(returnIndex, textRegister)
+
+        addInstructionsAtControlFlowLabel(
+            returnIndex,
+            """
+                move-object/from16 v$contextRegister, p0
+                invoke-static { v$contextRegister, v$textRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                move-result-object v$textRegister
+            """
         )
     }
 }
