@@ -1951,6 +1951,8 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_live_premieres_summary">Premieres while they are playing</string>
     <string name="morphe_niconico_comments_ended_premieres_title">Show on ended Premieres</string>
     <string name="morphe_niconico_comments_ended_premieres_summary">Chat replay of Premieres that have ended</string>
+    <string name="morphe_niconico_comments_timed_comments_title">Show timed comments</string>
+    <string name="morphe_niconico_comments_timed_comments_summary">On videos without a chat, top comments that contain a time such as 1:23 are shown at that time</string>
 
     <string name="morphe_live_chat_translate_screen_title">Live chat translation</string>
     <string name="morphe_live_chat_translate_screen_summary">Translate live chat and live chat replay messages</string>

@@ -116,7 +116,8 @@ val niconicoCommentsPatch = bytecodePatch(
                     ),
                     SwitchPreference("morphe_niconico_comments_live_streams", summary = true),
                     SwitchPreference("morphe_niconico_comments_live_premieres", summary = true),
-                    SwitchPreference("morphe_niconico_comments_ended_premieres", summary = true)
+                    SwitchPreference("morphe_niconico_comments_ended_premieres", summary = true),
+                    SwitchPreference("morphe_niconico_comments_timed_comments", summary = true)
                 )
             )
         )
