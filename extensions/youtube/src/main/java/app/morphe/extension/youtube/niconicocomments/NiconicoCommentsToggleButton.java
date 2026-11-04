@@ -139,7 +139,8 @@ public final class NiconicoCommentsToggleButton {
     }
 
     /**
-     * Shows the font size, opacity, travel duration and max length sliders. Changes apply immediately.
+     * Shows the font size, opacity, travel duration, display area and max length sliders.
+     * Changes apply immediately.
      */
     private static void showQuickSettings(Context context) {
         try {
@@ -178,6 +179,14 @@ public final class NiconicoCommentsToggleButton {
                         NiconicoCommentsController.updateViewState();
                     }));
             contentLayout.addView(SheetBottomDialog.createSliderRow(context,
+                    str("morphe_niconico_comments_display_area_title"),
+                    Settings.NICONICO_COMMENTS_DISPLAY_AREA,
+                    foregroundColor,
+                    value -> {
+                        Settings.NICONICO_COMMENTS_DISPLAY_AREA.save(value);
+                        NiconicoCommentsController.updateViewState();
+                    }));
+            contentLayout.addView(SheetBottomDialog.createSliderRow(context,
                     str("morphe_niconico_comments_max_length_title"),
                     Settings.NICONICO_COMMENTS_MAX_LENGTH,
                     foregroundColor,
@@ -198,6 +207,7 @@ public final class NiconicoCommentsToggleButton {
                         Settings.NICONICO_COMMENTS_FONT_SIZE.resetToDefault();
                         Settings.NICONICO_COMMENTS_OPACITY.resetToDefault();
                         Settings.NICONICO_COMMENTS_TRAVEL_DURATION.resetToDefault();
+                        Settings.NICONICO_COMMENTS_DISPLAY_AREA.resetToDefault();
                         Settings.NICONICO_COMMENTS_MAX_LENGTH.resetToDefault();
                         NiconicoCommentsController.updateViewState();
                         // Reopen so the sliders show the default values.
