@@ -601,9 +601,15 @@ message ElementContext {
 
 message ElementsExperiments {
     CardLayoutExperiments cardLayoutExperiments = 5;
+    // Experiments read by lockup_metadata_ue.eml.
+    bytes lockupMetadataExperiments = 26;
+    // Experiments read by lockup.eml and lockup_thumbnail.eml (field 524937).
+    bytes lockupExperiments = 42;
 }
 
-// Experiments read by lockup.eml.
+// Experiments read by the cards and the classic layout. Besides these, lockup_metadata_ue.eml reads
+// 516593 (leaves out the menu button) and 520547, video_lockup_with_attachment.eml 475852 and 513889,
+// video_lockup_attachments.eml 445511.
 message CardLayoutExperiments {
     // Background in the color sampled from the thumbnail.
     bool enableColorSampledBackground = 491718;

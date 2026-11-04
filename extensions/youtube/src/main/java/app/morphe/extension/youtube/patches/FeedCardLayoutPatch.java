@@ -70,6 +70,7 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.AvatarVie
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.AvatarViewModelHolder;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ButtonViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ButtonViewModelHolder;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CardLayoutExperiments;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CapabilitiesSubscriptionConfig;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ChannelAvatar;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ClientResource;
@@ -2457,13 +2458,21 @@ public class FeedCardLayoutPatch {
         return builder.build();
     }
 
+    /**
+     * The experiments that the templates of the cards and of the classic layout read are sent by the server
+     * for the layout of the account, and some change the layout, such as one that leaves the menu button out
+     * of the cards. The converted elements would get the experiments meant for the other layout, so they have
+     * only the experiments of the style of the cards, which the cards turn on and the classic layout turns off.
+     * Every other experiment of the cards is left out, also the ones that the server adds later.
+     */
     private static ElementContext setCardExperiments(ElementContext context, boolean enabled) {
-        ElementsExperiments experiments = context.getElementsExperiments();
         return context.toBuilder()
-                .setElementsExperiments(experiments.toBuilder()
-                        .setCardLayoutExperiments(experiments.getCardLayoutExperiments().toBuilder()
+                .setElementsExperiments(context.getElementsExperiments().toBuilder()
+                        .setCardLayoutExperiments(CardLayoutExperiments.newBuilder()
                                 .setEnableColorSampledBackground(enabled)
-                                .setEnableMetadataBackground(enabled)))
+                                .setEnableMetadataBackground(enabled))
+                        .clearLockupExperiments()
+                        .clearLockupMetadataExperiments())
                 .build();
     }
 
