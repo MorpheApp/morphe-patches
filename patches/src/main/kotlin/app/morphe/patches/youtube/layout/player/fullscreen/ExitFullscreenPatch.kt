@@ -31,6 +31,7 @@ internal val exitFullscreenPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        openVideosFullscreenHookPatch,
         playerTypeHookPatch,
         videoInformationPatch
     )
