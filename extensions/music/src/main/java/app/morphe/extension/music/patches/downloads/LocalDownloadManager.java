@@ -31,6 +31,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -110,6 +111,26 @@ public final class LocalDownloadManager {
         });
     }
 
+    /** Told on the main thread each time a track has been saved. */
+    private static final Set<Runnable> savedListeners = new CopyOnWriteArraySet<>();
+
+    static void addSavedListener(Runnable listener) {
+        savedListeners.add(listener);
+    }
+
+    static void removeSavedListener(Runnable listener) {
+        savedListeners.remove(listener);
+    }
+
+    private static void notifyTrackSaved() {
+        if (savedListeners.isEmpty()) return;
+        Utils.runOnMainThread(() -> {
+            for (Runnable listener : savedListeners) {
+                listener.run();
+            }
+        });
+    }
+
     private static void downloadBlocking(String videoId, String title, String artist, String album,
                                          int duration, Bitmap artwork) {
         if (!ACTIVE_DOWNLOADS.add(videoId)) {
@@ -169,6 +190,7 @@ public final class LocalDownloadManager {
             Logger.printDebug(() -> "Saved " + destination + " (" + destination.length() + " bytes)");
 
             OfflineTrack.save(directory, videoId, title, artist, album, duration, artwork);
+            notifyTrackSaved();
             Utils.showToastShort(str("morphe_music_downloads_complete"));
         } catch (Exception ex) {
             Logger.printException(() -> "Local audio download failed: " + videoId, ex);
