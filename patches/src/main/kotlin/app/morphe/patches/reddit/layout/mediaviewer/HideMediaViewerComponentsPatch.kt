@@ -12,7 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patcher.util.smali.ExternalLabel
@@ -22,9 +22,9 @@ import app.morphe.patches.reddit.misc.version.is_2026_32_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_38_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
+import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.removeFlags
-import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21t
@@ -35,7 +35,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideMediaViewerComponentsPatch;"
 
 @Suppress("unused")
-val hideMediaViewerComponentsPatch = bytecodePatch(
+val hideMediaViewerComponentsPatch = patch(
     name = "Hide media viewer components",
     description = "Adds options to hide the \"See the conversation\" button and the title, buttons and video controls " +
             "of the media viewer. Hiding the title, buttons and video controls requires Reddit 2026.38.0 or newer."

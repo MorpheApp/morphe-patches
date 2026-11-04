@@ -10,8 +10,7 @@
 
 package app.morphe.patches.youtube.interaction.loop
 
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
@@ -26,7 +25,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.hookVideoStarted
 import app.morphe.patches.youtube.shared.startVideoInformerPatch
 
-private val loopVideoButtonResourcePatch = resourcePatch {
+private val loopVideoButtonResourcePatch = patch {
     dependsOn(
         legacyPlayerControlsResourcePatch
     )
@@ -52,7 +51,7 @@ private val loopVideoButtonResourcePatch = resourcePatch {
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/LoopVideoButton;"
 
-internal val loopVideoButtonPatch = bytecodePatch(
+internal val loopVideoButtonPatch = patch(
     description = "Adds an option to display loop video button in the video player."
 ) {
     dependsOn(

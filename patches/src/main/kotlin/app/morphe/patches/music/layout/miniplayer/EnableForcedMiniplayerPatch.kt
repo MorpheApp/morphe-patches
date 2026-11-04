@@ -10,7 +10,7 @@ package app.morphe.patches.music.layout.miniplayer
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -23,7 +23,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/EnableForcedMiniplayerPatch;"
 
 @Suppress("unused")
-val enableForcedMiniplayerPatch = bytecodePatch(
+val enableForcedMiniplayerPatch = patch(
     name = "Enable forced miniplayer",
     description = "Adds an option to enable forced miniplayer when switching between music videos, podcasts, or songs."
 ) {

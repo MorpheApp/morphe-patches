@@ -12,7 +12,7 @@ package app.morphe.patches.youtube.misc.fix.contentprovider
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
@@ -23,7 +23,7 @@ private const val EXTENSION_CLASS =
  * Fixes crashing for some users with a beta release where the YouTube content provider uses null map values.
  * It unknown if this crash can happen on stable releases.
  */
-internal val fixContentProviderPatch = bytecodePatch{
+internal val fixContentProviderPatch = patch{
     dependsOn(
         sharedExtensionPatch
     )

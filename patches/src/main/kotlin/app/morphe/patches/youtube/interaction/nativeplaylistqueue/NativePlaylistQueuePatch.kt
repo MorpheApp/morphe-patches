@@ -7,8 +7,9 @@
 
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
+import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.misc.auth.authHookPatch
@@ -25,7 +26,6 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.videoid.hookBackgroundPlayVideoId
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
-import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_PACKAGE = "Lapp/morphe/extension/youtube/patches/queue"
 internal const val EXTENSION_CLASS = "$EXTENSION_PACKAGE/NativePlaylistQueuePatch;"
@@ -58,7 +58,7 @@ internal const val UNDO_COMMAND_INTERFACE = "$EXTENSION_PACKAGE/QueueUndoActions
  * Adds a temporary video queue using YouTube's playlist interface and playback controls.
  * Used by Add to queue when the queue type is set to the native queue.
  */
-val nativePlaylistQueuePatch = bytecodePatch(
+val nativePlaylistQueuePatch = patch(
     description = "Adds a temporary video queue using YouTube's playlist interface and playback controls."
 ) {
     dependsOn(
@@ -85,12 +85,12 @@ val nativePlaylistQueuePatch = bytecodePatch(
         hookVideoIntentInterceptor(EXTENSION_CLASS, "onQueueMixTap")
         hookVideoIntentContext(EXTENSION_CLASS, "prepareQueueStartContext")
 
-        installQueueFlyout(this)
-        installPlaylistPanel(this)
-        installPlaylistTitle(this)
-        installRatingCapture(this)
-        installPlaylistRemoval(this)
-        installFullscreenPlaylist(this)
+        installQueueFlyout()
+        installPlaylistPanel()
+        installPlaylistTitle()
+        installRatingCapture()
+        installPlaylistRemoval()
+        installFullscreenPlaylist()
 
         hookElement("$EXTENSION_CLASS->onElementLoaded")
         hookVideoId("$EXTENSION_CLASS->onVideoChanged(Ljava/lang/String;)V")

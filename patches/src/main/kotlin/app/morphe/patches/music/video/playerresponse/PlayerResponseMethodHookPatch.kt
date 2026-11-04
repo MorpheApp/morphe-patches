@@ -9,7 +9,7 @@ package app.morphe.patches.music.video.playerresponse
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
@@ -29,7 +29,7 @@ private const val REGISTER_PLAYLIST_INDEX = "p5"
 private lateinit var playerResponseMethodRef: WeakReference<MutableMethod>
 private var numberOfInstructionsAdded = 0
 
-val musicPlayerResponseMethodHookPatch = bytecodePatch(
+val musicPlayerResponseMethodHookPatch = patch(
     description = "Hooks the YouTube Music player parameter builder to expose video id, playlist id and player parameter."
 ) {
     dependsOn(

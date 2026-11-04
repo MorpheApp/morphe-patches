@@ -8,9 +8,9 @@
 package app.morphe.patches.youtube.misc.gms
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 
-internal val deviceComplianceCheckPatch = bytecodePatch {
+internal val deviceComplianceCheckPatch = patch {
     execute {
         // GmsCore answering "not compliant" sends the app to the background and opens
         // UncertifiedDeviceActivity. A failed check already emits false, so do the same.

@@ -2,7 +2,7 @@ package app.morphe.patches.youtube.layout.player.overlay
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
@@ -14,7 +14,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/CustomPlayerOverlayOpacityPatch;"
 
 @Suppress("unused")
-val customPlayerOverlayOpacityPatch = bytecodePatch(
+val customPlayerOverlayOpacityPatch = patch(
     name = "Custom player overlay opacity",
     description = "Adds an option to change the opacity of the video player background when player controls are visible.",
 ) {

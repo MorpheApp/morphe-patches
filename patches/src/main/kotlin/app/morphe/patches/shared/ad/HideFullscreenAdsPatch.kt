@@ -11,7 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
@@ -26,7 +26,7 @@ internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/HideF
 
 internal fun hideFullscreenAdsPatch(
     preferenceScreen: BasePreferenceScreen.Screen
-) = bytecodePatch(
+) = patch(
     description = "Adds an option to hide fullscreen premium popup ads."
 ) {
     execute {

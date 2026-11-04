@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patches.youtube.layout.originaltitles.PlaylistPanelVideoBindFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -19,10 +19,9 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableField
 
 /** Observe native row commands without replacing their listener or routing. */
 internal fun installPlaylistRowPlayback(
-    context: BytecodePatchContext,
     modelField: FieldReference,
     panelField: FieldReference
-) = with(context) {
+) {
     // Original titles also modifies these binders. Inspect fresh matches,
     // including all native layouts, and require their shared video model.
     PlaylistPanelVideoBindFingerprint.clearMatch()
@@ -38,7 +37,7 @@ internal fun installPlaylistRowPlayback(
 
     val rowMenu = playlistRowMenuOpenFingerprint(videoType).match()
 
-    installPlaylistMenuDispatch(context, rowMenu.originalMethod.parameterTypes[1].toString())
+    installPlaylistMenuDispatch(rowMenu.originalMethod.parameterTypes[1].toString())
 
     val contextCreation = rowMenu.instructionMatches.last()
     val contextRegister = contextCreation.getInstruction<OneRegisterInstruction>().registerA
@@ -47,7 +46,7 @@ internal fun installPlaylistRowPlayback(
         "invoke-static {v$contextRegister}, $EXTENSION_CLASS->onRowMenuOpened(Ljava/util/Map;)V"
     )
 
-    installPlaylistReordering(context, videoType)
+    installPlaylistReordering(videoType)
 
     // The native veto predicate runs before logging decorates the bound endpoint.
     // Observe its original identity after the veto, never the decorated copy.
@@ -107,7 +106,7 @@ internal fun installPlaylistRowPlayback(
         """
     )
 
-    installPlaylistNavigation(context, controller.type)
+    installPlaylistNavigation(controller.type)
 
     // A nonserialized bit belongs to the exact native object, survives a stale
     // view callback, and disappears with that object. No native model is retained
@@ -232,5 +231,5 @@ internal fun installPlaylistRowPlayback(
                 "$EXTENSION_CLASS->onRowClicked($ROW_CLICK_INTERFACE)V"
     )
 
-    installPlaylistSwipeBackground(context, rowListener)
+    installPlaylistSwipeBackground(rowListener)
 }

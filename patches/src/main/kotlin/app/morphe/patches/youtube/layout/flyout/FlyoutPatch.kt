@@ -13,7 +13,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
@@ -45,7 +46,7 @@ private const val EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE =
 private const val EXTENSION_PROTOCOL_BUFFER_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils$ProtocolBufferFieldInterface;"
 
-val flyoutPatch = bytecodePatch(
+val flyoutPatch = patch(
     description = "Provides shared flyout menu hooks.",
 ) {
     dependsOn(

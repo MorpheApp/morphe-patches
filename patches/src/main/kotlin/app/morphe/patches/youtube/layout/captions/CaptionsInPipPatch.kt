@@ -11,7 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.registersUsed
@@ -32,7 +32,7 @@ import com.android.tools.smali.dexlib2.iface.reference.StringReference
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/CaptionsInPipPatch;"
 
-internal val captionsInPipPatch = bytecodePatch(
+internal val captionsInPipPatch = patch(
     description = "Adds an option to show captions in picture-in-picture mode.",
 ) {
     dependsOn(

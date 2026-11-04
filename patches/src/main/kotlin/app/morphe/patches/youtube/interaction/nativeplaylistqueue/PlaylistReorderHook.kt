@@ -8,13 +8,13 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.p0Register
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 /** Observe the existing drag transaction; retain native animation and accessibility. */
-internal fun installPlaylistReordering(context: BytecodePatchContext, videoType: String) = with(context) {
+internal fun installPlaylistReordering(videoType: String) {
     val holderType = PlaylistDragBinderFingerprint.originalMethod.definingClass
     val start = playlistDragStartFingerprint(holderType)
     val end = playlistDragEndFingerprint(holderType)

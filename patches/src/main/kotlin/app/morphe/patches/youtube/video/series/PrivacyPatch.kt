@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.video.series
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.classDefByOrNull
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -24,7 +24,7 @@ private const val IDENTITY = $$"$${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPriv
 /** Resolve the current-account providers, never an arbitrary identity getter or request header. */
 internal data class NativeAccountContract(val type: String, val id: String, val incognito: String)
 
-internal fun BytecodePatchContext.wirePrivacy(): NativeAccountContract {
+internal fun wirePrivacy(): NativeAccountContract {
     val identity = AccountIdentityFingerprint.originalClassDef
     val diagnostic = AccountIdentityFingerprint.originalMethod
 

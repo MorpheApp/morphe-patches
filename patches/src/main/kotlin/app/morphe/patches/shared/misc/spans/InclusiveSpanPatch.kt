@@ -14,7 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.SpannableStringBuilderFingerprint
@@ -54,7 +54,7 @@ fun addSpanFilter(classDescriptor: String) {
     )
 }
 
-val inclusiveSpanPatch = bytecodePatch(
+val inclusiveSpanPatch = patch(
     description = "Hooks SpannableString setting and filters specific span components.",
 ) {
     dependsOn(textComponentPatch)

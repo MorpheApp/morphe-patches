@@ -9,9 +9,8 @@ package app.morphe.patches.shared.misc.auth
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.request.buildRequestPatch
 import app.morphe.patches.shared.misc.request.hookBuildRequest
 import app.morphe.util.findFieldFromToString
@@ -20,10 +19,10 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/innertube/utils/AuthUtils;"
 
 internal fun authHookPatch(
-    emptyPageIdHook: BytecodePatchBuilder.() -> Boolean,
-    block: BytecodePatchBuilder.() -> Unit,
-    executeBlock: BytecodePatchContext.() -> Unit = {},
-) = bytecodePatch(
+    emptyPageIdHook: PatchDefinition.() -> Boolean,
+    block: PatchDefinition.() -> Unit,
+    executeBlock: () -> Unit = {},
+) = patch(
     description = "Hook to get the parameters required for account authentication."
 ) {
     block()

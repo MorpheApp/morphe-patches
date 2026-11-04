@@ -14,7 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
 import app.morphe.patcher.util.findFreeRegister
@@ -33,7 +33,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideButtonsPatch;"
 
 @Suppress("unused")
-val hideButtonsPatch = bytecodePatch(
+val hideButtonsPatch = patch(
     name = "Hide buttons",
     description = "Adds options to hide the cast, history, notification, search, voice search, sound search, and Library New buttons."
 ) {

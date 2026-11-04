@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction22t
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -17,7 +17,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
  * The subtitle window keeps the height of its measure spec if the width mode is EXACTLY,
  * instead of the height mode. Use the height mode for the height.
  */
-internal val captionWindowMeasurePatch = bytecodePatch(
+internal val captionWindowMeasurePatch = patch(
     description = "Fixes the caption window height using the width measure mode.",
 ) {
     execute {

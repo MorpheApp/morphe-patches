@@ -16,9 +16,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField
@@ -113,7 +113,7 @@ private var setPlaybackRateMethodIndex = -1
 
 private lateinit var playerStatusMethodRef : WeakReference<MutableMethod>
 
-val videoInformationPatch = bytecodePatch(
+val videoInformationPatch = patch(
     description = "Hooks YouTube to get information about the current playing video.",
 ) {
     dependsOn(
@@ -632,7 +632,6 @@ val videoInformationPatch = bytecodePatch(
     }
 }
 
-context(patchContext: BytecodePatchContext)
 internal fun addExoPlayerHooks(extensionClass: String) {
     val playbackParametersType = PlaybackParametersToStringFingerprint.classDef.type
 
@@ -715,7 +714,6 @@ internal fun addExoPlayerHooks(extensionClass: String) {
     }
 }
 
-context(patchContext: BytecodePatchContext)
 private fun addPlayerInterfaceMethods(
     targetClass: MutableClass,
     seekToMethod: Method,

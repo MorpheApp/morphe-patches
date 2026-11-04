@@ -16,7 +16,6 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.patch.BytecodePatchContext
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -30,7 +29,7 @@ private object FormFactorEnumConstructorFingerprint : Fingerprint(
     )
 )
 
-internal fun BytecodePatchContext.getInnerTubeClientConfigFingerprint() = object : Fingerprint(
+internal fun getInnerTubeClientConfigFingerprint() = object : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(),

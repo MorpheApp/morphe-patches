@@ -11,19 +11,17 @@
 package app.morphe.patches.shared.misc.gms
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.resourceFile
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.InstallerType
 import app.morphe.patcher.patch.Patch
 import app.morphe.patcher.patch.PatchAvailability
-import app.morphe.patcher.patch.ResourcePatchBuilder
-import app.morphe.patcher.patch.ResourcePatchContext
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.returnEarly
@@ -75,9 +73,9 @@ fun gmsCoreSupportPatch(
     mainActivityOnCreateFingerprint: Fingerprint,
     extensionPatch: Patch<*>,
     gmsCoreSupportResourcePatchFactory: () -> Patch<*>,
-    executeBlock: BytecodePatchContext.() -> Unit = {},
-    block: BytecodePatchBuilder.() -> Unit = {},
-) = bytecodePatch(
+    executeBlock: () -> Unit = {},
+    block: PatchDefinition.() -> Unit = {},
+) = patch(
     name = "GmsCore support",
     description = "Allows the app to work without root by using a different package name when patched " +
             "using a GmsCore instead of Google Play Services.",
@@ -512,9 +510,9 @@ fun gmsCoreSupportResourcePatch(
     toPackageNameDefault: String,
     spoofedPackageSignature: String,
     screen: BasePreferenceScreen.Screen,
-    executeBlock: ResourcePatchContext.() -> Unit = {},
-    block: ResourcePatchBuilder.() -> Unit = {},
-) = resourcePatch {
+    executeBlock: () -> Unit = {},
+    block: PatchDefinition.() -> Unit = {},
+) = patch {
     dependsOn(
         cloneAppPatch,
         gmsCorePackageQueriesPatch,
@@ -578,7 +576,7 @@ fun gmsCoreSupportResourcePatch(
                 "</queries>" to "<package android:name=\"app.morphe.pot.helper\"/></queries><uses-permission android:name=\"android.permission.REQUEST_DELETE_PACKAGES\"/>",
             )
 
-            val manifest = get("AndroidManifest.xml")
+            val manifest = resourceFile("AndroidManifest.xml")
             manifest.writeText(
                 transformations.entries.fold(manifest.readText()) { acc, (from, to) ->
                     acc.replace(

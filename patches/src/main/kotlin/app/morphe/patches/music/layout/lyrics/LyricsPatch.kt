@@ -11,8 +11,7 @@ package app.morphe.patches.music.layout.lyrics
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
@@ -23,6 +22,7 @@ import app.morphe.patches.music.shared.hookMediaSessionArgument
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.MediaSessionSetMetadataFingerprint
 import app.morphe.patches.shared.MediaSessionSetPlaybackStateFingerprint
+import app.morphe.patches.shared.misc.library.copyResources
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -33,7 +33,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.util.ResourceGroup
-import app.morphe.util.copyResources
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -49,7 +48,7 @@ private const val LYRICS_PANEL_FILTER =
     "Lapp/morphe/extension/music/patches/components/LyricsPanelFilter;"
 
 @Suppress("unused")
-val lyricsPatch = bytecodePatch(
+val lyricsPatch = patch(
     name = "Third-party lyrics",
     description = "Adds an option to show synced lyrics with experience enhancement from 19+ providers in the lyrics panel."
 ) {
@@ -61,7 +60,7 @@ val lyricsPatch = bytecodePatch(
         musicVideoInformationPatch,
         // The copy, romanize and furigana buttons need their icons whether the patches
         // that own these resources are applied.
-        resourcePatch {
+        patch {
             execute {
                 copyResources(
                     "copyvideolinkbutton",

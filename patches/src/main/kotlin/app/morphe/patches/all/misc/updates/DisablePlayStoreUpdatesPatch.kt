@@ -32,8 +32,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.returnEarly
@@ -49,7 +49,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/all/versioncode/Disab
 private var originalVersionCode: Int = 0
 
 @Suppress("unused")
-private val disablePlayStoreUpdatesResourcePatch = resourcePatch {
+private val disablePlayStoreUpdatesResourcePatch = patch {
     execute {
         document("AndroidManifest.xml").use { document ->
             val manifest = document.getNode("manifest") as Element
@@ -69,7 +69,7 @@ private val disablePlayStoreUpdatesResourcePatch = resourcePatch {
 }
 
 @Suppress("unused")
-internal val disablePlayStoreUpdatesPatch = bytecodePatch(
+internal val disablePlayStoreUpdatesPatch = patch(
     name = "Disable Play Store updates",
     description = "Disables Play Store updates by setting the version code to the maximum allowed. " +
             "This patch may cause unexpected issues with some apps and does not work if the " +

@@ -17,12 +17,12 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructionsOrNull
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.document
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.Document
 import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.getMutableMethod
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.p0Register
@@ -58,7 +58,6 @@ import app.morphe.util.copyXmlNode
 import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.findInstructionIndicesReversed
-import app.morphe.util.getMutableMethod
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -86,7 +85,7 @@ private var insertElementId = "@id/player_video_heading"
 lateinit var addLegacyBottomControl: (String) -> Unit
     private set
 
-internal val legacyPlayerControlsResourcePatch = resourcePatch {
+internal val legacyPlayerControlsResourcePatch = patch {
     /**
      * The element to the left of the element being added.
      */
@@ -214,7 +213,6 @@ internal val legacyPlayerControlsResourcePatch = resourcePatch {
 
 private var newPlayerControlsOverride = false
 
-context(patchContext: BytecodePatchContext)
 internal fun disableNewPlayerControlsFeatureFlag() {
     if (newPlayerControlsOverride) return
     newPlayerControlsOverride = true
@@ -298,7 +296,7 @@ private lateinit var inflateBottomControlMethodRef : WeakReference<MutableMethod
 private var inflateBottomControlInsertIndex = -1
 private var inflateBottomControlRegister = -1
 
-val legacyPlayerControlsPatch = bytecodePatch(
+val legacyPlayerControlsPatch = patch(
     description = "Manages the code for the player controls of the YouTube player.",
 ) {
     dependsOn(

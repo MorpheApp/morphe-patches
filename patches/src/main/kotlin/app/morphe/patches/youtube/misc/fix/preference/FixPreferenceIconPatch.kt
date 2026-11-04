@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.misc.fix.preference
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -29,7 +29,7 @@ private const val EXTENSION_CLASS =
 /**
  * Fixes https://github.com/MorpheApp/morphe-patches/issues/1117.
  */
-internal val fixPreferenceIconPatch = bytecodePatch{
+internal val fixPreferenceIconPatch = patch{
     dependsOn(
         sharedExtensionPatch,
         versionCheckPatch,

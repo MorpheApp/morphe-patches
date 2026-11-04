@@ -12,7 +12,7 @@ package app.morphe.patches.youtube.misc.fix.backtoexitgesture
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.backgesture.addBackPressedHook
 import app.morphe.patches.youtube.misc.backgesture.addPredictiveBackGestureHook
@@ -30,7 +30,7 @@ import com.android.tools.smali.dexlib2.Opcode
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FixBackToExitGesturePatch;"
 
-internal val fixBackToExitGesturePatch = bytecodePatch(
+internal val fixBackToExitGesturePatch = patch(
     description = "Fixes the swipe back to exit gesture."
 ) {
     dependsOn(

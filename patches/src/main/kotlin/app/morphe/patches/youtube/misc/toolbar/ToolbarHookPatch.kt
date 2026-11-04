@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.misc.toolbar
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.shared.ToolBarButtonFingerprint
@@ -21,7 +21,7 @@ internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/Tool
 
 private lateinit var toolbarMethod : WeakReference<MutableMethod>
 
-val toolBarHookPatch = bytecodePatch(
+val toolBarHookPatch = patch(
     description = "toolBarHookPatch"
 ) {
     dependsOn(

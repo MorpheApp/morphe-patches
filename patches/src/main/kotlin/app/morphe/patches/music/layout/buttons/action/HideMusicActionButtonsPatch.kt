@@ -8,7 +8,7 @@
 package app.morphe.patches.music.layout.buttons.action
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
@@ -31,7 +31,7 @@ private const val EXTENSION_BUTTON_PROTO_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/components/MusicActionButtonsFilter$ButtonProtoBufferInterface;"
 
 @Suppress("unused")
-val hideMusicActionButtonsPatch = bytecodePatch(
+val hideMusicActionButtonsPatch = patch(
     name = "Hide music action buttons",
     description = "Adds options to hide action buttons under the player."
 ) {

@@ -14,9 +14,8 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
@@ -31,6 +30,7 @@ import app.morphe.patches.shared.GoogleApiActivityOnCreateFingerprint
 import app.morphe.patches.shared.layout.branding.addLicensePatch
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.patches.shared.misc.initialization.initializationPatch
+import app.morphe.patches.shared.misc.library.copyResources
 import app.morphe.patches.shared.misc.settings.MORPHE_SETTINGS_INTENT
 import app.morphe.patches.shared.misc.settings.SETTINGS_NAME_PREFERENCE_KEY
 import app.morphe.patches.shared.misc.settings.customSettingsNameInstructions
@@ -67,7 +67,6 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.insertLiteralOverride
@@ -87,7 +86,7 @@ private const val NATIVE_SNACKBAR_CLASS = "Lapp/morphe/extension/youtube/patches
 
 private val preferences = mutableSetOf<BasePreference>()
 
-private val settingsResourcePatch = resourcePatch {
+private val settingsResourcePatch = patch {
     dependsOn(
         settingsPatch(
             rootPreferences = listOf(
@@ -217,7 +216,7 @@ private val settingsResourcePatch = resourcePatch {
     }
 }
 
-val settingsPatch = bytecodePatch(
+val settingsPatch = patch(
     description = "Adds settings for Morphe to YouTube."
 ) {
     dependsOn(
@@ -395,7 +394,6 @@ val settingsPatch = bytecodePatch(
 /**
  * Modifies the activity to show Morphe settings instead of its original purpose.
  */
-context(patchContext: BytecodePatchContext)
 internal fun modifyActivityForSettingsInjection(
     activityOnCreateFingerprint: Fingerprint,
     extensionClassType: String,

@@ -8,7 +8,6 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -18,14 +17,14 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
  * and logs the command before this point. Local queue actions then call the same sheet dismissal
  * used by the native path. Unowned and other endpoints continue through the original call.
  */
-internal fun installPlaylistMenuDispatch(context: BytecodePatchContext, callbackType: String) = with(context) {
+internal fun installPlaylistMenuDispatch(callbackType: String) {
     val dispatch = playlistMenuDispatchFingerprint(callbackType).match()
     val callback = dispatch.instructionMatches[1]
     val dismissal = dispatch.instructionMatches[2]
 
     val endpointType = callback.methodReference.parameterTypes.first().toString()
 
-    installQueueSavePicker(this, endpointType)
+    installQueueSavePicker(endpointType)
 
     val registers = callback.getInstruction<FiveRegisterInstruction>()
     val endpoint = registers.registerD

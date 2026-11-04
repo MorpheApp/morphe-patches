@@ -11,7 +11,8 @@ package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -30,7 +31,7 @@ private const val EXTENSION_CAPTION_REQUEST_INTERFACE =
  *
  * Ignore all pens of auto-translated tracks so the translation uses the user caption style.
  */
-internal val translatedCaptionPensPatch = bytecodePatch(
+internal val translatedCaptionPensPatch = patch(
     description = "Fixes auto-translated captions of styled caption tracks showing an empty background.",
 ) {
     // Adds the caption track interface.

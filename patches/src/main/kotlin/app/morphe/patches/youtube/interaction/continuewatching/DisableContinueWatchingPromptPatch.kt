@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.interaction.continuewatching
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
@@ -24,7 +24,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableContinueWatchingPromptPatch;"
 
 @Suppress("unused")
-val disableContinueWatchingPromptPatch = bytecodePatch(
+val disableContinueWatchingPromptPatch = patch(
     name = "Disable continue watching prompt",
     description = "Adds an option to keep autoplay going instead of pausing with a " +
             "\"Continue watching\" prompt after a period of inactivity.",

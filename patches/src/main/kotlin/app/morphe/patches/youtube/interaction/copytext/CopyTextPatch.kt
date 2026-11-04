@@ -8,7 +8,8 @@
 package app.morphe.patches.youtube.interaction.copytext
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.textcomponent.hookLithoSpannableString
@@ -22,7 +23,7 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/CopyTextPatch;"
 
 @Suppress("unused")
-val copyTextPatch = bytecodePatch(
+val copyTextPatch = patch(
     name = "Copy text",
     description = "Adds options to copy the video title and comments, and to select text of video descriptions " +
             "and posts, by tapping and holding them."

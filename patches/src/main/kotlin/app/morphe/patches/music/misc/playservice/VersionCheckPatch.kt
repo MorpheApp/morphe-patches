@@ -2,7 +2,8 @@
 
 package app.morphe.patches.music.misc.playservice
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.packageMetadata
+import app.morphe.patcher.patch.patch
 import kotlin.properties.Delegates
 
 // Use notNull delegate so an exception is thrown if these fields are accessed before they are set.
@@ -34,7 +35,7 @@ var is_9_41_or_greater: Boolean by Delegates.notNull()
 var is_9_43_or_greater: Boolean by Delegates.notNull()
     private set
 
-val versionCheckPatch = bytecodePatch {
+val versionCheckPatch = patch {
     execute {
         val versionName = packageMetadata.versionName
         fun isEqualsOrGreaterThan(version: String): Boolean {

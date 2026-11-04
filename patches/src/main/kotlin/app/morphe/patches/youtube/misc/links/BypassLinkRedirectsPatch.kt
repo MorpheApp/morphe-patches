@@ -2,7 +2,7 @@ package app.morphe.patches.youtube.misc.links
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -13,7 +13,7 @@ import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction35c
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/BypassLinkRedirectsPatch;"
 
 @Suppress("unused")
-val bypassLinkRedirectsPatch = bytecodePatch(
+val bypassLinkRedirectsPatch = patch(
     name = "Bypass link redirects",
     description = "Adds an option to bypass redirects and open the original link directly.",
 ) {

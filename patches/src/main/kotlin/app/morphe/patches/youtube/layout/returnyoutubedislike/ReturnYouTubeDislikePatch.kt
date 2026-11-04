@@ -12,7 +12,7 @@ package app.morphe.patches.youtube.layout.returnyoutubedislike
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patches.shared.layout.returnyoutubedislike.DislikeFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.EndpointServiceNameFingerprint
@@ -42,7 +42,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ReturnYouTubeDislikePatch;"
 
-val returnYouTubeDislikePatch = bytecodePatch(
+val returnYouTubeDislikePatch = patch(
     name = "Return YouTube Dislike",
     description = "Adds an option to show the dislike count of videos with Return YouTube Dislike, " +
             "and the like count and like ratio on the thumbnails of feed videos."

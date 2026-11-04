@@ -13,7 +13,7 @@ package app.morphe.patches.music.layout.branding
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -38,7 +38,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 private const val STARTUP_ANIMATION_EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/StartupAnimationPatch;"
 
-private val startupAnimationPatch = bytecodePatch {
+private val startupAnimationPatch = patch {
     dependsOn(settingsPatch, lottieAnimationPatch, startupAnimationResourcePatch)
 
     execute {

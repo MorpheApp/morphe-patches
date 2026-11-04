@@ -1,7 +1,7 @@
 package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
@@ -50,7 +50,7 @@ internal fun MutableClass.addHelperMethod(
 }
 
 @Suppress("unused")
-val captionsPatch = bytecodePatch(
+val captionsPatch = patch(
     name = "Captions",
     description = "Adds options to disable captions from being automatically enabled, " +
             "select a preferred and a secondary caption language, add more auto-translate languages, " +

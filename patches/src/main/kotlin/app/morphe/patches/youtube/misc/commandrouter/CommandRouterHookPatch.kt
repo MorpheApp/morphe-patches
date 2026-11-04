@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.misc.commandrouter
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.parseProtoInstructions
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -21,7 +21,7 @@ private const val EXTENSION_COMMAND_ROUTER_INTERFACE =
  * Hooks the command router of each activity, so the extension can run commands
  * the same as the commands of server responses.
  */
-internal val commandRouterHookPatch = bytecodePatch(
+internal val commandRouterHookPatch = patch(
     description = "Hooks the command router of each activity so the extension can run commands."
 ) {
     dependsOn(sharedExtensionPatch)

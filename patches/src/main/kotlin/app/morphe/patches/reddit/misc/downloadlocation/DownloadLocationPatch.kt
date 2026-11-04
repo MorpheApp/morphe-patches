@@ -12,15 +12,15 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.shared.LinkConstructorFingerprint
+import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.util.fiveRegisters
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
-import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -34,7 +34,7 @@ private const val EXTENSION_IMAGE_DOWNLOAD_PARAMS_INTERFACE =
     $$"Lapp/morphe/extension/reddit/patches/DownloadLocationPatch$ImageDownloadParams;"
 
 @Suppress("unused")
-val downloadLocationPatch = bytecodePatch(
+val downloadLocationPatch = patch(
     name = "Download location",
     description = "Adds options to choose the folder and file name of downloaded images and videos, " +
             "which can use the subreddit, author and account, and can be set per account."

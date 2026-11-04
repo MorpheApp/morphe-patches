@@ -11,8 +11,8 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceFile
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
@@ -26,11 +26,11 @@ import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstructio
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/OverrideYouTubeMusicButtonsPatch;"
 
-private fun overrideYouTubeMusicManifestPatch() = resourcePatch{
+private fun overrideYouTubeMusicManifestPatch() = patch{
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        val manifestFile = get("AndroidManifest.xml")
+        val manifestFile = resourceFile("AndroidManifest.xml")
         val manifestContent = manifestFile.readText()
 
         // Only launchable apps are needed here, and QUERY_ALL_PACKAGES additionally exposes
@@ -54,7 +54,7 @@ private fun overrideYouTubeMusicManifestPatch() = resourcePatch{
 }
 
 @Suppress("unused")
-val overrideYouTubeMusicButtonsPatch = bytecodePatch(
+val overrideYouTubeMusicButtonsPatch = patch(
     name = "Override YouTube Music buttons",
     description = "Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client.",
 ) {

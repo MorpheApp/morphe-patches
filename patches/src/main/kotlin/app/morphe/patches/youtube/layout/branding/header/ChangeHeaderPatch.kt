@@ -12,7 +12,8 @@ package app.morphe.patches.youtube.layout.branding.header
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
 import app.morphe.patcher.resourceLiteral
@@ -39,7 +40,7 @@ private val logoResourceNames = arrayOf("morphe_header")
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ChangeHeaderPatch;"
 
-private val changeHeaderBytecodePatch = bytecodePatch {
+private val changeHeaderBytecodePatch = patch {
 
     execute {
         // Verify images exist. Resources are not used during patching but extension code does.

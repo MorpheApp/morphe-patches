@@ -13,13 +13,12 @@ package app.morphe.patches.shared.misc.debugging
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patches.shared.misc.library.copyResources
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -28,7 +27,6 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.copyResources
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -40,22 +38,22 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/Enable
  * Patch shared with YouTube and YT Music.
  */
 internal fun enableDebuggingPatch(
-    block: BytecodePatchBuilder.() -> Unit = {},
-    executeBlock: BytecodePatchContext.() -> Unit = {},
-    hookIndexedBooleanFeatureFlag: BytecodePatchBuilder.() -> Boolean,
-    hookStringFeatureFlag: BytecodePatchBuilder.() -> Boolean,
-    hookLongFeatureFlag: BytecodePatchBuilder.() -> Boolean,
-    hookDoubleFeatureFlag: BytecodePatchBuilder.() -> Boolean,
-    hookHotFeatureFlags: BytecodePatchBuilder.() -> Boolean,
+    block: PatchDefinition.() -> Unit = {},
+    executeBlock: () -> Unit = {},
+    hookIndexedBooleanFeatureFlag: PatchDefinition.() -> Boolean,
+    hookStringFeatureFlag: PatchDefinition.() -> Boolean,
+    hookLongFeatureFlag: PatchDefinition.() -> Boolean,
+    hookDoubleFeatureFlag: PatchDefinition.() -> Boolean,
+    hookHotFeatureFlags: PatchDefinition.() -> Boolean,
     preferenceScreen: BasePreferenceScreen.Screen,
     additionalDebugPreferences: List<BasePreference> = emptyList()
-) = bytecodePatch(
+) = patch(
     name = "Enable debugging",
     description = "Adds options for debugging and exporting Morphe logs to the clipboard.",
 ) {
 
     dependsOn(
-        resourcePatch {
+        patch {
             execute {
                 copyResources(
                     "settings",

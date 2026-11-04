@@ -13,7 +13,6 @@ package app.morphe.patches.youtube.layout.widesearchbar
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
@@ -21,7 +20,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/WideSearchBarLegacyPatch;"
 
-context(patchContext: BytecodePatchContext)
 internal fun applyLegacyWideSearchBar() {
     SetWordmarkHeaderFingerprint.instructionMatches.first().getMethodCalled().apply {
         findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->

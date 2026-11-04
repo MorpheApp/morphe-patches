@@ -17,13 +17,14 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
+import app.morphe.patches.shared.misc.library.copyResources
+import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.patches.shared.VideoStreamingDataConstructorFingerprint
 import app.morphe.patches.shared.VideoStreamingDataToStringFingerprint
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
@@ -34,11 +35,9 @@ import app.morphe.patches.shared.misc.request.hookMediaRequest
 import app.morphe.patches.shared.misc.request.hookMediaResponseChunk
 import app.morphe.patches.shared.misc.request.mediaRequestPatch
 import app.morphe.util.ResourceGroup
-import app.morphe.util.copyResources
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
-import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -53,7 +52,6 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
 
-context(patchContext: BytecodePatchContext)
 internal fun addMediaSessionOverride(extension: String) {
     MediaSessionFeatureFlagFingerprint.matchAll().forEach {
         it.method.insertLiteralOverride(
@@ -63,7 +61,7 @@ internal fun addMediaSessionOverride(extension: String) {
     }
 }
 
-private val spoofVideoStreamsResourcePatch = resourcePatch {
+private val spoofVideoStreamsResourcePatch = patch {
     execute {
         // region copy the ejs wrapper.
 
@@ -87,13 +85,13 @@ private val spoofVideoStreamsResourcePatch = resourcePatch {
 internal fun spoofVideoStreamsPatch(
     extensionClass: String,
     mainActivityOnCreateFingerprints: List<Fingerprint>,
-    fixParsePlaybackResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
-    fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean,
-    fixReelItemWatchResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
-    restoreMissingCuepointMethod: BytecodePatchBuilder.() -> Boolean,
-    block: BytecodePatchBuilder.() -> Unit,
-    executeBlock: BytecodePatchContext.() -> Unit = {},
-) = bytecodePatch(
+    fixParsePlaybackResponseFeatureFlag: PatchDefinition.() -> Boolean,
+    fixMediaSessionFeatureFlag: PatchDefinition.() -> Boolean,
+    fixReelItemWatchResponseFeatureFlag: PatchDefinition.() -> Boolean,
+    restoreMissingCuepointMethod: PatchDefinition.() -> Boolean,
+    block: PatchDefinition.() -> Unit,
+    executeBlock: () -> Unit = {},
+) = patch(
     name = "Spoof video streams",
     description = "Adds options to spoof the client video streams to fix playback."
 ) {

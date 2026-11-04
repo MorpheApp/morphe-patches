@@ -7,16 +7,16 @@
 
 package app.morphe.patches.reddit.misc.appicon
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
-import app.morphe.util.setExtensionIsPatchIncluded
+import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/AppIconPatch;"
 
 @Suppress("unused")
-val appIconPatch = bytecodePatch(
+val appIconPatch = patch(
     name = "App icon",
     description = "Adds an option to select from the Reddit app icons available in the manifest."
 ) {

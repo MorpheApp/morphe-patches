@@ -9,8 +9,9 @@ package app.morphe.patches.music.misc.settings
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceFile
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.p0Register
@@ -31,6 +32,7 @@ import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
 import app.morphe.patches.shared.GoogleApiActivityOnCreateFingerprint
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.patches.shared.misc.initialization.initializationPatch
+import app.morphe.patches.shared.misc.library.copyResources
 import app.morphe.patches.shared.misc.settings.MORPHE_SETTINGS_INTENT
 import app.morphe.patches.shared.misc.settings.SETTINGS_NAME_PREFERENCE_KEY
 import app.morphe.patches.shared.misc.settings.customSettingsNameInstructions
@@ -48,7 +50,6 @@ import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.settings.modifyActivityForSettingsInjection
 import app.morphe.util.ResourceGroup
-import app.morphe.util.copyResources
 import app.morphe.util.copyXmlNode
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
@@ -57,7 +58,7 @@ private const val MUSIC_ACTIVITY_HOOK_CLASS = "Lapp/morphe/extension/music/setti
 
 private val preferences = mutableSetOf<BasePreference>()
 
-private val settingsResourcePatch = resourcePatch {
+private val settingsResourcePatch = patch {
     dependsOn(
         settingsPatch(
             rootPreferences = listOf(
@@ -117,7 +118,7 @@ private val settingsResourcePatch = resourcePatch {
         }
 
         // Remove horizontal dividers from the music settings.
-        val styleFile = get("res/values/styles.xml")
+        val styleFile = resourceFile("res/values/styles.xml")
         styleFile.writeText(
             styleFile.readText()
                 .replace(
@@ -131,7 +132,7 @@ private val settingsResourcePatch = resourcePatch {
     }
 }
 
-val settingsPatch = bytecodePatch(
+val settingsPatch = patch(
     description = "Adds settings for Morphe to YouTube Music."
 ) {
     dependsOn(

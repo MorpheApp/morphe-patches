@@ -1,14 +1,15 @@
 package app.morphe.patches.shared.layout.branding
 
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.rawResourcePatch
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceFile
 import app.morphe.util.inputStreamFromBundledResource
 import java.nio.file.Files
 
 /**
  * Copies the license and branding notice files to the target apk.
  */
-internal val addLicensePatch = rawResourcePatch {
+internal val addLicensePatch = patch {
     execute {
         arrayOf(
             "MORPHE_BRANDING.TXT",
@@ -20,7 +21,7 @@ internal val addLicensePatch = rawResourcePatch {
                 sourceFileName
             )!!
 
-            val targetFile = get(sourceFileName, false).toPath()
+            val targetFile = resourceFile(sourceFileName, false).toPath()
 
             // Check if target file exists and give a more informative error
             // because Files.copy throws an exception if the file already exists.

@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.interaction.watchlater
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.interaction.feedactions.FeedComponentHostLayoutFingerprint
@@ -36,7 +36,7 @@ private const val PLAYLIST_EDIT_CALLBACK_INTERFACE =
     "Lapp/morphe/extension/youtube/patches/WatchLaterPatch\$PlaylistEditCallback;"
 
 @Suppress("unused")
-val watchLaterPatch = bytecodePatch(
+val watchLaterPatch = patch(
     name = "Watch later improvements",
     description = "Adds options to widen the drag handles of the Watch later videos " +
             "and to hide the snackbar shown after removing a video.",

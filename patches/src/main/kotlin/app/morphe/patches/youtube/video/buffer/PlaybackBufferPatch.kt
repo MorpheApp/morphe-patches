@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.video.buffer
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -21,7 +21,7 @@ private const val PLAYBACK_BUFFER_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/PlaybackBufferPatch;"
 
 @Suppress("unused")
-val playbackBufferPatch = bytecodePatch( // TODO: Make this an internal patch of "Video quality" patch?
+val playbackBufferPatch = patch( // TODO: Make this an internal patch of "Video quality" patch?
     name = "Playback buffer",
     description = "Adds an option to change the video playback buffer size."
 ) {

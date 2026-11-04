@@ -9,8 +9,9 @@ package app.morphe.patches.youtube.interaction.feedactions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.misc.auth.authHookPatch
@@ -21,14 +22,13 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FeedVideoActionsPatch;"
 
 @Suppress("unused")
-val feedVideoActionsPatch = bytecodePatch(
+val feedVideoActionsPatch = patch(
     name = "Feed video actions",
     description = "Adds a Watch later button to video thumbnails in feeds, " +
             "and opens the video menu by tapping and holding anywhere on a video.",

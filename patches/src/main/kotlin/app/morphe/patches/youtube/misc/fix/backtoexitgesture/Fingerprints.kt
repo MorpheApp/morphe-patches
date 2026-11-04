@@ -17,7 +17,6 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -52,7 +51,7 @@ internal object RecyclerViewTopScrollingCallingMethodFingerprint : Fingerprint(
 //        is called by different code even though the called methods are 100% the same.
 //        Fingerprint also matches a nearly identical third or fourth method in the same class
 //        but has slightly different behavior.
-internal fun BytecodePatchContext.recyclerViewTopScrollingFingerprint() = object : Fingerprint(
+internal fun recyclerViewTopScrollingFingerprint() = object : Fingerprint(
     name = RecyclerViewTopScrollingCallingMethodFingerprint.instructionMatches.first().getMethodCalled().name,
     interfaces = listOf(
         RecyclerViewTopScrollingCallingMethodFingerprint.instructionMatches.first().getMethodCalled().definingClass

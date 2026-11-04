@@ -1,6 +1,7 @@
 package app.morphe.patches.youtube.interaction.doubletap
 
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findElementByAttributeValueOrThrow
@@ -8,7 +9,7 @@ import app.morphe.util.removeFromParent
 import org.w3c.dom.Element
 
 @Suppress("unused")
-val doubleTapLengthPatch = resourcePatch(
+val doubleTapLengthPatch = patch(
     name = "Double tap to seek",
     description = "Adds additional double-tap to seek values to the YouTube settings menu."
 ) {

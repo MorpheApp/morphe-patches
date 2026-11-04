@@ -13,7 +13,7 @@ package app.morphe.patches.youtube.interaction.loop
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -34,7 +34,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/LoopV
 private const val EXTENSION_SLEEP_TIMER_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/LoopVideoPatch$SleepTimerController;"
 
-val loopVideoPatch = bytecodePatch(
+val loopVideoPatch = patch(
     name = "Loop video",
     description = "Adds an option to loop videos and display loop video button in the video player.",
 ) {

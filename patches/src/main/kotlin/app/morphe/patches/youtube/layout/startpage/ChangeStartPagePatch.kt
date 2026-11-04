@@ -3,7 +3,7 @@ package app.morphe.patches.youtube.layout.startpage
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -15,7 +15,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ChangeStartPagePatch;"
 
-val changeStartPagePatch = bytecodePatch(
+val changeStartPagePatch = patch(
     name = "Change start page",
     description = "Adds an option to set which page the app opens in instead of the homepage.",
 ) {

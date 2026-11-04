@@ -8,14 +8,14 @@
 package app.morphe.patches.reddit.layout.modern
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_25_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
+import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.util.logging.Logger
@@ -24,7 +24,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/DisableModernHomePatch;"
 
 @Suppress("unused")
-val disableModernHomePatch = bytecodePatch(
+val disableModernHomePatch = patch(
     name = "Disable modern home",
     description = "Adds an option to disable the modern home UI. This patch works with Reddit 2026.24.0 and earlier."
 ) {

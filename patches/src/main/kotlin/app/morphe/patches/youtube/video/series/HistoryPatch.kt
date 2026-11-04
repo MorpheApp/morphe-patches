@@ -12,7 +12,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -34,7 +33,7 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val OUR_NAV = "${SERIES_TRACKER_EXTENSION_PREFIX}HistoryNavigation;"
 
-internal fun BytecodePatchContext.wireHistory() {
+internal fun wireHistory() {
     // Build the Series navigation button from the same renderer factory YouTube uses.
     implementPivotBarItemBuilder(HistoryNavigationBuilderFingerprint)
 

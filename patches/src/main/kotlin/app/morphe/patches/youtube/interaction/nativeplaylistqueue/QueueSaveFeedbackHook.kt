@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.p0Register
@@ -20,7 +20,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstructio
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 
 /** Add a native response action only for the callback created by an owned queue save. */
-internal fun installQueueSaveFeedback(context: BytecodePatchContext, endpointType: String) = with(context) {
+internal fun installQueueSaveFeedback(endpointType: String) {
     val callbackType = QueueSaveEditErrorFingerprint.originalClassDef.type
     val creation = queueSaveEditCreationFingerprint(callbackType, endpointType).match()
     val success = queueSaveEditSuccessFingerprint(callbackType).match()
@@ -95,7 +95,7 @@ internal fun installQueueSaveFeedback(context: BytecodePatchContext, endpointTyp
 }
 
 /** Use the native builder and scheduler for owned Save and queue-clear confirmations. */
-internal fun installQueueSaveConfirmationDuration(context: BytecodePatchContext) = with(context) {
+internal fun installQueueSaveConfirmationDuration() {
     val builderType = QueueSnackbarModernFactoryFingerprint.originalMethod.returnType
     val durationSetter = queueSnackbarDurationFingerprint(builderType).match()
         .instructionMatches[4].methodReference

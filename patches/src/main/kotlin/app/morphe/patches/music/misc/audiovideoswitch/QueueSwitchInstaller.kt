@@ -8,7 +8,7 @@
 package app.morphe.patches.music.misc.audiovideoswitch
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patches.music.interaction.jam.addBridge
 import app.morphe.patches.music.interaction.jam.addReferenceGetter
@@ -27,7 +27,7 @@ private const val ACCESS =
  * Every bridge is named patch_atv* and the original queue operations are never renamed here, so
  * enabling both patches never collides.
  */
-internal fun BytecodePatchContext.installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
+internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
     val manager = mutableClassDefBy(queue.managerType)
     manager.interfaces.add(ACCESS)
 
@@ -103,7 +103,7 @@ internal fun BytecodePatchContext.installAudioVideoSwitchQueue(queue: AudioVideo
     installAudioVideoSwitchCapture(queue)
 }
 
-private fun BytecodePatchContext.installAudioVideoSwitchCapture(queue: AudioVideoQueueAbi) {
+private fun installAudioVideoSwitchCapture(queue: AudioVideoQueueAbi) {
     queue.constructor.cloneParameters().apply {
         findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
             addInstructions(

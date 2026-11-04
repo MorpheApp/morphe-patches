@@ -7,7 +7,9 @@
 
 package app.morphe.patches.reddit.layout.branding.name
 
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceFile
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.reddit.misc.fix.signature.spoofSignaturePatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
@@ -17,7 +19,7 @@ import java.nio.file.Files
 private const val APP_NAME = "Reddit Morphe"
 
 @Suppress("unused")
-val customBrandingNamePatch = resourcePatch(
+val customBrandingNamePatch = patch(
     name = "Custom branding name for Reddit",
     description = "Changes the Reddit app name to the name specified in patch options.",
     default = false
@@ -40,7 +42,7 @@ val customBrandingNamePatch = resourcePatch(
     execute {
         val appName = appNameOption.value!!
 
-        val resDirectory = get("res")
+        val resDirectory = resourceFile("res")
 
         val valuesV24Directory = resDirectory.resolve("values-v24")
         if (!valuesV24Directory.isDirectory)

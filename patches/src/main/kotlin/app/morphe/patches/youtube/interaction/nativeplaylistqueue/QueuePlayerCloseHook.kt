@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.matchSingle
 import app.morphe.patches.youtube.misc.loadvideo.MiniAppOpenYtContentCommandEndpointFingerprint
 import app.morphe.patches.youtube.misc.playservice.is_21_31_or_greater
@@ -17,10 +17,9 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 /** Observe the user close before teardown; keep the original native listener and dismissal. */
 internal fun installQueuePlayerClose(
-    context: BytecodePatchContext,
     endpointType: String,
     dispatch: MethodReference
-) = with(context) {
+) {
     val dismiss = MiniAppOpenYtContentCommandEndpointFingerprint
         .instructionMatches.last().methodReference
 

@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.layout.disableupdates
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -19,7 +19,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableLayoutUpdatesPatch;"
 
 @Suppress("unused")
-val disableLayoutUpdatesPatch = bytecodePatch(
+val disableLayoutUpdatesPatch = patch(
     name = "Disable layout updates",
     description = "Adds an option to disable server side layout updates and use an older UI.",
 ) {

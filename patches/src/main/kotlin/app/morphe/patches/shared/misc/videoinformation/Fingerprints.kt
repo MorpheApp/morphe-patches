@@ -1,11 +1,11 @@
 package app.morphe.patches.shared.misc.videoinformation
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.string
 import app.morphe.patcher.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -69,9 +69,8 @@ internal object PlaybackParametersToStringFingerprint : Fingerprint(
  * @return The SEEK_SOURCE_UNKNOWN constant of the seek source enum.
  * The enum fields are obfuscated, but its static initializer keeps the constant names as strings.
  */
-context(patchContext: BytecodePatchContext)
 internal fun seekSourceUnknownField(seekSourceEnumType: String): FieldReference {
-    val staticInitializer = patchContext.classDefBy(seekSourceEnumType).methods.first { it.name == "<clinit>" }
+    val staticInitializer = classDefBy(seekSourceEnumType).methods.first { it.name == "<clinit>" }
     val nameIndex = staticInitializer.indexOfFirstStringInstructionOrThrow("SEEK_SOURCE_UNKNOWN")
     val fieldIndex = staticInitializer.indexOfFirstInstructionOrThrow(nameIndex, Opcode.SPUT_OBJECT)
 

@@ -9,7 +9,7 @@
 
 package app.morphe.patches.youtube.misc.litho.observer
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
@@ -17,7 +17,7 @@ import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/LayoutReloadObserverPatch;"
 
-val layoutReloadObserverPatch = bytecodePatch(
+val layoutReloadObserverPatch = patch(
     description = "Hooks a method to detect in the extension when the RecyclerView at the bottom of the player is redrawn."
 ) {
     dependsOn(

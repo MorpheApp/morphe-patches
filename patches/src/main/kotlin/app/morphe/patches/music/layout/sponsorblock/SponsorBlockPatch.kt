@@ -8,7 +8,7 @@
 package app.morphe.patches.music.layout.sponsorblock
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
@@ -32,7 +32,7 @@ private const val EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS =
     "Lapp/morphe/extension/music/sponsorblock/MusicSponsorBlockConfig;"
 
 @Suppress("unused")
-val musicSponsorBlockPatch = bytecodePatch(
+val musicSponsorBlockPatch = patch(
     name = "SponsorBlock",
     description = "Adds options to enable and configure SponsorBlock, which can skip non-music segments."
 ) {

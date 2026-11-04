@@ -10,7 +10,8 @@ package app.morphe.patches.youtube.layout.originaltitles
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.shared.MediaSessionSetMetadataFingerprint
@@ -31,7 +32,7 @@ import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/originaltitles/RestoreOriginalTitlesPatch;"
 
-internal val videoTitlesHookPatch = bytecodePatch(
+internal val videoTitlesHookPatch = patch(
     description = "Hooks the video titles, video descriptions and channel descriptions.",
 ) {
     dependsOn(

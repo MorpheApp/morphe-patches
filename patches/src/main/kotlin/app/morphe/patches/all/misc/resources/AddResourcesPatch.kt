@@ -23,7 +23,9 @@
 
 package app.morphe.patches.all.misc.resources
 
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.listDecodableFiles
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceFile
 import app.morphe.patches.util.resource.StringResourceSanitizer.sanitizeAndroidResourceString
 import app.morphe.patches.util.resource.forEachRawResourceElement
 import app.morphe.util.inputStreamFromBundledResource
@@ -296,7 +298,7 @@ private const val RESOURCES_CLOSING_TAG = "</resources>"
 
 private const val EMPTY_RESOURCES_FILE = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n</resources>"
 
-internal val addResourcesPatch = resourcePatch(
+internal val addResourcesPatch = patch(
     description = "Add resources such as strings or arrays to the app."
 ) {
 
@@ -318,7 +320,7 @@ internal val addResourcesPatch = resourcePatch(
             destinationFiles[destSubPath]?.let { return it }
 
             // Not decoded, unless another patch already did.
-            val destFile = this@finalize.get(destSubPath, copy = false)
+            val destFile = resourceFile(destSubPath, copy = false)
             val text = if (destFile.exists()) {
                 destFile.readText()
             } else {

@@ -10,9 +10,9 @@ package app.morphe.patches.youtube.interaction.channelsearch
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.shared.misc.library.copyResources
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.navigation.addBrowseIdHook
 import app.morphe.patches.youtube.misc.navigation.addSearchResultsHook
@@ -23,13 +23,12 @@ import app.morphe.patches.youtube.misc.toolbar.hookToolBar
 import app.morphe.patches.youtube.misc.toolbar.toolBarHookPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.ResourceGroup
-import app.morphe.util.copyResources
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ChannelSearchPatch;"
 
 @Suppress("unused")
-val channelSearchPatch = bytecodePatch(
+val channelSearchPatch = patch(
     name = "Channel search",
     description = "Adds an option to search inside the channel that is currently open " +
             "instead of searching all of YouTube.",
@@ -41,7 +40,7 @@ val channelSearchPatch = bytecodePatch(
         settingsPatch,
         toolBarHookPatch,
         browseIdHookPatch,
-        resourcePatch {
+        patch {
             execute {
                 copyResources(
                     "channelsearch",

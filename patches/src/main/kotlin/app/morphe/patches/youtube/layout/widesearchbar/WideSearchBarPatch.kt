@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.layout.widesearchbar
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
@@ -24,7 +24,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/WideSearchBarPatch;"
 
 @Suppress("unused")
-val wideSearchBarPatch = bytecodePatch(
+val wideSearchBarPatch = patch(
     name = "Wide search bar",
     description = "Adds a wide search bar to the top of the home and subscription feed."
 ) {

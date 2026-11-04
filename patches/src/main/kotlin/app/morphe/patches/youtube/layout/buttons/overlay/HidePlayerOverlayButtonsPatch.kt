@@ -14,7 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
 import app.morphe.patcher.util.findFreeRegister
@@ -43,7 +43,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HidePlayerOverlayButtonsPatch;"
 
-val hidePlayerOverlayButtonsPatch = bytecodePatch(
+val hidePlayerOverlayButtonsPatch = patch(
     name = "Hide player overlay buttons",
     description = "Adds options to hide the Cast button, the player Autoplay, Captions, Previous & Next buttons, " +
             "and to hide or change the opacity of the player control buttons background.",

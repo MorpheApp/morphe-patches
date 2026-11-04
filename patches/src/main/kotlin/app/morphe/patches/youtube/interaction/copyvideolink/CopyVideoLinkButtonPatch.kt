@@ -1,7 +1,6 @@
 package app.morphe.patches.youtube.interaction.copyvideolink
 
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
@@ -18,7 +17,7 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 
 private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/CopyVideoLinkButton;"
 
-private val copyVideoLinkButtonResourcePatch = resourcePatch {
+private val copyVideoLinkButtonResourcePatch = patch {
     dependsOn(
         settingsPatch,
         legacyPlayerControlsPatch
@@ -32,7 +31,7 @@ private val copyVideoLinkButtonResourcePatch = resourcePatch {
 }
 
 @Suppress("unused")
-val copyVideoLinkButtonPatch = bytecodePatch(
+val copyVideoLinkButtonPatch = patch(
     name = "Copy video link",
     description = "Adds options to display buttons in the video player to copy video links.",
 ) {

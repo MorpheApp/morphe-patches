@@ -9,7 +9,7 @@ package app.morphe.patches.music.layout.branding.header
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
@@ -36,7 +36,7 @@ private val headerDrawableNames = arrayOf(
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/ChangeHeaderPatch;"
 
-private val changeHeaderBytecodePatch = bytecodePatch {
+private val changeHeaderBytecodePatch = patch {
     execute {
         headerDrawableNames.forEach { drawableName ->
             resourceLiteral(

@@ -13,7 +13,7 @@ package app.morphe.patches.youtube.misc.imageurlhook
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -35,7 +35,7 @@ private var loadImageSuccessCallbackIndex = 0
 private lateinit var loadImageErrorCallbackMethodRef : WeakReference<MutableMethod>
 private var loadImageErrorCallbackIndex = 0
 
-val cronetImageURLHookPatch = bytecodePatch(
+val cronetImageURLHookPatch = patch(
     description = "Hooks Cronet image URLs.",
 ) {
     dependsOn(sharedExtensionPatch)

@@ -1,7 +1,7 @@
 package app.morphe.patches.youtube.misc.fix.pipchatbar
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/FixPipChatBarPatch;"
@@ -9,7 +9,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/FixPi
 /**
  * Hides the bar that appears over the PiP video after using live chat text entry.
  */
-internal val fixPipChatBarPatch = bytecodePatch{
+internal val fixPipChatBarPatch = patch{
     dependsOn(sharedExtensionPatch)
 
     execute {

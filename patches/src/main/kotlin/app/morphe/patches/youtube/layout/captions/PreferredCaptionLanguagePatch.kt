@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -32,7 +32,7 @@ private const val EXTENSION_SUBTITLE_MANAGER_INTERFACE =
 private const val EXTENSION_CAPTION_TRACK_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/PreferredCaptionLanguagePatch$CaptionTrackInterface;"
 
-internal val preferredCaptionLanguagePatch = bytecodePatch(
+internal val preferredCaptionLanguagePatch = patch(
     description = "Adds an option to automatically select captions in your preferred language " +
             "(provider subtitles first, then auto-translated).",
 ) {

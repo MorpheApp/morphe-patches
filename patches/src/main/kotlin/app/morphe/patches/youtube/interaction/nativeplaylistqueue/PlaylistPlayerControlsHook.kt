@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -18,11 +18,10 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 /** Keep native listeners and visibility, including controls that bypass the navigator for history. */
 internal fun installPlaylistPlayerControls(
-    context: BytecodePatchContext,
     navigatorType: String,
     enumType: String,
     wrapperType: String
-) = with(context) {
+) {
     val availability = listOf("NEXT", "PREVIOUS").map { intent ->
         val enumField = playlistNavigationIntentFingerprint(enumType, intent)
             .instructionMatches.last().fieldReference

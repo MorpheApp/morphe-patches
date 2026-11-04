@@ -13,7 +13,6 @@ package app.morphe.patches.music.shared
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 internal const val YOUTUBE_MUSIC_MAIN_ACTIVITY_CLASS_TYPE = "Lcom/google/android/apps/youtube/music/activities/MusicActivity;"
@@ -31,7 +30,6 @@ internal object MusicActivityOnCreateFingerprint : Fingerprint(
  *
  * @param extensionMethod Method descriptor to invoke, without the register list.
  */
-context(_: BytecodePatchContext)
 internal fun Fingerprint.hookMediaSessionArgument(extensionMethod: String) {
     // Several patches hook the same call, and each insertion shifts the index of
     // the following ones, so the match is resolved again on every call.

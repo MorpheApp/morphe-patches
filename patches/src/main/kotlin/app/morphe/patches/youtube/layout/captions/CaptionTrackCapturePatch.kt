@@ -10,7 +10,8 @@ package app.morphe.patches.youtube.layout.captions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -34,7 +35,7 @@ private const val EXTENSION_UPLOADED_CALLBACK_CLASS =
  * Observes the selected caption track and its loaded results, including cached results.
  * Uses the native loader to also load the uploaded tracks of the output languages.
  */
-internal val captionTrackCapturePatch = bytecodePatch(
+internal val captionTrackCapturePatch = patch(
     description = "Tracks the caption source selected by the native player.",
 ) {
     dependsOn(versionCheckPatch, translatedCaptionPensPatch, videoIdPatch)

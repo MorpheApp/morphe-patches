@@ -12,9 +12,8 @@ package app.morphe.patches.shared.misc.spoof.appversion
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -28,9 +27,9 @@ fun baseSpoofAppVersionPatch(
     preferenceScreen: BasePreferenceScreen.Screen,
     listPreference: () -> ListPreference,
     sharedExtensionClass: String = "Lapp/morphe/extension/shared/spoof/SpoofAppVersionPatch;",
-    block: BytecodePatchBuilder.() -> Unit,
-    executeBlock: BytecodePatchContext.() -> Unit = {}
-) = bytecodePatch(
+    block: PatchDefinition.() -> Unit,
+    executeBlock: () -> Unit = {}
+) = patch(
     name = "Spoof app version",
     description = "Adds an option to trick the app into thinking you are running an older version."
 ) {

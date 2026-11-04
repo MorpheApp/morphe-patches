@@ -12,7 +12,7 @@ package app.morphe.patches.music.interaction.remember.repeatstate
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_32_or_greater
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -24,7 +24,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/RememberRepeatStatePatch;"
 
 @Suppress("unused")
-val rememberRepeatStatePatch = bytecodePatch(
+val rememberRepeatStatePatch = patch(
     name = "Remember repeat state",
     description = "Adds an option to remember the repeat state when playing a new track or playlist."
 ) {

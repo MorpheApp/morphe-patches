@@ -20,7 +20,6 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
@@ -418,7 +417,6 @@ internal object DefaultCaptionTrackFingerprint : Fingerprint(
     )
 )
 
-context(patchContext: BytecodePatchContext)
 internal fun preferredCaptionsTrackFingerprint() = Fingerprint(
     classFingerprint = DefaultCaptionTrackFingerprint,
     // 21.23+ also has a method without parameters that calls the default track method.

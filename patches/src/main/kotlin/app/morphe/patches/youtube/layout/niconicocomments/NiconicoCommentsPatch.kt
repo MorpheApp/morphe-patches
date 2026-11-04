@@ -13,8 +13,7 @@ package app.morphe.patches.youtube.layout.niconicocomments
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -42,7 +41,7 @@ private const val EXTENSION_CLASS =
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/niconicocomments/NiconicoCommentsToggleButton;"
 
-private val niconicoCommentsResourcePatch = resourcePatch {
+private val niconicoCommentsResourcePatch = patch {
     dependsOn(legacyPlayerControlsPatch)
 
     execute {
@@ -56,7 +55,7 @@ private val niconicoCommentsResourcePatch = resourcePatch {
 }
 
 @Suppress("unused")
-val niconicoCommentsPatch = bytecodePatch(
+val niconicoCommentsPatch = patch(
     name = "Niconico comments",
     description = "Adds an option to show live chat and chat replay as comments that scroll across the video."
 ) {

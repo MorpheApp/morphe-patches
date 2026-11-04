@@ -11,16 +11,16 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
+import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.util.cloneMutable
 import app.morphe.util.removeFlags
-import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -32,7 +32,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/RememberCollapsedCommentsPatch;"
 
 @Suppress("unused")
-val rememberCollapsedCommentsPatch = bytecodePatch(
+val rememberCollapsedCommentsPatch = patch(
     name = "Remember collapsed comments",
     description = "Adds an option to keep comments you collapsed collapsed when reopening a post."
 ) {

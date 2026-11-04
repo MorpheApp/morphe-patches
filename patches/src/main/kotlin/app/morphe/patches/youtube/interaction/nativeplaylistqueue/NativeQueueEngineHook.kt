@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
@@ -24,10 +24,9 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableField
 
 /** Supply local rows to the stock mutable queue; its sequencer owns navigation. */
 internal fun installNativeQueueEngine(
-    context: BytecodePatchContext,
     serviceType: String,
     enumType: String
-) = with(context) {
+): String {
     // The native playback queue, its navigator and the transaction around its edits.
     val queueMatch = NativeQueueDescriptorFingerprint.match()
     val queueType = queueMatch.originalClassDef.type
@@ -592,5 +591,5 @@ internal fun installNativeQueueEngine(
         )
     }
 
-    wrapperType
+    return wrapperType
 }

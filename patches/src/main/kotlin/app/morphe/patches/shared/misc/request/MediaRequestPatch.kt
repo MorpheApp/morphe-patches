@@ -9,8 +9,8 @@ package app.morphe.patches.shared.misc.request
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -23,7 +23,7 @@ private const val EXTENSION_MEDIA_HTTP_REQUEST_INTERFACE =
 /**
  * Lets the extension read the media requests that native code starts, and replace them.
  */
-internal val mediaRequestPatch = bytecodePatch(
+internal val mediaRequestPatch = patch(
     description = "mediaRequestPatch",
 ) {
     execute {
@@ -108,7 +108,6 @@ internal val mediaRequestPatch = bytecodePatch(
  * @param replacesRequest If the method returns the request to start instead,
  *                        which can be a copy made by the extension.
  */
-context(patchContext: BytecodePatchContext)
 internal fun hookMediaRequest(
     descriptor: String,
     replacesRequest: Boolean = false
@@ -137,7 +136,6 @@ internal fun hookMediaRequest(
  *
  * @param descriptor Static method that takes the callbacks of the request and the chunk.
  */
-context(patchContext: BytecodePatchContext)
 internal fun hookMediaResponseChunk(descriptor: String) {
     NetFetchResponseChunkFingerprint.method.addInstruction(
         0,

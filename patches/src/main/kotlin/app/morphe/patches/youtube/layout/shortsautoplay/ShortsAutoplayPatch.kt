@@ -11,7 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
@@ -34,7 +34,7 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ShortsAutoplayPatch;"
 
-val shortsAutoplayPatch = bytecodePatch(
+val shortsAutoplayPatch = patch(
     name = "Shorts autoplay",
     description = "Adds options to automatically play the next Short.",
 ) {

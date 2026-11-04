@@ -8,13 +8,13 @@
 package app.morphe.patches.reddit.misc.openlink
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.getMutableMethod
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_11_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
-import app.morphe.util.getMutableMethod
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -22,7 +22,7 @@ import java.lang.ref.WeakReference
 
 lateinit var screenNavigatorMethodRef: WeakReference<MutableMethod>
 
-val screenNavigatorMethodResolverPatch = bytecodePatch(
+val screenNavigatorMethodResolverPatch = patch(
     description = "screenNavigatorMethodResolverPatch"
 ) {
     dependsOn(settingsPatch, versionCheckPatch)

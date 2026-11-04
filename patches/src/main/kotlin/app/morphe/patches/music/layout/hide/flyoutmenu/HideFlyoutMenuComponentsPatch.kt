@@ -10,7 +10,7 @@ package app.morphe.patches.music.layout.hide.flyoutmenu
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
 import app.morphe.patcher.util.smali.ExternalLabel
@@ -35,7 +35,7 @@ private const val PLAYER_FLYOUT_MENU_COMPONENTS_FILTER =
     "Lapp/morphe/extension/music/patches/components/PlayerFlyoutMenuComponentsFilter;"
 
 @Suppress("unused")
-val hideFlyoutMenuComponentsPatch = bytecodePatch(
+val hideFlyoutMenuComponentsPatch = patch(
     name = "Hide flyout menu components",
     description = "Adds options to hide individual items from the player and queue flyout menus."
 ) {

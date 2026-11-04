@@ -17,7 +17,10 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.classDefForEach
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -105,7 +108,7 @@ private fun MutableClass.addFieldSetter(methodName: String, fieldRef: FieldRefer
 }
 
 @Suppress("unused")
-val crossfadePatch = bytecodePatch(
+val crossfadePatch = patch(
     name = "Crossfade",
     description = "Adds a true dual-player crossfade between consecutive tracks.",
 ) {

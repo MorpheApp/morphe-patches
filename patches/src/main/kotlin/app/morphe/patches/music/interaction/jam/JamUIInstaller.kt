@@ -14,12 +14,12 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.getMutableMethod
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.getMutableMethod
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -45,7 +45,7 @@ private const val MENU_ROW = $$"Lapp/morphe/extension/music/patches/jam/JamMenu$
 private const val ITEM_ACCESS = $$"Lapp/morphe/extension/music/patches/jam/YouTubeMusicBridge$ItemAccess;"
 
 /** Installs presentation bridges after [JamUiAbi] has resolved each native relationship. */
-internal fun BytecodePatchContext.installJamUiBridges(ui: JamUiAbi, queue: JamQueueAbi) {
+internal fun installJamUiBridges(ui: JamUiAbi, queue: JamQueueAbi) {
     installClock(ui.clock)
     installAutoplayUi(ui.autoplay)
     installPalette(ui.palette)
@@ -58,7 +58,7 @@ internal fun BytecodePatchContext.installJamUiBridges(ui: JamUiAbi, queue: JamQu
     installPlaybackIcon(ui.playbackIcon)
 }
 
-private fun BytecodePatchContext.installPlaybackIcon(icon: PlaybackIconAbi) {
+private fun installPlaybackIcon(icon: PlaybackIconAbi) {
     val owner = mutableClassDefBy(icon.render.definingClass)
     val render = icon.render.getMutableMethod()
     val name = render.name
@@ -120,7 +120,7 @@ private fun BytecodePatchContext.installPlaybackIcon(icon: PlaybackIconAbi) {
     )
 }
 
-private fun BytecodePatchContext.installClock(clock: ClockAbi) {
+private fun installClock(clock: ClockAbi) {
     val mediaState = clock.mediaState.getMutableMethod()
     val stateCall =
         mediaState.indexOfFirstInstructionOrThrow(
@@ -212,7 +212,7 @@ private fun BytecodePatchContext.installClock(clock: ClockAbi) {
     )
 }
 
-private fun BytecodePatchContext.installPalette(palette: PaletteAbi) {
+private fun installPalette(palette: PaletteAbi) {
     val source = mutableClassDefBy(palette.type)
     source.interfaces.add(PALETTE_SOURCE)
     val local = palette.entry.getMutableMethod()
@@ -264,7 +264,7 @@ private fun BytecodePatchContext.installPalette(palette: PaletteAbi) {
 }
 
 /** Adds a static field to the extractor class that holds the last constructed instance. */
-private fun BytecodePatchContext.addExtractorInstanceField(extractorType: String) =
+private fun addExtractorInstanceField(extractorType: String) =
     paletteExtractorConstructorFingerprint(extractorType).let {
         val instanceField = ImmutableField(
             extractorType,
@@ -284,7 +284,7 @@ private fun BytecodePatchContext.addExtractorInstanceField(extractorType: String
         instanceField
     }
 
-private fun BytecodePatchContext.installPlayback(playback: PlaybackAbi) {
+private fun installPlayback(playback: PlaybackAbi) {
     playback.routers.forEach { router ->
         val owner = mutableClassDefBy(router.type)
         owner.interfaces.add(ROUTER_ACCESS)
@@ -339,7 +339,7 @@ private fun BytecodePatchContext.installPlayback(playback: PlaybackAbi) {
     }
 }
 
-private fun BytecodePatchContext.installCurrentItem(current: CurrentItemAbi) {
+private fun installCurrentItem(current: CurrentItemAbi) {
     val owner = mutableClassDefBy(current.type)
     val local = current.accessor.getMutableMethod()
     val name = local.name
@@ -365,7 +365,7 @@ private fun BytecodePatchContext.installCurrentItem(current: CurrentItemAbi) {
     )
 }
 
-private fun BytecodePatchContext.installNowPlaying(now: NowPlayingAbi, item: QueueItemAbi) {
+private fun installNowPlaying(now: NowPlayingAbi, item: QueueItemAbi) {
     val presenter = mutableClassDefBy(now.presenter.type)
     presenter.interfaces.add(NOW_ACCESS)
     val entry = now.presenter.entry.getMutableMethod()
@@ -438,7 +438,7 @@ private fun BytecodePatchContext.installNowPlaying(now: NowPlayingAbi, item: Que
     }
 }
 
-private fun BytecodePatchContext.installArtwork(artwork: ArtworkAbi) {
+private fun installArtwork(artwork: ArtworkAbi) {
     val owner = mutableClassDefBy(artwork.type)
     val local = artwork.update.getMutableMethod()
     val name = local.name
@@ -459,7 +459,7 @@ private fun BytecodePatchContext.installArtwork(artwork: ArtworkAbi) {
     )
 }
 
-private fun BytecodePatchContext.installQueueRow(row: QueueRowAbi, item: QueueItemAbi) {
+private fun installQueueRow(row: QueueRowAbi, item: QueueItemAbi) {
     val owner = mutableClassDefBy(row.type)
     owner.interfaces.add(MENU_ROW)
     owner.addBridge(
@@ -533,7 +533,7 @@ private fun BytecodePatchContext.installQueueRow(row: QueueRowAbi, item: QueueIt
     )
 }
 
-private fun BytecodePatchContext.installButton(button: ButtonAbi) {
+private fun installButton(button: ButtonAbi) {
     val owner = mutableClassDefBy(button.type)
     val local = button.click.getMutableMethod()
     val name = local.name
@@ -561,7 +561,7 @@ private fun Method.parameters(): List<String> = parameterTypes.map { it.toString
 @Suppress("unused")
 private fun MethodReference.parameters(): List<String> = parameterTypes.map { it.toString() }
 
-private fun BytecodePatchContext.installAutoplayUi(abi: AutoplayUiAbi) {
+private fun installAutoplayUi(abi: AutoplayUiAbi) {
     val extension = JAM_MIRROR
     val contract = $$"Lapp/morphe/extension/music/patches/jam/JamMirror$AutoplayUi;"
     val owner = mutableClassDefBy(abi.refresh.definingClass)

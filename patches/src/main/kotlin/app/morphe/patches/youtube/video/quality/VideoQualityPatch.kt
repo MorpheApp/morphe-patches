@@ -10,7 +10,7 @@
 
 package app.morphe.patches.youtube.video.quality
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -25,7 +25,7 @@ import app.morphe.util.insertLiteralOverride
 internal val settingsMenuVideoQualityGroup = mutableSetOf<BasePreference>()
 
 @Suppress("unused")
-val videoQualityPatch = bytecodePatch(
+val videoQualityPatch = patch(
     name = "Video quality",
     description = "Adds options to set default video qualities and always use the advanced video quality menu."
 ) {

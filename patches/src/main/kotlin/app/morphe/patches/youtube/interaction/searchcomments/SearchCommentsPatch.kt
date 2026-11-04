@@ -8,11 +8,12 @@
 package app.morphe.patches.youtube.interaction.searchcomments
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.bridge.addBridge
+import app.morphe.patches.shared.misc.library.copyResources
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
@@ -24,7 +25,6 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.copyResources
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -35,7 +35,7 @@ private const val SECTION_LIST_ACCESS_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/components/CommentsSearchFilter$SectionListAccess;"
 
 @Suppress("unused")
-val searchCommentsPatch = bytecodePatch(
+val searchCommentsPatch = patch(
     name = "Search comments",
     description = "Adds a button to the comments to show only the loaded comments that contain the searched words."
 ) {
@@ -46,7 +46,7 @@ val searchCommentsPatch = bytecodePatch(
         lithoFilterPatch,
         engagementPanelHookPatch,
         videoInformationPatch,
-        resourcePatch {
+        patch {
             execute {
                 copyResources(
                     "searchcomments",

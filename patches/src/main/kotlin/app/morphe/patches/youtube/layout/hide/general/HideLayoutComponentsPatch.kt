@@ -18,7 +18,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -103,7 +103,7 @@ private const val SANITIZE_VIDEO_SUBTITLE_FILTER =
 private const val SEARCH_LINKS_FILTER =
     "Lapp/morphe/extension/youtube/patches/spans/SearchLinksFilter;"
 
-val hideLayoutComponentsPatch = bytecodePatch(
+val hideLayoutComponentsPatch = patch(
     name = "Hide layout components",
     description = "Adds options to hide general layout components."
 ) {

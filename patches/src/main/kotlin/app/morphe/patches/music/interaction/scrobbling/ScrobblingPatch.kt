@@ -9,7 +9,7 @@ package app.morphe.patches.music.interaction.scrobbling
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -34,7 +34,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/scrobbling/ScrobblePatch;"
 
 @Suppress("unused")
-val scrobblingPatch = bytecodePatch(
+val scrobblingPatch = patch(
     name = "Scrobbling",
     description = "Adds options to add played tracks to Last.fm and ListenBrainz."
 ) {

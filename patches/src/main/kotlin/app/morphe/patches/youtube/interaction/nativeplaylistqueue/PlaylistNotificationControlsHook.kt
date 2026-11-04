@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.matchSingle
@@ -18,7 +18,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 /** Publish queue capabilities before native notification actions and playback state are built. */
-internal fun installPlaylistNotificationControls(context: BytecodePatchContext, ownerType: String) = with(context) {
+internal fun installPlaylistNotificationControls(ownerType: String) {
     val modelType = NotificationSkipActionsFingerprint
         .instructionMatches.first().fieldReference.type
     val setter = notificationCapabilitiesSetterFingerprint(modelType).originalMethod

@@ -9,8 +9,10 @@ package app.morphe.patches.youtube.video.delay
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
+import app.morphe.patches.shared.misc.library.copyResources
+import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
@@ -28,8 +30,6 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.ResourceGroup
-import app.morphe.util.copyResources
-import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -41,7 +41,7 @@ private const val RECEIVER_CLASS_NAME =
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/VideoDelayDialogButton;"
 
-private val videoDelayResourcePatch = resourcePatch {
+private val videoDelayResourcePatch = patch {
     dependsOn(legacyPlayerControlsPatch)
 
     execute {
@@ -72,7 +72,7 @@ private val videoDelayResourcePatch = resourcePatch {
 }
 
 @Suppress("unused")
-val videoDelayPatch = bytecodePatch(
+val videoDelayPatch = patch(
     name = "Video delay",
     description = "Adds an option to delay the video, to keep it in sync with laggy Bluetooth audio."
 ) {

@@ -3,9 +3,8 @@ package app.morphe.patches.shared.misc.privacy
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -21,12 +20,12 @@ private const val EXTENSION_CLASS =
  * Patch shared by YouTube and YT Music.
  */
 internal fun sanitizeSharingLinksPatch(
-    block: BytecodePatchBuilder.() -> Unit = {},
-    executeBlock: BytecodePatchContext.() -> Unit = {},
+    block: PatchDefinition.() -> Unit = {},
+    executeBlock: () -> Unit = {},
     preferenceScreen: BasePreferenceScreen.Screen,
     replaceMusicLinksWithYouTube: Boolean = false,
     replaceLinksWithShortener: Boolean = false
-) = bytecodePatch(
+) = patch(
     name = "Sanitize sharing links",
     description = "Removes the tracking query parameters from shared links.",
 ) {

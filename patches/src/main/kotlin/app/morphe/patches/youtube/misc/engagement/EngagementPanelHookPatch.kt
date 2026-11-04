@@ -2,7 +2,7 @@ package app.morphe.patches.youtube.misc.engagement
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.shared.EngagementPanelControllerFingerprint
@@ -19,7 +19,7 @@ private var panelIdRegister = ""
 private var panelRegister = ""
 lateinit var panelControllerMethodRef: WeakReference<MutableMethod>
 
-val engagementPanelHookPatch = bytecodePatch(
+val engagementPanelHookPatch = patch(
     description = "Hook to get the current engagement panel state.",
 ) {
     dependsOn(sharedExtensionPatch)

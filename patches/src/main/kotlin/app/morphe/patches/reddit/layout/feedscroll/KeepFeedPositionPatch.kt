@@ -8,16 +8,16 @@
 package app.morphe.patches.reddit.layout.feedscroll
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
-import app.morphe.util.setExtensionIsPatchIncluded
+import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/KeepFeedPositionPatch;"
 
 @Suppress("unused")
-val keepFeedPositionPatch = bytecodePatch(
+val keepFeedPositionPatch = patch(
     name = "Keep feed position",
     description = "Adds an option to keep the feed at the same position after closing a post, image or video, " +
             "instead of moving the opened post to the top of the screen."

@@ -9,7 +9,7 @@ package app.morphe.patches.music.layout.hide.general
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -33,7 +33,7 @@ private const val LAYOUT_COMPONENTS_FILTER =
     "Lapp/morphe/extension/music/patches/components/LayoutComponentsFilter;"
 
 @Suppress("unused")
-val hideLayoutComponentsPatch = bytecodePatch(
+val hideLayoutComponentsPatch = patch(
     name = "Hide layout components",
     description = "Adds options to hide general layout components."
 ) {

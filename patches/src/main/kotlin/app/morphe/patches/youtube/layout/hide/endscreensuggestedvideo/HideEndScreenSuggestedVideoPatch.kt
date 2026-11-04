@@ -5,7 +5,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -17,7 +17,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideEndScreenSuggestedVideoPatch;"
 
 @Suppress("unused")
-val hideEndScreenSuggestedVideoPatch = bytecodePatch(
+val hideEndScreenSuggestedVideoPatch = patch(
     name = "Hide end screen suggested video",
     description = "Adds an option to hide the suggested video at the end of videos.",
 ) {

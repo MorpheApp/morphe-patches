@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.youtube.layout.flyout.FeedFlyoutButtonsInitializerFingerprint
@@ -20,7 +20,7 @@ private const val ACTIONS = "Lapp/morphe/extension/youtube/patches/queue/QueueFl
 private const val MESSAGE = "Lcom/google/protobuf/MessageLite;"
 
 /** Complete the native model, so both list and recycler adapters retain their own item positions. */
-internal fun installQueueFlyout(context: BytecodePatchContext) = with(context) {
+internal fun installQueueFlyout() {
     val sheets = QueueFlyoutRendererFingerprint.matchAll(2..2)
     val menuTypes = sheets.map {
         it.instructionMatches[0].fieldReference.type

@@ -7,8 +7,7 @@
 
 package app.morphe.patches.youtube.interaction.reload
 
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
@@ -21,7 +20,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 
-private val reloadVideoButtonResourcePatch = resourcePatch {
+private val reloadVideoButtonResourcePatch = patch {
     dependsOn(
         settingsPatch,
         legacyPlayerControlsPatch
@@ -36,7 +35,7 @@ private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/ReloadVideoButton;"
 
 @Suppress("unused")
-val reloadVideoButtonPatch = bytecodePatch(
+val reloadVideoButtonPatch = patch(
     name = "Reload video",
     description = "Adds an option to display reload video button in the video player.",
 ) {
@@ -46,7 +45,7 @@ val reloadVideoButtonPatch = bytecodePatch(
         videoInformationPatch,
         playerOverlayButtonsSettingsPatch,
         loadVideoHookPatch,
-        bytecodePatch {
+        patch {
             finalize {
                 addTopControl(
                     "reloadbutton",

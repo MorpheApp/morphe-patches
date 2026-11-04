@@ -14,7 +14,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.matchSingle
@@ -23,6 +25,7 @@ import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
+import app.morphe.patches.shared.misc.library.findMethodFromToString
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -46,7 +49,6 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneMutable
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.findMethodFromToString
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
@@ -63,7 +65,7 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/quality/RememberVideoQualityPatch;"
 
-val rememberVideoQualityPatch = bytecodePatch {
+val rememberVideoQualityPatch = patch {
     dependsOn(
         sharedExtensionPatch,
         videoInformationPatch,

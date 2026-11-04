@@ -8,8 +8,9 @@
 package app.morphe.patches.music.interaction.downloads
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceFile
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.registersUsed
@@ -48,7 +49,7 @@ private val DOWNLOADS_SERVICES = mapOf(
     "app.morphe.extension.music.patches.downloads.PlaylistDownloadService" to "dataSync",
 )
 
-private val downloadsResourcePatch = resourcePatch {
+private val downloadsResourcePatch = patch {
     dependsOn(settingsPatch)
 
     execute {
@@ -73,7 +74,7 @@ private val downloadsResourcePatch = resourcePatch {
             ResourceGroup("drawable", "morphe_music_downloaded_mark.xml")
         )
 
-        val manifest = get("AndroidManifest.xml")
+        val manifest = resourceFile("AndroidManifest.xml")
         var xml = manifest.readText()
 
         // YouTube Music already declares most of these, so each one is added only when missing.
@@ -112,7 +113,7 @@ private const val DOWNLOADED_MARK_FILTER =
 
 
 @Suppress("unused")
-val downloadsPatch = bytecodePatch(
+val downloadsPatch = patch(
     name = "Downloads",
     description = "Adds support to download songs, albums and playlists using the in-app " +
         "download button, either with an external downloader app or inside YouTube Music.",

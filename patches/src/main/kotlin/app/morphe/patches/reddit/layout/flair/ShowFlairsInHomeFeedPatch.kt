@@ -9,7 +9,7 @@ package app.morphe.patches.reddit.layout.flair
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -17,9 +17,9 @@ import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
+import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -35,7 +35,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/reddit/patches/ShowFl
 private const val CACHED_POST_INTERFACE = $$"Lapp/morphe/extension/reddit/patches/ShowFlairsInHomeFeedPatch$CachedPost;"
 
 @Suppress("unused")
-val showFlairsInHomeFeedPatch = bytecodePatch(
+val showFlairsInHomeFeedPatch = patch(
     name = "Show flairs in home feed",
     description = "Adds an option to show post flair badges in the home feed. " +
             "This patch works with Reddit 2026.24.0 and newer."

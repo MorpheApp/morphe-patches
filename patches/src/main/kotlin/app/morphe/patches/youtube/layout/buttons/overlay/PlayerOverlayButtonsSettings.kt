@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.layout.buttons.overlay
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -21,7 +21,7 @@ internal fun addPlayerOverlayPreferences(vararg preference: BasePreference) {
     playerOverlayPreferences!!.addAll(preference)
 }
 
-internal val playerOverlayButtonsSettingsPatch = bytecodePatch {
+internal val playerOverlayButtonsSettingsPatch = patch {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

@@ -13,7 +13,6 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.string
 import app.morphe.patcher.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -59,7 +58,7 @@ internal object WatchNextResponseModelClassResolverFingerprint : Fingerprint(
  * The first instruction match is the field of the sections, and the last one is the
  * item section renderer field of the section class.
  */
-internal fun BytecodePatchContext.watchNextResultsFingerprint(
+internal fun watchNextResultsFingerprint(
     sectionsType: String,
     resultsClass: String,
 ) = Fingerprint(

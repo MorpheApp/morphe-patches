@@ -26,7 +26,9 @@
 
 package app.morphe.patches.all.misc.network
 
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceFile
 import app.morphe.util.adoptChild
 import app.morphe.util.getNode
 import app.morphe.util.trimIndentMultiline
@@ -36,13 +38,13 @@ import java.io.File
 private const val NETWORK_SECURITY_CONFIG_ATTRIBUTE_NAME = "android:networkSecurityConfig"
 
 @Suppress("unused")
-val overrideCertificatePinningPatch = resourcePatch(
+val overrideCertificatePinningPatch = patch(
     name = "Override certificate pinning",
     description = "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
     default = false
 ) {
     execute {
-        val resXmlDirectory = get("res/xml")
+        val resXmlDirectory = resourceFile("res/xml")
         var networkSecurityFileName = "network_security_config.xml"
 
         // Add android:networkSecurityConfig="@xml/network_security_config"
@@ -61,7 +63,7 @@ val overrideCertificatePinningPatch = resourcePatch(
             }
         }
 
-        if (get("res/xml/$networkSecurityFileName").exists()) {
+        if (resourceFile("res/xml/$networkSecurityFileName").exists()) {
             document("res/xml/$networkSecurityFileName").use { document ->
                 arrayOf(
                     "base-config",

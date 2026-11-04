@@ -12,7 +12,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
@@ -65,7 +66,7 @@ private const val EXTENSION_CONFIG_INFO_INTERFACE =
 private const val EXTENSION_REQUEST_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/RestoreOldVideoActionBarPatch$RequestInterface;"
 
-internal val restoreOldVideoActionBarPatch = bytecodePatch(
+internal val restoreOldVideoActionBarPatch = patch(
     description = "Overrides 'X-Youtube-Cold-Config-Data', fixes 'Hide video action buttons' and 'Return YouTube Dislike', "
 ) {
     dependsOn(
