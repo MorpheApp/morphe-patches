@@ -85,6 +85,7 @@ public final class TrackerModels {
             int newEpisodeCount,
             boolean reverseOrder,
             boolean hideWatched,
+            boolean watchedOnAdvance,
             // Video to continue with if the saved episode was removed from the playlist, or empty.
             String recoveryId) {
         public Series {

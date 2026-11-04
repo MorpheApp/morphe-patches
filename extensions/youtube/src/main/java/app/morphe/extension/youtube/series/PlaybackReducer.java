@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.series;
 
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.IntSupplier;
 
@@ -25,8 +26,10 @@ public final class PlaybackReducer {
     }
 
     private final Consumer<Snapshot> output;
+    private final BiConsumer<String, String> moved;
     private final IntSupplier completionPercent, completionSeconds;
     private String id = "";
+    private String previous = "";
     private long generation,
             sequence,
             position,
@@ -38,8 +41,14 @@ public final class PlaybackReducer {
     private long stableDurationAt, previousCandidatePosition = -1;
     private boolean valid, dirty, completed, growingDuration;
 
-    public PlaybackReducer(Consumer<Snapshot> output, IntSupplier percentage, IntSupplier seconds) {
+    /**
+     * @param moved Receives the previously played video and the new video, when playback of
+     *              another video starts. Not called when the same video loads again.
+     */
+    public PlaybackReducer(Consumer<Snapshot> output, BiConsumer<String, String> moved,
+                           IntSupplier percentage, IntSupplier seconds) {
         this.output = output;
+        this.moved = moved;
         completionPercent = percentage;
         completionSeconds = seconds;
     }
@@ -51,6 +60,7 @@ public final class PlaybackReducer {
 
     public void clear() {
         resetSession();
+        previous = "";
     }
 
     private void resetSession() {
@@ -72,6 +82,7 @@ public final class PlaybackReducer {
             long wallTime) {
         if (excluded || beforeId == null || !beforeId.matches("[A-Za-z0-9_-]{11}")) {
             if (valid) newVideo(now);
+            previous = "";
             return;
         }
         if (!beforeId.equals(afterId) || positionMs < 0) return;
@@ -98,6 +109,8 @@ public final class PlaybackReducer {
             // only after advancing time corroborates the same controller identity.
             if (now - candidateAt < 500 || !advancing) return;
             valid = true;
+            if (!previous.isEmpty() && !previous.equals(id)) moved.accept(previous, id);
+            previous = id;
         }
         final boolean finite = !growingDuration
                 && duration > 0
