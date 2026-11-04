@@ -122,10 +122,18 @@ public final class NavigationBarPatch {
     /**
      * The flags of the translucent navigation bar are also overridden without this patch,
      * see {@link #isNavigationBarBehindSystemButtons(boolean)}. They are then left to the account.
+     * <p>
+     * The glass navigation bar floats over the pages, so with the default style it uses the translucent
+     * style, which lays the pages out behind the navigation bar. Otherwise, for an account without the
+     * translucent navigation bar, the pages end above the navigation bar, and the room around the capsule
+     * and behind the system navigation buttons is an empty band.
      */
-    private static final NavigationBarStyle NAVIGATION_BAR_STYLE = isPatchIncluded()
-            ? Settings.NAVIGATION_BAR_STYLE.get()
-            : NavigationBarStyle.DEFAULT;
+    private static final NavigationBarStyle NAVIGATION_BAR_STYLE = !isPatchIncluded()
+            ? NavigationBarStyle.DEFAULT
+            : Settings.NAVIGATION_BAR_STYLE.get() == NavigationBarStyle.DEFAULT
+                    && Settings.NAVIGATION_BAR_GLASS.get() && !Settings.HIDE_NAVIGATION_BAR.get()
+                    ? NavigationBarStyle.TRANSLUCENT
+                    : Settings.NAVIGATION_BAR_STYLE.get();
 
     private static final boolean NARROW_NAVIGATION_BUTTONS = Settings.NARROW_NAVIGATION_BUTTONS.get();
 
@@ -279,9 +287,13 @@ public final class NavigationBarPatch {
      * so on older versions the flags are always turned off, or the room is added twice
      * (<a href="https://github.com/MorpheApp/morphe-patches/issues/3864">...</a>).
      * <p>
+     * Android 15 and later always draw the window of the app behind the system navigation buttons,
+     * as the app targets Android 15 or later, so there the flags do not need the edge to edge top bar.
+     * The Hide status bar patch turns that flag off, and the pages then ended above the navigation bar,
+     * with an empty band behind the translucent navigation bar and the system navigation buttons.
+     * <p>
      * With {@link NavigationBarStyle#DEFAULT} the flags are left to the account, but they are still
-     * turned off without the edge to edge layout, which the Hide status bar patch can turn off
-     * for an account that has both.
+     * turned off if the window is not drawn behind the system navigation buttons.
      *
      * @param original The value the account first got, so all the classes that read the flag
      *                 use the same value even if the account value changes while the app starts,
@@ -295,14 +307,20 @@ public final class NavigationBarPatch {
                 return false;
             }
 
-            Boolean edgeToEdge = HideStatusBarPatch.isEdgeToEdgeTopBar();
-            // Null if not known yet, or the Hide status bar patch is not included.
-            // The edge to edge layout is then the one of the account, which the flags of the account follow.
-            if (edgeToEdge == null) {
-                return original;
+            final boolean windowBehindSystemButtons;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+                windowBehindSystemButtons = true;
+            } else {
+                Boolean edgeToEdge = HideStatusBarPatch.isEdgeToEdgeTopBar();
+                // Null if not known yet, or the Hide status bar patch is not included.
+                // The edge to edge layout is then the one of the account, which the flags of the account follow.
+                if (edgeToEdge == null) {
+                    return original;
+                }
+                windowBehindSystemButtons = edgeToEdge;
             }
 
-            return edgeToEdge && (original || NAVIGATION_BAR_STYLE != NavigationBarStyle.DEFAULT);
+            return windowBehindSystemButtons && (original || NAVIGATION_BAR_STYLE != NavigationBarStyle.DEFAULT);
         } catch (Exception ex) {
             Logger.printException(() -> "isNavigationBarBehindSystemButtons failure", ex);
             return original;
