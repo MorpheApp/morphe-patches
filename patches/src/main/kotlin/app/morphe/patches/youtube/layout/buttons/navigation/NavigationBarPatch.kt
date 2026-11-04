@@ -264,6 +264,14 @@ val navigationBarPatch = bytecodePatch(
             NonInteractivePreference(
                 key = "morphe_navigation_bar_glass_opacity",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
+            ),
+            // Height, width and button spacing, with a preview.
+            NonInteractivePreference(
+                key = "morphe_navigation_bar_glass_height",
+                titleKey = "morphe_navigation_bar_glass_size_title",
+                summaryKey = "morphe_navigation_bar_glass_size_summary",
+                tag = "app.morphe.extension.youtube.settings.preference.GlassNavigationBarPreference",
+                selectable = true
             )
         )
 

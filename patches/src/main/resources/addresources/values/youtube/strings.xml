@@ -1055,7 +1055,7 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
 
 To access Settings, enable the Settings button via General → Toolbar → Show Settings button"</string>
     <string name="morphe_narrow_navigation_buttons_title">Enable narrow navigation buttons</string>
-    <string name="morphe_narrow_navigation_buttons_summary">Reduces the horizontal spacing between buttons</string>
+    <string name="morphe_narrow_navigation_buttons_summary">Reduces the horizontal spacing between buttons. Not available with the glass navigation bar, which has its own button spacing</string>
     <string name="morphe_disable_icon_only_navigation_buttons_title">Disable navigation buttons without labels</string>
     <string name="morphe_disable_icon_only_navigation_buttons_summary">Shows the navigation buttons with labels, if YouTube sends them without labels</string>
     <string name="morphe_disable_toolbar_navigation_tabs_title">Disable toolbar navigation tabs</string>
@@ -1074,6 +1074,12 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_navigation_bar_glass_summary">Shows the navigation bar as a floating, rounded, translucent capsule. Not available with the Opaque navigation bar style</string>
     <string name="morphe_navigation_bar_glass_opacity_title">Glass opacity</string>
     <string name="morphe_navigation_bar_glass_opacity_summary">Adjust the transparency level of the glass navigation bar (0 is transparent, 100 is opaque)</string>
+    <string name="morphe_navigation_bar_glass_size_title">Glass navigation bar size</string>
+    <string name="morphe_navigation_bar_glass_size_summary">Adjust the height, the width and the button spacing of the glass navigation bar, with a preview. Buttons that do not fit in the width of the screen are hidden</string>
+    <string name="morphe_navigation_bar_glass_size_height">Height</string>
+    <string name="morphe_navigation_bar_glass_size_width">Maximum width</string>
+    <string name="morphe_navigation_bar_glass_size_button_spacing">Button spacing</string>
+    <string name="morphe_navigation_bar_glass_size_buttons_shown">Buttons shown: %1$d of %2$d</string>
 
     <string name="morphe_toolbar_screen_title">Toolbar</string>
     <string name="morphe_toolbar_screen_summary">Choose which components appear in the toolbar</string>
