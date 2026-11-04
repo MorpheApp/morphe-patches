@@ -80,6 +80,7 @@ final class NiconicoCommentsOverlayView extends View {
     private float requestedRefreshRate;
     private int fontSizeSp = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_FONT_SIZE);
     private int opacityPercent = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_OPACITY);
+    private int displayAreaPercent = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_DISPLAY_AREA);
     private float laneHeight;
     private float firstBaseline;
 
@@ -153,6 +154,17 @@ final class NiconicoCommentsOverlayView extends View {
             return;
         }
         opacityPercent = nextOpacityPercent;
+        invalidate();
+    }
+
+    void setDisplayAreaPercent(int nextDisplayAreaPercent) {
+        if (displayAreaPercent == nextDisplayAreaPercent) {
+            return;
+        }
+        displayAreaPercent = nextDisplayAreaPercent;
+        if (getHeight() > 0) {
+            schedule.redistributeLanes(getLaneCount());
+        }
         invalidate();
     }
 
@@ -357,8 +369,12 @@ final class NiconicoCommentsOverlayView extends View {
         firstBaseline = -fontMetrics.ascent + (12 * density);
     }
 
+    /**
+     * @return The number of lanes that fit in the display area, which starts at the top of the player.
+     */
     private int getLaneCount() {
-        return Math.max(1, (int) ((getHeight() - firstBaseline) / laneHeight) + 1);
+        float height = getHeight() * displayAreaPercent / 100f;
+        return Math.max(1, (int) ((height - firstBaseline) / laneHeight) + 1);
     }
 
     private int applyOpacity(int color) {
