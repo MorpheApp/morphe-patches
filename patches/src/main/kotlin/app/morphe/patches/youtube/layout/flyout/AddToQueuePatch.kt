@@ -12,7 +12,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
@@ -32,6 +34,8 @@ import app.morphe.patches.youtube.shared.YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
 import app.morphe.patches.youtube.video.information.playerStatusOverrideHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.setExtensionIsPatchIncluded
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -88,24 +92,40 @@ val addToQueuePatch = patch(
 
             mainFingerprint.method.apply {
                 val runnableRegister = getInstruction<TwoRegisterInstruction>(runnableIndex).registerA
-                addInstructions(
-                    runnableIndex,
+                val replacement = if (is_21_15_or_greater) {
+                    // The original item register may now hold its Runnable. Reload
+                    // the same source from the factory parameter instead of guessing its lifetime.
+                    check(AccessFlags.STATIC.isSet(accessFlags)) { "Queue item factory must be static" }
+                    val itemType = (getCharSequenceReference as MethodReference).parameterTypes.single().toString()
+                    val ownerType = parameterTypes.single().toString()
+                    val itemField = classDefBy(ownerType).fields.single { it.type == itemType }
+                    val itemRegister = findFreeRegister(runnableIndex, runnableRegister)
+                    check(itemRegister <= 15) { "Queue item reload requires a low scratch register" }
                     """
-                        invoke-static { v$runnableRegister }, $EXTENSION_CLASS->replaceButtonRunnable(Ljava/lang/Runnable;)Ljava/lang/Runnable;
+                        move-object/from16 v$itemRegister, p0
+                        iget-object v$itemRegister, v$itemRegister, $itemField
+                        invoke-static {v$runnableRegister, v$itemRegister}, $EXTENSION_CLASS->replaceButtonRunnable(Ljava/lang/Runnable;Ljava/lang/Object;)Ljava/lang/Runnable;
                         move-result-object v$runnableRegister
                     """
-                )
+                } else {
+                    """
+                        invoke-static {v$runnableRegister}, $EXTENSION_CLASS->replaceButtonRunnable(Ljava/lang/Runnable;)Ljava/lang/Runnable;
+                        move-result-object v$runnableRegister
+                    """
+                }
+                addInstructions(runnableIndex, replacement)
             }
 
             fun getReplaceOnItemClickPatch(
                 targetInstructionRegister: String,
-                freeRegister: String
+                freeRegister: String,
+                continuation: String = "block_item_click"
             ): String = """
                 invoke-static { $targetInstructionRegister }, $EXTENSION_CLASS->replaceOnItemClick(Ljava/lang/Object;)Z
                 move-result $freeRegister
-                if-eqz $freeRegister, :block_item_click
+                if-eqz $freeRegister, :$continuation
                 return-void
-                :block_item_click
+                :$continuation
                 nop
             """
 
@@ -117,7 +137,12 @@ val addToQueuePatch = patch(
 
                 it.method.addInstructionsWithLabels(
                     0,
-                    """
+                    (if (is_21_15_or_greater) {
+                        """
+                            iget-object v0, p0, $enumMethodParameterClassReference
+                            check-cast v0, $enumMethodParameterClassName
+                        """ + getReplaceOnItemClickPatch("v0", "v0", "native_playlist_item")
+                    } else "") + """
                         iget-object v0, p0, $enumMethodParameterClassReference
                         check-cast v0, $enumMethodParameterClassName
                         invoke-static { v0 }, $getCharSequenceReference
@@ -152,9 +177,12 @@ val addToQueuePatch = patch(
             name = "onUserLeaveHint",
             returnType = "V",
             parameters = listOf()
-        ).method.addInstruction(
+        ).method.addInstructions(
             0,
-            "invoke-static { }, $EXTENSION_LOCAL_QUEUE_CLASS->onUserLeaveHint()V"
+            """
+                invoke-static { }, $EXTENSION_LOCAL_QUEUE_CLASS->onUserLeaveHint()V
+                invoke-static { }, Lapp/morphe/extension/youtube/patches/queue/NativePlaylistQueuePatch;->onUserLeaveHint()V
+            """
         )
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)

@@ -119,6 +119,21 @@ class QueueRuntimeBoundaryTest {
     @Test
     fun `Mix choice ignores music and foreign queues and rejects stale choices and completions`() = withFixture("mixChoiceGuards")
 
+    @Test
+    fun `idle playlist startup loads one window and only its native list requests another`() = withFixture("idlePlaylistPaging")
+
+    @Test
+    fun `playlist requests cancel on leave and reject an account change before delivery`() = withFixture("playlistRequestLifetime")
+
+    @Test
+    fun `unloaded playback boundary replays the original autoplay request`() = withFixture("playlistBoundaryReplay")
+
+    @Test
+    fun `whole queue operations finish the source and leave the native loading frame`() = withFixture("playlistWholeOperations")
+
+    @Test
+    fun `whole queue Save transfers every fetched row to the native picker`() = withFixture("playlistSaveOperation")
+
     // NativePlaylistQueuePatch depends on Android settings, scheduling and UI classes.
     // Isolate those boundaries while executing its actual compiled coordinator.
     private fun withFixture(scenario: String) {
@@ -274,6 +289,11 @@ class QueueRuntimeBoundaryTest {
                     public static String getCurrentButtonName() { return button; }
                     public static String getFlyoutVideoId() { return video; }
                     public static String getFlyoutPlaylistId() { return ""; }
+                    public static String nativePlaylist = "";
+                    public static boolean nativePlaylistMenu;
+                    public static String getNativeQueuePlaylistId() { return nativePlaylist; }
+                    public static boolean isNativeQueuePlaylistMenu() { return nativePlaylistMenu; }
+                    public static void setNativeQueuePlaylistId(String id) { nativePlaylist = id; }
                     public static String getFlyoutChannelName() { return "Channel"; }
                     public static void resetCurrentButtonIndex() {}
                     public static void dismissFlyout() {}
@@ -416,6 +436,14 @@ class QueueRuntimeBoundaryTest {
                     public static void runOnMainThreadNowOrLater(Runnable action) { action.run(); }
                     private static final java.util.ArrayDeque<Runnable> background = new java.util.ArrayDeque<>();
                     public static void runOnBackgroundThread(Runnable action) { background.add(action); }
+                    public static <T> java.util.concurrent.Future<T> submitOnBackgroundThread(java.util.concurrent.Callable<T> action) {
+                        var task = new java.util.concurrent.FutureTask<T>(action);
+                        background.add(task);
+                        return task;
+                    }
+                    public static void verifyOffMainThread() {
+                        if (mainThread) throw new AssertionError("Network on UI thread");
+                    }
                     public static void drainBackground() {
                         mainThread = false;
                         try { while (!background.isEmpty()) background.remove().run(); }
@@ -822,7 +850,7 @@ class QueueRuntimeBoundaryTest {
                     // second playback engine. The coordinator and serialized models are real.
                     static class Playback implements NativePlaylistQueuePatch.NativePlayback {
                         boolean local = true, attachSucceeds = true, clearSucceeds = true;
-                        int clears, attaches, repeat = PlaylistQueue.REPEAT_ONE;
+                        int clears, attaches, selection, repeat = PlaylistQueue.REPEAT_ONE;
                         byte[] panel;
                         public boolean patch_isLocalQueue() { return local; }
                         public boolean patch_attachQueue(byte[] value, byte[] command) {
@@ -836,7 +864,8 @@ class QueueRuntimeBoundaryTest {
                             panel = value; local = true; return true;
                         }
                         public void patch_updateSnapshot(byte[] value) { panel = value; }
-                        public int patch_getSelectedIndex() { return 0; }
+                        public int patch_getSelectedIndex() { return selection; }
+                        public Object patch_getQueueSequence() { return this; }
                         public int patch_getRepeatMode() { return repeat; }
                         public void patch_restoreQueueRepeat(int value) { repeat = value; }
                         public boolean patch_clearQueue() {
@@ -880,6 +909,186 @@ class QueueRuntimeBoundaryTest {
                             model = original; playlist = original == previousModel ? previousPlaylist : "";
                         }
                         public void patch_showQueueFeedback(byte[] value) { feedbacks++; feedback = value; }
+                    }
+                    static PlaylistQueueRenderer.Panel window(int first, int last, int selected) {
+                        var panel = PlaylistQueueRenderer.Panel.newBuilder().setPlaylistId("WL").setVideoCount(5);
+                        for (int index = first; index <= last; index++) {
+                            String id = String.format(java.util.Locale.ROOT, "%011d", index);
+                            panel.addItems(PlaylistQueueRenderer.Item.newBuilder().setVideo(
+                                PlaylistQueueRenderer.Video.newBuilder().setVideoId(id).setSelected(index == selected)
+                                    .setTitle(PlaylistQueueRenderer.Text.newBuilder().setSimpleText("Title " + index))
+                                    .setNavigationEndpoint(PlaylistQueueRenderer.NavigationEndpoint.newBuilder()
+                                        .setWatchEndpoint(PlaylistQueueRenderer.WatchEndpoint.newBuilder()
+                                            .setPlaylistId("WL").setVideoId(id).setIndex(index)
+                                            .setPlaylistSetVideoId("entry" + index)))));
+                        }
+                        return panel.build();
+                    }
+                    static class PageSource implements PlaylistPages.Source {
+                        PlaylistPage.Account account = new PlaylistPage.Account("account", false);
+                        int calls;
+                        public PlaylistPage.Account patch_getPlaylistAccount() { return account; }
+                        public java.util.concurrent.Future<?> patch_requestPlaylistPage(String playlist, String video, int index,
+                                String params, String entry, byte[] tracking, PlaylistPage.Account expected) {
+                            Utils.verifyOffMainThread(); calls++;
+                            require(playlist.equals("WL") && account.equals(expected), "Use exact authenticated source");
+                            var response = video == null ? window(0, 2, 0) : window(2, 4, index);
+                            return java.util.concurrent.CompletableFuture.completedFuture(response);
+                        }
+                        public com.google.protobuf.MessageLite patch_getPlaylistPage(Object response) {
+                            return (com.google.protobuf.MessageLite) response;
+                        }
+                        public com.google.protobuf.MessageLite patch_getPlaylistNavigation(Object response) {
+                            return PlaylistQueueRenderer.PlaylistNavigation.getDefaultInstance();
+                        }
+                    }
+                    enum Intent { AUTOPLAY, NEXT, PREVIOUS }
+                    static class PagingController extends Controller implements NativePlaylistQueuePatch.PagingOwner {
+                        final Object list = new Object();
+                        final NativePlaylistQueuePatch.PlaylistNavigator navigator;
+                        int resumes;
+                        boolean loading;
+                        final NativePlaylistQueuePatch.LoadingView loadingView = value -> loading = value;
+                        Object resumed;
+                        PagingController(Playback playback) {
+                            super(playback);
+                            navigator = new NativePlaylistQueuePatch.PlaylistNavigator() {
+                                public String patch_getVideoId() { return VideoInformation.id; }
+                                public NativePlaylistQueuePatch.NativePlayback patch_getQueuePlayback() { return playback; }
+                                public void patch_navigateQueue(boolean next) { throw new AssertionError("Do not replace native intent"); }
+                                public boolean patch_canNavigateQueue(boolean next) { return true; }
+                                public Enum<?> patch_getPlaylistIntent(Object request) { return Intent.AUTOPLAY; }
+                                public void patch_resumePlaylistNavigation(Object request) { resumes++; resumed = request; }
+                            };
+                        }
+                        public Object patch_getNavigator() { return navigator; }
+                        public Object patch_getPlaylistList() { return list; }
+                        public NativePlaylistQueuePatch.LoadingView patch_getPlaylistLoadingView() { return loadingView; }
+                    }
+                    static PageSource startIdlePlaylist() throws Exception {
+                        app.morphe.extension.youtube.shared.PlayerType.current = app.morphe.extension.youtube.shared.PlayerType.NONE;
+                        var source = new PageSource(); PlaylistPages.attach(source);
+                        Runnable action = NativePlaylistQueuePatch.getPlaylistQueueAction("WL");
+                        require(action != null, "Offer a collection action without playback");
+                        action.run();
+                        require(source.calls == 0 && LoadVideoPatch.opens == 0, "Fetch off main before opening playback");
+                        return source;
+                    }
+                    static PagingController acceptIdlePlaylist() throws Exception {
+                        Utils.drainBackground(); Utils.drain();
+                        require(LoadVideoPatch.opens == 1 && field("queue").get(null) == null,
+                            "First response opens playback but cannot itself attach a queue");
+                        VideoInformation.id = "00000000000";
+                        app.morphe.extension.youtube.shared.PlayerType.current =
+                            app.morphe.extension.youtube.shared.PlayerType.WATCH_WHILE_MINIMIZED;
+                        var playback = new Playback(); playback.repeat = PlaylistQueue.REPEAT_OFF;
+                        var controller = new PagingController(playback);
+                        field("controllerRef").set(null, new WeakReference<>(controller));
+                        call("tryStartQueue");
+                        var queue = (PlaylistQueue) field("queue").get(null);
+                        require(queue != null && queue.entries().size() == 3 && queue.totalCount() == 5,
+                            "Attach the first native window and reported total");
+                        return controller;
+                    }
+                    public static void idlePlaylistPaging() throws Exception {
+                        var source = startIdlePlaylist(); var controller = acceptIdlePlaylist();
+                        Utils.drainBackground(); Utils.drain();
+                        require(source.calls == 1, "Do not eagerly fetch more pages or each video's metadata");
+                        NativePlaylistQueuePatch.onNativePlaylistScroll(new Object()); Utils.drainBackground(); Utils.drain();
+                        require(source.calls == 1, "Unrelated playlist scrolling cannot load this queue");
+                        NativePlaylistQueuePatch.onNativePlaylistScroll(controller.list);
+                        NativePlaylistQueuePatch.onNativePlaylistScroll(controller.list);
+                        Utils.drainBackground(); Utils.drain();
+                        var queue = (PlaylistQueue) field("queue").get(null);
+                        require(source.calls == 2 && queue.entries().size() == 5, "Coalesce native scroll triggers into one page");
+                        require(queue.entries().get(4).metadata() != null && Logger.errors == 0, "Preserve native row metadata");
+                    }
+                    public static void playlistRequestLifetime() throws Exception {
+                        app.morphe.extension.youtube.shared.PlayerType.current = app.morphe.extension.youtube.shared.PlayerType.NONE;
+                        app.morphe.extension.youtube.patches.utils.FlyoutUtils.nativePlaylistMenu = true;
+                        require(AddToQueuePatch.flyoutButtonClickLogic("QUEUE_PLAY_NEXT", "abcdefghijk")
+                                && LoadVideoPatch.opens == 0,
+                            "An unresolved collection must never silently queue only its thumbnail video");
+                        app.morphe.extension.youtube.patches.utils.FlyoutUtils.nativePlaylistMenu = false;
+                        var source = startIdlePlaylist();
+                        NativePlaylistQueuePatch.onUserLeaveHint(); Utils.drainBackground(); Utils.drain();
+                        require(source.calls == 0 && LoadVideoPatch.opens == 0, "Cancel idle work before a native request starts");
+                        source = startIdlePlaylist(); Utils.drainBackground();
+                        source.account = new PlaylistPage.Account("other", false); Utils.drain();
+                        require(LoadVideoPatch.opens == 0 && field("pendingQueueStart").get(null) == null,
+                            "A response from a previous account must never start playback");
+                        var cancelled = new boolean[1];
+                        var timeout = new PageSource() {
+                            public java.util.concurrent.Future<?> patch_requestPlaylistPage(String playlist, String video, int index,
+                                    String params, String entry, byte[] tracking, PlaylistPage.Account expected) {
+                                return new java.util.concurrent.Future<Object>() {
+                                    public boolean isDone() { return false; }
+                                    public boolean isCancelled() { return cancelled[0]; }
+                                    public boolean cancel(boolean interrupt) { cancelled[0] = interrupt; return true; }
+                                    public Object get() { throw new AssertionError("Use a bounded wait"); }
+                                    public Object get(long time, java.util.concurrent.TimeUnit unit) throws java.util.concurrent.TimeoutException {
+                                        throw new java.util.concurrent.TimeoutException();
+                                    }
+                                };
+                            }
+                        };
+                        PlaylistPages.attach(timeout); Utils.mainThread = false;
+                        try {
+                            PlaylistPages.first(timeout, new PlaylistQueue.Source("WL", timeout.account));
+                            throw new AssertionError("Timeout must propagate");
+                        } catch (java.util.concurrent.TimeoutException expected) {
+                            require(cancelled[0], "Timeout must cancel the actual native transport Future");
+                        } finally { Utils.mainThread = true; }
+                    }
+                    public static void playlistBoundaryReplay() throws Exception {
+                        var source = startIdlePlaylist(); var controller = acceptIdlePlaylist();
+                        controller.playback.selection = 2; VideoInformation.id = "00000000002";
+                        Object request = new Object();
+                        controller.playback.repeat = PlaylistQueue.REPEAT_ONE;
+                        require(!NativePlaylistQueuePatch.deferPlaylistNavigation(controller.navigator, request),
+                            "Repeat one must not advance or fetch another page");
+                        controller.playback.repeat = PlaylistQueue.REPEAT_OFF;
+                        require(NativePlaylistQueuePatch.isUnloadedPlaylistBoundary(controller.playback, Intent.AUTOPLAY),
+                            "An unloaded source must prevent early wrap");
+                        require(NativePlaylistQueuePatch.deferPlaylistNavigation(controller.navigator, request), "Defer the original request");
+                        Utils.drain(); Utils.drainBackground(); Utils.drain();
+                        require(source.calls == 2 && controller.resumes == 1 && controller.resumed == request,
+                            "Replay the same autoplay request after native rows are available");
+                        require(Logger.errors == 0, "Boundary replay must not fail silently");
+                    }
+                    public static void playlistWholeOperations() throws Exception { playlistWholeOperation(false); }
+                    public static void playlistSaveOperation() throws Exception { playlistWholeOperation(true); }
+                    static void playlistWholeOperation(boolean save) throws Exception {
+                        var source = startIdlePlaylist(); var controller = acceptIdlePlaylist();
+                        NativePlaylistQueuePatch.RepeatHeader header = (NativePlaylistQueuePatch.RepeatHeader)
+                            Proxy.newProxyInstance(owner.getClassLoader(), new Class<?>[]{NativePlaylistQueuePatch.RepeatHeader.class},
+                                (proxy, method, args) -> switch (method.getName()) {
+                                    case "patch_getNavigator" -> controller.navigator;
+                                    case "patch_getPanel" -> controller.panel;
+                                    default -> throw new AssertionError("Unexpected header operation");
+                                });
+                        boolean intercepted;
+                        if (save) {
+                            var command = QueueSaveActions.openPicker(List.of("00000000000", "00000000001", "00000000002"));
+                            intercepted = NativePlaylistQueuePatch.onQueueMenuCommand(command, Map.of(
+                                "com.google.android.libraries.youtube.innertube.endpoint.tag", controller.panel)) == null;
+                        } else {
+                            intercepted = NativePlaylistQueuePatch.onQueueShuffle(header);
+                        }
+                        require(intercepted && controller.loading, "Show native loading for an incomplete whole-list operation");
+                        require(source.calls == 1, "Do not fetch on the UI thread");
+                        Utils.drainBackground(); Utils.drain();
+                        var queue = (PlaylistQueue) field("queue").get(null);
+                        require(queue.entries().size() == 5 && queue.source() == null && source.calls == 3,
+                            "Shuffle must resolve the final native boundary before operating on all rows");
+                        require(!controller.loading && queue.currentEntry().videoId().equals("00000000000"),
+                            "Restore native content and preserve current playback after shuffling");
+                        if (save) {
+                            var picker = PlaylistQueueRenderer.NavigationEndpoint.parseFrom(controller.feedback);
+                            require(picker.hasAddToPlaylistEndpoint() && picker.getQueueSaveVideoIdsCount() == 5,
+                                "The native picker must receive all entries after paging, not only the first window");
+                        }
+                        require(Logger.errors == 0, "Whole-list operation must complete without hidden errors");
                     }
                     static PlaylistQueue installOwned(Controller controller) throws Exception {
                         var queue = new PlaylistQueue("abcdefghijk", "A").playLast("ZYXWVUTSRQP")
