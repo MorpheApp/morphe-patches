@@ -28,6 +28,7 @@ import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -107,6 +108,29 @@ public final class LocalDownloadManager {
         Utils.submitOnBackgroundThread(() -> {
             downloadBlocking(videoId, title, artist, album, duration, artwork, false);
             return null;
+        });
+    }
+
+    /** Told each time a track has been saved. Only used on the main thread. */
+    private static final Set<Runnable> savedListeners = new HashSet<>();
+
+    /** Must be called on the main thread. */
+    static void addSavedListener(Runnable listener) {
+        Utils.verifyOnMainThread();
+        savedListeners.add(listener);
+    }
+
+    /** Must be called on the main thread. */
+    static void removeSavedListener(Runnable listener) {
+        Utils.verifyOnMainThread();
+        savedListeners.remove(listener);
+    }
+
+    private static void notifyTrackSaved() {
+        Utils.runOnMainThreadNowOrLater(() -> {
+            for (Runnable listener : savedListeners) {
+                listener.run();
+            }
         });
     }
 
@@ -197,6 +221,10 @@ public final class LocalDownloadManager {
             downloadWithResume(videoId, title, format.getUrl(), temporary,
                     format.getContentLength(), quiet);
 
+            // Before the audio file gets its final name, since the downloads screen reads each
+            // track once and would otherwise keep listing it without its title and cover.
+            OfflineTrack.save(directory, videoId, title, artist, album, duration, artwork);
+
             if (destination.exists() && !destination.delete()) {
                 throw new IllegalStateException("Could not replace audio file");
             }
@@ -205,7 +233,7 @@ public final class LocalDownloadManager {
             }
             Logger.printDebug(() -> "Saved " + destination + " (" + destination.length() + " bytes)");
 
-            OfflineTrack.save(directory, videoId, title, artist, album, duration, artwork);
+            notifyTrackSaved();
             if (!quiet) Utils.showToastShort(str("morphe_music_downloads_complete"));
             return true;
         } catch (Exception ex) {

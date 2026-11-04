@@ -119,10 +119,10 @@ public final class SwipeControlsConfigurationProvider {
     //region swipe enable
     /**
      * Indicates whether swipe controls are enabled globally.
-     * Returns true if either volume or brightness controls are enabled and the video is in fullscreen or multi-window mode.
+     * Returns true if any swipe control is enabled and the video is in fullscreen or multi-window mode.
      */
     public boolean isSwipeControlsEnabled() {
-        return (isVolumeControlEnabled() || isBrightnessControlEnabled() || isSpeedControlEnabled())
+        return (isVolumeControlEnabled() || isBrightnessControlEnabled() || isSpeedControlEnabled() || isSwipeSeekEnabled())
                 && (isFullscreenOrMultiWindowVideo() || isVideoSliding());
     }
 
@@ -318,6 +318,20 @@ public final class SwipeControlsConfigurationProvider {
      */
     public boolean isSpeedControlEnabled() {
         return isActionAssigned(SwipeZoneAction.SPEED);
+    }
+
+    /**
+     * Indicates whether horizontal swipes seek.
+     */
+    public boolean isSwipeSeekEnabled() {
+        return Settings.SWIPE_SEEK.get();
+    }
+
+    /**
+     * How far the seekbar moves for each pixel swiped. 1 moves it as far as the finger.
+     */
+    public float getSwipeSeekSensitivity() {
+        return SeekBarPreference.clampToRange(Settings.SWIPE_SEEK_SENSITIVITY) / 100f;
     }
 
     /**

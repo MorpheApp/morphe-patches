@@ -55,9 +55,7 @@ final class OfflineUi {
     private static final int PILL_STROKE_ALPHA = 65;
     private static final int RIPPLE_ALPHA = 60;
 
-    /** Rows are 56dp, so a sample of the stored cover is already more than enough. */
-    static final int ROW_ARTWORK_PIXELS = 256;
-
+    /** Covers of rows are decoded at this size, a small sample of the stored cover. */
     private static final int ROW_ARTWORK_DP = 56;
     private static final int ARTWORK_CORNER_DP = 4;
 
@@ -103,21 +101,37 @@ final class OfflineUi {
         return button;
     }
 
-    ImageView artworkView(@Nullable Bitmap bitmap) {
+    /** A cover view showing the placeholder, for {@link OfflineArtworkLoader} to fill. */
+    ImageView artworkView() {
         ImageView view = new ImageView(context);
         view.setBackgroundColor(Utils.adjustColorBrightness(foreground(), 0.2f));
         roundCorners(view);
+        showArtwork(view, null);
+        return view;
+    }
 
+    /**
+     * Shows a cover, or the placeholder icon when there is none. A view of a list row can switch
+     * between the two as it is reused for other tracks, so every property is set each time.
+     */
+    void showArtwork(ImageView view, @Nullable Bitmap bitmap) {
         if (bitmap != null) {
-            view.setImageBitmap(bitmap);
+            view.clearColorFilter();
+            view.setPadding(0, 0, 0, 0);
             view.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            view.setImageBitmap(bitmap);
         } else {
             view.setImageDrawable(
                     ResourceUtils.getDrawable("yt_fill_experimental_play_circle_vd_theme_24"));
             view.setColorFilter(foreground());
             view.setPadding(dp(16), dp(16), dp(16), dp(16));
+            view.setScaleType(ImageView.ScaleType.FIT_CENTER);
         }
-        return view;
+    }
+
+    /** Size the covers of rows are decoded at, which the mini player shares. */
+    int rowArtworkPixels() {
+        return dp(ROW_ARTWORK_DP);
     }
 
     /** Matches the softly rounded covers the app uses on the home feed. */
@@ -154,26 +168,43 @@ final class OfflineUi {
         return row;
     }
 
+    /** The views that show a track in a row, kept so a reused row can show another track. */
+    record TrackInfoViews(ImageView artwork, TextView title, TextView detail) {
+    }
+
     /** Adds the cover, title and details of a track to its row. */
     void addTrackInfo(LinearLayout row, OfflineTrack track) {
-        row.addView(artworkView(track.artwork(ROW_ARTWORK_PIXELS)),
-                new LinearLayout.LayoutParams(dp(ROW_ARTWORK_DP), dp(ROW_ARTWORK_DP)));
+        bindTrackInfo(createTrackInfo(row), track);
+    }
+
+    /** Adds empty views for the cover, title and details of a track to a row. */
+    TrackInfoViews createTrackInfo(LinearLayout row) {
+        ImageView artwork = artworkView();
+        row.addView(artwork, new LinearLayout.LayoutParams(dp(ROW_ARTWORK_DP), dp(ROW_ARTWORK_DP)));
 
         LinearLayout labels = new LinearLayout(context);
         labels.setOrientation(LinearLayout.VERTICAL);
         labels.setPadding(dp(14), 0, dp(8), 0);
 
-        TextView name = text(track.displayTitle(), 16, foreground());
+        TextView name = text("", 16, foreground());
         name.setSingleLine(true);
 
-        TextView detail = text(str("morphe_music_downloads_track_subtitle",
-                track.displayArtist(), formatDuration(track.durationSeconds()),
-                formatSize(track.audioFile().length())), 13, secondary());
+        TextView detail = text("", 13, secondary());
         detail.setSingleLine(true);
 
         labels.addView(name);
         labels.addView(detail);
         row.addView(labels, new LinearLayout.LayoutParams(0, -2, 1));
+        return new TrackInfoViews(artwork, name, detail);
+    }
+
+    /** Shows a track in views made by {@link #createTrackInfo}. The cover is decoded later. */
+    void bindTrackInfo(TrackInfoViews views, OfflineTrack track) {
+        OfflineArtworkLoader.load(views.artwork(), track.artworkFile(), rowArtworkPixels(), this);
+        views.title().setText(track.displayTitle());
+        views.detail().setText(str("morphe_music_downloads_track_subtitle",
+                track.displayArtist(), formatDuration(track.durationSeconds()),
+                formatSize(track.sizeBytes())));
     }
 
     /** A rounded ripple button that adapts to any theme background. */
