@@ -18,7 +18,6 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Icon;
 import android.media.AudioAttributes;
 import android.media.AudioFocusRequest;
@@ -70,18 +69,34 @@ public final class OfflinePlaybackService extends Service {
     public static void removeListener(PlaybackListener listener) { listeners.remove(listener); }
 
     /**
+     * The queue of the next play request. A whole catalogue of thousands of paths does not fit
+     * in the Intent the service is started with, so it is handed over in memory: the service
+     * runs in the process of the app, and both ends of the handover are on the main thread.
+     */
+    @Nullable
+    private static ArrayList<String> pendingQueue;
+    private static int pendingQueueIndex;
+    /** Pairs a start request with its queue, in case another request is made before it is read. */
+    private static int pendingQueueToken;
+
+    /**
+     * Must be called on the main thread.
+     *
      * @param queue      The tracks that Previous and Next move through, including this track.
      * @param queueIndex The position of this track in the queue.
      */
     static void play(Context context, OfflineTrack track, ArrayList<String> queue, int queueIndex) {
+        pendingQueue = queue;
+        pendingQueueIndex = queueIndex;
+        final int token = ++pendingQueueToken;
+
         context.startForegroundService(new Intent(context, OfflinePlaybackService.class)
                 .setAction(ACTION_PLAY_FILE)
                 .putExtra(EXTRA_PATH, track.audioFile().getAbsolutePath())
                 .putExtra(EXTRA_TITLE, track.displayTitle())
                 .putExtra(EXTRA_ARTIST, track.displayArtist())
                 .putExtra(EXTRA_ARTWORK_PATH, track.artworkFile().getAbsolutePath())
-                .putStringArrayListExtra(EXTRA_QUEUE, queue)
-                .putExtra(EXTRA_QUEUE_INDEX, queueIndex));
+                .putExtra(EXTRA_QUEUE_TOKEN, token));
     }
 
     static boolean hasPrevious() {
@@ -121,14 +136,19 @@ public final class OfflinePlaybackService extends Service {
     public static final String ACTION_NEXT = "app.morphe.action.NEXT_OFFLINE_TRACK";
     public static final String ACTION_PREVIOUS = "app.morphe.action.PREVIOUS_OFFLINE_TRACK";
     public static final String EXTRA_PATH = "path";
-    public static final String EXTRA_QUEUE = "queue";
-    public static final String EXTRA_QUEUE_INDEX = "queue_index";
+    public static final String EXTRA_QUEUE_TOKEN = "queue_token";
     public static final String EXTRA_TITLE = "title";
     public static final String EXTRA_ARTIST = "artist";
     public static final String EXTRA_ARTWORK_PATH = "artwork_path";
 
     private static final String CHANNEL_ID = "morphe_offline_playback";
     private static final int NOTIFICATION_ID = 8841;
+
+    /**
+     * Longest edge of the cover shown by the notification and the lock screen. The system
+     * scales down anything larger on the main thread, once per key it is stored under.
+     */
+    private static final int ARTWORK_PIXELS = 640;
 
     private MediaPlayer player;
     private boolean prepared;
@@ -181,10 +201,18 @@ public final class OfflinePlaybackService extends Service {
         if (intent == null) return START_NOT_STICKY;
         String action = intent.getAction();
         if (ACTION_PLAY_FILE.equals(action)) {
-            ArrayList<String> suppliedQueue = intent.getStringArrayListExtra(EXTRA_QUEUE);
+            // The request was made with startForegroundService, so the service has to reach the
+            // foreground before anything can stop it, or the system closes the app.
+            startForeground(NOTIFICATION_ID, notification());
+
+            // A newer request has replaced the queue of this one, and follows right behind.
+            if (intent.getIntExtra(EXTRA_QUEUE_TOKEN, -1) != pendingQueueToken) return START_NOT_STICKY;
+
+            ArrayList<String> suppliedQueue = pendingQueue;
+            pendingQueue = null;
             if (suppliedQueue != null) {
                 queue = suppliedQueue;
-                queueIndex = intent.getIntExtra(EXTRA_QUEUE_INDEX, -1);
+                queueIndex = pendingQueueIndex;
             }
             playFile(intent.getStringExtra(EXTRA_PATH), intent.getStringExtra(EXTRA_TITLE),
                     intent.getStringExtra(EXTRA_ARTIST), intent.getStringExtra(EXTRA_ARTWORK_PATH));
@@ -200,21 +228,31 @@ public final class OfflinePlaybackService extends Service {
         return START_NOT_STICKY;
     }
 
+    /**
+     * Only runs once the service is in the foreground, so playback can be stopped at any point.
+     */
     private void playFile(@Nullable String path, @Nullable String requestedTitle,
                           @Nullable String requestedArtist, @Nullable String artworkPath) {
-        if (path == null || !new File(path).isFile()) return;
+        if (path == null || !new File(path).isFile()) {
+            // Whatever was playing goes on. Otherwise the service has nothing left to do.
+            if (!playerReady()) stopPlayback();
+            return;
+        }
         this.path = path;
         title = requestedTitle == null ? new File(path).getName() : requestedTitle;
         artist = requestedArtist == null || requestedArtist.isBlank() ? "YouTube Music" : requestedArtist;
         // A track saved without a cover has no file, and decoding it would log an error a second.
-        File artworkFile = artworkPath == null ? null : new File(artworkPath);
-        artwork = artworkFile != null && artworkFile.isFile()
-                ? BitmapFactory.decodeFile(artworkPath)
-                : null;
+        // Covers are stored large, and a full decode costs a few megabytes on every track change.
+        artwork = artworkPath == null
+                ? null
+                : OfflineStorage.decodeArtwork(new File(artworkPath), ARTWORK_PIXELS);
         releasePlayer();
         try {
             pauseOtherMedia();
-            if (audioFocusDenied()) return;
+            if (audioFocusDenied()) {
+                stopPlayback();
+                return;
+            }
             player = new MediaPlayer();
             player.setWakeMode(this, PowerManager.PARTIAL_WAKE_LOCK);
             player.setAudioAttributes(new AudioAttributes.Builder()
@@ -238,8 +276,7 @@ public final class OfflinePlaybackService extends Service {
             });
             player.setOnCompletionListener(mp -> {
                 if (mp != player) return;
-                if (queueIndex >= 0 && queueIndex + 1 < queue.size()) playQueueOffset(1);
-                else stopPlayback();
+                if (!playQueueOffset(1)) stopPlayback();
             });
             player.setOnErrorListener((mp, what, extra) -> {
                 if (mp != player) return true;
@@ -255,13 +292,25 @@ public final class OfflinePlaybackService extends Service {
         }
     }
 
-    private void playQueueOffset(int offset) {
+    /**
+     * Plays the next track of the queue in one direction, passing over tracks that have been
+     * deleted since the queue was made.
+     *
+     * @return If a track was found to play.
+     */
+    private boolean playQueueOffset(int offset) {
+        if (queueIndex < 0) return false;
         int target = queueIndex + offset;
-        if (target < 0 || target >= queue.size()) return;
+        while (target >= 0 && target < queue.size() && !new File(queue.get(target)).isFile()) {
+            target += offset;
+        }
+        if (target < 0 || target >= queue.size()) return false;
+
         queueIndex = target;
         OfflineTrack track = OfflineTrack.load(new File(queue.get(target)));
         playFile(track.audioFile().getAbsolutePath(), track.displayTitle(), track.displayArtist(),
                 track.artworkFile().getAbsolutePath());
+        return true;
     }
 
     private void resume() {
