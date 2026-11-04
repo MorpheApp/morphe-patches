@@ -44,6 +44,9 @@ public final class PlaylistDownloader {
      */
     private static final AtomicBoolean running = new AtomicBoolean();
 
+    /** Set when the system ends the download service. The download stops before the next track. */
+    private static volatile boolean stopRequested;
+
     private PlaylistDownloader() {
     }
 
@@ -55,7 +58,7 @@ public final class PlaylistDownloader {
     public static void start(String playlistId) {
         // Listing the tracks retries for a long while before it gives up without the network.
         if (!Utils.isNetworkConnected()) {
-            Utils.showToastShort(str("morphe_music_downloads_playlist_download_waiting_network"));
+            Utils.showToastShort(str("morphe_music_downloads_playlist_download_no_network"));
             return;
         }
         if (!running.compareAndSet(false, true)) {
@@ -162,8 +165,14 @@ public final class PlaylistDownloader {
                 }, null, null, true).first.show();
     }
 
+    /** Stops the download before its next track. */
+    static void stop() {
+        stopRequested = true;
+    }
+
     /** Runs in the download service, off the main thread. */
     static void downloadAll(List<String> videoIds) {
+        stopRequested = false;
         final int total = videoIds.size();
         int saved = 0;
         int failed = 0;
@@ -171,14 +180,7 @@ public final class PlaylistDownloader {
 
         try {
             for (; done < total; done++) {
-                if (!awaitNetwork(done, total)) {
-                    final int doneCount = done;
-                    Logger.printInfo(() -> "No network, playlist download stopped at "
-                            + doneCount + "/" + total);
-                    endWithMessage(str("morphe_music_downloads_playlist_download_stopped", done,
-                            OfflineUi.trackCount(total)));
-                    return;
-                }
+                if (!awaitNetwork(done, total)) break;
 
                 if (LocalDownloadManager.canPostProgress()) {
                     LocalDownloadManager.showDownloadNotification(NOTIFICATION_KEY,
@@ -191,11 +193,7 @@ public final class PlaylistDownloader {
                 // A connection lost in the middle of a track fails it, so it is tried again
                 // once the network is back.
                 if (!trackSaved && !Utils.isNetworkConnected()) {
-                    if (!awaitNetwork(done, total)) {
-                        endWithMessage(str("morphe_music_downloads_playlist_download_stopped", done,
-                                OfflineUi.trackCount(total)));
-                        return;
-                    }
+                    if (!awaitNetwork(done, total)) break;
                     trackSaved = LocalDownloadManager.downloadPlaylistTrack(videoId);
                 }
                 if (trackSaved) {
@@ -205,15 +203,22 @@ public final class PlaylistDownloader {
                 }
             }
 
+            final int doneCount = done;
             final int savedCount = saved;
             final int failedCount = failed;
-            Logger.printDebug(() -> "Playlist download finished, saved: " + savedCount
-                    + ", failed: " + failedCount);
+            Logger.printDebug(() -> "Playlist download ended at " + doneCount + "/" + total
+                    + ", saved: " + savedCount + ", failed: " + failedCount);
 
-            endWithMessage(failed == 0
-                    ? str("morphe_music_downloads_playlist_download_complete", OfflineUi.trackCount(saved))
-                    : str("morphe_music_downloads_playlist_download_complete_with_failures",
-                            OfflineUi.trackCount(saved), OfflineUi.trackCount(failed)));
+            if (done < total) {
+                endWithMessage(str("morphe_music_downloads_playlist_download_stopped", done,
+                        OfflineUi.trackCount(total)));
+            } else if (failed == 0) {
+                endWithMessage(str("morphe_music_downloads_playlist_download_complete",
+                        OfflineUi.trackCount(saved)));
+            } else {
+                endWithMessage(str("morphe_music_downloads_playlist_download_complete_with_failures",
+                        OfflineUi.trackCount(saved), OfflineUi.trackCount(failed)));
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "Playlist download failed", ex);
             endWithMessage(str("morphe_music_downloads_playlist_download_stopped", done,
@@ -224,9 +229,11 @@ public final class PlaylistDownloader {
     }
 
     /**
-     * @return If the network is connected, after waiting for it if it was lost.
+     * @return If the download may go on: the network is connected, after waiting for it if it
+     *         was lost, and no stop was requested.
      */
     private static boolean awaitNetwork(int done, int total) {
+        if (stopRequested) return false;
         if (Utils.isNetworkConnected()) return true;
 
         LocalDownloadManager.awaitNotificationSlot();
@@ -235,7 +242,7 @@ public final class PlaylistDownloader {
                 str("morphe_music_downloads_playlist_download_waiting_network"));
 
         final long giveUpTime = System.currentTimeMillis() + MAX_NETWORK_WAIT_MILLISECONDS;
-        while (System.currentTimeMillis() < giveUpTime) {
+        while (!stopRequested && System.currentTimeMillis() < giveUpTime) {
             try {
                 //noinspection BusyWait
                 Thread.sleep(NETWORK_CHECK_INTERVAL_MILLISECONDS);
@@ -243,7 +250,7 @@ public final class PlaylistDownloader {
                 Thread.currentThread().interrupt();
                 return false;
             }
-            if (Utils.isNetworkConnected()) return true;
+            if (Utils.isNetworkConnected()) return !stopRequested;
         }
         return false;
     }

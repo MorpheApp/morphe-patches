@@ -59,7 +59,9 @@ internal object OfflinePlaylistEndpointFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "Ljava/util/Map;"),
-    strings = listOf("Object is not an offlineable playlist: %s")
+    filters = listOf(
+        string("Object is not an offlineable playlist: %s")
+    )
 )
 
 internal object OfflineVideoEndpointFingerprint : Fingerprint(

@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 /**
@@ -66,6 +67,18 @@ public final class PlaylistDownloadService extends Service {
             }
         });
         return START_NOT_STICKY;
+    }
+
+    /**
+     * Android 15 and later end a data sync service after 6 hours a day, and crash the app if it
+     * is not stopped right away. The download ends with a message after its current track.
+     */
+    @Override
+    public void onTimeout(int startId, int fgsType) {
+        Logger.printInfo(() -> "Playlist download service timed out");
+        PlaylistDownloader.stop();
+        stopForeground(STOP_FOREGROUND_DETACH);
+        stopSelf();
     }
 
     @Nullable

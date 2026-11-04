@@ -26,7 +26,7 @@ import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
-private val OFFLINE_PLAYBACK_PERMISSIONS = listOf(
+private val DOWNLOADS_PERMISSIONS = listOf(
     "android.permission.WAKE_LOCK",
     "android.permission.FOREGROUND_SERVICE",
     "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
@@ -34,10 +34,14 @@ private val OFFLINE_PLAYBACK_PERMISSIONS = listOf(
     "android.permission.POST_NOTIFICATIONS",
 )
 
-private const val OFFLINE_PLAYBACK_SERVICE =
-    "app.morphe.extension.music.patches.downloads.OfflinePlaybackService"
-private const val PLAYLIST_DOWNLOAD_SERVICE =
-    "app.morphe.extension.music.patches.downloads.PlaylistDownloadService"
+/**
+ * Foreground services and their types. The tracks of a playlist are downloaded by a service,
+ * so the download outlives the app.
+ */
+private val DOWNLOADS_SERVICES = mapOf(
+    "app.morphe.extension.music.patches.downloads.OfflinePlaybackService" to "mediaPlayback",
+    "app.morphe.extension.music.patches.downloads.PlaylistDownloadService" to "dataSync",
+)
 
 private val downloadsResourcePatch = resourcePatch {
     dependsOn(settingsPatch)
@@ -64,7 +68,7 @@ private val downloadsResourcePatch = resourcePatch {
         // YouTube Music already declares most of these, so each one is added only when missing.
         // The whole attribute is matched, since FOREGROUND_SERVICE is a prefix of
         // FOREGROUND_SERVICE_MEDIA_PLAYBACK and would otherwise look like it is already there.
-        for (permission in OFFLINE_PLAYBACK_PERMISSIONS) {
+        for (permission in DOWNLOADS_PERMISSIONS) {
             val declaration = "android:name=\"$permission\""
             if (!xml.contains(declaration)) {
                 xml = xml.replace(
@@ -74,21 +78,14 @@ private val downloadsResourcePatch = resourcePatch {
             }
         }
 
-        if (!xml.contains(OFFLINE_PLAYBACK_SERVICE)) {
-            xml = xml.replace(
-                "</application>",
-                "<service android:name=\"$OFFLINE_PLAYBACK_SERVICE\" " +
-                    "android:exported=\"false\" android:foregroundServiceType=\"mediaPlayback\" />\n</application>"
-            )
-        }
-
-        // The tracks of a playlist are downloaded by a service, so the download outlives the app.
-        if (!xml.contains(PLAYLIST_DOWNLOAD_SERVICE)) {
-            xml = xml.replace(
-                "</application>",
-                "<service android:name=\"$PLAYLIST_DOWNLOAD_SERVICE\" " +
-                    "android:exported=\"false\" android:foregroundServiceType=\"dataSync\" />\n</application>"
-            )
+        for ((service, type) in DOWNLOADS_SERVICES) {
+            if (!xml.contains(service)) {
+                xml = xml.replace(
+                    "</application>",
+                    "<service android:name=\"$service\" " +
+                        "android:exported=\"false\" android:foregroundServiceType=\"$type\" />\n</application>"
+                )
+            }
         }
 
         manifest.writeText(xml)

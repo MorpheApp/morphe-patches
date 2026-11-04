@@ -229,6 +229,7 @@ They are downloaded one at a time, which can take a long time and needs about %3
     <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listed, all already downloaded</string>
     <string name="morphe_music_downloads_playlist_download_incomplete">Only part of the playlist could be listed. Tap Download again later to get the rest</string>
     <string name="morphe_music_downloads_playlist_download_started">Downloading %s in the background</string>
+    <string name="morphe_music_downloads_playlist_download_no_network">No network connection</string>
     <string name="morphe_music_downloads_playlist_download_waiting_network">Waiting for the network…</string>
     <string name="morphe_music_downloads_playlist_download_stopped">Stopped after %1$s of %2$s. Tap Download again to continue</string>
 
