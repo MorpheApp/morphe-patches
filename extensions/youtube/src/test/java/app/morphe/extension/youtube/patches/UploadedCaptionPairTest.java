@@ -7,11 +7,14 @@
 
 package app.morphe.extension.youtube.patches;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
-import java.io.InputStream;
-import java.util.List;
 import org.junit.Test;
+
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class UploadedCaptionPairTest {
     private record NativeCue(String text) implements StableCaptionBlocks.Cue {
@@ -47,17 +50,39 @@ public class UploadedCaptionPairTest {
             }
         };
     }
-    private List<StableCaptionBlockPolicy.Block> read(String name) throws Exception {
-        try (InputStream in = getClass().getResourceAsStream("/uploaded/" + name + ".srv3")) {
-            assertNotNull(in);
-            var policy = StableCaptionBlockPolicy.parseManual(CaptionXml.read(in.readAllBytes()));
-            assertNotNull(policy);
-            return policy.sourceBlocks("en");
-        }
+    private static final String FIRST = """
+            <?xml version="1.0" encoding="utf-8"?>
+            <timedtext format="3">
+              <body>
+                <p t="40" d="4049">First original</p>
+                <p t="5125" d="4285">First before gap</p>
+                <p t="9460" d="5105">First after gap</p>
+                <p t="14565" d="823">First last phrase</p>
+                <p t="15501" d="1157">First question</p>
+              </body>
+            </timedtext>
+            """;
+
+    private static final String SECOND = """
+            <?xml version="1.0" encoding="utf-8"?>
+            <timedtext format="3">
+              <body>
+                <p t="40" d="4049">Second original</p>
+                <p t="5099" d="4630">Second before gap</p>
+                <p t="9730" d="4570">Second after gap</p>
+                <p t="14300" d="1069">Second last phrase</p>
+              </body>
+            </timedtext>
+            """;
+
+    private List<StableCaptionBlockPolicy.Block> read(String xml) throws Exception {
+        var policy = StableCaptionBlockPolicy.parseManual(CaptionXml.read(xml.getBytes(StandardCharsets.UTF_8)));
+        assertNotNull(policy);
+        return policy.sourceBlocks("en");
     }
     private UploadedCaptionPair pair() throws Exception {
-        var tr = read("first");
-        var de = read("second");
+        var tr = read(FIRST);
+        var de = read(SECOND);
         assertEquals(5, tr.size());
         assertEquals(4, de.size());
         return new UploadedCaptionPair(timeline(tr), timeline(de));
@@ -95,11 +120,11 @@ public class UploadedCaptionPairTest {
     }
     @Test
     public void missingTrackUsesOnlyThatSlotsFallback() throws Exception {
-        var f = new UploadedCaptionPair(timeline(read("first")), null).at(100, "fake", "fallback German", 42);
+        var f = new UploadedCaptionPair(timeline(read(FIRST)), null).at(100, "fake", "fallback German", 42);
         assertTrue(f.primary().startsWith("First original"));
         assertEquals("fallback German", f.secondary());
         assertEquals(42, f.secondKey());
-        f = new UploadedCaptionPair(null, timeline(read("second"))).at(100, "fallback Turkish", "fake", 42);
+        f = new UploadedCaptionPair(null, timeline(read(SECOND))).at(100, "fallback Turkish", "fake", 42);
         assertEquals("fallback Turkish", f.primary());
         assertTrue(f.secondary().startsWith("Second original"));
     }
