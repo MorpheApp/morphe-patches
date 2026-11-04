@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.1.0-dev.7](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.1.0-dev.7)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;196 patches total
+> **[v2.1.0-dev.8](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.1.0-dev.8)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;197 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;111 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;112 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -157,6 +157,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Video delay](#video-delay) | Adds an option to delay the video, to keep it in sync with laggy Bluetooth audio. |  |
 | [Video quality](#video-quality) | Adds options to set default video qualities and always use the advanced video quality menu. |  |
 | [Voice over translation](#voice-over-translation) | Adds additional voice over languages using text-to-speech synchronized to the video playback. |  |
+| [Watch later improvements](#watch-later-improvements) | Adds options to widen the drag handles of the Watch later videos and to hide the snackbar shown after removing a video. |  |
 | [Wide search bar](#wide-search-bar) | Adds a wide search bar to the top of the home and subscription feed. |  |
 
 </details>
