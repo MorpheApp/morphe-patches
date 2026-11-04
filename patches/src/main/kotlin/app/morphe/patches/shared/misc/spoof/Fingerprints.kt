@@ -95,16 +95,21 @@ internal object CreateStreamingDataFingerprint : Fingerprint(
     )
 )
 
-internal fun abrStateDataFingerprint(playerConfigClass: String) = object : Fingerprint(
+/**
+ * The type of the player config set by [CreateStreamingDataFingerprint].
+ */
+private fun playerConfigType() = CreateStreamingDataFingerprint.instructionMatches.last().fieldReference.type
+
+internal object AbrStateDataFingerprint : Fingerprint(
     returnType = "J",
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            type = playerConfigClass
+            type = { playerConfigType() }
         ),
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            definingClass = playerConfigClass,
+            definingClass = { playerConfigType() },
             location = MatchAfterImmediately()
         ),
         fieldAccess(
@@ -114,7 +119,7 @@ internal fun abrStateDataFingerprint(playerConfigClass: String) = object : Finge
         string("/videoplayback"),
         string("AbrStateDataSpec: Unexpected http body.")
     )
-) {}
+)
 
 
 internal object PlayerConfigBuilderFingerprint : Fingerprint(

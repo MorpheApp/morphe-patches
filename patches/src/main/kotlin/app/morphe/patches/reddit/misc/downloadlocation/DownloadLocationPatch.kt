@@ -66,7 +66,7 @@ val downloadLocationPatch = patch(
             val subredditField = it.instructionMatches[2].fieldReference
             val authorField = it.instructionMatches[3].fieldReference
 
-            imageDownloadParamsConstructorFingerprint(it.classDef.type).let { constructor ->
+            ImageDownloadParamsConstructorFingerprint.let { constructor ->
                 val urlField = constructor.instructionMatches[0].fieldReference
                 val modelField = constructor.instructionMatches[1].fieldReference
 

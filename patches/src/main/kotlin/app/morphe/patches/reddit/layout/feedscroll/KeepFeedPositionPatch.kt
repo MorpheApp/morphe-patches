@@ -35,7 +35,7 @@ val keepFeedPositionPatch = patch(
         val postIdType = FeedStateToStringFingerprint.instructionMatches
             .last().fieldReference.type
 
-        rememberOpenedPostFingerprint(postIdType).method.addInstructionsWithLabels(
+        RememberOpenedPostFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS->skipRememberOpenedPost()Z

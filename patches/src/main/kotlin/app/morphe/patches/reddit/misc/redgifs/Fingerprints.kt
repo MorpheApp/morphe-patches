@@ -15,7 +15,6 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 internal const val DOMAIN_VIDEO_URLS_CLASS = "Lcom/reddit/domain/model/VideoUrls;"
 
@@ -76,14 +75,14 @@ internal object VideoElementToStringFingerprint : Fingerprint(
 /**
  * Feed video.
  */
-internal fun videoElementConstructorFingerprint(urlField: FieldReference) = Fingerprint(
-    definingClass = urlField.definingClass,
+internal object VideoElementConstructorFingerprint : Fingerprint(
+    classFingerprint = VideoElementToStringFingerprint,
     name = "<init>",
     returnType = "V",
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
-            reference = urlField
+            reference = { VideoElementToStringFingerprint.instructionMatches[3].fieldReference }
         )
     )
 )

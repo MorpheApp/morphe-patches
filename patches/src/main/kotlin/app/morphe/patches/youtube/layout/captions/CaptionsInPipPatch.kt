@@ -22,7 +22,6 @@ import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.PlayerTypeEnumFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -58,7 +57,7 @@ internal val captionsInPipPatch = patch(
             val pipArgument = fieldNames.indexOf("isPipActive") + 1
             if (pipArgument == 0) throw PatchException("Unexpected player state fields: $fieldNames")
 
-            getPlayerOverlayVisibilityFingerprint(stateType).matchAll().forEach {
+            PlayerOverlayVisibilityFingerprint.matchAll().forEach {
                 it.method.apply {
                     val stateIndex = it.instructionMatches.first().index
                     val pipRegister = getInstruction(stateIndex).registersUsed[pipArgument]
@@ -87,7 +86,7 @@ internal val captionsInPipPatch = patch(
         // 21.05+ only uses it depending on a server flag.
         // Show the captions overlay anyway.
         if (!is_21_41_or_greater) {
-            getPlayerTypeOverlayVisibilityFingerprint(PlayerTypeEnumFingerprint.originalClassDef.type)
+            PlayerTypeOverlayVisibilityFingerprint
                 .matchAll()
                 .forEach {
                     it.method.apply {

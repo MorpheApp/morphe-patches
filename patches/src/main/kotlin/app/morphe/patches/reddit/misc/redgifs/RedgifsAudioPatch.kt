@@ -69,7 +69,7 @@ val redgifsAudioPatch = patch(
             val postIdField = it.instructionMatches[1].fieldReference
             val urlField = it.instructionMatches[3].fieldReference
 
-            videoElementConstructorFingerprint(urlField).method.apply {
+            VideoElementConstructorFingerprint.method.apply {
                 // All registers are unused at the final return.
                 addInstructions(
                     indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID),

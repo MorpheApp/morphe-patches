@@ -155,7 +155,7 @@ val ambientModePatch = patch(
 
             // 21.43+ inlines the lambdas that read the first value for the Ambient mode receiver.
             // The receiver is registered on the main thread, or asynchronously if a server flag is on.
-            powerSaveModeInitialValueFingerprint(PowerSaveModeReceiverRegisterFingerprint.method).method.hook()
+            PowerSaveModeInitialValueFingerprint.method.hook()
             PowerSaveModeInitialValueAsyncFingerprint.method.hook()
         } else if (is_21_03_or_greater) {
             IntentActionSyntheticAlternativeLegacyFingerprint.method.hook()
@@ -200,10 +200,9 @@ val ambientModePatch = patch(
         val styleHasBitMask = styleMatches[1].getInstruction<NarrowLiteralInstruction>().narrowLiteral
         val styleField = styleMatches[3].fieldReference
 
-        val configField = cinematicContainerConfigFingerprint(rendererType).matchSingle()
+        val configField = CinematicContainerConfigFingerprint.matchSingle()
             .instructionMatches.last().fieldReference
-        val configType = configField.type
-        val enabledByDefaultField = cinematicContainerEnabledByDefaultFingerprint(configType).matchSingle()
+        val enabledByDefaultField = CinematicContainerEnabledByDefaultFingerprint.matchSingle()
             .instructionMatches[3].fieldReference
 
         val defaultRendererField = rendererClass.fields.first { field ->

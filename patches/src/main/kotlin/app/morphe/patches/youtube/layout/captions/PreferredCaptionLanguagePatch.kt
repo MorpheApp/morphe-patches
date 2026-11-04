@@ -188,9 +188,7 @@ internal val preferredCaptionLanguagePatch = patch(
         }
 
         DefaultCaptionTrackFingerprint.classDef.apply {
-            val tracksManagerField = SubtitleManagerDirectTracksFingerprint(
-                CaptionTracksManagerDirectTracksFingerprint.method
-            ).instructionMatches[0].fieldReference
+            val tracksManagerField = SubtitleManagerDirectTracksFingerprint.instructionMatches[0].fieldReference
 
             interfaces.add(EXTENSION_SUBTITLE_MANAGER_INTERFACE)
 

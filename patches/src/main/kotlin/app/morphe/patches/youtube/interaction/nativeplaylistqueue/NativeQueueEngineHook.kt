@@ -48,7 +48,7 @@ internal fun installNativeQueueEngine(
         .instructionMatches.last().fieldReference
     val wrapperType = wrapperFlag.definingClass
 
-    val receive = nativeQueueReceiveFingerprint(wrapperFlag)
+    val receive = NativeQueueReceiveFingerprint
     fun receiveField(index: Int) = receive.instructionMatches[index].fieldReference
     fun receiveMethod(index: Int) = receive.instructionMatches[index].methodReference
     val responseType = receive.originalMethod.parameterTypes.single().toString()
@@ -70,9 +70,9 @@ internal fun installNativeQueueEngine(
     val accept = acceptMatch.originalMethod
     val storedResponse = acceptMatch.instructionMatches.last().fieldReference
 
-    val repeatSetter = nativeQueueRepeatSetterFingerprint(wrapperType)
+    val repeatSetter = NativeQueueRepeatSetterFingerprint
         .instructionMatches.last().methodReference
-    val repeatGetter = nativeQueueRepeatGetterFingerprint(wrapperType)
+    val repeatGetter = NativeQueueRepeatGetterFingerprint
         .instructionMatches.last().methodReference
 
     val responseConstructor = nativeQueueResponseConstructorFingerprint(responseType).originalMethod

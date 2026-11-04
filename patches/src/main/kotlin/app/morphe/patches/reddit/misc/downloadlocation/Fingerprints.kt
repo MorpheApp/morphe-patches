@@ -51,7 +51,7 @@ private object ImageDownloadParamsToStringFingerprint : Fingerprint(
 /**
  * Sets the image url, which is the only string field, and the download model of the post.
  */
-internal fun imageDownloadParamsConstructorFingerprint(modelType: String) = Fingerprint(
+internal object ImageDownloadParamsConstructorFingerprint : Fingerprint(
     classFingerprint = ImageDownloadParamsToStringFingerprint,
     name = "<init>",
     returnType = "V",
@@ -64,7 +64,7 @@ internal fun imageDownloadParamsConstructorFingerprint(modelType: String) = Fing
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
             definingClass = "this",
-            type = modelType
+            type = { LinkDownloadModelToStringFingerprint.classDef }
         )
     )
 )

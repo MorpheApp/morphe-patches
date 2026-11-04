@@ -63,7 +63,7 @@ internal val captionsAfterSeekPatch = patch(
             }
         }
 
-        getAddCueRangesFingerprint(EnterCueRangeOnAddFeatureFlagFingerprint.originalMethod).let {
+        AddCueRangesFingerprint.let {
             it.method.apply {
                 val castInstruction = it.instructionMatches[1].getInstruction<OneRegisterInstruction>()
                 val cueRangeType = castInstruction.getReference<TypeReference>()!!.type

@@ -230,11 +230,11 @@ internal object FeedPostSectionConstructorFingerprint : Fingerprint(
     )
 )
 
-internal fun feedPostSectionMapperFingerprint(feedPostSectionType: String) = Fingerprint(
+internal object FeedPostSectionMapperFingerprint : Fingerprint(
     filters = listOf(
-        newInstance(feedPostSectionType),
+        newInstance(type = { FeedPostSectionToStringFingerprint.classDef }),
         methodCall(
-            definingClass = feedPostSectionType,
+            definingClass = { FeedPostSectionToStringFingerprint.classDef },
             name = "<init>"
         ),
         opcode(Opcode.RETURN_OBJECT, MatchAfterImmediately())

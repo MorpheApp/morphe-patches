@@ -38,16 +38,16 @@ internal object FeedStateToStringFingerprint : Fingerprint(
 /**
  * Setter of the "last visited post id provider", which wraps the opened post id and stores it.
  */
-internal fun rememberOpenedPostFingerprint(postIdType: String) = Fingerprint(
+internal object RememberOpenedPostFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Ljava/lang/String;"),
     filters = listOf(
-        newInstance(postIdType),
+        newInstance(type = { FeedStateToStringFingerprint.instructionMatches.last().fieldReference.type }),
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
             definingClass = "this",
-            type = postIdType
+            type = { FeedStateToStringFingerprint.instructionMatches.last().fieldReference.type }
         )
     )
 )

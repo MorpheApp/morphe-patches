@@ -36,7 +36,6 @@ import app.morphe.patches.youtube.video.information.PlayerInitFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoTimeHook
-import app.morphe.patches.youtube.video.videoid.VideoIdFingerprint
 import app.morphe.util.ResourceGroup
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -132,9 +131,7 @@ val seriesTrackerPatch = patch(
         )
 
         PlayerInitFingerprint.classDef.apply {
-            val idGetter = ControllerVideoIdFingerprint(
-                VideoIdFingerprint.instructionMatches.first().getMethodCalled()
-            ).originalMethod
+            val idGetter = ControllerVideoIdFingerprint.originalMethod
 
             interfaces.add($$"$${SERIES_TRACKER_EXTENSION_PREFIX}PlaybackBridge$Source;")
 

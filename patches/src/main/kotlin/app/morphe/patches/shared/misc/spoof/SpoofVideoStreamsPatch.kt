@@ -155,7 +155,7 @@ internal fun spoofVideoStreamsPatch(
                 val setPlayerConfigField = it.instructionMatches.last().fieldReference
                 val playerConfigClass = setPlayerConfigField.type
                 val (mediaCommonConfigField, mediaUstreamerRequestConfig) =
-                    with(abrStateDataFingerprint(playerConfigClass)) {
+                    with(AbrStateDataFingerprint) {
                         Pair(
                             instructionMatches[1].fieldReference,
                             instructionMatches[2].fieldReference,

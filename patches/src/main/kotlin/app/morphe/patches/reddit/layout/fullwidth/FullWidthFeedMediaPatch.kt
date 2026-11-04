@@ -53,10 +53,7 @@ val fullWidthFeedMediaPatch = patch(
 
         // Find which boolean getter of the feed post style is 'mediaInsetEnabled'.
         val styleClass = FeedPostStyleToStringFingerprint.classDef
-        val insetGetterName = mediaInsetGetterFingerprint(
-            styleClass.toString(),
-            FeedPostStyleToStringFingerprint.instructionMatches.last().fieldReference
-        ).method.name
+        val insetGetterName = MediaInsetGetterFingerprint.method.name
 
         feedPostStyleMediaInsetFingerprint(
             styleClass.superclass!!, insetGetterName
@@ -102,7 +99,7 @@ val fullWidthFeedMediaPatch = patch(
             val sectionClass = toString.classDef.type
             val insetField = toString.instructionMatches.last().fieldReference
 
-            youTubeVideoSectionConstructorFingerprint(sectionClass, insetField).let { constructor ->
+            YouTubeVideoSectionConstructorFingerprint.let { constructor ->
                 val index = constructor.instructionMatches.first().index
                 val register = constructor.method.getInstruction<TwoRegisterInstruction>(index).registerA
                 constructor.method.addInstructions(
@@ -114,7 +111,7 @@ val fullWidthFeedMediaPatch = patch(
                 )
             }
 
-            youTubeVideoSectionContentFingerprint(sectionClass).let { content ->
+            YouTubeVideoSectionContentFingerprint.let { content ->
                 content.method.apply {
                     // Inset used for the height. Patched first, since it is after the other changes.
                     val insetIndex = content.instructionMatches[4].index + 1
@@ -170,10 +167,7 @@ val fullWidthFeedMediaPatch = patch(
 
         // Images in the post details are inset by their own flag.
         val imageInsetField = PostImagePropsToStringFingerprint.instructionMatches.last().fieldReference
-        postImagePropsConstructorFingerprint(
-            PostImagePropsToStringFingerprint.classDef.toString(),
-            imageInsetField
-        ).matchAll().forEach { match ->
+        PostImagePropsConstructorFingerprint.matchAll().forEach { match ->
             match.method.apply {
                 findInstructionIndicesReversedOrThrow(
                     fieldAccess(imageInsetField, Opcode.IPUT_BOOLEAN)

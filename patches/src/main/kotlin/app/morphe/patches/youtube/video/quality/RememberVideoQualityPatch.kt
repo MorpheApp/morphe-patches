@@ -47,7 +47,6 @@ import app.morphe.patches.youtube.video.information.VideoQualityFingerprint
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneMutable
-import app.morphe.util.findFieldFromToString
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
@@ -105,11 +104,8 @@ val rememberVideoQualityPatch = patch {
             SwitchPreference("morphe_remember_video_quality_last_selected_toast", summary = true)
         ))
 
-        val initialResolutionField = PlaybackStartParametersToStringFingerprint.method
-                .findFieldFromToString(FIXED_RESOLUTION_STRING)
-
         // Inject a call to override initial video quality.
-        getPlaybackStartParametersConstructorFingerprint(initialResolutionField).let {
+        PlaybackStartParametersConstructorFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA
@@ -129,7 +125,7 @@ val rememberVideoQualityPatch = patch {
         // so the quality selected by the user for the video is used instead of the initial quality.
         // The Shorts player also loads the next Shorts before they play, so the video ID of the player
         // that loads the video is passed, from the playback start descriptor of its player.
-        getPlaybackStartParametersInitialResolutionFingerprint(initialResolutionField).matchSingle().method.apply {
+        PlaybackStartParametersInitialResolutionFingerprint.matchSingle().method.apply {
             val descriptorMatch = getPlayerPlaybackStartDescriptorFingerprint(
                 definingClass,
                 PlaybackStartDescriptorToStringFingerprint.classDef.type

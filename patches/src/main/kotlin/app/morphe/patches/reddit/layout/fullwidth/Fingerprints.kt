@@ -17,7 +17,6 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 /**
  * toString of a feed post style, which logs whether media is inset.
@@ -39,12 +38,16 @@ internal object FeedPostStyleToStringFingerprint : Fingerprint(
 /**
  * Getter of the feed post style 'mediaInsetEnabled' field.
  */
-internal fun mediaInsetGetterFingerprint(definingClass: String, insetField: FieldReference) = Fingerprint(
-    definingClass = definingClass,
+internal object MediaInsetGetterFingerprint : Fingerprint(
+    classFingerprint = FeedPostStyleToStringFingerprint,
     returnType = "Z",
     parameters = listOf(),
     filters = listOf(
-        fieldAccess(insetField, Opcode.IGET_BOOLEAN, location = MatchFirst())
+        fieldAccess(
+            reference = { FeedPostStyleToStringFingerprint.instructionMatches.last().fieldReference },
+            opcode = Opcode.IGET_BOOLEAN,
+            location = MatchFirst()
+        )
     )
 )
 
@@ -134,11 +137,14 @@ internal object PostImagePropsToStringFingerprint : Fingerprint(
 /**
  * Constructor of the image component props, which sets whether the image is inset.
  */
-internal fun postImagePropsConstructorFingerprint(definingClass: String, insetField: FieldReference) = Fingerprint(
-    definingClass = definingClass,
+internal object PostImagePropsConstructorFingerprint : Fingerprint(
+    classFingerprint = PostImagePropsToStringFingerprint,
     name = "<init>",
     filters = listOf(
-        fieldAccess(insetField, Opcode.IPUT_BOOLEAN)
+        fieldAccess(
+            reference = { PostImagePropsToStringFingerprint.instructionMatches.last().fieldReference },
+            opcode = Opcode.IPUT_BOOLEAN
+        )
     )
 )
 
@@ -277,11 +283,14 @@ internal object YouTubeVideoSectionToStringFingerprint : Fingerprint(
 /**
  * Constructor of the YouTube video section, which sets whether the video is inset.
  */
-internal fun youTubeVideoSectionConstructorFingerprint(definingClass: String, insetField: FieldReference) = Fingerprint(
-    definingClass = definingClass,
+internal object YouTubeVideoSectionConstructorFingerprint : Fingerprint(
+    classFingerprint = YouTubeVideoSectionToStringFingerprint,
     name = "<init>",
     filters = listOf(
-        fieldAccess(insetField, Opcode.IPUT_BOOLEAN)
+        fieldAccess(
+            reference = { YouTubeVideoSectionToStringFingerprint.instructionMatches.last().fieldReference },
+            opcode = Opcode.IPUT_BOOLEAN
+        )
     )
 )
 
@@ -290,8 +299,8 @@ internal fun youTubeVideoSectionConstructorFingerprint(definingClass: String, in
  * with rounded corners and an outline. Its height is computed from the screen width
  * minus that padding (32dp in total).
  */
-internal fun youTubeVideoSectionContentFingerprint(definingClass: String) = Fingerprint(
-    definingClass = definingClass,
+internal object YouTubeVideoSectionContentFingerprint : Fingerprint(
+    classFingerprint = YouTubeVideoSectionToStringFingerprint,
     returnType = "V",
     filters = listOf(
         literal(16.0f),

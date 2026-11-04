@@ -117,7 +117,7 @@ internal val autoTranslateCaptionsPatch = patch(
 
         val adapter = "${directTracks.definingClass}->patch_getAutoTranslateTracks()Ljava/util/List;"
         // Route the UI getter and the existing preferred-language interface getter through it.
-        AutoTranslateTracksCallFingerprint(autoTracks).matchAllMethodIndicesForEach { index ->
+        AutoTranslateTracksCallFingerprint.matchAllMethodIndicesForEach { index ->
             val register = getInstruction(index).registersUsed[0]
             replaceInstruction(index, "invoke-virtual/range { v$register .. v$register }, $adapter")
         }

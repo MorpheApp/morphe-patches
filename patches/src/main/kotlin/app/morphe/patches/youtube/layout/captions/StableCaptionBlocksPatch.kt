@@ -263,7 +263,7 @@ internal val stableCaptionBlocksPatch = patch(
                 "patch_getVisibleCaptionLines" to it.instructionMatches[1],
                 "patch_getFullCaptionLines" to it.instructionMatches[3],
             ).map { (name, match) -> name to match.fieldReference } +
-                    ("patch_getCaptionMeasureRow" to getCaptionWindowConstructorFingerprint(rowType)
+                    ("patch_getCaptionMeasureRow" to CaptionWindowConstructorFingerprint
                         .instructionMatches.first().fieldReference)
 
             val backgroundColor = CaptionWindowBackgroundColorFingerprint.method

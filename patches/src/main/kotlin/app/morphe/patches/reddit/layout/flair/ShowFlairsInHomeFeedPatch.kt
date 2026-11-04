@@ -238,7 +238,7 @@ val showFlairsInHomeFeedPatch = patch(
             """
         )
 
-        feedPostSectionMapperFingerprint(feedPostType).let {
+        FeedPostSectionMapperFingerprint.let {
             val returnMatch = it.instructionMatches.last()
             val sectionRegister = returnMatch.getInstruction<OneRegisterInstruction>().registerA
 

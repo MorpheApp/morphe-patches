@@ -47,11 +47,11 @@ val disableRenderNextPatch = patch(
         val enablementCheckMethod = RenderNextEnablementCheckFingerprint.method
         enablementCheckMethod.returnEarly(false)
 
-        val configRenderNextField = getRenderNextConfigFieldFingerprint(enablementCheckMethod)
+        val configRenderNextField = RenderNextConfigFieldFingerprint
             .instructionMatches.first().fieldReference
 
         // Every read of the config field decides if an element is RenderNext.
-        getRenderNextConfigFieldReadFingerprint(configRenderNextField).matchAll().forEach {
+        RenderNextConfigFieldReadFingerprint.matchAll().forEach {
             it.method.apply {
                 val index = it.instructionMatches.first().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA
