@@ -8,9 +8,13 @@
 package app.morphe.patches.music.interaction.downloads
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.cloneParameters
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.music.misc.auth.authHookPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
@@ -26,7 +30,13 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
+import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.copyResources
+import app.morphe.util.indexOfFirstInstruction
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 private val DOWNLOADS_PERMISSIONS = listOf(
     "android.permission.WAKE_LOCK",
@@ -55,6 +65,7 @@ private val downloadsResourcePatch = resourcePatch {
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     ListPreference("morphe_download_mode"),
+                    SwitchPreference("morphe_music_downloads_mark", summary = true),
                     SwitchPreference("morphe_external_downloader_menu", summary = true),
                     TextPreference(
                         "morphe_external_downloader_name",
@@ -62,6 +73,11 @@ private val downloadsResourcePatch = resourcePatch {
                     )
                 )
             )
+        )
+
+        copyResources(
+            "downloads",
+            ResourceGroup("drawable", "morphe_music_downloaded_mark.xml")
         )
 
         val manifest = get("AndroidManifest.xml")
@@ -98,6 +114,8 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/Downloa
 private const val SONG_MENU_FILTER = "Lapp/morphe/extension/music/patches/components/SongMenuFilter;"
 private const val EXTENSION_PROTOCOL_BUFFER_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/DownloadsPatch$ProtocolBufferFieldInterface;"
+private const val DOWNLOADED_MARK_FILTER =
+    "Lapp/morphe/extension/music/patches/components/DownloadedMarkFilter;"
 
 
 @Suppress("unused")
@@ -119,7 +137,8 @@ val downloadsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        hookSpannableString(EXTENSION_CLASS)
+        hookSpannableString(EXTENSION_CLASS, overrideSpan = true)
+        addLithoFilter(DOWNLOADED_MARK_FILTER)
 
         // Finds the song of a menu, for the menu Download of accounts offered Premium.
         addLithoFilter(SONG_MENU_FILTER)
@@ -192,5 +211,52 @@ val downloadsPatch = bytecodePatch(
                 nop
             """
         )
+
+        // The rows of the playlists, of Liked music and of the song results are native views.
+        // The details text of a row gets the mark when its song is bound, once the text is set.
+        val rendererTypes = mutableSetOf<String>()
+        TwoColumnItemPresenterConstructorFingerprint.matchAll().forEach { presenter ->
+            val detailsField = presenter.instructionMatches.last().fieldReference
+            val bind = twoColumnItemBindFingerprint(presenter.originalClassDef.type)
+
+            bind.method.apply {
+                val castIndex = bind.instructionMatches[0].index
+                val boundType = getInstruction(castIndex).getReference<TypeReference>()!!.type
+                // One presenter binds the renderer of the row, the other a wrapper that holds it
+                // and reads the renderer out of it before the draggable flag of the row.
+                val unwrapIndex = indexOfFirstInstruction(
+                    castIndex,
+                    fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = boundType)
+                )
+                val rendererField = if (unwrapIndex in castIndex until bind.instructionMatches[1].index) {
+                    getInstruction(unwrapIndex).getReference<FieldReference>()!!
+                } else {
+                    null
+                }
+                rendererTypes.add(rendererField?.type ?: boundType)
+
+                val insertIndex = bind.instructionMatches.last().index
+                val detailsRegister = findFreeRegister(insertIndex)
+                val rendererRegister = findFreeRegister(insertIndex, detailsRegister)
+                val unwrap = rendererField?.let {
+                    "check-cast v$rendererRegister, $boundType\n" +
+                        "iget-object v$rendererRegister, v$rendererRegister, ${it.definingClass}->${it.name}:${it.type}"
+                } ?: ""
+                addInstructionsAtControlFlowLabel(
+                    insertIndex,
+                    """
+                        move-object/from16 v$detailsRegister, p0
+                        iget-object v$detailsRegister, v$detailsRegister, ${detailsField.definingClass}->${detailsField.name}:${detailsField.type}
+                        move-object/from16 v$rendererRegister, p2
+                        $unwrap
+                        invoke-static { v$detailsRegister, v$rendererRegister }, $EXTENSION_CLASS->onTwoColumnItemBound(Landroid/widget/TextView;Ljava/lang/Object;)V
+                    """
+                )
+            }
+        }
+        // The renderer of a row is read as a buffer, like the commands.
+        rendererTypes.forEach {
+            mutableClassDefBy(it).interfaces.add(EXTENSION_PROTOCOL_BUFFER_INTERFACE)
+        }
     }
 }

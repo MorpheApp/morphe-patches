@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -20,7 +21,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.music.patches.components.DownloadedMarkFilter;
 import app.morphe.extension.music.patches.components.SongMenuFilter;
+import app.morphe.extension.music.patches.downloads.DownloadedMark;
 import app.morphe.extension.music.patches.downloads.LocalDownloadManager;
 import app.morphe.extension.music.patches.downloads.PlaylistDownloader;
 import app.morphe.extension.music.settings.Settings;
@@ -91,22 +94,79 @@ public final class DownloadsPatch {
      */
     private static final ByteArrayFilterGroup PREMIUM_UPSELL_COMMAND =
             new ByteArrayFilterGroup(null, "premium_upsell");
+    /**
+     * In the path of the text of a song row that shows the artist, the album and the length,
+     * under its title.
+     */
+    private static final String SONG_ROW_DETAILS_PATH = "badged_text.";
+    /** Field of the renderer of a native song row that holds the command of a tap on the row. */
+    private static final int ROW_TAP_COMMAND = 5;
+    /** Extension of a command that holds the watch endpoint, with the video ID in its field 1. */
+    private static final int WATCH_ENDPOINT = 48_687_757;
+    private static final int WATCH_ENDPOINT_VIDEO_ID = 1;
+    /**
+     * Field of the renderer of a native song row of a playlist page that describes its entry in
+     * the playlist, with the video ID in its field 6.
+     */
+    private static final int ROW_PLAYLIST_ITEM = 12;
+    private static final int PLAYLIST_ITEM_VIDEO_ID = 6;
 
     /**
      * Injection point.
-     * Usually is called of the main thread.
+     * Usually is called off the main thread. Called when a litho text is created, and again when
+     * the app reuses it, such as a row scrolled off and back on screen.
+     *
+     * @return The text, with the downloaded mark if it is the details text of a downloaded song.
      */
-    public static void onLithoTextLoaded(ContextInterface conversionContext, CharSequence original) {
+    public static CharSequence onLithoTextLoaded(ContextInterface conversionContext, CharSequence original) {
         try {
+            StringBuilder path = conversionContext.patch_getPathBuilder();
             if (isFlyoutMenuOverridden()
                     && downloadButtonLabel.isEmpty()
-                    && Utils.contains(conversionContext.patch_getPathBuilder(),
-                    "music_download_button.")) {
+                    && Utils.contains(path, "music_download_button.")) {
                 downloadButtonLabel = original.toString();
                 Logger.printDebug(() -> "Found download button label: " + downloadButtonLabel);
             }
+
+            if (inAppDownloads() && Settings.DOWNLOADS_MARK.get()
+                    && Utils.contains(path, DownloadedMarkFilter.SONG_ROW_PATH)
+                    && Utils.contains(path, SONG_ROW_DETAILS_PATH)
+                    && DownloadedMarkFilter.downloadedRow() != null) {
+                return DownloadedMark.addTo(original);
+            }
         } catch (Exception ex) {
-            Logger.printDebug(() -> "onLithoTextLoaded failure", ex);
+            Logger.printException(() -> "onLithoTextLoaded failure", ex);
+        }
+        return original;
+    }
+
+    /**
+     * Injection point.
+     * Called on the main thread when a song is bound to a native row of a playlist, of Liked
+     * music or of the song results, once the details text of the row is set.
+     *
+     * @param details  The text of the row with the artist, the album and the length of the song.
+     * @param renderer The renderer of the row, which holds its song in the command of a tap.
+     */
+    public static void onTwoColumnItemBound(TextView details, Object renderer) {
+        try {
+            if (!inAppDownloads() || !Settings.DOWNLOADS_MARK.get()
+                    || !(renderer instanceof ProtocolBufferFieldInterface message)) {
+                return;
+            }
+
+            ProtoMessage row = new ProtoMessage(message.toByteArray());
+            String videoId = row.messagePath(ROW_TAP_COMMAND, WATCH_ENDPOINT)
+                    .stringField(WATCH_ENDPOINT_VIDEO_ID);
+            if (videoId.isEmpty()) {
+                videoId = row.messageField(ROW_PLAYLIST_ITEM).stringField(PLAYLIST_ITEM_VIDEO_ID);
+            }
+            // The rows of albums, artists and playlists open a page instead.
+            if (!VIDEO_ID.matcher(videoId).matches() || !DownloadedMark.isDownloaded(videoId)) return;
+
+            details.setText(DownloadedMark.addTo(details.getText()));
+        } catch (Exception ex) {
+            Logger.printException(() -> "onTwoColumnItemBound failure", ex);
         }
     }
 
@@ -127,7 +187,7 @@ public final class DownloadsPatch {
                 || Settings.EXTERNAL_DOWNLOADER_MENU.get();
     }
 
-    private static boolean inAppDownloads() {
+    public static boolean inAppDownloads() {
         return Settings.DOWNLOAD_MODE.get() == DownloadMode.IN_APP;
     }
 

@@ -30,9 +30,7 @@ public record OfflineTrack(String videoId, String title, String artist, String a
      * Reads the disk, so a whole catalogue must be loaded off the main thread.
      */
     public static OfflineTrack load(File audioFile) {
-        String fileName = audioFile.getName();
-        int dot = fileName.lastIndexOf('.');
-        String videoId = dot > 0 ? fileName.substring(0, dot) : fileName;
+        String videoId = videoIdOf(audioFile.getName());
         File metadata = new File(audioFile.getParentFile(), videoId + ".json");
         File artwork = new File(audioFile.getParentFile(), videoId + ".jpg");
         final long sizeBytes = audioFile.length();
@@ -48,6 +46,12 @@ public record OfflineTrack(String videoId, String title, String artist, String a
             Logger.printException(() -> "Could not read offline metadata: " + metadata, ex);
         }
         return new OfflineTrack(videoId, videoId, "", "", 0, audioFile, artwork, sizeBytes);
+    }
+
+    /** The files of a track are named after its video id. */
+    static String videoIdOf(String fileName) {
+        final int dot = fileName.lastIndexOf('.');
+        return dot > 0 ? fileName.substring(0, dot) : fileName;
     }
 
     public static void save(File directory, String videoId, String title, String artist,

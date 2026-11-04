@@ -8,9 +8,14 @@
 package app.morphe.patches.music.interaction.downloads
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
+import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -61,6 +66,43 @@ internal object MusicOfflinePlaylistEndpointFingerprint : Fingerprint(
     parameters = listOf("L", "Ljava/util/Map;"),
     filters = listOf(
         string("Object is not an offlineable playlist: %s")
+    )
+)
+
+/**
+ * The constructors of the two presenters of the native song rows of the playlists, of Liked
+ * music and of the song results, which inflate the layout music_two_column_item: one binds the
+ * renderer of the row, the other a wrapper of it. The text view stored right after the id of the
+ * subtitle is looked up shows the details of the song.
+ */
+internal object TwoColumnItemPresenterConstructorFingerprint : Fingerprint(
+    name = "<init>",
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "music_two_column_item"),
+        resourceLiteral(ResourceType.ID, "subtitle"),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Landroid/widget/TextView;",
+            location = MatchAfterWithin(4)
+        )
+    )
+)
+
+/**
+ * The method of a presenter that binds a song to its row. The item is cast right before the
+ * draggable flag of the row is read. The corner radius of the thumbnail is read once the details
+ * text is set, whichever path the accessibility text took.
+ */
+internal fun twoColumnItemBindFingerprint(presenterType: String) = Fingerprint(
+    definingClass = presenterType,
+    returnType = "V",
+    parameters = listOf("L", "Ljava/lang/Object;"),
+    filters = listOf(
+        checkCast("L"),
+        string("isDraggable", location = MatchAfterWithin(5)),
+        resourceLiteral(ResourceType.DIMEN, "music_thumbnail_default_corner_radius")
     )
 )
 
