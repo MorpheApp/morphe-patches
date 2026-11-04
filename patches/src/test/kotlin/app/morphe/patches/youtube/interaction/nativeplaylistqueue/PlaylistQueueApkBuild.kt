@@ -96,7 +96,7 @@ fun main(arguments: Array<String>) {
         "combined" -> relatedPatches + addToQueuePatch
         else -> relatedPatches
     }
-    fun requiresQueue(patch: Patch<*>, visited: MutableSet<Patch<*>> = mutableSetOf()): Boolean =
+    fun requiresQueue(patch: Patch, visited: MutableSet<Patch> = mutableSetOf()): Boolean =
         patch == nativePlaylistQueuePatch || visited.add(patch) && patch.dependencies.any { requiresQueue(it, visited) }
     check(relatedPatches.none { requiresQueue(it) }) {
         "Unrelated patches must not select Native playlist queue as a dependency"

@@ -23,13 +23,13 @@ import app.morphe.patcher.patch.colorOption
 import app.morphe.patcher.patch.resourceFile
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.returnEarly
-import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.patches.util.resource.appendResourceElements
 import app.morphe.patches.util.resource.editText
 import app.morphe.patches.util.resource.forEachRawResourceElement
 import app.morphe.patches.util.resource.transformRawResourceElements
 import app.morphe.util.inputStreamFromBundledResource
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import java.util.Locale
 import kotlin.math.PI

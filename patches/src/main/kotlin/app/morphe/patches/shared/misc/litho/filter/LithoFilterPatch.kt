@@ -125,7 +125,7 @@ internal fun sharedLithoFilterPatch(
     overrideUpbFeatureFlag: () -> Boolean,
     removeFilteredListItems: Boolean,
     block: PatchDefinition.() -> Unit,
-): Patch<*> = patch(
+): Patch = patch(
     description = "Hooks the method which parses the bytes into a ComponentContext to filter components."
 ) {
     block()

@@ -22,9 +22,9 @@ import app.morphe.patches.reddit.misc.version.is_2026_32_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_38_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
-import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.removeFlags
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21t

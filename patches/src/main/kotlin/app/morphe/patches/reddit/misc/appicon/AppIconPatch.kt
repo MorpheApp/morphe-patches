@@ -10,7 +10,7 @@ package app.morphe.patches.reddit.misc.appicon
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
-import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
+import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/AppIconPatch;"

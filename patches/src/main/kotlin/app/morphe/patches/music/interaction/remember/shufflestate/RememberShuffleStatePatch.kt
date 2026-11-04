@@ -23,8 +23,8 @@ import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoIdHook
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
-import app.morphe.patches.shared.misc.library.addStaticFieldToExtension
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.util.addStaticFieldToExtension
 import app.morphe.util.cloneMutable
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow

@@ -8,12 +8,12 @@ import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.layout.branding.addLicensePatch
-import app.morphe.patches.shared.misc.library.copyResources
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.util.ResourceGroup
 import app.morphe.util.childElementsSequence
+import app.morphe.util.copyResources
 import app.morphe.util.forEachChildElement
 import app.morphe.util.getNode
 import app.morphe.util.insertFirst

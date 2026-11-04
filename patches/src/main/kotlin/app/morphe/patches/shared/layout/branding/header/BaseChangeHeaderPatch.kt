@@ -15,10 +15,10 @@ import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.folderOption
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceFile
-import app.morphe.patches.shared.misc.library.copyResources
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
 import java.io.File
 import java.util.logging.Logger
 
@@ -35,7 +35,7 @@ internal fun baseChangeHeaderPatch(
     preferenceScreen: BasePreferenceScreen.Screen,
     block: PatchDefinition.() -> Unit,
     executeBlock: (customHeaderResourceFileNames: Array<String>) -> Unit = {}
-): Patch<*> = patch(
+): Patch = patch(
     name = "Change header",
     description = "Adds an option to change the header logo in the top left corner of the app."
 ) {

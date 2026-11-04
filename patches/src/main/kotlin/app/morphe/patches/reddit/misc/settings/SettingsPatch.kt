@@ -41,10 +41,10 @@ import app.morphe.patches.reddit.misc.version.is_2026_30_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
-import app.morphe.patches.shared.misc.library.copyResources
 import app.morphe.patches.util.resource.editText
 import app.morphe.patches.util.resource.transformStringResources
 import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction

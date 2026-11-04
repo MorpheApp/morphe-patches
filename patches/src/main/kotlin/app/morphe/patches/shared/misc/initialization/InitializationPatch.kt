@@ -14,7 +14,7 @@ import app.morphe.patcher.patch.patch
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/InitializationPatch;"
 
 internal fun initializationPatch(
-    extensionPatch: Patch<*>
+    extensionPatch: Patch
 ) = patch(
     description = "Prompts to restart the app on first load of a clean install",
 ) {

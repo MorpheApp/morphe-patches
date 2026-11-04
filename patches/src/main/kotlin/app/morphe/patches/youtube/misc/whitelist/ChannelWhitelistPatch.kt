@@ -6,7 +6,6 @@
 package app.morphe.patches.youtube.misc.whitelist
 
 import app.morphe.patcher.patch.patch
-import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.ad.hideAdsPatch
@@ -16,6 +15,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.speed.remember.rememberPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
+import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/whitelist/ChannelWhitelist;"
 

@@ -8,8 +8,8 @@
 package app.morphe.patches.shared.layout.branding
 
 import app.morphe.patcher.patch.patch
-import app.morphe.patches.shared.misc.library.copyResources
 import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
 
 /**
  * Adds the Morphe startup animation of each launcher foreground, played by the

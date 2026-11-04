@@ -11,7 +11,6 @@
 package app.morphe.patches.youtube.video.speed
 
 import app.morphe.patcher.patch.patch
-import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -23,6 +22,7 @@ import app.morphe.patches.youtube.video.speed.button.playbackSpeedButtonPatch
 import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.remember.rememberPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.shorts.shortsPlaybackSpeedFlyoutPatch
+import app.morphe.util.setExtensionIsPatchIncluded
 
 /**
  * Speed menu settings. Used to organize all speed related settings together.

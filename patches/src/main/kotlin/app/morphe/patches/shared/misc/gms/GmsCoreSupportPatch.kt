@@ -71,8 +71,8 @@ fun gmsCoreSupportPatch(
     primeMethodFingerprint: Fingerprint? = null,
     earlyReturnFingerprints: Set<Fingerprint> = setOf(),
     mainActivityOnCreateFingerprint: Fingerprint,
-    extensionPatch: Patch<*>,
-    gmsCoreSupportResourcePatchFactory: () -> Patch<*>,
+    extensionPatch: Patch,
+    gmsCoreSupportResourcePatchFactory: () -> Patch,
     executeBlock: () -> Unit = {},
     block: PatchDefinition.() -> Unit = {},
 ) = patch(

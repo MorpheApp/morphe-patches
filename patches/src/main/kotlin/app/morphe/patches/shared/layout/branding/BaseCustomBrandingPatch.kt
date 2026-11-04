@@ -29,8 +29,6 @@ import app.morphe.patcher.patch.stringOption
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
-import app.morphe.patches.shared.misc.library.copyResources
-import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -41,9 +39,11 @@ import app.morphe.patches.util.resource.removeStringResource
 import app.morphe.patches.util.resource.setStringResource
 import app.morphe.util.ResourceGroup
 import app.morphe.util.asSequence
+import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.removeFromParent
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
@@ -170,7 +170,7 @@ internal fun baseCustomBrandingPatch(
     appLauncherIconNames: () -> Map<String, String> = { emptyMap() },
     block: PatchDefinition.() -> Unit,
     executeBlock: () -> Unit = {}
-): Patch<*> = patch(
+): Patch = patch(
     name = "Custom branding",
     description = "Adds options to change the app icon and app name. " +
             "For mounted (root) installations the branding is applied while patching, " +

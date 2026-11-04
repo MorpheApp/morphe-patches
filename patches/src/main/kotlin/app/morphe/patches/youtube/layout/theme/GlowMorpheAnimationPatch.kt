@@ -8,10 +8,10 @@
 package app.morphe.patches.youtube.layout.theme
 
 import app.morphe.patcher.patch.patch
-import app.morphe.patches.shared.misc.library.copyResources
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
 
 /**
  * Adds the animations of the Morphe Glow 1 and 2 splash screen styles: the Morphe logo comes into

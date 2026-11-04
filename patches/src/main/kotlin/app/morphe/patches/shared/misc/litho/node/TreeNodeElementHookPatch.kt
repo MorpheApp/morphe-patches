@@ -43,10 +43,10 @@ private lateinit var lazilyConvertedElementLoadedMethodRef: WeakReference<Mutabl
  * @param conversionContextPatchDep The app-specific `conversionContextPatch`.
  */
 internal fun createTreeNodeElementHookPatch(
-    sharedExtensionPatchDep: Patch<*>,
-    conversionContextPatchDep: Patch<*>,
+    sharedExtensionPatchDep: Patch,
+    conversionContextPatchDep: Patch,
     addLithoContainerInterface: Boolean
-): Patch<*> = patch(
+): Patch = patch(
     description = "Hooks the tree node element lists to the extension."
 ) {
     dependsOn(

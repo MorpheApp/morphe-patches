@@ -10,11 +10,11 @@ package app.morphe.patches.shared.misc.refreshrate
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.patch
-import app.morphe.patches.shared.misc.library.setExtensionIsPatchIncluded
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/BaseAppRefreshRatePatch;"
 

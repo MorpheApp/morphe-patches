@@ -35,10 +35,10 @@ private lateinit var elementProtoParserMethodRef: WeakReference<MutableMethod>
  * @param block Callback to add app-specific dependencies, such as versionCheckPatch.
  */
 internal fun createElementProtoParserHookPatch(
-    sharedExtensionPatchDep: Patch<*>,
+    sharedExtensionPatchDep: Patch,
     readsResourcesWithParser: () -> Boolean = { false },
     block: PatchDefinition.() -> Unit = {},
-): Patch<*> = patch(
+): Patch = patch(
     description = "Hook to modify the proto message class, which can only be accessed through reflection.",
 ) {
     dependsOn(
