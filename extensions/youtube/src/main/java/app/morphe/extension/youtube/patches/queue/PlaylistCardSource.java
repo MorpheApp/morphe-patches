@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4404
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -41,6 +41,8 @@ public final class PlaylistCardSource {
     /** A recognized collection without an ID must not fall back to its first video. */
     public record Selection(String playlistId, boolean playlist) {}
     private static final Pattern PLAYLIST_ID = Pattern.compile("[A-Za-z0-9_-]+");
+    private static final String PLAYLIST_BROWSE_PREFIX = "VL";
+    private static final int LOCKUP_CONTENT_TYPE_PLAYLIST = 2;
     // BrowseEndpoint's stable protocol extension and browseId field.
     private static final int BROWSE_ENDPOINT = 48687626;
     private static final int BROWSE_ID = 2;
@@ -114,20 +116,23 @@ public final class PlaylistCardSource {
                 }
                 // Read only the direct BrowseEndpoint, never a menu's nested
                 // Share, Download or Premium navigation commands.
-                String id = "";
+                String browseId = "";
                 for (var value : field.children) {
                     if (value.getFieldNumber() == BROWSE_ID && value.isText()) {
-                        id = value.getText();
+                        browseId = value.getText();
                     }
                 }
-                if (!id.startsWith("VL") || !isPlaylistId(id.substring(2))) {
+                if (!browseId.startsWith(PLAYLIST_BROWSE_PREFIX)) {
                     return new Selection("", false);
                 }
-                id = id.substring(2);
-                if (!found.isEmpty() && !found.equals(id)) {
+                String playlistId = browseId.substring(PLAYLIST_BROWSE_PREFIX.length());
+                if (!isPlaylistId(playlistId)) {
+                    return new Selection("", false);
+                }
+                if (!found.isEmpty() && !found.equals(playlistId)) {
                     return new Selection("", true);
                 }
-                found = id;
+                found = playlistId;
             }
         }
         return found.isEmpty() ? null : new Selection(found, true);
@@ -146,7 +151,7 @@ public final class PlaylistCardSource {
             var card = model.getLockupModel().getViewModel().getLockupViewModel();
             // Native contentType 1 is a video, 2 is a playlist. A music video
             // can carry a Mix command, so its endpoint alone is insufficient.
-            boolean playlist = card.getContentType() == 2;
+            boolean playlist = card.getContentType() == LOCKUP_CONTENT_TYPE_PLAYLIST;
             return new Selection(playlist && isPlaylistId(card.getContentId()) ? card.getContentId() : "", playlist);
         }
         if (model.hasVideoWithContextModel()) {
@@ -190,7 +195,7 @@ public final class PlaylistCardSource {
             return null;
         }
         Set<String> targets = new HashSet<>();
-        collectBrowseIds(nodes, targets);
+        collectPlaylistIds(nodes, targets);
         boolean playlist = targets.size() == 1 && targets.contains(id);
         return new Selection(playlist ? id : "", playlist);
     }
@@ -199,12 +204,12 @@ public final class PlaylistCardSource {
         List<ProtoNode> nodes = ProtoNode.parse(bytes);
         Set<String> ids = new HashSet<>();
         if (nodes != null) {
-            collectBrowseIds(nodes, ids);
+            collectPlaylistIds(nodes, ids);
         }
         return ids.size() == 1 ? ids.iterator().next() : "";
     }
 
-    private static void collectBrowseIds(List<ProtoNode> nodes, Set<String> ids) {
+    private static void collectPlaylistIds(List<ProtoNode> nodes, Set<String> playlistIds) {
         for (ProtoNode node : nodes) {
             if (node.children == null) {
                 continue;
@@ -213,13 +218,16 @@ public final class PlaylistCardSource {
                 for (ProtoNode field : node.children) {
                     if (field.getFieldNumber() == BROWSE_ID && field.isText()) {
                         String browseId = field.getText();
-                        if (browseId.startsWith("VL") && isPlaylistId(browseId.substring(2))) {
-                            ids.add(browseId.substring(2));
+                        if (browseId.startsWith(PLAYLIST_BROWSE_PREFIX)) {
+                            String playlistId = browseId.substring(PLAYLIST_BROWSE_PREFIX.length());
+                            if (isPlaylistId(playlistId)) {
+                                playlistIds.add(playlistId);
+                            }
                         }
                     }
                 }
             }
-            collectBrowseIds(node.children, ids);
+            collectPlaylistIds(node.children, playlistIds);
         }
     }
 }

@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4404
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -105,7 +105,7 @@ internal fun installPlaylistPagingSequence(
             return v0
         """
     )
-    for ((method, status) in listOf(descriptor to false, commit to false, availability to true)) {
+    for ((method, returnsAvailability) in listOf(descriptor to false, commit to false, availability to true)) {
         val target = method.cloneParameters()
         val result = target.findFreeRegister(0)
         // Use a small bridge so the original receiver/request survive register reuse.
@@ -115,8 +115,8 @@ internal fun installPlaylistPagingSequence(
                 invoke-virtual/range {p0 .. p1}, $queueType->patch_isPlaylistBoundary($requestType)Z
                 move-result v$result
                 if-eqz v$result, :native_target
-                const/4 v$result, ${if (status) "0x2" else "0x0"}
-                ${if (status) "return" else "return-object"} v$result
+                const/4 v$result, ${if (returnsAvailability) "0x2" else "0x0"}
+                ${if (returnsAvailability) "return" else "return-object"} v$result
 
                 :native_target
                 nop
