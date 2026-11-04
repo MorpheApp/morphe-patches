@@ -615,6 +615,10 @@ Zahtevani piškotki: SID, HSID, SSID, SAPISID, __Secure-3APISID, __Secure-1APISI
   <string name="morphe_music_lyrics_hide_played_summary">Skrijte vrstice besedila nad trenutno predvajano vrstico.</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Skrijte še nepredvane vrstice besedila</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Skrijte vrstice besedila pod trenutno predvajano vrstico.</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dinamično ozadje</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Za besedilom pesmi prikaži zamegljeno ozadje, ustvarjeno iz albumne naslovnice</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animiraj dinamično ozadje</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Med predvajanjem premikaj ozadje in ga pulsiraj ob glasbi, če ima YouTube Music dovoljenje za uporabo mikrofona. Izklopi za statično ozadje, ki porabi manj baterije</string>
   <string name="morphe_music_lyrics_mediasession_title">Prikažite besedilo MediaSession na zaklenjenem zaslonu.</string>
   <string name="morphe_music_lyrics_mediasession_summary">Prikazuje trenutno vrstico na zaklenjenem zaslonu, Android Auto in Bluetooth. Zahteva Android 11 ali novejši</string>
   <string name="morphe_music_lyrics_miniplayer_title">Prikažite besedilo v mini predvajalniku.</string>
@@ -713,7 +717,7 @@ Besedila prihajajo iz storitev tretjih oseb, ki niso povezane s podjetjem Morphe
   <string name="morphe_music_lyrics_hide_info_title">Skrijte vrstico z avtorstvom</string>
   <string name="morphe_music_lyrics_hide_info_summary">Skrijte vrstico z avtorstvom, prikazano pod besedilom.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Zamenjajte prevod in romanizacijo.</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">VKLOP postavi romanizacijo ali transliteracijo pod besedila in prevod nad; IZKLOP ohranja romanizacijo ali transliteracijo nad in prevod pod. Način branja, ki je postavljen nad vsako zlog, se premakne z njo, od zgornje strani sloga do spodnje</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Zamenja vrstni red prikaza prevoda in romanizacije pod besedilom pesmi</string>
   <string name="morphe_music_lyrics_force_center_title">Vedno sredinski besedilo</string>
   <string name="morphe_music_lyrics_force_center_summary">VKLOP postavi vsako vrstico v sredino in ignorira poravnavo vira, vključno z duetskim stranmi; IZKLOP ohranja poravnavo, ki jo zahtevajo besedila</string>
   <string name="morphe_music_lyrics_providers_keep_one">Vsaj eden ponudnik mora biti vklopljen</string>
@@ -721,6 +725,14 @@ Besedila prihajajo iz storitev tretjih oseb, ki niso povezane s podjetjem Morphe
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizacija ali transliteracija</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Spletni slovar</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Seznam besed Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Večje slovar</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby pisava</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Pokaži gumb za Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Tapnite za preklapljanje ruby zapisov nad besedilom; z dolgim pritiskom preklopite med hiragano in katakano. Uporablja omogočene ponudnike ruby v navedenem vrstnem redu</string>
+  <string name="morphe_music_lyrics_ruby_generating">Ustvarjanje ruby...</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Zaznaj dele z umetno inteligenco</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Uporablja se samo, ko ponudnik ne prejme oznak razdelkov, kot so Refren ali Kitica, ki jih nato zazna vaš model združljiv z OpenAI-jem. Urejanje vrstice odpre tudi njen prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL končne točke API (npr. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

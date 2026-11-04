@@ -625,6 +625,10 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_hide_played_summary">বর্তমানে বাজতে থাকা লাইনের উপরের লিরিক্সের লাইনগুলো লুকান</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">যে লিরিক্স এখনো বাজানো হয়নি সেগুলো লুকান</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">বর্তমানে চলমান […] স্ক্রিনের নিচে লিরিক্সের লাইন লুকান</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">ডাইনামিক ব্যাকগ্রাউন্ড</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">লিরিক্সের পেছনে অ্যালবাম আর্ট দিয়ে তৈরি একটি ব্লার ব্যাকগ্রাউন্ড দেখান</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">ডাইনামিক ব্যাকগ্রাউন্ড অ্যানিমেট করুন</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">প্লে করার সময় ব্যাকগ্রাউন্ডটি মুভ করুন, এবং YouTube Music-এর মাইক্রোফোন পারমিশন থাকলে মিউজিকের সাথে এটিকে পালস করুন। ব্যাটারি কম খরচ করতে স্থির ব্যাকগ্রাউন্ডের জন্য এটি বন্ধ করুন</string>
   <string name="morphe_music_lyrics_mediasession_title">লক স্ক্রিনে MediaSession-এর লিরিক্স দেখান</string>
   <string name="morphe_music_lyrics_mediasession_summary">আপাত দৃশ্যমান লক স্ক্রিন, অ্যান্ড্রয়েড অটো এবং ব্লুটুথ চলমান লিরিক্স দেখায়। অ্যান্ড্রয়েড ১১ বা তার পরবর্তী সংস্করণ লাগবে</string>
   <string name="morphe_music_lyrics_miniplayer_title">মিনিপ্লেয়ার লিরিক্স দেখান</string>
@@ -723,7 +727,7 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_hide_info_title">অনুবাদ এবং রোমানাইজেশন অদলবদল করুন</string>
   <string name="morphe_music_lyrics_hide_info_summary">ON রোমানাইজেশনকে লিরিক্সের নিচে এবং অনুবাদকে উপরে রাখে; OFF রোমানাইজেশনকে উপরে এবং অনুবাদকে নিচে রাখে</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">অনুবাদ এবং রোমানাইজেশন অদলবদল করুন</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON রোমানাইজেশন বা ট্রান্সলিটারেশন লিরিক্সের নিচে এবং অনুবাদ উপরে রাখে; OFF রোমানাইজেশন বা ট্রান্সলিটারেশন উপরে এবং অনুবাদ নিচে রাখে। প্রতিটি সিলেবলের উপর রাখা একটি পাঠ এটি সাথে চলে, এর সিলেবল থেকে তার নিচে পর্যন্ত</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">লিরিক্সের নিচে অনুবাদ এবং রোমানাইজেশনের ডিসপ্লে অর্ডার অদলবদল করে</string>
   <string name="morphe_music_lyrics_force_center_title">সর্বদা লিরিক্স কেন্দ্রে রাখুন</string>
   <string name="morphe_music_lyrics_force_center_summary">ON প্রতিটি লাইন মাঝখানে রাখে এবং উৎস সমন্বয় উপেক্ষা করে, ডুয়েট সাইডসহ; OFF লিরিক্স যে সমন্বয় চায় তা রাখে</string>
   <string name="morphe_music_lyrics_providers_keep_one">কমপক্ষে একটি প্রদানকারী চালু থাকতে হবে</string>
@@ -731,6 +735,14 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_romanization_provider_title">রোমানাইজেশন বা ট্রান্সলিটারেশন</string>
   <string name="morphe_music_lyrics_romanization_provider_local">অফলাইন অভিধান</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">রাইম ওয়ার্ডলিস্ট</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">রুবি</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">অফলাইন ডিকশনারি</string>
+  <string name="morphe_music_lyrics_ruby_style_title">রুবি স্ক্রিপ্ট</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">হিরাগানা (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">কাতাকানা (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">রুবি বাটন দেখান</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">লিরিকসের উপরে রুবি রিডিং টগল করতে ট্যাপ করুন; হিরাগানা এবং কাতাকানার মধ্যে পরিবর্তন করতে লং-প্রেস করুন। এটি তালিকাভুক্ত ক্রমে সক্রিয় রুবি প্রোভাইডারগুলো ব্যবহার করে</string>
+  <string name="morphe_music_lyrics_ruby_generating">রুবি তৈরি করা হচ্ছে…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI দিয়ে বিভাগ সনাক্ত করুন</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">শুধুমাত্র তখনই ব্যবহৃত হয় যখন প্রদানকারীর কাছে কোনো বিভাগ লেবেল যেমন Chorus বা Verse থাকে না, যা আপনার OpenAI-সঙ্গতিপন্ন মডেল তখন সনাক্ত করে। সারি সম্পাদনা করাও এর প্রম্পট খোলে</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API এন্ডপয়েন্ট URL (উদাহরণস্বরূপ https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

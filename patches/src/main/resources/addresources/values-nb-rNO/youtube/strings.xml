@@ -101,7 +101,7 @@ Endringer inkluderer:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skjul \'Varsle meg\'-knapp</string>
-  <string name="morphe_hide_notify_me_button_summary">Skjuler påminnelsesknappen for planlagte direktesendinger og premierer</string>
+  <string name="morphe_hide_notify_me_button_summary">Skjuler påminnelsesknappen for planlagte livestrømmer og premierer</string>
   <string name="morphe_hide_playables_title">Skjul Playables</string>
   <string name="morphe_hide_playables_summary">Skjuler funksjonen som lar deg spille spill</string>
   <string name="morphe_hide_search_term_thumbnails_title">Skjul søketermer miniatyrbilder</string>
@@ -260,9 +260,8 @@ Endringer inkluderer:
   <string name="morphe_comments_screen_title">Kommentarer</string>
   <string name="morphe_comments_screen_summary">Velg hvilke komponenter som skal vises i kommentarfeltet</string>
   <string name="morphe_hide_comments_carousel_title">Aktiver kommentar-karusellfilter</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Sørg for å angi det nøyaktige navnet på karusellelementet (f.eks. Ask, Hype this video, Listen on YouTube Music)
-• Å skjule karusellelementer kan ha utilsiktede bivirkninger
-• Hvis alle karusellelementer er skjult, vil også hele kommentarseksjonen bli skjult"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Angi et søkeord eller fullt navn (f.eks. Ask, Community, Hype, Listen)
+• Om du skjuler alle elementer, skjules hele kommentarfeltet"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Kommentar-karusellfilter</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Skriv inn navnene på kommentarkarusellen du vil filtrere etter, atskilt med nye linjer</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Skjul AI-chat-sammendrag</string>
@@ -496,7 +495,7 @@ Etter at en video med Ask-knappen er åpnet én gang, fungerer funksjonen med al
   <string name="morphe_ryd_feed_like_ratio_title">Vis andel av likninger på strømningsminiatyrbilde</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Søk i kommentarer</string>
-  <string name="morphe_search_comments_summary">Trykk på søkeknappen i kommentarene for å vise kun lastede kommentarer som inneholder alle de søkte ordene. Sett ord i anførselstegn for å søke etter en frase</string>
+  <string name="morphe_search_comments_summary">Trykk på søkeknappen i kommentarene for å vise kun lastede kommentarer som inneholder alle søkeordene. Sett ord i anførselstegn for å søke etter en frase</string>
   <string name="morphe_search_comments_dialog_title">Søk i kommentarer</string>
   <string name="morphe_search_comments_hint">Ord som skal søkes etter</string>
   <string name="morphe_search_comments_search">Søk</string>
@@ -595,6 +594,11 @@ API-nøkkelen din bør aldri deles. Alle med tilgang til den kan bruke OpenRoute
   <string name="morphe_vot_mymemory_quota_message_no_email">Du har brukt dagens gratis MyMemory-oversettelseskvote (5 000 tegn). Legg til en MyMemory-e-post i innstillingene for å heve den daglige grensen til 50 000 tegn, eller bytt til en annen oversettelsestjeneste</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Du har brukt dagens MyMemory-oversettelseskvote (50 000 tegn). Bytt til en annen oversettelsestjeneste eller prøv igjen i morgen</string>
   <string name="morphe_vot_mymemory_error">MyMemory-oversettelse mislyktes (status %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Gjør håndtakene for å dra i \"Se senere\" bredere</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Håndtakene for å dra i \"Se senere\"-videoer er lettere å gripe</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Skjul snackbar for fjerning fra \"Se senere\"</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Bekreftelsen vises ikke etter at en video er fjernet fra \"Se senere\"</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Aktiver video i sløyfe</string>
   <string name="morphe_do_not_remember_loop_video_title">Husk ikke løkkevideo</string>
@@ -759,10 +763,10 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
 For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient' til 'TV Simply' eller 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktiver glidekontroll for søk</string>
-  <string name="morphe_slide_to_seek_summary">Aktiverer sveiping for å søke i stedet for å spille med 2x hastighet når du trykker og holder videospilleren</string>
+  <string name="morphe_slide_to_seek_summary">Trykk og hold på videoen for å gli og spole i stedet for å spille av i 2x hastighet</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Aktiver trykk for å søke</string>
-  <string name="morphe_tap_to_seek_summary">Bare trykk på søkefeltet for å hoppe til den posisjonen uten å dra det</string>
+  <string name="morphe_tap_to_seek_summary">Trykk hvor som helst på fremdriftslinjen for å hoppe til den posisjonen i stedet for å dra</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Left swipe gesture</string>
   <string name="morphe_swipe_right_zone_title">Right swipe gesture</string>
@@ -937,21 +941,21 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Skjul Varsler-knapp</string>
   <string name="morphe_show_search_button_title">Vis Søk-knapp</string>
-  <string name="morphe_show_search_button_index_title">Søk-knappposisjon</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">Vis Innstillinger-knapp</string>
-  <string name="morphe_show_settings_button_index_title">Innstillinger-knappposisjon</string>
   <string name="morphe_show_settings_button_type_title">Innstillingsknapp handling</string>
   <string name="morphe_show_settings_button_type_summary">Åpner Morphe-innstillinger når den er aktivert, eller YouTube-innstillinger når den er deaktivert</string>
+  <string name="morphe_navigation_buttons_order_title">Rekkefølge for navigasjonsknapper</string>
+  <string name="morphe_navigation_buttons_order_summary">Dra knappene for å endre rekkefølgen i navigasjonslinjen</string>
   <string name="morphe_swap_create_with_notifications_button_title">Bytt Create-knappen med Notifications-knappen</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Hvis endring av denne innstillingen ikke trer i kraft, kan du prøve å bytte til inkognitomodus</string>
   <string name="morphe_hide_navigation_button_labels_title">Skjul navigasjonsknappetiketter</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Skjul prikk for nytt innhold</string>
   <string name="morphe_hide_navigation_bar_title">Skjul navigasjonslinjen</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dette skjuler fullstendig navigasjonsbaren, inkludert fanen «Du».
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dette skjuler navigasjonslinjen fullstendig, inkludert fanen \"Deg\".
 
-For å nå Innstillinger, aktiver Innstillingsknappen via Generelt → Verktøylinje → Vis innstillinger"</string>
+For å få tilgang til Innstillinger, aktiver Innstillinger-knappen via Generelt → Verktøylinje → Vis Innstillinger-knapp"</string>
   <string name="morphe_narrow_navigation_buttons_title">Aktiver smale navigasjonsknapper</string>
   <string name="morphe_narrow_navigation_buttons_summary">Reduserer den horisontale avstanden mellom knappene</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Deaktiver navigasjonsknapper uten etiketter</string>
@@ -968,12 +972,18 @@ For å nå Innstillinger, aktiver Innstillingsknappen via Generelt → Verktøyl
   <string name="morphe_navigation_bar_style_entry_3">Gjennomsiktig</string>
   <string name="morphe_navigation_bar_style_entry_4">Ugjennomsiktig</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Denne stilen støttes kanskje ikke av enheten din eller YouTube-versjonen, og kan forårsake layoutproblemer eller krasj</string>
+  <string name="morphe_navigation_bar_glass_title">Aktiver glassnavigasjonslinje</string>
+  <string name="morphe_navigation_bar_glass_summary">Viser navigasjonsfeltet som en flytende, avrundet, gjennomsiktig kapsel. Ikke tilgjengelig med stilen for ugjennomsiktig navigasjonsfelt</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Glassopasitet</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Juster gjennomsiktighetsnivået for glassnavigasjonsfeltet (0 er gjennomsiktig, 100 er ugjennomsiktig)</string>
   <string name="morphe_toolbar_screen_title">Verktøylinje</string>
   <string name="morphe_toolbar_screen_summary">Velg hvilke komponenter som vises i popup-menyen</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skjul chat-knapp</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Skjul Mikrofon-knapp</string>
   <string name="morphe_hide_toolbar_search_button_title">Skjul Søk-knapp</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Når den er aktivert, åpner et trykk Morphe-innstillinger og et langt trykk YouTube-innstillinger, deaktiver for å bytte</string>
+  <string name="morphe_toolbar_buttons_order_title">Rekkefølge for verktøylinje-knapper</string>
+  <string name="morphe_toolbar_buttons_order_summary">Dra knappene for å endre rekkefølgen i verktøylinjen</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flytende meny</string>
   <string name="morphe_hide_player_flyout_summary">Skjul \'Lydspor\'-meny</string>
@@ -1723,6 +1733,9 @@ Automatisk opptak er valgfritt. Det stoppes i inkognito-modus eller når kontoen
   <string name="morphe_niconico_comments_max_length_title">Maksimal kommentarlengde</string>
   <string name="morphe_niconico_comments_max_length_summary">Skjuler kommentarer som har flere tegn enn dette. Hvert emoji teller som ett tegn</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Ingen grense</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Vis på premierer</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Vis på avsluttede premierer</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Chat-avspilling av premierer som er avsluttet</string>
   <string name="morphe_live_chat_translate_screen_title">Oversettelse av live-chat</string>
   <string name="morphe_live_chat_translate_screen_summary">Oversett meldinger fra live-chat og avspilling av live-chat</string>
   <string name="morphe_live_chat_translate_title">Oversett live-chat</string>

@@ -260,9 +260,8 @@ Perubahan termasuk:
   <string name="morphe_comments_screen_title">Komen</string>
   <string name="morphe_comments_screen_summary">Pilih komponen yang akan muncul dalam bahagian komen</string>
   <string name="morphe_hide_comments_carousel_title">Dayakan penapis carousel komen</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Sila pastikan nama yang tepat dimasukkan untuk item karusel (contohnya Tanya, Naikkan video ini, Dengarkan di YouTube Music)
-• Menyorokkan item karusel mungkin mempunyai kesan sampingan yang tidak diingini
-• Jika semua item karusel disorokkan, keseluruhan bahagian komen juga akan disembunyikan"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Masukkan kata kunci atau nama penuh (cth., Ask, Community, Hype, Listen)
+• Menyembunyikan semua item akan menyembunyikan keseluruhan bahagian komen"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Penapis carousel komen</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Masukkan nama korsel komen untuk menapis, dipisahkan oleh baris baru</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Sorokkan ringkasan sembang AI</string>
@@ -496,7 +495,7 @@ Selepas video dengan butang Ask dibuka sekali, ciri ini berfungsi dengan semua v
   <string name="morphe_ryd_feed_like_ratio_title">Tunjukkan peratusan suka pada pengecil feed</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Cari komen</string>
-  <string name="morphe_search_comments_summary">Ketik butang cari dalam komen untuk memaparkan hanya komen yang dimuatkan yang mengandungi semua perkataan yang dicari. Letakkan perkataan dalam tanda petik untuk mencari frasa</string>
+  <string name="morphe_search_comments_summary">Ketik butang carian dalam komen untuk menunjukkan hanya komen yang dimuatkan yang mengandungi semua perkataan yang dicari. Letakkan perkataan dalam tanda petikan untuk mencari frasa</string>
   <string name="morphe_search_comments_dialog_title">Cari komen</string>
   <string name="morphe_search_comments_hint">Perkataan untuk dicari</string>
   <string name="morphe_search_comments_search">Carian</string>
@@ -595,6 +594,11 @@ Kunci API anda tidak seharusnya dikongsi. Sesiapa yang mempunyai akses kepadanya
   <string name="morphe_vot_mymemory_quota_message_no_email">Anda telah menggunakan kuota terjemahan percuma MyMemory hari ini (5,000 aksara). Tambah e-mel MyMemory dalam tetapan untuk meningkatkan had harian kepada 50,000 aksara, atau tukar ke perkhidmatan terjemahan yang lain</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Anda telah menggunakan kuota terjemahan MyMemory hari ini (50,000 aksara). Tukar ke perkhidmatan terjemahan yang lain atau cuba lagi esok</string>
   <string name="morphe_vot_mymemory_error">Terjemahan MyMemory gagal (status %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Luaskan pemegang seret Tonton kemudian</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Pemegang seret video Tonton kemudian lebih mudah untuk dicapai</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Sembunyikan snackbar pembuangan Tonton kemudian</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Pengesahan tidak ditunjukkan selepas video dialih keluar daripada Tonton kemudian</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Dayakan gelung video</string>
   <string name="morphe_do_not_remember_loop_video_title">Jangan ingat video gelung</string>
@@ -759,10 +763,10 @@ Untuk membetulkannya, hidupkan 'Spoof strim video' dan tukar 'Klien lalai' kepad
 Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kepada 'TV Simply' atau 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Dayakan gelongsor untuk cari</string>
-  <string name="morphe_slide_to_seek_summary">Aktifkan luncur untuk mencari dan bukannya memainkan pada kelajuan 2x apabila menekan dan menahan pemain video</string>
+  <string name="morphe_slide_to_seek_summary">Tekan dan tahan video untuk gelongsor dan cari berbanding memainkan pada kelajuan 2x</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Dayakan ketik untuk cari</string>
-  <string name="morphe_tap_to_seek_summary">Hanya ketik bar pencarian untuk melompat ke kedudukan tersebut tanpa menyeretnya</string>
+  <string name="morphe_tap_to_seek_summary">Ketik di mana-mana sahaja pada bar carian untuk melompat ke kedudukan tersebut berbanding menyeret</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gerakan leret kiri</string>
   <string name="morphe_swipe_right_zone_title">Gerakan leret kanan</string>
@@ -937,13 +941,13 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Sorokkan butang Pemberitahuan</string>
   <string name="morphe_show_search_button_title">Tunjukkan butang Carian</string>
-  <string name="morphe_show_search_button_index_title">Kedudukan butang Carian</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">Tunjukkan butang Tetapan</string>
-  <string name="morphe_show_settings_button_index_title">Kedudukan butang Tetapan</string>
   <string name="morphe_show_settings_button_type_title">Tindakan butang Tetapan</string>
   <string name="morphe_show_settings_button_type_summary">Membuka tetapan Morphe apabila didayakan, atau tetapan YouTube apabila dinyahdayakan</string>
+  <string name="morphe_navigation_buttons_order_title">Susunan butang navigasi</string>
+  <string name="morphe_navigation_buttons_order_summary">Seret butang untuk mengubah susunannya dalam bar navigasi</string>
   <string name="morphe_swap_create_with_notifications_button_title">Tukar butang Cipta dengan butang Pemberitahuan</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Jika mengubah tetapan ini tidak berkesan, cuba tukar ke mod penyamaran</string>
   <string name="morphe_hide_navigation_button_labels_title">Sorokkan label butang pandu arah</string>
@@ -951,7 +955,7 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <string name="morphe_hide_navigation_bar_title">Sorokkan bar pandu arah</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Ini menyembunyikan bar navigasi sepenuhnya, termasuk tab 'Anda'.
 
-Untuk mengakses Tetapan, dayakan butang Tetapan melalui Umum → Bar Alat → Tunjukkan Tetapan"</string>
+Untuk mengakses Tetapan, aktifkan butang Tetapan melalui Umum → Bar Alat → Tunjukkan butang Tetapan"</string>
   <string name="morphe_narrow_navigation_buttons_title">Dayakan butang navigasi sempit</string>
   <string name="morphe_narrow_navigation_buttons_summary">Mengurangkan jarak mendatar antara butang</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Nyahaktifkan butang pandu arah tanpa label</string>
@@ -968,12 +972,18 @@ Untuk mengakses Tetapan, dayakan butang Tetapan melalui Umum → Bar Alat → Tu
   <string name="morphe_navigation_bar_style_entry_3">Lut sinar</string>
   <string name="morphe_navigation_bar_style_entry_4">Legap</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Gaya ini mungkin tidak disokong oleh peranti atau versi YouTube anda, dan boleh menyebabkan masalah susun atur atau kegagalan fungsi</string>
+  <string name="morphe_navigation_bar_glass_title">Dayakan bar navigasi kaca</string>
+  <string name="morphe_navigation_bar_glass_summary">Memaparkan bar navigasi sebagai kapsul lut sinar yang terapung dan bulat. Tidak tersedia dengan gaya bar navigasi Legap</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Kelegapan kaca</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Melaraskan tahap kelutsinaran bar navigasi kaca (0 ialah lut sinar, 100 ialah legap)</string>
   <string name="morphe_toolbar_screen_title">Bar alatan</string>
   <string name="morphe_toolbar_screen_summary">Pilih komponen yang akan muncul pada bar alatan</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sorokkan butang Sembang</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Sorokkan butang Mikrofon</string>
   <string name="morphe_hide_toolbar_search_button_title">Sorokkan butang carian</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Apabila didayakan, ketik untuk membuka tetapan Morphe dan tekan lama untuk membuka tetapan YouTube, nyahdayakan untuk tukar</string>
+  <string name="morphe_toolbar_buttons_order_title">Susunan butang toolbar</string>
+  <string name="morphe_toolbar_buttons_order_summary">Seret butang untuk mengubah susunannya dalam toolbar</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu flyout</string>
   <string name="morphe_hide_player_flyout_summary">Pilih komponen yang akan muncul pada menu flyout</string>
@@ -1723,6 +1733,9 @@ Rakaman automatik adalah pilihan. Ia terhenti dalam mod inkognito atau apabila a
   <string name="morphe_niconico_comments_max_length_title">Panjang komen maksimum</string>
   <string name="morphe_niconico_comments_max_length_summary">Sembunyikan komen dengan aksara yang lebih banyak daripada ini. Setiap emoji dikira sebagai satu aksara</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Tiada had</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Tunjukkan pada Tayangan Perdana</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Tunjukkan pada Tayangan Perdana yang telah tamat</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Ulangan sembang bagi Tayangan Perdana yang telah tamat</string>
   <string name="morphe_live_chat_translate_screen_title">Terjemahan sembang langsung</string>
   <string name="morphe_live_chat_translate_screen_summary">Terjemahkan mesej sembang langsung dan ulangan sembang langsung</string>
   <string name="morphe_live_chat_translate_title">Terjemahkan sembang langsung</string>

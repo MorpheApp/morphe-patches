@@ -1,3 +1,27 @@
+## [2.1.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0-dev.7...v2.1.0-dev.8) (2026-11-04)
+
+### ✨ New Features
+
+* **YouTube - Feed card layout:** Add "Default" to "Feed card layout", which keeps the layout that the server sends ([55c8bc0](https://github.com/MorpheApp/morphe-patches/commit/55c8bc0951c151a18e8b6a4c060faceec127fc31))
+* **YouTube - Navigation bar:** Add "Enable glass navigation bar" setting ([#4338](https://github.com/MorpheApp/morphe-patches/issues/4338)) ([6d74097](https://github.com/MorpheApp/morphe-patches/commit/6d740979fb0cb83459d9f6bae36b2416430ca534))
+* **YouTube - Navigation bar:** Add "Navigation buttons order" and "Toolbar buttons order" settings ([#4374](https://github.com/MorpheApp/morphe-patches/issues/4374)) ([b2f9e19](https://github.com/MorpheApp/morphe-patches/commit/b2f9e193450e9b970404bb14fb20b97b93d684f7))
+* **YouTube - Navigation bar:** Added a Glass navigation bar lit rim ([afc5afe](https://github.com/MorpheApp/morphe-patches/commit/afc5afea438ecc3e2b65dadab8a0a5f56bf6d275))
+* **YouTube Music - Third-party lyrics:** Add reactive dynamic background layout refinements, and automatic ruby generation ([#4208](https://github.com/MorpheApp/morphe-patches/issues/4208)) ([2d9e39f](https://github.com/MorpheApp/morphe-patches/commit/2d9e39fe1dedb1462a95f9e6e7f920bf6e9b693c))
+
+### 🐛 Bug Fixes
+
+* **YouTube  - Save to Watch later:** Implement the refinements for Watch Later screen ([#4324](https://github.com/MorpheApp/morphe-patches/issues/4324)) ([ee68a99](https://github.com/MorpheApp/morphe-patches/commit/ee68a993a266ee03566c3cf097bca8f0af3354f7))
+* **YouTube - Feed card layout:** Comment button of the cards opens the video instead of only the comments panel ([9adfb63](https://github.com/MorpheApp/morphe-patches/commit/9adfb637d3e7e5d1cd4cf26cda07d04a31094258))
+* **YouTube - Feed card layout:** Feed videos disappear and come back on scroll when the app drops the cached template version ([be4a66a](https://github.com/MorpheApp/morphe-patches/commit/be4a66a0d6031df4562a214ebfb05cb4122b2d6d))
+* **YouTube - Feed card layout:** Feed videos have no save items in the menu when the cards with a save button are converted to the classic layout ([1d34aae](https://github.com/MorpheApp/morphe-patches/commit/1d34aaed6681270670bf8a618b89a3bd1f3dae14))
+* **YouTube - Feed card layout:** Playlists converted to cards have no background below the thumbnail ([3a07c14](https://github.com/MorpheApp/morphe-patches/commit/3a07c14994018225fdc9add3494c8e6f2f3b6d8f))
+* **YouTube - Hide layout components:** "Hide Explore button" not working in incognito mode ([61e1e9f](https://github.com/MorpheApp/morphe-patches/commit/61e1e9f16adb4c3bce954526441257095814d7df))
+* **YouTube - Hide layout components:** Prevent shelves from hiding on Charts, Memberships, and Playables pages ([a61f9b4](https://github.com/MorpheApp/morphe-patches/commit/a61f9b455e4846bfc4de63fc25f4326466bbdec2))
+* **YouTube - Navigation bar:** Glass navigation bar is wider than its buttons, so the first and the last button are not aligned with the ends of the bar ([93f9010](https://github.com/MorpheApp/morphe-patches/commit/93f90107ebd5c328865b9e9bf1e048b581c576f6))
+* **YouTube - Niconico comments:** Keep a high refresh rate while comments move ([#4377](https://github.com/MorpheApp/morphe-patches/issues/4377)) ([5046880](https://github.com/MorpheApp/morphe-patches/commit/50468807ab6de322bf16a425519c14b7021960df))
+* **YouTube - Niconico comments:** Move comments smoothly before the first video state is reported ([#4378](https://github.com/MorpheApp/morphe-patches/issues/4378)) ([76ec46d](https://github.com/MorpheApp/morphe-patches/commit/76ec46dfb32b29204f13d672d56b41b75254a8e7))
+* **YouTube - Restore original titles:** Update titles during background playback ([#4347](https://github.com/MorpheApp/morphe-patches/issues/4347)) ([ed67be3](https://github.com/MorpheApp/morphe-patches/commit/ed67be3d6dbb988702c23733a54342dd22fef169))
+
 ## [2.1.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0-dev.6...v2.1.0-dev.7) (2026-11-03)
 
 ### ✨ New Features

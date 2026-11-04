@@ -630,6 +630,10 @@ Rime Wordlist ሊያነባቸው የሚገቡትን ዝርዝሮች ምልክት
   <string name="morphe_music_lyrics_hide_played_summary">በአሁኑ ጊዜ እየተጫወተ ካለው መስመር በላይ ያሉትን የግጥም መስመሮች ደብቁ</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">ያልተጫወቱ ግጥሞችን ደብቁ</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">በአሁኑ ጊዜ እየተጫወተ ካለው መስመር በታች ያሉትን የግጥም መስመሮች ደብቁ</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">ተለዋዋጭ የጀርባ ምስል</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">ከግጥሞቹ በስተጀርባ ከአልበሙ ምስል የተሰራ ብዥ ያለ የጀርባ ምስል አሳይ</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">ተለዋዋጭ የጀርባ ምስልን አነቃቃ</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">በሚጫወትበት ጊዜ የጀርባ ምስሉን አንቀሳቅስ፣ እና YouTube Music የማይክሮፎን ፈቃድ ካለው ከሙዚቃው ጋር አብሮ እንዲርገበገብ አድርግ። ባትሪ ቆጣቢ እንዲሆን ለቋሚ የጀርባ ምስል አጥፋው</string>
   <string name="morphe_music_lyrics_mediasession_title">የ MediaSession ግጥሞችን በቁልፍ ስክሪን ላይ ያሳዩ</string>
   <string name="morphe_music_lyrics_mediasession_summary">የአሁኑን ስንኝ በቁልፍ ስክሪን፣ በAndroid Auto እና በብሉቱዝ ላይ ያሳያል። Android 11 ወይም ከዚያ በላይ ያስፈልገዋል</string>
   <string name="morphe_music_lyrics_miniplayer_title">የሚኒ ፕሌየር ግጥሞችን አሳይ</string>
@@ -728,7 +732,7 @@ Rime Wordlist ሊያነባቸው የሚገቡትን ዝርዝሮች ምልክት
   <string name="morphe_music_lyrics_hide_info_title">የብድር መስመሩን ደብቅ</string>
   <string name="morphe_music_lyrics_hide_info_summary">ከግጥሞቹ በታች የሚታየውን የብድር መስመር ደብቅ</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">ትርጉም እና ሮማናይዜሽንን ቀያይር</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON ሲሆን ሮማናይዜሽን ወይም ትራንስሊተሬሽን ከግጥሞቹ በታች እና ትርጉሙን በላይ ያደርጋል፤ OFF ሲሆን ግን ሮማናይዜሽን ወይም ትራንስሊተሬሽንን በላይ እና ትርጉሙን በታች ያደርጋል። በእያንዳንዱ የድምፅ ክፍለ-ቃል (syllable) ላይ የተቀመጠ ንባብ ከላይ ወደ ታች አብሮ ይንቀሳቀሳል</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ከግጥሞቹ በታች የትርጉም እና የሮማናይዜሽን ማሳያ ቅደም ተከተልን ይቀያይር</string>
   <string name="morphe_music_lyrics_force_center_title">ሁልጊዜ ግጥሞቹን መሃል ላይ አድርግ</string>
   <string name="morphe_music_lyrics_force_center_summary">ON ሲሆን የዱኤት ጎኖችን ጨምሮ ሁሉንም መስመሮች መሃል ላይ ያደርጋል እና የምንጩን አሰላለፍ ችላ ይላል፤ OFF ሲሆን ግን ግጥሞቹ የሚጠይቁትን አሰላለፍ ይጠብቃል</string>
   <string name="morphe_music_lyrics_providers_keep_one">ቢያንስ አንድ አቅራቢ ክፍት መሆን አለበት</string>
@@ -736,6 +740,14 @@ Rime Wordlist ሊያነባቸው የሚገቡትን ዝርዝሮች ምልክት
   <string name="morphe_music_lyrics_romanization_provider_title">ሮማናይዜሽን ወይም ትራንስሊተሬሽን</string>
   <string name="morphe_music_lyrics_romanization_provider_local">የመስመር ውጭ መዝገበ ቃላት</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">የRime የቃላት ዝርዝር</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">ሩቢ</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">የመስመር ውጭ መዝገበ ቃላት</string>
+  <string name="morphe_music_lyrics_ruby_style_title">የRuby ስክሪፕት</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">ሂራጋና (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">ካታካና (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">የRuby ቁልፍን አሳይ</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">በግጥሞች ላይ የruby ንባቦችን ለመቀያየር ይጫኑ፤ በሂራጋና እና በካታካና መካከል ለመቀያየር ረጅም ተጭነው ይቆዩ። በዝርዝሩ ቅደም ተከተል መሰረት የተفعيل የruby አቅራቢዎችን ይጠቀማል</string>
+  <string name="morphe_music_lyrics_ruby_generating">Ruby እየተፈጠረ ነው…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">ክፍሎችን በ AI ያግኙ</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">ይህ ጥቅም ላይ የሚውለው አቅራቢው እንደ Chorus ወይም Verse ያሉ የክፍል መለያዎችን ካላከለለ እና የእርስዎ በ OpenAI ተኳሃኝ የሆነ ሞዴል ካገኘው ብቻ ነው። ረድፉን ማስተካከል ትእዛዙን ይከፍታል</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">የ API endpoint URL (ለምሳሌ https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

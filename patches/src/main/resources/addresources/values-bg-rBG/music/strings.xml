@@ -616,6 +616,10 @@ SABR възпроизвеждане (имитирането на видео по
   <string name="morphe_music_lyrics_hide_played_summary">Скриване на редовете от текста над реда, който се изпълнява в момента.</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Скриване на неизпетите редове</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Скриване на редовете от текста под реда, който се изпълнява в момента.</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Динамичен фон</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Показва замъглен фон, създаден от обложката на албума, зад текста на песента</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Анимиране на динамичния фон</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Премества фона по време на възпроизвеждане и го пулсира в ритъма на музиката, ако YouTube Music има разрешение за микрофона. Изключете за статичен фон, който консумира по-малко батерия</string>
   <string name="morphe_music_lyrics_mediasession_title">Показване на текстовете от MediaSession на заключения екран.</string>
   <string name="morphe_music_lyrics_mediasession_summary">Показва текущия ред на екрана за заключване, Android Auto и Bluetooth. Изисква Android 11 или по-нова версия</string>
   <string name="morphe_music_lyrics_miniplayer_title">Показване на текстовете в миниплейъра.</string>
@@ -714,7 +718,7 @@ SABR възпроизвеждане (имитирането на видео по
   <string name="morphe_music_lyrics_hide_info_title">Скриване на реда с кредитна информация</string>
   <string name="morphe_music_lyrics_hide_info_summary">Скриване на реда с кредитна информация, показан под текста.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Размяна на превода и романизацията</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ВКЛ включва романизация или транслитерация под текстовe и превод над тях; ИЗКЛ пази романизация или транслитерация над и превод под. Прочит, поставен върху всяка сричка, се движи с нея – отгоре ѝ към отдолу</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Разменя реда на показване на превода и романизацията под текста на песента</string>
   <string name="morphe_music_lyrics_force_center_title">Винаги центрирай текста</string>
   <string name="morphe_music_lyrics_force_center_summary">ВКЛ поставя всеки ред в средата и игнорира подравняването от източника, включително страни дуета; ИЗКЛ запазва подравняването, което искат текстовете</string>
   <string name="morphe_music_lyrics_providers_keep_one">Трябва да остане най-малко един активен доставчик</string>
@@ -722,6 +726,14 @@ SABR възпроизвеждане (имитирането на видео по
   <string name="morphe_music_lyrics_romanization_provider_title">Романизация или транслитерация</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Офлайн речник</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Списък с думи Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Офлайн речник</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby скрипт</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хирагана (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Покажи бутон за Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Докоснете, за да превключите ruby четенето над текстовете; задръжте, за да превключите между хирагана и катакана. Използва активираните ruby доставчици в изброения им ред</string>
+  <string name="morphe_music_lyrics_ruby_generating">Генериране на ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Разпознаване на секции чрез AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Използва се само когато доставчикът няма етикети за секции като Припев или Куплет, които тогава разпознава вашият модел, съвместим с OpenAI. Редактирането на реда също отваря неговия подсказка</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL адрес на API endpoint (напр. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

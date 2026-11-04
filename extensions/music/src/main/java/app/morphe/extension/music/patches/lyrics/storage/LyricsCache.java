@@ -488,6 +488,18 @@ public final class LyricsCache {
     }
 
     @Nullable
+    public static List<String> getRubyAI(TrackInfo track, String source,
+                                         List<String> sourceLines, @Nullable String provider) {
+        return readStringList(aiRubyFile(track, source, sourceLines, provider), sourceLines);
+    }
+
+    public static void putRubyAI(TrackInfo track, String source,
+                                 List<String> sourceLines, List<String> lines,
+                                 @Nullable String provider) {
+        writeStringList(aiRubyFile(track, source, sourceLines, provider), lines);
+    }
+
+    @Nullable
     private static List<String> readStringList(@Nullable File file, List<String> sourceLines) {
         return readCachedLines(file, sourceLines.size(),
                 "Could not read string list from cache", Function.identity());
@@ -609,6 +621,16 @@ public final class LyricsCache {
                 ".ai." + providerPrefix
                         + aiConfigKey(Settings.LYRICS_AI_ROMANIZATION_PROMPT.get())
                         + ".rom." + LyricsRequests.romanizationLanguage() + ".txt", sourceLines);
+    }
+
+    @Nullable
+    private static File aiRubyFile(TrackInfo track, String source,
+                                   List<String> sourceLines, @Nullable String provider) {
+        final String providerPrefix = provider == null ? "" : provider + ".";
+        return derivedCacheFile(track, source,
+                ".ai." + providerPrefix
+                        + aiConfigKey(Settings.LYRICS_AI_RUBY_PROMPT.get())
+                        + ".ruby.txt", sourceLines);
     }
 
     private static String aiConfigKey(String prompt) {

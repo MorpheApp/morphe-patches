@@ -101,7 +101,7 @@ Muutoksiin kuuluvat:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Piilota \"Ilmoita minulle\" -painike</string>
-  <string name="morphe_hide_notify_me_button_summary">Piilottaa muistutusnapin suunnitelluissa suorissa lähetyksissä ja ensiesityksissä</string>
+  <string name="morphe_hide_notify_me_button_summary">Piilottaa muistutuspainikkeen ajoitetuista live-lähetyksistä ja ensiilloista</string>
   <string name="morphe_hide_playables_title">Piilota Pelattavat</string>
   <string name="morphe_hide_playables_summary">Piilottaa ominaisuuden, jonka avulla voit pelata pelejä</string>
   <string name="morphe_hide_search_term_thumbnails_title">Piilota hakutermin pienoiskuvat</string>
@@ -260,9 +260,8 @@ Muutoksiin kuuluvat:
   <string name="morphe_comments_screen_title">Kommentit</string>
   <string name="morphe_comments_screen_summary">Valitse, mitkä komponentit näkyvät kommenttiosiossa</string>
   <string name="morphe_hide_comments_carousel_title">Ota kommenttikarusselin suodatin käyttöön</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Varmista, että syötät täsmälleen carousel-kohteen nimen (esim. Kysy, Mainosta tämä video, Kuuntele YouTube Musicissa).
-• Carousel-kohteiden piilottamisella voi olla ei-toivottuja sivuvaikutuksia.
-• Jos kaikki carousel-kohteet on piilotettu, myös koko kommenttiosio piilotetaan."</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Syötä avainsana tai koko nimi (esim. Ask, Community, Hype, Listen)
+• Kaikkien kohteiden piilottaminen piilottaa koko kommenttiosion"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Kommenttien karusellin suodatin</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Syötä suodatettavat kommenttikarussellien nimet, yksi per rivi</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Piilota tekoälyn luoma chat-yhteenveto</string>
@@ -496,7 +495,7 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <string name="morphe_ryd_feed_like_ratio_title">Näytä syötteen pikkukuvan tykkäysprosentti</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Hae kommenteista</string>
-  <string name="morphe_search_comments_summary">Napauta kommenttien haku-painiketta näyttääksesi vain ladatut kommentit, jotka sisältävät kaikki hakusanat. Merkitse sanat lainausmerkeillä hakeaksesi tiettyä fraasia</string>
+  <string name="morphe_search_comments_summary">Napauta kommenttien hakupainiketta näyttääksesi vain ladatut kommentit, jotka sisältävät kaikki hakusanat. Laita sanat lainausmerkkeihin hakeaksesi tiettyä fraasia</string>
   <string name="morphe_search_comments_dialog_title">Hae kommenteista</string>
   <string name="morphe_search_comments_hint">Hakusanat</string>
   <string name="morphe_search_comments_search">Haku</string>
@@ -595,6 +594,11 @@ API-avaintasi ei saa koskaan jakaa. Kuka tahansa, jolla on pääsy siihen, voi k
   <string name="morphe_vot_mymemory_quota_message_no_email">Olet käyttänyt tämän päivän ilmaisen MyMemory-käännöskiintiön (5 000 merkkiä). Lisää MyMemory-sähköpostiosoite asetuksiin nostaaksesi päivittäisen rajan 50 000 merkkiin tai vaihda toiseen käännöspalveluun</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Olet käyttänyt tämän päivän MyMemory-käännöskiintiön (50 000 merkkiä). Vaihda toiseen käännöspalveluun tai yritä uudelleen huomenna</string>
   <string name="morphe_vot_mymemory_error">MyMemory-käännöksessä virhe (tila %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Levennä Katso myöhemmin -listan siirtokahvoja</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Katso myöhemmin -videoiden siirtokahvoista on helpompi ottaa kiinni</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Piilota Katso myöhemmin -poiston ilmoituspalkki</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Vahvistusta ei näytetä, kun video poistetaan Katso myöhemmin -listalta</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Ota jatkuva toisto käyttöön</string>
   <string name="morphe_do_not_remember_loop_video_title">Älä muista silmukoitua videota</string>
@@ -759,10 +763,10 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
 Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Oletusasiakas' arvoon 'TV Simply' tai 'visionOS'."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Ota kelaus liu\'uttamalla käyttöön</string>
-  <string name="morphe_slide_to_seek_summary">Ottaa käyttöön pyyhkäisyn hakua varten sen sijaan, että toisto nopeutuisi 2x nopeudella, kun videotoistinta painetaan ja pidetään painettuna</string>
+  <string name="morphe_slide_to_seek_summary">Painamalla ja pitämällä videota voit liukua ja kelata sen sijaan, että video toistettaisiin 2x-nopeudella</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Ota etsintä napauttamalla käyttöön</string>
-  <string name="morphe_tap_to_seek_summary">Napauta hakupalkkia hypätäksesi kyseiseen kohtaan vetämättä sitä</string>
+  <string name="morphe_tap_to_seek_summary">Napauta mitä tahansa kohtaa kelauspalkissa hypätäksesi kyseiseen kohtaan vetämisen sijaan</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Vasen pyyhkäisy</string>
   <string name="morphe_swipe_right_zone_title">Oikea pyyhkäisy</string>
@@ -937,24 +941,23 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Asetukset-painikkeen sijainti</string>
   <string name="morphe_show_search_button_title">Kun se on käytössä, napautus avaa Morphen asetukset ja pitkä painallus avaa YouTuben asetukset, poista käytöstä vaihtaaaksesi ne</string>
-  <string name="morphe_show_search_button_index_title">Pienentää painikkeiden välistä vaakasuuntaista väliä</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Näytä Katso myöhemmin -painike</string>
-  <string name="morphe_show_watch_later_button_index_title">Katso myöhemmin -painikkeen sijainti</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Katso myöhemmin</string>
   <string name="morphe_show_settings_button_title">Näytä Asetukset-painike</string>
-  <string name="morphe_show_settings_button_index_title">Asetusten painikkeen sijainti</string>
   <string name="morphe_show_settings_button_type_title">Asetusten painikkeen toiminto</string>
   <string name="morphe_show_settings_button_type_summary">Avaa Morphen asetukset, kun ne on käytössä, tai YouTuben asetukset, kun ne on poissa käytöstä</string>
+  <string name="morphe_navigation_buttons_order_title">Navigointipainikkeiden järjestys</string>
+  <string name="morphe_navigation_buttons_order_summary">Vedä painikkeita muuttaaksesi niiden järjestystä navigointipalkissa</string>
   <string name="morphe_swap_create_with_notifications_button_title">Vaihdetaan Luo-painike Ilmoitukset-painikkeen kanssa</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Jos asetuksen muuttaminen ei tule voimaan, kokeile vaihtaa incognito-tilaan</string>
   <string name="morphe_hide_navigation_button_labels_title">Piilota navigointipainikkeiden tunnisteet</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Piilota uuden sisällön piste</string>
   <string name="morphe_hide_navigation_bar_title">Piilota navigointipalkki</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Tämä piilottaa kokonaan navigointipalkin, mukaan lukien ’Sinä’-välilehden.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Tämä piilottaa navigointipalkin kokonaan, mukaan lukien \"Sinä\"-välilehden.
 
-Avataksesi asetukset, ota käyttöön Asetukset-painike kohdasta Yleiset → Työkalurivi → Näytä asetukset"</string>
+Päästäksesi Asetuksiin, ota Asetukset-painike käyttöön kohdasta Yleiset → Työkalupalkki → Näytä Asetukset-painike"</string>
   <string name="morphe_narrow_navigation_buttons_title">Ota käyttöön kapeat navigointipainikkeet</string>
   <string name="morphe_narrow_navigation_buttons_summary">Kapeuttaa pystysuoraa väliä painikkeiden välillä</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Poista käytöstä navigointipainikkeet ilman tekstejä</string>
@@ -971,12 +974,18 @@ Avataksesi asetukset, ota käyttöön Asetukset-painike kohdasta Yleiset → Ty�
   <string name="morphe_navigation_bar_style_entry_3">Läpinäkyvä</string>
   <string name="morphe_navigation_bar_style_entry_4">Peittävä</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Laitteesi tai YouTube-versiosi ei välttämättä tue tätä tyyliä, mikä voi aiheuttaa asetteluongelmia tai kaatumisia</string>
+  <string name="morphe_navigation_bar_glass_title">Ota käyttöön lasimainen navigointipalkki</string>
+  <string name="morphe_navigation_bar_glass_summary">Näyttää navigointipalkin kelluvana, pyöristettynä ja läpinäkyvänä kapselina. Ei käytettävissä läpinäkymättömän navigointipalkin tyylin kanssa</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Lasin läpinäkymättömyys</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Säädä lasimaisen navigointipalkin läpinäkyvyystasoa (0 on läpinäkyvä, 100 on läpinäkymätön)</string>
   <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
   <string name="morphe_toolbar_screen_summary">Valitse, mitkä komponentit näkyvät työkalupalkissa</string>
   <string name="morphe_hide_toolbar_chat_button_title">Piilota chat-painike</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Piilota Mikrofoni-painike</string>
   <string name="morphe_hide_toolbar_search_button_title">Piilota Haku-painike</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Kun käytössä, napautus avaa Morphen asetukset ja pitkä painallus avaa YouTuben asetukset. Poista käytöstä vaihtamiseksi</string>
+  <string name="morphe_toolbar_buttons_order_title">Työkalupalkin painikkeiden järjestys</string>
+  <string name="morphe_toolbar_buttons_order_summary">Vedä painikkeita muuttaaksesi niiden järjestystä työkalupalkissa</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Ponnahdusvalikko</string>
   <string name="morphe_hide_player_flyout_summary">Valitse, mitkä komponentit näkyvät avattavassa valikossa</string>

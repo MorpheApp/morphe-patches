@@ -621,6 +621,10 @@ Các bước:
   <string name="morphe_music_lyrics_hide_played_summary">Ẩn các dòng lời bài hát phía trên dòng đang phát</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Ẩn lời bài hát chưa phát</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Ẩn các dòng lời bài hát phía dưới dòng đang phát</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Nền động</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Hiển thị nền mờ được tạo từ ảnh bìa album phía sau lời bài hát</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Hoạt ảnh nền động</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Di chuyển nền khi đang phát, và nhấp nháy theo nhạc nếu YouTube Music có quyền truy cập micrô. Tắt để sử dụng nền tĩnh giúp tiết kiệm pin hơn</string>
   <string name="morphe_music_lyrics_mediasession_title">Hiển thị Lời bài hát MediaSession trên màn hình khóa</string>
   <string name="morphe_music_lyrics_mediasession_summary">Hiển thị dòng hiện tại trên màn hình khóa, Android Auto và Bluetooth. Yêu cầu Android 11 trở lên</string>
   <string name="morphe_music_lyrics_miniplayer_title">Hiển thị Lời bài hát trong Miniplayer</string>
@@ -719,7 +723,7 @@ Lời bài hát đến từ các dịch vụ bên thứ ba không liên quan, t�
   <string name="morphe_music_lyrics_hide_info_title">Ẩn dòng ghi công</string>
   <string name="morphe_music_lyrics_hide_info_summary">Ẩn dòng ghi công hiển thị bên dưới lời bài hát</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Hoán đổi bản dịch và chuyển tự</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">BẬT đặt latin hóa hoặc phiên âm phía dưới lời bài hát và bản dịch phía trên; TẮT giữ latin hóa hoặc phiên âm phía trên và bản dịch phía dưới. Một âm đọc được đặt trên mỗi âm tiết sẽ di chuyển cùng nó, từ phía trên âm tiết đó đến phía dưới nó</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Hoán đổi thứ tự hiển thị của bản dịch và phiên âm bên dưới lời bài hát</string>
   <string name="morphe_music_lyrics_force_center_title">Luôn căn giữa lời bài hát</string>
   <string name="morphe_music_lyrics_force_center_summary">BẬT đặt mọi dòng ở giữa và bỏ qua sự căn chỉnh của nguồn, bao gồm cả hai bên song ca; TẮT giữ nguyên sự căn chỉnh mà lời bài hát yêu cầu</string>
   <string name="morphe_music_lyrics_providers_keep_one">Ít nhất một nhà cung cấp phải được bật</string>
@@ -727,6 +731,14 @@ Lời bài hát đến từ các dịch vụ bên thứ ba không liên quan, t�
   <string name="morphe_music_lyrics_romanization_provider_title">Latinh hóa hoặc phiên âm</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Từ điển ngoại tuyến</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Danh sách từ Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Từ điển ngoại tuyến</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Kịch bản Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Hiện nút Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Nhấn để bật/tắt cách đọc ruby trên lời nhạc; nhấn giữ để chuyển đổi giữa hiragana và katakana. Sử dụng các nhà cung cấp ruby đã bật theo thứ tự được liệt kê</string>
+  <string name="morphe_music_lyrics_ruby_generating">Đang tạo ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Phát hiện phần bằng AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Chỉ được sử dụng khi nhà cung cấp không gửi nhãn phần như Chorus hoặc Verse, do mô hình tương thích OpenAI của bạn phát hiện. Chỉnh sửa hàng cũng sẽ mở lời nhắc của nó</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL điểm cuối API (ví dụ: https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

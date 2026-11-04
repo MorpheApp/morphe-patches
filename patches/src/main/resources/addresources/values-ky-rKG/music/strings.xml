@@ -630,6 +630,10 @@ Steps:
   <string name="morphe_music_lyrics_hide_played_summary">Учурда ойноп жаткан саптан жогорудагы текст саптарын жашыруу</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Аткарылбаган тексттерди жашыруу</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Учурда ойноп жаткан саптан төмөндөгү текст саптарын жашыруу</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Динамикалык фон</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Лориканын артына альбомдун сүрөтүнөн жасалган бүдөмүк фонду көрсөтүү</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Динамикалык фонду анимациялоо</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Оynятылып жатканда фонду кыймылдаткыла жана эгер YouTube Music микрофонго уруксат алган болсо, аны музыка менен пульсациялагыла. Батареяны аз сарптоо үчүн тынч фонду колдонуп, аны өчүрүңүз</string>
   <string name="morphe_music_lyrics_mediasession_title">Бөгөттүү экранда MediaSession текстинин сөздөрүн көрсөтүү</string>
   <string name="morphe_music_lyrics_mediasession_summary">Учурдагы сапты кулпулоо экранында, Android Auto жана Bluetooth\'та көрсөтөт. Android 11 же андан жаңыраак версиясы талап кылынат</string>
   <string name="morphe_music_lyrics_miniplayer_title">Миниплеердин сөздөрүн көрсөтүү</string>
@@ -728,7 +732,7 @@ Steps:
   <string name="morphe_music_lyrics_hide_info_title">Кредиттик сапты жашыруу</string>
   <string name="morphe_music_lyrics_hide_info_summary">Тексттин төмөнүндө көрсөтүлгөн кредиттик сапты жашыруу</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Котормо менен романизацияны алмаштыруу</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">КЎНҮЛДӨ (ON) болсо, романизация же транслитерация ырдын текстинин төмөнүнө, ал эми котормосу жогоруна жайгашат; ӨЧҮРҮЛГӨН (OFF) болсо, романизация же транслитерация жогоруда, ал эми котормосу төмөндө калат. Ар бир муундун үстүнө коюлган окуу белгиси муун менен бирге жогорудан төмөн көчөтөт</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Лориканын төмөндөгү котормосунун жана романизациясынын көрсөтүлүш тартибин алмаштырат</string>
   <string name="morphe_music_lyrics_force_center_title">Текстти дайыма борборго жайгаштыруу</string>
   <string name="morphe_music_lyrics_force_center_summary">КҮЙГҮЗҮЛГАН болсо, ар бир сап ортодо жайгашат жана булактын тегилөөсү, анын ичинде дуэт тараптары эске алынбайт; ӨЧҮРҮЛГӨН болсо, ырдын текстинде көрсөтүлгөн тегилөө сакталат</string>
   <string name="morphe_music_lyrics_providers_keep_one">Кеминде бир камсыздоочу күйгүзүлгөн болушу керек</string>
@@ -736,6 +740,14 @@ Steps:
   <string name="morphe_music_lyrics_romanization_provider_title">Романизация же транслитерация</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Оффлайн сөздүк</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime сөздөр тизмеси</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Руби</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Офлайн сөздүк</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby скрипти</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хирагана (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Ruby баскычын көрсөтүү</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Тексттин үстүндөгү ruby окууларын күйгүзүү/өчүрүү үчүн басыңыз; хирагана жана катакананын ортосунда которуу үчүн узак басыңыз. Тизмеленген тартипте иштетилген ruby провайдерлерин колдонот</string>
+  <string name="morphe_music_lyrics_ruby_generating">Ruby жасалууда…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Бөлүмдөрдү AI жардамы менен аныктоо</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Провайдер Кайырма же Куплет сыяктуу бөлүмдөрдүн белгилерин жөнөтпөгөн учурда гана колдонулат, аларды сиздин OpenAI-га шайкеш моделиңиз аныктайт. Сапты түзөтүү анын промптын да ачат</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (мисалы, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

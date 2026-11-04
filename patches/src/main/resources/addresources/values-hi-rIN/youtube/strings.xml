@@ -101,7 +101,7 @@ Second \"item\" text"</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">छुपाएं \'मुझे सूचित करें\' बटन</string>
-  <string name="morphe_hide_notify_me_button_summary">निर्धारित लाइव स्ट्रीम और प्रीमियर के लिए रिमाइंडर बटन छिपाता है</string>
+  <string name="morphe_hide_notify_me_button_summary">शेड्यूल्ड लाइव स्ट्रीम और प्रीमियर के लिए रिमाइंडर बटन को छिपाता है</string>
   <string name="morphe_hide_playables_title">छुपाएं प्लेबल्स</string>
   <string name="morphe_hide_playables_summary">गेम खेलने की अनुमति देने वाली सुविधा को छुपाता है</string>
   <string name="morphe_hide_search_term_thumbnails_title">छिपाएँ खोज शब्द थंबनेल</string>
@@ -260,9 +260,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">टिप्पणियाँ</string>
   <string name="morphe_comments_screen_summary">टिप्पणी अनुभाग में प्रदर्शित होने वाले घटकों को चुनें</string>
   <string name="morphe_hide_comments_carousel_title">टिप्पणी कैरोसेल फ़िल्टर</string>
-  <string name="morphe_hide_comments_carousel_summary">"• सुनिश्चित करें कि आप कैरोसेल आइटम का सटीक नाम दर्ज करें (जैसे, पूछें, इस वीडियो को हाइलाइट करें, YouTube Music पर सुनें)
-• कैरोसेल आइटम को छिपाने के अप्रत्याशित दुष्प्रभाव हो सकते हैं
-• यदि सभी कैरोसेल आइटम छिपे हुए हैं, तो पूरी कमेंट सेक्शन भी छिपी रहेगी"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• कीवर्ड या पूरा नाम दर्ज करें (जैसे, Ask, Community, Hype, Listen)
+• सभी आइटम छिपाने से पूरा कमेंट सेक्शन छिप जाता है"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">टिप्पणी कैरोसेल फ़िल्टर</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">फ़िल्टर करने के लिए टिप्पणी कैरोसेल नाम दर्ज करें, नई लाइनों से अलग किए गए</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">छुपाएं एआई चैट सारांश</string>
@@ -496,7 +495,7 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_like_ratio_title">फ़ीड थंबनेल लाइक प्रतिशत दिखाएं</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">कमेंट्स खोजें</string>
-  <string name="morphe_search_comments_summary">केवल उन लोड किए गए कमेंट्स को दिखाने के लिए कमेंट्स में सर्च बटन पर टैप करें जिनमें खोजे गए सभी शब्द हों। किसी वाक्यांश को खोजने के लिए शब्दों को उद्धरण चिह्नों में रखें</string>
+  <string name="morphe_search_comments_summary">केवल लोड किए गए उन कमेंट्स को दिखाने के लिए कमेंट्स में सर्च बटन पर टैप करें जिनमें खोजे गए सभी शब्द हों। वाक्यांश खोजने के लिए शब्दों को उद्धरण चिह्नों में रखें</string>
   <string name="morphe_search_comments_dialog_title">कमेंट्स खोजें</string>
   <string name="morphe_search_comments_hint">खोजने के लिए शब्द</string>
   <string name="morphe_search_comments_search">खोजें</string>
@@ -595,6 +594,11 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_vot_mymemory_quota_message_no_email">आपने आज का मुफ्त MyMemory अनुवाद कोटा (5,000 वर्ण) उपयोग कर लिया है। दैनिक सीमा को 50,000 वर्णों तक बढ़ाने के लिए सेटिंग्स में एक MyMemory ईमेल जोड़ें, या किसी भिन्न अनुवाद सेवा पर स्विच करें</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">आपने आज का MyMemory अनुवाद कोटा (50,000 वर्ण) उपयोग कर लिया है। किसी भिन्न अनुवाद सेवा पर स्विच करें या कल फिर से प्रयास करें</string>
   <string name="morphe_vot_mymemory_error">MyMemory अनुवाद विफल (स्थिति %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">\'बाद में देखें\' ड्रैग हैंडल को चौड़ा करें</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">\'बाद में देखें\' वीडियो के ड्रैग हैंडल को पकड़ना अब आसान है</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">\'बाद में देखें\' हटाने वाले स्नैकबार को छिपाएं</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">\'बाद में देखें\' से वीडियो हटाने के बाद पुष्टिकरण नहीं दिखाया जाता है</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">लूप वीडियो सक्षम करें</string>
   <string name="morphe_do_not_remember_loop_video_title">लूप वीडियो याद न रखें</string>
@@ -759,10 +763,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
 इसे ठीक करने के लिए, 'वीडियो स्ट्रीम स्पूफ़ करें' चालू करें और 'डिफ़ॉल्ट क्लाइंट' को 'TV Simply' या 'visionOS' में बदलें"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">स्लाइड टू सीक सक्षम करें</string>
-  <string name="morphe_slide_to_seek_summary">वीडियो प्लेयर को दबाए रखने पर 2x गति पर चलाने के बजाय स्लाइड से सीक सक्षम करता है</string>
+  <string name="morphe_slide_to_seek_summary">2x स्पीड पर चलाने के बजाय, स्लाइड करने और सीक करने के लिए वीडियो को दबाकर रखें</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">टैप को सक्षम करें</string>
-  <string name="morphe_tap_to_seek_summary">सीकबार पर खींचने के बिना उस स्थिति पर कूदने के लिए बस टैप करें</string>
+  <string name="morphe_tap_to_seek_summary">ड्रैग करने के बजाय उस स्थिति पर जाने के लिए सीकबार पर कहीं भी टैप करें</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">बाएं स्वाइप जेस्चर</string>
   <string name="morphe_swipe_right_zone_title">दाएं स्वाइप जेस्चर</string>
@@ -937,21 +941,21 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">खोज बटन छुपाएं</string>
   <string name="morphe_show_search_button_title">सेटिंग बटन दिखाएं</string>
-  <string name="morphe_show_search_button_index_title">सेटिंग बटन स्थिति</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">जब सक्षम हो तो मोर्फ सेटिंग खोलता है, या अक्षम होने पर YouTube सेटिंग खोलता है</string>
-  <string name="morphe_show_settings_button_index_title">बटन के बीच क्षैतिज रिक्ति को कम करता है</string>
   <string name="morphe_show_settings_button_type_title">सेटिंग बटन कार्रवाई</string>
   <string name="morphe_show_settings_button_type_summary">टैब के बीच स्विच करते समय संक्रमण को एनिमेट करता है</string>
+  <string name="morphe_navigation_buttons_order_title">नविगेशन बटन का क्रम</string>
+  <string name="morphe_navigation_buttons_order_summary">नविगेशन बार में उनका क्रम बदलने के लिए बटनों को ड्रैग करें</string>
   <string name="morphe_swap_create_with_notifications_button_title">बनाएं बटन को सूचनाएँ बटन से बदलें</string>
   <string name="morphe_swap_create_with_notifications_button_summary">यदि इस सेटिंग को बदलने से कोई प्रभाव नहीं होता है, तो गुप्त मोड में स्विच करने का प्रयास करें।</string>
   <string name="morphe_hide_navigation_button_labels_title">नेविगेशन बटन लेबल्स छिपाएं</string>
   <string name="morphe_hide_navigation_new_content_dot_title">नए कंटेंट का डॉट छिपाएं</string>
   <string name="morphe_hide_navigation_bar_title">नेविगेशन बार छिपाएँ</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"यह नेविगेशन बार् को पूरी तरह से छुपा देता है, जिसमें 'आप' टैब भी शामिल है।
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"यह 'You' टैब सहित नेविगेशन बार को पूरी तरह से छिपा देता है।
 
-सेटिंग्स तक पहुंचने के लिए, सामान्य → टूलबार → सेटिंग्स दिखाएं के माध्यम से सेटिंग्स बटन सक्षम करें"</string>
+सेटिंग्स तक पहुँचने के लिए, General → Toolbar → Show Settings button के ज़रिए सेटिंग्स बटन को सक्षम करें"</string>
   <string name="morphe_narrow_navigation_buttons_title">नarrow नैविगेशन बटनें सक्षम करें</string>
   <string name="morphe_narrow_navigation_buttons_summary">स्क्रॉल करते समय नेविगेशन बार को दृश्यमान रखता है</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">बिना लेबल वाले नेविगेशन बटनों को अक्षम करें</string>
@@ -968,12 +972,18 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_navigation_bar_style_entry_3">पारदर्शी</string>
   <string name="morphe_navigation_bar_style_entry_4">अपारदर्शी</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">हो सकता है कि यह स्टाइल आपके डिवाइस या YouTube वर्ज़न द्वारा समर्थित न हो, और इससे लेआउट संबंधी समस्याएं या क्रैश हो सकते हैं</string>
+  <string name="morphe_navigation_bar_glass_title">ग्लास नेविगेशन बार सक्षम करें</string>
+  <string name="morphe_navigation_bar_glass_summary">नेविगेशन बार को एक फ्लोटिंग, राउंडेड, ट्रांसलूसेंट कैप्सूल के रूप में दिखाता है। ओपेक नेविगेशन बार स्टाइल के साथ उपलब्ध नहीं है</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">ग्लास ओपेसिटी</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">ग्लास नेविगेशन बार के पारदर्शिता स्तर को समायोजित करें (0 पारदर्शी है, 100 अपारदर्शी है)</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_toolbar_screen_summary">टूलबार में कौन से घटक दिखाई दें, यह चुनें</string>
   <string name="morphe_hide_toolbar_chat_button_title">चैट बटन छुपाएं</string>
   <string name="morphe_hide_toolbar_microphone_button_title">कैप्शन मेनू फ़ूटर छुपाएं</string>
   <string name="morphe_hide_toolbar_search_button_title">खोज छिपाएं</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">जब सक्षम हो, तो टैप करने पर Morphe सेटिंग्स खुलती है और लंबे समय तक दबाने पर YouTube सेटिंग्स खुलती है, स्वैप करने के लिए अक्षम करें</string>
+  <string name="morphe_toolbar_buttons_order_title">टूलबार बटन का क्रम</string>
+  <string name="morphe_toolbar_buttons_order_summary">टूलबार में उनका क्रम बदलने के लिए बटनों को ड्रैग करें</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">फ्लायआउट मेनू</string>
   <string name="morphe_hide_player_flyout_summary">फ़्लाईआउट मेनू में कौन से घटक दिखाई दें, चुनें</string>
@@ -1723,6 +1733,9 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_niconico_comments_max_length_title">कमेंट की अधिकतम लंबाई</string>
   <string name="morphe_niconico_comments_max_length_summary">इससे अधिक वर्णों वाले कमेंट छुपाएं। प्रत्येक इमोजी को एक वर्ण माना जाएगा</string>
   <string name="morphe_niconico_comments_max_length_no_limit">कोई सीमा नहीं</string>
+  <string name="morphe_niconico_comments_live_premieres_title">प्रीमियर पर दिखाएं</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">समाप्त हो चुके प्रीमियर पर दिखाएं</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">समाप्त हो चुके प्रीमियर का चैट रीप्ले</string>
   <string name="morphe_live_chat_translate_screen_title">लाइव चैट अनुवाद</string>
   <string name="morphe_live_chat_translate_screen_summary">लाइव चैट और लाइव चैट रीप्ले संदेशों का अनुवाद करें</string>
   <string name="morphe_live_chat_translate_title">लाइव चैट का अनुवाद करें</string>

@@ -628,6 +628,10 @@ Nauðsynlegar vafrakökur: SID, HSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_hide_played_summary">Fela textalínur fyrir ofan línuna sem spilast núna</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Fela óspilaða texta</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Fela textalínur fyrir neðan línuna sem spilast núna</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dýnamískur bakgrunnur</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Sýna óskýran bakgrunn úr albúmmyndinni á bak við textann</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Seta dýnamískan bakgrunn í hreyfingu</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Hreyfa bakgrunninn við spilun og láta hann púlsa með tónlistinni ef YouTube Music hefur leyfi fyrir örumikrófón. Slökkvið fyrir kyrrstæðum bakgrunni sem notar minna rafmagni</string>
   <string name="morphe_music_lyrics_mediasession_title">Sýna MediaSession-texta á læsisskjánum</string>
   <string name="morphe_music_lyrics_mediasession_summary">Sýnir núverandi línu á læsiskjá, Android Auto og Bluetooth. Kræfur Android 11 eða nýrra</string>
   <string name="morphe_music_lyrics_miniplayer_title">Sýna texta í smáspilara</string>
@@ -726,7 +730,7 @@ Ljóð koma frá þriðja aðila þjónustu sem eru ekki tengd, stuðluð eða v
   <string name="morphe_music_lyrics_hide_info_title">Fela upplýsingalínu</string>
   <string name="morphe_music_lyrics_hide_info_summary">Fela upplýsingalínuna sem sýnd er fyrir neðan textann</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Víxla þýðingu og rómönskun</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON setur rómverjun eða transliterering undir texta og þýðingu ofan; OFF heldur rómverjun eða transliterering ofan og þýðingu undan. Skýring sett yfir hvora staf flyst með honum, ofan frá stafnum til undan</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Skipta sýningarröð þýðingar og rómanskrar leturskráningar undir textanum</string>
   <string name="morphe_music_lyrics_force_center_title">Alltaf miðja texta</string>
   <string name="morphe_music_lyrics_force_center_summary">ON setur hverja línu í miðju og hunsar upprunalega samstillingu, þ.m.t. duet hluta; OFF heldur samstillingunni sem textinn biður um</string>
   <string name="morphe_music_lyrics_providers_keep_one">Að minnsta kosti einn veitandi verður að vera á</string>
@@ -734,6 +738,14 @@ Ljóð koma frá þriðja aðila þjónustu sem eru ekki tengd, stuðluð eða v
   <string name="morphe_music_lyrics_romanization_provider_title">Rómverjun eða transliterering</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Ótengd orðabók</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime Orðalisti</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Ólínuorðabók</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby-handrit</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Sýna Ruby-hnapp</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Snerta til að skipta á ruby-lesingum yfir texta; halda niðri til að skipta á milli hiragana og katakana. Notaðir eru virkir ruby-veitendur í þeirri röð og þeir eru listuð</string>
+  <string name="morphe_music_lyrics_ruby_generating">Búið til ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Greina hluti með AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Aðeins notað þegar veitandinn sendir engin hlutanúmer eins og Chorus eða Verse, sem OpenAI samhæft módelið þitt greinir þá. Breytinga röðinni opnar líka spurninguna</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API enda punkts URL (t.d. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

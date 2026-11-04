@@ -629,6 +629,10 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_lyrics_hide_played_summary">Скриј ги стиховите надlineTo ја currently пуштаната линија</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Скриј ги непропеаните стихови</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Скриј ги стиховите подlineTo ја currently пуштаната линија</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Динамичка позадина</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Прикажи заматена позадина направена од уметничката слика на албумот зад текстот</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Анимирај динамичка позадина</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Поместувај ја позадината додека пушташ музика и нека пулсира со музиката ако YouTube Music има дозвола за микрофонот. Исклучи за статична позадина што троши помалку батерија</string>
   <string name="morphe_music_lyrics_mediasession_title">Прикажи MediaSession стихови на заклучен екран</string>
   <string name="morphe_music_lyrics_mediasession_summary">Го прикажува тековниот ред на заклучувачкиот екран, Android Auto и Bluetooth. Потребен е Android 11 или понов</string>
   <string name="morphe_music_lyrics_miniplayer_title">Прикажи стихови во мини-плеер</string>
@@ -727,7 +731,7 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_lyrics_hide_info_title">Скриј ја линијата за заслуги</string>
   <string name="morphe_music_lyrics_hide_info_summary">Скриј ја линијата за заслуги прикажана под текстот</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Замени го преводот и романизацијата</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ВКЛУЧЕНО ги поставува романизацијата или транслитерацијата под текстот на песната, а преводот над нив; ИСКЛУЧЕНО ја држи романизацијата или транслитерацијата над нив, а преводот под нив. Читањето поставено над секој слог се движи заедно со него, од над слогот под него</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Го менува редоследот на прикажување на преводот и романизацијата под текстот</string>
   <string name="morphe_music_lyrics_force_center_title">Секогаш центрирај ги текстовите</string>
   <string name="morphe_music_lyrics_force_center_summary">ВКЛУЧЕНО ја става секоја линија во средината и го игнорира изворното порамнување, вклучувајќи ги и страните при дует; ИСКЛУЧЕНО го задржува порамнувањето што го бара текстот</string>
   <string name="morphe_music_lyrics_providers_keep_one">Најмалку еден провајдер мора да остане вклучен</string>
@@ -735,6 +739,14 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_lyrics_romanization_provider_title">Романизација или транслитерација</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Офлајн речник</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime листа на зборови</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Офлајн речник</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby скрипта</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хирагана (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Прикажи Ruby копче</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Допрете за да ги префрлите ruby читањата над текстот; допрете и држете за да префрлите помеѓу hiragana и katakana. Ги користи овозможените ruby провајдери во нивниот наведени редослед</string>
+  <string name="morphe_music_lyrics_ruby_generating">Генерирање ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Детектирај секции со AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Се користи само кога провајдерот не испраќа ознаки за секции како што се Рефрен или Строфа, кои потоа ги детектира вашиот OpenAI-компабилен модел. Уредувањето на редот исто така го отвора неговиот prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL на API крајната точка (на пр. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

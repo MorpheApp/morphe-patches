@@ -101,7 +101,7 @@ Second \"item\" text"</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'알림 받기\' 버튼 숨기기</string>
-  <string name="morphe_hide_notify_me_button_summary">예정된 라이브 및 Premieres 동영상에 대한 알림 버튼을 숨깁니다</string>
+  <string name="morphe_hide_notify_me_button_summary">예정된 라이브 및 Premieres에 대한 알림 버튼을 숨깁니다</string>
   <string name="morphe_hide_playables_title">게임 룸 숨기기</string>
   <string name="morphe_hide_playables_summary">게임을 할 수 있는 기능을 숨깁니다</string>
   <string name="morphe_hide_search_term_thumbnails_title">검색어 썸네일 숨기기</string>
@@ -260,9 +260,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">댓글</string>
   <string name="morphe_comments_screen_summary">댓글 섹션에 표시할 구성 요소를 설정할 수 있습니다</string>
   <string name="morphe_hide_comments_carousel_title">댓글 좌우 슬라이드 필터 활성화하기</string>
-  <string name="morphe_hide_comments_carousel_summary">"• 좌우 슬라이드 항목의 정확한 이름을 입력하세요 (예: 질문하기, 이 동영상 하이프하기, YouTube Music에서 감상하기)
-• 좌우 슬라이드 항목을 숨기면 예상되지 않은 부작용이 발생할 수 있습니다
-• 좌우 슬라이드 항목이 모두 숨겨지면 전체 댓글 섹션도 숨겨집니다"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• 키워드 또는 전체 이름을 입력하세요 (예시: 질문하기, 커뮤니티, 하이프, 감상)
+• 모든 항목을 숨기면 전체 댓글 섹션이 숨겨집니다"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">댓글 좌우 슬라이드 필터</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">필터링할 댓글 좌우 슬라이드 이름을 줄바꿈으로 구분하여 설정하세요</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI 채팅 요약 숨기기</string>
@@ -595,6 +594,11 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_vot_mymemory_quota_message_no_email">오늘의 무료 MyMemory 번역 할당량(5,000자)을 모두 사용하였습니다. 설정에서 MyMemory 이메일 주소를 추가하여 일일 한도를 50,000자로 늘리거나 다른 번역 서비스를 사용하세요</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">오늘의 MyMemory 번역 할당량(50,000자)을 모두 사용하였습니다. 다른 번역 서비스를 사용하거나 내일 다시 시도하세요</string>
   <string name="morphe_vot_mymemory_error">MyMemory 번역을 사용할 수 없습니다 (상태 코드: %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">나중에 볼 동영상 드래그 핸들 넓히기</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">나중에 볼 동영상의 드래그 핸들을 더 쉽게 잡을 수 있습니다</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">나중에 볼 동영상 삭제 스낵바 숨기기</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">나중에 볼 동영상에서 삭제된 후 확인 메시지가 표시되지 않습니다</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">동영상 연속 재생 활성화하기</string>
   <string name="morphe_do_not_remember_loop_video_title">동영상 연속 재생 저장하지 않기</string>
@@ -761,10 +765,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
 이 문제를 해결하려면, '동영상 스트림 속이기'에서 '기본 클라이언트'를 'TV Simply' 또는 'visionOS'로 변경하세요"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">슬라이드하여 탐색 활성화하기</string>
-  <string name="morphe_slide_to_seek_summary">동영상 플레이어를 길게 탭했을 경우에 \'2배속 재생\' 대신 \'슬라이드하여 탐색\'을 사용하도록 설정합니다</string>
+  <string name="morphe_slide_to_seek_summary">2배속 재생 대신 동영상을 길게 탭하여 슬라이드하여 탐색할 수 있습니다</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">재생바 터치 조작 활성화하기</string>
-  <string name="morphe_tap_to_seek_summary">드래그하지 않고 재생바를 탭하기만 해도 해당 위치로 이동할 수 있습니다</string>
+  <string name="morphe_tap_to_seek_summary">드래그 대신 재생바의 아무 곳이나 탭하여 해당 위치로 이동할 수 있습니다</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">좌측 스와이프 제스처</string>
   <string name="morphe_swipe_right_zone_title">우측 스와이프 제스처</string>
@@ -939,24 +943,23 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">알림 버튼 숨기기</string>
   <string name="morphe_show_search_button_title">검색 버튼 표시하기</string>
-  <string name="morphe_show_search_button_index_title">검색 버튼 위치</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">\'나중에 볼 동영상\' 버튼 표시하기</string>
-  <string name="morphe_show_watch_later_button_index_title">\'나중에 볼 동영상\' 버튼 위치</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">나중에 볼 동영상</string>
   <string name="morphe_show_settings_button_title">설정 버튼 표시하기</string>
-  <string name="morphe_show_settings_button_index_title">설정 버튼 위치</string>
   <string name="morphe_show_settings_button_type_title">설정 버튼 작업</string>
   <string name="morphe_show_settings_button_type_summary">활성화하면 Morphe 설정이 열리고, 비활성화하면 YouTube 설정을 열립니다</string>
+  <string name="morphe_navigation_buttons_order_title">하단바 버튼 순서</string>
+  <string name="morphe_navigation_buttons_order_summary">버튼을 드래그하여 하단바의 순서를 변경하세요</string>
   <string name="morphe_swap_create_with_notifications_button_title">만들기 버튼과 알림 버튼의 위치 교환하기</string>
   <string name="morphe_swap_create_with_notifications_button_summary">이 설정을 변경해도 적용되지 않는 경우에는 시크릿 모드로 전환해 보세요</string>
   <string name="morphe_hide_navigation_button_labels_title">하단바 버튼 라벨 숨기기</string>
   <string name="morphe_hide_navigation_new_content_dot_title">새 콘텐츠 알림점 숨기기</string>
   <string name="morphe_hide_navigation_bar_title">하단바 숨기기</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"이 기능을 사용하면, '내 페이지' 탭을 포함한 하단바 메뉴가 완전히 숨겨집니다
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"'내 페이지' 탭을 포함한 하단바 메뉴가 완전히 숨겨집니다
 
-설정에 접근하려면 '일반 → 툴바 → 설정 버튼 표시하기'를 통해 설정 버튼을 활성화하세요"</string>
+설정에 접근하려면, '일반 → 툴바 → 설정 버튼 표시하기'를 통해 설정 버튼을 활성화하세요"</string>
   <string name="morphe_narrow_navigation_buttons_title">좁은 하단바 버튼 활성화하기</string>
   <string name="morphe_narrow_navigation_buttons_summary">하단바 버튼 사이의 간격을 줄입니다</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">라벨이 없는 하단바 버튼 비활성화하기</string>
@@ -973,12 +976,18 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_navigation_bar_style_entry_3">투명</string>
   <string name="morphe_navigation_bar_style_entry_4">불투명</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">이 스타일은 사용자의 기기 또는 YouTube 버전에서 지원되지 않을 수 있으며, 레이아웃 문제나 충돌을 일으킬 수 있습니다</string>
+  <string name="morphe_navigation_bar_glass_title">글래스 하단바 활성화하기</string>
+  <string name="morphe_navigation_bar_glass_summary">하단바를 플로팅 형태의 둥근 반투명 캡슐 모양으로 표시합니다. 불투명 하단바 스타일에서는 사용할 수 없습니다</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">글래스 불투명도</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">글래스 하단바의 투명도를 설정할 수 있습니다 (0: 완전 투명, 100: 완전 불투명)</string>
   <string name="morphe_toolbar_screen_title">툴바</string>
   <string name="morphe_toolbar_screen_summary">툴바에 표시할 구성 요소를 설정할 수 있습니다</string>
   <string name="morphe_hide_toolbar_chat_button_title">메시지 버튼 숨기기</string>
   <string name="morphe_hide_toolbar_microphone_button_title">음성 검색 버튼 숨기기</string>
   <string name="morphe_hide_toolbar_search_button_title">검색 버튼 숨기기</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">활성화하면 버튼을 탭했을 경우에 Morphe 설정이 열리고, 길게 탭했을 경우에 YouTube 설정이 열립니다. 비활성화하면 작업이 반대로 바뀝니다</string>
+  <string name="morphe_toolbar_buttons_order_title">툴바 버튼 순서</string>
+  <string name="morphe_toolbar_buttons_order_summary">버튼을 드래그하여 툴바의 순서를 변경하세요</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">메뉴 구성요소</string>
   <string name="morphe_hide_player_flyout_summary">메뉴 구성요소에 표시할 구성 요소를 설정할 수 있습니다</string>

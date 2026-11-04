@@ -101,7 +101,7 @@ Změny zahrnují:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skrýt tlačítko „Chci dostat vědět“</string>
-  <string name="morphe_hide_notify_me_button_summary">Skryje tlačítko připomenutí pro plánované živé přenosy a premiéry</string>
+  <string name="morphe_hide_notify_me_button_summary">Skryje tlačítko připomenutí pro naplánované živé přenosy a premiéry</string>
   <string name="morphe_hide_playables_title">Skrýt hry a minihry</string>
   <string name="morphe_hide_playables_summary">Skryje funkci, která umožňuje hrát hry</string>
   <string name="morphe_hide_search_term_thumbnails_title">Skrýt miniatury u vyhledávaných výrazů</string>
@@ -260,9 +260,8 @@ Změny zahrnují:
   <string name="morphe_comments_screen_title">Komentáře</string>
   <string name="morphe_comments_screen_summary">Vyberte, které prvky se mají zobrazovat v sekci komentářů</string>
   <string name="morphe_hide_comments_carousel_title">Povolit filtr karet v komentářích</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Ujistěte se, že zadáváte přesný název karty (např. Zeptat se, Podpořit toto video, Poslechnout si na YouTube Music)
-• Skrytí karet může mít neočekávané vedlejší účinky
-• Pokud budou skryty všechny karty, skryje se i celá sekce komentářů"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Zadejte klíčové slovo nebo celé jméno (např. Ask, Community, Hype, Listen)
+• Skrytí všech položek skryje celou sekci komentářů"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Filtr karet v komentářích</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Zadejte názvy karet (každý na nový řádek) v komentářích, podle kterých chcete filtrovat</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Skrýt souhrn chatu pomocí AI</string>
@@ -496,7 +495,7 @@ Po jednom otevření videa s tlačítkem Ask funguje funkce se všemi videi, i k
   <string name="morphe_ryd_feed_like_ratio_title">Zobrazit procento líbků u miniatury kanálu</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Hledat v komentářích</string>
-  <string name="morphe_search_comments_summary">Klepnutím na tlačítko vyhledávání v komentářích zobrazíte pouze načtené komentáře, které obsahují všechna hledaná slova. Pro hledání konkrétní fráze uveďte slova do uvozovek</string>
+  <string name="morphe_search_comments_summary">Klepnutím na tlačítko vyhledávání v komentářích zobrazíte pouze načtené komentáře, které obsahují všechna vyhledávaná slova. Pro vyhledávání konkrétní fráze uveďte slova do uvozovky</string>
   <string name="morphe_search_comments_dialog_title">Hledat v komentářích</string>
   <string name="morphe_search_comments_hint">Slova k vyhledání</string>
   <string name="morphe_search_comments_search">Hledat</string>
@@ -595,6 +594,11 @@ API klíč by se nikdy neměl sdílet. Kdokoli s přístupem k němu může pou�
   <string name="morphe_vot_mymemory_quota_message_no_email">Využili jste dnešní bezplatnou kvótu překladů MyMemory (5 000 znaků). Přidejte e-mail MyMemory v nastavení a zvyšte denní limit na 50 000 znaků, nebo přepněte na jinou překladatelskou službu</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Využili jste dnešní kvótu překladů MyMemory (50 000 znaků). Přepněte na jinou překladatelskou službu nebo zkusím zítra</string>
   <string name="morphe_vot_mymemory_error">Překlad MyMemory selhal (stav %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Rozšířit úchopy pro přetahování v sekci Později</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Úchopy pro přetahování videí v sekci Později se lépe chytají</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Skrýt oznámení o odstranění z Později zhlédnout</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Po odstranění videa ze seznamu Později zhlédnout se nezobrazí potvrzení</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Povolit smyčku videa</string>
   <string name="morphe_do_not_remember_loop_video_title">Nezapomenout přehrávání videa ve smyčce</string>
@@ -759,10 +763,10 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
 Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client' na 'TV Simply' nebo 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Povolit posun pro hledání</string>
-  <string name="morphe_slide_to_seek_summary">Povolí posouvání pro vyhledávání namísto přehrávání 2x rychlostí při stisknutí a podržení přehrávače videa</string>
+  <string name="morphe_slide_to_seek_summary">Stisknutím a podržením videa jej můžete posouvat a přeskakovat místo přehrávání rychlostí 2x</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Povolit klepnutím přejít na</string>
-  <string name="morphe_tap_to_seek_summary">Klepnutím na ukazatel hledání se přesunete na toto místo bez jeho táhnutí</string>
+  <string name="morphe_tap_to_seek_summary">Klepnutím kamkoli na posuvník přeskočte na danou pozici místo přetahování</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gesto svisku doleva</string>
   <string name="morphe_swipe_right_zone_title">Gesto svisku doprava</string>
@@ -935,16 +939,15 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Skrýt tlačítko Notifikace</string>
   <string name="morphe_show_search_button_title">Zobrazit tlačítko Hledání</string>
-  <string name="morphe_show_search_button_index_title">Pozice tlačítka Hledání</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Zobrazit tlačítko Sledovat později</string>
-  <string name="morphe_show_watch_later_button_index_title">Pozice tlačítka Sledovat později</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Sledovat později</string>
   <string name="morphe_show_settings_button_title">Zobrazit tlačítko Nastavení</string>
-  <string name="morphe_show_settings_button_index_title">Pozice tlačítka Nastavení</string>
   <string name="morphe_show_settings_button_type_title">Nastavení tlačítka akcí</string>
   <string name="morphe_show_settings_button_type_summary">Při zapnutí otevře nastavení Morphe, a nastavení YouTube při vypnutí</string>
+  <string name="morphe_navigation_buttons_order_title">Pořadí navigačních tlačítek</string>
+  <string name="morphe_navigation_buttons_order_summary">Tlačítka přetáhněte, abyste změnili jejich pořadí v navigační liště</string>
   <string name="morphe_swap_create_with_notifications_button_title">Vyměňte tlačítko Vytvořit za tlačítko Oznámení</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Pokud změna tohoto nastavení nemá efekt, zkuste přepnout do režimu Inkognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Skrýt štítky navigačních tlačítek</string>
@@ -952,7 +955,7 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
   <string name="morphe_hide_navigation_bar_title">Skrýt navigační lištu</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Zcela skryje navigační lištu, včetně záložky 'Vy'.
 
-Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nástrojová lišta → Zobrazit Nastavení"</string>
+Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nástrojová lišta → Zobrazit tlačítko Nastavení"</string>
   <string name="morphe_narrow_navigation_buttons_title">Povolit úzké tlačítka na navigaci</string>
   <string name="morphe_narrow_navigation_buttons_summary">Zmenší vodorovné mezery mezi tlačítky</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Zakázat navigační tlačítka bez popisků</string>
@@ -969,12 +972,18 @@ Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nást
   <string name="morphe_navigation_bar_style_entry_3">Průhledný</string>
   <string name="morphe_navigation_bar_style_entry_4">Neprůhledný</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Tento styl nemusí být podporován vaším zařízením nebo verzí YouTube a může způsobit problémy s rozložením nebo pády</string>
+  <string name="morphe_navigation_bar_glass_title">Zapnout skleněný navigační panel</string>
+  <string name="morphe_navigation_bar_glass_summary">Zobrazí navigační panel jako plovoucí, zaoblenou a poloprůhlednou kapsli. Není k dispozici u stylu neprůhledného navigačního panelu</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Neprůhlednost skla</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Upravte úroveň průhlednosti skleněného navigačního panelu (0 je průhledné, 100 je neprůhledné)</string>
   <string name="morphe_toolbar_screen_title">Nástrojová lišta</string>
   <string name="morphe_toolbar_screen_summary">Vyberte, které prvky se zobrazí v nástrojové liště</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skrýt tlačítko chatu</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Skrýt tlačítko mikrofonu</string>
   <string name="morphe_hide_toolbar_search_button_title">Skrýt tlačítko Vyhledávání</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Při zapnutí klepnutí otevře nastavení Morphe a dlouhé stisknutí nastavení YouTube. Vypnutím chování prohodíte.</string>
+  <string name="morphe_toolbar_buttons_order_title">Pořadí tlačítek v nástrojovém panelu</string>
+  <string name="morphe_toolbar_buttons_order_summary">Tlačítka přetáhněte, abyste změnili jejich pořadí v nástrojovém panelu</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Rozbalovací nabídka</string>
   <string name="morphe_hide_player_flyout_summary">Vyberte, které prvky se zobrazí v rozbalovací nabídce</string>
@@ -1726,9 +1735,9 @@ Automatické nahrávání je volitelné. Zastavuje se v anonymním režimu nebo 
   <string name="morphe_niconico_comments_max_length_no_limit">Bez limitu</string>
   <string name="morphe_niconico_comments_live_streams_title">Zobrazit v živých přenosech</string>
   <string name="morphe_niconico_comments_live_streams_summary">Živé přenosy a jejich opakování</string>
-  <string name="morphe_niconico_comments_live_premieres_title">Zobrazit v premiérách</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Zobrazit u premiér</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Premiéry během jejich přehrávání</string>
-  <string name="morphe_niconico_comments_ended_premieres_title">Zobrazit v ukončených premiérách</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Zobrazit u ukončených premiér</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Záznam chatu z premiér, které již skončily</string>
   <string name="morphe_live_chat_translate_screen_title">Překlad živého chatu</string>
   <string name="morphe_live_chat_translate_screen_summary">Překládá zprávy živého chatu a oznámení z opakování živého chatu</string>

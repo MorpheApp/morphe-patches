@@ -9,6 +9,7 @@ package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -320,6 +321,7 @@ public final class LiveChatTranslatePatch {
      * <p>
      * Called for every Litho text when it is created and when it is reused.
      */
+    @SuppressWarnings("ConstantValue")
     public static CharSequence onLithoTextLoaded(@Nullable ContextInterface contextInterface,
                                                  @Nullable CharSequence text) {
         if (!Settings.LIVE_CHAT_TRANSLATE.get() || contextInterface == null
@@ -719,6 +721,7 @@ public final class LiveChatTranslatePatch {
         return new SpannableString(builder);
     }
 
+    @SuppressLint("InlinedApi")
     private static void appendCopyButton(SpannableStringBuilder row, String message) {
         row.append(' ');
         final int start = row.length();
@@ -731,7 +734,7 @@ public final class LiveChatTranslatePatch {
     private static Drawable getCopyIcon() {
         Drawable icon = copyIcon;
         if (icon == null) {
-            icon = ResourceUtils.getDrawable(COPY_ICON).mutate();
+            icon = Objects.requireNonNull(ResourceUtils.getDrawable(COPY_ICON)).mutate();
             icon.setTint(COPY_ICON_COLOR);
             final int size = Dim.dp(COPY_ICON_SIZE_DP);
             icon.setBounds(0, 0, size, size);
@@ -855,12 +858,15 @@ public final class LiveChatTranslatePatch {
             // This one keeps asking, so a rate limit backs off for longer.
             final boolean rateLimited = isRateLimited(ex);
             final long now = System.currentTimeMillis();
-            if (now >= retryAfterFailureTime) {
-                backoffMilliseconds = Math.min(
-                        rateLimited ? backoffMilliseconds * 2 : backoffMilliseconds,
-                        MAX_BACKOFF_MILLISECONDS);
-                retryAfterFailureTime = now + backoffMilliseconds;
+            synchronized (requestLock) {
+                if (now >= retryAfterFailureTime) {
+                    backoffMilliseconds = Math.min(
+                            rateLimited ? backoffMilliseconds * 2 : backoffMilliseconds,
+                            MAX_BACKOFF_MILLISECONDS);
+                    retryAfterFailureTime = now + backoffMilliseconds;
+                }
             }
+
             Logger.printInfo(() -> "Could not translate the chat message to: " + language, ex);
         }
     }

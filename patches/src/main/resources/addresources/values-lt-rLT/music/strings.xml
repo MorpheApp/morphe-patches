@@ -629,6 +629,10 @@ Reikalingi slapukai: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_hide_played_summary">Slėpti dainų teksto eilutes virš šiuo metu grojamos eilutės</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Slėpti neatkurtus dainų tekstus</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Slėpti dainų teksto eilutes žemiau šiuo metu grojamos eilutės</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dinaminis fonas</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Rodyti iš albumo viršelio sukurta aptrauktą foną už dainos žodžiais</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animuoti dinaminį foną</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Judinti foną grojimo metu ir pulsuoti kartu su muzika, jei „YouTube Music“ turi mikrofono leidimą. Išjunkite, jei norite statiškos foninės nuotraukos, kuriai reikia mažiau akumuliatoriaus energijos</string>
   <string name="morphe_music_lyrics_mediasession_title">Rodyti „MediaSession“ dainų tekstus užrakintame ekrane</string>
   <string name="morphe_music_lyrics_mediasession_summary">Rodo esamą eilutę atrakintame ekrane, „Android Auto“ ir Bluetooth. Reikia Android 11 ar naujesnės versijos</string>
   <string name="morphe_music_lyrics_miniplayer_title">Rodyti mini grotuvo dainų tekstus</string>
@@ -727,7 +731,7 @@ Dainų tekstai ateina iš trečiųjų paslaugų, kurios nėra susietos, remiamos
   <string name="morphe_music_lyrics_hide_info_title">Slėpti autorių eilutę</string>
   <string name="morphe_music_lyrics_hide_info_summary">Slėpti žemiau dainų tekstų rodomą autorių eilutę</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Sukeisti vertimą ir romanizaciją</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ĮJUNGTAS nustato transliteravimą arba transliteravimą po dainų tekstu ir viršuje vertimą; IŠJUNGTAS išlaiko transliteravimą arba transliteravimą viršuje ir vertimą apačioje. Tarimas, padėtas ant kiekvieno skiemenyje, juda kartu su juo, nuo viršaus iki apačios</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Keičia vertimo ir romanizacijos ekraną žodžių apačioje</string>
   <string name="morphe_music_lyrics_force_center_title">Visada centruoti dainų tekstą</string>
   <string name="morphe_music_lyrics_force_center_summary">ĮJUNGTAS leidžia kiekvienai eilučiai būti viduryje ir ignoruoja šaltinio išdėstymą, įskaitant duoletines puses; IŠJUNGTAS išlaiko tokią poziciją, kokios prašo dainų tekstas</string>
   <string name="morphe_music_lyrics_providers_keep_one">Bent vienas tiekėjas privalo būti aktyvus</string>
@@ -735,6 +739,14 @@ Dainų tekstai ateina iš trečiųjų paslaugų, kurios nėra susietos, remiamos
   <string name="morphe_music_lyrics_romanization_provider_title">Transliteracija arba transliteravimas</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Nešliožiamasis žodynas</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime žodynas</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">saugomas žodynas</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby skriptas</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Rodyti Ruby mygtukas</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Bakstelėkite, kad įjungtumėte arba išjungtumėte ruby skaitymą virš teksto; palaikykite ilgiau, kad perjungtumėte tarp hiragana ir katakana. Naudojami įjungti ruby teikiamieji jų sąrašo tvarka</string>
+  <string name="morphe_music_lyrics_ruby_generating">Generuojama ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Aptikti sekcijas naudojant dirbtinį intelektą</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Naudojama tik tada, kai tiekėjas neturi jokių sekcijų etikečių, pavyzdžiui, Chorus arba Verse, kurios tada aptinka jūsų OpenAI suderinamas modelis. Eilutės redagavimas taip pat atveria jos promptą</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API pabaigos taško URL (pvz., https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

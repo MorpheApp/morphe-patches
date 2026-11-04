@@ -101,7 +101,7 @@ Second \"item\" text"</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">ເຊື່ອງປຸ່ມ \'ແຈ້ງເຕືອນฉัน\'</string>
-  <string name="morphe_hide_notify_me_button_summary">ເຊື່ອງປຸ່ມເຕືອນສຳລັບການໄລຟ໌ສະຕຣີມ ແລະ ການເປີດຕົວທີ່ກຳນົດເວລາໄວ້</string>
+  <string name="morphe_hide_notify_me_button_summary">ເຊື່ອງປຸ່ມເຕືອນສຳລັບການໄລຟ໌ສະຕຣີມທີ່ກຳນົດເວລາໄວ້ ແລະ ວິດີໂອ Premiere</string>
   <string name="morphe_hide_playables_title">ເຊື່ອງ Playables</string>
   <string name="morphe_hide_playables_summary">ເຊື່ອງຟີເຈີທີ່ອະນຸຍາດໃຫ້ທ່ານຫຼິ້ນເກມ</string>
   <string name="morphe_hide_search_term_thumbnails_title">ເຊື່ອງຮູບຕົວຢ່າງຂອງຄຳຄົ້ນຫາ</string>
@@ -260,9 +260,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">ຄວາມຄິດເຫັນ</string>
   <string name="morphe_comments_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ປາກົດໃນສ່ວນຄໍາຄິດເຫັນ</string>
   <string name="morphe_hide_comments_carousel_title">ເປີດໃຊ້ງານຕົວຕອງ carousel ຂອງຄຳຄິດເຫັນ</string>
-  <string name="morphe_hide_comments_carousel_summary">"• ກະລຸນາປ້ອນຊື່ທີ່ຖືກຕ້ອງຂອງລາຍການໃນ carousel (ຕົວຢ່າງ: Ask, Hype this video, Listen on YouTube Music)
-• ການເຊື່ອງລາຍການໃນ carousel ອາດສົ່ງຜົນກະທົບທີ່ບໍ່ໄດ້ຄາດຄິດ
-• ຖ້າລາຍການໃນ carousel ທັງໝົດຖືກເຊື່ອງ, ສ່ວນຄຳຄິດເຫັນທັງໝົດຈະຖືກເຊື່ອງໄປນຳ"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• ປ້ອນຄຳຄົ້ນຫາ ຫຼື ຊື່ເຕັມ (ຕົວຢ່າງ: Ask, Community, Hype, Listen)
+• ການເຊື່ອງລາຍການທັງໝົດຈະເຊື່ອງພາກສ່ວນຄຳຄິດເຫັນທັງໝົດ"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">ຕົວຕອງ carousel ຂອງຄຳຄິດເຫັນ</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">ປ້ອນຊື່ carousel ຂອງຄໍາຄິດເຫັນເພື່ອຕອງ, ໂດຍແຍກດ້ວຍການຂຶ້ນແຖວໃໝ່</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">ເຊື່ອງບົດສະຫຼຸບການແຊັດດ້ວຍ AI</string>
@@ -496,7 +495,7 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_like_ratio_title">ສະແດງເປີເຊັນການຖືກໃຈຂອງຮູບຕົວຢ່າງໃນຟີດ</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">ຄົ້ນຫາຄຳຄິດເຫັນ</string>
-  <string name="morphe_search_comments_summary">ແຕະປຸ່ມຄົ້ນຫາໃນຄຳຄິດເຫັນ ເພື່ອສະແດງສະເພາະຄຳຄິດເຫັນທີ່ໂຫຼດແລ້ວ ເຊິ່ງມີຄຳສັບທັງໝົດທີ່ຄົ້ນຫາ. ໃສ່ຄຳສັບໃນເຄື່ອງໝາຍຄຳເວົ້າ ເພື່ອຄົ້ນຫາວະລີ</string>
+  <string name="morphe_search_comments_summary">ແຕະປຸ່ມຄົ້ນຫາໃນຄຳຄິດເຫັນ ເພື່ອສະແດງສະເພາະຄຳຄິດເຫັນທີ່ໂຫຼດແລ້ວ ເຊິ່ງມີຄຳທີ່ຄົ້ນຫາທັງໝົດ. ໃສ່ຄຳສັບໃນເຄື່ອງໝາຍຄຳເວົ້າ ເພື່ອຄົ້ນຫາເປັນວະລີ</string>
   <string name="morphe_search_comments_dialog_title">ຄົ້ນຫາຄຳຄິດເຫັນ</string>
   <string name="morphe_search_comments_hint">ຄຳສັບທີ່ຕ້ອງການຄົ້ນຫາ</string>
   <string name="morphe_search_comments_search">ຄົ້ນຫາ</string>
@@ -595,6 +594,11 @@ Second \"item\" text"</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">ທ່ານໄດ້ໃຊ້ໂຄຕ້າການແປຟຣີຂອງ MyMemory ປະຈຳວັນນີ້ແລ້ວ (5,000 ຕົວອັກສອນ). ເພີ່ມອີເມວ MyMemory ໃນການຕັ້ງຄ່າເພື່ອເພີ່ມຂີດຈຳກັດປະຈຳວັນເປັນ 50,000 ຕົວອັກສອນ, ຫຼື ປ່ຽນໄປໃຊ້ບໍລິການແປພາສາອື່ນ</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">ທ່ານໄດ້ໃຊ້ໂຄຕ້າການແປ MyMemory ປະຈຳວັນນີ້ແລ້ວ (50,000 ຕົວອັກສອນ). ປ່ຽນໄປໃຊ້ບໍລິການແປພາສາອື່ນ ຫຼື ລອງໃໝ່ໃນມື້ອື່ນ</string>
   <string name="morphe_vot_mymemory_error">ການແປ MyMemory ລົ້ມເຫຼວ (ສະຖານະ %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">ຂະຫຍາຍມືຈັບສຳລັບການລາກໃນລາຍການ \"ເບິ່ງພາຍຫຼັງ\"</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">ມືຈັບສຳລັບການລາກຂອງວິດີໂອໃນລາຍການ \"ເບິ່ງພາຍຫຼັງ\" ສາມາດຈັບໄດ້ງ່າຍຂຶ້ນ</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">ເຊື່ອງແຖບແຈ້ງເຕືອນການລຶບອອກຈາກລາຍການ \"ເບິ່ງພາຍຫຼັງ\"</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">ຈະບໍ່ມີການສະແດງການຢືນຢັນຫຼັງຈາກທີ່ວິດີໂອຖືກລຶບອອກຈາກລາຍການ \"ເບິ່ງພາຍຫຼັງ\"</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">ເປີດໃຊ້ການຫຼິບວິດີໂອຊ້ຳ</string>
   <string name="morphe_do_not_remember_loop_video_title">ບໍ່ຈົດຈຳການວົນຊ້ຳວິດີໂອ</string>
@@ -759,10 +763,10 @@ Second \"item\" text"</string>
 ເພື່ອແກ້ໄຂບັນຫານີ້, ໃຫ້ເປີດ 'ປອມແປງສະຕຣີມວິດີໂອ' ແລະ ປ່ຽນ 'ລູກຄ້າເລີ່ມຕົ້ນ' ເປັນ 'TV Simply' ຫຼື 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">ເປີດໃຊ້ງານການເລື່ອນເພື່ອຊອກຫາ</string>
-  <string name="morphe_slide_to_seek_summary">ເປີດໃຊ້ການເລື່ອນເພື່ອຊອກຫາ ແທນທີ່ຈະຫຼິ້ນດ້ວຍຄວາມໄວ 2x ເມື່ອກົດຄ້າງໄວ້ທີ່ເຄື່ອງຫຼິ້ນວິດີໂອ</string>
+  <string name="morphe_slide_to_seek_summary">ກົດຄ້າງທີ່ວິດີໂອ ເພື່ອເລື່ອນ ແລະ ຊອກຫາຈຸດທີ່ຕ້ອງການ ແທນທີ່ຈະຫຼິ້ນດ້ວຍຄວາມໄວ 2 เท่า</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">ເປີດໃຊ້ງານການແຕະເພື່ອຊອກຫາ</string>
-  <string name="morphe_tap_to_seek_summary">ພຽງແຕ່ແຕະທີ່ແຖບຊອກຫາເພື່ອຂ້າມໄປຫາຕຳແໜ່ງນັ້ນໂດຍບໍ່ຕ້ອງລາກ</string>
+  <string name="morphe_tap_to_seek_summary">ແຕະບ່ອນໃດກໍໄດ້ໃນແຖບເລື່ອນ ເພື່ອຂ້າມໄປຫາຕຳແໜ່ງນັ້ນ ແທນທີ່ຈະລາກ</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">ທ່າທາງການປັດໄປທາງຊ້າຍ</string>
   <string name="morphe_swipe_right_zone_title">ທ່າທາງການປັດໄປທາງຂວາ</string>
@@ -937,21 +941,21 @@ Second \"item\" text"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">ເຊື່ອງປຸ່ມການແຈ້ງເຕືອນ</string>
   <string name="morphe_show_search_button_title">ສະແດງປຸ່ມຄົ້ນຫາ</string>
-  <string name="morphe_show_search_button_index_title">ຕຳແໜ່ງປຸ່ມຄົ້ນຫາ</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">ສະແດງປຸ່ມການຕັ້ງຄ່າ</string>
-  <string name="morphe_show_settings_button_index_title">ຕຳແໜ່ງປຸ່ມການຕັ້ງຄ່າ</string>
   <string name="morphe_show_settings_button_type_title">ການເຮັດວຽກຂອງປຸ່ມຕັ້ງຄ່າ</string>
   <string name="morphe_show_settings_button_type_summary">ເປີດການຕັ້ງຄ່າ Morphe ເມື່ອເປີດໃຊ້ງານ, ຫຼື ການຕັ້ງຄ່າ YouTube ເມື່ອປິດໃຊ້ງານ</string>
+  <string name="morphe_navigation_buttons_order_title">ລຳດັບປຸ່ມນຳທາງ</string>
+  <string name="morphe_navigation_buttons_order_summary">ລາກປຸ່ມເພື່ອປ່ຽນລຳດັບຂອງພວກມັນໃນແຖບນຳທາງ</string>
   <string name="morphe_swap_create_with_notifications_button_title">ສະຫຼັບປຸ່ມສ້າງ ດ້ວຍປຸ່ມການແຈ້ງເຕືອນ</string>
   <string name="morphe_swap_create_with_notifications_button_summary">ຖ້າການປ່ຽນແປງການຕັ້ງຄ່ານີ້ບໍ່ມີຜົນ, ໃຫ້ລອງປ່ຽນໄປໃຊ້ໂໝດບໍ່ລະບຸຕົວຕົນ</string>
   <string name="morphe_hide_navigation_button_labels_title">ເຊື່ອງປ້າຍຊື່ປຸ່ມນຳທາງ</string>
   <string name="morphe_hide_navigation_new_content_dot_title">ເຊື່ອງຈຸດເນື້ອຫາໃໝ່</string>
   <string name="morphe_hide_navigation_bar_title">ເຊື່ອງແຖບການນຳທາງ</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"ສິ່ງນີ້ຈະເຊື່ອງແຖບການນຳທາງທັງໝົດ, ລວມທັງແທັບ 'ທ່ານ'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"ສິ່ງນີ້ຈະເຊື່ອງແຖບນຳທາງທັງໝົດ, ລວມທັງແທັບ 'ທ່ານ'.
 
-ເພື່ອເຂົ້າເຖິງການຕັ້ງຄ່າ, ໃຫ້ເປີດປຸ່ມການຕັ້ງຄ່າຜ່ານ ທົ່ວໄປ → ແຖບເຄື່ອງມື → ສະແດງການຕັ້ງຄ່າ"</string>
+ເພື່ອເຂົ້າເຖິງການຕັ້ງຄ່າ, ໃຫ້ເປີດໃຊ້ປຸ່ມການຕັ້ງຄ່າຜ່ານ General → Toolbar → Show Settings button"</string>
   <string name="morphe_narrow_navigation_buttons_title">ເປີດໃຊ້ປຸ່ມນຳທາງແບບແຄບ</string>
   <string name="morphe_narrow_navigation_buttons_summary">ຫຼຸດໄລຍະຫ່າງຕາມແນວນອນລະຫວ່າງປຸ່ມ</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">ປິດການນຳໃຊ້ປຸ່ມນຳທາງທີ່ບໍ່ມີປ້າຍກຳກັບ</string>
@@ -968,12 +972,18 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_entry_3">ໂປ່ງໃສ</string>
   <string name="morphe_navigation_bar_style_entry_4">ທຶບ</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">ຮູບແບບນີ້ອາດຈະບໍ່ຮອງຮັບໂດຍອຸປະກອນ ຫຼື ເວີຊັນ YouTube ຂອງທ່ານ, ແລະ ສາມາດເຮັດໃຫ້ເກີດບັນຫາໃນການຈັດວາງ ຫຼື ເຮັດໃຫ້ແອັບປິດລົງ</string>
+  <string name="morphe_navigation_bar_glass_title">ເປີດໃຊ້ແຖບນຳທາງແບບແກ້ວ</string>
+  <string name="morphe_navigation_bar_glass_summary">ສະແດງແຖບນຳທາງເປັນແບບແຄບຊູນໂຄ້ງ, ລອຍໄດ້ ແລະ ໂປ່ງໃສ. ບໍ່ສາມາດໃຊ້ໄດ້ກັບຮູບແບບແຖບນຳທາງແບບທຶບ</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">ຄວາມທຶບຂອງແກ້ວ</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">ປັບລະດັບຄວາມໂປ່ງໃສຂອງແຖບນຳທາງແບບແກ້ວ (0 ແມ່ນໂປ່ງໃສ, 100 ແມ່ນທຶບ)</string>
   <string name="morphe_toolbar_screen_title">ແຖບເຄື່ອງມື</string>
   <string name="morphe_toolbar_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ປາກົດໃນແຖບເຄື່ອງມື</string>
   <string name="morphe_hide_toolbar_chat_button_title">ເຊື່ອງປຸ່ມແຊັດ</string>
   <string name="morphe_hide_toolbar_microphone_button_title">ເຊື່ອງປຸ່ມໄມໂຄຣໂຟນ</string>
   <string name="morphe_hide_toolbar_search_button_title">ເຊື່ອງປຸ່ມຄົ້ນຫາ</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">ເມື່ອເປີດໃຊ້ງານ, ແຕະເພື່ອເປີດການຕັ້ງຄ່າ Morphe ແລະ ກົດຄ້າງໄວ້ເພື່ອເປີດການຕັ້ງຄ່າ YouTube, ປິດເພື່ອສະຫຼັບກັນ</string>
+  <string name="morphe_toolbar_buttons_order_title">ລຳດັບປຸ່ມແຖບເຄື່ອງມື</string>
+  <string name="morphe_toolbar_buttons_order_summary">ລາກປຸ່ມເພື່ອປ່ຽນລຳດັບຂອງພວກມັນໃນແຖບເຄື່ອງມື</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">ເມນູ Flyout</string>
   <string name="morphe_hide_player_flyout_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ປາກົດໃນເມນູ flyout</string>
@@ -1723,6 +1733,9 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">ຄວາມຍາວສູງສຸດຂອງຄຳຄິດເຫັນ</string>
   <string name="morphe_niconico_comments_max_length_summary">ເຊື່ອງຄຳຄິດເຫັນທີ່ມີຕົວອັກສອນຫຼາຍກວ່ານີ້. ແຕ່ລະ emoji ຖືກນັບເປັນໜຶ່ງຕົວອັກສອນ</string>
   <string name="morphe_niconico_comments_max_length_no_limit">ບໍ່ມີຂີດຈຳກັດ</string>
+  <string name="morphe_niconico_comments_live_premieres_title">ສະແດງໃນ Premiere</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">ສະແດງໃນ Premiere ທີ່ສິ້ນສຸດແລ້ວ</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">ການຫຼິ້ນຄືນຂອງແຊັດສຳລັບການເປີດຕົວພິເສດທີ່ສິ້ນສຸດລົງແລ້ວ</string>
   <string name="morphe_live_chat_translate_screen_title">ການແປແຊັດສົດ</string>
   <string name="morphe_live_chat_translate_screen_summary">ແປຂໍ້ຄວາມແຊັດສົດ ແລະ ຂໍ້ຄວາມຫຼິ້ນຊ້ຳຂອງແຊັດສົດ</string>
   <string name="morphe_live_chat_translate_title">ແປແຊັດສົດ</string>

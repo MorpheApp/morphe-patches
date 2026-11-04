@@ -101,7 +101,7 @@ Second \"item\" text"</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\"Маған хабарла\" түймесін жасыру</string>
-  <string name="morphe_hide_notify_me_button_summary">Жоспарланған тікелей эфирлер мен премьералар үшін еске алу түймесін жасырады</string>
+  <string name="morphe_hide_notify_me_button_summary">Жоспарланған тікелей эфирлер мен Премьералар үшін еске салу батырмасын жасырады</string>
   <string name="morphe_hide_playables_title">Playables бөлімін жасыру</string>
   <string name="morphe_hide_playables_summary">Ойындарды ойнауға мүмкіндік беретін функцияны жасырады</string>
   <string name="morphe_hide_search_term_thumbnails_title">Іздеу терминдерінің миниатюраларын жасыру</string>
@@ -260,9 +260,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">Пікірлер</string>
   <string name="morphe_comments_screen_summary">Пікірлер бөлімінде қай компоненттер пайда болатынын таңдаңыз</string>
   <string name="morphe_hide_comments_carousel_title">Пікірлер каруселінің сүзгісін қосу</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Карусель элементінің дәл атауын енгізіңіз (мысалы, Сұрау, Бұл видеоны жарнамалау, YouTube Music-те тыңдау)
-• Карусель элементтерін жасыру күтілмеген жанама әсерлерге әкелуі мүмкін
-• Егер барлық карусель элементтері жасырылса, пікірлер бөлімі де толықтай жасырылады"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Тігіс сөзді немесе толық атауды енгізіңіз (мысалы, Ask, Community, Hype, Listen)
+• Барлық элементтерді жасыру пікірлер бөлімінің барлығын жасырады"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Пікірлер каруселінің сүзгісі</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Сүзгіден өткізу үшін пікірлер каруселінің атауларын жаңа жолдармен бөліп енгізіңіз</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">ЖИ чат тұйындымасын жасыру</string>
@@ -496,7 +495,7 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_like_ratio_title">Лентадағы превьюда лайк пайызын көрсету</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Пікірлерді іздеу</string>
-  <string name="morphe_search_comments_summary">Тек ізделіп табылған барлық сөздері бар жүктелген пікірлерді көрсету үшін пікірлердегі іздеу түймесін басыңыз. Фразаны іздеу үшін сөздерді тырнақшаға алыңыз</string>
+  <string name="morphe_search_comments_summary">Жүктелген пікірлердің ішінен тек ізделген сөздердің барлығы барларын көрсету үшін пікірлердегі іздеу батырмасын басыңыз. Фразаны іздеу үшін сөздерді тырнақшаға алыңыз</string>
   <string name="morphe_search_comments_dialog_title">Пікірлерді іздеу</string>
   <string name="morphe_search_comments_hint">Ізделетін сөздер</string>
   <string name="morphe_search_comments_search">Іздеу</string>
@@ -595,6 +594,11 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_vot_mymemory_quota_message_no_email">Сіз бүгінгі MyMemory тегін аударма квотасын (5 000 таңба) пайдаландыңыз. Күнделікті лимитті 50 000 таңбаға дейін арттыру үшін баптауларға MyMemory электронды поштасын қосыңыз немесе басқа аударма қызметіне ауысыңыз</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Сіз бүгінгі MyMemory аударма квотасын (50 000 таңба) пайдаландыңыз. Басқа аударма қызметіне ауысыңыз немесе ертең қайта försöріңіз</string>
   <string name="morphe_vot_mymemory_error">MyMemory аудармасы сәтсіз аяқталды (мәрезі %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">«Кейінірек көру» сүйрету тұтқаларын кеңейту</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">«Кейінірек көру» бейнелерінің сүйрету тұтқаларын ұстау оңайырақ</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">«Кейінірек көру» тізімінен жою туралы snackbar-ды жасыру</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Бейне «Кейінірек көру» тізімінен жойылғаннан кейін растау көрсетілмейді</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Бейнені қайталап ойнатуды қосу</string>
   <string name="morphe_do_not_remember_loop_video_title">Бейне қайталануын есте сақтамау</string>
@@ -759,10 +763,10 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
 Бұны түзету үшін \"Бейнеағындарды жалғандау\" функциясын қосыңыз және \"Әдепкі клиентті\" \"TV Simply\" немесе \"visionOS\" мәніне өзгертіңіз"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Ізінді сырғытуды қосу</string>
-  <string name="morphe_slide_to_seek_summary">Бейнеойнатқышты басып тұрғанда 2x жылдамдықпен ойнатудың орнына, іздеу үшін сырғытуды қосады</string>
+  <string name="morphe_slide_to_seek_summary">2x жылдамдықпен ойнатудың орнына, сырғыту және іздеу үшін бейнені басып тұрыңыз</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Тігу үшін түртуді қосу</string>
-  <string name="morphe_tap_to_seek_summary">Сүргітпей-ақ, сол позицияға ауысу үшін іздеу жолағын басыңыз</string>
+  <string name="morphe_tap_to_seek_summary">Сырғытудың орнына, сол позицияға секіру үшін іздеу жолағының кез келген жерін басыңыз</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Солға сырпыру қимылы</string>
   <string name="morphe_swipe_right_zone_title">Оңға сырпыру қимылы</string>
@@ -937,13 +941,13 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Хабарламалар түймесін жасыру</string>
   <string name="morphe_show_search_button_title">Іздеу түймесін көрсету</string>
-  <string name="morphe_show_search_button_index_title">Іздеу түймесінің орны</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_settings_button_title">Баптаулар түймесін көрсету</string>
-  <string name="morphe_show_settings_button_index_title">Баптаулар түймесінің орны</string>
   <string name="morphe_show_settings_button_type_title">Баптаулар батырмасының әрекеті</string>
   <string name="morphe_show_settings_button_type_summary">Қосылғанда Morphe баптауларын, ал өшірілгенде YouTube баптауларын ашады</string>
+  <string name="morphe_navigation_buttons_order_title">Навигациялық батырмалардың реті</string>
+  <string name="morphe_navigation_buttons_order_summary">Навигациялық панельдегі батырмалардың ретін өзгерту үшін оларды сүйреңіз</string>
   <string name="morphe_swap_create_with_notifications_button_title">\"Жасау\" түймесін \"Хабарландырулар\" түймесімен алмастыру</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Егер бұл параметрді өзгерту әсер етпесе, Инкогнито режиміне ауысып көріңіз</string>
   <string name="morphe_hide_navigation_button_labels_title">Навигациялық түйме белгілерін жасыру</string>
@@ -951,7 +955,7 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_hide_navigation_bar_title">Навигациялық панельді жасыру</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Бұл навигациялық панельді, соның ішінде \"Сіз\" қойындысын толықтай жасырады.
 
-Баптауларға кіру үшін Жалпы → Құралдар панелі → Баптауларды көрсету арқылы Баптаулар түймесін қосыңыз"</string>
+Баптауларға кіру үшін Жалпы → Құралдар панелі → Баптаулар батырмасын көрсету арқылы Баптаулар батырмасын қосыңыз"</string>
   <string name="morphe_narrow_navigation_buttons_title">Тар навигациялық батырмаларды қосу</string>
   <string name="morphe_narrow_navigation_buttons_summary">Түймелер арасындағы көлденең арақашықтықты азайтады</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Таңбалары жоқ навигациялық батырмаларды өшіру</string>
@@ -968,12 +972,18 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_navigation_bar_style_entry_3">Мөлдір</string>
   <string name="morphe_navigation_bar_style_entry_4">Мөлдір емес</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Бұл стиль сіздің құрылғыңызда немесе YouTube нұсқасында қолдау табылмауы мүмкін, сондай-ақ ол интерфейстің бұзылуына немесе қосымшаның жабылуына әкелуі мүмкін</string>
+  <string name="morphe_navigation_bar_glass_title">Шыны навигациялық панельді қосу</string>
+  <string name="morphe_navigation_bar_glass_summary">Навигациялық панельді қалқымалы, дөңгелек, жартылай мөлдір капсула ретінде көрсетеді. Мөлдір емес навигациялық панель стилімен қолжетімді емес</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Шынының мөлдірлігі</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Шыны навигациялық панельдің мөлдірлік деңгейін реттеңіз (0 — мөлдір, 100 — мөлдір емес)</string>
   <string name="morphe_toolbar_screen_title">Құралдар жолағы</string>
   <string name="morphe_toolbar_screen_summary">Құрал жолағында қай компоненттер пайда болатынын таңдаңыз</string>
   <string name="morphe_hide_toolbar_chat_button_title">Чат батырмасын жасыру</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Микрофон батырмасын жасыру</string>
   <string name="morphe_hide_toolbar_search_button_title">Іздеу батырмасын жасыру</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Қосулы болғанда, бір рет басу Morphe параметрлерін, ал ұзақ басу YouTube параметрлерін ашады; ауыстыру үшін өшіріңіз</string>
+  <string name="morphe_toolbar_buttons_order_title">Құралдар панелі батырмаларының реті</string>
+  <string name="morphe_toolbar_buttons_order_summary">Құралдар панеліндегі батырмалардың ретін өзгерту үшін оларды сүйреңіз</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Ашылмалы мәзір</string>
   <string name="morphe_hide_player_flyout_summary">Жылдам мәзірде қай компоненттер пайда болатынын таңдаңыз</string>
@@ -1722,6 +1732,9 @@ AV1-мен бейнеойнату кезінде секірулер болуы �
   <string name="morphe_niconico_comments_max_length_title">Пікірдің максималды ұзындығы</string>
   <string name="morphe_niconico_comments_max_length_summary">Таңдалған санынан көп таңбасы бар пікірлерді жасырады. Әр эмодзи бір таңба ретінде есептеледі</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Шектеу жоқ</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Премьераларда көрсету</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Аяқталған Премьераларда көрсету</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Аяқталған Премьералардың чат қайталауы</string>
   <string name="morphe_live_chat_translate_screen_title">Тікелей чат аудармасы</string>
   <string name="morphe_live_chat_translate_screen_summary">Тікелей чат пен тікелей чат қайталау хабарламаларын аудару</string>
   <string name="morphe_live_chat_translate_title">Тікелей чатты аудару</string>

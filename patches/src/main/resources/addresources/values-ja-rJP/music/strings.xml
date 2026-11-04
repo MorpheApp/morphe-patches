@@ -623,6 +623,10 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_lyrics_hide_played_summary">現在再生中の行より上に表示される歌詞を非表示にします</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">未再生の歌詞を非表示</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">現在再生中の行より下に表示される歌詞を非表示にします</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">ダイナミック背景</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">歌詞の背後に、アルバムアートから作成されたぼかし背景を表示します</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">ダイナミック背景をアニメーション化</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">再生中に背景を移動させ、YouTube Musicにマイク権限がある場合は音楽に合わせてパルスさせます。バッテリー消費を抑えたい場合は、オフにして静止画背景にします</string>
   <string name="morphe_music_lyrics_mediasession_title">ロック画面に MediaSession の歌詞を表示する</string>
   <string name="morphe_music_lyrics_mediasession_summary">ロック画面、Android Auto、Bluetooth で現在の行を表示。Android 11 以降が必要</string>
   <string name="morphe_music_lyrics_miniplayer_title">ミニプレイヤーの歌詞を表示</string>
@@ -721,7 +725,7 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_lyrics_hide_info_title">クレジット行を非表示</string>
   <string name="morphe_music_lyrics_hide_info_summary">歌詞欄最下部の、作詞作曲などのクレジット情報を表示する行を非表示にします</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">翻訳とローマ字表記を入れ替える</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON にすると、ローマ字変換または翻記が歌詞の下、翻訳が上に配置されます；OFF にすると、ローマ字変換または翻記が上、翻訳が下になります。各音節の上に配置された読みはそれと一緒に移動し、音節の上から下に移動します</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">歌詞の下にある翻訳とローマ字の表示順序を入れ替えます</string>
   <string name="morphe_music_lyrics_force_center_title">常に歌詞を中央揃え</string>
   <string name="morphe_music_lyrics_force_center_summary">ONにすると、各行を中央に配置し、ソースの配置（デュエットのサイドを含む）を無視します；OFFにすると、歌詞が要求する配置を保持します</string>
   <string name="morphe_music_lyrics_providers_keep_one">少なくとも1つのプロバイダーをONにしておく必要があります</string>

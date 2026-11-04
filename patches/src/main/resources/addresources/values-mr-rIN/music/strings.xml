@@ -629,6 +629,10 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_hide_played_summary">सध्या वाजत असलेल्या ओळीच्या वरच्या लिरिक्स ओळी लपवा</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">न वाजवलेले लिरिक्स लपवा</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">सध्या वाजत असलेल्या ओळीच्या खालील लिरिक्स ओळी लपवा</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">डायनॅमिक बॅकग्राउंड</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">लिरिक्सच्या मागे अल्बम आर्टपासून तयार केलेले ब्लर बॅकग्राउंड दाखवा</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">डायनॅमिक बॅकग्राउंड ॲनिमेट करा</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">प्ले होत असताना बॅकग्राउंड हलवा, आणि जर YouTube Music कडे मायक्रोफोनची परवानगी असेल तर त्याला संगीतानुसार पल्स करा. बॅटरीची बचत करणाऱ्या स्थिर बॅकग्राउंडसाठी हे बंद करा</string>
   <string name="morphe_music_lyrics_mediasession_title">लॉक स्क्रीनवर MediaSession लिरिक्स दाखवा</string>
   <string name="morphe_music_lyrics_mediasession_summary">लॉक स्क्रीन, Android Auto आणि ब्लूटूथवर सध्याची ओळ दर्शवते. यासाठी Android ११ किंवा नवीन आवृत्ती आवश्यक आहे</string>
   <string name="morphe_music_lyrics_miniplayer_title">मिनीप्लेअर लिरिक्स दाखवा</string>
@@ -727,7 +731,7 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_hide_info_title">क्रेडिट लाईन लपवा</string>
   <string name="morphe_music_lyrics_hide_info_summary">गीतांच्या खाली दिसणारी क्रेडिट लाईन लपवा</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">अनुवाद आणि रोमनाइझेशनची अदलाबदल करा</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON केल्यास रोमनायझेशन किंवा लिप्यंतरण गीतांच्या खाली आणि अनुवाद वर येतो; OFF केल्यास रोमनायझेशन किंवा लिप्यंतरण वर आणि अनुवाद खाली राहतो. प्रत्येक अक्षराच्या वर ठेवलेले वाचन त्या अक्षरासोबत वरून खाली सरकते</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">लिरिक्सच्या खाली ट्रान्सलेशन आणि रोमानिझेशनचा डिस्प्ले ऑर्डर बदला</string>
   <string name="morphe_music_lyrics_force_center_title">नेहमी गीतांना मध्यभागी ठेवा</string>
   <string name="morphe_music_lyrics_force_center_summary">ON केल्यास प्रत्येक ओळ मध्यभागी येते आणि सोर्स अलाइनमेंट दुर्लक्षित केली जाते, ज्यामध्ये ड्युएट साइड्सचा समावेश आहे; OFF केल्यास गीतांसाठी विचारलेली अलाइनमेंट कायम राहते</string>
   <string name="morphe_music_lyrics_providers_keep_one">किमान एक प्रोव्हायडर चालू असणे आवश्यक आहे</string>
@@ -735,6 +739,14 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_romanization_provider_title">रोमनायझेशन किंवा लिप्यंतरण</string>
   <string name="morphe_music_lyrics_romanization_provider_local">ऑफलाइन डिक्शनरी</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime शब्दसूची</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">रूबी</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">ऑफलाइन डिक्शनरी</string>
+  <string name="morphe_music_lyrics_ruby_style_title">रूबी स्क्रिप्ट</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">हिरागाना (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">काताकाना (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">रूबी बटण दाखवा</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">गीतांच्या वर रूबी रीडिंग टॉगल करण्यासाठी टॅप करा; हिरागाना आणि काताकाना दरम्यान स्विच करण्यासाठी लाँग-प्रेस करा. सक्षम रूबी प्रोव्हायडर्सचा त्यांच्या सूचीबद्ध क्रमाने वापर केला जातो</string>
+  <string name="morphe_music_lyrics_ruby_generating">रूबी तयार होत आहे…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI सह विभाग ओळखा</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">जेव्हा प्रदाता Chorus किंवा Verse सारखे कोणतेही विभाग लेबल पाठवत नाही, तेव्हाच याचा वापर केला जातो, जे तुमचे OpenAI-सुसंगत मॉडेल नंतर शोधते. ओळ संपादित केल्यावर त्याचा प्रॉम्प्ट देखील उघडतो</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API एंडपॉइंट URL (उदा. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

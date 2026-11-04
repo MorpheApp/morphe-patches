@@ -215,7 +215,7 @@ public final class LyricsBracketSplitter {
             }
             final Word word = words.get(i);
             out.add(new Word(word.startMs(), word.endMs(), body,
-                    word.romaji(), body.endsWith(" ")));
+                    word.romaji(), body.endsWith(" "), word.ruby()));
         }
         return out;
     }

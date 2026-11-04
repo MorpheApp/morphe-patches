@@ -33,7 +33,7 @@ private const val EXTENSION_FULLSCREEN_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/OpenVideosFullscreenHookPatch$FullscreenInterface;"
 
 /**
- * Used by both [openVideosFullscreenPatch] and [openShortsInRegularPlayerPatch].
+ * Used by [openVideosFullscreenPatch], [openShortsInRegularPlayerPatch] and [exitFullscreenPatch].
  */
 internal val openVideosFullscreenHookPatch = bytecodePatch {
     dependsOn(

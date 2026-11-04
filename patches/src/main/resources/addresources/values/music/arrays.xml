@@ -293,5 +293,13 @@
         <item>PINYIN</item>
         <item>NONE</item>
     </string-array>
+    <string-array name="morphe_music_lyrics_ruby_style_entries">
+        <item>@string/morphe_music_lyrics_ruby_style_entry_hiragana</item>
+        <item>@string/morphe_music_lyrics_ruby_style_entry_katakana</item>
+    </string-array>
+    <string-array name="morphe_music_lyrics_ruby_style_entry_values">
+        <item>HIRAGANA</item>
+        <item>KATAKANA</item>
+    </string-array>
 
 </resources>

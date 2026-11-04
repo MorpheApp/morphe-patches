@@ -131,6 +131,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup notificationsMenuHeader;
     private final ByteArrayFilterGroup notificationsMenuHeaderBuffer;
     private final StringFilterGroup notifyMe;
+    private final StringFilterGroup playables;
     private final StringFilterGroup searchFriction;
     private final StringFilterGroup singleItemInformationPanel;
     private final StringFilterGroup subscribedChannelsBarName;
@@ -211,7 +212,7 @@ public final class LayoutComponentsFilter extends Filter {
                 "yt_outline_experimental_live_black"
         );
 
-        // 'Downloads' item of the You tab. It's a lockup, so the bottom menu filter can't match its name.
+        // 'Downloads' item of the 'You' tab. It's a lockup, so the bottom menu filter can't match its name.
         libraryDownloads = new StringFilterGroup(
                 Settings.HIDE_ACCOUNT_MENU_DOWNLOADS,
                 "video_lockup_with_attachment.e"
@@ -381,11 +382,6 @@ public final class LayoutComponentsFilter extends Filter {
                 "PAfeedback_genai"
         );
 
-        final var forYouShelf = new StringFilterGroup(
-                Settings.HIDE_HORIZONTAL_SHELVES,
-                "mixed_content_shelf"
-        );
-
         final var imageShelf = new StringFilterGroup(
                 Settings.HIDE_IMAGE_SHELF,
                 "image_shelf"
@@ -416,7 +412,7 @@ public final class LayoutComponentsFilter extends Filter {
                 "set_reminder_button"
         );
 
-        final var playables = new StringFilterGroup(
+        playables = new StringFilterGroup(
                 Settings.HIDE_PLAYABLES,
                 "horizontal_gaming_shelf.e",
                 "mini_game_card.e"
@@ -521,7 +517,6 @@ public final class LayoutComponentsFilter extends Filter {
                 crowdfundingBox,
                 emergencyBox,
                 expandableMetadata,
-                forYouShelf,
                 imageShelf,
                 infoPanel,
                 medicalPanel,
@@ -717,6 +712,10 @@ public final class LayoutComponentsFilter extends Filter {
         if (matchedGroup == notificationsMenuHeader) {
             return Utils.startsWith(path, "subscribe_menu_notifications.e")
                     && notificationsMenuHeaderBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == playables) {
+            return !("FEmini_app_destination".equals(browseId));
         }
 
         // This identifier is used not only in players but also in search results: Until 2024, medical

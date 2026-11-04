@@ -101,7 +101,7 @@ Izinguquko zihlanganisa:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Fihla inkinobho ethi \'Ngazise\'</string>
-  <string name="morphe_hide_notify_me_button_summary">Ifihla inkinobho yokukhumbuza izinkundla zokubhala eziphathilwe kanye nezokuqala</string>
+  <string name="morphe_hide_notify_me_button_summary">Ifihla inkinobho yokukhumbuza imigqa yokuqondile ehleliwe kanye ne-Premieres</string>
   <string name="morphe_hide_playables_title">Fihla ama-Playables</string>
   <string name="morphe_hide_playables_summary">Ifihla isici esikuvumela ukuthi udlale imidlalo</string>
   <string name="morphe_hide_search_term_thumbnails_title">Fihla imifanekiso yegama lokusesha</string>
@@ -260,9 +260,8 @@ Izinguquko zihlanganisa:
   <string name="morphe_comments_screen_title">Imibhalo</string>
   <string name="morphe_comments_screen_summary">Khetha ukuthi yiziphi izici ezivela esigabeni semicabango</string>
   <string name="morphe_hide_comments_carousel_title">Vula i-comments carousel filter</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Qiniseka ukuthi ungena igama eliqondile le-item ye-carousel (isib., Ask, Hype this video, Listen on YouTube Music)
-• Ukufihla ama-item e-carousel kungaba nemiphumela engahleliwe
-• Uma ama-item e-carousel wonke efihliwe, nesigaba sonke semicomment sizofihliwa"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Faka igama elibalulekile noma igama eliphelele (isib. Ask, Community, Hype, Listen)
+• Ukufihla yonke imiklomelo kufihla yonke ingxenye yezingxoxo"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">I-comments carousel filter</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Faka amagama e-carousel yemicabango ofuna ukuhlunga ngawo, ahlukaniswe imigqa emisha</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Fihla isifinyezo se-AI chat</string>
@@ -496,7 +495,7 @@ Ngemuva kokuvulwa kwevidiyo enenkinobho ethi Buza kanye, le mpawu isebenza kuzo 
   <string name="morphe_ryd_feed_like_ratio_title">Khombisa iphesenti le-like se-thumbnail ye-feed</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Sesha emibhalweni</string>
-  <string name="morphe_search_comments_summary">Thinta inkinobho yokusesha emibhalweni yokuphawula ukuze ubonise kuphela imibhalo yokuphawula elandile equkethe zonke amagama afunwayo. Faka amagama ezinkomiziyweni ukuze useshe isivuselo</string>
+  <string name="morphe_search_comments_summary">Thinta inkinobho yokusesha emaphawulweni ukuze ubonise kuphela iziphakamiso ezilodwe ezinazo zonke amagama afunwayo. Faka amagama ezinkomiziyweni ukuze useshe isisho</string>
   <string name="morphe_search_comments_dialog_title">Sesha emibhalweni yokuphawula</string>
   <string name="morphe_search_comments_hint">Amagama okusesha</string>
   <string name="morphe_search_comments_search">Sesha</string>
@@ -595,6 +594,11 @@ Okhiye wakho we-API akufanele wabelane nakube yikuphi. Noma ubani onokufinyelela
   <string name="morphe_vot_mymemory_quota_message_no_email">Usebenzise iquota yamahhala yokuhunyushwa kwe-MyMemory yanamuhla (izinhlamvu ezi-5,000). Faka i-imeyili ye-MyMemory ezilungiselelweni ukuze unyuse umkhawulo wansuku ube izinhlamvu ezi-50,000, noma shintshele enye isevisi yokuhunyusha</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Usebenzise iquota yokuhunyushwa kwe-MyMemory yanamuhla (izinhlamvu ezi-50,000). Shintshele enye isevisi yokuhunyusha noma uzame futhi kusasa</string>
   <string name="morphe_vot_mymemory_error">Ukuhumusha kwe-MyMemory kuhleleke (isimo %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Andisa izibambiso zokuhudulisa ze-Watch later</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Izibambiso zokuhudulisa ze-Watch later kulula ukuze zibanjwe</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Fihla i-snackbar yokususa i-Watch later</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Ukuqinisekisa akubonakali ngemuva kokuba i-vidiyo isuswe ku-Watch later</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Vumela ukuphindaphinda kwevidiyo</string>
   <string name="morphe_do_not_remember_loop_video_title">Ungakhumbuli ukuphindaphinda kwevidiyo</string>
@@ -759,10 +763,10 @@ Ukuze ukulungise lokhu, vula 'Spoof video streams' bese ushintsha 'Default clien
 Ukuze ulungise lokhu, vula 'Spoof video streams' bese ushintsha 'Default client' ibe 'TV Simply' noma 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Vumela ukuslayida ukuze ufune</string>
-  <string name="morphe_slide_to_seek_summary">Ivumela i-slide to seek esikhundleni sokudlala nge-2x speed lapho ucindzela ubambe i-video player</string>
+  <string name="morphe_slide_to_seek_summary">Cindezela bese ubambe ividiyo ukuze uslayide futhi ufune esikhundleni sokudlala ngesivinywa sika-2x</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Vumela ukuthinta ukuze ufune</string>
-  <string name="morphe_tap_to_seek_summary">Chofoza nje kwi-seekbar ukuze uye kulowo mkhawulo ngaphandle kokuyikhipha</string>
+  <string name="morphe_tap_to_seek_summary">Thinta noma kuphi kubha yokufuna ukuze ugxume kulelo khona esikhundleni sokukwehlela</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Isenzo sokuswayipha kwesobunxele</string>
   <string name="morphe_swipe_right_zone_title">Isenzo sokuswayipha kwesobunxele</string>
@@ -937,24 +941,23 @@ Kumele kunikezwe ama-'Caption cookies'"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Fihla inkinobho yeZaziso</string>
   <string name="morphe_show_search_button_title">Khombisa inkinobho yeKhumbuza</string>
-  <string name="morphe_show_search_button_index_title">Indawo yenkinobho yeKhumbuza</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Khombisa inkinobho ethi Buka kamuva</string>
-  <string name="morphe_show_watch_later_button_index_title">Isikhundla senkinobho ethi Buka kamuva</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Buka kamuva</string>
   <string name="morphe_show_settings_button_title">Khombisa inkinobho yeSettings</string>
-  <string name="morphe_show_settings_button_index_title">Indawo yenkinobho yeSettings</string>
   <string name="morphe_show_settings_button_type_title">Isenzo senkinobha yezilungiselelo</string>
   <string name="morphe_show_settings_button_type_summary">Ivula izilungiselelo zeMorphe lapho kuvunyelwe, noma izilungiselelo zeYouTube lapho kukhishwe</string>
+  <string name="morphe_navigation_buttons_order_title">Ukuhlelwa kwezinestu zokuhamba</string>
+  <string name="morphe_navigation_buttons_order_summary">Kudonsa izinestu ukuze ushintshe ukulandelana kwazo kubha yokuhamba</string>
   <string name="morphe_swap_create_with_notifications_button_title">Shintsha inkinobho ye-Create neyoku-Notifications</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Uma ukushintsha kwalolu sethingi kungasebenzi, zama ukushintshela ku-Incognito mode</string>
   <string name="morphe_hide_navigation_button_labels_title">Fihla amagama ezinkinobho zokuhamba</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Fihla ichashana lokuqukethwe okusha</string>
   <string name="morphe_hide_navigation_bar_title">Fihla i-navigation bar</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Lokhu kufihla ngokuphelele ibha yokusebenza, kuhlanganise neThebhunya loku-'Wena'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Lokhu kufihla ngokuphelele ibha yokuzungeza, kuhlanganise nethebhu ethi 'Wena'.
 
-Ukuze ungene kuSettings, vula inkinobho yeSettings nge-General → Toolbar → Show Settings"</string>
+Ukuze ufike ku-Settings, vula inkinobho ye-Settings nge-General $\rightarrow$ Toolbar $\rightarrow$ Show Settings button"</string>
   <string name="morphe_narrow_navigation_buttons_title">Vumela izinkinobho zokuzula ezincane</string>
   <string name="morphe_narrow_navigation_buttons_summary">Kunciphisa isikhala esingemaphandla phakathi kwezinkinobho</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Khumasha izinkinobho zokuzula ezingenazo izilabelo</string>
@@ -971,12 +974,18 @@ Ukuze ungene kuSettings, vula inkinobho yeSettings nge-General → Toolbar → S
   <string name="morphe_navigation_bar_style_entry_3">Okhalisile</string>
   <string name="morphe_navigation_bar_style_entry_4">Engabonakali</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Leli stayela lingase lingasekelwa yithisizela lakho noma inguqulo ye-YouTube, futhi lingabangela izinkinga zokuhlela noma ukuphuka kohlelo</string>
+  <string name="morphe_navigation_bar_glass_title">Vumela i-glass navigation bar</string>
+  <string name="morphe_navigation_bar_glass_summary">Ikhombisa i-navigation bar njenge-capsule ehambayo, eyindilinga, futhi ecaca. Ayitholakali nendlela ye-Opaque navigation bar</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Ukuphazima kwe-glass</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Lungisa izinga lokucaca kwe-glass navigation bar (0 kucaca, 100 akucaci)</string>
   <string name="morphe_toolbar_screen_title">Ithuliba</string>
   <string name="morphe_toolbar_screen_summary">Khetha ukuthi yiziphi izinto ezivela kwi-toolbar</string>
   <string name="morphe_hide_toolbar_chat_button_title">Fihla inkinobho ye-Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Fihla inkinobho yeMicrophone</string>
   <string name="morphe_hide_toolbar_search_button_title">Fihla inkinobho yoKusesha</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Uma kuvunyelwe, ukuphonsa kuvula izilungiselelo ze-Morphe kanti ukuphonsa isikhathi eside kuvula izilungiselelo ze-YouTube, kuvimelwe ukushintsha</string>
+  <string name="morphe_toolbar_buttons_order_title">Ukuhlelwa kwezinestu ze-toolbar</string>
+  <string name="morphe_toolbar_buttons_order_summary">Kudonsa izinestu ukuze ushintshe ukulandelana kwazo ku-toolbar</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Imenyu ye-Flyout</string>
   <string name="morphe_hide_player_flyout_summary">Khetha ukuthi yiziphi izici ezivela emenwini lokuphuma</string>
@@ -1728,10 +1737,10 @@ Ukuqopha ngokuzenzakalelayo kuyinketho. Kuyama ku-incognito noma lapho i-account
   <string name="morphe_niconico_comments_max_length_no_limit">Alikho unyamezelo</string>
   <string name="morphe_niconico_comments_live_streams_title">Khombisa kuma-live streams</string>
   <string name="morphe_niconico_comments_live_streams_summary">Ama-live streams kanye nokudlala futhi kwazo</string>
-  <string name="morphe_niconico_comments_live_premieres_title">Khombisa kuma-premieres</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Bonisa ku-Premieres</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Ama-premieres ngenkathi edlala</string>
-  <string name="morphe_niconico_comments_ended_premieres_title">Khombisa kuma-premieres aphelile</string>
-  <string name="morphe_niconico_comments_ended_premieres_summary">Ukudlala futhi kwe-chat yama-premieres asephile</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Bonisa ku-Premieres eziphelile</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Ukuphinda ukuxoxa kwe-Premieres eziphelile</string>
   <string name="morphe_live_chat_translate_screen_title">Ukuhumusha i-chat yokuqhubeka</string>
   <string name="morphe_live_chat_translate_screen_summary">Humusha imilayezo ye-chat yokuqhubeka kanye nemilayezo efishwe kabusha ye-chat yokuqhubeka</string>
   <string name="morphe_live_chat_translate_title">Humusha i-chat yokuqhubeka</string>

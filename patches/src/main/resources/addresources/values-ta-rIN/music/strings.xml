@@ -158,6 +158,10 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_line_scale_summary">தற்போது பாடப்படாத ஒவ்வொரு வரியையும் சற்று சிறியதாக வரைந்து, அதே சமயம் மங்கலாகக் காட்டும்</string>
   <string name="morphe_music_lyrics_split_background_title">பின்னணி குரல்களைத் தனியாகக் காட்டவும்</string>
   <string name="morphe_music_lyrics_split_background_summary">முக்கிய வரியிலிருந்து பின்னணி குரல்கள் மற்றும் ஹார்மோனியைப் பிரிக்கும். \"(Oh) I want you\" என்பது போல அடைப்புக்குறிக்குள் எழுதப்பட்ட பின்னணி குரலை, பாடப்படும் வரியிலிருந்து நீக்கி அதற்குரிய மங்கலான வரியில் வைக்கும்</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">டைனமிக் பின்னணி</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">பாடல்களுக்குப் பின்னால் ஆல்பம் கலைப்படைப்பிலிருந்து உருவாக்கப்பட்ட மங்கலான பின்னணியைக் காட்டுங்கள்</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">டைனமிக் பின்னணியை அனிமேட் செய்யவும்</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">இயங்கும்போது பின்னணியை நகர்த்தவும், YouTube Music-க்கு மைக்ரோஃபோன் அனுமதி இருந்தால் இசையுடன் அதை துடிக்கச் செய்யவும். குறைந்த பேட்டரியைப் பயன்படுத்தும் நிலையான பின்னணிக்கு இதை ஆஃப் செய்யவும்</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_romanized_by_rime">Rime-ஆல் ரோமனிஸ்டு செய்யப்பட்டது (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
@@ -170,7 +174,7 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_about_summary">"பாடல்கள் தலைப்பு மற்றும் கலைஞரின் அடிப்படையில் பொருத்தப்படுகின்றன, அசாதாரண மெட்டாடேட்டா எதுவும் கிடைக்காமல் போகலாம் அல்லது தவறான பதிப்பைக் கண்டறியலாம். பதிப்புகளை மாற்ற refresh-ஐப் பயன்படுத்தவும். * குறியிடப்பட்ட வழங்குநர்களுக்கு டோக்கன் தேவை. செயல்படுத்தப்பட்ட அனைத்து வழங்குநர்களும் எப்போதும் உங்கள் வரிசையிலேயே கோரப்படுவதில்லை, ஆனால் அவர்களின் வேகத்தின் அடிப்படையில் பதிலளிக்கிறார்கள்.
 
 பாடல்கள் Morphe-உடன் இணைக்கப்படாத, ஸ்பான்சர் செய்யப்படாத அல்லது அங்கீகரிக்கப்படாத மூன்றாம் தரப்பு சேவைகளிலிருந்து வருகின்றன. ஒவ்வொன்றும் அப்படியே பயன்படுத்தப்படுகிறது: பாடல்கள், அவற்றின் கிடைக்கும் தன்மை மற்றும் அவற்றின் உரிமங்கள் அந்த சேவைகளிடமும் அவற்றின் உரிம வழங்குநர்களிடமும் இருக்கும், மேலும் அவற்றைப் பயன்படுத்துவது அவர்களின் சேவை விதிமுறைகளுக்கு உட்பட்டிருக்கலாம். செயல்படுத்தப்பட்ட சேவைக்கு நீங்கள் கேட்ட தேடல் மட்டுமே சென்றடையும் - தலைப்பு, கலைஞர் மற்றும் அந்த சேவைக்கு தேவைப்படும் இடத்தில் வீடியோ ஐடி. விருப்பத்தேர்வு AI எண்ட்பாயிண்ட் மற்றும் QuickLRC டிரான்ஸ்கிரிப்ஷன் நீங்கள் அவற்றைக் கட்டமைத்த பின்னரே இயங்கும், மேலும் பாடல் உரை அல்லது டிரேக்கின் வீடியோ URL-ஐப் பெறும்."</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON என்பதைத் தேர்ந்தெடுத்தால் ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பு வரிகளுக்குக் கீழும், மொழிபெயர்ப்பு மேலே இருக்கும்; OFF என்பதைத் தேர்ந்தெடுத்தால் ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பு மேலேயும், மொழிபெயர்ப்பு கீழும் இருக்கும். ஒவ்வொரு அசரிலும் வைக்கப்பட்டுள்ள வாசிப்பு அதன் সাথে நகரும், அதன் அசரின் மேலிருந்து கீழேக்கு மாறும்</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">பாடல்களுக்குக் கீழே மொழிபெயர்ப்பு மற்றும் ரோமானைசேஷன் ஆகியவற்றின் காட்சி வரிசையை மாற்றுகிறது</string>
   <string name="morphe_music_lyrics_force_center_title">வரிகளை எப்போதும் மையப்படுத்து</string>
   <string name="morphe_music_lyrics_force_center_summary">ON என்பதைத் தேர்ந்தெடுத்தால், இருவர் பாடும் பக்கங்கள் உட்பட ஒவ்வொரு வரியும் மையப்பகுதியில் வைக்கப்படும் மற்றும் மூல சீரமைப்பு புறக்கணிக்கப்படும்; OFF என்பதைத் தேர்ந்தெடுத்தால் வரிகள் கோரும் சீரமைப்பே இருக்கும்</string>
   <string name="morphe_music_lyrics_providers_keep_one">குறைந்தபட்சம் ஒரு வழங்குநர் ஆன் செய்யப்பட வேண்டும்</string>
@@ -178,6 +182,14 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_romanization_provider_title">ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பு</string>
   <string name="morphe_music_lyrics_romanization_provider_local">ஆஃப்லைன் அகராதி</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime வார்த்தைப் பட்டியல்</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">ரூபி</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">ஆஃப்லைன் அகராதி</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby ஸ்கிரிப்ட்</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">ஹிரகானா (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">கதகானா (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Ruby பொத்தானைக் காட்டு</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">பாடல்களுக்கு மேலே ruby வாசிப்புகளை மாற்ற தட்டவும்; ஹிரகானா மற்றும் கதகானாவிற்கு இடையே மாற நீண்ட நேரம் அழுத்தவும். பட்டியலிடப்பட்ட வரிசையில் இயக்கப்பட்டுள்ள ruby வழங்குநர்களைப் பயன்படுத்துகிறது</string>
+  <string name="morphe_music_lyrics_ruby_generating">Ruby உருவாக்கப்படுகிறது…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI மூலம் பிரிவுகளைக் கண்டறியவும்</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Chorus அல்லது Verse போன்ற பிரிவு லேபிள்களை வழங்குநர் அனுப்பாதபோது மட்டுமே இது பயன்படுத்தப்படும், அவற்றை உங்கள் OpenAI-க்கு இணக்கமான மாடல் கண்டறியும். வரிசையைத் திருத்துவது அதன் தூண்டுதலையும் திறக்கும்</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (உதாரணமாக https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

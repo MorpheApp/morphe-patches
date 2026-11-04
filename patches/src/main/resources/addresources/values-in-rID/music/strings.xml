@@ -630,6 +630,10 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_hide_played_summary">Sembunyikan baris lirik di atas garis yang sedang diputar</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Sembunyikan lirik yang belum diputar</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Sembunyikan baris lirik di bawah garis yang sedang diputar</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Latar belakang dinamis</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Tampilkan latar belakang blur yang dibuat dari sampul album di belakang lirik</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animasikan latar belakang dinamis</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Gerakkan latar belakang saat diputar, dan buat berdenyut mengikuti musik jika YouTube Music memiliki izin mikrofon. Matikan untuk latar belakang statis yang lebih hemat baterai</string>
   <string name="morphe_music_lyrics_mediasession_title">Tampilkan lirik MediaSession di layar kunci</string>
   <string name="morphe_music_lyrics_mediasession_summary">Menampilkan baris saat ini di layar kunci, Android Auto dan Bluetooth. Memerlukan Android 11 atau versi yang lebih baru</string>
   <string name="morphe_music_lyrics_miniplayer_title">Tampilkan lirik Pemutar mini</string>
@@ -728,7 +732,7 @@ Lirik berasal dari layanan pihak ketiga yang tidak berafiliasi, disponsori, atau
   <string name="morphe_music_lyrics_hide_info_title">Sembunyikan baris kredit</string>
   <string name="morphe_music_lyrics_hide_info_summary">Sembunyikan baris kredit yang ditampilkan di bawah lirik</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Tukar terjemahan dan romanisasi</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">AKTIF menempatkan romanisasi atau transliterasi di bawah lirik dan terjemahan di atas; NONAKTIF mempertahankan romanisasi atau transliterasi di atas dan terjemahan di bawah. Bacaan yang ditempatkan di atas setiap suku kata bergerak bersamanya, dari atas sukukatanya ke bawahnya</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Menukar urutan tampilan terjemahan dan romanisasi di bawah lirik</string>
   <string name="morphe_music_lyrics_force_center_title">Selalu tengahkan lirik</string>
   <string name="morphe_music_lyrics_force_center_summary">AKTIF menempatkan setiap baris di tengah dan mengabaikan penyelarasan sumber, termasuk sisi duet; NONAKTIF mempertahankan penyelarasan yang diminta oleh lirik</string>
   <string name="morphe_music_lyrics_providers_keep_one">Setidaknya satu penyedia harus tetap aktif</string>
@@ -736,6 +740,14 @@ Lirik berasal dari layanan pihak ketiga yang tidak berafiliasi, disponsori, atau
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisasi atau transliterasi</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Kamus Luring</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Daftar Kata Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Kamus Luring</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Skrip ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Tampilkan tombol Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Ketuk untuk mengaktifkan/menonaktifkan bacaan ruby di atas lirik; tekan lama untuk beralih antara hiragana dan katakana. Menggunakan penyedia ruby yang diaktifkan sesuai urutan yang terdaftar</string>
+  <string name="morphe_music_lyrics_ruby_generating">Menghasilkan ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Deteksi bagian dengan AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Hanya digunakan ketika penyedia tidak menyertakan label bagian seperti Refrain atau Strofa, yang kemudian dideteksi oleh model kompatibel OpenAI Anda. Mengedit baris juga membuka promtnya</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL titik akhir API (mis. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

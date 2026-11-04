@@ -60,6 +60,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
@@ -72,6 +73,8 @@ import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
 import app.morphe.extension.music.patches.lyrics.session.LockScreenLyrics;
 import app.morphe.extension.music.patches.lyrics.session.MiniplayerLyrics;
 import app.morphe.extension.music.patches.lyrics.derive.AiProviders;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsRubyGenerator;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsRubyGenerator.RubyStyle;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsTranslator;
 import app.morphe.extension.music.patches.lyrics.derive.QuickLRCClient;
@@ -149,6 +152,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     /** Shows the pronunciation above each line, which the app's own romanize icon does. */
     private static final String APP_ROMANIZE_ICON = "morphe_yt_romanize";
 
+    /** Own icon of a kana with dots above it. */
+    private static final String RUBY_ICON = "morphe_yt_ruby";
+
     private static final String REFRESH_ICON = "ic_mtrl_arrow_circle";
 
     /** Own icon, because the app ships no copy icon of its own. */
@@ -158,6 +164,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private final Runnable updateTranslateLabelRunnable = this::updateTranslateLabel;
     private final Runnable updateRomanizeLabelRunnable = this::updateRomanizeLabel;
 
+    private final DynamicBackgroundView dynamicBackgroundView;
     private final ScrollView scrollView;
     private final LinearLayout linesContainer;
     private final TextView creditView;
@@ -166,6 +173,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private TextView translateView;
     @Nullable
     private TextView romanizeView;
+    @Nullable
+    private TextView rubyView;
     /** The pill standing in for both buttons while the dual mode is up. */
     @Nullable
     private TextView dualPillView;
@@ -213,11 +222,13 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     @Nullable
     private TrackInfo lastKnownTrack;
     private final Runnable refreshLabelResetRunnable = this::updateRefreshLabel;
+    private final Runnable rubyLabelResetRunnable = this::updateRubyLabel;
     private boolean translateInProgress;
     private boolean romanizeInProgress;
     private int translateRequestId;
     private int romanizeRequestId;
     private int transcribeRequestId;
+    private int rubyRequestId;
     /** Set while a run is going, so the affordances can say so before the client knows it. */
     private boolean transcribeBusy;
     /** The aligned lyrics waiting to be applied, and the track they belong to. */
@@ -487,6 +498,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     public LyricsPanelView(Context context) {
         super(context);
+
+        dynamicBackgroundView = new DynamicBackgroundView(context);
+        dynamicBackgroundView.setVisibility(Settings.LYRICS_DYNAMIC_BACKGROUND.get() ? VISIBLE : GONE);
+        addView(dynamicBackgroundView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
         final int horizontalPadding = Dim.dp24;
         final int verticalPadding = Dim.dp16;
@@ -859,6 +874,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             // A transcription in flight belongs to the track that just left.
             transcribeRequestId++;
             transcribeBusy = false;
+            rubyRequestId++;
+            updateRubyLabel();
             QuickLRCClient.cancel();
             pendingAlignment = null;
             pendingAlignmentTrack = null;
@@ -870,6 +887,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
             switch (state) {
                 case LOADING:
+                    dynamicBackgroundView.setVideoId(VideoInformation.getVideoId());
                     if (newLyrics == null || newLyrics.isEmpty()) {
                         showLoading();
                     } else {
@@ -885,7 +903,13 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                             updateRefreshLabel();
                         }
                     } else {
-                        showLyrics(newLyrics);
+                        dynamicBackgroundView.setVideoId(VideoInformation.getVideoId());
+                        if (Settings.LYRICS_RUBY.get()) {
+                            applyRuby(newLyrics);
+                            newLyrics = lyrics;
+                        } else {
+                            showLyrics(newLyrics);
+                        }
                         setOverlayVisible(true);
                         if (Settings.LYRICS_TRANSLATE_ONLY.get()) {
                             requestTranslateOnly(newLyrics);
@@ -1322,7 +1346,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             final int effectiveLeadIdx = isSec ? currentParentIdx : i;
             final boolean initialActive = !newLyrics.synced()
                     || (reusePrevious && (effectiveLeadIdx == prevHighlighted || i == prevHighlighted));
-            lineView.setActiveLine(initialActive, LyricsColors.secondaryTextColor());
+            lineView.setActiveLine(initialActive);
             lineView.setTextSize(TypedValue.COMPLEX_UNIT_SP,
                     LyricsViewSupport.lineTextSizeSp(isSec, textSize));
             lineView.setTextColor(foregroundColor);
@@ -1338,8 +1362,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             lineView.setPadding(0, isSec ? Dim.dp(2) : Dim.dp(8), 0, isSec ? Dim.dp(2) : Dim.dp(8));
             lineView.setIncludeFontPadding(false);
             lineView.getPaint().setElegantTextHeight(true);
-            lineView.setTypeface(null, Typeface.BOLD);
+            lineView.setTypeface(Typeface.DEFAULT_BOLD);
             LyricsViewSupport.applyLyricsBoldPaint(lineView.getPaint());
+            lineView.setFontVariationSettings(null);
             lineView.setLetterSpacing(LyricsViewSupport.lineLetterSpacing(line.text(), textSize));
 
             if (newLyrics.synced()) {
@@ -2405,10 +2430,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     private void clearActiveLineState() {
-        final int color = LyricsColors.secondaryTextColor();
         for (TextView lineView : lineViews) {
             if (lineView instanceof LyricsLineView view) {
-                view.setActiveLine(false, color);
+                view.setActiveLine(false);
             }
         }
     }
@@ -2829,6 +2853,80 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     || (onlyMode == OnlyMode.TRANS && Settings.LYRICS_ROMANIZE.get());
             setButtonLabel(romanizeView, null, on);
         }
+    }
+
+    private void updateRubyLabel() {
+        if (rubyView != null) {
+            setButtonLabel(rubyView, null, Settings.LYRICS_RUBY.get());
+        }
+    }
+
+    private void onRubyClicked() {
+        try {
+            if (rubyView == null) {
+                return;
+            }
+            final boolean on = !Settings.LYRICS_RUBY.get();
+            Settings.LYRICS_RUBY.save(on);
+            updateRubyLabel();
+            if (lyrics == null) {
+                return;
+            }
+            if (on) {
+                applyRuby(lyrics);
+            } else {
+                // The readings stay on the words and are only drawn while the setting is on.
+                rubyRequestId++;
+                showLyrics(lyrics);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onRubyClicked failure", ex);
+        }
+    }
+
+    /** Switches the readings between hiragana and katakana, and turns them on if they are off. */
+    private void onRubyLongPressed() {
+        try {
+            final RubyStyle style = Settings.LYRICS_RUBY_STYLE.get() == RubyStyle.HIRAGANA
+                    ? RubyStyle.KATAKANA
+                    : RubyStyle.HIRAGANA;
+            Settings.LYRICS_RUBY_STYLE.save(style);
+            Settings.LYRICS_RUBY.save(true);
+            flashButtonLabel(rubyView, str("morphe_music_lyrics_ruby_style_entry_"
+                    + style.name().toLowerCase(Locale.US)), rubyLabelResetRunnable, 1500);
+            if (lyrics != null) {
+                applyRuby(lyrics);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onRubyLongPressed failure", ex);
+        }
+    }
+
+    /**
+     * Shows the readings that are known right away, then asks the AI provider, if one is on,
+     * for the rest.
+     */
+    private void applyRuby(Lyrics current) {
+        final Lyrics local = LyricsRubyGenerator.applyLocal(current);
+        lyrics = local;
+        showLyrics(local);
+
+        final int requestId = ++rubyRequestId;
+        TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
+        if (track == null || !LyricsRubyGenerator.usesAi(local)) {
+            return;
+        }
+        setButtonLabel(rubyView, str("morphe_music_lyrics_ruby_generating"), true);
+        LyricsRubyGenerator.requestAi(track, local, generated -> {
+            if (requestId != rubyRequestId) {
+                return;
+            }
+            updateRubyLabel();
+            if (generated != local) {
+                lyrics = generated;
+                showLyrics(generated);
+            }
+        });
     }
 
     private void onRefreshClicked() {
@@ -3539,13 +3637,12 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         if (index < 0 || current == null) {
             return;
         }
-        final int color = LyricsColors.secondaryTextColor();
         if (index < lineViews.size() && lineViews.get(index) instanceof LyricsLineView view) {
-            view.setActiveLine(active, color);
+            view.setActiveLine(active);
         }
         forEachBgLine(index, current, i -> {
             if (lineViews.get(i) instanceof LyricsLineView view) {
-                view.setActiveLine(active, color);
+                view.setActiveLine(active);
             }
         });
     }
@@ -4222,6 +4319,15 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 },
                 true);
 
+        rubyView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_RUBY_BUTTON.get(),
+                RUBY_ICON,
+                view -> onRubyClicked(),
+                view -> {
+                    onRubyLongPressed();
+                    return true;
+                },
+                true);
+
         refreshView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_REFRESH_BUTTON.get(),
                 REFRESH_ICON,
                 view -> onRefreshClicked(),
@@ -4245,6 +4351,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         createToolbarButtons();
         updateTranslateLabel();
         updateRomanizeLabel();
+        updateRubyLabel();
         updateRefreshLabel();
         if (transcribePromptView.getVisibility() == VISIBLE) {
             showOnlyRefreshButton();
@@ -4388,6 +4495,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         final boolean visible = !Settings.LYRICS_HIDE_INFO.get()
                 && info != null && info.length() > 0;
         creditView.setVisibility(visible ? VISIBLE : GONE);
+    }
+
+    public void applyDynamicBackgroundSettings() {
+        dynamicBackgroundView.setVisibility(Settings.LYRICS_DYNAMIC_BACKGROUND.get() ? VISIBLE : GONE);
+        dynamicBackgroundView.onSettingsChanged();
     }
 
     public void applyLineOverlaySettings() {
@@ -4865,7 +4977,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         for (int i = 0; i < count; i++) {
             if (lineViews.get(i) instanceof LyricsLineView view && view.isSecondary()) {
                 final boolean visible = shouldBgLineBeVisible(current, activeLeadIdx, i, posMs);
-                view.setActiveLine(visible, LyricsColors.secondaryTextColor());
+                    view.setActiveLine(visible);
                 view.animateSecondaryExpansion(visible, false);
             }
         }

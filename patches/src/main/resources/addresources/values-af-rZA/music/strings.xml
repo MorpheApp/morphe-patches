@@ -625,6 +625,10 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_hide_played_summary">Versteek liriekreëls bo die reël wat tans speel</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Versteek ongespeelde lirieke</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Herstel verskaffers na die standaard prioriteitsorde.</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dinamiiese agtergrond</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Wys \'n vervaagde agtergrond wat uit die albumkunst gemaak is agter die lirieke</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animeer dinamiiese agtergrond</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Beweeg die agtergrond terwyl dit speel, en laat dit pols saam met die musiek as YouTube Music die mikrofoontoestemming het. Skakel af vir \'n stil agtergrond wat minder battery gebruik</string>
   <string name="morphe_music_lyrics_mediasession_title">Wys MediaSession-lirieke op die sluitskerm</string>
   <string name="morphe_music_lyrics_mediasession_summary">Wys die huidige lyn op die sluitingsskerm, Android Auto en Bluetooth. Benodig Android 11 of nuwer</string>
   <string name="morphe_music_lyrics_miniplayer_title">Wys romaniseer-knoppie</string>
@@ -723,7 +727,7 @@ Liriek kom van derdeparty diensverskaffers wat nie aan Morphe gelink, gesponsord
   <string name="morphe_music_lyrics_hide_info_title">Lirieke-bron?</string>
   <string name="morphe_music_lyrics_hide_info_summary">Lirieke word gesoek volgens kunstenaar en titel, […] Jy kan ook die verfris-knoppie probeer om handmatig van weergawe te wissel. […] Alle verskaffers word nie altyd in die bestelling versoek nie, maar reageer op grond van hul spoed</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Lirieke-bron?</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">AAN sit romanisering of transliterasie onder lirieke en vertaling bo; UIT hou romanisering of transliterasie bo en vertaling onder. \'n Lesing wat oor elke silabe plaas beweeg saam daarmee, van bo sy silabe na onder dit</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Ruil die vertoningsvolgorde van vertaling en romanisering onder die lirieke om</string>
   <string name="morphe_music_lyrics_force_center_title">Altyd lirieke sentreer</string>
   <string name="morphe_music_lyrics_force_center_summary">AAN plaas elke lyn in die middel en ignoreer die bronuitligting, insluitend duet-sye; UIT hou die uitligging wat die lirieke versoek</string>
   <string name="morphe_music_lyrics_providers_keep_one">Ten minste een verskaffer moet aan bly</string>
@@ -731,6 +735,14 @@ Liriek kom van derdeparty diensverskaffers wat nie aan Morphe gelink, gesponsord
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisering of transliterasie</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Afvalwoordeboek</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime-Woordlys</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Vanlyn-woordeboek</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby-skrif</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Wys Ruby-knoppie</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Tik om ruby-leesings bo lirieke te wissel; hou lank gedruk om tussen hiragana en katakana te wissel. Gebruik die geaktiveerde ruby-verskaffers in hul gelyste volgorde</string>
+  <string name="morphe_music_lyrics_ruby_generating">Genereer ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Detecteer afdelings met AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Slegs gebruik wanneer die verskaffer geen sektorlabelle soos Refrein of Strofe stuur nie, wat jou OpenAI-kompatibele model dan detecteer. Die redigering van die ry open ook sy spoortjie</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-eindpunt-URL (bv. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

@@ -101,7 +101,7 @@ Zmiany obejmują:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ukryj przycisk \"Powiadom mnie\"</string>
-  <string name="morphe_hide_notify_me_button_summary">Ukrywa przycisk przypomnienia dla zaplanowanych transmisji na żywo i premier</string>
+  <string name="morphe_hide_notify_me_button_summary">Ukrywa przycisk przypomnienia przy zaplanowanych transmisjach na żywo i premierach</string>
   <string name="morphe_hide_playables_title">Ukryj pokój gier</string>
   <string name="morphe_hide_playables_summary">Ukrywa funkcję umożliwiającą granie w gry wewnątrz aplikacji</string>
   <string name="morphe_hide_search_term_thumbnails_title">Ukryj miniaturki sugestii wyszukiwania</string>
@@ -260,9 +260,8 @@ Zmiany obejmują:
   <string name="morphe_comments_screen_title">Komentarze</string>
   <string name="morphe_comments_screen_summary">Zdecyduj, które elementy będą wyświetlane w sekcji komentarzy</string>
   <string name="morphe_hide_comments_carousel_title">Włącz filtr karuzeli komentarzy</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Upewnij się, że wprowadzasz dokładną nazwę elementu karuzeli (np. Pytania, Podbij ten film, Słuchaj w YouTube Music itp.)
-• Ukrywanie elementów karuzeli może mieć nieoczekiwane skutki uboczne
-• Jeśli wszystkie elementy karuzeli zostaną ukryte, cała sekcja komentarzy również zostanie ukryta"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Wprowadź słowo kluczowe lub pełną nazwę (np. Zapytaj, Społeczność, Podbicie, Słuchaj)
+• Ukrycie wszystkich elementów spowoduje ukrycie całej sekcji komentarzy"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Karuzele do ukrycia</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Wprowadź nazwy elementów karuzeli do filtrowania, każda w nowej linii</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Ukryj podsumowanie czatu wygenerowane przez AI</string>
@@ -595,6 +594,11 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_vot_mymemory_quota_message_no_email">Wykorzystano dzisiejszy darmowy limit tłumaczeń MyMemory (5000 znaków). Dodaj adres e-mail MyMemory w ustawieniach, aby zwiększyć dzienny limit do 50 000 znaków, lub zmień usługę tłumaczenia</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Wykorzystano dzisiejszy limit tłumaczeń MyMemory (50 000 znaków). Zmień usługę tłumaczenia lub spróbuj ponownie jutro</string>
   <string name="morphe_vot_mymemory_error">Tłumaczenie MyMemory nie powiodło się (status %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Poszerz uchwyty przeciągania w \"Do obejrzenia\"</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Uchwyty do przeciągania filmów na playliście \"Do obejrzenia\" są łatwiejsze do chwycenia</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Ukryj komunikat o usunięciu z \"Do obejrzenia\"</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Nie wyświetla potwierdzenia po usunięciu filmu z playlisty \"Do obejrzenia\"</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Włącz zapętlanie filmu</string>
   <string name="morphe_do_not_remember_loop_video_title">Nie zapamiętuj zapętlania</string>
@@ -759,10 +763,10 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
 ​Aby to naprawić, włącz \"Fałszowanie strumieni filmów\" i zmień \"Domyślny klient\" na \"TV Simply\" lub \"visionOS\""</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Włącz przewijanie przesunięciem palca</string>
-  <string name="morphe_slide_to_seek_summary">Włącza przewijanie przesunięciem palca zamiast odtwarzania w prędkości 2x po przytrzymaniu odtwarzacza</string>
+  <string name="morphe_slide_to_seek_summary">Przytrzymaj film, a następnie przesuń palcem, aby przewijać, zamiast odtwarzać z prędkością 2,0x</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Włącz przewijanie dotknięciem</string>
-  <string name="morphe_tap_to_seek_summary">Wystarczy dotknąć paska postępu, aby przeskoczyć do danego momentu bez przeciągania suwaka</string>
+  <string name="morphe_tap_to_seek_summary">Dotknij dowolnego miejsca na pasku postępu, aby przeskoczyć do wybranego momentu, zamiast przeciągać suwak</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gest przesunięcia w lewo</string>
   <string name="morphe_swipe_right_zone_title">Gest przesunięcia w prawo</string>
@@ -937,16 +941,15 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Ukryj przycisk Powiadomienia</string>
   <string name="morphe_show_search_button_title">Pokaż przycisk Szukaj</string>
-  <string name="morphe_show_search_button_index_title">Pozycja przycisku Szukaj</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Pokaż przycisk \"Do obejrzenia\"</string>
-  <string name="morphe_show_watch_later_button_index_title">Pozycja przycisku \"Do obejrzenia\"</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Do obejrzenia</string>
   <string name="morphe_show_settings_button_title">Pokaż przycisk Ustawienia</string>
-  <string name="morphe_show_settings_button_index_title">Pozycja przycisku Ustawienia</string>
   <string name="morphe_show_settings_button_type_title">Działanie przycisku Ustawienia</string>
   <string name="morphe_show_settings_button_type_summary">Otwiera ustawienia Morphe, gdy funkcja jest włączona, lub ustawienia YouTube, gdy jest wyłączona</string>
+  <string name="morphe_navigation_buttons_order_title">Kolejność przycisków nawigacji</string>
+  <string name="morphe_navigation_buttons_order_summary">Przeciągnij przyciski, aby zmienić ich kolejność na pasku nawigacji</string>
   <string name="morphe_swap_create_with_notifications_button_title">Zamień przycisk Utwórz z przyciskiem Powiadomienia</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Jeśli zmiana tego ustawienia nie przyniesie efektu, spróbuj przełączyć się w tryb incognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Ukryj etykiety przycisków nawigacji</string>
@@ -954,7 +957,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_hide_navigation_bar_title">Ukryj pasek nawigacji</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"To całkowicie ukrywa pasek nawigacji, w tym zakładkę \"Ty\".
 
-Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi → Przycisk Ustawienia"</string>
+Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi → Pokaż przycisk Ustawienia"</string>
   <string name="morphe_narrow_navigation_buttons_title">Włącz wąskie przyciski nawigacji</string>
   <string name="morphe_narrow_navigation_buttons_summary">Zmniejsza poziome odstępy między przyciskami</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Wyłącz przyciski nawigacji bez etykiet</string>
@@ -971,12 +974,18 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_navigation_bar_style_entry_3">Przezroczysty</string>
   <string name="morphe_navigation_bar_style_entry_4">Nieprzezroczysty</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Ten styl może nie być obsługiwany przez Twoje urządzenie lub wersję YouTube i może powodować błędy układu lub awarie aplikacji</string>
+  <string name="morphe_navigation_bar_glass_title">Włącz szklany pasek nawigacji</string>
+  <string name="morphe_navigation_bar_glass_summary">Wyświetla pasek nawigacji jako pływającą, zaokrągloną, półprzezroczystą kapsułkę. Niedostępne przy nieprzezroczystym stylu paska nawigacji</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Krycie szkła</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Dostosuj poziom krycia szklanego paska nawigacji (0 to pełna przezroczystość, 100 to brak przezroczystości)</string>
   <string name="morphe_toolbar_screen_title">Pasek narzędzi</string>
   <string name="morphe_toolbar_screen_summary">Zdecyduj, które elementy będą wyświetlane na pasku narzędzi</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ukryj przycisk Czat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ukryj przycisk Mikrofon</string>
   <string name="morphe_hide_toolbar_search_button_title">Ukryj przycisk Szukaj</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Gdy włączone, dotknięcie otwiera ustawienia Morphe, a przytrzymanie ustawienia YouTube. Wyłącz, aby odwrócić te akcje</string>
+  <string name="morphe_toolbar_buttons_order_title">Kolejność przycisków paska narzędzi</string>
+  <string name="morphe_toolbar_buttons_order_summary">Przeciągnij przyciski, aby zmienić ich kolejność na pasku narzędzi</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu wysuwane</string>
   <string name="morphe_hide_player_flyout_summary">Zdecyduj, które elementy będą wyświetlane w menu wysuwanym filmu</string>
@@ -1267,7 +1276,7 @@ Układ samochodowy
   <string name="morphe_feed_card_layout_comments">Komentarze</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Wyłącz wznawianie filmu w miniodtwarzaczu</string>
-  <string name="morphe_miniplayer_disable_resuming_summary">Wyłącza miniodtwarzacz \"Kontynuuj oglądanie\", funkcję YouTube Premium wyświetlaną przy starcie aplikacji</string>
+  <string name="morphe_miniplayer_disable_resuming_summary">Wyłącza miniodtwarzacz \"Oglądaj dalej\", funkcję YouTube Premium wyświetlaną przy starcie aplikacji</string>
   <string name="morphe_miniplayer_screen_title">Miniodtwarzacz</string>
   <string name="morphe_miniplayer_screen_summary">Dostosuj wygląd i zachowanie miniodtwarzacza</string>
   <string name="morphe_miniplayer_not_available_title">Dodatkowe miniodtwarzacze</string>

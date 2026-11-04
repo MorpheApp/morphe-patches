@@ -630,6 +630,10 @@ Rime-ийн үгсийн жагсаалтад уншуулах жагсаалт�
   <string name="morphe_music_lyrics_hide_played_summary">Одоо тоглож буй мөрөөс дээгүүрх дууны үгсийг нуух</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Дуулаагүй үгсийг нуух</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Одоо тоглож буй мөрөөс доогуурх дууны үгсийг нуух</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Динамик дэвсгэр</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Дууны үгний ард цомгийн зургаас бүрдсэн бүрхэг дэвсгэр харуулах</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Динамик дэвсгэрийг хөдөлгөөнд оруулах</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Тоглуулах үед дэвсгэрийг хөдөлгөх бөгөөд хэрэв YouTube Music микрофоны зөвшөөрөлтэй бол хөгжмийн хэмнэлээр гүрэлзүүлнэ. Батерейг бага зарцуулах хөдөлгөөнгүй дэвсгэр ашиглахын тулд үүнийг унтраана уу</string>
   <string name="morphe_music_lyrics_mediasession_title">Түгээн дэлгэц дээр MediaSession-ий дууны үгийг харуулах</string>
   <string name="morphe_music_lyrics_mediasession_summary">Түгжээтэй дэлгэц, Android Auto болон Bluetooth дээр одоогийн мөрийг харуулна. Android 11 эсвэл түүнээс шинэ хувилбар шаардлагатай</string>
   <string name="morphe_music_lyrics_miniplayer_title">Мини-тоглуулагчийн дууны үгийг харуулах</string>
@@ -728,7 +732,7 @@ Rime-ийн үгсийн жагсаалтад уншуулах жагсаалт�
   <string name="morphe_music_lyrics_hide_info_title">Зээрийн мөрийг нуух</string>
   <string name="morphe_music_lyrics_hide_info_summary">Дууны үгний доор харагдаж буй зээрийн мөрийг нуух</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Орчуулга болон романизацийг солих</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">АСААХ нь романизаци эсвэл галиглалыг дууны үгний доор, орчуулгыг дээр нь байрлуулна; УНТРААХ нь романизаци эсвэл галиглалыг дээр, орчуулгыг доор нь хэвээр үлдээнэ. Үг бүрийн дээр байрласан уншлага нь тэрхүү үгтэй хамт дээрээс нь доошоо шилжинэ</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Дууны үгний доорх орчуулга болон романизацийн харагдах дарааллыг солих</string>
   <string name="morphe_music_lyrics_force_center_title">Дууны үгнүүдийг үргэлж төвлөрүүлэх</string>
   <string name="morphe_music_lyrics_force_center_summary">АСААХ нь эх сурвалжийн тэгшилэл тэр дундаа дуэт хэсгүүдийг үл тоомсорлож, мөр бүрийг голлуулна; УНТРААХ нь дууны үгний анхны тэгшилэлээр хэвээр үлдээнэ</string>
   <string name="morphe_music_lyrics_providers_keep_one">Наад зах нь нэг нийлүүлэгчийг асаалттай байлгах ёстой</string>
@@ -736,6 +740,14 @@ Rime-ийн үгсийн жагсаалтад уншуулах жагсаалт�
   <string name="morphe_music_lyrics_romanization_provider_title">Романизаци эсвэл галиглал</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Офлайн толь</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime үгсийн жагсаалт</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Руби</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Офлайн толь бичиг</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby скрипт</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хирагана (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Ruby-г харуулах товч</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Дууны үгний дээр ruby уншлагыг идэвхжүүлэх/идэвхгүй болгохын тулд товшино; хирагана болон катакана хооронд шилжүүлэхийн тулд удаан дарна. Идэвхжүүлсэн ruby провайдеруудыг жагсаалтын дагуу ашиглана</string>
+  <string name="morphe_music_lyrics_ruby_generating">Ruby үүсгэж байна...</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI ашиглан хэсгүүдийг тодорхойлох</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Зөвхөн нийлүүлэгч тал Дахилт эсвэл Багц гэх мэт хэсгийн шовгог илгээгээгүй тохиолдолд ашиглагдах бөгөөд OpenAI-тай нийцтэй модель тань тэдгээрийг тодорхойлно. Мөрөн дээр засвар хийхэд түүний prompt нээгдэнэ</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (ж.нь https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

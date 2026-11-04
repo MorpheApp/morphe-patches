@@ -260,9 +260,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">دیدگاه‌ها</string>
   <string name="morphe_comments_screen_summary">انتخاب کنید کدام مؤلفه‌ها در بخش دیدگاه‌ها نمایش داده شوند</string>
   <string name="morphe_hide_comments_carousel_title">فعال‌کردن فیلتر گردونهٔ دیدگاه‌ها</string>
-  <string name="morphe_hide_comments_carousel_summary">"• حتماً نام دقیق مورد گردونه را وارد کنید (مثلاً پرسش، Hype این ویدئو، گوش‌دادن در YouTube Music)
-• پنهان‌کردن موارد گردونه ممکن است عوارض ناخواسته داشته باشد
-• اگر همهٔ موارد گردونه پنهان شوند، کل بخش دیدگاه‌ها نیز پنهان می‌شود"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• یک کلمه کلیدی یا نام کامل را وارد کنید (مثلاً Ask، Community، Hype، Listen)
+• پنهان کردن همه موارد، کل بخش نظرات را پنهان می‌کند"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">فیلتر گردونهٔ دیدگاه‌ها</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">نام‌های گردونهٔ دیدگاه‌ها را که باید بر اساس آن‌ها فیلتر شود، هرکدام در خطی جدا وارد کنید</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">پنهان‌کردن خلاصهٔ گفت‌وگوی هوش مصنوعی</string>
@@ -496,7 +495,7 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_like_ratio_title">نمایش درصد لایک‌های بندانگشتی فید</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">جست‌وجوی نظرات</string>
-  <string name="morphe_search_comments_summary">برای نمایش نظرات بارگذاری‌شده‌ای که شامل تمام کلمات جست‌وجو شده هستند، روی دکمه جست‌وجو در نظرات ضربه بزنید. برای جست‌وجوی یک عبارت، کلمات را داخل علامت نقل‌قول قرار دهید</string>
+  <string name="morphe_search_comments_summary">روی دکمهٔ جست‌وجو در نظرات ضربه بزنید تا فقط نظرات بارگذاری‌شده‌ای که شامل تمام کلمات جست‌وجوشده هستند نمایش داده شوند. برای جست‌وجوی یک عبارت، کلمات را داخل علامت نقل‌قول قرار دهید</string>
   <string name="morphe_search_comments_dialog_title">جست‌وجوی نظرات</string>
   <string name="morphe_search_comments_hint">کلمات مورد نظر برای جست‌وجو</string>
   <string name="morphe_search_comments_search">جست‌وجو</string>
@@ -595,6 +594,11 @@ Second \"item\" text"</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">سهمیهٔ رایگان ترجمهٔ MyMemory امروز را مصرف کرده‌اید (۵۰۰۰ نویسه). برای افزایش محدودیت روزانه به ۵۰۰۰۰ نویسه، یک ایمیل MyMemory در تنظیمات اضافه کنید یا به سرویس ترجمهٔ دیگری تغییر دهید</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">سهمیهٔ ترجمهٔ MyMemory امروز را مصرف کرده‌اید (۵۰۰۰۰ نویسه). به سرویس ترجمهٔ دیگری تغییر دهید یا فردا دوباره تلاش کنید</string>
   <string name="morphe_vot_mymemory_error">ترجمهٔ MyMemory ناموفق بود (وضعیت %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">عریض‌تر کردن دستگیره‌های کشیدن «بعداً می‌بینم»</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">دستگیره‌های کشیدن ویدیوهای \"بعداً می‌بینم\" راحت‌تر قابل گرفتن هستند</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">مخفی کردن اسنک‌بار حذف از \"بعداً می‌بینم\"</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">پس از حذف یک ویدیو از \"بعداً می‌بینم\"، تاییدیه نمایش داده نمی‌شود</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">فعال‌کردن تکرار ویدئو</string>
   <string name="morphe_do_not_remember_loop_video_title">به‌خاطر نسپردن تکرار ویدئو</string>
@@ -759,10 +763,10 @@ Second \"item\" text"</string>
 برای رفع این مشکل، «جعل جریان‌های ویدئویی» را روشن و «کلاینت پیش‌فرض» را به «TV Simply» یا «visionOS» تغییر دهید"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">فعال‌کردن کشیدن برای جست‌وجو</string>
-  <string name="morphe_slide_to_seek_summary">به‌جای پخش با سرعت ۲× هنگام فشردن و نگه‌داشتن پخش‌کننده، امکان کشیدن برای جست‌وجو را فعال می‌کند</string>
+  <string name="morphe_slide_to_seek_summary">برای لغزاندن و جست‌وجو به جای پخش با سرعت ۲ برابر، ویدیو را فشار داده و نگه دارید</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">فعال‌کردن ضربه برای جست‌وجو</string>
-  <string name="morphe_tap_to_seek_summary">برای رفتن به آن موقعیت، فقط روی نوار جست‌وجو ضربه بزنید و آن را نکشید</string>
+  <string name="morphe_tap_to_seek_summary">برای پرش به آن موقعیت، به جای کشیدن، روی هر جای نوار جست‌وجو ضربه بزنید</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">حرکت کشیدن به چپ</string>
   <string name="morphe_swipe_right_zone_title">حرکت کشیدن به راست</string>
@@ -937,22 +941,22 @@ Second \"item\" text"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">پنهان‌کردن دکمهٔ اعلان‌ها</string>
   <string name="morphe_show_search_button_title">نمایش دکمهٔ جست‌وجو</string>
-  <string name="morphe_show_search_button_index_title">جایگاه دکمهٔ جست‌وجو</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">بعداً تماشا می‌کنم</string>
   <string name="morphe_show_settings_button_title">نمایش دکمهٔ تنظیمات</string>
-  <string name="morphe_show_settings_button_index_title">جایگاه دکمهٔ تنظیمات</string>
   <string name="morphe_show_settings_button_type_title">عملیات دکمهٔ تنظیمات</string>
   <string name="morphe_show_settings_button_type_summary">وقتی فعال باشد تنظیمات Morphe را باز می‌کند و وقتی غیرفعال باشد تنظیمات YouTube را باز می‌کند</string>
+  <string name="morphe_navigation_buttons_order_title">ترتیب دکمه‌های پیمایش</string>
+  <string name="morphe_navigation_buttons_order_summary">دکمه‌ها را بکشید تا ترتیب آن‌ها در نوار پیمایش تغییر کند</string>
   <string name="morphe_swap_create_with_notifications_button_title">جابه‌جایی دکمهٔ ساخت با دکمهٔ اعلان‌ها</string>
   <string name="morphe_swap_create_with_notifications_button_summary">اگر تغییر این تنظیم اعمال نشد، حالت ناشناس را روشن و خاموش کنید</string>
   <string name="morphe_hide_navigation_button_labels_title">پنهان‌کردن برچسب‌های دکمه‌های پیمایش</string>
   <string name="morphe_hide_navigation_new_content_dot_title">پنهان کردن نقطه محتوای جدید</string>
   <string name="morphe_hide_navigation_bar_title">پنهان‌کردن نوار پیمایش</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"این کار نوار پیمایش، از جمله برگهٔ «شما» را کاملاً پنهان می‌کند.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"این کار نوار پیمایش، از جمله برگهٔ «شما» را کاملاً پنهان می‌کند
 
-برای دسترسی به تنظیمات، دکمهٔ تنظیمات را از مسیر کلی > نوار ابزار > نمایش تنظیمات فعال کنید"</string>
+برای دسترسی به تنظیمات، دکمهٔ تنظیمات را از مسیر کلی ← نوار ابزار ← نمایش دکمهٔ تنظیمات فعال کنید"</string>
   <string name="morphe_narrow_navigation_buttons_title">فعال‌کردن دکمه‌های پیمایش باریک</string>
   <string name="morphe_narrow_navigation_buttons_summary">فاصلهٔ افقی بین دکمه‌ها را کاهش می‌دهد</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">غیرفعال کردن دکمه‌های ناوبری بدون برچسب</string>
@@ -969,12 +973,18 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_entry_3">شفاف</string>
   <string name="morphe_navigation_bar_style_entry_4">کدر</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">این استایل ممکن است توسط دستگاه شما یا نسخه YouTube پشتیبانی نشود و می‌تواند باعث بروز مشکلاتی در چیدمان یا کرش شود</string>
+  <string name="morphe_navigation_bar_glass_title">فعال‌سازی نوار پیمایش شیشه‌ای</string>
+  <string name="morphe_navigation_bar_glass_summary">نوار پیمایش را به صورت یک کپسول شناور، گرد و نیمه‌شفاف نمایش می‌دهد. با استایل نوار پیمایش کدر در دسترس نیست</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">شفافیت شیشه</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">سطح شفافیت نوار پیمایش شیشه‌ای را تنظیم کنید (۰ شفاف و ۱۰۰ کدر است)</string>
   <string name="morphe_toolbar_screen_title">نوار ابزار</string>
   <string name="morphe_toolbar_screen_summary">انتخاب کنید کدام مؤلفه‌ها در نوار ابزار نمایش داده شوند</string>
   <string name="morphe_hide_toolbar_chat_button_title">پنهان‌کردن دکمهٔ گفت‌وگو</string>
   <string name="morphe_hide_toolbar_microphone_button_title">پنهان‌کردن دکمهٔ میکروفون</string>
   <string name="morphe_hide_toolbar_search_button_title">پنهان‌کردن دکمهٔ جست‌وجو</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">وقتی فعال باشد، ضربه‌زدن تنظیمات Morphe و لمس طولانی تنظیمات YouTube را باز می‌کند؛ برای جابه‌جایی غیرفعال کنید</string>
+  <string name="morphe_toolbar_buttons_order_title">ترتیب دکمه‌های نوار ابزار</string>
+  <string name="morphe_toolbar_buttons_order_summary">دکمه‌ها را بکشید تا ترتیب آن‌ها در نوار ابزار تغییر کند</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">منوی بازشو</string>
   <string name="morphe_hide_player_flyout_summary">انتخاب کنید کدام مؤلفه‌ها در منوی بازشو نمایش داده شوند</string>
@@ -1723,6 +1733,9 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">حداکثر طول نظر</string>
   <string name="morphe_niconico_comments_max_length_summary">نظراتی که کاراکترهای بیشتری از این مقدار دارند را مخفی می‌کند. هر ایموجی به عنوان یک کاراکتر در نظر گرفته می‌شود</string>
   <string name="morphe_niconico_comments_max_length_no_limit">بدون محدودیت</string>
+  <string name="morphe_niconico_comments_live_premieres_title">نمایش در پخش‌های اولیه</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">نمایش در پخش‌های اولیه به پایان رسیده</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">بازپخش چت پخش‌های اولیه‌ای که به پایان رسیده‌اند</string>
   <string name="morphe_live_chat_translate_screen_title">ترجمهٔ چت زنده</string>
   <string name="morphe_live_chat_translate_screen_summary">ترجمهٔ پیام‌های چت زنده و بازپخش چت زنده</string>
   <string name="morphe_live_chat_translate_title">ترجمهٔ چت زنده</string>

@@ -630,6 +630,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_played_summary">پنهان‌کردن خطوط متن ترانه بالای خطِ در حال پخش</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">پنهان‌کردن متن ترانه‌های پخشنشده</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">پنهان‌کردن خطوط متن ترانه پایین خطِ در حال پخش</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">پس‌زمینه پویا</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">نمایش یک پس‌زمینه محو شده ساخته شده از کاور آلبوم در پشت متن ترانه</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">متحرک کردن پس‌زمینه پویا</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">در هنگام پخش، پس‌زمینه را حرکت دهید و اگر YouTube Music اجازه دسترسی به میکروفون را داشته باشد، آن را با موسیقی به حالت ضربانی درآورید. برای داشتن یک پس‌زمینه ثابت که باتری کمتری مصرف می‌کند، این گزینه را خاموش کنید</string>
   <string name="morphe_music_lyrics_mediasession_title">نمایش متن ترانه در MediaSession در صفحهٔ قفل</string>
   <string name="morphe_music_lyrics_mediasession_summary">خط فعلی را در صفحه قفل، Android Auto و Bluetooth نشان می‌دهد. نیازمند Android 11 یا جدیدتر است</string>
   <string name="morphe_music_lyrics_miniplayer_title">نمایش متن ترانه در پخش‌کنندهٔ کوچک‌شده</string>
@@ -728,7 +732,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">پنهان‌کردن خط اعتبار</string>
   <string name="morphe_music_lyrics_hide_info_summary">پنهان‌کردن خط اعتبار نمایش‌داده‌شده در پایین متن ترانه</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">جابجایی ترجمه و لاتین‌نویسی</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">روشن بودن رومنیزه کردن یا انتقال را زیر ترانه و ترجمه را بالای آن قرار می‌دهد; خاموش بودن رومنیزه کردن یا انتقال را بالای ترانه و ترجمه را پایین نگه می‌دارد. یک خوانش که روی هر سیلاب قرار می‌گیرد همراه با آن حرکت می‌کند، از بالای سیلاب به زیر آن</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ترتیب نمایش ترجمه و رومی‌نویسی را در زیر متن ترانه جابه‌جا می‌کند</string>
   <string name="morphe_music_lyrics_force_center_title">همیشه مرکز ترانه‌ها</string>
   <string name="morphe_music_lyrics_force_center_summary">روشن بودن هر خط را در وسط قرار داده و هم‌ترازی منبع را نادیده می‌گیرد، شامل طرف‌های دیوئلت; خاموش بودن هم‌ترازی درخواست شده توسط ترانه را نگه می‌دارد</string>
   <string name="morphe_music_lyrics_providers_keep_one">حداقل یک ارائه‌دهنده باید روشن بماند</string>
@@ -736,6 +740,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">رومنیزه کردن یا انتقال</string>
   <string name="morphe_music_lyrics_romanization_provider_local">لغت‌نامه آفلاین</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">لیست کلمات Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">روبی</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">دیکشنری آفلاین</string>
+  <string name="morphe_music_lyrics_ruby_style_title">اسکریپت Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">هیراگانا (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">کاتاکانا (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">نمایش دکمهٔ Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">برای تغییر وضعیت نمایش خوانش‌های Ruby بالای متن ترانه ضربه کنید؛ برای جابجایی بین هیراگانا و کاتاکانا فشار طولانی دهید. از تامین‌کنندگان Ruby فعال شده به ترتیب لیست شده استفاده می‌کند</string>
+  <string name="morphe_music_lyrics_ruby_generating">در حال تولید Ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">تشخیص بخش‌ها با AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">فقط زمانی استفاده می‌شود که ارائه‌دهنده هیچ برچسب بخشی مانند Chorus یا Verse ندارد که مدل سازگار با OpenAI شما سپس تشخیص دهد. ویرایش ردیف همچنین پرامپت آن را باز می‌کند</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL نقطه پایانی API (مثال https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

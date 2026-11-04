@@ -630,6 +630,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_played_summary">הסתר שורות מילים מעל השורה המושמעת כעת</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">הסתר מילים שטרם נוגנו</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">הסתר שורות מילים מתחת לשורה המושמעת כעת</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">רקע דינמי</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">הצג רקע מטושטש המבוסס על עטיפת האלבום מאחורי המילים</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">הנפש רקע דינמי</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">הזז את הרקע בזמן הניגון, והפעל דופק בהתאם למוזיקה אם ל-YouTube Music יש הרשאת מיקרופון. כבה לצורך רקע סטטי שצורך פחות סוללה</string>
   <string name="morphe_music_lyrics_mediasession_title">הצג מילות שיר של MediaSession במסך הנעילה</string>
   <string name="morphe_music_lyrics_mediasession_summary">מציג את הקו הנוכחי במסך הנעילה, Android Auto ובבלוטות\'. דורש אנדרואיד 11 או חדש יותר</string>
   <string name="morphe_music_lyrics_miniplayer_title">הצג מילות שיר במיני-נגן</string>
@@ -728,7 +732,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">הסתר שורת קרדיט</string>
   <string name="morphe_music_lyrics_hide_info_summary">הסתר את שורת הקרדיט המוצגת מתחת למילות השיר</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">החלף בין תרגום לרומניזציה</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON מציב רומניזציה או האברה מתחת למילים ותרגום מעל; OFF שומר רומניזציה או האברה מעל ותרגום מתחת. הגייה שמוצבת מעל כל צליל זזה איתה, מהמעל לצליל עד מתחת לצליל</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">מחליף את סדר התצוגה של התרגום והרומניזציה מתחת למילים</string>
   <string name="morphe_music_lyrics_force_center_title">תמיד למרכז מילים</string>
   <string name="morphe_music_lyrics_force_center_summary">ON מציב כל קו באמצע ולא מתעלם מהיישור המקורי, כולל צדדי דואט; OFF שומר על היישור שהמילים מבקשות</string>
   <string name="morphe_music_lyrics_providers_keep_one">חייב להישאר לפחות ספק אחד פעיל</string>
@@ -736,6 +740,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">רומניזציה או האברה</string>
   <string name="morphe_music_lyrics_romanization_provider_local">מילון חינתי</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">רשימת מילים של Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">רובי</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">מילון לא מקוון</string>
+  <string name="morphe_music_lyrics_ruby_style_title">סקריפט רובי</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">הירגאנה (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">קטאקאנה (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">הצג לחצן רובי</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">הקישו כדי להפעיל/לבטל קריאת רובי מעל המילים; לחיצה ארוכה למעבר בין הירגאנה לקטאקאנה. משתמש בספקי הרובי המופעלים לפי הסדר הרשום</string>
+  <string name="morphe_music_lyrics_ruby_generating">מייצר רובי...</string>
   <string name="morphe_music_lyrics_use_ai_section_title">גלה קטעים עם AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">משמש רק כאשר הספק לא מכיל תוויות קטע כמו Chorus או Verse, שהדגם התואם OpenAI שלך מאתר לאחר מכן. עריכת השורה פותחת גם את הפוקט שלו</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL נקודת API (למשל https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

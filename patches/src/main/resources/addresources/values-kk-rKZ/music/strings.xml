@@ -630,6 +630,10 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_hide_played_summary">Қазіргі орындалып жатқан жолдың жоғарғы мәтін жолдарын жасыру</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Орындалмаған мәтінді жасыру</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Қазіргі орындалып жатқан жолдың төменгі мәтін жолдарын жасыру</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Динамикалық фон</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Мәтіндердің артында альбом мұқабасынан жасалған бұлдыр фонды көрсету</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Динамикалық фонды анимациялау</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Ойнату кезінде фонды қозғалту және егер YouTube Music-те микрофонға рұқсат болса, оны музыкамен бірге пульсациялау. Батареяны аз жұмсау үшін статикалық фонды қолдану үшін өшіріңіз</string>
   <string name="morphe_music_lyrics_mediasession_title">Бұғатталған экранда MediaSession мәтінін көрсету</string>
   <string name="morphe_music_lyrics_mediasession_summary">Бұғаттау экранында, Android Auto және Bluetooth-та ағымдағы жолды көрсетеді. Android 11 немесе одан жоғары нұсқасы қажет</string>
   <string name="morphe_music_lyrics_miniplayer_title">Миниплеер мәтіндерін көрсету</string>
@@ -728,7 +732,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_hide_info_title">Кредит жолын жасыру</string>
   <string name="morphe_music_lyrics_hide_info_summary">Мәтін төменінде көрсетілген кредит жолын жасыру</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Аударма мен романизацияны алмастыру</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ҚОСЫЛДЫ күйінде романизация немесе транслитерация мәтіннің төменіне, ал аударма жоғарысына орналасады; ӨШІРІЛДІ күйінде романизация немесе транслитерация жоғарысында, ал аударма төменінде қалады. Әр буынның үстіне қойылған оқу белгісі буынмен бірге жоғарыдан төменге қозғалады</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Мәтіндердің астындағы аударма мен романизацияның көрсету ретін ауыстырады</string>
   <string name="morphe_music_lyrics_force_center_title">Мәтінді әрдайым ортаға қою</string>
   <string name="morphe_music_lyrics_force_center_summary">ҚОСЫЛДЫ күйінде әр жол ортаға қойылады және бастапқы тегістеу (соның ішінде дуэт жақтары) ескерілмейді; ӨШІРІЛДІ күйінде мәтінде көрсетілген тегістеу сақталады</string>
   <string name="morphe_music_lyrics_providers_keep_one">Кеміnde бір провайдер қосулы болуы керек</string>

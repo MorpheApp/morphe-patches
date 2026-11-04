@@ -621,6 +621,10 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_hide_played_summary">Sakrij stihove iznad reda koji se trenutno pušta.</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Sakrij neodsvirane stihove.</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Sakrij stihove ispod reda koji se trenutno pušta.</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dinamička pozadina</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Prikaži zamućenu pozadinu napravljenu od omota albuma iza teksta pesme</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animiraj dinamičku pozadinu</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Pomeraj pozadinu tokom reprodukcije i pulsiraj je uz muziku ako YouTube Music ima dozvolu za mikrofon. Isključi za statičnu pozadinu koja troši manje baterije</string>
   <string name="morphe_music_lyrics_mediasession_title">Prikaži MediaSession stihove na zaključanom ekranu.</string>
   <string name="morphe_music_lyrics_mediasession_summary">Prikazuje trenutnu liniju na zaključanom ekranu, Android Auto i Bluetooth-u. Potreban je Android 11 ili noviji</string>
   <string name="morphe_music_lyrics_miniplayer_title">Prikaži stihove u mini plejeru.</string>
@@ -719,7 +723,7 @@ Tekstovi pesama dolaze od usluga trećih strana koje nisu povezane s Morphe-om, 
   <string name="morphe_music_lyrics_hide_info_title">Sakrij red s informacijama</string>
   <string name="morphe_music_lyrics_hide_info_summary">Sakrij red s informacijama prikazan ispod stihova.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Promeni redosled prikaza izvođača i naslova</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">UKLJUČENO stavlja romanizaciju ili transliteraciju ispod tekstova a prevod iznad; ISKLJUČENO drži romanizaciju ili transliteraciju iznad i prevod ispod. Čitanje postavljeno preko svake sloga se seli sa njom, od iznad njenog sloga do ispod nje</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Menja redosled prikaza prevoda i romanizacije ispod teksta pesme</string>
   <string name="morphe_music_lyrics_force_center_title">Uvek centriraj tekstove</string>
   <string name="morphe_music_lyrics_force_center_summary">UKLJUČENO stavlja svaki red u sredinu i ignoriše poravnanje izvora, uključujući strane dueta; ISKLJUČENO zadržava poravnanje koje tekstovi traže</string>
   <string name="morphe_music_lyrics_providers_keep_one">Barem jedan provajder mora ostati uključen</string>

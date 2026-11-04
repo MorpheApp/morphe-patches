@@ -101,7 +101,7 @@ Les changements incluent :
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Masquer le bouton \'M\'avertir\'</string>
-  <string name="morphe_hide_notify_me_button_summary">Masque le bouton de rappel pour les diffusions en direct programmées et les premières</string>
+  <string name="morphe_hide_notify_me_button_summary">Masque le bouton de rappel pour les diffusions en direct programmées et les Premières</string>
   <string name="morphe_hide_playables_title">Masquer \'Jeux intégrés\'</string>
   <string name="morphe_hide_playables_summary">Masque la fonctionnalité permettant de jouer à des jeux</string>
   <string name="morphe_hide_search_term_thumbnails_title">Masquer les miniatures des termes de recherche</string>
@@ -260,9 +260,8 @@ Les changements incluent :
   <string name="morphe_comments_screen_title">Commentaires</string>
   <string name="morphe_comments_screen_summary">Choisissez les composants qui apparaissent dans la section des commentaires</string>
   <string name="morphe_hide_comments_carousel_title">Activer le filtre du carrousel de commentaires</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Assurez-vous d'entrer le nom exact de l'élément du carrousel (par ex. Posez une question, Boostez cette vidéo, Écouter sur YouTube Music)
-• Masquer des éléments du carrousel peut entraîner des effets secondaires inattendus
-• Si tous les éléments du carrousel sont masqués, toute la section des commentaires sera également masquée"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Entrez un mot-clé ou un nom complet (par ex. : Posez une question, Communauté, Boostez, Écouter)
+• Masquer tous les éléments masque l'intégralité de la section des commentaires"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Filtre du carrousel de commentaires</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Entrez les noms des carrousels de commentaires à filtrer, séparés par des sauts de ligne</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Masquer le résumé IA du chat</string>
@@ -595,6 +594,11 @@ Votre clé API ne doit jamais être partagée. Toute personne ayant accès à ce
   <string name="morphe_vot_mymemory_quota_message_no_email">Vous avez utilisé le quota gratuit de traduction MyMemory d\'aujourd\'hui (5,000 caractères). Ajoutez une adresse e-mail MyMemory dans les paramètres pour porter la limite quotidienne à 50,000 caractères, ou passez à un autre service de traduction</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Vous avez utilisé le quota de traduction MyMemory d\'aujourd\'hui (50,000 caractères). Passez à un autre service de traduction ou réessayez demain</string>
   <string name="morphe_vot_mymemory_error">La traduction via MyMemory a échoué (statut : %s).</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Élargir les poignées de déplacement de \'À regarder plus tard\'</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Les poignées de déplacement des vidéos de \'À regarder plus tard\' sont plus faciles à saisir</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Masquer la notification de suppression de \'À regarder plus tard\'</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">La confirmation ne s\'affiche pas après la suppression d\'une vidéo de \'À regarder plus tard\'</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Activer la lecture en boucle</string>
   <string name="morphe_do_not_remember_loop_video_title">Ne pas mémoriser la vidéo en boucle</string>
@@ -759,10 +763,10 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client p
 Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client par défaut' en 'TV Simply' ou 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Activer le déplacement par glissement</string>
-  <string name="morphe_slide_to_seek_summary">Active le glissement pour rechercher au lieu de la lecture en 2× lors d\'un appui long sur le lecteur vidéo</string>
+  <string name="morphe_slide_to_seek_summary">Appuyez longuement sur la vidéo pour faire glisser et naviguer au lieu de la lire à une vitesse 2x</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Activer la navigation par appui</string>
-  <string name="morphe_tap_to_seek_summary">Appuyez simplement sur la barre de progression pour accéder directement à cette position sans la faire glisser</string>
+  <string name="morphe_tap_to_seek_summary">Appuyez n\'importe où sur la barre de progression pour accéder directement à cette position au lieu de glisser</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Geste de balayage vers la gauche</string>
   <string name="morphe_swipe_right_zone_title">Geste de balayage vers la droite</string>
@@ -937,16 +941,15 @@ Les 'Cookies des sous-titres' doivent être fournis"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Masquer le bouton \'Notifications\'</string>
   <string name="morphe_show_search_button_title">Afficher un bouton \'Rechercher\'</string>
-  <string name="morphe_show_search_button_index_title">Position du bouton \'Rechercher\'</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
-  <string name="morphe_show_watch_later_button_title">Afficher le bouton \'À regarder plus tard\'</string>
-  <string name="morphe_show_watch_later_button_index_title">Position du bouton \'À regarder plus tard\'</string>
+  <string name="morphe_show_watch_later_button_title">Afficher un bouton \'À regarder plus tard\'</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">À regarder plus tard</string>
   <string name="morphe_show_settings_button_title">Afficher un bouton \'Paramètres\'</string>
-  <string name="morphe_show_settings_button_index_title">Position du bouton \'Paramètres\'</string>
   <string name="morphe_show_settings_button_type_title">Action du bouton \'Paramètres\'</string>
   <string name="morphe_show_settings_button_type_summary">Ouvre les paramètres Morphe lorsqu\'elle est activée, ou les paramètres YouTube lorsqu\'elle est désactivée</string>
+  <string name="morphe_navigation_buttons_order_title">Ordre des boutons de navigation</string>
+  <string name="morphe_navigation_buttons_order_summary">Faites glisser les boutons pour changer leur ordre dans la barre de navigation</string>
   <string name="morphe_swap_create_with_notifications_button_title">Inverser le bouton \'Créer\' avec le bouton \'Notifications\'</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Si la modification de ce paramètre ne prend pas effet, essayez de passer en mode navigation privée</string>
   <string name="morphe_hide_navigation_button_labels_title">Masquer les libellés des boutons de navigation</string>
@@ -954,7 +957,7 @@ Les 'Cookies des sous-titres' doivent être fournis"</string>
   <string name="morphe_hide_navigation_bar_title">Masquer la barre de navigation</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Cela masque complètement la barre de navigation, y compris l'onglet 'Vous'.
 
-Pour accéder aux paramètres, activez le bouton 'Paramètres' via Général → Barre d'outils → Afficher 'Paramètres'"</string>
+Pour accéder aux Paramètres, activez le bouton 'Paramètres' via 'Général' → Barre d'outils → Afficher un bouton 'Paramètres'"</string>
   <string name="morphe_narrow_navigation_buttons_title">Activer les boutons de navigation compacts</string>
   <string name="morphe_narrow_navigation_buttons_summary">Réduit l\'espacement horizontal entre les boutons</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Désactiver les boutons de navigation sans libellés</string>
@@ -971,12 +974,18 @@ Pour accéder aux paramètres, activez le bouton 'Paramètres' via Général →
   <string name="morphe_navigation_bar_style_entry_3">Transparent</string>
   <string name="morphe_navigation_bar_style_entry_4">Opaque</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Ce style peut ne pas être pris en charge par votre appareil ou votre version de YouTube, et peut entraîner des problèmes de mise en page ou des plantages</string>
+  <string name="morphe_navigation_bar_glass_title">Activer la barre de navigation en verre</string>
+  <string name="morphe_navigation_bar_glass_summary">Affiche la barre de navigation sous la forme d\'une capsule flottante, arrondie et translucide. Non disponible avec le style de barre de navigation opaque</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Opacité du verre</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Ajustez le niveau de transparence de la barre de navigation en verre (0 est transparent, 100 est opaque)</string>
   <string name="morphe_toolbar_screen_title">Barre d\'outils</string>
   <string name="morphe_toolbar_screen_summary">Choisissez les composants qui apparaissent dans la barre d\'outils</string>
   <string name="morphe_hide_toolbar_chat_button_title">Masquer le bouton \'Discuter\'</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Masquer le bouton \'Micro\'</string>
   <string name="morphe_hide_toolbar_search_button_title">Masquer le bouton \'Rechercher\'</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Lorsqu\'elle est activée, un appui ouvre les paramètres Morphe et un appui long ouvre les paramètres YouTube, désactivez-la pour inverser le comportement</string>
+  <string name="morphe_toolbar_buttons_order_title">Ordre des boutons de la barre d\'outils</string>
+  <string name="morphe_toolbar_buttons_order_summary">Faites glisser les boutons pour changer leur ordre dans la barre d\'outils</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu déroulant</string>
   <string name="morphe_hide_player_flyout_summary">Choisissez les composants qui apparaissent dans le menu déroulant</string>
@@ -1729,10 +1738,10 @@ L'enregistrement automatique est facultatif. Il s'arrête en navigation privée 
   <string name="morphe_niconico_comments_max_length_no_limit">Aucune limite</string>
   <string name="morphe_niconico_comments_live_streams_title">Afficher sur les diffusions en direct</string>
   <string name="morphe_niconico_comments_live_streams_summary">Diffusions en direct et leurs rediffusions</string>
-  <string name="morphe_niconico_comments_live_premieres_title">Afficher sur les premières</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Afficher sur les Premières</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Premières pendant leur diffusion</string>
-  <string name="morphe_niconico_comments_ended_premieres_title">Afficher sur les premières terminées</string>
-  <string name="morphe_niconico_comments_ended_premieres_summary">Rediffusion du chat des premières terminées</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Afficher sur les Premières terminées</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Rediffusion du chat des Premières terminées</string>
   <string name="morphe_live_chat_translate_screen_title">Traduction du chat en direct</string>
   <string name="morphe_live_chat_translate_screen_summary">Traduire les messages du chat en direct et les messages de rediffusion du chat en direct</string>
   <string name="morphe_live_chat_translate_title">Traduire le chat en direct</string>

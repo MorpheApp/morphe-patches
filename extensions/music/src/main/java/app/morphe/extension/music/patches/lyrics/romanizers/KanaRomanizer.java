@@ -58,7 +58,16 @@ public final class KanaRomanizer {
     }
 
     public static String romanize(String kana) {
-        StringBuilder out = new StringBuilder(kana.length() * 2);
+        return romanize(kana, false);
+    }
+
+    /** The reading with a space between syllables, such as "no ru ma" for ノルマ. */
+    public static String romanizeSyllables(String kana) {
+        return romanize(kana, true).trim();
+    }
+
+    private static String romanize(String kana, boolean spaced) {
+        StringBuilder out = new StringBuilder(kana.length() * 3);
         boolean geminate = false;
         int i = 0;
 
@@ -79,6 +88,7 @@ public final class KanaRomanizer {
                 continue;
             }
             if (isN(c)) {
+                if (spaced) separate(out);
                 appendN(out, kana, i);
                 geminate = false;
                 i++;
@@ -88,7 +98,12 @@ public final class KanaRomanizer {
             String reading = FULL_SIZE.get(c);
             if (reading == null) {
                 // An unknown kana, such as an iteration mark, is passed through, not dropped.
-                out.append(c);
+                if (spaced) {
+                    separate(out);
+                }
+                if (!spaced || !Character.isWhitespace(c)) {
+                    out.append(c);
+                }
                 geminate = false;
                 i++;
                 continue;
@@ -107,6 +122,7 @@ public final class KanaRomanizer {
                 next++;
             }
 
+            if (spaced) separate(out);
             if (geminate) {
                 applyGeminate(out, syllable);
                 geminate = false;
@@ -115,6 +131,12 @@ public final class KanaRomanizer {
             i = next;
         }
         return out.toString();
+    }
+
+    private static void separate(StringBuilder out) {
+        if (out.length() > 0 && out.charAt(out.length() - 1) != ' ') {
+            out.append(' ');
+        }
     }
 
     /** Whether a small ya, yu or yo glides or replaces the vowel, which separates kyo from shu. */
@@ -214,6 +236,25 @@ public final class KanaRomanizer {
             return (char) (c + (0x30A1 - 0x3041));
         }
         return c;
+    }
+
+    public static String toHiragana(String kana) {
+        char[] chars = kana.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            char c = chars[i];
+            if (c >= 'ァ' && c <= 'ヶ') {
+                chars[i] = (char) (c - ('ァ' - 'ぁ'));
+            }
+        }
+        return new String(chars);
+    }
+
+    public static String toKatakana(String kana) {
+        char[] chars = kana.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            chars[i] = katakana(chars[i]);
+        }
+        return new String(chars);
     }
 
     /** Whether a reading fits the one byte packing the dictionary file uses. */

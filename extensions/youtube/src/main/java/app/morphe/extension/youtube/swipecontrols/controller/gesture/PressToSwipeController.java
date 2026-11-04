@@ -12,9 +12,9 @@ package app.morphe.extension.youtube.swipecontrols.controller.gesture;
 
 import android.view.MotionEvent;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeZoneAction;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity;
 import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.BaseGestureController;
 import app.morphe.extension.youtube.swipecontrols.misc.Point;
@@ -40,7 +40,7 @@ public final class PressToSwipeController extends BaseGestureController {
     @Override
     protected boolean shouldForceInterceptEvents() {
         if (swipeSessionOrigin == null) return false;
-        return swipeActionAt(swipeSessionOrigin, getCurrentSwipe()) != SwipeZoneAction.OFF;
+        return isSwipeControlled(swipeSessionOrigin);
     }
 
     @Override
@@ -55,9 +55,10 @@ public final class PressToSwipeController extends BaseGestureController {
     }
 
     @Override
-    public void onLongPress(MotionEvent motionEvent) {
+    public void onLongPress(@NonNull MotionEvent motionEvent) {
         // enter swipe session with feedback
-        swipeSessionOrigin = isInSwipeZone(motionEvent) ? Point.fromMotionEvent(motionEvent) : null;
+        Point point = Point.fromMotionEvent(motionEvent);
+        swipeSessionOrigin = isInSwipeZone(motionEvent) || isInSeekArea(point) ? point : null;
         if (swipeSessionOrigin != null) {
             controller.getOverlay().onEnterSwipeSession();
         }

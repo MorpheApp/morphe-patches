@@ -260,9 +260,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">التعليقات</string>
   <string name="morphe_comments_screen_summary">اختر المكونات التي تظهر في قسم التعليقات</string>
   <string name="morphe_hide_comments_carousel_title">تمكين شريط تصفية التعليقات</string>
-  <string name="morphe_hide_comments_carousel_summary">"• تأكد من إدخال الاسم الدقيق لعنصر الشريط (مثل: طرح سؤال، تشجيع هذا الفيديو، الاستماع إلى موسيقى YouTube)
-• قد يؤدي إخفاء عناصر الشريط إلى نتائج غير متوقعة
-• إذا تم إخفاء جميع عناصر الشريط، فسيتم إخفاء قسم التعليقات بالكامل أيضًا"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• أدخل كلمة مفتاحية أو الاسم الكامل (مثال: طرح سؤال، إرشادات المجتمع، تشجيع هذا الفيديو، الاستماع)
+• إخفاء جميع العناصر يخفي قسم التعليقات بالكامل"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">شريط تصفية التعليقات</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">أدخل أسماء عناصر شريط التعليقات المراد تصفيتها، بحيث يكون كل اسم في سطر منفصل</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">إخفاء ملخّص محادثة الذكاء الاصطناعي</string>
@@ -598,6 +597,11 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_vot_mymemory_quota_message_no_email">لقد استخدمت حصة الترجمة المجانية اليومية لـ MyMemory (5000 حرف). أضف بريدًا إلكترونيًا لـ MyMemory في الإعدادات لرفع الحد اليومي إلى 50000 حرف، أو قم بالتبديل إلى خدمة ترجمة مختلفة</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">لقد استخدمت حصة ترجمة MyMemory اليومية (50000 حرف). قم بالتبديل إلى خدمة ترجمة مختلفة أو حاول مرة أخرى غدًا</string>
   <string name="morphe_vot_mymemory_error">فشلت ترجمة MyMemory (الحالة %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">توسيع مقابض سحب المشاهدة لاحقًا</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">مقابض السحب لفيديوهات المشاهدة لاحقًا أسهل في الإمساك بها</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">إخفاء شريط تنبيه إزالة المشاهدة لاحقًا</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">لا يظهر التأكيد بعد إزالة الفيديو من المشاهدة لاحقًا</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">تمكين تكرار الفيديو</string>
   <string name="morphe_do_not_remember_loop_video_title">لا تتذكر حالة تكرار الفيديو</string>
@@ -763,10 +767,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
 لإصلاح ذلك، قم بتشغيل 'Spoof Video Streams' وغيّر 'العميل الافتراضي' إلى 'TV Simply' أو 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">تمكين التمرير للتقديم أو الترجيع</string>
-  <string name="morphe_slide_to_seek_summary">تمكين التمرير للتنقل بدلًا من التشغيل بسرعة 2x عند الضغط مع الاستمرار على مشغل الفيديو</string>
+  <string name="morphe_slide_to_seek_summary">الضغط مع الاستمرار على الفيديو للتمرير للتنقل بدلًا من التشغيل بسرعة 2x</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">تمكين النقر للتمرير</string>
-  <string name="morphe_tap_to_seek_summary">اضغط فقط على شريط التقدم للانتقال إلى ذلك الموضع دون سحبه</string>
+  <string name="morphe_tap_to_seek_summary">النقر في أي مكان على شريط التقدم للانتقال إلى ذلك الموضع بدلًا من السحب</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">إيماءة التمرير لليسار</string>
   <string name="morphe_swipe_right_zone_title">إيماءة التمرير لليمين</string>
@@ -941,16 +945,15 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">إخفاء زر الإشعارات</string>
   <string name="morphe_show_search_button_title">عرض زر البحث</string>
-  <string name="morphe_show_search_button_index_title">موضع زر البحث</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">عرض زر المشاهدة لاحقًا</string>
-  <string name="morphe_show_watch_later_button_index_title">موضع زر المشاهدة لاحقًا</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">المشاهدة لاحقًا</string>
   <string name="morphe_show_settings_button_title">عرض زر الإعدادات</string>
-  <string name="morphe_show_settings_button_index_title">موضع زر الإعدادات</string>
   <string name="morphe_show_settings_button_type_title">إجراء زر الإعدادات</string>
   <string name="morphe_show_settings_button_type_summary">يفتح إعدادات Morphe عند التمكين، أو إعدادات YouTube عند التعطيل</string>
+  <string name="morphe_navigation_buttons_order_title">ترتيب أزرار التنقل</string>
+  <string name="morphe_navigation_buttons_order_summary">اسحب الأزرار لتغيير ترتيبها في شريط التنقل</string>
   <string name="morphe_swap_create_with_notifications_button_title">تبديل زر الإنشاء بزر الإشعارات</string>
   <string name="morphe_swap_create_with_notifications_button_summary">إذا لم يُؤدِّ تغيير هذا الإعداد إلى أي نتيجة، جرِّب التبديل إلى وضع التصفّح المتخفي</string>
   <string name="morphe_hide_navigation_button_labels_title">إخفاء تسميات زر التنقل</string>
@@ -958,7 +961,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_hide_navigation_bar_title">إخفاء شريط التنقل</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"يخفي شريط التنقل بالكامل، بما في ذلك تبويب 'أنت'.
 
-للوصول إلى الإعدادات، قم بتمكين زر الإعدادات عبر عام ← شريط الأدوات ← عرض الإعدادات"</string>
+للوصول إلى الإعدادات، قم بتمكين زر الإعدادات عبر عام ← شريط الأدوات ← عرض زر الإعدادات"</string>
   <string name="morphe_narrow_navigation_buttons_title">تمكين أزرار التنقل الضيقة</string>
   <string name="morphe_narrow_navigation_buttons_summary">يقلل المسافة الأفقية بين الأزرار</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">تعطيل أزرار التنقل بدون تسميات</string>
@@ -975,12 +978,18 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_navigation_bar_style_entry_3">شفاف</string>
   <string name="morphe_navigation_bar_style_entry_4">معتم</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">قد لا يكون هذا النمط مدعومًا من قبل جهازك أو إصدار YouTube، ويمكن أن يتسبب في مشكلات في التخطيط أو توقف التطبيق عن العمل</string>
+  <string name="morphe_navigation_bar_glass_title">تمكين شريط التنقل الزجاجي</string>
+  <string name="morphe_navigation_bar_glass_summary">يظهر شريط التنقل ككبسولة عائمة ومستديرة وشفافة. غير متوفر مع نمط شريط التنقل المعتم</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">شفافية الزجاج</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">ضبط مستوى الشفافية لشريط التنقل الزجاجي (0 شفاف، 100 معتم)</string>
   <string name="morphe_toolbar_screen_title">شريط الأدوات</string>
   <string name="morphe_toolbar_screen_summary">اختر المكونات التي تظهر في شريط الأدوات</string>
   <string name="morphe_hide_toolbar_chat_button_title">إخفاء زر دردشة</string>
   <string name="morphe_hide_toolbar_microphone_button_title">إخفاء زر الميكروفون</string>
   <string name="morphe_hide_toolbar_search_button_title">إخفاء زر البحث</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">عند التمكين، يفتح النقر إعدادات Morphe، ويفتح الضغط المطوّل إعدادات YouTube، قم بتعطيله للتبديل بينهما.</string>
+  <string name="morphe_toolbar_buttons_order_title">ترتيب أزرار شريط الأدوات</string>
+  <string name="morphe_toolbar_buttons_order_summary">اسحب الأزرار لتغيير ترتيبها في شريط الأدوات</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">القائمة المنبثقة</string>
   <string name="morphe_hide_player_flyout_summary">اختر المكونات التي تظهر في القائمة المنبثقة</string>

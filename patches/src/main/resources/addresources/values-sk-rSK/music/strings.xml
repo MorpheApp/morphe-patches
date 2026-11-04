@@ -624,6 +624,10 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_hide_played_summary">Preložený text piesne</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Preklad bol skopírovaný</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Pôvodný text piesne bol skopírovaný</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dynamické pozadie</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Zobrazí rozmazané pozadie vytvorené z obalu albumu za textom piesne</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animovať dynamické pozadie</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Počas prehrávania pohýba pozadím a pulzuje ho podľa hudby, ak má YouTube Music povolenie na prístup k mikrofónu. Vypnite pre statické pozadie, ktoré spotrebuje menej batérie</string>
   <string name="morphe_music_lyrics_mediasession_title">Kopírovanie zlyhalo</string>
   <string name="morphe_music_lyrics_mediasession_summary">Zobrazuje aktuálny riadok na zamknutej obrazovke, Android Auto a Bluetooth. Vyžaduje Android 11 alebo novší</string>
   <string name="morphe_music_lyrics_miniplayer_title">Zobraziť text piesne v mini prehrávači</string>
@@ -722,7 +726,7 @@ Texty piesní pochádzajú zo služieb tretích strán, ktoré nie sú spojené,
   <string name="morphe_music_lyrics_hide_info_title">Nahlásiť problém s prekladom</string>
   <string name="morphe_music_lyrics_hide_info_summary">Nahlásiť problém s textom piesne</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Problém bol nahlásený</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ZAPNUTÉ umiestni transkripciu alebo transliteráciu pod texty piesní a preklad nad; VYPNUTÉ ponechá transkripciu alebo transliteráciu hore a preklad dole. Čítanie umiestnené nad každú slabiku sa s ňou posúva, zhora jej slabiky smerom dolu</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Zmení poradie zobrazenia prekladu a romanizácie pod textom piesne</string>
   <string name="morphe_music_lyrics_force_center_title">Vždy strediť texty piesní</string>
   <string name="morphe_music_lyrics_force_center_summary">ZAPNUTÉ umiestni každý riadok doprostred a ignoruje zarovnanie zdroja vrátane strán duet; VYPNUTÉ zachová zarovnanie, ktoré požadujú texty piesní</string>
   <string name="morphe_music_lyrics_providers_keep_one">Aspoň jeden poskytovateľ musí zostať zapnutý</string>
@@ -730,6 +734,14 @@ Texty piesní pochádzajú zo služieb tretích strán, ktoré nie sú spojené,
   <string name="morphe_music_lyrics_romanization_provider_title">Transkripcia alebo transliterácia</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Offline slovník</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Zoznam slov Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Ofline slovník</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby skript</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Zobraziť tlačidlo Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Ťuknutím prepnete zobrazenie ruby nad textom piesne; dlhým stlačením prepnete medzi hiraganou a katakanou. Používa povolených poskytovateľov ruby v uvedenom poradí</string>
+  <string name="morphe_music_lyrics_ruby_generating">Generovanie ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Detekovať sekcie pomocou AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Používa sa len vtedy, keď poskytovateľ neposkytuje štítky sekcií ako Refrén alebo Sloha, ktoré následne deteguje váš kompatibilný model OpenAI. Úprava riadku tiež otvorí jeho výzvu</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL koncového bodu API (napr. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

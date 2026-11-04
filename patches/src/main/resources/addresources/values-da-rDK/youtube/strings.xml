@@ -101,7 +101,7 @@ Nogle server-side layouts kan måske ikke gå tilbage.
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skjul knappen \'Underret mig\'</string>
-  <string name="morphe_hide_notify_me_button_summary">Skjuler påmindelsesknappen for planlagte live-streams og premierer</string>
+  <string name="morphe_hide_notify_me_button_summary">Skjuler påmindelsesknappen for planlagte livestreams og premierer</string>
   <string name="morphe_hide_playables_title">Skjul Spillehjørnet</string>
   <string name="morphe_hide_playables_summary">Skjuler funktionen, der giver dig mulighed for at spille spil</string>
   <string name="morphe_hide_search_term_thumbnails_title">Skjul miniaturebilleder for søgeord</string>
@@ -260,9 +260,8 @@ Nogle server-side layouts kan måske ikke gå tilbage.
   <string name="morphe_comments_screen_title">Kommentarer</string>
   <string name="morphe_comments_screen_summary">Vælg hvilke komponenter der vises i kommentar sektionen</string>
   <string name="morphe_hide_comments_carousel_title">Aktiver kommentarkarussel filter</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Sørg for at du indtaster det nøjagtige navn på karusellens element (f.eks. Spørg, Hype denne video, Lyt på YouTube Music)
-• Skjuling af karusellens elementer kan have utilsigtede bivirkninger
-• Hvis alle karusellens elementer er skjult, vil hele kommentarfeltet også være skjult"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Indtast et nøgleord eller et fuldt navn (f.eks. Ask, Community, Hype, Listen)
+• Hvis alle elementer skjules, skjules hele kommentarfeltet"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Kommentarkarussel filter</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Indtast kommentar karruselnavnene, der skal filtreres efter, adskilt af nye linjer</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Skjul AI-chatsammendrag</string>
@@ -593,6 +592,11 @@ Din API-nøgle bør aldrig deles. Enhver med adgang til den kan bruge dine OpenR
   <string name="morphe_vot_mymemory_quota_message_no_email">Du har brugt dagens gratis MyMemory-oversættelseskvote (5.000 tegn). Tilføj en MyMemory-e-mail i indstillingerne for at hæve den daglige grænse til 50.000 tegn, eller skift til en anden oversættelsestjeneste</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Du har brugt dagens MyMemory-oversættelseskvote (50.000 tegn). Skift til en anden oversættelsestjeneste eller prøv igen i morgen</string>
   <string name="morphe_vot_mymemory_error">MyMemory-oversættelse mislykkedes (status %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Gør håndtag til trækning i Se senere bredere</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Håndtagene til trækning af videoer i Se senere er lettere at få fat i</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Skjul snackbar ved fjernelse fra Se senere</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Bekræftelsen vises ikke, efter en video er fjernet fra Se senere</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Aktiver loop-video</string>
   <string name="morphe_do_not_remember_loop_video_title">Husk ikke loop-video</string>
@@ -757,10 +761,10 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
 For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardklient' til 'TV Simply' eller 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktivér dias for at søge</string>
-  <string name="morphe_slide_to_seek_summary">Aktiverer strygning for at søge i stedet for at afspille med 2x hastighed, når du trykker og holder på videoplayeren</string>
+  <string name="morphe_slide_to_seek_summary">Tryk og hold videoen nede for at glide og spole i stedet for at afspille med 2x hastighed</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Aktivér tryk for at søge</string>
-  <string name="morphe_tap_to_seek_summary">Tryk blot på søgelinjen for at springe til den position uden at trække i den</string>
+  <string name="morphe_tap_to_seek_summary">Tryk hvor som helst på søgelinjen for at springe til den position i stedet for at trække</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Strygebevægelse til venstre</string>
   <string name="morphe_swipe_right_zone_title">Strygebevægelse til højre</string>
@@ -933,24 +937,23 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Skjul Notifikationer-knappen</string>
   <string name="morphe_show_search_button_title">Vis Søg-knappen</string>
-  <string name="morphe_show_search_button_index_title">Søg-knappens position</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Vis knap til Se senere</string>
-  <string name="morphe_show_watch_later_button_index_title">Position for knap til Se senere</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Se senere</string>
   <string name="morphe_show_settings_button_title">Vis Indstillinger-knappen</string>
-  <string name="morphe_show_settings_button_index_title">Indstillinger-knappens position</string>
   <string name="morphe_show_settings_button_type_title">Indstillinger-knappen vises</string>
   <string name="morphe_show_settings_button_type_summary">Åbner Morphe-indstillinger, når den er aktiveret, eller YouTube-indstillinger, når den er deaktiveret</string>
+  <string name="morphe_navigation_buttons_order_title">Rækkefølge for navigationsknapper</string>
+  <string name="morphe_navigation_buttons_order_summary">Træk i knapperne for at ændre deres rækkefølge i navigationslinjen</string>
   <string name="morphe_swap_create_with_notifications_button_title">Byt Opret-knap med Notifikationsknap</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Hvis ændringen af denne indstilling ikke virker, prøv at skifte til Incognito-tilstand</string>
   <string name="morphe_hide_navigation_button_labels_title">Skjul navigationsknappers tekst</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Skjul prik for nyt indhold</string>
   <string name="morphe_hide_navigation_bar_title">Skjul navigationsbjælke</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dette skjuler fuldstændigt navigationslinjen, herunder fanen »You«.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dette skjuler navigationslinjen helt, inklusive fanen 'Dig'.
 
-For at få adgang til Indstillinger skal du aktivere indstillingsknappen via Generelt → Værktøjslinje → Vis indstillinger"</string>
+For at få adgang til Indstillinger skal du aktivere Indstillingsknappen via Generelt → Værktøjslinje → Vis indstillingsknap"</string>
   <string name="morphe_narrow_navigation_buttons_title">Aktiver smalle navigationsknapper</string>
   <string name="morphe_narrow_navigation_buttons_summary">Reducerer den vandrette afstand mellem knapperne</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Deaktiver navigationsknapper uden etiketter</string>
@@ -967,12 +970,18 @@ For at få adgang til Indstillinger skal du aktivere indstillingsknappen via Gen
   <string name="morphe_navigation_bar_style_entry_3">Transparent</string>
   <string name="morphe_navigation_bar_style_entry_4">Uigennemsigtig</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Denne stil understøttes muligvis ikke af din enhed eller YouTube-version og kan forårsage layoutproblemer eller nedbrud</string>
+  <string name="morphe_navigation_bar_glass_title">Aktiver glass-navigationslinje</string>
+  <string name="morphe_navigation_bar_glass_summary">Viser navigationslinjen som en flydende, afrundet, gennemsigtig kapsel. Ikke tilgængelig med den uigennemsigtige navigationslinjestil</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Glass-uigennemsigtighed</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Juster gennemsigtigheden af glass-navigationslinjen (0 er gennemsigtig, 100 er uigennemsigtig)</string>
   <string name="morphe_toolbar_screen_title">Værktøjslinje</string>
   <string name="morphe_toolbar_screen_summary">Vælg, hvilke komponenter der vises i værktøjslinjen</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skjul chat-knappen</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Skjul Mikrofon-knappen</string>
   <string name="morphe_hide_toolbar_search_button_title">Skjul Søg-knappen</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Når den er aktiveret, åbner et tryk Morphe-indstillinger og et langt tryk åbner YouTube-indstillinger, deaktiver for at ombytte</string>
+  <string name="morphe_toolbar_buttons_order_title">Rækkefølge for værktøjslinjeknapper</string>
+  <string name="morphe_toolbar_buttons_order_summary">Træk i knapperne for at ændre deres rækkefølge i værktøjslinjen</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Udfyldningsmenu</string>
   <string name="morphe_hide_player_flyout_summary">Vælg, hvilke komponenter der vises i flyout-menuen</string>
@@ -1724,10 +1733,10 @@ Automatisk optagelse er valgfri. Den stopper i inkognito eller når kontoen ænd
   <string name="morphe_niconico_comments_max_length_no_limit">Ingen grænse</string>
   <string name="morphe_niconico_comments_live_streams_title">Vis på live-streams</string>
   <string name="morphe_niconico_comments_live_streams_summary">Live-streams og deres gengivelser</string>
-  <string name="morphe_niconico_comments_live_premieres_title">Vis på premierer</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Vis ved premierer</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Premierer mens de afspilles</string>
-  <string name="morphe_niconico_comments_ended_premieres_title">Vis på afsluttede premierer</string>
-  <string name="morphe_niconico_comments_ended_premieres_summary">Chat-gengivelse af premierer, der er afsluttet</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Vis ved afsluttede premierer</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Chat-gentagelse af premierer, der er slut</string>
   <string name="morphe_live_chat_translate_screen_title">Oversættelse af livechat</string>
   <string name="morphe_live_chat_translate_screen_summary">Oversæt beskeder fra livechat og livechat-afspilning</string>
   <string name="morphe_live_chat_translate_title">Oversæt livechat</string>

@@ -101,7 +101,7 @@ Modificările includ:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ascunde butonul \'Notifică-mă\'</string>
-  <string name="morphe_hide_notify_me_button_summary">Ascunde butonul de memento pentru transmisiunile live programate și premiere</string>
+  <string name="morphe_hide_notify_me_button_summary">Ascunde butonul de reamintire pentru transmisiunile în direct programate și Premiere-uri</string>
   <string name="morphe_hide_playables_title">Ascunde Playables</string>
   <string name="morphe_hide_playables_summary">Ascunde funcția care vă permite să jucați jocuri</string>
   <string name="morphe_hide_search_term_thumbnails_title">Ascunde miniaturile termenilor de căutare</string>
@@ -260,9 +260,8 @@ Modificările includ:
   <string name="morphe_comments_screen_title">Comentarii</string>
   <string name="morphe_comments_screen_summary">Alegeți ce componente să apară în secțiunea de comentarii</string>
   <string name="morphe_hide_comments_carousel_title">Activează filtru carusel comentarii</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Asigurați-vă că introduceți exact numele elementului carousel (de exemplu, Ask, Hype acest videoclip, Ascultă pe YouTube Music)
-• Ascunderea elementelor carousel poate avea efecte secundare neintenționate
-• Dacă toate elementele carousel sunt ascunse, întreaga secțiune de comentarii va fi, de asemenea, ascunsă"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Introdu un cuvânt cheie sau numele complet (ex. Ask, Community, Hype, Listen)
+• Ascunderea tuturor elementelor ascunde întreaga secțiune de comentarii"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Filtru carousel comentarii</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Introduceți numele caruselurilor de comentarii pentru a filtra, separate prin linii noi</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Ascunde rezumatul chatului AI</string>
@@ -496,7 +495,7 @@ După ce un videoclip cu butonul Ask este deschis o dată, funcția funcționeaz
   <string name="morphe_ryd_feed_like_ratio_title">Afișare procentaj like pentru miniatura feed-ului</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Căutare în comentarii</string>
-  <string name="morphe_search_comments_summary">Apasă butonul de căutare din comentarii pentru a afișa doar comentariile încărcate care conțin toate cuvintele căutate. Pune cuvintele între ghilimele pentru a căuta o frază</string>
+  <string name="morphe_search_comments_summary">Atingeți butonul de căutare din comentarii pentru a afișa doar comentariile încărcate care conțin toate cuvintele căutate. Puneți cuvintele între ghilimele pentru a căuta o frază</string>
   <string name="morphe_search_comments_dialog_title">Căutare în comentarii</string>
   <string name="morphe_search_comments_hint">Cuvinte de căutat</string>
   <string name="morphe_search_comments_search">Caută</string>
@@ -595,6 +594,11 @@ Cheia API nu trebuie niciodată distribuită. Oricine are acces la aceasta poate
   <string name="morphe_vot_mymemory_quota_message_no_email">Ai folosit cota gratuită de traducere MyMemory de astăzi (5.000 de caractere). Adaugă un e-mail MyMemory în setări pentru a crește limita zilnică la 50.000 de caractere sau schimbă la un alt serviciu de traducere</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Ai folosit cota de traducere MyMemory de astăzi (50.000 de caractere). Schimbă la un alt serviciu de traducere sau încearcă mâine</string>
   <string name="morphe_vot_mymemory_error">Traducerea MyMemory a eșuat (stare %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Lărgirea mânerelor de tragere pentru Vizionare mai târziu</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Mânerele de tragere ale videoclipurilor de Vizionare mai târziu sunt mai ușor de apucat</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Ascunderea notificării de eliminare din Vizionare mai târziu</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Confirmarea nu este afișată după ce un videoclip este eliminat din Vizionare mai târziu</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Activează bucla video</string>
   <string name="morphe_do_not_remember_loop_video_title">Nu-ți aminti video în buclă</string>
@@ -759,10 +763,10 @@ Pentru a remedia, activează 'Falsifică fluxurile video' și schimbă 'clientul
 Pentru a remedia, activează 'Falsifică fluxurile video' și schimbă 'clientul implicit' în 'TV Simply' sau 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Activează diapozitivul pentru a căuta</string>
-  <string name="morphe_slide_to_seek_summary">Activează glisarea pentru a căuta în loc să redă cu o viteză de 2x când apeși și menții apăsat playerul video</string>
+  <string name="morphe_slide_to_seek_summary">Apăsați și mențineți apăsat pe video pentru a glisa și a căuta în loc de redarea la viteza de 2x</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Activează atingerea pentru a căuta</string>
-  <string name="morphe_tap_to_seek_summary">Atinge pur și simplu bara de căutare pentru a ajunge în acea poziție fără a o trage</string>
+  <string name="morphe_tap_to_seek_summary">Atingeți oriunde pe bara de progres pentru a sări la acea poziție în loc de glisare</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gest de glisare stânga</string>
   <string name="morphe_swipe_right_zone_title">Gest de glisare dreapta</string>
@@ -937,22 +941,22 @@ Trebuie furnizate „Cookie-uri pentru subtitrări”"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Ascunde meniul Temporizator de somn</string>
   <string name="morphe_show_search_button_title">Ascunde meniul Repetă video</string>
-  <string name="morphe_show_search_button_index_title">Ascunde meniul Mod ambient</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Urmărește mai târziu</string>
   <string name="morphe_show_settings_button_title">Ascunde meniul Volum stabil</string>
-  <string name="morphe_show_settings_button_index_title">Ascunde meniul Ajutor și feedback</string>
   <string name="morphe_show_settings_button_type_title">Acțiune buton Setări</string>
   <string name="morphe_show_settings_button_type_summary">Ascunde meniul Viteză redare</string>
+  <string name="morphe_navigation_buttons_order_title">Ordinea butoanelor de navigare</string>
+  <string name="morphe_navigation_buttons_order_summary">Trage butoanele pentru a le schimba ordinea în bara de navigare</string>
   <string name="morphe_swap_create_with_notifications_button_title">Inversează butonul Creare cu butonul Notificări</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Dacă schimbarea acestei setări nu are efect, încercați să comutați la modul Incognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Ascunde etichetele butoanelor de navigare</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ascunde punctul de conținut nou</string>
   <string name="morphe_hide_navigation_bar_title">Ascunde bara de navigare</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Aceasta ascunde complet bara de navigare, inclusiv filă „Tu”.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Aceasta ascunde complet bara de navigare, inclusiv fila „Tu”.
 
-Pentru a accesa Setările, activați butonul Setări prin General → Bara de instrumente → Afișare setări"</string>
+Pentru a accesa Setările, activați butonul Setări prin General → Bara de instrumente → Afișează butonul Setări"</string>
   <string name="morphe_narrow_navigation_buttons_title">Activează butoane de navigare înguste</string>
   <string name="morphe_narrow_navigation_buttons_summary">Ascunde meniul Blocare ecran</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Dezactivează butoanele de navigare fără etichete</string>
@@ -969,12 +973,18 @@ Pentru a accesa Setările, activați butonul Setări prin General → Bara de in
   <string name="morphe_navigation_bar_style_entry_3">Transparent</string>
   <string name="morphe_navigation_bar_style_entry_4">Opac</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Acest stil s-ar putea să nu fie suportat de dispozitivul tău sau de versiunea de YouTube și poate cauza probleme de layout sau prăbușiri</string>
+  <string name="morphe_navigation_bar_glass_title">Activați bara de navigare din sticlă</string>
+  <string name="morphe_navigation_bar_glass_summary">Afișează bara de navigare ca o capsulă plutitoare, rotunjită și translucidă. Nu este disponibil cu stilul de bară de navigare Opacă</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Opacitatea sticlei</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Ajustați nivelul de transparență al barei de navigare din sticlă (0 este transparent, 100 este opac)</string>
   <string name="morphe_toolbar_screen_title">Bara de navigare</string>
   <string name="morphe_toolbar_screen_summary">Ascunde previzualizarea videoclipului următor în ecran complet înainte de începerea redării automate</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ascunde butonul Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ascunde butonul Ecran complet</string>
   <string name="morphe_hide_toolbar_search_button_title">Ascunde butonul de căutare</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Când este activat, atingerea deschide setările Morphe, iar apăsarea lungă deschide setările YouTube, dezactivează pentru a inversa</string>
+  <string name="morphe_toolbar_buttons_order_title">Ordinea butoanelor din bara de instrumente</string>
+  <string name="morphe_toolbar_buttons_order_summary">Trage butoanele pentru a le schimba ordinea în bara de instrumente</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Meniu flyout</string>
   <string name="morphe_hide_player_flyout_summary">Alege ce componente apar în meniul flyout</string>
@@ -1724,6 +1734,9 @@ Această bibliotecă este stocată pe acest dispozitiv și partajată între con
   <string name="morphe_niconico_comments_max_length_title">Lungimea maximă a comentariului</string>
   <string name="morphe_niconico_comments_max_length_summary">Ascunde comentariile care conțin mai multe caractere decât această valoare. Fiecare emoji se numără ca un caracter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Fără limită</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Afișează la Premiere-uri</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Afișează la Premiere-urile încheiate</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Redare chat pentru Premiere-uri care s-au încheiat</string>
   <string name="morphe_live_chat_translate_screen_title">Traducere chat live</string>
   <string name="morphe_live_chat_translate_screen_summary">Traduce mesajele din chat-ul live și mesajele de redare a chat-ului live</string>
   <string name="morphe_live_chat_translate_title">Traducere chat live</string>

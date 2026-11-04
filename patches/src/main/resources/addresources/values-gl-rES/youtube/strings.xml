@@ -260,9 +260,8 @@ Os cambios inclúen:
   <string name="morphe_comments_screen_title">Comentarios</string>
   <string name="morphe_comments_screen_summary">Elixe que compoñentes aparecen na sección de comentarios</string>
   <string name="morphe_hide_comments_carousel_title">Activar o filtro do carrusel de comentarios</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Asegúrate de introducir o nome exacto do elemento do carrusel (ex. Preguntar, Dar hype a este vídeo, Escoitar en YouTube Music)
-• Ocultar elementos do carrusel pode ter efectos secundarios non desexados
-• Se todos os elementos do carrusel están ocultos, a sección completa de comentarios tamén se ocultará"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Introduza unha palabra clave ou o nome completo (ex. Ask, Community, Hype, Listen)
+• Ocultar todos os elementos oculta a sección de comentarios completa"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Filtro do carrusel de comentarios</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Introduce os nomes do carrusel de comentarios polos que filtrar, separados por saltos de liña</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Ocultar o resumo do chat de IA</string>
@@ -496,7 +495,7 @@ Despois de abrir unha vez un vídeo co botón Preguntar, a función funciona con
   <string name="morphe_ryd_feed_like_ratio_title">Amosar a porcentaxe de likes na miniatura do feed</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Buscar nos comentarios</string>
-  <string name="morphe_search_comments_summary">Toca o botón de busca nos comentarios para mostrar só os comentarios cargados que contíñan todas as palabras buscadas. Pon as palabras entre comillas para buscar unha frase</string>
+  <string name="morphe_search_comments_summary">Toca o botón de busca nos comentarios para amosar só os comentarios cargados que contiñan todas as palabras buscadas. Pon as palabras entre combas para buscar unha frase</string>
   <string name="morphe_search_comments_dialog_title">Buscar nos comentarios</string>
   <string name="morphe_search_comments_hint">Palabras para buscar</string>
   <string name="morphe_search_comments_search">Busca</string>
@@ -595,6 +594,11 @@ A súa clave API nunca debe ser compartida. Calquera persoa con acceso a ela pod
   <string name="morphe_vot_mymemory_quota_message_no_email">Consumiches a cota de tradución gratuíta de MyMemory de hoxe (5.000 caracteres). Engade un correo electrónico de MyMemory na configuración para aumentar o límite diario a 50.000 caracteres, ou cambia a un servizo de tradución diferente</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Usaste a cota de tradución de MyMemory de hoxe (50.000 caracteres). Cambia a un servizo de tradución diferente ou inténtao mañá</string>
   <string name="morphe_vot_mymemory_error">A tradución de MyMemory fallou (estado %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Alargar as manillas de arrastre de Ver máis tarde</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">As manillas de arrastre dos vídeos de Ver máis tarde son máis fáciles de agarrar</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Ocultar a barra de notificación de eliminación de Ver máis tarde</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Non se mostra a confirmación despois de que un vídeo se elimine de Ver máis tarde</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Activar a repetición do vídeo</string>
   <string name="morphe_do_not_remember_loop_video_title">Non lembrar o vídeo en bucle</string>
@@ -759,10 +763,10 @@ Para solucionar isto, activa 'Falsificar transmisións de vídeo' e cambia o 'Cl
 Para solucionar isto, actíva 'Spoof video streams' e cambia o 'Cliente predefinido' a 'TV Simply' ou 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Activar deslizar para buscar</string>
-  <string name="morphe_slide_to_seek_summary">Activa o deslizamento para buscar en lugar de reproducir á 2x velocidade ao manter premido o reprodutor de vídeo</string>
+  <string name="morphe_slide_to_seek_summary">Mantén premido o vídeo para desprazar e buscar en lugar de reproducir a velocidade 2x</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Activar tocar para buscar</string>
-  <string name="morphe_tap_to_seek_summary">Basta con tocar a barra de busca para saltar a esa posición sen arrastala</string>
+  <string name="morphe_tap_to_seek_summary">Toca en calquera punto da barra de progreso para saltar a esa posición en lugar de arrastrar</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Xesto de deslizar á esquerda</string>
   <string name="morphe_swipe_right_zone_title">Xesto de deslizar á dereita</string>
@@ -937,24 +941,23 @@ Deben proporcionarse as 'cookies de subtitulacións'"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Ocultar botón de notificacións</string>
   <string name="morphe_show_search_button_title">Mostrar botón de busca</string>
-  <string name="morphe_show_search_button_index_title">Posición do botón de busca</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Amosar botón de Ver máis tarde</string>
-  <string name="morphe_show_watch_later_button_index_title">Posición do botón de Ver máis tarde</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Ver máis tarde</string>
   <string name="morphe_show_settings_button_title">Mostrar botón de Axustes</string>
-  <string name="morphe_show_settings_button_index_title">Posición do botón de Axustes</string>
   <string name="morphe_show_settings_button_type_title">Acción do botón de Axustes</string>
   <string name="morphe_show_settings_button_type_summary">Abre os axustes de Morphe cando está activado, ou os axustes de YouTube cando está desactivado</string>
+  <string name="morphe_navigation_buttons_order_title">Orde dos botóns de navegación</string>
+  <string name="morphe_navigation_buttons_order_summary">Arrastra os botóns para cambiar a súa orde na barra de navegación</string>
   <string name="morphe_swap_create_with_notifications_button_title">Trocar o botón Crear polo botón de Notificacións</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Se cambiar esta configuración non surte efecto, tente cambiar ao modo Incógnito</string>
   <string name="morphe_hide_navigation_button_labels_title">Ocultar etiquetas dos botóns de navegación</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ocultar punto de novo contido</string>
   <string name="morphe_hide_navigation_bar_title">Ocultar barra de navegación</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Isto oculta completamente a barra de navegación, incluíndo a pestana 'Ti'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Isto oculta completamente a barra de navegación, incluíndo a pestana \"Vo\".
 
-Para acceder aos Axustes, activa o botón de Axustes a través de Xeral → Barra de ferramentas → Mostrar axustes"</string>
+Para acceder aos Axustes, activa o botón de Axustes a través de Xeral → Barra de ferramentas → Amosar botón de Axustes"</string>
   <string name="morphe_narrow_navigation_buttons_title">Activar os botóns de navegación estreitos</string>
   <string name="morphe_narrow_navigation_buttons_summary">Reduce o espaciado horizontal entre os botóns</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Desactivar botóns de navegación sen etiquetas</string>
@@ -971,12 +974,18 @@ Para acceder aos Axustes, activa o botón de Axustes a través de Xeral → Barr
   <string name="morphe_navigation_bar_style_entry_3">Transparente</string>
   <string name="morphe_navigation_bar_style_entry_4">Opaco</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">É posible que este estilo non sexa compatible co seu dispositivo ou coa versión de YouTube, e pode causar problemas deそこに disposición ou fallos</string>
+  <string name="morphe_navigation_bar_glass_title">Activar a barra de navegación de vidro</string>
+  <string name="morphe_navigation_bar_glass_summary">Mostra a barra de navegación como unha cápsula flotante, arredondeada e translúcida. Non dispoñible co estilo de barra de navegación opaca</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Opacidade do vidro</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Axusta o nivel de transparencia da barra de navegación de vidro (0 é transparente, 100 é opaco)</string>
   <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
   <string name="morphe_toolbar_screen_summary">Elixe que compoñentes aparecen na barra de ferramentas</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ocultar botón Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ocultar botón do micrófono</string>
   <string name="morphe_hide_toolbar_search_button_title">Ocultar botón de busca</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Cando está activado, un toque abre os axustes de Morphe e unha presión longa abre os axustes de YouTube; desactívaa para trocalos</string>
+  <string name="morphe_toolbar_buttons_order_title">Orde dos botóns da barra de ferramentas</string>
+  <string name="morphe_toolbar_buttons_order_summary">Arrastra os botóns para cambiar a súa orde na barra de ferramentas</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menú desplegable</string>
   <string name="morphe_hide_player_flyout_summary">Elixe que compoñentes aparecen no menú desplegable</string>
@@ -1727,10 +1736,10 @@ A gravación automática é opcional. Detense en modo incógnito ou cando cambie
   <string name="morphe_niconico_comments_max_length_no_limit">Sen límite</string>
   <string name="morphe_niconico_comments_live_streams_title">Amosar en transmisións en directo</string>
   <string name="morphe_niconico_comments_live_streams_summary">Transmisións en directo e as súas repeticións</string>
-  <string name="morphe_niconico_comments_live_premieres_title">Amosar en estreas</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Amosar nas estreas</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Estreas mentres se reproducen</string>
-  <string name="morphe_niconico_comments_ended_premieres_title">Amosar en estreas finalizadas</string>
-  <string name="morphe_niconico_comments_ended_premieres_summary">Reprodución do chat de estreas que xa remataron</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Amosar en Estreas finalizadas</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Repetición do chat de Estreas que xa remataron</string>
   <string name="morphe_live_chat_translate_screen_title">Tradución do chat en vivo</string>
   <string name="morphe_live_chat_translate_screen_summary">Traducir as mensaxes do chat en vivo e as mensaxes de reprodución do chat en vivo</string>
   <string name="morphe_live_chat_translate_title">Traducir chat en vivo</string>

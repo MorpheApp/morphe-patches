@@ -625,6 +625,10 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_hide_played_summary">Piilota lyriikkarivit nykyisen soittorivin yläpuolelta</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Piilota soittamattomat lyriikat</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Piilota lyriikkarivit nykyisen soittorivin alapuolelta</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dynaaminen tausta</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Näytä sanoitusten takana albumikuvasta luotu sumennettu tausta</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animoi dynaaminen tausta</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Liikuta taustaa toiston aikana ja sykkii sitä musiikin tahdissa, jos YouTube Musicilla on mikrofonilupa. Kytke pois päältä käyttääksesi staattista taustaa, joka kuluttaa vähemmän akkua</string>
   <string name="morphe_music_lyrics_mediasession_title">Näytä MediaSession-lyriikat lukitusnäytöllä</string>
   <string name="morphe_music_lyrics_mediasession_summary">Näyttää nykyisen rivin lukitusnäytöllä, Android Autolla ja Bluetoothilla. Vaatii Android 11:n tai uudemman</string>
   <string name="morphe_music_lyrics_miniplayer_title">Näytä minisoittimen lyriikat</string>
@@ -723,7 +727,7 @@ Laulutekstit tulevat kolmannen osapuolen palveluista, jotka eivät ole Morphen a
   <string name="morphe_music_lyrics_hide_info_title">Piilota tekijätietorivi</string>
   <string name="morphe_music_lyrics_hide_info_summary">Piilota lyriikoiden alla näkyvä tekijätietorivi</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Vaihda käännöksen ja romanisoinnin paikkaa</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON asettaa romanisoinnin tai transkriptiot sanoitusten alle ja käännökset ylöspäin; OFF pitää romanisoinnin tai transkriptiot yläpuolella ja käännökset alapuolella. Kullekin tavulle asetettu lukema liikkuu sen mukana sen ylä- ja alapuolelle</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Vaihtaa käännöksen ja romanisoinnin näyttöjärjestyksen sanoitusten alapuolella</string>
   <string name="morphe_music_lyrics_force_center_title">Aseta sanoitukset aina keskelle</string>
   <string name="morphe_music_lyrics_force_center_summary">ON asettaa jokaisen rivin keskelle ja sivuuttaa alkuperäisen tasauksen, mukaan lukien dueton puolet; OFF pitää sanoituksen pyytämän tasauksen</string>
   <string name="morphe_music_lyrics_providers_keep_one">Vähintään yhden providenin tulee olla aktiivisena</string>

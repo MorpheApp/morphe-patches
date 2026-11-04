@@ -38,8 +38,8 @@ import com.google.protobuf.WireFormat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
@@ -47,6 +47,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.WeakHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -55,7 +56,10 @@ import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.utils.AuthUtils;
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.AccessibilityContext;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ActionButton;
@@ -102,6 +106,7 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LockupVie
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LockupViewModelHolder;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.MetadataPart;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.MetadataRow;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.OpenPopupAction;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.RendererContext;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ShelfHeaderData;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ShelfHeaderModel;
@@ -131,11 +136,15 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoData
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoThumbnail;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoWithContextData;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoWithContextModel;
+import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
+import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.youtube.innertube.PlaylistEdit;
+import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter;
 import app.morphe.extension.youtube.patches.theme.SeekbarColorPatch;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
-import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
+import app.morphe.extension.youtube.patches.utils.requests.PlaylistRoutes;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -149,6 +158,10 @@ import app.morphe.extension.youtube.shared.PlayerType;
 public class FeedCardLayoutPatch {
 
     public enum FeedCardLayout {
+        /**
+         * The layout that the server sends to the account.
+         */
+        DEFAULT,
         CLASSIC,
         CARDS,
         CARDS_WITH_ACTION_BUTTONS
@@ -162,8 +175,10 @@ public class FeedCardLayoutPatch {
         byte[] patch_getElementBytes();
     }
 
-    private static final boolean CARD_LAYOUT = Settings.FEED_CARD_LAYOUT.get() != FeedCardLayout.CLASSIC;
-    private static final boolean ACTION_BUTTONS = Settings.FEED_CARD_LAYOUT.get() == FeedCardLayout.CARDS_WITH_ACTION_BUTTONS;
+    private static final FeedCardLayout LAYOUT = Settings.FEED_CARD_LAYOUT.get();
+    private static final boolean CARD_LAYOUT = LAYOUT == FeedCardLayout.CARDS
+            || LAYOUT == FeedCardLayout.CARDS_WITH_ACTION_BUTTONS;
+    private static final boolean ACTION_BUTTONS = LAYOUT == FeedCardLayout.CARDS_WITH_ACTION_BUTTONS;
 
     /**
      * Template names, followed by "|hash" or by a suffix and "|hash" (newer app versions), such as "-fe|hash".
@@ -264,32 +279,48 @@ public class FeedCardLayoutPatch {
     private static final int LIKE_STATUS_LIKE = 0;
     private static final int LIKE_STATUS_INDIFFERENT = 2;
     private static final int LIKE_STATUS_ENTITY_TYPE = 62;
+    private static final int ACTION_ADD_VIDEO = PlaylistEdit.PlaylistEditActionType.ACTION_ADD_VIDEO_VALUE;
 
     /**
      * Fields of the innertube commands.
      */
-    private static final int INNERTUBE_COMMAND_FIELD = 169495254;
     private static final int WATCH_ENDPOINT_FIELD = 48687757;
     private static final int WATCH_ENDPOINT_VIDEO_ID_FIELD = 1;
-    private static final int PLAYLIST_EDIT_ENDPOINT_FIELD = 60666189;
-    private static final int PLAYLIST_EDIT_ENDPOINT_PLAYLIST_ID_FIELD = 1;
     private static final int SHOW_ENGAGEMENT_PANEL_ENDPOINT_FIELD = 138681778;
     private static final int SHOW_ENGAGEMENT_PANEL_ENDPOINT_PANEL_ID_FIELD = 1;
+    private static final int SHOW_ENGAGEMENT_PANEL_ENDPOINT_PANEL_FIELD = 2;
+    private static final int SHOW_ENGAGEMENT_PANEL_ENDPOINT_IDENTIFIER_FIELD = 10;
+    /**
+     * Fields of the engagement panels of the watch next response.
+     */
+    private static final int WATCH_NEXT_ENGAGEMENT_PANELS_FIELD = 25;
+    private static final int ENGAGEMENT_PANEL_SECTION_LIST_RENDERER_FIELD = 138681066;
+    private static final int ENGAGEMENT_PANEL_PANEL_ID_FIELD = 1;
+    private static final int ENGAGEMENT_PANEL_HEADER_FIELD = 2;
+    private static final int ENGAGEMENT_PANEL_TITLE_HEADER_RENDERER_FIELD = 138681548;
+    private static final int ENGAGEMENT_PANEL_TITLE_HEADER_SUBHEADER_FIELD = 19;
+    private static final int ENGAGEMENT_PANEL_VISIBILITY_FIELD = 9;
+    private static final int ENGAGEMENT_PANEL_VISIBILITY_EXPANDED = 1;
+    private static final int ENGAGEMENT_PANEL_IDENTIFIER_FIELD = 18;
+    private static final int ENGAGEMENT_PANEL_IDENTIFIER_SURFACE_FIELD = 1;
+    private static final int ENGAGEMENT_PANEL_IDENTIFIER_TAG_FIELD = 3;
+    /**
+     * The panels of this surface can be shown over the feed, and load their content with 'next' requests,
+     * as the comments of Shorts.
+     */
+    private static final int ENGAGEMENT_PANEL_SURFACE_SHORTS = 4;
 
     private static final String WATCH_LATER_PLAYLIST_ID = "WL";
+    /**
+     * Menu items that the menu of the cards with a save button doesn't have.
+     */
+    private static final StringRef SAVE_TO_WATCH_LATER = StringRef.sfc("morphe_save_to_watch_later_flyout_title");
+    private static final StringRef SAVE_TO_PLAYLIST = StringRef.sfc("accessibility_save_to_playlists");
     private static final String SENDER_VIEW_KEY = "com.google.android.libraries.youtube.rendering.elements.sender_view";
     /**
-     * Comments panel of the watch page. Newer app versions use the first id.
+     * Comments panel of the watch page. Newer clients use the first id.
      */
     private static final String[] COMMENTS_PANEL_IDS = {"comment-item-section", "engagement-panel-comments-section"};
-    /**
-     * Id of the comments panel of other app versions, looked for if the response has none of the known ids.
-     */
-    private static final Pattern COMMENTS_PANEL_ID_PATTERN = Pattern.compile("[a-z][a-z-]*comment[a-z-]*-section");
-    /**
-     * Maximum time between the tap on the comment button and the loading of the watch page.
-     */
-    private static final long COMMENTS_OPEN_TIMEOUT_MILLIS = 30_000;
 
     /**
      * Invisible characters at the end of the accessibility labels of the cards and of their comment button.
@@ -312,6 +343,10 @@ public class FeedCardLayoutPatch {
      * Invisible character at the end of the label of the videos of the vertical shelves below a shelf header.
      */
     private static final char VIDEO_SHELF_ROW_LABEL_MARKER = '\u2061';
+    /**
+     * Invisible character before the marker of the cards, in the label of the cards without inline playback.
+     */
+    private static final char NO_INLINE_PLAYBACK_CARD_LABEL_MARKER = '\u2062';
     /**
      * Icon of the Shorts shelf header, which the modern header of the card layout doesn't show.
      */
@@ -359,7 +394,7 @@ public class FeedCardLayoutPatch {
     );
 
     /**
-     * Minimum time between the lookups of a template that is not cached yet.
+     * Minimum time between the lookups of a template in the template cache of the app.
      */
     private static final long TEMPLATE_LOOKUP_INTERVAL_MILLIS = 10_000;
     /**
@@ -460,9 +495,6 @@ public class FeedCardLayoutPatch {
                 }
             };
     private static int feedId;
-    @Nullable
-    private static volatile String commentsVideoId;
-    private static volatile long commentsRequestTime;
 
     /**
      * Template that the elements are converted to, such as the feed videos.
@@ -496,13 +528,17 @@ public class FeedCardLayoutPatch {
 
         @Nullable
         String getUri() {
-            if (uri == null) {
-                final long now = System.currentTimeMillis();
-                if (now - cacheLookupTime > TEMPLATE_LOOKUP_INTERVAL_MILLIS) {
-                    cacheLookupTime = now;
-                    // The uri of a template includes the hash of its version, so it's taken from the template
-                    // cache of the app, which has the templates the app received. The last cached version
-                    // of the template is used, or none if the template is not cached.
+            // The app drops the older versions of the templates from its cache, also while it runs,
+            // and the elements of a template version that is no longer cached are not shown.
+            // So the version taken from the cache is looked up again once in a while.
+            // The version of an element is the one the server sends now, and is kept.
+            final long now = System.currentTimeMillis();
+            if (!fromElement && now - cacheLookupTime > TEMPLATE_LOOKUP_INTERVAL_MILLIS) {
+                cacheLookupTime = now;
+                // The uri of a template includes the hash of its version, so it's taken from the template
+                // cache of the app, which has the templates the app received. The last cached version
+                // of the template is used, or none if the template is not cached.
+                Runnable lookup = () -> {
                     String cached = null;
                     try {
                         File metadata = new File(Utils.getContext().getFilesDir(), "ElementsResourceCacheMetadata");
@@ -531,18 +567,23 @@ public class FeedCardLayoutPatch {
                                     }
                                 }
                             }
-
-                            String found = cached;
-                            Logger.printDebug(() -> "Cached template: " + found);
                         }
                     } catch (Exception ex) {
                         cached = null;
                         Logger.printException(() -> "getUri failure", ex);
                     }
                     // An element of the template can be seen while the cache is read.
-                    if (uri == null) {
+                    if (!fromElement && !Objects.equals(uri, cached)) {
+                        String found = cached;
+                        Logger.printDebug(() -> "Cached template: " + found);
                         uri = cached;
                     }
+                };
+                // The first lookup gives the uri to the element that is converted now.
+                if (uri == null) {
+                    lookup.run();
+                } else {
+                    Utils.runOnBackgroundThread(lookup);
                 }
             }
             return uri;
@@ -572,6 +613,10 @@ public class FeedCardLayoutPatch {
      * Injection point.
      */
     public static byte[] setFeedCardLayout(byte[] bytes) {
+        if (LAYOUT == FeedCardLayout.DEFAULT) {
+            return bytes;
+        }
+
         try {
             final String elementText = FeedVideoCardsPatch.getElementText(bytes);
             if (!Utils.containsAny(elementText, elementTemplates)) {
@@ -890,29 +935,15 @@ public class FeedCardLayoutPatch {
                             }
 
                             // The command of the 'Save to Watch later' item of the menu.
-                            InnertubeCommandHolder saveOnTap = null;
-                            List<ProtoNode> message = ProtoNode.parse(data.getMenuOnTap().toByteArray());
-                            if (message != null) {
-                                for (ProtoNode endpoint
-                                        : ProtoNode.findMessages(message, PLAYLIST_EDIT_ENDPOINT_FIELD)) {
-                                    ProtoNode playlistId = ProtoNode.field(
-                                            endpoint.children, PLAYLIST_EDIT_ENDPOINT_PLAYLIST_ID_FIELD);
-                                    ProtoNode command = endpoint.getParent();
-                                    if (playlistId != null && WATCH_LATER_PLAYLIST_ID.equals(playlistId.getText())
-                                            && command != null && command.children != null) {
-                                        ByteArrayOutputStream commandBytes = new ByteArrayOutputStream();
-                                        CodedOutputStream output = CodedOutputStream.newInstance(commandBytes);
-                                        output.writeByteArray(INNERTUBE_COMMAND_FIELD,
-                                                ProtoNode.write(command.children));
-                                        output.flush();
-                                        saveOnTap = InnertubeCommandHolder.parseFrom(commandBytes.toByteArray());
-                                        break;
-                                    }
-                                }
-                            }
-                            if (saveOnTap == null) {
-                                // Without the item, such as in some menus, the button opens the menu.
-                                saveOnTap = InnertubeCommandHolder.parseFrom(data.getMenuOnTap());
+                            // Without the item, such as in some menus, the button opens the menu.
+                            PlaylistQueueRenderer.NavigationEndpoint watchLaterCommand = findWatchLaterCommand(
+                                    PlaylistQueueRenderer.Menu.parseFrom(menuOnTap.getInnertubeCommand()
+                                            .getOpenPopupAction().getPopup()).getMenuRenderer());
+                            InnertubeCommandHolder saveOnTap = menuOnTap;
+                            if (watchLaterCommand != null) {
+                                saveOnTap = InnertubeCommandHolder.newBuilder()
+                                        .setInnertubeCommand(InnertubeCommand.parseFrom(watchLaterCommand.toByteString()))
+                                        .build();
                             }
 
                             String entityKey = Base64.encodeToString(LikeStatusEntityKey.newBuilder()
@@ -947,6 +978,13 @@ public class FeedCardLayoutPatch {
                                                             button(icons.saved, "", saveOnTap)))));
                         }
 
+                        // The template draws the background below the thumbnail only for the cards with inline
+                        // playback, so the list draws it for the other cards, such as the playlists.
+                        String label = data.getAccessibilityText();
+                        if (data.getInlinePlayback().isEmpty()) {
+                            label += NO_INLINE_PLAYBACK_CARD_LABEL_MARKER;
+                        }
+
                         LockupViewModel.Builder lockupViewModel = LockupViewModel.newBuilder()
                                 .setContentImage(ContentImage.newBuilder().setThumbnailViewModel(thumbnailViewModel))
                                 .setMetadata(LockupMetadata.newBuilder().setLockupMetadataViewModel(metadata))
@@ -954,7 +992,7 @@ public class FeedCardLayoutPatch {
                                 .setContentType(isPlaylist ? LOCKUP_CONTENT_TYPE_PLAYLIST : LOCKUP_CONTENT_TYPE_VIDEO)
                                 .setRendererContext(RendererContext.newBuilder()
                                         .setAccessibilityContext(AccessibilityContext.newBuilder()
-                                                .setLabel(data.getAccessibilityText() + CARD_LABEL_MARKER))
+                                                .setLabel(label + CARD_LABEL_MARKER))
                                         .setCommandContext(CommandContext.newBuilder().setOnTap(data.getOnTap())));
                         // The cards play the video inline (feed autoplay) with the same commands of the classic layout.
                         if (!data.getInlinePlayback().isEmpty()) {
@@ -1171,6 +1209,59 @@ public class FeedCardLayoutPatch {
                     }
 
                     ButtonViewModel menuButton = metadata.getMenuButton().getButtonViewModel();
+                    InnertubeCommandHolder menuOnTap = menuButton.getOnTap();
+                    // The cards with a save button have no save items in the menu,
+                    // so the items are added to the menu of the classic layout, which has no save button.
+                    boolean hasSaveButton = false;
+                    for (ActionButton button : metadata.getActionButtonsList()) {
+                        hasSaveButton |= button.hasAddToPlaylistButtonViewModel();
+                    }
+                    OpenPopupAction openPopupAction = menuOnTap.getInnertubeCommand().getOpenPopupAction();
+                    PlaylistQueueRenderer.Menu popup = hasSaveButton && !isPlaylist
+                            ? PlaylistQueueRenderer.Menu.parseFrom(openPopupAction.getPopup())
+                            : PlaylistQueueRenderer.Menu.getDefaultInstance();
+                    PlaylistQueueRenderer.MenuRenderer menu = popup.getMenuRenderer();
+                    if (menu.getItemsCount() > 0 && findWatchLaterCommand(menu) == null) {
+                        // The save items follow the items shown by a condition, such as the queue items.
+                        int saveItemsIndex = 0;
+                        while (saveItemsIndex < menu.getItemsCount()
+                                && (menu.getItems(saveItemsIndex).hasMenuConditionalServiceItemRenderer()
+                                || menu.getItems(saveItemsIndex).hasMenuConditionalNavigationItemRenderer())) {
+                            saveItemsIndex++;
+                        }
+
+                        // The commands of the save items of the classic layout.
+                        final String videoId = lockupViewModel.getContentId();
+                        var saveToWatchLater = PlaylistQueueRenderer.MenuServiceItem.newBuilder()
+                                .setText(PlaylistQueueRenderer.Text.newBuilder()
+                                        .setSimpleText(SAVE_TO_WATCH_LATER.toString()))
+                                .setIcon(Icon.newBuilder().setYtIconType(YTIconType.ADD_TO_WATCH_LATER))
+                                .setServiceEndpoint(PlaylistQueueRenderer.NavigationEndpoint.newBuilder()
+                                        .setPlaylistEditEndpoint(PlaylistQueueRenderer.PlaylistEditEndpoint.newBuilder()
+                                                .setPlaylistId(WATCH_LATER_PLAYLIST_ID)
+                                                .addActions(PlaylistQueueRenderer.PlaylistEditAction.newBuilder()
+                                                        .setAction(ACTION_ADD_VIDEO)
+                                                        .setAddedVideoId(videoId))));
+                        var saveToPlaylist = PlaylistQueueRenderer.MenuNavigationItem.newBuilder()
+                                .setText(PlaylistQueueRenderer.Text.newBuilder()
+                                        .setSimpleText(SAVE_TO_PLAYLIST.toString()))
+                                .setIcon(Icon.newBuilder().setYtIconType(YTIconType.BOOKMARK_BORDER))
+                                .setNavigationEndpoint(PlaylistQueueRenderer.NavigationEndpoint.newBuilder()
+                                        .setAddToPlaylistEndpoint(PlaylistQueueRenderer.AddToPlaylistEndpoint.newBuilder()
+                                                .setVideoId(videoId)));
+                        menu = menu.toBuilder()
+                                .addItems(saveItemsIndex, PlaylistQueueRenderer.MenuItem.newBuilder()
+                                        .setMenuServiceItemRenderer(saveToWatchLater))
+                                .addItems(saveItemsIndex + 1, PlaylistQueueRenderer.MenuItem.newBuilder()
+                                        .setMenuNavigationItemRenderer(saveToPlaylist))
+                                .build();
+
+                        menuOnTap = menuOnTap.toBuilder()
+                                .setInnertubeCommand(menuOnTap.getInnertubeCommand().toBuilder()
+                                        .setOpenPopupAction(openPopupAction.toBuilder()
+                                                .setPopup(popup.toBuilder().setMenuRenderer(menu).build().toByteString())))
+                                .build();
+                    }
                     RendererContext rendererContext = lockupViewModel.getRendererContext();
                     VideoWithContextModel classic = VideoWithContextModel.newBuilder()
                             .setData(VideoWithContextData.newBuilder()
@@ -1179,7 +1270,7 @@ public class FeedCardLayoutPatch {
                                     .setAccessibilityText(rendererContext.getAccessibilityContext().getLabel())
                                     .setMenuAccessibilityText(menuButton.getAccessibilityText())
                                     .setOnTap(rendererContext.getCommandContext().getOnTap())
-                                    .setMenuOnTap(menuButton.getOnTap().toByteString())
+                                    .setMenuOnTap(menuOnTap.toByteString())
                                     .setInlinePlayback(lockupViewModel.getInlinePlayback().getInlinePlayback()))
                             .setContext(setCardExperiments(card.getContext(), false))
                             .setEnvironment(card.getEnvironment())
@@ -1707,14 +1798,18 @@ public class FeedCardLayoutPatch {
 
                 View header = item;
                 final boolean shelfHeader = isShelfHeader(header);
-                if (!shelfHeader && !shelfCardItems.containsKey(item)) {
+                // The cards without inline playback, such as the playlists, have no background below the thumbnail.
+                CharSequence label = item.getContentDescription();
+                final boolean cardWithoutBackground = isCardLabel(label) && label.length() > 1
+                        && label.charAt(label.length() - 2) == NO_INLINE_PLAYBACK_CARD_LABEL_MARKER;
+                if (!shelfHeader && !shelfCardItems.containsKey(item) && !cardWithoutBackground) {
                     continue;
                 }
 
                 // The horizontal shelves have the header and the videos in the same list item,
                 // which is a card like the videos of the feed. The header is not mounted while
                 // it is scrolled out of the list, and the item is then found by its element.
-                if (hasNestedList(header, 0)) {
+                if (cardWithoutBackground || hasNestedList(header, 0)) {
                     setCardOutline(header, CARD_OUTLINE);
                     final float x = header.getX();
                     final float y = header.getY();
@@ -2128,93 +2223,126 @@ public class FeedCardLayoutPatch {
 
     /**
      * Injection point.
-     * Called when a video is opened.
+     * The comment button of the cards opens the comments panel of the video over the feed,
+     * the same as the comment button of the cards of the server, instead of opening the video.
+     *
+     * @return If the command was handled, and the video is not opened.
      */
-    public static void onWatchCommand(@Nullable Object command, @Nullable Map<?, ?> map) {
+    public static boolean openCommentsPanel(MessageLite command, @Nullable Map<?, ?> map) {
         try {
-            if (!ACTION_BUTTONS || map == null) {
-                return;
-            }
-
-            commentsVideoId = null;
             // The app keeps only the known fields of the commands, so the button is found by its label.
-            if (!(map.get(SENDER_VIEW_KEY) instanceof View senderView)
-                    || !endsWith(senderView.getContentDescription(), COMMENT_BUTTON_LABEL_MARKER)
-                    || !(command instanceof MessageLite message)) {
-                return;
+            if (!ACTION_BUTTONS || map == null
+                    || !(map.get(SENDER_VIEW_KEY) instanceof View senderView)
+                    || !endsWith(senderView.getContentDescription(), COMMENT_BUTTON_LABEL_MARKER)) {
+                return false;
             }
 
-            List<ProtoNode> fields = ProtoNode.parse(message.toByteArray());
+            byte[] watchCommand = command.toByteArray();
+            List<ProtoNode> fields = ProtoNode.parse(watchCommand);
             ProtoNode videoIdField = fields == null ? null : ProtoNode.field(
                     ProtoNode.message(fields, WATCH_ENDPOINT_FIELD), WATCH_ENDPOINT_VIDEO_ID_FIELD);
             if (videoIdField == null || !videoIdField.isText()) {
-                return;
+                return false;
             }
 
             String videoId = videoIdField.getText();
-            Logger.printDebug(() -> "Opening the comments of: " + videoId);
-            commentsVideoId = videoId;
-            commentsRequestTime = System.currentTimeMillis();
-        } catch (Exception ex) {
-            Logger.printException(() -> "onWatchCommand failure", ex);
-        }
-    }
+            Logger.printDebug(() -> "Opening the comments panel of: " + videoId);
+            // The headers of the account that is signed in now, not when the request runs.
+            Map<String, String> authHeaders = AuthUtils.getRequestHeader();
 
-    /**
-     * Injection point.
-     * Called when the watch page of a video is loaded.
-     *
-     * @return The command that opens the comments panel, or null.
-     */
-    @Nullable
-    public static byte[] getCommentsCommand(@Nullable Object watchNextResponse) {
-        try {
-            String videoId = commentsVideoId;
-            if (videoId == null || !(watchNextResponse instanceof MessageLite message)) {
-                return null;
-            }
-            if (System.currentTimeMillis() - commentsRequestTime > COMMENTS_OPEN_TIMEOUT_MILLIS) {
-                commentsVideoId = null;
-                return null;
-            }
+            Utils.runOnBackgroundThread(() -> {
+                byte[] panelCommand = null;
+                try {
+                    // The comments panel of the watch page has the token that loads the comments.
+                    byte[] requestBody = PlaylistRoutes.videoBody(videoId);
+                    HttpURLConnection connection = PlaylistRoutes.getConnection(
+                            PlaylistRoutes.GET_ENGAGEMENT_PANELS, authHeaders);
+                    connection.setFixedLengthStreamingMode(requestBody.length);
+                    connection.getOutputStream().write(requestBody);
 
-            byte[] response = message.toByteArray();
-            if (FlyoutUtils.byteIndexOf(response, videoId.getBytes(StandardCharsets.UTF_8)) < 0) {
-                return null; // Response of another video.
-            }
-            commentsVideoId = null;
+                    final int responseCode = connection.getResponseCode();
+                    List<ProtoNode> response = responseCode == Requester.HTTP_STATUS_CODE_SUCCESS
+                            ? ProtoNode.parse(Requester.parseBytes(connection))
+                            : null;
+                    if (response == null) {
+                        Logger.printInfo(() -> "Engagement panels request failed with code: " + responseCode);
+                    } else {
+                        for (ProtoNode panel : response) {
+                            if (panel.getFieldNumber() != WATCH_NEXT_ENGAGEMENT_PANELS_FIELD
+                                    || panel.children == null) continue;
 
-            for (String panelId : COMMENTS_PANEL_IDS) {
-                if (FlyoutUtils.byteIndexOf(response, panelId.getBytes(StandardCharsets.UTF_8)) >= 0) {
-                    Logger.printDebug(() -> "Opening comments panel: " + panelId);
-                    return showEngagementPanelCommand(panelId);
+                            ProtoNode renderer = ProtoNode.field(panel.children,
+                                    ENGAGEMENT_PANEL_SECTION_LIST_RENDERER_FIELD);
+                            ProtoNode panelIdField = renderer == null || renderer.children == null
+                                    ? null
+                                    : ProtoNode.field(renderer.children, ENGAGEMENT_PANEL_PANEL_ID_FIELD);
+                            if (panelIdField == null || !panelIdField.isText()
+                                    || !Utils.equalsAny(panelIdField.getText(), COMMENTS_PANEL_IDS)) continue;
+
+                            String panelId = panelIdField.getText();
+                            // The panel is shown over the feed, which hides the panels of other surfaces.
+                            ByteArrayOutputStream identifier = new ByteArrayOutputStream();
+                            CodedOutputStream identifierOutput = CodedOutputStream.newInstance(identifier);
+                            identifierOutput.writeEnum(ENGAGEMENT_PANEL_IDENTIFIER_SURFACE_FIELD,
+                                    ENGAGEMENT_PANEL_SURFACE_SHORTS);
+                            identifierOutput.writeString(ENGAGEMENT_PANEL_IDENTIFIER_TAG_FIELD, panelId);
+                            identifierOutput.flush();
+
+                            // The sort chips of the header are an Elements component, whose template comes with
+                            // the other templates of the watch page, which the response does not have.
+                            // Without its template, the component is an empty space.
+                            ProtoNode subheader = ProtoNode.field(ProtoNode.message(renderer.children,
+                                            ENGAGEMENT_PANEL_HEADER_FIELD, ENGAGEMENT_PANEL_TITLE_HEADER_RENDERER_FIELD),
+                                    ENGAGEMENT_PANEL_TITLE_HEADER_SUBHEADER_FIELD);
+                            if (subheader != null) {
+                                subheader.remove();
+                            }
+
+                            // The panels of the watch page are hidden until the watch page shows them.
+                            ByteArrayOutputStream shownRenderer = new ByteArrayOutputStream();
+                            CodedOutputStream rendererOutput = CodedOutputStream.newInstance(shownRenderer);
+                            rendererOutput.writeRawBytes(ProtoNode.write(renderer.children));
+                            rendererOutput.writeEnum(ENGAGEMENT_PANEL_VISIBILITY_FIELD,
+                                    ENGAGEMENT_PANEL_VISIBILITY_EXPANDED);
+                            rendererOutput.writeByteArray(ENGAGEMENT_PANEL_IDENTIFIER_FIELD, identifier.toByteArray());
+                            rendererOutput.flush();
+
+                            ByteArrayOutputStream engagementPanel = new ByteArrayOutputStream();
+                            CodedOutputStream panelOutput = CodedOutputStream.newInstance(engagementPanel);
+                            panelOutput.writeByteArray(ENGAGEMENT_PANEL_SECTION_LIST_RENDERER_FIELD,
+                                    shownRenderer.toByteArray());
+                            panelOutput.flush();
+
+                            ByteArrayOutputStream endpoint = new ByteArrayOutputStream();
+                            CodedOutputStream endpointOutput = CodedOutputStream.newInstance(endpoint);
+                            endpointOutput.writeString(SHOW_ENGAGEMENT_PANEL_ENDPOINT_PANEL_ID_FIELD, panelId);
+                            endpointOutput.writeByteArray(SHOW_ENGAGEMENT_PANEL_ENDPOINT_PANEL_FIELD,
+                                    engagementPanel.toByteArray());
+                            endpointOutput.writeByteArray(SHOW_ENGAGEMENT_PANEL_ENDPOINT_IDENTIFIER_FIELD,
+                                    identifier.toByteArray());
+                            endpointOutput.flush();
+
+                            ByteArrayOutputStream commandBytes = new ByteArrayOutputStream();
+                            CodedOutputStream commandOutput = CodedOutputStream.newInstance(commandBytes);
+                            commandOutput.writeByteArray(SHOW_ENGAGEMENT_PANEL_ENDPOINT_FIELD, endpoint.toByteArray());
+                            commandOutput.flush();
+                            panelCommand = commandBytes.toByteArray();
+                            break;
+                        }
+                    }
+                } catch (Exception ex) {
+                    Logger.printInfo(() -> "Engagement panels request failed: " + videoId, ex);
                 }
-            }
 
-            Matcher panelId = COMMENTS_PANEL_ID_PATTERN.matcher(new String(response, StandardCharsets.ISO_8859_1));
-            if (panelId.find()) {
-                String foundId = panelId.group();
-                Logger.printDebug(() -> "Opening unknown comments panel: " + foundId);
-                return showEngagementPanelCommand(foundId);
-            }
-            Logger.printDebug(() -> "Comments panel not found");
+                // Without the comments panel, such as when the comments are turned off, the video is opened.
+                byte[] commandToRun = panelCommand != null ? panelCommand : watchCommand;
+                Utils.runOnMainThread(() -> CommandRouterPatch.executeCommand(commandToRun, new HashMap<>()));
+            });
+            return true;
         } catch (Exception ex) {
-            Logger.printException(() -> "getCommentsCommand failure", ex);
+            Logger.printException(() -> "openCommentsPanel failure", ex);
         }
-        return null;
-    }
-
-    private static byte[] showEngagementPanelCommand(String panelId) throws IOException {
-        ByteArrayOutputStream endpoint = new ByteArrayOutputStream();
-        CodedOutputStream endpointOutput = CodedOutputStream.newInstance(endpoint);
-        endpointOutput.writeString(SHOW_ENGAGEMENT_PANEL_ENDPOINT_PANEL_ID_FIELD, panelId);
-        endpointOutput.flush();
-
-        ByteArrayOutputStream command = new ByteArrayOutputStream();
-        CodedOutputStream commandOutput = CodedOutputStream.newInstance(command);
-        commandOutput.writeByteArray(SHOW_ENGAGEMENT_PANEL_ENDPOINT_FIELD, endpoint.toByteArray());
-        commandOutput.flush();
-        return command.toByteArray();
+        return false;
     }
 
     /**
@@ -2253,6 +2381,21 @@ public class FeedCardLayoutPatch {
                 .setAccessibilityText(data.getAccessibilityText() + SHELF_HEADER_LABEL_MARKER)
                 .setStyle(data.getStyle().toBuilder().setModernType(true))
                 .build();
+    }
+
+    /**
+     * @return The command of the 'Save to Watch later' item of the menu, or null if the menu has no such item.
+     */
+    @Nullable
+    private static PlaylistQueueRenderer.NavigationEndpoint findWatchLaterCommand(
+            PlaylistQueueRenderer.MenuRenderer menu) {
+        for (PlaylistQueueRenderer.MenuItem item : menu.getItemsList()) {
+            PlaylistQueueRenderer.NavigationEndpoint command = item.getMenuServiceItemRenderer().getServiceEndpoint();
+            if (WATCH_LATER_PLAYLIST_ID.equals(command.getPlaylistEditEndpoint().getPlaylistId())) {
+                return command;
+            }
+        }
+        return null;
     }
 
     private static InnertubeCommandHolder likeCommand(String videoId, int status) {

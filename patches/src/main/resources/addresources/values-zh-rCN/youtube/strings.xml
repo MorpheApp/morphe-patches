@@ -260,9 +260,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">评论</string>
   <string name="morphe_comments_screen_summary">选择要在评论部分中显示的组件</string>
   <string name="morphe_hide_comments_carousel_title">启用评论轮播过滤</string>
-  <string name="morphe_hide_comments_carousel_summary">"• 请确保输入轮播项的确切名称（例如，提问、热播此视频、在 YouTube Music 上收听）
-• 隐藏轮播项可能会产生意想不到的副作用
-• 如果隐藏了所有轮播项，则整个评论区也会被隐藏"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• 输入关键词或全名（例如：Ask、Community、Hype、Listen）
+• 隐藏所有项目将隐藏整个评论区"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">评论轮播过滤器</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">输入要过滤的评论轮播图名称，以换行符分隔，每行一个</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">隐藏 AI 聊天摘要</string>
@@ -496,7 +495,7 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_like_ratio_title">显示帖子缩略图点赞比例</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">搜索评论</string>
-  <string name="morphe_search_comments_summary">点击评论中的搜索按钮，仅显示包含所有搜索词的已加载评论。将词组放在引号中可搜索特定短语</string>
+  <string name="morphe_search_comments_summary">点击评论区的搜索按钮，仅显示包含所有搜索词的已加载评论。将词组放入引号中以搜索短语</string>
   <string name="morphe_search_comments_dialog_title">搜索评论</string>
   <string name="morphe_search_comments_hint">要搜索的词语</string>
   <string name="morphe_search_comments_search">搜索</string>
@@ -595,6 +594,11 @@ Second \"item\" text"</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">您已使用今天的免费 MyMemory 翻译配额（5,000 个字符）。在设置中添加 MyMemory 邮箱以将每日限制提高到 50,000 个字符，或切换到其他翻译服务</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">您已使用今天的 MyMemory 翻译配额（50,000 个字符）。切换到其他翻译服务或明天再试</string>
   <string name="morphe_vot_mymemory_error">MyMemory 翻译失败 (状态 %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">加宽“稍后观看”拖动手柄</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">“稍后观看”视频的拖动手柄更易于抓取</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">隐藏“稍后观看”移除提示栏</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">从“稍后观看”中移除视频后不再显示确认提示</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">启用循环播放视频</string>
   <string name="morphe_do_not_remember_loop_video_title">不记住循环视频</string>
@@ -759,10 +763,10 @@ Second \"item\" text"</string>
 要解决此问题，请开启“伪装视频流”并将“默认客户端”更改为“TV Simply”或“visionOS”。"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">启用滑动拖动进度条</string>
-  <string name="morphe_slide_to_seek_summary">启用滑动以定位，而不是按住视频播放器时以 2 倍速度播放</string>
+  <string name="morphe_slide_to_seek_summary">长按视频进行滑动和快进，而不是以 2 倍速播放</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">启用点按进度条</string>
-  <string name="morphe_tap_to_seek_summary">只需点击进度条即可跳转到该位置，而无需拖动</string>
+  <string name="morphe_tap_to_seek_summary">点击进度条任意位置即可跳转到该位置，而无需拖动</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">左侧滑动手势</string>
   <string name="morphe_swipe_right_zone_title">右侧滑动手势</string>
@@ -937,16 +941,15 @@ Second \"item\" text"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">隐藏通知按钮</string>
   <string name="morphe_show_search_button_title">隐藏搜索按钮</string>
-  <string name="morphe_show_search_button_index_title">搜索按钮位置</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">显示“稍后观看”按钮</string>
-  <string name="morphe_show_watch_later_button_index_title">“稍后观看”按钮位置</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">稍后观看</string>
   <string name="morphe_show_settings_button_title">显示设置按钮</string>
-  <string name="morphe_show_settings_button_index_title">设置按钮位置</string>
   <string name="morphe_show_settings_button_type_title">设置按钮操作</string>
   <string name="morphe_show_settings_button_type_summary">启用时打开 Morphe 设置，禁用时打开 YouTube 设置</string>
+  <string name="morphe_navigation_buttons_order_title">导航栏按钮顺序</string>
+  <string name="morphe_navigation_buttons_order_summary">拖动按钮以更改它们在导航栏中的顺序</string>
   <string name="morphe_swap_create_with_notifications_button_title">交换“创作”按钮与“通知”按钮</string>
   <string name="morphe_swap_create_with_notifications_button_summary">如果更改此设置没有生效，请尝试切换到无痕模式。</string>
   <string name="morphe_hide_navigation_button_labels_title">隐藏导航栏按钮标签</string>
@@ -971,12 +974,18 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_entry_3">透明</string>
   <string name="morphe_navigation_bar_style_entry_4">不透明</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">您的设备或 YouTube 版本可能不支持此样式，这可能会导致布局问题或崩溃</string>
+  <string name="morphe_navigation_bar_glass_title">启用玻璃导航栏</string>
+  <string name="morphe_navigation_bar_glass_summary">将导航栏显示为浮动的、圆角的半透明胶囊形状。在不透明导航栏样式下不可用</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">玻璃不透明度</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">调整玻璃导航栏的透明度级别（0 为透明，100 为不透明）</string>
   <string name="morphe_toolbar_screen_title">工具栏</string>
   <string name="morphe_toolbar_screen_summary">选择工具栏中显示哪些组件</string>
   <string name="morphe_hide_toolbar_chat_button_title">隐藏聊天按钮</string>
   <string name="morphe_hide_toolbar_microphone_button_title">隐藏麦克风按钮</string>
   <string name="morphe_hide_toolbar_search_button_title">隐藏搜索按钮</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">启用时，点击可打开 Morphe 设置，长按可打开 YouTube 设置，禁用则反向操作</string>
+  <string name="morphe_toolbar_buttons_order_title">工具栏按钮顺序</string>
+  <string name="morphe_toolbar_buttons_order_summary">拖动按钮以更改它们在工具栏中的顺序</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">弹出菜单</string>
   <string name="morphe_hide_player_flyout_summary">选择在浮动菜单中显示哪些组件</string>

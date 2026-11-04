@@ -314,7 +314,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                 if ("(".equals(ft) || "（".equals(ft) || "[".equals(ft)) {
                     words.remove(0);
                 } else if (ft.startsWith("(") || ft.startsWith("（") || ft.startsWith("[")) {
-                    words.set(0, new Word(first.startMs(), first.endMs(), ft.substring(1).trim(), first.romaji(), first.endsWithSpace()));
+                    words.set(0, new Word(first.startMs(), first.endMs(), ft.substring(1).trim(), first.romaji(), first.endsWithSpace(), first.ruby()));
                 }
             }
             if (!words.isEmpty()) {
@@ -324,7 +324,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                 if (")".equals(lt) || "）".equals(lt) || "]".equals(lt)) {
                     words.remove(lastIdx);
                 } else if (lt.endsWith(")") || lt.endsWith("）") || lt.endsWith("]")) {
-                    words.set(lastIdx, new Word(last.startMs(), last.endMs(), lt.substring(0, lt.length() - 1).trim(), last.romaji(), last.endsWithSpace()));
+                    words.set(lastIdx, new Word(last.startMs(), last.endMs(), lt.substring(0, lt.length() - 1).trim(), last.romaji(), last.endsWithSpace(), last.ruby()));
                 }
             }
         }
@@ -414,7 +414,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                                     if (!mergedWords.isEmpty()) {
                                         Word prev = mergedWords.get(mergedWords.size() - 1);
                                         mergedWords.set(mergedWords.size() - 1, new Word(
-                                                prev.startMs(), prev.endMs(), prev.text(), prev.romaji(), true));
+                                                prev.startMs(), prev.endMs(), prev.text(), prev.romaji(), true, prev.ruby()));
                                     }
                                     continue;
                                 }
@@ -499,7 +499,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                                 List<Word> mainWords = new ArrayList<>(words.subList(0, splitWi));
                                 Word lastMain = mainWords.get(mainWords.size() - 1);
                                 mainWords.set(mainWords.size() - 1, new Word(
-                                        lastMain.startMs(), lastMain.endMs(), lastMain.text(), lastMain.romaji(), false));
+                                        lastMain.startMs(), lastMain.endMs(), lastMain.text(), lastMain.romaji(), false, lastMain.ruby()));
                                 List<Word> secWords = new ArrayList<>(words.subList(splitWi, words.size()));
                                 secWords.addAll(nxtWords);
                                 String mainText = (pPos > 0 ? text.substring(0, pPos) : text).trim();
@@ -528,7 +528,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                         List<Word> mainWords = new ArrayList<>(words.subList(0, splitWi));
                         Word lastMain = mainWords.get(mainWords.size() - 1);
                         mainWords.set(mainWords.size() - 1, new Word(
-                                lastMain.startMs(), lastMain.endMs(), lastMain.text(), lastMain.romaji(), false));
+                                lastMain.startMs(), lastMain.endMs(), lastMain.text(), lastMain.romaji(), false, lastMain.ruby()));
                         List<Word> secWords = new ArrayList<>(words.subList(splitWi, words.size()));
                         String mainText = text.substring(0, pOpen).trim();
                         String secText = text.substring(pOpen).trim();
@@ -549,7 +549,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                         List<Word> secWords = new ArrayList<>(words.subList(0, splitWi));
                         Word lastSec = secWords.get(secWords.size() - 1);
                         secWords.set(secWords.size() - 1, new Word(
-                                lastSec.startMs(), lastSec.endMs(), lastSec.text(), lastSec.romaji(), false));
+                                lastSec.startMs(), lastSec.endMs(), lastSec.text(), lastSec.romaji(), false, lastSec.ruby()));
                         List<Word> mainWords = new ArrayList<>(words.subList(splitWi, words.size()));
                         String secText = text.substring(0, pClose + 1).trim();
                         String mainText = text.substring(pClose + 1).trim();

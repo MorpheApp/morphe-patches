@@ -630,6 +630,10 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_hide_played_summary">Şu anda çalınan satırın üzerindeki şarkı sözü satırlarını gizle</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Okunmamış şarkı sözlerini gizle</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Şu anda çalınan satırın altındaki şarkı sözlerini gizle</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dinamik arka plan</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Şarkı sözlerinin arkasında albüm kapağından oluşturulmuş bulanık bir arka plan göster</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Dinamik arka planı hareketlendir</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Oynatma sırasında arka planı hareket ettir ve YouTube Music\'in mikrofon izni varsa müziğe göre daraltıp genişlet. Daha az pil tüketen sabit bir arka plan için kapatın</string>
   <string name="morphe_music_lyrics_mediasession_title">Kilit ekranında MediaSession şarkı sözlerini göster</string>
   <string name="morphe_music_lyrics_mediasession_summary">Mevcut satırı kilit ekranı, Android Auto ve Bluetooth\'ta gösterir. Android 11 veya daha yenisini gerektirir.</string>
   <string name="morphe_music_lyrics_miniplayer_title">Mini oynatıcıda şarkı sözlerini göster</string>
@@ -728,7 +732,7 @@ Her iki sınır için de geçerlidir. 1,75 değerinde, dört tam genişlikteki k
   <string name="morphe_music_lyrics_hide_info_title">Yenile</string>
   <string name="morphe_music_lyrics_hide_info_summary">Şarkı sözlerinin altında gösterilen künye satırını gizle</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Çeviri ve okunuşun yerini değiştir</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">AÇIK romanizasyonu veya transkripsiyonu şarkı sözlerinin altına, çeviriyi üzerine koyar; KAPALI romanizasyonu veya transkripsiyonu üste, çeviriyi alta bırakır. Her heceye yerleştirilen bir okuma, o hecenin üzerinden altına doğru hareket eder</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Şarkı sözlerinin altındaki çeviri ve romanizasyonun görüntüleme sırasını değiştirir</string>
   <string name="morphe_music_lyrics_force_center_title">Şarkı sözlerini her zaman ortaya hizala</string>
   <string name="morphe_music_lyrics_force_center_summary">AÇIK tüm satırları ortaya koyar ve kaynak hizalamayı, düet yanları dahil görmezden gelir; KAPALI şarkı sözlerinin istediği hizalamayı korur</string>
   <string name="morphe_music_lyrics_providers_keep_one">En az bir sağlayıcı açık kalmalıdır</string>
@@ -736,6 +740,14 @@ Her iki sınır için de geçerlidir. 1,75 değerinde, dört tam genişlikteki k
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizasyon veya transliterasyon</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Çevrimdışı Sözlük</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime Kelime Listesi</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Rubi</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Çevrim Dışı Sözlük</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Rubi düzeni</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Rubi düğmesini göster</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Şarkı sözlerinin üzerinde rubi okunuşlarını açıp kapatmak için dokunun, hiragana ve katakana arasında geçiş yapmak için basılı tutun. Etkin rubi sağlayıcılarını listelendikleri sırada kullanır.</string>
+  <string name="morphe_music_lyrics_ruby_generating">Rubi oluşturuluyor…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Bölümleri yapay zeka ile tespit et</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Yalnızca sağlayıcı Nakarat veya Verse gibi bölüm etiketleri göndermediğinde kullanılır; bu durumda bunları OpenAI-uyumlu modeliniz tespit eder. Satırı düzenlemek onun istemini de açar</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API uç noktası URL\'si (örn. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

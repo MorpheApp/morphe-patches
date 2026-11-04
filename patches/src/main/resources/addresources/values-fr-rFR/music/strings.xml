@@ -598,7 +598,7 @@ Cookies nécessaires : SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_show_copy_button_summary">Appuyez pour copier les paroles originales en texte brut ; appuyez longuement pour enregistrer le fichier source brut des paroles dans \'Téléchargés\'</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Afficher un bouton \'Traduire\'</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Appuyez pour basculer la traduction ; appuyez longuement pour la traduction uniquement. Utilise les fournisseurs de traduction activés dans l\'ordre indiqué</string>
-  <string name="morphe_music_lyrics_show_romanize_button_title">Afficher le bouton \'Romaniser\' ou \'Translitérer\'</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Afficher un bouton \'Romaniser\' ou \'Translitérer\'</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Appuyez pour basculer la romanisation ou la translittération ; appuyez longuement pour la romanisation ou la translittération uniquement. Utilise les fournisseurs de romanisation activés dans l\'ordre indiqué</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Activer la translittération</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Autoriser les lectures non latines provenant de la source des paroles ; désactivée, ne conserve que les lettres latines, les lettres accentuées et les chiffres de ton</string>
@@ -630,6 +630,10 @@ Cookies nécessaires : SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_hide_played_summary">Masquer les lignes de paroles au-dessus de la ligne en cours de lecture</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Masquer les paroles non lues</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Masquer les lignes de paroles au-dessous de la ligne en cours de lecture</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Arrière-plan dynamique</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Afficher un arrière-plan flou créé à partir de la pochette de l\'album derrière les paroles</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animer l\'arrière-plan dynamique</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Déplacer l\'arrière-plan pendant la lecture, et le faire vibrer au rythme de la musique si YouTube Music dispose de l\'autorisation d\'accès au microphone. Désactivez cette option pour conserver un arrière-plan fixe qui consomme moins de batterie</string>
   <string name="morphe_music_lyrics_mediasession_title">Afficher les paroles MediaSession sur l\'écran de verrouillage</string>
   <string name="morphe_music_lyrics_mediasession_summary">Affiche la ligne en cours sur l\'écran de verrouillage, Android Auto et Bluetooth. Nécessite Android 11 ou une version ultérieure</string>
   <string name="morphe_music_lyrics_miniplayer_title">Afficher les paroles dans le mini-lecteur</string>
@@ -728,7 +732,7 @@ Les paroles proviennent de services tiers qui ne sont ni affiliés, ni sponsoris
   <string name="morphe_music_lyrics_hide_info_title">Masquer la ligne de crédit</string>
   <string name="morphe_music_lyrics_hide_info_summary">Masquer la ligne de crédit affichée sous les paroles</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Inverser la traduction et la romanisation</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ACTIVÉE : place la romanisation ou la translittération sous les paroles et la traduction au-dessus. DÉSACTIVÉE : conserve la romanisation ou la translittération au-dessus et la traduction en dessous. Une lecture placée au-dessus de chaque syllabe se déplace avec celle-ci, de sorte qu\'elle passe au-dessous de sa syllabe</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Inverse l\'ordre d\'affichage de la traduction et de la romanisation sous les paroles</string>
   <string name="morphe_music_lyrics_force_center_title">Toujours centrer les paroles</string>
   <string name="morphe_music_lyrics_force_center_summary">ACTIVÉE : place chaque ligne au milieu et ignore l\'alignement de la source, y compris les côtés du duo ; DÉSACTIVÉE : conserve l\'alignement demandé par les paroles</string>
   <string name="morphe_music_lyrics_providers_keep_one">Au moins un fournisseur doit rester activé</string>
@@ -736,6 +740,14 @@ Les paroles proviennent de services tiers qui ne sont ni affiliés, ni sponsoris
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisation ou translittération</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Dictionnaire hors ligne</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime Wordlist</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Dictionnaire hors ligne</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Script Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Afficher un bouton \'Ruby\'</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Appuyez pour basculer les lectures ruby au-dessus des paroles ; appuyez longuement pour basculer entre hiragana et katakana. Utilise les fournisseurs ruby activés dans l\'ordre indiqué</string>
+  <string name="morphe_music_lyrics_ruby_generating">Génération du ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Détecter les sections avec l\'IA</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Utilisé uniquement lorsque le fournisseur ne fournit pas d\'étiquettes de section, comme \'Refrain\' ou \'Couplet\', que votre modèle compatible avec OpenAI détecte ensuite. Modifier la ligne ouvre également son prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL du point de terminaison de l\'API (par ex. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

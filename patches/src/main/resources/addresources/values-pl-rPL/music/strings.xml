@@ -630,6 +630,10 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_hide_played_summary">Ukrywa linijki tekstu znajdujące się powyżej tej aktualnie odtwarzanej</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Ukryj nieodtworzony tekst</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Ukrywa linijki tekstu znajdujące się poniżej tej aktualnie odtwarzanej</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dynamiczne tło</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Wyświetlaj pod tekstem utworu rozmyte tło utworzone z okładki albumu</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animuj dynamiczne tło</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Porusza tłem podczas odtwarzania i pulsuje nim w rytm muzyki, jeśli YouTube Music ma uprawnienia do mikrofonu. Wyłącz, aby uzyskać statyczne tło zużywające mniej baterii</string>
   <string name="morphe_music_lyrics_mediasession_title">Pokaż teksty MediaSession na ekranie blokady</string>
   <string name="morphe_music_lyrics_mediasession_summary">Wyświetla bieżący wers na ekranie blokady, w Android Auto i przez Bluetooth. Wymaga systemu Android 11 lub nowszego</string>
   <string name="morphe_music_lyrics_miniplayer_title">Pokaż teksty w miniodtwarzaczu</string>
@@ -728,7 +732,7 @@ Teksty pochodzą z zewnętrznych usług, które nie są powiązane z Morphe, prz
   <string name="morphe_music_lyrics_hide_info_title">Ukryj informacje o twórcach</string>
   <string name="morphe_music_lyrics_hide_info_summary">Ukrywa informacje o twórcach wyświetlane pod tekstem</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Zamień miejscami tłumaczenie i romanizację</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">WŁ.: umieszcza romanizację lub transliterację pod tekstem, a tłumaczenie nad nim. WYŁ.: zachowuje romanizację lub transliterację nad tekstem, a tłumaczenie pod nim. Transkrypcja umieszczona nad poszczególnymi sylabami również zmienia pozycję, z góry na dół</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Zamienia kolejność wyświetlania tłumaczenia i romanizacji pod tekstem utworu</string>
   <string name="morphe_music_lyrics_force_center_title">Zawsze wyśrodkowuj tekst</string>
   <string name="morphe_music_lyrics_force_center_summary">WŁ.: wyśrodkowuje każdy wers i ignoruje wyrównanie ze źródła, w tym podział na strony w duetach. WYŁ.: zachowuje oryginalne wyrównanie tekstu</string>
   <string name="morphe_music_lyrics_providers_keep_one">Co najmniej jeden dostawca musi pozostać włączony</string>
@@ -736,6 +740,14 @@ Teksty pochodzą z zewnętrznych usług, które nie są powiązane z Morphe, prz
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizacja lub transliteracja</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Słownik offline</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Słownik Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Słownik offline</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Pismo ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Pokaż przycisk Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Dotknij, aby przełączyć transkrypcję ruby nad tekstem. Przytrzymaj, aby przełączyć między hiraganą a katakaną. Korzysta z włączonych dostawców ruby w podanej kolejności</string>
+  <string name="morphe_music_lyrics_ruby_generating">Generowanie ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Wykrywaj sekcje za pomocą AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Używane tylko wtedy, gdy dostawca nie udostępnia oznaczeń sekcji (takich jak Refren czy Zwrotka), wówczas wykrywa je Twój model zgodny z OpenAI. Edycja tego wiersza otwiera również przypisane mu polecenie</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">Adres API (np. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

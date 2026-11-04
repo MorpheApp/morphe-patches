@@ -101,7 +101,7 @@ Kasama sa mga pagbabago ang:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Itago ang button na \'Abisuhan mo ako\'</string>
-  <string name="morphe_hide_notify_me_button_summary">Itinatago ang button ng paalala para sa mga naka-iskedyul na live stream at premiere</string>
+  <string name="morphe_hide_notify_me_button_summary">Itinatago ang button ng paalala para sa mga naka-schedule na live stream at Premiere</string>
   <string name="morphe_hide_playables_title">Itago ang Mga Playable</string>
   <string name="morphe_hide_playables_summary">Itinatago ang feature na nagbibigay-daan sa iyong maglaro ng mga laro</string>
   <string name="morphe_hide_search_term_thumbnails_title">Itago ang mga thumbnail ng termino sa paghahanap</string>
@@ -260,9 +260,8 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_comments_screen_title">Mga Komento</string>
   <string name="morphe_comments_screen_summary">Pumili kung aling mga component ang lalabas sa seksyon ng mga komento</string>
   <string name="morphe_hide_comments_carousel_title">Paganahin ang filter carousel ng komento</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Tiyaking ilagay ang eksaktong pangalan ng carousel item (hal. Tanong, Hype sa bidyong ito, Makinig sa YouTube Music)
-• Ang pagtatago ng mga carousel item ay maaaring magdulot ng hindi inaasahang epekto
-• Kung lahat ng carousel item ay nakatago, ang buong seksyon ng komento ay itatago rin"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Maglagay ng keyword o buong pangalan (hal., Ask, Community, Hype, Listen)
+• Ang pagtatago sa lahat ng item ay magtatago sa buong seksyon ng mga comment"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Filter ng carousel ng komento</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Ilagay ang mga pangalan ng comments carousel na ifi-filter by, na pinaghihiwalay ng mga bagong linya</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Itago ang buod ng AI chat</string>
@@ -496,7 +495,7 @@ Pagkatapos buksan ang isang video na may Ask button, gagana ang feature sa lahat
   <string name="morphe_ryd_feed_like_ratio_title">Ipakita ang porsyento ng like sa thumbnail ng feed</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Maghanap ng mga komento</string>
-  <string name="morphe_search_comments_summary">Pindutin ang search button sa mga komento para ipakita lamang ang mga naiload na komento na naglalaman ng lahat ng mga hinahanap na salita. Maglagay ng mga salita sa quotes para maghanap ng isang parirala</string>
+  <string name="morphe_search_comments_summary">I-tap ang search button sa mga comment upang ipakita lamang ang mga na-load na comment na naglalaman ng lahat ng mga hinahanap na salita. Maglagay ng mga salita sa loob ng panipi upang maghanap ng isang parirala</string>
   <string name="morphe_search_comments_dialog_title">Maghanap ng mga komento</string>
   <string name="morphe_search_comments_hint">Mga salitang hahanapin</string>
   <string name="morphe_search_comments_search">Hanapin</string>
@@ -595,6 +594,11 @@ Hindi dapat ibahagi ang iyong API key. Sinumang may access dito ay maaaring guma
   <string name="morphe_vot_mymemory_quota_message_no_email">Ginagamit mo na ang pang-araw-araw na libreng quota ng pagsasalin ng MyMemory (5,000 character). Magdagdag ng email ng MyMemory sa mga setting upang itaas ang pang-araw-araw na limitasyon sa 50,000 character, o lumipat sa ibang serbisyo ng pagsasalin</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Ginagamit mo na ang quota ng pagsasalin ng MyMemory ngayong araw (50,000 character). Lumipat sa ibang serbisyo ng pagsasalin o subukan muli bukas</string>
   <string name="morphe_vot_mymemory_error">Nabigo ang pagsasalin ng MyMemory (status %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Palawakin ang mga drag handle ng Panoorin mamaya</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Mas madaling hawakan ang mga drag handle ng mga video sa Panoorin mamaya</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Itago ang removal snackbar ng Panoorin mamaya</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Hindi ipapakita ang kumpirmasyon pagkatapos tanggalin ang isang video mula sa Panoorin mamaya</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">I-enable ang loop video</string>
   <string name="morphe_do_not_remember_loop_video_title">Huwag tandaan ang pag-uulit ng video</string>
@@ -759,10 +763,10 @@ Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default
 Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default client' sa 'TV Simply' o 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Paganahin ang slide to seek</string>
-  <string name="morphe_slide_to_seek_summary">Pinapagana ang slide to seek sa halip na magpatugtog sa 2x speed kapag pinipindot at hinahawakan ang video player</string>
+  <string name="morphe_slide_to_seek_summary">Pindutin at itagal ang video para i-slide at i-seek sa halip na mag-play sa 2x speed</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">I-enable ang tap to seek</string>
-  <string name="morphe_tap_to_seek_summary">I-tap lamang ang seekbar upang tumalon sa posisyong iyon nang hindi ito dinadala</string>
+  <string name="morphe_tap_to_seek_summary">I-tap ang kahit saan sa seekbar upang tumalon sa posisyong iyon sa halip na i-drag</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Kumpas ng swipe pakaliwa</string>
   <string name="morphe_swipe_right_zone_title">Kumpas ng swipe pakanan</string>
@@ -937,24 +941,23 @@ Dapat ibigay ang 'Caption cookies'"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Itago ang Notifications button</string>
   <string name="morphe_show_search_button_title">Ipakita ang Search button</string>
-  <string name="morphe_show_search_button_index_title">Posisyon ng Search button</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Ipakita ang button na Panoorin mamaya</string>
-  <string name="morphe_show_watch_later_button_index_title">Posisyon ng button na Panoorin mamaya</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Panoorin mamaya</string>
   <string name="morphe_show_settings_button_title">Ipakita ang Settings button</string>
-  <string name="morphe_show_settings_button_index_title">Posisyon ng Settings button</string>
   <string name="morphe_show_settings_button_type_title">Aksyon ng buton ng Mga Setting</string>
   <string name="morphe_show_settings_button_type_summary">Binubuksan ang Morphe settings kapag naka-enable, o YouTube settings kapag naka-disable</string>
+  <string name="morphe_navigation_buttons_order_title">Pagkakasunod-sunod ng mga button ng nabigasyon</string>
+  <string name="morphe_navigation_buttons_order_summary">I-drag ang mga button upang baguhin ang pagkakasunod-sunod ng mga ito sa navigation bar</string>
   <string name="morphe_swap_create_with_notifications_button_title">Pagpalitin ang button na Create sa button na Notifications</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Kung ang pagbabago sa setting na ito ay hindi magkaroon ng epekto, subukang lumipat sa Incognito mode.</string>
   <string name="morphe_hide_navigation_button_labels_title">Itago ang mga tatak ng navigation button</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Itago ang tuldok ng bagong nilalaman</string>
   <string name="morphe_hide_navigation_bar_title">Itago ang navigation bar</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ginagawa nitong ganap na nakatago ang navigation bar, kasama ang 'You' tab.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ganap nitong itinatago ang navigation bar, kabilang ang 'You' tab.
 
-Para i-access ang Settings, i-enable ang Settings button sa pamamagitan ng General → Toolbar → Show Settings"</string>
+Para ma-access ang Settings, i-enable ang Settings button sa pamamagitan ng General → Toolbar → Show Settings button"</string>
   <string name="morphe_narrow_navigation_buttons_title">Paganahin ang makitid na navigation button</string>
   <string name="morphe_narrow_navigation_buttons_summary">Binabawasan ang pahalang na espasyo sa pagitan ng mga button</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">I-disable ang mga navigation button na walang mga label</string>
@@ -971,12 +974,18 @@ Para i-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gener
   <string name="morphe_navigation_bar_style_entry_3">Transparent</string>
   <string name="morphe_navigation_bar_style_entry_4">Opaque</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Maaaring hindi suportado ang istilong ito ng iyong device o bersyon ng YouTube, at maaaring magdulot ng mga isyu sa layout o crash</string>
+  <string name="morphe_navigation_bar_glass_title">I-enable ang glass navigation bar</string>
+  <string name="morphe_navigation_bar_glass_summary">Ipinapakita ang navigation bar bilang isang floating, rounded, at translucent na capsule. Hindi available sa Opaque navigation bar style</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Opacity ng glass</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">I-adjust ang transparency level ng glass navigation bar (0 ay transparent, 100 ay opaque)</string>
   <string name="morphe_toolbar_screen_title">Toolbar</string>
   <string name="morphe_toolbar_screen_summary">Pumili kung aling mga component ang lilitaw sa flyout menu</string>
   <string name="morphe_hide_toolbar_chat_button_title">Itago ang Chat button</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Itago ang Microphone button</string>
   <string name="morphe_hide_toolbar_search_button_title">Itago ang Search button</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Kapag naka-enable, ang pag-tap ay bubukas sa Morphe settings at ang mahabang pagpindot ay bubukas sa YouTube settings, i-disable para pagbaliktarin</string>
+  <string name="morphe_toolbar_buttons_order_title">Pagkakasunod-sunod ng mga button ng toolbar</string>
+  <string name="morphe_toolbar_buttons_order_summary">I-drag ang mga button upang baguhin ang pagkakasunod-sunod ng mga ito sa toolbar</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout menu</string>
   <string name="morphe_hide_player_flyout_summary">Itago ang \'Audio Track\' menu</string>
@@ -1726,10 +1735,10 @@ Optional ang automatic recording. Itinatigil ito sa incognito o kapag nabagyo an
   <string name="morphe_niconico_comments_max_length_no_limit">Walang limitasyon</string>
   <string name="morphe_niconico_comments_live_streams_title">Ipakita sa mga live stream</string>
   <string name="morphe_niconico_comments_live_streams_summary">Mga live stream at ang kanilang mga replay</string>
-  <string name="morphe_niconico_comments_live_premieres_title">Ipakita sa mga premiere</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Ipakita sa mga Premiere</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Mga premiere habang nagpe-play ang mga ito</string>
-  <string name="morphe_niconico_comments_ended_premieres_title">Ipakita sa mga tapos nang premiere</string>
-  <string name="morphe_niconico_comments_ended_premieres_summary">Chat replay ng mga premiere na natapos na</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Ipakita sa mga tapos nang Premiere</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Chat replay ng mga Premieres na natapos na</string>
   <string name="morphe_live_chat_translate_screen_title">Pagsasalin ng live chat</string>
   <string name="morphe_live_chat_translate_screen_summary">Isalin ang mga mensahe ng live chat at live chat replay</string>
   <string name="morphe_live_chat_translate_title">Isalin ang live chat</string>

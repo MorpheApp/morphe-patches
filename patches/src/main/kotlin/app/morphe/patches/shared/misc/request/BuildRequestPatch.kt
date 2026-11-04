@@ -17,6 +17,7 @@ private lateinit var buildRequestMethod: WeakReference<MutableMethod>
 private var builderIndex = -1
 private var urlRegister = -1
 private var mapRegister = -1
+private var bodyRegister = -1
 
 internal val buildRequestPatch = bytecodePatch(
     description = "buildRequestPatch",
@@ -27,16 +28,22 @@ internal val buildRequestPatch = bytecodePatch(
                 val builderMatch = it.instructionMatches.first()
                 builderIndex = builderMatch.index
                 urlRegister = builderMatch.instruction.registersUsed[1]
-                mapRegister = it.instructionMatches[1].instruction.registersUsed[0]
+                bodyRegister = it.instructionMatches[1].instruction.registersUsed[0]
+                mapRegister = it.instructionMatches[2].instruction.registersUsed[0]
                 buildRequestMethod = WeakReference(this)
             }
         }
     }
 }
 
+/**
+ * @param hookHeader If the hook returns the headers to send.
+ * @param includeBody If the hook is also given the body of the request, which is null if it has none.
+ */
 internal fun hookBuildRequest(
     descriptor: String,
-    hookHeader: Boolean = false
+    hookHeader: Boolean = false,
+    includeBody: Boolean = false
 ) {
     buildRequestMethod.get()!!.apply {
         if (hookHeader) {
@@ -48,6 +55,11 @@ internal fun hookBuildRequest(
                 """
             )
             builderIndex += 2
+        } else if (includeBody) {
+            addInstructions(
+                builderIndex++,
+                "invoke-static { v$urlRegister, v$mapRegister, v$bodyRegister }, $descriptor(Ljava/lang/String;Ljava/util/Map;[B)V"
+            )
         } else {
             addInstructions(
                 builderIndex++,

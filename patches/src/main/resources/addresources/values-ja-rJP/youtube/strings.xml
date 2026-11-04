@@ -260,9 +260,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">コメント</string>
   <string name="morphe_comments_screen_summary">コメント セクションに表示するコンポーネントを設定します</string>
   <string name="morphe_hide_comments_carousel_title">横スワイプ欄のフィルタを有効化</string>
-  <string name="morphe_hide_comments_carousel_summary">"• 横スワイプ欄の正確なタイトルを入力してください (例:「質問する」「この動画をハイプする」「YouTube Music で聴く」)
-• 横スワイプ欄を非表示にすると予期しない副作用が引き起こされる可能性がある
-• すべての横スワイプ欄を非表示にした場合、コメント セクションごと表示されなくなる"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• キーワードまたはフルネームを入力してください（例：Ask、Community、Hype、Listen）
+• すべてのアイテムを非表示にすると、コメントセクション全体が非表示になります"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">横スワイプ欄のフィルタ</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">非表示にする、コメント セクションの横スワイプ欄のタイトルを改行区切りで入力してください</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI による「チャットの要約」を非表示</string>
@@ -497,7 +496,7 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_ryd_feed_like_ratio_title">フィードのサムネイルのいいね比率を表示</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">コメントを検索</string>
-  <string name="morphe_search_comments_summary">コメント欄に検索ボタンを表示します。タップすると、読み込まれているコメントのみを対象に、すべての検索ワードを含むコメントのみを表示するフィルタを適用するためのメニューを開きます。複数の単語を引用符で囲んだ場合は、フレーズとして検索します</string>
+  <string name="morphe_search_comments_summary">コメント欄の検索ボタンをタップして、検索ワードをすべて含む読み込み済みコメントのみを表示します。フレーズで検索する場合は、単語を引用符で囲んでください</string>
   <string name="morphe_search_comments_dialog_title">コメントを検索</string>
   <string name="morphe_search_comments_hint">検索ワード</string>
   <string name="morphe_search_comments_search">検索</string>
@@ -596,6 +595,11 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_vot_mymemory_quota_message_no_email">今日の無料MyMemory翻訳枠（5,000文字）を超えました。設定でMyMemoryのEメールアドレスを追加して、毎日の制限を50,000文字に増やすか、別の翻訳サービスに切り替えてください</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">今日のMyMemory翻訳枠（50,000文字）を超えました。別の翻訳サービスに切り替え、または明日もう一度お試しください</string>
   <string name="morphe_vot_mymemory_error">MyMemory が翻訳に失敗しました (status %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">「後で見る」のドラッグハンドルを広げる</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">「後で見る」ビデオのドラッグハンドルを掴みやすくなります</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">「後で見る」削除スナックバーを非表示にする</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">「後で見る」から動画を削除した後に確認メッセージが表示されなくなります</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">動画のループ再生を有効化</string>
   <string name="morphe_do_not_remember_loop_video_title">「動画のループ再生」を保存しない</string>
@@ -760,10 +764,10 @@ APIキーは決して共有しないでください。アクセス権を持つ�
 この問題を解決するには、[動画ストリームを偽装] をオンにして [デフォルトのクライアント] を「TV Simply」または「visionOS」に変更してください"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">スライドによるシークを有効化</string>
-  <string name="morphe_slide_to_seek_summary">動画プレーヤーの画面を長押ししたときに倍速再生ではなくスライドによるシークが有効になります</string>
+  <string name="morphe_slide_to_seek_summary">ビデオを長押しすると、2倍速で再生する代わりにスライドしてシークできます</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">タップによるシークを有効化</string>
-  <string name="morphe_tap_to_seek_summary">シークバーをタップすると、タップした位置に移動します</string>
+  <string name="morphe_tap_to_seek_summary">シークバーをタップすると、ドラッグせずにその位置にジャンプします</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">左側縦スワイプ ジェスチャー</string>
   <string name="morphe_swipe_right_zone_title">右側縦スワイプ ジェスチャー</string>
@@ -938,20 +942,20 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">通知ボタンを非表示</string>
   <string name="morphe_show_search_button_title">検索ボタンを表示</string>
-  <string name="morphe_show_search_button_index_title">検索ボタンの表示位置</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">後で見る</string>
   <string name="morphe_show_settings_button_title">設定ボタンを表示</string>
-  <string name="morphe_show_settings_button_index_title">設定ボタンの表示位置</string>
   <string name="morphe_show_settings_button_type_title">設定ボタンの動作</string>
   <string name="morphe_show_settings_button_type_summary">オンの場合は Morphe の設定を、オフの場合は YouTube の設定を開きます</string>
+  <string name="morphe_navigation_buttons_order_title">ナビゲーション ボタンの順序</string>
+  <string name="morphe_navigation_buttons_order_summary">ボタンをドラッグして、ナビゲーション バー内の順序を変更します</string>
   <string name="morphe_swap_create_with_notifications_button_title">作成ボタンと通知ボタンを入れ替える</string>
   <string name="morphe_swap_create_with_notifications_button_summary">この設定を変更しても反映されない場合は、シークレット モードへの切り替えをお試しください</string>
   <string name="morphe_hide_navigation_button_labels_title">ボタンをアイコンのみで表示</string>
   <string name="morphe_hide_navigation_new_content_dot_title">通知ドットを非表示</string>
   <string name="morphe_hide_navigation_bar_title">ナビゲーション バーを非表示</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"これはナビゲーション バー全体（「あなた」タブを含む）を非表示にします。
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"これにより、「あなた」タブを含むナビゲーションバーが完全に非表示になります。
 
 設定にアクセスするには、「一般」→「ツールバー」→「設定ボタンを表示」から設定ボタンを有効にしてください"</string>
   <string name="morphe_narrow_navigation_buttons_title">ボタンの間隔を詰める</string>
@@ -970,12 +974,18 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_navigation_bar_style_entry_3">透明</string>
   <string name="morphe_navigation_bar_style_entry_4">全く透けない</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">このスタイルは、デバイスや YouTube のバージョンによってはサポートされていない場合があり、レイアウトの問題やクラッシュを引き起こす可能性があります</string>
+  <string name="morphe_navigation_bar_glass_title">ガラス風ナビゲーション バーを有効にする</string>
+  <string name="morphe_navigation_bar_glass_summary">ナビゲーション バーを、フローティングで角が丸い半透明のカプセル状に表示します。不透明なナビゲーション バーのスタイルでは利用できません</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">ガラスの不透明度</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">ガラス風ナビゲーション バーの透明度を設定します (0 は透明、100 は不透明)</string>
   <string name="morphe_toolbar_screen_title">ツールバー</string>
   <string name="morphe_toolbar_screen_summary">ツールバーに表示するコンポーネントを設定します</string>
   <string name="morphe_hide_toolbar_chat_button_title">チャットボタンを非表示</string>
   <string name="morphe_hide_toolbar_microphone_button_title">検索の音声入力ボタンを非表示</string>
   <string name="morphe_hide_toolbar_search_button_title">検索ボタンを非表示</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">この設定がオンの場合、タップすると Morphe の設定を、長押しすると YouTube の設定を開きます。オフの場合は動作が入れ替わります</string>
+  <string name="morphe_toolbar_buttons_order_title">ツールバー ボタンの順序</string>
+  <string name="morphe_toolbar_buttons_order_summary">ボタンをドラッグして、ツールバー内の順序を変更します</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">フライアウト メニュー</string>
   <string name="morphe_hide_player_flyout_summary">プレーヤー オーバーレイの歯車アイコンボタンから呼び出されるメニューに表示するコンポーネントを設定します</string>
@@ -1270,8 +1280,8 @@ Automotive レイアウト
   <string name="morphe_miniplayer_disable_resuming_summary">アプリの起動にミニプレーヤーで動画を再開する YouTube Premium 機能「続きを見る」を無効にします</string>
   <string name="morphe_miniplayer_screen_title">ミニプレーヤー</string>
   <string name="morphe_miniplayer_screen_summary">アプリ内に表示される小さな画面のプレーヤーの外観と動作をカスタマイズします</string>
-  <string name="morphe_miniplayer_not_available_title">追加のミニプレーヤー</string>
-  <string name="morphe_miniplayer_not_available_summary">YouTube によってすべての追加のミニプレーヤーが削除されました。より多くのミニプレーヤーの種類を復元するには、YouTube 21.28.208 またはそれ以前のバージョンにパッチを適用してください</string>
+  <string name="morphe_miniplayer_not_available_title">多様なミニプレーヤー</string>
+  <string name="morphe_miniplayer_not_available_summary">最近のバージョンでは、YouTube によってデフォルト以外のミニプレーヤーが削除されました。様々な種類のミニプレーヤーを使用するには、21.28.208 またはより古いバージョンの YouTube にパッチを適用してください</string>
   <string name="morphe_miniplayer_type_title">ミニプレーヤーの種類</string>
   <string name="morphe_miniplayer_hide_title_title">タイトルとチャンネル名を非表示</string>
   <string name="morphe_miniplayer_swipe_up_expand_title">上にスワイプして展開</string>
@@ -1725,6 +1735,9 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_niconico_comments_max_length_title">コメントの文字数制限</string>
   <string name="morphe_niconico_comments_max_length_summary">この値より文字数が多いニコニコ風コメントを非表示にします。絵文字はそれぞれ 1 文字としてカウントされます</string>
   <string name="morphe_niconico_comments_max_length_no_limit">制限なし</string>
+  <string name="morphe_niconico_comments_live_premieres_title">プレミア公開で表示</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">終了したプレミア公開で表示</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">終了したプレミア公開のチャットリプレイ</string>
   <string name="morphe_live_chat_translate_screen_title">ライブチャット翻訳</string>
   <string name="morphe_live_chat_translate_screen_summary">ライブチャットとライブチャットのリプレイメッセージを翻訳します</string>
   <string name="morphe_live_chat_translate_title">ライブチャットを翻訳</string>

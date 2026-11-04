@@ -69,7 +69,10 @@ public final class LocalRomanizer {
     @Nullable
     public static String syllableReading(String syllable, @Nullable String line) {
         if (syllable == null || syllable.isEmpty()) return null;
-        final Script script = ScriptDetector.detect(syllable);
+        Script script = ScriptDetector.detect(syllable);
+        if (script == Script.HAN && line != null && ScriptDetector.detect(line) == Script.JAPANESE) {
+            script = Script.JAPANESE;
+        }
         if (script == null || script == Script.OTHER) return null;
         final String reading = readAs(syllable, script, false, line).text().trim();
         return reading.isEmpty() || reading.equals(syllable) ? null : reading;
@@ -154,7 +157,7 @@ public final class LocalRomanizer {
                 continue;
             }
             read.add(new Word(word.startMs(), word.endMs(), word.text(), reading,
-                    word.endsWithSpace()));
+                    word.endsWithSpace(), word.ruby()));
             any = true;
         }
 
@@ -194,7 +197,7 @@ public final class LocalRomanizer {
                 syllables.append(reading, tokens[at][0], tokens[at][1]);
             }
             read.add(new Word(word.startMs(), word.endMs(), word.text(), syllables.toString(),
-                    word.endsWithSpace()));
+                    word.endsWithSpace(), word.ruby()));
         }
         return read;
     }
@@ -426,10 +429,10 @@ public final class LocalRomanizer {
                 if (previous.romaji() == null || previous.romaji().isEmpty()) continue;
                 if (!previous.romaji().endsWith(text)) {
                     read.set(at, new Word(previous.startMs(), previous.endMs(), previous.text(),
-                            previous.romaji() + text, previous.endsWithSpace()));
+                            previous.romaji() + text, previous.endsWithSpace(), previous.ruby()));
                 }
                 read.set(i, new Word(read.get(i).startMs(), read.get(i).endMs(),
-                        read.get(i).text(), "", read.get(i).endsWithSpace()));
+                        read.get(i).text(), "", read.get(i).endsWithSpace(), read.get(i).ruby()));
                 break;
             }
         }
@@ -538,17 +541,12 @@ public final class LocalRomanizer {
                 continue;
             }
             if (ScriptDetector.isHan(c)) {
-                if (table == null) {
-                    out.append(c);
-                    i++;
-                    continue;
-                }
                 // The longest entry that fits: a shorter one inside a longer word reads it wrong.
                 int limit = Math.min(WordReadingTable.MAX_WORD_LENGTH, line.length() - i);
                 String reading = null;
                 int length = 0;
                 for (int candidate = limit; candidate >= 1; candidate--) {
-                    String found = table.reading(line.substring(i, i + candidate));
+                    String found = table != null ? table.reading(line.substring(i, i + candidate)) : null;
                     if (found != null && !found.isEmpty()) {
                         reading = found;
                         length = candidate;

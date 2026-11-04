@@ -66,7 +66,7 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
                         if (i > 0) sb.append(' ');
                         sb.append(w.text());
                         boolean sp = (i < words.size() - 1);
-                        updated.add(new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), sp));
+                        updated.add(new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), sp, w.ruby()));
                     }
                     words = updated;
                     text = sb.toString();
@@ -85,7 +85,7 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
                     } else {
                         sp = (i < words.size() - 1);
                     }
-                    updated.add(new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), sp));
+                    updated.add(new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), sp, w.ruby()));
                 }
                 words = updated;
             }

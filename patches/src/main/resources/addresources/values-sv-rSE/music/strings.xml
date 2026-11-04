@@ -624,6 +624,10 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_hide_played_summary">Dölj textrader ovanför den raden som spelas för tillfället</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Dölj ospelade texter.</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Dölj textraderna under den rad som spelas.</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dynamisk bakgrund</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Visa en suddig bakgrund skapad från albumomslaget bakom texten</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animera dynamisk bakgrund</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Flytta bakgrunden under uppspelning, och låt den pulsera med musiken om YouTube Music har mikrofontillstånd. Stäng av för en stillastående bakgrund som drar mindre batteri</string>
   <string name="morphe_music_lyrics_mediasession_title">Visa MediaSession-text på låsskärmen</string>
   <string name="morphe_music_lyrics_mediasession_summary">Visar nuvarande rad på låsskärmen, Android Auto och Bluetooth. Kräver Android 11 eller nyare</string>
   <string name="morphe_music_lyrics_miniplayer_title">Visa text i minispelaren</string>
@@ -722,7 +726,7 @@ Låttexter kommer från tredjeparts tjänster som inte är anslutna till, sponsr
   <string name="morphe_music_lyrics_hide_info_title">Dölj kreditraden</string>
   <string name="morphe_music_lyrics_hide_info_summary">Dölj kreditraden som visas under texten.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Växla mellan översättning och romanisering</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">PÅ placerar romanisering eller translitterering under texterna och översättningen ovanpå; AV håller romanisering eller translitterering ovanpå och översättning underst. Ett utlägg placerat över varje stavelse flyttas med den, från ovanför sin stavelse till underst den</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Byter visningsordning för översättning och romanisering under texten</string>
   <string name="morphe_music_lyrics_force_center_title">Centrera alltid texterna</string>
   <string name="morphe_music_lyrics_force_center_summary">PÅ centrerar varje rad och ignorerar källans aligment, inklusive duett-sidor; AV behåller det aligment texterna ber om</string>
   <string name="morphe_music_lyrics_providers_keep_one">Minst en tjänst måste vara påslagen</string>

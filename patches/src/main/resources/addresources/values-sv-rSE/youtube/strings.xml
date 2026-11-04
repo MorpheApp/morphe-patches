@@ -260,9 +260,8 @@ Vissa serverbaserade layouts kanske inte återgår.
   <string name="morphe_comments_screen_title">Kommentarer</string>
   <string name="morphe_comments_screen_summary">Välj vilka komponenter som visas i kommentarsfältet</string>
   <string name="morphe_hide_comments_carousel_title">Aktivera filter för kommentarsfältskarusellen</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Se till att ange det exakta namnet på objektet i karusellen (t.ex. Fråga, Hajpa den här videon, Lyssna på YouTube Music)
-• Att dölja karusellobjekt kan få oavsiktliga sidoeffekter
-• Om alla karusellobjekt döljs kommer även hela kommentarsavsnittet att döljas"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Ange ett sökord eller ett fullständigt namn (t.ex. Ask, Community, Hype, Listen)
+• Om alla objekt döljs döljs hela kommentarsavsnittet"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Filter för kommentarsfältskarusellen</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Ange namnen på de objekt i kommentarsfältets karusell som ska filtreras bort, åtskilda av nya rader</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Dölj AI-sammanfattning av chatt</string>
@@ -595,6 +594,11 @@ Din API-nyckel ska aldrig delas. Alla som har åtkomst till den kan använda din
   <string name="morphe_vot_mymemory_quota_message_no_email">Du har använt dagens kostnadsfria MyMemory-översättningskvot (5 000 tecken). Lägg till en MyMemory-e-post i inställningarna för att höja den dagliga gränsen till 50 000 tecken, eller byt till en annan översättningstjänst</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Du har använt dagens MyMemory-översättningskvot (50 000 tecken). Byt till en annan översättningstjänst eller försök igen i morgon</string>
   <string name="morphe_vot_mymemory_error">MyMemory-översättningen misslyckades (status %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Bredda handtag för att dra och släppa i Se senare</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Handtagen för att dra och släppa videor i Se senare är lättare att greppa</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Dölj snackbar vid borttagning från Se senare</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Bekräftelsen visas inte efter att en video har tagits bort från Se senare</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Aktivera videoslinga</string>
   <string name="morphe_do_not_remember_loop_video_title">Kom inte ihåg loop-video</string>
@@ -759,10 +763,10 @@ För att åtgärda detta, aktivera 'Spoofa videoströmmar' och ändra 'Standardk
 För att åtgärda detta, aktivera 'Spoofa videoströmmar' och ändra 'Standardklient' till 'TV Simply' eller 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktivera Dra för att söka</string>
-  <string name="morphe_slide_to_seek_summary">Aktiverar svep för att söka istället för att spela upp i 2x hastighet när du trycker och håller på videospelaren</string>
+  <string name="morphe_slide_to_seek_summary">Håll videon nedtryckt för att glida och söka istället för att spela upp i 2x hastighet</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Aktivera Tryck för att söka</string>
-  <string name="morphe_tap_to_seek_summary">Tryck bara på sökfältet för att hoppa till den positionen utan att dra i det</string>
+  <string name="morphe_tap_to_seek_summary">Tryck var som helst på sökfältet för att hoppa till den positionen istället för att dra</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Vänstersvepgest</string>
   <string name="morphe_swipe_right_zone_title">Högersvepgest</string>
@@ -937,24 +941,23 @@ För att åtgärda detta, aktivera 'Spoofa videoströmmar' och ändra 'Standardk
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Dölj knappen Aviseringar</string>
   <string name="morphe_show_search_button_title">Dölj knappen Sök</string>
-  <string name="morphe_show_search_button_index_title">Position för knappen Sök</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Visa knappen Titta senare</string>
-  <string name="morphe_show_watch_later_button_index_title">Position för knappen Titta senare</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Titta senare</string>
   <string name="morphe_show_settings_button_title">Visa knappen Inställningar</string>
-  <string name="morphe_show_settings_button_index_title">Position för knappen Inställningar</string>
   <string name="morphe_show_settings_button_type_title">Åtgärd för knappen Inställningar</string>
   <string name="morphe_show_settings_button_type_summary">Öppnar Morphe-inställningarna när det här alternativet är aktiverat, eller YouTube-inställningarna när det är inaktiverat</string>
+  <string name="morphe_navigation_buttons_order_title">Ordning för navigeringsknappar</string>
+  <string name="morphe_navigation_buttons_order_summary">Dra knapparna för att ändra deras ordning i navigeringsfältet</string>
   <string name="morphe_swap_create_with_notifications_button_title">Byt knappen Skapa mot knappen Aviseringar</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Om den här inställningen inte träder i kraft kan du testa att byta till inkognitoläget</string>
   <string name="morphe_hide_navigation_button_labels_title">Dölj etiketter för navigeringsknappar</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Dölj pricken för nytt innehåll</string>
   <string name="morphe_hide_navigation_bar_title">Dölj navigeringsfältet</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Detta döljer helt navigeringsfältet, inklusive fliken \"Du\".
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Detta döljer navigeringsfältet helt, inklusive fliken \"Du\".
 
-För att komma åt Inställningar aktiverar du Inställningsknappen via Allmänt → Verktygsfält → Visa inställningar"</string>
+För att komma åt Inställningar, aktivera knappen Inställningar via Allmänt → Verktygsfält → Visa knapp för inställningar"</string>
   <string name="morphe_narrow_navigation_buttons_title">Aktivera smala navigeringsknappar</string>
   <string name="morphe_narrow_navigation_buttons_summary">Minskar det horisontella avståndet mellan knappar</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Inaktivera navigeringsknappar utan etiketter</string>
@@ -971,12 +974,18 @@ För att komma åt Inställningar aktiverar du Inställningsknappen via Allmänt
   <string name="morphe_navigation_bar_style_entry_3">Transparent</string>
   <string name="morphe_navigation_bar_style_entry_4">Opak</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Den här stilen stöds eventuellt inte av din enhet eller YouTube-version, vilket kan orsaka layoutproblem eller krascher</string>
+  <string name="morphe_navigation_bar_glass_title">Aktivera glasnavigeringsfält</string>
+  <string name="morphe_navigation_bar_glass_summary">Visar navigeringsfältet som en flytande, rundad och genomskinlig kapsel. Tillgängligs inte med stilen för ogenomskinligt navigeringsfält</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Glasets opacitet</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Justera genomskinlighetsnivån för glasnavigeringsfältet (0 är genomskinligt, 100 är ogenomskinligt)</string>
   <string name="morphe_toolbar_screen_title">Verktygsfält</string>
   <string name="morphe_toolbar_screen_summary">Välj vilka komponenter som visas i verktygsfältet</string>
   <string name="morphe_hide_toolbar_chat_button_title">Dölj knappen Chatta</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Dölj mikrofonknappen</string>
   <string name="morphe_hide_toolbar_search_button_title">Dölj knappen Sök</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">När det här alternativet är aktiverat öppnar ett tryck Morphe-inställningarna och ett långt tryck YouTube-inställningarna. Inaktivera för att byta</string>
+  <string name="morphe_toolbar_buttons_order_title">Ordning för verktygsfältsknappar</string>
+  <string name="morphe_toolbar_buttons_order_summary">Dra knapparna för att ändra deras ordning i verktygsfältet</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout-meny</string>
   <string name="morphe_hide_player_flyout_summary">Välj vilka komponenter som visas i flyout-menyn</string>
@@ -1728,10 +1737,10 @@ Automatisk inspelning är valfri. Den stoppas i inkognito-läge eller när konto
   <string name="morphe_niconico_comments_max_length_no_limit">Ingen gräns</string>
   <string name="morphe_niconico_comments_live_streams_title">Visa på liveströmmar</string>
   <string name="morphe_niconico_comments_live_streams_summary">Liveströmmar och deras repriser</string>
-  <string name="morphe_niconico_comments_live_premieres_title">Visa på premiärer</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Visa vid premiärer</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Premiärer medan de spelas upp</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Visa på avslutade premiärer</string>
-  <string name="morphe_niconico_comments_ended_premieres_summary">Chatt-uppspelning av premiärer som har avslutats</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Chattreplay för premiärer som har avslutats</string>
   <string name="morphe_live_chat_translate_screen_title">Översättning av livechatt</string>
   <string name="morphe_live_chat_translate_screen_summary">Översätt meddelanden i livechatt och uppspelning av livechatt</string>
   <string name="morphe_live_chat_translate_title">Översätt livechatt</string>
