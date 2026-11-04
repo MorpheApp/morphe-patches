@@ -47,13 +47,13 @@ internal object OfflineUpsellRequestFingerprint : Fingerprint(
  * Handles the Download command of accounts that are offered Premium instead,
  * by showing a progress dialog and then the Premium upsell of the endpoint.
  */
-internal fun offlineUpsellCommandFingerprint(offlineUpsellRequestType: String) = Fingerprint(
+internal object OfflineUpsellCommandFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "Ljava/util/Map;"),
     filters = listOf(
         string("com.google.android.libraries.youtube.logging.interaction_logger"),
-        newInstance(offlineUpsellRequestType)
+        newInstance(type = { OfflineUpsellRequestFingerprint.classDef })
     )
 )
 

@@ -267,7 +267,7 @@ val showFlairsInHomeFeedPatch = patch(
         // After a feed page is shown, Reddit loads the full posts of the page in the background,
         // and the full posts include the flairs. A feature flag removes this secondary fetch
         // for post previews. Keep the fetch, so their flairs are available.
-        postsToLoadFingerprint(postPreviewType).let {
+        PostsToLoadFingerprint.let {
             val flagMatch = it.instructionMatches.last()
             val flagRegister = flagMatch.getInstruction<OneRegisterInstruction>().registerA
 

@@ -22,7 +22,7 @@ internal fun installPlaylistNavigation(
     val wrapperType = playlistNavigationRequestFingerprint(enumType).originalClassDef.type
 
     // The playlist controls are created with the playlist's own navigator.
-    val creation = playlistControlsCreationFingerprint(controllerType).match()
+    val creation = PlaylistControlsCreationFingerprint.match()
     val navigatorType = creation.instructionMatches[4].instruction.getReference<TypeReference>()!!.type
     val controlsField = creation.instructionMatches.last().fieldReference
 

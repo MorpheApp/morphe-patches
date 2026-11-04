@@ -169,18 +169,18 @@ internal fun nativeQueueAcceptFingerprint(queueType: String, responseType: Strin
     )
 
 /** Disposes the queue and drops its weak registration. */
-internal fun nativeQueueDisposeFingerprint(queueType: String) = Fingerprint(
-    definingClass = queueType,
+internal object NativeQueueDisposeFingerprint : Fingerprint(
+    classFingerprint = NativeQueueDescriptorFingerprint,
     returnType = "V",
     parameters = emptyList(),
     filters = listOf(methodCall("Ljava/lang/ref/WeakReference;->get()Ljava/lang/Object;"))
 )
 
 /** The navigator wrapper remembers whether its initial navigator is the native queue. */
-internal fun nativeQueueWrapperConstructorFingerprint(queueType: String) = Fingerprint(
+internal object NativeQueueWrapperConstructorFingerprint : Fingerprint(
     name = "<init>",
     filters = listOf(
-        instanceOf(queueType),
+        instanceOf(type = { NativeQueueDescriptorFingerprint.originalClassDef }),
         fieldAccess(
             definingClass = "this",
             type = "Z",
@@ -731,8 +731,8 @@ internal object PlaylistDragBinderFingerprint : Fingerprint(
     filters = listOf(resourceLiteral(ResourceType.DIMEN, "playlist_drag_handle_touch_padding_start"))
 )
 
-internal fun playlistDragStartFingerprint(holderType: String) = Fingerprint(
-    definingClass = holderType,
+internal object PlaylistDragStartFingerprint : Fingerprint(
+    classFingerprint = PlaylistDragBinderFingerprint,
     returnType = "V",
     parameters = listOf("L", "L", "I"),
     filters = listOf(
@@ -745,19 +745,19 @@ internal fun playlistDragStartFingerprint(holderType: String) = Fingerprint(
     )
 )
 
-internal fun playlistDragEndFingerprint(holderType: String) = Fingerprint(
-    definingClass = holderType,
+internal object PlaylistDragEndFingerprint : Fingerprint(
+    classFingerprint = PlaylistDragBinderFingerprint,
     returnType = "V",
     parameters = listOf("L", "L", "I", "I"),
     filters = listOf(
         anyInstruction(opcode(Opcode.IF_EQ), opcode(Opcode.IF_NE)),
-        methodCall(definingClass = holderType, opcode = Opcode.INVOKE_DIRECT,
+        methodCall(definingClass = "this", opcode = Opcode.INVOKE_DIRECT,
             parameters = emptyList(), returnType = "V", location = MatchAfterWithin(1))
     )
 )
 
-internal fun playlistDragUnbindFingerprint(holderType: String) = Fingerprint(
-    definingClass = holderType,
+internal object PlaylistDragUnbindFingerprint : Fingerprint(
+    classFingerprint = PlaylistDragBinderFingerprint,
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
@@ -806,8 +806,8 @@ internal fun playlistNavigationSingletonFingerprint(wrapperType: String, intent:
  * Creates the playlist controls with their navigator, after binding the collapsed header click.
  * 21.28+ creates one of two implementations, chosen by a server flag.
  */
-internal fun playlistControlsCreationFingerprint(controllerType: String) = Fingerprint(
-    definingClass = controllerType,
+internal object PlaylistControlsCreationFingerprint : Fingerprint(
+    classFingerprint = PlaylistControllerConstructorFingerprint,
     returnType = "V",
     parameters = emptyList(),
     filters = listOf(
@@ -824,7 +824,7 @@ internal fun playlistControlsCreationFingerprint(controllerType: String) = Finge
         methodCall(name = "<init>", opcode = Opcode.INVOKE_DIRECT_RANGE),
         // 21.43+ restores the view register before the store.
         fieldAccess(
-            definingClass = controllerType,
+            definingClass = "this",
             opcode = Opcode.IPUT_OBJECT,
             location = MatchAfterWithin(1)
         )

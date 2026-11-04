@@ -194,9 +194,7 @@ val downloadsPatch = patch(
         }
 
         // Accounts offered Premium get an upsell command from the Download option instead.
-        offlineUpsellCommandFingerprint(
-            OfflineUpsellRequestFingerprint.classDef.type
-        ).method.addInstructionsWithLabels(
+        OfflineUpsellCommandFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->offlineUpsellOnClick(Ljava/lang/Object;)Z

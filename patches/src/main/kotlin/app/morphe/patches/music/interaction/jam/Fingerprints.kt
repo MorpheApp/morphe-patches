@@ -176,7 +176,7 @@ internal fun seekForwarderConstructorFingerprint(ownerType: String, controlTypes
     )
 
 /** Finds the seek callback that forwards a position and native seek context. */
-internal fun seekForwarderFingerprint() = Fingerprint(
+internal object SeekForwarderFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("J", "L"),
     filters = listOf(methodCall(parameters = listOf("J", "L"), returnType = "V")),

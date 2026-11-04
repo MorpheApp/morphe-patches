@@ -47,7 +47,7 @@ internal fun installPlaylistPanel() {
     }
 
     // The collapsed panel view, whose click opens the playlist.
-    val collapsedView = playlistControlsCreationFingerprint(controllerType)
+    val collapsedView = PlaylistControlsCreationFingerprint
         .instructionMatches.first().fieldReference
 
     val render = playlistPanelRenderFingerprint(modelField)

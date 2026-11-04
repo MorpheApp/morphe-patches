@@ -238,7 +238,7 @@ private fun resolveSeek(timeBar: ClassDef): MethodReference {
     require(controlInterfaces.isNotEmpty()) {
         "Unable to resolve Jam playback-control listener interfaces"
     }
-    return seekForwarderFingerprint()
+    return SeekForwarderFingerprint
         .matchAll().singleOrNull { match ->
             val owner = match.originalClassDef
             owner.fields.any { it.type in controlInterfaces } ||

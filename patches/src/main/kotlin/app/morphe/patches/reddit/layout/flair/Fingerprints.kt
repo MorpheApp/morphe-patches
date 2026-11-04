@@ -245,14 +245,14 @@ internal fun feedPostSectionMapperFingerprint(feedPostSectionType: String) = Fin
  * Selects the feed posts that Reddit loads in full after a feed page is shown.
  * Post previews are not selected if a feature flag removes this secondary fetch.
  */
-internal fun postsToLoadFingerprint(postPreviewFeedElementType: String) = Fingerprint(
+internal object PostsToLoadFingerprint : Fingerprint(
     returnType = "Ljava/util/ArrayList;",
     parameters = listOf(
         "Ljava/util/List;",
         "Lcom/reddit/feeds/data/FeedType;"
     ),
     filters = listOf(
-        instanceOf(postPreviewFeedElementType),
+        instanceOf(type = { PostPreviewFeedElementToStringFingerprint.classDef }),
         opcode(Opcode.IF_EQZ, MatchAfterImmediately()),
         // Secondary fetch removed flag of one group of feed types.
         methodCall(smali = "Ljava/lang/Boolean;->booleanValue()Z"),

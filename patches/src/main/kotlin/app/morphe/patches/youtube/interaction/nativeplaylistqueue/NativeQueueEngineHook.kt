@@ -41,11 +41,10 @@ internal fun installNativeQueueEngine(
     val releaseChange = queueChangeEnd.instructionMatches[1].methodReference
     val refresh = queueChangeEnd.instructionMatches[2].methodReference
 
-    val queueDisposeMatch = nativeQueueDisposeFingerprint(queueType)
-    val queueDispose = queueDisposeMatch.originalMethod
+    val queueDispose = NativeQueueDisposeFingerprint.originalMethod
 
     // The wrapper switches between the server's navigator and the local queue.
-    val wrapperFlag = nativeQueueWrapperConstructorFingerprint(queueType)
+    val wrapperFlag = NativeQueueWrapperConstructorFingerprint
         .instructionMatches.last().fieldReference
     val wrapperType = wrapperFlag.definingClass
 
@@ -497,7 +496,7 @@ internal fun installNativeQueueEngine(
         """
     )
 
-    queueDisposeMatch.method.addInstruction(
+    NativeQueueDisposeFingerprint.method.addInstruction(
         0,
         "invoke-virtual/range {p0 .. p0}, $queueType->patch_releaseLocalQueue()V"
     )
