@@ -12,10 +12,12 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patches.music.misc.auth.authHookPatch
+import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
+import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -23,6 +25,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
+import app.morphe.patches.youtube.interaction.downloads.OfflinePlaylistEndpointFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
@@ -93,6 +96,7 @@ private val downloadsResourcePatch = resourcePatch {
 }
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/DownloadsPatch;"
+private const val SONG_MENU_FILTER = "Lapp/morphe/extension/music/patches/components/SongMenuFilter;"
 private const val EXTENSION_PROTOCOL_BUFFER_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/DownloadsPatch$ProtocolBufferFieldInterface;"
 
@@ -107,6 +111,7 @@ val downloadsPatch = bytecodePatch(
         downloadsResourcePatch,
         settingsPatch,
         textComponentPatch,
+        lithoFilterPatch,
         musicVideoInformationPatch,
         // Liked music and private playlists are listed with the account of the app.
         authHookPatch
@@ -116,6 +121,9 @@ val downloadsPatch = bytecodePatch(
 
     execute {
         hookSpannableString(EXTENSION_CLASS)
+
+        // Finds the song of a menu, for the menu Download of accounts offered Premium.
+        addLithoFilter(SONG_MENU_FILTER)
 
         val (_, downloadCall) = OfflineVideoEndpointFingerprint.instructionMatches
 

@@ -16,11 +16,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.music.patches.components.SongMenuFilter;
 import app.morphe.extension.music.patches.downloads.LocalDownloadManager;
 import app.morphe.extension.music.patches.downloads.PlaylistDownloader;
 import app.morphe.extension.music.settings.Settings;
@@ -29,6 +29,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.DownloadMode;
+import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
@@ -82,8 +83,14 @@ public final class DownloadsPatch {
     private static volatile long lastStockPlayerButtonTime;
     private static volatile long lastLocalDownloadsOpenTime;
     /** Browse id of the stock offline tab, which the local catalogue replaces. */
-    private static final byte[] OFFLINE_BROWSE_ID =
-            "FEmusic_offline".getBytes(StandardCharsets.US_ASCII);
+    private static final ByteArrayFilterGroup OFFLINE_BROWSE_COMMAND =
+            new ByteArrayFilterGroup(null, "FEmusic_offline");
+    /**
+     * Menu Download action of accounts offered Premium, which opens the Premium sheet
+     * and has no video ID.
+     */
+    private static final ByteArrayFilterGroup PREMIUM_UPSELL_COMMAND =
+            new ByteArrayFilterGroup(null, "premium_upsell");
 
     /**
      * Injection point.
@@ -115,7 +122,7 @@ public final class DownloadsPatch {
      * The download mode replaces the Download menu, and the external downloader
      * can replace it in the other modes too.
      */
-    private static boolean isFlyoutMenuOverridden() {
+    public static boolean isFlyoutMenuOverridden() {
         return Settings.DOWNLOAD_MODE.get() != DownloadMode.DEFAULT
                 || Settings.EXTERNAL_DOWNLOADER_MENU.get();
     }
@@ -155,17 +162,6 @@ public final class DownloadsPatch {
         intent.setPackage(activity.getPackageName());
         intent.setData(Uri.parse(BaseActivityHook.MORPHE_DOWNLOADS_INTENT));
         activity.startActivity(intent);
-    }
-
-    private static boolean isOfflineBrowseCommand(byte[] bytes) {
-        byte[] target = OFFLINE_BROWSE_ID;
-        outer: for (int i = 0; i <= bytes.length - target.length; i++) {
-            for (int j = 0; j < target.length; j++) {
-                if (bytes[i + j] != target[j]) continue outer;
-            }
-            return true;
-        }
-        return false;
     }
 
     /**
@@ -363,8 +359,18 @@ public final class DownloadsPatch {
             Utils.verifyOnMainThread();
 
             byte[] commandBytes = p1.toByteArray();
+            final boolean insideDialog = isViewInsideDialog(map.get(ELEMENTS_SENDER_VIEW));
+
+            if (insideDialog && PREMIUM_UPSELL_COMMAND.check(commandBytes).isFiltered()) {
+                // The song is found by the menu header. Albums and playlists are left to the app.
+                String videoId = SongMenuFilter.getMenuVideoId();
+                if (videoId == null) return false;
+
+                return onMenuDownload(videoId);
+            }
+
             if (inAppDownloads()) {
-                if (commandBytes != null && isOfflineBrowseCommand(commandBytes)) {
+                if (OFFLINE_BROWSE_COMMAND.check(commandBytes).isFiltered()) {
                     openLocalDownloads();
                     // The local screen is opened on top of the stock one rather than in place of
                     // it. Consuming the command instead leaves the app with a navigation it never
@@ -375,7 +381,7 @@ public final class DownloadsPatch {
 
             // Song menus in search results, playlists and the queue share the player's Download label.
             // Only the player action bar button should use the playing song's ID.
-            if (!isViewInsideDialog(map.get(ELEMENTS_SENDER_VIEW)) && isPlayerDownloadButton(map)) {
+            if (!insideDialog && isPlayerDownloadButton(map)) {
                 if (!isActionButtonOverridden()) {
                     lastStockPlayerButtonTime = System.currentTimeMillis();
                     return false;
@@ -392,8 +398,8 @@ public final class DownloadsPatch {
                 startDownload(videoId, !inAppDownloads());
                 return true;
             }
-            // Menu Download commands have no sender view, and are handled when they reach
-            // the offline video endpoint or the offline upsell.
+            // Other menu Download commands have no sender view, and are handled when they
+            // reach the offline video endpoint or the offline upsell.
         } catch (Exception ex) {
             Logger.printException(() -> "commandResolverOnClick failure", ex);
         }
