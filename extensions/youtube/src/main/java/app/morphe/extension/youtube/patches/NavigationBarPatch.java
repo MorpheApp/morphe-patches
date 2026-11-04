@@ -231,9 +231,11 @@ public final class NavigationBarPatch {
 
     /**
      * Injection point.
+     * <p>
+     * The glass navigation bar sets the width of the buttons itself, from their content and spacing.
      */
     public static boolean enableNarrowNavigationButton(boolean original) {
-        return NARROW_NAVIGATION_BUTTONS || original;
+        return (NARROW_NAVIGATION_BUTTONS && !GlassNavigationBar.isEnabled()) || original;
     }
 
     /**
