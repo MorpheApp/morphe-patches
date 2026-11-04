@@ -22,7 +22,7 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object OfflineVideoEndpointFingerprint : Fingerprint(
+internal object YouTubeOfflineVideoEndpointFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(
@@ -42,7 +42,7 @@ internal object OfflineVideoEndpointFingerprint : Fingerprint(
 /**
  * Saves or removes a playlist, such as from the Download button of a playlist page header.
  */
-internal object OfflinePlaylistEndpointFingerprint : Fingerprint(
+internal object YouTubeOfflinePlaylistEndpointFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(
@@ -64,7 +64,7 @@ internal object OfflinePlaylistEndpointFingerprint : Fingerprint(
  * The quality picker and the Premium upsell of the video are both shown by the called method.
  */
 internal object SaveOfflineVideoCallFingerprint : Fingerprint(
-    classFingerprint = OfflineVideoEndpointFingerprint,
+    classFingerprint = YouTubeOfflineVideoEndpointFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(

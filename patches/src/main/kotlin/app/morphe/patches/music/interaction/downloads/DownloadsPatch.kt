@@ -11,6 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.cloneParameters
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.music.misc.auth.authHookPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -25,9 +26,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
-import app.morphe.patches.youtube.interaction.downloads.OfflinePlaylistEndpointFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 private val DOWNLOADS_PERMISSIONS = listOf(
     "android.permission.WAKE_LOCK",
@@ -125,8 +124,6 @@ val downloadsPatch = bytecodePatch(
         // Finds the song of a menu, for the menu Download of accounts offered Premium.
         addLithoFilter(SONG_MENU_FILTER)
 
-        val (_, downloadCall) = OfflineVideoEndpointFingerprint.instructionMatches
-
         CommandResolverFingerprint.method.cloneParameters().apply {
             // Add interface to get buffer.
             mutableClassDefBy(parameterTypes[1].toString())
@@ -145,24 +142,27 @@ val downloadsPatch = bytecodePatch(
             )
         }
 
-        OfflineVideoEndpointFingerprint.method.apply {
-            val videoIdRegister = (downloadCall.instruction as FiveRegisterInstruction).registerD
-            // Reuse the ID YTM resolved for its single-video download action.
-            // v1 is unused by the download call, which is followed by return-void.
-            addInstructionsAtControlFlowLabel(
-                downloadCall.index,
-                """
-                    invoke-static/range { v$videoIdRegister .. v$videoIdRegister }, $EXTENSION_CLASS->offlineVideoEndpointOnClick(Ljava/lang/String;)Z
-                    move-result v1
-                    if-eqz v1, :show_native_downloader
-                    return-void
-                    :show_native_downloader
-                    nop
-                """
-            )
+        MusicOfflineVideoEndpointFingerprint.let {
+            it.method.apply {
+                val downloadCall = it.instructionMatches.last()
+                val videoIdRegister = downloadCall.instruction.registersUsed[1]
+                // Reuse the ID YTM resolved for its single-video download action.
+                // v1 is unused by the download call, which is followed by return-void.
+                addInstructionsAtControlFlowLabel(
+                    downloadCall.index,
+                    """
+                        invoke-static/range { v$videoIdRegister .. v$videoIdRegister }, $EXTENSION_CLASS->offlineVideoEndpointOnClick(Ljava/lang/String;)Z
+                        move-result v1
+                        if-eqz v1, :show_native_downloader
+                        return-void
+                        :show_native_downloader
+                        nop
+                    """
+                )
+            }
         }
 
-        OfflinePlaylistEndpointFingerprint.method.apply {
+        MusicOfflinePlaylistEndpointFingerprint.method.apply {
             // The command is the one the resolver hook above gave the buffer interface to.
             // v0 is set before it is read at the start of the method.
             addInstructionsWithLabels(
