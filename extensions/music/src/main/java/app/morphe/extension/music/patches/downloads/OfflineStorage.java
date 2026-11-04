@@ -30,12 +30,6 @@ import app.morphe.extension.shared.Logger;
  */
 final class OfflineStorage {
 
-    /**
-     * A sampled cover is kept when it is at most this much larger than asked, since scaling it
-     * down further costs a second bitmap for little memory.
-     */
-    private static final float MAX_OVERSIZE = 1.25f;
-
     private OfflineStorage() {
     }
 
@@ -65,43 +59,27 @@ final class OfflineStorage {
     }
 
     /**
-     * Covers are stored large, mostly as 16:9 video thumbnails, so a sample is decoded rather
-     * than the full bitmap. Decoding is slow and uses a lot of memory, so this must not run on
-     * the main thread for more than a cover or two.
+     * Covers are stored large, mostly as 16:9 video thumbnails, and are shown cropped to a square,
+     * so only a sample of the middle square is decoded. Decoding is slow, so this must not run on
+     * the main thread.
      *
-     * @param maxSize Longest edge to decode, for a cover shown whole.
-     */
-    @Nullable
-    static Bitmap decodeArtwork(File file, int maxSize) {
-        return decodeArtwork(file, maxSize, false);
-    }
-
-    /**
-     * @param size Shortest edge to decode, for a cover cropped to a square of that size, so the
-     *             part shown is not scaled up.
+     * @param size Side of the square in pixels. The cover is not scaled up when it is smaller.
      */
     @Nullable
     static Bitmap decodeSquareArtwork(File file, int size) {
-        return decodeArtwork(file, size, true);
-    }
-
-    @Nullable
-    private static Bitmap decodeArtwork(File file, int maxSize, boolean shortestEdge) {
         if (!file.isFile()) return null;
         String path = file.getAbsolutePath();
 
         BitmapFactory.Options bounds = new BitmapFactory.Options();
         bounds.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(path, bounds);
-        final int edge = shortestEdge
-                ? Math.min(bounds.outWidth, bounds.outHeight)
-                : Math.max(bounds.outWidth, bounds.outHeight);
-        if (edge <= 0) return null;
+        final int shortestEdge = Math.min(bounds.outWidth, bounds.outHeight);
+        if (shortestEdge <= 0) return null;
 
         // The decoder only samples by powers of two. The largest one that stays at least as big
         // as asked is applied while reading the file, which is far cheaper than a full decode.
         int sampleSize = 1;
-        while (edge / (sampleSize * 2) >= maxSize) {
+        while (shortestEdge / (sampleSize * 2) >= size) {
             sampleSize *= 2;
         }
 
@@ -110,27 +88,14 @@ final class OfflineStorage {
         Bitmap sampled = BitmapFactory.decodeFile(path, options);
         if (sampled == null) return null;
 
-        if (shortestEdge) {
-            // Only the middle square is shown, so the rest is not kept in memory.
-            final int side = Math.min(sampled.getWidth(), sampled.getHeight());
-            final float scale = Math.min(1f, (float) maxSize / side);
-            Matrix matrix = new Matrix();
-            matrix.setScale(scale, scale);
-            Bitmap square = Bitmap.createBitmap(sampled, (sampled.getWidth() - side) / 2,
-                    (sampled.getHeight() - side) / 2, side, side, matrix, true);
-            if (square != sampled) sampled.recycle();
-            return square;
-        }
-
-        final int sampledEdge = Math.max(sampled.getWidth(), sampled.getHeight());
-        if (sampledEdge <= maxSize * MAX_OVERSIZE) return sampled;
-
-        final float scale = (float) maxSize / sampledEdge;
-        Bitmap scaled = Bitmap.createScaledBitmap(sampled,
-                Math.max(1, Math.round(sampled.getWidth() * scale)),
-                Math.max(1, Math.round(sampled.getHeight() * scale)), true);
-        if (scaled != sampled) sampled.recycle();
-        return scaled;
+        final int side = Math.min(sampled.getWidth(), sampled.getHeight());
+        final float scale = Math.min(1f, (float) size / side);
+        Matrix matrix = new Matrix();
+        matrix.setScale(scale, scale);
+        Bitmap square = Bitmap.createBitmap(sampled, (sampled.getWidth() - side) / 2,
+                (sampled.getHeight() - side) / 2, side, side, matrix, true);
+        if (square != sampled) sampled.recycle();
+        return square;
     }
 
     /** Best effort removal, so a stale file cannot silently keep a download alive. */

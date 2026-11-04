@@ -161,7 +161,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     /** Paths of {@link #displayedTracks}, the queue that playing from the list moves through. */
     private List<String> displayedTrackPaths = new ArrayList<>();
 
-    /** Lets a load that finishes after the screen was closed, or reloaded, be ignored. */
+    /** Lets a load that finishes after the view was destroyed, or reloaded, be ignored. */
     private int loadGeneration;
     /** If a read of the folder is under way, so another is not started on top of it. */
     private boolean reading;
@@ -171,7 +171,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     /** Lists the downloads that finished while the screen is open. */
     private final Runnable refresh = () -> {
-        if (getActivity() == null || root == null) return;
         if (reading) scheduleRefresh();
         else loadCatalogue();
     };
@@ -389,50 +388,33 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         OfflinePlaylistManager manager = playlistManager;
         reading = true;
 
-        OfflineCatalogue.Snapshot shown = OfflineCatalogue.cached();
-        final boolean showingCache = shown != null
-                && shown.directory().equals(directory.getAbsolutePath());
-        if (showingCache) {
-            if (shown != appliedSnapshot) applyCatalogue(shown);
-        } else if (appliedSnapshot == null) {
-            setLoading(true);
-        }
+        OfflineCatalogue.Snapshot cached = OfflineCatalogue.cached();
+        if (cached == null) setLoading(true);
+        else if (cached != appliedSnapshot) applyCatalogue(cached);
 
         Utils.runOnBackgroundThread(() -> {
-            // The playlists are a few small files, so they are shown before the tracks are read.
-            List<OfflinePlaylist> playlistsRead = null;
             try {
-                playlistsRead = manager.loadPlaylists();
-            } catch (Exception ex) {
-                Logger.printException(() -> "Could not read the local playlists", ex);
-            }
-            List<OfflinePlaylist> loadedPlaylists = playlistsRead;
-            if (loadedPlaylists != null) {
+                // The playlists are a few small files, so they are shown before the tracks are
+                // read.
+                List<OfflinePlaylist> loadedPlaylists = manager.loadPlaylists();
                 Utils.runOnMainThread(() -> {
-                    if (generation != loadGeneration || getActivity() == null) return;
+                    if (generation != loadGeneration) return;
                     playlists = loadedPlaylists;
                     renderPlaylistsSection();
                 });
-            }
 
-            OfflineCatalogue.Snapshot snapshot = null;
-            try {
-                snapshot = OfflineCatalogue.read(directory);
+                OfflineCatalogue.update(directory);
             } catch (Exception ex) {
                 Logger.printException(() -> "Could not read the downloads", ex);
             }
 
-            OfflineCatalogue.Snapshot read = snapshot;
             Utils.runOnMainThread(() -> {
-                if (generation != loadGeneration || getActivity() == null) return;
+                if (generation != loadGeneration) return;
                 reading = false;
-
-                if (read == null) {
-                    if (appliedSnapshot == null) applyCatalogue(null);
-                } else if (read != appliedSnapshot && read == OfflineCatalogue.cached()) {
-                    // Still what the folder holds: nothing was deleted from the screen meanwhile.
-                    applyCatalogue(read);
-                }
+                // What the catalogue now holds, which may come from another read, such as the
+                // one of the screen before a rotation, or from a track deleted meanwhile.
+                OfflineCatalogue.Snapshot latest = OfflineCatalogue.cached();
+                if (latest != appliedSnapshot) applyCatalogue(latest);
                 setLoading(false);
             });
         });
@@ -1152,7 +1134,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
             Utils.runOnMainThread(() -> {
                 Utils.showToastShort(str("morphe_music_downloads_all_deleted"));
-                if (generation != loadGeneration || getActivity() == null) return;
+                if (generation != loadGeneration) return;
                 // Whatever could not be deleted is listed again, with the playlists left.
                 loadCatalogue();
             });
@@ -1177,7 +1159,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         selectedTrackPaths.remove(track.audioFile().getAbsolutePath());
         tracks.remove(track);
         indexTracks();
-        appliedSnapshot = OfflineCatalogue.edited(musicRoot, tracks);
+        appliedSnapshot = OfflineCatalogue.edited(tracks);
         showTracks();
         reloadPlaylists();
         Utils.showToastShort(str("morphe_music_downloads_track_deleted"));

@@ -27,17 +27,23 @@ import java.util.Map;
 final class OfflineCatalogue {
 
     /**
-     * The tracks read from a folder, with what tells whether the folder changed since.
+     * The tracks read from the folder, with what tells whether the folder changed since.
      *
      * @param modified   Last modification time of the folder, which changes when a file is
      *                   added, renamed or removed. -1 forces the folder to be read again.
      * @param audioFiles Number of audio files, in case two changes share a modification time.
      */
-    record Snapshot(String directory, long modified, int audioFiles, List<OfflineTrack> tracks) {
+    record Snapshot(long modified, int audioFiles, List<OfflineTrack> tracks) {
     }
 
     /** Guards {@link #cached}. */
     private static final Object lock = new Object();
+
+    /**
+     * One read at a time, so the screen recreated by a rotation reuses the read of the screen
+     * before it rather than reading every file again alongside it.
+     */
+    private static final Object readLock = new Object();
 
     @Nullable
     private static Snapshot cached;
@@ -56,8 +62,8 @@ final class OfflineCatalogue {
      * Records the tracks left after a change made from the screen, so the next visit does not
      * show it undone. The folder is still read again on that visit.
      */
-    static Snapshot edited(File directory, List<OfflineTrack> tracks) {
-        Snapshot snapshot = new Snapshot(directory.getAbsolutePath(), -1, -1,
+    static Snapshot edited(List<OfflineTrack> tracks) {
+        Snapshot snapshot = new Snapshot(-1, -1,
                 Collections.unmodifiableList(new ArrayList<>(tracks)));
         synchronized (lock) {
             cached = snapshot;
@@ -72,13 +78,16 @@ final class OfflineCatalogue {
     }
 
     /**
-     * Reuses the last catalogue read while the folder is unchanged, and the tracks it already
-     * had when it has. Runs off the main thread.
-     *
-     * @return The catalogue, or null when the screen changed it meanwhile.
+     * Reads the folder again if it changed since the last read, reusing the tracks the catalogue
+     * already has. Runs off the main thread. The result is {@link #cached()}.
      */
-    @Nullable
-    static Snapshot read(File directory) {
+    static void update(File directory) {
+        synchronized (readLock) {
+            updateLocked(directory);
+        }
+    }
+
+    private static void updateLocked(File directory) {
         Snapshot before = cached();
 
         // Read before listing, so a file added while listing makes the next visit read again.
@@ -91,14 +100,13 @@ final class OfflineCatalogue {
             }
         }
 
-        String path = directory.getAbsolutePath();
-        final boolean sameFolder = before != null && before.directory().equals(path);
-        if (sameFolder && before.modified() == modified && before.audioFiles() == audioNames.size()) {
-            return before;
+        if (before != null && before.modified() == modified
+                && before.audioFiles() == audioNames.size()) {
+            return;
         }
 
         Map<String, OfflineTrack> known = new HashMap<>();
-        if (sameFolder) {
+        if (before != null) {
             for (OfflineTrack track : before.tracks()) {
                 known.put(track.audioFile().getName(), track);
             }
@@ -109,16 +117,13 @@ final class OfflineCatalogue {
             OfflineTrack track = known.get(name);
             loaded.add(track != null ? track : OfflineTrack.load(new File(directory, name)));
         }
-        Snapshot snapshot = new Snapshot(path, modified, audioNames.size(),
+        Snapshot snapshot = new Snapshot(modified, audioNames.size(),
                 Collections.unmodifiableList(loaded));
 
         synchronized (lock) {
-            // A track was deleted from the screen while the folder was read: what was read may
-            // still hold it, so it is dropped, and the folder is read again on the next visit.
-            if (cached != before) return null;
-            cached = snapshot;
+            // A track deleted from the screen meanwhile may still be in what was read.
+            if (cached == before) cached = snapshot;
         }
-        return snapshot;
     }
 
     /** By name only, since asking the file system about thousands of files takes seconds. */
