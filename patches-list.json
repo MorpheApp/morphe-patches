@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "2.1.0-dev.8",
+  "version": "2.1.0-dev.9",
   "patches": [
     {
       "name": "AI channel filter",
@@ -4208,7 +4208,7 @@
     },
     {
       "name": "Downloads",
-      "description": "Adds support to download songs using the in-app download button, either with an external downloader app or inside YouTube Music.",
+      "description": "Adds support to download songs, albums and playlists using the in-app download button, either with an external downloader app or inside YouTube Music.",
       "default": true,
       "category": null,
       "compatiblePackages": [
