@@ -360,9 +360,8 @@ public class SpoofVideoStreamsPatch {
                     Logger.printException(() -> "Ignoring request with no ID: " + url);
                     return;
                 }
-                boolean isInline = "1".equals(uri.getQueryParameter("inline"));
 
-                StreamingDataRequest.fetchRequest(id, isInline, requestHeaders);
+                StreamingDataRequest.fetchRequest(id, requestHeaders);
             } catch (Exception ex) {
                 Logger.printException(() -> "fetchStreams failure", ex);
             }
@@ -423,11 +422,26 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
+     * Called when a media response asks the player to load the player response of its video again.
+     * The app then loads the video again, which can be with requests that are not seen,
+     * and the streams fetched before are not given to the player again.
+     */
+    public static void onReloadPlayerResponse() {
+        if (SPOOF_VIDEO_STREAMS) {
+            Logger.printDebug(() -> "Player response reload requested");
+            StreamingDataRequest.onPlayerResponseReloadRequested();
+        }
+    }
+
+    /**
+     * Injection point.
      * Fix playback by replace the player config.
      * Called after {@link #getStreamingData(String)}.
+     *
+     * @param appPlayerConfig The player config of the response of the app, or null if it has none.
      */
     @Nullable
-    public static byte[] getPlayerConfig(String videoId) {
+    public static byte[] getPlayerConfig(String videoId, @Nullable byte[] appPlayerConfig) {
         if (SPOOF_VIDEO_STREAMS) {
             try {
                 StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
@@ -437,7 +451,11 @@ public class SpoofVideoStreamsPatch {
                         byte[] config = buffers.playerConfig();
                         if (config != null) {
                             Logger.printDebug(() -> "Overriding player config: " + videoId);
-                            return config;
+                            // This config replaces the whole config of the app, which tells how the
+                            // video is played inline, such as a muted preview in the feed.
+                            return buffers.hasAndroidMedia() && appPlayerConfig != null
+                                    ? StreamingDataRequest.addInlinePlayback(config, appPlayerConfig)
+                                    : config;
                         }
                     }
                 }
@@ -453,7 +471,7 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
-     * Called after {@link #getPlayerConfig(String)}.
+     * Called after {@link #getPlayerConfig(String, byte[])}.
      */
     public static boolean hasAndroidMedia(String videoId) {
         if (SPOOF_VIDEO_STREAMS) {

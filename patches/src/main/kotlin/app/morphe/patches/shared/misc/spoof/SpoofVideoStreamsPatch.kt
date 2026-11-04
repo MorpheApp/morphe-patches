@@ -126,6 +126,13 @@ internal fun spoofVideoStreamsPatch(
 
         hookBuildRequest("$EXTENSION_CLASS->fetchStreams", includeBody = true)
 
+        // When a media response asks for the player response again, the app loads the video again,
+        // which can be with requests that are not seen. The streams fetched before are not given again.
+        ReloadPlayerResponseFingerprint.method.addInstruction(
+            0,
+            "invoke-static { }, $EXTENSION_CLASS->onReloadPlayerResponse()V"
+        )
+
         // endregion
 
         // region Make the media requests of the streams of TV clients name the TV client.
@@ -253,8 +260,14 @@ internal fun spoofVideoStreamsPatch(
                             # Set video length.
                             $overrideVideoLength
 
-                            # Get player config.
-                            invoke-static { v2 }, $EXTENSION_CLASS->getPlayerConfig(Ljava/lang/String;)[B
+                            # Get player config. The app player config tells how the video is played inline.
+                            iget-object v4, p2, $setPlayerConfigField
+                            const/4 v1, 0x0
+                            if-eqz v4, :get_player_config
+                            invoke-virtual { v4 }, $playerConfigClass->toByteArray()[B
+                            move-result-object v1
+                            :get_player_config
+                            invoke-static { v2, v1 }, $EXTENSION_CLASS->getPlayerConfig(Ljava/lang/String;[B)[B
                             move-result-object v3
                             if-eqz v3, :disabled
                             $parsePlayerConfig
@@ -272,9 +285,8 @@ internal fun spoofVideoStreamsPatch(
                             # Set media uStreamer request config in a copy of the app player config.
                             # The app config may already be serialized, which caches its size,
                             # and changing it then breaks serializing it again.
-                            iget-object v5, p2, $setPlayerConfigField
-                            invoke-virtual { v5 }, $playerConfigClass->toByteArray()[B
-                            move-result-object v3
+                            if-eqz v1, :disabled
+                            move-object v3, v1
                             $parsePlayerConfig
                             iget-object v6, v5, $mediaCommonConfigField
                             iput-object v7, v6, $mediaUstreamerRequestConfig

@@ -36,6 +36,21 @@ internal object CuepointListFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Called by native code when a media response asks the player to load the player response again.
+ * Older app versions also have a native implementation of the callbacks.
+ */
+internal object ReloadPlayerResponseFingerprint : Fingerprint(
+    superclass = "Lcom/google/android/libraries/youtube/media/interfaces/PlaybackControllerCallbacks;",
+    returnType = "V",
+    parameters = listOf(
+        $$"Lcom/google/android/apps/youtube/proto/streaming/ReloadPlayerResponseOuterClass$ReloadPlayerResponse;"
+    ),
+    custom = { _, classDef ->
+        !classDef.type.endsWith($$"$CppProxy;")
+    }
+)
+
 private object CreateStreamingDataParentFingerprint : Fingerprint(
     strings = listOf("Invalid playback type; streaming data is not playable")
 )
