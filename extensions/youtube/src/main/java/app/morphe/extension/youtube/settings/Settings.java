@@ -80,6 +80,7 @@ import app.morphe.extension.youtube.patches.RestoreOldVideoActionBarPatch.VideoA
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.WideSearchBarPatch.SearchbarType;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter.ExpandableCardStyle;
+import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter.PostButtonsLayout;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.HideAmbientModeFlyoutMenuAvailability;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.HideAudioTrackFlyoutMenuAvailability;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.HideAudioTrackFlyoutMenuFooterAvailability;
@@ -171,6 +172,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_ARTIST_CARDS = new BooleanSetting("morphe_hide_artist_cards", FALSE);
     public static final BooleanSetting HIDE_CHANNEL_BUTTONS = new BooleanSetting("morphe_hide_channel_buttons", FALSE);
     public static final BooleanSetting HIDE_COMMUNITY_POSTS = new BooleanSetting("morphe_hide_community_posts", FALSE);
+    public static final EnumSetting<PostButtonsLayout> POST_BUTTONS_LAYOUT = new EnumSetting<>("morphe_post_buttons_layout", PostButtonsLayout.SERVER);
+    public static final BooleanSetting HIDE_POST_LIKE_DISLIKE_BUTTONS = new BooleanSetting("morphe_hide_post_like_dislike_buttons", FALSE);
+    public static final BooleanSetting HIDE_POST_DISLIKE_BUTTON = new BooleanSetting("morphe_hide_post_dislike_button", FALSE, parentNot(HIDE_POST_LIKE_DISLIKE_BUTTONS));
+    public static final BooleanSetting HIDE_POST_COMMENT_BUTTON = new BooleanSetting("morphe_hide_post_comment_button", FALSE);
+    public static final BooleanSetting HIDE_POST_SHARE_BUTTON = new BooleanSetting("morphe_hide_post_share_button", FALSE);
     public static final BooleanSetting HIDE_COMPACT_BANNER = new BooleanSetting("morphe_hide_compact_banner", TRUE, true);
     public static final EnumSetting<ExpandableCardStyle> HIDE_EXPANDABLE_CARD = new EnumSetting<>("morphe_hide_expandable_card", ExpandableCardStyle.HIDE_ALL);
     public static final BooleanSetting HIDE_FEED_FLYOUT_MENU = new BooleanSetting("morphe_hide_feed_flyout_menu", FALSE);

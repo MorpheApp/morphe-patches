@@ -378,6 +378,14 @@
         <item>HIDE_SUMMARY_ONLY</item>
         <item>HIDE_ALL</item>
     </string-array>
+    <string-array name="morphe_post_buttons_layout_entries">
+        <item>@string/morphe_post_buttons_layout_entry_1</item>
+        <item>@string/morphe_post_buttons_layout_entry_2</item>
+    </string-array>
+    <string-array name="morphe_post_buttons_layout_entry_values">
+        <item>SERVER</item>
+        <item>ENFORCED</item>
+    </string-array>
 
     <!-- layout.feedcards.feedCardLayoutPatch -->
     <string-array name="morphe_feed_card_layout_entries">

@@ -323,6 +323,17 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_artist_cards", summary = true),
             SwitchPreference("morphe_hide_channel_buttons", summary = true),
             SwitchPreference("morphe_hide_community_posts"),
+            PreferenceScreenPreference(
+                key = "morphe_post_buttons_screen",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
+                    ListPreference("morphe_post_buttons_layout"),
+                    SwitchPreference("morphe_hide_post_like_dislike_buttons"),
+                    SwitchPreference("morphe_hide_post_dislike_button", summary = true),
+                    SwitchPreference("morphe_hide_post_comment_button"),
+                    SwitchPreference("morphe_hide_post_share_button", summary = true)
+                )
+            ),
             SwitchPreference("morphe_hide_compact_banner", summary = true),
             ListPreference("morphe_hide_expandable_card"),
             noTitleUnsortedPreferenceCategory(
@@ -574,6 +585,12 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region hide page header buttons
 
         hookElement("$LAYOUT_COMPONENTS_FILTER->hidePageHeaderButtons")
+
+        // endregion
+
+        // region post buttons
+
+        hookElement("$LAYOUT_COMPONENTS_FILTER->setPostButtons")
 
         // endregion
 
