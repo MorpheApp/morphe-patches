@@ -1310,6 +1310,9 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_skip_live_shorts_title">Skip live Shorts</string>
     <string name="morphe_skip_live_shorts_summary">Skips live streams that appear in the Shorts feed</string>
 
+    <!-- misc.notifications.shortsNotificationsPatch -->
+    <string name="morphe_disable_shorts_notifications_title">Hide in notifications</string>
+
     <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
     <string name="morphe_playback_in_feeds_title">Playback in feeds</string>
     <string name="morphe_playback_in_feeds_entry_always_on">Always on</string>
