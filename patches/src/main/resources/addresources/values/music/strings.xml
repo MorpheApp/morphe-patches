@@ -555,6 +555,26 @@ SABR playback (Spoof video streams turned off)"</string>
 
 To ensure scrobbling is synced during background playback, ensure that YouTube Music's app battery usage is set to \"Unrestricted\""</string>
 
+    <!-- interaction.soundproof.soundProofPatch -->
+    <!-- 'SoundProof' must be kept untranslated -->
+    <string name="morphe_music_soundproof_screen_title" translatable="false">SoundProof</string>
+    <string name="morphe_music_soundproof_screen_summary">Skip tracks of artists the community reported as AI</string>
+    <string name="morphe_music_soundproof_skip_ai_artists_title">Skip AI artists</string>
+    <string name="morphe_music_soundproof_skip_ai_artists_summary">Automatically skips tracks whose artist reaches the AI threshold below</string>
+    <string name="morphe_music_soundproof_toast_on_skip_title">Show skip notification</string>
+    <string name="morphe_music_soundproof_toast_on_skip_summary">Shows a notification when a track is automatically skipped</string>
+    <string name="morphe_music_soundproof_threshold_title">Detection threshold</string>
+    <string name="morphe_music_soundproof_minimum_ai_percent_title">Minimum AI votes</string>
+    <string name="morphe_music_soundproof_minimum_ai_percent_summary">An artist is AI when at least this share of its votes say AI</string>
+    <string name="morphe_music_soundproof_minimum_votes_title">Minimum number of votes</string>
+    <string name="morphe_music_soundproof_minimum_votes_summary">Artists with fewer votes than this are never skipped</string>
+    <!-- %1$s is the artist name, %2$d the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+    <string name="morphe_music_soundproof_skipped_toast">Skipped %1$s (AI, %2$d%%)</string>
+    <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+    <string name="morphe_music_soundproof_about_summary">"Artist data comes from SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), downloaded once a day. Nothing about what you play is sent.
+
+The database is licensed under the ODC Open Database License (ODbL). Entries from Soul Over AI by xoundbyte are licensed under CC BY 4.0. Not affiliated with or endorsed by SoundProof or Soul Over AI."</string>
+
     <!-- layout.lyrics.lyricsPatch -->
     <string name="morphe_music_lyrics_enabled_title">Use third-party lyrics</string>
     <string name="morphe_music_lyrics_enabled_summary">Shows lyrics from a third-party service, falling back to the built-in lyrics when none are found</string>
