@@ -1,65 +1,66 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4382
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.components;
 
+import androidx.annotation.Nullable;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Objects;
+
 import app.morphe.extension.music.patches.DownloadsPatch;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
-import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
+import app.morphe.extension.shared.patches.components.FilterGroup.FilterGroupResult;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 
 /**
- * Detects the song that a track menu was opened for, and grabs its video ID.
- *
- * The Download menu item of accounts offered Premium is a Premium upsell action that does
- * not include the video ID of the tapped song, so the ID is taken from the menu header,
- * which is rendered when the menu opens and holds the song's like button and ID.
+ * Finds the song that a menu was opened for.
+ * <p>
+ * The menu Download item of accounts offered Premium is a Premium upsell action without
+ * the video ID, so the ID is taken from the like button of the menu header.
  */
 @SuppressWarnings("unused")
 public final class SongMenuFilter extends Filter {
 
-    private static final String MENU_HEADER_ROOT_PREFIX = "panel_header.";
-    private static final String MENU_ITEM_ROOT_PREFIX = "list_item.";
+    private static final int VIDEO_ID_LENGTH = 11;
 
-    private static final byte[] RDAMVM_PREFIX = "RDAMVM".getBytes();
+    /**
+     * Song of the last opened menu, or null if the menu is not for a song, such as an album.
+     */
+    @Nullable
+    private static volatile String menuVideoId;
 
-    private final StringFilterGroup menuHeader;
-    private final StringFilterGroup menuItem;
-    private final ByteArrayFilterGroupList headerGroupList = new ByteArrayFilterGroupList();
-    private final ByteArrayFilterGroupList itemGroupList = new ByteArrayFilterGroupList();
+    private final ByteArrayFilterGroup likeButton = new ByteArrayFilterGroup(
+            null,
+            "like_toggle_button."
+    );
 
     public SongMenuFilter() {
-        menuHeader = new StringFilterGroup(
-                null,
-                MENU_HEADER_ROOT_PREFIX
-        );
-        menuItem = new StringFilterGroup(
-                null,
-                MENU_ITEM_ROOT_PREFIX
-        );
-
-        headerGroupList.addAll(
-                new ByteArrayFilterGroup(
+        // Song, album and playlist menus all have this header,
+        // so each menu replaces the song of the previous menu.
+        addIdentifierCallbacks(
+                new StringFilterGroup(
                         null,
-                        "like_toggle_button"
+                        "panel_header."
                 )
         );
-        itemGroupList.addAll(
-                new ByteArrayFilterGroup(
-                        null,
-                        "premium_upsell"
-                )
-        );
+    }
 
-        addPathCallbacks(menuHeader, menuItem);
+    /**
+     * @return The video ID of the song of the last opened menu, or null if not a song.
+     */
+    @Nullable
+    public static String getMenuVideoId() {
+        return menuVideoId;
     }
 
     @Override
@@ -72,96 +73,51 @@ public final class SongMenuFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        if (matchedGroup == menuHeader) {
-            if (!Utils.startsWith(path, MENU_HEADER_ROOT_PREFIX)
-                    && !Utils.contains(path, "|" + MENU_HEADER_ROOT_PREFIX)) {
-                return false;
+        try {
+            // Nested components of the header have their own buffer.
+            if (contentIndex == 0
+                    && DownloadsPatch.isFlyoutMenuOverridden()
+                    && Utils.indexOf(path, ".e", identifier.length()) < 0) {
+                String videoId = findLikeButtonVideoId(buffer);
+                if (!Objects.equals(videoId, menuVideoId)) {
+                    Logger.printDebug(() -> "Menu opened for song: " + videoId);
+                    menuVideoId = videoId;
+                }
             }
-            if (!headerGroupList.check(buffer).isFiltered()) {
-                return false;
-            }
-
-            String videoId = extractVideoId(buffer);
-            if (videoId != null) {
-                DownloadsPatch.onSongMenuRendered(videoId);
-            }
-            return false;
-        }
-
-        if (matchedGroup == menuItem) {
-            if (!Utils.startsWith(path, MENU_ITEM_ROOT_PREFIX)
-                    && !Utils.contains(path, "|" + MENU_ITEM_ROOT_PREFIX)) {
-                return false;
-            }
-            if (!itemGroupList.check(buffer).isFiltered()) {
-                return false;
-            }
-
-            // Some app versions include the song ID in the row itself, so it is
-            // grabbed here when available. The row also declares the menu open,
-            // which invalidates IDs of previously opened menus.
-            String videoId = extractVideoId(buffer);
-            if (videoId != null) {
-                DownloadsPatch.onSongMenuRendered(videoId);
-            }
-            DownloadsPatch.onPremiumMenuRowRendered();
+        } catch (Exception ex) {
+            Logger.printException(() -> "isFiltered failure", ex);
         }
 
         return false;
     }
 
     /**
-     * @return Whether the 11 bytes starting at 'start' are only video ID characters.
+     * @return The video ID of the like button, or null if the header has no like button.
      */
-    private static boolean isValidVideoId(byte[] bytes, int start) {
-        for (int i = 0; i < 11; i++) {
-            byte b = bytes[start + i];
+    @Nullable
+    private String findLikeButtonVideoId(byte[] buffer) {
+        FilterGroupResult result = likeButton.check(buffer);
+        if (!result.isFiltered()) return null;
+
+        // The video ID is the first string field after the button name
+        // that is 11 characters long. The byte before a string field is its length.
+        final int start = result.getMatchedIndex() + result.getMatchedLength();
+        for (int i = start, end = buffer.length - VIDEO_ID_LENGTH; i <= end; i++) {
+            if (buffer[i - 1] == VIDEO_ID_LENGTH && isVideoId(buffer, i)) {
+                return new String(buffer, i, VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
+            }
+        }
+        return null;
+    }
+
+    private static boolean isVideoId(byte[] buffer, int start) {
+        for (int i = start, end = start + VIDEO_ID_LENGTH; i < end; i++) {
+            final byte b = buffer[i];
             if (!((b >= 'a' && b <= 'z') || (b >= 'A' && b <= 'Z')
                     || (b >= '0' && b <= '9') || b == '_' || b == '-')) {
                 return false;
             }
         }
         return true;
-    }
-
-    /**
-     * The menu header proto layout references the song ID as a standalone string field,
-     * bounded by non printable bytes on both sides.
-     *
-     * @return The video ID of the song, or null if unknown.
-     */
-    private static String extractVideoId(byte[] bytes) {
-        // 19 = 11 chars video ID + "/vi/" of the thumbnail URL "https://i.ytimg.com/vi/<id>/".
-        for (int i = 0; i <= bytes.length - 19; i++) {
-            if (bytes[i] == '/' && bytes[i + 1] == 'v' && bytes[i + 2] == 'i' && bytes[i + 3] == '/'
-                    && isValidVideoId(bytes, i + 4)) {
-                return new String(bytes, i + 4, 11);
-            }
-        }
-        // 17 = 11 chars video ID + "RDAMVM" prefix used by browse IDs of the form "RDAMVM<videoId>".
-        for (int i = 0; i <= bytes.length - 17; i++) {
-            boolean matches = true;
-            for (int j = 0; j < 6; j++) {
-                if (bytes[i + j] != RDAMVM_PREFIX[j]) {
-                    matches = false;
-                    break;
-                }
-            }
-            if (matches && isValidVideoId(bytes, i + 6)) {
-                return new String(bytes, i + 6, 11);
-            }
-        }
-        // 13 = 11 chars video ID, delimited by a byte on each side.
-        for (int i = 0; i < bytes.length - 13; i++) {
-            if (isStringDelimiter(bytes[i]) && isValidVideoId(bytes, i + 1)
-                    && isStringDelimiter(bytes[i + 12])) {
-                return new String(bytes, i + 1, 11);
-            }
-        }
-        return null;
-    }
-
-    private static boolean isStringDelimiter(byte b) {
-        return b <= 0x1F;
     }
 }

@@ -11,11 +11,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.cloneParameters
+import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
-import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -85,6 +85,7 @@ private val downloadsResourcePatch = resourcePatch {
 }
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/DownloadsPatch;"
+private const val SONG_MENU_FILTER = "Lapp/morphe/extension/music/patches/components/SongMenuFilter;"
 private const val EXTENSION_PROTOCOL_BUFFER_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/DownloadsPatch$ProtocolBufferFieldInterface;"
 
@@ -108,11 +109,8 @@ val downloadsPatch = bytecodePatch(
     execute {
         hookSpannableString(EXTENSION_CLASS)
 
-        // Song menus rendered for accounts offered Premium are detected by this filter,
-        // so the tapped song's video ID is available when the Download action arrives.
-        addLithoFilter(
-            "Lapp/morphe/extension/music/patches/components/SongMenuFilter;"
-        )
+        // Finds the song of a menu, for the menu Download of accounts offered Premium.
+        addLithoFilter(SONG_MENU_FILTER)
 
         val (_, downloadCall) = OfflineVideoEndpointFingerprint.instructionMatches
 
