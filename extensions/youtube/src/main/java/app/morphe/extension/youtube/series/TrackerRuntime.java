@@ -28,12 +28,8 @@ final class TrackerRuntime {
             },
             (previous, video) -> {
                 TrackerService service = service();
-                if (service == null) return;
-                String playlist = PlayerSeriesAction.playlist(
-                        video,
-                        VideoInformation.getStartingOrPlayingVideoId(),
-                        VideoInformation.getPlaylistId());
-                service.advanced(previous, video, playlist, privacyGeneration);
+                if (service != null)
+                    service.markWatchedOnAdvance(previous, video, privacyGeneration);
             },
             Settings.SERIES_TRACKER_COMPLETION_PERCENT::get,
             Settings.SERIES_TRACKER_COMPLETION_SECONDS::get);
@@ -111,14 +107,6 @@ final class TrackerRuntime {
     static void state(String value) {
         sample();
         reducer.state(value, SystemClock.elapsedRealtime());
-    }
-
-    static void navigation(Enum<?> intent) {
-        if (!Utils.isCurrentlyOnMainThread()) return;
-        final String kind = intent.name();
-        // An episode launch keeps the direction of the navigation that started it.
-        if (kind.equals("JUMP") && waiting) return;
-        reducer.navigated(kind.equals("PREVIOUS"));
     }
 
     static void prepareLaunch() {

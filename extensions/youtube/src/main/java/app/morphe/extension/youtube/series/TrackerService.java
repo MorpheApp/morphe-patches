@@ -409,11 +409,11 @@ public final class TrackerService {
                 });
     }
 
-    void advanced(String previous, String video, String playlist, long privacyGeneration) {
+    void markWatchedOnAdvance(String previous, String video, long privacyGeneration) {
         String capturedEpoch = epoch;
         mutation(() -> {
                     if (RecordingPrivacy.accepts(privacyGeneration)) {
-                        repository.advanced(previous, video, playlist,
+                        repository.markWatchedOnAdvance(previous, video,
                                 capturedEpoch == null ? epoch : capturedEpoch);
                     }
                 },

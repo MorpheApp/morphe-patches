@@ -610,20 +610,21 @@ final class LibraryDialog {
                                 scroll.scrollTo(0, 0);
                                 reload();
                             },
-                            message -> {
-                                reload();
-                                error(message);
-                            });
+                            this::optionFailed);
                 });
         content.addView(hide, new LinearLayout.LayoutParams(-1, -2));
-        advance.setOnCheckedChangeListener((button, checked) -> {
-            hide.setEnabled(false);
-            advance.setEnabled(false);
-            service.seriesOptions(s, s.reverseOrder(), s.hideWatched(), checked, this::reload, message -> {
-                reload();
-                error(message);
-            });
-        });
+        advance.setOnCheckedChangeListener(
+                (button, checked) -> {
+                    hide.setEnabled(false);
+                    advance.setEnabled(false);
+                    service.seriesOptions(
+                            s,
+                            s.reverseOrder(),
+                            s.hideWatched(),
+                            checked,
+                            this::reload,
+                            this::optionFailed);
+                });
         content.addView(advance, new LinearLayout.LayoutParams(-1, -2));
         List<Episode> available = s.visibleEpisodes();
         int currentIndex = episodeReveal.targetIndex(plan, available);
@@ -704,6 +705,12 @@ final class LibraryDialog {
         option.setSwitchPadding(HistoryUi.dp(16));
         option.setChecked(checked);
         return option;
+    }
+
+    /** Shows the saved options again, as the failed switch was already toggled. */
+    private void optionFailed(String message) {
+        reload();
+        error(message);
     }
 
     private void recovery(Series series) {

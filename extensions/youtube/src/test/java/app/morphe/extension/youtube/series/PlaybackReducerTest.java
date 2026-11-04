@@ -19,10 +19,10 @@ public class PlaybackReducerTest {
     private static final String A = "aaaaaaaaaaa", B = "bbbbbbbbbbb", C = "ccccccccccc";
     private static final long DURATION = 600_000;
 
-    private final List<String> advances = new ArrayList<>();
+    private final List<String> moves = new ArrayList<>();
     private final List<PlaybackReducer.Snapshot> snapshots = new ArrayList<>();
     private final PlaybackReducer reducer = new PlaybackReducer(
-            snapshots::add, (previous, video) -> advances.add(previous + ">" + video), () -> 92, () -> 30);
+            snapshots::add, (previous, video) -> moves.add(previous + ">" + video), () -> 92, () -> 30);
     private long now = 10_000;
 
     private void sample(String video, long position) {
@@ -41,7 +41,7 @@ public class PlaybackReducerTest {
         play(A);
         play(B);
         sample(B, 3000);
-        assertEquals(List.of(A + ">" + B), advances);
+        assertEquals(List.of(A + ">" + B), moves);
     }
 
     @Test
@@ -49,7 +49,7 @@ public class PlaybackReducerTest {
         sample(A, 0);
         sample(A, 0);
         play(B);
-        assertEquals(List.of(), advances);
+        assertEquals(List.of(), moves);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class PlaybackReducerTest {
         reducer.newVideo(now);
         sample(B, 0);
         play(C);
-        assertEquals(List.of(A + ">" + C), advances);
+        assertEquals(List.of(A + ">" + C), moves);
     }
 
     @Test
@@ -67,35 +67,15 @@ public class PlaybackReducerTest {
         reducer.newVideo(now);
         play(A);
         play(B);
-        assertEquals(List.of(A + ">" + B), advances);
+        assertEquals(List.of(A + ">" + B), moves);
     }
 
     @Test
-    public void previousIsNotReported() {
-        play(A);
-        reducer.navigated(true);
-        play(B);
-        play(C);
-        assertEquals(List.of(B + ">" + C), advances);
-    }
-
-    @Test
-    public void laterNavigationReplacesPrevious() {
-        play(A);
-        reducer.navigated(true);
-        reducer.navigated(false);
-        play(B);
-        assertEquals(List.of(A + ">" + B), advances);
-    }
-
-    @Test
-    public void previousThatRestartsTheVideoDoesNotStay() {
-        play(A);
-        reducer.navigated(true);
-        reducer.newVideo(now);
+    public void movingBackIsReported() {
         play(A);
         play(B);
-        assertEquals(List.of(A + ">" + B), advances);
+        play(A);
+        assertEquals(List.of(A + ">" + B, B + ">" + A), moves);
     }
 
     @Test
@@ -103,7 +83,7 @@ public class PlaybackReducerTest {
         play(A);
         reducer.clear();
         play(B);
-        assertEquals(List.of(), advances);
+        assertEquals(List.of(), moves);
     }
 
     @Test
@@ -111,7 +91,7 @@ public class PlaybackReducerTest {
         play(A);
         reducer.sample(C, C, 0, DURATION, true, now, now);
         play(B);
-        assertEquals(List.of(), advances);
+        assertEquals(List.of(), moves);
     }
 
     @Test
@@ -123,6 +103,6 @@ public class PlaybackReducerTest {
         assertEquals(A, last.videoId());
         assertTrue(last.completed());
         assertEquals(DURATION - 20_000, last.positionMs());
-        assertEquals(List.of(), advances);
+        assertEquals(List.of(), moves);
     }
 }

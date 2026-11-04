@@ -892,24 +892,31 @@ public final class TrackerRepository extends SQLiteOpenHelper {
     }
 
     /**
-     * The playlist decides the series. Without a playlist, both videos must be in only one series.
-     * The saved position is kept.
+     * Marks the previous video watched, if the video is the next episode after it in a series
+     * with the option on. The saved position is kept.
      */
-    void advanced(String previous, String video, String playlist, String historyEpoch) {
+    void markWatchedOnAdvance(String previous, String video, String historyEpoch) {
         SQLiteDatabase db = getWritableDatabase();
         db.beginTransaction();
         try {
             if (!historyEpoch().equals(historyEpoch)) return;
-            List<String> series = new ArrayList<>();
+            List<String> ids = new ArrayList<>();
             try (Cursor c = db.rawQuery(
                     "SELECT DISTINCT a.playlist_id FROM catalog_entry a JOIN catalog_entry b ON"
                             + " a.playlist_id=b.playlist_id WHERE a.video_id=? AND a.available=1"
-                            + " AND b.video_id=? AND b.available=1 AND (?='' OR a.playlist_id=?)",
-                    new String[]{previous, video, playlist, playlist})) {
-                while (c.moveToNext()) series.add(c.getString(0));
+                            + " AND b.video_id=? AND b.available=1 AND EXISTS (SELECT 1 FROM meta"
+                            + " WHERE key='watched_on_advance:' || a.playlist_id)",
+                    new String[]{previous, video})) {
+                while (c.moveToNext()) ids.add(c.getString(0));
             }
-            if (series.size() != 1 || !"true".equals(meta("watched_on_advance", series.get(0)))) return;
-            db.execSQL("UPDATE video_progress SET auto_completed=1 WHERE video_id=?", new Object[]{previous});
+            for (String id : ids) {
+                if (ResumePlanner.isNext(series(id), previous, video)) {
+                    db.execSQL(
+                            "UPDATE video_progress SET auto_completed=1 WHERE video_id=?",
+                            new Object[] {previous});
+                    break;
+                }
+            }
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();

@@ -26,7 +26,7 @@ public final class PlaybackReducer {
     }
 
     private final Consumer<Snapshot> output;
-    private final BiConsumer<String, String> advanced;
+    private final BiConsumer<String, String> moved;
     private final IntSupplier completionPercent, completionSeconds;
     private String id = "";
     private String previous = "";
@@ -39,16 +39,16 @@ public final class PlaybackReducer {
             sampleAt,
             queuedAt;
     private long stableDurationAt, previousCandidatePosition = -1;
-    private boolean valid, dirty, completed, growingDuration, backward;
+    private boolean valid, dirty, completed, growingDuration;
 
     /**
-     * @param advanced Receives the last played video and the new video when playback moves on.
-     *                 Not called after Previous or when the same video loads again.
+     * @param moved Receives the previously played video and the new video, when playback of
+     *              another video starts. Not called when the same video loads again.
      */
-    public PlaybackReducer(Consumer<Snapshot> output, BiConsumer<String, String> advanced,
+    public PlaybackReducer(Consumer<Snapshot> output, BiConsumer<String, String> moved,
                            IntSupplier percentage, IntSupplier seconds) {
         this.output = output;
-        this.advanced = advanced;
+        this.moved = moved;
         completionPercent = percentage;
         completionSeconds = seconds;
     }
@@ -61,11 +61,6 @@ public final class PlaybackReducer {
     public void clear() {
         resetSession();
         previous = "";
-        backward = false;
-    }
-
-    public void navigated(boolean backward) {
-        this.backward = backward;
     }
 
     private void resetSession() {
@@ -114,9 +109,8 @@ public final class PlaybackReducer {
             // only after advancing time corroborates the same controller identity.
             if (now - candidateAt < 500 || !advancing) return;
             valid = true;
-            if (!previous.isEmpty() && !previous.equals(id) && !backward) advanced.accept(previous, id);
+            if (!previous.isEmpty() && !previous.equals(id)) moved.accept(previous, id);
             previous = id;
-            backward = false;
         }
         final boolean finite = !growingDuration
                 && duration > 0
