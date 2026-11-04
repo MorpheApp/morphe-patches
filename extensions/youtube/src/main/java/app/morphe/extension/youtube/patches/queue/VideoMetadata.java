@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.youtube.innertube.queue.QueueCardRenderer;
+import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
 
 /** Server-formatted display text for a native playlist row. */
 record VideoMetadata(String videoId, String title, String channelName, String videoInfo, String duration,
@@ -35,6 +36,23 @@ record VideoMetadata(String videoId, String title, String channelName, String vi
 
     private static final String WATCH_URL_PREFIX = "https://www.youtube.com/watch?v=";
     private static final String METADATA_SEPARATOR = " · ";
+
+    static VideoMetadata fromPanelVideo(PlaylistQueueRenderer.Video video) {
+        return new VideoMetadata(video.getVideoId(), panelText(video.getTitle()),
+                panelText(video.getShortBylineText()), panelText(video.getVideoInfo()),
+                panelText(video.getLengthText()), false, true);
+    }
+
+    private static String panelText(PlaylistQueueRenderer.Text text) {
+        if (text.hasSimpleText()) {
+            return text.getSimpleText();
+        }
+        StringBuilder value = new StringBuilder();
+        for (var run : text.getRunsList()) {
+            value.append(run.getText());
+        }
+        return value.toString();
+    }
 
     @Nullable
     static VideoMetadata fromElement(byte[] bytes) throws InvalidProtocolBufferException {
