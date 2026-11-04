@@ -1,3 +1,9 @@
+## [2.1.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0-dev.9...v2.1.0-dev.10) (2026-11-04)
+
+### 🐛 Bug Fixes
+
+* **YouTube Music:** Non-experimental targets do not patch ([2ca8ae1](https://github.com/MorpheApp/morphe-patches/commit/2ca8ae1098f2a1c964ddb26703fa9b0b178c736d))
+
 ## [2.1.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0-dev.8...v2.1.0-dev.9) (2026-11-04)
 
 ### ✨ New Features
