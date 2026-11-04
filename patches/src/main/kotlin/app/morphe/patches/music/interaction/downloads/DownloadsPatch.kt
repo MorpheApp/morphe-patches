@@ -15,6 +15,8 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
+import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
+import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -97,6 +99,7 @@ val downloadsPatch = bytecodePatch(
         downloadsResourcePatch,
         settingsPatch,
         textComponentPatch,
+        lithoFilterPatch,
         musicVideoInformationPatch
     )
 
@@ -104,6 +107,12 @@ val downloadsPatch = bytecodePatch(
 
     execute {
         hookSpannableString(EXTENSION_CLASS)
+
+        // Song menus rendered for accounts offered Premium are detected by this filter,
+        // so the tapped song's video ID is available when the Download action arrives.
+        addLithoFilter(
+            "Lapp/morphe/extension/music/patches/components/SongMenuFilter;"
+        )
 
         val (_, downloadCall) = OfflineVideoEndpointFingerprint.instructionMatches
 

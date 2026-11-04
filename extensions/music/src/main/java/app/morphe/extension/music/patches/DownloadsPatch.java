@@ -49,6 +49,26 @@ public final class DownloadsPatch {
 
     private static volatile String downloadButtonLabel = "";
 
+    /** Action key of the song menu command that opens the Premium upsell sheet. */
+    private static final byte[] PREMIUM_UPSELL_ACTION = "premium_upsell".getBytes(StandardCharsets.US_ASCII);
+
+    /** Video ID of the last rendered song menu that uses the Premium upsell action. */
+    private static volatile String songMenuVideoId;
+    /** When the menu video ID was grabbed. */
+    private static volatile long songMenuVideoIdTime;
+    /** Last time a Premium upsell menu row rendered, to debounce the row handshake. */
+    private static volatile long premiumMenuRowTime;
+    /** Previously logged menu song, so repeated renders are not logged. */
+    private static volatile String lastLoggedMenuSong;
+    /**
+     * How long before a Premium upsell menu row renders the header may have been rendered.
+     * The header is rendered right before the rows of the same menu, so an older ID belongs
+     * to a previously opened menu and is dropped instead of downloading a wrong song.
+     */
+    private static final long PREMIUM_MENU_HEADER_GRACE_MS = 5000;
+    /** Rows of a menu render multiple times, so the row handshake only runs occasionally. */
+    private static final long PREMIUM_MENU_ROW_DEBOUNCE_MS = 2000;
+
     /** Command field of the 'ypc/get_offline_upsell' endpoint. */
     private static final int OFFLINE_UPSELL_ENDPOINT = 133724106;
     private static final Pattern VIDEO_ID = Pattern.compile("[A-Za-z0-9_-]{11}");
@@ -143,6 +163,63 @@ public final class DownloadsPatch {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Whether the command is the song menu Download action that opens the Premium
+     * upsell sheet instead of downloading, sent by newer app versions.
+     */
+    private static boolean isPremiumUpsellCommand(byte[] bytes) {
+        byte[] target = PREMIUM_UPSELL_ACTION;
+        outer: for (int i = 0; i <= bytes.length - target.length; i++) {
+            for (int j = 0; j < target.length; j++) {
+                if (bytes[i + j] != target[j]) continue outer;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Injection point (SongMenuFilter).
+     * A song menu whose Download item is a Premium upsell action was rendered.
+     */
+    public static void onSongMenuRendered(String videoId) {
+        if (videoId == null || videoId.isEmpty()) return;
+        songMenuVideoId = videoId;
+        songMenuVideoIdTime = System.currentTimeMillis();
+        String menuSong = songMenuVideoId;
+        if (!menuSong.equals(lastLoggedMenuSong)) {
+            lastLoggedMenuSong = menuSong;
+            Logger.printDebug(() -> "Song menu rendered for " + videoId);
+        }
+    }
+
+    /**
+     * Injection point (SongMenuFilter).
+     * A Premium upsell Download row rendered, which means a menu using that action is open.
+     *
+     * The video ID stashed by the header render is kept only if it was rendered for this
+     * menu. Otherwise it belongs to an older menu and is dropped, so tapping Download
+     * shows the stock Premium upsell instead of downloading a song of another menu.
+     */
+    public static void onPremiumMenuRowRendered() {
+        final long now = System.currentTimeMillis();
+        if (now - premiumMenuRowTime < PREMIUM_MENU_ROW_DEBOUNCE_MS) return;
+        premiumMenuRowTime = now;
+
+        String videoId = songMenuVideoId;
+        if (videoId != null && now - songMenuVideoIdTime > PREMIUM_MENU_HEADER_GRACE_MS) {
+            Logger.printDebug(() -> "Dropping stale menu song: " + videoId);
+            songMenuVideoId = null;
+        }
+    }
+
+    /**
+     * @return The video ID of the currently opened song menu, or null if unknown.
+     */
+    private static String getSongMenuVideoId() {
+        return songMenuVideoId;
     }
 
     /**
@@ -267,6 +344,32 @@ public final class DownloadsPatch {
             Utils.verifyOnMainThread();
 
             byte[] commandBytes = p1.toByteArray();
+
+            // Song menu Download of accounts offered Premium is an action that opens the
+            // Premium upsell sheet client side, and the command does not include the video ID
+            // of the tapped song. The ID is grabbed when the menu is rendered (SongMenuFilter).
+            // If the ID was not seen, the command is left to the app, since using the playing
+            // song instead could download a different song than the one tapped.
+            if (isViewInsideDialog(map.get(ELEMENTS_SENDER_VIEW))
+                    && commandBytes != null
+                    && isPremiumUpsellCommand(commandBytes)) {
+                String videoId = getSongMenuVideoId();
+                final String downloadVideoId = videoId;
+                if (downloadVideoId != null && !downloadVideoId.isEmpty()) {
+                    Logger.printDebug(() -> "Premium upsell command intercepted, video: " + downloadVideoId);
+
+                    final long now = System.currentTimeMillis();
+                    // The menu stays open after tapping, so repeated taps would repeat the request.
+                    if (now - lastFlyoutDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) return true;
+                    lastFlyoutDownloadTime = now;
+                    startDownload(downloadVideoId, flyoutMenuUsesExternalDownloader());
+                    return true;
+                }
+
+                Logger.printDebug(() -> "Premium upsell command without a known menu song");
+                return false;
+            }
+
             if (inAppDownloads()) {
                 if (commandBytes != null && isOfflineBrowseCommand(commandBytes)) {
                     openLocalDownloads();
