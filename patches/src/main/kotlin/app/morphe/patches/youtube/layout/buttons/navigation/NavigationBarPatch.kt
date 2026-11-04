@@ -273,7 +273,7 @@ val navigationBarPatch = bytecodePatch(
 
         PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(
-                key = "morphe_navigation_buttons_screen",
+                key = "morphe_navigation_bar_screen",
                 sorting = Sorting.UNSORTED,
                 preferences = navPreferences
             )
