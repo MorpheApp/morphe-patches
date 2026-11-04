@@ -18,6 +18,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Icon;
 import android.media.AudioAttributes;
 import android.media.AudioFocusRequest;
@@ -144,12 +145,6 @@ public final class OfflinePlaybackService extends Service {
     private static final String CHANNEL_ID = "morphe_offline_playback";
     private static final int NOTIFICATION_ID = 8841;
 
-    /**
-     * Longest edge of the cover shown by the notification and the lock screen. The system
-     * scales down anything larger on the main thread, once per key it is stored under.
-     */
-    private static final int ARTWORK_PIXELS = 640;
-
     private MediaPlayer player;
     private boolean prepared;
     private MediaSession session;
@@ -242,10 +237,10 @@ public final class OfflinePlaybackService extends Service {
         title = requestedTitle == null ? new File(path).getName() : requestedTitle;
         artist = requestedArtist == null || requestedArtist.isBlank() ? "YouTube Music" : requestedArtist;
         // A track saved without a cover has no file, and decoding it would log an error a second.
-        // Covers are stored large, and a full decode costs a few megabytes on every track change.
-        artwork = artworkPath == null
-                ? null
-                : OfflineStorage.decodeArtwork(new File(artworkPath), ARTWORK_PIXELS);
+        File artworkFile = artworkPath == null ? null : new File(artworkPath);
+        artwork = artworkFile != null && artworkFile.isFile()
+                ? BitmapFactory.decodeFile(artworkPath)
+                : null;
         releasePlayer();
         try {
             pauseOtherMedia();
