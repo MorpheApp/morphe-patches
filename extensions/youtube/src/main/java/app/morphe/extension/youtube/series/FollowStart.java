@@ -16,7 +16,8 @@ import java.util.List;
 import java.util.Set;
 
 /** The explicit starting point of a newly followed playlist. */
-record FollowStart(String video, long positionMs, boolean reverse, boolean watchedBefore) {
+record FollowStart(String video, long positionMs, boolean reverse, boolean watchedBefore,
+                   boolean watchedOnAdvance) {
 
     static long position(@Nullable PlaybackBridge.Source source, String video) {
         if (video.isEmpty() || !video.equals(PlaybackBridge.videoId(source))) return -1;

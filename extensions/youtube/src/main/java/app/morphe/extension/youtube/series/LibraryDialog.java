@@ -593,21 +593,18 @@ final class LibraryDialog {
             label(content, "morphe_series_tracker_catalog_unavailable", 14);
             return;
         }
-        Switch hide = new Switch(activity);
-        hide.setText(UiText.get("morphe_series_tracker_hide_watched"));
-        hide.setTextSize(14);
-        hide.setTextColor(HistoryUi.foreground());
-        hide.setMinHeight(HistoryUi.dp(48));
-        hide.setSwitchPadding(HistoryUi.dp(16));
-        hide.setChecked(s.hideWatched());
+        Switch hide = optionSwitch("morphe_series_tracker_hide_watched", s.hideWatched());
+        Switch advance = optionSwitch("morphe_series_tracker_watched_on_advance", s.watchedOnAdvance());
         hide.setOnCheckedChangeListener(
                 (button, checked) -> {
                     episodeReveal.cancel();
                     hide.setEnabled(false);
+                    advance.setEnabled(false);
                     service.seriesOptions(
                             s,
                             s.reverseOrder(),
                             checked,
+                            s.watchedOnAdvance(),
                             () -> {
                                 page = 0;
                                 scroll.scrollTo(0, 0);
@@ -619,6 +616,15 @@ final class LibraryDialog {
                             });
                 });
         content.addView(hide, new LinearLayout.LayoutParams(-1, -2));
+        advance.setOnCheckedChangeListener((button, checked) -> {
+            hide.setEnabled(false);
+            advance.setEnabled(false);
+            service.seriesOptions(s, s.reverseOrder(), s.hideWatched(), checked, this::reload, message -> {
+                reload();
+                error(message);
+            });
+        });
+        content.addView(advance, new LinearLayout.LayoutParams(-1, -2));
         List<Episode> available = s.visibleEpisodes();
         int currentIndex = episodeReveal.targetIndex(plan, available);
         if (available.isEmpty()) {
@@ -687,6 +693,17 @@ final class LibraryDialog {
                         scroll.scrollTo(0, 0);
                         reload();
                     });
+    }
+
+    private Switch optionSwitch(String key, boolean checked) {
+        Switch option = new Switch(activity);
+        option.setText(UiText.get(key));
+        option.setTextSize(14);
+        option.setTextColor(HistoryUi.foreground());
+        option.setMinHeight(HistoryUi.dp(48));
+        option.setSwitchPadding(HistoryUi.dp(16));
+        option.setChecked(checked);
+        return option;
     }
 
     private void recovery(Series series) {
@@ -892,6 +909,7 @@ final class LibraryDialog {
                     s,
                     reverse,
                     s.hideWatched(),
+                    s.watchedOnAdvance(),
                     () -> {
                         sheet.dialog.dismiss();
                         episodeReveal.cancel();

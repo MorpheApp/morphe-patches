@@ -80,6 +80,7 @@ public final class SeriesTrackerPatch {
     public static boolean navigationIntent(Enum<?> intent) {
         if (!ENABLED) return false;
         try {
+            TrackerRuntime.navigation(intent);
             return SeriesPlayback.navigate(intent);
         } catch (Exception ex) {
             Logger.printException(() -> "navigationIntent failure", ex);
