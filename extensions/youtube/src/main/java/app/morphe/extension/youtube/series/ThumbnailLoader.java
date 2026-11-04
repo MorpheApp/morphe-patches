@@ -53,6 +53,7 @@ final class ThumbnailLoader {
     private static final Map<String, List<WeakReference<ImageView>>> waiting = new HashMap<>();
 
     static void load(ImageView view, @Nullable String videoId) {
+        Utils.verifyOnMainThread();
         view.setTag(videoId);
         // The id is part of the url.
         if (videoId == null || !videoId.matches("[A-Za-z0-9_-]{11}")) return;
@@ -69,22 +70,31 @@ final class ThumbnailLoader {
         if (views.size() > 1) return;
 
         Utils.runOnBackgroundThread(() -> {
-            Bitmap bitmap = download(videoId);
-            if (bitmap != null) cache.put(videoId, bitmap);
-
-            Utils.runOnMainThread(() -> {
-                List<WeakReference<ImageView>> targets = waiting.remove(videoId);
-                if (bitmap == null) return;
-
-                for (WeakReference<ImageView> viewRef : targets) {
-                    ImageView target = viewRef.get();
-                    // The view may have been reused for a different video.
-                    if (target != null && videoId.equals(target.getTag())) {
-                        target.setImageBitmap(bitmap);
-                    }
-                }
-            });
+            Bitmap bitmap = null;
+            try {
+                bitmap = download(videoId);
+                if (bitmap != null) cache.put(videoId, bitmap);
+            } catch (Exception ex) {
+                Logger.printException(() -> "load failure", ex);
+            } finally {
+                // Always remove the waiting views, otherwise this thumbnail is never loaded again.
+                final Bitmap result = bitmap;
+                Utils.runOnMainThread(() -> showLoaded(videoId, result));
+            }
         });
+    }
+
+    private static void showLoaded(String videoId, @Nullable Bitmap bitmap) {
+        List<WeakReference<ImageView>> targets = waiting.remove(videoId);
+        if (bitmap == null || targets == null) return;
+
+        for (WeakReference<ImageView> viewRef : targets) {
+            ImageView target = viewRef.get();
+            // The view may have been reused for a different video.
+            if (target != null && videoId.equals(target.getTag())) {
+                target.setImageBitmap(bitmap);
+            }
+        }
     }
 
     /**
