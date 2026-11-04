@@ -104,6 +104,11 @@ val niconicoCommentsPatch = bytecodePatch(
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
                         selectable = true
                     ),
+                    NonInteractivePreference(
+                        "morphe_niconico_comments_max_refresh_rate",
+                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        selectable = true
+                    ),
                     SwitchPreference("morphe_niconico_comments_live_streams", summary = true),
                     SwitchPreference("morphe_niconico_comments_live_premieres", summary = true),
                     SwitchPreference("morphe_niconico_comments_ended_premieres", summary = true)

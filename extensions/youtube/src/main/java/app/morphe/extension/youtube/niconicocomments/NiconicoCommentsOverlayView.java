@@ -72,7 +72,12 @@ final class NiconicoCommentsOverlayView extends View {
     private boolean videoPlaying;
     @Nullable
     private Window activityWindow;
-    private float highestRefreshRate;
+    /**
+     * The refresh rate the overlay last set on the window, or 0.
+     */
+    private static float windowRefreshRate;
+    private int maxRefreshRate = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_MAX_REFRESH_RATE);
+    private float requestedRefreshRate;
     private int fontSizeSp = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_FONT_SIZE);
     private int opacityPercent = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_OPACITY);
     private float laneHeight;
@@ -158,6 +163,14 @@ final class NiconicoCommentsOverlayView extends View {
         }
         schedule.setCommentDurationMs(durationMs);
         invalidate();
+    }
+
+    void setMaxRefreshRate(int nextMaxRefreshRate) {
+        if (maxRefreshRate == nextMaxRefreshRate) {
+            return;
+        }
+        maxRefreshRate = nextMaxRefreshRate;
+        requestedRefreshRate = 0;
     }
 
     void addComments(List<NiconicoComment> incoming, long liveSpreadWindowMs) {
@@ -259,8 +272,8 @@ final class NiconicoCommentsOverlayView extends View {
 
     /**
      * The display can lower its refresh rate to match the video frame rate (often 24 or 30 Hz),
-     * which makes the scrolling comments choppy. Request the highest refresh rate for the window
-     * only while comments are moving across the screen.
+     * which makes the scrolling comments choppy. Request the highest refresh rate for the window,
+     * up to the max refresh rate setting, only while comments are moving across the screen.
      * <p>
      * A view frame rate category is not used, because some devices ignore it.
      */
@@ -274,34 +287,48 @@ final class NiconicoCommentsOverlayView extends View {
         if (params.preferredDisplayModeId != 0) {
             return;
         }
-        if (highestRefreshRate == 0) {
-            highestRefreshRate = getHighestRefreshRate();
-            if (highestRefreshRate == 0) {
-                return;
+        float rate = 0;
+        if (high) {
+            if (requestedRefreshRate == 0) {
+                requestedRefreshRate = findRefreshRate();
             }
+            rate = requestedRefreshRate;
         }
         // Leave a refresh rate that was set by something else.
-        if (params.preferredRefreshRate != (high ? 0 : highestRefreshRate)) {
+        if (params.preferredRefreshRate == rate || params.preferredRefreshRate != windowRefreshRate) {
             return;
         }
-        params.preferredRefreshRate = high ? highestRefreshRate : 0;
+        params.preferredRefreshRate = rate;
+        windowRefreshRate = rate;
         window.setAttributes(params);
     }
 
-    private float getHighestRefreshRate() {
+    /**
+     * @return The highest refresh rate of the current display resolution that is not above
+     *         the max refresh rate setting, or the lowest one if all are above it.
+     */
+    private float findRefreshRate() {
         Display display = getDisplay();
         if (display == null) {
             return 0;
         }
+        final float limit = maxRefreshRate >= Settings.NICONICO_COMMENTS_MAX_REFRESH_RATE_NO_LIMIT
+                ? Float.MAX_VALUE
+                : maxRefreshRate + 0.5f;
         Display.Mode current = display.getMode();
         float highest = 0;
+        float lowest = Float.MAX_VALUE;
         for (Display.Mode mode : display.getSupportedModes()) {
             if (mode.getPhysicalWidth() == current.getPhysicalWidth()
                     && mode.getPhysicalHeight() == current.getPhysicalHeight()) {
-                highest = Math.max(highest, mode.getRefreshRate());
+                float rate = mode.getRefreshRate();
+                lowest = Math.min(lowest, rate);
+                if (rate <= limit) {
+                    highest = Math.max(highest, rate);
+                }
             }
         }
-        return highest;
+        return highest > 0 ? highest : lowest;
     }
 
     @Override

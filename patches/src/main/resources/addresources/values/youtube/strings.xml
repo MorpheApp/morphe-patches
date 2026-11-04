@@ -1921,6 +1921,8 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_max_length_title">Max comment length</string>
     <string name="morphe_niconico_comments_max_length_summary">Hides comments with more characters than this. Each emoji counts as one character</string>
     <string name="morphe_niconico_comments_max_length_no_limit">No limit</string>
+    <string name="morphe_niconico_comments_max_refresh_rate_title">Max refresh rate</string>
+    <string name="morphe_niconico_comments_max_refresh_rate_summary">Highest display refresh rate used while comments move. Lower values use less battery</string>
     <string name="morphe_niconico_comments_live_streams_title">Show on live streams</string>
     <string name="morphe_niconico_comments_live_streams_summary">Live streams and their replays</string>
     <string name="morphe_niconico_comments_live_premieres_title">Show on Premieres</string>
