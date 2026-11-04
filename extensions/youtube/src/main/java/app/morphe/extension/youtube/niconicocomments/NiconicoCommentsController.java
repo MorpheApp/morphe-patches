@@ -185,12 +185,23 @@ public final class NiconicoCommentsController {
         try {
             final long nowMs = SystemClock.elapsedRealtime();
             final boolean seeked;
+            final boolean startedPlaying;
             synchronized (VIDEO_CLOCK_LOCK) {
                 final long predictedVideoTimeMs = getVideoTimeLocked(nowMs);
                 seeked = predictedVideoTimeMs >= 0
                         && Math.abs(videoTimeMs - predictedVideoTimeMs) > SEEK_THRESHOLD_MS;
+                // The video state is first reported when it changes, so it is unknown while
+                // the first video plays. Until then, a video time that moves forward means playing.
+                startedPlaying = !videoPlaying && VideoState.getCurrent() == null
+                        && sampledVideoTimeMs >= 0 && videoTimeMs > sampledVideoTimeMs;
+                if (startedPlaying) {
+                    videoPlaying = true;
+                }
                 sampledVideoTimeMs = videoTimeMs;
                 sampleElapsedRealtimeMs = nowMs;
+            }
+            if (startedPlaying) {
+                updateViewState();
             }
 
             NiconicoCommentsOverlayView view = overlayViewRef.get();
