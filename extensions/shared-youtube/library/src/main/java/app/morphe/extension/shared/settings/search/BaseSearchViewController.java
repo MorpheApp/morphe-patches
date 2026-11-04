@@ -60,6 +60,7 @@ import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.settings.preference.NewIndicatorSpan;
 import app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory;
 import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
 import app.morphe.extension.shared.theme.ThemeUtils;
@@ -395,7 +396,7 @@ public abstract class BaseSearchViewController {
 
                 // Append the group title to the path and save key for navigation.
                 if (!(preference instanceof NoTitlePreferenceCategory)) {
-                    CharSequence title = preference.getTitle();
+                    CharSequence title = NewIndicatorSpan.removeFrom(preference.getTitle());
                     if (!TextUtils.isEmpty(title)) {
                         newPath = TextUtils.isEmpty(parentPath)
                                 ? title.toString()

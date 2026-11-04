@@ -51,6 +51,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
+import app.morphe.extension.shared.settings.preference.NewIndicatorSpan;
 import app.morphe.extension.shared.settings.preference.NewSettingsIndicator;
 import app.morphe.extension.shared.settings.preference.URLLinkPreference;
 import app.morphe.extension.shared.sponsorblock.objects.SegmentCategoryPreference;
@@ -455,7 +456,7 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
     protected Preference findPreferenceByTitle(PreferenceGroup group, String title) {
         for (int i = 0; i < group.getPreferenceCount(); i++) {
             Preference pref = group.getPreference(i);
-            CharSequence prefTitle = pref.getTitle();
+            CharSequence prefTitle = NewIndicatorSpan.removeFrom(pref.getTitle());
             if (prefTitle != null && (prefTitle.toString().trim().equalsIgnoreCase(title)
                     || normalizeString(prefTitle.toString()).equals(normalizeString(title)))) {
                 return pref;
