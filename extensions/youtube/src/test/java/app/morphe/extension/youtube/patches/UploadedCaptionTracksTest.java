@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4376
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Test;
 
-public class AuthoredCaptionTracksTest {
+public class UploadedCaptionTracksTest {
     @Test
     public void prefetchedNativeTrackKeepsMetadataWithoutReplacingSelectedSession() throws Exception {
         var type = Class.forName(CaptionTracks.class.getName() + "$Track");
@@ -71,8 +71,8 @@ public class AuthoredCaptionTracksTest {
     public void findsSecondLanguageInFullCatalogWithoutSelectingAnotherTrack() {
         var tr = authored("tr");
         var de = authored("de");
-        assertSame(de, CaptionTracks.findOriginalTrack(List.of(tr, de), "de").track());
-        assertSame(tr, CaptionTracks.findOriginalTrack(List.of(de, tr), "tr").track());
+        assertSame(de, CaptionTracks.findUploadedTrack(List.of(tr, de), "de").track());
+        assertSame(tr, CaptionTracks.findUploadedTrack(List.of(de, tr), "tr").track());
     }
     @Test
     public void rejectsAsrAndTranslatedCandidates() {
@@ -80,32 +80,32 @@ public class AuthoredCaptionTracksTest {
             new Track("tr", "a.tr", "https://www.youtube.com/api/timedtext?v=26P1KyvrmjI&lang=tr&kind=asr");
         var translated = new Track(
             "tr", "t.en.tr", "https://www.youtube.com/api/timedtext?v=26P1KyvrmjI&lang=en&tlang=tr");
-        assertNull(CaptionTracks.findOriginalTrack(List.of(asr, translated), "tr"));
+        assertNull(CaptionTracks.findUploadedTrack(List.of(asr, translated), "tr"));
     }
     @Test
     public void regionsAndScriptsDoNotCollapse() {
-        assertNull(CaptionTracks.findOriginalTrack(List.of(authored("pt-BR")), "pt-PT"));
-        assertNull(CaptionTracks.findOriginalTrack(List.of(authored("zh-Hans")), "zh-Hant"));
-        assertNull(CaptionTracks.findOriginalTrack(List.of(authored("sr-Cyrl")), "sr-Latn"));
+        assertNull(CaptionTracks.findUploadedTrack(List.of(authored("pt-BR")), "pt-PT"));
+        assertNull(CaptionTracks.findUploadedTrack(List.of(authored("zh-Hans")), "zh-Hant"));
+        assertNull(CaptionTracks.findUploadedTrack(List.of(authored("sr-Cyrl")), "sr-Latn"));
     }
     @Test
     public void canonicalAliasKeepsOriginalDescriptor() {
         var legacy = authored("iw");
-        assertSame(legacy, CaptionTracks.findOriginalTrack(List.of(legacy), "he").track());
+        assertSame(legacy, CaptionTracks.findUploadedTrack(List.of(legacy), "he").track());
     }
     @Test
     public void doesNotInventMissingLanguage() {
-        assertNull(CaptionTracks.findOriginalTrack(List.of(authored("en")), "tr"));
+        assertNull(CaptionTracks.findUploadedTrack(List.of(authored("en")), "tr"));
     }
     @Test
     public void rejectsDuplicateIdentityParameters() {
         var bad = new Track("tr", ".tr", authored("tr").url() + "&lang=de");
-        assertNull(CaptionTracks.findOriginalTrack(List.of(bad), "tr"));
+        assertNull(CaptionTracks.findUploadedTrack(List.of(bad), "tr"));
     }
     @Test
     public void invalidNativeIdentifierIsRejectedWithoutCrashingCatalogScan() {
         var invalid = new Track("tr", null, authored("tr").url());
-        assertNull(CaptionTracks.findOriginalTrack(List.of(invalid), "tr"));
+        assertNull(CaptionTracks.findUploadedTrack(List.of(invalid), "tr"));
     }
 
     @Test
@@ -139,29 +139,29 @@ public class AuthoredCaptionTracksTest {
     @Test
     public void appDefaultCanUseGenericUploadedLanguage() {
         var english = authored("en");
-        assertSame(english, CaptionTracks.findOriginalTrack(
+        assertSame(english, CaptionTracks.findUploadedTrack(
             List.of(english), java.util.Locale.US.toLanguageTag(), true).track());
         var turkish = authored("tr");
-        assertSame(turkish, CaptionTracks.findOriginalTrack(List.of(turkish), "tr-TR", true).track());
+        assertSame(turkish, CaptionTracks.findUploadedTrack(List.of(turkish), "tr-TR", true).track());
     }
 
     @Test
     public void appDefaultPrefersExactAndPreservesExplicitIdentity() {
         var generic = authored("en");
         var regional = authored("en-US");
-        assertSame(regional, CaptionTracks.findOriginalTrack(
+        assertSame(regional, CaptionTracks.findUploadedTrack(
             List.of(generic, regional), "en-US", true).track());
-        assertNull(CaptionTracks.findOriginalTrack(List.of(generic), "en-US", false));
-        assertNull(CaptionTracks.findOriginalTrack(List.of(authored("pt-BR")), "pt-PT", true));
-        assertNull(CaptionTracks.findOriginalTrack(List.of(authored("pt")), "pt-PT", true));
+        assertNull(CaptionTracks.findUploadedTrack(List.of(generic), "en-US", false));
+        assertNull(CaptionTracks.findUploadedTrack(List.of(authored("pt-BR")), "pt-PT", true));
+        assertNull(CaptionTracks.findUploadedTrack(List.of(authored("pt")), "pt-PT", true));
     }
 
     @Test
     public void appDefaultNeverDropsAnExplicitScript() {
-        assertNull(CaptionTracks.findOriginalTrack(List.of(authored("sr")), "sr-Cyrl", true));
-        assertNull(CaptionTracks.findOriginalTrack(List.of(authored("zh-Hans")), "zh-Hant-TW", true));
+        assertNull(CaptionTracks.findUploadedTrack(List.of(authored("sr")), "sr-Cyrl", true));
+        assertNull(CaptionTracks.findUploadedTrack(List.of(authored("zh-Hans")), "zh-Hant-TW", true));
         var traditional = authored("zh-Hant");
-        assertSame(traditional, CaptionTracks.findOriginalTrack(
+        assertSame(traditional, CaptionTracks.findUploadedTrack(
             List.of(traditional), "zh-Hant-TW", true).track());
     }
 }

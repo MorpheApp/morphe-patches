@@ -99,6 +99,11 @@ final class CaptionSession {
     @Nullable
     private Snapshot displayed;
 
+    /**
+     * @param translatePrimary   If the primary language is translated.
+     *                           False if an uploaded track of the language is shown instead.
+     * @param translateSecondary If the secondary language is translated.
+     */
     CaptionSession(List<StableCaptionBlockPolicy.Block> source, String sourceLanguage,
                    String primaryLanguage, @Nullable String secondaryLanguage, Translator translator,
                    Executor worker, Runnable changed, Runnable failed,

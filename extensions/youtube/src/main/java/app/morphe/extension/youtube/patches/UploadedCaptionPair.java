@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4376
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -12,9 +12,16 @@ import androidx.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
-/** Native track snapshot; fallback is used only for an absent whole track. */
-record AuthoredCaptionPair(@Nullable StableCaptionBlocks.Timeline first,
+/**
+ * Native timelines of the uploaded tracks of the primary and the secondary language.
+ * A language without an uploaded track uses the fallback text, such as a translation.
+ */
+record UploadedCaptionPair(@Nullable StableCaptionBlocks.Timeline first,
                            @Nullable StableCaptionBlocks.Timeline second) {
+    /**
+     * @param firstKey  Start of the shown caption of the primary language. Changes when the caption changes.
+     * @param secondKey Start of the shown caption of the secondary language.
+     */
     record Frame(String primary, String secondary, long firstKey, long secondKey) {}
 
     Frame at(long time, String fallbackFirst, String fallbackSecond, long fallbackKey) {

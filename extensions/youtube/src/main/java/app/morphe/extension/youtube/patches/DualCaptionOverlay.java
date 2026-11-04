@@ -171,7 +171,9 @@ public final class DualCaptionOverlay extends LinearLayout {
         try {
             DualCaptionOverlay layer = get(view);
             if (layer != null && layer.active) {
-                // Native control avoidance may leave a paused, resized window below PiP bounds.
+                // Keep the window inside the overlay. When the overlay shrinks while the video
+                // is paused, such as in picture-in-picture, a window moved up to avoid the player
+                // controls is not placed again and can be below the overlay.
                 if (view.getParent() instanceof View parent) {
                     final int top = parent.getPaddingTop();
                     final int bottom = parent.getHeight() - parent.getPaddingBottom() - view.getHeight();
@@ -186,7 +188,11 @@ public final class DualCaptionOverlay extends LinearLayout {
         }
     }
 
-    /** Child bounds may stay unchanged while a paused PiP viewport shrinks. */
+    /**
+     * Injection point.
+     * Layout of the subtitle overlay. The caption windows do not get a new layout
+     * if the overlay shrinks while their size stays the same.
+     */
     public static void afterViewportLayout(View view) {
         if (!StableCaptionBlocks.isEnabled()) return;
         try {

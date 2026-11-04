@@ -22,6 +22,7 @@ import app.morphe.patches.youtube.layout.flyout.FeedBottomSheetFlyoutFingerprint
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_10_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneMutable
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
@@ -305,11 +306,15 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                 move-result-object p1
             """
         )
+
+        // The overlay can shrink without a new layout of its caption windows,
+        // such as in picture-in-picture while the video is paused.
         getCaptionOverlayLayoutFingerprint(cueType).method.apply {
             findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
-                replaceInstruction(index,
-                    "invoke-static/range { p0 .. p0 }, $EXTENSION_OVERLAY_CLASS->afterViewportLayout(Landroid/view/View;)V")
-                addInstruction(index + 1, "return-void")
+                addInstructionsAtControlFlowLabel(
+                    index,
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_OVERLAY_CLASS->afterViewportLayout(Landroid/view/View;)V"
+                )
             }
         }
 
@@ -357,12 +362,21 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                 val sampler = samplerFingerprint.method
                 val windows = samplerFingerprint.instructionMatches[0].fieldReference
                 val events = it.instructionMatches.last().fieldReference
-                addHelperMethod("patch_getCaptionEventTimes", "Ljava/util/List;", smali = """
-                    iget-object v0, p0, $events
-                    return-object v0
-                """)
-                addHelperMethod("patch_mergeWith", EXTENSION_TIMELINE_INTERFACE,
-                    parameters = listOf(EXTENSION_TIMELINE_INTERFACE), freeRegisters = 3,
+                addHelperMethod(
+                    "patch_getCaptionEventTimes",
+                    "Ljava/util/List;",
+                    smali = """
+                        iget-object v0, p0, $events
+                        return-object v0
+                    """
+                )
+
+                // New timeline with the windows of both timelines, and the block state of this timeline.
+                addHelperMethod(
+                    "patch_mergeWith",
+                    EXTENSION_TIMELINE_INTERFACE,
+                    parameters = listOf(EXTENSION_TIMELINE_INTERFACE),
+                    freeRegisters = 3,
                     smali = """
                         check-cast p1, $timelineType
                         new-instance v0, Ljava/util/ArrayList;

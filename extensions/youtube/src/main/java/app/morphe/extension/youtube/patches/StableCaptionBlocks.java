@@ -267,9 +267,9 @@ public final class StableCaptionBlocks {
         List<?> original = timeline.patch_getOriginalCaptions(time);
         try {
             State state = timeline.patch_getBlockState();
-            if (state == null
-                    || original == null
-                    || original.size() > 1 && !CaptionTracks.hasOriginalTracks()) return original;
+            if (state == null || original == null) return original;
+            final boolean uploaded = CaptionTracks.hasUploadedTracks();
+            if (original.size() > 1 && !uploaded) return original;
             Frame frame = new Frame(state, time, Long.MIN_VALUE);
             if (state.translation != null && !state.translation.isActive()
                     && !CaptionTracks.restoreTranslation(state)) return Collections.emptyList();
@@ -280,10 +280,13 @@ public final class StableCaptionBlocks {
                 state.translation.demand(playbackTime >= 0 ? playbackTime : time,
                         VideoInformation.getPlaybackSpeed());
             }
-            if (CaptionTracks.hasOriginalTracks()) {
+            if (uploaded) {
+                // The merged timeline has the cues of all languages, and the overlay shows the text.
+                // Keep one visible cue as the window of the overlay.
                 for (Object candidate : original) {
-                    if (candidate instanceof Cue cue && cue.patch_getOriginalCaptionVisible() != null
-                            && cue.patch_getOriginalCaptionVisible().length() > 0) {
+                    if (!(candidate instanceof Cue cue)) continue;
+                    CharSequence text = cue.patch_getOriginalCaptionVisible();
+                    if (text != null && text.length() > 0) {
                         Object copy = cue.patch_copyBlockFrame(new Frame(state, time, time));
                         return copy == null ? original : Collections.singletonList(copy);
                     }
@@ -457,11 +460,11 @@ public final class StableCaptionBlocks {
         long time = VideoInformation.getVideoTime();
         if (time < 0) time = session.playbackTime();
         else session.demand(time, VideoInformation.getPlaybackSpeed());
-        AuthoredCaptionPair.Frame authored = CaptionTracks.originalFrame(frame.time, session);
-        if (authored != null) {
-            DualCaptionOverlay.show(view, authored.primary(), authored.secondary(), cache.paint, cache.width,
-                    session, authored.firstKey(), authored.secondKey(), true);
-            replace(full, visible, authored.primary());
+        UploadedCaptionPair.Frame uploaded = CaptionTracks.uploadedFrame(frame.time, session);
+        if (uploaded != null) {
+            DualCaptionOverlay.show(view, uploaded.primary(), uploaded.secondary(), cache.paint, cache.width,
+                    session, uploaded.firstKey(), uploaded.secondKey(), true);
+            replace(full, visible, uploaded.primary());
             return;
         }
         CaptionSession.Snapshot cue = session.snapshot(time, VideoState.getCurrent() == VideoState.PAUSED);

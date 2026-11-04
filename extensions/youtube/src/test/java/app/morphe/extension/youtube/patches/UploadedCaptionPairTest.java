@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4376
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -13,7 +13,7 @@ import java.io.InputStream;
 import java.util.List;
 import org.junit.Test;
 
-public class AuthoredCaptionPairTest {
+public class UploadedCaptionPairTest {
     private record NativeCue(String text) implements StableCaptionBlocks.Cue {
         public CharSequence patch_getOriginalCaptionVisible() {
             return text;
@@ -48,22 +48,22 @@ public class AuthoredCaptionPairTest {
         };
     }
     private List<StableCaptionBlockPolicy.Block> read(String name) throws Exception {
-        try (InputStream in = getClass().getResourceAsStream("/authored/" + name + ".srv3")) {
+        try (InputStream in = getClass().getResourceAsStream("/uploaded/" + name + ".srv3")) {
             assertNotNull(in);
             var policy = StableCaptionBlockPolicy.parseManual(CaptionXml.read(in.readAllBytes()));
             assertNotNull(policy);
             return policy.sourceBlocks("en");
         }
     }
-    private AuthoredCaptionPair pair() throws Exception {
+    private UploadedCaptionPair pair() throws Exception {
         var tr = read("first");
         var de = read("second");
         assertEquals(5, tr.size());
         assertEquals(4, de.size());
-        return new AuthoredCaptionPair(timeline(tr), timeline(de));
+        return new UploadedCaptionPair(timeline(tr), timeline(de));
     }
     @Test
-    public void usesAuthoredTextInsteadOfTranslatedFallback() throws Exception {
+    public void usesUploadedTextInsteadOfTranslatedFallback() throws Exception {
         var f = pair().at(100, "machine Turkish", "machine German", 0);
         assertEquals("First original", f.primary());
         assertEquals("Second original", f.secondary());
@@ -95,11 +95,11 @@ public class AuthoredCaptionPairTest {
     }
     @Test
     public void missingTrackUsesOnlyThatSlotsFallback() throws Exception {
-        var f = new AuthoredCaptionPair(timeline(read("first")), null).at(100, "fake", "fallback German", 42);
+        var f = new UploadedCaptionPair(timeline(read("first")), null).at(100, "fake", "fallback German", 42);
         assertTrue(f.primary().startsWith("First original"));
         assertEquals("fallback German", f.secondary());
         assertEquals(42, f.secondKey());
-        f = new AuthoredCaptionPair(null, timeline(read("second"))).at(100, "fallback Turkish", "fake", 42);
+        f = new UploadedCaptionPair(null, timeline(read("second"))).at(100, "fallback Turkish", "fake", 42);
         assertEquals("fallback Turkish", f.primary());
         assertTrue(f.secondary().startsWith("Second original"));
     }

@@ -40,11 +40,12 @@ public class PreferredCaptionLanguagePatch {
         @Nullable
         List<CaptionTrackInterface> patch_getDirectCaptionTracks();
 
-        /** Includes uploaded tracks attached to other audio languages. */
+        /**
+         * @return All caption tracks of the video, including the tracks of other audio tracks.
+         *         Null if no video is loaded.
+         */
         @Nullable
-        default List<CaptionTrackInterface> patch_getAllCaptionTracks() {
-            return patch_getDirectCaptionTracks();
-        }
+        List<CaptionTrackInterface> patch_getAllCaptionTracks();
 
         /**
          * @return Auto-translated caption tracks. Null if no video is loaded.
@@ -340,9 +341,9 @@ public class PreferredCaptionLanguagePatch {
         if (!StableCaptionBlocks.isEnabled() || Boolean.TRUE.equals(replayingSelection.get())) return;
 
         try {
-            CaptionTracks.inspectOriginals(manager, track);
+            CaptionTracks.inspectUploadedTracks(manager, track);
         } catch (Exception ex) {
-            Logger.printException(() -> "inspectOriginals failure", ex);
+            Logger.printException(() -> "inspectUploadedTracks failure", ex);
         }
 
         activeManager = new WeakReference<>(manager);

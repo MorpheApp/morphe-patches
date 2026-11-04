@@ -289,7 +289,7 @@ public class CaptionSessionTest {
     }
 
 
-    @Test public void authoredPrimaryTranslatesOnlyMissingSecondary() {
+    @Test public void uploadedPrimaryTranslatesOnlyMissingSecondary() {
         Jobs jobs = new Jobs(); List<String> targets = new ArrayList<>(); AtomicInteger failures = new AtomicInteger();
         var session = new CaptionSession(SOURCE, "en", "tr", "de", (from, to, texts) -> {
             targets.add(to); return texts.stream().map(text -> to + ":" + text).toList();
@@ -301,7 +301,7 @@ public class CaptionSessionTest {
         assertTrue(cue.complete); assertEquals(0, failures.get());
     }
 
-    @Test public void authoredSecondaryTranslatesOnlyMissingPrimary() {
+    @Test public void uploadedSecondaryTranslatesOnlyMissingPrimary() {
         Jobs jobs = new Jobs(); List<String> targets = new ArrayList<>();
         var session = new CaptionSession(SOURCE, "en", "tr", "de", (from, to, texts) -> {
             targets.add(to); return texts.stream().map(text -> to + ":" + text).toList();
@@ -313,14 +313,14 @@ public class CaptionSessionTest {
         assertTrue(cue.complete);
     }
 
-    @Test public void bothAuthoredOutputsDoNotQueueOrReadTranslations() {
+    @Test public void bothUploadedOutputsDoNotQueueOrReadTranslations() {
         Jobs jobs = new Jobs();
         CaptionSession.Translator translator = new CaptionSession.Translator() {
             public List<String> translate(String from, String to, List<String> texts) {
-                throw new AssertionError("Both outputs are authored");
+                throw new AssertionError("Both outputs are uploaded");
             }
             public String cached(String from, String to, String text) {
-                throw new AssertionError("Authored slots do not need translation cache reads");
+                throw new AssertionError("Uploaded slots do not need translation cache reads");
             }
         };
         var session = new CaptionSession(SOURCE, "en", "tr", "de", translator,
@@ -330,7 +330,7 @@ public class CaptionSessionTest {
         assertEquals("", cue.primary); assertEquals("", cue.secondary); assertTrue(cue.complete);
     }
 
-    @Test public void missingOutputFailureDoesNotExposeSourceInAuthoredSlot() {
+    @Test public void missingOutputFailureDoesNotExposeSourceInUploadedSlot() {
         Jobs jobs = new Jobs(); List<String> targets = new ArrayList<>(); AtomicInteger failures = new AtomicInteger();
         var session = new CaptionSession(SOURCE, "en", "tr", "de", (from, to, texts) -> {
             targets.add(to); throw new IOException("Missing output unavailable");
@@ -341,7 +341,7 @@ public class CaptionSessionTest {
         assertEquals("", cue.primary); assertEquals("", cue.secondary); assertFalse(cue.complete);
     }
 
-    @Test public void replacementAfterOriginalFailureRequestsTheFormerlyOwnedSlot() {
+    @Test public void replacementAfterUploadFailureRequestsTheFormerlyOwnedSlot() {
         Jobs jobs = new Jobs(); List<String> targets = new ArrayList<>();
         CaptionSession.Translator translator = (from, to, texts) -> {
             targets.add(to); return texts.stream().map(text -> to + ":" + text).toList();
