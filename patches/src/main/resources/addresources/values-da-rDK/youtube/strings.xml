@@ -769,6 +769,10 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
   <string name="morphe_swipe_left_zone_title">Strygebevægelse til venstre</string>
   <string name="morphe_swipe_right_zone_title">Strygebevægelse til højre</string>
   <string name="morphe_swipe_top_zone_title">Strygebevægelse opad</string>
+  <string name="morphe_swipe_seek_title">Stryg for at spole</string>
+  <string name="morphe_swipe_seek_summary">Stryg til venstre eller højre på fuldskærmsafspilleren for at flytte søgelinjen, og slip for at spole</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Strygefølsomhed for spolning</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Hvor langt søgelinjen flytter sig for hver strygning</string>
   <string name="morphe_swipe_zone_width_title">Venstre/højre zonebredde</string>
   <string name="morphe_swipe_zone_width_summary">Procentdel af hver skærmkant reserveret til strygebevægelser til venstre og højre (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Lysstyrke</string>
@@ -923,9 +927,9 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
   <string name="morphe_dual_captions_enabled_title">Tosprogede undertekster</string>
   <string name="morphe_caption_block_translation_failed">Nogle oversættelser af undertekster er ikke tilgængelige. Viser tilgængelige undertekster.</string>
   <string name="morphe_caption_blocks_too_large">Begge sprog for undertekster kan ikke være i denne afspiller. Viser det primære sprog.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigationsknapper</string>
-  <string name="morphe_navigation_buttons_screen_summary">Administrer Ambient mode synlighed og strømbegrænsninger</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigationslinje</string>
+  <string name="morphe_navigation_bar_screen_summary">Administrer Ambient mode synlighed og strømbegrænsninger</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Tillader Ambient mode at forblive aktiv i batterispare tilstand</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

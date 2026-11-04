@@ -200,6 +200,26 @@ Lagu yang diunduh akan muncul di sini"</string>
   <string name="morphe_music_downloads_progress">Mengunduh %s%%</string>
   <string name="morphe_music_downloads_complete">Pengunduhan selesai</string>
   <string name="morphe_music_downloads_failed">Pengunduhan gagal</string>
+  <string name="morphe_music_downloads_playlist_download_title">Unduhan daftar putar</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Mendaftarkan lagu…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s terdaftar…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Tidak dapat mendaftarkan lagu-lagu dari daftar putar</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Sudah diunduh: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s dalam daftar putar ini, %2$s belum diunduh.
+
+Lagu diunduh satu per satu, yang dapat memakan waktu lama dan membutuhkan ruang kosong sekitar %3$s"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Download</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Mengunduh lagu %1$s dari %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s diunduh</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s diunduh, %2$s tidak dapat diunduh</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Unduhan daftar putar sedang berlangsung</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Akun Anda belum dikenal. Coba lagi beberapa saat lagi</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s terdaftar, semuanya sudah diunduh</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Hanya sebagian dari daftar putar yang dapat didaftarkan. Ketuk Unduh lagi nanti untuk mendapatkan sisanya</string>
+  <string name="morphe_music_downloads_playlist_download_started">Mengunduh %s di latar belakang</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Tidak ada sambungan jaringan</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Menunggu jaringan…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Berhenti setelah %1$s dari %2$s. Ketuk Unduh lagi untuk melanjutkan</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Tentang</string>

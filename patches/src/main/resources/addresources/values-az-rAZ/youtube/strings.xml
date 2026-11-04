@@ -927,9 +927,9 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <string name="morphe_dual_captions_enabled_title">İkidilli titrlər</string>
   <string name="morphe_caption_block_translation_failed">Bəzi altyazı tərcümələri əlçatmazdır. Mövcud altyazıları göstərir.</string>
   <string name="morphe_caption_blocks_too_large">Hər iki titr dili bu oynadıcıya uyğun gəlmir. Əsas dili göstərir.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Fəaliyyət düymələri</string>
-  <string name="morphe_navigation_buttons_screen_summary">Aşağı fəaliyyət cərgəsində hansı düymələr görünür seç</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Fəaliyyət cizgisi</string>
+  <string name="morphe_navigation_bar_screen_summary">Aşağı fəaliyyət cərgəsində hansı düymələr görünür seç</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ev düyməsini gizlət</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

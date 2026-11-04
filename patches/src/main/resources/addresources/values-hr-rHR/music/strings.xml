@@ -200,6 +200,26 @@ Ovdje se prikazuju preuzete pjesme"</string>
   <string name="morphe_music_downloads_progress">Preuzimanje %s%%</string>
   <string name="morphe_music_downloads_complete">Preuzimanje dovršeno</string>
   <string name="morphe_music_downloads_failed">Preuzimanje nije uspjelo</string>
+  <string name="morphe_music_downloads_playlist_download_title">Preuzimanje liste skladbi</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Nabrajanje skladbi…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s navedeno…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Nije bilo moguće nabrati skladbe s liste skladbi</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Već preuzeto: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s u ovoj listi skladbi, %2$s još nije preuzeto.
+
+Preuzimaju se jedna po jedna, što može potrajati i zahtijeva oko %3$s slobodnog prostora"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Preuzmi</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Preuzimanje skladbe %1$s od %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s preuzeto</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s preuzeto, %2$s nije bilo moguće preuzeti</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Preuzimanje liste skladbi je već u tijeku</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Vaš račun još nije prepoznat. Pokušajte ponovno za trenutak</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s nabrano, sve već preuzeto</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Samo dio liste skladbi je nabran. Ponovno dodirnite Preuzmi kasnije kako biste dobili ostatak</string>
+  <string name="morphe_music_downloads_playlist_download_started">Preuzimanje %s u pozadini</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Nema mrežne veze</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Čekanje mreže…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Zaustavljeno nakon %1$s od %2$s. Ponovno dodirnite Preuzmi za nastavak</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O aplikaciji</string>

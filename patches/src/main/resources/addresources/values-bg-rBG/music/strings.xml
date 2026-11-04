@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Изтегляне %s%%</string>
   <string name="morphe_music_downloads_complete">Изтеглянето е завършено</string>
   <string name="morphe_music_downloads_failed">Изтеглянето не успя</string>
+  <string name="morphe_music_downloads_playlist_download_title">Изтегляне на плейлист</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Изброяване на песните…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s изброени…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Не успяхме да изброим песните в плейлиста</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Вече изтеглени: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s в този плейлист, %2$s още не са изтеглени.
+
+Те се изтеглят една по една, което може да отнеме много време и изисква около %3$s свободно пространство"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Изтегляне</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Изтегляне на песен %1$s от %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s изтеглени</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s изтеглени, %2$s не можаха да бъдат изтеглени</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Изтеглянето на плейлиста вече е в ход</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Вашият акаунт все още не е разпознат. Опитайте отново след малко</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s изброени, всички вече са изтеглени</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Само част от плейлиста можеше да бъде изброена. Докоснете Изтегляне отново по-късно, за да получите останалото</string>
+  <string name="morphe_music_downloads_playlist_download_started">Изтегляне на %s във фонов режим</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Няма мрежова връзка</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Изчакване на мрежата…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Спряно след %1$s от %2$s. Докоснете Изтегляне отново, за да продължите</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Относно</string>

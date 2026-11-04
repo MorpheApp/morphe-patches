@@ -926,9 +926,9 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_dual_captions_enabled_title">Хоёр хэлтэй хадмал орчуулга</string>
   <string name="morphe_caption_block_translation_failed">Хадмал орчуулгын зарим орчуулга боломжгүй байна. Боломжтой хадмал орчуулгуудыг харуулж байна.</string>
   <string name="morphe_caption_blocks_too_large">Хадмал орчуулгын хоёр хэл энэ тоглуулагчид багтахгүй байна. Үндсэн хэлийг харуулж байна.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Навигацийн товчлуурууд</string>
-  <string name="morphe_navigation_buttons_screen_summary">Доод навигацийн хэсэгт аль товчнуудыг харуулахыг сонгоно уу</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Навигацийн самбар</string>
+  <string name="morphe_navigation_bar_screen_summary">Доод навигацийн хэсэгт аль товчнуудыг харуулахыг сонгоно уу</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Нүүр хуудасны товчийг нуух</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

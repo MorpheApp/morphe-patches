@@ -174,6 +174,7 @@ Nedladdade spår visas här"</string>
   <string name="morphe_music_downloads_playlist_name_hint">Spellistans namn</string>
   <string name="morphe_music_downloads_playlist_name_empty">Spellistans namn får inte vara tomt</string>
   <string name="morphe_music_downloads_playlist_save_failed">Kunde inte spara spellistan</string>
+  <string name="morphe_music_downloads_playlist_track_count">%s spår</string>
   <string name="morphe_music_downloads_playlist_track_count_one">1 spår</string>
   <string name="morphe_music_downloads_playlist_no_tracks">Inga spår i den här spellistan</string>
   <string name="morphe_music_downloads_playlist_play">Spela spellista</string>
@@ -199,6 +200,26 @@ Nedladdade spår visas här"</string>
   <string name="morphe_music_downloads_progress">Laddar ner %s%%</string>
   <string name="morphe_music_downloads_complete">Nedladdning klar</string>
   <string name="morphe_music_downloads_failed">Nedladdning misslyckades</string>
+  <string name="morphe_music_downloads_playlist_download_title">Nedladdning av spellista</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Listar spår…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s listade…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Kunde inte lista spåren i spellistan</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Redan nedladdade: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s i den här spellistan, %2$s är ännu inte nedladdade.
+
+De laddas ned en efter en, vilket kan ta lång tid och kräver cirka %3$s ledigt utrymme"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Ladda ned</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Laddar ned spår %1$s av %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s nedladdade</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s nedladdade, %2$s kunde inte laddas ned</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Nedladdning av spellista pågår redan</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Ditt konto är ännu inte känt. Försök igen om en stund</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listade, alla redan nedladdade</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Endast en del av spellistan kunde listas. Tryck på Nedladda igen senare för att hämta resten</string>
+  <string name="morphe_music_downloads_playlist_download_started">Laddar ned %s i bakgrunden</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Ingen nätverksanslutning</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Väntar på nätverket…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Avbröts efter %1$s av %2$s. Tryck på Nedladda igen för att fortsätta</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Om</string>
@@ -734,6 +755,14 @@ Låttexter kommer från tredjeparts tjänster som inte är anslutna till, sponsr
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisering eller translitterering</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Offline Dictionary</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime-ordlista</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Offline-ordbok</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby-skript</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Visa knappen Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Tryck för att växla ruby-läsningar över texten; tryck och håll för att växla mellan hiragana och katakana. Använder aktiverade ruby-leverantörer i den angivna ordningen</string>
+  <string name="morphe_music_lyrics_ruby_generating">Genererar ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Kontrollera sektioner med AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Används endast när tjänsten inte levererar sektionsetiketter som Topp eller Vers, vilket din OpenAI-kompatibla modell då upptäcker. Att redigera raden öppnar också dess prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-slutpunkts-URL (t.ex. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

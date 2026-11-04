@@ -771,6 +771,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_left_zone_title">מחוות החלקה שמאלה</string>
   <string name="morphe_swipe_right_zone_title">מחוות החלקה ימינה</string>
   <string name="morphe_swipe_top_zone_title">מחוות החלקה למעלה</string>
+  <string name="morphe_swipe_seek_title">החלקה לחיפוש</string>
+  <string name="morphe_swipe_seek_summary">החליקו שמאלה או ימינה בנגן במסך מלא כדי להזיז את סרגל החיפוש, ושחררו כדי לדלג</string>
+  <string name="morphe_swipe_seek_sensitivity_title">רגישות החלקה לחיפוש</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">עד כמה סרגל החיפוש זז בכל החלקה</string>
   <string name="morphe_swipe_zone_width_title">רוחב אזור שמאל/ימין</string>
   <string name="morphe_swipe_zone_width_summary">אחוז מכל קצה מסך השמור למחוות החלקה שמאלה וימינה (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">בהירות</string>
@@ -927,9 +931,9 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">כתוביות דו-לשוניות</string>
   <string name="morphe_caption_block_translation_failed">חלק מתרגומי הכתוביות אינם זמינים. מציג כתוביות זמינות.</string>
   <string name="morphe_caption_blocks_too_large">שתי שפות הכתוביות אינן נכנסות בנגן זה. מציג את השפה הראשית.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">לחצני ניווט</string>
-  <string name="morphe_navigation_buttons_screen_summary">בחר אילו כפתורים יופיעו בסרגל הניווט התחתון</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">סרגל ניווט</string>
+  <string name="morphe_navigation_bar_screen_summary">בחר אילו כפתורים יופיעו בסרגל הניווט התחתון</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">הסתר כפתור בית</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

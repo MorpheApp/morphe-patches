@@ -771,6 +771,10 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_swipe_left_zone_title">Left swipe gesture</string>
   <string name="morphe_swipe_right_zone_title">Right swipe gesture</string>
   <string name="morphe_swipe_top_zone_title">Top swipe gesture</string>
+  <string name="morphe_swipe_seek_title">Sveip for å spole</string>
+  <string name="morphe_swipe_seek_summary">Sveip til venstre eller høyre i fullskjermspilleren for å flytte fremdriftslinjen, og slipp for å spole</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Sveipfølsomhet for spoling</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Hvor langt fremdriftslinjen flytter seg for hvert sveip</string>
   <string name="morphe_swipe_zone_width_title">Left/Right zone width</string>
   <string name="morphe_swipe_zone_width_summary">Percentage of each screen edge reserved for left and right swipe gestures (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Lysstyrke</string>
@@ -927,9 +931,9 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_dual_captions_enabled_title">Tospråklig teksting</string>
   <string name="morphe_caption_block_translation_failed">Noen tekstoversettelser er utilgjengelige. Viser tilgjengelige tekstinger.</string>
   <string name="morphe_caption_blocks_too_large">Begge tekstingsspråkene får ikke plass i denne spilleren. Viser primærspråket.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigasjonsknapper</string>
-  <string name="morphe_navigation_buttons_screen_summary">Velg hvilke komponenter som vises i verktøylinjen</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigasjonslinje</string>
+  <string name="morphe_navigation_bar_screen_summary">Velg hvilke komponenter som vises i verktøylinjen</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Skjul Kast-knapp</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -942,7 +946,9 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_hide_notifications_button_title">Skjul Varsler-knapp</string>
   <string name="morphe_show_search_button_title">Vis Søk-knapp</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Vis Se senere-knapp</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Se senere</string>
   <string name="morphe_show_settings_button_title">Vis Innstillinger-knapp</string>
   <string name="morphe_show_settings_button_type_title">Innstillingsknapp handling</string>
   <string name="morphe_show_settings_button_type_summary">Åpner Morphe-innstillinger når den er aktivert, eller YouTube-innstillinger når den er deaktivert</string>
@@ -1733,7 +1739,10 @@ Automatisk opptak er valgfritt. Det stoppes i inkognito-modus eller når kontoen
   <string name="morphe_niconico_comments_max_length_title">Maksimal kommentarlengde</string>
   <string name="morphe_niconico_comments_max_length_summary">Skjuler kommentarer som har flere tegn enn dette. Hvert emoji teller som ett tegn</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Ingen grense</string>
+  <string name="morphe_niconico_comments_live_streams_title">Vis på livestrømmer</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Livestrømmer og deres gjentagelser</string>
   <string name="morphe_niconico_comments_live_premieres_title">Vis på premierer</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premierer mens de spilles av</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Vis på avsluttede premierer</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Chat-avspilling av premierer som er avsluttet</string>
   <string name="morphe_live_chat_translate_screen_title">Oversettelse av live-chat</string>

@@ -927,9 +927,9 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">ຄຳບັນຍາຍສອງພາສາ</string>
   <string name="morphe_caption_block_translation_failed">ບາງຄຳແປຂອງຄຳບັນຍາຍບໍ່ສາມາດນຳໃຊ້ໄດ້. ພວມສະແດງຄຳບັນຍາຍທີ່ມີຢູ່.</string>
   <string name="morphe_caption_blocks_too_large">ທັງສອງພາສາຂອງຄຳບັນຍາຍບໍ່ສາມາດສະແດງໃນເຄື່ອງຫຼິ້ນນີ້ໄດ້. ພວມສະແດງພາສາຫຼັກ.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">ປຸ່ມນຳທາງ</string>
-  <string name="morphe_navigation_buttons_screen_summary">ເລືອກປຸ່ມທີ່ຈະໃຫ້ປາກົດໃນແຖບນຳທາງດ້ານລຸ່ມ</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">ແຖບການນຳທາງ</string>
+  <string name="morphe_navigation_bar_screen_summary">ເລືອກປຸ່ມທີ່ຈະໃຫ້ປາກົດໃນແຖບນຳທາງດ້ານລຸ່ມ</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">ເຊື່ອງປຸ່ມໜ້າຫຼັກ</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

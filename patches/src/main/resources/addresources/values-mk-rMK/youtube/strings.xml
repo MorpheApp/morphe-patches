@@ -925,9 +925,9 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">Двојазични титлови</string>
   <string name="morphe_caption_block_translation_failed">Некои преводи на титловите не се достапни. Се прикажуваат достапните титлови.</string>
   <string name="morphe_caption_blocks_too_large">Двата јазика за титлови не се собираат во овој плеер. Се прикажува примарниот јазик.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Копчиња за навигација</string>
-  <string name="morphe_navigation_buttons_screen_summary">Изберете кои копчиња да се појавуваат во лентата за навигација</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Навигациска лента</string>
+  <string name="morphe_navigation_bar_screen_summary">Изберете кои копчиња да се појавуваат во лентата за навигација</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Прикријте го копчето Home</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

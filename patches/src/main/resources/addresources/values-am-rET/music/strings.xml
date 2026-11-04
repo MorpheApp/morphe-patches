@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">እየወረደ ነው %s%%</string>
   <string name="morphe_music_downloads_complete">የማውረድ ሂደት ተጠናቅቋል</string>
   <string name="morphe_music_downloads_failed">ማውረድ አልተሳካም</string>
+  <string name="morphe_music_downloads_playlist_download_title">የፕሌይሊስት ዳውንሎድ</string>
+  <string name="morphe_music_downloads_playlist_download_listing">ትራኮችን በመዘርዘር ላይ…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s ተዘርዝረዋል…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">የፕሌይሊስቱን ትራኮች መዘርዘር አልተቻለም</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">ቀድሞውኑ ዳውንሎድ የተደረጉ፡ %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"በዚህ ፕሌይሊስት ውስጥ %1$s አሉ፣ %2$s ገና አልዳውንሎድ ተደረጉም።
+
+እነሱ አንድ በአንድ ዳውንሎድ ይደረጋሉ፣ ይህም ረጅም ጊዜ ሊወስድ ይችላል እና ወደ %3$s የሚጠጋ ነፃ ቦታ ያስፈልጋል"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">ዳውንሎድ አድርግ</string>
+  <string name="morphe_music_downloads_playlist_download_progress">ትራክ %1$s ከ %2$s ዳውንሎድ እየተደረገ ነው</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s ዳውንሎድ ተደረገ</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s ተጭነዋል፣ %2$s ሊጫኑ አልቻሉም</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">የየዘፈን ዝርዝር ዝቅ የማድረግ ሂደት ቀድሞውኑ ተጀምሯል</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">የእርስዎ አካውንት ገና አልታወቀም። ከጥቂት ጊዜ በኋላ እንደገና ይሞክሩ</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s ተዘርዝረዋል፣ ሁሉም ቀድመው ተጭነዋል</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">የየዘፈን ዝርዝሩ የተወሰነው ክፍል ብቻ ሊዘረዘር ችሏል። የቀሩትን ለማግኘት ቆይተው እንደገና Download የሚለውን ይጫኑ</string>
+  <string name="morphe_music_downloads_playlist_download_started">%s በጀርባ እየተጫነ ነው</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">የኔትወርክ ግንኙነት የለም</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">ኔትወርክ እየተጠበቀ ነው…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">ከ%2$s ውስጥ %1$s ላይ ተቋርጧል። ለመቀጠል እንደገና Download የሚለውን ይጫኑ</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">ስለ Morphe</string>

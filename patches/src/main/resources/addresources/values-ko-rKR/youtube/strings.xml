@@ -260,7 +260,7 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">댓글</string>
   <string name="morphe_comments_screen_summary">댓글 섹션에 표시할 구성 요소를 설정할 수 있습니다</string>
   <string name="morphe_hide_comments_carousel_title">댓글 좌우 슬라이드 필터 활성화하기</string>
-  <string name="morphe_hide_comments_carousel_summary">"• 키워드 또는 전체 이름을 입력하세요 (예시: 질문하기, 커뮤니티, 하이프, 감상)
+  <string name="morphe_hide_comments_carousel_summary">"• 키워드 또는 전체 이름을 입력하세요 (예시: 질문하기, 커뮤니티, 하이프, 감상하기)
 • 모든 항목을 숨기면 전체 댓글 섹션이 숨겨집니다"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">댓글 좌우 슬라이드 필터</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">필터링할 댓글 좌우 슬라이드 이름을 줄바꿈으로 구분하여 설정하세요</string>
@@ -773,6 +773,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_swipe_left_zone_title">좌측 스와이프 제스처</string>
   <string name="morphe_swipe_right_zone_title">우측 스와이프 제스처</string>
   <string name="morphe_swipe_top_zone_title">상단 스와이프 제스처</string>
+  <string name="morphe_swipe_seek_title">스와이프하여 탐색</string>
+  <string name="morphe_swipe_seek_summary">전체 화면 플레이어에서 왼쪽이나 오른쪽으로 스와이프하여 재생 위치를 이동할 수 있으며, 손가락을 떼면 해당 위치부터 재생됩니다</string>
+  <string name="morphe_swipe_seek_sensitivity_title">탐색 스와이프 민감도</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">스와이프할 때마다 재생바가 얼마나 이동하는지 설정할 수 있습니다</string>
   <string name="morphe_swipe_zone_width_title">좌측/우측 영역 너비</string>
   <string name="morphe_swipe_zone_width_summary">좌측 및 우측 스와이프 제스처에 할당되는 화면 양쪽 가장자리의 비율을 설정할 수 있습니다 (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">밝기</string>
@@ -929,9 +933,9 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_dual_captions_enabled_title">이중 언어 자막</string>
   <string name="morphe_caption_block_translation_failed">일부 자막은 번역을 제공하지 않습니다. 번역이 제공되는 자막만 표시합니다</string>
   <string name="morphe_caption_blocks_too_large">이 플레이어에서는 두 가지 자막 언어를 동시에 표시할 공간이 부족합니다. 기본 자막 언어만 표시합니다</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">하단바 버튼</string>
-  <string name="morphe_navigation_buttons_screen_summary">하단바에 표시할 버튼을 설정할 수 있습니다</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">하단바</string>
+  <string name="morphe_navigation_bar_screen_summary">하단바에 표시할 버튼을 설정할 수 있습니다</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">홈 버튼 숨기기</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

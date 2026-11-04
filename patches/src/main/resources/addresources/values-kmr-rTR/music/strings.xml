@@ -200,6 +200,26 @@ Trackên dawnlodkirî li vir xuya dibin"</string>
   <string name="morphe_music_downloads_progress">Daxistin %s%%</string>
   <string name="morphe_music_downloads_complete">Daxistin bi dawî bû</string>
   <string name="morphe_music_downloads_failed">Daxistin bi ser neket</string>
+  <string name="morphe_music_downloads_playlist_download_title">Daxistina lîsteya stranan</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Lîstkirina stranan…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s hatin lîstkirin…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Nekarî stranên lîsteya stranê lîst bike</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Hêj hatine daxistin: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s di vê lîsteyê de ne, %2$s hêj nehatine daxistin.
+
+Aneke bi aneke tên daxistin, ku dikare wextekî dirêj bigire û nêzî %3$s cihê vala pêwîst e"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Daxistin</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Daxistina strana %1$s ji %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s hat daxistin</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s hatîn daxistin, %2$s nehatin daxistin</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Daxistina lîsteya muzîkê jixwe di pêşveçûnê de ye</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Hesaba we hîna nayê naskirin. Piştî çemekê dîsa biceribînin</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s hatin remedykirin, hemû jixwe hatine daxistin</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Tenêbeşek ji lîsteya muzîkê hat remedykirin. Ji bo yên mayî, piştî demekê dîsa li Daxistin bitikînin</string>
+  <string name="morphe_music_downloads_playlist_download_started">Daxistina %s di paşperdeye de dijî</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Têkiliya torê tune ye</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Li benda torê ye…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Piştî %1$s ji %2$s rawestiya. Ji bo berdewamkirinê dîsa li Daxistin bitikînin</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Derbar</string>

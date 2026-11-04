@@ -771,6 +771,10 @@ Da biste ovo popravili, uključite 'Spoof video streamova' i promijenite 'Podraz
   <string name="morphe_swipe_left_zone_title">Gesta prevlačenja ulijevo</string>
   <string name="morphe_swipe_right_zone_title">Gesta prevlačenja udesno</string>
   <string name="morphe_swipe_top_zone_title">Gesta prevlačenja prema gore</string>
+  <string name="morphe_swipe_seek_title">Povuci za premotavanje</string>
+  <string name="morphe_swipe_seek_summary">Povucite lijevo ili desno na playeru u punom ekranu kako biste pomaknuli traku za napred i unatrag, i pustite za premotavanje</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Osjetljivost povlačenja za premotavanje</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Koliko se traka za premotavanje pomiče pri svakom povlačenju</string>
   <string name="morphe_swipe_zone_width_title">Širina lijeve/desne zone</string>
   <string name="morphe_swipe_zone_width_summary">Postotak svake ivice ekrana rezervisan za gesture povlačenja lijevo i desno (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Jasnoća</string>
@@ -927,9 +931,9 @@ Da biste ovo popravili, uključite 'Spoof video streamova' i promijenite 'Podraz
   <string name="morphe_dual_captions_enabled_title">Dvojezični titlovi</string>
   <string name="morphe_caption_block_translation_failed">Neki prevodi titlova nisu dostupni. Prikazani su dostupni titlovi.</string>
   <string name="morphe_caption_blocks_too_large">Oba jezika titlova ne stanu u ovaj player. Prikazan je primarni jezik.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigacijski gumbi</string>
-  <string name="morphe_navigation_buttons_screen_summary">Odaberite koje će se dugmad pojaviti u donjoj navigacijskoj traci</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigacijska traka</string>
+  <string name="morphe_navigation_bar_screen_summary">Odaberite koje će se dugmad pojaviti u donjoj navigacijskoj traci</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Sakrij dugme Početna</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

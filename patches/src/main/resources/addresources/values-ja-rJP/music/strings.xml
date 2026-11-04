@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">ダウンロード中: %s%%</string>
   <string name="morphe_music_downloads_complete">ダウンロード完了</string>
   <string name="morphe_music_downloads_failed">ダウンロードに失敗しました</string>
+  <string name="morphe_music_downloads_playlist_download_title">プレイリストのダウンロード</string>
+  <string name="morphe_music_downloads_playlist_download_listing">トラックをリストアップ中…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s 件をリストアップしました…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">プレイリストのトラックをリストアップできませんでした</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">すでにダウンロード済み: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"このプレイリストに %1$s 件あり、%2$s 件がまだダウンロードされていません。
+
+これらは1つずつダウンロードされるため、時間がかかり、約 %3$s の空き容量が必要です"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">ダウンロード</string>
+  <string name="morphe_music_downloads_playlist_download_progress">トラック %1$s / %2$s をダウンロード中</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s 件をダウンロードしました</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s 件をダウンロードしましたが、%2$s 件をダウンロードできませんでした</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">プレイリストのダウンロードはすでに進行中です</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">アカウントがまだ認識されていません。しばらくしてからもう一度お試しください</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s 件をリストアップしましたが、すべて的にダウンロード済みです</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">プレイリストの一部しかリストアップできませんでした。後で再度ダウンロードをタップして残りを取得してください</string>
+  <string name="morphe_music_downloads_playlist_download_started">バックグラウンドで %s をダウンロード中</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">ネットワーク接続がありません</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">ネットワークを待機中…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s 件中 %1$s 件で停止しました。再開するには再度ダウンロードをタップしてください</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Morphe について</string>
@@ -733,6 +753,14 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_lyrics_romanization_provider_title">ローマ字変換または翻記</string>
   <string name="morphe_music_lyrics_romanization_provider_local">オフライン辞書</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime 語彙リスト</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">ルビ</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">オフライン辞書</string>
+  <string name="morphe_music_lyrics_ruby_style_title">ルビ形式</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">ひらがな (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">カタカナ (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">ルビ表示ボタンを表示</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">タップして歌詞の上のルビ表示を切り替えます。長押しするとひらがなとカタカナを切り替えられます。有効なルビプロバイダーがリストされた順に使用されます</string>
+  <string name="morphe_music_lyrics_ruby_generating">ルビを生成中…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI でセクションを検出</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">プロバイダーがコーラスやヴァースなどのセクションラベルを提供しない場合にのみ使用されます。その後、あなたの OpenAI 互換モデルが検出します。行を編集するとプロンプトも開きます</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API エンドポイント URL（例：https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions）</string>

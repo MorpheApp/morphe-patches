@@ -200,6 +200,26 @@ Afgelaaide snitte verskyn hier"</string>
   <string name="morphe_music_downloads_progress">Laai %s%% af</string>
   <string name="morphe_music_downloads_complete">Aflaai voltooi</string>
   <string name="morphe_music_downloads_failed">Aflaai misluk</string>
+  <string name="morphe_music_downloads_playlist_download_title">Aflaai van spelysye-lys thanked</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Lys tracks…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s gelys…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Kon nie die tracks van die spelysye lys nie</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Reeds afgelaai: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s in hierdie spelysye, %2$s nog nie afgelaai nie.
+
+Hulle word een-vir-een afgelaai, wat 'n lang tyd kan neem en ongeveer %3$s vrye spasie benodig"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Aflaai</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Laai track %1$s van %2$s af</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s afgelaai</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s afgelaai, %2$s kon nie afgelaai word nie</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Aflaai van spelysye reeds aan die gang</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Jou rekening is nog nie bekend nie. Probeer weer oor \'n oomblik</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s gelys, almal reeds afgelaai</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Slegs \'n deel van die spelysye kon gelys word. Tik later weer op Aflaai om die res te kry</string>
+  <string name="morphe_music_downloads_playlist_download_started">Laai %s in die agtergrond af</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Geen netwerkverbinding nie</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Wag vir die netwerk…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Gestop na %1$s van %2$s. Tik weer op Aflaai om voort te gaan</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Inligting</string>

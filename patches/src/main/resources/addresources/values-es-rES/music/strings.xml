@@ -200,6 +200,26 @@ Las pistas descargadas aparecen aquí"</string>
   <string name="morphe_music_downloads_progress">Descargando %s%%</string>
   <string name="morphe_music_downloads_complete">Descarga completada</string>
   <string name="morphe_music_downloads_failed">Descarga fallida</string>
+  <string name="morphe_music_downloads_playlist_download_title">Descarga de lista de reproducción</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Listando pistas…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s listados…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">No se pudieron listar las pistas de la lista de reproducción</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Ya descargado: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s en esta lista de reproducción, %2$s aún no se han descargado.
+
+Se descargan uno a uno, lo que puede llevar mucho tiempo y requiere aproximadamente %3$s de espacio libre"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Descargar</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Descargando pista %1$s de %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s descargado</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s descargados, %2$s no pudieron descargarse</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">La descarga de la lista de reproducción ya está en curso</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Tu cuenta aún no es conocida. Inténtalo de nuevo en un momento</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listados, todos ya descargados</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Solo se pudo listar una parte de la lista de reproducción. Toca Descargar más tarde para obtener el resto</string>
+  <string name="morphe_music_downloads_playlist_download_started">Descargando %s en segundo plano</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Sin conexión de red</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Esperando a la red…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Detenido después de %1$s de %2$s. Toca Descargar de nuevo para continuar</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Acerca de</string>

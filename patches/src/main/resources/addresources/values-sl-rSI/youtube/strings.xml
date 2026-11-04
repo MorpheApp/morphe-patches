@@ -771,6 +771,10 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_swipe_left_zone_title">Žestika s povlekom vlevo</string>
   <string name="morphe_swipe_right_zone_title">Žestika s povlekom desno</string>
   <string name="morphe_swipe_top_zone_title">Žestika s povlekom navzgor</string>
+  <string name="morphe_swipe_seek_title">Povleci za iskanje</string>
+  <string name="morphe_swipe_seek_summary">Na polnoz zaslonu predvajalnika povleci levo ali desno za premikanje oznake predvajanja in spusti za iskanje</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Občutljivost geste za iskanje</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Koliko se oznaka predvajanja premakne pri vsakem povleku</string>
   <string name="morphe_swipe_zone_width_title">Širina leve/desne cone</string>
   <string name="morphe_swipe_zone_width_summary">Odstotek vsakega roba zaslona, rezerviran za žestike s povlekom vlevo in desno (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Svetlost</string>
@@ -927,9 +931,9 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_dual_captions_enabled_title">Dvojazikodni podnapisi</string>
   <string name="morphe_caption_block_translation_failed">Nekateri prevodi podnapisov niso na voljo. Prikažemo razpoložljive podnapise.</string>
   <string name="morphe_caption_blocks_too_large">Kranj oba jezika podnapisov ne rima v ta predvajalnik. Prikažemo primarni jezik.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Nadzorni gumbi</string>
-  <string name="morphe_navigation_buttons_screen_summary">Izberite, kateri elementi se pojavljajo v orodni vrstici</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigacijska vrstica</string>
+  <string name="morphe_navigation_bar_screen_summary">Izberite, kateri elementi se pojavljajo v orodni vrstici</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Skrij gumb za mikrofon</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

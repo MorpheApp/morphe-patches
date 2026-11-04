@@ -771,6 +771,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_left_zone_title">Жест за плъзгане наляво</string>
   <string name="morphe_swipe_right_zone_title">Жест за плъзгане надясно</string>
   <string name="morphe_swipe_top_zone_title">Жест за плъзгане нагоре</string>
+  <string name="morphe_swipe_seek_title">Плъзгане за превъртане</string>
+  <string name="morphe_swipe_seek_summary">Плъзгайте наляво или надясно върху пълния екран на плейъра, за да преместите лентата за търсене, и пуснете, за да превъртите</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Чувствителност на плъзгането за превъртане</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Колко далеч се движи лентата за търсене при всяко плъзгане</string>
   <string name="morphe_swipe_zone_width_title">Ширина на лявата/дясната зона</string>
   <string name="morphe_swipe_zone_width_summary">Процент от всеки ръб на екрана, резервиран за жестове за плъзгане наляво и надясно (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Яркост</string>
@@ -927,9 +931,9 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">Двуезични субтитри</string>
   <string name="morphe_caption_block_translation_failed">Някои преводи на субтитрите не са налични. Показват се наличните субтитри.</string>
   <string name="morphe_caption_blocks_too_large">И двата езика на субтитрите не се събират в този плеър. Показва се основният език.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Думиращи бутони</string>
-  <string name="morphe_navigation_buttons_screen_summary">Скрий футъра на менюто „Аудио писта“</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Навигационна лента</string>
+  <string name="morphe_navigation_bar_screen_summary">Скрий футъра на менюто „Аудио писта“</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Скрий менюто „Надписи“</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

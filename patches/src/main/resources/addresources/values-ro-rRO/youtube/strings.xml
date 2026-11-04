@@ -771,6 +771,10 @@ Pentru a remedia, activează 'Falsifică fluxurile video' și schimbă 'clientul
   <string name="morphe_swipe_left_zone_title">Gest de glisare stânga</string>
   <string name="morphe_swipe_right_zone_title">Gest de glisare dreapta</string>
   <string name="morphe_swipe_top_zone_title">Gest de glisare sus</string>
+  <string name="morphe_swipe_seek_title">Glisare pentru deplasare</string>
+  <string name="morphe_swipe_seek_summary">Glisează stânga sau dreapta pe playerul fullscreen pentru a deplasa bara de progres și eliberează pentru a merge la poziția selectată</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Sensibilitate glisare deplasare</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Cât de mult se deplasează bara de progres la fiecare glisare</string>
   <string name="morphe_swipe_zone_width_title">Lățime zonă stânga/dreapta</string>
   <string name="morphe_swipe_zone_width_summary">Procentul din fiecare margine a ecranului rezervat pentru gesturile de glisare stânga și dreapta (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Luminozitate</string>
@@ -927,9 +931,9 @@ Trebuie furnizate „Cookie-uri pentru subtitrări”"</string>
   <string name="morphe_dual_captions_enabled_title">Subtitrări bilingve</string>
   <string name="morphe_caption_block_translation_failed">Unele traduceri de subtitrări nu sunt disponibile. Se afișează subtitrările disponibile.</string>
   <string name="morphe_caption_blocks_too_large">Ambele limbi ale subtitrărilor nu încap în acest player. Se afișează limba principală.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Butoane de navigare</string>
-  <string name="morphe_navigation_buttons_screen_summary">Ascunde subsolul meniului Pista audio</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Bară de navigare</string>
+  <string name="morphe_navigation_bar_screen_summary">Ascunde subsolul meniului Pista audio</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ascunde meniul Subtitrări</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -942,6 +946,7 @@ Trebuie furnizate „Cookie-uri pentru subtitrări”"</string>
   <string name="morphe_hide_notifications_button_title">Ascunde meniul Temporizator de somn</string>
   <string name="morphe_show_search_button_title">Ascunde meniul Repetă video</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Afișează butonul Vizionare mai târziu</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Urmărește mai târziu</string>
   <string name="morphe_show_settings_button_title">Ascunde meniul Volum stabil</string>
@@ -1734,7 +1739,10 @@ Această bibliotecă este stocată pe acest dispozitiv și partajată între con
   <string name="morphe_niconico_comments_max_length_title">Lungimea maximă a comentariului</string>
   <string name="morphe_niconico_comments_max_length_summary">Ascunde comentariile care conțin mai multe caractere decât această valoare. Fiecare emoji se numără ca un caracter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Fără limită</string>
+  <string name="morphe_niconico_comments_live_streams_title">Afișează pe fluxurile live</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Fluxuri live și redări ale acestora</string>
   <string name="morphe_niconico_comments_live_premieres_title">Afișează la Premiere-uri</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premiere în timp ce sunt redate</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Afișează la Premiere-urile încheiate</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Redare chat pentru Premiere-uri care s-au încheiat</string>
   <string name="morphe_live_chat_translate_screen_title">Traducere chat live</string>

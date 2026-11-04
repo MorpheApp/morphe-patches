@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">ჩამოტვირთვა %s%%</string>
   <string name="morphe_music_downloads_complete">ჩამოტვირთვა დასრულდა</string>
   <string name="morphe_music_downloads_failed">ჩამოტვირთვა ჩაიშალა</string>
+  <string name="morphe_music_downloads_playlist_download_title">პლეილისტის ჩამოტვირთვა</string>
+  <string name="morphe_music_downloads_playlist_download_listing">ტრეკების ჩამოწერვა...</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s ჩამოწერილია...</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">პლეილისტის ტრეკების ჩამოწერა ვერ მოხერხდა</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">უკვე ჩამოტვირთულია: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"ამ ფლეილისტშია %1$s, %2$s ჯერ არ არის ჩამოტვირთული.
+
+ისინი ჩამოტვირთვებია სათითაოდ, რასაც შეიძლება დიდი დრო დასჭირდეს და საჭიროა დაახლოებით %3$s თავისუფალი ადგილი"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">ჩამოტვირთვა</string>
+  <string name="morphe_music_downloads_playlist_download_progress">ტრეკის ჩამოტვირთვა %1$s %2$s-დან</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s ჩამოტვირთულია</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s ჩამოტვირთულია, %2$s-ის ჩამოტვირთვა ვერ მოხერხდა</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">ფლეილისტის ჩამოტვირთვა უკვე მიმდინარეობს</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">თქვენი ანგარიში ჯერჯერობით უცნობია. სცადეთ மீண்டும் ცოტა ხნის შემდეგ</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s ჩამოთვლილია, ყველა უკვე ჩამოტვირთულია</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">ფლეილისტის მხოლოდ ნაწილი მოხერხდა ჩამოთვლა. დააჭირეთ ჩამოტვირთვას მოგვიანებით დანარჩენის მისაღებად</string>
+  <string name="morphe_music_downloads_playlist_download_started">%s ჩამოტვირთვას ფონურ რეჟიმში</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">ქსელთან კავშირი არ არის</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">ქსელის მოლოდინში...</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">შეჩერდა %1$s-ის შემდეგ %2$s-დან. გააგრძელებლად დააჭირეთ ჩამოტვირთვას</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Morphe-ის შესახებ</string>

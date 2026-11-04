@@ -771,6 +771,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_left_zone_title">Κίνηση σάρωσης προς τα αριστερά</string>
   <string name="morphe_swipe_right_zone_title">Κίνηση σάρωσης προς τα δεξιά</string>
   <string name="morphe_swipe_top_zone_title">Κίνηση σάρωσης προς τα πάνω</string>
+  <string name="morphe_swipe_seek_title">Σύρσιμο για αναζήτηση</string>
+  <string name="morphe_swipe_seek_summary">Σύρετε αριστερά ή δεξιά στον προγράμματος αναπαραγωγής πλήρους οθόνης για να μετακινήσετε τη γραμμή αναζήτησης και απολύστε για αναζήτηση</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Ευαισθησία σάρωσης αναζήτησης</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Πόσο μετακινείται η γραμμή αναζήτησης για κάθε σύρσιμο</string>
   <string name="morphe_swipe_zone_width_title">Πλάτος ζώνης αριστερά/δεξιά</string>
   <string name="morphe_swipe_zone_width_summary">Ποσοστό κάθε άκρης της οθόνης που είναι δεδονημένο για κινήσεις σάρωσης προς τα αριστερά και δεξιά (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Φωτεινότητα</string>
@@ -927,9 +931,9 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">Δίγλωσσοι υπότιτλοι</string>
   <string name="morphe_caption_block_translation_failed">Ορισμένες μεταφράσεις υπότιτλων δεν είναι διαθέσιμες. Εμφάνιση διαθέσιμων υπότιτλων.</string>
   <string name="morphe_caption_blocks_too_large">Και οι δύο γλώσσες υπότιτλων δεν χωράνε σε αυτόν τον πρόγραμμα αναπαραγόγης. Εμφάνιση της κύριας γλώσσας.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Κουμπιά γραμμής πλοήγησης</string>
-  <string name="morphe_navigation_buttons_screen_summary">Απόκρυψη κουμπιού Αναζήτησης</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Γραμμή πλοήγησης</string>
+  <string name="morphe_navigation_bar_screen_summary">Απόκρυψη κουμπιού Αναζήτησης</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Εμφάνιση κουμπιού Ρυθμίσεων</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

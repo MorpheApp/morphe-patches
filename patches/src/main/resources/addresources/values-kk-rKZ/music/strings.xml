@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Жүктелуі %s%%</string>
   <string name="morphe_music_downloads_complete">Жүктеу аяқталды</string>
   <string name="morphe_music_downloads_failed">Жүктеу сәтсіз аяқталды</string>
+  <string name="morphe_music_downloads_playlist_download_title">Плейлистті жүктеу</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Тректер тізіліп жатыр…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s тізілді…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Плейлист тректерін тізімдеу мүмкін болмады</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Жүктелген: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"Бұл плейлисте %1$s трек бар, %2$s жүктелмеді.
+
+Олар кезекпен жүктеледі, бұл көп уақыт алуы мүмкін және шамамен %3$s бос орын қажет"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Жүктеу</string>
+  <string name="morphe_music_downloads_playlist_download_progress">%2$s тректің %1$s-шісі жүктелуде</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s жүктелді</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s жүктелді, %2$s жүктелмеді</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Плейлистті жүктеу процесі жүріп жатыр</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Сіздің аккаунтыңыз әлі белгісіз. Сәлден кейін қайта көріңіз</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s тізілді, бәрі жүктелді</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Плейлисттің тек бір бөлігі ғана тізілді. Қалғанын алу үшін кейінірек қайта Жүктеу батырмасын басыңыз</string>
+  <string name="morphe_music_downloads_playlist_download_started">%s фондық режимде жүктелуде</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Желілік байланыс жоқ</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Желі күтілуде…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s-тің %1$s бөлігінен кейін тоқтатылды. Жалғастыру үшін қайта Жүктеу батырмасын басыңыз</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Morphe туралы</string>

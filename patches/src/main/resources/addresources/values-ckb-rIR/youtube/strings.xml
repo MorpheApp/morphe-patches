@@ -928,9 +928,9 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">نووسینەکانی دو زمان</string>
   <string name="morphe_caption_block_translation_failed">هندێک لە وەرگێڕانەکانی نووسینەکان بەردەست نین. پیشاندانی ئەو نووسینانەی بەردەستن.</string>
   <string name="morphe_caption_blocks_too_large">هەردوو زمانی نووسینەکان لەم پلەیەرەدا جێگەیان نییە. پیشاندانی زمانی سەرەکی.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">دووگمەکانی گەشتکردن</string>
-  <string name="morphe_navigation_buttons_screen_summary">هەڵبژێرە کام دوگمەیە دەردەکەوێت لە شریتی گەشتکردن</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">شریتی گەشتکردن</string>
+  <string name="morphe_navigation_bar_screen_summary">هەڵبژێرە کام دوگمەیە دەردەکەوێت لە شریتی گەشتکردن</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">دوگمەی ماڵەوە بشارەوە</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

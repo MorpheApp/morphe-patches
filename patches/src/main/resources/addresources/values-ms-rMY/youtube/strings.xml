@@ -927,9 +927,9 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <string name="morphe_dual_captions_enabled_title">Sari kata dwibahasa</string>
   <string name="morphe_caption_block_translation_failed">Sesetengah terjemahan sari kata tidak tersedia. Menunjukkan sari kata yang tersedia.</string>
   <string name="morphe_caption_blocks_too_large">Kedua-dua bahasa sari kata tidak muat dalam pemain ini. Menunjukkan bahasa utama.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Butang pandu arah</string>
-  <string name="morphe_navigation_buttons_screen_summary">Memilih butang yang akan muncul pada bar pandu arah bawah</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Bar pandu arah</string>
+  <string name="morphe_navigation_bar_screen_summary">Memilih butang yang akan muncul pada bar pandu arah bawah</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Sorokkan butang \'Laman Utama\'</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

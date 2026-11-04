@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Преземање %s%%</string>
   <string name="morphe_music_downloads_complete">Преземањето е завршено</string>
   <string name="morphe_music_downloads_failed">Преземањето не успеа</string>
+  <string name="morphe_music_downloads_playlist_download_title">Преземање плејлиста</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Листање на траки…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s наведени…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Неуспешно листање на траките од плејлистата</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Веќе преземени: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s во оваа плејлиста, %2$s сè уште не се преземени.
+
+Тие се преземаат една по една, што може да одземе многу време и бара околу %3$s слободен простор"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Преземи</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Преземање на трака %1$s од %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s преземени</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s се преземаа, %2$s не можеа да се преземат</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Преземањето на плејлистата веќе е во тек</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Вашата сметка сè уште не е позната. Обидете се повторно за момент</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s се наведени, сите се веќе преземени</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Само дел од плејлистата можеше да се наведе. Допрете повторно на Преземи подоцна за да го добиете остатокот</string>
+  <string name="morphe_music_downloads_playlist_download_started">Преземање на %s во позадина</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Нема мрежна врска</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Чекање на мрежата…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Застането по %1$s од %2$s. Допрете повторно Преземи за да продолжите</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">За апликацијата</string>

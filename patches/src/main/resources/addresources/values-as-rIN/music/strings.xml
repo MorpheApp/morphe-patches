@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">ডাউনলোড হৈছে %s%%</string>
   <string name="morphe_music_downloads_complete">ডাউনলোড সম্পূৰ্ণ হৈছে</string>
   <string name="morphe_music_downloads_failed">ডাউনলোড বিফল হৈছে</string>
+  <string name="morphe_music_downloads_playlist_download_title">প্লেলিষ্ট ডাউনলোড</string>
+  <string name="morphe_music_downloads_playlist_download_listing">ট্ৰেকসমূহ তালিকাভুক্ত কৰা হৈছে…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s তালিকাভুক্ত কৰা হৈছে…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">প্লেলিষ্টৰ ট্ৰেকসমূহ তালিকাভুক্ত কৰিব নোৱাৰিল</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">ইতিমধ্যে ডাউনলোড কৰা হৈছে: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"এই প্লেলিষ্টত %1$s টা আছে, যাৰ ভিতৰত %2$s টা এতিয়াও ডাউনলোড কৰা হোৱা নাই।
+
+এইবোৰ এটা এটাকৈ ডাউনলোড কৰা হয়, যাৰ বাবে বহু সময় লাগিব পাৰে আৰু প্ৰায় %3$s খালী ঠাইৰ প্ৰয়োজন"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">ডাউনলোড</string>
+  <string name="morphe_music_downloads_playlist_download_progress">%2$s ৰ ভিতৰত %1$s নং ট্ৰেক ডাউনলোড কৰা হৈছে</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s ডাউনলোড কৰা হ\'ল</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s ডাউনলোড কৰা হৈছে, %2$s ডাউনলোড কৰিব পৰা নগ’ল</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">প্লেলিষ্ট ডাউনলোড ইতিমধ্যে চলি আছে</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">আপোনাৰ একাউণ্টটো এতিয়াও চিনাক্ত কৰা হোৱা নাই। কিছু সময়ৰ পিছত পুনৰ চেষ্টা কৰক</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s তালিকাভুক্ত কৰা হৈছে, সকলোবোৰ ইতিমধ্যে ডাউনলোড কৰা হৈছে</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">প্লেলিষ্টটোৰ কিছু অংশহে তালিকাভুক্ত কৰিব পৰা গৈছে। বাকী অংশবোৰ পাবলৈ পিছত পুনৰ ডাউনলোডত টেপ কৰক</string>
+  <string name="morphe_music_downloads_playlist_download_started">বেকগ্ৰাউণ্ডত %s ডাউনলোড কৰা হৈছে</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">নেটৱৰ্ক সংযোগ নাই</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">নেটৱৰ্কৰ বাবে অপেক্ষা কৰা হৈছে…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s ৰ ভিতৰত %1$s ৰ পিছত বন্ধ হৈছে। অব্যাহত ৰাখিবলৈ পুনৰ ডাউনলোডত টেপ কৰক</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Morpheৰ বিষয়ে</string>

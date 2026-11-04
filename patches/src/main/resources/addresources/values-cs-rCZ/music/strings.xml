@@ -200,6 +200,22 @@ Stažené skladby se zobrazí zde"</string>
   <string name="morphe_music_downloads_progress">Stahování %s%%</string>
   <string name="morphe_music_downloads_complete">Stahování dokončeno</string>
   <string name="morphe_music_downloads_failed">Stahování selhalo</string>
+  <string name="morphe_music_downloads_playlist_download_title">Stahování seznamu skladeb</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Vyhledávání skladeb…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Nepodařilo se vyhledat skladby seznamu skladeb</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Již staženo: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"V tomto seznamu je %1$s, %2$s zatím není staženo.
+
+Stahují se postupně po jednom, což může trvat dlouho a vyžaduje přibližně %3$s volného místa"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Stáhnout</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Stahování skladby %1$s z %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Stahování seznamu skladeb již probíhá</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Váš účet zatím není znám. Zkuste to prosím znovu za chvíli</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Podařilo se vyhledat pouze část seznamu skladeb. Pro zbytek znovu klepněte na Stáhnout později</string>
+  <string name="morphe_music_downloads_playlist_download_started">Stahování %s na pozadí</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Žádné připojení k síti</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Čekání na připojení k síti…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Zastaveno po %1$s z %2$s. Pokračujte klepnutím na Stáhnout</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O aplikaci</string>

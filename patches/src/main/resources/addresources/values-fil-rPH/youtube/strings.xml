@@ -771,6 +771,10 @@ Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default
   <string name="morphe_swipe_left_zone_title">Kumpas ng swipe pakaliwa</string>
   <string name="morphe_swipe_right_zone_title">Kumpas ng swipe pakanan</string>
   <string name="morphe_swipe_top_zone_title">Kumpas ng swipe pataas</string>
+  <string name="morphe_swipe_seek_title">Mag-swipe para mag-seek</string>
+  <string name="morphe_swipe_seek_summary">Mag-swipe pakaliwa o pakanan sa fullscreen player para igalaw ang seekbar, at bitawan para mag-seek</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Sensitivity ng seek swipe</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Kung gaano kalayo ang igagalaw ng seekbar sa bawat swipe</string>
   <string name="morphe_swipe_zone_width_title">Lapad ng kaliwang/kanang zone</string>
   <string name="morphe_swipe_zone_width_summary">Porsiyento ng bawat gilid ng screen na nakalaan para sa mga kumpas ng swipe pakaliwa at pakanan (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Liwanag</string>
@@ -927,9 +931,9 @@ Dapat ibigay ang 'Caption cookies'"</string>
   <string name="morphe_dual_captions_enabled_title">Bilingual na mga caption</string>
   <string name="morphe_caption_block_translation_failed">Hindi available ang ilang mga pagsasalin ng caption. Ipinapakita ang mga available na caption.</string>
   <string name="morphe_caption_blocks_too_large">Hindi kasya ang parehong wika ng caption sa player na ito. Ipinapakita ang primaryang wika.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Mga pindutan ng nabigasyon</string>
-  <string name="morphe_navigation_buttons_screen_summary">Pumili kung aling mga component ang lilitaw sa toolbar</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigation bar</string>
+  <string name="morphe_navigation_bar_screen_summary">Pumili kung aling mga component ang lilitaw sa toolbar</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Itago ang Cast button</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Загрузка %s%%</string>
   <string name="morphe_music_downloads_complete">Загрузка завершана</string>
   <string name="morphe_music_downloads_failed">Загрузка памылковая</string>
+  <string name="morphe_music_downloads_playlist_download_title">Загрузка плейліста</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Спіс трэкаў…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s спісана…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Не ўдалося скласці спіс трэкаў плейліста</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Ужо загружана: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s у гэтым плейлісце, %2$s яшчэ не загружаны.
+
+Яны загружаюцца па адным, што можа заняць шмат часу і патрабуе прыбліўна %3$s вольнага месца"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Загрузіць</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Загрузка трэка %1$s з %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s загружана</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s загружана, %2$s не ўдалося загрузіць</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Загрузка плейліста ўжо ідзе</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Ваша ўлічоніць пакуль не вядомы. Паспрабуйце зноў праз імгненне</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s спісана, усе ўжо загружаны</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Удалося скласці спіс толькі часткі плейліста. Націсніце \"Загрузіць\" пазней, каб атрымаць астатняе</string>
+  <string name="morphe_music_downloads_playlist_download_started">Загрузка %s у фоне</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Няма падлучэння да сеткі</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Очакванне сеткі…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Спынена пасля %1$s з %2$s. Націсніце \"Загрузіць\" зноў, каб працягнуць</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Пра Morphe</string>

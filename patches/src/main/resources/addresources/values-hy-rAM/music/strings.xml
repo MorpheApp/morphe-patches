@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Ներբեռնվում է %s%%</string>
   <string name="morphe_music_downloads_complete">Ներբեռնումն ավարտված է</string>
   <string name="morphe_music_downloads_failed">Ներբեռնումը ձախողվեց</string>
+  <string name="morphe_music_downloads_playlist_download_title">Ցուցակի ներբեռնում</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Տրեկների ցուցակի ստացում…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s-ն ցուցակված է…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Չհաջողվեց ստանալ նվագացուցակի տրեկների ցուցակը</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Արդեն ներբեռնված է՝ %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"Այս նվագացուցակում կա %1$s, %2$s-ը դեռ ներբեռնված չէ:
+
+Դրանք ներբեռնվում են հերթով, ինչը կարող է տևել երկար և պահանջում է մոտ %3$s ազատ տարածություն"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Ներբեռնել</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Ներբեռնվում է տրեկ %1$s-ը %2$s-ից</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s-ն ներբեռնված է</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s-ն ներբեռնված է, %2$s-ը չհաջողվեց ներբեռնել</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Նվագացուցակի ներբեռնումն արդեն ընթացքի մեջ է</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Ձեր հաշիվը դեռ հայտնի չէ: Փորձեք նորից մի փոքր ուշ</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s-ն ցուցակված է, բոլորն արդեն ներբեռնված են</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Կարողացավ ցուցակվել նվագացուցակի միայն մի մասը: Մնացածը ստանալու համար ավելի ուշ նորից սեղմեք «Ներբեռնել»</string>
+  <string name="morphe_music_downloads_playlist_download_started">Ներբեռնում է %s-ը հետին պլանում</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Ցանցային կապ չկա</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Սպասում է ցանցին…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Կանգ առավ %1$s-ից %2$s-ի։ Շարունակելու համար նորից սեղմեք «Ներբեռնել»</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Morphe-ի մասին</string>

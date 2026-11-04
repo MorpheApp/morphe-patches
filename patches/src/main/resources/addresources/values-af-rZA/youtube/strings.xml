@@ -771,6 +771,10 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_swipe_left_zone_title">Linker swiepgebaar</string>
   <string name="morphe_swipe_right_zone_title">Regter swiepgebaar</string>
   <string name="morphe_swipe_top_zone_title">Bo swiepgebaar</string>
+  <string name="morphe_swipe_seek_title">Veeg om te soek</string>
+  <string name="morphe_swipe_seek_summary">Veeg links of regs op die volle-skermspeler om die soekbalk te skuif, en laat los om te soek</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Soek-veeggevoeligheid</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Hoe ver die soekbalk skuif vir elke veegbeweging</string>
   <string name="morphe_swipe_zone_width_title">Linker/Regter sonebreedte</string>
   <string name="morphe_swipe_zone_width_summary">Persentasie van elke skermrand wat vir linker- en regter-swiepgebare gereserveer word (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Helderheid</string>
@@ -927,9 +931,9 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_dual_captions_enabled_title">Bilinguale ondertitels</string>
   <string name="morphe_caption_block_translation_failed">Sommige ondertitelvertalings is nie beskikbaar nie. Wys beskikbare ondertitels.</string>
   <string name="morphe_caption_blocks_too_large">Beide ondertitalinge pas nie in hierdie speler nie. Wys die primêre taal.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigasieknoppies</string>
-  <string name="morphe_navigation_buttons_screen_summary">Choose which components appear in the toolbar</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigasiebalk</string>
+  <string name="morphe_navigation_bar_screen_summary">Choose which components appear in the toolbar</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Hide Cast button</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

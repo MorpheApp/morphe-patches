@@ -771,6 +771,10 @@ Norėdami tai ištaisyti, įjunkite „Maskuoti vaizdo įrašų srautus“ ir pa
   <string name="morphe_swipe_left_zone_title">Braukimo į kairę gestas</string>
   <string name="morphe_swipe_right_zone_title">Braukimo į dešinę gestas</string>
   <string name="morphe_swipe_top_zone_title">Braukimo į viršų gestas</string>
+  <string name="morphe_swipe_seek_title">Braukite, kad pervyniutumėte</string>
+  <string name="morphe_swipe_seek_summary">Visame ekrane rodomame grotuve braukite į kairę arba į dešinę, kad perkeltumėte vynimo juostą, ir paleiskite, kad pervynautumėte</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Vynimo braukimo jautrumas</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Kokia atstuma juda vynimo juosta kiekvieno braukimo metu</string>
   <string name="morphe_swipe_zone_width_title">Kairės/dešinės zonos plotis</string>
   <string name="morphe_swipe_zone_width_summary">Kiekvieno ekrano krašto procentas, rezervuotas braukimo į kairę ir dešinę gestams (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Ryškumas</string>
@@ -927,9 +931,9 @@ Turi būti pateikti „Subtitrų slapukai“"</string>
   <string name="morphe_dual_captions_enabled_title">Dvilaugiu subtitrai</string>
   <string name="morphe_caption_block_translation_failed">Kai kurie subtitrų vertimai nepriedaugiami. Rodomi prieinami subtitrai.</string>
   <string name="morphe_caption_blocks_too_large">Abi subtitrų kalbos netelpa šiame spustyklituje. Rodoma pagrindinė kalba.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Naršymo mygtukai</string>
-  <string name="morphe_navigation_buttons_screen_summary">Pasirinkite, kokie mygtukai turėtų būti rodomi apačioje esančioje naravimo juostoje</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Naršymo juosta</string>
+  <string name="morphe_navigation_bar_screen_summary">Pasirinkite, kokie mygtukai turėtų būti rodomi apačioje esančioje naravimo juostoje</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Paslėpti pagrindinį mygtuką</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -942,7 +946,9 @@ Turi būti pateikti „Subtitrų slapukai“"</string>
   <string name="morphe_hide_notifications_button_title">Slėpti pranešimų mygtuką</string>
   <string name="morphe_show_search_button_title">Rodyti paieškos mygtuką</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Rodyti mygtuką „Žiūrėti vėliau“</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Žiūrėti vėliau</string>
   <string name="morphe_show_settings_button_title">Rodyti nustatymų mygtuką</string>
   <string name="morphe_show_settings_button_type_title">Nustatymų mygtuko veiksmas</string>
   <string name="morphe_show_settings_button_type_summary">Įjungus atidaro Morphe nustatymus, o išjungus – „YouTube“ nustatymus</string>
@@ -1733,7 +1739,10 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_niconico_comments_max_length_title">Maksimalus komentarų ilgis</string>
   <string name="morphe_niconico_comments_max_length_summary">Paslepia komentarus, kuriuose yra daugiau simbolių nei nustatyta. Kiekvienas emoji skaičiuojamas kaip vienas simbolis</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Be apribojimų</string>
+  <string name="morphe_niconico_comments_live_streams_title">Rodyti tiesiogiai transliuojamuose vaizdo įrašuose</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Tiesiogiai transliuojami vaizdo įrašai ir jų pakartojimai</string>
   <string name="morphe_niconico_comments_live_premieres_title">Rodyti pirmosiose peržiūrose</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premjeros jų demonstravimo metu</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Rodyti pasibaigusiose pirmosiose peržiūrose</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Pasibaigusių pirmųjų transliucijų pokalbių atkūrimas</string>
   <string name="morphe_live_chat_translate_screen_title">Gyvo čato vertimas</string>

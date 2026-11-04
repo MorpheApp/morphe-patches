@@ -771,6 +771,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_left_zone_title">Жэст працягвання ўлева</string>
   <string name="morphe_swipe_right_zone_title">Жэст працягнення ўправа</string>
   <string name="morphe_swipe_top_zone_title">Жэст працягнення ўверх</string>
+  <string name="morphe_swipe_seek_title">Пранясіце для перамоткі</string>
+  <string name="morphe_swipe_seek_summary">Пранясіце ўлева або ўпраў на паўнаэкранным прайгравачу, каб пасунуць палосу прагрэсу, і адпусціце, каб пераматываць</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Чулавасць працягнутага перамоткі</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Як далёка рухаецца палоса прагрэсу пры кожным працягванні</string>
   <string name="morphe_swipe_zone_width_title">Шырыня левай/правай зоны</string>
   <string name="morphe_swipe_zone_width_summary">Працэнт кожнага краю экрана, зарэзаваны для жэстаў прагартвання ўлева і ўправа (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Яркосць</string>
@@ -927,9 +931,9 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">Двумоўныя субтытры</string>
   <string name="morphe_caption_block_translation_failed">Некаторыя пераклады субтытраў недаступныя. Паказваюцца даступныя субтытры.</string>
   <string name="morphe_caption_blocks_too_large">Абобе мовы субтытраў не памяшчаюцца ў гэтым плеяры. Паказваецца асноўная мова.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Кнопкі навігацыі</string>
-  <string name="morphe_navigation_buttons_screen_summary">Выберыце, якія кнопкі будуць адлюстроўвацца ў ніжняй панэлі навігацыі</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Панэль навігацыі</string>
+  <string name="morphe_navigation_bar_screen_summary">Выберыце, якія кнопкі будуць адлюстроўвацца ў ніжняй панэлі навігацыі</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Схаваць кнопку \"Галоўная\"</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

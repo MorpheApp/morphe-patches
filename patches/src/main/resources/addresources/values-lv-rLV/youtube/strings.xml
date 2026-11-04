@@ -926,9 +926,9 @@ Jānorāda \"Subtitru failu izpērekšņi\""</string>
   <string name="morphe_dual_captions_enabled_title">Divvalodīgi titri</string>
   <string name="morphe_caption_block_translation_failed">Daži titru tulkojumi nav pieejami. Rāda pieejamos titrus.</string>
   <string name="morphe_caption_blocks_too_large">Abas titru valodas neiekļaujas šajā sasaistītājā. Rāda galveno valodu.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigācijas pogas</string>
-  <string name="morphe_navigation_buttons_screen_summary">Izvēlieties, kuras pogas rādīt apakšējā navigācijas joslā</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigācijas josla</string>
+  <string name="morphe_navigation_bar_screen_summary">Izvēlieties, kuras pogas rādīt apakšējā navigācijas joslā</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Paslēpt pogu Sākums</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

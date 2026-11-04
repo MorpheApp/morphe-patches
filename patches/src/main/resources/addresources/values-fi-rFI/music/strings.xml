@@ -200,6 +200,26 @@ Ladatut kappaleet näkyvät tässä"</string>
   <string name="morphe_music_downloads_progress">Ladataan %s%%</string>
   <string name="morphe_music_downloads_complete">Lataus valmis</string>
   <string name="morphe_music_downloads_failed">Lataus epäonnistui</string>
+  <string name="morphe_music_downloads_playlist_download_title">Soittolistan lataus</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Listataan kappaleita…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s listattu…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Soittolistan kappaleita ei voitu listata</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Jo ladattu: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"Tässä soittolistassa on %1$s kappaletta, joista %2$s ei ole vielä ladattu.
+
+Ne ladataan yksi kerrallaan, mikä voi kestää kauan ja vaatii noin %3$s vapaata tilaa"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Lataa</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Ladataan kappaletta %1$s / %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s ladattu</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s ladattu, %2$s ei voitu ladata</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Soittolistan lataus on jo käynnissä</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Tiliäsi ei vielä tunnisteta. Yritä uudelleen hetken kuluttua</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listattu, kaikki jo ladattu</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Vain osa soittolistasta voitiin listata. Napauta Lataa uudelleen myöhemmin saadaksesi loput</string>
+  <string name="morphe_music_downloads_playlist_download_started">Ladataan %s taustalla</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Ei verkkoyhteyttä</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Odotetaan verkkoyhteyttä…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Pysähtyi kohdassa %1$s / %2$s. Napauta Lataa jatkaaksesi</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Tietoja</string>
@@ -735,6 +755,14 @@ Laulutekstit tulevat kolmannen osapuolen palveluista, jotka eivät ole Morphen a
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisointi tai transkriptio</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Offline-sanasto</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime-sanaluettelo</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby-merkinnät</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Offline-sanakirja</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby-teksti</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Näytä Ruby -painike</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Napauta vaihtaaksesi ruby-lukutavat sanoitusten yläpuolelle; pidä painettuna vaihtaaksesi hiraganan ja katakanan välillä. Käyttää aktivoituja ruby-palvelimia listattuna järjestyksenä</string>
+  <string name="morphe_music_lyrics_ruby_generating">Luodaan ruby-tekstiä…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Tunnista osiot tekoälyn avulla</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Käytetään vain silloin, kun provider ei sisällä osiotarroja, kuten Refraani tai Särje, jotka sitten avoimet AI-yhteensopivat mallit tunnistavat. Rivin muokkaaminen avaa myös sen promptin</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-päätepisteen URL (esim. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

@@ -771,6 +771,10 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_swipe_left_zone_title">Gest przesunięcia w lewo</string>
   <string name="morphe_swipe_right_zone_title">Gest przesunięcia w prawo</string>
   <string name="morphe_swipe_top_zone_title">Gest przesunięcia w górę</string>
+  <string name="morphe_swipe_seek_title">Przesuń, aby przewinąć</string>
+  <string name="morphe_swipe_seek_summary">Przesuń w lewo lub w prawo w odtwarzaczu pełnoekranowym, aby przesunąć pasek postępu, a następnie zwolnij, aby przewinąć</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Czułość przewijania gestem</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">O ile przesuwa się pasek postępu przy każdym przesunięciu</string>
   <string name="morphe_swipe_zone_width_title">Szerokość lewej/prawej strefy</string>
   <string name="morphe_swipe_zone_width_summary">Procent każdej krawędzi ekranu zarezerwowany na gesty przesunięcia w lewo i w prawo (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Jasność</string>
@@ -927,9 +931,9 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_dual_captions_enabled_title">Napisy dwujęzyczne</string>
   <string name="morphe_caption_block_translation_failed">Niektóre tłumaczenia napisów są niedostępne. Wyświetlanie dostępnych napisów</string>
   <string name="morphe_caption_blocks_too_large">Oba języki napisów nie mieszczą się w tym odtwarzaczu. Wyświetlanie głównego języka</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Przyciski nawigacji</string>
-  <string name="morphe_navigation_buttons_screen_summary">Zdecyduj, które przyciski będą wyświetlane na dolnym pasku nawigacji</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Pasek nawigacji</string>
+  <string name="morphe_navigation_bar_screen_summary">Zdecyduj, które przyciski będą wyświetlane na dolnym pasku nawigacji</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ukryj przycisk Główna</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

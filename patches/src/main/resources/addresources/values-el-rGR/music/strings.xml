@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Λήψη %s%%</string>
   <string name="morphe_music_downloads_complete">Η λήψη ολοκληρώθηκε</string>
   <string name="morphe_music_downloads_failed">Η λήψη απέτυχε</string>
+  <string name="morphe_music_downloads_playlist_download_title">Λήψη λίστας αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Ανάκτηση κομμάτων…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s ανακτήθηκε…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Δεν ήταν δυνατή η ανάκτηση των κομμάτων της λίστας αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Ήδη κατεβήκατε: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s σε αυτή τη λίστα αναπαραγωγής, τα %2$s δεν έχουν κατεβεί ακόμα.
+
+Κατεβαίνουν ένα προς ένα, κάτι που μπορεί να πάρει πολύ χρόνο και απαιτεί περίπου %3$s ελεύθερο χώρο"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Λήψη</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Λήψη κομμάτου %1$s από τα %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s κατέβηκαν</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s κατέβηκαν, %2$s δεν ήταν δυνατή η λήψη τους</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Η λήψη της λίστας αναπαραγωγής είναι ήδη σε εξέλιξη</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Ο λογαριασμός σας δεν είναι ακόμα γνωστός. Δοκιμάστε ξανά σε λίγο</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s ανακτήθηκε, όλα έχουν ήδη κατεβεί</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Μόνο ένα μέρος της λίστας αναπαραγωγής ανακτήθηκε. Πατήστε ξανά Λήψη αργότερα για να λάβετε τα υπόλοιπα</string>
+  <string name="morphe_music_downloads_playlist_download_started">Λήψη %s στο υπόφονιο</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Δεν υπάρχει σύνδεση δικτύου</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Αναμονή για το δίκτυο…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Διακόπτεται μετά από %1$s από τα %2$s. Πατήστε ξανά Λήψη για να συνεχίσετε</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Πληροφορίες για το</string>

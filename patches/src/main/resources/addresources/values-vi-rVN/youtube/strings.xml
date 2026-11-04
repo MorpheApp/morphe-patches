@@ -771,6 +771,10 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_swipe_left_zone_title">Cử chỉ vuốt bên trái</string>
   <string name="morphe_swipe_right_zone_title">Cử chỉ vuốt bên phải</string>
   <string name="morphe_swipe_top_zone_title">Cử chỉ vuốt bên trên</string>
+  <string name="morphe_swipe_seek_title">Vuốt để tìm kiếm</string>
+  <string name="morphe_swipe_seek_summary">Vuốt sang trái hoặc phải trên trình phát toàn màn hình để di chuyển thanh tìm kiếm, và thả ra để tìm kiếm</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Độ nhạy vuốt tìm kiếm</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Khoảng cách thanh tìm kiếm di chuyển cho mỗi lần vuốt</string>
   <string name="morphe_swipe_zone_width_title">Độ rộng vùng cử chỉ bên trái/phải</string>
   <string name="morphe_swipe_zone_width_summary">Phần trăm diện tích cạnh màn hình dùng cho cử chỉ vuốt trái và phải (5 đến 50)</string>
   <string name="morphe_swipe_zone_label_brightness">Độ sáng</string>
@@ -927,9 +931,9 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_dual_captions_enabled_title">Phụ đề song ngữ</string>
   <string name="morphe_caption_block_translation_failed">Một số bản dịch phụ đề không khả dụng. Đang hiển thị các phụ đề có sẵn.</string>
   <string name="morphe_caption_blocks_too_large">Cả hai ngôn ngữ phụ đề đều không vừa với trình phát này. Đang hiển thị ngôn ngữ chính.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Nút điều hướng</string>
-  <string name="morphe_navigation_buttons_screen_summary">Chọn các nút sẽ hiển thị trong thanh điều hướng dưới cùng</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Thanh điều hướng</string>
+  <string name="morphe_navigation_bar_screen_summary">Chọn các nút sẽ hiển thị trong thanh điều hướng dưới cùng</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ẩn nút Trang chủ</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

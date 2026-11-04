@@ -761,6 +761,10 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
   <string name="morphe_swipe_left_zone_title">Gesta povlačenja ulijevo</string>
   <string name="morphe_swipe_right_zone_title">Gesta povlačenja udesno</string>
   <string name="morphe_swipe_top_zone_title">Gesta povlačenja prema gore</string>
+  <string name="morphe_swipe_seek_title">Povucite za pomicanje</string>
+  <string name="morphe_swipe_seek_summary">Na prekrivaču cijelog zaslona povucite lijevo ili desno za pomicanje trake naprijed ili unatrag, a zatim pustite za potvrdu</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Osjetljivost povlačenja za pomicanje</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Koliko se traka za pomicanje pomiče pri svakom povlačenju</string>
   <string name="morphe_swipe_zone_width_title">Širina zone Lijevo/Desno</string>
   <string name="morphe_swipe_zone_width_summary">Postotak svakog ruba zaslona rezerviran za geste povlačenja lijevo i desno (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Svjetlina</string>
@@ -917,9 +921,9 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
   <string name="morphe_dual_captions_enabled_title">Dvojezični titlovi</string>
   <string name="morphe_caption_block_translation_failed">Neki prijevodi titlova nisu dostupni. Prikazani su dostupni titlovi.</string>
   <string name="morphe_caption_blocks_too_large">Oba jezika titlova ne stanu u ovaj player. Prikazan je primarni jezik.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Traka navigacije</string>
-  <string name="morphe_navigation_buttons_screen_summary">Odaberite koje će tipke pojaviti u donjoj navigacijskoj traci</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Traka navigacije</string>
+  <string name="morphe_navigation_bar_screen_summary">Odaberite koje će tipke pojaviti u donjoj navigacijskoj traci</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Sakrij tipku Početna</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

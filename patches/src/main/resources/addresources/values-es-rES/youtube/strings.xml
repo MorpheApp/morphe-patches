@@ -771,6 +771,10 @@ Para solucionar esto, activa 'Falsificar transmisiones de vídeo' y cambia 'Clie
   <string name="morphe_swipe_left_zone_title">Gesto de deslizamiento izquierdo</string>
   <string name="morphe_swipe_right_zone_title">Gesto de deslizamiento derecho</string>
   <string name="morphe_swipe_top_zone_title">Gesto de deslizamiento superior</string>
+  <string name="morphe_swipe_seek_title">Desliza para buscar</string>
+  <string name="morphe_swipe_seek_summary">Deslice el dedo hacia la izquierda o hacia la derecha en el reproductor a pantalla completa para mover la barra de progreso y suéltelo para buscar.</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Sensibilidad del deslizamiento de búsqueda</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Cuánto se desplaza la barra de progreso con cada deslizamiento</string>
   <string name="morphe_swipe_zone_width_title">Ancho de zona izquierda/derecha</string>
   <string name="morphe_swipe_zone_width_summary">Porcentaje de cada borde de la pantalla reservado para los gestos de deslizamiento izquierdo y derecho (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Brillo</string>
@@ -927,9 +931,9 @@ Se deben proporcionar 'cookies de subtítulos'"</string>
   <string name="morphe_dual_captions_enabled_title">Subtítulos bilingües</string>
   <string name="morphe_caption_block_translation_failed">Algunas traducciones de subtítulos no están disponibles. Mostrando subtítulos disponibles.</string>
   <string name="morphe_caption_blocks_too_large">Ambos idiomas de subtítulos no caben en este reproductor. Mostrando el idioma principal.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Botones de navegación</string>
-  <string name="morphe_navigation_buttons_screen_summary">Elige qué botones aparecen en la barra de navegación inferior</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Barra de navegación</string>
+  <string name="morphe_navigation_bar_screen_summary">Elige qué botones aparecen en la barra de navegación inferior</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ocultar botón Inicio</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

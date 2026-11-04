@@ -771,6 +771,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_left_zone_title">向左滑動手勢</string>
   <string name="morphe_swipe_right_zone_title">向右滑動手勢</string>
   <string name="morphe_swipe_top_zone_title">向上滑動手勢</string>
+  <string name="morphe_swipe_seek_title">滑動查找</string>
+  <string name="morphe_swipe_seek_summary">在全螢幕播放模式左右滑動即可移動進度條，鬆開即可跳到指定位置</string>
+  <string name="morphe_swipe_seek_sensitivity_title">滑動快進靈敏度</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">手勢滑動對應的進度條移動距離</string>
   <string name="morphe_swipe_zone_width_title">左/右區域寬度</string>
   <string name="morphe_swipe_zone_width_summary">螢幕左右邊緣保留給向左和向右滑動手勢的百分比 (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">亮度</string>
@@ -927,9 +931,9 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">雙語字幕</string>
   <string name="morphe_caption_block_translation_failed">部份字幕無法提供。顯示可用的字幕。</string>
   <string name="morphe_caption_blocks_too_large">兩個字幕語言無法在這個播放器中完整顯示。顯示主要語言。</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">導覽列按鈕</string>
-  <string name="morphe_navigation_buttons_screen_summary">選擇要在工具列中顯示哪些元件</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">導覽列</string>
+  <string name="morphe_navigation_bar_screen_summary">選擇要在工具列中顯示哪些元件</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">隱藏首頁按鈕</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

@@ -200,6 +200,26 @@ Nedlastede spor vises her"</string>
   <string name="morphe_music_downloads_progress">Laster ned %s%%</string>
   <string name="morphe_music_downloads_complete">Nedlasting fullført</string>
   <string name="morphe_music_downloads_failed">Nedlasting feilet</string>
+  <string name="morphe_music_downloads_playlist_download_title">Nedlasting av spilleliste</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Henter spor…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s hentet…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Kunne ikke hente sporene i spillelisten</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Allerede nedlastet: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s i denne spillelisten, %2$s er ikke nedlastet ennå.
+
+De lastes ned én etter én, noe som kan ta lang tid og krever omtrent %3$s ledig plass"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Last ned</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Laster ned spor %1$s av %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s nedlastet</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s nedlastet, %2$s kunne ikke lastes ned</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Nedlasting av spilleliste pågår allerede</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Kontoen din er ikke kjent ennå. Prøv igjen om et øyeblikk</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s hentet, alle er allerede nedlastet</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Kun deler av spillelisten kunne hentes. Trykk på Last ned igjen senere for å hente resten</string>
+  <string name="morphe_music_downloads_playlist_download_started">Laster ned %s i bakgrunnen</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Ingen nettverksforbindelse</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Venter på nettverk…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Stoppet etter %1$s av %2$s. Trykk på Last ned igjen for å fortsette</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Om</string>

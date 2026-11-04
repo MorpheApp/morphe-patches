@@ -771,6 +771,10 @@ Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaiki
   <string name="morphe_swipe_left_zone_title">Vasakule pühkimise žest</string>
   <string name="morphe_swipe_right_zone_title">Paremale pühkimise žest</string>
   <string name="morphe_swipe_top_zone_title">Üles pühkimise žest</string>
+  <string name="morphe_swipe_seek_title">Libista otsimiseks</string>
+  <string name="morphe_swipe_seek_summary">Liiguta täisekraanipleieris sõrme vasakule või paremale, et nihutada ajajoont, ja vabasta sõrm, et liikuda soovitud kohta</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Otsimisriba libistamistundlikkus</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Kui kaugele otsimisriba iga libistamisliigutusega liigub</string>
   <string name="morphe_swipe_zone_width_title">Vasaku/parema tsooni laius</string>
   <string name="morphe_swipe_zone_width_summary">Iga ekraaniserva protsent, mis on reserveeritud vasakule ja paremale pühkimise žestide jaoks (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Heledus</string>
@@ -927,9 +931,9 @@ Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaiki
   <string name="morphe_dual_captions_enabled_title">Kahekeelsed subtiitrid</string>
   <string name="morphe_caption_block_translation_failed">Mõningad subtiitrite tõlked pole saadaval. Kuvatakse saadaval olevad subtiitrid.</string>
   <string name="morphe_caption_blocks_too_large">Mõlemad subtiitrite keeled ei mahu sellesse pleierisse. Kuvatakse esmase keele subtiitrid.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigeerimisnupud</string>
-  <string name="morphe_navigation_buttons_screen_summary">Valige, millised nupud alumises navigatsioonisribas kuvatakse</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigeerimisriba</string>
+  <string name="morphe_navigation_bar_screen_summary">Valige, millised nupud alumises navigatsioonisribas kuvatakse</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Peida nupp Avaleht</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

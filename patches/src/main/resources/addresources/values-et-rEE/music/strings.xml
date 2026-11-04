@@ -200,6 +200,26 @@ Allalaaditud palad ilmuvad siia"</string>
   <string name="morphe_music_downloads_progress">Allalaadimine %s%%</string>
   <string name="morphe_music_downloads_complete">Allalaadimine lõpetatud</string>
   <string name="morphe_music_downloads_failed">Allalaadimine ebaõnnestus</string>
+  <string name="morphe_music_downloads_playlist_download_title">Esitusloendi allalaadimine</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Loetakse lugusid…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s loetletud…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Esitusloendi lugude loetlemine ebaõnestus</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Juba allalaaditud: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"Selles esitusloendis on %1$s lugu, %2$s pole veel allalaaditud.
+
+Need laadatakse alla ükshaavuti, mis võib võtta kaua ja nõuab umbes %3$s vaba ruumi"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Laadi alla</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Laadatakse alla lugu %1$s kokku %2$s-st</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s allalaaditud</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s allalaaditud, %2$s allalaadimine ebaõnestus</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Esitusloendi allalaadimine on juba käimas</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Teie konto pole veel teada. Proovige hetke pärast uuesti</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s loetletud, kõik on juba allalaaditud</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Loetleti vaid osa esitusloendist. Puutke hiljem uuesti nuppu Allalaadimine, et saada ülejäänik</string>
+  <string name="morphe_music_downloads_playlist_download_started">Laadatakse %s taustal alla</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Puudub võrgühendus</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Oigatakse võrgühendust…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Peatatud pärast %1$s kokku %2$s-st. Jätkamiseks puutke uuesti nuppu Allalaadimine</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Teave</string>

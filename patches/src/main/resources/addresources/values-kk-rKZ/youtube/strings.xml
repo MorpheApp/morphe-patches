@@ -927,9 +927,9 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_dual_captions_enabled_title">Екі тілді субтитрлер</string>
   <string name="morphe_caption_block_translation_failed">Кейбір субтитрлер аудармалары қолжетімсіз. Қолжетімді субтитрлер көрсетілуде.</string>
   <string name="morphe_caption_blocks_too_large">Субтитрлердің екі тілі де бұл плеерге сыймайды. Негізгі тіл көрсетілуде.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Навигациялық түймелер</string>
-  <string name="morphe_navigation_buttons_screen_summary">Төменгі навигациялық панельде қай түймелер пайда болатынын таңдаңыз</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Навигациялық панель</string>
+  <string name="morphe_navigation_bar_screen_summary">Төменгі навигациялық панельде қай түймелер пайда болатынын таңдаңыз</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Басты бет түймесін жасыру</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

@@ -200,6 +200,26 @@ Les pistes descarregades apareixen aquí"</string>
   <string name="morphe_music_downloads_progress">Descarregant %s%%</string>
   <string name="morphe_music_downloads_complete">Descarrega completada</string>
   <string name="morphe_music_downloads_failed">La descarrega ha fallat</string>
+  <string name="morphe_music_downloads_playlist_download_title">Descàrrega de la llista de reproducció</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Llistant pistes…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s llistats…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">No s\'han pogut llistar les pistes de la llista de reproducció</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Ja descarregat: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s en aquesta llista de reproducció, %2$s encara no s'han descarregat.
+
+Es descarreguen una per una, cosa que pot trigar molt de temps i requereix uns %3$s d'espai lliure"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Descarregar</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Descarregant la pista %1$s de %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s descarregat</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s descarregats, %2$s no s\'han pogut descarregar</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">La descàrrega de la llista de reproducció ja està en curs</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">El teu compte encara no s\'ha reconegut. Torna-ho a provar d\'aquí a un moment</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s llistats, tots ja descarregats</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Només s\'ha pogut llistar part de la llista de reproducció. Toca Descarregar més tard per obtenir la resta</string>
+  <string name="morphe_music_downloads_playlist_download_started">Descarregant %s en segon pla</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">No hi ha connexió a la xarxa</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Esperant la xarxa…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Aturat després de %1$s de %2$s. Toca Descarregar novament per continuar</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Sobre Morphe</string>

@@ -759,6 +759,10 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_swipe_left_zone_title">Hnigun til vinstra</string>
   <string name="morphe_swipe_right_zone_title">Hægri sveifluherðing</string>
   <string name="morphe_swipe_top_zone_title">Efri sveifluherðing</string>
+  <string name="morphe_swipe_seek_title">Strika til að leita</string>
+  <string name="morphe_swipe_seek_summary">Strika til vinstra eða hægra á fullskáspilaranum til að flytja leitarstikuna og sleppa til að leita</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Viðbragðsgildi leitarstrikunar</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Hversu mikið leitarstikan flytist við hverja strikun</string>
   <string name="morphe_swipe_zone_width_title">Breidd vinstri/hægri svæðis</string>
   <string name="morphe_swipe_zone_width_summary">Hlutfall hvers skjábruna sem er reserved fyrir vinstri og hægri sveifluherðingar (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Skær</string>
@@ -915,9 +919,9 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_dual_captions_enabled_title">Tvíliðu-texti</string>
   <string name="morphe_caption_block_translation_failed">Sumar þýðingar á texta eru ekki aðgengilegar. Sýni texta sem eru aðgengilegir.</string>
   <string name="morphe_caption_blocks_too_large">Báð mál á textanum passa ekki inn í þennan spilara. Sýni aðalmál.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Stýrihnappar</string>
-  <string name="morphe_navigation_buttons_screen_summary">Veldu hvaða hnappa þú vilt sýna í neðri stjórnarborðinu</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Naviggunarslá</string>
+  <string name="morphe_navigation_bar_screen_summary">Veldu hvaða hnappa þú vilt sýna í neðri stjórnarborðinu</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Felur Heimhnappinn</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -930,7 +934,9 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_hide_notifications_button_title">Felur Tilkynninga hnappinn</string>
   <string name="morphe_show_search_button_title">Sýnir Leita hnappinn</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Sýna hnapp fyrir Horfa síðar</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Horfa síðar</string>
   <string name="morphe_show_settings_button_title">Sýnir Stillingar hnappinn</string>
   <string name="morphe_show_settings_button_type_title">Starfa árásnstjórnstikur</string>
   <string name="morphe_show_settings_button_type_summary">Opnar Morphe stillingar þegar virkjað, eða YouTube stillingar þegar óvirkt</string>
@@ -1697,7 +1703,10 @@ Myndbandsspilun með AV1 getur hrickast eða skotið ramma"</string>
   <string name="morphe_niconico_comments_max_length_title">Hámarks lengd athugasemdar</string>
   <string name="morphe_niconico_comments_max_length_summary">Fela athugasemdir sem innihalda fleiri staf en þetta. Hver tiltekni tákn taldist eins og einn stafur</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Engin takmörkun</string>
+  <string name="morphe_niconico_comments_live_streams_title">Sýna á beinum útsendingum</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Beinar útsendingar og endurspilunar þeirra</string>
   <string name="morphe_niconico_comments_live_premieres_title">Sýna í úrvinnuvídeókum</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Frumframsýningar á meðan þær spilast</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Sýna í endaðum úrvinnuvídeókum</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Spilun aftur á spjalli fyrir úrvinnuðar frumsýningar</string>
   <string name="morphe_live_chat_translate_screen_title">Þýðing á beinsendum spjallum</string>

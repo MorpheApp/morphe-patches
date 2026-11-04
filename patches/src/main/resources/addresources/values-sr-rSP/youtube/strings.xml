@@ -771,6 +771,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_left_zone_title">Гест превлачења улево</string>
   <string name="morphe_swipe_right_zone_title">Гест превлачења удесно</string>
   <string name="morphe_swipe_top_zone_title">Гест превлачења нагоре</string>
+  <string name="morphe_swipe_seek_title">Prevuci za перемотавање</string>
+  <string name="morphe_swipe_seek_summary">Prevucite лево или десно на пуноекранском плејеру да померате траку за перемотавање, и пустите да перемотате</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Осетљивост превлачења за перемотавање</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Колико се трака за перемотавање помера при сваком превлачењу</string>
   <string name="morphe_swipe_zone_width_title">Ширина леве/десне зоне</string>
   <string name="morphe_swipe_zone_width_summary">Проценат сваке ивице екрана резервисан за гестове превлачења улево и удесно (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Осветљење</string>
@@ -925,9 +929,9 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">Двојезични титлови</string>
   <string name="morphe_caption_block_translation_failed">Неки преводи титлова нису доступни. Приказују се доступни титлови.</string>
   <string name="morphe_caption_blocks_too_large">Оба језика титлова не стају у овај плејер. Приказује се примарни језик.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Дугмад навигације</string>
-  <string name="morphe_navigation_buttons_screen_summary">Одаберите који дугмићи ће се појавити на доњој навигационој траци.</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Трака за навигацију</string>
+  <string name="morphe_navigation_bar_screen_summary">Одаберите који дугмићи ће се појавити на доњој навигационој траци.</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Сакриј дугме „Насловна страна“</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -940,6 +944,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">Сакриј дугме „Обавештења“</string>
   <string name="morphe_show_search_button_title">Прикажи дугме „Претрага“</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Prikaži dugme Gledaj kasnije</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">За касније</string>
   <string name="morphe_show_settings_button_title">Прикажи дугме „Подешавања“</string>
@@ -1732,7 +1737,10 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">Максимална дужина коментара</string>
   <string name="morphe_niconico_comments_max_length_summary">Сакрива коментарe са више знакова од овога. Сваки емоџи се рачуна као један знак</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без ограничења</string>
+  <string name="morphe_niconico_comments_live_streams_title">Prikaži na live streamovima</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Live streamovi i njihova ponovna emitovanja</string>
   <string name="morphe_niconico_comments_live_premieres_title">Прикажи на премијерама</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premijere dok se puštaju</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Прикажи на завршеним премијерама</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Поновно пуштање чет а за Премијере које су завршене</string>
   <string name="morphe_live_chat_translate_screen_title">Превод чэта уживо</string>

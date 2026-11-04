@@ -198,7 +198,8 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">இருமொழி தலைப்புகள்</string>
   <string name="morphe_caption_block_translation_failed">சில தலைப்பு மொழிபெயர்ப்புகள் கிடைக்கவில்லை. கிடைக்கக்கூடிய தலைப்புகள் காண்பிக்கப்படுகின்றன.</string>
   <string name="morphe_caption_blocks_too_large">இரண்டு தலைப்பு மொழிகளும் இந்த பிளேயரில் பொருந்தவில்லை. முதன்மை மொழி காண்பிக்கப்படுகிறது.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">வழிசெலுத்தல் பட்டை</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Create' has no display name. Translate normally. -->

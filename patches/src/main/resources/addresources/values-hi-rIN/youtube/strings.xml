@@ -771,6 +771,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_swipe_left_zone_title">बाएं स्वाइप जेस्चर</string>
   <string name="morphe_swipe_right_zone_title">दाएं स्वाइप जेस्चर</string>
   <string name="morphe_swipe_top_zone_title">ऊपर स्वाइप जेस्चर</string>
+  <string name="morphe_swipe_seek_title">सीक करने के लिए स्वाइप करें</string>
+  <string name="morphe_swipe_seek_summary">सीकबार को घुमाने के लिए फुलस्क्रीन प्लेयर पर बाएं या दाएं स्वाइप करें, और सीक करने के लिए छोड़ दें</string>
+  <string name="morphe_swipe_seek_sensitivity_title">सीक स्वाइप संवेदनशीलता</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">प्रत्येक स्वाइप के लिए सीकबार कितनी दूर चलता है</string>
   <string name="morphe_swipe_zone_width_title">बाएं/दाएं क्षेत्र की चौड़ाई</string>
   <string name="morphe_swipe_zone_width_summary">बाएं और दाएं स्वाइप जेस्चर के लिए प्रत्येक स्क्रीन किनारे का प्रतिशत (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">चमक</string>
@@ -927,9 +931,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_dual_captions_enabled_title">द्विभाषी कैप्शन</string>
   <string name="morphe_caption_block_translation_failed">कुछ कैप्शन अनुवाद उपलब्ध नहीं हैं। उपलब्ध कैप्शन दिखाए जा रहे हैं।</string>
   <string name="morphe_caption_blocks_too_large">दोनों कैप्शन भाषाएँ इस प्लेयर में फिट नहीं होती हैं। प्राथमिक भाषा दिखाई जा रही है।</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">नविगेशन बटन</string>
-  <string name="morphe_navigation_buttons_screen_summary">टूलबार में प्रदर्शित होने वाले घटकों को चुनें</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">नेविगेशन बार</string>
+  <string name="morphe_navigation_bar_screen_summary">टूलबार में प्रदर्शित होने वाले घटकों को चुनें</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">कास्ट बटन छुपाएं</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -942,7 +946,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_hide_notifications_button_title">खोज बटन छुपाएं</string>
   <string name="morphe_show_search_button_title">सेटिंग बटन दिखाएं</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">\"बाद में देखें\" बटन दिखाएं</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">बाद में देखें</string>
   <string name="morphe_show_settings_button_title">जब सक्षम हो तो मोर्फ सेटिंग खोलता है, या अक्षम होने पर YouTube सेटिंग खोलता है</string>
   <string name="morphe_show_settings_button_type_title">सेटिंग बटन कार्रवाई</string>
   <string name="morphe_show_settings_button_type_summary">टैब के बीच स्विच करते समय संक्रमण को एनिमेट करता है</string>
@@ -1733,7 +1739,10 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_niconico_comments_max_length_title">कमेंट की अधिकतम लंबाई</string>
   <string name="morphe_niconico_comments_max_length_summary">इससे अधिक वर्णों वाले कमेंट छुपाएं। प्रत्येक इमोजी को एक वर्ण माना जाएगा</string>
   <string name="morphe_niconico_comments_max_length_no_limit">कोई सीमा नहीं</string>
+  <string name="morphe_niconico_comments_live_streams_title">लाइव स्ट्रीम पर दिखाएं</string>
+  <string name="morphe_niconico_comments_live_streams_summary">लाइव स्ट्रीम और उनके रिप्ले</string>
   <string name="morphe_niconico_comments_live_premieres_title">प्रीमियर पर दिखाएं</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">प्रीमियर जब वे चल रहे हों</string>
   <string name="morphe_niconico_comments_ended_premieres_title">समाप्त हो चुके प्रीमियर पर दिखाएं</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">समाप्त हो चुके प्रीमियर का चैट रीप्ले</string>
   <string name="morphe_live_chat_translate_screen_title">लाइव चैट अनुवाद</string>

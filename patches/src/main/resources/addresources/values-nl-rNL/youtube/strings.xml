@@ -771,6 +771,10 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_swipe_left_zone_title">Veeggebaar naar links</string>
   <string name="morphe_swipe_right_zone_title">Veeggebaar naar rechts</string>
   <string name="morphe_swipe_top_zone_title">Veeggebaar naar boven</string>
+  <string name="morphe_swipe_seek_title">Veeg om te zoeken</string>
+  <string name="morphe_swipe_seek_summary">Veeg naar links of rechts op de全schermspeler om de zoekbalk te verplaatsen en laat los om te zoeken</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Gevoeligheid veeggebaar zoeken</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Hoe ver de zoekbalk per veegbeweging verschuift</string>
   <string name="morphe_swipe_zone_width_title">Breedte links/rechts zone</string>
   <string name="morphe_swipe_zone_width_summary">Percentage van elke schermrand gereserveerd voor veeggebaren naar links en rechts (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Helderheid</string>
@@ -925,9 +929,9 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_dual_captions_enabled_title">Tweetalige ondertitelingen</string>
   <string name="morphe_caption_block_translation_failed">Sommige vertalingen van ondertitelingen zijn niet beschikbaar. Beschikbare ondertitelingen worden getoond.</string>
   <string name="morphe_caption_blocks_too_large">Beide talen van de ondertiteling passen niet in deze player. De primaire taal wordt getoond.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigatieknoppen</string>
-  <string name="morphe_navigation_buttons_screen_summary">Kies welke componenten er in de werkbalk verschijnen</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigatiebalk</string>
+  <string name="morphe_navigation_bar_screen_summary">Kies welke componenten er in de werkbalk verschijnen</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Verberg Home-knop</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

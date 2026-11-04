@@ -771,6 +771,10 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_swipe_left_zone_title">Balra törölés gesztus</string>
   <string name="morphe_swipe_right_zone_title">Jobbra törölés gesztus</string>
   <string name="morphe_swipe_top_zone_title">Felfelé törölés gesztus</string>
+  <string name="morphe_swipe_seek_title">Görgetéssel keresés</string>
+  <string name="morphe_swipe_seek_summary">Húzza balra vagy jobbra a teljes képernyős lejátszóban a keresősáv mozgatásához, majd engedje el a kereséshez</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Kereső-görgetés érzékenysége</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Hogy mennyire mozog a keresősáv egyetlen görgetésnél</string>
   <string name="morphe_swipe_zone_width_title">Bal/Jobb zóna szélessége</string>
   <string name="morphe_swipe_zone_width_summary">A képernyő szélének százaléka, amely a balra és jobbra történő törlési gesztusok számára reserved (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Fényerő</string>
@@ -927,9 +931,9 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_dual_captions_enabled_title">Kétnyelvű feliratok</string>
   <string name="morphe_caption_block_translation_failed">Némely feliratfordítás nem érhető el. A rendelkezésre álló feliratok jelennek meg.</string>
   <string name="morphe_caption_blocks_too_large">Mindkét feliratnyelv nem fér bele ebbe a lejátszóba. A primer nyelv jelenik meg.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigációs gombok</string>
-  <string name="morphe_navigation_buttons_screen_summary">Válassza ki, mely gombok jelenjenek meg a felső eszköztáron</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigációs sáv</string>
+  <string name="morphe_navigation_bar_screen_summary">Válassza ki, mely gombok jelenjenek meg a felső eszköztáron</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Kezdőlap gomb elrejtése</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -942,6 +946,7 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_hide_notifications_button_title">Értesítések gomb elrejtése</string>
   <string name="morphe_show_search_button_title">Keresés gomb megjelenítése</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Később megnézem gomb megjelenítése</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Megnézem később</string>
   <string name="morphe_show_settings_button_title">Beállítások gomb megjelenítése</string>
@@ -1734,7 +1739,10 @@ A automatikus rögzítés opcionális. Inkognitó módban vagy a fiókváltás s
   <string name="morphe_niconico_comments_max_length_title">Maximális kommenthossz</string>
   <string name="morphe_niconico_comments_max_length_summary">Rejtőzi a kommenteket, amelyek több karakterből állnak, mint ez. Minden emoji egy karakternek számít</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Nincs korlát</string>
+  <string name="morphe_niconico_comments_live_streams_title">Megjelenítés élő közvetítéseken</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Élő közvetítések és azoktaki lejátszások</string>
   <string name="morphe_niconico_comments_live_premieres_title">Megjelenítése premiereken</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premierések a lejátszás alatt</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Mutasd a befejezett Premieres videóknál</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">A befejezett Premieres videók chat-lejátszása</string>
   <string name="morphe_live_chat_translate_screen_title">Élő csevegés fordítása</string>

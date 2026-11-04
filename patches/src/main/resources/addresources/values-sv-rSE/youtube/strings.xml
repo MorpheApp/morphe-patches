@@ -771,6 +771,10 @@ För att åtgärda detta, aktivera 'Spoofa videoströmmar' och ändra 'Standardk
   <string name="morphe_swipe_left_zone_title">Vänstersvepgest</string>
   <string name="morphe_swipe_right_zone_title">Högersvepgest</string>
   <string name="morphe_swipe_top_zone_title">Översvepgest</string>
+  <string name="morphe_swipe_seek_title">Svep för att spola</string>
+  <string name="morphe_swipe_seek_summary">Svep åt vänster eller höger i helskärmsläge för att flytta spolelisten, och släpp för att spola</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Svepkänslighet för spolning</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Hur långt spolelisten flyttas vid varje svep</string>
   <string name="morphe_swipe_zone_width_title">Vänster/höger zonbredd</string>
   <string name="morphe_swipe_zone_width_summary">Procentandel av varje skärmkant reserverad för vänster- och högersvepgester (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Ljusstyrka</string>
@@ -927,9 +931,9 @@ För att åtgärda detta, aktivera 'Spoofa videoströmmar' och ändra 'Standardk
   <string name="morphe_dual_captions_enabled_title">Tvåspråkig textning</string>
   <string name="morphe_caption_block_translation_failed">Vissa översättningar av textningen är inte tillgängliga. Visar tillgänglig textning.</string>
   <string name="morphe_caption_blocks_too_large">Båda språken för textningen får inte plats i den här spelaren. Visar det primära språket.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigeringsknappar</string>
-  <string name="morphe_navigation_buttons_screen_summary">Välj vilka knappar som visas i navigeringsfältet längst ned</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigeringsfält</string>
+  <string name="morphe_navigation_bar_screen_summary">Välj vilka knappar som visas i navigeringsfältet längst ned</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Dölj knappen Hem</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

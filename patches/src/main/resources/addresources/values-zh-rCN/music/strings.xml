@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">正在下载 %s%%</string>
   <string name="morphe_music_downloads_complete">下载完成</string>
   <string name="morphe_music_downloads_failed">下载失败</string>
+  <string name="morphe_music_downloads_playlist_download_title">播放列表下载</string>
+  <string name="morphe_music_downloads_playlist_download_listing">正在列出曲目……</string>
+  <string name="morphe_music_downloads_playlist_download_listed">已列出 %s 个……</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">无法列出播放列表的曲目</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">已下载：%s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"此播放列表中有 %1$s 个曲目，其中 %2$s 个尚未下载。
+
+曲目将依次逐个下载，这可能需要较长时间，并需要约 %3$s 的可用空间"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">下载</string>
+  <string name="morphe_music_downloads_playlist_download_progress">正在下载第 %1$s/%2$s 个曲目</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s 已下载</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s 个已下载，%2$s 个无法下载</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">播放列表下载已在进行中</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">尚未识别您的帐户。请稍后再试</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">已列出 %s 个，全部已下载</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">仅能列出部分播放列表。请稍后再次点击下载以获取其余部分</string>
+  <string name="morphe_music_downloads_playlist_download_started">正在后台下载 %s</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">无网络连接</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">正在等待网络……</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">在下载 %2$s 个曲目中的 %1$s 个后停止。请再次点击下载以继续</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">关于</string>

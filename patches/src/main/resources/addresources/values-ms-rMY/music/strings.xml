@@ -200,6 +200,26 @@ Jejak yang dimuat turun akan muncul di sini"</string>
   <string name="morphe_music_downloads_progress">Memuat turun %s%%</string>
   <string name="morphe_music_downloads_complete">Muat turun selesai</string>
   <string name="morphe_music_downloads_failed">Muat turun gagal</string>
+  <string name="morphe_music_downloads_playlist_download_title">Muat turun senarai main</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Menyenaraikan trek…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s disenaraikan…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Tidak dapat menyenaraikan trek senarai main</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Sudah dimuat turun: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s dalam senarai main ini, %2$s belum dimuat turun.
+
+Ia dimuat turun satu demi satu, yang mungkin mengambil masa yang lama dan memerlukan sekitar %3$s ruang kosong"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Muat turun</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Memuat turun trek %1$s daripada %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s dimuat turun</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s dimuat turun, %2$s tidak dapat dimuat turun</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Muat turun senarai main sudah dalam proses</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Akaun anda belum dikenali. Cuba lagi sebentar lagi</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s disenaraikan, semua sudah dimuat turun</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Hanya sebahagian daripada senarai main yang dapat disenaraikan. Ketik Muat Turun lagi kemudian untuk mendapatkan selebihnya</string>
+  <string name="morphe_music_downloads_playlist_download_started">Memuat turun %s di latar belakang</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Tiada sambungan rangkaian</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Menunggu rangkaian…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Berhenti selepas %1$s daripada %2$s. Ketik Muat Turun lagi untuk meneruskan</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Mengenai</string>

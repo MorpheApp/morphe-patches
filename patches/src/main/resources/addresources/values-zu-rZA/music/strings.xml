@@ -200,6 +200,26 @@ Amakhasi alandwe azovela lapha"</string>
   <string name="morphe_music_downloads_progress">Kulandwa %s%%</string>
   <string name="morphe_music_downloads_complete">Ukulanda kuphothulwe</string>
   <string name="morphe_music_downloads_failed">Ukulanda kuhleleke</string>
+  <string name="morphe_music_downloads_playlist_download_title">Ukudownload uhlu lwezingoma</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Kuhlistwa izingoma…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s kuhlistwe…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Kukholeleka ukulista izingoma zohlu lwezingoma</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Sekudownloadwe: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s kulolu hlu lwezingoma, %2$s azikadownloadwe.
+
+Zidownloadwa ngeshona ngeshona, okungathatha isikhathi eside futhi kudinga cishe %3$s yespace engenkinga"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Landa</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Kudownloadwa ingoma %1$s kwe %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s kudownloadwe</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s kudownloadwe, %2$s kwezoningoma kukhona okungekabi kudownloadwe</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Ukudownload uhlu lwezingoma sekuhamba</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">I-akhawunti yakho ayisaziwe okwamanje. Zama futhi emva kwesikhashana</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s kuhlistwe, konke sekudownloadwe</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Ingxenye kuphela yohlu lwezingoma eyakwazi ukulistwa. Chofoza Download futhi emva kwesikhashana ukuze uthole esisasele</string>
+  <string name="morphe_music_downloads_playlist_download_started">Kudownloadwa u-%s ngemuva kwamasizinda</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Ayikho uxhumano lwenetwork</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Kulindwe inextwork…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Kumiwe emva kwe-%1$s kwe-%2$s. Chofoza Download futhi ukuze uqhubeke</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Mayelana neMorphe</string>

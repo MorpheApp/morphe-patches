@@ -199,6 +199,23 @@ Melodiile descărcate apar aici"</string>
   <string name="morphe_music_downloads_progress">Se descarcă %s%%</string>
   <string name="morphe_music_downloads_complete">Descărcare finalizată</string>
   <string name="morphe_music_downloads_failed">Descărcare eșuată</string>
+  <string name="morphe_music_downloads_playlist_download_title">Descărcare playlist</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Se listează piesele…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Nu s-au putut lista piesele din playlist</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Deja descărcate: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s în acest playlist, %2$s nu au fost încă descărcate.
+
+Acestea sunt descărcate una câte una, ceea ce poate dura mult timp și necesită aproximativ %3$s spațiu liber"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Descărcare</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Se descarcă piesa %1$s din %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s descărcați</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Descărcarea playlist-ului este deja în curs</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Contul tău nu este cunoscut încă. Încearcă din nou peste puțin</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Doar o parte din playlist a putut fi listată. Apasă din nou pe Descărcare mai târziu pentru a obține restul</string>
+  <string name="morphe_music_downloads_playlist_download_started">Se descarcă %s în fundal</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Nu există conexiune la rețea</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Se așteaptă conexiunea la rețea…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Oprit după %1$s din %2$s. Apasă din nou pe Descărcare pentru a continua</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Despre</string>

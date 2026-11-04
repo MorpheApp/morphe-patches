@@ -771,6 +771,10 @@ Da biste to popravili, uključite 'Spoof video strimovi' i promenite 'Podrazumev
   <string name="morphe_swipe_left_zone_title">Gest lekarim prevlačenjem</string>
   <string name="morphe_swipe_right_zone_title">Gest desnim prevlačenjem</string>
   <string name="morphe_swipe_top_zone_title">Gest prevlačenjem nagore</string>
+  <string name="morphe_swipe_seek_title">Prevuci za premotavanje</string>
+  <string name="morphe_swipe_seek_summary">Prevucite levo ili desno na plejeru u punom ekranu da pomerite traku za premotavanje, i pustite da biste premotali</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Osetljivost prevlačenja za premotavanje</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Koliko se traka za premotavanje pomera pri svakom prevlačenju</string>
   <string name="morphe_swipe_zone_width_title">Širina leve/desne zone</string>
   <string name="morphe_swipe_zone_width_summary">Procenat svake ivice ekrana rezervisan za gestove prevlačenja levo i desno (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Osvetljenost</string>
@@ -927,9 +931,9 @@ Da biste to popravili, uključite 'Spoof video strimovi' i promenite 'Podrazumev
   <string name="morphe_dual_captions_enabled_title">Dvojezični titlovi</string>
   <string name="morphe_caption_block_translation_failed">Neki prevodi titlova nisu dostupni. Prikazujući dostupne titlove.</string>
   <string name="morphe_caption_blocks_too_large">Oba jezika titlova ne odgovaraju ovom plejeru. Prikazivanje primarnog jezika.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Dugmad navigacije</string>
-  <string name="morphe_navigation_buttons_screen_summary">Izaberite koja komponenta se pojavljuje u traci sa alatkama</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Трака за навигацију</string>
+  <string name="morphe_navigation_bar_screen_summary">Izaberite koja komponenta se pojavljuje u traci sa alatkama</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Sakrij dugme „Početna”</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -942,6 +946,7 @@ Da biste to popravili, uključite 'Spoof video strimovi' i promenite 'Podrazumev
   <string name="morphe_hide_notifications_button_title">Sakrij dugme „Obaveštenja”</string>
   <string name="morphe_show_search_button_title">Prikaži dugme „Pretraga”</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Prikaži dugme Gledaj kasnije</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Za kasnije</string>
   <string name="morphe_show_settings_button_title">Prikaži dugme „Podešavanja”</string>
@@ -1734,7 +1739,10 @@ Automatsko snimanje je opciono. Zaustavlja se u privatnom modu ili kada se nalog
   <string name="morphe_niconico_comments_max_length_title">Maksimalna dužina komentara</string>
   <string name="morphe_niconico_comments_max_length_summary">Skriva komentare koji imaju više znakova od ovoga. Svaki emoji se računa kao jedan znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Bez ograničenja</string>
+  <string name="morphe_niconico_comments_live_streams_title">Prikaži na strimovima uživo</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Strimovi uživo i njihova ponovljena emitovanja</string>
   <string name="morphe_niconico_comments_live_premieres_title">Prikaži na premijerama</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premijere dok se puštaju</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Prikaži na završenim premijerama</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Ponovni prikaz ćaskanja za Premiere emisije koje su završene</string>
   <string name="morphe_live_chat_translate_screen_title">Prevod ćaskanja uživo</string>

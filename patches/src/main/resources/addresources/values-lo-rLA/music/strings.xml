@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">ກຳລັງດາວໂຫຼດ %s%%</string>
   <string name="morphe_music_downloads_complete">ດາວໂຫຼດສຳເລັດແລ້ວ</string>
   <string name="morphe_music_downloads_failed">ດາວໂຫຼດຫຼົ້ມເຫຼວ</string>
+  <string name="morphe_music_downloads_playlist_download_title">ດາວໂຫຼດເພລລິສ</string>
+  <string name="morphe_music_downloads_playlist_download_listing">ກຳລັງລາຍຊື່ເພງ…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">ລາຍຊື່ %s ແລ້ວ…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">ບໍ່ສາມາດລາຍຊື່ເພງຂອງເພລລິສໄດ້</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">ດາວໂຫຼດແລ້ວ: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"ມີ %1$s ໃນເພລລິສນີ້, %2$s ຍັງບໍ່ທັນໄດ້ດາວໂຫຼດ.
+
+ພວກມັນຈະຖືກດາວໂຫຼດເທື່ອລະເພງ, ເຊິ່ງອາດຈະໃຊ້ເວລາດົນ ແລະ ຕ້ອງການພື້ນທີ່ຫວ່າງປະມານ %3$s"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">ດາວໂຫຼດ</string>
+  <string name="morphe_music_downloads_playlist_download_progress">ກຳລັງດາວໂຫຼດເພງທີ %1$s ຈາກ %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">ດາວໂຫຼດ %s ແລ້ວ</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">ດາວໂຫຼດ %1$s ແລ້ວ, %2$s ບໍ່ສາມາດດາວໂຫຼດໄດ້</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">ການດາວໂຫຼດລາຍການເພງກຳລັງດຳເນີນການຢູ່</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">ບັນຊີຂອງທ່ານຍັງບໍ່ເປັນທີ່ຮູ້ຈັກ. ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນອີກສັກຄາວ</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">ລາຍຊື່ %s, ທັງໝົດຖືກດາວໂຫຼດແລ້ວ</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">ສາມາດລາຍຊື່ໄດ້ພຽງແຕ່ບາງສ່ວນຂອງລາຍການເພງ. ແຕະ ດາວໂຫຼດ ອີກຄັ້ງໃນພາຍຫຼັງເພື່ອຮັບສ່ວນທີ່ເຫຼືອ</string>
+  <string name="morphe_music_downloads_playlist_download_started">ກຳລັງດາວໂຫຼດ %s ໃນພື້ນຫຼັງ</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">ບໍ່ມີການເຊື່ອມຕໍ່ເຄືອຂ່າຍ</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">ກຳລັງລໍຖ້າເຄືອຂ່າຍ…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">ຢຸດຫຼັງຈາກ %1$s ຈາກ %2$s. ແຕະ ດາວໂຫຼດ ອີກຄັ້ງເພື່ອດຳເນີນການຕໍ່</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">ກ່ຽວກັບ Morphe</string>

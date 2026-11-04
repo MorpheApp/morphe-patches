@@ -771,6 +771,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_left_zone_title">Ձախ սվայփ ժեստ</string>
   <string name="morphe_swipe_right_zone_title">Աջ սվայփ ժեստ</string>
   <string name="morphe_swipe_top_zone_title">Վերևի սվայփ ժեստ</string>
+  <string name="morphe_swipe_seek_title">Սահեցրեք փնտրելու համար</string>
+  <string name="morphe_swipe_seek_summary">Լրիվ էկրանի նվագարկիչի վրա սահեցրեք ձախ կամ աջ՝ փնտրման սահիկը տեղաշարժելու համար, և բաց թողեք՝ փնտրելու համար</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Փնտրման սահեցման զգայունություն</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Թե որքան է տեղաշարժվում փնտրման սահիկը յուրաքանչյուր սահեցման ժամանակ</string>
   <string name="morphe_swipe_zone_width_title">Ձախ/Աջ գոտու լայնությունը</string>
   <string name="morphe_swipe_zone_width_summary">Էկրանի յուրաքանչյուր եզրի տոկոսը, որը ամրագրված է ձախ և աջ սվայփ ժեստերի համար (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Պայծառություն</string>
@@ -927,9 +931,9 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">Երկլեզու տառագրություն</string>
   <string name="morphe_caption_block_translation_failed">Տառագրության որոշ թարգմանություններ անհասանելի են: Ցուցադրվում են հասանելի տառագրությունները:</string>
   <string name="morphe_caption_blocks_too_large">Տառագրության երկու լեզուները չեն տեղավորվում այս նվագարկիչում: Ցուցադրվում է հիմնական լեզուն:</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Նավիգացիայի կոճակներ</string>
-  <string name="morphe_navigation_buttons_screen_summary">Ընտրեք, թե որ կոճirները հայտնվեն ներքևի նավիգացիոն վահանակում</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Նավիգացիայի վահանակ</string>
+  <string name="morphe_navigation_bar_screen_summary">Ընտրեք, թե որ կոճirները հայտնվեն ներքևի նավիգացիոն վահանակում</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Թաքցնել «Գլխավոր» կոճակը</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

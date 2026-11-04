@@ -927,9 +927,9 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_dual_captions_enabled_title">দ্বিবাসিক কেপচন</string>
   <string name="morphe_caption_block_translation_failed">কিছুমান কেপচন অনুবাদ উপলব্ধ নহয়। উপলব্ধ কেপচনসমূহ দেখুওৱা হৈছে।</string>
   <string name="morphe_caption_blocks_too_large">দুয়োটা কেপচন ভাষা এই প্লেয়াৰত খাপ নাখায়। মুখ্য ভাষাটি দেখুওৱা হৈছে।</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">নেভিগেশ্বন বুটামসমূহ</string>
-  <string name="morphe_navigation_buttons_screen_summary">তলৰ নেভিগেছন বাৰত কোনবোৰ বুটাম দেখুৱাব সেইটো বাছনি কৰক</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">নেভিগেচন বাৰ</string>
+  <string name="morphe_navigation_bar_screen_summary">তলৰ নেভিগেছন বাৰত কোনবোৰ বুটাম দেখুৱাব সেইটো বাছনি কৰক</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">হোম বুটামটো লুকুৱাওক</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

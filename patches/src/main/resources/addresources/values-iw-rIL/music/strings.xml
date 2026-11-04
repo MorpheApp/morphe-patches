@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">מוריד %s%%</string>
   <string name="morphe_music_downloads_complete">ההורדה הושלמה</string>
   <string name="morphe_music_downloads_failed">ההורדה נכשלה</string>
+  <string name="morphe_music_downloads_playlist_download_title">הורדת פלייליסט</string>
+  <string name="morphe_music_downloads_playlist_download_listing">מביא רשימת רצועות...</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s רשומים…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">לא ניתן היה להביא את רשימת הרצועות של הפלייליסט</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">כבר הורדו: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s רצועות בפלייליסט זה, %2$s עדיין לא הורדו.
+
+הן מורדות אחת אחת, מה שיכול לקחת זמן רב ודורש כ-%3$s של שטח פנוי"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">הורדה</string>
+  <string name="morphe_music_downloads_playlist_download_progress">מוריד רצועה %1$s מתוך %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s הורדו</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s הורדו, %2$s לא ניתן היה להוריד</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">הורדת פלייליסט כבר נמצאת בתהליך</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">חשבונך עדיין אינו מוכר. נסה שוב בעוד רגע</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s רצועות הוכנסו לרשימה, כולן כבר הורדו</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">ניתן היה להביא רק חלק מהפלייליסט. הקש שוב על הורדה מאוחר יותר כדי לקבל את השאר</string>
+  <string name="morphe_music_downloads_playlist_download_started">מוריד %s ברקע</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">אין חיבור לרשת</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">ממתין לרשת...</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">נעצר לאחר %1$s מתוך %2$s. הקש שוב על הורדה כדי להמשיך</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">אודות</string>

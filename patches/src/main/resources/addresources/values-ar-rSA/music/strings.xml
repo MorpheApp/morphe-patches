@@ -199,6 +199,24 @@ tظهر المسارات التي تم تنزيلها هنا"</string>
   <string name="morphe_music_downloads_progress">جارٍ التنزيل %s%%</string>
   <string name="morphe_music_downloads_complete">اكتمل التنزيل</string>
   <string name="morphe_music_downloads_failed">فشل التنزيل</string>
+  <string name="morphe_music_downloads_playlist_download_title">تنزيل قائمة التشغيل</string>
+  <string name="morphe_music_downloads_playlist_download_listing">جاري إدراج المقطوعات…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">تعذر إدراج مقطوعات قائمة التشغيل</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">تم التنزيل بالفعل: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s في قائمة التشغيل هذه، %2$s لم يتم تنزيلهم بعد.
+
+يتم تنزيلهم واحدًا تلو الآخر، مما قد يستغرق وقتًا طويلاً ويتطلب مساحة فارغة تبلغ %3$s تقريبًا"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">تنزيل</string>
+  <string name="morphe_music_downloads_playlist_download_progress">جاري تنزيل المقطوعة %1$s من أصل %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">تم تنزيل %1$s، وتعذر تنزيل %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">تنزيل قائمة التشغيل جارٍ بالفعل</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">حسابك غير معروف بعد. حاول مرة أخرى بعد لحظات</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">تم إدراج %s، وجميعها تم تنزيلها بالفعل</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">أمكن إدراج جزء من قائمة التشغيل فقط. اضغط على تنزيل مرة أخرى لاحقاً للحصول على البقية</string>
+  <string name="morphe_music_downloads_playlist_download_started">جاري تنزيل %s في الخلفية</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">لا يوجد اتصال بالشبكة</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">في انتظار الشبكة…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">توقف بعد %1$s من أصل %2$s. اضغط على تنزيل مرة أخرى للمتابعة</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">لمحة</string>

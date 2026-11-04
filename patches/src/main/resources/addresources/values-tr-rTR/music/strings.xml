@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">İndiriliyor: %s%%</string>
   <string name="morphe_music_downloads_complete">İndirme tamamlandı</string>
   <string name="morphe_music_downloads_failed">İndirme başarısız oldu</string>
+  <string name="morphe_music_downloads_playlist_download_title">Oynatma listesini indir</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Parçalar listeleniyor…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s listelendi…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Oynatma listesinin parçaları listelenemedi</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Zaten indirildi: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"Bu oynatma listesinde %1$s parça var, %2$s tanesi henüz indirilmedi.
+
+Parçalar tek tek indirilir; bu işlem uzun sürebilir ve yaklaşık %3$s boş alan gerektirir"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">İndir</string>
+  <string name="morphe_music_downloads_playlist_download_progress">%2$s parçadan %1$s\'incisi indiriliyor</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s indirildi</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s indirildi, %2$s indirilemedi</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Oynatma listesi indirmesi zaten sürüyor</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Hesabınız henüz bilinmiyor. Birazdan tekrar deneyin</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listelendi, tamamı zaten indirildi</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Oynatma listesinin yalnızca bir kısmı listelenebildi. Geri kalanını almak için daha sonra tekrar İndir\'e dokunun</string>
+  <string name="morphe_music_downloads_playlist_download_started">%s arka planda indiriliyor</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Ağ bağlantısı yok</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Ağ bekleniyor…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s parçadan %1$s\'incisinde durduruldu. Devam etmek için tekrar İndir\'e dokunun</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Hakkında</string>

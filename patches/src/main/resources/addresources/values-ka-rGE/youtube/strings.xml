@@ -771,6 +771,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_left_zone_title">მარცხნივ სვაიპის ჟესტი</string>
   <string name="morphe_swipe_right_zone_title">მარჯვნივ სვაიპის ჟესტი</string>
   <string name="morphe_swipe_top_zone_title">ზემოთ სვაიპის ჟესტი</string>
+  <string name="morphe_swipe_seek_title">გადატანა გადამ winding-ისთვის</string>
+  <string name="morphe_swipe_seek_summary">გადაიტანეთ მარცხნივ ან მარჯვნივ სრულეკრანიან პლეიერზე გადამ winding-ის ზოლის მოსატեղებად და გაუშვით გადასვლისთვის</string>
+  <string name="morphe_swipe_seek_sensitivity_title">გადატანით გადამ winding-ის სენსიტივობა</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">თითოეული გადატანისას გადამ winding-ის ზოლის გადაადგილების მანძილი</string>
   <string name="morphe_swipe_zone_width_title">მარცხენა/მარჯვენა ზონის სიგანე</string>
   <string name="morphe_swipe_zone_width_summary">ეკრანის თითოეული კიდის პროცენტული წილი, რომელიც დაჯავშნილია მარცხენა და მარჯვენა სვაიპ ჟესტებისთვის (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">სიკაშკაშე</string>
@@ -927,9 +931,9 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">ორენოვანი სუბტიტრები</string>
   <string name="morphe_caption_block_translation_failed">სუბტიტრების ზოგიერთი თარგმანი недоступен-ია. გამოჩენილია ხელმისაწვდომი სუბტიტრები.</string>
   <string name="morphe_caption_blocks_too_large">სუბტიტრების ორივე ენა არ ეტევა ამ პლეიერში. გამოჩენილია முதன்மையான ენა.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">ნავიგაციის ღილაკები</string>
-  <string name="morphe_navigation_buttons_screen_summary">აირჩიეთ, რომელი ღილაკები გამოჩნდეს ქვედა навіგაციის პანელზე</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">ნავიგაციის პანელი</string>
+  <string name="morphe_navigation_bar_screen_summary">აირჩიეთ, რომელი ღილაკები გამოჩნდეს ქვედა навіგაციის პანელზე</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">მთავარი ღილაკის დამალვა</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

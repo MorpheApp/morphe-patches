@@ -771,6 +771,10 @@ Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' 
   <string name="morphe_swipe_left_zone_title">Gesto swipe a sinistra</string>
   <string name="morphe_swipe_right_zone_title">Gesto swipe a destra</string>
   <string name="morphe_swipe_top_zone_title">Gesto swipe verso l\'alto</string>
+  <string name="morphe_swipe_seek_title">Scorri per cercare</string>
+  <string name="morphe_swipe_seek_summary">Scorri a sinistra o a destra nel player a schermo intero per spostare la barra di ricerca, quindi rilascia per cercare</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Sensibilità allo scorrimento della ricerca</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Di quanto si sposta la barra di ricerca per ogni scorrimento</string>
   <string name="morphe_swipe_zone_width_title">Larghezza zona sinistra/destra</string>
   <string name="morphe_swipe_zone_width_summary">Percentuale di ciascun bordo dello schermo riservata ai gesti swipe a sinistra e a destra (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Luminosità</string>
@@ -927,9 +931,9 @@ Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' 
   <string name="morphe_dual_captions_enabled_title">Sottotitoli bilingue</string>
   <string name="morphe_caption_block_translation_failed">Alcune traduzioni dei sottotitoli non sono disponibili. Vengono mostrati i sottotitoli disponibili.</string>
   <string name="morphe_caption_blocks_too_large">Entrambe le lingue dei sottotitoli non rientrano in questo player. Viene mostrata la lingua principale.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Pulsanti di navigazione</string>
-  <string name="morphe_navigation_buttons_screen_summary">Scegli quali pulsanti visualizzare nella barra di navigazione inferiore</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Barra di navigazione</string>
+  <string name="morphe_navigation_bar_screen_summary">Scegli quali pulsanti visualizzare nella barra di navigazione inferiore</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Nascondi il pulsante Home</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -942,6 +946,7 @@ Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' 
   <string name="morphe_hide_notifications_button_title">Nascondi il pulsante Notifiche</string>
   <string name="morphe_show_search_button_title">Mostra il pulsante Ricerca</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Mostra pulsante Guarda più tardi</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Guarda più tardi</string>
   <string name="morphe_show_settings_button_title">Mostra il pulsante Impostazioni</string>
@@ -1733,7 +1738,10 @@ La registrazione automatica è facoltativa. Si arresta in modalità incognito o 
   <string name="morphe_niconico_comments_max_length_title">Lunghezza massima dei commenti</string>
   <string name="morphe_niconico_comments_max_length_summary">Nasconde i commenti con più caratteri di questo. Ogni emoji conta come un carattere</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Nessun limite</string>
+  <string name="morphe_niconico_comments_live_streams_title">Mostra nelle dirette</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Dirette e relative repliche</string>
   <string name="morphe_niconico_comments_live_premieres_title">Mostra nelle Anteprime</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premiere durante la riproduzione</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Mostra nelle Anteprime terminate</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Riproduzione della chat delle Anteprime terminate</string>
   <string name="morphe_live_chat_translate_screen_title">Traduzione chat dal vivo</string>

@@ -200,6 +200,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Загрузка... %s%%</string>
   <string name="morphe_music_downloads_complete">Загрузка завершена</string>
   <string name="morphe_music_downloads_failed">Не удалось скачать</string>
+  <string name="morphe_music_downloads_playlist_download_title">Загрузка плейлиста</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Составление списка треков…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Не удалось составить список треков плейлиста</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Уже скачано: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"В этом плейлисте %1$s треков, %2$s еще не скачано.
+
+Они скачиваются по одному, что может занять много времени и потребует около %3$s свободного места"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Скачать</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Загрузка трека %1$s из %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s скачано, %2$s не удалось скачать</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Скачивание плейлиста уже выполняется</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Ваш аккаунт пока не распознан. Попробуйте еще раз через некоторое время</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Удалось составить список только части плейлиста. Нажмите «Скачать» позже, чтобы загрузить остальное</string>
+  <string name="morphe_music_downloads_playlist_download_started">Загрузка %s в фоновом режиме</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Нет сетевого подключения</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Ожидание сети…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Остановлено после %1$s из %2$s. Нажмите «Скачать» еще раз, чтобы продолжить</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Информация</string>

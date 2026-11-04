@@ -927,9 +927,9 @@ Ili kurekebisha hili, washa 'Ghadhabu ya utiririko wa video' na ubadilishe 'Klij
   <string name="morphe_dual_captions_enabled_title">Maelezo ya lugha mbili</string>
   <string name="morphe_caption_block_translation_failed">Baadhi ya tafsiri za maelezo hazipatikani. Inaonyesha maelezo yanayopatikana.</string>
   <string name="morphe_caption_blocks_too_large">Lugha zote mbili za maelezo hazitoshi katika kinawiri hiki. Inaonyesha lugha kuu.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Vitufe vya urambazaji</string>
-  <string name="morphe_navigation_buttons_screen_summary">Chagua ni vitufe gani vionekane kwenye chapa ya urambazaji ya chini</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Baa ya urambazaji</string>
+  <string name="morphe_navigation_bar_screen_summary">Chagua ni vitufe gani vionekane kwenye chapa ya urambazaji ya chini</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ficha kitufe cha Nyumbani</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

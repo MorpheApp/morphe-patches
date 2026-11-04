@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">درحال دانلود %s%%</string>
   <string name="morphe_music_downloads_complete">دانلود کامل شد</string>
   <string name="morphe_music_downloads_failed">دانلود شکست خورد</string>
+  <string name="morphe_music_downloads_playlist_download_title">دانلود لیست پخش</string>
+  <string name="morphe_music_downloads_playlist_download_listing">در حال فهرست‌بندی آهنگ‌ها…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s فهرست شد…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">امکان فهرست‌بندی آهنگ‌های لیست پخش وجود ندارد</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">قبلاً دانلود شده است: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s آهنگ در این لیست پخش است، %2$s آهنگ هنوز دانلود نشده‌اند.
+
+آهنگ‌ها یکی‌یکی دانلود می‌شوند که می‌تواند زمان‌بر باشد و به حدود %3$s فضای خالی نیاز دارد"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">دانلود</string>
+  <string name="morphe_music_downloads_playlist_download_progress">در حال دانلود آهنگ %1$s از %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s دانلود شد</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s آهنگ دانلود شد، %2$s آهنگ دانلود نشد</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">دانلود لیست پخش هم‌اکنون در حال اجراست</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">حساب کاربری شما هنوز شناسایی نشده است. لحظاتی دیگر دوباره تلاش کنید</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s مورد فهرست شد، همه قبلاً دانلود شده‌اند</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">تنها بخشی از لیست پخش فهرست شد. برای دریافت بقیه، بعداً دوباره روی دانلود ضرب کنید</string>
+  <string name="morphe_music_downloads_playlist_download_started">در حال دانلود %s در پس‌زمینه</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">عدم اتصال به شبکه</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">در انتظار شبکه…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">پس از %1$s از %2$s متوقف شد. برای ادامه دوباره روی دانلود ضرب کنید</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">درباره</string>

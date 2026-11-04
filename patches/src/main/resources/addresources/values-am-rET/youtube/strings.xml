@@ -927,9 +927,9 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_dual_captions_enabled_title">የሁለት-ቋንቋ የግርጌ ጽሁፎች</string>
   <string name="morphe_caption_block_translation_failed">አንዳንድ የግርጌ ጽሁፍ ትርጉሞች አይገኙም። የሚገኙት የግርጌ ጽሁፎች እየታዩ ነው።</string>
   <string name="morphe_caption_blocks_too_large">ሁለቱም የግርጌ ጽሁፍ ቋንቋዎች በዚህ ፕሌየር ውስጥ አይሰፍኑም። ዋናው ቋንቋ እየታየ ነው።</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">የናቪጌሽን ቁልፎች</string>
-  <string name="morphe_navigation_buttons_screen_summary">በታችኛው የናቪጌሽን ባር ላይ የትኞቹ ቁልፎች እንደሚታዩ ይምረጡ</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">የናቪጌሽን ባር</string>
+  <string name="morphe_navigation_bar_screen_summary">በታችኛው የናቪጌሽን ባር ላይ የትኞቹ ቁልፎች እንደሚታዩ ይምረጡ</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">የመነሻ ገጽ ቁልፍን ደብቅ</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

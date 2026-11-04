@@ -772,6 +772,10 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_swipe_left_zone_title">Sola kaydırma hareketi</string>
   <string name="morphe_swipe_right_zone_title">Sağa kaydırma hareketi</string>
   <string name="morphe_swipe_top_zone_title">Yukarı kaydırma hareketi</string>
+  <string name="morphe_swipe_seek_title">Sardırmak için kaydırma</string>
+  <string name="morphe_swipe_seek_summary">Sardırma çubuğunu ilerletmek için tam ekran oynatıcıda sola veya sağa kaydırın, sardırmak için bırakın</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Sardırma kaydırma hassasiyeti</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Her kaydırma hareketinde sardırma çubuğunun ne kadar ilerleyeceği</string>
   <string name="morphe_swipe_zone_width_title">Sol/Sağ bölge genişliği</string>
   <string name="morphe_swipe_zone_width_summary">Ekran kenarlarının her birinin sola ve sağa kaydırma hareketleri için ayrılan yüzdesi (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Parlaklık</string>
@@ -928,9 +932,9 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_dual_captions_enabled_title">İki dilli altyazılar</string>
   <string name="morphe_caption_block_translation_failed">Bazı altyazı çevirileri kullanılamıyor. Kullanılabilir altyazılar gösteriliyor.</string>
   <string name="morphe_caption_blocks_too_large">Her iki altyazı dili bu oynatıcıya sığmıyor. Birincil dil gösteriliyor.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Gezinme düğmeleri</string>
-  <string name="morphe_navigation_buttons_screen_summary">Alt gezinme çubuğunda hangi düğmelerin görüneceğini seçin</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Gezinme çubuğu</string>
+  <string name="morphe_navigation_bar_screen_summary">Alt gezinme çubuğunda hangi düğmelerin görüneceğini seçin</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ana Sayfa düğmesini gizle</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

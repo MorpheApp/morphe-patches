@@ -771,6 +771,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_left_zone_title">左侧滑动手势</string>
   <string name="morphe_swipe_right_zone_title">右侧滑动手势</string>
   <string name="morphe_swipe_top_zone_title">顶部滑动手势</string>
+  <string name="morphe_swipe_seek_title">滑动以快进/快退</string>
+  <string name="morphe_swipe_seek_summary">在全屏播放器上向左或向右滑动以移动进度条，然后松开以跳转</string>
+  <string name="morphe_swipe_seek_sensitivity_title">快进/快退滑动灵敏度</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">每次滑动时进度条移动的距离</string>
   <string name="morphe_swipe_zone_width_title">左/右区域宽度</string>
   <string name="morphe_swipe_zone_width_summary">屏幕左右边缘留给左侧和右侧滑动手势的百分比 (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">亮度</string>
@@ -927,9 +931,9 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">双语字幕</string>
   <string name="morphe_caption_block_translation_failed">部分字幕翻译不可用。正在显示可用字幕。</string>
   <string name="morphe_caption_blocks_too_large">两种字幕语言都无法适配此播放器。正在显示主要语言。</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">导航栏按钮</string>
-  <string name="morphe_navigation_buttons_screen_summary">使状态栏完全不透明</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">导航栏</string>
+  <string name="morphe_navigation_bar_screen_summary">使状态栏完全不透明</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">隐藏首页按钮</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

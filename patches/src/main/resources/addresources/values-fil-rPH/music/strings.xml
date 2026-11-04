@@ -200,6 +200,26 @@ Lalabas dito ang mga na-download na track"</string>
   <string name="morphe_music_downloads_progress">Dina-download ang %s%%</string>
   <string name="morphe_music_downloads_complete">Nakumpleto ang download</string>
   <string name="morphe_music_downloads_failed">Nabigo ang download</string>
+  <string name="morphe_music_downloads_playlist_download_title">Pag-download ng playlist</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Inililista ang mga track…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s ang nailista…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Hindi ma-listahan ang mga track ng playlist</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Na-download na: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s sa playlist na ito, %2$s ay hindi pa na-download.
+
+I-da-download ang mga ito nang isa-isa, na maaaring magtagal at nangangailangan ng mga humigit-kumulang %3$s na libreng espasyo"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">I-download</string>
+  <string name="morphe_music_downloads_playlist_download_progress">I-da-download ang track %1$s ng %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s ang na-download</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s ang na-download, %2$s ang hindi ma-download</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Kasalukuyang nag-da-download na ng playlist</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Hindi pa kilala ang iyong account. Subukan muli mamaya</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s ang nailista, lahat ay na-download na</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Bahagi lamang ng playlist ang nailista. I-tap muli ang Download mamaya para makuha ang iba pa</string>
+  <string name="morphe_music_downloads_playlist_download_started">I-da-download ang %s sa background</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Walang koneksyon sa network</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Naghihintay para sa network…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Tumigil pagkatapos ng %1$s ng %2$s. I-tap muli ang Download para magpatuloy</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Tungkol sa</string>

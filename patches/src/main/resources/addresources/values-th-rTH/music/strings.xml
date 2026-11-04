@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">กำลังดาวน์โหลด %s%%</string>
   <string name="morphe_music_downloads_complete">ดาวน์โหลดเสร็จสมบูรณ์</string>
   <string name="morphe_music_downloads_failed">ดาวน์โหลดล้มเหลว</string>
+  <string name="morphe_music_downloads_playlist_download_title">ดาวน์โหลดเพลย์ลิสต์</string>
+  <string name="morphe_music_downloads_playlist_download_listing">กำลังเรียกรายการแทร็ก…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">เรียกรายการได้ %s…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">ไม่สามารถเรียกรายการแทร็กของเพลย์ลิสต์ได้</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">ดาวน์โหลดไปแล้ว: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"มี %1$s แทร็กในเพลย์ลิสต์นี้ โดยที่ %2$s แทร็กยังไม่ได้ดาวน์โหลด
+
+แทร็กเหล่านี้จะถูกดาวน์โหลดทีละเพลง ซึ่งอาจใช้เวลานานและต้องใช้พื้นที่ว่างประมาณ %3$s"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">ดาวน์โหลด</string>
+  <string name="morphe_music_downloads_playlist_download_progress">กำลังดาวน์โหลดแทร็กที่ %1$s จาก %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">ดาวน์โหลดแล้ว %s</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">ดาวน์โหลดแล้ว %1$s แทร็ก และไม่สามารถดาวน์โหลดได้ %2$s แทร็ก</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">มีการดาวน์โหลดเพลย์ลิสต์อยู่ระหว่างดำเนินการแล้ว</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">ยังไม่พบข้อมูลบัญชีของคุณ โปรดลองอีกครั้งในภายหลัง</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">เรียกรายการได้ %s แทร็ก และทั้งหมดถูกดาวน์โหลดไปแล้ว</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">สามารถเรียกรายการเพลย์ลิสต์ได้เพียงบางส่วน โปรดแตะดาวน์โหลดอีกครั้งในภายหลังเพื่อรับส่วนที่เหลือ</string>
+  <string name="morphe_music_downloads_playlist_download_started">กำลังดาวน์โหลด %s ในพื้นหลัง</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">ไม่มีการเชื่อมต่อเครือข่าย</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">กำลังรอเครือข่าย…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">หยุดหลังจากดาวน์โหลดไป %1$s จาก %2$s โปรดแตะดาวน์โหลดอีกครั้งเพื่อดำเนินการต่อ</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">เกี่ยวกับ</string>
@@ -740,7 +760,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">การแปลงอักษรโรมันหรือถอดรหัส</string>
   <string name="morphe_music_lyrics_romanization_provider_local">พจนานุกรมออฟไลน์</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">รายการคำ Rime</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">รูบี้</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
   <string name="morphe_music_lyrics_ruby_provider_local">พจนานุกรมแบบออฟไลน์</string>
   <string name="morphe_music_lyrics_ruby_style_title">สคริปต์ Ruby</string>
   <string name="morphe_music_lyrics_ruby_style_entry_hiragana">ฮิรางานะ (ひらがな)</string>

@@ -927,9 +927,9 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_dual_captions_enabled_title">द्विभाषिक कॅप्शन्स</string>
   <string name="morphe_caption_block_translation_failed">काही कॅप्शन भाषांतरे उपलब्ध नाहीत. उपलब्ध कॅप्शन्स दाखवत आहे.</string>
   <string name="morphe_caption_blocks_too_large">कॅप्शनच्या दोन्ही भाषा या प्लेयरमध्ये बसत नाहीत. प्राथमिक भाषा दाखवत आहे.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">नेव्हिगेशन बटणे</string>
-  <string name="morphe_navigation_buttons_screen_summary">तळाच्या नेव्हिगेशन बारमध्ये कोणते घटक दिसतात ते निवडा</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">नेव्हिगेशन बार</string>
+  <string name="morphe_navigation_bar_screen_summary">तळाच्या नेव्हिगेशन बारमध्ये कोणते घटक दिसतात ते निवडा</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">\'होम\' बटण लपवा</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

@@ -927,9 +927,9 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_dual_captions_enabled_title">Эки тилдеш субтитрлер</string>
   <string name="morphe_caption_block_translation_failed">Кээ бир субтитр котормолору жеткиликсиз. Жеткиликтүү субтитрлер көрсөтүлүүдө.</string>
   <string name="morphe_caption_blocks_too_large">Субтитрлердин эки тили тең бул плеерге батпай жатат. Негизги тил көрсөтүлүүдө.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Навигациялык баскычтар</string>
-  <string name="morphe_navigation_buttons_screen_summary">Төмөнкү навигациялык панелде кайсы баскычтар көрүнөөрүн тандаңыз</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Навигациялык панель</string>
+  <string name="morphe_navigation_bar_screen_summary">Төмөнкү навигациялык панелде кайсы баскычтар көрүнөөрүн тандаңыз</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Башкы бет баскычын жашыруу</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

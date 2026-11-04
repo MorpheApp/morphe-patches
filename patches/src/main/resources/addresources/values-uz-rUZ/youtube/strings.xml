@@ -922,9 +922,9 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
   <string name="morphe_dual_captions_enabled_title">Ikki tilli subtitrlar</string>
   <string name="morphe_caption_block_translation_failed">Ba\'zi subtitr tarjimalari mavjud emas. Mavjud subtitrlar ko\'rsatilmoqda.</string>
   <string name="morphe_caption_blocks_too_large">Subtitrlarning har ikkala tili ushbu pleyerga sig\'maydi. Asosiy til ko\'rsatilmoqda.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigatsiya tugmalari</string>
-  <string name="morphe_navigation_buttons_screen_summary">Sozlamalar ekrani</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigatsiya paneli</string>
+  <string name="morphe_navigation_bar_screen_summary">Sozlamalar ekrani</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Uy tugmasini yashirish</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

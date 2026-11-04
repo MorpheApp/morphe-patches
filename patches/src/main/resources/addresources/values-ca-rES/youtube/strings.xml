@@ -771,6 +771,10 @@ Per solucionar-ho, activa 'Spoof video streams' i canvia el 'Client per defecte'
   <string name="morphe_swipe_left_zone_title">Gest d\'arrosgament a l\'esquerra</string>
   <string name="morphe_swipe_right_zone_title">Gest d\'arrosgament a la dreta</string>
   <string name="morphe_swipe_top_zone_title">Gest d\'arrosgament a dalt</string>
+  <string name="morphe_swipe_seek_title">Desllisa per buscar</string>
+  <string name="morphe_swipe_seek_summary">Desllisa a l\'esquerra o a la dreta al reproductor de pantalla completa per moure la barra de cerca, i allibera per buscar</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Sensibilitat del desllisament de cerca</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Fins on es mou la barra de cerca per cada desllisament</string>
   <string name="morphe_swipe_zone_width_title">Amplada de la zona esquerra/dreta</string>
   <string name="morphe_swipe_zone_width_summary">Percentatge de cada vorare de la pantalla reservat per als gestos d\'arrosgament a l\'esquerra i a la dreta (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Luminositat</string>
@@ -927,9 +931,9 @@ Cal proporcionar les 'cookies de subtítols'"</string>
   <string name="morphe_dual_captions_enabled_title">Subtítols bilingües</string>
   <string name="morphe_caption_block_translation_failed">Algunes traduccions de subtítols no estan disponibles. Mostrant els subtítols disponibles.</string>
   <string name="morphe_caption_blocks_too_large">Els dos idiomes de subtítols no caben en aquest reproductor. Mostrant l\'idioma principal.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Botons de navegació</string>
-  <string name="morphe_navigation_buttons_screen_summary">Tria quins botons apareixen a la barra de navigació inferior</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Barra de navegació</string>
+  <string name="morphe_navigation_bar_screen_summary">Tria quins botons apareixen a la barra de navigació inferior</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Amaga el botó d\'Inici</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

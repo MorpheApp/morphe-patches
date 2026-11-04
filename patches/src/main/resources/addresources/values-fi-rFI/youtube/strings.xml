@@ -771,6 +771,10 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
   <string name="morphe_swipe_left_zone_title">Vasen pyyhkäisy</string>
   <string name="morphe_swipe_right_zone_title">Oikea pyyhkäisy</string>
   <string name="morphe_swipe_top_zone_title">Yläpyyhkäisy</string>
+  <string name="morphe_swipe_seek_title">Pyyhkäise kelataksesi</string>
+  <string name="morphe_swipe_seek_summary">Pyyhkäise koko näytön soittimessa vasemmalle tai oikealle siirtääksesi kelauspalkkia ja vapauta kelataksesi</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Kelauspyyhkäisyn herkkyys</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Kuinka paljon kelauspalkki liikkuu jokaista pyyhkäisyä kohden</string>
   <string name="morphe_swipe_zone_width_title">Vasemman/oikean vyöhykkeen leveys</string>
   <string name="morphe_swipe_zone_width_summary">Prosenttiosuus kummastakin näytön reunasta varattu vasemmalle ja oikealle pyyhkäisylle (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Kirkkaus</string>
@@ -927,9 +931,9 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
   <string name="morphe_dual_captions_enabled_title">Kaksikieliset tekstitykset</string>
   <string name="morphe_caption_block_translation_failed">Jotkin tekstityskäännökset eivät ole saatavilla. Näytetään saatavilla olevat tekstitykset.</string>
   <string name="morphe_caption_blocks_too_large">Molemmat tekstityskielet eivät mahdu tähän soittimeen. Näytetään pääkieli.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigointipainikkeet</string>
-  <string name="morphe_navigation_buttons_screen_summary">Piilota Luo-painike</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigointipalkki</string>
+  <string name="morphe_navigation_bar_screen_summary">Piilota Luo-painike</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Piilota Mikrofonipainike</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

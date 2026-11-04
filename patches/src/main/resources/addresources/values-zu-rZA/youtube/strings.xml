@@ -771,6 +771,10 @@ Ukuze ulungise lokhu, vula 'Spoof video streams' bese ushintsha 'Default client'
   <string name="morphe_swipe_left_zone_title">Isenzo sokuswayipha kwesobunxele</string>
   <string name="morphe_swipe_right_zone_title">Isenzo sokuswayipha kwesobunxele</string>
   <string name="morphe_swipe_top_zone_title">Isenzo sokuswayipha phezulu</string>
+  <string name="morphe_swipe_seek_title">Sula ukuze ufune</string>
+  <string name="morphe_swipe_seek_summary">Sula kwesobunxele noma kwesokudla kumdlali ogcwele isikrinimu ukuze ususe i-seekbar, bese uyiyeka ukuze ufune</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Ubukali bokusula ukufuna</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Ukuthi i-seekbar ihamba kude kangakanani ngokusula ngasinye</string>
   <string name="morphe_swipe_zone_width_title">Ububanzi bezone zesobunxele/zesobunxele</string>
   <string name="morphe_swipe_zone_width_summary">Ipesentile yezinhlangothi zesikrini ezibekelwe izenzo zokuswayipha kwesobunxele nangesobunxele (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Ukhanyiso</string>
@@ -927,9 +931,9 @@ Kumele kunikezwe ama-'Caption cookies'"</string>
   <string name="morphe_dual_captions_enabled_title">Ama-caption anolimi olubili</string>
   <string name="morphe_caption_block_translation_failed">Kuningi okuhumushwe kuma-caption okungatholakali. Khombisa ama-caption atholakala.</string>
   <string name="morphe_caption_blocks_too_large">Kubo zombili izilimi zama-caption azingeni kule player. Khombisa ulimi lweqala.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Izinkinobho zokuhamba</string>
-  <string name="morphe_navigation_buttons_screen_summary">Khetha ukuthi yiziphi izinkinobho ezivela kubala lokuqondisa laphansi</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Ibhali lokuqondisa</string>
+  <string name="morphe_navigation_bar_screen_summary">Khetha ukuthi yiziphi izinkinobho ezivela kubala lokuqondisa laphansi</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Fihla inkinobho yeKhaya</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

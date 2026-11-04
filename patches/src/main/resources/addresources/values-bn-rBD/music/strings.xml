@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">ডাউনলোড হচ্ছে %s%%</string>
   <string name="morphe_music_downloads_complete">ডাউনলোড সম্পন্ন হয়েছে</string>
   <string name="morphe_music_downloads_failed">ডাউনলোড ব্যর্থ হয়েছে</string>
+  <string name="morphe_music_downloads_playlist_download_title">প্লেলিস্ট ডাউনলোড</string>
+  <string name="morphe_music_downloads_playlist_download_listing">ট্র্যাকগুলো তালিকাভুক্ত করা হচ্ছে…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s তালিকাভুক্ত হয়েছে…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">প্লেলিস্টের ট্র্যাকগুলো তালিকাভুক্ত করা সম্ভব হয়নি</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">ইতিমধ্যে ডাউনলোড করা হয়েছে: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"এই প্লেলিস্টে %1$s টি ট্র্যাক আছে, যার মধ্যে %2$s টি এখনও ডাউনলোড করা হয়নি।
+
+এগুলো একটির পর একটি ডাউনলোড করা হয়, যাতে দীর্ঘ সময় লাগতে পারে এবং প্রায় %3$s ফ্রি স্পেসের প্রয়োজন হবে"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">ডাউনলোড</string>
+  <string name="morphe_music_downloads_playlist_download_progress">%2$s এর মধ্যে %1$s নম্বর ট্র্যাক ডাউনলোড করা হচ্ছে</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s ডাউনলোড করা হয়েছে</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s ডাউনলোড করা হয়েছে, %2$s ডাউনলোড করা সম্ভব হয়নি</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">প্লেলিস্ট ডাউনলোড ইতিমধ্যেই চলছে</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">আপনার অ্যাকাউন্টটি এখনও পরিচিত নয়। কিছুক্ষণ পর আবার চেষ্টা করুন</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s তালিকাভুক্ত হয়েছে, সবগুলি ইতিমধ্যেই ডাউনলোড করা হয়েছে</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">প্লেলিস্টের কেবল কিছু অংশ তালিকাভুক্ত করা সম্ভব হয়েছে। বাকিগুলোর জন্য পরে আবার ডাউনলোড ট্যাপ করুন</string>
+  <string name="morphe_music_downloads_playlist_download_started">ব্যাকগ্রাউন্ডে %s ডাউনলোড করা হচ্ছে</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">কোনো নেটওয়ার্ক সংযোগ নেই</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">নেটওয়ার্কের জন্য অপেক্ষা করা হচ্ছে…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s এর মধ্যে %1$s এর পর বন্ধ করা হয়েছে। পুনরায় চালিয়ে যেতে ডাউনলোড ট্যাপ করুন</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">মর্ফ সম্পর্কে</string>

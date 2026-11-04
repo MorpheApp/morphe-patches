@@ -773,6 +773,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_left_zone_title">Жест смахивания влево</string>
   <string name="morphe_swipe_right_zone_title">Жест смахивания вправо</string>
   <string name="morphe_swipe_top_zone_title">Жест смахивания вверх</string>
+  <string name="morphe_swipe_seek_title">Перемотка свайпом</string>
+  <string name="morphe_swipe_seek_summary">Свайпайте влево или вправо в полноэкранном плеере, чтобы переместить ползунок перемотки, и отпустите для перехода</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Чувствительность жеста перемотки</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">На сколько перемещается ползунок перемотки при каждом свайпе</string>
   <string name="morphe_swipe_zone_width_title">Ширина левой/правой зоны</string>
   <string name="morphe_swipe_zone_width_summary">Процент каждого края экрана, зарезервированный для жестов смахивания влево и вправо (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Яркость</string>
@@ -929,9 +933,9 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">Двуязычные субтитры</string>
   <string name="morphe_caption_block_translation_failed">Некоторые переводы субтитров недоступны. Показ доступных субтитров.</string>
   <string name="morphe_caption_blocks_too_large">Оба языка субтитров не помещаются в этом плеере. Показ основного языка.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Кнопки навигации</string>
-  <string name="morphe_navigation_buttons_screen_summary">Выберите, какие кнопки отображаются на панели инструментов</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Панель навигации</string>
+  <string name="morphe_navigation_bar_screen_summary">Выберите, какие кнопки отображаются на панели инструментов</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Скрыть кнопку \"Главная\"</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -944,6 +948,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">Скрыть кнопку \"Уведомлений\"</string>
   <string name="morphe_show_search_button_title">Показать кнопку \"Поиск\"</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Показать кнопку «Смотреть позже»</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Смотреть позже</string>
   <string name="morphe_show_settings_button_title">Показать кнопку \"Настройки\"</string>
@@ -1735,7 +1740,10 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">Максимальная длина комментария</string>
   <string name="morphe_niconico_comments_max_length_summary">Скрывает комментарии, длина которых превышает это значение. Каждый эмодзи считается за один символ</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без ограничений</string>
+  <string name="morphe_niconico_comments_live_streams_title">Показывать в прямых трансляциях</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Прямые трансляции и их записи</string>
   <string name="morphe_niconico_comments_live_premieres_title">Показывать на премьерах</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Премьеры во время их показа</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Показывать на завершенных премьерах</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Повтор чата премьер, которые уже завершились</string>
   <string name="morphe_live_chat_translate_screen_title">Перевод живого чата</string>

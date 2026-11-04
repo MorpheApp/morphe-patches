@@ -771,6 +771,10 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_swipe_left_zone_title">Gerakan mengusap ke kiri</string>
   <string name="morphe_swipe_right_zone_title">Gerakan mengusap ke kanan</string>
   <string name="morphe_swipe_top_zone_title">Gerakan mengusap ke atas</string>
+  <string name="morphe_swipe_seek_title">Usap untuk mencari</string>
+  <string name="morphe_swipe_seek_summary">Usap ke kiri atau kanan pada pemutar layar penuh untuk menggeser seekbar, dan lepaskan untuk mencari</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Sensitivitas usap cari</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Seberapa jauh seekbar bergerak untuk setiap usapan</string>
   <string name="morphe_swipe_zone_width_title">Lebar zona kiri/kanan</string>
   <string name="morphe_swipe_zone_width_summary">Persentase tepi layar yang dialokasikan untuk gerakan mengusap ke kiri dan ke kanan (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Kecerahan</string>
@@ -927,9 +931,9 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_dual_captions_enabled_title">Teks Dwibahasa</string>
   <string name="morphe_caption_block_translation_failed">Beberapa terjemahan teks tidak tersedia. Menampilkan teks yang tersedia.</string>
   <string name="morphe_caption_blocks_too_large">Kedua bahasa teks tidak dapat ditampilkan pada pemutar ini. Menampilkan bahasa utama.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Tombol navigasi</string>
-  <string name="morphe_navigation_buttons_screen_summary">Pilih tombol mana yang akan ditampilkan di bilah navigasi bawah</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Bilah navigasi</string>
+  <string name="morphe_navigation_bar_screen_summary">Pilih tombol mana yang akan ditampilkan di bilah navigasi bawah</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Sembunyikan tombol Beranda</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

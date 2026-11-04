@@ -200,6 +200,22 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Преузимање %s%%</string>
   <string name="morphe_music_downloads_complete">Преузимање је завршено</string>
   <string name="morphe_music_downloads_failed">Преузимање није успело</string>
+  <string name="morphe_music_downloads_playlist_download_title">Преузимање плейлисте</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Листање трака…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Није било могуће листирати траке плейлисте</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Већ преуззето: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s у овој плейлисти, %2$s још није преуззето.
+
+Преузимају се једна по једна, што може потрајати и захтева око %3$s слободног простора"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Преузми</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Преузимање траке %1$s од %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Преузимање плейлисте је већ у току</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Ваш налог још није познат. Покушајте поново за тренутак</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Само део плейлисте је листано. Закасније поново додирните Преузми да добијете остатак</string>
+  <string name="morphe_music_downloads_playlist_download_started">Преузимање %s у позadini</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Нема мрежне везе</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Чекање на мрежу…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Заустављено након %1$s од %2$s. Поново додирните Преузми да наставите</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">О програму</string>

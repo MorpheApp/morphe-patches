@@ -200,6 +200,25 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Завантаження %s%%</string>
   <string name="morphe_music_downloads_complete">Завантаження завершено</string>
   <string name="morphe_music_downloads_failed">Помилка завантаження</string>
+  <string name="morphe_music_downloads_playlist_download_title">Завантаження списку відтворення</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Складання списку треків…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Не вдалося скласти список треків для цього списку відтворення</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Вже завантажено: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"У цьому списку відтворення %1$s треків, %2$s ще не завантажено.
+
+Вони завантажуються по одному, що може зайняти багато часу та потребує приблизно %3$s вільного місця"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Завантажити</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Завантаження трека %1$s із %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">Завантажено %s</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">Завантажено %1$s, %2$s не вдалося завантажити</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Завантаження списку відтворення вже виконується</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Ваш обліковий запис ще не відомий. Спробуйте ще раз за мить</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s додано, усі вже завантажені</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Було можливо скласти список лише частини відтворення. Натисніть «Завантажити» пізніше, щоб отримати решту</string>
+  <string name="morphe_music_downloads_playlist_download_started">Завантаження %s у фоновому режимі</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Немає мережевого підключення</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Очікування мережі…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Зупинено після %1$s із %2$s. Натисніть «Завантажити» ще раз, щоб продовжити</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Про Morphe</string>
@@ -631,9 +650,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Приховувати ще не відтворені рядки тексту</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Приховувати рядки тексту пісні під рядком, що зараз відтворюється</string>
   <string name="morphe_music_lyrics_dynamic_background_title">Динамічний фон</string>
-  <string name="morphe_music_lyrics_dynamic_background_summary">Показувати розмитий фон, створений на основі обкладинки альбому, за текстом пісні</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Показувати розмитий фон з обкладинки альбому за текстом пісні</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Анімувати динамічний фон</string>
-  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Переміщувати фон під час відтворення та пульсувати в такт музиці, якщо YouTube Music має дозвіл на використання мікрофона. Вимкніть для статичного фону, щоб заощадити заряд батареї</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Рухати фон під час відтворення та пульсувати в такт музиці, якщо YouTube Music має дозвіл на мікрофон. Вимкніть для статичного фону, який менше споживає заряд батареї</string>
   <string name="morphe_music_lyrics_mediasession_title">Показувати текст пісні MediaSession на екрані блокування</string>
   <string name="morphe_music_lyrics_mediasession_summary">Показує поточний рядок на екрані блокування, в Android Auto та через Bluetooth. Потрібен Android 11 або новіший</string>
   <string name="morphe_music_lyrics_miniplayer_title">Показувати текст пісні в мініплеєрі</string>
@@ -732,7 +751,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">Приховати рядок з інформацією про авторів</string>
   <string name="morphe_music_lyrics_hide_info_summary">Приховати рядок з інформацією про авторів, що показується під текстом пісні</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Поміняти місцями переклад і романізацію</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Змінює порядок відображення перекладу та романизації під текстом пісні</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Змінює порядок відображення перекладу та романізації під текстом пісні</string>
   <string name="morphe_music_lyrics_force_center_title">Завжди центрувати текст пісні</string>
   <string name="morphe_music_lyrics_force_center_summary">Увімкнено: кожен рядок розташовується посередині, а вирівнювання з джерела ігнорується, зокрема сторони дуету; вимкнено: зберігається вирівнювання, яке задає текст пісні</string>
   <string name="morphe_music_lyrics_providers_keep_one">Принаймні один постачальник має залишатися увімкненим</string>
@@ -746,8 +765,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хірагана (ひらがな)</string>
   <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
   <string name="morphe_music_lyrics_show_ruby_button_title">Показувати кнопку Ruby</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Натисніть, щоб увімкнути/вимкнути ruby-читання над текстом пісні; утримуйте, щоб перемикатися між хіраганою та катаканою. Використовуються увімкнені ruby-провайдери в порядку їхнього переліку</string>
-  <string name="morphe_music_lyrics_ruby_generating">Генерація ruby…</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Натисніть, щоб перемкнути читання ruby над текстом пісні; натисніть і утримуйте, щоб перемикатися між хіраганою та катаканою. Використовує увімкнених постачальників ruby в порядку, вказаному у списку</string>
+  <string name="morphe_music_lyrics_ruby_generating">Створення ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Визначати розділи за допомогою ШІ</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Використовується лише тоді, коли постачальник не надає позначок розділів, таких як \"Приспів\" або \"Куплет\", які тоді визначає ваша модель, сумісна з OpenAI. Редагування цього рядка також відкриває його запит</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-адреса кінцевої точки API (наприклад, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

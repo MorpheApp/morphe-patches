@@ -198,6 +198,23 @@ Lejupielādētās dziesmas parādīsies šeit"</string>
   <string name="morphe_music_downloads_progress">Lejupielādē %s%%</string>
   <string name="morphe_music_downloads_complete">Lejupielāde pabeigta</string>
   <string name="morphe_music_downloads_failed">Lejupielāde neizdevās</string>
+  <string name="morphe_music_downloads_playlist_download_title">Saraksta lejupielāde</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Saraksta trekumi…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Neizdevās sarakstīt saraksta trekumus</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Jauklējuļādēts: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"Šajā sarakstā ir %1$s, %2$s vēl nav lejupielādēti.
+
+Tie tiek lejupielādēti pa vienam, kas var aizņemt ilgu laiku un prasa aptuveni %3$s brīvas vietas"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Lejupielādēt</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Tiek lejupielādēts trekums %1$s no %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s lejupielādēts, %2$s neizdevās lejupielādēt</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Saraksta lejupielāde jau notiek</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Jūsu konts vēl nav identificēts. Mēģiniet vēlreiz pēc brīža</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Izdevās sarakstīt tikai daļu no atskaņošanas saraksta. Vēlreiz nospiediet Lejupielādēt vēlāk, lai saņemtu pārējo</string>
+  <string name="morphe_music_downloads_playlist_download_started">Lejupielādē %s fonā</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Nav tīkla savienojuma</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Gaida tīklu…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Apturēts pēc %1$s no %2$s. Nospiediet Lejupielādēt vēlreiz, lai turpinātu</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Par Morphe</string>

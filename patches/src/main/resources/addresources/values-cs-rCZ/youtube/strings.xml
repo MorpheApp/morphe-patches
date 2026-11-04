@@ -771,6 +771,10 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
   <string name="morphe_swipe_left_zone_title">Gesto svisku doleva</string>
   <string name="morphe_swipe_right_zone_title">Gesto svisku doprava</string>
   <string name="morphe_swipe_top_zone_title">Gesto svisku nahoru</string>
+  <string name="morphe_swipe_seek_title">Přesun přejetím</string>
+  <string name="morphe_swipe_seek_summary">V celobobrazovém přehrávači přejetím doleva nebo doprava posuňte posuvník a poté uvolněte pro přesun</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Citlivost přejetí pro přesun</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">O kolik se posune posuvník při každém přejetí</string>
   <string name="morphe_swipe_zone_width_title">Šířka zóny vlevo/vpravo</string>
   <string name="morphe_swipe_zone_width_summary">Procento okraje každé obrazovky rezervované pro gesta pře tahu vlevo a vpravo (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Jas</string>
@@ -925,9 +929,9 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
   <string name="morphe_dual_captions_enabled_title">Dvojjazyčné titulky</string>
   <string name="morphe_caption_block_translation_failed">Některé překlady titulků nejsou k dispozici. Zobrazují se dostupné titulky.</string>
   <string name="morphe_caption_blocks_too_large">Oba jazyky titulků se do tohoto přehrávače nevejdou. Zobrazuje se primární jazyk.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigační tlačítka</string>
-  <string name="morphe_navigation_buttons_screen_summary">Vyberte, které komponenty se zobrazí v panelu nástrojů</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigační panel</string>
+  <string name="morphe_navigation_bar_screen_summary">Vyberte, které komponenty se zobrazí v panelu nástrojů</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Skrýt tlačítko Domů</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

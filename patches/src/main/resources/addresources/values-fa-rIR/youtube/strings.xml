@@ -771,6 +771,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_left_zone_title">حرکت کشیدن به چپ</string>
   <string name="morphe_swipe_right_zone_title">حرکت کشیدن به راست</string>
   <string name="morphe_swipe_top_zone_title">حرکت کشیدن به بالا</string>
+  <string name="morphe_swipe_seek_title">کشیدن برای جابه‌جایی</string>
+  <string name="morphe_swipe_seek_summary">در پخش‌کننده تمام‌صفحه به چپ یا راست بکشید تا نوار پیشرفت جابه‌جا شود و سپس برای جابه‌جایی رها کنید</string>
+  <string name="morphe_swipe_seek_sensitivity_title">حساسیت کشیدن برای جابه‌جایی</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">مقدار جابه‌جایی نوار پیشرفت برای هر بار کشیدن</string>
   <string name="morphe_swipe_zone_width_title">عرض ناحیهٔ چپ/راست</string>
   <string name="morphe_swipe_zone_width_summary">درصدی از هر لبهٔ صفحه که برای حرکت‌های کشیدن به چپ و راست رزرو می‌شود (۵ تا ۵۰)</string>
   <string name="morphe_swipe_zone_label_brightness">روشنایی</string>
@@ -927,9 +931,9 @@ Second \"item\" text"</string>
   <string name="morphe_dual_captions_enabled_title">زیرنویس‌های دو زبانه</string>
   <string name="morphe_caption_block_translation_failed">برخی ترجمه‌های زیرنویس در دسترس نیستند. نمایش زیرنویس‌های موجود.</string>
   <string name="morphe_caption_blocks_too_large">هر دو زبان زیرنویس در این پخش‌کننده جا نمی‌شوند. نمایش زبان اصلی.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">دکمه‌های پیمایش</string>
-  <string name="morphe_navigation_buttons_screen_summary">انتخاب کنید کدام دکمه‌ها در نوار پیمایش پایین نمایش داده شوند</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">نوار پیمایش</string>
+  <string name="morphe_navigation_bar_screen_summary">انتخاب کنید کدام دکمه‌ها در نوار پیمایش پایین نمایش داده شوند</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">پنهان‌کردن دکمهٔ خانه</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -942,6 +946,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">پنهان‌کردن دکمهٔ اعلان‌ها</string>
   <string name="morphe_show_search_button_title">نمایش دکمهٔ جست‌وجو</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">نمایش دکمهٔ بعداً تماشا شود</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">بعداً تماشا می‌کنم</string>
   <string name="morphe_show_settings_button_title">نمایش دکمهٔ تنظیمات</string>
@@ -1733,7 +1738,10 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_title">حداکثر طول نظر</string>
   <string name="morphe_niconico_comments_max_length_summary">نظراتی که کاراکترهای بیشتری از این مقدار دارند را مخفی می‌کند. هر ایموجی به عنوان یک کاراکتر در نظر گرفته می‌شود</string>
   <string name="morphe_niconico_comments_max_length_no_limit">بدون محدودیت</string>
+  <string name="morphe_niconico_comments_live_streams_title">نمایش در پخش‌های زنده</string>
+  <string name="morphe_niconico_comments_live_streams_summary">پخش‌های زنده و بازپخش‌های آن‌ها</string>
   <string name="morphe_niconico_comments_live_premieres_title">نمایش در پخش‌های اولیه</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">اولین نمایش‌ها در هنگام پخش</string>
   <string name="morphe_niconico_comments_ended_premieres_title">نمایش در پخش‌های اولیه به پایان رسیده</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">بازپخش چت پخش‌های اولیه‌ای که به پایان رسیده‌اند</string>
   <string name="morphe_live_chat_translate_screen_title">ترجمهٔ چت زنده</string>

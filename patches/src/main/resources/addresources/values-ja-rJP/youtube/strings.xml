@@ -772,6 +772,10 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_swipe_left_zone_title">左側縦スワイプ ジェスチャー</string>
   <string name="morphe_swipe_right_zone_title">右側縦スワイプ ジェスチャー</string>
   <string name="morphe_swipe_top_zone_title">上側横スワイプ ジェスチャー</string>
+  <string name="morphe_swipe_seek_title">スワイプでシーク</string>
+  <string name="morphe_swipe_seek_summary">フルスクリーンプレーヤー上で左右にスワイプしてシークバーを移動し、指を離してシークします</string>
+  <string name="morphe_swipe_seek_sensitivity_title">シークスワイプの感度</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">スワイプごとにシークバーが移動する量</string>
   <string name="morphe_swipe_zone_width_title">左 / 右側縦スワイプの領域の横幅</string>
   <string name="morphe_swipe_zone_width_summary">左 / 右側縦スワイプ ジェスチャーに割り当てる、画面左 / 右端を起点とする領域の横幅 (画面全体の横幅に対するパーセンテージ: 5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">明るさ</string>
@@ -928,9 +932,9 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_dual_captions_enabled_title">二ヶ国語字幕</string>
   <string name="morphe_caption_block_translation_failed">一部の字幕翻訳を利用できません。利用可能な字幕を表示しています。</string>
   <string name="morphe_caption_blocks_too_large">両方の字幕言語はこのプレーヤーに収まりません。メイン言語を表示しています。</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">ナビゲーション ボタン</string>
-  <string name="morphe_navigation_buttons_screen_summary">画面最下部のバーであるナビゲーション バーに表示するボタンを設定します</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">ナビゲーションバー</string>
+  <string name="morphe_navigation_bar_screen_summary">画面最下部のバーであるナビゲーション バーに表示するボタンを設定します</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">ホームボタンを非表示</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -943,6 +947,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hide_notifications_button_title">通知ボタンを非表示</string>
   <string name="morphe_show_search_button_title">検索ボタンを表示</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">「後で見る」ボタンを表示</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">後で見る</string>
   <string name="morphe_show_settings_button_title">設定ボタンを表示</string>
@@ -1735,7 +1740,10 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_niconico_comments_max_length_title">コメントの文字数制限</string>
   <string name="morphe_niconico_comments_max_length_summary">この値より文字数が多いニコニコ風コメントを非表示にします。絵文字はそれぞれ 1 文字としてカウントされます</string>
   <string name="morphe_niconico_comments_max_length_no_limit">制限なし</string>
+  <string name="morphe_niconico_comments_live_streams_title">ライブストリームに表示</string>
+  <string name="morphe_niconico_comments_live_streams_summary">ライブストリームとそのアーカイブ</string>
   <string name="morphe_niconico_comments_live_premieres_title">プレミア公開で表示</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">プレミア公開中の動画</string>
   <string name="morphe_niconico_comments_ended_premieres_title">終了したプレミア公開で表示</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">終了したプレミア公開のチャットリプレイ</string>
   <string name="morphe_live_chat_translate_screen_title">ライブチャット翻訳</string>

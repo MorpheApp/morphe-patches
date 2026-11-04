@@ -174,6 +174,7 @@ A letöltött számok itt jelennek meg"</string>
   <string name="morphe_music_downloads_playlist_name_hint">Lejátszási lista neve</string>
   <string name="morphe_music_downloads_playlist_name_empty">A lejátszási lista neve nem lehet üres</string>
   <string name="morphe_music_downloads_playlist_save_failed">A lejátszási lista nem menthető el</string>
+  <string name="morphe_music_downloads_playlist_track_count">%s szám</string>
   <string name="morphe_music_downloads_playlist_track_count_one">1 szám</string>
   <string name="morphe_music_downloads_playlist_no_tracks">Nincsenek számok ebben a lejátszási listában</string>
   <string name="morphe_music_downloads_playlist_play">Lejátszási lista lejátszása</string>
@@ -199,6 +200,26 @@ A letöltött számok itt jelennek meg"</string>
   <string name="morphe_music_downloads_progress">Letöltés: %s%%</string>
   <string name="morphe_music_downloads_complete">Letöltés befejezve</string>
   <string name="morphe_music_downloads_failed">Letöltés sikertelen</string>
+  <string name="morphe_music_downloads_playlist_download_title">Körönyék letöltése</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Számok listázása…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s listázva…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Nem sikerült listázni a lejátszási lista számait</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Már letöltve: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s szám van ebben a lejátszási listában, %2$s még nincs letöltve.
+
+Egyenként kerülnek letöltésre, ami hosszú ideig tarthat, és körülbelül %3$s szabad helyre igényes"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Letöltés</string>
+  <string name="morphe_music_downloads_playlist_download_progress">%1$s. szám letöltése %2$s-ból</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s letöltve</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s letöltve, %2$s nem lett letöltve</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">A lejátszási lista letöltése már folyamatban van</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">A fiókod még nem ismert. Próbáld újra egy pillanat múlva</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listázva, mind letöltve</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">A lejátszási lista csak egy része listázható. Koppints a Letöltésre később a maradékért</string>
+  <string name="morphe_music_downloads_playlist_download_started">%s letöltése a háttérben</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Nincs hálózati kapcsolat</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Hálózatra várva…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Megállítva a %2$s-ból %1$s után. Koppints a Letöltésre a folytatáshoz</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Névjegy</string>

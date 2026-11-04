@@ -775,6 +775,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_left_zone_title">إيماءة التمرير لليسار</string>
   <string name="morphe_swipe_right_zone_title">إيماءة التمرير لليمين</string>
   <string name="morphe_swipe_top_zone_title">إيماءة التمرير للأعلى</string>
+  <string name="morphe_swipe_seek_title">اسحب للبحث</string>
+  <string name="morphe_swipe_seek_summary">اسحب لليسار أو اليمين في مشغل ملء الشاشة لتحريك شريط البحث، ثم حرر للتنقل</string>
+  <string name="morphe_swipe_seek_sensitivity_title">حساسية تمرير البحث</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">مدى تحرك شريط البحث عند كل تمريرة</string>
   <string name="morphe_swipe_zone_width_title">عرض منطقة اليسار/اليمين</string>
   <string name="morphe_swipe_zone_width_summary">نسبة كل حافة من حواف الشاشة المخصصة لإيماءات التمرير لليسار واليمين (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">السطوع</string>
@@ -931,9 +935,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_dual_captions_enabled_title">ترجمات ثنائية اللغة</string>
   <string name="morphe_caption_block_translation_failed">بعض ترجمات التسميات التوضيحية غير متاحة. يتم عرض التسميات التوضيحية المتاحة.</string>
   <string name="morphe_caption_blocks_too_large">كلتا لغتي الترجمة النصية لا تتناسبان مع هذا المشغل. يتم عرض اللغة الأساسية.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">أزرار التنقل</string>
-  <string name="morphe_navigation_buttons_screen_summary">اختر الأزرار التي تظهر في شريط التنقل السفلي</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">شريط التنقل</string>
+  <string name="morphe_navigation_bar_screen_summary">اختر الأزرار التي تظهر في شريط التنقل السفلي</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">إخفاء زر الصفحة الرئيسية</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

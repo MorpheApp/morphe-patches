@@ -200,6 +200,26 @@ Các bài hát đã tải sẽ xuất hiện ở đây"</string>
   <string name="morphe_music_downloads_progress">Đang tải xuống %s%%</string>
   <string name="morphe_music_downloads_complete">Tải xuống hoàn tất</string>
   <string name="morphe_music_downloads_failed">Tải xuống thất bại</string>
+  <string name="morphe_music_downloads_playlist_download_title">Tải về danh sách phát</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Đang liệt kê các bản nhạc…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s đã được liệt kê…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Không thể liệt kê các bản nhạc trong danh sách phát</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Đã tải về: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"Có %1$s trong danh sách phát này, %2$s chưa được tải về.
+
+Chúng sẽ được tải về lần lượt, việc này có thể mất nhiều thời gian và cần khoảng %3$s dung lượng trống"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Tải về</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Đang tải bản nhạc %1$s trên %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s đã được tải về</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s đã được tải về, %2$s không thể tải về</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Quá trình tải về danh sách phát đang diễn ra</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Tài khoản của bạn chưa được nhận diện. Vui lòng thử lại sau giây lát</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s đã được liệt kê, tất cả đều đã tải về</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Chỉ một phần của danh sách phát có thể được liệt kê. Hãy nhấn Tải về lần nữa sau đó để nhận phần còn lại</string>
+  <string name="morphe_music_downloads_playlist_download_started">Đang tải %s trong nền</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Không có kết nối mạng</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Đang chờ kết nối mạng…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Đã dừng sau %1$s trên %2$s. Nhấn Tải về lần nữa để tiếp tục</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Giới thiệu</string>

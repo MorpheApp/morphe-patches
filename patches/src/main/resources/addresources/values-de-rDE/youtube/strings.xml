@@ -772,6 +772,10 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <string name="morphe_swipe_left_zone_title">Wischgeste nach links</string>
   <string name="morphe_swipe_right_zone_title">Wischgeste nach rechts</string>
   <string name="morphe_swipe_top_zone_title">Wischgeste nach oben</string>
+  <string name="morphe_swipe_seek_title">Zum Suchen wischen</string>
+  <string name="morphe_swipe_seek_summary">Im Vollbildplayer nach links oder rechts wischen, um den Suchbalken zu bewegen, und dann loslassen, um zu suchen</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Empfindlichkeit der Such-Wischbewegung</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Wie weit sich der Suchbalken bei jedem Wischen bewegt</string>
   <string name="morphe_swipe_zone_width_title">Breite der linken/rechten Zone</string>
   <string name="morphe_swipe_zone_width_summary">Prozentanteil jeder Bildschirmkante, die für Wischgesten links und rechts reserviert ist (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Helligkeit</string>
@@ -928,9 +932,9 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <string name="morphe_dual_captions_enabled_title">Zweisprachige Untertitel</string>
   <string name="morphe_caption_block_translation_failed">Einige Untertitel-Übersetzungen sind nicht verfügbar. Verfügbare Untertitel werden angezeigt.</string>
   <string name="morphe_caption_blocks_too_large">Beide Untertitel-Sprachen passen nicht in diesen Player. Die Primärsprache wird angezeigt.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigationstasten</string>
-  <string name="morphe_navigation_buttons_screen_summary">Wähle aus, welche Schaltflächen in der unteren Navigationsleiste angezeigt werden sollen</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigationsleiste</string>
+  <string name="morphe_navigation_bar_screen_summary">Wähle aus, welche Schaltflächen in der unteren Navigationsleiste angezeigt werden sollen</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Schaltfläche „Startseite“ ausblenden</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->

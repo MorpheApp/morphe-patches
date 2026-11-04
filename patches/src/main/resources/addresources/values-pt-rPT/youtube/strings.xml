@@ -771,6 +771,10 @@ Para corrigir isso, ative 'Falsificar streams de vídeo' e altere o 'Cliente pad
   <string name="morphe_swipe_left_zone_title">Gesto de deslize para a esquerda</string>
   <string name="morphe_swipe_right_zone_title">Gesto de deslize para a direita</string>
   <string name="morphe_swipe_top_zone_title">Gesto de deslize a partir do topo</string>
+  <string name="morphe_swipe_seek_title">Arraste para procurar</string>
+  <string name="morphe_swipe_seek_summary">Arraste para esquerda ou direita no player em tela cheia para mover a barra de progresso, e solte para parar</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Sensibilidade do arraste</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">O quanto a barra de reprodução se move a cada arraste</string>
   <string name="morphe_swipe_zone_width_title">Largura da zona esquerda/direita</string>
   <string name="morphe_swipe_zone_width_summary">Percentagem de cada borda do ecrã reservada para gestos de deslize para a esquerda e para a direita (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Brilho</string>
@@ -927,9 +931,9 @@ Para corrigir isso, ative 'Falsificar streams de vídeo' e altere o 'Cliente pad
   <string name="morphe_dual_captions_enabled_title">Legendas bilíngues</string>
   <string name="morphe_caption_block_translation_failed">Algumas traduções de legendas não estão disponíveis. Exibindo legendas disponíveis.</string>
   <string name="morphe_caption_blocks_too_large">Ambos os idiomas de legenda não cabem neste player. Exibindo o idioma principal.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Botões de navegação</string>
-  <string name="morphe_navigation_buttons_screen_summary">Escolha quais botões aparecem na barra de ferramentas</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Barra de navegação</string>
+  <string name="morphe_navigation_bar_screen_summary">Escolha quais botões aparecem na barra de ferramentas</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ocultar botão \'Página inicial\'</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -942,6 +946,7 @@ Para corrigir isso, ative 'Falsificar streams de vídeo' e altere o 'Cliente pad
   <string name="morphe_hide_notifications_button_title">Ocultar botão \'Notificações\'</string>
   <string name="morphe_show_search_button_title">Mostrar botão \'Pesquisar\'</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Mostrar botão Assistir mais tarde</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Assistir depois</string>
   <string name="morphe_show_settings_button_title">Mostrar botão \'Configurações\'</string>
@@ -1734,7 +1739,10 @@ A gravação automática é opcional. Ela pára no modo anônimo ou quando a con
   <string name="morphe_niconico_comments_max_length_title">Comprimento máximo do comentário</string>
   <string name="morphe_niconico_comments_max_length_summary">Oculta comentários com mais caracteres que este. Cada emoji conta como um caractere</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sem limite</string>
+  <string name="morphe_niconico_comments_live_streams_title">Mostrar em transmissões ao vivo</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Transmissões ao vivo e suas reprises</string>
   <string name="morphe_niconico_comments_live_premieres_title">Mostrar em Estreias</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Estreias enquanto estão sendo exibidas</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Mostrar em Estreias encerradas</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Reprise do chat de Estreias que já terminaram</string>
   <string name="morphe_live_chat_translate_screen_title">Tradução de chat ao vivo</string>
