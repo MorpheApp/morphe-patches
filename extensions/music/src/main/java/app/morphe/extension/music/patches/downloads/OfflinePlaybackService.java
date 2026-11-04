@@ -38,6 +38,7 @@ import androidx.annotation.Nullable;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
@@ -69,16 +70,15 @@ public final class OfflinePlaybackService extends Service {
 
     public static void removeListener(PlaybackListener listener) { listeners.remove(listener); }
 
+    private record PlayRequest(OfflineTrack track, List<String> queue, int queueIndex) {}
+
     /**
-     * The queue of the next play request. A whole catalogue of thousands of paths does not fit
-     * in the Intent the service is started with, so it is handed over in memory: the service
-     * runs in the process of the app, and both ends of the handover are on the main thread.
+     * The last play request, until a start of the service takes it. A catalogue of thousands of
+     * tracks does not fit in the Intent the service is started with, so it is handed over in
+     * memory: the service runs in the process of the app, and both ends are on the main thread.
      */
     @Nullable
-    private static ArrayList<String> pendingQueue;
-    private static int pendingQueueIndex;
-    /** Pairs a start request with its queue, in case another request is made before it is read. */
-    private static int pendingQueueToken;
+    private static PlayRequest pendingPlayRequest;
 
     /**
      * Must be called on the main thread.
@@ -86,18 +86,10 @@ public final class OfflinePlaybackService extends Service {
      * @param queue      The tracks that Previous and Next move through, including this track.
      * @param queueIndex The position of this track in the queue.
      */
-    static void play(Context context, OfflineTrack track, ArrayList<String> queue, int queueIndex) {
-        pendingQueue = queue;
-        pendingQueueIndex = queueIndex;
-        final int token = ++pendingQueueToken;
-
+    static void play(Context context, OfflineTrack track, List<String> queue, int queueIndex) {
+        pendingPlayRequest = new PlayRequest(track, queue, queueIndex);
         context.startForegroundService(new Intent(context, OfflinePlaybackService.class)
-                .setAction(ACTION_PLAY_FILE)
-                .putExtra(EXTRA_PATH, track.audioFile().getAbsolutePath())
-                .putExtra(EXTRA_TITLE, track.displayTitle())
-                .putExtra(EXTRA_ARTIST, track.displayArtist())
-                .putExtra(EXTRA_ARTWORK_PATH, track.artworkFile().getAbsolutePath())
-                .putExtra(EXTRA_QUEUE_TOKEN, token));
+                .setAction(ACTION_PLAY_FILE));
     }
 
     static boolean hasPrevious() {
@@ -136,11 +128,6 @@ public final class OfflinePlaybackService extends Service {
     public static final String ACTION_STOP = "app.morphe.action.STOP_OFFLINE_PLAYBACK";
     public static final String ACTION_NEXT = "app.morphe.action.NEXT_OFFLINE_TRACK";
     public static final String ACTION_PREVIOUS = "app.morphe.action.PREVIOUS_OFFLINE_TRACK";
-    public static final String EXTRA_PATH = "path";
-    public static final String EXTRA_QUEUE_TOKEN = "queue_token";
-    public static final String EXTRA_TITLE = "title";
-    public static final String EXTRA_ARTIST = "artist";
-    public static final String EXTRA_ARTWORK_PATH = "artwork_path";
 
     private static final String CHANNEL_ID = "morphe_offline_playback";
     private static final int NOTIFICATION_ID = 8841;
@@ -156,7 +143,7 @@ public final class OfflinePlaybackService extends Service {
     private String title = "YouTube Music";
     private String artist = "YouTube Music";
     private Bitmap artwork;
-    private ArrayList<String> queue = new ArrayList<>();
+    private List<String> queue = new ArrayList<>();
     private int queueIndex = -1;
     private final Handler progressHandler = new Handler(Looper.getMainLooper());
     private final Runnable progressTicker = new Runnable() {
@@ -200,17 +187,15 @@ public final class OfflinePlaybackService extends Service {
             // foreground before anything can stop it, or the system closes the app.
             startForeground(NOTIFICATION_ID, notification());
 
-            // A newer request has replaced the queue of this one, and follows right behind.
-            if (intent.getIntExtra(EXTRA_QUEUE_TOKEN, -1) != pendingQueueToken) return START_NOT_STICKY;
-
-            ArrayList<String> suppliedQueue = pendingQueue;
-            pendingQueue = null;
-            if (suppliedQueue != null) {
-                queue = suppliedQueue;
-                queueIndex = pendingQueueIndex;
+            // Taps in quick succession each start the service, and the first start takes the
+            // last request.
+            PlayRequest request = pendingPlayRequest;
+            pendingPlayRequest = null;
+            if (request != null) {
+                queue = request.queue();
+                queueIndex = request.queueIndex();
+                playTrack(request.track());
             }
-            playFile(intent.getStringExtra(EXTRA_PATH), intent.getStringExtra(EXTRA_TITLE),
-                    intent.getStringExtra(EXTRA_ARTIST), intent.getStringExtra(EXTRA_ARTWORK_PATH));
         } else if (ACTION_TOGGLE.equals(action)) {
             if (playerReady() && player.isPlaying()) pause(); else resume();
         } else if (ACTION_STOP.equals(action)) {
@@ -226,20 +211,20 @@ public final class OfflinePlaybackService extends Service {
     /**
      * Only runs once the service is in the foreground, so playback can be stopped at any point.
      */
-    private void playFile(@Nullable String path, @Nullable String requestedTitle,
-                          @Nullable String requestedArtist, @Nullable String artworkPath) {
-        if (path == null || !new File(path).isFile()) {
-            // Whatever was playing goes on. Otherwise the service has nothing left to do.
-            if (!playerReady()) stopPlayback();
+    private void playTrack(OfflineTrack track) {
+        File audioFile = track.audioFile();
+        if (!audioFile.isFile()) {
+            // Whatever was playing or preparing goes on. Otherwise the service has nothing to do.
+            if (player == null) stopPlayback();
             return;
         }
-        this.path = path;
-        title = requestedTitle == null ? new File(path).getName() : requestedTitle;
-        artist = requestedArtist == null || requestedArtist.isBlank() ? "YouTube Music" : requestedArtist;
+        path = audioFile.getAbsolutePath();
+        title = track.displayTitle();
+        artist = track.displayArtist();
         // A track saved without a cover has no file, and decoding it would log an error a second.
-        File artworkFile = artworkPath == null ? null : new File(artworkPath);
-        artwork = artworkFile != null && artworkFile.isFile()
-                ? BitmapFactory.decodeFile(artworkPath)
+        File artworkFile = track.artworkFile();
+        artwork = artworkFile.isFile()
+                ? BitmapFactory.decodeFile(artworkFile.getAbsolutePath())
                 : null;
         releasePlayer();
         try {
@@ -302,9 +287,7 @@ public final class OfflinePlaybackService extends Service {
         if (target < 0 || target >= queue.size()) return false;
 
         queueIndex = target;
-        OfflineTrack track = OfflineTrack.load(new File(queue.get(target)));
-        playFile(track.audioFile().getAbsolutePath(), track.displayTitle(), track.displayArtist(),
-                track.artworkFile().getAbsolutePath());
+        playTrack(OfflineTrack.load(new File(queue.get(target))));
         return true;
     }
 
