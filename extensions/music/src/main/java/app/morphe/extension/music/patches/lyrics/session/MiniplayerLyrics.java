@@ -96,9 +96,6 @@ public final class MiniplayerLyrics {
         ticker.schedule();
     }
 
-    /** Drives the periodic check that mirrors the current line into the mini player. */
-    private static final LyricsTicker ticker = new LyricsTicker(MiniplayerLyrics::tick);
-
     public static void onMediaSessionSetMetadata(MediaSession session, MediaMetadata original) {
         try {
             if (original == null) {
@@ -123,6 +120,9 @@ public final class MiniplayerLyrics {
             Logger.printException(() -> "onMediaSessionSetMetadata failure", ex);
         }
     }
+
+    /** Drives the periodic check that mirrors the current line into the mini player. */
+    private static final LyricsTicker ticker = new LyricsTicker(MiniplayerLyrics::tick);
 
     /**
      * Injection point. Captures the miniplayer title and subtitle TextViews and (re)starts the
@@ -167,13 +167,6 @@ public final class MiniplayerLyrics {
 
         onSettingsChanged();
     }
-
-    /** The track changed, so the next tick has to come at once. */
-    private static final LyricsManager.Listener lyricsListener = (state, lyrics) -> {
-        if (state == LyricsManager.State.LOADED || state == LyricsManager.State.NOT_FOUND) {
-            ticker.schedule();
-        }
-    };
 
     private static void tick() {
         try {
@@ -233,6 +226,13 @@ public final class MiniplayerLyrics {
 
         ticker.schedule();
     }
+
+    /** The track changed, so the next tick has to come at once. */
+    private static final LyricsManager.Listener lyricsListener = (state, lyrics) -> {
+        if (state == LyricsManager.State.LOADED || state == LyricsManager.State.NOT_FOUND) {
+            ticker.schedule();
+        }
+    };
 
     private static void restoreIfMirrored() {
         if (!mirrored) {

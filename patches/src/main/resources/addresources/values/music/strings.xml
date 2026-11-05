@@ -769,8 +769,9 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_local_romanization_dict_unidict">Chinese and Cantonese characters (UniDict, ~8 MB)</string>
     <string name="morphe_music_lyrics_local_romanization_dict_chinese">Chinese words (pinyin-pro, ~17 MB)</string>
     <string name="morphe_music_lyrics_local_romanization_dict_cldr">Greek, Slavic Cyrillic (incl. Russian, Ukrainian, Bulgarian, Serbian, Belarusian, Macedonian), Georgian, Armenian, Hebrew, Arabic, Amharic and Syriac transliteration (CLDR, ~0.5 MB)</string>
-    <string name="morphe_music_lyrics_local_romanization_dict_downloading" translatable="false">%1$s: %2$s%%</string>
-    <string name="morphe_music_lyrics_local_romanization_dict_building">Reading %1$s: %2$s%%</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_bopomofo">Chinese Bopomofo (McBopomofo, ~5 MB)</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_downloading" translatable="false">%1$s: %2$d%%</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_building">Reading %1$s: %2$d%%</string>
     <string name="morphe_music_lyrics_show_refresh_button_title">Show Refresh button</string>
     <string name="morphe_music_lyrics_show_refresh_button_summary">Tap to switch to next lyrics candidate; long-press to search lyrics by song title and artist</string>
     <string name="morphe_music_lyrics_search_dialog_title">Search lyrics</string>
@@ -831,6 +832,8 @@ Applies to both limits. At 1.75, four full-width characters count as 7."</string
     <string name="morphe_music_lyrics_force_capitalize_summary">Capitalizes the first letter of each lyrics line</string>
     <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Remove trailing punctuation</string>
     <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Removes full stops, commas, colons and semicolons at the end of lyrics lines. Question marks, exclamation marks, ellipses, quotes and brackets are kept</string>
+    <string name="morphe_music_lyrics_han_form_title">Chinese form conversion</string>
+    <string name="morphe_music_lyrics_han_form_summary">When on, follows your translation target language to convert lyrics between Simplified and Traditional writing</string>
     <string name="morphe_music_lyrics_text_size_title">Text size</string>
     <string name="morphe_music_lyrics_text_size_summary">Size of the lyrics text</string>
     <string name="morphe_music_lyrics_offset_ms_title">Global timing offset</string>
@@ -861,6 +864,9 @@ Applies to both limits. At 1.75, four full-width characters count as 7."</string
     <string name="morphe_romanize_language_DEFAULT">Automatic</string>
     <string name="morphe_music_lyrics_romanizing">Romanizing…</string>
     <string name="morphe_music_lyrics_romanize_failed">Could not romanize the lyrics</string>
+    <string name="morphe_music_lyrics_romanize_language_none">None</string>
+    <string name="morphe_music_lyrics_romanize_language_none_both">Both romaji targets cannot be None at the same time</string>
+    <string name="morphe_music_lyrics_ruby_language_title">Ruby Target</string>
     <string name="morphe_music_lyrics_translate_only">Translated only</string>
     <string name="morphe_music_lyrics_romanize_only">Romanized only</string>
     <string name="morphe_music_lyrics_dual_only">Dual mode</string>
@@ -899,14 +905,7 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_lyrics_romanization_provider_title">Romanization or transliteration</string>
     <string name="morphe_music_lyrics_romanization_provider_local">Offline Dictionary</string>
     <string name="morphe_music_lyrics_romanization_provider_rime">Rime Wordlist</string>
-    <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-    <string name="morphe_music_lyrics_ruby_provider_local">Offline Dictionary</string>
-    <string name="morphe_music_lyrics_ruby_style_title">Ruby script</string>
-    <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-    <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-    <string name="morphe_music_lyrics_show_ruby_button_title">Show Ruby button</string>
-    <string name="morphe_music_lyrics_show_ruby_button_summary">Tap to toggle ruby readings above lyrics; long-press to switch between hiragana and katakana. Uses the enabled ruby providers in their listed order</string>
-    <string name="morphe_music_lyrics_ruby_generating">Generating ruby…</string>
+    <string name="morphe_music_lyrics_romanization_provider_icu">ICU Transliterator</string>
     <string name="morphe_music_lyrics_use_ai_section_title">Detect sections with AI</string>
     <string name="morphe_music_lyrics_use_ai_section_summary">Only used when the provider ships no section labels such as Chorus or Verse, which your OpenAI-compatible model then detects. Editing the row also opens its prompt</string>
     <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (e.g. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -929,6 +928,7 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_lyrics_ai_config_fetch_models_success">Select a Model</string>
     <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Failed to fetch models. Check API key or connection.</string>
     <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
+    <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby Prompt (Kana)</string>
     <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
     <string name="morphe_music_lyrics_ai_config_base_url_label">Base URL</string>
     <string name="morphe_music_lyrics_ai_config_base_url_presets">Service presets</string>

@@ -243,9 +243,12 @@ public final class LyricifyProvider implements LyricsProvider {
                         null,
                         translations,
                         null,
+                        null,
                         creditLines.isEmpty() ? null : creditLines,
                         text,
                         formatType,
+                        null,
+                        null,
                         null),
                 resolved.titles(), resolved.artists(), 0L, track);
     }

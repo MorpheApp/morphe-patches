@@ -43,76 +43,6 @@ public final class LyricsSpanBuilder {
     static final float MAIN_LINE_SPACING = 1.22f;
 
     /**
-     * @param hasTrailingSpace Whether a space follows the word, which a syllable reading keeps so
-     *                         the readings of two words do not run together.
-     * @param ruby             The furigana drawn above the word.
-     * @param averaged         The line's own time spread evenly over its words, not the source's
-     *                         word timings.
-     */
-    public record WordTiming(int start, int end, long startMs, long endMs,
-                      @Nullable String romaji, boolean hasTrailingSpace,
-                      @Nullable String ruby, boolean averaged) {
-
-        public WordTiming(int start, int end, long startMs, long endMs,
-                   @Nullable String romaji, boolean hasTrailingSpace,
-                   @Nullable String ruby) {
-            this(start, end, startMs, endMs, romaji, hasTrailingSpace, ruby, false);
-        }
-
-        public WordTiming(int start, int end, long startMs, long endMs,
-                   @Nullable String romaji, boolean hasTrailingSpace, boolean averaged) {
-            this(start, end, startMs, endMs, romaji, hasTrailingSpace, null, averaged);
-        }
-
-        /** A reading ending in a space stands for the space after its word. */
-        WordTiming(int start, int end, long startMs, long endMs, @Nullable String romaji) {
-            this(start, end, startMs, endMs, romaji,
-                    romaji != null && romaji.endsWith(" "), null, false);
-        }
-
-        public WordTiming(int start, int end, long startMs, long endMs,
-                   @Nullable String romaji, boolean hasTrailingSpace) {
-            this(start, end, startMs, endMs, romaji, hasTrailingSpace, null, false);
-        }
-    }
-
-    /**
-     * @param showSyllableRomanization The reading is drawn under each syllable by the view, and
-     *                                 {@code readingSpans} carry it.
-     * @param originalStart            Where the original starts in {@code text}, which the word
-     *                                 offsets are measured from. Zero when an only mode drops it.
-     */
-    record BuildResult(Spannable text, @Nullable ForegroundColorSpan unsungSpan,
-                       int transStart, int transEnd, int romaStart, int romaEnd,
-                       @Nullable List<WordTiming> readingSpans, boolean smallRunHoldsWords,
-                       boolean showSyllableRomanization, int originalStart) {
-
-        BuildResult(Spannable text, @Nullable ForegroundColorSpan unsungSpan,
-                    int transStart, int transEnd, int romaStart, int romaEnd) {
-            this(text, unsungSpan, transStart, transEnd, romaStart, romaEnd, null);
-        }
-
-        BuildResult(Spannable text, @Nullable ForegroundColorSpan unsungSpan,
-                    int transStart, int transEnd, int romaStart, int romaEnd,
-                    @Nullable List<WordTiming> readingSpans) {
-            this(text, unsungSpan, transStart, transEnd, romaStart, romaEnd, readingSpans, false);
-        }
-
-        BuildResult(Spannable text, @Nullable ForegroundColorSpan unsungSpan,
-                    int transStart, int transEnd, int romaStart, int romaEnd,
-                    @Nullable List<WordTiming> readingSpans, boolean smallRunHoldsWords) {
-            this(text, unsungSpan, transStart, transEnd, romaStart, romaEnd,
-                    readingSpans, smallRunHoldsWords, false, 0);
-        }
-    }
-
-    private record Spacing(int mainClear, int smallClear, int boundaryClear) {
-    }
-
-    record PresentedLine(BuildResult display, List<WordTiming> words, int originalStart) {
-    }
-
-    /**
      * Applies the lyrics text filters to a built line, and moves its spans and word offsets to
      * where they are in the filtered text.
      *
@@ -144,54 +74,9 @@ public final class LyricsSpanBuilder {
         return new PresentedLine(new BuildResult(text, raw.unsungSpan(),
                 formatted.offset(raw.transStart()), formatted.offset(raw.transEnd()),
                 formatted.offset(raw.romaStart()), formatted.offset(raw.romaEnd()),
+                formatted.offset(raw.rubyStart()), formatted.offset(raw.rubyEnd()),
                 raw.readingSpans(), raw.smallRunHoldsWords(), raw.showSyllableRomanization(), base),
                 mapped, base);
-    }
-
-    private static final class UniformLineSpacingSpan implements LineHeightSpan {
-        private final Spacing spacing;
-        private int baseDescent;
-        private int lastWritten = Integer.MIN_VALUE;
-        private int previousEnd = -1;
-
-        UniformLineSpacingSpan(Spacing spacing) {
-            this.spacing = spacing;
-        }
-
-        @Override
-        public void chooseHeight(CharSequence text, int start, int end, int spanstartv, int v,
-                                 Paint.FontMetricsInt fm) {
-            if (end >= text.length()) {
-                return;
-            }
-            final boolean paragraphStart = start == 0 || text.charAt(start - 1) == '\n';
-            if (paragraphStart) {
-                baseDescent = fm.descent;
-            }
-            final boolean carried = !paragraphStart && start == previousEnd
-                    && fm.descent == lastWritten;
-            final int from = carried ? baseDescent : Math.max(baseDescent, fm.descent);
-            final boolean small = isSmallAt(text, start);
-            final boolean nextSmall = isSmallAt(text, end);
-            final int clearance;
-            if (small) {
-                clearance = (nextSmall && !endsWithNewline(text, end))
-                        ? spacing.smallClear() : spacing.boundaryClear();
-            } else {
-                clearance = nextSmall ? spacing.boundaryClear() : spacing.mainClear();
-            }
-            baseDescent = Math.max(baseDescent, from);
-            lastWritten = from + clearance;
-            fm.descent = lastWritten;
-            if (fm.bottom < fm.descent) {
-                fm.bottom = fm.descent;
-            }
-            previousEnd = end;
-        }
-
-        private static boolean endsWithNewline(CharSequence text, int end) {
-            return end > 0 && end <= text.length() && text.charAt(end - 1) == '\n';
-        }
     }
 
     private static boolean isSmallAt(CharSequence text, int offset) {
@@ -277,16 +162,6 @@ public final class LyricsSpanBuilder {
     }
 
     /**
-     * The reading shown for a line, and where each word's own reading sits inside it.
-     *
-     * <p>Reading it off the words rather than off the stored reading keeps the two the same
-     * string, so the highlight can follow the words without having to guess where a reading
-     * of its own would land.
-     */
-    record Reading(@Nullable String text, @Nullable List<WordTiming> spans) {
-    }
-
-    /**
      * @param timings Null when the caller wants the reading's text alone: they are what a
      *                whole-line reading is spread over.
      */
@@ -358,8 +233,8 @@ public final class LyricsSpanBuilder {
             return null;
         }
         final boolean wantRoman = romanizedLines != null || perWordRomaji;
-        final boolean lineHasRuby = Settings.LYRICS_RUBY.get() && hasAnyRuby(timings);
-        if (!lineHasRuby && isEntirelyAveraged(timings)) {
+        final boolean lineHasRuby = hasAnyRuby(timings);
+        if (!lineHasRuby && isEntirelyAveraged(timings) && !Settings.LYRICS_WORD_SYNC.get()) {
             return null;
         }
         if (!wantRoman && !lineHasRuby) {
@@ -392,6 +267,16 @@ public final class LyricsSpanBuilder {
             String own = stripBidiControls(mainText.substring(s, e)).trim();
             ownWords[i] = own;
             isLatinWord[i] = LyricsRomanizer.isPurelyLatinScript(own);
+        }
+
+        // Pre-compute ruby per word so ruby==original can be filtered before alignment.
+        String[] ownRuby = new String[n];
+        boolean[] rubyIsOriginal = new boolean[n];
+        for (int i = 0; i < n; i++) {
+            String ruby = timings.get(i).ruby();
+            ownRuby[i] = ruby;
+            rubyIsOriginal[i] = ruby != null && !ruby.isEmpty()
+                    && ruby.equalsIgnoreCase(ownWords[i]);
         }
 
         String[] romTexts = new String[n];
@@ -437,7 +322,9 @@ public final class LyricsSpanBuilder {
                     StringBuilder sb = new StringBuilder();
                     for (Word rw : rWords) {
                         String r = rw.romaji();
-                        if (r != null && !r.trim().isEmpty() && (allowTransliteration || !ScriptDetector.containsCjk(r))) {
+                        // Skip romaji that equals the original — it is not a reading.
+                        if (r != null && !r.trim().isEmpty() && !r.trim().equalsIgnoreCase(rw.text().trim())
+                                && (allowTransliteration || !ScriptDetector.containsCjk(r))) {
                             if (isSecondaryLine(line)) {
                                 r = LyricsBracketSplitter.stripAllBrackets(r);
                             }
@@ -459,7 +346,18 @@ public final class LyricsSpanBuilder {
 
             List<String> guides = new ArrayList<>(n);
             for (int i = 0; i < n; i++) {
-                guides.add(phoneticGuideFor(ownWords[i], mainText, isLatinWord[i]));
+                // Skip ruby that equals the original — the guide would misalign allocateReading.
+                guides.add(rubyIsOriginal[i] ? "" : phoneticGuideFor(ownWords[i], mainText, isLatinWord[i]));
+            }
+
+            // Han in wholeRoman is original text, not a reading; replace with spaces.
+            if (wholeRoman != null) {
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < wholeRoman.length(); i++) {
+                    sb.append(ScriptDetector.isHan(wholeRoman.charAt(i)) ? ' ' : wholeRoman.charAt(i));
+                }
+                String filtered = sb.toString().trim();
+                wholeRoman = filtered.isEmpty() ? null : filtered;
             }
 
             if (wholeRoman != null && !wholeRoman.trim().isEmpty()) {
@@ -536,13 +434,15 @@ public final class LyricsSpanBuilder {
                 anyRoman = true;
                 r = r + (trailSpace ? " " : "");
             }
-            final String ruby = lineHasRuby && wt.ruby() != null && !wt.ruby().isEmpty()
-                    ? wt.ruby() : null;
-            if (ruby != null) {
+            final String ruby = lineHasRuby && ownRuby[i] != null && !ownRuby[i].isEmpty()
+                    ? ownRuby[i] : null;
+            // Skip ruby that repeats the word as written, since the original already shows it.
+            final String drawnRuby = ruby != null && !ruby.equalsIgnoreCase(own) ? ruby : null;
+            if (drawnRuby != null) {
                 anyRuby = true;
             }
             out.add(new WordTiming(wt.start(), wt.end(), wt.startMs(), wt.endMs(),
-                    r.isEmpty() ? null : r, trailSpace, ruby, wt.averaged()));
+                    r.isEmpty() ? null : r, trailSpace, drawnRuby, wt.averaged()));
         }
 
         return (anyRoman || anyRuby) ? out : null;
@@ -653,22 +553,12 @@ public final class LyricsSpanBuilder {
         return closed;
     }
 
-    /**
-     * A one-word line is swept by character across its word's span, but only when it has one: a
-     * line timed only as a whole lights in one go like every other such line in the song.
-     */
-    private static boolean hasTimedWord(LyricsLine line) {
-        List<Word> words = line.words();
-        return words.size() > 1
-                || (words.size() == 1 && words.get(0).endMs() > words.get(0).startMs());
-    }
-
     static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index,
                                                boolean splitWordlessLine) {
         LyricsLine line = lines.get(index);
         String lineText = displayLineText(line);
         // A lone word with furigana stays whole, so its reading sits over all of it.
-        if (!hasAnyRuby(line) && countWords(lineText) == 1 && hasTimedWord(line)) {
+        if (!hasAnyRuby(line) && countWords(lineText) == 1 && line.hasWordTimings()) {
             long rangeStart = line.startTimeMs();
             if (rangeStart < 0 && line.hasWords()) {
                 rangeStart = line.words().get(0).startMs();
@@ -700,6 +590,13 @@ public final class LyricsSpanBuilder {
             if (lineStart >= 0 && lineEnd > lineStart) {
                 List<WordTiming> synthesized =
                         synthesizeLineWords(lineText, lineStart, lineEnd);
+                if (!synthesized.isEmpty()) {
+                    return synthesized;
+                }
+            } else if (lineStart <= 0) {
+                // Plain text has no timing; a dummy range lets the per-syllable
+                // romaji align under each character.
+                List<WordTiming> synthesized = synthesizeLineWords(lineText, 0, 1);
                 if (!synthesized.isEmpty()) {
                     return synthesized;
                 }
@@ -806,7 +703,7 @@ public final class LyricsSpanBuilder {
             final long clusterEnd = i + 1 == clusterCount
                     ? endMs
                     : startMs + (endMs - startMs) * (i + 1) / clusterCount;
-            timings.add(new WordTiming(boundaries[i], boundaries[i + 1], clusterStart, clusterEnd, null));
+            timings.add(new WordTiming(boundaries[i], boundaries[i + 1], clusterStart, clusterEnd, null, false, true));
         }
         return timings;
     }
@@ -1157,7 +1054,8 @@ public final class LyricsSpanBuilder {
      * this TextView, which left the highlight invisible.
      */
     static BuildResult buildLineText(LyricsLine line, List<WordTiming> timings, int index,
-                                     boolean perWordRomaji, List<LyricsLine> romanizedLines, List<String> translatedLines,
+                                     boolean perWordRomaji, List<LyricsLine> romanizedLines,
+                                     List<LyricsLine> rubyLines, List<String> translatedLines,
                                      LyricsPanelView.OnlyMode onlyMode, Paint basePaint, boolean isRightAligned) {
         Paint.FontMetricsInt baseFm = new Paint.FontMetricsInt();
         basePaint.getFontMetricsInt(baseFm);
@@ -1223,7 +1121,7 @@ public final class LyricsSpanBuilder {
                 applySpans(dual, Collections.emptyList(), 0, smallStart - 1,
                         smallIsRoma ? -1 : smallStart, smallIsRoma ? -1 : smallEnd,
                         smallIsRoma ? smallStart : -1, smallIsRoma ? smallEnd : -1,
-                        isRightAligned, centered);
+                        isRightAligned, centered, false);
             } else {
                 boolean isRtl = isRtlText(dual);
                 dual.setSpan(new AlignmentSpan.Standard(
@@ -1248,7 +1146,7 @@ public final class LyricsSpanBuilder {
         // from the same words rather than from a second set of marks. Furigana is always drawn
         // over its own word.
         List<WordTiming> syllableRomanTimings = (Settings.LYRICS_WORD_SYNC.get()
-                || (Settings.LYRICS_RUBY.get() && hasAnyRuby(line)))
+                || hasAnyRuby(line))
                 ? buildSyllableRomanizedTimings(line, index, romanizedLines, perWordRomaji, timings, original)
                 : null;
         final boolean showSyllableRomanization = syllableRomanTimings != null;
@@ -1258,43 +1156,81 @@ public final class LyricsSpanBuilder {
         String romanization = reading.text();
 
         final boolean swap = Settings.LYRICS_SWAP_TRANS_ROMA.get();
+        final boolean hasRuby = rubyLines != null
+                && index < rubyLines.size()
+                && rubyLines.get(index).text() != null
+                && !rubyLines.get(index).text().trim().isEmpty();
+        // Built per word to skip ruby that repeats the original text.
+        String rubyText = null;
+        if (hasRuby) {
+            StringBuilder rb = new StringBuilder();
+            if (line.hasWords()) {
+                for (Word w : line.words()) {
+                    if (w.ruby() != null && !w.ruby().isEmpty()
+                            && !w.ruby().equalsIgnoreCase(w.text().trim())) {
+                        rb.append(w.ruby());
+                    }
+                    if (w.endsWithSpace()) {
+                        rb.append(' ');
+                    }
+                }
+            }
+            String rt = rb.toString().trim();
+            rubyText = rt.isEmpty() ? null : rt;
+        }
         StringBuilder builder = new StringBuilder();
-        int romaStart = -1;
-        int romaEnd = -1;
+        int roma1Start = -1;
+        int roma1End = -1;
+        int rubyStart = -1;
+        int rubyEnd = -1;
         int transStart = -1;
         int transEnd = -1;
-        // The lyric stays on top with the reading and the translation below it, and the swap only
-        // changes the order of those two.
-        final int originalStart = 0;
+        if (translation != null && swap) {
+            builder.append(translation);
+            transStart = 0;
+            transEnd = builder.length();
+            builder.append('\n');
+        }
+
+        // The reading is drawn over each word when syllable romanization is active, so a
+        // separate ruby line would repeat it. Only the line-level ruby goes here.
+        if (rubyText != null && !showSyllableRomanization) {
+            rubyStart = builder.length();
+            builder.append(rubyText);
+            rubyEnd = builder.length();
+            builder.append('\n');
+        }
+
+        final int originalStart = builder.length();
         builder.append(original);
         final int originalEnd = builder.length();
-        if (romanization != null && !swap) {
+
+        if (romanization != null) {
             builder.append('\n');
-            romaStart = builder.length();
+            roma1Start = builder.length();
             builder.append(romanization);
-            romaEnd = builder.length();
+            roma1End = builder.length();
         }
-        if (translation != null) {
+
+        if (translation != null && !swap) {
             builder.append('\n');
             transStart = builder.length();
             builder.append(translation);
             transEnd = builder.length();
-        }
-        if (romanization != null && swap) {
-            builder.append('\n');
-            romaStart = builder.length();
-            builder.append(romanization);
-            romaEnd = builder.length();
         }
 
         SpannableString text = new SpannableString(builder.toString());
         attachUniformSpacing(text, spacing);
         ForegroundColorSpan unsungSpan = applySpans(text,
                 showSyllableRomanization ? syllableRomanTimings : timings,
-                originalStart, originalEnd, romaStart, romaEnd, transStart, transEnd,
-                isRightAligned, centered);
-        return new BuildResult(text, unsungSpan, transStart, transEnd, romaStart, romaEnd,
-                reading.spans(), false, showSyllableRomanization, originalStart);
+                originalStart, originalEnd, roma1Start, roma1End, transStart, transEnd,
+                isRightAligned, centered, line.hasWordTimings());
+        if (rubyStart >= 0 && rubyEnd > rubyStart) {
+            text.setSpan(new ForegroundColorSpan(LyricsColors.secondaryTextColor()),
+                    rubyStart, rubyEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        return new BuildResult(text, unsungSpan, transStart, transEnd, roma1Start, roma1End,
+                rubyStart, rubyEnd, reading.spans(), false, showSyllableRomanization, originalStart);
     }
 
     private static void attachUniformSpacing(SpannableString text, Spacing spacing) {
@@ -1303,19 +1239,6 @@ public final class LyricsSpanBuilder {
         }
         text.setSpan(new UniformLineSpacingSpan(spacing), 0, text.length(),
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-    }
-
-    /**
-     * One line of the dual mode: the text to show and where the small run sits in it. The copy
-     * button reads the same call, so the two cannot disagree about which side is the main line.
-     *
-     * @param smallStart Where the small run starts, -1 when the line carries only one side.
-     * @param wordSpans  Null unless something shown here is spoken word by word; when it is not,
-     *                   its offsets already measure against {@code text}.
-     */
-    record DualLine(String text, boolean mainIsRoma, boolean smallIsRoma, int smallStart,
-                    int smallEnd,
-                    @Nullable List<WordTiming> wordSpans, boolean wordsOnSmall) {
     }
 
     /** Both only-flags standing, so the original goes and the two swap-aware sides take over. */
@@ -1379,7 +1302,7 @@ public final class LyricsSpanBuilder {
     /** The line's own translation, null when it has none or it only repeats the original. */
     @Nullable
     public static String translationAt(LyricsLine line, int index,
-                                @Nullable List<String> translatedLines) {
+                                       @Nullable List<String> translatedLines) {
         if (translatedLines == null || index >= translatedLines.size()) {
             return null;
         }
@@ -1449,10 +1372,6 @@ public final class LyricsSpanBuilder {
             }
         }
         return false;
-    }
-
-    /** Text and words come back as one, so no word is lit at an offset from another string. */
-    private record Romanized(@Nullable String text, @Nullable List<WordTiming> spans) {
     }
 
     private static Romanized romanizedWithTimings(LyricsLine line, int index,
@@ -1567,7 +1486,7 @@ public final class LyricsSpanBuilder {
     /** What a romanization-only line shows: its own, else the per-word one joined up. */
     @Nullable
     public static String romanizationForOnlyMode(LyricsLine line, int index,
-                                          @Nullable List<LyricsLine> romanizedLines) {
+                                                 @Nullable List<LyricsLine> romanizedLines) {
         return romanizedWithTimings(line, index, romanizedLines, null).text();
     }
 
@@ -1587,7 +1506,7 @@ public final class LyricsSpanBuilder {
     private static ForegroundColorSpan applySpans(SpannableString text, List<WordTiming> timings,
                                                   int originalStart, int originalEnd,
                                                   int romaStart, int romaEnd, int transStart, int transEnd,
-                                                  boolean isRightAligned, boolean centered) {
+                                                  boolean isRightAligned, boolean centered, boolean applyKaraoke) {
         ForegroundColorSpan unsungSpan = null;
         if (romaStart >= 0 && romaEnd > romaStart) {
             text.setSpan(new RelativeSizeSpan(TRANSLATION_RELATIVE_SIZE), romaStart, romaEnd,
@@ -1602,7 +1521,10 @@ public final class LyricsSpanBuilder {
                     transStart, transEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
-        if (Settings.LYRICS_WORD_SYNC.get() && !timings.isEmpty()) {
+        // The karaoke sweep lights words one by one, but a line that carries no word timings from
+        // its source has nothing real to sweep through. Synthesised timings still fill the word
+        // spans for snap alignment and romanization, but they must not drive the highlight.
+        if (Settings.LYRICS_WORD_SYNC.get() && !timings.isEmpty() && applyKaraoke) {
             int unsung = LyricsColors.unsungWordColor() | 0xFF000000;
             unsungSpan = new ForegroundColorSpan(unsung);
             text.setSpan(unsungSpan, originalStart, originalEnd,
@@ -1656,5 +1578,149 @@ public final class LyricsSpanBuilder {
         } else {
             return isRtl ? Layout.Alignment.ALIGN_OPPOSITE : Layout.Alignment.ALIGN_NORMAL;
         }
+    }
+
+    /**
+     * @param hasTrailingSpace Whether a space follows the word, which a syllable reading keeps so
+     *                         the readings of two words do not run together.
+     * @param ruby             The furigana drawn above the word.
+     * @param averaged         The line's own time spread evenly over its words, not the source's
+     *                         word timings.
+     */
+    public record WordTiming(int start, int end, long startMs, long endMs,
+                             @Nullable String romaji, boolean hasTrailingSpace,
+                             @Nullable String ruby, boolean averaged) {
+
+        public WordTiming(int start, int end, long startMs, long endMs,
+                          @Nullable String romaji, boolean hasTrailingSpace,
+                          @Nullable String ruby) {
+            this(start, end, startMs, endMs, romaji, hasTrailingSpace, ruby, false);
+        }
+
+        public WordTiming(int start, int end, long startMs, long endMs,
+                          @Nullable String romaji, boolean hasTrailingSpace, boolean averaged) {
+            this(start, end, startMs, endMs, romaji, hasTrailingSpace, null, averaged);
+        }
+
+        /** A reading ending in a space stands for the space after its word. */
+        WordTiming(int start, int end, long startMs, long endMs, @Nullable String romaji) {
+            this(start, end, startMs, endMs, romaji,
+                    romaji != null && romaji.endsWith(" "), null, false);
+        }
+
+        public WordTiming(int start, int end, long startMs, long endMs,
+                          @Nullable String romaji, boolean hasTrailingSpace) {
+            this(start, end, startMs, endMs, romaji, hasTrailingSpace, null, false);
+        }
+    }
+
+    /**
+     * @param showSyllableRomanization The reading is drawn under each syllable by the view, and
+     *                                 {@code readingSpans} carry it.
+     * @param originalStart            Where the original starts in {@code text}, which the word
+     *                                 offsets are measured from. Zero when an only mode drops it.
+     */
+    record BuildResult(Spannable text, @Nullable ForegroundColorSpan unsungSpan,
+                       int transStart, int transEnd, int romaStart, int romaEnd,
+                       int rubyStart, int rubyEnd,
+                       @Nullable List<WordTiming> readingSpans, boolean smallRunHoldsWords,
+                       boolean showSyllableRomanization, int originalStart) {
+
+        BuildResult(Spannable text, @Nullable ForegroundColorSpan unsungSpan,
+                    int transStart, int transEnd, int romaStart, int romaEnd) {
+            this(text, unsungSpan, transStart, transEnd, romaStart, romaEnd, -1, -1, null, false, false, 0);
+        }
+
+        BuildResult(Spannable text, @Nullable ForegroundColorSpan unsungSpan,
+                    int transStart, int transEnd, int romaStart, int romaEnd,
+                    @Nullable List<WordTiming> readingSpans) {
+            this(text, unsungSpan, transStart, transEnd, romaStart, romaEnd, -1, -1, readingSpans, false, false, 0);
+        }
+
+        BuildResult(Spannable text, @Nullable ForegroundColorSpan unsungSpan,
+                    int transStart, int transEnd, int romaStart, int romaEnd,
+                    @Nullable List<WordTiming> readingSpans, boolean smallRunHoldsWords) {
+            this(text, unsungSpan, transStart, transEnd, romaStart, romaEnd, -1, -1,
+                    readingSpans, smallRunHoldsWords, false, 0);
+        }
+    }
+
+    private record Spacing(int mainClear, int smallClear, int boundaryClear) {
+    }
+
+    record PresentedLine(BuildResult display, List<WordTiming> words, int originalStart) {
+    }
+
+    private static final class UniformLineSpacingSpan implements LineHeightSpan {
+        private final Spacing spacing;
+        private int baseDescent;
+        private int lastWritten = Integer.MIN_VALUE;
+        private int previousEnd = -1;
+
+        UniformLineSpacingSpan(Spacing spacing) {
+            this.spacing = spacing;
+        }
+
+        private static boolean endsWithNewline(CharSequence text, int end) {
+            return end > 0 && end <= text.length() && text.charAt(end - 1) == '\n';
+        }
+
+        @Override
+        public void chooseHeight(CharSequence text, int start, int end, int spanstartv, int v,
+                                 Paint.FontMetricsInt fm) {
+            if (end >= text.length()) {
+                return;
+            }
+            final boolean paragraphStart = start == 0 || text.charAt(start - 1) == '\n';
+            if (paragraphStart) {
+                baseDescent = fm.descent;
+            }
+            final boolean carried = !paragraphStart && start == previousEnd
+                    && fm.descent == lastWritten;
+            final int from = carried ? baseDescent : Math.max(baseDescent, fm.descent);
+            final boolean small = isSmallAt(text, start);
+            final boolean nextSmall = isSmallAt(text, end);
+            final int clearance;
+            if (small) {
+                clearance = (nextSmall && !endsWithNewline(text, end))
+                        ? spacing.smallClear() : spacing.boundaryClear();
+            } else {
+                clearance = nextSmall ? spacing.boundaryClear() : spacing.mainClear();
+            }
+            baseDescent = Math.max(baseDescent, from);
+            lastWritten = from + clearance;
+            fm.descent = lastWritten;
+            if (fm.bottom < fm.descent) {
+                fm.bottom = fm.descent;
+            }
+            previousEnd = end;
+        }
+    }
+
+    /**
+     * The reading shown for a line, and where each word's own reading sits inside it.
+     *
+     * <p>Reading it off the words rather than off the stored reading keeps the two the same
+     * string, so the highlight can follow the words without having to guess where a reading
+     * of its own would land.
+     */
+    record Reading(@Nullable String text, @Nullable List<WordTiming> spans) {
+    }
+
+    /**
+     * One line of the dual mode: the text to show and where the small run sits in it. The copy
+     * button reads the same call, so the two cannot disagree about which side is the main line.
+     *
+     * @param smallStart Where the small run starts, -1 when the line carries only one side.
+     * @param wordSpans  Null unless something shown here is spoken word by word; when it is not,
+     *                   its offsets already measure against {@code text}.
+     */
+    record DualLine(String text, boolean mainIsRoma, boolean smallIsRoma, int smallStart,
+                    int smallEnd,
+                    @Nullable List<WordTiming> wordSpans, boolean wordsOnSmall) {
+    }
+
+    /** Text and words come back as one, so no word is lit at an offset from another string. */
+    private record Romanized(@Nullable String text, @Nullable List<WordTiming> spans) {
     }
 }

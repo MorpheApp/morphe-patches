@@ -2,6 +2,7 @@ import com.android.build.api.dsl.ApplicationExtension
 
 dependencies {
     testImplementation(libs.junit)
+    testImplementation(libs.json)
     testImplementation(project(":extensions:shared:library"))
     testImplementation(libs.morphe.extensions.library)
     testImplementation(project(":extensions:shared-youtube:library"))

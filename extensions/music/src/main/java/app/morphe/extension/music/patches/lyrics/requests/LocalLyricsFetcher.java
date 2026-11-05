@@ -27,8 +27,8 @@ import java.util.function.IntPredicate;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
+import app.morphe.extension.music.patches.lyrics.utils.CharactersConverter;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
@@ -821,8 +821,8 @@ public final class LocalLyricsFetcher {
                 }
             }
             return new Lyrics(result.lines, "Local", synced, null, null, null,
-                    result.creditLines.isEmpty() ? null : result.creditLines,
-                    raw, "lrc", null);
+                    null, result.creditLines.isEmpty() ? null : result.creditLines,
+                    raw, "lrc", null, null, null);
         }
 
         List<LyricsLine> plain = LRCParser.parsePlain(raw);

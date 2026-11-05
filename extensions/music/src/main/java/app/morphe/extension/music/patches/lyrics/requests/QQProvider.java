@@ -33,7 +33,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
-import app.morphe.extension.music.patches.lyrics.parsers.LyricsCrypto;
+import app.morphe.extension.music.patches.lyrics.utils.LyricsCrypto;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
@@ -509,6 +509,7 @@ public final class QQProvider implements LyricsProvider {
         }
 
         return new Lyrics(lines, name(), true, romanization, translations, null,
-                qrcMetadata.isEmpty() ? null : qrcMetadata, original, "qrc", sourceUrl);
+                null, qrcMetadata.isEmpty() ? null : qrcMetadata, original, "qrc", sourceUrl,
+                null, null);
     }
 }

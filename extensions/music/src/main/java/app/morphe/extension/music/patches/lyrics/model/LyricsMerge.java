@@ -28,9 +28,7 @@ import app.morphe.extension.shared.translation.TextTranslator;
  */
 public final class LyricsMerge {
 
-    /**
-     * Only TTML states background lines separately, so only there does the prefix mean anything.
-     */
+    /** Only TTML states background lines separately, so only there does the prefix mean anything. */
     public static final String BACKGROUND_TRACK_PREFIX = "bg:";
 
     /**
@@ -168,8 +166,8 @@ public final class LyricsMerge {
         songwriters.add(entry);
         return new Lyrics(lyrics.lines(), lyrics.providerName(), lyrics.synced(),
                 lyrics.romanization(), lyrics.translations(), lyrics.romanizations(),
-                songwriters, lyrics.rawFormat(), lyrics.formatType(), lyrics.sourceUrl(),
-                lyrics.about());
+                songwriters, lyrics.credits(), lyrics.rawFormat(), lyrics.formatType(),
+                lyrics.sourceUrl(), lyrics.about(), lyrics.agentNames());
     }
 
     public static List<LyricsLine> mergeRomanization(List<LyricsLine> original,

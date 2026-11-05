@@ -629,8 +629,8 @@ public final class LyricsCache {
         final String providerPrefix = provider == null ? "" : provider + ".";
         return derivedCacheFile(track, source,
                 ".ai." + providerPrefix
-                        + aiConfigKey(Settings.LYRICS_AI_RUBY_PROMPT.get())
-                        + ".ruby.txt", sourceLines);
+                        + aiConfigKey(Settings.LYRICS_AI_ROMANIZATION_PROMPT_2.get())
+                        + ".ruby." + LyricsRequests.rubyLanguage() + ".txt", sourceLines);
     }
 
     private static String aiConfigKey(String prompt) {
@@ -939,7 +939,7 @@ public final class LyricsCache {
         return new Lyrics(parsed, provider, synced,
                 alignedSidecar(readEmbeddedRomanization(key), parsed.size()),
                 alignedSidecarMap(readEmbeddedTranslations(key), parsed.size()),
-                null, songwriters, rawFormat, formatType, sourceUrl, about);
+                null, songwriters, rawFormat, formatType, sourceUrl, about, null);
     }
 
     /** The description was never in the file, so it is carried over rather than dropped. */
@@ -949,8 +949,8 @@ public final class LyricsCache {
         }
         return new Lyrics(lyrics.lines(), lyrics.providerName(), lyrics.synced(),
                 lyrics.romanization(), lyrics.translations(), lyrics.romanizations(),
-                lyrics.songwriters(), lyrics.rawFormat(), lyrics.formatType(),
-                lyrics.sourceUrl(), about);
+                lyrics.songwriters(), lyrics.credits(), lyrics.rawFormat(),
+                lyrics.formatType(), lyrics.sourceUrl(), about, lyrics.agentNames());
     }
 
     /**

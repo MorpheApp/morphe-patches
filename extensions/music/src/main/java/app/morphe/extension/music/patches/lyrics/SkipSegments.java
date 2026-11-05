@@ -37,15 +37,13 @@ import app.morphe.extension.shared.sponsorblock.objects.SponsorSegment;
 import app.morphe.extension.shared.sponsorblock.requests.SBRoutes;
 
 /**
- * SponsorBlock skip segments used to align lyrics with playback.
- *
- * <p>Lyrics are timed against the released audio but the player reports video time, so segments
- * are dropped from playback time ({@link #contentMs}), added back on a seek
- * ({@link #remapTimestamp}) and counted out of the duration asked with
- * ({@link #effectiveDurationMs}). Off means nothing is requested and every answer is null.
- * Failures are silent and retried after a cooldown; until an own answer exists the segments
- * SponsorBlock itself downloaded are used ({@link #fromController}). {@link #await} blocks, so
- * only lookup threads may call it; {@link #peek} never blocks.
+ * SponsorBlock skip segments used to align lyrics with playback. Lyrics are timed against the
+ * released audio but the player reports video time, so segments are dropped from playback time
+ * ({@link #contentMs}), added back on a seek ({@link #remapTimestamp}) and counted out of the
+ * duration asked with ({@link #effectiveDurationMs}). Off means nothing is requested and every
+ * answer is null. Failures are silent and retried after a cooldown; until an own answer exists the
+ * segments SponsorBlock itself downloaded are used ({@link #fromController}). {@link #await}
+ * blocks, so only lookup threads may call it; {@link #peek} never blocks.
  */
 public final class SkipSegments {
 
@@ -68,8 +66,8 @@ public final class SkipSegments {
             .createSizeRestrictedMap(CACHE_MAX_ENTRIES, true);
     private static final Map<String, FutureTask<List<Seg>>> TASKS = new HashMap<>();
     /**
-     * When the next attempt after a failed fetch may start. A failure is never cached, so
-     * without this the playback path would request every frame.
+     * When the next attempt after a failed fetch may start. A failure is never cached, so without
+     * this the playback path would request every frame.
      */
     private static final Map<String, Long> RETRY_AFTER = new HashMap<>();
     private static final Map<String, Integer> FETCH_EPOCH = new HashMap<>();
@@ -169,8 +167,8 @@ public final class SkipSegments {
     }
 
     /**
-     * The duration the provider search should ask with: the track without the parts the
-     * segments skip, so candidates written for the released audio pass the duration filter.
+     * The duration the provider search should ask with: the track without the parts the segments
+     * skip, so candidates written for the released audio pass the duration filter.
      */
     public static long effectiveDurationMs(long durationMs, @Nullable List<Seg> segs) {
         if (segs == null || segs.isEmpty() || durationMs <= 0) {
@@ -181,9 +179,9 @@ public final class SkipSegments {
     }
 
     /**
-     * Maps a timestamp of the released audio (content time) onto the video timeline that
-     * the player reports: every segment that starts at or before the timestamp adds its
-     * length. The segments must be sorted and merged, which {@link #await} guarantees.
+     * Maps a timestamp of the released audio (content time) onto the video timeline that the player
+     * reports: every segment that starts at or before the timestamp adds its length. The segments
+     * must be sorted and merged, which {@link #await} guarantees.
      */
     public static long remapTimestamp(long contentMs, @Nullable List<Seg> segs) {
         if (contentMs < 0 || segs == null || segs.isEmpty()) {
@@ -226,9 +224,9 @@ public final class SkipSegments {
 
     /**
      * The check every public answer passes: no answer stays null, a video without segments is
-     * answered with an empty list, and a segment whose reported video duration disagrees with
-     * the playing one is stale - the video was recut - and dropped. Nothing is discarded by
-     * coverage: identity by video id is exact, and a long intro/outro can take half the video.
+     * answered with an empty list, and a segment whose reported video duration disagrees with the
+     * playing one is stale - the video was recut - and dropped. Nothing is discarded by coverage:
+     * identity by video id is exact, and a long intro/outro can take half the video.
      */
     @Nullable
     private static List<Seg> applicable(@Nullable List<Seg> segs, long durationMs) {
@@ -264,11 +262,11 @@ public final class SkipSegments {
     }
 
     /**
-     * The segments SponsorBlock downloaded for the playing video - the same answer the own
-     * fetch asks for, available before it answers. Only the controller's own video id vouches
-     * for them: the controller clears its data on video change but a reader can race that
-     * clear, so anything else is ignored. Not cached: the controller owns the data and
-     * refreshes it when its own fetch lands.
+     * The segments SponsorBlock downloaded for the playing video - the same answer the own fetch
+     * asks for, available before it answers. Only the controller's own video id vouches for them:
+     * the controller clears its data on video change but a reader can race that clear, so anything
+     * else is ignored. Not cached: the controller owns the data and refreshes it when its own fetch
+     * lands.
      */
     @Nullable
     private static List<Seg> fromController(@NonNull String videoId) {
@@ -333,8 +331,8 @@ public final class SkipSegments {
     }
 
     /**
-     * Asks the SponsorBlock API for the segments of a video. Empty means the video has
-     * none; null means the service could not answer - not an answer at all.
+     * Asks the SponsorBlock API for the segments of a video. Empty means the video has none; null
+     * means the service could not answer - not an answer at all.
      */
     @Nullable
     private static List<Seg> fetch(String videoId) throws IOException, JSONException {

@@ -110,10 +110,11 @@ public final class MusixmatchProvider extends ScoredSongProvider {
         if (lyrics.songwriters() != null) {
             songwriters.addAll(lyrics.songwriters());
         }
-        songwriters.add(copyright);
+        songwriters.add("Copyright: " + copyright);
         return new Lyrics(lyrics.lines(), lyrics.providerName(), lyrics.synced(), null,
-                lyrics.translations(), null, songwriters, lyrics.rawFormat(),
-                lyrics.formatType(), lyrics.sourceUrl());
+                lyrics.translations(), null, songwriters, lyrics.credits(),
+                lyrics.rawFormat(),
+                lyrics.formatType(), lyrics.sourceUrl(), lyrics.about(), lyrics.agentNames());
     }
 
     private static String stripTrackingParams(String url) {

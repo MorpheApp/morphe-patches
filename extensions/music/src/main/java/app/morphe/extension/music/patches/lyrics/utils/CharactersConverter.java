@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics.parsers;
+package app.morphe.extension.music.patches.lyrics.utils;
 
 import android.icu.text.Transliterator;
 import android.os.Build;
@@ -92,8 +92,8 @@ public final class CharactersConverter {
     }
 
     /**
-     * Folds text to one form so a user's regex matches whatever variant the source used.
-     * Order matters: fullwidth and case before NFKC, then diacritics, then whitespace.
+     * Folds text to one form so a user's regex matches whatever variant the source used. Order
+     * matters: fullwidth and case before NFKC, then diacritics, then whitespace.
      */
     @NonNull
     public static String normalize(@NonNull String text) {

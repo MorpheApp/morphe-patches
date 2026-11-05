@@ -16,8 +16,8 @@ import java.net.HttpURLConnection;
 import java.util.concurrent.atomic.AtomicLong;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
-import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.MetadataCleaner;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;

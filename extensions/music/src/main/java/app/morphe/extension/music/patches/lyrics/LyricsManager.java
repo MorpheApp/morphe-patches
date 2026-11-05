@@ -46,7 +46,6 @@ import app.morphe.extension.music.patches.lyrics.model.MetadataCleaner;
 import app.morphe.extension.music.patches.lyrics.model.MiniLyricsFormatter;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.TrackVersion;
-import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
 import app.morphe.extension.music.patches.lyrics.requests.DeezerProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LocalLyricsFetcher;
 import app.morphe.extension.music.patches.lyrics.requests.LrcRedProvider;
@@ -56,27 +55,23 @@ import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.patches.lyrics.storage.TrackOffsetStore;
 import app.morphe.extension.music.patches.lyrics.ui.LyricsPanelInstaller;
+import app.morphe.extension.music.patches.lyrics.utils.CharactersConverter;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 /**
- * Fetches lyrics for the current track and tracks playback position.
- *
- * <p>Position is extrapolated from the last {@link PlaybackState} update; the ~1 Hz
- * {@link VideoInformation#getVideoTime()} hook only re-anchors when ahead, or far behind
- * while {@link PlaybackState} is quiet. Seeks and play/pause re-anchor via {@link #onSetPlaybackState}.
+ * Fetches lyrics for the current track and tracks playback position. Position is extrapolated from
+ * {@link PlaybackState}; the ~1 Hz {@link VideoInformation#getVideoTime()} hook only re-anchors
+ * when ahead.
  */
 public final class LyricsManager {
 
     private static final LyricsManager INSTANCE = new LyricsManager();
     private static final long PENDING_COMMIT_MS = 1500;
     private static final long REBINDING_CONFIRM_MS = 1500;
-    /**
-     * A sample further than this from the estimate is a seek, which the estimate jumps to
-     * instead of catching up with.
-     */
+    /** A sample further than this from the estimate is a seek, so the estimate jumps to it. */
     private static final long SEEK_THRESHOLD_MS = 1000;
     /** A longer frame gap, such as after the app was in the background, is not extrapolated over. */
     private static final long MAX_FRAME_STEP_MS = 100;
@@ -85,10 +80,7 @@ public final class LyricsManager {
     private final ExecutorService fetchExecutor = Executors.newFixedThreadPool(16);
     private final Set<Future<?>> activeFetches = ConcurrentHashMap.newKeySet();
     private final List<Listener> listeners = new ArrayList<>(2);
-    /**
-     * Incremented for every track change so that a late response for a previous
-     * track is discarded instead of being shown for the current one.
-     */
+    /** Incremented for every track change so a late response for a previous track is discarded. */
     private final AtomicInteger requestId = new AtomicInteger();
     private final PriorityQueue<ScoredCandidate> candidateQueue = new PriorityQueue<>();
     private final Set<String> shownFingerprints = ConcurrentHashMap.newKeySet();
@@ -136,9 +128,8 @@ public final class LyricsManager {
     private volatile String displaySegsVideoId;
 
     /**
-     * The candidate segment the open submit dialog previews: playback time counts it
-     * exactly like a stored segment until the dialog dismisses and
-     * {@link #clearDialogSegment()} runs. Null while no dialog is up.
+     * The candidate segment the open submit dialog previews: playback time counts it exactly like a
+     * stored segment until the dialog dismisses. Null while no dialog is up.
      */
     @Nullable
     private volatile SkipSegments.Seg dialogPreviewSeg;
@@ -164,9 +155,9 @@ public final class LyricsManager {
     private int temporaryOffsetMs = 0;
     private volatile boolean phase2Done;
     /**
-     * Set to the id of a lookup whose job is only to fill the queue, because the lyric
-     * remembered for the track is already on screen. Cleared as soon as the user asks for
-     * a different candidate.
+     * Set to the id of a lookup whose job is only to fill the queue, because the lyric remembered
+     * for the track is already on screen. Cleared as soon as the user asks for a different
+     * candidate.
      */
     private volatile int suppressForRequest = -1;
     /** Fingerprints of the candidates the user left in order for this track, in that order. */
@@ -180,8 +171,8 @@ public final class LyricsManager {
     private final Choreographer.FrameCallback frameCallback = this::onFrame;
     /**
      * Fingerprint the remembered lyric had before it was written to disk. Writing drops the raw
-     * text the fingerprint was taken from, so this is what tells a later lookup that the lyric
-     * it just found is the one already on screen.
+     * text the fingerprint was taken from, so this is what tells a later lookup that the lyric it
+     * just found is the one already on screen.
      */
     @Nullable
     private volatile String preferredFingerprint;
@@ -189,28 +180,29 @@ public final class LyricsManager {
     @Nullable
     private volatile SyncPatch activeSyncPatch;
     /**
-     * The video id the running lookup belongs to, captured on the thread that starts it:
-     * {@link VideoInformation} is not volatile, so a background thread must not read it after
-     * another video has started. It names the remembered preference of the playback.
+     * The video id the running lookup belongs to, captured on the thread that starts it: {@link
+     * VideoInformation} is not volatile, so a background thread must not read it after another
+     * video has started. It names the remembered preference of the playback.
      */
     @Nullable
     private volatile String preferenceVideoId;
     /**
-     * The video id the running load belongs to, so {@link #ensureLoadedForCurrentVideo}
-     * can tell that playback reached another video without one of the track events
-     * starting a load for it: metadata can arrive empty or not at all on an auto-switch.
+     * The video id the running load belongs to, so {@link #ensureLoadedForCurrentVideo} can tell
+     * that playback reached another video without one of the track events starting a load for it:
+     * metadata can arrive empty or not at all on an auto-switch.
      */
     private String loadedForVideoId = "";
     /**
-     * The video the lyrics on screen belong to. {@link #currentVideoId} is the video the
-     * current track was committed for, which is not the same one while a rebinding still
-     * keeps the lyric of the video that played before.
+     * The video the lyrics on screen belong to. {@link #currentVideoId} is the video the current
+     * track was committed for, which is not the same one while a rebinding still keeps the lyric of
+     * the video that played before.
      */
     private String lyricsVideoId = "";
     @Nullable
     private String unconfirmedVideoId;
     private int rebindingGeneration;
     private boolean staleLyricsDropped;
+
     private LyricsManager() {
         VideoInformation.addVideoIdListener(videoId -> reloadCurrentTrack());
         LyricsPanelInstaller.registerSettingsListener();
@@ -235,8 +227,8 @@ public final class LyricsManager {
 
     /**
      * Returns true for tracks backed by a local file ({@code file://} or {@code content://}) as
-     * opposed to a streamed YouTube video ({@code http(s)://}). Only local files can carry
-     * embedded lyrics in their tags.
+     * opposed to a streamed YouTube video ({@code http(s)://}). Only local files can carry embedded
+     * lyrics in their tags.
      */
     private static boolean isLocalUri(@Nullable Uri uri) {
         return uri != null && ("file".equals(uri.getScheme()) || "content".equals(uri.getScheme()));
@@ -341,8 +333,8 @@ public final class LyricsManager {
     }
 
     /**
-     * Looks up the track's version on Deezer, only when the miniplayer or the media session
-     * show the track format and it has {v}. If the lookup fails, the title shows without {v}.
+     * Looks up the track's version on Deezer, only when the miniplayer or the media session show
+     * the track format and it has {v}. If the lookup fails, the title shows without {v}.
      */
     private void requestVersion(TrackInfo track) {
         if (!Settings.LYRICS_ENABLED.get()
@@ -436,9 +428,9 @@ public final class LyricsManager {
     }
 
     /**
-     * Current playback position on the released-audio timeline: while the segment switch
-     * is on, time the sponsor block segments have already passed is removed first, then
-     * the user configured offset and the temporary offset are applied.
+     * Current playback position on the released-audio timeline: while the segment switch is on,
+     * time the sponsor block segments have already passed is removed first, then the user
+     * configured offset and the temporary offset are applied.
      */
     public long getPositionMs() {
         return SkipSegments.contentMs(computeExpectedPositionMs(), syncSegs())
@@ -519,8 +511,8 @@ public final class LyricsManager {
     }
 
     /**
-     * The song of an album, and the video id of the app itself, can both land after the metadata
-     * of a track, so the track is read again whenever either of them arrives.
+     * The song of an album, and the video id of the app itself, can both land after the metadata of
+     * a track, so the track is read again whenever either of them arrives.
      */
     public void reloadCurrentTrack() {
         Utils.runOnMainThread(() -> {
@@ -610,10 +602,10 @@ public final class LyricsManager {
     }
 
     /**
-     * Starts the load a track event failed to start: on an automatic switch the metadata
-     * can arrive empty or not at all, so nothing loads the video that is actually playing
-     * until the refresh button is pressed. The video id the last load started for is the
-     * marker, which makes this idempotent across the events that do arrive.
+     * Starts the load a track event failed to start: on an automatic switch the metadata can arrive
+     * empty or not at all, so nothing loads the video that is actually playing until the refresh
+     * button is pressed. The video id the last load started for is the marker, which makes this
+     * idempotent across the events that do arrive.
      */
     private void ensureLoadedForCurrentVideo() {
         if (!Settings.LYRICS_ENABLED.get() || currentTrack == null || pendingTrack != null
@@ -629,9 +621,9 @@ public final class LyricsManager {
     }
 
     /**
-     * Holds the track while playback reached a video the metadata events have not
-     * described yet: the session reports the previous video's metadata first, so
-     * deferring lets the next event name the new video before anything is committed.
+     * Holds the track while playback reached a video the metadata events have not described yet:
+     * the session reports the previous video's metadata first, so deferring lets the next event
+     * name the new video before anything is committed.
      */
     private void deferTrackRebinding(String videoId, String rawTitle, String rawArtist,
                                      @Nullable Uri mediaUri) {
@@ -643,8 +635,8 @@ public final class LyricsManager {
     }
 
     /**
-     * Binds the current track to the video playback reached, keeping its lyric. Runs
-     * once the metadata events have had their chance to name the new video.
+     * Binds the current track to the video playback reached, keeping its lyric. Runs once the
+     * metadata events have had their chance to name the new video.
      */
     private void confirmTrackRebinding(int generation, String rawTitle,
                                        String rawArtist, @Nullable Uri mediaUri) {
@@ -859,9 +851,9 @@ public final class LyricsManager {
     }
 
     /**
-     * Fetches the next candidate lyrics. Called from the refresh button.
-     * Never replaces the current lyrics until a new valid candidate is chosen;
-     * the queue is seeded from the 2nd item onward (the current best is skipped).
+     * Fetches the next candidate lyrics. Called from the refresh button. Never replaces the current
+     * lyrics until a new valid candidate is chosen; the queue is seeded from the 2nd item onward
+     * (the current best is skipped).
      */
     public void fetchNextCandidate() {
         Utils.verifyOnMainThread();
@@ -1040,9 +1032,9 @@ public final class LyricsManager {
     }
 
     /**
-     * Shows the lyric the user landed on for this track and arms the queue to be filled
-     * around it instead of replacing it. Runs on a lookup thread, and reports whether the
-     * lookup that called it has to treat everything it finds as queue material.
+     * Shows the lyric the user landed on for this track and arms the queue to be filled around it
+     * instead of replacing it. Runs on a lookup thread, and reports whether the lookup that called
+     * it has to treat everything it finds as queue material.
      */
     private boolean applyRememberedPreference(int id, TrackInfo track) {
         final LyricsPreference preference = LyricsCache.getPreference(preferenceVideoId, track);
@@ -1175,8 +1167,8 @@ public final class LyricsManager {
     /**
      * Shows lyrics computed outside any provider - transcription, or timings aligned onto text the
      * user already had - as the version for this track, pushing what was showing or waiting behind
-     * it. Same {@link #prepareForDisplay} path and remembered preference as any load;
-     * {@link #shownFingerprints} keeps refresh from landing on it again.
+     * it. Same {@link #prepareForDisplay} path and remembered preference as any load; {@link
+     * #shownFingerprints} keeps refresh from landing on it again.
      */
     public void publishPreferred(@Nullable Lyrics injected) {
         Utils.verifyOnMainThread();
@@ -1250,8 +1242,8 @@ public final class LyricsManager {
     }
 
     /**
-     * Puts the queue back in the order the user left it: candidates they had not reached yet
-     * keep their remembered place, and anything new arrives after them in score order.
+     * Puts the queue back in the order the user left it: candidates they had not reached yet keep
+     * their remembered place, and anything new arrives after them in score order.
      */
     private void reorderQueueByRemembered() {
         List<String> remembered = rememberedQueue;
@@ -1319,9 +1311,9 @@ public final class LyricsManager {
     }
 
     /**
-     * Collects a lyric found while the remembered one is on screen: it belongs to the queue,
-     * not to the screen. A result that only differs from what is shown by the lines that get
-     * filtered out is the same lyric and is dropped.
+     * Collects a lyric found while the remembered one is on screen: it belongs to the queue, not to
+     * the screen. A result that only differs from what is shown by the lines that get filtered out
+     * is the same lyric and is dropped.
      */
     private void enqueueWhileSuppressed(Lyrics lyrics, Lyrics prepared) {
         String incoming = LyricsMatch.fingerprint(lyrics);
@@ -1371,11 +1363,9 @@ public final class LyricsManager {
     }
 
     /**
-     * Searches with the terms the user typed and replaces the candidate queue with what those
-     * terms find. Called from the search dialog on the main thread.
+     * Searches with the terms the user typed and replaces the candidate queue with what those terms find. Called from the search dialog on the main thread.
      *
-     * @param defaultTerms true when the terms are still the track's own metadata, which then
-     *                     go through the usual metadata cleaning; typed terms do not.
+     * @param defaultTerms true when the terms are still the track's own metadata, which then go through the usual metadata cleaning; typed terms do not.
      */
     public void searchWithCustomQuery(String title, String artist, boolean defaultTerms) {
         Utils.verifyOnMainThread();
@@ -1960,9 +1950,9 @@ public final class LyricsManager {
     }
 
     /**
-     * The word-timed version of the same lyric usually lands moments after the line-synced one,
-     * so a first result that carries only line timing waits out {@link #FIRST_PAINT_HOLD_MS}
-     * rather than render the song twice.
+     * The word-timed version of the same lyric usually lands moments after the line-synced one, so
+     * a first result that carries only line timing waits out {@link #FIRST_PAINT_HOLD_MS} rather
+     * than render the song twice.
      */
     private void publishBest(int id, DisplayState display) {
         final Lyrics available = display.bestResult != null
@@ -1991,8 +1981,8 @@ public final class LyricsManager {
                                    Set<String> failedSet, AtomicBoolean threadFailed) {
         attempted.add(provider.name());
         try {
-            LyricsProvider.FetchResult fr = provider.fetch(vq.track());
-            if (fr == null || fr.lyrics() == null || fr.lyrics() == Lyrics.NOT_FOUND) {
+            LyricsProvider.FetchResult fr = fetchWithRetry(provider, vq);
+            if (fr == null) {
                 return null;
             }
             withResults.add(provider.name());
@@ -2011,6 +2001,63 @@ public final class LyricsManager {
             threadFailed.set(true);
             return null;
         }
+    }
+
+    /** Fetches with one retry on exception or truncated lyrics; returns last available result. */
+    private static LyricsProvider.FetchResult fetchWithRetry(LyricsProvider provider,
+                                                             VariantQuery vq) throws Exception {
+        LyricsProvider.FetchResult fr;
+        try {
+            fr = provider.fetch(vq.track());
+        } catch (Exception firstEx) {
+            try {
+                fr = provider.fetch(vq.track());
+            } catch (InterruptedException | java.util.concurrent.CancellationException ex) {
+                throw ex;
+            } catch (Exception retryEx) {
+                retryEx.addSuppressed(firstEx);
+                throw retryEx;
+            }
+        }
+
+        if (fr == null || fr.lyrics() == null || fr.lyrics() == Lyrics.NOT_FOUND) {
+            return null;
+        }
+
+        if (!isCompleteLyrics(fr.lyrics(), vq.track())) {
+            try {
+                LyricsProvider.FetchResult retry = provider.fetch(vq.track());
+                if (retry != null && retry.lyrics() != null
+                        && retry.lyrics() != Lyrics.NOT_FOUND) {
+                    return retry;
+                }
+            } catch (Exception retryEx) {
+                Logger.printDebug(() -> "Provider retry failed, using first result: "
+                        + provider.name(), retryEx);
+            }
+        }
+
+        return fr;
+    }
+
+    /** Truncated lyrics end far short of the track's duration, signaling a cut-off HTTP response. */
+    private static boolean isCompleteLyrics(Lyrics lyrics, TrackInfo track) {
+        if (lyrics == null || lyrics.isEmpty()) {
+            return false;
+        }
+        if (lyrics.lines().size() < 2) {
+            return false;
+        }
+        if (track != null && track.durationSeconds() > 60) {
+            long maxEnd = 0;
+            for (LyricsLine line : lyrics.lines()) {
+                if (line.endTimeMs() != LyricsLine.NO_TIME && line.endTimeMs() > maxEnd) {
+                    maxEnd = line.endTimeMs();
+                }
+            }
+            return maxEnd <= 0 || maxEnd >= track.durationSeconds() * 150L;
+        }
+        return true;
     }
 
     private void publishFromLookup(int id, Lyrics lyrics) {
@@ -2098,9 +2145,9 @@ public final class LyricsManager {
     }
 
     /**
-     * The candidate segment the open submit dialog wants previewed. Playback time counts
-     * it like a stored segment - the lyrics skip it - until {@link #clearDialogSegment()}
-     * runs when the dialog leaves. Called again on every A-B change of that dialog.
+     * The candidate segment the open submit dialog wants previewed. Playback time counts it like a
+     * stored segment - the lyrics skip it - until {@link #clearDialogSegment()} runs when the
+     * dialog leaves. Called again on every A-B change of that dialog.
      */
     public void setDialogSegment(@NonNull String videoId, long startMs, long endMs) {
         if (endMs <= startMs) {
@@ -2126,8 +2173,8 @@ public final class LyricsManager {
     }
 
     /**
-     * Segments playback time is stripped of before comparing with lyric timestamps. Null when
-     * the switch is off, the lyrics are video-timeline-matched, or playback is local. Reads the
+     * Segments playback time is stripped of before comparing with lyric timestamps. Null when the
+     * switch is off, the lyrics are video-timeline-matched, or playback is local. Reads the
      * freshest answer every frame - an own fetch replaces the controller's once cached, the
      * previous latch only serves while no answer exists, and a dialog's candidate folds in live.
      */
@@ -2176,8 +2223,8 @@ public final class LyricsManager {
     }
 
     /**
-     * Filters out credit lines and text the user asked to hide, then normalizes the timings
-     * of synced lyrics, consulting the short-lived cache of already filtered results.
+     * Filters out credit lines and text the user asked to hide, then normalizes the timings of
+     * synced lyrics, consulting the short-lived cache of already filtered results.
      */
     private Lyrics prepareForDisplay(Lyrics lyrics) {
         final boolean splitBackground = Settings.LYRICS_SPLIT_BACKGROUND.get();
@@ -2216,8 +2263,9 @@ public final class LyricsManager {
                             Lyrics.fixAnomalousWordTimestamps(lyrics.lines())),
                     lyrics.providerName(), true, lyrics.romanization(),
                     lyrics.translations(), lyrics.romanizations(),
-                    lyrics.songwriters(), lyrics.rawFormat(),
-                    lyrics.formatType(), lyrics.sourceUrl(), lyrics.about());
+                    lyrics.songwriters(), lyrics.credits(), lyrics.rawFormat(),
+                    lyrics.formatType(), lyrics.sourceUrl(), lyrics.about(),
+                    lyrics.agentNames());
         }
         return lyrics;
     }

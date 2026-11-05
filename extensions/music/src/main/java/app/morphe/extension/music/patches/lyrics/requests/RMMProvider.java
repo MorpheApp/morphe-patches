@@ -198,24 +198,11 @@ public final class RMMProvider implements LyricsProvider {
         return count == 0 ? null : List.of(sb.toString());
     }
 
-    /**
-     * The writers the lyrics themselves name, then whoever uploaded the sync. The TTML head carries
-     * the writers whenever it has any, and the JSON array is the fallback for the rest.
-     */
+    /** "Uploaded by ..." is a credit, not a songwriter. Returns null when there is no uploader. */
     @Nullable
-    private static List<String> buildCredits(@Nullable Uploader uploader,
-                                             @Nullable List<String> ttmlSongwriters,
-                                             @Nullable List<String> jsonSongwriters) {
-        List<String> credits = new ArrayList<>();
-        if (ttmlSongwriters != null && !ttmlSongwriters.isEmpty()) {
-            credits.addAll(ttmlSongwriters);
-        } else if (jsonSongwriters != null && !jsonSongwriters.isEmpty()) {
-            credits.addAll(jsonSongwriters);
-        }
-        if (uploader != null) {
-            credits.add("Uploaded by " + uploader.username());
-        }
-        return credits.isEmpty() ? null : credits;
+    private static String uploaderCredit(@Nullable Uploader uploader) {
+        if (uploader == null) return null;
+        return "Uploaded by " + uploader.username();
     }
 
     @Nullable
@@ -256,18 +243,29 @@ public final class RMMProvider implements LyricsProvider {
         String sourceUrl = uploader != null ? usableUrl(uploader.url()) : null;
 
         List<String> jsonSongwriters = parseJsonSongwriters(root);
+        String uploaderC = uploaderCredit(uploader);
+        List<String> credits = (uploaderC == null) ? null : List.of(uploaderC);
 
         String ttml = root.optString("ttml", "");
         if (!ttml.isEmpty()) {
             Lyrics parsed = TTMLParser.ttmlToLyrics(ttml, providerName, sourceUrl);
             if (parsed != null && !parsed.isEmpty()) {
-                List<String> credits = buildCredits(uploader, parsed.songwriters(), jsonSongwriters);
-                if (credits == null) {
+                if (uploaderC == null) {
                     return parsed;
+                }
+                List<String> parsedCredits = parsed.credits();
+                List<String> mergedCredits;
+                if (parsedCredits == null) {
+                    mergedCredits = List.of(uploaderC);
+                } else {
+                    mergedCredits = new ArrayList<>(parsedCredits);
+                    if (!mergedCredits.contains(uploaderC)) mergedCredits.add(uploaderC);
                 }
                 return new Lyrics(parsed.lines(), providerName, parsed.synced(),
                         parsed.romanization(), parsed.translations(), parsed.romanizations(),
-                        credits, parsed.rawFormat(), parsed.formatType(), sourceUrl);
+                        parsed.songwriters(), mergedCredits, parsed.rawFormat(),
+                        parsed.formatType(), sourceUrl,
+                        parsed.about(), parsed.agentNames());
             }
         }
 
@@ -275,8 +273,7 @@ public final class RMMProvider implements LyricsProvider {
         if (lineLevel != null) {
             String raw = lrcFormat(lineLevel);
             return new Lyrics(lineLevel, providerName, true, null, null, null,
-                    buildCredits(uploader, null, jsonSongwriters),
-                    raw, "lrc", sourceUrl);
+                    jsonSongwriters, credits, raw, "lrc", sourceUrl, null, null);
         }
 
         String syncedLyrics = root.optString("syncedLyrics", "");
@@ -284,8 +281,7 @@ public final class RMMProvider implements LyricsProvider {
             List<LyricsLine> lines = LRCParser.parseSynced(syncedLyrics);
             if (!lines.isEmpty()) {
                 return new Lyrics(lines, providerName, true, null, null, null,
-                        buildCredits(uploader, null, jsonSongwriters),
-                        syncedLyrics, "lrc", sourceUrl);
+                        jsonSongwriters, credits, syncedLyrics, "lrc", sourceUrl, null, null);
             }
         }
 
@@ -294,8 +290,7 @@ public final class RMMProvider implements LyricsProvider {
             List<LyricsLine> lines = LRCParser.parsePlain(plainLyrics);
             if (!lines.isEmpty()) {
                 return new Lyrics(lines, providerName, false, null, null, null,
-                        buildCredits(uploader, null, jsonSongwriters),
-                        plainLyrics, "txt", sourceUrl);
+                        jsonSongwriters, credits, plainLyrics, "txt", sourceUrl, null, null);
             }
         }
 

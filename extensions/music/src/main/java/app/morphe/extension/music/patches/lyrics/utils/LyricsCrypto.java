@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics.parsers;
+package app.morphe.extension.music.patches.lyrics.utils;
 
 import android.annotation.SuppressLint;
 import android.util.Base64;
@@ -25,10 +25,9 @@ import javax.crypto.spec.SecretKeySpec;
 import app.morphe.extension.shared.Logger;
 
 /**
- * Small crypto helpers shared by the NetEase and QQ lyrics providers.
- *
- * <p>These mirror the encryption the upstream web clients use: NetEase relies on
- * AES-ECB with PKCS5 padding, QQ on triple-DES-ECB with zlib compressed payloads.
+ * Small crypto helpers shared by the NetEase and QQ lyrics providers. These mirror the encryption
+ * the upstream web clients use: NetEase relies on AES-ECB with PKCS5 padding, QQ on triple-DES-ECB
+ * with zlib compressed payloads.
  */
 public final class LyricsCrypto {
 

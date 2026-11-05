@@ -252,6 +252,39 @@ public final class RimeDictStore {
         return lang == null ? null : table(lang).open();
     }
 
+    /** Word table of a language by code. Used by the ruby chain, which reads the language picked for ruby, not for romanization. */
+    @Nullable
+    public static WordReadingTable word(String code) {
+        RimeLang lang = langForCode(code);
+        return lang == null ? null : table(lang).open();
+    }
+
+    public static boolean isReady(String code) {
+        RimeLang lang = langForCode(code);
+        return lang != null && characterTablesReady(lang) && table(lang).open() != null;
+    }
+
+    @Nullable
+    public static String reading(char c, String code) {
+        RimeLang lang = langForCode(code);
+        if (lang == null) return null;
+        switch (lang.charSource) {
+            case CHAR_SOURCE_CANTONESE:
+                return UniDictStore.cantoneseReading(c);
+            case CHAR_SOURCE_PINYIN:
+                return UniDictStore.pinyinReading(c);
+            default:
+                return null;
+        }
+    }
+
+    @Nullable
+    private static RimeLang langForCode(String code) {
+        if (code == null) return null;
+        final String subtag = code.toLowerCase(Locale.ROOT).split("-", 2)[0];
+        return langs().get(subtag);
+    }
+
     /** Starts a fetch if the table is not loaded. Safe to call whenever the setting is on. */
     public static void ensure(RomanizationDict.Listener listener) {
         if (isReady()) {

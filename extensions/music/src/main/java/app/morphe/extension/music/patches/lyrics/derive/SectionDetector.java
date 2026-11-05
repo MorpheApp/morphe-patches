@@ -26,9 +26,9 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 /**
- * Asks the AI which part of the song each lyric line belongs to, only for lyrics that ship
- * without any section of their own: a provider-published label beats one inferred from the text.
- * The answer names only the line opening a section, mapping straight onto {@link LyricsLine#songPart()}.
+ * Asks the AI which part of the song each lyric line belongs to, only for lyrics without sections
+ * of their own: a provider-published label beats one inferred from the text. The answer names only
+ * the line opening a section, mapping straight onto {@link LyricsLine#songPart()}.
  */
 public final class SectionDetector {
 
@@ -124,8 +124,8 @@ public final class SectionDetector {
         }
         return new Lyrics(out, lyrics.providerName(), lyrics.synced(),
                 lyrics.romanization(), lyrics.translations(), lyrics.romanizations(),
-                lyrics.songwriters(), lyrics.rawFormat(), lyrics.formatType(),
-                lyrics.sourceUrl(), lyrics.about());
+                lyrics.songwriters(), lyrics.credits(), lyrics.rawFormat(),
+                lyrics.formatType(), lyrics.sourceUrl(), lyrics.about(), lyrics.agentNames());
     }
 
     @Nullable

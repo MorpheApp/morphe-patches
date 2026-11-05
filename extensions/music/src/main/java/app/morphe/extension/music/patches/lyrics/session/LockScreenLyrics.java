@@ -65,11 +65,19 @@ public final class LockScreenLyrics {
     private static volatile boolean needsRepush;
     @Nullable
     private static volatile PlaybackState playbackState;
-
+    private static volatile long observedPositionMs;
     /** Drives the periodic check that mirrors the current line into the MediaSession. */
     private static final LyricsTicker ticker = new LyricsTicker(LockScreenLyrics::tick);
-    private static volatile long observedPositionMs;
     private static volatile long observedAtElapsedMs;
+
+    private LockScreenLyrics() {
+    }
+
+    /** Pushes the current line again, as a lyrics setting changed how it is shown. */
+    public static void onSettingsChanged() {
+        needsRepush = true;
+        tick();
+    }
 
     /**
      * Re-arms the ticker whenever lyrics arrive or disappear, so a late lookup does not
@@ -80,14 +88,6 @@ public final class LockScreenLyrics {
             ticker.schedule();
         }
     };
-    private LockScreenLyrics() {
-    }
-
-    /** Pushes the current line again, as a lyrics setting changed how it is shown. */
-    public static void onSettingsChanged() {
-        needsRepush = true;
-        tick();
-    }
 
     /**
      * Observed at the app's {@code MediaSession.setMetadata} call site. Captures the session
@@ -202,7 +202,7 @@ public final class LockScreenLyrics {
         }
 
         session.setMetadata(metadata);
-        LyricNotificationRefresh.refresh(session, newTitle,
+        LyricsNotificationRefresh.refresh(session, newTitle,
                 metadata.getString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE));
         lastPushedTitle = newTitle;
         lastPushedArtist = artist;
@@ -254,7 +254,7 @@ public final class LockScreenLyrics {
             session.setMetadata(original);
             String title = original.getString(MediaMetadata.METADATA_KEY_DISPLAY_TITLE);
             String text = original.getString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE);
-            LyricNotificationRefresh.refresh(session,
+            LyricsNotificationRefresh.refresh(session,
                     title != null ? title : original.getString(MediaMetadata.METADATA_KEY_TITLE),
                     text != null ? text : original.getString(MediaMetadata.METADATA_KEY_ARTIST));
             nudgePlaybackState(session);

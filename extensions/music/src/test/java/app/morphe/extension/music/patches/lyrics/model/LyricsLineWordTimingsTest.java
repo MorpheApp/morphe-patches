@@ -17,13 +17,22 @@ import java.util.List;
 
 public class LyricsLineWordTimingsTest {
 
-    @Test public void singleWordWithRealDurationHasWordTimings() {
+    @Test
+    public void singleWordSpanningWholeLineWithSameTimingIsLineTiming() {
         final LyricsLine line = new LyricsLine(1000, 2000, "Yeah",
                 List.of(new Word(1000, 2000, "Yeah")));
+        assertFalse(line.hasWordTimings());
+    }
+
+    @Test
+    public void singleWordWithDifferentSpanThanLineIsWordTimings() {
+        final LyricsLine line = new LyricsLine(1000, 2000, "Yeah",
+                List.of(new Word(1000, 1500, "Yeah")));
         assertTrue(line.hasWordTimings());
     }
 
-    @Test public void singleWordWithoutDurationDoesNot() {
+    @Test
+    public void singleWordWithoutDurationDoesNot() {
         final LyricsLine point = new LyricsLine(1000, 1000, "Yeah",
                 List.of(new Word(1000, 1000, "Yeah")));
         assertFalse(point.hasWordTimings());
@@ -33,14 +42,15 @@ public class LyricsLineWordTimingsTest {
         assertFalse(reversed.hasWordTimings());
     }
 
-    @Test public void singleSpanCoveringAMultiWordLineDoesNot() {
+    @Test
+    public void singleSpanCoveringAMultiWordLineDoesNot() {
         final LyricsLine line = new LyricsLine(0, 1000, "hello world",
                 List.of(new Word(0, 1000, "hello world")));
         assertFalse(line.hasWordTimings());
     }
 
-    /** A span that repeats the whole line is line timing, but one over some words is not. */
-    @Test public void singleSpanOverPartOfAMultiWordLineKeepsWordTimings() {
+    @Test
+    public void singleSpanOverPartOfAMultiWordLineKeepsWordTimings() {
         final LyricsLine line = new LyricsLine(0, 1000, "la la la",
                 List.of(new Word(0, 1000, "la la la")));
         assertFalse(line.hasWordTimings());
@@ -50,24 +60,23 @@ public class LyricsLineWordTimingsTest {
         assertTrue(word.hasWordTimings());
     }
 
-    /** A span covering every word but not the line's punctuation still carries word timing. */
-    @Test public void singleSpanSharingTheLineWordsKeepsWordTimings() {
+    @Test
+    public void singleSpanSharingTheLineWordsKeepsWordTimings() {
         final LyricsLine line = new LyricsLine(0, 1000, "hello beautiful world!",
                 List.of(new Word(0, 950, "hello beautiful world")));
         assertTrue(line.hasWordTimings());
     }
 
-    /**
-     * Documents the known edge case: a script without spaces counts as one word, so a single
-     * full-line placeholder span is treated as word timing.
-     */
-    @Test public void cjkLineWithOnePlaceholderSpanIsTreatedAsWordTimed() {
+    /** A CJK line counts as one word; a single span repeating the line is line timing, not word sync. */
+    @Test
+    public void cjkLineWithOnePlaceholderSpanIsLineTimedNotWordTimed() {
         final LyricsLine line = new LyricsLine(0, 1000, "你好世界",
                 List.of(new Word(0, 1000, "你好世界")));
-        assertTrue(line.hasWordTimings());
+        assertFalse(line.hasWordTimings());
     }
 
-    @Test public void wordPreservesRubyAndRomajiTogether() {
+    @Test
+    public void wordPreservesRubyAndRomajiTogether() {
         final Word word = new Word(1000, 2000, "抉", "egu", false, "えぐ");
         assertEquals("抉", word.text());
         assertEquals("egu", word.romaji());
@@ -75,14 +84,16 @@ public class LyricsLineWordTimingsTest {
         assertFalse(word.endsWithSpace());
     }
 
-    @Test public void katakanaWordWithLatinRubyGlossPreservesBoth() {
+    @Test
+    public void katakanaWordWithLatinRubyGlossPreservesBoth() {
         final Word word = new Word(1000, 2000, "ノルマ", "no ru ma", false, "Normal");
         assertEquals("ノルマ", word.text());
         assertEquals("no ru ma", word.romaji());
         assertEquals("Normal", word.ruby());
     }
 
-    @Test public void kanaHiraganaKatakanaConversions() {
+    @Test
+    public void kanaHiraganaKatakanaConversions() {
         assertEquals("ふかく", app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer.toHiragana("フカク"));
         assertEquals("フカク", app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer.toKatakana("ふかく"));
     }

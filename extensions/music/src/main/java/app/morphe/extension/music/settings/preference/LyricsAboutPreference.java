@@ -14,6 +14,7 @@ import android.preference.Preference;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 
+import app.morphe.extension.music.patches.lyrics.romanizers.BopomofoDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.CldrTransformsStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.PinyinDictStore;
@@ -66,7 +67,7 @@ public class LyricsAboutPreference extends Preference {
         for (String notice : new String[] {
                 UniDictStore.notice(), JapaneseDictStore.notice(),
                 PinyinDictStore.notice(), RimeDictStore.allNotices(),
-                CldrTransformsStore.notice()
+                CldrTransformsStore.notice(), BopomofoDictStore.notice()
         }) {
             if (notice == null) continue;
             if (joined.length() > 0) joined.append("\n\n");

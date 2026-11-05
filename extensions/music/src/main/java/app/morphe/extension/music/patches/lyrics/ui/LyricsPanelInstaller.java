@@ -124,7 +124,8 @@ public final class LyricsPanelInstaller {
                 return;
             }
             final boolean formatting = Settings.LYRICS_FORCE_CAPITALIZE.key.equals(key)
-                    || Settings.LYRICS_STRIP_TRAILING_PUNCTUATION.key.equals(key);
+                    || Settings.LYRICS_STRIP_TRAILING_PUNCTUATION.key.equals(key)
+                    || Settings.LYRICS_HAN_FORM.key.equals(key);
             if (formatting) {
                 // Also shown in the miniplayer and the media session.
                 MiniplayerLyrics.onSettingsChanged();

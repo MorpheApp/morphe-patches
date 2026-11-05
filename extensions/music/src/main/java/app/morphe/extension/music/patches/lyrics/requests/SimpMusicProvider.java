@@ -227,7 +227,7 @@ public final class SimpMusicProvider implements LyricsProvider {
         }
         return new Lyrics(lines, name(), true,
                 null, null, null,
-                result.creditLines.isEmpty() ? null : result.creditLines,
-                sanitized, "lrc", sourceUrl(videoId));
+                null, result.creditLines.isEmpty() ? null : result.creditLines,
+                sanitized, "lrc", sourceUrl(videoId), null, null);
     }
 }

@@ -24,13 +24,9 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 /**
- * Fetches the lyrics of the track queued behind the current one, so the switch finds them
- * in the cache instead of waiting on the network.
- *
- * <p>Work runs on its own thread and must never delay the lookup of the playing track:
- * it never touches the request id, in-flight fetches or the state, and only adds to the
- * lyrics cache. The cache is keyed by provider, so a prefetch never decides which provider
- * the user gets, and a track no provider answered for keeps its miss.
+ * Fetches the lyrics of the track queued behind the current one so the switch finds them in the
+ * cache. Work runs on its own thread and never touches the playing track's state or request id,
+ * only adds to the cache.
  */
 final class LyricsPrefetcher {
 
@@ -42,10 +38,7 @@ final class LyricsPrefetcher {
                 return thread;
             });
 
-    /**
-     * The video whose successor is being fetched, also the generation of the running task:
-     * a newer track replaces it, and the older task stops at its next checkpoint.
-     */
+    /** The video whose successor is being fetched, also the generation of the running task. */
     private static volatile String prefetchingFor;
 
     private static volatile Future<?> running;
@@ -54,9 +47,8 @@ final class LyricsPrefetcher {
     }
 
     /**
-     * Starts a prefetch for whatever plays after the given video. Cheap to call on
-     * every track: a target that is already being prefetched is left alone, and
-     * everything that cannot answer is skipped without a request.
+     * Starts a prefetch for whatever plays after the given video. Cheap to call on every track:
+     * already-prefetched targets are left alone.
      */
     static void prefetchSuccessorOf(@Nullable String currentVideoId) {
         if (currentVideoId == null || currentVideoId.isEmpty()) return;
@@ -123,8 +115,8 @@ final class LyricsPrefetcher {
     }
 
     /**
-     * Asks the providers in the order the user put them in and stops at the first
-     * usable answer, which is the same rule the lookup follows within a stage.
+     * Asks the providers in the order the user put them in and stops at the first usable answer,
+     * the same rule the lookup follows.
      */
     private static void fetchIntoCache(String currentVideoId, TrackInfo track,
                                        List<LyricsProvider> providers) {

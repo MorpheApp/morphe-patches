@@ -197,8 +197,8 @@ public final class UnisonProvider implements LyricsProvider {
                 }
                 return withSubmitter(new Lyrics(result.lines, name(), true,
                         null, null, null,
-                        result.creditLines.isEmpty() ? null : result.creditLines,
-                        lyrics, "lrc", sourceUrl(videoId)), submitter);
+                        null, result.creditLines.isEmpty() ? null : result.creditLines,
+                        lyrics, "lrc", sourceUrl(videoId), null, null), submitter);
             case "plain":
                 final List<LyricsLine> plain = LRCParser.parsePlain(lyrics);
                 if (plain.isEmpty()) {

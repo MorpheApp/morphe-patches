@@ -24,7 +24,6 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.music.patches.lyrics.TextTrim;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -32,6 +31,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
+import app.morphe.extension.music.patches.lyrics.utils.TextTrim;
 import app.morphe.extension.shared.Logger;
 
 /**
@@ -47,6 +47,8 @@ public final class TTMLParser {
     private static final Pattern TIME_UNIT = Pattern.compile("(-?\\d+(?:\\.\\d+)?)(ms|h|m|s)");
     private static final Pattern TIME_COLON = Pattern.compile(
             "^(?:(\\d+):)?(?:(\\d+):)?(\\d+(?:\\.\\d+)?)$");
+    private static final Pattern TIME_SMPTE = Pattern.compile(
+            "^(\\d+):(\\d+):(\\d+):(\\d+(?:\\.\\d+)?)$");
     private static final Pattern MULTI_SPACE = Pattern.compile("\\s+");
 
     private static final String NS_TTM = "http://www.w3.org/ns/ttml#metadata";
@@ -55,6 +57,7 @@ public final class TTMLParser {
     private static final String NS_XML = "http://www.w3.org/XML/1998/namespace";
     private static final String NS_TTS = "http://www.w3.org/ns/ttml#styling";
     private static final String NS_AMLL = "http://www.example.com/ns/amll";
+    private static final String NS_MORPHE = "http://morphe.app/lyrics";
     private static final String NS_COMPOSER = "https://composer.betterlyrics.org/ttml";
     private static final String NS_COMPOSER_LEGACY = "https://composer.boidu.dev/ttml";
 
@@ -80,9 +83,19 @@ public final class TTMLParser {
     private static HeadMetadata parseHeadMetadata(String ttml) {
         List<String> songwriters = new ArrayList<>();
         List<String> amllCredits = new ArrayList<>();
+        List<String> morpheCredits = new ArrayList<>();
         Map<String, AgentInfo> agentTypes = new HashMap<>();
         Map<String, List<RomajiSyllable>> sidecarRoman = new HashMap<>();
         Map<String, SidecarTranslation> sidecarTrans = new HashMap<>();
+        String title = null;
+        String desc = null;
+        String copyright = null;
+        String artist = null;
+        String album = null;
+        String morpheSource = null;
+        String morpheSourceUrl = null;
+        String morpheTranslator = null;
+        String morpheRomanizer = null;
 
         try {
             final XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
@@ -91,6 +104,7 @@ public final class TTMLParser {
             p.setInput(new StringReader(ttml));
 
             boolean inHead = false;
+            boolean inMetadata = false;
             boolean inSongwriters = false;
             boolean inAgent = false;
             int songwritersDepth = 0;
@@ -105,7 +119,9 @@ public final class TTMLParser {
                     if ("head".equals(local)) {
                         inHead = true;
                     } else if (inHead) {
-                        if ("songwriters".equals(local)) {
+                        if ("metadata".equals(local)) {
+                            inMetadata = true;
+                        } else if ("songwriters".equals(local)) {
                             inSongwriters = true;
                             songwritersDepth = 1;
                         } else if (inSongwriters) {
@@ -140,12 +156,54 @@ public final class TTMLParser {
                             collectSidecarTransliterations(p, sidecarRoman);
                         } else if ("translations".equals(local)) {
                             collectSidecarTranslations(p, sidecarTrans);
+                        } else {
+                            // Morphe namespace metadata (non-standard)
+                            if (NS_MORPHE.equals(p.getNamespace())) {
+                                if ("source".equals(local)) {
+                                    morpheSource = readTextContent(p).trim();
+                                    if (morpheSource.isEmpty()) morpheSource = null;
+                                } else if ("sourceUrl".equals(local)) {
+                                    morpheSourceUrl = readTextContent(p).trim();
+                                    if (morpheSourceUrl.isEmpty()) morpheSourceUrl = null;
+                                } else if ("translator".equals(local)) {
+                                    morpheTranslator = readTextContent(p).trim();
+                                    if (morpheTranslator.isEmpty()) morpheTranslator = null;
+                                } else if ("romanizer".equals(local)) {
+                                    morpheRomanizer = readTextContent(p).trim();
+                                    if (morpheRomanizer.isEmpty()) morpheRomanizer = null;
+                                } else if ("credits".equals(local)) {
+                                    String credit = readTextContent(p).trim();
+                                    if (!credit.isEmpty()) {
+                                        morpheCredits.add(credit);
+                                    }
+                                }
+                            }
+
+                            // Parse song metadata elements whether inside <metadata> or directly in <head>.
+                            if (title == null && "title".equals(local)) {
+                                title = readTextContent(p).trim();
+                                if (title.isEmpty()) title = null;
+                            } else if (desc == null && "desc".equals(local)) {
+                                desc = readTextContent(p).trim();
+                                if (desc.isEmpty()) desc = null;
+                            } else if (copyright == null && "copyright".equals(local)) {
+                                copyright = readTextContent(p).trim();
+                                if (copyright.isEmpty()) copyright = null;
+                            } else if (artist == null && "artist".equals(local)) {
+                                artist = readTextContent(p).trim();
+                                if (artist.isEmpty()) artist = null;
+                            } else if (album == null && "album".equals(local)) {
+                                album = readTextContent(p).trim();
+                                if (album.isEmpty()) album = null;
+                            }
                         }
                     }
                 } else if (event == XmlPullParser.END_TAG) {
                     final String local = localName(p.getName());
                     if ("head".equals(local)) {
                         inHead = false;
+                    } else if ("metadata".equals(local)) {
+                        inMetadata = false;
                     } else if (inSongwriters && "songwriters".equals(local)) {
                         songwritersDepth--;
                         if (songwritersDepth <= 0) {
@@ -167,7 +225,9 @@ public final class TTMLParser {
             Logger.printDebug(() -> "Could not parse TTML head metadata", ex);
         }
 
-        return new HeadMetadata(songwriters, amllCredits, agentTypes, sidecarRoman, sidecarTrans);
+        return new HeadMetadata(songwriters, amllCredits, morpheCredits, agentTypes, sidecarRoman, sidecarTrans,
+                title, desc, copyright, artist, album,
+                morpheSource, morpheSourceUrl, morpheTranslator, morpheRomanizer);
     }
 
     @Nullable
@@ -178,18 +238,12 @@ public final class TTMLParser {
         try {
             final HeadMetadata hm = parseHeadMetadata(ttml);
 
-            final List<String> songwriters;
-            if (!hm.songwriters().isEmpty()) {
-                StringBuilder sb = new StringBuilder("Written by: ");
-                for (int i = 0; i < hm.songwriters().size(); i++) {
-                    if (i > 0) sb.append(", ");
-                    sb.append(hm.songwriters().get(i));
-                }
-                songwriters = List.of(sb.toString());
-            } else {
-                songwriters = null;
-            }
-            final List<String> amllCreditLines = hm.amllCredits();
+            // Title/Artist/Album/Copyright are standard metadata, not songwriters.
+            final List<String> songwriters = hm.songwriters().isEmpty()
+                    ? null : hm.songwriters();
+            // Credits: non-standard metadata with no standard TTML equivalent.
+            final List<String> credits = combineCreditLists(hm.amllCredits(), hm.morpheCredits());
+            final String about = hm.desc();
             final Map<String, AgentInfo> agentTypes = hm.agentTypes();
             final Map<String, List<RomajiSyllable>> sidecarRoman = hm.sidecarRoman();
             final Map<String, SidecarTranslation> sidecarTrans = hm.sidecarTrans();
@@ -206,6 +260,7 @@ public final class TTMLParser {
             int mainLineCount;
 
             boolean noTiming = false;
+            TimeContext timeContext = null;
             boolean inHead = false;
             boolean inBody = false;
             String divSongPart = null;
@@ -218,6 +273,10 @@ public final class TTMLParser {
                     if ("tt".equals(local)) {
                         noTiming = "none".equals(
                                 getLyricAttr(p, "timing", "itunes:timing"));
+                        final String timeBase = getAttr(p, null, "timeBase", "timeBase");
+                        final String frameRate = getAttr(p, null, "frameRate", "frameRate");
+                        final String tickRate = getAttr(p, null, "tickRate", "tickRate");
+                        timeContext = new TimeContext(timeBase, frameRate, tickRate);
                     } else if ("head".equals(local)) {
                         inHead = true;
                     } else if ("body".equals(local)) {
@@ -230,10 +289,14 @@ public final class TTMLParser {
                     } else if ("p".equals(local) && inBody && !inHead) {
                         final String lineId = getLyricAttr(p, "key", "itunes:key");
                         final String agentId = getAttr(p, NS_TTM, "agent", "ttm:agent");
-                        final long pBegin = noTiming ? 0 : parseTime(getAttr(p, null, "begin", "begin"));
-                        final long pEnd = noTiming ? 0 : parseTime(getAttr(p, null, "end", "end"));
+                        final String pBeginRaw = noTiming ? null : getAttr(p, null, "begin", "begin");
+                        final String pEndRaw = noTiming ? null : getAttr(p, null, "end", "end");
+                        final String pDurRaw = noTiming ? null : getAttr(p, null, "dur", "dur");
+                        final String pTimeUnit = noTiming ? null : getAttr(p, null, "timeUnit", "timeUnit");
+                        final long pBegin = noTiming ? 0 : parseTime(pBeginRaw, timeContext, pTimeUnit);
+                        final long pEnd = noTiming ? 0 : resolveEndTime(pBegin, pEndRaw, pDurRaw, timeContext, pTimeUnit);
 
-                        final ParsedLine pl = processPElement(p, pBegin, pEnd);
+                        final ParsedLine pl = processPElement(p, pBegin, pEnd, timeContext);
 
                         if (pl != null && (!pl.text().trim().isEmpty() || !pl.bgLines().isEmpty())) {
                             final List<RomajiSyllable> lineSidecar =
@@ -380,8 +443,13 @@ public final class TTMLParser {
                     LyricsMerge.hasText(romanization) ? romanization : null,
                     transOut, romaOut,
                     songwriters,
-                    amllCreditLines.isEmpty() ? null : amllCreditLines,
-                    agentNames);
+                    credits,
+                    agentNames,
+                    about,
+                    hm.morpheSource(),
+                    hm.morpheSourceUrl(),
+                    hm.morpheTranslator(),
+                    hm.morpheRomanizer());
         } catch (XmlPullParserException | IOException ex) {
             Logger.printDebug(() -> "Could not parse TTML to lyrics", ex);
             return null;
@@ -516,11 +584,14 @@ public final class TTMLParser {
                 if ("span".equals(local)) {
                     final String begin = getAttr(p, null, "begin", "begin");
                     final String end = getAttr(p, null, "end", "end");
-                    if (begin != null && end != null) {
+                    final String dur = getAttr(p, null, "dur", "dur");
+                    final String timeUnit = getAttr(p, null, "timeUnit", "timeUnit");
+                    if (hasTiming(begin, end, dur)) {
                         final String text = normalizeText(readTextContent(p));
                         if (!text.isEmpty()) {
-                            syllables.add(new RomajiSyllable(
-                                    parseTime(begin), parseTime(end), text));
+                            final long beginMs = parseTime(begin, null, timeUnit);
+                            final long endMs = resolveEndTime(beginMs, end, dur, null, timeUnit);
+                            syllables.add(new RomajiSyllable(beginMs, endMs, text));
                         }
                     } else {
                         skipElement(p);
@@ -634,20 +705,53 @@ public final class TTMLParser {
 
                 if ("x-bg".equals(role)) {
                     inBg = true;
+                } else if ("br".equals(local)) {
+                    // A line break inside the translation: treat as a word separator.
+                    if (inBgWord) {
+                        bgWordBuf.append(' ');
+                    } else if (inMainWord) {
+                        mainWordBuf.append(' ');
+                    } else if (inBg) {
+                        if (!bgWords.isEmpty()) {
+                            final Word prev = bgWords.get(bgWords.size() - 1);
+                            if (!prev.endsWithSpace()) {
+                                bgWords.set(bgWords.size() - 1, new Word(
+                                        prev.startMs(), prev.endMs(), prev.text(),
+                                        prev.romaji(), true, prev.ruby()));
+                            }
+                        }
+                        if (bgFullText.length() > 0 && bgFullText.charAt(bgFullText.length() - 1) != ' ') {
+                            bgFullText.append(' ');
+                        }
+                    } else {
+                        if (!mainWords.isEmpty()) {
+                            final Word prev = mainWords.get(mainWords.size() - 1);
+                            if (!prev.endsWithSpace()) {
+                                mainWords.set(mainWords.size() - 1, new Word(
+                                        prev.startMs(), prev.endMs(), prev.text(),
+                                        prev.romaji(), true, prev.ruby()));
+                            }
+                        }
+                        if (mainFullText.length() > 0 && mainFullText.charAt(mainFullText.length() - 1) != ' ') {
+                            mainFullText.append(' ');
+                        }
+                    }
                 } else if ("span".equals(local)) {
                     final String beginAttr = getAttr(p, null, "begin", "begin");
                     final String endAttr = getAttr(p, null, "end", "end");
-                    if (beginAttr != null && endAttr != null) {
+                    final String durAttr = getAttr(p, null, "dur", "dur");
+                    final String timeUnit = getAttr(p, null, "timeUnit", "timeUnit");
+                    if (hasTiming(beginAttr, endAttr, durAttr)) {
                         if (inBg) {
                             inBgWord = true;
                             bgWordBuf.setLength(0);
-                            bgWordBegin = parseTime(beginAttr);
-                            bgWordEnd = parseTime(endAttr);
+                            bgWordBegin = parseTime(beginAttr, null, timeUnit);
+                            bgWordEnd = resolveEndTime(bgWordBegin, endAttr, durAttr, null, timeUnit);
                         } else {
                             inMainWord = true;
                             mainWordBuf.setLength(0);
-                            mainWordBegin = parseTime(beginAttr);
-                            mainWordEnd = parseTime(endAttr);
+                            mainWordBegin = parseTime(beginAttr, null, timeUnit);
+                            mainWordEnd = resolveEndTime(mainWordBegin, endAttr, durAttr, null, timeUnit);
                         }
                     } else if (inBg) {
                         bgWrapperDepth++;
@@ -779,7 +883,8 @@ public final class TTMLParser {
                 bg.isEmpty() ? null : bg, finalBgWords);
     }
 
-    private static ParsedLine processPElement(XmlPullParser p, long pBegin, long pEnd)
+    private static ParsedLine processPElement(XmlPullParser p, long pBegin, long pEnd,
+                                              @Nullable TimeContext timeContext)
             throws XmlPullParserException, IOException {
 
         final List<Word> words = new ArrayList<>();
@@ -842,6 +947,55 @@ public final class TTMLParser {
                 depth++;
                 final String local = localName(p.getName());
                 final String htmlRuby = htmlRubyRole(local);
+
+                if ("br".equals(local)) {
+                    // A line break inside a paragraph: treat as a word separator.
+                    if (inBgTranslation) {
+                        bgTransBuf.append(' ');
+                    } else if (inBgRoman) {
+                        bgRomanBuf.append(' ');
+                    } else if (inBgWord) {
+                        bgWordBuf.append(' ');
+                    } else if (inRubyBase && inRubyContainer) {
+                        rubyBaseBuf.append(' ');
+                    } else if (inRubyText && inRubyContainer) {
+                        rubyTextBuf.append(' ');
+                    } else if (inRubyContainer) {
+                        // Whitespace in the ruby container, ignored.
+                    } else if (inBg && bgWrapperDepth == 0) {
+                        if (!bgWords.isEmpty()) {
+                            final Word prev = bgWords.get(bgWords.size() - 1);
+                            if (!prev.endsWithSpace()) {
+                                bgWords.set(bgWords.size() - 1, new Word(
+                                        prev.startMs(), prev.endMs(), prev.text(),
+                                        prev.romaji(), true, prev.ruby()));
+                            }
+                        }
+                        if (bgFullText.length() > 0 && bgFullText.charAt(bgFullText.length() - 1) != ' ') {
+                            bgFullText.append(' ');
+                        }
+                    } else if (inTranslation) {
+                        transBuf.append(' ');
+                    } else if (inRoman) {
+                        romanBuf.append(' ');
+                    } else if (inWord && !inRubyContainer) {
+                        wordBuf.append(' ');
+                    } else if (!inBg && !inRubyContainer) {
+                        if (!words.isEmpty()) {
+                            final Word prev = words.get(words.size() - 1);
+                            if (!prev.endsWithSpace()) {
+                                words.set(words.size() - 1, new Word(
+                                        prev.startMs(), prev.endMs(), prev.text(),
+                                        prev.romaji(), true, prev.ruby()));
+                            }
+                        }
+                        if (fullText.length() > 0 && fullText.charAt(fullText.length() - 1) != ' ') {
+                            fullText.append(' ');
+                        }
+                    }
+                    continue;
+                }
+
                 if (!"span".equals(local) && htmlRuby == null) {
                     continue;
                 }
@@ -851,6 +1005,8 @@ public final class TTMLParser {
                 final String ruby = rubyAttr != null ? rubyAttr : htmlRuby;
                 final String beginAttr = getAttr(p, null, "begin", "begin");
                 final String endAttr = getAttr(p, null, "end", "end");
+                final String durAttr = getAttr(p, null, "dur", "dur");
+                final String timeUnit = getAttr(p, null, "timeUnit", "timeUnit");
 
                 // Ruby is settled first: an annotation sits inside the vocal it reads,
                 // so the background branch below would drop its base text.
@@ -862,8 +1018,8 @@ public final class TTMLParser {
                     rubyTextInnerDepth = 0;
                     rubyBaseBuf.setLength(0);
                     rubyTags.clear();
-                    rubyContainerBegin = parseTime(beginAttr);
-                    rubyContainerEnd = parseTime(endAttr);
+                    rubyContainerBegin = parseTime(beginAttr, timeContext, timeUnit);
+                    rubyContainerEnd = resolveEndTime(rubyContainerBegin, endAttr, durAttr, timeContext, timeUnit);
                     if (rubyContainerBegin == 0 && rubyContainerEnd == 0) {
                         if (inBg && inBgWord) {
                             rubyContainerBegin = bgWordBegin;
@@ -879,8 +1035,8 @@ public final class TTMLParser {
                     inRubyBase = true;
                     rubyBaseInnerDepth = 0;
                     rubyBaseBuf.setLength(0);
-                    final long b = parseTime(beginAttr);
-                    final long e = parseTime(endAttr);
+                    final long b = parseTime(beginAttr, timeContext, timeUnit);
+                    final long e = resolveEndTime(b, endAttr, durAttr, timeContext, timeUnit);
                     if (b > 0) rubyContainerBegin = b;
                     if (e > 0) rubyContainerEnd = e;
                 } else if ("textContainer".equals(ruby) && inRubyContainer) {
@@ -890,25 +1046,27 @@ public final class TTMLParser {
                     inRubyText = true;
                     rubyTextInnerDepth = 0;
                     rubyTextBuf.setLength(0);
-                    rubyTextBegin = parseTime(beginAttr);
-                    rubyTextEnd = parseTime(endAttr);
+                    rubyTextBegin = parseTime(beginAttr, timeContext, timeUnit);
+                    rubyTextEnd = resolveEndTime(rubyTextBegin, endAttr, durAttr, timeContext, timeUnit);
                 } else if (inRubyContainer) {
                     // A span nested in the ruby, such as one timing each mora of the base.
-                    final long b = parseTime(beginAttr);
-                    final long e = parseTime(endAttr);
+                    final long b = parseTime(beginAttr, timeContext, timeUnit);
+                    final long e = resolveEndTime(b, endAttr, durAttr, timeContext, timeUnit);
                     if (inRubyText) {
                         rubyTextInnerDepth++;
                         if (b > 0 && (rubyTextBegin == 0 || b < rubyTextBegin)) rubyTextBegin = b;
                         if (e > rubyTextEnd) rubyTextEnd = e;
                     } else if (inRubyBase) {
                         rubyBaseInnerDepth++;
-                        if (b > 0 && (rubyContainerBegin == 0 || b < rubyContainerBegin)) rubyContainerBegin = b;
+                        if (b > 0 && (rubyContainerBegin == 0 || b < rubyContainerBegin))
+                            rubyContainerBegin = b;
                         if (e > rubyContainerEnd) rubyContainerEnd = e;
                     } else if (inRubyTextContainer) {
                         rubyTextContainerInnerDepth++;
                     } else {
                         rubyContainerInnerDepth++;
-                        if (b > 0 && (rubyContainerBegin == 0 || b < rubyContainerBegin)) rubyContainerBegin = b;
+                        if (b > 0 && (rubyContainerBegin == 0 || b < rubyContainerBegin))
+                            rubyContainerBegin = b;
                         if (e > rubyContainerEnd) rubyContainerEnd = e;
                     }
                 } else if (inBg) {
@@ -918,11 +1076,11 @@ public final class TTMLParser {
                     } else if ("x-roman".equals(role)) {
                         inBgRoman = true;
                         bgRomanBuf.setLength(0);
-                    } else if (beginAttr != null && endAttr != null) {
+                    } else if (hasTiming(beginAttr, endAttr, durAttr)) {
                         inBgWord = true;
                         bgWordBuf.setLength(0);
-                        bgWordBegin = parseTime(beginAttr);
-                        bgWordEnd = parseTime(endAttr);
+                        bgWordBegin = parseTime(beginAttr, timeContext, timeUnit);
+                        bgWordEnd = resolveEndTime(bgWordBegin, endAttr, durAttr, timeContext, timeUnit);
                     } else {
                         bgWrapperDepth++;
                     }
@@ -932,8 +1090,8 @@ public final class TTMLParser {
                     bgFullText.setLength(0);
                     bgWrapperDepth = 0;
                     bgAgentId = getAttr(p, NS_TTM, "agent", "ttm:agent");
-                    bgBeginMs = parseTime(beginAttr);
-                    bgEndMs = parseTime(endAttr);
+                    bgBeginMs = parseTime(beginAttr, timeContext, timeUnit);
+                    bgEndMs = resolveEndTime(bgBeginMs, endAttr, durAttr, timeContext, timeUnit);
                 } else if ("x-translation".equals(role)) {
                     inTranslation = true;
                     transBuf.setLength(0);
@@ -942,11 +1100,11 @@ public final class TTMLParser {
                     inRoman = true;
                     romanBuf.setLength(0);
                     romanLang = getAttr(p, NS_XML, "lang", "xml:lang");
-                } else if (beginAttr != null && endAttr != null) {
+                } else if (hasTiming(beginAttr, endAttr, durAttr)) {
                     inWord = true;
                     wordBuf.setLength(0);
-                    wordBegin = parseTime(beginAttr);
-                    wordEnd = parseTime(endAttr);
+                    wordBegin = parseTime(beginAttr, timeContext, timeUnit);
+                    wordEnd = resolveEndTime(wordBegin, endAttr, durAttr, timeContext, timeUnit);
                 } else {
                     wrapperDepth++;
                 }
@@ -1037,7 +1195,7 @@ public final class TTMLParser {
                                 // The ruby is drawn as furigana. The romaji reads the kana, which is
                                 // the ruby unless that is a gloss, such as "Normal" over ノルマ.
                                 final String romaji;
-                                if (rubyText != null && ScriptDetector.containsKana(rubyText)) {
+                                if (ScriptDetector.containsKana(rubyText)) {
                                     romaji = KanaRomanizer.romanizeSyllables(rubyText);
                                 } else if (ScriptDetector.containsKana(baseText)) {
                                     romaji = KanaRomanizer.romanizeSyllables(baseText);
@@ -1611,8 +1769,49 @@ public final class TTMLParser {
     }
 
     public static long parseTime(@Nullable String raw) {
+        return parseTime(raw, null, null);
+    }
+
+    /**
+     * Parse a TTML time expression to milliseconds.
+     *
+     * @param raw         The raw time string (begin/end/dur attribute value).
+     * @param timeContext Document-level time context from {@code <tt>}, or null.
+     * @param timeUnit    The {@code timeUnit} attribute on the same element, or null.
+     * @return Milliseconds, or 0 if the value cannot be parsed or is "indefinite".
+     */
+    public static long parseTime(@Nullable String raw,
+                                 @Nullable TimeContext timeContext,
+                                 @Nullable String timeUnit) {
         if (raw == null || raw.isEmpty()) return 0;
         final String trimmed = raw.trim();
+
+        // "indefinite" means the timing is not yet known — treat as zero.
+        if ("indefinite".equalsIgnoreCase(trimmed)) {
+            return 0;
+        }
+
+        // SMPTE timecode: HH:MM:SS:FF (four colon-separated groups).
+        // Only meaningful when timeBase is "smpte" or the value has 4 groups.
+        final Matcher sm = TIME_SMPTE.matcher(trimmed);
+        if (sm.matches()) {
+            final String g1 = sm.group(1); // hours
+            final String g2 = sm.group(2); // minutes
+            final String g3 = sm.group(3); // seconds
+            final String g4 = sm.group(4); // frames
+            final double frames = Double.parseDouble(g4);
+            int frameRate = 30; // Default SMPTE frame rate
+            if (timeContext != null && timeContext.frameRate() != null) {
+                try {
+                    frameRate = Integer.parseInt(timeContext.frameRate());
+                } catch (NumberFormatException ignored) {
+                }
+            }
+            final long totalSeconds = (g1 != null ? Integer.parseInt(g1) : 0) * 3600L
+                    + (g2 != null ? Integer.parseInt(g2) : 0) * 60L
+                    + (long) Double.parseDouble(g3);
+            return (totalSeconds * 1000L) + (long) (frames * 1000.0 / frameRate);
+        }
 
         // Try colon-separated format first: HH:MM:SS.mmm or MM:SS.mmm
         final Matcher cm = TIME_COLON.matcher(trimmed);
@@ -1645,6 +1844,42 @@ public final class TTMLParser {
             };
         }
 
+        // If a timeUnit is specified and the value is a bare number, interpret it
+        // according to that unit rather than the default "seconds" fallback.
+        if (timeUnit != null) {
+            try {
+                final double value = Double.parseDouble(trimmed);
+                return switch (timeUnit) {
+                    case "ms" -> (long) value;
+                    case "s" -> (long) (value * 1000);
+                    case "f" -> { // frames — use frameRate from timeContext
+                        int frameRate = 30;
+                        if (timeContext != null && timeContext.frameRate() != null) {
+                            try {
+                                frameRate = Integer.parseInt(timeContext.frameRate());
+                            } catch (NumberFormatException ignored) {
+                            }
+                        }
+                        yield (long) (value * 1000.0 / frameRate);
+                    }
+                    case "t" -> { // ticks — use tickRate from timeContext
+                        int tickRate = 1;
+                        if (timeContext != null && timeContext.tickRate() != null) {
+                            try {
+                                tickRate = Integer.parseInt(timeContext.tickRate());
+                            } catch (NumberFormatException ignored) {
+                            }
+                        }
+                        yield (long) (value * 1000.0 / tickRate);
+                    }
+                    default -> (long) (value * 1000); // Unknown unit, fall back to seconds
+                };
+            } catch (NumberFormatException ex) {
+                Logger.printDebug(() -> "Could not parse TTML time string: " + trimmed, ex);
+                return 0;
+            }
+        }
+
         // Fallback: bare decimal number treated as seconds
         try {
             return (long) (Double.parseDouble(trimmed) * 1000);
@@ -1652,6 +1887,37 @@ public final class TTMLParser {
             Logger.printDebug(() -> "Could not parse TTML time string: " + trimmed, ex);
             return 0;
         }
+    }
+
+    /**
+     * Whether a span has usable timing information: a non-null begin that is not
+     * "indefinite", plus either an end or a dur attribute.
+     */
+    private static boolean hasTiming(@Nullable String beginRaw,
+                                     @Nullable String endRaw,
+                                     @Nullable String durRaw) {
+        if (beginRaw == null || "indefinite".equalsIgnoreCase(beginRaw.trim())) {
+            return false;
+        }
+        return endRaw != null || durRaw != null;
+    }
+
+    /**
+     * Resolve the end time of a span: use the {@code end} attribute if present,
+     * otherwise compute {@code begin + dur}. Returns 0 if neither is available.
+     */
+    private static long resolveEndTime(long beginMs,
+                                       @Nullable String endRaw,
+                                       @Nullable String durRaw,
+                                       @Nullable TimeContext timeContext,
+                                       @Nullable String timeUnit) {
+        if (endRaw != null) {
+            return parseTime(endRaw, timeContext, timeUnit);
+        }
+        if (durRaw != null) {
+            return beginMs + parseTime(durRaw, timeContext, timeUnit);
+        }
+        return 0;
     }
 
     private static String normalizeTextRaw(String s) {
@@ -1741,37 +2007,54 @@ public final class TTMLParser {
         TtmlResult result = parse(ttml);
         if (result == null || result.lines().isEmpty()) return null;
 
-        List<String> combinedSongwriters = combineCredits(result.songwriters(), result.amllCreditLines());
         boolean synced = result.lines().stream()
                 .anyMatch(line -> line.startTimeMs() != LyricsLine.NO_TIME);
-        return new Lyrics(result.lines(), providerName, synced,
+
+        final String finalProvider = (providerName != null && !providerName.isEmpty())
+                ? providerName : (result.source() != null ? result.source() : "");
+        final String finalSourceUrl = (sourceUrl != null && !sourceUrl.isEmpty())
+                ? sourceUrl : result.sourceUrl();
+
+        return new Lyrics(result.lines(), finalProvider, synced,
                 result.romanization(), result.translations(),
-                result.romanizations(), combinedSongwriters, ttml, "ttml", sourceUrl);
+                result.romanizations(), result.songwriters(), result.credits(),
+                ttml, "ttml", finalSourceUrl,
+                result.about(), result.agentNames());
     }
 
     @Nullable
-    private static List<String> combineCredits(@Nullable List<String> existing,
-                                               @Nullable List<String> amllCredits) {
-        if (existing == null && amllCredits == null) {
+    private static List<String> combineCreditLists(@Nullable List<String> first,
+                                                   @Nullable List<String> second) {
+        if (first == null && second == null) {
             return null;
         }
-        if (existing == null) {
-            return amllCredits;
+        if (first == null) {
+            return second;
         }
-        if (amllCredits == null) {
-            return existing;
+        if (second == null) {
+            return first;
         }
-        List<String> combined = new ArrayList<>(existing);
-        combined.addAll(amllCredits);
+        List<String> combined = new ArrayList<>(first);
+        combined.addAll(second);
         return combined;
     }
 
     private record HeadMetadata(
             List<String> songwriters,
             List<String> amllCredits,
+            List<String> morpheCredits,
             Map<String, AgentInfo> agentTypes,
             Map<String, List<RomajiSyllable>> sidecarRoman,
-            Map<String, SidecarTranslation> sidecarTrans) {
+            Map<String, SidecarTranslation> sidecarTrans,
+            @Nullable String title,
+            @Nullable String desc,
+            @Nullable String copyright,
+            @Nullable String artist,
+            @Nullable String album,
+            @Nullable String morpheSource,
+            @Nullable String morpheSourceUrl,
+            @Nullable String morpheTranslator,
+            @Nullable String morpheRomanizer) {
     }
 
     public record TtmlResult(List<LyricsLine> lines,
@@ -1779,8 +2062,19 @@ public final class TTMLParser {
                              @Nullable Map<String, List<LyricsLine>> translations,
                              @Nullable Map<String, List<LyricsLine>> romanizations,
                              @Nullable List<String> songwriters,
-                             @Nullable List<String> amllCreditLines,
-                             @Nullable Map<String, String> agentNames) {
+                             @Nullable List<String> credits,
+                             @Nullable Map<String, String> agentNames,
+                             @Nullable String about,
+                             @Nullable String source,
+                             @Nullable String sourceUrl,
+                             @Nullable String translator,
+                             @Nullable String romanizer) {
+    }
+
+    /** Document-level timing context from the {@code <tt>} element. */
+    private record TimeContext(@Nullable String timeBase,
+                               @Nullable String frameRate,
+                               @Nullable String tickRate) {
     }
 
     private record RomajiSyllable(long startMs, long endMs, String text) {
