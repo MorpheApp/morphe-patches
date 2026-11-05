@@ -30,7 +30,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
-import app.morphe.extension.music.patches.lyrics.parsers.TTMLRefactor;
+import app.morphe.extension.music.patches.lyrics.parsers.TTMLGenerator;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
@@ -72,8 +72,8 @@ public final class LyricsFileSaver {
             return null;
         }
 
-        if (Settings.LYRICS_SAVE_REFACTORED_TTML.get()) {
-            String ttmlContent = TTMLRefactor.generate(lyrics, track, creditInfo,
+        if (Settings.LYRICS_SAVE_TTML.get()) {
+            String ttmlContent = TTMLGenerator.generate(lyrics, track, creditInfo,
                     translatedLines, romanizedLines, translatedLang, romanizedLang);
             if (ttmlContent != null && !ttmlContent.isEmpty()) {
                 writeFile(context, track, lyrics, ttmlContent, "ttml", true);
@@ -117,12 +117,12 @@ public final class LyricsFileSaver {
 
     @Nullable
     private static String writeFile(Context context, TrackInfo track, Lyrics lyrics,
-                                    String content, String formatType, boolean isRefactored) {
+                                    String content, String formatType, boolean isGenerated) {
         if (content == null || content.isEmpty()) {
             return null;
         }
 
-        String fileName = fileName(track, lyrics, formatType, isRefactored);
+        String fileName = fileName(track, lyrics, formatType, isGenerated);
 
         ContentResolver resolver = context.getContentResolver();
         ContentValues values = new ContentValues();
@@ -272,10 +272,10 @@ public final class LyricsFileSaver {
         return name.replaceAll("[\\\\/:*?\"<>|]", "_").replaceAll("\\s+", " ").trim();
     }
 
-    private static String fileName(TrackInfo track, Lyrics lyrics, String formatType, boolean isRefactored) {
+    private static String fileName(TrackInfo track, Lyrics lyrics, String formatType, boolean isGenerated) {
         String name = sanitizeFileName(track.artist() + " - " + track.title());
         String provider;
-        if (isRefactored && "ttml".equals(formatType)) {
+        if (isGenerated && "ttml".equals(formatType)) {
             provider = "Morphe";
         } else {
             provider = sanitizeFileName(lyrics.providerName());

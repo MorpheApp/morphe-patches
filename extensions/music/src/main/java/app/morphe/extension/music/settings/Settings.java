@@ -309,7 +309,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting LYRICS_MINI_INSTRUMENTAL = new StringSetting("morphe_music_lyrics_mini_instrumental", MiniLyricsFormatter.DEFAULT_INSTRUMENTAL, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
     public static final IntegerSetting LYRICS_MINI_NEXT_OFFSET_MS = new IntegerSetting("morphe_music_lyrics_mini_next_offset_ms", -800, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
     public static final BooleanSetting LYRICS_USE_EMBEDDED = new BooleanSetting("morphe_music_lyrics_use_embedded", TRUE, true, parent(LYRICS_ENABLED));
-    public static final BooleanSetting LYRICS_SAVE_REFACTORED_TTML = new BooleanSetting("morphe_music_lyrics_save_refactored_ttml", FALSE, false, parent(LYRICS_ENABLED));
+    public static final BooleanSetting LYRICS_SAVE_TTML = new BooleanSetting("morphe_music_lyrics_save_ttml", FALSE, false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_CAPTION_COOKIES = new StringSetting("morphe_music_lyrics_caption_cookies", "", false, parent(LYRICS_ENABLED));
 
     // Lyrics metadata and line filtering live with the filter itself. Touching that class

@@ -234,7 +234,7 @@ public class LRCParserTest {
     public void extractCreditMetadataWithKnownKeys() {
         List<String> credits = LRCParser.extractCreditMetadata(
                 "[ti:Test Song]\n[ar:Test Artist]\n[al:Test Album]\n[au:Composer]\n[by:Uploader]");
-        // Only au/by are true credit lines; ti/ar/al stay in rawFormat for TTMLRefactor.
+        // Only au/by are true credit lines; ti/ar/al stay in rawFormat for TTMLGenerator.
         assertEquals(2, credits.size());
         assertTrue(credits.contains("au:Composer"));
         assertTrue(credits.contains("by:Uploader"));
@@ -431,7 +431,7 @@ public class LRCParserTest {
                 "[ti:Test Song]\n[au:Composer]\n[00:01.00]Hello");
         assertNotNull(result);
         assertEquals(1, result.lines.size());
-        // Only au is a true credit line; ti stays in rawFormat for TTMLRefactor.
+        // Only au is a true credit line; ti stays in rawFormat for TTMLGenerator.
         assertEquals(1, result.creditLines.size());
         assertTrue(result.creditLines.contains("au:Composer"));
     }

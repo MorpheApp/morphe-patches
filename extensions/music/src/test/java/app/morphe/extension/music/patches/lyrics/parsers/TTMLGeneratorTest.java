@@ -27,7 +27,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 
-public class TTMLRefactorTest {
+public class TTMLGeneratorTest {
 
     @BeforeClass
     public static void setUp() {
@@ -47,7 +47,7 @@ public class TTMLRefactorTest {
                 null, null, null, null, null, "lrc", null, null, null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull("TTML should not be null", ttml);
         assertTrue(ttml.contains("Test Song"));
         assertTrue(ttml.contains("Test Artist"));
@@ -59,14 +59,14 @@ public class TTMLRefactorTest {
 
     @Test
     public void generateNullLyricsReturnsNull() {
-        assertNull(TTMLRefactor.generate(null, null, null));
+        assertNull(TTMLGenerator.generate(null, null, null));
     }
 
     @Test
     public void generateEmptyLyricsReturnsNull() {
         Lyrics lyrics = new Lyrics(List.of(), "TestProvider", false,
                 null, null, null, null, null, null, null, null, null);
-        assertNull(TTMLRefactor.generate(lyrics, null, null));
+        assertNull(TTMLGenerator.generate(lyrics, null, null));
     }
 
     // ── generate with credit info ──
@@ -82,7 +82,7 @@ public class TTMLRefactorTest {
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
         CreditInfo credit = new CreditInfo("Google", "AI:gpt-4");
 
-        String ttml = TTMLRefactor.generate(lyrics, track, credit);
+        String ttml = TTMLGenerator.generate(lyrics, track, credit);
         assertNotNull(ttml);
         assertTrue(ttml.contains("morphe:source"));
         assertTrue(ttml.contains("morphe:translator"));
@@ -102,7 +102,7 @@ public class TTMLRefactorTest {
                 null, null, null, songwriters, null, "lrc", null, null, null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("songwriter"));
         assertTrue(ttml.contains("John Doe"));
@@ -125,7 +125,7 @@ public class TTMLRefactorTest {
                 null, translations, null, null, null, "lrc", null, null, null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("x-translation"));
         assertTrue(ttml.contains("xml:lang=\"es\""));
@@ -144,7 +144,7 @@ public class TTMLRefactorTest {
                 null, null, null, null, null, "lrc", null, null, null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("tts:ruby"));
         assertTrue(ttml.contains("漢字"));
@@ -166,7 +166,7 @@ public class TTMLRefactorTest {
                 null, null, null, null, null, "lrc", null, null, null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("x-bg"));
         assertTrue(ttml.contains("world"));
@@ -183,7 +183,7 @@ public class TTMLRefactorTest {
                 null, null, null, null, null, null, null, null, null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("Hello world"));
         assertTrue(ttml.contains("This is a test"));
@@ -204,7 +204,7 @@ public class TTMLRefactorTest {
                 null, null, null, null, null, "lrc", null, null, null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("itunes:songPart=\"Verse\""));
         assertTrue(ttml.contains("itunes:songPart=\"Chorus\""));
@@ -222,7 +222,7 @@ public class TTMLRefactorTest {
                 null, null, null, null, null, "lrc", "https://example.com", null, null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("morphe:sourceUrl"));
         assertTrue(ttml.contains("https://example.com"));
@@ -240,7 +240,7 @@ public class TTMLRefactorTest {
                 null, null, null, null, null, "lrc", null, "About text", null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("About text"));
     }
@@ -259,7 +259,7 @@ public class TTMLRefactorTest {
                 null, null, null, null, rawFormat, "lrc", null, null, null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         // [by:] goes to <morphe:credits>, not <songwriters>
         assertTrue(ttml.contains("morphe:credits"));
@@ -285,7 +285,7 @@ public class TTMLRefactorTest {
                 null, null, null, null, rawFormat, "lrc", null, null, null);
         TrackInfo track = new TrackInfo(null, null, null, 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         // LRC ti/ar/al fill standard TTML fields
         assertTrue(ttml.contains("<title>Lrc Title</title>"));
@@ -309,7 +309,7 @@ public class TTMLRefactorTest {
                 null, null, null, null, credits, "lrc", null, null, null, null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         // Credits go to <morphe:credits>, not <songwriters>
         assertTrue(ttml.contains("morphe:credits"));
@@ -331,7 +331,7 @@ public class TTMLRefactorTest {
                 null, null, null, null, null, "lrc", null, null, null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("<agent"));
         assertTrue(ttml.contains("singer1"));
@@ -349,7 +349,7 @@ public class TTMLRefactorTest {
                 null, null, null, null, null, "lrc", null, null, agentNames);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         assertTrue("Should contain ttm:name", ttml.contains("ttm:name"));
         assertTrue("Should contain agent display name", ttml.contains("Addison Rae"));
@@ -366,7 +366,7 @@ public class TTMLRefactorTest {
                 null, null, null, null, null, "lrc", null, null, null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         assertTrue("Should contain agent element", ttml.contains("<agent"));
         assertFalse("Should not contain ttm:name without names", ttml.contains("ttm:name"));
@@ -385,7 +385,7 @@ public class TTMLRefactorTest {
                 null, null, null, null, null, "lrc", null, null, null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLRefactor.generate(lyrics, track, null);
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
         assertNotNull(ttml);
         // Space after "Oh</span>" and "nothin'</span>" but not after "can</span>"
         assertTrue("Should have space between word spans",
@@ -406,7 +406,7 @@ public class TTMLRefactorTest {
         Lyrics lyrics = new Lyrics(lines, "TestProvider", false,
                 null, null, null, null, null, null, null);
 
-        String ttml = TTMLRefactor.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
+        String ttml = TTMLGenerator.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("itunes:timing=\"None\""));
         assertFalse("A line without a time must not be written at zero", ttml.contains("begin="));
@@ -422,7 +422,7 @@ public class TTMLRefactorTest {
         Lyrics lyrics = new Lyrics(lines, "TestProvider", true,
                 null, null, null, null, null, null, null);
 
-        String ttml = TTMLRefactor.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
+        String ttml = TTMLGenerator.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
         assertNotNull(ttml);
         assertEquals(ttml.indexOf("<div"), ttml.lastIndexOf("<div"));
         assertTrue(ttml.contains("itunes:songPart=\"Chorus\""));
@@ -435,7 +435,7 @@ public class TTMLRefactorTest {
         Lyrics lyrics = new Lyrics(lines, "TestProvider", true,
                 null, null, null, null, null, null, null);
 
-        String ttml = TTMLRefactor.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
+        String ttml = TTMLGenerator.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
         assertNotNull(ttml);
         assertFalse(ttml.contains("songPart"));
     }
@@ -451,7 +451,7 @@ public class TTMLRefactorTest {
         Lyrics lyrics = new Lyrics(lines, "TestProvider", true,
                 reading, null, null, null, null, null, null);
 
-        String ttml = TTMLRefactor.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
+        String ttml = TTMLGenerator.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("<span ttm:role=\"x-roman\" xml:lang=\"romaji\">ai</span>"));
     }
@@ -465,7 +465,7 @@ public class TTMLRefactorTest {
         Lyrics lyrics = new Lyrics(lines, "TestProvider", true,
                 null, null, romanizations, null, null, null, null);
 
-        String ttml = TTMLRefactor.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
+        String ttml = TTMLGenerator.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
         assertNotNull(ttml);
         assertFalse(ttml.contains("bgreading"));
     }
@@ -479,7 +479,7 @@ public class TTMLRefactorTest {
         Lyrics lyrics = new Lyrics(lines, "TestProvider", true, null, null, null,
                 null, List.of("Copyright: Label"), null, "lrc", null, null, null);
 
-        String ttml = TTMLRefactor.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
+        String ttml = TTMLGenerator.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("<copyright>Label</copyright>"));
         assertFalse(ttml.contains("morphe:credits"));

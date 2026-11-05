@@ -780,8 +780,8 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_search_empty">Enter a song title and an artist</string>
     <string name="morphe_music_lyrics_search_no_providers">None of the enabled providers can search for other songs</string>
     <string name="morphe_music_lyrics_saved">Saved</string>
-    <string name="morphe_music_lyrics_save_refactored_ttml_title">Save as TTML too</string>
-    <string name="morphe_music_lyrics_save_refactored_ttml_summary">Saving lyrics also writes a TTML file with the translation, romanization and ruby shown in the panel</string>
+    <string name="morphe_music_lyrics_save_ttml_title">Save as TTML too</string>
+    <string name="morphe_music_lyrics_save_ttml_summary">Saving lyrics also writes a TTML file with the translation, romanization and ruby shown in the panel</string>
     <string name="morphe_music_lyrics_written_by">Written by: %s</string>
     <string name="morphe_music_lyrics_word_sync_title">Highlight synced words or syllables</string>
     <string name="morphe_music_lyrics_word_sync_summary">Prioritize word-by-word lyrics when available. When lyrics carry word timing, highlights each word or syllable in time with the music</string>

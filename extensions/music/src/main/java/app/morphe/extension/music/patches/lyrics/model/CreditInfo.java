@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 /**
  * Transient credit info from the panel's AI processing state, passed to the
- * TTML refactor generator at save time. Not persisted in the Lyrics model.
+ * TTML generator at save time. Not persisted in the Lyrics model.
  *
  * @param translator "Google", "AI:gpt-4", or null
  * @param romanizer  "Google", "AI:gpt-4", "Local:Tanaka", or null

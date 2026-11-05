@@ -31,10 +31,10 @@ import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.settings.Settings;
 
 /**
- * Reorganizes lyrics into Apple Music compatible TTML2 with a morphe namespace.
+ * Writes lyrics as Apple Music compatible TTML2 with a morphe namespace.
  * Output is minified for compact storage.
  */
-public final class TTMLRefactor {
+public final class TTMLGenerator {
 
     private static final String NS_DEFAULT = "http://www.w3.org/ns/ttml";
     private static final String NS_ITUNES = "http://music.apple.com/lyric-ttml-internal";
@@ -66,7 +66,7 @@ public final class TTMLRefactor {
     private final boolean stripPunctuation = Settings.LYRICS_STRIP_TRAILING_PUNCTUATION.get();
     private final int hanMode = LyricsPresentation.hanMode();
 
-    private TTMLRefactor(Lyrics lyrics, @Nullable TrackInfo track, @Nullable CreditInfo creditInfo,
+    private TTMLGenerator(Lyrics lyrics, @Nullable TrackInfo track, @Nullable CreditInfo creditInfo,
                          @Nullable List<String> translatedLines,
                          @Nullable List<LyricsLine> romanizedLines,
                          @Nullable String translatedLang, @Nullable String romanizedLang) {
@@ -96,7 +96,7 @@ public final class TTMLRefactor {
         if (lyrics == null || lyrics.isEmpty()) {
             return null;
         }
-        return new TTMLRefactor(lyrics, track, creditInfo, translatedLines, romanizedLines,
+        return new TTMLGenerator(lyrics, track, creditInfo, translatedLines, romanizedLines,
                 translatedLang, romanizedLang).build();
     }
 

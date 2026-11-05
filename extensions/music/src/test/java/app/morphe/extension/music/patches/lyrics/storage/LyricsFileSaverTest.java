@@ -127,7 +127,7 @@ public class LyricsFileSaverTest {
 
     @Test
     public void fileNameRawTtmlSavedAsProviderName() throws Exception {
-        Settings.LYRICS_SAVE_REFACTORED_TTML.save(false);
+        Settings.LYRICS_SAVE_TTML.save(false);
         List<LyricsLine> lines = List.of(new LyricsLine(0, "Hello"));
         Lyrics lyrics = new Lyrics(lines, "YouTube Music", true,
                 null, null, null, null, "<tt/>", "ttml", null, null, null);
@@ -139,21 +139,21 @@ public class LyricsFileSaverTest {
     }
 
     @Test
-    public void fileNameRefactoredTtmlSavedAsMorphe() throws Exception {
-        Settings.LYRICS_SAVE_REFACTORED_TTML.save(true);
+    public void fileNameGeneratedTtmlSavedAsMorphe() throws Exception {
+        Settings.LYRICS_SAVE_TTML.save(true);
         List<LyricsLine> lines = List.of(new LyricsLine(0, "Hello"));
         Lyrics lyrics = new Lyrics(lines, "YouTube Music", true,
                 null, null, null, null, "<tt/>", "ttml", null, null, null);
         String result = callPrivateMethod("fileName",
                 new Class<?>[]{TrackInfo.class, Lyrics.class, String.class, boolean.class},
                 track, lyrics, "ttml", true);
-        assertTrue("Refactored TTML should use Morphe",
+        assertTrue("Generated TTML should use Morphe",
                 result.contains("[Morphe]"));
     }
 
     @Test
     public void fileNameSourceFormatAlwaysUsesProviderName() throws Exception {
-        Settings.LYRICS_SAVE_REFACTORED_TTML.save(false);
+        Settings.LYRICS_SAVE_TTML.save(false);
         List<LyricsLine> lines = List.of(new LyricsLine(0, "Hello"));
         Lyrics lyrics = new Lyrics(lines, "YouTube Music", true,
                 null, null, null, null, null, "ttml", null, null, null);
