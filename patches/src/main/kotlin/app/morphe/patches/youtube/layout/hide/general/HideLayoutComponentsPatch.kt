@@ -331,6 +331,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_post_like_dislike_buttons"),
                     SwitchPreference("morphe_hide_post_dislike_button", summary = true),
                     SwitchPreference("morphe_hide_post_comment_button"),
+                    SwitchPreference("morphe_hide_post_comments_preview", summary = true),
                     SwitchPreference("morphe_hide_post_share_button", summary = true)
                 )
             ),

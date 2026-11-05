@@ -500,6 +500,12 @@ public final class LayoutComponentsFilter extends Filter {
                 "web_result_panel"
         );
 
+        // The preview of the comments is loaded separately and added to the post, so it's hidden by its component.
+        final var postCommentsPreview = new StringFilterGroup(
+                Settings.HIDE_POST_COMMENTS_PREVIEW,
+                "post_comments_carousel.e"
+        );
+
         // The like and dislike buttons share their data, so the dislike button alone is hidden by its component.
         final var postDislikeButton = new StringFilterGroup(
                 Settings.HIDE_POST_DISLIKE_BUTTON,
@@ -530,6 +536,7 @@ public final class LayoutComponentsFilter extends Filter {
                 notificationsMenuHeader,
                 notifyMe,
                 playables,
+                postCommentsPreview,
                 postDislikeButton,
                 postsShelf,
                 searchFriction,
