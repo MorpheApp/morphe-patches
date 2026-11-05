@@ -66,20 +66,18 @@ private val soundProofButtonResourcePatch = patch(
                 val castButton = layout.elementByAttribute("android:id", "@id/cast_button_container")
                 val topBar = castButton.parent!!
 
-                topBar.insertChild(castButton.index, BUTTON_VIEW_TAG) {
+                // The switch gets the width left over by the other views, and the spacer is as wide
+                // as a button only to keep the switch centered. The button replaces the spacer when
+                // it is shown, so the switch keeps its width and stays centered.
+                val spacer = topBar.children("Space").first()
+                spacer.setAttribute("android:id", "@+id/morphe_soundproof_spacer")
+
+                topBar.insertChild(spacer.index, BUTTON_VIEW_TAG) {
                     setAttribute("android:id", "@+id/morphe_soundproof_button")
                     setAttribute("android:layout_width", "@dimen/remix_generic_button_size")
                     setAttribute("android:layout_height", "@dimen/remix_generic_button_size")
                     setAttribute("android:scaleType", "center")
                     setAttribute("style", "@style/MusicPlayerButton")
-                }
-
-                // The switch is centered because the left side holds a spacer as wide as a button.
-                // A second spacer keeps it centered once the right side has one more button.
-                topBar.insertChild(topBar.children("Space").first().index + 1, "Space") {
-                    setAttribute("android:id", "@+id/morphe_soundproof_spacer")
-                    setAttribute("android:layout_width", "@dimen/remix_generic_button_size")
-                    setAttribute("android:layout_height", "@dimen/remix_generic_button_size")
                 }
             }
         }
@@ -89,9 +87,7 @@ private val soundProofButtonResourcePatch = patch(
 @Suppress("unused")
 val soundProofPatch = patch(
     name = "SoundProof",
-    description = "Adds an option to skip tracks of artists reported as AI in the SoundProof community database.",
-    // Off by default: it downloads a third-party database and skips tracks on its own.
-    default = false
+    description = "Adds an option to skip tracks of artists reported as AI in the SoundProof community database."
 ) {
     dependsOn(
         sharedExtensionPatch,

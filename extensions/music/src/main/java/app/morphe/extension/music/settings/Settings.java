@@ -198,8 +198,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SCROBBLING_GUESS_ALBUM = new BooleanSetting("morphe_music_scrobbling_guess_album", FALSE, true, parentsAny(LISTENBRAINZ_SCROBBLING, LASTFM_SCROBBLING));
 
     // SoundProof
-    public static final BooleanSetting SOUNDPROOF_SHOW_BUTTON = new BooleanSetting("morphe_music_soundproof_show_button", TRUE, true);
-    public static final BooleanSetting SOUNDPROOF_SKIP_AI_ARTISTS = new BooleanSetting("morphe_music_soundproof_skip_ai_artists", TRUE, false);
+    public static final BooleanSetting SOUNDPROOF_SHOW_BUTTON = new BooleanSetting("morphe_music_soundproof_show_button", FALSE, true);
+    public static final BooleanSetting SOUNDPROOF_SKIP_AI_ARTISTS = new BooleanSetting("morphe_music_soundproof_skip_ai_artists", FALSE, false);
     public static final BooleanSetting SOUNDPROOF_TOAST_ON_SKIP = new BooleanSetting("morphe_music_soundproof_toast_on_skip", TRUE, false, parent(SOUNDPROOF_SKIP_AI_ARTISTS));
     public static final IntegerSetting SOUNDPROOF_MINIMUM_AI_PERCENT = new IntegerSetting("morphe_music_soundproof_minimum_ai_percent", AiDetectionPolicy.DEFAULT_MINIMUM_AI_PERCENT, false, parentsAny(SOUNDPROOF_SHOW_BUTTON, SOUNDPROOF_SKIP_AI_ARTISTS));
     public static final IntegerSetting SOUNDPROOF_MINIMUM_VOTES = new IntegerSetting("morphe_music_soundproof_minimum_votes", AiDetectionPolicy.DEFAULT_MINIMUM_VOTES, false, parentsAny(SOUNDPROOF_SHOW_BUTTON, SOUNDPROOF_SKIP_AI_ARTISTS));
