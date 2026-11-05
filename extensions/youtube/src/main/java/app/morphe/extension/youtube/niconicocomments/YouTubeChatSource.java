@@ -77,6 +77,16 @@ final class YouTubeChatSource implements Runnable {
      */
     private static final int TIMED_COMMENTS_MAX_PAGES_WITHOUT_ANY = 10;
 
+    /**
+     * The watch page sets ytInitialData in a script, or puts it in a JSON script element.
+     */
+    static final String[] INITIAL_DATA_MARKERS = {
+            "var ytInitialData =",
+            "ytInitialData =",
+            "window[\"ytInitialData\"] =",
+            "id=\"yt-initial-data\""
+    };
+
     private final String videoId;
     private final Listener listener;
     private final Set<String> seenIds = new LinkedHashSet<>();
@@ -408,12 +418,7 @@ final class YouTubeChatSource implements Runnable {
             context.put("request", new JSONObject().put("useSsl", true));
         }
 
-        JSONObject initialData = parseMarkedObject(
-                html,
-                "var ytInitialData =",
-                "ytInitialData =",
-                "window[\"ytInitialData\"] ="
-        );
+        JSONObject initialData = parseMarkedObject(html, INITIAL_DATA_MARKERS);
         if (initialData == null) {
             throw new JSONException("Watch page did not contain ytInitialData");
         }
@@ -507,12 +512,7 @@ final class YouTubeChatSource implements Runnable {
                 + URLEncoder.encode(continuation, StandardCharsets.UTF_8.name())
                 + "&hl=en";
         String html = request(url, null, null, null);
-        JSONObject initialData = parseMarkedObject(
-                html,
-                "var ytInitialData =",
-                "ytInitialData =",
-                "window[\"ytInitialData\"] ="
-        );
+        JSONObject initialData = parseMarkedObject(html, INITIAL_DATA_MARKERS);
         if (initialData == null) {
             return null;
         }
