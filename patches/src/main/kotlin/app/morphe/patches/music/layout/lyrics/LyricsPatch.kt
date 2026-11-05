@@ -9,19 +9,19 @@
 package app.morphe.patches.music.layout.lyrics
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
+import app.morphe.patches.music.misc.mediasession.addSetMetadataHook
+import app.morphe.patches.music.misc.mediasession.addSetMetadataWithSessionHook
+import app.morphe.patches.music.misc.mediasession.addSetPlaybackStateHook
+import app.morphe.patches.music.misc.mediasession.mediaSessionHookPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
-import app.morphe.patches.music.shared.hookMediaSessionArgument
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
-import app.morphe.patches.shared.MediaSessionSetMetadataFingerprint
-import app.morphe.patches.shared.MediaSessionSetPlaybackStateFingerprint
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -36,7 +36,6 @@ import app.morphe.util.copyResources
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsPatch;"
@@ -57,6 +56,7 @@ val lyricsPatch = patch(
         settingsPatch,
         addResourcesPatch,
         lithoFilterPatch,
+        mediaSessionHookPatch,
         musicVideoInformationPatch,
         // The copy, romanize and furigana buttons need their icons whether the patches
         // that own these resources are applied.
@@ -328,31 +328,13 @@ val lyricsPatch = patch(
             )
         }
 
-        MediaSessionSetMetadataFingerprint.hookMediaSessionArgument(
-            "$EXTENSION_CLASS->onSetMetadata(Landroid/media/MediaMetadata;)V"
+        addSetMetadataHook("$EXTENSION_CLASS->onSetMetadata(Landroid/media/MediaMetadata;)V")
+        addSetMetadataWithSessionHook(
+            "$MINIPLAYER_LYRICS_CLASS->onMediaSessionSetMetadata(Landroid/media/session/MediaSession;Landroid/media/MediaMetadata;)V"
         )
-
-        MediaSessionSetMetadataFingerprint.let {
-            it.clearMatch()
-            val method = it.method
-            val index = it.instructionMatches.last().index
-            val instruction = method.getInstruction<FiveRegisterInstruction>(index)
-            val sessionRegister = instruction.registerC
-            val metadataRegister = instruction.registerD
-            method.addInstruction(
-                index,
-                "invoke-static { v$sessionRegister, v$metadataRegister }, " +
-                    "$LOCKSCREEN_CLASS->onMediaSessionSetMetadata(Landroid/media/session/MediaSession;Landroid/media/MediaMetadata;)V"
-            )
-            method.addInstruction(
-                index,
-                "invoke-static { v$sessionRegister, v$metadataRegister }, " +
-                    "$MINIPLAYER_LYRICS_CLASS->onMediaSessionSetMetadata(Landroid/media/session/MediaSession;Landroid/media/MediaMetadata;)V"
-            )
-        }
-
-        MediaSessionSetPlaybackStateFingerprint.hookMediaSessionArgument(
-            "$EXTENSION_CLASS->onSetPlaybackState(Landroid/media/session/PlaybackState;)V"
+        addSetMetadataWithSessionHook(
+            "$LOCKSCREEN_CLASS->onMediaSessionSetMetadata(Landroid/media/session/MediaSession;Landroid/media/MediaMetadata;)V"
         )
+        addSetPlaybackStateHook("$EXTENSION_CLASS->onSetPlaybackState(Landroid/media/session/PlaybackState;)V")
     }
 }

@@ -555,6 +555,51 @@ SABR playback (Spoof video streams turned off)"</string>
 
 To ensure scrobbling is synced during background playback, ensure that YouTube Music's app battery usage is set to \"Unrestricted\""</string>
 
+    <!-- interaction.soundproof.soundProofPatch -->
+    <!-- 'SoundProof' must be kept untranslated -->
+    <string name="morphe_music_soundproof_screen_title" translatable="false">SoundProof</string>
+    <string name="morphe_music_soundproof_screen_summary">Skip tracks of artists the community reported as AI</string>
+    <string name="morphe_music_soundproof_show_button_title">Show SoundProof button</string>
+    <string name="morphe_music_soundproof_show_button_summary">Shows a button in the top bar of the player to see and cast community votes for the current artist</string>
+    <string name="morphe_music_soundproof_skip_ai_artists_title">Skip AI artists</string>
+    <string name="morphe_music_soundproof_skip_ai_artists_summary">Automatically skips tracks whose artist reaches the AI threshold below</string>
+    <string name="morphe_music_soundproof_toast_on_skip_title">Show skip notification</string>
+    <string name="morphe_music_soundproof_toast_on_skip_summary">Shows a notification when a track is automatically skipped</string>
+    <string name="morphe_music_soundproof_threshold_title">Detection threshold</string>
+    <string name="morphe_music_soundproof_minimum_ai_percent_title">Minimum AI votes</string>
+    <string name="morphe_music_soundproof_minimum_ai_percent_summary">An artist is AI when at least this share of its votes say AI</string>
+    <string name="morphe_music_soundproof_minimum_votes_title">Minimum number of votes</string>
+    <string name="morphe_music_soundproof_minimum_votes_summary">Artists with fewer votes than this are never skipped</string>
+    <!-- %1$s is the artist name, %2$d the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+    <string name="morphe_music_soundproof_skipped_toast">Skipped %1$s (AI, %2$d%%)</string>
+    <string name="morphe_music_soundproof_button_description">SoundProof votes for this artist</string>
+    <string name="morphe_music_soundproof_sheet_verified">Verified</string>
+    <!-- Share of the votes on the majority side. Example: 93% AI -->
+    <string name="morphe_music_soundproof_sheet_percent_ai">%1$d%% AI</string>
+    <!-- Share of the votes on the majority side. Example: 92% human -->
+    <string name="morphe_music_soundproof_sheet_percent_human">%1$d%% human</string>
+    <string name="morphe_music_soundproof_sheet_one_vote">1 vote</string>
+    <!-- Total number of votes, always more than one. Example: 44 votes -->
+    <string name="morphe_music_soundproof_sheet_votes">%1$d votes</string>
+    <!-- Number of votes saying the artist is human. Example: 3 human -->
+    <string name="morphe_music_soundproof_sheet_human_votes">%1$d human</string>
+    <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+    <string name="morphe_music_soundproof_sheet_ai_votes">%1$d AI</string>
+    <string name="morphe_music_soundproof_sheet_no_votes_title">No votes for this artist yet</string>
+    <string name="morphe_music_soundproof_sheet_unavailable_title">SoundProof database not available yet</string>
+    <string name="morphe_music_soundproof_sheet_unavailable_summary">It is downloaded in the background. No track is skipped until it is available.</string>
+    <!-- 'SoundProof' must be kept untranslated -->
+    <string name="morphe_music_soundproof_sheet_source">Community votes from the SoundProof database</string>
+    <string name="morphe_music_soundproof_sheet_vote_human">Human</string>
+    <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
+    <string name="morphe_music_soundproof_sheet_voting_locked">Voting is closed: a SoundProof moderator checked this artist</string>
+    <string name="morphe_music_soundproof_sheet_live_failed">Could not reach SoundProof. Votes are from the daily database, and voting is unavailable.</string>
+    <string name="morphe_music_soundproof_vote_failed_toast">SoundProof vote failed</string>
+    <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+    <string name="morphe_music_soundproof_about_summary">"Artist data comes from SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), downloaded once a day. Skipping sends nothing about what you play. Opening the SoundProof sheet sends the current artist name to the SoundProof server to show fresh votes and to vote. The server tells voters apart by IP address, so your vote can show differently on another network.
+
+The database is licensed under the ODC Open Database License (ODbL). Entries from Soul Over AI by xoundbyte are licensed under CC BY 4.0. Not affiliated with or endorsed by SoundProof or Soul Over AI."</string>
+
     <!-- layout.lyrics.lyricsPatch -->
     <string name="morphe_music_lyrics_enabled_title">Use third-party lyrics</string>
     <string name="morphe_music_lyrics_enabled_summary">Shows lyrics from a third-party service, falling back to the built-in lyrics when none are found</string>
