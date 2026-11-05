@@ -101,6 +101,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private static final int SEARCH_BAR_HEIGHT_DP = 46;
     private static final long SEARCH_ANIMATION_MILLISECONDS = 180;
     private static final long PLAYER_TRANSITION_MS = 260;
+    private static final long REORDER_SHIFT_MS = 120;
 
     /** The list of playlists scrolls in its own fixed height once it has more rows than this. */
     private static final int MAX_UNSCROLLED_PLAYLISTS = 4;
@@ -112,6 +113,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private static final int MENU_CORNER_DP = 12;
     private static final int FULL_ARTWORK_PIXELS = 1024;
     private static final int HERO_HEIGHT_DP = 340;
+    private static final int DRAG_SCROLL_ZONE_DP = 48;
+    private static final int DRAG_SCROLL_STEP_DP = 8;
 
     private static final int ICON_CHEVRON_DOWN = 1;
     private static final int ICON_SHUFFLE = 2;
@@ -322,8 +325,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     }
 
     /**
-     * Hides the parent Activity's "<- Downloads" toolbar while the full-screen player is open
-     * so the album artwork starts cleanly at the top edge of the view.
+     * Hides the parent Activity's toolbar while the full-screen player is open so the cover
+     * sits flush against the top edge.
      */
     private void setHostToolbarVisible(boolean visible) {
         Activity activity = getActivity();
@@ -1025,6 +1028,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         fullQueueScroll = new ScrollView(getActivity());
         fullQueueList = new LinearLayout(getActivity());
         fullQueueList.setOrientation(LinearLayout.VERTICAL);
+        fullQueueList.setClipChildren(false);
+        fullQueueList.setClipToPadding(false);
         fullQueueList.setPadding(ui.dp(8), ui.dp(4), ui.dp(8), ui.dp(16));
         fullQueueScroll.addView(fullQueueList);
         page.addView(fullQueueScroll, new LinearLayout.LayoutParams(-1, 0, 1));
@@ -1140,6 +1145,11 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         }
     }
 
+    /**
+     * Attaches horizontal swipe-to-remove on the row and vertical drag-to-reorder on its handle.
+     * The dragged row stays attached throughout the gesture and shifts its neighbors via
+     * translation, since detaching a touched view in Android cancels its active touch stream.
+     */
     @SuppressLint("ClickableViewAccessibility")
     private void attachQueueRowInteractions(LinearLayout row, View dragHandle) {
         final int touchSlop = ViewConfiguration.get(getActivity()).getScaledTouchSlop();
@@ -1232,12 +1242,15 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             }
         });
 
-        // 2. Vertical Drag-to-Reorder on the '=' Handle
+        // 2. Non-detaching Vertical Drag-to-Reorder on the '=' Handle
         dragHandle.setOnTouchListener(new View.OnTouchListener() {
-            private float lastRawY;
+            private float downRawY;
+            private int startScrollY;
             private int startIndex = -1;
-            private int currentIndex = -1;
+            private int targetIndex = -1;
+            private int rowHeight = 1;
             private float baseAlpha = 1f;
+            private final int[] scrollLoc = new int[2];
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -1245,66 +1258,103 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                     case MotionEvent.ACTION_DOWN -> {
                         startIndex = fullQueueList.indexOfChild(row);
                         if (startIndex < 0) return false;
-                        currentIndex = startIndex;
-                        lastRawY = event.getRawY();
+                        targetIndex = startIndex;
+                        downRawY = event.getRawY();
+                        startScrollY = fullQueueScroll != null ? fullQueueScroll.getScrollY() : 0;
+                        rowHeight = Math.max(1, row.getHeight());
                         baseAlpha = row.getAlpha();
                         isInteractingWithQueue = true;
+
                         if (fullQueueScroll != null) {
                             fullQueueScroll.requestDisallowInterceptTouchEvent(true);
                         }
+                        row.animate().cancel();
+                        row.setTranslationZ(ui.dp(8));
                         row.setScaleX(1.02f);
                         row.setScaleY(1.02f);
-                        row.setAlpha(0.9f);
-                        row.setElevation(ui.dp(6));
+                        row.setAlpha(0.95f);
                         return true;
                     }
                     case MotionEvent.ACTION_MOVE -> {
-                        if (currentIndex < 0) return false;
-                        float dy = event.getRawY() - lastRawY;
-                        row.setTranslationY(row.getTranslationY() + dy);
-                        lastRawY = event.getRawY();
+                        if (startIndex < 0) return false;
 
-                        int rowHeight = Math.max(1, row.getHeight());
-                        float currentTranslation = row.getTranslationY();
+                        // Auto-scroll when the dragged row nears the top or bottom of the ScrollView.
+                        if (fullQueueScroll != null) {
+                            fullQueueScroll.getLocationOnScreen(scrollLoc);
+                            float yInScroll = event.getRawY() - scrollLoc[1];
+                            int zone = ui.dp(DRAG_SCROLL_ZONE_DP);
+                            int step = ui.dp(DRAG_SCROLL_STEP_DP);
+                            if (yInScroll < zone && fullQueueScroll.canScrollVertically(-1)) {
+                                fullQueueScroll.scrollBy(0, -step);
+                            } else if (yInScroll > fullQueueScroll.getHeight() - zone
+                                    && fullQueueScroll.canScrollVertically(1)) {
+                                fullQueueScroll.scrollBy(0, step);
+                            }
+                        }
 
-                        if (currentTranslation > rowHeight * 0.6f
-                                && currentIndex + 1 < fullQueueList.getChildCount()) {
-                            fullQueueList.removeViewAt(currentIndex);
-                            currentIndex++;
-                            fullQueueList.addView(row, currentIndex);
-                            row.setTranslationY(currentTranslation - rowHeight);
-                        } else if (currentTranslation < -rowHeight * 0.6f
-                                && currentIndex - 1 >= 0) {
-                            fullQueueList.removeViewAt(currentIndex);
-                            currentIndex--;
-                            fullQueueList.addView(row, currentIndex);
-                            row.setTranslationY(currentTranslation + rowHeight);
+                        int currentScrollY = fullQueueScroll != null ? fullQueueScroll.getScrollY() : 0;
+                        float totalDy = (event.getRawY() - downRawY) + (currentScrollY - startScrollY);
+
+                        int count = fullQueueList.getChildCount();
+                        float minDy = -startIndex * rowHeight;
+                        float maxDy = (count - 1 - startIndex) * rowHeight;
+                        float clampedDy = Math.max(minDy, Math.min(maxDy, totalDy));
+                        row.setTranslationY(clampedDy);
+
+                        int newTarget = Math.max(0, Math.min(count - 1,
+                                startIndex + Math.round(clampedDy / rowHeight)));
+                        if (newTarget != targetIndex) {
+                            targetIndex = newTarget;
+                            for (int i = 0; i < count; i++) {
+                                if (i == startIndex) continue;
+                                View sibling = fullQueueList.getChildAt(i);
+                                float shift = 0f;
+                                if (startIndex < targetIndex && i > startIndex && i <= targetIndex) {
+                                    shift = -rowHeight;
+                                } else if (startIndex > targetIndex && i < startIndex && i >= targetIndex) {
+                                    shift = rowHeight;
+                                }
+                                sibling.animate()
+                                        .translationY(shift)
+                                        .setDuration(REORDER_SHIFT_MS)
+                                        .start();
+                            }
                         }
                         return true;
                     }
                     case MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                        if (startIndex < 0) return false;
                         if (fullQueueScroll != null) {
                             fullQueueScroll.requestDisallowInterceptTouchEvent(false);
                         }
                         final int from = startIndex;
-                        final int to = currentIndex;
+                        final int to = targetIndex;
+                        final boolean commit = event.getActionMasked() == MotionEvent.ACTION_UP
+                                && from >= 0 && to >= 0 && from != to;
+                        startIndex = -1;
+                        targetIndex = -1;
+
+                        float finalY = commit ? (to - from) * rowHeight : 0f;
                         row.animate()
-                                .translationY(0f)
+                                .translationY(finalY)
                                 .scaleX(1f)
                                 .scaleY(1f)
                                 .alpha(baseAlpha)
-                                .setDuration(150)
+                                .setDuration(REORDER_SHIFT_MS)
                                 .withEndAction(() -> {
-                                    row.setElevation(0f);
-                                    isInteractingWithQueue = false;
-                                    if (from >= 0 && to >= 0 && from != to) {
-                                        OfflinePlaybackService.moveQueueItem(from, to);
-                                        refreshFullQueue(false);
+                                    row.setTranslationZ(0f);
+                                    for (int i = 0; i < fullQueueList.getChildCount(); i++) {
+                                        View child = fullQueueList.getChildAt(i);
+                                        child.animate().cancel();
+                                        child.setTranslationY(0f);
                                     }
+                                    isInteractingWithQueue = false;
+                                    if (commit) {
+                                        OfflinePlaybackService.moveQueueItem(from, to);
+                                    }
+                                    refreshFullQueue(false);
                                 })
                                 .start();
-                        startIndex = -1;
-                        currentIndex = -1;
                         return true;
                     }
                 }
