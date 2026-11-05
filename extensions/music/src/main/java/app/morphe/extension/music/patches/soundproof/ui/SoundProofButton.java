@@ -23,16 +23,16 @@ import app.morphe.extension.shared.ResourceUtils;
  * Player top bar button showing the SoundProof status of the current track. A tap opens
  * {@link SoundProofSheet}.
  * <p>
- * Inflated from the player layout, where the patch puts it next to the cast button.
+ * Inflated from the player layout, where the patch puts it next to the collapse button.
  */
 @SuppressWarnings("unused")
 public final class SoundProofButton extends ImageView implements SoundProofManager.StateListener {
 
     /**
-     * Spacer the patch adds on the other side of the bar, so that the centered audio and video
-     * switch stays centered. It is shown and hidden with this button.
+     * Spacer of the app that keeps the audio and video switch centered. This button is as wide and
+     * takes its place, so the switch keeps its width.
      */
-    private static final String BALANCING_SPACER_ID = "morphe_soundproof_spacer";
+    private static final String REPLACED_SPACER_ID = "morphe_soundproof_spacer";
 
     /** Icon opacity while the skip is off, out of 255. */
     private static final int SKIP_OFF_ICON_ALPHA = 102; // 40 %
@@ -76,8 +76,8 @@ public final class SoundProofButton extends ImageView implements SoundProofManag
     }
 
     private void setShown(boolean isShown) {
-        int visibility = isShown ? View.VISIBLE : View.GONE;
-        setVisibility(visibility);
-        ((View) getParent()).findViewById(ResourceUtils.getIdIdentifier(BALANCING_SPACER_ID)).setVisibility(visibility);
+        setVisibility(isShown ? View.VISIBLE : View.GONE);
+        ((View) getParent()).findViewById(ResourceUtils.getIdIdentifier(REPLACED_SPACER_ID))
+                .setVisibility(isShown ? View.GONE : View.VISIBLE);
     }
 }
