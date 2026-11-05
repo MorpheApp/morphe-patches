@@ -7,8 +7,8 @@
 
 package app.morphe.patches.music.interaction.soundproof
 
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.mediasession.addSetMetadataWithSessionHook
 import app.morphe.patches.music.misc.mediasession.mediaSessionHookPatch
@@ -23,10 +23,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.util.ResourceGroup
-import app.morphe.util.childElementsSequence
 import app.morphe.util.copyResources
-import app.morphe.util.findElementByAttributeValueOrThrow
-import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/soundproof/SoundProofPatch;"
@@ -40,7 +37,7 @@ private const val ABOUT_PREFERENCE =
 private const val BUTTON_VIEW_TAG =
     "app.morphe.extension.music.patches.soundproof.ui.SoundProofButton"
 
-private val soundProofButtonResourcePatch = resourcePatch(
+private val soundProofButtonResourcePatch = patch(
     description = "Adds the SoundProof button to the top bar of the player."
 ) {
     dependsOn(versionCheckPatch)
@@ -64,39 +61,33 @@ private val soundProofButtonResourcePatch = resourcePatch(
         }
 
         playerLayouts.forEach { playerLayout ->
-            document(playerLayout).use { document ->
+            resourceXml(playerLayout).use { layout ->
                 // Top bar: collapse, spacer, centered audio and video switch, cast, overflow menu.
-                val castButton = document.childNodes.findElementByAttributeValueOrThrow(
-                    "android:id",
-                    "@id/cast_button_container"
-                )
-                val topBar = castButton.parentNode as Element
+                val castButton = layout.elementByAttribute("android:id", "@id/cast_button_container")
+                val topBar = castButton.parent!!
 
-                val button = document.createElement(BUTTON_VIEW_TAG).apply {
+                topBar.insertChild(castButton.index, BUTTON_VIEW_TAG) {
                     setAttribute("android:id", "@+id/morphe_soundproof_button")
                     setAttribute("android:layout_width", "@dimen/remix_generic_button_size")
                     setAttribute("android:layout_height", "@dimen/remix_generic_button_size")
                     setAttribute("android:scaleType", "center")
                     setAttribute("style", "@style/MusicPlayerButton")
                 }
-                topBar.insertBefore(button, castButton)
 
                 // The switch is centered because the left side holds a spacer as wide as a button.
                 // A second spacer keeps it centered once the right side has one more button.
-                val spacer = document.createElement("Space").apply {
+                topBar.insertChild(topBar.children("Space").first().index + 1, "Space") {
                     setAttribute("android:id", "@+id/morphe_soundproof_spacer")
                     setAttribute("android:layout_width", "@dimen/remix_generic_button_size")
                     setAttribute("android:layout_height", "@dimen/remix_generic_button_size")
                 }
-                val leftSpacer = topBar.childElementsSequence().first { it.tagName == "Space" }
-                topBar.insertBefore(spacer, leftSpacer.nextSibling)
             }
         }
     }
 }
 
 @Suppress("unused")
-val soundProofPatch = bytecodePatch(
+val soundProofPatch = patch(
     name = "SoundProof",
     description = "Adds an option to skip tracks of artists reported as AI in the SoundProof community database.",
     // Off by default: it downloads a third-party database and skips tracks on its own.
