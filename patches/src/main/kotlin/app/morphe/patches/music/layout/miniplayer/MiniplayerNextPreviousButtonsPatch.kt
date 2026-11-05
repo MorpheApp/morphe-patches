@@ -14,6 +14,7 @@ import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_28_or_greater
+import app.morphe.patches.music.misc.playservice.is_9_39_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -48,32 +49,40 @@ private val miniplayerButtonsResourcePatch = patch(
             "@drawable/music_player_next"
         }
 
+        val playerLayouts = mutableListOf("res/layout/watch_while_layout.xml")
+        if (is_9_39_or_greater) {
+            // Inflated instead of the layout above when a server flag defers the player.
+            playerLayouts += "res/layout/watch_while_layout_player.xml"
+        }
+
         // Inject previous button before play/pause, next button as last child of mini_player.
-        resourceXml("res/layout/watch_while_layout.xml").use { layout ->
-            fun XmlElement.setButtonAttributes(id: String, drawable: String, description: String) {
-                setAttribute("android:id", id)
-                setAttribute("android:padding", "@dimen/item_medium_spacing")
-                setAttribute("android:layout_width", "@dimen/remix_generic_button_size")
-                setAttribute("android:layout_height", "@dimen/remix_generic_button_size")
-                setAttribute("android:src", drawable)
-                setAttribute("android:scaleType", "fitCenter")
-                setAttribute("android:contentDescription", description)
-                setAttribute("style", "@style/MusicPlayerButton")
-            }
-
-            layout.elementByAttributeOrNull("android:id", "@id/mini_player_play_pause_replay_button")?.let { playPause ->
-                playPause.parent!!.insertChild(playPause.index, IMAGE_VIEW_TAG) {
-                    setButtonAttributes(
-                        "@+id/mini_player_previous_button",
-                        prevDrawable,
-                        "@string/accessibility_previous"
-                    )
+        playerLayouts.forEach { playerLayout ->
+            resourceXml(playerLayout).use { layout ->
+                fun XmlElement.setButtonAttributes(id: String, drawable: String, description: String) {
+                    setAttribute("android:id", id)
+                    setAttribute("android:padding", "@dimen/item_medium_spacing")
+                    setAttribute("android:layout_width", "@dimen/remix_generic_button_size")
+                    setAttribute("android:layout_height", "@dimen/remix_generic_button_size")
+                    setAttribute("android:src", drawable)
+                    setAttribute("android:scaleType", "fitCenter")
+                    setAttribute("android:contentDescription", description)
+                    setAttribute("style", "@style/MusicPlayerButton")
                 }
-            }
 
-            layout.elements().filter { it.attribute("android:id") == "@id/mini_player" }.toList().forEach { miniPlayer ->
-                miniPlayer.appendChild(IMAGE_VIEW_TAG) {
-                    setButtonAttributes("@+id/mini_player_next_button", nextDrawable, "@string/accessibility_next")
+                layout.elementByAttributeOrNull("android:id", "@id/mini_player_play_pause_replay_button")?.let { playPause ->
+                    playPause.parent!!.insertChild(playPause.index, IMAGE_VIEW_TAG) {
+                        setButtonAttributes(
+                            "@+id/mini_player_previous_button",
+                            prevDrawable,
+                            "@string/accessibility_previous"
+                        )
+                    }
+                }
+
+                layout.elements().filter { it.attribute("android:id") == "@id/mini_player" }.toList().forEach { miniPlayer ->
+                    miniPlayer.appendChild(IMAGE_VIEW_TAG) {
+                        setButtonAttributes("@+id/mini_player_next_button", nextDrawable, "@string/accessibility_next")
+                    }
                 }
             }
         }
