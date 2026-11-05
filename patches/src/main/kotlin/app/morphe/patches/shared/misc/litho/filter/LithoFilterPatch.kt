@@ -26,6 +26,8 @@ import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.getFreeRegisterProvider
+import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.matchSingle
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.context.ConversionContextToStringFingerprint
@@ -40,6 +42,8 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
@@ -471,6 +475,87 @@ internal fun sharedLithoFilterPatch(
                     }
                 }
             }
+
+            // region Sticky headers
+
+            // Removing the items changes the lists while they load, which makes two races of the sticky headers
+            // of the watch page frequent.
+
+            // The list item of a sticky header is hidden while its copy is shown, and then gets back the alpha
+            // it had before. An item just added to the list can still have alpha 0 from the animation of the list,
+            // so it stays hidden, also when the list reuses its view for another item, such as the action buttons
+            // or a video. Such an item is restored as a shown item.
+            StickyHeaderRestoreItemFingerprint.let {
+                val alphaField = it.instructionMatches[1].fieldReference
+
+                it.method.addInstructionsWithLabels(
+                    0,
+                    """
+                        iget v0, p0, $alphaField
+                        const/4 v1, 0x0
+                        cmpl-float v0, v0, v1
+                        if-nez v0, :restore
+                        const/high16 v0, 0x3f800000    # 1.0f
+                        iput v0, p0, $alphaField
+                        :restore
+                        nop
+                    """
+                )
+            }
+
+            // The copy of a header is created later, at the position saved when it was posted. If the list
+            // changed in the meantime, such as when the placeholders of the loading page are replaced while
+            // scrolling, the copy shows another item, which stays over the list. The position of the current
+            // header is used instead.
+            val stickyHeadersClass = StickyHeadersFingerprint.classDef
+            stickyHeaderCreateFingerprint(stickyHeadersClass.type).matchSingle().let {
+                val currentId = it.instructionMatches.last().methodReference
+                val headerList = stickyHeaderCurrentIdFingerprint(currentId.definingClass, currentId.name).matchSingle()
+                val headerIndexField = headerList.instructionMatches[0].fieldReference
+                val headerEntriesField = headerList.instructionMatches[1].fieldReference
+                val entryType = headerList.instructionMatches[3].instruction.getReference<TypeReference>()!!.type
+                val entryPositionField = stickyHeaderEntryCompareFingerprint(entryType).matchSingle()
+                    .instructionMatches.first().fieldReference
+                val headerListField = stickyHeadersClass.instanceFields.single { field ->
+                    field.type == currentId.definingClass
+                }
+
+                it.method.apply {
+                    val viewTypeIndex = it.instructionMatches[2].index
+                    val container = getInstruction<TwoRegisterInstruction>(it.instructionMatches[1].index)
+                    val viewTypeCall = getInstruction<FiveRegisterInstruction>(viewTypeIndex)
+                    val stickyHeadersRegister = container.registerB
+                    val positionRegister = viewTypeCall.registerD
+                    val registerProvider = getFreeRegisterProvider(
+                        viewTypeIndex,
+                        2,
+                        stickyHeadersRegister,
+                        container.registerA,
+                        viewTypeCall.registerC,
+                        positionRegister
+                    )
+                    val headerListRegister = registerProvider.getFreeRegister()
+                    val headerIndexRegister = registerProvider.getFreeRegister()
+
+                    addInstructionsWithLabels(
+                        viewTypeIndex,
+                        """
+                            iget-object v$headerListRegister, v$stickyHeadersRegister, $headerListField
+                            iget v$headerIndexRegister, v$headerListRegister, $headerIndexField
+                            if-ltz v$headerIndexRegister, :saved_position
+                            iget-object v$headerListRegister, v$headerListRegister, $headerEntriesField
+                            invoke-interface { v$headerListRegister, v$headerIndexRegister }, Ljava/util/List;->get(I)Ljava/lang/Object;
+                            move-result-object v$headerListRegister
+                            check-cast v$headerListRegister, $entryType
+                            iget v$positionRegister, v$headerListRegister, $entryPositionField
+                            :saved_position
+                            nop
+                        """
+                    )
+                }
+            }
+
+            // endregion
         }
 
         // endregion
