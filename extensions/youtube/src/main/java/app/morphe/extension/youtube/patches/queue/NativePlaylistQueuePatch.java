@@ -409,7 +409,6 @@ public final class NativePlaylistQueuePatch {
             var source = mix ? null : new PlaylistQueue.Source(playlistId, account);
             playlistRequestToken = conversion;
             FlyoutUtils.dismissFlyout();
-            Utils.showSnackbarShort(str("morphe_native_playlist_queue_loading_playlist"));
             playlistRequest = Utils.submitOnBackgroundThread(() -> {
                 PlaylistQueue candidate = null;
                 try {
@@ -514,7 +513,7 @@ public final class NativePlaylistQueuePatch {
                 return;
             }
             if (playlistAddition != null || playlistOperation != null || pendingMixAddition != null) {
-                Utils.showSnackbarShort(str("morphe_native_playlist_queue_loading_playlist"));
+                Utils.showSnackbarShort(str("morphe_flyout_button_loading"));
                 return;
             }
             final boolean mix = playlistId.startsWith(MIX_PLAYLIST_ID_PREFIX);
@@ -535,7 +534,6 @@ public final class NativePlaylistQueuePatch {
             var source = mix ? (playLast ? snapshot.source() : null) : new PlaylistQueue.Source(playlistId, account);
             Map<String, String> headers = mix ? Map.copyOf(AuthUtils.getRequestHeader()) : null;
             FlyoutUtils.dismissFlyout();
-            Utils.showSnackbarShort(str("morphe_native_playlist_queue_loading_playlist"));
             updatePlaylistLoading();
             playlistAdditionRequest = Utils.submitOnBackgroundThread(() -> {
                 List<PlaylistPages.Result> currentPages = null;
@@ -689,7 +687,6 @@ public final class NativePlaylistQueuePatch {
             Map<String, String> headers = mix ? Map.copyOf(AuthUtils.getRequestHeader()) : null;
             String previousVideoId = VideoInformation.getVideoId();
             FlyoutUtils.dismissFlyout();
-            Utils.showSnackbarShort(str("morphe_native_playlist_queue_loading_playlist"));
             playlistRequest = Utils.submitOnBackgroundThread(() -> {
                 PlaylistQueue candidate = null;
                 try {
@@ -1792,7 +1789,7 @@ public final class NativePlaylistQueuePatch {
                 return true;
             }
             if (playlistAddition != null) {
-                Utils.showSnackbarShort(str("morphe_native_playlist_queue_loading_playlist"));
+                Utils.showSnackbarShort(str("morphe_flyout_button_loading"));
                 return true;
             }
             syncNativeSelection(VideoInformation.getVideoId());
@@ -2112,7 +2109,7 @@ public final class NativePlaylistQueuePatch {
                     return null;
                 }
                 if (playlistAddition != null) {
-                    Utils.showSnackbarShort(str("morphe_native_playlist_queue_loading_playlist"));
+                    Utils.showSnackbarShort(str("morphe_flyout_button_loading"));
                     return null;
                 }
                 if (queue.source() != null) {
@@ -3080,7 +3077,7 @@ public final class NativePlaylistQueuePatch {
                     return false;
                 }
                 if (playlistAddition != null) {
-                    Utils.showSnackbarShort(str("morphe_native_playlist_queue_loading_playlist"));
+                    Utils.showSnackbarShort(str("morphe_flyout_button_loading"));
                     return true;
                 }
                 pendingMixAddition = choice;
