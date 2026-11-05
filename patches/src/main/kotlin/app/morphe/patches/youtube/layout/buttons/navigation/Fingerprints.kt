@@ -144,7 +144,8 @@ internal object CommentReplyPaddingFeatureFlagFingerprint : Fingerprint(
 internal val TRANSLUCENT_NAVIGATION_BAR_FEATURE_FLAGS = listOf(
     45630927L, // Blurred, translucent background of the navigation bar.
     NAVIGATION_BAR_COVERS_SYSTEM_BUTTONS_FLAG,
-    FEED_BEHIND_NAVIGATION_BAR_FLAG
+    FEED_BEHIND_NAVIGATION_BAR_FLAG,
+    TRANSLUCENT_NAVIGATION_BAR_STYLE_FLAG
 )
 
 /**
@@ -158,6 +159,12 @@ internal const val NAVIGATION_BAR_COVERS_SYSTEM_BUTTONS_FLAG = 45632194L
  * of the screen, and its list gets the navigation bar height as bottom padding.
  */
 internal const val FEED_BEHIND_NAVIGATION_BAR_FLAG = 45631257L
+
+/**
+ * Translucent style of the navigation bar before Android 12, which tells the pages that they can be seen
+ * through the bar, so they are laid out behind it. From Android 12 the blurred background tells it instead.
+ */
+internal const val TRANSLUCENT_NAVIGATION_BAR_STYLE_FLAG = 45633329L
 
 internal object TranslucentNavigationBarFeatureFlagsFingerprint : Fingerprint(
     filters = listOf(

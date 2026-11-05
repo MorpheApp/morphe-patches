@@ -135,6 +135,18 @@ public final class NavigationBarPatch {
                     ? NavigationBarStyle.TRANSLUCENT
                     : Settings.NAVIGATION_BAR_STYLE.get();
 
+    /**
+     * The glass navigation bar floats over the pages, so the pages are laid out behind it also where it does not
+     * cover the system navigation buttons, such as before Android 12, where the window is not drawn behind them,
+     * or without the edge to edge top bar before Android 15. Otherwise the room around the capsule is an empty band
+     * (<a href="https://github.com/MorpheApp/morphe-patches/issues/4413">...</a>).
+     * Only the pages are laid out behind it: the navigation bar still covers the system navigation buttons only
+     * where the window is drawn behind them, see {@link #isNavigationBarBehindSystemButtons(boolean)}.
+     */
+    private static final boolean PAGES_BEHIND_GLASS_NAVIGATION_BAR = isPatchIncluded()
+            && Settings.NAVIGATION_BAR_GLASS.get() && !Settings.HIDE_NAVIGATION_BAR.get()
+            && NAVIGATION_BAR_STYLE != NavigationBarStyle.OPAQUE;
+
     private static final boolean NARROW_NAVIGATION_BUTTONS = Settings.NARROW_NAVIGATION_BUTTONS.get();
 
     private static final boolean DISABLE_AUTO_HIDE_NAVIGATION_BAR = Settings.DISABLE_AUTO_HIDE_NAVIGATION_BAR.get();
@@ -373,6 +385,7 @@ public final class NavigationBarPatch {
      * when the navigation bar covers the system navigation buttons, as they are expected to be
      * laid out behind it, and the list padding for the navigation bar is only set with the edge
      * to edge layout. See {@link #isNavigationBarBehindSystemButtons(boolean)}.
+     * The pages are always laid out behind the glass navigation bar, see {@link #PAGES_BEHIND_GLASS_NAVIGATION_BAR}.
      */
     public static boolean useFeedBehindNavigationBar(boolean original) {
         Boolean accountValue = accountFeedBehindNavigationBar;
@@ -382,7 +395,7 @@ public final class NavigationBarPatch {
             accountFeedBehindNavigationBar = accountValue;
         }
 
-        final boolean feedBehind = isNavigationBarBehindSystemButtons(accountValue);
+        final boolean feedBehind = PAGES_BEHIND_GLASS_NAVIGATION_BAR || isNavigationBarBehindSystemButtons(accountValue);
         if (firstRead) {
             Logger.printDebug(() -> "Feed behind navigation bar: " + feedBehind + " (account: " + original + ")");
         }
@@ -433,11 +446,24 @@ public final class NavigationBarPatch {
         if (NAVIGATION_BAR_STYLE != NavigationBarStyle.OPAQUE && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             translucent = true;
         } else {
-            translucent = isNavigationBarBehindSystemButtons(original);
+            // Before Android 12, the pages are laid out behind the navigation bar only with its translucent background.
+            translucent = PAGES_BEHIND_GLASS_NAVIGATION_BAR || isNavigationBarBehindSystemButtons(original);
         }
 
         translucentNavigationBarBackgroundForced = translucent;
         return translucent;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Before Android 12, the navigation bar tells the pages that they can be seen through it, so they are
+     * laid out behind it, only with this flag and its translucent background, see
+     * {@link #PAGES_BEHIND_GLASS_NAVIGATION_BAR}. From Android 12 its blurred background tells it instead,
+     * and this flag would replace the blurred background with a translucent color, so it is left to the account.
+     */
+    public static boolean useTranslucentNavigationBarStyle(boolean original) {
+        return original || (PAGES_BEHIND_GLASS_NAVIGATION_BAR && Build.VERSION.SDK_INT < Build.VERSION_CODES.S);
     }
 
     /**
