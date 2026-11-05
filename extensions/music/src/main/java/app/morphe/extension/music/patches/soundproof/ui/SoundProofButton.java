@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import app.morphe.extension.music.patches.soundproof.SoundProofManager;
-import app.morphe.extension.music.patches.soundproof.domain.ArtistAssessment;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
@@ -28,13 +27,17 @@ import app.morphe.extension.shared.ResourceUtils;
  * Inflated from the player layout, where the patch puts it next to the cast button.
  */
 @SuppressWarnings("unused")
-public final class SoundProofButton extends ImageView implements SoundProofManager.AssessmentListener {
+public final class SoundProofButton extends ImageView implements SoundProofManager.StateListener {
 
     /**
      * Spacer the patch adds on the other side of the bar, so that the centered audio and video
      * switch stays centered. It is shown and hidden with this button.
      */
     private static final String BALANCING_SPACER_ID = "morphe_soundproof_spacer";
+
+    /** Icon opacity while the skip is off, out of 255. */
+    private static final int SKIP_OFF_ICON_ALPHA = 102; // 40 %
+    private static final int SKIP_ON_ICON_ALPHA = 255;
 
     public SoundProofButton(Context context) {
         super(context);
@@ -65,7 +68,7 @@ public final class SoundProofButton extends ImageView implements SoundProofManag
             if (isShown) {
                 SoundProofManager manager = SoundProofManager.getInstance();
                 manager.addListener(this);
-                onAssessmentChanged(manager.getCurrentAssessment());
+                onStateChanged();
             }
         } catch (Exception ex) {
             Logger.printException(() -> "SoundProof button attach failure", ex);
@@ -79,11 +82,14 @@ public final class SoundProofButton extends ImageView implements SoundProofManag
     }
 
     @Override
-    public void onAssessmentChanged(ArtistAssessment assessment) {
-        Drawable icon = StatusAppearance.iconOf(assessment.status());
+    public void onStateChanged() {
+        SoundProofManager manager = SoundProofManager.getInstance();
+        Drawable icon = StatusAppearance.iconOf(manager.getCurrentAssessment().status());
         if (icon != null) {
             setImageDrawable(icon);
         }
+        // Dimmed so that a skip left off is noticed.
+        setImageAlpha(manager.isSkipEnabled() ? SKIP_ON_ICON_ALPHA : SKIP_OFF_ICON_ALPHA);
     }
 
     private void setShown(boolean isShown) {

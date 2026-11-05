@@ -38,10 +38,11 @@ import app.morphe.extension.shared.settings.IntegerSetting;
 public final class SoundProofManager {
 
     /**
-     * Told on the main thread whenever the assessment of the current track changes.
+     * Told on the main thread whenever the assessment of the current track or the skip setting
+     * changes. Listeners read the new state from the manager.
      */
-    public interface AssessmentListener {
-        void onAssessmentChanged(ArtistAssessment assessment);
+    public interface StateListener {
+        void onStateChanged();
     }
 
     private static final String STORAGE_DIRECTORY_NAME = "soundproof";
@@ -49,7 +50,7 @@ public final class SoundProofManager {
     private static SoundProofManager instance;
 
     private final SoundProofDatabaseLoader databaseLoader;
-    private final List<AssessmentListener> listeners = new ArrayList<>();
+    private final List<StateListener> listeners = new ArrayList<>();
 
     /** Null until the first database is loaded. */
     private ArtistDirectory directory;
@@ -86,13 +87,29 @@ public final class SoundProofManager {
         return currentCredit;
     }
 
-    public void addListener(AssessmentListener listener) {
+    public boolean isSkipEnabled() {
+        return Settings.SOUNDPROOF_SKIP_AI_ARTISTS.get();
+    }
+
+    /**
+     * Saves the skip setting. The current track is not assessed again, so turning the skip on
+     * while an AI track plays lets it finish.
+     */
+    public void setSkipEnabled(boolean isEnabled) {
+        if (isEnabled == isSkipEnabled()) {
+            return;
+        }
+        Settings.SOUNDPROOF_SKIP_AI_ARTISTS.save(isEnabled);
+        notifyListeners();
+    }
+
+    public void addListener(StateListener listener) {
         if (!listeners.contains(listener)) {
             listeners.add(listener);
         }
     }
 
-    public void removeListener(AssessmentListener listener) {
+    public void removeListener(StateListener listener) {
         listeners.remove(listener);
     }
 
@@ -130,7 +147,7 @@ public final class SoundProofManager {
         Logger.printDebug(() -> "SoundProof: " + credit + " -> " + currentAssessment);
         notifyListeners();
 
-        if (currentAssessment.status() == ArtistStatus.AI && Settings.SOUNDPROOF_SKIP_AI_ARTISTS.get()) {
+        if (currentAssessment.status() == ArtistStatus.AI && isSkipEnabled()) {
             skipCurrentTrack(currentAssessment.artist().get());
         }
     }
@@ -145,9 +162,9 @@ public final class SoundProofManager {
 
     private void notifyListeners() {
         // Copied, since a listener can remove itself while being told.
-        for (AssessmentListener listener : new ArrayList<>(listeners)) {
+        for (StateListener listener : new ArrayList<>(listeners)) {
             try {
-                listener.onAssessmentChanged(currentAssessment);
+                listener.onStateChanged();
             } catch (Exception ex) {
                 Logger.printException(() -> "SoundProof listener failure", ex);
             }

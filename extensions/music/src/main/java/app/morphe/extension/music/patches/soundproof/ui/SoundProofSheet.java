@@ -13,6 +13,7 @@ import static app.morphe.extension.shared.ui.Dim.dp;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -29,6 +30,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.Optional;
@@ -42,11 +44,12 @@ import app.morphe.extension.music.patches.soundproof.domain.VoteMajority.VoteSid
 import app.morphe.extension.shared.Logger;
 
 /**
- * Bottom sheet with the community votes for the artist of the current track. Read only.
+ * Bottom sheet with the community votes for the artist of the current track, and a switch for
+ * the automatic skip.
  * <p>
  * It follows the current track while open. The player is always dark, so the colors are fixed.
  */
-final class SoundProofSheet implements SoundProofManager.AssessmentListener {
+final class SoundProofSheet implements SoundProofManager.StateListener {
 
     private static final int SHEET_COLOR = 0xFF212121;
     private static final int HANDLE_COLOR = 0xFF5F5F5F;
@@ -54,6 +57,8 @@ final class SoundProofSheet implements SoundProofManager.AssessmentListener {
     private static final int SECONDARY_TEXT_COLOR = 0xFFB3B3B3;
     private static final int TERTIARY_TEXT_COLOR = 0xFFA8A8A8;
     private static final int CHIP_TEXT_COLOR = 0xFFD0D0D0;
+    private static final int SWITCH_OFF_THUMB_COLOR = 0xFFBDBDBD;
+    private static final int SWITCH_OFF_TRACK_COLOR = 0xFF5F5F5F;
     private static final float SCRIM_DIM_AMOUNT = 0.6f;
     private static final int ICON_BACKGROUND_ALPHA = 41; // 16 %
 
@@ -64,8 +69,10 @@ final class SoundProofSheet implements SoundProofManager.AssessmentListener {
     private final Context context;
     private final Dialog dialog;
     private final LinearLayout sheet;
-    /** Everything below the drag handle, rebuilt for each assessment. */
+    /** Artist and votes, rebuilt for each assessment. */
     private final LinearLayout content;
+    /** Kept out of {@link #content}, so that rebuilding it does not cut the switch animation. */
+    private final Switch skipSwitch;
 
     static void show(Context context) {
         try {
@@ -88,6 +95,10 @@ final class SoundProofSheet implements SoundProofManager.AssessmentListener {
         sheet.setPadding(dp(24), dp(12), dp(24), dp(32));
         sheet.addView(dragHandle(), centered(dp(32), dp(4), dp(20)));
         sheet.addView(content, matchWidth());
+        skipSwitch = skipSwitch();
+        sheet.addView(skipRow(skipSwitch), withTopMargin(dp(20)));
+        sheet.addView(text(str("morphe_music_soundproof_sheet_source"), 12, TERTIARY_TEXT_COLOR, false),
+                withTopMargin(dp(16)));
         enableDragToDismiss();
 
         dialog = new Dialog(context);
@@ -99,7 +110,7 @@ final class SoundProofSheet implements SoundProofManager.AssessmentListener {
 
     private void open() {
         SoundProofManager manager = SoundProofManager.getInstance();
-        onAssessmentChanged(manager.getCurrentAssessment());
+        onStateChanged();
         manager.addListener(this);
         dialog.show();
 
@@ -115,9 +126,14 @@ final class SoundProofSheet implements SoundProofManager.AssessmentListener {
     }
 
     @Override
-    public void onAssessmentChanged(ArtistAssessment assessment) {
+    public void onStateChanged() {
+        SoundProofManager manager = SoundProofManager.getInstance();
+        // Does nothing when the switch was the one that changed.
+        skipSwitch.setChecked(manager.isSkipEnabled());
+
+        ArtistAssessment assessment = manager.getCurrentAssessment();
         content.removeAllViews();
-        String credit = SoundProofManager.getInstance().getCurrentCredit();
+        String credit = manager.getCurrentCredit();
         Optional<ArtistRecord> artist = assessment.artist();
         String artistName = artist.map(ArtistRecord::name).orElse(credit);
 
@@ -130,9 +146,6 @@ final class SoundProofSheet implements SoundProofManager.AssessmentListener {
         } else {
             content.addView(emptyState(assessment.status()), withTopMargin(dp(20)));
         }
-
-        content.addView(text(str("morphe_music_soundproof_sheet_source"), 12, TERTIARY_TEXT_COLOR, false),
-                withTopMargin(dp(20)));
     }
 
     // region Sections
@@ -258,6 +271,28 @@ final class SoundProofSheet implements SoundProofManager.AssessmentListener {
             section.addView(body, withTopMargin(dp(8)));
         }
         return section;
+    }
+
+    private Switch skipSwitch() {
+        Switch toggle = new Switch(context);
+        int[][] states = {{android.R.attr.state_checked}, {}};
+        toggle.setThumbTintList(new ColorStateList(states, new int[]{StatusAppearance.HUMAN_COLOR, SWITCH_OFF_THUMB_COLOR}));
+        toggle.setTrackTintList(new ColorStateList(states, new int[]{StatusAppearance.HUMAN_COLOR, SWITCH_OFF_TRACK_COLOR}));
+        toggle.setOnCheckedChangeListener((button, isChecked) ->
+                SoundProofManager.getInstance().setSkipEnabled(isChecked));
+        return toggle;
+    }
+
+    private View skipRow(Switch toggle) {
+        LinearLayout row = horizontalLayout();
+        row.setGravity(Gravity.CENTER_VERTICAL);
+        row.setMinimumHeight(dp(48));
+        TextView label = text(str("morphe_music_soundproof_skip_ai_artists_title"), 16, PRIMARY_TEXT_COLOR, false);
+        // The whole row toggles, not only the small switch.
+        label.setOnClickListener(view -> toggle.toggle());
+        row.addView(label, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+        row.addView(toggle);
+        return row;
     }
 
     private View dragHandle() {
