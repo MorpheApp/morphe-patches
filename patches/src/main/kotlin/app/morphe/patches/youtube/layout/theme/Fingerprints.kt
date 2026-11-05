@@ -60,6 +60,12 @@ internal object RiveSplashScreenFeatureFlagFingerprint : Fingerprint(
     )
 )
 
+/**
+ * 21.44+ bootstrap flag to use the 'rive-android-v1' library instead of the Rive library
+ * of the startup animation. If it is on, the app does not play the Rive startup animation.
+ */
+internal const val RIVE_V1_LIBRARY_BOOTSTRAP_FLAG = 1073831080
+
 internal const val RIVE_THEMED_SPLASH_SCREEN_FEATURE_FLAG = 1073830411L
 
 /**

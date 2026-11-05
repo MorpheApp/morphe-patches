@@ -20,6 +20,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.shared.layout.branding.startupAnimationResourcePatch
+import app.morphe.patches.shared.misc.debugging.BootstrapStoreReadFingerprint
 import app.morphe.patches.shared.misc.lottie.LOTTIE_ANIMATION_VIEW_CLASS_TYPE
 import app.morphe.patches.shared.misc.lottie.LottieAnimationViewSetAnimationIntFingerprint
 import app.morphe.patches.shared.misc.lottie.lottieAnimationPatch
@@ -196,6 +197,26 @@ val splashAnimationPatch = patch {
                         }
                     }
                 }
+            }
+
+            // 21.44+ has a second Rive library that the server can turn on,
+            // and the app then shows the Lottie animation instead of the Rive animation.
+            if (is_21_44_or_greater) {
+                BootstrapStoreReadFingerprint.method.addInstructionsWithLabels(
+                    0,
+                    """
+                        const v0, $RIVE_V1_LIBRARY_BOOTSTRAP_FLAG
+                        move/from16 v1, p1
+                        if-ne v0, v1, :read_flag
+                        invoke-static { }, $EXTENSION_CLASS->disableRiveV1Library()Z
+                        move-result v0
+                        if-eqz v0, :read_flag
+                        const-wide/16 v0, 0x0
+                        return-wide v0
+                        :read_flag
+                        nop
+                    """
+                )
             }
 
             // The match of the instruction that sets the view field.

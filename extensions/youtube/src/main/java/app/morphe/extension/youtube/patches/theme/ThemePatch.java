@@ -341,6 +341,8 @@ public class ThemePatch extends BaseThemePatch {
      */
     private static final byte RIVE_OBJECT_END = 0;
 
+    private static final boolean DISABLE_RIVE_V1_LIBRARY = isRiveSplashScreenEnabled();
+
     private static boolean riveSplashScreenCrashChecked;
 
     private static boolean isRiveSplashScreenEnabled() {
@@ -411,6 +413,17 @@ public class ThemePatch extends BaseThemePatch {
         }
 
         return isRiveSplashScreenEnabled();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The app shows the Rive startup animation only if it uses its original Rive library,
+     * and the server can change it to the separate v1 library. The app reads the choice
+     * more than once while starting, and all reads must get the same result.
+     */
+    public static boolean disableRiveV1Library() {
+        return DISABLE_RIVE_V1_LIBRARY;
     }
 
     /**

@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.layout.snackbar
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
 import app.morphe.patches.shared.layout.theme.lithoDrawableColorHook
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -38,7 +38,7 @@ private const val COLOR_PICKER_WITH_OPACITY_PREFERENCE =
     "app.morphe.extension.shared.settings.preference.ColorPickerWithOpacitySliderPreference"
 
 @Suppress("unused")
-val snackbarPatch = bytecodePatch(
+val snackbarPatch = patch(
     name = "Snackbar",
     description = "Adds options to hide the snackbar or change its colors and shape."
 ) {
