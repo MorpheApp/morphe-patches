@@ -14,19 +14,20 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.deleteResource
 import app.morphe.patcher.patch.InstallerType
-import app.morphe.patcher.patch.listDecodableFiles
-import app.morphe.patcher.patch.PatchAvailability
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.Patch
+import app.morphe.patcher.patch.PatchAvailability
 import app.morphe.patcher.patch.PatchDefinition
-import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.deleteResource
 import app.morphe.patcher.patch.folderOption
+import app.morphe.patcher.patch.listDecodableFiles
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceFile
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patcher.util.returnEarly
+import app.morphe.patcher.xml.XmlElement
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
@@ -40,7 +41,6 @@ import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import app.morphe.patcher.xml.XmlElement
 import java.io.File
 import java.util.logging.Logger
 
@@ -150,7 +150,7 @@ private val logger = Logger.getLogger(Patch::class.java.name)
  * because older app versions do not have them.
  */
 internal fun baseCustomBrandingPatch(
-    originalLauncherIconName: String,
+    originalLauncherIconName: () -> String,
     originalNotificationIconName: String,
     originalAppName: String,
     originalAppPackageName: String,
@@ -247,7 +247,7 @@ internal fun baseCustomBrandingPatch(
                 NumberOfPresetAppNamesExtensionFingerprint.method.returnEarly(numberOfPresetAppNames)
                 UserProvidedCustomNameExtensionFingerprint.method.returnEarly(customName != null)
                 UserProvidedCustomIconExtensionFingerprint.method.returnEarly(customIcon != null)
-                OriginalLauncherIconNameExtensionFingerprint.method.returnEarly(originalLauncherIconName)
+                OriginalLauncherIconNameExtensionFingerprint.method.returnEarly(originalLauncherIconName())
                 OriginalNotificationIconNameExtensionFingerprint.method.returnEarly(originalNotificationIconName)
 
                 NotificationBuilderFingerprint.let {
@@ -318,7 +318,7 @@ internal fun baseCustomBrandingPatch(
                     // resolved from the mounted APK, and replacing what those ids point to is the only
                     // way the branding of a mounted install can be changed.
                     applyMountedBranding(
-                        originalLauncherIconName,
+                        originalLauncherIconName(),
                         originalNotificationIconName,
                         originalAppName,
                         appIconStyle,
@@ -406,7 +406,7 @@ internal fun baseCustomBrandingPatch(
                         // Original icon.
                         createAlias(
                             aliasName = aliasName(ORIGINAL_USER_ICON_STYLE_NAME),
-                            iconMipmapName = originalLauncherIconName,
+                            iconMipmapName = originalLauncherIconName(),
                             appNameIndex = appNameIndex,
                             useCustomName = useCustomNameLabel,
                             enabled = appNameIndex == enabledNameIndex &&

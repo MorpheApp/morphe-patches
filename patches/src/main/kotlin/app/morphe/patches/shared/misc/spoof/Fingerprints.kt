@@ -315,7 +315,6 @@ internal object CronetUrlRequestSetHttpMethodFingerprint : Fingerprint(
  * If the response is finished, the remaining byte count is cleared and the end of the data is returned.
  */
 internal object CronetDataSourceReadFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "I",
     parameters = listOf("[B", "I", "I"),
     filters = listOf(
@@ -350,7 +349,6 @@ internal object CronetDataSourceReadFingerprint : Fingerprint(
  */
 internal object CronetDataSourceReadBufferFingerprint : Fingerprint(
     classFingerprint = CronetDataSourceReadFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "I",
     parameters = listOf("Ljava/nio/ByteBuffer;"),
     filters = listOf(

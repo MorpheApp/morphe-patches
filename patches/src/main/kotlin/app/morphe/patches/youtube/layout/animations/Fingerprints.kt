@@ -27,7 +27,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 internal const val PAGE_TRANSITION_ANIMATION_HINTS_FEATURE_FLAG = 45694309L
 
 /**
- * 20.41+
+ * 20.41 - 21.44.
  *
  * A/B test: the Shorts player asks for the animation decision.
  * When off, it always uses its animations.

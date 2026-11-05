@@ -69,8 +69,40 @@ internal fun recyclerViewTopScrollingFingerprint() = object : Fingerprint(
     )
 ) {}
 
+/**
+ * 21.44 and lower.
+ */
 internal object BackToRefreshFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45359221)
+    )
+)
+
+private object PaneBackStackFingerprint : Fingerprint(
+    returnType = "Landroid/os/Bundle;",
+    filters = listOf(
+        string("tabBackStack")
+    )
+)
+
+/**
+ * 21.45+
+ *
+ * Going back, after there is no pane left to go back to. The current pane is asked to handle it.
+ */
+internal object BackToRefreshFingerprint : Fingerprint(
+    classFingerprint = PaneBackStackFingerprint,
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(smali = "Lj\$/util/OptionalInt;->getAsInt()I"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            returnType = "Z",
+            parameters = listOf()
+        ),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, MatchAfterImmediately())
     )
 )

@@ -36,6 +36,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -292,9 +293,13 @@ val splashAnimationPatch = patch {
             }
 
             // The Rive animation can be shown longer than the timeout of the app.
-            SplashScreenTimeoutFingerprint.match(splashScreenStyleFingerprint.method).let {
-                it.method.apply {
-                    val index = it.instructionMatches.last().index
+            splashScreenStyleFingerprint.method.apply {
+                // 21.45+ also starts the timeout for the Rive animation.
+                if (is_21_45_or_greater) {
+                    findInstructionIndicesReversedOrThrow(SPLASH_SCREEN_TIMEOUT_CALL)
+                } else {
+                    listOf(SplashScreenTimeoutFingerprint.match(this).instructionMatches.last().index)
+                }.forEach { index ->
                     // The delay is the long after the Runnable.
                     val delayRegister = getInstruction<FiveRegisterInstruction>(index).registerE
 

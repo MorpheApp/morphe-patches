@@ -52,20 +52,35 @@ internal object MiniplayerModernConstructorFingerprint : Fingerprint(
     )
 )
 
+private val miniplayerRoundedCornersFilters = listOf(
+    methodCall(
+        opcode = Opcode.INVOKE_VIRTUAL,
+        smali = "Landroid/view/View;->setClipToOutline(Z)V"
+    ),
+    methodCall(
+        opcode = Opcode.INVOKE_VIRTUAL,
+        smali = "Landroid/view/View;->setOutlineProvider(Landroid/view/ViewOutlineProvider;)V"
+    )
+)
+
+/**
+ * 21.45+
+ */
 internal object MiniplayerRoundedCornersFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
+    parameters = listOf("Landroid/view/View;", "Z", "Z"),
+    filters = miniplayerRoundedCornersFilters
+)
+
+/**
+ * 21.44.
+ */
+internal object MiniplayerRoundedCorners2144Fingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "V",
     parameters = listOf("Landroid/view/View;", "Z"),
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Landroid/view/View;->setClipToOutline(Z)V"
-        ),
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Landroid/view/View;->setOutlineProvider(Landroid/view/ViewOutlineProvider;)V"
-        )
-    )
+    filters = miniplayerRoundedCornersFilters
 )
 
 /**

@@ -16,6 +16,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_49_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -109,7 +110,8 @@ val forceAnimationsPatch = patch(
         // above. Ask for it whenever the decision is overridden.
         buildList {
             add(PageTransitionAnimationHintsFeatureFlagFingerprint to PAGE_TRANSITION_ANIMATION_HINTS_FEATURE_FLAG)
-            if (is_20_41_or_greater) {
+            // 21.45+ always uses the Shorts animations.
+            if (is_20_41_or_greater && !is_21_45_or_greater) {
                 add(ShortsAnimationHintsFeatureFlagFingerprint to SHORTS_ANIMATION_HINTS_FEATURE_FLAG)
             }
         }.forEach { (fingerprint, flag) ->

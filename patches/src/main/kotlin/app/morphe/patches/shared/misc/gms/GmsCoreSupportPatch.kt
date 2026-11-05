@@ -11,16 +11,16 @@
 package app.morphe.patches.shared.misc.gms
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.InstallerType
 import app.morphe.patcher.patch.Patch
 import app.morphe.patcher.patch.PatchAvailability
+import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.string
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.returnEarly
@@ -59,6 +59,8 @@ internal const val GMS_CORE_VENDOR_GROUP_ID = "app.revanced"
  * @param earlyReturnFingerprints The fingerprints of methods that need to be returned early.
  * @param mainActivityOnCreateFingerprint The fingerprint of the main activity onCreate method.
  * @param extensionPatch The patch responsible for the extension.
+ * @param gnpRegistrationTargetFingerprint The fingerprint of the method that builds the GNP
+ * registration target, resolved when the patch runs so that it can depend on the app version.
  * @param executeBlock The additional execution block of the patch.
  * @param block The additional block to build the patch.
  */
@@ -70,6 +72,7 @@ fun gmsCoreSupportPatch(
     mainActivityOnCreateFingerprint: Fingerprint,
     extensionPatch: Patch,
     gmsCoreSupportResourcePatchFactory: () -> Patch,
+    gnpRegistrationTargetFingerprint: () -> Fingerprint = { GnpRegistrationTargetFingerprint },
     executeBlock: () -> Unit = {},
     block: PatchDefinition.() -> Unit = {},
 ) = patch(
@@ -206,7 +209,7 @@ fun gmsCoreSupportPatch(
         )
 
         // GNP expects the original Google package even when the installed app is renamed.
-        GnpRegistrationTargetFingerprint.let { match ->
+        gnpRegistrationTargetFingerprint().let { match ->
             val result = match.instructionMatches[1]
             match.method.replaceInstruction(
                 result.index,

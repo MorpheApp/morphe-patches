@@ -43,10 +43,7 @@ internal fun wireHistory() {
     factory.findInstructionIndicesReversedOrThrow(
         methodCall(
             definingClass = factory.definingClass,
-            name = "<init>",
-            parameters = listOf(
-                "Lcom/google/protobuf/MessageLite;", "L", "L", "L", "L", "Z", "L", "L", "L"
-            )
+            name = "<init>"
         )
     ).forEach { index ->
         val instance = factory.getInstruction<RegisterRangeInstruction>(index).startRegister

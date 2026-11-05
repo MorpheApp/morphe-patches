@@ -1118,19 +1118,12 @@ internal object DirectQueueNavigatorFingerprint : Fingerprint(
     filters = listOf(string("Watch Page unable to start playback, "))
 )
 
-/** The active native backend is assigned from the same factory used by the legacy sequencer. */
+/** The active native backend is the only field of its type. Matches every method that assigns it. */
 internal fun directQueueBackendFingerprint(navigatorType: String, playbackType: String) = Fingerprint(
     definingClass = navigatorType,
     returnType = "V",
     filters = listOf(
-        methodCall(returnType = playbackType),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        fieldAccess(
-            definingClass = "this",
-            type = playbackType,
-            opcode = Opcode.IPUT_OBJECT,
-            location = MatchAfterImmediately()
-        )
+        fieldAccess(definingClass = "this", type = playbackType, opcode = Opcode.IPUT_OBJECT)
     )
 )
 

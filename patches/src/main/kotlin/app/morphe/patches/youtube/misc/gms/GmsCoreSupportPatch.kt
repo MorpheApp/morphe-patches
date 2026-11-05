@@ -11,11 +11,15 @@
 package app.morphe.patches.youtube.misc.gms
 
 import app.morphe.patches.shared.PrimeMethodFingerprint
+import app.morphe.patches.shared.misc.gms.GnpRegistrationTargetFingerprint
+import app.morphe.patches.shared.misc.gms.GnpRegistrationTargetSuspendFingerprint
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportPatch
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportResourcePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.gms.Constants.MORPHE_YOUTUBE_PACKAGE_NAME
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_PACKAGE_NAME
+import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.spoof.spoofVideoStreamsPatch
@@ -29,10 +33,14 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
     primeMethodFingerprint = PrimeMethodFingerprint,
     mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,
     extensionPatch = sharedExtensionPatch,
-    gmsCoreSupportResourcePatchFactory = ::gmsCoreSupportResourcePatch
+    gmsCoreSupportResourcePatchFactory = ::gmsCoreSupportResourcePatch,
+    gnpRegistrationTargetFingerprint = {
+        if (is_21_45_or_greater) GnpRegistrationTargetSuspendFingerprint else GnpRegistrationTargetFingerprint
+    }
 ) {
     dependsOn(
         sharedExtensionPatch,
+        versionCheckPatch,
         spoofVideoStreamsPatch,
         deviceComplianceCheckPatch
     )

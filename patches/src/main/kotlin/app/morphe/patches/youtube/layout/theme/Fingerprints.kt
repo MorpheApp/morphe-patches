@@ -188,13 +188,15 @@ internal object SplashScreenOnStopFingerprint : Fingerprint(
  * Schedules the splash screen to close after a timeout of 2.5 seconds.
  * Must be matched against the method of [SplashScreenStyleFingerprint] or [SplashScreenStyleDelegateFingerprint].
  */
+internal val SPLASH_SCREEN_TIMEOUT_CALL = methodCall(
+    parameters = listOf("Ljava/lang/Runnable;", "J", "Ljava/util/concurrent/TimeUnit;")
+)
+
 internal object SplashScreenTimeoutFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         literal(2500L),
-        methodCall(
-            parameters = listOf("Ljava/lang/Runnable;", "J", "Ljava/util/concurrent/TimeUnit;")
-        )
+        SPLASH_SCREEN_TIMEOUT_CALL
     )
 )
 

@@ -115,10 +115,13 @@ val addToQueuePatch = patch(
                 val enumMethodParameterClassName = it.instructionMatches[1]
                     .getInstruction<ReferenceInstruction>().reference
 
+                // The class also handles other kinds of menu items, with another type of data.
                 it.method.addInstructionsWithLabels(
                     0,
                     """
                         iget-object v0, p0, $enumMethodParameterClassReference
+                        instance-of v1, v0, $enumMethodParameterClassName
+                        if-eqz v1, :block_item_click
                         check-cast v0, $enumMethodParameterClassName
                         invoke-static { v0 }, $getCharSequenceReference
                         move-result-object v0

@@ -100,7 +100,7 @@ internal object ParseElementFromBufferFingerprint : Fingerprint(
     filters = listOf(
         opcode(Opcode.IGET_OBJECT),
         // IGET_BOOLEAN // 20.07+
-        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterWithin(1)),
+        methodCall(parameters = listOf("[B", "Z"), location = MatchAfterWithin(1)),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
         string("Failed to parse Element", StringComparisonType.STARTS_WITH),
         methodCall(
@@ -398,9 +398,7 @@ internal object SearchSuggestionEndpointFingerprint : Fingerprint(
 )
 
 internal object LatestVideosContentPillFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("L", "Z"),
     filters = listOf(
         resourceLiteral(ResourceType.LAYOUT, "content_pill"),
         methodCall(
@@ -458,7 +456,7 @@ internal object ContextualMenuItemBuilderFingerprint : Fingerprint(
             returnType = "I",
             location = MatchAfterWithin(7),
         ),
-        resourceLiteral(ResourceType.DIMEN, "poster_art_width_default"),
+        resourceLiteral(ResourceType.ATTR, "ytTextPrimary"),
     )
 )
 
@@ -467,11 +465,7 @@ internal object ContextualMenuItemBuilderOnClickFingerprint : Fingerprint(
     name = "onClick",
     parameters = listOf("Landroid/view/View;"),
     filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = "this",
-            type = "Ljava/lang/Object;"
-        ),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this"),
         opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
         opcode(Opcode.INVOKE_STATIC, location = MatchAfterImmediately()),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())

@@ -18,15 +18,15 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.listDecodableFiles
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.patch.resourceXmlOrNull
-import app.morphe.patcher.xml.ResourceXml
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.registersUsed
+import app.morphe.patcher.xml.ResourceXml
 import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_DARK
 import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_LIGHT
 import app.morphe.patches.shared.layout.theme.THEME_COLOR_EXTENSION_CLASS
@@ -50,6 +50,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_06_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -314,9 +315,14 @@ val themePatch = baseThemePatch(
                 )
 
                 // Edit splash screen files and change the background color.
+                val launchScreenName = if (is_21_45_or_greater) {
+                    "quantum_launchscreen_youtube_2024_q4"
+                } else {
+                    "quantum_launchscreen_youtube"
+                }
                 arrayOf(
-                    "res/drawable/quantum_launchscreen_youtube.xml",
-                    "res/drawable-sw600dp/quantum_launchscreen_youtube.xml",
+                    "res/drawable/$launchScreenName.xml",
+                    "res/drawable-sw600dp/$launchScreenName.xml",
                 ).forEach editSplashScreen@{ resourceFileName ->
                     resourceXml(resourceFileName).use { drawable ->
                         drawable.elements("layer-list").first().children.forEach { node ->

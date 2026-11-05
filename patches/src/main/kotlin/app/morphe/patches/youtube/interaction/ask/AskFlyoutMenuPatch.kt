@@ -422,7 +422,8 @@ private fun addSummarizeItemToMenu(protos: Protos) {
 
     // A popup that shows the menu items as they are, such as on tablets, shows them with a presenter
     // that handles their taps. The presenter dismisses the popup and reads the menu item it shows.
-    val itemTapMatch = Fingerprint(
+    // 21.45+ has two of them.
+    Fingerprint(
         name = "onClick",
         returnType = "V",
         parameters = listOf("Landroid/view/View;"),
@@ -431,21 +432,22 @@ private fun addSummarizeItemToMenu(protos: Protos) {
             fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
             checkCast(menuItemClass, location = MatchAfterImmediately())
         )
-    ).match()
-    val itemField = itemTapMatch.instructionMatches[1].getFieldReference()
-    itemTapMatch.method.addInstructionsWithLabels(
-        0,
-        """
-            move-object/from16 v0, p0
-            iget-object v0, v0, $itemField
-            invoke-static/range { v0 .. v0 }, $EXTENSION_CLASS->onMenuItemTapped(Ljava/lang/Object;)Z
-            move-result v0
-            if-eqz v0, :not_summarize_item
-            return-void
-            :not_summarize_item
-            nop
-        """
-    )
+    ).matchAll(1..2).forEach { itemTapMatch ->
+        val itemField = itemTapMatch.instructionMatches[1].getFieldReference()
+        itemTapMatch.method.addInstructionsWithLabels(
+            0,
+            """
+                move-object/from16 v0, p0
+                iget-object v0, v0, $itemField
+                invoke-static/range { v0 .. v0 }, $EXTENSION_CLASS->onMenuItemTapped(Ljava/lang/Object;)Z
+                move-result v0
+                if-eqz v0, :not_summarize_item
+                return-void
+                :not_summarize_item
+                nop
+            """
+        )
+    }
 
     restoreMenuRowTextConstraints()
 }

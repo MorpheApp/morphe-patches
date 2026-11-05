@@ -45,6 +45,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_32_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -388,8 +389,10 @@ val miniplayerPatch = patch(
                 "getRoundedCorners",
             )
         } else {
-            (if (is_21_44_or_greater) {
+            (if (is_21_45_or_greater) {
                 MiniplayerRoundedCornersFingerprint
+            } else if (is_21_44_or_greater) {
+                MiniplayerRoundedCorners2144Fingerprint
             } else {
                 MiniplayerRoundedCornersLegacyFingerprint
             }).let {

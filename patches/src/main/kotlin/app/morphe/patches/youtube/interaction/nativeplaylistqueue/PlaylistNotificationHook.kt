@@ -185,7 +185,7 @@ internal fun installPlaylistNotification(
     // a global last-response cache could select an inline preview's backend.
     val directType = DirectQueueNavigatorFingerprint.originalClassDef.type
     val backend = directQueueBackendFingerprint(directType, playbackType)
-        .instructionMatches.last().fieldReference
+        .matchAll().first().instructionMatches.last().fieldReference
     val playerOwner = directQueuePlayerOwnerFingerprint(directType, playerFields[0].type)
         .instructionMatches.single().fieldReference
     mutableClassDefBy(directType).interfaces.add(SERVICE_NAVIGATOR_INTERFACE)

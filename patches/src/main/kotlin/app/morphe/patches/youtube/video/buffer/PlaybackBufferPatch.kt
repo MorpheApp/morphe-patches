@@ -9,12 +9,14 @@ package app.morphe.patches.youtube.video.buffer
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val PLAYBACK_BUFFER_CLASS_DESCRIPTOR =
@@ -39,16 +41,19 @@ val playbackBufferPatch = patch( // TODO: Make this an internal patch of "Video 
 
         ShouldContinueLoadingFingerprint.let {
             it.method.apply {
-                val bufferedIndex = it.instructionMatches.first().index
-                val register = getInstruction<TwoRegisterInstruction>(bufferedIndex).registerA
+                findInstructionIndicesReversedOrThrow(
+                    fieldAccess(it.instructionMatches.first().fieldReference)
+                ).forEach { bufferedIndex ->
+                    val register = getInstruction<TwoRegisterInstruction>(bufferedIndex).registerA
 
-                addInstructions(
-                    bufferedIndex + 1,
-                    """
-                        invoke-static/range { v$register .. v${register + 1} }, $PLAYBACK_BUFFER_CLASS_DESCRIPTOR->scaleBufferedDurationUs(J)J
-                        move-result-wide v$register
-                    """
-                )
+                    addInstructions(
+                        bufferedIndex + 1,
+                        """
+                            invoke-static/range { v$register .. v${register + 1} }, $PLAYBACK_BUFFER_CLASS_DESCRIPTOR->scaleBufferedDurationUs(J)J
+                            move-result-wide v$register
+                        """
+                    )
+                }
             }
         }
 

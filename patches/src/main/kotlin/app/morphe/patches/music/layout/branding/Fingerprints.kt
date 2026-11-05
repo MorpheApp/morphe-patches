@@ -12,10 +12,13 @@ package app.morphe.patches.music.layout.branding
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.checkCast
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patches.music.shared.YOUTUBE_MUSIC_MAIN_ACTIVITY_CLASS_TYPE
+import app.morphe.patches.shared.misc.lottie.LOTTIE_ANIMATION_VIEW_CLASS_TYPE
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 
 internal object CairoSplashAnimationConfigFingerprint : Fingerprint(
     definingClass = YOUTUBE_MUSIC_MAIN_ACTIVITY_CLASS_TYPE,
@@ -25,7 +28,11 @@ internal object CairoSplashAnimationConfigFingerprint : Fingerprint(
     filters = listOf(
         resourceLiteral(ResourceType.LAYOUT, "main_activity_launch_animation"),
         checkCast("Lcom/airbnb/lottie/LottieAnimationView;"),
-        resourceLiteral(ResourceType.RAW, "app_launch")
+        resourceLiteral(ResourceType.RAW, "app_launch"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = LOTTIE_ANIMATION_VIEW_CLASS_TYPE
+        )
     )
 )
 
