@@ -10,7 +10,7 @@ package app.morphe.patches.music.interaction.downloads
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.patch.resourceFile
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.registersUsed
@@ -74,33 +74,29 @@ private val downloadsResourcePatch = patch {
             ResourceGroup("drawable", "morphe_music_downloaded_mark.xml")
         )
 
-        val manifest = resourceFile("AndroidManifest.xml")
-        var xml = manifest.readText()
+        resourceXml("AndroidManifest.xml").use { manifest ->
+            val declaredNames = manifest.elements().mapNotNullTo(HashSet()) { it.attribute("android:name") }
+            val application = manifest.elements("application").first()
 
-        // YouTube Music already declares most of these, so each one is added only when missing.
-        // The whole attribute is matched, since FOREGROUND_SERVICE is a prefix of
-        // FOREGROUND_SERVICE_MEDIA_PLAYBACK and would otherwise look like it is already there.
-        for (permission in DOWNLOADS_PERMISSIONS) {
-            val declaration = "android:name=\"$permission\""
-            if (!xml.contains(declaration)) {
-                xml = xml.replace(
-                    "<application",
-                    "<uses-permission $declaration />\n    <application"
-                )
+            // YouTube Music already declares most of these, so each one is added only when missing.
+            for (permission in DOWNLOADS_PERMISSIONS) {
+                if (permission !in declaredNames) {
+                    application.parent!!.insertChild(application.index, "uses-permission") {
+                        setAttribute("android:name", permission)
+                    }
+                }
+            }
+
+            for ((service, type) in DOWNLOADS_SERVICES) {
+                if (service !in declaredNames) {
+                    application.appendChild("service") {
+                        setAttribute("android:name", service)
+                        setAttribute("android:exported", "false")
+                        setAttribute("android:foregroundServiceType", type)
+                    }
+                }
             }
         }
-
-        for ((service, type) in DOWNLOADS_SERVICES) {
-            if (!xml.contains(service)) {
-                xml = xml.replace(
-                    "</application>",
-                    "<service android:name=\"$service\" " +
-                        "android:exported=\"false\" android:foregroundServiceType=\"$type\" />\n</application>"
-                )
-            }
-        }
-
-        manifest.writeText(xml)
     }
 }
 

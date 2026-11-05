@@ -2,7 +2,7 @@ package app.morphe.patches.music.layout.buttons.navigation
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -28,14 +28,9 @@ val navigationBarPatch = patch(
             execute {
                 // Ensure the first ImageView has 'layout_weight' to stay properly sized
                 // when the TextView is hidden.
-                document("res/layout/image_with_text_tab.xml").use { document ->
-                    val imageView = document.getElementsByTagName("ImageView").item(0)
-                    imageView?.let {
-                        if (it.attributes.getNamedItem("android:layout_weight") == null) {
-                            val attr = document.createAttribute("android:layout_weight")
-                            attr.value = "0.5"
-                            it.attributes.setNamedItem(attr)
-                        }
+                resourceXml("res/layout/image_with_text_tab.xml").use { layout ->
+                    layout.elements("ImageView").firstOrNull()?.let {
+                        if (!it.hasAttribute("android:layout_weight")) it.setAttribute("android:layout_weight", "0.5")
                     }
                 }
             }

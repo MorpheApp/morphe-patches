@@ -30,22 +30,16 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.document
 import app.morphe.patcher.patch.Option
 import app.morphe.patcher.patch.OptionException
 import app.morphe.patcher.patch.booleanOption
 import app.morphe.patcher.patch.packageMetadata
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.patch.resourceFile
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
-import app.morphe.patches.util.resource.editText
-import app.morphe.patches.util.resource.transformStringResources
-import app.morphe.util.asSequence
-import app.morphe.util.findElementByAttributeValue
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import org.w3c.dom.Element
 import java.util.logging.Logger
 
 private const val PACKAGE_NAME_REDDIT = "com.reddit.frontpage"
@@ -216,15 +210,14 @@ val cloneAppPatch = patch(
 
         val providerStringResources = mutableSetOf<String>()
 
-        document("AndroidManifest.xml").use { document ->
-            document.documentElement.setAttribute("package", newPackageName)
+        resourceXml("AndroidManifest.xml").use { manifest ->
+            manifest.root.setAttribute("package", newPackageName)
 
             if (applyUpdatePermissions) {
-                val permissions = document.getElementsByTagName("permission")
-                val usesPermissions = document.getElementsByTagName("uses-permission")
+                val usesPermissions = manifest.elements("uses-permission").toList()
 
-                permissions.asSequence().map { it as Element }.forEach {
-                    val oldName = it.getAttribute("android:name")
+                manifest.elements("permission").forEach {
+                    val oldName = it.attribute("android:name").orEmpty()
                     val newName = when {
                         oldName.startsWith('.') -> return@forEach
                         oldName.startsWith("$packageName.") -> oldName.replaceFirst(packageName, newPackageName)
@@ -233,18 +226,14 @@ val cloneAppPatch = patch(
                     it.setAttribute("android:name", newName)
 
                     // Update a corresponding <uses-permission> as well if it exists
-                    usesPermissions
-                        .findElementByAttributeValue("android:name", oldName)
+                    usesPermissions.firstOrNull { usesPermission -> usesPermission.attribute("android:name") == oldName }
                         ?.setAttribute("android:name", newName)
                 }
             }
 
             if (applyUpdateProviders) {
-                val providers =
-                    document.getElementsByTagName("provider").asSequence().map { it as Element }
-
-                for (provider in providers) {
-                    val authorities = provider.getAttribute("android:authorities").split(';')
+                for (provider in manifest.elements("provider")) {
+                    val authorities = provider.attribute("android:authorities").orEmpty().split(';')
                     val newAuthorities = authorities.map {
                         when {
                             it.startsWith("$packageName.") -> it.replaceFirst(packageName, newPackageName)
@@ -261,9 +250,13 @@ val cloneAppPatch = patch(
         }
 
         if (providerStringResources.isNotEmpty()) {
-            resourceFile("res/values/strings.xml").editText { text ->
-                text.transformStringResources(providerStringResources) { authority ->
-                    if (authority.startsWith("$packageName.")) {
+            resourceXml("res/values/strings.xml").use { strings ->
+                providerStringResources.forEach { name ->
+                    val string = strings.resourceOrNull(name) ?: return@forEach
+                    val authority = string.text
+                    if (authority.isEmpty()) return@forEach
+
+                    string.text = if (authority.startsWith("$packageName.")) {
                         authority.replaceFirst(packageName, newPackageName)
                     } else {
                         "${newPackageName}_$authority"

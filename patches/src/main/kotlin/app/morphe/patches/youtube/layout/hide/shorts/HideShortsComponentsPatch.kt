@@ -15,7 +15,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.booleanOption
-import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
@@ -38,9 +38,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.removeFromParent
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -135,25 +133,19 @@ private val hideShortsComponentsResourcePatch = patch {
         )
 
         // Verify the file has the expected node, even if the patch option is off.
-        document("res/xml/main_shortcuts.xml").use { document ->
-            val shortsItem = document.childNodes.findElementByAttributeValueOrThrow(
-                "android:shortcutId",
-                "shorts-shortcut"
-            )
+        resourceXml("res/xml/main_shortcuts.xml").use { shortcuts ->
+            val shortsItem = shortcuts.elementByAttribute("android:shortcutId", "shorts-shortcut")
 
             if (hideShortsAppShortcut == true) {
-                shortsItem.removeFromParent()
+                shortsItem.remove()
             }
         }
 
-        document("res/layout/appwidget_two_rows.xml").use { document ->
-            val shortsItem = document.childNodes.findElementByAttributeValueOrThrow(
-                "android:id",
-                "@id/button_shorts_container"
-            )
+        resourceXml("res/layout/appwidget_two_rows.xml").use { widget ->
+            val shortsItem = widget.elementByAttribute("android:id", "@id/button_shorts_container")
 
             if (hideShortsWidget == true) {
-                shortsItem.removeFromParent()
+                shortsItem.remove()
             }
         }
     }

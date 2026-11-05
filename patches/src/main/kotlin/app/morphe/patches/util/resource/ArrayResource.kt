@@ -1,8 +1,6 @@
 package app.morphe.patches.util.resource
 
-import app.morphe.util.childElementsSequence
-import org.w3c.dom.Document
-import org.w3c.dom.Node
+import app.morphe.patcher.xml.XmlElement
 
 /**
  *  An array resource.
@@ -15,24 +13,16 @@ class ArrayResource(
     name: String,
     val items: List<String>,
 ) : BaseResource(name, "string-array") {
-    override fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit) =
-        super.serialize(ownerDocument, resourceCallback).apply {
-            setAttribute("name", name)
-
+    override fun serialize(parent: XmlElement, resourceCallback: (BaseResource) -> Unit) =
+        super.serialize(parent, resourceCallback).apply {
             items.forEach { item ->
-                appendChild(ownerDocument.createElement("item").also { itemNode ->
-                    itemNode.textContent = item
-                })
+                appendChild("item") { text = item }
             }
         }
 
     companion object {
         @Suppress("unused")
-        fun fromNode(node: Node): ArrayResource {
-            val key = node.attributes.getNamedItem("name").textContent
-            val items = node.childElementsSequence().map { it.textContent }.toList()
-
-            return ArrayResource(key, items)
-        }
+        fun fromElement(element: XmlElement) =
+            ArrayResource(element.attribute("name")!!, element.children.map { it.text })
     }
 }

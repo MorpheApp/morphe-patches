@@ -2,7 +2,7 @@ package app.morphe.patches.shared.misc.settings.preference
 
 import app.morphe.patches.util.resource.ArrayResource
 import app.morphe.patches.util.resource.BaseResource
-import org.w3c.dom.Document
+import app.morphe.patcher.xml.XmlElement
 
 /**
  * List preference.
@@ -53,23 +53,13 @@ class ListPreference(
         this.entryValues = entryValues
     }
 
-    override fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit) =
-        super.serialize(ownerDocument, resourceCallback).apply {
+    override fun serialize(parent: XmlElement, index: Int, resourceCallback: (BaseResource) -> Unit) =
+        super.serialize(parent, index, resourceCallback).apply {
             val entriesArrayName = entries?.also { resourceCallback.invoke(it) }?.name ?: entriesKey
             val entryValuesArrayName = entryValues?.also { resourceCallback.invoke(it) }?.name ?: entryValuesKey
 
-            entriesArrayName?.let {
-                setAttribute(
-                    "android:entries",
-                    "@array/$it"
-                )
-            }
+            entriesArrayName?.let { setAttribute("android:entries", "@array/$it") }
 
-            entryValuesArrayName?.let {
-                setAttribute(
-                    "android:entryValues",
-                    "@array/$it"
-                )
-            }
+            entryValuesArrayName?.let { setAttribute("android:entryValues", "@array/$it") }
         }
 }

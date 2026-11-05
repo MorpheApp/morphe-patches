@@ -12,7 +12,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.patch.resourceFile
+import app.morphe.patcher.patch.resourceXml
+import app.morphe.patcher.xml.XmlElement
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
@@ -30,25 +31,28 @@ private fun overrideYouTubeMusicManifestPatch() = patch{
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        val manifestFile = resourceFile("AndroidManifest.xml")
-        val manifestContent = manifestFile.readText()
+        resourceXml("AndroidManifest.xml").use { manifest ->
+            // Only launchable apps are needed here, and QUERY_ALL_PACKAGES additionally exposes
+            // OEM media route providers whose route descriptors crash the app when unmarshalled.
+            fun XmlElement.declares(tag: String, name: String) = children(tag).any { it.attribute("android:name") == name }
 
-        // Only launchable apps are needed here, and QUERY_ALL_PACKAGES additionally exposes
-        // OEM media route providers whose route descriptors crash the app when unmarshalled.
-        val queryTag = "<intent><action android:name=\"android.intent.action.MAIN\"/>" +
-                "<category android:name=\"android.intent.category.LAUNCHER\"/></intent>"
-
-        if (!manifestContent.contains(queryTag)) {
-            manifestFile.writeText(
-                if (manifestContent.contains("</queries>")) {
-                    manifestContent.replace("</queries>", "$queryTag</queries>")
-                } else {
-                    manifestContent.replace(
-                        "<application",
-                        "<queries>$queryTag</queries>\n    <application"
-                    )
+            val queried = manifest.elements("queries").any { queries ->
+                queries.children("intent").any { intent ->
+                    intent.declares("action", "android.intent.action.MAIN") &&
+                            intent.declares("category", "android.intent.category.LAUNCHER")
                 }
-            )
+            }
+
+            if (!queried) {
+                val queries = manifest.elements("queries").firstOrNull() ?: run {
+                    val application = manifest.elements("application").first()
+                    application.parent!!.insertChild(application.index, "queries")
+                }
+                queries.appendChild("intent") {
+                    appendChild("action") { setAttribute("android:name", "android.intent.action.MAIN") }
+                    appendChild("category") { setAttribute("android:name", "android.intent.category.LAUNCHER") }
+                }
+            }
         }
     }
 }

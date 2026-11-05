@@ -12,10 +12,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.decode
+import app.morphe.patcher.patch.listDecodableFiles
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.patch.resourceFile
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.string
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
@@ -41,8 +41,6 @@ import app.morphe.patches.reddit.misc.version.is_2026_30_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
-import app.morphe.patches.util.resource.editText
-import app.morphe.patches.util.resource.transformStringResources
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -79,9 +77,9 @@ val settingsPatch = patch(
             execute {
                 if (is_2026_25_0_or_greater) {
                     // Change menu item title to Morphe.
-                    decode("res/values*/strings.xml").forEach { path ->
-                        resourceFile(path).editText { text ->
-                            text.transformStringResources(setOf("label_privacy_policy")) { "Morphe" }
+                    listDecodableFiles("res/values*/strings.xml").forEach { path ->
+                        resourceXml(path).use { strings ->
+                            strings.resourceOrNull("label_privacy_policy")?.text = "Morphe"
                         }
                     }
                 }

@@ -11,8 +11,7 @@
 package app.morphe.patches.shared.misc.gms
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.patch.document
-import app.morphe.patcher.patch.resourceFile
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -41,8 +40,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
 import com.android.tools.smali.dexlib2.immutable.reference.ImmutableStringReference
-import org.w3c.dom.Element
-import org.w3c.dom.Node
 
 internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/GmsCoreSupportPatch;"
@@ -526,33 +523,22 @@ fun gmsCoreSupportResourcePatch(
          * Add metadata to manifest to support spoofing the package name and signature of GmsCore.
          */
         fun addSpoofingMetadata() {
-            fun Node.adoptChild(
-                tagName: String,
-                block: Element.() -> Unit
-            ) {
-                val child = ownerDocument.createElement(tagName)
-                child.block()
-                appendChild(child)
-            }
-
-            document("AndroidManifest.xml").use { document ->
-                val applicationNode = document
-                    .getElementsByTagName("application")
-                    .item(0)
+            resourceXml("AndroidManifest.xml").use { manifest ->
+                val application = manifest.elements("application").first()
 
                 // Spoof package name and signature.
-                applicationNode.adoptChild("meta-data") {
+                application.appendChild("meta-data") {
                     setAttribute("android:name", "$GMS_CORE_VENDOR_GROUP_ID.android.gms.SPOOFED_PACKAGE_NAME")
                     setAttribute("android:value", fromPackageName)
                 }
 
-                applicationNode.adoptChild("meta-data") {
+                application.appendChild("meta-data") {
                     setAttribute("android:name", "$GMS_CORE_VENDOR_GROUP_ID.android.gms.SPOOFED_PACKAGE_SIGNATURE")
                     setAttribute("android:value", spoofedPackageSignature)
                 }
 
                 // GmsCore presence detection in extension.
-                applicationNode.adoptChild("meta-data") {
+                application.appendChild("meta-data") {
                     setAttribute("android:name", "app.revanced.MICROG_PACKAGE_NAME")
                     setAttribute("android:value", "$GMS_CORE_VENDOR_GROUP_ID.android.gms")
                 }
@@ -563,28 +549,41 @@ fun gmsCoreSupportResourcePatch(
          * Patch the manifest to support GmsCore.
          */
         fun patchManifest() {
+            // Replaced wherever an attribute value has them.
             val transformations = mapOf(
-                "package=\"$fromPackageName" to "package=\"$toPackageName",
-                "android:authorities=\"$fromPackageName" to "android:authorities=\"$toPackageName",
                 "$fromPackageName.permission.C2D_MESSAGE" to "$toPackageName.permission.C2D_MESSAGE",
                 "$fromPackageName.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" to "$toPackageName.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
                 "com.google.android.c2dm" to "$GMS_CORE_VENDOR_GROUP_ID.android.c2dm",
                 "com.google.android.libraries.photos.api.mars" to "$GMS_CORE_VENDOR_GROUP_ID.android.apps.photos.api.mars",
+            )
+
+            resourceXml("AndroidManifest.xml").use { manifest ->
+                manifest.elements().forEach { element ->
+                    element.attributeNames.forEach attributes@{ name ->
+                        val value = element.attribute(name) ?: return@attributes
+                        // The package name and the authorities are replaced where they start with it.
+                        var replaced = if ((name == "package" || name == "android:authorities") &&
+                            value.startsWith(fromPackageName)
+                        ) {
+                            toPackageName + value.removePrefix(fromPackageName)
+                        } else {
+                            value
+                        }
+                        transformations.forEach { (from, to) -> replaced = replaced.replace(from, to) }
+                        if (replaced != value) element.setAttribute(name, replaced)
+                    }
+                }
+
                 // Allow the app to request uninstall of conflicting MicroG / GMS variants on Android 14+.
                 // The variants are made visible to the package manager by gmsCorePackageQueriesPatch.
                 // Also add the external PoToken provider app to the queries.
-                "</queries>" to "<package android:name=\"app.morphe.pot.helper\"/></queries><uses-permission android:name=\"android.permission.REQUEST_DELETE_PACKAGES\"/>",
-            )
-
-            val manifest = resourceFile("AndroidManifest.xml")
-            manifest.writeText(
-                transformations.entries.fold(manifest.readText()) { acc, (from, to) ->
-                    acc.replace(
-                        from,
-                        to,
-                    )
+                manifest.elements("queries").firstOrNull()?.let { queries ->
+                    queries.appendChild("package") { setAttribute("android:name", "app.morphe.pot.helper") }
+                    queries.parent!!.insertChild(queries.index + 1, "uses-permission") {
+                        setAttribute("android:name", "android.permission.REQUEST_DELETE_PACKAGES")
+                    }
                 }
-            )
+            }
         }
 
         patchManifest()
