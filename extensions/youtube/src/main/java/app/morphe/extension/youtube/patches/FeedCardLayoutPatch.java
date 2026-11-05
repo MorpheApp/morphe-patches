@@ -1829,12 +1829,28 @@ public class FeedCardLayoutPatch {
                     continue;
                 }
 
+                // The rows of cards of the grids have the cards in the columns of the row.
+                if (isCardRow(item)) {
+                    ViewGroup row = (ViewGroup) item;
+                    final int horizontalPadding = Dim.dp(CARD_HORIZONTAL_PADDING_DP);
+                    final int verticalPadding = Dim.dp(CARD_VERTICAL_PADDING_DP);
+                    for (int j = 0, columns = row.getChildCount(); j < columns; j++) {
+                        View column = row.getChildAt(j);
+                        if (isCardWithoutBackground(column)) {
+                            final float x = row.getX() + column.getX();
+                            final float y = row.getY() + column.getY();
+                            canvas.drawRoundRect(x + horizontalPadding, y + verticalPadding,
+                                    x + column.getWidth() - horizontalPadding,
+                                    y + column.getHeight() - verticalPadding,
+                                    CARD_CORNER_RADIUS, CARD_CORNER_RADIUS, getShelfPaint(list.getContext()));
+                        }
+                    }
+                    continue;
+                }
+
                 View header = item;
                 final boolean shelfHeader = isShelfHeader(header);
-                // The cards without inline playback, such as the playlists, have no background below the thumbnail.
-                CharSequence label = item.getContentDescription();
-                final boolean cardWithoutBackground = isCardLabel(label) && label.length() > 1
-                        && label.charAt(label.length() - 2) == NO_INLINE_PLAYBACK_CARD_LABEL_MARKER;
+                final boolean cardWithoutBackground = isCardWithoutBackground(item);
                 if (!shelfHeader && !shelfCardItems.containsKey(item) && !cardWithoutBackground) {
                     continue;
                 }
@@ -2216,17 +2232,38 @@ public class FeedCardLayoutPatch {
      * The labels of the shelf header and of the Shorts are on views inside the list item.
      */
     private static boolean hasLabelMarker(View view, char marker, int depth) {
-        if (endsWith(view.getContentDescription(), marker)) {
-            return true;
+        return findLabelMarker(view, marker, depth) != null;
+    }
+
+    /**
+     * @return The label of the view or of a view inside it that ends with the marker,
+     *         or null if no label ends with the marker.
+     */
+    @Nullable
+    private static CharSequence findLabelMarker(View view, char marker, int depth) {
+        CharSequence label = view.getContentDescription();
+        if (endsWith(label, marker)) {
+            return label;
         }
         if (depth < 4 && view instanceof ViewGroup group && !(view instanceof RecyclerView)) {
             for (int i = 0, count = group.getChildCount(); i < count; i++) {
-                if (hasLabelMarker(group.getChildAt(i), marker, depth + 1)) {
-                    return true;
+                CharSequence childLabel = findLabelMarker(group.getChildAt(i), marker, depth + 1);
+                if (childLabel != null) {
+                    return childLabel;
                 }
             }
         }
-        return false;
+        return null;
+    }
+
+    /**
+     * The cards without inline playback, such as the playlists, have no background below the thumbnail.
+     * The label is on the card, or on a view inside it, depending on the server experiments of the account.
+     */
+    private static boolean isCardWithoutBackground(View card) {
+        CharSequence label = findLabelMarker(card, CARD_LABEL_MARKER, 0);
+        return label != null && label.length() > 1
+                && label.charAt(label.length() - 2) == NO_INLINE_PLAYBACK_CARD_LABEL_MARKER;
     }
 
     /**
