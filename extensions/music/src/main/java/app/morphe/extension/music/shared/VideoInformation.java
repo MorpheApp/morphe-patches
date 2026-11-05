@@ -31,9 +31,9 @@ public final class VideoInformation {
     private static final Collection<VideoIdListener> videoIdListeners = new CopyOnWriteArrayList<>();
 
     @NonNull
-    private static String videoId = "";
-    private static long videoLength = 0;
-    private static long videoTime = -1;
+    private static volatile String videoId = "";
+    private static volatile long videoLength = 0;
+    private static volatile long videoTime = -1;
 
     /** Injection point. */
     public static void initialize() {

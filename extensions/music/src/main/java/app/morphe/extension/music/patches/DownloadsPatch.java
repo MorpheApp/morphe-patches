@@ -349,6 +349,8 @@ public final class DownloadsPatch {
 
     /**
      * Injection point.
+     *
+     * Can be called on or off main thread.
      */
     public static boolean commandResolverOnClick(ProtocolBufferFieldInterface p1, Map<Object, Object> map) {
         try {
@@ -356,7 +358,6 @@ public final class DownloadsPatch {
                     || p1 == null || map == null) {
                 return false;
             }
-            Utils.verifyOnMainThread();
 
             byte[] commandBytes = p1.toByteArray();
             final boolean insideDialog = isViewInsideDialog(map.get(ELEMENTS_SENDER_VIEW));
@@ -371,7 +372,7 @@ public final class DownloadsPatch {
 
             if (inAppDownloads()) {
                 if (OFFLINE_BROWSE_COMMAND.check(commandBytes).isFiltered()) {
-                    openLocalDownloads();
+                    Utils.runOnMainThreadNowOrLater(DownloadsPatch::openLocalDownloads);
                     // The local screen is opened on top of the stock one rather than in place of
                     // it. Consuming the command instead leaves the app with a navigation it never
                     // finished, which it replays on the next start and cancels again.
@@ -388,14 +389,14 @@ public final class DownloadsPatch {
                 }
 
                 String videoId = VideoInformation.getVideoId();
-                if (videoId == null || videoId.isEmpty()) return false;
+                if (videoId.isEmpty()) return false;
 
                 final long now = System.currentTimeMillis();
                 if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
                     return true;
                 }
                 lastMainPlayerDownloadTime = now;
-                startDownload(videoId, !inAppDownloads());
+                Utils.runOnMainThreadNowOrLater(() -> startDownload(videoId, !inAppDownloads()));
                 return true;
             }
             // Other menu Download commands have no sender view, and are handled when they
