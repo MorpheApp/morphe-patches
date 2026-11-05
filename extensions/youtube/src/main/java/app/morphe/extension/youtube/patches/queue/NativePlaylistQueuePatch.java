@@ -318,6 +318,9 @@ public final class NativePlaylistQueuePatch {
     private static Future<?> playlistRequest;
     @Nullable
     private static Object playlistRequestToken;
+    private record PlaylistConversion(WeakReference<PlaylistController> controller, WeakReference<NativePlayback> playback,
+                                      WeakReference<Object> model, String videoId, String playlistId,
+                                      @Nullable Map<String, String> headers) {}
     private record PlaylistNavigation(WeakReference<PlaylistNavigator> navigator, Object request,
                                       PlaylistQueue.Entry playing, Object origin,
                                       WeakReference<NativePlayback> playback) {}
@@ -343,11 +346,12 @@ public final class NativePlaylistQueuePatch {
         if (canStartQueue()) {
             return true;
         }
-        if (queue == null) {
-            return false;
-        }
         PlaylistController controller = readyController();
-        return controller != null && isQueuePlayback(controller, nativePlaybackRef.get());
+        if (controller != null) {
+            return queue == null ? playbackFor(controller) != null : isQueuePlayback(controller, nativePlaybackRef.get());
+        }
+        controller = playingPlaylistController();
+        return queue == null && controller != null && playbackFor(controller) != null;
     }
 
     @Nullable
@@ -356,13 +360,151 @@ public final class NativePlaylistQueuePatch {
             return null;
         }
         return () -> {
-            if (queue == null) {
+            if (canStartQueue()) {
                 // Next and Last both start at the first playable video without playback.
                 startPlaylistQueue(playlistId);
+            } else if (queue == null) {
+                convertPlayingPlaylist(() -> addPlaylist(playlistId, playLast));
             } else {
                 addPlaylist(playlistId, playLast);
             }
         };
+    }
+
+    /** Preserve the accepted playing list before handing additions to the existing queue actions. */
+    private static void convertPlayingPlaylist(Runnable after) {
+        try {
+            if (!AddToQueuePatch.isNativeQueueEnabled() || queue != null || publishing
+                    || dragSession != null || pendingSelection != null || playlistRequestToken != null) {
+                Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
+                return;
+            }
+            PlaylistController controller = readyController();
+            if (controller != null) {
+                // Standalone playback already has the same in-place queue attachment path.
+                Object baseline = controller.patch_getModel();
+                if (publish(controller, new PlaylistQueue(controller.patch_getVideoId(), VideoInformation.getVideoTitle()), true)) {
+                    originalModel = baseline;
+                    after.run();
+                }
+                return;
+            }
+            controller = playingPlaylistController();
+            NativePlayback playback = controller == null ? null : playbackFor(controller);
+            if (controller == null || playback == null || !(controller.patch_getPanel() instanceof MessageLite panel)) {
+                Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
+                return;
+            }
+            String playlistId = controller.patch_getPlaylistId();
+            final boolean mix = playlistId.startsWith(MIX_PLAYLIST_ID_PREFIX);
+            PlaylistPages.Source owner = PlaylistPages.current();
+            PlaylistPage.Account account = owner == null ? null : owner.patch_getPlaylistAccount();
+            if (!mix && account == null) {
+                Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
+                return;
+            }
+            var conversion = new PlaylistConversion(new WeakReference<>(controller), new WeakReference<>(playback),
+                    new WeakReference<>(controller.patch_getModel()), controller.patch_getVideoId(), playlistId,
+                    mix ? Map.copyOf(AuthUtils.getRequestHeader()) : null);
+            var source = mix ? null : new PlaylistQueue.Source(playlistId, account);
+            playlistRequestToken = conversion;
+            FlyoutUtils.dismissFlyout();
+            Utils.showSnackbarShort(str("morphe_native_playlist_queue_loading_playlist"));
+            playlistRequest = Utils.submitOnBackgroundThread(() -> {
+                PlaylistQueue candidate = null;
+                try {
+                    candidate = loadPlayingPlaylist(owner, source, panel, conversion);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Could not preserve the playing playlist", ex);
+                }
+                PlaylistQueue result = Thread.currentThread().isInterrupted() ? null : candidate;
+                Utils.runOnMainThread(() -> completePlaylistConversion(conversion, owner, source, result, after));
+                return null;
+            });
+        } catch (Exception ex) {
+            cancelPlaylistRequest();
+            Logger.printException(() -> "convertPlayingPlaylist failure", ex);
+            Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
+        }
+    }
+
+    private static PlaylistQueue loadPlayingPlaylist(@Nullable PlaylistPages.Source owner, @Nullable PlaylistQueue.Source source,
+                                                       MessageLite panel, PlaylistConversion conversion) throws Exception {
+        Utils.verifyOffMainThread();
+        PlaylistPage playing = PlaylistPage.readPanel(panel, conversion.playlistId());
+        final int selected = playing.selectedIndex();
+        if (selected < 0 || !playing.rows().get(selected).entry().videoId().equals(conversion.videoId())) {
+            throw new IllegalArgumentException("Playing playlist has no matching selected occurrence");
+        }
+        // Mixes retain the finite generated batch already accepted by the player.
+        if (source == null || playing.rows().get(0).anchor().index() == 0) {
+            return PlaylistQueue.fromPage(playing, source).select(selected);
+        }
+        var anchor = playing.rows().get(selected).anchor();
+        PlaylistPage first = PlaylistPages.first(owner, source);
+        PlaylistQueue candidate = PlaylistQueue.fromPage(first, source);
+        int position = first.find(anchor);
+        if (position >= 0) {
+            return candidate.select(position);
+        }
+        // Local playback indexes are contiguous. Recover the prefix through the
+        // exact playing occurrence before handing its remaining tail to paging.
+        while (candidate.source() != null && candidate.source().anchor().index() < anchor.index()) {
+            if (Thread.currentThread().isInterrupted()) {
+                throw new InterruptedException();
+            }
+            var page = PlaylistPages.next(owner, candidate.source());
+            final int previous = page.page().find(candidate.source().anchor());
+            position = page.page().find(anchor);
+            final int boundary = candidate.source().boundary();
+            candidate = candidate.appendPage(page.page(), page.end());
+            if (position > previous) {
+                return candidate.select(boundary + position - previous - 1);
+            }
+        }
+        throw new IllegalArgumentException("Playlist changed before its playing occurrence could be preserved");
+    }
+
+    private static void completePlaylistConversion(PlaylistConversion conversion, @Nullable PlaylistPages.Source owner,
+                                                    @Nullable PlaylistQueue.Source source, @Nullable PlaylistQueue candidate,
+                                                    Runnable after) {
+        if (playlistRequestToken != conversion) {
+            return;
+        }
+        playlistRequestToken = null;
+        playlistRequest = null;
+        try {
+            PlaylistController controller = conversion.controller().get();
+            NativePlayback playback = conversion.playback().get();
+            if (!AddToQueuePatch.isNativeQueueEnabled() || queue != null || controller == null
+                    || controller != playingPlaylistController() || controller.patch_getModel() != conversion.model().get()
+                    || !conversion.videoId().equals(controller.patch_getVideoId())
+                    || !conversion.playlistId().equals(controller.patch_getPlaylistId())
+                    || playback == null || playbackFor(controller) != playback
+                    || conversion.headers() != null && !conversion.headers().equals(AuthUtils.getRequestHeader())
+                    || source != null && (owner != PlaylistPages.current()
+                            || !source.account().equals(owner.patch_getPlaylistAccount()))) {
+                return;
+            }
+            if (candidate == null) {
+                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+                return;
+            }
+            if (publish(controller, candidate, true)) {
+                convertedPlaylist = new ConvertedPlaylist(conversion.videoId(), conversion.playlistId(),
+                        new WeakReference<>(playback));
+                // Clear must hide the converted queue instead of reviving the account playlist.
+                originalModel = null;
+                refreshPlayerControls(controller.patch_getNavigator());
+                QueueFullscreenActions.refresh();
+                after.run();
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "completePlaylistConversion failure", ex);
+            Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
+        }
     }
 
     private static void addPlaylist(String playlistId, boolean playLast) {
@@ -2519,9 +2661,9 @@ public final class NativePlaylistQueuePatch {
         return AddToQueuePatch.isNativeQueueEnabled() && PlaylistQueue.isVideoId(videoId);
     }
 
-    /** Only our Native queue makes Last available; account playlists and Mixes do not. */
+    /** A playing playlist can become a queue without replacing its current video. */
     public static boolean canShowFlyoutLast() {
-        return queue != null;
+        return queue != null || playingPlaylistController() != null;
     }
 
     /** Release only our session; never modify the Morphe queue or its settings. */
@@ -2559,10 +2701,23 @@ public final class NativePlaylistQueuePatch {
     }
 
     @Nullable
+    private static PlaylistController playingPlaylistController() {
+        PlaylistController controller = controllerRef.get();
+        PlayerType type = PlayerType.getCurrent();
+        if (!AddToQueuePatch.isNativeQueueEnabled() || controller == null || !controller.patch_isAttached()
+                || !hasPlaylist(controller) || type.isNoneOrHidden() || type == PlayerType.INLINE_MINIMAL
+                || ShortsPlayerState.isOpen() || !controller.patch_getVideoId().equals(VideoInformation.getVideoId())) {
+            return null;
+        }
+        return controller;
+    }
+
+    @Nullable
     private static PlaylistController readyController() {
         PlaylistController controller = controllerRef.get();
         if (!AddToQueuePatch.isNativeQueueEnabled() || isQueueSuspended() || controller == null
                 || !controller.patch_isAttached() || hasPlaylist(controller)
+                || queue == null && hasForeignPlaybackPlaylist()
                 || PlayerType.getCurrent().isNoneOrHidden()
                 || PlayerType.getCurrent() == PlayerType.INLINE_MINIMAL
                 || !controller.patch_getVideoId().equals(VideoInformation.getVideoId())) {
@@ -2645,59 +2800,26 @@ public final class NativePlaylistQueuePatch {
             return;
         }
 
-        if (playLast && queue == null) {
+        PlaylistController playlist = playingPlaylistController();
+        if (playLast && queue == null && playlist == null) {
             // A menu callback can outlive the queue that made Play last available.
             Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
             return;
         }
 
-        // An attached account playlist of the active regular video is converted to the queue.
-        PlaylistController playlist = controllerRef.get();
-        PlayerType type = PlayerType.getCurrent();
-        if (playlist == null || !playlist.patch_isAttached() || !hasPlaylist(playlist)
-                || type.isNoneOrHidden() || type == PlayerType.INLINE_MINIMAL || ShortsPlayerState.isOpen()
-                || !playlist.patch_getVideoId().equals(VideoInformation.getVideoId())) {
-            playlist = null;
-        }
         String channelName = videoId.equals(FlyoutUtils.getFlyoutVideoId())
                 ? FlyoutUtils.getFlyoutChannelName() : "";
         try {
             if (playlist != null) {
-                if (dragSession != null || queue != null) {
-                    Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
-                    return;
-                }
-
-                NativePlayback playback = playbackFor(playlist);
-                if (playback == null) {
-                    Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
-                    return;
-                }
-
-                String currentId = playlist.patch_getVideoId();
-                String currentTitle = VideoInformation.getVideoTitle();
-                String title = ChannelIdRequest.getVideoTitleIfAvailable(videoId);
-                rememberChannel(currentId, currentTitle, VideoInformation.getChannelName());
-                rememberChannel(videoId, title.isEmpty() ? videoId : title, channelName);
-                PlaylistQueue candidate = new PlaylistQueue(currentId, currentTitle);
-                if (!currentId.equals(videoId)) {
-                    candidate = candidate.playNext(videoId);
-                }
-                // The native accept transaction replaces navigation rows without a
-                // load, seek, pause or player dismissal. Reuse the mutable navigator
-                // when available; its factory receives only our list-free command.
-                String sourcePlaylistId = playlist.patch_getPlaylistId();
-                if (publish(playlist, candidate, true)) {
-                    convertedPlaylist = new ConvertedPlaylist(currentId, sourcePlaylistId, new WeakReference<>(playback));
-                    // Clear must hide the replaced playlist, not restore its old rows.
-                    originalModel = null;
-                    refreshPlayerControls(playlist.patch_getNavigator());
-                    QueueFullscreenActions.refresh();
-                    FlyoutUtils.dismissFlyout();
-                    Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
-                    completeMetadata();
-                }
-
+                convertPlayingPlaylist(() -> {
+                    if (videoId.equals(VideoInformation.getVideoId())) {
+                        // The initial queue already contains this playing occurrence.
+                        FlyoutUtils.dismissFlyout();
+                        Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
+                    } else {
+                        addToQueue(videoId, playLast);
+                    }
+                });
                 return;
             }
 
@@ -3091,6 +3213,9 @@ public final class NativePlaylistQueuePatch {
             // A deliberate new watch supersedes Clear/close/reload Undo, even for
             // the same video. This hook runs on dispatch, not on prefetch.
             if (command.hasWatchEndpoint()) {
+                if (playlistRequestToken instanceof PlaylistConversion) {
+                    cancelPlaylistRequest();
+                }
                 pendingUndo = null;
                 PendingReload reload = pendingReload;
                 if (reload != null) {

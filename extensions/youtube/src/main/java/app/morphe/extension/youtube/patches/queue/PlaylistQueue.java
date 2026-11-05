@@ -66,12 +66,13 @@ public final class PlaylistQueue {
         this.totalCount = Math.max(entries.size(), totalCount);
     }
 
-    static PlaylistQueue fromPage(PlaylistPage page, Source source) {
+    /** A null source retains an already accepted finite Mix without generating more pages. */
+    static PlaylistQueue fromPage(PlaylistPage page, @Nullable Source source) {
         List<Entry> entries = new ArrayList<>();
         for (var row : page.rows()) {
             entries.add(new Entry(row.entry().videoId(), row.entry().title(), row.metadata()));
         }
-        boolean complete = page.rows().get(0).anchor().index() == 0 && page.totalCount() == entries.size();
+        final boolean complete = source == null || page.rows().get(0).anchor().index() == 0 && page.totalCount() == entries.size();
         return new PlaylistQueue(entries, 0, REPEAT_OFF, complete ? null
                 : new Source(source.playlistId(), source.account(), page.rows().get(page.rows().size() - 1).anchor(),
                         entries.size(), source.origin()),
