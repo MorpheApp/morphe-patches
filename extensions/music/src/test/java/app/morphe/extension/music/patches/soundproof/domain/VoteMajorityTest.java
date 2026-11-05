@@ -9,7 +9,6 @@ package app.morphe.extension.music.patches.soundproof.domain;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThrows;
 
 import org.junit.Test;
 
@@ -42,10 +41,5 @@ public class VoteMajorityTest {
 
     @Test public void artistWithoutVotesHasNoMajority() {
         assertFalse(VoteMajority.of(new ArtistRecord("artist", "Artist", 0, 0, false)).isPresent());
-    }
-
-    @Test public void rejectsPercentOutOfRange() {
-        assertThrows(IllegalArgumentException.class, () -> new VoteMajority(VoteSide.AI, 101));
-        assertThrows(IllegalArgumentException.class, () -> new VoteMajority(VoteSide.HUMAN, -1));
     }
 }

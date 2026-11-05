@@ -1,13 +1,11 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof.domain;
-
-import java.util.Objects;
 
 /**
  * One validated artist entry of the SoundProof database.
@@ -21,10 +19,8 @@ import java.util.Objects;
 public record ArtistRecord(String id, String name, int humanVotes, int aiVotes, boolean verified) {
 
     public ArtistRecord {
-        Objects.requireNonNull(id);
-        Objects.requireNonNull(name);
-        if (id.trim().isEmpty()) {
-            throw new IllegalArgumentException("Artist id must not be blank");
+        if (id.trim().isEmpty() || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Artist id and name must not be blank: " + id);
         }
         if (humanVotes < 0 || aiVotes < 0) {
             throw new IllegalArgumentException("Vote counts must not be negative: " + id);

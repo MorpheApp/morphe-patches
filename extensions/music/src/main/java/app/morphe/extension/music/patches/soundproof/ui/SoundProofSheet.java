@@ -1,8 +1,8 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof.ui;
@@ -10,28 +10,24 @@ package app.morphe.extension.music.patches.soundproof.ui;
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.ui.Dim.dp;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import java.util.Optional;
 
@@ -43,6 +39,7 @@ import app.morphe.extension.music.patches.soundproof.domain.ArtistStatus;
 import app.morphe.extension.music.patches.soundproof.domain.VoteMajority;
 import app.morphe.extension.music.patches.soundproof.domain.VoteMajority.VoteSide;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ui.SheetBottomDialog;
 
 /**
  * Bottom sheet with the community votes for the artist of the current track, the vote buttons,
@@ -53,7 +50,7 @@ import app.morphe.extension.shared.Logger;
 final class SoundProofSheet implements SoundProofManager.StateListener {
 
     private static final int SHEET_COLOR = 0xFF212121;
-    private static final int HANDLE_COLOR = 0xFF5F5F5F;
+    private static final int CHIP_BORDER_COLOR = 0xFF5F5F5F;
     private static final int PRIMARY_TEXT_COLOR = Color.WHITE;
     private static final int SECONDARY_TEXT_COLOR = 0xFFB3B3B3;
     private static final int TERTIARY_TEXT_COLOR = 0xFFA8A8A8;
@@ -61,17 +58,13 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
     private static final int EMPTY_BAR_COLOR = 0xFF424242;
     private static final int SWITCH_OFF_THUMB_COLOR = 0xFFBDBDBD;
     private static final int SWITCH_OFF_TRACK_COLOR = 0xFF5F5F5F;
-    private static final float SCRIM_DIM_AMOUNT = 0.6f;
-    private static final int ICON_BACKGROUND_ALPHA = 41; // 16 %
+    private static final int TINT_ALPHA = 41; // 16 %
     private static final float DISABLED_ALPHA = 0.4f;
-
-    /** Share of the sheet height a downward drag must reach to close it. */
-    private static final float DISMISS_DRAG_FRACTION = 0.25f;
-    private static final long SETTLE_DURATION_MS = 150;
+    private static final int SLIDE_ANIMATION_MILLIS = 200;
+    private static final String CHECK_MARK = "✓ ";
 
     private final Context context;
     private final Dialog dialog;
-    private final LinearLayout sheet;
     /** Artist and votes, rebuilt for each assessment. */
     private final LinearLayout content;
     /** Kept out of {@link #content}, so that rebuilding it does not cut the switch animation. */
@@ -89,43 +82,25 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
         this.context = context;
 
         content = verticalLayout();
-        sheet = verticalLayout();
-        GradientDrawable sheetBackground = new GradientDrawable();
-        sheetBackground.setColor(SHEET_COLOR);
-        float radius = dp(28);
-        sheetBackground.setCornerRadii(new float[]{radius, radius, radius, radius, 0, 0, 0, 0});
-        sheet.setBackground(sheetBackground);
-        sheet.setPadding(dp(24), dp(12), dp(24), dp(32));
-        sheet.addView(dragHandle(), centered(dp(32), dp(4), dp(20)));
-        sheet.addView(content, matchWidth());
         skipSwitch = skipSwitch();
+
+        LinearLayout sheet = SheetBottomDialog.createMainLayout(context, SHEET_COLOR);
+        sheet.setPadding(dp(24), 0, dp(24), dp(24));
+        sheet.addView(content, withTopMargin(dp(16)));
         sheet.addView(skipRow(skipSwitch), withTopMargin(dp(20)));
         sheet.addView(text(str("morphe_music_soundproof_sheet_source"), 12, TERTIARY_TEXT_COLOR, false),
                 withTopMargin(dp(16)));
-        enableDragToDismiss();
 
-        dialog = new Dialog(context);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(sheet);
-        dialog.setCanceledOnTouchOutside(true);
+        dialog = SheetBottomDialog.createSlideDialog(context, sheet, SLIDE_ANIMATION_MILLIS);
         dialog.setOnDismissListener(d -> SoundProofManager.getInstance().removeListener(this));
     }
 
     private void open() {
         SoundProofManager manager = SoundProofManager.getInstance();
+        manager.reloadLiveStatus();
         onStateChanged();
         manager.addListener(this);
         dialog.show();
-
-        Window window = dialog.getWindow();
-        if (window != null) {
-            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            window.setGravity(Gravity.BOTTOM);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-            window.setDimAmount(SCRIM_DIM_AMOUNT);
-            window.setWindowAnimations(android.R.style.Animation_InputMethod);
-        }
     }
 
     @Override
@@ -159,22 +134,18 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
 
     // region Sections
 
-    private View header(ArtistStatus status, String artistName, boolean isVerified) {
+    private View header(ArtistStatus status, @Nullable String artistName, boolean isVerified) {
         LinearLayout row = horizontalLayout();
         row.setGravity(Gravity.CENTER_VERTICAL);
 
         FrameLayout iconCircle = new FrameLayout(context);
         GradientDrawable circle = new GradientDrawable();
         circle.setShape(GradientDrawable.OVAL);
-        int color = StatusAppearance.colorOf(status);
-        circle.setColor(Color.argb(ICON_BACKGROUND_ALPHA, Color.red(color), Color.green(color), Color.blue(color)));
+        circle.setColor(tinted(StatusAppearance.colorOf(status)));
         iconCircle.setBackground(circle);
-        Drawable icon = StatusAppearance.iconOf(status);
-        if (icon != null) {
-            ImageView iconView = new ImageView(context);
-            iconView.setImageDrawable(icon);
-            iconCircle.addView(iconView, new FrameLayout.LayoutParams(dp(24), dp(24), Gravity.CENTER));
-        }
+        ImageView iconView = new ImageView(context);
+        iconView.setImageDrawable(StatusAppearance.iconOf(status));
+        iconCircle.addView(iconView, new FrameLayout.LayoutParams(dp(24), dp(24), Gravity.CENTER));
         row.addView(iconCircle, new LinearLayout.LayoutParams(dp(44), dp(44)));
 
         LinearLayout titles = verticalLayout();
@@ -202,10 +173,10 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
     }
 
     private View verifiedChip() {
-        TextView chip = text("\u2713 " + str("morphe_music_soundproof_sheet_verified"), 12, CHIP_TEXT_COLOR, false);
+        TextView chip = text(CHECK_MARK + str("morphe_music_soundproof_sheet_verified"), 12, CHIP_TEXT_COLOR, false);
         GradientDrawable border = new GradientDrawable();
         border.setCornerRadius(dp(12));
-        border.setStroke(dp(1), HANDLE_COLOR);
+        border.setStroke(dp(1), CHIP_BORDER_COLOR);
         chip.setBackground(border);
         chip.setPadding(dp(8), dp(3), dp(8), dp(3));
         return chip;
@@ -216,7 +187,6 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
 
         boolean isAiMajority = majority.side() == VoteSide.AI;
         LinearLayout headline = horizontalLayout();
-        headline.setBaselineAligned(true);
         TextView percent = text(str(isAiMajority
                         ? "morphe_music_soundproof_sheet_percent_ai"
                         : "morphe_music_soundproof_sheet_percent_human", majority.percent()),
@@ -318,11 +288,11 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
         boolean isVoted = myVote.map(side::equals).orElse(false);
         String label = str(isHuman ? "morphe_music_soundproof_sheet_vote_human" : "morphe_music_soundproof_sheet_vote_ai");
 
-        TextView button = text(isVoted ? "\u2713 " + label : label, 15, color, true);
+        TextView button = text(isVoted ? CHECK_MARK + label : label, 15, color, true);
         button.setGravity(Gravity.CENTER);
         GradientDrawable background = new GradientDrawable();
         background.setCornerRadius(dp(22));
-        background.setColor(Color.argb(ICON_BACKGROUND_ALPHA, Color.red(color), Color.green(color), Color.blue(color)));
+        background.setColor(tinted(color));
         if (isVoted) {
             background.setStroke(dp(2), color);
         }
@@ -355,42 +325,6 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
         return row;
     }
 
-    private View dragHandle() {
-        View handle = new View(context);
-        GradientDrawable shape = new GradientDrawable();
-        shape.setCornerRadius(dp(2));
-        shape.setColor(HANDLE_COLOR);
-        handle.setBackground(shape);
-        return handle;
-    }
-
-    // endregion
-
-    // region Drag to dismiss
-
-    @SuppressLint("ClickableViewAccessibility")
-    private void enableDragToDismiss() {
-        float[] downRawY = {0};
-        sheet.setOnTouchListener((view, event) -> {
-            switch (event.getActionMasked()) {
-                case MotionEvent.ACTION_DOWN -> downRawY[0] = event.getRawY();
-                case MotionEvent.ACTION_MOVE ->
-                        view.setTranslationY(Math.max(0, event.getRawY() - downRawY[0]));
-                case MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                    if (view.getTranslationY() > view.getHeight() * DISMISS_DRAG_FRACTION) {
-                        dialog.dismiss();
-                    } else {
-                        view.animate().translationY(0).setDuration(SETTLE_DURATION_MS).start();
-                    }
-                }
-                default -> {
-                    return false;
-                }
-            }
-            return true;
-        });
-    }
-
     // endregion
 
     // region View helpers
@@ -410,6 +344,10 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
         View segment = new View(context);
         segment.setBackgroundColor(color);
         return segment;
+    }
+
+    private static int tinted(int color) {
+        return Color.argb(TINT_ALPHA, Color.red(color), Color.green(color), Color.blue(color));
     }
 
     private LinearLayout verticalLayout() {
@@ -437,13 +375,6 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
     private static LinearLayout.LayoutParams barParams(int topMargin, int height) {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
         params.topMargin = topMargin;
-        return params;
-    }
-
-    private static LinearLayout.LayoutParams centered(int width, int height, int bottomMargin) {
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width, height);
-        params.gravity = Gravity.CENTER_HORIZONTAL;
-        params.bottomMargin = bottomMargin;
         return params;
     }
 

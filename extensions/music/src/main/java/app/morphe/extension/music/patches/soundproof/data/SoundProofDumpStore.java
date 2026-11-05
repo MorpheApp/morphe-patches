@@ -1,8 +1,8 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof.data;
@@ -29,7 +29,7 @@ import app.morphe.extension.shared.requests.Requester;
  */
 public final class SoundProofDumpStore {
 
-    public static final String DUMP_URL =
+    private static final String DUMP_URL =
             "https://raw.githubusercontent.com/NuclearBlox/SoundProof-Dumps/main/data/artists.json";
 
     private static final long REFRESH_INTERVAL_MILLIS = TimeUnit.HOURS.toMillis(24);
@@ -37,6 +37,7 @@ public final class SoundProofDumpStore {
     private static final String CACHE_FILE_NAME = "artists.json";
     private static final String DOWNLOAD_FILE_NAME = "artists.json.download";
 
+    private final File storageDirectory;
     private final File cacheFile;
     private final File downloadFile;
 
@@ -44,6 +45,7 @@ public final class SoundProofDumpStore {
      * @param storageDirectory Private directory owned by this feature, created when missing.
      */
     public SoundProofDumpStore(File storageDirectory) {
+        this.storageDirectory = storageDirectory;
         this.cacheFile = new File(storageDirectory, CACHE_FILE_NAME);
         this.downloadFile = new File(storageDirectory, DOWNLOAD_FILE_NAME);
     }
@@ -63,22 +65,10 @@ public final class SoundProofDumpStore {
     }
 
     /**
-     * @return Time of the last successful download, or empty when there is no local copy.
-     */
-    public Optional<Long> lastUpdatedMillis() {
-        if (cacheFile.isFile()) {
-            return Optional.of(cacheFile.lastModified());
-        } else {
-            return Optional.empty();
-        }
-    }
-
-    /**
      * Downloads the database, and replaces the local copy only once the download parses.
      */
     public ArtistDirectory download() throws IOException {
-        File storageDirectory = cacheFile.getParentFile();
-        if (storageDirectory != null && !storageDirectory.isDirectory() && !storageDirectory.mkdirs()) {
+        if (!storageDirectory.isDirectory() && !storageDirectory.mkdirs()) {
             throw new IOException("Cannot create " + storageDirectory);
         }
         downloadTo(downloadFile);

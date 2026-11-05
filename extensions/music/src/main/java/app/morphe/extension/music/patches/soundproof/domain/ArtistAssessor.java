@@ -1,15 +1,14 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -25,12 +24,11 @@ public final class ArtistAssessor {
     private final AiDetectionPolicy policy;
 
     public ArtistAssessor(ArtistDirectory directory, AiDetectionPolicy policy) {
-        this.directory = Objects.requireNonNull(directory);
-        this.policy = Objects.requireNonNull(policy);
+        this.directory = directory;
+        this.policy = policy;
     }
 
     public ArtistAssessment assess(String credit) {
-        Objects.requireNonNull(credit);
         Optional<ArtistRecord> wholeCreditArtist = directory.findByName(credit);
         if (wholeCreditArtist.isPresent()) {
             return classify(wholeCreditArtist.get());

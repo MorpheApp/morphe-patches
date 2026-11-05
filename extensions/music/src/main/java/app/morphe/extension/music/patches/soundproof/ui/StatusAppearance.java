@@ -1,15 +1,13 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof.ui;
 
 import android.graphics.drawable.Drawable;
-
-import androidx.annotation.Nullable;
 
 import app.morphe.extension.music.patches.soundproof.domain.ArtistStatus;
 import app.morphe.extension.shared.ResourceUtils;
@@ -36,16 +34,8 @@ final class StatusAppearance {
         };
     }
 
-    /**
-     * @return The tinted icon, or null if the resource patch did not add it.
-     */
-    @Nullable
     static Drawable iconOf(ArtistStatus status) {
-        Drawable icon = ResourceUtils.getDrawable(drawableNameOf(status));
-        if (icon == null) {
-            return null;
-        }
-        icon = icon.mutate();
+        Drawable icon = ResourceUtils.getDrawableOrThrow(drawableNameOf(status)).mutate();
         icon.setTint(colorOf(status));
         return icon;
     }

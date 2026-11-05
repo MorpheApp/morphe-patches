@@ -1,13 +1,14 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof.domain;
 
-import java.util.Objects;
+import androidx.annotation.Nullable;
+
 import java.util.Optional;
 
 /**
@@ -19,19 +20,20 @@ public final class ArtistAssessment {
     private static final ArtistAssessment UNAVAILABLE = new ArtistAssessment(ArtistStatus.UNAVAILABLE, null);
 
     private final ArtistStatus status;
+    @Nullable
     private final ArtistRecord artist;
 
-    private ArtistAssessment(ArtistStatus status, ArtistRecord artist) {
+    private ArtistAssessment(ArtistStatus status, @Nullable ArtistRecord artist) {
         this.status = status;
         this.artist = artist;
     }
 
     public static ArtistAssessment ai(ArtistRecord artist) {
-        return new ArtistAssessment(ArtistStatus.AI, Objects.requireNonNull(artist));
+        return new ArtistAssessment(ArtistStatus.AI, artist);
     }
 
     public static ArtistAssessment human(ArtistRecord artist) {
-        return new ArtistAssessment(ArtistStatus.HUMAN, Objects.requireNonNull(artist));
+        return new ArtistAssessment(ArtistStatus.HUMAN, artist);
     }
 
     public static ArtistAssessment unknown() {

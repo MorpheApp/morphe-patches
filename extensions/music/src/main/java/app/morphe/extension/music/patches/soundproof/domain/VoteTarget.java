@@ -1,14 +1,14 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof.domain;
 
-import java.util.List;
-import java.util.Objects;
+import androidx.annotation.Nullable;
+
 import java.util.Optional;
 
 /**
@@ -19,21 +19,12 @@ import java.util.Optional;
  */
 public record VoteTarget(String id, String name) {
 
-    public VoteTarget {
-        Objects.requireNonNull(id);
-        Objects.requireNonNull(name);
-        if (id.isEmpty() || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Vote target must not be blank");
-        }
-    }
-
     /**
      * The artist the verdict is based on, or else the first artist of the credit.
      *
      * @return Empty when there is neither.
      */
-    public static Optional<VoteTarget> of(ArtistAssessment assessment, String credit) {
-        Objects.requireNonNull(assessment);
+    public static Optional<VoteTarget> of(ArtistAssessment assessment, @Nullable String credit) {
         Optional<ArtistRecord> artist = assessment.artist();
         if (artist.isPresent()) {
             // The database name, not the credit: the server derived the id from this name.
@@ -42,8 +33,7 @@ public record VoteTarget(String id, String name) {
         if (credit == null) {
             return Optional.empty();
         }
-        List<String> artistNames = ArtistCreditSplitter.split(credit);
-        for (String artistName : artistNames) {
+        for (String artistName : ArtistCreditSplitter.split(credit)) {
             String displayName = ArtistNameNormalizer.toDisplayName(artistName);
             if (!displayName.isEmpty()) {
                 return Optional.of(new VoteTarget(ArtistNameNormalizer.toArtistId(displayName), displayName));

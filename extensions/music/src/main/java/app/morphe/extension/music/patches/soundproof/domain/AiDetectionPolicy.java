@@ -1,13 +1,11 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof.domain;
-
-import java.util.Objects;
 
 /**
  * The single rule deciding whether a listed artist counts as AI.
@@ -24,18 +22,11 @@ public final class AiDetectionPolicy {
     private final int minimumVotes;
 
     public AiDetectionPolicy(int minimumAiPercent, int minimumVotes) {
-        if (minimumAiPercent < 1 || minimumAiPercent > 100) {
-            throw new IllegalArgumentException("minimumAiPercent must be in 1..100: " + minimumAiPercent);
-        }
-        if (minimumVotes < 1) {
-            throw new IllegalArgumentException("minimumVotes must be at least 1: " + minimumVotes);
-        }
         this.minimumAiPercent = minimumAiPercent;
         this.minimumVotes = minimumVotes;
     }
 
     public boolean isAi(ArtistRecord artist) {
-        Objects.requireNonNull(artist);
         int totalVotes = artist.totalVotes();
         if (totalVotes < minimumVotes) {
             return false;

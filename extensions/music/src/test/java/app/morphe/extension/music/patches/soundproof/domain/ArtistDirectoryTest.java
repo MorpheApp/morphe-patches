@@ -36,6 +36,14 @@ public class ArtistDirectoryTest {
         assertEquals(newcomer, merged.findByName("New Artist").orElseThrow());
     }
 
+    @Test public void laterReplacementWinsAndCountsOnce() {
+        ArtistRecord freshHoney = new ArtistRecord("honey", "Honey", 5, 9, false);
+        ArtistRecord fresherHoney = new ArtistRecord("honey", "Honey", 5, 10, false);
+        ArtistDirectory merged = directory.withArtists(List.of(freshHoney)).withArtists(List.of(fresherHoney));
+        assertEquals(fresherHoney, merged.findByName("Honey").orElseThrow());
+        assertEquals(2, merged.size());
+    }
+
     @Test public void noReplacementKeepsTheSameDirectory() {
         assertSame(directory, directory.withArtists(List.of()));
     }

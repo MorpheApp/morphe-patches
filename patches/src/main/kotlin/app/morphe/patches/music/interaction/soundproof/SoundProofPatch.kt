@@ -1,33 +1,32 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.patches.music.interaction.soundproof
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.mediasession.addSetMetadataWithSessionHook
+import app.morphe.patches.music.misc.mediasession.mediaSessionHookPatch
+import app.morphe.patches.music.misc.playservice.is_9_39_or_greater
+import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
-import app.morphe.patches.shared.MediaSessionSetMetadataFingerprint
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.util.ResourceGroup
+import app.morphe.util.childElementsSequence
 import app.morphe.util.copyResources
-import app.morphe.util.doRecursively
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import app.morphe.util.findElementByAttributeValueOrThrow
 import org.w3c.dom.Element
-import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/soundproof/SoundProofPatch;"
@@ -35,12 +34,17 @@ private const val EXTENSION_CLASS =
 private const val SEEK_BAR_PREFERENCE =
     "app.morphe.extension.shared.settings.preference.SeekBarPreference"
 
+private const val ABOUT_PREFERENCE =
+    "app.morphe.extension.music.patches.soundproof.ui.SoundProofAboutPreference"
+
 private const val BUTTON_VIEW_TAG =
     "app.morphe.extension.music.patches.soundproof.ui.SoundProofButton"
 
 private val soundProofButtonResourcePatch = resourcePatch(
     description = "Adds the SoundProof button to the top bar of the player."
 ) {
+    dependsOn(versionCheckPatch)
+
     execute {
         copyResources(
             "soundproof",
@@ -53,49 +57,43 @@ private val soundProofButtonResourcePatch = resourcePatch(
             )
         )
 
-        document("res/layout/watch_while_layout.xml").use { document ->
-            val elementsById = mutableMapOf<String, Element>()
-            document.doRecursively { node ->
-                if (node is Element && node.hasAttribute("android:id")) {
-                    elementsById[node.getAttribute("android:id")] = node
+        val playerLayouts = mutableListOf("res/layout/watch_while_layout.xml")
+        if (is_9_39_or_greater) {
+            // Inflated instead of the layout above when a server flag defers the player.
+            playerLayouts += "res/layout/watch_while_layout_player.xml"
+        }
+
+        playerLayouts.forEach { playerLayout ->
+            document(playerLayout).use { document ->
+                // Top bar: collapse, spacer, centered audio and video switch, cast, overflow menu.
+                val castButton = document.childNodes.findElementByAttributeValueOrThrow(
+                    "android:id",
+                    "@id/cast_button_container"
+                )
+                val topBar = castButton.parentNode as Element
+
+                val button = document.createElement(BUTTON_VIEW_TAG).apply {
+                    setAttribute("android:id", "@+id/morphe_soundproof_button")
+                    setAttribute("android:layout_width", "@dimen/remix_generic_button_size")
+                    setAttribute("android:layout_height", "@dimen/remix_generic_button_size")
+                    setAttribute("android:scaleType", "center")
+                    setAttribute("style", "@style/MusicPlayerButton")
                 }
-            }
+                topBar.insertBefore(button, castButton)
 
-            // Top bar: collapse, spacer, centered audio and video switch, cast, overflow menu.
-            val anchor = elementsById["@id/cast_button_container"]
-                ?: elementsById["@id/contextual_menu"]
-                ?: throw PatchException("Could not find the player top bar")
-            val topBar = anchor.parentNode as Element
-
-            val button = document.createElement(BUTTON_VIEW_TAG).apply {
-                setAttribute("android:id", "@+id/morphe_soundproof_button")
-                setAttribute("android:layout_width", "@dimen/remix_generic_button_size")
-                setAttribute("android:layout_height", "@dimen/remix_generic_button_size")
-                setAttribute("android:scaleType", "center")
-                setAttribute("style", "@style/MusicPlayerButton")
-            }
-            topBar.insertBefore(button, anchor)
-
-            // The switch is centered because the left side holds a spacer as wide as a button.
-            // A second spacer keeps it centered once the right side has one more button.
-            val existingSpacer = topBar.childElements().firstOrNull { it.tagName == "Space" }
-            if (existingSpacer == null) {
-                Logger.getLogger(this::class.java.name)
-                    .warning("Player top bar has no spacer, the audio and video switch is not recentered")
-            } else {
+                // The switch is centered because the left side holds a spacer as wide as a button.
+                // A second spacer keeps it centered once the right side has one more button.
                 val spacer = document.createElement("Space").apply {
                     setAttribute("android:id", "@+id/morphe_soundproof_spacer")
                     setAttribute("android:layout_width", "@dimen/remix_generic_button_size")
                     setAttribute("android:layout_height", "@dimen/remix_generic_button_size")
                 }
-                topBar.insertBefore(spacer, existingSpacer.nextSibling)
+                val leftSpacer = topBar.childElementsSequence().first { it.tagName == "Space" }
+                topBar.insertBefore(spacer, leftSpacer.nextSibling)
             }
         }
     }
 }
-
-private fun Element.childElements(): List<Element> =
-    (0 until childNodes.length).map { childNodes.item(it) }.filterIsInstance<Element>()
 
 @Suppress("unused")
 val soundProofPatch = bytecodePatch(
@@ -107,6 +105,7 @@ val soundProofPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        mediaSessionHookPatch,
         soundProofButtonResourcePatch
     )
 
@@ -143,7 +142,9 @@ val soundProofPatch = bytecodePatch(
                             NonInteractivePreference(
                                 key = "morphe_music_soundproof_about",
                                 titleKey = null,
-                                summaryKey = "morphe_music_soundproof_about_summary"
+                                summaryKey = "morphe_music_soundproof_about_summary",
+                                tag = ABOUT_PREFERENCE,
+                                selectable = true
                             )
                         )
                     )
@@ -153,19 +154,8 @@ val soundProofPatch = bytecodePatch(
 
         // Both the session and the metadata are needed: the artist is read from the metadata,
         // and the skip goes through the session's own transport controls.
-        MediaSessionSetMetadataFingerprint.apply {
-            // Other patches insert before the same call, which shifts its index.
-            clearMatch()
-
-            method.apply {
-                val setMetadataIndex = instructionMatches.last().index
-                val setMetadataCall = getInstruction<FiveRegisterInstruction>(setMetadataIndex)
-                addInstruction(
-                    setMetadataIndex,
-                    "invoke-static { v${setMetadataCall.registerC}, v${setMetadataCall.registerD} }, " +
-                        "$EXTENSION_CLASS->onSetMetadata(Landroid/media/session/MediaSession;Landroid/media/MediaMetadata;)V"
-                )
-            }
-        }
+        addSetMetadataWithSessionHook(
+            "$EXTENSION_CLASS->onSetMetadata(Landroid/media/session/MediaSession;Landroid/media/MediaMetadata;)V"
+        )
     }
 }

@@ -201,8 +201,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SOUNDPROOF_SHOW_BUTTON = new BooleanSetting("morphe_music_soundproof_show_button", TRUE, true);
     public static final BooleanSetting SOUNDPROOF_SKIP_AI_ARTISTS = new BooleanSetting("morphe_music_soundproof_skip_ai_artists", TRUE, false);
     public static final BooleanSetting SOUNDPROOF_TOAST_ON_SKIP = new BooleanSetting("morphe_music_soundproof_toast_on_skip", TRUE, false, parent(SOUNDPROOF_SKIP_AI_ARTISTS));
-    public static final IntegerSetting SOUNDPROOF_MINIMUM_AI_PERCENT = new IntegerSetting("morphe_music_soundproof_minimum_ai_percent", AiDetectionPolicy.DEFAULT_MINIMUM_AI_PERCENT, false);
-    public static final IntegerSetting SOUNDPROOF_MINIMUM_VOTES = new IntegerSetting("morphe_music_soundproof_minimum_votes", AiDetectionPolicy.DEFAULT_MINIMUM_VOTES, false);
+    public static final IntegerSetting SOUNDPROOF_MINIMUM_AI_PERCENT = new IntegerSetting("morphe_music_soundproof_minimum_ai_percent", AiDetectionPolicy.DEFAULT_MINIMUM_AI_PERCENT, false, parentsAny(SOUNDPROOF_SHOW_BUTTON, SOUNDPROOF_SKIP_AI_ARTISTS));
+    public static final IntegerSetting SOUNDPROOF_MINIMUM_VOTES = new IntegerSetting("morphe_music_soundproof_minimum_votes", AiDetectionPolicy.DEFAULT_MINIMUM_VOTES, false, parentsAny(SOUNDPROOF_SHOW_BUTTON, SOUNDPROOF_SKIP_AI_ARTISTS));
 
     // Lyrics
     public static final BooleanSetting LYRICS_ENABLED = new BooleanSetting("morphe_music_lyrics_enabled", TRUE, false);

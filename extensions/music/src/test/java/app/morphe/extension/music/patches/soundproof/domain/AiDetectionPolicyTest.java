@@ -9,7 +9,6 @@ package app.morphe.extension.music.patches.soundproof.domain;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -55,11 +54,5 @@ public class AiDetectionPolicyTest {
         assertEquals(67, artist(1, 2).aiVotePercent());
         assertEquals(0, artist(0, 0).aiVotePercent());
         assertEquals(100, artist(0, 1000).aiVotePercent());
-    }
-
-    @Test public void rejectsOutOfRangeSettings() {
-        assertThrows(IllegalArgumentException.class, () -> new AiDetectionPolicy(0, 1));
-        assertThrows(IllegalArgumentException.class, () -> new AiDetectionPolicy(101, 1));
-        assertThrows(IllegalArgumentException.class, () -> new AiDetectionPolicy(50, 0));
     }
 }

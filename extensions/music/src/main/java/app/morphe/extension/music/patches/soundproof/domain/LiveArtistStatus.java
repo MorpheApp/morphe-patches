@@ -1,13 +1,12 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof.domain;
 
-import java.util.Objects;
 import java.util.Optional;
 
 import app.morphe.extension.music.patches.soundproof.domain.VoteMajority.VoteSide;
@@ -21,7 +20,6 @@ import app.morphe.extension.music.patches.soundproof.domain.VoteMajority.VoteSid
 public record LiveArtistStatus(int humanVotes, int aiVotes, boolean verified, Optional<VoteSide> myVote) {
 
     public LiveArtistStatus {
-        Objects.requireNonNull(myVote);
         if (humanVotes < 0 || aiVotes < 0) {
             throw new IllegalArgumentException("Vote counts must not be negative");
         }

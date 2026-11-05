@@ -1,8 +1,8 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof.ui;
@@ -10,7 +10,6 @@ package app.morphe.extension.music.patches.soundproof.ui;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -39,22 +38,8 @@ public final class SoundProofButton extends ImageView implements SoundProofManag
     private static final int SKIP_OFF_ICON_ALPHA = 102; // 40 %
     private static final int SKIP_ON_ICON_ALPHA = 255;
 
-    public SoundProofButton(Context context) {
-        super(context);
-        initialize();
-    }
-
     public SoundProofButton(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initialize();
-    }
-
-    public SoundProofButton(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        initialize();
-    }
-
-    private void initialize() {
         setContentDescription(str("morphe_music_soundproof_button_description"));
         setOnClickListener(view -> SoundProofSheet.show(getContext()));
     }
@@ -66,8 +51,7 @@ public final class SoundProofButton extends ImageView implements SoundProofManag
             boolean isShown = Settings.SOUNDPROOF_SHOW_BUTTON.get();
             setShown(isShown);
             if (isShown) {
-                SoundProofManager manager = SoundProofManager.getInstance();
-                manager.addListener(this);
+                SoundProofManager.getInstance().addListener(this);
                 onStateChanged();
             }
         } catch (Exception ex) {
@@ -77,17 +61,16 @@ public final class SoundProofButton extends ImageView implements SoundProofManag
 
     @Override
     protected void onDetachedFromWindow() {
-        SoundProofManager.getInstance().removeListener(this);
+        if (Settings.SOUNDPROOF_SHOW_BUTTON.get()) {
+            SoundProofManager.getInstance().removeListener(this);
+        }
         super.onDetachedFromWindow();
     }
 
     @Override
     public void onStateChanged() {
         SoundProofManager manager = SoundProofManager.getInstance();
-        Drawable icon = StatusAppearance.iconOf(manager.getCurrentAssessment().status());
-        if (icon != null) {
-            setImageDrawable(icon);
-        }
+        setImageDrawable(StatusAppearance.iconOf(manager.getCurrentAssessment().status()));
         // Dimmed so that a skip left off is noticed.
         setImageAlpha(manager.isSkipEnabled() ? SKIP_ON_ICON_ALPHA : SKIP_OFF_ICON_ALPHA);
     }
@@ -95,11 +78,6 @@ public final class SoundProofButton extends ImageView implements SoundProofManag
     private void setShown(boolean isShown) {
         int visibility = isShown ? View.VISIBLE : View.GONE;
         setVisibility(visibility);
-        if (getParent() instanceof View parent) {
-            View spacer = parent.findViewById(ResourceUtils.getIdIdentifier(BALANCING_SPACER_ID));
-            if (spacer != null) {
-                spacer.setVisibility(visibility);
-            }
-        }
+        ((View) getParent()).findViewById(ResourceUtils.getIdIdentifier(BALANCING_SPACER_ID)).setVisibility(visibility);
     }
 }

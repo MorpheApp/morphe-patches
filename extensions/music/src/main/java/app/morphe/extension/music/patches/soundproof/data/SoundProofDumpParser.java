@@ -1,14 +1,16 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof.data;
 
 import android.util.JsonReader;
 import android.util.JsonToken;
+
+import androidx.annotation.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -59,9 +61,10 @@ final class SoundProofDumpParser {
     /**
      * @return The entry, or null when it is incomplete or invalid.
      */
+    @Nullable
     private static ArtistRecord readEntry(JsonReader reader) throws IOException {
-        String id = null;
-        String name = null;
+        @Nullable String id = null;
+        @Nullable String name = null;
         int humanVotes = -1;
         int aiVotes = -1;
         boolean verified = false;
@@ -87,7 +90,9 @@ final class SoundProofDumpParser {
         return toRecordOrNull(id, name, humanVotes, aiVotes, verified);
     }
 
-    private static ArtistRecord toRecordOrNull(String id, String name, int humanVotes, int aiVotes, boolean verified) {
+    @Nullable
+    private static ArtistRecord toRecordOrNull(@Nullable String id, @Nullable String name,
+                                               int humanVotes, int aiVotes, boolean verified) {
         if (id == null || name == null) {
             return null;
         }

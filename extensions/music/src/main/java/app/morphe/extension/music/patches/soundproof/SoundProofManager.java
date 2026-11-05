@@ -1,8 +1,8 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof;
@@ -12,13 +12,14 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.media.MediaMetadata;
 import android.media.session.MediaSession;
 
+import androidx.annotation.Nullable;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
@@ -37,7 +38,7 @@ import app.morphe.extension.music.patches.soundproof.domain.VoteTarget;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.IntegerSetting;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 
 /**
  * Assesses each new track and skips it when its artist is AI.
@@ -72,27 +73,33 @@ public final class SoundProofManager {
     private record LiveOverride(ArtistRecord artist, long fetchedAtMillis) {
     }
 
+    @Nullable
     private static SoundProofManager instance;
 
     private final SoundProofDatabaseLoader databaseLoader;
     private final List<StateListener> listeners = new ArrayList<>();
 
     /** Null until the first database is loaded. */
+    @Nullable
     private ArtistDirectory directory;
     private ArtistAssessment currentAssessment = ArtistAssessment.unavailable();
     /** Artist credit of the current track, null until a track with a credit plays. */
+    @Nullable
     private String currentCredit;
 
+    @Nullable
     private MediaSession currentSession;
-    private MediaMetadata currentMetadata;
     /** {@code MediaSession.setMetadata} runs several times per track, the track is assessed once. */
+    @Nullable
     private String assessedTrackKey;
 
     /** Server votes by artist id, applied over the dump. */
     private final Map<String, LiveOverride> liveOverrides = new HashMap<>();
     /** Artist read from the server for the current track, null until the sheet asks for it. */
+    @Nullable
     private VoteTarget liveTarget;
     private LiveState liveState = LiveState.LOADING;
+    @Nullable
     private LiveArtistStatus liveStatus;
     private boolean isVoting;
 
@@ -116,6 +123,7 @@ public final class SoundProofManager {
     /**
      * @return The artist credit of the current track, as shown by the app, or null.
      */
+    @Nullable
     public String getCurrentCredit() {
         return currentCredit;
     }
@@ -144,31 +152,42 @@ public final class SoundProofManager {
     }
 
     /**
-     * Reads the current artist from the server, unless it is already read or being read.
-     * A failed read is retried on the next call. It does not tell the listeners that the state
-     * is now {@link LiveState#LOADING}, so it can be called while rendering.
+     * Reads the current artist from the server, unless it was already read, successfully or not.
+     * It does not tell the listeners that the state is now {@link LiveState#LOADING}, so it can
+     * be called while rendering.
      */
     public void loadLiveStatus() {
         Optional<VoteTarget> target = getVoteTarget();
-        if (target.isEmpty()) {
-            return;
-        }
-        if (target.get().equals(liveTarget) && liveState != LiveState.FAILED) {
+        if (!target.isPresent() || target.get().equals(liveTarget)) {
             return;
         }
         VoteTarget requested = target.get();
         liveTarget = requested;
         liveState = LiveState.LOADING;
         liveStatus = null;
-        Utils.runOnBackgroundThread(() -> {
-            try {
-                Optional<LiveArtistStatus> status = SoundProofApi.fetchStatus(requested);
-                Utils.runOnMainThread(() -> onLiveStatusLoaded(requested, status));
-            } catch (IOException ex) {
-                Logger.printInfo(() -> "SoundProof status request failed", ex);
-                Utils.runOnMainThread(() -> onLiveStatusFailed(requested));
-            }
-        });
+        Utils.runOnBackgroundThread(() -> fetchLiveStatus(requested));
+    }
+
+    /**
+     * Same as {@link #loadLiveStatus()}, but also reads an artist that was already read, for fresh
+     * votes and to retry a failed read.
+     */
+    public void reloadLiveStatus() {
+        liveTarget = null;
+        loadLiveStatus();
+    }
+
+    /**
+     * Must be called off the main thread.
+     */
+    private void fetchLiveStatus(VoteTarget target) {
+        try {
+            Optional<LiveArtistStatus> status = SoundProofApi.fetchStatus(target);
+            Utils.runOnMainThread(() -> onLiveStatusLoaded(target, status));
+        } catch (IOException ex) {
+            Logger.printInfo(() -> "SoundProof status request failed", ex);
+            Utils.runOnMainThread(() -> onLiveStatusFailed(target));
+        }
     }
 
     /**
@@ -211,7 +230,7 @@ public final class SoundProofManager {
      */
     public void vote(VoteSide side) {
         Optional<VoteTarget> target = getVoteTarget();
-        if (target.isEmpty() || isVoting || getLiveState() != LiveState.READY || isVoteLocked()) {
+        if (!target.isPresent() || isVoting || getLiveState() != LiveState.READY || isVoteLocked()) {
             return;
         }
         VoteTarget voted = target.get();
@@ -220,11 +239,6 @@ public final class SoundProofManager {
         Utils.runOnBackgroundThread(() -> {
             try {
                 SoundProofApi.vote(voted, side);
-                Optional<LiveArtistStatus> status = SoundProofApi.fetchStatus(voted);
-                Utils.runOnMainThread(() -> {
-                    isVoting = false;
-                    onLiveStatusLoaded(voted, status);
-                });
             } catch (IOException ex) {
                 Logger.printInfo(() -> "SoundProof vote failed", ex);
                 Utils.runOnMainThread(() -> {
@@ -232,14 +246,20 @@ public final class SoundProofManager {
                     Utils.showToastShort(str("morphe_music_soundproof_vote_failed_toast"));
                     notifyListeners();
                 });
+                return;
             }
+            // The vote is in, so a read that fails from here on is not a failed vote.
+            fetchLiveStatus(voted);
         });
     }
 
     private void onLiveStatusLoaded(VoteTarget target, Optional<LiveArtistStatus> status) {
+        isVoting = false;
         if (status.isPresent()) {
             ArtistRecord fresh = status.get().toRecord(target);
             liveOverrides.put(fresh.id(), new LiveOverride(fresh, System.currentTimeMillis()));
+        } else {
+            liveOverrides.remove(target.id());
         }
         // The track can have changed while the request ran: the override still applies.
         if (target.equals(liveTarget)) {
@@ -247,23 +267,22 @@ public final class SoundProofManager {
             liveStatus = status.orElse(null);
         }
         reassessWithoutSkip();
-        notifyListeners();
     }
 
     private void onLiveStatusFailed(VoteTarget target) {
+        isVoting = false;
         if (target.equals(liveTarget)) {
             liveState = LiveState.FAILED;
-            notifyListeners();
         }
+        notifyListeners();
     }
 
     /**
-     * Updates the verdict shown for the current track after the votes changed.
+     * Updates the verdict shown for the current track after its data changed, without skipping it.
      */
     private void reassessWithoutSkip() {
-        if (currentCredit != null) {
-            currentAssessment = assess(currentCredit);
-        }
+        currentAssessment = assess();
+        notifyListeners();
     }
 
     public void addListener(StateListener listener) {
@@ -278,25 +297,11 @@ public final class SoundProofManager {
 
     public void onSetMetadata(MediaSession session, MediaMetadata metadata) {
         currentSession = session;
-        currentMetadata = metadata;
         databaseLoader.requestDatabase();
-        assessCurrentTrack();
-    }
 
-    private void onDatabaseLoaded(ArtistDirectory loadedDirectory) {
-        directory = loadedDirectory;
-        Logger.printDebug(() -> "SoundProof database ready: " + loadedDirectory.size() + " artists");
-        // The current track was assessed without this database, assess it again.
-        assessedTrackKey = null;
-        assessCurrentTrack();
-    }
-
-    private void assessCurrentTrack() {
-        MediaMetadata metadata = currentMetadata;
-        if (metadata == null) {
-            return;
-        }
         String credit = metadata.getString(MediaMetadata.METADATA_KEY_ARTIST);
+        // Metadata without an artist can come between two with the same track. Taking it for a new
+        // track would assess the same track again, and a second skip would also skip the next one.
         if (credit == null || credit.trim().isEmpty()) {
             return;
         }
@@ -306,8 +311,24 @@ public final class SoundProofManager {
         }
         assessedTrackKey = trackKey;
         currentCredit = credit;
-        currentAssessment = assess(credit);
-        Logger.printDebug(() -> "SoundProof: " + credit + " -> " + currentAssessment);
+        assessCurrentTrack();
+    }
+
+    private void onDatabaseLoaded(ArtistDirectory loadedDirectory) {
+        boolean isFirstDatabase = directory == null;
+        directory = loadedDirectory;
+        Logger.printDebug(() -> "SoundProof database ready: " + loadedDirectory.size() + " artists");
+        if (isFirstDatabase) {
+            // Until now the current track could not be assessed.
+            assessCurrentTrack();
+        } else {
+            reassessWithoutSkip();
+        }
+    }
+
+    private void assessCurrentTrack() {
+        currentAssessment = assess();
+        Logger.printDebug(() -> "SoundProof: " + currentCredit + " -> " + currentAssessment);
         notifyListeners();
 
         if (currentAssessment.status() == ArtistStatus.AI && isSkipEnabled()) {
@@ -315,12 +336,14 @@ public final class SoundProofManager {
         }
     }
 
-    private ArtistAssessment assess(String credit) {
+    private ArtistAssessment assess() {
         if (directory == null) {
             return ArtistAssessment.unavailable();
-        } else {
-            return new ArtistAssessor(directory.withArtists(activeOverrides()), policyFromSettings()).assess(credit);
         }
+        if (currentCredit == null) {
+            return ArtistAssessment.unknown();
+        }
+        return new ArtistAssessor(directory.withArtists(activeOverrides()), policyFromSettings()).assess(currentCredit);
     }
 
     private List<ArtistRecord> activeOverrides() {
@@ -355,26 +378,13 @@ public final class SoundProofManager {
     private static String trackKeyOf(MediaMetadata metadata, String credit) {
         String mediaId = metadata.getString(MediaMetadata.METADATA_KEY_MEDIA_ID);
         String title = metadata.getString(MediaMetadata.METADATA_KEY_TITLE);
-        return Objects.toString(mediaId, "") + '\n' + Objects.toString(title, "") + '\n' + credit;
+        return mediaId + '\n' + title + '\n' + credit;
     }
 
-    /**
-     * Settings are validated here because an imported backup can hold any value.
-     */
     private static AiDetectionPolicy policyFromSettings() {
-        int minimumAiPercent = validSettingOrDefault(Settings.SOUNDPROOF_MINIMUM_AI_PERCENT, 1, 100);
-        int minimumVotes = validSettingOrDefault(Settings.SOUNDPROOF_MINIMUM_VOTES, 1, Integer.MAX_VALUE);
-        return new AiDetectionPolicy(minimumAiPercent, minimumVotes);
-    }
-
-    private static int validSettingOrDefault(IntegerSetting setting, int minimum, int maximum) {
-        int value = setting.get();
-        if (value < minimum || value > maximum) {
-            Logger.printInfo(() -> "Resetting invalid " + setting.key + ": " + value);
-            setting.resetToDefault();
-            return setting.defaultValue;
-        } else {
-            return value;
-        }
+        return new AiDetectionPolicy(
+                SeekBarPreference.clampToRange(Settings.SOUNDPROOF_MINIMUM_AI_PERCENT),
+                SeekBarPreference.clampToRange(Settings.SOUNDPROOF_MINIMUM_VOTES)
+        );
     }
 }

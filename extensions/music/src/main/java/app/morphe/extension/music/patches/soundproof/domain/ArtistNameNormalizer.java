@@ -1,14 +1,13 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof.domain;
 
 import java.util.Locale;
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
@@ -37,7 +36,6 @@ public final class ArtistNameNormalizer {
      * @return The name without the topic channel suffix and with single spaces, case kept.
      */
     public static String toDisplayName(String artistName) {
-        Objects.requireNonNull(artistName);
         String withoutTopicSuffix = TOPIC_CHANNEL_SUFFIX.matcher(artistName.trim()).replaceAll("");
         return WHITESPACE_RUN.matcher(withoutTopicSuffix.trim()).replaceAll(" ");
     }

@@ -1,14 +1,13 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof.data;
 
 import java.io.IOException;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
@@ -36,8 +35,8 @@ public final class SoundProofDatabaseLoader {
     private long nextAttemptMillis;
 
     public SoundProofDatabaseLoader(SoundProofDumpStore store, Consumer<ArtistDirectory> onDatabaseLoaded) {
-        this.store = Objects.requireNonNull(store);
-        this.onDatabaseLoaded = Objects.requireNonNull(onDatabaseLoaded);
+        this.store = store;
+        this.onDatabaseLoaded = onDatabaseLoaded;
     }
 
     /**

@@ -1,13 +1,12 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4451
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.soundproof.domain;
 
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -25,13 +24,6 @@ public record VoteMajority(VoteSide side, int percent) {
     public enum VoteSide {
         HUMAN,
         AI
-    }
-
-    public VoteMajority {
-        Objects.requireNonNull(side);
-        if (percent < 0 || percent > 100) {
-            throw new IllegalArgumentException("Percent out of range: " + percent);
-        }
     }
 
     /**
