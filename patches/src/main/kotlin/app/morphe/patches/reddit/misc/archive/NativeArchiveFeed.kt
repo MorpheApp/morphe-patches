@@ -45,7 +45,10 @@ internal fun constructorFields(constructor: Method): List<FieldReference> {
     return constructor.parameterTypes.indices.map { index ->
         constructor.implementation!!.instructions.filter {
             it.opcode in setOf(Opcode.IPUT, Opcode.IPUT_BOOLEAN, Opcode.IPUT_OBJECT) &&
-                (it as TwoRegisterInstruction).registerA == start + index + 1
+                (it as TwoRegisterInstruction).registerA == start + index + 1 && it.registerB == start &&
+                ((it as ReferenceInstruction).reference as FieldReference).let { field ->
+                    field.definingClass == constructor.definingClass && field.type == constructor.parameterTypes[index]
+                }
         }.single().let { (it as ReferenceInstruction).reference as FieldReference }
     }
 }
@@ -110,7 +113,45 @@ internal fun installNativeArchiveFeed(modelType: String, renderer: Method, compo
     val sectionBody = sectionOwner.methods.single { it.name == sectionContent.name && it.parameterTypes == sectionContent.parameterTypes }
     if (sectionBody.calls().none { it.toString() == renderer.toString() }) throw PatchException("Profile section does not call the expected renderer")
     val modelField = sectionOwner.fields.single { it.type == OBJECT }
-    replaceArchiveBridge("sectionModel", 2, """
+
+    // b7f's feed converter may wrap the profile section in a QSF tracking section.
+    // Resolve that container from its named builder lambda and verify key delegation;
+    // do not depend on the feature flag or scan arbitrary Object fields at runtime.
+    val trackingBuilder = Fingerprint(filters = listOf(newInstance(
+        "Lcom/reddit/feeds/impl/RedditFeedQsfSectionWrapper${'$'}buildQsfTrackedSection${'$'}1;"
+    ))).method
+    val wrapperConstructor = trackingBuilder.calls().single { it.name == "<init>" &&
+        it.parameterTypes.firstOrNull() == sectionInterface }
+    val wrapper = classDefBy(wrapperConstructor.definingClass)
+    if (trackingBuilder.returnType != wrapper.type || !wrapper.interfaces.any {
+            it == sectionInterface || sectionInterface in classDefBy(it).interfaces
+        } || !AccessFlags.PUBLIC.isSet(wrapper.accessFlags) ||
+        wrapperConstructor.parameterTypes.size != 8 ||
+        wrapperConstructor.parameterTypes[4] != "Lcom/reddit/qsf/components/QsfDeliveryContext;")
+        throw PatchException("Unexpected native QSF section wrapper")
+    val delegate = constructorFields(wrapper.methods.single { it.toString() == wrapperConstructor.toString() }).first()
+    val wrapperKey = wrapper.methods.single { it.name == sectionKeySignature.name &&
+        it.parameterTypes == sectionKeySignature.parameterTypes && it.returnType == sectionKeySignature.returnType }
+    val keyInstructions = wrapperKey.implementation!!.instructions.toList()
+    if (delegate.type != sectionInterface || !AccessFlags.PUBLIC.isSet(wrapper.fields.single {
+            it.toString() == delegate.toString()
+        }.accessFlags) ||
+        keyInstructions.map { it.opcode } != listOf(Opcode.IGET_OBJECT, Opcode.INVOKE_INTERFACE,
+            Opcode.MOVE_RESULT_OBJECT, Opcode.RETURN_OBJECT) ||
+        (keyInstructions[0] as ReferenceInstruction).reference.toString() != delegate.toString() ||
+        (keyInstructions[1] as ReferenceInstruction).reference.toString() != sectionKeySignature.toString())
+        throw PatchException("Native QSF wrapper does not delegate the section key")
+    replaceArchiveBridge("sectionModel", 3, """
+        const/16 v1, 0x8
+        :unwrap
+        instance-of v0, p0, ${wrapper.type}
+        if-eqz v0, :model
+        if-eqz v1, :none
+        check-cast p0, ${wrapper.type}
+        iget-object p0, p0, $delegate
+        add-int/lit8 v1, v1, -0x1
+        goto :unwrap
+        :model
         instance-of v0, p0, ${sectionOwner.type}
         if-eqz v0, :none
         check-cast p0, ${sectionOwner.type}

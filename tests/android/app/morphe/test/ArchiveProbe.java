@@ -25,6 +25,7 @@ public final class ArchiveProbe extends Instrumentation {
     public static boolean eligible = true;
     public static Object lazyState, revision;
     public static boolean nativeExclusionsVerified;
+    public static int wrapperDepth = 1;
     private static List<?> lastVisible;
     private Activity activity;
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -38,12 +39,16 @@ public final class ArchiveProbe extends Instrumentation {
         }
     };
     @Override public void onCreate(Bundle args) {
-        if (args != null) { tab = args.getString("tab", tab); theme = args.getString("theme", theme); }
+        if (args != null) {
+            tab = args.getString("tab", tab); theme = args.getString("theme", theme);
+            wrapperDepth = Integer.parseInt(args.getString("wrapperDepth", "1"));
+        }
         start();
     }
     @Override public void onStart() {
         Bundle result = new Bundle();
         try {
+            verifyWrappedModels();
             activity = startActivitySync(new Intent().setClassName(getTargetContext().getPackageName(),
                     "app.morphe.test.ArchiveProbe$ProbeActivity").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
             app.morphe.extension.reddit.settings.Settings.PROFILE_ARCHIVE.save(true);
@@ -98,13 +103,31 @@ public final class ArchiveProbe extends Instrumentation {
             runOnMainSync(() -> { eligible = false; bump(); });
             await(() -> !(Boolean) ArchiveFixture.field(beforeOrdinary, "remembered"), 5000, "Ordinary feed disposes archive controller");
             check(ProfileArchivePatch.isPatchIncluded(), "Release bridge installed");
-            result.putString("stream", assertions + " native runtime assertions passed for " + tab + "; drag/fling, paging, previews, cancellation, empty/error/retry.");
+            result.putString("stream", assertions + " native runtime assertions passed for " + tab + "; QSF wrapper depth=" + wrapperDepth + "; drag/fling, paging, previews, cancellation, empty/error/retry.");
             result.putInt("assertions", assertions); finish(Activity.RESULT_OK, result);
         } catch (Throwable error) {
             result.putString("stream", android.util.Log.getStackTraceString(error)); finish(Activity.RESULT_CANCELED, result);
         } finally { running = false; handler.removeCallbacks(tracker); }
     }
     private Object controller() { return ArchiveFixture.controller(username, tab.equals("VISITOR_COMMENT")); }
+    private void verifyWrappedModels() {
+        int saved = wrapperDepth;
+        wrapperDepth = 0;
+        try {
+            for (String target : new String[] {"VISITOR_POST", "VISITOR_COMMENT"}) {
+                Object section = sections(fixtureFeed(target, username, true, true, false)).get(0);
+                Object model = sectionModel(section);
+                check(model != null, "Direct hidden-history section recognized: " + target);
+                String originalKey = key(section);
+                for (int depth = 1; depth <= 2; depth++) {
+                    section = wrapSection(section);
+                    check(key(section).equals(originalKey), "QSF container delegates native section key");
+                    check(sectionModel(section) == model, "QSF-wrapped hidden-history section recognized: " + target + ", depth=" + depth);
+                }
+            }
+            check(sectionModel(null) == null && sectionModel(new Object()) == null, "Unrelated sections remain unrecognized");
+        } finally { wrapperDepth = saved; }
+    }
     private void bump() { writeState(revision, ((Integer) readState(revision)) + 1); }
     private interface Condition { boolean get(); }
     private void await(Condition condition, int timeout, String message) {
@@ -176,6 +199,15 @@ public final class ArchiveProbe extends Instrumentation {
         }); compose.requestApplyInsets();
     }
     public static Object fixtureFeed(String tab, String username, boolean visible, boolean filtered, boolean flair) { throw new UnsupportedOperationException(); }
+    public static Object sectionModel(Object section) { throw new UnsupportedOperationException(); }
+    public static Object wrapSection(Object section) { throw new UnsupportedOperationException(); }
+    public static Object wrapSections(Object section) {
+        for (int i = 0; i < wrapperDepth; i++) section = wrapSection(section);
+        return section;
+    }
+    public static final class TrackNothing implements Function1<Object, Unit> {
+        public Unit invoke(Object ignored) { return unit(); }
+    }
     public static List<?> sections(Object feed) { throw new UnsupportedOperationException(); }
     public static Unit unit() { throw new UnsupportedOperationException(); }
     public static Object newState(Object initial) { throw new UnsupportedOperationException(); }

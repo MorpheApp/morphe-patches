@@ -22,6 +22,8 @@ import java.lang.reflect.InvocationTargetException
 import java.security.MessageDigest
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.DexFileFactory
 import com.android.tools.smali.dexlib2.Opcodes
 
@@ -119,6 +121,15 @@ private fun auditArchiveDex(apk: File, probe: Boolean) {
     check(sectionInterface.methods.all { signature -> section.methods.any {
         it.name == signature.name && it.parameterTypes == signature.parameterTypes && it.returnType == signature.returnType
     } }) { "Native section interface is incomplete" }
+    val modelBridge = classes.getValue("${archive}ProfileArchivePatch;").methods.single { it.name == "sectionModel" }
+    val wrapperChild = modelBridge.implementation!!.instructions.mapNotNull {
+        if (it.opcode == Opcode.IGET_OBJECT) (it as ReferenceInstruction).reference as? FieldReference else null
+    }.single { it.type == sectionInterface.type }
+    check(classes.getValue(wrapperChild.definingClass).interfaces.any {
+        it == sectionInterface.type || sectionInterface.type in classes.getValue(it).interfaces
+    }) {
+        "Native hidden-history bridge must recognize the QSF section wrapper"
+    }
     val controller = classes.getValue("${archive}ArchiveController;")
     val observer = classes.getValue(controller.interfaces.single())
     check(observer.methods.all { signature -> controller.methods.any { it.name == signature.name && it.parameterTypes.isEmpty() } }) {
@@ -136,7 +147,7 @@ private fun auditArchiveDex(apk: File, probe: Boolean) {
             "Test fixture leaked into release"
         }
     }
-    println("Packaged DEX audit passed: section/lifecycle interfaces, native hooks, no legacy scroller, fixture=$probe")
+    println("Packaged DEX audit passed: section/lifecycle interfaces, QSF wrapper bridge, native hooks, no legacy scroller, fixture=$probe")
 }
 
 /** Stock Reddit contains references to optional, absent SDK modules. Accept only the exact

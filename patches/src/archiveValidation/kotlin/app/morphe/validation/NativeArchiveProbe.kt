@@ -22,7 +22,7 @@ fun installNativeProbe() = with(context) {
     fun bridge(name: String, registers: Int, code: String) = replaceArchiveBridge(name, registers, code, PROBE)
     val unit = classDefBy("Lkotlin/Unit;").fields.single { it.type == "Lkotlin/Unit;" }
     bridge("unit", 1, "sget-object v0, $unit\nreturn-object v0")
-    listOf("newState", "readState", "writeState").forEach { name ->
+    listOf("newState", "readState", "writeState", "sectionModel").forEach { name ->
         // Copy generated bridge bodies; do not make package-private release methods public.
         val source = classDefBy("${ARCHIVE}ProfileArchivePatch;").methods.single { it.name == name }
         val owner = mutableClassDefBy(PROBE)
@@ -45,6 +45,8 @@ fun installNativeProbe() = with(context) {
         new-instance v1, Lux0;
         const/4 v2, 0x3
         invoke-direct { v1, v0, v2 }, Lux0;-><init>(Ljava/lang/Object;I)V
+        invoke-static { v1 }, $PROBE->wrapSections(Ljava/lang/Object;)Ljava/lang/Object;
+        move-result-object v1
         invoke-static { v1 }, Ljava/util/Collections;->singletonList(Ljava/lang/Object;)Ljava/util/List;
         move-result-object v1
         invoke-static { v1 }, Lg4p0;->a0(Ljava/lang/Iterable;)Lzep;
@@ -61,6 +63,26 @@ fun installNativeProbe() = with(context) {
         move v10, p2
         const/4 v11, 0x0
         invoke-direct/range { v0 .. v11 }, Ld6j;-><init>(Lzep;Lhuk0;ZZZLc6j;Ljava/lang/String;ZLvvf0;ZLy4j;)V
+        return-object v0
+    """)
+    // Real QSF section container used by Reddit's feed converter when tracking is enabled.
+    // A naked ux0 fixture missed the .4 activation regression on configured live feeds.
+    bridge("wrapSection", 10, """
+        new-instance v0, Lmm60;
+        move-object v1, p0
+        check-cast v1, Lw6c;
+        const-string v2, "profile_no_content_banner|archive_probe"
+        const/4 v3, 0x0
+        new-instance v4, Lapp/morphe/test/ArchiveProbe${'$'}TrackNothing;
+        invoke-direct { v4 }, Lapp/morphe/test/ArchiveProbe${'$'}TrackNothing;-><init>()V
+        new-instance v5, Lcom/reddit/qsf/components/QsfDeliveryContext;
+        invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
+        move-result-object v6
+        invoke-direct { v5, v2, v6 }, Lcom/reddit/qsf/components/QsfDeliveryContext;-><init>(Ljava/lang/String;Ljava/util/List;)V
+        const/4 v6, 0x0
+        const/4 v7, 0x0
+        const/4 v8, 0x0
+        invoke-direct/range { v0 .. v8 }, Lmm60;-><init>(Lw6c;Ljava/lang/String;ZLkotlin/jvm/functions/Function1;Lcom/reddit/qsf/components/QsfDeliveryContext;Lrk60;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function2;)V
         return-object v0
     """)
     bridge("sections", 1, "check-cast p0, Ld6j;\niget-object p0, p0, Ld6j;->a:Lzep;\nreturn-object p0")

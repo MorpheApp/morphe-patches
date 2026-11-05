@@ -6,13 +6,13 @@ The patch automatically replaces Reddit's explicit hidden-public-history message
 
 **Supported input:** official Reddit Android `com.reddit.frontpage`, **2026.40.0**, version code **2640091**. The patch deliberately advertises no other Reddit versions.
 
-**Version .4:** archived records are individual keyed items in Reddit's existing feed. The embedded ListView, screen-height workaround, and scroll forwarding have been removed. Card appearance and discussion actions retain the .3 baseline.
+**Version .5:** fixes the .4 activation regression when Reddit wraps its hidden-history section in a QSF tracking container. The patch now recognizes the verified container and the original section inside it. Archive cards remain individual keyed items in Reddit's existing feed, with the .3 card appearance and discussion actions.
 
-**Device comparison:** S26 Ultra / Android 17 verification on u/literatemice is pending user testing. Emulator fixture results do not establish parity with Reddit's complete profile header and horizontal pager. The supplied .3 APK was inspected as a diagnostic baseline; all .4 builds use the clean supported APKM.
+**Device comparison:** S26 Ultra / Android 17 verification on u/literatemice is pending user testing. Emulator fixture results do not establish parity with Reddit's complete profile header and horizontal pager. The supplied .3 APK was inspected as a diagnostic baseline; all .5 builds use the clean supported APKM.
 
 ## Install with Morphe Manager
 
-1. Copy `patches-2.0.0-profile-archive.4.mpp` and your unmodified Reddit **2026.40.0 APKM** to your phone. If upgrading from `.3` or earlier, import this new bundle and patch the original APKM again; importing a bundle alone does not update the installed Reddit app.
+1. Copy `patches-2.0.0-profile-archive.5.mpp` and your unmodified Reddit **2026.40.0 APKM** to your phone. If upgrading from `.4` or earlier, import this new bundle and patch the original APKM again; importing a bundle alone does not update the installed Reddit app. Keep your existing Manager signing key to install as an update.
 2. In Morphe Manager, open **Sources**, tap **+**, choose **Local**, and import the `.mpp`. The source is named **RedditApp custom patches**. See the [official local-source guide](https://github.com/MorpheApp/morphe-manager/blob/main/docs/patch-sources.md).
 3. Use **only this custom source for Reddit**. On Manager's home screen, long-press Reddit, tap **Patch sources**, untick **Morphe Patches**, and leave **RedditApp custom patches** ticked. This bundle already includes the standard upstream patches. This per-app choice leaves other apps' patch sources unchanged.
 4. Enable Expert mode if needed and select **Archived public profile history**. It is deliberately opt-in in the patch list. Its in-app setting starts enabled once the patch is selected. Select the unmodified APKM and patch it.
@@ -57,7 +57,7 @@ $env:GRADLE_USER_HOME = "$PWD\.local\gradle"
 .\scripts\test-profile-archive.ps1
 ```
 
-Bundle output: `patches/build/libs/patches-2.0.0-profile-archive.4.mpp`.
+Bundle output: `patches/build/libs/patches-2.0.0-profile-archive.5.mpp`.
 
 Apply source code to a local APK/APKM and perform Android SDK checks:
 
@@ -71,7 +71,7 @@ Validate the actual packaged bundle instead of loose build outputs:
 .\gradlew.bat :patches:validateProfileArchiveBundle `
   '-PredditApk=C:/path/reddit-2026.40.0.apkm' `
   '-PredditOutput=.local/output/reddit-from-bundle-unsigned.apk' `
-  '-PredditBundle=patches/build/libs/patches-2.0.0-profile-archive.4.mpp'
+  '-PredditBundle=patches/build/libs/patches-2.0.0-profile-archive.5.mpp'
 ```
 
 For a compatibility check against another prepared local Patcher checkout, add
@@ -86,9 +86,39 @@ adb -s emulator-5582 shell am instrument -w -e tab VISITOR_COMMENT `
   com.reddit.frontpage/app.morphe.test.ArchiveProbe
 ```
 
-The fixture injects real MotionEvent drags/flings. It feeds actual lazy-layout positions into Reddit's visible-item event constructor. Its header is a synthetic lazy item, not the complete Reddit profile shell. Fixture network responses cover three pages, delayed previews, cancellation, empty results, error and retry. It never contacts the archive service. Release builds contain neither these fixtures nor the transport replacement.
+The fixture constructs Reddit's real QSF section container, including its delivery context, around the hidden-history section by default. Pass `-e wrapperDepth 0` for the direct section or `-e wrapperDepth 2` for nested containers. It also checks both models at depths zero, one, and two before rendering. The fixture injects real MotionEvent drags/flings and feeds actual lazy-layout positions into Reddit's visible-item event constructor. Its header is a synthetic lazy item, not the complete Reddit profile shell. Fixture network responses cover three pages, delayed previews, cancellation, empty results, error and retry. It never contacts the archive service. Release builds contain neither these fixtures nor the transport replacement.
+
+## Hidden-history activation .5 verification recorded on 2026-11-05
+
+Reddit's feed converter can surround its hidden-history section with a QSF tracking container. The .4 hook only accepted the direct section, so it left Reddit's original hidden-history message untouched whenever that container was present. The .4 fixture constructed only the direct section and missed this case.
+
+The .5 bridge resolves the container from Reddit's QSF factory, verifies its constructor field, inherited section interface, public access, and delegated key method, then reads the original profile model through that verified container. Direct sections still work. No runtime reflection or archive eligibility change is introduced, and cards remain items in the native feed.
+
+- **Before/after regression:** the new test fails against the .4 hook at `QSF-wrapped hidden-history section recognized: VISITOR_POST, depth=1`. The corrected hook recognizes the exact same model through direct, wrapped, and nested sections in both tabs; unrelated objects remain unrecognized.
+- **Runtime:** four emulator runs each pass **39 assertions**: wrapped Posts in light theme, doubly wrapped Comments in dark theme, unwrapped Posts, and wrapped Comments at **1.6× font scale**. Every run loads 73 records over three pages and verifies real drag/fling/reverse gestures, bounded rows, delayed-preview anchors, visibility return, profile cancellation, stale-result rejection, eligibility exclusions, empty/error states, and retry. The emulator is the disposable read-only Pixel 10 Pro Fold, API 37, at 1080 × 2340 / 420 dpi.
+- **Core:** eligibility checks, **244 core assertions**, and **22 native-item assertions** pass.
+- **Bundle:** `:patches:buildAndroid` and `:patches:checkStringResources` pass. The actual `.5` bundle loads **195 patches**, applies to the clean supported APKM, and passes SDK DEX validation with the same **30 stock optional-SDK findings** and no additional findings.
+- **Packaged audit:** native section/lifecycle interfaces, the QSF-unwrapping bridge, one feed hook, and one visible-item hook are present. The legacy scrolling list and test fixture are absent from the release.
+- **Release launch:** the APK built from the packaged bundle installed and opened Reddit's ordinary welcome screen without a crash. No account was signed in.
+
+The fixture uses the real Reddit container and Compose runtime but constructs its own surrounding feed. Signed-in profile activation on the S26 Ultra and the full collapsing header/pager remain pending the device check below.
+
+### S26 Ultra / Android 17 acceptance check
+
+The user will perform this comparison. **Device-level parity remains unverified until it passes.** Rebuild from the original 2026.40.0 APKM with `.5`, using the existing Manager signing key for an update. First confirm that the hidden-history message is replaced by archive loading/results in both tabs.
+
+1. Compare an ordinary profile with u/literatemice, in both Posts and Comments. Slowly drag from the expanded header into the feed, then fling through the same boundary. The header should collapse/expand continuously without an extra swipe.
+2. Reverse direction mid-scroll and swipe horizontally between tabs. Return to each tab and confirm its own visible card and offset are retained.
+3. Scroll through at least three pages. Let previews finish loading while stationary; the visible card should not jump. Check the loading footer, empty/error/Retry states, and the end state when available.
+4. Open an original discussion and return. Switch profiles while loading, rotate the phone, and repeat at large text size. Confirm position retention, readable cards, and no cards from the previous profile.
+
+The fixture validates the host lazy runtime and adapter/controller together. It does not establish signed-in activation, actual profile-shell nested scrolling, horizontal tab gestures, discussion Back navigation, rotation restoration, physical refresh-rate behavior, or exact S26 parity. These remain in the device checklist.
+
+The sections below are historical verification for earlier bundles; the .3 and earlier instrumentation arguments are not supported by the current fixture.
 
 ## Native scrolling .4 verification recorded on 2026-11-05
+
+These tests missed the QSF-wrapped section used by configured live feeds. The user reported that .4 showed Reddit's original hidden-history message; .5 adds and fixes that regression. The passing .4 fixture results below do not prove activation on those feeds.
 
 The release replaces the native hidden-history section with one native section per indicator, card, or status. Patch-time discovery verifies Reddit's section renderer/key interface, feed-state constructor, snapshot state, RememberObserver lifecycle, and visible-item event before emitting typed bridges. Any failed match stops patching. The controller owns paging, caching, cancellation, and enrichment; non-scrolling row views own their image requests. No second Compose runtime is shipped.
 
@@ -99,19 +129,6 @@ The release replaces the native hidden-history section with one native section p
 - The release APK built from the packaged bundle was signed with the local emulator test key, installed, and launched successfully. Reddit reached its ordinary welcome/sign-in screen; the crash buffer stayed empty. No account was signed in.
 - An additional packaged-DEX audit verifies the emitted section/lifecycle interfaces, exactly one feed hook and one visible-item hook, absence of `ArchiveFeedView`, and absence of test classes in the release. The release build has no test instrumentation or transport override.
 - The supplied `.3` APK is a diagnostic baseline only. Prior live u/literatemice testing stopped at Reddit's mature-content gate. No gate or account restriction is bypassed by the tests.
-
-### S26 Ultra / Android 17 acceptance check
-
-The user will perform this comparison. **Device-level parity remains unverified until it passes.** Rebuild from the original 2026.40.0 APKM with `.4`, using the existing Manager signing key for an update.
-
-1. Compare an ordinary profile with u/literatemice, in both Posts and Comments. Slowly drag from the expanded header into the feed, then fling through the same boundary. The header should collapse/expand continuously without an extra swipe.
-2. Reverse direction mid-scroll and swipe horizontally between tabs. Return to each tab and confirm its own visible card and offset are retained.
-3. Scroll through at least three pages. Let previews finish loading while stationary; the visible card should not jump. Check the loading footer, empty/error/Retry states, and the end state when available.
-4. Open an original discussion and return. Switch profiles while loading, rotate the phone, and repeat at large text size. Confirm position retention, readable cards, and no cards from the previous profile.
-
-The fixture validates the host lazy runtime and adapter/controller together. It does not establish signed-in activation, actual profile-shell nested scrolling, horizontal tab gestures, discussion Back navigation, rotation restoration, physical refresh-rate behavior, or exact S26 parity. These remain in the device checklist.
-
-The sections below are historical verification for earlier bundles; their old instrumentation arguments are not supported by the .4 fixture.
 
 ## Layout fix .3 verification recorded on 2026-11-05
 
