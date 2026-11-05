@@ -33,6 +33,7 @@ import androidx.annotation.Nullable;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.CodedInputStream;
 import com.google.protobuf.CodedOutputStream;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 import com.google.protobuf.WireFormat;
 
@@ -516,7 +517,7 @@ public class FeedCardLayoutPatch {
          * Whether the uri and the fields were taken from an element.
          */
         private volatile boolean fromElement;
-        private long cacheLookupTime;
+        private volatile long cacheLookupTime;
         private long checkTime;
 
         VideoTemplate(String name, int modelField, int themeField, int capabilitiesField) {
@@ -569,9 +570,15 @@ public class FeedCardLayoutPatch {
                                 }
                             }
                         }
+                    } catch (InvalidProtocolBufferException ex) {
+                        // The app rewrites the cache while it runs, so the file can be read while it's
+                        // incomplete. The uri found before is kept, and the cache is read again soon.
+                        Logger.printDebug(() -> "Template cache is being written", ex);
+                        cacheLookupTime = System.currentTimeMillis() - TEMPLATE_LOOKUP_INTERVAL_MILLIS + 1000;
+                        return;
                     } catch (Exception ex) {
-                        cached = null;
                         Logger.printException(() -> "getUri failure", ex);
+                        return;
                     }
                     // An element of the template can be seen while the cache is read.
                     if (!fromElement && !Objects.equals(uri, cached)) {
