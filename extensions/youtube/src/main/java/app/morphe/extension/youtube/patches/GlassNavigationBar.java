@@ -958,6 +958,13 @@ public final class GlassNavigationBar {
                 final float radius = capsule.height() / 2;
                 updateShaders();
 
+                // The Shorts player ends above the navigation bar, so the background of the window
+                // would show around the capsule, which is white with the light theme.
+                // The Shorts player is always dark, so the bar is kept black around the capsule.
+                if (style == STYLE_SHORTS) {
+                    canvas.drawColor(Color.BLACK);
+                }
+
                 // Soft shadow below the capsule.
                 for (int i = SHADOW_LAYERS; i >= 1; i--) {
                     scratch.set(capsule);
