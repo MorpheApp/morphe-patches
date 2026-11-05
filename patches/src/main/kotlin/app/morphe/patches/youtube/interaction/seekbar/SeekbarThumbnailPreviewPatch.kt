@@ -122,5 +122,14 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
                 )
             }
         }
+
+        // When a Shorts player is closed, this flag detaches the seekbar from the views of the Shorts player
+        // that was opened next, since both use the same id. The seekbar is then gone until the app restarts.
+        ShortsSeekbarDetachFeatureFlagFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                false
+            )
+        }
     }
 }

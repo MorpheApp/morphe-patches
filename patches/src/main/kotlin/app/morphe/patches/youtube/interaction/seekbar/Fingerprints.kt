@@ -145,6 +145,12 @@ internal object ShortsDisableSeekbarThumbnailsFeatureFlagFingerprint : Fingerpri
     )
 )
 
+internal object ShortsSeekbarDetachFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45421233)
+    )
+)
+
 internal object VideoStreamingDataAllowSeekingFingerprint : Fingerprint(
     classFingerprint = VideoStreamingDataToStringFingerprint,
     returnType = "Z",
