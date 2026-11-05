@@ -38,9 +38,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import java.lang.ref.WeakReference
 
-private lateinit var spannedMethodRef: WeakReference<MutableMethod>
-private var spannedIndex = -1
-private var spannedRegister = -1
 private var spannedContextRegister = -1
 
 private lateinit var textComponentLookupMethodRef : WeakReference<MutableMethod>
@@ -66,15 +63,14 @@ val textComponentPatch = patch(
     )
 
     execute {
-        SpannableStringBuilderFingerprint.let{
+        SpannableStringBuilderFingerprint.let {
             it.method.apply {
-                spannedMethodRef = WeakReference(this)
-                spannedIndex = it.instructionMatches.first().index
-                spannedRegister = getInstruction<FiveRegisterInstruction>(spannedIndex).registerC
+                val spannedIndex = it.instructionMatches.first().index
+                val spannedRegister = getInstruction<FiveRegisterInstruction>(spannedIndex).registerC
                 spannedContextRegister = findFreeRegister(spannedIndex, spannedRegister)
 
                 addInstructionsAtControlFlowLabel(
-                    spannedIndex++,
+                    spannedIndex,
                     "move-object/from16 v$spannedContextRegister, p0"
                 )
             }
@@ -189,21 +185,28 @@ internal fun hookSpannableString(
     classDescriptor: String,
     methodName: String = "onLithoTextLoaded",
     overrideSpan: Boolean = false
-) = spannedMethodRef.get()!!.apply {
-    if (overrideSpan) {
-        addInstructions(
-            spannedIndex,
-            """
-                invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
-                move-result-object v$spannedRegister
-            """
-        )
-        spannedIndex += 2
-    } else {
-        addInstruction(
-            spannedIndex++,
-            "invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)V"
-        )
+) = SpannableStringBuilderFingerprint.let {
+    // Hooks of the same method, such as hookSpannableStringResult, can shift the instructions.
+    it.clearMatch()
+
+    it.method.apply {
+        val spannedIndex = it.instructionMatches.first().index
+        val spannedRegister = getInstruction<FiveRegisterInstruction>(spannedIndex).registerC
+
+        if (overrideSpan) {
+            addInstructions(
+                spannedIndex,
+                """
+                    invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                    move-result-object v$spannedRegister
+                """
+            )
+        } else {
+            addInstruction(
+                spannedIndex,
+                "invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)V"
+            )
+        }
     }
 }
 
@@ -216,7 +219,7 @@ internal fun hookSpannableString(
 internal fun hookSpannableStringResult(
     classDescriptor: String,
     methodName: String = "onLithoTextLoaded"
-) = spannedMethodRef.get()!!.apply {
+) = SpannableStringBuilderFingerprint.method.apply {
     findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { returnIndex ->
         val textRegister = getInstruction<OneRegisterInstruction>(returnIndex).registerA
         val contextRegister = findFreeRegister(returnIndex, textRegister)
