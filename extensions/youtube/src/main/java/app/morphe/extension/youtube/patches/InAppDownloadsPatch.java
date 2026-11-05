@@ -40,6 +40,9 @@ import app.morphe.extension.youtube.innertube.Offline.EntityKey;
 import app.morphe.extension.youtube.innertube.Offline.FlexibleAction;
 import app.morphe.extension.youtube.innertube.Offline.FlexibleActionsRow;
 import app.morphe.extension.youtube.innertube.Offline.FlexibleActionsViewModel;
+import app.morphe.extension.youtube.innertube.Offline.OfflineCaptionTrack;
+import app.morphe.extension.youtube.innertube.Offline.OfflineCaptionTracklist;
+import app.morphe.extension.youtube.innertube.Offline.OfflineCaptions;
 import app.morphe.extension.youtube.innertube.Offline.OfflineCommand;
 import app.morphe.extension.youtube.innertube.Offline.OfflineDownloadAction;
 import app.morphe.extension.youtube.innertube.Offline.OfflineDownloadActionCommand;
@@ -332,6 +335,9 @@ public final class InAppDownloadsPatch {
             OfflinePlayerResponse.Builder builder = OfflinePlayerResponse.parseFrom(streams.streamingData()).toBuilder();
             builder.setStreamingData(savableStreamingData(builder.getStreamingData()))
                     .setOfflineState(playableOfflineState(original.getOfflineState().getToken()));
+            if (builder.hasCaptions()) {
+                builder.setCaptions(srv3Captions(builder.getCaptions()));
+            }
 
             // Without the ExoPlayer config the app only looks at the progressive formats, which are not savable.
             // The player config of the app's own response fits the device, so it's kept if there is one.
@@ -643,6 +649,21 @@ public final class InAppDownloadsPatch {
             }
         }
         return builder.build();
+    }
+
+    /**
+     * @see OfflineCaptionUrl
+     */
+    private static OfflineCaptions srv3Captions(OfflineCaptions captions) {
+        OfflineCaptionTracklist.Builder tracklist = captions.getPlayerCaptionsTracklistRenderer().toBuilder();
+        for (int i = 0, count = tracklist.getCaptionTracksCount(); i < count; i++) {
+            OfflineCaptionTrack track = tracklist.getCaptionTracks(i);
+            String baseUrl = OfflineCaptionUrl.withSrv3Format(track.getBaseUrl());
+            if (!baseUrl.equals(track.getBaseUrl())) {
+                tracklist.setCaptionTracks(i, track.toBuilder().setBaseUrl(baseUrl));
+            }
+        }
+        return captions.toBuilder().setPlayerCaptionsTracklistRenderer(tracklist).build();
     }
 
     private static boolean isSavableMimeType(String mimeType) {
