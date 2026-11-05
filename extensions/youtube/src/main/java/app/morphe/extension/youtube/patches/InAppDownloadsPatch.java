@@ -112,6 +112,14 @@ public final class InAppDownloadsPatch {
     private static final String UNSAVABLE_AUDIO_MIME_TYPE_PREFIX = "audio/webm";
 
     /**
+     * Format of the caption urls of the app. The caption urls of visionOS have no format, and the server
+     * then answers with a legacy format whose text is escaped twice, so the saved captions show
+     * entities such as {@code &#39;} instead of an apostrophe.
+     * The format is not a signed parameter, so the url stays valid.
+     */
+    private static final String CAPTION_URL_FORMAT = "&fmt=srv3";
+
+    /**
      * Key of the interaction logger, in the context a command is run with.
      */
     private static final String INTERACTION_LOGGER_KEY = "com.google.android.libraries.youtube.logging.interaction_logger";
@@ -651,17 +659,12 @@ public final class InAppDownloadsPatch {
         return builder.build();
     }
 
-    /**
-     * @see OfflineCaptionUrl
-     */
     private static OfflineCaptions srv3Captions(OfflineCaptions captions) {
         OfflineCaptionTracklist.Builder tracklist = captions.getPlayerCaptionsTracklistRenderer().toBuilder();
         for (int i = 0, count = tracklist.getCaptionTracksCount(); i < count; i++) {
             OfflineCaptionTrack track = tracklist.getCaptionTracks(i);
-            String baseUrl = OfflineCaptionUrl.withSrv3Format(track.getBaseUrl());
-            if (!baseUrl.equals(track.getBaseUrl())) {
-                tracklist.setCaptionTracks(i, track.toBuilder().setBaseUrl(baseUrl));
-            }
+            String baseUrl = track.getBaseUrl().replaceAll("&fmt=[^&]*", "") + CAPTION_URL_FORMAT;
+            tracklist.setCaptionTracks(i, track.toBuilder().setBaseUrl(baseUrl));
         }
         return captions.toBuilder().setPlayerCaptionsTracklistRenderer(tracklist).build();
     }
