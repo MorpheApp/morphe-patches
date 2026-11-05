@@ -68,7 +68,8 @@ final class YouTubeChatSource implements Runnable {
     private static final long REPLAY_SEEK_THRESHOLD_MS = 12_000;
     private static final long REPLAY_START_MARGIN_MS = 5_000;
     private static final int REPLAY_MAX_FETCHES_PER_UPDATE = 12;
-    private static final int MAX_COMMENT_LENGTH = 200;
+    private static final int MAX_CONSECUTIVE_FAILURES = 3;
+    static final int MAX_COMMENT_LENGTH = 200;
     private static final int MAX_SEEN_IDS = 4_096;
     private static final int TIMED_COMMENTS_MAX_PAGES = 40;
     /**
@@ -76,6 +77,11 @@ final class YouTubeChatSource implements Runnable {
      * Most videos have few timed comments, and they are near the top.
      */
     private static final int TIMED_COMMENTS_MAX_PAGES_WITHOUT_ANY = 10;
+    /**
+     * A seek back by more than this passes on the timed comments of the part that plays again.
+     * It is shorter than the replay seek threshold, so a double tap seek back also shows them again.
+     */
+    private static final long TIMED_COMMENTS_SEEK_BACK_THRESHOLD_MS = 2_000;
 
     /**
      * The watch page sets ytInitialData in a script, or puts it in a JSON script element.
@@ -114,7 +120,7 @@ final class YouTubeChatSource implements Runnable {
         Logger.printDebug(() -> "Starting public live/replay chat source for " + videoId);
 
         PageState state = null;
-        for (int attempt = 1; attempt <= 3 && !stopped; attempt++) {
+        for (int attempt = 1; attempt <= MAX_CONSECUTIVE_FAILURES && !stopped; attempt++) {
             try {
                 state = fetchPageState();
                 break;
@@ -133,15 +139,14 @@ final class YouTubeChatSource implements Runnable {
             Logger.printDebug(() -> "Comments are turned off for " + videoType + ": " + videoId);
             return;
         }
+
         if (state.continuation == null) {
-            Logger.printDebug(() -> "No public live/replay continuation found for " + videoId);
-            if (state.commentsContinuation != null && Settings.NICONICO_COMMENTS_TIMED_COMMENTS.get()) {
+            if (state.commentsContinuation == null) {
+                Logger.printDebug(() -> "No public live/replay continuation found for " + videoId);
+            } else {
                 runTimedComments(state);
             }
-            return;
-        }
-
-        if (state.replay) {
+        } else if (state.replay) {
             runReplay(state);
         } else {
             runLive(state);
@@ -188,9 +193,10 @@ final class YouTubeChatSource implements Runnable {
                     return;
                 }
                 consecutiveFailures++;
-                String message = "Live-chat request failed (" + consecutiveFailures + "/3)";
+                String message = "Live-chat request failed ("
+                        + consecutiveFailures + "/" + MAX_CONSECUTIVE_FAILURES + ")";
                 Logger.printInfo(() -> message, exception);
-                if (consecutiveFailures >= 3) {
+                if (consecutiveFailures >= MAX_CONSECUTIVE_FAILURES) {
                     break;
                 }
                 sleepBeforeRetry(consecutiveFailures);
@@ -285,9 +291,10 @@ final class YouTubeChatSource implements Runnable {
                         return;
                     }
                     consecutiveFailures++;
-                    String message = "Replay-chat request failed (" + consecutiveFailures + "/3)";
+                    String message = "Replay-chat request failed ("
+                            + consecutiveFailures + "/" + MAX_CONSECUTIVE_FAILURES + ")";
                     Logger.printInfo(() -> message, exception);
-                    if (consecutiveFailures >= 3) {
+                    if (consecutiveFailures >= MAX_CONSECUTIVE_FAILURES) {
                         done = true;
                     } else {
                         sleepBeforeRetry(consecutiveFailures);
@@ -300,40 +307,44 @@ final class YouTubeChatSource implements Runnable {
     }
 
     /**
-     * Loads the top comments one page at a time, and keeps passing on the ones whose time is near
-     * the video time. After a seek, the comments around the new time are passed on again.
+     * Loads the top comments one page at a time, and keeps passing on the timed comments
+     * near the video time. After a seek, the comments around the new time are passed on again.
      */
     private void runTimedComments(PageState state) {
         Logger.printDebug(() -> "Timed comments source selected for " + videoId);
         List<NiconicoComment> timedComments = new ArrayList<>();
         String continuation = state.commentsContinuation;
         int pages = 0;
-        int pagesWithoutAny = 0;
+        int pagesWithoutTimedComments = 0;
         int consecutiveFailures = 0;
         long lastVideoTimeMs = -1;
 
         while (!stopped) {
-            boolean loading = continuation != null && pages < TIMED_COMMENTS_MAX_PAGES
-                    && pagesWithoutAny < TIMED_COMMENTS_MAX_PAGES_WITHOUT_ANY;
+            boolean loading = continuation != null
+                    && pages < TIMED_COMMENTS_MAX_PAGES
+                    && pagesWithoutTimedComments < TIMED_COMMENTS_MAX_PAGES_WITHOUT_ANY;
             if (loading) {
                 try {
                     TimedComments.Page page = fetchCommentsPage(state, continuation);
-                    pages++;
                     consecutiveFailures = 0;
+                    pages++;
+                    pagesWithoutTimedComments = page.comments.isEmpty() ? pagesWithoutTimedComments + 1 : 0;
                     timedComments.addAll(page.comments);
-                    pagesWithoutAny = page.comments.isEmpty() ? pagesWithoutAny + 1 : 0;
+                    continuation = page.continuation;
+
                     int loadedPages = pages;
                     int timedCount = timedComments.size();
-                    Logger.printDebug(() -> "Loaded comments page " + loadedPages + ", timed comments: " + timedCount);
-                    continuation = page.continuation;
+                    Logger.printDebug(() -> "Loaded comments page " + loadedPages
+                            + ", timed comments: " + timedCount);
                 } catch (Exception exception) {
                     if (stopped) {
                         return;
                     }
                     consecutiveFailures++;
-                    String message = "Comments request failed (" + consecutiveFailures + "/3)";
+                    String message = "Comments request failed ("
+                            + consecutiveFailures + "/" + MAX_CONSECUTIVE_FAILURES + ")";
                     Logger.printInfo(() -> message, exception);
-                    if (consecutiveFailures >= 3) {
+                    if (consecutiveFailures >= MAX_CONSECUTIVE_FAILURES) {
                         continuation = null;
                     } else {
                         sleepBeforeRetry(consecutiveFailures);
@@ -343,7 +354,11 @@ final class YouTubeChatSource implements Runnable {
 
             long videoTimeMs = listener.getVideoTimeMs();
             if (videoTimeMs >= 0) {
-                if (lastVideoTimeMs >= 0 && Math.abs(videoTimeMs - lastVideoTimeMs) > REPLAY_SEEK_THRESHOLD_MS) {
+                // The controller clears the shown comments after a long seek forward,
+                // and a seek back plays comments that were already passed on.
+                long timeChangeMs = videoTimeMs - lastVideoTimeMs;
+                if (lastVideoTimeMs >= 0 && (timeChangeMs < -TIMED_COMMENTS_SEEK_BACK_THRESHOLD_MS
+                        || timeChangeMs > REPLAY_SEEK_THRESHOLD_MS)) {
                     clearSeenIds();
                     listener.onReplayReset(videoId);
                 }
@@ -369,21 +384,12 @@ final class YouTubeChatSource implements Runnable {
 
     private TimedComments.Page fetchCommentsPage(PageState state, String continuation)
             throws IOException, JSONException {
-        String endpoint = YOUTUBE_ORIGIN + "/youtubei/v1/next?key="
-                + URLEncoder.encode(state.apiKey, StandardCharsets.UTF_8.name())
-                + "&prettyPrint=false";
-
-        JSONObject body = new JSONObject();
-        body.put("context", state.context);
-        body.put("continuation", continuation);
-
-        String responseText = request(
-                endpoint,
-                body.toString(),
-                state.clientVersion,
-                getVisitorData(state.context)
+        JSONObject response = postInnertube(
+                state,
+                "next",
+                new JSONObject().put("continuation", continuation)
         );
-        return TimedComments.parsePage(new JSONObject(stripJsonPrefix(responseText)), state.videoLengthMs);
+        return TimedComments.parsePage(response, state.videoLengthMs);
     }
 
     private PageState fetchPageState() throws IOException, JSONException {
@@ -452,58 +458,50 @@ final class YouTubeChatSource implements Runnable {
             );
         }
 
-        VideoType videoType = getVideoType(playerResponse);
-        if (liveChatRenderer == null) {
-            return withTimedComments(
-                    new PageState(apiKey, clientVersion, context, null, false, videoType),
-                    initialData,
-                    playerResponse
-            );
-        }
-        if (replayContinuation != null) {
-            try {
-                Continuation allMessages = fetchAllMessagesReplayContinuation(
-                        replayContinuation.value
-                );
-                if (allMessages != null) {
-                    replayContinuation = allMessages;
+        Continuation continuation = null;
+        boolean replay = false;
+        if (liveChatRenderer != null) {
+            if (replayContinuation != null) {
+                try {
+                    Continuation allMessages = fetchAllMessagesReplayContinuation(
+                            replayContinuation.value
+                    );
+                    if (allMessages != null) {
+                        replayContinuation = allMessages;
+                    }
+                } catch (Exception exception) {
+                    Logger.printInfo(() -> "Could not select the all-messages replay filter", exception);
                 }
-            } catch (Exception exception) {
-                Logger.printInfo(() -> "Could not select the all-messages replay filter", exception);
+                continuation = replayContinuation;
+                replay = true;
+            } else {
+                continuation = findContinuation(
+                        continuations,
+                        "timedContinuationData",
+                        "invalidationContinuationData",
+                        "reloadContinuationData"
+                );
             }
-
-            return new PageState(
-                    apiKey,
-                    clientVersion,
-                    context,
-                    replayContinuation,
-                    true,
-                    videoType
-            );
         }
 
-        Continuation continuation = findContinuation(
-                continuations,
-                "timedContinuationData",
-                "invalidationContinuationData",
-                "reloadContinuationData"
-        );
-        PageState state = new PageState(apiKey, clientVersion, context, continuation, false, videoType);
-        return continuation == null ? withTimedComments(state, initialData, playerResponse) : state;
-    }
-
-    /**
-     * Adds the comments section to the state of a video without a chat.
-     */
-    private static PageState withTimedComments(
-            PageState state,
-            JSONObject initialData,
-            @Nullable JSONObject playerResponse
-    ) {
-        state.commentsContinuation = TimedComments.findCommentsContinuation(initialData);
+        // A video without a chat shows its timed comments instead.
+        String commentsContinuation =
+                continuation == null && Settings.NICONICO_COMMENTS_TIMED_COMMENTS.get()
+                        ? TimedComments.findCommentsContinuation(initialData)
+                        : null;
         JSONObject videoDetails = getObjectPath(playerResponse, "videoDetails");
-        state.videoLengthMs = videoDetails == null ? 0 : videoDetails.optLong("lengthSeconds") * 1000;
-        return state;
+        long videoLengthMs = videoDetails == null ? 0 : videoDetails.optLong("lengthSeconds") * 1000;
+
+        return new PageState(
+                apiKey,
+                clientVersion,
+                context,
+                continuation,
+                replay,
+                getVideoType(playerResponse),
+                commentsContinuation,
+                videoLengthMs
+        );
     }
 
     private Continuation fetchAllMessagesReplayContinuation(String continuation)
@@ -563,21 +561,11 @@ final class YouTubeChatSource implements Runnable {
 
     private ChatPage fetchChatPage(PageState state, String continuation)
             throws IOException, JSONException {
-        String endpoint = YOUTUBE_ORIGIN + "/youtubei/v1/live_chat/get_live_chat?key="
-                + URLEncoder.encode(state.apiKey, StandardCharsets.UTF_8.name())
-                + "&prettyPrint=false";
-
-        JSONObject body = new JSONObject();
-        body.put("context", state.context);
-        body.put("continuation", continuation);
-
-        String responseText = request(
-                endpoint,
-                body.toString(),
-                state.clientVersion,
-                getVisitorData(state.context)
+        JSONObject response = postInnertube(
+                state,
+                "live_chat/get_live_chat",
+                new JSONObject().put("continuation", continuation)
         );
-        JSONObject response = new JSONObject(stripJsonPrefix(responseText));
         JSONObject liveChatContinuation = getLiveChatContinuation(response);
         if (liveChatContinuation == null) {
             return new ChatPage(new ArrayList<>(), null, -1);
@@ -598,25 +586,14 @@ final class YouTubeChatSource implements Runnable {
             String continuation,
             long playerOffsetMs
     ) throws IOException, JSONException {
-        String endpoint = YOUTUBE_ORIGIN + "/youtubei/v1/live_chat/get_live_chat_replay?key="
-                + URLEncoder.encode(state.apiKey, StandardCharsets.UTF_8.name())
-                + "&prettyPrint=false";
-
         JSONObject body = new JSONObject();
-        body.put("context", state.context);
         body.put("continuation", continuation);
         body.put(
                 "currentPlayerState",
                 new JSONObject().put("playerOffsetMs", Long.toString(playerOffsetMs))
         );
 
-        String responseText = request(
-                endpoint,
-                body.toString(),
-                state.clientVersion,
-                getVisitorData(state.context)
-        );
-        JSONObject response = new JSONObject(stripJsonPrefix(responseText));
+        JSONObject response = postInnertube(state, "live_chat/get_live_chat_replay", body);
         JSONObject liveChatContinuation = getLiveChatContinuation(response);
         if (liveChatContinuation == null) {
             return new ChatPage(new ArrayList<>(), null, -1);
@@ -634,6 +611,25 @@ final class YouTubeChatSource implements Runnable {
                 "reloadContinuationData"
         );
         return new ChatPage(parsed.comments, next, parsed.maxVideoOffsetMs);
+    }
+
+    /**
+     * Posts a request to an Innertube endpoint with the client context of the watch page.
+     */
+    private JSONObject postInnertube(PageState state, String path, JSONObject body)
+            throws IOException, JSONException {
+        String endpoint = YOUTUBE_ORIGIN + "/youtubei/v1/" + path + "?key="
+                + URLEncoder.encode(state.apiKey, StandardCharsets.UTF_8.name())
+                + "&prettyPrint=false";
+        body.put("context", state.context);
+
+        String responseText = request(
+                endpoint,
+                body.toString(),
+                state.clientVersion,
+                getVisitorData(state.context)
+        );
+        return new JSONObject(stripJsonPrefix(responseText));
     }
 
     private String request(
@@ -778,7 +774,8 @@ final class YouTubeChatSource implements Runnable {
         return null;
     }
 
-    private static JSONObject getObjectPath(@Nullable JSONObject root, String... path) {
+    @Nullable
+    static JSONObject getObjectPath(@Nullable JSONObject root, String... path) {
         if (root == null) {
             return null;
         }
@@ -1239,23 +1236,29 @@ final class YouTubeChatSource implements Runnable {
         final String apiKey;
         final String clientVersion;
         final JSONObject context;
+        @Nullable
         final Continuation continuation;
         final boolean replay;
         final VideoType videoType;
         /**
-         * Comments section of a video without a chat.
+         * Comments section of a video without a chat, if timed comments are shown.
          */
         @Nullable
-        String commentsContinuation;
-        long videoLengthMs;
+        final String commentsContinuation;
+        /**
+         * Video length, or 0 if unknown.
+         */
+        final long videoLengthMs;
 
         PageState(
                 String apiKey,
                 String clientVersion,
                 JSONObject context,
-                Continuation continuation,
+                @Nullable Continuation continuation,
                 boolean replay,
-                VideoType videoType
+                VideoType videoType,
+                @Nullable String commentsContinuation,
+                long videoLengthMs
         ) {
             this.apiKey = apiKey;
             this.clientVersion = clientVersion;
@@ -1263,6 +1266,8 @@ final class YouTubeChatSource implements Runnable {
             this.continuation = continuation;
             this.replay = replay;
             this.videoType = videoType;
+            this.commentsContinuation = commentsContinuation;
+            this.videoLengthMs = videoLengthMs;
         }
     }
 

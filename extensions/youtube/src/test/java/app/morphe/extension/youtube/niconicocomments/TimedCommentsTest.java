@@ -40,6 +40,15 @@ public class TimedCommentsTest {
     }
 
     @Test
+    public void keepsATimeInsideASentence() {
+        List<NiconicoComment> comments = TimedComments.parseComment("id", "Who saw the hole at 2:09?", LENGTH_MS);
+
+        assertEquals(1, comments.size());
+        assertEquals("Who saw the hole at 2:09?", comments.get(0).text);
+        assertEquals(129_000, comments.get(0).videoOffsetMs);
+    }
+
+    @Test
     public void splitsAListOfTimes() {
         List<NiconicoComment> comments = TimedComments.parseComment("id", "0:30 - intro\n1:05 - chorus", LENGTH_MS);
 
@@ -66,6 +75,15 @@ public class TimedCommentsTest {
         assertTrue(TimedComments.parseComment("id", "5:00 too late", LENGTH_MS).isEmpty());
         assertTrue(TimedComments.parseComment("id", "no time here", LENGTH_MS).isEmpty());
         assertTrue(TimedComments.parseComment("id", "a ratio of 12:345", LENGTH_MS).isEmpty());
+        assertTrue(TimedComments.parseComment("id", "1:75:00 not a time", 2 * 3_600_000).isEmpty());
+    }
+
+    @Test
+    public void removesFullWidthSpacesAroundTheText() {
+        List<NiconicoComment> comments = TimedComments.parseComment("id", "1:23　すごい　", LENGTH_MS);
+
+        assertEquals(1, comments.size());
+        assertEquals("すごい", comments.get(0).text);
     }
 
     @Test
