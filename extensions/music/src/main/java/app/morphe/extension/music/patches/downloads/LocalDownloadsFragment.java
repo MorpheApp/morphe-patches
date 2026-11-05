@@ -2107,7 +2107,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             final String targetPath = track.audioFile().getAbsolutePath();
             final File artworkFile = track.artworkFile();
             Utils.runOnBackgroundThread(() -> {
-                Bitmap largeBitmap = OfflineStorage.decodeArtwork(artworkFile, FULL_ARTWORK_PIXELS);
+                Bitmap largeBitmap = OfflineStorage.decodeSquareArtwork(artworkFile, FULL_ARTWORK_PIXELS);
                 Utils.runOnMainThread(() -> {
                     if (fullArtwork == null || !targetPath.equals(playingPath)) return;
                     if (largeBitmap != null) {
