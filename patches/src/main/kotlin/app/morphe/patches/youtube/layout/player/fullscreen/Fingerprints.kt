@@ -150,3 +150,25 @@ internal object VideoZoomScaleBeginFingerprint : Fingerprint(
             classDef.fields.any { it.type == "Landroid/view/GestureDetector;" }
     }
 )
+
+/**
+ * Shorts pinch-to-zoom flag, 20.51 - 21.29.
+ */
+internal object ShortsPinchToZoomLegacyFeatureFlagFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        literal(45729199L)
+    )
+)
+
+/**
+ * Shorts pinch-to-zoom flag, 21.28+.
+ */
+internal object ShortsPinchToZoomFeatureFlagFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        literal(45797801L)
+    )
+)

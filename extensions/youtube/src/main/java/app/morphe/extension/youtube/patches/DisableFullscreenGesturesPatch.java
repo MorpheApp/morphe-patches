@@ -58,6 +58,13 @@ public class DisableFullscreenGesturesPatch {
     }
 
     /**
+     * Injection point. Shorts pinch-to-zoom flags.
+     */
+    public static boolean enableShortsZoomGesture(boolean original) {
+        return !Settings.DISABLE_FULLSCREEN_ZOOM_GESTURE.get();
+    }
+
+    /**
      * 21.36+ PlayerView is a 16:9 box. Native pinch scales inside that box (Nx HUD)
      * and never eats the window letterbox. Scale the player view while pinched.
      * At scale 1 this does not write scaleX/Y so Fullscreen video scale can own

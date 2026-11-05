@@ -21,12 +21,16 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_51_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_28_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.insertLiteralOverride
 import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -113,6 +117,25 @@ val disableFullscreenGesturesPatch = patch(
                 nop
             """
         )
+
+        // Shorts pinch-to-zoom is an A/B test that is off by default. Turn it on
+        // unless pinch-to-zoom is disabled. 21.28 and 21.29 read both flags.
+        if (is_20_51_or_greater && !is_21_30_or_greater) {
+            ShortsPinchToZoomLegacyFeatureFlagFingerprint.let {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->enableShortsZoomGesture(Z)Z"
+                )
+            }
+        }
+        if (is_21_28_or_greater) {
+            ShortsPinchToZoomFeatureFlagFingerprint.let {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->enableShortsZoomGesture(Z)Z"
+                )
+            }
+        }
 
         if (is_21_36_or_greater) {
             // Native pinch scales inside the 16:9 PlayerView (Nx HUD, side bars
