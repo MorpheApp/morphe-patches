@@ -130,6 +130,8 @@ message OfflinePlayerConfig {
 message OfflineExoPlayerConfig {
     // Streams are only selected from the adaptive formats if this is set.
     optional bool useExoPlayer = 1;
+    // The playback speed can only be changed if this is set.
+    optional bool enableVariableSpeedPlayback = 53;
 }
 
 message OfflineVideoDetails {

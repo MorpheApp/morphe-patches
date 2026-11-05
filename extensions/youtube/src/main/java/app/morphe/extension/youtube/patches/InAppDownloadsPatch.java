@@ -347,13 +347,16 @@ public final class InAppDownloadsPatch {
                 builder.setCaptions(srv3Captions(builder.getCaptions()));
             }
 
-            // Without the ExoPlayer config the app only looks at the progressive formats, which are not savable.
+            // Without the ExoPlayer config the app only looks at the progressive formats, which are not savable,
+            // and the playback speed menu is unavailable.
             // The player config of the app's own response fits the device, so it's kept if there is one.
             OfflinePlayerConfig playerConfig = original.hasPlayerConfig()
                     ? original.getPlayerConfig()
                     : builder.getPlayerConfig();
             builder.setPlayerConfig(playerConfig.toBuilder().setExoPlayerConfig(
-                    playerConfig.getExoPlayerConfig().toBuilder().setUseExoPlayer(true)));
+                    playerConfig.getExoPlayerConfig().toBuilder()
+                            .setUseExoPlayer(true)
+                            .setEnableVariableSpeedPlayback(true)));
 
             SponsorBlockOfflineStorage.fetchAndSaveSegments(videoId);
 
