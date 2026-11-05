@@ -9,7 +9,7 @@ package app.morphe.patches.reddit.layout.sidebar
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
@@ -25,7 +25,7 @@ private const val EXTENSION_HEADER_ITEM_INTERFACE =
     $$"Lapp/morphe/extension/reddit/patches/HideSidebarComponentsPatch$HeaderItemInterface;"
 
 @Suppress("unused")
-val hideSidebarComponentsPatch = bytecodePatch(
+val hideSidebarComponentsPatch = patch(
     name = "Hide sidebar components",
     description = "Adds options to hide the sidebar components."
 ) {

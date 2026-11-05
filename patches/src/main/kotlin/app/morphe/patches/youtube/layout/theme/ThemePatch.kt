@@ -17,8 +17,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.patch.document
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceFile
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
@@ -297,15 +299,15 @@ val themePatch = baseThemePatch(
         is_21_30_or_greater
     },
     block = {
-        val themeResourcePatch = resourcePatch {
+        val themeResourcePatch = patch {
         
             execute {
                 fun addColorResource(
-                    resourceFile: String,
+                    resourcePath: String,
                     colorName: String,
                     colorValue: String,
                 ) {
-                    this[resourceFile].editText {
+                    resourceFile(resourcePath).editText {
                         it.appendResourceElements(
                             "    <color name=\"$colorName\" category=\"color\">$colorValue</color>\n"
                         )
@@ -315,7 +317,7 @@ val themePatch = baseThemePatch(
                 // Replacing the resource repaints both of its uses, because the resource system
                 // cannot tell them apart, so these attributes keep the value the app gives them.
                 // The launcher theme also needs a light status bar.
-                this["res/values/styles.xml"].editText { text ->
+                resourceFile("res/values/styles.xml").editText { text ->
                     text.transformRawResourceElements { style ->
                         if (style.tag != "style") return@transformRawResourceElements null
 
@@ -388,7 +390,7 @@ val themePatch = baseThemePatch(
                 // Older app versions declare the parent for Android 8.1 and newer in values-v27
                 // only, so with that parent the night theme has no parent on Android 8.0, and
                 // the app crashes as the activity then has no AppCompat theme.
-                val resourceDirectory = this["res"]
+                val resourceDirectory = resourceFile("res")
                 resourceDirectory.listFiles { file ->
                     file.name.matches(VALUES_DIRECTORY_REGEX)
                 }!!.forEach { valuesDirectory ->
@@ -420,7 +422,7 @@ val themePatch = baseThemePatch(
                     "res/values-v27/styles.xml",
                     "res/values-v31/styles.xml"
                 ).forEach { stylesPath ->
-                    val stylesFile = this[stylesPath]
+                    val stylesFile = resourceFile(stylesPath)
                     if (stylesFile.exists()) {
                         stylesFile.editText { it.setLauncherThemeLightStatusBar() }
                     }

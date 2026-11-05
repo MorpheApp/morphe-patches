@@ -11,7 +11,6 @@ package app.morphe.patches.music.misc.gms
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.music.misc.playservice.is_9_30_or_greater
@@ -27,7 +26,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/CastFix
  * Chromecast Audio. The app shows a Premium dialog instead of connecting, removes songs from the
  * queue and disconnects the session. All of these use the same account check, which is forced on.
  */
-internal fun BytecodePatchContext.allowCastingToAudioOnlyDevices() {
+internal fun allowCastingToAudioOnlyDevices() {
     AudioCastAccountStateChangedFingerprint.instructionMatches.first()
         .getMethodCalled().returnEarly(true)
 }
@@ -37,7 +36,7 @@ internal fun BytecodePatchContext.allowCastingToAudioOnlyDevices() {
  * device a second time. Picking one of those makes Play Services connect to the device too, next
  * to GmsCore. Its routes and route provider services are filtered out of the app's media router.
  */
-internal fun BytecodePatchContext.hidePlayServicesCastRoutes() {
+internal fun hidePlayServicesCastRoutes() {
     MediaRouteProviderScanFingerprint.let {
         it.method.apply {
             // Last match first, so the earlier index is still valid.
@@ -81,7 +80,7 @@ internal fun BytecodePatchContext.hidePlayServicesCastRoutes() {
  *
  * Before 9.30 the move is always sent to the receiver and there is no flag.
  */
-internal fun BytecodePatchContext.sendQueueMovesToReceiver() {
+internal fun sendQueueMovesToReceiver() {
     if (!is_9_30_or_greater) return
 
     MdxQueueMoveItemFingerprint.method.insertLiteralOverride(MDX_QUEUE_MOVE_SERVER_EDIT_FLAG, false)
@@ -92,7 +91,7 @@ internal fun BytecodePatchContext.sendQueueMovesToReceiver() {
  * When the app returns to the foreground it restores the last queue, which loads and plays the
  * last song on the phone while the cast device keeps playing too. Skipped while casting.
  */
-internal fun BytecodePatchContext.skipQueueRestorationWhileCasting() {
+internal fun skipQueueRestorationWhileCasting() {
     RestoreQueueFromHomepageFingerprint.let {
         it.method.apply {
             // Skip inside the run-once guard, so the skipped restoration counts as having run

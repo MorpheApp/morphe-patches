@@ -11,7 +11,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
@@ -34,7 +35,7 @@ private const val EXTENSION_HEADER_ITEM_INTERFACE =
     $$"Lapp/morphe/extension/reddit/patches/HideNavigationButtonsPatch$NavigationButtonInterface;"
 
 @Suppress("unused")
-val hideNavigationButtonsPatch = bytecodePatch(
+val hideNavigationButtonsPatch = patch(
     name = "Hide navigation buttons",
     description = "Adds options to hide buttons in the navigation bar."
 ) {

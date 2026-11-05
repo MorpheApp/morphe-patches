@@ -19,11 +19,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.booleanOption
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addFreeRegisters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getFreeRegisterProvider
@@ -115,7 +115,7 @@ private val hideSubscriptionsAppShortcutOption = booleanOption(
     description = "Permanently hides the shortcut to open Subscriptions when long pressing the app icon in your launcher."
 )
 
-private val navigationBarResourcePatch = resourcePatch {
+private val navigationBarResourcePatch = patch {
     execute {
         copyResources("navigationbar", ResourceGroup("drawable", "morphe_watch_later_selected.xml"))
 
@@ -147,7 +147,7 @@ private val navigationBarResourcePatch = resourcePatch {
  * The constructor of the item also uses the decoded endpoint and tab identity of the proto,
  * so the whole factory is used instead of copying the constructor arguments of another item.
  */
-internal fun BytecodePatchContext.implementPivotBarItemBuilder(placeholder: Fingerprint) {
+internal fun implementPivotBarItemBuilder(placeholder: Fingerprint) {
     val factory = PivotBarRendererFingerprint.method
     val pivotBarItemType = factory.parameterTypes.single().toString()
     val placeholderMethod = placeholder.method
@@ -185,7 +185,7 @@ internal fun BytecodePatchContext.implementPivotBarItemBuilder(placeholder: Fing
  * navigation buttons, which comes from the edge to edge feature flag. The Hide status bar patch can turn
  * that flag off, so the flags are overridden also without the Navigation bar patch, to keep them off then.
  */
-internal val translucentNavigationBarFeatureFlagsPatch = bytecodePatch {
+internal val translucentNavigationBarFeatureFlagsPatch = patch {
     dependsOn(sharedExtensionPatch)
 
     execute {
@@ -207,7 +207,7 @@ internal val translucentNavigationBarFeatureFlagsPatch = bytecodePatch {
     }
 }
 
-val navigationBarPatch = bytecodePatch(
+val navigationBarPatch = patch(
     name = "Navigation bar",
     description = "Adds options to hide and change the bottom navigation bar (such as the Shorts button) "
             + "and the upper navigation toolbar."

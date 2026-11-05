@@ -13,7 +13,7 @@ package app.morphe.patches.youtube.video.playerresponse
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -43,7 +43,7 @@ private lateinit var registerIsShortAndOpeningOrPlaying: String
 private lateinit var playerResponseMethodRef : WeakReference<MutableMethod>
 private var numberOfInstructionsAdded = 0
 
-val playerResponseMethodHookPatch = bytecodePatch {
+val playerResponseMethodHookPatch = patch {
     dependsOn(
         sharedExtensionPatch,
         versionCheckPatch,

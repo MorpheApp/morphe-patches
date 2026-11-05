@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
@@ -17,7 +17,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 /** Observe the native playlist title after inflation and model rebinding. */
-internal fun installPlaylistTitle(context: BytecodePatchContext) = with(context) {
+internal fun installPlaylistTitle() {
     val titleMatch = PlaylistTitleFingerprint.match()
     val headerType = titleMatch.originalClassDef.type
     val titleStore = titleMatch.instructionMatches.last()

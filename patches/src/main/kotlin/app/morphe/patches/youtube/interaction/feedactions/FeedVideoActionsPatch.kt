@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.feedactions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
@@ -28,7 +28,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FeedVideoActionsPatch;"
 
 @Suppress("unused")
-val feedVideoActionsPatch = bytecodePatch(
+val feedVideoActionsPatch = patch(
     name = "Feed video actions",
     description = "Adds a Watch later button to video thumbnails in feeds, " +
             "and opens the video menu by tapping and holding anywhere on a video.",

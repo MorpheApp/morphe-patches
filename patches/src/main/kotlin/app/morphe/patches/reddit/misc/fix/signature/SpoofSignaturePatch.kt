@@ -7,7 +7,7 @@
 
 package app.morphe.patches.reddit.misc.fix.signature
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.installer.changeInstallerSource
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.misc.version.is_2024_03_0_or_greater
@@ -19,7 +19,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/SpoofSignaturePatch;"
 
 @Suppress("unused")
-val spoofSignaturePatch = bytecodePatch(
+val spoofSignaturePatch = patch(
     name = "Spoof signature",
     description = "Spoofs the signature of the app to fix notification issues."
 ) {

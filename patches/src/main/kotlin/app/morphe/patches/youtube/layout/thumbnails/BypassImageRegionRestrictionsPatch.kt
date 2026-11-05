@@ -1,6 +1,6 @@
 package app.morphe.patches.youtube.layout.thumbnails
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.imageurlhook.addImageURLHook
@@ -12,7 +12,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/BypassImageRegionRestrictionsPatch;"
 
-val bypassImageRegionRestrictionsPatch = bytecodePatch(
+val bypassImageRegionRestrictionsPatch = patch(
     name = "Bypass image region restrictions",
     description = "Adds an option to use a different host for user avatar and channel images " +
         "and can fix missing images that are blocked in some countries.",

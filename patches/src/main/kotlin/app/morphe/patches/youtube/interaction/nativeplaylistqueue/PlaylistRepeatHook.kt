@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
@@ -20,9 +20,8 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 /** Keep native repeat handling; turn only the owned queue's shuffle into a list command. */
 internal fun installPlaylistRepeat(
-    context: BytecodePatchContext,
     navigatorType: String
-) = with(context) {
+) {
     val binding = PlaylistRepeatBindingFingerprint.match()
     val headerType = binding.originalClassDef.type
     val header = mutableClassDefBy(headerType)

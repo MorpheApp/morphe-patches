@@ -7,12 +7,12 @@
 
 package app.morphe.patches.all.misc.installer
 
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.fix.changepackageinstaller.changePackageInstallerPatch
 
 @Suppress("unused")
-val changeInstallerSource = resourcePatch(
+val changeInstallerSource = patch(
     name = "Change installer source",
     description = "Spoofs the installer source so the app appears to be installed from an app store.",
     default = false

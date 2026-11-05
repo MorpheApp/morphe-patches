@@ -30,12 +30,13 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.document
 import app.morphe.patcher.patch.Option
 import app.morphe.patcher.patch.OptionException
 import app.morphe.patcher.patch.booleanOption
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.packageMetadata
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceFile
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patches.util.resource.editText
@@ -72,7 +73,6 @@ fun setOrGetFallbackPackageName(fallbackPackageName: String): String {
 /**
  * Selectively changes usage of Context.getPackageName() to the original package name.
  */
-context(patchContext: BytecodePatchContext)
 private fun applyGetPackageName(oldPackageName: String, classToChange: String) {
     val filter = methodCall(
         opcode = Opcode.INVOKE_VIRTUAL,
@@ -105,7 +105,7 @@ private fun applyGetPackageName(oldPackageName: String, classToChange: String) {
 }
 
 @Suppress("unused")
-val cloneAppPatch = resourcePatch(
+val cloneAppPatch = patch(
     name = "Clone app",
     description = "Changes the app package name to allow installing the same app multiple times. " +
             "By default \".morphe\" is appended to the package name. Each cloned install must " +
@@ -149,7 +149,7 @@ val cloneAppPatch = resourcePatch(
         }
     }
 
-    dependsOn(bytecodePatch {
+    dependsOn(patch {
         execute {
             when (val originalPackageName = packageMetadata.packageName) {
                 PACKAGE_NAME_REDDIT -> {
@@ -261,7 +261,7 @@ val cloneAppPatch = resourcePatch(
         }
 
         if (providerStringResources.isNotEmpty()) {
-            this["res/values/strings.xml"].editText { text ->
+            resourceFile("res/values/strings.xml").editText { text ->
                 text.transformStringResources(providerStringResources) { authority ->
                     if (authority.startsWith("$packageName.")) {
                         authority.replaceFirst(packageName, newPackageName)

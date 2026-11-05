@@ -14,15 +14,17 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.deleteResource
+import app.morphe.patcher.patch.document
 import app.morphe.patcher.patch.InstallerType
+import app.morphe.patcher.patch.listDecodableFiles
 import app.morphe.patcher.patch.PatchAvailability
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.ResourcePatch
-import app.morphe.patcher.patch.ResourcePatchBuilder
-import app.morphe.patcher.patch.ResourcePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.Patch
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.folderOption
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.resourceFile
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
@@ -145,7 +147,7 @@ private fun customIconFiles(path: String): List<File>? {
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/CustomBrandingPatch;"
 
 // Must be named in the 'app.morphe' namespace, otherwise the log is not published.
-private val logger = Logger.getLogger(ResourcePatchContext::class.java.name)
+private val logger = Logger.getLogger(Patch::class.java.name)
 
 /**
  * Shared custom branding patch for YouTube and YT Music.
@@ -166,9 +168,9 @@ internal fun baseCustomBrandingPatch(
     activityAliasNameWithIntents: String,
     preferenceScreen: BasePreferenceScreen.Screen,
     appLauncherIconNames: () -> Map<String, String> = { emptyMap() },
-    block: ResourcePatchBuilder.() -> Unit,
-    executeBlock: ResourcePatchContext.() -> Unit = {}
-): ResourcePatch = resourcePatch(
+    block: PatchDefinition.() -> Unit,
+    executeBlock: () -> Unit = {}
+): Patch = patch(
     name = "Custom branding",
     description = "Adds options to change the app icon and app name. " +
             "For mounted (root) installations the branding is applied while patching, " +
@@ -239,7 +241,7 @@ internal fun baseCustomBrandingPatch(
 
     dependsOn(
         fixRecycledBitmapPatch,
-        bytecodePatch {
+        patch {
             execute {
                 // Custom branding changes the default splash screen style to the Morphe animation.
                 setExtensionIsPatchIncluded(EXTENSION_CLASS)
@@ -309,7 +311,7 @@ internal fun baseCustomBrandingPatch(
                 )
             }
         },
-        resourcePatch {
+        patch {
             finalize {
                 val useCustomName = customName != null
 
@@ -622,7 +624,7 @@ internal fun baseCustomBrandingPatch(
         if (useCustomIcon) {
             // Reading the option already checked the folder, see customIconFiles
             customIconFiles(customIcon!!)!!.forEach { file ->
-                val targetFile = this["res/${file.parentFile.name}/${file.name}"]
+                val targetFile = resourceFile("res/${file.parentFile.name}/${file.name}")
                 targetFile.parentFile.mkdirs()
                 file.copyTo(targetFile, overwrite = true)
             }
@@ -642,7 +644,7 @@ internal fun baseCustomBrandingPatch(
  * @param customIcon The custom icon patch option folder, if one was provided.
  * @param customName The custom app name patch option, if one was provided.
  */
-private fun ResourcePatchContext.applyMountedBranding(
+private fun applyMountedBranding(
     originalLauncherIconName: String,
     originalNotificationIconName: String,
     originalAppName: String,
@@ -726,7 +728,7 @@ private fun resolveIconStyle(appIconStyle: String?, customIcon: String?): String
  * The names of the string resources that decide the app name a launcher and the system show.
  * The name the patch declares is first, followed by any additional name the manifest points to.
  */
-private fun ResourcePatchContext.appNameResourceNames(originalAppName: String): List<String> {
+private fun appNameResourceNames(originalAppName: String): List<String> {
     val declaredName = stringResourceNameOrNull(originalAppName)
         ?: throw PatchException("Expected a string resource but found: $originalAppName")
 
@@ -776,11 +778,11 @@ private fun Element.isLauncherEntry(): Boolean =
  *
  * @return If the resource was declared and set for the default locale.
  */
-private fun ResourcePatchContext.setAppNameResource(resourceName: String, appName: String): Boolean {
+private fun setAppNameResource(resourceName: String, appName: String): Boolean {
     var defaultAppNameSet = false
 
     listDecodableFiles("res/values*/strings.xml").forEach { path ->
-        this[path].editText { text ->
+        resourceFile(path).editText { text ->
             if (path != "res/values/strings.xml") {
                 return@editText text.removeStringResource(resourceName)
             }
@@ -807,7 +809,7 @@ private fun ResourcePatchContext.setAppNameResource(resourceName: String, appNam
  *
  * @return If the notification icon was replaced.
  */
-private fun ResourcePatchContext.setNotificationIconResource(
+private fun setNotificationIconResource(
     originalNotificationIconName: String,
     iconStyle: String,
     customIcon: String?
@@ -840,7 +842,7 @@ private fun ResourcePatchContext.setNotificationIconResource(
 
     val iconsToDelete = listDecodableFiles("res/drawable*/$originalNotificationIconName.*")
     iconsToDelete.forEach { path ->
-        delete(path)
+        deleteResource(path)
         removedIcons++
     }
 
@@ -854,13 +856,13 @@ private fun ResourcePatchContext.setNotificationIconResource(
     }
 
     if (vectorIcon != null) {
-        val targetFile = this["res/drawable/$originalNotificationIconName.xml"]
+        val targetFile = resourceFile("res/drawable/$originalNotificationIconName.xml")
         targetFile.parentFile.mkdirs()
         targetFile.writeBytes(vectorIcon)
     }
 
     rasterIcons.forEach { (dpi, sourceFile) ->
-        val targetFile = this["res/$dpi/$originalNotificationIconName.png"]
+        val targetFile = resourceFile("res/$dpi/$originalNotificationIconName.png")
         targetFile.parentFile.mkdirs()
         sourceFile.copyTo(
             target = targetFile,
@@ -874,7 +876,7 @@ private fun ResourcePatchContext.setNotificationIconResource(
 /**
  * Replaces the adaptive launcher icon of the app with a bundled icon style.
  */
-private fun ResourcePatchContext.setLauncherIconResource(
+private fun setLauncherIconResource(
     originalLauncherIconName: String,
     iconStyle: String
 ) {
@@ -907,7 +909,7 @@ private fun ResourcePatchContext.setLauncherIconResource(
         listDecodableFiles("res/$resourceType*/$resourceName.xml").forEach { path ->
             // Only the adaptive icon is replaced. A raster icon of the same name is used by
             // Android 7 and older, which the target apps no longer support.
-            this[path].writeBytes(bundledIcon)
+            resourceFile(path).writeBytes(bundledIcon)
             replacedIcons++
         }
     }

@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
@@ -24,10 +24,9 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableField
 
 /** Supply local rows to the stock mutable queue; its sequencer owns navigation. */
 internal fun installNativeQueueEngine(
-    context: BytecodePatchContext,
     serviceType: String,
     enumType: String
-) = with(context) {
+): String {
     // The native playback queue, its navigator and the transaction around its edits.
     val queueMatch = NativeQueueDescriptorFingerprint.match()
     val queueType = queueMatch.originalClassDef.type
@@ -42,15 +41,14 @@ internal fun installNativeQueueEngine(
     val releaseChange = queueChangeEnd.instructionMatches[1].methodReference
     val refresh = queueChangeEnd.instructionMatches[2].methodReference
 
-    val queueDisposeMatch = nativeQueueDisposeFingerprint(queueType)
-    val queueDispose = queueDisposeMatch.originalMethod
+    val queueDispose = NativeQueueDisposeFingerprint.originalMethod
 
     // The wrapper switches between the server's navigator and the local queue.
-    val wrapperFlag = nativeQueueWrapperConstructorFingerprint(queueType)
+    val wrapperFlag = NativeQueueWrapperConstructorFingerprint
         .instructionMatches.last().fieldReference
     val wrapperType = wrapperFlag.definingClass
 
-    val receive = nativeQueueReceiveFingerprint(wrapperFlag)
+    val receive = NativeQueueReceiveFingerprint
     fun receiveField(index: Int) = receive.instructionMatches[index].fieldReference
     fun receiveMethod(index: Int) = receive.instructionMatches[index].methodReference
     val responseType = receive.originalMethod.parameterTypes.single().toString()
@@ -72,9 +70,9 @@ internal fun installNativeQueueEngine(
     val accept = acceptMatch.originalMethod
     val storedResponse = acceptMatch.instructionMatches.last().fieldReference
 
-    val repeatSetter = nativeQueueRepeatSetterFingerprint(wrapperType)
+    val repeatSetter = NativeQueueRepeatSetterFingerprint
         .instructionMatches.last().methodReference
-    val repeatGetter = nativeQueueRepeatGetterFingerprint(wrapperType)
+    val repeatGetter = NativeQueueRepeatGetterFingerprint
         .instructionMatches.last().methodReference
 
     val responseConstructor = nativeQueueResponseConstructorFingerprint(responseType).originalMethod
@@ -498,7 +496,7 @@ internal fun installNativeQueueEngine(
         """
     )
 
-    queueDisposeMatch.method.addInstruction(
+    NativeQueueDisposeFingerprint.method.addInstruction(
         0,
         "invoke-virtual/range {p0 .. p0}, $queueType->patch_releaseLocalQueue()V"
     )
@@ -592,5 +590,5 @@ internal fun installNativeQueueEngine(
         )
     }
 
-    wrapperType
+    return wrapperType
 }

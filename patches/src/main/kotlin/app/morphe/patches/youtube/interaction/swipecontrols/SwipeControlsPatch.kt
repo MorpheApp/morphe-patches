@@ -12,10 +12,8 @@ package app.morphe.patches.youtube.interaction.swipecontrols
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -60,7 +58,7 @@ private const val EXTENSION_SEEK_CLASS =
 private const val EXTENSION_SCRUBBER_INTERFACE =
     "Lapp/morphe/extension/youtube/swipecontrols/controller/SeekbarScrubber;"
 
-private val swipeControlsResourcePatch = resourcePatch {
+private val swipeControlsResourcePatch = patch {
     dependsOn(
         settingsPatch,
         versionCheckPatch,
@@ -176,7 +174,7 @@ private val swipeControlsResourcePatch = resourcePatch {
 }
 
 @Suppress("unused")
-val swipeControlsPatch = bytecodePatch(
+val swipeControlsPatch = patch(
     name = "Swipe controls",
     description = "Adds options to enable and configure volume and brightness swipe controls."
 ) {
@@ -236,7 +234,7 @@ val swipeControlsPatch = bytecodePatch(
  * Let's swipe to seek scrub the time bar, the same way slide to seek does,
  * by adding [EXTENSION_SCRUBBER_INTERFACE] to the touch handler of slide to seek.
  */
-private fun BytecodePatchContext.addSeekbarScrubber() {
+private fun addSeekbarScrubber() {
     // Handler -> slide to seek controller -> scrub state -> time bar.
     val (controllerField, scrubStateField, timeBarField) = listOf(0, 1, 3).map { index ->
         SlideSeekbarGetViewControllerFingerprint.instructionMatches[index]

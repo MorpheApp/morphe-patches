@@ -13,7 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.literal
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.reddit.layout.fullwidth.FeedImageMaxHeightFingerprint
 import app.morphe.patches.reddit.layout.fullwidth.FeedImageSizeFingerprint
@@ -73,7 +73,7 @@ private fun MutableMethod.replaceFloatMaxHeightRatio(): Int {
 }
 
 @Suppress("unused")
-val feedMediaMaxHeightPatch = bytecodePatch(
+val feedMediaMaxHeightPatch = patch(
     name = "Feed media max height",
     description = "Adds an option to change the maximum height of images, videos and galleries in the feed."
 ) {

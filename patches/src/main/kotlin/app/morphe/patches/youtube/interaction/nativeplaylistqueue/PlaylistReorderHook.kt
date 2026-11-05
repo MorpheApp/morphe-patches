@@ -8,16 +8,15 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.p0Register
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 /** Observe the existing drag transaction; retain native animation and accessibility. */
-internal fun installPlaylistReordering(context: BytecodePatchContext, videoType: String) = with(context) {
-    val holderType = PlaylistDragBinderFingerprint.originalMethod.definingClass
-    val start = playlistDragStartFingerprint(holderType)
-    val end = playlistDragEndFingerprint(holderType)
+internal fun installPlaylistReordering(videoType: String) {
+    val start = PlaylistDragStartFingerprint
+    val end = PlaylistDragEndFingerprint
     check(start.originalMethod.parameterTypes.take(2) == end.originalMethod.parameterTypes.take(2)) {
         "Native playlist queue: drag callbacks disagree about their holder/adapter types"
     }
@@ -85,7 +84,7 @@ internal fun installPlaylistReordering(context: BytecodePatchContext, videoType:
         "invoke-static/range {p1 .. p4}, $EXTENSION_CLASS->onReorderEnded(Ljava/lang/Object;${REORDER_ITEMS_INTERFACE}II)V"
     )
 
-    playlistDragUnbindFingerprint(holderType).method.addInstruction(
+    PlaylistDragUnbindFingerprint.method.addInstruction(
         0,
         "invoke-static/range {p0 .. p0}, $EXTENSION_CLASS->onReorderHolderUnbound(Ljava/lang/Object;)V"
     )

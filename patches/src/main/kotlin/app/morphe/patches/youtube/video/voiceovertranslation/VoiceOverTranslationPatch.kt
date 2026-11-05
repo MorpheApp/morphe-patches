@@ -7,8 +7,7 @@
 
 package app.morphe.patches.youtube.video.voiceovertranslation
 
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -35,7 +34,7 @@ private const val EXTENSION_CLASS =
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/VoiceOverTranslationButton;"
 
-private val voiceOverTranslationResourcePatch = resourcePatch {
+private val voiceOverTranslationResourcePatch = patch {
     dependsOn(
         legacyPlayerControlsPatch
     )
@@ -48,7 +47,7 @@ private val voiceOverTranslationResourcePatch = resourcePatch {
 }
 
 @Suppress("unused")
-val voiceOverTranslationPatch = bytecodePatch(
+val voiceOverTranslationPatch = patch(
     name = "Voice over translation",
     description = "Adds additional voice over languages using text-to-speech synchronized to the video playback.",
 ) {

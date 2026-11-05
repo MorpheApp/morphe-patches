@@ -14,7 +14,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -52,7 +52,7 @@ internal object SpeedmasterStartFingerprint : Fingerprint(
     )
 )
 
-internal val rememberPlaybackSpeedPatch = bytecodePatch {
+internal val rememberPlaybackSpeedPatch = patch {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

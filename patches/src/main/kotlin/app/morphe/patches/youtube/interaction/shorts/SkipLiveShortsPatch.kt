@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.shorts
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -35,7 +35,7 @@ private const val EXTENSION_CONTROLLER_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/SkipLiveShortsPatch$ReelSequenceController;"
 
 @Suppress("unused")
-val skipLiveShortsPatch = bytecodePatch(
+val skipLiveShortsPatch = patch(
     name = "Skip live Shorts",
     description = "Automatically skips live streams that appear in the Shorts feed."
 ) {

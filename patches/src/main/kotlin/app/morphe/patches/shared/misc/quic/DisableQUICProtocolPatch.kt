@@ -8,8 +8,8 @@
 package app.morphe.patches.shared.misc.quic
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 
@@ -17,9 +17,9 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/DisableQUICProtocolPatch;"
 
 internal fun disableQUICProtocolPatch(
-    block: BytecodePatchBuilder.() -> Unit,
+    block: PatchDefinition.() -> Unit,
     preferenceScreen: BasePreferenceScreen.Screen,
-) = bytecodePatch(
+) = patch(
     name = "Disable QUIC protocol",
     description = "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol."
 ) {

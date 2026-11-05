@@ -11,8 +11,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.settingsPatch
@@ -41,7 +42,7 @@ private const val EXTENSION_SELECTION_MANAGER_INTERFACE =
 private const val SELECTION_CONTENT_LAMBDA_KEY = 0x4D4F5250
 
 @Suppress("unused")
-val copyTextPatch = bytecodePatch(
+val copyTextPatch = patch(
     name = "Copy text",
     description = "Adds an option to make post and comment text selectable and copyable. " +
         "Disables collapsing comments. This patch works with Reddit 2026.24.0 and newer."

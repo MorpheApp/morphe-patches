@@ -20,8 +20,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
@@ -123,7 +122,7 @@ fun addSearchResultsHook(descriptor: String) {
     )
 }
 
-internal val browseIdHookPatch = bytecodePatch(description = "Hooks the browse id of the page that is shown.") {
+internal val browseIdHookPatch = patch(description = "Hooks the browse id of the page that is shown.") {
     dependsOn(sharedExtensionPatch)
 
     execute {
@@ -194,13 +193,13 @@ internal val browseIdHookPatch = bytecodePatch(description = "Hooks the browse i
     }
 }
 
-val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navigation or search bar.") {
+val navigationBarHookPatch = patch(description = "Hooks the active navigation or search bar.") {
     dependsOn(
         sharedExtensionPatch,
         versionCheckPatch,
         backGesturePatch,
         playerTypeHookPatch, // Required to detect the search bar in all situations.
-        resourcePatch {
+        patch {
             // Copy missing notification icon.
             execute {
                 copyResources(

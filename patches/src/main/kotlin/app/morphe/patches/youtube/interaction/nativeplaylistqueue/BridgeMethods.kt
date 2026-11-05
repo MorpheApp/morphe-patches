@@ -8,7 +8,6 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -42,7 +41,7 @@ internal fun MutableClass.addBridgeMethod(
  * using the app's own protobuf runtime. [registry] is overwritten.
  * All registers must be v0-v15.
  */
-internal fun BytecodePatchContext.parseProtoInstructions(
+internal fun parseProtoInstructions(
     messageType: String,
     bytes: String,
     result: String,

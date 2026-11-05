@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.layout.feedrefresh
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -20,7 +20,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableAutoFeedRefreshPatch;"
 
 @Suppress("unused")
-val disableAutoFeedRefreshPatch = bytecodePatch(
+val disableAutoFeedRefreshPatch = patch(
     name = "Disable auto feed refresh",
     description = "Adds an option to stop feeds from refreshing automatically after they become outdated."
 ) {

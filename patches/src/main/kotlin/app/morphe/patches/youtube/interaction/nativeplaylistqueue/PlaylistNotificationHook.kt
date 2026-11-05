@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
@@ -18,10 +18,9 @@ import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 /** Notification skips must load through the service, not a deferred watch-screen endpoint. */
 internal fun installPlaylistNotification(
-    context: BytecodePatchContext,
     wrapperType: String,
     enumType: String
-) = with(context) {
+) {
     val next = playlistNavigationIntentFingerprint(enumType, "NEXT")
         .instructionMatches.last().fieldReference
     val nextRequest = playlistNavigationSingletonFingerprint(wrapperType, next)
@@ -78,7 +77,7 @@ internal fun installPlaylistNotification(
         "Native playlist queue: current player must belong to the playback service"
     }
 
-    val playbackType = installNativeQueueEngine(context, navigatorType, enumType)
+    val playbackType = installNativeQueueEngine(navigatorType, enumType)
 
     fun bridge(type: String, name: String, parameters: List<String>, returnType: String, locals: Int, body: String) =
         mutableClassDefBy(type).addBridgeMethod(name, parameters, returnType, locals, body)
@@ -210,7 +209,7 @@ internal fun installPlaylistNotification(
         directCanNavigate
     )
     if (is_21_42_or_greater) {
-        installNativeQueueWindow(context, backend, enumType, directNavigate, directCanNavigate)
+        installNativeQueueWindow(backend, enumType, directNavigate, directCanNavigate)
     }
 
     mutableClassDefBy(owner).interfaces.add(MEDIA_CONTROLS_INTERFACE)
@@ -248,7 +247,7 @@ internal fun installPlaylistNotification(
         """
     )
 
-    installPlaylistNotificationControls(context, owner)
+    installPlaylistNotificationControls(owner)
 
     for ((match, hook) in listOf(notification to "onNotificationNext", previous to "onNotificationPrevious")) {
         val method = match.method

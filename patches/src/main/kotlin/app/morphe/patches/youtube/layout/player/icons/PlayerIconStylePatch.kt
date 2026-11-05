@@ -12,11 +12,16 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.patch.decode
+import app.morphe.patcher.patch.deleteResource
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.listDecodableFiles
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.ResourcePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.Patch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.filePathOption
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.resourceFile
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
 import app.morphe.patcher.util.getReference
@@ -61,7 +66,7 @@ private fun iconStyleVariants(resourceDirectory: String, baseNames: Array<out St
             inputStreamFromBundledResource(resourceDirectory, "drawable/$file")?.use { true } ?: false
         }
 
-private val logger = Logger.getLogger(ResourcePatchContext::class.java.name)
+private val logger = Logger.getLogger(Patch::class.java.name)
 
 /**
  * User provided icons of the Custom style, by the base name of the icon each one replaces.
@@ -107,14 +112,14 @@ internal class CustomIcons(path: String) {
         if (icons.isEmpty()) throw PatchException("No icons found in: ${source.absolutePath}")
     }
 
-    fun copy(context: ResourcePatchContext, baseNames: Array<out String>) {
+    fun copy(baseNames: Array<out String>) {
         baseNames.forEach { baseName ->
             val icon = icons[baseName] ?: return@forEach
             // A bitmap of the highest density, the system scales it down for the other densities.
             val file = if (icon.png) {
-                context["res/drawable-xxxhdpi/${baseName}_custom.png"].also { it.parentFile.mkdirs() }
+                resourceFile("res/drawable-xxxhdpi/${baseName}_custom.png").also { it.parentFile.mkdirs() }
             } else {
-                context["res/drawable/${baseName}_custom.xml"]
+                resourceFile("res/drawable/${baseName}_custom.xml")
             }
             file.writeBytes(icon.bytes)
             copied += baseName
@@ -179,7 +184,7 @@ private val styledPlayerIcons = LinkedHashMap<String, String>()
 /**
  * Copies the style variants and the custom icons of the given icons.
  */
-internal fun ResourcePatchContext.copyIconStyles(
+internal fun copyIconStyles(
     resourceDirectory: String,
     baseNames: Array<out String>,
     customIcons: CustomIcons?,
@@ -188,13 +193,13 @@ internal fun ResourcePatchContext.copyIconStyles(
         resourceDirectory,
         ResourceGroup("drawable", *iconStyleVariants(resourceDirectory, baseNames).toTypedArray())
     )
-    customIcons?.copy(this, baseNames)
+    customIcons?.copy(baseNames)
 }
 
 /**
  * Copies icons that have no bold variant, such as the swipe controls icons.
  */
-internal fun ResourcePatchContext.copyPlayerIcons(resourceDirectory: String, vararg baseNames: String) {
+internal fun copyPlayerIcons(resourceDirectory: String, vararg baseNames: String) {
     copyResources(resourceDirectory, ResourceGroup("drawable", *baseNames.map { "$it.xml" }.toTypedArray()))
     copyPlayerIconStyles(resourceDirectory, *baseNames)
 }
@@ -202,7 +207,7 @@ internal fun ResourcePatchContext.copyPlayerIcons(resourceDirectory: String, var
 /**
  * Copies player button icons, the base and bold icons must exist.
  */
-internal fun ResourcePatchContext.copyPlayerButtonIcons(resourceDirectory: String, vararg baseNames: String) {
+internal fun copyPlayerButtonIcons(resourceDirectory: String, vararg baseNames: String) {
     copyResources(
         resourceDirectory,
         ResourceGroup("drawable", *baseNames.flatMap { listOf("$it.xml", "${it}_bold.xml") }.toTypedArray())
@@ -215,7 +220,7 @@ internal fun ResourcePatchContext.copyPlayerButtonIcons(resourceDirectory: Strin
  * Called alone for an icon the app itself provides in the thin and bold styles.
  */
 @Suppress("UnusedReceiverParameter")
-internal fun ResourcePatchContext.copyPlayerIconStyles(resourceDirectory: String, vararg baseNames: String) {
+internal fun copyPlayerIconStyles(resourceDirectory: String, vararg baseNames: String) {
     baseNames.forEach { styledPlayerIcons[it] = resourceDirectory }
 }
 
@@ -262,13 +267,13 @@ private val appSkipSelectors = listOf(
  * @param icons The app icon names, each with its wrapper class.
  * @param originalNamePrefix Prefix of the name to keep the original bitmaps under, or null to drop them.
  */
-internal fun ResourcePatchContext.wrapAppBitmapIcons(
+internal fun wrapAppBitmapIcons(
     icons: List<Pair<String, String>>,
     originalNamePrefix: String? = null,
 ) {
     // Decoded together, since each decode searches every drawable of the app.
     val bitmapsByName = decode(*icons.map { (appName, _) -> "res/drawable*/$appName.*" }.toTypedArray())
-        .map { path -> get(path, false) }
+        .map { path -> resourceFile(path, false) }
         .groupBy { it.name }
 
     icons.forEach { (appName, wrapperClass) ->
@@ -278,11 +283,11 @@ internal fun ResourcePatchContext.wrapAppBitmapIcons(
         bitmaps.forEach { bitmap ->
             val directory = bitmap.parentFile.name
             if (originalNamePrefix != null) {
-                bitmap.copyTo(get("res/$directory/$originalNamePrefix$appName.${bitmap.extension}"), overwrite = true)
+                bitmap.copyTo(resourceFile("res/$directory/$originalNamePrefix$appName.${bitmap.extension}"), overwrite = true)
             }
-            delete("res/$directory/${bitmap.name}")
+            deleteResource("res/$directory/${bitmap.name}")
         }
-        get("res/drawable/$appName.xml").writeText(appPlayerIconWrapper(wrapperClass))
+        resourceFile("res/drawable/$appName.xml").writeText(appPlayerIconWrapper(wrapperClass))
     }
 }
 
@@ -304,7 +309,7 @@ private fun appPlayerIconWrapper(wrapperClass: String, appIcon: String? = null):
  *
  * @param selectorPaths The paths of the selector in each configuration.
  */
-private fun ResourcePatchContext.wrapAppSelectorIcons(selectorPaths: List<String>, wrapperClass: String) {
+private fun wrapAppSelectorIcons(selectorPaths: List<String>, wrapperClass: String) {
     selectorPaths.forEach { path ->
         document(path).use { document ->
             val items = document.getElementsByTagName("item")
@@ -425,7 +430,7 @@ private fun MutableClass.hookIconsSetFromCode() {
 /**
  * Applies the style to the app's player buttons that get their icons from code.
  */
-private val playerButtonIconStylePatch = bytecodePatch {
+private val playerButtonIconStylePatch = patch {
     dependsOn(sharedExtensionPatch, versionCheckPatch)
 
     execute {
@@ -489,7 +494,7 @@ private val playerButtonIconStylePatch = bytecodePatch {
  * Adds the player icon style picker, shared by the player buttons and the swipe controls,
  * and applies the style to the app's own player buttons.
  */
-val playerIconStylePatch = resourcePatch(
+val playerIconStylePatch = patch(
     name = "Player icon style",
     description = "Adds an option to change the style of the player button icons.",
 ) {
@@ -537,8 +542,8 @@ val playerIconStylePatch = resourcePatch(
             // Targets before the bold player do not have these icons.
             if (appIconPath !in decodableDrawables) return@filter false
 
-            val appIcon = get(appIconPath)
-            appIcon.copyTo(get("res/drawable/$originalName.xml"), overwrite = true)
+            val appIcon = resourceFile(appIconPath)
+            appIcon.copyTo(resourceFile("res/drawable/$originalName.xml"), overwrite = true)
             appIcon.writeText(appPlayerIconWrapper(wrapperClass))
             true
         }.map { it.third }
@@ -591,7 +596,7 @@ val playerIconStylePatch = resourcePatch(
                 }
             }
         settingsIcon?.let {
-            get("res/drawable/morphe_player_settings_app.xml").writeText(appPlayerIconWrapper("Settings", it))
+            resourceFile("res/drawable/morphe_player_settings_app.xml").writeText(appPlayerIconWrapper("Settings", it))
         }
     }
 

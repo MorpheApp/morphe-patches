@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.video.livestream
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -22,7 +22,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/livestream/RememberLiveStreamPositionPatch;"
 
 @Suppress("unused")
-val rememberLiveStreamPositionPatch = bytecodePatch(
+val rememberLiveStreamPositionPatch = patch(
     name = "Remember live stream playback position",
     description = "Adds an option to remember the playback position of an ongoing live stream " +
         "and resume from there when reopening that live stream.",

@@ -1,7 +1,7 @@
 package app.morphe.patches.youtube.misc.spoof.dimensions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -11,7 +11,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/spoof/SpoofDeviceDimensionsPatch;"
 
-val spoofDeviceDimensionsPatch = bytecodePatch(
+val spoofDeviceDimensionsPatch = patch(
     name = "Spoof device dimensions",
     description = "Adds an option to spoof the device dimensions which can unlock higher video qualities.",
 ) {

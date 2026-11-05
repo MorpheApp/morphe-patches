@@ -17,7 +17,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.numberOfParameterRegisters
@@ -78,7 +78,7 @@ internal const val MINIMAL_BOUNDS_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/MinimalMiniplayerPatch$MiniplayerBoundsController;"
 
 @Suppress("unused")
-val miniplayerPatch = bytecodePatch(
+val miniplayerPatch = patch(
     name = "Miniplayer",
     description = "Adds options to change the in-app minimized player. " +
             "Patching 21.28.208 and lower has more miniplayer types to choose from."

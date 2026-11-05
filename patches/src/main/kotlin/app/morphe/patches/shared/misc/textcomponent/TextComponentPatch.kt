@@ -13,7 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
@@ -58,7 +58,7 @@ private var lithoSpannableStringCreationCharSequenceRegister = -1
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/TextComponentPatch;"
 
-val textComponentPatch = bytecodePatch(
+val textComponentPatch = patch(
     description = "Provides hooks into text components for extension filtering."
 ) {
     dependsOn(
@@ -85,7 +85,7 @@ val textComponentPatch = bytecodePatch(
 /**
  * Hooks the creation and cached lookup of YouTube Litho text Spans.
  */
-internal val lithoSpannableStringPatch = bytecodePatch(
+internal val lithoSpannableStringPatch = patch(
     description = "Provides hooks into Litho text Spans for extension filtering."
 ) {
     dependsOn(

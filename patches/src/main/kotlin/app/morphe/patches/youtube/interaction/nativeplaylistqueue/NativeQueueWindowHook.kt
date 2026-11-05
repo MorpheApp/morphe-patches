@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
@@ -22,12 +22,11 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 /** Keep owned queue navigation independent of the newer player's watch-history window. */
 internal fun installNativeQueueWindow(
-    context: BytecodePatchContext,
     backend: FieldReference,
     enumType: String,
     navigate: MethodReference,
     canNavigate: MethodReference
-) = with(context) {
+) {
     val requestType = canNavigate.parameterTypes.single().toString()
     val capability = directQueueBackendAvailabilityFingerprint(backend, requestType).originalMethod
     val intent = queueNavigationIntentFieldFingerprint(requestType, enumType)

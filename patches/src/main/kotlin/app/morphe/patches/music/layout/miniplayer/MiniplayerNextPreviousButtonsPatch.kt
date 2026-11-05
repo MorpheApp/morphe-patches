@@ -10,8 +10,8 @@ package app.morphe.patches.music.layout.miniplayer
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_28_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
@@ -32,7 +32,7 @@ private const val MINIPLAYER_LYRICS_CLASS =
 private const val IMAGE_VIEW_TAG =
     "com.google.android.libraries.youtube.common.ui.TouchImageView"
 
-private val miniplayerButtonsResourcePatch = resourcePatch(
+private val miniplayerButtonsResourcePatch = patch(
     description = "Injects previous and next button views into the miniplayer layout."
 ) {
     dependsOn(versionCheckPatch)
@@ -94,7 +94,7 @@ private val miniplayerButtonsResourcePatch = resourcePatch(
 }
 
 @Suppress("unused")
-val miniplayerPreviousNextButtonsPatch = bytecodePatch(
+val miniplayerPreviousNextButtonsPatch = patch(
     name = "Miniplayer previous and next buttons",
     description = "Adds options to show previous and next track buttons in the miniplayer."
 ) {

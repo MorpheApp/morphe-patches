@@ -9,7 +9,7 @@ package app.morphe.patches.reddit.layout.screenshotpopup
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_33_0_or_greater
@@ -23,7 +23,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/DisableScreenshotPopupPatch;"
 
 @Suppress("unused")
-val disableScreenshotPopupPatch = bytecodePatch(
+val disableScreenshotPopupPatch = patch(
     name = "Disable screenshot popup",
     description = "Adds an option to disable the popup that appears when taking a screenshot."
 ) {

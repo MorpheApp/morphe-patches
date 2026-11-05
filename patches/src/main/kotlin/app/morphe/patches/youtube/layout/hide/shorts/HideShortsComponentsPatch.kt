@@ -15,8 +15,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.booleanOption
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
@@ -58,7 +58,7 @@ internal val hideShortsWidgetOption = booleanOption(
     description = "Permanently hides the launcher widget Shorts button."
 )
 
-private val hideShortsComponentsResourcePatch = resourcePatch {
+private val hideShortsComponentsResourcePatch = patch {
     dependsOn(
         settingsPatch,
         versionCheckPatch
@@ -162,7 +162,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
 private const val EXTENSION_FILTER = "Lapp/morphe/extension/youtube/patches/components/ShortsFilter;"
 
 @Suppress("unused")
-val hideShortsComponentsPatch = bytecodePatch(
+val hideShortsComponentsPatch = patch(
     name = "Hide Shorts components",
     description = "Adds options to hide components related to Shorts."
 ) {

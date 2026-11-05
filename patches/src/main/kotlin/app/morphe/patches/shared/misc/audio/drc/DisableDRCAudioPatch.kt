@@ -9,8 +9,8 @@ package app.morphe.patches.shared.misc.audio.drc
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -20,11 +20,11 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/Disabl
 
 @Suppress("unused")
 internal fun disableDRCAudioPatch(
-    block: BytecodePatchBuilder.() -> Unit,
+    block: PatchDefinition.() -> Unit,
     preferenceScreen: BasePreferenceScreen.Screen,
-    useLegacyNormalizationFlag: BytecodePatchBuilder.() -> Boolean,
-    useNormalizationFlag: BytecodePatchBuilder.() -> Boolean
-) = bytecodePatch(
+    useLegacyNormalizationFlag: PatchDefinition.() -> Boolean,
+    useNormalizationFlag: PatchDefinition.() -> Boolean
+) = patch(
     name = "Disable DRC audio",
     description = "Adds an option to disable DRC (Dynamic Range Compression) audio."
 ) {

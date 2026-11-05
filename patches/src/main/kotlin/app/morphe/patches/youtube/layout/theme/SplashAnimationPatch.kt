@@ -16,7 +16,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.shared.layout.branding.startupAnimationResourcePatch
@@ -56,7 +56,7 @@ private const val EXTENSION_CLASS =
  * Hands the animation the app plays while it starts over to extension code,
  * which decides what is played and with which colors.
  */
-val splashAnimationPatch = bytecodePatch {
+val splashAnimationPatch = patch {
 
     dependsOn(
         sharedExtensionPatch,

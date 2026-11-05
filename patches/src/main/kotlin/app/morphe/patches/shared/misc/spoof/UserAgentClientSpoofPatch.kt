@@ -5,7 +5,7 @@ import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstructionOrNull
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.getReference
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -21,7 +21,7 @@ import com.android.tools.smali.dexlib2.immutable.reference.ImmutableStringRefere
 private const val USER_AGENT_STRING_BUILDER_APPEND_METHOD_REFERENCE =
     "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
 
-fun userAgentClientSpoofPatch(originalPackageName: String) = bytecodePatch(
+fun userAgentClientSpoofPatch(originalPackageName: String) = patch(
     description = "Spoofs the user agent client by replacing the application package name."
 ) {
     execute {

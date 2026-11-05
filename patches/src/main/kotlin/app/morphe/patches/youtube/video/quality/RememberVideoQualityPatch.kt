@@ -14,7 +14,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.matchSingle
@@ -44,7 +46,6 @@ import app.morphe.patches.youtube.video.information.VideoQualityFingerprint
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneMutable
-import app.morphe.util.findFieldFromToString
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.findMethodFromToString
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -63,7 +64,7 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/quality/RememberVideoQualityPatch;"
 
-val rememberVideoQualityPatch = bytecodePatch {
+val rememberVideoQualityPatch = patch {
     dependsOn(
         sharedExtensionPatch,
         videoInformationPatch,
@@ -103,11 +104,8 @@ val rememberVideoQualityPatch = bytecodePatch {
             SwitchPreference("morphe_remember_video_quality_last_selected_toast", summary = true)
         ))
 
-        val initialResolutionField = PlaybackStartParametersToStringFingerprint.method
-                .findFieldFromToString(FIXED_RESOLUTION_STRING)
-
         // Inject a call to override initial video quality.
-        getPlaybackStartParametersConstructorFingerprint(initialResolutionField).let {
+        PlaybackStartParametersConstructorFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA
@@ -127,7 +125,7 @@ val rememberVideoQualityPatch = bytecodePatch {
         // so the quality selected by the user for the video is used instead of the initial quality.
         // The Shorts player also loads the next Shorts before they play, so the video ID of the player
         // that loads the video is passed, from the playback start descriptor of its player.
-        getPlaybackStartParametersInitialResolutionFingerprint(initialResolutionField).matchSingle().method.apply {
+        PlaybackStartParametersInitialResolutionFingerprint.matchSingle().method.apply {
             val descriptorMatch = getPlayerPlaybackStartDescriptorFingerprint(
                 definingClass,
                 PlaybackStartDescriptorToStringFingerprint.classDef.type

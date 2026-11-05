@@ -7,13 +7,14 @@
 
 package app.morphe.patches.reddit.layout.search
 
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.reddit.misc.fix.signature.spoofSignaturePatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findElementByAttributeValueOrThrow
 
 @Suppress("unused")
-val hideRedditSearchPatch = resourcePatch(
+val hideRedditSearchPatch = patch(
     name = "Hide Reddit search",
     description = "Permanently hides the Reddit search in the contextual menu. " +
             "This patch does not work with root mounting",

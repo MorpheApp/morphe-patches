@@ -9,8 +9,8 @@ package app.morphe.patches.music.interaction.jam
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -27,7 +27,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/jam/JamUI;"
 private const val EXTENSION_BAR_CLASS = "Lapp/morphe/extension/music/patches/jam/JamBar;"
 
-private val jamResources = resourcePatch {
+private val jamResources = patch {
     dependsOn(versionCheckPatch)
     execute {
         document("AndroidManifest.xml").use { doc ->
@@ -81,7 +81,7 @@ private val jamResources = resourcePatch {
  * in [JamQueueAbi] and [JamUiAbi]; generated methods are small access or interception bridges.
  */
 @Suppress("unused")
-val jamQueueSharingPatch = bytecodePatch(
+val jamQueueSharingPatch = patch(
     name = "Jam queue sharing",
     description = "Shares the host queue and playback controls through an authenticated Jam bridge. "
             + "Root installation is not supported."

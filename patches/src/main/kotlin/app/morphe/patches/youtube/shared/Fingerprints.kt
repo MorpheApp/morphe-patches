@@ -22,7 +22,6 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
@@ -138,7 +137,7 @@ internal object PlayerTypeEnumFingerprint : Fingerprint(
 )
 
 // 21.41+ YouTubePlayerOverlaysLayout is no longer a player type listener.
-internal fun BytecodePatchContext.getPlayerTypeFingerprint() = object : Fingerprint(
+internal fun getPlayerTypeFingerprint() = object : Fingerprint(
     definingClass = "Lcom/google/android/apps/youtube/app/player/YouTubePlayerViewNotForReflection;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

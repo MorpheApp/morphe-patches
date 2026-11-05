@@ -10,8 +10,7 @@ package app.morphe.patches.youtube.video.series
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -36,7 +35,6 @@ import app.morphe.patches.youtube.video.information.PlayerInitFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoTimeHook
-import app.morphe.patches.youtube.video.videoid.VideoIdFingerprint
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -54,7 +52,7 @@ private const val EXTENSION_PACKAGE = "app.morphe.extension.youtube.series"
 internal fun MethodReference.signature() =
     name + "(" + parameterTypes.joinToString("") + ")" + returnType
 
-private val seriesTrackerResourcesPatch = resourcePatch {
+private val seriesTrackerResourcesPatch = patch {
     dependsOn(legacyPlayerControlsResourcePatch)
 
     execute {
@@ -72,7 +70,7 @@ private val seriesTrackerResourcesPatch = resourcePatch {
 }
 
 @Suppress("unused")
-val seriesTrackerPatch = bytecodePatch(
+val seriesTrackerPatch = patch(
     name = "Series tracking",
     description = "Adds a series library to History with local progress and episode continuation. " +
             "This patch works with YouTube 21.02 and newer.",
@@ -133,9 +131,7 @@ val seriesTrackerPatch = bytecodePatch(
         )
 
         PlayerInitFingerprint.classDef.apply {
-            val idGetter = ControllerVideoIdFingerprint(
-                VideoIdFingerprint.instructionMatches.first().getMethodCalled()
-            ).originalMethod
+            val idGetter = ControllerVideoIdFingerprint.originalMethod
 
             interfaces.add($$"$${SERIES_TRACKER_EXTENSION_PREFIX}PlaybackBridge$Source;")
 

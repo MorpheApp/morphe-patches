@@ -10,8 +10,9 @@ package app.morphe.patches.shared.misc.litho.relayout
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -30,7 +31,7 @@ private const val EXTENSION_LITHO_VIEW_INTERFACE =
  * Adds support to force Litho views to calculate their layout again,
  * such as to show texts that changed after the views were laid out.
  */
-val lithoRelayoutPatch = bytecodePatch(
+val lithoRelayoutPatch = patch(
     description = "Adds support to force Litho views to calculate their layout again."
 ) {
     execute {

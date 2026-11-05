@@ -12,7 +12,7 @@ package app.morphe.patches.music.misc.audio
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_32_or_greater
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -21,7 +21,7 @@ import app.morphe.patcher.util.returnEarly
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 @Suppress("unused")
-val enableExclusiveAudioPlaybackPatch = bytecodePatch(
+val enableExclusiveAudioPlaybackPatch = patch(
     name = "Enable exclusive audio playback",
     description = "Enables the option to play audio without video.",
 ) {

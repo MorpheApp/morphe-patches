@@ -11,7 +11,8 @@ package app.morphe.patches.youtube.layout.feedcards
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
@@ -83,7 +84,7 @@ private fun MutableClass.hookViewGroupMethod(name: String, parameterType: String
 }
 
 @Suppress("unused")
-val feedCardLayoutPatch = bytecodePatch(
+val feedCardLayoutPatch = patch(
     name = "Feed card layout",
     description = "Adds an option to show or hide the card layout of feed videos, which YouTube sends as an A/B test."
 ) {

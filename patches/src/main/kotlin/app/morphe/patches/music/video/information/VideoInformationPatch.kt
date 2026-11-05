@@ -11,7 +11,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -57,7 +58,7 @@ private lateinit var seekSourceEnumType: String
 private lateinit var seekSourceMethodName: String
 
 @Suppress("unused")
-val musicVideoInformationPatch = bytecodePatch(
+val musicVideoInformationPatch = patch(
     description = "Hooks video ID, video time, and seekTo for YouTube Music."
 ) {
     dependsOn(sharedExtensionPatch)

@@ -5,7 +5,7 @@
 
 package app.morphe.patches.youtube.misc.whitelist
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.ad.hideAdsPatch
@@ -22,7 +22,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/whitelist/Cha
 private const val PREFERENCE_CLASS = "app.morphe.extension.youtube.settings.preference.ChannelWhitelistPreference"
 
 @Suppress("unused")
-val channelWhitelistPatch = bytecodePatch(
+val channelWhitelistPatch = patch(
     name = "Channel whitelist",
     description = "Adds options to allow whitelisting specific channels to show ads or override playback speeds."
 ) {

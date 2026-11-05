@@ -10,7 +10,6 @@ package app.morphe.patches.youtube.misc.medianotification
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.misc.medianotification.EXTENSION_CLASS
 import app.morphe.patches.shared.misc.medianotification.mediaNotificationControlsPatch
@@ -65,7 +64,7 @@ val mediaNotificationControlsPatchYouTube = mediaNotificationControlsPatch(
     }
 )
 
-private fun BytecodePatchContext.seekInsteadOfSkip(
+private fun seekInsteadOfSkip(
     skipFingerprint: Fingerprint,
     seekFingerprint: Fingerprint,
 ) {

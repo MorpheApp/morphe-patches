@@ -9,9 +9,9 @@ package app.morphe.patches.shared.misc.proto
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.BytecodePatch
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.Patch
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.util.cloneMutable
@@ -35,10 +35,10 @@ private lateinit var elementProtoParserMethodRef: WeakReference<MutableMethod>
  * @param block Callback to add app-specific dependencies, such as versionCheckPatch.
  */
 internal fun createElementProtoParserHookPatch(
-    sharedExtensionPatchDep: BytecodePatch,
+    sharedExtensionPatchDep: Patch,
     readsResourcesWithParser: () -> Boolean = { false },
-    block: BytecodePatchBuilder.() -> Unit = {},
-): BytecodePatch = bytecodePatch(
+    block: PatchDefinition.() -> Unit = {},
+): Patch = patch(
     description = "Hook to modify the proto message class, which can only be accessed through reflection.",
 ) {
     dependsOn(

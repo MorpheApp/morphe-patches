@@ -13,7 +13,7 @@ package app.morphe.patches.youtube.layout.hide.rollingnumber
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -26,7 +26,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableRollingNumberAnimationsPatch;"
 
-val disableRollingNumberAnimationPatch = bytecodePatch(
+val disableRollingNumberAnimationPatch = patch(
     name = "Disable rolling number animations",
     description = "Adds an option to disable rolling number animations of video view count, user likes, and upload time.",
 ) {

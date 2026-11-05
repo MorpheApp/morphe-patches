@@ -9,14 +9,14 @@ package app.morphe.patches.youtube.video.volume
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 
 internal const val PLAYER_VOLUME_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/PlayerVolumePatch;"
 
 // Scales the video playback volume at the ExoPlayer audio sink.
-internal val playerVolumeHookPatch = bytecodePatch(
+internal val playerVolumeHookPatch = patch(
     description = "Hooks AudioSink setVolume and AudioTrack wrapper constructor to adjust video playback volume."
 ) {
     dependsOn(sharedExtensionPatch)

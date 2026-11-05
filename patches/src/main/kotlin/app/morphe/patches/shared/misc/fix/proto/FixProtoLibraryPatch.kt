@@ -9,7 +9,7 @@ package app.morphe.patches.shared.misc.fix.proto
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.util.cloneMutable
@@ -31,7 +31,7 @@ internal lateinit var mutableCopyMethodRef : WeakReference<MethodReference>
  * Instead of relocating all classes in the extension,
  * Only the methods necessary for the patch to function are added.
  */
-internal val fixProtoLibraryPatch = bytecodePatch(
+internal val fixProtoLibraryPatch = patch(
     description = "Fix method not found exception that can occur when proto libraries used in extensions are merged."
 ) {
     execute {

@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.matchSingle
 import app.morphe.patcher.util.smali.ExternalLabel
@@ -17,7 +17,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 /** Parse feedback with the native registry and chain its existing snackbar callback. */
-internal fun installQueueUndo(context: BytecodePatchContext, callback: MethodReference) = with(context) {
+internal fun installQueueUndo(callback: MethodReference) {
     val endpointType = callback.parameterTypes.first().toString()
     val endpoint = mutableClassDefBy(endpointType)
     endpoint.interfaces.add(UNDO_COMMAND_INTERFACE)
@@ -35,8 +35,8 @@ internal fun installQueueUndo(context: BytecodePatchContext, callback: MethodRef
     val modern = QueueSnackbarModernFactoryFingerprint.matchSingle()
     val listenerType = modern.instructionMatches.first().methodReference.definingClass
 
-    installQueueSaveConfirmationDuration(context)
-    installQueuePlayerClose(this, endpointType, callback)
+    installQueueSaveConfirmationDuration()
+    installQueuePlayerClose(endpointType, callback)
 
     val dispatcher = queueSnackbarDispatcherFingerprint(callback.definingClass).matchSingle()
         .instructionMatches.single().fieldReference

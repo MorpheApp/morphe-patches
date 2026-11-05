@@ -10,8 +10,8 @@ package app.morphe.patches.shared.misc.litho.node
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatch
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.Patch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
@@ -43,10 +43,10 @@ private lateinit var lazilyConvertedElementLoadedMethodRef: WeakReference<Mutabl
  * @param conversionContextPatchDep The app-specific `conversionContextPatch`.
  */
 internal fun createTreeNodeElementHookPatch(
-    sharedExtensionPatchDep: BytecodePatch,
-    conversionContextPatchDep: BytecodePatch,
+    sharedExtensionPatchDep: Patch,
+    conversionContextPatchDep: Patch,
     addLithoContainerInterface: Boolean
-): BytecodePatch = bytecodePatch(
+): Patch = patch(
     description = "Hooks the tree node element lists to the extension."
 ) {
     dependsOn(

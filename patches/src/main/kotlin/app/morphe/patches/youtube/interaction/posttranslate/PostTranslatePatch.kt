@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.posttranslate
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -63,7 +63,7 @@ private fun MutableClass.addPatchMethod(
 }
 
 @Suppress("unused")
-val postTranslatePatch = bytecodePatch(
+val postTranslatePatch = patch(
     name = "Translate posts",
     description = "Adds a menu item to translate the text of posts.",
 ) {

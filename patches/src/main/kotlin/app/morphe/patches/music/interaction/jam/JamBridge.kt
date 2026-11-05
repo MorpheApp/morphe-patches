@@ -8,7 +8,7 @@
 package app.morphe.patches.music.interaction.jam
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.classDefByOrNull
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -56,7 +56,7 @@ internal fun MutableClass.addBridge(
     )
 }
 
-internal fun BytecodePatchContext.invokeKind(reference: MethodReference): String {
+internal fun invokeKind(reference: MethodReference): String {
     val owner = classDefByOrNull(reference.definingClass)
     return when {
         reference.name == "<init>" -> "invoke-direct"
@@ -67,7 +67,7 @@ internal fun BytecodePatchContext.invokeKind(reference: MethodReference): String
 }
 
 /** Expose a zero-argument native accessor, optionally on a held or opaque receiver. */
-internal fun BytecodePatchContext.installNativeAccessor(
+internal fun installNativeAccessor(
     owner: MutableClass,
     name: String,
     accessor: MethodReference,

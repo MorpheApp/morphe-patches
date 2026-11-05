@@ -9,7 +9,7 @@ package app.morphe.patches.reddit.layout.flair
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -35,7 +35,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/reddit/patches/ShowFl
 private const val CACHED_POST_INTERFACE = $$"Lapp/morphe/extension/reddit/patches/ShowFlairsInHomeFeedPatch$CachedPost;"
 
 @Suppress("unused")
-val showFlairsInHomeFeedPatch = bytecodePatch(
+val showFlairsInHomeFeedPatch = patch(
     name = "Show flairs in home feed",
     description = "Adds an option to show post flair badges in the home feed. " +
             "This patch works with Reddit 2026.24.0 and newer."
@@ -238,7 +238,7 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
             """
         )
 
-        feedPostSectionMapperFingerprint(feedPostType).let {
+        FeedPostSectionMapperFingerprint.let {
             val returnMatch = it.instructionMatches.last()
             val sectionRegister = returnMatch.getInstruction<OneRegisterInstruction>().registerA
 
@@ -267,7 +267,7 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
         // After a feed page is shown, Reddit loads the full posts of the page in the background,
         // and the full posts include the flairs. A feature flag removes this secondary fetch
         // for post previews. Keep the fetch, so their flairs are available.
-        postsToLoadFingerprint(postPreviewType).let {
+        PostsToLoadFingerprint.let {
             val flagMatch = it.instructionMatches.last()
             val flagRegister = flagMatch.getInstruction<OneRegisterInstruction>().registerA
 

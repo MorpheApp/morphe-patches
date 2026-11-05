@@ -12,7 +12,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.reddit.misc.settings.settingsPatch
@@ -47,7 +47,7 @@ private fun MutableMethod.hookBackgroundColor(startIndex: Int) {
 }
 
 @Suppress("unused")
-val mediaViewerBlackBackgroundPatch = bytecodePatch(
+val mediaViewerBlackBackgroundPatch = patch(
     name = "Media viewer black background",
     description = "Adds an option to use a black background behind images and videos in the media viewer, " +
             "instead of the theme background color."

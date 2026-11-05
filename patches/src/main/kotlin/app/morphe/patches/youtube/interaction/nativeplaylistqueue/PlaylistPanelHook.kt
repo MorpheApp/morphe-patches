@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
@@ -25,7 +25,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val DEFAULT_QUEUE_MODE = 1
 
 /** Bridge the accepted watch model; the playback engine is attached separately at runtime. */
-internal fun installPlaylistPanel(context: BytecodePatchContext) = with(context) {
+internal fun installPlaylistPanel() {
     val description = PlaylistModelDescriptionFingerprint.originalMethod
     val modelType = description.definingClass
     val responseVideoField = description.findFieldFromToString("{videoId=")
@@ -47,7 +47,7 @@ internal fun installPlaylistPanel(context: BytecodePatchContext) = with(context)
     }
 
     // The collapsed panel view, whose click opens the playlist.
-    val collapsedView = playlistControlsCreationFingerprint(controllerType)
+    val collapsedView = PlaylistControlsCreationFingerprint
         .instructionMatches.first().fieldReference
 
     val render = playlistPanelRenderFingerprint(modelField)
@@ -231,7 +231,7 @@ internal fun installPlaylistPanel(context: BytecodePatchContext) = with(context)
         """
     )
 
-    installPlaylistRowPlayback(context, modelField, panelField)
+    installPlaylistRowPlayback(modelField, panelField)
 
     // Preserve every native rejection before this assignment. In particular, a stale model
     // must not claim the current controller or overwrite our local insertion state.

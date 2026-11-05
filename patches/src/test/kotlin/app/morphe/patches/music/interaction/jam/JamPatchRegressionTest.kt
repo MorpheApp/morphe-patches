@@ -7,14 +7,15 @@
 
 package app.morphe.patches.music.interaction.jam
 
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.Patcher
 import app.morphe.patcher.PatcherConfig
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.getMutableMethod
 import app.morphe.patcher.util.matchSingle
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
-import app.morphe.util.getMutableMethod
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import kotlinx.coroutines.runBlocking
@@ -35,7 +36,7 @@ class JamPatchRegressionTest {
         assumeTrue(!apkPath.isNullOrBlank()) {
             "Pass -PjamApk to verify both native player layouts"
         }
-        val fixture = bytecodePatch {
+        val fixture = patch {
             execute {
                 val ui = resolveJamUiAbi(resolveJamQueueAbi())
                 val presenter = PlayerMetadataViewsFingerprint.matchSingle().originalClassDef
@@ -77,7 +78,7 @@ class JamPatchRegressionTest {
         assumeTrue(!apkPath.isNullOrBlank()) {
             "Pass -PjamApk to exercise real APK resolver failures"
         }
-        val fixture = bytecodePatch {
+        val fixture = patch {
             execute {
                 val queue = resolveJamQueueAbi()
                 val manager = mutableClassDefBy(queue.managerType)
@@ -126,7 +127,7 @@ class JamPatchRegressionTest {
         assumeTrue(!apkPath.isNullOrBlank()) {
             "Pass -PjamApk to exercise real APK resolver failures"
         }
-        val fixture = bytecodePatch {
+        val fixture = patch {
             execute {
                 val managerType = QueueEnqueueFingerprint.matchSingle().originalClassDef.type
                 val manager = mutableClassDefBy(managerType)

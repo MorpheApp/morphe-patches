@@ -12,7 +12,7 @@ package app.morphe.patches.youtube.layout.hide.player.flyoutmenu
 
 import app.morphe.patcher.Match
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
@@ -42,7 +42,7 @@ internal fun addPlayerFlyoutMenuPreferences(vararg preferences: BasePreference) 
     playerFlyoutMenuGroup += preferences
 }
 
-internal val playerFlyoutPreferences = bytecodePatch {
+internal val playerFlyoutPreferences = patch {
     finalize {
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
@@ -54,7 +54,7 @@ internal val playerFlyoutPreferences = bytecodePatch {
 }
 
 @Suppress("unused")
-val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
+val hidePlayerFlyoutMenuComponentsPatch = patch(
     name = "Hide player flyout menu components",
     description = "Adds options to hide menu components that appear when pressing the gear icon in the video player."
 ) {

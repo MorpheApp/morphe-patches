@@ -13,7 +13,7 @@ package app.morphe.patches.youtube.layout.formfactor
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -32,7 +32,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ChangeFormFactorPatch;"
 
 @Suppress("unused")
-val changeFormFactorPatch = bytecodePatch(
+val changeFormFactorPatch = patch(
     name = "Change form factor",
     description = "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",
 ) {

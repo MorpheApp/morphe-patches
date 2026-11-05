@@ -10,7 +10,7 @@ package app.morphe.patches.reddit.misc.redgifs
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_33_0_or_greater
@@ -25,7 +25,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/RedgifsAudioPatch;"
 
 @Suppress("unused")
-val redgifsAudioPatch = bytecodePatch(
+val redgifsAudioPatch = patch(
     name = "Redgifs audio",
     description = "Adds an option to play the original Redgifs video, which has audio, instead of Reddit's silent copy."
 ) {
@@ -69,7 +69,7 @@ val redgifsAudioPatch = bytecodePatch(
             val postIdField = it.instructionMatches[1].fieldReference
             val urlField = it.instructionMatches[3].fieldReference
 
-            videoElementConstructorFingerprint(urlField).method.apply {
+            VideoElementConstructorFingerprint.method.apply {
                 // All registers are unused at the final return.
                 addInstructions(
                     indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID),

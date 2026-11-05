@@ -23,9 +23,9 @@ import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import app.morphe.patches.shared.CurrentAudioVideoFormatToStringFingerprint
 import app.morphe.patches.youtube.video.information.VideoQualitySetterFingerprint
+import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal const val FIXED_RESOLUTION_STRING = ", initialPlaybackVideoQualityFixedResolution="
@@ -378,6 +378,12 @@ internal object HidePremiumVideoQualityGetArrayFingerprint : Fingerprint(
     }
 )
 
+/**
+ * The field of the initial video quality of the playback start parameters.
+ */
+private fun initialResolutionField() =
+    PlaybackStartParametersToStringFingerprint.method.findFieldFromToString(FIXED_RESOLUTION_STRING)
+
 internal object PlaybackStartParametersToStringFingerprint : Fingerprint(
     name = "toString",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -388,40 +394,36 @@ internal object PlaybackStartParametersToStringFingerprint : Fingerprint(
     )
 )
 
-internal fun getPlaybackStartParametersConstructorFingerprint(
-    initialResolutionField: FieldReference
-) = object : Fingerprint(
+internal object PlaybackStartParametersConstructorFingerprint : Fingerprint(
     classFingerprint = PlaybackStartParametersToStringFingerprint,
     name = "<init>",
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
-            reference = initialResolutionField
+            reference = { initialResolutionField() }
         )
     )
-) {}
+)
 
 /**
  * The method that returns the initial video quality of the playback start parameters,
  * used by the player each time it loads the video, such as when the app returns from the background.
  */
-internal fun getPlaybackStartParametersInitialResolutionFingerprint(
-    initialResolutionField: FieldReference
-) = object : Fingerprint(
+internal object PlaybackStartParametersInitialResolutionFingerprint : Fingerprint(
     returnType = "Ljava/lang/Integer;",
     parameters = listOf(),
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            reference = initialResolutionField
+            reference = { initialResolutionField() }
         ),
         methodCall(smali = "Lj\$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;"),
         checkCast("Ljava/lang/Integer;")
     )
-) {}
+)
 
 /**
- * A method of the class of [getPlaybackStartParametersInitialResolutionFingerprint] that gets
+ * A method of the class of [PlaybackStartParametersInitialResolutionFingerprint] that gets
  * the playback start descriptor of its player, which has the video the player loads.
  */
 internal fun getPlayerPlaybackStartDescriptorFingerprint(

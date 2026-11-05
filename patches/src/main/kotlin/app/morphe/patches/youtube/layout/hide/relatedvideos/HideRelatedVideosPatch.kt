@@ -12,7 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
@@ -34,7 +34,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideRelatedVideosPatch;"
 
 @Suppress("unused")
-val hideRelatedVideosPatch = bytecodePatch(
+val hideRelatedVideosPatch = patch(
     name = "Hide related videos",
     description = "Adds options to hide related videos."
 ) {

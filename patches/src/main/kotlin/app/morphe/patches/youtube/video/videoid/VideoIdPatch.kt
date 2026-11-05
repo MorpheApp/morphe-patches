@@ -12,7 +12,7 @@ package app.morphe.patches.youtube.video.videoid
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -121,7 +121,7 @@ private lateinit var backgroundPlaybackMethodRef : WeakReference<MutableMethod>
 private var backgroundPlaybackVideoIdRegister = -1
 private var backgroundPlaybackInsertIndex = -1
 
-val videoIdPatch = bytecodePatch(
+val videoIdPatch = patch(
     description = "Hooks to detect when the video ID changes.",
 ) {
     dependsOn(

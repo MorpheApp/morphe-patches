@@ -7,12 +7,12 @@
 
 package app.morphe.patches.reddit.misc.guest
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 
 @Suppress("unused")
-val startAsGuestPatch = bytecodePatch(
+val startAsGuestPatch = patch(
     name = "Start as guest",
     description = "Skips the forced startup login screen using Reddit's native guest browsing mode."
 ) {

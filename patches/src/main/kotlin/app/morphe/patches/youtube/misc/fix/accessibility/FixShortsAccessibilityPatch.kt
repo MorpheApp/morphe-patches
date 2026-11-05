@@ -3,14 +3,14 @@ package app.morphe.patches.youtube.misc.fix.accessibility
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.youtube.misc.playservice.is_20_51_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-internal val fixShortsAccessibilityPatch = bytecodePatch(
+internal val fixShortsAccessibilityPatch = patch(
     description = "Fixes Shorts comments and descriptions being inaccessible to screen readers."
 ) {
     dependsOn(versionCheckPatch)

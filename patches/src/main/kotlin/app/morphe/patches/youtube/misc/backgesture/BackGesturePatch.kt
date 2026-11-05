@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.misc.backgesture
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -21,7 +21,7 @@ import java.lang.ref.WeakReference
 private lateinit var backPressedMethodRef: WeakReference<MutableMethod>
 private var predictiveBackGestureMethodRef = WeakReference<MutableMethod>(null)
 
-val backGesturePatch = bytecodePatch {
+val backGesturePatch = patch {
     dependsOn(versionCheckPatch)
 
     execute {

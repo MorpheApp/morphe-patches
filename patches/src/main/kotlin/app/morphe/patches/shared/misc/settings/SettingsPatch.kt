@@ -1,9 +1,9 @@
 package app.morphe.patches.shared.misc.settings
 
+import app.morphe.patcher.patch.document
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.ResourcePatchContext
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceFile
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
@@ -34,7 +34,7 @@ fun overrideThemeColors(lightThemeColorString: String?, darkThemeColorString: St
     darkThemeColor = darkThemeColorString
 }
 
-private val settingsColorPatch = bytecodePatch {
+private val settingsColorPatch = patch {
     finalize {
         lightThemeColor?.let { ThemeLightColorResourceNameFingerprint.method.returnEarly(it) }
         darkThemeColor?.let { ThemeDarkColorResourceNameFingerprint.method.returnEarly(it) }
@@ -51,7 +51,7 @@ private val settingsColorPatch = bytecodePatch {
 fun settingsPatch (
     rootPreferences: List<Pair<BasePreference, String>>? = null,
     preferences: Set<BasePreference>,
-) = resourcePatch {
+) = patch {
     dependsOn(
         addResourcesPatch,
         settingsColorPatch,
@@ -113,7 +113,7 @@ fun settingsPatch (
 
             it.forEach { (intent, fileName) ->
                 val preferenceFileName = "res/xml/$fileName.xml"
-                if (get(preferenceFileName).exists()) {
+                if (resourceFile(preferenceFileName).exists()) {
                     document(preferenceFileName).use { document ->
                         document.getNode("PreferenceScreen").addPreference(intent)
                     }
@@ -217,14 +217,13 @@ private class AddOnPreferences(
  * by key, so an add-on that wants to stay next to a preference must also use a key that sorts next
  * to it. Icons are not supported, since the same nodes are used for all preference file variants.
  */
-context(context: ResourcePatchContext)
 private fun mergeAddOnPreferences() {
-    val declarationFile = context[ADD_ON_PREFERENCES_FILE_PATH]
+    val declarationFile = resourceFile(ADD_ON_PREFERENCES_FILE_PATH)
     if (!declarationFile.exists()) return
 
     val addOnPreferences = mutableListOf<AddOnPreferences>()
 
-    context.document(ADD_ON_PREFERENCES_FILE_PATH).use { declarations ->
+    document(ADD_ON_PREFERENCES_FILE_PATH).use { declarations ->
         val declarationsNode = declarations.getNode("morphe-add-on-preferences")
             ?: throw PatchException("Invalid add-on preference declaration: $ADD_ON_PREFERENCES_FILE_PATH")
 
@@ -247,9 +246,9 @@ private fun mergeAddOnPreferences() {
         "res/xml/morphe_prefs_icons.xml",
         "res/xml/morphe_prefs_icons_bold.xml"
     ).forEach { preferenceFilePath ->
-        if (!context[preferenceFilePath].exists()) return@forEach
+        if (!resourceFile(preferenceFilePath).exists()) return@forEach
 
-        context.document(preferenceFilePath).use { document ->
+        document(preferenceFilePath).use { document ->
             val rootNode = document.getNode("PreferenceScreen")
 
             addOnPreferences.forEach { addOn ->

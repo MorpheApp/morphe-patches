@@ -8,7 +8,7 @@
 package app.morphe.patches.shared.misc.request
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.registersUsed
 import java.lang.ref.WeakReference
@@ -19,7 +19,7 @@ private var urlRegister = -1
 private var mapRegister = -1
 private var bodyRegister = -1
 
-internal val buildRequestPatch = bytecodePatch(
+internal val buildRequestPatch = patch(
     description = "buildRequestPatch",
 ) {
     execute {

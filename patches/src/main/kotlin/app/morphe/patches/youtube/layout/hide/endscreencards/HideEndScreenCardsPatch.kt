@@ -3,8 +3,7 @@ package app.morphe.patches.youtube.layout.hide.endscreencards
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -13,7 +12,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private val hideEndScreenCardsResourcePatch = resourcePatch {
+private val hideEndScreenCardsResourcePatch = patch {
     dependsOn(
         settingsPatch,
     )
@@ -29,7 +28,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideEndScreenCardsPatch;"
 
 @Suppress("unused")
-val hideEndScreenCardsPatch = bytecodePatch(
+val hideEndScreenCardsPatch = patch(
     name = "Hide end screen cards",
     description = "Adds an option to hide suggested video cards at the end of videos.",
 ) {

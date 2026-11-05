@@ -12,7 +12,9 @@ package app.morphe.patches.music.layout.theme
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceFile
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_30_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
@@ -55,11 +57,11 @@ private val musicColorNamesDark = {
  * invisible while the app background is pure black.
  * https://github.com/MorpheApp/morphe-patches/issues/200
  */
-private val headerFadeResourcePatch = resourcePatch(
+private val headerFadeResourcePatch = patch(
     description = "Fades the header of a detail page into the app background."
 ) {
     execute {
-        if (!get(DETAIL_PAGE_HEADER_LAYOUT).exists()) {
+        if (!resourceFile(DETAIL_PAGE_HEADER_LAYOUT).exists()) {
             return@execute
         }
 

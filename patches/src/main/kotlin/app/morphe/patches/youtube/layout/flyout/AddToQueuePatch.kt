@@ -12,7 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
@@ -42,7 +42,7 @@ private const val EXTENSION_LOCAL_QUEUE_CLASS =
     "Lapp/morphe/extension/youtube/patches/LocalQueuePatch;"
 
 @Suppress("unused")
-val addToQueuePatch = bytecodePatch(
+val addToQueuePatch = patch(
     name = "Add to queue",
     description = "Adds a video queue to the feed flyout menu, using either the Morphe queue " +
             "or a native queue that uses YouTube's playlist interface."

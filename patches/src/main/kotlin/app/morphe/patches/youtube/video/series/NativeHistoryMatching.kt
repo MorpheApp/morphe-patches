@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.video.series
 
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.PatchException
 import com.android.tools.smali.dexlib2.iface.ClassDef
 import com.android.tools.smali.dexlib2.iface.Method
@@ -30,7 +30,7 @@ internal data class NativeHistoryContract(
 )
 
 /** Resolve the native browse service, its History request and response members. */
-internal fun BytecodePatchContext.resolveNativeHistory(accountType: String): NativeHistoryContract {
+internal fun resolveNativeHistory(accountType: String): NativeHistoryContract {
     val capture = NativeStreamingBrowseRequestFingerprint.instructionMatches.last().getMethodCalled()
     val request = classDefBy(capture.returnType)
 

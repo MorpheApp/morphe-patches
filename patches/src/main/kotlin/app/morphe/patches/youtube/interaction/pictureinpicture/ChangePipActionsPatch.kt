@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.pictureinpicture
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -23,7 +23,7 @@ private const val EXTENSION_CLASS =
 
 
 @Suppress("unused")
-val changePipActionsPatch = bytecodePatch(
+val changePipActionsPatch = patch(
     name = "Change picture-in-picture actions",
     description = "Adds options to change the buttons shown in picture-in-picture mode.",
 ) {

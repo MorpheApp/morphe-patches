@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.seekbar
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -23,7 +23,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/LiveStreamDVRPatch;"
 
 @Suppress("unused")
-val liveStreamDVRPatch = bytecodePatch(
+val liveStreamDVRPatch = patch(
     description = "Enables video seeking on live streams that have disabled DVR (Digital Video Recorder).",
 ) {
     dependsOn(

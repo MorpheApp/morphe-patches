@@ -13,7 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_32_or_greater
@@ -30,7 +30,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ChangeMiniplayerColorPatch;"
 
 @Suppress("unused")
-val changeMiniplayerColorPatch = bytecodePatch(
+val changeMiniplayerColorPatch = patch(
     name = "Change miniplayer color",
     description = "Adds an option to change the miniplayer background color to match the fullscreen player."
 ) {

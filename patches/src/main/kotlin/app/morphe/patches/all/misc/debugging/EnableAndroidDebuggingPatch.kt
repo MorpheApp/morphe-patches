@@ -1,10 +1,11 @@
 package app.morphe.patches.all.misc.debugging
 
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
 import org.w3c.dom.Element
 
 @Suppress("unused")
-internal val enableAndroidDebuggingPatch = resourcePatch(
+internal val enableAndroidDebuggingPatch = patch(
     // name = "Enable Android debugging",
     description = "Enables Android developer debugging capabilities. Including this patch can slow down the app.",
     default = true

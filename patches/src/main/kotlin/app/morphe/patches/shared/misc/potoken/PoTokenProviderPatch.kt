@@ -7,11 +7,10 @@
 
 package app.morphe.patches.shared.misc.potoken
 
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.InstallerType
 import app.morphe.patcher.patch.PatchAvailability
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.request.hookMediaRequest
@@ -29,9 +28,9 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/PoToke
 internal fun poTokenProviderPatch(
     originalAppPackageName: String,
     preferenceScreen: BasePreferenceScreen.Screen,
-    block: BytecodePatchBuilder.() -> Unit,
-    executeBlock: BytecodePatchContext.() -> Unit = {},
-) = bytecodePatch(
+    block: PatchDefinition.() -> Unit,
+    executeBlock: () -> Unit = {},
+) = patch(
     name = "PoToken provider",
     description = "Adds option to get PoToken using an external PoToken minter app."
 ) {

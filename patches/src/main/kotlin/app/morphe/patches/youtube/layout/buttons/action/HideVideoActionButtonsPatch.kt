@@ -10,7 +10,7 @@
 
 package app.morphe.patches.youtube.layout.buttons.action
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.proto.hookElement
@@ -32,7 +32,7 @@ private const val QUICK_ACTIONS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/QuickActionButtonsFilter;"
 
 @Suppress("unused")
-val hideVideoActionButtonsPatch = bytecodePatch(
+val hideVideoActionButtonsPatch = patch(
     name = "Hide video action buttons",
     description = "Adds options to hide video action buttons in fullscreen and portrait modes."
 ) {

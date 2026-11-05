@@ -9,13 +9,13 @@ package app.morphe.patches.shared.misc.initialization
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.Patch
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/InitializationPatch;"
 
 internal fun initializationPatch(
-    extensionPatch: Patch<*>
-) = bytecodePatch(
+    extensionPatch: Patch
+) = patch(
     description = "Prompts to restart the app on first load of a clean install",
 ) {
     dependsOn(extensionPatch)

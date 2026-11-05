@@ -9,8 +9,7 @@ package app.morphe.patches.music.layout.returnyoutubedislike
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -31,7 +30,7 @@ import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-private val returnYouTubeDislikeResourcePatch = resourcePatch {
+private val returnYouTubeDislikeResourcePatch = patch {
     dependsOn(settingsPatch)
 
     execute {
@@ -65,7 +64,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/ReturnYouTubeDislikePatch;"
 
 @Suppress("unused")
-val returnYouTubeDislikePatch = bytecodePatch(
+val returnYouTubeDislikePatch = patch(
     name = "Return YouTube Dislike",
     description = "Adds an option to show the dislike count of tracks with Return YouTube Dislike.",
 ) {

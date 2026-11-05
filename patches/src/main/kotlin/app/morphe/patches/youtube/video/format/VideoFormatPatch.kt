@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.video.format
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
@@ -34,7 +34,7 @@ private const val EXTENSION_FORMAT_INTERFACE =
 
 private lateinit var adaptiveFormatMethod : WeakReference<MutableMethod>
 
-val videoFormatPatch = bytecodePatch(
+val videoFormatPatch = patch(
     description = "Hooks YouTube to get format about the current playing video.",
 ) {
     dependsOn(sharedExtensionPatch)

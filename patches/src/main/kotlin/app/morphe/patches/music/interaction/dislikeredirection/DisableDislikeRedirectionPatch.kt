@@ -10,7 +10,7 @@ package app.morphe.patches.music.interaction.dislikeredirection
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -29,7 +29,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/DisableDislikeRedirectionPatch;"
 
 @Suppress("unused")
-val disableDislikeRedirectionPatch = bytecodePatch(
+val disableDislikeRedirectionPatch = patch(
     name = "Disable dislike redirection",
     description = "Adds an option to prevent skipping to the next track when the dislike " +
             "button is pressed."

@@ -12,7 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patcher.util.smali.ExternalLabel
@@ -35,7 +35,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideMediaViewerComponentsPatch;"
 
 @Suppress("unused")
-val hideMediaViewerComponentsPatch = bytecodePatch(
+val hideMediaViewerComponentsPatch = patch(
     name = "Hide media viewer components",
     description = "Adds options to hide the \"See the conversation\" button and the title, buttons and video controls " +
             "of the media viewer. Hiding the title, buttons and video controls requires Reddit 2026.38.0 or newer."

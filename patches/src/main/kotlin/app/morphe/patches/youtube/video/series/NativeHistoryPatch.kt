@@ -8,9 +8,9 @@
 package app.morphe.patches.youtube.video.series
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.getMutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.util.getMutableMethod
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -26,7 +26,7 @@ private const val HISTORY_REQUEST =
 private const val IDENTITY = $$"$${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy$Identity;"
 
 /** Keep host changes limited to typed bridges; resolve every host member before mutation. */
-internal fun BytecodePatchContext.wireNativeHistory(account: NativeAccountContract) {
+internal fun wireNativeHistory(account: NativeAccountContract) {
     val contract = resolveNativeHistory(account.type)
     val service = contract.service
     val request = contract.request

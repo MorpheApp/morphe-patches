@@ -10,7 +10,8 @@ package app.morphe.patches.reddit.layout.trending
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.settingsPatch
@@ -30,7 +31,7 @@ private const val EXTENSION_TRENDING_INTERFACE =
     $$"Lapp/morphe/extension/reddit/patches/HideTrendingShelvesPatch$TrendingInterface;"
 
 @Suppress("unused")
-val hideTrendingShelvesPatch = bytecodePatch(
+val hideTrendingShelvesPatch = patch(
     name = "Hide Trending shelves",
     description = "Adds an option to hide the Trending shelves from feed and search suggestions."
 ) {

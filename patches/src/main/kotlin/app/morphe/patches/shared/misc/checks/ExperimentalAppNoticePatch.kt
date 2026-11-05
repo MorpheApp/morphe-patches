@@ -2,7 +2,7 @@ package app.morphe.patches.shared.misc.checks
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.shared.misc.settings.RecommendedAppVersionUtilsFingerprint
 
@@ -11,7 +11,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/Experi
 internal fun experimentalAppNoticePatch(
     mainActivityFingerprint: Fingerprint,
     recommendedAppVersion: String
-) = bytecodePatch(
+) = patch(
     description = "Shows a use dialog message the first time a user launches an experimentally patched app",
 ) {
     execute {

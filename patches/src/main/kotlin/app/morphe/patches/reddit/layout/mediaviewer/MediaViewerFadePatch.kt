@@ -10,7 +10,7 @@ package app.morphe.patches.reddit.layout.mediaviewer
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.registersUsed
@@ -31,7 +31,7 @@ private const val EXTENSION_CLASS =
 private const val SCRIM_STYLE_CLASS = "Lcom/reddit/fullbleedplayer/FbpChromeScrimStyle;"
 
 @Suppress("unused")
-val mediaViewerFadePatch = bytecodePatch(
+val mediaViewerFadePatch = patch(
     name = "Media viewer fade",
     description = "Adds an option to lower or remove the dark fade behind the caption when viewing images and videos."
 ) {

@@ -8,11 +8,11 @@
 package app.morphe.patches.youtube.misc.fix.accessibility
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 
-internal val fixCaptionsAccessibilityPatch = bytecodePatch(
+internal val fixCaptionsAccessibilityPatch = patch(
     description = "Fixes captions not being announced by screen readers."
 ) {
     dependsOn(versionCheckPatch)

@@ -7,7 +7,7 @@
 
 package app.morphe.patches.shared.layout.branding
 
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
@@ -15,7 +15,7 @@ import app.morphe.util.copyResources
  * Adds the Morphe startup animation of each launcher foreground, played by the
  * Morphe splash screen styles in place of the original animation.
  */
-val startupAnimationResourcePatch = resourcePatch {
+val startupAnimationResourcePatch = patch {
     execute {
         copyResources(
             "custom-branding",

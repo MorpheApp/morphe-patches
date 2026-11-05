@@ -13,7 +13,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -52,7 +53,7 @@ private const val EXTENSION_WINDOW_INTERFACE =
 private const val EXTENSION_TIMELINE_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/StableCaptionBlocks$Timeline;"
 
-internal val stableCaptionBlocksPatch = bytecodePatch(
+internal val stableCaptionBlocksPatch = patch(
     description = "Shows automatic captions in stable blocks with optional bilingual translation.",
 ) {
     // The window measure method must be patched first, since this inserts instructions before it.
@@ -262,7 +263,7 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                 "patch_getVisibleCaptionLines" to it.instructionMatches[1],
                 "patch_getFullCaptionLines" to it.instructionMatches[3],
             ).map { (name, match) -> name to match.fieldReference } +
-                    ("patch_getCaptionMeasureRow" to getCaptionWindowConstructorFingerprint(rowType)
+                    ("patch_getCaptionMeasureRow" to CaptionWindowConstructorFingerprint
                         .instructionMatches.first().fieldReference)
 
             val backgroundColor = CaptionWindowBackgroundColorFingerprint.method

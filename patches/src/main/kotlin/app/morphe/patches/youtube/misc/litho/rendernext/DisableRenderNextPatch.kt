@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.misc.litho.rendernext
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.youtube.misc.playservice.is_20_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_47_or_greater
@@ -22,7 +22,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
  * RenderNext (ElementsView) is a Google UI library alternative to Litho, enabled by some A/B tests.
  * Items rendered with it are not seen by the Litho filters and hooks, so it's always disabled.
  */
-val disableRenderNextPatch = bytecodePatch(
+val disableRenderNextPatch = patch(
     description = "Disables RenderNext, so the app is always rendered with Litho.",
 ) {
     dependsOn(versionCheckPatch)
@@ -47,11 +47,11 @@ val disableRenderNextPatch = bytecodePatch(
         val enablementCheckMethod = RenderNextEnablementCheckFingerprint.method
         enablementCheckMethod.returnEarly(false)
 
-        val configRenderNextField = getRenderNextConfigFieldFingerprint(enablementCheckMethod)
+        val configRenderNextField = RenderNextConfigFieldFingerprint
             .instructionMatches.first().fieldReference
 
         // Every read of the config field decides if an element is RenderNext.
-        getRenderNextConfigFieldReadFingerprint(configRenderNextField).matchAll().forEach {
+        RenderNextConfigFieldReadFingerprint.matchAll().forEach {
             it.method.apply {
                 val index = it.instructionMatches.first().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA

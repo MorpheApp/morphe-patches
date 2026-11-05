@@ -13,7 +13,7 @@ package app.morphe.patches.youtube.layout.seekbar
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
@@ -30,7 +30,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/SeekbarColorPatch;"
 
-val seekbarColorPatch = bytecodePatch(
+val seekbarColorPatch = patch(
     description = "Hide or set a custom seekbar color",
 ) {
     dependsOn(

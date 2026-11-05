@@ -16,8 +16,6 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val RenderNextFlagLiteral = 45661418L
 
@@ -72,29 +70,29 @@ internal object RenderNextEnablementCheckFingerprint : Fingerprint(
  * Callers of the enablement check, that decide if an element is RenderNext.
  * The first boolean they read is the RenderNext field of the element config, set by the server.
  */
-internal fun getRenderNextConfigFieldFingerprint(enablementCheck: MethodReference) = object : Fingerprint(
+internal object RenderNextConfigFieldFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_BOOLEAN,
             type = "Z"
         ),
-        methodCall(reference = enablementCheck),
+        methodCall(reference = { RenderNextEnablementCheckFingerprint.method }),
         methodCall(name = "toBuilder")
     )
-) {}
+)
 
 /**
  * Reads the RenderNext field of the element config.
  */
-internal fun getRenderNextConfigFieldReadFingerprint(configField: FieldReference) = object : Fingerprint(
+internal object RenderNextConfigFieldReadFingerprint : Fingerprint(
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_BOOLEAN,
-            reference = configField
+            reference = { RenderNextConfigFieldFingerprint.instructionMatches.first().fieldReference }
         )
     )
-) {}
+)
 
 /**
  * Checks if a component identifier is in the comma separated list of the flag 45661551

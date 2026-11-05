@@ -12,7 +12,8 @@ package app.morphe.patches.youtube.layout.captions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.registersUsed
@@ -31,7 +32,7 @@ private const val EXTENSION_CAPTION_TRACK_INTERFACE =
 private const val PREFERRED_CAPTION_TRACK_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/PreferredCaptionLanguagePatch$CaptionTrackInterface;"
 
-internal val autoTranslateCaptionsPatch = bytecodePatch(
+internal val autoTranslateCaptionsPatch = patch(
     description = "Adds an option to add more auto-translate languages and sort the languages by name."
 ) {
     dependsOn(
@@ -116,7 +117,7 @@ internal val autoTranslateCaptionsPatch = bytecodePatch(
 
         val adapter = "${directTracks.definingClass}->patch_getAutoTranslateTracks()Ljava/util/List;"
         // Route the UI getter and the existing preferred-language interface getter through it.
-        AutoTranslateTracksCallFingerprint(autoTracks).matchAllMethodIndicesForEach { index ->
+        AutoTranslateTracksCallFingerprint.matchAllMethodIndicesForEach { index ->
             val register = getInstruction(index).registersUsed[0]
             replaceInstruction(index, "invoke-virtual/range { v$register .. v$register }, $adapter")
         }

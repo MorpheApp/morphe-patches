@@ -15,7 +15,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.layout.shortsplayer.openShortsInRegularPlayerPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -35,7 +36,7 @@ private const val EXTENSION_FULLSCREEN_INTERFACE =
 /**
  * Used by [openVideosFullscreenPatch], [openShortsInRegularPlayerPatch] and [exitFullscreenPatch].
  */
-internal val openVideosFullscreenHookPatch = bytecodePatch {
+internal val openVideosFullscreenHookPatch = patch {
     dependsOn(
         sharedExtensionPatch
     )

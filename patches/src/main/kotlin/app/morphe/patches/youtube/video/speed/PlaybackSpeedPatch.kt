@@ -10,7 +10,7 @@
 
 package app.morphe.patches.youtube.video.speed
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -35,7 +35,7 @@ internal val settingsMenuVideoSpeedGroup = mutableSetOf<BasePreference>()
 internal val settingsMenuShortsSpeedGroup = mutableSetOf<BasePreference>()
 
 @Suppress("unused")
-val playbackSpeedPatch = bytecodePatch(
+val playbackSpeedPatch = patch(
     name = "Playback speed",
     description = "Adds options to customize available playback speeds, set a default playback speed, " +
         "and show a speed dialog button in the video player.",

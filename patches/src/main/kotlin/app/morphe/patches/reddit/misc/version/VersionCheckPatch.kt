@@ -2,7 +2,8 @@
 
 package app.morphe.patches.reddit.misc.version
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.packageMetadata
+import app.morphe.patcher.patch.patch
 import kotlin.properties.Delegates
 
 // Use notNull delegate so an exception is thrown if these fields are accessed before they are set.
@@ -46,7 +47,7 @@ var is_2026_43_0_or_greater: Boolean by Delegates.notNull()
 var is_2026_44_0_or_greater: Boolean by Delegates.notNull()
     private set
 
-val versionCheckPatch = bytecodePatch {
+val versionCheckPatch = patch {
     execute {
         val versionName = packageMetadata.versionName
         fun isEqualsOrGreaterThan(version: String): Boolean {

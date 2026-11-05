@@ -16,8 +16,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -64,7 +63,7 @@ internal const val EXTENSION_CLASS =
 private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/PlaybackSpeedMenuFilter;"
 
-private val customPlaybackSpeedResourcePatch = resourcePatch {
+private val customPlaybackSpeedResourcePatch = patch {
     execute {
         copyResources(
             "speed",
@@ -79,7 +78,7 @@ private val customPlaybackSpeedResourcePatch = resourcePatch {
     }
 }
 
-internal val customPlaybackSpeedPatch = bytecodePatch(
+internal val customPlaybackSpeedPatch = patch(
     description = "Adds custom playback speed options.",
 ) {
     dependsOn(

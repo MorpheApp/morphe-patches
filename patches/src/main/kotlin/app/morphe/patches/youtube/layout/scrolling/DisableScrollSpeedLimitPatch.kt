@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.layout.scrolling
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_35_or_greater
@@ -23,7 +23,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableScrollSpeedLimitPatch;"
 
 @Suppress("unused")
-val disableScrollSpeedLimitPatch = bytecodePatch(
+val disableScrollSpeedLimitPatch = patch(
     name = "Disable scrolling speed limit",
     description = "Adds an option to remove limits of how fast the home and " +
             "subscription feed can be scrolled."

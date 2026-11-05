@@ -1,6 +1,6 @@
 package app.morphe.patches.shared.misc.gms
 
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 
@@ -14,7 +14,7 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 internal fun linkHandlingPatch(
     fromPackageName: String,
     screen: BasePreferenceScreen.Screen,
-) = resourcePatch {
+) = patch {
     finalize {
         screen.addPreferences(
             NonInteractivePreference(

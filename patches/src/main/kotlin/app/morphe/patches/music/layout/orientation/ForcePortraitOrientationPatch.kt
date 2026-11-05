@@ -8,7 +8,7 @@
 package app.morphe.patches.music.layout.orientation
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -19,7 +19,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ForcePortraitOrientationPatch;"
 
 @Suppress("unused")
-val forcePortraitOrientationPatch = bytecodePatch(
+val forcePortraitOrientationPatch = patch(
     name = "Force portrait orientation",
     description = "Adds an option to keep the app in portrait orientation when the device is rotated."
 ) {

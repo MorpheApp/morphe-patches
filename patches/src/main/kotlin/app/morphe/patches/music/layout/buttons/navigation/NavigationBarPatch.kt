@@ -2,8 +2,8 @@ package app.morphe.patches.music.layout.buttons.navigation
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -17,14 +17,14 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/NavigationBarPatch;"
 
 @Suppress("unused")
-val navigationBarPatch = bytecodePatch(
+val navigationBarPatch = patch(
     name = "Navigation bar",
     description = "Adds options to hide navigation bar, labels and buttons."
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        resourcePatch {
+        patch {
             execute {
                 // Ensure the first ImageView has 'layout_weight' to stay properly sized
                 // when the TextView is hidden.
