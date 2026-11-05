@@ -1,7 +1,7 @@
 package app.morphe.patches.shared.misc.settings.preference
 
 import app.morphe.patches.util.resource.BaseResource
-import org.w3c.dom.Document
+import app.morphe.patcher.xml.XmlElement
 
 /**
  * A text preference.
@@ -26,8 +26,8 @@ class TextPreference(
     val inputType: InputType = InputType.TEXT,
 ) : BasePreference(key, titleKey, summaryKey, icon, iconBold, layout, tag) {
 
-    override fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit) =
-        super.serialize(ownerDocument, resourceCallback).apply {
+    override fun serialize(parent: XmlElement, index: Int, resourceCallback: (BaseResource) -> Unit) =
+        super.serialize(parent, index, resourceCallback).apply {
             setAttribute("android:inputType", inputType.type)
         }
 }

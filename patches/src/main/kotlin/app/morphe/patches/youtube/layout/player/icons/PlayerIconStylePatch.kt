@@ -14,14 +14,16 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.decode
 import app.morphe.patcher.patch.deleteResource
-import app.morphe.patcher.patch.document
 import app.morphe.patcher.patch.listDecodableFiles
+import app.morphe.patcher.patch.readXml
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.Patch
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.filePathOption
 import app.morphe.patcher.patch.resourceFile
+import app.morphe.patches.util.resource.copyXmlResource
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
 import app.morphe.patcher.util.getReference
@@ -45,11 +47,9 @@ import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstructio
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.WideLiteralInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import org.w3c.dom.Element
 import java.io.File
 import java.util.logging.Logger
 import java.util.zip.ZipFile
-import javax.xml.parsers.DocumentBuilderFactory
 
 // A style does not have to cover every icon, so its variants are copied only when bundled.
 // Player button patches do not depend on playerIconStylePatch, the styles are only added when it is included.
@@ -155,11 +155,7 @@ internal class CustomIcons(path: String) {
 
         fun validateVector(name: String, bytes: ByteArray) {
             val root = try {
-                DocumentBuilderFactory.newInstance().apply {
-                    isNamespaceAware = true
-                    // Only the desktop parser knows this feature, the Android one does not resolve entities anyway.
-                    runCatching { setFeature("http://apache.org/xml/features/disallow-doctype-decl", true) }
-                }.newDocumentBuilder().parse(bytes.inputStream()).documentElement.tagName
+                readXml(bytes.inputStream()).use { it.root.tag }
             } catch (ex: Exception) {
                 throw PatchException("Custom icon $name is not valid XML: ${ex.message}")
             }
@@ -287,7 +283,8 @@ internal fun wrapAppBitmapIcons(
             }
             deleteResource("res/$directory/${bitmap.name}")
         }
-        resourceFile("res/drawable/$appName.xml").writeText(appPlayerIconWrapper(wrapperClass))
+        // Replaces the file without decoding it.
+        resourceFile("res/drawable/$appName.xml", false).writeText(appPlayerIconWrapper(wrapperClass))
     }
 }
 
@@ -311,24 +308,22 @@ private fun appPlayerIconWrapper(wrapperClass: String, appIcon: String? = null):
  */
 private fun wrapAppSelectorIcons(selectorPaths: List<String>, wrapperClass: String) {
     selectorPaths.forEach { path ->
-        document(path).use { document ->
-            val items = document.getElementsByTagName("item")
-            for (i in 0 until items.length) {
-                val item = items.item(i) as Element
+        resourceXml(path).use { selector ->
+            selector.elements("item").toList().forEach { item ->
                 // The disabled item is a tinted <bitmap> child instead of an android:drawable attribute.
-                val bitmap = item.getElementsByTagName("bitmap").item(0) as Element?
-                val icon = item.getAttribute("android:drawable").ifEmpty {
-                    bitmap?.getAttribute("android:src").orEmpty()
+                val bitmap = item.children("bitmap").firstOrNull()
+                val icon = item.attribute("android:drawable").orEmpty().ifEmpty {
+                    bitmap?.attribute("android:src").orEmpty()
                 }
-                if (icon.isEmpty()) continue
+                if (icon.isEmpty()) return@forEach
 
                 item.removeAttribute("android:drawable")
-                bitmap?.let(item::removeChild)
-                val disabled = if (item.getAttribute("android:state_enabled") == "false") "Disabled" else ""
-                item.appendChild(document.createElement("drawable").apply {
+                bitmap?.remove()
+                val disabled = if (item.attribute("android:state_enabled") == "false") "Disabled" else ""
+                item.appendChild("drawable") {
                     setAttribute("class", $$"$${APP_PLAYER_ICON_DRAWABLE}$$${wrapperClass}$${disabled}")
                     setAttribute("android:drawable", icon)
-                })
+                }
             }
         }
     }
@@ -542,9 +537,9 @@ val playerIconStylePatch = patch(
             // Targets before the bold player do not have these icons.
             if (appIconPath !in decodableDrawables) return@filter false
 
-            val appIcon = resourceFile(appIconPath)
-            appIcon.copyTo(resourceFile("res/drawable/$originalName.xml"), overwrite = true)
-            appIcon.writeText(appPlayerIconWrapper(wrapperClass))
+            copyXmlResource(appIconPath, "res/drawable/$originalName.xml")
+            // Replaces the file without decoding it.
+            resourceFile(appIconPath, false).writeText(appPlayerIconWrapper(wrapperClass))
             true
         }.map { it.third }
 
@@ -568,9 +563,9 @@ val playerIconStylePatch = patch(
         )
 
         // Older players show these selectors from the layout, the bold player sets its icons from code.
-        val selectorPaths = decode(
-            *appSkipSelectors.map { (selectorName, _) -> "res/drawable*/$selectorName.xml" }.toTypedArray()
-        )
+        val selectorPaths = appSkipSelectors.flatMap { (selectorName, _) ->
+            listDecodableFiles("res/drawable*/$selectorName.xml")
+        }.sorted()
         appSkipSelectors.forEach { (selectorName, wrapperClass) ->
             wrapAppSelectorIcons(selectorPaths.filter { it.endsWith("/$selectorName.xml") }, wrapperClass)
         }
@@ -578,17 +573,14 @@ val playerIconStylePatch = patch(
         // Without the bold player the settings button keeps the gear of its layout, which other screens share,
         // so only the button points to a wrapper. The wrapper keeps whatever icon the layout had.
         var settingsIcon: String? = null
-        decode(*playerOverflowButtonLayouts.map { "res/layout*/$it.xml" }.toTypedArray())
+        playerOverflowButtonLayouts.flatMap { listDecodableFiles("res/layout*/$it.xml") }
+            .sorted()
             .forEach { path ->
-                document(path).use { document ->
-                    val elements = document.getElementsByTagName("*")
-                    for (i in 0 until elements.length) {
-                        val element = elements.item(i) as Element
-                        if (element.getAttribute("android:id") != "@id/player_overflow_button") continue
-
-                        val icon = element.getAttribute("android:src")
+                resourceXml(path).use { layout ->
+                    layout.elements().filter { it.attribute("android:id") == "@id/player_overflow_button" }.forEach { element ->
+                        val icon = element.attribute("android:src").orEmpty()
                         // Only the icon of the first layout goes into the wrapper, another icon stays as it is.
-                        if (icon.isEmpty() || (settingsIcon != null && icon != settingsIcon)) continue
+                        if (icon.isEmpty() || (settingsIcon != null && icon != settingsIcon)) return@forEach
 
                         settingsIcon = icon
                         element.setAttribute("android:src", "@drawable/morphe_player_settings_app")

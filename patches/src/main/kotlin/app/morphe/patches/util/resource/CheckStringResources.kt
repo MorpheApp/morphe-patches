@@ -26,9 +26,7 @@ package app.morphe.patches.util.resource
 import app.morphe.patches.all.misc.resources.localesAll
 import app.morphe.patches.util.resource.StringResourceSanitizer.sanitizeAndroidResourceString
 import app.morphe.util.inputStreamFromBundledResource
-import org.w3c.dom.Element
-import org.w3c.dom.Node
-import javax.xml.parsers.DocumentBuilderFactory
+import app.morphe.patcher.patch.readXml
 
 /**
  * Checks resource strings for invalid strings that will fail resource compilation.
@@ -54,17 +52,10 @@ internal fun main(args: Array<String>) {
                 "addresources", srcSubPath
             ).use { stream ->
                 if (stream == null) throw IllegalArgumentException("Could not find resource $srcSubPath")
-                val document = DocumentBuilderFactory.newInstance()
-                    .newDocumentBuilder()
-                    .parse(stream)
-
-                val nodeList = document.getElementsByTagName("string")
-                for (i in 0 until nodeList.length) {
-                    val node = nodeList.item(i)
-                    if (node.nodeType == Node.ELEMENT_NODE) {
-                        val element = node as Element
-                        val name = element.getAttribute("name")
-                        val value = element.textContent
+                readXml(stream).use { strings ->
+                    strings.elements("string").forEach { element ->
+                        val name = element.attribute("name").orEmpty()
+                        val value = element.text
                         try {
                             sanitizeAndroidResourceString(
                                 key = name,

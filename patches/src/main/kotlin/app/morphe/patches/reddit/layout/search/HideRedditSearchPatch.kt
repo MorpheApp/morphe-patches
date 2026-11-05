@@ -7,11 +7,10 @@
 
 package app.morphe.patches.reddit.layout.search
 
-import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.reddit.misc.fix.signature.spoofSignaturePatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
-import app.morphe.util.findElementByAttributeValueOrThrow
 
 @Suppress("unused")
 val hideRedditSearchPatch = patch(
@@ -26,16 +25,12 @@ val hideRedditSearchPatch = patch(
 
     execute {
 
-        document("AndroidManifest.xml").use { document ->
-            val contextualElement = document.childNodes.findElementByAttributeValueOrThrow(
+        resourceXml("AndroidManifest.xml").use { manifest ->
+            val contextualElement = manifest.elementByAttribute(
                 "android:name",
                 "com.reddit.answers.sharing.AnswersTextSelectionActivity",
             )
-            val intentFilter = contextualElement.getElementsByTagName("intent-filter")
-            val mimeType = intentFilter.findElementByAttributeValueOrThrow(
-                "android:mimeType",
-                "text/plain",
-            )
+            val mimeType = contextualElement.elementByAttribute("android:mimeType", "text/plain")
 
             mimeType.setAttribute("android:mimeType", "text/calendar")
         }

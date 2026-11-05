@@ -1,8 +1,7 @@
 package app.morphe.patches.all.misc.debugging
 
-import app.morphe.patcher.patch.document
 import app.morphe.patcher.patch.patch
-import org.w3c.dom.Element
+import app.morphe.patcher.patch.resourceXml
 
 @Suppress("unused")
 internal val enableAndroidDebuggingPatch = patch(
@@ -11,14 +10,9 @@ internal val enableAndroidDebuggingPatch = patch(
     default = true
 ) {
     execute {
-        document("AndroidManifest.xml").use { document ->
-            val applicationNode =
-                document
-                    .getElementsByTagName("application")
-                    .item(0) as Element
-
+        resourceXml("AndroidManifest.xml").use { manifest ->
             // set application as debuggable
-            applicationNode.setAttribute("android:debuggable", "true")
+            manifest.elements("application").first().setAttribute("android:debuggable", "true")
         }
     }
 }

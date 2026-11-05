@@ -19,7 +19,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.document
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.booleanOption
@@ -66,11 +66,9 @@ import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.containsLiteralInstruction
 import app.morphe.util.copyResources
-import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.fiveRegisters
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
-import app.morphe.util.removeFromParent
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -123,18 +121,15 @@ private val navigationBarResourcePatch = patch {
         val hideSubscriptionsAppShortcut by hideSubscriptionsAppShortcutOption
 
         // Verify the file has the expected nodes, even if the patch options are off.
-        document("res/xml/main_shortcuts.xml").use { document ->
+        resourceXml("res/xml/main_shortcuts.xml").use { shortcuts ->
             mapOf(
                 "search-shortcut" to hideSearchAppShortcut,
                 "subscriptions-shortcut" to hideSubscriptionsAppShortcut
             ).forEach { (shortcutId, hide) ->
-                val shortcut = document.childNodes.findElementByAttributeValueOrThrow(
-                    "android:shortcutId",
-                    shortcutId
-                )
+                val shortcut = shortcuts.elementByAttribute("android:shortcutId", shortcutId)
 
                 if (hide == true) {
-                    shortcut.removeFromParent()
+                    shortcut.remove()
                 }
             }
         }

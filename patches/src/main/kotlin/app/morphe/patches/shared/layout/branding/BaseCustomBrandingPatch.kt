@@ -15,7 +15,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.deleteResource
-import app.morphe.patcher.patch.document
 import app.morphe.patcher.patch.InstallerType
 import app.morphe.patcher.patch.listDecodableFiles
 import app.morphe.patcher.patch.PatchAvailability
@@ -25,6 +24,7 @@ import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.folderOption
 import app.morphe.patcher.patch.resourceFile
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
@@ -34,20 +34,13 @@ import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.util.resource.StringResourceSanitizer
-import app.morphe.patches.util.resource.editText
-import app.morphe.patches.util.resource.removeStringResource
-import app.morphe.patches.util.resource.setStringResource
 import app.morphe.util.ResourceGroup
-import app.morphe.util.asSequence
 import app.morphe.util.copyResources
-import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.inputStreamFromBundledResource
-import app.morphe.util.removeFromParent
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import org.w3c.dom.Element
-import org.w3c.dom.NodeList
+import app.morphe.patcher.xml.XmlElement
 import java.io.File
 import java.util.logging.Logger
 
@@ -336,7 +329,14 @@ internal fun baseCustomBrandingPatch(
                     return@finalize
                 }
 
-                document("AndroidManifest.xml").use { document ->
+                resourceXml("AndroidManifest.xml").use { manifest ->
+                    val application = manifest.elements("application").first()
+                    val originalAlias = manifest.elementByAttribute(
+                        "android:name",
+                        activityAliasNameWithIntents
+                    )
+                    val intentFilters = originalAlias.children
+
                     // Create launch aliases that can be programmatically selected in app.
                     fun createAlias(
                         aliasName: String,
@@ -344,8 +344,7 @@ internal fun baseCustomBrandingPatch(
                         appNameIndex: Int,
                         useCustomName: Boolean,
                         enabled: Boolean,
-                        intents: NodeList
-                    ): Element {
+                    ) {
                         val label = if (useCustomName) {
                             if (customName == null) {
                                 "Custom" // Dummy text, and normally cannot be seen.
@@ -358,43 +357,25 @@ internal fun baseCustomBrandingPatch(
                         } else {
                             "@string/morphe_custom_branding_name_entry_$appNameIndex"
                         }
-                        val alias = document.createElement("activity-alias")
-                        alias.setAttribute("android:name", aliasName)
-                        alias.setAttribute("android:enabled", enabled.toString())
-                        alias.setAttribute("android:exported", "true")
-                        alias.setAttribute("android:icon", "@mipmap/$iconMipmapName")
-                        alias.setAttribute("android:label", label)
-                        alias.setAttribute("android:targetActivity", mainActivityName)
+                        application.appendChild("activity-alias") {
+                            setAttribute("android:name", aliasName)
+                            setAttribute("android:enabled", enabled.toString())
+                            setAttribute("android:exported", "true")
+                            setAttribute("android:icon", "@mipmap/$iconMipmapName")
+                            setAttribute("android:label", label)
+                            setAttribute("android:targetActivity", mainActivityName)
 
-                        // Copy all intents from the original alias so long press actions still work.
-                        if (isYouTubeMusic) {
-                            val intentFilter = document.createElement("intent-filter").apply {
-                                val action = document.createElement("action")
-                                action.setAttribute("android:name", "android.intent.action.MAIN")
-                                appendChild(action)
-
-                                val category = document.createElement("category")
-                                category.setAttribute("android:name", "android.intent.category.LAUNCHER")
-                                appendChild(category)
-                            }
-                            alias.appendChild(intentFilter)
-                        } else {
-                            for (i in 0 until intents.length) {
-                                alias.appendChild(
-                                    intents.item(i).cloneNode(true)
-                                )
+                            // Copy all intents from the original alias so long press actions still work.
+                            if (isYouTubeMusic) {
+                                appendChild("intent-filter") {
+                                    appendChild("action") { setAttribute("android:name", "android.intent.action.MAIN") }
+                                    appendChild("category") { setAttribute("android:name", "android.intent.category.LAUNCHER") }
+                                }
+                            } else {
+                                intentFilters.forEach { appendCopy(it) }
                             }
                         }
-
-                        return alias
                     }
-
-                    val application = document.getElementsByTagName("application").item(0) as Element
-                    val originalAlias = document.childNodes.findElementByAttributeValueOrThrow(
-                        "android:name",
-                        activityAliasNameWithIntents
-                    )
-                    val intentFilters = originalAlias.childNodes
 
                     val enabledNameIndex = if (useCustomName) numberOfPresetAppNames else 1 // 1 indexing
                     val enabledIconStyle = resolveIconStyle(appIconStyle, customIcon)
@@ -408,10 +389,7 @@ internal fun baseCustomBrandingPatch(
                     // patching even if a different icon is later selected in the app. The original
                     // icon is restored by patching with the 'Original' icon style.
                     if (enabledIconStyle != ORIGINAL_USER_ICON_STYLE_NAME) {
-                        application.setAttribute(
-                            "android:icon",
-                            "@mipmap/$LAUNCHER_RESOURCE_NAME_PREFIX$enabledIconStyle"
-                        )
+                        application.setAttribute("android:icon", "@mipmap/$LAUNCHER_RESOURCE_NAME_PREFIX$enabledIconStyle")
                     }
 
                     // The launch aliases only declare 'android:icon', so a launcher that prefers the
@@ -426,44 +404,35 @@ internal fun baseCustomBrandingPatch(
                         val useCustomNameLabel = (useCustomName && appNameIndex == numberOfPresetAppNames)
 
                         // Original icon.
-                        application.appendChild(
-                            createAlias(
-                                aliasName = aliasName(ORIGINAL_USER_ICON_STYLE_NAME),
-                                iconMipmapName = originalLauncherIconName,
-                                appNameIndex = appNameIndex,
-                                useCustomName = useCustomNameLabel,
-                                enabled = appNameIndex == enabledNameIndex &&
-                                        enabledIconStyle == ORIGINAL_USER_ICON_STYLE_NAME,
-                                intentFilters
-                            )
+                        createAlias(
+                            aliasName = aliasName(ORIGINAL_USER_ICON_STYLE_NAME),
+                            iconMipmapName = originalLauncherIconName,
+                            appNameIndex = appNameIndex,
+                            useCustomName = useCustomNameLabel,
+                            enabled = appNameIndex == enabledNameIndex &&
+                                    enabledIconStyle == ORIGINAL_USER_ICON_STYLE_NAME,
                         )
 
                         // Bundled icons.
                         iconStyleNames.forEach { style ->
-                            application.appendChild(
-                                createAlias(
-                                    aliasName = aliasName(style),
-                                    iconMipmapName = LAUNCHER_RESOURCE_NAME_PREFIX + style,
-                                    appNameIndex = appNameIndex,
-                                    useCustomName = useCustomNameLabel,
-                                    enabled = (appNameIndex == enabledNameIndex && style == enabledIconStyle),
-                                    intentFilters
-                                )
+                            createAlias(
+                                aliasName = aliasName(style),
+                                iconMipmapName = LAUNCHER_RESOURCE_NAME_PREFIX + style,
+                                appNameIndex = appNameIndex,
+                                useCustomName = useCustomNameLabel,
+                                enabled = (appNameIndex == enabledNameIndex && style == enabledIconStyle),
                             )
                         }
 
                         // Launcher icons of the app. Not enabled here, because they can only be
                         // selected in the app settings.
                         appLauncherIconNames().forEach { (style, iconMipmapName) ->
-                            application.appendChild(
-                                createAlias(
-                                    aliasName = aliasName(style),
-                                    iconMipmapName = iconMipmapName,
-                                    appNameIndex = appNameIndex,
-                                    useCustomName = useCustomNameLabel,
-                                    enabled = false,
-                                    intentFilters
-                                )
+                            createAlias(
+                                aliasName = aliasName(style),
+                                iconMipmapName = iconMipmapName,
+                                appNameIndex = appNameIndex,
+                                useCustomName = useCustomNameLabel,
+                                enabled = false,
                             )
                         }
 
@@ -475,16 +444,13 @@ internal fun baseCustomBrandingPatch(
                         // the app will become broken and cannot launch. Even if the app data is cleared
                         // it still cannot be launched and the only fix is to uninstall the app.
                         // To prevent this, always include all aliases and use dummy data if needed.
-                        application.appendChild(
-                            createAlias(
-                                aliasName = aliasName(CUSTOM_USER_ICON_STYLE_NAME),
-                                iconMipmapName = LAUNCHER_RESOURCE_NAME_PREFIX + CUSTOM_USER_ICON_STYLE_NAME,
-                                appNameIndex = appNameIndex,
-                                useCustomName = useCustomNameLabel,
-                                enabled = appNameIndex == enabledNameIndex &&
-                                        enabledIconStyle == CUSTOM_USER_ICON_STYLE_NAME,
-                                intentFilters
-                            )
+                        createAlias(
+                            aliasName = aliasName(CUSTOM_USER_ICON_STYLE_NAME),
+                            iconMipmapName = LAUNCHER_RESOURCE_NAME_PREFIX + CUSTOM_USER_ICON_STYLE_NAME,
+                            appNameIndex = appNameIndex,
+                            useCustomName = useCustomNameLabel,
+                            enabled = appNameIndex == enabledNameIndex &&
+                                    enabledIconStyle == CUSTOM_USER_ICON_STYLE_NAME,
                         )
                     }
 
@@ -492,19 +458,16 @@ internal fun baseCustomBrandingPatch(
                     if (isYouTubeMusic) {
                         // Remove the main action from the original alias, otherwise two apps icons
                         // can be shown in the launcher.
-                        intentFilters.findElementByAttributeValueOrThrow(
+                        originalAlias.elementByAttribute(
                             "android:name",
                             "android.intent.action.MAIN"
-                        ).removeFromParent()
+                        ).remove()
                     } else {
                         // All intent filters were copied to the new aliases. Remove them from the
                         // original alias, otherwise two app icons can be shown in the launcher, and
                         // intents such as the search shortcut match two activities of the app and
                         // Android asks which one to use.
-                        val originalIntentFilters = originalAlias.getElementsByTagName("intent-filter")
-                        for (i in originalIntentFilters.length - 1 downTo 0) {
-                            originalIntentFilters.item(i).removeFromParent()
-                        }
+                        originalAlias.elements("intent-filter").toList().forEach { it.remove() }
                     }
 
                     application.setAttribute(
@@ -624,7 +587,8 @@ internal fun baseCustomBrandingPatch(
         if (useCustomIcon) {
             // Reading the option already checked the folder, see customIconFiles
             customIconFiles(customIcon!!)!!.forEach { file ->
-                val targetFile = resourceFile("res/${file.parentFile.name}/${file.name}")
+                // Replaced without decoding what it replaces.
+                val targetFile = resourceFile("res/${file.parentFile.name}/${file.name}", false)
                 targetFile.parentFile.mkdirs()
                 file.copyTo(targetFile, overwrite = true)
             }
@@ -734,23 +698,20 @@ private fun appNameResourceNames(originalAppName: String): List<String> {
 
     val resourceNames = mutableListOf(declaredName)
 
-    document("AndroidManifest.xml").use { document ->
+    resourceXml("AndroidManifest.xml").use { manifest ->
         // A launcher shows the label of the launch activity and falls back to the application
         // label, and the app list of the system settings always shows the application label.
         // These can be different resources, such as "YT Music" and "YouTube Music".
-        val application = document.getElementsByTagName("application").item(0) as Element
-        stringResourceNameOrNull(application.getAttribute("android:label"))?.let {
+        val application = manifest.elements("application").first()
+        stringResourceNameOrNull(application.attribute("android:label").orEmpty())?.let {
             resourceNames += it
         }
 
         arrayOf("activity", "activity-alias").forEach { tagName ->
-            val elements = document.getElementsByTagName(tagName)
+            manifest.elements(tagName).forEach { element ->
+                if (!element.isLauncherEntry()) return@forEach
 
-            for (index in 0 until elements.length) {
-                val element = elements.item(index) as Element
-                if (!element.isLauncherEntry()) continue
-
-                stringResourceNameOrNull(element.getAttribute("android:label"))?.let {
+                stringResourceNameOrNull(element.attribute("android:label").orEmpty())?.let {
                     resourceNames += it
                 }
             }
@@ -767,10 +728,8 @@ private fun appNameResourceNames(originalAppName: String): List<String> {
 private fun stringResourceNameOrNull(reference: String): String? =
     if (reference.startsWith("@string/")) reference.substring("@string/".length) else null
 
-private fun Element.isLauncherEntry(): Boolean =
-    getElementsByTagName("category").asSequence()
-        .filterIsInstance<Element>()
-        .any { it.getAttribute("android:name") == "android.intent.category.LAUNCHER" }
+private fun XmlElement.isLauncherEntry(): Boolean =
+    elements("category").any { it.attribute("android:name") == "android.intent.category.LAUNCHER" }
 
 /**
  * Sets the app name of the default locale, and removes the localized app names because
@@ -782,9 +741,10 @@ private fun setAppNameResource(resourceName: String, appName: String): Boolean {
     var defaultAppNameSet = false
 
     listDecodableFiles("res/values*/strings.xml").forEach { path ->
-        resourceFile(path).editText { text ->
+        resourceXml(path).use { strings ->
             if (path != "res/values/strings.xml") {
-                return@editText text.removeStringResource(resourceName)
+                strings.resourceOrNull(resourceName)?.remove()
+                return@use
             }
 
             val sanitizedAppName = StringResourceSanitizer.sanitizeAndroidResourceString(
@@ -793,7 +753,9 @@ private fun setAppNameResource(resourceName: String, appName: String): Boolean {
             )
 
             defaultAppNameSet = true
-            text.setStringResource(resourceName, sanitizedAppName)
+            val string = strings.resourceOrNull(resourceName)
+                ?: strings.root.appendChild("string") { setAttribute("name", resourceName) }
+            string.text = sanitizedAppName
         }
     }
 
@@ -882,12 +844,12 @@ private fun setLauncherIconResource(
 ) {
     val iconReferences = mutableSetOf("mipmap" to originalLauncherIconName)
 
-    document("AndroidManifest.xml").use { document ->
-        val application = document.getElementsByTagName("application").item(0) as Element
+    resourceXml("AndroidManifest.xml").use { manifest ->
+        val application = manifest.elements("application").first()
 
         // Some launchers show the round icon, and it can point to a different resource.
         arrayOf("android:icon", "android:roundIcon").forEach { attributeName ->
-            val reference = application.getAttribute(attributeName)
+            val reference = application.attribute(attributeName).orEmpty()
             val typeIndex = reference.indexOf('/')
 
             // Framework resources such as '@android:mipmap/sym_def_app_icon' cannot be replaced.
@@ -909,7 +871,8 @@ private fun setLauncherIconResource(
         listDecodableFiles("res/$resourceType*/$resourceName.xml").forEach { path ->
             // Only the adaptive icon is replaced. A raster icon of the same name is used by
             // Android 7 and older, which the target apps no longer support.
-            resourceFile(path).writeBytes(bundledIcon)
+            // Replaced without decoding it.
+            resourceFile(path, false).writeBytes(bundledIcon)
             replacedIcons++
         }
     }

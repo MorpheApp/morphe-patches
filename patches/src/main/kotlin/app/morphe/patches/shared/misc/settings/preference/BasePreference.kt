@@ -11,8 +11,7 @@
 package app.morphe.patches.shared.misc.settings.preference
 
 import app.morphe.patches.util.resource.BaseResource
-import org.w3c.dom.Document
-import org.w3c.dom.Element
+import app.morphe.patcher.xml.XmlElement
 
 /**
  * Base preference class for all preferences.
@@ -48,22 +47,23 @@ abstract class BasePreference(
      * Serialize preference element to XML.
      * Overriding methods should invoke super and operate on its return value.
      *
+     * @param parent The element to add the preference to.
+     * @param index The position among the child elements of [parent] to add the preference at.
      * @param resourceCallback A callback for additional resources.
-     * @param ownerDocument Target document to create elements from.
      *
      * @return The serialized element.
      */
-    open fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit): Element =
-        ownerDocument.createElement(tag).apply {
+    open fun serialize(parent: XmlElement, index: Int, resourceCallback: (BaseResource) -> Unit): XmlElement =
+        parent.insertChild(index, tag) {
             key?.let { setAttribute("android:key", it) }
             titleKey?.let { setAttribute("android:title", "@string/$it") }
             summaryKey?.let { setAttribute("android:summary", "@string/$it") }
 
-            if (icon != null || iconBold != null) {
-                setAttribute("android:icon",  icon ?: iconBold)
+            (icon ?: iconBold)?.let { icon ->
+                setAttribute("android:icon", icon)
                 setAttribute("app:iconSpaceReserved", "true")
             }
-            layout?.let { setAttribute("android:layout", layout) }
+            layout?.let { setAttribute("android:layout", it) }
         }
 
 }

@@ -17,10 +17,12 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.document
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.patch.resourceFile
+import app.morphe.patcher.patch.listDecodableFiles
+import app.morphe.patcher.patch.resourceXml
+import app.morphe.patcher.patch.resourceXmlOrNull
+import app.morphe.patcher.xml.ResourceXml
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
@@ -41,10 +43,6 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
-import app.morphe.patches.util.resource.appendResourceElements
-import app.morphe.patches.util.resource.editText
-import app.morphe.patches.util.resource.forEachRawResourceElement
-import app.morphe.patches.util.resource.transformRawResourceElements
 import app.morphe.patches.youtube.layout.seekbar.seekbarColorPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
@@ -58,7 +56,6 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.forEachChildElement
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -241,55 +238,24 @@ private const val LIGHT_STATUS_BAR_ITEM_NAME = "android:windowLightStatusBar"
 
 /** A values directory of the default configuration or of an Android version. */
 private val VALUES_DIRECTORY_REGEX = Regex("""values(-v\d+)?""")
-private val STYLE_PARENT_REGEX = Regex(""" parent="([^"]*)"""")
 
 /**
  * Parent of the launcher theme declared in a styles file, or null if the file does not declare it.
  */
-private fun String.findLauncherThemeParent(): String? {
-    forEachRawResourceElement(this) {
-        if (it.tag == "style" && it.name == LAUNCHER_THEME_NAME) {
-            return STYLE_PARENT_REGEX.find(it.openTag)?.groupValues?.get(1)
-        }
-    }
-    return null
-}
+private fun ResourceXml.findLauncherThemeParent(): String? = resourceOrNull(LAUNCHER_THEME_NAME)?.attribute("parent")
 
 /**
  * Sets a light status bar in the launcher theme, and declares the theme if missing.
  */
-private fun String.setLauncherThemeLightStatusBar(): String {
-    var launcherThemeStart = -1
-    forEachRawResourceElement(this) {
-        if (it.tag == "style" && it.name == LAUNCHER_THEME_NAME) launcherThemeStart = it.start
+private fun ResourceXml.setLauncherThemeLightStatusBar() {
+    val theme = resourceOrNull(LAUNCHER_THEME_NAME) ?: root.appendChild("style") {
+        setAttribute("name", LAUNCHER_THEME_NAME)
+        setAttribute("parent", LAUNCHER_THEME_PARENT)
     }
 
-    val lightStatusBarItem = "<item name=\"$LIGHT_STATUS_BAR_ITEM_NAME\">true</item>"
-
-    if (launcherThemeStart < 0) {
-        return appendResourceElements(
-            "    <style name=\"$LAUNCHER_THEME_NAME\" parent=\"$LAUNCHER_THEME_PARENT\">\n" +
-                    "        $lightStatusBarItem\n" +
-                    "    </style>\n"
-        )
-    }
-
-    return transformRawResourceElements { style ->
-        if (style.start != launcherThemeStart) return@transformRawResourceElements null
-
-        val inner = style.inner!!
-        var hasLightStatusBar = false
-        val updated = inner.transformRawResourceElements { item ->
-            if (item.tag == "item" && item.name == LIGHT_STATUS_BAR_ITEM_NAME) {
-                hasLightStatusBar = true
-                "true"
-            } else {
-                null
-            }
-        }
-
-        if (hasLightStatusBar) updated else "${inner.trimEnd()}\n        $lightStatusBarItem\n    "
-    }
+    val item = theme.children("item").firstOrNull { it.attribute("name") == LIGHT_STATUS_BAR_ITEM_NAME }
+        ?: theme.appendChild("item") { setAttribute("name", LIGHT_STATUS_BAR_ITEM_NAME) }
+    item.text = "true"
 }
 
 val themePatch = baseThemePatch(
@@ -307,31 +273,29 @@ val themePatch = baseThemePatch(
                     colorName: String,
                     colorValue: String,
                 ) {
-                    resourceFile(resourcePath).editText {
-                        it.appendResourceElements(
-                            "    <color name=\"$colorName\" category=\"color\">$colorValue</color>\n"
-                        )
+                    resourceXml(resourcePath, copy = false).use { colors ->
+                        colors.root.appendChild("color") {
+                            setAttribute("name", colorName)
+                            setAttribute("category", "color")
+                            text = colorValue
+                        }
                     }
                 }
 
                 // Replacing the resource repaints both of its uses, because the resource system
                 // cannot tell them apart, so these attributes keep the value the app gives them.
                 // The launcher theme also needs a light status bar.
-                resourceFile("res/values/styles.xml").editText { text ->
-                    text.transformRawResourceElements { style ->
-                        if (style.tag != "style") return@transformRawResourceElements null
-
-                        style.inner!!.transformRawResourceElements { item ->
-                            if (item.tag == "item"
-                                && item.inner == "@color/$STATIC_WHITE_COLOR_NAME"
-                                && item.name in STATIC_WHITE_ATTRIBUTE_NAMES
+                resourceXml("res/values/styles.xml").use { styles ->
+                    styles.root.children("style").forEach { style ->
+                        style.children("item").forEach { item ->
+                            if (item.text == "@color/$STATIC_WHITE_COLOR_NAME"
+                                && item.attribute("name") in STATIC_WHITE_ATTRIBUTE_NAMES
                             ) {
-                                "@android:color/white"
-                            } else {
-                                null
+                                item.text = "@android:color/white"
                             }
                         }
-                    }.setLauncherThemeLightStatusBar()
+                    }
+                    styles.setLauncherThemeLightStatusBar()
                 }
 
                 // Add a dynamic background color to the colors.xml file. Without a patch option
@@ -354,13 +318,10 @@ val themePatch = baseThemePatch(
                     "res/drawable/quantum_launchscreen_youtube.xml",
                     "res/drawable-sw600dp/quantum_launchscreen_youtube.xml",
                 ).forEach editSplashScreen@{ resourceFileName ->
-                    document(resourceFileName).use { document ->
-                        document.getElementsByTagName("layer-list").item(0).forEachChildElement { node ->
+                    resourceXml(resourceFileName).use { drawable ->
+                        drawable.elements("layer-list").first().children.forEach { node ->
                             if (node.hasAttribute("android:drawable")) {
-                                node.setAttribute(
-                                    "android:drawable",
-                                    "@color/$splashBackgroundColorKey"
-                                )
+                                node.setAttribute("android:drawable", "@color/$splashBackgroundColorKey")
                                 return@editSplashScreen
                             }
                         }
@@ -375,46 +336,36 @@ val themePatch = baseThemePatch(
                 // Fix status and navigation bar showing white on some Android devices,
                 // such as SDK 28 Android 10 medium tablet.
                 val colorSplashBackgroundColor = "@color/$splashBackgroundColorKey"
-                val nightItems = StringBuilder()
-                arrayOf(
+                val nightItems = listOf(
                     "android:navigationBarColor" to colorSplashBackgroundColor,
                     "android:windowBackground" to colorSplashBackgroundColor,
                     "android:colorBackground" to colorSplashBackgroundColor,
                     "colorPrimaryDark" to colorSplashBackgroundColor,
                     "android:windowLightStatusBar" to "false",
-                ).forEach { (name, value) ->
-                    nightItems.appendLine("        <item name=\"$name\">$value</item>")
-                }
+                )
 
                 // The night theme of each Android version has the parent the app declares for it.
                 // Older app versions declare the parent for Android 8.1 and newer in values-v27
                 // only, so with that parent the night theme has no parent on Android 8.0, and
                 // the app crashes as the activity then has no AppCompat theme.
-                val resourceDirectory = resourceFile("res")
-                resourceDirectory.listFiles { file ->
-                    file.name.matches(VALUES_DIRECTORY_REGEX)
-                }!!.forEach { valuesDirectory ->
-                    val stylesFile = valuesDirectory.resolve("styles.xml")
-                    if (!stylesFile.exists()) return@forEach
+                listDecodableFiles("res/values*/styles.xml").forEach { stylesPath ->
+                    val directory = stylesPath.removePrefix("res/").substringBefore('/')
+                    if (!directory.matches(VALUES_DIRECTORY_REGEX)) return@forEach
 
-                    val parent = stylesFile.readText().findLauncherThemeParent() ?: return@forEach
+                    val parent = resourceXml(stylesPath).use { it.findLauncherThemeParent() } ?: return@forEach
 
-                    val nightStylesFile = resourceDirectory
-                        .resolve(valuesDirectory.name.replace("values", "values-night"))
-                        .resolve("styles.xml")
-                    if (!nightStylesFile.exists()) {
-                        nightStylesFile.parentFile.mkdirs()
-                        nightStylesFile.writeText(
-                            "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n</resources>\n"
-                        )
-                    }
-
-                    nightStylesFile.editText {
-                        it.appendResourceElements(
-                            "    <style name=\"$LAUNCHER_THEME_NAME\" parent=\"$parent\">\n" +
-                                    nightItems +
-                                    "    </style>\n"
-                        )
+                    val nightStylesPath = "res/${directory.replace("values", "values-night")}/styles.xml"
+                    resourceXml(nightStylesPath, copy = false).use { nightStyles ->
+                        nightStyles.root.appendChild("style") {
+                            setAttribute("name", LAUNCHER_THEME_NAME)
+                            setAttribute("parent", parent)
+                            nightItems.forEach { (name, value) ->
+                                appendChild("item") {
+                                    setAttribute("name", name)
+                                    text = value
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -422,10 +373,7 @@ val themePatch = baseThemePatch(
                     "res/values-v27/styles.xml",
                     "res/values-v31/styles.xml"
                 ).forEach { stylesPath ->
-                    val stylesFile = resourceFile(stylesPath)
-                    if (stylesFile.exists()) {
-                        stylesFile.editText { it.setLauncherThemeLightStatusBar() }
-                    }
+                    resourceXmlOrNull(stylesPath)?.use { it.setLauncherThemeLightStatusBar() }
                 }
             }
         }
