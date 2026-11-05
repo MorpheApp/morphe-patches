@@ -166,10 +166,10 @@ public final class GlassNavigationBar {
 
     /**
      * Views of a button that hold its content, the icon and the label. Other views of the button,
-     * such as the badge of the new content count, are left out.
+     * such as the badge of the new content count, are left out. Also used by the preview in the settings.
      */
-    private static final int BUTTON_ICON = ResourceUtils.getIdentifier(ResourceType.ID, "thumbnail_layout");
-    private static final int BUTTON_LABEL = ResourceUtils.getIdentifier(ResourceType.ID, "text");
+    public static final int BUTTON_ICON = ResourceUtils.getIdentifier(ResourceType.ID, "thumbnail_layout");
+    public static final int BUTTON_LABEL = ResourceUtils.getIdentifier(ResourceType.ID, "text");
 
     /**
      * Buttons hidden because they do not fit in the width of the bar, shown again when they fit,
@@ -190,6 +190,12 @@ public final class GlassNavigationBar {
     public static volatile int lastContentWidth;
     public static volatile int lastContentHeight;
     public static volatile int lastBaseHeight;
+
+    /**
+     * The buttons of the last bar, also the buttons hidden because they do not fit, so the preview in the settings
+     * shows their icons and labels.
+     */
+    public static volatile List<WeakReference<View>> lastButtons = Collections.emptyList();
 
     /**
      * @return The alpha scaled by the opacity slider, at most fully opaque.
@@ -600,6 +606,18 @@ public final class GlassNavigationBar {
                             lastContentWidth = contentWidth;
                             lastContentHeight = contentHeight;
                             lastBaseHeight = baseHeight;
+                            List<WeakReference<View>> seenButtons = lastButtons;
+                            boolean buttonsChanged = seenButtons.size() != buttons.size();
+                            for (int i = 0, count = buttons.size(); i < count && !buttonsChanged; i++) {
+                                buttonsChanged = seenButtons.get(i).get() != buttons.get(i);
+                            }
+                            if (buttonsChanged) {
+                                List<WeakReference<View>> references = new ArrayList<>(buttons.size());
+                                for (View button : buttons) {
+                                    references.add(new WeakReference<>(button));
+                                }
+                                lastButtons = references;
+                            }
                         }
                     }
                 } else if (background == glass) {

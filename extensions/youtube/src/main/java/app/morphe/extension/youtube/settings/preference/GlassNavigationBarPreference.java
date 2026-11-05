@@ -15,6 +15,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Picture;
 import android.graphics.RectF;
 import android.preference.Preference;
 import android.text.TextPaint;
@@ -24,12 +25,14 @@ import android.util.Pair;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -77,20 +80,48 @@ public class GlassNavigationBarPreference extends Preference {
         context.getTheme().resolveAttribute(android.R.attr.colorAccent, accent, true);
         final int accentColor = accent.data;
 
-        // The buttons of the last navigation bar, or all the buttons seen if none was shown yet.
-        Map<String, String> discoveredButtons;
-        synchronized (NavigationBarPatch.discoveredNavigationButtons) {
-            discoveredButtons = new LinkedHashMap<>(NavigationBarPatch.discoveredNavigationButtons);
-        }
+        // The icons, the labels and the selected button of the last glass navigation bar,
+        // as the bar shows them, such as without labels.
         List<String> labels = new ArrayList<>();
-        for (String id : NavigationBarPatch.navigationButtons.isEmpty()
-                ? discoveredButtons.keySet() : NavigationBarPatch.navigationButtons) {
-            String label = discoveredButtons.get(id);
-            if (label != null) labels.add(label);
+        List<Picture> icons = new ArrayList<>();
+        int selected = 0;
+        boolean showLabels = false;
+        for (WeakReference<View> reference : GlassNavigationBar.lastButtons) {
+            if (!(reference.get() instanceof ViewGroup button)) continue;
+
+            View icon = GlassNavigationBar.BUTTON_ICON == 0 ? null : button.findViewById(GlassNavigationBar.BUTTON_ICON);
+            Picture picture = null;
+            if (icon != null && icon.getWidth() > 0 && icon.getHeight() > 0) {
+                // Recorded, not drawn to a bitmap, so the hardware bitmaps of the icons (the account avatar) work.
+                picture = new Picture();
+                icon.draw(picture.beginRecording(icon.getWidth(), icon.getHeight()));
+                picture.endRecording();
+            }
+            View label = GlassNavigationBar.BUTTON_LABEL == 0 ? null : button.findViewById(GlassNavigationBar.BUTTON_LABEL);
+            if (button.isSelected()) selected = labels.size();
+            if (label instanceof TextView text && text.getVisibility() == View.VISIBLE) showLabels = true;
+            labels.add(label instanceof TextView text ? text.getText().toString() : "");
+            icons.add(picture);
+        }
+        // The buttons of the last navigation bar, or all the buttons seen if none was shown yet.
+        if (labels.isEmpty()) {
+            Map<String, String> discoveredButtons;
+            synchronized (NavigationBarPatch.discoveredNavigationButtons) {
+                discoveredButtons = new LinkedHashMap<>(NavigationBarPatch.discoveredNavigationButtons);
+            }
+            for (String id : NavigationBarPatch.navigationButtons.isEmpty()
+                    ? discoveredButtons.keySet() : NavigationBarPatch.navigationButtons) {
+                String label = discoveredButtons.get(id);
+                if (label != null) {
+                    labels.add(label);
+                    icons.add(null);
+                }
+            }
+            showLabels = !Settings.HIDE_NAVIGATION_BUTTON_LABELS.get();
         }
 
         final int[] pending = new int[SETTINGS.length];
-        PreviewView preview = new PreviewView(context, labels, pending);
+        PreviewView preview = new PreviewView(context, labels, icons, selected, showLabels, pending);
         TextView shownButtons = new TextView(context);
         shownButtons.setGravity(Gravity.CENTER);
         shownButtons.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
@@ -195,6 +226,12 @@ public class GlassNavigationBarPreference extends Preference {
 
         private final List<String> labels;
         /**
+         * The icons of the buttons, null for a button without a recorded icon.
+         */
+        private final List<Picture> icons;
+        private final int selected;
+        private final boolean showLabels;
+        /**
          * Height percent, width percent and button spacing in dp.
          */
         private final int[] values;
@@ -203,9 +240,13 @@ public class GlassNavigationBarPreference extends Preference {
         private final TextPaint labelPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         private final RectF rect = new RectF();
 
-        PreviewView(Context context, List<String> labels, int[] values) {
+        PreviewView(Context context, List<String> labels, List<Picture> icons, int selected, boolean showLabels,
+                    int[] values) {
             super(context);
             this.labels = labels;
+            this.icons = icons;
+            this.selected = selected;
+            this.showLabels = showLabels;
             this.values = values;
             labelPaint.setTextAlign(Paint.Align.CENTER);
             labelPaint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, LABEL_SIZE_SP,
@@ -220,8 +261,10 @@ public class GlassNavigationBarPreference extends Preference {
             if (width > 0) return width;
 
             width = ICON_SIZE;
-            for (String label : labels) {
-                width = Math.max(width, (int) Math.ceil(labelPaint.measureText(label)));
+            if (showLabels) {
+                for (String label : labels) {
+                    width = Math.max(width, (int) Math.ceil(labelPaint.measureText(label)));
+                }
             }
             return width;
         }
@@ -255,7 +298,7 @@ public class GlassNavigationBarPreference extends Preference {
             final int contentWidth = getContentWidth();
             final int contentHeight = GlassNavigationBar.lastContentHeight > 0
                     ? GlassNavigationBar.lastContentHeight
-                    : ICON_SIZE + Dim.dp4 + Math.round(labelPaint.getTextSize() * 1.25f);
+                    : ICON_SIZE + (showLabels ? Dim.dp4 + Math.round(labelPaint.getTextSize() * 1.25f) : 0);
             final int baseHeight = GlassNavigationBar.lastBaseHeight > 0 ? GlassNavigationBar.lastBaseHeight : Dim.dp48;
             final int[] layout = GlassNavigationBar.getButtonsLayout(screenWidth, buttons, contentWidth,
                     values[1], Dim.dp(values[2]));
@@ -277,13 +320,17 @@ public class GlassNavigationBarPreference extends Preference {
             canvas.drawRoundRect(rect, radius, radius, paint);
             paint.setStyle(Paint.Style.FILL);
 
-            // The first button is selected.
+            // The buttons that do not fit are hidden from the end, but never the selected one.
+            final int selectedButton = Math.min(selected, buttons - 1);
+            final int selectedSlot = Math.min(selectedButton, shownButtons - 1);
             final float inset = Dim.dp4 * scale;
+            final float selectedLeft = left + buttonWidth * selectedSlot;
             paint.setColor(dark ? 0x26FFFFFF : 0x14000000);
-            rect.set(left + inset, top + inset, left + buttonWidth - inset, bottom - inset);
+            rect.set(selectedLeft + inset, top + inset, selectedLeft + buttonWidth - inset, bottom - inset);
             canvas.drawRoundRect(rect, (capsuleHeight - 2 * inset) / 2, (capsuleHeight - 2 * inset) / 2, paint);
 
             // The icon and the label of each button, in the middle of the capsule.
+            // Buttons without a recorded icon, such as before the bar was shown, get a placeholder.
             final float iconSize = ICON_SIZE * scale;
             final float contentTop = top + (capsuleHeight - contentHeight * scale) / 2;
             labelPaint.setColor(foreground);
@@ -293,13 +340,22 @@ public class GlassNavigationBarPreference extends Preference {
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(Math.max(1, Dim.dp2 * scale));
             for (int i = 0; i < shownButtons; i++) {
+                final int button = i == selectedSlot ? selectedButton : i;
                 final float center = left + buttonWidth * (i + 0.5f);
-                rect.set(center - iconSize / 2, contentTop, center + iconSize / 2, contentTop + iconSize);
-                rect.inset(iconSize / 8, iconSize / 8);
-                canvas.drawRoundRect(rect, iconSize / 6, iconSize / 6, paint);
-                if (i < labels.size()) {
+                Picture icon = button < icons.size() ? icons.get(button) : null;
+                if (icon != null) {
+                    final float iconWidth = icon.getWidth() * scale;
+                    rect.set(center - iconWidth / 2, contentTop, center + iconWidth / 2,
+                            contentTop + icon.getHeight() * scale);
+                    canvas.drawPicture(icon, rect);
+                } else {
+                    rect.set(center - iconSize / 2, contentTop, center + iconSize / 2, contentTop + iconSize);
+                    rect.inset(iconSize / 8, iconSize / 8);
+                    canvas.drawRoundRect(rect, iconSize / 6, iconSize / 6, paint);
+                }
+                if (showLabels && button < labels.size()) {
                     // The app cuts the labels that are longer than the button.
-                    canvas.drawText(TextUtils.ellipsize(labels.get(i), labelPaint, buttonWidth - 2 * inset,
+                    canvas.drawText(TextUtils.ellipsize(labels.get(button), labelPaint, buttonWidth - 2 * inset,
                                     TextUtils.TruncateAt.END).toString(),
                             center, contentTop + contentHeight * scale - labelPaint.descent(), labelPaint);
                 }
