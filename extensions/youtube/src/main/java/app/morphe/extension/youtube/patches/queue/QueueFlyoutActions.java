@@ -47,7 +47,7 @@ public final class QueueFlyoutActions {
             // This model's collection-only Share target is authoritative when
             // present. Shared card context is needed for private menus without Share.
             String playlistId = "";
-            if (NativePlaylistQueuePatch.canStartPlaylistQueue()) {
+            if (NativePlaylistQueuePatch.canQueuePlaylist()) {
                 playlistId = playlistIdFromMenu(menu);
                 if (playlistId.isEmpty()) {
                     playlistId = FlyoutUtils.getNativeQueuePlaylistId();
@@ -143,7 +143,7 @@ public final class QueueFlyoutActions {
      * Capture from the selected source before native menu binding resets shared flyout state.
      */
     public static PlaylistCardSource.Selection playlistSource(@Nullable Object source, @Nullable View sender) {
-        if (!NativePlaylistQueuePatch.canStartPlaylistQueue()) {
+        if (!NativePlaylistQueuePatch.canQueuePlaylist()) {
             return new PlaylistCardSource.Selection("", false);
         }
         boolean collection = sender != null && FeedVideoCardsPatch.isPlaylistTap(sender);
@@ -211,7 +211,7 @@ public final class QueueFlyoutActions {
             }
             var command = endpoint(item);
             return command.hasQueuePlaylistId() ? NativePlaylistQueuePatch.getPlaylistQueueAction(
-                    command.getQueuePlaylistId()) : null;
+                    command.getQueuePlaylistId(), icon == YTIconType.QUEUE_PLAY_LAST) : null;
         } catch (Exception ex) {
             Logger.printException(() -> "Could not read native playlist menu action", ex);
             return null;

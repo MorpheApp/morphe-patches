@@ -46,7 +46,7 @@ public class MixPlaylistRequestTest {
             assertEquals(size, videos.size());
             var before = new PlaylistQueue("abcdefghijk", "Playing").playLast("0123456789_")
                     .select(1).withRepeatMode(PlaylistQueue.REPEAT_ONE);
-            var after = before.append(videos.stream().map(video -> new PlaylistQueue.Entry(video.videoId(), video.title())).toList());
+            var after = before.addPlaylist(PlaylistQueue.fromMetadata(videos), true);
             assertEquals(size + before.entries().size(), after.entries().size());
             assertEquals(List.of("abcdefghijk", "ZYXWVUTSRQP"), after.entries().subList(2, 4).stream()
                     .map(PlaylistQueue.Entry::videoId).toList());
