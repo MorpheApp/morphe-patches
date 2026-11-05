@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/2638
+ * https://github.com/MorpheApp/morphe-patches/pull/4416
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -145,6 +146,41 @@ public final class EnableDebuggingPatch {
             if (featureFlags.putIfAbsent(flagObj, TRUE) == null) {
                 Logger.printDebug(() -> " string feature is enabled: " + flag
                         + " value: " + value + (defaultValue.isEmpty() ? "" : " default: " + defaultValue));
+            }
+        }
+
+        return value;
+    }
+
+    /**
+     * Bootstrap store flag ids are packed bit field locations, and never overlap server flag ids.
+     *
+     * @return The size of the flag value in bits, from bits 16-29 of the id.
+     */
+    private static int getBootstrapFlagBitSize(int flag) {
+        return (flag >>> 16) & 0x3FFF;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static long isBootstrapFeatureFlagEnabled(long value, int flag) {
+        if (LOG_FEATURE_FLAGS) {
+            Long flagObj = (long) flag;
+            Boolean override = OVERRIDDEN_FEATURE_FLAGS.get(flagObj);
+            if (FALSE.equals(override)) {
+                return 0;
+            }
+
+            if (getBootstrapFlagBitSize(flag) == 1) {
+                if (override != null) {
+                    return 1;
+                }
+                if (featureFlags.putIfAbsent(flagObj, value != 0) == null && value != 0) {
+                    Logger.printDebug(() -> "boolean feature is enabled: " + flag);
+                }
+            } else if (value != 0 && featureFlags.putIfAbsent(flagObj, TRUE) == null) {
+                Logger.printDebug(() -> "   long feature is enabled: " + flag + " value: " + value);
             }
         }
 

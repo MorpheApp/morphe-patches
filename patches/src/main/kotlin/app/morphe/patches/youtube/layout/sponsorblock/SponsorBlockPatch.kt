@@ -26,7 +26,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
-import app.morphe.patches.youtube.interaction.downloads.OfflineVideoEndpointFingerprint
+import app.morphe.patches.youtube.interaction.downloads.YouTubeOfflineVideoEndpointFingerprint
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
@@ -345,7 +345,7 @@ val sponsorBlockPatch = bytecodePatch(
         }
 
         // Save and remove the segments of downloaded videos.
-        OfflineVideoEndpointFingerprint.method.addInstruction(
+        YouTubeOfflineVideoEndpointFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p3 .. p4 }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->" +
                     "offlineVideoAction(Ljava/lang/String;Ljava/lang/Enum;)V"

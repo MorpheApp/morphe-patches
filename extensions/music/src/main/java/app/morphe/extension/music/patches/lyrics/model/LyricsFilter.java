@@ -432,7 +432,7 @@ public final class LyricsFilter {
                             .trim().replaceAll("\\s+", " ");
                     if (!wt.isEmpty()) {
                         words.add(new Word(w.startMs(), w.endMs(), wt,
-                                w.romaji(), w.endsWithSpace()));
+                                w.romaji(), w.endsWithSpace(), w.ruby()));
                     }
                 }
                 // Only the section label is carried over. The shorter constructors this replaces also reset

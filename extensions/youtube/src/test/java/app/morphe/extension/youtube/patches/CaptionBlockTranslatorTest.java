@@ -473,4 +473,16 @@ public class CaptionBlockTranslatorTest {
         assertEquals(1, f.urls.size()); assertTrue(interrupted.disconnected);
     }
 
+    @Test public void nativeWholeCueSourceRetainsGoogleToMicrosoftFallback() throws Exception {
+        var timeline=NativeCaptionSourceTest.timeline(List.of(0L,100L,2000L),time->
+                List.of(new NativeCaptionSourceTest.Cue("word","complete phrase")));
+        var policy=StableCaptionBlockPolicy.fromNative(timeline,()->true);
+        Fixture f=new Fixture();f.add(503,"unavailable");f.add(200,ms("ganzer Satz"));
+        var session=new CaptionSession(policy.sourceBlocks("en"),"en","tr","de",f.translator,
+                Runnable::run,()->{},()->{},false,true);
+        session.demand(100);var frame=session.snapshot(100,true);
+        assertEquals("",frame.primary);assertEquals("ganzer Satz",frame.secondary);assertTrue(frame.complete);
+        assertEquals(2,f.urls.size());assertTrue(f.urls.get(0).contains("googleapis.com"));
+        assertTrue(f.urls.get(1).contains("edge.microsoft.com"));
+    }
 }

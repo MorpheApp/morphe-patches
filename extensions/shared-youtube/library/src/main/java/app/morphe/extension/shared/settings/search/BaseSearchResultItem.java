@@ -36,6 +36,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
+import app.morphe.extension.shared.settings.preference.NewIndicatorSpan;
 import app.morphe.extension.shared.settings.preference.URLLinkPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 
@@ -168,7 +169,7 @@ public abstract class BaseSearchResultItem {
                         : key;
             }
             appendText(searchBuilder, normalizedKey);
-            appendText(searchBuilder, pref.getTitle());
+            appendText(searchBuilder, NewIndicatorSpan.removeFrom(pref.getTitle()));
             appendText(searchBuilder, pref.getSummary());
 
             // Add type-specific searchable content.

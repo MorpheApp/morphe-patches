@@ -41,11 +41,15 @@ public final class AiProviders {
             List.of(EMBEDDED, GOOGLE, OPENAI_COMPATIBLE, DEEPL);
     public static final List<String> ROMANIZATION_ORDER =
             List.of(EMBEDDED, GOOGLE, LOCAL, RIME, OPENAI_COMPATIBLE);
+    public static final List<String> RUBY_ORDER =
+            List.of(EMBEDDED, LOCAL, OPENAI_COMPATIBLE);
 
     public static final String DEFAULT_TRANSLATION_ORDER =
             "embedded,google,-openai_compatible,-deepl";
     public static final String DEFAULT_ROMANIZATION_ORDER =
             "embedded,google,-local,-rime,-openai_compatible";
+    public static final String DEFAULT_RUBY_ORDER =
+            "embedded,-local,-openai_compatible";
     /** Endpoints offered by name, in the order they are listed. */
     public static final List<EndpointPreset> ENDPOINT_PRESETS = List.of(
             EndpointPreset.of("OpenAI", "https://api.openai.com/v1"),

@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">%s%% 다운로드 중</string>
   <string name="morphe_music_downloads_complete">다운로드 완료</string>
   <string name="morphe_music_downloads_failed">다운로드 실패</string>
+  <string name="morphe_music_downloads_playlist_download_title">재생목록 다운로드</string>
+  <string name="morphe_music_downloads_playlist_download_listing">트랙 목록을 가져오는 중…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s개 목록화됨…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">재생목록의 트랙 목록을 가져올 수 없습니다</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">이미 다운로드됨: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"이 재생목록에 %1$s개가 있으며, %2$s개는 아직 다운로드되지 않았습니다.
+
+트랙은 하나씩 다운로드되므로 시간이 오래 걸릴 수 있으며 약 %3$s의 빈 공간이 필요합니다"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">다운로드</string>
+  <string name="morphe_music_downloads_playlist_download_progress">%2$s개 중 %1$s번째 트랙 다운로드 중</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s 다운로드됨</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s개 다운로드됨, %2$s개 다운로드 실패</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">재생목록 다운로드가 이미 진행 중입니다</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">계정 정보가 아직 확인되지 않았습니다. 잠시 후 다시 시도하십시오</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s개 목록화됨, 모두 이미 다운로드됨</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">재생목록의 일부만 가져올 수 있었습니다. 나중에 다시 다운로드 탭을 눌러 나머지를 가져오십시오</string>
+  <string name="morphe_music_downloads_playlist_download_started">백그라운드에서 %s 다운로드 중</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">네트워크 연결 없음</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">네트워크 대기 중…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s개 중 %1$s개에서 중단되었습니다. 계속하려면 다시 다운로드 탭을 누르십시오</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">정보</string>
@@ -632,6 +652,10 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_hide_played_summary">현재 재생 중인 줄 위의 가사 줄을 숨깁니다</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">재생되지 않은 가사 숨기기</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">현재 재생 중인 줄 아래의 가사 줄을 숨깁니다</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">동적 배경</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">앨범 아트를 흐리게 처리하여 가사 뒤의 배경으로 표시합니다</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">동적 배경 애니메이션</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">음악을 재생하는 중에 배경이 움직이고, YouTube Music에 마이크 권한이 허용되어 있으면 음악에 맞춰 배경이 반응합니다. 배터리 소모를 줄이려면 이 기능을 비활성화하세요. 그러면 배경이 움직이지 않고 고정됩니다</string>
   <string name="morphe_music_lyrics_mediasession_title">잠금 화면에 MediaSession 가사 표시하기</string>
   <string name="morphe_music_lyrics_mediasession_summary">잠금 화면, Android Auto 및 블루투스에서 현재 가사 줄을 표시합니다. Android 11 이상이 필요합니다</string>
   <string name="morphe_music_lyrics_miniplayer_title">미니 플레이어 가사 표시하기</string>
@@ -730,7 +754,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_hide_info_title">크레딧 라인 숨기기</string>
   <string name="morphe_music_lyrics_hide_info_summary">가사 아래에 표시되는 크레딧 라인을 숨깁니다</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">번역과 로마자 표기 위치 바꾸기</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">활성화하면 로마자 표기 또는 음역이 가사 아래에 표시되고 번역은 위에 표시됩니다. 비활성화하면 로마자 표기 또는 음역이 위에 표시되고 번역은 아래에 표시됩니다. 각 음절 위에 표시되는 발음 표기는 해당 음절의 위치에 맞춰 함께 이동하며, 음절 위에서 아래로 위치가 바뀝니다</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">가사 아래의 번역과 로마자 표기 표시 순서를 바꿉니다</string>
   <string name="morphe_music_lyrics_force_center_title">항상 가사 가운데 정렬하기</string>
   <string name="morphe_music_lyrics_force_center_summary">활성화하면 듀엣 파트의 좌우 배치를 포함하여 원본 정렬 설정을 무시하고 모든 가사를 가운데에 표시합니다. 비활성화하면 가사에 지정된 정렬 방식을 유지합니다</string>
   <string name="morphe_music_lyrics_providers_keep_one">최소 하나의 제공자가 활성화되어 있어야 합니다</string>
@@ -738,6 +762,14 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">로마자 표기 또는 음역</string>
   <string name="morphe_music_lyrics_romanization_provider_local">오프라인 사전</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime 단어 목록</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">루비</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">오프라인 사전</string>
+  <string name="morphe_music_lyrics_ruby_style_title">루비 스크립트</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">히라가나 (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">카타카나 (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">루비 버튼 표시하기</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">버튼을 탭하여 가사 위에 루비 읽기 표시를 켜거나 끌 수 있습니다. 길게 누르면 히라가나와 가타카나가 전환됩니다. 활성화된 루비 제공자를 설정된 순서대로 사용합니다</string>
+  <string name="morphe_music_lyrics_ruby_generating">루비를 생성하는 중…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI로 섹션 감지하기</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">제공자가 후렴이나 절과 같은 섹션 레이블을 제공하지 않는 경우에만 사용되며, 이때 OpenAI 호환 모델이 해당 구간을 자동으로 감지합니다. 해당 행을 편집하면 프롬프트도 함께 열립니다</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API 엔드포인트 URL (예시: https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

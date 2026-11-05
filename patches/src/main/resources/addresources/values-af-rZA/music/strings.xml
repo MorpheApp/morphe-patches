@@ -200,6 +200,26 @@ Afgelaaide snitte verskyn hier"</string>
   <string name="morphe_music_downloads_progress">Laai %s%% af</string>
   <string name="morphe_music_downloads_complete">Aflaai voltooi</string>
   <string name="morphe_music_downloads_failed">Aflaai misluk</string>
+  <string name="morphe_music_downloads_playlist_download_title">Aflaai van spelysye-lys thanked</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Lys tracks…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s gelys…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Kon nie die tracks van die spelysye lys nie</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Reeds afgelaai: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s in hierdie spelysye, %2$s nog nie afgelaai nie.
+
+Hulle word een-vir-een afgelaai, wat 'n lang tyd kan neem en ongeveer %3$s vrye spasie benodig"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Aflaai</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Laai track %1$s van %2$s af</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s afgelaai</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s afgelaai, %2$s kon nie afgelaai word nie</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Aflaai van spelysye reeds aan die gang</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Jou rekening is nog nie bekend nie. Probeer weer oor \'n oomblik</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s gelys, almal reeds afgelaai</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Slegs \'n deel van die spelysye kon gelys word. Tik later weer op Aflaai om die res te kry</string>
+  <string name="morphe_music_downloads_playlist_download_started">Laai %s in die agtergrond af</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Geen netwerkverbinding nie</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Wag vir die netwerk…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Gestop na %1$s van %2$s. Tik weer op Aflaai om voort te gaan</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Inligting</string>
@@ -625,6 +645,10 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_hide_played_summary">Versteek liriekreëls bo die reël wat tans speel</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Versteek ongespeelde lirieke</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Herstel verskaffers na die standaard prioriteitsorde.</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dinamiiese agtergrond</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Wys \'n vervaagde agtergrond wat uit die albumkunst gemaak is agter die lirieke</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animeer dinamiiese agtergrond</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Beweeg die agtergrond terwyl dit speel, en laat dit pols saam met die musiek as YouTube Music die mikrofoontoestemming het. Skakel af vir \'n stil agtergrond wat minder battery gebruik</string>
   <string name="morphe_music_lyrics_mediasession_title">Wys MediaSession-lirieke op die sluitskerm</string>
   <string name="morphe_music_lyrics_mediasession_summary">Wys die huidige lyn op die sluitingsskerm, Android Auto en Bluetooth. Benodig Android 11 of nuwer</string>
   <string name="morphe_music_lyrics_miniplayer_title">Wys romaniseer-knoppie</string>
@@ -723,7 +747,7 @@ Liriek kom van derdeparty diensverskaffers wat nie aan Morphe gelink, gesponsord
   <string name="morphe_music_lyrics_hide_info_title">Lirieke-bron?</string>
   <string name="morphe_music_lyrics_hide_info_summary">Lirieke word gesoek volgens kunstenaar en titel, […] Jy kan ook die verfris-knoppie probeer om handmatig van weergawe te wissel. […] Alle verskaffers word nie altyd in die bestelling versoek nie, maar reageer op grond van hul spoed</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Lirieke-bron?</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">AAN sit romanisering of transliterasie onder lirieke en vertaling bo; UIT hou romanisering of transliterasie bo en vertaling onder. \'n Lesing wat oor elke silabe plaas beweeg saam daarmee, van bo sy silabe na onder dit</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Ruil die vertoningsvolgorde van vertaling en romanisering onder die lirieke om</string>
   <string name="morphe_music_lyrics_force_center_title">Altyd lirieke sentreer</string>
   <string name="morphe_music_lyrics_force_center_summary">AAN plaas elke lyn in die middel en ignoreer die bronuitligting, insluitend duet-sye; UIT hou die uitligging wat die lirieke versoek</string>
   <string name="morphe_music_lyrics_providers_keep_one">Ten minste een verskaffer moet aan bly</string>
@@ -731,6 +755,14 @@ Liriek kom van derdeparty diensverskaffers wat nie aan Morphe gelink, gesponsord
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisering of transliterasie</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Afvalwoordeboek</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime-Woordlys</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Vanlyn-woordeboek</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby-skrif</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Wys Ruby-knoppie</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Tik om ruby-leesings bo lirieke te wissel; hou lank gedruk om tussen hiragana en katakana te wissel. Gebruik die geaktiveerde ruby-verskaffers in hul gelyste volgorde</string>
+  <string name="morphe_music_lyrics_ruby_generating">Genereer ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Detecteer afdelings met AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Slegs gebruik wanneer die verskaffer geen sektorlabelle soos Refrein of Strofe stuur nie, wat jou OpenAI-kompatibele model dan detecteer. Die redigering van die ry open ook sy spoortjie</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-eindpunt-URL (bv. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

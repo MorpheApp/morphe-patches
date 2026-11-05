@@ -51,7 +51,20 @@ internal fun offlineUpsellCommandFingerprint(offlineUpsellRequestType: String) =
     )
 )
 
-internal object OfflineVideoEndpointFingerprint : Fingerprint(
+/**
+ * Resolves the offline playlist endpoint, which the Download button of Liked music and of
+ * some other playlists sends instead of the offline upsell.
+ */
+internal object MusicOfflinePlaylistEndpointFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "Ljava/util/Map;"),
+    filters = listOf(
+        string("Object is not an offlineable playlist: %s")
+    )
+)
+
+internal object MusicOfflineVideoEndpointFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "Ljava/util/Map;"),

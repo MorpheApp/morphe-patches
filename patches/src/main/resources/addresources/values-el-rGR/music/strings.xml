@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Λήψη %s%%</string>
   <string name="morphe_music_downloads_complete">Η λήψη ολοκληρώθηκε</string>
   <string name="morphe_music_downloads_failed">Η λήψη απέτυχε</string>
+  <string name="morphe_music_downloads_playlist_download_title">Λήψη λίστας αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Ανάκτηση κομμάτων…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s ανακτήθηκε…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Δεν ήταν δυνατή η ανάκτηση των κομμάτων της λίστας αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Ήδη κατεβήκατε: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s σε αυτή τη λίστα αναπαραγωγής, τα %2$s δεν έχουν κατεβεί ακόμα.
+
+Κατεβαίνουν ένα προς ένα, κάτι που μπορεί να πάρει πολύ χρόνο και απαιτεί περίπου %3$s ελεύθερο χώρο"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Λήψη</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Λήψη κομμάτου %1$s από τα %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s κατέβηκαν</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s κατέβηκαν, %2$s δεν ήταν δυνατή η λήψη τους</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Η λήψη της λίστας αναπαραγωγής είναι ήδη σε εξέλιξη</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Ο λογαριασμός σας δεν είναι ακόμα γνωστός. Δοκιμάστε ξανά σε λίγο</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s ανακτήθηκε, όλα έχουν ήδη κατεβεί</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Μόνο ένα μέρος της λίστας αναπαραγωγής ανακτήθηκε. Πατήστε ξανά Λήψη αργότερα για να λάβετε τα υπόλοιπα</string>
+  <string name="morphe_music_downloads_playlist_download_started">Λήψη %s στο υπόφονιο</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Δεν υπάρχει σύνδεση δικτύου</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Αναμονή για το δίκτυο…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Διακόπτεται μετά από %1$s από τα %2$s. Πατήστε ξανά Λήψη για να συνεχίσετε</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Πληροφορίες για το</string>
@@ -625,6 +645,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_played_summary">Απόκρυψη γραμμών στίχων πάνω από τον τρέχοντα στίχο</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Απόκρυψη στίχων που δεν έχουν παιχτεί.</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Απόκρυψη γραμμών στίχων κάτω από την τρέχουσα γραμμή.</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Δυναμικό φόντο</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Εμφάνιση ενός θολού φόντου που δημιουργείται από την εικόνα του άλμπουμ πίσω από τους στίχους</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Κινούμενο δυναμικό φόντο</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Μετακίνηση του φόντου κατά την αναπαραγωγή και παλμική κίνηση με τη μουσική εάν το YouTube Music έχει άδεια χρήσης του μικροφώνου. Απενεργοποιήστε το για ένα στατικό φόντο που καταναλώνει λιγότερη μπαταρία</string>
   <string name="morphe_music_lyrics_mediasession_title">Εμφάνιση στίχων MediaSession στην οθόνη κλειδώματος</string>
   <string name="morphe_music_lyrics_mediasession_summary">Εμφάνιση της τρέχουσας γραμμής στην οθόνη κλειδώματος, στο Android Auto και στο Bluetooth. Απαιτείται Android 11 ή νεότερο</string>
   <string name="morphe_music_lyrics_miniplayer_title">Εμφάνιση στίχων στο Miniplayer.</string>
@@ -723,7 +747,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">Απόκρυψη γραμμής πιστώσεων.</string>
   <string name="morphe_music_lyrics_hide_info_summary">Απόκρυψη της γραμμής πιστώσεων που εμφανίζεται κάτω από τους στίχους.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Εναλλαγή μετάφρασης και μεταγραφής.</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Το ON βάζει τον ρωμαϊσμό ή τη μεταγραφή κάτω από τους στίχους και τη μετάφραση πάνω· Το OFF διατηρεί τον ρωμαϊσμό ή τη μεταγραφή πάνω και τη μετάφραση κάτω. Μια ανάδευση τοποθετημένη πάνω από κάθε σύλλαβα κινείται μαζί της, από πάνω στη σύλλαβα προς τα κάτω</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Ανταλλαγή της σειράς εμφάνισης της μετάφρασης και της ρωμανιзации κάτω από τους στίχους</string>
   <string name="morphe_music_lyrics_force_center_title">Κεντράρεμα στίχων πάντα</string>
   <string name="morphe_music_lyrics_force_center_summary">Το ON βάζει κάθε γραμμή στο κέντρο και αγνοεί την ευθυγράμμιση της πηγής, συμπεριλαμβανομένων των πλευρών duet· Το OFF διατηρεί την ευθυγράμμιση που ζητούν οι στίχοι</string>
   <string name="morphe_music_lyrics_providers_keep_one">Πρέπει να παραμείνει ενεργός τουλάχιστον ένας πάροχος</string>
@@ -731,6 +755,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Ρωμαϊσμός ή μεταγραφή</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Λεξικό Εκτός Γραμμής</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Λεξιλόγιο Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Αποφύλτο Λεξικό</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Σενάριο Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Εμφάνιση κουμπιού Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Πατήστε για να ενεργοποιήσετε/απενεργοποιήσετε τις αναγνώσεις ruby πάνω από τους στίχους — κρατήστε πατημένο για να εναλλάξετε μεταξύ hiragana και katakana. Χρησιμοποιεί τους ενεργοποιημένους παρόχους ruby στη σειρά που αναφέρονται</string>
+  <string name="morphe_music_lyrics_ruby_generating">Δημιουργία ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Ανίχνευση τμημάτων με AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Χρησιμοποιείται μόνο όταν ο πάροχος δεν παρέχει ετικέτες τμημάτων όπως Refrain ή Στροφή, τις οποίες τότε εντοπίζει το μοντέλο συμβατό με OpenAI. Η επεξεργασία της γραμμής ανοίγει επίσης το prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL τελικού σημείου API (π.χ. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

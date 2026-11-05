@@ -49,21 +49,6 @@ public class SpoofVideoStreamsPatch {
         }
     }
 
-    /**
-     * Domain used for internet connectivity verification.
-     * It has an empty response body and is only used to check for a 204 response code.
-     * <p>
-     * If an unreachable IP address (127.0.0.1) is used, no response code is provided.
-     * <p>
-     * YouTube handles unreachable IP addresses without issue.
-     * YouTube Music has an issue with waiting for the Cronet connect timeout of 30s on mobile networks.
-     * <p>
-     * Using a VPN or DNS can temporarily resolve this issue,
-     * But the ideal workaround is to avoid using an unreachable IP address.
-     */
-    private static final String INTERNET_CONNECTION_CHECK_URI_STRING = "https://www.google.com/gen_204";
-    private static final Uri INTERNET_CONNECTION_CHECK_URI = Uri.parse(INTERNET_CONNECTION_CHECK_URI_STRING);
-
     private static final boolean SPOOF_VIDEO_STREAMS = isPatchIncluded()
             && SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
 
@@ -71,6 +56,24 @@ public class SpoofVideoStreamsPatch {
     private static volatile Locale localeOverride = AppLanguage.DEFAULT.getLocale();
 
     private static volatile ClientType preferredClient = ClientType.VISIONOS_1_02;
+
+    private static final String INNERTUBE_PATH = "/youtubei/";
+
+    /**
+     * Path of the request that loads a video, which holds a player request and a watch next request.
+     */
+    private static final String WATCH_REQUEST_PATH = "get_watch";
+
+    /**
+     * Path of the request for what is shown below the player. The app sends it when it loads a video,
+     * also when the player response comes with a request that is not seen, such as the Onesie request.
+     */
+    private static final String WATCH_NEXT_REQUEST_PATH = "/next";
+
+    /**
+     * Path of the request that loads a Short, which holds a player request.
+     */
+    private static final String REEL_WATCH_REQUEST_PATH = "reel_item_watch";
 
     private static final String STREAM_URL_PATH = "/videoplayback";
 
@@ -146,55 +149,6 @@ public class SpoofVideoStreamsPatch {
 
     public static boolean spoofingToClientWithSABROrSpoofingDisabled() {
         return !SPOOF_VIDEO_STREAMS || preferredClient.requireSABR;
-    }
-
-    /**
-     * Injection point.
-     * Blocks '/get_watch' endpoint requests by returning an unreachable URI.
-     *
-     * @param innerTubeRequestBuilder The URI builder of the innertube request.
-     * @return An unreachable URI builder if the request is a '/get_watch' endpoint, otherwise the original URI.
-     */
-    public static Uri.Builder blockGetWatchRequest(Uri.Builder innerTubeRequestBuilder) {
-        if (SPOOF_VIDEO_STREAMS) {
-            try {
-                String path = innerTubeRequestBuilder.build().getPath();
-
-                if (path != null && path.contains("get_watch")) {
-                    Logger.printDebug(() -> "Blocking 'get_watch' by returning internet connection check URI");
-
-                    return INTERNET_CONNECTION_CHECK_URI.buildUpon();
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "blockGetWatchRequest failure", ex);
-            }
-        }
-
-        return innerTubeRequestBuilder;
-    }
-
-    /**
-     * Injection point.
-     * <p>
-     * Blocks /initplayback requests.
-     */
-    public static String blockInitPlaybackRequest(String originalUrlString) {
-        if (SPOOF_VIDEO_STREAMS) {
-            try {
-                var originalUri = Uri.parse(originalUrlString);
-                String path = originalUri.getPath();
-
-                if (path != null && path.contains("initplayback")) {
-                    Logger.printDebug(() -> "Blocking 'initplayback' by returning internet connection check URI");
-
-                    return INTERNET_CONNECTION_CHECK_URI_STRING;
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "blockInitPlaybackRequest failure", ex);
-            }
-        }
-
-        return originalUrlString;
     }
 
     /**
@@ -303,21 +257,6 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
-     * Turns off a feature flag that interferes with spoofing.
-     */
-    public static boolean useMediaFetchHotConfigReplacement(boolean original) {
-        if (original) {
-            Logger.printDebug(() -> "useMediaFetchHotConfigReplacement is set on");
-        }
-
-        if (SPOOF_VIDEO_STREAMS) {
-            return false;
-        }
-        return original;
-    }
-
-    /**
-     * Injection point.
      * Turns off a feature flag that interferes with video playback.
      */
     public static boolean usePlaybackStartFeatureFlag(boolean original) {
@@ -363,8 +302,13 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
+     * Starts fetching the streams of a video when the app requests the video, so both requests run at the same time.
+     * The app can also load a video with a request that is not seen here, and then the streams are fetched
+     * when the app builds the streams of the video.
+     *
+     * @param body Body of the request, or null if it has none.
      */
-    public static void fetchStreams(String url, Map<String, String> requestHeaders) {
+    public static void fetchStreams(String url, Map<String, String> requestHeaders, @Nullable byte[] body) {
         if (SPOOF_VIDEO_STREAMS) {
             try {
                 if (!Utils.isNetworkConnected()) {
@@ -373,7 +317,25 @@ public class SpoofVideoStreamsPatch {
 
                 Uri uri = Uri.parse(url);
                 String path = uri.getPath();
-                if (path == null || !path.contains("player")) {
+                if (path == null || !path.startsWith(INNERTUBE_PATH)) {
+                    return;
+                }
+                StreamingDataRequest.setAppHeaders(requestHeaders);
+
+                // The app can also send a player request for the same video,
+                // so these start a fetch only if there is none that can still be used.
+                final boolean isReelWatchRequest = path.contains(REEL_WATCH_REQUEST_PATH);
+                if (isReelWatchRequest || path.endsWith(WATCH_NEXT_REQUEST_PATH)) {
+                    // Requests for more comments or related videos have no video id.
+                    String id = body == null ? null : InnerTubeRequestBody.readVideoId(body, isReelWatchRequest);
+                    if (id != null) {
+                        StreamingDataRequest.fetchRequestIfNeeded(id);
+                    }
+                    return;
+                }
+
+                final boolean isWatchRequest = path.contains(WATCH_REQUEST_PATH);
+                if (!isWatchRequest && !path.contains("player")) {
                     return;
                 }
 
@@ -389,16 +351,19 @@ public class SpoofVideoStreamsPatch {
                     return;
                 }
 
-                String id = uri.getQueryParameter("id");
+                String urlId = uri.getQueryParameter("id");
+                // The url of a watch request has no video id.
+                final String id = urlId == null && body != null
+                        ? InnerTubeRequestBody.readVideoId(body, isWatchRequest)
+                        : urlId;
                 if (id == null) {
                     Logger.printException(() -> "Ignoring request with no ID: " + url);
                     return;
                 }
-                boolean isInline = "1".equals(uri.getQueryParameter("inline"));
 
-                StreamingDataRequest.fetchRequest(id, isInline, requestHeaders);
+                StreamingDataRequest.fetchRequest(id, requestHeaders);
             } catch (Exception ex) {
-                Logger.printException(() -> "buildRequest failure", ex);
+                Logger.printException(() -> "fetchStreams failure", ex);
             }
         }
     }
@@ -406,7 +371,7 @@ public class SpoofVideoStreamsPatch {
     /**
      * Injection point.
      * Fix playback by replace the streaming data.
-     * Called after {@link #fetchStreams(String, Map)}.
+     * Called after {@link #fetchStreams(String, Map, byte[])}, or for a video whose request was not seen there.
      */
     @Nullable
     public static byte[] getStreamingData(String videoId) {
@@ -436,8 +401,7 @@ public class SpoofVideoStreamsPatch {
             }
 
             try {
-                StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
-                var buffers = request == null ? null : request.getStream();
+                var buffers = StreamingDataRequest.getOrFetchRequest(videoId).getStream();
                 // The player chooses SABR from the client of the streams it is given for this video.
                 StreamingDataRequest.setPlayerClient(videoId, buffers == null ? null : buffers.client());
                 if (buffers != null) {
@@ -458,11 +422,26 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
+     * Called when a media response asks the player to load the player response of its video again.
+     * The app then loads the video again, which can be with requests that are not seen,
+     * and the streams fetched before are not given to the player again.
+     */
+    public static void onReloadPlayerResponse() {
+        if (SPOOF_VIDEO_STREAMS) {
+            Logger.printDebug(() -> "Player response reload requested");
+            StreamingDataRequest.onPlayerResponseReloadRequested();
+        }
+    }
+
+    /**
+     * Injection point.
      * Fix playback by replace the player config.
      * Called after {@link #getStreamingData(String)}.
+     *
+     * @param appPlayerConfig The player config of the response of the app, or null if it has none.
      */
     @Nullable
-    public static byte[] getPlayerConfig(String videoId) {
+    public static byte[] getPlayerConfig(String videoId, @Nullable byte[] appPlayerConfig) {
         if (SPOOF_VIDEO_STREAMS) {
             try {
                 StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
@@ -472,7 +451,11 @@ public class SpoofVideoStreamsPatch {
                         byte[] config = buffers.playerConfig();
                         if (config != null) {
                             Logger.printDebug(() -> "Overriding player config: " + videoId);
-                            return config;
+                            // This config replaces the whole config of the app, which tells how the
+                            // video is played inline, such as a muted preview in the feed.
+                            return buffers.hasAndroidMedia() && appPlayerConfig != null
+                                    ? StreamingDataRequest.addInlinePlayback(config, appPlayerConfig)
+                                    : config;
                         }
                     }
                 }
@@ -488,7 +471,7 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
-     * Called after {@link #getPlayerConfig(String)}.
+     * Called after {@link #getPlayerConfig(String, byte[])}.
      */
     public static boolean hasAndroidMedia(String videoId) {
         if (SPOOF_VIDEO_STREAMS) {

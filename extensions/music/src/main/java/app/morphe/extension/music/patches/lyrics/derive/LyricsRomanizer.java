@@ -132,7 +132,9 @@ public final class LyricsRomanizer {
                 } else if (ScriptDetector.contains(reading, Character.UnicodeScript.HANGUL)) {
                     reading = HangulRomanizer.romanize(reading).trim();
                 } else if (ScriptDetector.containsKana(reading)) {
-                    reading = KanaRomanizer.romanize(reading).trim();
+                    if (!allowTransliteration) {
+                        reading = KanaRomanizer.romanize(reading).trim();
+                    }
                 }
                 if (allowTransliteration || isPurelyLatinScript(reading)) {
                     return reading;
@@ -146,7 +148,7 @@ public final class LyricsRomanizer {
             if (ScriptDetector.contains(original, Character.UnicodeScript.HANGUL)) {
                 fallback = HangulRomanizer.romanize(original).trim();
             } else if (ScriptDetector.containsKana(original)) {
-                fallback = KanaRomanizer.romanize(original).trim();
+                fallback = allowTransliteration ? original.trim() : KanaRomanizer.romanize(original).trim();
             }
             if (fallback != null && (allowTransliteration || isPurelyLatinScript(fallback))) {
                 return fallback;
@@ -710,7 +712,8 @@ public final class LyricsRomanizer {
             for (int wIdx = 0; wIdx < count; wIdx++) {
                 Word w = origWords.get(wIdx);
                 String rom = (wIdx < alignedChunks.size() && alignedChunks.get(wIdx) != null) ? alignedChunks.get(wIdx) : "";
-                romanizedWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace()));
+                romanizedWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace(), w.ruby()));
+                romanizedWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace(), w.ruby()));
                 if (lineRomBuilder.length() > 0 && lineRomBuilder.charAt(lineRomBuilder.length() - 1) != ' ') {
                     lineRomBuilder.append(' ');
                 }
@@ -1051,7 +1054,8 @@ public final class LyricsRomanizer {
                     }
                     totalTokens++;
                     totalChars += t.length();
-                    if (t.length() == 1 && Character.isLetter(t.charAt(0))) {
+                    if (t.length() == 1 && Character.isLetter(t.charAt(0))
+                            && !(japaneseSource && isJapaneseSingleLetterMora(t.charAt(0)))) {
                         singleLetterTokens++;
                         allSingleLetterTokens++;
                     }
@@ -1128,7 +1132,8 @@ public final class LyricsRomanizer {
                             }
                             totalWordTokens++;
                             charWordTokens += t.length();
-                            if (t.length() == 1 && Character.isLetter(t.charAt(0))) {
+                            if (t.length() == 1 && Character.isLetter(t.charAt(0))
+                                    && !(japaneseSource && isJapaneseSingleLetterMora(t.charAt(0)))) {
                                 singleWordTokens++;
                                 allSingleWordTokens++;
                             }
@@ -1167,6 +1172,13 @@ public final class LyricsRomanizer {
         return false;
     }
 
+    private static boolean isJapaneseSingleLetterMora(char c) {
+        return switch (Character.toLowerCase(c)) {
+            case 'a', 'i', 'u', 'e', 'o', 'n' -> true;
+            default -> false;
+        };
+    }
+
     private static List<LyricsLine> alignLinesToWordSync(@Nullable Lyrics lyrics, @Nullable List<LyricsLine> rLines) {
         if (lyrics == null || lyrics.lines() == null || rLines == null) {
             return rLines;
@@ -1196,7 +1208,7 @@ public final class LyricsRomanizer {
             for (int w = 0; w < origWords.size(); w++) {
                 Word ow = origWords.get(w);
                 String chunk = (w < alignedChunks.size()) ? alignedChunks.get(w) : "";
-                rWords.add(new Word(ow.startMs(), ow.endMs(), ow.text(), chunk, ow.endsWithSpace()));
+                rWords.add(new Word(ow.startMs(), ow.endMs(), ow.text(), chunk, ow.endsWithSpace(), ow.ruby()));
             }
             out.add(new LyricsLine(orig.startTimeMs(), orig.endTimeMs(), fullRoma, rWords,
                     orig.agentId(), orig.isDuet(), orig.isBG(), orig.songPart()));

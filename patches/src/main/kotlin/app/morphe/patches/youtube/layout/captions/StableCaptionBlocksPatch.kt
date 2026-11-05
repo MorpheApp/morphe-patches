@@ -20,8 +20,9 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.FeedBottomSheetFlyoutFingerprint
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_21_10_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneMutable
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
@@ -64,9 +65,9 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
     )
 
     execute {
-        if (!is_21_10_or_greater) {
+        if (!is_21_15_or_greater) {
             return@execute Logger.getLogger(this::class.java.name).warning(
-                "Stable caption blocks requires YouTube 21.10+"
+                "Stable caption blocks requires YouTube 21.15+"
             )
         }
 
@@ -117,16 +118,44 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
         val defaultSettingsField = getCaptionDefaultSettingsFingerprint(settingsField.type)
             .instructionMatches.first().fieldReference
 
+        val visibleSettingsField = getCaptionSettingsVisibilityFingerprint(settingsField.type)
+            .instructionMatches.first().fieldReference
+
         // Frame spans retain source metadata in native mode. Only block layouts use
         // the default placement; ordinary captions keep the authored settings.
         mutableClassDefBy(cueType).apply {
             interfaces.add(EXTENSION_CUE_INTERFACE)
 
             addHelperMethod(
+                "patch_getCaptionId", "I",
+                smali = """
+                    iget v0, p0, $idField
+                    return v0
+                """
+            )
+
+            addHelperMethod(
+                "patch_isCaptionVisible", "Z",
+                smali = """
+                    iget-object v0, p0, $settingsField
+                    iget-boolean v0, v0, $visibleSettingsField
+                    return v0
+                """
+            )
+
+            addHelperMethod(
                 "patch_getOriginalCaptionVisible",
                 "Ljava/lang/CharSequence;",
                 smali = """
                     iget-object v0, p0, $visibleTextField
+                    return-object v0
+                """
+            )
+
+            addHelperMethod(
+                "patch_getOriginalCaptionFull", "Ljava/lang/CharSequence;",
+                smali = """
+                    iget-object v0, p0, $fullTextField
                     return-object v0
                 """
             )
@@ -168,6 +197,8 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                     :copy_frame
                     new-instance v0, $type
                     iget v1, p0, $idField
+                    invoke-virtual { p1, v1 }, $EXTENSION_FRAME_CLASS->captionId(I)I
+                    move-result v1
                     iget-wide v2, p0, $timeField
                     iget-object v4, p0, $visibleTextField
                     iget-object v5, p0, $fullTextField
@@ -306,6 +337,17 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
             """
         )
 
+        // The overlay can shrink without a new layout of its caption windows,
+        // such as in picture-in-picture while the video is paused.
+        getCaptionOverlayLayoutFingerprint(cueType).method.apply {
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+                addInstructionsAtControlFlowLabel(
+                    index,
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_OVERLAY_CLASS->afterViewportLayout(Landroid/view/View;)V"
+                )
+            }
+        }
+
         // Each parsed track keeps the block state of its source captions.
         CaptionWindowsConstructorFingerprint.let {
             val timelineType = it.classDef.type
@@ -335,6 +377,15 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                     """
                 )
 
+                addHelperMethod(
+                    "patch_setBlockState", "V",
+                    parameters = listOf(EXTENSION_STATE_CLASS),
+                    smali = """
+                        iput-object p1, p0, $stateField
+                        return-void
+                    """
+                )
+
                 it.method.apply {
                     addInstructions(
                         indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID),
@@ -346,7 +397,40 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                     )
                 }
 
-                val sampler = getCaptionSamplerFingerprint(cueType).method
+                val samplerFingerprint = getCaptionSamplerFingerprint(cueType)
+                val sampler = samplerFingerprint.method
+                val windows = samplerFingerprint.instructionMatches[0].fieldReference
+                val events = it.instructionMatches.last().fieldReference
+                addHelperMethod(
+                    "patch_getCaptionEventTimes",
+                    "Ljava/util/List;",
+                    smali = """
+                        iget-object v0, p0, $events
+                        return-object v0
+                    """
+                )
+
+                // New timeline with the windows of both timelines, and the block state of this timeline.
+                addHelperMethod(
+                    "patch_mergeWith",
+                    EXTENSION_TIMELINE_INTERFACE,
+                    parameters = listOf(EXTENSION_TIMELINE_INTERFACE),
+                    freeRegisters = 3,
+                    smali = """
+                        check-cast p1, $timelineType
+                        new-instance v0, Ljava/util/ArrayList;
+                        invoke-direct { v0 }, Ljava/util/ArrayList;-><init>()V
+                        iget-object v1, p0, $windows
+                        invoke-virtual { v0, v1 }, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
+                        iget-object v1, p1, $windows
+                        invoke-virtual { v0, v1 }, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
+                        new-instance v1, $timelineType
+                        invoke-direct { v1, v0 }, $timelineType-><init>(Ljava/util/List;)V
+                        iget-object v2, p0, $stateField
+                        iput-object v2, v1, $stateField
+                        return-object v1
+                    """
+                )
                 methods.add(sampler.cloneMutable(name = "patch_getOriginalCaptions"))
 
                 sampler.addInstructionsWithLabels(

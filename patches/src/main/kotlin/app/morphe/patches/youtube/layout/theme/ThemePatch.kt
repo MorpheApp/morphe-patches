@@ -431,7 +431,7 @@ val themePatch = baseThemePatch(
         dependsOn(
             sharedExtensionPatch,
             settingsPatch,
-                seekbarColorPatch,
+            seekbarColorPatch,
             versionCheckPatch,
             baseThemeResourcePatch(
                 includeLightColor = true,

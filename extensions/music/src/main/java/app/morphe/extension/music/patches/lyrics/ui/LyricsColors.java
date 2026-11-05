@@ -23,10 +23,9 @@ final class LyricsColors {
     static final float UNSUNG_ALPHA = 0.35f;
 
     /** Smaller than the lyric it reads, so at the same weight the two would read as one line. */
-    static final float ACTIVE_READING_ALPHA = 0.85f;
-
-    /** The translation sits between the lyric and its reading in prominence. */
-    static final float ACTIVE_TRANSLATION_ALPHA = 0.6f;
+    static final float ACTIVE_READING_ALPHA = 0.8f;
+    /** Unified with reading alpha so translation remains legible over dynamic background. */
+    static final float ACTIVE_TRANSLATION_ALPHA = 0.8f;
 
     /** A background vocal is drawn on its own, so it is not dimmed with the lead line. */
     static final float ACTIVE_BG_ALPHA = 0.8f;

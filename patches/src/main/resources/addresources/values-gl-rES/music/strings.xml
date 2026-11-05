@@ -200,6 +200,26 @@ As pistas descargadas aparecen aquí"</string>
   <string name="morphe_music_downloads_progress">Descargando %s%%</string>
   <string name="morphe_music_downloads_complete">Descarga completada</string>
   <string name="morphe_music_downloads_failed">Erro na descarga</string>
+  <string name="morphe_music_downloads_playlist_download_title">Descarga da lista de reproducución</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Listando pistas…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s listados…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Non se puideron listar as pistas da lista de reproducución</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Xa descargados: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s nesta lista de reproducución, %2$s aínda non descargados.
+
+Descárganse uno a uno, o que pode levar moito tempo e require uns %3$s de espazo libre"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Descargar</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Descargando pista %1$s de %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s descargados</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s descargados, %2$s non puideron descargarse</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">A descarga da lista de reproducución xa está en curso</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">A súa conta aínda non é recoñecida. Tente de novo noutro momento</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listados, todos xa descargados</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Só se puido listar unha parte da lista de reproducución. Toque de novo en Descargar máis tarde para obter o resto</string>
+  <string name="morphe_music_downloads_playlist_download_started">Descargando %s en segundo plano</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Non hai conexión de rede</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Agardando pola rede…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Detido tras %1$s de %2$s. Toque de novo en Descargar para continuar</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Acerca de</string>
@@ -630,6 +650,10 @@ Cookies necesarias: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_hide_played_summary">Ocultar as liñas de letras por riba da liña que se está reproducindo</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Ocultar letras non reproducidas</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Ocultar as liñas de letras por baixo da liña que se está reproducindo</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Fondo dinámico</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Amosar un fondo desenfocado creado a partir da arte do álbum detrás da letra</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animar o fondo dinámico</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Mover o fondo durante a reprodución e facelo pulsar coa música se YouTube Music ten o permiso do micrófono. Desactívao para ter un fondo estático que consuma menos batería</string>
   <string name="morphe_music_lyrics_mediasession_title">Mostrar letras de MediaSession na pantalla de bloqueo</string>
   <string name="morphe_music_lyrics_mediasession_summary">Amosa a liña actual na pantalla de bloqueo, Android Auto e Bluetooth. Require Android 11 ou posterior</string>
   <string name="morphe_music_lyrics_miniplayer_title">Mostrar letras no miniplayer</string>
@@ -728,7 +752,7 @@ As letras provén de servizos de terceiros que non están afiliados, patrocinado
   <string name="morphe_music_lyrics_hide_info_title">Ocultar liña de créditos</string>
   <string name="morphe_music_lyrics_hide_info_summary">Ocultar a liña de créditos que aparece debaxo das letras</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Trocar a tradución e a romanización</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON coloca a romanización ou transliteración baixo as letras e a tradución arriba; OFF mantén a romanización ou transliteración arriba e a tradución baixo. Unha lectura colocada sobre cada sílaba móvese con ela, de arriba da sílaba a baixo</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Intercambia a orde de visualización da tradución e a romanización debaxo da letra</string>
   <string name="morphe_music_lyrics_force_center_title">Centrar sempre as letras</string>
   <string name="morphe_music_lyrics_force_center_summary">ACTIVADO coloca cada liña no centro e ignora a alineación orixinal, incluído os lados do dúo; DESACTIVADO mantén a alineación que piden as letras</string>
   <string name="morphe_music_lyrics_providers_keep_one">Polo menos un provedor debe permanecer activo</string>
@@ -736,6 +760,14 @@ As letras provén de servizos de terceiros que non están afiliados, patrocinado
   <string name="morphe_music_lyrics_romanization_provider_title">Romanización ou transliteración</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Dicionario sen conexión</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Lista de palabras Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Dicionario sen conexión</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Script Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Botón Mostrar Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Toca para alternar as lecturas ruby sobre as letras; mantén premido para cambiar entre hiragana e katakana. Utiliza os provedores ruby activados na orde listada</string>
+  <string name="morphe_music_lyrics_ruby_generating">Xerando ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Detectar seccións con IA</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Só se usa cando o provedor non envía etiquetas de sección como Estribillo ou Verso, que o seu modelo compatible con OpenAI detecta. Editar a fila tamén abre o seu prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL do endpoint da API (ex. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

@@ -24,6 +24,11 @@ import app.morphe.extension.shared.Logger;
  */
 @SuppressWarnings("unused")
 public final class HistoryNavigation {
+
+    /**
+     * Pivot identifier of the Series navigation button.
+     */
+    public static final String PIVOT_IDENTIFIER = "morphe_series_tracker";
     private static final Map<Object, String> kinds =
             Collections.synchronizedMap(new WeakHashMap<>());
     private static volatile Object series;

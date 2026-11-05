@@ -115,11 +115,9 @@ Crowdin syncs those automatically.
   Desktop CLI `-f` argument. A gated patch reports success on versions where it silently does
   nothing.
 
-## Outside code
+## Code origin
 
-A pull request must identify any code, resources or other files that you did not write yourself.
-This includes code copied or adapted from another project, any library, or any other outside
-sources.
+In general, we only accept contributions that you created yourself or that you hold the copyright for.
 
 Output of the tools you work with (code generators, assistants, your editor, and so on) is
 considered your own work, and you are responsible for it like everything else submitted.

@@ -186,7 +186,7 @@ public final class KuGouProvider implements LyricsProvider {
             List<Word> words = new ArrayList<>(line.words().size());
             for (Word word : line.words()) {
                 words.add(new Word(shift(word.startMs(), offsetMs), shift(word.endMs(), offsetMs),
-                        word.text(), word.romaji(), word.endsWithSpace()));
+                        word.text(), word.romaji(), word.endsWithSpace(), word.ruby()));
             }
             shifted.add(new LyricsLine(shift(line.startTimeMs(), offsetMs),
                     shift(line.endTimeMs(), offsetMs), line.text(), words,

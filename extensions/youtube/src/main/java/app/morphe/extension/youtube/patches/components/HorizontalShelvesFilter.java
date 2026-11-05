@@ -50,6 +50,7 @@ public final class HorizontalShelvesFilter extends Filter {
     private static final Set<String> EXPLORE_PAGE_BROWSE_IDS = Set.of(
             MOVIES_PAGE_BROWSE_ID,
             "FEchannel_memberships",
+            "FEhype_leaderboard",
             "UC-9-kyTW8ZkZNDHQJ6FgpwQ",
             "UC4R8DWoMoI7CAwX8_LjQHig",
             "UCOpNcN46UbXVtpKMrmU4Abg",
@@ -66,17 +67,17 @@ public final class HorizontalShelvesFilter extends Filter {
     private final ByteArrayFilterGroup moviesSection;
 
     public HorizontalShelvesFilter() {
+        StringFilterGroup forYouShelf = new StringFilterGroup(
+                null,
+                "mixed_content_shelf.e"
+        );
+
         StringFilterGroup horizontalShelves = new StringFilterGroup(
                 null,
                 "horizontal_shelf.e"
         );
 
-        addPathCallbacks(horizontalShelves);
-
-        moviesSection = new ByteArrayFilterGroup(
-                Settings.HIDE_MOVIES_SECTION,
-                "movie_card.e"
-        );
+        addPathCallbacks(forYouShelf, horizontalShelves);
 
         descriptionBuffers.addAll(
                 new ByteArrayFilterGroup(
@@ -107,6 +108,11 @@ public final class HorizontalShelvesFilter extends Filter {
                         Settings.HIDE_TICKET_SHELF,
                         "ticket_item.e"
                 )
+        );
+
+        moviesSection = new ByteArrayFilterGroup(
+                Settings.HIDE_MOVIES_SECTION,
+                "movie_card.e"
         );
     }
 

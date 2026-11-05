@@ -200,6 +200,26 @@ Niðurhlaðin lög birtast hér"</string>
   <string name="morphe_music_downloads_progress">Hleð niður %s%%</string>
   <string name="morphe_music_downloads_complete">Niðurhal lokið</string>
   <string name="morphe_music_downloads_failed">Niðurhal mistókst</string>
+  <string name="morphe_music_downloads_playlist_download_title">Sækja spilunalista</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Sækist upplýsingum um lög…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s skráð…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Getst ekki skráð lög í spilunlistanum</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Hafa þegar verið sækt: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s lög í þessum spilunlista, %2$s hafa ekki verið sækt.
+
+Þau eru sækt ein deildu sinni, sem getur tekið langan tíma og þarf rúmgæfni aðlykt af eftirlyndi %3$s"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Sækja</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Sækist lag %1$s af %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s sækt</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s sækt, %2$s gekk ekki að sækja</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Söfnun spilunlista er þegar í gangi</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Reikningur þinn er ekki kunnan enn. Prófaðu aftur eftir stundu</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s skráð, öll hafa þegar verið sækt</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Að einahluti spilunlistans gát ég skráð. Ýttu á Sækja aftur síðar til að fá eftirleifarnar</string>
+  <string name="morphe_music_downloads_playlist_download_started">Sækist %s í bakgrunni</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Engin tenging við netið</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Býðst eftir nettengingu…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Stoppað eftir %1$s af %2$s. Ýttu á Sækja aftur til að halda áfram</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Um Morphe</string>
@@ -628,6 +648,10 @@ Nauðsynlegar vafrakökur: SID, HSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_hide_played_summary">Fela textalínur fyrir ofan línuna sem spilast núna</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Fela óspilaða texta</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Fela textalínur fyrir neðan línuna sem spilast núna</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dýnamískur bakgrunnur</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Sýna óskýran bakgrunn úr albúmmyndinni á bak við textann</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Seta dýnamískan bakgrunn í hreyfingu</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Hreyfa bakgrunninn við spilun og láta hann púlsa með tónlistinni ef YouTube Music hefur leyfi fyrir örumikrófón. Slökkvið fyrir kyrrstæðum bakgrunni sem notar minna rafmagni</string>
   <string name="morphe_music_lyrics_mediasession_title">Sýna MediaSession-texta á læsisskjánum</string>
   <string name="morphe_music_lyrics_mediasession_summary">Sýnir núverandi línu á læsiskjá, Android Auto og Bluetooth. Kræfur Android 11 eða nýrra</string>
   <string name="morphe_music_lyrics_miniplayer_title">Sýna texta í smáspilara</string>
@@ -726,7 +750,7 @@ Ljóð koma frá þriðja aðila þjónustu sem eru ekki tengd, stuðluð eða v
   <string name="morphe_music_lyrics_hide_info_title">Fela upplýsingalínu</string>
   <string name="morphe_music_lyrics_hide_info_summary">Fela upplýsingalínuna sem sýnd er fyrir neðan textann</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Víxla þýðingu og rómönskun</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON setur rómverjun eða transliterering undir texta og þýðingu ofan; OFF heldur rómverjun eða transliterering ofan og þýðingu undan. Skýring sett yfir hvora staf flyst með honum, ofan frá stafnum til undan</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Skipta sýningarröð þýðingar og rómanskrar leturskráningar undir textanum</string>
   <string name="morphe_music_lyrics_force_center_title">Alltaf miðja texta</string>
   <string name="morphe_music_lyrics_force_center_summary">ON setur hverja línu í miðju og hunsar upprunalega samstillingu, þ.m.t. duet hluta; OFF heldur samstillingunni sem textinn biður um</string>
   <string name="morphe_music_lyrics_providers_keep_one">Að minnsta kosti einn veitandi verður að vera á</string>
@@ -734,6 +758,14 @@ Ljóð koma frá þriðja aðila þjónustu sem eru ekki tengd, stuðluð eða v
   <string name="morphe_music_lyrics_romanization_provider_title">Rómverjun eða transliterering</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Ótengd orðabók</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime Orðalisti</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Ólínuorðabók</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby-handrit</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Sýna Ruby-hnapp</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Snerta til að skipta á ruby-lesingum yfir texta; halda niðri til að skipta á milli hiragana og katakana. Notaðir eru virkir ruby-veitendur í þeirri röð og þeir eru listuð</string>
+  <string name="morphe_music_lyrics_ruby_generating">Búið til ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Greina hluti með AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Aðeins notað þegar veitandinn sendir engin hlutanúmer eins og Chorus eða Verse, sem OpenAI samhæft módelið þitt greinir þá. Breytinga röðinni opnar líka spurninguna</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API enda punkts URL (t.d. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

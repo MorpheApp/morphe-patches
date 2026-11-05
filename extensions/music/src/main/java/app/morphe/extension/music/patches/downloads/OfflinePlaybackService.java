@@ -79,19 +79,26 @@ public final class OfflinePlaybackService extends Service {
         listeners.remove(listener);
     }
 
+    private record PlayRequest(OfflineTrack track, List<String> queue, int queueIndex) {}
+
     /**
+     * The last play request, until a start of the service takes it. A catalogue of thousands of
+     * tracks does not fit in the Intent the service is started with, so it is handed over in
+     * memory: the service runs in the process of the app, and both ends are on the main thread.
+     */
+    @Nullable
+    private static PlayRequest pendingPlayRequest;
+
+    /**
+     * Must be called on the main thread.
+     *
      * @param queue      The tracks that Previous and Next move through, including this track.
      * @param queueIndex The position of this track in the queue.
      */
-    static void play(Context context, OfflineTrack track, ArrayList<String> queue, int queueIndex) {
+    static void play(Context context, OfflineTrack track, List<String> queue, int queueIndex) {
+        pendingPlayRequest = new PlayRequest(track, queue, queueIndex);
         context.startForegroundService(new Intent(context, OfflinePlaybackService.class)
-                .setAction(ACTION_PLAY_FILE)
-                .putExtra(EXTRA_PATH, track.audioFile().getAbsolutePath())
-                .putExtra(EXTRA_TITLE, track.displayTitle())
-                .putExtra(EXTRA_ARTIST, track.displayArtist())
-                .putExtra(EXTRA_ARTWORK_PATH, track.artworkFile().getAbsolutePath())
-                .putStringArrayListExtra(EXTRA_QUEUE, queue)
-                .putExtra(EXTRA_QUEUE_INDEX, queueIndex));
+                .setAction(ACTION_PLAY_FILE));
     }
 
     static boolean hasPrevious() {
@@ -370,14 +377,17 @@ public final class OfflinePlaybackService extends Service {
         title = requestedTitle == null ? new File(path).getName() : requestedTitle;
         artist = requestedArtist == null || requestedArtist.isBlank() ? "YouTube Music" : requestedArtist;
         // A track saved without a cover has no file, and decoding it would log an error a second.
-        File artworkFile = artworkPath == null ? null : new File(artworkPath);
-        artwork = artworkFile != null && artworkFile.isFile()
-                ? BitmapFactory.decodeFile(artworkPath)
+        File artworkFile = track.artworkFile();
+        artwork = artworkFile.isFile()
+                ? BitmapFactory.decodeFile(artworkFile.getAbsolutePath())
                 : null;
         releasePlayer();
         try {
             pauseOtherMedia();
-            if (audioFocusDenied()) return;
+            if (audioFocusDenied()) {
+                stopPlayback();
+                return;
+            }
             player = new MediaPlayer();
             player.setWakeMode(this, PowerManager.PARTIAL_WAKE_LOCK);
             player.setAudioAttributes(new AudioAttributes.Builder()
@@ -429,13 +439,23 @@ public final class OfflinePlaybackService extends Service {
         }
     }
 
-    private void playQueueOffset(int offset) {
+    /**
+     * Plays the next track of the queue in one direction, passing over tracks that have been
+     * deleted since the queue was made.
+     *
+     * @return If a track was found to play.
+     */
+    private boolean playQueueOffset(int offset) {
+        if (queueIndex < 0) return false;
         int target = queueIndex + offset;
-        if (target < 0 || target >= queue.size()) return;
+        while (target >= 0 && target < queue.size() && !new File(queue.get(target)).isFile()) {
+            target += offset;
+        }
+        if (target < 0 || target >= queue.size()) return false;
+
         queueIndex = target;
-        OfflineTrack track = OfflineTrack.load(new File(queue.get(target)));
-        playFile(track.audioFile().getAbsolutePath(), track.displayTitle(), track.displayArtist(),
-                track.artworkFile().getAbsolutePath());
+        playTrack(OfflineTrack.load(new File(queue.get(target))));
+        return true;
     }
 
     private void resume() {

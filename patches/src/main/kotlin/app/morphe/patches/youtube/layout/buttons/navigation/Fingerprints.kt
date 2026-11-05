@@ -25,6 +25,7 @@ import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import app.morphe.patches.youtube.misc.navigation.ImageEnumConstructorFingerprint
+import app.morphe.patches.youtube.shared.ToolBarButtonFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -38,9 +39,9 @@ internal object WatchLaterIconEnumFingerprint : Fingerprint(
     )
 )
 
-internal object WatchLaterPivotBarItemBuilderFingerprint : Fingerprint(
+internal object PivotBarItemBuilderFingerprint : Fingerprint(
     definingClass = EXTENSION_CLASS,
-    name = "buildWatchLaterPivotBarItem",
+    name = "buildPivotBarItem",
     returnType = "Ljava/lang/Object;",
     parameters = listOf("[B")
 )
@@ -338,6 +339,34 @@ internal object PivotBarRendererFingerprint : Fingerprint(
             returnType = "V"
         ),
         opcode(Opcode.RETURN_OBJECT)
+    )
+)
+
+/**
+ * Same method as [PivotBarRendererFingerprint].
+ * Matches the renderer of the navigation buttons without labels.
+ */
+internal object PivotBarIconOnlyRendererFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    parameters = listOf("L"),
+    returnType = "Lj$/util/Optional;",
+    filters = listOf(
+        literal(117501096L),
+        literal(318370163L),
+        opcode(Opcode.IF_NE, location = MatchAfterWithin(3)),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterWithin(6))
+    )
+)
+
+/**
+ * Order of a toolbar button in the menu of the toolbar.
+ */
+internal object ToolBarButtonOrderFingerprint : Fingerprint(
+    classFingerprint = ToolBarButtonFingerprint,
+    returnType = "I",
+    parameters = listOf(),
+    filters = listOf(
+        literal(1000L)
     )
 )
 

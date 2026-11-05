@@ -33,7 +33,7 @@ final class FollowFlow {
     private final String startVideo;
     private String id = "";
     private CatalogClient.Catalog catalog;
-    private CheckBox watchedBefore;
+    private CheckBox watchedBefore, watchedOnAdvance;
     private TextView order, resume;
     private boolean reverse, orderChosen;
 
@@ -78,6 +78,8 @@ final class FollowFlow {
             record.setEnabled(RecordingPrivacy.canEnable());
             sheet.body.addView(record);
         } else record = null;
+        // Following from a playlist saves right after loading, unless the sheet waits for a tap.
+        if (startVideo.isEmpty() && (link != null || explain)) watchedOnAdvanceOption();
         consentGeneration = RecordingPrivacy.generation();
         status = sheet.message("");
         status.setVisibility(android.view.View.GONE);
@@ -210,7 +212,7 @@ final class FollowFlow {
                     id,
                     name,
                     catalog,
-                    new FollowStart("", -1, reverse, false),
+                    new FollowStart("", -1, reverse, false, watchedOnAdvance()),
                     -1,
                     saved,
                     this::failure);
@@ -227,7 +229,8 @@ final class FollowFlow {
                             startVideo,
                             position,
                             reverse,
-                            watchedBefore != null && watchedBefore.isChecked()),
+                            watchedBefore != null && watchedBefore.isChecked(),
+                            watchedOnAdvance()),
                     generation,
                     saved,
                     this::failure);
@@ -260,8 +263,10 @@ final class FollowFlow {
             watchedBefore.setMinHeight(HistoryUi.dp(48));
             watchedBefore.setChecked(false);
             sheet.body.addView(watchedBefore);
+            watchedOnAdvanceOption();
         }
         order.setVisibility(android.view.View.VISIBLE);
+        watchedOnAdvance.setVisibility(android.view.View.VISIBLE);
         long position =
                 RecordingPrivacy.canEnable()
                         ? FollowStart.position(PlaybackBridge.source(), startVideo)
@@ -272,6 +277,19 @@ final class FollowFlow {
                     "morphe_series_tracker_resume_at", ResumePlanner.time(position)));
         }
         updateOrder();
+    }
+
+    private void watchedOnAdvanceOption() {
+        watchedOnAdvance = new CheckBox(activity);
+        watchedOnAdvance.setText(UiText.get("morphe_series_tracker_watched_on_advance"));
+        watchedOnAdvance.setTextColor(HistoryUi.foreground());
+        watchedOnAdvance.setTextSize(14);
+        watchedOnAdvance.setMinHeight(HistoryUi.dp(48));
+        sheet.body.addView(watchedOnAdvance);
+    }
+
+    private boolean watchedOnAdvance() {
+        return watchedOnAdvance != null && watchedOnAdvance.isChecked();
     }
 
     private void updateOrder() {
@@ -328,6 +346,7 @@ final class FollowFlow {
             watchedBefore.setVisibility(android.view.View.GONE);
             order.setVisibility(android.view.View.GONE);
             resume.setVisibility(android.view.View.GONE);
+            watchedOnAdvance.setVisibility(android.view.View.GONE);
         }
         follow.setText(UiText.get("morphe_series_tracker_follow"));
         follow.setOnClickListener(v -> follow());

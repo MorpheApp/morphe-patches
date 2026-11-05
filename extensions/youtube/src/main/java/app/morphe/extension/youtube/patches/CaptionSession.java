@@ -81,6 +81,7 @@ final class CaptionSession {
     private final Executor worker;
     private final Runnable changed, failed;
     private final LongSupplier clock;
+    private final boolean translatePrimary, translateSecondary;
 
     private final byte[] status, attempts;
     private final long[] retryAt;
@@ -98,16 +99,37 @@ final class CaptionSession {
     @Nullable
     private Snapshot displayed;
 
+    /**
+     * @param translatePrimary   If the primary language is translated.
+     *                           False if an uploaded track of the language is shown instead.
+     * @param translateSecondary If the secondary language is translated.
+     */
+    CaptionSession(List<StableCaptionBlockPolicy.Block> source, String sourceLanguage,
+                   String primaryLanguage, @Nullable String secondaryLanguage, Translator translator,
+                   Executor worker, Runnable changed, Runnable failed,
+                   boolean translatePrimary, boolean translateSecondary) {
+        this(source, sourceLanguage, primaryLanguage, secondaryLanguage, translator, worker,
+                changed, failed, () -> System.nanoTime() / 1_000_000L, translatePrimary, translateSecondary);
+    }
+
     CaptionSession(List<StableCaptionBlockPolicy.Block> source, String sourceLanguage,
                    String primaryLanguage, @Nullable String secondaryLanguage, Translator translator,
                    Executor worker, Runnable changed, Runnable failed) {
         this(source, sourceLanguage, primaryLanguage, secondaryLanguage, translator, worker,
-                changed, failed, () -> System.nanoTime() / 1_000_000L);
+                changed, failed, true, true);
     }
 
     CaptionSession(List<StableCaptionBlockPolicy.Block> source, String sourceLanguage,
                    String primaryLanguage, @Nullable String secondaryLanguage, Translator translator,
                    Executor worker, Runnable changed, Runnable failed, LongSupplier clock) {
+        this(source, sourceLanguage, primaryLanguage, secondaryLanguage, translator, worker,
+                changed, failed, clock, true, true);
+    }
+
+    private CaptionSession(List<StableCaptionBlockPolicy.Block> source, String sourceLanguage,
+                           String primaryLanguage, @Nullable String secondaryLanguage, Translator translator,
+                           Executor worker, Runnable changed, Runnable failed, LongSupplier clock,
+                           boolean translatePrimary, boolean translateSecondary) {
         this.source = List.copyOf(source);
         this.sourceLanguage = Objects.requireNonNull(sourceLanguage);
         this.primaryLanguage = Objects.requireNonNull(primaryLanguage);
@@ -117,6 +139,8 @@ final class CaptionSession {
         this.changed = changed;
         this.failed = failed;
         this.clock = clock;
+        this.translatePrimary = translatePrimary;
+        this.translateSecondary = translateSecondary;
         status = new byte[source.size()];
         attempts = new byte[source.size()];
         retryAt = new long[source.size()];
@@ -172,8 +196,9 @@ final class CaptionSession {
     }
 
     private boolean needsTranslation() {
-        return !primaryLanguage.equalsIgnoreCase(sourceLanguage)
-                || (secondaryLanguage != null && !secondaryLanguage.equalsIgnoreCase(sourceLanguage));
+        return (translatePrimary && !primaryLanguage.equalsIgnoreCase(sourceLanguage))
+                || (translateSecondary && secondaryLanguage != null
+                && !secondaryLanguage.equalsIgnoreCase(sourceLanguage));
     }
 
     /**
@@ -294,10 +319,11 @@ final class CaptionSession {
         boolean error = false;
         for (int index : batch) {
             String[] values = ready.get(index);
-            final boolean missing = values == null || values[PRIMARY_SLOT] == null
-                    || (secondaryLanguage != null && values[SECONDARY_SLOT] == null);
-            final boolean failedOutput = values != null && (FAILED_OUTPUT.equals(values[PRIMARY_SLOT])
-                    || (secondaryLanguage != null && FAILED_OUTPUT.equals(values[SECONDARY_SLOT])));
+            final boolean missing = (translatePrimary && (values == null || values[PRIMARY_SLOT] == null))
+                    || (translateSecondary && secondaryLanguage != null
+                    && (values == null || values[SECONDARY_SLOT] == null));
+            final boolean failedOutput = values != null && ((translatePrimary && FAILED_OUTPUT.equals(values[PRIMARY_SLOT]))
+                    || (translateSecondary && secondaryLanguage != null && FAILED_OUTPUT.equals(values[SECONDARY_SLOT])));
             if (missing) {
                 attempts[index]++;
                 retryAt[index] = clock.getAsLong() + Math.max(retryDelay, RETRY_BASE_MS << (attempts[index] - 1));
@@ -326,6 +352,7 @@ final class CaptionSession {
 
             long retryDelay = 0;
             for (int slot = 0; slot < SLOT_COUNT; slot++) {
+                if (slot == PRIMARY_SLOT && !translatePrimary || slot == SECONDARY_SLOT && !translateSecondary) continue;
                 retryDelay = Math.max(retryDelay, translateSlot(batch, slot));
                 if (!isActive()) return;
 
@@ -360,11 +387,11 @@ final class CaptionSession {
 
         StableCaptionBlockPolicy.Block cue = source.get(found);
         String[] output = ready.get(found);
-        String first = primaryLanguage.equalsIgnoreCase(sourceLanguage)
+        String first = !translatePrimary ? "" : primaryLanguage.equalsIgnoreCase(sourceLanguage)
                 ? cue.text
                 : output == null ? null : output[PRIMARY_SLOT];
         String second;
-        if (secondaryLanguage == null) {
+        if (!translateSecondary || secondaryLanguage == null) {
             second = "";
         } else if (secondaryLanguage.equalsIgnoreCase(sourceLanguage)) {
             second = cue.text;
@@ -374,9 +401,9 @@ final class CaptionSession {
         if (first == null) first = translator.cached(sourceLanguage, primaryLanguage, cue.text);
         if (second == null && secondaryLanguage != null)
             second = translator.cached(sourceLanguage, secondaryLanguage, cue.text);
-        boolean unavailable = FAILED_OUTPUT.equals(first) || (first == null && attempts[found] > 0);
-        if (FAILED_OUTPUT.equals(first)) first = null;
-        if (secondaryLanguage != null && FAILED_OUTPUT.equals(second)) second = null;
+        boolean unavailable = translatePrimary && (FAILED_OUTPUT.equals(first) || (first == null && attempts[found] > 0));
+        if (translatePrimary && FAILED_OUTPUT.equals(first)) first = null;
+        if (translateSecondary && secondaryLanguage != null && FAILED_OUTPUT.equals(second)) second = null;
 
         // Do not briefly show another language while the requested translation is pending.
         Snapshot candidate = new Snapshot(cue, first == null ? (unavailable ? cue.text : "") : first,

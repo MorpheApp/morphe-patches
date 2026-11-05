@@ -151,7 +151,7 @@ val downloadsPatch = bytecodePatch(
         setExtensionIsPatchIncluded(EXTENSION_SHORTS_DOWNLOAD_BUTTON)
         setExtensionIsPatchIncluded(EXTENSION_EXPORT_DOWNLOAD_BUTTON)
 
-        OfflineVideoEndpointFingerprint.method.addInstructionsWithLabels(
+        YouTubeOfflineVideoEndpointFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->inAppDownloadButtonOnClick(Ljava/lang/String;)Z
@@ -164,7 +164,7 @@ val downloadsPatch = bytecodePatch(
         )
 
         // Open the external downloader with the playlist link, instead of saving the playlist.
-        OfflinePlaylistEndpointFingerprint.method.addInstructionsWithLabels(
+        YouTubeOfflinePlaylistEndpointFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 # The parameter registers can be higher than 15.

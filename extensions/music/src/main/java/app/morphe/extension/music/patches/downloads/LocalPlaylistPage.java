@@ -29,7 +29,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -168,7 +167,8 @@ final class LocalPlaylistPage {
 
         titleView.setText(playlist.name());
         for (String path : playlist.trackPaths()) {
-            OfflineTrack track = OfflineTrack.load(new File(path));
+            // From the catalogue already read by the downloads screen, rather than from disk.
+            OfflineTrack track = host.trackFor(path);
             tracks.add(track);
             tracksContainer.addView(createTrackRow(track));
         }

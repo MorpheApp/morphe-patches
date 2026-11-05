@@ -16,18 +16,20 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.music.patches.components.SongMenuFilter;
 import app.morphe.extension.music.patches.downloads.LocalDownloadManager;
+import app.morphe.extension.music.patches.downloads.PlaylistDownloader;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.DownloadMode;
+import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
@@ -51,16 +53,44 @@ public final class DownloadsPatch {
 
     /** Command field of the 'ypc/get_offline_upsell' endpoint. */
     private static final int OFFLINE_UPSELL_ENDPOINT = 133724106;
+    /**
+     * Command field of the offline playlist endpoint, with the playlist id in field 1 and the
+     * action in field 2.
+     */
+    private static final int OFFLINE_PLAYLIST_ENDPOINT = 73082583;
+    /** Action of the offline playlist endpoint that saves the playlist. The others remove or refresh it. */
+    private static final long OFFLINE_PLAYLIST_ACTION_ADD = 1;
+    /**
+     * Fields of the encoded parameters of the offline upsell of an album or a playlist, which
+     * hold its id in a nested message. The parameters of a song hold its video ID instead.
+     */
+    private static final int UPSELL_PARAMETERS_PLAYLIST = 5;
+    private static final int UPSELL_PLAYLIST_ITEM = 10;
+    private static final int UPSELL_PLAYLIST_ID = 3;
     private static final Pattern VIDEO_ID = Pattern.compile("[A-Za-z0-9_-]{11}");
+    /**
+     * Liked music, user and editorial playlists, mixes, album playlists and album pages,
+     * with or without the 'VL' prefix of a playlist page.
+     */
+    private static final Pattern PLAYLIST_ID = Pattern.compile(
+            "(VL)?(LM|PL[A-Za-z0-9_-]{16,}|OLAK5uy_[A-Za-z0-9_-]{11,}|RD[A-Za-z0-9_-]{10,})"
+                    + "|MPRE[A-Za-z0-9_-]{8,}");
 
     private static volatile long lastFlyoutDownloadTime;
+    private static volatile long lastPlaylistDownloadTime;
     private static volatile long lastMainPlayerDownloadTime;
     /** When the player button was last left to the app, because only menus are overridden. */
     private static volatile long lastStockPlayerButtonTime;
     private static volatile long lastLocalDownloadsOpenTime;
     /** Browse id of the stock offline tab, which the local catalogue replaces. */
-    private static final byte[] OFFLINE_BROWSE_ID =
-            "FEmusic_offline".getBytes(StandardCharsets.US_ASCII);
+    private static final ByteArrayFilterGroup OFFLINE_BROWSE_COMMAND =
+            new ByteArrayFilterGroup(null, "FEmusic_offline");
+    /**
+     * Menu Download action of accounts offered Premium, which opens the Premium sheet
+     * and has no video ID.
+     */
+    private static final ByteArrayFilterGroup PREMIUM_UPSELL_COMMAND =
+            new ByteArrayFilterGroup(null, "premium_upsell");
 
     /**
      * Injection point.
@@ -92,7 +122,7 @@ public final class DownloadsPatch {
      * The download mode replaces the Download menu, and the external downloader
      * can replace it in the other modes too.
      */
-    private static boolean isFlyoutMenuOverridden() {
+    public static boolean isFlyoutMenuOverridden() {
         return Settings.DOWNLOAD_MODE.get() != DownloadMode.DEFAULT
                 || Settings.EXTERNAL_DOWNLOADER_MENU.get();
     }
@@ -134,17 +164,6 @@ public final class DownloadsPatch {
         activity.startActivity(intent);
     }
 
-    private static boolean isOfflineBrowseCommand(byte[] bytes) {
-        byte[] target = OFFLINE_BROWSE_ID;
-        outer: for (int i = 0; i <= bytes.length - target.length; i++) {
-            for (int j = 0; j < target.length; j++) {
-                if (bytes[i + j] != target[j]) continue outer;
-            }
-            return true;
-        }
-        return false;
-    }
-
     /**
      * Determines if the clicked view is inside a Dialog/BottomSheet by comparing
      * its Window root to the main Activity's Window root.
@@ -182,15 +201,74 @@ public final class DownloadsPatch {
     }
 
     /**
-     * The endpoint holds the video ID, or encoded parameters with the video ID in field 4.
-     *
-     * @return The video ID, or an empty string for albums and playlists.
+     * @param parameters The encoded parameters of the offline upsell endpoint.
+     * @return The video ID in field 4, or null if the parameters are of an album or a playlist.
      */
-    private static String getOfflineUpsellVideoId(byte[] command) {
-        String value = new ProtoMessage(command).messageField(OFFLINE_UPSELL_ENDPOINT).stringField(1);
-        if (value.isEmpty() || VIDEO_ID.matcher(value).matches()) return value;
+    @Nullable
+    private static String getOfflineUpsellVideoId(ProtoMessage parameters) {
+        try {
+            String videoId = parameters.stringField(4);
+            return VIDEO_ID.matcher(videoId).matches() ? videoId : null;
+        } catch (IllegalArgumentException ex) {
+            // The parameters of an album or a playlist hold other fields at this number.
+            Logger.printDebug(() -> "Offline upsell parameters are not those of a song", ex);
+            return null;
+        }
+    }
 
-        return new ProtoMessage(Base64.decode(Uri.decode(value), Base64.URL_SAFE)).stringField(4);
+    /**
+     * Injection point.
+     * Called for the Download button of the playlists the app offers to save itself, such as
+     * Liked music, which it otherwise queues as an offline playlist whose tracks all need Premium.
+     */
+    public static boolean offlinePlaylistEndpointOnClick(@Nullable Object command) {
+        try {
+            if (!isActionButtonOverridden()
+                    || !(command instanceof ProtocolBufferFieldInterface message)) {
+                return false;
+            }
+            Utils.verifyOnMainThread();
+
+            ProtoMessage endpoint = new ProtoMessage(message.toByteArray())
+                    .messageField(OFFLINE_PLAYLIST_ENDPOINT);
+            String playlistId = endpoint.stringField(1);
+            final long action = endpoint.varintField(2);
+            Logger.printDebug(() -> "Offline playlist endpoint of " + playlistId + ", action: " + action);
+
+            // Removing or refreshing a playlist the app saved is left to the app.
+            if (action != OFFLINE_PLAYLIST_ACTION_ADD || !PLAYLIST_ID.matcher(playlistId).matches()) {
+                return false;
+            }
+            startPlaylistDownload(playlistId);
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "offlinePlaylistEndpointOnClick failure", ex);
+            return false;
+        }
+    }
+
+    /**
+     * Downloads the tracks of a playlist or an album with the local downloads, or hands its page
+     * to the external downloader, as the download mode says. Only used if the mode is not the default.
+     */
+    private static void startPlaylistDownload(String playlistId) {
+        // A single tap can resolve the command twice.
+        final long now = System.currentTimeMillis();
+        if (now - lastPlaylistDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) return;
+        lastPlaylistDownloadTime = now;
+
+        Logger.printDebug(() -> "Playlist download of " + playlistId);
+        if (inAppDownloads()) {
+            PlaylistDownloader.start(playlistId);
+        } else {
+            ExternalDownloaderPreference.launchExternalDownloader(playlistId, Utils.getActivity(),
+                    playlistUrl(playlistId));
+        }
+    }
+
+    private static String playlistUrl(String playlistId) {
+        if (playlistId.startsWith("MPRE")) return "https://music.youtube.com/browse/" + playlistId;
+        return "https://music.youtube.com/playlist?list=" + playlistId.replaceFirst("^VL", "");
     }
 
     /**
@@ -219,11 +297,25 @@ public final class DownloadsPatch {
             }
             Utils.verifyOnMainThread();
 
-            String videoId = getOfflineUpsellVideoId(message.toByteArray());
-            // Albums and playlists are left to the app.
-            if (videoId.isEmpty()) return false;
+            // The endpoint holds the video ID of a song, or encoded parameters.
+            String value = new ProtoMessage(message.toByteArray())
+                    .messageField(OFFLINE_UPSELL_ENDPOINT).stringField(1);
+            if (value.isEmpty()) return false;
+            if (VIDEO_ID.matcher(value).matches()) return onMenuDownload(value);
 
-            return onMenuDownload(videoId);
+            ProtoMessage parameters = new ProtoMessage(Base64.decode(Uri.decode(value), Base64.URL_SAFE));
+            String videoId = getOfflineUpsellVideoId(parameters);
+            if (videoId != null) return onMenuDownload(videoId);
+
+            // Albums and playlists are downloaded track by track with the local downloads, or
+            // handed whole to the external downloader.
+            if (!isActionButtonOverridden()) return false;
+            String playlistId = parameters.messagePath(UPSELL_PARAMETERS_PLAYLIST, UPSELL_PLAYLIST_ITEM)
+                    .stringField(UPSELL_PLAYLIST_ID);
+            if (!PLAYLIST_ID.matcher(playlistId).matches()) return false;
+
+            startPlaylistDownload(playlistId);
+            return true;
         } catch (Exception ex) {
             Logger.printException(() -> "offlineUpsellOnClick failure", ex);
             return false;
@@ -267,8 +359,18 @@ public final class DownloadsPatch {
             Utils.verifyOnMainThread();
 
             byte[] commandBytes = p1.toByteArray();
+            final boolean insideDialog = isViewInsideDialog(map.get(ELEMENTS_SENDER_VIEW));
+
+            if (insideDialog && PREMIUM_UPSELL_COMMAND.check(commandBytes).isFiltered()) {
+                // The song is found by the menu header. Albums and playlists are left to the app.
+                String videoId = SongMenuFilter.getMenuVideoId();
+                if (videoId == null) return false;
+
+                return onMenuDownload(videoId);
+            }
+
             if (inAppDownloads()) {
-                if (commandBytes != null && isOfflineBrowseCommand(commandBytes)) {
+                if (OFFLINE_BROWSE_COMMAND.check(commandBytes).isFiltered()) {
                     openLocalDownloads();
                     // The local screen is opened on top of the stock one rather than in place of
                     // it. Consuming the command instead leaves the app with a navigation it never
@@ -279,7 +381,7 @@ public final class DownloadsPatch {
 
             // Song menus in search results, playlists and the queue share the player's Download label.
             // Only the player action bar button should use the playing song's ID.
-            if (!isViewInsideDialog(map.get(ELEMENTS_SENDER_VIEW)) && isPlayerDownloadButton(map)) {
+            if (!insideDialog && isPlayerDownloadButton(map)) {
                 if (!isActionButtonOverridden()) {
                     lastStockPlayerButtonTime = System.currentTimeMillis();
                     return false;
@@ -296,8 +398,8 @@ public final class DownloadsPatch {
                 startDownload(videoId, !inAppDownloads());
                 return true;
             }
-            // Menu Download commands have no sender view, and are handled when they reach
-            // the offline video endpoint or the offline upsell.
+            // Other menu Download commands have no sender view, and are handled when they
+            // reach the offline video endpoint or the offline upsell.
         } catch (Exception ex) {
             Logger.printException(() -> "commandResolverOnClick failure", ex);
         }

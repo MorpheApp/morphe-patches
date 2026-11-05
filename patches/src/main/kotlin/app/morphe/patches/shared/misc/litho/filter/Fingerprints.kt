@@ -13,6 +13,7 @@ package app.morphe.patches.shared.misc.litho.filter
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -216,3 +217,103 @@ internal object ListSectionUpdateRowsFingerprint : Fingerprint(
         )
     )
 )
+
+// region Sticky headers
+
+/**
+ * Updates the sticky headers of a list, such as the related video chips of the watch page.
+ */
+internal object StickyHeadersFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        anyInstruction(
+            string("A LinearLayoutManager or FlowLayoutManager is required for sticky headers to work"),
+            // 21.23 and lower.
+            string("A LinearLayoutManager is required for sticky headers to work")
+        )
+    )
+)
+
+/**
+ * Restores the alpha and the visibility of the list item hidden while its sticky copy is shown.
+ */
+internal object StickyHeaderRestoreItemFingerprint : Fingerprint(
+    classFingerprint = StickyHeadersFingerprint,
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this", type = "Landroid/view/View;"),
+        // Alpha of the item before it was hidden.
+        fieldAccess(opcode = Opcode.IGET, definingClass = "this", type = "F", location = MatchAfterWithin(3)),
+        methodCall(definingClass = "Landroid/view/View;", name = "setAlpha", location = MatchAfterImmediately()),
+        methodCall(definingClass = "Landroid/view/View;", name = "setVisibility")
+    )
+)
+
+/**
+ * Creates the sticky copy of the header, at the position saved when the copy was posted.
+ */
+internal fun stickyHeaderCreateFingerprint(stickyHeadersType: String) = Fingerprint(
+    name = "run",
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(definingClass = "Landroid/view/ViewGroup;", name = "removeView"),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = stickyHeadersType,
+            type = "Landroid/view/ViewGroup;",
+            location = MatchAfterWithin(4)
+        ),
+        // View type of the position.
+        methodCall(returnType = "I", parameters = listOf("I"), location = MatchAfterImmediately()),
+        // Creates the view holder.
+        methodCall(parameters = listOf("Landroid/view/ViewGroup;", "I"), location = MatchAfterWithin(2)),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = stickyHeadersType,
+            type = "Landroid/view/View;",
+            location = MatchAfterWithin(3)
+        ),
+        // Binds the position to the view holder.
+        methodCall(returnType = "V", parameters = listOf("L", "I"), location = MatchAfterImmediately()),
+        // Id of the current header.
+        methodCall(returnType = "J", parameters = listOf(), location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Id of the current sticky header, read from its entry in the list of headers.
+ */
+internal fun stickyHeaderCurrentIdFingerprint(headerListType: String, methodName: String) = Fingerprint(
+    definingClass = headerListType,
+    name = methodName,
+    returnType = "J",
+    parameters = listOf(),
+    filters = listOf(
+        // Index of the current header.
+        fieldAccess(opcode = Opcode.IGET, definingClass = "this", type = "I"),
+        // Entries of the headers.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this", type = "Ljava/util/List;"),
+        methodCall(definingClass = "Ljava/util/List;", name = "get", location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterWithin(2)),
+        fieldAccess(opcode = Opcode.IGET_WIDE, type = "J", location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Sorts the entries of the sticky headers by their position.
+ */
+internal fun stickyHeaderEntryCompareFingerprint(entryType: String) = Fingerprint(
+    definingClass = entryType,
+    name = "compareTo",
+    returnType = "I",
+    parameters = listOf("Ljava/lang/Object;"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET, definingClass = "this", type = "I"),
+        fieldAccess(opcode = Opcode.IGET, definingClass = "this", type = "I", location = MatchAfterImmediately())
+    )
+)
+
+// endregion

@@ -16,6 +16,7 @@ import app.morphe.extension.music.patches.CrossfadePatch.CrossFadeDuration;
 import app.morphe.extension.music.patches.CrossfadePatch.FadeCurve;
 import app.morphe.extension.music.patches.PlaylistTrackTapPatch.TapAction;
 import app.morphe.extension.music.patches.lyrics.derive.AiProviders;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsRubyGenerator.RubyStyle;
 import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
 import app.morphe.extension.music.patches.lyrics.model.MiniLyricsFormatter;
@@ -244,6 +245,10 @@ public class Settings extends SharedYouTubeSettings {
      * Japanese song. Off accepts only Latin letters, accented letters and tone digits.
      */
     public static final BooleanSetting LYRICS_ALLOW_TRANSLITERATION = new BooleanSetting("morphe_music_lyrics_allow_transliteration", FALSE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_ROMANIZE_BUTTON)));
+    public static final BooleanSetting LYRICS_SHOW_RUBY_BUTTON = new BooleanSetting("morphe_music_lyrics_show_ruby_button", TRUE, false, parent(LYRICS_ENABLED));
+    public static final StringSetting LYRICS_RUBY_PROVIDERS = new StringSetting("morphe_music_lyrics_ruby_provider", AiProviders.DEFAULT_RUBY_ORDER, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_RUBY_BUTTON)));
+    public static final EnumSetting<RubyStyle> LYRICS_RUBY_STYLE = new EnumSetting<>("morphe_music_lyrics_ruby_style", RubyStyle.HIRAGANA, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_RUBY_BUTTON)));
+    public static final StringSetting LYRICS_AI_RUBY_PROMPT = new StringSetting("morphe_music_lyrics_ai_ruby_prompt", OpenAIClient.RUBY_PROMPT, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_RUBY_BUTTON)));
 
     public static final StringSetting LYRICS_DEEPL_API_KEY = new StringSetting("morphe_music_lyrics_deepl_api_key", "", false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_REFRESH_BUTTON = new BooleanSetting("morphe_music_lyrics_show_refresh_button", TRUE, false, parent(LYRICS_ENABLED));
@@ -266,6 +271,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_FORCE_CENTER = new BooleanSetting("morphe_music_lyrics_force_center", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_ROMANIZE = new BooleanSetting("morphe_music_lyrics_romanize", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_ROMANIZE_ONLY = new BooleanSetting("morphe_music_lyrics_romanize_only", FALSE, false, parent(LYRICS_ENABLED));
+    /** Shows the ruby reading above each word. */
+    public static final BooleanSetting LYRICS_RUBY = new BooleanSetting("morphe_music_lyrics_ruby", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_WORD_SYNC = new BooleanSetting("morphe_music_lyrics_word_sync", TRUE, false, parent(LYRICS_ENABLED));
     /** Shrinks every line that is not the one being sung. */
     public static final BooleanSetting LYRICS_LINE_SCALE = new BooleanSetting("morphe_music_lyrics_line_scale", TRUE, false, parent(LYRICS_ENABLED));
@@ -273,6 +280,8 @@ public class Settings extends SharedYouTubeSettings {
     /** Master switch for separating background vocals and harmony from the lead line. */
     public static final BooleanSetting LYRICS_SPLIT_BACKGROUND = new BooleanSetting("morphe_music_lyrics_split_background", TRUE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_HIDE_UNPLAYED = new BooleanSetting("morphe_music_lyrics_hide_unplayed", FALSE, false, parent(LYRICS_ENABLED));
+    public static final BooleanSetting LYRICS_DYNAMIC_BACKGROUND = new BooleanSetting("morphe_music_lyrics_dynamic_background", TRUE, false, parent(LYRICS_ENABLED));
+    public static final BooleanSetting LYRICS_DYNAMIC_BACKGROUND_ANIMATED = new BooleanSetting("morphe_music_lyrics_dynamic_background_animated", TRUE, false, parent(LYRICS_DYNAMIC_BACKGROUND));
     public static final IntegerSetting LYRICS_TEXT_SIZE = new IntegerSetting("morphe_music_lyrics_text_size", 28, false, parent(LYRICS_ENABLED));
     public static final IntegerSetting LYRICS_OFFSET_MS = new IntegerSetting("morphe_music_lyrics_offset_ms", 0, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SB_MATCHING = new BooleanSetting("morphe_music_lyrics_sb_matching", TRUE, false, parent(LYRICS_ENABLED));

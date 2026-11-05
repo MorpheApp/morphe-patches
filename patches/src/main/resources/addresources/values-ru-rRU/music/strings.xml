@@ -200,6 +200,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Загрузка... %s%%</string>
   <string name="morphe_music_downloads_complete">Загрузка завершена</string>
   <string name="morphe_music_downloads_failed">Не удалось скачать</string>
+  <string name="morphe_music_downloads_playlist_download_title">Загрузка плейлиста</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Составление списка треков…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Не удалось составить список треков плейлиста</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Уже скачано: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"В этом плейлисте %1$s треков, %2$s еще не скачано.
+
+Они скачиваются по одному, что может занять много времени и потребует около %3$s свободного места"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Скачать</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Загрузка трека %1$s из %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s скачано, %2$s не удалось скачать</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Скачивание плейлиста уже выполняется</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Ваш аккаунт пока не распознан. Попробуйте еще раз через некоторое время</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Удалось составить список только части плейлиста. Нажмите «Скачать» позже, чтобы загрузить остальное</string>
+  <string name="morphe_music_downloads_playlist_download_started">Загрузка %s в фоновом режиме</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Нет сетевого подключения</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Ожидание сети…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Остановлено после %1$s из %2$s. Нажмите «Скачать» еще раз, чтобы продолжить</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Информация</string>
@@ -625,6 +642,10 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_hide_played_summary">Скрывать строки текста песни выше текущей воспроизводимой строки</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Скрывать невоспроизведённые строки</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Скрывать строки текста ниже текущей</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Динамический фон</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Показывать размытый фон из обложки альбома за текстом песни</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Анимировать динамический фон</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Двигать фон во время воспроизведения и пульсировать в такт музыке, если у YouTube Music есть разрешение на использование микрофона. Выключите для статичного фона, чтобы сэкономить заряд батареи</string>
   <string name="morphe_music_lyrics_mediasession_title">Показывать текст MediaSession на экране блокировки</string>
   <string name="morphe_music_lyrics_mediasession_summary">Отображает текущую строку на экране блокировки, в Android Auto и при подключении по Bluetooth. Требуется Android 11 или более поздней версии</string>
   <string name="morphe_music_lyrics_miniplayer_title">Показывать тексты в мини-плеере</string>
@@ -723,7 +744,7 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_hide_info_title">Скрыть строку с указанием авторства</string>
   <string name="morphe_music_lyrics_hide_info_summary">Скрывать строку с указанием авторства под текстом</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Поменять местами перевод и романизацию</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ВКЛ помещает романзацию/транслитерацию под текст песни, а перевод над ним; ВЫКЛ оставляет романзацию/транслитерацию сверху и перевод снизу. Произношение, размещенное над каждым слогом, перемещается вместе с ним, переходя сверху над слогом под него</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Меняет порядок отображения перевода и романизации под текстом песни</string>
   <string name="morphe_music_lyrics_force_center_title">Всегда центрировать текст песни</string>
   <string name="morphe_music_lyrics_force_center_summary">ВКЛ ставит каждую строку в центр и игнорирует исходное выравнивание, включая дуэтные стороны; ВЫКЛ сохраняет выравнивание, запрошенное в тексте песни</string>
   <string name="morphe_music_lyrics_providers_keep_one">Хотя бы один провайдер должен быть включен</string>
@@ -731,6 +752,14 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_romanization_provider_title">Романизация или транслитерация</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Офлайн-словарь</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Список слов Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Офлайн-словарь</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Руби-скрипт</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хирагана (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Показать кнопку руби</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Нажмите, чтобы переключить отображение руби над текстом песни; удерживайте для переключения между хираганой и катаканой. Используются включенные провайдеры руби в указанном порядке</string>
+  <string name="morphe_music_lyrics_ruby_generating">Генерация руби…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Обнаруживать секции с помощью ИИ</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Используется только когда у провайдера нет меток секций, таких как Припев или Куплет, которые тогда обнаруживает ваша модель, совместимая с OpenAI. Редактирование строки также открывает её подсказку</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL конечной точки API (например, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

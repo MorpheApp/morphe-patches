@@ -141,8 +141,7 @@ public final class ExploreMenuFilter extends Filter {
 
         incognitoExploreButtonBuffer = new ByteArrayFilterGroup(
                 null,
-                "yt_outline_compass",
-                "yt_outline_experimental_compass"
+                "more_drawer"
         );
 
         final var moreDrawerButton = new StringFilterGroup(

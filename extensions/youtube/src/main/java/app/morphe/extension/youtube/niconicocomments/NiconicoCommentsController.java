@@ -185,12 +185,23 @@ public final class NiconicoCommentsController {
         try {
             final long nowMs = SystemClock.elapsedRealtime();
             final boolean seeked;
+            final boolean startedPlaying;
             synchronized (VIDEO_CLOCK_LOCK) {
                 final long predictedVideoTimeMs = getVideoTimeLocked(nowMs);
                 seeked = predictedVideoTimeMs >= 0
                         && Math.abs(videoTimeMs - predictedVideoTimeMs) > SEEK_THRESHOLD_MS;
+                // The video state is first reported when it changes, so it is unknown while
+                // the first video plays. Until then, a video time that moves forward means playing.
+                startedPlaying = !videoPlaying && VideoState.getCurrent() == null
+                        && sampledVideoTimeMs >= 0 && videoTimeMs > sampledVideoTimeMs;
+                if (startedPlaying) {
+                    videoPlaying = true;
+                }
                 sampledVideoTimeMs = videoTimeMs;
                 sampleElapsedRealtimeMs = nowMs;
+            }
+            if (startedPlaying) {
+                updateViewState();
             }
 
             NiconicoCommentsOverlayView view = overlayViewRef.get();
@@ -315,6 +326,8 @@ public final class NiconicoCommentsController {
         view.setCommentFontSizeSp(SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_FONT_SIZE));
         view.setCommentOpacityPercent(SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_OPACITY));
         view.setTravelDurationSeconds(SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_TRAVEL_DURATION));
+        view.setDisplayAreaPercent(SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_DISPLAY_AREA));
+        view.setMaxRefreshRate(SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_MAX_REFRESH_RATE));
         view.setOverlayActive(Settings.NICONICO_COMMENTS_SHOWN.get()
                 && playerVisible && !currentVideoId.isEmpty());
         view.setVideoPlaying(videoPlaying);

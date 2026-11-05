@@ -60,7 +60,7 @@ public final class MarkWatchedRequest {
         Utils.verifyOffMainThread();
 
         try {
-            byte[] requestBody = PlaylistRoutes.playbackTrackingBody(videoId);
+            byte[] requestBody = PlaylistRoutes.videoBody(videoId);
             HttpURLConnection connection = PlaylistRoutes.getConnection(
                     PlaylistRoutes.GET_PLAYBACK_TRACKING, authHeaders);
             connection.setFixedLengthStreamingMode(requestBody.length);

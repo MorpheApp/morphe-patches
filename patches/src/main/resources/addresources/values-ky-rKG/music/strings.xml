@@ -200,6 +200,24 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Жүктөлүү %s%%</string>
   <string name="morphe_music_downloads_complete">Жүктөө tamamдалды</string>
   <string name="morphe_music_downloads_failed">Жүктөө катасы</string>
+  <string name="morphe_music_downloads_playlist_download_title">Плейлистти жүктөө</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Тректер тизмеленип жатат…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Плейлисттин тректерин тизмелеүү мүмкүн болбоду</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Мурун жүктөлгөн: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"Бул плейлистте %1$s трек бар, алардын %2$s треги али жүктөлгөн эмес.
+
+Алар бирден жүктөлөт, бул узак убакытты алышы мүмкүн жана болжол менен %3$s бош орун талап кылынат"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Жүктөө</string>
+  <string name="morphe_music_downloads_playlist_download_progress">%2$s тректин %1$s-чиси жүктөлүүдө</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s жүктөлдү, %2$s жүктөлүп окуй алган жок</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Плейлистти жүктөө жүрүп жатат</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Сиздин аккаунтуңуз азырынча белгисиз. Бир азdan кийин кайра аракет кылып көрүңүз</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s тизмеленди, баары жүктөлгөн</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Плейлисттин бир бөлүгү гана тизмеленди. Калганын алуу үчүн кийинчерээк Жүктөө баскычын кайра басыңыз</string>
+  <string name="morphe_music_downloads_playlist_download_started">%s фондо жүктөлүп жатат</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Тармак менен байланыш жок</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Тармак күтүлүүдө…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s бөлүгүнүн %1$s жүктөлгөндөн кийин токтотулду. Улантуу үчүн Жүктөө баскычын кайра басыңыз</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Маалымат</string>
@@ -630,6 +648,10 @@ Steps:
   <string name="morphe_music_lyrics_hide_played_summary">Учурда ойноп жаткан саптан жогорудагы текст саптарын жашыруу</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Аткарылбаган тексттерди жашыруу</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Учурда ойноп жаткан саптан төмөндөгү текст саптарын жашыруу</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Динамикалык фон</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Лориканын артына альбомдун сүрөтүнөн жасалган бүдөмүк фонду көрсөтүү</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Динамикалык фонду анимациялоо</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Оynятылып жатканда фонду кыймылдаткыла жана эгер YouTube Music микрофонго уруксат алган болсо, аны музыка менен пульсациялагыла. Батареяны аз сарптоо үчүн тынч фонду колдонуп, аны өчүрүңүз</string>
   <string name="morphe_music_lyrics_mediasession_title">Бөгөттүү экранда MediaSession текстинин сөздөрүн көрсөтүү</string>
   <string name="morphe_music_lyrics_mediasession_summary">Учурдагы сапты кулпулоо экранында, Android Auto жана Bluetooth\'та көрсөтөт. Android 11 же андан жаңыраак версиясы талап кылынат</string>
   <string name="morphe_music_lyrics_miniplayer_title">Миниплеердин сөздөрүн көрсөтүү</string>
@@ -728,7 +750,7 @@ Steps:
   <string name="morphe_music_lyrics_hide_info_title">Кредиттик сапты жашыруу</string>
   <string name="morphe_music_lyrics_hide_info_summary">Тексттин төмөнүндө көрсөтүлгөн кредиттик сапты жашыруу</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Котормо менен романизацияны алмаштыруу</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">КЎНҮЛДӨ (ON) болсо, романизация же транслитерация ырдын текстинин төмөнүнө, ал эми котормосу жогоруна жайгашат; ӨЧҮРҮЛГӨН (OFF) болсо, романизация же транслитерация жогоруда, ал эми котормосу төмөндө калат. Ар бир муундун үстүнө коюлган окуу белгиси муун менен бирге жогорудан төмөн көчөтөт</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Лориканын төмөндөгү котормосунун жана романизациясынын көрсөтүлүш тартибин алмаштырат</string>
   <string name="morphe_music_lyrics_force_center_title">Текстти дайыма борборго жайгаштыруу</string>
   <string name="morphe_music_lyrics_force_center_summary">КҮЙГҮЗҮЛГАН болсо, ар бир сап ортодо жайгашат жана булактын тегилөөсү, анын ичинде дуэт тараптары эске алынбайт; ӨЧҮРҮЛГӨН болсо, ырдын текстинде көрсөтүлгөн тегилөө сакталат</string>
   <string name="morphe_music_lyrics_providers_keep_one">Кеминде бир камсыздоочу күйгүзүлгөн болушу керек</string>
@@ -736,6 +758,14 @@ Steps:
   <string name="morphe_music_lyrics_romanization_provider_title">Романизация же транслитерация</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Оффлайн сөздүк</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime сөздөр тизмеси</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Руби</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Офлайн сөздүк</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby скрипти</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хирагана (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Ruby баскычын көрсөтүү</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Тексттин үстүндөгү ruby окууларын күйгүзүү/өчүрүү үчүн басыңыз; хирагана жана катакананын ортосунда которуу үчүн узак басыңыз. Тизмеленген тартипте иштетилген ruby провайдерлерин колдонот</string>
+  <string name="morphe_music_lyrics_ruby_generating">Ruby жасалууда…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Бөлүмдөрдү AI жардамы менен аныктоо</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Провайдер Кайырма же Куплет сыяктуу бөлүмдөрдүн белгилерин жөнөтпөгөн учурда гана колдонулат, аларды сиздин OpenAI-га шайкеш моделиңиз аныктайт. Сапты түзөтүү анын промптын да ачат</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (мисалы, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

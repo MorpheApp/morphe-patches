@@ -11,7 +11,9 @@
 
 package app.morphe.extension.youtube.niconicocomments;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -19,8 +21,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.os.Build;
+import android.view.Display;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 
@@ -66,9 +70,17 @@ final class NiconicoCommentsOverlayView extends View {
     private String videoId = "";
     private boolean overlayActive;
     private boolean videoPlaying;
-    private boolean highFrameRateRequested;
+    @Nullable
+    private Window activityWindow;
+    /**
+     * The refresh rate the overlay last set on the window, or 0.
+     */
+    private static float windowRefreshRate;
+    private int maxRefreshRate = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_MAX_REFRESH_RATE);
+    private float requestedRefreshRate;
     private int fontSizeSp = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_FONT_SIZE);
     private int opacityPercent = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_OPACITY);
+    private int displayAreaPercent = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_DISPLAY_AREA);
     private float laneHeight;
     private float firstBaseline;
 
@@ -111,6 +123,9 @@ final class NiconicoCommentsOverlayView extends View {
         }
         overlayActive = active;
         setVisibility(active ? VISIBLE : GONE);
+        if (!active) {
+            setHighFrameRate(false);
+        }
         requestNextFrame();
     }
 
@@ -142,6 +157,17 @@ final class NiconicoCommentsOverlayView extends View {
         invalidate();
     }
 
+    void setDisplayAreaPercent(int nextDisplayAreaPercent) {
+        if (displayAreaPercent == nextDisplayAreaPercent) {
+            return;
+        }
+        displayAreaPercent = nextDisplayAreaPercent;
+        if (getHeight() > 0) {
+            schedule.redistributeLanes(getLaneCount());
+        }
+        invalidate();
+    }
+
     void setTravelDurationSeconds(int seconds) {
         final long durationMs = seconds * 1000L;
         if (schedule.getCommentDurationMs() == durationMs) {
@@ -149,6 +175,14 @@ final class NiconicoCommentsOverlayView extends View {
         }
         schedule.setCommentDurationMs(durationMs);
         invalidate();
+    }
+
+    void setMaxRefreshRate(int nextMaxRefreshRate) {
+        if (maxRefreshRate == nextMaxRefreshRate) {
+            return;
+        }
+        maxRefreshRate = nextMaxRefreshRate;
+        requestedRefreshRate = 0;
     }
 
     void addComments(List<NiconicoComment> incoming, long liveSpreadWindowMs) {
@@ -249,18 +283,81 @@ final class NiconicoCommentsOverlayView extends View {
     }
 
     /**
-     * The display can lower its refresh rate to match the video frame rate (often 30 Hz),
-     * which makes the scrolling comments choppy. Request a high refresh rate only while
-     * comments are moving across the screen.
+     * The display can lower its refresh rate to match the video frame rate (often 24 or 30 Hz),
+     * which makes the scrolling comments choppy. Request the highest refresh rate for the window,
+     * up to the max refresh rate setting, only while comments are moving across the screen.
+     * <p>
+     * A view frame rate category is not used, because some devices ignore it.
      */
     private void setHighFrameRate(boolean high) {
-        if (highFrameRateRequested == high || Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+        Window window = activityWindow;
+        if (window == null) {
             return;
         }
-        highFrameRateRequested = high;
-        setRequestedFrameRate(high
-                ? REQUESTED_FRAME_RATE_CATEGORY_HIGH
-                : REQUESTED_FRAME_RATE_CATEGORY_DEFAULT);
+        WindowManager.LayoutParams params = window.getAttributes();
+        // The App refresh rate setting uses a display mode, which takes priority.
+        if (params.preferredDisplayModeId != 0) {
+            return;
+        }
+        float rate = 0;
+        if (high) {
+            if (requestedRefreshRate == 0) {
+                requestedRefreshRate = findRefreshRate();
+            }
+            rate = requestedRefreshRate;
+        }
+        // Leave a refresh rate that was set by something else.
+        if (params.preferredRefreshRate == rate || params.preferredRefreshRate != windowRefreshRate) {
+            return;
+        }
+        params.preferredRefreshRate = rate;
+        windowRefreshRate = rate;
+        window.setAttributes(params);
+    }
+
+    /**
+     * @return The highest refresh rate of the current display resolution that is not above
+     *         the max refresh rate setting, or the lowest one if all are above it.
+     */
+    private float findRefreshRate() {
+        Display display = getDisplay();
+        if (display == null) {
+            return 0;
+        }
+        final float limit = maxRefreshRate >= Settings.NICONICO_COMMENTS_MAX_REFRESH_RATE_NO_LIMIT
+                ? Float.MAX_VALUE
+                : maxRefreshRate + 0.5f;
+        Display.Mode current = display.getMode();
+        float highest = 0;
+        float lowest = Float.MAX_VALUE;
+        for (Display.Mode mode : display.getSupportedModes()) {
+            if (mode.getPhysicalWidth() == current.getPhysicalWidth()
+                    && mode.getPhysicalHeight() == current.getPhysicalHeight()) {
+                float rate = mode.getRefreshRate();
+                lowest = Math.min(lowest, rate);
+                if (rate <= limit) {
+                    highest = Math.max(highest, rate);
+                }
+            }
+        }
+        return highest > 0 ? highest : lowest;
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        Context context = getContext();
+        while (context instanceof ContextWrapper && !(context instanceof Activity)) {
+            context = ((ContextWrapper) context).getBaseContext();
+        }
+        activityWindow = context instanceof Activity activity ? activity.getWindow() : null;
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        setHighFrameRate(false);
+        activityWindow = null;
     }
 
     private void applyFontSize() {
@@ -272,8 +369,12 @@ final class NiconicoCommentsOverlayView extends View {
         firstBaseline = -fontMetrics.ascent + (12 * density);
     }
 
+    /**
+     * @return The number of lanes that fit in the display area, which starts at the top of the player.
+     */
     private int getLaneCount() {
-        return Math.max(1, (int) ((getHeight() - firstBaseline) / laneHeight) + 1);
+        float height = getHeight() * displayAreaPercent / 100f;
+        return Math.max(1, (int) ((height - firstBaseline) / laneHeight) + 1);
     }
 
     private int applyOpacity(int color) {
