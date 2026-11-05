@@ -134,6 +134,18 @@ class QueueRuntimeBoundaryTest {
     @Test
     fun `whole queue Save transfers every fetched row to the native picker`() = withFixture("playlistSaveOperation")
 
+    @Test
+    fun `incoming Next retains primary paging and inserts after playback advances`() = withFixture("activePlaylistNext")
+
+    @Test
+    fun `incoming Last transfers pagination and resumes the original boundary request`() = withFixture("activePlaylistLast")
+
+    @Test
+    fun `playlist additions reject stale account and cleared queue completions`() = withFixture("activePlaylistLifetime")
+
+    @Test
+    fun `failed playlist addition preserves the current queue and restores its content`() = withFixture("activePlaylistFailure")
+
     // NativePlaylistQueuePatch depends on Android settings, scheduling and UI classes.
     // Isolate those boundaries while executing its actual compiled coordinator.
     private fun withFixture(scenario: String) {
@@ -968,7 +980,7 @@ class QueueRuntimeBoundaryTest {
                     static PageSource startIdlePlaylist() throws Exception {
                         app.morphe.extension.youtube.shared.PlayerType.current = app.morphe.extension.youtube.shared.PlayerType.NONE;
                         var source = new PageSource(); PlaylistPages.attach(source);
-                        Runnable action = NativePlaylistQueuePatch.getPlaylistQueueAction("WL");
+                        Runnable action = NativePlaylistQueuePatch.getPlaylistQueueAction("WL", false);
                         require(action != null, "Offer a collection action without playback");
                         action.run();
                         require(source.calls == 0 && LoadVideoPatch.opens == 0, "Fetch off main before opening playback");
@@ -1058,6 +1070,89 @@ class QueueRuntimeBoundaryTest {
                     }
                     public static void playlistWholeOperations() throws Exception { playlistWholeOperation(false); }
                     public static void playlistSaveOperation() throws Exception { playlistWholeOperation(true); }
+                    public static void activePlaylistNext() throws Exception {
+                        var source = startIdlePlaylist(); var controller = acceptIdlePlaylist();
+                        require(NativePlaylistQueuePatch.canQueuePlaylist(), "An owned active queue accepts whole playlists");
+                        NativePlaylistQueuePatch.onNativePlaylistScroll(controller.list);
+                        var menu = QueueFlyoutActions.completeMenu(PlaylistQueueRenderer.MenuRenderer.getDefaultInstance(),
+                            true, "Next", "Last", "WL");
+                        var next = QueueFlyoutActions.getPlaylistQueueAction(menu.getItems(0));
+                        require(next != null, "The bound item retains its collection and Next action");
+                        next.run();
+                        NativePlaylistQueuePatch.getPlaylistQueueAction("WL", true).run();
+                        require(source.calls == 1 && !controller.loading, "Next fetches off main while keeping the queue browsable");
+                        controller.playback.selection = 1; VideoInformation.id = "00000000001";
+                        Utils.drainBackground(); Utils.drain();
+                        var queue = (PlaylistQueue) field("queue").get(null);
+                        require(source.calls == 5 && queue.entries().size() == 10 && queue.totalCount() == 10,
+                            "Keep the primary page and fetch the entire incoming playlist; ignore a second busy action");
+                        require(queue.selectedIndex() == 1 && queue.entries().get(2).videoId().equals("00000000000")
+                                && queue.entries().get(7).videoId().equals("00000000002"),
+                            "Insert after the current occurrence at completion without replacing the live primary tail");
+                        require(queue.source() != null && LoadVideoPatch.opens == 1 && Logger.errors == 0,
+                            "Retain primary paging and native playback without reopening a video");
+                    }
+                    public static void activePlaylistLast() throws Exception {
+                        var source = startIdlePlaylist(); var controller = acceptIdlePlaylist();
+                        controller.playback.selection = 2; VideoInformation.id = "00000000002";
+                        Object request = new Object();
+                        require(NativePlaylistQueuePatch.deferPlaylistNavigation(controller.navigator, request),
+                            "Keep a native boundary request pending while Last resolves its source");
+                        Utils.drain();
+                        app.morphe.extension.youtube.patches.utils.FlyoutUtils.nativePlaylist = "WL";
+                        require(AddToQueuePatch.flyoutButtonClickLogic("QUEUE_PLAY_LAST", "abcdefghijk"),
+                            "The direct stock button must dispatch collection Last instead of its thumbnail video");
+                        NativePlaylistQueuePatch.onNativePlaylistScroll(controller.list);
+                        require(controller.loading, "Last shows the native loading frame while resolving the existing tail");
+                        Utils.drainBackground(); Utils.drain();
+                        var queue = (PlaylistQueue) field("queue").get(null);
+                        require(queue.entries().size() == 8 && queue.totalCount() == 10 && source.calls == 4,
+                            "Finish the old source, but fetch only the incoming first window");
+                        require(queue.entries().get(4).videoId().equals("00000000004")
+                                && queue.entries().get(5).videoId().equals("00000000000") && queue.source() != null,
+                            "The incoming source starts after the entire current queue");
+                        require(!controller.loading && controller.resumes == 1 && controller.resumed == request,
+                            "Restore content and replay the exact native request across the cursor handoff");
+                        NativePlaylistQueuePatch.onNativePlaylistScroll(controller.list);
+                        Utils.drainBackground(); Utils.drain();
+                        queue = (PlaylistQueue) field("queue").get(null);
+                        require(queue.entries().size() == 10 && source.calls == 5 && Logger.errors == 0,
+                            "Incoming pages resume only through the native scrolling trigger");
+                    }
+                    public static void activePlaylistLifetime() throws Exception {
+                        var source = startIdlePlaylist(); var controller = acceptIdlePlaylist();
+                        var before = (PlaylistQueue) field("queue").get(null);
+                        NativePlaylistQueuePatch.getPlaylistQueueAction("WL", true).run(); Utils.drainBackground();
+                        source.account = new PlaylistPage.Account("other", false); Utils.drain();
+                        require(field("queue").get(null) == before && !controller.loading,
+                            "An account switch discards the result and restores content");
+                        source.account = new PlaylistPage.Account("account", false);
+                        NativePlaylistQueuePatch.getPlaylistQueueAction("WL", false).run(); Utils.drainBackground();
+                        call("releaseNativeQueue"); Utils.drain();
+                        require(field("queue").get(null) == null && field("playlistAddition").get(null) == null,
+                            "Clear invalidates already delivered results without resurrecting a queue");
+                        require(LoadVideoPatch.opens == 1 && Logger.errors == 0, "No late result can start playback");
+                    }
+                    public static void activePlaylistFailure() throws Exception {
+                        startIdlePlaylist(); var controller = acceptIdlePlaylist();
+                        var before = (PlaylistQueue) field("queue").get(null);
+                        var failed = new PageSource() {
+                            public java.util.concurrent.Future<?> patch_requestPlaylistPage(String playlist, String video, int index,
+                                    String params, String entry, byte[] tracking, PlaylistPage.Account expected) {
+                                Utils.verifyOffMainThread();
+                                return video == null ? java.util.concurrent.CompletableFuture.completedFuture(window(0, 2, 0)) : null;
+                            }
+                        };
+                        PlaylistPages.attach(failed);
+                        for (boolean playLast : new boolean[] {false, true}) {
+                            NativePlaylistQueuePatch.getPlaylistQueueAction("WL", playLast).run();
+                            Utils.drainBackground(); Utils.drain();
+                            require(field("queue").get(null) == before && !controller.loading
+                                    && field("playlistAddition").get(null) == null,
+                                "A failed incoming or current tail must not publish a partial import or lose the old cursor");
+                        }
+                        require(Logger.errors == 2, "Report both fetch failures");
+                    }
                     static void playlistWholeOperation(boolean save) throws Exception {
                         var source = startIdlePlaylist(); var controller = acceptIdlePlaylist();
                         NativePlaylistQueuePatch.RepeatHeader header = (NativePlaylistQueuePatch.RepeatHeader)

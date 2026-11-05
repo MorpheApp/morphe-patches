@@ -396,7 +396,8 @@ public final class AddToQueuePatch {
         String playlistId = FlyoutUtils.getNativeQueuePlaylistId();
         Runnable action = null;
         if (!playlistId.isEmpty()) {
-            action = NativePlaylistQueuePatch.getPlaylistQueueAction(playlistId);
+            action = NativePlaylistQueuePatch.getPlaylistQueueAction(playlistId,
+                    queueButtonOriginalNames.get(1).equals(buttonName));
         } else if (!FlyoutUtils.isNativeQueuePlaylistMenu()) {
             action = NativePlaylistQueuePatch.getFlyoutQueueAction(videoId,
                     queueButtonOriginalNames.get(1).equals(buttonName));

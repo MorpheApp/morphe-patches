@@ -92,4 +92,55 @@ public class PlaylistQueuePagingTest {
         assertEquals(2, mix.entries().size());
         assertSame(metadata, mix.entries().get(1).metadata());
     }
+
+    @Test
+    public void incomingNextPreservesSelectionMetadataAndTheExistingSourcesUnloadedTail() {
+        var before = queue().playLast("abcdefghijk").select(1).withRepeatMode(PlaylistQueue.REPEAT_ALL);
+        var metadata = new VideoMetadata("ZYXWVUTSRQP", "Incoming", "Channel", "", "2:34", false, true);
+        var incoming = PlaylistQueue.fromMetadata(List.of(metadata, metadata));
+        var inserted = before.addPlaylist(incoming, false);
+        var completed = inserted.appendPage(page(5, 2, 3, 4), true);
+
+        assertEquals(List.of(id(0), id(1), "ZYXWVUTSRQP", "ZYXWVUTSRQP", id(2), id(3), id(4), "abcdefghijk"),
+                completed.entries().stream().map(PlaylistQueue.Entry::videoId).toList());
+        assertSame(before.currentEntry(), completed.currentEntry());
+        assertSame(metadata, completed.entries().get(2).metadata());
+        assertEquals(PlaylistQueue.REPEAT_ALL, completed.repeatMode());
+        assertEquals(8, completed.totalCount());
+    }
+
+    @Test
+    public void incomingLastTransfersPaginationAfterTheEntireExistingQueue() {
+        var before = new PlaylistQueue("abcdefghijk", "Playing").playLast("ZYXWVUTSRQP");
+        var incoming = queue();
+        var appended = before.addPlaylist(incoming, true);
+        assertEquals(7, appended.totalCount());
+        assertSame(incoming.source().origin(), appended.source().origin());
+        var completed = appended.appendPage(page(5, 2, 3, 4), true);
+
+        assertEquals(List.of("abcdefghijk", "ZYXWVUTSRQP", id(0), id(1), id(2), id(3), id(4)),
+                completed.entries().stream().map(PlaylistQueue.Entry::videoId).toList());
+        assertSame(before.currentEntry(), completed.currentEntry());
+        assertNull(completed.source());
+    }
+
+    @Test
+    public void finiteMixAppendsAfterTheExistingSourcesUnloadedTail() {
+        var before = queue();
+        var mix = PlaylistQueue.fromMetadata(List.of(
+                new VideoMetadata("abcdefghijk", "Mix", "Channel", "", "1:23", false, true)));
+        var appended = before.addPlaylist(mix, true);
+        var completed = appended.appendPage(page(5, 2, 3, 4), true);
+        assertEquals(List.of(id(0), id(1), id(2), id(3), id(4), "abcdefghijk"),
+                completed.entries().stream().map(PlaylistQueue.Entry::videoId).toList());
+        assertSame(before.source(), appended.source());
+    }
+
+    @Test
+    public void unfinishedIncomingSourceCannotReplaceAnExistingCursorOrInsertAsNext() {
+        var incoming = queue();
+        assertThrows(IllegalStateException.class, () -> queue().addPlaylist(incoming, true));
+        assertThrows(IllegalStateException.class,
+                () -> new PlaylistQueue("abcdefghijk", "Playing").addPlaylist(incoming, false));
+    }
 }

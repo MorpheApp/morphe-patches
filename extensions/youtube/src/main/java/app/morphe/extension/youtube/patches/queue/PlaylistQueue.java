@@ -166,15 +166,21 @@ public final class PlaylistQueue {
         return new PlaylistQueue(updated, selectedIndex, repeatMode, source, totalCount + 1);
     }
 
-    /** Append a fetched Mix batch atomically, retaining duplicate occurrences and selection. */
-    PlaylistQueue append(List<Entry> additions) {
-        var updated = new ArrayList<>(entries);
-        for (Entry entry : additions) {
-            requireVideoId(entry.videoId());
-            updated.add(entry);
+    /** Insert a fetched playlist without replacing current playback or its edited entries. */
+    PlaylistQueue addPlaylist(PlaylistQueue incoming, boolean playLast) {
+        if (incoming.source != null && (!playLast || source != null)) {
+            throw new IllegalStateException("Only one unfinished playlist can own pagination");
         }
-
-        return new PlaylistQueue(updated, selectedIndex, repeatMode, source, totalCount + additions.size());
+        final int position = playLast ? entries.size() : selectedIndex + 1;
+        var updated = new ArrayList<>(entries);
+        updated.addAll(position, incoming.entries);
+        Source following = source;
+        if (incoming.source != null) {
+            following = incoming.source.moveBoundary(position + incoming.source.boundary());
+        } else if (!playLast && source != null && position <= source.boundary()) {
+            following = source.moveBoundary(source.boundary() + incoming.entries.size());
+        }
+        return new PlaylistQueue(updated, selectedIndex, repeatMode, following, totalCount + incoming.totalCount);
     }
 
     /** Insert after the playing entry when an outside video becomes the active watch video. */
