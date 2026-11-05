@@ -34,6 +34,10 @@ public class ArtistNameNormalizerTest {
         assertEquals("daft-punk", ArtistNameNormalizer.toArtistId("Daft Punk -topic"));
     }
 
+    @Test public void displayNameKeepsTheCase() {
+        assertEquals("Daft Punk", ArtistNameNormalizer.toDisplayName("  Daft   Punk - Topic"));
+    }
+
     @Test public void blankNameGivesEmptyId() {
         assertEquals("", ArtistNameNormalizer.toArtistId("   "));
     }

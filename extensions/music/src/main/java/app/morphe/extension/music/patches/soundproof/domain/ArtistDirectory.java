@@ -35,6 +35,21 @@ public final class ArtistDirectory {
         return Optional.ofNullable(artistsById.get(artistId));
     }
 
+    /**
+     * @return A copy where the given artists replace the entries with the same id, or are added.
+     */
+    public ArtistDirectory withArtists(Collection<ArtistRecord> replacements) {
+        Objects.requireNonNull(replacements);
+        if (replacements.isEmpty()) {
+            return this;
+        }
+        Map<String, ArtistRecord> merged = new HashMap<>(artistsById);
+        for (ArtistRecord artist : replacements) {
+            merged.put(artist.id(), artist);
+        }
+        return new ArtistDirectory(merged.values());
+    }
+
     public int size() {
         return artistsById.size();
     }

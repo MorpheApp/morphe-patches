@@ -560,7 +560,7 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
     <string name="morphe_music_soundproof_screen_title" translatable="false">SoundProof</string>
     <string name="morphe_music_soundproof_screen_summary">Skip tracks of artists the community reported as AI</string>
     <string name="morphe_music_soundproof_show_button_title">Show SoundProof button</string>
-    <string name="morphe_music_soundproof_show_button_summary">Shows a button in the top bar of the player with the community votes for the current artist</string>
+    <string name="morphe_music_soundproof_show_button_summary">Shows a button in the top bar of the player to see and cast community votes for the current artist</string>
     <string name="morphe_music_soundproof_skip_ai_artists_title">Skip AI artists</string>
     <string name="morphe_music_soundproof_skip_ai_artists_summary">Automatically skips tracks whose artist reaches the AI threshold below</string>
     <string name="morphe_music_soundproof_toast_on_skip_title">Show skip notification</string>
@@ -586,13 +586,17 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
     <!-- Number of votes saying the artist is AI. Example: 41 AI -->
     <string name="morphe_music_soundproof_sheet_ai_votes">%1$d AI</string>
     <string name="morphe_music_soundproof_sheet_no_votes_title">No votes for this artist yet</string>
-    <string name="morphe_music_soundproof_sheet_no_votes_summary">This artist is not in the SoundProof database. The track plays normally.</string>
     <string name="morphe_music_soundproof_sheet_unavailable_title">SoundProof database not available yet</string>
     <string name="morphe_music_soundproof_sheet_unavailable_summary">It is downloaded in the background. No track is skipped until it is available.</string>
     <!-- 'SoundProof' must be kept untranslated -->
     <string name="morphe_music_soundproof_sheet_source">Community votes from the SoundProof database</string>
+    <string name="morphe_music_soundproof_sheet_vote_human">Human</string>
+    <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
+    <string name="morphe_music_soundproof_sheet_voting_locked">Voting is closed: a SoundProof moderator checked this artist</string>
+    <string name="morphe_music_soundproof_sheet_live_failed">Could not reach SoundProof. Votes are from the daily database, and voting is unavailable.</string>
+    <string name="morphe_music_soundproof_vote_failed_toast">SoundProof vote failed</string>
     <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
-    <string name="morphe_music_soundproof_about_summary">"Artist data comes from SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), downloaded once a day. Nothing about what you play is sent.
+    <string name="morphe_music_soundproof_about_summary">"Artist data comes from SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), downloaded once a day. Skipping sends nothing about what you play. Opening the SoundProof sheet sends the current artist name to the SoundProof server to show fresh votes and to vote. The server tells voters apart by IP address, so your vote can show differently on another network.
 
 The database is licensed under the ODC Open Database License (ODbL). Entries from Soul Over AI by xoundbyte are licensed under CC BY 4.0. Not affiliated with or endorsed by SoundProof or Soul Over AI."</string>
 

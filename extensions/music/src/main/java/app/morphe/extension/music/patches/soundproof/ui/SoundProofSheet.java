@@ -36,6 +36,7 @@ import android.widget.TextView;
 import java.util.Optional;
 
 import app.morphe.extension.music.patches.soundproof.SoundProofManager;
+import app.morphe.extension.music.patches.soundproof.SoundProofManager.LiveState;
 import app.morphe.extension.music.patches.soundproof.domain.ArtistAssessment;
 import app.morphe.extension.music.patches.soundproof.domain.ArtistRecord;
 import app.morphe.extension.music.patches.soundproof.domain.ArtistStatus;
@@ -44,8 +45,8 @@ import app.morphe.extension.music.patches.soundproof.domain.VoteMajority.VoteSid
 import app.morphe.extension.shared.Logger;
 
 /**
- * Bottom sheet with the community votes for the artist of the current track, and a switch for
- * the automatic skip.
+ * Bottom sheet with the community votes for the artist of the current track, the vote buttons,
+ * and a switch for the automatic skip.
  * <p>
  * It follows the current track while open. The player is always dark, so the colors are fixed.
  */
@@ -57,10 +58,12 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
     private static final int SECONDARY_TEXT_COLOR = 0xFFB3B3B3;
     private static final int TERTIARY_TEXT_COLOR = 0xFFA8A8A8;
     private static final int CHIP_TEXT_COLOR = 0xFFD0D0D0;
+    private static final int EMPTY_BAR_COLOR = 0xFF424242;
     private static final int SWITCH_OFF_THUMB_COLOR = 0xFFBDBDBD;
     private static final int SWITCH_OFF_TRACK_COLOR = 0xFF5F5F5F;
     private static final float SCRIM_DIM_AMOUNT = 0.6f;
     private static final int ICON_BACKGROUND_ALPHA = 41; // 16 %
+    private static final float DISABLED_ALPHA = 0.4f;
 
     /** Share of the sheet height a downward drag must reach to close it. */
     private static final float DISMISS_DRAG_FRACTION = 0.25f;
@@ -130,6 +133,8 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
         SoundProofManager manager = SoundProofManager.getInstance();
         // Does nothing when the switch was the one that changed.
         skipSwitch.setChecked(manager.isSkipEnabled());
+        // Also follows the track while the sheet is open.
+        manager.loadLiveStatus();
 
         ArtistAssessment assessment = manager.getCurrentAssessment();
         content.removeAllViews();
@@ -145,6 +150,10 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
             content.addView(votes(artist.get(), majority.get()), withTopMargin(dp(20)));
         } else {
             content.addView(emptyState(assessment.status()), withTopMargin(dp(20)));
+        }
+
+        if (manager.getVoteTarget().isPresent()) {
+            content.addView(voteSection(manager), withTopMargin(dp(20)));
         }
     }
 
@@ -238,10 +247,7 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
 
     private View proportionBar(ArtistRecord artist) {
         LinearLayout bar = horizontalLayout();
-        GradientDrawable clip = new GradientDrawable();
-        clip.setCornerRadius(dp(5));
-        clip.setColor(Color.TRANSPARENT);
-        bar.setBackground(clip);
+        bar.setBackground(barShape(Color.TRANSPARENT));
         bar.setClipToOutline(true);
 
         if (artist.humanVotes() > 0) {
@@ -254,6 +260,13 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
         return bar;
     }
 
+    private GradientDrawable barShape(int color) {
+        GradientDrawable shape = new GradientDrawable();
+        shape.setCornerRadius(dp(5));
+        shape.setColor(color);
+        return shape;
+    }
+
     private View emptyState(ArtistStatus status) {
         boolean isUnavailable = status == ArtistStatus.UNAVAILABLE;
         LinearLayout section = verticalLayout();
@@ -261,16 +274,63 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
                         ? "morphe_music_soundproof_sheet_unavailable_title"
                         : "morphe_music_soundproof_sheet_no_votes_title"),
                 16, PRIMARY_TEXT_COLOR, true));
-        // A listed artist can have no vote, it is then not "missing from the database".
-        if (isUnavailable || status == ArtistStatus.UNKNOWN) {
-            TextView body = text(str(isUnavailable
-                            ? "morphe_music_soundproof_sheet_unavailable_summary"
-                            : "morphe_music_soundproof_sheet_no_votes_summary"),
+        if (isUnavailable) {
+            TextView body = text(str("morphe_music_soundproof_sheet_unavailable_summary"),
                     14, SECONDARY_TEXT_COLOR, false);
             body.setLineSpacing(0, 1.3f);
             section.addView(body, withTopMargin(dp(8)));
+        } else {
+            // Empty bar where the proportion bar of a voted artist sits.
+            View emptyBar = new View(context);
+            emptyBar.setBackground(barShape(EMPTY_BAR_COLOR));
+            section.addView(emptyBar, barParams(dp(10), dp(10)));
         }
         return section;
+    }
+
+    private View voteSection(SoundProofManager manager) {
+        LiveState liveState = manager.getLiveState();
+        if (liveState == LiveState.FAILED) {
+            return text(str("morphe_music_soundproof_sheet_live_failed"), 13, SECONDARY_TEXT_COLOR, false);
+        }
+        if (manager.isVoteLocked()) {
+            return text(str("morphe_music_soundproof_sheet_voting_locked"), 13, SECONDARY_TEXT_COLOR, false);
+        }
+
+        // The current vote is only known once the server answered.
+        boolean isEnabled = liveState == LiveState.READY && !manager.isVoting();
+        Optional<VoteSide> myVote = manager.getMyVote();
+        LinearLayout buttons = horizontalLayout();
+        buttons.addView(voteButton(VoteSide.HUMAN, myVote, isEnabled), weighted(1, 0));
+        buttons.addView(voteButton(VoteSide.AI, myVote, isEnabled), weighted(1, dp(12)));
+        LinearLayout section = verticalLayout();
+        section.addView(buttons, barParams(0, dp(44)));
+        return section;
+    }
+
+    /**
+     * Tinted when not voted for. The side voted for gets a check mark and an outline, and a tap
+     * on it removes the vote.
+     */
+    private View voteButton(VoteSide side, Optional<VoteSide> myVote, boolean isEnabled) {
+        boolean isHuman = side == VoteSide.HUMAN;
+        int color = isHuman ? StatusAppearance.HUMAN_COLOR : StatusAppearance.AI_COLOR;
+        boolean isVoted = myVote.map(side::equals).orElse(false);
+        String label = str(isHuman ? "morphe_music_soundproof_sheet_vote_human" : "morphe_music_soundproof_sheet_vote_ai");
+
+        TextView button = text(isVoted ? "\u2713 " + label : label, 15, color, true);
+        button.setGravity(Gravity.CENTER);
+        GradientDrawable background = new GradientDrawable();
+        background.setCornerRadius(dp(22));
+        background.setColor(Color.argb(ICON_BACKGROUND_ALPHA, Color.red(color), Color.green(color), Color.blue(color)));
+        if (isVoted) {
+            background.setStroke(dp(2), color);
+        }
+        button.setBackground(background);
+        button.setEnabled(isEnabled);
+        button.setAlpha(isEnabled ? 1f : DISABLED_ALPHA);
+        button.setOnClickListener(view -> SoundProofManager.getInstance().vote(side));
+        return button;
     }
 
     private Switch skipSwitch() {

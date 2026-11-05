@@ -30,9 +30,15 @@ public final class ArtistNameNormalizer {
      * @return The SoundProof id of the artist, or an empty string when the name is blank.
      */
     public static String toArtistId(String artistName) {
+        return toDisplayName(artistName).toLowerCase(Locale.ROOT).replace(' ', '-');
+    }
+
+    /**
+     * @return The name without the topic channel suffix and with single spaces, case kept.
+     */
+    public static String toDisplayName(String artistName) {
         Objects.requireNonNull(artistName);
         String withoutTopicSuffix = TOPIC_CHANNEL_SUFFIX.matcher(artistName.trim()).replaceAll("");
-        String singleSpaced = WHITESPACE_RUN.matcher(withoutTopicSuffix.trim()).replaceAll(" ");
-        return singleSpaced.toLowerCase(Locale.ROOT).replace(' ', '-');
+        return WHITESPACE_RUN.matcher(withoutTopicSuffix.trim()).replaceAll(" ");
     }
 }
