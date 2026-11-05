@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.1.0-dev.10](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.1.0-dev.10)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;197 patches total
+> **[v2.1.0-dev.11](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.1.0-dev.11)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;198 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;112 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;113 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -54,7 +54,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Ask flyout menu](#ask-flyout-menu) | Adds a video menu entry that opens Ask for the video and summarizes the video. This patch works with YouTube 21.16.256 and newer. |  |
 | [Bypass image region restrictions](#bypass-image-region-restrictions) | Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries. |  |
 | [Bypass link redirects](#bypass-link-redirects) | Adds an option to bypass redirects and open the original link directly. |  |
-| [Captions](#captions) | Adds options to disable captions from being automatically enabled, select a preferred and a secondary caption language, add more auto-translate languages, and show captions in stable blocks and in picture-in-picture. |  |
+| [Captions](#captions) | Adds options to disable captions from being automatically enabled, select a preferred and a secondary caption language, add more auto-translate languages, and show captions in stable blocks and in picture-in-picture. Stable blocks and bilingual captions work with YouTube 21.15 and newer, on Android 10 and newer. |  |
 | [Change form factor](#change-form-factor) | Adds an option to change the UI appearance to a phone, tablet, or automotive device. |  |
 | [Change header](#change-header) | Adds an option to change the header logo in the top left corner of the app. | • Custom header logo |
 | [Change picture-in-picture actions](#change-picture-in-picture-actions) | Adds options to change the buttons shown in picture-in-picture mode. |  |
@@ -146,6 +146,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Shorts icon style](#shorts-icon-style) | Adds an option to change the style of the Shorts action button icons. | • Custom icons |
 | [Skip live Shorts](#skip-live-shorts) | Automatically skips live streams that appear in the Shorts feed. |  |
 | [Skip silence](#skip-silence) | Adds an option to automatically skip silent pauses in audio playback. |  |
+| [Snackbar](#snackbar) | Adds options to hide the snackbar or change its colors and shape. |  |
 | [SponsorBlock](#sponsorblock) | Adds options to enable and configure SponsorBlock, which can skip undesired video segments such as sponsored content. |  |
 | [Spoof app version](#spoof-app-version) | Adds an option to trick the app into thinking you are running an older version. |  |
 | [Spoof device dimensions](#spoof-device-dimensions) | Adds an option to spoof the device dimensions which can unlock higher video qualities. |  |
