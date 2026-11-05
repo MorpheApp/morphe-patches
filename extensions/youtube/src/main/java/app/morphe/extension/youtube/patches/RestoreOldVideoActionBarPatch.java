@@ -421,7 +421,7 @@ public class RestoreOldVideoActionBarPatch {
                     continue;
                 }
 
-                // The filters only hide the channel and its buttons inside the action bar.
+                // The settings that hide the channel and its Subscribe button are applied to the new channel bar here.
                 if (!Settings.HIDE_CHANNEL_PROFILE_BUTTON.get() && !Settings.HIDE_ACTION_BAR.get()) {
                     CompactChannelBarViewModel channel = CompactChannelBarViewModel.parseFrom(
                             actionBar.getActions(0).getContent().getSubscribeButton());

@@ -141,6 +141,7 @@ public final class VideoActionButtonsFilter extends Filter {
     private static final String MORE_BUTTON_PATH = "overflow_menu_button.e";
 
     private final StringFilterGroup actionBarGroup;
+    private final StringFilterGroup channelBarGroup;
     private final StringFilterGroup likeSubscribeGlow;
     private final StringFilterGroup moreButton;
     private final StringFilterGroup channelProfile;
@@ -153,7 +154,12 @@ public final class VideoActionButtonsFilter extends Filter {
                 null,
                 VIDEO_ACTION_BAR_PREFIX
         );
-        addIdentifierCallbacks(actionBarGroup);
+        // Some layouts show the channel in its own bar above the action bar.
+        channelBarGroup = new StringFilterGroup(
+                Settings.HIDE_CHANNEL_PROFILE_BUTTON,
+                COMPACT_CHANNEL_BAR_PREFIX
+        );
+        addIdentifierCallbacks(actionBarGroup, channelBarGroup);
 
 
         likeSubscribeGlow = new StringFilterGroup(
@@ -224,8 +230,9 @@ public final class VideoActionButtonsFilter extends Filter {
         } else if (matchedGroup == moreButton) {
             return true;
         } else if (matchedGroup == channelProfile || matchedGroup == subscribeButton) {
-            // Only the Subscribe and Join buttons next to the channel avatar in the action bar.
-            return Utils.startsWithAny(path, COMPACTIFY_VIDEO_ACTION_BAR_PREFIX, VIDEO_ACTION_BAR_PREFIX);
+            // Only the Subscribe and Join buttons next to the channel avatar in the action bar,
+            // or in the channel bar above it.
+            return Utils.startsWithAny(path, COMPACT_CHANNEL_BAR_PREFIX, COMPACTIFY_VIDEO_ACTION_BAR_PREFIX, VIDEO_ACTION_BAR_PREFIX);
         } else if (matchedGroup == actionBarGroup) {
             if (Settings.HIDE_ACTION_BAR.get() || accessibilityGroupList.check(accessibility).isFiltered()) {
                 return true;
