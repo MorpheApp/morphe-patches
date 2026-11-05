@@ -812,6 +812,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting NICONICO_COMMENTS_LIVE_STREAMS = new BooleanSetting("morphe_niconico_comments_live_streams", TRUE, parent(NICONICO_COMMENTS));
     public static final BooleanSetting NICONICO_COMMENTS_LIVE_PREMIERES = new BooleanSetting("morphe_niconico_comments_live_premieres", TRUE, parent(NICONICO_COMMENTS));
     public static final BooleanSetting NICONICO_COMMENTS_ENDED_PREMIERES = new BooleanSetting("morphe_niconico_comments_ended_premieres", TRUE, parent(NICONICO_COMMENTS));
+    public static final BooleanSetting NICONICO_COMMENTS_TIMED_COMMENTS = new BooleanSetting("morphe_niconico_comments_timed_comments", TRUE, parent(NICONICO_COMMENTS));
 
     // Voice over translation
     public static final BooleanSetting VOT_ENABLED = new BooleanSetting("morphe_vot_enabled", FALSE, true);
