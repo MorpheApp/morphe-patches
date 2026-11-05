@@ -13,6 +13,8 @@ import android.media.MediaMetadata;
 import android.media.session.MediaSession;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import app.morphe.extension.music.patches.soundproof.data.SoundProofDatabaseLoader;
@@ -35,15 +37,25 @@ import app.morphe.extension.shared.settings.IntegerSetting;
  */
 public final class SoundProofManager {
 
+    /**
+     * Told on the main thread whenever the assessment of the current track changes.
+     */
+    public interface AssessmentListener {
+        void onAssessmentChanged(ArtistAssessment assessment);
+    }
+
     private static final String STORAGE_DIRECTORY_NAME = "soundproof";
 
     private static SoundProofManager instance;
 
     private final SoundProofDatabaseLoader databaseLoader;
+    private final List<AssessmentListener> listeners = new ArrayList<>();
 
     /** Null until the first database is loaded. */
     private ArtistDirectory directory;
     private ArtistAssessment currentAssessment = ArtistAssessment.unavailable();
+    /** Artist credit of the current track, null until a track with a credit plays. */
+    private String currentCredit;
 
     private MediaSession currentSession;
     private MediaMetadata currentMetadata;
@@ -65,6 +77,23 @@ public final class SoundProofManager {
 
     public ArtistAssessment getCurrentAssessment() {
         return currentAssessment;
+    }
+
+    /**
+     * @return The artist credit of the current track, as shown by the app, or null.
+     */
+    public String getCurrentCredit() {
+        return currentCredit;
+    }
+
+    public void addListener(AssessmentListener listener) {
+        if (!listeners.contains(listener)) {
+            listeners.add(listener);
+        }
+    }
+
+    public void removeListener(AssessmentListener listener) {
+        listeners.remove(listener);
     }
 
     public void onSetMetadata(MediaSession session, MediaMetadata metadata) {
@@ -96,8 +125,10 @@ public final class SoundProofManager {
             return;
         }
         assessedTrackKey = trackKey;
+        currentCredit = credit;
         currentAssessment = assess(credit);
         Logger.printDebug(() -> "SoundProof: " + credit + " -> " + currentAssessment);
+        notifyListeners();
 
         if (currentAssessment.status() == ArtistStatus.AI && Settings.SOUNDPROOF_SKIP_AI_ARTISTS.get()) {
             skipCurrentTrack(currentAssessment.artist().get());
@@ -109,6 +140,17 @@ public final class SoundProofManager {
             return ArtistAssessment.unavailable();
         } else {
             return new ArtistAssessor(directory, policyFromSettings()).assess(credit);
+        }
+    }
+
+    private void notifyListeners() {
+        // Copied, since a listener can remove itself while being told.
+        for (AssessmentListener listener : new ArrayList<>(listeners)) {
+            try {
+                listener.onAssessmentChanged(currentAssessment);
+            } catch (Exception ex) {
+                Logger.printException(() -> "SoundProof listener failure", ex);
+            }
         }
     }
 
