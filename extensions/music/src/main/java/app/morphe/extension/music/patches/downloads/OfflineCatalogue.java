@@ -15,6 +15,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * The downloaded tracks, read from their folder off the main thread.
@@ -35,7 +37,7 @@ final class OfflineCatalogue {
     record Snapshot(long modified, int audioFiles, List<OfflineTrack> tracks) {
     }
 
-    /** Guards {@link #cached}. */
+    /** Guards {@link #cached} and the changes of {@link #videoIds}. */
     private static final Object lock = new Object();
 
     /**
@@ -46,6 +48,15 @@ final class OfflineCatalogue {
 
     @Nullable
     private static Snapshot cached;
+
+    /**
+     * The video IDs of the audio files of the folder, for the marks of the lists of the app. Each
+     * file is named after its ID, so listing the folder gives them in milliseconds, where reading
+     * the tracks takes seconds. Null until a mark first needs them, and again once tracks are
+     * deleted or the folder changed behind the app, so the folder is listed again.
+     */
+    @Nullable
+    private static volatile Set<String> videoIds;
 
     private OfflineCatalogue() {
     }
@@ -58,6 +69,35 @@ final class OfflineCatalogue {
     }
 
     /**
+     * @return If a track with this video ID is downloaded.
+     */
+    static boolean contains(String videoId) {
+        Set<String> ids = videoIds;
+        if (ids == null) {
+            // Under the lock of added(), so a track saved while the folder is listed is not lost.
+            synchronized (lock) {
+                ids = videoIds;
+                if (ids == null) {
+                    ids = ConcurrentHashMap.newKeySet();
+                    for (String name : audioNames(LocalDownloadManager.getDownloadDirectory())) {
+                        ids.add(OfflineTrack.videoIdOf(name));
+                    }
+                    videoIds = ids;
+                }
+            }
+        }
+        return ids.contains(videoId);
+    }
+
+    /** Lists a track just saved, if the folder was listed already. */
+    static void added(String videoId) {
+        synchronized (lock) {
+            Set<String> ids = videoIds;
+            if (ids != null) ids.add(videoId);
+        }
+    }
+
+    /**
      * Records the tracks left after a change made from the screen, so the next visit does not
      * show it undone. The folder is still read again on that visit.
      */
@@ -66,6 +106,7 @@ final class OfflineCatalogue {
                 Collections.unmodifiableList(new ArrayList<>(tracks)));
         synchronized (lock) {
             cached = snapshot;
+            videoIds = null;
         }
         return snapshot;
     }
@@ -73,6 +114,7 @@ final class OfflineCatalogue {
     static void clear() {
         synchronized (lock) {
             cached = null;
+            videoIds = null;
         }
     }
 
@@ -91,17 +133,15 @@ final class OfflineCatalogue {
 
         // Read before listing, so a file added while listing makes the next visit read again.
         final long modified = directory.lastModified();
-        String[] names = directory.list();
-        List<String> audioNames = new ArrayList<>();
-        if (names != null) {
-            for (String name : names) {
-                if (isAudioFile(name)) audioNames.add(name);
-            }
-        }
+        List<String> audioNames = audioNames(directory);
 
         if (before != null && before.modified() == modified
                 && before.audioFiles() == audioNames.size()) {
             return;
+        }
+        // The folder may have changed behind the app.
+        synchronized (lock) {
+            videoIds = null;
         }
 
         Map<String, OfflineTrack> known = new HashMap<>();
@@ -123,6 +163,17 @@ final class OfflineCatalogue {
             // A track deleted from the screen meanwhile may still be in what was read.
             if (cached == before) cached = snapshot;
         }
+    }
+
+    private static List<String> audioNames(File directory) {
+        String[] names = directory.list();
+        List<String> audioNames = new ArrayList<>();
+        if (names != null) {
+            for (String name : names) {
+                if (isAudioFile(name)) audioNames.add(name);
+            }
+        }
+        return audioNames;
     }
 
     /** By name only, since asking the file system about thousands of files takes seconds. */

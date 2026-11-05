@@ -232,6 +232,8 @@ They are downloaded one at a time, which can take a long time and needs about %3
     <string name="morphe_music_downloads_playlist_download_no_network">No network connection</string>
     <string name="morphe_music_downloads_playlist_download_waiting_network">Waiting for the network…</string>
     <string name="morphe_music_downloads_playlist_download_stopped">Stopped after %1$s of %2$s. Tap Download again to continue</string>
+    <string name="morphe_music_downloads_mark_title">Mark downloaded songs</string>
+    <string name="morphe_music_downloads_mark_summary">Songs already downloaded show a mark before their details in playlists, albums and search results</string>
 
     <!-- misc.settings.settingsPatch -->
 

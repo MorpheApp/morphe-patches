@@ -11,6 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.cloneParameters
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.music.misc.auth.authHookPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
@@ -24,9 +25,11 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
-import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
+import app.morphe.patches.shared.misc.textcomponent.hookSpannableStringResult
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
+import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.copyResources
 
 private val DOWNLOADS_PERMISSIONS = listOf(
     "android.permission.WAKE_LOCK",
@@ -55,6 +58,7 @@ private val downloadsResourcePatch = resourcePatch {
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     ListPreference("morphe_download_mode"),
+                    SwitchPreference("morphe_music_downloads_mark", summary = true),
                     SwitchPreference("morphe_external_downloader_menu", summary = true),
                     TextPreference(
                         "morphe_external_downloader_name",
@@ -62,6 +66,11 @@ private val downloadsResourcePatch = resourcePatch {
                     )
                 )
             )
+        )
+
+        copyResources(
+            "downloads",
+            ResourceGroup("drawable", "morphe_music_downloaded_mark.xml")
         )
 
         val manifest = get("AndroidManifest.xml")
@@ -98,6 +107,8 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/Downloa
 private const val SONG_MENU_FILTER = "Lapp/morphe/extension/music/patches/components/SongMenuFilter;"
 private const val EXTENSION_PROTOCOL_BUFFER_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/DownloadsPatch$ProtocolBufferFieldInterface;"
+private const val DOWNLOADED_MARK_FILTER =
+    "Lapp/morphe/extension/music/patches/components/DownloadedMarkFilter;"
 
 
 @Suppress("unused")
@@ -119,7 +130,10 @@ val downloadsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        hookSpannableString(EXTENSION_CLASS)
+        // Once the style runs are applied, so the downloaded mark does not shift them.
+        hookSpannableStringResult(EXTENSION_CLASS)
+        // Finds the song rows of the downloaded songs, for the mark of their details text.
+        addLithoFilter(DOWNLOADED_MARK_FILTER)
 
         // Finds the song of a menu, for the menu Download of accounts offered Premium.
         addLithoFilter(SONG_MENU_FILTER)
@@ -192,5 +206,44 @@ val downloadsPatch = bytecodePatch(
                 nop
             """
         )
+
+        // The rows of the playlists, of Liked music and of the song results are native views,
+        // bound by two presenters. One binds the renderer of the row, the other a wrapper of it.
+        val wrapperType = TwoColumnItemWrapperBindFingerprint.originalClassDef.type
+        val rendererField = TwoColumnItemWrapperBindFingerprint.instructionMatches[1].fieldReference
+        // The renderer is read as a buffer, like the commands.
+        mutableClassDefBy(rendererField.type).interfaces.add(EXTENSION_PROTOCOL_BUFFER_INTERFACE)
+
+        TwoColumnItemPresenterConstructorFingerprint.matchAll().forEach { presenter ->
+            val presenterType = presenter.originalClassDef.type
+            val detailsField = presenter.instructionMatches.last().fieldReference
+
+            twoColumnItemBindFingerprint(presenterType).let {
+                it.method.apply {
+                    val insertIndex = it.instructionMatches.last().index
+                    val detailsRegister = findFreeRegister(insertIndex)
+                    val rendererRegister = findFreeRegister(insertIndex, detailsRegister)
+                    val unwrapRenderer = if (presenterType == wrapperType) {
+                        """
+                            check-cast v$rendererRegister, ${rendererField.definingClass}
+                            iget-object v$rendererRegister, v$rendererRegister, $rendererField
+                        """
+                    } else {
+                        ""
+                    }
+
+                    addInstructionsAtControlFlowLabel(
+                        insertIndex,
+                        """
+                            move-object/from16 v$detailsRegister, p0
+                            iget-object v$detailsRegister, v$detailsRegister, $detailsField
+                            move-object/from16 v$rendererRegister, p2
+                            $unwrapRenderer
+                            invoke-static { v$detailsRegister, v$rendererRegister }, $EXTENSION_CLASS->onTwoColumnItemBound(Landroid/widget/TextView;Ljava/lang/Object;)V
+                        """
+                    )
+                }
+            }
+        }
     }
 }

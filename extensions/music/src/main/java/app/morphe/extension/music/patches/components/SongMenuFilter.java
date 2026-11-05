@@ -31,7 +31,7 @@ import app.morphe.extension.shared.patches.components.StringFilterGroup;
 @SuppressWarnings("unused")
 public final class SongMenuFilter extends Filter {
 
-    private static final int VIDEO_ID_LENGTH = 11;
+    static final int VIDEO_ID_LENGTH = 11;
 
     /**
      * Song of the last opened menu, or null if the menu is not for a song, such as an album.
@@ -110,7 +110,7 @@ public final class SongMenuFilter extends Filter {
         return null;
     }
 
-    private static boolean isVideoId(byte[] buffer, int start) {
+    static boolean isVideoId(byte[] buffer, int start) {
         for (int i = start, end = start + VIDEO_ID_LENGTH; i < end; i++) {
             final byte b = buffer[i];
             if (!((b >= 'a' && b <= 'z') || (b >= 'A' && b <= 'Z')

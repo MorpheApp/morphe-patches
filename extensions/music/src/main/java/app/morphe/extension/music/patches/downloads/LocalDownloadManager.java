@@ -166,7 +166,7 @@ public final class LocalDownloadManager {
                 || new File(directory, videoId + ".m4a").isFile();
     }
 
-    private static File getDownloadDirectory() {
+    static File getDownloadDirectory() {
         return new File(Utils.getContext().getExternalFilesDir(Environment.DIRECTORY_MUSIC), "Morphe");
     }
 
@@ -233,6 +233,7 @@ public final class LocalDownloadManager {
             }
             Logger.printDebug(() -> "Saved " + destination + " (" + destination.length() + " bytes)");
 
+            OfflineCatalogue.added(videoId);
             notifyTrackSaved();
             if (!quiet) Utils.showToastShort(str("morphe_music_downloads_complete"));
             return true;
