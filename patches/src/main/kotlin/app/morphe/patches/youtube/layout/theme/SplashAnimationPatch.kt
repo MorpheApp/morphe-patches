@@ -32,7 +32,7 @@ import app.morphe.patches.youtube.layout.seekbar.LottieSplashScreenFeatureFlagLe
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_32_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
@@ -184,8 +184,8 @@ val splashAnimationPatch = bytecodePatch {
                 }
             }
 
-            // The themed Rive animation of 21.32+ is used instead of the glow animation if it is on.
-            if (is_21_32_or_greater) {
+            // The themed Rive animation of 21.31+ is used instead of the glow animation if it is on.
+            if (is_21_31_or_greater) {
                 RiveThemedSplashScreenFeatureFlagFingerprint.matchAll().forEach {
                     it.method.apply {
                         findInstructionIndicesReversedOrThrow(
@@ -199,7 +199,7 @@ val splashAnimationPatch = bytecodePatch {
 
             // The match of the instruction that sets the view field.
             val (animationViewFingerprint, animationViewMatchIndex) =
-                if (is_21_32_or_greater && !is_21_35_or_greater) {
+                if (is_21_31_or_greater && !is_21_35_or_greater) {
                     RiveSplashScreenAnimationViewLegacyFingerprint to 3
                 } else {
                     RiveSplashScreenAnimationViewFingerprint to 4

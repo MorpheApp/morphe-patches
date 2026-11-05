@@ -460,12 +460,12 @@ internal fun captionDefaultSelectionFingerprint(enumType: String) = Fingerprint(
 
 /**
  * Native caption track handler, matched at the failure callback of its requests.
+ * The source file name of the handler is only in 21.20+.
  */
 internal object CaptionTrackHandlerErrorFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Exception;"),
     filters = listOf(
-        string("CabrSubtitleTrackHandler.java"),
         string("error retrieving subtitle"),
     )
 )
@@ -474,22 +474,25 @@ internal object CaptionTrackHandlerErrorFingerprint : Fingerprint(
  * Track selection of the native caption track handler, which creates the track request.
  *
  * @param requestTrack Caption track field of the track request.
+ * @param trackType Class of the caption track, which the field of the track request
+ *                  can declare as an Object.
  * @param subtitleManagerType Class of [SubtitleManagerFingerprint].
  */
 internal class CaptionTrackHandlerSelectFingerprint(
     requestTrack: FieldReference,
+    trackType: String,
     subtitleManagerType: String
 ) : Fingerprint(
     classFingerprint = CaptionTrackHandlerErrorFingerprint,
     returnType = "V",
-    parameters = listOf(requestTrack.type),
+    parameters = listOf(trackType),
     filters = listOf(
         // Loader of the track requests.
         fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this"),
         methodCall(
             definingClass = requestTrack.definingClass,
             name = "<init>",
-            parameters = listOf(requestTrack.type),
+            parameters = listOf(trackType),
             location = MatchAfterWithin(4)
         ),
         // Request of the loader, with the request and its callback.

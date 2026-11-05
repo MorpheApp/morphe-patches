@@ -20,7 +20,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.FeedBottomSheetFlyoutFingerprint
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_21_10_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneMutable
@@ -65,9 +65,9 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
     )
 
     execute {
-        if (!is_21_10_or_greater) {
+        if (!is_21_15_or_greater) {
             return@execute Logger.getLogger(this::class.java.name).warning(
-                "Stable caption blocks requires YouTube 21.10+"
+                "Stable caption blocks requires YouTube 21.15+"
             )
         }
 

@@ -135,7 +135,7 @@ internal object RiveSplashScreenAnimationViewFingerprint : Fingerprint(
 )
 
 /**
- * 21.32 - 21.34 sets the view that the Rive animation is drawn in,
+ * 21.31 - 21.34 sets the view that the Rive animation is drawn in,
  * with a resource id that was loaded earlier for another view.
  */
 internal object RiveSplashScreenAnimationViewLegacyFingerprint : Fingerprint(

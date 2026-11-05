@@ -58,7 +58,6 @@ import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -1179,8 +1178,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // https://github.com/MorpheApp/morphe-patches/issues/3453
         // The flag is read by different layouts, and each must use the same value,
         // otherwise other panels such as the comments show the bottom padding twice.
-        // Flag was removed in 21.26+.
-        if (is_21_11_or_greater && !is_21_26_or_greater) {
+        // Flag was removed in 21.25+.
+        if (is_21_11_or_greater && !is_21_25_or_greater) {
             EngagementPanelEdgeToEdgeFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,

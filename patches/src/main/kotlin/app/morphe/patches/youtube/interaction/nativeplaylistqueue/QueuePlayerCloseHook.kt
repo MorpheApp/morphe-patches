@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.matchSingle
 import app.morphe.patches.youtube.misc.loadvideo.MiniAppOpenYtContentCommandEndpointFingerprint
-import app.morphe.patches.youtube.misc.playservice.is_21_32_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -24,7 +24,7 @@ internal fun installQueuePlayerClose(
     val dismiss = MiniAppOpenYtContentCommandEndpointFingerprint
         .instructionMatches.last().methodReference
 
-    // Before 21.32 the fling has a second accepted-dismiss branch. Hook every user
+    // Before 21.31 the fling has a second accepted-dismiss branch. Hook every user
     // dismissal, preserving thresholds, branch targets and the native continuation,
     // without hooking programmatic closes that use the same dismiss method.
     val closes = listOf(queuePlayerCloseClickFingerprint(dismiss)) +
@@ -32,7 +32,7 @@ internal fun installQueuePlayerClose(
             queuePlayerControllerFlingFingerprint(dismiss),
             queuePlayerControllerReleaseFingerprint(dismiss)
         ) else listOf(
-            if (is_21_32_or_greater) queuePlayerCloseFlingFingerprint(dismiss)
+            if (is_21_31_or_greater) queuePlayerCloseFlingFingerprint(dismiss)
             else queuePlayerCloseFlingLegacyFingerprint(dismiss),
             queuePlayerCloseTouchFingerprint(dismiss)
         )

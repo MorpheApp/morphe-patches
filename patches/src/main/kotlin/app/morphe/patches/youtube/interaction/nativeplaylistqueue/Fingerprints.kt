@@ -1316,7 +1316,7 @@ internal fun queuePlayerCloseFlingFingerprint(dismiss: MethodReference) = Finger
     filters = listOf(methodCall(reference = dismiss))
 )
 
-/** Before 21.32 the fling has two separate dismissal branches. */
+/** Before 21.31 the fling has two separate dismissal branches. */
 internal fun queuePlayerCloseFlingLegacyFingerprint(dismiss: MethodReference) = Fingerprint(
     name = "onFling",
     parameters = listOf("Landroid/view/MotionEvent;", "Landroid/view/MotionEvent;", "F", "F"),
