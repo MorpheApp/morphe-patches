@@ -48,6 +48,19 @@ public class YouTubeChatSourceTest {
     }
 
     @Test
+    public void showsTimedCommentsWithoutAChatOrWithAChatReplayWhenTurnedOn() {
+        // No chat.
+        assertTrue(YouTubeChatSource.showsTimedComments(false, false, true, false));
+        assertFalse(YouTubeChatSource.showsTimedComments(false, false, false, true));
+        // Chat replay.
+        assertFalse(YouTubeChatSource.showsTimedComments(true, true, true, false));
+        assertTrue(YouTubeChatSource.showsTimedComments(true, true, true, true));
+        assertFalse(YouTubeChatSource.showsTimedComments(true, true, false, true));
+        // Live chat.
+        assertFalse(YouTubeChatSource.showsTimedComments(true, false, true, true));
+    }
+
+    @Test
     public void parsesInitialDataOfAJsonScriptElement() throws Exception {
         String html = "<script id=\"yt-initial-data\" type=\"application/json\" nonce=\"abc\">"
                 + "{\"contents\":{\"text\":\"value\"}}</script>"

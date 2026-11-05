@@ -11,6 +11,8 @@
 
 package app.morphe.extension.youtube.niconicocomments;
 
+import android.os.SystemClock;
+
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -24,6 +26,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -35,8 +38,7 @@ import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * Fetches the public live chat or chat replay of a video,
- * or the timed comments of a video without a chat.
+ * Fetches the public live chat or chat replay of a video, and its timed comments when they are shown.
  */
 final class YouTubeChatSource implements Runnable {
     interface Listener {
@@ -78,8 +80,9 @@ final class YouTubeChatSource implements Runnable {
      */
     private static final int TIMED_COMMENTS_MAX_PAGES_WITHOUT_ANY = 10;
     /**
-     * A seek back by more than this passes on the timed comments of the part that plays again.
-     * It is shorter than the replay seek threshold, so a double tap seek back also shows them again.
+     * On a video without a chat, a seek back by more than this passes on the timed comments of the
+     * part that plays again. It is shorter than the replay seek threshold, so a double tap seek back
+     * also shows them again.
      */
     private static final long TIMED_COMMENTS_SEEK_BACK_THRESHOLD_MS = 2_000;
 
@@ -214,6 +217,7 @@ final class YouTubeChatSource implements Runnable {
         boolean hasFetched = false;
         boolean done = false;
         int consecutiveFailures = 0;
+        TimedCommentFeed timedComments = new TimedCommentFeed(state);
 
         while (!stopped) {
             long videoTimeMs = listener.getVideoTimeMs();
@@ -225,18 +229,22 @@ final class YouTubeChatSource implements Runnable {
             boolean seeked = hasFetched
                     && lastVideoTimeMs >= 0
                     && Math.abs(videoTimeMs - lastVideoTimeMs) > REPLAY_SEEK_THRESHOLD_MS;
-            boolean outsideWindow = hasFetched
-                    && (videoTimeMs < windowStartMs
-                    || videoTimeMs > loadedUntilMs + REPLAY_SEEK_THRESHOLD_MS);
-            if (seeked || outsideWindow) {
+            boolean beforeWindow = hasFetched && videoTimeMs < windowStartMs;
+            // Such as where the chat is quiet.
+            boolean pastLoadedChat = hasFetched && videoTimeMs > loadedUntilMs + REPLAY_SEEK_THRESHOLD_MS;
+            if (seeked || beforeWindow || pastLoadedChat) {
                 continuation = initialContinuation;
                 windowStartMs = Math.max(0, videoTimeMs - REPLAY_START_MARGIN_MS);
                 loadedUntilMs = windowStartMs;
                 hasFetched = false;
                 done = false;
                 consecutiveFailures = 0;
-                clearSeenIds();
-                listener.onReplayReset(videoId);
+                // The shown comments still fit when playback only ran past the loaded chat.
+                if (seeked || beforeWindow) {
+                    clearSeenIds();
+                    timedComments.reset();
+                    listener.onReplayReset(videoId);
+                }
                 Logger.printDebug(() -> "Replay-chat window reset at " + videoTimeMs + " ms");
             }
             if (loadedUntilMs < 0) {
@@ -302,54 +310,30 @@ final class YouTubeChatSource implements Runnable {
                     break;
                 }
             }
+
+            // One page each update, so a long update is not taken for a seek.
+            timedComments.loadNextPage();
+            List<NiconicoComment> timedNearby = timedComments.takeNearby(videoTimeMs);
+            if (!timedNearby.isEmpty() && !stopped) {
+                listener.onComments(videoId, timedNearby, 0);
+            }
             sleep(REPLAY_LOOP_DELAY_MS);
         }
     }
 
     /**
-     * Loads the top comments one page at a time, and keeps passing on the timed comments
-     * near the video time. After a seek, the comments around the new time are passed on again.
+     * Keeps passing on the timed comments near the video time.
+     * After a seek, the comments around the new time are passed on again.
      */
     private void runTimedComments(PageState state) {
         Logger.printDebug(() -> "Timed comments source selected for " + videoId);
-        List<NiconicoComment> timedComments = new ArrayList<>();
-        String continuation = state.commentsContinuation;
-        int pages = 0;
-        int pagesWithoutTimedComments = 0;
-        int consecutiveFailures = 0;
+        TimedCommentFeed timedComments = new TimedCommentFeed(state);
         long lastVideoTimeMs = -1;
 
         while (!stopped) {
-            boolean loading = continuation != null
-                    && pages < TIMED_COMMENTS_MAX_PAGES
-                    && pagesWithoutTimedComments < TIMED_COMMENTS_MAX_PAGES_WITHOUT_ANY;
-            if (loading) {
-                try {
-                    TimedComments.Page page = fetchCommentsPage(state, continuation);
-                    consecutiveFailures = 0;
-                    pages++;
-                    pagesWithoutTimedComments = page.comments.isEmpty() ? pagesWithoutTimedComments + 1 : 0;
-                    timedComments.addAll(page.comments);
-                    continuation = page.continuation;
-
-                    int loadedPages = pages;
-                    int timedCount = timedComments.size();
-                    Logger.printDebug(() -> "Loaded comments page " + loadedPages
-                            + ", timed comments: " + timedCount);
-                } catch (Exception exception) {
-                    if (stopped) {
-                        return;
-                    }
-                    consecutiveFailures++;
-                    String message = "Comments request failed ("
-                            + consecutiveFailures + "/" + MAX_CONSECUTIVE_FAILURES + ")";
-                    Logger.printInfo(() -> message, exception);
-                    if (consecutiveFailures >= MAX_CONSECUTIVE_FAILURES) {
-                        continuation = null;
-                    } else {
-                        sleepBeforeRetry(consecutiveFailures);
-                    }
-                }
+            boolean loaded = timedComments.loadNextPage();
+            if (stopped) {
+                return;
             }
 
             long videoTimeMs = listener.getVideoTimeMs();
@@ -359,26 +343,106 @@ final class YouTubeChatSource implements Runnable {
                 long timeChangeMs = videoTimeMs - lastVideoTimeMs;
                 if (lastVideoTimeMs >= 0 && (timeChangeMs < -TIMED_COMMENTS_SEEK_BACK_THRESHOLD_MS
                         || timeChangeMs > REPLAY_SEEK_THRESHOLD_MS)) {
-                    clearSeenIds();
+                    timedComments.reset();
                     listener.onReplayReset(videoId);
                 }
                 lastVideoTimeMs = videoTimeMs;
 
-                List<NiconicoComment> nearby = new ArrayList<>();
-                for (NiconicoComment comment : timedComments) {
-                    if (comment.videoOffsetMs >= videoTimeMs - REPLAY_START_MARGIN_MS
-                            && comment.videoOffsetMs <= videoTimeMs + REPLAY_LOOKAHEAD_MS) {
-                        nearby.add(comment);
-                    }
-                }
-                nearby = deduplicate(nearby);
+                List<NiconicoComment> nearby = timedComments.takeNearby(videoTimeMs);
                 if (!nearby.isEmpty()) {
                     listener.onComments(videoId, nearby, 0);
                 }
             }
-            if (!loading) {
+            if (!loaded) {
                 sleep(REPLAY_LOOP_DELAY_MS);
             }
+        }
+    }
+
+    /**
+     * The timed comments of the top comments, loaded one page at a time.
+     */
+    private final class TimedCommentFeed {
+        private final PageState state;
+        private final List<NiconicoComment> comments = new ArrayList<>();
+        /**
+         * Kept apart from the chat ids, so a busy chat does not push them out and show them twice.
+         */
+        private final Set<String> passedOnIds = new HashSet<>();
+        @Nullable
+        private String continuation;
+        private int pages;
+        private int pagesWithoutTimedComments;
+        private int consecutiveFailures;
+        private long nextLoadTimeMs;
+
+        TimedCommentFeed(PageState state) {
+            this.state = state;
+            continuation = state.commentsContinuation;
+        }
+
+        /**
+         * Loads the next page, unless all pages are loaded or a failed request waits to be tried again.
+         *
+         * @return If a page was loaded.
+         */
+        boolean loadNextPage() {
+            if (continuation == null
+                    || pages >= TIMED_COMMENTS_MAX_PAGES
+                    || pagesWithoutTimedComments >= TIMED_COMMENTS_MAX_PAGES_WITHOUT_ANY
+                    || SystemClock.elapsedRealtime() < nextLoadTimeMs) {
+                return false;
+            }
+            try {
+                TimedComments.Page page = fetchCommentsPage(state, continuation);
+                consecutiveFailures = 0;
+                pages++;
+                pagesWithoutTimedComments = page.comments.isEmpty() ? pagesWithoutTimedComments + 1 : 0;
+                comments.addAll(page.comments);
+                continuation = page.continuation;
+
+                int loadedPages = pages;
+                int timedCount = comments.size();
+                Logger.printDebug(() -> "Loaded comments page " + loadedPages
+                        + ", timed comments: " + timedCount);
+                return true;
+            } catch (Exception exception) {
+                if (stopped) {
+                    return false;
+                }
+                consecutiveFailures++;
+                String message = "Comments request failed ("
+                        + consecutiveFailures + "/" + MAX_CONSECUTIVE_FAILURES + ")";
+                Logger.printInfo(() -> message, exception);
+                if (consecutiveFailures >= MAX_CONSECUTIVE_FAILURES) {
+                    continuation = null;
+                } else {
+                    nextLoadTimeMs = SystemClock.elapsedRealtime() + getRetryDelayMs(consecutiveFailures);
+                }
+                return false;
+            }
+        }
+
+        /**
+         * @return The timed comments near the video time that were not passed on yet.
+         */
+        List<NiconicoComment> takeNearby(long videoTimeMs) {
+            List<NiconicoComment> nearby = new ArrayList<>();
+            for (NiconicoComment comment : comments) {
+                if (comment.videoOffsetMs >= videoTimeMs - REPLAY_START_MARGIN_MS
+                        && comment.videoOffsetMs <= videoTimeMs + REPLAY_LOOKAHEAD_MS
+                        && passedOnIds.add(comment.id)) {
+                    nearby.add(comment);
+                }
+            }
+            return nearby;
+        }
+
+        /**
+         * Passes on the comments again, after the shown comments were cleared.
+         */
+        void reset() {
+            passedOnIds.clear();
         }
     }
 
@@ -484,11 +548,14 @@ final class YouTubeChatSource implements Runnable {
             }
         }
 
-        // A video without a chat shows its timed comments instead.
-        String commentsContinuation =
-                continuation == null && Settings.NICONICO_COMMENTS_TIMED_COMMENTS.get()
-                        ? TimedComments.findCommentsContinuation(initialData)
-                        : null;
+        String commentsContinuation = showsTimedComments(
+                continuation != null,
+                replay,
+                Settings.NICONICO_COMMENTS_TIMED_COMMENTS.get(),
+                Settings.NICONICO_COMMENTS_TIMED_COMMENTS_WITH_REPLAY.get()
+        )
+                ? TimedComments.findCommentsContinuation(initialData)
+                : null;
         JSONObject videoDetails = getObjectPath(playerResponse, "videoDetails");
         long videoLengthMs = videoDetails == null ? 0 : videoDetails.optLong("lengthSeconds") * 1000;
 
@@ -502,6 +569,15 @@ final class YouTubeChatSource implements Runnable {
                 commentsContinuation,
                 videoLengthMs
         );
+    }
+
+    /**
+     * A video without a chat shows its timed comments instead, and a chat replay can show them too.
+     * A live chat does not, because its video time is not the time of the comments.
+     */
+    static boolean showsTimedComments(boolean hasChat, boolean replay,
+                                      boolean timedComments, boolean timedCommentsWithReplay) {
+        return timedComments && (!hasChat || (replay && timedCommentsWithReplay));
     }
 
     private Continuation fetchAllMessagesReplayContinuation(String continuation)
@@ -1182,7 +1258,11 @@ final class YouTubeChatSource implements Runnable {
     }
 
     private void sleepBeforeRetry(int attempt) {
-        sleep(Math.min(15_000L, attempt * 3_000L));
+        sleep(getRetryDelayMs(attempt));
+    }
+
+    private static long getRetryDelayMs(int attempt) {
+        return Math.min(15_000L, attempt * 3_000L);
     }
 
     private void sleep(long milliseconds) {
@@ -1241,7 +1321,7 @@ final class YouTubeChatSource implements Runnable {
         final boolean replay;
         final VideoType videoType;
         /**
-         * Comments section of a video without a chat, if timed comments are shown.
+         * Comments section, if timed comments are shown.
          */
         @Nullable
         final String commentsContinuation;
