@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">إخفاء أزرار القناة</string>
   <string name="morphe_hide_channel_buttons_summary">يخفي الأزرار مثل الاشتراك، الاطّلاع على القناة، المنتدى، و YouTube Music من ملفات القناة في نتائج البحث</string>
   <string name="morphe_hide_community_posts_title">إخفاء مشاركات المجتمع</string>
+  <string name="morphe_post_buttons_screen_title">أزرار المنشور</string>
+  <string name="morphe_post_buttons_screen_summary">اختر تخطيط الأزرار أسفل منشورات المجتمع والأزرار التي ترغب في إخفائها</string>
+  <string name="morphe_post_buttons_layout_title">تخطيط أزرار المنشور</string>
+  <string name="morphe_post_buttons_layout_entry_1">الخادم</string>
+  <string name="morphe_post_buttons_layout_entry_2">المفروض</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">إخفاء أزرار أعجبني ولم يعجبني</string>
+  <string name="morphe_hide_post_dislike_button_title">إخفاء زر لم يعجبني</string>
+  <string name="morphe_hide_post_dislike_button_summary">مع التخطيط المفروض، يُترك فراغ الزر</string>
+  <string name="morphe_hide_post_comment_button_title">إخفاء زر التعليق</string>
+  <string name="morphe_hide_post_comments_preview_title">إخفاء تعليقات المعاينة</string>
+  <string name="morphe_hide_post_comments_preview_summary">يُخفي معاينة التعليقات أسفل المنشورات</string>
+  <string name="morphe_hide_post_share_button_title">إخفاء زر مشاركة</string>
+  <string name="morphe_hide_post_share_button_summary">زر تنزيل صور المنشور مرسوم بجانب زر مشاركة، لذلك فهو مخفي أيضًا</string>
   <string name="morphe_hide_compact_banner_title">إخفاء اللافتات المصغرة</string>
   <string name="morphe_hide_compact_banner_summary">يخفي اللافتات المدمجة والمسافات بين بعض المكونات</string>
   <string name="morphe_hide_expandable_card_title">بطاقات قابلة للتوسع أسفل الفيديوهات</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">يخفي التلميحات التي تظهر أثناء إيماءات مشغل الفيديو، مثل \'اسحب للأعلى للتقديم أو الترجيع بدقة\'، \'ارفع اصبعك عن الشاشة للإلغاء\' و \'2x\'</string>
-  <string name="morphe_hide_snackbar_title">إخفاء شريط التنبيهات السريعة</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">إخفاء إرشادات المشتركين</string>
   <string name="morphe_hide_sync_button_title">إخفاء زر \'مزامنة مع الفيديو\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">إخفاء التدرج عند الضغط مع الاستمرار</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">تم إرسال عدد كبير جدًا من البلاغات، حاول مرة أخرى لاحقًا</string>
   <string name="morphe_aislist_submit_failed_rejected">رفض AiSList البلاغ</string>
   <string name="morphe_aislist_submit_failed">فشل الإبلاغ، تحقق من اتصالك</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">شريط التنبيه السريع</string>
+  <string name="morphe_snackbar_screen_summary">إخفاء أشرطة التنبيه السريعة أو تغيير ألوانها وشكلها</string>
+  <string name="morphe_hide_snackbar_title">إخفاء شريط التنبيه السريع</string>
+  <string name="morphe_custom_snackbar_theme_title">شريط تنبيه سريع مخصص</string>
+  <string name="morphe_custom_snackbar_theme_summary">تستخدم أشرطة التنبيه السريعة الألوان ونصف قطر الزوايا الموضحة أدناه بدلًا من ألوان المظهر المقابلة</string>
+  <string name="morphe_custom_snackbar_color_dark_title">لون خلفية المظهر الداكن</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">لون خلفية أشرطة التنبيه السريعة في الوضع الداكن. يكون النص أسود أو أبيض، أيهما أسهل للقراءة</string>
+  <string name="morphe_custom_snackbar_color_light_title">لون خلفية المظهر الفاتح</string>
+  <string name="morphe_custom_snackbar_color_light_summary">لون خلفية أشرطة التنبيه السريعة في الوضع الفاتح. يكون النص أسود أو أبيض، أيهما أسهل للقراءة</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">لون الإطار</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">لون الإطار حول أشرطة التنبيه السريعة. اللون الشفاف لا يظهر إطارًا</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">تقوس زاوية الأركان</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">نصف قطر الزوايا لأشرطة التنبيه السريعة بوحدة dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">القائمة المسموح بها لإعلانات القناة</string>
   <string name="morphe_ads_channel_whitelist_summary">الفيديوهات من القنوات المدرجة في القائمة المسموح بها تُعرض مع الإعلانات، لذا يُدفع لمبدعيها. الإعلانات تبقى محجوبة على باقي القنوات</string>
@@ -775,10 +801,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_left_zone_title">إيماءة التمرير لليسار</string>
   <string name="morphe_swipe_right_zone_title">إيماءة التمرير لليمين</string>
   <string name="morphe_swipe_top_zone_title">إيماءة التمرير للأعلى</string>
-  <string name="morphe_swipe_seek_title">اسحب للبحث</string>
-  <string name="morphe_swipe_seek_summary">اسحب لليسار أو اليمين في مشغل ملء الشاشة لتحريك شريط البحث، ثم حرر للتنقل</string>
-  <string name="morphe_swipe_seek_sensitivity_title">حساسية تمرير البحث</string>
-  <string name="morphe_swipe_seek_sensitivity_summary">مدى تحرك شريط البحث عند كل تمريرة</string>
+  <string name="morphe_swipe_seek_title">التمرير للتنقل</string>
+  <string name="morphe_swipe_seek_summary">مرّر لليسار أو اليمين في مشغل ملء الشاشة لتحريك شريط التقدم، ثم حرر للتنقل</string>
+  <string name="morphe_swipe_seek_sensitivity_title">حساسية تمرير التنقل</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">مدى تحرك شريط التقدم عند كل تمريرة</string>
   <string name="morphe_swipe_zone_width_title">عرض منطقة اليسار/اليمين</string>
   <string name="morphe_swipe_zone_width_summary">نسبة كل حافة من حواف الشاشة المخصصة لإيماءات التمرير لليسار واليمين (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">السطوع</string>
@@ -967,7 +993,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
 
 للوصول إلى الإعدادات، قم بتمكين زر الإعدادات عبر عام ← شريط الأدوات ← عرض زر الإعدادات"</string>
   <string name="morphe_narrow_navigation_buttons_title">تمكين أزرار التنقل الضيقة</string>
-  <string name="morphe_narrow_navigation_buttons_summary">يقلل المسافة الأفقية بين الأزرار</string>
+  <string name="morphe_narrow_navigation_buttons_summary">يقلل المسافة الأفقية بين الأزرار. غير متاح مع شريط التنقل الزجاجي، الذي له مسافة أزرار خاصة به</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">تعطيل أزرار التنقل بدون تسميات</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">يعرض أزرار التنقل مع تسميات، إذا أرسلها YouTube بدون تسميات</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">تعطيل علامات تبويب التنقل في شريط الأدوات</string>
@@ -986,6 +1012,12 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_navigation_bar_glass_summary">يظهر شريط التنقل ككبسولة عائمة ومستديرة وشفافة. غير متوفر مع نمط شريط التنقل المعتم</string>
   <string name="morphe_navigation_bar_glass_opacity_title">شفافية الزجاج</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ضبط مستوى الشفافية لشريط التنقل الزجاجي (0 شفاف، 100 معتم)</string>
+  <string name="morphe_navigation_bar_glass_size_title">حجم شريط التنقل الزجاجي</string>
+  <string name="morphe_navigation_bar_glass_size_summary">ضبط ارتفاع, عرض وتباعد أزرار شريط التنقل الزجاجي، مع المعاينة. يتم إخفاء الأزرار التي لا تتناسب مع عرض الشاشة</string>
+  <string name="morphe_navigation_bar_glass_size_height">الارتفاع</string>
+  <string name="morphe_navigation_bar_glass_size_width">أقصى عرض</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">تباعد الزر</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">الأزرار المعروضة: %1$d من %2$d</string>
   <string name="morphe_toolbar_screen_title">شريط الأدوات</string>
   <string name="morphe_toolbar_screen_summary">اختر المكونات التي تظهر في شريط الأدوات</string>
   <string name="morphe_hide_toolbar_chat_button_title">إخفاء زر دردشة</string>
@@ -1688,6 +1720,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_discovery_unavailable">لم يتم العثور على قائمة تشغيل</string>
   <string name="morphe_series_tracker_no_available_episodes">لا توجد حلقات متاحة</string>
   <string name="morphe_series_tracker_hide_watched">إخفاء التي تمت مشاهدتها</string>
+  <string name="morphe_series_tracker_watched_on_advance">تحديد كـ تمت مشاهدتها عند الانتقال إلى الحلقة التالية</string>
   <string name="morphe_series_tracker_watch_previous">وضع الحلقات السابقة كـ تمت مشاهدتها</string>
   <string name="morphe_series_tracker_order_starts_with">يبدأ بـ: %1$s</string>
   <string name="morphe_series_tracker_episode_order">ترتيب الحلقات</string>
@@ -1740,9 +1773,13 @@ AVC (H.264)
   <string name="morphe_niconico_comments_opacity_summary">شفافية نص التعليقات والخلفيات</string>
   <string name="morphe_niconico_comments_travel_duration_title">مدة الانتقال</string>
   <string name="morphe_niconico_comments_travel_duration_summary">عدد الثواني التي تستغرقها التعليقات لعبور الشاشة. القيم الأقل تجعلها تتحرك بشكل أسرع</string>
+  <string name="morphe_niconico_comments_display_area_title">مساحة العرض</string>
+  <string name="morphe_niconico_comments_display_area_summary">كم من مساحة مشغل الفيديو تستخدمه التعليقات من الأعلى. القيم الأقل تحافظ على وضوح الجزء السفلي من الفيديو</string>
   <string name="morphe_niconico_comments_max_length_title">أقصى طول للتعليق</string>
   <string name="morphe_niconico_comments_max_length_summary">يخفي التعليقات التي تحتوي على عدد أحرف أكثر من هذا الحد. يتم احتساب كل رمز تعبيري كحرف واحد</string>
   <string name="morphe_niconico_comments_max_length_no_limit">بلا حدود</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">أقصى معدل تحديث</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">أعلى معدل تحديث للعرض يُستخدم أثناء تحرك التعليقات. القيم الأقل تستهلك بطارية أقل</string>
   <string name="morphe_niconico_comments_live_streams_title">عرض على البثوث المباشرة</string>
   <string name="morphe_niconico_comments_live_streams_summary">البثوث المباشرة وردودها</string>
   <string name="morphe_niconico_comments_live_premieres_title">عرض على عروض البث الأولى</string>

@@ -70,6 +70,19 @@ Liburutegi fitxa erakusten da
   <string name="morphe_hide_channel_buttons_title">Kanalen botoiak ezkutu</string>
   <string name="morphe_hide_channel_buttons_summary">Bilaketa emaitzetako kanalen profiluekin lotutako botoiak ezkutatzen ditu, adibidez: Haraidutu, Kanala Ikusi, Komunitatea eta YouTube Music</string>
   <string name="morphe_hide_community_posts_title">Ezkutatu komunitate-postak</string>
+  <string name="morphe_post_buttons_screen_title">Postuen botoiak</string>
+  <string name="morphe_post_buttons_screen_summary">Aukeratu komunitate-postuen azpian egongo diren botoien diseinua eta zein botoiak ezkutatu</string>
+  <string name="morphe_post_buttons_layout_title">Post botoien diseinuak</string>
+  <string name="morphe_post_buttons_layout_entry_1">Zerbitzaria</string>
+  <string name="morphe_post_buttons_layout_entry_2">Behartuta</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Ezagutarazi eta ezagutarazi ez botoiak ezkutatu</string>
+  <string name="morphe_hide_post_dislike_button_title">Ezagutarazi ez botoia ezkutatu</string>
+  <string name="morphe_hide_post_dislike_button_summary">Behartuta diseinuarekin, botoiaren espazioa huts geratzen da</string>
+  <string name="morphe_hide_post_comment_button_title">Komentario botoia ezkutatu</string>
+  <string name="morphe_hide_post_comments_preview_title">Ezkutatu komentarioen aurbizura</string>
+  <string name="morphe_hide_post_comments_preview_summary">Postuen beheko komentarioen aurbizura ezkutatzen du</string>
+  <string name="morphe_hide_post_share_button_title">Partekatu botoia ezkutatu</string>
+  <string name="morphe_hide_post_share_button_summary">Postu-irudien deskarga botoia partekatu botoiaren ondoan marrazten da, beraz, hura ere ezkutatzen da</string>
   <string name="morphe_hide_compact_banner_title">Ezkutatu banner konpaktuak</string>
   <string name="morphe_hide_compact_banner_summary">Banner konprimatuak eta komponentziaren arteko espazioa ezkutatzen ditu</string>
   <string name="morphe_hide_expandable_card_title">Bideoen azpian dauden txartel zabagarriak</string>
@@ -160,7 +173,6 @@ Liburutegi fitxa erakusten da
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Ezkutatzen ditu seinaleak playera gestures egitean agertzen direnak, adibidez, \'Gora irrastu bilaketa zehatzagoa egiteko\', \'Utzi bertan utzteko\' eta \'2x\'</string>
-  <string name="morphe_hide_snackbar_title">Ezkutatu snackbarra</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ezkutatu iznatzaileen gida</string>
   <string name="morphe_hide_sync_button_title">Ezkututsi \'Bideoarekin sinkronizatu\' botoia</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Sakatu eta eutsi gradientea ezkutatu</string>
@@ -387,6 +399,20 @@ Txostenak publikoak dira eta kanal bat zerrendara gehitu aurretik berrikusi egit
   <string name="morphe_aislist_submit_failed_rate_limit">Saldarazpen gehiegi bidali dira, geroago saiatu berriro</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList-ek saldarazpena bazatu du</string>
   <string name="morphe_aislist_submit_failed">Saldarazpena huts egin du, egiaztatu konexioa</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Ezkutatu snackbarrak edo alda mosaics koloreak eta forma</string>
+  <string name="morphe_hide_snackbar_title">Ezkutatu snackbarra</string>
+  <string name="morphe_custom_snackbar_theme_title">Snackbar pertsonalizatua</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbarrek beheko koloreak eta gainezko erradiusa erabiltzen dituzte kontrako gaiako koloreen ordez</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Gaiu iluneko fondo kolorea</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Gaiu iluneko snackbarren fondo kolorea. Testua beltza edo zuria izango da, errazago irakurtzen denaren arabera</string>
+  <string name="morphe_custom_snackbar_color_light_title">Gaiu argiko fondo kolorea</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Gaiu argiko snackbarren fondo kolorea. Testua beltza edo zuria izango da, errazago irakurtzen denaren arabera</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Muga kolorea</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Snackbarren inguruko mugaren kolorea. Kolore transparentak mugarik ezaukaritzen du</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Gainezko erradiusa</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Snackbarren gainezko erradiusa dp-tan</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Kanalen iragarki-zscalerra</string>
   <string name="morphe_ads_channel_whitelist_summary">Whitelistatutako kanalen bideoak iragarkiekin joko dira, sortzaileak ordaindu ditzaten. Beste 모든 kanaletan iragarkiak blokeatuta jarraituko dira</string>
@@ -964,7 +990,7 @@ Hona konponduz, aktibu 'Bideo-emisioak imitatzea' eta alda 'Beherako bezeroa' 'T
 
 Konfiguraziora sartzeko, aktibatu Konfigurazio botoia Orokorra → Barra nagusia → Erakutsi Konfigurazio botoia bidez"</string>
   <string name="morphe_narrow_navigation_buttons_title">Gaitu nabigazio botoi estuagoak</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Botoien artekodistantzia horizontala murrizten du</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Butoiak arteko espazio horizontala murrizten du. Ez dago eskuragarri nabigazio barra beiratuarekin, batez gero horrek bere botoi-espazioa dauka</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Labelik gabeko nabigazio botoiak desaktibatu</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTube-k labelik gabe bidaltzen baditu, nabigazio botoiak labelekin erakusten ditu</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Desaktibu barrako nabigazio-txarkeak</string>
@@ -983,6 +1009,12 @@ Konfiguraziora sartzeko, aktibatu Konfigurazio botoia Orokorra → Barra nagusia
   <string name="morphe_navigation_bar_glass_summary">Nabigazio barraFLOATING, birbildu eta transluzente kapsulari bezala erakusten du. Ez dago eskuragarri Nabigazio barra opa estiloarekin</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Itsasaren opakoitasuna</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Doitu itsas nabigazio barraren transparenzia maila (0 garduna da, 100 opa)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Nabigazio-barra beiramentuaren neurria</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Doitu nabigazio-barra beiramentuaren altitudea, zabalera eta botoien arteko espazioa, aurbitziarekin. Pantailaren zabaleran kabezからない botoiak ezkutatzen dira</string>
+  <string name="morphe_navigation_bar_glass_size_height">Altitudea</string>
+  <string name="morphe_navigation_bar_glass_size_width">Zabalera maximoa</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Botoien arteko espazioa</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Botoiak erakutsita: %1$d %2$d-tik</string>
   <string name="morphe_toolbar_screen_title">Barra tresnak</string>
   <string name="morphe_toolbar_screen_summary">Aukeratu toolbarran zein komponentak agerti nahi diren</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ezkutatu Txat botoia</string>
@@ -1685,6 +1717,7 @@ Automatiko grabaketa aukeratua da. Inkognito moduan edo kontua aldatzean gelditu
   <string name="morphe_series_tracker_discovery_unavailable">Ezin izan da playlistik aurkitu</string>
   <string name="morphe_series_tracker_no_available_episodes">Ez da episodorik eskuragarri</string>
   <string name="morphe_series_tracker_hide_watched">Ezagutuenak ezkutatu</string>
+  <string name="morphe_series_tracker_watched_on_advance">Markatu ikusia hurrengo episodora pasatzean</string>
   <string name="morphe_series_tracker_watch_previous">Markatu aurreko episodak ikusitako gisa</string>
   <string name="morphe_series_tracker_order_starts_with">Hasi: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Episoduen ordena</string>
@@ -1737,9 +1770,13 @@ Automatiko grabaketa aukeratua da. Inkognito moduan edo kontua aldatzean gelditu
   <string name="morphe_niconico_comments_opacity_summary">Komentarioen testuaren eta fondoen opazitatea</string>
   <string name="morphe_niconico_comments_travel_duration_title">Bidaia-iraupena</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Segundu zenbatz behar duten komentarioek pantaila zehar mugitzeko. Balio txikiagoek azkarrago mugitzen dute</string>
+  <string name="morphe_niconico_comments_display_area_title">Ikusgungunea</string>
+  <string name="morphe_niconico_comments_display_area_summary">Atariak goiztik behera zein espazio erabiliko duten komentarioek. Balio baxuagoek bideoaren beheko partea garbi mantentzen dute</string>
   <string name="morphe_niconico_comments_max_length_title">Iruzkinen luzera maximoa</string>
   <string name="morphe_niconico_comments_max_length_summary">Honek baino karakterak gehiago dituzten iruzkinak ezkutatzen ditu. Emoji bakoitzak karaktera bat kontatzen du</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Mugaik gabe</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Refresh rate maximoa</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Pantailaren refresh rate maximoa erabiltzen da iruzkinak mugitzen direnean. Balio baxuagoek bateria gutxiago kontsumitzen dute</string>
   <string name="morphe_niconico_comments_live_streams_title">Erakutsi zuzeneko transmisioetan</string>
   <string name="morphe_niconico_comments_live_streams_summary">Zuzeneko transmisioak eta hauen errepasoak</string>
   <string name="morphe_niconico_comments_live_premieres_title">Erakutsi Estrenetan</string>

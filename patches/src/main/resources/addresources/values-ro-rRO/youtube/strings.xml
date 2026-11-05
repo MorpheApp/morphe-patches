@@ -69,6 +69,19 @@ Modificările includ:
   <string name="morphe_hide_channel_buttons_title">Ascunde butoanele canalului</string>
   <string name="morphe_hide_channel_buttons_summary">Ascunde butoane precum Abonare, Vezi canalul, Comunitate și YouTube Music din profilurile canalelor din rezultatele căutării</string>
   <string name="morphe_hide_community_posts_title">Ascunde postările comunității</string>
+  <string name="morphe_post_buttons_screen_title">Butoane post</string>
+  <string name="morphe_post_buttons_screen_summary">Alege layout-ul butoanelor de sub postările comunității și care butoane să fie ascunse</string>
+  <string name="morphe_post_buttons_layout_title">Layout butoane postare</string>
+  <string name="morphe_post_buttons_layout_entry_1">Server</string>
+  <string name="morphe_post_buttons_layout_entry_2">Forțat</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Ascunde butoanele de like și dislike</string>
+  <string name="morphe_hide_post_dislike_button_title">Ascunde butonul dislike</string>
+  <string name="morphe_hide_post_dislike_button_summary">Cu layout-ul Forțat, spațiul butonului este lăsat liber</string>
+  <string name="morphe_hide_post_comment_button_title">Ascunde butonul de comentarii</string>
+  <string name="morphe_hide_post_comments_preview_title">Ascunde previzualizarea comentariilor</string>
+  <string name="morphe_hide_post_comments_preview_summary">Ascunde previzualizarea comentariilor de sub postări</string>
+  <string name="morphe_hide_post_share_button_title">Ascunde butonul Distribuie</string>
+  <string name="morphe_hide_post_share_button_summary">Butonul de descărcare a imaginilor postării este desenat lângă butonul de distribuire, deci este ascuns și acesta</string>
   <string name="morphe_hide_compact_banner_title">Ascunde bannere compacte</string>
   <string name="morphe_hide_compact_banner_summary">Ascunde bannerele compacte și spațierea dintre unele componente</string>
   <string name="morphe_hide_expandable_card_title">Carduri extensibile sub videoclipuri</string>
@@ -159,7 +172,6 @@ Modificările includ:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Ascunde sugestiile afișate în timpul gesturilor playerului, cum ar fi \'Glisați în sus pentru căutare precisă\', \'Eliberați pentru a anula\' și \'2x\'.</string>
-  <string name="morphe_hide_snackbar_title">Ascunde bara de gustări</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ascunde ghidurile comunității abonaților</string>
   <string name="morphe_hide_sync_button_title">Ascunde butonul „Sincronizare cu video”</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Ascunde gradientul de atingere și menținere</string>
@@ -386,6 +398,20 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <string name="morphe_aislist_submit_failed_rate_limit">Prea multe rapoarte au fost trimise, încearcă din nou mai târziu.</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList a respins raportul.</string>
   <string name="morphe_aislist_submit_failed">Raportarea a eșuat, verifică conexiunea.</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Ascunde snackbar-urile sau schimbă-le culorile și forma</string>
+  <string name="morphe_hide_snackbar_title">Ascunde bara de gustări</string>
+  <string name="morphe_custom_snackbar_theme_title">Snackbar personalizat</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbar-urile utilizează culorile și raza colțurilor de mai jos în locul culorilor temei opuse</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Culoare de fundal temă întunecată</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Culoarea de fundal a snackbar-urilor în tema întunecată. Textul este negru sau alb, în funcție de ceea ce este mai ușor de citit</string>
+  <string name="morphe_custom_snackbar_color_light_title">Culoare de fundal temă deschisă</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Culoarea de fundal a snackbar-urilor în tema deschisă. Textul este negru sau alb, în funcție de ceea ce este mai ușor de citit</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Culoarea bordurii</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Culoarea bordurii din jurul snackbar-urilor. O culoare transparentă nu afișează nicio bordură</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Raza colțurilor</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Raza colțurilor snackbar-urilor în dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Lista albă de reclame pentru canale</string>
   <string name="morphe_ads_channel_whitelist_summary">Videoclipurile de pe canalele din lista albă se redau cu reclame, astfel încât creatorii lor sunt plătiți. Reclamele rămân blocate pe toate celelalte canale.</string>
@@ -963,7 +989,7 @@ Trebuie furnizate „Cookie-uri pentru subtitrări”"</string>
 
 Pentru a accesa Setările, activați butonul Setări prin General → Bara de instrumente → Afișează butonul Setări"</string>
   <string name="morphe_narrow_navigation_buttons_title">Activează butoane de navigare înguste</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Ascunde meniul Blocare ecran</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Reduce spațiul orizontal dintre butoane. Nu este disponibil pentru bara de navigare de sticlă, care are propriul spațiere a butoanelor</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Dezactivează butoanele de navigare fără etichete</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Afișează butoanele de navigare cu etichete, dacă YouTube le trimite fără etichete</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Dezactivează tab-urile de navigare din bara de instrumente</string>
@@ -982,6 +1008,11 @@ Pentru a accesa Setările, activați butonul Setări prin General → Bara de in
   <string name="morphe_navigation_bar_glass_summary">Afișează bara de navigare ca o capsulă plutitoare, rotunjită și translucidă. Nu este disponibil cu stilul de bară de navigare Opacă</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Opacitatea sticlei</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Ajustați nivelul de transparență al barei de navigare din sticlă (0 este transparent, 100 este opac)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Dimensiunea barei de navigare de sticlă</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Ajustați înălțimea, lățimea și spațierea butoanelor barei de navigare de sticlă, cu o previzualizare. Butoanele care nu încap în lățimea ecranului sunt ascunse</string>
+  <string name="morphe_navigation_bar_glass_size_height">Înălțime</string>
+  <string name="morphe_navigation_bar_glass_size_width">Lățime maximă</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Spațierea butoanelor</string>
   <string name="morphe_toolbar_screen_title">Bara de navigare</string>
   <string name="morphe_toolbar_screen_summary">Ascunde previzualizarea videoclipului următor în ecran complet înainte de începerea redării automate</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ascunde butonul Chat</string>
@@ -1684,6 +1715,7 @@ Această bibliotecă este stocată pe acest dispozitiv și partajată între con
   <string name="morphe_series_tracker_discovery_unavailable">Nu s-a găsit nicio listă de redare</string>
   <string name="morphe_series_tracker_no_available_episodes">Nu există episoade disponibile</string>
   <string name="morphe_series_tracker_hide_watched">Ascunde văzut</string>
+  <string name="morphe_series_tracker_watched_on_advance">Marchează ca vizionat atunci când treci la următorul episod</string>
   <string name="morphe_series_tracker_watch_previous">Marchează episoadele anterioare drept văzute</string>
   <string name="morphe_series_tracker_order_starts_with">Începe cu: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Ordinea episoadelor</string>
@@ -1736,9 +1768,13 @@ Această bibliotecă este stocată pe acest dispozitiv și partajată între con
   <string name="morphe_niconico_comments_opacity_summary">Opacitatea textului și a fundalului comentariilor</string>
   <string name="morphe_niconico_comments_travel_duration_title">Durata tranzitului</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Câte secunde durează ca comentariile să traverseze ecranul. Valorile mai mici se deplasează mai rapid</string>
+  <string name="morphe_niconico_comments_display_area_title">Zona de afișare</string>
+  <string name="morphe_niconico_comments_display_area_summary">Cât din player, începând de sus, este utilizat pentru comentarii. Valorile mai mici mențin partea de jos a videoclipului liberă</string>
   <string name="morphe_niconico_comments_max_length_title">Lungimea maximă a comentariului</string>
   <string name="morphe_niconico_comments_max_length_summary">Ascunde comentariile care conțin mai multe caractere decât această valoare. Fiecare emoji se numără ca un caracter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Fără limită</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Rata maximă de refresh</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Cea mai mare rată de refresh a ecranului utilizată în timp ce comentariile se mișcă. Valorile mai mici consumă mai puțină baterie</string>
   <string name="morphe_niconico_comments_live_streams_title">Afișează pe fluxurile live</string>
   <string name="morphe_niconico_comments_live_streams_summary">Fluxuri live și redări ale acestora</string>
   <string name="morphe_niconico_comments_live_premieres_title">Afișează la Premiere-uri</string>

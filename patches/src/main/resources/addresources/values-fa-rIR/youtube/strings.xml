@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">پنهان کردن دکمه‌های کانال</string>
   <string name="morphe_hide_channel_buttons_summary">دکمه‌هایی مانند اشتراک، مشاهده کانال، انجمن و YouTube Music را از نمایه کانال‌ها در نتایج جستجو پنهان می‌کند</string>
   <string name="morphe_hide_community_posts_title">پنهان‌کردن پست‌های جامعه</string>
+  <string name="morphe_post_buttons_screen_title">دکمه‌های پس از پست</string>
+  <string name="morphe_post_buttons_screen_summary">چیدمان دکمه‌های زیر پست‌های جامعه و اینکه کدام دکمه‌ها پنهان شوند را انتخاب کنید</string>
+  <string name="morphe_post_buttons_layout_title">چیدمان دکمه‌های پست</string>
+  <string name="morphe_post_buttons_layout_entry_1">سرور</string>
+  <string name="morphe_post_buttons_layout_entry_2">اجباری</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">پنهان‌کردن دکمه‌های پسندیدن و نپسندیدن</string>
+  <string name="morphe_hide_post_dislike_button_title">پنهان‌کردن دکمهٔ نپسندیدن</string>
+  <string name="morphe_hide_post_dislike_button_summary">در چیدمان اجباری، فضای دکمه خالی می‌ماند</string>
+  <string name="morphe_hide_post_comment_button_title">پنهان‌کردن دکمهٔ دیدگاه‌ها</string>
+  <string name="morphe_hide_post_comments_preview_title">پنهان‌کردن پیش‌نمایش دیدگاه‌ها</string>
+  <string name="morphe_hide_post_comments_preview_summary">پیش‌نمایش دیدگاه‌های زیر پست‌ها را پنهان می‌کند</string>
+  <string name="morphe_hide_post_share_button_title">پنهان‌کردن دکمهٔ اشتراک‌گذاری</string>
+  <string name="morphe_hide_post_share_button_summary">دکمهٔ دانلود تصاویر پست در کنار دکمهٔ اشتراک‌گذاری قرار دارد، بنابراین آن هم پنهان می‌شود</string>
   <string name="morphe_hide_compact_banner_title">پنهان‌کردن بنرهای فشرده</string>
   <string name="morphe_hide_compact_banner_summary">بنرهای فشرده و فاصلهٔ بین بعضی مؤلفه‌ها را پنهان می‌کند</string>
   <string name="morphe_hide_expandable_card_title">کارت‌های بازشدنی زیر ویدئوها</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">راهنماهایی را که هنگام حرکت‌های پخش‌کننده نمایش داده می‌شوند پنهان می‌کند؛ مانند «برای جست‌وجوی دقیق به بالا بکشید»، «برای لغو رها کنید» و «۲×»</string>
-  <string name="morphe_hide_snackbar_title">پنهان‌کردن نوار پیام</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">پنهان‌کردن دستورالعمل‌های مشترکان</string>
   <string name="morphe_hide_sync_button_title">پنهان‌کردن دکمهٔ «همگام‌سازی با ویدئو»</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">پنهان کردن گرادیان لمس و نگه‌داشتن</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">گزارش‌های زیادی ارسال شده است؛ بعداً دوباره تلاش کنید</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList گزارش را رد کرد</string>
   <string name="morphe_aislist_submit_failed">گزارش ناموفق بود؛ اتصال خود را بررسی کنید</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">اسنک‌بار</string>
+  <string name="morphe_snackbar_screen_summary">پنهان کردن اسنک‌بارها یا تغییر رنگ و شکل آن‌ها</string>
+  <string name="morphe_hide_snackbar_title">پنهان‌کردن نوار پیام</string>
+  <string name="morphe_custom_snackbar_theme_title">اسنک‌بار سفارشی</string>
+  <string name="morphe_custom_snackbar_theme_summary">اسنک‌بارها به جای رنگ‌های طرح متضاد، از رنگ‌ها و شعاع گوشه‌های زیر استفاده می‌کنند</string>
+  <string name="morphe_custom_snackbar_color_dark_title">رنگ پس‌زمینهٔ طرح تاریک</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">رنگ پس‌زمینهٔ اسنک‌بارها در طرح تاریک. متن، بسته به اینکه کدام خواناتر باشد، سیاه یا سفید خواهد بود</string>
+  <string name="morphe_custom_snackbar_color_light_title">رنگ پس‌زمینهٔ طرح روشن</string>
+  <string name="morphe_custom_snackbar_color_light_summary">رنگ پس‌زمینهٔ اسنک‌بارها در طرح روشن. متن، بسته به اینکه کدام خواناتر باشد، سیاه یا سفید خواهد بود</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">رنگ حاشیه</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">رنگ حاشیهٔ دور اسنک‌بارها. رنگ شفاف به معنای عدم نمایش حاشیه است</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">شعاع گوشه</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">شعاع گوشه‌های اسنک‌بارها بر حسب dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">فهرست مجاز تبلیغات کانال</string>
   <string name="morphe_ads_channel_whitelist_summary">ویدئوهای کانال‌های فهرست مجاز با تبلیغات پخش می‌شوند تا سازندگانشان درآمد دریافت کنند. تبلیغات در همهٔ کانال‌های دیگر مسدود می‌مانند</string>
@@ -963,7 +989,7 @@ Second \"item\" text"</string>
 
 برای دسترسی به تنظیمات، دکمهٔ تنظیمات را از مسیر کلی ← نوار ابزار ← نمایش دکمهٔ تنظیمات فعال کنید"</string>
   <string name="morphe_narrow_navigation_buttons_title">فعال‌کردن دکمه‌های پیمایش باریک</string>
-  <string name="morphe_narrow_navigation_buttons_summary">فاصلهٔ افقی بین دکمه‌ها را کاهش می‌دهد</string>
+  <string name="morphe_narrow_navigation_buttons_summary">فاصله‌ی افقی بین دکمه‌ها را کاهش می‌دهد. در نوار پیمایش شیشه‌ای که فاصله‌ی دکمه‌های مخصوص به خود را دارد، در دسترس نیست</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">غیرفعال کردن دکمه‌های ناوبری بدون برچسب</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">اگر YouTube دکمه‌های ناوبری را بدون برچسب ارسال کند، آن‌ها را با برچسب نشان می‌دهد</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">غیرفعال‌کردن تب‌های پیمایش نوار ابزار</string>
@@ -982,6 +1008,12 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">نوار پیمایش را به صورت یک کپسول شناور، گرد و نیمه‌شفاف نمایش می‌دهد. با استایل نوار پیمایش کدر در دسترس نیست</string>
   <string name="morphe_navigation_bar_glass_opacity_title">شفافیت شیشه</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">سطح شفافیت نوار پیمایش شیشه‌ای را تنظیم کنید (۰ شفاف و ۱۰۰ کدر است)</string>
+  <string name="morphe_navigation_bar_glass_size_title">اندازه‌ی نوار پیمایش شیشه‌ای</string>
+  <string name="morphe_navigation_bar_glass_size_summary">تنظیم ارتفاع، عرض و فاصله‌ی دکمه‌های نوار پیمایش شیشه‌ای به همراه پیش‌نمایش. دکمه‌هایی که در عرض صفحه‌ی نمایش جای نمی‌گیرند، پنهان می‌شوند</string>
+  <string name="morphe_navigation_bar_glass_size_height">ارتفاع</string>
+  <string name="morphe_navigation_bar_glass_size_width">حداکثر عرض</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">فاصله‌ی دکمه‌ها</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">دکمه‌های نمایش داده شده: %1$d از %2$d</string>
   <string name="morphe_toolbar_screen_title">نوار ابزار</string>
   <string name="morphe_toolbar_screen_summary">انتخاب کنید کدام مؤلفه‌ها در نوار ابزار نمایش داده شوند</string>
   <string name="morphe_hide_toolbar_chat_button_title">پنهان‌کردن دکمهٔ گفت‌وگو</string>
@@ -1683,6 +1715,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_discovery_unavailable">فهرست پخش پیدا نشد</string>
   <string name="morphe_series_tracker_no_available_episodes">هیچ قسمتی موجود نیست</string>
   <string name="morphe_series_tracker_hide_watched">مخفی کردن تماشا شده</string>
+  <string name="morphe_series_tracker_watched_on_advance">هنگام رفتن به قسمت بعدی، به عنوان تماشا شده علامت‌گذاری شود</string>
   <string name="morphe_series_tracker_watch_previous">قسمت‌های قبلی را به عنوان تماشا شده علامت‌گذاری کنید</string>
   <string name="morphe_series_tracker_order_starts_with">شروع با: %1$s</string>
   <string name="morphe_series_tracker_episode_order">ترتیب قسمت‌ها</string>
@@ -1735,9 +1768,13 @@ AVC (H.264)
   <string name="morphe_niconico_comments_opacity_summary">شفافیت متن و پس‌زمینه‌ی نظرات</string>
   <string name="morphe_niconico_comments_travel_duration_title">مدت زمان پیمایش</string>
   <string name="morphe_niconico_comments_travel_duration_summary">تعداد ثانیه‌هایی که نظرات برای عبور از صفحه نیاز دارند. مقادیر کمتر، سرعت را بیشتر می‌کنند</string>
+  <string name="morphe_niconico_comments_display_area_title">ناحیه نمایش</string>
+  <string name="morphe_niconico_comments_display_area_summary">چه مقدار از پخش‌کننده، از بالا، توسط دیدگاه‌ها اشغال شود. مقادیر کمتر، قسمت پایین ویدیو را خلوت نگه می‌دارند</string>
   <string name="morphe_niconico_comments_max_length_title">حداکثر طول نظر</string>
   <string name="morphe_niconico_comments_max_length_summary">نظراتی که کاراکترهای بیشتری از این مقدار دارند را مخفی می‌کند. هر ایموجی به عنوان یک کاراکتر در نظر گرفته می‌شود</string>
   <string name="morphe_niconico_comments_max_length_no_limit">بدون محدودیت</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">حداکثر نرخ نوسازی</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">بالاترین نرخ نوسازی نمایشگر که هنگام حرکت کامنت‌ها استفاده می‌شود. مقادیر کمتر، باتری کمتری مصرف می‌کنند</string>
   <string name="morphe_niconico_comments_live_streams_title">نمایش در پخش‌های زنده</string>
   <string name="morphe_niconico_comments_live_streams_summary">پخش‌های زنده و بازپخش‌های آن‌ها</string>
   <string name="morphe_niconico_comments_live_premieres_title">نمایش در پخش‌های اولیه</string>

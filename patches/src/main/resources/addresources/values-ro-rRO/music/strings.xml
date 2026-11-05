@@ -174,6 +174,7 @@ Melodiile descărcate apar aici"</string>
   <string name="morphe_music_downloads_playlist_name_hint">Numele listei de redare</string>
   <string name="morphe_music_downloads_playlist_name_empty">Numele listei de redare nu poate fi gol</string>
   <string name="morphe_music_downloads_playlist_save_failed">Nu s-a putut salva lista de redare</string>
+  <string name="morphe_music_downloads_playlist_track_count">%s piese</string>
   <string name="morphe_music_downloads_playlist_track_count_one">1 piesă</string>
   <string name="morphe_music_downloads_playlist_no_tracks">Nu există piese în această listă de redare</string>
   <string name="morphe_music_downloads_playlist_play">Redă lista de redare</string>
@@ -201,6 +202,7 @@ Melodiile descărcate apar aici"</string>
   <string name="morphe_music_downloads_failed">Descărcare eșuată</string>
   <string name="morphe_music_downloads_playlist_download_title">Descărcare playlist</string>
   <string name="morphe_music_downloads_playlist_download_listing">Se listează piesele…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s listate…</string>
   <string name="morphe_music_downloads_playlist_download_listing_failed">Nu s-au putut lista piesele din playlist</string>
   <string name="morphe_music_downloads_playlist_download_all_saved">Deja descărcate: %s</string>
   <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s în acest playlist, %2$s nu au fost încă descărcate.
@@ -209,8 +211,10 @@ Acestea sunt descărcate una câte una, ceea ce poate dura mult timp și necesit
   <string name="morphe_music_downloads_playlist_download_confirm_button">Descărcare</string>
   <string name="morphe_music_downloads_playlist_download_progress">Se descarcă piesa %1$s din %2$s</string>
   <string name="morphe_music_downloads_playlist_download_complete">%s descărcați</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s descărcate, %2$s nu au putut fi descărcate</string>
   <string name="morphe_music_downloads_playlist_download_already_running">Descărcarea playlist-ului este deja în curs</string>
   <string name="morphe_music_downloads_playlist_download_needs_account">Contul tău nu este cunoscut încă. Încearcă din nou peste puțin</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listate, toate sunt deja descărcate</string>
   <string name="morphe_music_downloads_playlist_download_incomplete">Doar o parte din playlist a putut fi listată. Apasă din nou pe Descărcare mai târziu pentru a obține restul</string>
   <string name="morphe_music_downloads_playlist_download_started">Se descarcă %s în fundal</string>
   <string name="morphe_music_downloads_playlist_download_no_network">Nu există conexiune la rețea</string>

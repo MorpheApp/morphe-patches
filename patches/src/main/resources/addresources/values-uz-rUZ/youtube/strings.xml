@@ -69,6 +69,19 @@ O'zgarishlar quyidagilarni o'z ichiga oladi:
   <string name="morphe_hide_channel_buttons_title">Kanal tugmalarini yashirish</string>
   <string name="morphe_hide_channel_buttons_summary">Qidiruv natijalaridagi kanal profillaridan Obuna bo‘lish, Kanalni ko‘rish, Hamjamiyat va YouTube Music kabi tugmalarni yashiradi</string>
   <string name="morphe_hide_community_posts_title">Hamjamiyat e\'lonlarini yashirish</string>
+  <string name="morphe_post_buttons_screen_title">Post tugmalari</string>
+  <string name="morphe_post_buttons_screen_summary">Hamjamiyat postlari ostidagi tugmalarning joylashuvini va qaysi tugmalarni yashirishni tanlang</string>
+  <string name="morphe_post_buttons_layout_title">Post tugmalari joylashuvi</string>
+  <string name="morphe_post_buttons_layout_entry_1">Server</string>
+  <string name="morphe_post_buttons_layout_entry_2">Majburiy</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Yoqdi va Yoqmadi tugmalarini yashirish</string>
+  <string name="morphe_hide_post_dislike_button_title">Yoqmadi tugmasini yashirish</string>
+  <string name="morphe_hide_post_dislike_button_summary">Majburiy joylashuvda tugma uchun joy qoladi</string>
+  <string name="morphe_hide_post_comment_button_title">Izoh tugmasini yashirish</string>
+  <string name="morphe_hide_post_comments_preview_title">Izohlar oldindan ko\'rishni yashirish</string>
+  <string name="morphe_hide_post_comments_preview_summary">Postlar ostidagi izohlarning oldindan ko\'rish qismini yashiradi</string>
+  <string name="morphe_hide_post_share_button_title">Baham ko‘rish tugmasini yashirish</string>
+  <string name="morphe_hide_post_share_button_summary">Post rasmlarini yuklab olish tugmasi baham ko‘rish tugmasi yonida chizilgan, shuning uchun u ham yashirilgan</string>
   <string name="morphe_hide_compact_banner_title">Qisqa bannerlarni yashirish</string>
   <string name="morphe_hide_compact_banner_summary">Siqishli bannerlarni va baʼzi komponentlar orasidagi masofani yashiradi</string>
   <string name="morphe_hide_expandable_card_title">Videolar ostidagi kengaytiruvchi kartalar</string>
@@ -159,7 +172,6 @@ O'zgarishlar quyidagilarni o'z ichiga oladi:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Pleyer imo-ishoralari paytida ko\'rsatiladigan maslahatlarni yashiradi, masalan: \'Aniq qidirish uchun yuqoriga torting\', \'Bekor qilish uchun qo\'yib yuboring\' va \'2x\'.</string>
-  <string name="morphe_hide_snackbar_title">Saqlash va navbat harakatlarini almashtirish</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Obunachilar hamjamiyatiga oid qoidalarni yashirish</string>
   <string name="morphe_hide_sync_button_title">Izohlarning chat donorlari panelini yashirish</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Bosib turish gradientini yashirish</string>
@@ -383,6 +395,20 @@ Hisobotlar ochiq va kanal ro'yxatga qo'shilishidan oldin ko'rib chiqiladi. O'chi
   <string name="morphe_aislist_submit_failed_rate_limit">Juda ko\'p xabarlar yuborildi, keyinroq qayta urinib ko\'ring</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList xabarni rad etdi</string>
   <string name="morphe_aislist_submit_failed">Xabar yuborish muvaffaqiyatsiz tugadi, ulanishni tekshiring</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Snackbarlarni yashiring yoki ularning ranglari va shaklini o\'zgartiring</string>
+  <string name="morphe_hide_snackbar_title">Saqlash va navbat harakatlarini almashtirish</string>
+  <string name="morphe_custom_snackbar_theme_title">Maxsus snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbarlar qarama-qarshi mavzu ranglari o\'rniga quyidagi ranglar va burchak radiusidan foydalanadi</string>
+  <string name="morphe_custom_snackbar_color_dark_title">To\'q mavzu fon rangi</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">To\'q mavzudagi snackbarlarning fon rangi. Matn qora yoki oq rangda bo\'ladi, qaysi biri o\'qishga qulay bo\'lsa</string>
+  <string name="morphe_custom_snackbar_color_light_title">Ochiq mavzu fon rangi</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Ochiq mavzudagi snackbarlarning fon rangi. Matn qora yoki oq rangda bo\'ladi, qaysi biri o\'qishga qulay bo\'lsa</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Chegara rangi</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Snackbarlar atrofidagi chegaraning rangi. Shaffof rang chegara yo\"qligini anglatadi</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Burchak radiusi</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Snackbarlarning dp dagi burchak radiusi</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Kanal reklamalari oq ro\'yxati</string>
   <string name="morphe_ads_channel_whitelist_summary">Oq ro\'yxatga olingan kanallarning videolari reklamalar bilan ijro etiladi, shuning uchun ularning mualliflari haq oladilar. Boshqa barcha kanallarda reklamalar bloklangan holda qoladi</string>
@@ -766,6 +792,10 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
   <string name="morphe_swipe_left_zone_title">Chapga surish jesti</string>
   <string name="morphe_swipe_right_zone_title">O\'ngga surish jesti</string>
   <string name="morphe_swipe_top_zone_title">Yuqoriga surish jesti</string>
+  <string name="morphe_swipe_seek_title">Qidirish uchun suring</string>
+  <string name="morphe_swipe_seek_summary">Qidiruv panelini harakatlantirish uchun to\'liq ekranli pleyerda chapga yoki o\'ngga suring va qidirish uchun qo\'yib yuboring</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Qidiruv surish sezgirligi</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Har bir surishda qidiruv paneli qancha masofaga siljishi</string>
   <string name="morphe_swipe_zone_width_title">Chap/O\'ng zona kengligi</string>
   <string name="morphe_swipe_zone_width_summary">Chap va o\'ng surish jestlari uchun ajratilgan har bir ekran chetidagi foiz (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Yorqinlik</string>
@@ -954,7 +984,7 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
 
 Sozlamalarga kirish uchun, General $\rightarrow$ Toolbar $\rightarrow$ Show Settings button orqali Sozlamalar tugmasini yoqing"</string>
   <string name="morphe_narrow_navigation_buttons_title">Tor navigatsiya tugmalarini yoqish</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Navigatsiya tugmachalari orasidagi gorizontal masofani kamaytiradi</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Tugmalar orasidagi gorizontal masofani kamaytiradi. O\'zining tugmalar masofasiga ega bo\'lgan shaffof navigatsiya paneli bilan ishlamaydi</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Yorliqsiz navigatsiya tugmalarini o\'chirish</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Agar YouTube navigatsiya tugmalarini yorliqlarsiz yuborsa, ularni yorliqlar bilan ko\'rsatadi</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Asboblar paneli navigatsiya vkladkalarini o\"chirish\"</string>
@@ -973,6 +1003,12 @@ Sozlamalarga kirish uchun, General $\rightarrow$ Toolbar $\rightarrow$ Show Sett
   <string name="morphe_navigation_bar_glass_summary">Navigatsiya panelini suzuvchi, yumaloq, yarim shaffof kapsula ko\'rinishida ko\'rsatadi. Opaque navigatsiya paneli uslubi bilan mavjud emas</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Shishaning shaffofligi</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Shishasimon navigatsiya panelining shaffoflik darajasini sozlang (0 - shaffof, 100 - opak)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Shishasimon navigatsiya paneli o\'lchami</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Shishasimon navigatsiya panelining balandligi, kengligi va tugmalar oralig\'ini oldindan ko\'rish imkoniyati bilan sozlang. Ekran kengligiga sig\'magan tugmalar yashiriladi</string>
+  <string name="morphe_navigation_bar_glass_size_height">Balandligi</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maksimal kenglik</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Tugmalar oralig\'i</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Ko\'rsatilgan tugmalar: %2$d tadan %1$d tasi</string>
   <string name="morphe_toolbar_screen_title">Navigatsiya panelini yashirish</string>
   <string name="morphe_toolbar_screen_summary">Pleerdagi paydo boʻladigan tugmalarni tanlang</string>
   <string name="morphe_hide_toolbar_chat_button_title">Chat tugmasini yashirish</string>
@@ -1641,6 +1677,7 @@ Avtomatik yozish inkognito rejimida, akkaunt identifikatori mavjud bo'lmaganda y
   <string name="morphe_series_tracker_marked">Ko‘rilgan deb belgilangan epizodlar</string>
   <string name="morphe_series_tracker_undo">Bekor qilish</string>
   <string name="morphe_series_tracker_enable_short">Yoqish</string>
+  <string name="morphe_series_tracker_new_episode">{\"one\":\"1 ta yangi qism\",\"other\":\"{0} ta yangi qism\"}</string>
   <string name="morphe_series_tracker_new_episodes">%1$s ta yangi qism</string>
   <string name="morphe_series_tracker_record_short">Ushbu qurilmada progressni yozib borish</string>
   <string name="morphe_series_tracker_follow_consent">"Sizning seriallaringiz va progressingiz ushbu qurilmada qoladi va YouTube akkauntlari o'rtasida baham ko'riladi. YouTube tarixini boshqarish vositalari ularni o'zgartirmaydi. Progressni Seriallar menyusidan tozalang.
@@ -1669,6 +1706,7 @@ Avtomatik yozib olish ixtiyoriy. U inkognito rejimida yoki akkaunt o'zgarganda t
   <string name="morphe_series_tracker_discovery_unavailable">Pleylist topilmadi</string>
   <string name="morphe_series_tracker_no_available_episodes">Epizodlar mavjud emas</string>
   <string name="morphe_series_tracker_hide_watched">Ko‘rilganlarni yashirish</string>
+  <string name="morphe_series_tracker_watched_on_advance">Keyingi qismga o\"tganda ko\"rilgan deb belgilash</string>
   <string name="morphe_series_tracker_watch_previous">Avvalgi epizodlarni ko‘rildi deb belgilash</string>
   <string name="morphe_series_tracker_order_starts_with">Boshlanishi: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Epizodlar tartibi</string>
@@ -1721,9 +1759,13 @@ Avtomatik yozib olish ixtiyoriy. U inkognito rejimida yoki akkaunt o'zgarganda t
   <string name="morphe_niconico_comments_opacity_summary">Izoh matni va fonining shaffofligi</string>
   <string name="morphe_niconico_comments_travel_duration_title">Harakat davomiyligi</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Izohlarning ekran bo\'ylab o\'tishi uchun necha soniya kerakligi. Kichikroq qiymatlar tezroq harakatlanishini ta\'minlaydi</string>
+  <string name="morphe_niconico_comments_display_area_title">Ko\'rsatish sohasi</string>
+  <string name="morphe_niconico_comments_display_area_summary">Izohlar pleyerning yuqori qismidan qancha joy egallashini belgilaydi. Kichikroq qiymatlar videoning pastki qismini bo\'sh holda saqlaydi</string>
   <string name="morphe_niconico_comments_max_length_title">Izohning maksimal uzunligi</string>
   <string name="morphe_niconico_comments_max_length_summary">Ushbu miqdordan ko\'p belgiga ega bo\'lgan izohlarni yashiradi. Har bir emoji bitta belgi hisoblanadi</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Cheklov yo\'q</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Maksimal yangilanish tezligi</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Izohlar harakatlanganda foydalaniladigan eng yuqori ekran yangilanish tezligi. Pastroq qiymatlar batareyani kamroq sarflaydi</string>
   <string name="morphe_niconico_comments_live_streams_title">\"Jonli efirlarda ko\"rsatish\"</string>
   <string name="morphe_niconico_comments_live_streams_summary">\"Jonli efirlar va ularning takrorlari\"</string>
   <string name="morphe_niconico_comments_live_premieres_title">Premyeralarda ko\"rsatish</string>

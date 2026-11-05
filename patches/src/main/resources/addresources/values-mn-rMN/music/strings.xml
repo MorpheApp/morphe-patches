@@ -200,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Татаж байна %s%%</string>
   <string name="morphe_music_downloads_complete">Татаж авалт дууслаа</string>
   <string name="morphe_music_downloads_failed">Татаж авалт амжилтгүй боллоо</string>
+  <string name="morphe_music_downloads_playlist_download_title">Тэмдэглэлийн жагсаалтыг татах</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Дуунуудыг жагсааж байна…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s жагсаалаа…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Түүнээс жагсаалтыг гаргаж чадсангүй</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Өмнө нь татаж авсан: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"Энэхүү жагсаалтад %1$s дуу байгаа бөгөөд %2$s дууг хараахан татаж аваагүй байна.
+
+Дуунууд нэг нэгээрээ татагдах бөгөөд үүнд их хугацаа шаардагдаж, ойролцоогоор %3$s чөлөөтэй зай хэрэгтэй"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Татаж авах</string>
+  <string name="morphe_music_downloads_playlist_download_progress">%2$s дууны %1$s-ыг татаж байна</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s татаж авлаа</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s татаж авсан, %2$s татаж авж чадсангүй</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Тэмдэглэлийн жагсаалтыг татаж авах үйл явц аль хэдийн эхэлсэн байна</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Таны бүртгэл харагдахгүй байна. Түр хугацааны дараа дахин оролдоно уу</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s жагсаав, бүгдийг нь татаж авсан байна</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Тэмдэглэлийн жагсаалтын зарим хэсгийг л жагсааж чадлаа. Үлдсэнийг нь татаж авахын тулд дараа нь дахин Татаж авах товчийг дарна уу</string>
+  <string name="morphe_music_downloads_playlist_download_started">%s-ийг арын горимд татаж байна</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Сүлжээний холболтгүй байна</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Сүлжээг хүлээж байна…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s-аас %1$s-ийг татаж аваад зогссон. Үргэлжлүүлэхийн тулд дахин Татаж авах товчийг дарна уу</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Morphe-ийн тухай</string>

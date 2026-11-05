@@ -59,6 +59,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">Fela rásahnappa</string>
   <string name="morphe_hide_channel_buttons_summary">Felur hnappa eins og Gerast áskrifandi, Skoða rás, Samfélag og YouTube Music úr rásasniðum í leitarniðurstöðum</string>
   <string name="morphe_hide_community_posts_title">Fela samfélagsfærslur</string>
+  <string name="morphe_post_buttons_screen_title">Hnappar færslna</string>
+  <string name="morphe_post_buttons_screen_summary">Veldu uppsetningu hnappa neðan við færslur samfélagsins og hvaða hnappa eigi að falda</string>
+  <string name="morphe_post_buttons_layout_title">Uppsetning hnappa fyrir færslur</string>
+  <string name="morphe_post_buttons_layout_entry_1">Þjónn</string>
+  <string name="morphe_post_buttons_layout_entry_2">Þvinguð</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Fela hnappa fyrir líkningu og ólíkningu</string>
+  <string name="morphe_hide_post_dislike_button_title">Fela ólíkningahnapp</string>
+  <string name="morphe_hide_post_dislike_button_summary">Með þvingaðri uppsetningu er pláss hnappans eftir</string>
+  <string name="morphe_hide_post_comment_button_title">Fela athugasagnahnapp</string>
+  <string name="morphe_hide_post_comments_preview_title">Fela foryfirleitseðu kommenta</string>
+  <string name="morphe_hide_post_comments_preview_summary">Felur foryfirleitseðu kommentanna undir færslum</string>
+  <string name="morphe_hide_post_share_button_title">Fela deilahnapp</string>
+  <string name="morphe_hide_post_share_button_summary">Söfnunarhnappur fyrir myndir í færslum er teiknaður við hliðina á deilahnappnum, svo hann er líka falinn</string>
   <string name="morphe_hide_compact_banner_title">Fela þétta borða</string>
   <string name="morphe_hide_compact_banner_summary">Felur þétta borða og bil á milli sumra viðmótshluta</string>
   <string name="morphe_hide_expandable_card_title">Útvíkkanleg spjöld undir myndböndum</string>
@@ -149,7 +162,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Felur ábendingarnar sem birtast við bendingar spilarans, eins og \'Dragðu upp fyrir nákvæma leit\', \'Slepptu til að hætta við\' og \'2x\'.</string>
-  <string name="morphe_hide_snackbar_title">Fela snakkbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Fela reglur um áskrift</string>
   <string name="morphe_hide_sync_button_title">Fela \'Samstilla við myndband\' hnappinn</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Fela litstigul við snertingu og hald</string>
@@ -376,6 +388,20 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <string name="morphe_aislist_submit_failed_rate_limit">Of margar tilkynningar voru sendar, reyndu aftur síðar</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList hafnaði tilkynningunni</string>
   <string name="morphe_aislist_submit_failed">Tilkynning mistókst, athugaðu tenginguna</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Fela snackbar-tilkynningar eða breyta litum og lögun þeirra</string>
+  <string name="morphe_hide_snackbar_title">Fela snakkbar</string>
+  <string name="morphe_custom_snackbar_theme_title">Sérsniðin snackbar-tilkynning</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbars nota litina og horngeislann hér að neðan í stað litanna í gegnkerfinu á móti</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Bakgrunnslit fyrir dökkt gegnkerfi</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Bakgrunnslit fyrir snackbars í dökkum gegnkerfum. Textinn er svartur eða hvítur, eftir því hvað er auðleslegra</string>
+  <string name="morphe_custom_snackbar_color_light_title">Bakgrunnslit fyrir björt gegnkerfi</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Bakgrunnslit fyrir snackbars í björtum gegnkerfum. Textinn er svartur eða hvítur, eftir því hvað er auðleslegra</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Litaramma</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Litur rammanns í kringum snackbars. Gagnsæll litur sýnir engan ramma</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Horngeisli</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Horngeisli snackbars í dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Auglýsingahvítlisti rása</string>
   <string name="morphe_ads_channel_whitelist_summary">Myndbönd af hvítlistuðum rásum spilast með auglýsingum, þannig að höfundar þeirra fá greitt. Auglýsingar eru áfram lokaðar á öllum öðrum rásum.</string>
@@ -951,7 +977,7 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
 
 Til að fá aðgang að Stillingum, virkjaðu stillingahnappinn í gegnum Almennt → Verkfæratól → Sýna stillingahnapp"</string>
   <string name="morphe_narrow_navigation_buttons_title">Virkja þrengri stjórnunarhnappa</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Minnkar horna fjarlægð milli hnappa</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Minnkar সেটাই vassreta á milli hnappa. Ekki aðgengilegt með glerstigi stýristangunnar, sem hefur eigin hnappabil</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Slökkva á flakkhnöppum án merkimiða</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Sýnir flakkhnappana með merkimiðum, ef YouTube sendir þá án merkimiða</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Óvirkja vísbendingar í tólbúnaðstængslum</string>
@@ -970,6 +996,12 @@ Til að fá aðgang að Stillingum, virkjaðu stillingahnappinn í gegnum Almenn
   <string name="morphe_navigation_bar_glass_summary">Sýnir vistunarbjálkana sem svifandi, rounded, gjalfæran capsule. Ekki aðgengilegt með Opaque vistunarbjálkastíl</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Gjalfærni gleris</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Stilltu gegnsæi gler-vistunarbjálkans (0 er gegnsætt, 100 er ógegnsætt)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Stærð glerstigs stýristangunnar</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Stilltu hæð, breidd og hnappabil glerstigs stýristangunnar með forsýn. Hnappar sem passa ekki innan breiddar skjásins eru faldir</string>
+  <string name="morphe_navigation_bar_glass_size_height">Hæð</string>
+  <string name="morphe_navigation_bar_glass_size_width">Hámarksbreidd</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Hnappabil</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Sýnir hnappa: %1$d af %2$d</string>
   <string name="morphe_toolbar_screen_title">Tólaborð</string>
   <string name="morphe_toolbar_screen_summary">Veldu hvaða þættir birtast á verkfærastikunni</string>
   <string name="morphe_hide_toolbar_chat_button_title">Fela chat á hnappinn</string>
@@ -1648,6 +1680,7 @@ Myndbandsspilun með AV1 getur hrickast eða skotið ramma"</string>
   <string name="morphe_series_tracker_discovery_unavailable"> Gat ekki fundið spilunarlista </string>
   <string name="morphe_series_tracker_no_available_episodes"> Engir episóður tiltækir </string>
   <string name="morphe_series_tracker_hide_watched"> Fela skoðað </string>
+  <string name="morphe_series_tracker_watched_on_advance">Merkja sem horfið á þegar farið er í næsta þátt</string>
   <string name="morphe_series_tracker_watch_previous"> Merkja fyrrari episóður sem skoðaðar </string>
   <string name="morphe_series_tracker_order_starts_with"> Byrjar með : %1$s</string>
   <string name="morphe_series_tracker_episode_order"> Röð episóða </string>
@@ -1700,9 +1733,13 @@ Myndbandsspilun með AV1 getur hrickast eða skotið ramma"</string>
   <string name="morphe_niconico_comments_opacity_summary">Gegnumsýni athugasemdatexta og bakgrunns</string>
   <string name="morphe_niconico_comments_travel_duration_title">Ferðatími</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Hversu margar sekúndur tekur athugasemdum að fara yfir skjáinn. Lægri gildi hreyfast hraðar</string>
+  <string name="morphe_niconico_comments_display_area_title">Sýningarsvæði</string>
+  <string name="morphe_niconico_comments_display_area_summary">Hversu stór hluti spilarans, frá toppinum, að kommentunum er notaður. Lágari gildi halda neðra hluta myndbandisins hreinan</string>
   <string name="morphe_niconico_comments_max_length_title">Hámarks lengd athugasemdar</string>
   <string name="morphe_niconico_comments_max_length_summary">Fela athugasemdir sem innihalda fleiri staf en þetta. Hver tiltekni tákn taldist eins og einn stafur</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Engin takmörkun</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Hæsta endurnýjunartíðni</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Hæsta endurnýjunartíðni skjásins sem notuð er þegar athugasemdir hreyfast. Lágar gildi nota minna rafhlöðu</string>
   <string name="morphe_niconico_comments_live_streams_title">Sýna á beinum útsendingum</string>
   <string name="morphe_niconico_comments_live_streams_summary">Beinar útsendingar og endurspilunar þeirra</string>
   <string name="morphe_niconico_comments_live_premieres_title">Sýna í úrvinnuvídeókum</string>

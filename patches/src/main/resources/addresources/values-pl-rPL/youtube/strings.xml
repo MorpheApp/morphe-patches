@@ -69,6 +69,19 @@ Zmiany obejmują:
   <string name="morphe_hide_channel_buttons_title">Ukryj przyciski kanału</string>
   <string name="morphe_hide_channel_buttons_summary">Ukrywa przyciski takie jak Subskrybuj, Wyświetl kanał, Społeczność i YouTube Music na profilach kanałów w wynikach wyszukiwania</string>
   <string name="morphe_hide_community_posts_title">Ukryj posty</string>
+  <string name="morphe_post_buttons_screen_title">Przyciski postów</string>
+  <string name="morphe_post_buttons_screen_summary">Wybierz układ przycisków pod postami społeczności oraz określ, które przyciski mają być ukryte</string>
+  <string name="morphe_post_buttons_layout_title">Układ przycisków postów</string>
+  <string name="morphe_post_buttons_layout_entry_1">Serwerowy</string>
+  <string name="morphe_post_buttons_layout_entry_2">Wymuszony</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Ukryj przyciski łapek w górę i w dół</string>
+  <string name="morphe_hide_post_dislike_button_title">Ukryj przycisk łapki w dół</string>
+  <string name="morphe_hide_post_dislike_button_summary">Przy układzie \"Wymuszony\" puste miejsce po przycisku zostaje zachowane</string>
+  <string name="morphe_hide_post_comment_button_title">Ukryj przycisk komentarzy</string>
+  <string name="morphe_hide_post_comments_preview_title">Ukryj podgląd komentarzy</string>
+  <string name="morphe_hide_post_comments_preview_summary">Ukrywa podgląd komentarzy poniżej postów</string>
+  <string name="morphe_hide_post_share_button_title">Ukryj przycisk udostępniania</string>
+  <string name="morphe_hide_post_share_button_summary">Przycisk pobierania obrazów z posta jest rysowany obok przycisku udostępniania, więc również zostanie ukryty</string>
   <string name="morphe_hide_compact_banner_title">Ukryj kompaktowe banery</string>
   <string name="morphe_hide_compact_banner_summary">Ukrywa kompaktowe banery i odstępy między niektórymi elementami</string>
   <string name="morphe_hide_expandable_card_title">Rozwijane karty pod filmami</string>
@@ -159,7 +172,6 @@ Zmiany obejmują:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Ukrywa wskazówki wyświetlane podczas gestów odtwarzacza, takie jak \"Przesuń w górę, aby precyzyjnie przewijać\", \"Puść, aby anulować\" i \"2,0x\"</string>
-  <string name="morphe_hide_snackbar_title">Ukryj dolne komunikaty</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ukryj wytyczne dla subskrybentów</string>
   <string name="morphe_hide_sync_button_title">Ukryj przycisk \"Zsynchronizuj z filmem\"</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Ukryj gradient przy przytrzymaniu</string>
@@ -386,6 +398,20 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_aislist_submit_failed_rate_limit">Wysłano zbyt wiele zgłoszeń, spróbuj ponownie później</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList odrzuciło zgłoszenie</string>
   <string name="morphe_aislist_submit_failed">Błąd zgłoszenia, sprawdź połączenie</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Dolny pasek powiadomień</string>
+  <string name="morphe_snackbar_screen_summary">Ukryj dolne paski powiadomień lub zmień ich kolory i kształt</string>
+  <string name="morphe_hide_snackbar_title">Ukryj dolne powiadomienia</string>
+  <string name="morphe_custom_snackbar_theme_title">Własny wygląd paska powiadomień</string>
+  <string name="morphe_custom_snackbar_theme_summary">Dolne paski powiadomień używają poniższych kolorów i zaokrąglenia rogów zamiast kolorów przeciwnego motywu</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Kolor tła ciemnego motywu</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Kolor tła pasków powiadomień w ciemnym motywie. Tekst jest czarny lub biały, w zależności od tego, który jest bardziej czytelny</string>
+  <string name="morphe_custom_snackbar_color_light_title">Kolor tła jasnego motywu</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Kolor tła pasków powiadomień w jasnym motywie. Tekst jest czarny lub biały, w zależności od tego, który jest bardziej czytelny</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Kolor obramowania</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Kolor obramowania wokół pasków powiadomień. Przezroczysty kolor oznacza brak obramowania</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Promień zaokrąglenia rogów</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Promień zaokrąglenia rogów pasków powiadomień w dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Biała lista reklam kanału</string>
   <string name="morphe_ads_channel_whitelist_summary">Filmy z kanałów na białej liście są odtwarzane z reklamami, aby ich twórcy mogli zarabiać. Na wszystkich pozostałych kanałach reklamy pozostają zablokowane</string>
@@ -597,7 +623,7 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <!-- interaction.watchlater.watchLaterPatch -->
   <string name="morphe_watch_later_wide_drag_handles_title">Poszerz uchwyty przeciągania w \"Do obejrzenia\"</string>
   <string name="morphe_watch_later_wide_drag_handles_summary">Uchwyty do przeciągania filmów na playliście \"Do obejrzenia\" są łatwiejsze do chwycenia</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_title">Ukryj komunikat o usunięciu z \"Do obejrzenia\"</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Ukryj powiadomienie o usunięciu z \"Do obejrzenia\"</string>
   <string name="morphe_watch_later_hide_removal_snackbar_summary">Nie wyświetla potwierdzenia po usunięciu filmu z playlisty \"Do obejrzenia\"</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Włącz zapętlanie filmu</string>
@@ -771,10 +797,10 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_swipe_left_zone_title">Gest przesunięcia w lewo</string>
   <string name="morphe_swipe_right_zone_title">Gest przesunięcia w prawo</string>
   <string name="morphe_swipe_top_zone_title">Gest przesunięcia w górę</string>
-  <string name="morphe_swipe_seek_title">Przesuń, aby przewinąć</string>
-  <string name="morphe_swipe_seek_summary">Przesuń w lewo lub w prawo w odtwarzaczu pełnoekranowym, aby przesunąć pasek postępu, a następnie zwolnij, aby przewinąć</string>
+  <string name="morphe_swipe_seek_title">Przesuń, aby przewijać</string>
+  <string name="morphe_swipe_seek_summary">Przesuń palcem w lewo lub w prawo na pełnym ekranie, aby poruszyć paskiem postępu, i puść, aby przewinąć</string>
   <string name="morphe_swipe_seek_sensitivity_title">Czułość przewijania gestem</string>
-  <string name="morphe_swipe_seek_sensitivity_summary">O ile przesuwa się pasek postępu przy każdym przesunięciu</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">O ile przesuwa się pasek postępu przy każdym ruchu palcem</string>
   <string name="morphe_swipe_zone_width_title">Szerokość lewej/prawej strefy</string>
   <string name="morphe_swipe_zone_width_summary">Procent każdej krawędzi ekranu zarezerwowany na gesty przesunięcia w lewo i w prawo (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Jasność</string>
@@ -963,7 +989,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
 
 Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi → Pokaż przycisk Ustawienia"</string>
   <string name="morphe_narrow_navigation_buttons_title">Włącz wąskie przyciski nawigacji</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Zmniejsza poziome odstępy między przyciskami</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Zmniejsza poziomy odstęp między przyciskami. Niedostępne przy szklanym pasku nawigacji, który ma własne ustawienia odstępów</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Wyłącz przyciski nawigacji bez etykiet</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Wyświetla przyciski nawigacji z etykietami, jeśli YouTube przesyła je bez nich</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Wyłącz zakładki nawigacji na pasku narzędzi</string>
@@ -982,6 +1008,12 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_navigation_bar_glass_summary">Wyświetla pasek nawigacji jako pływającą, zaokrągloną, półprzezroczystą kapsułkę. Niedostępne przy nieprzezroczystym stylu paska nawigacji</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Krycie szkła</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Dostosuj poziom krycia szklanego paska nawigacji (0 to pełna przezroczystość, 100 to brak przezroczystości)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Rozmiar szklanego paska nawigacji</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Dostosuj wysokość, szerokość oraz odstępy między przyciskami szklanego paska nawigacji z podglądem na żywo. Przyciski, które nie mieszczą się na szerokości ekranu, są ukrywane</string>
+  <string name="morphe_navigation_bar_glass_size_height">Wysokość</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maks. szerokość</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Odstęp między przyciskami</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Widoczne przyciski: %1$d z %2$d</string>
   <string name="morphe_toolbar_screen_title">Pasek narzędzi</string>
   <string name="morphe_toolbar_screen_summary">Zdecyduj, które elementy będą wyświetlane na pasku narzędzi</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ukryj przycisk Czat</string>
@@ -1683,6 +1715,7 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_series_tracker_discovery_unavailable">Nie udało się znaleźć playlisty</string>
   <string name="morphe_series_tracker_no_available_episodes">Brak dostępnych odcinków</string>
   <string name="morphe_series_tracker_hide_watched">Ukryj obejrzane</string>
+  <string name="morphe_series_tracker_watched_on_advance">Oznacz jako obejrzany przy przejściu do następnego odcinka</string>
   <string name="morphe_series_tracker_watch_previous">Oznacz poprzednie odcinki jako obejrzane</string>
   <string name="morphe_series_tracker_order_starts_with">Zaczyna się od: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Kolejność odcinków</string>
@@ -1735,9 +1768,13 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_niconico_comments_opacity_summary">Krycie tekstu oraz tła komentarzy</string>
   <string name="morphe_niconico_comments_travel_duration_title">Czas przelotu</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Liczba sekund potrzebna komentarzom na pokonanie ekranu. Mniejsze wartości oznaczają szybszy ruch</string>
+  <string name="morphe_niconico_comments_display_area_title">Obszar wyświetlania</string>
+  <string name="morphe_niconico_comments_display_area_summary">Określa, jaką część odtwarzacza (licząc od góry) zajmują komentarze. Niższe wartości pozostawiają dolną część filmu odsłoniętą</string>
   <string name="morphe_niconico_comments_max_length_title">Maksymalna długość komentarza</string>
   <string name="morphe_niconico_comments_max_length_summary">Ukrywa komentarze przekraczające podaną liczbę znaków. Każda emotka liczy się jako jeden znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Bez limitu</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Maks. częstotliwość odświeżania</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Najwyższa częstotliwość odświeżania ekranu używana podczas przesuwania komentarzy. Niższe wartości zużywają mniej baterii</string>
   <string name="morphe_niconico_comments_live_streams_title">Pokaż na transmisjach na żywo</string>
   <string name="morphe_niconico_comments_live_streams_summary">Transmisje na żywo i ich powtórki</string>
   <string name="morphe_niconico_comments_live_premieres_title">Pokaż na premierach</string>

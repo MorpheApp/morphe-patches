@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">ເຊື່ອງປຸ່ມຊ່ອງ</string>
   <string name="morphe_hide_channel_buttons_summary">ເຊື່ອງປຸ່ມຕ່າງໆ ເຊັ່ນ: ຕິດຕາມ, ເບິ່ງຊ່ອງ, ຊຸມຊົນ, ແລະ YouTube Music ຈາກໂປຣໄຟລ໌ຊ່ອງໃນຜົນການຄົ້ນຫາ</string>
   <string name="morphe_hide_community_posts_title">ເຊື່ອງໂພສຊຸມຊົນ</string>
+  <string name="morphe_post_buttons_screen_title">ປຸ່ມໃນໂພສ</string>
+  <string name="morphe_post_buttons_screen_summary">ເລືອກຮູບແບບຂອງປຸ່ມທີ່ຢູ່ລຸ່ມໂພສຂອງຊຸມຊົນ ແລະ ປຸ່ມທີ່ຈະເຊື່ອງ</string>
+  <string name="morphe_post_buttons_layout_title">ຮູບແບບປຸ່ມຂອງໂພສ</string>
+  <string name="morphe_post_buttons_layout_entry_1">ເຊີເວີ</string>
+  <string name="morphe_post_buttons_layout_entry_2">ບັງຄັບໃຊ້</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">ເຊື່ອງປຸ່ມຖືກໃຈ ແລະ ບໍ່ຖືກໃຈ</string>
+  <string name="morphe_hide_post_dislike_button_title">ເຊື່ອງປຸ່ມບໍ່ຖືກໃຈ</string>
+  <string name="morphe_hide_post_dislike_button_summary">ດ້ວຍເລআອຸດແບບບັງຄັບໃຊ້, ພື້ນທີ່ຂອງປຸ່ມຈະຖືກປະໄວ້</string>
+  <string name="morphe_hide_post_comment_button_title">ເຊື່ອງປຸ່ມຄອມເມັ້ນ</string>
+  <string name="morphe_hide_post_comments_preview_title">ເຊື່ອງການເບິ່ງຄອມເມັ້ນລ່ວງໜ້າ</string>
+  <string name="morphe_hide_post_comments_preview_summary">ເຊື່ອງການເບິ່ງຄອມເມັ້ນລ່ວງໜ້າທີ່ຢູ່ລຸ່ມໂພສ</string>
+  <string name="morphe_hide_post_share_button_title">ເຊື່ອງປຸ່ມແບ່ງປັນ</string>
+  <string name="morphe_hide_post_share_button_summary">ປຸ່ມດາວໂຫຼດຮູບພາບຂອງໂພສຈະຖືກວາງໄວ້ຖັດຈາກປຸ່ມແບ່ງປັນ, ດັ່ງນັ້ນມັນຈຶ່ງຖືກເຊື່ອງໄປນຳ</string>
   <string name="morphe_hide_compact_banner_title">ເຊື່ອງແບນເນີແບບກະທັດຮັດ</string>
   <string name="morphe_hide_compact_banner_summary">ເຊື່ອງແບນເນີແບບກະທັດຮັດ ແລະ ໄລຍະຫ່າງລະຫວ່າງບາງອົງປະກອບ</string>
   <string name="morphe_hide_expandable_card_title">ບັດທີ່ຂະຫຍາຍໄດ້ ພາຍໃຕ້ວິດີໂອ</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">ເຊື່ອງຄຳແນະນຳທີ່ສະແດງໃນລະຫວ່າງການເຮັດທ່າທາງຂອງຜູ້ຫຼິ້ນ, ເຊັ່ນ \'ລາກຂຶ້ນເພື່ອຊອກຫາຢ່າງຊັດເຈນ\', \'ປ່ອຍເພື່ອຍົກເລີກ\' ແລະ \'2x\'</string>
-  <string name="morphe_hide_snackbar_title">ເຊື່ອງ snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">ເຊື່ອງຄຳແນະນຳສຳລັບຜູ້ຕິດຕາມ</string>
   <string name="morphe_hide_sync_button_title">ເຊື່ອງປຸ່ມ \'ຊິງຄ໌ກັບວິດີໂອ\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">ເຊື່ອງການໄລ່ສີຂອງການແຕະ and ຄ້າງໄວ້</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">ມີການສົ່ງລາຍງານຫຼາຍເກີນໄປ, ກະລຸນາລອງໃໝ່ໃນພາຍຫຼັງ</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList ປະຕິເສດການລາຍງານ</string>
   <string name="morphe_aislist_submit_failed">ການລາຍງານລົ້ມເຫຼວ, ກະລຸນາກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">ສະແນັກບາ</string>
+  <string name="morphe_snackbar_screen_summary">ເຊື່ອງ snackbars ຫຼື ປ່ຽນສີ ແລະ ຮູບຊົງຂອງພວກມັນ</string>
+  <string name="morphe_hide_snackbar_title">ເຊື່ອງ snackbar</string>
+  <string name="morphe_custom_snackbar_theme_title">Snackbar ແບບກຳໜົດເອງ</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbar ຈະໃຊ້ສີ ແລະ ຄວາມມົນຂອງມຸມລຸ່ມນີ້ ແທນທີ່ຈະໃຊ້ສີຂອງຮູບແບບທີ່ກົງກັນຂ້າມ</string>
+  <string name="morphe_custom_snackbar_color_dark_title">ສີພື້ນຫຼັງຂອງຮູບແບບມືດ</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">ສີພື້ນຫຼັງຂອງ snackbars ໃນຮູບແບບມືດ. ຂໍ້ຄວາມຈະເປັນສີດຳ ຫຼື ສີຂາວ ຂຶ້ນກັບວ່າສີໃດອ່ານງ່າຍກວ່າ</string>
+  <string name="morphe_custom_snackbar_color_light_title">ສີພື້ນຫຼັງຂອງຮູບແບບສະຫວ່າງ</string>
+  <string name="morphe_custom_snackbar_color_light_summary">ສີພື້ນຫຼັງຂອງ snackbar ໃນຮູບແບບສະຫວ່າງ. ຂໍ້ຄວາມຈະເປັນສີດຳ ຫຼື ສີຂາວ, ອັນໃດທີ່ອ່ານງ່າຍກວ່າ</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">ສີຂອງຂອບ</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">ສີຂອງຂອບອ້ອມຮອບ snackbar. ສີໂປ່ງໃສຈະບໍ່ສະແດງຂອບ</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">ລັດສະໝີຂອງມຸມ</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">ລັດສະໝີຂອງມຸມຂອງ snackbar ໃນໜ່ວຍ dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">ລາຍຊື່ຊ່ອງໂຄສະນາທີ່ຍອມຮັບ</string>
   <string name="morphe_ads_channel_whitelist_summary">ວິດີໂອຈາກຊ່ອງທີ່ຢູ່ໃນລາຍການອະນຸຍາດຈະຫຼິ້ນພ້ອມກັບໂຄສະນາ ເພື່ອໃຫ້ຜູ້ສ້າງໄດ້ຮັບເງິນ. ໂຄສະນາຈະຍັງຄົງຖືກບລັອກໃນທຸກຊ່ອງອື່ນໆ</string>
@@ -771,6 +797,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_left_zone_title">ທ່າທາງການປັດໄປທາງຊ້າຍ</string>
   <string name="morphe_swipe_right_zone_title">ທ່າທາງການປັດໄປທາງຂວາ</string>
   <string name="morphe_swipe_top_zone_title">ທ່າທາງການປັດຂຶ້ນເທິງ</string>
+  <string name="morphe_swipe_seek_title">ເລື່ອນເພື່ອຊອກຫາ</string>
+  <string name="morphe_swipe_seek_summary">ເລື່ອນໄປທາງຊ້າຍ ຫຼື ຂວາ ໃນເຄື່ອງຫຼິ້ນແບບເຕັມຈໍເພື່ອເຄື່ອນຍ້າຍແຖບຊອກຫາ, ແລະ ປ່ອຍເພື່ອຊອກຫາ</string>
+  <string name="morphe_swipe_seek_sensitivity_title">ຄວາມໄວໃນການເລື່ອນເພື່ອຊອກຫາ</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">ໄລຍະທີ່ແຖບຊອກຫາເຄື່ອນທີ່ໃນການເລື່ອນແຕ່ລະຄັ້ງ</string>
   <string name="morphe_swipe_zone_width_title">ຄວາມກວ້າງຂອງເຂດ ຊ້າຍ/ຂວາ</string>
   <string name="morphe_swipe_zone_width_summary">ເປີເຊັນຂອງຂອບໜ້າຈໍແຕ່ລະດ້ານທີ່ສຳຮອງໄວ້ສຳລັບການປັດຊ້າຍ ແລະ ຂວາ (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">ຄວາມສະຫວ່າງ</string>
@@ -942,7 +972,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_title">ເຊື່ອງປຸ່ມການແຈ້ງເຕືອນ</string>
   <string name="morphe_show_search_button_title">ສະແດງປຸ່ມຄົ້ນຫາ</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">ສະແດງປຸ່ມເບິ່ງພາຍຫຼັງ</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">ເບິ່ງພາຍຫຼັງ</string>
   <string name="morphe_show_settings_button_title">ສະແດງປຸ່ມການຕັ້ງຄ່າ</string>
   <string name="morphe_show_settings_button_type_title">ການເຮັດວຽກຂອງປຸ່ມຕັ້ງຄ່າ</string>
   <string name="morphe_show_settings_button_type_summary">ເປີດການຕັ້ງຄ່າ Morphe ເມື່ອເປີດໃຊ້ງານ, ຫຼື ການຕັ້ງຄ່າ YouTube ເມື່ອປິດໃຊ້ງານ</string>
@@ -957,7 +989,7 @@ Second \"item\" text"</string>
 
 ເພື່ອເຂົ້າເຖິງການຕັ້ງຄ່າ, ໃຫ້ເປີດໃຊ້ປຸ່ມການຕັ້ງຄ່າຜ່ານ General → Toolbar → Show Settings button"</string>
   <string name="morphe_narrow_navigation_buttons_title">ເປີດໃຊ້ປຸ່ມນຳທາງແບບແຄບ</string>
-  <string name="morphe_narrow_navigation_buttons_summary">ຫຼຸດໄລຍະຫ່າງຕາມແນວນອນລະຫວ່າງປຸ່ມ</string>
+  <string name="morphe_narrow_navigation_buttons_summary">ຫຼຸດໄລຍະຫ່າງຕາມລວງນອນລະຫວ່າງປຸ່ມ. ບໍ່ສາມາດໃຊ້ໄດ້ກັບແຖບນຳທາງແບບແກ້ວ, ເຊິ່ງມີໄລຍະຫ່າງຂອງປຸ່ມເປັນຂອງຕົນເອງ</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">ປິດການນຳໃຊ້ປຸ່ມນຳທາງທີ່ບໍ່ມີປ້າຍກຳກັບ</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">ສະແດງປຸ່ມນຳທາງພ້ອມກັບປ້າຍກຳກັບ, ຖ້າ YouTube ສົ່ງພວກມັນມາໂດຍບໍ່ມີປ້າຍກຳກັບ</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">ປິດການນຳໃຊ້ແຖບການນຳທາງຂອງແຖບເຄື່ອງມື</string>
@@ -976,6 +1008,12 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">ສະແດງແຖບນຳທາງເປັນແບບແຄບຊູນໂຄ້ງ, ລອຍໄດ້ ແລະ ໂປ່ງໃສ. ບໍ່ສາມາດໃຊ້ໄດ້ກັບຮູບແບບແຖບນຳທາງແບບທຶບ</string>
   <string name="morphe_navigation_bar_glass_opacity_title">ຄວາມທຶບຂອງແກ້ວ</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ປັບລະດັບຄວາມໂປ່ງໃສຂອງແຖບນຳທາງແບບແກ້ວ (0 ແມ່ນໂປ່ງໃສ, 100 ແມ່ນທຶບ)</string>
+  <string name="morphe_navigation_bar_glass_size_title">ຂະໜາດຂອງແຖບນຳທາງແບບແກ້ວ</string>
+  <string name="morphe_navigation_bar_glass_size_summary">ປັບຄວາມສູງ, ຄວາມກວ້າງ ແລະ ໄລຍະຫ່າງຂອງປຸ່ມຂອງແຖບນຳທາງແບບແກ້ວ, ພ້ອມກັບການເບິ່ງຕົວຢ່າງ. ປຸ່ມທີ່ບໍ່ພໍກັບຄວາມກວ້າງຂອງໜ້າຈໍຈະຖືກເຊື່ອງໄວ້</string>
+  <string name="morphe_navigation_bar_glass_size_height">ຄວາມສູງ</string>
+  <string name="morphe_navigation_bar_glass_size_width">ຄວາມກວ້າງສູງສຸດ</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">ໄລຍະຫ່າງຂອງປຸ່ມ</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">ປຸ່ມທີ່ສະແດງ: %1$d ຈາກ %2$d</string>
   <string name="morphe_toolbar_screen_title">ແຖບເຄື່ອງມື</string>
   <string name="morphe_toolbar_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ປາກົດໃນແຖບເຄື່ອງມື</string>
   <string name="morphe_hide_toolbar_chat_button_title">ເຊື່ອງປຸ່ມແຊັດ</string>
@@ -1678,6 +1716,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_discovery_unavailable">ບໍ່ພົບເພລລິສ</string>
   <string name="morphe_series_tracker_no_available_episodes">ບໍ່ມີຕອນທີ່ສາມາດຮັບຊົມໄດ້</string>
   <string name="morphe_series_tracker_hide_watched">ເຊື່ອງຕອນທີ່ເບິ່ງແລ້ວ</string>
+  <string name="morphe_series_tracker_watched_on_advance">ໝາຍວ່າເບິ່ງແລ້ວເມື່ອຍ້າຍໄປຕອນຕໍ່ໄປ</string>
   <string name="morphe_series_tracker_watch_previous">ໝາຍຕອນກ່ອນໜ້ານີ້ວ່າເບິ່ງແລ້ວ</string>
   <string name="morphe_series_tracker_order_starts_with">ເລີ່ມຕົ້ນດ້ວຍ: %1$s</string>
   <string name="morphe_series_tracker_episode_order">ລຳດັບຕອນ</string>
@@ -1730,10 +1769,17 @@ AVC (H.264)
   <string name="morphe_niconico_comments_opacity_summary">ຄວາມໂປ່ງໃສຂອງຂໍ້ຄວາມຄຳຄິດເຫັນ ແລະ ພື້ນຫຼັງ</string>
   <string name="morphe_niconico_comments_travel_duration_title">ໄລຍະເວລາໃນການເຄື່ອນທີ່</string>
   <string name="morphe_niconico_comments_travel_duration_summary">ຈຳນວນວິນາທີທີ່ຄຳຄິດເຫັນໃຊ້ໃນການເລື່ອນຜ່ານໜ້າຈໍ. ຄ່າທີ່ຕ່ຳກວ່າຈະເຄື່ອນທີ່ໄວຂຶ້ນ</string>
+  <string name="morphe_niconico_comments_display_area_title">ພື້ນທີ່ສະແດງຜົນ</string>
+  <string name="morphe_niconico_comments_display_area_summary">ຄອມເມັ້ນຈະໃຊ້ພື້ນທີ່ຂອງເຄື່ອງຫຼິ້ນຫຼາຍປານໃດ ໂດຍນັບຈາກດ້ານເທິງ. ຄ່າທີ່ຕ່ຳກວ່າຈະເຮັດໃຫ້ສ່ວນລຸ່ມຂອງວິດີໂອວ່າງ</string>
   <string name="morphe_niconico_comments_max_length_title">ຄວາມຍາວສູງສຸດຂອງຄຳຄິດເຫັນ</string>
   <string name="morphe_niconico_comments_max_length_summary">ເຊື່ອງຄຳຄິດເຫັນທີ່ມີຕົວອັກສອນຫຼາຍກວ່ານີ້. ແຕ່ລະ emoji ຖືກນັບເປັນໜຶ່ງຕົວອັກສອນ</string>
   <string name="morphe_niconico_comments_max_length_no_limit">ບໍ່ມີຂີດຈຳກັດ</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">ອັດຕາການຣີເຟຣຊສູງສຸດ</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">ອັດຕາການຣີເຟຣຊໜ້າຈໍສູງສຸດທີ່ໃຊ້ໃນຂະນະທີ່ຄອມເມັ້ນເຄື່ອນທີ່. ຄ່າທີ່ຕ່ຳກວ່າຈະໃຊ້ແບັດເຕີຣີນ້ອຍລົງ</string>
+  <string name="morphe_niconico_comments_live_streams_title">ສະແດງໃນການຖ່າຍທອດສົດ</string>
+  <string name="morphe_niconico_comments_live_streams_summary">ການຖ່າຍທອດສົດ ແລະ ການເບິ່ງຄືນ</string>
   <string name="morphe_niconico_comments_live_premieres_title">ສະແດງໃນ Premiere</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">ການເປີດຕົວວິດີໂອໃນຂະນະທີ່ກຳລັງຫຼິ້ນ</string>
   <string name="morphe_niconico_comments_ended_premieres_title">ສະແດງໃນ Premiere ທີ່ສິ້ນສຸດແລ້ວ</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">ການຫຼິ້ນຄືນຂອງແຊັດສຳລັບການເປີດຕົວພິເສດທີ່ສິ້ນສຸດລົງແລ້ວ</string>
   <string name="morphe_live_chat_translate_screen_title">ການແປແຊັດສົດ</string>

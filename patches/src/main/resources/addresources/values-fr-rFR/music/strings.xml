@@ -201,25 +201,25 @@ Les morceaux téléchargés apparaîtront ici"</string>
   <string name="morphe_music_downloads_complete">Téléchargement terminé</string>
   <string name="morphe_music_downloads_failed">Échec du téléchargement</string>
   <string name="morphe_music_downloads_playlist_download_title">Téléchargement de la playlist</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Énumération des pistes…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s énumérés…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Impossible d\'énumérer les pistes de la playlist</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Déjà téléchargé : %s</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Liste des morceaux…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s listés…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Impossible de lister les morceaux de la playlist</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Déjà téléchargés : %s</string>
   <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s dans cette playlist, %2$s pas encore téléchargés.
 
-Ils sont téléchargés un par un, ce qui peut prendre beaucoup de temps et nécessite environ %3$s d'espace libre"</string>
+Ils sont téléchargés un à la fois, ce qui peut prendre beaucoup de temps et nécessite environ %3$s d'espace libre"</string>
   <string name="morphe_music_downloads_playlist_download_confirm_button">Télécharger</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Téléchargement de la piste %1$s sur %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s téléchargé</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Téléchargement du morceau %1$s sur %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s téléchargés</string>
   <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s téléchargés, %2$s n\'ont pas pu être téléchargés</string>
   <string name="morphe_music_downloads_playlist_download_already_running">Téléchargement de la playlist déjà en cours</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Votre compte n\'est pas encore connu. Réessayez dans un instant</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s énumérés, tous déjà téléchargés</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Seule une partie de la playlist a pu être énumérée. Appuyez à nouveau sur Télécharger plus tard pour obtenir le reste</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Votre compte n\'est pas encore reconnu. Réessayez dans un instant</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listés, tous déjà téléchargés</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Seule une partie de la playlist a pu être listée. Appuyez à nouveau sur \'Télécharger\' plus tard pour obtenir le reste</string>
   <string name="morphe_music_downloads_playlist_download_started">Téléchargement de %s en arrière-plan</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Pas de connexion réseau</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Aucune connexion réseau</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">En attente du réseau…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Arrêté après %1$s sur %2$s. Appuyez à nouveau sur Télécharger pour continuer</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Arrêté après %1$s sur %2$s. Appuyez à nouveau sur \'Télécharger\' pour reprendre</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">À propos</string>

@@ -69,6 +69,19 @@ Le modifiche includono:
   <string name="morphe_hide_channel_buttons_title">Nascondi i pulsanti del canale</string>
   <string name="morphe_hide_channel_buttons_summary">Nasconde pulsanti come Iscriviti, Visualizza canale, Community e YouTube Music dai profili dei canali nei risultati di ricerca</string>
   <string name="morphe_hide_community_posts_title">Nascondi i post della community</string>
+  <string name="morphe_post_buttons_screen_title">Pulsanti post</string>
+  <string name="morphe_post_buttons_screen_summary">Scegli il layout dei pulsanti sotto i post della community e quali pulsanti nascondere</string>
+  <string name="morphe_post_buttons_layout_title">Layout pulsanti post</string>
+  <string name="morphe_post_buttons_layout_entry_1">Server</string>
+  <string name="morphe_post_buttons_layout_entry_2">Forzato</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Nascondi i pulsanti Mi piace e Non mi piace</string>
+  <string name="morphe_hide_post_dislike_button_title">Nascondi il pulsante Non mi piace</string>
+  <string name="morphe_hide_post_dislike_button_summary">Con il layout Forzato, lo spazio del pulsante viene mantenuto</string>
+  <string name="morphe_hide_post_comment_button_title">Nascondi il pulsante Commenti</string>
+  <string name="morphe_hide_post_comments_preview_title">Nascondi l\'anteprima dei commenti</string>
+  <string name="morphe_hide_post_comments_preview_summary">Nasconde l\'anteprima dei commenti sotto i post</string>
+  <string name="morphe_hide_post_share_button_title">Nascondi il pulsante Condividi</string>
+  <string name="morphe_hide_post_share_button_summary">Il pulsante di download delle immagini del post è disegnato accanto al pulsante di condivisione, quindi viene nascosto anche questo</string>
   <string name="morphe_hide_compact_banner_title">Nascondi i banner compatti</string>
   <string name="morphe_hide_compact_banner_summary">Nasconde banner compatti e spazi tra alcuni componenti</string>
   <string name="morphe_hide_expandable_card_title">Schede espandibili sotto i video</string>
@@ -159,7 +172,6 @@ Le modifiche includono:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Nasconde i suggerimenti mostrati durante i gesti del player, come \'Trascina verso l\'alto per una ricerca precisa\', \'Rilascia per annullare\' e \'2x\'</string>
-  <string name="morphe_hide_snackbar_title">Nascondi snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Nascondi le linee guida per gli iscritti</string>
   <string name="morphe_hide_sync_button_title">Nascondi il pulsante \'Sincronizza con video\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Nascondi il gradiente di tocco prolungato</string>
@@ -386,6 +398,20 @@ Le segnalazioni sono pubbliche e vengono esaminate prima che un canale venga agg
   <string name="morphe_aislist_submit_failed_rate_limit">Sono state inviate troppe segnalazioni, riprova più tardi</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList ha rifiutato la segnalazione</string>
   <string name="morphe_aislist_submit_failed">Segnalazione non riuscita, controlla la connessione</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Nascondi le snackbar o cambiane i colori e la forma</string>
+  <string name="morphe_hide_snackbar_title">Nascondi snackbar</string>
+  <string name="morphe_custom_snackbar_theme_title">Snackbar personalizzata</string>
+  <string name="morphe_custom_snackbar_theme_summary">Le Snackbar utilizzano i colori e il raggio d\'angolo indicati di seguito invece dei colori del tema opposto</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Colore di sfondo del tema scuro</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Colore di sfondo delle Snackbar nel tema scuro. Il testo sarà nero o bianco, a seconda di quale sia più leggibile</string>
+  <string name="morphe_custom_snackbar_color_light_title">Colore di sfondo del tema chiaro</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Colore di sfondo delle Snackbar nel tema chiaro. Il testo sarà nero o bianco, a seconda di quale sia più leggibile</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Colore del bordo</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Colore del bordo intorno alle Snackbar. Un colore trasparente nasconde il bordo</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Raggio d\'angolo</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Raggio d\'angolo delle Snackbar in dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Whitelist annunci dei canali</string>
   <string name="morphe_ads_channel_whitelist_summary">I video dei canali in whitelist vengono riprodotti con gli annunci, così i loro creatori vengono pagati. Gli annunci restano bloccati su tutti gli altri canali</string>
@@ -963,7 +989,7 @@ Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' 
 
 Per accedere alle Impostazioni, abilita il pulsante Impostazioni tramite Generale → Barra degli strumenti → Mostra pulsante Impostazioni"</string>
   <string name="morphe_narrow_navigation_buttons_title">Attiva pulsanti di navigazione stretti</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Riduce lo spazio orizzontale tra i pulsanti</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Riduce la spaziatura orizzontale tra i pulsanti. Non disponibile con la barra di navigazione glass, che ha la propria spaziatura dei pulsanti</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Disattiva i pulsanti di navigazione senza etichette</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Mostra i pulsanti di navigazione con etichette, se YouTube li invia senza etichette</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Disabilita le schede di navigazione della barra degli strumenti</string>
@@ -982,6 +1008,12 @@ Per accedere alle Impostazioni, abilita il pulsante Impostazioni tramite General
   <string name="morphe_navigation_bar_glass_summary">Mostra la barra di navigazione come una capsula traslucida, arrotondata e fluttuante. Non disponibile con lo stile della barra di navigazione Opaca</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Opacità glass</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Regola il livello di trasparenza della barra di navigazione glass (0 è trasparente, 100 è opaco)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Dimensioni barra di navigazione glass</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Regola l\'altezza, la larghezza e la spaziatura dei pulsanti della barra di navigazione glass, con un\'anteprima. I pulsanti che non rientrano nella larghezza dello schermo vengono nascosti</string>
+  <string name="morphe_navigation_bar_glass_size_height">Altezza</string>
+  <string name="morphe_navigation_bar_glass_size_width">Larghezza massima</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Spaziatura pulsanti</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Pulsanti visualizzati: %1$d di %2$d</string>
   <string name="morphe_toolbar_screen_title">Barra degli strumenti</string>
   <string name="morphe_toolbar_screen_summary">Scegli quali componenti mostrare nella barra degli strumenti</string>
   <string name="morphe_hide_toolbar_chat_button_title">Nascondi il pulsante Chat</string>
@@ -1683,6 +1715,7 @@ La registrazione automatica è facoltativa. Si arresta in modalità incognito o 
   <string name="morphe_series_tracker_discovery_unavailable">Impossibile trovare una playlist</string>
   <string name="morphe_series_tracker_no_available_episodes">Nessun episodio disponibile</string>
   <string name="morphe_series_tracker_hide_watched">Nascondi guardati</string>
+  <string name="morphe_series_tracker_watched_on_advance">Contrassegna come visto quando si passa all\'episodio successivo</string>
   <string name="morphe_series_tracker_watch_previous">Segna gli episodi precedenti come guardati</string>
   <string name="morphe_series_tracker_order_starts_with">Inizia con: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Ordinamento episodi</string>
@@ -1735,9 +1768,13 @@ La registrazione automatica è facoltativa. Si arresta in modalità incognito o 
   <string name="morphe_niconico_comments_opacity_summary">Opacità del testo dei commenti e degli sfondi</string>
   <string name="morphe_niconico_comments_travel_duration_title">Durata del tragitto</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Quanti secondi impiegano i commenti per attraversare lo schermo. Valori più bassi aumentano la velocità</string>
+  <string name="morphe_niconico_comments_display_area_title">Area di visualizzazione</string>
+  <string name="morphe_niconico_comments_display_area_summary">Indica quanta parte del player, partendo dall\'alto, viene utilizzata dai commenti. Valori più bassi mantengono libera la parte inferiore del video</string>
   <string name="morphe_niconico_comments_max_length_title">Lunghezza massima dei commenti</string>
   <string name="morphe_niconico_comments_max_length_summary">Nasconde i commenti con più caratteri di questo. Ogni emoji conta come un carattere</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Nessun limite</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Frequenza di aggiornamento massima</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Frequenza di aggiornamento massima del display utilizzata durante il movimento dei commenti. Valori più bassi consumano meno batteria</string>
   <string name="morphe_niconico_comments_live_streams_title">Mostra nelle dirette</string>
   <string name="morphe_niconico_comments_live_streams_summary">Dirette e relative repliche</string>
   <string name="morphe_niconico_comments_live_premieres_title">Mostra nelle Anteprime</string>

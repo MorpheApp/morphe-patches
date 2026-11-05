@@ -200,25 +200,26 @@ Yüklənilmiş treklər burada görünür"</string>
   <string name="morphe_music_downloads_progress">%s%% yüklənilir</string>
   <string name="morphe_music_downloads_complete">Yükləmə tamamlandı</string>
   <string name="morphe_music_downloads_failed">Yükləmə uğursuz oldu</string>
-  <string name="morphe_music_downloads_playlist_download_title">Pleylistin yüklənməsi</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Treklər siyahıya alınır…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Pleylistin trekləri siyahıya alınmadı</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Artıq yüklənib: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"Bu pleylistdə %1$s trek var, %2$s-i hələ yüklənməyib.
+  <string name="morphe_music_downloads_playlist_download_title">Pleylist yüklənməsi</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Trekləri siyahıya alır…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s siyahıya alındı…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Pleylistin treklərini siyahıya almaq olmadı</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Artıq yüklənilib: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"Bu pleylistdə %1$s, %2$s hələ yüklənməyib.
 
-Onlar tək-tək yüklənir, bu uzun vaxt ala bilər və təxminən %3$s boş yer tələb olunur"</string>
+Onlar bir-bir yüklənir, uzun müddət çəkə bilər və təxminən %3$s boş yer tələb edir"</string>
   <string name="morphe_music_downloads_playlist_download_confirm_button">Yüklə</string>
-  <string name="morphe_music_downloads_playlist_download_progress">%2$s trekdən %1$s-ci yüklənir</string>
+  <string name="morphe_music_downloads_playlist_download_progress">%2$s-dən %1$s treki yükləyir</string>
   <string name="morphe_music_downloads_playlist_download_complete">%s yüklənildi</string>
   <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s yüklənildi, %2$s yüklənə bilmədi</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Pleylistin yüklənməsi artıq davam edir</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Hesabınız hələ tanınmır. Bir az sonra yenidən cəhd edin</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s siyahıya alındı, hamısı artıq yüklənib</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Pleylistin yalnız bir hissəsi siyahıya alına bildi. Qalanlarını əldə etmək üçün daha sonra yenidən Yüklə düyməsinə toxunun</string>
-  <string name="morphe_music_downloads_playlist_download_started">%s arxa planda yüklənir</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Pleylist yüklənməsi artıq davam edir</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Hesabınız hələ tanınmır. Bir azdan təkrar cəhd edin</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s siyahıya alındı, hamısı artıq yüklənilib</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Pleylistin yalnız bir hissəsi siyahıya alına bilər. Qalanlarını əldə etmək üçün daha sonra təkrar Yükləməyə toxun</string>
+  <string name="morphe_music_downloads_playlist_download_started">%s arxa planda yüklənilir</string>
   <string name="morphe_music_downloads_playlist_download_no_network">Şəbəkə bağlantısı yoxdur</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Şəbəkə gözlənilir…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">%2$s-dən %1$s sonra dayandırıldı. Davam etmək üçün yenidən Yüklə düyməsinə toxunun</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Şəbəkə gözlənilir...</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s-dən %1$s sonrası dayandırıldı. Davam etmək üçün təkrar Yükləməyə toxun</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Haqqında</string>

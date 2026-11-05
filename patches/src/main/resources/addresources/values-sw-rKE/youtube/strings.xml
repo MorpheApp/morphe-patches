@@ -69,6 +69,19 @@ Mabadiliko ni pamoja na:
   <string name="morphe_hide_channel_buttons_title">Ficha vitufe vya chaneli</string>
   <string name="morphe_hide_channel_buttons_summary">Huficha vitufe kama vile Jisajili, Angalia Chaneli, Jamii, na YouTube Music kutoka kwenye wasifu wa chaneli katika matokeo ya utafutaji</string>
   <string name="morphe_hide_community_posts_title">Ficha machapisho ya jumuiya</string>
+  <string name="morphe_post_buttons_screen_title">Vitufe vya machapisho</string>
+  <string name="morphe_post_buttons_screen_summary">Chagua mpangilio wa vitufe chini ya machapisho ya jumuiya na ni vitufe gani vifichwe</string>
+  <string name="morphe_post_buttons_layout_title">Mpangilio wa vitufe vya chapisho</string>
+  <string name="morphe_post_buttons_layout_entry_1">Seva</string>
+  <string name="morphe_post_buttons_layout_entry_2">Iliyolazimishwa</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Ficha vitufe vya kupenda na kutopenda</string>
+  <string name="morphe_hide_post_dislike_button_title">Ficha kitufe cha kutopenda</string>
+  <string name="morphe_hide_post_dislike_button_summary">Kwa mpangilio wa Iliyolazimishwa, nafasi ya kitufe huachwa</string>
+  <string name="morphe_hide_post_comment_button_title">Ficha kitufe cha maoni</string>
+  <string name="morphe_hide_post_comments_preview_title">Ficha onyesho la awali la maoni</string>
+  <string name="morphe_hide_post_comments_preview_summary">Huficha onyesho la awali la maoni chini ya machapisho</string>
+  <string name="morphe_hide_post_share_button_title">Ficha kitufe cha kushiriki</string>
+  <string name="morphe_hide_post_share_button_summary">Kitufe cha kupakua picha za chapisho huchorwa kando ya kitufe cha kushiriki, hivyo pia hufichwa</string>
   <string name="morphe_hide_compact_banner_title">Ficha bango fupi</string>
   <string name="morphe_hide_compact_banner_summary">Huficha mabana madogo na nafasi kati ya baadhi ya vipengele</string>
   <string name="morphe_hide_expandable_card_title">Kadi zinazotanuka chini ya video</string>
@@ -159,7 +172,6 @@ Mabadiliko ni pamoja na:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Huficha vidokezo vinavyoonyeshwa wakati wa ishara za kivinjari, kama vile \'Vuta juu ili kutafuta kwa usahihi\', \'Achilia ili ghairi\' na \'2x\'</string>
-  <string name="morphe_hide_snackbar_title">Ficha snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ficha miongozo ya wanachama</string>
   <string name="morphe_hide_sync_button_title">Ficha kitufe cha \'Onyesha kulingana na video\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Ficha mwelekeo wa rangi wa kugusa na kushikilia</string>
@@ -386,6 +398,20 @@ Ripoti ni za hadhara na hupitiwa kabla ya chaneli kuongezwa kwenye orodha. Kuond
   <string name="morphe_aislist_submit_failed_rate_limit">Ripoti nyingi sana zimetumwa, jaribu tena baadaye</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList imekataa ripoti</string>
   <string name="morphe_aislist_submit_failed">Ripoti imeshindwa, angalia muunganisho wako</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Ficha snackbars au badilisha rangi na umbo lake</string>
+  <string name="morphe_hide_snackbar_title">Ficha snackbar</string>
+  <string name="morphe_custom_snackbar_theme_title">Snackbar ya kipekee</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbars hutumia rangi na rediasi ya kona hapa chini badala ya rangi za mandhari kinyume</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Rangi ya mandhari ya giza</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Rangi ya mandhari ya snackbars katika mandhari ya giza. Maandishi ni meusi au meupe, kulingana na kile kinachosomeka zaidi</string>
+  <string name="morphe_custom_snackbar_color_light_title">Rangi ya mandhari ya mwanga</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Rangi ya mandhari ya snackbars katika mandhari ya mwanga. Maandishi ni meusi au meupe, kulingana na kile kinachosomeka zaidi</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Rangi ya mpaka</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Rangi ya mpaka kuzunguka snackbars. Rangi ya uwazi haionyeshi mpaka</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Radius ya kona</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Radius ya kona ya snackbars katika dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Orodha nyeupe ya matangazo ya chaneli</string>
   <string name="morphe_ads_channel_whitelist_summary">Video kutoka kwa chaneli zilizoruhusiwa hucheza na matangazo, ili watengenezaji wake walipwe. Matangazo yanabaki yamezuiwa kwenye chaneli nyingine zote</string>
@@ -771,6 +797,10 @@ Ili kurekebisha hili, washa 'Ghadhabu ya utiririko wa video' na ubadilishe 'Klij
   <string name="morphe_swipe_left_zone_title">Ishara ya kutelezesha kushoto</string>
   <string name="morphe_swipe_right_zone_title">Ishara ya kutelezesha kulia</string>
   <string name="morphe_swipe_top_zone_title">Ishara ya kutelezesha juu</string>
+  <string name="morphe_swipe_seek_title">Telezesha ili kutafuta</string>
+  <string name="morphe_swipe_seek_summary">Telezesha kushoto au kulia kwenye kicheza cha skrini nzima ili kusogeza kanda ya utafutaji, na uachie ili kutafuta</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Unyeti wa telezesho la utafutaji</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Kanda ya utafutaji inasogea kiasi gani kwa kila telezesho</string>
   <string name="morphe_swipe_zone_width_title">Upana wa kifuniko cha kushoto/kulia</string>
   <string name="morphe_swipe_zone_width_summary">Asilimia ya kila ukingo wa skrini iliyotengwa kwa ishara za kupapasa kushoto na kulia (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Mwangaza</string>
@@ -959,7 +989,7 @@ Ili kurekebisha hili, washa 'Ghadhabu ya utiririko wa video' na ubadilishe 'Klij
 
 Ili kufikia Mipangilio, wezesha kitufe cha Mipangilio kupitia General → Toolbar → Show Settings button"</string>
   <string name="morphe_narrow_navigation_buttons_title">Washa vitufe vya urambazaji vyembamba</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Inapunguza nafasi ya mlalo kati ya vitufe</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Hupunguza nafasi ya mlalo kati ya vitufe. Haipatikani kwenye baa ya urambazaji ya kioo, ambayo ina nafasi yake ya vitufe</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Zima vitufe vya urambazaji visivyo na lebo</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Inaonyesha vitufe vya urambazaji vyenye lebo, ikiwa YouTube vitatuma bila lebo</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Zima vichupo vya urambazaji vya chombo cha zana</string>
@@ -978,6 +1008,12 @@ Ili kufikia Mipangilio, wezesha kitufe cha Mipangilio kupitia General → Toolba
   <string name="morphe_navigation_bar_glass_summary">Inaonyesha bar ya urambazaji kama kapsuli inayoelea, yenye pembe zilizoviringishwa na inayopitisha mwanga. Haipatikani ikiwa mtindo wa bar ya urambazaji isiyopitisha mwanga umetumiwa</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Uwazi wa kioo</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Rekebisha kiwango cha uwazi cha bar ya urambazaji ya kioo (0 ni wazi, 100 isiyopitisha mwanga)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Ukubwa wa baa ya urambazaji ya kioo</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Rekebisha urefu, upana na nafasi ya vitufe ya baa ya urambazaji ya kioo, ikiwa na kionyo. Vitufe visivyoendana na upana wa skrini hufichwa</string>
+  <string name="morphe_navigation_bar_glass_size_height">Urefu</string>
+  <string name="morphe_navigation_bar_glass_size_width">Upana wa juu</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Nafasi ya vitufe</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Vitufe vinavyoonekana: %1$d kati ya %2$d</string>
   <string name="morphe_toolbar_screen_title">Upau wa zana</string>
   <string name="morphe_toolbar_screen_summary">Chagua ni vipengele gani vionekane kwenye baa ya zana</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ficha kitufe cha Chat</string>
@@ -1680,6 +1716,7 @@ Kurekodi kiotomatiki ni hiari. Inasimama katika hali ya siri au wakati akaunti i
   <string name="morphe_series_tracker_discovery_unavailable">Imeshindwa kupata orodha ya nyimbo</string>
   <string name="morphe_series_tracker_no_available_episodes">Hakuna vipindi vinavyopatikana</string>
   <string name="morphe_series_tracker_hide_watched">Ficha vilivyoonekana</string>
+  <string name="morphe_series_tracker_watched_on_advance">Weka alama ya imetazamwa unapohamia kipindi kinachofuata</string>
   <string name="morphe_series_tracker_watch_previous">Weka alama vipindi vya awali vimetazamwa</string>
   <string name="morphe_series_tracker_order_starts_with">Inaanza na: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Mpangilio wa vipindi</string>
@@ -1732,9 +1769,13 @@ Kurekodi kiotomatiki ni hiari. Inasimama katika hali ya siri au wakati akaunti i
   <string name="morphe_niconico_comments_opacity_summary">Uwazi wa maandishi ya maoni na mandharinyuma</string>
   <string name="morphe_niconico_comments_travel_duration_title">Muda wa kusafiri</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Sekunde ngapi maoni yanachukua kuvuka skrini. Thamani ndogo husonga haraka zaidi</string>
+  <string name="morphe_niconico_comments_display_area_title">Eneo la onyesho</string>
+  <string name="morphe_niconico_comments_display_area_summary">Kiasi cha kidhibiti cha kucheza, kuanzia juu, ambacho maoni yanatumia. Thamani ndogo huacha sehemu ya chini ya video ikiwa wazi</string>
   <string name="morphe_niconico_comments_max_length_title">Urefu wa juu wa maoni</string>
   <string name="morphe_niconico_comments_max_length_summary">Huficha maoni yenye herufi nyingi kuliko hizi. Kila emoji huhesabiwa kama herufi moja</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Hakuna kikomo</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Kiwango cha juu cha refresh</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Kiwango cha juu cha refresh ya kioo kinachotumiwa wakati maoni yanaposonga. Thamani ndogo hutumia betri kidogo</string>
   <string name="morphe_niconico_comments_live_streams_title">Onyesha kwenye matiririko ya moja kwa moja</string>
   <string name="morphe_niconico_comments_live_streams_summary">Matiririko ya moja kwa moja na marudio yake</string>
   <string name="morphe_niconico_comments_live_premieres_title">Onyesha kwenye Premieres</string>

@@ -69,6 +69,19 @@ Nogle server-side layouts kan måske ikke gå tilbage.
   <string name="morphe_hide_channel_buttons_title">Skjul kanalknapper</string>
   <string name="morphe_hide_channel_buttons_summary">Skjuler knapper såsom Abonner, Vis kanal, Fællesskab og YouTube Music fra kanalprofiler i søgeresultater</string>
   <string name="morphe_hide_community_posts_title">Skjul fællesskabsopslag</string>
+  <string name="morphe_post_buttons_screen_title">Knapper efter opslag</string>
+  <string name="morphe_post_buttons_screen_summary">Vælg layoutet for knapperne under community-indlæg, og hvilke knapper der skal skjules</string>
+  <string name="morphe_post_buttons_layout_title">Layout for indlægsknapper</string>
+  <string name="morphe_post_buttons_layout_entry_1">Server</string>
+  <string name="morphe_post_buttons_layout_entry_2">Håndhævet</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Skjul Like og Dislike</string>
+  <string name="morphe_hide_post_dislike_button_title">Skjul knappen Dislike</string>
+  <string name="morphe_hide_post_dislike_button_summary">Med det håndhævede layout efterlades pladsen til knappen</string>
+  <string name="morphe_hide_post_comment_button_title">Skjul knappen Kommentarer</string>
+  <string name="morphe_hide_post_comments_preview_title">Skjul forhåndsvisning af kommentarer</string>
+  <string name="morphe_hide_post_comments_preview_summary">Skjuler forhåndsvisningen af kommentarerne under indlæggene</string>
+  <string name="morphe_hide_post_share_button_title">Skjul knappen Del</string>
+  <string name="morphe_hide_post_share_button_summary">Download-knappen til indlæggets billeder er placeret ved siden af del-knappen, så den bliver også skjult</string>
   <string name="morphe_hide_compact_banner_title">Skjul kompakte bannere</string>
   <string name="morphe_hide_compact_banner_summary">Skjuler kompakte bannere og afstand mellem nogle komponenter</string>
   <string name="morphe_hide_expandable_card_title">Udvidelige kort under videoer</string>
@@ -159,7 +172,6 @@ Nogle server-side layouts kan måske ikke gå tilbage.
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Skjuler de tip, der vises under afspillerens gestus, såsom \'Træk op for præcis søgning\', \'Slip for at annullere\' og \'2x\'.</string>
-  <string name="morphe_hide_snackbar_title">Skjul snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Skjul retningslinjer for abonnenter</string>
   <string name="morphe_hide_sync_button_title">Skjul knappen \'Synkroniser til video\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Skjul tryk-og-hold-gradient</string>
@@ -384,6 +396,20 @@ Rapporter er offentlige og gennemgås, før en kanal tilføjes til en liste. Fje
   <string name="morphe_aislist_submit_failed_rate_limit">Der blev sent for mange rapporter, prøv igen senere</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList afviste rapporten</string>
   <string name="morphe_aislist_submit_failed">Rapporteringen mislykkedes, tjek din forbindelse</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Skjul snackbars eller ændr deres farver og form</string>
+  <string name="morphe_hide_snackbar_title">Skjul snackbar</string>
+  <string name="morphe_custom_snackbar_theme_title">Brugerdefineret snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbar-meddelelser bruger farverne og hjørneradiussen nedenfor i stedet for farverne fra det modsatte tema</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Mørk tema baggrundsfarve</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Baggrundsfarve for snackbar-meddelelser i det mørke tema. Teksten er sort eller hvid, afhængigt af hvad der er lettest at læse</string>
+  <string name="morphe_custom_snackbar_color_light_title">Lys tema baggrundsfarve</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Baggrundsfarve for snackbar-meddelelser i det lyse tema. Teksten er sort eller hvid, afhængigt af hvad der er lettest at læse</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Kantfarve</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Farven på kanten omkring snackbar-meddelelser. En gennemsigtig farve viser ingen kant</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Hjørneradius</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Hjørneradius for snackbar-meddelelser i dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Annoncehvidliste for kanaler</string>
   <string name="morphe_ads_channel_whitelist_summary">Videoer fra hvidlistede kanaler afspilles med annoncer, så deres skabere bliver betalt. Annoncer forbliver blokeret på alle andre kanaler.</string>
@@ -959,7 +985,7 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
 
 For at få adgang til Indstillinger skal du aktivere Indstillingsknappen via Generelt → Værktøjslinje → Vis indstillingsknap"</string>
   <string name="morphe_narrow_navigation_buttons_title">Aktiver smalle navigationsknapper</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Reducerer den vandrette afstand mellem knapperne</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Reducer den vandrette afstand mellem knapperne. Er ikke tilgængelig med den gennemsigtige navigationsbjælke, som har sin egen knapafstand</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Deaktiver navigationsknapper uden etiketter</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Viser navigationsknapperne med etiketter, hvis YouTube sender dem uden etiketter</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Deaktiver navigationstabs i værktøjslinjen</string>
@@ -978,6 +1004,12 @@ For at få adgang til Indstillinger skal du aktivere Indstillingsknappen via Gen
   <string name="morphe_navigation_bar_glass_summary">Viser navigationslinjen som en flydende, afrundet, gennemsigtig kapsel. Ikke tilgængelig med den uigennemsigtige navigationslinjestil</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Glass-uigennemsigtighed</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Juster gennemsigtigheden af glass-navigationslinjen (0 er gennemsigtig, 100 er uigennemsigtig)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Gennemsigtig navigationsbjælkes størrelse</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Juster højden, bredden og knapafstanden for den gennemsigtige navigationsbjælke med en forhåndsvisning. Knapper, der ikke passer i skærmens bredde, skjules</string>
+  <string name="morphe_navigation_bar_glass_size_height">Højde</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maksimal bredde</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Knapafstand</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Viser knapper: %1$d ud af %2$d</string>
   <string name="morphe_toolbar_screen_title">Værktøjslinje</string>
   <string name="morphe_toolbar_screen_summary">Vælg, hvilke komponenter der vises i værktøjslinjen</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skjul chat-knappen</string>
@@ -1680,6 +1712,7 @@ Automatisk optagelse er valgfri. Den stopper i inkognito eller når kontoen ænd
   <string name="morphe_series_tracker_discovery_unavailable">Kunne ikke finde en afspillingsliste</string>
   <string name="morphe_series_tracker_no_available_episodes">Ingen episoder tilgængelige</string>
   <string name="morphe_series_tracker_hide_watched">Skjul set</string>
+  <string name="morphe_series_tracker_watched_on_advance">Marker som set ved overgang til næste episode</string>
   <string name="morphe_series_tracker_watch_previous">Marker tidligere episoder som set</string>
   <string name="morphe_series_tracker_order_starts_with">Starter med: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Episodeorden</string>
@@ -1732,9 +1765,13 @@ Automatisk optagelse er valgfri. Den stopper i inkognito eller når kontoen ænd
   <string name="morphe_niconico_comments_opacity_summary">Gennemsigtighed for kommentartekst og baggrunde</string>
   <string name="morphe_niconico_comments_travel_duration_title">Rejsetid</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Hvor mange sekunder kommentarerne bruger på at krydse skærmen. Lavere værdier bevæger sig hurtigere</string>
+  <string name="morphe_niconico_comments_display_area_title">Visningsområde</string>
+  <string name="morphe_niconico_comments_display_area_summary">Hvor meget af afspilleren, fra toppen, kommentarerne bruger. Lavere værdier holder den nederste del af videoen fri</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimal kommentarlængde</string>
   <string name="morphe_niconico_comments_max_length_summary">Skjuler kommentarer med flere tegn end dette. Hver emoji tæller som ét tegn</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Ingen grænse</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Maksimal opdateringshastighed</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Højeste opdateringshastighed for skærmen, der bruges mens kommentarer bevæger sig. Lavere værdier bruger mindre batteri</string>
   <string name="morphe_niconico_comments_live_streams_title">Vis på live-streams</string>
   <string name="morphe_niconico_comments_live_streams_summary">Live-streams og deres gengivelser</string>
   <string name="morphe_niconico_comments_live_premieres_title">Vis ved premierer</string>

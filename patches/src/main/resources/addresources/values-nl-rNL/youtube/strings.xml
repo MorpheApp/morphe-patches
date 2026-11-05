@@ -69,6 +69,19 @@ Wijzigingen zijn:
   <string name="morphe_hide_channel_buttons_title">Kanaalknoppen verbergen</string>
   <string name="morphe_hide_channel_buttons_summary">Verbergt knoppen zoals Abonneren, Kanaal bekijken, Community en YouTube Music uit kanaalprofielen in zoekresultaten</string>
   <string name="morphe_hide_community_posts_title">Community berichten verbergen</string>
+  <string name="morphe_post_buttons_screen_title">Post-knoppen</string>
+  <string name="morphe_post_buttons_screen_summary">Kies de lay-out van de knoppen onder de communityberichten en welke knoppen moeten worden verborgen</string>
+  <string name="morphe_post_buttons_layout_title">Lay-out van berichtknoppen</string>
+  <string name="morphe_post_buttons_layout_entry_1">Server</string>
+  <string name="morphe_post_buttons_layout_entry_2">Afgedwongen</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Vind ik leuk en vind ik niet leuk verbergen</string>
+  <string name="morphe_hide_post_dislike_button_title">Verberg de knop \"Niet leuk\"</string>
+  <string name="morphe_hide_post_dislike_button_summary">Bij de afgedwongen lay-out blijft de ruimte van de knop leeg</string>
+  <string name="morphe_hide_post_comment_button_title">Verberg de knop \"Reacties\"</string>
+  <string name="morphe_hide_post_comments_preview_title">Voorvertoning van reacties verbergen</string>
+  <string name="morphe_hide_post_comments_preview_summary">Verbergt de voorvertoning van de reacties onder de berichten</string>
+  <string name="morphe_hide_post_share_button_title">Verberg de knop \"Delen\"</string>
+  <string name="morphe_hide_post_share_button_summary">De downloadknop van de afbeeldingsposts wordt naast de deelknop getekend, dus deze wordt ook verborgen</string>
   <string name="morphe_hide_compact_banner_title">Verberg compacte banners</string>
   <string name="morphe_hide_compact_banner_summary">Verbergt compacte banners en spaties tussen sommige componenten</string>
   <string name="morphe_hide_expandable_card_title">Uitklapbare kaarten onder video\'s</string>
@@ -159,7 +172,6 @@ Wijzigingen zijn:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Verbergt de hints die worden weergegeven tijdens gebaren van de speler, zoals \'Veeg omhoog voor nauwkeurig zoeken\', \'Laat los om te annuleren\' en \'2x\'</string>
-  <string name="morphe_hide_snackbar_title">Verberg snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Richtlijnen voor abonnees verbergen</string>
   <string name="morphe_hide_sync_button_title">Verberg knop \'Synchroniseren met video\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Verberg de gradiënt bij tikken en vasthouden</string>
@@ -386,6 +398,20 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <string name="morphe_aislist_submit_failed_rate_limit">Er zijn te veel rapporten verzonden, probeer het later opnieuw</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList heeft het rapport afgewezen</string>
   <string name="morphe_aislist_submit_failed">Rapportage mislukt, controleer je verbinding</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Verberg snackbars of wijzig hun kleuren en vorm</string>
+  <string name="morphe_hide_snackbar_title">Verberg snackbar</string>
+  <string name="morphe_custom_snackbar_theme_title">Aangepaste snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbars gebruiken de onderstaande kleuren en hoekstraal in plaats van de kleuren van het tegenovergestelde thema</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Achtergrondkleur donker thema</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Achtergrondkleur van snackbars in het donkere thema. De tekst is zwart of wit, afhankelijk van wat het best leesbaar is</string>
+  <string name="morphe_custom_snackbar_color_light_title">Achtergrondkleur licht thema</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Achtergrondkleur van snackbars in het lichte thema. De tekst is zwart of wit, afhankelijk van wat het best leesbaar is</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Randkleur</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Kleur van de rand rond snackbars. Een transparante kleur betekent dat er geen rand wordt getoond</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Hoekstraal</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Hoekstraal van snackbars in dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Advertentiewitelijst voor kanalen</string>
   <string name="morphe_ads_channel_whitelist_summary">Video\'s van kanalen op de advertentiewitelijst worden met advertenties afgespeeld, zodat de makers ervan worden betaald. Op elk ander kanaal blijven advertenties geblokkeerd.</string>
@@ -961,7 +987,7 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
 
 Om toegang te krijgen tot Instellingen, schakel de Instellingen-knop in via Algemeen → Werkbalk → Toon Instellingen-knop"</string>
   <string name="morphe_narrow_navigation_buttons_title">Smalle navigatieknoppen inschakelen</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Vermindert de horizontale ruimte tussen knoppen</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Vermindert de horizontale afstand tussen knoppen. Niet beschikbaar voor de glazen navigatiebalk, die zijn eigen knopafstand heeft</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Navigatieknoppen zonder labels uitschakelen</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Toont de navigatieknoppen met labels, als YouTube ze zonder labels verzendt</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Navigatietabs in werkbalk uitschakelen</string>
@@ -980,6 +1006,12 @@ Om toegang te krijgen tot Instellingen, schakel de Instellingen-knop in via Alge
   <string name="morphe_navigation_bar_glass_summary">Toont de navigatiebalk als een zwevende, afgeronde, doorschijnende capsule. Niet beschikbaar bij de ondoorzichtige stijl van de navigatiebalk</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Dekking van het glas</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Pas het transparantieniveau van de glazen navigatiebalk aan (0 is transparant, 100 is ondoorzichtig)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Grootte glazen navigatiebalk</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Pas de hoogte, breedte en knopafstand van de glazen navigatiebalk aan, inclusief een voorbeeld. Knoppen die niet in de breedte van het scherm passen, worden verborgen</string>
+  <string name="morphe_navigation_bar_glass_size_height">Hoogte</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maximale breedte</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Knopafstand</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Getoonde knoppen: %1$d van %2$d</string>
   <string name="morphe_toolbar_screen_title">Werkbalk</string>
   <string name="morphe_toolbar_screen_summary">Kies welke componenten in de werkbalk verschijnen</string>
   <string name="morphe_hide_toolbar_chat_button_title">Verberg Chat-knop</string>
@@ -1682,6 +1714,7 @@ Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een 
   <string name="morphe_series_tracker_discovery_unavailable">Geen afspeellijst gevonden</string>
   <string name="morphe_series_tracker_no_available_episodes">Geen afleveringen beschikbaar</string>
   <string name="morphe_series_tracker_hide_watched">Bekeken items verbergen</string>
+  <string name="morphe_series_tracker_watched_on_advance">Markeer als bekeken bij overgaan naar de volgende aflevering</string>
   <string name="morphe_series_tracker_watch_previous">Vorige afleveringen markeren als bekeken</string>
   <string name="morphe_series_tracker_order_starts_with">Begint met: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Aflevering volgorde</string>
@@ -1734,9 +1767,13 @@ Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een 
   <string name="morphe_niconico_comments_opacity_summary">Opaciteit van de reactietekst en achtergronden</string>
   <string name="morphe_niconico_comments_travel_duration_title">Reistijd</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Hoeveel seconden reacties erover doen om het scherm te kruisen. Lagere waarden bewegen sneller</string>
+  <string name="morphe_niconico_comments_display_area_title">Weergavegebied</string>
+  <string name="morphe_niconico_comments_display_area_summary">Hoeveel van de speler, vanaf de bovenkant, de reacties gebruiken. Lagere waarden houden het onderste deel van de video vrij</string>
   <string name="morphe_niconico_comments_max_length_title">Maximale commentlengte</string>
   <string name="morphe_niconico_comments_max_length_summary">Verbergt comments met meer tekens dan dit. Elke emoji telt als één teken</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Geen limiet</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Maximale vernieuwingssnelheid</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Hoogste vernieuwingssnelheid van het scherm die wordt gebruikt terwijl reacties bewegen. Lagere waarden verbruiken minder batterij</string>
   <string name="morphe_niconico_comments_live_streams_title">Tonen bij livestreams</string>
   <string name="morphe_niconico_comments_live_streams_summary">Livestreams en hun herhalingen</string>
   <string name="morphe_niconico_comments_live_premieres_title">Tonen bij premières</string>

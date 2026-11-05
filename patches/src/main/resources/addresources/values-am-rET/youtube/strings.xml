@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">የቻናል በተኖችን ደብቅ</string>
   <string name="morphe_hide_channel_buttons_summary">እንደ Subscribe፣ View Channel፣ Community እና YouTube Music ያሉ በተኖችን በፍለጋ ውጤቶች ውስጥ ከቻናል ፕሮፋይሎች ላይ ይደብቃል</string>
   <string name="morphe_hide_community_posts_title">የማህበረሰብ ልጥፎችን ደብቅ</string>
+  <string name="morphe_post_buttons_screen_title">የፖስት ቁልፎች</string>
+  <string name="morphe_post_buttons_screen_summary">ከማህበረሰብ ፖስቶች በታች ያሉትን የቁልፎች አቀማመጥ እና የትኞቹ ቁልፎች መደበቅ እንዳለባቸው ይምረጡ</string>
+  <string name="morphe_post_buttons_layout_title">የፖስት ቁልፎች አቀማመጥ</string>
+  <string name="morphe_post_buttons_layout_entry_1">ሰርቨር</string>
+  <string name="morphe_post_buttons_layout_entry_2">የተገደበ</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">የላይክ እና የዲስላይክ ቁልፎችን ደብቅ</string>
+  <string name="morphe_hide_post_dislike_button_title">የዲስላይክ ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_post_dislike_button_summary">በተገደበው አቀማመጥ፣ የቁልፉ ቦታ ባዶ ሆኖ ይቀራል</string>
+  <string name="morphe_hide_post_comment_button_title">የአስተያየት ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_post_comments_preview_title">የአስተያየቶች ቅድመእይታን ደብቅ</string>
+  <string name="morphe_hide_post_comments_preview_summary">ከፖስቶች በታች ያሉትን የአስተያየቶች ቅድመእይታ ይደብቃል</string>
+  <string name="morphe_hide_post_share_button_title">የሼር ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_post_share_button_summary">የፖስት ምስሎችን የማውረጃ ቁልፍ ከሼር ቁልፉ ጎን ስለሚሳል፣ እሱም አብሮ ይደበቃል</string>
   <string name="morphe_hide_compact_banner_title">አጫጭር ባነሮችን ደብቅ</string>
   <string name="morphe_hide_compact_banner_summary">ጥቃቅን ባነሮችን እና በአንዳንድ ክፍሎች መካከል ያለውን ክፍተት ይደብቃል</string>
   <string name="morphe_hide_expandable_card_title">ከቪዲዮዎች በታች የሚገኙ የሚለጠጡ ካርዶች</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">እንደ \'ለጥንቃቄ ፍለጋ ወደ ላይ ይሳቡ\'፣ \'ለመሰረዝ ይልቀቁ\' እና \'2x\' ያሉ በተጫዋች የእጅ ምልክቶች ወቅት የሚታዩ ፍንጮችን ይደብቃል</string>
-  <string name="morphe_hide_snackbar_title">ስናክባርን ደብቅ</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">የ مشتركዎች መመሪያዎችን ደብቅ</string>
   <string name="morphe_hide_sync_button_title">\'ከቪዲዮ ጋር አስተዋውቅ\' የሚለውን ቁልፍ ደብቅ</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">የንክኪ እና የመያዣ ግራዲየንቱን ደብቅ</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">በጣም ብዙ ሪፖርቶች ተልከዋል፣ ቆይተው እንደገና ይሞክሩ</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList ሪፖርቱን ውድቅ አድርጎታል</string>
   <string name="morphe_aislist_submit_failed">ሪፖርቱ አልተሳካም፣ እባክዎ ግንኙነትዎን ያረጋግጡ</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">ስናክባር</string>
+  <string name="morphe_snackbar_screen_summary">ስናክባሮችን ደብቁ ወይም ቀለማቸውን እና ቅርጻቸውን ቀይሩ</string>
+  <string name="morphe_hide_snackbar_title">ስናክባርን ደብቅ</string>
+  <string name="morphe_custom_snackbar_theme_title">ብጁ ስናክባር</string>
+  <string name="morphe_custom_snackbar_theme_summary">ስናክባሮች ከተቃራኒው ጭብጥ ቀለሞች ይልቅ ከታች ያሉትን ቀለሞች እና የጥግ bánዲየስ ይጠቀማሉ</string>
+  <string name="morphe_custom_snackbar_color_dark_title">የጨለማ ጭብጥ የጀርባ ቀለም</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">በጨለማ ጭብጥ ውስጥ የስናክባሮች የጀርባ ቀለም። ጽሁፉ ለማንበብ ይበልጥ ቀላል የሆነው ጥቁር ወይም ነጭ ይሆናል</string>
+  <string name="morphe_custom_snackbar_color_light_title">የብርሃን ጭብጥ የጀርባ ቀለም</string>
+  <string name="morphe_custom_snackbar_color_light_summary">በብርሃን ጭብጥ ውስጥ የስናክባሮች የጀርባ ቀለም። ጽሁፉ ለማንበብ ይበልጥ ቀላል የሆነው ጥቁር ወይም ነጭ ይሆናል</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">የድንበር ቀለም</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">በስናክባሮች ዙሪያ ያለ የድንበር ቀለም። ግልጽ ቀለም ምንም ዓይነት ድንበር እንደሌለ ያሳያል</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">የጥግ bánዲየስ</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">የስናክባሮች የጥግ bánዲየስ በ dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">የቻናል ማስታወቂያ ነጭ ዝርዝር</string>
   <string name="morphe_ads_channel_whitelist_summary">በነጭ ዝርዝር ውስጥ ካሉ ቻናሎች የሚመጡ ቪዲዮዎች በማስታወቂያዎች ይጫወታሉ፣ ስለዚህ ፈጣሪዎቻቸው ክፍያ ያገኛሉ። በሌሎች ሁሉም ቻናሎች ላይ ማስታወቂያዎች ይታገዳሉ</string>
@@ -771,6 +797,10 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_swipe_left_zone_title">ወደ ግራ የመጥረግ ምልክት</string>
   <string name="morphe_swipe_right_zone_title">ወደ ቀኝ የመጥረግ ምልክት</string>
   <string name="morphe_swipe_top_zone_title">ወደ ላይ የመጥረግ ምልክት</string>
+  <string name="morphe_swipe_seek_title">በመጥረግ ለመፈለግ</string>
+  <string name="morphe_swipe_seek_summary">የመፈለጊያ አሞሌውን ለማንቀሳቀስ በሙሉ ስክሪን ማጫወቻው ላይ ወደ ግራ ወይም ወደ ቀኝ ይጥረጉ፣ ከዚያም ለመፈለግ ይልቀቁ</string>
+  <string name="morphe_swipe_seek_sensitivity_title">የመፈለጊያ መጥረጊያ ስሜት</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">ለእያንዳንዱ መጥረጊያ የመፈለጊያ አሞሌው ምን ያህል እንደሚንቀሳቀስ</string>
   <string name="morphe_swipe_zone_width_title">የግራ/ቀኝ ዞን ስፋት</string>
   <string name="morphe_swipe_zone_width_summary">ለግራ እና ቀኝ የመጥረግ ምልክቶች የተያዘው የእያንዳንዱ ስክሪን ጠርዝ በመቶኛ (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">ብሩህነት</string>
@@ -959,7 +989,7 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
 
 ሴቲንግስን ለማግኘት፣ General → Toolbar → Show Settings button በኩል የሴቲንግስ ቁልፉን ያብሩ"</string>
   <string name="morphe_narrow_navigation_buttons_title">ጠባብ የትራንስፖርት ቁልፎችን አግብር</string>
-  <string name="morphe_narrow_navigation_buttons_summary">በቁልፎች መካከል ያለውን አግድም ርቀት ይቀንሳል</string>
+  <string name="morphe_narrow_navigation_buttons_summary">በቁልፎች መካከል ያለውን አግድም ክፍተት ይቀንሳል። የራሱ የቁልፍ ክፍተት ባለው የብርጭቆ የናቪጌሽን ባር ላይ አይሰራም</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">መለያ የሌላቸውን የንቅናቄ ቁልፎች አግድ</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTube መለያ ሳይሰጣቸው ቢልካቸውም፣ የንቅናቄ ቁልፎቹን ከመለያ ጋር ያሳያል</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">የቱልባር አሰሳ ታቦችን አጥፋ</string>
@@ -978,6 +1008,12 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_navigation_bar_glass_summary">የአሰሳ አሞሌውን እንደ ተንሳፋፊ፣ ክብ እና ግልጽ ካፕሱል ያሳያል። ከማይበይኑ የአሰሳ አሞሌ ስታይል ጋር አይሰራም</string>
   <string name="morphe_navigation_bar_glass_opacity_title">የብርጭቆ ጥርኝነት</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">የብርጭቆ አሰሳ አሞሌውን የግልጽነት ደረጃ ያስተካክሉ (0 ግልጽ ነው፣ 100 የማይበይን ነው)</string>
+  <string name="morphe_navigation_bar_glass_size_title">የመስታወት የኔቪጌሽን ባር መጠን</string>
+  <string name="morphe_navigation_bar_glass_size_summary">የመስታወት የኔቪጌሽን ባርን ቁመት፣ ስፋት እና የቁልፎች ክፍተት በቅድመ እይታ ያስተካክሉ። በስክሪኑ ስፋት ውስጥ የማይገቡ ቁልፎች ይደበቃሉ</string>
+  <string name="morphe_navigation_bar_glass_size_height">ቁመት</string>
+  <string name="morphe_navigation_bar_glass_size_width">ከፍተኛ ስፋት</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">የቁልፎች ክፍተት</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">የታዩ ቁልፎች: %1$d ከ %2$d</string>
   <string name="morphe_toolbar_screen_title">የመሳሪያ ባር</string>
   <string name="morphe_toolbar_screen_summary">በቱልባሩ ላይ የትኞቹ ክፍሎች እንደሚታዩ ይምረጡ</string>
   <string name="morphe_hide_toolbar_chat_button_title">የቻት ቁልፍን ደብቅ</string>
@@ -1680,6 +1716,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_discovery_unavailable">የመጫወቻ ዝርዝር ማግኘት አልተቻለም</string>
   <string name="morphe_series_tracker_no_available_episodes">ምንም የሚገኙ ክፍሎች የሉም</string>
   <string name="morphe_series_tracker_hide_watched">የተመለከቱትን ደብቅ</string>
+  <string name="morphe_series_tracker_watched_on_advance">ወደ ቀጣዩ ክፍል ሲሸጋገሩ እንደታየ ምልክት አድርግ</string>
   <string name="morphe_series_tracker_watch_previous">የቀደሙ ክፍሎችን እንደተመለከቱ ምልክት አድርግ</string>
   <string name="morphe_series_tracker_order_starts_with">በሚጀምረው፦ %1$s</string>
   <string name="morphe_series_tracker_episode_order">የክፍሎች ቅደም ተከተል</string>
@@ -1732,9 +1769,13 @@ AVC (H.264)
   <string name="morphe_niconico_comments_opacity_summary">የአስተያየት ጽሑፎች እና የጀርባ ቀለሞች ግልጽነት</string>
   <string name="morphe_niconico_comments_travel_duration_title">የጉዞ ቆይታ</string>
   <string name="morphe_niconico_comments_travel_duration_summary">አስተያየቶች ስክሪኑን ለማቋረጥ የሚወስዱት ሰከንዶች። አነስተኛ እሴቶች በፍጥነት ይንቀሳቀሳሉ</string>
+  <string name="morphe_niconico_comments_display_area_title">የማሳያ ቦታ</string>
+  <string name="morphe_niconico_comments_display_area_summary">ከላይ ጀምሮ አስተያየቶቹ ምን ያህል የቪዲዮ ማጫወቻውን እንደሚጠቀሙ ይወስናል። ዝቅተኛ እሴቶች የቪዲዮውን የታችኛውን ክፍል ክፍት ያደርጋሉ</string>
   <string name="morphe_niconico_comments_max_length_title">የአስተያየት ከፍተኛ ርዝመት</string>
   <string name="morphe_niconico_comments_max_length_summary">ከዚህ የበለጠ ቁምፊዎች ያላቸውን አስተያየቶች ይደብቃል። እያንዳንዱ ኢሞጂ እንደ አንድ ቁምፊ ይቆጠራል</string>
   <string name="morphe_niconico_comments_max_length_no_limit">ገደብ የለም</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">ከፍተኛ የማደሻ መጠን</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">ትያቄዎች በሚንቀሳቀሱበት ጊዜ ጥቅም ላይ የሚውለው ከፍተኛ የዲስፕሌይ ማደሻ መጠን። ዝቅተኛ እሴቶች አነስተኛ ባትሪ ይጠቀማሉ</string>
   <string name="morphe_niconico_comments_live_streams_title">በቀጥታ ስርጭቶች ላይ አሳይ</string>
   <string name="morphe_niconico_comments_live_streams_summary">ቀጥታ ስርጭቶች እና ተደጋጋሚ ስርጭቶቻቸው</string>
   <string name="morphe_niconico_comments_live_premieres_title">በፕሪሚየሮች ላይ አሳይ</string>

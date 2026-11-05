@@ -202,6 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_failed">Жүктөө катасы</string>
   <string name="morphe_music_downloads_playlist_download_title">Плейлистти жүктөө</string>
   <string name="morphe_music_downloads_playlist_download_listing">Тректер тизмеленип жатат…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s тизмеленди…</string>
   <string name="morphe_music_downloads_playlist_download_listing_failed">Плейлисттин тректерин тизмелеүү мүмкүн болбоду</string>
   <string name="morphe_music_downloads_playlist_download_all_saved">Мурун жүктөлгөн: %s</string>
   <string name="morphe_music_downloads_playlist_download_confirm_message">"Бул плейлистте %1$s трек бар, алардын %2$s треги али жүктөлгөн эмес.
@@ -209,6 +210,7 @@ Second \"item\" text"</string>
 Алар бирден жүктөлөт, бул узак убакытты алышы мүмкүн жана болжол менен %3$s бош орун талап кылынат"</string>
   <string name="morphe_music_downloads_playlist_download_confirm_button">Жүктөө</string>
   <string name="morphe_music_downloads_playlist_download_progress">%2$s тректин %1$s-чиси жүктөлүүдө</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s жүктөлдү</string>
   <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s жүктөлдү, %2$s жүктөлүп окуй алган жок</string>
   <string name="morphe_music_downloads_playlist_download_already_running">Плейлистти жүктөө жүрүп жатат</string>
   <string name="morphe_music_downloads_playlist_download_needs_account">Сиздин аккаунтуңуз азырынча белгисиз. Бир азdan кийин кайра аракет кылып көрүңүз</string>

@@ -100,7 +100,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">Увімкнути журнал налагодження</string>
   <string name="morphe_debug_stacktrace_title">Журнал налагодження трасування стека</string>
   <string name="morphe_debug_stacktrace_summary">Додає трасування стека до журналів налагодження для виявлення помилок</string>
-  <string name="morphe_debug_toast_on_error_title">Показати повідомлення про помилку Morphe</string>
+  <string name="morphe_debug_toast_on_error_title">Показувати повідомлення про помилку Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Вимкнення повідомлень про помилки приховує всі сповіщення про помилки Morphe.
 
 Ви не отримуватимете сповіщення про будь-які неочікувані події"</string>
@@ -205,7 +205,7 @@ Second \"item\" text"</string>
 
 Натисніть кнопку \"Продовжити\" та вимкніть оптимізацію"</string>
   <string name="gms_core_dialog_continue_text">Продовжити</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Показати діалог оптимізації батареї MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Показувати діалог оптимізації батареї MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Якщо вимкнути цю функцію, запит на оптимізацію батареї MicroG буде приховано.
 
 Якщо оптимізацію батареї не змінити, ви можете зіткнутися з такими проблемами:

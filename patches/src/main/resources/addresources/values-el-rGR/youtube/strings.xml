@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">Απόκρυψη κουμπιών καναλιών</string>
   <string name="morphe_hide_channel_buttons_summary">Αποκρύπτει κουμπιά όπως Εγγραφή, Προβολή καναλιού, Κοινότητα και YouTube Music από τα προφίλ καναλιών στα αποτελέσματα αναζήτησης</string>
   <string name="morphe_hide_community_posts_title">Απόκρυψη \"Δημοσιεύσεων Κοινότητας\"</string>
+  <string name="morphe_post_buttons_screen_title">Κουμπιά μετά</string>
+  <string name="morphe_post_buttons_screen_summary">Επιλέξτε τη διάταξη των κουμπιών κάτω από τις αναρτήσεις της κοινότητας και ποια κουμπιά να αποκρυφθούν</string>
+  <string name="morphe_post_buttons_layout_title">Διάταξη κουμπιών ανάρτησης</string>
+  <string name="morphe_post_buttons_layout_entry_1">Διακομιστής</string>
+  <string name="morphe_post_buttons_layout_entry_2">Επιβεβλημένη</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Απόκρυψη κουμπιών μου αρέσει και δεν μου αρέσει</string>
+  <string name="morphe_hide_post_dislike_button_title">Απόκρυψη κουμπιού δεν μου αρέσει</string>
+  <string name="morphe_hide_post_dislike_button_summary">Με την Επιβεβλημένη διάταξη, ο χώρος του κουμπιού παραμένει κενός</string>
+  <string name="morphe_hide_post_comment_button_title">Απόκρυψη κουμπιού σχολίων</string>
+  <string name="morphe_hide_post_comments_preview_title">Απόκρυψη προεπισκόπησης σχολίων</string>
+  <string name="morphe_hide_post_comments_preview_summary">Αποκρύπτει την προεπισκόπηση των σχολίων κάτω από τις αναρτήσεις</string>
+  <string name="morphe_hide_post_share_button_title">Απόκρυψη κουμπιού κοινοποίησης</string>
+  <string name="morphe_hide_post_share_button_summary">Το κουμπί λήψης των εικόνων της ανάρτησης σχεδιάζεται δίπλα στο κουμπί κοινοποίησης, οπότε κρύβεται και αυτό</string>
   <string name="morphe_hide_compact_banner_title">Απόκρυψη \"Συμπαγών Μπάνερ\"</string>
   <string name="morphe_hide_compact_banner_summary">Απόκρυψη συμπυκτωμένων διαφημιστικών banners και διαστήματος μεταξύ ορισμένων στοιχείων</string>
   <string name="morphe_hide_expandable_card_title">Επεκτάσιμες κάρτες κάτω από τα βίντεο</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Αποκρύπτει τις υποδείξεις που εμφανίζονται κατά τις χειρονομίες στην οθόνη αναπαραγωγής, όπως \'Σύρετε προς τα πάνω για ακριβή αναζήτηση\', \'Αφήστε για ακύρωση\' και \'2x\'</string>
-  <string name="morphe_hide_snackbar_title">Απόκρυψη γραμμής γρήγορης ενέργειας</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Οδηγίες συνδρομητών</string>
   <string name="morphe_hide_sync_button_title">Απόκρυψη κουμπιού \"Συγχρονισμός με βίντεο\"</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Απόκρυψη διαβάθμισης στο πάτημα και κράτημα</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">Στάλθηκαν πάρα πολλές αναφορές, δοκιμάστε ξανά αργότερα</string>
   <string name="morphe_aislist_submit_failed_rejected">Το AiSList απέρριψε την αναφορά</string>
   <string name="morphe_aislist_submit_failed">Η αναφορά απέτυχε, ελέγξτε τη σύνδεσή σας</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Απόκρυψη των snackbars ή αλλαγή του χρώματος και του σχήματός τους</string>
+  <string name="morphe_hide_snackbar_title">Απόκρυψη γραμμής γρήγορης ενέργειας</string>
+  <string name="morphe_custom_snackbar_theme_title">Προσαρμοσμένο snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">Τα Snackbars χρησιμοποιούν τα παρακάτω χρώματα και την ακτίνα γωνίας αντί για τα χρώματα του αντίθετου θέματος</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Χρώμα φόντου στο σκοτεινό θέμα</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Χρώμα φόντου των snackbars στο σκοτεινό θέμα. Το κείμενο είναι μαύρο ή λευκό, ανάλογα με το τι είναι πιο ευανάγνωστο</string>
+  <string name="morphe_custom_snackbar_color_light_title">Χρώμα φόντου στο φωτεινό θέμα</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Χρώμα φόντου των snackbars στο φωτεινό θέμα. Το κείμενο είναι μαύρο ή λευκό, ανάλογα με το τι είναι πιο ευανάγνωστο</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Χρώμα περιγράμματος</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Χρώμα του περιγράμματος γύρω από τα snackbars. Ένα διαφανές χρώμα δεν εμφανίζει κανένα περίγραμμα</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Ακτίνα γωνίας</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Ακτίνα γωνίας των snackbars σε dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Λίστα επιτρεπόμενων καναλιών για διαφημίσεις</string>
   <string name="morphe_ads_channel_whitelist_summary">Τα βίντεο από κανάλια στη λίστα επιτρεπόμενων αναπαράγονται με διαφημίσεις, ώστε να πληρώνονται οι δημιουργοί τους. Οι διαφημίσεις παραμένουν αποκλεισμένες σε όλα τα άλλα κανάλια.</string>
@@ -963,7 +989,7 @@ Second \"item\" text"</string>
 
 Για να έχετε πρόσβαση στις Ρυθμίσεις, ενεργοποιήστε το κουμπί Ρυθμίσεις μέσω Γενικά → Γραμμή εργαλείων → Εμφάνιση κουμπιού Ρυθμίσεων"</string>
   <string name="morphe_narrow_navigation_buttons_title">Ενεργοποίηση στενών κουμπιών πλοήγησης</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Απόκρυψη κουμπιού Σύμπτυξης</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Μειώνει την οριζόντια απόσταση μεταξύ των κουμπιών. Δεν είναι διαθέσιμο με τη γυάλινη γραμμή πλοήγησης, η οποία έχει τη δική της απόσταση κουμπιών</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Απενεργοποίηση κουμπιών πλοήγησης χωρίς ετικέτες</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Εμφανίζει τα κουμπιά πλοήγησης με ετικέτες, εάν το YouTube τα στέλνει χωρίς ετικέτες</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Απενεργοποίηση καρτελών πλοήγησης στη γραμμή εργαλείων</string>
@@ -982,6 +1008,12 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">Εμφανίζει τη γραμμή πλοήγησης ως μια πλωτή, στρογγυλεμένη, ημιδιαφανής κάψουλα. Δεν είναι διαθέσιμο με το στιλ αδιαφανούς γραμμής πλοήγησης</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Αδιαφάνεια γυαλιού</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Προσαρμόστε το επίπεδο διαφάνειας της γυάλινης γραμμής πλοήγησης (0 είναι διαφανές, 100 είναι αδιαφανές)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Μέγεθος γυάλινης γραμμής πλοήγησης</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Ρυθμίστε το ύψος, το πλάτος και την απόσταση των κουμπιών της γυάλινης γραμμής πλοήγησης, με προεπισκόπηση. Τα κουμπιά που δεν χωράνε στο πλάτος της οθόνης κρύβονται</string>
+  <string name="morphe_navigation_bar_glass_size_height">Ύψος</string>
+  <string name="morphe_navigation_bar_glass_size_width">Μέγιστο πλάτος</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Απόσταση κουμπιών</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Εμφανιζόμενα κουμπιά: %1$d από %2$d</string>
   <string name="morphe_toolbar_screen_title">Γραμμή εργαλείων</string>
   <string name="morphe_toolbar_screen_summary">Επιλέξτε ποια στοιχεία εμφανίζονται στη γραμμή εργαλείων</string>
   <string name="morphe_hide_toolbar_chat_button_title">Απόκρυψη κουμπιού \"Συνομιλία\"</string>
@@ -1684,6 +1716,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_discovery_unavailable">Δεν βρέθηκε λίστα αναπαραγωγής</string>
   <string name="morphe_series_tracker_no_available_episodes">Δεν υπάρχουν διαθέσιμα επεισόδια</string>
   <string name="morphe_series_tracker_hide_watched">Κρυφή παρακολούθηση</string>
+  <string name="morphe_series_tracker_watched_on_advance">Σημάδετε ως προesehenό κατά τη μετάβαση στο επόμενο επεισόδιο</string>
   <string name="morphe_series_tracker_watch_previous">Σήμανση προηγούμενων επεισοδίων ως παρακολουθούμενων</string>
   <string name="morphe_series_tracker_order_starts_with">Ξεκινά με: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Σειρά επεισοδίων</string>
@@ -1736,9 +1769,13 @@ AVC (H.264)
   <string name="morphe_niconico_comments_opacity_summary">Διαφάνεια του κειμένου και του φόντου του σχολίου</string>
   <string name="morphe_niconico_comments_travel_duration_title">Διάρκεια διαδρομής</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Πόσα δευτερόλεπτα χρειάζονται τα σχόλια για να διασχίσουν την οθόνη. Χαμηλότερες τιμές κινούνται ταχύτερα</string>
+  <string name="morphe_niconico_comments_display_area_title">Περιοχή εμφάνισης</string>
+  <string name="morphe_niconico_comments_display_area_summary">Πόσο μέρος του προγράμματος αναπαραγωγής, από πάνω, χρησιμοποιούν τα σχόλια. Χαμηλότερες τιμές διατηρούν το κάτω μέρος του βίντεο καθαρό</string>
   <string name="morphe_niconico_comments_max_length_title">Μέγιστο μήκος σχολίου</string>
   <string name="morphe_niconico_comments_max_length_summary">Αποκρύπτει σχόλια με περισσότερους χαρακτήρες από αυτόν. Κάθε emoji μετράται ως ένας χαρακτήρας</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Χωρίς όριο</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Μέγιστος ρυθμός ανανέωσης</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Ο υψηλότερος ρυθμός ανανέωσης οθόνης που χρησιμοποιείται κατά τη μετακίνηση των σχολίων. Χαμηλότερες τιμές καταναλώνουν λιγότερη μπαταρία</string>
   <string name="morphe_niconico_comments_live_streams_title">Εμφάνιση σε ζωντανές μεταδόσεις</string>
   <string name="morphe_niconico_comments_live_streams_summary">Ζωντανές μεταδόσεις και οι επαναλήψεις τους</string>
   <string name="morphe_niconico_comments_live_premieres_title">Εμφάνιση σε Πρεμιέρες</string>

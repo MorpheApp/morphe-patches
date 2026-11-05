@@ -287,6 +287,7 @@ PotHelper жүктеу үшін осында түртіңіз"</string>
   <string name="morphe_ryd_failure_generic">Ұнамағандар қолжетімді емес (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Иесімен жасырылған</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Бұл бейнені сіз және тағы %s адам ұнатпады</string>
   <string name="morphe_ryd_accessibility_dislike_percentage">Бұл бейнеқатарды ұнатпағандар: дауыстардың %s бөлігі</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike функциясын қосу</string>
   <string name="morphe_ryd_dislike_percentage_title">Күнәліліктерді пайыз ретінде көрсету</string>
@@ -307,8 +308,10 @@ PotHelper жүктеу үшін осында түртіңіз"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Ұнамайтындар уақытша қолжетімді емес - Клиент API жылдамдық шектеуі күшінде</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API дауыстарды алу, шақырулар саны</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Желілік шақырулар жасалмады</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s желілік шақыру жасалды</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Дауыстарды API арқылы алу, таймауттар саны</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Желілік шақыруларда таймауттар болған жоқ</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s желілік шақырудың уақыты бітті</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API клиентінің жылдамдық шектеулері</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Клиенттің жылдамдық шектеулері кездестірілген жоқ</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Клиенттік шектеу лимиті %s рет кездесті</string>

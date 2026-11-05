@@ -72,6 +72,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">जाम अपडेट होत आहे…</string>
   <string name="morphe_music_jam_finding_host">Wi-Fi वर तुमच्या होस्टचा शोध घेत आहे…</string>
   <string name="morphe_music_jam_waiting_people">लोकांची प्रतीक्षा करत आहे</string>
+  <string name="morphe_music_jam_one_connected">%s व्यक्ती जोडली गेली</string>
   <string name="morphe_music_jam_many_connected">%s लोक कनेक्ट झाले आहेत</string>
   <string name="morphe_music_jam_code_expires">जवळच्या डिव्हाइसवर हा कोड प्रविष्ट करा. सपोर्ट असल्यास Wi-Fi Aware वेगवेगळ्या LAN वर कार्य करते. %s मिनिटांत समाप्त होईल</string>
   <string name="morphe_music_jam_seek_to">%s पर्यंत जायचे आहे का?</string>
@@ -199,6 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">डाउनलोड होत आहे %s%%</string>
   <string name="morphe_music_downloads_complete">डाउनलोड पूर्ण झाले</string>
   <string name="morphe_music_downloads_failed">डाउनलोड अयशस्वी झाले</string>
+  <string name="morphe_music_downloads_playlist_download_title">प्लेलिस्ट डाउनलोड</string>
+  <string name="morphe_music_downloads_playlist_download_listing">ट्रॅक्सची यादी मिळत आहे…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s ची यादी मिळाली…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">प्लेलिस्टमधील ट्रॅक्सची यादी मिळू शकली नाही</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">आधीच डाउनलोड केले आहे: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"या प्लेलिस्टमध्ये %1$s आहेत, %2$s अजून डाउनलोड केलेले नाहीत
+
+ते एकामागून एक डाउनलोड केले जातात, ज्याला बराच वेळ लागू शकतो आणि सुमारे %3$s मोकळ्या जागेची आवश्यकता असते"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">डाउनलोड</string>
+  <string name="morphe_music_downloads_playlist_download_progress">ट्रॅक %1$s / %2$s डाउनलोड होत आहे</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s डाउनलोड झाले</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s डाउनलोड झाले, %2$s डाउनलोड होऊ शकले नाहीत</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">प्लेलिस्ट डाउनलोडची प्रक्रिया आधीच सुरू आहे</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">तुमचे खाते अद्याप ओळखले गेले नाही. थोड्या वेळाने पुन्हा प्रयत्न करा</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s सूचीबद्ध केले आहेत, सर्व आधीच डाउनलोड झाले आहेत</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">प्लेलिस्टचा फक्त काही भाग सूचीबद्ध करता आला. उर्वरित भाग मिळवण्यासाठी नंतर पुन्हा डाउनलोडवर टॅप करा</string>
+  <string name="morphe_music_downloads_playlist_download_started">पार्श्वभूमीत %s डाउनलोड होत आहे</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">नेटवर्क कनेक्शन नाही</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">नेटवर्कची प्रतीक्षा करत आहे…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s पैकी %1$s नंतर थांबले. सुरू ठेवण्यासाठी पुन्हा डाउनलोडवर टॅप करा</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">अबाऊट</string>

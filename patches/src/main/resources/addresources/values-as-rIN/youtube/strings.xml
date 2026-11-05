@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">চেনেলৰ বুটൺবোৰ লুকুওক</string>
   <string name="morphe_hide_channel_buttons_summary">সন্ধানৰ ফলাফলত চেনেল প্ৰফাইলৰ পৰা Subscribe, View Channel, Community, আৰু YouTube Music ৰ দৰে বুটൺবোৰ লুকুৱাই দিয়ে</string>
   <string name="morphe_hide_community_posts_title">কমিউনিটি পোষ্টবোৰ লুকুৱাওক</string>
+  <string name="morphe_post_buttons_screen_title">পোষ্ট বাটনবোৰ</string>
+  <string name="morphe_post_buttons_screen_summary">কমিউনিটি পোষ্টবোৰৰ তলত থকা বাটনবোৰৰ লেআউট আৰু কোনবোৰ বাটন লুকুৱাব লাগে সেয়া বাছনি কৰক</string>
+  <string name="morphe_post_buttons_layout_title">পোষ্ট বুটামৰ লেআউট</string>
+  <string name="morphe_post_buttons_layout_entry_1">চাৰ্ভাৰ</string>
+  <string name="morphe_post_buttons_layout_entry_2">বাধ্যতামূলক</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">লাইক আৰু ডিছলাইক বুটামবোৰ লুকুৱাওক</string>
+  <string name="morphe_hide_post_dislike_button_title">ডিছলাইক বুটামটো লুকুৱাওক</string>
+  <string name="morphe_hide_post_dislike_button_summary">এনফৰচড লেআউটৰ সৈতে, বুটামটোৰ ঠাইখিনি খালী হৈ থাকে</string>
+  <string name="morphe_hide_post_comment_button_title">কমেণ্ট বুটামটো লুকুৱাওক</string>
+  <string name="morphe_hide_post_comments_preview_title">মন্তব্যৰ প্ৰিভিউ লুকুওক</string>
+  <string name="morphe_hide_post_comments_preview_summary">পোষ্টৰ তলত থকা মন্তব্যৰ প্ৰিভিউ লুকুৱাই ৰাখে</string>
+  <string name="morphe_hide_post_share_button_title">চেয়াৰ বুটামটো লুকুৱাওক</string>
+  <string name="morphe_hide_post_share_button_summary">পোষ্টৰ ছবিসমূহৰ ডাউনলোড বুটামটো চেয়াৰ বুটামটোৰ কাষত থাকে, গতিকে ইয়াটোও লুকুৱাই দিয়া হয়</string>
   <string name="morphe_hide_compact_banner_title">কম্পেক্ট বেনাৰবোৰ লুকুৱাওক</string>
   <string name="morphe_hide_compact_banner_summary">কম্পেক্ট বেনাৰ আৰু কিছুমান উপাদানৰ মাজৰ খালী ঠাই লুকুৱাই ৰাখে</string>
   <string name="morphe_hide_expandable_card_title">ভিডিঅ’ৰ তলত থকা সম্প্ৰসাৰণযোগ্য কাৰ্ডসমূহ</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">প্লেয়াৰ জেষ্টাৰৰ সময়ত দেখুওৱা ইংগিতসমূহ লুকুৱাই পেলায়, যেনে \'সঠিকভাৱে খোজ কাঢ়িবলৈ ওপৰলৈ টানি লওক\', \'বাতিল কৰিবলৈ এৰি দিয়ক\' আৰু \'2x\'</string>
-  <string name="morphe_hide_snackbar_title">চ্নাকবাৰটো লুকুৱাই থওক</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">চাবস্ক্ৰাইবাৰৰ নিৰ্দেশাবলী লুকুৱাওক</string>
   <string name="morphe_hide_sync_button_title">\'Sync to video\' বুটামটো লুকুৱাওক</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">ট্যাপ কৰি ধৰি থকাৰ গ্ৰেডিয়েণ্টটো লুকুৱাওক</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">অত্যধিক ৰিপৰ্ট পঠোৱা হৈছে, পিছত পুনৰ চেষ্টা কৰক</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList-এ ৰিপৰ্টটো নাকৰ কৰিলে</string>
   <string name="morphe_aislist_submit_failed">ৰিপৰ্ট বিফল হৈছে, আপোনাৰ সংযোগটো পৰীক্ষা কৰক</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">চ্নাকবাৰ</string>
+  <string name="morphe_snackbar_screen_summary"> স্নেকবাৰবোৰ লুকুৱাই থোৱক অথবা ইহঁতৰ ৰং আৰু আকৃতি সলনি কৰক</string>
+  <string name="morphe_hide_snackbar_title">চ্নাকবাৰটো লুকুৱাই থওক</string>
+  <string name="morphe_custom_snackbar_theme_title">কষ্টম স্নেকবাৰ</string>
+  <string name="morphe_custom_snackbar_theme_summary">বিৰোধী থিমৰ ৰঙৰ পৰিৱৰ্তে Snackbars-এ তলত উল্লেখ কৰা ৰং আৰু কোণৰ ব্যাসাৰ্ধ ব্যৱহাৰ কৰিব</string>
+  <string name="morphe_custom_snackbar_color_dark_title">গাঢ় থিমৰ পটভূমিৰ ৰং</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">গাঢ় থিমত Snackbars-ৰ পটভূমিৰ ৰং। পাঠটো ক\'লা বা বগা হ\'ব, যাৰ সহায়ত পঢ়িবলৈ সহজ হয়</string>
+  <string name="morphe_custom_snackbar_color_light_title">হালকা থিমৰ পটভূমিৰ ৰং</string>
+  <string name="morphe_custom_snackbar_color_light_summary">হালকা থিমত Snackbars-ৰ পটভূমিৰ ৰং। পাঠটো ক\'লা বা বগা হ\'ব, যাৰ সহায়ত পঢ়িবলৈ সহজ হয়</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">সীমাৰ ৰং</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Snackbars-ৰ চাৰিওফালৰ সীমাৰ ৰং। স্বচ্ছ ৰঙে কোনো সীমা নেদেখুৱায়</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">কোণৰ ব্যাসাৰ্ধ</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">dp-ত snackbars-ৰ কোণৰ ব্যাসাৰ্ধ</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">চেনেল বিজ্ঞাপন হোৱাইটলিষ্ট</string>
   <string name="morphe_ads_channel_whitelist_summary">হোৱাইটলিষ্ট কৰা চেনেলৰ ভিডিঅ\'বোৰ বিজ্ঞাপনৰ সৈতে চলে, যাতে সিহঁতৰ সৃষ্টিকৰ্তাসকলে পৰিশোধ পায়। অন্য সকলো চেনেলত বিজ্ঞাপনসমূহ বাধা দি ৰখা হয়</string>
@@ -771,6 +797,10 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_swipe_left_zone_title">বাওঁফালৰ সোৱাইপ জেসচাৰ</string>
   <string name="morphe_swipe_right_zone_title">সোঁফালৰ সোৱাইপ জেসচাৰ</string>
   <string name="morphe_swipe_top_zone_title">ওপৰৰ সোৱাইপ জেসচাৰ</string>
+  <string name="morphe_swipe_seek_title">ছিকি বিচাৰিবলৈ সোৱাই দিয়ক</string>
+  <string name="morphe_swipe_seek_summary">ছিকিবাৰটো লৈ যাবলৈ ফুলস্ক্ৰীন প্লেয়াৰত বাওঁ বা সোঁফালে সোৱাই দিয়ক, আৰু বিচাৰিবলৈ এৰি দিয়ক</string>
+  <string name="morphe_swipe_seek_sensitivity_title">ছিকি সোৱাই দিয়াৰ সংবেদনশীলতা</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">প্ৰতিবাৰ সোৱাই দিলে ছিকিবাৰটো কিমান দূৰলৈ যাব</string>
   <string name="morphe_swipe_zone_width_title">বাওঁ/সোঁ জ’নৰ প্ৰস্থ</string>
   <string name="morphe_swipe_zone_width_summary">বাওঁ আৰু সোঁ সোৱাইপ জেসচাৰৰ বাবে সংৰক্ষিত প্ৰতিটো স্ক্ৰীনৰ কাষৰ শতাংশ (৫-৫০)</string>
   <string name="morphe_swipe_zone_label_brightness">উজ্জ্বলতা</string>
@@ -959,7 +989,7 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
 
 ছেটিংছত যাবলৈ, General → Toolbar → Show Settings button-ৰ জৰিয়তে ছেটিংছ বুটনটো সক্ৰিয় কৰক"</string>
   <string name="morphe_narrow_navigation_buttons_title">সঙ্কুচিত নেভিগেচন বুটামবোৰ সক্ৰিয় কৰক</string>
-  <string name="morphe_narrow_navigation_buttons_summary">বুটামবোৰৰ মাজৰ অনুভূমিক খালী ঠাই কম কৰে</string>
+  <string name="morphe_narrow_navigation_buttons_summary">বাটনবোৰৰ মাজৰ অনুভূমিক খালী ঠাই কম কৰে। গ্লাছ নেভিগেশ্বন বাৰৰ সৈতে উপলব্ধ নহয়, যাৰ নিজৰ বাটন স্পেচিং আছে</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">লেবেল নথকা নেভিগেশ্যন বুটামসমূহ নিষ্ক্ৰীয় কৰক</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">যদি YouTube-এ লেবেল অবিহনে নেভিগেশ্যন বুটাম পঠিয়ায়, তেন্তে এইটোৱে লেবেলৰ সৈতে নেভিগেশ্যন বুটামসমূহ দেখুৱাব</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">টুলবাৰ নেভিগেচন টেবসমূহ নিষ্ক্ৰিয় কৰক</string>
@@ -978,6 +1008,12 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_navigation_bar_glass_summary">নেভিগেচন বাৰটো এটা ভাসমান, গোলাকৃতি, অৰ্ধ-স্বচ্ছ কেপচুল হিচাপে দেখুৱায়। Opaque নেভিগেচন বাৰ শৈলীৰ সৈতে উপলব্ধ নহয়</string>
   <string name="morphe_navigation_bar_glass_opacity_title">গ্লাছ অপেচিটি</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">গ্লাছ নেভিগেচন বাৰৰ স্বচ্ছতাৰ স্তৰটো সামজৰু কৰক (০ মানে স্বচ্ছ, ১০০ মানে অপেক)</string>
+  <string name="morphe_navigation_bar_glass_size_title">গ্লাছ নেভিগেশ্বন বাৰৰ আকাৰ</string>
+  <string name="morphe_navigation_bar_glass_size_summary">প্ৰিভিউৰ সৈতে গ্লাছ নেভিগেশ্বন বাৰৰ উচ্চতা, প্ৰস্থ আৰু বাটন স্পেচিং এডজাস্ট কৰক। স্ক্ৰীণৰ প্ৰস্থত খাপ নোখোৱা বাটনবোৰ লুকুৱাই ৰখা হয়</string>
+  <string name="morphe_navigation_bar_glass_size_height">উচ্চতা</string>
+  <string name="morphe_navigation_bar_glass_size_width">সৰ্বোচ্চ প্ৰস্থ</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">বাটন স্পেচিং</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">দেখুৱাই থকা বাটন: %2$d ৰ ভিতৰত %1$d</string>
   <string name="morphe_toolbar_screen_title">টুলবাৰ</string>
   <string name="morphe_toolbar_screen_summary">টুলবাৰত কোনবোৰ উপাদান দেখা যাব তাৰ বাবে বাছনি কৰক</string>
   <string name="morphe_hide_toolbar_chat_button_title">চ্যাট বুটামটো লুকুৱাই থওক</string>
@@ -1680,6 +1716,7 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকেত্ বাধ�
   <string name="morphe_series_tracker_discovery_unavailable">প্লেৰিলিষ্ট এটা বিচাৰি পোৱা নগ\'ল</string>
   <string name="morphe_series_tracker_no_available_episodes">কোনো এপিসোড উপলব্ধ নাই</string>
   <string name="morphe_series_tracker_hide_watched">চাবুৰকৈ দেখাটো লুকুৱাই থওক</string>
+  <string name="morphe_series_tracker_watched_on_advance">পিছৰ এপিসোডলৈ যাওঁতে চাইছে বুলি চিন্ কৰক</string>
   <string name="morphe_series_tracker_watch_previous">পূৰ্বৰ এপিসোডবোৰ দেখা বুলি চিনাক্ত কৰক</string>
   <string name="morphe_series_tracker_order_starts_with">আৰম্ভ হয়: %1$s</string>
   <string name="morphe_series_tracker_episode_order">এপিসোডৰ ক্ৰম</string>
@@ -1732,9 +1769,13 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকেত্ বাধ�
   <string name="morphe_niconico_comments_opacity_summary">মন্তব্যৰ পাঠ আৰু পৃষ্ঠভুমীৰ অপাচিটি</string>
   <string name="morphe_niconico_comments_travel_duration_title">ভ্ৰমণৰ সময়সীমা</string>
   <string name="morphe_niconico_comments_travel_duration_summary">মন্তব্যসমূহে স্ক্ৰীনখন পাৰ হ’বলৈ কিমান ছেকেণ্ড সময় লয়। কম মানৰ বাবে অধিক দ্ৰুতগতিত চলে</string>
+  <string name="morphe_niconico_comments_display_area_title">প্ৰদৰ্শন এলেকা</string>
+  <string name="morphe_niconico_comments_display_area_summary">প্লেয়াৰৰ ওপৰৰ পৰা মন্তব্যসমূহে কিমান অংশ ব্যৱহাৰ কৰিব। কম মানৰ বাবে ভিডিঅ\'ৰ তলৰ অংশটো খালী থাকে</string>
   <string name="morphe_niconico_comments_max_length_title">মন্তব্যৰ সৰ্বোচ্চ দৈৰ্ঘ্য</string>
   <string name="morphe_niconico_comments_max_length_summary">ইয়াতকৈ অধিক আখৰ থকা মন্তব্যবোৰ লুকুৱাই ৰাখে। প্ৰতিটো ইমোজিক এটা আখৰ হিচাপে গণ্য কৰা হয়</string>
   <string name="morphe_niconico_comments_max_length_no_limit">কোনো সীমা নাই</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">সৰ্বোচ্চ ৰিফ্ৰেচ ৰেট</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">মন্তব্যবোৰ লৰা-চৰা কৰোঁতে ব্যৱহাৰ কৰা সৰ্বোচ্চ ডিসপ্লে ৰিফ্ৰেচ ৰেট। কম মানৰ বাবে বেটাৰী কম খৰচ হয়</string>
   <string name="morphe_niconico_comments_live_streams_title">লাইভ ষ্ট্ৰীমত দেখুৱাওক</string>
   <string name="morphe_niconico_comments_live_streams_summary">লাইভ ষ্ট্ৰীম আৰু ইয়াৰ ৰিপ্লে</string>
   <string name="morphe_niconico_comments_live_premieres_title">প্ৰিমিয়াৰত দেখুৱাওক</string>

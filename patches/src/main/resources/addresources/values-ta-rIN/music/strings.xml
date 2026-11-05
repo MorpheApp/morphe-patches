@@ -58,6 +58,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_drag_track">வரிசையை மாற்ற இழுக்கவும்</string>
   <string name="morphe_music_downloads_playlist_reorder_hint">%s • வரிசையை மாற்ற இழுக்கவும்</string>
   <string name="morphe_music_downloads_playlist_reorder_done">முடிந்தது</string>
+  <string name="morphe_music_downloads_playlist_download_title">ப்ளேலிஸ்ட் பதிவிறக்கம்</string>
+  <string name="morphe_music_downloads_playlist_download_listing">பாடல்கள் பட்டியலிடப்படுகின்றன…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s பட்டியலிடப்பட்டது…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">ப்ளேலிஸ்ட்டின் பாடல்களைப் பட்டியலிட முடியவில்லை</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">ஏற்கனவே பதிவிறக்கம் செய்யப்பட்டது: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"இந்த ப்ளேலிஸ்ட்டில் %1$s பாடல்கள் உள்ளன, %2$s இன்னும் பதிவிறக்கம் செய்யப்படவில்லை.
+
+அவை ஒவ்வொன்றாகப் பதிவிறக்கம் செய்யப்படும், இதற்கு நீண்ட நேரம் ஆகலாம் மற்றும் சுமார் %3$s காலியிடம் தேவைப்படும்"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">பதிவிறக்கு</string>
+  <string name="morphe_music_downloads_playlist_download_progress">%2$s பாடல்களில் %1$s-வது பாடல் பதிவிறக்கம் செய்யப்படுகிறது</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s பதிவிறக்கம் செய்யப்பட்டது</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s பதிவிறக்கம் செய்யப்பட்டது, %2$s பதிவிறக்கம் செய்ய முடியவில்லை</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">प्लेலிஸ்ட் பதிவிறக்கம் ஏற்கனவே நடைபெற்றுக்கொண்டிருக்கிறது</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">உங்கள் கணக்கு இன்னும் அறியப்படவில்லை. சிறிது நேரம் கழித்து மீண்டும் முயற்சிக்கவும்</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s பட்டியலிடப்பட்டுள்ளது, அனைத்தும் ஏற்கனவே பதிவிறக்கம் செய்யப்பட்டுள்ளன</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">प्लेலிஸ்டின் ஒரு பகுதி மட்டுமே பட்டியலிட முடிந்தது. மீதமுள்ளவற்றைப் பெற சிறிது நேரம் கழித்து மீண்டும் பதிவிறக்கம் என்பதைத் தட்டவும்</string>
+  <string name="morphe_music_downloads_playlist_download_started">பின்னணியில் %s பதிவிறக்கம் செய்யப்படுகிறது</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">நெட்வொர்க் இணைப்பு இல்லை</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">நெட்வொர்க்குக்காக காத்திருக்கிறது…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s இல் %1$s முடிந்த பிறகு நிறுத்தப்பட்டது. தொடர மீண்டும் பதிவிறக்கம் என்பதைத் தட்டவும்</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- ad.hideAdsPatch -->

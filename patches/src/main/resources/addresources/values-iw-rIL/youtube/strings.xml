@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">הסתר כפתורי ערוץ</string>
   <string name="morphe_hide_channel_buttons_summary">מסתיר כפתורים כגון הירשם, מעבר לערוץ, קהילה ו-YouTube Music מפרופילי ערוצים בתוצאות החיפוש</string>
   <string name="morphe_hide_community_posts_title">הסתר פוסטים קהילתיים</string>
+  <string name="morphe_post_buttons_screen_title">כפתורי פוסט</string>
+  <string name="morphe_post_buttons_screen_summary">בחר את פריסת הכפתורים מתחת לפוסטים של הקהילה ואילו כפתורים להסתיר</string>
+  <string name="morphe_post_buttons_layout_title">פריסת כפתורי פוסט</string>
+  <string name="morphe_post_buttons_layout_entry_1">שרת</string>
+  <string name="morphe_post_buttons_layout_entry_2">כפייה</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">הסתר כפתורי אהבתי ודיסלייק</string>
+  <string name="morphe_hide_post_dislike_button_title">הסתר לחצן דיסלייק</string>
+  <string name="morphe_hide_post_dislike_button_summary">בפריסת כפייה, המקום של הכפתור נשאר ריק</string>
+  <string name="morphe_hide_post_comment_button_title">הסתר לחצן תגובות</string>
+  <string name="morphe_hide_post_comments_preview_title">הסתר תצוגה מקדימה של תגובות</string>
+  <string name="morphe_hide_post_comments_preview_summary">מסתיר את התצוגה המקדימה של התגובות מתחת לפוסטים</string>
+  <string name="morphe_hide_post_share_button_title">הסתר לחצן שיתוף</string>
+  <string name="morphe_hide_post_share_button_summary">לחצן ההורדה של תמונות הפוסט מופיע לצד לחצן השיתוף, ולכן גם הוא מוסתר</string>
   <string name="morphe_hide_compact_banner_title">הסתר כרזות קומפקטיות</string>
   <string name="morphe_hide_compact_banner_summary">מסתיר באנרים קומפקטיים ומרווחים בין רכיבים מסוימים</string>
   <string name="morphe_hide_expandable_card_title">כרטיסים ניתנים להרחבה מתחת לסרטונים</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">מסתיר את הרמזים המוצגים במהלך מחוות נגן, כגון \'משוך למעלה לחיפוש מדויק\', \'שחרר כדי לבטל\' ו\'2x\'.</string>
-  <string name="morphe_hide_snackbar_title">הסתר סנאקבר</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">הסתר את הנחיות המנויים</string>
   <string name="morphe_hide_sync_button_title">הסתר כפתור \'סנכרן לסרטון\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">הסתר את גרדיאנט הקשה והחזקה</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">נשלחו יותר מדי דיווחים, נסה שוב מאוחר יותר</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList דחתה את הדיווח</string>
   <string name="morphe_aislist_submit_failed">הדיווח נכשל, בדוק את החיבור</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">סנאק-באר</string>
+  <string name="morphe_snackbar_screen_summary">הסתרת snackbars או שינוי הצבעים והצורה שלהם</string>
+  <string name="morphe_hide_snackbar_title">הסתר סנאקבר</string>
+  <string name="morphe_custom_snackbar_theme_title">Snackbar מותאם אישית</string>
+  <string name="morphe_custom_snackbar_theme_summary">סנאקברים משתמשים בצבעים וברדיוס הפינות להלן במקום בצבעים של ערכת הנושא ההפוכה</string>
+  <string name="morphe_custom_snackbar_color_dark_title">צבעי רקע כהה</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">צבע רקע של סנאקברים בערכת נושא כהה. הטקסט יהיה שחור או לבן, תלוי מה קל יותר לקריאה</string>
+  <string name="morphe_custom_snackbar_color_light_title">צבעי רקע בהיר</string>
+  <string name="morphe_custom_snackbar_color_light_summary">צבע רקע של סנאקברים בערכת נושא בהירה. הטקסט יהיה שחור או לבן, תלוי מה קל יותר לקריאה</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">צבע גבול</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">צבע הגבול מסביב לסנאקברים. צבע שקוף לא יציג גבול</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">רדיוס פינות</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">רדיוס פינות של סנאקברים ביחידות dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">רשימת היתרים למודעות בערוץ</string>
   <string name="morphe_ads_channel_whitelist_summary">סרטונים מערוצים ברשימת ההיתרים מופעלים עם מודעות, כך שהיוצרים שלהם מקבלים תשלום. המודעות נשארות חסומות בכל שאר הערוצים</string>
@@ -963,7 +989,7 @@ Second \"item\" text"</string>
 
 כדי לגשת להגדרות, הפעל את כפתור ההגדרות דרך כללי $\rightarrow$ סרגל כלים $\rightarrow$ הצג כפתור הגדרות"</string>
   <string name="morphe_narrow_navigation_buttons_title">הפעלת כפתורי ניווט צרים</string>
-  <string name="morphe_narrow_navigation_buttons_summary">מצמצם את המרווח האופקי בין הכפתורים</string>
+  <string name="morphe_narrow_navigation_buttons_summary">מצמצם את המרווח האופקי בין הכפתורים. אינו זמין עם סרגל הניווט מזכוכית, שיש לו מרווח כפתורים משלו</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">השבת לחצני ניווט ללא תוויות</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">מציג את לחצני הניווט עם תוויות, אם YouTube שולח אותם ללא תוויות</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">בטל לשוניות ניווט בסרגל הכלים</string>
@@ -982,6 +1008,11 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">מציגה את שורת הניווט כקפסולה צפה, מעוגלת וחצי שקופה. אינו זמין עם סגנון שורת ניווט אטום</string>
   <string name="morphe_navigation_bar_glass_opacity_title">אטימות הזכוכית</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">כוונן את רמת השקיפות של שורת הניווט מזכוכית (0 הוא שקוף, 100 הוא אטום)</string>
+  <string name="morphe_navigation_bar_glass_size_title">גודל סרגל ניווט מזכוכית</string>
+  <string name="morphe_navigation_bar_glass_size_summary">התאמת הגובה, הרוחב ומרווח הכפתורים של סרגל הניווט מזכוכית, עם תצוגה מקדימה. כפתורים שאינם נכנסים ברוחב המסך מוסתרים</string>
+  <string name="morphe_navigation_bar_glass_size_height">גובה</string>
+  <string name="morphe_navigation_bar_glass_size_width">רוחב מקסימלי</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">מרווח כפתורים</string>
   <string name="morphe_toolbar_screen_title">סרגל כלים</string>
   <string name="morphe_toolbar_screen_summary">בחר אילו רכיבים יופיעו בסרגל הכלים</string>
   <string name="morphe_hide_toolbar_chat_button_title">הסתר לחצן צ\'אט</string>
@@ -1684,6 +1715,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_discovery_unavailable">לא נמצאה רשימת השמעה</string>
   <string name="morphe_series_tracker_no_available_episodes">אין פרקים זמינים</string>
   <string name="morphe_series_tracker_hide_watched">הסתר צפוי</string>
+  <string name="morphe_series_tracker_watched_on_advance">סמן כנצפה בעת מעבר לפרק הבא</string>
   <string name="morphe_series_tracker_watch_previous">סמן פרקים קודמים כנצפים</string>
   <string name="morphe_series_tracker_order_starts_with">מתחיל עם: %1$s</string>
   <string name="morphe_series_tracker_episode_order">סדרת פרקים</string>
@@ -1736,9 +1768,13 @@ AVC (H.264)
   <string name="morphe_niconico_comments_opacity_summary">שקיפות של טקסט התגובה והרקעים</string>
   <string name="morphe_niconico_comments_travel_duration_title">משך זמן מעבר</string>
   <string name="morphe_niconico_comments_travel_duration_summary">כמה שניות לוקח לתגובות לחצות את המסך. ערכים נמוכים יותר נעים מהר יותר</string>
+  <string name="morphe_niconico_comments_display_area_title">אזור תצוגה</string>
+  <string name="morphe_niconico_comments_display_area_summary">כמה מהנגן, מהחלק העליון, התגובות יתפסו. ערכים נמוכים יותר ישאירו את החלק התחתון של הווידאו נקי</string>
   <string name="morphe_niconico_comments_max_length_title">אורך תגובה מקסימלי</string>
   <string name="morphe_niconico_comments_max_length_summary">מסתיר תגובות עם יותר תווים מזה. כל אימוג\'י נחשב כתו אחד</string>
   <string name="morphe_niconico_comments_max_length_no_limit">ללא הגבלה</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">קצב רענון מקסימלי</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">קצב רענון התצוגה הגבוה ביותר שבו נעשה שימוש בזמן שהתגובות נעות. ערכים נמוכים יותר צורכים פחות סוללה</string>
   <string name="morphe_niconico_comments_live_streams_title">הצג בשידורים חיים</string>
   <string name="morphe_niconico_comments_live_streams_summary">שידורים חיים וההקלטות שלהם</string>
   <string name="morphe_niconico_comments_live_premieres_title">הצג בבכורות</string>

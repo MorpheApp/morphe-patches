@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">隐藏频道按钮</string>
   <string name="morphe_hide_channel_buttons_summary">隐藏搜索结果中频道资料上的订阅、查看频道、社区和 YouTube Music 等按钮</string>
   <string name="morphe_hide_community_posts_title">隐藏社区帖子</string>
+  <string name="morphe_post_buttons_screen_title">帖子按钮</string>
+  <string name="morphe_post_buttons_screen_summary">选择社区帖子下方按钮的布局以及要隐藏哪些按钮</string>
+  <string name="morphe_post_buttons_layout_title">帖子按钮布局</string>
+  <string name="morphe_post_buttons_layout_entry_1">服务器</string>
+  <string name="morphe_post_buttons_layout_entry_2">强制</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">隐藏「顶」和「踩」按钮</string>
+  <string name="morphe_hide_post_dislike_button_title">隐藏点踩按钮</string>
+  <string name="morphe_hide_post_dislike_button_summary">在强制布局下，按钮的空间将被留空</string>
+  <string name="morphe_hide_post_comment_button_title">隐藏评论按钮</string>
+  <string name="morphe_hide_post_comments_preview_title">隐藏评论预览</string>
+  <string name="morphe_hide_post_comments_preview_summary">隐藏帖子下方的评论预览</string>
+  <string name="morphe_hide_post_share_button_title">隐藏分享按钮</string>
+  <string name="morphe_hide_post_share_button_summary">帖图的下载按钮绘制在分享按钮旁边，因此它也会被隐藏</string>
   <string name="morphe_hide_compact_banner_title">隐藏紧凑横幅</string>
   <string name="morphe_hide_compact_banner_summary">隐藏紧凑的横幅以及某些组件之间的间距</string>
   <string name="morphe_hide_expandable_card_title">视频下方的可展开卡片</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">隐藏播放器手势期间显示的提示，例如“上滑精准快进”“松开取消”和“2倍速”</string>
-  <string name="morphe_hide_snackbar_title">隐藏小贴士</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">隐藏订阅者指南</string>
   <string name="morphe_hide_sync_button_title">隐藏“同步到视频”按钮</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">隐藏点按并按住渐变</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">发送的举报过多，请稍后重试</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList 已拒绝该举报</string>
   <string name="morphe_aislist_submit_failed">举报失败，请检查网络连接</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">隐藏 Snackbar 或更改其颜色和形状</string>
+  <string name="morphe_hide_snackbar_title">隐藏小贴士</string>
+  <string name="morphe_custom_snackbar_theme_title">自定义 Snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbar 将使用下方的颜色和圆角半径，而非相反主题的颜色</string>
+  <string name="morphe_custom_snackbar_color_dark_title">深色主题背景颜色</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">深色主题下 Snackbar 的背景颜色。文本将根据可读性自动显示为黑色或白色</string>
+  <string name="morphe_custom_snackbar_color_light_title">浅色主题背景颜色</string>
+  <string name="morphe_custom_snackbar_color_light_summary">浅色主题下 Snackbar 的背景颜色。文本将根据可读性自动显示为黑色或白色</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">边框颜色</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Snackbar 周围边框的颜色。设置为透明色则不显示边框</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">圆角半径</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Snackbar 的圆角半径 (dp)</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">频道广告白名单</string>
   <string name="morphe_ads_channel_whitelist_summary">来自白名单频道的视频会播放广告，因此其创作者能获得收益。其他所有频道的广告仍会被屏蔽。</string>
@@ -963,7 +989,7 @@ Second \"item\" text"</string>
 
 要访问设置，请通过 常规 → 工具栏 → 显示设置 启用设置按钮"</string>
   <string name="morphe_narrow_navigation_buttons_title">启用狭窄导航按钮</string>
-  <string name="morphe_narrow_navigation_buttons_summary">减少按钮之间的水平间距</string>
+  <string name="morphe_narrow_navigation_buttons_summary">减少按钮之间的水平间距。不适用于玻璃导航栏，因为玻璃导航栏有自己的按钮间距设置</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">禁用无标签的导航按钮</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">如果 YouTube 发送的导航按钮没有标签，则显示带标签的导航按钮</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">禁用工具栏导航标签</string>
@@ -982,6 +1008,12 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">将导航栏显示为浮动的、圆角的半透明胶囊形状。在不透明导航栏样式下不可用</string>
   <string name="morphe_navigation_bar_glass_opacity_title">玻璃不透明度</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">调整玻璃导航栏的透明度级别（0 为透明，100 为不透明）</string>
+  <string name="morphe_navigation_bar_glass_size_title">玻璃导航栏尺寸</string>
+  <string name="morphe_navigation_bar_glass_size_summary">通过预览来调整玻璃导航栏的高度、宽度和按钮间距。超出屏幕宽度的按钮将被隐藏</string>
+  <string name="morphe_navigation_bar_glass_size_height">高度</string>
+  <string name="morphe_navigation_bar_glass_size_width">最大宽度</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">按钮间距</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">显示的按钮：%1$d / %2$d</string>
   <string name="morphe_toolbar_screen_title">工具栏</string>
   <string name="morphe_toolbar_screen_summary">选择工具栏中显示哪些组件</string>
   <string name="morphe_hide_toolbar_chat_button_title">隐藏聊天按钮</string>
@@ -1684,6 +1716,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_discovery_unavailable">未找到播放列表</string>
   <string name="morphe_series_tracker_no_available_episodes">无可用的剧集</string>
   <string name="morphe_series_tracker_hide_watched">隐藏已观看</string>
+  <string name="morphe_series_tracker_watched_on_advance">在跳转到下一集时标记为已观看</string>
   <string name="morphe_series_tracker_watch_previous">将之前的剧集标记为已观看</string>
   <string name="morphe_series_tracker_order_starts_with">开头包含： %1$s</string>
   <string name="morphe_series_tracker_episode_order">剧集顺序</string>
@@ -1736,9 +1769,13 @@ AVC (H.264)
   <string name="morphe_niconico_comments_opacity_summary">弹幕文本和背景的不透明度</string>
   <string name="morphe_niconico_comments_travel_duration_title">滚动时长</string>
   <string name="morphe_niconico_comments_travel_duration_summary">评论横跨屏幕所需的时间（秒）。值越低移动速度越快</string>
+  <string name="morphe_niconico_comments_display_area_title">显示区域</string>
+  <string name="morphe_niconico_comments_display_area_summary">评论占用播放器顶部开始的区域大小。数值越低，视频底部留白越多</string>
   <string name="morphe_niconico_comments_max_length_title">最大评论长度</string>
   <string name="morphe_niconico_comments_max_length_summary">隐藏字符数超过此限制的评论。每个表情符号计为一个字符</string>
   <string name="morphe_niconico_comments_max_length_no_limit">无限制</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">最大刷新率</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">评论移动时使用的最高显示刷新率。较低的值更省电</string>
   <string name="morphe_niconico_comments_live_streams_title">在直播中显示</string>
   <string name="morphe_niconico_comments_live_streams_summary">直播及其回放</string>
   <string name="morphe_niconico_comments_live_premieres_title">在首播中显示</string>

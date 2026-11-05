@@ -69,6 +69,19 @@ Os cambios inclúen:
   <string name="morphe_hide_channel_buttons_title">Ocultar os botóns de canle</string>
   <string name="morphe_hide_channel_buttons_summary">Oculta botóns como «Subscribirse», «Ver canle», «Comunidade» e «YouTube Music» nos perfís de canle que aparecen nos resultados de busca</string>
   <string name="morphe_hide_community_posts_title">Ocultar mensaxes da comunidade</string>
+  <string name="morphe_post_buttons_screen_title">Botóns post</string>
+  <string name="morphe_post_buttons_screen_summary">Escolla a disposición dos botóns baixo as publicacións da comunidade e cal botóns ocultar</string>
+  <string name="morphe_post_buttons_layout_title">Disposición dos botóns da publicación</string>
+  <string name="morphe_post_buttons_layout_entry_1">Servidor</string>
+  <string name="morphe_post_buttons_layout_entry_2">Imposta</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Ocultar botóns de \"gústame\" e \"non me gusta\"</string>
+  <string name="morphe_hide_post_dislike_button_title">Ocultar botón de \"non me gusta\"</string>
+  <string name="morphe_hide_post_dislike_button_summary">Coa disposición Imposta, o espazo do botón queda libre</string>
+  <string name="morphe_hide_post_comment_button_title">Ocultar botón de comentario</string>
+  <string name="morphe_hide_post_comments_preview_title">Ocultar vista previa de comentarios</string>
+  <string name="morphe_hide_post_comments_preview_summary">Oculta a vista previa dos comentarios debaxo das publicacións</string>
+  <string name="morphe_hide_post_share_button_title">Ocultar botón de compartir</string>
+  <string name="morphe_hide_post_share_button_summary">O botón de descarga das imaxes da publicación debuxase xunto ao botón de compartir, polo que tamén queda oculto</string>
   <string name="morphe_hide_compact_banner_title">Agochar banners compactos</string>
   <string name="morphe_hide_compact_banner_summary">Agocha banners compactas e espazamento entre algúns compoñentes</string>
   <string name="morphe_hide_expandable_card_title">Tarxetas expandibles baixo os vídeos</string>
@@ -159,7 +172,6 @@ Os cambios inclúen:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Agocha as suxestións que aparecen durante os xestos do usuario, como «Arrastra cara arriba para unha busca precisa», «Solta para cancelar» e «2x».</string>
-  <string name="morphe_hide_snackbar_title">Agochar a barra de mensaxes</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Agochar as directrices dos subscritores</string>
   <string name="morphe_hide_sync_button_title">Agochar o botón «Sincronizar co vídeo»</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Ocultar o gradiente de manter premido</string>
@@ -386,6 +398,20 @@ Os reportes son públicos e revísanse antes de que unha canle sexa engadida a u
   <string name="morphe_aislist_submit_failed_rate_limit">Enviaron demasiadas denuncias, tente máis tarde</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList rexeitou a denuncia</string>
   <string name="morphe_aislist_submit_failed">Erro na denuncia, comprobe a súa conexión</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Agocha as snackbars ou cambia as súas cores e forma</string>
+  <string name="morphe_hide_snackbar_title">Agochar a barra de mensaxes</string>
+  <string name="morphe_custom_snackbar_theme_title">Snackbar personalizada</string>
+  <string name="morphe_custom_snackbar_theme_summary">Os snackbars usan as cores e o raio do ángulo indicados a continuación en lugar das cores do tema oposto</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Cor de fondo do tema escuro</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Cor de fondo dos snackbars no tema escuro. O texto será negro ou branco, dependendo de cal sexa máis lexible</string>
+  <string name="morphe_custom_snackbar_color_light_title">Cor de fondo do tema claro</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Cor de fondo dos snackbars no tema claro. O texto será negro ou branco, dependendo de cal sexa máis lexible</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Cor do bordo</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Cor do bordo arredor dos snackbars. Unha cor transparente indica que non hai bordo</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Raio do ángulo</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Raio da esquina dos snackbars en dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Lista branca de anuncios do canle</string>
   <string name="morphe_ads_channel_whitelist_summary">Os vídeos das canles na lista branca reprodúcense con anuncios, así os seus creadores reciben o pago. Os anuncios permanecen bloqueados en todas as demais canles</string>
@@ -963,7 +989,7 @@ Deben proporcionarse as 'cookies de subtitulacións'"</string>
 
 Para acceder aos Axustes, activa o botón de Axustes a través de Xeral → Barra de ferramentas → Amosar botón de Axustes"</string>
   <string name="morphe_narrow_navigation_buttons_title">Activar os botóns de navegación estreitos</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Reduce o espaciado horizontal entre os botóns</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Reduce o espaciado horizontal entre os botóns. Non está dispoñible coa barra de navegación de vidro, que ten o seu propio espaciado de botóns</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Desactivar botóns de navegación sen etiquetas</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Mostra os botóns de navegación con etiquetas, se YouTube os envía sen etiquetas</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Desactivar as pestanas de navegación da barra de ferramentas</string>
@@ -982,6 +1008,12 @@ Para acceder aos Axustes, activa o botón de Axustes a través de Xeral → Barr
   <string name="morphe_navigation_bar_glass_summary">Mostra a barra de navegación como unha cápsula flotante, arredondeada e translúcida. Non dispoñible co estilo de barra de navegación opaca</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Opacidade do vidro</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Axusta o nivel de transparencia da barra de navegación de vidro (0 é transparente, 100 é opaco)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Tamaño da barra de navegación de vidro</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Axusta a altura, a largura e o espaciado dos botóns da barra de navegación de vidro, cunha vista previa. Os botóns que non queban na largura da pantalla ocúltanse</string>
+  <string name="morphe_navigation_bar_glass_size_height">Altura</string>
+  <string name="morphe_navigation_bar_glass_size_width">Largura máxima</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Espaciado dos botóns</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Botóns amosados: %1$d de %2$d</string>
   <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
   <string name="morphe_toolbar_screen_summary">Elixe que compoñentes aparecen na barra de ferramentas</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ocultar botón Chat</string>
@@ -1683,6 +1715,7 @@ A gravación automática é opcional. Detense en modo incógnito ou cando cambie
   <string name="morphe_series_tracker_discovery_unavailable">Non se puido atopar ningunha lista de reprodución</string>
   <string name="morphe_series_tracker_no_available_episodes">Non hai episodios dispoñibles</string>
   <string name="morphe_series_tracker_hide_watched">Ocultar vistos</string>
+  <string name="morphe_series_tracker_watched_on_advance">Marcar como visto ao pasar ao seguinte episodio</string>
   <string name="morphe_series_tracker_watch_previous">Marcar episodios anteriores como vistos</string>
   <string name="morphe_series_tracker_order_starts_with">Comeza con: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Orde dos episodios</string>
@@ -1735,9 +1768,13 @@ A gravación automática é opcional. Detense en modo incógnito ou cando cambie
   <string name="morphe_niconico_comments_opacity_summary">Opacidade do texto e dos fondos dos comentarios</string>
   <string name="morphe_niconico_comments_travel_duration_title">Duración do movemento</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Cantidade de segundos que tardan os comentarios en atravesar a pantalla. Os valores máis baixos móvense máis rápido</string>
+  <string name="morphe_niconico_comments_display_area_title">Área de amosar</string>
+  <string name="morphe_niconico_comments_display_area_summary">Kanto do reproductor, desde arriba, usan os comentarios. Os valores máis baixos manteñen limpa a parte inferior do vídeo</string>
   <string name="morphe_niconico_comments_max_length_title">Lonxitude máxima do comentario</string>
   <string name="morphe_niconico_comments_max_length_summary">Oculta os comentarios con máis caracteres que este. Cada emoji conta como un carácter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sen límite</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Tasa de refresco máxima</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Tasa de refresco de pantalla máis alta utilizada mentres os comentarios se moven. Valores máis baixos consomen menos batería</string>
   <string name="morphe_niconico_comments_live_streams_title">Amosar en transmisións en directo</string>
   <string name="morphe_niconico_comments_live_streams_summary">Transmisións en directo e as súas repeticións</string>
   <string name="morphe_niconico_comments_live_premieres_title">Amosar nas estreas</string>

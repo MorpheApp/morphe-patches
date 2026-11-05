@@ -200,6 +200,26 @@ Yuklab olingan treklar shu yerda ko\"rinadi"</string>
   <string name="morphe_music_downloads_progress">Yuklab olinmoqda %s%%</string>
   <string name="morphe_music_downloads_complete">Yuklab olish yakunlandi</string>
   <string name="morphe_music_downloads_failed">Yuklab olish muvaffaqiyatsiz tugadi</string>
+  <string name="morphe_music_downloads_playlist_download_title">Pleylistni yuklab olish</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Treklar ro\'yxati tuzilmoqda…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s ta ro\'yxatga olindi…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Pleylist treklarini ro\'yxatga olish imkonsiz bo\'ldi</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Allaqachon yuklab olingan: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"Ushbu pleylistda %1$s ta trek bor, %2$s tasi hali yuklab olinmagan.
+
+Ular birin-ketin yuklab olinadi, bu uzoq vaqt olishi mumkin va taxminan %3$s bo'sh joy talab qilinadi"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Yuklab olish</string>
+  <string name="morphe_music_downloads_playlist_download_progress">%2$s tadan %1$s-trek yuklab olinmoqda</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s yuklab olindi</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s yuklab olindi, %2$s yuklab olib bo\"lib iloji bo\"lmadi</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Pleylistni yuklab olish jarayoni allaqachon ketyapti</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Hisobingiz hali aniqlanmadi. Bir ozdan keyin qayta urinib ko\"ring</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s ro\"yxatga olindi, hammasi yuklab olingan</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Pleylistning faqat bir qismi ro\"yxatga olindi. Qolganlarini olish uchun keyinroq qayta \"Yuklab olish\" tugmasini bosing</string>
+  <string name="morphe_music_downloads_playlist_download_started">%s fonda yuklab olinmoqda</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Tarmoq ulanishi yo\"q</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Tarmoq kutilmoqda…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s tadan %1$s dan keyin to\"xtadi. Davom ettirish uchun qayta \"Yuklab olish\" tugmasini bosing</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Biz haqimizda</string>
@@ -643,6 +663,7 @@ Talab qilinadigan cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_mini_track_format_title">Qo\"shiq nomi/ijrochi formati</string>
   <string name="morphe_music_lyrics_mini_track_format_summary">Miniplayer va MediaSession-da matnlar bilan ko\'rsatiladigan trek formati. {t} - bu nomi, {a} - ijrochi va {v} - versiya, masalan, Acoustic, agar matnlar manbai uni taqdim etsa. Ikki nuqta orasidagi matn faqat ichidagi barcha o\'zgaruvchilar qiymatga ega bo\'lgandagina ko\'rsatiladi; oddiy ikki nuqta uchun \\: yozing. Har bir qator navbat bilan ko\'rsatiladi va matn o\'zgarganda keyingisiga o\'tadi</string>
   <string name="morphe_music_lyrics_mini_encapsulation_title">Matn qatori formati</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Miniplayer va MediaSession\'dagi qo\'shiq matni satri formati. {lrc} - bu satr, {n} esa uning ketma-ket necha marta aytilgani. Ikki nuqta orasidagi matn faqat satr takrorlanganda ko\'rsatiladi. Ikki nuqta uchun \\: belgisidan foydalaning</string>
   <string name="morphe_music_lyrics_mini_encapsulation_invalid">Format {lrc} ni o\'z ichiga olishi kerak</string>
   <string name="morphe_music_lyrics_mini_track_format_menu_summary">Artist qatori shabloni va animatsiya vaqti</string>
   <string name="morphe_music_lyrics_mini_artist_min_label">Minimal ekran vaqti (ms)</string>

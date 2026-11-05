@@ -69,6 +69,19 @@ Els canvis inclouen:
   <string name="morphe_hide_channel_buttons_title">Ocultar botons del canal</string>
   <string name="morphe_hide_channel_buttons_summary">Oculta botons com Subscriure\'s, Veure canal, Comunitat i YouTube Music dels perfils de canal als resultats de cerca</string>
   <string name="morphe_hide_community_posts_title">Ocultar publicacions de la comunitat</string>
+  <string name="morphe_post_buttons_screen_title">Botons de publicacions</string>
+  <string name="morphe_post_buttons_screen_summary">Tria la disposició dels botons sota les publicacions de la comunitat i quins botons vols ocultar</string>
+  <string name="morphe_post_buttons_layout_title">Disseny dels botons de publicació</string>
+  <string name="morphe_post_buttons_layout_entry_1">Servidor</string>
+  <string name="morphe_post_buttons_layout_entry_2">Imposat</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Amaga els botons de \"m\'agrada\" i \"no m\'agrada\"</string>
+  <string name="morphe_hide_post_dislike_button_title">Amaga el botó \"no m\'agrada\"</string>
+  <string name="morphe_hide_post_dislike_button_summary">Amb el disseny Imposat, l\'espai del botó es manté buit</string>
+  <string name="morphe_hide_post_comment_button_title">Amaga el botó de comentaris</string>
+  <string name="morphe_hide_post_comments_preview_title">Ocultar vista prèvia de comentaris</string>
+  <string name="morphe_hide_post_comments_preview_summary">Oculta la vista prèvia dels comentaris sota les publicacions</string>
+  <string name="morphe_hide_post_share_button_title">Amaga el botó de compartir</string>
+  <string name="morphe_hide_post_share_button_summary">El botó de descàrrega de les imatges de la publicació es dibuixa al costat del botó de compartir, per la qual cosa també queda ocult</string>
   <string name="morphe_hide_compact_banner_title">Ocultar bannes compactes</string>
   <string name="morphe_hide_compact_banner_summary">Amaga els bàners compactes i l\'espai entre alguns components</string>
   <string name="morphe_hide_expandable_card_title">Targetes desplegables sota els vídeos</string>
@@ -159,7 +172,6 @@ Els canvis inclouen:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Oculta els indicadors que apareixen durant els gestos del reproductor, com \"Desllisa cap amunt per a una recerca precisa\", \"Allibera per cancel·lar\" i \"2x\"</string>
-  <string name="morphe_hide_snackbar_title">Oculta la barra de notificacions</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Amaga les directrius per als subscriptors</string>
   <string name="morphe_hide_sync_button_title">Ocultar el botó \'Sincronitzar amb el vídeo\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Ocultar el degradat de tocar i mantenir</string>
@@ -386,6 +398,20 @@ Els informes són públics i es revisen abans d'afegir un canal a una llista. L'
   <string name="morphe_aislist_submit_failed_rate_limit">S\'han enviat massa denúncies, torneu-ho a intentar més tard</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList ha rebutjat la denúncia</string>
   <string name="morphe_aislist_submit_failed">Error en la denúncia, comproveu la vostra connexió</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Oculteu els snackbars o canvieu els seus colors i la seva forma</string>
+  <string name="morphe_hide_snackbar_title">Oculta la barra de notificacions</string>
+  <string name="morphe_custom_snackbar_theme_title">Snackbar personalitzat</string>
+  <string name="morphe_custom_snackbar_theme_summary">Els snackbars utilitzen els colors i el radi de la cantonada següents en lloc dels colors del tema oposat</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Color de fons del tema fosc</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Color de fons dels snackbars en el tema fosc. El text és negre o blanc, el que sigui més fàcil de llegir</string>
+  <string name="morphe_custom_snackbar_color_light_title">Color de fons del tema clar</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Color de fons dels snackbars en el tema clar. El text és negre o blanc, el que sigui més fàcil de llegir</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Color delതിനുള്ള bordure</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Color del bordure al voltant dels snackbars. Un color transparent no mostra cap bordure</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Radi de la cantonada</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Radi de la cantonada dels snackbars en dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Llista blanca d\'anuncis del canal</string>
   <string name="morphe_ads_channel_whitelist_summary">Els vídeos dels canals de la llista blanca es reproduen amb anuncis, així els seus creadors reben un pagament. Els anuncis es mantenen bloquejats en tots els altres canals</string>
@@ -963,7 +989,7 @@ Cal proporcionar les 'cookies de subtítols'"</string>
 
 Per accedir a la Configuració, activeu el botó de Configuració a través de General → Barra d'eines → Mostrar botó de Configuració"</string>
   <string name="morphe_narrow_navigation_buttons_title">Habilitar botons de navegació estrets</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Redueix l\'espai horitzontal entre els botons</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Redueix l\'espaiat horizontal entre els botons. No està disponible amb la barra de navigació de vidre, que té el seu propi espaiat de botons</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Desactiva els botons de navegació sense etiqueta</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Mostra els botons de navegació amb etiqueta, si YouTube els envia sense etiqueta</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Desactivar les pestanyes de navegació de la barra d\'eines</string>
@@ -982,6 +1008,12 @@ Per accedir a la Configuració, activeu el botó de Configuració a través de G
   <string name="morphe_navigation_bar_glass_summary">Mostra la barra de navegació com una càpsula flotant, arrodonida i translúcida. No està disponible amb l\'estil de barra de navegació opaca</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Opacitat del vidre</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Ajusta el nivell de transparència de la barra de navegació de vidre (0 és transparent, 100 és opac)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Mida de la barra de navigació de vidre</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Ajusta l\'alçada, l\'amplada i l\'espaiat dels botons de la barra de navigació de vidre, amb una vista prèvia. Els botons que no caben a l\'amplada de la pantalla es solen ocultar</string>
+  <string name="morphe_navigation_bar_glass_size_height">Alçada</string>
+  <string name="morphe_navigation_bar_glass_size_width">Amplada màxima</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Espaiat dels botons</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Botons mostrados: %1$d de %2$d</string>
   <string name="morphe_toolbar_screen_title">Barra d\'eines</string>
   <string name="morphe_toolbar_screen_summary">Trieu quins components apareixen a la barra d\'eines</string>
   <string name="morphe_hide_toolbar_chat_button_title">Oculta el botó de Xat</string>
@@ -1684,6 +1716,7 @@ El registre automàtic és opcional. S'atura en mode incògnit o quan canvia el 
   <string name="morphe_series_tracker_discovery_unavailable">No s\'ha pogut trobar cap llista de reproducció</string>
   <string name="morphe_series_tracker_no_available_episodes">No hi ha episodis disponibles</string>
   <string name="morphe_series_tracker_hide_watched">Ocultar els vistos</string>
+  <string name="morphe_series_tracker_watched_on_advance">Marcar com a vist en passar al següent episodi</string>
   <string name="morphe_series_tracker_watch_previous">Marcar els episodis anteriors com a vistos</string>
   <string name="morphe_series_tracker_order_starts_with">Comença per: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Ordre dels episodis</string>
@@ -1736,9 +1769,13 @@ El registre automàtic és opcional. S'atura en mode incògnit o quan canvia el 
   <string name="morphe_niconico_comments_opacity_summary">Opacitat del text i dels fons dels comentaris</string>
   <string name="morphe_niconico_comments_travel_duration_title">Durada del trajecte</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Quants segons triguen els comentaris a creuar la pantalla. Els valors més baixos es mouen més ràpid</string>
+  <string name="morphe_niconico_comments_display_area_title">Àrea de visualització</string>
+  <string name="morphe_niconico_comments_display_area_summary">Quina part del reproductor, des de dalt, utilitzen els comentaris. Els valors més baixos mantenen neta la part inferior del vídeo</string>
   <string name="morphe_niconico_comments_max_length_title">Longitud màxima del comentari</string>
   <string name="morphe_niconico_comments_max_length_summary">Amaga els comentaris que tinguin més caràcters que aquest. Cada emoji compta com a un caràcter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sense límit</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Freqüència màxima d\'actualització</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Freqüència màxima d\'actualització de la pantalla utilitzada mentre els comentaris es mouen. Els valors més baixos consumeixen menys bateria</string>
   <string name="morphe_niconico_comments_live_streams_title">Mostrar en transmissions en directe</string>
   <string name="morphe_niconico_comments_live_streams_summary">Transmissions en directe i les seves repeticions</string>
   <string name="morphe_niconico_comments_live_premieres_title">Mostrar en els Estrens</string>

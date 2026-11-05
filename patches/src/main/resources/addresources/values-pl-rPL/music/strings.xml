@@ -201,24 +201,25 @@ Tutaj pojawią się pobrane utwory"</string>
   <string name="morphe_music_downloads_complete">Pobieranie ukończone</string>
   <string name="morphe_music_downloads_failed">Pobieranie nie powiodło się</string>
   <string name="morphe_music_downloads_playlist_download_title">Pobieranie playlisty</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Wykazywanie utworów…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Nie udało się wyliczyć utworów z playlisty</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Pobieranie listy utworów…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">Wczytano %s…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Nie udało się pobrać listy utworów z playlisty</string>
   <string name="morphe_music_downloads_playlist_download_all_saved">Już pobrano: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s utworów w tej playliście, %2$s jeszcze nie pobrano.
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s utworów na tej playliście, %2$s jeszcze nie pobrano.
 
-Są one pobierane pojedynczo, co może zająć dużo czasu i wymaga około %3$s wolnego miejsca"</string>
+Utwory są pobierane pojedynczo, co może zająć dużo czasu i wymaga około %3$s wolnego miejsca"</string>
   <string name="morphe_music_downloads_playlist_download_confirm_button">Pobierz</string>
   <string name="morphe_music_downloads_playlist_download_progress">Pobieranie utworu %1$s z %2$s</string>
   <string name="morphe_music_downloads_playlist_download_complete">Pobrano %s</string>
   <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s pobrano, %2$s nie udało się pobrać</string>
   <string name="morphe_music_downloads_playlist_download_already_running">Pobieranie playlisty już trwa</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Twoje konto nie jest jeszcze znane. Spróbuj ponownie za chwilę</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s wykazano, wszystkie już pobrano</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Udało się wykazać tylko część playlisty. Dotknij ponownie Pobierz później, aby pobrać resztę</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Nie rozpoznano jeszcze Twojego konta. Spróbuj ponownie za chwilę</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">Wczytano %s, wszystkie już pobrano</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Udało się wczytać tylko część playlisty. Dotknij przycisku \"Pobierz\" później, aby pobrać resztę</string>
   <string name="morphe_music_downloads_playlist_download_started">Pobieranie %s w tle</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Brak połączenia sieciowego</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Brak połączenia z siecią</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">Oczekiwanie na sieć…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Zatrzymano po %1$s z %2$s. Dotknij ponownie Pobierz, aby kontynuować</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Zatrzymano po %1$s z %2$s. Dotknij przycisku \"Pobierz\" ponownie, aby kontynuować</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Informacje</string>

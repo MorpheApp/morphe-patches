@@ -69,6 +69,19 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_channel_buttons_title">Csatornagombok elrejtése</string>
   <string name="morphe_hide_channel_buttons_summary">Elrejti az olyan gombokat, mint a Feliratkozás, Csatorna megtekintése, Közösség és a YouTube Music a csatornaprofilokon a keresési találatokban</string>
   <string name="morphe_hide_community_posts_title">Közösségi posztok elrejtése</string>
+  <string name="morphe_post_buttons_screen_title">Bejegyzés gombjai</string>
+  <string name="morphe_post_buttons_screen_summary">Válassza ki a közösségi bejegyzések alatti gombok elrendezését, és azt, hogy mely gombokat rejtsük el</string>
+  <string name="morphe_post_buttons_layout_title">Bejegyzés gombjai elrendezése</string>
+  <string name="morphe_post_buttons_layout_entry_1">Szerver</string>
+  <string name="morphe_post_buttons_layout_entry_2">Kényszerített</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Tetszik és nem tetszik elrejtése</string>
+  <string name="morphe_hide_post_dislike_button_title">Nem tetszik gomb elrejtése</string>
+  <string name="morphe_hide_post_dislike_button_summary">A kényszerített elrendezésnél a gomb helye üres marad</string>
+  <string name="morphe_hide_post_comment_button_title">Hozzászólások gomb elrejtése</string>
+  <string name="morphe_hide_post_comments_preview_title">Kommentek előnézetének elrejtése</string>
+  <string name="morphe_hide_post_comments_preview_summary">Elrejti a bejegyzések alatti kommentek előnézetét</string>
+  <string name="morphe_hide_post_share_button_title">Megosztás gomb elrejtése</string>
+  <string name="morphe_hide_post_share_button_summary">A bejegyzés képeinek letöltés gombja a megosztás gomb mellett jelenik meg, így ez is rejtve lesz</string>
   <string name="morphe_hide_compact_banner_title">Kompakt szalaghirdetések elrejtése</string>
   <string name="morphe_hide_compact_banner_summary">Kompakt szalagképek és az egyes összetevők közötti térköz elrejtése</string>
   <string name="morphe_hide_expandable_card_title">Kibontható kártyák a videók alatt</string>
@@ -159,7 +172,6 @@ A változások a következőket tartalmazzák:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Elrejti a lejátszó gesztusok során megjelenő tippeket, például a \"Húzza felfelé a pontos kereséshez\", \"Engedje el a megszakításhoz\" és a \"2x\".</string>
-  <string name="morphe_hide_snackbar_title">Snack bár elrejtése</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Csatorna-irányelvek elrejtése</string>
   <string name="morphe_hide_sync_button_title">„Szinkronizálás videóval” gomb elrejtése</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Az érintés és nyomva tartás színátmenetének elrejtése</string>
@@ -386,6 +398,20 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_aislist_submit_failed_rate_limit">Túl sok jelentést küldtek, próbáld újra később.</string>
   <string name="morphe_aislist_submit_failed_rejected">Az AiSList elutasította a jelentést.</string>
   <string name="morphe_aislist_submit_failed">A jelentés elküldése nem sikerült, ellenőrizd a kapcsolatot.</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Rejtse el a snackbarokat, vagy módosítsa azok színét és alakját</string>
+  <string name="morphe_hide_snackbar_title">Snack bár elrejtése</string>
+  <string name="morphe_custom_snackbar_theme_title">Egyedi snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">A snackbarok az alábbi színeket és sarokradiuszt használják az ellentétes téma színei helyett</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Sötét téma háttérszíne</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">A snackbarok háttérszíne a sötét témában. A szöveg fekete vagy fehér, attól függően, hogy melyik könnyebben olvasható</string>
+  <string name="morphe_custom_snackbar_color_light_title">Világos téma háttérszíne</string>
+  <string name="morphe_custom_snackbar_color_light_summary">A snackbarok háttérszíne a világos témában. A szöveg fekete vagy fehér, attól függően, hogy melyik könnyebben olvasható</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Szegélyszín</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">A snackbarokat körülvevő szegély színe. Az átlátszó szín nem mutat szegélyt</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Sarokradiusz</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">A snackbarok sarokradiusza dp-ben</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Csatorna hirdetési fehérlistája</string>
   <string name="morphe_ads_channel_whitelist_summary">A fehérlistán szereplő csatornák videói reklámokkal jelennek meg, így alkotóik fizetést kapnak. A hirdetések blokkolva maradnak minden más csatornán.</string>
@@ -963,7 +989,7 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
 
 A Beállítások eléréséhez aktiválja a Beállítások gombot az Általános → SzalCollide → Beállítások gomb megjelenítése menüpontban"</string>
   <string name="morphe_narrow_navigation_buttons_title">Szeletelt navigációs gombok engedélyezése</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Csökkenti a gombok közötti vízszintes távolságot</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Csökkenti a gombok közötti vízszintes távolságot. Nem érhető el az üveg navigációs sávval, amelynek saját gombtávolsága van</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Címkék nélküli navigációs gombok letiltása</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Megjeleníti a navigációs gombokat címkékkel, ha a YouTube címkék nélkül küldi azokat</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Toolbar navigációs lapok kikapcsolása</string>
@@ -982,6 +1008,11 @@ A Beállítások eléréséhez aktiválja a Beállítások gombot az Általános
   <string name="morphe_navigation_bar_glass_summary">A navigációs sáv egy lebegő, lekerekített, áttetsző kapszulaként jelenik meg. Nem érhető el az átlátszatlan navigációs sáv stílussal</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Üveg átlátszósága</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Állítsa be az üveg navigációs sáv átlátszósági szintjét (0 átlátszó, 100 átlátszatlan)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Üveg navigációs sáv mérete</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Állítsa be az üveg navigációs sáv magasságát, szélességét és a gombok közötti távolságot, előnézettel. A képernyő szélességébe nem férő gombok rejtésre kerülnek</string>
+  <string name="morphe_navigation_bar_glass_size_height">Magasság</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maximális szélesség</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Gombtávolság</string>
   <string name="morphe_toolbar_screen_title">Eszközevek sorozata</string>
   <string name="morphe_toolbar_screen_summary">Válassza ki, mely komponensek jelenjenek meg az eszköztáron</string>
   <string name="morphe_hide_toolbar_chat_button_title">Csevegés gomb elrejtése</string>
@@ -1684,6 +1715,7 @@ A automatikus rögzítés opcionális. Inkognitó módban vagy a fiókváltás s
   <string name="morphe_series_tracker_discovery_unavailable">Nem található lejátszási lista</string>
   <string name="morphe_series_tracker_no_available_episodes">Nincs elérhető epizód</string>
   <string name="morphe_series_tracker_hide_watched">Megnézettek elrejtése</string>
+  <string name="morphe_series_tracker_watched_on_advance">Jelölje meg megtekintettnek a következő epizódra lépéskor</string>
   <string name="morphe_series_tracker_watch_previous">Korábbi epizódok megjelölése megtekintettként</string>
   <string name="morphe_series_tracker_order_starts_with">Ezzel kezdődik: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Epizódok sorrendje</string>
@@ -1736,9 +1768,13 @@ A automatikus rögzítés opcionális. Inkognitó módban vagy a fiókváltás s
   <string name="morphe_niconico_comments_opacity_summary">A kommentszövegek és a háttér átlátszósága</string>
   <string name="morphe_niconico_comments_travel_duration_title">Mozgási időtartam</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Hány másodperc alatt haladjanak át a kommentek a képernyőn. Az alacsonyabb értékek gyorsabb mozgást jelentenek</string>
+  <string name="morphe_niconico_comments_display_area_title">Megjelenítési terület</string>
+  <string name="morphe_niconico_comments_display_area_summary">Hogy a lejátszó mennyi részét használják a kommentek a felső résztől számítva. Az alacsonyabb értékek tisztán tartják a videó alsó részét</string>
   <string name="morphe_niconico_comments_max_length_title">Maximális kommenthossz</string>
   <string name="morphe_niconico_comments_max_length_summary">Rejtőzi a kommenteket, amelyek több karakterből állnak, mint ez. Minden emoji egy karakternek számít</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Nincs korlát</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Maximális frissítési sebesség</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">A legnagyobb kijelző frissítési sebesség, amely akkor kerül használatra, amikor a kommentek mozognak. Az alacsonyabb értékek kevesebb akkumulátort fogyasztanak</string>
   <string name="morphe_niconico_comments_live_streams_title">Megjelenítés élő közvetítéseken</string>
   <string name="morphe_niconico_comments_live_streams_summary">Élő közvetítések és azoktaki lejátszások</string>
   <string name="morphe_niconico_comments_live_premieres_title">Megjelenítése premiereken</string>

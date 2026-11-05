@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">Сувгийн товчнуудыг нуух</string>
   <string name="morphe_hide_channel_buttons_summary">Хайлтын үр дүнд гарч ирэх сувгийн профайл дээрх Бүртгүүлэх, Сувгийг үзэх, Нийгэмлэг, YouTube Music зэрэг товчнуудыг нууна</string>
   <string name="morphe_hide_community_posts_title">Олон нийтийн нийтлэлийг нуух</string>
+  <string name="morphe_post_buttons_screen_title">Постын товчнууд</string>
+  <string name="morphe_post_buttons_screen_summary">Нигэмжлэлийн постын доорх товчнуудын байрлал болон аль товчнуудыг нуухыг сонгоно уу</string>
+  <string name="morphe_post_buttons_layout_title">Постын товчлууруудын бүтэц</string>
+  <string name="morphe_post_buttons_layout_entry_1">Сервер</string>
+  <string name="morphe_post_buttons_layout_entry_2">Албадсан</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Таалагдах болон таалагдахгүй товчнуудыг нуух</string>
+  <string name="morphe_hide_post_dislike_button_title">Таалагдахгүй товчийг нуух</string>
+  <string name="morphe_hide_post_dislike_button_summary">Албадмал бүтэцтэй үед товчны зай хоосон хэвээр үлдэнэ</string>
+  <string name="morphe_hide_post_comment_button_title">Сэтгэгдэл бичих товчийг нуух</string>
+  <string name="morphe_hide_post_comments_preview_title">Сэтгэгдлийн урьдчилан харахыг нуух</string>
+  <string name="morphe_hide_post_comments_preview_summary">Постуудын доорх сэтгэгдлүүдийн урьдчилан харах хэсгийг нууна</string>
+  <string name="morphe_hide_post_share_button_title">Хуваалцах товчийг нуух</string>
+  <string name="morphe_hide_post_share_button_summary">Постын зургийг татаж авах товч нь хуваалцах товчны хажууд байрладаг тул энэ нь мөн нуугдана</string>
   <string name="morphe_hide_compact_banner_title">Компакт баннеруудыг нуух</string>
   <string name="morphe_hide_compact_banner_summary">Жижиг баннерууд болон зарим хэсгүүдийн хоорондох зайг нуух</string>
   <string name="morphe_hide_expandable_card_title">Видеоны доорх дэлгэрээж болдог картууд</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Тоглогчийн дохио зааврын \'Нарийвчлалтай хайхын тулд дээшээ татна\', \'Цуцлахын тулд тавь\' болон \'2x\' гэх мэт зүйлсийг нуух</string>
-  <string name="morphe_hide_snackbar_title">Снэкбарыг нуух</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Бүртгүүлэгчдийн удирдамжийг нуух</string>
   <string name="morphe_hide_sync_button_title">\'Бичлэгтэй синхрончлох\' товчийг нуух</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Дараад тэрийлгэх градиентыг нуух</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">Хэт олон тайлан илгээгдсэн байна, дараа дахин оролдоно уу</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList тайланг цуцаллаа</string>
   <string name="morphe_aislist_submit_failed">Тайлан илгээхэд алдаа гарлаа, холболтоо шалгана уу</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Снэкбар</string>
+  <string name="morphe_snackbar_screen_summary">Снэкбарыг нуух эсвэл өнгө, хэлбэрийг нь өөрчлөх</string>
+  <string name="morphe_hide_snackbar_title">Снэкбарыг нуух</string>
+  <string name="morphe_custom_snackbar_theme_title">Захиалгат снэкбар</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbars нь эсрэг сэвэргээнгийн өнгөний оронд доорх өнгө болон булангийн радиусыг ашиглана</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Харанхуй сэвний арын өнгө</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Харанхуй сэвн дэх snackbar-ын арын өнгө. Текст нь уншихад хялбар хар эсвэл цагаан өнгөтэй байна</string>
+  <string name="morphe_custom_snackbar_color_light_title">Гэрэлтэй сэвний арын өнгө</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Гэрэлтэй сэвн дэх snackbar-ын арын өнгө. Текст нь уншихад хялбар хар эсвэл цагаан өнгөтэй байна</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Хүрээний өнгө</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Snackbar-ын хүрээний өнгө. Тунгалаг өнгө сонгосноор хүрээ харуулахгүй</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Булангийн радиус</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Snackbar-ын булангийн радиус dp-ээр</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Сувгийн зар сурталчилгааны зөвшөөрөгдсөн жагсаалт</string>
   <string name="morphe_ads_channel_whitelist_summary">Цагаан жагсаалтад байгаа сувгуудын бичлэгүүд сурталчилгаатай тоглуулагдах бөгөөд ингэснээр тэдгээрийн бүтээгчид төлбөрөө авна. Бусад бүх сувгуудад сурталчилгаа хаагдсан хэвээр байх болно</string>
@@ -461,6 +487,7 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_flyout_single">Зураг татах</string>
   <string name="morphe_post_image_download_started">%s зураг татаж байна…</string>
   <string name="morphe_post_image_download_started_single">Зураг татаж байна…</string>
+  <string name="morphe_post_image_download_saved">%1$s зураг %2$s хавтсанд хадгалагдлаа</string>
   <string name="morphe_post_image_download_saved_single">Зураг %s хавтсанд хадгалагдлаа</string>
   <string name="morphe_post_image_download_failed">Зургийг татаж авж чадсангүй</string>
   <string name="morphe_post_image_download_not_found">Энэхүү нийтлэлээс зураг олдсонгүй</string>
@@ -770,6 +797,10 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_swipe_left_zone_title">Зүүн тийш гүйлгэх дохио</string>
   <string name="morphe_swipe_right_zone_title">Баруун тийш гүйлгэх дохио</string>
   <string name="morphe_swipe_top_zone_title">Дээшээ гүйлгэх дохио</string>
+  <string name="morphe_swipe_seek_title">Гүйлгэж хайх</string>
+  <string name="morphe_swipe_seek_summary">Дүүрэн дэлгэц тоглуулагч дээр зүүн эсвэл баруун тийш гүйлгэж хайлтын түүрийг хөдөлгөөд, гар болгосноор тухайн хэсэг рүү шилжэнэ</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Хайлтын гүйлгэлтийн мэдрэмж</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Нэг удаа гүйлгэхэд хайлтын түүр хэр хол хөдлөхыг тохируулна</string>
   <string name="morphe_swipe_zone_width_title">Зүүн/Баруун бүсийн өргөн</string>
   <string name="morphe_swipe_zone_width_summary">Дэлгэцийн ирмэгийн зүүн болон баруун тийш гүйлгэх дохионд зориулсан зайны хувь (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Гэрэлтүүлэг</string>
@@ -941,7 +972,9 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_hide_notifications_button_title">Мэдэгдэл товчийг нуух</string>
   <string name="morphe_show_search_button_title">Хайлт товчийг харуулах</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">\"Дараа нь үзэх\" товчийг näyttэх</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Дараа нь үзэх</string>
   <string name="morphe_show_settings_button_title">Тохиргоо товчийг харуулах</string>
   <string name="morphe_show_settings_button_type_title">Тохиргооны товчны үйлдэл</string>
   <string name="morphe_show_settings_button_type_summary">Идэвхжүүлсэн үед Morphe-ийн тохиргоог, идэвхгүй болгосон үед YouTube-ийн тохиргоог нээнэ</string>
@@ -956,7 +989,7 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
 
 Тохиргоонд хандахын тулд Ерөнхий → Баруун дээд хэсэг → Тохиргооны товчийг харуулах гэж идэвхжүүлнэ үү"</string>
   <string name="morphe_narrow_navigation_buttons_title">Нарийн навигацийн товчнуудыг идэвхжүүлэх</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Товчлууруудын хорзон зайн зайг багасгана</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Товчлууруудын хоорондох хэвтээ зайг багасгана. Өөрийн гэсэн товчлуурын зайтай шилэн навигацийн мөр дээр ашиглах боломжгүй</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Тайлбаргүй навигацийн товчнуудыг идэвхгүй болгох</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTube-ээс тайлбаргүй илгээсэн товчнуудыг тайлбартай харуулна</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Баруун дээд хэсгийн навигацийн табуудыг идэвхгүй болгох</string>
@@ -975,6 +1008,12 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_navigation_bar_glass_summary">Навигацийн панелийг хөвж буй, дугуйрсан, хагас тунгалаг капсул хэлбэрээр харуулна. Opaque навигацийн панелийн загвартай үед ашиглах боломжгүй</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Шилэн бүрхүүл</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Шилэн навигацийн панелийн тунгалаг байдлыг тохируулна (0 нь тунгалаг, 100 нь бүрхэг)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Шилэн навигацийн панелийн хэмжээ</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Шилэн навигацийн панелийн өндөр, өргөн болон товчнуудын зайг урьдчилан харах боломжтойгоор тохируулна. Дэлгэцийн өргөнд багтахгүй байгаа товчнууд нуугдана</string>
+  <string name="morphe_navigation_bar_glass_size_height">Өндөр</string>
+  <string name="morphe_navigation_bar_glass_size_width">Хамгийн их өргөн</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Товчнуудын зай</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Харагдаж буй товчнууд: %2$d-аас %1$d</string>
   <string name="morphe_toolbar_screen_title">Баруун дээд хэсгийн цэс</string>
   <string name="morphe_toolbar_screen_summary">Хэрэгсэлний мөрөнд (toolbar) аль бүрэлдэхүүн хэсгүүдийг харуулахыг сонгоно уу</string>
   <string name="morphe_hide_toolbar_chat_button_title">Чат товчийг нуух</string>
@@ -1648,6 +1687,7 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_series_tracker_marked">Эпизодуудыг үзсэн гэж тэмдэглэсэн</string>
   <string name="morphe_series_tracker_undo">Буцаах</string>
   <string name="morphe_series_tracker_enable_short">Идэвхжүүлэх</string>
+  <string name="morphe_series_tracker_new_episode">{one}1 шинэ ан{,} {other}%d шинэ ан</string>
   <string name="morphe_series_tracker_record_short">Энэ төхөөрөмж дээр явцыг тэмдэглэх</string>
   <string name="morphe_series_tracker_follow_consent">"Таны цуврал болон ахиц дэвшил энэ төхөөрөмж дээр хадгалагдах бөгөөд YouTube-ийн бүртгэлүүдээр хуваалдانا. YouTube-ийн түүхийллийн хяналт тэдгээрийг өөрчлөхгүй. Цувралын цэснээс ахиц дэвшилээ устгаж болно.
 
@@ -1675,6 +1715,7 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_series_tracker_discovery_unavailable">Тжсгээн олдохгүй байна</string>
   <string name="morphe_series_tracker_no_available_episodes">Боломжит анги байхгүй байна</string>
   <string name="morphe_series_tracker_hide_watched">Үзсэнийг нуух</string>
+  <string name="morphe_series_tracker_watched_on_advance">Дараагийн анги руу шилжих үед үзсэн гэж тэмдэглэх</string>
   <string name="morphe_series_tracker_watch_previous">Өмнөх ангиудыг үзсэн гэж тэмдэглэх</string>
   <string name="morphe_series_tracker_order_starts_with">Эхлэх хэсэг: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Ангийн дараалал</string>
@@ -1727,10 +1768,17 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_niconico_comments_opacity_summary">Сэтгэгдлийн текст болон арын дэвсгэлийн тунгалаг байдал</string>
   <string name="morphe_niconico_comments_travel_duration_title">Аялах хугацаа</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Сэтгэгдэл дэлгэцийг огтлохыг хэдэн секунд болгохыг заана. Бага утга нь илүү хурдан хөдөлнө</string>
+  <string name="morphe_niconico_comments_display_area_title">Дэлгэцлэх талбай</string>
+  <string name="morphe_niconico_comments_display_area_summary">Тоглуулагчийн дээрээс хэдэн хувийг сэтгэгдэл ашиглахыг заана. Бага утга нь видеоны доод хэсгийг цэвэрхэн байлгах болно</string>
   <string name="morphe_niconico_comments_max_length_title">Сэтгэгдлийн дээд урт</string>
   <string name="morphe_niconico_comments_max_length_summary">Үүнээс илүү тэмдэгттэй сэтгэгдлүүдийг нуух. Эможи бүрийг нэг тэмдэгт гэж тооцно</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Хязгаарлахгүй</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Шинэчлэлтийн дээд хурд</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Сэтгэгдэл хөдлөх үеийн дэлгэцийн хамгийн өндөр шинэчлэлтийн хурд. Бага утга нь батерейг бага зарцуулна</string>
+  <string name="morphe_niconico_comments_live_streams_title">Шууд дамжуулалт дээр харуулах</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Шууд дамжуулалтууд болон тэдгээрийн давталтууд</string>
   <string name="morphe_niconico_comments_live_premieres_title">Нээлт дээр харуулах</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Нээлттүүд тоглогдож байх үед</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Дууссан нээлт дээр харуулах</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Дууссан нээлттүүдийн чатын давталт</string>
   <string name="morphe_live_chat_translate_screen_title">Шууд чатын орчуулга</string>

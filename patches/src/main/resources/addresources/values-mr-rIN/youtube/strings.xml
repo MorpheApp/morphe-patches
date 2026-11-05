@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">चॅनेल बटणे लपवा</string>
   <string name="morphe_hide_channel_buttons_summary">शोध निकालांमधील चॅनेल प्रोफाइलमधून Subscribe, View Channel, Community आणि YouTube Music सारखी बटणे लपवते</string>
   <string name="morphe_hide_community_posts_title">समुदाय पोस्ट्स लपवा</string>
+  <string name="morphe_post_buttons_screen_title">पोस्ट बटणे</string>
+  <string name="morphe_post_buttons_screen_summary">कम्युनिटी पोस्ट्सच्या खाली असलेल्या बटणांची मांडणी निवडा आणि कोणती बटणे लपवायची ते निवडा</string>
+  <string name="morphe_post_buttons_layout_title">पोस्ट बटणांचा लेआउट</string>
+  <string name="morphe_post_buttons_layout_entry_1">सर्व्हर</string>
+  <string name="morphe_post_buttons_layout_entry_2">लागू केले</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">लाईक आणि डिसलाईक बटणे लपवा</string>
+  <string name="morphe_hide_post_dislike_button_title">डिसलाईक बटण लपवा</string>
+  <string name="morphe_hide_post_dislike_button_summary">एनफोर्स्ड लेआउटसह, बटणाची जागा रिकामी राहते</string>
+  <string name="morphe_hide_post_comment_button_title">कमेंट बटण लपवा</string>
+  <string name="morphe_hide_post_comments_preview_title">कमेंट्स प्रिव्ह्यू लपवा</string>
+  <string name="morphe_hide_post_comments_preview_summary">पोस्टच्या खालील कमेंट्सचा प्रिव्ह्यू लपवते</string>
+  <string name="morphe_hide_post_share_button_title">शेअर बटण लपवा</string>
+  <string name="morphe_hide_post_share_button_summary">पोस्ट इमेजेसचे डाउनलोड बटण शेअर बटणाशेजारी असते, त्यामुळे ते देखील लपवले जाते</string>
   <string name="morphe_hide_compact_banner_title">कॉम्पॅक्ट बॅनर लपवा</string>
   <string name="morphe_hide_compact_banner_summary">कॉम्पॅक्ट बॅनर आणि काही घटकांमधील अंतर लपवते</string>
   <string name="morphe_hide_expandable_card_title">व्हिडिओंच्या खाली विस्तारण्यायोग्य कार्ड</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">प्लेयर जेश्चर दरम्यान दाखवले जाणारे संकेत लपवते, जसे की \'अचूक सीकिंगसाठी वर खेचा\', \'रद्द करण्यासाठी सोडा\' आणि \'2x\'</string>
-  <string name="morphe_hide_snackbar_title">स्नॅकबार् लपवा</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">सदस्य मार्गदर्शक तत्त्वे लपवा</string>
   <string name="morphe_hide_sync_button_title">\"सिंक टू व्हिडिओ\" बटण लपवा</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">टॅप आणि होल्ड ग्रेडियंट लपवा</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">खूप जास्त तक्रारी पाठवल्या गेल्या आहेत, कृपया नंतर पुन्हा प्रयत्न करा</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList ने तक्रार नाकारली आहे</string>
   <string name="morphe_aislist_submit_failed">तक्रार अयशस्वी झाली, तुमचे कनेक्शन तपासा</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">स्नॅकबार</string>
+  <string name="morphe_snackbar_screen_summary">स्नॅकबार लपवा किंवा त्यांचे रंग आणि आकार बदला</string>
+  <string name="morphe_hide_snackbar_title">स्नॅकबार् लपवा</string>
+  <string name="morphe_custom_snackbar_theme_title">कस्टम स्नॅकबार</string>
+  <string name="morphe_custom_snackbar_theme_summary">स्नॅकबार्स् विरुद्ध थीमच्या रंगांऐवजी खालील रंग आणि कॉर्नर रेडियस वापरतात</string>
+  <string name="morphe_custom_snackbar_color_dark_title">डार्क थीम बॅकग्राउंड रंग</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">डार्क थीममधील स्नॅकबार्‌सचा बॅकग्राउंड रंग. मजकूर काळा किंवा पांढरा असेल, जो वाचायला सोपा असेल</string>
+  <string name="morphe_custom_snackbar_color_light_title">लाईट थीम बॅकग्राउंड कलर</string>
+  <string name="morphe_custom_snackbar_color_light_summary">लाईट थीममधील स्नॅकबार्स्चा बॅकग्राउंड कलर. मजकूर काळा किंवा पांढरा असेल, जे वाचण्यास सोपे असेल</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">बॉर्डर कलर</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">स्नॅकबार्स्च्या सभोवतालच्या बॉर्डरचा रंग. पारदर्शक रंग निवडल्यास बॉर्डर दिसणार नाही</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">कॉर्नर रेडिअस</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">स्नॅकबार्स्चा कॉर्नर रेडिअस dp मध्ये</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">चॅनेल जाहिरात व्हाईटलिस्ट</string>
   <string name="morphe_ads_channel_whitelist_summary">व्हाइलिस्ट केलेल्या चॅनेलवरील व्हिडिओ जाहिरातींसह प्ले होतात, जेणेकरून त्यांच्या निर्मात्यांना पैसे मिळतील. इतर सर्व चॅनेलवर जाहिराती ब्लॉक राहतील</string>
@@ -771,6 +797,10 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_swipe_left_zone_title">डावीकडे स्वाइप करण्याची कृती</string>
   <string name="morphe_swipe_right_zone_title">उजवीकडे स्वाइप करण्याची कृती</string>
   <string name="morphe_swipe_top_zone_title">वरच्या बाजूला स्वाइप करण्याची कृती</string>
+  <string name="morphe_swipe_seek_title">सीक करण्यासाठी स्वाइप करा</string>
+  <string name="morphe_swipe_seek_summary">सीकबार हलवण्यासाठी फुलस्क्रीन प्लेयरवर डावीकडे किंवा उजवीकडे स्वाइप करा आणि सीक करण्यासाठी सोडून द्या</string>
+  <string name="morphe_swipe_seek_sensitivity_title">सीक स्वाइप संवेदनशीलता</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">प्रत्येक स्वाइपसाठी सीकबार किती दूर हलतो</string>
   <string name="morphe_swipe_zone_width_title">डावा/उजवा झोन रुंदी</string>
   <string name="morphe_swipe_zone_width_summary">डावा आणि उजवा स्वाइप जेस्चरसाठी आरक्षित प्रत्येक स्क्रीन कडेची टक्केवारी (५-५०)</string>
   <string name="morphe_swipe_zone_label_brightness">चमक</string>
@@ -942,7 +972,9 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_hide_notifications_button_title">\'सूचना\' बटण लपवा</string>
   <string name="morphe_show_search_button_title">\'शोध\' बटण दर्शवा</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">\'नंतर पहा\' बटण दाखवा</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">नंतर पहा</string>
   <string name="morphe_show_settings_button_title">\'सेटिंग्ज\' बटण दर्शवा</string>
   <string name="morphe_show_settings_button_type_title">सेटिंग्स बटण क्रिया</string>
   <string name="morphe_show_settings_button_type_summary">सक्षम केल्यावर मोर्फ सेटिंग्ज उघडते, अक्षम केल्यावर YouTube सेटिंग्ज उघडते</string>
@@ -957,7 +989,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
 
 सेटिंग्समध्ये जाण्यासाठी, General → Toolbar → Show Settings button द्वारे सेटिंग्ज बटण सक्षम करा"</string>
   <string name="morphe_narrow_navigation_buttons_title">नॅरो नेव्हिगेशन बटणे सक्षम करा</string>
-  <string name="morphe_narrow_navigation_buttons_summary">बटणांमधील क्षैतिज अंतर कमी करते</string>
+  <string name="morphe_narrow_navigation_buttons_summary">बटणांमधील आडवे अंतर कमी करते. ग्लास नेव्हिगेशन बारसोबत हे उपलब्ध नाही, ज्याचे स्वतःचे बटण स्पेसिंग आहे</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">लेबल नसलेली नेव्हिगेशन बटणे अक्षम करा</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">जर YouTube लेबलशिवाय बटणे पाठवत असेल, तर हे नेव्हिगेशन बटणे लेबल्ससह दाखवते</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">टूलबार नेव्हिगेशन टॅब अक्षम करा</string>
@@ -976,6 +1008,12 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_navigation_bar_glass_summary">नेव्हिगेशन बार एक तरंगता, गोलाकार, अर्धपारदर्शक कॅप्सूल म्हणून दर्शवतो. ओपेक नेव्हिगेशन बार स्टाईलसह उपलब्ध नाही</string>
   <string name="morphe_navigation_bar_glass_opacity_title">ग्लास अपॅसिटी</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ग्लास नेव्हिगेशन बारची पारदर्शकता पातळी समायोजित करा (० पारदर्शक आहे, १०० अपॅक आहे)</string>
+  <string name="morphe_navigation_bar_glass_size_title">ग्लास नेव्हिगेशन बारचा आकार</string>
+  <string name="morphe_navigation_bar_glass_size_summary">प्रिव्ह्यूसह ग्लास नेव्हिगेशन बारची उंची, रुंदी आणि बटण स्पेसिंग समायोजित करा. स्क्रीनच्या रुंदीत न बसणारी बटणे लपवली जातात</string>
+  <string name="morphe_navigation_bar_glass_size_height">उंची</string>
+  <string name="morphe_navigation_bar_glass_size_width">कमाल रुंदी</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">बटण स्पेसिंग</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">दिसलेली बटणे: %1$d पैकी %2$d</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_toolbar_screen_summary">टूलबारमध्ये कोणते घटक दिसतात ते निवडा</string>
   <string name="morphe_hide_toolbar_chat_button_title">\'चॅट\' बटण लपवा</string>
@@ -1649,6 +1687,7 @@ AV1 सह व्हिडिओ प्लेबॅक अडखळू शकत
   <string name="morphe_series_tracker_marked">पाहिले म्हणून मार्क केलेले भाग</string>
   <string name="morphe_series_tracker_undo">रद्द करा</string>
   <string name="morphe_series_tracker_enable_short">सक्षम करा</string>
+  <string name="morphe_series_tracker_new_episode">{\"one\":\"१ नवीन भाग\",\"other\":\"{0} नवीन भाग\"}</string>
   <string name="morphe_series_tracker_new_episodes">%1$s नवीन भाग</string>
   <string name="morphe_series_tracker_record_short">या डिव्हाइसवर प्रगती नोंदवा</string>
   <string name="morphe_series_tracker_follow_consent">"तुमची मालिका आणि प्रगती या डिव्हाइसवर राहतात, ज्या YouTube खात्यांमध्ये सामायिक केल्या जातात. YouTube इतिहास नियंत्रणे त्या बदलत नाहीत. सिरीज मेनूमधून प्रगती क्लियर करा.
@@ -1677,6 +1716,7 @@ AV1 सह व्हिडिओ प्लेबॅक अडखळू शकत
   <string name="morphe_series_tracker_discovery_unavailable">प्लेलिस्ट मिळू शकली नाही</string>
   <string name="morphe_series_tracker_no_available_episodes">कोणतेही भाग उपलब्ध नाहीत</string>
   <string name="morphe_series_tracker_hide_watched">पाहिलेले लपवा</string>
+  <string name="morphe_series_tracker_watched_on_advance">पुढच्या एपिसोडवर जाताना पाहिलेले म्हणून मार्क करा</string>
   <string name="morphe_series_tracker_watch_previous">मागील भाग पाहिलेले म्हणून चिन्हांकित करा</string>
   <string name="morphe_series_tracker_order_starts_with">याने सुरू होते: %1$s</string>
   <string name="morphe_series_tracker_episode_order">भागांचा क्रम</string>
@@ -1729,10 +1769,17 @@ AV1 सह व्हिडिओ प्लेबॅक अडखळू शकत
   <string name="morphe_niconico_comments_opacity_summary">टिप्पणी मजकूर आणि पार्श्वभूमीची अपारदर्शकता</string>
   <string name="morphe_niconico_comments_travel_duration_title">प्रवासाचा कालावधी</string>
   <string name="morphe_niconico_comments_travel_duration_summary">टिप्पण्यांना स्क्रीन ओलांडण्यासाठी किती सेकंद लागतात. कमी मूल्ये अधिक वेगाने हलतात</string>
+  <string name="morphe_niconico_comments_display_area_title">प्रदर्शन क्षेत्र</string>
+  <string name="morphe_niconico_comments_display_area_summary">प्लेयरच्या वरच्या भागापासून कमेंट्स किती जागा वापरतात. कमी मूल्ये व्हिडिओचा खालचा भाग मोकळा ठेवतात</string>
   <string name="morphe_niconico_comments_max_length_title">कमेंटची कमाल लांबी</string>
   <string name="morphe_niconico_comments_max_length_summary">यापेक्षा जास्त अक्षरे असलेल्या कमेंट्स लपवते. प्रत्येक इमोजी एक अक्षर मानला जातो</string>
   <string name="morphe_niconico_comments_max_length_no_limit">कोणतीही मर्यादा नाही</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">कमाल रिफ्रेश रेट</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">कमेंट्स हलत असताना वापरला जाणारा सर्वोच्च डिस्प्ले रिफ्रेश रेट. कमी मूल्यांमुळे बॅटरीची बचत होते</string>
+  <string name="morphe_niconico_comments_live_streams_title">लाईव्ह स्ट्रीम्सवर दाखवा</string>
+  <string name="morphe_niconico_comments_live_streams_summary">लाईव्ह स्ट्रीम्स आणि त्यांचे रिप्ले</string>
   <string name="morphe_niconico_comments_live_premieres_title">प्रीमियर्सवर दाखवा</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">प्रीमियर्स सुरू असताना</string>
   <string name="morphe_niconico_comments_ended_premieres_title">संपलेल्या प्रीमियरवर दाखवा</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">संपलेल्या प्रीमियरची चॅट रिप्ले</string>
   <string name="morphe_live_chat_translate_screen_title">लाईव्ह चॅट भाषांतर</string>

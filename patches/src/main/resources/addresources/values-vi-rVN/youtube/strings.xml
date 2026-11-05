@@ -69,6 +69,19 @@ Các thay đổi bao gồm:
   <string name="morphe_hide_channel_buttons_title">Ẩn các nút kênh</string>
   <string name="morphe_hide_channel_buttons_summary">Ẩn các nút như Đăng ký, Xem kênh, Cộng đồng và YouTube Music khỏi hồ sơ kênh trong kết quả tìm kiếm</string>
   <string name="morphe_hide_community_posts_title">Ẩn bài đăng cộng đồng</string>
+  <string name="morphe_post_buttons_screen_title">Các nút bài viết</string>
+  <string name="morphe_post_buttons_screen_summary">Chọn bố cục của các nút bên dưới bài đăng cộng đồng và chọn nút nào cần ẩn</string>
+  <string name="morphe_post_buttons_layout_title">Bố cục nút bài đăng</string>
+  <string name="morphe_post_buttons_layout_entry_1">Máy chủ</string>
+  <string name="morphe_post_buttons_layout_entry_2">Bắt buộc</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Ẩn nút Thích và Không thích</string>
+  <string name="morphe_hide_post_dislike_button_title">Ẩn nút Không thích</string>
+  <string name="morphe_hide_post_dislike_button_summary">Với bố cục Bắt buộc, khoảng trống của nút sẽ được giữ lại</string>
+  <string name="morphe_hide_post_comment_button_title">Ẩn nút Bình luận</string>
+  <string name="morphe_hide_post_comments_preview_title">Ẩn xem trước bình luận</string>
+  <string name="morphe_hide_post_comments_preview_summary">Ẩn phần xem trước các bình luận bên dưới các bài đăng</string>
+  <string name="morphe_hide_post_share_button_title">Ẩn nút Chia sẻ</string>
+  <string name="morphe_hide_post_share_button_summary">Nút tải xuống hình ảnh của bài viết được vẽ cạnh nút chia sẻ, nên nó cũng bị ẩn theo</string>
   <string name="morphe_hide_compact_banner_title">Ẩn quảng cáo dưới video</string>
   <string name="morphe_hide_compact_banner_summary">Ẩn banner nhỏ gọn và khoảng cách giữa một số thành phần</string>
   <string name="morphe_hide_expandable_card_title">Các thẻ có thể mở rộng bên dưới video</string>
@@ -159,7 +172,6 @@ Các thay đổi bao gồm:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Ẩn các gợi ý hiển thị trong khi thao tác trên trình phát, chẳng hạn như \"Vuốt lên để tua chính xác\", \"Thả ra để hủy\" và \"2x\"</string>
-  <string name="morphe_hide_snackbar_title">Ẩn thanh thông báo</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ẩn nguyên tắc cộng đồng cho người đăng ký</string>
   <string name="morphe_hide_sync_button_title">Ẩn nút \"Đồng bộ với video\"</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Ẩn gradient khi chạm và giữ</string>
@@ -386,6 +398,20 @@ Báo cáo được công khai và được xem xét trước khi một kênh đ�
   <string name="morphe_aislist_submit_failed_rate_limit">Đã gửi quá nhiều báo cáo, hãy thử lại sau</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList đã từ chối báo cáo</string>
   <string name="morphe_aislist_submit_failed">Báo cáo thất bại, hãy kiểm tra kết nối của bạn</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Thanh thông báo Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Ẩn snackbar hoặc thay đổi màu sắc và hình dạng của chúng</string>
+  <string name="morphe_hide_snackbar_title">Ẩn thanh thông báo</string>
+  <string name="morphe_custom_snackbar_theme_title">Snackbar tùy chỉnh</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbar sử dụng màu sắc và bán kính góc dưới đây thay vì màu sắc của chủ đề đối lập</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Màu nền chủ đề tối</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Màu nền của snackbar trong chủ đề tối. Văn bản sẽ có màu đen hoặc trắng, tùy theo màu nào dễ đọc hơn</string>
+  <string name="morphe_custom_snackbar_color_light_title">Màu nền chủ đề sáng</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Màu nền của snackbar trong chủ đề sáng. Văn bản sẽ có màu đen hoặc trắng, tùy theo màu nào dễ đọc hơn</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Màu viền</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Màu của đường viền xung quanh snackbar. Màu trong suốt sẽ không hiển thị viền</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Bán kính góc</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Bán kính góc của snackbar tính bằng dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Danh sách trắng quảng cáo cho kênh</string>
   <string name="morphe_ads_channel_whitelist_summary">Video từ các kênh trong danh sách trắng sẽ phát kèm quảng cáo, để người sáng tạo của họ được trả tiền. Quảng cáo vẫn bị chặn trên mọi kênh khác.</string>
@@ -963,7 +989,7 @@ Cần thiết lập \"Cookie phụ đề\""</string>
 
 Để truy cập Cài đặt, hãy bật nút Cài đặt qua Cài đặt chung → Thanh công cụ → Hiển thị nút Cài đặt"</string>
   <string name="morphe_narrow_navigation_buttons_title">Thu hẹp nút điều hướng</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Giảm khoảng cách ngang giữa các nút</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Giảm khoảng cách ngang giữa các nút. Không khả dụng với thanh điều hướng dạng kính, vốn có khoảng cách nút riêng</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Tắt các nút điều hướng không có nhãn</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Hiển thị các nút điều hướng có nhãn, nếu YouTube gửi chúng không có nhãn</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Vô hiệu hóa các tab điều hướng trên thanh công cụ</string>
@@ -982,6 +1008,12 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_navigation_bar_glass_summary">Hiển thị thanh điều hướng dưới dạng một viên nang mờ, bo góc và nổi. Không khả dụng với kiểu thanh điều hướng Đục</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Độ mờ của kính</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Điều chỉnh mức độ trong suốt của thanh điều hướng dạng kính (0 là trong suốt, 100 là mờ)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Kích thước thanh điều hướng dạng kính</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Điều chỉnh chiều cao, chiều rộng và khoảng cách nút của thanh điều hướng dạng kính, kèm theo bản xem trước. Các nút không vừa với chiều rộng của màn hình sẽ bị ẩn</string>
+  <string name="morphe_navigation_bar_glass_size_height">Chiều cao</string>
+  <string name="morphe_navigation_bar_glass_size_width">Chiều rộng tối đa</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Khoảng cách nút</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Các nút được hiển thị: %1$d trên %2$d</string>
   <string name="morphe_toolbar_screen_title">Thanh công cụ</string>
   <string name="morphe_toolbar_screen_summary">Chọn những thành phần sẽ xuất hiện trên thanh công cụ</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ẩn nút Trò chuyện</string>
@@ -1684,6 +1716,7 @@ Tự động ghi là tùy chọn. Nó dừng lại khi ở chế độ ẩn danh
   <string name="morphe_series_tracker_discovery_unavailable">Không tìm thấy danh sách phát</string>
   <string name="morphe_series_tracker_no_available_episodes">Không có tập nào khả dụng</string>
   <string name="morphe_series_tracker_hide_watched">Ẩn những tập đã xem</string>
+  <string name="morphe_series_tracker_watched_on_advance">Đánh dấu đã xem khi chuyển sang tập tiếp theo</string>
   <string name="morphe_series_tracker_watch_previous">Đánh dấu các tập trước đó là đã xem</string>
   <string name="morphe_series_tracker_order_starts_with">Bắt đầu bằng: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Thứ tự các tập</string>
@@ -1736,9 +1769,13 @@ Tự động ghi là tùy chọn. Nó dừng lại khi ở chế độ ẩn danh
   <string name="morphe_niconico_comments_opacity_summary">Độ mờ của văn bản và nền bình luận</string>
   <string name="morphe_niconico_comments_travel_duration_title">Thời gian di chuyển</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Số giây mà các bình luận cần để đi hết màn hình. Giá trị càng thấp thì di chuyển càng nhanh</string>
+  <string name="morphe_niconico_comments_display_area_title">Khu vực hiển thị</string>
+  <string name="morphe_niconico_comments_display_area_summary">Phần bình luận sẽ chiếm bao nhiêu diện tích trình phát tính từ trên xuống. Giá trị thấp hơn sẽ giữ cho phần dưới của video được thông thoáng</string>
   <string name="morphe_niconico_comments_max_length_title">Độ dài bình luận tối đa</string>
   <string name="morphe_niconico_comments_max_length_summary">Ẩn các bình luận có nhiều ký tự hơn giá trị này. Mỗi emoji được tính là một ký tự</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Không giới hạn</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Tốc độ làm mới tối đa</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Tốc độ làm mới màn hình cao nhất được sử dụng khi các bình luận di chuyển. Giá trị thấp hơn sẽ tiết kiệm pin hơn</string>
   <string name="morphe_niconico_comments_live_streams_title">Hiện trên các luồng trực tiếp</string>
   <string name="morphe_niconico_comments_live_streams_summary">Các luồng trực tiếp và bản phát lại của chúng</string>
   <string name="morphe_niconico_comments_live_premieres_title">Hiển thị trên Video sắp diễn ra</string>

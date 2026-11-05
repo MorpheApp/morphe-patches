@@ -69,6 +69,19 @@ Muutoksiin kuuluvat:
   <string name="morphe_hide_channel_buttons_title">Piilota kanavapainikkeet</string>
   <string name="morphe_hide_channel_buttons_summary">Piilottaa painikkeet, kuten Tilaa, Näytä kanava, Yhteisö ja YouTube Music, kanavaprofiileista hakutuloksissa</string>
   <string name="morphe_hide_community_posts_title">Piilota yhteisöpostaukset</string>
+  <string name="morphe_post_buttons_screen_title">Julkaisupainikkeet</string>
+  <string name="morphe_post_buttons_screen_summary">Valitse yhteisöpostauksien alapuolella olevien painikkeiden asettelu ja mitkä painikkeet piilotetaan</string>
+  <string name="morphe_post_buttons_layout_title">Postauspainikkeiden asettelu</string>
+  <string name="morphe_post_buttons_layout_entry_1">Palvelin</string>
+  <string name="morphe_post_buttons_layout_entry_2">Pakotettu</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Piilota Tykkää- ja En tykkää -painikkeet</string>
+  <string name="morphe_hide_post_dislike_button_title">Piilota En tykkää -painike</string>
+  <string name="morphe_hide_post_dislike_button_summary">Pakotetussa asettelussa painikkeen tila jää tyhjäksi</string>
+  <string name="morphe_hide_post_comment_button_title">Piilota Kommentit-painike</string>
+  <string name="morphe_hide_post_comments_preview_title">Piilota kommenttien esikatselu</string>
+  <string name="morphe_hide_post_comments_preview_summary">Piilottaa julkaisujen alla olevien kommenttien esikatselun</string>
+  <string name="morphe_hide_post_share_button_title">Piilota Jaa-painike</string>
+  <string name="morphe_hide_post_share_button_summary">Julkaisukuvien latauspainike on sijoitettu Jaa-painikkeen viereen, joten se piilotetaan myös</string>
   <string name="morphe_hide_compact_banner_title">Piilota kompaktit bannerit</string>
   <string name="morphe_hide_compact_banner_summary">Piilottaa tiivistetyn bannerin ja tilan joidenkin komponenttien välillä</string>
   <string name="morphe_hide_expandable_card_title">Laajennettavat kortit videoiden alla</string>
@@ -159,7 +172,6 @@ Muutoksiin kuuluvat:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Piilottaa soittimen eleiden aikana näytettävät vihjeet, kuten \'Vedä ylös tarkkaa hakua varten\', \'Vapauta peruuttaaksesi\' ja \'2x\'</string>
-  <string name="morphe_hide_snackbar_title">Piilota välipalaikkuna</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Piilota tilaajien säännöt</string>
   <string name="morphe_hide_sync_button_title">Piilota \"Synkronoi videoon\" -painike</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Piilota napauta ja pidä -gradientti</string>
@@ -386,6 +398,20 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_aislist_submit_failed_rate_limit">Liian monta raporttia lähetettiin. Yritä myöhemmin uudelleen.</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList hylkäsi raportin.</string>
   <string name="morphe_aislist_submit_failed">Raportin lähetys epäonnistui. Tarkista yhteys.</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Piilota snackbarit tai muuta niiden värejä ja muotoa</string>
+  <string name="morphe_hide_snackbar_title">Piilota välipalaikkuna</string>
+  <string name="morphe_custom_snackbar_theme_title">Oma snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbareissa käytetään alla olevia värejä ja kulman pyöristystä vastakkaisen teeman värien sijaan</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Tumman teeman taustaväri</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Snackbar-ilmoitusten taustaväri tummassa teemassa. Teksti on musta tai valkoinen, riippuen siitä, kumpi on helpommin luettavissa</string>
+  <string name="morphe_custom_snackbar_color_light_title">Vaalean teeman taustaväri</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Snackbar-ilmoitusten taustaväri vaaleassa teemassa. Teksti on musta tai valkoinen, riippuen siitä, kumpi on helpommin luettavissa</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Reunan väri</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Snackbar-ilmoitusten ympärillä olevan reunan väri. Läpinäkyvä väri poistaa reunan</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Kulman pyöristys</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Snackbar-ilmoitusten kulman pyöristys dp-yksiköissä</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Kanavien mainossallintalista</string>
   <string name="morphe_ads_channel_whitelist_summary">Sallittujen kanavien videoissa näytetään mainoksia, joten niiden tekijät saavat palkkaa. Mainokset pysyvät estettyinä kaikilla muilla kanavilla.</string>
@@ -963,7 +989,7 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
 
 Päästäksesi Asetuksiin, ota Asetukset-painike käyttöön kohdasta Yleiset → Työkalupalkki → Näytä Asetukset-painike"</string>
   <string name="morphe_narrow_navigation_buttons_title">Ota käyttöön kapeat navigointipainikkeet</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Kapeuttaa pystysuoraa väliä painikkeiden välillä</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Vähentää painikkeiden välistä vaakasuuntaista väliä. Ei käytettävissä lasisen navigointipalkin kanssa, jolla on oma painikkeiden välistys</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Poista käytöstä navigointipainikkeet ilman tekstejä</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Näyttää navigointipainikkeet teksteillä, jos YouTube lähettää ne ilman tekstejä</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Poista työkalupalkin navigointivälilehdet käytöstä</string>
@@ -982,6 +1008,12 @@ Päästäksesi Asetuksiin, ota Asetukset-painike käyttöön kohdasta Yleiset �
   <string name="morphe_navigation_bar_glass_summary">Näyttää navigointipalkin kelluvana, pyöristettynä ja läpinäkyvänä kapselina. Ei käytettävissä läpinäkymättömän navigointipalkin tyylin kanssa</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Lasin läpinäkymättömyys</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Säädä lasimaisen navigointipalkin läpinäkyvyystasoa (0 on läpinäkyvä, 100 on läpinäkymätön)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Lasisen navigointipalkin koko</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Säädä lasisen navigointipalkin korkeutta, leveyttä ja painikkeiden välistä etäisyyttä esikatselun avulla. Painikkeet, jotka eivät mahdu näytön leveyteen, piilotetaan</string>
+  <string name="morphe_navigation_bar_glass_size_height">Korkeus</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maksimileveys</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Painikkeiden väli</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Näytettävät painikkeet: %1$d / %2$d</string>
   <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
   <string name="morphe_toolbar_screen_summary">Valitse, mitkä komponentit näkyvät työkalupalkissa</string>
   <string name="morphe_hide_toolbar_chat_button_title">Piilota chat-painike</string>
@@ -1684,6 +1716,7 @@ Automaattinen tallennus on valinnaista. Se pysähtyy incognito-tilissä tai tili
   <string name="morphe_series_tracker_discovery_unavailable">Soittolistaa ei löytynyt</string>
   <string name="morphe_series_tracker_no_available_episodes">Jaksoja ei ole saatavilla</string>
   <string name="morphe_series_tracker_hide_watched">Piilota katsotut</string>
+  <string name="morphe_series_tracker_watched_on_advance">Merkitse katsotuksi siirryttäessä seuraavaan jaksoon</string>
   <string name="morphe_series_tracker_watch_previous">Merkitse aiemmat jaksot katsotuiksi</string>
   <string name="morphe_series_tracker_order_starts_with">Alkaa: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Jakojen järjestys</string>
@@ -1736,9 +1769,13 @@ Automaattinen tallennus on valinnaista. Se pysähtyy incognito-tilissä tai tili
   <string name="morphe_niconico_comments_opacity_summary">Kommenttitekstin ja taustojen läpinäkyvyys</string>
   <string name="morphe_niconico_comments_travel_duration_title">Keston kesto</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Kuinka monta sekuntia kommenttien kulkeminen näytön yli kestää. Pienemmät arvot liikkuvat nopeammin</string>
+  <string name="morphe_niconico_comments_display_area_title">Näyttöalue</string>
+  <string name="morphe_niconico_comments_display_area_summary">Kuinka suuren osan soittimesta kommentit käyttävät yläreunasta alkaen. Pienemmät arvot pitävät videon alaosan tyhjänä</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimit kommentin pituus</string>
   <string name="morphe_niconico_comments_max_length_summary">Piilottaa kommentit, jotka ovat tämän merkkimäärän pidempiä. Jokainen emojimerkki lasketaan yhdeksi merkiksi</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Ei rajoitusta</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Suurin päivitysnopeus</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Korkein näytön päivitysnopeus, jota käytetään kommenttien liikkuessa. Pienemmät arvot säästävät akkua</string>
   <string name="morphe_niconico_comments_live_streams_title">Näytä suorissa lähetyksissä</string>
   <string name="morphe_niconico_comments_live_streams_summary">Suorat lähetykset ja niiden uusinnat</string>
   <string name="morphe_niconico_comments_live_premieres_title">Näytä ensiilloissa</string>

@@ -760,6 +760,14 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_romanization_provider_title">Романизация немесе транслитерация</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Офлайн сөздік</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime сөздер тізімі</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Офлайн сөздік</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Руби скрипті</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хирагана (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Рубиді көрсету түймесі</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Мәтін үстіндегі руби оқуларын ауыстыру үшін түртіңіз; хирагана мен катакана арасында ауысу үшін ұзақ басыңыз. Тізімдегі реттілік бойынша қосулы руби провайдерлерін қолданады</string>
+  <string name="morphe_music_lyrics_ruby_generating">Руби жасалуда…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Бөлімдерді AI арқылы анықтау</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Тек провайдер Припев немесе Шумақ сияқты бөлім белгілерін жібермеген жағдайда қолданылады, оларды OpenAI-мен үйлесімді моделіңіз анықтайды. Жолды өңдеу оның промптын ашады</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (мысалы, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>

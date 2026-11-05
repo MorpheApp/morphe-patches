@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">チャンネルボタンを非表示</string>
   <string name="morphe_hide_channel_buttons_summary">検索結果のチャンネル プロフィールから「登録」「チャンネルを見る」「コミュニティ」「YouTube Music」などのボタンを非表示にします</string>
   <string name="morphe_hide_community_posts_title">コミュニティ投稿を非表示</string>
+  <string name="morphe_post_buttons_screen_title">投稿ボタン</string>
+  <string name="morphe_post_buttons_screen_summary">コミュニティ投稿の下に表示されるボタンのレイアウトと、非表示にするボタンを選択してください</string>
+  <string name="morphe_post_buttons_layout_title">投稿ボタンのレイアウト</string>
+  <string name="morphe_post_buttons_layout_entry_1">サーバー</string>
+  <string name="morphe_post_buttons_layout_entry_2">強制</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">高評価ボタンと低評価ボタンを非表示</string>
+  <string name="morphe_hide_post_dislike_button_title">低評価ボタンを非表示</string>
+  <string name="morphe_hide_post_dislike_button_summary">「強制」レイアウトでは、ボタンのスペースがそのまま残ります</string>
+  <string name="morphe_hide_post_comment_button_title">コメントボタンを非表示</string>
+  <string name="morphe_hide_post_comments_preview_title">コメントプレビューを非表示</string>
+  <string name="morphe_hide_post_comments_preview_summary">投稿の下にあるコメントのプレビューを非表示にします</string>
+  <string name="morphe_hide_post_share_button_title">共有ボタンを非表示</string>
+  <string name="morphe_hide_post_share_button_summary">投稿画像のダウンロードボタンは共有ボタンの隣に表示されるため、こちらも非表示になります</string>
   <string name="morphe_hide_compact_banner_title">コンパクトなバナーを非表示</string>
   <string name="morphe_hide_compact_banner_summary">コンパクトなバナーおよび一部のコンポーネント間のスペースを非表示にします</string>
   <string name="morphe_hide_expandable_card_title">動画下の展開可能なカード</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">「上にスワイプして再生位置を細かく調整」「バーを放すと元の位置に戻ります」「2 倍速」などのプレーヤー操作中に表示されるヒントを非表示にします</string>
-  <string name="morphe_hide_snackbar_title">スナックバー通知を非表示</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">チャンネル登録者のガイドラインを非表示</string>
   <string name="morphe_hide_sync_button_title">「動画に同期」ボタンを非表示</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">長押し倍速再生の表示の不具合を修正</string>
@@ -387,6 +399,20 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_aislist_submit_failed_rate_limit">短時間に送信された報告が多すぎます。後でもう一度お試しください</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSListは報告を拒否しました</string>
   <string name="morphe_aislist_submit_failed">報告に失敗しました。接続を確認してください</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">スナックバー</string>
+  <string name="morphe_snackbar_screen_summary">スナックバーを非表示にするか、色や形状を変更します</string>
+  <string name="morphe_hide_snackbar_title">スナックバー通知を非表示</string>
+  <string name="morphe_custom_snackbar_theme_title">カスタムスナックバー</string>
+  <string name="morphe_custom_snackbar_theme_summary">スナックバーには、反対のテーマの色ではなく、以下の色とコーナー半径が使用されます</string>
+  <string name="morphe_custom_snackbar_color_dark_title">ダークテーマのバックグラウンド カラー</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">ダークテーマにおけるスナックバーの背景色です。テキストは、より読みやすい黒または白になります</string>
+  <string name="morphe_custom_snackbar_color_light_title">ライトテーマのバックグラウンド カラー</string>
+  <string name="morphe_custom_snackbar_color_light_summary">ライトテーマにおけるスナックバーの背景色です。テキストは、より読みやすい黒または白になります</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">境界線の色</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">スナックバーの周囲の境界線の色です。透明色にすると境界線が表示されません</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">コーナー半径</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">スナックバーのコーナー半径 (dp)</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">広告のチャンネル ホワイトリスト</string>
   <string name="morphe_ads_channel_whitelist_summary">ホワイトリストに登録されたチャンネルの動画では、広告が表示され、投稿者に報酬が支払われます。それ以外のチャンネルの動画では、広告は引き続きブロックされます。</string>
@@ -964,7 +990,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
 
 設定にアクセスするには、「一般」→「ツールバー」→「設定ボタンを表示」から設定ボタンを有効にしてください"</string>
   <string name="morphe_narrow_navigation_buttons_title">ボタンの間隔を詰める</string>
-  <string name="morphe_narrow_navigation_buttons_summary">ナビゲーション ボタンの間隔を詰めて表示します</string>
+  <string name="morphe_narrow_navigation_buttons_summary">ボタン間の水平方向の間隔を狭くします。独自のボタン間隔を持つグラスナビゲーションバーでは利用できません</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">ラベルのないナビゲーションボタンを無効にする</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTube からラベルなしのナビゲーション ボタンが送信された場合、ナビゲーション ボタンをラベル付きで表示します</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">ナビゲーション ボタンの最上部への移動を無効化</string>
@@ -983,6 +1009,12 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_navigation_bar_glass_summary">ナビゲーション バーを、フローティングで角が丸い半透明のカプセル状に表示します。不透明なナビゲーション バーのスタイルでは利用できません</string>
   <string name="morphe_navigation_bar_glass_opacity_title">ガラスの不透明度</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ガラス風ナビゲーション バーの透明度を設定します (0 は透明、100 は不透明)</string>
+  <string name="morphe_navigation_bar_glass_size_title">グラスナビゲーションバーのサイズ</string>
+  <string name="morphe_navigation_bar_glass_size_summary">グラスナビゲーションバーの高さ、幅、ボタンの間隔をプレビューしながら調整します。画面幅に収まらないボタンは非表示になります</string>
+  <string name="morphe_navigation_bar_glass_size_height">高さ</string>
+  <string name="morphe_navigation_bar_glass_size_width">最大幅</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">ボタンの間隔</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">表示ボタン: %2$d 個中 %1$d 個</string>
   <string name="morphe_toolbar_screen_title">ツールバー</string>
   <string name="morphe_toolbar_screen_summary">ツールバーに表示するコンポーネントを設定します</string>
   <string name="morphe_hide_toolbar_chat_button_title">チャットボタンを非表示</string>
@@ -1685,6 +1717,7 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_discovery_unavailable">プレイリストが見つかりません</string>
   <string name="morphe_series_tracker_no_available_episodes">利用可能なエピソードがありません</string>
   <string name="morphe_series_tracker_hide_watched">視聴済みを非表示</string>
+  <string name="morphe_series_tracker_watched_on_advance">次のエピソードに進む際に視聴済みとしてマークする</string>
   <string name="morphe_series_tracker_watch_previous">前のエピソードを視聴済みとしてマーク</string>
   <string name="morphe_series_tracker_order_starts_with">～で始まる: %1$s</string>
   <string name="morphe_series_tracker_episode_order">エピソード順</string>
@@ -1737,9 +1770,13 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_niconico_comments_opacity_summary">ニコニコ風コメントのテキストおよび背景の透明度 (値が小さいほど透明)</string>
   <string name="morphe_niconico_comments_travel_duration_title">表示時間</string>
   <string name="morphe_niconico_comments_travel_duration_summary">ニコニコ風コメントが表示されてから画面を横切って消えるまでの時間 (秒)。この値を小さくすると、コメントの移動速度が速くなります</string>
+  <string name="morphe_niconico_comments_display_area_title">表示エリア</string>
+  <string name="morphe_niconico_comments_display_area_summary">プレーヤーの上端からどの程度の範囲までコメントを使用するかを指定します。値を小さくすると、ビデオの下部をクリアに保つことができます</string>
   <string name="morphe_niconico_comments_max_length_title">コメントの文字数制限</string>
   <string name="morphe_niconico_comments_max_length_summary">この値より文字数が多いニコニコ風コメントを非表示にします。絵文字はそれぞれ 1 文字としてカウントされます</string>
   <string name="morphe_niconico_comments_max_length_no_limit">制限なし</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">最大リフレッシュレート</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">コメントが移動する際に使用される最大ディスプレイリフレッシュレートです。値を低くするとバッテリー消費を抑えられます</string>
   <string name="morphe_niconico_comments_live_streams_title">ライブストリームに表示</string>
   <string name="morphe_niconico_comments_live_streams_summary">ライブストリームとそのアーカイブ</string>
   <string name="morphe_niconico_comments_live_premieres_title">プレミア公開で表示</string>

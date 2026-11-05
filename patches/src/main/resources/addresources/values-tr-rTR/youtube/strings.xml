@@ -70,6 +70,19 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_channel_buttons_title">Kanal düğmelerini gizle</string>
   <string name="morphe_hide_channel_buttons_summary">Arama sonuçlarında kanal profillerindeki Abone Ol, Kanalı Görüntüle, Topluluk ve YouTube Music gibi düğmeleri gizler</string>
   <string name="morphe_hide_community_posts_title">Topluluk gönderilerini gizle</string>
+  <string name="morphe_post_buttons_screen_title">Sonraki düğmeler</string>
+  <string name="morphe_post_buttons_screen_summary">Topluluk gönderilerinin altındaki düğmelerin düzenini ve hangi düğmelerin gizleneceğini seçin</string>
+  <string name="morphe_post_buttons_layout_title">Gönderi düğmeleri düzeni</string>
+  <string name="morphe_post_buttons_layout_entry_1">Sunucu</string>
+  <string name="morphe_post_buttons_layout_entry_2">Zorunlu</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Beğenme ve Beğenmeme düğmelerini gizle</string>
+  <string name="morphe_hide_post_dislike_button_title">Beğenmeme düğmesini gizle</string>
+  <string name="morphe_hide_post_dislike_button_summary">Zorunlu düzen ile düğme alanı boş bırakılır</string>
+  <string name="morphe_hide_post_comment_button_title">Yorumlar düğmesini gizle</string>
+  <string name="morphe_hide_post_comments_preview_title">Yorum önizlemesini gizle</string>
+  <string name="morphe_hide_post_comments_preview_summary">Gönderilerin altındaki yorumların önizlemesini gizler</string>
+  <string name="morphe_hide_post_share_button_title">Paylaş düğmesini gizle</string>
+  <string name="morphe_hide_post_share_button_summary">Gönderi görsellerinin indirme düğmesi paylaş düğmesinin yanına çizildiği için o da gizlenir</string>
   <string name="morphe_hide_compact_banner_title">Kompakt afişleri gizle</string>
   <string name="morphe_hide_compact_banner_summary">Kompakt afişleri ve bazı bileşenler arasındaki boşluğu gizler</string>
   <string name="morphe_hide_expandable_card_title">Videoların altındaki genişletilebilir kart</string>
@@ -160,7 +173,6 @@ Değişiklikler şunları içerir:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Oynatıcı hareketleri sırasında gösterilen ipuçlarını gizler, örneğin \'Hassas arama için yukarı çekin\', \'İptal etmek için bırakın\' ve \'2x\'.</string>
-  <string name="morphe_hide_snackbar_title">Snackbar\'ı gizle</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Abone kurallarını gizle</string>
   <string name="morphe_hide_sync_button_title">\'Videoyla senkronize et\' düğmesini gizle</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Dokun ve basılı tut gradyanını gizle</string>
@@ -387,6 +399,20 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_aislist_submit_failed_rate_limit">Çok fazla rapor gönderildi, lütfen daha sonra tekrar deneyin.</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList raporu reddetti.</string>
   <string name="morphe_aislist_submit_failed">Rapor gönderilemedi, bağlantınızı kontrol edin.</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Bildirim çubuğu</string>
+  <string name="morphe_snackbar_screen_summary">Bildirim çubuklarını gizleyin veya renklerini ve şeklini değiştirin</string>
+  <string name="morphe_hide_snackbar_title">Snackbar\'ı gizle</string>
+  <string name="morphe_custom_snackbar_theme_title">Özel bildirim çubuğu</string>
+  <string name="morphe_custom_snackbar_theme_summary">Bildirim çubukları ters tema renkleri yerine aşağıdaki renkleri ve köşe yarıçapını kullanır</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Koyu tema arka plan rengi</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Bildirim çubuklarının koyu temadaki arka plan rengi. Metin, okuması kolay olacak şekilde siyah veya beyazdır</string>
+  <string name="morphe_custom_snackbar_color_light_title">Açık tema arka plan rengi</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Bildirim çubuklarının açık temadaki arka plan rengi. Metin, okuması kolay olacak şekilde siyah veya beyazdır</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Kenarlık rengi</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Bildirim çubuklarının etrafındaki kenarlık rengi. Şeffaf renk kenarlık göstermez</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Köşe yarıçapı</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Dp cinsinden bildirim çubuğu köşe yarıçapı</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Kanal reklam beyaz listesi</string>
   <string name="morphe_ads_channel_whitelist_summary">Beyaz listedeki kanalların videoları reklamlarla oynatılır, böylece içerik üreticilerine ödeme yapılır. Diğer tüm kanallarda reklamlar engellenmeye devam eder.</string>
@@ -964,7 +990,7 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
 
 Ayarlara erişmek için, Ayarlar düğmesini şuradan etkinleştirin: Genel → Araç çubuğu → Ayarlar düğmesini göster"</string>
   <string name="morphe_narrow_navigation_buttons_title">Dar gezinme düğmelerini etkinleştir</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Düğmeler arasındaki yatay boşluğu azaltır</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Düğmeler arasındaki yatay boşluğu azaltır. Kendi düğme boşluğuna sahip olan cam gezinme çubuğu ile kullanılamaz</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Etiketsiz gezinme düğmelerini devre dışı bırak</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTube bunları etiketsiz gönderirse, gezinme düğmelerini etiketlerle gösterir</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Araç çubuğu gezinti sekmelerini devre dışı bırak</string>
@@ -983,6 +1009,12 @@ Ayarlara erişmek için, Ayarlar düğmesini şuradan etkinleştirin: Genel → 
   <string name="morphe_navigation_bar_glass_summary">Gezinme çubuğunu yüzer, yuvarlak, yarı saydam bir kapsül olarak gösterir. Opak gezinme çubuğu stiliyle kullanılamaz</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Cam opaklığı</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Cam gezinme çubuğunun şeffaflık düzeyini ayarlayın (0 şeffaf, 100 opak)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Cam gezinme çubuğu boyutu</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Cam gezinme çubuğunun yüksekliğini, genişliğini ve düğme boşluğunu bir önizleme ile ayarlayın. Ekran genişliğine sığmayan düğmeler gizlenir</string>
+  <string name="morphe_navigation_bar_glass_size_height">Yükseklik</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maksimum genişlik</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Düğme boşluğu</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Gösterilen düğmeler: %2$d düğmeden %1$d tanesi</string>
   <string name="morphe_toolbar_screen_title">Araç Çubuğu</string>
   <string name="morphe_toolbar_screen_summary">Araç çubuğunda hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sohbet düğmesini gizle</string>
@@ -1686,6 +1718,7 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_series_tracker_discovery_unavailable">Çalma listesi bulunamadı</string>
   <string name="morphe_series_tracker_no_available_episodes">Kullanılabilir bölüm yok</string>
   <string name="morphe_series_tracker_hide_watched">İzlenenleri gizle</string>
+  <string name="morphe_series_tracker_watched_on_advance">Sonraki bölüme geçerken izlendi olarak işaretle</string>
   <string name="morphe_series_tracker_watch_previous">Önceki bölümleri izlendi olarak işaretle</string>
   <string name="morphe_series_tracker_order_starts_with">Şuradan başlat: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Bölüm sıralaması</string>
@@ -1738,9 +1771,13 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_niconico_comments_opacity_summary">Yorum metninin ve arka planlarının opaklığı</string>
   <string name="morphe_niconico_comments_travel_duration_title">Yolculuk süresi</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Yorumların ekranı geçmesi için geçen saniye sayısı. Düşük değerler daha hızlı hareket eder</string>
+  <string name="morphe_niconico_comments_display_area_title">Görüntüleme alanı</string>
+  <string name="morphe_niconico_comments_display_area_summary">Yorumların, oynatıcının üst kısmından itibaren ne kadar alan kaplayacağı. Daha düşük değerler, videonun alt kısmının temiz kalmasını sağlar</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimum yorum uzunluğu</string>
   <string name="morphe_niconico_comments_max_length_summary">Bunu aşan karakter sayısına sahip yorumları gizler. Her emoji bir karakter olarak sayılır</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sınırsız</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Maksimum yenileme hızı</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Yorumlar hareket ederken kullanılacak en yüksek ekran yenileme hızı. Düşük değerler daha az pil kullanır</string>
   <string name="morphe_niconico_comments_live_streams_title">Canlı yayınlarda göster</string>
   <string name="morphe_niconico_comments_live_streams_summary">Canlı yayınlar ve tekrarları</string>
   <string name="morphe_niconico_comments_live_premieres_title">İlk gösterimlerde göster</string>

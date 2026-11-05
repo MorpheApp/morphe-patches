@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">Схаваць кнопкі канала</string>
   <string name="morphe_hide_channel_buttons_summary">Схаваць такія кнопкі, як \"Падпісацца\", \"Прагледзіць канал\", \"Супольнасць\" і \"YouTube Music\", з профіляў каналаў у выніках пошуку</string>
   <string name="morphe_hide_community_posts_title">Схаваць пасты супольнасці</string>
+  <string name="morphe_post_buttons_screen_title">Кнопкі пастоў</string>
+  <string name="morphe_post_buttons_screen_summary">Выберыце размяшчэнне кнопак пад пастамі супольнасці і тое, якія кнопкі трэба схаваць</string>
+  <string name="morphe_post_buttons_layout_title">Раскладка кнопак паста</string>
+  <string name="morphe_post_buttons_layout_entry_1">Сервер</string>
+  <string name="morphe_post_buttons_layout_entry_2">Прымусовы</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Схаваць кнопкі \"Падабаецца\" і \"Не падабаецца\"</string>
+  <string name="morphe_hide_post_dislike_button_title">Схаваць кнопку \"Не падабаецца\"</string>
+  <string name="morphe_hide_post_dislike_button_summary">Пры выкарыстанні прымусовай раскладкі месца для кнопкі застаецца</string>
+  <string name="morphe_hide_post_comment_button_title">Схаваць кнопку каментарыяў</string>
+  <string name="morphe_hide_post_comments_preview_title">Схаваць папярэдні прагляд каментарыяў</string>
+  <string name="morphe_hide_post_comments_preview_summary">Хавае папярэдні прагляд каментарыяў пад пастамі</string>
+  <string name="morphe_hide_post_share_button_title">Схаваць кнопку \"Падзяліцца\"</string>
+  <string name="morphe_hide_post_share_button_summary">Кнопка спампоўкі выяўโพста малюецца побач з кнопкай \"Падзяліцца\", таму яна таксама хаваецца</string>
   <string name="morphe_hide_compact_banner_title">Схаваць кампактныя банары</string>
   <string name="morphe_hide_compact_banner_summary">Схаваць кампактныя банеры і адступы паміж некаторымі кампанентамі</string>
   <string name="morphe_hide_expandable_card_title">Разгартальныя карткі пад відэа</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Схаваць падказкі, якія паказваюцца пры жастах прайгравача, такія як \"Працягніце ўверх для дакладнага пошуку\", \"Адпусціце, каб скасаваць\" і \"2x\"</string>
-  <string name="morphe_hide_snackbar_title">Схаваць snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Схаваць правілы супольнасці для падпісчыкаў</string>
   <string name="morphe_hide_sync_button_title">Схаваць кнопку \"Сінхранізаваць з відэа\"</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Схаваць градыянт націску і ўтрымання</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">Адпраўлено занадта шмат справаздач, паспрабуйце пазней</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList адхіліў справаздачу</string>
   <string name="morphe_aislist_submit_failed">Памылка адпраўкі справаздачы, праверце падключэнне</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Снакбар</string>
+  <string name="morphe_snackbar_screen_summary">Схавайце snackbars або змяніце іх колеры і форму</string>
+  <string name="morphe_hide_snackbar_title">Схаваць snackbar</string>
+  <string name="morphe_custom_snackbar_theme_title">Спецыяльны snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">Снэкбары выкарыстоўваюць наступныя колеры і радыус закруглення замість колераў супрацьлеглай тэмы</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Колер фона цёмнай тэмы</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Колер фона снэкбараў у цёмнай тэме. Тэкст будзе чорным або белым, у залежнасці ад таго, што лепш чытаецца</string>
+  <string name="morphe_custom_snackbar_color_light_title">Колер фона светлай тэмы</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Колер фона снэкбараў у светлай тэме. Тэкст будзе чорным або белым, у залежнасці ад таго, што лепш чытаецца</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Колер межы</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Колер межы вакол снэкбараў. Пры выбары празрыстага колеру межа не паказваецца</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Радыус закруглення</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Радыус закруглення снэкбараў у dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Белы спіс рэкламных каналаў</string>
   <string name="morphe_ads_channel_whitelist_summary">Відэа з каналаў з белага спіса прайграваюць з рэкламай, каб іх стваральнікі атрымлівалі аплату. Рэклама застаецца заблакаванай на ўсіх іншых каналах</string>
@@ -963,7 +989,7 @@ Second \"item\" text"</string>
 
 Каб атрымаць доступ да Налад, уключыце кнопку Налад праз Агульныя → Панэль інструментаў → Паказаць кнопку Налад"</string>
   <string name="morphe_narrow_navigation_buttons_title">Уключаць вузкія кнопкі навігацыі</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Зменшвае гарызантальны інтэрвал паміж кнопкамі</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Зменшвае гарызантальны інтэрвал паміж кнопкамі. Не даступна для шкляной панэлі навігацыі, якая мае ўласны інтэрвал паміж кнопкамі</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Адключаць кнопкі навігацыі без подпісаў</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Паказваць кнопкі навігацыі з подпісамі, калі YouTube адпраўляе іх без подпісаў</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Адключаць навігацыйныя ўкладкі панэлі інструментаў</string>
@@ -982,6 +1008,12 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">Паказвае панэль навігацыі ў выглядзе плаваючай закругленай паўпразрачнай капсулы. Не даступна пры выкарыстанні непрозрачнага стылю панэлі навігацыі</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Непразрачнасць шкла</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Рэгулюе ўзровень празрыстасці шклянай панэлі навігацыі (0 — празрысты, 100 — непрозрачны)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Памер шклянай панэлі навігацыі</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Рэгіруйце вышыню, шырыню і інтэрвал паміж кнопкамі шклянай панэлі навігацыі з папярэднім праглядам. Кнопкі, якія не ўмяшчаюцца ў шырыню экрана, схаваныя</string>
+  <string name="morphe_navigation_bar_glass_size_height">Вышыня</string>
+  <string name="morphe_navigation_bar_glass_size_width">Максімальная шырыня</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Інтэрвал паміж кнопкамі</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Паказаны кнопкі: %1$d з %2$d</string>
   <string name="morphe_toolbar_screen_title">Панэль інструментаў</string>
   <string name="morphe_toolbar_screen_summary">Выберыце, якія кампаненты будуць адлюстроўвацца ў панэлі інструментаў</string>
   <string name="morphe_hide_toolbar_chat_button_title">Схаваць кнопку чата</string>
@@ -1684,6 +1716,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_discovery_unavailable">Не ўдалося знайсці плэйліст</string>
   <string name="morphe_series_tracker_no_available_episodes">Няма даступных эпізодаў</string>
   <string name="morphe_series_tracker_hide_watched">Схаваць праглядзенае</string>
+  <string name="morphe_series_tracker_watched_on_advance">Пазначаць як праглянутае пры пераходзе да наступнага эпізода</string>
   <string name="morphe_series_tracker_watch_previous">Пазначыць папярэднія эпізоды як праглядзеныя</string>
   <string name="morphe_series_tracker_order_starts_with">Пачынаецца з: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Порадак эпізодаў</string>
@@ -1736,9 +1769,13 @@ AVC (H.264)
   <string name="morphe_niconico_comments_opacity_summary">Прадпразорнасць тэксту і фонаў каментараў</string>
   <string name="morphe_niconico_comments_travel_duration_title">Час руху</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Колькі секунды патрабуюцца каментарам, каб перасячціць экран. Меншыя значэнні робяць рух хутчэйшым</string>
+  <string name="morphe_niconico_comments_display_area_title">Вобласць адлюстравання</string>
+  <string name="morphe_niconico_comments_display_area_summary">Якую частку плеера, пачынаючы з верхняга краю, займаюць каментарыі. Меншыя значэнні пакідаюць ніжнюю частку відэа вольнай</string>
   <string name="morphe_niconico_comments_max_length_title">Максимальная даўжыня каментара</string>
   <string name="morphe_niconico_comments_max_length_summary">Схаваць каментары, у якіх больш сімвалаў, чым гэтая колькасць. Кожны эмодзі лічыцца за адзін сімвал</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без абмежавання</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Максімальная частата абнаўлення</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Найвышэйшая частата абнаўлення дысплея, якая выкарыстоўваецца пры руху каментарыяў. Больш нізкія значэнні эканомяць зарад батарэі</string>
   <string name="morphe_niconico_comments_live_streams_title">Паказваць у прамых трансляцыях</string>
   <string name="morphe_niconico_comments_live_streams_summary">Прамыя трансляцыі і іх паўторы</string>
   <string name="morphe_niconico_comments_live_premieres_title">Паказваць на прэм\'ерах</string>

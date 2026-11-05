@@ -624,6 +624,7 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_lyrics_allow_transliteration_summary">Дозволи нелатински читања од изворот на текстот; кога е исклучено, се задржуваат само латински букви, акцентувани букви и цифри за тонови</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Ја чита секоја збор од времената текст (синхронизација на зборови вклучена); за корејски јазик не е потребно преземање; четизнаести писма го користат едниот CLDR преземање; Han карактерите се читаат од Rime Wordlist кога табелата со зборови го покрива јазикот</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">Преземање речници за читање…</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Читањата се готови (%1$d записи)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Преземањето не успеа - исклучете го и повторно вклучете го ова за да се обидете повторно</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Офлајн речник</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">Јапонски (SudachiDict, ~75 MB)</string>

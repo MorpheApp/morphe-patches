@@ -201,6 +201,7 @@ Prenesene skladbe se prikažejo tukaj"</string>
   <string name="morphe_music_downloads_failed">Prenos ni uspel</string>
   <string name="morphe_music_downloads_playlist_download_title">Prenos seznama predvorbpredictionsvokov விஜயசா</string>
   <string name="morphe_music_downloads_playlist_download_listing">Seznam skladb…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s na seznamu…</string>
   <string name="morphe_music_downloads_playlist_download_listing_failed">Ni bilo mogoče izpisati skladb iz seznama predvorbpredictionsvokov</string>
   <string name="morphe_music_downloads_playlist_download_all_saved">Že preneseno: %s</string>
   <string name="morphe_music_downloads_playlist_download_confirm_message">"V tem seznamu je %1$s, %2$s še ni prenesenih.
@@ -208,9 +209,11 @@ Prenesene skladbe se prikažejo tukaj"</string>
 Prenesene so ena poeni, kar lahko traja nekaj časa in zahteva približno %3$s prostega prostora"</string>
   <string name="morphe_music_downloads_playlist_download_confirm_button">Prenesi</string>
   <string name="morphe_music_downloads_playlist_download_progress">Prenos skladbe %1$s od %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s preneseno</string>
   <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s prenesenih, %2$s ni bilo mogoče prenesti</string>
   <string name="morphe_music_downloads_playlist_download_already_running">Prenos seznama predvorbpredictionsvokov je že v teku</string>
   <string name="morphe_music_downloads_playlist_download_needs_account">Vaš račun še ni znan. Poskusite čez trenutek ponovno</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s na seznamu, vse že prenesene</string>
   <string name="morphe_music_downloads_playlist_download_incomplete">Izpisan je bil le del seznama predvorbpredictionsvokov. Za ostale pozneje ponovno zaprte Prenesi</string>
   <string name="morphe_music_downloads_playlist_download_started">Prenos %s v ozadju</string>
   <string name="morphe_music_downloads_playlist_download_no_network">Ni omrežne povezave</string>

@@ -69,6 +69,19 @@ Spremembe vključujejo:
   <string name="morphe_hide_channel_buttons_title">Skrij gumbe kanalov</string>
   <string name="morphe_hide_channel_buttons_summary">Skrije gumbe, kot so Naroči se, Prikaži kanal, Skupnost in YouTube Music, iz profilov kanalov v rezultatih iskanja</string>
   <string name="morphe_hide_community_posts_title">Skrij objave skupnosti</string>
+  <string name="morphe_post_buttons_screen_title">Gumbi objav</string>
+  <string name="morphe_post_buttons_screen_summary">Izberite postavitev gumbov pod objavami skupnosti in katere gombe želite skriti</string>
+  <string name="morphe_post_buttons_layout_title">Postavitev gumbov objave</string>
+  <string name="morphe_post_buttons_layout_entry_1">Strežnik</string>
+  <string name="morphe_post_buttons_layout_entry_2">Prisiljeno</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Skrij gumba za všeč in nevšeč</string>
+  <string name="morphe_hide_post_dislike_button_title">Skrij gumb za nevšeč</string>
+  <string name="morphe_hide_post_dislike_button_summary">Pri uporabi predpisanega razpredelitve ostane prostor za gumb</string>
+  <string name="morphe_hide_post_comment_button_title">Skrij gumb za komentar</string>
+  <string name="morphe_hide_post_comments_preview_title">Skrij predogled komentarjev</string>
+  <string name="morphe_hide_post_comments_preview_summary">Skrije predogled komentarjev pod objavami</string>
+  <string name="morphe_hide_post_share_button_title">Skrij gumb za deljenje</string>
+  <string name="morphe_hide_post_share_button_summary">Gumb za prenos slik objave je narisan poleg gumba za deljenje, zato je skrit tudi on</string>
   <string name="morphe_hide_compact_banner_title">Skrij kompaktne pasice</string>
   <string name="morphe_hide_compact_banner_summary">Skrije kompaktne pasice in razmike med nekaterimi elementi</string>
   <string name="morphe_hide_expandable_card_title">Razširljive kartice pod videoposnetki</string>
@@ -159,7 +172,6 @@ Spremembe vključujejo:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Skrije namige, prikazane med potezami predvajalnika, kot so \'Povleci navzgor za natančno iskanje\', \'Spusti za preklic\' in \'2x\'.</string>
-  <string name="morphe_hide_snackbar_title">Skrij oglasno vrstico</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Skrij smernice za naročnike</string>
   <string name="morphe_hide_sync_button_title">Skrij gumb \'Sinhroniziraj z videoposnetkom\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Skrij gradient ob dotiku in držanju</string>
@@ -386,6 +398,20 @@ Prijave so javne in so pregledane, preden je kanal dodan na seznam. Odstranitev 
   <string name="morphe_aislist_submit_failed_rate_limit">Poslanih je bilo preveč prijav, poskusi pozneje</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList je zavrnil prijavo</string>
   <string name="morphe_aislist_submit_failed">Prijava ni uspela, preveri povezavo</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Skrijte snackbare ali spremenite njihove barve in obliko</string>
+  <string name="morphe_hide_snackbar_title">Skrij oglasno vrstico</string>
+  <string name="morphe_custom_snackbar_theme_title">Prilagojen snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">Obvestila uporabljajo spodnje barve in radius kotov namesto barv nasprotne teme</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Barva ozadja temne teme</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Barva ozadja obvestil v temni temi. Besedilo je črno ali belo, odvisno od tega, kaj je bolj berljivo</string>
+  <string name="morphe_custom_snackbar_color_light_title">Barva ozadja svetle teme</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Barva ozadja obvestil v svetli temi. Besedilo je črno ali belo, odvisno od tega, kaj je bolj berljivo</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Barva robov</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Barva roba okoli obvestil. Transparentna barva pomeni, da roba ni vidna</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Radius kotov</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Radius kotov obvestil v dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Beli seznam oglasov za kanal</string>
   <string name="morphe_ads_channel_whitelist_summary">Videoposnetki iz kanalov na belem seznamu se predvajajo z oglasi, tako da so njihovi ustvarjalci plačani. Oglasi ostanejo blokirani na vseh drugih kanalih.</string>
@@ -963,7 +989,7 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
 
 Za dostop do nastavil omogočite gumb Nastavitve prek Splošno → Orodna vrstica → Prikaži gumb Nastavitve"</string>
   <string name="morphe_narrow_navigation_buttons_title">Omogoči ozka gumba za navigacijo.</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Naredi vrstico stanja popolnoma neprozorno</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Zmanjša vodoravni razmik med gumbi. Ni na voljo pri stekleni navigacijski vrstici, ki ima svoj razmik gumbov</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Onemogoči navigacijske gumbe brez oznak</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Prikaže navigacijske gumbe z oznakami, če jih YouTube pošlje brez oznak</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Onemogoči navigacijske zavihke v vrstici z orodji</string>
@@ -982,6 +1008,12 @@ Za dostop do nastavil omogočite gumb Nastavitve prek Splošno → Orodna vrstic
   <string name="morphe_navigation_bar_glass_summary">Vrstico za navigacijo prikaže kot plavajočo, zaobljeno in polprozorno kapsulo. Ni na voljo s stilom neprozorne vrstice za navigacijo</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Nezraznost stekla</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Prilagodi stopnjo prozornosti steklene vrstice za navigacijo (0 je prozorno, 100 je neprozorno)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Velikost steklene navigacijske vrstice</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Prilagodite višino, širino in razmik gumbov steklene navigacijske vrstice z predogledom. Gumbi, ki se ne utrinjajo v širino zaslona, so skriti</string>
+  <string name="morphe_navigation_bar_glass_size_height">Višina</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maksimalna širina</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Razmik gumbov</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Prikazani gumbi: %1$d od %2$d</string>
   <string name="morphe_toolbar_screen_title">Orodje.</string>
   <string name="morphe_toolbar_screen_summary">Skrij podnapisna stopala menija \'Zvok\'</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skrij gumb Klepet</string>
@@ -1684,6 +1716,7 @@ Samodejni zapis je opcijski. Ustavi se v zasebnem načinu ali ob spremembi raču
   <string name="morphe_series_tracker_discovery_unavailable">Ni bilo mogoče najti predvajalnega seznama</string>
   <string name="morphe_series_tracker_no_available_episodes">Na voljo ni epizod</string>
   <string name="morphe_series_tracker_hide_watched">Skrij ogledano</string>
+  <string name="morphe_series_tracker_watched_on_advance">Označite kot gledano pri prehodu na naslednjo epizodo</string>
   <string name="morphe_series_tracker_watch_previous">Označi prejšnje epizode kot ogledane</string>
   <string name="morphe_series_tracker_order_starts_with">Začne se z: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Vrstni red epizod</string>
@@ -1736,9 +1769,13 @@ Samodejni zapis je opcijski. Ustavi se v zasebnem načinu ali ob spremembi raču
   <string name="morphe_niconico_comments_opacity_summary">Neprozornost besedila komentarjev in ozadij</string>
   <string name="morphe_niconico_comments_travel_duration_title">Trajanje poti</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Koliko sekund komentarji potrebujejo za preсеkanje zaslona. Nižje vrednosti pomenijo hitrejše premikanje</string>
+  <string name="morphe_niconico_comments_display_area_title">Področje prikaza</string>
+  <string name="morphe_niconico_comments_display_area_summary">Koliko površine predvajalnika od vrha navzgor uporabljajo komentarji. Nižje vrednosti pustijo spodnji del videa čist</string>
   <string name="morphe_niconico_comments_max_length_title">Največja dolžina komentarja</string>
   <string name="morphe_niconico_comments_max_length_summary">Skrije komentarje, ki imajo več znakov kot ta vrednost. Vsak emoji se šteje za en znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Brez omejitev</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Maksimalna hitrost osvežitve</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Najvišja hitrost osvežitve zaslona, ki se uporabi pri premikanju komentarjev. Nižje vrednosti porabijo manj baterije</string>
   <string name="morphe_niconico_comments_live_streams_title">Pokaži v neposrednih prenosih</string>
   <string name="morphe_niconico_comments_live_streams_summary">Neposredni prenosi in njihove ponovitve</string>
   <string name="morphe_niconico_comments_live_premieres_title">Prikaži na premierah</string>

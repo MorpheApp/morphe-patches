@@ -200,6 +200,26 @@ Nyimbo zilizopakuliwa zinaonekana hapa"</string>
   <string name="morphe_music_downloads_progress">Inapakia %s%%</string>
   <string name="morphe_music_downloads_complete">Pakia kamili</string>
   <string name="morphe_music_downloads_failed">Kupakia kumeshindwa</string>
+  <string name="morphe_music_downloads_playlist_download_title">Pakua orodha ya nyimbo</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Orodha ya nyimbo inatafutwa…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s imeorodheshwa…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Hakuwezekana kuorodhesha nyimbo za orodha hii</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Tayari zimepakuliwa: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s katika orodha hii, %2$s bado hazijapakuliwa.
+
+Zinakuliwa moja baada ya nyingine, jambo ambalo linaweza kuchukua muda mrefu na linahitaji nafasi takriban %3$s ya bure"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Pakua</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Inapakua wimbo %1$s kati ya %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s imepakuliwa</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s imepakuliwa, %2$s hazikuweza kupakuliwa</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Upakuliaji wa orodha ya nyimbo tayari unaendelea</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Akaunti yako haijulikani bado. Jaribu tena baada ya muda mfupi</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s imeorodheshwa, zote tayari zimepakuliwa</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Sehemu tu ya orodha ya nyimbo iliweza kuorodheshwa. Gusa Pakua tena baadaye ili kupata zilizobaki</string>
+  <string name="morphe_music_downloads_playlist_download_started">Inapakua %s kwa nyuma</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Hakuna muunganisho wa mtandao</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Inasubiri mtandao…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Imesimama baada ya %1$s kati ya %2$s. Gusa Pakua tena ili kuendelea</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Kuhusu Morphe</string>

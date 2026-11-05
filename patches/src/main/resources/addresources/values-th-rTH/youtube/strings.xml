@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">ซ่อนปุ่มของช่อง</string>
   <string name="morphe_hide_channel_buttons_summary">ซ่อนปุ่มต่างๆ เช่น ติดตาม ดูช่อง ชุมชน และ YouTube Music จากโปรไฟล์ช่องในผลการค้นหา</string>
   <string name="morphe_hide_community_posts_title">ซ่อนโพสต์ชุมชน</string>
+  <string name="morphe_post_buttons_screen_title">ปุ่มโพสต์</string>
+  <string name="morphe_post_buttons_screen_summary">เลือกเลย์เอาต์ของปุ่มใต้โพสต์ชุมชนและเลือกปุ่มที่จะซ่อน</string>
+  <string name="morphe_post_buttons_layout_title">เลย์เอาต์ปุ่มโพสต์</string>
+  <string name="morphe_post_buttons_layout_entry_1">เซิร์ฟเวอร์</string>
+  <string name="morphe_post_buttons_layout_entry_2">บังคับใช้</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">ซ่อนปุ่มชอบและไม่ชอบ</string>
+  <string name="morphe_hide_post_dislike_button_title">ซ่อนปุ่มไม่ชอบ</string>
+  <string name="morphe_hide_post_dislike_button_summary">เมื่อใช้เลย์เอาต์แบบบังคับใช้ พื้นที่ของปุ่มจะถูกเว้นว่างไว้</string>
+  <string name="morphe_hide_post_comment_button_title">ซ่อนปุ่มแสดงความคิดเห็น</string>
+  <string name="morphe_hide_post_comments_preview_title">ซ่อนตัวอย่างความคิดเห็น</string>
+  <string name="morphe_hide_post_comments_preview_summary">ซ่อนตัวอย่างความคิดเห็นที่อยู่ใต้โพสต์</string>
+  <string name="morphe_hide_post_share_button_title">ซ่อนปุ่มแชร์</string>
+  <string name="morphe_hide_post_share_button_summary">ปุ่มดาวน์โหลดรูปภาพของโพสต์จะถูกวาดไว้ถัดจากปุ่มแชร์ ดังนั้นปุ่มนี้จะถูกซ่อนไปด้วย</string>
   <string name="morphe_hide_compact_banner_title">ซ่อนแบนเนอร์ขนาดกะทัดรัด</string>
   <string name="morphe_hide_compact_banner_summary">ซ่อนแบนเนอร์ขนาดเล็กและช่องว่างระหว่างส่วนประกอบบางอย่าง</string>
   <string name="morphe_hide_expandable_card_title">การ์ดที่ขยายได้ใต้คลิปวิดีโอ</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">ซ่อนคำแนะนำที่แสดงระหว่างท่าทางการเล่น เช่น \'ดึงขึ้นเพื่อการค้นหาที่แม่นยำ\', \'ปล่อยเพื่อยกเลิก\' และ \'2x\'</string>
-  <string name="morphe_hide_snackbar_title">ซ่อนสแน็กบาร์</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">ซ่อนหลักเกณฑ์สำหรับผู้ติดตาม</string>
   <string name="morphe_hide_sync_button_title">ซ่อนปุ่ม \'ซิงค์กับวิดีโอ\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">ซ่อนการไล่ระดับสีเมื่อแตะค้าง</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">มีการส่งรายงานมากเกินไป โปรดลองอีกครั้งในภายหลัง</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList ปฏิเสธรายงาน</string>
   <string name="morphe_aislist_submit_failed">ส่งรายงานไม่สำเร็จ โปรดตรวจสอบการเชื่อมต่อของคุณ</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">ซ่อน snackbar หรือเปลี่ยนสีและรูปร่าง</string>
+  <string name="morphe_hide_snackbar_title">ซ่อนสแน็กบาร์</string>
+  <string name="morphe_custom_snackbar_theme_title">Snackbar แบบกำหนดเอง</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbar จะใช้สีและรัศมีมุมด้านล่างแทนสีของธีมที่ตรงกันข้าม</string>
+  <string name="morphe_custom_snackbar_color_dark_title">สีพื้นหลังของธีมมืด</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">สีพื้นหลังของ snackbar ในธีมมืด ส่วนข้อความจะเป็นสีดำหรือสีขาวตามความเหมาะสมเพื่อให้สามารถอ่านได้ง่ายที่สุด</string>
+  <string name="morphe_custom_snackbar_color_light_title">สีพื้นหลังของธีมสว่าง</string>
+  <string name="morphe_custom_snackbar_color_light_summary">สีพื้นหลังของ snackbar ในธีมสว่าง ส่วนข้อความจะเป็นสีดำหรือสีขาวตามความเหมาะสมเพื่อให้สามารถอ่านได้ง่ายที่สุด</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">สีเส้นขอบ</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">สีของเส้นขอบรอบ snackbar หากใช้สีโปร่งใสจะไม่แสดงเส้นขอบ</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">รัศมีมุม</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">รัศมีมุมของ snackbar ในหน่วย dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">รายการช่องที่อนุญาตให้แสดงโฆษณา</string>
   <string name="morphe_ads_channel_whitelist_summary">วิดีโอจากช่องในรายการที่อนุญาตให้แสดงโฆษณาจะเล่นพร้อมโฆษณา เพื่อให้ผู้สร้างช่องได้รับค่าตอบแทน โฆษณาจะยังคงถูกบล็อกในช่องอื่นๆ ทั้งหมด</string>
@@ -963,7 +989,7 @@ Second \"item\" text"</string>
 
 เพื่อเข้าถึงการตั้งค่า ให้เปิดใช้งานปุ่มการตั้งค่าผ่าน ทั่วไป → แถบเครื่องมือ → แสดงปุ่มการตั้งค่า"</string>
   <string name="morphe_narrow_navigation_buttons_title">เปิดใช้งานปุ่มนำทางที่แคบ</string>
-  <string name="morphe_narrow_navigation_buttons_summary">ทำให้แถบนำทางทึบแสงอย่างสมบูรณ์ในโหมดสว่าง</string>
+  <string name="morphe_narrow_navigation_buttons_summary">ลดระยะห่างแนวนอนระหว่างปุ่ม ไม่สามารถใช้งานได้กับแถบนำทางแบบกระจกซึ่งมีระยะห่างระหว่างปุ่มของตัวเอง</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">ปิดใช้งานปุ่มนำทางที่ไม่มีป้ายกำกับ</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">แสดงปุ่มนำทางพร้อมป้ายกำกับ หาก YouTube ส่งมาโดยไม่มีป้ายกำกับ</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">ปิดใช้งานแท็บการนำทางบนแถบเครื่องมือ</string>
@@ -982,6 +1008,12 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">แสดงแถบนำทางเป็นแคปซูลแบบโปร่งแสง ขอบมน และลอยอยู่ ไม่สามารถใช้งานร่วมกับสไตล์แถบนำทางแบบทึบแสงได้</string>
   <string name="morphe_navigation_bar_glass_opacity_title">ความทึบแสงของกระจก</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ปรับระดับความโปร่งใสของแถบนำทางแบบกระจก (0 คือโปร่งใส, 100 คือทึบแสง)</string>
+  <string name="morphe_navigation_bar_glass_size_title">ขนาดแถบนำทางแบบกระจก</string>
+  <string name="morphe_navigation_bar_glass_size_summary">ปรับความสูง ความกว้าง และระยะห่างระหว่างปุ่มของแถบนำทางแบบกระจก พร้อมการแสดงตัวอย่าง ปุ่มที่ไม่พอดีกับความกว้างของหน้าจอจะถูกซ่อนไว้</string>
+  <string name="morphe_navigation_bar_glass_size_height">ความสูง</string>
+  <string name="morphe_navigation_bar_glass_size_width">ความกว้างสูงสุด</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">ระยะห่างระหว่างปุ่ม</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">ปุ่มที่แสดง: %1$d จาก %2$d</string>
   <string name="morphe_toolbar_screen_title">แถบเครื่องมือ</string>
   <string name="morphe_toolbar_screen_summary">เลือกส่วนประกอบที่จะปรากฏในแถบเครื่องมือ</string>
   <string name="morphe_hide_toolbar_chat_button_title">ซ่อนปุ่มแชท</string>
@@ -1684,6 +1716,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_discovery_unavailable">ไม่พบเพลย์ลิสต์</string>
   <string name="morphe_series_tracker_no_available_episodes">ไม่มีตอนที่ใช้งานได้</string>
   <string name="morphe_series_tracker_hide_watched">ซ่อนที่ดูแล้ว</string>
+  <string name="morphe_series_tracker_watched_on_advance">ทำเครื่องหมายว่าดูแล้วเมื่อเลื่อนไปยังตอนถัดไป</string>
   <string name="morphe_series_tracker_watch_previous">ทำเครื่องหมายตอนที่ผ่านมาว่าดูแล้ว</string>
   <string name="morphe_series_tracker_order_starts_with">เริ่มด้วย: %1$s</string>
   <string name="morphe_series_tracker_episode_order">ลำดับตอน</string>
@@ -1736,9 +1769,13 @@ AVC (H.264)
   <string name="morphe_niconico_comments_opacity_summary">ความโปร่งใสของข้อความความคิดเห็นและพื้นหลัง</string>
   <string name="morphe_niconico_comments_travel_duration_title">ระยะเวลาในการเคลื่อนที่</string>
   <string name="morphe_niconico_comments_travel_duration_summary">จำนวนวินาทีที่ความคิดเห็นใช้ในการเลื่อนผ่านหน้าจอ ค่าที่น้อยกว่าจะเคลื่อนที่เร็วกว่า</string>
+  <string name="morphe_niconico_comments_display_area_title">พื้นที่แสดงผล</string>
+  <string name="morphe_niconico_comments_display_area_summary">ความกว้างของพื้นที่แสดงความคิดเห็นโดยวัดจากด้านบนของโปรแกรมเล่น ยิ่งค่าน้อย ส่วนล่างของวิดีโอจะยิ่งว่างมากขึ้น</string>
   <string name="morphe_niconico_comments_max_length_title">ความยาวคอมเมนต์สูงสุด</string>
   <string name="morphe_niconico_comments_max_length_summary">ซ่อนคอมเมนต์ที่มีตัวอักษรมากกว่าจำนวนนี้ แต่ละอิโมจิจะนับเป็นหนึ่งตัวอักษร</string>
   <string name="morphe_niconico_comments_max_length_no_limit">ไม่มีขีดจำกัด</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">อัตราการรีเฟรชสูงสุด</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">อัตราการรีเฟรชหน้าจอสูงสุดที่ใช้ในขณะที่คอมเมนต์เคลื่อนที่ ค่าที่ต่ำกว่าจะใช้แบตเตอรี่น้อยลง</string>
   <string name="morphe_niconico_comments_live_streams_title">แสดงในสตรีมสด</string>
   <string name="morphe_niconico_comments_live_streams_summary">สตรีมสดและการเล่นซ้ำ</string>
   <string name="morphe_niconico_comments_live_premieres_title">แสดงในพรีเมียร์</string>

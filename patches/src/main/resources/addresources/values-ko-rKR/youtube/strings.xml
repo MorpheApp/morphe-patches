@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">채널 버튼 숨기기</string>
   <string name="morphe_hide_channel_buttons_summary">검색 결과의 채널 프로필에서 구독, 채널 보기, 커뮤니티, YouTube Music 등의 버튼을 숨깁니다</string>
   <string name="morphe_hide_community_posts_title">커뮤니티 게시물 숨기기</string>
+  <string name="morphe_post_buttons_screen_title">게시 버튼</string>
+  <string name="morphe_post_buttons_screen_summary">커뮤니티 게시물 아래 버튼의 레이아웃과 숨길 버튼을 선택하세요</string>
+  <string name="morphe_post_buttons_layout_title">게시물 버튼 레이아웃</string>
+  <string name="morphe_post_buttons_layout_entry_1">서버</string>
+  <string name="morphe_post_buttons_layout_entry_2">강제 적용</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">\'좋아요\' 및 \'싫어요\' 버튼 숨기기</string>
+  <string name="morphe_hide_post_dislike_button_title">싫어요 버튼 숨기기</string>
+  <string name="morphe_hide_post_dislike_button_summary">강제 적용 레이아웃의 경우, 버튼 공간이 그대로 유지됩니다</string>
+  <string name="morphe_hide_post_comment_button_title">댓글 버튼 숨기기</string>
+  <string name="morphe_hide_post_comments_preview_title">댓글 미리보기 숨기기</string>
+  <string name="morphe_hide_post_comments_preview_summary">게시물 아래에 표시되는 댓글 미리보기를 숨깁니다</string>
+  <string name="morphe_hide_post_share_button_title">공유 버튼 숨기기</string>
+  <string name="morphe_hide_post_share_button_summary">게시물 이미지의 다운로드 버튼이 공유 버튼 옆에 표시되므로 함께 숨겨집니다</string>
   <string name="morphe_hide_compact_banner_title">소형 배너 숨기기</string>
   <string name="morphe_hide_compact_banner_summary">일부 구성 요소 사이에서 소형 배너 및 여백을 숨깁니다</string>
   <string name="morphe_hide_expandable_card_title">동영상 아래 펼쳐볼 수 있는 정보</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">\'세밀하게 보려면 위로 당기세요\', \'손가락을 떼어 취소\', \'2x\'와 같은 플레이어 제스처 중에 표시되는 힌트를 숨깁니다</string>
-  <string name="morphe_hide_snackbar_title">스낵바 (팝업 메시지바) 숨기기</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">구독자를 위한 커뮤니티 가이드라인 숨기기</string>
   <string name="morphe_hide_sync_button_title">\'동영상에 동기화\' 버튼 숨기기</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">길게 탭하기 그라데이션 숨기기</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">신고가 너무 많이 전송되었습니다. 나중에 다시 시도하세요</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList에서 신고를 거부하였습니다</string>
   <string name="morphe_aislist_submit_failed">신고할 수 없습니다. 연결을 확인하세요</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">스낵바</string>
+  <string name="morphe_snackbar_screen_summary">스낵바를 숨기거나 색상 및 모양을 변경하세요</string>
+  <string name="morphe_hide_snackbar_title">스낵바 (팝업 메시지바) 숨기기</string>
+  <string name="morphe_custom_snackbar_theme_title">커스텀 스낵바</string>
+  <string name="morphe_custom_snackbar_theme_summary">스낵바는 반대 테마의 색상 대신 아래의 색상과 모서리 반경을 사용합니다</string>
+  <string name="morphe_custom_snackbar_color_dark_title">어두운 테마 배경 색상</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">다크 테마에서 스낵바의 배경색입니다. 텍스트는 가독성이 더 좋은 검은색 또는 흰색으로 표시됩니다</string>
+  <string name="morphe_custom_snackbar_color_light_title">밝은 테마 배경 색상</string>
+  <string name="morphe_custom_snackbar_color_light_summary">라이트 테마에서 스낵바의 배경색입니다. 텍스트는 가독성이 더 좋은 검은색 또는 흰색으로 표시됩니다</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">테두리 색상</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">스낵바 주변 테두리의 색상입니다. 투명한 색상을 선택하면 테두리가 표시되지 않습니다</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">모서리 반경</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">스낵바의 모서리 반경 dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">채널 광고 화이트리스트</string>
   <string name="morphe_ads_channel_whitelist_summary">화이트리스트에 등록된 채널의 동영상에는 광고가 재생되어 크리에이터에게 수익이 지급됩니다. 다른 모든 채널에서는 광고가 계속 차단됩니다</string>
@@ -965,7 +991,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
 
 설정에 접근하려면, '일반 → 툴바 → 설정 버튼 표시하기'를 통해 설정 버튼을 활성화하세요"</string>
   <string name="morphe_narrow_navigation_buttons_title">좁은 하단바 버튼 활성화하기</string>
-  <string name="morphe_narrow_navigation_buttons_summary">하단바 버튼 사이의 간격을 줄입니다</string>
+  <string name="morphe_narrow_navigation_buttons_summary">버튼 사이의 가로 간격을 줄입니다. 자체 버튼 간격 설정이 있는 글래스 내비게이션 바에서는 사용할 수 없습니다</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">라벨이 없는 하단바 버튼 비활성화하기</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTube에서 라벨 없이 하단바 버튼을 보내는 경우 라벨이 있는 하단바 버튼을 표시합니다</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">툴바 탐색 탭 비활성화하기</string>
@@ -984,6 +1010,12 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_navigation_bar_glass_summary">하단바를 플로팅 형태의 둥근 반투명 캡슐 모양으로 표시합니다. 불투명 하단바 스타일에서는 사용할 수 없습니다</string>
   <string name="morphe_navigation_bar_glass_opacity_title">글래스 불투명도</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">글래스 하단바의 투명도를 설정할 수 있습니다 (0: 완전 투명, 100: 완전 불투명)</string>
+  <string name="morphe_navigation_bar_glass_size_title">글래스 내비게이션 바 크기</string>
+  <string name="morphe_navigation_bar_glass_size_summary">미리보기를 통해 글래스 내비게이션 바의 높이, 너비 및 버튼 간격을 조정합니다. 화면 너비에 맞지 않는 버튼은 숨겨집니다</string>
+  <string name="morphe_navigation_bar_glass_size_height">높이</string>
+  <string name="morphe_navigation_bar_glass_size_width">최대 너비</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">버튼 간격</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">표시된 버튼: %2$d개 중 %1$d개</string>
   <string name="morphe_toolbar_screen_title">툴바</string>
   <string name="morphe_toolbar_screen_summary">툴바에 표시할 구성 요소를 설정할 수 있습니다</string>
   <string name="morphe_hide_toolbar_chat_button_title">메시지 버튼 숨기기</string>
@@ -1685,6 +1717,7 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_series_tracker_discovery_unavailable">재생목록을 찾을 수 없습니다</string>
   <string name="morphe_series_tracker_no_available_episodes">사용 가능한 에피소드가 없습니다</string>
   <string name="morphe_series_tracker_hide_watched">시청 완료 항목 숨기기</string>
+  <string name="morphe_series_tracker_watched_on_advance">다음 에피소드로 이동할 때 시청 완료로 표시</string>
   <string name="morphe_series_tracker_watch_previous">시청한 이전 에피소드 표시</string>
   <string name="morphe_series_tracker_order_starts_with">시작 에피소드: %1$s</string>
   <string name="morphe_series_tracker_episode_order">에피소드 순서</string>
@@ -1737,9 +1770,13 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_niconico_comments_opacity_summary">댓글 텍스트 및 배경 불투명도</string>
   <string name="morphe_niconico_comments_travel_duration_title">이동 지속 시간</string>
   <string name="morphe_niconico_comments_travel_duration_summary">댓글이 화면을 가로지르는 데 걸리는 시간을 설정할 수 있습니다 (초). 값이 낮을수록 댓글이 더 빠르게 이동합니다.</string>
+  <string name="morphe_niconico_comments_display_area_title">표시 영역</string>
+  <string name="morphe_niconico_comments_display_area_summary">댓글이 화면 상단부터 플레이어의 어느 정도 영역을 차지할지 설정할 수 있습니다. 값을 낮출수록 동영상 화면의 아래쪽 영역이 더 넓게 확보됩니다</string>
   <string name="morphe_niconico_comments_max_length_title">댓글 최대 길이</string>
   <string name="morphe_niconico_comments_max_length_summary">표시할 댓글의 최대 글자 수를 설정할 수 있습니다. 설정한 글자 수를 초과하는 댓글은 숨겨집니다. 이모티콘 하나는 글자 1개로 계산됩니다</string>
   <string name="morphe_niconico_comments_max_length_no_limit">제한 없음</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">최대 주사율</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">댓글이 이동할 때 사용하는 최대 디스플레이 재생률입니다. 값이 낮을수록 배터리 소모가 줄어듭니다</string>
   <string name="morphe_niconico_comments_live_streams_title">실시간 스트림에서 표시하기</string>
   <string name="morphe_niconico_comments_live_streams_summary">실시간 스트림 및 다시보기에서 표시합니다</string>
   <string name="morphe_niconico_comments_live_premieres_title">Premieres 동영상에서 표시하기</string>

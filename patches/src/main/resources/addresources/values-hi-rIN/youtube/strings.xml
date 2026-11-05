@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">चैनल बटन छिपाएँ</string>
   <string name="morphe_hide_channel_buttons_summary">सर्च रिज़ल्ट में चैनल प्रोफ़ाइल से सब्सक्राइब, चैनल देखें, कम्युनिटी और YouTube Music जैसे बटन छिपाता है</string>
   <string name="morphe_hide_community_posts_title">समुदाय पोस्ट छुपाएं</string>
+  <string name="morphe_post_buttons_screen_title">पोस्ट बटन</string>
+  <string name="morphe_post_buttons_screen_summary">सामुदायिक पोस्ट के नीचे बटन के लेआउट को चुनें और यह चुनें कि किन बटनों को छिपाना है</string>
+  <string name="morphe_post_buttons_layout_title">पोस्ट बटन लेआउट</string>
+  <string name="morphe_post_buttons_layout_entry_1">सर्वर</string>
+  <string name="morphe_post_buttons_layout_entry_2">लागू किया गया</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">लाइक और डिस्लाइक बटन को छुपाएं</string>
+  <string name="morphe_hide_post_dislike_button_title">डिस्लाइक बटन छिपाएं</string>
+  <string name="morphe_hide_post_dislike_button_summary">एनफोर्सड लेआउट के साथ, बटन का स्थान खाली छोड़ दिया जाता है</string>
+  <string name="morphe_hide_post_comment_button_title">कमेंट बटन छुपाएं</string>
+  <string name="morphe_hide_post_comments_preview_title">टिप्पणियों का पूर्वावलोकन छुपाएं</string>
+  <string name="morphe_hide_post_comments_preview_summary">पोस्ट के नीचे टिप्पणियों के पूर्वावलोकन को छुपाता है</string>
+  <string name="morphe_hide_post_share_button_title">शेयर बटन छुपाएं</string>
+  <string name="morphe_hide_post_share_button_summary">पोस्ट छवियों का डाउनलोड बटन शेयर बटन के बगल में बना होता है, इसलिए वह भी छुप जाता है</string>
   <string name="morphe_hide_compact_banner_title">कॉम्पैक्ट बैनर छिपाएँ</string>
   <string name="morphe_hide_compact_banner_summary">कॉम्पैक्ट बैनर और कुछ घटकों के बीच का खाली स्पेस छिपाता है</string>
   <string name="morphe_hide_expandable_card_title">वीडियो के नीचे खुलने वाले कार्ड</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">प्लेयर के हावभाव के दौरान दिखाए गए संकेत छिपाता है, जैसे \'सटीक सीकिंग के लिए ऊपर खींचें\', \'रद्द करने के लिए छोड़ें\' और \'2x\'</string>
-  <string name="morphe_hide_snackbar_title">स्नैकबार छिपाएं</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">छुपाएं सदस्यगणितों की निदेशिका</string>
   <string name="morphe_hide_sync_button_title">\"सिंक टू वीडियो\" बटन छिपाएं</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">टैप और होल्ड ग्रेडिएंट छिपाएँ</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">बहुत सारी रिपोर्टें भेजी गईं, बाद में फिर से प्रयास करें।</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList ने रिपोर्ट अस्वीकार कर दी।</string>
   <string name="morphe_aislist_submit_failed">रिपोर्ट विफल रही, अपना कनेक्शन जाँचें।</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">स्नैकबार</string>
+  <string name="morphe_snackbar_screen_summary">स्नैकबार्स को छिपाएं या उनके रंगों और आकार को बदलें</string>
+  <string name="morphe_hide_snackbar_title">स्नैकबार छिपाएं</string>
+  <string name="morphe_custom_snackbar_theme_title">कस्टम स्नैकबार</string>
+  <string name="morphe_custom_snackbar_theme_summary">स्नैकबार्ज़ विपरीत थीम के रंगों के बजाय नीचे दिए गए रंगों और कॉर्नर रेडियस का उपयोग करते हैं</string>
+  <string name="morphe_custom_snackbar_color_dark_title">डार्क थीम बैकग्राउंड कलर</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">डार्क थीम में स्नैकबार्ज़ का बैकग्राउंड कलर। टेक्स्ट काला या सफेद होगा, जो भी पढ़ने में आसान हो</string>
+  <string name="morphe_custom_snackbar_color_light_title">लाइट थीम बैकग्राउंड कलर</string>
+  <string name="morphe_custom_snackbar_color_light_summary">लाइट थीम में स्नैकबार्ज़ का बैकग्राउंड कलर। टेक्स्ट काला या सफेद होगा, जो भी पढ़ने में आसान हो</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">बॉर्डर कलर</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">स्नैकबार्ज़ के चारों ओर बॉर्डर का रंग। ट्रांसपेरेंट रंग से कोई बॉर्डर नहीं दिखता</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">कॉर्नर रेडियस</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">स्नैकबार का कॉर्नर रेडियस dp में</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">चैनल विज्ञापन श्वेतसूची</string>
   <string name="morphe_ads_channel_whitelist_summary">श्वेतसूचीबद्ध चैनलों के वीडियो विज्ञापनों के साथ चलते हैं, ताकि उनके निर्माताओं को भुगतान मिले। बाकी सभी चैनलों पर विज्ञापन अवरुद्ध रहते हैं।</string>
@@ -963,7 +989,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
 
 सेटिंग्स तक पहुँचने के लिए, General → Toolbar → Show Settings button के ज़रिए सेटिंग्स बटन को सक्षम करें"</string>
   <string name="morphe_narrow_navigation_buttons_title">नarrow नैविगेशन बटनें सक्षम करें</string>
-  <string name="morphe_narrow_navigation_buttons_summary">स्क्रॉल करते समय नेविगेशन बार को दृश्यमान रखता है</string>
+  <string name="morphe_narrow_navigation_buttons_summary">बटन के बीच की क्षैतिज दूरी को कम करता है। ग्लास नेविगेशन बार के साथ उपलब्ध नहीं है, जिसका अपना बटन स्पेसिंग होता है</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">बिना लेबल वाले नेविगेशन बटनों को अक्षम करें</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">यदि YouTube उन्हें बिना लेबल भेजता है, तो नेविगेशन बटनों को लेबल के साथ दिखाता है</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">टूलबार नेविगेशन टैब अक्षम करें</string>
@@ -982,6 +1008,12 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_navigation_bar_glass_summary">नेविगेशन बार को एक फ्लोटिंग, राउंडेड, ट्रांसलूसेंट कैप्सूल के रूप में दिखाता है। ओपेक नेविगेशन बार स्टाइल के साथ उपलब्ध नहीं है</string>
   <string name="morphe_navigation_bar_glass_opacity_title">ग्लास ओपेसिटी</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ग्लास नेविगेशन बार के पारदर्शिता स्तर को समायोजित करें (0 पारदर्शी है, 100 अपारदर्शी है)</string>
+  <string name="morphe_navigation_bar_glass_size_title">ग्लास नेविगेशन बार का आकार</string>
+  <string name="morphe_navigation_bar_glass_size_summary">एक प्रिव्यू के साथ, ग्लास नेविगेशन बार की ऊंचाई, चौड़ाई और बटन स्पेसिंग को एडजस्ट करें। वे बटन जो स्क्रीन की चौड़ाई में फिट नहीं होते, वे छिप जाते हैं</string>
+  <string name="morphe_navigation_bar_glass_size_height">ऊंचाई</string>
+  <string name="morphe_navigation_bar_glass_size_width">अधिकतम चौड़ाई</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">बटन स्पेसिंग</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">दिखाए गए बटन: %2$d में से %1$d</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_toolbar_screen_summary">टूलबार में कौन से घटक दिखाई दें, यह चुनें</string>
   <string name="morphe_hide_toolbar_chat_button_title">चैट बटन छुपाएं</string>
@@ -1684,6 +1716,7 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_series_tracker_discovery_unavailable">कोई प्लेलिस्ट नहीं मिली</string>
   <string name="morphe_series_tracker_no_available_episodes">कोई उपलब्ध एपिसोड नहीं</string>
   <string name="morphe_series_tracker_hide_watched">देखे गए छुपाएं</string>
+  <string name="morphe_series_tracker_watched_on_advance">अगले एपिसोड पर जाते समय \'देखा गया\' के रूप में चिह्नित करें</string>
   <string name="morphe_series_tracker_watch_previous">पिछले एपिसोड देखे गए चिह्नित करें</string>
   <string name="morphe_series_tracker_order_starts_with">%1$s के साथ शुरू</string>
   <string name="morphe_series_tracker_episode_order">एपिसोड क्रम</string>
@@ -1736,9 +1769,13 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_niconico_comments_opacity_summary">कमेंट टेक्स्ट और बैकग्राउंड की ओपेसिटी</string>
   <string name="morphe_niconico_comments_travel_duration_title">ट्रैवल ड्यूरेशन</string>
   <string name="morphe_niconico_comments_travel_duration_summary">कमेंट्स को स्क्रीन पार करने में कितने सेकंड लगते हैं। कम वैल्यू तेज़ी से चलती हैं</string>
+  <string name="morphe_niconico_comments_display_area_title">डिस्प्ले एरिया</string>
+  <string name="morphe_niconico_comments_display_area_summary">प्लेयर के ऊपरी हिस्से से टिप्पणियाँ कितनी जगह का उपयोग करती हैं। कम मान वीडियो के निचले हिस्से को साफ़ रखते हैं</string>
   <string name="morphe_niconico_comments_max_length_title">कमेंट की अधिकतम लंबाई</string>
   <string name="morphe_niconico_comments_max_length_summary">इससे अधिक वर्णों वाले कमेंट छुपाएं। प्रत्येक इमोजी को एक वर्ण माना जाएगा</string>
   <string name="morphe_niconico_comments_max_length_no_limit">कोई सीमा नहीं</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">अधिकतम रिफ्रेश रेट</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">कमेंट्स चलते समय उपयोग की जाने वाली उच्चतम डिस्प्ले रिफ्रेश रेट। कम मान कम बैटरी का उपयोग करते हैं</string>
   <string name="morphe_niconico_comments_live_streams_title">लाइव स्ट्रीम पर दिखाएं</string>
   <string name="morphe_niconico_comments_live_streams_summary">लाइव स्ट्रीम और उनके रिप्ले</string>
   <string name="morphe_niconico_comments_live_premieres_title">प्रीमियर पर दिखाएं</string>

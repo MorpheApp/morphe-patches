@@ -202,6 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_failed">Не удалось скачать</string>
   <string name="morphe_music_downloads_playlist_download_title">Загрузка плейлиста</string>
   <string name="morphe_music_downloads_playlist_download_listing">Составление списка треков…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s в списке…</string>
   <string name="morphe_music_downloads_playlist_download_listing_failed">Не удалось составить список треков плейлиста</string>
   <string name="morphe_music_downloads_playlist_download_all_saved">Уже скачано: %s</string>
   <string name="morphe_music_downloads_playlist_download_confirm_message">"В этом плейлисте %1$s треков, %2$s еще не скачано.
@@ -209,9 +210,11 @@ Second \"item\" text"</string>
 Они скачиваются по одному, что может занять много времени и потребует около %3$s свободного места"</string>
   <string name="morphe_music_downloads_playlist_download_confirm_button">Скачать</string>
   <string name="morphe_music_downloads_playlist_download_progress">Загрузка трека %1$s из %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s скачано</string>
   <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s скачано, %2$s не удалось скачать</string>
   <string name="morphe_music_downloads_playlist_download_already_running">Скачивание плейлиста уже выполняется</string>
   <string name="morphe_music_downloads_playlist_download_needs_account">Ваш аккаунт пока не распознан. Попробуйте еще раз через некоторое время</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s в списке, всё уже скачано</string>
   <string name="morphe_music_downloads_playlist_download_incomplete">Удалось составить список только части плейлиста. Нажмите «Скачать» позже, чтобы загрузить остальное</string>
   <string name="morphe_music_downloads_playlist_download_started">Загрузка %s в фоновом режиме</string>
   <string name="morphe_music_downloads_playlist_download_no_network">Нет сетевого подключения</string>

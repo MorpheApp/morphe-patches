@@ -200,7 +200,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">دابەزاندنی %s%%</string>
   <string name="morphe_music_downloads_complete">دابەزاندن تەواو بوو</string>
   <string name="morphe_music_downloads_failed">دابەزاندنەکە سەرکەوتوو نەبوو</string>
+  <string name="morphe_music_downloads_playlist_download_title">دابەزاندنی لیستێکانی موزیک</string>
+  <string name="morphe_music_downloads_playlist_download_listing">لیستکردنی گۆرانییەکان…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s لیستکرا…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">نەتوانیا لیستی گۆرانییەکانی لیستی موزیکەکە پیشان بدات</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">ئەوانەی دابەزاندراون: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s لەم لیستەدایە، %2$s هێشتا دابەنەزاندراون.
+
+ئەوان یەک بە یەک دابەزێندرێن، کە ڕەنگە کاتی زۆری بوێت و پێویستی بە نزیکەی %3$s بۆ شوێنی بەتاڵ هەیە"</string>
   <string name="morphe_music_downloads_playlist_download_confirm_button">دابەزاندن</string>
+  <string name="morphe_music_downloads_playlist_download_progress">دابەزاندنی گۆرانی %1$s لە %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s دابەزاندرا</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s دابەزی، %2$s نەتوانرا دابەزێنرێت</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">دابەزاندنی لیستەکە لەprۆسەی ئەنجامدانە</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">هێشتا هەژمارەکەت ناسراو نییە. دوای ساتێک دووبارە هەوڵ بدەرەوە</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s لیست کرا، هەموویان پێشتر دابەزاوە</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">تەنیا بەشێکی لیستی موزیکەکە توانرا لیست بکرێت. دواتر دووبارە کلیک لەسەر دابەزاندن بکە بۆ بەدەستهێنانی ئەوەی تری</string>
+  <string name="morphe_music_downloads_playlist_download_started">دابەزاندنی %s لە پشت پەردە</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">بەستەرێکی تۆڕ نییە</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">چاوەڕوانی تۆڕ دەکرێت…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">راگیستا دوای %1$s لە %2$s. بۆ بەردەوامبوون دووبارە فشار بدە لە داگرتن</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">دربارە</string>

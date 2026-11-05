@@ -159,10 +159,12 @@ Lejupielādētās dziesmas parādīsies šeit"</string>
   <string name="morphe_music_downloads_track_delete_failed">Neizdevās dzēst lejupielādi</string>
   <string name="morphe_music_downloads_play_failed">Neizdevās atskaņot lejupielādēto failu</string>
   <string name="morphe_music_downloads_playlists">Atskaņošanas saraksti</string>
+  <string name="morphe_music_downloads_playlists_section">Izveidoti atskaņu saraksti (%s)</string>
   <string name="morphe_music_downloads_playlists_empty">Vietējie atskaņošanas saraksti vēl nav izveidoti</string>
   <string name="morphe_music_downloads_playlists_hide">Slēpt atskaņošanas sarakstus ▲</string>
   <string name="morphe_music_downloads_playlist_new">+ Jauns atskaņošanas saraksts</string>
   <string name="morphe_music_downloads_playlist_new_button">Jauns atskaņošanas saraksts</string>
+  <string name="morphe_music_downloads_playlist_selected">Atlasīts (%s)</string>
   <string name="morphe_music_downloads_playlist_select_first">Vispirms atlasiet dziesmas</string>
   <string name="morphe_music_downloads_playlist_clear_selection">Notīrīt atlasi</string>
   <string name="morphe_music_downloads_playlist_create">Izveidot atskaņošanas sarakstu</string>
@@ -200,6 +202,7 @@ Lejupielādētās dziesmas parādīsies šeit"</string>
   <string name="morphe_music_downloads_failed">Lejupielāde neizdevās</string>
   <string name="morphe_music_downloads_playlist_download_title">Saraksta lejupielāde</string>
   <string name="morphe_music_downloads_playlist_download_listing">Saraksta trekumi…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s pievienots sarakstam…</string>
   <string name="morphe_music_downloads_playlist_download_listing_failed">Neizdevās sarakstīt saraksta trekumus</string>
   <string name="morphe_music_downloads_playlist_download_all_saved">Jauklējuļādēts: %s</string>
   <string name="morphe_music_downloads_playlist_download_confirm_message">"Šajā sarakstā ir %1$s, %2$s vēl nav lejupielādēti.
@@ -207,9 +210,11 @@ Lejupielādētās dziesmas parādīsies šeit"</string>
 Tie tiek lejupielādēti pa vienam, kas var aizņemt ilgu laiku un prasa aptuveni %3$s brīvas vietas"</string>
   <string name="morphe_music_downloads_playlist_download_confirm_button">Lejupielādēt</string>
   <string name="morphe_music_downloads_playlist_download_progress">Tiek lejupielādēts trekums %1$s no %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s lejupielādēts</string>
   <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s lejupielādēts, %2$s neizdevās lejupielādēt</string>
   <string name="morphe_music_downloads_playlist_download_already_running">Saraksta lejupielāde jau notiek</string>
   <string name="morphe_music_downloads_playlist_download_needs_account">Jūsu konts vēl nav identificēts. Mēģiniet vēlreiz pēc brīža</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s pievienots sarakstam, visi jau ir lejupielādēti</string>
   <string name="morphe_music_downloads_playlist_download_incomplete">Izdevās sarakstīt tikai daļu no atskaņošanas saraksta. Vēlreiz nospiediet Lejupielādēt vēlāk, lai saņemtu pārējo</string>
   <string name="morphe_music_downloads_playlist_download_started">Lejupielādē %s fonā</string>
   <string name="morphe_music_downloads_playlist_download_no_network">Nav tīkla savienojuma</string>

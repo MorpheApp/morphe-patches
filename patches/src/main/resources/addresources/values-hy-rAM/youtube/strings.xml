@@ -69,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">Թաքցնել ալիքի կոճակները</string>
   <string name="morphe_hide_channel_buttons_summary">Թաքցնում է այնպիսի կոճակներ, ինչպիսիք են՝ «Բաժանորդագրվել», «Տեսնել ալիքը», «Համայնք» և «YouTube Music» որոնման արդյունքների ալիքի պրոֆիլներից</string>
   <string name="morphe_hide_community_posts_title">Թաքցնել համայնքի գրառումները</string>
+  <string name="morphe_post_buttons_screen_title">Հրապարակումների կոճակներ</string>
+  <string name="morphe_post_buttons_screen_summary">Ընտրեք համայնքի հրապարակումների ներքևում գտնվող կոճակների դասավորությունը և թե որ կոճակները թաքցնել</string>
+  <string name="morphe_post_buttons_layout_title">Հրապարակումների կոճակների դասավորություն</string>
+  <string name="morphe_post_buttons_layout_entry_1">Սերվեր</string>
+  <string name="morphe_post_buttons_layout_entry_2">Հարկադիր</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Թաքցնել «հավանել» և «չհավանել» կոճակները</string>
+  <string name="morphe_hide_post_dislike_button_title">Թաքցնել «չհավանել» կոճակը</string>
+  <string name="morphe_hide_post_dislike_button_summary">«Հարկադիր» դասավորության դեպքում կոճակի տեղը մնում է դատարկ</string>
+  <string name="morphe_hide_post_comment_button_title">Թաքցնել մեկնաբանության կոճակը</string>
+  <string name="morphe_hide_post_comments_preview_title">Թաքցնել մեկնաբանությունների նախադիտումը</string>
+  <string name="morphe_hide_post_comments_preview_summary">Թաքցնում է գրառումների ներքևում գտնվող մեկնաբանությունների նախադիտումը</string>
+  <string name="morphe_hide_post_share_button_title">Թաքցնել կիսվելու կոճակը</string>
+  <string name="morphe_hide_post_share_button_summary">Հրապարակման պատկերների ներբեռնման կոճակը գծվում է կիսվելու կոճակի կողքին, ուստի այն նույնպես թաքցվում է</string>
   <string name="morphe_hide_compact_banner_title">Թաքցնել կոմպակտ բաներները</string>
   <string name="morphe_hide_compact_banner_summary">Թաքցնում է կոմպակտ բաներները և հեռավորությունը որոշ բաղադրիչների միջև</string>
   <string name="morphe_hide_expandable_card_title">Ընդլայնվող քարտեր տեսանյութերի տակ</string>
@@ -159,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Թաքցնում է նվագարկիչի ժեստերի ժամանակ ցուցադրվող հուշումները, օրինակ՝ «Քաշեք վերև ճշգրիտ փնտրտուքի համար», «Բաց թողեք՝ չեղարկելու համար» և «2x»</string>
-  <string name="morphe_hide_snackbar_title">Թաքցնել snackbar-ը</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Թաքցնել բաժանորդների ուղեցույցները</string>
   <string name="morphe_hide_sync_button_title">Թաքցնել \"Սինխրոնացնել տեսանյութի հետ\" կոճակը</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Թաքցնել սեղմելու և պահելու գրադիենտը</string>
@@ -386,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">Ուղարկվել է չափազանց շատ հաղորդումներ, փորձեք ավելի ուշ</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList-ը մերժել է հաղորդումը</string>
   <string name="morphe_aislist_submit_failed">Հաղորդումը չուղարկվեց, ստուգեք ձեր կապը</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Սնաքբար</string>
+  <string name="morphe_snackbar_screen_summary">Թաքցրեք snackbar-ները կամ փոխեք դրանց գույները և ձևը</string>
+  <string name="morphe_hide_snackbar_title">Թաքցնել snackbar-ը</string>
+  <string name="morphe_custom_snackbar_theme_title">Անհատականացված snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbars-ն օգտագործում են ստորև նշված գույները և անկյունների շառավիղը՝ հակառակ թեմայի գույների փոխարեն</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Մութ թեմայի ֆոնի գույնը</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Մութ թեմայում snackbars-ների ֆոնի գույնը: Տեքստը կլինի սև կամ սպիտակ՝ կախված նրանից, թե որն է ավելի հեշտ ընթեռնելի</string>
+  <string name="morphe_custom_snackbar_color_light_title">Լուսավոր թեմայի ֆոնի գույնը</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Լուսավոր թեմայում snackbars-ների ֆոնի գույնը: Տեքստը կլինի սև կամ սպիտակ՝ կախված նրանից, թե որն է ավելի հեշտ ընթեռնելի</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Սահմանի գույնը</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Snackbars-ների շուրջ գտնվող սահմանի գույնը: Թափանցիկ գույնը նշանակում է, որ սահման չկա</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Անկյունների շառավիղը</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Snackbars-ների անկյունների շառավիղը՝ dp-ով</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Ալիքի գովազդային սպիտակ ցուցակ</string>
   <string name="morphe_ads_channel_whitelist_summary">Սպիտակ ցուցակում ներառված ալիքների տեսանյութերը ցուցադրվում են գովազդներով, որպեսզի նրանց δημιουργիչները վարձատրվեն: Մնացած բոլոր ալիքներում գովազդները մնում են արգելափակված</string>
@@ -963,7 +989,7 @@ Second \"item\" text"</string>
 
 Կարգավորումների բաժին մուտք գործելու համար ակտիվացրեք Կարգավորումների կոճակը՝ Ընդհանուր → Գործիքների վահանակ → Ցուցադրել կարգավորումների կոճակը"</string>
   <string name="morphe_narrow_navigation_buttons_title">Միացնել նավիգացիայի նեղ կոճակները</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Նվազեցնում է կոճակների միջև հորիզոնական հեռավորությունը</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Նվազեցնում է կոճակների միջև հորիզոնական հեռավորությունը: Հասանելի չէ ապակյա նավիգացիոն վահանակի դեպքում, որն ունի կոճակների իր սեփական հեռավորությունը</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Անջատել առանց պիտակների նավիգացիոն կոճակները</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Ցույց է տալիս նավիգացիոն կոճակները պիտակներով, եթե YouTube-ը դրանք ուղարկում է առանց պիտակների</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Անջատել գործիքների andպանակի նավիգացիոն ներդիրները</string>
@@ -982,6 +1008,12 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">Ցուցադրում է նավիգացիոն վահանակը որպես լողացող, կլորացված, կիսաթափանցիկ պատյան: Հասանելի չէ «Անթափանցիկ» նավիգացիոն վահանակի ոճի դեպքում</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Ապակեթափանցիկություն</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Կարգավորեք ապակե նավիգացիոն վահանակի թափանցիկության մակարդակը (0-ն թափանցիկ է, 100-ը՝ անթափանցիկ)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Ապակյա նավիգացիոն վահանակի չափսը</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Կարգավորեք ապակյա նավիգացիոն վահանակի բարձրությունը, լայնությունը և կոճակների հեռավորությունը՝ նախնական դիտման հնարավորությամբ: Էկրանի լայնությանը չհամապատասխանող կոճակները թաքցվում են</string>
+  <string name="morphe_navigation_bar_glass_size_height">Բարձրություն</string>
+  <string name="morphe_navigation_bar_glass_size_width">Առավելագույն լայնություն</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Կոճակների հեռավորություն</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Ցուցադրվող կոճակներ՝ %1$d-ը %2$d-ից</string>
   <string name="morphe_toolbar_screen_title">Գործիքների վահանակ</string>
   <string name="morphe_toolbar_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն գործիքների վահանակում</string>
   <string name="morphe_hide_toolbar_chat_button_title">Թաքցնել չաթի կոճակը</string>
@@ -1684,6 +1716,7 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <string name="morphe_series_tracker_discovery_unavailable">Չհաջողվեց գտնել пլեյլիստը</string>
   <string name="morphe_series_tracker_no_available_episodes">Հասանելի էպիզոդներ չկան</string>
   <string name="morphe_series_tracker_hide_watched">Թաքցնել դիտվածները</string>
+  <string name="morphe_series_tracker_watched_on_advance">Նշել որպես դիտված հաջորդ դրվագին անցնելիս</string>
   <string name="morphe_series_tracker_watch_previous">Նշել նախորդ էպիզոդները որպես դիտված</string>
   <string name="morphe_series_tracker_order_starts_with">Սկսվում է՝ %1$s</string>
   <string name="morphe_series_tracker_episode_order">Էպիզոդների հերթականություն</string>
@@ -1736,9 +1769,13 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <string name="morphe_niconico_comments_opacity_summary">Մեկնաբանության տեքստի և ֆոնների թափանցիկությունը</string>
   <string name="morphe_niconico_comments_travel_duration_title">Շարժման տևողությունը</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Քանի վայրկյան է պահանջվում մեկնաբանություններին անցնել էկրանով: Ավելի ցածր արժեքները շարժվում են ավելի արագ</string>
+  <string name="morphe_niconico_comments_display_area_title">Ցուցադրման տարածք</string>
+  <string name="morphe_niconico_comments_display_area_summary">Թե ինչքան մաս է զբաղեցնում հայտարարությունների հատվածը վերևից սկսած: Ավելի փոքր արժեքները թույլ են տալիս պահպանել տեսանյութի ստորին մասը մաքուր</string>
   <string name="morphe_niconico_comments_max_length_title">Մեկնաբանության առավելագույն երկարությունը</string>
   <string name="morphe_niconico_comments_max_length_summary">Թաքցնում է այն մեկնաբանությունները, որոնք ունեն այսքանից ավելի նիշեր: Յուրաքանչյուր էմոջին հաշվարկվում է որպես մեկ նիշ</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Առանց սահմանափակման</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Թարմացման առավելագույն հաճախականություն</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Էկրանի թարմացման ամենաբարձր հաճախականությունը, որն օգտագործվում է մեկնաբանությունների շարժման ժամանակ: Ավելի ցածր արժեքները ավելի քիչ մարտկոց են սպառում</string>
   <string name="morphe_niconico_comments_live_streams_title">Ցուցադրել ուղիղ եթերների ժամանակ</string>
   <string name="morphe_niconico_comments_live_streams_summary">Ուղիղ եթերներ և դրանց կրկնությունները</string>
   <string name="morphe_niconico_comments_live_premieres_title">Ցուցադրել պրեմիերաների ժամանակ</string>

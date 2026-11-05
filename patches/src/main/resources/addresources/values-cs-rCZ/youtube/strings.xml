@@ -69,6 +69,19 @@ Změny zahrnují:
   <string name="morphe_hide_channel_buttons_title">Skrýt tlačítka kanálů</string>
   <string name="morphe_hide_channel_buttons_summary">Skryje tlačítka jako Odebírat, Zobrazit kanál, Komunita a YouTube Music z profilů kanálů ve výsledcích vyhledávání</string>
   <string name="morphe_hide_community_posts_title">Skrýt příspěvky komunity</string>
+  <string name="morphe_post_buttons_screen_title">Tlačítka příspěvku</string>
+  <string name="morphe_post_buttons_screen_summary">Vyberte rozvržení tlačítek pod příspěvky komunity a která tlačítka chcete skrýt</string>
+  <string name="morphe_post_buttons_layout_title">Rozvržení tlačítek příspěvku</string>
+  <string name="morphe_post_buttons_layout_entry_1">Server</string>
+  <string name="morphe_post_buttons_layout_entry_2">Vynucené</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Skrýt tlačítka Like a Dislike</string>
+  <string name="morphe_hide_post_dislike_button_title">Skrýt tlačítko Nelíbí se mi to</string>
+  <string name="morphe_hide_post_dislike_button_summary">Při vynuceném rozvržení zůstává prostor pro tlačítko zachován</string>
+  <string name="morphe_hide_post_comment_button_title">Skrýt tlačítko Komentáře</string>
+  <string name="morphe_hide_post_comments_preview_title">Skrýt náhled komentářů</string>
+  <string name="morphe_hide_post_comments_preview_summary">Skryje náhled komentářů pod příspěvky</string>
+  <string name="morphe_hide_post_share_button_title">Skrýt tlačítko Sdílet</string>
+  <string name="morphe_hide_post_share_button_summary">Tlačítko pro stahování obrázků z příspěvku je vykresleno vedle tlačítka Sdílet, takže je skryto také</string>
   <string name="morphe_hide_compact_banner_title">Skrýt kompaktní bannery</string>
   <string name="morphe_hide_compact_banner_summary">Skryje kompaktní bannery a mezery mezi některými prvky</string>
   <string name="morphe_hide_expandable_card_title">Rozbalitelné karty pod videi</string>
@@ -159,7 +172,6 @@ Změny zahrnují:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Skryje nápovědy zobrazované při gestech na přehrávači, jako například \'Přetáhněte nahoru pro přesné hledání\', \'Uvolněte pro zrušení\' a \'2x\'.</string>
-  <string name="morphe_hide_snackbar_title">Skrýt snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Skrýt pokyny pro odběratele</string>
   <string name="morphe_hide_sync_button_title">Skrýt tlačítko „Synchronizovat s videem“</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Skrýt přechod při klepnutí a podržení</string>
@@ -386,6 +398,20 @@ Hlášení jsou veřejná a před přidáním kanálu do seznamu jsou kontrolov�
   <string name="morphe_aislist_submit_failed_rate_limit">Bylo odesláno příliš mnoho hlášení, zkuste to později</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList hlášení odmítl</string>
   <string name="morphe_aislist_submit_failed">Nahlášení se nezdařilo, zkontrolujte připojení</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Skryjte snackbary nebo změňte jejich barvy a tvar</string>
+  <string name="morphe_hide_snackbar_title">Skrýt snackbar</string>
+  <string name="morphe_custom_snackbar_theme_title">Vlastní snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbar používají níže uvedené barvy a zaoblení rohů namísto barev opačného motivu</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Barva pozadí tmavého motivu</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Barva pozadí snackbarů v tmavém motivu. Text je černý nebo bílý, podle toho, co je lépe čitelné</string>
+  <string name="morphe_custom_snackbar_color_light_title">Barva pozadí světlého motivu</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Barva pozadí snackbarů ve světlém motivu. Text je černý nebo bílý, podle toho, co je lépe čitelné</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Barva hranice</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Barva hranice kolem snackbarů. Průhledná barva znamená, že žádná hranice není zobrazena</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Záhyb rohů</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Záhyb rohů snackbarů v dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Seznam kanálů s povolenou reklamou</string>
   <string name="morphe_ads_channel_whitelist_summary">Videa z kanálů s povolenou reklamou se přehrávají s reklamami, takže jejich tvůrci dostávají zaplaceno. Na všech ostatních kanálech zůstávají reklamy zablokované.</string>
@@ -961,7 +987,7 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
 
 Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nástrojová lišta → Zobrazit tlačítko Nastavení"</string>
   <string name="morphe_narrow_navigation_buttons_title">Povolit úzké tlačítka na navigaci</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Zmenší vodorovné mezery mezi tlačítky</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Zmenšuje vodorovné rozestupy mezi tlačítky. Není k dispozici u skleněné navigační lišty, která má vlastní rozestupy tlačítek</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Zakázat navigační tlačítka bez popisků</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Zobrazí navigační tlačítka s popisky, pokud je YouTube dodává bez popisků</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Zakázat navigační karty v nástrojovém panelu</string>
@@ -980,6 +1006,11 @@ Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nást
   <string name="morphe_navigation_bar_glass_summary">Zobrazí navigační panel jako plovoucí, zaoblenou a poloprůhlednou kapsli. Není k dispozici u stylu neprůhledného navigačního panelu</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Neprůhlednost skla</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Upravte úroveň průhlednosti skleněného navigačního panelu (0 je průhledné, 100 je neprůhledné)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Velikost skleněné navigační lišty</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Upravte výšku, šířku a rozestupy tlačítek skleněné navigační lišty s náhledem. Tlačítka, která se nevejdou do šířky obrazovky, jsou skryta</string>
+  <string name="morphe_navigation_bar_glass_size_height">Výška</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maximální šířka</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Rozestupy tlačítek</string>
   <string name="morphe_toolbar_screen_title">Nástrojová lišta</string>
   <string name="morphe_toolbar_screen_summary">Vyberte, které prvky se zobrazí v nástrojové liště</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skrýt tlačítko chatu</string>
@@ -1682,6 +1713,7 @@ Automatické nahrávání je volitelné. Zastavuje se v anonymním režimu nebo 
   <string name="morphe_series_tracker_discovery_unavailable">Nebyl nalezen žádný playlist</string>
   <string name="morphe_series_tracker_no_available_episodes">Žádné dostupné díly</string>
   <string name="morphe_series_tracker_hide_watched">Skrýt zhlednuté</string>
+  <string name="morphe_series_tracker_watched_on_advance">Označit jako zhlédnuto při přechodu na další díl</string>
   <string name="morphe_series_tracker_watch_previous">Označit předchozí díly jako zhlednuté</string>
   <string name="morphe_series_tracker_order_starts_with">Začíná slovem: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Pořadí dílů</string>
@@ -1734,9 +1766,13 @@ Automatické nahrávání je volitelné. Zastavuje se v anonymním režimu nebo 
   <string name="morphe_niconico_comments_opacity_summary">Průhlednost textu a pozadí komentářů</string>
   <string name="morphe_niconico_comments_travel_duration_title">Doba průjezdu</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Kolik sekund komentářům trvá překročit obrazovku. Nižší hodnoty znamenají rychlejší pohyb</string>
+  <string name="morphe_niconico_comments_display_area_title">Oblast zobrazení</string>
+  <string name="morphe_niconico_comments_display_area_summary">Kolik prostoru přehrávače od horního okraje komentáře zaberou. Nižší hodnoty ponechají spodní část videa prázdnou</string>
   <string name="morphe_niconico_comments_max_length_title">Maximální délka komentáře</string>
   <string name="morphe_niconico_comments_max_length_summary">Skryje komentáře, které mají více znaků než tato hodnota. Každý emoji se počítá jako jeden znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Bez limitu</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Max. obnovovací frekvence</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Nejvyšší obnovovací frekvence displeje použitá při pohybu komentářů. Nižší hodnoty šetří baterii</string>
   <string name="morphe_niconico_comments_live_streams_title">Zobrazit v živých přenosech</string>
   <string name="morphe_niconico_comments_live_streams_summary">Živé přenosy a jejich opakování</string>
   <string name="morphe_niconico_comments_live_premieres_title">Zobrazit u premiér</string>

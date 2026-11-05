@@ -69,6 +69,19 @@ Perubahan termasuk:
   <string name="morphe_hide_channel_buttons_title">Sorokkan butang saluran</string>
   <string name="morphe_hide_channel_buttons_summary">Menyembunyikan butang seperti Langgan, Lihat Saluran, Komuniti, dan YouTube Music daripada profil saluran dalam hasil carian</string>
   <string name="morphe_hide_community_posts_title">Sorokkan kiriman komuniti</string>
+  <string name="morphe_post_buttons_screen_title">Butang hantaran</string>
+  <string name="morphe_post_buttons_screen_summary">Pilih susun atur butang di bawah hantaran komuniti dan butang mana yang ingin disorokkan</string>
+  <string name="morphe_post_buttons_layout_title">Susun atur butang hantaran</string>
+  <string name="morphe_post_buttons_layout_entry_1">Pelayan</string>
+  <string name="morphe_post_buttons_layout_entry_2">Dikuatkuasakan</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Sorokkan butang suka dan tidak suka</string>
+  <string name="morphe_hide_post_dislike_button_title">Sorokkan butang tidak suka</string>
+  <string name="morphe_hide_post_dislike_button_summary">Dengan susun atur Dikuatkuasakan, ruang butang tersebut akan dibiarkan kosong</string>
+  <string name="morphe_hide_post_comment_button_title">Sorokkan butang komen</string>
+  <string name="morphe_hide_post_comments_preview_title">Sembunyikan pratonton komen</string>
+  <string name="morphe_hide_post_comments_preview_summary">Menyembunyikan pratonton komen di bawah hantaran</string>
+  <string name="morphe_hide_post_share_button_title">Sorokkan butang kongsi</string>
+  <string name="morphe_hide_post_share_button_summary">Butang muat turun imej hantaran dilukis bersebelahan butang kongsi, jadi ia turut disembunyikan</string>
   <string name="morphe_hide_compact_banner_title">Sorokkan sepanduk padat</string>
   <string name="morphe_hide_compact_banner_summary">Sorokkan sepanduk padat dan ruangan di antara beberapa komponen</string>
   <string name="morphe_hide_expandable_card_title">Kad boleh kembang di bawah video</string>
@@ -159,7 +172,6 @@ Perubahan termasuk:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Menyembunyikan petunjuk yang dipaparkan semasa gerak isyarat pemain, seperti \'Tarik ke atas untuk pencarian tepat\', \'Lepaskan untuk batal\' dan \'2x\'</string>
-  <string name="morphe_hide_snackbar_title">Sembunyikan snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Sorokkan garis panduan pelanggan</string>
   <string name="morphe_hide_sync_button_title">Sorokkan butang \'Segerakkan ke video\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Sembunyikan gradien tekan dan tahan</string>
@@ -386,6 +398,20 @@ Laporan adalah awam dan disemak sebelum saluran ditambah ke senarai. Penyingkira
   <string name="morphe_aislist_submit_failed_rate_limit">Terlalu banyak laporan dihantar, cuba lagi kemudian</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList menolak laporan tersebut</string>
   <string name="morphe_aislist_submit_failed">Laporan gagal, sila semak sambungan anda</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Sembunyikan snackbar atau tukar warna dan bentuknya</string>
+  <string name="morphe_hide_snackbar_title">Sembunyikan snackbar</string>
+  <string name="morphe_custom_snackbar_theme_title">Snackbar tersuai</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbar menggunakan warna dan jejari bucu di bawah menggantikan warna tema bertentangan</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Warna latar belakang tema gelap</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Warna latar belakang snackbar dalam tema gelap. Teks berwarna hitam atau putih, bergantung kepada mana yang lebih mudah dibaca</string>
+  <string name="morphe_custom_snackbar_color_light_title">Warna latar belakang tema terang</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Warna latar belakang snackbar dalam tema terang. Teks berwarna hitam atau putih, mengikut mana yang lebih mudah dibaca</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Warna sempadan</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Warna sempadan di sekeliling snackbar. Warna lut sinar menunjukkan tiada sempadan</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Jejari bucu</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Jejari bucu snackbar dalam dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Senarai putih iklan saluran</string>
   <string name="morphe_ads_channel_whitelist_summary">Video daripada saluran dalam senarai putih akan dimainkan dengan iklan, supaya penciptanya dibayar. Iklan tetap disekat pada setiap saluran lain</string>
@@ -771,6 +797,10 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <string name="morphe_swipe_left_zone_title">Gerakan leret kiri</string>
   <string name="morphe_swipe_right_zone_title">Gerakan leret kanan</string>
   <string name="morphe_swipe_top_zone_title">Gerak isyarat leret atas</string>
+  <string name="morphe_swipe_seek_title">Leret untuk mencari</string>
+  <string name="morphe_swipe_seek_summary">Leret ke kiri atau kanan pada pemain skrin penuh untuk menggerakkan bar carian, dan lepaskan untuk mencari</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Kepekaan leretan carian</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Seberapa jauh bar carian bergerak untuk setiap leretan</string>
   <string name="morphe_swipe_zone_width_title">Lebar zon Kiri/Kanan</string>
   <string name="morphe_swipe_zone_width_summary">Peratusan bagi setiap sisi skrin yang disediakan untuk gerak isyarat leret kiri dan kanan (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Kecerahan</string>
@@ -942,7 +972,9 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <string name="morphe_hide_notifications_button_title">Sorokkan butang Pemberitahuan</string>
   <string name="morphe_show_search_button_title">Tunjukkan butang Carian</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Tunjukkan butang Tonton kemudian</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Tonton kemudian</string>
   <string name="morphe_show_settings_button_title">Tunjukkan butang Tetapan</string>
   <string name="morphe_show_settings_button_type_title">Tindakan butang Tetapan</string>
   <string name="morphe_show_settings_button_type_summary">Membuka tetapan Morphe apabila didayakan, atau tetapan YouTube apabila dinyahdayakan</string>
@@ -957,7 +989,7 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
 
 Untuk mengakses Tetapan, aktifkan butang Tetapan melalui Umum → Bar Alat → Tunjukkan butang Tetapan"</string>
   <string name="morphe_narrow_navigation_buttons_title">Dayakan butang navigasi sempit</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Mengurangkan jarak mendatar antara butang</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Mengurangkan jarak mendatar antara butang. Tidak tersedia untuk bar pandu arah kaca, yang mempunyai jarak butangnya sendiri</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Nyahaktifkan butang pandu arah tanpa label</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Menunjukkan butang pandu arah dengan label, jika YouTube menghantarnya tanpa label</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Nyahaktifkan tab navigasi bar alat</string>
@@ -976,6 +1008,12 @@ Untuk mengakses Tetapan, aktifkan butang Tetapan melalui Umum → Bar Alat → T
   <string name="morphe_navigation_bar_glass_summary">Memaparkan bar navigasi sebagai kapsul lut sinar yang terapung dan bulat. Tidak tersedia dengan gaya bar navigasi Legap</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Kelegapan kaca</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Melaraskan tahap kelutsinaran bar navigasi kaca (0 ialah lut sinar, 100 ialah legap)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Saiz bar pandu arah kaca</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Laraskan ketinggian, lebar dan jarak butang bar pandu arah kaca, dengan pratonton. Butang yang tidak muat dalam lebar skrin akan disembunyikan</string>
+  <string name="morphe_navigation_bar_glass_size_height">Ketinggian</string>
+  <string name="morphe_navigation_bar_glass_size_width">Lebar maksimum</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Jarak butang</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Butang dipaparkan: %1$d daripada %2$d</string>
   <string name="morphe_toolbar_screen_title">Bar alatan</string>
   <string name="morphe_toolbar_screen_summary">Pilih komponen yang akan muncul pada bar alatan</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sorokkan butang Sembang</string>
@@ -1678,6 +1716,7 @@ Rakaman automatik adalah pilihan. Ia terhenti dalam mod inkognito atau apabila a
   <string name="morphe_series_tracker_discovery_unavailable">Tidak dapat mencari senarai main</string>
   <string name="morphe_series_tracker_no_available_episodes">Tiada episod tersedia</string>
   <string name="morphe_series_tracker_hide_watched">Sembunyikan yang telah ditonton</string>
+  <string name="morphe_series_tracker_watched_on_advance">Tandakan telah ditonton apabila berpindah ke episod seterusnya</string>
   <string name="morphe_series_tracker_watch_previous">Tandakan episod sebelumnya sebagai telah ditonton</string>
   <string name="morphe_series_tracker_order_starts_with">Bermula dengan: %1$s</string>
   <string name="morphe_series_tracker_episode_order">Urutan episod</string>
@@ -1730,10 +1769,17 @@ Rakaman automatik adalah pilihan. Ia terhenti dalam mod inkognito atau apabila a
   <string name="morphe_niconico_comments_opacity_summary">Kelegapan teks dan latar belakang komen</string>
   <string name="morphe_niconico_comments_travel_duration_title">Tempoh perjalanan</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Berapa saat yang diambil oleh komen untuk melintasi skrin. Nilai yang lebih rendah bergerak lebih pantas</string>
+  <string name="morphe_niconico_comments_display_area_title">Kawasan paparan</string>
+  <string name="morphe_niconico_comments_display_area_summary">Berapa banyak bahagian pemain, dari atas, yang digunakan oleh komen. Nilai yang lebih rendah memastikan bahagian bawah video kekal jelas</string>
   <string name="morphe_niconico_comments_max_length_title">Panjang komen maksimum</string>
   <string name="morphe_niconico_comments_max_length_summary">Sembunyikan komen dengan aksara yang lebih banyak daripada ini. Setiap emoji dikira sebagai satu aksara</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Tiada had</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Kadar penyegaran maksimum</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Kadar penyegaran paparan tertinggi yang digunakan semasa komen bergerak. Nilai yang lebih rendah menggunakan kurang bateri</string>
+  <string name="morphe_niconico_comments_live_streams_title">Tunjukkan pada strim langsung</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Strim langsung dan ulang tayangnya</string>
   <string name="morphe_niconico_comments_live_premieres_title">Tunjukkan pada Tayangan Perdana</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Tayangan perdana semasa sedang dimainkan</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Tunjukkan pada Tayangan Perdana yang telah tamat</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Ulangan sembang bagi Tayangan Perdana yang telah tamat</string>
   <string name="morphe_live_chat_translate_screen_title">Terjemahan sembang langsung</string>
