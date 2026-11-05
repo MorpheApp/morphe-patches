@@ -379,6 +379,13 @@ val navigationBarPatch = patch(
                         return-void
                     """
                 )
+                addBridge(
+                    "patch_getSystemButtonsRoom", listOf(), "I", 2,
+                    """
+                        iget v0, p0, $roomField
+                        return v0
+                    """
+                )
 
                 // The glass style keeps some room below the buttons, so the capsule floats above
                 // the bottom of the screen. The padding of the bar is reset from several places,

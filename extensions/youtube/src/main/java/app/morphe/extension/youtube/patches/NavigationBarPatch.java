@@ -530,6 +530,12 @@ public final class NavigationBarPatch {
          * which is added to its height.
          */
         void patch_setSystemButtonsRoom(int room);
+
+        /**
+         * @return The room the navigation bar leaves below itself for the system navigation buttons,
+         *         which is added to its height.
+         */
+        int patch_getSystemButtonsRoom();
     }
 
     /**
