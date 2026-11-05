@@ -38,3 +38,10 @@ google-services.json
 
 # NPM modules
 node_modules/
+
+# Local toolchains, original APK inputs, and reverse-engineering output.
+.local/
+.codex-remote-attachments/
+dist/
+*.apkm
+*.xapk

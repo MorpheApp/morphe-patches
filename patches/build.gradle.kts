@@ -4,10 +4,10 @@ group = "app.morphe"
 
 patches {
     about {
-        name = "Morphe Patches"
-        description = "Patches for Morphe"
-        source = "git@github.com:MorpheApp/morphe-patches.git"
-        author = "MorpheApp"
+        name = "RedditApp custom patches"
+        description = "Local downstream of Morphe v2.0.0 with archived public Reddit profile history"
+        source = ""
+        author = "RedditApp local contributors; Morphe upstream"
         contact = "na"
         website = "https://morphe.software"
         license = "GNU General Public License v3.0, with additional GPL section 7 requirements"
@@ -19,6 +19,53 @@ patches {
 val patchListGeneratorClasspath = configurations.create("patchListGeneratorClasspath")
 val jamApk = providers.gradleProperty("jamApk")
 val jamOutput = providers.gradleProperty("jamOutput")
+
+// Focused APK validation does not build unrelated YouTube/Music extensions.
+val archiveValidation = sourceSets.create("archiveValidation") {
+    compileClasspath += sourceSets.main.get().output.classesDirs + configurations.runtimeClasspath.get()
+    runtimeClasspath += compileClasspath + files(
+        "src/main/resources",
+        "../extensions/reddit/build/morphe",
+        "../extensions/shared/build/morphe",
+        "../extensions/all/change-version-code/build/morphe"
+    )
+}
+
+tasks.register<JavaExec>("validateProfileArchive") {
+    group = "verification"
+    description = "Applies the profile archive patch to a supplied Reddit APKM and verifies DEX"
+    dependsOn("compileKotlin", archiveValidation.classesTaskName,
+        ":extensions:reddit:syncExtension", ":extensions:shared:syncExtension",
+        ":extensions:all:change-version-code:syncExtension")
+    classpath = archiveValidation.runtimeClasspath
+    workingDir = rootProject.projectDir
+    mainClass.set("app.morphe.validation.ProfileArchiveBuildKt")
+    maxHeapSize = "4g"
+    doFirst {
+        setArgs(listOf(
+            providers.gradleProperty("redditApk").get(),
+            providers.gradleProperty("redditOutput").get(),
+            providers.gradleProperty("redditProbeDex").getOrElse("")
+        ))
+    }
+}
+
+tasks.register<JavaExec>("validateProfileArchiveBundle") {
+    group = "verification"
+    description = "Loads and applies the actual packaged MPP, without loose main classes/resources"
+    dependsOn(archiveValidation.classesTaskName)
+    classpath = files(archiveValidation.output.classesDirs, configurations.runtimeClasspath)
+    workingDir = rootProject.projectDir
+    mainClass.set("app.morphe.validation.ProfileArchiveBuildKt")
+    maxHeapSize = "4g"
+    doFirst {
+        val bundle = rootProject.file(providers.gradleProperty("redditBundle").get())
+        classpath += files(bundle)
+        setArgs(listOf(providers.gradleProperty("redditApk").get(),
+            providers.gradleProperty("redditOutput").get(), "", bundle.absolutePath,
+            providers.gradleProperty("redditSourceConflictCheck").getOrElse("false")))
+    }
+}
 
 // Resolve local composite build projects (smali, patcher) to jars for compilation,
 // same as the runtime classpath. Otherwise, both the classes directory and the jar
