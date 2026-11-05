@@ -104,39 +104,6 @@ public class LyricsRomanizerTest {
         assertEquals("", LyricsRomanizer.wordReading(word, false));
     }
 
-    // ── getEmbeddedRubyRomanization ──
-
-    @Test
-    public void rubyOnWordsReturnsLines() {
-        Word word = new Word(0, 100, "愛", null, false, "ai");
-        LyricsLine line = new LyricsLine(0, 1000, "愛", List.of(word), null, false, false, null);
-        Lyrics lyrics = new Lyrics(List.of(line), "TestProvider", true,
-                null, null, null, null, null, null, null);
-
-        List<LyricsLine> result = LyricsRomanizer.getEmbeddedRubyRomanization(lyrics);
-        assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals("ai", result.get(0).text());
-    }
-
-    @Test
-    public void lyricsWithoutRubyReturnsNull() {
-        Word word = new Word(0, 100, "愛", null, false, null);
-        LyricsLine line = new LyricsLine(0, 1000, "愛", List.of(word), null, false, false, null);
-        Lyrics lyrics = new Lyrics(List.of(line), "TestProvider", true,
-                null, null, null, null, null, null, null);
-
-        assertNull(LyricsRomanizer.getEmbeddedRubyRomanization(lyrics));
-    }
-
-    @Test
-    public void emptyLyricsReturnsNull() {
-        Lyrics lyrics = new Lyrics(List.of(), "TestProvider", false,
-                null, null, null, null, null, null, null);
-
-        assertNull(LyricsRomanizer.getEmbeddedRubyRomanization(lyrics));
-    }
-
     // ── getEmbeddedRomanization ──
 
     @Test

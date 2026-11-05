@@ -47,7 +47,6 @@ public final class CldrTransformsStore {
     private static final String URL =
             "https://registry.npmjs.org/cldr-transforms/-/cldr-transforms-" + VERSION + ".tgz";
     private static final String ARCHIVE = "cldr-transforms-" + VERSION + ".tgz";
-    private static final String NOTICE_NAME = "cldr_transforms.NOTICE.txt";
 
     /**
      * The CLDR transform per table, named without its extension. The Slavic BGN tables stand
@@ -117,8 +116,7 @@ public final class CldrTransformsStore {
     }
 
     /**
-     * Removes the tables and the licence notice. Called when the user turns the
-     * transliteration rules off.
+     * Removes the tables. Called when the user turns the transliteration rules off.
      */
     public static void delete() {
         CldrTransforms.clear();
@@ -129,18 +127,9 @@ public final class CldrTransformsStore {
             new File(directory, tableName(transliteration[1])).delete();
         }
         //noinspection ResultOfMethodCallIgnored
-        new File(directory, NOTICE_NAME).delete();
-        //noinspection ResultOfMethodCallIgnored
         new File(directory, ARCHIVE).delete();
         //noinspection ResultOfMethodCallIgnored
         new File(directory, ARCHIVE + ".part").delete();
-    }
-
-    /** The licence notice, read back from the cache where the build put it. */
-    @Nullable
-    public static String notice() {
-        File directory = RomanizationDict.directory();
-        return directory == null ? null : RomanizationDict.readNotice(directory, NOTICE_NAME);
     }
 
     /** Starts a fetch if the tables are not loaded. Safe to call whenever the setting is on. */
@@ -186,7 +175,6 @@ public final class CldrTransformsStore {
         //noinspection ResultOfMethodCallIgnored
         archive.delete();
 
-        RomanizationDict.writeNotice(directory, NOTICE_NAME, noticeText());
         listener.onReady(entries());
     }
 
@@ -437,20 +425,6 @@ public final class CldrTransformsStore {
 
     private static String tableName(String script) {
         return script + TABLE_SUFFIX;
-    }
-
-    private static String noticeText() {
-        return "CLDR transliteration rules\n"
-                + URL + "\n\n"
-                + "From https://www.unicode.org/cldr/\n\n"
-                + "Licence: Unicode Licence V3 (data files and software)\n"
-                + "https://www.unicode.org/license.txt\n\n"
-                + "The CLDR data files are provided \"as is\", without warranty of any kind,\n"
-                + "express or implied, including but not limited to the warranties of\n"
-                + "merchantability, fitness for a particular purpose and noninfringement.\n\n"
-                + "The rules here are the literal letter-to-letter rules of the listed CLDR\n"
-                + "transform files, with the combining marks of the standard dropped and a few\n"
-                + "readings a lyric wants replacing the standard's where they differ.\n";
     }
 
     /**

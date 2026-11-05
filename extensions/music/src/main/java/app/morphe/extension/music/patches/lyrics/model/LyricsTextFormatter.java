@@ -67,7 +67,7 @@ public final class LyricsTextFormatter {
                           ? CharactersConverter.toTraditional(text.substring(at, end))
                           : CharactersConverter.toSimplified(text.substring(at, end));
                 if (capitalize && firstCased && (Character.isLowerCase(cp)
-                        || Character.isUpperCase(cp) || Character.isTitleCase(cp)) && !isHan(cp)) {
+                        || Character.isUpperCase(cp) || Character.isTitleCase(cp))) {
                     out.append(own.toUpperCase(Locale.ROOT));
                     firstCased = false;
                 } else {

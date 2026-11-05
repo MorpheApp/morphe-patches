@@ -114,7 +114,7 @@ final class LyricsLineView extends TextView {
     int romaEnd = -1;
     boolean perWordReading;
     boolean showSyllableRomanization;
-    boolean romanizeActive;
+    boolean rubyActive;
     boolean smallRunHoldsWords;
     float lastTouchY;
     float lastTouchX;
@@ -325,9 +325,9 @@ final class LyricsLineView extends TextView {
         setRomanizationBounds(start, end, perWord, false);
     }
 
-    void setRomanizeActive(boolean active) {
-        if (romanizeActive != active) {
-            romanizeActive = active;
+    void setRubyActive(boolean active) {
+        if (rubyActive != active) {
+            rubyActive = active;
             syllableCache = null;
             requestLayout();
             invalidate();
@@ -484,14 +484,9 @@ final class LyricsLineView extends TextView {
             final float y = touchY - textOriginY();
 
             // Translation region: whole translation, unchanged.
-            if (syllables.transLayout != null) {
-                if (syllables.mainTopY > 0) {
-                    if (y < syllables.transLayout.getHeight()) {
-                        return syllables.transText;
-                    }
-                } else if (y >= syllables.transTopY) {
-                    return syllables.transText;
-                }
+            if (syllables.transLayout != null && (syllables.transTopY == 0
+                    ? y < syllables.transLayout.getHeight() : y >= syllables.transTopY)) {
+                return syllables.transText;
             }
 
             int sylIdx = findSyllableByX(x, syllables.sylShiftedLeadX, syllables.sylShiftedTrailX);
@@ -959,7 +954,7 @@ final class LyricsLineView extends TextView {
         try {
             if (contentReveal <= 0f
                     || (!sweepEnabled && !allSung && !activeLine)
-                    || (wordTimings.isEmpty() && !allSung)) {
+                    || wordTimings.isEmpty()) {
                 return;
             }
 
@@ -1352,7 +1347,7 @@ final class LyricsLineView extends TextView {
 
         String formattedMainText = buildFormattedMainText(
                 rawMainText, wordTimings, mainPaint, romPaint, rubyPaint, widthPx, fontSizePx,
-                romanizeActive);
+                rubyActive);
 
         StaticLayout mainLayout = StaticLayout.Builder.obtain(
                         formattedMainText, 0, formattedMainText.length(), mainPaint, widthPx)
@@ -1382,8 +1377,7 @@ final class LyricsLineView extends TextView {
                 alignSyllablesForFormatting(wordTimings, rawMainText, formattedMainText);
         List<RomanizedWordCluster> romanClusters =
                 buildRomanizedWordClusters(alignedSyllables, formattedMainText, mainLayout, romPaint);
-        final boolean enableRuby = romanizeActive;
-        List<RomanizedWordCluster> rubyClusters = enableRuby
+        List<RomanizedWordCluster> rubyClusters = rubyActive
                 ? buildRubyClusters(alignedSyllables, formattedMainText, mainLayout, rubyPaint)
                 : Collections.emptyList();
         if (romanClusters.isEmpty() && rubyClusters.isEmpty()) {
@@ -1578,7 +1572,7 @@ final class LyricsLineView extends TextView {
             @Nullable TextPaint rubyPaint,
             int widthPx,
             float fontSizePx,
-            boolean romanizeActive) {
+            boolean rubyActive) {
         if (mainText.isEmpty() || widthPx <= 0 || words.isEmpty()) {
             return mainText;
         }
@@ -1597,8 +1591,7 @@ final class LyricsLineView extends TextView {
 
         List<RomanizedWordCluster> romanClusters =
                 buildRomanizedWordClusters(alignedSyllables, mainText, unconstrained, romPaint);
-        final boolean enableRuby = romanizeActive;
-        List<RomanizedWordCluster> rubyClusters = (enableRuby && rubyPaint != null)
+        List<RomanizedWordCluster> rubyClusters = (rubyActive && rubyPaint != null)
                 ? buildRubyClusters(alignedSyllables, mainText, unconstrained, rubyPaint)
                 : Collections.emptyList();
         if (romanClusters.isEmpty() && rubyClusters.isEmpty()) {
@@ -2262,9 +2255,8 @@ final class LyricsLineView extends TextView {
         if (romaReveal > 0f && romaUnsungAlpha > 0) {
             drawUnsungReadings(canvas, cache.romanLines, originX, mainY, romaUnsungColor);
         }
-        final boolean drawRuby = true;
         final int rubyUnsungAlpha = Math.round(lineAlpha * readingBaseAlpha * contentNow);
-        if (drawRuby && rubyUnsungAlpha > 0) {
+        if (rubyUnsungAlpha > 0) {
             drawUnsungReadings(canvas, cache.rubyLines, originX, mainY,
                     readingRgb | (Math.max(0, Math.min(255, rubyUnsungAlpha)) << 24));
         }
@@ -2280,7 +2272,7 @@ final class LyricsLineView extends TextView {
         }
 
         // The sweep, as onDraw runs it.
-        if ((!sweepEnabled && !allSung && !activeLine) || (wordTimings.isEmpty() && !allSung)) {
+        if ((!sweepEnabled && !allSung && !activeLine) || wordTimings.isEmpty()) {
             return;
         }
 
@@ -2381,11 +2373,9 @@ final class LyricsLineView extends TextView {
                     readingRgb | (Math.max(0, Math.min(255, romaSungAlpha)) << 24),
                     sylProgress, sylCount, allSung);
         }
-        if (drawRuby) {
-            drawSungReadings(canvas, cache.rubyLines, originX, mainY,
-                    readingRgb | (Math.max(0, Math.min(255, sungReadingAlpha)) << 24),
-                    sylProgress, sylCount, allSung);
-        }
+        drawSungReadings(canvas, cache.rubyLines, originX, mainY,
+                readingRgb | (Math.max(0, Math.min(255, sungReadingAlpha)) << 24),
+                sylProgress, sylCount, allSung);
     }
 
     private static void drawUnsungReadings(Canvas canvas, RomanLineStatics[] lines,

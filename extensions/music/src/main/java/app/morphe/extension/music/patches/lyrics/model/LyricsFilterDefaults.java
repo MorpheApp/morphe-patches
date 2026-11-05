@@ -20,8 +20,8 @@ import app.morphe.extension.shared.settings.StringSetting;
 public final class LyricsFilterDefaults {
 
     /**
-     * Strips the noise a provider repeats in a title, such as "Official Video", "Remaster", "【插曲】"
-     * or "- Topic", before the title is searched for.
+     * Strips the noise a provider repeats in a title, such as "Official Video", "Remaster",
+     * "【插曲】" or "- Topic", before the title is searched for.
      */
     public static final String DEFAULT_LYRICS_REGEX =
             "(?i)\\s*[（(\\[【][^）)\\]】]*?(?:official\\s+)?(?:video|audio|music\\s+video|lyrics?\\s+video|visualizer|mv)[^）)\\]】]*[）)\\]】]"
@@ -59,8 +59,8 @@ public final class LyricsFilterDefaults {
                     + ").*";
 
     /**
-     * Comma separated credit labels. A line starting with one of them is treated as a credit and
-     * pushed to the bottom instead of being shown in place.
+     * Comma separated credit labels. A line starting with one of them is treated as a credit
+     * and pushed to the bottom instead of being shown in place.
      */
     public static final String DEFAULT_LYRICS_CREDIT_LINE_REGEX =
             "1st Violin,2nd Violin,A&R,A.Guita,AU,Additional Drums Engineering,Administer,Administered,Administered By,"
@@ -139,10 +139,11 @@ public final class LyricsFilterDefaults {
     }
 
     /**
-     * Constructs the three settings above by loading this class. Deliberately reads nothing from
-     * this class: {@link Settings} may reach this call from its own static initializer, in which
-     * case one of the settings above can still be null; touching one here would hand that null out
-     * for good.
+     * Constructs the three settings above by loading this class.
+     *
+     * <p>Deliberately reads nothing from this class. {@link Settings} may reach this call from
+     * its own static initializer, in which case one of the settings above can still be null;
+     * touching one here would hand that null out for good.
      */
     public static void register() {
     }

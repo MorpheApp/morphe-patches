@@ -67,9 +67,9 @@ public final class LyricsLanguageDetector {
     }
 
     /**
-     * A line mixing in another script is never treated as written in the target language: telling a
-     * borrowed word from a change of language would be a guess. Latin is allowed beside any script,
-     * and Japanese is written with Han as well as kana.
+     * A line mixing in another script is never treated as written in the target language, since
+     * telling a borrowed word from a change of language would be a guess. Latin is allowed beside
+     * any script, and Japanese is written with Han as well as kana.
      */
     private static boolean isWrittenIn(int[] found, Category target) {
         final int targetCount = found[target.ordinal()];

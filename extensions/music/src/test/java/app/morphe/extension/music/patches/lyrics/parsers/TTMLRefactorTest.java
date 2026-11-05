@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics.parsers;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -394,5 +395,93 @@ public class TTMLRefactorTest {
         // Last word should not have trailing space
         assertTrue("Last word should not have trailing space",
                 ttml.contains(">can</span>"));
+    }
+
+    // ── unsynced lyrics ──
+
+    @Test
+    public void unsyncedLyricsCarryNoTimes() {
+        List<LyricsLine> lines = List.of(
+                new LyricsLine(-1, -1, "Hello world", List.of(), null, false, false, null));
+        Lyrics lyrics = new Lyrics(lines, "TestProvider", false,
+                null, null, null, null, null, null, null);
+
+        String ttml = TTMLRefactor.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
+        assertNotNull(ttml);
+        assertTrue(ttml.contains("itunes:timing=\"None\""));
+        assertFalse("A line without a time must not be written at zero", ttml.contains("begin="));
+    }
+
+    // ── sections ──
+
+    @Test
+    public void lineWithoutSectionStaysInTheSectionBeforeIt() {
+        List<LyricsLine> lines = List.of(
+                new LyricsLine(1000, 1500, "One", List.of(), null, false, false, "Chorus"),
+                new LyricsLine(2000, 2500, "Two", List.of(), null, false, false, null));
+        Lyrics lyrics = new Lyrics(lines, "TestProvider", true,
+                null, null, null, null, null, null, null);
+
+        String ttml = TTMLRefactor.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
+        assertNotNull(ttml);
+        assertEquals(ttml.indexOf("<div"), ttml.lastIndexOf("<div"));
+        assertTrue(ttml.contains("itunes:songPart=\"Chorus\""));
+    }
+
+    @Test
+    public void lyricsWithoutSectionsNameNone() {
+        List<LyricsLine> lines = List.of(
+                new LyricsLine(1000, 1500, "One", List.of(), null, false, false, null));
+        Lyrics lyrics = new Lyrics(lines, "TestProvider", true,
+                null, null, null, null, null, null, null);
+
+        String ttml = TTMLRefactor.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
+        assertNotNull(ttml);
+        assertFalse(ttml.contains("songPart"));
+    }
+
+    // ── readings ──
+
+    @Test
+    public void wordSyncedLineKeepsItsWholeLineReading() {
+        List<Word> words = List.of(new Word(1000, 1500, "愛", null, false));
+        List<LyricsLine> lines = List.of(
+                new LyricsLine(1000, 1500, "愛", words, null, false, false, null));
+        List<LyricsLine> reading = List.of(new LyricsLine(1000, "ai"));
+        Lyrics lyrics = new Lyrics(lines, "TestProvider", true,
+                reading, null, null, null, null, null, null);
+
+        String ttml = TTMLRefactor.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
+        assertNotNull(ttml);
+        assertTrue(ttml.contains("<span ttm:role=\"x-roman\" xml:lang=\"romaji\">ai</span>"));
+    }
+
+    @Test
+    public void backgroundReadingStaysOffTheMainLine() {
+        List<LyricsLine> lines = List.of(
+                new LyricsLine(1000, 1500, "Main", List.of(), null, false, false, null));
+        Map<String, List<LyricsLine>> romanizations = Map.of(
+                "bg:ja-Latn", List.of(new LyricsLine(1000, "bgreading")));
+        Lyrics lyrics = new Lyrics(lines, "TestProvider", true,
+                null, null, romanizations, null, null, null, null);
+
+        String ttml = TTMLRefactor.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
+        assertNotNull(ttml);
+        assertFalse(ttml.contains("bgreading"));
+    }
+
+    // ── credits ──
+
+    @Test
+    public void copyrightCreditFillsTheCopyrightField() {
+        List<LyricsLine> lines = List.of(
+                new LyricsLine(1000, 1500, "Main", List.of(), null, false, false, null));
+        Lyrics lyrics = new Lyrics(lines, "TestProvider", true, null, null, null,
+                null, List.of("Copyright: Label"), null, "lrc", null, null, null);
+
+        String ttml = TTMLRefactor.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
+        assertNotNull(ttml);
+        assertTrue(ttml.contains("<copyright>Label</copyright>"));
+        assertFalse(ttml.contains("morphe:credits"));
     }
 }

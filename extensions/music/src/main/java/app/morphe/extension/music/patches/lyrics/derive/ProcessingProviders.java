@@ -121,7 +121,6 @@ public final class ProcessingProviders {
         return entries.size();
     }
 
-
     public static List<String> enabledProviders(@Nullable String stored, List<String> known) {
         List<String> enabled = new ArrayList<>();
         for (ProviderEntry entry : parseOrder(stored, known)) {

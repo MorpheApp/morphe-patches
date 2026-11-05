@@ -182,27 +182,20 @@ public final class RMMProvider implements LyricsProvider {
         if (array == null || array.length() == 0) {
             return null;
         }
-        StringBuilder sb = new StringBuilder("Written by ");
-        int count = 0;
+        List<String> names = new ArrayList<>(array.length());
         for (int i = 0; i < array.length(); i++) {
             String name = array.optString(i, "").trim();
-            if (name.isEmpty()) {
-                continue;
+            if (!name.isEmpty()) {
+                names.add(name);
             }
-            if (count > 0) {
-                sb.append(" · ");
-            }
-            sb.append(name);
-            count++;
         }
-        return count == 0 ? null : List.of(sb.toString());
+        return names.isEmpty() ? null : names;
     }
 
-    /** "Uploaded by ..." is a credit, not a songwriter. Returns null when there is no uploader. */
+    /** Whoever uploaded the sync is a credit, not a songwriter. */
     @Nullable
     private static String uploaderCredit(@Nullable Uploader uploader) {
-        if (uploader == null) return null;
-        return "Uploaded by " + uploader.username();
+        return uploader == null ? null : "Uploaded by " + uploader.username();
     }
 
     @Nullable
@@ -243,23 +236,22 @@ public final class RMMProvider implements LyricsProvider {
         String sourceUrl = uploader != null ? usableUrl(uploader.url()) : null;
 
         List<String> jsonSongwriters = parseJsonSongwriters(root);
-        String uploaderC = uploaderCredit(uploader);
-        List<String> credits = (uploaderC == null) ? null : List.of(uploaderC);
+        String uploaderCredit = uploaderCredit(uploader);
+        List<String> credits = uploaderCredit == null ? null : List.of(uploaderCredit);
 
         String ttml = root.optString("ttml", "");
         if (!ttml.isEmpty()) {
             Lyrics parsed = TTMLParser.ttmlToLyrics(ttml, providerName, sourceUrl);
             if (parsed != null && !parsed.isEmpty()) {
-                if (uploaderC == null) {
+                if (uploaderCredit == null) {
                     return parsed;
                 }
-                List<String> parsedCredits = parsed.credits();
-                List<String> mergedCredits;
-                if (parsedCredits == null) {
-                    mergedCredits = List.of(uploaderC);
-                } else {
-                    mergedCredits = new ArrayList<>(parsedCredits);
-                    if (!mergedCredits.contains(uploaderC)) mergedCredits.add(uploaderC);
+                List<String> mergedCredits = new ArrayList<>();
+                if (parsed.credits() != null) {
+                    mergedCredits.addAll(parsed.credits());
+                }
+                if (!mergedCredits.contains(uploaderCredit)) {
+                    mergedCredits.add(uploaderCredit);
                 }
                 return new Lyrics(parsed.lines(), providerName, parsed.synced(),
                         parsed.romanization(), parsed.translations(), parsed.romanizations(),

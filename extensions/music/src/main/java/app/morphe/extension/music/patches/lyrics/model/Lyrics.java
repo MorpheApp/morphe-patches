@@ -27,8 +27,8 @@ import java.util.Map;
  * @param romanization  Legacy single-language romanization, kept for backward compatibility.
  * @param romanizations Multi-language romanizations keyed by BCP-47 language tag.
  * @param songwriters   Songwriter names extracted from TTML metadata or provider API.
- * @param credits       Credit lines extracted from the lyrics body (e.g. "词：xxx", "曲：xxx")
- *                      and non-standard metadata fields without a TTML equivalent.
+ * @param credits       Credit lines extracted from the lyrics body, such as the lyricist and the
+ *                      composer, and non-standard metadata fields without a TTML equivalent.
  * @param rawFormat     Decrypted raw lyrics text in the provider's original format (e.g. LRC, QRC, TTML).
  * @param formatType    File extension for the raw format (e.g. {@code "lrc"}, {@code "qrc"}, {@code "ttml"}).
  * @param sourceUrl     Optional URL to the song page on the provider's platform, opened when the
@@ -247,7 +247,11 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
     }
 
     /**
-     * Index of the line that should be highlighted at the given playback position, or -1 if playback has not reached the first line yet. No binary search: between two calls the position advances by one line at most, so the hint answers almost every call in a few comparisons.
+     * Index of the line that should be highlighted at the given playback position,
+     * or -1 if playback has not reached the first line yet.
+     *
+     * <p>No binary search: between two calls the position advances by one line at most,
+     * so the hint answers almost every call in a few comparisons.
      *
      * @param positionMs Current playback position.
      * @param hintIndex  Index returned by the previous call, or -1.

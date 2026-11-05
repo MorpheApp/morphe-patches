@@ -45,17 +45,6 @@ public final class LyricsFileSaver {
     }
 
     @Nullable
-    public static String save(Context context, TrackInfo track, Lyrics lyrics) {
-        return save(context, track, lyrics, null);
-    }
-
-    @Nullable
-    public static String save(Context context, TrackInfo track, Lyrics lyrics,
-                              @Nullable CreditInfo creditInfo) {
-        return save(context, track, lyrics, creditInfo, null, null, null, null);
-    }
-
-    @Nullable
     public static String save(Context context, TrackInfo track, Lyrics lyrics,
                               @Nullable CreditInfo creditInfo,
                               @Nullable List<String> translatedLines,
@@ -102,6 +91,7 @@ public final class LyricsFileSaver {
             if (lyrics.lines() == null || lyrics.lines().isEmpty()) {
                 return null;
             }
+
             if ("krc".equals(formatType)) {
                 content = rebuildKrc(lyrics.lines());
             } else if ("lrc".equals(formatType)) {

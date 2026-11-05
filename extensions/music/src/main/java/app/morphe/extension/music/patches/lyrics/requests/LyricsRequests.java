@@ -15,8 +15,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -112,6 +110,11 @@ public final class LyricsRequests {
         return "DEFAULT".equalsIgnoreCase(language)
                 ? deviceLanguage()
                 : language.toLowerCase(Locale.ROOT);
+    }
+
+    /** Whether the user turned the romanization off, which leaves only the ruby. */
+    public static boolean isRomanizationOff() {
+        return "NONE".equalsIgnoreCase(Settings.LYRICS_ROMANIZE_LANGUAGE.get());
     }
 
     /** Whether romanization is left on "Automatic", which reads the lyrics instead. */
@@ -402,28 +405,9 @@ public final class LyricsRequests {
     }
 
     static String parseGzipString(HttpURLConnection connection) throws IOException {
-        final long contentLength = connection.getContentLengthLong();
         final InputStream raw = connection.getInputStream();
-
-        // Read bytes upfront to catch truncated responses before parsing.
-        final ByteArrayOutputStream baos = new ByteArrayOutputStream(
-                contentLength > 0 && contentLength < Integer.MAX_VALUE
-                        ? (int) contentLength : 8192);
-        final byte[] buffer = new byte[8192];
-        int read;
-        while ((read = raw.read(buffer)) != -1) {
-            baos.write(buffer, 0, read);
-        }
-        final byte[] rawBytes = baos.toByteArray();
-
-        if (contentLength > 0 && rawBytes.length != contentLength) {
-            throw new IOException("Response truncated: got " + rawBytes.length
-                    + " of " + contentLength + " bytes");
-        }
-
         final InputStream stream = "gzip".equalsIgnoreCase(connection.getContentEncoding())
-                ? new GZIPInputStream(new ByteArrayInputStream(rawBytes))
-                : new ByteArrayInputStream(rawBytes);
+                ? new GZIPInputStream(raw) : raw;
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(stream, StandardCharsets.UTF_8))) {
             final StringBuilder sb = new StringBuilder();
@@ -492,18 +476,8 @@ public final class LyricsRequests {
         s = s.toLowerCase(Locale.ROOT);
         // Providers spell metadata Traditional or Simplified, so both are compared. ICU does
         // not map 妳 to 你, so that observed title variant is folded explicitly.
-        try {
-            s = CharactersConverter.toSimplified(s).replace('妳', '你');
-        } catch (Throwable ignored) {
-            // CharactersConverter static init may fail in unit tests where the Android
-            // framework stubs return default values. The simplification step is best-effort.
-        }
-        try {
-            s = stripDecorations(s);
-        } catch (Throwable ignored) {
-            // LyricsFilterDefaults static init may fail in unit tests where the settings
-            // library cannot initialize. Decoration stripping is best-effort.
-        }
+        s = CharactersConverter.toSimplified(s).replace('妳', '你');
+        s = stripDecorations(s);
         s = foldPunctuation(s);
         s = s.replaceAll("\\s+", " ").trim();
         return s;

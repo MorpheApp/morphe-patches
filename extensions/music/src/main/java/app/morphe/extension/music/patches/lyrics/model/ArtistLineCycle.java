@@ -12,8 +12,10 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * The frames of the track format line, shown in turn. The miniplayer and the media session share
- * one cycle, so polling both never advances a frame twice.
+ * The frames of the track format line, shown in turn. A frame stays for at least the minimum
+ * time and moves on when the lyric changes, or after the maximum time when it does not.
+ * The miniplayer and the media session share one cycle, so polling both never advances a
+ * frame twice.
  */
 public final class ArtistLineCycle {
     private List<String> frames = List.of();

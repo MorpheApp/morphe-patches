@@ -65,19 +65,11 @@ public final class LockScreenLyrics {
     private static volatile boolean needsRepush;
     @Nullable
     private static volatile PlaybackState playbackState;
-    private static volatile long observedPositionMs;
+
     /** Drives the periodic check that mirrors the current line into the MediaSession. */
     private static final LyricsTicker ticker = new LyricsTicker(LockScreenLyrics::tick);
+    private static volatile long observedPositionMs;
     private static volatile long observedAtElapsedMs;
-
-    private LockScreenLyrics() {
-    }
-
-    /** Pushes the current line again, as a lyrics setting changed how it is shown. */
-    public static void onSettingsChanged() {
-        needsRepush = true;
-        tick();
-    }
 
     /**
      * Re-arms the ticker whenever lyrics arrive or disappear, so a late lookup does not
@@ -88,6 +80,14 @@ public final class LockScreenLyrics {
             ticker.schedule();
         }
     };
+    private LockScreenLyrics() {
+    }
+
+    /** Pushes the current line again, as a lyrics setting changed how it is shown. */
+    public static void onSettingsChanged() {
+        needsRepush = true;
+        tick();
+    }
 
     /**
      * Observed at the app's {@code MediaSession.setMetadata} call site. Captures the session

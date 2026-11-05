@@ -19,7 +19,7 @@ import java.util.List;
  * <p>The counters are indexed by {@link Script}, so a new script only needs a line in {@link #classify}.
  *
  * <p>The per-character checks below are the only place these blocks are listed, so another reader
- * of scripts, such as {@link app.morphe.extension.music.patches.lyrics.derive.LyricsLanguageDetector}, counts them here rather than repeating them.
+ * of scripts, such as {@link LyricsLanguageDetector}, counts them here rather than repeating them.
  */
 public final class ScriptDetector {
 
@@ -182,12 +182,6 @@ public final class ScriptDetector {
         return (c >= 0x3040 && c <= 0x309F)
                 || (c >= 0x30A0 && c <= 0x30FF)
                 || (c >= 0x31F0 && c <= 0x31FF);
-    }
-
-    /** Bopomofo (Zhuyin) phonetic script: 0x3100–0x312F and its extended block. */
-    public static boolean isBopomofo(char c) {
-        return (c >= 0x3100 && c <= 0x312F)
-                || (c >= 0x31A0 && c <= 0x31BF);
     }
 
     public static boolean containsBopomofo(@Nullable CharSequence text) {

@@ -7,12 +7,10 @@
 
 package app.morphe.extension.music.patches.lyrics.romanizers;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -62,13 +60,5 @@ public class IcuRomanizerTest {
             lines.add("line" + i);
         }
         assertNull(IcuRomanizer.romanize(lines));
-    }
-
-    @Test
-    public void resultClassHasLinesField() throws Exception {
-        // The Result class exposes a public final List<String> lines field
-        Class<?> resultClass = IcuRomanizer.Result.class;
-        Field linesField = resultClass.getField("lines");
-        assertEquals(List.class, linesField.getType());
     }
 }

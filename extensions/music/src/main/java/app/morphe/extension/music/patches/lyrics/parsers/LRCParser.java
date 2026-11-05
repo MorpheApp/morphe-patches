@@ -31,14 +31,10 @@ import app.morphe.extension.shared.Logger;
 public final class LRCParser {
 
     /**
-     * LRC tags that are true credit lines (uploader/submitter) and go to {@code <morphe:credits>}.
-     * The standard metadata tags {@code ti}/{@code ar}/{@code al} are NOT here: they stay in
-     * {@code rawFormat} and are extracted by {@link TTMLRefactor#extractLrcMetadata} to fill
-     * standard TTML fields when {@link TrackInfo} lacks them.
+     * LRC tags that are true credit lines (uploader/submitter). The metadata tags ti/ar/al are not
+     * credits: they repeat the track, and stay in the raw format.
      */
     public static final Set<String> CREDIT_META_KEYS = Set.of("au", "by");
-    /** Standard metadata tags that fill TTML fields, not credits. */
-    public static final Set<String> STANDARD_META_KEYS = Set.of("ti", "ar", "al");
     public static final Pattern LRC_META = Pattern.compile("^\\[(\\w+):([^]]*)]$");
     /** Runs of whitespace inside a heading, collapsed so {@code [Pre - Chorus]} reads as one phrase. */
     private static final Pattern HEADING_SPACES = Pattern.compile("\\s+");

@@ -114,38 +114,10 @@ public final class LyricsRomanizer {
     }
 
     /**
-     * The text to show for one word's shipped reading. Kana and hangul are romanized; a non-Latin
-     * reading is kept only when transliteration is allowed; a Latin reading is kept unless it looks
-     * like a broken fragment.
+     * The text to show for one word's shipped reading. Kana and hangul are romanized, a
+     * non-Latin reading is kept only when the user allows transliteration, and a Latin reading
+     * is kept unless it looks like a broken fragment.
      */
-    @Nullable
-    public static List<LyricsLine> getEmbeddedRubyRomanization(Lyrics lyrics) {
-        if (lyrics == null || lyrics.lines() == null) return null;
-        final int lineCount = lyrics.lines().size();
-        List<LyricsLine> result = new ArrayList<>(lineCount);
-        boolean anyRuby = false;
-        for (LyricsLine line : lyrics.lines()) {
-            if (line.hasWords()) {
-                StringBuilder sb = new StringBuilder();
-                for (Word w : line.words()) {
-                    String ruby = w.ruby();
-                    if (ruby != null && !ruby.trim().isEmpty()) {
-                        sb.append(ruby.trim());
-                        if (w.endsWithSpace()) sb.append(' ');
-                        anyRuby = true;
-                    }
-                }
-                result.add(new LyricsLine(line.startTimeMs(), line.endTimeMs(),
-                        sb.toString().trim(), Collections.emptyList(),
-                        line.agentId(), line.isDuet(), line.isBG(), line.songPart()));
-            } else {
-                result.add(new LyricsLine(line.startTimeMs(), line.endTimeMs(), "",
-                        Collections.emptyList(), line.agentId(), line.isDuet(), line.isBG(), line.songPart()));
-            }
-        }
-        return anyRuby && LyricsMerge.hasText(result) ? result : null;
-    }
-
     public static String wordReading(Word word, boolean allowTransliteration) {
         String reading = word.romaji();
         if (reading != null && !reading.trim().isEmpty()) {
@@ -164,8 +136,6 @@ public final class LyricsRomanizer {
                     if (!allowTransliteration) {
                         reading = KanaRomanizer.romanize(reading).trim();
                     }
-                } else if (ScriptDetector.containsBopomofo(reading)) {
-                    // Bopomofo is a phonetic script and a valid reading on its own.
                 }
                 if (allowTransliteration || isReadingScript(reading)) {
                     return reading;
@@ -191,8 +161,8 @@ public final class LyricsRomanizer {
     }
 
     /**
-     * Romanizes provider readings written in kana or hangul. Only a line made up entirely of that
-     * phonetic script is converted, so mixed text is never left half romanized.
+     * Romanizes provider readings written in kana or hangul. Only a line made up entirely of
+     * that phonetic script is converted, so mixed text is never left half romanized.
      */
     @Nullable
     private static List<LyricsLine> normalizeReadingScripts(@Nullable List<LyricsLine> lines) {
@@ -315,12 +285,11 @@ public final class LyricsRomanizer {
         return text != null && (text.contains("~") || text.contains("～"));
     }
 
-    public static void romanize(TrackInfo track, Lyrics lyrics, String source, String language, Callback callback) {
+    public static void romanize(TrackInfo track, Lyrics lyrics, String source, Callback callback) {
         Utils.verifyOnMainThread();
 
-        // NONE: skip the romanize flow entirely, no footer label.
-        if ("NONE".equalsIgnoreCase(language)) {
-            callback.onRomanized(null, null, false, false, null, false, null, false);
+        if (LyricsRequests.isRomanizationOff()) {
+            callback.onRomanized(null, false, false, null, false, null, true);
             return;
         }
 
@@ -339,16 +308,16 @@ public final class LyricsRomanizer {
                 Settings.LYRICS_ROMANIZATION_PROVIDERS.get(),
                 ProcessingProviders.ROMANIZATION_ORDER);
         if (providers.isEmpty()) {
-            callback.onRomanized(null, null, false, false, null, false, null, false);
+            callback.onRomanized(null, false, false, null, false, null, false);
             return;
         }
 
         // Local readers cost no request and know for themselves whether they have a reading.
+        // ICU does not count: it is on by default and would send Latin lyrics to Google first.
         final boolean hasLocalReader = providers.contains(ProcessingProviders.RIME)
-                || providers.contains(ProcessingProviders.LOCAL)
-                || providers.contains(ProcessingProviders.ICU);
+                || providers.contains(ProcessingProviders.LOCAL);
         if (!hasLocalReader && !LyricsLanguageDetector.needsRomanization(lyrics.lines())) {
-            callback.onRomanized(null, null, false, false, null, false, null, true);
+            callback.onRomanized(null, false, false, null, false, null, true);
             return;
         }
 
@@ -357,13 +326,6 @@ public final class LyricsRomanizer {
         final ProviderResult embedded = sourceEnabled
                 ? embeddedRomanization(lyrics, isWordSynced, perWord, allowTransliteration)
                 : null;
-        final List<LyricsLine> embeddedRuby = sourceEnabled
-                ? getEmbeddedRubyRomanization(lyrics)
-                : null;
-        final boolean rubyEnabled = !"NONE".equalsIgnoreCase(
-                Settings.LYRICS_RUBY_LANGUAGE.get());
-
-        final List<LyricsLine> effectiveRuby = rubyEnabled ? embeddedRuby : null;
 
         // Embedded readings are already in memory, so keep the old synchronous result.
         if (ProcessingProviders.EMBEDDED.equals(providers.get(0)) && embedded != null) {
@@ -371,9 +333,7 @@ public final class LyricsRomanizer {
             boolean hasWordRomaji = (perWord
                     && hasUsableWordReading(lyrics.lines(), allowTransliteration))
                     || (isWordSynced && hasUsableWordReading(result, allowTransliteration));
-            callback.onRomanized(result,
-                    effectiveRuby,
-                    false, false, null, hasWordRomaji, null, false);
+            callback.onRomanized(result, false, false, null, hasWordRomaji, null, false);
             return;
         }
 
@@ -390,7 +350,7 @@ public final class LyricsRomanizer {
                         ProviderResult result = fromSource
                                 ? embedded
                                 : romanizeWithProvider(provider, track, lyrics, source, lines,
-                                isWordSynced, allowTransliteration, language);
+                                isWordSynced, allowTransliteration);
                         if (result == null || !LyricsMerge.hasText(result.lines())) {
                             continue;
                         }
@@ -405,8 +365,8 @@ public final class LyricsRomanizer {
                                 || (fromSource && perWord && hasUsableWordReading(
                                 lyrics.lines(), allowTransliteration));
                         Utils.runOnMainThread(() -> callback.onRomanized(
-                                finalResult, effectiveRuby, result.fromGoogle(), result.fromAI(),
-                                result.model(), hasWordRomaji, result.localDictionary(), false));
+                                finalResult, result.fromGoogle(), result.fromAI(), result.model(),
+                                hasWordRomaji, result.localDictionary(), false));
                         return;
                     } catch (Exception ex) {
                         Logger.printInfo(() -> "romanization provider failed: " + provider, ex);
@@ -414,11 +374,11 @@ public final class LyricsRomanizer {
                 }
 
                 Utils.runOnMainThread(
-                        () -> callback.onRomanized(null, effectiveRuby, false, false, null, false, null, false));
+                        () -> callback.onRomanized(null, false, false, null, false, null, false));
             } catch (Exception ex) {
                 Logger.printInfo(() -> "romanize failure", ex);
                 Utils.runOnMainThread(
-                        () -> callback.onRomanized(null, effectiveRuby, false, false, null, false, null, false));
+                        () -> callback.onRomanized(null, false, false, null, false, null, false));
             }
         });
     }
@@ -440,7 +400,7 @@ public final class LyricsRomanizer {
     @Nullable
     private static ProviderResult romanizeWithProvider(
             String provider, TrackInfo track, Lyrics lyrics, String source,
-            List<String> lines, boolean isWordSynced, boolean allowTransliteration, String language) {
+            List<String> lines, boolean isWordSynced, boolean allowTransliteration) {
         if (ProcessingProviders.LOCAL.equals(provider)) {
             return romanizeLocal(lyrics, lines, isWordSynced);
         }
@@ -461,12 +421,18 @@ public final class LyricsRomanizer {
         return null;
     }
 
-    /** System ICU transliterator: no download, takes turn after offline dictionaries. */
+    /**
+     * System ICU transliterator: no download, takes turn after offline dictionaries. Lyrics already
+     * in Latin script have nothing to read, and transliterating them would only strip the accents.
+     */
     @Nullable
     private static ProviderResult romanizeIcu(Lyrics lyrics, List<String> lines,
                                               boolean isWordSynced) {
-        IcuRomanizer.Result local = IcuRomanizer.romanize(lines);
-        List<LyricsLine> result = local != null ? toLines(local.lines) : null;
+        if (!LyricsLanguageDetector.needsRomanization(lyrics.lines())) {
+            return null;
+        }
+        List<String> read = IcuRomanizer.romanize(lines);
+        List<LyricsLine> result = read != null ? toLines(read) : null;
         if (!LyricsMerge.hasText(result)) {
             return null;
         }
@@ -475,9 +441,9 @@ public final class LyricsRomanizer {
     }
 
     /**
-     * The Rime Wordlist provider: Han characters are read by its word table, the scripts around
-     * them by the same local dictionaries. Nothing is read when the language has no word table, so
-     * the next provider gets the turn.
+     * The Rime Wordlist provider: the Han characters of the language are read by its word table, the
+     * scripts around them by the same local dictionaries. Nothing is read when the language has no
+     * word table, so the next provider is given the turn instead.
      */
     @Nullable
     private static ProviderResult romanizeRime(Lyrics lyrics, List<String> lines,
@@ -599,8 +565,8 @@ public final class LyricsRomanizer {
     }
 
     /**
-     * Rejects a reading that is only the original line, which older versions could store after a
-     * failed online request. With transliteration off, a non-Latin line is usable only when
+     * Rejects a reading that is only the original line, which older versions could store after
+     * a failed online request. With transliteration off, a non-Latin line is usable only when
      * word-synced readings replace it with Latin text.
      */
     private static boolean hasUsableRomanization(@Nullable List<LyricsLine> result, Lyrics lyrics,
@@ -676,8 +642,8 @@ public final class LyricsRomanizer {
     }
 
     /**
-     * Romanizes kana and hangul by rule, with no dictionary, for when nothing better is available.
-     * Null if no line has either.
+     * Romanizes kana and hangul by rule, with no dictionary, for when nothing better is
+     * available. Null if no line has either.
      */
     @Nullable
     private static List<LyricsLine> ruleBased(List<String> lines) {
@@ -1042,9 +1008,11 @@ public final class LyricsRomanizer {
     }
 
     /**
-     * Whether a reading shipped by the provider is too broken to use. Checks that say the data
-     * itself is wrong, such as mora fragments, stray symbols or missing lines, always apply. With
-     * transliteration off, a non-Latin reading passes only if its word readings supply the text.
+     * Whether a reading shipped by the provider is too broken to use.
+     *
+     * <p>Checks that say the data itself is wrong, such as mora fragments, stray symbols or
+     * missing lines, always apply. With transliteration off, a non-Latin reading passes only
+     * if its word readings supply the text.
      */
     public static boolean isProviderRomajiDegraded(@Nullable List<LyricsLine> embedded,
                                                    @Nullable List<LyricsLine> originalLines,
@@ -1316,14 +1284,14 @@ public final class LyricsRomanizer {
 
     /**
      * Scripts that can serve as a reading without the transliteration gate: Latin letters, and the
-     * phonetic scripts kana and Bopomofo, whose symbols say how a character sounds.
+     * phonetic scripts kana and Bopomofo, whose symbols say how a character sounds. Text that still
+     * holds Han characters is not a reading of them, but the written line itself.
      */
     private static boolean isReadingScript(String text) {
         if (text == null || text.isEmpty()) return true;
         if (isPurelyLatinScript(text)) return true;
-        // A reading that mixes a phonetic script with original characters still reads the
-        // characters it covers; the rest are kept as they were.
-        return ScriptDetector.containsKana(text) || ScriptDetector.containsBopomofo(text);
+        return (ScriptDetector.containsKana(text) || ScriptDetector.containsBopomofo(text))
+                && !ScriptDetector.contains(text, Character.UnicodeScript.HAN);
     }
 
     /** A local reading per word, used only to choose which whole tokens belong together. */
@@ -1349,7 +1317,6 @@ public final class LyricsRomanizer {
     public interface Callback {
         /** @param skipped No provider was asked anything, so a caller reports nothing to do. */
         void onRomanized(@Nullable List<LyricsLine> romanizedLines,
-                         @Nullable List<LyricsLine> rubyLines,
                          boolean fromGoogle, boolean fromAI, @Nullable String aiModel,
                          boolean perWord, @Nullable String localDictionary, boolean skipped);
 

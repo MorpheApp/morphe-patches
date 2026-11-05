@@ -139,9 +139,12 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
     }
 
     /**
-     * Whether the words say more than the line itself does. A whole-line span is line timing, not
-     * word sync: counting it as word sync would rank it above lyrics that really carry word
-     * timings.
+     * Whether the words say more than the line itself does.
+     *
+     * <p>A lone word covering the whole line, or one that never ends, is the line's own timing
+     * written back out as a word. Counting it as word sync would have the line read as karaoke
+     * while it can only ever be sung in one go, and would rank it above lyrics that really do
+     * carry word timings.
      */
     public boolean hasWordTimings() {
         if (words.isEmpty()) {

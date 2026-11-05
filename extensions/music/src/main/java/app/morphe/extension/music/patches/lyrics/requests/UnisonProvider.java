@@ -101,7 +101,7 @@ public final class UnisonProvider implements LyricsProvider {
     }
 
     private static Lyrics withSubmitter(@Nullable Lyrics lyrics, @Nullable String submitter) {
-        return LyricsMerge.addSongwriter(lyrics, submitter == null ? null : "Submitted by " + submitter);
+        return LyricsMerge.addCredit(lyrics, submitter == null ? null : "Submitted by " + submitter);
     }
 
     @Override

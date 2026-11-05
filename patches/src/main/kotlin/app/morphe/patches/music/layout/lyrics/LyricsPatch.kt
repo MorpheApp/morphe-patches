@@ -174,6 +174,7 @@ val lyricsPatch = patch(
                     SwitchPreference("morphe_music_lyrics_dynamic_background", summary = true),
                     SwitchPreference("morphe_music_lyrics_dynamic_background_animated", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
+                    SwitchPreference("morphe_music_lyrics_save_refactored_ttml", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true)
@@ -248,10 +249,6 @@ val lyricsPatch = patch(
                     NonInteractivePreference(
                         key = "morphe_music_lyrics_about",
                         titleKey = null,
-                        // The summary is written by the preference itself, since what the fetched
-                        // reading dictionaries add to it is not known when the layout is built.
-                        summaryKey = null,
-                        tag = "app.morphe.extension.music.settings.preference.LyricsAboutPreference",
                         dependency = "morphe_music_lyrics_enabled"
                     )
                 )

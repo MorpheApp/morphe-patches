@@ -91,30 +91,6 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return names.isEmpty() ? null : names;
     }
 
-    /** Title/artist/album from the API are standard metadata, not credits. They become LRC tags
-     *  appended to rawFormat so TTMLRefactor.extractLrcMetadata can fill <title>/<artist>/<album>. */
-    private static String lrcMetadataOf(Song song) {
-        if (song.title == null && song.artist == null && song.album == null) {
-            return null;
-        }
-        StringBuilder sb = new StringBuilder();
-        addLrcTag(sb, "ti", song.title);
-        addLrcTag(sb, "ar", song.artist);
-        addLrcTag(sb, "al", song.album);
-        return sb.length() == 0 ? null : sb.toString();
-    }
-
-    private static void addLrcTag(StringBuilder sb, String tag, @Nullable String value) {
-        if (value == null) {
-            return;
-        }
-        String trimmed = value.trim();
-        if (trimmed.isEmpty()) {
-            return;
-        }
-        sb.append('[').append(tag).append(':').append(trimmed).append("]\n");
-    }
-
     private static void addCredit(List<String> credits, String label, @Nullable String value) {
         if (value == null) {
             return;
@@ -124,14 +100,6 @@ public final class PetitLyricsProvider implements LyricsProvider {
             return;
         }
         credits.add(label + ": " + trimmed);
-    }
-
-    /** Prepends LRC metadata tags (from API) to the rawFormat so TTMLRefactor can extract them. */
-    private static String appendLrcMetadata(String rawFormat, @Nullable String lrcMetadata) {
-        if (lrcMetadata == null || lrcMetadata.isEmpty()) {
-            return rawFormat;
-        }
-        return lrcMetadata + rawFormat;
     }
 
     @Nullable
@@ -820,7 +788,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         }
         sorted = gated;
 
-        if (stash.creditLines == null || stash.songwriters == null || stash.lrcMetadata == null) {
+        if (stash.creditLines == null || stash.songwriters == null) {
             for (Song song : sorted) {
                 if (stash.creditLines == null) {
                     List<String> credits = creditsOf(song);
@@ -834,10 +802,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                 if (stash.songwriters == null) {
                     stash.songwriters = songwritersOf(song);
                 }
-                if (stash.lrcMetadata == null) {
-                    stash.lrcMetadata = lrcMetadataOf(song);
-                }
-                if (stash.creditLines != null && stash.songwriters != null && stash.lrcMetadata != null) {
+                if (stash.creditLines != null && stash.songwriters != null) {
                     break;
                 }
             }
@@ -949,8 +914,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                 : null;
         return new Lyrics(stash.wordLines, name(), true, null, null, null,
                 stash.songwriters, stash.creditLines,
-                appendLrcMetadata(wsyRaw, stash.lrcMetadata), wsyRaw != null ? "wsy" : null, sourceUrl(stash.sourceLyricsId),
-                null, null);
+                wsyRaw, wsyRaw != null ? "wsy" : null, sourceUrl(stash.sourceLyricsId), null, null);
     }
 
     @Nullable
@@ -970,7 +934,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         }
         String lrc = buildLrc(lines);
         return new Lyrics(lines, name(), true, null, null, null, stash.songwriters, stash.creditLines,
-                appendLrcMetadata(lrc, stash.lrcMetadata), "lrc", sourceUrl(stash.sourceLyricsId), null, null);
+                lrc, "lrc", sourceUrl(stash.sourceLyricsId), null, null);
     }
 
     @Nullable
@@ -985,14 +949,14 @@ public final class PetitLyricsProvider implements LyricsProvider {
             assert credits != null;
             return new Lyrics(lrc.lines, name(), true, null, null, null,
                     stash.songwriters, credits.isEmpty() ? null : credits,
-                    appendLrcMetadata(text, stash.lrcMetadata), "lrc", sourceUrl(stash.sourceLyricsId), null, null);
+                    text, "lrc", sourceUrl(stash.sourceLyricsId), null, null);
         }
         List<LyricsLine> plain = LRCParser.parsePlain(text);
         if (plain.isEmpty()) {
             return null;
         }
         return new Lyrics(plain, name(), false, null, null, null, stash.songwriters, stash.creditLines,
-                appendLrcMetadata(text, stash.lrcMetadata), "txt", sourceUrl(stash.sourceLyricsId), null, null);
+                text, "txt", sourceUrl(stash.sourceLyricsId), null, null);
     }
 
     @Nullable
@@ -1050,8 +1014,6 @@ public final class PetitLyricsProvider implements LyricsProvider {
         List<String> creditLines;
         @Nullable
         List<String> songwriters;
-        @Nullable
-        String lrcMetadata;
         @Nullable
         String sourceLyricsId;
         @Nullable

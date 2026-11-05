@@ -780,6 +780,9 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_search_empty">Enter a song title and an artist</string>
     <string name="morphe_music_lyrics_search_no_providers">None of the enabled providers can search for other songs</string>
     <string name="morphe_music_lyrics_saved">Saved</string>
+    <string name="morphe_music_lyrics_save_refactored_ttml_title">Save as TTML too</string>
+    <string name="morphe_music_lyrics_save_refactored_ttml_summary">Saving lyrics also writes a TTML file with the translation, romanization and ruby shown in the panel</string>
+    <string name="morphe_music_lyrics_written_by">Written by: %s</string>
     <string name="morphe_music_lyrics_word_sync_title">Highlight synced words or syllables</string>
     <string name="morphe_music_lyrics_word_sync_summary">Prioritize word-by-word lyrics when available. When lyrics carry word timing, highlights each word or syllable in time with the music</string>
     <string name="morphe_music_lyrics_line_scale_title">Shrink inactive lines</string>
@@ -849,6 +852,7 @@ Applies to both limits. At 1.75, four full-width characters count as 7."</string
     <string name="morphe_music_lyrics_translated_by_ai">Translated by %s</string>
     <string name="morphe_music_lyrics_romanized_by_ai">Romanized by %s</string>
     <string name="morphe_music_lyrics_romanized_by_local">Romanized by %s</string>
+    <string name="morphe_music_lyrics_with_ruby_provider">%1$s (with %2$s)</string>
     <string name="morphe_music_lyrics_romanized_by_rime">Romanized by Rime (%s)</string>
     <!-- Tappable label under the lyrics that turns the translation on. -->
     <string name="morphe_music_lyrics_translate_hide">Translated</string>
@@ -865,7 +869,6 @@ Applies to both limits. At 1.75, four full-width characters count as 7."</string
     <string name="morphe_music_lyrics_romanizing">Romanizing…</string>
     <string name="morphe_music_lyrics_romanize_failed">Could not romanize the lyrics</string>
     <string name="morphe_music_lyrics_romanize_language_none">None</string>
-    <string name="morphe_music_lyrics_romanize_language_none_both">Both romaji targets cannot be None at the same time</string>
     <string name="morphe_music_lyrics_ruby_language_title">Ruby Target</string>
     <string name="morphe_music_lyrics_translate_only">Translated only</string>
     <string name="morphe_music_lyrics_romanize_only">Romanized only</string>

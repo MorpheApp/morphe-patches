@@ -69,7 +69,7 @@ public final class LyricsPresentation {
     }
 
     /** Han direction: none unless on and the translation target resolves to a Chinese script. */
-    private static int hanMode() {
+    public static int hanMode() {
         if (!Settings.LYRICS_HAN_FORM.get()) {
             return LyricsTextFormatter.HAN_NONE;
         }
@@ -88,8 +88,8 @@ public final class LyricsPresentation {
     }
 
     /**
-     * The frames of the track format. A version the backend reported replaces the title with the
-     * backend's title without the version, which {v} then shows.
+     * The frames of the track format. A version the backend reported replaces the title with
+     * the backend's title without the version, which {v} then shows.
      */
     private static List<String> trackFrames(@Nullable String title, @Nullable String artist) {
         TrackVersion version = LyricsManager.getInstance().getCurrentVersion();
@@ -159,9 +159,10 @@ public final class LyricsPresentation {
     }
 
     /**
-     * The text the miniplayer and the media session show at a playback position. @return Null if no
-     * lyric applies and the track title should be shown instead. An empty string is a blank
-     * instrumental frame the user configured.
+     * The text the miniplayer and the media session show at a playback position.
+     *
+     * @return Null if no lyric applies and the track title should be shown instead.
+     * An empty string is a blank instrumental frame the user configured.
      */
     @Nullable
     public static String miniLine(Lyrics lyrics, long durationMs, long positionMs,

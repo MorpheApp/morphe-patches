@@ -51,6 +51,18 @@ public class LyricsCacheTest {
     }
 
     @Test
+    public void writersAndCreditsSurviveTheCache() {
+        Lyrics lyrics = new Lyrics(List.of(new LyricsLine(0, "hello")), "TestProvider", true,
+                null, null, null, List.of("John Doe"), List.of("Uploaded by Jane"),
+                null, null, null, null, null);
+        LyricsCache.put(track, "TestProvider", lyrics, null);
+        Lyrics result = LyricsCache.get(track, "TestProvider", null);
+        assertNotNull(result);
+        assertEquals(List.of("John Doe"), result.songwriters());
+        assertEquals(List.of("Uploaded by Jane"), result.credits());
+    }
+
+    @Test
     public void getWithVideoIdMatches() {
         Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "hello"));
         LyricsCache.put(track, "TestProvider", lyrics, "video123");

@@ -113,7 +113,7 @@ public final class SimpMusicProvider implements LyricsProvider {
     }
 
     private static Lyrics withContributor(@Nullable Lyrics lyrics, @Nullable String contributor) {
-        return LyricsMerge.addSongwriter(lyrics,
+        return LyricsMerge.addCredit(lyrics,
                 contributor == null ? null : "Submitted by " + contributor);
     }
 

@@ -26,9 +26,9 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 /**
- * Asks the AI which part of the song each lyric line belongs to, only for lyrics without sections
- * of their own: a provider-published label beats one inferred from the text. The answer names only
- * the line opening a section, mapping straight onto {@link LyricsLine#songPart()}.
+ * Asks the AI which part of the song each lyric line belongs to, only for lyrics that ship
+ * without any section of their own: a provider-published label beats one inferred from the text.
+ * The answer names only the line opening a section, mapping straight onto {@link LyricsLine#songPart()}.
  */
 public final class SectionDetector {
 

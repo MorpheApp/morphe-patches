@@ -63,14 +63,15 @@ final class LyricsProviderConfigDialog {
     }
 
     /**
-     * @param prompt the prompt the service is sent, or null for a service that does not read one.
+     * @param prompt     the prompt the service is sent, or null for a service that does not read one.
+     * @param rubyPrompt the prompt for the ruby, or null for a list that does not read it.
      */
     static void show(Activity context, String provider, @Nullable StringSetting prompt,
-                     @Nullable StringSetting prompt2, Runnable onSaved) {
+                     @Nullable StringSetting rubyPrompt, Runnable onSaved) {
         final Dialog dialog;
         try {
             dialog = switch (provider) {
-                case ProcessingProviders.OPENAI_COMPATIBLE -> compatibleDialog(context, prompt, prompt2, onSaved);
+                case ProcessingProviders.OPENAI_COMPATIBLE -> compatibleDialog(context, prompt, rubyPrompt, onSaved);
                 case ProcessingProviders.DEEPL -> deepLDialog(context, onSaved);
                 default -> null;
             };
@@ -120,7 +121,7 @@ final class LyricsProviderConfigDialog {
     }
 
     private static Dialog compatibleDialog(Activity context, @Nullable StringSetting prompt,
-                                           @Nullable StringSetting prompt2,
+                                           @Nullable StringSetting rubyPrompt,
                                            Runnable onSaved) {
         LinearLayout content = createContent(context);
         // The URL row is added last so the preset it triggers can fill the boxes above.
@@ -159,10 +160,8 @@ final class LyricsProviderConfigDialog {
         });
         final PromptField promptField = addPromptSection(content, prompt,
                 "morphe_music_lyrics_ai_config_prompt_label");
-        final PromptField promptField2 = prompt2 != null
-                ? addPromptSection(content, prompt2,
-                        "morphe_music_lyrics_ai_config_ruby_prompt_label")
-                : new PromptField(null, null);
+        final PromptField rubyPromptField = addPromptSection(content, rubyPrompt,
+                "morphe_music_lyrics_ai_config_ruby_prompt_label");
 
         return createDialog(context,
                 ProcessingProviders.OPENAI_COMPATIBLE_LABEL,
@@ -176,7 +175,7 @@ final class LyricsProviderConfigDialog {
                     Settings.LYRICS_AI_API_TOKEN.save(tokenInput.getText().toString().trim());
                     Settings.LYRICS_AI_MODEL.save(modelInput.getText().toString().trim());
                     promptField.save();
-                    promptField2.save();
+                    rubyPromptField.save();
                 },
                 () -> {
                     Settings.LYRICS_AI_BASE_URL.resetToDefault();
@@ -185,7 +184,7 @@ final class LyricsProviderConfigDialog {
                     Settings.LYRICS_AI_EXTRA_BODY.resetToDefault();
                     Settings.LYRICS_AI_EXTRA_HEADERS.resetToDefault();
                     promptField.reset();
-                    promptField2.reset();
+                    rubyPromptField.reset();
                 },
                 () -> !OpenAIClient.isValidExtraBody(
                         extraBodyInput.getText().toString().trim()),

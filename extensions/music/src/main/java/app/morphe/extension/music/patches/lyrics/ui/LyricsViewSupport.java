@@ -41,6 +41,7 @@ import java.util.Collections;
 import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.settings.preference.LyricsTargetLanguagePreference;
 import app.morphe.extension.shared.ui.Dim;
@@ -409,34 +410,29 @@ final class LyricsViewSupport {
             }
         }
         if (onlyMode != LyricsPanelView.OnlyMode.TRANS) {
-            // The ruby provider label is shared: when romaji is NONE it becomes the
-            // "Romanized by" line, and when romaji is active it is the "(with …)" suffix.
             final String rubyProvider = LyricsTargetLanguagePreference.rubyProviderLabel();
-            final boolean romajiNone = "NONE".equalsIgnoreCase(
-                    Settings.LYRICS_ROMANIZE_LANGUAGE.get());
-            if (romajiNone && rubyProvider != null) {
-                // Romaji is off, but ruby is on: show the ruby provider like a romaji source.
-                appendLink(text, str("morphe_music_lyrics_romanized_by_local", rubyProvider),
-                        false, onRomanizationLanguage);
-            } else if (romanized) {
-                final String rubySuffix = rubyProvider != null
-                        ? " (with " + rubyProvider + ")" : null;
-                if (romanizedFromGoogle) {
-                    appendLink(text, str("morphe_music_lyrics_romanized_by_google")
-                                    + (rubySuffix != null ? rubySuffix : ""),
-                            false, onRomanizationLanguage);
-                } else if (romanizedFromAI && romanizedAiModel != null) {
-                    appendLink(text, String.format(str("morphe_music_lyrics_romanized_by_ai"),
-                                    romanizedAiModel)
-                                    + (rubySuffix != null ? rubySuffix : ""),
-                            false, onRomanizationLanguage);
-                } else if (romanizedLocalDictionary != null) {
-                    // Named and nothing more: the licences are in the About row.
-                    appendLink(text, String.format(str("morphe_music_lyrics_romanized_by_local"),
-                                    romanizedLocalDictionary)
-                                    + (rubySuffix != null ? rubySuffix : ""),
-                            false, onRomanizationLanguage);
+            String source = null;
+            if (LyricsRequests.isRomanizationOff()) {
+                // No romanization, so the ruby takes its place.
+                if (rubyProvider != null) {
+                    source = String.format(str("morphe_music_lyrics_romanized_by_local"), rubyProvider);
                 }
+            } else if (romanized) {
+                if (romanizedFromGoogle) {
+                    source = str("morphe_music_lyrics_romanized_by_google");
+                } else if (romanizedFromAI && romanizedAiModel != null) {
+                    source = String.format(str("morphe_music_lyrics_romanized_by_ai"), romanizedAiModel);
+                } else if (romanizedLocalDictionary != null) {
+                    // Named and nothing more: the licences are in the licenses dialog.
+                    source = String.format(str("morphe_music_lyrics_romanized_by_local"),
+                            romanizedLocalDictionary);
+                }
+                if (source != null && rubyProvider != null) {
+                    source = str("morphe_music_lyrics_with_ruby_provider", source, rubyProvider);
+                }
+            }
+            if (source != null) {
+                appendLink(text, source, false, onRomanizationLanguage);
             }
         }
         return text;

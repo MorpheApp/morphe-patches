@@ -33,7 +33,15 @@ import app.morphe.extension.shared.Logger;
 public final class OpenAIClient {
 
     /**
-     * The prompt template sent to the AI endpoint; {@link #renderPrompt} fills in its variables.
+     * The prompt template sent to the AI endpoint. One template covers both tasks;
+     * {@link #renderPrompt} fills in its variables:
+     * <ul>
+     *   <li>{@code {task}} - "translation" or "romanization"</li>
+     *   <li>{@code {language}} - the target language</li>
+     *   <li>{@code {title}}, {@code {artist}} - the song</li>
+     *   <li>{@code {count}} - the number of lines</li>
+     *   <li>{@code {lines}} - the lyric lines, one per line</li>
+     * </ul>
      * Unknown variables are left as typed.
      */
     public static final String DEFAULT_PROMPT = """
@@ -55,8 +63,9 @@ public final class OpenAIClient {
             
             {lines}""";
     /**
-     * The section task template: only the line opening a section is named, the rest are SKIP,
-     * mapping straight onto {@code LyricsLine.songPart()}.
+     * The prompt template for the section task. Where {@link #DEFAULT_PROMPT} rewrites each line,
+     * this one labels it: only the line opening a section is named, every other line is skipped,
+     * so the returned list maps onto {@code LyricsLine.songPart()} without any post-processing.
      */
     public static final String SECTION_PROMPT = """
             You are a music structure analyst. Analyze the lyrics below and label the song structure.
@@ -74,20 +83,20 @@ public final class OpenAIClient {
             - Repeated sections are numbered in order: Verse 1, Verse 2, Chorus 1, Chorus 2
             - Pick the most specific name from the list above
             - Output ONLY the labels. No reasoning, no explanations.
-            
+
             {lines}""";
     /**
-     * The ruby template: each line comes back with the reading of every kanji word in brackets,
-     * which {@code RubyGenerator} then reads.
+     * The prompt template for ruby. Each line comes back as it was, with the reading of every
+     * kanji word in brackets right after it, which {@code RubyGenerator} then reads.
      */
     public static final String RUBY_PROMPT = """
             You are a professional reading engine. Add the {language} reading of every word written with kanji to each lyric line below.
             Song: {title} by {artist}
-            
+
             Write the reading in square brackets right after the word, including its okurigana, like:
             1. 深く[ふかく]沈む[しずむ]
             2. 君[きみ]の名前[なまえ]
-            
+
             CRITICAL RULES:
             - Output exactly {count} numbered lines (same as input count)
             - Number format: "N. text" (number, period, space, text)
@@ -95,7 +104,7 @@ public final class OpenAIClient {
             - Do not add readings to words written only in kana or Latin letters
             - If a line has no kanji, output one "SKIP" for it
             - Output ONLY the lines. No reasoning, no explanations.
-            
+
             {lines}""";
     private static final int CONNECT_TIMEOUT_MS = 10_000;
     private static final int READ_TIMEOUT_MS = 45_000;
@@ -420,8 +429,8 @@ public final class OpenAIClient {
     }
 
     /**
-     * Two keys stay ours: the model, which has a setting the endpoint was validated against, and
-     * the messages, whose length decides where the answer is cut into lines.
+     * Two keys stay ours: the model, which has a setting the endpoint was validated against, and the
+     * messages, whose length decides where the answer is cut into lines.
      */
     private static void applyExtraBody(JSONObject body) {
         final String extra = Settings.LYRICS_AI_EXTRA_BODY.get();

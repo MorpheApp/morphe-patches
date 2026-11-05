@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
 import app.morphe.extension.music.patches.lyrics.derive.ProcessingProviders;
@@ -31,12 +33,16 @@ import app.morphe.extension.shared.Utils;
 
 /**
  * Adds ruby, the reading of each character or word, to lyrics as the ruby of its word. Handles
- * Japanese furigana (kanji readings) and Chinese bopomofo (注音) alike.
+ * Japanese furigana (kanji readings) and Chinese bopomofo alike.
  *
  * <p>Ruby the source ships and the offline dictionary readings are added right away. An AI
  * provider answers in the background and only fills the words still without a reading.
  */
 public final class RubyGenerator {
+
+    private static final String LANGUAGE_DEFAULT = "DEFAULT";
+    private static final String LANGUAGE_NONE = "NONE";
+    private static final String LANGUAGE_BOPOMOFO = "BOPOMOFO";
 
     private static final ExecutorService WORKER = Executors.newSingleThreadExecutor(runnable -> {
         Thread thread = new Thread(runnable, "lyrics-ruby-generator");
@@ -49,29 +55,18 @@ public final class RubyGenerator {
 
     private static List<String> enabledProviders() {
         final String rubyLanguage = Settings.LYRICS_RUBY_LANGUAGE.get();
-        if ("NONE".equalsIgnoreCase(rubyLanguage)) {
+        if (LANGUAGE_NONE.equalsIgnoreCase(rubyLanguage)) {
             return Collections.emptyList();
         }
         final List<String> enabled = ProcessingProviders.enabledProviders(
                 Settings.LYRICS_ROMANIZATION_PROVIDERS.get(), ProcessingProviders.ROMANIZATION_ORDER);
-        // Automatic only reads the ruby the source ships; a manually chosen language also
-        // reads the offline dictionaries, the way romaji does.
-        if ("DEFAULT".equalsIgnoreCase(rubyLanguage)) {
+        // Automatic only reads the ruby the source ships.
+        if (LANGUAGE_DEFAULT.equalsIgnoreCase(rubyLanguage)) {
             return enabled.contains(ProcessingProviders.EMBEDDED)
                     ? List.of(ProcessingProviders.EMBEDDED)
                     : Collections.emptyList();
         }
-        List<String> providers = new ArrayList<>(enabled);
-        // Ruby must have LOCAL and RIME even when disabled by default.
-        if (!providers.contains(ProcessingProviders.LOCAL)
-                && ProcessingProviders.ROMANIZATION_ORDER.contains(ProcessingProviders.LOCAL)) {
-            providers.add(ProcessingProviders.LOCAL);
-        }
-        if (!providers.contains(ProcessingProviders.RIME)
-                && ProcessingProviders.ROMANIZATION_ORDER.contains(ProcessingProviders.RIME)) {
-            providers.add(ProcessingProviders.RIME);
-        }
-        return providers;
+        return enabled;
     }
 
     /**
@@ -82,76 +77,48 @@ public final class RubyGenerator {
         if (!hasKanjiOrRuby(lyrics.lines())) {
             return lyrics;
         }
-        final List<String> providers = enabledProviders();
         final String rubyLanguage = Settings.LYRICS_RUBY_LANGUAGE.get();
         final RubyStyle style = rubyStyleFromLanguage(rubyLanguage);
-        // DEFAULT keeps the source's own ruby; a manual language clears it so the
-        // dictionaries and AI provide every reading. If a provider has no reading
-        // for a word, that word stays bare rather than falling back to the source's kana.
-        final boolean keepEmbedded = "DEFAULT".equalsIgnoreCase(rubyLanguage)
-                && providers.contains(ProcessingProviders.EMBEDDED);
-        Lyrics current = formatEmbeddedRuby(lyrics, keepEmbedded, style);
-        // NONE: hide all ruby, stop here.
-        if ("NONE".equalsIgnoreCase(rubyLanguage)) {
+        // Automatic keeps the source's own ruby; a manual language clears it so the dictionaries
+        // and AI provide every reading. If they have no reading for a word, that word stays bare
+        // rather than falling back to the source's kana.
+        final boolean automatic = LANGUAGE_DEFAULT.equalsIgnoreCase(rubyLanguage);
+        final Lyrics current = formatEmbeddedRuby(lyrics,
+                automatic && enabledProviders().contains(ProcessingProviders.EMBEDDED), style);
+        if (automatic || LANGUAGE_NONE.equalsIgnoreCase(rubyLanguage)) {
             return current;
         }
-        // Automatic stops at the source's own ruby; a manual language also reads the dictionaries.
-        if ("DEFAULT".equalsIgnoreCase(rubyLanguage)) {
+
+        // A manual language is read by its own dictionary, whichever romanization providers are on.
+        if (LANGUAGE_BOPOMOFO.equalsIgnoreCase(rubyLanguage)) {
+            if (!UniDictStore.isReady()) {
+                return current;
+            }
+            final WordReadingTable words = BopomofoDictStore.word();
+            return enrichByCharacter(current, words, text -> {
+                final String reading = lookupExactReading(text, words);
+                return reading != null
+                        ? reading : characterReading(text, BopomofoDictStore::reading);
+            }, style);
+        }
+        if (isJapaneseRubyLanguage(rubyLanguage)) {
+            final WordReadingTable table = JapaneseDictStore.table();
+            return table != null ? enrichFromDictionary(current, table, style) : current;
+        }
+        // What is left is a language the user added a Rime word table for.
+        final WordReadingTable words = RimeDictStore.word(rubyLanguage);
+        if (words == null || !RimeDictStore.isReady(rubyLanguage)) {
             return current;
         }
-        // Manual language: traverse all providers in order, later ones override earlier ones.
-        for (String provider : providers) {
-            if (ProcessingProviders.EMBEDDED.equals(provider)) {
-                continue; // Already handled by formatEmbeddedRuby above
-            }
-            if (ProcessingProviders.GOOGLE.equals(provider)) {
-                continue; // Network-based; Google returns Latin only, not the target script.
-            }
-            if (ProcessingProviders.LOCAL.equals(provider)) {
-                if ("BOPOMOFO".equalsIgnoreCase(rubyLanguage)) {
-                    current = enrichFromBopomofo(current, BopomofoDictStore.word(), style);
-                } else if (isJapaneseRubyLanguage(rubyLanguage)) {
-                    WordReadingTable table = JapaneseDictStore.table();
-                    if (table != null) {
-                        current = enrichFromDictionary(current, table, style);
-                    }
-                } else if ("SIMPLIFIED_CHINESE".equalsIgnoreCase(rubyLanguage)) {
-                    current = enrichFromUniDict(current, null, style);
-                } else if ("CANTONESE".equalsIgnoreCase(rubyLanguage)) {
-                    current = enrichFromUniDict(current, null, style);
-                }
-                // Custom Rime languages: no pinyin fallback; the RIME provider handles them.
-                continue;
-            }
-            if (ProcessingProviders.RIME.equals(provider)) {
-                // BOPOMOFO, Japanese, Simplified Chinese, and Cantonese have their own
-                // dictionaries; RIME would override them. Only custom Rime languages use RIME.
-                if ("BOPOMOFO".equalsIgnoreCase(rubyLanguage)
-                        || isJapaneseRubyLanguage(rubyLanguage)
-                        || "SIMPLIFIED_CHINESE".equalsIgnoreCase(rubyLanguage)
-                        || "CANTONESE".equalsIgnoreCase(rubyLanguage)) {
-                    continue;
-                }
-                // A custom Rime ruby language: read its own word table, not the romanize language's.
-                WordReadingTable table = RimeDictStore.word(rubyLanguage);
-                if (table != null) {
-                    current = enrichFromRime(current, table, style);
-                }
-                continue;
-            }
-            if (ProcessingProviders.ICU.equals(provider)) {
-                continue; // Latin-only transliteration; not useful for CJK ruby.
-            }
-        }
-        return current;
+        return enrichByCharacter(current, words, text -> {
+            final String reading = lookupExactReading(text, words);
+            return reading != null ? reading
+                    : characterReading(text, c -> RimeDictStore.reading(c, rubyLanguage));
+        }, style);
     }
 
     /** Whether {@link #requestAi} has anything to do. */
     public static boolean usesAi(Lyrics lyrics) {
-        final String rubyLanguage = Settings.LYRICS_RUBY_LANGUAGE.get();
-        if ("NONE".equalsIgnoreCase(rubyLanguage) || "DEFAULT".equalsIgnoreCase(rubyLanguage)) {
-            return false;
-        }
         for (String provider : enabledProviders()) {
             if (ProcessingProviders.isAi(provider)) {
                 return hasKanjiOrRuby(lyrics.lines());
@@ -165,12 +132,7 @@ public final class RubyGenerator {
      * the main thread, with the lyrics unchanged if the provider gave no usable answer.
      */
     public static void requestAi(TrackInfo track, Lyrics lyrics, Callback callback) {
-        final String rubyLanguage = Settings.LYRICS_RUBY_LANGUAGE.get();
-        if ("NONE".equalsIgnoreCase(rubyLanguage) || "DEFAULT".equalsIgnoreCase(rubyLanguage)) {
-            Utils.runOnMainThread(() -> callback.onGenerated(lyrics));
-            return;
-        }
-        final RubyStyle style = rubyStyleFromLanguage(rubyLanguage);
+        final RubyStyle style = rubyStyleFromLanguage(Settings.LYRICS_RUBY_LANGUAGE.get());
         WORKER.execute(() -> {
             Lyrics result = lyrics;
             try {
@@ -186,7 +148,7 @@ public final class RubyGenerator {
                             track, lyrics.providerName(), lines, provider);
                     if (aiLines == null) {
                         String prompt = OpenAIClient.renderPrompt(
-                                Settings.LYRICS_AI_ROMANIZATION_PROMPT_2.get(), "furigana",
+                                Settings.LYRICS_AI_RUBY_PROMPT.get(), "furigana",
                                 LyricsRequests.rubyLanguage(),
                                 track.title(), track.artist(), lines);
                         ProcessingProviders.Result ai = ProcessingProviders.mapLines(provider, prompt, lines);
@@ -328,7 +290,7 @@ public final class RubyGenerator {
                 }
             }
 
-            String reading = rubyReadAs(text, table, null);
+            String reading = lookupReading(text, table);
             if (reading != null) {
                 read.add(withRuby(word, formatRuby(stripOkurigana(text, reading), style)));
                 changed = true;
@@ -341,48 +303,42 @@ public final class RubyGenerator {
     }
 
     /**
-     * Gives each Chinese character its Bopomofo reading. Every Han character is split into its
-     * own word so each one carries its own reading, since bopomofo is character-based and the
-     * word table does not hold multi-character entries.
+     * Gives each Chinese character its own word and its own reading, for the languages read a
+     * character at a time.
+     *
+     * @param table  Where the line's words are cut, or null to cut it by character alone.
+     * @param reader The reading of one character, or null when there is none.
      */
-    private static Lyrics enrichFromBopomofo(Lyrics lyrics, @Nullable WordReadingTable table,
-                                             RubyStyle style) {
-        if (!BopomofoDictStore.isReady()) return lyrics;
+    private static Lyrics enrichByCharacter(Lyrics lyrics, @Nullable WordReadingTable table,
+                                            UnaryOperator<String> reader, RubyStyle style) {
         List<LyricsLine> lines = new ArrayList<>(lyrics.lines().size());
+        boolean changed = false;
         for (LyricsLine line : lyrics.lines()) {
-            lines.add(enrichLineFromBopomofo(line, table, style));
+            LyricsLine read = enrichLineByCharacter(line, table, reader, style);
+            changed |= read != line;
+            lines.add(read);
         }
-        return lyrics.withLines(lines);
+        return changed ? lyrics.withLines(lines) : lyrics;
     }
 
-    private static LyricsLine enrichLineFromBopomofo(LyricsLine line, @Nullable WordReadingTable table,
-                                                     RubyStyle style) {
+    private static LyricsLine enrichLineByCharacter(LyricsLine line, @Nullable WordReadingTable table,
+                                                    UnaryOperator<String> reader, RubyStyle style) {
         if (!ScriptDetector.contains(line.text(), Character.UnicodeScript.HAN)) {
             return line;
         }
-        // Force each Han character into its own word, since bopomofo is character-based.
         List<Word> words = splitHanToSingleChars(segmentedWords(line, table));
         List<Word> read = new ArrayList<>(words.size());
         boolean changed = false;
-
-        int i = 0;
-        while (i < words.size()) {
-            Word word = words.get(i);
+        for (Word word : words) {
             String text = word.text().trim();
-            if (!ScriptDetector.contains(text, Character.UnicodeScript.HAN)) {
-                read.add(word);
-                i++;
-                continue;
-            }
-
-            String reading = rubyReadAs(text, null, table);
+            String reading = ScriptDetector.contains(text, Character.UnicodeScript.HAN)
+                    ? reader.apply(text) : null;
             if (reading != null) {
                 read.add(withRuby(word, formatRuby(reading, style)));
                 changed = true;
             } else {
                 read.add(word);
             }
-            i++;
         }
         return changed ? withWords(line, read) : line;
     }
@@ -419,7 +375,7 @@ public final class RubyGenerator {
                 long wordEnd = startMs + duration * seenChars / totalLen;
                 boolean endsWithSpace = (j == totalLen) && word.endsWithSpace();
                 result.add(new Word(cursorMs, wordEnd, text.substring(i, j),
-                        null, endsWithSpace, word.ruby()));
+                        null, endsWithSpace, null));
                 cursorMs = wordEnd;
                 i = j;
             }
@@ -428,149 +384,20 @@ public final class RubyGenerator {
     }
 
     /**
-     * The Bopomofo reading of a word a character at a time, for the words the word table does
-     * not have. Characters the character tables do not cover are skipped, so a word that is
-     * only partly covered still shows the reading of the characters that are covered.
+     * The reading of a word a character at a time, for the words the word table does not have.
+     * Characters the character tables do not cover are skipped, so a word that is only partly
+     * covered still shows the reading of the characters that are covered.
      */
     @Nullable
-    private static String bopomofoCharacterReading(String text) {
+    private static String characterReading(String text, Function<Character, String> reader) {
         StringBuilder out = new StringBuilder();
         for (int i = 0; i < text.length(); i++) {
             char c = text.charAt(i);
-            if (!ScriptDetector.isHan(c)) {
-                continue;
-            }
-            String reading = UniDictStore.bopomofoReading(c);
-            if (reading == null) {
-                continue;
-            }
-            if (out.length() > 0) out.append(' ');
-            out.append(reading);
-        }
-        return out.length() > 0 ? out.toString() : null;
-    }
-
-    /**
-     * Gives each Han word without a reading its reading from the Rime word table. Words the
-     * table does not have are read a character at a time from the character tables, since a
-     * character alone still says how it is written.
-     */
-    private static Lyrics enrichFromRime(Lyrics lyrics, WordReadingTable table,
-                                         RubyStyle style) {
-        if (!RimeDictStore.isReady(Settings.LYRICS_RUBY_LANGUAGE.get())) return lyrics;
-        List<LyricsLine> lines = new ArrayList<>(lyrics.lines().size());
-        for (LyricsLine line : lyrics.lines()) {
-            lines.add(enrichLineFromRime(line, table, style));
-        }
-        return lyrics.withLines(lines);
-    }
-
-    private static LyricsLine enrichLineFromRime(LyricsLine line, WordReadingTable table,
-                                                 RubyStyle style) {
-        if (!ScriptDetector.contains(line.text(), Character.UnicodeScript.HAN)) {
-            return line;
-        }
-        List<Word> words = segmentedWords(line, table);
-        // Non-Japanese languages read character by character, so each Han character
-        // gets its own word and its own reading.
-        if (!isJapaneseRubyLanguage(Settings.LYRICS_RUBY_LANGUAGE.get())) {
-            words = splitHanToSingleChars(words);
-        }
-        List<Word> read = new ArrayList<>(words.size());
-        boolean changed = false;
-
-        int i = 0;
-        while (i < words.size()) {
-            Word word = words.get(i);
-            String text = word.text().trim();
-            if (!ScriptDetector.contains(text, Character.UnicodeScript.HAN)) {
-                read.add(word);
-                i++;
-                continue;
-            }
-
-            String reading = lookupExactReading(text, table);
-            if (reading == null) {
-                reading = rimeCharacterReading(text);
-            }
+            String reading = ScriptDetector.isHan(c) ? reader.apply(c) : null;
             if (reading != null) {
-                read.add(withRuby(word, formatRuby(reading, style)));
-                changed = true;
-            } else {
-                read.add(word);
+                if (out.length() > 0) out.append(' ');
+                out.append(reading);
             }
-            i++;
-        }
-        return changed ? withWords(line, read) : line;
-    }
-
-    /**
-     * Gives each Chinese character its pinyin or cantonese reading from the UniDictStore, for the
-     * simplified Chinese and cantonese ruby languages. Every Han character is split into its own
-     * word so each one carries its own reading, since these languages are character-based.
-     */
-    private static Lyrics enrichFromUniDict(Lyrics lyrics, @Nullable WordReadingTable table,
-                                             RubyStyle style) {
-        if (!UniDictStore.isReady()) return lyrics;
-        List<LyricsLine> lines = new ArrayList<>(lyrics.lines().size());
-        for (LyricsLine line : lyrics.lines()) {
-            lines.add(enrichLineFromUniDict(line, table, style));
-        }
-        return lyrics.withLines(lines);
-    }
-
-    private static LyricsLine enrichLineFromUniDict(LyricsLine line, @Nullable WordReadingTable table,
-                                                     RubyStyle style) {
-        if (!ScriptDetector.contains(line.text(), Character.UnicodeScript.HAN)) {
-            return line;
-        }
-        // Force each Han character into its own word, since pinyin/cantonese are character-based.
-        List<Word> words = splitHanToSingleChars(segmentedWords(line, table));
-        List<Word> read = new ArrayList<>(words.size());
-        boolean changed = false;
-
-        int i = 0;
-        while (i < words.size()) {
-            Word word = words.get(i);
-            String text = word.text().trim();
-            if (!ScriptDetector.contains(text, Character.UnicodeScript.HAN)) {
-                read.add(word);
-                i++;
-                continue;
-            }
-
-            String reading = rubyReadAs(text, null, table);
-            if (reading != null) {
-                read.add(withRuby(word, formatRuby(reading, style)));
-                changed = true;
-            } else {
-                read.add(word);
-            }
-            i++;
-        }
-        return changed ? withWords(line, read) : line;
-    }
-
-    /**
-     * The Rime reading of a word a character at a time, for the words the word table does
-     * not have. Characters the character tables do not cover are skipped, so a word that is
-     * only partly covered still shows the reading of the characters that are covered.
-     */
-    @Nullable
-    private static String rimeCharacterReading(String text) {
-        StringBuilder out = new StringBuilder();
-        final String rubyLanguage = Settings.LYRICS_RUBY_LANGUAGE.get();
-        for (int i = 0; i < text.length(); i++) {
-            char c = text.charAt(i);
-            if (!ScriptDetector.isHan(c)) {
-                continue;
-            }
-            String reading = RimeDictStore.reading(c, rubyLanguage);
-            if (reading == null) {
-                continue;
-            }
-            if (out.length() > 0) out.append(' ');
-            out.append(reading);
         }
         return out.length() > 0 ? out.toString() : null;
     }
@@ -588,24 +415,12 @@ public final class RubyGenerator {
 
         List<Word> expanded = new ArrayList<>(line.words().size());
         for (Word word : line.words()) {
-            if (needsSplit(word.text(), table)) {
+            if (!hasRuby(word) && needsSplit(word.text(), table)) {
                 List<Word> parts = segmentText(word.text(), word.startMs(), word.endMs(), table);
                 if (parts.size() > 1) {
                     Word last = parts.get(parts.size() - 1);
                     parts.set(parts.size() - 1, new Word(last.startMs(), last.endMs(),
                             last.text(), last.romaji(), word.endsWithSpace(), null));
-                    // Carry the word's ruby to the first Han part, so a reading already
-                    // applied is not lost when the word is cut up.
-                    if (word.ruby() != null) {
-                        for (int pi = 0; pi < parts.size(); pi++) {
-                            Word part = parts.get(pi);
-                            if (ScriptDetector.contains(part.text(), Character.UnicodeScript.HAN)) {
-                                parts.set(pi, new Word(part.startMs(), part.endMs(), part.text(),
-                                        part.romaji(), part.endsWithSpace(), word.ruby()));
-                                break;
-                            }
-                        }
-                    }
                     expanded.addAll(parts);
                     continue;
                 }
@@ -842,7 +657,7 @@ public final class RubyGenerator {
             boolean changed = words.size() != line.words().size();
             for (Word word : words) {
                 String clean = word.text().trim();
-                String reading = !ScriptDetector.contains(clean, Character.UnicodeScript.HAN)
+                String reading = hasRuby(word) || !ScriptDetector.contains(clean, Character.UnicodeScript.HAN)
                         ? null
                         : aiReading(clean, readings);
                 if (reading == null) {
@@ -915,60 +730,10 @@ public final class RubyGenerator {
     }
 
     /** Whether the ruby language is one the shipped Japanese dictionary reads. */
-    private static boolean isJapaneseRubyLanguage(String language) {
+    public static boolean isJapaneseRubyLanguage(String language) {
         return "ja".equalsIgnoreCase(language)
                 || "ja-Hira".equalsIgnoreCase(language)
                 || "ja-Kana".equalsIgnoreCase(language);
-    }
-
-    /** The ruby reading of a word, or null when no local reader covers it. */
-    @Nullable
-    private static String rubyReadAs(String text,
-                                     @Nullable WordReadingTable japaneseTable,
-                                     @Nullable WordReadingTable bopomofoTable) {
-        final String rubyLanguage = Settings.LYRICS_RUBY_LANGUAGE.get();
-        if ("BOPOMOFO".equalsIgnoreCase(rubyLanguage)) {
-            String reading = bopomofoTable != null ? lookupExactReading(text, bopomofoTable) : null;
-            return reading != null ? reading : bopomofoCharacterReading(text);
-        }
-        if (isJapaneseRubyLanguage(rubyLanguage)) {
-            return japaneseTable != null ? lookupReading(text, japaneseTable) : null;
-        }
-        // Simplified Chinese, Cantonese, and Traditional Chinese: read each Han character
-        // from UniDictStore (pinyin/cantonese) or RimeDictStore (traditional).
-        if (rubyLanguage == null) return null;
-        if ("TRADITIONAL_CHINESE".equalsIgnoreCase(rubyLanguage)) {
-            return rimeCharacterReading(text);
-        }
-        if ("CANTONESE".equalsIgnoreCase(rubyLanguage)) {
-            return chineseCharacterReading(text, "CANTONESE");
-        }
-        return chineseCharacterReading(text, "SIMPLIFIED_CHINESE");
-    }
-
-    /**
-     * The pinyin or cantonese reading of a word a character at a time, for the words the word
-     * table does not have. Characters the character tables do not cover are skipped, so a word
-     * that is only partly covered still shows the reading of the characters that are covered.
-     */
-    @Nullable
-    private static String chineseCharacterReading(String text, String rubyLanguage) {
-        StringBuilder out = new StringBuilder();
-        for (int i = 0; i < text.length(); i++) {
-            char c = text.charAt(i);
-            if (!ScriptDetector.isHan(c)) {
-                continue;
-            }
-            String reading = "CANTONESE".equalsIgnoreCase(rubyLanguage)
-                    ? UniDictStore.cantoneseReading(c)
-                    : UniDictStore.pinyinReading(c);
-            if (reading == null) {
-                continue;
-            }
-            if (out.length() > 0) out.append(' ');
-            out.append(reading);
-        }
-        return out.length() > 0 ? out.toString() : null;
     }
 
     public enum RubyStyle {
@@ -979,5 +744,4 @@ public final class RubyGenerator {
     public interface Callback {
         void onGenerated(Lyrics lyrics);
     }
-
 }

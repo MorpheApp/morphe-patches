@@ -107,25 +107,25 @@ public class LyricsMergeTest {
     }
 
     @Test
-    public void addSongwriterAppendsNewEntry() {
+    public void addCreditAppendsNewEntry() {
         Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "text"));
-        Lyrics updated = LyricsMerge.addSongwriter(lyrics, "John Doe");
-        assertEquals(List.of("John Doe"), updated.songwriters());
+        Lyrics updated = LyricsMerge.addCredit(lyrics, "John Doe");
+        assertEquals(List.of("John Doe"), updated.credits());
     }
 
     @Test
-    public void addSongwriterSkipsDuplicate() {
+    public void addCreditSkipsDuplicate() {
         Lyrics lyrics = new Lyrics(List.of(new LyricsLine(0, "text")), "p", false,
-                null, null, null, List.of("John Doe"), null, null, null);
-        Lyrics updated = LyricsMerge.addSongwriter(lyrics, "John Doe");
+                null, null, null, null, List.of("John Doe"), null, null, null, null, null);
+        Lyrics updated = LyricsMerge.addCredit(lyrics, "John Doe");
         assertSame(lyrics, updated);
     }
 
     @Test
-    public void addSongwriterHandlesNull() {
-        assertNull(LyricsMerge.addSongwriter(null, "entry"));
+    public void addCreditHandlesNull() {
+        assertNull(LyricsMerge.addCredit(null, "entry"));
         Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "text"));
-        assertSame(lyrics, LyricsMerge.addSongwriter(lyrics, null));
+        assertSame(lyrics, LyricsMerge.addCredit(lyrics, null));
     }
 
     @Test

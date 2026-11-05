@@ -158,8 +158,8 @@ public final class MetadataCleaner {
 
     /**
      * Like {@link #applyRegex}, but returns the input untouched when the pattern matches nothing.
-     * Used on lyrics lines before display: normalizing an untouched line would fold its fullwidth
-     * punctuation to ASCII even when the filter never fired.
+     * Used on lyrics lines before display: normalizing an untouched line would fold its
+     * fullwidth punctuation ({@code ，！？～（）} …) to ASCII even when the filter never fired.
      */
     public static String applyRegexPreserveOriginal(String input, String regex) {
         if (regex == null || regex.trim().isEmpty()) {
@@ -342,8 +342,8 @@ public final class MetadataCleaner {
     }
 
     /**
-     * Splits a setting value into the value a caller returns as is and whether it is a remote URL
-     * that still has to be resolved; {@code local} holds the resolved answer in that case.
+     * Splits a setting value into the value a caller returns as is and whether it is a remote
+     * URL that still has to be resolved; {@code local} holds the resolved answer in that case.
      */
     private record SettingLookup(String trimmed, boolean remote, @Nullable String local) {
     }

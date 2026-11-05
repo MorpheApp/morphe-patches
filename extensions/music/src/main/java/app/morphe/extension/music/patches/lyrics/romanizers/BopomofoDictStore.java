@@ -41,7 +41,6 @@ public final class BopomofoDictStore {
             "https://raw.githubusercontent.com/openvanilla/McBopomofo/" + WORDS_REVISION
                     + "/Source/Data/BPMFMappings.txt";
     private static final String WORDS_ARCHIVE = "bopomofo_words.txt";
-    private static final String WORDS_NOTICE_NAME = "bopomofo_words.NOTICE.txt";
     private static final WordTableFile WORDS = new WordTableFile(
             "bopomofo_words_" + WORDS_REVISION + ".bin",
             new byte[]{'M', 'B', 'P', 'F', '0', '0', '0', '1'}, 1 << 20);
@@ -68,8 +67,8 @@ public final class BopomofoDictStore {
     }
 
     /**
-     * Removes the word table and its licence notice. The character table is
-     * {@link UniDictStore}'s to remove, and is left alone.
+     * Removes the word table. The character table is {@link UniDictStore}'s to remove, and is
+     * left alone.
      */
     public static void delete() {
         WORDS.clear();
@@ -77,11 +76,6 @@ public final class BopomofoDictStore {
         if (file != null && file.exists()) {
             //noinspection ResultOfMethodCallIgnored
             file.delete();
-        }
-        File directory = RomanizationDict.directory();
-        if (directory != null) {
-            //noinspection ResultOfMethodCallIgnored
-            new File(directory, WORDS_NOTICE_NAME).delete();
         }
     }
 
@@ -127,12 +121,6 @@ public final class BopomofoDictStore {
         });
     }
 
-    @Nullable
-    public static String notice() {
-        File directory = RomanizationDict.directory();
-        return directory == null ? null : RomanizationDict.readNotice(directory, WORDS_NOTICE_NAME);
-    }
-
     private static int entries() {
         WordReadingTable words = word();
         return words == null ? 0 : words.size();
@@ -143,7 +131,6 @@ public final class BopomofoDictStore {
         if (directory == null) throw new IOException("no cache directory");
 
         WORDS.build(directory, WORDS_URL, WORDS_ARCHIVE, BopomofoDictStore::addWords, listener);
-        RomanizationDict.writeNotice(directory, WORDS_NOTICE_NAME, wordsNoticeText());
         listener.onReady(entries());
     }
 
@@ -176,30 +163,5 @@ public final class BopomofoDictStore {
             }
             listener.onBuilding(100);
         }
-    }
-
-    private static String wordsNoticeText() {
-        return "McBopomofo Bopomofo word readings\n"
-                + WORDS_URL + "\n\n"
-                + "From https://github.com/openvanilla/McBopomofo\n\n"
-                + "MIT License\n\n"
-                + "Copyright (c) 2011-2026 Mengjuei Hsieh et al.\n\n"
-                + "Permission is hereby granted, free of charge, to any person obtaining a copy\n"
-                + "of this software and associated documentation files (the \"Software\"), to deal\n"
-                + "in the Software without restriction, including without limitation the rights\n"
-                + "to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n"
-                + "copies of the Software, and to permit persons to whom the Software is\n"
-                + "furnished to do so, subject to the following conditions:\n\n"
-                + "The above copyright notice and this permission notice shall be included in all\n"
-                + "copies or substantial portions of the Software.\n\n"
-                + "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n"
-                + "IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n"
-                + "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n"
-                + "AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n"
-                + "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n"
-                + "OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n"
-                + "SOFTWARE.\n\n"
-                + "What is stored here is the Bopomofo reading of each word, taken from\n"
-                + "BPMFMappings.txt in the file above.\n";
     }
 }

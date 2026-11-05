@@ -228,7 +228,7 @@ public final class LyricsOrderedListPreference extends Preference {
      * being validated against a server.
      */
     private boolean opensSettingsDialog(String id) {
-        return hasConfigDialog(id) || isRimeProvider(id);
+        return hasConfigDialog(id) || isLocalProvider(id) || isRimeProvider(id);
     }
 
     private void showConfigDialog(String id) {
@@ -236,10 +236,10 @@ public final class LyricsOrderedListPreference extends Preference {
                 || activity.isFinishing() || activity.isDestroyed()) {
             return;
         }
-        final Kind k = kind();
-        final StringSetting prompt2 = k == Kind.ROMANIZATION
-                ? Settings.LYRICS_AI_ROMANIZATION_PROMPT_2 : null;
-        LyricsProviderConfigDialog.show(activity, id, promptSettingFor(k), prompt2, this::updateSummary);
+        final StringSetting rubyPrompt = kind() == Kind.ROMANIZATION
+                ? Settings.LYRICS_AI_RUBY_PROMPT : null;
+        LyricsProviderConfigDialog.show(activity, id, promptSettingFor(kind()), rubyPrompt,
+                this::updateSummary);
     }
 
     /** The prompt an AI service is sent; DeepL translates without one. */
@@ -462,7 +462,8 @@ public final class LyricsOrderedListPreference extends Preference {
         bopomofo.setChecked(chosen[LyricsLocalRomanizationDownloads.BOPOMOFO]);
         styleCheckBox(bopomofo, fg);
 
-        // Bopomofo shares charset fallback with the character provider.
+        // A Chinese word table reads the rest of a line from the character tables, so choosing
+        // one keeps the character provider on.
         final CompoundButton.OnCheckedChangeListener keepUniDict = (button, checked) -> {
             if (checked) {
                 unidict.setChecked(true);

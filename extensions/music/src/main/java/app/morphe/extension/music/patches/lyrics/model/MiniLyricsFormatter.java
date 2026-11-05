@@ -187,7 +187,8 @@ public final class MiniLyricsFormatter {
             frames.add(frame);
             return;
         }
-        final List<Chunk> halves = chunks(new LyricsLine(0, frame), -1L, limit, false, false, fullWidthMultiplier, LyricsTextFormatter.HAN_NONE);
+        final List<Chunk> halves = chunks(new LyricsLine(0, frame), -1, limit, false, false,
+                fullWidthMultiplier, LyricsTextFormatter.HAN_NONE);
         if (halves.size() < 2) {
             frames.add(frame);
             return;
@@ -216,7 +217,7 @@ public final class MiniLyricsFormatter {
 
     /**
      * Replaces {t} with the title, {a} with the artist and {lrc} with the lyric if one is given.
-     * Done in one pass, so a placeholder in a song title is kept as is.
+     * This is done in one pass, so a placeholder in a song title is kept as is.
      */
     private static String replacePlaceholders(String template, @Nullable String title,
                                               @Nullable String artist, @Nullable String lyric) {
@@ -251,10 +252,10 @@ public final class MiniLyricsFormatter {
     }
 
     /**
-     * Fills in placeholders in one pass, so a placeholder inside a value is kept as is. Text
-     * between unescaped colons appears only when every placeholder in it is populated: a non-empty
-     * value, and for the count {n} a value other than 1. A section without placeholders appears
-     * when {@code bareShown} is set. A backslash before a colon keeps it literal.
+     * Fills in placeholders in one pass, so a placeholder inside a value is kept as is. Text between
+     * unescaped colons appears only when every placeholder in it is populated: a non-empty value,
+     * and for the count {n} a value other than 1. A section without placeholders appears when
+     * {@code bareShown} is set. A backslash before a colon keeps it literal.
      */
     static String render(String template, Map<String, String> values, boolean bareShown) {
         final StringBuilder out = new StringBuilder();
@@ -365,8 +366,8 @@ public final class MiniLyricsFormatter {
 
     /**
      * Splits a line longer than the limit into two halves of about equal length, by words or by
-     * characters if the line has no spaces. A half starts at the time its first word is sung, or at
-     * a time in proportion to its position in the line if the words have no times.
+     * characters if the line has no spaces. A half starts at the time its first word is sung, or
+     * at a time in proportion to its position in the line if the words have no times.
      */
     public static List<Chunk> chunks(LyricsLine line, long intervalEndMs, int limit,
                                      boolean capitalize, boolean strip) {

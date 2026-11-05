@@ -116,6 +116,8 @@ final class DynamicBackgroundView extends View {
     private final Paint scrimPaint = new Paint();
     private final Rect screenRect = new Rect();
     private final Matrix layerMatrix = new Matrix();
+    private int scrimHeight = -1;
+
     private final float[] layerPerimeterTime = new float[LAYER_COUNT];
     private final float[] layerBeatScale = new float[LAYER_COUNT];
     private final float[] layerBeatRotation = new float[LAYER_COUNT];
@@ -123,7 +125,6 @@ final class DynamicBackgroundView extends View {
     private final float[] layerSmoothBeatScale = new float[LAYER_COUNT];
     private final float[] layerPositionX = new float[LAYER_COUNT];
     private final float[] layerPositionY = new float[LAYER_COUNT];
-    private int scrimHeight = -1;
     private float beatBaseline;
     private float beatPulse;
     private float visualizerPulse;
@@ -147,14 +148,14 @@ final class DynamicBackgroundView extends View {
     private long lastDrawUptimeMs;
     private long lastRotationTickUptimeMs;
 
+    private final Runnable frameRunnable = this::onFrameTick;
+
     DynamicBackgroundView(Context context) {
         super(context);
         setWillNotDraw(false);
         currentArtwork = lastArtwork;
         postProcessPaint.setColorFilter(new ColorMatrixColorFilter(createPostProcessMatrix()));
     }
-
-    private final Runnable frameRunnable = this::onFrameTick;
 
     /** Boosts saturation and contrast, so the colors stay rich under the dark scrim. */
     private static ColorMatrix createPostProcessMatrix() {
@@ -177,56 +178,6 @@ final class DynamicBackgroundView extends View {
 
     private static boolean isAnimated() {
         return Settings.LYRICS_DYNAMIC_BACKGROUND_ANIMATED.get();
-    }
-
-    @Nullable
-    private static Bitmap downloadThumbnail(String videoId) {
-        final String url = "https://i.ytimg.com/vi/" + videoId + "/hqdefault.jpg";
-        HttpURLConnection connection = null;
-        try {
-            connection = Requester.openConnection(url);
-            connection.setConnectTimeout(THUMBNAIL_TIMEOUT_MS);
-            connection.setReadTimeout(THUMBNAIL_TIMEOUT_MS);
-            try (InputStream input = connection.getInputStream()) {
-                Bitmap downloaded = BitmapFactory.decodeStream(input);
-                if (downloaded == null) {
-                    return null;
-                }
-                // The 4:3 thumbnail letterboxes a 16:9 frame, and a square cover sits in the
-                // middle of that frame, so the center square of the frame is the cover itself.
-                Bitmap artwork = cropAndScale(downloaded, downloaded.getWidth() * 9 / 16);
-                if (artwork != downloaded) {
-                    downloaded.recycle();
-                }
-                return artwork;
-            }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not fetch thumbnail: " + url, ex);
-            return null;
-        } finally {
-            if (connection != null) {
-                connection.disconnect();
-            }
-        }
-    }
-
-    /** Scales the centered square of at most {@code side} pixels to the artwork size. */
-    private static Bitmap cropAndScale(Bitmap source, int side) {
-        final int width = source.getWidth();
-        final int height = source.getHeight();
-        side = Math.min(side, Math.min(width, height));
-        if (side == ARTWORK_SIZE && width == side && height == side) {
-            return source;
-        }
-        Matrix scale = new Matrix();
-        scale.setScale((float) ARTWORK_SIZE / side, (float) ARTWORK_SIZE / side);
-        return Bitmap.createBitmap(source, (width - side) / 2, (height - side) / 2,
-                side, side, scale, true);
-    }
-
-    private static float smoothStep(float value) {
-        final float x = Math.max(0.0f, Math.min(1.0f, value));
-        return x * x * (3.0f - 2.0f * x);
     }
 
     private boolean isActive() {
@@ -282,6 +233,51 @@ final class DynamicBackgroundView extends View {
                 }
             });
         });
+    }
+
+    @Nullable
+    private static Bitmap downloadThumbnail(String videoId) {
+        final String url = "https://i.ytimg.com/vi/" + videoId + "/hqdefault.jpg";
+        HttpURLConnection connection = null;
+        try {
+            connection = Requester.openConnection(url);
+            connection.setConnectTimeout(THUMBNAIL_TIMEOUT_MS);
+            connection.setReadTimeout(THUMBNAIL_TIMEOUT_MS);
+            try (InputStream input = connection.getInputStream()) {
+                Bitmap downloaded = BitmapFactory.decodeStream(input);
+                if (downloaded == null) {
+                    return null;
+                }
+                // The 4:3 thumbnail letterboxes a 16:9 frame, and a square cover sits in the
+                // middle of that frame, so the center square of the frame is the cover itself.
+                Bitmap artwork = cropAndScale(downloaded, downloaded.getWidth() * 9 / 16);
+                if (artwork != downloaded) {
+                    downloaded.recycle();
+                }
+                return artwork;
+            }
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not fetch thumbnail: " + url, ex);
+            return null;
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+    }
+
+    /** Scales the centered square of at most {@code side} pixels to the artwork size. */
+    private static Bitmap cropAndScale(Bitmap source, int side) {
+        final int width = source.getWidth();
+        final int height = source.getHeight();
+        side = Math.min(side, Math.min(width, height));
+        if (side == ARTWORK_SIZE && width == side && height == side) {
+            return source;
+        }
+        Matrix scale = new Matrix();
+        scale.setScale((float) ARTWORK_SIZE / side, (float) ARTWORK_SIZE / side);
+        return Bitmap.createBitmap(source, (width - side) / 2, (height - side) / 2,
+                side, side, scale, true);
     }
 
     private void showArtwork(Bitmap artwork) {
@@ -466,6 +462,11 @@ final class DynamicBackgroundView extends View {
         } else {
             beatPulse = beatPulse > 0.0001f ? beatPulse * BEAT_PULSE_DECAY : 0.0f;
         }
+    }
+
+    private static float smoothStep(float value) {
+        final float x = Math.max(0.0f, Math.min(1.0f, value));
+        return x * x * (3.0f - 2.0f * x);
     }
 
     /** Rotation, beat scale and orbit position of each layer. */

@@ -32,7 +32,10 @@ public final class LyricsMatch {
         return !filtered.isEmpty();
     }
 
-    /** Cache id: the provider name minus any qualifier, so the cache keeps one entry per provider. */
+    /**
+     * The id the cache stores this under: the name shown to the user, minus any qualifier such
+     * as "(via Lyrically)", so the cache keeps one entry per provider.
+     */
     public static String cacheSourceFor(@Nullable Lyrics lyrics) {
         if (lyrics == null) {
             return "";
@@ -66,8 +69,9 @@ public final class LyricsMatch {
     }
 
     /**
-     * The track duration after SponsorBlock segments are subtracted, so candidates written against
-     * the released audio pass the duration filter.
+     * The track the search asks with: the released audio's duration, the video minus its SponsorBlock
+     * segments, so candidates written against it pass the duration filter. With
+     * {@link Settings#LYRICS_SB_MATCHING} off none of that is requested or subtracted.
      */
     static TrackInfo withEffectiveDuration(TrackInfo track,
                                            @Nullable List<SkipSegments.Seg> segs) {
@@ -86,8 +90,10 @@ public final class LyricsMatch {
     }
 
     /**
-     * Whether the lyrics were fetched by video id and so are written against the player's timeline,
-     * where SB segments must not be subtracted.
+     * Whether these lyrics were fetched by video id, and so are written against the timeline the
+     * player reports: playback time is already their clock, and the SponsorBlock segments must not
+     * be subtracted from it. Results matched by title come from the released audio and always get the
+     * subtraction; Captions matches by prefix because its ASR track carries a name of its own.
      */
     static boolean isVideoIdMatchedLyrics(@Nullable Lyrics lyrics) {
         if (lyrics == null) {

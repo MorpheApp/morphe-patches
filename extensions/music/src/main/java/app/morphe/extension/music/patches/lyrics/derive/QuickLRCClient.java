@@ -250,8 +250,9 @@ public final class QuickLRCClient {
     }
 
     /**
-     * Drops CJK gaps the service puts between tokens. Applied to the body so the cleaned text is
-     * what's stored; hand-rolled because no regex looks past the tags.
+     * Drops the gaps the service puts between CJK tokens, as in {@code <t>我 <t>靠 <t>， <t>我}.
+     * Applied to the body so the cleaned text is what the raw format, cache and exporter store;
+     * hand-rolled because no regex looks that far past the tags.
      */
     private static String dropCjkSeparators(String lrc) {
         final StringBuilder out = new StringBuilder(lrc.length());
@@ -266,7 +267,10 @@ public final class QuickLRCClient {
         return out.toString();
     }
 
-    /** Whether whitespace at {@code start} separates two CJK tokens, reading past tags to tell them from Latin text. */
+    /**
+     * Whether the whitespace at {@code start} separates two CJK tokens. A tag counts as CJK
+     * only through the text it wraps, which is what keeps {@code 我靠 <t>world} its space.
+     */
     private static boolean isCjkGap(String lrc, int start) {
         final int before = lastNonSpaceBefore(lrc, start);
         if (before < 0) {
@@ -283,7 +287,10 @@ public final class QuickLRCClient {
                 && isCjk(charAfterTag(lrc, after));
     }
 
-    /** The text a tag introduces, read past the tag boundary. */
+    /**
+     * The text a tag introduces. In {@code <t>我 <t>靠} the gap only faces {@code 我} and
+     * {@code <}, so the other side has to be read past the tag to tell 靠 from world.
+     */
     private static char charAfterTag(String lrc, int tagStart) {
         final int close = lrc.indexOf('>', tagStart);
         if (close < 0) {
@@ -372,7 +379,9 @@ public final class QuickLRCClient {
         FAILED
     }
 
-    /** What a key check concluded. {@link #REJECTED} is the only one that should refuse a save. */
+    /**
+     * What a key check concluded. {@link #REJECTED} is the only one that should refuse a save.
+     */
     public enum KeyCheck {
         /** The service read the key and objected to something else. */
         ACCEPTED,

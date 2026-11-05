@@ -8,11 +8,14 @@
 package app.morphe.extension.music.patches.lyrics.romanizers;
 
 import android.icu.text.Transliterator;
+import android.os.Build;
 
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import app.morphe.extension.shared.Logger;
 
 /** System ICU transliterator; reads script-by-script, needs no download. */
 public final class IcuRomanizer {
@@ -28,9 +31,9 @@ public final class IcuRomanizer {
     private IcuRomanizer() {
     }
 
-    /** Null when nothing was read, which tells the next provider to take the turn. */
+    /** One reading per line, or null when nothing was read so the next provider takes the turn. */
     @Nullable
-    public static Result romanize(List<String> lines) {
+    public static List<String> romanize(List<String> lines) {
         final Transliterator current = require();
         if (current == null) {
             return null;
@@ -42,29 +45,23 @@ public final class IcuRomanizer {
             applied |= !reading.equals(line);
             result.add(reading);
         }
-        return applied ? new Result(result) : null;
+        return applied ? result : null;
     }
 
-    /** The transliterator, or null when this Android does not ship the rule id. */
+    /** The transliterator, or null below Android 10, which has no {@link Transliterator} class. */
     @Nullable
     private static synchronized Transliterator require() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            return null;
+        }
         if (reader == null) {
             try {
                 reader = Transliterator.getInstance(RULE);
             } catch (RuntimeException ex) {
-                // The id is missing on very old builds; fall back to the next provider.
+                Logger.printInfo(() -> "ICU transliterator is not available", ex);
                 return null;
             }
         }
         return reader;
-    }
-
-    public static final class Result {
-        /** One line per input line. */
-        public final List<String> lines;
-
-        Result(List<String> lines) {
-            this.lines = lines;
-        }
     }
 }
