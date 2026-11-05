@@ -587,7 +587,8 @@ internal fun baseCustomBrandingPatch(
         if (useCustomIcon) {
             // Reading the option already checked the folder, see customIconFiles
             customIconFiles(customIcon!!)!!.forEach { file ->
-                val targetFile = resourceFile("res/${file.parentFile.name}/${file.name}")
+                // Replaced without decoding what it replaces.
+                val targetFile = resourceFile("res/${file.parentFile.name}/${file.name}", false)
                 targetFile.parentFile.mkdirs()
                 file.copyTo(targetFile, overwrite = true)
             }

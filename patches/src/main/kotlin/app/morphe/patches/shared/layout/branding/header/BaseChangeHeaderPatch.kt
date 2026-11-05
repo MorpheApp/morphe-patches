@@ -94,7 +94,8 @@ internal fun baseChangeHeaderPatch(
         // Reading the option already checked the folder, see customHeaderImages
         custom?.let { path ->
             customHeaderImages(path, targetResourceDirectoryNames.keys, customHeaderResourceFileNames)!!.forEach { image ->
-                val targetFile = resourceFile("res/${image.parentFile.name}/${image.name}")
+                // Replaced without decoding what it replaces.
+                val targetFile = resourceFile("res/${image.parentFile.name}/${image.name}", false)
                 targetFile.parentFile.mkdirs()
                 image.copyTo(targetFile, overwrite = true)
             }
