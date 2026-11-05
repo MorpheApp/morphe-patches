@@ -223,6 +223,11 @@ public final class GlassNavigationBar {
     private static volatile int seenAppRoomPadding;
 
     /**
+     * How far the room the app adds to the height may differ from the bottom padding.
+     */
+    private static final int SEEN_ROOM_TOLERANCE = Dim.dp2;
+
+    /**
      * Some configurations, such as with the layout updates of the app disabled, add the room
      * for the system navigation buttons to the height of the bar another way, so it is not known
      * as the room the app added, and it would be added twice. The bar is then given its full
@@ -236,10 +241,12 @@ public final class GlassNavigationBar {
             seenAppRoomPadding = padding;
         }
 
+        // The app can round the room it adds differently from the padding, such as 109 for a padding of 110.
         final int base = baseHeight;
-        if (base > 0 && padding > 0 && height - base == padding && seenAppRoom != padding) {
-            seenAppRoom = padding;
-            Logger.printDebug(() -> "Glass navigation bar room added by the app: " + padding);
+        final int room = height - base;
+        if (base > 0 && padding > 0 && Math.abs(room - padding) <= SEEN_ROOM_TOLERANCE && seenAppRoom != room) {
+            seenAppRoom = room;
+            Logger.printDebug(() -> "Glass navigation bar room added by the app: " + room + " padding: " + padding);
         }
     }
 
@@ -247,8 +254,11 @@ public final class GlassNavigationBar {
      * @return The room below the buttons the app added to the height of the bar itself.
      */
     private static int getAppRoom(View navigationBar) {
-        final int seenRoom = navigationBar.getPaddingBottom() == seenAppRoomPadding ? seenAppRoom : 0;
-        return Math.max(appRoom, seenRoom);
+        final int padding = navigationBar.getPaddingBottom();
+        final int seenRoom = padding == seenAppRoomPadding ? seenAppRoom : 0;
+        // The stored room can still be the room of a previous bar, such as after switching between
+        // gesture and 3-button navigation, and the app never adds more room than the padding.
+        return Math.max(0, Math.min(Math.max(padding, seenRoom), Math.max(appRoom, seenRoom)));
     }
 
     /**
@@ -430,8 +440,13 @@ public final class GlassNavigationBar {
 
         // The height the app gives the bar, without the room below the buttons.
         ViewGroup.LayoutParams params = pivotBar.getLayoutParams();
-        baseHeight = params != null && params.height > 0 ? params.height - appRoom : 0;
-        Logger.printDebug(() -> "Glass navigation bar base height: " + baseHeight + " app room: " + appRoom);
+        // The room of this bar, not the stored room, which can be the room of a previous bar,
+        // such as after switching between gesture and 3-button navigation.
+        final int barRoom = pivotBar instanceof NavigationBarPatch.PivotBarAccess access
+                ? Math.max(0, access.patch_getSystemButtonsRoom())
+                : appRoom;
+        baseHeight = params != null && params.height > 0 ? params.height - barRoom : 0;
+        Logger.printDebug(() -> "Glass navigation bar base height: " + baseHeight + " app room: " + barRoom);
 
         // The background the app gave the navigation bar, which is put back if the bar
         // is not a horizontal bar at the bottom, such as a navigation rail on large screens.
@@ -957,6 +972,13 @@ public final class GlassNavigationBar {
 
                 final float radius = capsule.height() / 2;
                 updateShaders();
+
+                // The Shorts player ends above the navigation bar, so the background of the window
+                // would show around the capsule, which is white with the light theme.
+                // The Shorts player is always dark, so the bar is kept black around the capsule.
+                if (style == STYLE_SHORTS) {
+                    canvas.drawColor(Color.BLACK);
+                }
 
                 // Soft shadow below the capsule.
                 for (int i = SHADOW_LAYERS; i >= 1; i--) {

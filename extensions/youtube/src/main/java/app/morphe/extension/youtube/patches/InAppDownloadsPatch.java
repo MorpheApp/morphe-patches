@@ -40,6 +40,9 @@ import app.morphe.extension.youtube.innertube.Offline.EntityKey;
 import app.morphe.extension.youtube.innertube.Offline.FlexibleAction;
 import app.morphe.extension.youtube.innertube.Offline.FlexibleActionsRow;
 import app.morphe.extension.youtube.innertube.Offline.FlexibleActionsViewModel;
+import app.morphe.extension.youtube.innertube.Offline.OfflineCaptionTrack;
+import app.morphe.extension.youtube.innertube.Offline.OfflineCaptionTracklist;
+import app.morphe.extension.youtube.innertube.Offline.OfflineCaptions;
 import app.morphe.extension.youtube.innertube.Offline.OfflineCommand;
 import app.morphe.extension.youtube.innertube.Offline.OfflineDownloadAction;
 import app.morphe.extension.youtube.innertube.Offline.OfflineDownloadActionCommand;
@@ -107,6 +110,14 @@ public final class InAppDownloadsPatch {
      * Opus audio is not saved, the other audio and all video formats are.
      */
     private static final String UNSAVABLE_AUDIO_MIME_TYPE_PREFIX = "audio/webm";
+
+    /**
+     * Format of the caption urls of the app. The caption urls of visionOS have no format, and the server
+     * then answers with a legacy format whose text is escaped twice, so the saved captions show
+     * entities such as {@code &#39;} instead of an apostrophe.
+     * The format is not a signed parameter, so the url stays valid.
+     */
+    private static final String CAPTION_URL_FORMAT = "&fmt=srv3";
 
     /**
      * Key of the interaction logger, in the context a command is run with.
@@ -332,6 +343,9 @@ public final class InAppDownloadsPatch {
             OfflinePlayerResponse.Builder builder = OfflinePlayerResponse.parseFrom(streams.streamingData()).toBuilder();
             builder.setStreamingData(savableStreamingData(builder.getStreamingData()))
                     .setOfflineState(playableOfflineState(original.getOfflineState().getToken()));
+            if (builder.hasCaptions()) {
+                builder.setCaptions(srv3Captions(builder.getCaptions()));
+            }
 
             // Without the ExoPlayer config the app only looks at the progressive formats, which are not savable.
             // The player config of the app's own response fits the device, so it's kept if there is one.
@@ -643,6 +657,16 @@ public final class InAppDownloadsPatch {
             }
         }
         return builder.build();
+    }
+
+    private static OfflineCaptions srv3Captions(OfflineCaptions captions) {
+        OfflineCaptionTracklist.Builder tracklist = captions.getPlayerCaptionsTracklistRenderer().toBuilder();
+        for (int i = 0, count = tracklist.getCaptionTracksCount(); i < count; i++) {
+            OfflineCaptionTrack track = tracklist.getCaptionTracks(i);
+            String baseUrl = track.getBaseUrl().replaceAll("&fmt=[^&]*", "") + CAPTION_URL_FORMAT;
+            tracklist.setCaptionTracks(i, track.toBuilder().setBaseUrl(baseUrl));
+        }
+        return captions.toBuilder().setPlayerCaptionsTracklistRenderer(tracklist).build();
     }
 
     private static boolean isSavableMimeType(String mimeType) {
