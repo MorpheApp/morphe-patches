@@ -1349,12 +1349,14 @@ public class FeedCardLayoutPatch {
                     // The card can be drawn before it's added to the list.
                     if (isCardLabel(view.getContentDescription())) {
                         // The label can be on a view inside the list item, which the padding of the card
-                        // already moves in, so the outline is set on the list item.
+                        // already moves in, so the outline is set on the list item, or on the column of a row of cards.
                         View item = view;
+                        View column = view;
                         while (item.getParent() instanceof View parentView && !(parentView instanceof RecyclerView)) {
+                            column = item;
                             item = parentView;
                         }
-                        setCardOutline(item, CARD_OUTLINE);
+                        setCardOutline(isCardRow(item) ? column : item, CARD_OUTLINE);
                         inCard = true;
                         break;
                     }
@@ -1487,6 +1489,16 @@ public class FeedCardLayoutPatch {
     }
 
     private static void updateCardOutline(View child) {
+        if (isCardRow(child)) {
+            setCardOutline(child, null);
+            ViewGroup row = (ViewGroup) child;
+            for (int i = 0, count = row.getChildCount(); i < count; i++) {
+                View column = row.getChildAt(i);
+                setCardOutline(column, hasLabelMarker(column, CARD_LABEL_MARKER, 0) ? CARD_OUTLINE : null);
+            }
+            return;
+        }
+
         // The label is on the list item, or on a view inside it.
         CardOutlineProvider outline = hasLabelMarker(child, CARD_LABEL_MARKER, 0) ? CARD_OUTLINE : null;
         // The items of the feed are cards, also the ones that YouTube sends as cards and are not converted.
@@ -1495,6 +1507,27 @@ public class FeedCardLayoutPatch {
             outline = FEED_ITEM_OUTLINE;
         }
         setCardOutline(child, outline);
+    }
+
+    /**
+     * The grids of the watch page on large screens have a row of cards per list item, with each card
+     * in a column of the row. The padding of the card moves the content inside the column,
+     * so the outline is set on the columns. The label is on the column or on a view inside it,
+     * and a column is narrower than a list item that is one card.
+     */
+    private static boolean isCardRow(View item) {
+        if (!(item instanceof ViewGroup row) || isCardLabel(item.getContentDescription())) {
+            return false;
+        }
+        final int cardContentWidth = item.getWidth() - 2 * CARD_OUTLINE.horizontalPadding;
+        for (int i = 0, count = row.getChildCount(); i < count; i++) {
+            View column = row.getChildAt(i);
+            final int width = column.getWidth();
+            if (width > 0 && width < cardContentWidth - 2 && hasLabelMarker(column, CARD_LABEL_MARKER, 0)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
