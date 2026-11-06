@@ -640,5 +640,4 @@ internal fun installNativeRecovery(sectionInterface: String, sectionContent: Met
     }
     if (!installed.containsAll(targets)) throw PatchException("Missing native recovery restart scopes: ${targets - installed}")
     println("Installed native undelete: ${specs.size} feed/comment text models, modern post content, $hookCount Compose hooks and profile preview")
-    installNativeFeedGate(sectionInterface, sectionContent, sectionKey)
 }

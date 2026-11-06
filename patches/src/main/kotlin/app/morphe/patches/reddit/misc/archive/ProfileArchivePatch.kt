@@ -150,4 +150,11 @@ val profileArchivePatch = bytecodePatch(
         installNativeArchiveActions()
         setExtensionIsPatchIncluded(ARCHIVE_CLASS)
     }
+
+    finalize {
+        // Other patches must match the original feed mapper before we insert our
+        // gate hook and generate a helper that constructs the same native section.
+        // In particular, leave the home-flair patch's constructor/return match intact.
+        installNativeFeedGate()
+    }
 }

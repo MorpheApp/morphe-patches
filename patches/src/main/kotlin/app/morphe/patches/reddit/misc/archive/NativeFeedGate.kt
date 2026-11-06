@@ -11,7 +11,6 @@ import app.morphe.patcher.util.addFreeRegisters
 import app.morphe.patcher.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.*
 import com.android.tools.smali.dexlib2.iface.reference.*
 
@@ -21,7 +20,13 @@ private const val LIST = "Ljava/util/List;"
 
 /** Preserve the host post container, inserting one gate between its header and action bar. */
 context(context: BytecodePatchContext)
-internal fun installNativeFeedGate(sectionInterface: String, content: Method, key: Method) = with(context) {
+internal fun installNativeFeedGate() = with(context) {
+    // Resolve the interface installed during execute, without retaining mutable
+    // host methods across other patches' execute blocks.
+    val sectionInterface = classDefBy(SECTION).interfaces.single()
+    val signatures = classDefBy(sectionInterface).methods
+    val content = signatures.single { it.returnType == "V" && it.parameterTypes.size == 3 }
+    val key = signatures.single { it.returnType == "Ljava/lang/String;" && it.parameterTypes.isEmpty() }
     fun bridge(name: String, registers: Int, code: String) = replaceArchiveBridge(name, registers, code, GATE)
     val group = Fingerprint(name = "toString", filters = listOf(string("FeedPostSection(linkId="))).classDef
     val ctor = group.methods.single { it.name == "<init>" }
@@ -154,4 +159,5 @@ internal fun installNativeFeedGate(sectionInterface: String, content: Method, ke
         invoke-virtual { v0, p1 }, $setContent
         return-object v0
     """)
+    println("Installed native feed gate during archive finalization")
 }

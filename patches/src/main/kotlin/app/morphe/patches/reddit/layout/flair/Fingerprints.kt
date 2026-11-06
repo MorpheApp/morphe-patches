@@ -231,18 +231,13 @@ internal object FeedPostSectionConstructorFingerprint : Fingerprint(
 )
 
 internal fun feedPostSectionMapperFingerprint(feedPostSectionType: String) = Fingerprint(
-    // The archive patch also constructs this section in a static extension bridge.
-    // Only Reddit's instance mapper should receive the flair hook.
-    isStatic = false,
-    parameters = listOf("L", "L"),
     filters = listOf(
         newInstance(feedPostSectionType),
         methodCall(
             definingClass = feedPostSectionType,
             name = "<init>"
         ),
-        // Other patches may transform the new section before it is returned.
-        opcode(Opcode.RETURN_OBJECT)
+        opcode(Opcode.RETURN_OBJECT, MatchAfterImmediately())
     )
 )
 
