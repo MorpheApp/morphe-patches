@@ -96,8 +96,8 @@ public final class DownloadsPatch {
     private static final ByteArrayFilterGroup PREMIUM_UPSELL_COMMAND =
             new ByteArrayFilterGroup(null, "premium_upsell");
     /**
-     * A long press resolves the menu of the item, whose command holds the Download command
-     * of the item instead of being the Download command itself.
+     * Opening the menu of an item resolves a command that holds the whole menu, so it also
+     * holds the Download action of the menu without being that action.
      */
     private static final ByteArrayFilterGroup MENU_COMMAND =
             new ByteArrayFilterGroup(null, "panel_header.", "tile_button_carousel.");
@@ -259,7 +259,7 @@ public final class DownloadsPatch {
         lastFlyoutDownloadTime = now;
 
         Logger.printDebug(() -> "Menu download of " + videoId);
-        startDownload(videoId, flyoutMenuUsesExternalDownloader());
+        Utils.runOnMainThreadNowOrLater(() -> startDownload(videoId, flyoutMenuUsesExternalDownloader()));
         return true;
     }
 
@@ -321,12 +321,24 @@ public final class DownloadsPatch {
         lastPlaylistDownloadTime = now;
 
         Logger.printDebug(() -> "Playlist download of " + playlistId);
-        if (inAppDownloads()) {
-            PlaylistDownloader.start(playlistId);
-        } else {
-            ExternalDownloaderPreference.launchExternalDownloader(playlistId, Utils.getActivity(),
-                    playlistUrl(playlistId));
-        }
+        Utils.runOnMainThreadNowOrLater(() -> {
+            if (inAppDownloads()) {
+                PlaylistDownloader.start(playlistId);
+            } else {
+                ExternalDownloaderPreference.launchExternalDownloader(playlistId, Utils.getActivity(),
+                        playlistUrl(playlistId));
+            }
+        });
+    }
+
+    /**
+     * @return If the Premium upsell of a playlist or an album was replaced by its download.
+     */
+    private static boolean onPlaylistUpsell(@Nullable String playlistId) {
+        if (playlistId == null || !isActionButtonOverridden()) return false;
+
+        startPlaylistDownload(playlistId);
+        return true;
     }
 
     private static String playlistUrl(String playlistId) {
@@ -404,11 +416,8 @@ public final class DownloadsPatch {
         return isViewInsideActionBar(senderViewGroup);
     }
 
-    private static boolean isViewInsideActionBar(@Nullable Object viewObj) {
-        if (!(viewObj instanceof ViewGroup viewGroup)) return false;
-
+    private static boolean isViewInsideActionBar(View view) {
         int actionBarId = ResourceUtils.getIdIdentifier("video_action_bar");
-        View view = viewGroup;
         while (view.getParent() instanceof View parent) {
             if (parent.getId() == actionBarId) return true;
             view = parent;
@@ -430,19 +439,17 @@ public final class DownloadsPatch {
 
             byte[] commandBytes = p1.toByteArray();
             final boolean insideDialog = isViewInsideDialog(map.get(ELEMENTS_SENDER_VIEW));
-            final boolean premiumUpsell = PREMIUM_UPSELL_COMMAND.check(commandBytes).isFiltered();
+            final boolean premiumUpsell = PREMIUM_UPSELL_COMMAND.check(commandBytes).isFiltered()
+                    && !MENU_COMMAND.check(commandBytes).isFiltered();
 
             if (insideDialog && premiumUpsell) {
                 String videoId = SongMenuFilter.getMenuVideoId();
                 if (videoId != null) return onMenuDownload(videoId);
 
                 String playlistId = PlaylistPageFilter.getMenuPlaylistId();
-                if (playlistId == null) playlistId = PlaylistPageFilter.getPagePlaylistId();
-                if (playlistId == null) return false;
-                if (!isActionButtonOverridden()) return false;
-
-                startPlaylistDownload(playlistId);
-                return true;
+                return onPlaylistUpsell(playlistId != null
+                        ? playlistId
+                        : PlaylistPageFilter.getPagePlaylistId());
             }
 
             if (inAppDownloads()) {
@@ -474,14 +481,11 @@ public final class DownloadsPatch {
                 Utils.runOnMainThreadNowOrLater(() -> startDownload(videoId, !inAppDownloads()));
                 return true;
             }
+            // Only a tap can be the page button: commands the app resolves itself have no sender view.
             if (!insideDialog && premiumUpsell
-                    && !MENU_COMMAND.check(commandBytes).isFiltered()
-                    && !isViewInsideActionBar(map.get(ELEMENTS_SENDER_VIEW))) {
-                String playlistId = PlaylistPageFilter.getPagePlaylistId();
-                if (playlistId != null && isActionButtonOverridden()) {
-                    startPlaylistDownload(playlistId);
-                    return true;
-                }
+                    && map.get(ELEMENTS_SENDER_VIEW) instanceof View senderView
+                    && !isViewInsideActionBar(senderView)) {
+                return onPlaylistUpsell(PlaylistPageFilter.getPagePlaylistId());
             }
 
             // Endpoint Download commands have no sender view.

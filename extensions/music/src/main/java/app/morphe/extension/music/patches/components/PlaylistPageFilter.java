@@ -23,7 +23,10 @@ import app.morphe.extension.shared.patches.components.FilterGroup.FilterGroupRes
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 
 /**
- * Finds the playlist or album of the open page, and of the menu that was opened for it.
+ * Finds the playlist or album of the open page and of the last opened menu.
+ * <p>
+ * The Download action of accounts offered Premium is a Premium upsell without the ID.
+ * The menu of a page can have no ID of its own, and then the ID of the page is used.
  */
 @SuppressWarnings("unused")
 public final class PlaylistPageFilter extends Filter {
@@ -36,16 +39,29 @@ public final class PlaylistPageFilter extends Filter {
     @Nullable
     private static volatile String menuPlaylistId;
 
+    private final StringFilterGroup pageHeader = new StringFilterGroup(
+            null,
+            "music_page_header."
+    );
+
+    private final StringFilterGroup menuHeader = new StringFilterGroup(
+            null,
+            "panel_header."
+    );
+
+    @SuppressWarnings("FieldCanBeLocal")
+    private final StringFilterGroup menuCarousel = new StringFilterGroup(
+            null,
+            "tile_button_carousel."
+    );
+
     private final ByteArrayFilterGroup downloadButton = new ByteArrayFilterGroup(
             null,
             "music_download_button."
     );
 
     public PlaylistPageFilter() {
-        addIdentifierCallbacks(
-                new StringFilterGroup(null, "music_page_header."),
-                new StringFilterGroup(null, "tile_button_carousel.")
-        );
+        addIdentifierCallbacks(pageHeader, menuHeader, menuCarousel);
     }
 
     @Nullable
@@ -68,7 +84,7 @@ public final class PlaylistPageFilter extends Filter {
                 return false;
             }
 
-            if (identifier.startsWith("music_page_header.")) {
+            if (matchedGroup == pageHeader) {
                 FilterGroupResult result = downloadButton.check(buffer);
                 if (!result.isFiltered()) return false;
 
@@ -78,7 +94,10 @@ public final class PlaylistPageFilter extends Filter {
                     Logger.printDebug(() -> "Playlist page: " + playlistId);
                     pagePlaylistId = playlistId;
                 }
-            } else if (identifier.startsWith("tile_button_carousel.")) {
+            } else if (matchedGroup == menuHeader) {
+                // Each menu starts with its header, and the carousel with the ID is optional.
+                menuPlaylistId = null;
+            } else {
                 String playlistId = findPlaylistId(buffer, 1);
                 if (playlistId != null && !playlistId.equals(menuPlaylistId)) {
                     Logger.printDebug(() -> "Playlist menu: " + playlistId);
@@ -86,7 +105,7 @@ public final class PlaylistPageFilter extends Filter {
                 }
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "PlaylistPageFilter failure", ex);
+            Logger.printException(() -> "isFiltered failure", ex);
         }
         return false;
     }
