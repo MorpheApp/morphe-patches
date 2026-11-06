@@ -43,7 +43,7 @@ final class PlaylistMetadataRequest {
             // The response parser still requires an exact video ID, never the first result.
             String query = title.isEmpty() || title.equals(videoId)
                     ? "https://www.youtube.com/watch?v=" + videoId : title;
-            byte[] body = ChannelIdRoutes.createSearchBody(query);
+            byte[] body = ChannelIdRoutes.createSearchBody(query, locale);
             connection = ChannelIdRoutes.getConnection(SEARCH);
             connection.setFixedLengthStreamingMode(body.length);
             try (var output = connection.getOutputStream()) {
@@ -52,7 +52,7 @@ final class PlaylistMetadataRequest {
 
             if (connection.getResponseCode() == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 VideoMetadata result = VideoMetadata.fromSearch(Requester.parseJSONObject(connection), videoId);
-                return Locale.getDefault().equals(locale) ? result : null;
+                return Requester.getAppLocale().equals(locale) ? result : null;
             }
 
             Logger.printInfo(() -> "Native playlist card lookup was unavailable");
