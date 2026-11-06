@@ -1,3 +1,29 @@
+## [2.1.0-dev.12](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0-dev.11...v2.1.0-dev.12) (2026-11-06)
+
+### ✨ New Features
+
+* **YouTube - Niconico comments:** Add "Show timed comments with chat replay" setting ([#4458](https://github.com/MorpheApp/morphe-patches/issues/4458)) ([84b599e](https://github.com/MorpheApp/morphe-patches/commit/84b599e3f7dd8956689b7738c597b9295b66e6a2))
+* **YouTube - Niconico comments:** Show timed comments on videos without a chat ([#4430](https://github.com/MorpheApp/morphe-patches/issues/4430)) ([c4fceb9](https://github.com/MorpheApp/morphe-patches/commit/c4fceb9879f86667ed0029a142c80e741ed2284b))
+* **YouTube Music - Downloads:** Mark the downloaded songs in the lists ([#4414](https://github.com/MorpheApp/morphe-patches/issues/4414)) ([6d24106](https://github.com/MorpheApp/morphe-patches/commit/6d241067409d8ad414004f78a62790739cfd3347))
+* **YouTube Music - Downloads:** Offline fullscreen player ([#4436](https://github.com/MorpheApp/morphe-patches/issues/4436)) ([4390b82](https://github.com/MorpheApp/morphe-patches/commit/4390b82f54008fdc1a9d1422bbfc4b9aa673d334))
+* **YouTube Music - SoundProof:** Add SoundProof AI blocker ([#4451](https://github.com/MorpheApp/morphe-patches/issues/4451)) ([c638cc4](https://github.com/MorpheApp/morphe-patches/commit/c638cc4c21457439617a0006254405dd9236dc6c))
+* **YouTube Music:** Add `Playlist tags` patch ([#4304](https://github.com/MorpheApp/morphe-patches/issues/4304)) ([11c4350](https://github.com/MorpheApp/morphe-patches/commit/11c43500376877be24235de6c3c9e3ba23bb6e07))
+
+### 🐛 Bug Fixes
+
+* **YouTube - Disable fullscreen gestures:** Pinch-to-zoom does not work in Shorts ([3b99355](https://github.com/MorpheApp/morphe-patches/commit/3b993553d457ad4a324ae95038cd4b7688a7087b))
+* **YouTube - Downloads:** Captions of in-app downloads show escaped punctuation ([#4450](https://github.com/MorpheApp/morphe-patches/issues/4450)) ([da8f656](https://github.com/MorpheApp/morphe-patches/commit/da8f656061aecced5a87a8f88cea56e5768f0386))
+* **YouTube - Downloads:** Playback speed is unavailable for in-app downloads ([119468c](https://github.com/MorpheApp/morphe-patches/commit/119468c2f30441a52f0bb05c77b29b0b31e16863))
+* **YouTube - Feed card layout:** Cards lose their rounded corners when scrolled back into view, and their corners and padding don't match the cards after the display density changes ([aeb07d3](https://github.com/MorpheApp/morphe-patches/commit/aeb07d3556a7335a54406f9afeb86aa21b6e86d5))
+* **YouTube - Navigation bar:** Black band around the glass navigation bar on Android 11 and older, and with Hide status bar before Android 15 ([af8dc88](https://github.com/MorpheApp/morphe-patches/commit/af8dc88ead85f5ff076b78bfe51574ab6c032973))
+* **YouTube - Navigation bar:** Glass navigation bar has the wrong height with 3-button navigation ([#4452](https://github.com/MorpheApp/morphe-patches/issues/4452)) ([6d6c523](https://github.com/MorpheApp/morphe-patches/commit/6d6c523eb5157b222d824d2dcd40465e7bce2b81))
+* **YouTube - Navigation bar:** Glass navigation bar is white around the capsule in the Shorts player with the light theme ([#4447](https://github.com/MorpheApp/morphe-patches/issues/4447)) ([0223075](https://github.com/MorpheApp/morphe-patches/commit/0223075c47e48d1280bf9b242dacb06ab2096363))
+* **YouTube - Navigation bar:** Glass navigation bar size preview draws the labels over the icons when the labels are hidden, and shows placeholders instead of the button icons ([59fdfe5](https://github.com/MorpheApp/morphe-patches/commit/59fdfe57b906b4df1902832c85cf62f8d2779d52))
+* **YouTube - Playback speed:** Pitch presets can set an out of range pitch, speed icon shows without pitch controls ([d0b9847](https://github.com/MorpheApp/morphe-patches/commit/d0b98475e4b2d196340d9244ab3bc72df94eac76))
+* **YouTube Music - Miniplayer previous and next buttons:** Buttons are missing with the deferred player layout ([683f805](https://github.com/MorpheApp/morphe-patches/commit/683f805c45f9be7fe993df346e52984952a30944))
+* **YouTube Music:** Download albums and playlists offered Premium ([#4464](https://github.com/MorpheApp/morphe-patches/issues/4464)) ([a80aa75](https://github.com/MorpheApp/morphe-patches/commit/a80aa75cece6a6ca64119ac9044511a31dad9740))
+* **YouTube:** Home can be rendered with RenderNext, which the Litho filters and hooks don't see ([c1dcad4](https://github.com/MorpheApp/morphe-patches/commit/c1dcad4033c61b4b79f87861999fad246badd3d7))
+
 ## [2.1.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0-dev.10...v2.1.0-dev.11) (2026-11-05)
 
 ### ✨ New Features
