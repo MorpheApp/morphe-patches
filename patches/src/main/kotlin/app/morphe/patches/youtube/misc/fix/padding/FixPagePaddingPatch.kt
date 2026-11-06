@@ -38,8 +38,13 @@ internal val fixPagePaddingPatch = patch(
 
     execute {
         if (is_21_07_or_greater) {
-            IncognitoSearchPaddingFeatureFlagFingerprint.matchAllMethodIndicesForEach(requireMatches = false) { index ->
-                insertLiteralOverride(index, false)
+            listOf(
+                IncognitoSearchPaddingFeatureFlagFingerprint,
+                KeyboardHidesNavigationBarFeatureFlagFingerprint
+            ).forEach { fingerprint ->
+                fingerprint.matchAllMethodIndicesForEach(requireMatches = false) { index ->
+                    insertLiteralOverride(index, false)
+                }
             }
         }
 
