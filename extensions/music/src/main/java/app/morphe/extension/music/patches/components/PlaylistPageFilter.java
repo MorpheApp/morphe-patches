@@ -62,7 +62,7 @@ public final class PlaylistPageFilter extends Filter {
                               CharSequence path, byte[] buffer, BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
         try {
-            if (!DownloadsPatch.isActionButtonOverridden()
+            if (!DownloadsPatch.isFlyoutMenuOverridden()
                     || contentIndex != 0 || Utils.indexOf(path, ".e", identifier.length()) >= 0) {
                 return false;
             }

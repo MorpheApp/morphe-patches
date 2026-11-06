@@ -171,7 +171,7 @@ public final class DownloadsPatch {
      * In app downloads and the external downloader always replace the Download button.
      */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    public static boolean isActionButtonOverridden() {
+    private static boolean isActionButtonOverridden() {
         return Settings.DOWNLOAD_MODE.get() != DownloadMode.DEFAULT;
     }
 
