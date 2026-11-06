@@ -33,6 +33,7 @@ import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -209,6 +210,16 @@ val flyoutPatch = patch(
                         invoke-static { v$freeRegister }, $enumMethodCall
                         move-result-object v$freeRegister
                         invoke-static { v$freeRegister, v$charCheckRegister, v$buttonTextRegister }, $EXTENSION_UTILS_CLASS->setCurrentButtonInfo(Ljava/lang/Enum;Ljava/lang/Object;Ljava/lang/CharSequence;)V
+                    """
+                )
+
+                val runnableIndex = mainFingerprintMatches.last().index
+                val runnableRegister = getInstruction<TwoRegisterInstruction>(runnableIndex).registerA
+                addInstructions(
+                    runnableIndex,
+                    """
+                        invoke-static { v$runnableRegister }, $EXTENSION_UTILS_CLASS->wrapButtonRunnable(Ljava/lang/Runnable;)Ljava/lang/Runnable;
+                        move-result-object v$runnableRegister
                     """
                 )
             }

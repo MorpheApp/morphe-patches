@@ -327,6 +327,9 @@ Changes include:
 
     <string name="morphe_hide_keyword_content_screen_title">Keyword filter</string>
     <string name="morphe_hide_keyword_content_screen_summary">Choose specific words or phrases to hide videos in feeds and search</string>
+    <string name="morphe_block_channel_on_dont_recommend_title">Block channel on \"Don\'t recommend\"</string>
+    <string name="morphe_block_channel_on_dont_recommend_summary">Automatically adds the channel to the keyword filter when tapping \"Don\'t recommend channel\"</string>
+    <string name="morphe_channel_blocked_toast">Channel blocked: %s</string>
     <string name="morphe_hide_keyword_content_comments_title">Hide comments by keywords</string>
     <string name="morphe_hide_keyword_content_home_title">Hide Home videos by keywords</string>
     <string name="morphe_hide_keyword_content_search_title">Hide search results by keywords</string>

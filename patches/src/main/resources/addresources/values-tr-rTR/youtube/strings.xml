@@ -315,6 +315,9 @@ Değişiklikler şunları içerir:
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Öne çıkan arama bağlantılarını temizler, yalnızca orijinal düz metni bırakır</string>
   <string name="morphe_hide_keyword_content_screen_title">Anahtar kelime filtresi</string>
   <string name="morphe_hide_keyword_content_screen_summary">Akışta ve aramada videoları gizlemek için belirli kelimeler veya ifadeler seçin</string>
+  <string name="morphe_block_channel_on_dont_recommend_title">Önerme seçeneğinde kanalı engelle</string>
+  <string name="morphe_block_channel_on_dont_recommend_summary">\"Kanalı önerme\" seçeneğine tıklandığında kanalı otomatik olarak anahtar kelime filtresine ekler ve gizler</string>
+  <string name="morphe_channel_blocked_toast">Kanal engellendi: %s</string>
   <string name="morphe_hide_keyword_content_comments_title">Yorumları anahtar kelimelerle gizle</string>
   <string name="morphe_hide_keyword_content_home_title">Ana sayfadaki videoları anahtar kelimelerle gizle</string>
   <string name="morphe_hide_keyword_content_search_title">Arama sonuçlarını anahtar kelimelerle gizle</string>

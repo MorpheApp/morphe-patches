@@ -259,6 +259,7 @@ val hideLayoutComponentsPatch = patch(
                 key = "morphe_hide_keyword_content_screen",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
+                    SwitchPreference("morphe_block_channel_on_dont_recommend", summary = true),
                     SwitchPreference("morphe_hide_keyword_content_comments"),
                     SwitchPreference("morphe_hide_keyword_content_home"),
                     SwitchPreference("morphe_hide_keyword_content_search"),
