@@ -34,7 +34,7 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class NativeSnackbarPatch {
 
-    private static final long MESSAGE_INTERVAL_MS = 5000;
+    private static final long MESSAGE_INTERVAL_MS = 3000;
 
     private record QueuedMessage(String message, boolean longDuration) {
     }
