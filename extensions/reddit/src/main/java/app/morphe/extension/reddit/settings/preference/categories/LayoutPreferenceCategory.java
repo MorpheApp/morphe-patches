@@ -24,6 +24,7 @@ import app.morphe.extension.reddit.patches.HideAskButtonPatch;
 import app.morphe.extension.reddit.patches.HideCommunitiesShelfPatch;
 import app.morphe.extension.reddit.patches.HideMediaViewerComponentsPatch;
 import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
+import app.morphe.extension.reddit.patches.HighQualityAvatarsPatch;
 import app.morphe.extension.reddit.patches.KeepFeedPositionPatch;
 import app.morphe.extension.reddit.patches.MediaViewerBlackBackgroundPatch;
 import app.morphe.extension.reddit.patches.MediaViewerFadePatch;
@@ -63,6 +64,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HideMediaViewerComponentsPatch.isPatchIncluded() ||
                 MediaViewerBlackBackgroundPatch.isPatchIncluded() ||
                 RemoveSubRedditDialogPatch.isPatchIncluded() ||
+                HighQualityAvatarsPatch.isPatchIncluded() ||
                 ShowViewCountPatch.isPatchIncluded() ||
                 FlipPostActionBarPatch.isPatchIncluded() ||
                 RememberCollapsedCommentsPatch.isPatchIncluded();
@@ -132,6 +134,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.REMOVE_NOTIFICATION_DIALOG
+            ));
+        }
+
+        if (HighQualityAvatarsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIGH_QUALITY_AVATARS
             ));
         }
 
