@@ -14,11 +14,7 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Path;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.PathShape;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -46,11 +42,9 @@ import app.morphe.extension.shared.ui.CustomDialog;
  */
 final class LocalPlaylistPage {
 
-    private static final int DRAG_ELEVATION_DP = 8;
     private static final int DRAG_ANIMATION_MILLISECONDS = 100;
     private static final int AUTO_SCROLL_EDGE_DP = 48;
     private static final int AUTO_SCROLL_STEP_DP = 6;
-    private static final int DRAG_ICON_DP = 24;
 
     private final LocalDownloadsFragment host;
     private final Context context;
@@ -226,7 +220,7 @@ final class LocalPlaylistPage {
         row.addView(removeButton, new LinearLayout.LayoutParams(ui.dp(ICON_BUTTON_DP), ui.dp(ICON_BUTTON_DP)));
         removeButtons.add(removeButton);
 
-        ImageButton dragHandle = ui.icon(createDragHandleDrawable(),
+        ImageButton dragHandle = ui.icon(ui.dragHandle(),
                 str("morphe_music_downloads_playlist_drag_track"));
         dragHandle.setVisibility(reorderMode ? View.VISIBLE : View.GONE);
         dragHandle.setOnTouchListener((v, event) -> handleReorderTouch(row, event));
@@ -243,20 +237,6 @@ final class LocalPlaylistPage {
         return row;
     }
 
-    /** Three horizontal bars, since the app has no drag handle icon of a usable size. */
-    private Drawable createDragHandleDrawable() {
-        Path bars = new Path();
-        bars.addRect(3, 6, 21, 8, Path.Direction.CW);
-        bars.addRect(3, 11, 21, 13, Path.Direction.CW);
-        bars.addRect(3, 16, 21, 18, Path.Direction.CW);
-
-        ShapeDrawable handle = new ShapeDrawable(new PathShape(bars, DRAG_ICON_DP, DRAG_ICON_DP));
-        handle.setIntrinsicWidth(ui.dp(DRAG_ICON_DP));
-        handle.setIntrinsicHeight(ui.dp(DRAG_ICON_DP));
-        handle.getPaint().setColor(foreground());
-        return handle;
-    }
-
     private boolean handleReorderTouch(View row, MotionEvent event) {
         if (tracks.size() < 2) return false;
 
@@ -268,7 +248,7 @@ final class LocalPlaylistPage {
                 draggedIndex = tracksContainer.indexOfChild(row);
                 targetIndex = draggedIndex;
 
-                row.setElevation(ui.dp(DRAG_ELEVATION_DP));
+                row.setElevation(ui.dp(OfflineUi.DRAG_ELEVATION_DP));
                 row.setBackground(ui.rowBackground(true));
                 return true;
             }

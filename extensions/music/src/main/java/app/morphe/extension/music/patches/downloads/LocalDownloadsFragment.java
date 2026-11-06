@@ -23,11 +23,9 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimatedVectorDrawable;
-import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
@@ -80,7 +78,8 @@ import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 /**
- * Local catalogue with a compact player matching the stock bottom player of YouTube Music.
+ * Local catalogue with a compact player matching the stock bottom player of YouTube Music,
+ * expanding into a full-screen player and interactive queue when tapped.
  * <p>
  * A whole liked music library can be downloaded, so the catalogue may hold thousands of tracks.
  * It is read off the main thread, only the rows on screen are built, and their covers are decoded
@@ -90,12 +89,6 @@ import app.morphe.extension.shared.ui.CustomDialog;
 @SuppressWarnings("deprecation")
 public final class LocalDownloadsFragment extends PreferenceFragment
         implements OfflinePlaybackService.PlaybackListener {
-
-    private static final int SEEK_BAR_HEIGHT_DP = 3;
-
-    /** The bar is drawn thin but stays easy to hit. */
-    private static final int SEEK_BAR_TOUCH_DP = 18;
-    private static final int SEEK_THUMB_DP = 12;
 
     private static final int SEARCH_BAR_HEIGHT_DP = 46;
     private static final long SEARCH_ANIMATION_MILLISECONDS = 180;
@@ -125,7 +118,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private boolean selectionMode;
     private boolean playlistsExpanded;
 
-    private LinearLayout root;
+    private FrameLayout root;
+    private LinearLayout mainContainer;
     private LinearLayout catalogue;
     @Nullable
     private LocalPlaylistPage playlistPage;
@@ -138,6 +132,11 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private ImageButton miniNext;
     private SeekBar miniSeek;
     private LinearLayout miniPlayer;
+
+    /** Part of the view, which a recreated activity can finish before it is created. */
+    @Nullable
+    private OfflinePlayerPage playerPage;
+
     private ListView songsList;
     private TrackAdapter adapter;
     private TextView emptyView;
@@ -202,9 +201,11 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         ui = new OfflineUi(activity);
         playlistManager = new OfflinePlaylistManager(musicRoot);
 
-        root = new LinearLayout(activity);
-        root.setOrientation(LinearLayout.VERTICAL);
+        root = new FrameLayout(activity);
         root.setBackgroundColor(background());
+
+        mainContainer = new LinearLayout(activity);
+        mainContainer.setOrientation(LinearLayout.VERTICAL);
 
         catalogue = new LinearLayout(activity);
         catalogue.setOrientation(LinearLayout.VERTICAL);
@@ -212,11 +213,17 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         // The header stays out of the list, so typing a query does not rebuild the search bar.
         catalogue.addView(createHeader(), new LinearLayout.LayoutParams(-1, -2));
         catalogue.addView(createSongsList(), new LinearLayout.LayoutParams(-1, 0, 1));
-        root.addView(catalogue, new LinearLayout.LayoutParams(-1, 0, 1));
+        mainContainer.addView(catalogue, new LinearLayout.LayoutParams(-1, 0, 1));
 
         miniPlayer = createStockMiniPlayer();
         miniPlayer.setVisibility(View.GONE);
-        root.addView(miniPlayer, new LinearLayout.LayoutParams(-1, -2));
+        mainContainer.addView(miniPlayer, new LinearLayout.LayoutParams(-1, -2));
+
+        root.addView(mainContainer, new FrameLayout.LayoutParams(-1, -1));
+
+        playerPage = new OfflinePlayerPage(this, activity, ui);
+        root.addView(playerPage.view(), new FrameLayout.LayoutParams(-1, -1));
+
         return root;
     }
 
@@ -260,9 +267,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     /**
      * Back navigation of every kind ends up here through the finish hook of the activity.
      *
-     * @return If back navigation was used up by the playlist page.
+     * @return If back navigation was used up by the full player or playlist page.
      */
     public boolean handleBack() {
+        if (playerPage != null && playerPage.handleBack()) return true;
         if (playlistPage == null) return false;
 
         if (!playlistPage.handleBack()) closePlaylistPage();
@@ -273,12 +281,12 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         playlistPage = new LocalPlaylistPage(this, getActivity(), ui, playlistManager,
                 playlist.id(), playingPath);
         catalogue.setVisibility(View.GONE);
-        root.addView(playlistPage.view(), 0, new LinearLayout.LayoutParams(-1, 0, 1));
+        mainContainer.addView(playlistPage.view(), 0, new LinearLayout.LayoutParams(-1, 0, 1));
         playlistPage.refresh();
     }
 
     void closePlaylistPage() {
-        root.removeView(playlistPage.view());
+        mainContainer.removeView(playlistPage.view());
         playlistPage = null;
         catalogue.setVisibility(View.VISIBLE);
         reloadPlaylists();
@@ -910,6 +918,9 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         LinearLayout line = new LinearLayout(getActivity());
         line.setGravity(Gravity.CENTER_VERTICAL);
         line.setPadding(ui.dp(16), 0, 0, 0);
+        line.setOnClickListener(v -> {
+            if (!playingPath.isEmpty()) playerPage.open(trackFor(playingPath));
+        });
 
         miniArtwork = ui.artworkView();
         line.addView(miniArtwork, new LinearLayout.LayoutParams(ui.dp(48), ui.dp(48)));
@@ -950,26 +961,21 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         line.addView(miniNext, new LinearLayout.LayoutParams(ui.dp(ICON_BUTTON_DP), ui.dp(ICON_BUTTON_DP)));
 
         outer.addView(line, new LinearLayout.LayoutParams(-1, ui.dp(60)));
-        outer.addView(createSeekBar(), new LinearLayout.LayoutParams(-1, ui.dp(SEEK_BAR_TOUCH_DP)));
+        outer.addView(createSeekBar(), new LinearLayout.LayoutParams(-1, ui.dp(OfflineUi.SEEK_BAR_TOUCH_DP)));
         return outer;
     }
 
     private SeekBar createSeekBar() {
-        miniSeek = new SeekBar(getActivity());
-        // The bar keeps the gutters of the list, so it reads as a control rather than an edge.
-        miniSeek.setPadding(ui.dp(16), 0, ui.dp(16), 0);
-        miniSeek.setProgressDrawable(createSeekBarDrawable());
+        // The bar keeps the gutters of the list.
+        miniSeek = ui.seekBar(16);
         // The stock thumb draws a ripple far wider than the bar, so it only appears while dragging.
         miniSeek.setThumb(null);
         miniSeek.setThumbOffset(0);
-        miniSeek.setBackground(null);
-        miniSeek.setSplitTrack(false);
         miniSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onStartTrackingTouch(SeekBar bar) {
                 userSeeking = true;
-                bar.setThumb(createThumb());
-                bar.setThumbOffset(ui.dp(SEEK_THUMB_DP) / 2);
+                ui.showSeekThumb(bar);
             }
 
             @Override
@@ -986,42 +992,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         return miniSeek;
     }
 
-    private Drawable createThumb() {
-        ShapeDrawable thumb = new ShapeDrawable(new OvalShape());
-        thumb.setIntrinsicWidth(ui.dp(SEEK_THUMB_DP));
-        thumb.setIntrinsicHeight(ui.dp(SEEK_THUMB_DP));
-        thumb.getPaint().setColor(ThemeUtils.getAppForegroundColor());
-        return thumb;
-    }
-
-    /**
-     * The thickness comes from the drawable because {@code setMinHeight} and
-     * {@code setMaxHeight} are only available from API 29.
-     */
-    private Drawable createSeekBarDrawable() {
-        final int foreground = ThemeUtils.getAppForegroundColor();
-
-        // Dimming the foreground works on any background, unlike lightening a black one.
-        Drawable track = roundedBar(Utils.adjustColorBrightness(foreground, 0.3f));
-        Drawable played = roundedBar(foreground);
-
-        LayerDrawable layers = new LayerDrawable(new Drawable[]{
-                track, new ClipDrawable(played, Gravity.START, ClipDrawable.HORIZONTAL)});
-        layers.setId(0, android.R.id.background);
-        layers.setId(1, android.R.id.progress);
-
-        // A progress drawable is stretched to the view, and the thickness can only be capped
-        // with setMaxHeight from API 29, so the band is inset to the height it should have.
-        final int inset = (ui.dp(SEEK_BAR_TOUCH_DP) - ui.dp(SEEK_BAR_HEIGHT_DP)) / 2;
-        layers.setLayerInset(0, 0, inset, 0, inset);
-        layers.setLayerInset(1, 0, inset, 0, inset);
-        return layers;
-    }
-
-    private Drawable roundedBar(int color) {
-        return CustomDialog.createRoundedBackground(SEEK_BAR_HEIGHT_DP, color);
-    }
-
     private void showTrackMenu(View anchor, OfflineTrack track) {
         String[] items = {
                 str("morphe_music_downloads_play"),
@@ -1034,6 +1004,23 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                         Collections.singletonList(track.audioFile().getAbsolutePath()), false);
                 case 2 -> confirmDelete(track);
                 default -> play(track, displayedTrackPaths);
+            }
+        });
+    }
+
+    /** Without Play, which would only start the track over and replace the queue around it. */
+    void showPlayingTrackMenu(View anchor) {
+        OfflineTrack track = trackFor(playingPath);
+        String[] items = {
+                str("morphe_music_downloads_playlist_add"),
+                str("morphe_music_downloads_delete_track"),
+        };
+        showMenu(anchor, items, -1, position -> {
+            if (position == 0) {
+                showAddToPlaylistDialog(
+                        Collections.singletonList(track.audioFile().getAbsolutePath()), false);
+            } else {
+                confirmDelete(track);
             }
         });
     }
@@ -1189,26 +1176,29 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             final boolean wasVisible = miniPlayer.getVisibility() == View.VISIBLE;
             miniPlayer.setVisibility(title.isEmpty() ? View.GONE : View.VISIBLE);
 
+            final boolean trackChanged = !path.equals(playingPath);
             // Decoding the cover on every tick would read the disk twice a second.
-            if (!path.equals(playingPath)) {
+            if (trackChanged) {
                 playingPath = path;
-                OfflineTrack track = findByPath(path);
-                if (track != null) applyTrackVisuals(track);
-                else miniTitle.setText(title);
+                if (path.isEmpty()) playerPage.close();
+                else applyTrackVisuals(trackFor(path));
 
                 markPlayingRow();
                 if (playlistPage != null) playlistPage.markPlayingRow(path);
             }
 
             // Not only on a new track, since the same track can be played from another queue.
-            setButtonEnabled(miniPrevious, OfflinePlaybackService.hasPrevious());
-            setButtonEnabled(miniNext, OfflinePlaybackService.hasNext());
+            OfflineUi.setButtonEnabled(miniPrevious, OfflinePlaybackService.hasPrevious());
+            OfflineUi.setButtonEnabled(miniNext, OfflinePlaybackService.hasNext());
 
             // This runs on every playback tick, so the icon only morphs when the state
             // actually flips while the bar is on screen to see it happen.
             updatePlayIcon(playing, wasVisible && playing != showingPause);
+
             miniSeek.setMax(Math.max(1, duration));
             if (!userSeeking) miniSeek.setProgress(position, true);
+
+            playerPage.onPlaybackChanged(playing, position, duration, trackChanged);
         });
     }
 
@@ -1250,10 +1240,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         miniArtist.setText(track.displayArtist());
         // Shares the cover decoded for the row of the track, which is usually on screen.
         OfflineArtworkLoader.load(miniArtwork, track.artworkFile(), ui.rowArtworkPixels(), ui);
-    }
-
-    private void setButtonEnabled(ImageButton button, boolean enabled) {
-        button.setEnabled(enabled);
-        button.setAlpha(enabled ? 1f : .35f);
+        playerPage.showTrack(track);
     }
 }

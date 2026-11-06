@@ -14,11 +14,15 @@ import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Outline;
+import android.graphics.Path;
+import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
+import android.graphics.drawable.shapes.PathShape;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewOutlineProvider;
@@ -27,6 +31,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -61,6 +66,18 @@ final class OfflineUi {
 
     /** Icon buttons are square, otherwise their round ripple is drawn as a stretched oval. */
     static final int ICON_BUTTON_DP = 48;
+
+    private static final float DISABLED_BUTTON_ALPHA = .35f;
+
+    private static final int SEEK_BAR_HEIGHT_DP = 3;
+
+    /** The bar is drawn thin but stays easy to hit. */
+    static final int SEEK_BAR_TOUCH_DP = 18;
+    private static final int SEEK_THUMB_DP = 12;
+
+    /** How far a row that is being dragged is lifted off the list. */
+    static final int DRAG_ELEVATION_DP = 8;
+    private static final int DRAG_ICON_DP = 24;
 
     private final Context context;
 
@@ -101,6 +118,74 @@ final class OfflineUi {
         return button;
     }
 
+    static void setButtonEnabled(View button, boolean enabled) {
+        button.setEnabled(enabled);
+        button.setAlpha(enabled ? 1f : DISABLED_BUTTON_ALPHA);
+    }
+
+    /** Three horizontal bars, since the app has no drag handle icon of a usable size. */
+    Drawable dragHandle() {
+        Path bars = new Path();
+        bars.addRect(3, 6, 21, 8, Path.Direction.CW);
+        bars.addRect(3, 11, 21, 13, Path.Direction.CW);
+        bars.addRect(3, 16, 21, 18, Path.Direction.CW);
+
+        ShapeDrawable handle = new ShapeDrawable(new PathShape(bars, DRAG_ICON_DP, DRAG_ICON_DP));
+        handle.setIntrinsicWidth(dp(DRAG_ICON_DP));
+        handle.setIntrinsicHeight(dp(DRAG_ICON_DP));
+        handle.getPaint().setColor(foreground());
+        return handle;
+    }
+
+    /**
+     * @param gutterDp Space on both sides, so the bar reads as a control rather than an edge.
+     */
+    SeekBar seekBar(int gutterDp) {
+        SeekBar bar = new SeekBar(context);
+        bar.setPadding(dp(gutterDp), 0, dp(gutterDp), 0);
+        bar.setProgressDrawable(seekBarDrawable());
+        bar.setBackground(null);
+        bar.setSplitTrack(false);
+        return bar;
+    }
+
+    void showSeekThumb(SeekBar bar) {
+        ShapeDrawable thumb = new ShapeDrawable(new OvalShape());
+        thumb.setIntrinsicWidth(dp(SEEK_THUMB_DP));
+        thumb.setIntrinsicHeight(dp(SEEK_THUMB_DP));
+        thumb.getPaint().setColor(foreground());
+        bar.setThumb(thumb);
+        bar.setThumbOffset(dp(SEEK_THUMB_DP) / 2);
+    }
+
+    /**
+     * The thickness comes from the drawable because {@code setMinHeight} and
+     * {@code setMaxHeight} are only available from API 29.
+     */
+    private Drawable seekBarDrawable() {
+        final int foreground = foreground();
+
+        // Dimming the foreground works on any background, unlike lightening a black one.
+        Drawable track = roundedBar(Utils.adjustColorBrightness(foreground, 0.3f));
+        Drawable played = roundedBar(foreground);
+
+        LayerDrawable layers = new LayerDrawable(new Drawable[]{
+                track, new ClipDrawable(played, Gravity.START, ClipDrawable.HORIZONTAL)});
+        layers.setId(0, android.R.id.background);
+        layers.setId(1, android.R.id.progress);
+
+        // A progress drawable is stretched to the view, and the thickness can only be capped
+        // with setMaxHeight from API 29, so the band is inset to the height it should have.
+        final int inset = (dp(SEEK_BAR_TOUCH_DP) - dp(SEEK_BAR_HEIGHT_DP)) / 2;
+        layers.setLayerInset(0, 0, inset, 0, inset);
+        layers.setLayerInset(1, 0, inset, 0, inset);
+        return layers;
+    }
+
+    private Drawable roundedBar(int color) {
+        return CustomDialog.createRoundedBackground(SEEK_BAR_HEIGHT_DP, color);
+    }
+
     /** A cover view showing the placeholder, for {@link OfflineArtworkLoader} to fill. */
     ImageView artworkView() {
         ImageView view = new ImageView(context);
@@ -117,15 +202,14 @@ final class OfflineUi {
     void showArtwork(ImageView view, @Nullable Bitmap bitmap) {
         if (bitmap != null) {
             view.clearColorFilter();
-            view.setPadding(0, 0, 0, 0);
             view.setScaleType(ImageView.ScaleType.CENTER_CROP);
             view.setImageBitmap(bitmap);
         } else {
             view.setImageDrawable(
                     ResourceUtils.getDrawable("yt_fill_experimental_play_circle_vd_theme_24"));
             view.setColorFilter(foreground());
-            view.setPadding(dp(16), dp(16), dp(16), dp(16));
-            view.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            // Keeps the size of the icon on a cover of any size.
+            view.setScaleType(ImageView.ScaleType.CENTER);
         }
     }
 
