@@ -18,6 +18,9 @@ public final class RecoveryPatch {
             Executors.newSingleThreadScheduledExecutor(r -> { Thread t = new Thread(r, "Reddit-undelete"); t.setDaemon(true); return t; }),
             MAIN::post, SystemClock::elapsedRealtime);
     private static final RecoveryOriginals ORIGINALS = new RecoveryOriginals();
+    private static final RecoveryOriginals ELEMENTS = new RecoveryOriginals();
+    private static final RecoveryOriginals MANUAL_MODELS = new RecoveryOriginals();
+    private static final RecoveryOriginals CLASSIC_CONTENT_MODELS = new RecoveryOriginals();
     private static final LinkedHashMap<String, WeakReference<ArchiveItem>> RECOVERED = new LinkedHashMap<>();
     private static final LinkedHashMap<String, Boolean> REMOVED = new LinkedHashMap<>();
     private static final ThreadLocal<Boolean> MAPPING = ThreadLocal.withInitial(() -> false);
@@ -39,6 +42,12 @@ public final class RecoveryPatch {
     static Object convert(Object converter, Object model) { throw new UnsupportedOperationException(); }
     static void render(Object section, Object scope, Object composer, int flags) { throw new UnsupportedOperationException(); }
     static String key(Object section) { throw new UnsupportedOperationException(); }
+    static Object classicModel(Object section) { throw new UnsupportedOperationException(); }
+    static Object classicHeader(Object model) { throw new UnsupportedOperationException(); }
+    public static boolean hideClassicHeader(Object section) {
+        Object model = classicModel(section);
+        synchronized (CLASSIC_CONTENT_MODELS) { return Boolean.TRUE.equals(CLASSIC_CONTENT_MODELS.getOrDefault(model, false)); }
+    }
     public static Object richElements(String json) { throw new UnsupportedOperationException(); }
 
     public static synchronized void evidence(String id, String body, boolean removed) {
@@ -47,10 +56,13 @@ public final class RecoveryPatch {
         REMOVED.put(id, removed || ArchiveRecovery.placeholder(body));
         while (REMOVED.size() > 1024) REMOVED.remove(REMOVED.keySet().iterator().next());
     }
-    private static synchronized boolean removed(RecoveryTarget target) {
+    static synchronized boolean removed(RecoveryTarget target) {
         return target.removed || Boolean.TRUE.equals(REMOVED.get(target.id));
     }
     static void observe(RecoveryTarget target, Object composer) {
+        observe(target, composer, false);
+    }
+    static void observe(RecoveryTarget target, Object composer, boolean manual) {
         ProfileArchivePatch.begin(composer);
         try {
             ProfileArchivePatch.readState(ENABLED_STATE);
@@ -59,13 +71,14 @@ public final class RecoveryPatch {
                 ProfileArchivePatch.remember(composer, null);
                 return;
             }
-            boolean lookup = ArchiveRecovery.eligible(target.title, target.body, target.author, removed(target));
+            boolean lookup = !manual && ArchiveRecovery.eligible(target.title, target.body, target.author, removed(target));
             RecoveryBinding binding;
             if (remembered instanceof RecoveryBinding && ((RecoveryBinding) remembered).id.equals(target.id)
-                    && ((RecoveryBinding) remembered).generation == settingRevision) {
+                    && ((RecoveryBinding) remembered).generation == settingRevision
+                    && ((RecoveryBinding) remembered).manual == manual) {
                 binding = (RecoveryBinding) remembered; binding.lookup(lookup);
             } else {
-                binding = new RecoveryBinding(target.id, lookup, settingRevision); ProfileArchivePatch.remember(composer, binding);
+                binding = new RecoveryBinding(target.id, lookup, settingRevision, manual); ProfileArchivePatch.remember(composer, binding);
             }
             ProfileArchivePatch.readState(binding.state);
         } finally { ProfileArchivePatch.end(composer); }
@@ -74,8 +87,10 @@ public final class RecoveryPatch {
         Object original;
         synchronized (ORIGINALS) { original = ORIGINALS.getOrDefault(model, model); }
         RecoveryTarget target = describe(original);
-        observe(target, composer);
-        Object result = project(original, target);
+        boolean manual;
+        synchronized (MANUAL_MODELS) { manual = Boolean.TRUE.equals(MANUAL_MODELS.getOrDefault(original, false)); }
+        observe(target, composer, manual);
+        Object result = project(original, target, manual);
         if (result != original) synchronized (ORIGINALS) { ORIGINALS.put(result, original); }
         return result;
     }
@@ -89,7 +104,11 @@ public final class RecoveryPatch {
         return result;
     }
     static Object project(Object original, RecoveryTarget target) {
+        return project(original, target, false);
+    }
+    static Object project(Object original, RecoveryTarget target, boolean manual) {
         if (!enabled() || target == null || target.id == null) return original;
+        if (manual && !STORE.revealed(target.id)) return original;
         ArchiveItem item = STORE.peek(target.id);
         if (item == null) return original;
         ArchiveRecovery fields = ArchiveRecovery.resolve(target.id, target.parent, target.title, target.body,
@@ -112,12 +131,39 @@ public final class RecoveryPatch {
     }
     public static Object wrap(Object section, Object element, Object converter) {
         if (section == null || MAPPING.get()) return section;
+        synchronized (ELEMENTS) { ELEMENTS.put(section, element); }
         RecoveryTarget target = describe(element);
         return target == null || target.id == null ? section : new RecoverySection(section, element, converter, target);
     }
+    static Object element(Object section) {
+        if (section instanceof RecoverySection) return ((RecoverySection) section).element;
+        synchronized (ELEMENTS) { return ELEMENTS.getOrDefault(section, null); }
+    }
+    static Object isolate(Object element, RecoveryTarget target, int classicPart) {
+        Object result = classicPart == 2 ? classicHeader(element) : copy(element, ArchiveRecovery.resolve(target.id, target.parent, target.title,
+                target.body, target.author, false, null), false);
+        synchronized (MANUAL_MODELS) { MANUAL_MODELS.put(result, true); }
+        if (classicPart == 1) synchronized (CLASSIC_CONTENT_MODELS) { CLASSIC_CONTENT_MODELS.put(result, true); }
+        return result;
+    }
     static Object remap(Object converter, Object model) {
         MAPPING.set(true);
-        try { return convert(converter, model); }
+        try {
+            Object section = convert(converter, model);
+            synchronized (MANUAL_MODELS) {
+                if (Boolean.TRUE.equals(MANUAL_MODELS.getOrDefault(model, false))) {
+                    // Reddit's classic mapper copies its input before constructing the
+                    // renderer. Its child restart scope must retain the same policy.
+                    Object mapped = classicModel(section);
+                    if (mapped != null) MANUAL_MODELS.put(mapped, true);
+                    synchronized (CLASSIC_CONTENT_MODELS) {
+                        if (mapped != null && Boolean.TRUE.equals(CLASSIC_CONTENT_MODELS.getOrDefault(model, false)))
+                            CLASSIC_CONTENT_MODELS.put(mapped, true);
+                    }
+                }
+            }
+            return section;
+        }
         finally { MAPPING.set(false); }
     }
     public static String field(String original, String replacement) { return replacement == null ? original : replacement; }

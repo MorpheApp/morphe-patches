@@ -1,6 +1,7 @@
 import com.android.build.api.dsl.ApplicationExtension
 
 dependencies {
+    testImplementation(libs.junit)
     // Parse archived Markdown; Reddit's own rich-text renderer still draws the result.
     implementation("org.commonmark:commonmark:0.32.0")
     compileOnly(project(":extensions:shared:library"))

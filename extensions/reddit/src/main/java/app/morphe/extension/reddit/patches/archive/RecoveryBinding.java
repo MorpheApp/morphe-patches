@@ -4,11 +4,14 @@ package app.morphe.extension.reddit.patches.archive;
 public final class RecoveryBinding {
     final String id;
     final int generation;
+    final boolean manual;
     final Object state = ProfileArchivePatch.newState(0);
     private ArchiveRecoveryStore.Subscription subscription;
     private boolean remembered, lookup;
     private int revision;
-    RecoveryBinding(String id, boolean lookup, int generation) { this.id = id; this.lookup = lookup; this.generation = generation; }
+    RecoveryBinding(String id, boolean lookup, int generation, boolean manual) {
+        this.id = id; this.lookup = lookup; this.generation = generation; this.manual = manual;
+    }
     public void onRemembered() { remembered = true; subscribe(); }
     public void onForgotten() { remembered = false; if (subscription != null) subscription.close(); subscription = null; }
     public void onAbandoned() { onForgotten(); }

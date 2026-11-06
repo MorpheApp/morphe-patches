@@ -283,7 +283,32 @@ internal fun installNativeRecovery(sectionInterface: String, sectionContent: Met
     simple("PreviewTextElement(linkId=", 2, body = "text=")
     simple("MetadataHeaderElement(linkId=", 3, author = "authorNameWithPrefix=", time = "createdAt=",
         extra = { s -> mapOf(field(s.model, "details=").toString() to replace("author", "author")) })
-    simple("ClassicPostElement(linkId=", 4, title = "title=", time = "createdAt=")
+    val classic = simple("ClassicPostElement(linkId=", 4, title = "title=", time = "createdAt=")
+    val flairs = shape(model("PostFlairsElement(linkId="))
+    val emptyFlairs = clone("copyEmptyClassicFlairs", flairs, mapOf(
+        field(flairs.model, "flairs=").toString() to """
+            invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
+            move-result-object v4
+            invoke-static { v4 }, $ARCHIVE_CLASS->immutableList(Ljava/util/List;)Ljava/util/List;
+            move-result-object v4
+            check-cast v4, ${field(flairs.model, "flairs=").type}
+        """
+    ))
+    val classicHeader = clone("copyClassicHeader", classic, mapOf(
+        field(classic.model, "hideTitle=").toString() to "const/4 v4, 0x1",
+        field(classic.model, "thumbnail=").toString() to "const/4 v4, 0x0",
+        field(classic.model, "flairs=").toString() to """
+            invoke-static { v4, v2, v3 }, $emptyFlairs
+            move-result-object v4
+            check-cast v4, ${flairs.type}
+        """
+    ))
+    bridge("classicHeader", 3, """
+        const/4 v0, 0x0
+        invoke-static { p0, v0, v0 }, $classicHeader
+        move-result-object v0
+        return-object v0
+    """)
     val rich = simple("RichTextElement(linkId=", 5, body = "rtJsonText=")
     simple("ProfileCommentFeedElement(identifier=", 6, body = "commentPreview=", id = "identifier=", parent = "postId=")
     val removal = shape(model("PostRecoveryElement(identifier="))
@@ -615,4 +640,5 @@ internal fun installNativeRecovery(sectionInterface: String, sectionContent: Met
     }
     if (!installed.containsAll(targets)) throw PatchException("Missing native recovery restart scopes: ${targets - installed}")
     println("Installed native undelete: ${specs.size} feed/comment text models, modern post content, $hookCount Compose hooks and profile preview")
+    installNativeFeedGate(sectionInterface, sectionContent, sectionKey)
 }

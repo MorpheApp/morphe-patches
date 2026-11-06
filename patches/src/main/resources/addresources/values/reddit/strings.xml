@@ -16,7 +16,7 @@ Second \"item\" text"</string>
 -->
 <resources>
     <string name="morphe_profile_archive_title">Archived public profile history</string>
-    <string name="morphe_profile_archive_summary">Automatically restore deleted or removed text in feeds, profiles and discussions, and include archived profile history. Sends usernames and post/comment IDs to Arctic Shift. Coverage may be incomplete or outdated.</string>
+    <string name="morphe_profile_archive_summary">Tap Undelete to restore deleted or removed posts in feeds. Automatically restore text in profiles and discussions, and include archived profile history. Sends usernames and requested post/comment IDs to Arctic Shift. Coverage may be incomplete or outdated.</string>
     <string name="reddit_privacy_policy">Reddit privacy policy</string>
     <string name="morphe_google_signin_not_available_toast">Google login not available. Use email to login</string>
 
