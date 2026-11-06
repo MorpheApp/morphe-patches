@@ -130,7 +130,7 @@ public class GlassNavigationBarPreference extends Preference {
             preview.invalidate();
             shownButtons.setText(str("morphe_navigation_bar_glass_size_buttons_shown",
                     GlassNavigationBar.getButtonsLayout(screenWidth, labels.size(), preview.getContentWidth(),
-                            pending[1], Dim.dp(pending[2]))[0],
+                            GlassNavigationBar.lastMinButtonWidth, pending[1], Dim.dp(pending[2]))[0],
                     labels.size()));
         };
 
@@ -301,7 +301,7 @@ public class GlassNavigationBarPreference extends Preference {
                     : ICON_SIZE + (showLabels ? Dim.dp4 + Math.round(labelPaint.getTextSize() * 1.25f) : 0);
             final int baseHeight = GlassNavigationBar.lastBaseHeight > 0 ? GlassNavigationBar.lastBaseHeight : Dim.dp48;
             final int[] layout = GlassNavigationBar.getButtonsLayout(screenWidth, buttons, contentWidth,
-                    values[1], Dim.dp(values[2]));
+                    GlassNavigationBar.lastMinButtonWidth, values[1], Dim.dp(values[2]));
             final int shownButtons = layout[0];
             final float buttonWidth = layout[1] * scale;
             final float capsuleHeight = GlassNavigationBar.getCapsuleHeight(baseHeight, contentHeight, values[0]) * scale;
