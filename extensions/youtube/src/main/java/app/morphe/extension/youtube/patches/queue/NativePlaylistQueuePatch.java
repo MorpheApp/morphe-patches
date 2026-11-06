@@ -1150,7 +1150,8 @@ public final class NativePlaylistQueuePatch {
                 return new VideoMetadata(id, title, channelName, "", "", false);
             }
             if (metadata.title().equals(id) && !title.equals(id)) {
-                metadata = new VideoMetadata(id, title, metadata.channelName(), metadata.videoInfo(), metadata.duration(), metadata.fullByline());
+                metadata = new VideoMetadata(id, title, metadata.channelName(), metadata.videoInfo(), metadata.duration(),
+                        metadata.fullByline(), metadata.panelMetadata(), metadata.lightColorPalette(), metadata.darkColorPalette());
             }
 
             return metadata.withChannelName(channelName);
@@ -3511,6 +3512,12 @@ public final class NativePlaylistQueuePatch {
                 video.setShortBylineText(PlaylistQueueRenderer.Text.newBuilder().setSimpleText(metadata.channelName()))
                         .setVideoInfo(PlaylistQueueRenderer.Text.newBuilder().setSimpleText(metadata.videoInfo()))
                         .setLengthText(PlaylistQueueRenderer.Text.newBuilder().setSimpleText(metadata.duration()));
+                if (metadata.lightColorPalette() != null) {
+                    video.setLightColorPalette(metadata.lightColorPalette());
+                }
+                if (metadata.darkColorPalette() != null) {
+                    video.setDarkColorPalette(metadata.darkColorPalette());
+                }
             }
 
             if (index != source.selectedIndex()

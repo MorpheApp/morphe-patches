@@ -30,6 +30,14 @@ message VideoWithContextModel {
 message VideoWithContextData {
     optional VideoData video_data = 1;
     optional string accessibility_text = 2;
+    optional ThemePalette light_theme_palette = 59;
+    optional ThemePalette dark_theme_palette = 60;
+}
+
+// Card-theme colors differ from the legacy playlist row's ColorPalette.
+message ThemePalette {
+    optional uint32 base_background = 1;
+    optional uint32 text_primary = 4;
 }
 
 message VideoData {

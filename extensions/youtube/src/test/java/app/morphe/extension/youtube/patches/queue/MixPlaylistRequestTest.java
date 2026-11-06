@@ -58,6 +58,41 @@ public class MixPlaylistRequestTest {
         }
     }
 
+    @Test
+    public void mixBatchRetainsBothNativePalettesIncludingUnsignedColors() throws Exception {
+        var item = row("abcdefghijk");
+        item.getJSONObject("playlistPanelVideoRenderer")
+                .put("lightColorPalette", new JSONObject().put("section2Color", 4076402161L).put("section4Color", 4075546333L)
+                        .put("primaryTitleColor", 4279834129L).put("secondaryTitleColor", 4285555274L))
+                .put("darkColorPalette", new JSONObject().put("section2Color", 4062716699L).put("section4Color", 4060875528L)
+                        .put("primaryTitleColor", 4294964709L).put("secondaryTitleColor", 4291607971L));
+        var imported = MixPlaylistRequest.parse(response(new JSONArray().put(item)), "RDmix");
+        var metadata = PlaylistQueue.fromMetadata(imported).currentEntry().metadata();
+
+        assertEquals((int) 4076402161L, metadata.lightColorPalette().getSection2Color());
+        assertEquals((int) 4060875528L, metadata.darkColorPalette().getSection4Color());
+        assertEquals((int) 4294964709L, metadata.darkColorPalette().getPrimaryTitleColor());
+        assertEquals((int) 4291607971L, metadata.darkColorPalette().getSecondaryTitleColor());
+        var missing = MixPlaylistRequest.parse(response(new JSONArray().put(row("abcdefghijk"))), "RDmix");
+        assertNull(missing.get(0).lightColorPalette());
+        assertNull(missing.get(0).darkColorPalette());
+    }
+
+    @Test
+    public void invalidOptionalColorsDoNotPreventImportingTheMix() throws Exception {
+        for (Object color : List.of("invalid", -1L, 4294967296L, JSONObject.NULL)) {
+            var item = row("abcdefghijk");
+            item.getJSONObject("playlistPanelVideoRenderer").put("darkColorPalette", new JSONObject()
+                    .put("section4Color", color).put("primaryTitleColor", 4294964709L)
+                    .put("secondaryTitleColor", 4291607971L)).put("lightColorPalette", new JSONObject());
+            var imported = MixPlaylistRequest.parse(response(new JSONArray().put(item)), "RDmix");
+            assertNotNull(imported);
+            assertEquals("abcdefghijk", imported.get(0).videoId());
+            assertNull(imported.get(0).lightColorPalette());
+            assertNull(imported.get(0).darkColorPalette());
+        }
+    }
+
     @Test public void wrongListOrMalformedBatchNeverReturnsAPartialImport() throws Exception {
         var rows = new JSONArray().put(row("abcdefghijk"));
         assertNull(MixPlaylistRequest.parse(response(rows), "RDdifferent"));

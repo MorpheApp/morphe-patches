@@ -28,7 +28,8 @@ final class MixPlaylistRequest {
     private static final String PLAYLIST = "contents.singleColumnWatchNextResults.playlist.playlist";
     private static final String MIX_PATH =
             "next?prettyPrint=false&fields=" + PLAYLIST + "(playlistId,contents.playlistPanelVideoRenderer"
-                    + "(videoId,title,shortBylineText,longBylineText,videoInfo,lengthText,unplayableText))";
+                    + "(videoId,title,shortBylineText,longBylineText,videoInfo,lengthText,unplayableText,"
+                    + "lightColorPalette,darkColorPalette))";
 
     private MixPlaylistRequest() {}
 
@@ -91,7 +92,9 @@ final class MixPlaylistRequest {
             }
             result.add(new VideoMetadata(id, VideoMetadata.text(video.optJSONObject("title")), channel,
                     VideoMetadata.text(video.optJSONObject("videoInfo")),
-                    VideoMetadata.text(video.optJSONObject("lengthText")), fullByline, true));
+                    VideoMetadata.text(video.optJSONObject("lengthText")), fullByline, true,
+                    VideoMetadata.colorPalette(video.optJSONObject("lightColorPalette")),
+                    VideoMetadata.colorPalette(video.optJSONObject("darkColorPalette"))));
         }
 
         // A Mix is generated dynamically. Append its initial batch, without

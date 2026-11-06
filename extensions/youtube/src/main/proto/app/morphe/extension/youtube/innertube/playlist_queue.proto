@@ -88,6 +88,8 @@ message Video {
     optional MainAppStyle main_app_style = 27;
     optional Text video_info = 31;
     repeated RatingAction action_buttons = 32;
+    optional ColorPalette light_color_palette = 34;
+    optional ColorPalette dark_color_palette = 35;
     // Local rows deliberately omit playlistSetVideoId (26) and edit params (37).
     // Native drag presentation works without authorizing an account-playlist edit.
     optional bool can_reorder = 36;
@@ -167,8 +169,19 @@ message TextRun {
     optional string text = 1;
 }
 
+// Colors supplied by YouTube; the native row handles theme, selection and contrast.
+message ColorPalette {
+    optional uint32 section2_color = 2;
+    optional uint32 primary_title_color = 5;
+    optional uint32 secondary_title_color = 6;
+    // Background read by the native selected playlist row.
+    optional uint32 section4_color = 10;
+}
+
 message Thumbnails {
     repeated Thumbnail images = 1;
+    optional ColorPalette light_color_palette = 13;
+    optional ColorPalette dark_color_palette = 14;
 }
 
 message Thumbnail {
