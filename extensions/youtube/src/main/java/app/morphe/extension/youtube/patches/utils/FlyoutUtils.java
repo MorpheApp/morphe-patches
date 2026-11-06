@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.patches.utils;
 
+import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.settings.preference.ColorPickerPreference.DISABLED_ALPHA;
 
 import android.annotation.SuppressLint;
