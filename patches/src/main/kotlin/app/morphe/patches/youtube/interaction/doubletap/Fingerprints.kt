@@ -1,6 +1,7 @@
 package app.morphe.patches.youtube.interaction.doubletap
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.literal
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object SeekTypeEnumFingerprint : Fingerprint(
@@ -18,5 +19,14 @@ internal object DoubleTapInfoCtorFingerprint : Fingerprint(
         "I",
         "Z",
         "Lj$/time/Duration;"
+    )
+)
+
+/**
+ * A/B flag that turns off the two-finger double tap chapter skip.
+ */
+internal object DoubleTapChapterSkipFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45767151L)
     )
 )

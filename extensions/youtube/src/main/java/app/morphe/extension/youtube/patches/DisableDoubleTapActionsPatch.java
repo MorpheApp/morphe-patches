@@ -13,4 +13,15 @@ public final class DisableDoubleTapActionsPatch {
     public static boolean disableDoubleTapChapters(boolean original) {
         return original && !Settings.DISABLE_CHAPTER_SKIP_DOUBLE_TAP.get();
     }
+
+    /**
+     * Injection point.
+     * A/B flag that turns off the two-finger double tap chapter skip,
+     * so the gesture seeks by the double tap length like a one-finger double tap.
+     *
+     * @return If the chapter skip is turned off.
+     */
+    public static boolean disableDoubleTapChaptersFeatureFlag(boolean original) {
+        return Settings.DISABLE_CHAPTER_SKIP_DOUBLE_TAP.get();
+    }
 }
