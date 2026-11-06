@@ -232,9 +232,9 @@ public class FeedCardLayoutPatch {
      */
     private static final int CARD_TITLE_STYLE = 29;
     /**
-     * Corner radius of the cards.
+     * Corner radius of the cards, in dp.
      */
-    private static final int CARD_CORNER_RADIUS = Dim.dp(12);
+    private static final int CARD_CORNER_RADIUS_DP = 12;
     /**
      * Padding of the cards, in dp, which is the spacing between the cards in every list.
      * The spacing that the lists add between the cards is removed.
@@ -253,7 +253,7 @@ public class FeedCardLayoutPatch {
     private static final int SHELF_LIST_PADDING_DP = 8;
 
     private static final CardOutlineProvider CARD_OUTLINE = new CardOutlineProvider(
-            Dim.dp(CARD_HORIZONTAL_PADDING_DP), Dim.dp(CARD_VERTICAL_PADDING_DP));
+            CARD_HORIZONTAL_PADDING_DP, CARD_VERTICAL_PADDING_DP);
     /**
      * Outline of the items of the feed that are not converted, such as the cards that YouTube sends.
      */
@@ -440,7 +440,8 @@ public class FeedCardLayoutPatch {
          */
         @Override
         public void getOutline(View view, Outline outline) {
-            outline.setRoundRect(0, 0, view.getWidth(), view.getHeight() + CARD_CORNER_RADIUS, CARD_CORNER_RADIUS);
+            final int radius = getCardCornerRadius();
+            outline.setRoundRect(0, 0, view.getWidth(), view.getHeight() + radius, radius);
         }
     };
     /**
@@ -497,6 +498,12 @@ public class FeedCardLayoutPatch {
                 }
             };
     private static int feedId;
+    /**
+     * Density that the app used to lay out the cards, measured from the padding of the cards, or 0 until it
+     * differs from the density of the display. The app keeps the layout of the lists when the density
+     * of the display changes, until the lists are laid out again.
+     */
+    private static float cardLayoutDensity;
 
     /**
      * Template that the elements are converted to, such as the feed videos.
@@ -1506,6 +1513,13 @@ public class FeedCardLayoutPatch {
             return;
         }
 
+        // The columns of a recycled row of cards keep their outline.
+        if (child instanceof ViewGroup group) {
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                setCardOutline(group.getChildAt(i), null);
+            }
+        }
+
         // The label is on the list item, or on a view inside it.
         CardOutlineProvider outline = hasLabelMarker(child, CARD_LABEL_MARKER, 0) ? CARD_OUTLINE : null;
         // The items of the feed are cards, also the ones that YouTube sends as cards and are not converted.
@@ -1519,18 +1533,19 @@ public class FeedCardLayoutPatch {
     /**
      * The grids of the watch page on large screens have a row of cards per list item, with each card
      * in a column of the row. The padding of the card moves the content inside the column,
-     * so the outline is set on the columns. The label is on the column or on a view inside it,
-     * and a column is narrower than a list item that is one card.
+     * so the outline is set on the columns. The label is on the column or on a view inside it.
+     * A column is at most half as wide as the row, while the card of a list item that is one card
+     * is only narrower than the item by its padding, which doesn't follow the density of the display
+     * until the list is laid out again.
      */
     private static boolean isCardRow(View item) {
         if (!(item instanceof ViewGroup row) || isCardLabel(item.getContentDescription())) {
             return false;
         }
-        final int cardContentWidth = item.getWidth() - 2 * CARD_OUTLINE.horizontalPadding;
         for (int i = 0, count = row.getChildCount(); i < count; i++) {
             View column = row.getChildAt(i);
             final int width = column.getWidth();
-            if (width > 0 && width < cardContentWidth - 2 && hasLabelMarker(column, CARD_LABEL_MARKER, 0)) {
+            if (width > 0 && 2 * width <= item.getWidth() && hasLabelMarker(column, CARD_LABEL_MARKER, 0)) {
                 return true;
             }
         }
@@ -1616,13 +1631,44 @@ public class FeedCardLayoutPatch {
                                 }
                             }
 
+                            // The padding of a card, around the view with the label of the card, gives the density
+                            // that the app used to lay out the cards. It changes when the density of the display
+                            // changes and the list is laid out again.
+                            for (int i = 0, count = current.getChildCount(); i < count; i++) {
+                                if (!(current.getChildAt(i) instanceof ViewGroup item) || item.getChildCount() != 1) {
+                                    continue;
+                                }
+                                View card = item.getChildAt(0);
+                                final int left = card.getLeft();
+                                if (left <= 0 || !isCardLabel(card.getContentDescription())
+                                        || Math.abs(card.getTop() * CARD_HORIZONTAL_PADDING_DP
+                                        - left * CARD_VERTICAL_PADDING_DP) > CARD_HORIZONTAL_PADDING_DP) {
+                                    continue;
+                                }
+                                if (cardPx(CARD_HORIZONTAL_PADDING_DP) != left) {
+                                    cardLayoutDensity = (float) left / CARD_HORIZONTAL_PADDING_DP;
+                                    for (int j = 0; j < count; j++) {
+                                        invalidateCardOutlines(current.getChildAt(j), 0);
+                                    }
+                                    View container = cardInlinePlayerContainer == null
+                                            ? null
+                                            : cardInlinePlayerContainer.get();
+                                    if (container != null) {
+                                        container.invalidateOutline();
+                                    }
+                                    current.invalidate();
+                                }
+                                break;
+                            }
+
                             // The label of a recycled card can be set after the card is laid out, so the card
                             // keeps the outline of the item it replaced, without the spacing of the cards.
+                            // The label can be on a view inside the item.
                             for (int i = 0, count = current.getChildCount(); i < count; i++) {
                                 View item = current.getChildAt(i);
                                 if (item.getOutlineProvider() != CARD_OUTLINE
-                                        && isCardLabel(item.getContentDescription())) {
-                                    setCardOutline(item, CARD_OUTLINE);
+                                        && hasLabelMarker(item, CARD_LABEL_MARKER, 0)) {
+                                    updateCardOutline(item);
                                 }
                             }
 
@@ -1667,7 +1713,7 @@ public class FeedCardLayoutPatch {
                                 shelf.getLocationOnScreen(shelfLocation);
                                 int[] listLocation = new int[2];
                                 shelfList.getLocationOnScreen(listLocation);
-                                final int cardInset = Dim.dp(CARD_HORIZONTAL_PADDING_DP + SHELF_LIST_PADDING_DP);
+                                final int cardInset = cardPx(CARD_HORIZONTAL_PADDING_DP + SHELF_LIST_PADDING_DP);
                                 int[] content = new int[2];
                                 int paddingLeft = shelfList.getPaddingLeft();
                                 int paddingRight = shelfList.getPaddingRight();
@@ -1788,6 +1834,7 @@ public class FeedCardLayoutPatch {
                 });
             }
 
+            final int cornerRadius = getCardCornerRadius();
             for (int i = 0, count = list.getChildCount(); i < count; i++) {
                 View item = list.getChildAt(i);
                 if (item.getHeight() <= 0) {
@@ -1819,9 +1866,9 @@ public class FeedCardLayoutPatch {
 
                             final float top = belowHeader ? above.getY() : item.getY();
                             final float x = item.getX();
-                            final int horizontalPadding = Dim.dp(VIDEO_SHELF_HORIZONTAL_PADDING_DP);
+                            final int horizontalPadding = cardPx(VIDEO_SHELF_HORIZONTAL_PADDING_DP);
                             canvas.drawRoundRect(x + horizontalPadding, top, x + item.getWidth() - horizontalPadding,
-                                    bottom, CARD_CORNER_RADIUS, CARD_CORNER_RADIUS, getShelfPaint(list.getContext()));
+                                    bottom, cornerRadius, cornerRadius, getShelfPaint(list.getContext()));
                         }
                     }
                     continue;
@@ -1839,8 +1886,8 @@ public class FeedCardLayoutPatch {
                 // The rows of cards of the grids have the cards in the columns of the row.
                 if (isCardRow(item)) {
                     ViewGroup row = (ViewGroup) item;
-                    final int horizontalPadding = Dim.dp(CARD_HORIZONTAL_PADDING_DP);
-                    final int verticalPadding = Dim.dp(CARD_VERTICAL_PADDING_DP);
+                    final int horizontalPadding = cardPx(CARD_HORIZONTAL_PADDING_DP);
+                    final int verticalPadding = cardPx(CARD_VERTICAL_PADDING_DP);
                     for (int j = 0, columns = row.getChildCount(); j < columns; j++) {
                         View column = row.getChildAt(j);
                         if (isCardWithoutBackground(column)) {
@@ -1849,7 +1896,7 @@ public class FeedCardLayoutPatch {
                             canvas.drawRoundRect(x + horizontalPadding, y + verticalPadding,
                                     x + column.getWidth() - horizontalPadding,
                                     y + column.getHeight() - verticalPadding,
-                                    CARD_CORNER_RADIUS, CARD_CORNER_RADIUS, getShelfPaint(list.getContext()));
+                                    cornerRadius, cornerRadius, getShelfPaint(list.getContext()));
                         }
                     }
                     continue;
@@ -1869,11 +1916,11 @@ public class FeedCardLayoutPatch {
                     setCardOutline(header, CARD_OUTLINE);
                     final float x = header.getX();
                     final float y = header.getY();
-                    final int horizontalPadding = Dim.dp(CARD_HORIZONTAL_PADDING_DP);
-                    final int verticalPadding = Dim.dp(CARD_VERTICAL_PADDING_DP);
+                    final int horizontalPadding = cardPx(CARD_HORIZONTAL_PADDING_DP);
+                    final int verticalPadding = cardPx(CARD_VERTICAL_PADDING_DP);
                     canvas.drawRoundRect(x + horizontalPadding, y + verticalPadding,
                             x + header.getWidth() - horizontalPadding, y + header.getHeight() - verticalPadding,
-                            CARD_CORNER_RADIUS, CARD_CORNER_RADIUS, getShelfPaint(list.getContext()));
+                            cornerRadius, cornerRadius, getShelfPaint(list.getContext()));
                     continue;
                 }
 
@@ -1887,12 +1934,12 @@ public class FeedCardLayoutPatch {
                     final float x = header.getX();
                     final float top = header.getY();
                     final float bottom = top + header.getHeight();
-                    final int left = shortsCardLeft > 0 ? shortsCardLeft : Dim.dp(CARD_HORIZONTAL_PADDING_DP);
+                    final int left = shortsCardLeft > 0 ? shortsCardLeft : cardPx(CARD_HORIZONTAL_PADDING_DP);
                     final int right = shortsCardRight > 0 ? shortsCardRight : header.getWidth() - left;
                     canvas.save();
                     canvas.clipRect(x + left, top, x + right, bottom);
-                    canvas.drawRoundRect(x + left, top, x + right, bottom + CARD_CORNER_RADIUS,
-                            CARD_CORNER_RADIUS, CARD_CORNER_RADIUS, getShelfPaint(list.getContext()));
+                    canvas.drawRoundRect(x + left, top, x + right, bottom + cornerRadius,
+                            cornerRadius, cornerRadius, getShelfPaint(list.getContext()));
                     canvas.restore();
                 }
             }
@@ -1996,8 +2043,9 @@ public class FeedCardLayoutPatch {
             return;
         }
         final float x = firstRow.getX();
+        final int cornerRadius = getCardCornerRadius();
         canvas.drawRoundRect(x + left, top, x + right, bottom,
-                CARD_CORNER_RADIUS, CARD_CORNER_RADIUS, getShelfPaint(list.getContext()));
+                cornerRadius, cornerRadius, getShelfPaint(list.getContext()));
     }
 
     /**
@@ -2071,9 +2119,9 @@ public class FeedCardLayoutPatch {
             }
             item.getLocationOnScreen(itemLocation);
             // The padding of the card is laid out from dp with rounding, so it can differ by a pixel on each side.
-            if (Math.abs(viewLocation[0] - itemLocation[0] - CARD_OUTLINE.horizontalPadding) <= 1
-                    && Math.abs(viewLocation[1] - itemLocation[1] - CARD_OUTLINE.verticalPadding) <= 1
-                    && Math.abs(view.getWidth() - item.getWidth() + 2 * CARD_OUTLINE.horizontalPadding) <= 2) {
+            if (Math.abs(viewLocation[0] - itemLocation[0] - CARD_OUTLINE.horizontalPadding()) <= 1
+                    && Math.abs(viewLocation[1] - itemLocation[1] - CARD_OUTLINE.verticalPadding()) <= 1
+                    && Math.abs(view.getWidth() - item.getWidth() + 2 * CARD_OUTLINE.horizontalPadding()) <= 2) {
                 return true;
             }
         }
@@ -2151,12 +2199,13 @@ public class FeedCardLayoutPatch {
                 outline.setRect(0, 0, width, height);
                 return;
             }
+            final int radius = getCardCornerRadius();
             outline.setRoundRect(
-                    topLeft || bottomLeft ? 0 : -CARD_CORNER_RADIUS,
-                    topLeft || topRight ? 0 : -CARD_CORNER_RADIUS,
-                    topRight || bottomRight ? width : width + CARD_CORNER_RADIUS,
-                    bottomLeft || bottomRight ? height : height + CARD_CORNER_RADIUS,
-                    CARD_CORNER_RADIUS);
+                    topLeft || bottomLeft ? 0 : -radius,
+                    topLeft || topRight ? 0 : -radius,
+                    topRight || bottomRight ? width : width + radius,
+                    bottomLeft || bottomRight ? height : height + radius,
+                    radius);
         }
     }
 
@@ -2423,21 +2472,59 @@ public class FeedCardLayoutPatch {
     }
 
     /**
-     * Outline of the card, inside the padding of the card.
+     * @return The pixels of the dp of the cards, in the density that the app used to lay out the cards.
+     */
+    private static int cardPx(float dp) {
+        final float density = cardLayoutDensity > 0 ? cardLayoutDensity : Dim.getMetrics().density;
+        return Math.round(dp * density);
+    }
+
+    private static int getCardCornerRadius() {
+        return cardPx(CARD_CORNER_RADIUS_DP);
+    }
+
+    /**
+     * The outlines are built again when the density of the cards changes, because the views keep their outline
+     * until their size changes.
+     */
+    private static void invalidateCardOutlines(View view, int depth) {
+        ViewOutlineProvider outline = view.getOutlineProvider();
+        if (outline instanceof CardOutlineProvider || outline instanceof ShortsCellOutlineProvider) {
+            view.invalidateOutline();
+        }
+        if (depth < 4 && view instanceof ViewGroup group) {
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                invalidateCardOutlines(group.getChildAt(i), depth + 1);
+            }
+        }
+    }
+
+    /**
+     * Outline of the card, inside the padding of the card, in dp.
      */
     private static final class CardOutlineProvider extends ViewOutlineProvider {
-        private final int horizontalPadding;
-        private final int verticalPadding;
+        private final int horizontalPaddingDp;
+        private final int verticalPaddingDp;
 
-        CardOutlineProvider(int horizontalPadding, int verticalPadding) {
-            this.horizontalPadding = horizontalPadding;
-            this.verticalPadding = verticalPadding;
+        CardOutlineProvider(int horizontalPaddingDp, int verticalPaddingDp) {
+            this.horizontalPaddingDp = horizontalPaddingDp;
+            this.verticalPaddingDp = verticalPaddingDp;
+        }
+
+        int horizontalPadding() {
+            return cardPx(horizontalPaddingDp);
+        }
+
+        int verticalPadding() {
+            return cardPx(verticalPaddingDp);
         }
 
         @Override
         public void getOutline(View view, Outline outline) {
+            final int horizontalPadding = horizontalPadding();
+            final int verticalPadding = verticalPadding();
             outline.setRoundRect(horizontalPadding, verticalPadding, view.getWidth() - horizontalPadding,
-                    view.getHeight() - verticalPadding, CARD_CORNER_RADIUS);
+                    view.getHeight() - verticalPadding, getCardCornerRadius());
         }
     }
 
