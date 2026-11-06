@@ -16,7 +16,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.all.misc.crashlog.crashLogPatch
@@ -58,7 +57,9 @@ import app.morphe.patches.youtube.misc.fix.likebutton.fixLikeButtonPatch
 import app.morphe.patches.youtube.misc.fix.padding.fixPagePaddingPatch
 import app.morphe.patches.youtube.misc.fix.pipchatbar.fixPipChatBarPatch
 import app.morphe.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhilePlayingPatch
+import app.morphe.patches.youtube.misc.fix.preference.addPreferenceScreenHook
 import app.morphe.patches.youtube.misc.fix.preference.fixPreferenceIconPatch
+import app.morphe.patches.youtube.misc.fix.preference.preferenceScreenHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -72,9 +73,7 @@ import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
@@ -215,6 +214,7 @@ val settingsPatch = patch(
         fixTouchExplorationPatch,
         fixPlaybackSpeedWhilePlayingPatch,
         fixPreferenceIconPatch,
+        preferenceScreenHookPatch,
         fixLikeButtonPatch,
         fixContentProviderPatch,
         fixGuideCachePatch,
@@ -315,36 +315,13 @@ val settingsPatch = patch(
             }
         }
 
-        SettingsPreferenceScreenSyntheticFingerprint.let {
-            it.method.apply {
-                // Reuse the method's own getPreferenceScreen call.
-                val getPreferenceScreenIndex = it.instructionMatches[1].index
-                val fragmentRegister =
-                    getInstruction<FiveRegisterInstruction>(getPreferenceScreenIndex).registerC
-                val getPreferenceScreenReference =
-                    getInstruction<ReferenceInstruction>(getPreferenceScreenIndex).reference
-
-                // fragmentRegister must survive, because the settings menu filter patch
-                // adds its own call on it after these instructions.
-                val insertIndex = it.instructionMatches.last().index
-                val registerProvider = getFreeRegisterProvider(insertIndex, 3, fragmentRegister)
-                val screenRegister = registerProvider.getFreeRegister()
-                val preferenceRegister = registerProvider.getFreeRegister()
-                val nameRegister = registerProvider.getFreeRegister()
-
-                addInstructionsAtControlFlowLabel(
-                    insertIndex,
-                    customSettingsNameInstructions(
-                        getPreferenceScreen = """
-                            invoke-virtual { v$fragmentRegister }, $getPreferenceScreenReference
-                            move-result-object v$screenRegister
-                        """,
-                        screenRegister = screenRegister,
-                        preferenceRegister = preferenceRegister,
-                        nameRegister = nameRegister
-                    )
-                )
-            }
+        addPreferenceScreenHook(2) { screenRegister, (preferenceRegister, nameRegister) ->
+            customSettingsNameInstructions(
+                getPreferenceScreen = "",
+                screenRegister = screenRegister,
+                preferenceRegister = preferenceRegister,
+                nameRegister = nameRegister
+            )
         }
 
         // Show the extension messages in the YouTube snackbar instead of a toast,
