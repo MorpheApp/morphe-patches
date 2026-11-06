@@ -125,6 +125,33 @@ public class GmsCoreSupportPatch {
     }
 
     /**
+     * Account capabilities of child and supervised accounts, as Base32 of "303-cap" and "1242-cap".
+     * GmsCore allows the capabilities it can not look up, so every account got the defaults of a
+     * supervised account, such as the bedtime, break and Shorts feed limit reminders turned on.
+     * Google Play services denies them for other accounts.
+     */
+    private static final List<String> SUPERVISED_ACCOUNT_CAPABILITIES = List.of(
+            "gmydglldmfya",
+            "gezdimrnmnqxa"
+    );
+
+    /**
+     * Injection point.
+     *
+     * @return If the account capability check is denied without asking GmsCore.
+     */
+    public static boolean denySupervisedAccountCapability(@Nullable String[] capabilities) {
+        if (capabilities != null) {
+            for (String capability : capabilities) {
+                if (SUPERVISED_ACCOUNT_CAPABILITIES.contains(capability)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
      * @return If the current package name is the same as the original unpatched app.
      *         If `GmsCore support` was not included during patching, this returns true;
      */
