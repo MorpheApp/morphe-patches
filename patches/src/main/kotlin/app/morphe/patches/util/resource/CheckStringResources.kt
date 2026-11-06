@@ -29,7 +29,30 @@ import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.patcher.patch.readXml
 
 /**
- * Checks resource strings for invalid strings that will fail resource compilation.
+ * Matches format parameters and the escaped percent sign.
+ * Width and space flags are intentionally not matched, so literal percent text
+ * such as "100% sure" or "%100de" is not treated as a parameter.
+ */
+private val FORMAT_PARAMETER = Regex("""%%|%(?:(\d+)\$)?((?:\.\d+)?[sdf])""")
+
+/**
+ * @return The format parameters of a string, with all parameters in indexed form.
+ *         `%s` and `%1$s` are the same parameter, and a parameter used twice is listed once.
+ */
+private fun getFormatParameters(value: String): Set<String> {
+    var ordinaryIndex = 0
+    return FORMAT_PARAMETER.findAll(value)
+        .filter { it.value != "%%" }
+        .map { match ->
+            val index = match.groupValues[1].ifEmpty { (++ordinaryIndex).toString() }
+            "%$index$" + match.groupValues[2]
+        }
+        .toSortedSet()
+}
+
+/**
+ * Checks resource strings for invalid strings that will fail resource compilation,
+ * and for translations that use different format parameters than the English string.
  */
 @Suppress("unused")
 internal fun main(args: Array<String>) {
@@ -42,8 +65,21 @@ internal fun main(args: Array<String>) {
         "shared",
         "shared-youtube",
         "youtube",
-        "reddit"
+        "reddit",
+        "sponsorblock"
     ).forEach { appId ->
+        val englishSubPath = "values/$appId/strings.xml"
+        val englishParameters = inputStreamFromBundledResource(
+            "addresources", englishSubPath
+        ).use { stream ->
+            if (stream == null) throw IllegalArgumentException("Could not find resource $englishSubPath")
+            readXml(stream).use { strings ->
+                strings.elements("string").associate { element ->
+                    element.attribute("name").orEmpty() to getFormatParameters(element.text)
+                }
+            }
+        }
+
         localesAll.forEach { locale ->
             val srcFolderName = locale.getSrcLocaleFolderName()
             val srcSubPath = "$srcFolderName/$appId/strings.xml"
@@ -65,6 +101,17 @@ internal fun main(args: Array<String>) {
                             )
                         } catch (e: Exception) {
                             exceptions += e
+                        }
+
+                        val expectedParameters = englishParameters[name]
+                        if (expectedParameters != null) {
+                            val parameters = getFormatParameters(value)
+                            if (parameters != expectedParameters) {
+                                exceptions += IllegalArgumentException(
+                                    "$srcSubPath String $name has format parameters $parameters " +
+                                            "but English has $expectedParameters: $value"
+                                )
+                            }
                         }
 
                         stringsChecked++

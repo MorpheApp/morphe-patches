@@ -354,11 +354,11 @@ Limitations:
     <string name="morphe_hide_keyword_toast_invalid_conflicting">Keyword has conflicting declarations: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_length">Keyword is too short and requires quotes: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_broad">Keyword will hide all videos: %s</string>
-    <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Home: %s
-• Subscriptions: %s
-• Search: %s
-• Comments: %s
-• Total: %s"</string>
+    <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Home: %1$s
+• Subscriptions: %2$s
+• Search: %3$s
+• Comments: %4$s
+• Total: %5$s"</string>
 
     <string name="morphe_hide_stats_category_title">Stats</string>
     <string name="morphe_hide_stats_hidden_24h_title">Videos hidden, last 24 hours</string>
@@ -372,9 +372,9 @@ Limitations:
     <string name="morphe_hide_aislist_warnlist_category_title">Warnlist: Moderate confidence</string>
     <string name="morphe_hide_aislist_hide_home_title">Hide videos in Home</string>
     <string name="morphe_hide_aislist_hide_search_title">Hide videos in search</string>
-    <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Home: %s
-• Search: %s
-• Total: %s"</string>
+    <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Home: %1$s
+• Search: %2$s
+• Total: %3$s"</string>
     <string name="morphe_hide_aislist_stats_blocklist_channels_title">Blocklist channels</string>
     <string name="morphe_hide_aislist_stats_warnlist_channels_title">Warnlist channels</string>
     <string name="morphe_hide_aislist_stats_channels_disabled_summary">Enable a filter to load channels</string>
@@ -606,7 +606,7 @@ Export folder: %s"</string>
     <string name="morphe_export_download_folder_missing">Could not find export folder %s</string>
     <string name="morphe_export_download_flyout_title">Export to device</string>
     <string name="morphe_export_download_started">Exporting video</string>
-    <string name="morphe_export_download_progress">Exporting video: %d%%</string>
+    <string name="morphe_export_download_progress">Exporting video: %s%%</string>
     <string name="morphe_export_download_notification_channel">Video exports</string>
     <string name="morphe_export_download_saved">Video exported to %s</string>
     <string name="morphe_export_download_failed">Could not export the video</string>
@@ -1092,7 +1092,7 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_navigation_bar_glass_size_height">Height</string>
     <string name="morphe_navigation_bar_glass_size_width">Maximum width</string>
     <string name="morphe_navigation_bar_glass_size_button_spacing">Button spacing</string>
-    <string name="morphe_navigation_bar_glass_size_buttons_shown">Buttons shown: %1$d of %2$d</string>
+    <string name="morphe_navigation_bar_glass_size_buttons_shown">Buttons shown: %1$s of %2$s</string>
 
     <string name="morphe_toolbar_screen_title">Toolbar</string>
     <string name="morphe_toolbar_screen_summary">Choose which components appear in the toolbar</string>
@@ -1835,7 +1835,7 @@ Automatic recording stops in incognito, when account identity is unavailable, or
     <string name="morphe_series_tracker_identity_unavailable">Tracking cannot be enabled in incognito or before YouTube has loaded the current account state. Return to Home and try again. No sign-in is required</string>
     <string name="morphe_series_tracker_enable">Enable local tracking</string>
     <string name="morphe_series_tracker_tracking_paused">Progress recording is off</string>
-    <string name="morphe_series_tracker_resume_at">Resume at %1$s</string>
+    <string name="morphe_series_tracker_resume_at">Resume at %s</string>
     <string name="morphe_series_tracker_watched_count">%1$s / %2$s episodes watched</string>
     <string name="morphe_series_tracker_episode_position">Episode %1$s · %2$s</string>
     <string name="morphe_series_tracker_episode_range">Episodes %1$s-%2$s of %3$s</string>
@@ -1845,7 +1845,7 @@ Automatic recording stops in incognito, when account identity is unavailable, or
     <string name="morphe_series_tracker_plan_changed">Choose an episode</string>
     <string name="morphe_series_tracker_plan_caught_up">Up to date</string>
     <string name="morphe_series_tracker_plan_none">No playable episodes</string>
-    <string name="morphe_series_tracker_saved_position">Saved video · %1$s</string>
+    <string name="morphe_series_tracker_saved_position">Saved video · %s</string>
     <string name="morphe_series_tracker_follow">Follow series</string>
     <string name="morphe_series_tracker_view_series">View series</string>
     <string name="morphe_series_tracker_continue">Continue</string>
@@ -1856,7 +1856,7 @@ Automatic recording stops in incognito, when account identity is unavailable, or
     <string name="morphe_series_tracker_undo">Undo</string>
     <string name="morphe_series_tracker_enable_short">Enable</string>
     <string name="morphe_series_tracker_new_episode">1 new episode</string>
-    <string name="morphe_series_tracker_new_episodes">%1$s new episodes</string>
+    <string name="morphe_series_tracker_new_episodes">%s new episodes</string>
     <string name="morphe_series_tracker_record_short">Record progress on this device</string>
     <string name="morphe_series_tracker_follow_consent">"Your series and progress stay on this device, shared across YouTube accounts. YouTube history controls do not change them. Clear progress from the Series menu.
 
@@ -1886,12 +1886,12 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_series_tracker_hide_watched">Hide watched</string>
     <string name="morphe_series_tracker_watched_on_advance">Mark watched when moving to the next episode</string>
     <string name="morphe_series_tracker_watch_previous">Mark previous episodes watched</string>
-    <string name="morphe_series_tracker_order_starts_with">Starts with: %1$s</string>
+    <string name="morphe_series_tracker_order_starts_with">Starts with: %s</string>
     <string name="morphe_series_tracker_episode_order">Episode order</string>
     <string name="morphe_series_tracker_playlist_order">Playlist order</string>
     <string name="morphe_series_tracker_reverse_order">Reverse playlist order</string>
-    <string name="morphe_series_tracker_view_count">%1$s views</string>
-    <string name="morphe_series_tracker_view_count_one">%1$s view</string>
+    <string name="morphe_series_tracker_view_count">%s views</string>
+    <string name="morphe_series_tracker_view_count_one">%s view</string>
     <string name="morphe_series_tracker_completion_title">Mark episodes watched</string>
     <string name="morphe_series_tracker_completion_summary">At least %1$s%% watched with at most 90 seconds left, or %2$s seconds remaining</string>
     <string name="morphe_series_tracker_completion_explanation">Automatically mark an episode watched after either threshold. The percentage rule also requires no more than 90 seconds left, so the ending of long episodes is not skipped. The remaining-time rule applies to videos longer than one minute; set it to 0 to disable it. Changes apply to future progress updates. Manual watched/unwatched choices are kept</string>
@@ -1911,7 +1911,7 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_series_tracker_backup_restore">Restore backup</string>
     <string name="morphe_series_tracker_backup_preview">Add %1$s series. %2$s series already in your library are kept. Existing video progress is kept</string>
     <string name="morphe_series_tracker_backup_saved">Series backup saved</string>
-    <string name="morphe_series_tracker_backup_restored">Restored %1$s series</string>
+    <string name="morphe_series_tracker_backup_restored">Restored %s series</string>
     <string name="morphe_series_tracker_error_backup_invalid">This file is not a supported series backup, or is too large. Your library was not changed</string>
     <string name="morphe_series_tracker_error_backup_write">Could not save the backup. Try another location</string>
     <string name="morphe_series_tracker_removed">Series removed</string>
@@ -1921,7 +1921,7 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_series_tracker_recovery_choose">You can also choose any episode below. Earlier episodes are not changed</string>
     <string name="morphe_series_tracker_playback_changed">This playlist changed. Open the series to choose where to continue</string>
     <string name="morphe_series_tracker_playback_boundary">No more episodes in this direction</string>
-    <string name="morphe_series_tracker_continue_series">Continue %1$s</string>
+    <string name="morphe_series_tracker_continue_series">Continue %s</string>
     <string name="morphe_series_tracker_search_series">Search series</string>
     <string name="morphe_series_tracker_clear_search">Clear search</string>
     <string name="morphe_series_tracker_no_search_results">No series found</string>
