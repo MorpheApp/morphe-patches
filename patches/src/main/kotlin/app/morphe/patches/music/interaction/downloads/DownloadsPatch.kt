@@ -102,6 +102,8 @@ private val downloadsResourcePatch = patch {
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/DownloadsPatch;"
 private const val SONG_MENU_FILTER = "Lapp/morphe/extension/music/patches/components/SongMenuFilter;"
+private const val PLAYLIST_PAGE_FILTER =
+    "Lapp/morphe/extension/music/patches/components/PlaylistPageFilter;"
 private const val EXTENSION_PROTOCOL_BUFFER_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/DownloadsPatch$ProtocolBufferFieldInterface;"
 private const val DOWNLOADED_MARK_FILTER =
@@ -134,6 +136,9 @@ val downloadsPatch = patch(
 
         // Finds the song of a menu, for the menu Download of accounts offered Premium.
         addLithoFilter(SONG_MENU_FILTER)
+
+        // Finds the playlist or album of a page, for the page and menu Download.
+        addLithoFilter(PLAYLIST_PAGE_FILTER)
 
         CommandResolverFingerprint.method.cloneParameters().apply {
             // Add interface to get buffer.
