@@ -8,6 +8,8 @@
 package app.morphe.patches.youtube.misc.litho.rendernext
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -106,5 +108,27 @@ internal object RenderNextTemplateCheckFingerprint : Fingerprint(
         literal(58),
         methodCall(smali = "Ljava/lang/String;->indexOf(I)I"),
         methodCall(smali = "Ljava/lang/String;->substring(II)Ljava/lang/String;"),
+    )
+)
+
+/**
+ * Opens the Home browse with the page fragment if the client flag 1073830434 is enabled, on phones.
+ * The page fragment renders the whole page with RenderNext (ElementsPageHost) when the server sends
+ * the page as an element instead of a section list.
+ */
+internal object PageFragmentRouteFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("L", "Z", "Z", "Z"),
+    filters = listOf(
+        string("top_level_browse_pane"),
+        literal(1073830434L),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("I"),
+            returnType = "Z",
+            location = MatchAfterWithin(5)
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
     )
 )
