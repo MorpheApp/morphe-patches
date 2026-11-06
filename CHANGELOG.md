@@ -1,3 +1,13 @@
+## [2.2.0](https://github.com/t66902140-hash/morphe-patches/compare/v2.1.0...v2.2.0) (2026-11-06)
+
+### ✨ New Features
+
+* **youtube:** block channel in keyword filter on don't recommend ([f6cf927](https://github.com/t66902140-hash/morphe-patches/commit/f6cf927ae1cdd22f6d0abf0d4e4d417bf536a7bd))
+
+### 🐛 Bug Fixes
+
+* **youtube:** import StringRef.str in FlyoutUtils ([9774be2](https://github.com/t66902140-hash/morphe-patches/commit/9774be21dac2dd5e3feba61209fb0f1b7c26117d))
+
 ## [2.1.0](https://github.com/MorpheApp/morphe-patches/compare/v2.0.0...v2.1.0) (2026-11-06)
 
 ### ✨ New Features
