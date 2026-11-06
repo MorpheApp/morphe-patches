@@ -77,7 +77,7 @@ public final class PlaylistPageFilter extends Filter {
                     Logger.printDebug(() -> "Playlist page: " + playlistId);
                     pagePlaylistId = playlistId;
                 }
-            } else {
+            } else if (identifier.startsWith("tile_button_carousel.")) {
                 String playlistId = findPlaylistId(buffer, 1);
                 if (playlistId != null && !playlistId.equals(menuPlaylistId)) {
                     Logger.printDebug(() -> "Playlist menu: " + playlistId);
