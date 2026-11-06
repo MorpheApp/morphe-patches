@@ -243,9 +243,22 @@ internal object FeedPostSectionMapperFingerprint : Fingerprint(
 
 /**
  * Selects the feed posts that Reddit loads in full after a feed page is shown.
- * Post previews are not selected if a feature flag removes this secondary fetch.
+ * Post previews are never selected.
  */
 internal object PostsToLoadFingerprint : Fingerprint(
+    returnType = "Ljava/util/ArrayList;",
+    parameters = listOf("Ljava/util/List;"),
+    filters = listOf(
+        instanceOf(type = { PostPreviewFeedElementToStringFingerprint.classDef }),
+        opcode(Opcode.IF_NEZ, MatchAfterImmediately())
+    )
+)
+
+/**
+ * Selects the feed posts to load before 2026.45.0, where post previews are not selected
+ * if a feature flag removes this secondary fetch.
+ */
+internal object PostsToLoadLegacyFingerprint : Fingerprint(
     returnType = "Ljava/util/ArrayList;",
     parameters = listOf(
         "Ljava/util/List;",

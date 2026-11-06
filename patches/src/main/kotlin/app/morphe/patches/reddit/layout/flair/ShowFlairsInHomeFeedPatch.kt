@@ -15,6 +15,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -265,9 +266,15 @@ val showFlairsInHomeFeedPatch = patch(
         }
 
         // After a feed page is shown, Reddit loads the full posts of the page in the background,
-        // and the full posts include the flairs. A feature flag removes this secondary fetch
-        // for post previews. Keep the fetch, so their flairs are available.
-        PostsToLoadFingerprint.let {
+        // and the full posts include the flairs. This secondary fetch is removed for post previews,
+        // by a feature flag before 2026.45.0. Keep the fetch, so their flairs are available.
+        val postsToLoadFingerprint = if (is_2026_45_0_or_greater) {
+            PostsToLoadFingerprint
+        } else {
+            PostsToLoadLegacyFingerprint
+        }
+
+        postsToLoadFingerprint.let {
             val flagMatch = it.instructionMatches.last()
             val flagRegister = flagMatch.getInstruction<OneRegisterInstruction>().registerA
 

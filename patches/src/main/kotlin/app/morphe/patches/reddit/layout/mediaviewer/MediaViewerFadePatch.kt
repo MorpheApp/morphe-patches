@@ -18,6 +18,7 @@ import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_38_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -87,10 +88,17 @@ val mediaViewerFadePatch = patch(
 
         // The fade is a vertical gradient built from an array of (position, color) pairs.
         // Each color stop is made with Color.copy(alpha).
+        // The call is copy(float, long) or before 2026.45.0 it's copy(long, float),
+        // where the long uses 2 registers before the alpha.
+        val (alphaFilter, alphaRegisterIndex) = if (is_2026_45_0_or_greater) {
+            mediaViewerFadeAlphaFilter to 0
+        } else {
+            mediaViewerFadeAlphaLegacyFilter to 2
+        }
+
         MediaViewerChromeFingerprint.method.apply {
-            findInstructionIndicesReversedOrThrow(mediaViewerFadeAlphaFilter).forEach { index ->
-                // Color.copy(long, float): the long uses 2 registers, then the alpha.
-                val alphaRegister = getInstruction(index).registersUsed[2]
+            findInstructionIndicesReversedOrThrow(alphaFilter).forEach { index ->
+                val alphaRegister = getInstruction(index).registersUsed[alphaRegisterIndex]
 
                 addInstructions(
                     index,

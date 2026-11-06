@@ -23,7 +23,6 @@ internal object BottomNavScreenListBuilderFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/launch/bottomnav/BottomNavScreen;",
     returnType = "L",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    parameters = listOf("L"),
     filters = listOf(
         newInstance("Ljava/util/ArrayList;"),
         methodCall(

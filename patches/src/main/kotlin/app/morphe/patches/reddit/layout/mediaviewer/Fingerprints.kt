@@ -233,6 +233,13 @@ internal object MediaViewerChromeLegacyFingerprint : Fingerprint(
 
 // Color.copy(alpha) calls that construct the fade's color stops.
 internal val mediaViewerFadeAlphaFilter = methodCall(
+    parameters = listOf("F", "J"),
+    returnType = "J",
+    opcodes = listOf(Opcode.INVOKE_STATIC, Opcode.INVOKE_STATIC_RANGE)
+)
+
+// Color.copy(alpha) calls before 2026.45.0, with the alpha as the last parameter.
+internal val mediaViewerFadeAlphaLegacyFilter = methodCall(
     parameters = listOf("J", "F"),
     returnType = "J",
     opcodes = listOf(Opcode.INVOKE_STATIC, Opcode.INVOKE_STATIC_RANGE)
