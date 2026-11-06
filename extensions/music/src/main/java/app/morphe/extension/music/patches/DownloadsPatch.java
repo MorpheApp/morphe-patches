@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.components.DownloadedMarkFilter;
+import app.morphe.extension.music.patches.components.PlaylistPageFilter;
 import app.morphe.extension.music.patches.components.SongMenuFilter;
 import app.morphe.extension.music.patches.downloads.DownloadedMark;
 import app.morphe.extension.music.patches.downloads.LocalDownloadManager;
@@ -75,7 +76,7 @@ public final class DownloadsPatch {
      * Liked music, user and editorial playlists, mixes, album playlists and album pages,
      * with or without the 'VL' prefix of a playlist page.
      */
-    private static final Pattern PLAYLIST_ID = Pattern.compile(
+    public static final Pattern PLAYLIST_ID = Pattern.compile(
             "(VL)?(LM|PL[A-Za-z0-9_-]{16,}|OLAK5uy_[A-Za-z0-9_-]{11,}|RD[A-Za-z0-9_-]{10,})"
                     + "|MPRE[A-Za-z0-9_-]{8,}");
 
@@ -170,7 +171,7 @@ public final class DownloadsPatch {
      * In app downloads and the external downloader always replace the Download button.
      */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    private static boolean isActionButtonOverridden() {
+    public static boolean isActionButtonOverridden() {
         return Settings.DOWNLOAD_MODE.get() != DownloadMode.DEFAULT;
     }
 
@@ -394,8 +395,14 @@ public final class DownloadsPatch {
         String label = downloadButtonLabel.toLowerCase(Locale.ROOT);
         if (!value.contains(label) && !label.contains(value)) return false;
 
+        return isViewInsideActionBar(senderViewGroup);
+    }
+
+    private static boolean isViewInsideActionBar(@Nullable Object viewObj) {
+        if (!(viewObj instanceof ViewGroup viewGroup)) return false;
+
         int actionBarId = ResourceUtils.getIdIdentifier("video_action_bar");
-        View view = senderViewGroup;
+        View view = viewGroup;
         while (view.getParent() instanceof View parent) {
             if (parent.getId() == actionBarId) return true;
             view = parent;
@@ -417,13 +424,19 @@ public final class DownloadsPatch {
 
             byte[] commandBytes = p1.toByteArray();
             final boolean insideDialog = isViewInsideDialog(map.get(ELEMENTS_SENDER_VIEW));
+            final boolean premiumUpsell = PREMIUM_UPSELL_COMMAND.check(commandBytes).isFiltered();
 
-            if (insideDialog && PREMIUM_UPSELL_COMMAND.check(commandBytes).isFiltered()) {
-                // The song is found by the menu header. Albums and playlists are left to the app.
+            if (insideDialog && premiumUpsell) {
                 String videoId = SongMenuFilter.getMenuVideoId();
-                if (videoId == null) return false;
+                if (videoId != null) return onMenuDownload(videoId);
 
-                return onMenuDownload(videoId);
+                String playlistId = PlaylistPageFilter.getMenuPlaylistId();
+                if (playlistId == null) playlistId = PlaylistPageFilter.getPagePlaylistId();
+                if (playlistId == null) return false;
+                if (!isActionButtonOverridden()) return false;
+
+                startPlaylistDownload(playlistId);
+                return true;
             }
 
             if (inAppDownloads()) {
@@ -455,8 +468,16 @@ public final class DownloadsPatch {
                 Utils.runOnMainThreadNowOrLater(() -> startDownload(videoId, !inAppDownloads()));
                 return true;
             }
-            // Other menu Download commands have no sender view, and are handled when they
-            // reach the offline video endpoint or the offline upsell.
+            if (!insideDialog && premiumUpsell
+                    && !isViewInsideActionBar(map.get(ELEMENTS_SENDER_VIEW))) {
+                String playlistId = PlaylistPageFilter.getPagePlaylistId();
+                if (playlistId != null && isActionButtonOverridden()) {
+                    startPlaylistDownload(playlistId);
+                    return true;
+                }
+            }
+
+            // Endpoint Download commands have no sender view.
         } catch (Exception ex) {
             Logger.printException(() -> "commandResolverOnClick failure", ex);
         }
