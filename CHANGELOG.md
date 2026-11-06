@@ -1,3 +1,9 @@
+## [2.2.1](https://github.com/t66902140-hash/morphe-patches/compare/v2.2.0...v2.2.1) (2026-11-06)
+
+### 🐛 Bug Fixes
+
+* **youtube:** remove smali bytecode wrap in FlyoutPatch to fix startup crash and make touch hook fail-safe ([b333ca0](https://github.com/t66902140-hash/morphe-patches/commit/b333ca0420f38adf11636b32e4b8e654d9cc2c2f))
+
 ## [2.2.0](https://github.com/t66902140-hash/morphe-patches/compare/v2.1.0...v2.2.0) (2026-11-06)
 
 ### ✨ New Features

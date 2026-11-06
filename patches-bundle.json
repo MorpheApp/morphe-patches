@@ -1,8 +1,8 @@
 {
-  "created_at": "2026-11-06T15:53:32",
-  "description": "## [2.2.0](https://github.com/t66902140-hash/morphe-patches/compare/v2.1.0...v2.2.0) (2026-11-06)\n\n### ✨ New Features\n\n* **youtube:** block channel in keyword filter on don't recommend ([f6cf927](https://github.com/t66902140-hash/morphe-patches/commit/f6cf927ae1cdd22f6d0abf0d4e4d417bf536a7bd))\n\n### 🐛 Bug Fixes\n\n* **youtube:** import StringRef.str in FlyoutUtils ([9774be2](https://github.com/t66902140-hash/morphe-patches/commit/9774be21dac2dd5e3feba61209fb0f1b7c26117d))",
-  "download_url": "https://github.com/t66902140-hash/morphe-patches/releases/download/v2.2.0/patches-2.2.0.mpp",
+  "created_at": "2026-11-06T16:19:13",
+  "description": "## [2.2.1](https://github.com/t66902140-hash/morphe-patches/compare/v2.2.0...v2.2.1) (2026-11-06)\n\n### 🐛 Bug Fixes\n\n* **youtube:** remove smali bytecode wrap in FlyoutPatch to fix startup crash and make touch hook fail-safe ([b333ca0](https://github.com/t66902140-hash/morphe-patches/commit/b333ca0420f38adf11636b32e4b8e654d9cc2c2f))",
+  "download_url": "https://github.com/t66902140-hash/morphe-patches/releases/download/v2.2.1/patches-2.2.1.mpp",
   "signature_download_url": "",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "public_key": "g8Ys9leTu2yeixojeR35HrNkK6eOSLpA6nNIizRutqI="
 }
