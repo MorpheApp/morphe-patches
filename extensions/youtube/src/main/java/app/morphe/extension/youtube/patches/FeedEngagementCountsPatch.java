@@ -86,6 +86,16 @@ public final class FeedEngagementCountsPatch {
     private static final float COUNT_TEXT_SP = 11f;
     private static final float RATIO_TEXT_SP = 10f;
 
+    /**
+     * The compact badge is a single row as tall as the duration badge, on its side, used on thumbnails
+     * too small to fit the badge above the duration, such as of the rows of a list on phones.
+     */
+    private static final int COMPACT_HEIGHT_DP = 20;
+    private static final int COMPACT_PADDING_DP = 4;
+    private static final int COMPACT_ICON_DP = 12;
+    private static final int COMPACT_CORNER_RADIUS_DP = 4;
+    private static final int COMPACT_BAR_HEIGHT_DP = 2;
+
     /** A little darker than the duration badge, for the smaller texts. */
     private static final int BACKGROUND_COLOR = 0xA6000000;
     private static final int TEXT_COLOR = 0xFFFFFFFF;
@@ -210,6 +220,8 @@ public final class FeedEngagementCountsPatch {
         private int durationThumbnailTop;
         /** Width of the card when the place was found, or -1 if it is not known. */
         private int durationHostWidth = -1;
+        /** If the badge is the compact single row, see {@link #COMPACT_HEIGHT_DP}. */
+        private boolean compact;
 
         CountsBadge(ComponentHost host) {
             hostRef = new WeakReference<>(host);
@@ -452,10 +464,44 @@ public final class FeedEngagementCountsPatch {
                 bottom = FeedVideoCardsPatch.getThumbnailBottom(host) - px(ABOVE_DURATION_DP);
                 thumbnailTop = 0;
             }
-            final int top = Math.max(thumbnailTop + px(MARGIN_DP), bottom - height);
-
-            final int left = rtl ? edge : edge - width;
-            setBounds(left, top, left + width, top + height);
+            compact = bottom - height < thumbnailTop + px(MARGIN_DP);
+            if (compact) {
+                // The badge does not fit above the duration, so it is on the side of the duration,
+                // in the same row, or in the other bottom corner of the thumbnail if the duration is not known.
+                float compactWidth = 0;
+                if (countText != null || (loading && LIKE_COUNT)) {
+                    compactWidth += px(COMPACT_ICON_DP) + gap;
+                }
+                if (loading) {
+                    compactWidth += px(SPINNER_DP);
+                } else {
+                    if (countText != null) {
+                        compactWidth += countPaint.measureText(countText);
+                    }
+                    if (ratioText != null) {
+                        compactWidth += (countText != null ? gap * 2 : 0) + ratioPaint.measureText(ratioText);
+                    }
+                }
+                final int compactPadding = px(COMPACT_PADDING_DP);
+                final int rowWidth = Math.round(compactWidth) + compactPadding * 2;
+                final int rowHeight = px(COMPACT_HEIGHT_DP);
+                final int rowBottom = duration != null
+                        ? duration.bottom
+                        : bottom + px(ABOVE_DURATION_DP) - px(RIGHT_MARGIN_DP);
+                final int rowLeft;
+                if (duration != null) {
+                    rowLeft = rtl ? duration.right + px(DURATION_GAP_DP) : duration.left - px(DURATION_GAP_DP) - rowWidth;
+                } else {
+                    final int thumbnailLeft = thumbnail != null ? thumbnail.left : 0;
+                    final int thumbnailRight = thumbnail != null ? thumbnail.right : host.getWidth();
+                    rowLeft = rtl ? thumbnailRight - px(RIGHT_MARGIN_DP) - rowWidth : thumbnailLeft + px(RIGHT_MARGIN_DP);
+                }
+                setBounds(rowLeft, rowBottom - rowHeight, rowLeft + rowWidth, rowBottom);
+            } else {
+                final int top = Math.max(thumbnailTop + px(MARGIN_DP), bottom - height);
+                final int left = rtl ? edge : edge - width;
+                setBounds(left, top, left + width, top + height);
+            }
             if (!added) {
                 host.getOverlay().add(this);
                 added = true;
@@ -506,12 +552,65 @@ public final class FeedEngagementCountsPatch {
                 return;
             }
             Rect bounds = getBounds();
-            final float radius = px(CORNER_RADIUS_DP);
+            final float radius = px(compact ? COMPACT_CORNER_RADIUS_DP : CORNER_RADIUS_DP);
             // The background was shown with the loading spinner, so only the counts fade in.
             countPaint.setAlpha(alpha);
             ratioPaint.setAlpha(alpha);
             rect.set(bounds);
             canvas.drawRoundRect(rect, radius, radius, backgroundPaint);
+
+            if (compact) {
+                // A single row: the like icon, the like count and the like ratio, with the like bar at the bottom.
+                final int gap = px(GAP_DP);
+                final float centerY = bounds.exactCenterY();
+                float x = bounds.left + px(COMPACT_PADDING_DP);
+                if (countText != null || (loading && LIKE_COUNT)) {
+                    final int iconSize = px(COMPACT_ICON_DP);
+                    Drawable icon = getLikeIcon();
+                    if (icon != null) {
+                        final int top = Math.round(centerY - iconSize / 2f);
+                        icon.setBounds(Math.round(x), top, Math.round(x) + iconSize, top + iconSize);
+                        icon.setAlpha(255);
+                        icon.draw(canvas);
+                    }
+                    x += iconSize + gap;
+                }
+                if (loading) {
+                    final float spinnerSize = px(SPINNER_DP);
+                    rect.set(x, centerY - spinnerSize / 2, x + spinnerSize, centerY + spinnerSize / 2);
+                    FeedVideoCardsPatch.drawSpinner(canvas, rect, spinnerPaint);
+                    invalidateSelf();
+                    return;
+                }
+                if (countText != null) {
+                    final float textWidth = countPaint.measureText(countText);
+                    Paint.FontMetrics metrics = countPaint.getFontMetrics();
+                    canvas.drawText(countText, x + textWidth / 2, centerY - (metrics.ascent + metrics.descent) / 2, countPaint);
+                    x += textWidth + gap * 2;
+                }
+                if (ratioText != null) {
+                    final float textWidth = ratioPaint.measureText(ratioText);
+                    Paint.FontMetrics metrics = ratioPaint.getFontMetrics();
+                    canvas.drawText(ratioText, x + textWidth / 2, centerY - (metrics.ascent + metrics.descent) / 2, ratioPaint);
+
+                    final float barLeft = bounds.left + radius;
+                    final float barRight = bounds.right - radius;
+                    final float barBottom = bounds.bottom - px(1);
+                    final float barTop = barBottom - px(COMPACT_BAR_HEIGHT_DP);
+                    final float split = barLeft + (barRight - barLeft) * likeFraction;
+                    barPaint.setColor(DISLIKE_BAR_COLOR);
+                    barPaint.setAlpha(alpha);
+                    rect.set(barLeft, barTop, barRight, barBottom);
+                    canvas.drawRect(rect, barPaint);
+                    if (split > barLeft) {
+                        barPaint.setColor(LIKE_BAR_COLOR);
+                        barPaint.setAlpha(alpha);
+                        rect.set(barLeft, barTop, split, barBottom);
+                        canvas.drawRect(rect, barPaint);
+                    }
+                }
+                return;
+            }
 
             final int padding = px(PADDING_DP);
             final int gap = px(GAP_DP);
