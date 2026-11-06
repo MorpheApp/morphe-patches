@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4494
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -8,21 +8,21 @@
 package app.morphe.patches.youtube.interaction.seekbar
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import app.morphe.util.fiveRegisters
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/CustomSeekbarThumb;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/CustomSeekbarThumbPatch;"
 
 val customSeekbarThumbPatch = patch(
     description = "Adds an option to customize the seekbar thumb with a custom image or animated GIF."
@@ -38,6 +38,7 @@ val customSeekbarThumbPatch = patch(
         PreferenceScreen.SEEKBAR.addPreferences(
             PreferenceCategory(
                 key = "morphe_custom_seekbar_thumb_category",
+                sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_custom_seekbar_thumb", summary = true),
                     NonInteractivePreference(
@@ -45,35 +46,29 @@ val customSeekbarThumbPatch = patch(
                         tag = "app.morphe.extension.youtube.settings.preference.CustomSeekbarThumbPreference",
                         selectable = true
                     ),
-                    ListPreference(
-                        key = "morphe_custom_seekbar_thumb_scale_type"
-                    )
+                    ListPreference("morphe_custom_seekbar_thumb_scale_type")
                 )
             )
         )
 
+        // Shared fingerprint and indexes may have changed.
         SeekbarOnDrawFingerprint.clearMatch()
         SeekbarOnDrawFingerprint.let {
             it.method.apply {
+                // Replace the call instead of inserting before it, so anything
+                // other patches insert before this call is drawn below the thumb.
                 val drawCircleIndex = it.instructionMatches.last().index
-                val drawCircleInstruction = getInstruction<FiveRegisterInstruction>(drawCircleIndex)
-                val canvasRegister = drawCircleInstruction.registerC
-                val cxRegister = drawCircleInstruction.registerD
-                val cyRegister = drawCircleInstruction.registerE
-                val radiusRegister = drawCircleInstruction.registerF
-                val paintRegister = drawCircleInstruction.registerG
 
-                addInstructions(
+                replaceInstruction(
                     drawCircleIndex,
-                    """
-                        invoke-static { v$canvasRegister, v$cxRegister, v$cyRegister, v$radiusRegister, v$paintRegister }, $EXTENSION_CLASS->drawThumb(Landroid/graphics/Canvas;FFFLandroid/graphics/Paint;)F
-                        move-result v$radiusRegister
-                    """
+                    "invoke-static { ${fiveRegisters(drawCircleIndex)} }, $EXTENSION_CLASS->" +
+                            "drawCircle(Landroid/graphics/Canvas;FFFLandroid/graphics/Paint;)V"
                 )
 
                 addInstruction(
                     0,
-                    "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setSeekbarView(Landroid/view/View;)V"
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
+                            "setSeekbarView(Landroid/view/View;)V"
                 )
             }
         }

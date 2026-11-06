@@ -12,7 +12,7 @@ val seekbarPatch = patch(
             "tapping the player seekbar to seek, " +
             "hiding the video player seekbar, " +
             "enabling seeking in live streams, " +
-            "customizing seekbar thumb with an image or GIF, " +
+            "customizing the seekbar thumb with an image or GIF, " +
             "and expanding the live stream DVR duration."
 ) {
     dependsOn(

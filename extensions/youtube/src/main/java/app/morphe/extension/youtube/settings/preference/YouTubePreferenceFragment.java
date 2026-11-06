@@ -10,7 +10,6 @@
 
 package app.morphe.extension.youtube.settings.preference;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.preference.PreferenceScreen;
@@ -112,7 +111,7 @@ public class YouTubePreferenceFragment extends ToolbarPreferenceFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CustomSeekbarThumbPreference.REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+        if (requestCode == CustomSeekbarThumbPreference.PICK_THUMB_REQUEST_CODE) {
             CustomSeekbarThumbPreference.handleActivityResult(getContext(), resultCode, data);
         }
     }
