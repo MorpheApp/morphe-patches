@@ -31,7 +31,6 @@ import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLGenerator;
-import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 
@@ -72,12 +71,10 @@ public final class LyricsFileSaver {
             return null;
         }
 
-        if (Settings.LYRICS_SAVE_TTML.get()) {
-            String ttmlContent = TTMLGenerator.generate(lyrics, track, creditInfo,
-                    translatedLines, romanizedLines, translatedLang, romanizedLang);
-            if (ttmlContent != null && !ttmlContent.isEmpty()) {
-                writeFile(context, track, lyrics, ttmlContent, "ttml", true);
-            }
+        String ttmlContent = TTMLGenerator.generate(lyrics, track, creditInfo,
+                translatedLines, romanizedLines, translatedLang, romanizedLang);
+        if (ttmlContent != null && !ttmlContent.isEmpty()) {
+            writeFile(context, track, lyrics, ttmlContent, "ttml", true);
         }
 
         return primaryPath;

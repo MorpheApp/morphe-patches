@@ -40,7 +40,7 @@ public final class TTMLGenerator {
     private static final String NS_ITUNES = "http://music.apple.com/lyric-ttml-internal";
     private static final String NS_TTM = "http://www.w3.org/ns/ttml#metadata";
     private static final String NS_TTS = "http://www.w3.org/ns/ttml#styling";
-    private static final String NS_MORPHE = "http://morphe.app/lyrics";
+    private static final String NS_MORPHE = "https://morphe.software/ttml";
 
     private static final Pattern LRC_META = Pattern.compile("\\[([^\\]]+):\\s*([^\\]]*)\\]");
     private static final Pattern COPYRIGHT_LABEL = Pattern.compile("(?i)^copyright\\s*[:：]\\s*");
@@ -67,9 +67,9 @@ public final class TTMLGenerator {
     private final int hanMode = LyricsPresentation.hanMode();
 
     private TTMLGenerator(Lyrics lyrics, @Nullable TrackInfo track, @Nullable CreditInfo creditInfo,
-                         @Nullable List<String> translatedLines,
-                         @Nullable List<LyricsLine> romanizedLines,
-                         @Nullable String translatedLang, @Nullable String romanizedLang) {
+                          @Nullable List<String> translatedLines,
+                          @Nullable List<LyricsLine> romanizedLines,
+                          @Nullable String translatedLang, @Nullable String romanizedLang) {
         this.lyrics = lyrics;
         this.lines = lyrics.lines();
         this.track = track;
@@ -353,7 +353,8 @@ public final class TTMLGenerator {
     private void buildBody() {
         sb.append("<body>");
 
-        record DivRange(@Nullable String songPart, int startIdx, int endIdx, long beginMs, long endMs) {
+        record DivRange(@Nullable String songPart, int startIdx, int endIdx, long beginMs,
+                        long endMs) {
         }
         final List<DivRange> divs = new ArrayList<>();
         // A section is often named only on the line that opens it, so a line without a name of

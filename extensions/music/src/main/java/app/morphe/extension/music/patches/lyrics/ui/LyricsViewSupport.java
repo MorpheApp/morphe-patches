@@ -186,7 +186,8 @@ final class LyricsViewSupport {
         combined.addAll(lineTimings);
         for (LyricsSpanBuilder.WordTiming span : readingSpans) {
             combined.add(new LyricsSpanBuilder.WordTiming(
-                    span.start() + shift, span.end() + shift, span.startMs(), span.endMs(), null));
+                    span.start() + shift, span.end() + shift, span.startMs(), span.endMs(),
+                    null, span.hasTrailingSpace(), null, span.averaged()));
         }
         return combined;
     }
@@ -391,7 +392,7 @@ final class LyricsViewSupport {
 
     static CharSequence sourceText(String providerName, boolean translated,
                                    boolean translatedFromGoogle, boolean translatedFromAI, @Nullable String translatedAiModel,
-                                   boolean romanized, boolean romanizedFromGoogle, boolean romanizedFromAI,
+                                   boolean romanized, boolean romanizedFromGoogle, boolean romanizedFromAI, boolean romanizedFromEmbedded,
                                    @Nullable String romanizedAiModel, LyricsPanelView.OnlyMode onlyMode,
                                    @Nullable String romanizedLocalDictionary,
                                    @Nullable Runnable onTranslationLanguage,
@@ -426,8 +427,10 @@ final class LyricsViewSupport {
                     // Named and nothing more: the licences are in the licenses dialog.
                     source = String.format(str("morphe_music_lyrics_romanized_by_local"),
                             romanizedLocalDictionary);
+                } else if (romanizedFromEmbedded && rubyProvider != null) {
+                    source = String.format(str("morphe_music_lyrics_romanized_by_local"), rubyProvider);
                 }
-                if (source != null && rubyProvider != null) {
+                if (source != null && rubyProvider != null && !source.contains(rubyProvider)) {
                     source = str("morphe_music_lyrics_with_ruby_provider", source, rubyProvider);
                 }
             }

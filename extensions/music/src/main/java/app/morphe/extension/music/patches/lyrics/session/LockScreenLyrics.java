@@ -80,6 +80,7 @@ public final class LockScreenLyrics {
             ticker.schedule();
         }
     };
+
     private LockScreenLyrics() {
     }
 

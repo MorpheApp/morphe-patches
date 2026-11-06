@@ -174,7 +174,6 @@ val lyricsPatch = patch(
                     SwitchPreference("morphe_music_lyrics_dynamic_background", summary = true),
                     SwitchPreference("morphe_music_lyrics_dynamic_background_animated", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
-                    SwitchPreference("morphe_music_lyrics_save_ttml", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true)

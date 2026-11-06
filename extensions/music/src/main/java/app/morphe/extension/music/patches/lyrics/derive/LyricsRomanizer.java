@@ -289,7 +289,7 @@ public final class LyricsRomanizer {
         Utils.verifyOnMainThread();
 
         if (LyricsRequests.isRomanizationOff()) {
-            callback.onRomanized(null, false, false, null, false, null, true);
+            callback.onRomanized(null, false, false, null, false, null, false, true);
             return;
         }
 
@@ -308,7 +308,7 @@ public final class LyricsRomanizer {
                 Settings.LYRICS_ROMANIZATION_PROVIDERS.get(),
                 ProcessingProviders.ROMANIZATION_ORDER);
         if (providers.isEmpty()) {
-            callback.onRomanized(null, false, false, null, false, null, false);
+            callback.onRomanized(null, false, false, null, false, null, false, false);
             return;
         }
 
@@ -317,7 +317,7 @@ public final class LyricsRomanizer {
         final boolean hasLocalReader = providers.contains(ProcessingProviders.RIME)
                 || providers.contains(ProcessingProviders.LOCAL);
         if (!hasLocalReader && !LyricsLanguageDetector.needsRomanization(lyrics.lines())) {
-            callback.onRomanized(null, false, false, null, false, null, true);
+            callback.onRomanized(null, false, false, null, false, null, false, true);
             return;
         }
 
@@ -333,7 +333,7 @@ public final class LyricsRomanizer {
             boolean hasWordRomaji = (perWord
                     && hasUsableWordReading(lyrics.lines(), allowTransliteration))
                     || (isWordSynced && hasUsableWordReading(result, allowTransliteration));
-            callback.onRomanized(result, false, false, null, hasWordRomaji, null, false);
+            callback.onRomanized(result, false, false, null, hasWordRomaji, null, true, false);
             return;
         }
 
@@ -366,7 +366,7 @@ public final class LyricsRomanizer {
                                 lyrics.lines(), allowTransliteration));
                         Utils.runOnMainThread(() -> callback.onRomanized(
                                 finalResult, result.fromGoogle(), result.fromAI(), result.model(),
-                                hasWordRomaji, result.localDictionary(), false));
+                                hasWordRomaji, result.localDictionary(), fromSource, false));
                         return;
                     } catch (Exception ex) {
                         Logger.printInfo(() -> "romanization provider failed: " + provider, ex);
@@ -374,11 +374,11 @@ public final class LyricsRomanizer {
                 }
 
                 Utils.runOnMainThread(
-                        () -> callback.onRomanized(null, false, false, null, false, null, false));
+                        () -> callback.onRomanized(null, false, false, null, false, null, false, false));
             } catch (Exception ex) {
                 Logger.printInfo(() -> "romanize failure", ex);
                 Utils.runOnMainThread(
-                        () -> callback.onRomanized(null, false, false, null, false, null, false));
+                        () -> callback.onRomanized(null, false, false, null, false, null, false, false));
             }
         });
     }
@@ -1315,10 +1315,11 @@ public final class LyricsRomanizer {
     }
 
     public interface Callback {
-        /** @param skipped No provider was asked anything, so a caller reports nothing to do. */
+        // @param fromEmbedded source reading was the provider; @param skipped nothing was asked
         void onRomanized(@Nullable List<LyricsLine> romanizedLines,
                          boolean fromGoogle, boolean fromAI, @Nullable String aiModel,
-                         boolean perWord, @Nullable String localDictionary, boolean skipped);
+                         boolean perWord, @Nullable String localDictionary,
+                         boolean fromEmbedded, boolean skipped);
 
     }
 

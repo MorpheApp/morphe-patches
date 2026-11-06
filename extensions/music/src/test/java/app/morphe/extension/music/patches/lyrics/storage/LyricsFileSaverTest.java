@@ -21,7 +21,6 @@ import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
-import app.morphe.extension.music.settings.Settings;
 
 /**
  * Tests for the private rebuild methods of {@link LyricsFileSaver} via reflection.
@@ -127,7 +126,6 @@ public class LyricsFileSaverTest {
 
     @Test
     public void fileNameRawTtmlSavedAsProviderName() throws Exception {
-        Settings.LYRICS_SAVE_TTML.save(false);
         List<LyricsLine> lines = List.of(new LyricsLine(0, "Hello"));
         Lyrics lyrics = new Lyrics(lines, "YouTube Music", true,
                 null, null, null, null, "<tt/>", "ttml", null, null, null);
@@ -140,7 +138,6 @@ public class LyricsFileSaverTest {
 
     @Test
     public void fileNameGeneratedTtmlSavedAsMorphe() throws Exception {
-        Settings.LYRICS_SAVE_TTML.save(true);
         List<LyricsLine> lines = List.of(new LyricsLine(0, "Hello"));
         Lyrics lyrics = new Lyrics(lines, "YouTube Music", true,
                 null, null, null, null, "<tt/>", "ttml", null, null, null);
@@ -153,7 +150,6 @@ public class LyricsFileSaverTest {
 
     @Test
     public void fileNameSourceFormatAlwaysUsesProviderName() throws Exception {
-        Settings.LYRICS_SAVE_TTML.save(false);
         List<LyricsLine> lines = List.of(new LyricsLine(0, "Hello"));
         Lyrics lyrics = new Lyrics(lines, "YouTube Music", true,
                 null, null, null, null, null, "ttml", null, null, null);
