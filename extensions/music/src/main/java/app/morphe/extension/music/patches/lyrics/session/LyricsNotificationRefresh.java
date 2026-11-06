@@ -26,9 +26,9 @@ import app.morphe.extension.shared.Utils;
  * The notification is posted again as is with only the title and the text changed, so it keeps
  * its id, channel, controls and artwork.
  */
-final class LyricNotificationRefresh {
+final class LyricsNotificationRefresh {
 
-    private LyricNotificationRefresh() {
+    private LyricsNotificationRefresh() {
     }
 
     // Media notifications do not need the notification permission.

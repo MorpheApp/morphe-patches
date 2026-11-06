@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics.parsers;
+package app.morphe.extension.music.patches.lyrics.utils;
 
 import android.annotation.SuppressLint;
 import android.util.Base64;

@@ -276,8 +276,8 @@ public final class LRCLIBProvider implements LyricsProvider {
             LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(synced);
             if (!result.lines.isEmpty()) {
                 return new Lyrics(result.lines, name(), true, null, null, null,
-                        result.creditLines.isEmpty() ? null : result.creditLines,
-                        synced, "lrc", sourceUrl);
+                        null, result.creditLines.isEmpty() ? null : result.creditLines,
+                        synced, "lrc", sourceUrl, null, null);
             }
         }
 

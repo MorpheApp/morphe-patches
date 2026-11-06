@@ -14,10 +14,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import app.morphe.extension.music.patches.lyrics.TextTrim;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
+import app.morphe.extension.music.patches.lyrics.utils.TextTrim;
 import app.morphe.extension.shared.Logger;
 
 public final class LyricsFileParser {
@@ -114,7 +114,7 @@ public final class LyricsFileParser {
                                      @Nullable List<String> creditLines, String yaml,
                                      @Nullable String sourceUrl) {
         return new Lyrics(lines, providerName, synced, null, null, null,
-                creditLines, yaml, "lyricsfile.yaml", sourceUrl);
+                null, creditLines, yaml, "lyricsfile.yaml", sourceUrl, null, null);
     }
 
     @Nullable

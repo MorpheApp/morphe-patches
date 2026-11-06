@@ -153,23 +153,23 @@ public final class LyricsMerge {
      * line or either half is missing.
      */
     @Nullable
-    public static Lyrics addSongwriter(@Nullable Lyrics lyrics, @Nullable String entry) {
+    public static Lyrics addCredit(@Nullable Lyrics lyrics, @Nullable String entry) {
         if (lyrics == null || entry == null) {
             return lyrics;
         }
-        List<String> songwriters = new ArrayList<>();
-        List<String> existing = lyrics.songwriters();
+        List<String> credits = new ArrayList<>();
+        List<String> existing = lyrics.credits();
         if (existing != null) {
-            songwriters.addAll(existing);
+            credits.addAll(existing);
         }
-        if (songwriters.contains(entry)) {
+        if (credits.contains(entry)) {
             return lyrics;
         }
-        songwriters.add(entry);
+        credits.add(entry);
         return new Lyrics(lyrics.lines(), lyrics.providerName(), lyrics.synced(),
                 lyrics.romanization(), lyrics.translations(), lyrics.romanizations(),
-                songwriters, lyrics.rawFormat(), lyrics.formatType(), lyrics.sourceUrl(),
-                lyrics.about());
+                lyrics.songwriters(), credits, lyrics.rawFormat(), lyrics.formatType(),
+                lyrics.sourceUrl(), lyrics.about(), lyrics.agentNames());
     }
 
     public static List<LyricsLine> mergeRomanization(List<LyricsLine> original,

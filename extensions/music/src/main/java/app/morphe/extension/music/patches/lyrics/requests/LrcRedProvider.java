@@ -74,11 +74,11 @@ public final class LrcRedProvider implements LyricsProvider {
     private static final Pattern TRAILING_FEAT = Pattern.compile(
             "\\b(?:feat\\.?|ft\\.?|with)\\s+.*$",
             Pattern.CASE_INSENSITIVE);
+    private static final Pattern SONGWRITER_TAG = Pattern.compile(
+            "<songwriter>([^<]*)</songwriter>");
     private static final Pattern VIDEO_TAGS = Pattern.compile(
             "[(x\\[](?:official(?:\\s+(?:music\\s+)?video|\\s+audio)?|music video|video|audio|lyrics?|visualizer|album version|explicit)[^)\\]]*[)\\]]",
             Pattern.CASE_INSENSITIVE);
-    private static final Pattern SONGWRITER_TAG = Pattern.compile(
-            "<songwriter>([^<]*)</songwriter>");
 
     /** One thread, so a re-time never occupies the lookup pool or races another re-time. */
     private static final ExecutorService SYNC_EXECUTOR = Executors.newSingleThreadExecutor(runnable -> {
@@ -161,21 +161,23 @@ public final class LrcRedProvider implements LyricsProvider {
 
         return new Lyrics(full.lines(), NAME, full.synced(),
                 full.romanization(), full.translations(), full.romanizations(),
-                full.songwriters(), ttml, "ttml", full.sourceUrl(),
-                readByModel(json) ? MODEL_CREDIT : null);
+                full.songwriters(), full.credits(), ttml, "ttml", full.sourceUrl(),
+                readByModel(json) ? MODEL_CREDIT : null, full.agentNames());
     }
 
     /** The album and the artist are in the document alone. */
     private static Lyrics withInfoLines(Lyrics lyrics, JSONObject json) {
-        final List<String> lines = new ArrayList<>();
-        if (lyrics.songwriters() == null) {
-            // Only a document whose TTML failed to parse reaches here without credits.
-            lines.addAll(readDocumentCredits(json.optString("source", "")));
-        } else {
-            for (String line : lyrics.songwriters()) {
+        // Only a document whose TTML failed to parse reaches here without songwriters.
+        final List<String> songwriters = lyrics.songwriters() != null
+                ? lyrics.songwriters()
+                : readDocumentSongwriters(json.optString("source", ""));
+
+        final List<String> credits = new ArrayList<>();
+        if (lyrics.credits() != null) {
+            for (String line : lyrics.credits()) {
                 // A previous pass may have added these already.
                 if (!line.startsWith(ALBUM_PREFIX) && !line.startsWith(ARTIST_PREFIX)) {
-                    lines.add(line);
+                    credits.add(line);
                 }
             }
         }
@@ -183,28 +185,26 @@ public final class LrcRedProvider implements LyricsProvider {
         final String album = json.optString("album", "").trim();
         final String artist = json.optString("artist", "").trim();
         if (!album.isEmpty()) {
-            lines.add(ALBUM_PREFIX + album);
+            credits.add(ALBUM_PREFIX + album);
         }
         if (!artist.isEmpty()) {
-            lines.add(ARTIST_PREFIX + artist);
+            credits.add(ARTIST_PREFIX + artist);
         }
 
-        if (lines.isEmpty() || lines.equals(lyrics.songwriters())) {
+        if (songwriters.isEmpty() && credits.isEmpty()) {
             return lyrics;
         }
 
         return new Lyrics(lyrics.lines(), lyrics.providerName(), lyrics.synced(),
                 lyrics.romanization(), lyrics.translations(), lyrics.romanizations(),
-                lines, lyrics.rawFormat(), lyrics.formatType(),
-                lyrics.sourceUrl(), lyrics.about());
+                songwriters.isEmpty() ? null : songwriters,
+                credits.isEmpty() ? null : credits,
+                lyrics.rawFormat(), lyrics.formatType(),
+                lyrics.sourceUrl(), lyrics.about(), lyrics.agentNames());
     }
 
-    /** The songwriter names in the TTML head, in the form the TTML parser produces. */
-    private static List<String> readDocumentCredits(String ttml) {
-        if (ttml.isEmpty()) {
-            return List.of();
-        }
-
+    /** The songwriter names in the TTML head. */
+    private static List<String> readDocumentSongwriters(String ttml) {
         final List<String> names = new ArrayList<>();
         final Matcher matcher = SONGWRITER_TAG.matcher(ttml);
         while (matcher.find()) {
@@ -213,7 +213,7 @@ public final class LrcRedProvider implements LyricsProvider {
                 names.add(name);
             }
         }
-        return names.isEmpty() ? List.of() : List.of("Written by: " + String.join(", ", names));
+        return names;
     }
 
     private static boolean readByModel(JSONObject root) {
