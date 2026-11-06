@@ -867,6 +867,7 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_custom_seekbar_thumb_file_title">Thumb image</string>
     <string name="morphe_custom_seekbar_thumb_file_summary">Select an image or animated GIF from device storage</string>
     <string name="morphe_custom_seekbar_thumb_file_invalid">The selected file is not a supported image</string>
+    <string name="morphe_custom_seekbar_thumb_file_not_found">Custom seekbar thumb image not found</string>
     <string name="morphe_custom_seekbar_thumb_scale_type_title">Thumb size</string>
     <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Fit seekbar</string>
     <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Original size</string>

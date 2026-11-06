@@ -7,6 +7,8 @@
 
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -189,6 +191,10 @@ public final class CustomSeekbarThumbPatch {
         if (!file.isFile()) {
             // Settings were imported from a different install.
             Logger.printInfo(() -> "Custom seekbar thumb file not found");
+            Settings.CUSTOM_SEEKBAR_THUMB_FILE.resetToDefault();
+            // Posted to the main thread, because the seekbar is drawing.
+            Utils.runOnMainThread(() -> Utils.showSnackbarShort(
+                    str("morphe_custom_seekbar_thumb_file_not_found")));
             return null;
         }
 
