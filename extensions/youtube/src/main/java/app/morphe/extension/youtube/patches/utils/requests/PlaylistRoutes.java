@@ -54,6 +54,21 @@ public final class PlaylistRoutes {
             Route.Method.POST, "browse?prettyPrint=false"
     ).compile();
 
+    private static final String PLAYLIST_VIDEO_FIELDS =
+            "contents.playlistVideoRenderer(videoId,setVideoId),continuations";
+    private static final String PLAYLIST_VIDEO_LIST_FIELDS =
+            "playlistVideoListRenderer(" + PLAYLIST_VIDEO_FIELDS + ")";
+
+    /**
+     * The ids of the videos of a playlist. Without the mask, a page of 20 videos is about 2 MB.
+     */
+    public static final Route.CompiledRoute BROWSE_PLAYLIST_VIDEO_IDS = new Route(
+            Route.Method.POST,
+            "browse?fields=contents.singleColumnBrowseResultsRenderer.tabs.tabRenderer.content.sectionListRenderer"
+                    + ".contents(" + PLAYLIST_VIDEO_LIST_FIELDS + ",itemSectionRenderer.contents." + PLAYLIST_VIDEO_LIST_FIELDS + ")"
+                    + ",continuationContents.playlistVideoListContinuation(" + PLAYLIST_VIDEO_FIELDS + ")&prettyPrint=false"
+    ).compile();
+
     public static final Route.CompiledRoute GET_MIX_PLAYLIST = new Route(
             Route.Method.POST,
             "next" +
@@ -72,6 +87,13 @@ public final class PlaylistRoutes {
      */
     public static final Route.CompiledRoute GET_PLAYBACK_TRACKING = new Route(
             Route.Method.POST, "player?fields=playbackTracking&prettyPrint=false"
+    ).compile();
+
+    /**
+     * The engagement panels of the watch page of a video, such as the comments panel, as proto.
+     */
+    public static final Route.CompiledRoute GET_ENGAGEMENT_PANELS = new Route(
+            Route.Method.POST, "next?fields=engagementPanels&alt=proto"
     ).compile();
 
     private PlaylistRoutes() {
@@ -165,13 +187,13 @@ public final class PlaylistRoutes {
         return new byte[0];
     }
 
-    public static byte[] playbackTrackingBody(String videoId) {
+    public static byte[] videoBody(String videoId) {
         try {
             JSONObject body = getBaseContentJson();
             body.put("videoId", videoId);
             return body.toString().getBytes(StandardCharsets.UTF_8);
         } catch (JSONException ex) {
-            Logger.printException(() -> "playbackTrackingBody failed", ex);
+            Logger.printException(() -> "videoBody failed", ex);
         }
         return new byte[0];
     }
@@ -196,6 +218,18 @@ public final class PlaylistRoutes {
             return body.toString().getBytes(StandardCharsets.UTF_8);
         } catch (JSONException ex) {
             Logger.printException(() -> "browsePlaylistBody failed", ex);
+        }
+        return new byte[0];
+    }
+
+    public static byte[] browseContinuationBody(String continuation) {
+        try {
+            JSONObject body = new JSONObject();
+            body.put("context", androidContext());
+            body.put("continuation", continuation);
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "browseContinuationBody failed", ex);
         }
         return new byte[0];
     }

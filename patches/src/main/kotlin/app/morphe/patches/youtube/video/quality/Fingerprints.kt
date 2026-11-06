@@ -18,14 +18,14 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import app.morphe.patches.shared.CurrentAudioVideoFormatToStringFingerprint
 import app.morphe.patches.youtube.video.information.VideoQualitySetterFingerprint
+import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal const val FIXED_RESOLUTION_STRING = ", initialPlaybackVideoQualityFixedResolution="
@@ -233,16 +233,22 @@ internal object PlaybackControllerClearBufferFingerprint : Fingerprint(
     )
 )
 
+internal const val MEDIA_SEGMENT_HOLDER_CLASS =
+    "Lcom/google/android/libraries/youtube/media/player/exo2/platypus/mediapush/MediaSegmentHolder;"
+
 /**
- * The method of the buffer manager that clears the buffered media of a track
- * after the segment that contains a time.
+ * The call to the method of the buffered media of a track that clears it after the segment
+ * that contains a time. Before 21.44 it is called from a method of the buffer manager,
+ * and 21.44+ inlines that method into the player.
  */
-internal object BufferManagerDiscardBufferAfterSegmentFingerprint : Fingerprint(
-    definingClass = BUFFER_MANAGER_CLASS,
-    returnType = "V",
-    parameters = listOf("L", "J"),
+internal object MediaSegmentHolderDiscardBufferAfterSegmentFingerprint : Fingerprint(
     filters = listOf(
-        string("discardBufferAfterCurrentSegment with disposed BufferManager")
+        string("discardBufferAfterCurrentSegment with disposed BufferManager"),
+        methodCall(
+            definingClass = MEDIA_SEGMENT_HOLDER_CLASS,
+            returnType = "V",
+            parameters = listOf("J")
+        )
     )
 )
 
@@ -255,7 +261,7 @@ internal const val SAMPLE_HOLDER_CLASS =
 internal object BufferManagerGetMediaSegmentHolderFingerprint : Fingerprint(
     definingClass = BUFFER_MANAGER_CLASS,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Lcom/google/android/libraries/youtube/media/player/exo2/platypus/mediapush/MediaSegmentHolder;",
+    returnType = MEDIA_SEGMENT_HOLDER_CLASS,
     parameters = listOf("L")
 )
 
@@ -297,7 +303,7 @@ internal object SampleHolderDiscardBufferBeforeSegmentFingerprint : Fingerprint(
  * The media before a time is cleared only if the time is after it.
  */
 internal object MediaSegmentHolderSetFirstSegmentEndTimeFingerprint : Fingerprint(
-    definingClass = "Lcom/google/android/libraries/youtube/media/player/exo2/platypus/mediapush/MediaSegmentHolder;",
+    definingClass = MEDIA_SEGMENT_HOLDER_CLASS,
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
@@ -372,6 +378,12 @@ internal object HidePremiumVideoQualityGetArrayFingerprint : Fingerprint(
     }
 )
 
+/**
+ * The field of the initial video quality of the playback start parameters.
+ */
+private fun initialResolutionField() =
+    PlaybackStartParametersToStringFingerprint.method.findFieldFromToString(FIXED_RESOLUTION_STRING)
+
 internal object PlaybackStartParametersToStringFingerprint : Fingerprint(
     name = "toString",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -382,40 +394,36 @@ internal object PlaybackStartParametersToStringFingerprint : Fingerprint(
     )
 )
 
-internal fun getPlaybackStartParametersConstructorFingerprint(
-    initialResolutionField: FieldReference
-) = object : Fingerprint(
+internal object PlaybackStartParametersConstructorFingerprint : Fingerprint(
     classFingerprint = PlaybackStartParametersToStringFingerprint,
     name = "<init>",
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
-            reference = initialResolutionField
+            reference = { initialResolutionField() }
         )
     )
-) {}
+)
 
 /**
  * The method that returns the initial video quality of the playback start parameters,
  * used by the player each time it loads the video, such as when the app returns from the background.
  */
-internal fun getPlaybackStartParametersInitialResolutionFingerprint(
-    initialResolutionField: FieldReference
-) = object : Fingerprint(
+internal object PlaybackStartParametersInitialResolutionFingerprint : Fingerprint(
     returnType = "Ljava/lang/Integer;",
     parameters = listOf(),
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            reference = initialResolutionField
+            reference = { initialResolutionField() }
         ),
         methodCall(smali = "Lj\$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;"),
         checkCast("Ljava/lang/Integer;")
     )
-) {}
+)
 
 /**
- * A method of the class of [getPlaybackStartParametersInitialResolutionFingerprint] that gets
+ * A method of the class of [PlaybackStartParametersInitialResolutionFingerprint] that gets
  * the playback start descriptor of its player, which has the video the player loads.
  */
 internal fun getPlayerPlaybackStartDescriptorFingerprint(

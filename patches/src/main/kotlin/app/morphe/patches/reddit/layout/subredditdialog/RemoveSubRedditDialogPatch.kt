@@ -10,7 +10,7 @@ package app.morphe.patches.reddit.layout.subredditdialog
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
@@ -20,7 +20,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/RemoveSubRedditDialogPatch;"
 
 @Suppress("unused")
-val removeSubRedditDialogPatch = bytecodePatch(
+val removeSubRedditDialogPatch = patch(
     name = "Remove subreddit dialog",
     description = "Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically."
 ) {

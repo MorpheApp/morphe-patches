@@ -10,19 +10,18 @@ package app.morphe.patches.music.layout.miniplayer
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.resourceXml
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_28_or_greater
+import app.morphe.patches.music.misc.playservice.is_9_39_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.util.adoptChild
-import app.morphe.util.doRecursively
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import org.w3c.dom.Element
+import app.morphe.patcher.xml.XmlElement
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/MiniplayerPreviousNextButtonsPatch;"
@@ -32,7 +31,7 @@ private const val MINIPLAYER_LYRICS_CLASS =
 private const val IMAGE_VIEW_TAG =
     "com.google.android.libraries.youtube.common.ui.TouchImageView"
 
-private val miniplayerButtonsResourcePatch = resourcePatch(
+private val miniplayerButtonsResourcePatch = patch(
     description = "Injects previous and next button views into the miniplayer layout."
 ) {
     dependsOn(versionCheckPatch)
@@ -50,42 +49,39 @@ private val miniplayerButtonsResourcePatch = resourcePatch(
             "@drawable/music_player_next"
         }
 
+        val playerLayouts = mutableListOf("res/layout/watch_while_layout.xml")
+        if (is_9_39_or_greater) {
+            // Inflated instead of the layout above when a server flag defers the player.
+            playerLayouts += "res/layout/watch_while_layout_player.xml"
+        }
+
         // Inject previous button before play/pause, next button as last child of mini_player.
-        var previousButtonInserted = false
-
-        document("res/layout/watch_while_layout.xml").use { document ->
-            document.doRecursively loop@{ node ->
-                if (node !is Element) return@loop
-
-                val idAttr = node.getAttributeNode("android:id") ?: return@loop
-
-                if (!previousButtonInserted &&
-                    idAttr.textContent == "@id/mini_player_play_pause_replay_button"
-                ) {
-                    val previousButton = node.ownerDocument.createElement(IMAGE_VIEW_TAG).apply {
-                        setAttribute("android:id", "@+id/mini_player_previous_button")
-                        setAttribute("android:padding", "@dimen/item_medium_spacing")
-                        setAttribute("android:layout_width", "@dimen/remix_generic_button_size")
-                        setAttribute("android:layout_height", "@dimen/remix_generic_button_size")
-                        setAttribute("android:src", prevDrawable)
-                        setAttribute("android:scaleType", "fitCenter")
-                        setAttribute("android:contentDescription", "@string/accessibility_previous")
-                        setAttribute("style", "@style/MusicPlayerButton")
-                    }
-                    node.parentNode.insertBefore(previousButton, node)
-                    previousButtonInserted = true
+        playerLayouts.forEach { playerLayout ->
+            resourceXml(playerLayout).use { layout ->
+                fun XmlElement.setButtonAttributes(id: String, drawable: String, description: String) {
+                    setAttribute("android:id", id)
+                    setAttribute("android:padding", "@dimen/item_medium_spacing")
+                    setAttribute("android:layout_width", "@dimen/remix_generic_button_size")
+                    setAttribute("android:layout_height", "@dimen/remix_generic_button_size")
+                    setAttribute("android:src", drawable)
+                    setAttribute("android:scaleType", "fitCenter")
+                    setAttribute("android:contentDescription", description)
+                    setAttribute("style", "@style/MusicPlayerButton")
                 }
 
-                if (idAttr.textContent == "@id/mini_player") {
-                    node.adoptChild(IMAGE_VIEW_TAG) {
-                        setAttribute("android:id", "@+id/mini_player_next_button")
-                        setAttribute("android:padding", "@dimen/item_medium_spacing")
-                        setAttribute("android:layout_width", "@dimen/remix_generic_button_size")
-                        setAttribute("android:layout_height", "@dimen/remix_generic_button_size")
-                        setAttribute("android:src", nextDrawable)
-                        setAttribute("android:scaleType", "fitCenter")
-                        setAttribute("android:contentDescription", "@string/accessibility_next")
-                        setAttribute("style", "@style/MusicPlayerButton")
+                layout.elementByAttributeOrNull("android:id", "@id/mini_player_play_pause_replay_button")?.let { playPause ->
+                    playPause.parent!!.insertChild(playPause.index, IMAGE_VIEW_TAG) {
+                        setButtonAttributes(
+                            "@+id/mini_player_previous_button",
+                            prevDrawable,
+                            "@string/accessibility_previous"
+                        )
+                    }
+                }
+
+                layout.elements().filter { it.attribute("android:id") == "@id/mini_player" }.toList().forEach { miniPlayer ->
+                    miniPlayer.appendChild(IMAGE_VIEW_TAG) {
+                        setButtonAttributes("@+id/mini_player_next_button", nextDrawable, "@string/accessibility_next")
                     }
                 }
             }
@@ -94,7 +90,7 @@ private val miniplayerButtonsResourcePatch = resourcePatch(
 }
 
 @Suppress("unused")
-val miniplayerPreviousNextButtonsPatch = bytecodePatch(
+val miniplayerPreviousNextButtonsPatch = patch(
     name = "Miniplayer previous and next buttons",
     description = "Adds options to show previous and next track buttons in the miniplayer."
 ) {

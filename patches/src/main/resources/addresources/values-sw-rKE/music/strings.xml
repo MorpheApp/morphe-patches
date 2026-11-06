@@ -133,6 +133,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_empty">"Hakuna mapakua
 Nyimbo zilizopakuliwa zinaonekana hapa"</string>
   <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
+  <string name="morphe_music_downloads_summary">nyimbo %1$s • %2$s MB</string>
   <string name="morphe_music_downloads_search_hint">Tafuta mapakua</string>
   <string name="morphe_music_downloads_sort">Panga</string>
   <string name="morphe_music_downloads_sort_artist">Panga kwa msanii</string>
@@ -149,6 +150,9 @@ Nyimbo zilizopakuliwa zinaonekana hapa"</string>
   <string name="morphe_music_downloads_previous">Iliyopita</string>
   <string name="morphe_music_downloads_next">Inayofuata</string>
   <string name="morphe_music_downloads_pause">Pause</string>
+  <string name="morphe_music_downloads_shuffle">Changanya</string>
+  <string name="morphe_music_downloads_repeat">Rudia</string>
+  <string name="morphe_music_downloads_minimize">Punguza</string>
   <string name="morphe_music_downloads_close">Funga</string>
   <string name="morphe_music_downloads_delete">Futa</string>
   <string name="morphe_music_downloads_delete_track">Futa pakia</string>
@@ -157,6 +161,38 @@ Nyimbo zilizopakuliwa zinaonekana hapa"</string>
   <string name="morphe_music_downloads_track_deleted">Pakia imefutwa</string>
   <string name="morphe_music_downloads_track_delete_failed">Hakuwezekana kufuta pakia</string>
   <string name="morphe_music_downloads_play_failed">Hakuwezekana kucheza faili lililopakuliwa</string>
+  <string name="morphe_music_downloads_playlists">Orodha za nyimbo</string>
+  <string name="morphe_music_downloads_playlists_section">Orodha za nyimbo zilizoundwa (%s)</string>
+  <string name="morphe_music_downloads_playlists_empty">Hakuna orodha za nyimbo za hapa bado</string>
+  <string name="morphe_music_downloads_playlists_hide">Ficha orodha za nyimbo ▲</string>
+  <string name="morphe_music_downloads_playlist_new">+ Orodha mpya ya nyimbo</string>
+  <string name="morphe_music_downloads_playlist_new_button">Orodha mpya ya nyimbo</string>
+  <string name="morphe_music_downloads_playlist_selected">Zimechaguliwa (%s)</string>
+  <string name="morphe_music_downloads_playlist_select_first">Chagua nyimbo kwanza</string>
+  <string name="morphe_music_downloads_playlist_clear_selection">Futa uteuzi</string>
+  <string name="morphe_music_downloads_playlist_create">Unda orodha ya nyimbo</string>
+  <string name="morphe_music_downloads_playlist_create_button">Unda</string>
+  <string name="morphe_music_downloads_playlist_add">Ongeza kwenye orodha ya nyimbo</string>
+  <string name="morphe_music_downloads_playlist_added">Imeongezwa kwenye %s</string>
+  <string name="morphe_music_downloads_playlist_name_hint">Jina la orodha ya nyimbo</string>
+  <string name="morphe_music_downloads_playlist_name_empty">Jina la orodha ya nyimbo haliwezi kuwa tupu</string>
+  <string name="morphe_music_downloads_playlist_save_failed">Hakuweza kuhifadhi orodha ya nyimbo</string>
+  <string name="morphe_music_downloads_playlist_track_count">nyimbo %s</string>
+  <string name="morphe_music_downloads_playlist_track_count_one">wimbo 1</string>
+  <string name="morphe_music_downloads_playlist_no_tracks">Hakuna nyimbo katika orodha hii</string>
+  <string name="morphe_music_downloads_playlist_play">Cheza orodha ya nyimbo</string>
+  <string name="morphe_music_downloads_playlist_play_all">Cheza zote</string>
+  <string name="morphe_music_downloads_playlist_rename">Badilisha jina</string>
+  <string name="morphe_music_downloads_playlist_rename_title">Badilisha jina la orodha ya nyimbo</string>
+  <string name="morphe_music_downloads_playlist_save">Hifadhi</string>
+  <string name="morphe_music_downloads_playlist_delete">Futa orodha ya nyimbo</string>
+  <string name="morphe_music_downloads_playlist_delete_title">Futa orodha ya nyimbo?</string>
+  <string name="morphe_music_downloads_playlist_delete_message">%s itafutwa. Nyimbo zilizopakuliwa zitabaki</string>
+  <string name="morphe_music_downloads_playlist_deleted">Orodha ya nyimbo imefutwa</string>
+  <string name="morphe_music_downloads_playlist_remove_track">Ondoa kwenye orodha ya nyimbo</string>
+  <string name="morphe_music_downloads_playlist_drag_track">Buruta ili kupanga upya</string>
+  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Buruta mpini ili kupanga upya</string>
+  <string name="morphe_music_downloads_playlist_reorder_done">Tayari</string>
   <string name="morphe_music_downloads_notification_channel">Pakua sauti</string>
   <string name="morphe_music_downloads_playback_channel">Uchezaji wakiwa nje ya mtandao</string>
   <string name="morphe_music_downloads_unknown_track">Hakuweza kutambua wimbo wa kupakua</string>
@@ -167,6 +203,28 @@ Nyimbo zilizopakuliwa zinaonekana hapa"</string>
   <string name="morphe_music_downloads_progress">Inapakia %s%%</string>
   <string name="morphe_music_downloads_complete">Pakia kamili</string>
   <string name="morphe_music_downloads_failed">Kupakia kumeshindwa</string>
+  <string name="morphe_music_downloads_playlist_download_title">Pakua orodha ya nyimbo</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Orodha ya nyimbo inatafutwa…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s imeorodheshwa…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Hakuwezekana kuorodhesha nyimbo za orodha hii</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Tayari zimepakuliwa: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s katika orodha hii, %2$s bado hazijapakuliwa.
+
+Zinakuliwa moja baada ya nyingine, jambo ambalo linaweza kuchukua muda mrefu na linahitaji nafasi takriban %3$s ya bure"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Pakua</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Inapakua wimbo %1$s kati ya %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s imepakuliwa</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s imepakuliwa, %2$s hazikuweza kupakuliwa</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Upakuliaji wa orodha ya nyimbo tayari unaendelea</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Akaunti yako haijulikani bado. Jaribu tena baada ya muda mfupi</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s imeorodheshwa, zote tayari zimepakuliwa</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Sehemu tu ya orodha ya nyimbo iliweza kuorodheshwa. Gusa Pakua tena baadaye ili kupata zilizobaki</string>
+  <string name="morphe_music_downloads_playlist_download_started">Inapakua %s kwa nyuma</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Hakuna muunganisho wa mtandao</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Inasubiri mtandao…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Imesimama baada ya %1$s kati ya %2$s. Gusa Pakua tena ili kuendelea</string>
+  <string name="morphe_music_downloads_mark_title">Weka alama kwenye nyimbo zilizopakuliwa</string>
+  <string name="morphe_music_downloads_mark_summary">Nyimbo ambazo tayari zimepakuliwa zinaonyesha alama kabla ya maelezo yake katika orodha za nyimbo, albamu na matokeo ya utafutaji</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Kuhusu Morphe</string>
@@ -205,6 +263,9 @@ Nyimbo zilizopakuliwa zinaonekana hapa"</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Ficha Mwongozo wa Jumuiya</string>
   <string name="morphe_music_hide_comments_context_title">Ficha ujumbe wa muktadha</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Ficha kitufe cha Emoji</string>
+  <string name="morphe_music_hide_comments_gif_button_title">Ficha kitufe cha GIF</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_title">Ficha GIF na picha</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_summary">Huficha GIF na picha zilizounganishwa kwenye maoni na majibu</string>
   <string name="morphe_music_hide_comments_info_button_title">Ficha kitufe cha Info</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">Ficha kitufe cha Muda wa Wakati</string>
   <!-- interaction.crossfade.crossfadePatch -->
@@ -284,6 +345,43 @@ Uchezaji wa SABR (mitiririko ya video inayofananishwa imezimwa)"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Ongeza wimbo ulioteuliwa kwenye foleni</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">Imeongezwa kwenye foleni</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">Lebo za orodha ya nyimbo</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Weka lebo kwenye orodha za nyimbo na uchuje Maktaba kwa lebo</string>
+  <string name="morphe_music_playlist_tags_title">Washa lebo za orodha ya nyimbo</string>
+  <string name="morphe_music_playlist_tags_summary">Huongeza kipengele cha Lebo kwenye menyu ya orodha za nyimbo, na kitufe cha chujio cha Lebo kando ya kitufe cha kupanga cha Maktaba</string>
+  <string name="morphe_music_playlist_tags_manage_title">Simamia lebo za orodha ya nyimbo</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Unda, badilisha jina na futa lebo, na weka lebo kwenye orodha za nyimbo zinazoonekana katika Maktaba yako</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">Lebo</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">Hakuna lebo</string>
+  <string name="morphe_music_playlist_tags_filter_button">Lebo</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">Lebo: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">Lebo (%s zimefichwa)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">Lebo za %s</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">Lebo mpya</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">orodha 1 ya nyimbo</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">orodha %s za nyimbo</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">Lebo yenye jina %s tayari ipo</string>
+  <string name="morphe_music_playlist_tags_filter_title">Chuja kwa lebo</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">Onyesha tu</string>
+  <string name="morphe_music_playlist_tags_filter_all">Orodha zote za nyimbo</string>
+  <string name="morphe_music_playlist_tags_filter_visible">Lebo zinazoonekana</string>
+  <string name="morphe_music_playlist_tags_manage">Simamia</string>
+  <string name="morphe_music_playlist_tags_none">Hakuna lebo bado. Bonyeza na ushikilie orodha ya nyimbo na uchague Lebo ili kuunda</string>
+  <string name="morphe_music_playlist_tags_section_tags">Lebo</string>
+  <string name="morphe_music_playlist_tags_section_playlists">Orodha za nyimbo</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Fungua Maktaba mara moja ili orodha zako za nyimbo zionekane hapa</string>
+  <string name="morphe_music_playlist_tags_new_tag">Lebo mpya</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">Hariri lebo</string>
+  <string name="morphe_music_playlist_tags_rename">Badilisha jina</string>
+  <string name="morphe_music_playlist_tags_delete">Futa</string>
+  <string name="morphe_music_playlist_tags_hidden">Imefichwa</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Ficha kitufe cha Cast</string>
   <string name="morphe_music_hide_history_button_title">Ficha kitufe cha Historia</string>
@@ -452,6 +550,49 @@ Uchezaji wa SABR (mitiririko ya video inayofananishwa imezimwa)"</string>
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling husawazisha kiotomatiki matumizi yako ya YouTube Music na wasifu wako wa Last.fm au ListenBrainz
 
 Ili kuhakikisha scrobbling inasawazishwa wakati wa uchezaji wa nyuma, hakikisha kuwa matumizi ya betri ya programu ya YouTube Music yamewekwa kuwa \"Haina vizuizi\""</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">Ruka nyimbo za wasanii ambao jamii imewaripoti kama AI</string>
+  <string name="morphe_music_soundproof_show_button_title">Onyesha kitufe cha SoundProof</string>
+  <string name="morphe_music_soundproof_show_button_summary">Huonyesha kitufe kwenye upau wa juu wa kinchezaji ili kuona na kupiga kura za jamii kwa msanii wa sasa</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">Ruka wasanii wa AI</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">Ruka nyimbo moja kwa moja ambazo msanii wake anafikia kiwango cha AI hapa chini</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">Onyesha taarifa ya kuruka</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">Inaonyesha taarifa wakati wimbo unaporukwa moja kwa moja</string>
+  <string name="morphe_music_soundproof_threshold_title">Kiwango cha ugunduzi</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">Kura za chini za AI</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Msanii anachukuliwa kama AI wakati angalau sehemu hii ya kura zake zikisema AI</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">Idadi ya chini ya kura</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">Wasanii wenye kura chache kuliko hizi harukiwi kamwe</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">Rukwa %1$s (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">Kura za SoundProof kwa msanii huyu</string>
+  <string name="morphe_music_soundproof_sheet_verified">Imehakiikiwa</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% binadamu</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">kura 1</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">kura %s</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s binadamu</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s AI</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">Hakuna kura kwa msanii huyu bado</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">Hifadhidata ya SoundProof haijapatikana bado</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">Inapakuliwa kwa nyuma. Hakuna wimbo utakaorukwa hadi itakapopatikana.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">Kura za jumuiya kutoka kwenye hifadhidata ya SoundProof</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">Binadamu</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">Upigaji kura umefungwa: msimamizi wa SoundProof amemkagua msanii huyu</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">Hakuweza kuwasiliana na SoundProof. Kura zinatoka kwenye hifadhidata ya kila siku, na upigaji kura haupatikani.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">Kura ya SoundProof imeshindikana</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"Data za msanii zinatoka SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), zinapakuliwa mara moja kwa siku. Kuruka hakutumi kitu chochote kuhusu kile unachocheza. Kufungua karatasi ya SoundProof hutuma jina la msanii wa sasa kwenda kwenye seva ya SoundProof ili kuonyesha kura mpya na kupiga kura. Seva huwatofautisha wapiga kura kwa anwani ya IP, hivyo kura yako inaweza kuonekana tofauti kwenye mtandao mwingine.
+
+Hifadhidata hii ina leseni chini ya ODC Open Database License (ODbL). Maingizo kutoka Soul Over AI ya xoundbyte yana leseni chini ya CC BY 4.0. Haihusiani na au kuidhinishwa na SoundProof au Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Tumia mashairi ya upande wa tatu</string>
   <string name="morphe_music_lyrics_enabled_summary">Huonyesha mashairi kutoka kwa huduma ya upande wa tatu, na kurudi kwenye mashairi yaliyojengwa ndani wakati hakuna yanayopatikana</string>
@@ -464,8 +605,45 @@ Ili kuhakikisha scrobbling inasawazishwa wakati wa uchezaji wa nyuma, hakikisha 
   <string name="morphe_music_lyrics_source_all_disabled">Watoa huduma wote wamezimwa - mashairi yaliyojengwa ndani na mashairi yaliyojumuishwa</string>
   <string name="morphe_music_lyrics_source_reset_title">Weka upya mpangilio wa watoa huduma?</string>
   <string name="morphe_music_lyrics_source_reset_message">Rudisha watoa huduma katika mpangilio wa kipaumbele wa asili</string>
+  <string name="morphe_music_lyrics_rime_dict_title">Orodha ya Maneno ya Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist pia inahitaji UniDict: kwenye mtoa huduma wa Kamusi ya Offline, weka tiki \"Chinese and Cantonese characters (UniDict)\" na uiruhusu imalize kupakua kwanza. Bila hiyo, orodha inayosoma wahusika haitoi usomaji.
+
+Weka tiki kwenye orodha ambazo Rime Wordlist inapaswa kusoma, kisha gusa Hifadhi ili kuzipakua. Orodha uliyoongeza huondolewa unapotoa tiki.
+
+Kila orodha ni jedwali lako mwenyewe la neno-kwa-usomaji, .dict.yaml yenye mistari kama:
+字 ham
+典 din2
+Safu ya kwanza ni neno, ya pili ni usomaji wake; safu za ziada na mistari isiyo na tab hupunguzwa."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">Hakuna orodha ya maneno ya Rime iliyochaguliwa kwa lugha hapo juu. Gusa jina hili ili kuchagua moja, au chagua lugha yenye orodha</string>
+  <string name="morphe_music_lyrics_rime_dict_add">Ongeza</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">Ongeza Orodha ya Maneno ya Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Faili ya .dict.yaml, au zip inayoshikilia moja, yenye mistari kama 字 ham na 典 din2. Orodha hupatikana unapoikagua na kugusa Hifadhi, na leseni yake ni yako kuikagua</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">Kodi ya lugha</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">Herufi mbili au tatu, kama vile hak au wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">Jina</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">Inaonyeshwa chini ya usomaji, kama vile Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">Anwani ya orodha ya maneno</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">anwani ya https:// ya .dict.yaml au zip yake</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">Herufi zisizo kwenye neno</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">Kiotomatiki</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">Herufi za Cantonese</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">Herufi za Mandarin</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">Hakuna usomaji wa herufi</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">Jaza nambari ya siri, jina na anwani</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">Nambari ya siri lazima iwe herufi mbili au tatu, kama vile hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">Anuani lazima ianze na https://</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">Jina na anuani haziwezi kuwa na mstari wa wima</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s tayari ina jedwali la maneno</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s inasomwa na romanizer iliyojengwa ndani na haiwezi kuchukua orodha ya maneno</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">Haitumiwi: lugha hii tayari ina usomaji wake, hivyo iondoe alama ya tiki ili kuiondoa</string>
+  <string name="morphe_music_lyrics_rime_dict_added">Imeongezwa %s - weka alama na uguse Hifadhi ili kuipakua</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">Orodha za maneno ziko tayari</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Orodha za maneno ziko tayari (ingizo %s)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Inasoma orodha ya maneno: %s%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">Pakua orodha ya maneno imeshindikana - gusa Hifadhi tena ili ujaribu tena</string>
   <string name="morphe_music_lyrics_clear_cache_title">Futa mashairi yaliyohifadhiwa</string>
-  <string name="morphe_music_lyrics_clear_cache_done">Imefuta %1$s MB</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Futa %s MB za mashairi zilizohifadhiwa kwenye kifaa hiki</string>
+  <string name="morphe_music_lyrics_clear_cache_done">Imefutwa %s MB</string>
   <string name="morphe_music_token_dialog_get_token">Pata tokeni</string>
   <string name="morphe_music_apple_music_token_title">Token ya Mtumiaji wa Media ya Apple Music</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Bandika kuki ya media-user-token kutoka music.apple.com
@@ -524,9 +702,21 @@ Kuki zinazohitajika: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_copy_button_title">Onyesha kitufe cha Kunakili</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Gusa ili kunakili mashairi ya awali kama maandishi ya kawaida; bonyeza kwa muda mrefu ili kuhifadhi faili ya chanzo cha mashairi ghafi kwenye Pakua</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Onyesha kitufe cha Kutafsiri</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Usomaji uko tayari (%1$d entries)</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Gusa ili kubadilisha tafsiri; bonyeza kwa muda mrefu kwa tafsiri pekee. Hutumia watoa huduma wa tafsiri walio wezesha kwa utaratibu ulioorodheshwa</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Onyesha kitufe cha Romanize au Transliterate</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Gusa ili kubadilisha romanization au transliteration; bonyeza kwa muda mrefu kwa romanization au transliteration pekee. Hutumia watoa huduma wa romanization walio wezesha kwa utaratibu ulioorodheshwa</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">Wezesha transliteration</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">Ruhusu usomaji usio wa Kilatini kutoka chanzo cha mashairi; ikiwa imezimwa, baki na herufi za Kilatini, herufi zenye alama na tarakimu za toni pekee</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Inasoma kila neno la mashairi yenye muda (uoanishaji wa maneno umewashwa); Kikorea hakihitaji kupakuliwa; maandishi kumi na nne yanashiriki pakulia moja la CLDR; wahusika wa Han husomwa na Rime Wordlist wakati jedwali lake la maneno linajumuisha lugha hiyo</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">Inapakua kamusi za usomaji…</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Usomaji uko tayari (ingizo %s)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Pakua imefeli - zima na uwashe tena ili kujaribu tena</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Inasoma %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Kamusi ya Nje ya Mtandao</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Kijapani (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">Wahusika wa Kichina na Kikantoni (UniDict, ~8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">Maneno ya Kichina (pinyin-pro, ~17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">Utafsiri wa Kigiriki, Kislaviki ya Cyrillic (ikiwemo Kirusi, Kiukraine, Kibulgari, Kiserbia, Kibelarusi, Kimakedonia), Kijorjia, Kiarmeania, Kiebrania, Kiarabu, Kiamhari na Kisiriyaki (CLDR, ~0.5 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Inasoma %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Onyesha kitufe cha Refresh</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Gusa ili kubadilisha kwenda kwa mshindani mwingine wa mashairi; bonyeza kwa muda mrefu ili kutafuta mashairi kwa kichwa cha wimbo na msanii</string>
   <string name="morphe_music_lyrics_search_dialog_title">Tafuta mashairi</string>
@@ -537,10 +727,18 @@ Kuki zinazohitajika: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_saved">Imehifadhiwa</string>
   <string name="morphe_music_lyrics_word_sync_title">Angazia maneno au silabi zilizooanishwa</string>
   <string name="morphe_music_lyrics_word_sync_summary">Toa kipaumbele kwa mashairi ya neno-kwa-neno yanapopatikana. Mashairi yanapokuwa na muda wa neno, yanangazia kila neno au silabi kulingana na wakati wa muziki</string>
+  <string name="morphe_music_lyrics_line_scale_title">Punguza mistari isiyo hai</string>
+  <string name="morphe_music_lyrics_line_scale_summary">Huchora kila mstari ambao kwa sasa hauimbwi ukiwa mdogo kidogo, pamoja na kuufifisha</string>
+  <string name="morphe_music_lyrics_split_background_title">Onyesha sauti za nyuma kando</string>
+  <string name="morphe_music_lyrics_split_background_summary">Hutenganisha sauti za nyuma na mawiano kutoka kwa mstari mkuu. Huhamisha sauti ya nyuma iliyoandikwa kwenye mabano, kama vile \"(Oh) I want you\", kutoka kwenye mstari unaoimbwa kwenda kwenye mstari wake mfifio</string>
   <string name="morphe_music_lyrics_hide_played_title">Ficha mashairi yaliyochezwa</string>
   <string name="morphe_music_lyrics_hide_played_summary">Ficha mistari ya mashairi iliyo juu ya mstari unaochezwa sasa</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Ficha mashairi ambayo hayajachezwa</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Ficha mistari ya mashairi chini ya mstari unaocheza sasa</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Mandhari inayobadilika</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Onyesha mandhari iliyofifia iliyotengenezwa kutoka kwenye picha ya albamu nyuma ya mashairi</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Anisha mandhari inayobadilika</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Sogeza mandhari wakati wa kucheza, na kuifanya itikise kulingana na muziki ikiwa YouTube Music ina ruhusa ya maikrofoni. Zima kwa ajili ya mandhari tuli inayotumia betri kidogo</string>
   <string name="morphe_music_lyrics_mediasession_title">Onyesha Mashairi ya MediaSession kwenye skrini ya kufunga</string>
   <string name="morphe_music_lyrics_mediasession_summary">Inaonyesha mstari wa sasa kwenye skrini ya kufunga, Android Auto na Bluetooth. Inahitaji Android 11 au mpya zaidi</string>
   <string name="morphe_music_lyrics_miniplayer_title">Onyesha Mashairi ya Miniplayer</string>
@@ -594,9 +792,15 @@ Inatumika kwa mipaka yote miwili. Katika 1.75, herufi nne pana zinahesabiwa kama
   <string name="morphe_music_lyrics_translated_by_ai">Imetafsiriwa na %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Imeromanishwa na %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Imeandikwa kwa herufi za Kilatini na %s</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">Imeromanizwa na Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Imetafsiriwa</string>
   <string name="morphe_music_lyrics_translation_language_title">Lugha ya tafsiri</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Lugha ya romanization au transliteration</string>
+  <string name="morphe_music_lyrics_translation_target_language">"Lugha lengwa ya tafsiri:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"Lugha lengwa ya romanization au ubadilishaji wa maandishi:
+%s"</string>
   <string name="morphe_music_lyrics_translating">Inatafsiri…</string>
   <string name="morphe_music_lyrics_translate_failed">Hakuweza kutafsiri mashairi</string>
   <string name="morphe_music_lyrics_romanize_hide">Imeandikwa kwa herufi za Kilatini</string>
@@ -610,6 +814,7 @@ Inatumika kwa mipaka yote miwili. Katika 1.75, herufi nne pana zinahesabiwa kama
   <string name="morphe_music_lyrics_refreshing">Inaboresha</string>
   <string name="morphe_music_lyrics_refreshed">Imesasishwa</string>
   <string name="morphe_music_lyrics_transcribe_key_title">Ufunguo wa API ya QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC huandika au kulinganisha muda wa mashairi ya wimbo wa sasa</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">Ufunguo wa QuickLRC umehifadhiwa. Tumia kitufe cha kusawazisha katika dialog ya utafutaji wa mashairi, au prompt ya jopo wakati wimbo hauna mashairi</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">Ufunguo wa API ya QuickLRC umehifadhiwa</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC haijakubali ufunguo huo</string>
@@ -625,26 +830,60 @@ Inatumika kwa mipaka yote miwili. Katika 1.75, herufi nne pana zinahesabiwa kama
   <string name="morphe_music_lyrics_transcribe_no_text">Hakuna mashairi ya kusawazisha - badala yake hutoa nakala</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC haikuweza kuchakata wimbo huu</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">Kredi za QuickLRC zimeisha kwa wimbo huu</string>
+  <string name="morphe_music_lyrics_about_summary">"Mashairi yanalinganishwa kwa kichwa na msanii, metadata zisizo za kawaida zinaweza zisipate chochote au kupata toleo lisilo sahihi. Tumia refresh ili kubadilisha matoleo. Watoa huduma walioashiriwa na * wanahitaji token. Watoa huduma wote waliooashwa hawajombwi kila wakati kwa utaratibu wako, bali wanajibu kulingana na kasi yao.
+
+Mashairi yanatoka kwa huduma za upande wa tatu ambazo hazihusiani, hazifadhiliwi, au hazidhibitishwi na Morphe. Kila moja inatumika kama ilivyo: mashairi, upatikanaji wake, na leseni zake zinabaki na huduma hizo na watoa leseni wao, na kuzitumia kunaweza kuwa chini ya masharti yao ya huduma. Kinachofika kwenye huduma iliyoashwa ni utafutaji tu uliouomba - kichwa, msanii, na, pale huduma hiyo inapohitaji, ID ya video. Endpoint ya AI ya hiari na transcription ya QuickLRC hufanya kazi tu baada ya kuziseti, na kupokea maandishi ya mashairi au URL ya video ya wimbo."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Washa tu watoa huduma unaowatumia, au baki na chaguo-msingi - maombi ya mara kwa mara yanaweza kulemea tovuti ndogo za mashairi za jamii</string>
   <string name="morphe_music_lyrics_hide_info_title">Ficha mstari wa sifa</string>
   <string name="morphe_music_lyrics_hide_info_summary">Ficha mstari wa sifa unaoonekana chini ya mashairi</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Badilisha nafasi ya tafsiri na uandishi wa kimatamshi</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Inabadilisha mpangilio wa onyesho wa tafsiri na uromanizashoni chini ya mashairi</string>
+  <string name="morphe_music_lyrics_force_center_title">Kaa katikati ya mashairi kila wakati</string>
+  <string name="morphe_music_lyrics_force_center_summary">ON huweka kila mstari katikati na kupuuza mpangilio wa chanzo, ikiwa ni pamoja na pande za dueti; OFF hubaki na mpangilio ambao mashairi yanahitaji</string>
+  <string name="morphe_music_lyrics_providers_keep_one">Angalau mtoa huduma mmoja lazima abaki akiwa amewashwa</string>
+  <string name="morphe_music_lyrics_translation_provider_title">Tafsiri</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">Romanization au uandishi wa kifonetiki</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">Kamusi ya Nje ya Mtandao</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Orodha ya Maneno ya Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Kamusi ya Offline</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Muswada wa Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Onyesha kitufe cha Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Gusa ili kubadili usomaji wa ruby juu ya mashairi; bonyeza kwa muda mrefu ili kubadili kati ya hiragana na katakana. Hutumia watoa ruby walioidhinishwa kwa utaratibu wao ulioorodheshwa</string>
+  <string name="morphe_music_lyrics_ruby_generating">Inatengeneza ruby…</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">Gundua sehemu kwa AI</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Hutumika tu wakati mtoa huduma hatumi lebo za sehemu kama vile Chorus au Verse, ambazo kisha model yako inayooana na OpenAI huzigundua. Kuhariri mstari pia hufungua prompt yake</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL ya endpoint ya API (mfano https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Kiolezo cha Prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Viashiria: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Viashiria: {task}, {language}, {title}, {artist}, {count}, {lines}. Visivyojulikana huachwa kama vilivyoandikwa</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt imehifadhiwa</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt imehifadhiwa, lakini kituo cha AI hakiwezi kutumiwa bado. Kusanidi kwanza chini ya Mipangilio ya AI</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Kuweka upya prompt</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Mipangilio ya Tafsiri &amp; Romanization imehifadhiwa</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Mipangilio imerejeshwa katika chaguo-msingi</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">URL ya msingi lazima ianze na http:// au https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">Mipangilio haijakamilika au imekataliwa na mtoa huduma</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Inathibitisha muunganisho…</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Imeunganishwa! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Muunganisho umeshindwa. Angalia mipangilio.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">Ingiza ufunguo wa API kwanza</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Jaribu muunganisho</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Inachukua mifano…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Pakua modeli</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Chagua Mfano</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Imeshindwa kuchukua mifano. Angalia ufunguo wa API au muunganisho.</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">Maelekezo</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Mfano</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL ya Msingi</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Preset za huduma</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Chagua huduma</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">Ufunguo wa API (hiari)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Mwili wa ziada wa ombi (JSON ya hiari)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">Vichwa vya ziada vya ombi (JSON ya hiari)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Nukuu majina na thamani, k.m. {\"api-key\": \"abc\"}. Thamani isiyo na nukuu yenye / : au namba itakataliwa. Thamani tupu huondoa kichwa.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Weka alama za nukuu kwenye majina na thamani, k.m. {\"temperature\": 0.3}. Thamani isiyo na alama za nukuu yenye / au : itakataliwa. Model na jumbe haziwezi kuwekwa hapa.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Ufunguo wa uthibitishaji (Bure au Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Zima aikoni nzito</string>

@@ -11,9 +11,8 @@ package app.morphe.patches.shared.layout.font
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -29,9 +28,9 @@ internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/Custo
 fun baseCustomFontPatch(
     preferenceScreen: BasePreferenceScreen.Screen,
     applicationInitFingerprint: Fingerprint,
-    block: BytecodePatchBuilder.() -> Unit,
-    executeBlock: BytecodePatchContext.() -> Unit = {},
-) = bytecodePatch(
+    block: PatchDefinition.() -> Unit,
+    executeBlock: () -> Unit = {},
+) = patch(
     name = "Custom font",
     description = "Adds an option to show the app with the device system font or a custom TTF " +
             "or OTF font file instead of YouTube Sans.",

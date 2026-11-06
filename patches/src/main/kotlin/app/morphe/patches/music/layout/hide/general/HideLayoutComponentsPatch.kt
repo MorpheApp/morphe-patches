@@ -9,7 +9,7 @@ package app.morphe.patches.music.layout.hide.general
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -33,7 +33,7 @@ private const val LAYOUT_COMPONENTS_FILTER =
     "Lapp/morphe/extension/music/patches/components/LayoutComponentsFilter;"
 
 @Suppress("unused")
-val hideLayoutComponentsPatch = bytecodePatch(
+val hideLayoutComponentsPatch = patch(
     name = "Hide layout components",
     description = "Adds options to hide general layout components."
 ) {
@@ -89,6 +89,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_music_hide_comments_community_guidelines"),
                     SwitchPreference("morphe_music_hide_comments_context"),
                     SwitchPreference("morphe_music_hide_comments_emoji_button"),
+                    SwitchPreference("morphe_music_hide_comments_gif_button"),
+                    SwitchPreference("morphe_music_hide_comments_gifs_and_images", summary = true),
                     SwitchPreference("morphe_music_hide_comments_info_button"),
                     SwitchPreference("morphe_music_hide_comments_timestamp_button")
                 )

@@ -9,7 +9,6 @@ package app.morphe.patches.reddit.font
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import com.android.tools.smali.dexlib2.AccessFlags
 
@@ -53,7 +52,6 @@ internal object ModernTypefaceCompatCreateFromResourcesFontFileFingerprint : Fin
     ),
 )
 
-context(_: BytecodePatchContext)
 internal fun resolveTypefaceCompatCreateFromResourcesFontFileTarget(): TypefaceCompatCreateFromResourcesFontFileTarget {
     listOf(
         TypefaceCompatCreateFromResourcesFontFileVariant.LEGACY_STATIC to LegacyTypefaceCompatCreateFromResourcesFontFileFingerprint,

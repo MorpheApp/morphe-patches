@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.postimages
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -26,7 +26,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/PostImageDownloadPatch;"
 
 @Suppress("unused")
-val postImageDownloadPatch = bytecodePatch(
+val postImageDownloadPatch = patch(
     name = "Download post images",
     description = "Adds a button and a menu item to download the images and GIFs of posts.",
 ) {

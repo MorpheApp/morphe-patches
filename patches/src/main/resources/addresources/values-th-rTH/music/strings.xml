@@ -150,6 +150,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_previous">ก่อนหน้า</string>
   <string name="morphe_music_downloads_next">ถัดไป</string>
   <string name="morphe_music_downloads_pause">หยุดชั่วคราว</string>
+  <string name="morphe_music_downloads_shuffle">สุ่ม</string>
+  <string name="morphe_music_downloads_repeat">เล่นซ้ำ</string>
+  <string name="morphe_music_downloads_minimize">ย่อหน้าต่าง</string>
   <string name="morphe_music_downloads_close">ปิด</string>
   <string name="morphe_music_downloads_delete">ลบ</string>
   <string name="morphe_music_downloads_delete_track">ลบรายการดาวน์โหลด</string>
@@ -158,6 +161,38 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_track_deleted">ลบรายการดาวน์โหลดแล้ว</string>
   <string name="morphe_music_downloads_track_delete_failed">ไม่สามารถลบรายการดาวน์โหลดได้</string>
   <string name="morphe_music_downloads_play_failed">ไม่สามารถเล่นรายการดาวน์โหลดได้</string>
+  <string name="morphe_music_downloads_playlists">เพลย์ลิสต์</string>
+  <string name="morphe_music_downloads_playlists_section">เพลย์ลิสต์ที่สร้างขึ้น (%s)</string>
+  <string name="morphe_music_downloads_playlists_empty">ยังไม่มีเพลย์ลิสต์ในเครื่อง</string>
+  <string name="morphe_music_downloads_playlists_hide">ซ่อนเพลย์ลิสต์ ▲</string>
+  <string name="morphe_music_downloads_playlist_new">+ เพลย์ลิสต์ใหม่</string>
+  <string name="morphe_music_downloads_playlist_new_button">เพลย์ลิสต์ใหม่</string>
+  <string name="morphe_music_downloads_playlist_selected">เลือกแล้ว (%s)</string>
+  <string name="morphe_music_downloads_playlist_select_first">กรุณาเลือกเพลงก่อน</string>
+  <string name="morphe_music_downloads_playlist_clear_selection">ล้างการเลือก</string>
+  <string name="morphe_music_downloads_playlist_create">สร้างเพลย์ลิสต์</string>
+  <string name="morphe_music_downloads_playlist_create_button">สร้าง</string>
+  <string name="morphe_music_downloads_playlist_add">เพิ่มลงในเพลย์ลิสต์</string>
+  <string name="morphe_music_downloads_playlist_added">เพิ่มลงใน %s แล้ว</string>
+  <string name="morphe_music_downloads_playlist_name_hint">ชื่อเพลย์ลิสต์</string>
+  <string name="morphe_music_downloads_playlist_name_empty">ชื่อเพลย์ลิสต์ต้องไม่ว่างเปล่า</string>
+  <string name="morphe_music_downloads_playlist_save_failed">ไม่สามารถบันทึกเพลย์ลิสต์ได้</string>
+  <string name="morphe_music_downloads_playlist_track_count">%s แทร็ก</string>
+  <string name="morphe_music_downloads_playlist_track_count_one">1 แทร็ก</string>
+  <string name="morphe_music_downloads_playlist_no_tracks">ไม่มีแทร็กในเพลย์ลิสต์นี้</string>
+  <string name="morphe_music_downloads_playlist_play">เล่นเพลย์ลิสต์</string>
+  <string name="morphe_music_downloads_playlist_play_all">เล่นทั้งหมด</string>
+  <string name="morphe_music_downloads_playlist_rename">เปลี่ยนชื่อ</string>
+  <string name="morphe_music_downloads_playlist_rename_title">เปลี่ยนชื่อเพลย์ลิสต์</string>
+  <string name="morphe_music_downloads_playlist_save">บันทึก</string>
+  <string name="morphe_music_downloads_playlist_delete">ลบเพลย์ลิสต์</string>
+  <string name="morphe_music_downloads_playlist_delete_title">ลบเพลย์ลิสต์หรือไม่?</string>
+  <string name="morphe_music_downloads_playlist_delete_message">%s จะถูกลบ แต่เพลงที่ดาวน์โหลดไว้จะยังคงอยู่</string>
+  <string name="morphe_music_downloads_playlist_deleted">ลบเพลย์ลิสต์แล้ว</string>
+  <string name="morphe_music_downloads_playlist_remove_track">นำออกจากเพลย์ลิสต์</string>
+  <string name="morphe_music_downloads_playlist_drag_track">ลากเพื่อจัดลำดับใหม่</string>
+  <string name="morphe_music_downloads_playlist_reorder_hint">%s • ลากที่ตัวจับเพื่อจัดลำดับใหม่</string>
+  <string name="morphe_music_downloads_playlist_reorder_done">เสร็จสิ้น</string>
   <string name="morphe_music_downloads_notification_channel">การดาวน์โหลดเสียง</string>
   <string name="morphe_music_downloads_playback_channel">การเล่นแบบออฟไลน์</string>
   <string name="morphe_music_downloads_unknown_track">ไม่สามารถระบุแทร็กที่จะดาวน์โหลดได้</string>
@@ -168,6 +203,28 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">กำลังดาวน์โหลด %s%%</string>
   <string name="morphe_music_downloads_complete">ดาวน์โหลดเสร็จสมบูรณ์</string>
   <string name="morphe_music_downloads_failed">ดาวน์โหลดล้มเหลว</string>
+  <string name="morphe_music_downloads_playlist_download_title">ดาวน์โหลดเพลย์ลิสต์</string>
+  <string name="morphe_music_downloads_playlist_download_listing">กำลังเรียกรายการแทร็ก…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">เรียกรายการได้ %s…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">ไม่สามารถเรียกรายการแทร็กของเพลย์ลิสต์ได้</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">ดาวน์โหลดไปแล้ว: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"มี %1$s แทร็กในเพลย์ลิสต์นี้ โดยที่ %2$s แทร็กยังไม่ได้ดาวน์โหลด
+
+แทร็กเหล่านี้จะถูกดาวน์โหลดทีละเพลง ซึ่งอาจใช้เวลานานและต้องใช้พื้นที่ว่างประมาณ %3$s"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">ดาวน์โหลด</string>
+  <string name="morphe_music_downloads_playlist_download_progress">กำลังดาวน์โหลดแทร็กที่ %1$s จาก %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">ดาวน์โหลดแล้ว %s</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">ดาวน์โหลดแล้ว %1$s แทร็ก และไม่สามารถดาวน์โหลดได้ %2$s แทร็ก</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">มีการดาวน์โหลดเพลย์ลิสต์อยู่ระหว่างดำเนินการแล้ว</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">ยังไม่พบข้อมูลบัญชีของคุณ โปรดลองอีกครั้งในภายหลัง</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">เรียกรายการได้ %s แทร็ก และทั้งหมดถูกดาวน์โหลดไปแล้ว</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">สามารถเรียกรายการเพลย์ลิสต์ได้เพียงบางส่วน โปรดแตะดาวน์โหลดอีกครั้งในภายหลังเพื่อรับส่วนที่เหลือ</string>
+  <string name="morphe_music_downloads_playlist_download_started">กำลังดาวน์โหลด %s ในพื้นหลัง</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">ไม่มีการเชื่อมต่อเครือข่าย</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">กำลังรอเครือข่าย…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">หยุดหลังจากดาวน์โหลดไป %1$s จาก %2$s โปรดแตะดาวน์โหลดอีกครั้งเพื่อดำเนินการต่อ</string>
+  <string name="morphe_music_downloads_mark_title">ทำเครื่องหมายเพลงที่ดาวน์โหลดแล้ว</string>
+  <string name="morphe_music_downloads_mark_summary">เพลงที่ดาวน์โหลดไว้แล้วจะแสดงเครื่องหมายหน้าชื่อเพลงในเพลย์ลิสต์ อัลบั้ม และผลการค้นหา</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">เกี่ยวกับ</string>
@@ -206,6 +263,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">ซ่อนแนวทางชุมชน</string>
   <string name="morphe_music_hide_comments_context_title">ซ่อนข้อความบริบท</string>
   <string name="morphe_music_hide_comments_emoji_button_title">ซ่อนปุ่มอีโมจิ</string>
+  <string name="morphe_music_hide_comments_gif_button_title">ซ่อนปุ่ม GIF</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_title">ซ่อน GIF และรูปภาพ</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_summary">ซ่อน GIF และรูปภาพที่แนบมากับความคิดเห็นและการตอบกลับ</string>
   <string name="morphe_music_hide_comments_info_button_title">ซ่อนปุ่มข้อมูล</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">ซ่อนปุ่มตราประทับเวลา</string>
   <!-- interaction.crossfade.crossfadePatch -->
@@ -285,6 +345,43 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">เพิ่มแทร็กที่เลือกลงในคิว</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">เพิ่มลงในคิวแล้ว</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">แท็กเพลย์ลิสต์</string>
+  <string name="morphe_music_playlist_tags_screen_summary">ติดแท็กเพลย์ลิสต์และกรองคลังเพลงด้วยแท็ก</string>
+  <string name="morphe_music_playlist_tags_title">เปิดใช้งานแท็กเพลย์ลิสต์</string>
+  <string name="morphe_music_playlist_tags_summary">เพิ่มรายการแท็กในเมนูของเพลย์ลิสต์ และปุ่มกรองแท็กข้างปุ่มจัดเรียงของคลังเพลง</string>
+  <string name="morphe_music_playlist_tags_manage_title">จัดการแท็กเพลย์ลิสต์</string>
+  <string name="morphe_music_playlist_tags_manage_summary">สร้าง เปลี่ยนชื่อ และลบแท็ก รวมถึงติดแท็กเพลย์ลิสต์ที่ปรากฏในคลังเพลงของคุณ</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">แท็ก</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">ไม่มีแท็ก</string>
+  <string name="morphe_music_playlist_tags_filter_button">แท็ก</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">แท็ก: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">แท็ก (ซ่อน %s)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">แท็กสำหรับ %s</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">แท็กใหม่</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 เพลย์ลิสต์</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s เพลย์ลิสต์</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">มีแท็กชื่อ %s อยู่แล้ว</string>
+  <string name="morphe_music_playlist_tags_filter_title">กรองตามแท็ก</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">แสดงเฉพาะ</string>
+  <string name="morphe_music_playlist_tags_filter_all">เพลย์ลิสต์ทั้งหมด</string>
+  <string name="morphe_music_playlist_tags_filter_visible">แท็กที่มองเห็น</string>
+  <string name="morphe_music_playlist_tags_manage">จัดการ</string>
+  <string name="morphe_music_playlist_tags_none">ยังไม่มีแท็ก กดค้างที่เพลย์ลิสต์แล้วเลือก \"แท็ก\" เพื่อสร้าง</string>
+  <string name="morphe_music_playlist_tags_section_tags">แท็ก</string>
+  <string name="morphe_music_playlist_tags_section_playlists">เพลย์ลิสต์</string>
+  <string name="morphe_music_playlist_tags_no_playlists">เปิดคลังเพลงหนึ่งครั้งเพื่อให้เพลย์ลิสต์ของคุณปรากฏที่นี่</string>
+  <string name="morphe_music_playlist_tags_new_tag">แท็กใหม่</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">แก้ไขแท็ก</string>
+  <string name="morphe_music_playlist_tags_rename">เปลี่ยนชื่อ</string>
+  <string name="morphe_music_playlist_tags_delete">ลบ</string>
+  <string name="morphe_music_playlist_tags_hidden">ซ่อนแล้ว</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">ซ่อนปุ่มแคสต์</string>
   <string name="morphe_music_hide_history_button_title">ซ่อนปุ่มประวัติ</string>
@@ -453,6 +550,49 @@ Second \"item\" text"</string>
   <string name="morphe_music_scrobbling_about_summary">"การ scrobbling จะซิงค์การใช้งาน YouTube Music ของคุณกับโปรไฟล์ Last.fm หรือ ListenBrainz โดยอัตโนมัติ
 
 เพื่อให้แน่ใจว่าการ scrobbling จะซิงค์ระหว่างการเล่นในเบื้องหลัง ตรวจสอบให้แน่ใจว่าการใช้แบตเตอรี่ของแอป YouTube Music ถูกตั้งค่าเป็น \"ไม่จำกัด\""</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">ข้ามแทร็กของศิลปินที่ชุมชนรายงานว่าเป็น AI</string>
+  <string name="morphe_music_soundproof_show_button_title">แสดงปุ่ม SoundProof</string>
+  <string name="morphe_music_soundproof_show_button_summary">แสดงปุ่มในแถบด้านบนของเครื่องเล่นเพื่อดูและลงคะแนนจากชุมชนสำหรับศิลปินปัจจุบัน</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">ข้ามศิลปิน AI</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">ข้ามแทร็กที่ศิลปินมีค่าเกณฑ์ AI ตรงตามที่กำหนดด้านล่างโดยอัตโนมัติ</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">แสดงการแจ้งเตือนการข้าม</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">แสดงการแจ้งเตือนเมื่อแทร็กถูกข้ามโดยอัตโนมัติ</string>
+  <string name="morphe_music_soundproof_threshold_title">เกณฑ์การตรวจจับ</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">คะแนน AI ขั้นต่ำ</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">ศิลปินจะถูกระบุว่าเป็น AI เมื่อมีสัดส่วนคะแนนที่ระบุว่าเป็น AI อย่างน้อยตามจำนวนนี้</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">จำนวนคะแนนขั้นต่ำ</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">ศิลปินที่มีคะแนนน้อยกว่าจำนวนนี้จะไม่ถูกข้าม</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">ข้าม %1$s (%2$s%% AI)</string>
+  <string name="morphe_music_soundproof_button_description">คะแนน SoundProof สำหรับศิลปินนี้</string>
+  <string name="morphe_music_soundproof_sheet_verified">ยืนยันแล้ว</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">AI %s%%</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">มนุษย์ %s%%</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 คะแนน</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s โหวต</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">มนุษย์ %s</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">AI %s</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">ยังไม่มีการโหวตสำหรับศิลปินท่านนี้</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">ฐานข้อมูล SoundProof ยังไม่พร้อมใช้งาน</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">กำลังดาวน์โหลดในเบื้องหลัง จะไม่มีการข้ามแทร็กจนกว่าข้อมูลจะพร้อมใช้งาน</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">คะแนนโหวตจากชุมชนจากฐานข้อมูล SoundProof</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">มนุษย์</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">ปิดการโหวต: ผู้ดูแลระบบ SoundProof ได้ตรวจสอบศิลปินท่านนี้แล้ว</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">ไม่สามารถเชื่อมต่อกับ SoundProof ได้ คะแนนโหวตมาจากฐานข้อมูลรายวัน และไม่สามารถโหวตได้ในขณะนี้</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">การโหวต SoundProof ล้มเหลว</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"ข้อมูลศิลปินมาจาก SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) ซึ่งจะดาวน์โหลดวันละครั้ง การกดข้ามจะไม่ส่งข้อมูลใดๆ เกี่ยวกับสิ่งที่คุณเล่น การเปิดแผ่นข้อมูล SoundProof จะส่งชื่อศิลปินปัจจุบันไปยังเซิร์ฟเวอร์ SoundProof เพื่อแสดงคะแนนโหวตล่าสุดและเพื่อทำการโหวต เซิร์ฟเวอร์จะแยกแยะผู้โหวตด้วยที่อยู่ IP ดังนั้นคะแนนโหวตของคุณอาจแสดงผลแตกต่างกันในเครือข่ายอื่น
+
+ฐานข้อมูลนี้ได้รับอนุญาตภายใต้ ODC Open Database License (ODbL) รายการจาก Soul Over AI โดย xoundbyte ได้รับอนุญาตภายใต้ CC BY 4.0 ไม่มีความเกี่ยวข้องหรือได้รับการรับรองโดย SoundProof หรือ Soul Over AI"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">ใช้เนื้อเพลงของบุคคลที่สาม</string>
   <string name="morphe_music_lyrics_enabled_summary">แสดงเนื้อเพลงจากบริการของบุคคลที่สาม โดยย้อนกลับไปที่เนื้อเพลงในตัวเมื่อไม่พบ</string>
@@ -493,17 +633,17 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_rime_dict_bad_code">รหัสมUSTประกอบด้วยสองหรือสามตัวอักษร เช่น hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">ที่อยู่ต้องใช้ https:// เป็นจุดเริ่มต้น</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">ชื่อและที่อยู่ไม่สามารถมีเส้นตั้งกลางได้</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s มีตารางคำอยู่แล้ว</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s ถูกอ่านโดยระบบแปลงอักษรโรมันภายใน ไม่สามารถรับรายการคำได้</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s มีตารางคำศัพท์อยู่แล้ว</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s ถูกอ่านโดยระบบถอดอักษรโรมันในตัว และไม่สามารถใช้รายการคำศัพท์ได้</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">ไม่ได้ใช้งาน: ภาษา nàyมีเสียงอ่านของตัวเองแล้ว ดังนั้นยกเลิกการทำเครื่องหมายเพื่อลบออก</string>
-  <string name="morphe_music_lyrics_rime_dict_added">เพิ่ม %1$s - ทำเครื่องหมายเลือกและแตะบันทึกเพื่อกำเนินการดาวน์โหลด</string>
+  <string name="morphe_music_lyrics_rime_dict_added">เพิ่ม %s แล้ว - ให้ทำเครื่องหมายและแตะบันทึกเพื่อดาวน์โหลด</string>
   <string name="morphe_music_lyrics_rime_dict_ready">รายการคำพร้อมใช้งาน</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">รายการคำพร้อมใช้งาน (%1$d รายการ)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">กำลังสร้างรายการคำเสียงอ่าน: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">รายการคำศัพท์พร้อมแล้ว (%s รายการ)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">กำลังอ่านรายการคำศัพท์: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">ดาวน์โหลดรายการคำล้มเหลว - แตะบันทึกอีกครั้งเพื่อลองใหม่</string>
   <string name="morphe_music_lyrics_clear_cache_title">ล้างเนื้อเพลงที่จัดเก็บไว้</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">ลบเนื้อเพลงที่เก็บไว้ในอุปกรณ์นี้ขนาด %1$s MB</string>
-  <string name="morphe_music_lyrics_clear_cache_done">ล้างแล้ว %1$s MB</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">ลบเนื้อเพลงขนาด %s MB ที่เก็บไว้ในอุปกรณ์นี้</string>
+  <string name="morphe_music_lyrics_clear_cache_done">ล้างข้อมูลแล้ว %s MB</string>
   <string name="morphe_music_token_dialog_get_token">รับโทเค็น</string>
   <string name="morphe_music_apple_music_token_title">โทเค็นผู้ใช้สื่อ Apple Music</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"วางคุกกี้ media-user-token จาก music.apple.com
@@ -512,10 +652,10 @@ Second \"item\" text"</string>
 1. ลงชื่อเข้าใช้ที่ music.apple.com ในฐานะสมาชิก
 2. เปิด DevTools → Application → Cookies → music.apple.com
 3. คัดลอกค่าของ \"media-user-token\""</string>
-  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token […] อีกครั้ง</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: บันทึก media-user-token แล้ว</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: ล้าง media-user-token แล้ว</string>
   <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: media-user-token ไม่ถูกต้อง โปรดตรวจสอบและลองอีกครั้ง</string>
-  <string name="morphe_music_spotify_token_title">Spotify […] คัดลอกค่าของ \"sp_dc\"</string>
+  <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"วางคุกกี้ sp_dc จาก Spotify
 
 ขั้นตอน:
@@ -523,10 +663,10 @@ Second \"item\" text"</string>
 2. เปิด DevTools → Application → Cookies → https://open.spotify.com
 3. คัดลอกค่าของ \"sp_dc\""</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: บันทึก sp_dc แล้ว</string>
-  <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc […] หากไม่มี ระบบจะใช้ Lyrically เป็นตัวสำรอง</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify: ล้าง sp_dc แล้ว</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc ไม่ถูกต้อง โปรดตรวจสอบและลองอีกครั้ง</string>
   <string name="morphe_music_apple_token_optional_hint">โทเค็นของ Apple Music เป็นตัวเลือกเสริม หากไม่มีโทเค็นนี้ โปรแกรมจะใช้ Lyrically เป็นตัวสำรอง</string>
-  <string name="morphe_music_deezer_arl_title">Deezer […] คัดลอกค่าของ \"arl\"</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"วางคุกกี้ arl จาก Deezer
 
 ขั้นตอน:
@@ -534,12 +674,12 @@ Second \"item\" text"</string>
 2. เปิด DevTools → Application → Cookies → https://www.deezer.com
 3. คัดลอกค่าของ \"arl\""</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: บันทึก arl แล้ว</string>
-  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl […] อีกครั้ง</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: ล้าง arl แล้ว</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl ไม่ถูกต้อง โปรดตรวจสอบและลองอีกครั้ง</string>
-  <string name="morphe_music_musixmatch_token_title">Musixmatch […] คัดลอกค่าของโทเค็นผู้ใช้</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">เพิ่มโทเค็นเฉพาะเมื่อต้องการใช้บัญชีของคุณเองเท่านั้น โทเค็นจะต้องมาจากแอป Musixmatch Android: โทเค็นที่คัดลอกจาก musixmatch.com เป็นของไคลเอนต์เดสก์ท็อปที่เลิกใช้งานแล้ว และ API จะปฏิเสธโทเค็นเหล่านั้น</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch ทำงานได้โดยไม่ต้องมีโทเค็น ดังนั้นช่องนี้จึงเว้นว่างไว้ได้</string>
-  <string name="morphe_music_musixmatch_token_dialog_hint">ผู้ใช้ […] อีกครั้ง</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">โทเค็นผู้ใช้</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: บันทึกโทเค็นผู้ใช้แล้ว</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: ล้างโทเค็นผู้ใช้แล้ว</string>
   <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: user token ไม่ถูกต้อง โปรดตรวจสอบและลองอีกครั้ง</string>
@@ -569,15 +709,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">อนุญาตเสียงอ่านไม่ใช่ลาตินจากแหล่งเนื้อเพลง; เมื่อปิดอยู่ จะคงไว้เฉพาะตัวอักษรลาติน ตัวอักษรที่มีเครื่องหมายประสม และตัวเลขระดับเสียง</string>
   <string name="morphe_music_lyrics_local_romanization_summary">อ่านแต่ละคำในเนื้อเพลงตามเวลา (การซิงค์คำเปิด); ภาษาเกาหลีไม่จำเป็นต้องดาวน์โหลด; สิบสี่สคริปต์แชร์การดาวน์โหลด CLDR เดียวกัน; ตัวอักษรฮั่นถูกอ่านโดยรายการคำ Rime เมื่อตารางคำครอบคลุมภาษานั้น</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">กำลังดาวน์โหลดพจนานุกรมเสียงอ่าน…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">คำอ่านพร้อมแล้ว (%1$d รายการ)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">คำอ่านพร้อมแล้ว (%s รายการ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">การดาวน์โหลดล้มเหลว - ปิดและเปิดฟีเจอร์นี้ใหม่เพื่อลองอีกครั้ง</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">พจนานุกรมออฟไลน์</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">ภาษาญี่ปุ่น (SudachiDict, ~75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">ตัวอักษรจีนและกวางตุ้ง (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">คำภาษาจีน (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">การถอดรหัสภาษากรีก ไวยาيليةสลาฟ (รวมถึงรัสเซีย ยูเครน บัลแกเรีย เซอร์เบีย เบลารุส มาซิโดเนีย), จอร์เจีย อาร์เมเนียน ฮีบรู อาหรับ อัมฮาริก และซีรีแอค (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">กำลังสร้างคำอ่าน %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">เลือกพจนานุกรมอย่างน้อยหนึ่งรายการ</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">กำลังสร้างคำอ่าน %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">แสดงปุ่มรีเฟรช</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">แตะเพื่อสลับไปยังตัวเลือกเนื้อเพลงถัดไป; กดค้างเพื่อค้นหาเนื้อเพลงตามชื่อเพลงและศิลปิน</string>
   <string name="morphe_music_lyrics_search_dialog_title">ค้นหาเนื้อเพลง</string>
@@ -592,10 +731,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_line_scale_summary">วาดทุกบรรทัดที่ยังไม่ร้องอยู่ในขณะนี้น้อยลงเล็กน้อย โดยทำให้จางลงด้วย</string>
   <string name="morphe_music_lyrics_split_background_title">แสดงเสียงประสานพื้นหลังแยกต่างหาก</string>
   <string name="morphe_music_lyrics_split_background_summary">แยกเสียงร้องพื้นหลังและเสียงประสานออกจากทำนองหลัก ย้ายเสียงร้องพื้นหลังที่เขียนอยู่ในวงเล็บ เช่น \"(Oh) I want you\" ออกจากท่อนร้องหลักไปอยู่ในไลน์ของตัวเองที่มีความดังน้อยลง</string>
-  <string name="morphe_music_lyrics_hide_played_title">ซ่อนบรรทัดที่เล่นแล้ว […]</string>
+  <string name="morphe_music_lyrics_hide_played_title">ซ่อนเนื้อเพลงที่เล่นแล้ว</string>
   <string name="morphe_music_lyrics_hide_played_summary">ซ่อนบรรทัดเนื้อเพลงที่อยู่เหนือบรรทัดที่กำลังเล่น</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">ซ่อนเนื้อเพลงที่ยังไม่เล่น</string>
-  <string name="morphe_music_lyrics_hide_unplayed_summary">ซ่อนเนื้อเพลงที่อยู่ต่ำกว่าบรรทัดที่กำลังเล่น […] หน้าจอ</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">ซ่อนบรรทัดเนื้อเพลงที่อยู่ใต้บรรทัดที่กำลังเล่น</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">พื้นหลังแบบไดนามิก</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">แสดงพื้นหลังแบบเบลอที่สร้างจากภาพหน้าปกอัลบั้มไว้ด้านหลังเนื้อเพลง</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">เคลื่อนไหวพื้นหลังแบบไดนามิก</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">เคลื่อนย้ายพื้นหลังขณะเล่น และทำให้พื้นหลังเต้นตามจังหวะเพลงหาก YouTube Music ได้รับการอนุญาตให้เข้าถึงไมโครโฟน ปิดเพื่อใช้พื้นหลังแบบนิ่งซึ่งจะช่วยประหยัดแบตเตอรี่มากขึ้น</string>
   <string name="morphe_music_lyrics_mediasession_title">แสดงเนื้อเพลง MediaSession บนหน้าจอล็อก</string>
   <string name="morphe_music_lyrics_mediasession_summary">แสดงบรรทัดปัจจุบันบนหน้าจอล็อค Android Auto และบลูทูธ ต้องการ Android 11 หรือใหม่กว่า</string>
   <string name="morphe_music_lyrics_miniplayer_title">แสดงเนื้อเพลงในมินิเพลเยอร์</string>
@@ -694,7 +837,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">ซ่อนบรรทัดเครดิต</string>
   <string name="morphe_music_lyrics_hide_info_summary">ซ่อนบรรทัดเครดิตที่แสดงใต้เนื้อเพลง</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">สลับคำแปลและการโรมาไนซ์</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON ใส่การแปลงอักษรโรมันหรือถอดรหัสไว้ด้านล่างเนื้อเพลงและการแปลไว้ด้านบน; OFF คงการแปลงอักษรโรมันหรือถอดรหัสไว้ด้านบนและการแปลไว้ด้านล่าง เสียงอ่านที่วางเหนือพยางค์ใดจะเคลื่อนไปกับมัน จากเหนือพยางค์ไปยังใต้พยางค์</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">สลับลำดับการแสดงผลของการแปลและการถอดเสียงโรมันใต้เนื้อเพลง</string>
   <string name="morphe_music_lyrics_force_center_title">จัดข้อความกลางเสมอ</string>
   <string name="morphe_music_lyrics_force_center_summary">ON จัดบรรทัดทุกบรรทัดตรงกลางและละเลยการจัดตำแหน่งต้นฉบับ รวมถึงด้านคู่ дуэт; OFF คงการจัดตำแหน่งตามที่ต้องการโดยเนื้อเพลง</string>
   <string name="morphe_music_lyrics_providers_keep_one">ต้องมีผู้ให้บริการอย่างน้อยหนึ่งรายการที่เปิดอยู่</string>
@@ -702,11 +845,19 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">การแปลงอักษรโรมันหรือถอดรหัส</string>
   <string name="morphe_music_lyrics_romanization_provider_local">พจนานุกรมออฟไลน์</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">รายการคำ Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">พจนานุกรมแบบออฟไลน์</string>
+  <string name="morphe_music_lyrics_ruby_style_title">สคริปต์ Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">ฮิรางานะ (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">คาตาคานะ (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">แสดงปุ่ม Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">แตะเพื่อสลับการแสดงคำอ่าน ruby เหนือเนื้อเพลง; กดค้างเพื่อสลับระหว่าง hiragana และ katakana โดยจะใช้ผู้ให้บริการ ruby ที่เปิดใช้งานตามลำดับที่ระบุไว้</string>
+  <string name="morphe_music_lyrics_ruby_generating">กำลังสร้าง ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">ตรวจจับส่วนด้วย AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">ใช้ก็ต่อเมื่อผู้ให้บริการไม่มีป้ายส่วน เช่น Chorus หรือ Verse ซึ่งโมเดลที่เข้ากันได้กับ OpenAI ของคุณจะตรวจจับ การแก้ไขแถวจะเปิดพรอมต์ของมันด้วย</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL จุดสิ้นสุด API (เช่น https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">เทมเพลตคำสั่ง</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">ตัวแทน: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">ตัวสำรอง: {task}, {language}, {title}, {artist}, {count}, {lines}. ส่วนที่ไม่รู้จักจะคงไว้ตามที่พิมพ์</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">บันทึกคำสั่งแล้ว</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">บันทึก Prompt แล้ว แต่จุดปลายทาง AI ยังใช้งานไม่ได้ โปรดกำหนดค่าภายใต้การตั้งค่า AI ก่อน</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">รีเซ็ตคำสั่งแล้ว</string>
@@ -716,14 +867,17 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">การตั้งค่าไม่ครบถ้วนหรือถูกปฏิเสธโดยผู้ให้บริการ</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">กำลังตรวจสอบการเชื่อมต่อ…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: เชื่อมต่อแล้ว! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: การเชื่อมต่อล้มเหลว ตรวจสอบการตั้งค่า</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: การเชื่อมต่อล้มเหลว โปรดตรวจสอบการตั้งค่า</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">ป้อนคีย์ API ก่อน</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">ทดสอบการเชื่อมต่อ</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">กำลังดึงข้อมูลโมเดล…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">ดึงข้อมูลโมเดล</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">เลือกโมเดล</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">ดึงข้อมูลโมเดลล้มเหลว โปรดตรวจสอบ API key หรือการเชื่อมต่อ</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">พรอมต์</string>
   <string name="morphe_music_lyrics_ai_config_model_label">โมเดล</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Base URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">พรีเซ็ตบริการ</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">เลือกบริการ</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API key (ไม่บังคับ)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">ส่วนขยายของ request body (JSON ไม่บังคับ)</string>

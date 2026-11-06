@@ -19,16 +19,18 @@ import com.google.protobuf.MessageLite;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.patches.DownloadMode;
+import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
-import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
 import app.morphe.extension.youtube.innertube.Offline.ButtonCommand;
 import app.morphe.extension.youtube.innertube.Offline.DownloadButtonColor;
 import app.morphe.extension.youtube.innertube.Offline.DownloadButtonLayout;
@@ -38,6 +40,9 @@ import app.morphe.extension.youtube.innertube.Offline.EntityKey;
 import app.morphe.extension.youtube.innertube.Offline.FlexibleAction;
 import app.morphe.extension.youtube.innertube.Offline.FlexibleActionsRow;
 import app.morphe.extension.youtube.innertube.Offline.FlexibleActionsViewModel;
+import app.morphe.extension.youtube.innertube.Offline.OfflineCaptionTrack;
+import app.morphe.extension.youtube.innertube.Offline.OfflineCaptionTracklist;
+import app.morphe.extension.youtube.innertube.Offline.OfflineCaptions;
 import app.morphe.extension.youtube.innertube.Offline.OfflineCommand;
 import app.morphe.extension.youtube.innertube.Offline.OfflineDownloadAction;
 import app.morphe.extension.youtube.innertube.Offline.OfflineDownloadActionCommand;
@@ -105,6 +110,19 @@ public final class InAppDownloadsPatch {
      * Opus audio is not saved, the other audio and all video formats are.
      */
     private static final String UNSAVABLE_AUDIO_MIME_TYPE_PREFIX = "audio/webm";
+
+    /**
+     * Format of the caption urls of the app. The caption urls of visionOS have no format, and the server
+     * then answers with a legacy format whose text is escaped twice, so the saved captions show
+     * entities such as {@code &#39;} instead of an apostrophe.
+     * The format is not a signed parameter, so the url stays valid.
+     */
+    private static final String CAPTION_URL_FORMAT = "&fmt=srv3";
+
+    /**
+     * Key of the interaction logger, in the context a command is run with.
+     */
+    private static final String INTERACTION_LOGGER_KEY = "com.google.android.libraries.youtube.logging.interaction_logger";
 
     /**
      * Name of the template of the page headers, such as the header of a playlist page.
@@ -325,14 +343,20 @@ public final class InAppDownloadsPatch {
             OfflinePlayerResponse.Builder builder = OfflinePlayerResponse.parseFrom(streams.streamingData()).toBuilder();
             builder.setStreamingData(savableStreamingData(builder.getStreamingData()))
                     .setOfflineState(playableOfflineState(original.getOfflineState().getToken()));
+            if (builder.hasCaptions()) {
+                builder.setCaptions(srv3Captions(builder.getCaptions()));
+            }
 
-            // Without the ExoPlayer config the app only looks at the progressive formats, which are not savable.
+            // Without the ExoPlayer config the app only looks at the progressive formats, which are not savable,
+            // and the playback speed menu is unavailable.
             // The player config of the app's own response fits the device, so it's kept if there is one.
             OfflinePlayerConfig playerConfig = original.hasPlayerConfig()
                     ? original.getPlayerConfig()
                     : builder.getPlayerConfig();
             builder.setPlayerConfig(playerConfig.toBuilder().setExoPlayerConfig(
-                    playerConfig.getExoPlayerConfig().toBuilder().setUseExoPlayer(true)));
+                    playerConfig.getExoPlayerConfig().toBuilder()
+                            .setUseExoPlayer(true)
+                            .setEnableVariableSpeedPlayback(true)));
 
             SponsorBlockOfflineStorage.fetchAndSaveSegments(videoId);
 
@@ -517,6 +541,29 @@ public final class InAppDownloadsPatch {
     }
 
     /**
+     * Saves a video the same as the Download button of the app, for videos that have no such button.
+     * Must be called from the main thread.
+     */
+    public static void saveVideo(String videoId) {
+        Logger.printDebug(() -> "Saving video: " + videoId);
+        // If the formats of the video are loaded first, the command logs to the interaction logger
+        // without checking it is set.
+        Map<String, Object> context = new HashMap<>();
+        context.put(INTERACTION_LOGGER_KEY, getNoOpInteractionLogger());
+        if (!CommandRouterPatch.executeCommand(saveVideoCommand(videoId, List.of()).toByteArray(), context)) {
+            Logger.printException(() -> "Could not save the video, no activity is shown: " + videoId);
+        }
+    }
+
+    /**
+     * @return The interaction logger of the app that logs nothing.
+     */
+    @Nullable
+    private static Object getNoOpInteractionLogger() {
+        return null; // Modified during patching.
+    }
+
+    /**
      * @return A command of the offline video endpoint that saves the video with the formats.
      */
     private static OfflineCommand saveVideoCommand(String videoId, List<OfflineFormat> formats) {
@@ -613,6 +660,16 @@ public final class InAppDownloadsPatch {
             }
         }
         return builder.build();
+    }
+
+    private static OfflineCaptions srv3Captions(OfflineCaptions captions) {
+        OfflineCaptionTracklist.Builder tracklist = captions.getPlayerCaptionsTracklistRenderer().toBuilder();
+        for (int i = 0, count = tracklist.getCaptionTracksCount(); i < count; i++) {
+            OfflineCaptionTrack track = tracklist.getCaptionTracks(i);
+            String baseUrl = track.getBaseUrl().replaceAll("&fmt=[^&]*", "") + CAPTION_URL_FORMAT;
+            tracklist.setCaptionTracks(i, track.toBuilder().setBaseUrl(baseUrl));
+        }
+        return captions.toBuilder().setPlayerCaptionsTracklistRenderer(tracklist).build();
     }
 
     private static boolean isSavableMimeType(String mimeType) {

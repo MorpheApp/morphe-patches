@@ -9,8 +9,8 @@ package app.morphe.patches.youtube.video.delay
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.resourceXml
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
@@ -41,7 +41,7 @@ private const val RECEIVER_CLASS_NAME =
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/VideoDelayDialogButton;"
 
-private val videoDelayResourcePatch = resourcePatch {
+private val videoDelayResourcePatch = patch {
     dependsOn(legacyPlayerControlsPatch)
 
     execute {
@@ -52,27 +52,22 @@ private val videoDelayResourcePatch = resourcePatch {
             ResourceGroup("drawable", "morphe_ic_video_delay.xml")
         )
 
-        document("AndroidManifest.xml").use { document ->
-            val receiver = document.createElement("receiver").apply {
+        resourceXml("AndroidManifest.xml").use { manifest ->
+            manifest.elements("application").first().appendChild("receiver") {
                 setAttribute("android:name", RECEIVER_CLASS_NAME)
                 setAttribute("android:exported", "true")
-                appendChild(
-                    document.createElement("intent-filter").apply {
-                        appendChild(
-                            document.createElement("action").apply {
-                                setAttribute("android:name", "app.morphe.extension.youtube.SET_VIDEO_DELAY")
-                            }
-                        )
+                appendChild("intent-filter") {
+                    appendChild("action") {
+                        setAttribute("android:name", "app.morphe.extension.youtube.SET_VIDEO_DELAY")
                     }
-                )
+                }
             }
-            document.getElementsByTagName("application").item(0).appendChild(receiver)
         }
     }
 }
 
 @Suppress("unused")
-val videoDelayPatch = bytecodePatch(
+val videoDelayPatch = patch(
     name = "Video delay",
     description = "Adds an option to delay the video, to keep it in sync with laggy Bluetooth audio."
 ) {

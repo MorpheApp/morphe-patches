@@ -8,6 +8,8 @@
 package app.morphe.patches.youtube.misc.litho.rendernext
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -16,8 +18,6 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val RenderNextFlagLiteral = 45661418L
 
@@ -72,29 +72,29 @@ internal object RenderNextEnablementCheckFingerprint : Fingerprint(
  * Callers of the enablement check, that decide if an element is RenderNext.
  * The first boolean they read is the RenderNext field of the element config, set by the server.
  */
-internal fun getRenderNextConfigFieldFingerprint(enablementCheck: MethodReference) = object : Fingerprint(
+internal object RenderNextConfigFieldFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_BOOLEAN,
             type = "Z"
         ),
-        methodCall(reference = enablementCheck),
+        methodCall(reference = { RenderNextEnablementCheckFingerprint.method }),
         methodCall(name = "toBuilder")
     )
-) {}
+)
 
 /**
  * Reads the RenderNext field of the element config.
  */
-internal fun getRenderNextConfigFieldReadFingerprint(configField: FieldReference) = object : Fingerprint(
+internal object RenderNextConfigFieldReadFingerprint : Fingerprint(
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_BOOLEAN,
-            reference = configField
+            reference = { RenderNextConfigFieldFingerprint.instructionMatches.first().fieldReference }
         )
     )
-) {}
+)
 
 /**
  * Checks if a component identifier is in the comma separated list of the flag 45661551
@@ -108,5 +108,27 @@ internal object RenderNextTemplateCheckFingerprint : Fingerprint(
         literal(58),
         methodCall(smali = "Ljava/lang/String;->indexOf(I)I"),
         methodCall(smali = "Ljava/lang/String;->substring(II)Ljava/lang/String;"),
+    )
+)
+
+/**
+ * Opens the Home browse with the page fragment if the client flag 1073830434 is enabled, on phones.
+ * The page fragment renders the whole page with RenderNext (ElementsPageHost) when the server sends
+ * the page as an element instead of a section list.
+ */
+internal object PageFragmentRouteFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("L", "Z", "Z", "Z"),
+    filters = listOf(
+        string("top_level_browse_pane"),
+        literal(1073830434L),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("I"),
+            returnType = "Z",
+            location = MatchAfterWithin(5)
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
     )
 )

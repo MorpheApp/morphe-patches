@@ -8,14 +8,12 @@
 package app.morphe.patches.shared.misc.settingsmenu
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefByOrNull
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -30,10 +28,10 @@ internal const val HIDE_MATCHING_METHOD =
 /**
  * Catches async title assignments that skip the tree walk.
  */
-internal fun BytecodePatchContext.injectSettingsMenuFilterHook(extensionClass: String) {
+internal fun injectSettingsMenuFilterHook(extensionClass: String) {
     val setVisible = PreferenceSetVisibleFingerprint.method
     val visibleField = PreferenceSetVisibleFingerprint.let {
-        it.instructionMatches.first().instruction.getReference<FieldReference>()!!
+        it.instructionMatches.first().fieldReference
     }
 
     PreferenceSetTitleFingerprint.method.apply {
@@ -70,14 +68,14 @@ internal fun BytecodePatchContext.injectSettingsMenuFilterHook(extensionClass: S
  * for XML-inflated titles, and private CharSequence fields are widened first because a
  * subclass method on PreferenceGroup cannot access them otherwise.
  */
-internal fun BytecodePatchContext.injectHideMatchingHelper() {
+internal fun injectHideMatchingHelper() {
     val listField = PreferenceGroupGetPreferenceFingerprint.let {
-        it.instructionMatches.last().instruction.getReference<FieldReference>()!!
+        it.instructionMatches.last().fieldReference
     }
     val setVisible = PreferenceSetVisibleFingerprint.method
     // mVisible: guards against duplicate work + drives the self-hide-when-all-children-invisible rule.
     val visibleField = PreferenceSetVisibleFingerprint.let {
-        it.instructionMatches.first().instruction.getReference<FieldReference>()!!
+        it.instructionMatches.first().fieldReference
     }
 
     val preferenceClass = mutableClassDefByOrNull(PREFERENCE_CLASS)

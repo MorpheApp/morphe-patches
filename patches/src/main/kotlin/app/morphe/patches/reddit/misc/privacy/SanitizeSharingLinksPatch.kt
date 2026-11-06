@@ -8,7 +8,7 @@
 package app.morphe.patches.reddit.misc.privacy
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
@@ -17,7 +17,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/SanitizeSharingLinksPatch;"
 
 @Suppress("unused")
-val sanitizeSharingLinksPatch = bytecodePatch(
+val sanitizeSharingLinksPatch = patch(
     name = "Sanitize sharing links",
     description = "Adds an option to sanitize sharing links by removing tracking query parameters."
 ) {

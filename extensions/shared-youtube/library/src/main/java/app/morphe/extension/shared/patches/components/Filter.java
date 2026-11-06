@@ -69,7 +69,8 @@ public abstract class Filter {
      * Default implementation is to always filter the matched component and log the action.
      * Subclasses can perform additional or different checks if needed.
      * <p>
-     * Method is called off the main thread.
+     * Method is called off the main thread. Implementations do not need to catch
+     * unexpected exceptions and the calling code handles that.
      *
      * @param identifier    Litho identifier.
      * @param accessibility Accessibility string, or an empty string if not present for the component.

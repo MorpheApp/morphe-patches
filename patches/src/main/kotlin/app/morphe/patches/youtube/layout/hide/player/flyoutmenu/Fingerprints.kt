@@ -34,6 +34,39 @@ internal object CaptionsOldBottomSheetLayoutInflaterFingerprint : Fingerprint(
     )
 )
 
+/**
+ * 21.44+ sets up the header of [CaptionsOldBottomSheetFooterFingerprint] in a static method.
+ */
+internal object CaptionsOldBottomSheetHeaderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;", "Landroid/content/Context;", "L", "L"),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "bottom_sheet_title"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "findViewById",
+            location = MatchAfterWithin(3)
+        )
+    )
+)
+
+/**
+ * 21.44+ captions bottom sheet, without the header of [CaptionsOldBottomSheetHeaderFingerprint].
+ */
+internal object CaptionsOldBottomSheetFooterFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf("Landroid/view/LayoutInflater;", "Landroid/view/ViewGroup;", "Landroid/os/Bundle;"),
+    filters = listOf(
+        resourceLiteral(ResourceType.STRING, "subtitle_menu_settings_footer_info"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/widget/ListView;->addFooterView(Landroid/view/View;Ljava/lang/Object;Z)V"
+        )
+    )
+)
+
 internal object QualityOldBottomSheetLayoutInflaterFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",

@@ -1,9 +1,10 @@
 package app.morphe.patches.shared.misc.settings
 
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.ResourcePatchContext
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceFile
+import app.morphe.patcher.patch.resourceXml
+import app.morphe.patcher.patch.resourceXmlOrNull
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
@@ -11,13 +12,9 @@ import app.morphe.patches.shared.layout.branding.addLicensePatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.morphe.patcher.xml.XmlElement
 import app.morphe.util.ResourceGroup
-import app.morphe.util.childElementsSequence
 import app.morphe.util.copyResources
-import app.morphe.util.forEachChildElement
-import app.morphe.util.getNode
-import app.morphe.util.insertFirst
-import org.w3c.dom.Node
 
 const val MORPHE_SETTINGS_INTENT = "morphe_settings_intent"
 
@@ -34,7 +31,7 @@ fun overrideThemeColors(lightThemeColorString: String?, darkThemeColorString: St
     darkThemeColor = darkThemeColorString
 }
 
-private val settingsColorPatch = bytecodePatch {
+private val settingsColorPatch = patch {
     finalize {
         lightThemeColor?.let { ThemeLightColorResourceNameFingerprint.method.returnEarly(it) }
         darkThemeColor?.let { ThemeDarkColorResourceNameFingerprint.method.returnEarly(it) }
@@ -51,7 +48,7 @@ private val settingsColorPatch = bytecodePatch {
 fun settingsPatch (
     rootPreferences: List<Pair<BasePreference, String>>? = null,
     preferences: Set<BasePreference>,
-) = resourcePatch {
+) = patch {
     dependsOn(
         addResourcesPatch,
         settingsColorPatch,
@@ -100,11 +97,8 @@ fun settingsPatch (
     }
 
     finalize {
-        fun Node.addPreference(preference: BasePreference) {
-            preference.serialize(ownerDocument) { _ ->
-            }.let { preferenceNode ->
-                insertFirst(preferenceNode)
-            }
+        fun XmlElement.addPreference(preference: BasePreference) {
+            preference.serialize(this, 0) { _ -> }
         }
 
         // Add the root preference to an existing fragment if needed.
@@ -112,11 +106,8 @@ fun settingsPatch (
             var modified = false
 
             it.forEach { (intent, fileName) ->
-                val preferenceFileName = "res/xml/$fileName.xml"
-                if (get(preferenceFileName).exists()) {
-                    document(preferenceFileName).use { document ->
-                        document.getNode("PreferenceScreen").addPreference(intent)
-                    }
+                resourceXmlOrNull("res/xml/$fileName.xml")?.use { xml ->
+                    xml.elements("PreferenceScreen").first().addPreference(intent)
                     modified = true
                 }
             }
@@ -125,9 +116,9 @@ fun settingsPatch (
         }
 
         // Add all preferences to the Morphe fragment.
-        document("res/xml/morphe_prefs_icons.xml").use { document ->
-            val morphePreferenceScreenNode = document.getNode("PreferenceScreen")
-            preferences.forEach { morphePreferenceScreenNode.addPreference(it) }
+        resourceXml("res/xml/morphe_prefs_icons.xml").use { xml ->
+            val morphePreferenceScreen = xml.elements("PreferenceScreen").first()
+            preferences.forEach { morphePreferenceScreen.addPreference(it) }
         }
 
         // Because the icon preferences require declaring a layout resource,
@@ -152,16 +143,16 @@ fun settingsPatch (
 
         // Bold icons.
         removeIconsAndLayout(preferences, false)
-        document("res/xml/morphe_prefs_icons_bold.xml").use { document ->
-            val morphePreferenceScreenNode = document.getNode("PreferenceScreen")
-            preferences.forEach { morphePreferenceScreenNode.addPreference(it) }
+        resourceXml("res/xml/morphe_prefs_icons_bold.xml").use { xml ->
+            val morphePreferenceScreen = xml.elements("PreferenceScreen").first()
+            preferences.forEach { morphePreferenceScreen.addPreference(it) }
         }
 
         removeIconsAndLayout(preferences, true)
 
-        document("res/xml/morphe_prefs.xml").use { document ->
-            val morphePreferenceScreenNode = document.getNode("PreferenceScreen")
-            preferences.forEach { morphePreferenceScreenNode.addPreference(it) }
+        resourceXml("res/xml/morphe_prefs.xml").use { xml ->
+            val morphePreferenceScreen = xml.elements("PreferenceScreen").first()
+            preferences.forEach { morphePreferenceScreen.addPreference(it) }
         }
 
         // Add-on bundles are loaded in their own class loader and cannot use the preference
@@ -191,7 +182,7 @@ const val ADD_ON_PREFERENCES_FILE_PATH = "morphe_addon_prefs.xml"
 private class AddOnPreferences(
     val screenKey: String?,
     val afterKey: String?,
-    val preferences: List<Node>,
+    val preferences: List<XmlElement>,
 )
 
 /**
@@ -217,61 +208,45 @@ private class AddOnPreferences(
  * by key, so an add-on that wants to stay next to a preference must also use a key that sorts next
  * to it. Icons are not supported, since the same nodes are used for all preference file variants.
  */
-context(context: ResourcePatchContext)
 private fun mergeAddOnPreferences() {
-    val declarationFile = context[ADD_ON_PREFERENCES_FILE_PATH]
-    if (!declarationFile.exists()) return
-
-    val addOnPreferences = mutableListOf<AddOnPreferences>()
-
-    context.document(ADD_ON_PREFERENCES_FILE_PATH).use { declarations ->
-        val declarationsNode = declarations.getNode("morphe-add-on-preferences")
+    resourceXmlOrNull(ADD_ON_PREFERENCES_FILE_PATH)?.use { declarations ->
+        val declarationsNode = declarations.root.takeIf { it.tag == "morphe-add-on-preferences" }
             ?: throw PatchException("Invalid add-on preference declaration: $ADD_ON_PREFERENCES_FILE_PATH")
 
-        declarationsNode.forEachChildElement { screen ->
-            addOnPreferences += AddOnPreferences(
-                screenKey = screen.getAttribute("key").takeIf { it.isNotEmpty() },
-                afterKey = screen.getAttribute("after").takeIf { it.isNotEmpty() },
-                preferences = screen.childElementsSequence().toList(),
+        val addOnPreferences = declarationsNode.children.map { screen ->
+            AddOnPreferences(
+                screenKey = screen.attribute("key")?.takeIf { it.isNotEmpty() },
+                afterKey = screen.attribute("after")?.takeIf { it.isNotEmpty() },
+                preferences = screen.children,
             )
         }
-    }
 
-    if (addOnPreferences.isEmpty()) {
-        declarationFile.delete()
-        return
-    }
+        if (addOnPreferences.isNotEmpty()) {
+            arrayOf(
+                "res/xml/morphe_prefs.xml",
+                "res/xml/morphe_prefs_icons.xml",
+                "res/xml/morphe_prefs_icons_bold.xml"
+            ).forEach { preferenceFilePath ->
+                resourceXmlOrNull(preferenceFilePath)?.use { xml ->
+                    val rootNode = xml.elements("PreferenceScreen").first()
 
-    arrayOf(
-        "res/xml/morphe_prefs.xml",
-        "res/xml/morphe_prefs_icons.xml",
-        "res/xml/morphe_prefs_icons_bold.xml"
-    ).forEach { preferenceFilePath ->
-        if (!context[preferenceFilePath].exists()) return@forEach
+                    addOnPreferences.forEach { addOn ->
+                        val siblingNode = addOn.afterKey?.let { rootNode.findPreferenceByKey(it) }
 
-        context.document(preferenceFilePath).use { document ->
-            val rootNode = document.getNode("PreferenceScreen")
+                        if (siblingNode != null) {
+                            val parent = siblingNode.parent!!
+                            var index = siblingNode.index
+                            addOn.preferences.forEach { preference ->
+                                parent.insertCopy(++index, preference)
+                            }
+                        } else {
+                            val screenNode = addOn.screenKey?.let { rootNode.findPreferenceByKey(it) }
+                                ?: rootNode
 
-            addOnPreferences.forEach { addOn ->
-                val siblingNode = addOn.afterKey?.let { rootNode.findPreferenceByKey(it) }
-
-                if (siblingNode != null) {
-                    var insertAfterNode: Node = siblingNode
-
-                    addOn.preferences.forEach { preference ->
-                        val preferenceNode = document.importNode(preference, true)
-                        siblingNode.parentNode.insertBefore(
-                            preferenceNode,
-                            insertAfterNode.nextSibling // Null appends to the end.
-                        )
-                        insertAfterNode = preferenceNode
-                    }
-                } else {
-                    val screenNode = addOn.screenKey?.let { rootNode.findPreferenceByKey(it) }
-                        ?: rootNode
-
-                    addOn.preferences.forEach { preference ->
-                        screenNode.appendChild(document.importNode(preference, true))
+                            addOn.preferences.forEach { preference ->
+                                screenNode.appendCopy(preference)
+                            }
+                        }
                     }
                 }
             }
@@ -279,16 +254,16 @@ private fun mergeAddOnPreferences() {
     }
 
     // The declaration file itself is not part of the app.
-    declarationFile.delete()
+    resourceFile(ADD_ON_PREFERENCES_FILE_PATH).delete()
 }
 
 /**
- * @return The preference node with the given key,
+ * @return The preference element with the given key,
  *         or null if no preference with that key exists.
  */
-private fun Node.findPreferenceByKey(key: String): Node? {
-    childElementsSequence().forEach { element ->
-        val elementKey = element.getAttribute("android:key")
+private fun XmlElement.findPreferenceByKey(key: String): XmlElement? {
+    children.forEach { element ->
+        val elementKey = element.attribute("android:key").orEmpty()
         // Screens and categories that are sorted have the sort type appended to their key.
         if (elementKey == key || elementKey.startsWith("${key}_sort_by")) {
             return element

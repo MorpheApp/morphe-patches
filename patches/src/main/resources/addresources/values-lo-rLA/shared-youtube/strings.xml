@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">ແອນິເມຊັນຕອນເລີ່ມຕົ້ນ</string>
   <string name="morphe_splash_screen_style_entry_1">ປິດການໃຊ້ງານ</string>
   <string name="morphe_splash_screen_style_entry_2">ສີ</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe ແບບມີສີ</string>
   <string name="morphe_splash_screen_style_entry_4">ໂທນສີຂາວດຳ</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe ແບບສີຂາວດຳ</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">ເນັ້ນການຕັ້ງຄ່າໃໝ່</string>
+  <string name="morphe_settings_new_indicator_days_summary">ຈຳນວນມື້ທີ່ຈຸດຈະສະແດງຂ້າງໆການຕັ້ງຄ່າ ແລະ ຕົວເລືອກທີ່ເພີ່ມເຂົ້າມາໂດຍການອັບເດດ</string>
+  <string name="morphe_settings_new_indicator_days_off">ປິດ</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">ເລີ່ມຕົ້ນລະບົບໃໝ່ເພື່ອຕັ້ງຄ່າໃຫ້ສຳເລັດ</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

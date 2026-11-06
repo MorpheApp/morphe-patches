@@ -16,7 +16,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -44,7 +44,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/EnableS
 private const val CROSSFADE_MANAGER_CLASS = "Lapp/morphe/extension/music/patches/CrossfadePatch;"
 
 @Suppress("unused")
-val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
+val enableSwipeToDismissMiniplayerPatch = patch(
     name = "Enable swipe to dismiss miniplayer",
     description = "Adds an option to enable dismissing the miniplayer by swiping down on it."
 ) {
@@ -65,8 +65,7 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
 
         val interactionLoggingSwipeField = InteractionLoggingEnumFingerprint
             .instructionMatches[1]
-            .instruction
-            .getReference<FieldReference>()!!
+            .fieldReference
 
         val widgetReferences = mutableListOf<Reference>()
         val widgetInstructionMatches = MusicActivityWidgetFingerprint.instructionMatches
@@ -226,8 +225,7 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
             val motionField = PlayerPageBehaviorInterceptTouchEventFingerprint
                 .instructionMatches
                 .first()
-                .instruction
-                .getReference<FieldReference>()!!
+                .fieldReference
 
             listOf(
                 PlayerPageBehaviorInterceptTouchEventFingerprint,

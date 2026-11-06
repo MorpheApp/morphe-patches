@@ -2,7 +2,7 @@ package app.morphe.patches.youtube.misc.playercontrols
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
@@ -12,7 +12,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_PLAYER_CONTROLS_VISIBILITY_HOOK_CLASS =
     "Lapp/morphe/extension/youtube/patches/PlayerControlsVisibilityHookPatch;"
 
-val playerControlsOverlayVisibilityPatch = bytecodePatch {
+val playerControlsOverlayVisibilityPatch = patch {
     dependsOn(sharedExtensionPatch)
 
     execute {

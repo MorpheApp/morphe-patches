@@ -150,6 +150,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_previous">पिछला</string>
   <string name="morphe_music_downloads_next">अगला</string>
   <string name="morphe_music_downloads_pause">रोकें</string>
+  <string name="morphe_music_downloads_shuffle">शफल</string>
+  <string name="morphe_music_downloads_repeat">रिपीट</string>
+  <string name="morphe_music_downloads_minimize">मिनिमाइज़</string>
   <string name="morphe_music_downloads_close">बंद करे</string>
   <string name="morphe_music_downloads_delete">हटाएँ</string>
   <string name="morphe_music_downloads_delete_track">डाउनलोड हटाएँ</string>
@@ -158,6 +161,38 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_track_deleted">डाउनलोड हटा दिया गया</string>
   <string name="morphe_music_downloads_track_delete_failed">डाउनलोड हटाया नहीं जा सका</string>
   <string name="morphe_music_downloads_play_failed">डाउनलोड चलाया नहीं जा सका</string>
+  <string name="morphe_music_downloads_playlists">प्लेलिस्ट</string>
+  <string name="morphe_music_downloads_playlists_section">बनाई गई प्लेलिस्ट (%s)</string>
+  <string name="morphe_music_downloads_playlists_empty">अभी तक कोई स्थानीय प्लेलिस्ट नहीं है</string>
+  <string name="morphe_music_downloads_playlists_hide">प्लेलिस्ट छुपाएं ▲</string>
+  <string name="morphe_music_downloads_playlist_new">+ नई प्लेलिस्ट</string>
+  <string name="morphe_music_downloads_playlist_new_button">नई प्लेलिस्ट</string>
+  <string name="morphe_music_downloads_playlist_selected">चयनित (%s)</string>
+  <string name="morphe_music_downloads_playlist_select_first">पहले गाने चुनें</string>
+  <string name="morphe_music_downloads_playlist_clear_selection">चयन साफ़ करें</string>
+  <string name="morphe_music_downloads_playlist_create">प्लेलिस्ट बनाएं</string>
+  <string name="morphe_music_downloads_playlist_create_button">बनाएं</string>
+  <string name="morphe_music_downloads_playlist_add">प्लेलिस्ट में जोड़ें</string>
+  <string name="morphe_music_downloads_playlist_added">%s में जोड़ दिया गया</string>
+  <string name="morphe_music_downloads_playlist_name_hint">प्लेलिस्ट का नाम</string>
+  <string name="morphe_music_downloads_playlist_name_empty">प्लेलिस्ट का नाम खाली नहीं हो सकता</string>
+  <string name="morphe_music_downloads_playlist_save_failed">प्लेलिस्ट सहेजी नहीं जा सकी</string>
+  <string name="morphe_music_downloads_playlist_track_count">%s ट्रैक</string>
+  <string name="morphe_music_downloads_playlist_track_count_one">1 ट्रैक</string>
+  <string name="morphe_music_downloads_playlist_no_tracks">इस प्लेलिस्ट में कोई ट्रैक नहीं है</string>
+  <string name="morphe_music_downloads_playlist_play">प्लेलिस्ट चलाएँ</string>
+  <string name="morphe_music_downloads_playlist_play_all">सभी चलाएँ</string>
+  <string name="morphe_music_downloads_playlist_rename">नाम बदलें</string>
+  <string name="morphe_music_downloads_playlist_rename_title">प्लेलिस्ट का नाम बदलें</string>
+  <string name="morphe_music_downloads_playlist_save">सेव करें</string>
+  <string name="morphe_music_downloads_playlist_delete">प्लेलिस्ट हटाएँ</string>
+  <string name="morphe_music_downloads_playlist_delete_title">क्या प्लेलिस्ट हटाना चाहते हैं?</string>
+  <string name="morphe_music_downloads_playlist_delete_message">%s हटा दिया जाएगा। डाउनलोड किए गए गाने सुरक्षित रहेंगे</string>
+  <string name="morphe_music_downloads_playlist_deleted">प्लेलिस्ट हटा दी गई</string>
+  <string name="morphe_music_downloads_playlist_remove_track">प्लेलिस्ट से हटाएँ</string>
+  <string name="morphe_music_downloads_playlist_drag_track">क्रम बदलने के लिए खींचें</string>
+  <string name="morphe_music_downloads_playlist_reorder_hint">%s • पुनर्व्यवस्थित करने के लिए ड्रैग हैंडल का उपयोग करें</string>
+  <string name="morphe_music_downloads_playlist_reorder_done">हो गया</string>
   <string name="morphe_music_downloads_notification_channel">ऑडियो डाउनलोड</string>
   <string name="morphe_music_downloads_playback_channel">ऑफ़लाइन प्लेबैक</string>
   <string name="morphe_music_downloads_unknown_track">डाउनलोड करने के लिए ट्रैक की पहचान नहीं की जा सकी</string>
@@ -168,6 +203,28 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">%s%% डाउनलोड हो रहा है</string>
   <string name="morphe_music_downloads_complete">डाउनलोड पूरा हुआ</string>
   <string name="morphe_music_downloads_failed">डाउनलोड विफल</string>
+  <string name="morphe_music_downloads_playlist_download_title">प्लेलिस्ट डाउनलोड</string>
+  <string name="morphe_music_downloads_playlist_download_listing">ट्रैक सूचीबद्ध किए जा रहे हैं…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s सूचीबद्ध किए गए…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">प्लेलिस्ट के ट्रैक सूचीबद्ध नहीं किए जा सके</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">पहले से डाउनलोड किया जा चुका है: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"इस प्लेलिस्ट में %1$s हैं, %2$s अभी तक डाउनलोड नहीं हुए हैं।
+
+वे एक-एक करके डाउनलोड किए जाते हैं, जिसमें लंबा समय लग सकता है और लगभग %3$s खाली जगह की आवश्यकता होगी"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">डाउनलोड करें</string>
+  <string name="morphe_music_downloads_playlist_download_progress">%2$s में से ट्रैक %1$s डाउनलोड हो रहा है</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s डाउनलोड किया गया</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s डाउनलोड किए गए, %2$s डाउनलोड नहीं किए जा सके</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">प्लेलिस्ट डाउनलोड पहले से ही जारी है</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">आपका खाता अभी तक ज्ञात नहीं है। कुछ समय बाद पुनः प्रयास करें</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s सूचीबद्ध किए गए, सभी पहले से ही डाउनलोड किए जा चुके हैं</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">प्लेलिस्ट का केवल एक हिस्सा ही सूचीबद्ध किया जा सका। बाकी के लिए बाद में फिर से डाउनलोड पर टैप करें</string>
+  <string name="morphe_music_downloads_playlist_download_started">बैकग्राउंड में %s डाउनलोड किया जा रहा है</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">कोई नेटवर्क कनेक्शन नहीं है</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">नेटवर्क का इंतज़ार किया जा रहा है…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s में से %1$s के बाद रुक गया। जारी रखने के लिए फिर से डाउनलोड पर टैप करें</string>
+  <string name="morphe_music_downloads_mark_title">डाउनलोड किए गए गानों को चिह्नित करें</string>
+  <string name="morphe_music_downloads_mark_summary">पहले से डाउनलोड किए गए गाने प्लेलिस्ट, एल्बम और खोज परिणामों में अपने विवरण से पहले एक निशान दिखाते हैं</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">इसके बारे में</string>
@@ -206,6 +263,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">समुदाय दिशानिर्देश छुपाएं</string>
   <string name="morphe_music_hide_comments_context_title">संदेश छुपाएं</string>
   <string name="morphe_music_hide_comments_emoji_button_title">इमोजी बटन छुपाएं</string>
+  <string name="morphe_music_hide_comments_gif_button_title">GIF बटन छिपाएँ</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_title">GIF और चित्र छिपाएँ</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_summary">कमेंट्स और रिप्लाई से जुड़े GIF और चित्रों को छिपाता है</string>
   <string name="morphe_music_hide_comments_info_button_title">जानकारी बटन छुपाएं</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">टाइमस्टैम्प बटन छुपाएं</string>
   <!-- interaction.crossfade.crossfadePatch -->
@@ -285,6 +345,43 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">चुने हुए ट्रैक को कतार में जोड़ें</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">कतार में जोड़ा गया</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">प्लेलिस्ट टैग</string>
+  <string name="morphe_music_playlist_tags_screen_summary">प्लेलिस्ट को टैग करें और लाइब्रेरी को टैग द्वारा फ़िल्टर करें</string>
+  <string name="morphe_music_playlist_tags_title">प्लेलिस्ट टैग सक्षम करें</string>
+  <string name="morphe_music_playlist_tags_summary">प्लेलिस्ट के मेनू में एक टैग आइटम जोड़ता है, और लाइब्रेरी के सॉर्ट बटन के बगल में एक टैग फ़िल्टर बटन जोड़ता है</string>
+  <string name="morphe_music_playlist_tags_manage_title">प्लेलिस्ट टैग प्रबंधित करें</string>
+  <string name="morphe_music_playlist_tags_manage_summary">टैग बनाएं, उनका नाम बदलें और उन्हें हटाएं, और अपनी लाइब्रेरी में दिखने वाली प्लेलिस्ट को टैग करें</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">टैग</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">कोई टैग नहीं</string>
+  <string name="morphe_music_playlist_tags_filter_button">टैग</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">टैग: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">टैग (%s छिपे हुए)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">%s के लिए टैग</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">नया टैग</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 प्लेलिस्ट</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s प्लेलिस्ट</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">%s नाम का टैग पहले से मौजूद है</string>
+  <string name="morphe_music_playlist_tags_filter_title">टैग द्वारा फ़िल्टर करें</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">केवल दिखाएँ</string>
+  <string name="morphe_music_playlist_tags_filter_all">सभी प्लेलिस्ट</string>
+  <string name="morphe_music_playlist_tags_filter_visible">दृश्यमान टैग</string>
+  <string name="morphe_music_playlist_tags_manage">मैनेज करें</string>
+  <string name="morphe_music_playlist_tags_none">अभी तक कोई टैग नहीं। टैग बनाने के लिए किसी प्लेलिस्ट को देर तक दबाएं और टैग चुनें</string>
+  <string name="morphe_music_playlist_tags_section_tags">टैग</string>
+  <string name="morphe_music_playlist_tags_section_playlists">प्लेलिस्ट</string>
+  <string name="morphe_music_playlist_tags_no_playlists">एक बार लाइब्रेरी खोलें ताकि आपकी प्लेलिस्ट यहाँ दिखाई दें</string>
+  <string name="morphe_music_playlist_tags_new_tag">नया टैग</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">टैग संपादित करें</string>
+  <string name="morphe_music_playlist_tags_rename">नाम बदलें</string>
+  <string name="morphe_music_playlist_tags_delete">हटाएँ</string>
+  <string name="morphe_music_playlist_tags_hidden">छिपा हुआ</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">कास्ट बटन छुपाएं</string>
   <string name="morphe_music_hide_history_button_title">इतिहास बटन छुपाएं</string>
@@ -453,6 +550,49 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_scrobbling_about_summary">"स्क्रोबलिंग स्वचालित रूप से आपके YouTube Music उपयोग को आपके Last.fm या ListenBrainz प्रोफ़ाइल के साथ सिंक करता है
 
 यह सुनिश्चित करने के लिए कि बैकग्राउंड प्लेबैक के दौरान स्क्रोबलिंग सिंक हो, सुनिश्चित करें कि YouTube Music के ऐप बैटरी उपयोग को \"अनियंत्रित\" पर सेट किया गया है।"</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">उन कलाकारों के ट्रैक छोड़ें जिन्हें समुदाय ने AI के रूप में रिपोर्ट किया है</string>
+  <string name="morphe_music_soundproof_show_button_title">SoundProof बटन दिखाएं</string>
+  <string name="morphe_music_soundproof_show_button_summary">वर्तमान कलाकार के लिए समुदाय के वोट देखने और कास्ट करने के लिए प्लेयर के टॉप बार में एक बटन दिखाता है</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">AI कलाकारों को छोड़ें</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">उन ट्रैक्स को अपने आप स्किप करता है जिनके आर्टिस्ट नीचे दिए गए AI थ्रेशोल्ड तक पहुँचते हैं</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">स्किप नोटिफ़िकेशन दिखाएँ</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">ट्रैक के अपने आप स्किप होने पर नोटिफ़िकेशन दिखाता है</string>
+  <string name="morphe_music_soundproof_threshold_title">डिटेक्शन थ्रेशोल्ड</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">न्यूनतम AI वोट</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">एक आर्टिस्ट को AI तब माना जाता है जब उसके वोटों का कम से कम यह हिस्सा AI कहता है</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">वोटों की न्यूनतम संख्या</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">इससे कम वोट वाले आर्टिस्ट कभी स्किप नहीं किए जाते</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">%1$s को छोड़ दिया गया (%2$s%% AI)</string>
+  <string name="morphe_music_soundproof_button_description">इस कलाकार के लिए SoundProof वोट</string>
+  <string name="morphe_music_soundproof_sheet_verified">सत्यापित</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% मानव</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 वोट</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s वोट</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s मानव</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s AI</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">इस कलाकार के लिए अभी तक कोई वोट नहीं मिला है</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">SoundProof डेटाबेस अभी उपलब्ध नहीं है</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">इसे बैकग्राउंड में डाउनलोड किया जा रहा है। जब तक यह उपलब्ध नहीं हो जाता, तब तक कोई भी ट्रैक नहीं छोड़ा जाएगा।</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">SoundProof डेटाबेस से समुदाय के वोट</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">मानव</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">वोटिंग बंद है: एक SoundProof मॉडरेटर ने इस कलाकार की जांच की है</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">SoundProof से संपर्क नहीं हो सका। वोट दैनिक डेटाबेस से हैं, और वोटिंग उपलब्ध नहीं है।</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">SoundProof वोट विफल रहा</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"कलाकार का डेटा SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) से आता है, जिसे दिन में एक बार डाउनलोड किया जाता है। स्किप करने पर आप जो बजाते हैं उसके बारे में कुछ भी नहीं भेजा जाता है। SoundProof शीट खोलने पर ताज़ा वोट दिखाने और वोट करने के लिए वर्तमान कलाकार का नाम SoundProof सर्वर पर भेजा जाता है। सर्वर IP एड्रेस के ज़रिए वोटरों के बीच अंतर करता है, इसलिए आपका वोट दूसरे नेटवर्क पर अलग दिख सकता है।
+
+डेटाबेस ODC ओपन डेटाबेस लाइसेंस (ODbL) के तहत लाइसेंस प्राप्त है। xoundbyte द्वारा Soul Over AI की प्रविष्टियाँ CC BY 4.0 के तहत लाइसेंस प्राप्त हैं। SoundProof या Soul Over AI से संबद्ध या समर्थित नहीं है।"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">तृतीय-पक्ष गीत का उपयोग करें</string>
   <string name="morphe_music_lyrics_enabled_summary">किसी तृतीय-पक्ष सेवा से गीत दिखाता है, जब कोई नहीं मिलता है तो अंतर्निहित गीतों पर वापस चला जाता है</string>
@@ -493,17 +633,17 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_rime_dict_bad_code">कोड दो या तीन अक्षर का होना चाहिए, जैसे hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">पता https:// से शुरू होना चाहिए</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">नाम और पते में ऊर्ध्वाधर बार होना चाहिए</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s का पहले से एक शब्द सारणी है</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s को इनबिल्ट रोमाइज़र द्वारा पढ़ा जाता है और इसमें शब्द सूची नहीं ले सकता</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s के पास पहले से ही एक शब्द तालिका है</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s को अंतर्निहित रोमनइज़र द्वारा पढ़ा जाता है और यह शब्द सूची नहीं ले सकता</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">उपयोग नहीं किया जाता: इस भाषा का अपना उच्चारण पहले से है, इसलिए इसे हटाने के लिए इसे अनटिक करें</string>
-  <string name="morphe_music_lyrics_rime_dict_added">%1$s जोड़ा गया - इसे डाउनलोड करने के लिए टिक करें और \'सहेजें\' पर टैप करें</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%s जोड़ा गया - इसे डाउनलोड करने के लिए इसे टिक करें और सेव पर टैप करें</string>
   <string name="morphe_music_lyrics_rime_dict_ready">शब्द सूची तैयार</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">शब्द सूची तैयार (%1$d प्रविष्टियाँ)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">शब्द सूची पढ़ रही है: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">शब्द सूचियाँ तैयार हैं (%s प्रविष्टियाँ)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">शब्द सूची पढ़ी जा रही है: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">शब्द सूची डाउनलोड विफल - पुनः प्रयास करने के लिए \'सहेजें\' पर दोबारा टैप करें</string>
   <string name="morphe_music_lyrics_clear_cache_title">स्टोर की गई लिरिक्स हटाएं</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">इस उपकरण पर संग्रहीत लिरिक्स के %1$s MB कैश हटाएं</string>
-  <string name="morphe_music_lyrics_clear_cache_done">%1$s MB साफ़ किया गया</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">इस डिवाइस पर रखे गए %s MB लिरिक्स को हटाएं</string>
+  <string name="morphe_music_lyrics_clear_cache_done">%s MB साफ़ किया गया</string>
   <string name="morphe_music_token_dialog_get_token">टोकन प्राप्त करें</string>
   <string name="morphe_music_apple_music_token_title">एप्पल म्यूज़िक मीडिया-उपयोगकर्ता-टोकन</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"music.apple.com से media-user-token कुकी पेस्ट करें
@@ -522,11 +662,11 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
 1. open.spotify.com पर साइन इन करें
 2. DevTools → Application → Cookies → open.spotify.com खोलें
 3. \"sp_dc\" का मान कॉपी करें"</string>
-  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] इसके बिना, Lyrically को फ़ॉलबैक के रूप में उपयोग किया जाएगा।</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc सहेजा गया</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc साफ़ किया गया</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: अमान्य sp_dc - कृपया जांचें और पुनः प्रयास करें</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Music टोकन वैकल्पिक है। इसके बिना, Lyrically का उपयोग फ़ॉलबैक के रूप में किया जाएगा</string>
-  <string name="morphe_music_deezer_arl_title">Deezer […] \"arl\" का मान कॉपी करें</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Deezer से arl कुकी पेस्ट करें।
 
 चरण:
@@ -536,10 +676,10 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl सहेजा गया</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer ARL अमान्य है, पुनः प्रयास करें।</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: अमान्य arl - कृपया जांचें और पुनः प्रयास करें</string>
-  <string name="morphe_music_musixmatch_token_title">Musixmatch […] उपयोगकर्ता टोकन का मान कॉपी करें</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">अपना खाता उपयोग करने के लिए ही टोकन जोड़ें। यह Musixmatch Android ऐप से आना चाहिए: musixmatch.com से कॉपी किए गए टोकन बंद किए गए डेस्कटॉप क्लाइंट के हैं और API उन्हें अस्वीकार कर देता है।</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch बिना टोकन के काम करता है, इसलिए यह फ़ील्ड खाली रह सकती है।</string>
-  <string name="morphe_music_musixmatch_token_dialog_hint">उपयोगकर्ता टोकन अमान्य है, पुनः प्रयास करें।</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">उपयोगकर्ता टोकन</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: उपयोगकर्ता टोकन सहेजा गया</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: उपयोगकर्ता टोकन साफ़ किया गया</string>
   <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: अमान्य यूज़र टोकन - कृपया जांचें और पुनः प्रयास करें</string>
@@ -564,15 +704,14 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_allow_transliteration_summary">लिरिक्स स्रोत से गैर-लैटिन उच्चारण की अनुमति दें; जब बंद, तो केवल लैटिन अक्षर, एक्सেন্টेड अक्षर और टोन अंकों को रखें</string>
   <string name="morphe_music_lyrics_local_romanization_summary">एक टाइम्ड लिरिक्स के प्रत्येक शब्द को पढ़ता है (शब्द सिंक चालू); कोरियाई के लिए कोई डाउनलोड आवश्यक नहीं; चौबीस स्क्रीप्ट्स एक CLDR डाउनलोड साझा करते हैं; चीनी अक्षरों को राइम शब्द सूची द्वारा पढ़ा जाता है जब इसकी शब्द सारणी भाषा को कवर करती है</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">उच्चारण शब्दकोष डाउनलोड हो रहे हैं…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">पढ़ने तैयार (%1$d एंट्री)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">रीडिंग तैयार है (%s प्रविष्टियाँ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">डाउनलोड विफल - पुनः प्रयास करने के लिए इसे बंद करें और फिर से चालू करें</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">ऑफ़लाइन शब्दकोष</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">जापानी (SudachiDict, ~75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">चीनी और कैंटोनी अक्षर (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">चीनी शब्द (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">यूनानी, स्लाविक सिरिलिक (इसे शामिल है, रूसी, यूक्रेनियाई, बुल्गारियन, सर्बियाई, बेलाarusian, मैसेडोनियन), ज्यॉर्जियन, आर्मनियाई, हिब्रू, अरबी, अहमारिक और सीरियाई ट्रान्सलिटरेशन (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">पठन सामग्री %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">कम से कम एक शब्दकोष चुनें</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s पढ़ा जा रहा है: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">रिफ़्रेश बटन दिखाएँ</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">आगे के बोल उम्मीदवार पर जाने के लिए टैप करें; गाने के नाम और कलाकार से बोल खोजने के लिए देर तक दबाएं</string>
   <string name="morphe_music_lyrics_search_dialog_title">लिरिक्स खोजें</string>
@@ -591,6 +730,10 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_hide_played_summary">वर्तमान में चल रही पंक्ति के ऊपर की गीत पंक्तियों को छिपाएँ</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">नहीं बजाए गए गीत छिपाएँ</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">वर्तमान में चल रही पंक्ति के नीचे की गीत पंक्तियाँ छिपाएँ</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">डायनामिक बैकग्राउंड</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">लिरिक्स के पीछे एल्बम आर्ट से बना एक धुंधला बैकग्राउंड दिखाएं</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">डायनामिक बैकग्राउंड को एनिमेट करें</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">चलाते समय बैकग्राउंड को मूव करें, और यदि YouTube Music के पास माइक्रोफ़ोन अनुमति है तो इसे संगीत के साथ पल्स करें। कम बैटरी उपयोग करने वाले स्थिर बैकग्राउंड के लिए इसे बंद करें</string>
   <string name="morphe_music_lyrics_mediasession_title">लॉक स्क्रीन पर MediaSession गीत दिखाएँ</string>
   <string name="morphe_music_lyrics_mediasession_summary">ब्लूटूथ, Android Auto और लॉक स्क्रीन पर वर्तमान पंक्ति दिखाता है। Android 11 या उससे नया चाहिए</string>
   <string name="morphe_music_lyrics_miniplayer_title">मिनीप्लेयर गीत दिखाएँ</string>
@@ -689,7 +832,7 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_hide_info_title">क्रेडिट लाइन छिपाएँ</string>
   <string name="morphe_music_lyrics_hide_info_summary">गीतों के नीचे दिखाई जाने वाली क्रेडिट लाइन छिपाएँ</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">अनुवाद और रोमनीकरण आपस में बदलें</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON रोमाइज़ेशन या ट्रान्सलिटरेशन को लिरिक्स के नीचे और अनुवाद ऊपर रखता है; OFF रोमाइज़ेशन या ट्रान्सलिटरेशन को ऊपर और अनुवाद को नीचे रखता है। प्रत्येक सिल्बिल पर रखा गया उच्चारण उसके साथ चलता है, अपने सिल्बिल से नीचे से ऊपर</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">लिरिक्स के नीचे अनुवाद और रोमनकरण के डिस्प्ले क्रम को बदलें</string>
   <string name="morphe_music_lyrics_force_center_title">हमेशा लिरिक्स को केंद्रित रखें</string>
   <string name="morphe_music_lyrics_force_center_summary">ON प्रत्येक रेखा को मध्य में रखता है और स्रोत अनुपालन को नजरअंदाज़ करता है, ड्यूलेट पक्षों सहित; OFF लिरिक्स द्वारा मांगे गए अनुपालन को रखता है</string>
   <string name="morphe_music_lyrics_providers_keep_one">कम से कम एक प्रदाता चालू रहना चाहिए</string>
@@ -697,11 +840,19 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_romanization_provider_title">रोमाइज़ेशन या ट्रान्सलिटरेशन</string>
   <string name="morphe_music_lyrics_romanization_provider_local">ऑफ़लाइन शब्दकोष</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">राइम शब्द सूची</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">रूबी</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">ऑफ़लाइन डिक्शनरी</string>
+  <string name="morphe_music_lyrics_ruby_style_title">रूबी स्क्रिप्ट</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">हिरागाना (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">काताकाना (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">रूबी बटन दिखाएँ</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">लिरिक्स के ऊपर रूबी रीडिंग टॉगल करने के लिए टैप करें; हिरागाना और काताकाना के बीच स्विच करने के लिए लॉन्ग-प्रेस करें। यह सक्षम रूबी प्रोवाइडर्स का उनके सूचीबद्ध क्रम में उपयोग करता है</string>
+  <string name="morphe_music_lyrics_ruby_generating">रूबी जेनरेट हो रहा है…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI के साथ अनुभागों का पता लगाएं</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">केवल तभी उपयोग किया जाता है जब प्रदाता किसी अनुभाग लेबल जैसे कि कोरस या वर्स नहीं भेजता, जिसका आपका OpenAI-अनुकूल मॉडेल तब पता लगाता है। पंक्ति को संपादित करना भी इसके प्रॉम्प्ट को खोलता है</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (उदाहरण के लिए https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">प्रॉम्प्ट टेम्प्लेट</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">प्लेसहोल्डर्स: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">प्लेसहोल्डर्स: {task}, {language}, {title}, {artist}, {count}, {lines}। अज्ञात प्लेसहोल्डर्स को वैसा ही रहने दिया गया है जैसा वे टाइप किए गए हैं</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">प्रॉम्प्ट सेव किया गया</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">प्रॉम्प्ट सहेजा गया, लेकिन AI एंडपॉइंट अभी उपयोग योग्य नहीं है। पहले AI सेटिंग्स में इसका कॉन्फ़िगरेशन करें</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">प्रॉम्प्ट रिसेट किया गया</string>
@@ -711,14 +862,17 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_ai_config_status_invalid">सेटिंग्स अपूर्ण हैं या प्रदाता द्वारा अस्वीकृत</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">कनेक्शन सत्यापित किया जा रहा है…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: जुड़ा हुआ! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: कनेक्शन विफल। सेटिंग्स की जाँच करें।</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: कनेक्शन विफल रहा। सेटिंग्स की जाँच करें।</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">सबसे पहले API कुंजी दर्ज करें</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">कनेक्शन टेस्ट करें</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">मॉडल लाए जा रहे हैं…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">मॉडल प्राप्त करें</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">एक मॉडल चुनें</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">मॉडल लाने में विफल। API कुंजी या कनेक्शन की जाँच करें।</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">प्रॉम्प्ट</string>
   <string name="morphe_music_lyrics_ai_config_model_label">मॉडल</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">बेस URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">सर्विस प्रीसेट्स</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">सेवा चुनें</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API कुंजी (वैकल्पिक)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">अतिरिक्त अनुरोध बॉडी (वैकल्पिक JSON)</string>

@@ -61,6 +61,7 @@ Muutoksiin kuuluvat:
   <string name="morphe_hide_account_menu_title">Kirjaston valikko / Suodatin alavalikussa</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Kirjaston valikko / Suodatin alavalikussa</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Kirjoita suodatettavat valikkokohtien nimet, yksi per rivi</string>
+  <string name="morphe_hide_account_menu_downloads_title">Piilota lataukset</string>
   <string name="morphe_hide_album_cards_title">Piilota albumikortit</string>
   <string name="morphe_hide_album_cards_summary">Piilottaa albumikortit artistin kuvauksen alapuolelta</string>
   <string name="morphe_hide_artist_cards_title">Piilota artistikortit</string>
@@ -68,6 +69,19 @@ Muutoksiin kuuluvat:
   <string name="morphe_hide_channel_buttons_title">Piilota kanavapainikkeet</string>
   <string name="morphe_hide_channel_buttons_summary">Piilottaa painikkeet, kuten Tilaa, Näytä kanava, Yhteisö ja YouTube Music, kanavaprofiileista hakutuloksissa</string>
   <string name="morphe_hide_community_posts_title">Piilota yhteisöpostaukset</string>
+  <string name="morphe_post_buttons_screen_title">Julkaisupainikkeet</string>
+  <string name="morphe_post_buttons_screen_summary">Valitse yhteisöpostauksien alapuolella olevien painikkeiden asettelu ja mitkä painikkeet piilotetaan</string>
+  <string name="morphe_post_buttons_layout_title">Postauspainikkeiden asettelu</string>
+  <string name="morphe_post_buttons_layout_entry_1">Palvelin</string>
+  <string name="morphe_post_buttons_layout_entry_2">Pakotettu</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Piilota Tykkää- ja En tykkää -painikkeet</string>
+  <string name="morphe_hide_post_dislike_button_title">Piilota En tykkää -painike</string>
+  <string name="morphe_hide_post_dislike_button_summary">Pakotetussa asettelussa painikkeen tila jää tyhjäksi</string>
+  <string name="morphe_hide_post_comment_button_title">Piilota Kommentit-painike</string>
+  <string name="morphe_hide_post_comments_preview_title">Piilota kommenttien esikatselu</string>
+  <string name="morphe_hide_post_comments_preview_summary">Piilottaa julkaisujen alla olevien kommenttien esikatselun</string>
+  <string name="morphe_hide_post_share_button_title">Piilota Jaa-painike</string>
+  <string name="morphe_hide_post_share_button_summary">Julkaisukuvien latauspainike on sijoitettu Jaa-painikkeen viereen, joten se piilotetaan myös</string>
   <string name="morphe_hide_compact_banner_title">Piilota kompaktit bannerit</string>
   <string name="morphe_hide_compact_banner_summary">Piilottaa tiivistetyn bannerin ja tilan joidenkin komponenttien välillä</string>
   <string name="morphe_hide_expandable_card_title">Laajennettavat kortit videoiden alla</string>
@@ -100,7 +114,7 @@ Muutoksiin kuuluvat:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Piilota \"Ilmoita minulle\" -painike</string>
-  <string name="morphe_hide_notify_me_button_summary">Piilottaa muistutusnapin suunnitelluissa suorissa lähetyksissä ja ensiesityksissä</string>
+  <string name="morphe_hide_notify_me_button_summary">Piilottaa muistutuspainikkeen ajoitetuista live-lähetyksistä ja ensiilloista</string>
   <string name="morphe_hide_playables_title">Piilota Pelattavat</string>
   <string name="morphe_hide_playables_summary">Piilottaa ominaisuuden, jonka avulla voit pelata pelejä</string>
   <string name="morphe_hide_search_term_thumbnails_title">Piilota hakutermin pienoiskuvat</string>
@@ -158,7 +172,6 @@ Muutoksiin kuuluvat:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Piilottaa soittimen eleiden aikana näytettävät vihjeet, kuten \'Vedä ylös tarkkaa hakua varten\', \'Vapauta peruuttaaksesi\' ja \'2x\'</string>
-  <string name="morphe_hide_snackbar_title">Piilota välipalaikkuna</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Piilota tilaajien säännöt</string>
   <string name="morphe_hide_sync_button_title">Piilota \"Synkronoi videoon\" -painike</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Piilota napauta ja pidä -gradientti</string>
@@ -259,9 +272,8 @@ Muutoksiin kuuluvat:
   <string name="morphe_comments_screen_title">Kommentit</string>
   <string name="morphe_comments_screen_summary">Valitse, mitkä komponentit näkyvät kommenttiosiossa</string>
   <string name="morphe_hide_comments_carousel_title">Ota kommenttikarusselin suodatin käyttöön</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Varmista, että syötät täsmälleen carousel-kohteen nimen (esim. Kysy, Mainosta tämä video, Kuuntele YouTube Musicissa).
-• Carousel-kohteiden piilottamisella voi olla ei-toivottuja sivuvaikutuksia.
-• Jos kaikki carousel-kohteet on piilotettu, myös koko kommenttiosio piilotetaan."</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Syötä avainsana tai koko nimi (esim. Ask, Community, Hype, Listen)
+• Kaikkien kohteiden piilottaminen piilottaa koko kommenttiosion"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Kommenttien karusellin suodatin</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Syötä suodatettavat kommenttikarussellien nimet, yksi per rivi</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Piilota tekoälyn luoma chat-yhteenveto</string>
@@ -276,6 +288,9 @@ Muutoksiin kuuluvat:
   <string name="morphe_hide_comments_emoji_button_title">Piilota emoji-painike</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Piilota suodatinpalkin asetukset</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Piilottaa kaikki suodatinpalkin asetukset paitsi \"Parhaat\" ja \"Uusimmat\"</string>
+  <string name="morphe_hide_comments_gif_button_title">Piilota GIF-painike</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Piilota GIF-kuvat ja kuvat</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Piilottaa kommentteihin ja vastauksiin liitetyt GIF-kuvat ja kuvat</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Piilota lahja-animaatio ja -kortit</string>
   <string name="morphe_hide_comments_gift_button_title">Piilota lahjapainike</string>
   <string name="morphe_hide_comments_info_button_title">Piilota Tietoja-painike</string>
@@ -326,11 +341,11 @@ Rajoitukset:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Avainsanalla on ristiriitaisia määrityksiä: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Avainsana on liian lyhyt ja vaatii lainausmerkkejä: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Avainsana piilottaa kaikki videot: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Kotisivu: %s
-• Tilaukset: %s
-• Haku: %s
-• Kommentit: %s
-• Yhteensä: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Kotisivu: %1$s
+• Tilaukset: %2$s
+• Haku: %3$s
+• Kommentit: %4$s
+• Yhteensä: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Tilastot</string>
   <string name="morphe_hide_stats_hidden_24h_title">Videot piilotettu, viimeiset 24 tuntia</string>
   <string name="morphe_hide_stats_hidden_all_title">Videot piilotettu, kaikki ajat</string>
@@ -342,9 +357,9 @@ Rajoitukset:
   <string name="morphe_hide_aislist_warnlist_category_title">Varoituslista: Kohtalainen varmuus</string>
   <string name="morphe_hide_aislist_hide_home_title">Piilota videot Aloitus-näkymässä</string>
   <string name="morphe_hide_aislist_hide_search_title">Piilota videot haussa</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Aloitus: %s
-• Haku: %s
-• Yhteensä: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Kotisivu: %1$s
+• Haku: %2$s
+• Yhteensä: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Estetyt kanavat</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Varoituslistakanavat</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Ota suodatin käyttöön kanavien lataamiseksi</string>
@@ -383,6 +398,20 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_aislist_submit_failed_rate_limit">Liian monta raporttia lähetettiin. Yritä myöhemmin uudelleen.</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList hylkäsi raportin.</string>
   <string name="morphe_aislist_submit_failed">Raportin lähetys epäonnistui. Tarkista yhteys.</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Piilota snackbarit tai muuta niiden värejä ja muotoa</string>
+  <string name="morphe_hide_snackbar_title">Piilota välipalaikkuna</string>
+  <string name="morphe_custom_snackbar_theme_title">Oma snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbareissa käytetään alla olevia värejä ja kulman pyöristystä vastakkaisen teeman värien sijaan</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Tumman teeman taustaväri</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Snackbar-ilmoitusten taustaväri tummassa teemassa. Teksti on musta tai valkoinen, riippuen siitä, kumpi on helpommin luettavissa</string>
+  <string name="morphe_custom_snackbar_color_light_title">Vaalean teeman taustaväri</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Snackbar-ilmoitusten taustaväri vaaleassa teemassa. Teksti on musta tai valkoinen, riippuen siitä, kumpi on helpommin luettavissa</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Reunan väri</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Snackbar-ilmoitusten ympärillä olevan reunan väri. Läpinäkyvä väri poistaa reunan</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Kulman pyöristys</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Snackbar-ilmoitusten kulman pyöristys dp-yksiköissä</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Kanavien mainossallintalista</string>
   <string name="morphe_ads_channel_whitelist_summary">Sallittujen kanavien videoissa näytetään mainoksia, joten niiden tekijät saavat palkkaa. Mainokset pysyvät estettyinä kaikilla muilla kanavilla.</string>
@@ -441,11 +470,16 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_copy_comments_title">Kopioi kommentit</string>
   <string name="morphe_copy_comments_summary">Pidä kommenttia painettuna kopioidaksesi sen</string>
   <string name="morphe_copy_comments_success">Kommentti kopioitu leikepöydälle</string>
+  <string name="morphe_copy_select_text_title">Valitse kuvauksien ja postausten tekstiä</string>
+  <string name="morphe_copy_select_text_summary">Napauta ja pidä painettuna videon kuvausta tai postausta valitaksesi ja kopioidaksesi mistä tahansa kohdasta</string>
+  <string name="morphe_copy_select_text_dialog_title">Valitse teksti</string>
+  <string name="morphe_copy_select_text_copy_all">Kopioi kaikki</string>
+  <string name="morphe_copy_select_text_success">Teksti kopioitiin leikepöydälle</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Paina ja pidä pohjassa avataksesi videomenu</string>
   <string name="morphe_feed_long_press_menu_summary">Kosketus ja pitopohjassa missä tahansa syötteiden videolla avaa sen valikon</string>
   <string name="morphe_feed_watch_later_button_title">Näytä Katso myhemmin -painike pääkkeissä</string>
-  <string name="morphe_feed_watch_later_button_summary">Katso myöhemmin -painike näkyy syötteiden videoiden pienoiskuville. Kosketus ja pitopohjassa avaa Tallenna soittoluetteloon</string>
+  <string name="morphe_feed_watch_later_button_summary">Katso myöhemmin -painike näkyy syötteen videoiden pikkukuvissa, ja siinä on valintamerkki, jos video on tallennettu. Painamalla sitä video tallennetaan tai poistetaan, ja painamalla pitkään avautuu Tallenna soittolistaan</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Lataa julkaisun kuvat</string>
   <string name="morphe_post_image_download_summary">Latauspainike näytetään kuvien tai GIF-animaatioiden sisältävien julkaisujen Jaa-painikkeen vieressä, ja latauskohta lisätään niiden valikkoon</string>
@@ -487,7 +521,7 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <string name="morphe_ryd_feed_like_ratio_title">Näytä syötteen pikkukuvan tykkäysprosentti</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Hae kommenteista</string>
-  <string name="morphe_search_comments_summary">Napauta kommenttien haku-painiketta näyttääksesi vain ladatut kommentit, jotka sisältävät kaikki hakusanat. Merkitse sanat lainausmerkeillä hakeaksesi tiettyä fraasia</string>
+  <string name="morphe_search_comments_summary">Napauta kommenttien hakupainiketta näyttääksesi vain ladatut kommentit, jotka sisältävät kaikki hakusanat. Laita sanat lainausmerkkeihin hakeaksesi tiettyä fraasia</string>
   <string name="morphe_search_comments_dialog_title">Hae kommenteista</string>
   <string name="morphe_search_comments_hint">Hakusanat</string>
   <string name="morphe_search_comments_search">Haku</string>
@@ -515,8 +549,24 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <string name="morphe_external_downloader_quick_audio">Ääni</string>
   <string name="morphe_external_downloader_quick_options">Kaikki asetukset</string>
   <string name="morphe_shorts_download_flyout_button_title">Näytä lataus Shorts-valikossa</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Lisää ulkoisen lataussovelluksen ponnahdusvalikkokohdan Shorts-soittoehdotukseen</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Lisää latauskohta Shorts-soittimen valikkoon</string>
   <string name="morphe_shorts_download_flyout_title">Lataa</string>
+  <string name="morphe_export_download_folder_title">Vie tallennetut videot</string>
+  <string name="morphe_export_download_folder_summary">"Vie sovelluksen sisälle tallennetut videot laitteesi tallennustilaan latausten pikavalikon avulla. Napauta vaihtaaksesi viekansionin
+
+Viekansio: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Viekansio</string>
+  <string name="morphe_export_download_folder_change">Vaihda kansio</string>
+  <string name="morphe_export_download_folder_changed">Viekansio muutettu</string>
+  <string name="morphe_export_download_folder_reset">Viekansio nollattu</string>
+  <string name="morphe_export_download_folder_missing">Vienti-kansiota %s ei löytynyt</string>
+  <string name="morphe_export_download_flyout_title">Vie laitteeseen</string>
+  <string name="morphe_export_download_started">Viedään video</string>
+  <string name="morphe_export_download_progress">Videon vienti: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Videon vienti</string>
+  <string name="morphe_export_download_saved">Video vietiin kohteeseen %s</string>
+  <string name="morphe_export_download_failed">Videon vienti epäonnistui</string>
+  <string name="morphe_export_download_canceled">Vienti peruttu</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ääniratateksti</string>
   <string name="morphe_vot_screen_summary">Lue videon tekstitykset ääneen laitteen tekstistä puheeksi -toiminnolla, synkronoitu toiston kanssa</string>
@@ -570,6 +620,11 @@ API-avaintasi ei saa koskaan jakaa. Kuka tahansa, jolla on pääsy siihen, voi k
   <string name="morphe_vot_mymemory_quota_message_no_email">Olet käyttänyt tämän päivän ilmaisen MyMemory-käännöskiintiön (5 000 merkkiä). Lisää MyMemory-sähköpostiosoite asetuksiin nostaaksesi päivittäisen rajan 50 000 merkkiin tai vaihda toiseen käännöspalveluun</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Olet käyttänyt tämän päivän MyMemory-käännöskiintiön (50 000 merkkiä). Vaihda toiseen käännöspalveluun tai yritä uudelleen huomenna</string>
   <string name="morphe_vot_mymemory_error">MyMemory-käännöksessä virhe (tila %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Levennä Katso myöhemmin -listan siirtokahvoja</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Katso myöhemmin -videoiden siirtokahvoista on helpompi ottaa kiinni</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Piilota Katso myöhemmin -poiston ilmoituspalkki</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Vahvistusta ei näytetä, kun video poistetaan Katso myöhemmin -listalta</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Ota jatkuva toisto käyttöön</string>
   <string name="morphe_do_not_remember_loop_video_title">Älä muista silmukoitua videota</string>
@@ -591,6 +646,19 @@ API-avaintasi ei saa koskaan jakaa. Kuka tahansa, jolla on pääsy siihen, voi k
   <string name="morphe_pip_button_overlay_title">Näytä kuva kuvassa -painike</string>
   <string name="morphe_pip_button_flyout_title">Näytä kuva kuvassa -valikko</string>
   <string name="morphe_pip_button_flyout_name">Vaihda kuva kuvassa -tilaan</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Kuvassa kuvana -toiminnot</string>
+  <string name="morphe_pip_actions_screen_summary">Muuta kuvassa kuvana -tilassa näkyviä painikkeita</string>
+  <string name="morphe_pip_action_left_title">Vasen painike</string>
+  <string name="morphe_pip_action_center_title">Keskuspainike</string>
+  <string name="morphe_pip_action_right_title">Oikea painike</string>
+  <string name="morphe_pip_action_entry_default">Oletus</string>
+  <string name="morphe_pip_action_entry_previous">Edellinen video</string>
+  <string name="morphe_pip_action_entry_next">Seuraava video</string>
+  <string name="morphe_pip_action_entry_rewind">Kelaa 10 sekuntia taaksepäin</string>
+  <string name="morphe_pip_action_entry_fast_forward">Kelaa 10 sekuntia eteenpäin</string>
+  <string name="morphe_pip_action_entry_play_pause">Toista/Tauota</string>
+  <string name="morphe_pip_action_entry_background_playback">Taustatoisto</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Näytä Soita kaikki -painike</string>
   <string name="morphe_play_all_button_summary">"Napauta toistaaksesi kaikki kanavan videot, napauta ja pidä painettuna peruuttaaksesi
@@ -623,10 +691,6 @@ Tieto: Ei välttämättä toimi suoratoistoissa"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Tallenna myöhemmin katsottavaksi</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Näytä Tallenna myöhemmin -painike soittimen asetusten ponnahdusvalikossa</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Sallii parhaillaan katsottavan videon tallentamisen \'Katso myöhemmin\' -luetteloon videoasetusten ponnahdusvalikosta</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Näytä Tallenna myöhemmin katsottavaksi -painike lasten tilassa</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Sallii lapsiin liittyvien videoiden tallentamisen \'Katso myöhemmin\' -luetteloon ponnahdusvalikosta</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Näytä Tallenna myöhemmin -painike Shortsit-ponnahdusvalikossa</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Sallii Shortsien tallentamisen \'Katso myöhemmin\' -luetteloon ponnahdusvalikosta</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Ohjaa Katso myöhemmin -lista soittolistalle</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Katso myöhemmin</string>
   <string name="morphe_queue_flyout_title">Lisää Morphe-jonoon</string>
@@ -725,14 +789,18 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
 Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Oletusasiakas' arvoon 'TV Simply' tai 'visionOS'."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Ota kelaus liu\'uttamalla käyttöön</string>
-  <string name="morphe_slide_to_seek_summary">Ottaa käyttöön pyyhkäisyn hakua varten sen sijaan, että toisto nopeutuisi 2x nopeudella, kun videotoistinta painetaan ja pidetään painettuna</string>
+  <string name="morphe_slide_to_seek_summary">Painamalla ja pitämällä videota voit liukua ja kelata sen sijaan, että video toistettaisiin 2x-nopeudella</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Ota etsintä napauttamalla käyttöön</string>
-  <string name="morphe_tap_to_seek_summary">Napauta hakupalkkia hypätäksesi kyseiseen kohtaan vetämättä sitä</string>
+  <string name="morphe_tap_to_seek_summary">Napauta mitä tahansa kohtaa kelauspalkissa hypätäksesi kyseiseen kohtaan vetämisen sijaan</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Vasen pyyhkäisy</string>
   <string name="morphe_swipe_right_zone_title">Oikea pyyhkäisy</string>
   <string name="morphe_swipe_top_zone_title">Yläpyyhkäisy</string>
+  <string name="morphe_swipe_seek_title">Pyyhkäise kelataksesi</string>
+  <string name="morphe_swipe_seek_summary">Pyyhkäise koko näytön soittimessa vasemmalle tai oikealle siirtääksesi kelauspalkkia ja vapauta kelataksesi</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Kelauspyyhkäisyn herkkyys</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Kuinka paljon kelauspalkki liikkuu jokaista pyyhkäisyä kohden</string>
   <string name="morphe_swipe_zone_width_title">Vasemman/oikean vyöhykkeen leveys</string>
   <string name="morphe_swipe_zone_width_summary">Prosenttiosuus kummastakin näytön reunasta varattu vasemmalle ja oikealle pyyhkäisylle (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Kirkkaus</string>
@@ -844,7 +912,11 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
   <string name="morphe_quick_actions_top_margin_summary">Aseta pikatoimintopalkin ylämarginaali (0-32 dp)</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Tekstitykset</string>
-  <string name="morphe_captions_screen_summary">Näytä aina</string>
+  <string name="morphe_captions_screen_summary">Hallitse automaattisia tekstityksiä ja tekstitysevästeitä</string>
+  <string name="morphe_captions_languages_title">Kieli ja kääntäminen</string>
+  <string name="morphe_captions_presentation_title">Ulkoasu ja toiminta</string>
+  <string name="morphe_captions_advanced_title">Lisäasetukset</string>
+  <string name="morphe_captions_advanced_summary">Eväste- ja litterointivaihtoehdot</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Automaattisten tekstityksien näkyvyys</string>
   <string name="morphe_auto_captions_style_entry_1">Näytä, kun mykistetty</string>
@@ -853,10 +925,10 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
   <string name="morphe_auto_captions_style_entry_4">Näytä, kun mykistetty</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Ensisijainen tekstityskieli</string>
-  <string name="morphe_preferred_caption_language_summary">Valitsee ensin tarjoajan tekstitykset ja kääntää ne sitten automaattisesti ensisijaiselle kielelle</string>
+  <string name="morphe_preferred_caption_language_summary">Valitsee automaattisesti tekstityskielen jokaiselle videolle</string>
   <string name="morphe_preferred_caption_language_entry_off">Ei käytössä</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Lisää lisäautokäännöskielet</string>
+  <string name="morphe_auto_translate_additional_languages_title">Lisäkielet automaattiseen kääntämiseen</string>
   <string name="morphe_auto_translate_additional_languages_summary">Lisaa lisää kieliä autokäännysvalikkoon</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Aseta tekstitysevästeet</string>
@@ -874,11 +946,20 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
   <string name="morphe_fix_transcript_title">Korjaa transkriptio</string>
   <string name="morphe_fix_transcript_summary">Valitse, mitkä komponentit näkyvät työkalupalkissa</string>
   <string name="morphe_captions_in_pip_title">Näytä tekstitykset kuvan-kuvassa</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Tekstityksen koko</string>
+  <string name="morphe_caption_scale_summary">Käytetään yksikielisiin ja kaksikielisiin tekstityksiin</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Vakaat tekstityspalikat</string>
-  <string name="morphe_stable_caption_blocks_summary">Ryhmittele automaattiset tekstitykset vakaisiin, luettaviin palikoihin. Jotkin sanat saattavat ilmestyä ennen kuin niitä puhutaan. Käynnistys uudelleen vaaditaan.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigointipainikkeet</string>
-  <string name="morphe_navigation_buttons_screen_summary">Piilota Luo-painike</string>
+  <string name="morphe_stable_caption_blocks_summary">Ryhmittelee yksikieliset automaattiset tekstitykset vakaisiin, luettaviin lohkoihin. Kaksikieliset tekstitykset käyttävät aina lohkoja. Jotkut sanat voivat ilmestyä ennen kuin niitä puhutaan</string>
+  <string name="morphe_secondary_caption_language_title">Toissijainen tekstityskieli</string>
+  <string name="morphe_secondary_caption_language_summary">Näyttää toisen kielen tekstitysten kanssa ja lisää kaksikielisten tekstitysten kytkimen tekstitysten valikkoon</string>
+  <string name="morphe_dual_captions_enabled_title">Kaksikieliset tekstitykset</string>
+  <string name="morphe_caption_block_translation_failed">Jotkin tekstityskäännökset eivät ole saatavilla. Näytetään saatavilla olevat tekstitykset.</string>
+  <string name="morphe_caption_blocks_too_large">Molemmat tekstityskielet eivät mahdu tähän soittimeen. Näytetään pääkieli.</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigointipalkki</string>
+  <string name="morphe_navigation_bar_screen_summary">Piilota Luo-painike</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Piilota Mikrofonipainike</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -889,22 +970,26 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
   <string name="morphe_hide_subscriptions_button_title">Näytä Asetukset-painike</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Asetukset-painikkeen sijainti</string>
-  <string name="morphe_show_search_button_title">Kun se on käytössä, napautus avaa Morphen asetukset ja pitkä painallus avaa YouTuben asetukset, poista käytöstä vaihtaaaksesi ne</string>
-  <string name="morphe_show_search_button_index_title">Pienentää painikkeiden välistä vaakasuuntaista väliä</string>
+  <string name="morphe_show_search_button_title">Näytä Haku-painike</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Näytä Katso myöhemmin -painike</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Katso myöhemmin</string>
   <string name="morphe_show_settings_button_title">Näytä Asetukset-painike</string>
-  <string name="morphe_show_settings_button_index_title">Asetusten painikkeen sijainti</string>
   <string name="morphe_show_settings_button_type_title">Asetusten painikkeen toiminto</string>
   <string name="morphe_show_settings_button_type_summary">Avaa Morphen asetukset, kun ne on käytössä, tai YouTuben asetukset, kun ne on poissa käytöstä</string>
+  <string name="morphe_navigation_buttons_order_title">Navigointipainikkeiden järjestys</string>
+  <string name="morphe_navigation_buttons_order_summary">Vedä painikkeita muuttaaksesi niiden järjestystä navigointipalkissa</string>
   <string name="morphe_swap_create_with_notifications_button_title">Vaihdetaan Luo-painike Ilmoitukset-painikkeen kanssa</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Jos asetuksen muuttaminen ei tule voimaan, kokeile vaihtaa incognito-tilaan</string>
   <string name="morphe_hide_navigation_button_labels_title">Piilota navigointipainikkeiden tunnisteet</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Piilota uuden sisällön piste</string>
   <string name="morphe_hide_navigation_bar_title">Piilota navigointipalkki</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Tämä piilottaa kokonaan navigointipalkin, mukaan lukien ’Sinä’-välilehden.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Tämä piilottaa navigointipalkin kokonaan, mukaan lukien \"Sinä\"-välilehden.
 
-Avataksesi asetukset, ota käyttöön Asetukset-painike kohdasta Yleiset → Työkalurivi → Näytä asetukset"</string>
+Päästäksesi Asetuksiin, ota Asetukset-painike käyttöön kohdasta Yleiset → Työkalupalkki → Näytä Asetukset-painike"</string>
   <string name="morphe_narrow_navigation_buttons_title">Ota käyttöön kapeat navigointipainikkeet</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Kapeuttaa pystysuoraa väliä painikkeiden välillä</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Vähentää painikkeiden välistä vaakasuuntaista väliä. Ei käytettävissä lasisen navigointipalkin kanssa, jolla on oma painikkeiden välistys</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Poista käytöstä navigointipainikkeet ilman tekstejä</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Näyttää navigointipainikkeet teksteillä, jos YouTube lähettää ne ilman tekstejä</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Poista työkalupalkin navigointivälilehdet käytöstä</string>
@@ -919,13 +1004,24 @@ Avataksesi asetukset, ota käyttöön Asetukset-painike kohdasta Yleiset → Ty�
   <string name="morphe_navigation_bar_style_entry_3">Läpinäkyvä</string>
   <string name="morphe_navigation_bar_style_entry_4">Peittävä</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Laitteesi tai YouTube-versiosi ei välttämättä tue tätä tyyliä, mikä voi aiheuttaa asetteluongelmia tai kaatumisia</string>
+  <string name="morphe_navigation_bar_glass_title">Ota käyttöön lasimainen navigointipalkki</string>
+  <string name="morphe_navigation_bar_glass_summary">Näyttää navigointipalkin kelluvana, pyöristettynä ja läpinäkyvänä kapselina. Ei käytettävissä läpinäkymättömän navigointipalkin tyylin kanssa</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Lasin läpinäkymättömyys</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Säädä lasimaisen navigointipalkin läpinäkyvyystasoa (0 on läpinäkyvä, 100 on läpinäkymätön)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Lasisen navigointipalkin koko</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Säädä lasisen navigointipalkin korkeutta, leveyttä ja painikkeiden välistä etäisyyttä esikatselun avulla. Painikkeet, jotka eivät mahdu näytön leveyteen, piilotetaan</string>
+  <string name="morphe_navigation_bar_glass_size_height">Korkeus</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maksimileveys</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Painikkeiden väli</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Näytettävät painikkeet: %1$s / %2$s</string>
   <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
   <string name="morphe_toolbar_screen_summary">Valitse, mitkä komponentit näkyvät työkalupalkissa</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Piilota Cast-painike</string>
   <string name="morphe_hide_toolbar_chat_button_title">Piilota chat-painike</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Piilota Mikrofoni-painike</string>
   <string name="morphe_hide_toolbar_search_button_title">Piilota Haku-painike</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Kun käytössä, napautus avaa Morphen asetukset ja pitkä painallus avaa YouTuben asetukset. Poista käytöstä vaihtamiseksi</string>
+  <string name="morphe_toolbar_buttons_order_title">Työkalupalkin painikkeiden järjestys</string>
+  <string name="morphe_toolbar_buttons_order_summary">Vedä painikkeita muuttaaksesi niiden järjestystä työkalupalkissa</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Ponnahdusvalikko</string>
   <string name="morphe_hide_player_flyout_summary">Valitse, mitkä komponentit näkyvät avattavassa valikossa</string>
@@ -977,6 +1073,7 @@ Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetuk
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Piilota Tekstitykset -painike</string>
   <string name="morphe_hide_cast_button_title">Piilota Cast-painike</string>
+  <string name="morphe_hide_cast_button_summary">Piilottaa Cast-painikkeen videosoittimesta ja työkalupalkista</string>
   <string name="morphe_hide_collapse_button_title">Piilota Pienennä-painike</string>
   <string name="morphe_hide_fullscreen_button_title">Piilota kokoruutupainike</string>
   <string name="morphe_hide_player_control_buttons_background_title">Piilota soittimen ohjainten tausta</string>
@@ -1142,11 +1239,6 @@ Auton asettelu
 • \"Lisää videoita\" -peitekerros ei välttämättä ole käytettävissä
 • Shorts-videot avautuvat tavalliseen soittimeen
 • Vanha videon toimintopalkki näkyy laajennettuna"</string>
-  <string name="morphe_tablet_layout_in_player_title">Ota tablettiasettelun käyttöön soittimessa</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Palauttaa vanhan soittimen asettelun
-
-Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lisää videoita\" -peittokuvio ei välttämättä ole käytettävissä"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Palauta vanha tekstitysten käyttäytyminen</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Palauta vanhat tallenteet soittimeen</string>
@@ -1228,6 +1320,10 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <string name="morphe_miniplayer_not_available_summary">YouTube poisti kaikki lisäminisoittimet. Palauttaaksesi useampia minisoitin-tyyppejä, päivitä YouTube-versio 21.28.208 tai sitä vanhempi</string>
   <string name="morphe_miniplayer_type_title">Minisoittimen tyyppi</string>
   <string name="morphe_miniplayer_hide_title_title">Piilota otsikko ja kanava</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Laajenna pyyhkäisemällä ylöspäin</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Minisoittimen pyyhkäiseminen ylöspäin laajentaa soittimen sen sijaan, että minisoitin siirtyisi näytön yläreunaan</string>
+  <string name="morphe_miniplayer_docked_title">Kiinnitetty minisoitin</string>
+  <string name="morphe_miniplayer_docked_summary">Kiinnittää minisoittimen navigointipalkkiin ja näytön reunojen viereen sen sijaan, että se leijuisi niiden päällä</string>
   <string name="morphe_miniplayer_type_entry_0">Pois käytöstä</string>
   <string name="morphe_miniplayer_type_entry_1">Oletus</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaalinen</string>
@@ -1270,6 +1366,8 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Tämä laite ei tue Glow-aloitusnäyttöä</string>
+  <string name="morphe_splash_screen_duration_title">Käynnistysanimaation kesto</string>
+  <string name="morphe_splash_screen_duration_summary">Kuinka kauan hohdeanimaatio kestää. Napauta animaatiota ohittaaksesi sen</string>
   <string name="morphe_theme_color_light_title">Vaalean teeman tausta</string>
   <string name="morphe_theme_color_light_entry_2">Valkoinen</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Valkoinen)()</string>
@@ -1500,10 +1598,12 @@ AV1-videon toisto saattaa pätkiä"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Pelaajan JavaScript-versio</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Näytä naamiointi \'Stats for nerds\' -osiossa</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Palauta vanha videotoimintopalkki</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Korjaa videotoimintapainikkeiden piilottamisen
-
-Rajoitus: Palauttaa vanhan tyylin 'Lisää videoita' -peittokuvan"</string>
+  <string name="morphe_video_action_bar_layout_title">Videon toimintopalkin ulkoasu</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Oletus</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klassinen yksi rivi</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Minimaalinen</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klassinen kaksi riviä</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Rajoitus: Klassiset asettelut palautuvat vanhaan \"Lisää videoita\" -peitekerrokseen</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Soittimen kuvakkeen tyyli</string>
   <string name="morphe_player_icon_style_entry_auto">Automaattinen</string>
@@ -1567,7 +1667,7 @@ Automaattinen tallennus pysyy tauolla tuntemattomassa tilassa, kun tilin tunnus 
   <string name="morphe_series_tracker_identity_unavailable">Seurantaa ei voi ottaa käyttöön tuntemattomassa tilassa ennen kuin YouTube on ladannut nykyisen tilin tilan. Palaa Kotiin ja yritä uudelleen. Tunnistautuminen ei ole pakollista</string>
   <string name="morphe_series_tracker_enable">Ota paikallinen seuranta käyttöön</string>
   <string name="morphe_series_tracker_tracking_paused">Edistymisen tallennus on pois päältä</string>
-  <string name="morphe_series_tracker_resume_at">Jatka kohdasta %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Jatka kohdasta %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s jaksoa katsottu</string>
   <string name="morphe_series_tracker_episode_position">Jakso %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Jaksot %1$s–%2$s / %3$s</string>
@@ -1577,7 +1677,7 @@ Automaattinen tallennus pysyy tauolla tuntemattomassa tilassa, kun tilin tunnus 
   <string name="morphe_series_tracker_plan_changed">Valitse jakso</string>
   <string name="morphe_series_tracker_plan_caught_up">Ajantasalla</string>
   <string name="morphe_series_tracker_plan_none">Ei toistokelpoisia jaksoja</string>
-  <string name="morphe_series_tracker_saved_position">Tallennettu video · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Tallennettu video · %s</string>
   <string name="morphe_series_tracker_follow">Seuraa sarjaa</string>
   <string name="morphe_series_tracker_view_series">Näytä sarja</string>
   <string name="morphe_series_tracker_continue">Jatka</string>
@@ -1588,7 +1688,7 @@ Automaattinen tallennus pysyy tauolla tuntemattomassa tilassa, kun tilin tunnus 
   <string name="morphe_series_tracker_undo">Kumoa</string>
   <string name="morphe_series_tracker_enable_short">Ota käyttöön</string>
   <string name="morphe_series_tracker_new_episode">1 uusi jakso</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s uutta jaksoa</string>
+  <string name="morphe_series_tracker_new_episodes">%s uutta jaksoa</string>
   <string name="morphe_series_tracker_record_short">Kirjaa edistyminen tälle laitteelle</string>
   <string name="morphe_series_tracker_follow_consent">"Sarjat ja edistyminen pysyvät tässä laitteessa, jaettuna YouTube-tilien välillä. YouTube-katseluhistorian ohjaimet eivät muuta niitä. Tyhjennä edistyminen Sarjat-valikosta.
 
@@ -1616,13 +1716,14 @@ Automaattinen tallennus on valinnaista. Se pysähtyy incognito-tilissä tai tili
   <string name="morphe_series_tracker_discovery_unavailable">Soittolistaa ei löytynyt</string>
   <string name="morphe_series_tracker_no_available_episodes">Jaksoja ei ole saatavilla</string>
   <string name="morphe_series_tracker_hide_watched">Piilota katsotut</string>
+  <string name="morphe_series_tracker_watched_on_advance">Merkitse katsotuksi siirryttäessä seuraavaan jaksoon</string>
   <string name="morphe_series_tracker_watch_previous">Merkitse aiemmat jaksot katsotuiksi</string>
-  <string name="morphe_series_tracker_order_starts_with">Alkaa: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Alkaa merkillä: %s</string>
   <string name="morphe_series_tracker_episode_order">Jakojen järjestys</string>
   <string name="morphe_series_tracker_playlist_order">Soittolistan järjestys</string>
   <string name="morphe_series_tracker_reverse_order">Käännä soittolistan järjestys</string>
-  <string name="morphe_series_tracker_view_count">%1$s katselukertaa</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s katselu kerran</string>
+  <string name="morphe_series_tracker_view_count">%s katselukertaa</string>
+  <string name="morphe_series_tracker_view_count_one">%s katselukerta</string>
   <string name="morphe_series_tracker_completion_title">Merkitse jaksot katsotuiksi</string>
   <string name="morphe_series_tracker_completion_summary">Vähintään %1$s%% katsottu enintään 90 sekunnin päättymättömänä tai %2$s sekuntia jäljellä</string>
   <string name="morphe_series_tracker_completion_explanation">Merkitse jakso katsotuksi automaattisesti kynnyksen perusteella. Prosenttisääntö vaatii myös enintään 90 sekuntia jäljellä, joten pitkien jaksojen lopun ei ohiteta. Jäljellä olevan ajan sääntö koskee yli minuutin pituisia videoita; aseta se arvoon <b>0</b> poistaaksesi sen käytöstä. Muutokset koskevat tulevia edistymispäivityksiä. Manuaaliset katsottu/ei-katsottu-valinnat säilyvät</string>
@@ -1642,7 +1743,7 @@ Automaattinen tallennus on valinnaista. Se pysähtyy incognito-tilissä tai tili
   <string name="morphe_series_tracker_backup_restore">Palauta varmuuskopio</string>
   <string name="morphe_series_tracker_backup_preview">Lisää %1$s sarjaa. %2$s sarjaa on jo kirjastossasi. Olemassa oleva videon edistyminen säilyy</string>
   <string name="morphe_series_tracker_backup_saved">Sarjavarmuuskopio tallennettu</string>
-  <string name="morphe_series_tracker_backup_restored">Palautettiin %1$s sarjaa</string>
+  <string name="morphe_series_tracker_backup_restored">Palautettu %s sarjaa</string>
   <string name="morphe_series_tracker_error_backup_invalid">Tiedosto ei ole tuettu sarjanvarmuuskopiointi tai se on liian suuri. Kirjastosi ei muuttunut</string>
   <string name="morphe_series_tracker_error_backup_write">Varmuuskopion tallentaminen epäonnistui. Kokeile toista sijaintia</string>
   <string name="morphe_series_tracker_removed">Sarja poistettu</string>
@@ -1652,7 +1753,7 @@ Automaattinen tallennus on valinnaista. Se pysähtyy incognito-tilissä tai tili
   <string name="morphe_series_tracker_recovery_choose">Voit myös valita minkä tahansa alapuolella olevasta jaksosta. Aiemmat jaksot eivät muutu</string>
   <string name="morphe_series_tracker_playback_changed">Soittolista on muuttunut. Avaa sarja valitaksesi, mistä haluat jatkaa</string>
   <string name="morphe_series_tracker_playback_boundary">Ei enempää jaksoja tähän suuntaan</string>
-  <string name="morphe_series_tracker_continue_series">Jatka: %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Jatka %s</string>
   <string name="morphe_series_tracker_search_series">Hae sarjoja</string>
   <string name="morphe_series_tracker_clear_search">Tyhjennä haku</string>
   <string name="morphe_series_tracker_no_search_results">Sarjoja ei löytynyt</string>
@@ -1668,7 +1769,49 @@ Automaattinen tallennus on valinnaista. Se pysähtyy incognito-tilissä tai tili
   <string name="morphe_niconico_comments_opacity_summary">Kommenttitekstin ja taustojen läpinäkyvyys</string>
   <string name="morphe_niconico_comments_travel_duration_title">Keston kesto</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Kuinka monta sekuntia kommenttien kulkeminen näytön yli kestää. Pienemmät arvot liikkuvat nopeammin</string>
+  <string name="morphe_niconico_comments_display_area_title">Näyttöalue</string>
+  <string name="morphe_niconico_comments_display_area_summary">Kuinka suuren osan soittimesta kommentit käyttävät yläreunasta alkaen. Pienemmät arvot pitävät videon alaosan tyhjänä</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimit kommentin pituus</string>
   <string name="morphe_niconico_comments_max_length_summary">Piilottaa kommentit, jotka ovat tämän merkkimäärän pidempiä. Jokainen emojimerkki lasketaan yhdeksi merkiksi</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Ei rajoitusta</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Suurin päivitysnopeus</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Korkein näytön päivitysnopeus, jota käytetään kommenttien liikkuessa. Pienemmät arvot säästävät akkua</string>
+  <string name="morphe_niconico_comments_live_streams_title">Näytä suorissa lähetyksissä</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Suorat lähetykset ja niiden uusinnat</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Näytä ensiilloissa</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Ensiillat niiden toiston aikana</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Näytä päättyneissä ensiilloissa</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Päättyneiden ensi-iltojen chat-toisto</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Näytä ajastetut kommentit</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Videoilla, joissa ei ole chattia, kommentit, jotka sisältävät ajan, kuten 1:23, näytetään kyseisenä ajanhetkenä</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Näytä ajoitetut kommentit chat-toiston kanssa</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Suorien lähetysten ja ensi-esitysten toistoissa ajoitetut kommentit näytetään myös chatin kanssa</string>
+  <string name="morphe_live_chat_translate_screen_title">Live-chatin kääntäminen</string>
+  <string name="morphe_live_chat_translate_screen_summary">Käännä live-chatin ja live-chatin toiston viestit</string>
+  <string name="morphe_live_chat_translate_title">Käännä live-chat</string>
+  <string name="morphe_live_chat_translate_summary">Kääntää live-chatin ja live-chatin toiston viestit, kun ne tulevat näkyviin</string>
+  <string name="morphe_live_chat_translate_language_title">Käännöskieli</string>
+  <string name="morphe_live_chat_translate_exclude_title">Poissuljetut kielet</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Pilkulla erotetut kielikoodit, kuten id,en. Näillä kielillä olevia viestejä ei käännetä</string>
+  <string name="morphe_live_chat_translate_provider_title">Käännöspalvelu</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Kääntäjä</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API -avain</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">DeepL API -avaimesi. Google Kääntäjää käytetään, jos DeepL epäonnistuu, esimerkiksi kun avaimen kuukausittainen raja on täyttynyt</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Näytä viestin kopiointipainike</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Lisää pieni kopiointipainike jokaiseen chat-viestiin</string>
+  <string name="morphe_live_chat_translate_copied">Viesti kopioitu leikepöydälle</string>
+  <string name="morphe_live_chat_translate_style_title">Käännöstyyli</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Vain käännös</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Alkuperäinen (käännös)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Käännös) alkuperäinen</string>
+  <string name="morphe_live_chat_translate_bold_title">Lihavoi käännös</string>
+  <string name="morphe_live_chat_translate_bold_summary">Näyttää käännetyn tekstin lihavoituna</string>
+  <string name="morphe_live_chat_translate_use_color_title">Käännetyn tekstin mukautettu väri</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Käyttää mukautettua väriä käännetyssä tekstissä</string>
+  <string name="morphe_live_chat_translate_color_title">Käännetyn tekstin väri</string>
+  <string name="morphe_live_chat_translate_color_summary">Aseta käännetyn tekstin heksaväri</string>
+  <string name="morphe_live_chat_translate_max_length_title">Viestin maksimipituus</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Pidempiä viestejä ei käännetä</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Ei rajoitusta</string>
 </resources>

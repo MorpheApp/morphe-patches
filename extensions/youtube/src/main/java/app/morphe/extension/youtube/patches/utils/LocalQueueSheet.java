@@ -12,6 +12,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
@@ -39,8 +40,10 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -59,13 +62,13 @@ import app.morphe.extension.youtube.shared.PlayerType;
 public final class LocalQueueSheet {
 
     @Nullable
-    private static LocalQueueSheet current;
+    private static WeakReference<LocalQueueSheet> current;
 
     /**
      * Closes the sheet without the slide animation, so it is not on screen when the player enters Picture-in-Picture.
      */
     public static void dismissImmediately() {
-        LocalQueueSheet sheet = current;
+        LocalQueueSheet sheet = current != null ? current.get() : null;
         if (sheet != null && sheet.dialog.isShowing()) {
             sheet.dialog.dismissImmediately();
         }
@@ -175,9 +178,9 @@ public final class LocalQueueSheet {
         render();
 
         LocalQueuePatch.setListeners(changeListener, metadataListener);
-        current = this;
+        current = new WeakReference<>(this);
         PipDismissHelper.dismissOnPip(dialog, () -> {
-            if (current == this) current = null;
+            if (current != null && current.get() == this) current = null;
             LocalQueuePatch.clearListeners(changeListener, metadataListener);
             scrollView.setOnScrollChangeListener(null);
             drag = null;
@@ -305,9 +308,10 @@ public final class LocalQueueSheet {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private Row buildRow(String videoId, int index, @Nullable LocalQueuePatch.Item item) {
         final boolean nowPlaying = item == null;
-        final int rowColor = nowPlaying ? blend(backgroundColor, foregroundColor, 0.08f) : backgroundColor;
+        final int rowColor = nowPlaying ? blend(backgroundColor, foregroundColor) : backgroundColor;
 
         SwipeRevealRow root = new SwipeRevealRow(context);
         FrameLayout reveal = new FrameLayout(context);
@@ -563,7 +567,7 @@ public final class LocalQueueSheet {
                 row.root.getParent().requestDisallowInterceptTouchEvent(true);
                 beginInteraction();
                 drag = new DragSession(row, event.getRawY());
-                row.foreground.setElevation(Dim.dp8);
+                row.root.setElevation(Dim.dp8);
                 row.root.setScaleX(1.02f);
                 row.root.setScaleY(1.02f);
                 scrollView.postOnAnimation(drag.autoScroll);
@@ -601,14 +605,16 @@ public final class LocalQueueSheet {
         dragged.root.setTranslationY(finger);
 
         final float center = session.tops[origin] + finger + session.heights[origin] / 2f;
-        float[] others = new float[Math.max(0, last)];
+        float[] others = new float[last];
         int n = 0;
         for (int j = 0; j <= last; j++) {
             if (j != origin) {
                 others[n++] = session.tops[j] + session.heights[j] / 2f;
             }
         }
-        session.target = dropIndex(center, others);
+        // At maxY, dropIndex() can still return the second-to-last position,
+        // so select last explicitly.
+        session.target = finger >= maxY ? last : dropIndex(center, others);
 
         final float draggedHeight = session.heights[origin];
         for (int j = 0; j <= last; j++) {
@@ -654,7 +660,7 @@ public final class LocalQueueSheet {
                             row.root.setTranslationY(0);
                             row.shift = 0;
                         }
-                        session.row.foreground.setElevation(0);
+                        session.row.root.setElevation(0);
                         if (drag == session) {
                             drag = null;
                         }
@@ -734,6 +740,12 @@ public final class LocalQueueSheet {
         }
 
         @Override
+        public boolean performClick() {
+            return super.performClick();
+        }
+
+        @SuppressLint("ClickableViewAccessibility")
+        @Override
         public boolean onTouchEvent(MotionEvent event) {
             if (!swiping) return super.onTouchEvent(event);
 
@@ -741,12 +753,14 @@ public final class LocalQueueSheet {
             switch (event.getActionMasked()) {
                 case MotionEvent.ACTION_MOVE:
                     float dx = event.getRawX() - downX;
+                    assert foreground != null;
                     foreground.setTranslationX(dx);
                     foreground.setAlpha(1f - Math.min(0.5f, Math.abs(dx) / Math.max(1, getWidth())));
                     return true;
 
                 case MotionEvent.ACTION_UP:
                 case MotionEvent.ACTION_CANCEL:
+                    assert foreground != null;
                     float offset = foreground.getTranslationX();
                     float velocity = 0;
                     if (velocityTracker != null) {
@@ -765,6 +779,7 @@ public final class LocalQueueSheet {
                                 .setListener(new AnimatorListenerAdapter() {
                                     @Override
                                     public void onAnimationEnd(Animator animation) {
+                                        assert foreground != null;
                                         foreground.animate().setListener(null);
                                         reveal.setVisibility(View.INVISIBLE);
                                         endInteraction();
@@ -779,10 +794,12 @@ public final class LocalQueueSheet {
         }
 
         private void dismiss(int direction) {
+            assert foreground != null;
             foreground.animate().translationX(direction * getWidth()).setDuration(SETTLE_MILLISECONDS)
                     .setListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
+                            assert foreground != null;
                             foreground.animate().setListener(null);
                             collapse();
                         }
@@ -816,10 +833,14 @@ public final class LocalQueueSheet {
         }
     }
 
-    private static final class DragHandleView extends View {
+    /**
+     * Drag handle with three lines, also used by the navigation buttons order setting.
+     */
+    @SuppressLint("ViewConstructor")
+    public static final class DragHandleView extends View {
         private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-        DragHandleView(Context context, int color) {
+        public DragHandleView(Context context, int color) {
             super(context);
             paint.setColor(color);
             paint.setStrokeWidth(2.2f * context.getResources().getDisplayMetrics().density);
@@ -827,7 +848,12 @@ public final class LocalQueueSheet {
         }
 
         @Override
-        protected void onDraw(Canvas canvas) {
+        public boolean performClick() {
+            return super.performClick();
+        }
+
+        @Override
+        protected void onDraw(@NonNull Canvas canvas) {
             final float cx = getWidth() / 2f;
             final float cy = getHeight() / 2f;
             final float half = getWidth() * 0.2f;
@@ -949,10 +975,10 @@ public final class LocalQueueSheet {
         return Color.argb(Math.round(255 * alpha), Color.red(color), Color.green(color), Color.blue(color));
     }
 
-    private static int blend(int base, int over, float amount) {
+    private static int blend(int base, int over) {
         return Color.rgb(
-                Math.round(Color.red(base) * (1 - amount) + Color.red(over) * amount),
-                Math.round(Color.green(base) * (1 - amount) + Color.green(over) * amount),
-                Math.round(Color.blue(base) * (1 - amount) + Color.blue(over) * amount));
+                Math.round(Color.red(base) * (1 - (float) 0.08) + Color.red(over) * (float) 0.08),
+                Math.round(Color.green(base) * (1 - (float) 0.08) + Color.green(over) * (float) 0.08),
+                Math.round(Color.blue(base) * (1 - (float) 0.08) + Color.blue(over) * (float) 0.08));
     }
 }

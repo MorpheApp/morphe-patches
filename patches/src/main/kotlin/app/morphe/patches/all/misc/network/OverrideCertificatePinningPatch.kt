@@ -26,75 +26,64 @@
 
 package app.morphe.patches.all.misc.network
 
-import app.morphe.patcher.patch.resourcePatch
-import app.morphe.util.adoptChild
-import app.morphe.util.getNode
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceFile
+import app.morphe.patcher.patch.resourceXml
+import app.morphe.patcher.patch.resourceXmlOrNull
 import app.morphe.util.trimIndentMultiline
-import org.w3c.dom.Element
 import java.io.File
 
 private const val NETWORK_SECURITY_CONFIG_ATTRIBUTE_NAME = "android:networkSecurityConfig"
 
 @Suppress("unused")
-val overrideCertificatePinningPatch = resourcePatch(
+val overrideCertificatePinningPatch = patch(
     name = "Override certificate pinning",
     description = "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
     default = false
 ) {
     execute {
-        val resXmlDirectory = get("res/xml")
+        val resXmlDirectory = resourceFile("res/xml")
         var networkSecurityFileName = "network_security_config.xml"
 
         // Add android:networkSecurityConfig="@xml/network_security_config"
         // and the "networkSecurityConfig" attribute if it does not exist.
-        document("AndroidManifest.xml").use { document ->
-            val applicationNode = document.getElementsByTagName("application").item(0) as Element
+        resourceXml("AndroidManifest.xml").use { manifest ->
+            val application = manifest.elements("application").first()
+            val config = application.attribute(NETWORK_SECURITY_CONFIG_ATTRIBUTE_NAME)
 
-            if (applicationNode.hasAttribute(NETWORK_SECURITY_CONFIG_ATTRIBUTE_NAME)) {
-                networkSecurityFileName =
-                    applicationNode.getAttribute(NETWORK_SECURITY_CONFIG_ATTRIBUTE_NAME)
-                        .split("/")[1] + ".xml"
+            if (config != null) {
+                networkSecurityFileName = config.split("/")[1] + ".xml"
             } else {
-                document.createAttribute(NETWORK_SECURITY_CONFIG_ATTRIBUTE_NAME)
-                    .apply { value = "@xml/network_security_config" }
-                    .let(applicationNode.attributes::setNamedItem)
+                application.setAttribute(NETWORK_SECURITY_CONFIG_ATTRIBUTE_NAME, "@xml/network_security_config")
             }
         }
 
-        if (get("res/xml/$networkSecurityFileName").exists()) {
-            document("res/xml/$networkSecurityFileName").use { document ->
+        val networkSecurityConfig = resourceXmlOrNull("res/xml/$networkSecurityFileName")
+        if (networkSecurityConfig != null) {
+            networkSecurityConfig.use { config ->
                 arrayOf(
                     "base-config",
                     "debug-overrides"
                 ).forEach { tagName ->
-                    val configElement = document.getNode(tagName) as? Element ?: tagName.let {
-                        document.getNode("network-security-config").adoptChild(tagName) {
+                    val configElement = config.elements(tagName).firstOrNull()
+                        ?: config.elements("network-security-config").first().appendChild(tagName) {
                             if (tagName == "base-config") {
                                 setAttribute("cleartextTrafficPermitted", "true")
                             }
                         }
-                        document.getNode(tagName)
-                    }
-                    val configChildNodes = configElement.childNodes
-                    for (i in 0 until configChildNodes.length) {
-                        val anchorNode = configChildNodes.item(i)
-                        if (anchorNode is Element && anchorNode.tagName == "trust-anchors") {
-                            var injected = false
-                            val certificatesChildNodes = anchorNode.childNodes
-                            for (i in 0 until certificatesChildNodes.length) {
-                                val node = certificatesChildNodes.item(i)
-                                if (node is Element && node.tagName == "certificates") {
-                                    if (node.hasAttribute("src") && node.getAttribute("src") == "user") {
-                                        node.setAttribute("overridePins", "true")
-                                        injected = true
-                                    }
-                                }
+
+                    configElement.children("trust-anchors").forEach { anchor ->
+                        var injected = false
+                        anchor.children("certificates").forEach { certificates ->
+                            if (certificates.attribute("src") == "user") {
+                                certificates.setAttribute("overridePins", "true")
+                                injected = true
                             }
-                            if (!injected) {
-                                anchorNode.adoptChild("certificates") {
-                                    setAttribute("src", "user")
-                                    setAttribute("overridePins", "true")
-                                }
+                        }
+                        if (!injected) {
+                            anchor.appendChild("certificates") {
+                                setAttribute("src", "user")
+                                setAttribute("overridePins", "true")
                             }
                         }
                     }

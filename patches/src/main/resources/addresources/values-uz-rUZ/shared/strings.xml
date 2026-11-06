@@ -181,16 +181,16 @@ Xatti-harakat qidiruvda avvalroq yo'qolgan edi, shuning uchun bir nechta bayroq 
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG o\'rnatilmagan. Uni o\'rnating</string>
   <string name="gms_core_dialog_title">Harakat talab etiladi</string>
-  <string name="gms_core_dialog_outdated_message">"Sizning MicroG v%1s versiyangiz eskirgan va muammolarni keltirib chiqarishi mumkin.
+  <string name="gms_core_dialog_outdated_message">"MicroG v%1$s versiyasi eskirgan va muammolarga olib kelishi mumkin.
 
-Iltimos, MicroGni eng so\"nggi v%2s versiyasiga yangilang"</string>
+Iltimos, MicroG-ni so'nggi v%2$s versiyasiga yangilang"</string>
   <string name="gms_core_dialog_update_text">Yangilash</string>
   <string name="gms_core_dialog_ignore_text">E\'tiborsiz qoldirish</string>
-  <string name="gms_core_dialog_conflict_message">"O\"rnatilgan MicroG Morphe tomonidan tavsiya etilmaydi:
+  <string name="gms_core_dialog_conflict_message">"O'rnatilgan MicroG Morphe tomonidan tavsiya etilmaydi:
 
-%1s
+%s
 
-Uni o\"chirish uchun bosing, so\"ngra ushbu ilovani qayta oching va MicroG RE ni o\"rnating"</string>
+Uni o'chirish uchun bosing, so'ngra ushbu ilovani qayta oching va MicroG RE versiyasini o'rnating"</string>
   <string name="gms_core_dialog_uninstall_text">O\'chirish</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroGda fonda ishlash uchun ruxsat yo\"q.

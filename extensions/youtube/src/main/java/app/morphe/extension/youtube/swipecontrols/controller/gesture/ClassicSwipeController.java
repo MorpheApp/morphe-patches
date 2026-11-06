@@ -15,7 +15,6 @@ import android.view.MotionEvent;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.youtube.shared.PlayerControlsVisibilityObserver;
-import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeZoneAction;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity;
 import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.BaseGestureController;
 import app.morphe.extension.youtube.swipecontrols.misc.Point;
@@ -33,6 +32,8 @@ public final class ClassicSwipeController extends BaseGestureController {
     @Nullable
     private MotionEvent lastOnDownEvent;
 
+    private boolean lastOnDownWasConsumed;
+
     /**
      * @param controller Reference to the main swipe controller.
      */
@@ -44,25 +45,27 @@ public final class ClassicSwipeController extends BaseGestureController {
     @Override
     protected boolean shouldForceInterceptEvents() {
         if (lastOnDownEvent == null) return false;
-        Point origin = Point.fromMotionEvent(lastOnDownEvent);
-        return swipeActionAt(origin, getCurrentSwipe()) != SwipeZoneAction.OFF;
+        return isSwipeControlled(Point.fromMotionEvent(lastOnDownEvent));
     }
 
     @Override
     protected boolean shouldDropMotion(MotionEvent motionEvent) {
-        // ignore gestures with more than one pointer
-        // when such a gesture is detected, dispatch the first event of the gesture to downstream
+        // Leave gestures with more than one pointer to the player.
+        // Replay the initial DOWN only if swipe controls consumed it.
         if (motionEvent.getPointerCount() > 1) {
             if (lastOnDownEvent != null) {
-                controller.dispatchDownstreamTouchEvent(lastOnDownEvent);
+                if (lastOnDownWasConsumed) {
+                    controller.dispatchDownstreamTouchEvent(lastOnDownEvent);
+                }
                 lastOnDownEvent.recycle();
             }
             lastOnDownEvent = null;
             return true;
         }
 
-        // ignore gestures when player controls are visible
-        return playerControlsVisibilityObserver.arePlayerControlsVisible();
+        // ignore gestures when player controls are visible,
+        // except a seek swipe, which shows the controls itself
+        return !isSeeking() && playerControlsVisibilityObserver.arePlayerControlsVisible();
     }
 
     @Override
@@ -83,7 +86,8 @@ public final class ClassicSwipeController extends BaseGestureController {
         lastOnDownEvent = MotionEvent.obtain(motionEvent);
 
         // must be inside swipe zone
-        return isInSwipeZone(motionEvent);
+        lastOnDownWasConsumed = isInSwipeZone(motionEvent);
+        return lastOnDownWasConsumed;
     }
 
     @Override

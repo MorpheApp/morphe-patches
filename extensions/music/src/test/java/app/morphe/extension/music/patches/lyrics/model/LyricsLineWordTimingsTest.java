@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics.model;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -38,15 +39,22 @@ public class LyricsLineWordTimingsTest {
         assertFalse(line.hasWordTimings());
     }
 
-    /** A line made of one word repeated is still one word, so its span may be real timing. */
-    @Test public void singleSpanOverARepeatedWordIsNotMistakenForALineSpan() {
+    /** A span that repeats the whole line is line timing, but one over some words is not. */
+    @Test public void singleSpanOverPartOfAMultiWordLineKeepsWordTimings() {
         final LyricsLine line = new LyricsLine(0, 1000, "la la la",
                 List.of(new Word(0, 1000, "la la la")));
         assertFalse(line.hasWordTimings());
 
         final LyricsLine word = new LyricsLine(0, 1000, "Yeah Yeah",
                 List.of(new Word(0, 1000, "Yeah")));
-        assertFalse(word.hasWordTimings());
+        assertTrue(word.hasWordTimings());
+    }
+
+    /** A span covering every word but not the line's punctuation still carries word timing. */
+    @Test public void singleSpanSharingTheLineWordsKeepsWordTimings() {
+        final LyricsLine line = new LyricsLine(0, 1000, "hello beautiful world!",
+                List.of(new Word(0, 950, "hello beautiful world")));
+        assertTrue(line.hasWordTimings());
     }
 
     /**
@@ -57,5 +65,25 @@ public class LyricsLineWordTimingsTest {
         final LyricsLine line = new LyricsLine(0, 1000, "你好世界",
                 List.of(new Word(0, 1000, "你好世界")));
         assertTrue(line.hasWordTimings());
+    }
+
+    @Test public void wordPreservesRubyAndRomajiTogether() {
+        final Word word = new Word(1000, 2000, "抉", "egu", false, "えぐ");
+        assertEquals("抉", word.text());
+        assertEquals("egu", word.romaji());
+        assertEquals("えぐ", word.ruby());
+        assertFalse(word.endsWithSpace());
+    }
+
+    @Test public void katakanaWordWithLatinRubyGlossPreservesBoth() {
+        final Word word = new Word(1000, 2000, "ノルマ", "no ru ma", false, "Normal");
+        assertEquals("ノルマ", word.text());
+        assertEquals("no ru ma", word.romaji());
+        assertEquals("Normal", word.ruby());
+    }
+
+    @Test public void kanaHiraganaKatakanaConversions() {
+        assertEquals("ふかく", app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer.toHiragana("フカク"));
+        assertEquals("フカク", app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer.toKatakana("ふかく"));
     }
 }

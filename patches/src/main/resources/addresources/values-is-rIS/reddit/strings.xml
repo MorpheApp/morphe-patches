@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Persónuverndarstefna Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Google innskráning ekki tiltæk. Notaðu tölvupóst til að skrá þig inn</string>
+  <string name="morphe_app_downgrade_dialog_title">Niðgreiðsla ekki studd</string>
+  <string name="morphe_app_downgrade_dialog_message">"Þessi uppsetning á Reddit var lægð frá &lt;b&gt;%1$s&lt;/b&gt; í &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Appgögn úr nýrri útgáfu virka ekki með eldri útgáfum og appið gæti ekki virkað rétt.
+&lt;br/&gt;&lt;br/&gt;
+Til að nota elri útgáfu verður þú að &lt;b&gt;afuppsetja&lt;/b&gt; Reddit og installera þá elri útgáfuna."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Opna upplýsingar um app</string>
   <string name="morphe_screen_ads_title">Auglýsingar</string>
   <string name="morphe_hide_post_ads_title">Felja auglýsingar á fóræðinu</string>
   <string name="morphe_hide_comment_ads_title">Felja auglýsingar á athugasmdum</string>

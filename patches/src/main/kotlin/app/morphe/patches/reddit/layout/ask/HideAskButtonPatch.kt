@@ -8,7 +8,7 @@
 package app.morphe.patches.reddit.layout.ask
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.reddit.misc.flag.featureFlagHookPatch
 import app.morphe.patches.reddit.misc.flag.hookFeatureFlag
 import app.morphe.patches.reddit.misc.settings.settingsPatch
@@ -20,7 +20,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideAskButtonPatch;"
 
 @Suppress("unused")
-val hideAskButtonPatch = bytecodePatch(
+val hideAskButtonPatch = patch(
     name = "Hide Ask button",
     description = "Adds an option to hide Ask button in the search bar."
 ) {

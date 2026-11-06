@@ -15,6 +15,7 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.video.videoid.VideoIdFingerprint
 import app.morphe.patches.youtube.video.information.PlayerInitFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -62,13 +63,6 @@ internal object CurrentAccountProviderFingerprint : Fingerprint(
     )
 )
 
-internal object GeneratedRegistryFingerprint : Fingerprint(
-    definingClass = "Lcom/google/protobuf/ExtensionRegistryLite;",
-    name = "getGeneratedRegistry",
-    parameters = listOf(),
-    returnType = "Lcom/google/protobuf/ExtensionRegistryLite;",
-)
-
 internal object HistoryNavigationBuilderFingerprint : Fingerprint(
     definingClass = "Lapp/morphe/extension/youtube/series/HistoryNavigation;",
     name = "buildNative",
@@ -99,13 +93,13 @@ internal object ToolbarMenuFingerprint : Fingerprint(
     returnType = "Landroid/view/Menu;",
 )
 
-internal class ControllerVideoIdFingerprint(accessor: MethodReference) : Fingerprint(
+internal object ControllerVideoIdFingerprint : Fingerprint(
     classFingerprint = PlayerInitFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf(),
     returnType = "Ljava/lang/String;",
     filters = listOf(
-        methodCall(accessor)
+        methodCall(reference = { VideoIdFingerprint.instructionMatches.first().getMethodCalled() })
     )
 )
 

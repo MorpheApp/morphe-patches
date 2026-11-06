@@ -152,6 +152,7 @@ public final class LyricsBracketSplitter {
             backgroundText.append(text, head.open() + 1, head.close());
         }
         if (tail != null) {
+            //noinspection SizeReplaceableByIsEmpty
             if (backgroundText.length() > 0) {
                 backgroundText.append(' ');
             }
@@ -214,7 +215,7 @@ public final class LyricsBracketSplitter {
             }
             final Word word = words.get(i);
             out.add(new Word(word.startMs(), word.endMs(), body,
-                    word.romaji(), body.endsWith(" ")));
+                    word.romaji(), body.endsWith(" "), word.ruby()));
         }
         return out;
     }

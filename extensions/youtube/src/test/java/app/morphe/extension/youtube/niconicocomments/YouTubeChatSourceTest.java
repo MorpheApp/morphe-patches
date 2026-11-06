@@ -48,6 +48,35 @@ public class YouTubeChatSourceTest {
     }
 
     @Test
+    public void showsTimedCommentsWithoutAChatOrWithAChatReplayWhenTurnedOn() {
+        // No chat.
+        assertTrue(YouTubeChatSource.showsTimedComments(false, false, true, false));
+        assertFalse(YouTubeChatSource.showsTimedComments(false, false, false, true));
+        // Chat replay.
+        assertFalse(YouTubeChatSource.showsTimedComments(true, true, true, false));
+        assertTrue(YouTubeChatSource.showsTimedComments(true, true, true, true));
+        assertFalse(YouTubeChatSource.showsTimedComments(true, true, false, true));
+        // Live chat.
+        assertFalse(YouTubeChatSource.showsTimedComments(true, false, true, true));
+    }
+
+    @Test
+    public void parsesInitialDataOfAJsonScriptElement() throws Exception {
+        String html = "<script id=\"yt-initial-data\" type=\"application/json\" nonce=\"abc\">"
+                + "{\"contents\":{\"text\":\"value\"}}</script>"
+                + "<script>var ytDataEl = document.getElementById('yt-initial-data');"
+                + " if (ytDataEl) {window['ytInitialData'] = JSON.parse(ytDataEl.textContent);}</script>";
+
+        JSONObject initialData = YouTubeChatSource.parseMarkedObject(
+                html,
+                YouTubeChatSource.INITIAL_DATA_MARKERS
+        );
+
+        assertNotNull(initialData);
+        assertEquals("value", initialData.getJSONObject("contents").getString("text"));
+    }
+
+    @Test
     public void findsContinuationAndTimeoutRecursively() throws Exception {
         JSONObject value = new JSONObject(
                 "{\"outer\":[{\"invalidationContinuationData\":{"
@@ -152,5 +181,37 @@ public class YouTubeChatSourceTest {
         assertEquals(100, YouTubeChatSource.getLivePollDelayMs(20));
         assertEquals(175, YouTubeChatSource.getLivePollDelayMs(175));
         assertEquals(250, YouTubeChatSource.getLivePollDelayMs(5_000));
+    }
+
+    @Test
+    public void classifiesVideoTypesFromThePlayerResponse() throws Exception {
+        // Trimmed from real watch pages (hl=en): a live stream, a live stream replay and an ended premiere.
+        assertEquals(YouTubeChatSource.VideoType.LIVE_STREAM, YouTubeChatSource.getVideoType(new JSONObject(
+                "{\"videoDetails\":{\"isLive\":true,\"isLiveContent\":true},"
+                        + "\"microformat\":{\"playerMicroformatRenderer\":{\"liveBroadcastDetails\":"
+                        + "{\"isLiveNow\":true,\"startTimestamp\":\"2026-11-02T06:05:33+00:00\"}}}}")));
+        assertEquals(YouTubeChatSource.VideoType.LIVE_STREAM, YouTubeChatSource.getVideoType(new JSONObject(
+                "{\"videoDetails\":{\"isLiveContent\":true},"
+                        + "\"microformat\":{\"playerMicroformatRenderer\":{\"liveBroadcastDetails\":"
+                        + "{\"isLiveNow\":false,\"startTimestamp\":\"2026-08-26T16:59:23+00:00\","
+                        + "\"endTimestamp\":\"2026-08-26T19:25:02+00:00\"}}}}")));
+        assertEquals(YouTubeChatSource.VideoType.ENDED_PREMIERE, YouTubeChatSource.getVideoType(new JSONObject(
+                "{\"videoDetails\":{\"isLiveContent\":false},"
+                        + "\"microformat\":{\"playerMicroformatRenderer\":{\"liveBroadcastDetails\":"
+                        + "{\"isLiveNow\":false,\"startTimestamp\":\"2026-10-26T16:00:07+00:00\","
+                        + "\"endTimestamp\":\"2026-10-26T16:06:23+00:00\"}}}}")));
+        // No running premiere was available to capture; this follows the ended premiere without an end time.
+        assertEquals(YouTubeChatSource.VideoType.LIVE_PREMIERE, YouTubeChatSource.getVideoType(new JSONObject(
+                "{\"videoDetails\":{\"isLiveContent\":false},"
+                        + "\"microformat\":{\"playerMicroformatRenderer\":{\"liveBroadcastDetails\":"
+                        + "{\"isLiveNow\":true,\"startTimestamp\":\"2026-11-02T06:00:00+00:00\"}}}}")));
+    }
+
+    @Test
+    public void unknownVideoTypeKeepsCommentsOn() throws Exception {
+        assertEquals(YouTubeChatSource.VideoType.UNKNOWN, YouTubeChatSource.getVideoType(null));
+        assertEquals(YouTubeChatSource.VideoType.UNKNOWN, YouTubeChatSource.getVideoType(
+                new JSONObject("{\"videoDetails\":{\"isLiveContent\":false}}")));
+        assertTrue(YouTubeChatSource.VideoType.UNKNOWN.isShown());
     }
 }

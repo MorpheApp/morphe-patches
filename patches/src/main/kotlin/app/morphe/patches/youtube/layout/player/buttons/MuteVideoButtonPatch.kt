@@ -7,8 +7,7 @@
 
 package app.morphe.patches.youtube.layout.player.buttons
 
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
@@ -26,7 +25,7 @@ import app.morphe.patches.youtube.video.volume.playerVolumeHookPatch
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/MuteVideoButton;"
 
-private val muteVideoButtonResourcePatch = resourcePatch {
+private val muteVideoButtonResourcePatch = patch {
     dependsOn(
         settingsPatch,
         legacyPlayerControlsPatch
@@ -40,7 +39,7 @@ private val muteVideoButtonResourcePatch = resourcePatch {
 }
 
 @Suppress("unused")
-val muteVideoButtonPatch = bytecodePatch(
+val muteVideoButtonPatch = patch(
     name = "Mute button",
     description = "Adds an option to show a player button that mutes the video audio.",
 ) {

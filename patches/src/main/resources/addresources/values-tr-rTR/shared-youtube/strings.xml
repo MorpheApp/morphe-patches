@@ -154,8 +154,8 @@ Oturum açmak için, devam et butonuna basın."</string>
   <string name="morphe_notification_media_screen_summary">Kilit ekranınızda ve bildirim panelinizde görünen oynatma kontrollerini özelleştirin</string>
   <string name="morphe_hide_notification_media_prev_next_title">Önceki ve Sonraki butonlarını gizle</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Medya bildirimi, kilit ekranı ve kulaklık kontrollerindeki Önceki ve Sonraki butonlarını gizler</string>
-  <string name="morphe_disable_notification_media_seekbar_title">İlerleme çubuğunu devre dışı bırak</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Bildirim panelindeki ve kilit ekranındaki ilerleme çubuğunu sürüklemeyi engeller</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Sardırma çubuğunu devre dışı bırak</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Bildirim paneli ve kilit ekranındaki sardırma çubuğunu sürüklemeyi engeller</string>
   <string name="morphe_seek_notification_media_prev_next_title">Önceki &amp; Sonraki düğmeleriyle sardırma</string>
   <string name="morphe_seek_notification_media_prev_next_summary">Medya bildirimi, kilit ekranı ve kulaklık kontrollerinin videoları değiştirmek yerine sardırma yapmasını sağlar</string>
   <string name="morphe_seek_notification_media_rewind_length_title">Geri sarma süresi</string>
@@ -295,9 +295,9 @@ Daha sonra bu özellik kapatılırsa, arayüz hatalarını önlemek için uygula
   <string name="morphe_ryd_estimated_like_summary">İçerik üreticisinin beğenmeleri kapattığı videolarda tahmini bir beğeni sayısı gösterir</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Bağlantı hatası uyarılarını göster</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike sunucusu kullanılamadığında bir bildirim gösterir</string>
-  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike, YouTube'un 2021'de gizlediği dislike sayılarını geri getirir. Sayılar, kaldırma işleminden önce arşivlenen verilerden gelir ve daha yeni videolar için kullanıcıların oylarından tahmin edilir, bu nedenle yaklaşıktır ve birkaç günde bir güncellenir.
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike, YouTube'nin 2021 yılında gizlediği beğenilmeme sayılarını geri getirir. Sayılar, kaldırılmasından önce arşivlenen verilerden gelir ve yeni videolar için kullanıcılarının oylarından tahmin edilir, bu nedenle yaklaşık sayılardır ve her birkaç gün güncellenir
 
-İzlediğiniz videonun kimliği Return YouTube Dislike API'sine gönderilir ve beğenileriniz ve beğenmeme işlemleriniz, tahminleri iyileştirmek için anonim olarak gönderilir.}],\"action\":\"translate\"}"</string>
+İzlediğiniz videonun kimliği Return YouTube Dislike API'sine gönderilir, ayrıca tahminleri iyileştirmek için beğeni ve beğenmeme işlemleriniz anonim olarak gönderilir"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Bu cihazın Return YouTube Dislike API istatistikleri</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API yanıt süresi, ortalama</string>

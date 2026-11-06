@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.layout.feedviews
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.textcomponent.hookLithoSpannableString
@@ -24,7 +24,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FeedViewCountPatch;"
 
 @Suppress("unused")
-val feedViewCountPatch = bytecodePatch(
+val feedViewCountPatch = patch(
     name = "Feed view count",
     description = "Adds the view count to the bottom left of the thumbnails of feed videos.",
 ) {

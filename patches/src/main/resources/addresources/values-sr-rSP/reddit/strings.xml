@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Политика приватности Редита</string>
   <string name="morphe_google_signin_not_available_toast">Гугл пријава није доступна. Користите имејл за пријаву</string>
+  <string name="morphe_app_downgrade_dialog_title">Повратак на старију верзију није подржан</string>
+  <string name="morphe_app_downgrade_dialog_message">"Ова инсталација Reddit-а је downgraded са &lt;b&gt;%1$s&lt;/b&gt; на &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Подаци апликације из новије верзије не раде са старијим верзијама и апликација можда неће радити исправно.
+&lt;br/&gt;&lt;br/&gt;
+Да бисте користили старију верзију, морате &lt;b&gt;деинсталирати&lt;/b&gt; Reddit, а затим инсталирати старију верзију."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Отвори информације о апликацији</string>
   <string name="morphe_screen_ads_title">Огласи</string>
   <string name="morphe_hide_post_ads_title">Сакриј рекламе у фиду</string>
   <string name="morphe_hide_comment_ads_title">Сакриј рекламе у коментарима</string>

@@ -596,11 +596,13 @@ public final class ChannelSearchPatch {
          */
         private List<ChannelSearchResult> allResults() {
             if (activeSort == SortOption.RELEVANCE) {
+                assert lastResponse != null;
                 return new ArrayList<>(lastResponse.results);
             }
 
             List<ChannelSearchResult> results = titleMatches();
             if (results.isEmpty() && uploadsComplete) {
+                assert lastResponse != null;
                 for (ChannelSearchResult result : lastResponse.results) {
                     if (descriptionMatches(result)) {
                         results.add(result);
@@ -617,6 +619,7 @@ public final class ChannelSearchPatch {
                 videoIds.add(result.videoId);
             }
             // The uploads of the largest channels are only partly listed.
+            assert lastResponse != null;
             for (ChannelSearchResult result : lastResponse.results) {
                 if (ChannelUploadsRequest.matches(result.title, query) && videoIds.add(result.videoId)) {
                     results.add(result);
@@ -674,6 +677,7 @@ public final class ChannelSearchPatch {
             }
         }
 
+        @SuppressLint("SetTextI18n")
         private void setScope(String channelName) {
             if (isScopeSet || channelName.isEmpty()) {
                 return;
@@ -1078,6 +1082,24 @@ public final class ChannelSearchPatch {
             if (!word.isEmpty()) words.add(word);
         }
 
+        int start = getStart(text, words, foldedText);
+
+        final String prefix = start > 0 ? "…" : "";
+        SpannableString snippet = new SpannableString(prefix + text.substring(start));
+        String foldedSnippet = foldedText.substring(start);
+        for (String word : words) {
+            int index = foldedSnippet.indexOf(word);
+            while (index >= 0) {
+                final int spanStart = prefix.length() + index;
+                snippet.setSpan(new StyleSpan(Typeface.BOLD), spanStart, spanStart + word.length(),
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                index = foldedSnippet.indexOf(word, index + word.length());
+            }
+        }
+        return snippet;
+    }
+
+    private static int getStart(String text, List<String> words, String foldedText) {
         int firstMatch = -1;
         for (String word : words) {
             final int index = foldedText.indexOf(word);
@@ -1098,20 +1120,7 @@ public final class ChannelSearchPatch {
                 if (space >= 0 && space < firstMatch) start = space + 1;
             }
         }
-
-        final String prefix = start > 0 ? "…" : "";
-        SpannableString snippet = new SpannableString(prefix + text.substring(start));
-        String foldedSnippet = foldedText.substring(start);
-        for (String word : words) {
-            int index = foldedSnippet.indexOf(word);
-            while (index >= 0) {
-                final int spanStart = prefix.length() + index;
-                snippet.setSpan(new StyleSpan(Typeface.BOLD), spanStart, spanStart + word.length(),
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                index = foldedSnippet.indexOf(word, index + word.length());
-            }
-        }
-        return snippet;
+        return start;
     }
 
     /**

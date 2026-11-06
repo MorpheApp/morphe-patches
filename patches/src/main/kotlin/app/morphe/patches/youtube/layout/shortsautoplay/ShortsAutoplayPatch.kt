@@ -11,8 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
@@ -30,15 +29,12 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ShortsAutoplayPatch;"
 
-val shortsAutoplayPatch = bytecodePatch(
+val shortsAutoplayPatch = patch(
     name = "Shorts autoplay",
     description = "Adds options to automatically play the next Short.",
 ) {
@@ -114,21 +110,23 @@ val shortsAutoplayPatch = bytecodePatch(
         // Manually restore the removed 'Autoplay' code.
         // Variable names are only a rough guess of what these methods do.
         val userActionMethodReference = ReelPlaybackLegacyFingerprint.instructionMatches[1]
-            .getInstruction<ReferenceInstruction>().reference as MethodReference
+            .methodReference
         val reelSequenceControllerMethodReference = ReelPlaybackLegacyFingerprint.instructionMatches[2]
-            .getInstruction<ReferenceInstruction>().reference as MethodReference
+            .methodReference
 
         reelPlaybackRepeat.method.apply {
             // Find the first call modified by extension code above.
-            val extensionReturnResultIndex = indexOfFirstInstructionOrThrow {
-                opcode == Opcode.INVOKE_STATIC &&
-                        getReference<MethodReference>()?.definingClass == EXTENSION_CLASS
-            } + 1
+            val extensionReturnResultIndex = indexOfFirstInstructionOrThrow(
+                methodCall(
+                    opcode = Opcode.INVOKE_STATIC,
+                    definingClass = EXTENSION_CLASS
+                )
+            ) + 1
             val enumRegister = getInstruction<OneRegisterInstruction>(extensionReturnResultIndex).registerA
             val getReelSequenceControllerReference = getInstanceFieldGetFingerprint(
                 reelSequenceControllerMethodReference.definingClass
             ).match(reelPlaybackRepeat.originalMethod)
-                .instructionMatches.first().instruction.getReference<FieldReference>()!!
+                .instructionMatches.first().fieldReference
 
             // Add a helper method to avoid finding multiple free registers.
             // If enum is autoplay then method performs autoplay and returns null,

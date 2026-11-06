@@ -9,13 +9,12 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.matchSingle
 import app.morphe.patches.youtube.shared.WatchNextResponseParserFingerprint
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 /** Observe the parsed response before view filters, including prefetched responses. */
-internal fun installRatingCapture(context: BytecodePatchContext) = with(context) {
+internal fun installRatingCapture() {
     // Hide related videos and Hide video action buttons also use this parser.
     WatchNextResponseParserFingerprint.clearMatch()
     val match = WatchNextResponseParserFingerprint.matchSingle()

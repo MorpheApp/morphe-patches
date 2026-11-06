@@ -181,16 +181,16 @@ Ukuziphatha kuvele kwanyamalala ekuqaleni kokusesha, ngakho kungase kube nama-fl
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">IMicroG ayifakile. Iyifake</string>
   <string name="gms_core_dialog_title">Kudingeka isenzo</string>
-  <string name="gms_core_dialog_outdated_message">"IMicroG v%1s yakho isidala futhi ingadala izinkinga.
+  <string name="gms_core_dialog_outdated_message">"IMicroG yakho v%1$s isidala futhi ingaba yimbangela yezinkinga.
 
-Sicela uthade iMicroG ivulelelwe ku-version yakamuva v%2s"</string>
+Ngicela uthuthukise iMicroG ibe ngu-version yakamuva v%2$s"</string>
   <string name="gms_core_dialog_update_text">Vuselela</string>
   <string name="gms_core_dialog_ignore_text">Yigunde</string>
-  <string name="gms_core_dialog_conflict_message">"IMicroG efakile ayiphikishane ne-Morphe:
+  <string name="gms_core_dialog_conflict_message">"IMicroG efakwe ayikhuthazwa yiMorphe:
 
-%1s
+%s
 
-Thinta ukuze uyisuse, bese uvula futhi lolu hlelo ufake iMicroG RE"</string>
+Chofoza ukuze uyisuse, bese uvula futhi lolu hlelo ufake iMicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Susa ukufaka</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"uMicroG akanalo imvume yokusebenza ngemuva.

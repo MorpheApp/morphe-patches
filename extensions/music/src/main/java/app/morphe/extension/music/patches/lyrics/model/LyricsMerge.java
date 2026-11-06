@@ -244,23 +244,4 @@ public final class LyricsMerge {
         }
         return result;
     }
-
-    /**
-     * Lines sharing a start would leave an empty window, matching nothing and stranding an entry.
-     */
-    private static long windowEnd(List<LyricsLine> lines, int index, long winStart) {
-        final long next = (index + 1 < lines.size())
-                ? lines.get(index + 1).startTimeMs()
-                : Long.MAX_VALUE;
-        if (winStart == LyricsLine.NO_TIME || next > winStart) {
-            return next;
-        }
-        for (int i = index + 1; i < lines.size(); i++) {
-            final long start = lines.get(i).startTimeMs();
-            if (start > winStart) {
-                return start;
-            }
-        }
-        return Long.MAX_VALUE;
-    }
 }

@@ -7,7 +7,6 @@
 
 package app.morphe.patches.shared.misc.settings
 
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settingsmenu.PreferenceGroupFindPreferenceFingerprint
 import app.morphe.patches.shared.misc.settingsmenu.PreferenceSetTitleFingerprint
@@ -31,7 +30,6 @@ internal fun customSettingsNamePreference() = ListPreference(
  *
  * @param getPreferenceScreen Instructions that leave the root PreferenceScreen in [screenRegister].
  */
-context(patchContext: BytecodePatchContext)
 internal fun customSettingsNameInstructions(
     getPreferenceScreen: String,
     screenRegister: Int,

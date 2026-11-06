@@ -8,13 +8,11 @@
 package app.morphe.patches.youtube.layout.player.buttons
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-context(patchContext: BytecodePatchContext)
 fun addPlayerBottomButton(extensionClass: String, extensionMethod: String = "initializeButton") {
     // Update the insertion index after each add, as other patches
     // can insert code before the insertion point.
@@ -31,7 +29,7 @@ fun addPlayerBottomButton(extensionClass: String, extensionMethod: String = "ini
     }
 }
 
-internal val playerOverlayButtonsHookPatch = bytecodePatch {
+internal val playerOverlayButtonsHookPatch = patch {
     dependsOn(
         sharedExtensionPatch
     )

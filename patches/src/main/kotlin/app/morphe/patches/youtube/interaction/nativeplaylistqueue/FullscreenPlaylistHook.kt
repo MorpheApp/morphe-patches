@@ -9,16 +9,16 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-internal fun installFullscreenPlaylist(context: BytecodePatchContext) = with(context) {
+internal fun installFullscreenPlaylist() {
     val container = QuickActionsContainerFingerprint
-        .instructionMatches.last().instruction.getReference<FieldReference>()!!
+        .instructionMatches.last().fieldReference
     val controllerType = container.definingClass
     val callback = quickActionsModelCallbackFingerprint(controllerType).match()
     val setter = callback.instructionMatches.last().getInstruction<Instruction>()

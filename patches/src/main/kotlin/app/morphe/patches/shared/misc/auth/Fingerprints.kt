@@ -14,9 +14,9 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 internal const val GET_PAGE_ID_STRING = ", getPageId="
 internal const val IS_INCOGNITO_STRING = ", isIncognito="
@@ -32,7 +32,7 @@ internal object AccountIdentityToStringFingerprint : Fingerprint(
     )
 )
 
-internal fun getIncognitoStatusFingerprint(incognitoField: FieldReference) = object : Fingerprint(
+internal object IncognitoStatusFingerprint : Fingerprint(
     classFingerprint = AccountIdentityToStringFingerprint,
     returnType = "Z",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -41,16 +41,16 @@ internal fun getIncognitoStatusFingerprint(incognitoField: FieldReference) = obj
         fieldAccess(
             opcode = Opcode.IGET_BOOLEAN,
             location = MatchFirst(),
-            reference = incognitoField
+            reference = { AccountIdentityToStringFingerprint.method.findFieldFromToString(IS_INCOGNITO_STRING) }
         ),
         opcode(
             opcode = Opcode.RETURN,
             location = MatchAfterImmediately()
         )
     )
-) {}
+)
 
-internal fun getPageIdFingerprint(pageIdField: FieldReference) = object : Fingerprint(
+internal object PageIdFingerprint : Fingerprint(
     classFingerprint = AccountIdentityToStringFingerprint,
     returnType = "Ljava/lang/String;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -59,16 +59,16 @@ internal fun getPageIdFingerprint(pageIdField: FieldReference) = object : Finger
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
             location = MatchFirst(),
-            reference = pageIdField
+            reference = { AccountIdentityToStringFingerprint.method.findFieldFromToString(GET_PAGE_ID_STRING) }
         ),
         opcode(
             opcode = Opcode.RETURN_OBJECT,
             location = MatchAfterImmediately()
         )
     )
-) {}
+)
 
-internal fun isEmptyPageIdFingerprint(pageIdField: FieldReference) = object : Fingerprint(
+internal object IsEmptyPageIdFingerprint : Fingerprint(
     classFingerprint = AccountIdentityToStringFingerprint,
     returnType = "Z",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -77,7 +77,7 @@ internal fun isEmptyPageIdFingerprint(pageIdField: FieldReference) = object : Fi
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
             location = MatchFirst(),
-            reference = pageIdField
+            reference = { AccountIdentityToStringFingerprint.method.findFieldFromToString(GET_PAGE_ID_STRING) }
         ),
         string(
             string = "",
@@ -89,4 +89,4 @@ internal fun isEmptyPageIdFingerprint(pageIdField: FieldReference) = object : Fi
             location = MatchAfterImmediately()
         )
     )
-) {}
+)

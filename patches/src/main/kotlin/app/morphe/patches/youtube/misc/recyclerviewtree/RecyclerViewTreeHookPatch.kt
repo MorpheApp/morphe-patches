@@ -1,7 +1,7 @@
 package app.morphe.patches.youtube.misc.recyclerviewtree
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import java.lang.ref.WeakReference
@@ -19,7 +19,7 @@ fun addRecyclerViewTreeHook(classDescriptor: String) {
 }
 
 
-val recyclerViewTreeHookPatch = bytecodePatch {
+val recyclerViewTreeHookPatch = patch {
     dependsOn(sharedExtensionPatch)
 
     execute {

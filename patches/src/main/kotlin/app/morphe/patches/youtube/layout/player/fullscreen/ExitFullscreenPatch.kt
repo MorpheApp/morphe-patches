@@ -10,7 +10,7 @@
 
 package app.morphe.patches.youtube.layout.player.fullscreen
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
@@ -21,7 +21,7 @@ import app.morphe.patches.youtube.video.information.playerStatusHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 
 @Suppress("unused")
-internal val exitFullscreenPatch = bytecodePatch(
+internal val exitFullscreenPatch = patch(
     name = "Exit fullscreen mode",
     description = "Adds options to automatically exit fullscreen mode when a video reaches the end."
 ) {
@@ -31,6 +31,7 @@ internal val exitFullscreenPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        openVideosFullscreenHookPatch,
         playerTypeHookPatch,
         videoInformationPatch
     )

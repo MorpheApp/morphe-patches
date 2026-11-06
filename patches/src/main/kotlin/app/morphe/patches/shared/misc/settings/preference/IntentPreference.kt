@@ -1,7 +1,7 @@
 package app.morphe.patches.shared.misc.settings.preference
 
 import app.morphe.patches.util.resource.BaseResource
-import org.w3c.dom.Document
+import app.morphe.patcher.xml.XmlElement
 
 /**
  * A preference that opens an intent.
@@ -25,15 +25,15 @@ class IntentPreference(
     val intent: Intent,
 ) : BasePreference(key, titleKey, summaryKey, icon, iconBold, layout, tag) {
 
-    override fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit) =
-        super.serialize(ownerDocument, resourceCallback).apply {
-            appendChild(ownerDocument.createElement("intent").also { intentNode ->
+    override fun serialize(parent: XmlElement, index: Int, resourceCallback: (BaseResource) -> Unit) =
+        super.serialize(parent, index, resourceCallback).apply {
+            appendChild("intent") {
                 if (intent.data.isNotEmpty()) {
-                    intentNode.setAttribute("android:data", intent.data)
+                    setAttribute("android:data", intent.data)
                 }
-                intentNode.setAttribute("android:targetClass", intent.targetClass)
-                intentNode.setAttribute("android:targetPackage", intent.targetPackageSupplier())
-            })
+                setAttribute("android:targetClass", intent.targetClass)
+                setAttribute("android:targetPackage", intent.targetPackageSupplier())
+            }
         }
 
     override fun equals(other: Any?): Boolean {

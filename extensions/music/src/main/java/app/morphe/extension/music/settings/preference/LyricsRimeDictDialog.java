@@ -14,8 +14,6 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.text.InputType;
 import android.util.Pair;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -105,7 +103,7 @@ public final class LyricsRimeDictDialog {
 
         final TextView guidance = new TextView(context);
         guidance.setTextSize(14);
-        guidance.setTextColor(withAlpha(fg, 0x99));
+        guidance.setTextColor(fg);
         guidance.setText(str("morphe_music_lyrics_rime_dict_empty"));
         guidance.setPadding(0, 0, 0, Dim.dp12);
         content.addView(guidance);
@@ -165,7 +163,7 @@ public final class LyricsRimeDictDialog {
 
         // Save writes the choice and closes; the fetch runs in the background and answers with a
         // toast, the same model the Local dictionary dialog uses.
-        final Button ok = button(pair.second, str("morphe_settings_save"));
+        final Button ok = ThemedInput.findButton(pair.second, str("morphe_settings_save"));
         if (ok != null) {
             ok.setOnClickListener(v ->
                     save(rows, builtinCodes, customCodes, pair.first, sink, onChanged));
@@ -181,7 +179,7 @@ public final class LyricsRimeDictDialog {
         pair.first.show();
     }
 
-    /** A ticked row, in the app's own colours rather than the dialog theme's. */
+    /** A ticked row, in the app's own colors rather than the dialog theme's. */
     private static CheckBox checkBox(Context context, int fg, CharSequence text, boolean checked) {
         CheckBox box = new CheckBox(context);
         box.setText(text);
@@ -198,6 +196,7 @@ public final class LyricsRimeDictDialog {
     }
 
     /** A second line under a row, smaller and dimmed, for the notes about what a row is. */
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static void addNote(Context context, int fg, LinearLayout parent,
                                 @Nullable CharSequence text) {
         if (text == null || text.length() == 0) {
@@ -264,10 +263,11 @@ public final class LyricsRimeDictDialog {
     }
 
     /** Writes the choice, then fetches whatever the ticks now ask for. */
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static void apply(Map<String, Boolean> builtinChoice, List<String> keptCustom,
-            List<String> lostReading, Dialog dialog,
-            LyricsLocalRomanizationDownloads.ProgressSink sink,
-            @Nullable Runnable onChanged) {
+                              List<String> lostReading, Dialog dialog,
+                              LyricsLocalRomanizationDownloads.ProgressSink sink,
+                              @Nullable Runnable onChanged) {
         for (Map.Entry<String, Boolean> entry : builtinChoice.entrySet()) {
             RimeDictStore.setBuiltinSelected(entry.getKey(), entry.getValue());
         }
@@ -345,23 +345,6 @@ public final class LyricsRimeDictDialog {
         });
     }
 
-    /** Found by label because the button row is reordered when the labels do not fit. */
-    @Nullable
-    private static Button button(ViewGroup layout, CharSequence text) {
-        for (int i = 0; i < layout.getChildCount(); i++) {
-            final View child = layout.getChildAt(i);
-            if (child instanceof Button candidate
-                    && text.toString().contentEquals(candidate.getText())) {
-                return candidate;
-            }
-            if (child instanceof ViewGroup group) {
-                final Button found = button(group, text);
-                if (found != null) return found;
-            }
-        }
-        return null;
-    }
-
     /** Starts the form, tolerating a settings screen that has already gone away. */
     private static void showAddSafely(Context context, @Nullable Runnable onChanged,
             @Nullable Runnable onClosed) {
@@ -395,11 +378,10 @@ public final class LyricsRimeDictDialog {
         LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);
 
-        // The hint sits inside the form's own scroll area, in the dimmed note style the list
-        // dialog uses, rather than as the dialog message that would add a second scroll area.
+        // The hint sits inside the form's scroll area; as a dialog message it would add a second one.
         final TextView hint = new TextView(context);
         hint.setTextSize(14);
-        hint.setTextColor(withAlpha(fg, 0x99));
+        hint.setTextColor(fg);
         hint.setText(str("morphe_music_lyrics_rime_dict_add_hint"));
         hint.setPadding(0, 0, 0, Dim.dp12);
         content.addView(hint);
@@ -436,7 +418,7 @@ public final class LyricsRimeDictDialog {
         // form with what was typed, while Cancel and back do not reopen.
         final int[] outcome = {0}; // 0 closed by the user, 1 saved, 2 refused
         // The OK action runs after create() returns, so it reaches the dialog through a holder.
-        final Pair<Dialog, LinearLayout>[] pairBox = new Pair[1];
+        final Dialog[] dialogBox = new Dialog[1];
         final Pair<Dialog, LinearLayout> pair = CustomDialog.create(context,
                 str("morphe_music_lyrics_rime_dict_add_title"),
                 null,
@@ -445,13 +427,13 @@ public final class LyricsRimeDictDialog {
                 () -> {
                     final boolean ok = add(codeInput, labelInput, urlInput, charSource[0]);
                     outcome[0] = ok ? 1 : 2;
-                    if (ok) pairBox[0].first.dismiss();
+                    if (ok) dialogBox[0].dismiss();
                 },
                 () -> {},
                 null,
                 null,
                 true);
-        pairBox[0] = pair;
+        dialogBox[0] = pair.first;
 
         ScrollView scroll = new ScrollView(context);
         scroll.addView(content);
@@ -508,8 +490,9 @@ public final class LyricsRimeDictDialog {
      *
      * @return whether the list was added.
      */
+    @SuppressWarnings("ConstantValue")
     private static boolean add(EditText codeInput, EditText labelInput, EditText urlInput,
-            String charSource) {
+                               String charSource) {
         final String code = codeInput.getText().toString().trim().toLowerCase(Locale.ROOT);
         final String label = labelInput.getText().toString().trim();
         final String url = urlInput.getText().toString().trim();
@@ -522,7 +505,7 @@ public final class LyricsRimeDictDialog {
             Utils.showToastShort(str("morphe_music_lyrics_rime_dict_bad_code"));
             return false;
         }
-        if (!url.startsWith("https://") || url.length() <= "https://".length()) {
+        if (!url.startsWith("https://") || url.length() == "https://".length()) {
             Utils.showToastShort(str("morphe_music_lyrics_rime_dict_bad_url"));
             return false;
         }
@@ -558,6 +541,7 @@ public final class LyricsRimeDictDialog {
     }
 
     /** The BCP-47 primary subtag of the chosen romanization language, or "" for Automatic. */
+    @SuppressWarnings("ConstantValue")
     private static String currentSubtag() {
         final String language = Settings.LYRICS_ROMANIZE_LANGUAGE.get();
         if (language == null || language.isBlank()

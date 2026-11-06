@@ -13,7 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
@@ -28,17 +28,16 @@ import app.morphe.patches.shared.misc.litho.context.conversionContextClassDef
 import app.morphe.patches.shared.misc.litho.context.conversionContextPatch
 import app.morphe.patches.youtube.layout.returnyoutubedislike.TextComponentDataFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Field
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import java.lang.ref.WeakReference
 
-private lateinit var spannedMethodRef: WeakReference<MutableMethod>
-private var spannedIndex = -1
-private var spannedRegister = -1
 private var spannedContextRegister = -1
 
 private lateinit var textComponentLookupMethodRef : WeakReference<MutableMethod>
@@ -56,7 +55,7 @@ private var lithoSpannableStringCreationCharSequenceRegister = -1
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/TextComponentPatch;"
 
-val textComponentPatch = bytecodePatch(
+val textComponentPatch = patch(
     description = "Provides hooks into text components for extension filtering."
 ) {
     dependsOn(
@@ -64,15 +63,14 @@ val textComponentPatch = bytecodePatch(
     )
 
     execute {
-        SpannableStringBuilderFingerprint.let{
+        SpannableStringBuilderFingerprint.let {
             it.method.apply {
-                spannedMethodRef = WeakReference(this)
-                spannedIndex = it.instructionMatches.first().index
-                spannedRegister = getInstruction<FiveRegisterInstruction>(spannedIndex).registerC
+                val spannedIndex = it.instructionMatches.first().index
+                val spannedRegister = getInstruction<FiveRegisterInstruction>(spannedIndex).registerC
                 spannedContextRegister = findFreeRegister(spannedIndex, spannedRegister)
 
                 addInstructionsAtControlFlowLabel(
-                    spannedIndex++,
+                    spannedIndex,
                     "move-object/from16 v$spannedContextRegister, p0"
                 )
             }
@@ -83,7 +81,7 @@ val textComponentPatch = bytecodePatch(
 /**
  * Hooks the creation and cached lookup of YouTube Litho text Spans.
  */
-internal val lithoSpannableStringPatch = bytecodePatch(
+internal val lithoSpannableStringPatch = patch(
     description = "Provides hooks into Litho text Spans for extension filtering."
 ) {
     dependsOn(
@@ -187,20 +185,52 @@ internal fun hookSpannableString(
     classDescriptor: String,
     methodName: String = "onLithoTextLoaded",
     overrideSpan: Boolean = false
-) = spannedMethodRef.get()!!.apply {
-    if (overrideSpan) {
-        addInstructions(
-            spannedIndex,
+) = SpannableStringBuilderFingerprint.let {
+    // Hooks of the same method, such as hookSpannableStringResult, can shift the instructions.
+    it.clearMatch()
+
+    it.method.apply {
+        val spannedIndex = it.instructionMatches.first().index
+        val spannedRegister = getInstruction<FiveRegisterInstruction>(spannedIndex).registerC
+
+        if (overrideSpan) {
+            addInstructions(
+                spannedIndex,
+                """
+                    invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                    move-result-object v$spannedRegister
+                """
+            )
+        } else {
+            addInstruction(
+                spannedIndex,
+                "invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)V"
+            )
+        }
+    }
+}
+
+/**
+ * Hooks the same texts as [hookSpannableString], where they are returned once their style runs
+ * are applied as spans. Unlike [hookSpannableString], this also includes the texts without any
+ * style runs. The extension method returns the text to use, and text it inserts with a
+ * SpannableStringBuilder keeps the spans in place.
+ */
+internal fun hookSpannableStringResult(
+    classDescriptor: String,
+    methodName: String = "onLithoTextLoaded"
+) = SpannableStringBuilderFingerprint.method.apply {
+    findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { returnIndex ->
+        val textRegister = getInstruction<OneRegisterInstruction>(returnIndex).registerA
+        val contextRegister = findFreeRegister(returnIndex, textRegister)
+
+        addInstructionsAtControlFlowLabel(
+            returnIndex,
             """
-                invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
-                move-result-object v$spannedRegister
+                move-object/from16 v$contextRegister, p0
+                invoke-static { v$contextRegister, v$textRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                move-result-object v$textRegister
             """
-        )
-        spannedIndex += 2
-    } else {
-        addInstruction(
-            spannedIndex++,
-            "invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)V"
         )
     }
 }

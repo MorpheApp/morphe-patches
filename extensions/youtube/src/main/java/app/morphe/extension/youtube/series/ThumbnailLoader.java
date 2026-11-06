@@ -18,6 +18,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -28,7 +32,12 @@ import app.morphe.extension.shared.requests.Requester;
  */
 final class ThumbnailLoader {
     private static final int TIMEOUT_MILLISECONDS = 5000;
-    private static final int CACHE_SIZE_BYTES = 8 * 1024 * 1024;
+
+    /**
+     * More than a page of 100 episodes. A page is redrawn every few seconds while one of its
+     * episodes plays, and a page that does not fit loads most of its thumbnails again each time.
+     */
+    private static final int CACHE_SIZE_BYTES = 32 * 1024 * 1024;
 
     private static final LruCache<String, Bitmap> cache = new LruCache<>(CACHE_SIZE_BYTES) {
         @Override
@@ -37,7 +46,14 @@ final class ThumbnailLoader {
         }
     };
 
+    /**
+     * Views waiting for a thumbnail that is loading. A redrawn page asks again for the thumbnails
+     * still loading for the previous one, and these are loaded only once. Main thread only.
+     */
+    private static final Map<String, List<WeakReference<ImageView>>> waiting = new HashMap<>();
+
     static void load(ImageView view, @Nullable String videoId) {
+        Utils.verifyOnMainThread();
         view.setTag(videoId);
         // The id is part of the url.
         if (videoId == null || !videoId.matches("[A-Za-z0-9_-]{11}")) return;
@@ -48,20 +64,46 @@ final class ThumbnailLoader {
             return;
         }
 
-        WeakReference<ImageView> viewRef = new WeakReference<>(view);
-        Utils.runOnBackgroundThread(() -> {
-            Bitmap bitmap = download(videoId);
-            if (bitmap == null) return;
+        List<WeakReference<ImageView>> views = waiting.computeIfAbsent(videoId, id -> new ArrayList<>());
+        views.add(new WeakReference<>(view));
+        // Already loading.
+        if (views.size() > 1) return;
 
-            cache.put(videoId, bitmap);
-            Utils.runOnMainThread(() -> {
-                ImageView target = viewRef.get();
-                // The view may have been reused for a different video.
-                if (target != null && videoId.equals(target.getTag())) {
-                    target.setImageBitmap(bitmap);
-                }
-            });
+        Utils.runOnBackgroundThread(() -> {
+            Bitmap bitmap = null;
+            try {
+                bitmap = download(videoId);
+                if (bitmap != null) cache.put(videoId, bitmap);
+            } catch (Exception ex) {
+                Logger.printException(() -> "load failure", ex);
+            } finally {
+                // Always remove the waiting views, otherwise this thumbnail is never loaded again.
+                final Bitmap result = bitmap;
+                Utils.runOnMainThread(() -> showLoaded(videoId, result));
+            }
         });
+    }
+
+    private static void showLoaded(String videoId, @Nullable Bitmap bitmap) {
+        List<WeakReference<ImageView>> targets = waiting.remove(videoId);
+        if (bitmap == null || targets == null) return;
+
+        for (WeakReference<ImageView> viewRef : targets) {
+            ImageView target = viewRef.get();
+            // The view may have been reused for a different video.
+            if (target != null && videoId.equals(target.getTag())) {
+                target.setImageBitmap(bitmap);
+            }
+        }
+    }
+
+    /**
+     * Lets go of the cached thumbnails, for when the page showing them closes. The player keeps the
+     * app running in the background, where the thumbnails would otherwise stay for as long as it
+     * plays.
+     */
+    static void evictAll() {
+        cache.evictAll();
     }
 
     /**

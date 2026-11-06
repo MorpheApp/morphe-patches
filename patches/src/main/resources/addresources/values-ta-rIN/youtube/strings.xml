@@ -18,10 +18,26 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_native_snackbar_title">YouTube snackbar-இல் செய்திகளைக் காட்டு</string>
+  <string name="morphe_native_snackbar_summary">பிளேயர் பொத்தானின் உறுதிப்படுத்தல் போன்ற Morphe செய்திகள், பாப்-அப்-க்கு பதிலாக YouTube snackbar-இல் காட்டப்படும்</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_account_menu_downloads_title">பதிவிறக்கங்களை மறைக்கவும்</string>
+  <string name="morphe_post_buttons_screen_title">பதிவு பொத்தான்கள்</string>
+  <string name="morphe_post_buttons_screen_summary">சமூகப் பதிவுகளுக்குக் கீழே உள்ள பொத்தான்களின் தளவமைப்பைத் தேர்வு செய்யவும் மற்றும் எந்தப் பொத்தான்களை மறைக்க வேண்டும் என்பதையும் தேர்வு செய்யவும்</string>
+  <string name="morphe_post_buttons_layout_title">பதிவு பொத்தான்களின் வடிவமைப்பு</string>
+  <string name="morphe_post_buttons_layout_entry_1">சர்வர்</string>
+  <string name="morphe_post_buttons_layout_entry_2">கட்டாயப்படுத்தப்பட்டது</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">பிடிக்கும் மற்றும் பிடிக்கவில்லை பொத்தான்களை மறைக்கவும்</string>
+  <string name="morphe_hide_post_dislike_button_title">பிடிக்கவில்லை பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_post_dislike_button_summary">கட்டாயப்படுத்தப்பட்ட வடிவமைப்பில், பொத்தானின் இடம் காலியாக விடப்படும்</string>
+  <string name="morphe_hide_post_comment_button_title">கருத்து பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_post_comments_preview_title">கருத்துகளின் முன்னோட்டத்தை மறைக்கவும்</string>
+  <string name="morphe_hide_post_comments_preview_summary">பதிவுகளுக்குக் கீழே உள்ள கருத்துகளின் முன்னோட்டத்தை மறைக்கிறது</string>
+  <string name="morphe_hide_post_share_button_title">பகிர் பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_post_share_button_summary">பதிவு படங்களின் பதிவிறக்க பொத்தான் பகிர் பொத்தானுக்கு அருகில் வரையப்பட்டுள்ளது, எனவே அதுவும் மறைக்கப்பட்டுள்ளது</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
           for the card in the Messages section at the top of the Notifications tab. -->
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
@@ -29,6 +45,7 @@ Second \"item\" text"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
+  <string name="morphe_hide_notify_me_button_summary">திட்டமிடப்பட்ட நேரடி ஒளிபரப்புகள் மற்றும் பிரீமியர்களுக்கான நினைவூட்டல் பொத்தானை மறைக்கிறது</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
@@ -47,10 +64,36 @@ Second \"item\" text"</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_comments_carousel_summary">"• ஒரு முக்கிய வார்த்தையை அல்லது முழுப் பெயரை உள்ளிடவும் (உதாரணமாக, Ask, Community, Hype, Listen)
+• அனைத்து உருப்படிகளையும் மறைப்பது முழு கருத்துப் பிரிவையும் மறைக்கும்"</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF-கள் மற்றும் படங்களை மறைக்கவும்</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">கருத்துகள் மற்றும் பதில்களில் இணைக்கப்பட்டுள்ள GIF-கள் மற்றும் படங்களை மறைக்கிறது</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• முகப்பு: %1$s
+• சந்தாக்கள்: %2$s
+• தேடல்: %3$s
+• கருத்துகள்: %4$s
+• மொத்தம்: %5$s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• முகப்பு: %1$s
+• தேடல்: %2$s
+• மொத்தம்: %3$s"</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">ஸ்நாக் பார்</string>
+  <string name="morphe_snackbar_screen_summary">Snackbar-களை மறைக்கவும் அல்லது அவற்றின் நிறங்கள் மற்றும் வடிவத்தை மாற்றவும்</string>
+  <string name="morphe_custom_snackbar_theme_title">தனிப்பயனாக்கப்பட்ட snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">எதிர்மறை தீமின் வண்ணங்களுக்குப் பதிலாக, ஸ்நாக் பார்கள் கீழே உள்ள வண்ணங்கள் மற்றும் மூலை ஆரத்தைப் பயன்படுத்துகின்றன</string>
+  <string name="morphe_custom_snackbar_color_dark_title">டார்க் தீம் பின்னணி வண்ணம்</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">டார்க் தீமில் உள்ள ஸ்நாக் பார்களின் பின்னணி வண்ணம். வாசிப்பதற்கு எது எளிதாக இருக்குமோ, அதற்கேற்ப உரை கருப்பு அல்லது வெள்ளை நிறத்தில் இருக்கும்</string>
+  <string name="morphe_custom_snackbar_color_light_title">லைட் தீம் பின்னணி வண்ணம்</string>
+  <string name="morphe_custom_snackbar_color_light_summary">லைட் தீமில் உள்ள ஸ்நாக் பார்களின் பின்னணி வண்ணம். வாசிப்பதற்கு எது எளிதாக இருக்குமோ, அதற்கேற்ப உரை கருப்பு அல்லது வெள்ளை நிறத்தில் இருக்கும்</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">எல்லை வண்ணம்</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">ஸ்நாக் பார்களைச் சுற்றியுள்ள எல்லையின் வண்ணம். வெளிப்படையான வண்ணம் எல்லையைத் தெரியப்படுத்தாது</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">மூலை ஆரம்</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">ஸ்நாக் பார்களின் மூலை ஆரம் dp-இல்</string>
   <!-- ad.hideAdsPatch -->
   <!-- layout.flyout.flyoutPatch -->
   <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
@@ -59,9 +102,25 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.copytext.copyTextPatch -->
+  <string name="morphe_copy_select_text_title">விளக்கங்கள் மற்றும் பதிவுகளின் உரையைத் தேர்ந்தெடுக்கவும்</string>
+  <string name="morphe_copy_select_text_summary">ஒரு வீடியோ விளக்கம் அல்லது பதிவின் எந்தப் பகுதியையும் தேர்ந்தெடுத்து நகலெடுக்க அதை அழுத்திப் பிடிக்கவும்</string>
+  <string name="morphe_copy_select_text_dialog_title">உரையைத் தேர்ந்தெடுக்கவும்</string>
+  <string name="morphe_copy_select_text_copy_all">அனைத்தையும் நகலெடு</string>
+  <string name="morphe_copy_select_text_success">உரை கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_watch_later_button_summary">ஃபீட் வீடியோக்களின் தம்ப்நைல்களில் \'பின்னரே பார்க்கவும்\' பொத்தான் காண்பிக்கப்படும், வீடியோ சேமிக்கப்பட்டிருந்தால் சரிபார்ப்பு அடையாளம் இருக்கும். அதைத் தட்டும்போது வீடியோ சேமிக்கப்படும் அல்லது நீக்கப்படும், மேலும் அதைத் தட்டிப் பிடிப்பதன் மூலம் \'ப்ளேலிஸ்ட்டில் சேமி\' திறக்கப்படும்</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
+  <string name="morphe_post_image_download_started">%s படங்கள் பதிவிறக்கம் செய்யப்படுகின்றன…</string>
+  <string name="morphe_post_image_download_saved">%1$s படங்கள் %2$s-இல் சேமிக்கப்பட்டன</string>
   <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">பதிவுகளை மொழிபெயர்க்கவும்</string>
+  <string name="morphe_post_translate_summary">உள்ளடக்க உருவாக்குநர்களின் பதிவுகளை மொழிபெயர்ப்பதற்கான ஒரு flyout மெனு உருப்படியைச் சேர்க்கிறது</string>
+  <string name="morphe_post_translate_language_title">பதிவு மொழிபெயர்ப்பு மொழி</string>
+  <string name="morphe_post_translate_flyout">மொழிபெயர்க்கவும்</string>
+  <string name="morphe_post_translate_flyout_original">அசல் பதிவைக் காட்டு</string>
+  <string name="morphe_post_translate_started">மொழிபெயர்க்கப்படுகிறது…</string>
+  <string name="morphe_post_translate_failed">பதிவை மொழிபெயர்க்க முடியவில்லை</string>
+  <string name="morphe_post_translate_same_language">பதிவு ஏற்கனவே மொழிபெயர்ப்பு மொழியிலேயே உள்ளது</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
@@ -70,14 +129,50 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_summary">தேடப்பட்ட அனைத்து வார்த்தைகளையும் கொண்ட பதிவேற்றப்பட்ட கருத்துகளை மட்டும் காண்பிக்க, கருத்துகளில் உள்ள தேடல் பொத்தானைத் தட்டவும். ஒரு சொற்றொடரைத் தேட வார்த்தைகளை மேற்கோள் குறிக்குள் இடவும்</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_shorts_download_flyout_button_summary">Shorts பிளேயரின் மெனுவில் பதிவிறக்க உருப்படியைச் சேர்க்கிறது</string>
+  <string name="morphe_export_download_folder_title">சேமிக்கப்பட்ட வீடியோக்களை ஏற்றுமதி செய்</string>
+  <string name="morphe_export_download_folder_summary">"ஆப்பிற்குள் சேமிக்கப்பட்ட வீடியோக்களை, ஆப்பிற்குள் இருக்கும் பதிவிறக்கங்கள் flyout மெனுவைப் பயன்படுத்தி உங்கள் சாதன சேமிப்பகத்திற்கு ஏற்றுமதி செய்யவும். ஏற்றுமதி கோப்புறையை மாற்ற தட்டவும்
+
+ஏற்றுமதி கோப்புறை: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">ஏற்றுமதி கோப்புறை</string>
+  <string name="morphe_export_download_folder_change">கோப்புறையை மாற்றவும்</string>
+  <string name="morphe_export_download_folder_changed">ஏற்றுமதி கோப்புறை மாற்றப்பட்டது</string>
+  <string name="morphe_export_download_folder_reset">ஏற்றுமதி கோப்புறை மீட்டமைக்கப்பட்டது</string>
+  <string name="morphe_export_download_folder_missing">ஏற்றுமதி கோப்புறை %s ஐக் கண்டறிய முடியவில்லை</string>
+  <string name="morphe_export_download_flyout_title">சாதனத்திற்கு ஏற்றுமதி செய்</string>
+  <string name="morphe_export_download_started">வீடியோ ஏற்றுமதி செய்யப்படுகிறது</string>
+  <string name="morphe_export_download_progress">வீடியோ ஏற்றுமதி செய்யப்படுகிறது: %s%%</string>
+  <string name="morphe_export_download_notification_channel">வீடியோ ஏற்றுமதிகள்</string>
+  <string name="morphe_export_download_saved">வீடியோ %s-க்கு ஏற்றுமதி செய்யப்பட்டது</string>
+  <string name="morphe_export_download_failed">வீடியோவை ஏற்றுமதி செய்ய முடியவில்லை</string>
+  <string name="morphe_export_download_canceled">ஏற்றுமதி ரத்து செய்யப்பட்டது</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Watch later டிராக் ஹேண்டில்களை விரிவுபடுத்துங்கள்</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Watch later வீடியோக்களின் டிராக் ஹேண்டில்களை எளிதாகப் பிடிக்க முடியும்</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Watch later நீக்குதல் ஸ்நாக்பாரை மறைக்கவும்</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Watch later-லிருந்து ஒரு வீடியோ நீக்கப்பட்ட பிறகு உறுதிப்படுத்தல் காட்டப்படாது</string>
   <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.loop.loopVideoButtonPatch -->
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">படம்-உள்ளே-படம் செயல்கள்</string>
+  <string name="morphe_pip_actions_screen_summary">படம்-உள்ளே-படத்தில் காட்டப்படும் பொத்தான்களை மாற்றவும்</string>
+  <string name="morphe_pip_action_left_title">இடது பொத்தான்</string>
+  <string name="morphe_pip_action_center_title">மையப் பொத்தான்</string>
+  <string name="morphe_pip_action_right_title">வலது பொத்தான்</string>
+  <string name="morphe_pip_action_entry_default">இயல்புநிலை</string>
+  <string name="morphe_pip_action_entry_previous">முந்தைய வீடியோ</string>
+  <string name="morphe_pip_action_entry_next">அடுத்த வீடியோ</string>
+  <string name="morphe_pip_action_entry_rewind">10 வினாடிகள் பின்னோக்கிச் செல்</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 வினாடிகள் முன்னோக்கிச் செல்</string>
+  <string name="morphe_pip_action_entry_play_pause">இயக்கு/நிறுத்து</string>
+  <string name="morphe_pip_action_entry_background_playback">பின்னணி இயக்கம்</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
@@ -91,8 +186,14 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_summary">2x வேகத்தில் இயக்குவதற்குப் பதிலாக, ஸ்லைடு செய்து தேடுவதற்கு வீடியோவை அழுத்திப் பிடிக்கவும்</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_summary">இழுப்பதற்குப் பதிலாக அந்த இடத்திற்கு நேரடியாகச் செல்ல சீக் பாரில் எங்காவது தட்டவும்</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
+  <string name="morphe_swipe_seek_title">தேடுவதற்கு ஸ்வைப் செய்யவும்</string>
+  <string name="morphe_swipe_seek_summary">சீக் பாரை நகர்த்த முழுத்திரை பிளேயரில் இடது அல்லது வலதுபுறமாக ஸ்வைப் செய்யவும், பிறகு சீக் செய்ய அதை விடுவிக்கவும்</string>
+  <string name="morphe_swipe_seek_sensitivity_title">சீக் ஸ்வைப் உணர்திறன்</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">ஒவ்வொரு ஸ்வைப்பிற்கும் சீக் பார் எவ்வளவு தூரம் நகர்கிறது</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <!-- layout.buttons.action.hideButtonsPatch -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
@@ -113,17 +214,57 @@ Second \"item\" text"</string>
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- layout.captions.captionsPatch -->
+  <string name="morphe_captions_languages_title">மொழியும் மொழிபெயர்ப்பும்</string>
+  <string name="morphe_captions_presentation_title">தோற்றம் மற்றும் செயல்பாடு</string>
+  <string name="morphe_captions_advanced_title">மேம்பட்டவை</string>
+  <string name="morphe_captions_advanced_summary">குக்கீ மற்றும் டிரான்ஸ்கிரிப்ட் விருப்பங்கள்</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <string name="morphe_preferred_caption_language_summary">ஒவ்வொரு வீடியோவிற்கும் ஒரு தலைப்பு மொழியைத் தானாகவே தேர்ந்தெடுக்கும்</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">கூடுதல் தானியங்கி மொழிபெயர்ப்பு மொழிகள்</string>
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">தலைப்பு அளவு</string>
+  <string name="morphe_caption_scale_summary">ஒற்றை-மொழி மற்றும் இருமொழி தலைப்புகளுக்குப் பொருந்தும்</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">நிலையான தலைப்பு தொகுதிகள்</string>
+  <string name="morphe_stable_caption_blocks_summary">ஒற்றை-மொழி தானியங்கி தலைப்புகளை நிலையான, படிக்கக்கூடிய தொகுப்புகளாகக் குழுவாக்கவும். இருமொழி தலைப்புகள் எப்போதும் தொகுப்புகளைப் பயன்படுத்தும். சில சொற்கள் பேசப்படுவதற்கு முன்னரே தோன்றலாம்</string>
+  <string name="morphe_secondary_caption_language_title">இரண்டாம் நிலை தலைப்பு மொழி</string>
+  <string name="morphe_secondary_caption_language_summary">தலைப்புகளுடன் இரண்டாவது மொழியைக் காண்பிக்கும், மேலும் தலைப்பு மெனுவில் இருமொழி தலைப்புகள் மாற்றியைச் சேர்க்கும்</string>
+  <string name="morphe_dual_captions_enabled_title">இருமொழி தலைப்புகள்</string>
+  <string name="morphe_caption_block_translation_failed">சில தலைப்பு மொழிபெயர்ப்புகள் கிடைக்கவில்லை. கிடைக்கக்கூடிய தலைப்புகள் காண்பிக்கப்படுகின்றன.</string>
+  <string name="morphe_caption_blocks_too_large">இரண்டு தலைப்பு மொழிகளும் இந்த பிளேயரில் பொருந்தவில்லை. முதன்மை மொழி காண்பிக்கப்படுகிறது.</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">வழிசெலுத்தல் பட்டை</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Create' has no display name. Translate normally. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">\'பின்னாளும் பாருங்கள்\' பொத்தானைக் காட்டு</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">பின்னாளும் பாருங்கள்</string>
+  <string name="morphe_navigation_buttons_order_title">வழிசெலுத்தல் பொத்தான்களின் வரிசை</string>
+  <string name="morphe_navigation_buttons_order_summary">வழிசெலுத்தல் பட்டையில் பொத்தான்களின் வரிசையை மாற்ற அவற்றை இழுக்கவும்</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"இது 'You' டேப் உட்பட நேவிகேஷன் பாரை முழுமையாக மறைக்கிறது.
+
+Settings-ஐ அணுக, General → Toolbar → Show Settings button மூலம் Settings பொத்தானைச் செயல்படுத்தவும்"</string>
+  <string name="morphe_narrow_navigation_buttons_summary">பொத்தான்களுக்கு இடையிலான கிடைமட்ட இடைவெளியைக் குறைக்கிறது. கண்ணாடி நேவிகேஷன் பாரில் இது கிடைக்காது, ஏனெனில் அதற்குத் தனிப்பயனாக்கப்பட்ட பொத்தான் இடைவெளி உள்ளது</string>
+  <string name="morphe_navigation_bar_glass_title">கிளாஸ் நேவிகேஷன் பாரை இயக்கவும்</string>
+  <string name="morphe_navigation_bar_glass_summary">நேவிகேஷன் பாரை மிதக்கும், வட்ட வடிவ, ஒளிபுகும் கேப்சூல் போலக் காட்டும். Opaque நேவிகேஷன் பார் ஸ்டைலில் இது கிடைக்காது</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">கிளாஸ் ஒளிபுகும் தன்மை</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">கிளாஸ் நேவிகேஷன் பாரின் வெளிப்படைத்தன்மை அளவை சரிசெய்யவும் (0 என்பது வெளிப்படையானது, 100 என்பது ஒளிபுகாவானது)</string>
+  <string name="morphe_navigation_bar_glass_size_title">கண்ணாடி நேவிகேஷன் பார் அளவு</string>
+  <string name="morphe_navigation_bar_glass_size_summary">கண்ணாடி நேவிகேஷன் பாரின் உயரம், அகலம் மற்றும் பொத்தான் இடைவெளியை முன்னோட்டத்துடன் சரிசெய்யவும். திரையின் அகலத்திற்குள் பொருந்தாத பொத்தான்கள் மறைக்கப்படும்</string>
+  <string name="morphe_navigation_bar_glass_size_height">உயரம்</string>
+  <string name="morphe_navigation_bar_glass_size_width">அதிகபட்ச அகலம்</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">பொத்தான் இடைவெளி</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">காட்டப்படும் பொத்தான்கள்: %2$s இல் %1$s</string>
+  <string name="morphe_toolbar_buttons_order_title">கருவிப்பட்டை பொத்தான்களின் வரிசை</string>
+  <string name="morphe_toolbar_buttons_order_summary">கருவிப்பட்டையில் பொத்தான்களின் வரிசையை மாற்ற அவற்றை இழுக்கவும்</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -144,6 +285,7 @@ Second \"item\" text"</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
+  <string name="morphe_hide_cast_button_summary">வீடியோ பிளேயர் மற்றும் டூல்பாரில் உள்ள காஸ்ட் (Cast) பொத்தானை மறைக்கிறது</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <!-- layout.hide.infocards.hideInfocardsPatch -->
@@ -174,7 +316,6 @@ Second \"item\" text"</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
@@ -187,10 +328,20 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_not_available_title">கூடுதல் மினிபிளேயர்கள்</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube அனைத்து கூடுதல் மினிபிளேயர்களையும் நீக்கிவிட்டது. கூடுதல் மினிபிளேயர் வகைகளை மீட்டெடுக்க, YouTube 21.28.208 அல்லது அதற்கு முந்தைய பதிப்பை பேட்ச் செய்யவும்</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">மேலே ஸ்வைப் செய்து விரிவுபடுத்துங்கள்</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">மினி பிளேயரை மேலே ஸ்வைப் செய்வது, அதைத் திரையின் மேலே நகர்த்துவதற்குப் பதிலாக, பிளேயரை விரிவுபடுத்துகிறது</string>
+  <string name="morphe_miniplayer_docked_title">டாக் செய்யப்பட்ட மினிபிளேயர்</string>
+  <string name="morphe_miniplayer_docked_summary">மினிபிளேயரை அதன் மேல் மிதப்பதற்குப் பதிலாக, நேவிகேஷன் பார் மற்றும் திரையின் பக்கங்களுடன் இணைக்கிறது</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.animations.forceAnimationsPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_duration_title">தொடக்க அனிமேஷன் கால அளவு</string>
+  <string name="morphe_splash_screen_duration_summary">ஒளி அனிமேஷன் எவ்வளவு நேரம் இயங்க வேண்டும். அதைத் தவிர்க்க அனிமேஷனைத் தட்டவும்</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
@@ -226,7 +377,65 @@ Second \"item\" text"</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <!-- Quality refers to video quality -->
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_video_action_bar_layout_title">வீடியோ ஆக்ஷன் பார் லேஅவுட்</string>
+  <string name="morphe_video_action_bar_layout_entry_1">இயல்பானது</string>
+  <string name="morphe_video_action_bar_layout_entry_2">கிளாசிக் ஒரு வரி</string>
+  <string name="morphe_video_action_bar_layout_entry_3">குறைந்தபட்சம்</string>
+  <string name="morphe_video_action_bar_layout_entry_4">கிளாசிக் இரண்டு வரிகள்</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">கட்டுப்பாடு: கிளாசிக் லேஅவுட்கள் பழைய பாணி \'கூடுதல் வீடியோக்கள்\' ஓவர்லேக்குத் திரும்பும்</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_resume_at">%s இல் தொடரவும்</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s எபிசோட்கள் பார்க்கப்பட்டன</string>
+  <string name="morphe_series_tracker_saved_position">சேமிக்கப்பட்ட வீடியோ · %s</string>
+  <string name="morphe_series_tracker_new_episodes">%s புதிய எபிசோட்கள்</string>
+  <string name="morphe_series_tracker_watched_on_advance">அடுத்த பகுதிக்கு நகரும்போது பார்த்ததாகக் குறிக்கவும்</string>
+  <string name="morphe_series_tracker_order_starts_with">இதனுடன் தொடங்குகிறது: %s</string>
+  <string name="morphe_series_tracker_view_count">%s பார்வைகள்</string>
+  <string name="morphe_series_tracker_view_count_one">%s பார்வை</string>
+  <string name="morphe_series_tracker_backup_restored">%s தொடர்கள் மீட்டெடுக்கப்பட்டன</string>
+  <string name="morphe_series_tracker_continue_series">%s தொடரவும்</string>
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_display_area_title">காட்சிப் பகுதி</string>
+  <string name="morphe_niconico_comments_display_area_summary">பிளேயரின் மேல் பகுதியிலிருந்து, கருத்துகள் எவ்வளவு இடத்தை எடுத்துக்கொள்ள வேண்டும் என்பதைக் குறிக்கிறது. குறைந்த மதிப்புகள் வீடியோவின் கீழ் பகுதியைத் தெளிவாக வைத்திருக்கும்</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">அதிகபட்ச புதுப்பிப்பு விகிதம்</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">கருத்துக்கள் நகரும்போது பயன்படுத்தப்படும் மிக உயர்ந்த திரை புதுப்பிப்பு விகிதம். குறைந்த மதிப்புகள் குறைந்த பேட்டரியைப் பயன்படுத்தும்</string>
+  <string name="morphe_niconico_comments_live_streams_title">நேரடி ஒளிபரப்புகளில் காட்டு</string>
+  <string name="morphe_niconico_comments_live_streams_summary">நேரடி ஒளிபரப்புகள் மற்றும் அவற்றின் மறுபதிவுகள்</string>
+  <string name="morphe_niconico_comments_live_premieres_title">பிரீமியர்களில் காண்பி</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">முன்னோட்டங்கள் இயங்கிக் கொண்டிருக்கும்போது</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">முடிவடைந்த பிரீமியர்களில் காண்பி</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">முடிவடைந்த Premiere-களின் சேட் ரீப்ளே</string>
+  <string name="morphe_niconico_comments_timed_comments_title">நேரக் குறிப்புடன் கூடிய கருத்துகளைக் காட்டு</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">சாட் இல்லாத வீடியோக்களில், 1:23 போன்ற நேரத்தைக் கொண்ட சிறந்த கருத்துகள் அந்த நேரத்தில் காட்டப்படும்</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">சாட் ரீப்ளேவுடன் நேரக் குறிப்புகளைக் காட்டு</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">நேரடி ஒளிபரப்புகள் மற்றும் பிரீமியர்களின் ரீப்ளேக்களில், நேரக் குறிப்புகள் சாட் உடன் காட்டப்படும்</string>
+  <string name="morphe_live_chat_translate_screen_title">நேரலை அரட்டை மொழிபெயர்ப்பு</string>
+  <string name="morphe_live_chat_translate_screen_summary">நேரலை அரட்டை மற்றும் நேரலை அரட்டை மறுஇயக்க செய்திகளை மொழிபெயர்க்கவும்</string>
+  <string name="morphe_live_chat_translate_title">நேரலை அரட்டையை மொழிபெயர்க்கவும்</string>
+  <string name="morphe_live_chat_translate_summary">நேரலை அரட்டை மற்றும் நேரலை அரட்டை மறுஇயக்க செய்திகள் திரையில் தோன்றியவுடன் அவற்றை மொழிபெயர்க்கும்</string>
+  <string name="morphe_live_chat_translate_language_title">மொழிபெயர்ப்பு மொழி</string>
+  <string name="morphe_live_chat_translate_exclude_title">விலக்கப்பட்ட மொழிகள்</string>
+  <string name="morphe_live_chat_translate_exclude_summary">id,en போன்ற கமா மூலம் பிரிக்கப்பட்ட மொழி குறியீடுகள். இந்த மொழிகளில் உள்ள செய்திகள் மொழிபெயர்க்கப்படாது</string>
+  <string name="morphe_live_chat_translate_provider_title">மொழிபெயர்ப்பு வழங்குநர்</string>
+  <string name="morphe_live_chat_translate_provider_google">கூகுள் மொழிபெயர்ப்பு</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API விசை</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">உங்கள் DeepL API விசை. விசைக்கான மாத வரம்பு எட்டப்பட்ட போது போன்ற காரணங்களால் DeepL தோல்வியடைந்தால், Google Translate பயன்படுத்தப்படும்</string>
+  <string name="morphe_live_chat_translate_copy_button_title">செய்தியை நகலெடுக்கும் பொத்தானைக் காட்டு</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">ஒவ்வொரு அரட்டை செய்திக்கும் ஒரு சிறிய நகலெடுக்கும் பொத்தானைச் சேர்க்கிறது</string>
+  <string name="morphe_live_chat_translate_copied">செய்தி கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது</string>
+  <string name="morphe_live_chat_translate_style_title">மொழிபெயர்ப்பு நடை</string>
+  <string name="morphe_live_chat_translate_style_translated_only">மொழிபெயர்ப்பப்பட்டது மட்டும்</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">அசல் (மொழிபெயர்க்கப்பட்டது)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(மொழிபெயர்க்கப்பட்டது) அசல்</string>
+  <string name="morphe_live_chat_translate_bold_title">தடிமனான மொழிபெயர்க்கப்பட்ட உரை</string>
+  <string name="morphe_live_chat_translate_bold_summary">மொழிபெயர்க்கப்பட்ட உரையை தடிமனாகக் காட்டுகிறது</string>
+  <string name="morphe_live_chat_translate_use_color_title">தனிப்பயனாக்கப்பட்ட மொழிபெயர்க்கப்பட்ட உரை நிறம்</string>
+  <string name="morphe_live_chat_translate_use_color_summary">மொழிபெயர்க்கப்பட்ட உரைக்கு தனிப்பயனாக்கப்பட்ட நிறத்தைப் பயன்படுத்துகிறது</string>
+  <string name="morphe_live_chat_translate_color_title">மொழிபெயர்க்கப்பட்ட உரை நிறம்</string>
+  <string name="morphe_live_chat_translate_color_summary">மொழிபெயர்க்கப்பட்ட உரையின் ஹெக்ஸ் நிறத்தை அமைக்கவும்</string>
+  <string name="morphe_live_chat_translate_max_length_title">அதிகபட்ச செய்தி நீளம்</string>
+  <string name="morphe_live_chat_translate_max_length_summary">நீளமான செய்திகள் மொழிபெயர்க்கப்படாமல் காட்டப்படும்</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">வரம்பு இல்லை</string>
 </resources>

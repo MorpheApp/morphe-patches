@@ -35,14 +35,14 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.0.0](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;194 patches total
+> **[v2.1.0-dev.12](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.1.0-dev.12)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;200 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;109 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;113 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;21.43.523 | 🧪&nbsp;21.42.241 | 21.30.216 | 21.28.208 | 21.23.492 | 20.51.39 | 20.26.46 |
+| 🧪&nbsp;21.44.528 | 🧪&nbsp;21.43.523 | 21.30.216 | 21.28.208 | 21.23.492 | 20.51.39 | 20.26.46 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -54,14 +54,15 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Ask flyout menu](#ask-flyout-menu) | Adds a video menu entry that opens Ask for the video and summarizes the video. This patch works with YouTube 21.16.256 and newer. |  |
 | [Bypass image region restrictions](#bypass-image-region-restrictions) | Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries. |  |
 | [Bypass link redirects](#bypass-link-redirects) | Adds an option to bypass redirects and open the original link directly. |  |
-| [Captions](#captions) | Adds options to disable captions from being automatically enabled, select a preferred caption language, add more auto-translate languages, and show captions in picture-in-picture. |  |
+| [Captions](#captions) | Adds options to disable captions from being automatically enabled, select a preferred and a secondary caption language, add more auto-translate languages, and show captions in stable blocks and in picture-in-picture. Stable blocks and bilingual captions work with YouTube 21.15 and newer, on Android 10 and newer. |  |
 | [Change form factor](#change-form-factor) | Adds an option to change the UI appearance to a phone, tablet, or automotive device. |  |
 | [Change header](#change-header) | Adds an option to change the header logo in the top left corner of the app. | • Custom header logo |
+| [Change picture-in-picture actions](#change-picture-in-picture-actions) | Adds options to change the buttons shown in picture-in-picture mode. |  |
 | [Change start page](#change-start-page) | Adds an option to set which page the app opens in instead of the homepage. |  |
 | [Channel search](#channel-search) | Adds an option to search inside the channel that is currently open instead of searching all of YouTube. |  |
 | [Channel whitelist](#channel-whitelist) | Adds options to allow whitelisting specific channels to show ads or override playback speeds. |  |
 | [Check watch history domain name resolution](#check-watch-history-domain-name-resolution) | Checks if the device DNS server is preventing user watch history from being saved. |  |
-| [Copy text](#copy-text) | Adds options to copy the video title and comments by tapping and holding them. |  |
+| [Copy text](#copy-text) | Adds options to copy the video title and comments, and to select text of video descriptions and posts, by tapping and holding them. |  |
 | [Copy video link](#copy-video-link) | Adds options to display buttons in the video player to copy video links. |  |
 | [Custom branding](#custom-branding) | Adds options to change the app icon and app name. For mounted (root) installations the branding is applied while patching, because it cannot be changed from the app settings. | • App name<br>• Custom icon<br>• App icon |
 | [Custom font](#custom-font) | Adds an option to show the app with the device system font or a custom TTF or OTF font file instead of YouTube Sans. |  |
@@ -84,7 +85,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Disable video codecs](#disable-video-codecs) | Adds options to disable or force HDR, and to disable VP9 or AV1 codecs. |  |
 | [Double tap to seek](#double-tap-to-seek) | Adds additional double-tap to seek values to the YouTube settings menu. |  |
 | [Download post images](#download-post-images) | Adds a button and a menu item to download the images and GIFs of posts. |  |
-| [Downloads](#downloads) | Adds support to download videos with an external downloader app using the in-app download button or a video player action button, and adds an option to download videos in-app. |  |
+| [Downloads](#downloads) | Adds support to download videos with an external downloader app using the in-app download button or a video player action button, adds an option to download videos in-app, and exports saved videos to the device. |  |
 | [Enable debugging](#enable-debugging) | Adds options for debugging and exporting Morphe logs to the clipboard. |  |
 | [Exit fullscreen mode](#exit-fullscreen-mode) | Adds options to automatically exit fullscreen mode when a video reaches the end. |  |
 | [Feed card layout](#feed-card-layout) | Adds an option to show or hide the card layout of feed videos, which YouTube sends as an A/B test. |  |
@@ -103,7 +104,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Hide info cards](#hide-info-cards) | Adds an option to hide info cards that creators add in the video player. |  |
 | [Hide layout components](#hide-layout-components) | Adds options to hide general layout components. |  |
 | [Hide player flyout menu components](#hide-player-flyout-menu-components) | Adds options to hide menu components that appear when pressing the gear icon in the video player. |  |
-| [Hide player overlay buttons](#hide-player-overlay-buttons) | Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background. |  |
+| [Hide player overlay buttons](#hide-player-overlay-buttons) | Adds options to hide the Cast button, the player Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background. |  |
 | [Hide related video overlay](#hide-related-video-overlay) | Adds an option to hide the related video overlay shown when swiping up in fullscreen. |  |
 | [Hide related videos](#hide-related-videos) | Adds options to hide related videos. |  |
 | [Hide status bar](#hide-status-bar) | Adds an option to hide the system status bar. Swipe down from the top edge to show it for a moment. |  |
@@ -145,27 +146,30 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Shorts icon style](#shorts-icon-style) | Adds an option to change the style of the Shorts action button icons. | • Custom icons |
 | [Skip live Shorts](#skip-live-shorts) | Automatically skips live streams that appear in the Shorts feed. |  |
 | [Skip silence](#skip-silence) | Adds an option to automatically skip silent pauses in audio playback. |  |
+| [Snackbar](#snackbar) | Adds options to hide the snackbar or change its colors and shape. |  |
 | [SponsorBlock](#sponsorblock) | Adds options to enable and configure SponsorBlock, which can skip undesired video segments such as sponsored content. |  |
 | [Spoof app version](#spoof-app-version) | Adds an option to trick the app into thinking you are running an older version. |  |
 | [Spoof device dimensions](#spoof-device-dimensions) | Adds an option to spoof the device dimensions which can unlock higher video qualities. |  |
 | [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
 | [Swipe controls](#swipe-controls) | Adds options to enable and configure volume and brightness swipe controls. |  |
 | [Theme](#theme) | Adds options for theming, and settings to change the app foreground and background colors. | • Dark theme color<br>• Light theme color |
+| [Translate live chat](#translate-live-chat) | Adds an option to translate live chat and live chat replay messages. |  |
 | [Translate posts](#translate-posts) | Adds a menu item to translate the text of posts. |  |
 | [Video delay](#video-delay) | Adds an option to delay the video, to keep it in sync with laggy Bluetooth audio. |  |
 | [Video quality](#video-quality) | Adds options to set default video qualities and always use the advanced video quality menu. |  |
 | [Voice over translation](#voice-over-translation) | Adds additional voice over languages using text-to-speech synchronized to the video playback. |  |
+| [Watch later improvements](#watch-later-improvements) | Adds options to widen the drag handles of the Watch later videos and to hide the snackbar shown after removing a video. |  |
 | [Wide search bar](#wide-search-bar) | Adds a wide search bar to the top of the home and subscription feed. |  |
 
 </details>
 
 <details>
-<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;49 patches</summary>
+<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;51 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;9.43.51 | 🧪&nbsp;9.42.52 | 🧪&nbsp;9.41.52 | 9.30.53 | 9.20.53 | 9.15.51 |
+| 🧪&nbsp;9.44.52 | 🧪&nbsp;9.43.51 | 🧪&nbsp;9.42.52 | 9.30.53 | 9.20.53 | 9.15.51 |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -182,7 +186,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Disable DRC audio](#disable-drc-audio) | Adds an option to disable DRC (Dynamic Range Compression) audio. |  |
 | [Disable QUIC protocol](#disable-quic-protocol) | Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol. |  |
 | [Disable dislike redirection](#disable-dislike-redirection) | Adds an option to prevent skipping to the next track when the dislike button is pressed. |  |
-| [Downloads](#downloads) | Adds support to download songs using the in-app download button, either with an external downloader app or inside YouTube Music. |  |
+| [Downloads](#downloads) | Adds support to download songs, albums and playlists using the in-app download button, either with an external downloader app or inside YouTube Music. |  |
 | [Enable audio/video switch](#enable-audio-video-switch) | Adds an option to switch between the audio and the video version of a track by redirecting videoId. |  |
 | [Enable debugging](#enable-debugging) | Adds options for debugging and exporting Morphe logs to the clipboard. |  |
 | [Enable exclusive audio playback](#enable-exclusive-audio-playback) | Enables the option to play audio without video. |  |
@@ -203,6 +207,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices |  |
 | [Play albums songs](#play-albums-songs) | Adds an option to play the song version of album tracks instead of music videos. |  |
 | [Playback speed](#playback-speed) | Adds options to change the playback speed and pitch of tracks. |  |
+| [Playlist tags](#playlist-tags) | Adds an option to tag playlists from their menu, and to filter the Library playlists by tag. |  |
 | [Playlist track tap action](#playlist-track-tap-action) | Adds an option to play only the tapped track of a playlist or album, or to add it to the queue, instead of replacing the queue with the whole playlist. |  |
 | [PoToken provider](#potoken-provider) | Adds option to get PoToken using an external PoToken minter app. |  |
 | [Remember repeat state](#remember-repeat-state) | Adds an option to remember the repeat state when playing a new track or playlist. |  |
@@ -214,11 +219,12 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Scrobbling](#scrobbling) | Adds options to add played tracks to Last.fm and ListenBrainz. |  |
 | [Settings menu filter](#settings-menu-filter) | Adds an option to hide items on the standard YouTube Music settings screen by their visible name. |  |
 | [Skip silence](#skip-silence) | Adds an option to automatically skip silent pauses in audio playback. |  |
+| [SoundProof](#soundproof) | Adds an option to skip tracks of artists reported as AI in the SoundProof community database. |  |
 | [SponsorBlock](#sponsorblock) | Adds options to enable and configure SponsorBlock, which can skip non-music segments. |  |
 | [Spoof app version](#spoof-app-version) | Adds an option to trick the app into thinking you are running an older version. |  |
 | [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
 | [Theme](#theme) | Adds options for theming, and settings to change the app foreground and background colors. | • Dark theme color |
-| [Third-party lyrics](#third-party-lyrics) | Adds an option to show synced lyrics with experience enhancement from 18+ providers in the lyrics panel. |  |
+| [Third-party lyrics](#third-party-lyrics) | Adds an option to show synced lyrics with experience enhancement from 19+ providers in the lyrics panel. |  |
 
 </details>
 
@@ -288,6 +294,8 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 We currently accept pull requests for fixes/improvements to YouTube, YT Music, and Reddit.
 If you have developed patches for other apps, you are encouraged to release your patches in a third party repository.
 See the [Patches template](https://github.com/morpheapp/morphe-patches-template) for more information.  
+
+Before opening a pull request, read the [contribution guidelines](CONTRIBUTING.md).
 
 ## 📜 License
 

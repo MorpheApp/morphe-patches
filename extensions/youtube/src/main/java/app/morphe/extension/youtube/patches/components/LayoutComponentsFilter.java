@@ -25,6 +25,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -68,6 +69,10 @@ public final class LayoutComponentsFilter extends Filter {
 
     private static final List<String> channelTabFilterStrings = Utils.getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
     private static final List<String> flyoutMenuFilterStrings = Utils.getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
+    /**
+     * Texts of the download item of the menus. Newer app versions also have the second text.
+     */
+    private static final String[] FLYOUT_DOWNLOAD_TEXTS = {"add_video_to_offline", "menu_add_to_offline"};
 
     @Nullable
     private static List<?> channelTabs;
@@ -81,8 +86,9 @@ public final class LayoutComponentsFilter extends Filter {
 
     /**
      * Browse id of the page that is shown, or empty for the search feed.
+     * Also used by {@link HorizontalShelvesFilter}.
      */
-    private static volatile String browseId = "";
+    static volatile String browseId = "";
 
     /**
      * Injection point.
@@ -121,9 +127,12 @@ public final class LayoutComponentsFilter extends Filter {
     private final ByteArrayFilterGroupList linearLayoutGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup liveStream;
     private final ByteArrayFilterGroup liveStreamBuffer;
+    private final StringFilterGroup libraryDownloads;
+    private final ByteArrayFilterGroup libraryDownloadsBuffer;
     private final StringFilterGroup notificationsMenuHeader;
     private final ByteArrayFilterGroup notificationsMenuHeaderBuffer;
     private final StringFilterGroup notifyMe;
+    private final StringFilterGroup playables;
     private final StringFilterGroup searchFriction;
     private final StringFilterGroup singleItemInformationPanel;
     private final StringFilterGroup subscribedChannelsBarName;
@@ -204,6 +213,19 @@ public final class LayoutComponentsFilter extends Filter {
                 "yt_outline_experimental_live_black"
         );
 
+        // 'Downloads' item of the 'You' tab. It's a lockup, so the bottom menu filter can't match its name.
+        libraryDownloads = new StringFilterGroup(
+                Settings.HIDE_ACCOUNT_MENU_DOWNLOADS,
+                "video_lockup_with_attachment.e"
+        );
+
+        // The title is localized, but only the 'Downloads' item has this icon.
+        libraryDownloadsBuffer = new ByteArrayFilterGroup(
+                null,
+                "yt_outline_download_black",
+                "yt_outline_experimental_download_black"
+        );
+
         // The hint shown in the player during seek gestures. The identifier is versioned.
         final var seekEduOverlay = new StringFilterGroup(
                 Settings.HIDE_PLAYER_GESTURE_HINTS,
@@ -216,6 +238,7 @@ public final class LayoutComponentsFilter extends Filter {
                 linearLayout,
                 liveChatReplay,
                 liveStream,
+                libraryDownloads,
                 seekEduOverlay
         );
 
@@ -360,11 +383,6 @@ public final class LayoutComponentsFilter extends Filter {
                 "PAfeedback_genai"
         );
 
-        final var forYouShelf = new StringFilterGroup(
-                Settings.HIDE_HORIZONTAL_SHELVES,
-                "mixed_content_shelf"
-        );
-
         final var imageShelf = new StringFilterGroup(
                 Settings.HIDE_IMAGE_SHELF,
                 "image_shelf"
@@ -395,7 +413,7 @@ public final class LayoutComponentsFilter extends Filter {
                 "set_reminder_button"
         );
 
-        final var playables = new StringFilterGroup(
+        playables = new StringFilterGroup(
                 Settings.HIDE_PLAYABLES,
                 "horizontal_gaming_shelf.e",
                 "mini_game_card.e"
@@ -482,6 +500,18 @@ public final class LayoutComponentsFilter extends Filter {
                 "web_result_panel"
         );
 
+        // The preview of the comments is loaded separately and added to the post, so it's hidden by its component.
+        final var postCommentsPreview = new StringFilterGroup(
+                Settings.HIDE_POST_COMMENTS_PREVIEW,
+                "post_comments_carousel.e"
+        );
+
+        // The like and dislike buttons share their data, so the dislike button alone is hidden by its component.
+        final var postDislikeButton = new StringFilterGroup(
+                Settings.HIDE_POST_DISLIKE_BUTTON,
+                "post_dislike_button.e"
+        );
+
         addPathCallbacks(
                 artistCard,
                 audioTrackButton,
@@ -500,13 +530,14 @@ public final class LayoutComponentsFilter extends Filter {
                 crowdfundingBox,
                 emergencyBox,
                 expandableMetadata,
-                forYouShelf,
                 imageShelf,
                 infoPanel,
                 medicalPanel,
                 notificationsMenuHeader,
                 notifyMe,
                 playables,
+                postCommentsPreview,
+                postDislikeButton,
                 postsShelf,
                 searchFriction,
                 singleItemInformationPanel,
@@ -685,9 +716,21 @@ public final class LayoutComponentsFilter extends Filter {
             return isLockupRoot(path) && liveStreamBuffer.check(buffer).isFiltered();
         }
 
+        if (matchedGroup == libraryDownloads) {
+            // Only check the whole lockup, for the same reason as the live streams.
+            return Settings.HIDE_ACCOUNT_MENU.get()
+                    && isLockupRoot(path)
+                    && NavigationButton.getSelectedNavigationButton(contextInterface) == NavigationButton.LIBRARY
+                    && libraryDownloadsBuffer.check(buffer).isFiltered();
+        }
+
         if (matchedGroup == notificationsMenuHeader) {
             return Utils.startsWith(path, "subscribe_menu_notifications.e")
                     && notificationsMenuHeaderBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == playables) {
+            return !("FEmini_app_destination".equals(browseId));
         }
 
         // This identifier is used not only in players but also in search results: Until 2024, medical
@@ -894,6 +937,184 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         return outerButtonLists;
+    }
+
+    /**
+     * Layout of the buttons below the posts.
+     */
+    public enum PostButtonsLayout {
+        /**
+         * The layout that the server sends.
+         */
+        SERVER,
+        /**
+         * The grouped layout of the post template, with the comment and share buttons next to the like and dislike
+         * buttons, so every account gets the same buttons and the hidden buttons can be found.
+         * The posts of the wide layout (post_base_wrapper_slim) have no grouped layout and keep their layout.
+         */
+        ENFORCED
+    }
+
+    /**
+     * Command of the comment button, which opens the comments panel of the post,
+     * at the same path below the data of the buttons in every layout of the posts.
+     */
+    private static final String POST_COMMENTS_COMMAND_PREFIX = "post-comments-";
+    private static final int[] POST_COMMENTS_COMMAND_PATH = {3, 1, 169495254, 138681778, 10, 3};
+
+    /**
+     * The root templates of the posts, which differ between accounts and screen sizes,
+     * and the command of the comment button, which every layout of the posts has.
+     */
+    private static final ByteArrayFilterGroup postBuffer = new ByteArrayFilterGroup(
+            null,
+            "_post_root",
+            "_post_responsive_root",
+            "post_base_wrapper",
+            "post_shelf_slim.e",
+            POST_COMMENTS_COMMAND_PREFIX
+    );
+
+    /**
+     * Data of the buttons below a post, in the model of the post: the like and dislike buttons,
+     * the share button, the comment button, and the field that turns on the grouped layout.
+     * The model is an extension field, which differs between the types of post, such as the images, text,
+     * polls and videos.
+     */
+    private static final int[] POST_BUTTONS_PATH = {1, 1, 5};
+    /**
+     * Lowest field number of the extension fields, such as the models of the posts.
+     */
+    private static final int POST_MODEL_MIN_FIELD = 1 << 20;
+    private static final int POST_LIKE_DISLIKE_BUTTONS_FIELD = 1;
+    private static final int POST_SHARE_BUTTON_FIELD = 2;
+    private static final int POST_COMMENT_BUTTON_FIELD = 3;
+    private static final int POST_GROUPED_LAYOUT_FIELD = 7;
+    /**
+     * The grouped layout field set to 1 (field 7, varint).
+     */
+    private static final byte[] POST_GROUPED_LAYOUT_BYTES = {0x38, 0x01};
+
+    /**
+     * Data of the buttons below a post of the wide layout (post_base_wrapper_slim), such as on tablets:
+     * the like and dislike buttons, and the fields that show the comment and the share buttons.
+     */
+    private static final int[] WIDE_POST_BUTTONS_PATH = {263835042, 4, 1, 3};
+    private static final int WIDE_POST_LIKE_BUTTON_FIELD = 7;
+    private static final int WIDE_POST_DISLIKE_BUTTON_FIELD = 8;
+    private static final int WIDE_POST_SHOW_COMMENT_BUTTON_FIELD = 9;
+    private static final int WIDE_POST_SHOW_SHARE_BUTTON_FIELD = 10;
+
+    /**
+     * Injection point.
+     * Removes the data of the hidden buttons below the posts, so the post lays out the other buttons
+     * without the space of the hidden ones, and turns on the grouped layout of the buttons.
+     * The template of the post leaves out a button without its data in every layout, also in the layouts of other
+     * accounts, which the paths of the Litho filters may not match
+     * (<a href="https://github.com/MorpheApp/morphe-patches/issues/4367">...</a>).
+     */
+    public static byte[] setPostButtons(byte[] bytes) {
+        try {
+            final boolean enforced = Settings.POST_BUTTONS_LAYOUT.get() == PostButtonsLayout.ENFORCED;
+            final boolean hideLikeDislike = Settings.HIDE_POST_LIKE_DISLIKE_BUTTONS.get();
+            final boolean hideShare = Settings.HIDE_POST_SHARE_BUTTON.get();
+            final boolean hideComment = Settings.HIDE_POST_COMMENT_BUTTON.get();
+            if ((!enforced && !hideLikeDislike && !hideShare && !hideComment)
+                    || !postBuffer.check(bytes).isFiltered()) {
+                return bytes;
+            }
+
+            List<ProtoNode> element = ProtoNode.parse(bytes);
+            if (element == null) {
+                return bytes;
+            }
+
+            // The data of the buttons is found by the command of the comment button, at any depth, such as in the
+            // layouts that wrap another layout of the post. The posts without comments are found by the paths of
+            // the known layouts.
+            List<ProtoNode> postButtons = new ArrayList<>();
+            for (ProtoNode text : ProtoNode.textNodes(element)) {
+                if (text.getText().startsWith(POST_COMMENTS_COMMAND_PREFIX)
+                        && text.pathEndsWith(POST_COMMENTS_COMMAND_PATH)) {
+                    ProtoNode buttons = text;
+                    for (int i = 0; i < POST_COMMENTS_COMMAND_PATH.length && buttons != null; i++) {
+                        buttons = buttons.getParent();
+                    }
+                    if (buttons != null && !postButtons.contains(buttons)) {
+                        postButtons.add(buttons);
+                    }
+                }
+            }
+            for (ProtoNode buttons : ProtoNode.findMessages(element, POST_BUTTONS_PATH)) {
+                ProtoNode model = buttons.getParent().getParent().getParent();
+                // Only the buttons data of a post model, which has the share or the comment button.
+                if (model != null && model.getFieldNumber() >= POST_MODEL_MIN_FIELD && buttons.children != null
+                        && (ProtoNode.field(buttons.children, POST_SHARE_BUTTON_FIELD) != null
+                        || ProtoNode.field(buttons.children, POST_COMMENT_BUTTON_FIELD) != null)
+                        && !postButtons.contains(buttons)) {
+                    postButtons.add(buttons);
+                }
+            }
+            for (ProtoNode buttons : ProtoNode.findMessages(element, WIDE_POST_BUTTONS_PATH)) {
+                if (!postButtons.contains(buttons)) {
+                    postButtons.add(buttons);
+                }
+            }
+
+            boolean modified = false;
+            for (ProtoNode buttons : postButtons) {
+                List<ProtoNode> fields = buttons.children;
+                if (fields == null) {
+                    continue;
+                }
+
+                // The wide layout shows the comment and the share buttons with flags.
+                ProtoNode showComment = ProtoNode.field(fields, WIDE_POST_SHOW_COMMENT_BUTTON_FIELD);
+                ProtoNode showShare = ProtoNode.field(fields, WIDE_POST_SHOW_SHARE_BUTTON_FIELD);
+                if (buttons.pathEndsWith(WIDE_POST_BUTTONS_PATH)
+                        || (showComment != null && showComment.getVarint() != null)
+                        || (showShare != null && showShare.getVarint() != null)) {
+                    for (ProtoNode field : new ArrayList<>(fields)) {
+                        final int fieldNumber = field.getFieldNumber();
+                        if (hideLikeDislike && (fieldNumber == WIDE_POST_LIKE_BUTTON_FIELD
+                                || fieldNumber == WIDE_POST_DISLIKE_BUTTON_FIELD)) {
+                            field.remove();
+                            modified = true;
+                        } else if (((hideComment && fieldNumber == WIDE_POST_SHOW_COMMENT_BUTTON_FIELD)
+                                || (hideShare && fieldNumber == WIDE_POST_SHOW_SHARE_BUTTON_FIELD))
+                                && field.getVarint() != null) {
+                            field.setVarint(0);
+                            modified = true;
+                        }
+                    }
+                    continue;
+                }
+
+                for (ProtoNode field : new ArrayList<>(fields)) {
+                    final int fieldNumber = field.getFieldNumber();
+                    if ((hideLikeDislike && fieldNumber == POST_LIKE_DISLIKE_BUTTONS_FIELD)
+                            || (hideShare && fieldNumber == POST_SHARE_BUTTON_FIELD)
+                            || (hideComment && fieldNumber == POST_COMMENT_BUTTON_FIELD)) {
+                        field.remove();
+                        modified = true;
+                    }
+                }
+
+                if (enforced && ProtoNode.field(fields, POST_GROUPED_LAYOUT_FIELD) == null) {
+                    byte[] data = ProtoNode.write(fields);
+                    byte[] grouped = Arrays.copyOf(data, data.length + POST_GROUPED_LAYOUT_BYTES.length);
+                    System.arraycopy(POST_GROUPED_LAYOUT_BYTES, 0, grouped, data.length, POST_GROUPED_LAYOUT_BYTES.length);
+                    buttons.setPayload(grouped);
+                    modified = true;
+                }
+            }
+
+            return modified ? ProtoNode.write(element) : bytes;
+        } catch (Exception ex) {
+            Logger.printException(() -> "setPostButtons failure", ex);
+        }
+
+        return bytes;
     }
 
     /**
@@ -1176,11 +1397,9 @@ public final class LayoutComponentsFilter extends Filter {
 
         String menuTitleString = menuTitleCharSequence.toString();
 
-        for (String filter : flyoutMenuFilterStrings) {
-            if (menuTitleString.equalsIgnoreCase(filter)) {
-                Logger.printDebug(() -> "Hiding: " + menuTitleString);
-                return null;
-            }
+        if (isFlyoutMenuFiltered(menuTitleString)) {
+            Logger.printDebug(() -> "Hiding: " + menuTitleString);
+            return null;
         }
 
         return menuTitleCharSequence;
@@ -1203,12 +1422,35 @@ public final class LayoutComponentsFilter extends Filter {
 
         String menuTitleString = menuTitleCharSequence.toString();
 
+        if (isFlyoutMenuFiltered(menuTitleString)) {
+            Logger.printDebug(() -> "Hiding: " + menuTitleString);
+            Utils.hideViewByLayoutParams(parentView);
+        }
+    }
+
+    /**
+     * The download item shows a placeholder while the state of the download is loaded in the background,
+     * and shows its real text only about a second after the menu opens. A filter of the download text
+     * therefore also hides the placeholder, otherwise the item is shown and then collapses.
+     */
+    private static boolean isFlyoutMenuFiltered(String menuTitle) {
+        final boolean isDownloadPlaceholder = menuTitle.equals(ResourceUtils.getString("menu_offline_placeholder"));
+
         for (String filter : flyoutMenuFilterStrings) {
-            if (menuTitleString.equalsIgnoreCase(filter)) {
-                Logger.printDebug(() -> "Hiding: " + menuTitleString);
-                Utils.hideViewByLayoutParams(parentView);
+            if (menuTitle.equalsIgnoreCase(filter)) {
+                return true;
+            }
+            if (isDownloadPlaceholder) {
+                for (String downloadText : FLYOUT_DOWNLOAD_TEXTS) {
+                    if (ResourceUtils.getStringIdentifier(downloadText) != 0
+                            && filter.equalsIgnoreCase(ResourceUtils.getString(downloadText))) {
+                        return true;
+                    }
+                }
             }
         }
+
+        return false;
     }
 
     /**
@@ -1451,32 +1693,6 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         return heightMeasureSpec;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static boolean hideSnackbar(boolean skipDisplay) {
-        return skipDisplay || Settings.HIDE_SNACKBAR.get();
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void hideLithoSnackBar(FrameLayout frameLayout) {
-        if (Settings.HIDE_SNACKBAR.get()) {
-            Utils.hideViewByLayoutParams(frameLayout);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void handleLegacySnackbar(View view) {
-        if (Settings.HIDE_SNACKBAR.get()) {
-            Utils.hideViewByLayoutParams(view);
-            view.setVisibility(View.GONE);
-        }
     }
 
     /**

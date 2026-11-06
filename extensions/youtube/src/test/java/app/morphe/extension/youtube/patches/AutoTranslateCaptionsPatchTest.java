@@ -15,6 +15,7 @@ import static org.junit.Assert.assertSame;
 import org.junit.Test;
 
 import java.text.Collator;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -54,6 +55,31 @@ public class AutoTranslateCaptionsPatchTest {
     private static CaptionTrackInterface find(List<CaptionTrackInterface> tracks, String code) {
         return tracks.stream().filter(t -> code.equals(t.patch_getLanguageCode()))
                 .findFirst().orElseThrow(AssertionError::new);
+    }
+
+    @Test public void languageCataloguePreservesSavedAliasesWithoutDuplicates() {
+        String[][] aliases = {{"he", "iw"}, {"nb", "no"}, {"pt-BR", "pt"},
+                {"zh-CN", "zh-Hans"}, {"zh-TW", "zh-Hant"}};
+        for (String[] alias : aliases) {
+            var codes = Arrays.asList(AutoTranslateCaptionsPatch.translationLanguages(alias[0]));
+            assertEquals(156, codes.size());
+            assertEquals(1, codes.stream().filter(alias[0]::equals).count());
+            assertFalse(codes.contains(alias[1]));
+            assertEquals(AutoTranslateCaptionsPatch.translationLanguageName(alias[1], Locale.ENGLISH),
+                    AutoTranslateCaptionsPatch.translationLanguageName(alias[0], Locale.ENGLISH));
+            assertEquals(alias[1], AutoTranslateCaptionsPatch.translationLanguage(alias[0]));
+        }
+        assertEquals(1, Arrays.stream(AutoTranslateCaptionsPatch.translationLanguages("off"))
+                .filter("iw"::equals).count());
+        assertFalse(Arrays.asList(AutoTranslateCaptionsPatch.translationLanguages("default"))
+                .contains("default"));
+    }
+
+    @Test public void generatedPortugueseLabelsDistinguishBrazilAndPortugal() {
+        var menu = add(List.of(new Track("de", "German")), Locale.ENGLISH);
+        assertEquals("Portuguese (Brazil)", find(menu, "pt").toString());
+        assertEquals("Portuguese (Portugal)", find(menu, "pt-PT").toString());
+        assertEquals("pt", find(menu, "pt").patch_getLanguageCode());
     }
 
     @Test public void addsMissingLanguagesAndKeepsNativeTracks() {

@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
+import android.graphics.Bitmap;
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
 import android.net.Uri;
@@ -48,6 +49,7 @@ import app.morphe.extension.music.patches.lyrics.model.TrackVersion;
 import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
 import app.morphe.extension.music.patches.lyrics.requests.DeezerProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LocalLyricsFetcher;
+import app.morphe.extension.music.patches.lyrics.requests.LrcRedProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaBeatProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
@@ -170,12 +172,12 @@ public final class LyricsManager {
     /** Fingerprints of the candidates the user left in order for this track, in that order. */
     @Nullable
     private volatile List<String> rememberedQueue;
-    private final Choreographer.FrameCallback frameCallback = this::onFrame;
     /** Custom search terms remembered for this track, or null when the default terms were used. */
     @Nullable
     private volatile String searchQueryTitle;
     @Nullable
     private volatile String searchQueryArtist;
+    private final Choreographer.FrameCallback frameCallback = this::onFrame;
     /**
      * Fingerprint the remembered lyric had before it was written to disk. Writing drops the raw
      * text the fingerprint was taken from, so this is what tells a later lookup that the lyric
@@ -183,6 +185,9 @@ public final class LyricsManager {
      */
     @Nullable
     private volatile String preferredFingerprint;
+    /** The lyric a re-time replaced, so tapping the credit line can put it back. */
+    @Nullable
+    private volatile SyncPatch activeSyncPatch;
     /**
      * The video id the running lookup belongs to, captured on the thread that starts it:
      * {@link VideoInformation} is not volatile, so a background thread must not read it after
@@ -206,7 +211,6 @@ public final class LyricsManager {
     private String unconfirmedVideoId;
     private int rebindingGeneration;
     private boolean staleLyricsDropped;
-
     private LyricsManager() {
         VideoInformation.addVideoIdListener(videoId -> reloadCurrentTrack());
         LyricsPanelInstaller.registerSettingsListener();
@@ -485,6 +489,24 @@ public final class LyricsManager {
         runOnLookupThread(() -> TrackOffsetStore.put(track, ms));
     }
 
+    /** Main thread. */
+    public boolean isPlaying() {
+        return playing;
+    }
+
+    /** The artwork of the current media session track, null if it has none. Main thread. */
+    @Nullable
+    public Bitmap getCurrentArtworkBitmap() {
+        MediaMetadata metadata = currentMetadata;
+        if (metadata == null) {
+            return null;
+        }
+        Bitmap artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART);
+        if (artwork == null) artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_ART);
+        if (artwork == null) artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_DISPLAY_ICON);
+        return artwork != null && !artwork.isRecycled() ? artwork : null;
+    }
+
     /** Injection point; main thread. */
     public void onSetMetadata(@Nullable MediaMetadata metadata) {
         Utils.verifyOnMainThread();
@@ -616,7 +638,7 @@ public final class LyricsManager {
         unconfirmedVideoId = videoId;
         rebindingGeneration++;
         final int generation = rebindingGeneration;
-        Utils.runOnMainThreadDelayed(() -> confirmTrackRebinding(videoId, generation,
+        Utils.runOnMainThreadDelayed(() -> confirmTrackRebinding(generation,
                 rawTitle, rawArtist, mediaUri), REBINDING_CONFIRM_MS);
     }
 
@@ -624,7 +646,7 @@ public final class LyricsManager {
      * Binds the current track to the video playback reached, keeping its lyric. Runs
      * once the metadata events have had their chance to name the new video.
      */
-    private void confirmTrackRebinding(String videoId, int generation, String rawTitle,
+    private void confirmTrackRebinding(int generation, String rawTitle,
                                        String rawArtist, @Nullable Uri mediaUri) {
         if (generation != rebindingGeneration || unconfirmedVideoId == null) {
             return;
@@ -678,6 +700,8 @@ public final class LyricsManager {
         if (!sameTrack) {
             currentVersion = null;
             requestVersion(track);
+            // A re-time of the previous track is not revertible from the new one.
+            activeSyncPatch = null;
         }
         // Only reached on a real track change, so a loop cannot discard the offset it comes round for again.
         temporaryOffsetMs = TrackOffsetStore.get(track);
@@ -819,6 +843,7 @@ public final class LyricsManager {
         staleLyricsDropped = false;
         preferredFingerprint = null;
         rememberedQueue = null;
+        activeSyncPatch = null;
         searchQueryTitle = null;
         searchQueryArtist = null;
         LyricsRequests.setCustomMatchMode(false);
@@ -1097,6 +1122,54 @@ public final class LyricsManager {
             return null;
         }
         return new TrackInfo(title, artist, track.album(), track.durationSeconds());
+    }
+
+    /**
+     * Swaps the shown lyric for its re-timed copy. Refused when the screen has moved on, so a late
+     * answer cannot land on another song.
+     */
+    public void patchInPlace(Lyrics before, Lyrics after) {
+        try {
+            Utils.verifyOnMainThread();
+            if (!isStillShowing(before)) {
+                return;
+            }
+
+            final Lyrics display = prepareForDisplay(after);
+            if (display == null || display == Lyrics.NOT_FOUND || display.isEmpty()) {
+                return;
+            }
+
+            activeSyncPatch = new SyncPatch(before, LyricsMatch.fingerprint(display));
+            setState(State.LOADED, display);
+        } catch (Exception ex) {
+            Logger.printException(() -> "patchInPlace failure", ex);
+        }
+    }
+
+    /** Puts back the lyric a re-time replaced, while the re-timed copy is still on screen. */
+    public void revertCurrentPatch() {
+        try {
+            Utils.verifyOnMainThread();
+            final SyncPatch patch = activeSyncPatch;
+            if (patch == null) {
+                return;
+            }
+            // setState() drops the patch once the re-time is no longer what is shown.
+            activeSyncPatch = null;
+            setState(State.LOADED, prepareForDisplay(patch.before()));
+        } catch (Exception ex) {
+            Logger.printException(() -> "revertCurrentPatch failure", ex);
+        }
+    }
+
+    /** By the candidate queue's own comparison, so a re-serialised copy still counts as the same. */
+    private boolean isStillShowing(@Nullable Lyrics lyrics) {
+        final Lyrics shown = currentLyrics;
+        if (shown == null || lyrics == null) {
+            return false;
+        }
+        return LyricsMatch.fingerprint(shown).equals(LyricsMatch.fingerprint(lyrics));
     }
 
     /**
@@ -2198,6 +2271,15 @@ public final class LyricsManager {
         state = newState;
         currentLyrics = lyrics;
 
+        LrcRedProvider.onDisplayed(lyrics);
+
+        // A re-time only stays revertible while its result is still what is on screen.
+        final SyncPatch patch = activeSyncPatch;
+        if (patch != null && (lyrics == null
+                || !patch.afterFingerprint().equals(LyricsMatch.fingerprint(lyrics)))) {
+            activeSyncPatch = null;
+        }
+
         // A listener may remove itself while being notified.
         for (Listener listener : new ArrayList<>(listeners)) {
             try {
@@ -2303,6 +2385,9 @@ public final class LyricsManager {
                                 @Nullable Uri mediaUri, String videoId) {
     }
 
+    private record SyncPatch(Lyrics before, String afterFingerprint) {
+    }
+
     private record VariantQuery(TrackInfo track, int penalty) {
     }
 
@@ -2321,6 +2406,4 @@ public final class LyricsManager {
     record ProviderFetch(@Nullable Lyrics lyrics, int matchScore, boolean highMatch,
                          boolean blind, int penalty) {
     }
-
-
 }

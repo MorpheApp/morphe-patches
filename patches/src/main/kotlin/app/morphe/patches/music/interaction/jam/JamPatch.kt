@@ -9,8 +9,8 @@ package app.morphe.patches.music.interaction.jam
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.resourceXml
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -21,57 +21,40 @@ import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.util.findElementByAttributeValueOrThrow
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/jam/JamUI;"
 private const val EXTENSION_BAR_CLASS = "Lapp/morphe/extension/music/patches/jam/JamBar;"
 
-private val jamResources = resourcePatch {
+private val jamResources = patch {
     dependsOn(versionCheckPatch)
     execute {
-        document("AndroidManifest.xml").use { doc ->
-            val permissions = doc.getElementsByTagName("uses-permission")
+        resourceXml("AndroidManifest.xml").use { manifest ->
             if (
-                (0 until permissions.length).none {
-                    (permissions.item(it) as org.w3c.dom.Element).getAttribute("android:name") ==
-                        "android.permission.ACCESS_WIFI_STATE"
+                manifest.elements("uses-permission").none {
+                    it.attribute("android:name") == "android.permission.ACCESS_WIFI_STATE"
                 }
             ) {
-                doc.documentElement.appendChild(
-                    doc.createElement("uses-permission").apply {
-                        setAttribute("android:name", "android.permission.ACCESS_WIFI_STATE")
-                    }
-                )
-            }
-            val service = doc.createElement("service")
-            service.setAttribute("android:name", "app.morphe.extension.music.patches.jam.JamBridgeService")
-            service.setAttribute("android:exported", "true")
-            doc.getElementsByTagName("application").item(0).appendChild(service)
-            val queries =
-                doc.getElementsByTagName("queries").item(0)
-                    ?: doc.createElement("queries").also { doc.documentElement.appendChild(it) }
-            queries.appendChild(
-                doc.createElement("package").apply {
-                    setAttribute("android:name", "app.morphe.jam.companion")
+                manifest.root.appendChild("uses-permission") {
+                    setAttribute("android:name", "android.permission.ACCESS_WIFI_STATE")
                 }
-            )
+            }
+            manifest.elements("application").first().appendChild("service") {
+                setAttribute("android:name", "app.morphe.extension.music.patches.jam.JamBridgeService")
+                setAttribute("android:exported", "true")
+            }
+            val queries = manifest.elements("queries").firstOrNull() ?: manifest.root.appendChild("queries")
+            queries.appendChild("package") {
+                setAttribute("android:name", "app.morphe.jam.companion")
+            }
         }
 
-        document("res/layout/player_bottom_sheet.xml").use { doc ->
-            val root = doc.documentElement
-            val tabs =
-                root.childNodes.findElementByAttributeValueOrThrow(
-                    "android:id",
-                    "@id/bottom_sheet_tabbed_view",
-                )
-            root.insertBefore(
-                doc.createElement("app.morphe.extension.music.patches.jam.JamBar").apply {
-                    setAttribute("android:layout_width", "match_parent")
-                    setAttribute("android:layout_height", "48dp")
-                },
-                tabs,
-            )
+        resourceXml("res/layout/player_bottom_sheet.xml").use { layout ->
+            val tabs = layout.elementByAttribute("android:id", "@id/bottom_sheet_tabbed_view")
+            tabs.parent!!.insertChild(tabs.index, "app.morphe.extension.music.patches.jam.JamBar") {
+                setAttribute("android:layout_width", "match_parent")
+                setAttribute("android:layout_height", "48dp")
+            }
         }
     }
 }
@@ -81,7 +64,7 @@ private val jamResources = resourcePatch {
  * in [JamQueueAbi] and [JamUiAbi]; generated methods are small access or interception bridges.
  */
 @Suppress("unused")
-val jamQueueSharingPatch = bytecodePatch(
+val jamQueueSharingPatch = patch(
     name = "Jam queue sharing",
     description = "Shares the host queue and playback controls through an authenticated Jam bridge. "
             + "Root installation is not supported."

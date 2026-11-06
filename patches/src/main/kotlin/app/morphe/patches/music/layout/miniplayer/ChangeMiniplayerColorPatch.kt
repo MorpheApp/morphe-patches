@@ -12,9 +12,9 @@ package app.morphe.patches.music.layout.miniplayer
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_32_or_greater
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -26,13 +26,11 @@ import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ChangeMiniplayerColorPatch;"
 
 @Suppress("unused")
-val changeMiniplayerColorPatch = bytecodePatch(
+val changeMiniplayerColorPatch = patch(
     name = "Change miniplayer color",
     description = "Adds an option to change the miniplayer background color to match the fullscreen player."
 ) {
@@ -51,14 +49,14 @@ val changeMiniplayerColorPatch = bytecodePatch(
 
         if (is_9_32_or_greater) {
             SwitchToggleColorFingerprint.let {
-                val colorMathPlayerFieldReference = it.instructionMatches.last().getFieldAccessed()
+                val colorMathPlayerFieldReference = it.instructionMatches.last().fieldReference
 
                 val colorMathPlayerIGetReference = it.instructionMatches[4]
-                    .getInstruction<ReferenceInstruction>().reference as FieldReference
+                    .fieldReference
 
-                val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow {
-                    getReference<MethodReference>()?.name == "getColor"
-                }
+                val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow(
+                    methodCall(name = "getColor")
+                )
                 val iPutIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionOrThrow(
                     colorGreyIndex, Opcode.IPUT
                 )
@@ -94,11 +92,11 @@ val changeMiniplayerColorPatch = bytecodePatch(
                     .getInstruction<ReferenceInstruction>().reference
 
                 val colorMathPlayerIGetReference = it.instructionMatches[4]
-                    .getInstruction<ReferenceInstruction>().reference as FieldReference
+                    .fieldReference
 
-                val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow {
-                    getReference<MethodReference>()?.name == "getColor"
-                }
+                val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow(
+                    methodCall(name = "getColor")
+                )
                 val iPutIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionOrThrow(
                     colorGreyIndex, Opcode.IPUT
                 )
@@ -154,10 +152,8 @@ val changeMiniplayerColorPatch = bytecodePatch(
 
         // Hook the watch-while dismiss callback to drop the cached tint.
         // Fingerprint factory is shared with the swipe-to-dismiss patch.
-        val musicActivityPeerClass = (
-            MusicActivityWidgetFingerprint.instructionMatches[1]
-                .getInstruction<ReferenceInstruction>().reference as FieldReference
-        ).definingClass
+        val musicActivityPeerClass = MusicActivityWidgetFingerprint.instructionMatches[1]
+            .fieldReference.definingClass
 
         watchWhileDismissedFingerprint(musicActivityPeerClass).method.addInstructions(
             0,

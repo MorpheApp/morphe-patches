@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/2528
+ * https://github.com/MorpheApp/morphe-patches/pull/4436
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -28,6 +29,7 @@ import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -105,28 +107,88 @@ public final class LocalDownloadManager {
         Bitmap artwork = isPlayingTrack ? metadata.getCurrentArtwork() : null;
 
         Utils.submitOnBackgroundThread(() -> {
-            downloadBlocking(videoId, title, artist, album, duration, artwork);
+            downloadBlocking(videoId, title, artist, album, duration, artwork, false);
             return null;
         });
     }
 
-    private static void downloadBlocking(String videoId, String title, String artist, String album,
-                                         int duration, Bitmap artwork) {
+    /** Told each time a track has been saved. Only used on the main thread. */
+    private static final Set<Runnable> savedListeners = new HashSet<>();
+
+    /** Must be called on the main thread. */
+    static void addSavedListener(Runnable listener) {
+        Utils.verifyOnMainThread();
+        savedListeners.add(listener);
+    }
+
+    /** Must be called on the main thread. */
+    static void removeSavedListener(Runnable listener) {
+        Utils.verifyOnMainThread();
+        savedListeners.remove(listener);
+    }
+
+    private static void notifyTrackSaved() {
+        Utils.runOnMainThreadNowOrLater(() -> {
+            for (Runnable listener : savedListeners) {
+                listener.run();
+            }
+        });
+    }
+
+    /**
+     * Downloads one track of a playlist. Must be called off the main thread.
+     * Shows no toast or notification of its own, since the playlist download shows its progress.
+     *
+     * @return If the track is saved, including if it already was.
+     */
+    static boolean downloadPlaylistTrack(String videoId) {
+        if (!VIDEO_ID.matcher(videoId).matches()) {
+            Logger.printDebug(() -> "Skipping playlist entry with an unusable id: " + videoId);
+            return false;
+        }
+        // Being saved by a single download of its own.
+        if (ACTIVE_DOWNLOADS.contains(videoId)) return true;
+
+        return downloadBlocking(videoId, null, null, null, 0, null, true);
+    }
+
+    /** Cancels a notification of {@link #showDownloadNotification}. */
+    static void cancelDownloadNotification(String key) {
+        Utils.runOnMainThread(() -> {
+            NotificationManager manager = (NotificationManager)
+                    Utils.getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            if (manager != null) manager.cancel(key.hashCode());
+        });
+    }
+
+    static boolean isDownloaded(String videoId) {
+        File directory = getDownloadDirectory();
+        return new File(directory, videoId + ".webm").isFile()
+                || new File(directory, videoId + ".m4a").isFile();
+    }
+
+    static File getDownloadDirectory() {
+        return new File(Utils.getContext().getExternalFilesDir(Environment.DIRECTORY_MUSIC), "Morphe");
+    }
+
+    /**
+     * @param quiet If no toast or notification is shown, for the tracks of a playlist download.
+     * @return If the track is saved, including if it already was.
+     */
+    private static boolean downloadBlocking(String videoId, String title, String artist, String album,
+                                            int duration, Bitmap artwork, boolean quiet) {
         if (!ACTIVE_DOWNLOADS.add(videoId)) {
-            Utils.showToastShort(str("morphe_music_downloads_already_running"));
-            return;
+            if (!quiet) Utils.showToastShort(str("morphe_music_downloads_already_running"));
+            return false;
         }
 
         try {
-            Context context = Utils.getContext();
-            File directory = new File(
-                    context.getExternalFilesDir(Environment.DIRECTORY_MUSIC), "Morphe");
+            File directory = getDownloadDirectory();
 
-            if (new File(directory, videoId + ".webm").isFile()
-                    || new File(directory, videoId + ".m4a").isFile()) {
+            if (isDownloaded(videoId)) {
                 Logger.printDebug(() -> "Already downloaded: " + videoId);
-                Utils.showToastShort(str("morphe_music_downloads_already_saved"));
-                return;
+                if (!quiet) Utils.showToastShort(str("morphe_music_downloads_already_saved"));
+                return true;
             }
 
             ResolvedStream resolved = resolveStream(videoId);
@@ -158,7 +220,11 @@ public final class LocalDownloadManager {
             }
 
             downloadWithResume(videoId, title, format.getUrl(), temporary,
-                    format.getContentLength());
+                    format.getContentLength(), quiet);
+
+            // Before the audio file gets its final name, since the downloads screen reads each
+            // track once and would otherwise keep listing it without its title and cover.
+            OfflineTrack.save(directory, videoId, title, artist, album, duration, artwork);
 
             if (destination.exists() && !destination.delete()) {
                 throw new IllegalStateException("Could not replace audio file");
@@ -168,13 +234,22 @@ public final class LocalDownloadManager {
             }
             Logger.printDebug(() -> "Saved " + destination + " (" + destination.length() + " bytes)");
 
-            OfflineTrack.save(directory, videoId, title, artist, album, duration, artwork);
-            Utils.showToastShort(str("morphe_music_downloads_complete"));
+            OfflineCatalogue.added(videoId);
+            notifyTrackSaved();
+            if (!quiet) Utils.showToastShort(str("morphe_music_downloads_complete"));
+            return true;
         } catch (Exception ex) {
+            if (quiet) {
+                // A playlist can have many unavailable tracks, and an exception would show a
+                // toast for each.
+                Logger.printInfo(() -> "Playlist track download failed: " + videoId, ex);
+                return false;
+            }
             Logger.printException(() -> "Local audio download failed: " + videoId, ex);
             awaitNotificationSlot();
             showDownloadNotification(videoId, title, 0, false, str("morphe_music_downloads_failed"));
             Utils.showToastShort(str("morphe_music_downloads_failed"));
+            return false;
         } finally {
             ACTIVE_DOWNLOADS.remove(videoId);
         }
@@ -197,7 +272,7 @@ public final class LocalDownloadManager {
     }
 
     /** @return Whether a progress update may be posted without the system dropping it. */
-    private static boolean canPostProgress() {
+    static boolean canPostProgress() {
         long now = System.currentTimeMillis();
         long previous = lastNotificationTime.get();
         return now - previous >= NOTIFICATION_INTERVAL_MILLISECONDS
@@ -209,7 +284,7 @@ public final class LocalDownloadManager {
      * The loop sleeps exactly as long as the slot is away, and repeats only if another thread
      * took the slot first. Must be called off the main thread.
      */
-    private static void awaitNotificationSlot() {
+    static void awaitNotificationSlot() {
         while (true) {
             long now = System.currentTimeMillis();
             long previous = lastNotificationTime.get();
@@ -268,10 +343,13 @@ public final class LocalDownloadManager {
     }
 
     private static void downloadWithResume(String videoId, String title, String url,
-                                           File temporary, long expectedLength) throws Exception {
-        Utils.showToastShort(str("morphe_music_downloads_started"));
-        awaitNotificationSlot();
-        showDownloadNotification(videoId, title, 0, true, str("morphe_music_downloads_starting"));
+                                           File temporary, long expectedLength,
+                                           boolean quiet) throws Exception {
+        if (!quiet) {
+            Utils.showToastShort(str("morphe_music_downloads_started"));
+            awaitNotificationSlot();
+            showDownloadNotification(videoId, title, 0, true, str("morphe_music_downloads_starting"));
+        }
 
         if (expectedLength <= 0) expectedLength = probeContentLength(url);
         final long totalLength = expectedLength;
@@ -279,19 +357,22 @@ public final class LocalDownloadManager {
         if (totalLength <= 0) {
             downloadUnknownLength(url, temporary);
         } else {
-            downloadInParallel(videoId, title, url, temporary, totalLength);
+            downloadInParallel(videoId, title, url, temporary, totalLength, quiet);
         }
 
         if (totalLength > 0 && temporary.length() != totalLength) {
             throw new IllegalStateException(
                     "Incomplete audio file: " + temporary.length() + "/" + totalLength);
         }
-        awaitNotificationSlot();
-        showDownloadNotification(videoId, title, 100, false, str("morphe_music_downloads_complete"));
+        if (!quiet) {
+            awaitNotificationSlot();
+            showDownloadNotification(videoId, title, 100, false, str("morphe_music_downloads_complete"));
+        }
     }
 
     private static void downloadInParallel(String videoId, String title, String url,
-                                           File temporary, long totalLength) throws Exception {
+                                           File temporary, long totalLength,
+                                           boolean quiet) throws Exception {
         try (RandomAccessFile file = new RandomAccessFile(temporary, "rw")) {
             file.setLength(totalLength);
         }
@@ -312,7 +393,7 @@ public final class LocalDownloadManager {
 
                 futures.add(executor.submit(() -> {
                     downloadRange(url, temporary, start, end, downloaded, bytes -> {
-                        if (!canPostProgress()) return;
+                        if (quiet || !canPostProgress()) return;
                         int progress = (int) Math.min(99, bytes * 100 / totalLength);
                         showDownloadNotification(videoId, title, progress, true,
                                 str("morphe_music_downloads_progress", progress));
@@ -443,16 +524,21 @@ public final class LocalDownloadManager {
     @SuppressLint("NotificationPermission") // The patch declares POST_NOTIFICATIONS.
     private static void postDownloadNotification(String key, String title, int progress,
                                                  boolean ongoing, String text) {
-        Context context = Utils.getContext();
-        NotificationManager manager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager manager = (NotificationManager)
+                Utils.getContext().getSystemService(Context.NOTIFICATION_SERVICE);
         if (manager == null) return;
 
+        manager.notify(key.hashCode(), downloadNotification(manager, title, progress, ongoing, text));
+    }
+
+    /** The channel is created on the way, which does nothing once it exists. */
+    static Notification downloadNotification(NotificationManager manager, String title,
+                                             int progress, boolean ongoing, String text) {
         manager.createNotificationChannel(new NotificationChannel(DOWNLOAD_CHANNEL,
                 str("morphe_music_downloads_notification_channel"),
                 NotificationManager.IMPORTANCE_LOW));
 
-        Notification.Builder builder = new Notification.Builder(context, DOWNLOAD_CHANNEL);
+        Notification.Builder builder = new Notification.Builder(Utils.getContext(), DOWNLOAD_CHANNEL);
         builder.setSmallIcon(ongoing
                         ? android.R.drawable.stat_sys_download
                         : android.R.drawable.stat_sys_download_done)
@@ -462,7 +548,7 @@ public final class LocalDownloadManager {
                 .setOnlyAlertOnce(true);
 
         if (ongoing) builder.setProgress(100, Math.max(0, progress), progress < 0);
-        manager.notify(key.hashCode(), builder.build());
+        return builder.build();
     }
 
     @Nullable

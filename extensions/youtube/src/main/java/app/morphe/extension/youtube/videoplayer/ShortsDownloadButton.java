@@ -24,7 +24,7 @@ import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Adds a download item to the menus of Shorts, which the app has no download option for.
- * The item downloads with the download mode that is set.
+ * The item downloads with the download mode that is set, with an external downloader or in-app.
  */
 @SuppressWarnings("unused")
 public final class ShortsDownloadButton {
@@ -32,7 +32,7 @@ public final class ShortsDownloadButton {
     private static final boolean USE_EXPERIMENTAL_ICONS = VersionCheckPatch.IS_20_31_OR_GREATER
             && !SpoofAppVersionPatch.isSpoofingToLessThan("20.31.00");
 
-    private static final String DOWNLOAD_ICON = USE_EXPERIMENTAL_ICONS
+    static final String DOWNLOAD_ICON = USE_EXPERIMENTAL_ICONS
             ? "yt_outline_experimental_download_vd_theme_24"
             : "yt_outline_download_black_24";
 
@@ -60,7 +60,7 @@ public final class ShortsDownloadButton {
         try {
             if (videoId.isEmpty()
                     || !Settings.SHORTS_DOWNLOAD_FLYOUT_BUTTON.get()
-                    || !DownloadsPatch.isDownloadModeHandledByMorphe()) {
+                    || !Settings.SHORTS_DOWNLOAD_FLYOUT_BUTTON.isAvailable()) {
                 return nextButtonIndex;
             }
 
@@ -75,7 +75,7 @@ public final class ShortsDownloadButton {
                     v -> {
                         FlyoutUtils.dismissFlyout();
                         Utils.runOnMainThreadDelayed(
-                                () -> DownloadsPatch.downloadVideo(videoId),
+                                () -> DownloadsPatch.downloadVideoWithoutAppButton(videoId),
                                 DOWNLOAD_DELAY_MILLISECONDS
                         );
                     },

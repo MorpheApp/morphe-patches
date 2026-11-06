@@ -1,6 +1,6 @@
 package app.morphe.patches.youtube.layout.livering
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -14,7 +14,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OpenChannelOfLiveAvatarPatch;"
 
 @Suppress("unused")
-val openChannelOfLiveAvatarPatch = bytecodePatch(
+val openChannelOfLiveAvatarPatch = patch(
     name = "Open channel of live avatar",
     description = "Adds an option to prevent a channel's current live video from opening when tapping its avatar."
 ) {

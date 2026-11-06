@@ -7,9 +7,8 @@
 
 package app.morphe.patches.youtube.video.series
 
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.util.getReference
 import com.android.tools.smali.dexlib2.iface.ClassDef
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -31,16 +30,16 @@ internal data class NativeHistoryContract(
 )
 
 /** Resolve the native browse service, its History request and response members. */
-internal fun BytecodePatchContext.resolveNativeHistory(accountType: String): NativeHistoryContract {
+internal fun resolveNativeHistory(accountType: String): NativeHistoryContract {
     val capture = NativeStreamingBrowseRequestFingerprint.instructionMatches.last().getMethodCalled()
     val request = classDefBy(capture.returnType)
 
     val description = NativeRequestDescriptionFingerprint(request.type)
-    val route = description.instructionMatches[1].instruction.getReference<FieldReference>()!!
-    val continuation = description.instructionMatches[3].instruction.getReference<FieldReference>()!!
+    val route = description.instructionMatches[1].fieldReference
+    val continuation = description.instructionMatches[3].fieldReference
 
     val clickTracking = NativeBaseRequestDescriptionFingerprint.instructionMatches[1]
-        .instruction.getReference<FieldReference>()!!
+        .fieldReference
 
     // Some versions have both the three and the four parameter dispatch. Hook all of them.
     val service = NativeBrowseServiceFingerprint.originalClassDef
@@ -69,6 +68,6 @@ internal fun BytecodePatchContext.resolveNativeHistory(accountType: String): Nat
         continuation = continuation,
         clickTracking = clickTracking,
         payload = NativeBrowseResponsePayloadFingerprint.instructionMatches.first()
-            .instruction.getReference<FieldReference>()!!
+            .fieldReference
     )
 }

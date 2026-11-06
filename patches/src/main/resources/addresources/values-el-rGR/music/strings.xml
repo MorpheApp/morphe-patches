@@ -150,6 +150,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_previous">Προηγούμενο</string>
   <string name="morphe_music_downloads_next">Επόμενο</string>
   <string name="morphe_music_downloads_pause">Παύση</string>
+  <string name="morphe_music_downloads_shuffle">Τυχαία αναπαραγωγή</string>
+  <string name="morphe_music_downloads_repeat">Επανάληψη</string>
+  <string name="morphe_music_downloads_minimize">Ελαχιστοποίηση</string>
   <string name="morphe_music_downloads_close">Κλείσιμο</string>
   <string name="morphe_music_downloads_delete">Διαγραφή</string>
   <string name="morphe_music_downloads_delete_track">Διαγραφή λήψης</string>
@@ -158,6 +161,38 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_track_deleted">Η λήψη διαγράφηκε</string>
   <string name="morphe_music_downloads_track_delete_failed">Δεν ήταν δυνατή η διαγραφή της λήψης</string>
   <string name="morphe_music_downloads_play_failed">Δεν ήταν δυνατή η αναπαραγωγή της λήψης</string>
+  <string name="morphe_music_downloads_playlists">Λίστες αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlists_section">Δημιουργημένες λίστες αναπαραγωγής (%s)</string>
+  <string name="morphe_music_downloads_playlists_empty">Δεν υπάρχουν ακόμη τοπικές λίστες αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlists_hide">Απόκρυψη λιστών αναπαραγωγής ▲</string>
+  <string name="morphe_music_downloads_playlist_new">+ Νέα λίστα αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_new_button">Νέα λίστα αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_selected">Επιλεγμένα (%s)</string>
+  <string name="morphe_music_downloads_playlist_select_first">Επιλέξτε πρώτα τραγούδια</string>
+  <string name="morphe_music_downloads_playlist_clear_selection">Καθαρισμός επιλογής</string>
+  <string name="morphe_music_downloads_playlist_create">Δημιουργία λίστας αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_create_button">Δημιουργία</string>
+  <string name="morphe_music_downloads_playlist_add">Προσθήκη στη λίστα αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_added">Προστέθηκε στο %s</string>
+  <string name="morphe_music_downloads_playlist_name_hint">Όνομα λίστας αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_name_empty">Το όνομα της λίστας αναπαραγωγής δεν μπορεί να είναι κενό</string>
+  <string name="morphe_music_downloads_playlist_save_failed">Δεν ήταν δυνατή η αποθήκευση της λίστας αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_track_count">%s κομμάτια</string>
+  <string name="morphe_music_downloads_playlist_track_count_one">1 κομμάτι</string>
+  <string name="morphe_music_downloads_playlist_no_tracks">Δεν υπάρχουν κομμάτια σε αυτή τη λίστα αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_play">Αναπαραγωγή λίστας αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_play_all">Αναπαραγωγή όλων</string>
+  <string name="morphe_music_downloads_playlist_rename">Μετονομασία</string>
+  <string name="morphe_music_downloads_playlist_rename_title">Μετονομασία λίστας αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_save">Αποθήκευση</string>
+  <string name="morphe_music_downloads_playlist_delete">Διαγραφή λίστας αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_delete_title">Διαγραφή λίστας αναπαραγωγής;</string>
+  <string name="morphe_music_downloads_playlist_delete_message">Το %s θα διαγραφεί. Τα λημειωμένα τραγούδια διατηρούνται</string>
+  <string name="morphe_music_downloads_playlist_deleted">Η λίστα αναπαραγωγής διαγράφηκε</string>
+  <string name="morphe_music_downloads_playlist_remove_track">Αφαίρεση από τη λίστα αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_drag_track">Σύρτε για επαναταξινόμηση</string>
+  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Σύρτε τη λαβή για επαναταξινόμηση</string>
+  <string name="morphe_music_downloads_playlist_reorder_done">Τέλος</string>
   <string name="morphe_music_downloads_notification_channel">Λήψεις ήχου</string>
   <string name="morphe_music_downloads_playback_channel">Αναπαραγωγή εκτός σύνδεσης</string>
   <string name="morphe_music_downloads_unknown_track">Δεν ήταν δυνατή η αναγνώριση του κομματιού προς λήψη</string>
@@ -168,6 +203,28 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Λήψη %s%%</string>
   <string name="morphe_music_downloads_complete">Η λήψη ολοκληρώθηκε</string>
   <string name="morphe_music_downloads_failed">Η λήψη απέτυχε</string>
+  <string name="morphe_music_downloads_playlist_download_title">Λήψη λίστας αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Ανάκτηση κομμάτων…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s ανακτήθηκε…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Δεν ήταν δυνατή η ανάκτηση των κομμάτων της λίστας αναπαραγωγής</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Ήδη κατεβήκατε: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s σε αυτή τη λίστα αναπαραγωγής, τα %2$s δεν έχουν κατεβεί ακόμα.
+
+Κατεβαίνουν ένα προς ένα, κάτι που μπορεί να πάρει πολύ χρόνο και απαιτεί περίπου %3$s ελεύθερο χώρο"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Λήψη</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Λήψη κομμάτου %1$s από τα %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s κατέβηκαν</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s κατέβηκαν, %2$s δεν ήταν δυνατή η λήψη τους</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Η λήψη της λίστας αναπαραγωγής είναι ήδη σε εξέλιξη</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Ο λογαριασμός σας δεν είναι ακόμα γνωστός. Δοκιμάστε ξανά σε λίγο</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s ανακτήθηκε, όλα έχουν ήδη κατεβεί</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Μόνο ένα μέρος της λίστας αναπαραγωγής ανακτήθηκε. Πατήστε ξανά Λήψη αργότερα για να λάβετε τα υπόλοιπα</string>
+  <string name="morphe_music_downloads_playlist_download_started">Λήψη %s στο υπόφονιο</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Δεν υπάρχει σύνδεση δικτύου</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Αναμονή για το δίκτυο…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Διακόπτεται μετά από %1$s από τα %2$s. Πατήστε ξανά Λήψη για να συνεχίσετε</string>
+  <string name="morphe_music_downloads_mark_title">Σήμανση ληφθέντων τραγουδιών</string>
+  <string name="morphe_music_downloads_mark_summary">Τα τραγούδια που έχουν ήδη ληφθεί εμφανίζουν μια σήμανση πριν από τις λεπτομέρειές τους σε λίστες αναπαραγωγής, άλμπουμ και αποτελέσματα αναζήτησης</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Πληροφορίες για το</string>
@@ -206,6 +263,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Απόκρυψη \"Οδηγιών Κοινότητας\"</string>
   <string name="morphe_music_hide_comments_context_title">Απόκρυψη μηνύματος περιβάλλοντος</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Απόκρυψη κουμπιού Emoji</string>
+  <string name="morphe_music_hide_comments_gif_button_title">Απόκρυψη κουμπιού GIF</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_title">Απόκρυψη GIF και εικόνων</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_summary">Κρύβει τα GIF και τις εικόνες που έχουν επισυναφθεί σε σχόλια και απαντήσεις</string>
   <string name="morphe_music_hide_comments_info_button_title">Απόκρυψη κουμπιού \"Πληροφορίες\"</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">Απόκρυψη κουμπιού \"Χρονική σήμανση\"</string>
   <!-- interaction.crossfade.crossfadePatch -->
@@ -285,6 +345,43 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Προσθήκη του επιλεγμένου κομματιού στην ουρά</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">Προστέθηκε στην ουρά</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">Ετικέτες λίστας αναπαραγωγής</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Προσθέστε ετικέτες στις λίστες αναπαραγωγής και φιλτράρετε τη Βιβλιοθήκη ανά ετικέτα</string>
+  <string name="morphe_music_playlist_tags_title">Ενεργοποίηση ετικετών λίστας αναπαραγωγής</string>
+  <string name="morphe_music_playlist_tags_summary">Προσθέτει ένα στοιχείο Ετικέτες στο μενού των λιστών αναπαραγωγής και ένα κουμπί φίλτρου Ετικέτες δίπλα στο κουμπί ταξινόμησης της Βιβλιοθήκης</string>
+  <string name="morphe_music_playlist_tags_manage_title">Διαχείριση ετικετών λίστας αναπαραγωγής</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Δημιουργήστε, μετονομάστε και διαγράψτε ετικέτες, και προσθέστε ετικέτες στις λίστες αναπαραγωγής που εμφανίζονται στη Βιβλιοθήκη σας</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">Ετικέτες</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">Χωρίς ετικέτες</string>
+  <string name="morphe_music_playlist_tags_filter_button">Ετικέτες</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">Ετικέτα: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">Ετικέτες (%s κρυμμένες)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">Ετικέτες για %s</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">Νέα ετικέτα</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 λίστα αναπαραγωγής</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s λίστες αναπαραγωγής</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">Υπάρχει ήδη μια ετικέτα με το όνομα %s</string>
+  <string name="morphe_music_playlist_tags_filter_title">Φιλτράρισμα ανά ετικέτα</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">Εμφάνιση μόνο</string>
+  <string name="morphe_music_playlist_tags_filter_all">Όλες οι λίστες αναπαραγωγής</string>
+  <string name="morphe_music_playlist_tags_filter_visible">Ορατές ετικέτες</string>
+  <string name="morphe_music_playlist_tags_manage">Διαχείριση</string>
+  <string name="morphe_music_playlist_tags_none">Δεν υπάρχουν ακόμα ετικέτες. Κρατήστε πατημένη μια λίστα αναπαραγωγής και επιλέξτε Ετικέτες για να δημιουργήσετε μία</string>
+  <string name="morphe_music_playlist_tags_section_tags">Ετικέτες</string>
+  <string name="morphe_music_playlist_tags_section_playlists">Λίστες αναπαραγωγής</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Ανοίξτε τη Βιβλιοθήκη μία φορά ώστε να εμφανιστούν εδώ οι λίστες αναπαραγωγής σας</string>
+  <string name="morphe_music_playlist_tags_new_tag">Νέα ετικέτα</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">Επεξεργασία ετικέτας</string>
+  <string name="morphe_music_playlist_tags_rename">Μετονομασία</string>
+  <string name="morphe_music_playlist_tags_delete">Διαγραφή</string>
+  <string name="morphe_music_playlist_tags_hidden">Κρυμμένα</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Απόκρυψη κουμπιού μετάδοσης</string>
   <string name="morphe_music_hide_history_button_title">Απόκρυψη κουμπιού ιστορικού</string>
@@ -453,6 +550,49 @@ Second \"item\" text"</string>
   <string name="morphe_music_scrobbling_about_summary">"Το scrobbling συγχρονίζει αυτόματα τη χρήση του YouTube Music με το προφίλ σας στο Last.fm ή ListenBrainz.
 
 Για να διασφαλίσετε ότι το scrobbling συγχρονίζεται κατά την αναπαραγωγή στο παρασκήνιο, βεβαιωθείτε ότι η χρήση μπαταρίας της εφαρμογής YouTube Music έχει ρυθμιστεί σε \"Μη περιορισμένη\"."</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">Παράλειψη κομματιών καλλιτεχνών που η κοινότητα ανέφερε ως AI</string>
+  <string name="morphe_music_soundproof_show_button_title">Εμφάνιση κουμπιού SoundProof</string>
+  <string name="morphe_music_soundproof_show_button_summary">Εμφανίζει ένα κουμπί στη γραμμή εργαλείων του παίκτη για να βλέπετε και να ψηφίζετε στην κοινότητα για τον τρέχοντα καλλιτέχνη</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">Παράλειψη καλλιτεχνών AI</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">Παραλείπει αυτόματα κομμάτια των οποίων ο καλλιτέχνης φτάνει το παρακάτω όριο AI</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">Εμφάνιση ειδοποίησης παράλειψης</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">Εμφανίζει μια ειδοποίηση όταν ένα κομμάτι παραλείπεται αυτόματα</string>
+  <string name="morphe_music_soundproof_threshold_title">Όριο ανίχνευσης</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">Ελάχιστες ψήφοι AI</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Ένας καλλιτέχνης θεωρείται AI όταν τουλάχιστον αυτό το ποσοστό των ψήφων του υποδεικνύει AI</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">Ελάχιστος αριθμός ψήφων</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">Καλλιτέχνες με λιγότερες ψήφους από αυτές δεν παραλείπονται ποτέ</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">Παραλείφθηκε ο/η %1$s (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">Ψήφοι SoundProof για αυτόν τον καλλιτέχνη</string>
+  <string name="morphe_music_soundproof_sheet_verified">Επαληθευμένο</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% άνθρωπος</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 ψήφος</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s ψήφοι</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s άνθρωποι</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s AI</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">Δεν υπάρχουν ακόμη ψήφοι για αυτόν τον καλλιτέχνη</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">Η βάση δεδομένων SoundProof δεν είναι ακόμα διαθέσιμη</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">Κατεβιβάζεται στο παρασκήνιο. Κανένα κομμάτι δεν θα παραλειφθεί μέχρι να γίνει διαθέσιμη.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">Ψήφοι της κοινότητας από τη βάση δεδομένων SoundProof</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">Άνθρωπος</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">ΤΝ</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">Η ψηφοφορία έχει κλείσει: ένας διαχειριστής του SoundProof έλεγξε αυτόν τον καλλιτέχνη</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">Δεν ήταν δυνατή η σύνδεση με το SoundProof. Οι ψήφοι προέρχονται από τη καθημερινή βάση δεδομένων και η ψηφοφορία δεν είναι διαθέσιμη.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">Αποτυχία ψήφου στο SoundProof</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"Τα δεδομένα του καλλιτέχνη προέρχονται από το SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), τα οποία αποφορτώνονται μία φορά την ημέρα. Η παράλειψη δεν στέλνει τίποτα σχετικά με αυτό που αναπαράγετε. Το άνοιγμα του φύλλου SoundProof στέλνει το τρέχον όνομα του καλλιτέχνη στον διακομιστή του SoundProof για την εμφάνιση πρόσφατων ψήφων και για την ψηφοφορία. Ο διακομιστής ξεχωρίζει τους ψηφοφόρους μέσω της διεύθυνσης IP, അതിനാτο ο ψήφος σας μπορεί να εμφανίζεται διαφορετικά σε άλλο δίκτυο.
+
+Η βάση δεδομένων είναι αδειοδοτημένη υπό την Άδεια Ανοικτής Βάσης Δεδομένων ODC (ODbL). Οι εγγραφές από το Soul Over AI του xoundbyte είναι αδειοδοτημένες υπό την CC BY 4.0. Δεν συνδέεται με το SoundProof ή το Soul Over AI ούτε υποστηρίζεται από αυτά."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Χρήση στίχων από τρίτους</string>
   <string name="morphe_music_lyrics_enabled_summary">Εμφανίζει στίχους από μια υπηρεσία τρίτου μέρους, επιστρέφοντας στους ενσωματωμένους στίχους όταν δεν βρεθούν.</string>
@@ -493,17 +633,17 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_rime_dict_bad_code">Ο κωδικός πρέπει να είναι δύο ή τρία γράμματα, όπως στα hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">Η διεύθυνση πρέπει να ξεκινά με https://</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">Το όνομα και η διεύθυνση δεν μπορούν να περιέχουν κάθετη μπάρα</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">Το %1$s έχει ήδη έναν πίνακα λέξεων</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">Το %1$s αναλύεται από το ενσωματωμένο ρωμαϊστή και δεν μπορεί να λάβει λίστα λεξιλογίου</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">Το %s διαθέτει ήδη πίνακα λέξεων</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">Το %s αναγνώσ뀝니다 από τον ενσωματωμένο romanizer και δεν μπορεί να δεχτεί λίστα λέξεων</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">Αχρησιμοποίητο: αυτή η γλώσσα έχει ήδη την δική της ανάδευση, οπότε αποεπιλέξτε την για να την αφαιρέσετε</string>
-  <string name="morphe_music_lyrics_rime_dict_added">Προστέθηκε το %1$s - επιλέξτε το και πατήστε Αποθήκευση για να το κατεβάσετε</string>
+  <string name="morphe_music_lyrics_rime_dict_added">Προστέθηκε %s - επιλέξτε το και πατήστε Αποθήκευση για να το κατεβάσετε</string>
   <string name="morphe_music_lyrics_rime_dict_ready">Οι λίστες λεξιλογίου είναι έτοιμες</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">Οι λίστες λεξιλογίου είναι έτοιμες (%1$d στοιχεία)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">Κατασκευή λίστας ανάδευσης: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Οι λίστες λέξεων είναι έτοιμες (%s εγγραφές)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Ανάγνωση λίστας λέξεων: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">Η λήψη της λίστας λεξιλογίου απέτυχε - πιέστε ξανά την Αποθήκευση για επανάληψη</string>
   <string name="morphe_music_lyrics_clear_cache_title">Καθαρισμός αποθηκευμένων στίχων</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Διαγραφή %1$s MB στίχων που κρατώνται στη συσκευή</string>
-  <string name="morphe_music_lyrics_clear_cache_done">Εκκαθάριση %1$s MB</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Διαγραφή των %s MB στίχων που είναι αποθηκευμένοι σε αυτή τη συσκευή</string>
+  <string name="morphe_music_lyrics_clear_cache_done">Καθαρίστηκαν %s MB</string>
   <string name="morphe_music_token_dialog_get_token">Λήψη token</string>
   <string name="morphe_music_apple_music_token_title">Apple Music διακριτικό χρήστη πολυμέσων</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Επικολλήστε το cookie media-user-token από το music.apple.com
@@ -515,7 +655,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: το media-user-token αποθηκεύτηκε</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: το media-user-token διαγράφηκε</string>
   <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: ακύριο διαρυστικό χαρακτηριστικό μεγαλήτα – ελέγξτε ενεργή και δοκιμάστε</string>
-  <string name="morphe_music_spotify_token_title">Spotify: Αντιγράψτε την τιμή του \"sp_dc\".</string>
+  <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Επικολλήστε το cookie sp_dc από το Spotify.
 
 Βήματα:
@@ -564,15 +704,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Να επιτρέπονται μη λατινικές αναδευμένες μορφές από την πηγή στίχων· όταν είναι απενεργοποιημένη, διατηρήστε μόνο λατινικά γράμματα, τόνους και ψηφία τόνων</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Διαβάζει κάθε λέξη ενός στίχου χρονοβολημένου (συγχρονισμός λέξης ενεργός). Η Κορεάτικα δεν χρειάζεται λήψη; δεκατέσσερις γραφές μοιράζονται μία λήψη CLDR. Οι χαρακτήρες Han αναλύονται από το Λεξιλόγιο Rime όταν ο πίνακας λεξιλογίου του καλύπτει τη γλώσσα</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">Λήψη λεξικών αναδευμένων μορφών…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Αναγνώσεις έτοιμες (%1$d καταχωρήσεις)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Οι αναγνώσεις είναι έτοιμες (%s εγγραφές)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Η λήψη απέτυχε - απενεργοποιήστε και επανεκτελέστε για επανάληψη</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Λεξικό Εκτός Γραμμής</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">Ιαπωνικά (SudachiDict, ~75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Χαρακτήρες Κινέζικα και Καντονέζικα (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Λέξεις Κινέζικα (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Ρωμαϊσμός/Μεταγραφή Ελληνικά, Σλαβικά Κυριλλικά (περ. Ρωσική, Ουκρανική, Βουλγαρική, Σερβική, Λευκορωσική, Μακεδονική), Γεωργιανά, Αρμενικά, Εβραϊκά, Αραβικά, Αμχαρικά και Συριακά (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Ανάγνωση %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Επιλέξτε τουλάχιστον ένα λεξικό</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Ανάγνωση %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Εμφάνιση κουμπιού ανανέωσης</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Πατήστε για εναλλαγή στον επόμενο υποψήφιο στίχο· παρατεταμένο πάτημα για αναζήτηση στίχων με τίτλο τραγουδιού και καλλιτέχνη</string>
   <string name="morphe_music_lyrics_search_dialog_title">Αναζήτηση στίχων</string>
@@ -591,6 +730,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_played_summary">Απόκρυψη γραμμών στίχων πάνω από τον τρέχοντα στίχο</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Απόκρυψη στίχων που δεν έχουν παιχτεί.</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Απόκρυψη γραμμών στίχων κάτω από την τρέχουσα γραμμή.</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Δυναμικό φόντο</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Εμφάνιση ενός θολού φόντου που δημιουργείται από την εικόνα του άλμπουμ πίσω από τους στίχους</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Κινούμενο δυναμικό φόντο</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Μετακίνηση του φόντου κατά την αναπαραγωγή και παλμική κίνηση με τη μουσική εάν το YouTube Music έχει άδεια χρήσης του μικροφώνου. Απενεργοποιήστε το για ένα στατικό φόντο που καταναλώνει λιγότερη μπαταρία</string>
   <string name="morphe_music_lyrics_mediasession_title">Εμφάνιση στίχων MediaSession στην οθόνη κλειδώματος</string>
   <string name="morphe_music_lyrics_mediasession_summary">Εμφάνιση της τρέχουσας γραμμής στην οθόνη κλειδώματος, στο Android Auto και στο Bluetooth. Απαιτείται Android 11 ή νεότερο</string>
   <string name="morphe_music_lyrics_miniplayer_title">Εμφάνιση στίχων στο Miniplayer.</string>
@@ -624,7 +767,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_text_filter_title">Κανονική έκφραση φίλτρου στίχων</string>
   <string name="morphe_music_lyrics_text_filter_summary">Η κανονική έκφραση εφαρμόζεται μόνο στο αρχικό κείμενο στίχων (όχι σε μεταφράσεις ή μεταγραφές). Αφήστε το κενό για απενεργοποίηση.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Δείκτες γραμμών πληροφοριών.</string>
-  <string name="morphe_music_lyrics_credit_line_regex_summary">Αν οι στίχοι φιλτράρονται λανθασμένα προς τα κάτω, προσαρμόστε ή καθαρίστε αυτό το πεδίο. […] Αφήστε το κενό για απενεργοποίηση.</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">Αν οι στίχοι φιλτράρονται λανθασμένα προς τα κάτω, προσαρμόστε ή καθαρίστε αυτό το πεδίο. Δείκτες διαχωρισμένοι με κόμμα: οι γραμμές που περιέχουν έναν δείκτη ακολουθούμενο από άνω και κάτω τελεία εμφανίζονται ως πληροφορίες συντελεστών στο κάτω μέρος. Αφήστε το κενό για απενεργοποίηση.</string>
   <string name="morphe_music_lyrics_force_capitalize_title">Κεφαλαίωση του πρώτου γράμματος</string>
   <string name="morphe_music_lyrics_force_capitalize_summary">Κεφαλαιοποιεί το πρώτο γράμμα κάθε γραμμής των στίχων</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Αφαίρεση τελικής στίξης</string>
@@ -632,7 +775,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_text_size_title">Μέγεθος κειμένου</string>
   <string name="morphe_music_lyrics_text_size_summary">Μέγεθος κειμένου των στίχων</string>
   <string name="morphe_music_lyrics_offset_ms_title">Καθολική χρονική μετατόπιση</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">Οι συγχρονισμένοι στίχοι ακολουθούν την αναπαραγωγή. Αν αποκλίνουν, προσαρμόστε τη μετατόπιση χρονισμού. […] Χρησιμοποιήστε θετική τιμή αν οι στίχοι προηγούνται του τραγουδιού.</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Οι συγχρονισμένοι στίχοι ακολουθούν την αναπαραγωγή. Αν αποκλίνουν, προσαρμόστε τη μετατόπιση χρονισμού. Μετακινήστε τους συγχρονισμένους στίχους μπροστά ή πίσω. Χρησιμοποιήστε θετική τιμή αν οι στίχοι προηγούνται του τραγουδιού.</string>
   <string name="morphe_music_lyrics_sb_matching_title">Χρήση τμημάτων του SponsorBlock για τη μετατόπιση στίχων</string>
   <string name="morphe_music_lyrics_sb_matching_summary">Αντιστοίχιση χωρίς τα τμήματα που παραλείπει το SponsorBlock και μετατόπιση των στίχων στο κυκλοφορημένο ήχο. Το Off αγνοεί εντελώς το SponsorBlock</string>
   <string name="morphe_music_lyrics_sb_no_video">Αυτό το κομμάτι δεν έχει αναγνωριστικό βίντεο για υποβολή</string>
@@ -689,7 +832,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">Απόκρυψη γραμμής πιστώσεων.</string>
   <string name="morphe_music_lyrics_hide_info_summary">Απόκρυψη της γραμμής πιστώσεων που εμφανίζεται κάτω από τους στίχους.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Εναλλαγή μετάφρασης και μεταγραφής.</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Το ON βάζει τον ρωμαϊσμό ή τη μεταγραφή κάτω από τους στίχους και τη μετάφραση πάνω· Το OFF διατηρεί τον ρωμαϊσμό ή τη μεταγραφή πάνω και τη μετάφραση κάτω. Μια ανάδευση τοποθετημένη πάνω από κάθε σύλλαβα κινείται μαζί της, από πάνω στη σύλλαβα προς τα κάτω</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Ανταλλαγή της σειράς εμφάνισης της μετάφρασης και της ρωμανιзации κάτω από τους στίχους</string>
   <string name="morphe_music_lyrics_force_center_title">Κεντράρεμα στίχων πάντα</string>
   <string name="morphe_music_lyrics_force_center_summary">Το ON βάζει κάθε γραμμή στο κέντρο και αγνοεί την ευθυγράμμιση της πηγής, συμπεριλαμβανομένων των πλευρών duet· Το OFF διατηρεί την ευθυγράμμιση που ζητούν οι στίχοι</string>
   <string name="morphe_music_lyrics_providers_keep_one">Πρέπει να παραμείνει ενεργός τουλάχιστον ένας πάροχος</string>
@@ -697,11 +840,19 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Ρωμαϊσμός ή μεταγραφή</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Λεξικό Εκτός Γραμμής</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Λεξιλόγιο Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Αποφύλτο Λεξικό</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Σενάριο Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Εμφάνιση κουμπιού Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Πατήστε για να ενεργοποιήσετε/απενεργοποιήσετε τις αναγνώσεις ruby πάνω από τους στίχους — κρατήστε πατημένο για να εναλλάξετε μεταξύ hiragana και katakana. Χρησιμοποιεί τους ενεργοποιημένους παρόχους ruby στη σειρά που αναφέρονται</string>
+  <string name="morphe_music_lyrics_ruby_generating">Δημιουργία ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Ανίχνευση τμημάτων με AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Χρησιμοποιείται μόνο όταν ο πάροχος δεν παρέχει ετικέτες τμημάτων όπως Refrain ή Στροφή, τις οποίες τότε εντοπίζει το μοντέλο συμβατό με OpenAI. Η επεξεργασία της γραμμής ανοίγει επίσης το prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL τελικού σημείου API (π.χ. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Πρότυπο Prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Υποκαταστάτες: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Δεῖγματα: {task}, {language}, {title}, {artist}, {count}, {lines}. Τα άγνωστα παραμένουν όπως πληκτρολογήθηκαν</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Το prompt αποθηκεύτηκε</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Η εκκίνηση αποθηκεύτηκε, αλλά το τελικό σημείο AI δεν είναι ακόμα διαθέσιμο. Πριν το χρησιμοποιήσετε, ρυθμίστε το στις Ρυθμίσεις AI</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Το prompt επαναφέρθηκε</string>
@@ -711,14 +862,17 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Ρυθμίσεις μη συμπληρωμένες ή απορριφθείσες από τον πάροχο</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Έλεγχος σύνδεσης…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Συνδέθηκε! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Απέτυχε η σύνδεση. Ελέγξτε τις ρυθμίσεις.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Η σύνδεση απέτυχε. Ελέγξτε τις ρυθμίσεις.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Εισάγετε πρώτα το κλειδί API</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Δοκιμή σύνδεσης</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Ανάκτηση μοντέλων…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Ανάκτηση μοντέλων</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Επίλεξε ένα Μοντέλο</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Αποτυχία ανάκτησης μοντέλων. Έλεγξε το API key ή τη σύνδεση.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Μοντέλο</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Βασική διεύθυνση URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Προεπιλογές υπηρεσίας</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Επιλογή υπηρεσίας</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">Κλειδί API (προαιρετικό)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Πρόσθετο σώμα αιτήματος (προαιρετικό JSON)</string>

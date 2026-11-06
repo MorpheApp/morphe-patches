@@ -7,8 +7,7 @@
 
 package app.morphe.patches.youtube.interaction.pictureinpicture
 
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
@@ -24,7 +23,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.setExtensionIsPatchIncluded
 
-private val pictureinPictureButtonResourcePatch = resourcePatch {
+private val pictureinPictureButtonResourcePatch = patch {
     dependsOn(
         settingsPatch,
         legacyPlayerControlsPatch,
@@ -39,7 +38,7 @@ private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/PictureinPictureButtonPatch;"
 
 @Suppress("unused")
-val pictureinPictureButtonPatch = bytecodePatch(
+val pictureinPictureButtonPatch = patch(
     name = "Picture-in-picture button",
     description = "Adds an option to display a picture-in-picture button in the video player."
 ) {
@@ -51,7 +50,7 @@ val pictureinPictureButtonPatch = bytecodePatch(
         playerOverlayButtonsSettingsPatch,
         playerFlyoutPreferences,
         flyoutPatch,
-        bytecodePatch {
+        patch {
             finalize {
                 addTopControl(
                     "pictureinpicturebutton",

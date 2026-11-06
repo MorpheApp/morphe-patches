@@ -14,10 +14,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getFreeRegisterProvider
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchSingle
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
@@ -45,7 +46,6 @@ import app.morphe.patches.youtube.video.information.VideoQualityFingerprint
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneMutable
-import app.morphe.util.findFieldFromToString
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.findMethodFromToString
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -58,14 +58,13 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/quality/RememberVideoQualityPatch;"
 
-val rememberVideoQualityPatch = bytecodePatch {
+val rememberVideoQualityPatch = patch {
     dependsOn(
         sharedExtensionPatch,
         videoInformationPatch,
@@ -105,11 +104,8 @@ val rememberVideoQualityPatch = bytecodePatch {
             SwitchPreference("morphe_remember_video_quality_last_selected_toast", summary = true)
         ))
 
-        val initialResolutionField = PlaybackStartParametersToStringFingerprint.method
-                .findFieldFromToString(FIXED_RESOLUTION_STRING)
-
         // Inject a call to override initial video quality.
-        getPlaybackStartParametersConstructorFingerprint(initialResolutionField).let {
+        PlaybackStartParametersConstructorFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA
@@ -129,7 +125,7 @@ val rememberVideoQualityPatch = bytecodePatch {
         // so the quality selected by the user for the video is used instead of the initial quality.
         // The Shorts player also loads the next Shorts before they play, so the video ID of the player
         // that loads the video is passed, from the playback start descriptor of its player.
-        getPlaybackStartParametersInitialResolutionFingerprint(initialResolutionField).matchSingle().method.apply {
+        PlaybackStartParametersInitialResolutionFingerprint.matchSingle().method.apply {
             val descriptorMatch = getPlayerPlaybackStartDescriptorFingerprint(
                 definingClass,
                 PlaybackStartDescriptorToStringFingerprint.classDef.type
@@ -206,7 +202,7 @@ val rememberVideoQualityPatch = bytecodePatch {
         // (Auto, Higher picture quality, Data saver), both on the device and with the SABR requests.
         val videoQualitySettingMethod = VideoQualitySettingEnumFingerprint.let {
             val videoQualitySettingType = it.classDef.type
-            val advancedMenuField = it.instructionMatches.last().instruction.getReference<FieldReference>()!!
+            val advancedMenuField = it.instructionMatches.last().fieldReference
 
             getVideoQualitySettingFingerprint(videoQualitySettingType).method.apply {
                 addInstructionsWithLabels(
@@ -278,13 +274,13 @@ val rememberVideoQualityPatch = bytecodePatch {
         // and without one the quality is chosen automatically, such as 720p for the size of the player.
         // The default quality is used as the quality last selected, as if the user just selected it.
         val videoIdField = LastSelectedVideoQualityConstructorFingerprint.let {
-            val videoIdField = it.instructionMatches[1].instruction.getReference<FieldReference>()!!
+            val videoIdField = it.instructionMatches[1].fieldReference
 
             it.method.apply {
-                val selectedTimeField = it.instructionMatches[0].instruction.getReference<FieldReference>()!!
-                val playbackStartTimeField = it.instructionMatches[3].instruction.getReference<FieldReference>()!!
-                val resolutionField = it.instructionMatches[4].instruction.getReference<FieldReference>()!!
-                val directionField = it.instructionMatches[5].instruction.getReference<FieldReference>()!!
+                val selectedTimeField = it.instructionMatches[0].fieldReference
+                val playbackStartTimeField = it.instructionMatches[3].fieldReference
+                val resolutionField = it.instructionMatches[4].fieldReference
+                val directionField = it.instructionMatches[5].fieldReference
 
                 // All fields are set, so the registers are free before the return.
                 addInstructionsAtControlFlowLabel(
@@ -352,8 +348,9 @@ val rememberVideoQualityPatch = bytecodePatch {
         }
 
         // A quality selected by the user is used again if YouTube reloads the video,
-        // until another video is opened.
-        hookVideoIntent(EXTENSION_CLASS, detectVideo = true, detectShorts = true)
+        // until another video is opened in the same player.
+        hookVideoIntent(EXTENSION_CLASS, detectVideo = true, detectShorts = false)
+        hookVideoIntent(EXTENSION_CLASS, "onShortsIntentLoaded", detectVideo = false, detectShorts = true)
 
         // Inject a call to remember the selected quality for Shorts.
         VideoQualityItemOnClickFingerprint.let {
@@ -409,7 +406,7 @@ val rememberVideoQualityPatch = bytecodePatch {
         // wrong, such as 720 for the 480p quality of some Shorts, so another quality is played.
         // The quality selected is set instead, as the quality menu of regular videos does.
         val setResolutionMethod = getSetVideoQualityResolutionFingerprint(
-            SetVideoQualityFingerprint.instructionMatches[1].getFieldAccessed().type
+            SetVideoQualityFingerprint.instructionMatches[1].fieldReference.type
         ).matchSingle().method
 
         getVideoQualityItemSetResolutionFingerprint(setResolutionMethod).matchAll().forEach {
@@ -537,7 +534,8 @@ val rememberVideoQualityPatch = bytecodePatch {
             // The buffered video is cleared after and before the segment that is playing.
             val videoTrackTypeField = PlaybackControllerSetVideoFormatsFingerprint.instructionMatches
                 .last().getFieldAccessed()
-            val discardBufferAfterSegmentMethod = BufferManagerDiscardBufferAfterSegmentFingerprint.method
+            val discardBufferAfterSegmentMethod = MediaSegmentHolderDiscardBufferAfterSegmentFingerprint
+                .instructionMatches.last().getMethodCalled()
             val getMediaSegmentHolderMethod = BufferManagerGetMediaSegmentHolderFingerprint.method
 
             // The video buffered before the segment that is playing is cleared too,
@@ -596,7 +594,10 @@ val rememberVideoQualityPatch = bytecodePatch {
             }
 
             PlaybackControllerClearBufferFingerprint.let {
-                val stopRequestsMethod = it.instructionMatches[0].getMethodCalled()
+                val stopRequestsMatch = it.instructionMatches[0]
+                // The method is private in some versions, so the call uses the original opcode.
+                val stopRequestsOpcode = stopRequestsMatch.instruction.opcode.name
+                val stopRequestsMethod = stopRequestsMatch.getMethodCalled()
                 val bufferManagerField = it.instructionMatches[1].getFieldAccessed()
 
                 it.method.addInstructionsWithLabels(
@@ -609,11 +610,11 @@ val rememberVideoQualityPatch = bytecodePatch {
                         const-wide/16 v2, 0x0
                         cmp-long v2, v0, v2
                         if-ltz v2, :clear_buffer
-                        invoke-virtual { p0 }, $stopRequestsMethod
+                        $stopRequestsOpcode { p0 }, $stopRequestsMethod
                         iget-object v2, p0, $bufferManagerField
-                        invoke-virtual { v2, p1, v0, v1 }, $discardBufferAfterSegmentMethod
                         invoke-virtual { v2, p1 }, $getMediaSegmentHolderMethod
                         move-result-object v2
+                        invoke-virtual { v2, v0, v1 }, $discardBufferAfterSegmentMethod
                         check-cast v2, $SAMPLE_HOLDER_CLASS
                         invoke-virtual { v2, v0, v1 }, $sampleHolderDiscardBufferMethod
                         return-void

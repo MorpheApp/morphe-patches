@@ -130,6 +130,19 @@ public final class ResumePlanner {
         return null;
     }
 
+    /**
+     * @return If the video is the next available episode after the previous video, in series order.
+     */
+    static boolean isNext(Series series, String previous, String video) {
+        String last = "";
+        for (Episode e : series.episodes()) {
+            if (!e.available) continue;
+            if (last.equals(previous) && e.videoId.equals(video)) return true;
+            last = e.videoId;
+        }
+        return false;
+    }
+
     public static String time(long ms) {
         final long seconds = Math.max(0, ms) / 1000;
         return seconds >= 3600

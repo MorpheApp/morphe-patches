@@ -1,6 +1,6 @@
 package app.morphe.patches.youtube.video.quality
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -10,7 +10,7 @@ import app.morphe.patches.youtube.video.format.videoFormatPatch
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/quality/PrioritizeVideoQualityPatch;"
 
-internal val prioritizeVideoQualityPatch = bytecodePatch {
+internal val prioritizeVideoQualityPatch = patch {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

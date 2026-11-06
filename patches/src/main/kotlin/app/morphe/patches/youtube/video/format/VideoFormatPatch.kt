@@ -9,14 +9,14 @@ package app.morphe.patches.youtube.video.format
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
+import app.morphe.patches.shared.VideoStreamingDataConstructorFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.util.findMethodFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -24,7 +24,6 @@ import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction22c
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import java.lang.ref.WeakReference
 
@@ -35,7 +34,7 @@ private const val EXTENSION_FORMAT_INTERFACE =
 
 private lateinit var adaptiveFormatMethod : WeakReference<MutableMethod>
 
-val videoFormatPatch = bytecodePatch(
+val videoFormatPatch = patch(
     description = "Hooks YouTube to get format about the current playing video.",
 ) {
     dependsOn(sharedExtensionPatch)
@@ -43,8 +42,7 @@ val videoFormatPatch = bytecodePatch(
     execute {
         val formatStreamModelFormatField = FormatStreamModelToStringFingerprint
             .instructionMatches[5]
-            .instruction
-            .getReference<FieldReference>()!!
+            .fieldReference
 
         getFormatFingerprint(formatStreamModelFormatField.type).classDef.apply {
             interfaces.add(EXTENSION_FORMAT_INTERFACE)

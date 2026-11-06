@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Майда-чүйдө</string>
   <string name="morphe_settings_screen_12_video_title">Видео</string>
   <string name="morphe_restore_old_settings_menus_title">YouTube\'дун эски жөндөөлөр экранын калыбына келтирүү</string>
+  <string name="morphe_native_snackbar_title">Билдирүүлөрдү YouTube snackbar-да көрсөтүү</string>
+  <string name="morphe_native_snackbar_summary">Morphe билдирүүлөрү, мисалы, оюнчу баскычынын ырастоосу, всплывающее терезенин ордуна YouTube snackbar\'ында көрсөтүлөт</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Фондо ойнотуу чектөөлөрүн алып салуу</string>
   <string name="morphe_shorts_disable_background_playback_title">Фондо oynatууну өчүрүү</string>
@@ -59,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Китепкана / Сиз төмөнкү менюнун фильтрин күйгүзүү</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Китепкана / Сиз төмөнкү менюнун фильтри</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Фильтрлөө үчүн Китепкана / Сиз төмөнкү менюсунун аталыштарын жаңы саптар менен бөлүп жазыңыз</string>
+  <string name="morphe_hide_account_menu_downloads_title">Жүктүүлөрдү жашыруу</string>
   <string name="morphe_hide_album_cards_title">Альбом карталарын жашыруу</string>
   <string name="morphe_hide_album_cards_summary">Артисттин сүрөттөмөсүнүн астындагы альбом карталарын жашырат</string>
   <string name="morphe_hide_artist_cards_title">Артист карталарын жашыруу</string>
@@ -66,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">Канал баскычтарын жашыруу</string>
   <string name="morphe_hide_channel_buttons_summary">Издөө натыйжаларындагы канал профилдеринен Жазылуу, Каналды көрүү, Коомдук жана YouTube Music сыяктуу баскычтарды жашырат</string>
   <string name="morphe_hide_community_posts_title">Коомдук жазууларды жашыруу</string>
+  <string name="morphe_post_buttons_screen_title">Посттун баскычтары</string>
+  <string name="morphe_post_buttons_screen_summary">Коомчулук постторунун астындагы баскычтардын жайгашуусун жана кайсы баскычтарды жашырууну тандаңыз</string>
+  <string name="morphe_post_buttons_layout_title">Пост баскычтарынын жайгашуусу</string>
+  <string name="morphe_post_buttons_layout_entry_1">Сервер</string>
+  <string name="morphe_post_buttons_layout_entry_2">Мажбурланган</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Жакты жана жактырбады баскычтарын жашыруу</string>
+  <string name="morphe_hide_post_dislike_button_title">Жактырбады баскычын жашыруу</string>
+  <string name="morphe_hide_post_dislike_button_summary">Мажбурланган жайгашуу менен баскычтын орду бош калат</string>
+  <string name="morphe_hide_post_comment_button_title">Комментарий баскычын жашыруу</string>
+  <string name="morphe_hide_post_comments_preview_title">Комментарийлердин алдын көрүүнү жашыруу</string>
+  <string name="morphe_hide_post_comments_preview_summary">Посттордун астындагы комментарийлердин алдын көрүүнү жашырат</string>
+  <string name="morphe_hide_post_share_button_title">Бөлүшүү баскычын жашыруу</string>
+  <string name="morphe_hide_post_share_button_summary">Пост сүрөттөрүн жүктөө баскычы бөлүшүү баскычынын жанында жайгашкан, ошондуктан ал да жашырылат</string>
   <string name="morphe_hide_compact_banner_title">Компакттуу баннерлерди жашыруу</string>
   <string name="morphe_hide_compact_banner_summary">Компакттуу баннерлерди жана айрым компоненттердин ортосундагы боштуктарды жашырат</string>
   <string name="morphe_hide_expandable_card_title">Видеолордун астындагы кеңейтиле турган карталар</string>
@@ -98,7 +114,7 @@ Second \"item\" text"</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\"Мага кабарлаңыз\" баскычын жашыруу</string>
-  <string name="morphe_hide_notify_me_button_summary">Жазылган түз эфирлер жана премьералар үчүн эскертүү баскычын жашырат</string>
+  <string name="morphe_hide_notify_me_button_summary">Пландаштырылган түз эфирлер жана Премьералар үчүн эскертүү баскычын жашырат</string>
   <string name="morphe_hide_playables_title">Playables бөлүмүн жашыруу</string>
   <string name="morphe_hide_playables_summary">Оюндарды ойноо мүмкүнчүлүгүн жашырат</string>
   <string name="morphe_hide_search_term_thumbnails_title">Издөө терминдеринин миниатюраларын жашыруу</string>
@@ -156,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Ойнотуучунун жесттери учурунда көрсөтүлгөн «Так издөө үчүн жогору тартыңыз», «Жокко чыгаруу үчүн коёруңуз» жана «2x» сыяктуу кеңештерди жашырат</string>
-  <string name="morphe_hide_snackbar_title">Снэкбарды жашыруу</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Жазылуучулардын эрежелерин жашыруу</string>
   <string name="morphe_hide_sync_button_title">\'Видео менен синхрондостоо\' баскычын жашыруу</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Басып кармоо градиентин жашыруу</string>
@@ -257,9 +272,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">Пикирлер</string>
   <string name="morphe_comments_screen_summary">Комментарийлер бөлүмүндө кайсы компоненттер көрүнөрүн тандаңыз</string>
   <string name="morphe_hide_comments_carousel_title">Комментарийлер каруселинин фильтрин күйгүзүү</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Карусель элементтинин так атын киргизиңиз (мисалы, Ask, Hype this video, Listen on YouTube Music)
-• Карусель элементтерин жашыруу күтүлбөгөн терс таасирлерге алып келиши мүмкүн
-• Эгерде карусельдин бардык элементтери жашырылса, бүткүл комментарийлер бөлүмү да жашырылат"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Ачкыч сөздү же толук атты киргизиңиз (мисалы, Ask, Community, Hype, Listen)
+• Бардык элементтерди жашыруу комментарийлер бөлүмүн толугу менен жашырат"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Комментарийлер каруселинин фильтри</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Фильтрлөө үчүн комментарийлер каруселинин аттарын жаңы саптар менен бөлүп жазыңыз</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI чаттын кыскача мазмунун жашыруу</string>
@@ -274,6 +288,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">Эмодзи баскычын жашыруу</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Фильтр панелинин параметрлерин жашыруу</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'Эң мыкты\' жана \'Жаңы\' параметрлеринден башка бардык фильтр панелинин параметрлерин жашырат</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF баскычын жашыруу</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF-терди жана сүрөттөрдү жашыруу</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Комментарийлерге жана жоопторго тиркелген GIF-терди жана сүрөттөрдү жашырат</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Белектердин анимациясын жана карталарын жашыруу</string>
   <string name="morphe_hide_comments_gift_button_title">Белек баскычын жашыруу</string>
   <string name="morphe_hide_comments_info_button_title">Маалымат баскычын жашыруу</string>
@@ -324,11 +341,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Ачкыч сөздүн карама-каршы declarations есть: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ачкыч сөз өтө кыска жана тырмакчаларды талап кылат: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ачкыч сөз бардык видеолорду жашырат: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Башкы бет: %s
-• Жазылуулар: %s
-• Издөө: %s
-• Комментарийлер: %s
-• Жалпы: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Башкы бет: %1$s
+• Жазылуулар: %2$s
+• Издөө: %3$s
+• Комментарийлер: %4$s
+• Жалпы: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Статистика</string>
   <string name="morphe_hide_stats_hidden_24h_title">Жашырылган видеолор, акыркы 24 саат</string>
   <string name="morphe_hide_stats_hidden_all_title">Жашырылган видеолор, бардык убакыт</string>
@@ -340,9 +357,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_warnlist_category_title">Эскертүү тизмеси: Орточо ишенимдүүлүк</string>
   <string name="morphe_hide_aislist_hide_home_title">Баштапкы беттеги видеолорду жашыруу</string>
   <string name="morphe_hide_aislist_hide_search_title">Издөөдөгү видеолорду жашыруу</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Башкы бет: %s
-• Издөө: %s
-• Жалпы: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Башкы бет: %1$s
+• Издөө: %2$s
+• Жалпы: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Блокко алынган каналдар</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Эскертүү тизмесиндеги каналдар</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Каналдарды жүктөө үчүн чыпканы иштетиңиз</string>
@@ -381,6 +398,20 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <string name="morphe_aislist_submit_failed_rate_limit">Арыздар өтө көп жөнөтүлдү, кийинчерээк кайра аракет кылыңыз</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList арызды четке какты</string>
   <string name="morphe_aislist_submit_failed">Арыз жөнөтүү окшошту, байланышыңызды текшериңиз</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Снэкбар</string>
+  <string name="morphe_snackbar_screen_summary">Снэкбарларды жашырыңыз же алардын түстөрүн жана формасын өзгөртүңүз</string>
+  <string name="morphe_hide_snackbar_title">Снэкбарды жашыруу</string>
+  <string name="morphe_custom_snackbar_theme_title">Ыйыкталган снэкбар</string>
+  <string name="morphe_custom_snackbar_theme_summary">Снэкбарлар карама-каршы теманын түстөрүнүн ордуна төмөндөгү түстөрдү жана бурч radiusсун колдонушат</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Коңуру теманын фон түсү</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Коңуру темадагы snackbar-лардын фон түсү. Текст окууга ыңгайлуу болгон кара же ак түстө болот</string>
+  <string name="morphe_custom_snackbar_color_light_title">Жарык теманын фон түсү</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Жарык темадагы snackbar-лардын фон түсү. Текст окууга ыңгайлуу болгон кара же ак түстө болот</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Чектин түсү</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Snackbar-лардын тегерегиндеги чектин түсү. Тунук түс чек жок экенин билдирет</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Буручтун радиусу</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Snackbar-лардын буруч радиусу dp менен</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Каналдын жарнамаларынын ак тизмеси</string>
   <string name="morphe_ads_channel_whitelist_summary">Ак beyaz тизмесиндеги каналдардын видеолору жарнамалар менен ойнотулат, ошондуктан алардын автору акы алат. Калган бардык каналдарда жарнамалар бөгөттөлөт</string>
@@ -439,11 +470,16 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <string name="morphe_copy_comments_title">Пыкирлерди көчүрүү</string>
   <string name="morphe_copy_comments_summary">Пыкирди көчүрүү үчүн аны басып туруңуз</string>
   <string name="morphe_copy_comments_success">Пыкир алмаштыруу буферге көчүрүлдү</string>
+  <string name="morphe_copy_select_text_title">Сүрөттөмөлөрдүн жана посттордун текстин тандоо</string>
+  <string name="morphe_copy_select_text_summary">Видеонун сүрөттөмөсүн же постту белгилүү бир бөлүгүн тандоо жана көчүрүү үчүн аны басып туруңуз</string>
+  <string name="morphe_copy_select_text_dialog_title">Текстти тандоо</string>
+  <string name="morphe_copy_select_text_copy_all">Баарын көчүрүү</string>
+  <string name="morphe_copy_select_text_success">Текст алмашкачыга көчүрүлдү</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Видео менюсун ачуу үчүн басып тургула</string>
   <string name="morphe_feed_long_press_menu_summary">Лентадагы видеонун каалаган жерин басып тургуңуз, анда анын менюсу ачылат</string>
   <string name="morphe_feed_watch_later_button_title">Миниатюраларда «Кийинчерээк көрүү» баскычын көрсөтүү</string>
-  <string name="morphe_feed_watch_later_button_summary">Лентадагы видеолордун миниатюраларында «Кийинчерээк көрүү» баскычы көрсөтүлөт. Аны басып турсаңыз, «Плейлистке сактоо» функциясы ачылат</string>
+  <string name="morphe_feed_watch_later_button_summary">Лентадагы видеолордун кичинекей сүрөттөрүндө «Кийин көрүү» баскычы көрсөтүлөт, ал эми видео сакталса, белги белгиси пайда болот. Аны бассаңыз видео сакталат же өчүрүлөт, ал эми басып турсаңыз «Плейлистке сактоо» менюсу ачылат</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Посттогу сүрөттөрдү жүктөө</string>
   <string name="morphe_post_image_download_summary">Сүрөттөрү же GIF-тери бар посттордун \"Бөлүшүү\" баскычынын жанында жүктөө баскычы пайда болот жана алардын менюсуна жүктөө пункту кошулат</string>
@@ -456,6 +492,14 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <string name="morphe_post_image_download_failed">Сүрөттү жүктөп алуу мүмкүн болгон жок</string>
   <string name="morphe_post_image_download_not_found">Бул постто сүрөт табылган жок</string>
   <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Постторду которуу</string>
+  <string name="morphe_post_translate_summary">Контент создагчылардын постторун которуу үчүн тез менюга элементти кошот</string>
+  <string name="morphe_post_translate_language_title">Постту которуу тили</string>
+  <string name="morphe_post_translate_flyout">Которуу</string>
+  <string name="morphe_post_translate_flyout_original">Түп нускасын көрсөтүү</string>
+  <string name="morphe_post_translate_started">Которууда…</string>
+  <string name="morphe_post_translate_failed">Постту которуу мүмкүн болгон жок</string>
+  <string name="morphe_post_translate_same_language">Пост буга чейин эле которулган тилде жазылган</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Суроо пунктун тез менюга кошуу</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Лентанын тез менюсуна видеону кыскача баяндоо пунктун кошот</string>
@@ -505,8 +549,24 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <string name="morphe_external_downloader_quick_audio">Аудио</string>
   <string name="morphe_external_downloader_quick_options">Бардык параметрлер</string>
   <string name="morphe_shorts_download_flyout_button_title">Shorts менюсунда жүктөөлөрдү көрсөтүү</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Shorts ойноткучуна тышкы жүктөөчү үчүн тез меню пунктун кошот</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Shorts ойноткучунун менюсуна жүктөө пунктун кошот</string>
   <string name="morphe_shorts_download_flyout_title">Кыскартылган жерге жүктөө</string>
+  <string name="morphe_export_download_folder_title">Сакталган видеолорду экспорттоо</string>
+  <string name="morphe_export_download_folder_summary">"Тиркеменин жүктөөлөр менюсун колдонуп, сакталган видеолорду түзүлүшүңүздүн эс тутумуна экспорттоңуз. Экспорттоло турган папканы өзгөртүү үчүн басыңыз
+
+Экспорттоло турган папка: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Экспорттоо папкасы</string>
+  <string name="morphe_export_download_folder_change">Папканы өзгөртүү</string>
+  <string name="morphe_export_download_folder_changed">Экспорттоо папкасы өзгөртүлдү</string>
+  <string name="morphe_export_download_folder_reset">Экспорттоо папкасы кайтарылды</string>
+  <string name="morphe_export_download_folder_missing">Экспорттоо папкасын таптыруу мүмкүн болбоду %s</string>
+  <string name="morphe_export_download_flyout_title">Түзмөктке экспорттоо</string>
+  <string name="morphe_export_download_started">Видео экспорттолууда</string>
+  <string name="morphe_export_download_progress">Видео экспорттолуп жатат: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Видео экспорттору</string>
+  <string name="morphe_export_download_saved">Видео %s жерге экспорттолду</string>
+  <string name="morphe_export_download_failed">Видеону экспорттоого мүмкүн болгон жок</string>
+  <string name="morphe_export_download_canceled">Экспорт токтотулду</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Котормону үн менен окуу</string>
   <string name="morphe_vot_screen_summary">Видеонун жапкычтарын түзүлүштүн текстти сүйлөтүү функциясын колдонуп, ойнотуу менен синхрондоштурулган түрдө үн чыгарып окуу</string>
@@ -560,6 +620,11 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_vot_mymemory_quota_message_no_email">Сиз бүгүнкү MyMemory акысыз которуу квотасын (5 000 белги) колдондуңуз. Күндүк лимитти 50 000 белгиге чейин жогорулатуу үчүн жөндөөлөргө MyMemory электрондук почтасын кошуңуз же башка которуу кызматына өтүңүз</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Сиз бүгүнкү MyMemory которуу квотасын (50 000 белги) колдондуңуз. Башка которуу кызматына өтүңүз же эртең кайра аракет кылып көрүңүз</string>
   <string name="morphe_vot_mymemory_error">MyMemory которуусу катачылык менен аяктады (статус %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">\"Кийин көрүү\" сүйрөтүү туткаларын кеңейтүү</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">\"Кийин көрүү\" видеолорунун сүйрөтүү туткаларын кармоо оңой</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">\"Кийин көрүү\"дөн алып салуу жөнүндөснэкбарды жашыруу</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Видео \"Кийин көрүү\" тизмесинен алынгандан кийин ырастама көрсөтүлбөйт</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Видеону кайталоону күйгүзүү</string>
   <string name="morphe_do_not_remember_loop_video_title">Видеону кайталоону эстеп калбоо</string>
@@ -581,6 +646,19 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_pip_button_overlay_title">Сүрөт-сүрөттө баскычын көрсөтүү</string>
   <string name="morphe_pip_button_flyout_title">Сүрөт-сүрөттө менюсун көрсөтүү</string>
   <string name="morphe_pip_button_flyout_name">Сүрөт-сүрөттө режимине өтүү</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Сүрөттөгү сүрөт аракеттери</string>
+  <string name="morphe_pip_actions_screen_summary">Сүрөттөгү сүрөттө көрсөтүлгөн баскычтарды өзгөртүңүз</string>
+  <string name="morphe_pip_action_left_title">Сол баскыч</string>
+  <string name="morphe_pip_action_center_title">Ортоңку баскыч</string>
+  <string name="morphe_pip_action_right_title">Оң баскыч</string>
+  <string name="morphe_pip_action_entry_default">Негизги</string>
+  <string name="morphe_pip_action_entry_previous">Мурунку видео</string>
+  <string name="morphe_pip_action_entry_next">Кийинки видео</string>
+  <string name="morphe_pip_action_entry_rewind">10 секунд артка кайтаруу</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 секунд алга жылдыруу</string>
+  <string name="morphe_pip_action_entry_play_pause">Оynтуу/токтотуу</string>
+  <string name="morphe_pip_action_entry_background_playback">Фондук ойнотуу</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Баарын ойнотуу баскычын көрсөтүү</string>
   <string name="morphe_play_all_button_summary">"Каналдагы бардык видеолордун плейлистин түзүү үчүн басыңыз, кайтаруу үчүн басып туруңуз
@@ -613,10 +691,6 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_save_to_watch_later_flyout_title">Кейин көрүүгө сактоо</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Плеер жөндөөлөрүнүн менюсунда \"Кийин көрүүгө сактоо\" баскычын көрсөтүү</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Видео жөндөөлөрүнүн менюсунан учурдагы көрүлүп жаткан видеону \"Кийин көрүү\" бөлүмүнө сактоого мүмкүндүк берет</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Балдар үчүн видеолордо \"Кейин көрүүгө сактоо\" баскычын көрсөтүү</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Менюдан балдарга арналган видеолорду \"Кийин көрүү\" бөлүмүнө сактоого мүмкүндүк берет</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Shorts менюсүндө «Кийин көрүүгө сактоо» баскычын көрсөтүү</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Shorts видеолорду менюдан «Кийин көрүүгө» сактоого мүмкүндүк берет</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">\"Кийин көрүү\" функциясын плейлистке багыттаңыз</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Кийин көрүү</string>
   <string name="morphe_queue_flyout_title">Morphe кезекке кошуу</string>
@@ -715,14 +789,18 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
 Муну оңдоо үчүн, \"Видео агымдарын имитациялоо\" функциясын күйгүзүңүз жана \"Адаттагы клиентти\" \"TV Simply\" же \"visionOS\" деп өзгөртүңүз"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Издөө үчүн сыйгарууну күydүрүү</string>
-  <string name="morphe_slide_to_seek_summary">Видео плеерини басып кармаганда 2x ылдамдыкта ойнотуунун ордуна, издөө үчүн сыдырууну активлештирет</string>
+  <string name="morphe_slide_to_seek_summary">2x ылдамдыкта ойнотуунун ордуна, жылдыруу жана издөө үчүн видеону басып кармаңыз</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Издөө үчүн басууну күйгүзүү</string>
-  <string name="morphe_tap_to_seek_summary">Сыдырбастан, ошол позицияга өтүү үчүн жөн гана издөө тилкесин басыңыз</string>
+  <string name="morphe_tap_to_seek_summary">Сүйрөөnүн ордуна, ошол позицияга өтүү үчүн издөө панелинин каалаган жерине басыңыз</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Солго сыдыруу жести</string>
   <string name="morphe_swipe_right_zone_title">Оңго сыдыруу жести</string>
   <string name="morphe_swipe_top_zone_title">Жогору сыдыруу жести</string>
+  <string name="morphe_swipe_seek_title">Издөө үчүн сыйпаңыз</string>
+  <string name="morphe_swipe_seek_summary">Издөө панелини жылдыруу үчүн толук экрандуу плеерде солго же оңго сыйпаңыз, андан соң издөө үчүн колду коёруңуз</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Издөө сыйпалуу сезгичтиги</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Ар бир сыйпаганда издөө панели канчалык алыс жылдырылышы керек</string>
   <string name="morphe_swipe_zone_width_title">Сол/Оң зонанын туурасы</string>
   <string name="morphe_swipe_zone_width_summary">Сол жана оң жакка сырмалоо жесттери үчүн экрандын ар бир четинин резервделген пайызы (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Жарыктык</string>
@@ -835,6 +913,10 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Субтитрлер</string>
   <string name="morphe_captions_screen_summary">Автоматтык субтитрлерди жана субтитр кукилерини башкаруу</string>
+  <string name="morphe_captions_languages_title">Тил жана котормо</string>
+  <string name="morphe_captions_presentation_title">Сырткы көрүнүшү жана жүрүм-туруму</string>
+  <string name="morphe_captions_advanced_title">Өркүндөтүлгөн</string>
+  <string name="morphe_captions_advanced_summary">Cookie жана транскрипт опциялары</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Автоматтык субтитрлердин көрүнүүсү</string>
   <string name="morphe_auto_captions_style_entry_1">Дайыма көрсөтүү</string>
@@ -843,10 +925,10 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_auto_captions_style_entry_4">Үнү өчкөндө көрсөтүү</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Көчникардын артыкчылыктуу тили</string>
-  <string name="morphe_preferred_caption_language_summary">Алгач провайдердин субтитрлерин тандайт, андан кийин автоматтык түрдө тандалган тилге которат</string>
+  <string name="morphe_preferred_caption_language_summary">Ар бир видео үчүн субтитр тилин автоматтык түрдө тандайт</string>
   <string name="morphe_preferred_caption_language_entry_off">Өчүк</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Кошумча авто-котормо тилдерин кошуу</string>
+  <string name="morphe_auto_translate_additional_languages_title">Кошумча авто-котормо тилдери</string>
   <string name="morphe_auto_translate_additional_languages_summary">Авто-котормо менюсуна көбүрөөк тилдерди кошот</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Субтитр кукилерин орнотуу</string>
@@ -864,9 +946,20 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_fix_transcript_title">Транскриптти оңдоо</string>
   <string name="morphe_fix_transcript_summary">Транскрипттин жүктөлүшүнө тоскоол болгон алдын ала текшерүүнүн катасын жоёт</string>
   <string name="morphe_captions_in_pip_title">Сүрөттөгү сүрөттө субтитрлерди көрсөтүү</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Навигациялык баскычтар</string>
-  <string name="morphe_navigation_buttons_screen_summary">Төмөнкү навигациялык панелде кайсы баскычтар көрүнөөрүн тандаңыз</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Субтитрдин өлчөмү</string>
+  <string name="morphe_caption_scale_summary">Бир тилдеги жана эки тилдеш субтитрлерге колдонулат</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">Туруктуу субтитр блоктору</string>
+  <string name="morphe_stable_caption_blocks_summary">Бир тилдеги автоматтык субтитрлерди туруктуу, окууга ыңгайлуу блокторго топтойт. Эки тилдеш субтитрлер дайыма блокторду колдонот. Кээ бир сөздөр айтылганга чейин пайда болушу мүмкүн</string>
+  <string name="morphe_secondary_caption_language_title">Субтитрлердин экинчи тили</string>
+  <string name="morphe_secondary_caption_language_summary">Субтитрлер менен бирге экинчи тилди көрсөтөт жана субтитрлер менюсуна «Эки тилдеш субтитрлер» которуучусун кошот</string>
+  <string name="morphe_dual_captions_enabled_title">Эки тилдеш субтитрлер</string>
+  <string name="morphe_caption_block_translation_failed">Кээ бир субтитр котормолору жеткиликсиз. Жеткиликтүү субтитрлер көрсөтүлүүдө.</string>
+  <string name="morphe_caption_blocks_too_large">Субтитрлердин эки тили тең бул плеерге батпай жатат. Негизги тил көрсөтүлүүдө.</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Навигациялык панель</string>
+  <string name="morphe_navigation_bar_screen_summary">Төмөнкү навигациялык панелде кайсы баскычтар көрүнөөрүн тандаңыз</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Башкы бет баскычын жашыруу</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -878,21 +971,25 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Билдирүүлөр баскычын жашыруу</string>
   <string name="morphe_show_search_button_title">Издөө баскычын көрсөтүү</string>
-  <string name="morphe_show_search_button_index_title">Издөө баскычынын оорду</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">\"Кийинчерээк көрүү\" баскычын көрсөтүү</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Кийинчерээк көрүү</string>
   <string name="morphe_show_settings_button_title">Оңдоолор баскычын көрсөтүү</string>
-  <string name="morphe_show_settings_button_index_title">Оңдоолор баскычынын оорду</string>
   <string name="morphe_show_settings_button_type_title">Жөндөөлөр баскычынын аракеттери</string>
   <string name="morphe_show_settings_button_type_summary">Иштетилгенде Morphe жөндөөлөрүн, ал эми өчүрүлгөндө YouTube жөндөөлөрүн ачат</string>
+  <string name="morphe_navigation_buttons_order_title">Навигациялык баскычтардын тартиби</string>
+  <string name="morphe_navigation_buttons_order_summary">Навигациялык панелдеги баскычтардын тартибин өзгөртүү үчүн аларды сүйрөңүз</string>
   <string name="morphe_swap_create_with_notifications_button_title">«Жаратуу» баскычын «Билдирүүлөр» баскычы менен алмаштыруу</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Эгер бул жөндөөнү өзгөртүү натыйжа бербесе, Инкогнито режимине өтүп көрүңүз</string>
   <string name="morphe_hide_navigation_button_labels_title">Навигация баскычтарынын жапкычтарын жашыруу</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Жаңы мазмундун чекитин жашыруу</string>
   <string name="morphe_hide_navigation_bar_title">Навигациялык панельди жашыруу</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Бул навигациялык панельди, анын ичинде 'Сиз' өтмөгүн толугу менен жашырат.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Бул навигациялык панельди, анын ичинде \"Сиз\" кошунчасын толугу менен жашырат.
 
-Жөндөөлөргө кирүү үчүн, Жалпы $\rightarrow$ Куралдар панели $\rightarrow$ Жөндөөлөрдү көрсөттөө аркылуу Жөндөөлөр баскычын активдештириңиз"</string>
+Жөндөөлөргө кирүү үчүн, Жалпы → Куралдар панели → Жөндөөлөр баскычын көрсөтүү аркылуу Жөндөөлөр баскычын иштетиңиз"</string>
   <string name="morphe_narrow_navigation_buttons_title">Тар навигациялык баскычтарды иштетүү</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Баскычтардын ортосундагы горизонталдык аралыкты азайтат</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Баскычтардын ортосундагы горизонталдык аралыкты азайтат. Өзүнүн баскычтар аралыгы бар айнек навигациялык панели менен жеткиликсиз</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Жазуусу жок навигациялык баскычтарды өчүрүү</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Эгер YouTube навигациялык баскычтарды жазуусуз жиберсе, анда аларды жазуулары менен көрсөтөт</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Курал панелинин навигациялык өтмөлөрүн өчүрүү</string>
@@ -907,13 +1004,24 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_navigation_bar_style_entry_3">Тунук</string>
   <string name="morphe_navigation_bar_style_entry_4">Жыткыч</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Бул стиль сиздин түзмөгүңүз же YouTube версиясы тарабынан колдонулбашы мүмкүн жана бул макеттеги каталарга же программанын иштебей калышына алып келиши мүмкүн</string>
+  <string name="morphe_navigation_bar_glass_title">Айнек сыяктуу навигациялык панельди күйгүзүү</string>
+  <string name="morphe_navigation_bar_glass_summary">Навигациялык панельди тегеректелген, жартылай тунук капсула катары көрсөтөт. «Тунук эмес» навигациялык панель стили менен жеткиликтүү эмес</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Айнектин тунуктугу</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Айнек сыяктуу навигациялык панелдин тунуктугунун деңгээлин жөнгө салыңыз (0 - тунук, 100 - тунук эмес)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Айнек навигациялык панелинин өлчөмү</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Айнек навигациялык панелинин бийиктигин, туурасын жана баскычтардын аралыгын алдын ала көрүү менен жөнгө салыңыз. Экрандын туурасына батпаган баскычтар жашырылат</string>
+  <string name="morphe_navigation_bar_glass_size_height">Бийиктиги</string>
+  <string name="morphe_navigation_bar_glass_size_width">Максималдуу туурасы</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Баскычтардын аралыгы</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Көрсөтүлгөн баскычтар: %2$s ичинен %1$s</string>
   <string name="morphe_toolbar_screen_title">Куралдар панели</string>
   <string name="morphe_toolbar_screen_summary">Куралдар панелинде кайсы компоненттер пайда болорун тандаңыз</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Cast баскычын жашыруу</string>
   <string name="morphe_hide_toolbar_chat_button_title">Чат баскычын жашыруу</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Микрофон баскычын жашыруу</string>
   <string name="morphe_hide_toolbar_search_button_title">Издөө баскычын жашыруу</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Иштетилгенде, басуу Morphe жөндөөлөрүн, ал эми узак басуу YouTube жөндөөлөрүн ачат; алмаштыруу үчүн өчүрүңүз</string>
+  <string name="morphe_toolbar_buttons_order_title">Куралдар панелинин баскычтарынын тартиби</string>
+  <string name="morphe_toolbar_buttons_order_summary">Куралдар панелиндеги баскычтардын тартибин өзгөртүү үчүн аларды сүйрөңүз</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Ачыла турган меню</string>
   <string name="morphe_hide_player_flyout_summary">Ачылма менюда кайсы компоненттер пайда болорун тандаңыз</string>
@@ -965,6 +1073,7 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Субтитрлер баскычын жашыруу</string>
   <string name="morphe_hide_cast_button_title">Cast баскычын жашыруу</string>
+  <string name="morphe_hide_cast_button_summary">Видео ойноткучудагы жана куралдар панелиндеги Cast баскычын жашырат</string>
   <string name="morphe_hide_collapse_button_title">Жыгуу баскычын жашыруу</string>
   <string name="morphe_hide_fullscreen_button_title">Толук экран баскычын жашыруу</string>
   <string name="morphe_hide_player_control_buttons_background_title">Плеер башкаруу баскычтарынын фонун жашыруу</string>
@@ -1130,11 +1239,6 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
 • \"Көбүрөөк видеолор\" катмары жеткиликсиз болушу мүмкүн
 • Shorts кадимки плеерде ачылат
 • Эски видеонун бүктөлбөгөн аракеттер панели көрсөтүлгөн"</string>
-  <string name="morphe_tablet_layout_in_player_title">Плеерде планшеттин макетин күйгүзүү</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Плеердин эски макетин калыбына келтирет
-
-Чектөө: Эгер 'Эски видео action панелин калыбына келтирүү' өчүрүлгөн болсо, 'Көбүрөөк видеолор' катмары жеткиликсиз болушу мүмкүн"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Котормолордун эски жүрүм-турумун калыбына келтирүү</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Плейлистке сактоонун эски вариантын калыбына келтирүү</string>
@@ -1212,8 +1316,14 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_miniplayer_disable_resuming_summary">Тиркеме ишке киргенде пайда болгон YouTube Premium функциясы болгон «Көрүүгө улантуу» миниплеерин өчүрөт</string>
   <string name="morphe_miniplayer_screen_title">Миниплеер</string>
   <string name="morphe_miniplayer_screen_summary">Кичирейтилген видео ойноткучтун көрүнүшүн жана жүрүм-турумун жөнгө салыңыз</string>
+  <string name="morphe_miniplayer_not_available_title">Кошумча миниплеерлер</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube бардык кошумча миниплеерлерди алып салды. Миниплеердин көбүрөөк түрлөрүн калыбына келтирүү үчүн, YouTube 21.28.208 же андан эски версиясын патчтеңиз</string>
   <string name="morphe_miniplayer_type_title">Мини-плеердин түрү</string>
   <string name="morphe_miniplayer_hide_title_title">Аталышын жана каналды жашыруу</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Жогору сыйрып кеңейтүү</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Мини-плеерди жогору сыйроо аны экрандын жогору жагына жылдыруунун ордуна, плеерди кеңейтет</string>
+  <string name="morphe_miniplayer_docked_title">Беккеминг мини-плеер</string>
+  <string name="morphe_miniplayer_docked_summary">Мини-плеерди экрандын үстүндө калтырбастан, аны навигациялык панелге жана экрандын жактарына бекитет</string>
   <string name="morphe_miniplayer_type_entry_0">Иштен чыгарылган</string>
   <string name="morphe_miniplayer_type_entry_1">Чыгармал</string>
   <string name="morphe_miniplayer_type_entry_2">Минималдык</string>
@@ -1253,7 +1363,11 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_fix_status_bar_layout_summary">Статус барынын түзүлүшүн бирдей сактайт, ошондо ал жогорку панелдерди жабабыз жана плеердин үстүндө боштук калбайт. Эгер колдонмо ката берип жабылса же жогорку панелдер туура эмес көрүнсө, бул функцияны өчүрүңүз</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Жалтырак</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Бул түзүлүш Glow жүктөө экранын колдобойт</string>
+  <string name="morphe_splash_screen_duration_title">Баштапкы анимациянын узактыгы</string>
+  <string name="morphe_splash_screen_duration_summary">Жылт эткен анимация канча убакыт ойнолору. Аны өткөрүп жиберүү үчүн анимацияны басыңыз</string>
   <string name="morphe_theme_color_light_title">Жарык теманын фону</string>
   <string name="morphe_theme_color_light_entry_2">Ак</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Ак)</string>
@@ -1484,10 +1598,12 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_spoof_video_streams_player_js_variant_title">Плеердин JavaScript варианты</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'Нерддер үчүн статистикада\' имитациялоону көрсөтүү</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Эски видео колдонуу панелин калыбына келтирүү</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Видеонун аракет баскычтарын жашыруу мүмкүн болбогон катаны оңдойт
-
-Чектөө: Эски стильдеги «Көбүрөөк видеолор» катмарына кайтарылат"</string>
+  <string name="morphe_video_action_bar_layout_title">Видеонун иш-аракеттер панелинин макетти</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Стандарттуу</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Классикалык бир катардуу</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Минималисттик</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Классикалык эки катардуу</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Чектөө: Классикалык макеттер эски стильдеги \"Көбүрөөк видеолор\" катмарына кайтып келет</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Плеердин иконкасынын стили</string>
   <string name="morphe_player_icon_style_entry_auto">Өзүнөн өзү</string>
@@ -1551,7 +1667,7 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_series_tracker_identity_unavailable">Көзөөнү инкогнито режиминде же YouTube учурдагы аккаунттун абалын жүктөөдөн мурун иштетүү мүмкүн эмес. Башкы бетке кайтып, кайра аракет кылыңыз. Кирүү талап кылынбайт</string>
   <string name="morphe_series_tracker_enable">Жергиликтүү көзөмөлдү күйгүзүү</string>
   <string name="morphe_series_tracker_tracking_paused">Прогрессти жаздыруу өчүрулгөн</string>
-  <string name="morphe_series_tracker_resume_at">%1$s жерден улантуу</string>
+  <string name="morphe_series_tracker_resume_at">%s жерден улантуу</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s эпизод каралды</string>
   <string name="morphe_series_tracker_episode_position">Эпизод %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">%3$s эпизоддун %1$s-%2$s эпизоддору</string>
@@ -1561,7 +1677,7 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_series_tracker_plan_changed">Эпизодду тандаңыз</string>
   <string name="morphe_series_tracker_plan_caught_up">Актуалдуу</string>
   <string name="morphe_series_tracker_plan_none">Ойното турган эпизоддор жок</string>
-  <string name="morphe_series_tracker_saved_position">Сакталган видео · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Сакталган видео · %s</string>
   <string name="morphe_series_tracker_follow">Сериалды theo кылуу</string>
   <string name="morphe_series_tracker_view_series">Сериалды көрүү</string>
   <string name="morphe_series_tracker_continue">Улантуу</string>
@@ -1571,6 +1687,7 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_series_tracker_marked">Эпизоддор көрүлдү деп белгиленди</string>
   <string name="morphe_series_tracker_undo">Артка кайтаруу</string>
   <string name="morphe_series_tracker_enable_short">Ишке киргизүү</string>
+  <string name="morphe_series_tracker_new_episode">1 жаңы эпизод</string>
   <string name="morphe_series_tracker_record_short">Прогрессти ушул түзүлүштө жаздоо</string>
   <string name="morphe_series_tracker_follow_consent">"Сиздин серияларыңыз жана прогрессиңиз ушул түзүлүштө сакталат жана YouTube аккаунттары арасында бөлүштүрүлөт. YouTube тарыхынын башкаруу器лары аларды өзгөртпөйт. Прогрессти Сериялар менюсунан тазалаңыз.
 
@@ -1598,13 +1715,14 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_series_tracker_discovery_unavailable">Плейлист табылган жок</string>
   <string name="morphe_series_tracker_no_available_episodes">Эпизоддор жок</string>
   <string name="morphe_series_tracker_hide_watched">Көрүлгөндөрдү жашыруу</string>
+  <string name="morphe_series_tracker_watched_on_advance">Кийинки эпизодго өткөндө көргөн деп белгилөө</string>
   <string name="morphe_series_tracker_watch_previous">Мурунку эпизоддорду көрүлдү деп белгилөө</string>
-  <string name="morphe_series_tracker_order_starts_with">Башталышы: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Башталышы: %s</string>
   <string name="morphe_series_tracker_episode_order">Эпизоддордун тартиби</string>
   <string name="morphe_series_tracker_playlist_order">Плейлисттин тартиби</string>
   <string name="morphe_series_tracker_reverse_order">Плейлисттин тартибин тескери кылуу</string>
-  <string name="morphe_series_tracker_view_count">%1$s көрүүлүү</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s көрүүлүү</string>
+  <string name="morphe_series_tracker_view_count">%s көрүүлгөн</string>
+  <string name="morphe_series_tracker_view_count_one">%s көрүүлгөн</string>
   <string name="morphe_series_tracker_completion_title">Эпизоддорду көрүлдү деп белгилөө</string>
   <string name="morphe_series_tracker_completion_summary">Кеминде %1$s%% көрүлдү жана максималдуу 90 секунд калды, же %2$s секунд калды</string>
   <string name="morphe_series_tracker_completion_explanation">Эпизодду белгиленген чектен кийин автоматтык түрдө көрүлдү деп белгилөө. Пайыздык эреже ошондой эле 90 секунддан көп убакыт калбашын талап кылат, ошентип узун эпизоддордун аягы өткөрүлүп кетпейт. Калган убакыт эрежеси бир мүнөттөн узун видеолорго колдонулат; аны өчүрүү үчүн 0 деп коюңуз. Өзгөртүүлөр келечектеги прогресс жаңыртууларына колдонулат. Кол менен белгиленген көрүлдү/көрүлгөн жок тандоолору сакталат</string>
@@ -1624,7 +1742,7 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_series_tracker_backup_restore">Резервдик көчүрмөнү калыбына келтирүү</string>
   <string name="morphe_series_tracker_backup_preview">%1$s сериалды кошуу. Китепканаңыздагы %2$s сериал сакталат. Видеонун учурдагы прогресси сакталат</string>
   <string name="morphe_series_tracker_backup_saved">Сериялардын резервдик көчүрмөсү сакталды</string>
-  <string name="morphe_series_tracker_backup_restored">%1$s сериал калыбына келтирилди</string>
+  <string name="morphe_series_tracker_backup_restored">%s сериал калыбына келтирилди</string>
   <string name="morphe_series_tracker_error_backup_invalid">Бул файл колдоого алынбаган сериалдын резервдик көчүрмөсү же өтө чоң. Сиздин китепканаңыз өзгөргөн жок</string>
   <string name="morphe_series_tracker_error_backup_write">Резервдик көчүрмөнү сактоо мүмкүн болбоду. Башка жайды байкап көрүңүз</string>
   <string name="morphe_series_tracker_removed">Серия өчүрүлдү</string>
@@ -1634,7 +1752,7 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_series_tracker_recovery_choose">Төмөндөгү каалаган эпизодду да тандасаңыз болот. Мурдагы эпизоддор өзгөрбөйт</string>
   <string name="morphe_series_tracker_playback_changed">Бул плейлист өзгөрдү. Кайсы жерден улантууну тандоо үчүн сериалды ачыңыз</string>
   <string name="morphe_series_tracker_playback_boundary">Бул багытта башка эпизоддор жок</string>
-  <string name="morphe_series_tracker_continue_series">%1$s улантуу</string>
+  <string name="morphe_series_tracker_continue_series">%s улантуу</string>
   <string name="morphe_series_tracker_search_series">Серияларды издөө</string>
   <string name="morphe_series_tracker_clear_search">Издөөнү тазалоо</string>
   <string name="morphe_series_tracker_no_search_results">Сериялар табылган жок</string>
@@ -1650,7 +1768,49 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_niconico_comments_opacity_summary">Комментардын текстинин жана фонунун тунуктугу</string>
   <string name="morphe_niconico_comments_travel_duration_title">Кыймалоо убактысы</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Комментарлар экранды кесип өтүү үчүн канча секунд керектелет. Төмөнкү маанилер тезирээк кыймылдатат</string>
+  <string name="morphe_niconico_comments_display_area_title">Көрүнүү аймагы</string>
+  <string name="morphe_niconico_comments_display_area_summary">Комментарийлер плеердин жогору жагынан канчалык бөлүгүн ээлейт. Төмөн маанилер видеонун төмөнкү бөлүгүн бош калтырат</string>
   <string name="morphe_niconico_comments_max_length_title">Комментардын максималдуу узундугу</string>
   <string name="morphe_niconico_comments_max_length_summary">Бул жердегиден көп белгиси бар комментарларды жашырат. Ар бир эмодзи бир белги катары эсептелет</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Чектелбеген</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Максималдуу жаңыртуу ылдамдыгы</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Комментарийлер кыймылдаганда колдонулуучу экрандын эң жогорку жаңыртуу ылдамдыгы. Төмөн маанилер батареяны аз сарптайт</string>
+  <string name="morphe_niconico_comments_live_streams_title">Түз эфирлерде көрсөтүү</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Түз эфирлер жана алардын кайталоолору</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Премьераларда көрсөтүү</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Премьералар ойноп жаткан учурда</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Аяктаган Премьераларда көрсөтүү</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Аяктаган Премьералардын чат кайталоосу</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Убактысы белгиленген комментарийлерди көрсөтүү</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Чат жок видеолордо, 1:23 сыяктуу убактысы көрсөтүлгөн эң популярдуу комментарийлер ошол убакытта көрсөтүлөт</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Убакыттык комментарийлерди чат кайталануусу менен көрсөтүү</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Түз эфирлердин жана Премьералардын кайталанууларында убакыттык комментарийлер чат менен чогуу көрсөтүлөт</string>
+  <string name="morphe_live_chat_translate_screen_title">Түз эфирдеги чаттын котормосу</string>
+  <string name="morphe_live_chat_translate_screen_summary">Түз эфирдеги чатты жана түз эфирдеги чаттын кайталоо билдирүүлөрүн которуу</string>
+  <string name="morphe_live_chat_translate_title">Түз эфирдеги чатты которуу</string>
+  <string name="morphe_live_chat_translate_summary">Түз эфирдеги чатты жана түз эфирдеги чаттын кайталоо билдирүүлөрүн экранга чыкканда которат</string>
+  <string name="morphe_live_chat_translate_language_title">Которуу тили</string>
+  <string name="morphe_live_chat_translate_exclude_title">Жалпыланган тилдер</string>
+  <string name="morphe_live_chat_translate_exclude_summary">id,en сыяктуу үтүр менен бөлүнгөн тил коддору. Бул тилдеги билдирүүлөр которулбайт</string>
+  <string name="morphe_live_chat_translate_provider_title">Котормо sağlayучу</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API ачкычы</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Сиздин DeepL API ачкычыңыз. Эгер DeepL иштебесе, мисалы, ачкычтын айлыктык лимити түгөнсө, Google Translate колдонулат</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Билдирүүнү көчүрүү баскычын көрсөтүү</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Ар бир чат билдирүүсүнө кичинекей көчүрүү баскычын кошот</string>
+  <string name="morphe_live_chat_translate_copied">Билдирүү алмашкартка көчүрүлдү</string>
+  <string name="morphe_live_chat_translate_style_title">Котормо стили</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Которулгандары гана</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Түп нуска (которолгон)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Которолгон) түп нуска</string>
+  <string name="morphe_live_chat_translate_bold_title">Которолгон текстти калың кылуу</string>
+  <string name="morphe_live_chat_translate_bold_summary">Которолгон текстти калың шрифт менен көрсөтөт</string>
+  <string name="morphe_live_chat_translate_use_color_title">Которолгон тексттин自定义 түсү</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Которолгон текстке自定义 түстү колдонот</string>
+  <string name="morphe_live_chat_translate_color_title">Которолгон тексттин түсү</string>
+  <string name="morphe_live_chat_translate_color_summary">Которолгон тексттин hex түсүн белгилеңиз</string>
+  <string name="morphe_live_chat_translate_max_length_title">Билдирүүнүн максималдуу узундугу</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Узун билдирүүлөр которулбаган бойдон көрсөтүлөт</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Чектөө жок</string>
 </resources>

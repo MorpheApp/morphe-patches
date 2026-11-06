@@ -39,11 +39,22 @@ public final class DownloadsPatch {
     }
 
     /**
-     * @return If videos are downloaded by Morphe instead of the app,
-     *         so download buttons can be added where the app has none, such as the Shorts player.
+     * @return If videos are downloaded by Morphe instead of the app.
      */
     public static boolean isDownloadModeHandledByMorphe() {
         return Settings.DOWNLOAD_MODE.get() == DownloadMode.EXTERNAL;
+    }
+
+    /**
+     * Downloads a video that has no Download button of the app, such as a Short.
+     * Must be called from the main thread.
+     */
+    public static void downloadVideoWithoutAppButton(String videoId) {
+        if (Settings.DOWNLOAD_MODE.get() == DownloadMode.IN_APP) {
+            InAppDownloadsPatch.saveVideo(videoId);
+        } else {
+            downloadVideo(videoId);
+        }
     }
 
     /**

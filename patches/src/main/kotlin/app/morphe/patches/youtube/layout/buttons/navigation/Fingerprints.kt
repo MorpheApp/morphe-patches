@@ -24,10 +24,27 @@ import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.misc.navigation.ImageEnumConstructorFingerprint
+import app.morphe.patches.youtube.shared.ToolBarButtonFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal const val PIVOT_BAR_CLASS = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;"
+
+internal object WatchLaterIconEnumFingerprint : Fingerprint(
+    classFingerprint = ImageEnumConstructorFingerprint,
+    filters = listOf(
+        string("WATCH_LATER"),
+        opcode(Opcode.SPUT_OBJECT, location = MatchAfterWithin(5))
+    )
+)
+
+internal object PivotBarItemBuilderFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "buildPivotBarItem",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("[B")
+)
 
 private val SET_VISIBILITY_METHOD_CALL = methodCall(
     opcode = Opcode.INVOKE_VIRTUAL,
@@ -44,24 +61,6 @@ internal object CreatePivotBarFingerprint : Fingerprint(
     filters = listOf(
         methodCall(definingClass = "Landroid/widget/TextView;", name = "setText"),
         opcode(Opcode.RETURN_VOID)
-    )
-)
-
-internal object CastMenuItemInitializeFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "castmediaroutebutton"),
-        methodCall(name = "setShowAsAction")
-    )
-)
-
-internal object CastMenuItemVisibilityFingerprint : Fingerprint(
-    classFingerprint = CastMenuItemInitializeFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    filters = listOf(
-        methodCall(name = "setVisible")
     )
 )
 
@@ -84,28 +83,24 @@ internal object AutoHideNavigationBarOnFeedScrollingFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Moves the navigation bar out of the screen while the miniplayer is dragged to be dismissed.
+ * Other listeners of the same drag cancel autoplay, so only the navigation bar listener is hooked.
+ * Before 21.23 the method of the navigation bar for this drag is empty.
+ */
 internal object AutoHideNavigationBarOnDismissMiniplayerFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("F"),
     filters = listOf(
-        literal(2),
-        methodCall(
-            smali = "Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;",
-            location = MatchAfterWithin(5)
-        ),
-        methodCall(
-            smali = "Ljava/util/Set;->iterator()Ljava/util/Iterator;",
-            location = MatchAfterWithin(5)
-        ),
-        methodCall(
-            smali = "Ljava/util/Iterator;->hasNext()Z",
-            location = MatchAfterWithin(5)
-        ),
-        methodCall(
-            smali = "Ljava/util/Iterator;->next()Ljava/lang/Object;",
-            location = MatchAfterWithin(5)
-        )
+        opcode(Opcode.IGET),
+        opcode(Opcode.IGET, location = MatchAfterImmediately()),
+        opcode(Opcode.ADD_INT_2ADDR, location = MatchAfterImmediately()),
+        opcode(Opcode.INT_TO_FLOAT, location = MatchAfterImmediately()),
+        opcode(Opcode.MUL_FLOAT_2ADDR, location = MatchAfterImmediately()),
+        opcode(Opcode.IPUT, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
+        opcode(Opcode.RETURN_VOID, location = MatchAfterImmediately())
     )
 )
 
@@ -149,7 +144,8 @@ internal object CommentReplyPaddingFeatureFlagFingerprint : Fingerprint(
 internal val TRANSLUCENT_NAVIGATION_BAR_FEATURE_FLAGS = listOf(
     45630927L, // Blurred, translucent background of the navigation bar.
     NAVIGATION_BAR_COVERS_SYSTEM_BUTTONS_FLAG,
-    FEED_BEHIND_NAVIGATION_BAR_FLAG
+    FEED_BEHIND_NAVIGATION_BAR_FLAG,
+    TRANSLUCENT_NAVIGATION_BAR_STYLE_FLAG
 )
 
 /**
@@ -163,6 +159,12 @@ internal const val NAVIGATION_BAR_COVERS_SYSTEM_BUTTONS_FLAG = 45632194L
  * of the screen, and its list gets the navigation bar height as bottom padding.
  */
 internal const val FEED_BEHIND_NAVIGATION_BAR_FLAG = 45631257L
+
+/**
+ * Translucent style of the navigation bar before Android 12, which tells the pages that they can be seen
+ * through the bar, so they are laid out behind it. From Android 12 the blurred background tells it instead.
+ */
+internal const val TRANSLUCENT_NAVIGATION_BAR_STYLE_FLAG = 45633329L
 
 internal object TranslucentNavigationBarFeatureFlagsFingerprint : Fingerprint(
     filters = listOf(
@@ -216,6 +218,41 @@ internal object NavigationBarBlurDrawFingerprint : Fingerprint(
         methodCall(smali = "Landroid/graphics/Canvas;->isHardwareAccelerated()Z"),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
         methodCall(smali = "Landroid/view/View;->draw(Landroid/graphics/Canvas;)V")
+    )
+)
+
+/**
+ * Gives the blurred background of the navigation bar its tint color, read from the theme.
+ * The last filter calls the method that makes the tint paint, [NavigationBarBlurTintFingerprint].
+ */
+internal object NavigationBarBlurTintCallFingerprint : Fingerprint(
+    definingClass = PIVOT_BAR_CLASS,
+    filters = listOf(
+        methodCall(smali = "Landroid/content/res/TypedArray;->getColor(II)I"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("I"),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            smali = "$PIVOT_BAR_CLASS->setBackground(Landroid/graphics/drawable/Drawable;)V",
+            location = MatchAfterWithin(3)
+        )
+    )
+)
+
+/**
+ * Makes the tint paint of the blurred background of the navigation bar, drawn over the blur.
+ * Resolved against the method called by [NavigationBarBlurTintCallFingerprint].
+ */
+internal object NavigationBarBlurTintFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("I"),
+    filters = listOf(
+        methodCall(smali = "Landroid/graphics/Paint;->setColor(I)V"),
+        methodCall(smali = "Landroid/graphics/Paint;->setAlpha(I)V", location = MatchAfterWithin(4))
     )
 )
 
@@ -312,6 +349,34 @@ internal object PivotBarRendererFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Same method as [PivotBarRendererFingerprint].
+ * Matches the renderer of the navigation buttons without labels.
+ */
+internal object PivotBarIconOnlyRendererFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    parameters = listOf("L"),
+    returnType = "Lj$/util/Optional;",
+    filters = listOf(
+        literal(117501096L),
+        literal(318370163L),
+        opcode(Opcode.IF_NE, location = MatchAfterWithin(3)),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterWithin(6))
+    )
+)
+
+/**
+ * Order of a toolbar button in the menu of the toolbar.
+ */
+internal object ToolBarButtonOrderFingerprint : Fingerprint(
+    classFingerprint = ToolBarButtonFingerprint,
+    returnType = "I",
+    parameters = listOf(),
+    filters = listOf(
+        literal(1000L)
+    )
+)
+
 internal object PivotBarRendererListFingerprint : Fingerprint(
     parameters = listOf("L"),
     returnType = "V",
@@ -331,7 +396,8 @@ internal object PivotBarRendererListFingerprint : Fingerprint(
             definingClass = "this",
             type = "L"
         ),
-        literal(45633821L),
+        // The new list is compared to the previous list.
+        methodCall(smali = "Ljava/lang/Class;->isInstance(Ljava/lang/Object;)Z")
     )
 )
 

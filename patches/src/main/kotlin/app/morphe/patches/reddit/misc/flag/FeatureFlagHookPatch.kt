@@ -8,7 +8,7 @@
 package app.morphe.patches.reddit.misc.flag
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
 import app.morphe.util.cloneMutable
@@ -16,7 +16,7 @@ import java.lang.ref.WeakReference
 
 private lateinit var featureFlagMethod : WeakReference<MutableMethod>
 
-val featureFlagHookPatch = bytecodePatch(
+val featureFlagHookPatch = patch(
     description = "featureFlagHookPatch"
 ) {
     dependsOn(sharedExtensionPatch)

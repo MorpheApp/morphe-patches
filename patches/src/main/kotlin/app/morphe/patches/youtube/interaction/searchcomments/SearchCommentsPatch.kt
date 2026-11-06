@@ -8,8 +8,8 @@
 package app.morphe.patches.youtube.interaction.searchcomments
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.bridge.addBridge
@@ -35,7 +35,7 @@ private const val SECTION_LIST_ACCESS_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/components/CommentsSearchFilter$SectionListAccess;"
 
 @Suppress("unused")
-val searchCommentsPatch = bytecodePatch(
+val searchCommentsPatch = patch(
     name = "Search comments",
     description = "Adds a button to the comments to show only the loaded comments that contain the searched words."
 ) {
@@ -46,7 +46,7 @@ val searchCommentsPatch = bytecodePatch(
         lithoFilterPatch,
         engagementPanelHookPatch,
         videoInformationPatch,
-        resourcePatch {
+        patch {
             execute {
                 copyResources(
                     "searchcomments",
@@ -81,10 +81,10 @@ val searchCommentsPatch = bytecodePatch(
         // The comments are reloaded after a search, as when the sort order is changed,
         // so the search applies to all of them.
         val refreshMatches = SectionListRefreshFingerprint.instructionMatches
-        val reloadContinuationType = refreshMatches.first().getFieldAccessed()
+        val reloadContinuationType = refreshMatches.first().fieldReference
         val hasContinuationMethod = refreshMatches[1].getMethodCalled()
         val reloadMethod = refreshMatches.last().getMethodCalled()
-        val listViewField = SectionListControllerConstructorFingerprint.instructionMatches.first().getFieldAccessed()
+        val listViewField = SectionListControllerConstructorFingerprint.instructionMatches.first().fieldReference
 
         mutableClassDefBy(listViewField.definingClass).apply {
             interfaces.add(SECTION_LIST_ACCESS_INTERFACE)

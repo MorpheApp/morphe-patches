@@ -61,6 +61,7 @@ Pakeitimai apima:
   <string name="morphe_hide_account_menu_title">Įjungti bibliotekos / „Jūs“ apatinio meniu filtrą</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Bibliotekos / „Jūs“ apatinio meniu filtras</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Įveskite bibliotekos / „Jūs“ apatinio meniu pavadinimus, pagal kuriuos filtruoti, atskirtus naujomis eilutėmis</string>
+  <string name="morphe_hide_account_menu_downloads_title">Paslėpti atsisiuntimus</string>
   <string name="morphe_hide_album_cards_title">Slėpti albumų korteles</string>
   <string name="morphe_hide_album_cards_summary">Paslepia albumų korteles po atlikėjo aprašymu</string>
   <string name="morphe_hide_artist_cards_title">Slėpti atlikėjų korteles</string>
@@ -68,6 +69,19 @@ Pakeitimai apima:
   <string name="morphe_hide_channel_buttons_title">Slėpti kanalo mygtukus</string>
   <string name="morphe_hide_channel_buttons_summary">Paslepia mygtukus, tokius kaip „Prenumeruoti“, „Peržiūrėti kanalą“, „Bendruomenė“ ir „YouTube Music“, paieškos rezultatuose rodomuose kanalų profiliuose</string>
   <string name="morphe_hide_community_posts_title">Slėpti bendruomenės skelbimus</string>
+  <string name="morphe_post_buttons_screen_title">Toliau esantys mygtukai</string>
+  <string name="morphe_post_buttons_screen_summary">Pasirinkite žemiau bendruomenės įrašų esančių mygtukų išdėstymą ir nurodykite, kuriuos mygtukus paslėpti</string>
+  <string name="morphe_post_buttons_layout_title">Įrašų mygtukų išdėstymas</string>
+  <string name="morphe_post_buttons_layout_entry_1">Serveris</string>
+  <string name="morphe_post_buttons_layout_entry_2">Pristatytas</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Paslėpti „patinka“ ir „nepatinka“ mygtukus</string>
+  <string name="morphe_hide_post_dislike_button_title">Paslėpti „nepatinka“ mygtuką</string>
+  <string name="morphe_hide_post_dislike_button_summary">Naudojant „Pristatyto“ išdėstymą, mygtuko vieta lieka tuščia</string>
+  <string name="morphe_hide_post_comment_button_title">Paslėpti komentavimo mygtuką</string>
+  <string name="morphe_hide_post_comments_preview_title">Paslėpti komentarų peržiūrą</string>
+  <string name="morphe_hide_post_comments_preview_summary">Paslepia komentarų peržiūrą po įrašais</string>
+  <string name="morphe_hide_post_share_button_title">Paslepti bendrinimo mygtuką</string>
+  <string name="morphe_hide_post_share_button_summary">Įrašų nuotraukų atsisiuntimo mygtukas vaizduojamas šalia bendrinimo mygtuko, todėl jis taip pat yra pasleptas</string>
   <string name="morphe_hide_compact_banner_title">Slėpti kompaktiškus banerius</string>
   <string name="morphe_hide_compact_banner_summary">Paslepia kompaktiškus banerius ir tarpus tarp kai kurių komponentų</string>
   <string name="morphe_hide_expandable_card_title">Išskleidžiamos kortelės po vaizdo įrašais</string>
@@ -100,7 +114,7 @@ Pakeitimai apima:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Slėpti mygtuką „Pranešti man“</string>
-  <string name="morphe_hide_notify_me_button_summary">Paslepia priminimo mygtuką, skirtą suplanuotoms tiesioginėms transliacijoms ir premjeroms</string>
+  <string name="morphe_hide_notify_me_button_summary">Paslepia primenimo mygtuką suplanuotoms tiesioginėms transliacijoms ir pirmosioms peržiūroms</string>
   <string name="morphe_hide_playables_title">Slėpti žaidimus</string>
   <string name="morphe_hide_playables_summary">Paslepia funkciją, leidžiančią žaisti žaidimus</string>
   <string name="morphe_hide_search_term_thumbnails_title">Slėpti paieškos terminų miniatiūras</string>
@@ -158,7 +172,6 @@ Pakeitimai apima:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Paslepia užuominas, rodomas atliekant grotuvo gestus, pvz., „Patraukite aukštyn, kad ieškotumėte tiksliai“, „Atleiskite, kad atšauktumėte“ ir „2x“</string>
-  <string name="morphe_hide_snackbar_title">Slėpti pranešimų juostą</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Slėpti prenumeratorių bendruomenės gaires</string>
   <string name="morphe_hide_sync_button_title">Slėpti mygtuką „Sinchronizuoti su vaizdo įrašu“</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Slėpti palietimo ir laikymo gradientą</string>
@@ -259,9 +272,8 @@ Pakeitimai apima:
   <string name="morphe_comments_screen_title">Komentarai</string>
   <string name="morphe_comments_screen_summary">Pasirinkite, kurie komponentai rodomi komentarų skiltyje</string>
   <string name="morphe_hide_comments_carousel_title">Įjungti komentarų karuselės filtrą</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Būtinai įveskite tikslų karuselės elemento pavadinimą (pvz., „Klauskite“, „Išpopuliarinkite šį vaizdo įrašą“, „Klausyti YouTube Music“)
-• Karuselės elementų slėpimas gali sukelti nenumatytų šalutinių poveikių
-• Jei paslėpti visi karuselės elementai, visas komentarų skyrius taip pat bus paslėptas"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Įveskite raktinį žodį arba visą pavadinimą (pvz., Ask, Community, Hype, Listen)
+• Paslėpus visus elementus, bus paslėpta visa komentarų skiltis"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Komentarų karuselės filtras</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Įveskite komentarų karuselės pavadinimus, pagal kuriuos filtruoti, atskirtus naujomis eilutėmis</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Slėpti AI pokalbio santrauką</string>
@@ -276,6 +288,9 @@ Pakeitimai apima:
   <string name="morphe_hide_comments_emoji_button_title">Slėpti „Emoji“ mygtuką</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Slėpti filtrų juostos parinktis</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Paslepia visas filtrų juostos parinktis, išskyrus „Geriausi“ ir „Naujausi“</string>
+  <string name="morphe_hide_comments_gif_button_title">Paslėpti GIF mygtuką</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Paslėpti GIF ir vaizdus</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Paslepia GIF ir vaizdus, pridėtus prie komentarų ir atsakymų</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Slėpti dovanų animaciją ir korteles</string>
   <string name="morphe_hide_comments_gift_button_title">Slėpti dovanų mygtuką</string>
   <string name="morphe_hide_comments_info_button_title">Slėpti informacijos mygtuką</string>
@@ -326,11 +341,11 @@ Apribojimai:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Raktinis žodis turi prieštaringas deklaracijas: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Raktinis žodis per trumpas ir reikalauja kabučių: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Raktinis žodis paslėps visus vaizdo įrašus: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Pagrindinis: %s
-• Prenumeratos: %s
-• Paieška: %s
-• Komentarai: %s
-• Iš viso: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Pagrindinis: %1$s
+• Prenumeratos: %2$s
+• Paieška: %3$s
+• Komentarai: %4$s
+• Iš viso: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Statistika</string>
   <string name="morphe_hide_stats_hidden_24h_title">Paslėpta vaizdo įrašų per paskutines 24 valandas</string>
   <string name="morphe_hide_stats_hidden_all_title">Paslėpta vaizdo įrašų per visą laiką</string>
@@ -342,9 +357,9 @@ Apribojimai:
   <string name="morphe_hide_aislist_warnlist_category_title">Įspėjimų sąrašas: vidutinis patikimumas</string>
   <string name="morphe_hide_aislist_hide_home_title">Slėpti vaizdo įrašus puslapyje „Pradžia“</string>
   <string name="morphe_hide_aislist_hide_search_title">Slėpti vaizdo įrašus paieškoje</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Pradžia: %s
-• Paieška: %s
-• Iš viso: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Pagrindinis: %1$s
+• Paieška: %2$s
+• Iš viso: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Blokavimo sąrašo kanalai</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Įspėjimų sąrašo kanalai</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Įjunkite filtrą, kad kanalai būtų įkelti</string>
@@ -383,6 +398,20 @@ Pranešimai yra vieši ir peržiūrimi prieš pridedant kanalą į sąrašą. Pa
   <string name="morphe_aislist_submit_failed_rate_limit">Išsiųsta per daug pranešimų; bandykite vėliau</string>
   <string name="morphe_aislist_submit_failed_rejected">„AiSList“ atmetė pranešimą</string>
   <string name="morphe_aislist_submit_failed">Nepavyko pranešti; patikrinkite ryšį</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">„Snackbar“ pranešimai</string>
+  <string name="morphe_snackbar_screen_summary">Slėpkite „snackbar“ pranešimus arba pakeiskite jų spalvas ir formą</string>
+  <string name="morphe_hide_snackbar_title">Slėpti pranešimų juostą</string>
+  <string name="morphe_custom_snackbar_theme_title">Pasirinktinis „snackbar“</string>
+  <string name="morphe_custom_snackbar_theme_summary">„Snackbar“ pranešimams naudojamos žemiau nurodytos spalvos ir kampų radiusas, o ne priešingos temos spalvos</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Tamsios temos fono spalva</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">„Snackbar“ pranešimų fono spalva tamsioje temoje. Tekstas bus juodas arba baltas, priklausomai nuo to, kas geriau įskaitoma</string>
+  <string name="morphe_custom_snackbar_color_light_title">Šviesios temos fono spalva</string>
+  <string name="morphe_custom_snackbar_color_light_summary">„Snackbar“ pranešimų fono spalva šviesioje temoje. Tekstas bus juodas arba baltas, priklausomai nuo to, kas geriau įskaitoma</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Rėmelio spalva</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">„Snackbar“ pranešimų rėmelio spalva. Skaidri spalva reiškia, kad rėmelio nėra</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Kampų radiusas</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">„Snackbar“ pranešimų kampų radiusas dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Kanalų skelbimų baltasis sąrašas</string>
   <string name="morphe_ads_channel_whitelist_summary">Baltajame sąraše esančių kanalų vaizdo įrašai atkuriami su skelbimais, todėl jų kūrėjai gauna pajamų. Visuose kituose kanaluose skelbimai lieka užblokuoti</string>
@@ -441,11 +470,16 @@ Pranešimai yra vieši ir peržiūrimi prieš pridedant kanalą į sąrašą. Pa
   <string name="morphe_copy_comments_title">Kopijuoti komentarus</string>
   <string name="morphe_copy_comments_summary">Palieskite ir palaikykite komentarą, kad jį nukopijuotumėte</string>
   <string name="morphe_copy_comments_success">Komentaras nukopijuotas į iškarpinę</string>
+  <string name="morphe_copy_select_text_title">Pasirinkti aprašymų ir įrašų tekstą</string>
+  <string name="morphe_copy_select_text_summary">Bakstelėkite ir palaikykite pirštą ant vaizdo įrašo aprašymo arba įrašo, kad pasirinktumėte ir nukopijuotumėte bet kurią jo dalį</string>
+  <string name="morphe_copy_select_text_dialog_title">Pasirinkti tekstą</string>
+  <string name="morphe_copy_select_text_copy_all">Kopijuoti viską</string>
+  <string name="morphe_copy_select_text_success">Tekstas nukopijuotas į iškarpinę</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Paspauskite ir palaikykite, kad atidarytumėte video meniu</string>
   <string name="morphe_feed_long_press_menu_summary">Paspaudus ir palaikius bet kuria feed video vieta, atidaromas jo meniu</string>
   <string name="morphe_feed_watch_later_button_title">Rodyti „Pažiūrėti vėliau“ mygtuką prie miniatiūrų</string>
-  <string name="morphe_feed_watch_later_button_summary">Ant nuotykų srauto vaizdo įrašų miniatiūrų rodomas mygtukas „Pažiūrėti vėliau“. Paspaudus ir laikant jį, atidaroma parinktis „Įtraukti į grojaraštį“</string>
+  <string name="morphe_feed_watch_later_button_summary">Tvėsčių vaizdo įrašų miniaturuose rodomas mygtukas „Žiūrėti vėliau“, o jei vaizdo įrašas išsaugotas – žymė. Paspaudus jį, vaizdo įrašas išsaugo arba ištriniamas, o paspaudus ir laikant – atsidaro „Išsaugoti į grožinį“</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Atsisiųsti įrašų nuotraukas</string>
   <string name="morphe_post_image_download_summary">Šalia įrašų su nuotraukomis arba GIF failais esančio bendrinimo mygtuko rodomas atsisiuntimo mygtukas, o jų meniu pridedama atsisiuntimo parinktis</string>
@@ -515,8 +549,24 @@ Kartą atvėrus vaizdo įrašą su mygtuku „Ask“, funkcija veikia su visais 
   <string name="morphe_external_downloader_quick_audio">Garsas</string>
   <string name="morphe_external_downloader_quick_options">Visi nustatymai</string>
   <string name="morphe_shorts_download_flyout_button_title">Rodyti atsisiuntimą „Shorts“ meniu</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Prideda išorinio atsisiuntimo įskiepio meniu punktą „Shorts“ grotuveje</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Prideda atsisiuntimo elementą į Shorts pleitoko meniu</string>
   <string name="morphe_shorts_download_flyout_title">Atsisiųsti</string>
+  <string name="morphe_export_download_folder_title">Eksportuoti išsaugotus vaizdo įrašus</string>
+  <string name="morphe_export_download_folder_summary">"Eksportuokite programėlėje išsaugotus vaizdo įrašus į savo įrenginio atmintį naudodami programėlės atsisiuntimų išsiskleidžiamąjį meniu. Bakstelėkite, kad pakeitumėte eksportavimo aplanką
+
+Eksportavimo aplankas: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Eksportavimo aplankas</string>
+  <string name="morphe_export_download_folder_change">Pakeisti aplanką</string>
+  <string name="morphe_export_download_folder_changed">Eksportavimo aplankas pakeistas</string>
+  <string name="morphe_export_download_folder_reset">Eksportavimo aplankas nustatytas iš naujo</string>
+  <string name="morphe_export_download_folder_missing">Nepavyko rasti eksporto aplanko %s</string>
+  <string name="morphe_export_download_flyout_title">Eksportuoti į įrenginį</string>
+  <string name="morphe_export_download_started">Vaizdo įrašas eksportuojamas</string>
+  <string name="morphe_export_download_progress">Vaizdo įrašo eksportavimas: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Vaizdo įrašų eksportavimas</string>
+  <string name="morphe_export_download_saved">Vaizdo įrašas eksportuotas į %s</string>
+  <string name="morphe_export_download_failed">Nepavyko eksportuoti vaizdo įrašo</string>
+  <string name="morphe_export_download_canceled">Eksportavimas atšauktas</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Balso vertimas</string>
   <string name="morphe_vot_screen_summary">Skaito vaizdo įrašo subtitrus garsiai naudodamas įrenginio teksto į kalbą sintezatorių, sinchronizuotą su atkūrimu</string>
@@ -570,6 +620,11 @@ Jūsų API raktas niekada neturėtų būti dalijamas. Kiekvienas, turintis priei
   <string name="morphe_vot_mymemory_quota_message_no_email">Išnaudojote šios dienos nemokamą „MyMemory“ vertimo limitą (5 000 simbolių). Pridėkite „MyMemory“ el. paštą nustatymuose, kad dienos limitas padidėtų iki 50 000 simbolių, arba pasirinkite kitą vertimo paslaugą</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Išnaudojote šios dienos „MyMemory“ vertimo limitą (50 000 simbolių). Pasirinkite kitą vertimo paslaugą arba bandykite dar kartą rytoj</string>
   <string name="morphe_vot_mymemory_error">„MyMemory“ vertimas nepavyko (būsena %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Pleisti „Žiūrėti vėliau“ pertraukimo rankeneles</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">„Žiūrėti vėliau“ vaizdo įrašų pertraukimo rankeneles lengviau suglaudyti</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Slėpti „Žiūrėti vėliau“ pašalinimo pranešimą</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Pašalinus vaizdo įrašą iš sąrašo „Žiūrėti vėliau“, patvirtinimas nerodyjamas</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Įjungti vaizdo įrašo kartojimą</string>
   <string name="morphe_do_not_remember_loop_video_title">Neįsiminti vaizdo įrašo kartojimo</string>
@@ -591,6 +646,19 @@ Jūsų API raktas niekada neturėtų būti dalijamas. Kiekvienas, turintis priei
   <string name="morphe_pip_button_overlay_title">Rodyti „Vaizdas vaizde“ mygtuką</string>
   <string name="morphe_pip_button_flyout_title">Rodyti „Vaizdas vaizde“ meniu</string>
   <string name="morphe_pip_button_flyout_name">Perjungti į vaizdą vaizde</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">„Vaizdas vaizde“ veiksmai</string>
+  <string name="morphe_pip_actions_screen_summary">Pakeiskite mygtukus, kurie rodomi „vaizdas vaizde“ režime</string>
+  <string name="morphe_pip_action_left_title">Kairysis mygtukas</string>
+  <string name="morphe_pip_action_center_title">Centrinis mygtukas</string>
+  <string name="morphe_pip_action_right_title">Dešinys mygtukas</string>
+  <string name="morphe_pip_action_entry_default">Numatytasis</string>
+  <string name="morphe_pip_action_entry_previous">Buvęs vaizdo įrašas</string>
+  <string name="morphe_pip_action_entry_next">Kitas vaizdo įrašas</string>
+  <string name="morphe_pip_action_entry_rewind">Grąžyti 10 sekundžių</string>
+  <string name="morphe_pip_action_entry_fast_forward">Kelioti pirmyn 10 sekundžių</string>
+  <string name="morphe_pip_action_entry_play_pause">Leisti/pripildyti</string>
+  <string name="morphe_pip_action_entry_background_playback">Grota fone</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Rodyti mygtuką „Leisti viską“</string>
   <string name="morphe_play_all_button_summary">"Palietus sugeneruojamas visų kanalo vaizdo įrašų grojaraštis; palietus ir palaikius veiksmas atšaukiamas
@@ -623,10 +691,6 @@ Informacija: gali neveikti tiesioginių transliacijų atveju"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Išsaugoti žiūrėti vėliau</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Rodyti „Išsaugoti žiūrėti vėliau“ mygtuką grotuvo nustatymų iškylančiajame meniu</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Leidžia išsaugoti šiuo metu žiūrimą vaizdo įrašą sąraše „Žiūrėti vėliau“ iš vaizdo įrašo nustatymų iškylančiojo meniu</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Rodyti mygtuką „Išsaugoti žiūrėti vėliau“ vaikų vaizdo įrašuose</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Leidžia išsaugoti su vaikais susijusius vaizdo įrašus sąraše „Žiūrėti vėliau“ iš iškylančiojo meniu</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Rodyti „Išsaugoti žiūrėti vėliau“ mygtuką „Shorts“ iškylančiajame meniu</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Leidžia išsaugoti „Shorts“ įrašus sąraše „Žiūrėti vėliau“ iš iškylančiojo meniu</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Per nukreipti „Žiūrėti vėliau“ į playlistą</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Žiūrėti vėliau</string>
   <string name="morphe_queue_flyout_title">Pridėti į Morphe eilę</string>
@@ -725,14 +789,18 @@ Norėdami tai ištaisyti, įjunkite „Maskuoti vaizdo įrašų srautus“ ir pa
 Norėdami tai ištaisyti, įjunkite „Maskuoti vaizdo įrašų srautus“ ir pakeiskite „Numatytasis klientas“ į „TV Simply“ arba „visionOS“"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Įjungti slankiojimą, norint perjungti</string>
-  <string name="morphe_slide_to_seek_summary">Įjungia slankiojimą, norint perjungti, vietoj 2x greičio, kai paspaudus ir laikant vaizdo grotuvą</string>
+  <string name="morphe_slide_to_seek_summary">Paspauskite ir laikykite vaizdo įrašą, kad galėtumėte sluostuoti ir pervynioti, vietoj atkūrimo 2x greičiu</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Įjungti perėjimą bakstelint</string>
-  <string name="morphe_tap_to_seek_summary">Tiesiog palieskite slankiklį, kad peršoktumėte į tą vietą, nevilkdami jo</string>
+  <string name="morphe_tap_to_seek_summary">Bakstelėkite bet kur per windingo juostą, kad šokutumėte į tą vietą, vietoj vilkimo</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Braukimo į kairę gestas</string>
   <string name="morphe_swipe_right_zone_title">Braukimo į dešinę gestas</string>
   <string name="morphe_swipe_top_zone_title">Braukimo į viršų gestas</string>
+  <string name="morphe_swipe_seek_title">Braukite, kad pervyniutumėte</string>
+  <string name="morphe_swipe_seek_summary">Visame ekrane rodomame grotuve braukite į kairę arba į dešinę, kad perkeltumėte vynimo juostą, ir paleiskite, kad pervynautumėte</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Vynimo braukimo jautrumas</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Kokia atstuma juda vynimo juosta kiekvieno braukimo metu</string>
   <string name="morphe_swipe_zone_width_title">Kairės/dešinės zonos plotis</string>
   <string name="morphe_swipe_zone_width_summary">Kiekvieno ekrano krašto procentas, rezervuotas braukimo į kairę ir dešinę gestams (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Ryškumas</string>
@@ -845,6 +913,10 @@ Norėdami tai ištaisyti, įjunkite „Maskuoti vaizdo įrašų srautus“ ir pa
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Subtitrai</string>
   <string name="morphe_captions_screen_summary">Tvarkyti automatinius subtitrus ir subtitrų slapukus</string>
+  <string name="morphe_captions_languages_title">Kalba ir vertimas</string>
+  <string name="morphe_captions_presentation_title">Išvaizda ir elgesys</string>
+  <string name="morphe_captions_advanced_title">Išplėstiniai</string>
+  <string name="morphe_captions_advanced_summary">Slapukų ir transkripcijos parinktys</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Automatinų subtitrų matomumas</string>
   <string name="morphe_auto_captions_style_entry_1">Visada rodyti</string>
@@ -853,10 +925,10 @@ Norėdami tai ištaisyti, įjunkite „Maskuoti vaizdo įrašų srautus“ ir pa
   <string name="morphe_auto_captions_style_entry_4">Rodyti, kai garsas išjungtas</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Pageidaujama subtitrų kalba</string>
-  <string name="morphe_preferred_caption_language_summary">Pirmiausia parenka teikėjo subtitrus, tada automatiškai išverčia į pageidaujamą kalbą</string>
+  <string name="morphe_preferred_caption_language_summary">Kiekvienam vaizdo įrašui automatiškai pasirinkite subtitrų kalbą</string>
   <string name="morphe_preferred_caption_language_entry_off">Ne</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Pridėti papildomų automatinio vertimo kalbų</string>
+  <string name="morphe_auto_translate_additional_languages_title">Papildomos automatinio vertimo kalbos</string>
   <string name="morphe_auto_translate_additional_languages_summary">Padidina automatinio vertimo meniu kalbų skaičių</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Nustatyti subtitrų slapukus</string>
@@ -874,11 +946,20 @@ Turi būti pateikti „Subtitrų slapukai“"</string>
   <string name="morphe_fix_transcript_title">Pataisyti transkripciją</string>
   <string name="morphe_fix_transcript_summary">Išsprendžia išankstinės sąlygos patikros gedimą, kuris gali neleisti įkelti transkripcijos</string>
   <string name="morphe_captions_in_pip_title">Rodyti antraštes vaizdo režime „vaizdas už vaizdo“</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Subtitrų dydis</string>
+  <string name="morphe_caption_scale_summary">Taikoma vienos kalbos ir dvilaugių subtitrams</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Stabilių aprašymų blokai</string>
-  <string name="morphe_stable_caption_blocks_summary">Grupuoti automatinis subtitrus į stabilius, lengvai skaitomus blokus. Kai kurie žodžiai gali pasirodyti anksčiau, nei jie bus ištarti. Reikia perkrauti.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Naršymo mygtukai</string>
-  <string name="morphe_navigation_buttons_screen_summary">Pasirinkite, kokie mygtukai turėtų būti rodomi apačioje esančioje naravimo juostoje</string>
+  <string name="morphe_stable_caption_blocks_summary">Grupuoja vienos kalbos automatinis subtitrus į stabilius, lengvai skaitomus blokus. Dvilaugių subtitrai visada naudojasi blokais. Kai kurie žodžiai gali pasirodyti prieš juos ištarius</string>
+  <string name="morphe_secondary_caption_language_title">Antrinė subtitrų kalba</string>
+  <string name="morphe_secondary_caption_language_summary">Su subtitrais rodo antrą kalbą ir subtitrų meniu prideda dvilaugių subtitrųjungiklį</string>
+  <string name="morphe_dual_captions_enabled_title">Dvilaugiu subtitrai</string>
+  <string name="morphe_caption_block_translation_failed">Kai kurie subtitrų vertimai nepriedaugiami. Rodomi prieinami subtitrai.</string>
+  <string name="morphe_caption_blocks_too_large">Abi subtitrų kalbos netelpa šiame spustyklituje. Rodoma pagrindinė kalba.</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Naršymo juosta</string>
+  <string name="morphe_navigation_bar_screen_summary">Pasirinkite, kokie mygtukai turėtų būti rodomi apačioje esančioje naravimo juostoje</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Paslėpti pagrindinį mygtuką</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -890,21 +971,25 @@ Turi būti pateikti „Subtitrų slapukai“"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Slėpti pranešimų mygtuką</string>
   <string name="morphe_show_search_button_title">Rodyti paieškos mygtuką</string>
-  <string name="morphe_show_search_button_index_title">Paieškos mygtuko vieta</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Rodyti mygtuką „Žiūrėti vėliau“</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Žiūrėti vėliau</string>
   <string name="morphe_show_settings_button_title">Rodyti nustatymų mygtuką</string>
-  <string name="morphe_show_settings_button_index_title">Nustatymų mygtuko vieta</string>
   <string name="morphe_show_settings_button_type_title">Nustatymų mygtuko veiksmas</string>
   <string name="morphe_show_settings_button_type_summary">Įjungus atidaro Morphe nustatymus, o išjungus – „YouTube“ nustatymus</string>
+  <string name="morphe_navigation_buttons_order_title">Navigacijos mygtukų tvarka</string>
+  <string name="morphe_navigation_buttons_order_summary">Vilkite mygtukus, kad pakeistumėte jų tvarką navigacijos juostoje</string>
   <string name="morphe_swap_create_with_notifications_button_title">Sukeisti „Kurti“ mygtuką su pranešimų mygtuku</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Jei šis nustatymas neveikia, pabandykite įjungti inkognito režimą</string>
   <string name="morphe_hide_navigation_button_labels_title">Slėpti naršymo mygtukų etiketes</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Slėpti naujo turinio taškelį</string>
   <string name="morphe_hide_navigation_bar_title">Slėpti naršymo juostą</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Tai visiškai paslepia naršymo juostą, įskaitant skirtuką „Jūs“.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Tai visiškai paslepia navigacijos juostą, įskaitant skirtąbą „Jūs“.
 
-Norėdami gauti prieigą prie nustatymų, įgalinkite Nustatymų mygtuką: Bendruosios → Įrankių juosta → Rodyti nustatymus"</string>
+Norėdami pasiekti Nustatymus, įjunkite Nustatymų mygtuką per Bendri → Įrankių juosta → Rodyti nustatymų mygtuką"</string>
   <string name="morphe_narrow_navigation_buttons_title">Įjungti siaurus naršymo mygtukus</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Sumažina horizontalų tarpą tarp mygtukų</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Sumažina horizontalų tarpą tarp mygtukų. Nepalaikoma naudojant stiklinę naršymo juostą, kuri turi savo mygtukų tarpų nustatymus</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Išjungti navigacijos mygtukus be etikečių</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Rodo navigacijos mygtukus su etiketėmis, jei YouTube juos atsiunčia be etikečių</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Išjungti įrankių juostos navigacijos skirtukėlius</string>
@@ -919,13 +1004,24 @@ Norėdami gauti prieigą prie nustatymų, įgalinkite Nustatymų mygtuką: Bendr
   <string name="morphe_navigation_bar_style_entry_3">Skaidrus</string>
   <string name="morphe_navigation_bar_style_entry_4">Nepermatomas</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Šio stiliaus jūsų įrenginys arba „YouTube“ versija gali nepalaikyti, vilketas gali sukelti išdėstymo problemų arba programos lūžimus</string>
+  <string name="morphe_navigation_bar_glass_title">Įjungti stiklinę navigacijos juostą</string>
+  <string name="morphe_navigation_bar_glass_summary">Rodo navigacijos juostą kaip plauviančią, apvalią, permatą kapsulę. Nepasiekiamas naudojant nepermatų navigacijos juostos stilių</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Stiklo permatumas</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Sureguliuokite stiklinės navigacijos juostos permatumo lygį (0 yra permatu, 100 yra nepermatu)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Stiklinės naršymo juostos dydis</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Su peržiūra nustatykite stiklinės naršymo juostos aukštį, plotį ir mygtukų tarpus. Mygtukai, kurie netelpa į ekrano plotį, yra slėpiami</string>
+  <string name="morphe_navigation_bar_glass_size_height">Aukštis</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maksimalus plotis</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Mygtukų tarpas</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Rodomų mygtukų: %1$s iš %2$s</string>
   <string name="morphe_toolbar_screen_title">Įrankių juosta</string>
   <string name="morphe_toolbar_screen_summary">Pasirinkite, kurie komponentai rodomi įrankių juostoje</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Slėpti „Cast“ mygtuką</string>
   <string name="morphe_hide_toolbar_chat_button_title">Paslėpti Pokalbių mygtuką</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Slėpti mikrofono mygtuką</string>
   <string name="morphe_hide_toolbar_search_button_title">Slėpti paieškos mygtuką</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Įjungus, bakstelėjus atidaromi Morphe nustatymai, o ilgai paspaudus – „YouTube“ nustatymai; išjungus veiksmai apsikeičia</string>
+  <string name="morphe_toolbar_buttons_order_title">Įrankių juostos mygtukų tvarka</string>
+  <string name="morphe_toolbar_buttons_order_summary">Vilkite mygtukus, kad pakeistumėte jų tvarką įrankių juostoje</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Išskleidžiamasis meniu</string>
   <string name="morphe_hide_player_flyout_summary">Pasirinkite, kurie komponentai rodomi išskleidžiamajame meniu</string>
@@ -977,6 +1073,7 @@ Kad būtų rodomas meniu „Garso takelis“, parinktyje „Maskuoti vaizdo įra
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Slėpti subtitrų mygtuką</string>
   <string name="morphe_hide_cast_button_title">Slėpti „Cast“ mygtuką</string>
+  <string name="morphe_hide_cast_button_summary">Paslepia „Cast“ mygtuką vaizdo įrašų grotuve ir įrankių juostoje</string>
   <string name="morphe_hide_collapse_button_title">Slėpti sutraukimo mygtuką</string>
   <string name="morphe_hide_fullscreen_button_title">Slėpti viso ekrano mygtuką</string>
   <string name="morphe_hide_player_control_buttons_background_title">Slėpti grotuvo valdiklių foną</string>
@@ -1142,11 +1239,6 @@ Automobilio išdėstymas
 • „Daugiau video“ persegimas gali būti neprieinamas
 • „Shorts“ atidaromi reguliariame grotuve
 • Rodo nesutrauktą senosios veiksmų juostos vaizdo įrašo"</string>
-  <string name="morphe_tablet_layout_in_player_title">Įjungti planšetės išdėstymą grotuve</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Atkuria senąjį grotuvo maketą
-
-Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą“ išjungta, perdanga „Daugiau vaizdo įrašų“ gali būti nepasiekiama"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 – Atkurti senąją subtitrų elgseną</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 – atkurti senąjį išsaugojimą į grojaraštį</string>
@@ -1228,6 +1320,10 @@ Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą�
   <string name="morphe_miniplayer_not_available_summary">YouTube pašalino visus papildomus minižaidalus. Norėdami atstatyti daugiau minižaidalų tipų, pakeiskite YouTube 21.28.208 arba senesnę versiją</string>
   <string name="morphe_miniplayer_type_title">Mini grotuvo tipas</string>
   <string name="morphe_miniplayer_hide_title_title">Slėpti pavadinimą ir kanalą</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Išplėsti braukiant į viršų</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Braukštelėjus mini-pleitokiu į viršų, išplečiamas pleitokas, o ne perkeliama mini-pleitokas į ekrano viršų</string>
+  <string name="morphe_miniplayer_docked_title">Pridėtas mini-pleitokas</string>
+  <string name="morphe_miniplayer_docked_summary">Prisijungia mini-pleitoką prie navigacijos juostos ir ekrano šonų, vietoj to, kad jis plaukiotų virš jų</string>
   <string name="morphe_miniplayer_type_entry_0">Išjungta</string>
   <string name="morphe_miniplayer_type_entry_1">Numatyta</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalus</string>
@@ -1270,6 +1366,8 @@ Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą�
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Šis įrenginys nepalaiko švytinčio įvadimo ekrano stiliaus</string>
+  <string name="morphe_splash_screen_duration_title">Paleidimo animacijos trukmė</string>
+  <string name="morphe_splash_screen_duration_summary">Kiek truks švytėjimo animacija. Bakstelėkite animaciją, kad ją praleidimo</string>
   <string name="morphe_theme_color_light_title">Šviesios temos fonas</string>
   <string name="morphe_theme_color_light_entry_2">Balta</string>
   <string name="morphe_theme_color_light_entry_3">Material You (balta)</string>
@@ -1500,10 +1598,12 @@ Vaizdo įrašų atkūrimas su AV1 gali strigti arba praleisti kadras"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Grotuvo JavaScript variantas</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Rodyti maskavimą skiltyje „Stats for nerds“</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Atkurti senąjį vaizdo įrašo veiksmų juostą</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Ištaiso, kad vaizdo įrašo veiksmų mygtukai negali būti paslėpti.
-
-Ribojimas: grąžina prie senosios stiliaus „Daugiau vaizdo įrašų“ perdangos."</string>
+  <string name="morphe_video_action_bar_layout_title">Vaizdo įrašo veiksmų juostos išdėvėjimas</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Numatytasis</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klasikinis vienos eilutės</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Minimalistinis</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klasikinis dviejų eilučių</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Apribojimas: klasikiniai išdėstymai grįžta prie seno stiliaus „Daugiau vaizdo įrašų“ sluoksnio</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Leistuvės piktogramos stilius</string>
   <string name="morphe_player_icon_style_entry_auto">Automatinis</string>
@@ -1567,7 +1667,7 @@ Automatinis įrašymas sustabdomas slaptojo režimo metu, kai neprieinama paskyr
   <string name="morphe_series_tracker_identity_unavailable">Slaptojo režime arba prieš „YouTube“ užkraunant dabartinės paskyros būseną seimas negalima įgalinti. Grįžkite į Pradžios ekraną ir bandykite dar kartą. Prisijungti nėra būtina</string>
   <string name="morphe_series_tracker_enable">Įjungti vietinį sekimą</string>
   <string name="morphe_series_tracker_tracking_paused">Eigos registracija išjungta</string>
-  <string name="morphe_series_tracker_resume_at">Tęsti nuo %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Atnaujinti nuosekliai %s</string>
   <string name="morphe_series_tracker_watched_count">Peržiūrėti epizodai: %1$s / %2$s</string>
   <string name="morphe_series_tracker_episode_position">Epizodas %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Epizodai %1$s–%2$s iš %3$s</string>
@@ -1577,7 +1677,7 @@ Automatinis įrašymas sustabdomas slaptojo režimo metu, kai neprieinama paskyr
   <string name="morphe_series_tracker_plan_changed">Pasirinkite epizodą</string>
   <string name="morphe_series_tracker_plan_caught_up">Atnaujinta</string>
   <string name="morphe_series_tracker_plan_none">Nėra grojamų epizodų</string>
-  <string name="morphe_series_tracker_saved_position">Išsaugotas vaizdo įrašas · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Išsaugotas vaizdo įrašas · %s</string>
   <string name="morphe_series_tracker_follow">Stebėti seriją</string>
   <string name="morphe_series_tracker_view_series">Peržiūrėti seriją</string>
   <string name="morphe_series_tracker_continue">Tęsti</string>
@@ -1588,7 +1688,6 @@ Automatinis įrašymas sustabdomas slaptojo režimo metu, kai neprieinama paskyr
   <string name="morphe_series_tracker_undo">Anuliuoti</string>
   <string name="morphe_series_tracker_enable_short">Įjungti</string>
   <string name="morphe_series_tracker_new_episode">1 naujas epizodas</string>
-  <string name="morphe_series_tracker_new_episodes">Naujų epizodų: %1$s</string>
   <string name="morphe_series_tracker_record_short">Fiksuoti eiga šiame įrenginyje</string>
   <string name="morphe_series_tracker_follow_consent">"Jūsų serijos ir progresas lieka šiame įrenginyje, bendrinami tarp YouTube paskyrų. YouTube istorijos valdymo priemonės to nekeičia. Progresą išvalykite iš Paslaugos meniu.
 
@@ -1616,13 +1715,13 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_series_tracker_discovery_unavailable">Nepavyko rasti grojaraščio</string>
   <string name="morphe_series_tracker_no_available_episodes">Netinka epizodai</string>
   <string name="morphe_series_tracker_hide_watched">Slėpti peržiūrėtus</string>
+  <string name="morphe_series_tracker_watched_on_advance">Pažymėti kaip peržiūrėtą pereikiant prie kitos epizodo</string>
   <string name="morphe_series_tracker_watch_previous">Pažymėti ankstesnius epizodus kaip peržiūrėtus</string>
-  <string name="morphe_series_tracker_order_starts_with">Pradedama nuo: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Prisideda nuo: %s</string>
   <string name="morphe_series_tracker_episode_order">Epizodų tvarka</string>
   <string name="morphe_series_tracker_playlist_order">Grojaraščio tvarka</string>
   <string name="morphe_series_tracker_reverse_order">Grįžti grojaraščio tvarką</string>
-  <string name="morphe_series_tracker_view_count">Peržiūros %1$s</string>
-  <string name="morphe_series_tracker_view_count_one">Peržiūra %1$s</string>
+  <string name="morphe_series_tracker_view_count_one">%s peržiūra</string>
   <string name="morphe_series_tracker_completion_title">Pažymėti epizodus peržiūrėtais</string>
   <string name="morphe_series_tracker_completion_summary">Mažiausiai %1$s%% peržiūrėta, likus ne daugiau kaip 90 sekundžių, arba liko %2$s sekundžių</string>
   <string name="morphe_series_tracker_completion_explanation">Automatiškai pažymėkite epizodą kaip peržiūrėtą pasiekus vieną iš ribų. Procentų taisyklė taip pat reikalauja, kad liktų ne daugiau kaip 90 sekundžių, todėl ilgų epizodų pabaiga nėra praleidžiama. Likusių laiko taisyklė taikoma vaizdo įrašams, ilgesniems nei vieną minutę; nustatykite 0, kad ją išjungtumėte. Pakeitimai taikomi būsimiems progreso atnaujinimams. Rankiniai peržiūrėto/neperžiūrėto pasirinkimai išsaugomi</string>
@@ -1642,7 +1741,7 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_series_tracker_backup_restore">Atstatyti atsarginę kopiją</string>
   <string name="morphe_series_tracker_backup_preview">Pridėti %1$s serijas. Jūsų bibliotekoje jau esančios %2$s serijos išlaikytos. Egzistuojantis vaizdo įrašų progresas išlaikytas</string>
   <string name="morphe_series_tracker_backup_saved">Serijų atsarginė kopija išsaugota</string>
-  <string name="morphe_series_tracker_backup_restored">Atstatyta %1$s serijų</string>
+  <string name="morphe_series_tracker_backup_restored">Atkurta %s serija</string>
   <string name="morphe_series_tracker_error_backup_invalid">Šis failas nėra palaikoma serijų atsarginė kopija arba jis per didelis. Jūsų biblioteka nebuvo pakeista</string>
   <string name="morphe_series_tracker_error_backup_write">Nepavyko išsaugoti atsarginės kopijos. Bandykite kitą vietą</string>
   <string name="morphe_series_tracker_removed">Serijos pašalintos</string>
@@ -1652,7 +1751,7 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_series_tracker_recovery_choose">Taip pat galite pasirinkti bet kurį žemiau esantį epizodą. Ankstesni epizodai nekeičiami</string>
   <string name="morphe_series_tracker_playback_changed">Sąrašas pasikeitė. Atidarykite seriją, kad pasirinktumėte, kur tęsti</string>
   <string name="morphe_series_tracker_playback_boundary">Šia kryptimi epizodų nebėra</string>
-  <string name="morphe_series_tracker_continue_series">Tęsti %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Tęsti %s</string>
   <string name="morphe_series_tracker_search_series">Ieškoti serijos</string>
   <string name="morphe_series_tracker_clear_search">Išvalyti paiešką</string>
   <string name="morphe_series_tracker_no_search_results">Jokių serijų nerasta</string>
@@ -1668,7 +1767,49 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_niconico_comments_opacity_summary">Komentarų teksto ir fono skaidrumas</string>
   <string name="morphe_niconico_comments_travel_duration_title">Keliavimo trukmė</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Kiek sekundžių komentarams reikia, kad perekryžtų ekraną. Mažesni reikšmės juda greičiau</string>
+  <string name="morphe_niconico_comments_display_area_title">Rodymo zona</string>
+  <string name="morphe_niconico_comments_display_area_summary">Kiek procentų plejerio nuo viršaus užima komentarai. Mažesnės reikšmės palieka video apatinę dalį tuščią</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimalus komentarų ilgis</string>
   <string name="morphe_niconico_comments_max_length_summary">Paslepia komentarus, kuriuose yra daugiau simbolių nei nustatyta. Kiekvienas emoji skaičiuojamas kaip vienas simbolis</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Be apribojimų</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Maksimalus atnaujinimo dažnis</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Aukščiausias ekrano atnaujinimo dažnis, naudojamas komentarams judant. Mažesnės reikšmės sutaupo baterijos energijos</string>
+  <string name="morphe_niconico_comments_live_streams_title">Rodyti tiesiogiai transliuojamuose vaizdo įrašuose</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Tiesiogiai transliuojami vaizdo įrašai ir jų pakartojimai</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Rodyti pirmosiose peržiūrose</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premjeros jų demonstravimo metu</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Rodyti pasibaigusiose pirmosiose peržiūrose</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Pasibaigusių pirmųjų transliucijų pokalbių atkūrimas</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Rodyti komentarus pagal laiką</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Vaizdo įrašuose be pokalbių viršutiniai komentarai, kuriuose nurodytas laikas, pvz., 1:23, rodomi tame konkrečiame laike</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Rodyti laiko komentarus su pokalbių atkartojimu</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Tiesioginių transliucijų ir pirmųjų pasirodymų atkartojimuose laiko komentarai taip pat rodomi kartu su pokalbiu</string>
+  <string name="morphe_live_chat_translate_screen_title">Gyvo čato vertimas</string>
+  <string name="morphe_live_chat_translate_screen_summary">Vertinkite gyvo čato ir gyvo čato atkūrimo žinutes</string>
+  <string name="morphe_live_chat_translate_title">Vertinti gyvą čatą</string>
+  <string name="morphe_live_chat_translate_summary">Vertina gyvo čato ir gyvo čato atkūrimo žinutes, kai tik jos pasirodo ekrane</string>
+  <string name="morphe_live_chat_translate_language_title">Vertimo kalba</string>
+  <string name="morphe_live_chat_translate_exclude_title">Išimtos kalbos</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Kvinis atskirti kalbų kodai, pavyzdžiui, id,en. Žinutės šiomis kalbomis nėra verčiamos</string>
+  <string name="morphe_live_chat_translate_provider_title">Vertimo teikėjas</string>
+  <string name="morphe_live_chat_translate_provider_google">„Google Translate“</string>
+  <string name="morphe_live_chat_translate_provider_deepl">„DeepL“</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">„DeepL“ API raktas</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Jūsų „DeepL“ API raktas. Jei „DeepL“ neveikia, pavyzdžiui, pasiekta mėnesio raktų riba, naudojamas „Google Translate“</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Rodyti žinutės kopijavimo mygtuką</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Kiekvienai čato žinutei prideda mažą kopijavimo mygtuką</string>
+  <string name="morphe_live_chat_translate_copied">Žinutė nukopijuota į iškarpinę</string>
+  <string name="morphe_live_chat_translate_style_title">Vertimo stilius</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Tik išversta</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Originali (išversta)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Išversta) originali</string>
+  <string name="morphe_live_chat_translate_bold_title">Pogrindinis išversta tekstas</string>
+  <string name="morphe_live_chat_translate_bold_summary">Rodo išverstą tekstą pagrindiniu šriftu</string>
+  <string name="morphe_live_chat_translate_use_color_title">Savo pasirinkta išversto teksto spalva</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Išverstam tekstui prideda pasirinktą spalvą</string>
+  <string name="morphe_live_chat_translate_color_title">Išversto teksto spalva</string>
+  <string name="morphe_live_chat_translate_color_summary">Nustatykite išversto teksto spalvą naudojant hex kodą</string>
+  <string name="morphe_live_chat_translate_max_length_title">Maksimalus žinutės ilgis</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Ilgines žinutės rodomos nevertomos</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Be apriboties</string>
 </resources>

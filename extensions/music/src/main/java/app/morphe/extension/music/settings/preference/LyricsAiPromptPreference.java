@@ -9,6 +9,7 @@ package app.morphe.extension.music.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -19,9 +20,11 @@ import android.util.Pair;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.concurrent.ExecutorService;
@@ -63,23 +66,19 @@ public class LyricsAiPromptPreference extends SwitchPreference {
     private BooleanSetting switchSetting() {
         String key = getKey();
         if (key == null) return null;
-        switch (key) {
-            case "morphe_music_lyrics_use_ai_section":
-                return Settings.LYRICS_USE_AI_SECTION;
-            default:
-                return null;
+        if (key.equals("morphe_music_lyrics_use_ai_section")) {
+            return Settings.LYRICS_USE_AI_SECTION;
         }
+        return null;
     }
 
     private StringSetting promptSetting() {
         String key = getKey();
         if (key == null) return null;
-        switch (key) {
-            case "morphe_music_lyrics_use_ai_section":
-                return Settings.LYRICS_AI_SECTION_PROMPT;
-            default:
-                return null;
+        if (key.equals("morphe_music_lyrics_use_ai_section")) {
+            return Settings.LYRICS_AI_SECTION_PROMPT;
         }
+        return null;
     }
 
     private void setCheckedSilently(boolean checked) {
@@ -130,7 +129,6 @@ public class LyricsAiPromptPreference extends SwitchPreference {
         promptInput.setMinLines(4);
         promptInput.setMaxLines(8);
         promptInput.setVerticalScrollBarEnabled(true);
-        promptInput.setHint(str("morphe_music_lyrics_ai_prompt_dialog_hint"));
         String currentPrompt = promptSetting.get();
         if (!currentPrompt.isEmpty()) {
             promptInput.setText(currentPrompt);
@@ -145,6 +143,9 @@ public class LyricsAiPromptPreference extends SwitchPreference {
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         reasoningParams.topMargin = Dim.dp16;
         content.addView(createReasoningRow(context), reasoningParams);
+
+        content.addView(LyricsProviderConfigDialog.createHint(context,
+                "morphe_music_lyrics_ai_prompt_dialog_hint"));
 
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
@@ -176,10 +177,13 @@ public class LyricsAiPromptPreference extends SwitchPreference {
         Dialog dialog = dialogPair.first;
         LinearLayout mainLayout = dialogPair.second;
 
-        mainLayout.addView(content, mainLayout.getChildCount() - 1,
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
+        ScrollView scroll = new ScrollView(context);
+        scroll.addView(content, new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        LinearLayout.LayoutParams scrollParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, 0, 1.0f);
+        scrollParams.bottomMargin = Dim.dp12;
+        mainLayout.addView(scroll, mainLayout.getChildCount() - 1, scrollParams);
 
         dialog.setOnDismissListener(d -> {
             dialogShowing = false;
@@ -196,7 +200,7 @@ public class LyricsAiPromptPreference extends SwitchPreference {
 
     /**
      * <p>An AI feature pointed at an endpoint that rejects requests produces nothing at
-     * all, and it fails silently at playback time where nothing says why. Refusing here
+     * all, and it fails silently at playback time when nothing says why. Refusing here
      * turns that into something the user can act on.
      */
     private void enableAfterValidation(BooleanSetting switchSetting) {
@@ -229,8 +233,9 @@ public class LyricsAiPromptPreference extends SwitchPreference {
     /**
      * The reasoning effort sent with each request. Which levels exist belongs to the endpoint, so the
      * row stays hidden until it has asked: an endpoint that names no levels takes no effort from us,
-     * and showing a fixed list would offer choices the model cannot honour.
+     * and showing a fixed list would offer choices the model cannot honor.
      */
+    @SuppressLint("SetTextI18n")
     private View createReasoningRow(Context context) {
         LinearLayout row = new LinearLayout(context);
         row.setOrientation(LinearLayout.HORIZONTAL);

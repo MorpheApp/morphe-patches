@@ -10,8 +10,9 @@ package app.morphe.patches.music.video.information
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -57,7 +58,7 @@ private lateinit var seekSourceEnumType: String
 private lateinit var seekSourceMethodName: String
 
 @Suppress("unused")
-val musicVideoInformationPatch = bytecodePatch(
+val musicVideoInformationPatch = patch(
     description = "Hooks video ID, video time, and seekTo for YouTube Music."
 ) {
     dependsOn(sharedExtensionPatch)
@@ -114,10 +115,12 @@ val musicVideoInformationPatch = bytecodePatch(
 
         val playerConstructorMethod = playerClass.methods.first { it.name == "<init>" }
         playerConstructorMethodRef = WeakReference(playerConstructorMethod)
-        playerConstructorIndex = playerConstructorMethod.indexOfFirstInstructionOrThrow {
-            opcode == Opcode.INVOKE_DIRECT &&
-                    getReference<MethodReference>()?.name == "<init>"
-        } + 1
+        playerConstructorIndex = playerConstructorMethod.indexOfFirstInstructionOrThrow(
+            methodCall(
+                opcode = Opcode.INVOKE_DIRECT,
+                name = "<init>"
+            )
+        ) + 1
 
         // Store the player instance in the extension's static field each time it's created.
         playerConstructorMethod.addInstruction(
@@ -160,12 +163,13 @@ val musicVideoInformationPatch = bytecodePatch(
 
         VideoIdFingerprint.method.apply {
             // Find the interface call that retrieves the video ID string from the response model.
-            val videoIdInterfaceIdx = indexOfFirstInstructionOrThrow {
-                val ref = getReference<MethodReference>()
-                (opcode == Opcode.INVOKE_INTERFACE_RANGE || opcode == Opcode.INVOKE_INTERFACE) &&
-                        ref?.returnType == "Ljava/lang/String;" &&
-                        ref.parameterTypes.isEmpty()
-            }
+            val videoIdInterfaceIdx = indexOfFirstInstructionOrThrow(
+                methodCall(
+                    opcodes = listOf(Opcode.INVOKE_INTERFACE_RANGE, Opcode.INVOKE_INTERFACE),
+                    returnType = "Ljava/lang/String;",
+                    parameters = listOf()
+                )
+            )
 
             playerResponseModelClass = (getInstruction<ReferenceInstruction>(videoIdInterfaceIdx)
                 .reference as MethodReference).definingClass

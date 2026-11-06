@@ -10,9 +10,8 @@ package app.morphe.patches.shared.misc.medianotification
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.MediaSessionSetPlaybackStateFingerprint
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
@@ -24,11 +23,11 @@ internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/MediaNotificationControlsPatch;"
 
 internal fun mediaNotificationControlsPatch(
-    block: BytecodePatchBuilder.() -> Unit,
+    block: PatchDefinition.() -> Unit,
     preferenceScreen: BasePreferenceScreen.Screen,
     additionalPreferences: Set<BasePreference> = emptySet(),
-    executeBlock: BytecodePatchContext.() -> Unit = {},
-) = bytecodePatch(
+    executeBlock: () -> Unit = {},
+) = patch(
     name = "Media notification controls",
     description = "Adds options to disable the seekbar and previous/next buttons in the " +
             "media notification and headphone controls.",
@@ -53,7 +52,7 @@ internal fun mediaNotificationControlsPatch(
             it.clearMatch()
 
             it.method.apply {
-                val index = it.instructionMatches.first().index
+                val index = it.instructionMatches.last().index
                 val register = getInstruction<FiveRegisterInstruction>(index).registerD
 
                 addInstructions(

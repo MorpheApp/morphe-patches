@@ -140,6 +140,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Функциялардын белгилери алмаштыруу буферine көчүрүлдү</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Бул жөндөөнү колдонуу үчүн тиркемени кайра иштетиңиз</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">Экспорттоо жана импорттоо</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s функциясынын белгилери импорттолду</string>
   <string name="morphe_debug_feature_flags_manager_import_failed">Функциялардын эч бир белгиси табылган жок</string>
   <string name="morphe_debug_feature_flags_manager_export_file_success">Функциялардын белгилери ийгиликтүү экспорттолду</string>
   <string name="morphe_debug_feature_flags_manager_export_file_failed">Функциялардын белгилерин экспорттоо мүмкүн болгон жок</string>
@@ -180,14 +181,14 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG орнотулган эмес. Орнотуңуз</string>
   <string name="gms_core_dialog_title">Аракет талап кылынат</string>
-  <string name="gms_core_dialog_outdated_message">"Сиздин MicroG v%1s версияңыз эскирген жана көйгөйлөрдү жаратышы мүмкүн.
+  <string name="gms_core_dialog_outdated_message">"Сиздин MicroG v%1$s версияңыз эскирген жана көйгөйлөргө алып келиши мүмкүн.
 
-Сураныч, MicroG'ди акыркы v%2s версиясына чейин жаңыртыңыз"</string>
+Сураныч, MicroG'ни акыркы v%2$s версиясына чейин жаңылаңыз"</string>
   <string name="gms_core_dialog_update_text">Жаңыртуу</string>
   <string name="gms_core_dialog_ignore_text">Эске албоо</string>
-  <string name="gms_core_dialog_conflict_message">"Орнотулган MicroG Morphe тарабынан сунушталбайт:
+  <string name="gms_core_dialog_conflict_message">"Орнатылган MicroG Morphe тарабынан сунушталбайт:
 
-%1s
+%s
 
 Аны өчүрүү үчүн басыңыз, андан кийин бул колдонмону кайра ачып, MicroG RE орнотуңуз"</string>
   <string name="gms_core_dialog_uninstall_text">Өчүрүү</string>

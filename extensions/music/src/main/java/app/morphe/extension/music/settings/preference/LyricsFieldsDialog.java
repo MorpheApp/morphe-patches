@@ -66,15 +66,6 @@ final class LyricsFieldsDialog {
         return input;
     }
 
-    EditText addNoteInput(String labelKey, String value, int inputType) {
-        addNoteLabel(labelKey);
-        EditText input = ThemedInput.create(context);
-        input.setInputType(inputType);
-        input.setText(value);
-        content.addView(input);
-        return input;
-    }
-
     EditText addNumberInput(String labelKey, Number value, boolean decimal) {
         return addInput(labelKey, value.toString(), InputType.TYPE_CLASS_NUMBER
                 | (decimal ? InputType.TYPE_NUMBER_FLAG_DECIMAL : 0));
@@ -89,9 +80,11 @@ final class LyricsFieldsDialog {
                 true);
         ScrollView scroll = new ScrollView(context);
         scroll.addView(content);
-        pair.second.addView(scroll, pair.second.getChildCount() - 1,
-                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
+        // Sizing to content would push the buttons off a short screen.
+        LinearLayout.LayoutParams scrollParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, 0, 1.0f);
+        scrollParams.bottomMargin = Dim.dp12;
+        pair.second.addView(scroll, Math.max(0, pair.second.getChildCount() - 1), scrollParams);
         pair.first.show();
     }
 

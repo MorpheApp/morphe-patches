@@ -45,21 +45,12 @@ internal object SettingsPreferenceScreenSyntheticFingerprint : Fingerprint(
 )
 
 /**
- * Looks up the account scoped command router, which only the command router of an activity does.
+ * Lays out the snackbars and the other bottom messages, then keeps the top of the shown one.
  */
-internal object CommandRouterFragmentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    strings = listOf("com.google.android.apps.youtube.app.endpoint.routers.AccountScopeCommandRouterFragment")
-)
-
-/**
- * The command router of an activity, created with it.
- */
-internal object CommandRouterConstructorFingerprint : Fingerprint(
-    classFingerprint = CommandRouterFragmentFingerprint,
-    name = "<init>",
-    parameters = listOf("Landroid/app/Activity;", "L", "Ljava/util/concurrent/Executor;"),
+internal object BottomUiContainerOnLayoutFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;",
+    name = "onLayout",
     filters = listOf(
-        methodCall(smali = "Ljava/lang/Object;-><init>()V")
+        methodCall(smali = "Landroid/widget/FrameLayout;->onLayout(ZIIII)V")
     )
 )

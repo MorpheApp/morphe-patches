@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
@@ -18,14 +18,13 @@ import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 /** Notification skips must load through the service, not a deferred watch-screen endpoint. */
 internal fun installPlaylistNotification(
-    context: BytecodePatchContext,
     wrapperType: String,
     enumType: String
-) = with(context) {
+) {
     val next = playlistNavigationIntentFingerprint(enumType, "NEXT")
-        .instructionMatches.last().instruction.getReference<FieldReference>()!!
+        .instructionMatches.last().fieldReference
     val nextRequest = playlistNavigationSingletonFingerprint(wrapperType, next)
-        .instructionMatches.last().instruction.getReference<FieldReference>()!!
+        .instructionMatches.last().fieldReference
 
     // The media owner's Next dispatch, after logging and before the optional foreground callback.
     val notification = notificationNextDispatchFingerprint(nextRequest).match()
@@ -33,53 +32,52 @@ internal fun installPlaylistNotification(
 
     // The media session callback delegates its skips to the media owner.
     val callback = notificationSkipCallbackFingerprint("onSkipToNext")
-        .instructionMatches.last().instruction.getReference<MethodReference>()!!
+        .instructionMatches.last().methodReference
     val callbackDelegate = notificationDelegateFingerprint(
         callback, owner, notification.originalMethod.name
     ).match()
 
     // The foreground callback that handles Next while a watch screen is open.
-    val foregroundCallback = notification.instructionMatches.first().instruction
-        .getReference<FieldReference>()!!
+    val foregroundCallback = notification.instructionMatches.first().fieldReference
     val foregroundType = notificationForegroundSkipFingerprint(
         foregroundCallback.type, nextRequest
     ).originalClassDef.type
 
     // The same paths for Previous.
     val previousCallback = notificationSkipCallbackFingerprint("onSkipToPrevious")
-        .instructionMatches.last().instruction.getReference<MethodReference>()!!
+        .instructionMatches.last().methodReference
     val previousDelegate = notificationDelegateFingerprint(
         previousCallback,
         owner,
         delegateType = callbackDelegate.originalClassDef.type
-    ).instructionMatches[1].instruction.getReference<MethodReference>()!!
+    ).instructionMatches[1].methodReference
     val previous = notificationPreviousDispatchFingerprint(previousDelegate).match()
-    val previousForeground = previous.instructionMatches.first().instruction.getReference<FieldReference>()!!
+    val previousForeground = previous.instructionMatches.first().fieldReference
     val previousIntent = playlistNavigationIntentFingerprint(enumType, "PREVIOUS")
-        .instructionMatches.last().instruction.getReference<FieldReference>()!!
+        .instructionMatches.last().fieldReference
     val previousRequest = playlistNavigationSingletonFingerprint(wrapperType, previousIntent)
-        .instructionMatches.last().instruction.getReference<FieldReference>()!!
+        .instructionMatches.last().fieldReference
     val previousForegroundType = notificationForegroundSkipFingerprint(
         previousForeground.type, previousRequest
     ).originalClassDef.type
 
     // The playback service that loads the queue's next and previous videos.
-    val provider = notification.instructionMatches[2].instruction.getReference<FieldReference>()!!
-    val getProvider = notification.instructionMatches[3].instruction.getReference<MethodReference>()!!
+    val provider = notification.instructionMatches[2].fieldReference
+    val getProvider = notification.instructionMatches[3].methodReference
     val serviceType = notification.instructionMatches[5].instruction.getReference<TypeReference>()!!.type
 
     val service = playlistServiceNavigatorFingerprint(wrapperType).match()
     val navigatorType = service.originalClassDef.type
     val playerFields = service.instructionMatches.take(3).map {
-        it.instruction.getReference<FieldReference>()!!
+        it.fieldReference
     }
-    val videoId = service.instructionMatches[4].instruction.getReference<MethodReference>()!!
+    val videoId = service.instructionMatches[4].methodReference
     check(playerFields.first().definingClass == navigatorType &&
             playerFields.zipWithNext().all { (parent, child) -> parent.type == child.definingClass }) {
         "Native playlist queue: current player must belong to the playback service"
     }
 
-    val playbackType = installNativeQueueEngine(context, navigatorType, enumType)
+    val playbackType = installNativeQueueEngine(navigatorType, enumType)
 
     fun bridge(type: String, name: String, parameters: List<String>, returnType: String, locals: Int, body: String) =
         mutableClassDefBy(type).addBridgeMethod(name, parameters, returnType, locals, body)
@@ -154,7 +152,7 @@ internal fun installPlaylistNotification(
         "Native playlist queue: missing or ambiguous playback service delegate"
     }
     delegates.forEach { match ->
-        val delegate = match.instructionMatches.first().instruction.getReference<FieldReference>()!!
+        val delegate = match.instructionMatches.first().fieldReference
         val delegateType = match.originalClassDef.type
         mutableClassDefBy(delegateType).interfaces.add(SERVICE_NAVIGATOR_INTERFACE)
         for ((name, resultType) in listOf(
@@ -187,9 +185,9 @@ internal fun installPlaylistNotification(
     // a global last-response cache could select an inline preview's backend.
     val directType = DirectQueueNavigatorFingerprint.originalClassDef.type
     val backend = directQueueBackendFingerprint(directType, playbackType)
-        .instructionMatches.last().instruction.getReference<FieldReference>()!!
+        .matchAll().first().instructionMatches.last().fieldReference
     val playerOwner = directQueuePlayerOwnerFingerprint(directType, playerFields[0].type)
-        .instructionMatches.single().instruction.getReference<FieldReference>()!!
+        .instructionMatches.single().fieldReference
     mutableClassDefBy(directType).interfaces.add(SERVICE_NAVIGATOR_INTERFACE)
     bridge(
         directType,
@@ -211,7 +209,7 @@ internal fun installPlaylistNotification(
         directCanNavigate
     )
     if (is_21_42_or_greater) {
-        installNativeQueueWindow(context, backend, enumType, directNavigate, directCanNavigate)
+        installNativeQueueWindow(backend, enumType, directNavigate, directCanNavigate)
     }
 
     mutableClassDefBy(owner).interfaces.add(MEDIA_CONTROLS_INTERFACE)
@@ -249,7 +247,7 @@ internal fun installPlaylistNotification(
         """
     )
 
-    installPlaylistNotificationControls(context, owner)
+    installPlaylistNotificationControls(owner)
 
     for ((match, hook) in listOf(notification to "onNotificationNext", previous to "onNotificationPrevious")) {
         val method = match.method

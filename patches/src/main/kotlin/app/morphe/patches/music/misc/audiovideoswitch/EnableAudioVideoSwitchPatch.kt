@@ -9,7 +9,7 @@ package app.morphe.patches.music.misc.audiovideoswitch
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.layout.hide.general.AudioVideoSwitchPillContainerFingerprint
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -23,7 +23,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/EnableAudioVideoSwitchPatch;"
 
 @Suppress("unused")
-val enableAudioVideoSwitchPatch = bytecodePatch(
+val enableAudioVideoSwitchPatch = patch(
     name = "Enable audio/video switch",
     description = "Adds an option to switch between the audio and the video version of a track by redirecting videoId."
 ) {

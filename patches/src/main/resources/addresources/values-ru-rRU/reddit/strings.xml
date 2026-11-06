@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Политика конфиденциальности Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Вход через Google недоступен. Используйте электронную почту для входа.</string>
+  <string name="morphe_app_downgrade_dialog_title">Понижение версии не поддерживается</string>
+  <string name="morphe_app_downgrade_dialog_message">"Эта установка Reddit была понижена с &lt;b&gt;%1$s&lt;/b&gt; до &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Данные программы по более поздней версии не работают с более старыми версиями, и приложение может работать неправильно.
+&lt;br/&gt;&lt;br/&gt;
+Чтобы использовать более старую версию, необходимо &lt;b&gt;деинсталлировать&lt;/b&gt; Reddit, а затем установите более старую версию."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Открыть информацию о приложении</string>
   <string name="morphe_screen_ads_title">Реклама</string>
   <string name="morphe_hide_post_ads_title">Скрыть рекламу в ленте</string>
   <string name="morphe_hide_comment_ads_title">Скрыть рекламу в комментариях</string>
@@ -44,7 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_selected_font">Выбранный шрифт – %s</string>
   <string name="morphe_custom_font_pick_file_first">Сначала выберите файл шрифта.</string>
   <string name="morphe_custom_font_invalid_file">Пожалуйста, выберите файл шрифта .ttf или .otf.</string>
-  <string name="morphe_custom_font_failed_to_load">\u041dе удалось загрузить шрифт. Выбраните другой файл</string>
+  <string name="morphe_custom_font_failed_to_load">Не удалось загрузить шрифт. Выберите другой файл</string>
   <string name="morphe_disable_modern_home_title">Отключить современный интерфейс главного экрана</string>
   <string name="morphe_disable_screenshot_popup_title">Отключить всплывающее окно снимка экрана</string>
   <string name="morphe_disable_screenshot_popup_summary">Отключает всплывающее окно, которое появляется при создании снимка экрана</string>

@@ -10,14 +10,14 @@ package app.morphe.patches.shared.misc.fix.bitmap
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.util.fiveRegisters
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/FixRecycledBitmapPatch;"
 
-val fixRecycledBitmapPatch = bytecodePatch(
+val fixRecycledBitmapPatch = patch(
     description = "Fixes recycled bitmap crashes by routing putBitmap through the extension class."
 ) {
 

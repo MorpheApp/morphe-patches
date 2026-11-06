@@ -1,13 +1,13 @@
 package app.morphe.patches.music.misc.fileprovider
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 
 internal fun fileProviderPatch(
     youtubePackageName: String,
     musicPackageName: String
-) = bytecodePatch(
+) = patch(
     description = "Fixes broken YouTube Music file provider that prevents sharing with specific apps such as Instagram."
 ) {
     finalize {

@@ -181,16 +181,16 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG не ўсталяваны. Усталюйце яго</string>
   <string name="gms_core_dialog_title">Патрабуюцца дзеянні</string>
-  <string name="gms_core_dialog_outdated_message">"Ваша версія MicroG v%1s састарэла і можа выклікаць праблемы.
+  <string name="gms_core_dialog_outdated_message">"Ваша версія MicroG v%1$s састарэла і можа выклікаць праблемы.
 
-Калі ласка, абновіце MicroG да найпрыхраснейшай версіі v%2s"</string>
+Калі ласка, абнавіце MicroG да найпрызгоднейшай версіі v%2$s"</string>
   <string name="gms_core_dialog_update_text">Абнавіць</string>
   <string name="gms_core_dialog_ignore_text">Ігнараваць</string>
   <string name="gms_core_dialog_conflict_message">"Усталяваны MicroG не рэкамендуецца Morphe:
 
-%1s
+%s
 
-Націсніце, каб выдаліць яго, затым зноў адкрыйце гэтую праграму і ўсталюйце MicroG RE"</string>
+Націсніце, каб выдаліць яго, пасля чаго зноў адкрыйце гэтую праграму і ўсталюйце MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Выдаліць</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG не мае дазволу працаваць у фоне.

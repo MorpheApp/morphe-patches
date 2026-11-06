@@ -9,13 +9,13 @@ package app.morphe.patches.youtube.layout.hide.updatescreen
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.youtube.misc.playservice.is_20_27_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.AccessFlags
 
-val hideUpdateScreenPatch = bytecodePatch(
+val hideUpdateScreenPatch = patch(
     description = "Hides the YouTube undismissable 'Update your app' dialog if " +
             "patching old versions of YouTube",
 ) {

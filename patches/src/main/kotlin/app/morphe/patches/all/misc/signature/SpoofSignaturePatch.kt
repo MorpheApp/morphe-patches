@@ -7,11 +7,11 @@
 
 package app.morphe.patches.all.misc.signature
 
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.fix.spoofsignature.spoofSignaturePatch
 
 @Suppress("unused")
-val spoofSignaturePatch = resourcePatch (
+val spoofSignaturePatch = patch (
     name = "Spoof signature",
     description = "Spoofs the package signature of the original APK.",
     default = false

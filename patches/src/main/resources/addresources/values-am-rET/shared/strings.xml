@@ -181,16 +181,16 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG አልተጫነም። ይጫኑት</string>
   <string name="gms_core_dialog_title">ድርጊት ያስፈልጋል</string>
-  <string name="gms_core_dialog_outdated_message">"የእርስዎ MicroG v%1s ጊዜው ያለፈበት ነው እና ችግሮችን ሊያስከትል ይችላል።
+  <string name="gms_core_dialog_outdated_message">"የእርስዎ MicroG v%1$s ጊዜው ያለፈበት ነው እና ችግሮችን ሊያስከትል ይችላል።
 
-እባክዎን MicroGን ወደ አዲሱ ስሪት v%2s ያዘምኑ"</string>
+እባክዎ MicroGን ወደ አዲሱ ስሪት v%2$s ያዘምኑ"</string>
   <string name="gms_core_dialog_update_text">አዘምን</string>
   <string name="gms_core_dialog_ignore_text">ተجاهል</string>
   <string name="gms_core_dialog_conflict_message">"የተጫነው MicroG በ Morphe አይመከርም፦
 
-%1s
+%s
 
-ለማንቀላቀል ይጫኑ፣ ከዚያ ይህን መተግበሪያ እንደገና ይክፈቱ እና MicroG REን ይጫኑ"</string>
+ለማጥፋት ይጫኑት፣ ከዚያ ይህንን መተግበሪያ እንደገና ይክፈቱ እና MicroG REን ይጫኑ"</string>
   <string name="gms_core_dialog_uninstall_text">ይጫኑት ያጥፉ</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG በጀርባ እንዲሰራ ፈቃድ የለውም።

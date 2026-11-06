@@ -8,14 +8,14 @@
 package app.morphe.patches.youtube.shared
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import java.lang.ref.WeakReference
 
 private lateinit var startVideoMethod: WeakReference<MutableMethod>
 
-val startVideoInformerPatch = bytecodePatch(
+val startVideoInformerPatch = patch(
     description = "Provides shared hooks for when a video starts playing."
 ) {
     compatibleWith(COMPATIBILITY_YOUTUBE)

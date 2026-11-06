@@ -13,8 +13,7 @@ package app.morphe.patches.music.layout.branding
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_MAIN_ACTIVITY_NAME
@@ -26,19 +25,15 @@ import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.layout.branding.EXTENSION_CLASS
 import app.morphe.patches.shared.layout.branding.baseCustomBrandingPatch
 import app.morphe.patches.shared.layout.branding.startupAnimationResourcePatch
-import app.morphe.patches.shared.misc.lottie.LOTTIE_ANIMATION_VIEW_CLASS_TYPE
 import app.morphe.patches.shared.misc.lottie.lottieAnimationPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.util.indexOfFirstInstructionOrThrow
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val STARTUP_ANIMATION_EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/StartupAnimationPatch;"
 
-private val startupAnimationPatch = bytecodePatch {
+private val startupAnimationPatch = patch {
     dependsOn(settingsPatch, lottieAnimationPatch, startupAnimationResourcePatch)
 
     execute {
@@ -50,11 +45,7 @@ private val startupAnimationPatch = bytecodePatch {
         CairoSplashAnimationConfigFingerprint.let {
             it.method.apply {
                 // The extension decides which animation is played and with which colors.
-                val animationIndex = indexOfFirstInstructionOrThrow(it.instructionMatches.last().index) {
-                    val reference = getReference<MethodReference>()
-                    opcode == Opcode.INVOKE_VIRTUAL &&
-                            reference?.definingClass == LOTTIE_ANIMATION_VIEW_CLASS_TYPE
-                }
+                val animationIndex = it.instructionMatches.last().index
                 val animationInstruction = getInstruction<FiveRegisterInstruction>(animationIndex)
 
                 replaceInstruction(
@@ -85,7 +76,7 @@ private val startupAnimationPatch = bytecodePatch {
 
 @Suppress("unused")
 val customBrandingPatch = baseCustomBrandingPatch(
-    originalLauncherIconName = "ic_launcher_release",
+    originalLauncherIconName = { "ic_launcher_release" },
     originalNotificationIconName = "music_push_notification_white",
     originalAppName = "@string/app_launcher_name",
     originalAppPackageName = MUSIC_PACKAGE_NAME,

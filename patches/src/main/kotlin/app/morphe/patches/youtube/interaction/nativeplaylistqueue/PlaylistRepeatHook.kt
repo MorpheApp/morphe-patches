@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
@@ -17,25 +17,23 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 /** Keep native repeat handling; turn only the owned queue's shuffle into a list command. */
 internal fun installPlaylistRepeat(
-    context: BytecodePatchContext,
     navigatorType: String
-) = with(context) {
+) {
     val binding = PlaylistRepeatBindingFingerprint.match()
     val headerType = binding.originalClassDef.type
     val header = mutableClassDefBy(headerType)
-    val renderState = binding.instructionMatches.last().instruction.getReference<MethodReference>()!!
+    val renderState = binding.instructionMatches.last().methodReference
     val navigator = playlistHeaderNavigatorFingerprint(navigatorType)
-        .instructionMatches.single().instruction.getReference<FieldReference>()!!
+        .instructionMatches.single().fieldReference
     val panel = playlistHeaderPanelFingerprint(binding.originalMethod)
-        .instructionMatches.single().instruction.getReference<FieldReference>()!!
+        .instructionMatches.single().fieldReference
     val repeatView = PlaylistHeaderRepeatViewFingerprint
-        .instructionMatches.last().instruction.getReference<FieldReference>()!!
+        .instructionMatches.last().fieldReference
     val shuffleMatch = PlaylistShuffleViewFingerprint
-    val shuffleView = shuffleMatch.instructionMatches.last().instruction.getReference<FieldReference>()!!
+    val shuffleView = shuffleMatch.instructionMatches.last().fieldReference
     check(shuffleView.definingClass == headerType) {
         "Native playlist queue: shuffle and repeat must share the native header"
     }
@@ -57,7 +55,7 @@ internal fun installPlaylistRepeat(
     // binders instead keep a listener field so they can hide/restore the action.
     val restoreShuffleListener = if (is_21_20_or_greater) {
         val listener = playlistShuffleListenerFingerprint(binding.originalMethod, shuffleView)
-            .instructionMatches[2].instruction.getReference<FieldReference>()!!
+            .instructionMatches[2].fieldReference
         """
             iget-object v1, p0, $listener
             invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View${'$'}OnClickListener;)V

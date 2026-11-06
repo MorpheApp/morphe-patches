@@ -9,7 +9,8 @@ package app.morphe.patches.youtube.layout.playbackinfeeds
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -31,7 +32,7 @@ private const val EXTENSION_CONTROLLER_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/PlaybackInFeedsPatch$PlaybackInFeedsController;"
 
 @Suppress("unused")
-val playbackInFeedsPatch = bytecodePatch(
+val playbackInFeedsPatch = patch(
     name = "Playback in feeds",
     description = "Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, " +
             "where it is always available even if YouTube hides it."

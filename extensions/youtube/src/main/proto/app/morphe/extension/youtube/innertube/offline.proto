@@ -117,6 +117,7 @@ message OfflineUpsellRenderer {
 // Player response of a video that is saved.
 message OfflinePlayerResponse {
     optional OfflineStreamingData streamingData = 4;
+    optional OfflineCaptions captions = 10;
     optional OfflineVideoDetails videoDetails = 11;
     optional OfflineState offlineState = 14;
     optional OfflinePlayerConfig playerConfig = 15;
@@ -129,10 +130,26 @@ message OfflinePlayerConfig {
 message OfflineExoPlayerConfig {
     // Streams are only selected from the adaptive formats if this is set.
     optional bool useExoPlayer = 1;
+    // The playback speed can only be changed if this is set.
+    optional bool enableVariableSpeedPlayback = 53;
 }
 
 message OfflineVideoDetails {
     optional string videoId = 1;
+    optional string title = 15;
+}
+
+message OfflineCaptions {
+    optional OfflineCaptionTracklist playerCaptionsTracklistRenderer = 51621377;
+}
+
+message OfflineCaptionTracklist {
+    repeated OfflineCaptionTrack captionTracks = 1;
+}
+
+message OfflineCaptionTrack {
+    // Timedtext url the app saves the captions from.
+    optional string baseUrl = 1;
 }
 
 message OfflineStreamingData {

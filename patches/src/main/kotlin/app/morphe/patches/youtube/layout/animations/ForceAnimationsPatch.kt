@@ -9,13 +9,14 @@ package app.morphe.patches.youtube.layout.animations
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_49_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -42,7 +43,7 @@ private const val EXTENSION_ENUM_SETTING_CLASS = "Lapp/morphe/extension/shared/s
  *
  * @param smali Code that runs after `v0` is set to the setting value. `v1` is free and `p0` is the value.
  */
-private fun BytecodePatchContext.addForceAnimationsMethod(name: String, type: String, smali: String) {
+private fun addForceAnimationsMethod(name: String, type: String, smali: String) {
     mutableClassDefBy(EXTENSION_CLASS).methods.add(
         ImmutableMethod(
             EXTENSION_CLASS,
@@ -67,7 +68,7 @@ private fun BytecodePatchContext.addForceAnimationsMethod(name: String, type: St
 }
 
 @Suppress("unused")
-val forceAnimationsPatch = bytecodePatch(
+val forceAnimationsPatch = patch(
     name = "Force animations",
     description = "Adds an option to always turn on or off the app animations " +
             "that YouTube can turn off, such as the player transitions.",
@@ -109,7 +110,8 @@ val forceAnimationsPatch = bytecodePatch(
         // above. Ask for it whenever the decision is overridden.
         buildList {
             add(PageTransitionAnimationHintsFeatureFlagFingerprint to PAGE_TRANSITION_ANIMATION_HINTS_FEATURE_FLAG)
-            if (is_20_41_or_greater) {
+            // 21.45+ always uses the Shorts animations.
+            if (is_20_41_or_greater && !is_21_45_or_greater) {
                 add(ShortsAnimationHintsFeatureFlagFingerprint to SHORTS_ANIMATION_HINTS_FEATURE_FLAG)
             }
         }.forEach { (fingerprint, flag) ->

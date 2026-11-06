@@ -18,6 +18,9 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit 개인정보 처리방침</string>
   <string name="morphe_google_signin_not_available_toast">Google 로그인을 사용할 수 없습니다. 이메일로 로그인하세요</string>
+  <string name="morphe_app_downgrade_dialog_title">다운그레이드는 지원되지 않음</string>
+  <string name="morphe_app_downgrade_dialog_message">"이 Reddit 앱은 &lt;b&gt;%1$s&lt;/b&gt;에서 &lt;b&gt;%2$s&lt;/b&gt; 버전으로 다운그레이드되었습니다&lt;br/&gt;&lt;br/&gt;최신 버전의 앱 데이터는 이전 버전과 호환되지 않으며, 앱이 정상적으로 작동하지 않을 수 있습니다&lt;br/&gt;&lt;br/&gt;이전 버전을 사용하려면 Reddit 앱을 &lt;b&gt;제거&lt;/b&gt;한 후 이전 버전을 다시 설치해야 합니다"</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">앱 정보 열기</string>
   <string name="morphe_screen_ads_title">광고</string>
   <string name="morphe_hide_post_ads_title">피드 광고 숨기기</string>
   <string name="morphe_hide_comment_ads_title">댓글 광고 숨기기</string>

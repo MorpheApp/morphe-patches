@@ -61,6 +61,7 @@ Folgende Änderungen sind enthalten:
   <string name="morphe_hide_account_menu_title">Filter für das untere Menü „Mediathek / You\" aktivieren</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Filter für das untere Menü „Mediathek / You</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Gib die Namen der Einträge im unteren Menü „Mediathek / You“, nach denen gefiltert werden soll, durch Zeilenumbrüche getrennt ein.</string>
+  <string name="morphe_hide_account_menu_downloads_title">Downloads ausblenden</string>
   <string name="morphe_hide_album_cards_title">Albumkarten ausblenden</string>
   <string name="morphe_hide_album_cards_summary">Verbirgt die Albumkarten unter der Künstlerbeschreibung</string>
   <string name="morphe_hide_artist_cards_title">Künstler-Infokarten ausblenden</string>
@@ -68,6 +69,19 @@ Folgende Änderungen sind enthalten:
   <string name="morphe_hide_channel_buttons_title">Kanal-Buttons ausblenden</string>
   <string name="morphe_hide_channel_buttons_summary">Blendet Buttons wie Abonnieren, Kanal ansehen, Community und YouTube Music in Kanalprofilen in den Suchergebnissen aus</string>
   <string name="morphe_hide_community_posts_title">Communitybeiträge ausblenden</string>
+  <string name="morphe_post_buttons_screen_title">Post-Knöpfe</string>
+  <string name="morphe_post_buttons_screen_summary">Wählen Sie das Layout der Schaltflächen unter den Community-Beiträgen und welche Schaltflächen ausgeblendet werden sollen</string>
+  <string name="morphe_post_buttons_layout_title">Layout der Beitrags-Schaltflächen</string>
+  <string name="morphe_post_buttons_layout_entry_1">Server</string>
+  <string name="morphe_post_buttons_layout_entry_2">Erzwungen</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Like- und Dislike-Schaltflächen ausblenden</string>
+  <string name="morphe_hide_post_dislike_button_title">Schaltfläche „Dislike“ ausblenden</string>
+  <string name="morphe_hide_post_dislike_button_summary">Beim erzwungenen Layout bleibt der Platz der Schaltfläche frei</string>
+  <string name="morphe_hide_post_comment_button_title">Schaltfläche „Kommentare“ ausblenden</string>
+  <string name="morphe_hide_post_comments_preview_title">Kommentarvorschau ausblenden</string>
+  <string name="morphe_hide_post_comments_preview_summary">Blendet die Vorschau der Kommentare unter den Beiträgen aus</string>
+  <string name="morphe_hide_post_share_button_title">Schaltfläche „Teilen“ ausblenden</string>
+  <string name="morphe_hide_post_share_button_summary">Die Download-Schaltfläche der Beitragsbilder wird neben der Teilen-Schaltfläche gezeichnet, daher wird sie ebenfalls ausgeblendet</string>
   <string name="morphe_hide_compact_banner_title">Kompakte Banner ausblenden</string>
   <string name="morphe_hide_compact_banner_summary">Verbirgt kompakte Banner und Abstände zwischen einigen Komponenten</string>
   <string name="morphe_hide_expandable_card_title">Erweiterbare Karten unter Videos</string>
@@ -100,7 +114,7 @@ Folgende Änderungen sind enthalten:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Schaltfläche „Benachrichtigen“ ausblenden</string>
-  <string name="morphe_hide_notify_me_button_summary">Blendet die Erinnerungs-Schaltfläche für geplante Live-Streams und Premieren aus.</string>
+  <string name="morphe_hide_notify_me_button_summary">Blendet die Erinnerungsfunktion für geplante Livestreams und Premieren aus</string>
   <string name="morphe_hide_playables_title">Playables ausblenden</string>
   <string name="morphe_hide_playables_summary">Verbirgt die Funktion, mit der Sie Spiele spielen können</string>
   <string name="morphe_hide_search_term_thumbnails_title">Suchbegriff-Miniaturen ausblenden</string>
@@ -159,7 +173,6 @@ Folgende Änderungen sind enthalten:
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Hinweise ausblenden, die während Player-Gesten angezeigt werden, z. B. „Nach oben ziehen für präzises Suchen“, „Zum Abbrechen loslassen“ und „2x“</string>
-  <string name="morphe_hide_snackbar_title">Snackbar ausblenden</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Abonnentenrichtlinien ausblenden</string>
   <string name="morphe_hide_sync_button_title">Schaltfläche „Mit Video synchronisieren“ ausblenden</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Tippen-und-Halten-Verlauf ausblenden</string>
@@ -260,9 +273,8 @@ Folgende Änderungen sind enthalten:
   <string name="morphe_comments_screen_title">Kommentare</string>
   <string name="morphe_comments_screen_summary">Wählen Sie aus, welche Komponenten im Kommentarbereich angezeigt werden sollen</string>
   <string name="morphe_hide_comments_carousel_title">Filter für Kommentar-Karussell aktivieren</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Stelle sicher, dass du den genauen Namen des Karussellelements eingibst (z. B. Fragen, Dieses Video bewerben, Auf YouTube Music hören)
-• Das Ausblenden von Karussellelementen kann unbeabsichtigte Nebenwirkungen haben
-• Wenn alle Karussellelemente ausgeblendet sind, wird auch der gesamte Kommentarbereich ausgeblendet"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Geben Sie ein Schlüsselwort oder einen vollständigen Namen ein (z. B. Ask, Community, Hype, Listen)
+• Das Ausblenden aller Elemente blendet den gesamten Kommentarbereich aus"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Kommentar-Karussell-Filter</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Gib die Namen der Kommentar-Karussell-Elemente, nach denen gefiltert werden soll durch neue Zeilen getrennt ein</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">KI-Chat-Zusammenfassung ausblenden</string>
@@ -277,6 +289,9 @@ Folgende Änderungen sind enthalten:
   <string name="morphe_hide_comments_emoji_button_title">Emoji-Schaltfläche ausblenden</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Filterleistenoptionen ausblenden</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Blendet alle Filterleistenoptionen außer \"Top\" und \"Neueste\" aus</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF-Button ausblenden</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIFs und Bilder ausblenden</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Blendet GIFs und Bilder aus, die an Kommentaren und Antworten angehängt sind</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Geschenkanimation und Karten ausblenden</string>
   <string name="morphe_hide_comments_gift_button_title">Geschenk-Button ausblenden</string>
   <string name="morphe_hide_comments_info_button_title">Info-Schaltfläche ausblenden</string>
@@ -327,11 +342,11 @@ Einschränkungen:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Schlüsselwort hat widersprüchliche Erklärungen: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Stichwort ist zu kurz und benötigt Anführungszeichen: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Stichwort wird alle Videos ausblenden: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Startseite: %s
-• Abonnements: %s
-• Suche: %s
-• Kommentare: %s
-• Gesamt: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Startseite: %1$s
+• Abonnements: %2$s
+• Suche: %3$s
+• Kommentare: %4$s
+• Gesamt: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Statistik</string>
   <string name="morphe_hide_stats_hidden_24h_title">Ausgeblendete Videos, letzte 24 Stunden</string>
   <string name="morphe_hide_stats_hidden_all_title">Ausgeblendete Videos, insgesamt</string>
@@ -343,9 +358,9 @@ Einschränkungen:
   <string name="morphe_hide_aislist_warnlist_category_title">Warnliste: Moderate Wahrscheinlichkeit</string>
   <string name="morphe_hide_aislist_hide_home_title">Videos auf Startseite ausblenden</string>
   <string name="morphe_hide_aislist_hide_search_title">Videos in der Suche ausblenden</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Startseite: %s
-• Suche: %s
-• Insgesamt: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Startseite: %1$s
+• Suche: %2$s
+• Insgesamt: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Kanäle in der Blocklist</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Kanäle in der Warnliste</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Filter aktivieren, um Kanäle zu laden</string>
@@ -384,6 +399,20 @@ Meldungen sind öffentlich und werden überprüft, bevor ein Kanal zu einer List
   <string name="morphe_aislist_submit_failed_rate_limit">Zu viele Meldungen wurden gesendet. Versuche es später erneut.</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList hat die Meldung abgelehnt.</string>
   <string name="morphe_aislist_submit_failed">Meldung fehlgeschlagen. Überprüfe deine Verbindung.</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Snackbar ausblenden oder deren Farben und Form ändern</string>
+  <string name="morphe_hide_snackbar_title">Snackbar ausblenden</string>
+  <string name="morphe_custom_snackbar_theme_title">Benutzerdefinierte Snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbars verwenden die unten angegebenen Farben und den Eckenradius anstelle der Farben des gegenteiligen Themes</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Hintergrundfarbe des dunklen Themas</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Hintergrundfarbe von Snackbars im dunklen Theme. Der Text ist schwarz oder weiß, je nachdem, was besser lesbar ist</string>
+  <string name="morphe_custom_snackbar_color_light_title">Hintergrundfarbe des hellen Themas</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Hintergrundfarbe von Snackbars im hellen Theme. Der Text ist schwarz oder weiß, je nachdem, was besser lesbar ist</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Rahmenfarbe</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Farbe des Rahmens um Snackbars. Eine transparente Farbe zeigt keinen Rahmen an</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Eckenradius</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Eckenradius von Snackbars in dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Werbe-Whitelist für Kanäle</string>
   <string name="morphe_ads_channel_whitelist_summary">Videos von Kanälen auf der Werbe-Whitelist werden mit Werbung abgespielt, damit ihre Ersteller vergütet werden. Auf allen anderen Kanälen bleibt Werbung blockiert.</string>
@@ -442,11 +471,16 @@ Meldungen sind öffentlich und werden überprüft, bevor ein Kanal zu einer List
   <string name="morphe_copy_comments_title">Kommentare kopieren</string>
   <string name="morphe_copy_comments_summary">Tippe und halte einen Kommentar, um ihn zu kopieren</string>
   <string name="morphe_copy_comments_success">Kommentar in die Zwischenablage kopiert</string>
+  <string name="morphe_copy_select_text_title">Text von Beschreibungen und Beiträgen auswählen</string>
+  <string name="morphe_copy_select_text_summary">Halten Sie eine Videobeschreibung oder einen Beitrag gedrückt, um einen beliebigen Teil davon auszuwählen und zu kopieren</string>
+  <string name="morphe_copy_select_text_dialog_title">Text auswählen</string>
+  <string name="morphe_copy_select_text_copy_all">Alles kopieren</string>
+  <string name="morphe_copy_select_text_success">Text in Zwischenablage kopiert</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Tippen und gedrückt halten, um das Videomenü zu öffnen</string>
   <string name="morphe_feed_long_press_menu_summary">Das Tippen und Gedrückthalten irgendwo auf einem Feed-Video öffnet dessen Menü</string>
   <string name="morphe_feed_watch_later_button_title">Schaltfläche \"Später ansehen\" auf Vorschaubildern anzeigen</string>
-  <string name="morphe_feed_watch_later_button_summary">Auf den Vorschaubildern von Feed-Videos wird eine Schaltfläche \"Später ansehen\" angezeigt. Durch Tippen und Gedrückthalten wird \"In Wiedergachelste speichern\" geöffnet</string>
+  <string name="morphe_feed_watch_later_button_summary">Eine „Später ansehen“-Schaltfläche wird auf den Thumbnails von Feed-Videos angezeigt, mit einem Häkchen, wenn das Video gespeichert ist. Durch Tippen wird das Video gespeichert oder entfernt, und durch Tippen und Halten wird „Zur Playlist hinzufügen“ geöffnet</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Beitragsbilder herunterladen</string>
   <string name="morphe_post_image_download_summary">Neben der Teilen-Schaltfläche von Beiträgen mit Bildern oder GIFs wird eine Download-Schaltfläche angezeigt und dem Menü wird ein Download-Punkt hinzugefügt</string>
@@ -488,7 +522,7 @@ Nachdem ein Video mit der Ask-Schaltfläche einmal geöffnet wurde, funktioniert
   <string name="morphe_ryd_feed_like_ratio_title">Like-Verhältnis in Feed-Vorschaubildern anzeigen</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Kommentare durchsuchen</string>
-  <string name="morphe_search_comments_summary">Tippen Sie in den Kommentaren auf die Suchschaltfläche, um nur die geladenen Kommentare anzuzeigen, die alle gesuchten Wörter enthalten. Setzen Sie Wörter in Anführungszeichen, um nach einer Phrase zu suchen</string>
+  <string name="morphe_search_comments_summary">Tippen Sie auf die Suchschaltfläche in den Kommentaren, um nur die geladenen Kommentare anzuzeigen, die alle gesuchten Wörter enthalten. Setzen Sie Wörter in Anführungszeichen, um nach einer Phrase zu suchen</string>
   <string name="morphe_search_comments_dialog_title">Kommentare durchsuchen</string>
   <string name="morphe_search_comments_hint">Zu suchende Wörter</string>
   <string name="morphe_search_comments_search">Suchen</string>
@@ -516,8 +550,24 @@ Nachdem ein Video mit der Ask-Schaltfläche einmal geöffnet wurde, funktioniert
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Alle Optionen</string>
   <string name="morphe_shorts_download_flyout_button_title">Downloads in Shorts-Menü anzeigen</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Fügt dem Shorts-Player eine externe Download-Option im Flyout-Menü hinzu</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Fügt einen Download-Punkt zum Menü des Shorts-Players hinzu</string>
   <string name="morphe_shorts_download_flyout_title">Herunterladen</string>
+  <string name="morphe_export_download_folder_title">Gespeicherte Videos exportieren</string>
+  <string name="morphe_export_download_folder_summary">"Exportiere in der App gespeicherte Videos über das Download-Flyout-Menü auf deinen Gerätespeicher. Tippe hier, um den Export-Ordner zu ändern
+
+Export-Ordner: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Export-Ordner</string>
+  <string name="morphe_export_download_folder_change">Ordner ändern</string>
+  <string name="morphe_export_download_folder_changed">Export-Ordner geändert</string>
+  <string name="morphe_export_download_folder_reset">Export-Ordner zurückgesetzt</string>
+  <string name="morphe_export_download_folder_missing">Exportordner %s konnte nicht gefunden werden</string>
+  <string name="morphe_export_download_flyout_title">Auf Gerät exportieren</string>
+  <string name="morphe_export_download_started">Video wird exportiert</string>
+  <string name="morphe_export_download_progress">Video wird exportiert: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Video-Exporte</string>
+  <string name="morphe_export_download_saved">Video nach %s exportiert</string>
+  <string name="morphe_export_download_failed">Video konnte nicht exportiert werden</string>
+  <string name="morphe_export_download_canceled">Export abgebrochen</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Sprachausgabe-Übersetzung</string>
   <string name="morphe_vot_screen_summary">Lies die Videountertitel laut mithilfe der Text-to-Speech-Funktion des Geräts, synchronisiert mit der Wiedergabe.</string>
@@ -571,6 +621,11 @@ Ein API-Key sollte niemals weitergegeben werden! Jeder mit Zugriff darauf kann d
   <string name="morphe_vot_mymemory_quota_message_no_email">Du hast dein tägliches kostenloses Übersetzungskontingent für MyMemory (5.000 Zeichen) verbraucht. Füge eine MyMemory registrierte E-Mail-Adresse in den Einstellungen hinzu, um das tägliche Limit auf 50.000 Zeichen zu erhöhen oder wechsel zu einem anderen Übersetzungsdienst</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Sie haben heute Ihr MyMemory-Übersetzungskontingent (50.000 Zeichen) verbraucht. Wechseln Sie zu einem anderen Übersetzungsdienst oder versuchen Sie es morgen erneut</string>
   <string name="morphe_vot_mymemory_error">Übersetzung mit MyMemory fehlgeschlagen (Status %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Drag-Handles von „Später ansehen“ verbreitern</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Die Drag-Handles der „Später ansehen“-Videos lassen sich leichter greifen</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Snackbar beim Entfernen aus \"Später ansehen\" ausblenden</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Die Bestätigung wird nicht angezeigt, nachdem ein Video aus \"Später ansehen\" entfernt wurde</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Videowiederholung aktivieren</string>
   <string name="morphe_do_not_remember_loop_video_title">Schleifenwiedergabe nicht merken</string>
@@ -592,6 +647,19 @@ Ein API-Key sollte niemals weitergegeben werden! Jeder mit Zugriff darauf kann d
   <string name="morphe_pip_button_overlay_title">Bild-im-Bild-Schaltfläche anzeigen</string>
   <string name="morphe_pip_button_flyout_title">Bild-im-Bild-Menü anzeigen</string>
   <string name="morphe_pip_button_flyout_name">Zu Bild-im-Bild wechseln</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Bild-in-Bild-Aktionen</string>
+  <string name="morphe_pip_actions_screen_summary">Ändert die in Bild-in-Bild angezeigten Schaltflächen</string>
+  <string name="morphe_pip_action_left_title">Linke Schaltfläche</string>
+  <string name="morphe_pip_action_center_title">Mittlere Schaltfläche</string>
+  <string name="morphe_pip_action_right_title">Rechte Schaltfläche</string>
+  <string name="morphe_pip_action_entry_default">Standard</string>
+  <string name="morphe_pip_action_entry_previous">Vorheriges Video</string>
+  <string name="morphe_pip_action_entry_next">Nächstes Video</string>
+  <string name="morphe_pip_action_entry_rewind">10 Sekunden zurückspulen</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 Sekunden vorspulen</string>
+  <string name="morphe_pip_action_entry_play_pause">Wiedergabe/Pause</string>
+  <string name="morphe_pip_action_entry_background_playback">Wiedergabe im Hintergrund</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Alle abspielen-Schaltfläche anzeigen</string>
   <string name="morphe_play_all_button_summary">"Tippe, um eine Wiedergabeliste aus allen Videos eines Kanals zu erstellen. Tippe und halte gedrückt, um dies rückgängig zu machen
@@ -624,10 +692,6 @@ Info: Funktioniert möglicherweise nicht bei Livestreams"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Später ansehen</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Schaltfläche zum Speichern in „Später ansehen“ im Flyout der Player-Einstellungen anzeigen</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Ermöglicht das Speichern des aktuell angesehenen Videos in \'Später ansehen\' über das Flyout der Videoeinstellungen</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Schaltfläche \'Später ansehen\' in Kinder-Videos anzeigen</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Ermöglicht das Speichern von kinderbezogenen Videos in \'Später ansehen\' über das Flyout-Menü</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Zeige die Schaltfläche \'Speichern in Später ansehen\' im Shorts-Flyout</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Ermöglicht das Speichern von Shorts in \'Später ansehen\' über das Flyout-Menü</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">\"Später ansehen\" an Playlist weiterleiten</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Später ansehen</string>
   <string name="morphe_queue_flyout_title">Zur Morphe-Warteschlange hinzufügen</string>
@@ -726,14 +790,18 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
 Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Standardclient' auf 'TV Simply' oder 'visionOS'."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Ziehen zum Suchen aktivieren</string>
-  <string name="morphe_slide_to_seek_summary">Aktiviert das Wischen zum Suchen anstelle des Abspielens mit 2x Geschwindigkeit, wenn Sie die Videoplayer-Taste gedrückt halten</string>
+  <string name="morphe_slide_to_seek_summary">Halten Sie das Video gedrückt, um durch Gleiten zu spulen, anstatt es mit 2-facher Geschwindigkeit abzuspielen</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Tippen zum Suchen aktivieren</string>
-  <string name="morphe_tap_to_seek_summary">Tippe ohne zu ziehen auf den Fortschrittsbalken, um an die jeweilige Stelle zu springen</string>
+  <string name="morphe_tap_to_seek_summary">Tippen Sie an eine beliebige Stelle des Fortschrittsbalkens, um an diese Position zu springen, anstatt ihn zu ziehen</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Wischgeste nach links</string>
   <string name="morphe_swipe_right_zone_title">Wischgeste nach rechts</string>
   <string name="morphe_swipe_top_zone_title">Wischgeste nach oben</string>
+  <string name="morphe_swipe_seek_title">Zum Suchen wischen</string>
+  <string name="morphe_swipe_seek_summary">Im Vollbildplayer nach links oder rechts wischen, um den Suchbalken zu bewegen, und dann loslassen, um zu suchen</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Empfindlichkeit der Such-Wischbewegung</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Wie weit sich der Suchbalken bei jedem Wischen bewegt</string>
   <string name="morphe_swipe_zone_width_title">Breite der linken/rechten Zone</string>
   <string name="morphe_swipe_zone_width_summary">Prozentanteil jeder Bildschirmkante, die für Wischgesten links und rechts reserviert ist (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Helligkeit</string>
@@ -846,18 +914,22 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Untertitel</string>
   <string name="morphe_captions_screen_summary">Cookie aktivieren für Untertitel</string>
+  <string name="morphe_captions_languages_title">Sprache und Übersetzung</string>
+  <string name="morphe_captions_presentation_title">Erscheinungsbild und Verhalten</string>
+  <string name="morphe_captions_advanced_title">Erweitert</string>
+  <string name="morphe_captions_advanced_summary">Cookie- und Transkriptoptionen</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Automatische Untertitel-Ansicht</string>
-  <string name="morphe_auto_captions_style_entry_1">Erforderlich, damit automatische Untertitel korrekt funktionieren</string>
+  <string name="morphe_auto_captions_style_entry_1">Immer anzeigen</string>
   <string name="morphe_auto_captions_style_entry_2">Nie anzeigen</string>
   <string name="morphe_auto_captions_style_entry_3">Bei Stummschaltung anzeigen</string>
   <string name="morphe_auto_captions_style_entry_4">Zeige bei stummgeschaltet</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Bevorzugte Untertitelsprache</string>
-  <string name="morphe_preferred_caption_language_summary">Wählt zuerst die Untertitel des Anbieters aus und übersetzt sie dann automatisch in die bevorzugte Sprache</string>
+  <string name="morphe_preferred_caption_language_summary">Wählt automatisch eine Untertitel-Sprache für jedes Video aus</string>
   <string name="morphe_preferred_caption_language_entry_off">Aus</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Weitere Sprachen für die Auto-Übersetzung hinzufügen</string>
+  <string name="morphe_auto_translate_additional_languages_title">Zusätzliche Auto-Übersetzungssprachen</string>
   <string name="morphe_auto_translate_additional_languages_summary">Fügt dem Menü für die Auto-Übersetzung weitere Sprachen hinzu</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Caption-Cookies festlegen</string>
@@ -875,11 +947,20 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <string name="morphe_fix_transcript_title">Transkript reparieren</string>
   <string name="morphe_fix_transcript_summary">Behebt einen Fehler bei der Vorbedingungsprüfung, der das Laden des Transkripts verhindern kann.</string>
   <string name="morphe_captions_in_pip_title">Untertitel im Picture-in-Picture anzeigen</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Untertitelgröße</string>
+  <string name="morphe_caption_scale_summary">Gilt für einsprachige und zweisprachige Untertitel</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
   <string name="morphe_stable_caption_blocks_title">Stabile Untertitelblöcke</string>
-  <string name="morphe_stable_caption_blocks_summary">Automatische Untertitel in stabilen, lesbaren Blöcken gruppieren. Einige Wörter können erscheinen, bevor sie gesprochen werden. Neustart erforderlich.</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Navigationstasten</string>
-  <string name="morphe_navigation_buttons_screen_summary">Wähle aus, welche Schaltflächen in der unteren Navigationsleiste angezeigt werden sollen</string>
+  <string name="morphe_stable_caption_blocks_summary">Gruppiert einsprachige automatische Untertitel in stabilen, lesbaren Blöcken. Zweisprachige Untertitel verwenden immer Blöcke. Einige Wörter können erscheinen, bevor sie gesprochen werden</string>
+  <string name="morphe_secondary_caption_language_title">Sekundäre Untertitel-Sprache</string>
+  <string name="morphe_secondary_caption_language_summary">Zeigt eine zweite Sprache bei den Untertiteln an und fügt dem Untertitelmenü einen Umschalter für zweisprachige Untertitel hinzu</string>
+  <string name="morphe_dual_captions_enabled_title">Zweisprachige Untertitel</string>
+  <string name="morphe_caption_block_translation_failed">Einige Untertitel-Übersetzungen sind nicht verfügbar. Verfügbare Untertitel werden angezeigt.</string>
+  <string name="morphe_caption_blocks_too_large">Beide Untertitel-Sprachen passen nicht in diesen Player. Die Primärsprache wird angezeigt.</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Navigationsleiste</string>
+  <string name="morphe_navigation_bar_screen_summary">Wähle aus, welche Schaltflächen in der unteren Navigationsleiste angezeigt werden sollen</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Schaltfläche „Startseite“ ausblenden</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -891,21 +972,25 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Schaltfläche „Benachrichtigungen“ ausblenden</string>
   <string name="morphe_show_search_button_title">Schaltfläche „Suche“ anzeigen</string>
-  <string name="morphe_show_search_button_index_title">Position der Suchschaltfläche</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Schaltfläche „Später ansehen“ anzeigen</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Später ansehen</string>
   <string name="morphe_show_settings_button_title">Schaltfläche „Einstellungen“ anzeigen</string>
-  <string name="morphe_show_settings_button_index_title">Position der Schaltfläche „Einstellungen“</string>
   <string name="morphe_show_settings_button_type_title">Aktion der Schaltfläche „Einstellungen“</string>
   <string name="morphe_show_settings_button_type_summary">Öffnet Morphe-Einstellungen, wenn aktiviert; sonst YouTube-Einstellungen</string>
+  <string name="morphe_navigation_buttons_order_title">Reihenfolge der Navigationstasten</string>
+  <string name="morphe_navigation_buttons_order_summary">Ziehen Sie die Tasten, um deren Reihenfolge in der Navigationsleiste zu ändern</string>
   <string name="morphe_swap_create_with_notifications_button_title">Erstellen-Schaltfläche mit Benachrichtigungsschaltfläche tauschen</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Wenn die Änderung dieser Einstellung keinen Effekt hat, versuchen Sie, in den Inkognito-Modus zu wechseln.</string>
   <string name="morphe_hide_navigation_button_labels_title">Navigationstastenbezeichnungen ausblenden</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Punkt für neue Inhalte ausblenden</string>
   <string name="morphe_hide_navigation_bar_title">Navigationsleiste ausblenden</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dies blendet die Navigationsleiste vollständig aus, einschließlich des Tabs „You“.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Diese Einstellung blendet die Navigationsleiste vollständig aus, einschließlich des Tabs „You“.
 
-Um auf Einstellungen zuzugreifen, aktivieren Sie die Schaltfläche „Einstellungen“ über Allgemein → Symbolleiste → Einstellungen anzeigen"</string>
+Um auf die Einstellungen zuzugreifen, aktiviere den Einstellungen-Button über Allgemein → Toolbar → Einstellungen-Button anzeigen"</string>
   <string name="morphe_narrow_navigation_buttons_title">Schmale Navigationsschaltflächen aktivieren</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Verringert den horizontalen Abstand zwischen den Schaltflächen</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Reduziert den horizontalen Abstand zwischen den Schaltflächen. Nicht verfügbar bei der Glas-Navigationsleiste, die über einen eigenen Schaltflächenabstand verfügt</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Navigationsschaltflächen ohne Beschriftungen deaktivieren</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Zeigt die Navigationsschaltflächen mit Beschriftungen an, wenn YouTube sie ohne Beschriftungen sendet</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Navigations-Tabs in der Symbolleiste deaktivieren</string>
@@ -920,13 +1005,24 @@ Um auf Einstellungen zuzugreifen, aktivieren Sie die Schaltfläche „Einstellun
   <string name="morphe_navigation_bar_style_entry_3">Transparent</string>
   <string name="morphe_navigation_bar_style_entry_4">Undurchsichtig</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Dieser Stil wird möglicherweise von Ihrem Gerät oder Ihrer YouTube-Version nicht unterstützt und kann zu Layoutproblemen oder Abstürzen führen</string>
+  <string name="morphe_navigation_bar_glass_title">Glas-Navigationsleiste aktivieren</string>
+  <string name="morphe_navigation_bar_glass_summary">Zeigt die Navigationsleiste als schwebende, abgerundete, halbtransparente Kapsel an. Nicht verfügbar bei dem Stil „Undurchsichtige Navigationsleiste“</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Deckkraft des Glases</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Passt die Deckkraft der Glas-Navigationsleiste an (0 ist transparent, 100 ist undurchsichtig)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Größe der Glas-Navigationsleiste</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Passen Sie die Höhe, die Breite und den Knopfabstand der Glas-Navigationsleiste mithilfe einer Vorschau an. Knöpfe, die nicht in die Bildschirmbreite passen, werden ausgeblendet</string>
+  <string name="morphe_navigation_bar_glass_size_height">Höhe</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maximale Breite</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Knopfabstand</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Angezeigte Schaltflächen: %1$s von %2$s</string>
   <string name="morphe_toolbar_screen_title">Leiste</string>
   <string name="morphe_toolbar_screen_summary">Wähle aus, welche Schaltflächen in der Toolbar erscheinen sollen</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Schaltfläche „Übertragen“ ausblenden</string>
   <string name="morphe_hide_toolbar_chat_button_title">Schaltfläche „Chat“ ausblenden</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Schaltfläche „Mikrofon“ ausblenden</string>
   <string name="morphe_hide_toolbar_search_button_title">Schaltfläche „Suche“ ausblenden</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Bei Aktivierung öffnet Tippen die Morphe-Einstellungen und Langdruck die YouTube-Einstellungen; zum Tauschen deaktivieren.</string>
+  <string name="morphe_toolbar_buttons_order_title">Reihenfolge der Toolbar-Tasten</string>
+  <string name="morphe_toolbar_buttons_order_summary">Ziehen Sie die Tasten, um deren Reihenfolge in der Toolbar zu ändern</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Einstellungs-Menü</string>
   <string name="morphe_hide_player_flyout_summary">Wähle aus, welche Komponenten im Flyout-Menü angezeigt werden</string>
@@ -978,6 +1074,7 @@ Um das Menü anzuzeigen, ändern Sie \"Video-Streams fälschen\" in einen belieb
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Schaltfläche „Untertitel“ ausblenden</string>
   <string name="morphe_hide_cast_button_title">Schaltfläche „Cast“ ausblenden</string>
+  <string name="morphe_hide_cast_button_summary">Blendet den Cast-Button im Videoplayer und in der Symbolleiste aus</string>
   <string name="morphe_hide_collapse_button_title">Schaltfläche „Einklappen“ ausblenden</string>
   <string name="morphe_hide_fullscreen_button_title">Vollbild-Schaltfläche ausblenden</string>
   <string name="morphe_hide_player_control_buttons_background_title">Hintergrund der Player-Steuerelemente ausblenden</string>
@@ -1143,11 +1240,6 @@ Automobil-Layout
 • Das Overlay \"Weitere Videos\" ist möglicherweise nicht verfügbar
 • Shorts öffnen sich im regulären Player
 • Nicht zusammengeklappte alte Video-Aktionsleiste wird angezeigt"</string>
-  <string name="morphe_tablet_layout_in_player_title">Tablet-Layout im Player aktivieren</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Stellt das alte Player-Layout wieder her
-
-Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert ist, ist das Overlay \"Mehr Videos\" möglicherweise nicht verfügbar"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Altes Untertitelverhalten wiederherstellen</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Alte Shorts Spielersymbole wiederherstellen</string>
@@ -1229,6 +1321,10 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <string name="morphe_miniplayer_not_available_summary">YouTube hat alle zusätzlichen Miniplayer entfernt. Um weitere Miniplayer-Typen wiederherzustellen, patchen Sie YouTube 21.28.208 oder eine ältere Version</string>
   <string name="morphe_miniplayer_type_title">Minispielertyp</string>
   <string name="morphe_miniplayer_hide_title_title">Titel und Kanal ausblenden</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Mit Wischen nach oben erweitern</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Durch Hochwischen des Miniplayers wird der Player erweitert, anstatt den Miniplayer an den oberen Bildschirmrand zu verschieben</string>
+  <string name="morphe_miniplayer_docked_title">Andockbarer Miniplayer</string>
+  <string name="morphe_miniplayer_docked_summary">Heftet den Miniplayer an die Navigationsleiste und die Seiten des Bildschirms, anstatt über diesen zu schweben</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktiviert</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1271,6 +1367,8 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Glow-Splash-Screen wird von diesem Gerät nicht unterstützt</string>
+  <string name="morphe_splash_screen_duration_title">Dauer der Startanimation</string>
+  <string name="morphe_splash_screen_duration_summary">Wie lange die Glow-Animation abgespielt wird. Tippe auf die Animation, um sie zu überspringen</string>
   <string name="morphe_theme_color_light_title">Hintergrund des hellen Designs</string>
   <string name="morphe_theme_color_light_entry_2">Weiß</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Weiß)</string>
@@ -1501,10 +1599,12 @@ Die Videowiedergabe mit AV1 kann stottern oder Bilder überspringen"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Player-JavaScript-Variante</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Spoofing in „Statistiken für Nerds“ anzeigen</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Alte Video-Aktionsleiste wiederherstellen</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Behebt, dass Video-Aktionsschaltflächen nicht ausgeblendet werden können
-
-Einschränkung: Kehrt zum alten Overlay 'Weitere Videos' zurück."</string>
+  <string name="morphe_video_action_bar_layout_title">Video-Aktionsleisten-Layout</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Standard</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Klassisch Ein-Zeile</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Minimalistisch</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Klassisch Zwei-Zeilen</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Einschränkung: Klassische Layouts kehren zum alten Stil des \"Weitere Videos\"-Overlays zurück</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Stil der Player-Symbole</string>
   <string name="morphe_player_icon_style_entry_auto">Automatisch</string>
@@ -1568,7 +1668,7 @@ Die automatische Aufzeichnung stoppt im Inkognito-Modus, wenn die Kontoidentitä
   <string name="morphe_series_tracker_identity_unavailable">Die Verfolgung kann im Inkognito-Modus oder vor dem Laden des aktuellen Kontostands durch YouTube nicht aktiviert werden. Gehen Sie zur Startseite zurück und versuchen Sie es erneut. Keine Anmeldung erforderlich</string>
   <string name="morphe_series_tracker_enable">Lokale Verfolgung aktivieren</string>
   <string name="morphe_series_tracker_tracking_paused">Fortschrittaufzeichnung ist deaktiviert</string>
-  <string name="morphe_series_tracker_resume_at">%1$s fortsetzen</string>
+  <string name="morphe_series_tracker_resume_at">Fortsetzen bei %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s Episoden angesehen</string>
   <string name="morphe_series_tracker_episode_position">Episode %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Episoden %1$s–%2$s von %3$s</string>
@@ -1578,7 +1678,7 @@ Die automatische Aufzeichnung stoppt im Inkognito-Modus, wenn die Kontoidentitä
   <string name="morphe_series_tracker_plan_changed">Episode auswählen</string>
   <string name="morphe_series_tracker_plan_caught_up">Auf dem neuesten Stand</string>
   <string name="morphe_series_tracker_plan_none">Keine wiedergebbaren Episoden</string>
-  <string name="morphe_series_tracker_saved_position">Gespeichertes Video · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Gespeichertes Video · %s</string>
   <string name="morphe_series_tracker_follow">Serie folgen</string>
   <string name="morphe_series_tracker_view_series">Serie anzeigen</string>
   <string name="morphe_series_tracker_continue">Weiter</string>
@@ -1589,7 +1689,6 @@ Die automatische Aufzeichnung stoppt im Inkognito-Modus, wenn die Kontoidentitä
   <string name="morphe_series_tracker_undo">Rückgängig</string>
   <string name="morphe_series_tracker_enable_short">Aktivieren</string>
   <string name="morphe_series_tracker_new_episode">1 neue Episode</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s neue Episoden</string>
   <string name="morphe_series_tracker_record_short">Fortschritt auf diesem Gerät aufzeichnen</string>
   <string name="morphe_series_tracker_follow_consent">"Ihre Serien und der Fortschritt verbleiben auf diesem Gerät und werden mit YouTube-Konten geteilt. YouTube-Historiesteuerungen ändern dies nicht. Löschen Sie den Fortschritt im Menü „Serie“.
 
@@ -1617,13 +1716,13 @@ Die automatische Aufzeichnung ist optional. Sie stoppt im Inkognito-Modus oder b
   <string name="morphe_series_tracker_discovery_unavailable">Keine Playlist gefunden</string>
   <string name="morphe_series_tracker_no_available_episodes">Keine Episoden verfügbar</string>
   <string name="morphe_series_tracker_hide_watched">Gesehide ausblenden</string>
+  <string name="morphe_series_tracker_watched_on_advance">Als als gesehen markieren, wenn zur nächsten Episode gewechselt wird</string>
   <string name="morphe_series_tracker_watch_previous">Vorherige Episoden als gesehen markieren</string>
-  <string name="morphe_series_tracker_order_starts_with">Beginnt mit: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Beginnt mit: %s</string>
   <string name="morphe_series_tracker_episode_order">Episodensortierung</string>
   <string name="morphe_series_tracker_playlist_order">Playlist-Sortierung</string>
   <string name="morphe_series_tracker_reverse_order">Playlist-Reihenfolge umkehren</string>
-  <string name="morphe_series_tracker_view_count">%1$s Aufrufe</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s Aufruf</string>
+  <string name="morphe_series_tracker_view_count_one">%s Aufruf</string>
   <string name="morphe_series_tracker_completion_title">Episoden als gesehen markieren</string>
   <string name="morphe_series_tracker_completion_summary">Mindestens %1$s%% angesehen, wobei höchstens noch 90 Sekunden übrig sind, oder %2$s Sekunden Restzeit</string>
   <string name="morphe_series_tracker_completion_explanation">Episode automatisch als angesehen markieren, wenn eine der beiden Bedingungen erfüllt ist. Die Prozentregel erfordert ebenfalls, dass maximal noch 90 Sekunden übrig sind, sodass das Ende langer Episoden nicht übersprungen wird. Die Regel für die Restzeit gilt für Videos länger als eine Minute; setzen Sie sie auf 0, um sie zu deaktivieren. Änderungen gelten für zukünftige Fortschrittsupdates. Manuelle Auswahl von „Gesehen/Nicht gesehen“ bleibt erhalten</string>
@@ -1643,7 +1742,7 @@ Die automatische Aufzeichnung ist optional. Sie stoppt im Inkognito-Modus oder b
   <string name="morphe_series_tracker_backup_restore">Backup wiederherstellen</string>
   <string name="morphe_series_tracker_backup_preview">%1$s Serien hinzufügen. %2$s Serien, die bereits in Ihrer Bibliothek sind, bleiben erhalten. Der vorhandene Video-Fortschritt bleibt erhalten</string>
   <string name="morphe_series_tracker_backup_saved">Serien-Backup gespeichert</string>
-  <string name="morphe_series_tracker_backup_restored">%1$s Serien wiederhergestellt</string>
+  <string name="morphe_series_tracker_backup_restored">%s Serien wiederhergestellt</string>
   <string name="morphe_series_tracker_error_backup_invalid">Diese Datei ist kein unterstützter Serien-Backup oder zu groß. Ihre Bibliothek wurde nicht geändert</string>
   <string name="morphe_series_tracker_error_backup_write">Das Backup konnte nicht gespeichert werden. Versuchen Sie einen anderen Speicherort</string>
   <string name="morphe_series_tracker_removed">Serie entfernt</string>
@@ -1653,7 +1752,7 @@ Die automatische Aufzeichnung ist optional. Sie stoppt im Inkognito-Modus oder b
   <string name="morphe_series_tracker_recovery_choose">Sie können auch jede beliebige Episode unten auswählen. Frühere Episoden werden nicht geändert</string>
   <string name="morphe_series_tracker_playback_changed">Diese Playlist wurde geändert. Öffnen Sie die Serie, um auszuwählen, wo fortgefahren werden soll</string>
   <string name="morphe_series_tracker_playback_boundary">Keine weiteren Episoden in diese Richtung</string>
-  <string name="morphe_series_tracker_continue_series">%1$s fortsetzen</string>
+  <string name="morphe_series_tracker_continue_series">Weiter zu %s</string>
   <string name="morphe_series_tracker_search_series">Serien suchen</string>
   <string name="morphe_series_tracker_clear_search">Suche löschen</string>
   <string name="morphe_series_tracker_no_search_results">Keine Serien gefunden</string>
@@ -1669,7 +1768,49 @@ Die automatische Aufzeichnung ist optional. Sie stoppt im Inkognito-Modus oder b
   <string name="morphe_niconico_comments_opacity_summary">Deckkraft des Kommentartexts und der Hintergründe</string>
   <string name="morphe_niconico_comments_travel_duration_title">Laufzeit</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Wie viele Sekunden die Kommentare benötigen, um den Bildschirm zu überqueren. Niedrigere Werte bewegen sich schneller</string>
+  <string name="morphe_niconico_comments_display_area_title">Anzeigebereich</string>
+  <string name="morphe_niconico_comments_display_area_summary">Wie viel des Players, von oben aus, die Kommentare nutzen. Niedrigere Werte halten den unteren Teil des Videos frei</string>
   <string name="morphe_niconico_comments_max_length_title">Maximale Kommentarlänge</string>
   <string name="morphe_niconico_comments_max_length_summary">Blendet Kommentare aus, die mehr Zeichen als diese Anzahl enthalten. Jedes Emoji zählt als ein Zeichen</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Keine Begrenzung</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Max. Aktualisierungsrate</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Höchste Display-Aktualisierungsrate, die verwendet wird, während sich Kommentare bewegen. Niedrigere Werte verbrauchen weniger Akku</string>
+  <string name="morphe_niconico_comments_live_streams_title">Bei Live-Streams anzeigen</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Live-Streams und deren Wiederholungen</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Bei Premieren anzeigen</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Premieren während der Wiedergabe</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Bei beendeten Premieren anzeigen</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Chat-Wiederholung von Premieren, die beendet wurden</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Zeitgesteuerte Kommentare anzeigen</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Bei Videos ohne Chat werden Top-Kommentare, die eine Zeitangabe wie 1:23 enthalten, zu diesem Zeitpunkt angezeigt</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Zeitgestempelte Kommentare mit Chat-Wiedergabe anzeigen</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Bei Wiedergaben von Live-Streams und Premieren werden zeitgestempelte Kommentare ebenfalls mit dem Chat angezeigt</string>
+  <string name="morphe_live_chat_translate_screen_title">Live-Chat-Übersetzung</string>
+  <string name="morphe_live_chat_translate_screen_summary">Live-Chat- und Live-Chat-Wiedergabenachrichten übersetzen</string>
+  <string name="morphe_live_chat_translate_title">Live-Chat übersetzen</string>
+  <string name="morphe_live_chat_translate_summary">Übersetzt Live-Chat- und Live-Chat-Wiedergabenachrichten, sobald sie auf dem Bildschirm erscheinen</string>
+  <string name="morphe_live_chat_translate_language_title">Übersetzungssprache</string>
+  <string name="morphe_live_chat_translate_exclude_title">Ausgeschlossene Sprachen</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Kommagetrennte Sprachcodes wie id,en. Nachrichten in diesen Sprachen werden nicht übersetzt</string>
+  <string name="morphe_live_chat_translate_provider_title">Übersetzungsanbieter</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Übersetzer</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API-Schlüssel</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Ihr DeepL API-Schlüssel. Google Übersetzer wird verwendet, wenn DeepL fehlschlägt, z. B. wenn das monatliche Limit des Schlüssels erreicht ist</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Schaltfläche zum Kopieren der Nachricht anzeigen</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Fügt jeder Chat-Nachricht eine kleine Kopierschaltfläche hinzu</string>
+  <string name="morphe_live_chat_translate_copied">Nachricht in die Zwischenablage kopiert</string>
+  <string name="morphe_live_chat_translate_style_title">Übersetzungsstil</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Nur übersetzt</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Original (übersetzt)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Übersetzt) Original</string>
+  <string name="morphe_live_chat_translate_bold_title">Übersetzten Text fett darstellen</string>
+  <string name="morphe_live_chat_translate_bold_summary">Zeigt den übersetzten Text fett an</string>
+  <string name="morphe_live_chat_translate_use_color_title">Benutzerdefinierte Farbe für übersetzten Text</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Wendet eine benutzerdefinierte Farbe auf den übersetzten Text an</string>
+  <string name="morphe_live_chat_translate_color_title">Farbe des übersetzten Texts</string>
+  <string name="morphe_live_chat_translate_color_summary">Legt die Hex-Farbe des übersetzten Texts fest</string>
+  <string name="morphe_live_chat_translate_max_length_title">Maximale Nachrichtenlänge</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Längere Nachrichten werden nicht übersetzt angezeigt</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Kein Limit</string>
 </resources>

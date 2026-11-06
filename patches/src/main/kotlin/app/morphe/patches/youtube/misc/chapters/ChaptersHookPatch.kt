@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.misc.chapters
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.video.videoid.hookVideoId
@@ -26,7 +26,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/Chapt
 private const val EXTENSION_TIMELINE_MARKER_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/ChaptersHookPatch$TimelineMarker;"
 
-val chaptersHookPatch = bytecodePatch {
+val chaptersHookPatch = patch {
     dependsOn(sharedExtensionPatch, videoIdPatch)
 
     execute {

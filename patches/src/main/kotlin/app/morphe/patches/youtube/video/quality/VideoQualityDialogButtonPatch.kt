@@ -10,8 +10,7 @@
 
 package app.morphe.patches.youtube.video.quality
 
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
@@ -24,7 +23,7 @@ import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomCont
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 
-private val videoQualityButtonResourcePatch = resourcePatch {
+private val videoQualityButtonResourcePatch = patch {
     dependsOn(legacyPlayerControlsPatch)
 
     execute {
@@ -35,7 +34,7 @@ private val videoQualityButtonResourcePatch = resourcePatch {
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/VideoQualityDialogButton;"
 
-val videoQualityDialogButtonPatch = bytecodePatch(
+val videoQualityDialogButtonPatch = patch(
     description = "Adds the option to display video quality dialog button in the video player.",
 ) {
     dependsOn(

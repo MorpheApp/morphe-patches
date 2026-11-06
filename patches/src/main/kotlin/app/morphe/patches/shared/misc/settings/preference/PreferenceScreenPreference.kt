@@ -1,7 +1,7 @@
 package app.morphe.patches.shared.misc.settings.preference
 
 import app.morphe.patches.util.resource.BaseResource
-import org.w3c.dom.Document
+import app.morphe.patcher.xml.XmlElement
 
 /**
  * A preference screen.
@@ -34,10 +34,10 @@ open class PreferenceScreenPreference(
     // Since the key value is not currently used by the extensions,
     // for now it's much simpler to modify the key to include the sort parameter.
 ) : BasePreference(sorting.appendSortType(key), titleKey, summaryKey, icon, iconBold, layout, tag) {
-    override fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit) =
-        super.serialize(ownerDocument, resourceCallback).apply {
+    override fun serialize(parent: XmlElement, index: Int, resourceCallback: (BaseResource) -> Unit) =
+        super.serialize(parent, index, resourceCallback).apply {
             preferences.forEach {
-                appendChild(it.serialize(ownerDocument, resourceCallback))
+                it.serialize(this, children.size, resourceCallback)
             }
         }
 

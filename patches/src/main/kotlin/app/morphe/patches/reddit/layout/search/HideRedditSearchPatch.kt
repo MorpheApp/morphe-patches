@@ -7,13 +7,13 @@
 
 package app.morphe.patches.reddit.layout.search
 
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.resourceXml
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.reddit.misc.fix.signature.spoofSignaturePatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
-import app.morphe.util.findElementByAttributeValueOrThrow
 
 @Suppress("unused")
-val hideRedditSearchPatch = resourcePatch(
+val hideRedditSearchPatch = patch(
     name = "Hide Reddit search",
     description = "Permanently hides the Reddit search in the contextual menu. " +
             "This patch does not work with root mounting",
@@ -25,16 +25,12 @@ val hideRedditSearchPatch = resourcePatch(
 
     execute {
 
-        document("AndroidManifest.xml").use { document ->
-            val contextualElement = document.childNodes.findElementByAttributeValueOrThrow(
+        resourceXml("AndroidManifest.xml").use { manifest ->
+            val contextualElement = manifest.elementByAttribute(
                 "android:name",
                 "com.reddit.answers.sharing.AnswersTextSelectionActivity",
             )
-            val intentFilter = contextualElement.getElementsByTagName("intent-filter")
-            val mimeType = intentFilter.findElementByAttributeValueOrThrow(
-                "android:mimeType",
-                "text/plain",
-            )
+            val mimeType = contextualElement.elementByAttribute("android:mimeType", "text/plain")
 
             mimeType.setAttribute("android:mimeType", "text/calendar")
         }

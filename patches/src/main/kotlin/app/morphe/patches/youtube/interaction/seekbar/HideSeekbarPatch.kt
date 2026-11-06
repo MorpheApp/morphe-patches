@@ -11,7 +11,7 @@
 package app.morphe.patches.youtube.interaction.seekbar
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.seekbar.seekbarColorPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -25,7 +25,7 @@ import app.morphe.util.insertLiteralOverride
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/HideSeekbarPatch;"
 
-val hideSeekbarPatch = bytecodePatch(
+val hideSeekbarPatch = patch(
     description = "Adds an option to hide the seekbar.",
 ) {
     dependsOn(

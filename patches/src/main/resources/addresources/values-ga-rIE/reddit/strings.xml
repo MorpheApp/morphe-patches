@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Polasaí príobháideachta Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Níl logáil isteach Google ar fáil. Úsáid ríomhphost chun logáil isteach.</string>
+  <string name="morphe_app_downgrade_dialog_title">Ní thacaítear le hísliú leagan</string>
+  <string name="morphe_app_downgrade_dialog_message">"Íosghrádaíodh an tsuiteáil Reddit seo ó &lt;b&gt;%1$s&lt;/b&gt; go &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+Ní oibríonn sonraí aipe ó leagan níos nuaí le leaganacha níos sine, agus d’fhéadfadh sé nach n-oibreoidh an aip i gceart.
+&lt;br/&gt;&lt;br/&gt;
+Chun leagan níos sine a úsáid, ní mór duit Reddit a &lt;b&gt;dhíshuiteáil&lt;/b&gt; agus ansin an leagan níos sine a shuiteáil."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">Oscail eolas faoin aip</string>
   <string name="morphe_screen_ads_title">Fógraí</string>
   <string name="morphe_hide_post_ads_title">Folaigh fógraí beatha</string>
   <string name="morphe_hide_comment_ads_title">Folaigh fógraí tráchta</string>

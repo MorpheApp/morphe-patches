@@ -181,14 +181,14 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG نصب نیست. آن را نصب کنید</string>
   <string name="gms_core_dialog_title">اقدام لازم است</string>
-  <string name="gms_core_dialog_outdated_message">"MicroG شما، نسخهٔ %1s، قدیمی است و ممکن است مشکل ایجاد کند.
+  <string name="gms_core_dialog_outdated_message">"MicroG شما، نسخهٔ %1$s، قدیمی است و ممکن است مشکل ایجاد کند.
 
-لطفاً MicroG را به جدیدترین نسخهٔ %2s به‌روزرسانی کنید"</string>
+لطفاً MicroG را به جدیدترین نسخهٔ %2$s به‌روزرسانی کنید"</string>
   <string name="gms_core_dialog_update_text">به‌روزرسانی</string>
   <string name="gms_core_dialog_ignore_text">نادیده‌گرفتن</string>
   <string name="gms_core_dialog_conflict_message">"MicroG نصب‌شده توسط Morphe توصیه نمی‌شود:
 
-%1s
+%s
 
 برای حذف آن ضربه بزنید، سپس این برنامه را دوباره باز کنید و MicroG RE را نصب کنید"</string>
   <string name="gms_core_dialog_uninstall_text">حذف</string>

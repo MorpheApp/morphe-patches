@@ -16,7 +16,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.matchSingle
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
@@ -76,7 +77,7 @@ private const val DEFAULT_CINEMATIC_CONTAINER_RENDERER =
             "gICYAx0AAIA/CICAgJgDCAIdAAAAPyUAAAA/LQAAgD81AACAPw=="
 
 @Suppress("unused")
-val ambientModePatch = bytecodePatch(
+val ambientModePatch = patch(
     name = "Ambient mode",
     description = "Forces Ambient mode on and adds options to bypass power saving restrictions for Ambient mode and disable it entirely or in fullscreen.",
 ) {
@@ -154,7 +155,7 @@ val ambientModePatch = bytecodePatch(
 
             // 21.43+ inlines the lambdas that read the first value for the Ambient mode receiver.
             // The receiver is registered on the main thread, or asynchronously if a server flag is on.
-            powerSaveModeInitialValueFingerprint(PowerSaveModeReceiverRegisterFingerprint.method).method.hook()
+            PowerSaveModeInitialValueFingerprint.method.hook()
             PowerSaveModeInitialValueAsyncFingerprint.method.hook()
         } else if (is_21_03_or_greater) {
             IntentActionSyntheticAlternativeLegacyFingerprint.method.hook()
@@ -195,15 +196,14 @@ val ambientModePatch = bytecodePatch(
         val rendererType = rendererClass.type
 
         val styleMatches = cinematicContainerPresentationStyleFingerprint(rendererType).instructionMatches
-        val hasBitsField = styleMatches[0].getFieldAccessed()
+        val hasBitsField = styleMatches[0].fieldReference
         val styleHasBitMask = styleMatches[1].getInstruction<NarrowLiteralInstruction>().narrowLiteral
-        val styleField = styleMatches[3].getFieldAccessed()
+        val styleField = styleMatches[3].fieldReference
 
-        val configField = cinematicContainerConfigFingerprint(rendererType).matchSingle()
-            .instructionMatches.last().getFieldAccessed()
-        val configType = configField.type
-        val enabledByDefaultField = cinematicContainerEnabledByDefaultFingerprint(configType).matchSingle()
-            .instructionMatches[3].getFieldAccessed()
+        val configField = CinematicContainerConfigFingerprint.matchSingle()
+            .instructionMatches.last().fieldReference
+        val enabledByDefaultField = CinematicContainerEnabledByDefaultFingerprint.matchSingle()
+            .instructionMatches[3].fieldReference
 
         val defaultRendererField = rendererClass.fields.first { field ->
             field.type == rendererType && AccessFlags.STATIC.isSet(field.accessFlags)
@@ -212,8 +212,8 @@ val ambientModePatch = bytecodePatch(
         val stateType = CinematicContainerRendererWithStateFingerprint.method
             .findFieldFromToString("rendererLoadedState=").type
         val stateMatch = cinematicContainerRendererLoadedStateFingerprint(stateType).matchSingle()
-        val waitingStateField = stateMatch.instructionMatches[1].getFieldAccessed()
-        val loadedStateField = stateMatch.instructionMatches[3].getFieldAccessed()
+        val waitingStateField = stateMatch.instructionMatches[1].fieldReference
+        val loadedStateField = stateMatch.instructionMatches[3].fieldReference
 
         CinematicContainerRendererWithStateFingerprint.classDef.apply {
             val constructor = methods.first { method ->

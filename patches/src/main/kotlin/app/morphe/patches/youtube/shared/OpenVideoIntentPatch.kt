@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.shared
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
@@ -38,7 +38,7 @@ private val videoIntentCommandTransforms = mutableListOf<Pair<String, String>>()
 private val videoIntentInterceptors = mutableListOf<Pair<String, String>>()
 
 @Suppress("unused")
-val openVideoIntentPatch = bytecodePatch(
+val openVideoIntentPatch = patch(
     description = "Provides hooks into intent components to open videos for extension filtering."
 ) {
     compatibleWith(COMPATIBILITY_YOUTUBE)

@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Разно</string>
   <string name="morphe_settings_screen_12_video_title">Видео</string>
   <string name="morphe_restore_old_settings_menus_title">Врати го стариот екран за поставки на YouTube</string>
+  <string name="morphe_native_snackbar_title">Прикажи пораки во YouTube snackbar</string>
+  <string name="morphe_native_snackbar_summary">Пораките од Morphe, како што е потврдата за копчето на играчот, се прикажуваат во YouTube snackbar-от наместо во popup прозорец</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Отстрани го оганичувањето за пуштање видеа во позадина</string>
   <string name="morphe_shorts_disable_background_playback_title">Исклучи пуштање видеа во позадина</string>
@@ -59,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Овозможи филтер за долното мени Библиотека / Вие</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Библиотека / Вие филтер во долното мени</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Внесете ги имињата на менито Библиотека / Вие во долниот дел за филтрирање, одвоени со нови редови</string>
+  <string name="morphe_hide_account_menu_downloads_title">Скриј ги преземањата</string>
   <string name="morphe_hide_album_cards_title">Скриј ги албумските картички</string>
   <string name="morphe_hide_album_cards_summary">Прикриј ги картичките на албуми под описот на изведувачот</string>
   <string name="morphe_hide_artist_cards_title">Скриј ги картичките на изведувачите</string>
@@ -66,6 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">Скриј ги копчињата за канали</string>
   <string name="morphe_hide_channel_buttons_summary">Ги крие копчињата како Претплати се, Види го каналот, Заедница и YouTube Music од профилите на каналите во резултатите од пребарувањето</string>
   <string name="morphe_hide_community_posts_title">Скриј ги објавите од заедницата</string>
+  <string name="morphe_post_buttons_screen_title">Копчиња за објави</string>
+  <string name="morphe_post_buttons_screen_summary">Изберете го распоредот на копчињата под објавите во заедницата и кои копчиња да се сокријат</string>
+  <string name="morphe_post_buttons_layout_title">Распоред на копчиња за објави</string>
+  <string name="morphe_post_buttons_layout_entry_1">Сервер</string>
+  <string name="morphe_post_buttons_layout_entry_2">Наметнат</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Скриј ги копчињата за „свиѓа ми се“ и „не ми се свиѓа“</string>
+  <string name="morphe_hide_post_dislike_button_title">Скриј копче за „не ми се свиѓа“</string>
+  <string name="morphe_hide_post_dislike_button_summary">Со наметнатиот распоред, просторот од копчето останува празен</string>
+  <string name="morphe_hide_post_comment_button_title">Скриј копче за коментар</string>
+  <string name="morphe_hide_post_comments_preview_title">Скриј го прегледот на коментарите</string>
+  <string name="morphe_hide_post_comments_preview_summary">Го крие прегледот на коментарите под објавите</string>
+  <string name="morphe_hide_post_share_button_title">Скриј копче за споделување</string>
+  <string name="morphe_hide_post_share_button_summary">Копчето за преземање на сликите од објавата е нацртано до копчето за споделување, па затоа и тоа е скриено</string>
   <string name="morphe_hide_compact_banner_title">Скриј ги компактните банери</string>
   <string name="morphe_hide_compact_banner_summary">Прикриј компактни транспаренти и простор помеѓу некои компоненти</string>
   <string name="morphe_hide_expandable_card_title">Картички што можат да се прошират под видеа</string>
@@ -98,7 +114,7 @@ Second \"item\" text"</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Скриј го копчето „Извести ме“</string>
-  <string name="morphe_hide_notify_me_button_summary">Го крие копчето за потсетник за закажаните во живо преноси и премиери</string>
+  <string name="morphe_hide_notify_me_button_summary">Го крие копчето за потсетување за закажаните во живо стримови и Премиери</string>
   <string name="morphe_hide_playables_title">Скриј ги „Плејлистови“</string>
   <string name="morphe_hide_playables_summary">Прикриј функција која овозможува играње игри</string>
   <string name="morphe_hide_search_term_thumbnails_title">Прикриј минијатури за термини за пребарување</string>
@@ -156,7 +172,6 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">Ги крие напомените прикажани за време на гестовите на плеерот, како што се „Повлечи нагоре за прецизно пребарување“, „Пушти за да откажеш“ и „2x“</string>
-  <string name="morphe_hide_snackbar_title">Скриј го snackbar-от</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Скриј ги упатствата за претплатници</string>
   <string name="morphe_hide_sync_button_title">Скриј го копчето \'Синхронизирај со видео\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Скриј го градиентот при допир и држење</string>
@@ -257,9 +272,8 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">Коментари</string>
   <string name="morphe_comments_screen_summary">Изберете ги компонентите што ќе се прикријат со помош на прилагодени филтри</string>
   <string name="morphe_hide_comments_carousel_title">Вклучете филтер за менито со коментари</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Погрижете се да го внесете точното име на ставката од каруселот (на пр. Ask, Hype this video, Listen on YouTube Music)
-• Криењето ставки од каруселот може да има ненамерни странични ефекти
-• Ако сите ставки од каруселот се скриени, целиот дел за коментари исто така ќе биде скриен"</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Внесете клучна збор или име во целост (на пр. Ask, Community, Hype, Listen)
+• Со криење на сите ставки се крие целиот дел со коментари"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Филтер за менито со коментари</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Внесете ги имињата на каруселот со коментари за филтрирање, одделени со нови редови</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Скриј сумирање на AI разговор</string>
@@ -274,6 +288,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_button_title">Скриј копче за емотикони</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Скриј ги опциите на лентата за филтрирање</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Ги крие сите опции на лентата за филтрирање освен „Најдобри“ и „Најнови“</string>
+  <string name="morphe_hide_comments_gif_button_title">Скриј копче за GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Скриј GIF-и и слики</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Ги крие GIF-ите и сликите прикачени кон коментарите и одговорите</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Скриј ја анимацијата за подароци и картичките</string>
   <string name="morphe_hide_comments_gift_button_title">Скриј го копчето за подарок</string>
   <string name="morphe_hide_comments_info_button_title">Скриј копче за информации</string>
@@ -324,11 +341,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Клучната реч има конфликтни декларации: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Клучната реч е премногу кратка и бара наводници: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Клучната реч ќе скрие сите видеа: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Почетна: %s
-• Претплати: %s
-• Пребарување: %s
-• Коментари: %s
-• Вкупно: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Почетна: %1$s
+• Претплати: %2$s
+• Пребарување: %3$s
+• Коментари: %4$s
+• Вкупно: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Телефон</string>
   <string name="morphe_hide_stats_hidden_24h_title">Скриени видеа, последните 24 часа</string>
   <string name="morphe_hide_stats_hidden_all_title">Скриени видеа, за секое време</string>
@@ -340,9 +357,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_warnlist_category_title">Листа за предупредување: Умерена доверба</string>
   <string name="morphe_hide_aislist_hide_home_title">Скриј видеа на Почетна</string>
   <string name="morphe_hide_aislist_hide_search_title">Скриј видеа во пребарувањето</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Почетна: %s
-• Пребарување: %s
-• Вкупно: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Почетна: %1$s
+• Пребарување: %2$s
+• Вкупно: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Канали на листа за блокирање</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Канали на листа за предупредување</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Овозможете филтер за вчитување на каналите</string>
@@ -381,6 +398,20 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">Испратени се премногу пријави, обидете се повторно подоцна</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList го одби го известувањето</string>
   <string name="morphe_aislist_submit_failed">Известувањето не успеа, проверете ја вашата конекција</string>
+  <!-- layout.snackbar.snackbarPatch -->
+  <string name="morphe_snackbar_screen_title">Снакбар</string>
+  <string name="morphe_snackbar_screen_summary">Скријте ги snackbar-ите или променете ги нивните бои и форма</string>
+  <string name="morphe_hide_snackbar_title">Скриј го snackbar-от</string>
+  <string name="morphe_custom_snackbar_theme_title">Прилагоден snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">Снэкбаровите ги користат боите и радиусот на аглите подолу наместо боите на спротивната тема</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Боја на позадината на темната тема</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Боја на позадината на snackbars во темната тема. Текстот е црн или бел, во зависност од тоа што е полесно за читање</string>
+  <string name="morphe_custom_snackbar_color_light_title">Боја на позадината за светла тема</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Боја на позадината на snackbars во светлата тема. Текстот е црн или бел, во зависност од тоа што е полесно за читање</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Боја на рамката</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Боја на рамката околу snackbars. Проѕирна боја значи дека нема рамка</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Радиус на аглите</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Радиус на аглите на snackbars во dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Бела листа на канали за реклами</string>
   <string name="morphe_ads_channel_whitelist_summary">Видеата од каналите на белата листа се репродуцираат со реклами, за нивните креатори да бидат платени. Рекламите остануваат блокирани на сите останати канали</string>
@@ -439,11 +470,16 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">Копирај коментари</string>
   <string name="morphe_copy_comments_summary">Допрете и држете некој коментар за да го копирате</string>
   <string name="morphe_copy_comments_success">Коментарот е копиран во работната област</string>
+  <string name="morphe_copy_select_text_title">Изберете текст од описите и објавите</string>
+  <string name="morphe_copy_select_text_summary">Допрете и задржете на описот на видеото или на објавата за да изберете и копирате кој било дел од нив</string>
+  <string name="morphe_copy_select_text_dialog_title">Избери текст</string>
+  <string name="morphe_copy_select_text_copy_all">Копирај сè</string>
+  <string name="morphe_copy_select_text_success">Текстот е копиран во клипбордот</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Допрете и држете за да го отворите менито за видео</string>
   <string name="morphe_feed_long_press_menu_summary">Допирот и држењето било каде на видеото во фидото го отвора неговото мени</string>
   <string name="morphe_feed_watch_later_button_title">Прикажи го копчето „Гледај подоцна“ на сликите во минијатура</string>
-  <string name="morphe_feed_watch_later_button_summary">Копчето „Гледај подоцна“ се прикажува на сликите од видеата во фидот. Долго притискање го отвора „Зачувај во плејлиста“</string>
+  <string name="morphe_feed_watch_later_button_summary">Копчето „Гледај подоцна“ се прикажува на сликите од видеата во фидот, со ознака за штиклирање доколку видеото е зачувано. Допирот на копчето го зачувува или го отстранува видеото, а допирот и држењето го отвора менито „Зачувај во плејлиста“</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Преземај слики од објави</string>
   <string name="morphe_post_image_download_summary">Копче за преземање се прикажува покрај копчето за споделување на објавите со слики или GIF-ови, а ставка за преземање е додадена во нивното мени</string>
@@ -456,6 +492,14 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_failed">Не може да се преземе сликата</string>
   <string name="morphe_post_image_download_not_found">Во оваа објава нема пронајдено слики</string>
   <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Преведи објави</string>
+  <string name="morphe_post_translate_summary">Додава ставка во излетачкото мени за преведување на објави од креаторите на содржини</string>
+  <string name="morphe_post_translate_language_title">Јазик за превод на објавата</string>
+  <string name="morphe_post_translate_flyout">Преведи</string>
+  <string name="morphe_post_translate_flyout_original">Прикажи го оригиналот</string>
+  <string name="morphe_post_translate_started">Преведување…</string>
+  <string name="morphe_post_translate_failed">Не успеа преводот на објавата</string>
+  <string name="morphe_post_translate_same_language">Објавата веќе е на јазикот за превод</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Додај ставка „Прашај“ во менито</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Додава ставка за резиме на видео во менито на фидот</string>
@@ -477,7 +521,7 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_like_ratio_title">Прикажи ја сликата на фидот како процент на лајкови</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Пребарај коментари</string>
-  <string name="morphe_search_comments_summary">Допрете го копчето за пребарување во коментарите за да се прикажат само вчитаните коментари што ги содржат сите пребарувани зборови. Ставете ги зборовите во наводници за да пребарате фраза</string>
+  <string name="morphe_search_comments_summary">Допрете го копчето за пребарување во коментарите за да ги прикажете само вчитаните коментари што ги содржат сите пребарувани зборови. Ставете ги зборовите во наводници за да пребарувате фраза</string>
   <string name="morphe_search_comments_dialog_title">Пребарај коментари</string>
   <string name="morphe_search_comments_hint">Зборови за пребарување</string>
   <string name="morphe_search_comments_search">Пребарај</string>
@@ -505,8 +549,24 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">Аудио</string>
   <string name="morphe_external_downloader_quick_options">Сите опции</string>
   <string name="morphe_shorts_download_flyout_button_title">Прикажи преземање во менито за Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Додава ставка во искакувачкото мени за надворешен преземач во Shorts плеерот</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Додава ставка за преземање во менито на Shorts плеерот</string>
   <string name="morphe_shorts_download_flyout_title">Преземи</string>
+  <string name="morphe_export_download_folder_title">Експортирај зачувани видеа</string>
+  <string name="morphe_export_download_folder_summary">"Експортирајте ги видеата зачуваните во апликацијата во меморијата на вашиот уред преку менито за преземање во апликацијата. Допрете за да ја промените папката за експорт
+
+Папка за експорт: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Фолдер за eksport</string>
+  <string name="morphe_export_download_folder_change">Промени го фолдерот</string>
+  <string name="morphe_export_download_folder_changed">Фолдерот за eksport е променет</string>
+  <string name="morphe_export_download_folder_reset">Фолдерот за eksport е ресетиран</string>
+  <string name="morphe_export_download_folder_missing">Не можеше да се најде папката за извоз %s</string>
+  <string name="morphe_export_download_flyout_title">Експортирај на уредот</string>
+  <string name="morphe_export_download_started">Експортирање видео</string>
+  <string name="morphe_export_download_progress">Експортирање видео: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Експорти на видеа</string>
+  <string name="morphe_export_download_saved">Видеото е извезено во %s</string>
+  <string name="morphe_export_download_failed">Не успеа да се извезе видеото</string>
+  <string name="morphe_export_download_canceled">Извозот е откажан</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Превод со глас</string>
   <string name="morphe_vot_screen_summary">Гласно читање на титловите на видеото со помош на вградениот текст-во-говор, синхронизирано со репродукцијата</string>
@@ -560,6 +620,11 @@ Second \"item\" text"</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Ја искористивте денешната бесплатна квота за превод на MyMemory (5.000 карактери). Додадете е-пошта за MyMemory во поставките за да го зголемите дневниот лимит на 50.000 карактери, или сменете ја услугата за превод</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Ја искористивте денешната квота за превод на MyMemory (50.000 карактери). Сменете ја услугата за превод или обидете се повторно утре</string>
   <string name="morphe_vot_mymemory_error">Преводот преку MyMemory не успеа (статус %s)</string>
+  <!-- interaction.watchlater.watchLaterPatch -->
+  <string name="morphe_watch_later_wide_drag_handles_title">Проширење на рачките за влечење на „Гледај подоцна“</string>
+  <string name="morphe_watch_later_wide_drag_handles_summary">Рачките за влечење на видеата во „Гледај подоцна“ се полесни за фаќање</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Скриј го snackbar-от за отстранување од „Гледај подоцна“</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_summary">Потврдата не се прикажува откако видеото е отстрането од „Гледај подоцна“</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Вклучи повторување на видеото</string>
   <string name="morphe_do_not_remember_loop_video_title">Не се сеќавам видео во повторување</string>
@@ -581,6 +646,19 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">Прикажи копче за слика во слика</string>
   <string name="morphe_pip_button_flyout_title">Прикажи мени за слика во слика</string>
   <string name="morphe_pip_button_flyout_name">Префрли на слика во слика</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Активности во режим на слика во слика</string>
+  <string name="morphe_pip_actions_screen_summary">Променете ги копчињата што се прикажани во режимот слика во слика</string>
+  <string name="morphe_pip_action_left_title">Лево копче</string>
+  <string name="morphe_pip_action_center_title">Средно копче</string>
+  <string name="morphe_pip_action_right_title">Десно копче</string>
+  <string name="morphe_pip_action_entry_default">Стандардно</string>
+  <string name="morphe_pip_action_entry_previous">Претходно видео</string>
+  <string name="morphe_pip_action_entry_next">Следно видео</string>
+  <string name="morphe_pip_action_entry_rewind">Натрајте 10 секунди</string>
+  <string name="morphe_pip_action_entry_fast_forward">Премотајте 10 секунди напред</string>
+  <string name="morphe_pip_action_entry_play_pause">Пуштај/паузирај</string>
+  <string name="morphe_pip_action_entry_background_playback">Воспроизведување во позадина</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Прикажи копче за репродукција на сите</string>
   <string name="morphe_play_all_button_summary">"Допрете за да генерирате листа на репродукција со сите видеа од каналот, допрете и задржете за да го поништите"</string>
@@ -611,10 +689,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Зачувај во Гледај подоцна</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Прикажи го копчето „Зачувај за подоцна“ во менито со поставки на плеерот</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Овозможува зачувување на моменталното видео во „Гледај подоцна“ од менито со поставки на видеото</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Прикажи копче Зачувај за подоцна во видеата за деца</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Овозможува зачувување на видеа поврзани со деца во „Гледај подоцна“ од искакувачкото мени</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Прикажи копче Зачувај за подоцна во искакувачкото мени за кратки видеа</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Овозможува зачувување на кратки видеа во „Гледај подоцна“ од искакувачкото мени</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Пренасочи „Гледај подоцна“ кон листа за 재생</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Гледај подоцна</string>
   <string name="morphe_queue_flyout_title">Додај во Morphe редослед</string>
@@ -713,14 +787,18 @@ Second \"item\" text"</string>
 За да го поправите ова, вклучете го 'Лажирани видео стримови' и променете го 'Стандардниот клиент' во 'TV Simply' или 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Вклучи премотување со повлекување</string>
-  <string name="morphe_slide_to_seek_summary">Овозможува премотување со лизгање наместо репродукција со 2x брзина кога се притиска и задржува видео плеер</string>
+  <string name="morphe_slide_to_seek_summary">Притиснете и држете го видеото за да се лизгате и пребарувате наместо да пуштате со брзина од 2x</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Овозможете допир за премотување</string>
-  <string name="morphe_tap_to_seek_summary">Само допрете ја лентата за премотување за да прескокнете до таа позиција без да ја влечете</string>
+  <string name="morphe_tap_to_seek_summary">Допрете било каде на лентата за пребарување за да скокнете на таа позиција наместо да влечете</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Гест на лизгање налево</string>
   <string name="morphe_swipe_right_zone_title">Гест на лизгање надесно</string>
   <string name="morphe_swipe_top_zone_title">Гест на лизгање нагоре</string>
+  <string name="morphe_swipe_seek_title">Повлечете за премотување</string>
+  <string name="morphe_swipe_seek_summary">Повлечете лево или десно на полноекранскиот плеер за да ја поместите лентата за премотување и пуштете за да премотувате</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Осетливост на премотувањето со влечење</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">Колку се движи лентата за премотување при секое влечење</string>
   <string name="morphe_swipe_zone_width_title">Ширина на левата/десната зона</string>
   <string name="morphe_swipe_zone_width_summary">Процент од секој раб на екранот резервиран за гестови на лизгање налево и надесно (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Осветленост</string>
@@ -833,6 +911,10 @@ Second \"item\" text"</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Титри</string>
   <string name="morphe_captions_screen_summary">Управувајте со автоматските титри и колачињата за титри</string>
+  <string name="morphe_captions_languages_title">Јазик и превод</string>
+  <string name="morphe_captions_presentation_title">Изглед и однесување</string>
+  <string name="morphe_captions_advanced_title">Напредно</string>
+  <string name="morphe_captions_advanced_summary">Опции за колачиња и транскрипти</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Видливост на автоматските титри</string>
   <string name="morphe_auto_captions_style_entry_1">Секогаш прикажи</string>
@@ -841,10 +923,10 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_entry_4">Покажи кога е исклучен звукот</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Препочитан јазик за титлови</string>
-  <string name="morphe_preferred_caption_language_summary">Прво ги избира титловите од провајдерот, а потоа автоматски ги преведува на преферираниот јазик</string>
+  <string name="morphe_preferred_caption_language_summary">Автоматски избира јазик за титлови за секое видео</string>
   <string name="morphe_preferred_caption_language_entry_off">Исклучено</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Додај дополнителни јазици за автоматски превод</string>
+  <string name="morphe_auto_translate_additional_languages_title">Дополнителни јазици за автоматски превод</string>
   <string name="morphe_auto_translate_additional_languages_summary">Додава повеќе јазици во менито за автоматски превод</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Поставете колачиња за натписи</string>
@@ -862,9 +944,20 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">Поправете го транскриптот</string>
   <string name="morphe_fix_transcript_summary">Отстранува проблем со претходни услови што може да спречи да се вчита транскрипт</string>
   <string name="morphe_captions_in_pip_title">Прикажи написи во слика-во-слика</string>
-  <!-- layout.buttons.navigation.navigationButtonsPatch -->
-  <string name="morphe_navigation_buttons_screen_title">Копчиња за навигација</string>
-  <string name="morphe_navigation_buttons_screen_summary">Изберете кои копчиња да се појавуваат во лентата за навигација</string>
+  <!-- layout.captions.captionViewportPatch -->
+  <string name="morphe_caption_scale_title">Големина на титловите</string>
+  <string name="morphe_caption_scale_summary">Се применува за еднојазични и двојазични титлови</string>
+  <!-- layout.captions.stableCaptionBlocksPatch -->
+  <string name="morphe_stable_caption_blocks_title">Стабилни блокови на титлови</string>
+  <string name="morphe_stable_caption_blocks_summary">Групирајте ги автоматските титлови на еден јазик во стабилни, читливи блокови. Двојазичните титлови секогаш користат блокови. Некои зборови може да се појават пред да бидат изговорени</string>
+  <string name="morphe_secondary_caption_language_title">Секундарен јазик за титлови</string>
+  <string name="morphe_secondary_caption_language_summary">Прикажува втор јазик заедно со титловите и додава прекинувач за двојазични титлови во менито за титлови</string>
+  <string name="morphe_dual_captions_enabled_title">Двојазични титлови</string>
+  <string name="morphe_caption_block_translation_failed">Некои преводи на титловите не се достапни. Се прикажуваат достапните титлови.</string>
+  <string name="morphe_caption_blocks_too_large">Двата јазика за титлови не се собираат во овој плеер. Се прикажува примарниот јазик.</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
+  <string name="morphe_navigation_bar_screen_title">Навигациска лента</string>
+  <string name="morphe_navigation_bar_screen_summary">Изберете кои копчиња да се појавуваат во лентата за навигација</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Прикријте го копчето Home</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -876,21 +969,25 @@ Second \"item\" text"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Прикријте го копчето Notifications</string>
   <string name="morphe_show_search_button_title">Прикажи копче за пребарување</string>
-  <string name="morphe_show_search_button_index_title">Позиција на копчето за пребарување</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_show_watch_later_button_title">Прикажи копче Гледај подоцна</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later_navigation_label">Гледај подоцна</string>
   <string name="morphe_show_settings_button_title">Прикажи копче Settings</string>
-  <string name="morphe_show_settings_button_index_title">Позиција на копчето Settings</string>
   <string name="morphe_show_settings_button_type_title">Акција на копчето за поставки</string>
   <string name="morphe_show_settings_button_type_summary">Кога е овозможено, допир го отвора Morphe поставените параметри, а долго притискање го отвора YouTube поставените параметри</string>
+  <string name="morphe_navigation_buttons_order_title">Редослед на копчињата за навигација</string>
+  <string name="morphe_navigation_buttons_order_summary">Превлечете ги копчињата за да го промените нивниот редослед во лентата за навигација</string>
   <string name="morphe_swap_create_with_notifications_button_title">Заменете го копчето „Креирај“ со копчето „Известувања“</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Ако промената на оваа поставка нема ефект, обидете се да преминете во Incognito режим</string>
   <string name="morphe_hide_navigation_button_labels_title">Скриј ги ознаките на копчињата за навигација</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Скриј точка за нова содржина</string>
   <string name="morphe_hide_navigation_bar_title">Скриј лента за навигација</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ова целосно ја крие лентата за навигација, вклучително и табулаторот 'Вие'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ова целосно ја крие лентата за навигација, вклучително и табот „Вие“.
 
-За пристап до Подесувањата, овозможете го копчето за Подесувања преку Општо → Алатка → Покажи Подесувања"</string>
+За да пристапите до Подесувањата, овозможете го копчето Подесувања преку Општо → Алатна лента → Прикажи го копчето Подесувања"</string>
   <string name="morphe_narrow_navigation_buttons_title">Вклучи тесни навигациски копчиња</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Намалување на хоризонталното растојание меѓу копчињата</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Го намалува хоризонталното растојание помеѓу копчињата. Не е достапно со стаклената лента за навигација, која има сопствено растојание помеѓу копчињата</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Оневозможи ги копчињата за навигација без етикети</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Ги прикажува копчињата за навигација со етикети, доколку YouTube ги испрати без етикети</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Оневозможи ги разблаганите табови за навигација</string>
@@ -905,13 +1002,24 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_entry_3">Транспарентно</string>
   <string name="morphe_navigation_bar_style_entry_4">Непроѕрно</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Овој стил можеби не е поддржан од вашиот уред или верзијата на YouTube, и може да предизвика проблеми со распоредот или паѓања на апликацијата</string>
+  <string name="morphe_navigation_bar_glass_title">Овозможи стаклена лента за навигација</string>
+  <string name="morphe_navigation_bar_glass_summary">Ја прикажува лентата за навигација како лебдечка, заоблена, полупроѕирна капсула. Не е достапно со стилот на непроѕирна лента за навигација</string>
+  <string name="morphe_navigation_bar_glass_opacity_title">Непроѕирност на стаклото</string>
+  <string name="morphe_navigation_bar_glass_opacity_summary">Прилагодете го нивото на проѕирност на стаклената лента за навигација (0 е проѕирно, 100 е непроѕирно)</string>
+  <string name="morphe_navigation_bar_glass_size_title">Големина на стаклена лента за навигација</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Прилагодете ја висината, ширината и растојанието помеѓу копчињата на стаклената лента за навигација, со преглед. Копчињата што не се сместаат во ширината на екранот се кријат</string>
+  <string name="morphe_navigation_bar_glass_size_height">Висина</string>
+  <string name="morphe_navigation_bar_glass_size_width">Максимална ширина</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Растојание помеѓу копчињата</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Прикажани копчиња: %1$s од %2$s</string>
   <string name="morphe_toolbar_screen_title">Toolbar</string>
   <string name="morphe_toolbar_screen_summary">Изберете кои компоненти да се појавуваат во лентата со алатки</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Прикријте го копчето Cast</string>
   <string name="morphe_hide_toolbar_chat_button_title">Скриј копче за чет</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Прикријте го копчето Microphone</string>
   <string name="morphe_hide_toolbar_search_button_title">Прикријте го копчето Search</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Кога е овозможено, допир го отвора Morphe поставените параметри, а долго притискање го отвора YouTube поставените параметри</string>
+  <string name="morphe_toolbar_buttons_order_title">Редослед на копчињата во алатката</string>
+  <string name="morphe_toolbar_buttons_order_summary">Превлечете ги копчињата за да го промените нивниот редослед во алатката</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Паѓачки мени</string>
   <string name="morphe_hide_player_flyout_summary">Изберете кои компоненти да се појавуваат во менито што се појавува</string>
@@ -963,6 +1071,7 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Прикријте го копчето Captions</string>
   <string name="morphe_hide_cast_button_title">Прикријте го копчето Cast</string>
+  <string name="morphe_hide_cast_button_summary">Го крие копчето за Cast во видео плеерот и алатката</string>
   <string name="morphe_hide_collapse_button_title">Прикријте го копчето Collapse</string>
   <string name="morphe_hide_fullscreen_button_title">Прикријте го копчето Fullscreen</string>
   <string name="morphe_hide_player_control_buttons_background_title">Скриј ја позадината на копчињата на плеер</string>
@@ -1107,7 +1216,7 @@ Second \"item\" text"</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Поставување на уред</string>
-  <string name="morphe_change_form_factor_entry_1">Плејлисти</string>
+  <string name="morphe_change_form_factor_entry_1">Стандардно</string>
   <string name="morphe_change_form_factor_entry_2">Пребарување</string>
   <string name="morphe_change_form_factor_entry_3">Шопинг</string>
   <string name="morphe_change_form_factor_entry_4">Спорт</string>
@@ -1128,11 +1237,6 @@ Second \"item\" text"</string>
 • Прекривањето „Повеќе видеа“ може да не биде достапно
 • Shorts се отвораат во вообичаениот плеер
 • Се прикажува стара лента за акции на видео која не е склопена"</string>
-  <string name="morphe_tablet_layout_in_player_title">Овозможи таблет-изглед во плеерот</string>
-  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Го враќа стариот распоред на плеерот
-
-Ограничување: Ако „Врати ја старата лента за акции на видеото“ е исклучено, прекривањето „Повеќе видеа“ може да не биде достапно"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Враќање на старото однесување на titlovite</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Врати ја старата постава за зачувување во листа за репродукција</string>
@@ -1182,7 +1286,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_player_type_regular_player_fullscreen">Редовен претплатник во полноекрански режим</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Автоматско пуштање Shorts</string>
-  <string name="morphe_shorts_autoplay_summary">Аоларка Спот отвори</string>
+  <string name="morphe_shorts_autoplay_summary">Автоматски преминува на следното Short наместо да го повторува тековното</string>
   <string name="morphe_shorts_autoplay_background_title">Аотоматски оток на кошули</string>
   <string name="morphe_shorts_autoplay_background_summary">Аотоматски лор и ризик во окртна спостр</string>
   <string name="morphe_skip_live_shorts_title">Прескокни живи Shorts</string>
@@ -1210,8 +1314,14 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Го оневозможува миниплеерот „Продолжи со гледање“, функција на YouTube Premium која се појавува при стартување на апликацијата</string>
   <string name="morphe_miniplayer_screen_title">Мини-плеер</string>
   <string name="morphe_miniplayer_screen_summary">Прилагодете го изгледот и однесувањето на минимизираниот видео плеер</string>
+  <string name="morphe_miniplayer_not_available_title">Дополнителни мини-плејери</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube ги отстрани сите дополнителни мини-плејери. За да ги вратите повеќе типови на мини-плејери, пачирајте YouTube 21.28.208 или постара верзија</string>
   <string name="morphe_miniplayer_type_title">Тип на мини-плеер</string>
   <string name="morphe_miniplayer_hide_title_title">Скриј ја насловот и каналот</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Проширете со повлекување нагоре</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Повлекувањето на мини-плејерот нагоре го проширува плејерот, наместо да го помести мини-плејерот на врвот на екранот</string>
+  <string name="morphe_miniplayer_docked_title">Прицврстен мини-плејер</string>
+  <string name="morphe_miniplayer_docked_summary">Го прицврстува мини-плејерот за навигациската лента и страниците на екранот, наместо да лебди над нив</string>
   <string name="morphe_miniplayer_type_entry_0">Оневозможено</string>
   <string name="morphe_miniplayer_type_entry_1">Поставено како стандардно</string>
   <string name="morphe_miniplayer_type_entry_2">Минималистички</string>
@@ -1251,7 +1361,11 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_summary">Ја одржува конзистентна поставката на лентата со статус, така што таа нема да ги покрива горните ленти и нема да остави празен простор над плеерот. Исклучете го ова ако апликацијата се руши или горните ленти изгледаат погрешно</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Сјај</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Светкавиот почетен екран не е поддржан од овој уред</string>
+  <string name="morphe_splash_screen_duration_title">Времетраење на анимацијата при стартување</string>
+  <string name="morphe_splash_screen_duration_summary">Колку долго ќе трае анимацијата на сјаењето. Допрете ја анимацијата за да ја прескокнете</string>
   <string name="morphe_theme_color_light_title">Позадина на светла тема</string>
   <string name="morphe_theme_color_light_entry_2">Бела</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Бела)</string>
@@ -1482,10 +1596,12 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_player_js_variant_title">Варијанта на JavaScript на плеерот</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Прикажи симулирање во „Stats for nerds“</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Враќање на старата лента за акции на видеото</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Поправени се копчињата за видео акции кои не можеа да се скријат
-
-Ограничување: Се враќа на стариот стил на прекривање „Повеќе видеа“"</string>
+  <string name="morphe_video_action_bar_layout_title">Распоред на лентата за акции на видеото</string>
+  <string name="morphe_video_action_bar_layout_entry_1">Стандардно</string>
+  <string name="morphe_video_action_bar_layout_entry_2">Класичен со еден ред</string>
+  <string name="morphe_video_action_bar_layout_entry_3">Минималистички</string>
+  <string name="morphe_video_action_bar_layout_entry_4">Класичен со два реда</string>
+  <string name="morphe_video_action_bar_layout_user_dialog_message">Ограничување: Класичните распореди се враќаат на стариот стил на прекривање \'Повеќе видеа\'</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Стил на иконата на плеерот</string>
   <string name="morphe_player_icon_style_entry_auto">Автоматски</string>
@@ -1549,7 +1665,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_identity_unavailable">Следењето не може да се овозможи во инкогнито режим или пред YouTube да ја вчита тековната состојба на сметката. Вратете се на Почетна и обидете се повторно. Не е потребно најавување</string>
   <string name="morphe_series_tracker_enable">Овозможи локално следење</string>
   <string name="morphe_series_tracker_tracking_paused">Снимањето на напредокот е исклучено</string>
-  <string name="morphe_series_tracker_resume_at">Продолжи од %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Продолжи на %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s изгледани епизоди</string>
   <string name="morphe_series_tracker_episode_position">Епизода %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Епизоди %1$s-%2$s од %3$s</string>
@@ -1559,7 +1675,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_plan_changed">Изберете епизода</string>
   <string name="morphe_series_tracker_plan_caught_up">Ажурирано</string>
   <string name="morphe_series_tracker_plan_none">Нема епизоди што можат да се пуштат</string>
-  <string name="morphe_series_tracker_saved_position">Зачувано видео · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Зачувано видео · %s</string>
   <string name="morphe_series_tracker_follow">Следете серија</string>
   <string name="morphe_series_tracker_view_series">Прегледај серија</string>
   <string name="morphe_series_tracker_continue">Продолжи</string>
@@ -1569,7 +1685,8 @@ AVC (H.264)
   <string name="morphe_series_tracker_marked">Епизоди означени како гледани</string>
   <string name="morphe_series_tracker_undo">Врати</string>
   <string name="morphe_series_tracker_enable_short">Овозможи</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s нови епизоди</string>
+  <string name="morphe_series_tracker_new_episode">1 нова епизода</string>
+  <string name="morphe_series_tracker_new_episodes">%s нови епизоди</string>
   <string name="morphe_series_tracker_record_short">Запиши го напредокот на овој уред</string>
   <string name="morphe_series_tracker_follow_consent">"Вашите серии и напредокот остануваат на овој уред, заеднички за сметките на YouTube. Контролите за историјата на YouTube не ги менуваат. Избришете го напредокот од менито за Серии.
 
@@ -1597,13 +1714,14 @@ AVC (H.264)
   <string name="morphe_series_tracker_discovery_unavailable">Не можевме да најдеме плејлиста</string>
   <string name="morphe_series_tracker_no_available_episodes">Нема достапни епизоди</string>
   <string name="morphe_series_tracker_hide_watched">Скриј ги изгледаните</string>
+  <string name="morphe_series_tracker_watched_on_advance">Означи како гледано при преминување на следната епизода</string>
   <string name="morphe_series_tracker_watch_previous">Означи ги претходните епизоди како изгледани</string>
-  <string name="morphe_series_tracker_order_starts_with">Започнува со: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Започнува со: %s</string>
   <string name="morphe_series_tracker_episode_order">Редослед на епизоди</string>
   <string name="morphe_series_tracker_playlist_order">Редослед на листа за 재생</string>
   <string name="morphe_series_tracker_reverse_order">Обратен редослед на листа за 재생</string>
-  <string name="morphe_series_tracker_view_count">%1$s прегледи</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s преглед</string>
+  <string name="morphe_series_tracker_view_count">%s прегледи</string>
+  <string name="morphe_series_tracker_view_count_one">%s преглед</string>
   <string name="morphe_series_tracker_completion_title">Означи ги епизодите како гледани</string>
   <string name="morphe_series_tracker_completion_summary">Најмалку %1$s%% изгледано со најмногу 90 секунди што остануваат, или %2$s секунди преостанати</string>
   <string name="morphe_series_tracker_completion_explanation">Автоматски означи епизода како изгледана по кој било од праговите. Правилото за процент исто така бара да не остануваат повеќе од 90 секунди, за крајот на долгите епизоди да не се прескокне. Правилото за преостанато време се применува за видеа подолги од една минута; поставете го на 0 за да го исклучите. Промените се применуваат на идните ажурирања на напредокот. Рачните избори за изгледано/неизгледано се зачувуваат</string>
@@ -1623,7 +1741,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_backup_restore">Врати резервна копија</string>
   <string name="morphe_series_tracker_backup_preview">Додај %1$s сериии. %2$s сериии што веќе се во вашата библиотека се задржани. Постоечкиот напредок на видеото е задржан</string>
   <string name="morphe_series_tracker_backup_saved">Резервната копија на сериите е зачувана</string>
-  <string name="morphe_series_tracker_backup_restored">Вратени се %1$s сериии</string>
+  <string name="morphe_series_tracker_backup_restored">Вратени се %s серии</string>
   <string name="morphe_series_tracker_error_backup_invalid">Овој фајл не е поддржана резервна копија на сериии или е преголем. Вашата библиотека не е променета</string>
   <string name="morphe_series_tracker_error_backup_write">Не може да се зачува резервната копија. Обидете се со друга локација</string>
   <string name="morphe_series_tracker_removed">Серијата е отстранета</string>
@@ -1633,7 +1751,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_recovery_choose">Можете да изберете и која било епизода подолу. Претходните епизоди не се променети</string>
   <string name="morphe_series_tracker_playback_changed">Оваа листа за 재생 се промени. Отворете ги сериите за да изберете каде да продолжите</string>
   <string name="morphe_series_tracker_playback_boundary">Нема повеќе епизоди во овој правец</string>
-  <string name="morphe_series_tracker_continue_series">Продолжи со %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Продолжи со %s</string>
   <string name="morphe_series_tracker_search_series">Пребарај серии</string>
   <string name="morphe_series_tracker_clear_search">Исчисти пребарување</string>
   <string name="morphe_series_tracker_no_search_results">Не се најдени серии</string>
@@ -1649,7 +1767,49 @@ AVC (H.264)
   <string name="morphe_niconico_comments_opacity_summary">Проѕирност на текстот на коментарите и позадините</string>
   <string name="morphe_niconico_comments_travel_duration_title">Времетраење на движењето</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Колку секунди им треба на коментарите за да го поминат екранот. Помалите вредности се движат побрзо</string>
+  <string name="morphe_niconico_comments_display_area_title">Област за прикажување</string>
+  <string name="morphe_niconico_comments_display_area_summary">Колку од плеерот, од врвот, користат коментарите. Пониските вредности го одржуваат долниот дел од видеото чист</string>
   <string name="morphe_niconico_comments_max_length_title">Максимална должина на коментарот</string>
   <string name="morphe_niconico_comments_max_length_summary">Ги крие коментарите со повеќе карактери од оваа вредност. Секој емотикон се брои како еден карактер</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без ограничување</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Максимална стапка на освежување</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Највисока стапка на освежување на екранот што се користи додека коментарите се движат. Пониските вредности трошат помалку батерија</string>
+  <string name="morphe_niconico_comments_live_streams_title">Прикажи на жива преносувања</string>
+  <string name="morphe_niconico_comments_live_streams_summary">Жива преносувања и нивните повторувања</string>
+  <string name="morphe_niconico_comments_live_premieres_title">Прикажи на Премиери</string>
+  <string name="morphe_niconico_comments_live_premieres_summary">Премиери додека се прикажуваат</string>
+  <string name="morphe_niconico_comments_ended_premieres_title">Прикажи на завршени Премиери</string>
+  <string name="morphe_niconico_comments_ended_premieres_summary">Повторно репродуцирање на чет од Премиери кои завршиле</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Прикажи временски коментари</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Кај видеата без чет, врвните коментари што содержат време како 1:23 се прикажуваат во тоа време</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Прикажи временски коментари со повторување на четот</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">При повторувањата на живи стримови и Премиери, временските коментари се прикажуваат и со чатот</string>
+  <string name="morphe_live_chat_translate_screen_title">Превод на разговор во живо</string>
+  <string name="morphe_live_chat_translate_screen_summary">Преведи пораки од чет во живо и репродукција на чет во живо</string>
+  <string name="morphe_live_chat_translate_title">Преведи чет во живо</string>
+  <string name="morphe_live_chat_translate_summary">Преведува пораки од чет во живо и репродукција на чет во живо штом ќе се појават на екранот</string>
+  <string name="morphe_live_chat_translate_language_title">Јазик за превод</string>
+  <string name="morphe_live_chat_translate_exclude_title">Исклучени јазици</string>
+  <string name="morphe_live_chat_translate_exclude_summary">Кодови на јазици одделени со запирка, како на пр. id,en. Пораките на овие јазици не се преведуваат</string>
+  <string name="morphe_live_chat_translate_provider_title">Давлач на превод</string>
+  <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API клуч</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">Вашиот DeepL API клуч. Google Translate се користи доколку DeepL не успее, на пример кога е достигнат месечниот лимит на клучот</string>
+  <string name="morphe_live_chat_translate_copy_button_title">Прикажи копче за копирање порака</string>
+  <string name="morphe_live_chat_translate_copy_button_summary">Додава мало копче за копирање до секоја порака во чатот</string>
+  <string name="morphe_live_chat_translate_copied">Пораката е копирана во клипбордот</string>
+  <string name="morphe_live_chat_translate_style_title">Стил на превод</string>
+  <string name="morphe_live_chat_translate_style_translated_only">Само преведено</string>
+  <string name="morphe_live_chat_translate_style_original_and_translated">Оригинал (преведен)</string>
+  <string name="morphe_live_chat_translate_style_translated_and_original">(Преведен) оригинал</string>
+  <string name="morphe_live_chat_translate_bold_title">Згустен преведен текст</string>
+  <string name="morphe_live_chat_translate_bold_summary">Го прикажува преведениот текст во згустен формат</string>
+  <string name="morphe_live_chat_translate_use_color_title">Прилагодена боја на преведениот текст</string>
+  <string name="morphe_live_chat_translate_use_color_summary">Применува прилагодена боја на преведениот текст</string>
+  <string name="morphe_live_chat_translate_color_title">Боја на преведениот текст</string>
+  <string name="morphe_live_chat_translate_color_summary">Поставете ја hex бојата на преведениот текст</string>
+  <string name="morphe_live_chat_translate_max_length_title">Максимална должина на пораката</string>
+  <string name="morphe_live_chat_translate_max_length_summary">Подолгите пораки се прикажуваат без превод</string>
+  <string name="morphe_live_chat_translate_max_length_no_limit">Без ограничување</string>
 </resources>

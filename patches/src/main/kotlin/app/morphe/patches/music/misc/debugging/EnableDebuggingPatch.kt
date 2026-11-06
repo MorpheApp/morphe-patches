@@ -1,6 +1,8 @@
 package app.morphe.patches.music.misc.debugging
 
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.playservice.is_9_37_or_greater
+import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -12,7 +14,8 @@ val enableDebuggingPatch = enableDebuggingPatch(
     block = {
         dependsOn(
             sharedExtensionPatch,
-            settingsPatch
+            settingsPatch,
+            versionCheckPatch
         )
 
         compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
@@ -22,6 +25,7 @@ val enableDebuggingPatch = enableDebuggingPatch(
     hookStringFeatureFlag = { false },
     hookLongFeatureFlag = { true },
     hookDoubleFeatureFlag = { true },
+    hookHotFeatureFlags = { is_9_37_or_greater },
     preferenceScreen = PreferenceScreen.MISC,
     additionalDebugPreferences = listOf(SwitchPreference("morphe_debug_protobuffer", summary = true))
 )

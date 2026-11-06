@@ -2,20 +2,18 @@ package app.morphe.patches.youtube.video.quality
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.video.information.EXTENSION_VIDEO_QUALITY_INTERFACE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/quality/HidePremiumVideoQualityPatch;"
 
-internal val hidePremiumVideoQualityPatch = bytecodePatch {
+internal val hidePremiumVideoQualityPatch = patch {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
@@ -29,7 +27,7 @@ internal val hidePremiumVideoQualityPatch = bytecodePatch {
 
         // Class name is obfuscated in 21.02+
         val videoQualityArray = DefaultOverflowOverlayOnClickFingerprint.instructionMatches.last()
-            .instruction.getReference<FieldReference>()!!.type
+            .fieldReference.type
 
         // To avoid ClassCastException, declare the new array as original video quality class instead of [EXTENSION_VIDEO_QUALITY_INTERFACE]
         HidePremiumVideoQualityGetArrayFingerprint.method.addInstructions(

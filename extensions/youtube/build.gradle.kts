@@ -6,7 +6,7 @@ plugins {
 
 dependencies {
     testImplementation(libs.junit)
-    testImplementation("org.json:json:20240303")
+    testImplementation(libs.json)
     testImplementation(libs.morphe.extensions.library)
 
     compileOnly(libs.annotation)

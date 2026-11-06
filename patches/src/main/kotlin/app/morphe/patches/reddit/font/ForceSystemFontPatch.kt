@@ -8,7 +8,7 @@
 package app.morphe.patches.reddit.font
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
@@ -17,7 +17,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/ForceSystemFontPatch;"
 
 @Suppress("unused")
-val forceSystemFontPatch = bytecodePatch(
+val forceSystemFontPatch = patch(
     name = "Force system font",
     description = "Adds an option that renders Reddit with the device system font instead of Reddit Sans / Roboto.",
     default = true,

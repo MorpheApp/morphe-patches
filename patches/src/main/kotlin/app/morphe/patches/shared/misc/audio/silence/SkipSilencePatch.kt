@@ -9,25 +9,23 @@ package app.morphe.patches.shared.misc.audio.silence
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/SkipSilencePatch;"
 
 @Suppress("unused")
 internal fun skipSilencePatch(
-    block: BytecodePatchBuilder.() -> Unit,
-    targetCompatible: BytecodePatchBuilder.() -> Boolean = { true },
+    block: PatchDefinition.() -> Unit,
+    targetCompatible: PatchDefinition.() -> Boolean = { true },
     preferenceScreen: BasePreferenceScreen.Screen
-) = bytecodePatch(
+) = patch(
     name = "Skip silence",
     description = "Adds an option to automatically skip silent pauses in audio playback."
 ) {
@@ -49,7 +47,7 @@ internal fun skipSilencePatch(
         )
 
         val skipSilenceField = ApplySkipSilenceFingerprint.instructionMatches[1]
-            .instruction.getReference<FieldReference>()!!
+            .fieldReference
 
         ApplySkipSilenceFingerprint.apply {
             val match = instructionMatches[1]

@@ -33,7 +33,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_toast_on_skip_summary">Показва известие, когато сегментът е прескочен автоматично</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Продължителност на известието при прескачане</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Задайте за колко време остава видимо известието за отмяна</string>
-  <string name="morphe_sb_duration_1s">Дублирането на видеа се показва</string>
+  <string name="morphe_sb_duration_1s">1 секунда</string>
   <string name="morphe_sb_duration_2s">Скрий дублиране на видеа</string>
   <string name="morphe_sb_duration_3s">Дублирането на видеа е скрито</string>
   <string name="morphe_sb_duration_4s">Дублирането на видеа се показва</string>
@@ -81,7 +81,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">Дублирането на видеа се показва</string>
   <string name="morphe_sb_api_url_changed">Скрий дублиране на видеа</string>
   <string name="morphe_sb_settings_ie_title">Импортиране / Експортиране на настройки</string>
-  <string name="morphe_sb_settings_copy">Дублирането на видеа се показва</string>
+  <string name="morphe_sb_settings_copy">Копиране</string>
   <string name="morphe_sb_settings_ie_summary">Вашата конфигурация на SponsorBlock JSON, която може да бъде импортирана/експортирана в Morphe и други платформи на SponsorBlock</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Вашата JSON конфигурация на SponsorBlock, която може да бъде импортирана / експортирана в Morphe и други платформи на SponsorBlock
 
@@ -94,7 +94,7 @@ Second \"item\" text"</string>
 Вашият потребителски ID е като парола и не трябва да се споделя"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Скрий дублиране на видеа</string>
   <string name="morphe_sb_diff_segments_title">Промяна на поведението на сегментите</string>
-  <string name="morphe_sb_segments_sponsor">Дублирането на видеа се показва</string>
+  <string name="morphe_sb_segments_sponsor">Спонсор</string>
   <string name="morphe_sb_segments_sponsor_summary">Платена промоция, платени препоръки и директна реклама. Не е за самореклама или безплатни призиви към каузи/създатели/уебсайтове/продукти, които харесват</string>
   <string name="morphe_sb_segments_selfpromo">Дублирането на видеа е скрито</string>
   <string name="morphe_sb_segments_selfpromo_summary">Подобно на Sponsor, но не и за неплатена/самореклама. Включва секции за стоки, дарения или информация за това, с кого са си сътрудничили</string>

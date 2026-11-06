@@ -222,6 +222,7 @@ message PlaylistEditEndpoint {
 message PlaylistEditAction {
     optional string set_video_id = 3;
     optional string added_video_id = 2;
+    optional string removed_video_id = 17;
     optional int32 action = 6;
 }
 

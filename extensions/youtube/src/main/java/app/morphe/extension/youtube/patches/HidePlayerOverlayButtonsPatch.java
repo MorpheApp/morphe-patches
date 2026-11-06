@@ -13,6 +13,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.DrawableWrapper;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -90,6 +91,16 @@ public final class HidePlayerOverlayButtonsPatch {
         }
 
         return original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideCastButton(MenuItem menuItem) {
+        if (Settings.HIDE_CAST_BUTTON.get()) {
+            menuItem.setVisible(false);
+            menuItem.setEnabled(false);
+        }
     }
 
     /**

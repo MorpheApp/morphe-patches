@@ -52,6 +52,12 @@ public final class RememberPlaybackSpeedPatch {
     private static volatile float shortsPlaybackSpeed = -2.0f;
 
     /**
+     * If the app plays faster while the screen is held, until it sets another speed
+     * when the screen is released.
+     */
+    private static volatile boolean speedmasterActive;
+
+    /**
      * The speed the user selected in the Shorts player, or a negative value if none.
      * Used for every following Short until the Shorts player closes.
      */
@@ -61,6 +67,7 @@ public final class RememberPlaybackSpeedPatch {
         // The Shorts player does not set a playback speed when a Short starts,
         // so the Shorts speed is set once when the Shorts player opens.
         ShortsPlayerState.getOnChange().addObserver((Boolean isOpen) -> {
+            speedmasterActive = false;
             if (isOpen) {
                 applyShortsPlaybackSpeed(true);
             } else {
@@ -289,6 +296,16 @@ public final class RememberPlaybackSpeedPatch {
     }
 
     /**
+     * Injection point.
+     * <p>
+     * Called right before the app plays faster while the screen is held, so the Shorts speed
+     * does not replace that speed (<a href="https://github.com/MorpheApp/morphe-patches/issues/3482">...</a>).
+     */
+    public static void onSpeedmasterStarted() {
+        speedmasterActive = true;
+    }
+
+    /**
      * Called by {@link VideoInformation} for every playback speed the app sets,
      * including when a new Short loads. Forces the Shorts default speed in the Shorts player.
      *
@@ -299,6 +316,14 @@ public final class RememberPlaybackSpeedPatch {
         try {
             if (!ShortsPlayerState.isOpen() || VideoInformation.isLiveStream()) {
                 return playbackSpeed;
+            }
+            if (speedmasterActive) {
+                // 2.0x, or the custom tap and hold speed.
+                if (playbackSpeed == CustomPlaybackSpeedPatch.getTapAndHoldSpeed()) {
+                    return playbackSpeed;
+                }
+                // The screen was released, and the app restores the speed it played at before.
+                speedmasterActive = false;
             }
             final float sessionSpeed = getShortsSessionSpeed();
             if (sessionSpeed <= 0) {

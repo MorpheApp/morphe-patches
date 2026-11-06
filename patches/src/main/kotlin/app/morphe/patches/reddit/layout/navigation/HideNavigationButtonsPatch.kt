@@ -11,9 +11,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.misc.settings.settingsPatch
@@ -26,7 +26,6 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
@@ -36,7 +35,7 @@ private const val EXTENSION_HEADER_ITEM_INTERFACE =
     $$"Lapp/morphe/extension/reddit/patches/HideNavigationButtonsPatch$NavigationButtonInterface;"
 
 @Suppress("unused")
-val hideNavigationButtonsPatch = bytecodePatch(
+val hideNavigationButtonsPatch = patch(
     name = "Hide navigation buttons",
     description = "Adds options to hide buttons in the navigation bar."
 ) {
@@ -49,7 +48,7 @@ val hideNavigationButtonsPatch = bytecodePatch(
         if (!is_2026_25_0_or_greater) {
             val navigationButtonInnerMethod =
                 BottomNavScreenResourceBuilderLegacyFingerprint.instructionMatches[0]
-                    .instruction.getReference<MethodReference>()!!
+                    .methodReference
 
             mutableClassDefBy(navigationButtonInnerMethod.definingClass).apply {
                 // Add interface and helper methods to allow extension code to call obfuscated methods.

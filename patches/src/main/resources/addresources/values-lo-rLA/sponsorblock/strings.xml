@@ -16,9 +16,221 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_sb_enabled_title">ເປີດໃຊ້ງານ SponsorBlock</string>
+  <string name="morphe_sb_enabled_summary">SponsorBlock ແມ່ນລະບົບທີ່ມາຈາກການຮ່ວມມືຂອງຜູ້ໃຊ້ ເພື່ອຂ້າມສ່ວນທີ່ໜ້າລຳຄານຂອງວິດີໂອ YouTube</string>
+  <string name="morphe_sb_appearance_category_title">ຮູບລັກສະນະ</string>
+  <string name="morphe_sb_voting_button_title">ສະແດງປຸ່ມລົງຄະແນນ</string>
+  <string name="morphe_sb_voting_button_summary">ເພີ່ມປຸ່ມເພື່ອລົງຄະແນນໃຫ້ ຫຼື ຕັດຄະແນນສ່ວນຕ່າງໆ</string>
+  <string name="morphe_sb_square_layout_title">ໃຊ້ຮູບແບບຈັດວາງແບບຈະຕຸລັດ</string>
   <string name="morphe_sb_square_layout_summary">ໃຊ້ມຸມສີ່ຫຼ່ຽມສຳລັບປຸ່ມ ແລະ ຕົວຄວບຄຸມຂອງ SponsorBlock</string>
+  <string name="morphe_sb_compact_skip_button_title">ໃຊ້ປຸ່ມຂ້າມແບບກະທັດຮັດ</string>
+  <string name="morphe_sb_compact_skip_button_summary">ຫຼຸດຄວາມກວ້າງຂອງປຸ່ມຂ້າມເພື່ອປະຢັດເນື້ອທີ່</string>
+  <string name="morphe_sb_auto_hide_skip_button_title">ເຊື່ອງປຸ່ມຂ້າມໂດຍອັດຕະໂນມັດ</string>
+  <string name="morphe_sb_auto_hide_skip_button_summary">ເຊື່ອງປຸ່ມຂ້າມຫຼັງຈາກຜ່ານໄປບໍ່ເທົ່າໃດວິນາທີ ແທນທີ່ຈະໃຫ້ມັນສະແດງຕະຫຼອດທັງຊ່ວງ</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_title">ໄລຍະເວລາຂອງປຸ່ມຂ້າມ</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_summary">ກຳນົດໄລຍະເວລາທີ່ປຸ່ມຂ້າມຈະສະແດງໃຫ້ເຫັນ</string>
+  <string name="morphe_sb_toast_on_skip_title">ສະແດງການແຈ້ງເຕືອນການຂ້າມ</string>
+  <string name="morphe_sb_toast_on_skip_summary">ສະແດງການແຈ້ງເຕືອນເມື່ອຊ່ວງໃດໜຶ່ງຖືກຂ້າມໂດຍອັດຕະໂນມັດ</string>
+  <string name="morphe_sb_toast_on_skip_duration_title">ໄລຍະເວລາຂອງການແຈ້ງເຕືອນການຂ້າມ</string>
+  <string name="morphe_sb_toast_on_skip_duration_summary">ກຳນົດໄລຍະເວລາທີ່ການແຈ້ງເຕືອນການຍົກເລີກຈະສະແດງໃຫ້ເຫັນ</string>
+  <string name="morphe_sb_duration_1s">1 ວິນາທີ</string>
+  <string name="morphe_sb_duration_2s">2 ວິນາທີ</string>
+  <string name="morphe_sb_duration_3s">3 ວິນາທີ</string>
+  <string name="morphe_sb_duration_4s">4 ວິນາທີ</string>
+  <string name="morphe_sb_duration_5s">5 ວິນາທີ</string>
+  <string name="morphe_sb_duration_6s">6 ວິນາທີ</string>
+  <string name="morphe_sb_duration_7s">7 ວິນາທີ</string>
+  <string name="morphe_sb_duration_8s">8 ວິນາທີ</string>
+  <string name="morphe_sb_duration_9s">9 ວິນາທີ</string>
+  <string name="morphe_sb_duration_10s">10 ວິນາທີ</string>
+  <string name="morphe_sb_video_length_without_segments_title">ສະແດງຄວາມຍາວຂອງວິດີໂອໂດຍບໍ່ມີສ່ວນທີ່ຖືກຕັດອອກ</string>
+  <string name="morphe_sb_video_length_without_segments_summary">ລົບທຸກສ່ວນທີ່ຖືກຕັດອອກຈາກຄວາມຍາວທັງໝົດຂອງວິດີໂອທີ່ສະແດງໃນແຖບຊອກຫາ</string>
+  <string name="morphe_sb_create_segment_category_title">ກໍາລັງສ້າງສ່ວນທີ່ຖືກຕັດອອກໃໝ່</string>
+  <string name="morphe_sb_create_new_segment_title">ສະແດງປຸ່ມ \'ສ້າງສ່ວນyໃໝ່\'</string>
+  <string name="morphe_sb_create_new_segment_summary">ເພີ່ມປຸ່ມເຂົ້າໃນເຄື່ອງຫຼິ້ນວິດີໂອ ເພື່ອໃຫ້ທ່ານສາມາດສົ່ງສ່ວນ SponsorBlock ໃໝ່ໄດ້</string>
+  <string name="morphe_sb_create_new_segment_step_title">ຂັ້ນຕອນການປັບເວລາ</string>
+  <string name="morphe_sb_create_new_segment_step_summary">ຈຳນວນການເລື່ອນຂອງປຸ່ມປັບເວລາ (ເປັນມິນລິວິນາທີ)</string>
+  <string name="morphe_sb_create_new_segment_step_invalid">ຄ່າຕ້ອງເປັນຕົວເລກບວກ</string>
+  <string name="morphe_sb_guidelines_title">ຄຳແນະນຳໃນການສົ່ງ</string>
+  <string name="morphe_sb_guidelines_summary">ຄຳແນະນຳປະກອບດ້ວຍກົດລະບຽບ ແລະ ເຄັດລັບໃນການສ້າງສ່ວນໃໝ່</string>
+  <string name="morphe_sb_guidelines_popup_title">ປະຕິບັດຕາມຄຳແນະນຳ</string>
+  <string name="morphe_sb_guidelines_popup_content">ອ່ານຄຳແນະນຳຂອງ SponsorBlock ກ່ອນທີ່ຈະສ້າງສ່ວນຕັດໃໝ່</string>
+  <string name="morphe_sb_guidelines_popup_already_read">ອ່ານແລ້ວ</string>
+  <string name="morphe_sb_guidelines_popup_open">ສະແດງໃຫ້ຂ້ອຍເບິ່ງ</string>
+  <string name="morphe_sb_general_title">ທົ່ວໄປ</string>
+  <string name="morphe_sb_offline_segments_title">ບັນທຶກສ່ວນຂອງວິດີໂອທີ່ດາວໂຫຼດມາ</string>
+  <string name="morphe_sb_offline_segments_summary">ອະນຸຍາດໃຫ້ຂ້າມບາງສ່ວນຂອງວິດີໂອທີ່ດາວໂຫຼດໄວ້ ໃນຂະນະທີ່ອອຟລາຍ</string>
+  <string name="morphe_sb_toast_on_connection_error_title">ສະແດງການແຈ້ງເຕືອນຂໍ້ຜິດພາດໃນການເຊື່ອມຕໍ່</string>
+  <string name="morphe_sb_toast_on_connection_error_summary">ສະແດງການແຈ້ງເຕືອນເມື່ອເຊີເວີ SponsorBlock ບໍ່ສາມາດໃຊ້ງານໄດ້</string>
+  <string name="morphe_sb_track_skip_count_title">ເປີດໃຊ້ການຕິດຕາມຈຳນວນການຂ້າມ</string>
+  <string name="morphe_sb_track_skip_count_summary">ສົ່ງຈຳນວນການຂ້າມໄປຍັງຕາຕະລາງຜູ້ນຳຂອງ SponsorBlock ເພື່ອຕິດຕາມວ່າປະຢັດເວລາໄດ້ຫຼາຍປານໃດ</string>
+  <string name="morphe_sb_min_segment_duration_title">ໄລຍະເວລາຕ່ຳສຸດຂອງຊ່ວງວິດີໂອ</string>
+  <string name="morphe_sb_min_segment_duration_summary">ຊ່ວງວິດີໂອທີ່ສັ້ນກວ່າຄ່ານີ້ (ເປັນວິນາທີ) ຈະບໍ່ຖືກສະແດງ ຫຼື ຖືກຂ້າມ</string>
+  <string name="morphe_sb_min_segment_duration_invalid">ໄລຍະເວລາບໍ່ຖືກຕ້ອງ</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_title">ໄອດີຜູ້ໃຊ້ສ່ວນຕົວຂອງທ່ານ</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_summary">ສິ່ງນີ້ຄວນຖືກເກັບເປັນຄວາມລັບ. ມັນຄືກັນກັບລະຫັດຜ່ານ ແລະ ບໍ່ຄວນແບ່ງປັນໃຫ້ໃຜ. ຖ້າມີຄົນໄດ້ສິ່ງນີ້ໄປ, ເຂົາເຈົ້າສາມາດປອມເປັນທ່ານໄດ້</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">ໄອດີຜູ້ໃຊ້ສ່ວນຕົວຕ້ອງມີຄວາມຍາວຢ່າງໜ້ອຍ 30 ຕົວອັກສອນ</string>
+  <string name="morphe_sb_api_url_title">ປ່ຽນ URL ຂອງ API</string>
+  <string name="morphe_sb_api_url_summary">ທີ່ຢູ່ທີ່ SponsorBlock ໃຊ້ເພື່ອເອີ້ນໃຊ້ງານເຊີບເວີ</string>
+  <string name="morphe_sb_channel_whitelist_title">ລາຍຊື່ຊ່ອງທີ່ໄດ້ຮັບການອະນຸຍາດ</string>
+  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock ຖືກປິດໃຊ້ງານສຳລັບຊ່ອງທີ່ຢູ່ໃນລາຍຊື່ທີ່ໄດ້ຮັບການອະນຸຍາດ</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_title">ແຈ້ງເຕືອນເມື່ອຢູ່ໃນຊ່ອງທີ່ໄດ້ຮັບການອະນຸຍາດ</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">ສະແດງການແຈ້ງເຕືອນເມື່ອ SponsorBlock ຖືກປິດໃຊ້ງານສຳລັບຊ່ອງທີ່ຢູ່ໃນລາຍຊື່ທີ່ໄດ້ຮັບການອະນຸຍາດ</string>
+  <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock ຖືກປິດໃຊ້ງານສຳລັບຊ່ອງນີ້</string>
+  <string name="morphe_sb_api_url_reset">ຣີເຊັດ API URL</string>
+  <string name="morphe_sb_api_url_invalid">API URL ບໍ່ຖືກຕ້ອງ</string>
+  <string name="morphe_sb_api_url_changed">API URL ຖືກປ່ຽນແລ້ວ</string>
+  <string name="morphe_sb_settings_ie_title">ການຕັ້ງຄ່ານຳເຂົ້າ / ສົ່ງອອກ</string>
+  <string name="morphe_sb_settings_copy">ຄັດລອກ</string>
+  <string name="morphe_sb_settings_ie_summary">ການກຳນົດຄ່າ JSON ຂອງ SponsorBlock ຂອງທ່ານ ທີ່ສາມາດນຳເຂົ້າ / ສົ່ງອອກ ໄປຍັງ Morphe ແລະ ແພລັດຟອມ SponsorBlock ອື່ນໆ</string>
+  <string name="morphe_sb_settings_ie_summary_warning">"ການກຳນົດຄ່າ JSON ຂອງ SponsorBlock ຂອງທ່ານ ທີ່ສາມາດນຳເຂົ້າ / ສົ່ງອອກ ໄປຍັງ Morphe ແລະ ແພລັດຟອມ SponsorBlock ອື່ນໆ
+
+ເຊິ່ງລວມມີ ID ຜູ້ໃຊ້ສ່ວນຕົວຂອງທ່ານ. ກະລຸນາແບ່ງປັນຂໍ້ມູນນີ້ຢ່າງລະມັດລະວັງ"</string>
+  <string name="morphe_sb_settings_import_successful">ນຳເຂົ້າການຕັ້ງຄ່າສຳເລັດແລ້ວ</string>
+  <string name="morphe_sb_settings_import_failed">ນຳເຂົ້າບໍ່ສຳເລັດ: %s</string>
+  <string name="morphe_sb_settings_export_failed">ສົ່ງອອກບໍ່ສຳເລັດ: %s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"ການຕັ້ງຄ່າຂອງທ່ານມີ ID ຜູ້ໃຊ້ SponsorBlock ສ່ວນຕົວ.
+
+ID ຜູ້ໃຊ້ຂອງທ່ານປຽບດັ່ງລະຫັດຜ່ານ, ແລະ ບໍ່ຄວນແບ່ງປັນໃຫ້ຜູ້ອື່ນຢ່າງເດັດຂາດ"</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">ບໍ່ໃຫ້ສະແດງອີກ</string>
+  <string name="morphe_sb_diff_segments_title">ປ່ຽນພຶດຕິກຳຂອງສ່ວນຂອງວິດີໂອ</string>
+  <string name="morphe_sb_segments_sponsor">ຜູ້ສະໜັບສະໜູນ</string>
+  <string name="morphe_sb_segments_sponsor_summary">ການໂຄສະນາທີ່ຈ່າຍເງິນ, ການແນະນຳທີ່ຈ່າຍເງິນ ແລະ ໂຄສະນາໂດຍກົງ. ບໍ່ແມ່ນສຳລັບການໂຄສະນາຕົນເອງ ຫຼື ການຊ່ວຍໂຄສະນາໃຫ້ກັບກຸ່ມຄົນ / ຜູ້ສ້າງ / ເວັບໄຊ / ຜະລິດຕະພັນ ທີ່ພວກເຂົາມັກໂດຍບໍ່ເສຍຄ່າ</string>
+  <string name="morphe_sb_segments_selfpromo">ບໍ່ໄດ້ຮັບຄ່າຕອບແທນ / ການໂຄສະນາຕົນເອງ</string>
+  <string name="morphe_sb_segments_selfpromo_summary">ຄ້າຍຄືກັບຜູ້ສະໜັບສະໜູນ ຍົກເວັ້ນການໂຄສະນາຕົນເອງ / ບໍ່ໄດ້ຮັບຄ່າຕອບແທນ. ລວມທັງພາກສ່ວນກ່ຽວກັບສິນຄ້າ, ການບໍລິຈາກ, ຫຼື ຂໍ້ມູນກ່ຽວກັບຜູ້ທີ່ພວກເຂົາຮ່ວມງານນຳ</string>
+  <string name="morphe_sb_segments_interaction">ການເຕືອນໃຫ້ມີປະຕິສຳພັນ (ຕິດຕາມ)</string>
+  <string name="morphe_sb_segments_interaction_summary">ການເຕືອນສັ້ນໆ ໃຫ້ກົດໄລ້, ສະໝັກຕິດຕາມ ຫຼື ຕິດຕາມພວກເຂົາໃນລະຫວ່າງເນື້ອຫາ. ຖ້າມັນຍາວ ຫຼື ກ່ຽວກັບບາງສິ່ງທີ່ສະເພາະເຈາະຈົງ, ມັນຄວນຈະຢູ່ໃນສ່ວນການໂຄສະນາຕົນເອງແທນ</string>
+  <string name="morphe_sb_segments_highlight">ຈຸດເດັ່ນ</string>
+  <string name="morphe_sb_segments_highlight_summary">ສ່ວນຂອງວິດີໂອທີ່ຄົນສ່ວນໃຫຍ່ກຳລັງຊອກຫາ</string>
+  <string name="morphe_sb_segments_intro">ຊ່ວງພັກ / ແອນິເມຊັນແນະນຳ</string>
+  <string name="morphe_sb_segments_intro_summary">ຊ່ວງເວລາທີ່ບໍ່ມີເນື້ອຫາຕົວຈິງ. ອາດຈະເປັນການຢຸດຊົ່ວຄາວ, ພາບນິ່ງ, ຫຼື ແອນິເມຊັນທີ່ສະແດງຊ້ຳ. ບໍ່ລວມເຖິງການປ່ຽນສາກທີ່ມີຂໍ້ມູນ</string>
+  <string name="morphe_sb_segments_outro">ບັດທ້າຍວິດີໂອ / ລາຍຊື່ຜູ້ສ້າງ</string>
+  <string name="morphe_sb_segments_outro_summary">ລາຍຊື່ຜູ້ສ້າງ ຫຼື ເມື່ອບັດທ້າຍວິດີໂອຂອງ YouTube ປາກົດຂຶ້ນ. ບໍ່ແມ່ນສຳລັບບົດສະຫຼຸບທີ່ມີຂໍ້ມູນ</string>
+  <string name="morphe_sb_segments_hook">ສ່ວນດຶງດູດ / ຄຳທັກທາຍ</string>
+  <string name="morphe_sb_segments_hook_summary">ຕົວຢາງວິດີໂອທີ່ມີຄຳບັນຍາຍສຳລັບວິດີໂອທີ່ກຳລັງຈະມາເຖິງ, ຄຳທັກທາຍ ແລະ ຄຳລາກ່ອນຈົບ. ບໍ່ລວມເຖິງສ່ວນທີ່ເພີ່ມເນື້ອຫາເພີ່ມເຕີມ</string>
+  <string name="morphe_sb_segments_preview">ຕົວຢ່າງ / ສະຫຼຸບເນື້ອໃນ</string>
+  <string name="morphe_sb_segments_preview_summary">ລວມຄລິບທີ່ສະແດງໃຫ້ເຫັນວ່າຈະມີຫຍັງເກີດຂຶ້ນ ຫຼື ສິ່ງທີ່ເກີດຂຶ້ນໃນວິດີໂອ ຫຼື ໃນວິດີໂອອື່ນໆຂອງຊຸດດຽວກັນ, ເຊິ່ງຂໍ້ມູນທັງໝົດມີການເວົ້າຊ້ຳໃນບ່ອນອື່ນ</string>
+  <string name="morphe_sb_segments_filler">ເລື່ອງນອກປະເດັນ / ມຸກຕະຫຼົກ</string>
+  <string name="morphe_sb_segments_filler_summary">ສາກທີ່ນອກປະເດັນ ຫຼື ມຸກຕະຫຼົກທີ່ບໍ່ຈຳເປັນໃນການເຮັດຄວາມເຂົ້າໃຈເນື້ອໃນຫຼັກຂອງວິດີໂອ. ບໍ່ລວມເອົາສ່ວນທີ່ໃຫ້ບໍລິບົດ ຫຼື ລາຍລະອຽດພື້ນຫຼັງ</string>
+  <string name="morphe_sb_segments_nomusic">ດົນຕີ: ສ່ວນທີ່ບໍ່ມີດົນຕີ</string>
+  <string name="morphe_sb_segments_nomusic_summary">ໃຊ້ສຳລັບວິດີໂອດົນຕີເທົ່ານັ້ນ. ສ່ວນຂອງວິດີໂອດົນຕີທີ່ບໍ່ມີດົນຕີ ເຊິ່ງບໍ່ໄດ້ຖືກກວມເອົາໂດຍໝວດໝູ່ອື່ນ</string>
+  <string name="morphe_sb_skip_button_compact">ຂ້າມ</string>
+  <string name="morphe_sb_skip_button_compact_highlight">ຈຸດເດັ່ນ</string>
+  <string name="morphe_sb_skip_button_sponsor">ຂ້າມຜູ້ສະໜັບສະໜູນ</string>
+  <string name="morphe_sb_skip_button_selfpromo">ຂ້າມການໂຄສະນາ</string>
+  <string name="morphe_sb_skip_button_interaction">ຂ້າມການໂຕ້ຕອບ</string>
+  <string name="morphe_sb_skip_button_highlight">ຂ້າມໄປຫາສ່ວນທີ່ສຳຄັນ</string>
+  <string name="morphe_sb_skip_button_intro_beginning">ຂ້າມບົດນຳ</string>
+  <string name="morphe_sb_skip_button_intro_middle">ຂ້າມຊ່ວງພັກ</string>
+  <string name="morphe_sb_skip_button_intro_end">ຂ້າມຊ່ວງພັກ</string>
+  <string name="morphe_sb_skip_button_outro">ຂ້າມຕອນຈົບ</string>
+  <string name="morphe_sb_skip_button_hook">ຂ້າມທ່ອນດຶງດູດ</string>
+  <string name="morphe_sb_skip_button_preview_beginning">ຂ້າມຕົວຢ່າງ</string>
+  <string name="morphe_sb_skip_button_preview_middle">ຂ້າມຕົວຢ່າງ</string>
+  <string name="morphe_sb_skip_button_preview_end">ຂ້າມບົດສະຫຼຸບ</string>
+  <string name="morphe_sb_skip_button_filler">ຂ້າມເນື້ອຫາທີ່ບໍ່ກ່ຽວຂ້ອງ</string>
+  <string name="morphe_sb_skip_button_nomusic">ຂ້າມສ່ວນທີ່ບໍ່ແມ່ນເພງ</string>
+  <string name="morphe_sb_skip_button_unsubmitted">ຂ້າມສ່ວນນີ້</string>
+  <string name="morphe_sb_skipped_sponsor">ຂ້າມຜູ້ສະໜັບສະໜູນແລ້ວ</string>
+  <string name="morphe_sb_skipped_selfpromo">ຂ້າມການໂຄສະນາຕົນເອງແລ້ວ</string>
+  <string name="morphe_sb_skipped_interaction">ຂ້າມການເຕືອນທີ່ໜ້າລຳຄານແລ້ວ</string>
+  <string name="morphe_sb_skipped_highlight">ຂ້າມໄປຫາຈຸດສຳຄັນແລ້ວ</string>
+  <string name="morphe_sb_skipped_intro_beginning">ຂ້າມບົດນຳແລ້ວ</string>
+  <string name="morphe_sb_skipped_intro_middle">ຂ້າມຊ່ວງພັກແລ້ວ</string>
+  <string name="morphe_sb_skipped_intro_end">ຂ້າມຊ່ວງພັກແລ້ວ</string>
+  <string name="morphe_sb_skipped_outro">ຂ້າມບົດສະຫຼຸບແລ້ວ</string>
+  <string name="morphe_sb_skipped_hook">ຂ້າມສ່ວນດຶງດູດຄວາມສົນໃຈແລ້ວ</string>
+  <string name="morphe_sb_skipped_preview_beginning">ຂ້າມການທຳນາຍ</string>
+  <string name="morphe_sb_skipped_preview_middle">ຂ້າມຕົວຢ່າງແລ້ວ</string>
+  <string name="morphe_sb_skipped_preview_end">ຂ້າມບົດສະຫຼຸບ</string>
+  <string name="morphe_sb_skipped_filler">ຂ້າມເນື້ອຫາທີ່ບໍ່ກ່ຽວຂ້ອງ</string>
+  <string name="morphe_sb_skipped_nomusic">ຂ້າມສ່ວນທີ່ບໍ່ແມ່ນເພງ</string>
+  <string name="morphe_sb_skipped_unsubmitted">ຂ້າມສ່ວນທີ່ບໍ່ໄດ້ສົ່ງ</string>
+  <string name="morphe_sb_skipped_multiple_segments">ຂ້າມຫຼາຍສ່ວນ</string>
+  <string name="morphe_sb_skip_automatically">ຂ້າມໂດຍອັດຕະໂນມັດ</string>
+  <string name="morphe_sb_skip_automatically_once">ຂ້າມໂດຍອັດຕະໂນມັດຄັ້ງດຽວ</string>
+  <string name="morphe_sb_skip_showbutton">ສະແດງປຸ່ມຂ້າມ</string>
+  <string name="morphe_sb_skip_seekbaronly">ສະແດງໃນແຖບຊອກຫາ</string>
+  <string name="morphe_sb_skip_ignore">ປິດການໃຊ້ງານ</string>
+  <string name="morphe_sb_submit_failed_invalid">ບໍ່ສາມາດສົ່ງສ່ວນຂອງວິດີໂອໄດ້: %s</string>
+  <string name="morphe_sb_submit_failed_timeout">SponsorBlock ຢຸດເຮັດວຽກຊົ່ວຄາວ</string>
+  <string name="morphe_sb_submit_failed_unknown_error">ບໍ່ສາມາດສົ່ງສ່ວນຂອງວິດີໂອໄດ້ (ສະຖານະ: %1$s %2$s)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">ບໍ່ສາມາດສົ່ງສ່ວນຂອງວິດີໂອໄດ້. ຖືກຈຳກັດອັດຕາການສົ່ງ (ມີການສົ່ງຫຼາຍເກີນໄປຈາກຜູ້ໃຊ້ ຫຼື IP ດຽວກັນ)</string>
+  <string name="morphe_sb_submit_failed_forbidden">ບໍ່ສາມາດສົ່ງສ່ວນຂອງວິດີໂອໄດ້: %s</string>
+  <string name="morphe_sb_submit_failed_duplicate">"ບໍ່ສາມາດສົ່ງສ່ວນຂອງວິດີໂອໄດ້.
+ມີຂໍ້ມູນນີ້ຢູ່ແລ້ວ"</string>
+  <string name="morphe_sb_submit_succeeded">ສົ່ງສ່ວນຂອງວິດີໂອສຳເລັດແລ້ວ</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock ບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ (API หมดເວລາ)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock ບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ (ສະຖານະ %s)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock ບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ</string>
+  <string name="morphe_sb_vote_failed_timeout">ບໍ່ສາມາດລົງຄະແນນໃຫ້ຊ່ວງວິດີໂອໄດ້ (API หมดເວລາ)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">ບໍ່ສາມາດລົງຄະແນນໃຫ້ສ່ວນຂອງວິດີໂອໄດ້ (ສະຖານະ: %1$s %2$s)</string>
+  <string name="morphe_sb_vote_failed_forbidden">ບໍ່ສາມາດລົງຄະແນນໃຫ້ຊ່ວງວິດີໂອ: %s</string>
+  <string name="morphe_sb_vote_upvote">ໂຫວດໃຫ້</string>
+  <string name="morphe_sb_vote_downvote">ໂຫວດຕ້ານ</string>
+  <string name="morphe_sb_vote_category">ປ່ຽນໝວດໝູ່</string>
+  <string name="morphe_sb_vote_no_segments">ບໍ່ມີຊ່ວງວິດີໂອໃຫ້ລົງຄະແນນ</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_vote_segment_time_to_from">%1$s ຫາ %2$s</string>
+  <string name="morphe_sb_new_segment_choose_category">ເລືອກໝວດໝູ່ຂອງຊ່ວງວິດີໂອ</string>
+  <string name="morphe_sb_new_segment_disabled_category">ໝວດໝູ່ຖືກປິດໃຊ້ງານໃນການຕັ້ງຄ່າ. ກະລຸນາເປີດໃຊ້ງານໝວດໝູ່ເພື່ອສົ່ງຂໍ້ມູນ</string>
+  <string name="morphe_sb_new_segment_title">ສ່ວນ SponsorBlock ໃໝ່</string>
+  <string name="morphe_sb_new_segment_mark_time_as_question">ຕັ້ງຄ່າ %s ເປັນຈຸດເລີ່ມຕົ້ນ ຫຼື ຈຸດສິ້ນສຸດຂອງສ່ວນໃໝ່?</string>
+  <string name="morphe_sb_new_segment_mark_start">ເລີ່ມຕົ້ນ</string>
+  <string name="morphe_sb_new_segment_mark_end">ສິ້ນສຸດ</string>
+  <string name="morphe_sb_new_segment_now">ຕອນນີ້</string>
+  <string name="morphe_sb_new_segment_time_start">ເວລາທີ່ສ່ວນເລີ່ມຕົ້ນ</string>
+  <string name="morphe_sb_new_segment_time_end">ເວລາທີ່ສ່ວນສິ້ນສຸດ</string>
+  <string name="morphe_sb_new_segment_confirm_title">ເວລາຖືກຕ້ອງແລ້ວບໍ?</string>
+  <string name="morphe_sb_new_segment_confirm_content">"ສ່ວນນີ້ແມ່ນຕັ້ງແຕ່
+
+%1$s
+ຫາ
+%2$s
+
+(%3$s)
+
+ພ້ອມທີ່ຈະສົ່ງແລ້ວບໍ?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">ສົ່ງ</string>
+  <string name="morphe_sb_new_segment_start_is_before_end">ເວລາເລີ່ມຕົ້ນຕ້ອງມາກ່ອນເວລາສິ້ນສຸດ</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">ກະລຸນາໝາຍຕຳແໜ່ງໃນແຖບເວລາທຳອິດ</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">ເບິ່ງຕົວຢ່າງຂອງສ່ວນທີ່ເລືອກ, ແລະ ໃຫ້ແນ່ໃຈວ່າມັນຂ້າມໄປຢ່າງລຽບງ່າຍ</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_title">ແກ້ໄຂເວລາຂອງສ່ວນທີ່ເລືອກດ້ວຍຕົນເອງ</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_content">ທ່ານຕ້ອງການແກ້ໄຂເວລາເລີ່ມຕົ້ນ ຫຼື ເວລາສິ້ນສຸດຂອງສ່ວນທີ່ເລືອກບໍ?</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_parse_error">ເວລາທີ່ປ້ອນເຂົ້າມາບໍ່ຖືກຕ້ອງ</string>
+  <string name="morphe_sb_new_segment_highlight_title">ສົ່ງຈຸດເດັ່ນ</string>
+  <string name="morphe_sb_new_segment_highlight_content">"ເວລາຂອງຈຸດເດັ່ນຖືກຕ້ອງແລ້ວບໍ?
+
+%s
+
+ຖ້າທ່ານບໍ່ໄດ້ສົ່ງຈຸດເດັ່ນ, ໃຫ້ແຕະ ຍົກເລີກ ແລະ ໝາຍຕຳແໜ່ງທີສອງ"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">ສົ່ງສ່ວນທີ່ສຳຄັນ</string>
+  <string name="morphe_sb_stats_title">ສະຖິຕິ</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
+  <string name="morphe_sb_stats_connection_failure">ສະຖິຕິບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ (API ໃຊ້ການບໍ່ໄດ້)</string>
   <string name="morphe_sb_stats_loading">ກຳລັງໂຫຼດ…</string>
+  <string name="morphe_sb_stats_sb_disabled">SponsorBlock ຖືກປິດໃຊ້ງານ</string>
+  <string name="morphe_sb_stats_username">ຊື່ຜູ້ໃຊ້ຂອງທ່ານ: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_username_change">ແຕະບ່ອນນີ້ເພື່ອປ່ຽນຊື່ຜູ້ໃຊ້ຂອງທ່ານ</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">ບໍ່ສາມາດປ່ຽນຊື່ຜູ້ໃຊ້ໄດ້: ສະຖານະ: %1$s %2$s</string>
+  <string name="morphe_sb_stats_username_changed">ປ່ຽນຊື່ຜູ້ໃຊ້ສຳເລັດແລ້ວ</string>
+  <string name="morphe_sb_stats_reputation">ຄະແນນຊື່ສຽງຂອງທ່ານແມ່ນ &lt;b&gt;%.2f&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_submissions">ທ່ານໄດ້ສ້າງສ່ວນຂອງວິດີໂອ &lt;b&gt;%s&lt;/b&gt; ສ່ວນ</string>
+  <string name="morphe_sb_stats_submissions_summary">ແຕະທີ່ນີ້ເພື່ອເບິ່ງສ່ວນຕ່າງໆຂອງທ່ານ</string>
+  <string name="morphe_sb_stats_saved_zero">ຕາຕະລາງຜູ້ນຳ SponsorBlock</string>
+  <string name="morphe_sb_stats_saved">ທ່ານໄດ້ຊ່ວຍໃຫ້ຜູ້ຄົນຂ້າມສ່ວນຕ່າງໆໄດ້ &lt;b&gt;%s&lt;/b&gt; ສ່ວນ</string>
+  <string name="morphe_sb_stats_saved_summary_zero">ແຕະທີ່ນີ້ເພື່ອເບິ່ງສະຖິຕິທົ່ວໂລກ ແລະ ຜູ້ປະກອບສ່ວນອັນດັບຕົ້ນໆ</string>
+  <string name="morphe_sb_stats_saved_summary">ນັ້ນແມ່ນ &lt;b&gt;%s&lt;/b&gt; ຂອງຊີວິດພວກເຂົາ.&lt;br&gt;ແຕະທີ່ນີ້ເພື່ອເບິ່ງຕາຕະລາງຜູ້ນຳ</string>
+  <string name="morphe_sb_stats_self_saved">ທ່ານໄດ້ຂ້າມສ່ວນຕ່າງໆໄປ &lt;b&gt;%s&lt;/b&gt; ສ່ວນ</string>
+  <string name="morphe_sb_stats_self_saved_summary">ນັ້ນແມ່ນ &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_self_saved_reset_title">ຣີເຊັດຕົວນັບສ່ວນທີ່ຂ້າມໄປບໍ?</string>
+  <string name="morphe_sb_stats_saved_hour_format">%1$s ຊົ່ວໂມງ %2$s ນາທີ</string>
+  <string name="morphe_sb_stats_saved_minute_format">%1$s ນາທີ %2$s ວິນາທີ</string>
+  <string name="morphe_sb_stats_saved_second_format">%s ວິນາທີ</string>
+  <string name="morphe_sb_color_opacity_label">ຄວາມໂປ່ງໃສ:</string>
+  <string name="morphe_sb_color_dot_label">ສີ:</string>
+  <string name="morphe_sb_about_api_summary">"SponsorBlock ແມ່ນຖານຂໍ້ມູນທີ່ໄດ້ມາຈາກການຮ່ວມມືຂອງຊຸມຊົນກ່ຽວກັບສ່ວນຕ່າງໆຂອງວິດີໂອ ເຊັ່ນ: ສະປອນເຊີ, ບົດນຳ, ບົດປິດທ້າຍ ແລະ ການເຕືອນໃຫ້ກົດຕິດຕາມ. ສ່ວນຕ່າງໆເຫຼົ່ານີ້ຖືກສົ່ງ ແລະ ໂຫວດໂດຍຊຸມຊົນ, ແລະ ຖານຂໍ້ມູນນີ້ແມ່ນເປີດໃຫ້ດາວໂຫຼດໄດ້ຟຣີ
+
+ID ຂອງວິດີໂອທີ່ທ່ານເບິ່ງຈະຖືກສົ່ງໄປຍັງ SponsorBlock API ເພື່ອດຶງຂໍ້ມູນສ່ວນຕ່າງໆຂອງວິດີໂອ"</string>
 </resources>

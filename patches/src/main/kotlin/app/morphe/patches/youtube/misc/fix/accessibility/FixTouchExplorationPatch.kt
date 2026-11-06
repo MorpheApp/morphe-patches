@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.misc.fix.accessibility
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.youtube.misc.playservice.is_20_51_or_greater
@@ -23,7 +23,7 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
  * Touch exploration events can loop between Litho's TouchDelegate and ComponentHost, causing StackOverflowError.
  * Fixes https://github.com/MorpheApp/morphe-patches/issues/4045.
  */
-internal val fixTouchExplorationPatch = bytecodePatch(
+internal val fixTouchExplorationPatch = patch(
     description = "Fixes stack overflow crashes caused by recursive TalkBack event forwarding in Litho."
 ) {
     dependsOn(versionCheckPatch)

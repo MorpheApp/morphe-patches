@@ -1,7 +1,7 @@
 package app.morphe.patches.youtube.misc.announcements
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -11,7 +11,7 @@ import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/announcements/AnnouncementsPatch;"
 
-val announcementsPatch = bytecodePatch(
+val announcementsPatch = patch(
     // FIXME: Change this to an "Update is available" patch
     //name = "Announcements",
     description = "Adds an option to show announcements from Morphe on app startup.",

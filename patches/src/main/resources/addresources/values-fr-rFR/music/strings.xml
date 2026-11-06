@@ -150,6 +150,9 @@ Les morceaux téléchargés apparaîtront ici"</string>
   <string name="morphe_music_downloads_previous">Précédent</string>
   <string name="morphe_music_downloads_next">Suivant</string>
   <string name="morphe_music_downloads_pause">Pause</string>
+  <string name="morphe_music_downloads_shuffle">Aléatoire</string>
+  <string name="morphe_music_downloads_repeat">Répéter</string>
+  <string name="morphe_music_downloads_minimize">Réduire</string>
   <string name="morphe_music_downloads_close">Fermer</string>
   <string name="morphe_music_downloads_delete">Supprimer</string>
   <string name="morphe_music_downloads_delete_track">Supprimer le téléchargement</string>
@@ -158,6 +161,38 @@ Les morceaux téléchargés apparaîtront ici"</string>
   <string name="morphe_music_downloads_track_deleted">Téléchargement supprimé</string>
   <string name="morphe_music_downloads_track_delete_failed">Impossible de supprimer le téléchargement</string>
   <string name="morphe_music_downloads_play_failed">Impossible de lire le téléchargement</string>
+  <string name="morphe_music_downloads_playlists">Playlists</string>
+  <string name="morphe_music_downloads_playlists_section">Playlists créées (%s)</string>
+  <string name="morphe_music_downloads_playlists_empty">Aucune playlist locale pour le moment</string>
+  <string name="morphe_music_downloads_playlists_hide">Masquer les playlists ▲</string>
+  <string name="morphe_music_downloads_playlist_new">+ Nouvelle playlist</string>
+  <string name="morphe_music_downloads_playlist_new_button">Nouvelle playlist</string>
+  <string name="morphe_music_downloads_playlist_selected">Sélectionnées (%s)</string>
+  <string name="morphe_music_downloads_playlist_select_first">Sélectionnez d\'abord des chansons</string>
+  <string name="morphe_music_downloads_playlist_clear_selection">Effacer la sélection</string>
+  <string name="morphe_music_downloads_playlist_create">Créer une playlist</string>
+  <string name="morphe_music_downloads_playlist_create_button">Créer</string>
+  <string name="morphe_music_downloads_playlist_add">Ajouter à la playlist</string>
+  <string name="morphe_music_downloads_playlist_added">Ajouté à %s</string>
+  <string name="morphe_music_downloads_playlist_name_hint">Nom de la playlist</string>
+  <string name="morphe_music_downloads_playlist_name_empty">Le nom de la playlist ne peut pas être vide</string>
+  <string name="morphe_music_downloads_playlist_save_failed">Impossible d\'enregistrer la playlist</string>
+  <string name="morphe_music_downloads_playlist_track_count">%s morceaux</string>
+  <string name="morphe_music_downloads_playlist_track_count_one">1 morceau</string>
+  <string name="morphe_music_downloads_playlist_no_tracks">Aucun morceau dans cette playlist</string>
+  <string name="morphe_music_downloads_playlist_play">Lire la playlist</string>
+  <string name="morphe_music_downloads_playlist_play_all">Tout lire</string>
+  <string name="morphe_music_downloads_playlist_rename">Renommer</string>
+  <string name="morphe_music_downloads_playlist_rename_title">Renommer la playlist</string>
+  <string name="morphe_music_downloads_playlist_save">Enregistrer</string>
+  <string name="morphe_music_downloads_playlist_delete">Supprimer la playlist</string>
+  <string name="morphe_music_downloads_playlist_delete_title">Supprimer la playlist ?</string>
+  <string name="morphe_music_downloads_playlist_delete_message">%s sera supprimé. Les chansons téléchargées sont conservées</string>
+  <string name="morphe_music_downloads_playlist_deleted">Playlist supprimée</string>
+  <string name="morphe_music_downloads_playlist_remove_track">Retirer de la playlist</string>
+  <string name="morphe_music_downloads_playlist_drag_track">Faites glisser pour réorganiser</string>
+  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Faites glisser pour réorganiser</string>
+  <string name="morphe_music_downloads_playlist_reorder_done">Terminé</string>
   <string name="morphe_music_downloads_notification_channel">Téléchargements audio</string>
   <string name="morphe_music_downloads_playback_channel">Lecture hors connexion</string>
   <string name="morphe_music_downloads_unknown_track">Impossible d\'identifier le morceau à télécharger</string>
@@ -168,6 +203,28 @@ Les morceaux téléchargés apparaîtront ici"</string>
   <string name="morphe_music_downloads_progress">Téléchargement à %s%%</string>
   <string name="morphe_music_downloads_complete">Téléchargement terminé</string>
   <string name="morphe_music_downloads_failed">Échec du téléchargement</string>
+  <string name="morphe_music_downloads_playlist_download_title">Téléchargement de la playlist</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Liste des morceaux…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s listés…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Impossible de lister les morceaux de la playlist</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Déjà téléchargés : %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s dans cette playlist, %2$s pas encore téléchargés.
+
+Ils sont téléchargés un à la fois, ce qui peut prendre beaucoup de temps et nécessite environ %3$s d'espace libre"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Télécharger</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Téléchargement du morceau %1$s sur %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s téléchargés</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s téléchargés, %2$s n\'ont pas pu être téléchargés</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Téléchargement de la playlist déjà en cours</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Votre compte n\'est pas encore reconnu. Réessayez dans un instant</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listés, tous déjà téléchargés</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Seule une partie de la playlist a pu être listée. Appuyez à nouveau sur \'Télécharger\' plus tard pour obtenir le reste</string>
+  <string name="morphe_music_downloads_playlist_download_started">Téléchargement de %s en arrière-plan</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Aucune connexion réseau</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">En attente du réseau…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Arrêté après %1$s sur %2$s. Appuyez à nouveau sur \'Télécharger\' pour reprendre</string>
+  <string name="morphe_music_downloads_mark_title">Marquer les chansons téléchargées</string>
+  <string name="morphe_music_downloads_mark_summary">Les chansons déjà téléchargées affichent une marque avant leurs détails dans les playlists, les albums et les résultats de recherche</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">À propos</string>
@@ -206,6 +263,9 @@ Les morceaux téléchargés apparaîtront ici"</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Masquer les règles de la communauté</string>
   <string name="morphe_music_hide_comments_context_title">Masquer le message de contexte</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Masquer le bouton \'Émoji\'</string>
+  <string name="morphe_music_hide_comments_gif_button_title">Masquer le bouton \'GIF\'</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_title">Masquer les GIF et les images</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_summary">Masque les GIF et les images joints aux commentaires et aux réponses</string>
   <string name="morphe_music_hide_comments_info_button_title">Masquer le bouton \'Info\'</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">Masquer le bouton \'Horodatage\'</string>
   <!-- interaction.crossfade.crossfadePatch -->
@@ -250,7 +310,7 @@ Les morceaux téléchargés apparaîtront ici"</string>
   <string name="morphe_music_crossfade_about_how_title">Comment ça marche</string>
   <string name="morphe_music_crossfade_about_how_summary">"Le fondu enchaîné superpose la fin d'une chanson au début de la suivante, en utilisant la durée et la courbe que vous avez définies
 
-Il fonctionne lors du passage automatique et lors du passage manuel, avec une option d'activation ou de désactivation distincte pour chacun, située ci-dessus. Lors du passage automatique, le fondu commence quelques secondes avant la fin de la chanson"</string>
+Il fonctionne lors du passage automatique et lors du passage manuel, avec une option de basculement distincte pour chacun, située ci-dessus. Lors du passage automatique, le fondu commence quelques secondes avant la fin de la chanson"</string>
   <string name="morphe_music_crossfade_about_quirks_title">Limitations</string>
   <string name="morphe_music_crossfade_about_quirks_summary">"Les clips musicaux sont lus uniquement en audio lorsque le fondu enchaîné est activé. Appuyez longuement sur le bouton 'Aléatoire' pour mettre le fondu enchaîné en pause et regarder la vidéo
 
@@ -285,6 +345,43 @@ Lecture SABR (Falsifier les flux vidéo désactivés)"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Ajouter le morceau sélectionné à la file d\'attente</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">Ajouté à la file d\'attente</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">Tags des playlists</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Attribuer des tags aux playlists et filtrer la Bibliothèque par tag</string>
+  <string name="morphe_music_playlist_tags_title">Activer les tags des playlists</string>
+  <string name="morphe_music_playlist_tags_summary">Ajoute un élément \'Tags\' au menu des playlists, ainsi qu\'un bouton de filtrage par Tags à côté du bouton de tri dans la Bibliothèque</string>
+  <string name="morphe_music_playlist_tags_manage_title">Gérer les tags des playlists</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Créer, renommer et supprimer des tags, ainsi qu\'en attribuer aux playlists présentes dans votre Bibliothèque</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">Tags</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">Aucun tag</string>
+  <string name="morphe_music_playlist_tags_filter_button">Tags</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">Tag : %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">Tags (%s masqués)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">Tags pour %s</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">Nouveau tag</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 playlist</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s playlists</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">Le tag nommé %s existe déjà</string>
+  <string name="morphe_music_playlist_tags_filter_title">Filtrer par tag</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">Afficher uniquement</string>
+  <string name="morphe_music_playlist_tags_filter_all">Toutes les playlists</string>
+  <string name="morphe_music_playlist_tags_filter_visible">Tags visibles</string>
+  <string name="morphe_music_playlist_tags_manage">Gérer</string>
+  <string name="morphe_music_playlist_tags_none">Aucun tag pour le moment. Appuyez longuement sur une playlist puis choisissez \'Tags\' pour en créer un</string>
+  <string name="morphe_music_playlist_tags_section_tags">Tags</string>
+  <string name="morphe_music_playlist_tags_section_playlists">Playlists</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Ouvrez la \'Bibliothèque\' une première fois pour que vos playlists apparaissent ici</string>
+  <string name="morphe_music_playlist_tags_new_tag">Nouveau tag</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">Modifier le tag</string>
+  <string name="morphe_music_playlist_tags_rename">Renommer</string>
+  <string name="morphe_music_playlist_tags_delete">Supprimer</string>
+  <string name="morphe_music_playlist_tags_hidden">Masquées</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Masquer le bouton \'Caster\'</string>
   <string name="morphe_music_hide_history_button_title">Masquer le bouton \'Historique\'</string>
@@ -301,7 +398,7 @@ Lecture SABR (Falsifier les flux vidéo désactivés)"</string>
   <string name="morphe_music_hide_like_dislike_button_title">Masquer les boutons \'J\'aime\' et \'Je n\'aime pas\'</string>
   <string name="morphe_music_hide_comments_button_title">Masquer le bouton \'Commentaires\'</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_live_chat_replay_button_title">Masquer le bouton \'Rediffusion du chat en direct\'</string>
+  <string name="morphe_music_hide_live_chat_replay_button_title">Masquer le bouton \'Replay du chat en direct\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Masquer le bouton \'Paroles\'</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -453,6 +550,49 @@ Lecture SABR (Falsifier les flux vidéo désactivés)"</string>
   <string name="morphe_music_scrobbling_about_summary">"Le scrobbling synchronise automatiquement votre activité sur YouTube Music avec votre profil Last.fm ou ListenBrainz.
 
 Pour que le scrobbling continue à se synchroniser pendant la lecture en arrière-plan, assurez-vous que l'utilisation de la batterie par l'application YouTube Music est définie sur \"Non restreint\""</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">Passer les morceaux des artistes signalés comme étant générés par IA par la communauté</string>
+  <string name="morphe_music_soundproof_show_button_title">Afficher un bouton SoundProof</string>
+  <string name="morphe_music_soundproof_show_button_summary">Affiche un bouton dans la barre supérieure du lecteur pour voir et soumettre les votes de la communauté pour l\'artiste actuel</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">Passer les artistes IA</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">Passe automatiquement les morceaux dont l\'artiste atteint le seuil IA ci-dessous</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">Afficher une notification de saut</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">Affiche une notification lorsqu\'un morceau est automatiquement sauté</string>
+  <string name="morphe_music_soundproof_threshold_title">Seuil de détection</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">Votes IA minimum</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Un artiste est considéré comme IA lorsque cette proportion minimale de votes indique \'IA\'</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">Nombre minimum de votes</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">Les artistes ayant moins de votes que ce nombre ne sont jamais passés</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">Passé : %1$s (IA, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">Votes SoundProof pour cet artiste</string>
+  <string name="morphe_music_soundproof_sheet_verified">Vérifié</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% IA</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% humain</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 vote</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s votes</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s humain</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s IA</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">Aucun vote pour cet artiste pour le moment</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">La base de données SoundProof n\'est pas encore disponible</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">Elle est téléchargée en arrière-plan. Aucun morceau n\'est passé tant qu\'elle n\'est pas disponible.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">Votes de la communauté provenant de la base de données SoundProof</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">Humain</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">IA</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">Le vote est clos : un modérateur SoundProof a vérifié cet artiste</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">Impossible de contacter SoundProof. Les votes proviennent de la base de données quotidienne et le vote est indisponible.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">Échec du vote SoundProof</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"Les données des artistes proviennent de SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), téléchargées une fois par jour. Le passage des morceaux n'envoie aucune information sur ce que vous écoutez. L'ouverture de la feuille SoundProof envoie le nom de l'artiste actuel au serveur SoundProof pour afficher les votes les plus récents et permettre de voter. Le serveur distingue les votants à l'aide de leur adresse IP, donc votre vote peut apparaître différemment sur un autre réseau.
+
+La base de données est sous licence ODC Open Database License (ODbL). Les entrées de Soul Over AI par xoundbyte sont sous licence CC BY 4.0. Non affilié ni approuvé par SoundProof ou Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Utiliser les paroles de tiers</string>
   <string name="morphe_music_lyrics_enabled_summary">Affiche les paroles d\'un service tiers, en utilisant les paroles intégrées en cas d\'absence de celles-ci</string>
@@ -466,18 +606,18 @@ Pour que le scrobbling continue à se synchroniser pendant la lecture en arrièr
   <string name="morphe_music_lyrics_source_reset_title">Réinitialiser l\'ordre des fournisseurs ?</string>
   <string name="morphe_music_lyrics_source_reset_message">Rétablir les fournisseurs dans l\'ordre de priorité par défaut</string>
   <string name="morphe_music_lyrics_rime_dict_title">Rime Wordlist</string>
-  <string name="morphe_music_lyrics_rime_dict_empty">"La liste de mots Rime nécessite également UniDict : dans le fournisseur de dictionnaire hors ligne, cochez « Caractères chinois et cantonais (UniDict) » et laissez-le terminer son téléchargement. Sans cela, une liste qui lit des caractères ne fournira aucune lecture.
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist nécessite également UniDict : dans le fournisseur 'Dictionnaire hors ligne', cochez \"Caractères chinois et cantonais (UniDict)' et laissez le téléchargement se terminer avant de continuer. Sans cela, une liste qui lit les caractères ne produira aucune lecture.
 
-Cochez les listes que la liste de mots Rime doit lire, puis appuyez sur Enregistrer pour les télécharger. Une liste que vous avez ajoutée est supprimée lorsque vous décochez sa case.
+Cochez les listes que Rime Wordlist doit lire, puis appuyez sur 'Enregistrer' pour les télécharger. Une liste que vous avez ajoutée est supprimée lorsque vous décochez sa case.
 
-Chaque liste est votre propre table mot-à-lecture, un fichier .dict.yaml avec des lignes comme :
-字 ham
+Chaque liste constitue votre propre table de mots et leur lecture, au format .dict.yaml, avec des lignes comme : 
+字 ham 
 典 din2
-La première colonne est le mot, la deuxième sa lecture ; les colonnes supplémentaires et les lignes sans tabulation sont ignorées."</string>
+La première colonne correspond au mot, la deuxième à sa lecture ; les colonnes supplémentaires et les lignes sans tabulation sont ignorées."</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">Aucune liste de mots Rime n\'est cochée pour la langue ci-dessus. Appuyez sur ce nom pour en cocher une, ou choisissez une langue qui possède une liste</string>
   <string name="morphe_music_lyrics_rime_dict_add">Ajouter</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Ajouter une liste Rime Wordlist</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Un fichier .dict.yaml, ou un zip en contenant un, avec des lignes comme 字 ham et 典 din2. La liste est récupérée lorsque vous cochez sa case et appuyez sur Enregistrer, et sa licence est à vérifier par vos soins</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Un fichier .dict.yaml, ou un fichier zip en contenant un, avec des lignes comme 字 ham et 典 din2. La liste est récupérée lorsque vous cochez sa case et appuyez sur \'Enregistrer\'. Il vous appartient de vérifier sa licence</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Code de langue</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Deux ou trois lettres, comme  \'hak\' ou \'wuu\'</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Nom</string>
@@ -493,17 +633,17 @@ La première colonne est le mot, la deuxième sa lecture ; les colonnes supplém
   <string name="morphe_music_lyrics_rime_dict_bad_code">Le code doit comporter deux ou trois lettres, comme \'hak\'</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">L\'adresse doit commencer par https://</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">Le nom et l\'adresse ne peuvent pas contenir de barre verticale</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s possède déjà une table de mots</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s est lu par le romanisateur intégré et ne peut pas accepter de liste de mots</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s possède déjà une table de mots</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s est lu par le romanisateur intégré et ne peut pas accepter de liste de mots</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">Non utilisé : cette langue possède déjà sa propre lecture. Décochez cette case pour le supprimer</string>
-  <string name="morphe_music_lyrics_rime_dict_added">%1$s ajouté. Cochez sa case et appuyez sur \'Enregistrer\' pour la télécharger</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%s ajouté. Cochez sa case et appuyez sur \'Enregistrer\' pour la télécharger</string>
   <string name="morphe_music_lyrics_rime_dict_ready">Listes de mots prêtes</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">Listes de mots prêtes (%1$d entrées)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">Lecture de la liste de mots : %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Listes de mots prêtes (%s entrées)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Lecture de la liste de mots : %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">Échec du téléchargement de la liste de mots. appuyez à nouveau sur \'Enregistrer\' pour réessayer</string>
   <string name="morphe_music_lyrics_clear_cache_title">Effacer les paroles enregistrées</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Supprimer les %1$s Mo de paroles conservées sur cet appareil</string>
-  <string name="morphe_music_lyrics_clear_cache_done">%1$s Mo effacés</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Supprimer les %s Mo de paroles conservées sur cet appareil</string>
+  <string name="morphe_music_lyrics_clear_cache_done">%s Mo effacés</string>
   <string name="morphe_music_token_dialog_get_token">Obtenir un jeton</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Collez le cookie media-user-token de music.apple.com
@@ -563,21 +703,20 @@ Cookies nécessaires : SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_show_copy_button_summary">Appuyez pour copier les paroles originales en texte brut ; appuyez longuement pour enregistrer le fichier source brut des paroles dans \'Téléchargés\'</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Afficher un bouton \'Traduire\'</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Appuyez pour basculer la traduction ; appuyez longuement pour la traduction uniquement. Utilise les fournisseurs de traduction activés dans l\'ordre indiqué</string>
-  <string name="morphe_music_lyrics_show_romanize_button_title">Afficher le bouton \'Romaniser\' ou \'Translitérer\'</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Afficher un bouton \'Romaniser\' ou \'Translitérer\'</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Appuyez pour basculer la romanisation ou la translittération ; appuyez longuement pour la romanisation ou la translittération uniquement. Utilise les fournisseurs de romanisation activés dans l\'ordre indiqué</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Activer la translittération</string>
-  <string name="morphe_music_lyrics_allow_transliteration_summary">Autoriser les lectures non latines provenant de la source des paroles ; désactivée, ne conserver que les lettres latines, les lettres accentuées et les chiffres de ton</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">Autoriser les lectures non latines provenant de la source des paroles ; désactivée, ne conserve que les lettres latines, les lettres accentuées et les chiffres de ton</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Lit chaque mot d\'une parole synchronisée (synchronisation des mots activée) ; le coréen ne nécessite aucun téléchargement ; quatorze écritures partagent un seul téléchargement CLDR ; les caractères Han sont lus par Rime Wordlist lorsque sa table de mots couvre la langue</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">Téléchargement des dictionnaires de lecture…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Lectures prêtes (%1$d entrées)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Lectures prêtes (%s entrées)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Échec du téléchargement - désactivez cette option puis réactivez-la pour réessayer</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Dictionnaire hors ligne</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japonais (SudachiDict, ~75 Mo)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Caractères chinois et cantonais (UniDict, ~8 Mo)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Mots chinois (pinyin-pro, ~17 Mo)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Translittération du Grec, Cyrillique Slave (y compris le Russe, l\'Ukrainien, le Bulgare, le Serbe, le Biélorusse et le Macédonien), Géorgien, Arménien, Hébreu, Arabe, Amharique et Syriaque (CLDR, ~0,5 Mo)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Lecture %1$s : %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_empty">Choisissez au moins un dictionnaire</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Lecture %1$s : %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Afficher un bouton \'Actualiser\'</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Appuyez pour passer aux paroles candidates suivantes ; appuyez longuement pour rechercher les paroles par titre de chanson et artiste</string>
   <string name="morphe_music_lyrics_search_dialog_title">Rechercher des paroles</string>
@@ -590,12 +729,16 @@ Cookies nécessaires : SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_word_sync_summary">Privilégier les paroles mot à mot lorsqu\'elles sont disponibles. Lorsque les paroles disposent d\'un minutage mot à mot, mettre en surbrillance chaque mot ou chaque syllabe en rythme avec la musique</string>
   <string name="morphe_music_lyrics_line_scale_title">Réduire les lignes inactives</string>
   <string name="morphe_music_lyrics_line_scale_summary">Affiche chaque ligne qui n\'est pas en cours de chant dans une taille légèrement plus petite, en plus de l\'atténuer</string>
-  <string name="morphe_music_lyrics_split_background_title">Afficher les voix d\'accompagnement séparément</string>
-  <string name="morphe_music_lyrics_split_background_summary">Sépare les voix de fond et l\'harmonie de la ligne principale. Déplace une voix de fond écrite entre parenthèses, comme « (Oh) I want you », hors de la ligne chantée vers une ligne atténuée dédiée</string>
+  <string name="morphe_music_lyrics_split_background_title">Afficher les chœurs séparément</string>
+  <string name="morphe_music_lyrics_split_background_summary">Sépare les chœurs et l\'harmonie de la ligne principale. Déplace un chœur écrit entre parenthèses, comme \'(Oh) I want you\', hors de la ligne chantée vers une ligne atténuée dédiée</string>
   <string name="morphe_music_lyrics_hide_played_title">Masquer les paroles déjà lues</string>
   <string name="morphe_music_lyrics_hide_played_summary">Masquer les lignes de paroles au-dessus de la ligne en cours de lecture</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Masquer les paroles non lues</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Masquer les lignes de paroles au-dessous de la ligne en cours de lecture</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Arrière-plan dynamique</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Afficher un arrière-plan flou créé à partir de la pochette de l\'album derrière les paroles</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animer l\'arrière-plan dynamique</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Déplacer l\'arrière-plan pendant la lecture, et le faire vibrer au rythme de la musique si YouTube Music dispose de l\'autorisation d\'accès au microphone. Désactivez cette option pour conserver un arrière-plan fixe qui consomme moins de batterie</string>
   <string name="morphe_music_lyrics_mediasession_title">Afficher les paroles MediaSession sur l\'écran de verrouillage</string>
   <string name="morphe_music_lyrics_mediasession_summary">Affiche la ligne en cours sur l\'écran de verrouillage, Android Auto et Bluetooth. Nécessite Android 11 ou une version ultérieure</string>
   <string name="morphe_music_lyrics_miniplayer_title">Afficher les paroles dans le mini-lecteur</string>
@@ -654,9 +797,9 @@ S'applique aux deux limites. À 1,75, quatre caractères pleine largeur comptent
   <string name="morphe_music_lyrics_translate_hide">Traduit</string>
   <string name="morphe_music_lyrics_translation_language_title">Langue de traduction</string>
   <string name="morphe_music_lyrics_romanize_language_title">Langue de romanisation ou de translittération</string>
-  <string name="morphe_music_lyrics_translation_target_language">"Langue cible de traduction :
+  <string name="morphe_music_lyrics_translation_target_language">"Langue cible de la traduction : 
 %s"</string>
-  <string name="morphe_music_lyrics_romanization_target_language">"Langue cible de romanisation ou de translittération :
+  <string name="morphe_music_lyrics_romanization_target_language">"Langue cible de la romanisation ou de la translittération : 
 %s"</string>
   <string name="morphe_music_lyrics_translating">Traduction…</string>
   <string name="morphe_music_lyrics_translate_failed">Impossible de traduire les paroles</string>
@@ -671,7 +814,7 @@ S'applique aux deux limites. À 1,75, quatre caractères pleine largeur comptent
   <string name="morphe_music_lyrics_refreshing">Actualisation</string>
   <string name="morphe_music_lyrics_refreshed">Actualisé</string>
   <string name="morphe_music_lyrics_transcribe_key_title">Clé API QuickLRC</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transcrit ou aligne temporellement les paroles pour la piste actuelle</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transcrit ou les synchronise les paroles avec la musique du morceau en cours</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">Clé QuickLRC enregistrée. Utilisez le bouton de synchronisation dans la fenêtre de recherche des paroles, ou l\'invite du panneau lorsqu\'un morceau n\'a pas de paroles</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">Clé API QuickLRC enregistrée</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC n\'a pas accepté cette clé</string>
@@ -687,26 +830,34 @@ S'applique aux deux limites. À 1,75, quatre caractères pleine largeur comptent
   <string name="morphe_music_lyrics_transcribe_no_text">Aucune parole à synchroniser - transcription à la place</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC n\'a pas pu traiter ce morceau</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">Les crédits QuickLRC pour ce morceau sont épuisés</string>
-  <string name="morphe_music_lyrics_about_summary">"Les paroles sont associées par titre et artiste ; des métadonnées inhabituelles peuvent ne rien donner ou renvoyer la mauvaise version. Utilisez actualiser pour changer de version. Les fournisseurs marqués * nécessitent un jeton. Tous les fournisseurs activés ne sont pas toujours sollicités dans votre ordre, mais répondent selon leur rapidité.
+  <string name="morphe_music_lyrics_about_summary">"Les paroles sont associées par titre et artiste ; des métadonnées inhabituelles peuvent ne rien donner ou renvoyer une mauvaise version. Utilisez l'actualisation pour changer de version. Les fournisseurs marqués d'un * nécessitent un jeton. Tous les fournisseurs activés ne sont pas toujours sollicités dans l'ordre indiqué, mais répondent selon leur rapidité.
 
-Les paroles proviennent de services tiers qui ne sont ni affiliés, ni sponsorisés, ni approuvés par Morphe. Chacun est utilisé tel quel : les paroles, leur disponibilité et leur licence restent la propriété de ces services et de leurs concédants, et leur utilisation peut être soumise à leurs conditions d'utilisation. Seule la recherche demandée est transmise à un service activé - le titre, l'artiste et, si ce service en a besoin, l'identifiant vidéo. Le point de terminaison IA optionnel et la transcription QuickLRC ne s'exécutent qu'après leur configuration, et reçoivent le texte des paroles ou l'URL vidéo du morceau."</string>
+Les paroles proviennent de services tiers qui ne sont ni affiliés, ni sponsorisés, ni approuvés par Morphe. Chacun est utilisé tel quel : les paroles, leur disponibilité et leur licence restent la propriété de ces services et de leurs concédants, et leur utilisation peut être soumise à leurs conditions d'utilisation. Seule la recherche demandée est transmise à un service activé : le titre, l'artiste et, si le service en a besoin, l'identifiant de la vidéo. Le point de terminaison de l'IA facultatif et la transcription QuickLRC ne s'exécutent qu'après leur configuration et reçoivent le texte des paroles ou l'URL vidéo du morceau."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Activez uniquement les fournisseurs que vous utilisez, ou conservez les paramètres par défaut - des requêtes constantes peuvent submerger les petits sites communautaires de paroles</string>
   <string name="morphe_music_lyrics_hide_info_title">Masquer la ligne de crédit</string>
   <string name="morphe_music_lyrics_hide_info_summary">Masquer la ligne de crédit affichée sous les paroles</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Inverser la traduction et la romanisation</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON place la romanisation ou la translittération sous les paroles et la traduction au-dessus ; OFF garde la romanisation ou la translittération au-dessus et la traduction en dessous. Une lecture placée sur chaque syllabe se déplace avec elle, passant du dessus au dessous de la syllabe</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Inverse l\'ordre d\'affichage de la traduction et de la romanisation sous les paroles</string>
   <string name="morphe_music_lyrics_force_center_title">Toujours centrer les paroles</string>
-  <string name="morphe_music_lyrics_force_center_summary">ON place chaque ligne au milieu et ignore l\'alignement de la source, y compris les côtés en duo ; OFF conserve l\'alignement demandé par les paroles</string>
+  <string name="morphe_music_lyrics_force_center_summary">ACTIVÉE : place chaque ligne au milieu et ignore l\'alignement de la source, y compris les côtés du duo ; DÉSACTIVÉE : conserve l\'alignement demandé par les paroles</string>
   <string name="morphe_music_lyrics_providers_keep_one">Au moins un fournisseur doit rester activé</string>
   <string name="morphe_music_lyrics_translation_provider_title">Traduction</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisation ou translittération</string>
-  <string name="morphe_music_lyrics_romanization_provider_local">Dictionnaire hors connexion</string>
-  <string name="morphe_music_lyrics_romanization_provider_rime">Liste de mots Rime</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">Dictionnaire hors ligne</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Rime Wordlist</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Dictionnaire hors ligne</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Script Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Afficher un bouton \'Ruby\'</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Appuyez pour basculer les lectures ruby au-dessus des paroles ; appuyez longuement pour basculer entre hiragana et katakana. Utilise les fournisseurs ruby activés dans l\'ordre indiqué</string>
+  <string name="morphe_music_lyrics_ruby_generating">Génération du ruby…</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Détecter les sections avec l\'IA</string>
-  <string name="morphe_music_lyrics_use_ai_section_summary">Utilisé uniquement lorsque le fournisseur ne fournit pas d\'étiquettes de section telles que Refrain ou Couplet, que votre modèle compatible OpenAI détecte ensuite. La modification de la ligne ouvre également son invite</string>
-  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL du point de terminaison de l\'API (par exemple https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Utilisé uniquement lorsque le fournisseur ne fournit pas d\'étiquettes de section, comme \'Refrain\' ou \'Couplet\', que votre modèle compatible avec OpenAI détecte ensuite. Modifier la ligne ouvre également son prompt</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL du point de terminaison de l\'API (par ex. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Modèle de prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Variables de remplacement : {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Espaces réservés : {task}, {language}, {title}, {artist}, {count}, {lines}. Ceux qui sont inconnus sont laissés tels quels</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt enregistré</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt enregistré, mais le point de terminaison de l\'IA n\'est pas encore utilisable. Configurez-le d\'abord dans \'Paramètres de l\'IA\'</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt réinitialisé</string>
@@ -716,20 +867,23 @@ Les paroles proviennent de services tiers qui ne sont ni affiliés, ni sponsoris
   <string name="morphe_music_lyrics_ai_config_status_invalid">Paramètres incomplets ou rejetés par le fournisseur</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Validation de la connexion…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s : Connecté ! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s : Échec de la connexion. Vérifiez les paramètres.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s : Échec de la connexion. Vérifiez les paramètres.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Entrez d\'abord la clé API</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Test de connexion</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Récupération des modèles…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Récupérer les modèles</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Sélectionnez un modèle</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Échec de la récupération des modèles. Vérifiez la clé API ou la connexion.</string>
-  <string name="morphe_music_lyrics_ai_config_prompt_label">Invite</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Modèle</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL de base</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Préréglages du service</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Choisir un service</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">Clé API (facultative)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Corps de requête supplémentaire (JSON facultatif)</string>
-  <string name="morphe_music_lyrics_ai_config_extra_headers_label">En-têtes de requête supplémentaires (JSON optionnel)</string>
-  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Citiez les noms et valeurs, par exemple {\"api-key\": \"abc\"}. Une valeur non citée contenant / : ou un nombre est rejetée. Une valeur vide supprime un en-tête.</string>
-  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Citiez les noms et valeurs, par exemple {\"temperature\": 0.3}. Une valeur non citée contenant / ou : est rejetée. Le modèle et les messages ne peuvent pas être définis ici.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">En-têtes de requête supplémentaires (JSON facultatif)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Mettez les noms et les valeurs entre guillemets, par ex. {\"api-key\": \"abc\"}. Toute valeur non entourée de guillemets contenant /, : ou un nombre sera rejetée. Une valeur vide supprime un en-tête.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Mettez les noms et les valeurs entre guillemets, par ex. {\"temperature\": 0.3}. Toute valeur non entourée de guillemets contenant / ou : sera rejetée. Le modèle et les messages ne peuvent pas être définis ici.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Clé d\'authentification (Gratuit ou Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Désactive les icônes en gras</string>

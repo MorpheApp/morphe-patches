@@ -9,8 +9,7 @@ package app.morphe.patches.youtube.layout.player.fullscreen
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -42,7 +41,7 @@ private const val EXTENSION_PLAYER_VIEW_INTERFACE =
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/FullscreenVideoScaleButton;"
 
-private val fullscreenVideoScaleResourcePatch = resourcePatch {
+private val fullscreenVideoScaleResourcePatch = patch {
     dependsOn(
         settingsPatch,
         legacyPlayerControlsPatch
@@ -61,7 +60,7 @@ private val fullscreenVideoScaleResourcePatch = resourcePatch {
 }
 
 @Suppress("unused")
-val fullscreenVideoScalePatch = bytecodePatch(
+val fullscreenVideoScalePatch = patch(
     name = "Fullscreen video scale",
     description = "Adds options to stretch or zoom videos to fill the screen in fullscreen mode.",
 ) {
@@ -103,7 +102,7 @@ val fullscreenVideoScalePatch = bytecodePatch(
         }
 
         PlayerViewConstructorFingerprint.let {
-            val videoViewField = it.instructionMatches.last().getFieldAccessed()
+            val videoViewField = it.instructionMatches.last().fieldReference
 
             it.classDef.apply {
                 interfaces.add(EXTENSION_PLAYER_VIEW_INTERFACE)

@@ -8,12 +8,14 @@
 package app.morphe.patches.reddit.misc.settings
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.listDecodableFiles
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.string
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
@@ -39,8 +41,6 @@ import app.morphe.patches.reddit.misc.version.is_2026_30_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
-import app.morphe.patches.util.resource.editText
-import app.morphe.patches.util.resource.transformStringResources
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -51,7 +51,10 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
 
-val settingsPatch = bytecodePatch(
+private const val APP_DOWNGRADE_EXTENSION_CLASS =
+    "Lapp/morphe/extension/reddit/patches/AppDowngradeNoticePatch;"
+
+val settingsPatch = patch(
     description = "Applies mandatory patches to implement Morphe settings into the application."
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
@@ -70,13 +73,13 @@ val settingsPatch = bytecodePatch(
             mainActivityFingerprint = redditActivityOnCreateHook.fingerprint,
             recommendedAppVersion = COMPATIBILITY_REDDIT.targets.first { !it.isExperimental }.version!!
         ),
-        resourcePatch {
+        patch {
             execute {
                 if (is_2026_25_0_or_greater) {
                     // Change menu item title to Morphe.
-                    decode("res/values*/strings.xml").forEach { path ->
-                        this[path].editText { text ->
-                            text.transformStringResources(setOf("label_privacy_policy")) { "Morphe" }
+                    listDecodableFiles("res/values*/strings.xml").forEach { path ->
+                        resourceXml(path).use { strings ->
+                            strings.resourceOrNull("label_privacy_policy")?.text = "Morphe"
                         }
                     }
                 }
@@ -109,6 +112,12 @@ val settingsPatch = bytecodePatch(
                 """
             )
         }
+
+        // Disable Play Store updates allows downgrading, but older app data can cause app crashes and other problems.
+        RedditActivityOnCreateFingerprint.method.addInstruction(
+            0,
+            "invoke-static/range { p0 .. p0 }, $APP_DOWNGRADE_EXTENSION_CLASS->showDowngradeNoticeIfNeeded(Landroid/app/Activity;)V"
+        )
 
         // Turn off Google Play in app update prompt.
         GooglePlayUpdateCheckFingerprint.method.returnEarly(null)

@@ -9,13 +9,13 @@ package app.morphe.patches.reddit.layout.flair
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
-import app.morphe.patcher.util.proxy.mutableTypes.MutableField
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -27,6 +27,7 @@ import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.NarrowLiteralInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import java.util.logging.Logger
@@ -35,7 +36,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/reddit/patches/ShowFl
 private const val CACHED_POST_INTERFACE = $$"Lapp/morphe/extension/reddit/patches/ShowFlairsInHomeFeedPatch$CachedPost;"
 
 @Suppress("unused")
-val showFlairsInHomeFeedPatch = bytecodePatch(
+val showFlairsInHomeFeedPatch = patch(
     name = "Show flairs in home feed",
     description = "Adds an option to show post flair badges in the home feed. " +
             "This patch works with Reddit 2026.24.0 and newer."
@@ -116,12 +117,12 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
         val postPreviewType = PostPreviewFeedElementToStringFingerprint.classDef.type
         val (previewLinkIdField, previewUniqueIdField, previewIdentifierField, previewChildrenField) =
             PostPreviewFeedElementConstructorFingerprint.instructionMatches.let { matches ->
-                listOf(matches[0], matches[1], matches[3], matches[6]).map { it.getFieldAccessed() }
+                listOf(matches[0], matches[1], matches[3], matches[6]).map { it.fieldReference }
             }
 
         val previewCopyFingerprint = postPreviewFeedElementCopyFingerprint(postPreviewType, flairsElementType)
         val previewCopyMethod = previewCopyFingerprint.method
-        val previewFlairsField = previewCopyFingerprint.instructionMatches.last().getFieldAccessed()
+        val previewFlairsField = previewCopyFingerprint.instructionMatches.last().fieldReference
         // Copy method bit mask where all values except the flairs element are copied from the original.
         val previewCopyMask = previewCopyFingerprint.instructionMatches.first()
             .getInstruction<NarrowLiteralInstruction>().narrowLiteral.inv()
@@ -178,7 +179,7 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
 
         val feedPostType = FeedPostSectionToStringFingerprint.classDef.type
         val (sectionLinkIdField, sectionSectionsField, sectionUniqueIdField, sectionIdentifierField) =
-            FeedPostSectionConstructorFingerprint.instructionMatches.map { it.getFieldAccessed() }
+            FeedPostSectionConstructorFingerprint.instructionMatches.map { it.fieldReference }
 
         FeedPostSectionToStringFingerprint.classDef.addCachedPostMethods(
             linkIdField = sectionLinkIdField,
@@ -238,7 +239,7 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
             """
         )
 
-        feedPostSectionMapperFingerprint(feedPostType).let {
+        FeedPostSectionMapperFingerprint.let {
             val returnMatch = it.instructionMatches.last()
             val sectionRegister = returnMatch.getInstruction<OneRegisterInstruction>().registerA
 
@@ -265,9 +266,15 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
         }
 
         // After a feed page is shown, Reddit loads the full posts of the page in the background,
-        // and the full posts include the flairs. A feature flag removes this secondary fetch
-        // for post previews. Keep the fetch, so their flairs are available.
-        postsToLoadFingerprint(postPreviewType).let {
+        // and the full posts include the flairs. This secondary fetch is removed for post previews,
+        // by a feature flag before 2026.45.0. Keep the fetch, so their flairs are available.
+        val postsToLoadFingerprint = if (is_2026_45_0_or_greater) {
+            PostsToLoadFingerprint
+        } else {
+            PostsToLoadLegacyFingerprint
+        }
+
+        postsToLoadFingerprint.let {
             val flagMatch = it.instructionMatches.last()
             val flagRegister = flagMatch.getInstruction<OneRegisterInstruction>().registerA
 
@@ -290,7 +297,7 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
  * @param registerCount Number of local registers used by [addHomeFlairSmali], not including parameters.
  */
 private fun MutableClass.addCachedPostMethods(
-    linkIdField: MutableField,
+    linkIdField: FieldReference,
     registerCount: Int,
     addHomeFlairSmali: String
 ) {

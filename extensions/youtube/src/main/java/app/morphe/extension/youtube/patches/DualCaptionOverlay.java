@@ -1,0 +1,332 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4213
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
+package app.morphe.extension.youtube.patches;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.accessibility.CaptioningManager;
+import android.widget.LinearLayout;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import java.util.WeakHashMap;
+
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.StringRef;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.ui.Dim;
+
+/**
+ * Overlay of the caption window that shows both languages of bilingual captions.
+ * The languages are two independent paragraphs that share only their bottom anchor.
+ */
+@SuppressWarnings("unused")
+public final class DualCaptionOverlay extends LinearLayout {
+    private static final Map<View, WeakReference<DualCaptionOverlay>> layers = new WeakHashMap<>();
+
+    /**
+     * Space between the languages, as a fraction of the text size.
+     */
+    private static final float LANGUAGE_MARGIN_TEXT_SIZE = .28f;
+
+    private final Part primary, secondary;
+    private final Map<View, Float> originalAlphas = new WeakHashMap<>();
+    private boolean active, sizeNotified;
+    private int requestedWidth;
+    private WeakReference<CaptionSession> session = new WeakReference<>(null);
+    private long firstKey = Long.MIN_VALUE, secondKey = Long.MIN_VALUE;
+
+    private DualCaptionOverlay(Context context) {
+        super(context);
+        setOrientation(VERTICAL);
+        setClickable(false);
+        primary = new Part(context, true);
+        secondary = new Part(context, false);
+        addView(primary, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        addView(secondary, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+    }
+
+    @Nullable
+    private static DualCaptionOverlay get(View view) {
+        WeakReference<DualCaptionOverlay> reference = layers.get(view);
+        return reference == null ? null : reference.get();
+    }
+
+    static void begin(View view) {
+        DualCaptionOverlay layer = get(view);
+        if (layer == null) return;
+        layer.active = false;
+        layer.setVisibility(GONE);
+        for (Map.Entry<View, Float> entry : layer.originalAlphas.entrySet())
+            if (entry.getKey().getAlpha() == 0f) entry.getKey().setAlpha(entry.getValue());
+        layer.originalAlphas.clear();
+    }
+
+    @SuppressLint("NewApi")
+    static void show(View view, String first, String second, TextPaint paint, int width,
+            CaptionSession session, long firstKey, long secondKey, boolean complete) {
+        show(view, first, second, paint, width, session, firstKey, secondKey, complete, true, true);
+    }
+
+    @SuppressLint("NewApi")
+    static void show(View view, String first, String second, TextPaint paint, int width,
+            CaptionSession session, long firstKey, long secondKey, boolean complete,
+            boolean primarySlot, boolean secondarySlot) {
+        if (!(view instanceof ViewGroup group) || !(view instanceof StableCaptionBlocks.Window window)) return;
+        DualCaptionOverlay layer = get(view);
+        if (layer == null) {
+            layer = new DualCaptionOverlay(view.getContext());
+            layers.put(view, new WeakReference<>(layer));
+            group.getOverlay().add(layer);
+        }
+        CaptioningManager manager =
+                (CaptioningManager) view.getContext().getSystemService(Context.CAPTIONING_SERVICE);
+        CaptioningManager.CaptionStyle style = manager.getUserStyle();
+        layer.setBackgroundColor(style.hasWindowColor() ? style.windowColor : Color.TRANSPARENT);
+        boolean newSession = layer.session.get() != session;
+        boolean reset = newSession || layer.requestedWidth != width
+                || !layer.primary.paint.equalsForTextMeasurement(paint);
+        if (newSession) {
+            layer.session = new WeakReference<>(session);
+            layer.sizeNotified = false;
+        }
+        layer.requestedWidth = width;
+        int backgroundColor = window.patch_getCaptionBackgroundColor();
+        layer.primary.setVisibility(primarySlot ? VISIBLE : GONE);
+        layer.secondary.setVisibility(secondarySlot ? VISIBLE : GONE);
+        layer.primary.configure(first, paint, style, backgroundColor, reset || layer.firstKey != firstKey, !complete);
+        layer.secondary.configure(second, paint, style, backgroundColor, reset || layer.secondKey != secondKey, !complete);
+        layer.firstKey = firstKey;
+        layer.secondKey = secondKey;
+        ((LayoutParams) layer.secondary.getLayoutParams()).topMargin =
+                primarySlot && secondarySlot
+                        ? Math.max(Dim.dp4, Math.round(paint.getTextSize() * LANGUAGE_MARGIN_TEXT_SIZE)) : 0;
+        layer.forceLayout();
+        layer.active = true;
+        layer.setVisibility(VISIBLE);
+    }
+
+    /** A pending blank translation is not an obstacle for an authored native window. */
+    static boolean hasText(View view) {
+        DualCaptionOverlay layer = get(view);
+        if (layer != null && layer.active
+                && (!layer.primary.text.isEmpty() || !layer.secondary.text.isEmpty())) return true;
+        if (view instanceof StableCaptionBlocks.Window window) {
+            for (CharSequence text : window.patch_getVisibleCaptionLines())
+                if (text != null && text.length() > 0) return true;
+        }
+        return false;
+    }
+
+    /**
+     * Injection point.
+     * Called after the native measurement, and reserves the height of the overlay.
+     */
+    public static void afterMeasure(View view) {
+        if (!StableCaptionBlocks.isEnabled()) return;
+        try {
+            DualCaptionOverlay layer = get(view);
+            if (layer == null
+                    || !layer.active
+                    || !(view instanceof ViewGroup group)
+                    || !(view instanceof StableCaptionBlocks.Window window)) return;
+
+            final int width = layer.requestedWidth;
+            if (width <= 0) {
+                begin(view);
+                return;
+            }
+            layer.measure(
+                    MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY),
+                    MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+
+            final int paddedHeight = layer.getMeasuredHeight() + view.getPaddingTop() + view.getPaddingBottom();
+            if (view.getParent() instanceof View parent) {
+                final int height = parent.getHeight() - parent.getPaddingTop() - parent.getPaddingBottom();
+                if (height > 0 && paddedHeight > height) {
+                    // The native children already contain the full primary translation.
+                    begin(view);
+                    if (!layer.sizeNotified) {
+                        layer.sizeNotified = true;
+                        Utils.showToastShort(StringRef.str("morphe_caption_blocks_too_large"));
+                    }
+                    return;
+                }
+            }
+
+            window.patch_setCaptionMeasuredSize(
+                    Math.max(view.getMeasuredWidth(), width + view.getPaddingLeft() + view.getPaddingRight()),
+                    Math.max(view.getMeasuredHeight(), paddedHeight));
+            place(layer, view, view.getMeasuredWidth(), view.getMeasuredHeight());
+
+            for (int i = 0; i < group.getChildCount(); i++) {
+                View child = group.getChildAt(i);
+                layer.originalAlphas.putIfAbsent(child, child.getAlpha());
+                child.setAlpha(0f);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "afterMeasure failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void afterLayout(View view) {
+        if (!StableCaptionBlocks.isEnabled()) return;
+        try {
+            DualCaptionOverlay layer = get(view);
+            if (layer != null && layer.active) {
+                // Keep the window inside the overlay. When the overlay shrinks while the video
+                // is paused, such as in picture-in-picture, a window moved up to avoid the player
+                // controls is not placed again and can be below the overlay.
+                if (view.getParent() instanceof View parent) {
+                    final int top = parent.getPaddingTop();
+                    final int bottom = parent.getHeight() - parent.getPaddingBottom() - view.getHeight();
+                    if (bottom >= top) {
+                        view.offsetTopAndBottom(Math.max(top, Math.min(bottom, view.getTop())) - view.getTop());
+                    }
+                }
+                place(layer, view, view.getWidth(), view.getHeight());
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "afterLayout failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     * Layout of the subtitle overlay. The caption windows do not get a new layout
+     * if the overlay shrinks while their size stays the same.
+     */
+    public static void afterViewportLayout(View view) {
+        if (!StableCaptionBlocks.isEnabled()) return;
+        try {
+            if (view instanceof ViewGroup parent) {
+                for (int i = 0; i < parent.getChildCount(); i++) afterLayout(parent.getChildAt(i));
+                NativeCaptionPlacement.afterLayout(parent);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "afterViewportLayout failure", ex);
+        }
+    }
+
+    private static void place(DualCaptionOverlay layer, View view, int width, int height) {
+        int x = (width - layer.getMeasuredWidth()) / 2;
+        int y = height - view.getPaddingBottom() - layer.getMeasuredHeight();
+        layer.layout(
+                x,
+                Math.max(0, y),
+                x + layer.getMeasuredWidth(),
+                Math.max(0, y) + layer.getMeasuredHeight());
+    }
+
+    /**
+     * Drawing each language independently preserves per-paragraph wrapping and direction.
+     */
+    private static final class Part extends View {
+        private final TextPaint paint = new TextPaint();
+        private final Paint background = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private String text = "";
+        private CaptioningManager.CaptionStyle style;
+        private StaticLayout layout;
+        private final float padding;
+        private final boolean bottom;
+        private boolean pending;
+        private int slotHeight;
+
+        Part(Context context, boolean bottom) {
+            super(context);
+            this.bottom = bottom;
+            padding = Dim.dp2;
+        }
+
+        void configure(String text, TextPaint source, CaptioningManager.CaptionStyle style,
+                int backgroundColor, boolean reset, boolean pending) {
+            if (reset) slotHeight = 0;
+            this.pending = pending;
+            this.text = text;
+            this.style = style;
+            paint.set(source);
+            paint.setColor(style.foregroundColor);
+            background.setColor(backgroundColor);
+            setContentDescription(text);
+            forceLayout();
+        }
+
+        @SuppressLint("WrongConstant")
+        @Override
+        protected void onMeasure(int widthSpec, int heightSpec) {
+            final int width = Math.max(1, MeasureSpec.getSize(widthSpec) - Math.round(padding * 2));
+            layout =
+                    StaticLayout.Builder.obtain(text, 0, text.length(), paint, width)
+                            .setAlignment(Layout.Alignment.ALIGN_CENTER)
+                            .setBreakStrategy(Layout.BREAK_STRATEGY_BALANCED)
+                            .setHyphenationFrequency(Layout.HYPHENATION_FREQUENCY_NONE)
+                            .setIncludePad(true)
+                            .build();
+            // Pending translations may arrive mid-cue. Keep their slots until the next cue
+            // so completing a translation cannot move text that is already being read.
+            final int height = pending
+                    ? StaticLayout.Builder.obtain("\n", 0, 1, paint, width)
+                            .setIncludePad(true).build().getHeight()
+                    : layout.getHeight();
+            slotHeight = Math.max(slotHeight, Math.max(layout.getHeight(), height));
+            setMeasuredDimension(
+                    MeasureSpec.getSize(widthSpec),
+                    slotHeight + Math.round(padding * 2));
+        }
+
+        @Override
+        protected void onDraw(@NonNull Canvas canvas) {
+            if (layout == null || text.isEmpty()) return;
+            canvas.save();
+            canvas.translate(
+                    padding, bottom ? getHeight() - padding - layout.getHeight() : padding);
+            for (int line = 0; line < layout.getLineCount(); line++)
+                canvas.drawRoundRect(
+                        layout.getLineLeft(line) - padding,
+                        layout.getLineTop(line) - padding,
+                        layout.getLineRight(line) + padding,
+                        layout.getLineBottom(line) + padding,
+                        padding,
+                        padding,
+                        background);
+            int color = paint.getColor();
+            paint.clearShadowLayer();
+            if (style.edgeType == CaptioningManager.CaptionStyle.EDGE_TYPE_OUTLINE) {
+                paint.setStyle(Paint.Style.STROKE);
+                paint.setStrokeWidth(Math.max(1, paint.getTextSize() / 14));
+                paint.setStrokeJoin(Paint.Join.ROUND);
+                paint.setColor(style.edgeColor);
+                layout.draw(canvas);
+                paint.setStyle(Paint.Style.FILL);
+                paint.setColor(color);
+            } else if (style.edgeType != CaptioningManager.CaptionStyle.EDGE_TYPE_NONE) {
+                float offset =
+                        style.edgeType == CaptioningManager.CaptionStyle.EDGE_TYPE_DEPRESSED
+                                ? -padding
+                                : padding;
+                paint.setShadowLayer(padding, offset, offset, style.edgeColor);
+            }
+            layout.draw(canvas);
+            canvas.restore();
+        }
+    }
+}

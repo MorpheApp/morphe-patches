@@ -12,17 +12,16 @@ package app.morphe.patches.youtube.layout.branding.header
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourceXml
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
 import app.morphe.patcher.resourceLiteral
-import app.morphe.patcher.util.Document
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patches.shared.layout.branding.header.CUSTOM_HEADER_RESOURCE_NAME
 import app.morphe.patches.shared.layout.branding.header.baseChangeHeaderPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.findElementByAttributeValueOrThrow
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -39,7 +38,7 @@ private val logoResourceNames = arrayOf("morphe_header")
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ChangeHeaderPatch;"
 
-private val changeHeaderBytecodePatch = bytecodePatch {
+private val changeHeaderBytecodePatch = patch {
 
     execute {
         // Verify images exist. Resources are not used during patching but extension code does.
@@ -99,14 +98,12 @@ val changeHeaderPatch = baseChangeHeaderPatch(
     },
     executeBlock = {
         // Logo is replaced using an attribute reference.
-        document("res/values/attrs.xml").use { document ->
-            val resources = document.childNodes.item(0)
-
+        resourceXml("res/values/attrs.xml", copy = false).use { attrs ->
             fun addAttributeReference(logoName: String) {
-                val item = document.createElement("attr")
-                item.setAttribute("format", "reference")
-                item.setAttribute("name", logoName)
-                resources.appendChild(item)
+                attrs.root.appendChild("attr") {
+                    setAttribute("format", "reference")
+                    setAttribute("name", logoName)
+                }
             }
 
             logoResourceNames.forEach { logoName -> addAttributeReference(logoName) }
@@ -114,24 +111,24 @@ val changeHeaderPatch = baseChangeHeaderPatch(
         }
 
         // Add custom drawables to all styles that use the regular and premium logo.
-        document("res/values/styles.xml").use { document ->
+        resourceXml("res/values/styles.xml").use { styles ->
             arrayOf(
                 "Base.Theme.YouTube.Light" to "light",
                 "Base.Theme.YouTube.Dark" to "dark",
                 "CairoLightThemeRingo2Updates" to "light",
                 "CairoDarkThemeRingo2Updates" to "dark"
             ).forEach { (style, mode) ->
-                val styleElement = document.childNodes.findElementByAttributeValueOrThrow("name", style)
+                val styleElement = styles.resource(style)
 
-                fun addDrawableElement(document: Document, logoName: String, mode: String) {
-                    val item = document.createElement("item")
-                    item.setAttribute("name", logoName)
-                    item.textContent = "@drawable/${logoName}_$mode"
-                    styleElement.appendChild(item)
+                fun addDrawableElement(logoName: String, mode: String) {
+                    styleElement.appendChild("item") {
+                        setAttribute("name", logoName)
+                        text = "@drawable/${logoName}_$mode"
+                    }
                 }
 
-                logoResourceNames.forEach { logoName -> addDrawableElement(document, logoName, mode) }
-                addDrawableElement(document, CUSTOM_HEADER_RESOURCE_NAME, mode)
+                logoResourceNames.forEach { logoName -> addDrawableElement(logoName, mode) }
+                addDrawableElement(CUSTOM_HEADER_RESOURCE_NAME, mode)
             }
         }
     }

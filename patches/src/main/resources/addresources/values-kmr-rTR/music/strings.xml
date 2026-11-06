@@ -150,6 +150,9 @@ Trackên dawnlodkirî li vir xuya dibin"</string>
   <string name="morphe_music_downloads_previous">Berê</string>
   <string name="morphe_music_downloads_next">Piştve</string>
   <string name="morphe_music_downloads_pause">Rawestîne</string>
+  <string name="morphe_music_downloads_shuffle">Tevlihev bikin</string>
+  <string name="morphe_music_downloads_repeat">Dubare bikin</string>
+  <string name="morphe_music_downloads_minimize">Kêm bikin</string>
   <string name="morphe_music_downloads_close">Bigire</string>
   <string name="morphe_music_downloads_delete">Jêbire</string>
   <string name="morphe_music_downloads_delete_track">Dawnloda jêbire</string>
@@ -158,6 +161,38 @@ Trackên dawnlodkirî li vir xuya dibin"</string>
   <string name="morphe_music_downloads_track_deleted">Dawlod hat jêbirin</string>
   <string name="morphe_music_downloads_track_delete_failed">Nehat şiyandin ku dawlod were jêbirin</string>
   <string name="morphe_music_downloads_play_failed">Nexweş bû lîstkirina daxistinê</string>
+  <string name="morphe_music_downloads_playlists">Lîsteyên muzîkê</string>
+  <string name="morphe_music_downloads_playlists_section">Lîsteyên muzîkê yên hatine çêkirin (%s)</string>
+  <string name="morphe_music_downloads_playlists_empty">Hîna tu lîsteya muzîkê ya herêmî tune ne</string>
+  <string name="morphe_music_downloads_playlists_hide">Lîsteyên muzîkê veşêre ▲</string>
+  <string name="morphe_music_downloads_playlist_new">+ Lîsteya muzîkê ya nû</string>
+  <string name="morphe_music_downloads_playlist_new_button">Lîsteya muzîkê ya nû</string>
+  <string name="morphe_music_downloads_playlist_selected">Hatine hilbijartin (%s)</string>
+  <string name="morphe_music_downloads_playlist_select_first">Pêşî stranan hilbijêre</string>
+  <string name="morphe_music_downloads_playlist_clear_selection">Hilbijartinê paqij bike</string>
+  <string name="morphe_music_downloads_playlist_create">Lîsteya muzîkê çêbike</string>
+  <string name="morphe_music_downloads_playlist_create_button">Çêbike</string>
+  <string name="morphe_music_downloads_playlist_add">Tê bikirin lîsteya stranan</string>
+  <string name="morphe_music_downloads_playlist_added">Hatiye zêdekirin ji %s</string>
+  <string name="morphe_music_downloads_playlist_name_hint">Navê lîsteya stranan</string>
+  <string name="morphe_music_downloads_playlist_name_empty">Navê lîsteya stranan nikare vala be</string>
+  <string name="morphe_music_downloads_playlist_save_failed">Nekiribû lîsteya stranan were tomar kirin</string>
+  <string name="morphe_music_downloads_playlist_track_count">%s traka</string>
+  <string name="morphe_music_downloads_playlist_track_count_one">1 trak</string>
+  <string name="morphe_music_downloads_playlist_no_tracks">Di vê lîsteyê de tu trak nîn in</string>
+  <string name="morphe_music_downloads_playlist_play">Lîsteya stranan lê bide</string>
+  <string name="morphe_music_downloads_playlist_play_all">Hemûyan lê bide</string>
+  <string name="morphe_music_downloads_playlist_rename">Nav guhertin</string>
+  <string name="morphe_music_downloads_playlist_rename_title">Navê lîsteya stranan biguherîne</string>
+  <string name="morphe_music_downloads_playlist_save">Save bike</string>
+  <string name="morphe_music_downloads_playlist_delete">Lîsteya stranan jê bibe</string>
+  <string name="morphe_music_downloads_playlist_delete_title">Lîsteya stranan jê bibe?</string>
+  <string name="morphe_music_downloads_playlist_delete_message">%s dê bê jê kirin. Stranên daxizanedî yên mayî dê bimînin</string>
+  <string name="morphe_music_downloads_playlist_deleted">Lîsteya stranan hat jêkirin</string>
+  <string name="morphe_music_downloads_playlist_remove_track">Ji lîsteya stranan derxîne</string>
+  <string name="morphe_music_downloads_playlist_drag_track">Ji bo guhertina rêza wan bikişîne</string>
+  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Ji bo guhertina rêza wan handle bikişîne</string>
+  <string name="morphe_music_downloads_playlist_reorder_done">Temam</string>
   <string name="morphe_music_downloads_notification_channel">Daxistinên audio</string>
   <string name="morphe_music_downloads_playback_channel">Lîstkirina offline</string>
   <string name="morphe_music_downloads_unknown_track">Nexweş bû nasîna trackê ji bo daxistinê</string>
@@ -168,6 +203,28 @@ Trackên dawnlodkirî li vir xuya dibin"</string>
   <string name="morphe_music_downloads_progress">Daxistin %s%%</string>
   <string name="morphe_music_downloads_complete">Daxistin bi dawî bû</string>
   <string name="morphe_music_downloads_failed">Daxistin bi ser neket</string>
+  <string name="morphe_music_downloads_playlist_download_title">Daxistina lîsteya stranan</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Lîstkirina stranan…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s hatin lîstkirin…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Nekarî stranên lîsteya stranê lîst bike</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Hêj hatine daxistin: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s di vê lîsteyê de ne, %2$s hêj nehatine daxistin.
+
+Aneke bi aneke tên daxistin, ku dikare wextekî dirêj bigire û nêzî %3$s cihê vala pêwîst e"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Daxistin</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Daxistina strana %1$s ji %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s hat daxistin</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s hatîn daxistin, %2$s nehatin daxistin</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Daxistina lîsteya muzîkê jixwe di pêşveçûnê de ye</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Hesaba we hîna nayê naskirin. Piştî çemekê dîsa biceribînin</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s hatin remedykirin, hemû jixwe hatine daxistin</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Tenêbeşek ji lîsteya muzîkê hat remedykirin. Ji bo yên mayî, piştî demekê dîsa li Daxistin bitikînin</string>
+  <string name="morphe_music_downloads_playlist_download_started">Daxistina %s di paşperdeye de dijî</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Têkiliya torê tune ye</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Li benda torê ye…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Piştî %1$s ji %2$s rawestiya. Ji bo berdewamkirinê dîsa li Daxistin bitikînin</string>
+  <string name="morphe_music_downloads_mark_title">Stranên daxizanîyî nîşan bike</string>
+  <string name="morphe_music_downloads_mark_summary">Stranên ku jixwe hatine daxizandin, nîşanekê li ber agahiyên xwe di lîsteyên stranan, albûman û encamên lêgerîgan de nîşan didin</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Derbar</string>
@@ -206,6 +263,9 @@ Trackên dawnlodkirî li vir xuya dibin"</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Veşartina Rêgevanên Civatê</string>
   <string name="morphe_music_hide_comments_context_title">Pêveka peyama agahiyê veşêrin</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Veşartina Butona Emojiyê</string>
+  <string name="morphe_music_hide_comments_gif_button_title">Butona GIF veşêre</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_title">GIF û wêneyan veşêre</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_summary">GIF û wêneyên bi koment û bersivan re veşêre</string>
   <string name="morphe_music_hide_comments_info_button_title">Veşartina Butona Agahiyê</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">Veşartina Butona Demşêrê</string>
   <!-- interaction.crossfade.crossfadePatch -->
@@ -285,6 +345,43 @@ Lîstkirina SABR (stremên vîdyoyên spoof hatine guhertin)"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Tracka hatî hilbijartin zêde bikeye rêza li benda çalakiyê</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">Hat zêdekirin rêza li benda çalakiyê</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">Tagên lîsteya stranan</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Tagan bidin lîsteyên stranan û Libraryê bi tagan fîltre bike</string>
+  <string name="morphe_music_playlist_tags_title">Tagên lîsteya stranan çalak bike</string>
+  <string name="morphe_music_playlist_tags_summary">Aitemek Tagan li menyuya lîsteyên stranan, û bihneke fîltra Tagan li kêleka bihneka sorrtkirinê ya Libraryê zêde dike</string>
+  <string name="morphe_music_playlist_tags_manage_title">Tagên lîsteya stranan birêve bibe</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Tagan çêbike, navê wan biguherîne û jê bibe, û tagan bidin lîsteyên stranên ku di Libraryya te de hene</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">Tag</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">Tu tag nînin</string>
+  <string name="morphe_music_playlist_tags_filter_button">Tag</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">Tag: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">Tag (%s veşartî)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">Tagên ji bo %s</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">Tagek nû</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 lîsteya stranê</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s lîsteyên stranê</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">Tagek bi navê %s jixwe heye</string>
+  <string name="morphe_music_playlist_tags_filter_title">Bi tag fîltre bike</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">Tenê nîşan bide</string>
+  <string name="morphe_music_playlist_tags_filter_all">Hemû lîsteyên stranê</string>
+  <string name="morphe_music_playlist_tags_filter_visible">Tagên xuya</string>
+  <string name="morphe_music_playlist_tags_manage">Birêvebibe</string>
+  <string name="morphe_music_playlist_tags_none">Hêj tu tag nînin. Lîsteyeke stranê bi dirêjî bidar xine û Tagan hilbijêre da ku yekê çêbike</string>
+  <string name="morphe_music_playlist_tags_section_tags">Tag</string>
+  <string name="morphe_music_playlist_tags_section_playlists">Lîsteyên stranê</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Yek car Libraryê veke da ku lîsteyên stranên te li vir xuya bibin</string>
+  <string name="morphe_music_playlist_tags_new_tag">Tagek nû</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">Taga biguherîne</string>
+  <string name="morphe_music_playlist_tags_rename">Nav biguherîne</string>
+  <string name="morphe_music_playlist_tags_delete">Jê bibe</string>
+  <string name="morphe_music_playlist_tags_hidden">Veşartî</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Butona Şîrkirinê Veşêrin</string>
   <string name="morphe_music_hide_history_button_title">Butona Dîrokê Veşêrin</string>
@@ -453,6 +550,49 @@ Lîstkirina SABR (stremên vîdyoyên spoof hatine guhertin)"</string>
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling bi xwezayî karanîna YouTube Music ya we bi profîla we ya Last.fm an ListenBrainz re hevdeng dike.
 
 Ji bo ku bêyî astengiyê scrobbling li ser lîstikên paşnavê were hevdengkirin, pê ewle bibin ku karanîna pîlê ya YouTube Music wek \"Nerêkûkirî\" hatî destnîşankirin."</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">Trackên hunermendan ku civakê wekî AI ragihandine derbas bike</string>
+  <string name="morphe_music_soundproof_show_button_title">Butona SoundProof nîşan bide</string>
+  <string name="morphe_music_soundproof_show_button_summary">Butonekê di şirîta jorîn a playerê de nîşan dide da ku dengên civakê ji bo hunermendê niha bibîne û bidide</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">Hunermendên AI derbas bike</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">Bi awayegî otomatikî trackên ku hunermendê wan digihîje derhadê AI yê li jêr derbas dike</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">Agahdariya derbasdanê nîşan bide</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">Dema trackek bi awayegî otomatikî tê derbas kirin, agahdariyekê nîşan dide</string>
+  <string name="morphe_music_soundproof_threshold_title">Derhadê tespîtkirinê</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">Herî kêm dengên AI</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Hunermendek AI ye gava herî kêm ev beşa dengên wê dibêje AI</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">Hejmara herî kêm a dengan</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">Hunermendên ku dengên wan ji vê kêm in tu carî nayên derbas kirin</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">%1$s hat weşandîn (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">Voteyên SoundProof ji bo vê hunermendî</string>
+  <string name="morphe_music_soundproof_sheet_verified">Hat pejirandin</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% mirov</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 vote</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s vote</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s mirov</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s AI</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">Hêj tu vote ji bo vê hunermendî tune</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">Database\'a SoundProof hîna berdest nîne</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">Di paşperde de tê daxistin. Heta ku berdest be, tu track nayên weşandin.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">Votên civakê ji database\'a SoundProof</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">Mirov</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">Votan hatine girtin: moderatorekî SoundProof vê hunermendî kontrol kir</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">Neşiyayî gihîştina SoundProof. Vot ji database\'a rojane ne, û voting berdest nîn e.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">Vota SoundProof bi ser neket</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"Daneyên hunermendan ji SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) tên, her roj carekê tên daxistin. Ger hûn wê derbas bikin, tiştê li serleyaleya çi ya ku hûn lê dinêvin nayê şandin. Veguhastina rûpela SoundProof navê hunermendê niha ji bo servera SoundProof dişîne da ku vote yên nû nîşan bide û hûn vote bidin. Server voteykeran bi nasnameya IP ji hev vediqetîne, lewma voteya we dikare li ser toreke din cuda xuya bibe.
+
+Database bi lisansa ODC Open Database License (ODbL) hatiye lisanskirin. Tecrûbeyên ji Soul Over AI ji aliyê xoundbyte ve bi lisansa CC BY 4.0 ne. Ne girêdayî SoundProof an Soul Over AI ne û ne jî ji aliyê wan ve hatine pesendkirin."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Şarkîyên partiyê sêyemîn bikar bîne</string>
   <string name="morphe_music_lyrics_enabled_summary">Şarkîyên ji karûbarê sêyemîn yê ku dîtin, wê demê vegere şarkîyên paşnavê yên di hundirê de</string>
@@ -465,9 +605,45 @@ Ji bo ku bêyî astengiyê scrobbling li ser lîstikên paşnavê were hevdengki
   <string name="morphe_music_lyrics_source_all_disabled">Hemû dabinkaran hatin betalkirin - lyricên avakirî û lyricên entegre</string>
   <string name="morphe_music_lyrics_source_reset_title">Rêza dabinkeran vegerîne?</string>
   <string name="morphe_music_lyrics_source_reset_message">Dabinkeran vegerîne rêza pêşîn a default</string>
+  <string name="morphe_music_lyrics_rime_dict_title">Lîsteya Peyvên Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Lîsteya Peyvan a Rime her wiha UniDict dixwaze: di dabinkira Ferhenga Offline de, \"Karakterên Çînî û Kantonezî (UniDict)\" nîşan bike û bihêle heta daxistin biqedîye. Bêyî wê, lîsteyek ku karakteran dixwîne tu xwendinan nade.
+
+Lîsteyên ku divê Lîsteya Peyvan a Rime bixwîne nîşan bike, piştre li ser Save bitikîne da ku wan daxistin bike. Lîsteyek ku te lê zêde kir, gava tu wê jê derdixî tê jêbirin.
+
+Her lîste tabloyên peyv-bi-xwendina we ya own e, .dict.yaml e bi xetên wekî:
+字 ham
+典 din2
+Stûna yekem peyv e, stûna duyem xwendina wê ye; stûnên zêde û xetên bê tab tên paşguhkirin."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">Ji bo zimanê jorî tu lîsteya peyvên Rime nehatî nîşankirin. Ji bo nîşankirina yekê li vê navî bitikîne, an zimanekî hilbijêre ku lîsteyek lê hebe</string>
+  <string name="morphe_music_lyrics_rime_dict_add">Zêde bike</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">Lîsteyek Peyvên Rime Zêde Bike</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Dosyaya .dict.yaml, yan jî zipek ku yekê tê de hebe, bi xetên wekî 字 ham û 典 din2. Lîste gava tu wê nîşan bikî û li ser Save bitikînî tê kişandin, û lisansa wê wele ya we ye ku hûn kontrol bikin</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">Koda ziman</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">Du an sê tîp, mîna hak an wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">Nav</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">Di bin xwendinê de tê nîşandan, mîna Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">Navnişana lîsteya peyvan</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">https:// navnîşa .dict.yaml an jî zîpa wê</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">Karakterên ne di peyvekê de</string>
   <string name="morphe_music_lyrics_rime_char_source_auto">Otomatîk</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">Karakterên Kantonî</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">Karakterên Mandarîn</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">Xwendina karakteran tune ye</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">Koda, nav û navnîşê tije bike</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">Koda divê du an sê tîp be, wekî hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">Navnîş divê bi https:// dest pê bike</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">Nav û navnîş nikarin xeta vertîkal bi xwe de hebin</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s jixwe tabloyeke peyvan heye</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s ji hêla romanîzera avakirî ve tê xwendin û nikare lîsteyeke peyvan bistîne</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">Nabe bikar anîn: vê zimanî jixwe xwendina xwe heye, ji bo ku wê rakijî, nîşaneyê jê rakejîne</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%s hat zêdekirin - nîşan bide û Save bitikîne da ku wê daxazin</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">Lîsteyên peyvan amade ne</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Lîsteyên peyvan amade ne (%s qeyd)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Xwendina lîsteya peyvan: %s%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">Daxîna lîsteya peyvan bi ser neket - ji bo dubarekirinê dîsa li Save bitikîne</string>
   <string name="morphe_music_lyrics_clear_cache_title">Gotinên jiyerî yên hatine tohîmkirin paqij bike</string>
-  <string name="morphe_music_lyrics_clear_cache_done">%1$s MB hat paqijkirin</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">%s MB ya gotinên li ser vê amûrê hatine parastin jê bibe</string>
+  <string name="morphe_music_lyrics_clear_cache_done">%s MB hat paqijkirin</string>
   <string name="morphe_music_token_dialog_get_token">Token bistîne</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Kukiyên \"media-user-token\" ji music.apple.com bisekin
@@ -526,9 +702,21 @@ Kukiyên pêwîst: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_show_copy_button_title">Nîşanê kopîkirinê bibîne</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Ji bo kopîkirina gotincên orîjînal wekî nivîsa sade betike; ji bo parastina dosyaya çavkaniyê ya gotincên xav li Downloads wê dirêj bigire</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Nîşanê wergerandinê bibîne</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Xwendin amade ne (%1$d qedaran)</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Ji bo guhertina wergerê lê bitikîne; ji bo tenê wergerê dirêj bitikîne. Dabînkerên wergerê yên çalak li gorî rêza wan têne bikaranîn</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Bişkoja Romanize an Transliterate nîşan bide</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Ji bo guhertina romanîzasyonê an translîterasyonê lê bitikîne; ji bo tenê romanîzasyonê an translîterasyonê dirêj bitikîne. Dabînkerên romanîzasyonê yên çalak li gorî rêza wan têne bikaranîn</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">Translîterasyonê çalak bike</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">Xwendinên ne-Latîn ji çavkaniya lyrican bidest bixe; gava kapatî be, tenê tîpên Latîn, tîpên bi aksan û rojên tonan bipare</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Her peyva lyricekî bi dem (word sync çalak) dixwîne; Koreyî hewcedariya daxînan nîne; çarda skrîpt ji bo yek daxîna CLDR têne bikaranîn; karakterên Han ji hêla Rime Wordlist ve têne xwendin gava tabloya peyvan zimanî wekîyî dike</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">Danêkirina ferhengên xwendinê…</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Xwendin amade ne (%s qeyd)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Dawberdan bi ser neket - ji bo dubarekirinê vê yekê veguherîne ser \'off\' û paşê dîsa \'on\' bike</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Xwendina %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Ferhenga Offline</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japonî (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">Karakterên Çînî û Kantonî (UniDict, ~8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">Peyvên Çînî (pinyin-pro, ~17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliterasyona Yewnanî, Slavî Kirîlî (bi Rusî, Ukrayînî, Bulgarî, Serbî, Belarusî, Makedonî), Gurcî, Ermenî, Îbranî, Erebî, Amharî û Suryanî (CLDR, ~0.5 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Xwendina %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Bişkoja Nûkirinê nîşan bide</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Ji bo guhartina berhevê gotinên din bitapîne; ji bo lêgerîna gotinan bi navê stran û hunermend dirêj bitapîne</string>
   <string name="morphe_music_lyrics_search_dialog_title">Gotinên stranê bigere</string>
@@ -539,10 +727,18 @@ Kukiyên pêwîst: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_saved">Hat savekirin</string>
   <string name="morphe_music_lyrics_word_sync_title">Peyv an heceyên senkronize kirî nîşan bide</string>
   <string name="morphe_music_lyrics_word_sync_summary">Dema ku hebin, pêşînî bide gotinên peyv bi peyv. Dema ku gotin demên peyvan hildigirin, her peyv an heceyê li gorî muzîkê nîşan dide</string>
+  <string name="morphe_music_lyrics_line_scale_title">Xetên neçalak biçuk bike</string>
+  <string name="morphe_music_lyrics_line_scale_summary">Her xeta ku niha nayê stran kirin hinekî biçûktir dikişîne, li ser tarîkirina wê</string>
+  <string name="morphe_music_lyrics_split_background_title">Dengên paşperde bi cîda ve nîşan bide</string>
+  <string name="morphe_music_lyrics_split_background_summary">Dengên paşperde û harmoniyan ji xeta sereke veqetîne. Dengê paşperde yê ku di nav hevalîyan de hatiye nivîsandin, wekî \"(Oh) I want you\", ji xeta stranê derxe û bike xeteke tarî ya xwe</string>
   <string name="morphe_music_lyrics_hide_played_title">Gotinên hatine lêdan veşêre</string>
   <string name="morphe_music_lyrics_hide_played_summary">Hêlên gotinên li ser hêla lêdanê ya niha veşêre</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Gotînên neyeşandî veşêre</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Hêlên gotinên stranê yên xwarê ya niha ya lêdanê veşire</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Paşbingehê dînamîk</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Paşbingeheke xizîb ku ji hunera albûmê li pişt gotinên stranê hatî çêkirin nîşan bide</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Paşbingehê dînamîk animate bike</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Di dema lîstkirinê de paşbingehê biherikîne, û heger YouTube Music destûra mîkrofonê hebe, wê li gorî muzîkê bi lêdan bide. Ji bo paşbingeheke bêtevî ku kêm bataryayê bi kar bîne, vê veguherîne</string>
   <string name="morphe_music_lyrics_mediasession_title">Gotinên MediaSession ên li ser ekranê ya qiflockê nîşan bide</string>
   <string name="morphe_music_lyrics_mediasession_summary">Hêla niha li ser ekrana qulîkirî, Android Auto û Bluetooth nîşan dide. Android 11 an nûtir pêwîst e</string>
   <string name="morphe_music_lyrics_miniplayer_title">Gotinên miniplayer-î nîşan bide</string>
@@ -596,9 +792,15 @@ Li her du sînoran tê sepandin. Li ser 1.75, çar karakterên tam-berz wekî 7 
   <string name="morphe_music_lyrics_translated_by_ai">Ji hêla %s ve hat wergerandin</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Ji hêla %s ve hatiye romanîkirin</string>
   <string name="morphe_music_lyrics_romanized_by_local">Ji hêla %s ve hatî romanîzekirin</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">Ji hêla Rime (%s) ve hatî romanîzekirin</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Hat wergerandin</string>
   <string name="morphe_music_lyrics_translation_language_title">Zimanê wergêranê</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Zimanê romanîzekirinê an translîterasyonê</string>
+  <string name="morphe_music_lyrics_translation_target_language">"Zimanê armanca wergerê:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"Zimanê armancê yê romanîzasyonê an translîterasyonê:
+%s"</string>
   <string name="morphe_music_lyrics_translating">Wergerandin…</string>
   <string name="morphe_music_lyrics_translate_failed">Nefibû ku nivîs were wergerandin</string>
   <string name="morphe_music_lyrics_romanize_hide">Hat romanîzekirin</string>
@@ -612,6 +814,7 @@ Li her du sînoran tê sepandin. Li ser 1.75, çar karakterên tam-berz wekî 7 
   <string name="morphe_music_lyrics_refreshing">Nûkirinê</string>
   <string name="morphe_music_lyrics_refreshed">Nûkirin</string>
   <string name="morphe_music_lyrics_transcribe_key_title">Kliya API ya QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC gotinên stranê yên ji bo tracka niha transkrîbe dike an li gorî wextê rêkûpêk dike</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">Kêlîta QuickLRC hat save kirin. Butonka align a di dialoga lêgerîna gotinên stranê de, an jî agahdariya panê bikar bîne gava trackek gotinên stranê tune bin</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">Kliya API ya QuickLRC hat parastin</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC-ê ew kliya qebûl nekir</string>
@@ -627,26 +830,60 @@ Li her du sînoran tê sepandin. Li ser 1.75, çar karakterên tam-berz wekî 7 
   <string name="morphe_music_lyrics_transcribe_no_text">Tu gotinên stranê tune ne ku alignment lê were kirin - li şûma wê transcription tê kirin</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC nikarî vê trackê proses bike</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">Kredîtên QuickLRC ji bo vê trackê qediyan</string>
+  <string name="morphe_music_lyrics_about_summary">"Gotinên stranê bi nav û hunermend re tên mezkir, metadata yên neasayî dibe ku tiştekî nebînin an jî versiyona şaş bibînin. Ji bo guhertina versiyonan, 'refresh'ê bikar bîne. Dabinkarên ku bi * hatine nîşankirin tokenekî dixwazin. Hemû dabinkarên çalak ne her tim li gorî rêza we tên daxwazkirin, lê li gorî leza xwe bersiv didin.
+
+Gotinên stranê ji xizmetên third-party tên ku bi Morphe ve girêdayî nîn in, ji aliyê wê ve nayên sponsorkirin an pesendkirin. Her yek wekî ku heye tê bikaranîn: gotin, berdestbûna wan û lisansa wan di destê wan xizmetguzaran û lisanskerên wan de dimîne, û bikaranîna wan dikare li gorî şert û mercên wan be. Tiştê ku digihîje xizmeteke çalak tenê lêgerîna we ye - nav, hunermend, û li wir ku xizmetê pêdivî be, IDya vîdyoyê. Endpointa AI ya vebijartî û transkrîpsiyona QuickLRC tenê piştî ku hûn wan konfîgur bikin dixebitin, û nivîsa gotinên stranê an URLya vîdyoya trackê distînin."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Tenê wan dabinkeran çalak bike yên ku tu bikar tînî, an jî yên pêşîn bihêle - daxwazên berdewam dikarin malperên lyrics ên piçûk ên civakî winda bikin</string>
   <string name="morphe_music_lyrics_hide_info_title">Xuşana xeta kredê veşêre</string>
   <string name="morphe_music_lyrics_hide_info_summary">Hêla kredîtê ya ku li xwarê gotinên stranê tê nîşandan veşire</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Wergera û romanîzasyonê biguherîne</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Rêza nîşandana wergera û romanîzasyonê li bin gotinên stranê diguhêre</string>
+  <string name="morphe_music_lyrics_force_center_title">Hemişê gotinên stranê navendî bike</string>
+  <string name="morphe_music_lyrics_force_center_summary">ON her rêyê dike navîn û hevlîna çavkaniyê (bi tevba aliyên duetê re) paşguh nake; OFF hevlîna ku gotinên stranê dixwazin diparêze</string>
+  <string name="morphe_music_lyrics_providers_keep_one">Divê herî kêm yek dabinker vekirî be</string>
+  <string name="morphe_music_lyrics_translation_provider_title">Werger</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">Romanîzakî yan translîterasyon</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">Ferhenga Oflaîn</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Lîsteya Peyvên Rime</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Ferhenga Offline</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Skrîpta Ruby</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Bişkoja nîşandana Ruby</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Ji bo vekirin/girtina xwendinên ruby li ser gotinên stranê lê bide; ji bo guherandina navbera hiragana û katakana dirêj bistê. Dabînkerên ruby yên çalak bi rêzî yên nivîsî bikar tîne</string>
+  <string name="morphe_music_lyrics_ruby_generating">Ruby tê hilberandin…</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">Beşan bi AI detekte bike</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Tenê tê bikaranîn gava dabinker tuyî nivîsên beşan wekî Chorus yan Verse nafiriste, ku modela we ya li gorî OpenAI piştrast dike. Edîtkirina rêyê her wiha prompta wê vekire</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-ê endpoint-ê API (mînak: https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Şablonê Promptê</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Şûneke vekirî: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholder: {task}, {language}, {title}, {artist}, {count}, {lines}. Yênên nezan hatine hiştin wekî ku hatine nivîsandin</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt hat tomar kirin</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt hat save kirin, lê endpointa AI hîşta neyê bikaranîn. Berê wê di Settingsên AI de configure bike</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt hat vegerandin</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Mîhengên wergerandinê &amp; Romanîzasyonê hatin savekirin</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Mîheng hatin vegerandin ser default</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">URL-ê bingehîn divê bi http:// an https:// dest pê bike</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">Mîhengên kêm in an ji hêla dabinker ve hatine redkirin</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Gihîştan tê kontrolkirin…</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Hat girêdan! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Têkilî şikest. Mînasên xwe kontrol bike.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">Pêşî kîlîta API binivîse</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Taqîkirina girêdanê</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Hêvîkirina modelan…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Hêzana modelan</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Modelekê Hilbijêre</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Hêvîkirina modelan bi ser neket. Keya API-yê an jî girêdanê kontrol bike.</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL-ya Bingehîn</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Presetên xizmetê</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Xizmetekî bijêre</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">Kîleya API (valîye)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Laşê daxwaza zêde (JSON-ê valîye)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">Sernavên daxwaza zêde (JSON-ê vebijartî)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Nav û nirxan bi nîşanên quote bike, mînak {\"api-key\": \"abc\"}. Nirxekî bê-quote ku / : yan jimareyek tê de hebe tê red kirin. Nirxek vala sernavê radike.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Nav û nirxan bi nîşanên quote bike, mînak {\"temperature\": 0.3}. Nirxekî bê-quote ku / yan : tê de hebe tê red kirin. Model û peyamning bi vî awayî nayên danîn.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Kîleya otentîkasyonê (Belaş an Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Îkonên stûr neçalak bike</string>

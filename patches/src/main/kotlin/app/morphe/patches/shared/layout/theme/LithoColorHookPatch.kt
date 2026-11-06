@@ -11,8 +11,8 @@
 package app.morphe.patches.shared.layout.theme
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
@@ -59,8 +59,8 @@ fun lithoDrawableColorHook(methodDescriptor: String) {
 }
 
 internal fun lithoColorHookPatch(
-    useModernHook: BytecodePatchBuilder.() -> Boolean
-) = bytecodePatch {
+    useModernHook: PatchDefinition.() -> Boolean
+) = patch {
     execute {
         val fingerprint = if (useModernHook()) {
             LithoOnBoundsChangeFingerprint

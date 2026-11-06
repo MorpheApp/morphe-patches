@@ -8,12 +8,12 @@
 package app.morphe.patches.music.interaction.jam
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.getMutableMethod
 import app.morphe.patcher.util.numberOfParameterRegisters
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.util.cloneMutable
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.getMutableMethod
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
@@ -31,7 +31,7 @@ internal const val JAM_ARTWORK = "Lapp/morphe/extension/music/patches/jam/JamArt
 internal const val JAM_MENU = "Lapp/morphe/extension/music/patches/jam/JamMenu;"
 
 /** Installs the queue-facing native bridges selected by [resolveJamQueueAbi]. */
-internal fun BytecodePatchContext.installJamQueueBridges(queue: JamQueueAbi) {
+internal fun installJamQueueBridges(queue: JamQueueAbi) {
     installQueueAccess(queue)
     installQueueCallback(queue)
     installNativeQueueListAdapter(queue.storage)
@@ -39,7 +39,7 @@ internal fun BytecodePatchContext.installJamQueueBridges(queue: JamQueueAbi) {
     installQueueManagerCapture(queue)
 }
 
-private fun BytecodePatchContext.installQueueAccess(queue: JamQueueAbi) {
+private fun installQueueAccess(queue: JamQueueAbi) {
     val manager = mutableClassDefBy(queue.managerType)
     manager.interfaces.add(ACCESS)
     val enqueue = queue.enqueue.getMutableMethod()
@@ -84,7 +84,7 @@ private fun BytecodePatchContext.installQueueAccess(queue: JamQueueAbi) {
     installQueueSelection(queue)
 }
 
-private fun BytecodePatchContext.installQueueSnapshots(manager: MutableClass, queue: JamQueueAbi) {
+private fun installQueueSnapshots(manager: MutableClass, queue: JamQueueAbi) {
     manager.addBridge(
         "patch_jamLaneItems",
         listOf("I"),
@@ -125,7 +125,7 @@ private fun BytecodePatchContext.installQueueSnapshots(manager: MutableClass, qu
     )
 }
 
-private fun BytecodePatchContext.installQueueItemMetadata(
+private fun installQueueItemMetadata(
     manager: MutableClass,
     queue: JamQueueAbi,
 ) {
@@ -135,7 +135,7 @@ private fun BytecodePatchContext.installQueueItemMetadata(
 }
 
 @Suppress("UnusedReceiverParameter")
-private fun BytecodePatchContext.installQueueCreation(manager: MutableClass, queue: JamQueueAbi) {
+private fun installQueueCreation(manager: MutableClass, queue: JamQueueAbi) {
     val item = queue.item
     manager.addBridge(
         "patch_jamCreateItem",
@@ -152,7 +152,7 @@ private fun BytecodePatchContext.installQueueCreation(manager: MutableClass, que
     )
 }
 
-private fun BytecodePatchContext.installQueueDisplayAccess(
+private fun installQueueDisplayAccess(
     manager: MutableClass,
     displays: QueueDisplaysAbi,
     storage: QueueStorageAbi,
@@ -164,7 +164,7 @@ private fun BytecodePatchContext.installQueueDisplayAccess(
         .forEach { display -> installDisplayInterception(display) }
 }
 
-private fun BytecodePatchContext.installDisplayAccess(
+private fun installDisplayAccess(
     manager: MutableClass,
     display: QueueDisplayAbi,
     storage: QueueStorageAbi,
@@ -227,7 +227,7 @@ private fun BytecodePatchContext.installDisplayAccess(
     }
 }
 
-private fun BytecodePatchContext.installDisplayInterception(display: QueueDisplayAbi) {
+private fun installDisplayInterception(display: QueueDisplayAbi) {
     val controller = mutableClassDefBy(display.type)
     val current = display.currentIndex.getMutableMethod()
     val currentName = current.name
@@ -274,7 +274,7 @@ private fun BytecodePatchContext.installDisplayInterception(display: QueueDispla
     )
 }
 
-private fun BytecodePatchContext.installQueueOperations(manager: MutableClass, queue: JamQueueAbi) {
+private fun installQueueOperations(manager: MutableClass, queue: JamQueueAbi) {
     val remove = queue.remove.getMutableMethod()
     val removeName = remove.name
     remove.setName("patch_jamLocalRemove")
@@ -336,7 +336,7 @@ private fun BytecodePatchContext.installQueueOperations(manager: MutableClass, q
     )
 }
 
-private fun BytecodePatchContext.installQueueMenu(manager: MutableClass, queue: JamQueueAbi) {
+private fun installQueueMenu(manager: MutableClass, queue: JamQueueAbi) {
     manager.addBridge(
         "patch_jamRequestMenu",
         listOf("[B"),
@@ -367,7 +367,7 @@ private fun BytecodePatchContext.installQueueMenu(manager: MutableClass, queue: 
     )
 }
 
-private fun BytecodePatchContext.installQueueSelection(queue: JamQueueAbi) {
+private fun installQueueSelection(queue: JamQueueAbi) {
     val owner = mutableClassDefBy(queue.selection.definingClass)
     val local = queue.selection.getMutableMethod()
     val name = local.name
@@ -390,7 +390,7 @@ private fun BytecodePatchContext.installQueueSelection(queue: JamQueueAbi) {
     )
 }
 
-private fun BytecodePatchContext.installQueueCallback(queue: JamQueueAbi) {
+private fun installQueueCallback(queue: JamQueueAbi) {
     val callback = mutableClassDefBy(queue.callback.type)
     val constructor = queue.callback.constructor.getMutableMethod()
     constructor.findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
@@ -403,7 +403,7 @@ private fun BytecodePatchContext.installQueueCallback(queue: JamQueueAbi) {
     installCallbackBridge(callback, queue.callback.failure, queue, false)
 }
 
-private fun BytecodePatchContext.installCallbackBridge(
+private fun installCallbackBridge(
     callback: MutableClass,
     reference: MethodReference,
     queue: JamQueueAbi,
@@ -436,7 +436,7 @@ private fun BytecodePatchContext.installCallbackBridge(
     )
 }
 
-private fun BytecodePatchContext.installNativeQueueListAdapter(storage: QueueStorageAbi) {
+private fun installNativeQueueListAdapter(storage: QueueStorageAbi) {
     val nativeList = mutableClassDefBy(NATIVE_LIST)
     nativeList.interfaces.add(storage.laneType)
     nativeList.addBridge(
@@ -471,7 +471,7 @@ private fun BytecodePatchContext.installNativeQueueListAdapter(storage: QueueSto
     )
 }
 
-private fun BytecodePatchContext.installQueueItemAccess(item: QueueItemAbi) {
+private fun installQueueItemAccess(item: QueueItemAbi) {
     val menuPayload =
         requireNotNull(item.menuPayload) { "Unable to install Jam queue-item menu payload bridge" }
     val metadataAccess = $$"Lapp/morphe/extension/music/patches/jam/YouTubeMusicBridge$MetadataAccess;"
@@ -525,7 +525,7 @@ private fun BytecodePatchContext.installQueueItemAccess(item: QueueItemAbi) {
     thumbnail.addReferenceGetter("patch_jamThumbnailUrl", item.thumbnailUrl)
 }
 
-private fun BytecodePatchContext.installQueueManagerCapture(queue: JamQueueAbi) {
+private fun installQueueManagerCapture(queue: JamQueueAbi) {
     val original = queue.constructor.getMutableMethod()
     val preservedThisRegister = requireNotNull(original.implementation).registerCount
     val constructor =

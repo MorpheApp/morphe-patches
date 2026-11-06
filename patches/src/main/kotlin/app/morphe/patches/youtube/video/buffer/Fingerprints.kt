@@ -8,7 +8,9 @@
 package app.morphe.patches.youtube.video.buffer
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -22,8 +24,9 @@ internal object ShouldContinueLoadingFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf("L"),
     filters = listOf(
-        opcode(Opcode.IGET_WIDE),
-        literal(500000L),
+        // The buffered duration. 21.45+ reads it more than once.
+        fieldAccess(opcode = Opcode.IGET_WIDE, type = "J"),
+        opcode(Opcode.CMP_LONG, location = MatchAfterWithin(3)),
         literal(120000),
         literal(15000L)
     )

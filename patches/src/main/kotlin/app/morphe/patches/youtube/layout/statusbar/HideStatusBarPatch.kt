@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.layout.statusbar
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.navigation.translucentNavigationBarFeatureFlagsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -26,7 +26,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/HideStatusBarPatch;"
 
 @Suppress("unused")
-val hideStatusBarPatch = bytecodePatch(
+val hideStatusBarPatch = patch(
     name = "Hide status bar",
     description = "Adds an option to hide the system status bar. Swipe down from the top edge to show it for a moment.",
 ) {

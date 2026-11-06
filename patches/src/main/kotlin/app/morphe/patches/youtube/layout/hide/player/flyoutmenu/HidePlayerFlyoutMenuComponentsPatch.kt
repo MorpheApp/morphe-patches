@@ -10,8 +10,9 @@
 
 package app.morphe.patches.youtube.layout.hide.player.flyoutmenu
 
+import app.morphe.patcher.Match
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
@@ -22,6 +23,8 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -39,7 +42,7 @@ internal fun addPlayerFlyoutMenuPreferences(vararg preferences: BasePreference) 
     playerFlyoutMenuGroup += preferences
 }
 
-internal val playerFlyoutPreferences = bytecodePatch {
+internal val playerFlyoutPreferences = patch {
     finalize {
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
@@ -51,7 +54,7 @@ internal val playerFlyoutPreferences = bytecodePatch {
 }
 
 @Suppress("unused")
-val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
+val hidePlayerFlyoutMenuComponentsPatch = patch(
     name = "Hide player flyout menu components",
     description = "Adds options to hide menu components that appear when pressing the gear icon in the video player."
 ) {
@@ -62,7 +65,8 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
         settingsPatch,
         elementProtoParserHookPatch,
         fixProtoLibraryPatch,
-        treeNodeElementHookPatch
+        treeNodeElementHookPatch,
+        versionCheckPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -117,27 +121,35 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
 
         // region Patch for the Shorts flyout
 
-        CaptionsOldBottomSheetLayoutInflaterFingerprint.matchAll(1 .. 2).forEach { match ->
-            match.let {
-                it.method.apply {
-                    val footerViewIndex = it.instructionMatches.last().index
-                    val footerViewArgs = fiveRegisters(footerViewIndex)
+        fun Match.hideCaptionsOldBottomSheetFooter() = method.apply {
+            val footerViewIndex = instructionMatches.last().index
+            val footerViewArgs = fiveRegisters(footerViewIndex)
 
-                    replaceInstruction(
-                        footerViewIndex,
-                        "invoke-static { $footerViewArgs }, $EXTENSION_CLASS->" +
-                                "hideCaptionsOldBottomSheetFooter(Landroid/widget/ListView;Landroid/view/View;Ljava/lang/Object;Z)V"
-                    )
+            replaceInstruction(
+                footerViewIndex,
+                "invoke-static { $footerViewArgs }, $EXTENSION_CLASS->" +
+                        "hideCaptionsOldBottomSheetFooter(Landroid/widget/ListView;Landroid/view/View;Ljava/lang/Object;Z)V"
+            )
+        }
 
-                    val headerViewIndex = it.instructionMatches[1].index
-                    val headerViewArgs = fiveRegisters(headerViewIndex)
+        fun Match.hideCaptionsOldBottomSheetHeader() = method.apply {
+            val headerViewIndex = instructionMatches[1].index
+            val headerViewArgs = fiveRegisters(headerViewIndex)
 
-                    replaceInstruction(
-                        headerViewIndex,
-                        "invoke-static { $headerViewArgs }, $EXTENSION_CLASS->" +
-                                "hideCaptionsOldBottomSheetHeader(Landroid/view/View;I)Landroid/view/View;"
-                    )
-                }
+            replaceInstruction(
+                headerViewIndex,
+                "invoke-static { $headerViewArgs }, $EXTENSION_CLASS->" +
+                        "hideCaptionsOldBottomSheetHeader(Landroid/view/View;I)Landroid/view/View;"
+            )
+        }
+
+        if (is_21_44_or_greater) {
+            CaptionsOldBottomSheetFooterFingerprint.matchAll(1 .. 2).forEach { it.hideCaptionsOldBottomSheetFooter() }
+            CaptionsOldBottomSheetHeaderFingerprint.match().hideCaptionsOldBottomSheetHeader()
+        } else {
+            CaptionsOldBottomSheetLayoutInflaterFingerprint.matchAll(1 .. 2).forEach {
+                it.hideCaptionsOldBottomSheetFooter()
+                it.hideCaptionsOldBottomSheetHeader()
             }
         }
 

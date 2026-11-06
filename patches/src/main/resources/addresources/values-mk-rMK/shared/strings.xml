@@ -152,7 +152,7 @@ Second \"item\" text"</string>
 Половина од %s заставоците се блокирани и по секое рестартирање вие кажувате дали однесувањето е сè уште присутно.
 
 Репродуцирајте го однесувањето еднаш пред да започнете, во спротивно заставоците за кои апликацијата сè уште не побарала ќе недостасуваат од пребарувањето"</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Табела на водечки спонзори SponsorBlock</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Започни</string>
   <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Нема заставоци за функции за пребарување.
 
 Во бинарната пребарувачка можат да се користат само заставоци до кои апликацијата стигнала и кои моментално не се присилно вклучени"</string>
@@ -181,14 +181,14 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG не е инсталирано. Инсталирајте го</string>
   <string name="gms_core_dialog_title">Потребна е акција</string>
-  <string name="gms_core_dialog_outdated_message">"Вашата верзија на MicroG v%1s е застарена и може да предизвика проблеми.
+  <string name="gms_core_dialog_outdated_message">"Вашиот MicroG v%1$s е застарен и може да предизвика проблеми.
 
-Ве молиме ажурирајте го MicroG на најновата верзија v%2s"</string>
+Ве молиме ажурирајте го MicroG на најновата верзија v%2$s"</string>
   <string name="gms_core_dialog_update_text">Ажурирај</string>
   <string name="gms_core_dialog_ignore_text">Игнорирај</string>
   <string name="gms_core_dialog_conflict_message">"Инсталираниот MicroG не е препорачан од Morphe:
 
-%1s
+%s
 
 Допрете за да го деинсталирате, потоа повторно отворете ја оваа апликација и инсталирајте MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Деинсталирај</string>

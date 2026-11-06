@@ -9,7 +9,7 @@ package app.morphe.patches.shared.misc.lottie
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -22,7 +22,7 @@ internal const val SET_ANIMATION_METHOD_NAME = "patch_setAnimation"
  * Adds non obfuscated aliases of `setAnimation(int)` and `setAnimation(InputStream, String)`
  * to the Lottie animation view, so extension code can play an animation of its own.
  */
-val lottieAnimationPatch = bytecodePatch {
+val lottieAnimationPatch = patch {
 
     execute {
         LottieAnimationViewSetAnimationIntFingerprint.classDef.methods.apply {

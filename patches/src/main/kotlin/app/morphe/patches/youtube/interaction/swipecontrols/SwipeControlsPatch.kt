@@ -10,14 +10,21 @@
 
 package app.morphe.patches.youtube.interaction.swipecontrols
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.youtube.interaction.seekbar.SeekbarUpdatePointFingerprint
+import app.morphe.patches.youtube.interaction.seekbar.SlideSeekbarGetViewControllerFingerprint
+import app.morphe.patches.youtube.interaction.seekbar.SlideSeekbarHandlerConstructorFingerprint
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerIcons
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
@@ -30,14 +37,28 @@ import app.morphe.patches.youtube.shared.YouTubeMainActivityConstructorFingerpri
 import app.morphe.patches.youtube.video.audio.soundBoostPatch
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.cloneMutable
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.transformMethods
 import app.morphe.util.traverseClassHierarchy
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/swipecontrols/SwipeControlsHostActivity;"
 
-private val swipeControlsResourcePatch = resourcePatch {
+private const val EXTENSION_SEEK_CLASS =
+    "Lapp/morphe/extension/youtube/swipecontrols/controller/SwipeSeekController;"
+
+private const val EXTENSION_SCRUBBER_INTERFACE =
+    "Lapp/morphe/extension/youtube/swipecontrols/controller/SeekbarScrubber;"
+
+private val swipeControlsResourcePatch = patch {
     dependsOn(
         settingsPatch,
         versionCheckPatch,
@@ -69,6 +90,11 @@ private val swipeControlsResourcePatch = resourcePatch {
                 "morphe_swipe_top_zone",
                 entriesKey = "morphe_swipe_zone_action_entries",
                 entryValuesKey = "morphe_swipe_zone_action_entry_values"
+            ),
+            SwitchPreference("morphe_swipe_seek", summary = true),
+            NonInteractivePreference(
+                key = "morphe_swipe_seek_sensitivity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
             NonInteractivePreference(
                 key = "morphe_swipe_zone_width",
@@ -148,7 +174,7 @@ private val swipeControlsResourcePatch = resourcePatch {
 }
 
 @Suppress("unused")
-val swipeControlsPatch = bytecodePatch(
+val swipeControlsPatch = patch(
     name = "Swipe controls",
     description = "Adds options to enable and configure volume and brightness swipe controls."
 ) {
@@ -199,5 +225,128 @@ val swipeControlsPatch = bytecodePatch(
                 """
             )
         }
+
+        addSeekbarScrubber()
     }
+}
+
+/**
+ * Let's swipe to seek scrub the time bar, the same way slide to seek does,
+ * by adding [EXTENSION_SCRUBBER_INTERFACE] to the touch handler of slide to seek.
+ */
+private fun addSeekbarScrubber() {
+    // Handler -> slide to seek controller -> scrub state -> time bar.
+    val (controllerField, scrubStateField, timeBarField) = listOf(0, 1, 3).map { index ->
+        SlideSeekbarGetViewControllerFingerprint.instructionMatches[index]
+            .getInstruction<ReferenceInstruction>().getReference<FieldReference>()!!
+    }
+    val timeBarType = timeBarField.type
+
+    // The scrub state reads the scrubber position into its point, relative to the time bar bounds in its rect.
+    val scrubStateClass = SeekbarUpdatePointFingerprint.classDef
+    if (scrubStateField.type != scrubStateClass.type) {
+        throw PatchException("Unexpected scrub state class: ${scrubStateField.type}")
+    }
+    val (pointField, rectField) = listOf(0, 2).map { index ->
+        SeekbarUpdatePointFingerprint.instructionMatches[index]
+            .getInstruction<ReferenceInstruction>().getReference<FieldReference>()!!
+    }
+    val updatePointMethod = SeekbarUpdatePointFingerprint.method
+
+    val (getBoundsMethod, startUpdatePointMethod, getScrubTimeMethod) =
+        SlideSeekbarStartScrubFingerprint.instructionMatches.map {
+            it.getInstruction<ReferenceInstruction>().getReference<MethodReference>()!!
+        }
+    if (startUpdatePointMethod.definingClass != scrubStateClass.type
+        || startUpdatePointMethod.name != updatePointMethod.name
+        || getScrubTimeMethod.definingClass != timeBarType
+    ) {
+        throw PatchException("Unexpected scrub start: $startUpdatePointMethod $getScrubTimeMethod")
+    }
+
+    val (startScrubMethod, moveScrubMethod, completeScrubMethod) = listOf(
+        TimeBarStartScrubFingerprint,
+        TimeBarMoveScrubFingerprint,
+        TimeBarCompleteScrubFingerprint
+    ).map { fingerprint ->
+        if (timeBarType !in fingerprint.classDef.interfaces) {
+            throw PatchException("${fingerprint.classDef.type} does not implement $timeBarType")
+        }
+        "$timeBarType->${fingerprint.method.name}(I)V"
+    }
+
+    SlideSeekbarHandlerConstructorFingerprint.method.apply {
+        addInstruction(
+            indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID),
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_SEEK_CLASS->setScrubber($EXTENSION_SCRUBBER_INTERFACE)V"
+        )
+    }
+
+    SlideSeekbarHandlerConstructorFingerprint.classDef.apply {
+        interfaces.add(EXTENSION_SCRUBBER_INTERFACE)
+
+        val getTimeBar = """
+            iget-object v0, p0, $controllerField
+            iget-object v0, v0, $scrubStateField
+            iget-object v0, v0, $timeBarField
+        """
+
+        addScrubberMethod(
+            "patch_startScrub", listOf(), "I", 3,
+            """
+                iget-object v0, p0, $controllerField
+                iget-object v0, v0, $scrubStateField
+                iget-object v1, v0, $timeBarField
+                iget-object v2, v0, $rectField
+                invoke-interface { v1, v2 }, $getBoundsMethod
+                invoke-virtual { v0 }, $updatePointMethod
+                iget-object v2, v0, $pointField
+                iget v2, v2, Landroid/graphics/Point;->x:I
+                invoke-interface { v1, v2 }, $startScrubMethod
+                return v2
+            """
+        )
+        addScrubberMethod(
+            "patch_moveScrub", listOf("I"), "J", 2,
+            """
+                $getTimeBar
+                invoke-interface { v0, p1 }, $moveScrubMethod
+                invoke-interface { v0 }, $getScrubTimeMethod
+                move-result-wide v0
+                return-wide v0
+            """
+        )
+        addScrubberMethod(
+            "patch_completeScrub", listOf("I"), "V", 1,
+            """
+                $getTimeBar
+                invoke-interface { v0, p1 }, $completeScrubMethod
+                return-void
+            """
+        )
+    }
+}
+
+private fun MutableClass.addScrubberMethod(
+    name: String,
+    parameters: List<String>,
+    returnType: String,
+    localRegisters: Int,
+    smali: String,
+) {
+    methods.add(
+        ImmutableMethod(
+            type,
+            name,
+            parameters.map { ImmutableMethodParameter(it, null, null) },
+            returnType,
+            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+            null,
+            null,
+            // Locals, this, and the parameters.
+            MutableMethodImplementation(localRegisters + 1 + parameters.size),
+        ).toMutable().apply {
+            addInstructions(0, smali)
+        }
+    )
 }

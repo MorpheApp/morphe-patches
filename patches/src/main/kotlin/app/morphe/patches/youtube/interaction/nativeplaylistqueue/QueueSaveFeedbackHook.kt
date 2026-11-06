@@ -7,10 +7,9 @@
 
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -18,11 +17,10 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 
 /** Add a native response action only for the callback created by an owned queue save. */
-internal fun installQueueSaveFeedback(context: BytecodePatchContext, endpointType: String) = with(context) {
+internal fun installQueueSaveFeedback(endpointType: String) {
     val callbackType = QueueSaveEditErrorFingerprint.originalClassDef.type
     val creation = queueSaveEditCreationFingerprint(callbackType, endpointType).match()
     val success = queueSaveEditSuccessFingerprint(callbackType).match()
@@ -66,7 +64,7 @@ internal fun installQueueSaveFeedback(context: BytecodePatchContext, endpointTyp
     )
 
     val construct = creation.instructionMatches.single()
-    val reference = construct.instruction.getReference<MethodReference>()!!
+    val reference = construct.methodReference
     check(reference.definingClass == callbackType && reference.name == "<init>")
     val receiver = when (val instruction = construct.instruction) {
         is RegisterRangeInstruction -> instruction.startRegister
@@ -97,10 +95,10 @@ internal fun installQueueSaveFeedback(context: BytecodePatchContext, endpointTyp
 }
 
 /** Use the native builder and scheduler for owned Save and queue-clear confirmations. */
-internal fun installQueueSaveConfirmationDuration(context: BytecodePatchContext) = with(context) {
+internal fun installQueueSaveConfirmationDuration() {
     val builderType = QueueSnackbarModernFactoryFingerprint.originalMethod.returnType
     val durationSetter = queueSnackbarDurationFingerprint(builderType).match()
-        .instructionMatches[4].instruction.getReference<MethodReference>()!!
+        .instructionMatches[4].methodReference
 
     // Keep the input renderer even when the native factory reuses its parameters.
     QueueSnackbarModernFactoryFingerprint.method.cloneParameters()

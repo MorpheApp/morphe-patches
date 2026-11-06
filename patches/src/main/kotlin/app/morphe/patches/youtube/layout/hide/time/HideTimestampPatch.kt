@@ -1,7 +1,7 @@
 package app.morphe.patches.youtube.layout.hide.time
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -10,7 +10,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/HideTimestampPatch;"
 
-val hideTimestampPatch = bytecodePatch(
+val hideTimestampPatch = patch(
     name = "Hide timestamp",
     description = "Adds an option to hide the timestamp in the bottom left of the video player.",
 ) {

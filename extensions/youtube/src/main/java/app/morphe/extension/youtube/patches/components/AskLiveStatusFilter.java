@@ -74,23 +74,19 @@ public final class AskLiveStatusFilter extends Filter {
     public boolean isFiltered(ContextInterface contextInterface, String identifier, String accessibility,
                               CharSequence path, byte[] buffer, BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
-        try {
-            if (liveBadgeIcons.check(buffer).isFiltered() && countIconNames(asciiStrings.getStrings()) <= MAX_THUMBNAIL_ICONS) {
-                Matcher videoId = THUMBNAIL_VIDEO_ID.matcher(asciiStrings.getStrings());
-                if (videoId.find()) {
-                    final String id = videoId.group(1);
-                    Logger.printDebug(() -> "Live video in the list: " + id + " path: " + path);
-                    LiveStatusRequest.setLiveOrUpcoming(id);
-                }
-            } else {
-                String upcomingVideoId = findReminderVideoId(asciiStrings.getStrings());
-                if (upcomingVideoId != null) {
-                    Logger.printDebug(() -> "Upcoming video in the list: " + upcomingVideoId + " path: " + path);
-                    LiveStatusRequest.setLiveOrUpcoming(upcomingVideoId);
-                }
+        if (liveBadgeIcons.check(buffer).isFiltered() && countIconNames(asciiStrings.getStrings()) <= MAX_THUMBNAIL_ICONS) {
+            Matcher videoId = THUMBNAIL_VIDEO_ID.matcher(asciiStrings.getStrings());
+            if (videoId.find()) {
+                final String id = videoId.group(1);
+                Logger.printDebug(() -> "Live video in the list: " + id + " path: " + path);
+                LiveStatusRequest.setLiveOrUpcoming(id);
             }
-        } catch (Exception ex) {
-            Logger.printException(() -> "isFiltered failure", ex);
+        } else {
+            String upcomingVideoId = findReminderVideoId(asciiStrings.getStrings());
+            if (upcomingVideoId != null) {
+                Logger.printDebug(() -> "Upcoming video in the list: " + upcomingVideoId + " path: " + path);
+                LiveStatusRequest.setLiveOrUpcoming(upcomingVideoId);
+            }
         }
 
         // The filter only reads the list items.

@@ -7,7 +7,6 @@
 
 package app.morphe.patches.music.misc.audiovideoswitch
 
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patches.music.interaction.jam.ProtoAbi
 import app.morphe.patches.music.interaction.jam.QueueEnqueueFingerprint
 import app.morphe.patches.music.interaction.jam.QueueStorageAbi
@@ -40,7 +39,7 @@ internal data class AudioVideoQueueAbi(
     val videoId: MethodReference,
 )
 
-internal fun BytecodePatchContext.resolveAudioVideoQueue(): AudioVideoQueueAbi {
+internal fun resolveAudioVideoQueue(): AudioVideoQueueAbi {
     val queueMatch = QueueEnqueueFingerprint.match()
     val manager = queueMatch.originalClassDef
     val enqueue = queueMatch.originalMethod

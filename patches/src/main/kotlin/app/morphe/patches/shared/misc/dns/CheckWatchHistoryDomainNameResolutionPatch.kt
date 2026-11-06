@@ -2,9 +2,8 @@ package app.morphe.patches.shared.misc.dns
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/CheckWatchHistoryDomainNameResolutionPatch;"
@@ -13,10 +12,10 @@ private const val EXTENSION_CLASS =
  * Patch shared with YouTube and YT Music.
  */
 internal fun checkWatchHistoryDomainNameResolutionPatch(
-    block: BytecodePatchBuilder.() -> Unit = {},
-    executeBlock: BytecodePatchContext.() -> Unit = {},
+    block: PatchDefinition.() -> Unit = {},
+    executeBlock: () -> Unit = {},
     mainActivityFingerprint: Fingerprint
-) = bytecodePatch(
+) = patch(
     name = "Check watch history domain name resolution",
     description = "Checks if the device DNS server is preventing user watch history from being saved.",
 ) {

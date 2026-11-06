@@ -13,7 +13,6 @@ package app.morphe.patches.shared.misc.spoof
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -37,35 +36,19 @@ internal object CuepointListFingerprint : Fingerprint(
     )
 )
 
-internal object BuildInitPlaybackRequestFingerprint : Fingerprint(
-    returnType = $$"Lorg/chromium/net/UrlRequest$Builder;",
-    filters = opcodesToFilters(
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.IGET_OBJECT, // Moves the request URI string to a register to build the request with.
-    ),
-    strings = listOf(
-        "Content-Type",
-        "Range",
-    )
-)
-
 /**
- * Cronet implementation of the native media library network fetch,
- * used by the native player for its own requests such as the Onesie /initplayback request.
+ * Called by native code when a media response asks the player to load the player response again.
+ * Older app versions also have a native implementation of the callbacks.
  */
-internal object NativeNetFetchFingerprint : Fingerprint(
-    superclass = "Lcom/google/android/libraries/youtube/media/interfaces/NetFetch;",
-    returnType = "Lcom/google/android/libraries/youtube/media/interfaces/NetFetchTask;",
+internal object ReloadPlayerResponseFingerprint : Fingerprint(
+    superclass = "Lcom/google/android/libraries/youtube/media/interfaces/PlaybackControllerCallbacks;",
+    returnType = "V",
     parameters = listOf(
-        "Lcom/google/android/libraries/youtube/media/interfaces/HttpRequest;",
-        "Lcom/google/android/libraries/youtube/media/interfaces/NetFetchCallbacks;"
+        $$"Lcom/google/android/apps/youtube/proto/streaming/ReloadPlayerResponseOuterClass$ReloadPlayerResponse;"
     ),
-    filters = listOf(
-        methodCall(
-            definingClass = "Lorg/chromium/net/CronetEngine;",
-            name = "newUrlRequestBuilder"
-        )
-    )
+    custom = { _, classDef ->
+        !classDef.type.endsWith($$"$CppProxy;")
+    }
 )
 
 private object CreateStreamingDataParentFingerprint : Fingerprint(
@@ -112,16 +95,21 @@ internal object CreateStreamingDataFingerprint : Fingerprint(
     )
 )
 
-internal fun abrStateDataFingerprint(playerConfigClass: String) = object : Fingerprint(
+/**
+ * The type of the player config set by [CreateStreamingDataFingerprint].
+ */
+private fun playerConfigType() = CreateStreamingDataFingerprint.instructionMatches.last().fieldReference.type
+
+internal object AbrStateDataFingerprint : Fingerprint(
     returnType = "J",
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            type = playerConfigClass
+            type = { playerConfigType() }
         ),
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            definingClass = playerConfigClass,
+            definingClass = { playerConfigType() },
             location = MatchAfterImmediately()
         ),
         fieldAccess(
@@ -131,7 +119,7 @@ internal fun abrStateDataFingerprint(playerConfigClass: String) = object : Finge
         string("/videoplayback"),
         string("AbrStateDataSpec: Unexpected http body.")
     )
-) {}
+)
 
 
 internal object PlayerConfigBuilderFingerprint : Fingerprint(
@@ -258,32 +246,6 @@ internal object NerdsStatsVideoFormatBuilderFingerprint : Fingerprint(
     }
 )
 
-// Feature flag that turns on Platypus programming language code compiled to native C++.
-// This code appears to replace the player config after the streams are loaded.
-// Flag is present in YouTube 19.34, but is missing Platypus stream replacement code until 19.43.
-// Flag and Platypus code is also present in newer versions of YouTube Music.
-internal object MediaFetchHotConfigFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45645570L),
-        opcode(
-            opcode = Opcode.MOVE_RESULT,
-            location = MatchAfterWithin(3)
-        ),
-        opcode(
-            opcode = Opcode.IF_EQZ,
-            location = MatchAfterWithin(5)
-        )
-    )
-)
-
-// YT 20.10+, YT Music 8.11 - 8.14.
-// Flag is missing in YT Music 8.15+, and it is not known if a replacement flag/feature exists.
-internal object MediaFetchHotConfigAlternativeFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45683169L)
-    )
-)
-
 // Feature flag that enables different code for parsing and starting video playback,
 // but its exact purpose is not known. If this flag is enabled while stream spoofing
 // then videos will never start playback and load forever.
@@ -353,7 +315,6 @@ internal object CronetUrlRequestSetHttpMethodFingerprint : Fingerprint(
  * If the response is finished, the remaining byte count is cleared and the end of the data is returned.
  */
 internal object CronetDataSourceReadFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "I",
     parameters = listOf("[B", "I", "I"),
     filters = listOf(
@@ -388,7 +349,6 @@ internal object CronetDataSourceReadFingerprint : Fingerprint(
  */
 internal object CronetDataSourceReadBufferFingerprint : Fingerprint(
     classFingerprint = CronetDataSourceReadFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "I",
     parameters = listOf("Ljava/nio/ByteBuffer;"),
     filters = listOf(

@@ -13,7 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.p0Register
@@ -40,7 +40,7 @@ private const val EXTENSION_ACTION_SHEET_CONTROLLER_INTERFACE =
 
 @Suppress("unused")
 internal fun openSystemShareSheetPatch(
-) = bytecodePatch(
+) = patch(
     name = "Open system share sheet",
     description = "Adds an option to always open the system share sheet instead of the in-app share sheet."
 ) {

@@ -150,6 +150,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_previous">Өмнөх</string>
   <string name="morphe_music_downloads_next">Дараах</string>
   <string name="morphe_music_downloads_pause">Түр зогсоох</string>
+  <string name="morphe_music_downloads_shuffle">Санамсаргүй</string>
+  <string name="morphe_music_downloads_repeat">Дахин тоглуулах</string>
+  <string name="morphe_music_downloads_minimize">Багасгах</string>
   <string name="morphe_music_downloads_close">Хаах</string>
   <string name="morphe_music_downloads_delete">Устгах</string>
   <string name="morphe_music_downloads_delete_track">Татаж авсан файлыг устгах</string>
@@ -158,6 +161,38 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_track_deleted">Татаж авсан файл устгагдлаа</string>
   <string name="morphe_music_downloads_track_delete_failed">Татаж авсан файлыг устгаж чадсангүй</string>
   <string name="morphe_music_downloads_play_failed">Татаж авсан файлыг тоглуулж чадсангүй</string>
+  <string name="morphe_music_downloads_playlists">Жагсаалтууд</string>
+  <string name="morphe_music_downloads_playlists_section">Үүсгэсэн жагсаалтууд (%s)</string>
+  <string name="morphe_music_downloads_playlists_empty">Одоогоор дотоод жагсаалт байхгүй байна</string>
+  <string name="morphe_music_downloads_playlists_hide">Жагсаалтуудыг нуух ▲</string>
+  <string name="morphe_music_downloads_playlist_new">+ Шинэ жагсаалт</string>
+  <string name="morphe_music_downloads_playlist_new_button">Шинэ жагсаалт</string>
+  <string name="morphe_music_downloads_playlist_selected">Сонгогдсон (%s)</string>
+  <string name="morphe_music_downloads_playlist_select_first">Эхлээд дуунуудаа сонгоно уу</string>
+  <string name="morphe_music_downloads_playlist_clear_selection">Сонголтыг цуцлах</string>
+  <string name="morphe_music_downloads_playlist_create">Жагсаалт үүсгэх</string>
+  <string name="morphe_music_downloads_playlist_create_button">Үүсгэх</string>
+  <string name="morphe_music_downloads_playlist_add">Жагсаалтад нэмэх</string>
+  <string name="morphe_music_downloads_playlist_added">%s-д нэмлээ</string>
+  <string name="morphe_music_downloads_playlist_name_hint">Жагсаалтын нэр</string>
+  <string name="morphe_music_downloads_playlist_name_empty">Жагсаалтын нэр хоосон байж болохгүй</string>
+  <string name="morphe_music_downloads_playlist_save_failed">Жагсаалтыг хадгалах боломжгүй</string>
+  <string name="morphe_music_downloads_playlist_track_count">%s трек</string>
+  <string name="morphe_music_downloads_playlist_track_count_one">1 трек</string>
+  <string name="morphe_music_downloads_playlist_no_tracks">Энэхүү жагсаалтад трек байхгүй байна</string>
+  <string name="morphe_music_downloads_playlist_play">Жагсаалтыг тоглуулах</string>
+  <string name="morphe_music_downloads_playlist_play_all">Бүгдийг тоглуулах</string>
+  <string name="morphe_music_downloads_playlist_rename">Нэрийг өөрчлөх</string>
+  <string name="morphe_music_downloads_playlist_rename_title">Төгсгөлийн жагсаалтын нэрийг өөрчлөх</string>
+  <string name="morphe_music_downloads_playlist_save">Хадгалах</string>
+  <string name="morphe_music_downloads_playlist_delete">Төгсгөлийн жагсаалтыг устгах</string>
+  <string name="morphe_music_downloads_playlist_delete_title">Төгсгөлийн жагсаалтыг устгах уу?</string>
+  <string name="morphe_music_downloads_playlist_delete_message">%s устгагдана. Татаж авсан дуунууд хадгалагдана</string>
+  <string name="morphe_music_downloads_playlist_deleted">Төгсгөлийн жагсаалтыг устгалаа</string>
+  <string name="morphe_music_downloads_playlist_remove_track">Төгсгөлийн жагсаалтаас хасах</string>
+  <string name="morphe_music_downloads_playlist_drag_track">Чирч дарааллыг өөрчлөх</string>
+  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Чирч дарааллыг өөрчлөх</string>
+  <string name="morphe_music_downloads_playlist_reorder_done">Дууссан</string>
   <string name="morphe_music_downloads_notification_channel">Аудио татаж авах</string>
   <string name="morphe_music_downloads_playback_channel">Оффлайн тоглуулах</string>
   <string name="morphe_music_downloads_unknown_track">Татаж авах трекийг тодорхойлж чадсангүй</string>
@@ -168,6 +203,28 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">Татаж байна %s%%</string>
   <string name="morphe_music_downloads_complete">Татаж авалт дууслаа</string>
   <string name="morphe_music_downloads_failed">Татаж авалт амжилтгүй боллоо</string>
+  <string name="morphe_music_downloads_playlist_download_title">Тэмдэглэлийн жагсаалтыг татах</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Дуунуудыг жагсааж байна…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s жагсаалаа…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Түүнээс жагсаалтыг гаргаж чадсангүй</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Өмнө нь татаж авсан: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"Энэхүү жагсаалтад %1$s дуу байгаа бөгөөд %2$s дууг хараахан татаж аваагүй байна.
+
+Дуунууд нэг нэгээрээ татагдах бөгөөд үүнд их хугацаа шаардагдаж, ойролцоогоор %3$s чөлөөтэй зай хэрэгтэй"</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">Татаж авах</string>
+  <string name="morphe_music_downloads_playlist_download_progress">%2$s дууны %1$s-ыг татаж байна</string>
+  <string name="morphe_music_downloads_playlist_download_complete">%s татаж авлаа</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s татаж авсан, %2$s татаж авж чадсангүй</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Тэмдэглэлийн жагсаалтыг татаж авах үйл явц аль хэдийн эхэлсэн байна</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Таны бүртгэл харагдахгүй байна. Түр хугацааны дараа дахин оролдоно уу</string>
+  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s жагсаав, бүгдийг нь татаж авсан байна</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Тэмдэглэлийн жагсаалтын зарим хэсгийг л жагсааж чадлаа. Үлдсэнийг нь татаж авахын тулд дараа нь дахин Татаж авах товчийг дарна уу</string>
+  <string name="morphe_music_downloads_playlist_download_started">%s-ийг арын горимд татаж байна</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Сүлжээний холболтгүй байна</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Сүлжээг хүлээж байна…</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s-аас %1$s-ийг татаж аваад зогссон. Үргэлжлүүлэхийн тулд дахин Татаж авах товчийг дарна уу</string>
+  <string name="morphe_music_downloads_mark_title">Татаж авсан дуунуудыг тэмдэглэх</string>
+  <string name="morphe_music_downloads_mark_summary">Татаж авсан дуунууд нь тоглолтын жагсаалт, цом болон хайлтын үр дүнд дэлгэрэнгүй мэдээллийнхээ өмнө тэмдэглэгээтэй харагдана</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Morphe-ийн тухай</string>
@@ -206,6 +263,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Олон нийтийн удирдамжийг нуух</string>
   <string name="morphe_music_hide_comments_context_title">Контекст зурвасыг нуух</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Эможи товчийг нуух</string>
+  <string name="morphe_music_hide_comments_gif_button_title">GIF товчийг нуух</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_title">GIF болон зургуудыг нуух</string>
+  <string name="morphe_music_hide_comments_gifs_and_images_summary">Сэтгэгдэл болон хариултад хавсаргасан GIF болон зургуудыг нууна</string>
   <string name="morphe_music_hide_comments_info_button_title">Мэдээлэл товчийг нуух</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">Цаг хугацааны тэмдэглэгээний товчийг нуух</string>
   <!-- interaction.crossfade.crossfadePatch -->
@@ -285,6 +345,43 @@ SABR тоглуулалт (Видео урсгалыг дуурайх функц
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Сонгосон трекийг дарааллын жагсаалтад нэмэх</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">Дарааллаа нэмлээ</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">Жагсаалтын тагууд</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Жагсаалтуудад таг нэмж, Номын санг тагаар шүүх</string>
+  <string name="morphe_music_playlist_tags_title">Жагсаалтын тагуудыг идэвхжүүлэх</string>
+  <string name="morphe_music_playlist_tags_summary">Жагсаалтын цэсэнд \"Тагууд\" гэсэн хэсгийг, Номын сангийн эрэмбэлэх товчлуурын хажууд \"Тагууд\" шүүлтүүрийн товчийг нэмнэ</string>
+  <string name="morphe_music_playlist_tags_manage_title">Жагсаалтын тагуудыг удирдах</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Таг үүсгэх, нэрийг өөрчлөх, устгах болон Номын сангаас харагдаж буй жагсаалтуудад таг оноох</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">Тагууд</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">Таг байхгүй</string>
+  <string name="morphe_music_playlist_tags_filter_button">Тагууд</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">Таг: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">Тагууд (%s нуугдсан)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">%s-ийн тагууд</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">Шинэ таг</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 жагсаалт</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s жагсаалт</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">%s нэртэй таг аль хэдийн байна</string>
+  <string name="morphe_music_playlist_tags_filter_title">Тагаар шүүх</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">Зөвхөн харуулах</string>
+  <string name="morphe_music_playlist_tags_filter_all">Бүх жагсаалт</string>
+  <string name="morphe_music_playlist_tags_filter_visible">Харагдах тагууд</string>
+  <string name="morphe_music_playlist_tags_manage">Удирдах</string>
+  <string name="morphe_music_playlist_tags_none">Одоогоор таг байхгүй. Жагсаалт дээр удаан дарж \"Тагууд\" гэснийг сонгон шинээр үүсгэнэ үү</string>
+  <string name="morphe_music_playlist_tags_section_tags">Тагууд</string>
+  <string name="morphe_music_playlist_tags_section_playlists">Жагсаалтууд</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Жагсаалтуудыг энд харуулахын тулд Номын сангаа нэг удаа нээнэ үү</string>
+  <string name="morphe_music_playlist_tags_new_tag">Шинэ таг</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">Таг засах</string>
+  <string name="morphe_music_playlist_tags_rename">Нэрийг өөрчлөх</string>
+  <string name="morphe_music_playlist_tags_delete">Устгах</string>
+  <string name="morphe_music_playlist_tags_hidden">Нуугдсан</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Cast товчийг нуух</string>
   <string name="morphe_music_hide_history_button_title">Түүх товчийг нуух</string>
@@ -453,6 +550,49 @@ SABR тоглуулалт (Видео урсгалыг дуурайх функц
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling нь таны YouTube Music-ийн ашиглалтыг Last.fm эсвэл ListenBrainz профильтай автоматаар синхрончилна
 
 Ард фондоор тоглуулах үед scrobbling синхрончлол хэвийн явахын тулд YouTube Music аппликейшний батерейны хэрэглээг \"Хязгааргүй\" болгож тохируулаарай"</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">Олон нийтийн мэдээлсэн AI уран бүтээлчдийн трекүүдийг алгасах</string>
+  <string name="morphe_music_soundproof_show_button_title">SoundProof товчийг харуулах</string>
+  <string name="morphe_music_soundproof_show_button_summary">Одоогийн уран бүтээлчийн талаарх олон нийтийн санал хураалтыг харах болон санал өгөх товчийг тоглуулагчийн дээд хэсэгт харуулна</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">AI уран бүтээлчдийг алгасах</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">Уран бүтээгчийнх нь AI босго доогуур байгаа дуунуудыг автоматаар алгасна</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">Алгасан тухай мэдэгдэл харуулах</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">Дуу автоматаар алгасах үед мэдэгдэл харуулна</string>
+  <string name="morphe_music_soundproof_threshold_title">Илрүүлэлтийн босго</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">AI-ийн хамгийн багасаа санал</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Саналын энэ хувиас нь AI гэж заасан бол тухайн уран бүтээгчийг AI гэж үзнэ</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">Саналын хамгийн бага тоо</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">Үүнээс цөөн санал авсан уран бүтээгчдийг хэзээ ч алгасахгүй</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">%1$s-ийг алгаслав (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">Энэхүү уран бүтээгчид SoundProof-оор санал өгөх</string>
+  <string name="morphe_music_soundproof_sheet_verified">Баталгаажсан</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% хүн</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 санал</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s санал</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s хүн</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s AI</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">Энэхүү уран бүтээгчид одоогоор санал өгөөгүй байна</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">SoundProof өгөгдлийн сан хараахан бэлэн болоогүй байна</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">Ард тал дээр татаж байна. Бэлэн болтол трек алгасахгүй.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">SoundProof өгөгдлийн сангийн хамт олны санал хураалт</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">Хүн</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">Хиймэл оюун ухаан</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">Санал хураалт хаагдсан: SoundProof-ийн модератор энэ уран бүтээгчийг шалгасан</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">SoundProof-той холбогдож чадсангүй. Санал хураалтын мэдээлэл өдөр тутмын өгөгдлийн сангаас авсан бөгөөд санал өгөх боломжгүй байна.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">SoundProof-ийн санал хураалт амжилтгүй боллоо</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"Уран бүтээлчдийн мэдээлэл SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps)-оос өдөр бүр нэг удаа татагдаж шинэчлэгддэг. Алгасаж болно, ингэснээр таны юу тог логдож байгаа талаарх мэдээлэл илгээхгүй. SoundProof хүснэгтийг нээхэд сүүлийн үеийн саналаа харах болон санал өгөх зорилгоор одоогийн уран бүтээлчийн нэрийг SoundProof сервер рүү илгээдэг. Сервер нь санал өгөгчдийг IP хаягаар нь ялгадаг тул таны санал өөр сүлжээнд өөр харагдаж болно.
+
+Өгөгдлийн сан нь ODC Open Database License (ODbL) лицензийн дагуу зөвшөөрөгдсөн. xoundbyte-ийн Soul Over AI-аас авсан бичлэгүүд нь CC BY 4.0 лицензийн дагуу зөвшөөрөгдсөн. SoundProof болон Soul Over AI-тай холбогдоогүй, тэдгээрийн дэмжлэггүйгээр ажилладаг."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Гуравдагч талын дууны үг ашиглах</string>
   <string name="morphe_music_lyrics_enabled_summary">Гуравдагч талын үйлчилгээнээс дууны үг харуулна, хэрэв олдсонгүй бол сууриглагдсан дууны үгийг ашиглана</string>
@@ -465,8 +605,45 @@ SABR тоглуулалт (Видео урсгалыг дуурайх функц
   <string name="morphe_music_lyrics_source_all_disabled">Бүх нийлүүлэгчид идэвхгүй болсон - суурилуулсан болон быцгадсан дууны үгс</string>
   <string name="morphe_music_lyrics_source_reset_title">Нийлүүлэгчийн дарааллыг шинэчлэх үү?</string>
   <string name="morphe_music_lyrics_source_reset_message">Нийлүүлэгчдийг анхны тэргүүлэх дарааллаар нь сэргээх</string>
+  <string name="morphe_music_lyrics_rime_dict_title">Rime-ийн үгийн сан</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime-ийн үгсийн жагсаалтад UniDict шаардлагатай: Офлайн толь бичгийн провайдер хэсэгт \"Хятад болон Кантон хэлний тэмдэгтүүд (UniDict)\"-ийг чагталж, татаж дуустал хүлээгээрэй. Үүнгүйгээр тэмдэгт уншдаг жагсаалт нь уншлага гаргахгүй.
+
+Rime-ийн үгсийн жагсаалтад уншуулах жагсаалтуудыг чагталж, татаж авахын тулд Хадгалах товчийг дарна уу. Таны нэмсэн жагсаалтыг чагтлалтаас хассан тохиолдолд устгана.
+
+Жагсаалт бүр нь таны өөрийн үг-уншлага хүснэгт бөгөөд дараах мөрүүд бүхий .dict.yaml файл байна:
+字 ham
+典 din2
+Эхний багана нь үг, хоёр дахь нь уншлага юм; нэмэлт багана болон табгүй мөрүүдийг үл тоомсорлоно."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">Дээрх хэлний хувьд Rime үгийн сан сонгогдоогүй байна. Сонгохын тулд энэ нэр дээр дарна уу, эсвэл жагсаалттай хэлийг сонгоно уу</string>
+  <string name="morphe_music_lyrics_rime_dict_add">Нэмэх</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">Rime-ийн үгийн сан нэмэх</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">字 ham болон 典 din2 гэх мэт мөр бүхий .dict.yaml файл, эсвэл тийм файлыг агуулсан zip файл. Жагсаалтыг тагийлаад \"Хадгалах\" дээр дарахад татаж авна бөгөөд лицензийг нь та өөрөө шалгана уу</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">Хэлний код</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">Hak эсвэл wuu гэх мэт хоёр эсвэл гурван үсэг</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">Нэр</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">Уншилтын доор харагдана, жишээ нь Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">Үгний жагсаалтын хаяг</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">.dict.yaml эсвэл түүний zip файлын https:// хаяг</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">Үгэнд багтоогүй тэмдэгтүүд</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">Автомат</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">Кантон тэмдэгтүүд</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">Мандарин тэмдэгтүүд</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">Тэмдэгтийн уншлагагүй</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">Код, нэр болон хаягийг бөглөнө үү</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">Код нь \"hak\" гэх мэт хоёр эсвэл гурван үсэгтэй байх ёстой</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">Хаяг нь https://-ээр эхлэх ёстой</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">Нэр болон хаягт босоо зураас байж болохгүй</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s аль хэдийн үгийн хүснэгттэй байна</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s-ийг суурилуулсан романизатораар уншдаг тул үгийн жагсаалт авч чадахгүй</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">Ашиглагдаагүй: энэ хэл өөрийн гэсэн уншлагатай тул устгахын тулд чагталтыг аваарай</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%s нэмэгдлээ - татаж авахын тулд түүнийг сонгоод \"Хадгалах\" товчийг дарна уу</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">Үгийн жагсаалтууд бэлэн боллоо</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Үгийн жагсаалтууд бэлэн боллоо (%s бичлэг)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Үгийн жагсаалт уншиж байна: %s%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">Үгийн жагсаалт татаж авахад алдаа гарлаа - дахин оролдохын тулд Хадгалах товчийг дарана уу</string>
   <string name="morphe_music_lyrics_clear_cache_title">Хадгалагдсан дууны үгсийг устгах</string>
-  <string name="morphe_music_lyrics_clear_cache_done">%1$s МБ цэвэрлэгдлээ</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Энэ төхөөрөмж дээр хадгалсан %s МБ хэмжээний дууны үгсийг устгах</string>
+  <string name="morphe_music_lyrics_clear_cache_done">%s МБ цэвэрлэгдлээ</string>
   <string name="morphe_music_token_dialog_get_token">Токен авах</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"music.apple.com сайтаас media-user-token кукиг хуулж тавина уу
@@ -525,8 +702,21 @@ SABR тоглуулалт (Видео урсгалыг дуурайх функц
   <string name="morphe_music_lyrics_show_copy_button_title">Хуулах товчлуурыг харуулах</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Эх хувь дууны үгийг энгийн текст хэлбэрээр хуулахын тулд дарна уу; түүхий эх файлыг Татаж авах хавтсанд хадгалахын тулд удаан дарна уу</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Орчуулах товчийг харуулах</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Орчуулгыг идэвхжүүлэхийн тулд дарна уу; зөвхөн орчуулгыг харахын тулд удаан дарна уу. Идэвхжүүлсэн орчуулгын үйлчилгээ үзүүлэгчдийг жагсаалтын дагуу ашиглана</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Романизаци эсвэл Галигчлах товчийг харуулах</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Романизаци эсвэл галигчлалыг идэвхжүүлэхийн тулд дарна уу; зөвхөн романизаци эсвэл галигчлалыг харахын тулд удаан дарна уу. Идэвхжүүлсэн романизацийн үйлчилгээ үзүүлэгчдийг жагсаалтын дагуу ашиглана</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">Галигчлалыг идэвхжүүлэх</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">Дууны үгийн эх сурвалжаас Латин бус уншлагад зөвшөөрөл өгөх; унтраасан үед зөвхөн Латин үсэг, акценттэй үсэг болон тональ тоонуудыг хадгална</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Цагт тохируулсан дууны үг бүрийг уншина (үг синхрончлол асаалттай); Солонгос хэл татаж авах шаардлагагүй; арван дөрвөн бичигт нэг CLDR татаж авалт хамаарна; Хань ханзыг Rime Wordlist-ийн үгийн хүснэгт тухайн хэлийг дэмждэг тохиолдолд уншина</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">Унших толь бичгийг татаж байна…</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Уншилт бэлэн боллоо (%s бичлэг)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Татаж авахад алдаа гарлаа - дахин оролдохын тулд үүнийг унтраагаад асаана уу</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s уншиж байна: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Офлайн толь бичиг</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Япон хэл (SudachiDict, ~75 МБ)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">Хятад болон Кантон ханз (UniDict, ~8 МБ)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">Хятад үгс (pinyin-pro, ~17 МБ)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">Грек, Славын кирилл (Орос, Украин, Болгар, Серб, Белорус, Македон хэлүүд багтсан), Георги, Армен, Еврэй, Араб, Амхара болон Сириак галиг (CLDR, ~0.5 МБ)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s уншиж байна: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Refresh товчийг харуулах</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Дараагийн дууны үг рүү шилжихэд товшино; дууны нэр болон уран бүтээгчээр хайхын тулд удаан дарна</string>
   <string name="morphe_music_lyrics_search_dialog_title">Дууны үг хайх</string>
@@ -537,10 +727,18 @@ SABR тоглуулалт (Видео урсгалыг дуурайх функц
   <string name="morphe_music_lyrics_saved">Хадгалагдсан</string>
   <string name="morphe_music_lyrics_word_sync_title">Цаг хугацааны синхрончлолтой үг эсвэл үег тодруулах</string>
   <string name="morphe_music_lyrics_word_sync_summary">Боломжтой үед үг бүрээрх дууны үгийг давуу эрхээр харуулна. Дууны үг нь үг бүрийн хугацааг агуулсан тохиолдолд хөгжимтэй зэрэгцэн үг эсвэл үе бүрийг тодруулна</string>
+  <string name="morphe_music_lyrics_line_scale_title">Идэвхгүй мөрүүдийг жижигсгэх</string>
+  <string name="morphe_music_lyrics_line_scale_summary">Одоогоор дуулж байгаагүй бүх мөрийг бүдгэрүүлэхийн зэрэгцээ бага зэрэг жижигээр дүрсэлнэ</string>
+  <string name="morphe_music_lyrics_split_background_title">Арын дууг тусад нь харуулах</string>
+  <string name="morphe_music_lyrics_split_background_summary">Арын дуу болон эгшгийг үндсэн мөрнөөс салгана. Жишээ нь, \"(Oh) I want you\" гэх мэт хаалтанд бичигдсэн арын дууг дуулж буй мөрнөөс гаргаж, тусдаа бүдгэрүүлсэн мөр рүү шилжүүлнэ</string>
   <string name="morphe_music_lyrics_hide_played_title">Дуурьссан үгсийг нуух</string>
   <string name="morphe_music_lyrics_hide_played_summary">Одоо тоглож буй мөрөөс дээгүүрх дууны үгсийг нуух</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Дуулаагүй үгсийг нуух</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Одоо тоглож буй мөрөөс доогуурх дууны үгсийг нуух</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Динамик дэвсгэр</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Дууны үгний ард цомгийн зургаас бүрдсэн бүрхэг дэвсгэр харуулах</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Динамик дэвсгэрийг хөдөлгөөнд оруулах</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_summary">Тоглуулах үед дэвсгэрийг хөдөлгөх бөгөөд хэрэв YouTube Music микрофоны зөвшөөрөлтэй бол хөгжмийн хэмнэлээр гүрэлзүүлнэ. Батерейг бага зарцуулах хөдөлгөөнгүй дэвсгэр ашиглахын тулд үүнийг унтраана уу</string>
   <string name="morphe_music_lyrics_mediasession_title">Түгээн дэлгэц дээр MediaSession-ий дууны үгийг харуулах</string>
   <string name="morphe_music_lyrics_mediasession_summary">Түгжээтэй дэлгэц, Android Auto болон Bluetooth дээр одоогийн мөрийг харуулна. Android 11 эсвэл түүнээс шинэ хувилбар шаардлагатай</string>
   <string name="morphe_music_lyrics_miniplayer_title">Мини-тоглуулагчийн дууны үгийг харуулах</string>
@@ -594,9 +792,15 @@ SABR тоглуулалт (Видео урсгалыг дуурайх функц
   <string name="morphe_music_lyrics_translated_by_ai">%s-ээр орчуулсан</string>
   <string name="morphe_music_lyrics_romanized_by_ai">%s-ээр романизаци хийсэн</string>
   <string name="morphe_music_lyrics_romanized_by_local">%s-ээр романизаци хийсэн</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">Rime-аар романизаци хийсэн (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Орчуулагдсан</string>
   <string name="morphe_music_lyrics_translation_language_title">Орчуулгын хэл</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Романизаци эсвэл галиглах хэл</string>
+  <string name="morphe_music_lyrics_translation_target_language">"Орчуулгын зорилтот хэл:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"Романизаци эсвэл галиглалтын зорилтот хэл:
+%s"</string>
   <string name="morphe_music_lyrics_translating">Орчуулж байна…</string>
   <string name="morphe_music_lyrics_translate_failed">Дууны үгийг орчуулж чадсангүй</string>
   <string name="morphe_music_lyrics_romanize_hide">Романизаци хийгдсэн</string>
@@ -610,6 +814,7 @@ SABR тоглуулалт (Видео урсгалыг дуурайх функц
   <string name="morphe_music_lyrics_refreshing">Шинэчилж байна</string>
   <string name="morphe_music_lyrics_refreshed">Шинэчиллээ</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API түлхүүр</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC нь одоогийн трек дээрх дууны үгсийг галиглах эсвэл цаг хугацааны тэнцвэржүүлэлт хийнэ</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC түлхүүрийг хадгаллаа. Дууны үг хайх цонхны \"align\" товчлуур эсвэл трект дууны үггүй үед гарч ирэх панелийн зааврыг ашиглана уу.</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API түлхүүрийг хадгаллалаа</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC уг түлхүүрийг хүлээн зөвшөөрөөгүй</string>
@@ -625,26 +830,60 @@ SABR тоглуулалт (Видео урсгалыг дуурайх функц
   <string name="morphe_music_lyrics_transcribe_no_text">Тааруулах дууны үг алга - оронд нь хөрвүүлж байна</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC энэ дууг боловсруулж чадсангүй</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">Энэ дууны хувьд QuickLRC-ийн эрх дууссан байна</string>
+  <string name="morphe_music_lyrics_about_summary">"Дууны үгсийг гарчиг болон уран бүтээлчийн нэрээр хайж олно. Ердийн бус мета өгөгдөл нь юу ч олохгүй эсвэл буруу хувилбарыг олох магадлалтай. Хувилбарыг солихын тулд \"Шинэчлэх\" цэснүүдийг ашиглана уу. * тэмдэглэгээтэй нийлүүлэгчид токен шаарддаг. Идэвхжүүлсэн бүх нийлүүлэгчдэд таны заасан дарааллаар хүсэлт илгээхгүй бөгөөд хариу өгөх хурднээс нь хамаарч хариу ирнэ.
+
+Дууны үгс нь Morphe-тэй хамааралгүй, түүний ивээн тэтгэлийг авдаггүй эсвэл дэмждэггүй гуравдагч талын үйлчилгээнээс ирдэг. Тэдгээр нь байгаагаар нь ашиглагдах бөгөөд дууны үгс, тэдгээрийн хүртээмж болон лиценз нь тухайн үйлчилгээ болон лиценз эзэмшигчдэд хамаарна. Тэдгээрийг ашиглах нь тухайн үйлчилгээний үйлчилгээний нөхцөлд захирагдана. Идэвхжүүлсэн үйлчилгээнд зөвхөн таны хайсан мэдээлэл болох гарчиг, уран бүтээлчийн нэр, мөн тухайн үйлчилгээнд шаардлагатай бол видео ID илгээгдэнэ. Сонголттой AI endpoint болон QuickLRC транскрипц нь зөвхөн таныг тохируулсны дараа ажиллаж, дууны үгсийн текст эсвэл трекийн видео URL-ийг хүлээн авна."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Зөвхөн ашигладаг Źүрүүлэгчүүдээ идэвхжүүлж эсвэл анхны тохиргоогоор үлдээгээрэй - байнгын хүсэлтүүд нь жижиг олон нийтийн дууны үгний сайтуудыг хэт ачаалж болзошгүй</string>
   <string name="morphe_music_lyrics_hide_info_title">Зээрийн мөрийг нуух</string>
   <string name="morphe_music_lyrics_hide_info_summary">Дууны үгний доор харагдаж буй зээрийн мөрийг нуух</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Орчуулга болон романизацийг солих</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Дууны үгний доорх орчуулга болон романизацийн харагдах дарааллыг солих</string>
+  <string name="morphe_music_lyrics_force_center_title">Дууны үгнүүдийг үргэлж төвлөрүүлэх</string>
+  <string name="morphe_music_lyrics_force_center_summary">АСААХ нь эх сурвалжийн тэгшилэл тэр дундаа дуэт хэсгүүдийг үл тоомсорлож, мөр бүрийг голлуулна; УНТРААХ нь дууны үгний анхны тэгшилэлээр хэвээр үлдээнэ</string>
+  <string name="morphe_music_lyrics_providers_keep_one">Наад зах нь нэг нийлүүлэгчийг асаалттай байлгах ёстой</string>
+  <string name="morphe_music_lyrics_translation_provider_title">Орчуулга</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">Романизаци эсвэл галиглал</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">Офлайн толь</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Rime үгсийн жагсаалт</string>
+  <string name="morphe_music_lyrics_ruby_provider_title">Руби</string>
+  <string name="morphe_music_lyrics_ruby_provider_local">Офлайн толь бичиг</string>
+  <string name="morphe_music_lyrics_ruby_style_title">Ruby скрипт</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хирагана (ひらがな)</string>
+  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
+  <string name="morphe_music_lyrics_show_ruby_button_title">Ruby-г харуулах товч</string>
+  <string name="morphe_music_lyrics_show_ruby_button_summary">Дууны үгний дээр ruby уншлагыг идэвхжүүлэх/идэвхгүй болгохын тулд товшино; хирагана болон катакана хооронд шилжүүлэхийн тулд удаан дарна. Идэвхжүүлсэн ruby провайдеруудыг жагсаалтын дагуу ашиглана</string>
+  <string name="morphe_music_lyrics_ruby_generating">Ruby үүсгэж байна...</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">AI ашиглан хэсгүүдийг тодорхойлох</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Зөвхөн нийлүүлэгч тал Дахилт эсвэл Багц гэх мэт хэсгийн шовгог илгээгээгүй тохиолдолд ашиглагдах бөгөөд OpenAI-тай нийцтэй модель тань тэдгээрийг тодорхойлно. Мөрөн дээр засвар хийхэд түүний prompt нээгдэнэ</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (ж.нь https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt загвар</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Орлуулах утгууд: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Орлуулах утгууд: {task}, {language}, {title}, {artist}, {count}, {lines}. Танихгүй утгуудыг хэвээр үлдээгнэ</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Промпт хадгалагдлаа</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Заавар хадгалагдсан боловч AI төгсгөл цэг хараахан ашиглах боломжгүй байна. Эхлээд AI тохиргоо хэсэгт тохируулна уу.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Промптыг шинэчлэлээ</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Орчуулга &amp; Романизацийн тохиргоо хадгалагдлаа</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Тохиргоог анхны төлөвт нь буцаалаа</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Үндсэн URL нь http:// эсвэл https://-ээр эхлэх ёстой</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">Тохиргоо дутуу эсвэл нийлүүлэгчээс татгалзсан</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Холболтыг шалгаж байна…</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Холбогдлоо! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Холболт амжилтгүй боллоо. Тохиргоог шалгана уу.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">Эхлээд API түлхүүрийг оруулна уу</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Холболтыг шалгах</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Загваруудыг татаж байна…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Загваруудыг татах</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Загвар сонгоно уу</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Моделүүдийг татах боломжгүй боллоо. API түлхүүр эсвэл холболтоо шалгана уу.</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Загвар</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Үндсэн URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Үйлчилгээний урьдчилан тохируулсан সেটিнгүүд</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Үйлчилгээ сонгох</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API түлхүүр (сонгомжтой)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Нэмэлт хүсэлтийн бие (сонгомжтой JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">Нэмэлт хүсэлтийн толгой (сонгомжтой JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Нэр болон утгуудыг хашилт дотор бичнэ, жишээ нь: {\"api-key\": \"abc\"}. / : тэмдэгт эсвэл тоо агуулсан хашилтгүй утгыг хүлээж авнагүй. Хоосон утга нь толгойг устгана.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Нэр болон утгуудыг хашилт дотор бичнэ, жишээ нь: {\"temperature\": 0.3}. / эсвэл : тэмдэгт агуулсан хашилтгүй утгыг хүлээж авнагүй. Модель болон зурвасуудыг энд тохируулах боломжгүй.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Баталгаажуулалтын түлхүүр (Free эсвэл Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Тод дүрсүүдийг идэвхгүй болгох</string>

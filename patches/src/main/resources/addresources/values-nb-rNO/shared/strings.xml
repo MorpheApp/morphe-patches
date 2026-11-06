@@ -181,16 +181,16 @@ Atferden forsvant tidligere i søket, så mer enn ett flagg kan være involvert,
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG er ikke installert. Installer det</string>
   <string name="gms_core_dialog_title">Handling nødvendig</string>
-  <string name="gms_core_dialog_outdated_message">"Den installerte MicroG-versjonen v%1s er utdatert og kan forårsake problemer.
+  <string name="gms_core_dialog_outdated_message">"Din MicroG v%1$s er utdatert og kan forårsake problemer.
 
-Oppdater MicroG til nyeste versjon v%2s"</string>
+ Vennligst oppdater MicroG til nyeste versjon v%2$s"</string>
   <string name="gms_core_dialog_update_text">Oppdater</string>
   <string name="gms_core_dialog_ignore_text">Ignorer</string>
-  <string name="gms_core_dialog_conflict_message">"Morphe anbefaler ikke den installerte MicroG:
+  <string name="gms_core_dialog_conflict_message">"Den installerte MicroG er ikke anbefalt av Morphe:
 
-%1s
+%s
 
-Trykk for å avinstallere, åpne appen på nytt og installer MicroG RE"</string>
+Trykk for å avinstallere den, åpne deretter denne appen på nytt og installer MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Avinstaller</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG har ikke tillatelse til å kjøre i bakgrunnen.

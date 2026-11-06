@@ -181,14 +181,14 @@ Perilaku tersebut menghilang lebih awal pada saat pencarian, sehingga kemungkina
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG belum dipasang. Pasang dulu</string>
   <string name="gms_core_dialog_title">Diperlukan tindakan</string>
-  <string name="gms_core_dialog_outdated_message">"MicroG v%1s Anda sudah usang dan dapat menyebabkan masalah.
+  <string name="gms_core_dialog_outdated_message">"MicroG v%1$s Anda sudah usang dan dapat menyebabkan masalah.
 
-Harap perbarui MicroG ke versi terbaru v%2s"</string>
+Harap perbarui MicroG ke versi terbaru v%2$s"</string>
   <string name="gms_core_dialog_update_text">Perbarui</string>
   <string name="gms_core_dialog_ignore_text">Abaikan</string>
   <string name="gms_core_dialog_conflict_message">"MicroG yang terpasang tidak direkomendasikan oleh Morphe:
 
-%1s
+%s
 
 Ketuk untuk mencopot, lalu buka kembali aplikasi ini dan pasang MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Copot</string>

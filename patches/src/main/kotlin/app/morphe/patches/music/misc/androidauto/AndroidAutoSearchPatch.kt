@@ -9,7 +9,8 @@ package app.morphe.patches.music.misc.androidauto
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.music.interaction.jam.addReferenceGetter
@@ -35,7 +36,7 @@ private const val EXECUTOR = "Ljava/util/concurrent/Executor;"
 // region Phone search client and responses
 
 /** Uses YTM's phone search client for Android Auto's online searches. */
-internal fun BytecodePatchContext.patchSearch() {
+internal fun patchSearch() {
     val requestType = PhoneSearchRequestFingerprint.originalClassDef.type
     val phoneSearchSubmissionMethod = PhoneSearchSubmissionFingerprint.originalMethod
     val submissionCalls = phoneSearchSubmissionMethod.instructions.mapNotNull { it.getReference<MethodReference>() }.distinct()
@@ -139,7 +140,7 @@ internal fun BytecodePatchContext.patchSearch() {
 // region Android Auto search requests
 
 /** Replaces Android Auto's online search while preserving YTM's caller checks and local Library search. */
-private fun BytecodePatchContext.hookSearchRequests() {
+private fun hookSearchRequests() {
     val deliverSearchResultsMethod = SearchResultDeliveryFingerprint.method
     val searchRequestClass = mutableClassDefBy(deliverSearchResultsMethod.definingClass)
     val queryField = searchRequestClass.instanceFields.single { it.type == "Ljava/lang/String;" }

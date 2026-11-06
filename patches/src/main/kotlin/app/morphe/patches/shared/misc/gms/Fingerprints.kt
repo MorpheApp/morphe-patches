@@ -12,6 +12,7 @@ package app.morphe.patches.shared.misc.gms
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
@@ -27,6 +28,43 @@ internal object GnpRegistrationTargetFingerprint : Fingerprint(
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
         string("Failed to get android ID."),
         string("Exception reading GServices key.")
+    )
+)
+
+/**
+ * YouTube 21.45+ reads the Android ID in another class.
+ */
+internal object GnpRegistrationTargetSuspendFingerprint : Fingerprint(
+    name = "invokeSuspend",
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/content/Context;->getPackageName()Ljava/lang/String;",
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        // Sets the package name.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("Ljava/lang/String;", "L"),
+            returnType = "V",
+            location = MatchAfterWithin(3)
+        ),
+        // Sets the user serial number, the registration ID and the Android ID.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("J", "L"),
+            returnType = "V"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("Ljava/lang/String;", "L"),
+            returnType = "V"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("J", "L"),
+            returnType = "V"
+        )
     )
 )
 internal object GooglePlayUtilityFingerprint : Fingerprint(

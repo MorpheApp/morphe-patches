@@ -12,7 +12,8 @@ package app.morphe.patches.music.layout.theme
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceXmlOrNull
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_30_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
@@ -29,9 +30,7 @@ import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
-import app.morphe.util.doRecursively
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/theme/ThemePatch;"
 
@@ -55,38 +54,19 @@ private val musicColorNamesDark = {
  * invisible while the app background is pure black.
  * https://github.com/MorpheApp/morphe-patches/issues/200
  */
-private val headerFadeResourcePatch = resourcePatch(
+private val headerFadeResourcePatch = patch(
     description = "Fades the header of a detail page into the app background."
 ) {
     execute {
-        if (!get(DETAIL_PAGE_HEADER_LAYOUT).exists()) {
-            return@execute
-        }
-
-        document(DETAIL_PAGE_HEADER_LAYOUT).use { document ->
-            // Replaced after the walk, which would otherwise lose the node it is on.
-            val containers = mutableListOf<Element>()
-
-            document.doRecursively loop@{ node ->
-                if (node !is Element) return@loop
-
-                val idAttribute = node.getAttributeNode("android:id") ?: return@loop
-                if (idAttribute.textContent == "@id/elements_container") {
-                    containers += node
+        resourceXmlOrNull(DETAIL_PAGE_HEADER_LAYOUT)?.use { layout ->
+            layout.elements()
+                .filter { it.attribute("android:id") == "@id/elements_container" }
+                .toList()
+                .forEach { container ->
+                    // The fade layout replaces the container, keeping its attributes but not its children.
+                    container.removeChildren()
+                    container.tag = HEADER_FADE_LAYOUT_CLASS
                 }
-            }
-
-            containers.forEach { container ->
-                val fadeLayout = container.ownerDocument.createElement(HEADER_FADE_LAYOUT_CLASS)
-
-                val attributes = container.attributes
-                for (index in 0 until attributes.length) {
-                    val attribute = attributes.item(index)
-                    fadeLayout.setAttribute(attribute.nodeName, attribute.nodeValue)
-                }
-
-                container.parentNode.replaceChild(fadeLayout, container)
-            }
         }
     }
 }

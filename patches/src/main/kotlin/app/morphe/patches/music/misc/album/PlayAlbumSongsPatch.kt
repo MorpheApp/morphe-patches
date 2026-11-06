@@ -8,7 +8,7 @@
 package app.morphe.patches.music.misc.album
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -23,7 +23,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/album/PlayAlbumSongsPatch;"
 
 @Suppress("unused")
-val playAlbumSongsPatch = bytecodePatch(
+val playAlbumSongsPatch = patch(
     name = "Play albums songs",
     description = "Adds an option to play the song version of album tracks instead of music videos."
 ) {

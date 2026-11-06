@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.video.speed.shorts
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -20,7 +20,7 @@ import app.morphe.util.setExtensionIsPatchIncluded
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/speed/ShortsPlaybackSpeedFlyoutPatch;"
 
-internal val shortsPlaybackSpeedFlyoutPatch = bytecodePatch(
+internal val shortsPlaybackSpeedFlyoutPatch = patch(
     description = "Adds a playback speed item to the flyout menu of the Shorts player.",
 ) {
     dependsOn(

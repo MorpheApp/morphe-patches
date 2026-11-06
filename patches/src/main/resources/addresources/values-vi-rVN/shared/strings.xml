@@ -181,14 +181,14 @@ Hành vi đã biến mất trước đó trong quá trình tìm kiếm, vì vậ
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">microG chưa được cài đặt. Hãy cài đặt nó đi</string>
   <string name="gms_core_dialog_title">Yêu cầu thực hiện</string>
-  <string name="gms_core_dialog_outdated_message">"MicroG v%1s của bạn đã lỗi thời và có thể gây ra sự cố.
+  <string name="gms_core_dialog_outdated_message">"Phiên bản MicroG v%1$s của bạn đã cũ và có thể gây ra sự cố.
 
-Vui lòng cập nhật MicroG lên phiên bản mới nhất v%2s"</string>
+Vui lòng cập nhật MicroG lên phiên bản mới nhất v%2$s"</string>
   <string name="gms_core_dialog_update_text">Cập nhật</string>
   <string name="gms_core_dialog_ignore_text">Bỏ qua</string>
-  <string name="gms_core_dialog_conflict_message">"MicroG đã cài đặt không được Morphe khuyến nghị:
+  <string name="gms_core_dialog_conflict_message">"Phiên bản MicroG đã cài đặt không được Morphe khuyến nghị:
 
-%1s
+%s
 
 Nhấn để gỡ cài đặt, sau đó mở lại ứng dụng này và cài đặt MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Gỡ</string>

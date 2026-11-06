@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchSingle
@@ -15,14 +15,13 @@ import app.morphe.patcher.util.p0Register
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 private const val LIST = "Ljava/util/List;"
 
 /** Supply a real batch only to a picker launched by our queue header; keep native callbacks. */
-internal fun installQueueSavePicker(context: BytecodePatchContext, endpointType: String) = with(context) {
-    installQueueSaveFeedback(context, endpointType)
+internal fun installQueueSavePicker(endpointType: String) {
+    installQueueSaveFeedback(endpointType)
 
     val request = QueueSaveRequestFingerprint.originalClassDef
     val picker = queueSavePickerFingerprint(request.type).match()
@@ -47,7 +46,7 @@ internal fun installQueueSavePicker(context: BytecodePatchContext, endpointType:
         """
     )
 
-    val argumentsField = picker.instructionMatches.first().instruction.getReference<FieldReference>()!!
+    val argumentsField = picker.instructionMatches.first().fieldReference
     val mutablePicker = mutableClassDefBy(picker.originalClassDef.type)
     mutablePicker.interfaces.add(SAVE_PICKER_INTERFACE)
     mutablePicker.addBridgeMethod(
@@ -67,7 +66,7 @@ internal fun installQueueSavePicker(context: BytecodePatchContext, endpointType:
     // returns HTTP 400 before the UI can open on the verified client.
     val response = QueueSaveResponseFingerprint.matchSingle()
     val callbackPicker = queueSaveResponsePickerFingerprint(mutablePicker.type).matchSingle()
-        .instructionMatches.single().instruction.getReference<FieldReference>()!!
+        .instructionMatches.single().fieldReference
 
     val responseCast = response.instructionMatches.first()
     val responseType = responseCast.instruction.getReference<TypeReference>()!!.type

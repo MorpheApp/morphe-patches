@@ -174,6 +174,7 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
      *
      * @param iconName Drawable name, the "_bold" variant is used with bold icons.
      */
+    @SuppressLint("AlwaysShowAction")
     public static MenuItem addToolbarButton(Toolbar toolbar, String iconName,
                                             CharSequence description, Runnable onClick) {
         MenuItem item = toolbar.getMenu().add(description);

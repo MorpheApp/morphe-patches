@@ -463,6 +463,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
                             .count(),
                     "true".equals(meta("reverse_order", id)),
                     "true".equals(meta("hide_watched", id)),
+                    "true".equals(meta("watched_on_advance", id)),
                     meta("recovery_next", id));
         }
     }
@@ -474,7 +475,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
             CatalogClient.Catalog catalog,
             String startVideo,
             long now) {
-        saveSeries(id, name, bookmark, catalog, new FollowStart(startVideo, -1, false, false), now);
+        saveSeries(id, name, bookmark, catalog, new FollowStart(startVideo, -1, false, false, false), now);
     }
 
     void saveSeries(
@@ -509,6 +510,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
             db.insertOrThrow("series", null, row);
             if (catalog != null) replaceCatalog(id, catalog, now);
             meta("reverse_order", id, selection.reverse() ? "true" : "");
+            meta("watched_on_advance", id, selection.watchedOnAdvance() ? "true" : "");
             if (start != null) {
                 if (selection.watchedBefore()) {
                     Set<String> previous =
@@ -866,7 +868,8 @@ public final class TrackerRepository extends SQLiteOpenHelper {
         return !meta("episode_info", id).isEmpty();
     }
 
-    public void seriesOptions(String id, long revision, boolean reverse, boolean hideWatched) {
+    public void seriesOptions(String id, long revision, boolean reverse, boolean hideWatched,
+                              boolean watchedOnAdvance) {
         SQLiteDatabase db = getWritableDatabase();
         db.beginTransaction();
         try {
@@ -875,12 +878,45 @@ public final class TrackerRepository extends SQLiteOpenHelper {
                 throw new IllegalStateException("morphe_series_tracker_error_playlist_changed");
             meta("reverse_order", id, reverse ? "true" : "");
             meta("hide_watched", id, hideWatched ? "true" : "");
+            meta("watched_on_advance", id, watchedOnAdvance ? "true" : "");
             if (old.reverseOrder() != reverse && old.complete())
                 db.execSQL(
                         "UPDATE series SET catalog_revision=catalog_revision+1,cursor_revision=CASE"
                             + " WHEN cursor_revision=catalog_revision THEN catalog_revision+1 ELSE"
                             + " cursor_revision END WHERE playlist_id=?",
                         new Object[] {id});
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    /**
+     * Marks the previous video watched, if the video is the next episode after it in a series
+     * with the option on. The saved position is kept.
+     */
+    void markWatchedOnAdvance(String previous, String video, String historyEpoch) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+        try {
+            if (!historyEpoch().equals(historyEpoch)) return;
+            List<String> ids = new ArrayList<>();
+            try (Cursor c = db.rawQuery(
+                    "SELECT DISTINCT a.playlist_id FROM catalog_entry a JOIN catalog_entry b ON"
+                            + " a.playlist_id=b.playlist_id WHERE a.video_id=? AND a.available=1"
+                            + " AND b.video_id=? AND b.available=1 AND EXISTS (SELECT 1 FROM meta"
+                            + " WHERE key='watched_on_advance:' || a.playlist_id)",
+                    new String[]{previous, video})) {
+                while (c.moveToNext()) ids.add(c.getString(0));
+            }
+            for (String id : ids) {
+                if (ResumePlanner.isNext(series(id), previous, video)) {
+                    db.execSQL(
+                            "UPDATE video_progress SET auto_completed=1 WHERE video_id=?",
+                            new Object[] {previous});
+                    break;
+                }
+            }
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
@@ -949,6 +985,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
                         });
                 meta("reverse_order", s.id(), s.reverseOrder() ? "true" : "");
                 meta("hide_watched", s.id(), s.hideWatched() ? "true" : "");
+                meta("watched_on_advance", s.id(), s.watchedOnAdvance() ? "true" : "");
                 meta("start_here", s.id(), s.startHere() ? s.cursorId() : "");
                 meta("recovery_next", s.id(), s.recoveryId());
                 for (Progress p : s.progress().values()) {
@@ -983,6 +1020,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
             meta("start_here", id, "");
             meta("reverse_order", id, "");
             meta("hide_watched", id, "");
+            meta("watched_on_advance", id, "");
             meta("episode_info", id, "");
             meta("new_episodes", id, "");
             meta("recovery_next", id, "");

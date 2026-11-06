@@ -181,16 +181,16 @@ Davranış, aramanın daha önceki bir adımında ortadan kalktı; bu nedenle bi
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG yüklenmedi. Yükleyin</string>
   <string name="gms_core_dialog_title">Eylem gerekli</string>
-  <string name="gms_core_dialog_outdated_message">"MicroG v%1s sürümü güncel değil ve sorunlara neden olabilir.
+  <string name="gms_core_dialog_outdated_message">"MicroG v%1$s sürümünüz güncel değil ve sorunlara yol açabilir.
 
-Lütfen MicroG'yi en son v%2s sürümüne güncelleyin"</string>
+Lütfen MicroG'yi en son sürüm olan v%2$s sürümüne güncelleyin"</string>
   <string name="gms_core_dialog_update_text">Güncelle</string>
   <string name="gms_core_dialog_ignore_text">Yoksay</string>
-  <string name="gms_core_dialog_conflict_message">"Yüklenen MicroG Morphe tarafından önerilmiyor:
+  <string name="gms_core_dialog_conflict_message">"Yüklü olan MicroG, Morphe tarafından önerilmemektedir:
 
-%1s
+%s
 
-Kaldırmak için dokunun, ardından bu uygulamayı yeniden açın ve MicroG RE yükleyin"</string>
+Kaldırmak için dokunun, ardından bu uygulamayı yeniden açın ve MicroG RE'yi yükleyin"</string>
   <string name="gms_core_dialog_uninstall_text">Kaldır</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG'nin arka planda çalışma izni yok.

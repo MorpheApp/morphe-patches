@@ -295,8 +295,8 @@ public final class HideStatusBarPatch {
      * turned off from the next app start. Only the full screen window in portrait with the status bar
      * shown is checked, where the status bar is above the window.
      * <p>
-     * The same way, a window drawn edge to edge is expected to end behind the system navigation
-     * buttons, which the navigation bar covering them relies on. Some devices and Android versions
+     * The same way, a window drawn edge to edge, or by Android 15 and later, is expected to end behind
+     * the system navigation buttons, which the navigation bar covering them relies on. Some devices and Android versions
      * keep it above them, and the room for them is then added twice, see
      * {@link NavigationBarPatch#useTranslucentNavigationBar(boolean)}. The bottom of the window is
      * saved, and the flags of the translucent navigation bar are turned off from the next app start.
@@ -363,8 +363,10 @@ public final class HideStatusBarPatch {
 
                 // Only with the system navigation buttons at the bottom of the screen. The navigation bar
                 // covering them can change how the window is laid out, so only a window laid out with it
-                // tells that the device keeps the window above them.
-                if (edgeToEdge && insets.isVisible(WindowInsets.Type.navigationBars())
+                // tells that the device keeps the window above them. On Android 15 and later the navigation
+                // bar covers them also without the edge to edge top bar, such as with the status bar hidden.
+                if ((edgeToEdge || NavigationBarPatch.isNavigationBarCoveringSystemButtons())
+                        && insets.isVisible(WindowInsets.Type.navigationBars())
                         && insets.getInsetsIgnoringVisibility(WindowInsets.Type.navigationBars()).bottom > 0) {
                     final boolean aboveNavigationBar = windowBottom < displayHeight;
                     if ((!aboveNavigationBar || NavigationBarPatch.isNavigationBarCoveringSystemButtons())

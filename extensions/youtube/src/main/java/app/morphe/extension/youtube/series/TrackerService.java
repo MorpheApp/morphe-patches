@@ -409,6 +409,18 @@ public final class TrackerService {
                 });
     }
 
+    void markWatchedOnAdvance(String previous, String video, long privacyGeneration) {
+        String capturedEpoch = epoch;
+        mutation(() -> {
+                    if (RecordingPrivacy.accepts(privacyGeneration)) {
+                        repository.markWatchedOnAdvance(previous, video,
+                                capturedEpoch == null ? epoch : capturedEpoch);
+                    }
+                },
+                () -> {},
+                error -> {});
+    }
+
     Future<?> discover(
             String video, Consumer<List<PlaylistDiscovery.Match>> done, Consumer<String> error) {
         try {
@@ -673,11 +685,11 @@ public final class TrackerService {
                 error);
     }
 
-    public void seriesOptions(
-            Series s, boolean reverse, boolean hideWatched, Runnable done, Consumer<String> error) {
+    public void seriesOptions(Series s, boolean reverse, boolean hideWatched, boolean watchedOnAdvance,
+                              Runnable done, Consumer<String> error) {
         mutation(() -> {
                     requireCurrent(s);
-                    repository.seriesOptions(s.id(), s.revision(), reverse, hideWatched);
+                    repository.seriesOptions(s.id(), s.revision(), reverse, hideWatched, watchedOnAdvance);
                 },
                 done,
                 error);

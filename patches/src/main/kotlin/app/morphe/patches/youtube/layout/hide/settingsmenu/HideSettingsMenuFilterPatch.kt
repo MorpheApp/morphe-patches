@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.layout.hide.settingsmenu
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settingsmenu.HIDE_MATCHING_METHOD
@@ -27,7 +27,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/SettingsMenuFilterPatch;"
 
 @Suppress("unused")
-val hideSettingsMenuFilterPatch = bytecodePatch(
+val hideSettingsMenuFilterPatch = patch(
     name = "Settings menu filter",
     description = "Adds an option to hide items on the standard YouTube settings screen by their visible name."
 ) {

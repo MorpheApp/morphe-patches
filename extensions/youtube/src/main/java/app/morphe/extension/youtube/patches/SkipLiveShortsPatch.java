@@ -12,6 +12,7 @@ import java.lang.ref.WeakReference;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.PlayerType;
 
 /**
  * Skips live streams that appear in the Shorts feed.
@@ -43,6 +44,12 @@ public class SkipLiveShortsPatch {
     public static void onLiveStreamChanged(boolean isLive) {
         try {
             if (!isLive || !Settings.SKIP_LIVE_SHORTS.get()) {
+                return;
+            }
+
+            // The Shorts player stays in memory after a regular video is opened,
+            // so a live stream in the regular player would skip the Short behind it.
+            if (!PlayerType.getCurrent().isNoneHiddenOrSlidingMinimized()) {
                 return;
             }
 

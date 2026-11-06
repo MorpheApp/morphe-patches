@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit-ის კონფიდენციალობის პოლიტიკა</string>
   <string name="morphe_google_signin_not_available_toast">Google-ით ავტორიზაცია მიუწვდომელია. შესასვლელად გამოიყენეთ ელ-ფოსტა</string>
+  <string name="morphe_app_downgrade_dialog_title">ვერსიის დაწევა არ არის მხარდაჭერილი</string>
+  <string name="morphe_app_downgrade_dialog_message">"Reddit-ის ეს ინსტალაცია დაწეულა ვერსიიდან &lt;b&gt;%1$s&lt;/b&gt; ვერსიამდე &lt;b&gt;%2$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+აპლიკაციის მონაცემები ახალი ვერსიიდან არ მუშაობს ძველ ვერსიებთან და შესაძლოა აპლიკაციამ არასწორად იმუშაოს.
+&lt;br/&gt;&lt;br/&gt;
+ძველი ვერსიის გამოსაყენებლად, თქვენ უნდა &lt;b&gt;წაშალოთ&lt;/b&gt; Reddit და შემდეგ დააინსტალიროთ ძველი ვერსია."</string>
+  <string name="morphe_app_downgrade_dialog_open_app_info">აპლიკაციის ინფორმაციის გახსნა</string>
   <string name="morphe_screen_ads_title">რეკლამები</string>
   <string name="morphe_hide_post_ads_title">ფიდის რეკლამების დამალვა</string>
   <string name="morphe_hide_comment_ads_title">კომენტარების რეკლამების დამალვა</string>

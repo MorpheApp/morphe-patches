@@ -13,7 +13,7 @@ package app.morphe.patches.youtube.video.quality
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
@@ -36,7 +36,7 @@ private const val EXTENSION_CLASS =
 private const val EXTENSION_SHORTS_QUALITY_MENU_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/playback/quality/AdvancedVideoQualityMenuPatch$ShortsQualityMenuInterface;"
 
-internal val advancedVideoQualityMenuPatch = bytecodePatch {
+internal val advancedVideoQualityMenuPatch = patch {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

@@ -8,24 +8,22 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.util.getReference
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 /** Retain native button validation and dispatch every unrelated command unchanged. */
-internal fun installPlaylistRemoval(context: BytecodePatchContext) = with(context) {
+internal fun installPlaylistRemoval() {
     val dispatch = NativeButtonDispatchFingerprint.match()
     val serviceCall = dispatch.instructionMatches.single()
     val registers = serviceCall.instruction as FiveRegisterInstruction
-    val callback = serviceCall.instruction.getReference<MethodReference>()!!
+    val callback = serviceCall.methodReference
     val endpointType = callback.parameterTypes.first()
 
-    installQueueUndo(this, callback)
+    installQueueUndo(callback)
 
     // Reuse the endpoint result register, keeping every live native local intact.
     // Null consumes our local command; otherwise restore the native endpoint type.
@@ -44,7 +42,7 @@ internal fun installPlaylistRemoval(context: BytecodePatchContext) = with(contex
 }
 
 /** Preserve native swipe drawing when an attached playing row becomes removable. */
-internal fun installPlaylistSwipeBackground(context: BytecodePatchContext, listener: FieldReference) = with(context) {
+internal fun installPlaylistSwipeBackground(listener: FieldReference) {
     val attached = PlaylistSwipeAttachedFingerprint
     val foregroundStore = attached.instructionMatches.first()
     val backgroundRead = attached.instructionMatches[1].instruction as FiveRegisterInstruction
@@ -56,8 +54,8 @@ internal fun installPlaylistSwipeBackground(context: BytecodePatchContext, liste
         "Native playlist queue: swipe drawable must belong to the attached foreground"
     }
 
-    val foreground = foregroundStore.instruction.getReference<FieldReference>()!!
-    val cachedBackground = backgroundStore.instruction.getReference<FieldReference>()!!
+    val foreground = foregroundStore.fieldReference
+    val cachedBackground = backgroundStore.fieldReference
     val swipe = mutableClassDefBy(attached.originalClassDef.type)
     swipe.interfaces.add(SWIPE_BACKGROUND_INTERFACE)
 
@@ -83,7 +81,7 @@ internal fun installPlaylistSwipeBackground(context: BytecodePatchContext, liste
     val update = PlaylistRowBackgroundFingerprint
     val holder = mutableClassDefBy(update.originalClassDef.type)
     val swipeField = PlaylistRowSwipeLayoutFingerprint
-        .instructionMatches.single().instruction.getReference<FieldReference>()!!
+        .instructionMatches.single().fieldReference
     val bridge = holder.addBridgeMethod(
         "patch_refreshQueueSwipeBackground",
         emptyList(),

@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.layout.shortsicons
 
 import app.morphe.patcher.patch.filePathOption
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.player.icons.CustomIcons
 import app.morphe.patches.youtube.layout.player.icons.copyIconStyles
@@ -48,7 +48,7 @@ private val shortsIcons = listOf(
 )
 
 @Suppress("unused")
-val shortsIconStylePatch = resourcePatch(
+val shortsIconStylePatch = patch(
     name = "Shorts icon style",
     description = "Adds an option to change the style of the Shorts action button icons.",
 ) {

@@ -30,6 +30,14 @@ Second \"item\" text"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_dialog_outdated_message">"உங்கள் MicroG v%1$s பழையதாகிவிட்டது, இது சிக்கல்களை ஏற்படுத்தக்கூடும்.
+
+தயவுசெய்து MicroG-ஐ சமீபத்திய பதிப்பு v%2$s-க்கு மேம்படுத்துங்கள்"</string>
+  <string name="gms_core_dialog_conflict_message">"நிறுவப்பட்ட MicroG, Morphe-ஆல் பரிந்துரைக்கப்படவில்லை:
+
+%s
+
+இதை அகற்றத் தட்டவும், பின்னர் இந்த செயலியை மீண்டும் திறந்து MicroG RE-ஐ நிறுவவும்"</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->

@@ -15,12 +15,13 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.instanceOf
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.classDefByOrNull
+import app.morphe.patcher.util.getMutableMethod
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.shared.misc.fix.proto.protoDefaultInstanceFingerprint
 import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.getMutableMethod
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -153,7 +154,7 @@ internal data class QueueMutationAbi(
  * candidate is constrained by an observed relationship and fails with a subsystem-specific message
  * instead of silently selecting an arbitrary host member.
  */
-internal fun BytecodePatchContext.resolveJamQueueAbi(): JamQueueAbi {
+internal fun resolveJamQueueAbi(): JamQueueAbi {
     val queueMatch = QueueEnqueueFingerprint.match()
     val manager = queueMatch.originalClassDef
     val enqueue = queueMatch.originalMethod
@@ -189,7 +190,7 @@ internal fun BytecodePatchContext.resolveJamQueueAbi(): JamQueueAbi {
     )
 }
 
-internal fun BytecodePatchContext.resolveProto(type: String?, concept: String): ProtoAbi {
+internal fun resolveProto(type: String?, concept: String): ProtoAbi {
     require(!type.isNullOrBlank() && type.isReferenceType()) {
         "Unable to resolve Jam $concept protobuf type"
     }
@@ -208,7 +209,7 @@ internal fun BytecodePatchContext.resolveProto(type: String?, concept: String): 
     return ProtoAbi(type, defaultInstance, parser)
 }
 
-internal fun BytecodePatchContext.resolveStorage(
+internal fun resolveStorage(
     manager: ClassDef,
     @Suppress("unused")
     enqueue: Method,
@@ -296,15 +297,15 @@ internal fun BytecodePatchContext.resolveStorage(
     )
 }
 
-private fun BytecodePatchContext.resolveLocalMode(mode: MethodReference): FieldReference {
+private fun resolveLocalMode(mode: MethodReference): FieldReference {
     val enum = classDefBy(mode.returnType)
     require(AccessFlags.ENUM.isSet(enum.accessFlags)) { "Jam queue mode is not an enum" }
     return localQueueModeFingerprint(enum.type)
         .instructionMatches[2]
-        .getFieldAccessed()
+        .fieldReference
 }
 
-internal fun BytecodePatchContext.resolveDisplays(
+internal fun resolveDisplays(
     manager: ClassDef,
     constructor: Method,
     storage: QueueStorageAbi,
@@ -325,7 +326,7 @@ internal fun BytecodePatchContext.resolveDisplays(
     return QueueDisplaysAbi(primary, autoplay)
 }
 
-private fun BytecodePatchContext.displayLaneStores(
+private fun displayLaneStores(
     constructor: Method,
     fields: List<FieldReference>,
 ): Map<String, Int> {
@@ -380,7 +381,7 @@ private fun BytecodePatchContext.displayLaneStores(
 private fun ReferenceInstruction.argumentRegister(staticCall: Boolean): Int? =
     registerAt(if (staticCall) 0 else 1)
 
-private fun BytecodePatchContext.resolveDisplay(
+private fun resolveDisplay(
     managerField: FieldReference,
     storage: QueueStorageAbi,
 ): QueueDisplayAbi {
@@ -415,7 +416,7 @@ private fun BytecodePatchContext.resolveDisplay(
     )
 }
 
-private fun BytecodePatchContext.resolveItem(
+private fun resolveItem(
     manager: ClassDef,
     remove: Method,
     command: ProtoAbi,
@@ -527,7 +528,7 @@ private fun BytecodePatchContext.resolveItem(
     )
 }
 
-private fun BytecodePatchContext.resolveThumbnailType(artworkList: FieldReference): String? {
+private fun resolveThumbnailType(artworkList: FieldReference): String? {
     val usages =
         thumbnailEntryUsageFingerprint(artworkList).matchAllOrNull().orEmpty().map {
             it.originalMethod
@@ -542,7 +543,7 @@ private fun BytecodePatchContext.resolveThumbnailType(artworkList: FieldReferenc
     return candidates.singleOrNull()
 }
 
-private fun BytecodePatchContext.resolveCallback(
+private fun resolveCallback(
     enqueue: Method,
     managerType: String,
 ): QueueCallbackAbi {
@@ -575,7 +576,7 @@ private fun BytecodePatchContext.resolveCallback(
     )
 }
 
-private fun BytecodePatchContext.resolveMenu(
+private fun resolveMenu(
     manager: ClassDef,
     enqueue: Method,
     command: ProtoAbi,
@@ -620,13 +621,13 @@ private fun BytecodePatchContext.resolveMenu(
     return QueueMenuAbi(dispatcher, dispatch, response.type, items)
 }
 
-private fun BytecodePatchContext.resolveSelection(
+private fun resolveSelection(
     itemType: String,
     persistentId: MethodReference,
 ): MethodReference =
     queueItemSelectionFingerprint(itemType, persistentId).originalMethod
 
-private fun BytecodePatchContext.resolveMutation(
+private fun resolveMutation(
     manager: ClassDef,
     remove: Method,
     display: QueueDisplayAbi,
@@ -713,14 +714,14 @@ private fun resolveMutationProvider(
     return provider to providerMethod
 }
 
-internal fun BytecodePatchContext.concreteImplementationsOf(type: String): List<ClassDef> =
+internal fun concreteImplementationsOf(type: String): List<ClassDef> =
     nativeImplementationFingerprint(type)
         .matchAllOrNull()
         .orEmpty()
         .map { it.originalClassDef }
         .distinctBy { it.type }
 
-internal fun BytecodePatchContext.interfaceClosure(type: String): Set<String> {
+internal fun interfaceClosure(type: String): Set<String> {
     val visited = mutableSetOf<String>()
     fun visit(candidate: String) {
         if (!visited.add(candidate)) return
@@ -732,7 +733,7 @@ internal fun BytecodePatchContext.interfaceClosure(type: String): Set<String> {
     return visited
 }
 
-internal fun BytecodePatchContext.implementsType(type: String, parent: String): Boolean =
+internal fun implementsType(type: String, parent: String): Boolean =
     parent in interfaceClosure(type)
 
 private fun Method.parameters(): List<String> = parameterTypes.map { it.toString() }

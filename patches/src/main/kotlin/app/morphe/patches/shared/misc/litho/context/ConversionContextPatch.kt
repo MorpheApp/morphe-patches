@@ -12,7 +12,7 @@ package app.morphe.patches.shared.misc.litho.context
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -39,7 +39,7 @@ lateinit var conversionContextClassDef: MutableClass
  * read the identifier and the path-builder StringBuilder via obfuscation-safe names.
  *
  */
-val conversionContextPatch = bytecodePatch(
+val conversionContextPatch = patch(
     description = "Hooks the method to use the conversion context in an extension."
 ) {
     execute {

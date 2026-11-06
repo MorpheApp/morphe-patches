@@ -10,7 +10,7 @@
 
 package app.morphe.patches.youtube.layout.shortsplayer
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -27,7 +27,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OpenShortsInRegularPlayerPatch;"
 
 @Suppress("unused")
-val openShortsInRegularPlayerPatch = bytecodePatch(
+val openShortsInRegularPlayerPatch = patch(
     name = "Open Shorts in regular player",
     description = "Adds options to open Shorts in the regular video player.",
 ) {

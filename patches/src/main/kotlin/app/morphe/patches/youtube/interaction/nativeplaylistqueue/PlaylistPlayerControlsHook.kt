@@ -8,28 +8,25 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 /** Keep native listeners and visibility, including controls that bypass the navigator for history. */
 internal fun installPlaylistPlayerControls(
-    context: BytecodePatchContext,
     navigatorType: String,
     enumType: String,
     wrapperType: String
-) = with(context) {
+) {
     val availability = listOf("NEXT", "PREVIOUS").map { intent ->
         val enumField = playlistNavigationIntentFingerprint(enumType, intent)
-            .instructionMatches.last().instruction.getReference<FieldReference>()!!
+            .instructionMatches.last().fieldReference
         val request = playlistNavigationSingletonFingerprint(wrapperType, enumField)
-            .instructionMatches.last().instruction.getReference<FieldReference>()!!
+            .instructionMatches.last().fieldReference
         request to playlistControlAvailabilityFingerprint(navigatorType, request)
     }
 
@@ -40,7 +37,7 @@ internal fun installPlaylistPlayerControls(
 
     val controls = mutableClassDefBy(controlsType)
     val navigatorField = availability.first().second.instructionMatches[4]
-        .instruction.getReference<FieldReference>()!!
+        .fieldReference
 
     controls.interfaces.add(PLAYER_CONTROLS_INTERFACE)
     controls.addBridgeMethod(
@@ -95,7 +92,7 @@ internal fun installPlaylistPlayerControls(
 
         // The delegate read joins both paths of the optional native logging callback.
         // Intercept here so logging runs, but a local queue cannot fall into history/restart.
-        val delegateField = match.instructionMatches.first().instruction.getReference<FieldReference>()!!
+        val delegateField = match.instructionMatches.first().fieldReference
         var press = playlistControlPressFingerprint(controlsType, delegateField, request)
         if (press.method.implementation!!.registerCount <= 1) {
             press.method.cloneParameters()

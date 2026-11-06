@@ -69,6 +69,16 @@ public final class LithoRelayoutPatch {
          * @return If the text is outdated, and laying it out again changes it.
          */
         boolean isOutdated();
+
+        /**
+         * Called on the main thread.
+         *
+         * @return If the host that shows this outdated text can be laid out again. A recycled view
+         *         can still hold a text of another screen, and laying it out changes that screen.
+         */
+        default boolean canRelayoutHost(View host) {
+            return true;
+        }
     }
 
     /**
@@ -187,7 +197,7 @@ public final class LithoRelayoutPatch {
      */
     public static void onLithoTextMounted(Drawable textDrawable, CharSequence text) {
         try {
-            Boolean outdated = isOutdated(text);
+            Boolean outdated = isOutdated(text, null);
             if (outdated != null) {
                 relayoutTextDrawables.add(textDrawable);
                 // The text can be outdated before it's mounted, such as a title fetched meanwhile.
@@ -221,7 +231,7 @@ public final class LithoRelayoutPatch {
                 boolean showsRelayoutText = false;
                 boolean showsOutdatedText = false;
                 for (CharSequence text : textContent.getTextItems()) {
-                    Boolean outdated = isOutdated(text);
+                    Boolean outdated = isOutdated(text, host);
                     if (outdated != null) {
                         showsRelayoutText = true;
                         showsOutdatedText |= outdated;
@@ -269,10 +279,12 @@ public final class LithoRelayoutPatch {
     }
 
     /**
-     * @return If any {@link RelayoutSpan} of the text is outdated, or null if the text has none.
+     * @param host The view that shows the text, or null if it is not known yet.
+     * @return If any {@link RelayoutSpan} of the text is outdated and can lay out the host,
+     *         or null if the text has none.
      */
     @Nullable
-    private static Boolean isOutdated(@Nullable CharSequence text) {
+    private static Boolean isOutdated(@Nullable CharSequence text, @Nullable View host) {
         if (!(text instanceof Spanned spanned)) {
             return null;
         }
@@ -281,7 +293,7 @@ public final class LithoRelayoutPatch {
             return null;
         }
         for (RelayoutSpan span : spans) {
-            if (span.isOutdated()) {
+            if (span.isOutdated() && (host == null || span.canRelayoutHost(host))) {
                 return true;
             }
         }

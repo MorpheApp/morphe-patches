@@ -10,19 +10,17 @@ package app.morphe.patches.youtube.layout.feedcards
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
 import app.morphe.patches.shared.layout.theme.lithoDrawableColorHook
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
-import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.youtube.layout.hide.player.popup.PlayerPopupPanelsFingerprint
+import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -30,15 +28,11 @@ import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.hookVideoIntentCommand
+import app.morphe.patches.youtube.shared.hookVideoIntentInterceptor
 import app.morphe.patches.youtube.shared.openVideoIntentPatch
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -90,13 +84,14 @@ private fun MutableClass.hookViewGroupMethod(name: String, parameterType: String
 }
 
 @Suppress("unused")
-val feedCardLayoutPatch = bytecodePatch(
+val feedCardLayoutPatch = patch(
     name = "Feed card layout",
     description = "Adds an option to show or hide the card layout of feed videos, which YouTube sends as an A/B test."
 ) {
     dependsOn(
         sharedExtensionPatch,
         openVideoIntentPatch,
+        commandRouterHookPatch,
         fixProtoLibraryPatch,
         settingsPatch,
         elementProtoParserHookPatch,
@@ -151,7 +146,7 @@ val feedCardLayoutPatch = bytecodePatch(
 
             // The cards are found by the bytes of their element.
             ElementItemConstructorFingerprint.let {
-                val elementBytesField = it.instructionMatches[1].getFieldAccessed()
+                val elementBytesField = it.instructionMatches[1].fieldReference
 
                 it.classDef.apply {
                     interfaces.add(EXTENSION_ELEMENT_ITEM_INTERFACE)
@@ -189,79 +184,7 @@ val feedCardLayoutPatch = bytecodePatch(
             hookViewGroupMethod("onDraw", "Landroid/graphics/Canvas;", "onListDraw")
         }
 
-        // The comment button opens the video, and the comments are opened when the watch page is ready.
-        hookVideoIntentCommand("$EXTENSION_CLASS->onWatchCommand(Ljava/lang/Object;Ljava/util/Map;)V")
-
-        val uiReadyCommandMethod = PlayerPopupPanelsFingerprint.method
-        val commandType = uiReadyCommandMethod.parameterTypes.first().toString()
-        val commandDefaultInstance = classDefBy(commandType).fields.single {
-            AccessFlags.STATIC.isSet(it.accessFlags) && it.type == commandType
-        }
-        // The command executor of the method, and its method that runs a command.
-        val (executorField, executeMethod) = uiReadyCommandMethod.let {
-            val executeIndex = it.indexOfFirstInstructionReversedOrThrow(Opcode.INVOKE_INTERFACE)
-            val executorIndex = it.indexOfFirstInstructionReversedOrThrow(executeIndex, Opcode.IGET_OBJECT)
-
-            Pair(
-                it.getInstruction(executorIndex).getReference<FieldReference>()!!,
-                it.getInstruction(executeIndex).getReference<MethodReference>()!!
-            )
-        }
-
-        WatchNextUiReadyFingerprint(uiReadyCommandMethod).let {
-            it.method.apply {
-                val responseField = it.instructionMatches.first().getFieldAccessed()
-                val uiReadyCommandField = it.instructionMatches[3].getFieldAccessed()
-                val parameterType = parameterTypes.first().toString()
-
-                it.classDef.methods.add(
-                    ImmutableMethod(
-                        definingClass,
-                        "patch_openFeedCardComments",
-                        listOf(ImmutableMethodParameter(parameterType, null, null)),
-                        "V",
-                        AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(5),
-                    ).toMutable().apply {
-                        addInstructionsWithLabels(
-                            0,
-                            """
-                                if-eqz p1, :exit
-                                iget-object v0, p1, $responseField
-                                invoke-static { v0 }, $EXTENSION_CLASS->getCommentsCommand(Ljava/lang/Object;)[B
-                                move-result-object v1
-                                if-eqz v1, :exit
-
-                                # Parse the command with the extensions of the app.
-                                sget-object v0, $commandDefaultInstance
-                                invoke-static { }, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
-                                move-result-object v2
-                                invoke-static { v0, v1, v2 }, ${parseByteArrayWithRegistryMethodRef.get()!!}
-                                move-result-object v0
-                                check-cast v0, $commandType
-
-                                # Run the command, without the popup panel checks of the watch next command.
-                                new-instance v1, Ljava/util/HashMap;
-                                invoke-direct { v1 }, Ljava/util/HashMap;-><init>()V
-                                iget-object v2, p0, $uiReadyCommandField
-                                iget-object v2, v2, $executorField
-                                check-cast v2, ${executeMethod.definingClass}
-                                invoke-interface { v2, v0, v1 }, $executeMethod
-
-                                :exit
-                                return-void
-                            """
-                        )
-                    }
-                )
-
-                addInstruction(
-                    0,
-                    "invoke-direct/range { p0 .. p1 }, $definingClass->patch_openFeedCardComments($parameterType)V"
-                )
-            }
-        }
+        // The comment button opens the comments panel of the video, instead of the video.
+        hookVideoIntentInterceptor(EXTENSION_CLASS, "openCommentsPanel")
     }
 }

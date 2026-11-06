@@ -9,9 +9,8 @@ package app.morphe.patches.shared.misc.proxy
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -27,11 +26,11 @@ internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/Netwo
 
 internal fun baseNetworkProxyPatch(
     preferenceScreen: BasePreferenceScreen.Screen,
-    targetUsesProxyListInt: BytecodePatchBuilder.() -> Boolean,
-    patchNotCompatibleMessage: BytecodePatchBuilder.() -> String? = { null },
-    block: BytecodePatchBuilder.() -> Unit,
-    executeBlock: BytecodePatchContext.() -> Unit = {}
-) = bytecodePatch(
+    targetUsesProxyListInt: PatchDefinition.() -> Boolean,
+    patchNotCompatibleMessage: PatchDefinition.() -> String? = { null },
+    block: PatchDefinition.() -> Unit,
+    executeBlock: () -> Unit = {}
+) = patch(
     name = "Network proxy",
     description = "Adds settings to route supported network requests through an HTTP or HTTPS proxy. " +
             "Including this patch may cause connectivity problems on certain devices",

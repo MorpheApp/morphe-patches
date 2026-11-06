@@ -9,8 +9,9 @@ package app.morphe.patches.music.interaction.playlisttracktap
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -27,7 +28,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/Playlis
 private const val EXTENSION_COMMAND_INTERFACE = $$"Lapp/morphe/extension/music/patches/PlaylistTrackTapPatch$Command;"
 
 @Suppress("unused")
-val playlistTrackTapPatch = bytecodePatch(
+val playlistTrackTapPatch = patch(
     name = "Playlist track tap action",
     description = "Adds an option to play only the tapped track of a playlist or album, " +
             "or to add it to the queue, instead of replacing the queue with the whole playlist.",
@@ -48,7 +49,7 @@ val playlistTrackTapPatch = bytecodePatch(
 
         val builderMatches = WatchEndpointCommandBuilderFingerprint.instructionMatches
 
-        val watchEndpointDefaultInstanceField = builderMatches[0].getFieldAccessed()
+        val watchEndpointDefaultInstanceField = builderMatches[0].fieldReference
         val watchEndpointClass = watchEndpointDefaultInstanceField.definingClass
 
         // GeneratedMessageLite and its builder, whose method names are not obfuscated.
@@ -56,12 +57,12 @@ val playlistTrackTapPatch = bytecodePatch(
         val messageClass = createBuilderMethod.definingClass
         val messageBuilderClass = createBuilderMethod.returnType
 
-        val playlistIdField = builderMatches[3].getFieldAccessed()
-        val presenceBitsField = builderMatches[5].getFieldAccessed()
-        val playlistIndexField = builderMatches[6].getFieldAccessed()
+        val playlistIdField = builderMatches[3].fieldReference
+        val presenceBitsField = builderMatches[5].fieldReference
+        val playlistIndexField = builderMatches[6].fieldReference
 
-        val commandDefaultInstanceField = builderMatches[7].getFieldAccessed()
-        val watchEndpointExtensionField = builderMatches[8].getFieldAccessed()
+        val commandDefaultInstanceField = builderMatches[7].fieldReference
+        val watchEndpointExtensionField = builderMatches[8].fieldReference
         val commandClass = commandDefaultInstanceField.definingClass
 
         val setExtensionMethod = builderMatches[9].getMethodCalled()
@@ -72,7 +73,7 @@ val playlistTrackTapPatch = bytecodePatch(
         ).method
 
         val queueAddEndpointExtensionField = QueueAddEndpointCommandFingerprint
-            .instructionMatches.first().getFieldAccessed()
+            .instructionMatches.first().fieldReference
         val queueAddEndpointClass = queueAddEndpointExtensionField.definingClass
         val queueAddEndpointDefaultInstanceField = classDefBy(queueAddEndpointClass).fields.first {
             AccessFlags.STATIC.isSet(it.accessFlags) && it.type == queueAddEndpointClass
@@ -194,9 +195,8 @@ val playlistTrackTapPatch = bytecodePatch(
  *
  * @param registerCount Number of registers used besides the parameter registers.
  */
-context(patchContext: BytecodePatchContext)
 private fun MutableClass.addInterfaceMethod(name: String, registerCount: Int, smali: String) {
-    val declaration = patchContext.classDefBy(EXTENSION_COMMAND_INTERFACE).methods.single { it.name == name }
+    val declaration = classDefBy(EXTENSION_COMMAND_INTERFACE).methods.single { it.name == name }
     // Parameter registers are the receiver, and each parameter.
     val parameterRegisters = 1 + declaration.parameterTypes.size
 

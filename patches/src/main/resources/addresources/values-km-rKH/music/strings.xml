@@ -25,6 +25,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_music_downloads_playlist_rename">ប្ដូរឈ្មោះ</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_button">ដោនឡូដ</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- ad.hideAdsPatch -->
@@ -37,6 +39,14 @@ Second \"item\" text"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <!-- Title of the row added to the menu of a playlist. -->
+  <!-- %s is the name of the tag. -->
+  <!-- %s is the number of hidden tags. -->
+  <!-- %s is the name of the playlist. -->
+  <!-- %s is the number of playlists that have the tag. -->
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_rename">ប្ដូរឈ្មោះ</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -67,6 +77,16 @@ Second \"item\" text"</string>
   <!-- 'scrobble' must be kept untranslated -->
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbling' must be kept untranslated -->
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
   <!-- layout.lyrics.lyricsPatch -->
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <!-- Tappable label under the lyrics that turns the translation on. -->

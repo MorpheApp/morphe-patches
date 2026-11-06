@@ -14,7 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
@@ -28,16 +28,14 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/FullWidthFeedMediaPatch;"
 
 @Suppress("unused")
-val fullWidthFeedMediaPatch = bytecodePatch(
+val fullWidthFeedMediaPatch = patch(
     name = "Full width feed media",
     description = "Adds an option to show images and videos edge to edge in the feed and post details, " +
             "without side padding and rounded corners."
@@ -55,10 +53,7 @@ val fullWidthFeedMediaPatch = bytecodePatch(
 
         // Find which boolean getter of the feed post style is 'mediaInsetEnabled'.
         val styleClass = FeedPostStyleToStringFingerprint.classDef
-        val insetGetterName = mediaInsetGetterFingerprint(
-            styleClass.toString(),
-            FeedPostStyleToStringFingerprint.instructionMatches.last().getFieldAccessed()
-        ).method.name
+        val insetGetterName = MediaInsetGetterFingerprint.method.name
 
         feedPostStyleMediaInsetFingerprint(
             styleClass.superclass!!, insetGetterName
@@ -102,9 +97,9 @@ val fullWidthFeedMediaPatch = bytecodePatch(
         // YouTube videos in the feed are inset by their own flag and padding.
         YouTubeVideoSectionToStringFingerprint.let { toString ->
             val sectionClass = toString.classDef.type
-            val insetField = toString.instructionMatches.last().getFieldAccessed()
+            val insetField = toString.instructionMatches.last().fieldReference
 
-            youTubeVideoSectionConstructorFingerprint(sectionClass, insetField).let { constructor ->
+            YouTubeVideoSectionConstructorFingerprint.let { constructor ->
                 val index = constructor.instructionMatches.first().index
                 val register = constructor.method.getInstruction<TwoRegisterInstruction>(index).registerA
                 constructor.method.addInstructions(
@@ -116,7 +111,7 @@ val fullWidthFeedMediaPatch = bytecodePatch(
                 )
             }
 
-            youTubeVideoSectionContentFingerprint(sectionClass).let { content ->
+            YouTubeVideoSectionContentFingerprint.let { content ->
                 content.method.apply {
                     // Inset used for the height. Patched first, since it is after the other changes.
                     val insetIndex = content.instructionMatches[4].index + 1
@@ -131,7 +126,7 @@ val fullWidthFeedMediaPatch = bytecodePatch(
 
                     // Both the video and its container are clipped.
                     val shapeMethod = content.instructionMatches[2]
-                        .getInstruction<ReferenceInstruction>().reference as MethodReference
+                        .methodReference
                     findInstructionIndicesReversedOrThrow(
                         methodCall(reference = shapeMethod)
                     ).forEach { shapeIndex ->
@@ -171,11 +166,8 @@ val fullWidthFeedMediaPatch = bytecodePatch(
         }
 
         // Images in the post details are inset by their own flag.
-        val imageInsetField = PostImagePropsToStringFingerprint.instructionMatches.last().getFieldAccessed()
-        postImagePropsConstructorFingerprint(
-            PostImagePropsToStringFingerprint.classDef.toString(),
-            imageInsetField
-        ).matchAll().forEach { match ->
+        val imageInsetField = PostImagePropsToStringFingerprint.instructionMatches.last().fieldReference
+        PostImagePropsConstructorFingerprint.matchAll().forEach { match ->
             match.method.apply {
                 findInstructionIndicesReversedOrThrow(
                     fieldAccess(imageInsetField, Opcode.IPUT_BOOLEAN)
@@ -196,7 +188,7 @@ val fullWidthFeedMediaPatch = bytecodePatch(
         if (is_2026_38_0_or_greater) {
             // Videos are padded by the post content around them.
             val propsType = PostContentPropsToStringFingerprint.classDef.type
-            val contentField = PostContentPropsToStringFingerprint.instructionMatches.last().getFieldAccessed()
+            val contentField = PostContentPropsToStringFingerprint.instructionMatches.last().fieldReference
             val videoContentType = GifAndVideoContentToStringFingerprint.classDef.type
 
             Fingerprint(
@@ -255,7 +247,7 @@ val fullWidthFeedMediaPatch = bytecodePatch(
                     // so the call itself is replaced.
                     val shapeMatch = embed.instructionMatches.last()
                     val shapeIndex = shapeMatch.index
-                    val shapeMethod = shapeMatch.getInstruction<ReferenceInstruction>().reference as MethodReference
+                    val shapeMethod = shapeMatch.methodReference
                     val shapeRegisters = shapeMatch.instruction.registersUsed
                     val resultRegister = getInstruction<OneRegisterInstruction>(shapeIndex + 1).registerA
                     addInstruction(shapeIndex + 2, "check-cast v$resultRegister, ${shapeMethod.returnType}")

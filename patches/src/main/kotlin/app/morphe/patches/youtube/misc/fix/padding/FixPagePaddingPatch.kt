@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.misc.fix.padding
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_07_or_greater
@@ -27,7 +27,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FixPagePaddingPatch;"
 
-internal val fixPagePaddingPatch = bytecodePatch(
+internal val fixPagePaddingPatch = patch(
     description = "Fixes layout padding glitches in incognito search and watch history."
 ) {
     dependsOn(
