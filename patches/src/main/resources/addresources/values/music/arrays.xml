@@ -223,7 +223,6 @@
         <item>اردو</item>
         <item>中文</item>
         <item>粤语</item>
-        <item>汉语注音</item>
     </string-array>
     <string-array name="morphe_music_lyrics_romanize_language_entry_values">
         <item>DEFAULT</item>
@@ -283,7 +282,6 @@
         <item>UR</item>
         <item>ZH</item>
         <item>YUE</item>
-        <item>BOPOMOFO</item>
     </string-array>
     <!-- The character tables a custom Rime word list may fall back to. A build offering another
          reading adds one row beside its token in the values array; nothing else changes. -->

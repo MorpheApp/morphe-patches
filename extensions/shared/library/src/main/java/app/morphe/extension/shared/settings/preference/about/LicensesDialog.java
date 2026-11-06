@@ -29,7 +29,6 @@ class LicensesDialog extends AboutWebViewDialog {
             new License("Google Material Design icons", LicenseContent.APACHE_2),
             new License("Gson", LicenseContent.APACHE_2),
             new License("Guava", LicenseContent.APACHE_2),
-            new License("McBopomofo", LicenseContent.MCBOPOMOFO),
             new License("Morphe", List.of(LicenseContent.MORPHE_NOTICE, LicenseContent.MORPHE_LICENSE)),
             new License("pinyin-pro-data", LicenseContent.PINYIN_PRO_DATA),
             new License("Protocol Buffers", LicenseContent.PROTOCOL_BUFFERS),
@@ -1028,7 +1027,7 @@ record LicenseContent(String title, String content) {
             Unicode Han Database readings
             https://www.unicode.org/charts/unihan.html
             
-            What the lyrics patch stores is the kMandarin, kCantonese and kZhuYin reading of
+            What the lyrics patch stores is the kMandarin and kCantonese reading of
             each character, taken from Unihan_Readings.txt.
             """);
 
@@ -1072,35 +1071,6 @@ record LicenseContent(String title, String content) {
             not be used in advertising or otherwise to promote the sale, use or other
             dealings in these Data Files or Software without prior written
             authorization of the copyright holder.
-            """);
-
-    static final LicenseContent MCBOPOMOFO = new LicenseContent("MIT License", """
-            https://github.com/openvanilla/McBopomofo
-            
-            MIT License
-            
-            Copyright (c) 2011-2026 Mengjuei Hsieh et al.
-            
-            Permission is hereby granted, free of charge, to any person obtaining a copy
-            of this software and associated documentation files (the "Software"), to deal
-            in the Software without restriction, including without limitation the rights
-            to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-            copies of the Software, and to permit persons to whom the Software is
-            furnished to do so, subject to the following conditions:
-            
-            The above copyright notice and this permission notice shall be included in all
-            copies or substantial portions of the Software.
-            
-            THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-            IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-            FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-            AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-            LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-            OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-            SOFTWARE.
-            
-            What the lyrics patch stores is the Bopomofo reading of each word, taken from
-            BPMFMappings.txt.
             """);
 
     static final LicenseContent PROTOCOL_BUFFERS = new LicenseContent("LICENSE", """

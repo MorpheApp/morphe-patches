@@ -63,7 +63,7 @@ public final class LyricsRomanizer {
                         LyricsMerge.hasBackgroundTrack(lyrics, romanizations));
             }
         }
-        // Kana, hangul and Bopomofo are phonetic scripts, so a reading written in them is still a
+        // Kana and hangul are phonetic scripts, so a reading written in them is still a
         // romanization. Other non-Latin readings are transliterations and wait for the gate.
         embedded = normalizeReadingScripts(embedded);
         if (LyricsMerge.hasText(embedded)) {
@@ -150,8 +150,6 @@ public final class LyricsRomanizer {
                 fallback = HangulRomanizer.romanize(original).trim();
             } else if (ScriptDetector.containsKana(original)) {
                 fallback = allowTransliteration ? original.trim() : KanaRomanizer.romanize(original).trim();
-            } else if (ScriptDetector.containsBopomofo(original)) {
-                fallback = original.trim();
             }
             if (fallback != null && (allowTransliteration || isReadingScript(fallback))) {
                 return fallback;
@@ -1284,13 +1282,13 @@ public final class LyricsRomanizer {
 
     /**
      * Scripts that can serve as a reading without the transliteration gate: Latin letters, and the
-     * phonetic scripts kana and Bopomofo, whose symbols say how a character sounds. Text that still
+     * phonetic script kana, whose symbols say how a character sounds. Text that still
      * holds Han characters is not a reading of them, but the written line itself.
      */
     private static boolean isReadingScript(String text) {
         if (text == null || text.isEmpty()) return true;
         if (isPurelyLatinScript(text)) return true;
-        return (ScriptDetector.containsKana(text) || ScriptDetector.containsBopomofo(text))
+        return ScriptDetector.containsKana(text)
                 && !ScriptDetector.contains(text, Character.UnicodeScript.HAN);
     }
 

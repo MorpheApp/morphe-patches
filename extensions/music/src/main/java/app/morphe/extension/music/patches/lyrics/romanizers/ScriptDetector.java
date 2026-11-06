@@ -184,10 +184,6 @@ public final class ScriptDetector {
                 || (c >= 0x31F0 && c <= 0x31FF);
     }
 
-    public static boolean containsBopomofo(@Nullable CharSequence text) {
-        return contains(text, Character.UnicodeScript.BOPOMOFO);
-    }
-
     static boolean isHangul(char c) {
         return c >= 0xAC00 && c <= 0xD7A3;
     }

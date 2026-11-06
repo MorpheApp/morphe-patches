@@ -21,7 +21,6 @@ import java.util.Locale;
 
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.music.patches.lyrics.romanizers.BopomofoDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.CldrTransformsStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictStore;
@@ -51,9 +50,7 @@ public class LyricsTargetLanguagePreference extends Preference {
     private static final String SYRIAC = "SYC";
     private static final String DEFAULT = "DEFAULT";
     private static final String NONE = "NONE";
-    private static final String BOPOMOFO = "BOPOMOFO";
     private static final String JAPANESE_DICTIONARY = "SudachiDict";
-    private static final String BOPOMOFO_DICTIONARY = "McBopomofo";
 
     public LyricsTargetLanguagePreference(Context context, AttributeSet attrs, int defStyleAttr,
             int defStyleRes) {
@@ -132,9 +129,6 @@ public class LyricsTargetLanguagePreference extends Preference {
         if (RubyGenerator.isJapaneseRubyLanguage(ruby)) {
             return JapaneseDictStore.isReady() ? JAPANESE_DICTIONARY : null;
         }
-        if (BOPOMOFO.equalsIgnoreCase(ruby)) {
-            return BopomofoDictStore.isReady() ? BOPOMOFO_DICTIONARY : null;
-        }
         return null;
     }
 
@@ -208,7 +202,7 @@ public class LyricsTargetLanguagePreference extends Preference {
     /** The languages the shipped dictionaries give a ruby for. */
     private static boolean isRubyLanguage(String value) {
         return DEFAULT.equalsIgnoreCase(value) || NONE.equalsIgnoreCase(value)
-                || BOPOMOFO.equalsIgnoreCase(value) || RubyGenerator.isJapaneseRubyLanguage(value);
+                || RubyGenerator.isJapaneseRubyLanguage(value);
     }
 
     private static boolean isAddedByUser(String value) {
@@ -286,8 +280,6 @@ public class LyricsTargetLanguagePreference extends Preference {
             final String value = values[i].toString();
             if (RubyGenerator.isJapaneseRubyLanguage(value) && JapaneseDictStore.isReady()) {
                 merged.add(base[i] + " (" + JAPANESE_DICTIONARY + ")");
-            } else if (BOPOMOFO.equalsIgnoreCase(value) && BopomofoDictStore.isReady()) {
-                merged.add(base[i] + " (" + BOPOMOFO_DICTIONARY + ")");
             } else {
                 merged.add(base[i]);
             }

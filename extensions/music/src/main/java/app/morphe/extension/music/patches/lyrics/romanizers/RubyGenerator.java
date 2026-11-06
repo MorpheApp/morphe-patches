@@ -33,7 +33,7 @@ import app.morphe.extension.shared.Utils;
 
 /**
  * Adds ruby, the reading of each character or word, to lyrics as the ruby of its word. Handles
- * Japanese furigana (kanji readings) and Chinese bopomofo alike.
+ * Japanese furigana (kanji readings).
  *
  * <p>Ruby the source ships and the offline dictionary readings are added right away. An AI
  * provider answers in the background and only fills the words still without a reading.
@@ -42,7 +42,6 @@ public final class RubyGenerator {
 
     private static final String LANGUAGE_DEFAULT = "DEFAULT";
     private static final String LANGUAGE_NONE = "NONE";
-    private static final String LANGUAGE_BOPOMOFO = "BOPOMOFO";
 
     private static final ExecutorService WORKER = Executors.newSingleThreadExecutor(runnable -> {
         Thread thread = new Thread(runnable, "lyrics-ruby-generator");
@@ -90,17 +89,6 @@ public final class RubyGenerator {
         }
 
         // A manual language is read by its own dictionary, whichever romanization providers are on.
-        if (LANGUAGE_BOPOMOFO.equalsIgnoreCase(rubyLanguage)) {
-            if (!UniDictStore.isReady()) {
-                return current;
-            }
-            final WordReadingTable words = BopomofoDictStore.word();
-            return enrichByCharacter(current, words, text -> {
-                final String reading = lookupExactReading(text, words);
-                return reading != null
-                        ? reading : characterReading(text, BopomofoDictStore::reading);
-            }, style);
-        }
         if (isJapaneseRubyLanguage(rubyLanguage)) {
             final WordReadingTable table = JapaneseDictStore.table();
             return table != null ? enrichFromDictionary(current, table, style) : current;
@@ -350,7 +338,7 @@ public final class RubyGenerator {
         return changed ? withWords(line, read) : line;
     }
 
-    /** Splits every Han character into its own word, for the character-based bopomofo reading. */
+    /** Splits every Han character into its own word, for the character-based reading. */
     private static List<Word> splitHanToSingleChars(List<Word> words) {
         List<Word> result = new ArrayList<>();
         for (Word word : words) {

@@ -298,12 +298,6 @@ public class ScriptDetectorTest {
         assertFalse(ScriptDetector.isKana('사'));
     }
 
-    @Test
-    public void containsBopomofo() {
-        assertTrue(ScriptDetector.containsBopomofo("ㄅㄆㄇㄈ"));
-        assertFalse(ScriptDetector.containsBopomofo("Hello"));
-    }
-
     // ── isCjkCodePoint ──
 
     @Test

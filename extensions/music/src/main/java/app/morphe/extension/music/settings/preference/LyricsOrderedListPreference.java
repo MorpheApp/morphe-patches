@@ -457,11 +457,6 @@ public final class LyricsOrderedListPreference extends Preference {
         cldr.setChecked(chosen[LyricsLocalRomanizationDownloads.CLDR]);
         styleCheckBox(cldr, fg);
 
-        final CheckBox bopomofo = new CheckBox(context);
-        bopomofo.setText(str("morphe_music_lyrics_local_romanization_dict_bopomofo"));
-        bopomofo.setChecked(chosen[LyricsLocalRomanizationDownloads.BOPOMOFO]);
-        styleCheckBox(bopomofo, fg);
-
         // A Chinese word table reads the rest of a line from the character tables, so choosing
         // one keeps the character provider on.
         final CompoundButton.OnCheckedChangeListener keepUniDict = (button, checked) -> {
@@ -470,7 +465,6 @@ public final class LyricsOrderedListPreference extends Preference {
             }
         };
         chinese.setOnCheckedChangeListener(keepUniDict);
-        bopomofo.setOnCheckedChangeListener(keepUniDict);
 
         final LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);
@@ -479,7 +473,6 @@ public final class LyricsOrderedListPreference extends Preference {
         content.addView(unidict);
         content.addView(chinese);
         content.addView(cldr);
-        content.addView(bopomofo);
 
         // Attached here rather than on the dialog so a close in any way detaches it. A watched
         // sink also survives a rebuild: only detach takes it away.
@@ -518,8 +511,7 @@ public final class LyricsOrderedListPreference extends Preference {
             // Saving with nothing ticked is a choice of its own: the rules alone.
             LyricsLocalRomanizationDownloads.saveChoice(
                     japanese.isChecked(), unidict.isChecked(),
-                    chinese.isChecked(), cldr.isChecked(),
-                    bopomofo.isChecked());
+                    chinese.isChecked(), cldr.isChecked());
             accepted[0] = true;
             if (switchV == null) {
                 // Opened from the name, so only a row that is already on fetches what is missing.

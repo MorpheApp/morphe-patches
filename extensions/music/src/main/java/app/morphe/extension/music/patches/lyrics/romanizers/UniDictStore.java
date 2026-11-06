@@ -52,9 +52,6 @@ public final class UniDictStore {
             new ReadingTable("yue",
                     new String[]{"kCantonese"},
                     "cantonese_readings_" + VERSION + ".txt"),
-            new ReadingTable("bopomofo",
-                    new String[]{"kZhuYin"},
-                    "bopomofo_readings_" + VERSION + ".txt"),
     };
     private static final ExecutorService WORKER = Executors.newSingleThreadExecutor(runnable -> {
         Thread thread = new Thread(runnable, "lyrics-unidict");
@@ -129,12 +126,6 @@ public final class UniDictStore {
     @Nullable
     public static String cantoneseReading(char c) {
         return reading("yue", c);
-    }
-
-    /** The Bopomofo reading of a character, or null when the database has none for it. */
-    @Nullable
-    public static String bopomofoReading(char c) {
-        return reading("bopomofo", c);
     }
 
     /** The reading from the table already loaded, or null to leave the character alone. */

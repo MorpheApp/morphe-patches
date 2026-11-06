@@ -56,10 +56,4 @@ public class RimeRomanizerTest {
     public void romanizeLatinWithPunctuation() {
         assertEquals("Hello, world!", RimeRomanizer.romanize("Hello, world!"));
     }
-
-    @Test
-    public void romanizeBopomofoPassesThrough() {
-        // Bopomofo is neither Han nor kana, so it passes through unchanged
-        assertEquals("ㄅㄆㄇ", RimeRomanizer.romanize("ㄅㄆㄇ"));
-    }
 }

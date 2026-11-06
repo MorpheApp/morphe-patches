@@ -13,7 +13,6 @@ import java.util.Locale;
 
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.music.patches.lyrics.romanizers.BopomofoDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.CldrTransformsStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.PinyinDictStore;
@@ -35,14 +34,13 @@ public final class LyricsLocalRomanizationDownloads {
     public static final int UNIDICT = 1;
     public static final int PINYIN = 2;
     public static final int CLDR = 3;
-    public static final int BOPOMOFO = 4;
     /** Receives progress text while a dialog is open; a closed dialog sees no further updates. */
     public interface ProgressSink {
         void onHint(CharSequence hint);
     }
 
     private static final Progress[] progress = {new Progress(),
-            new Progress(), new Progress(), new Progress(), new Progress()};
+            new Progress(), new Progress(), new Progress()};
 
     private static boolean started;
     private static boolean failed;
@@ -73,14 +71,13 @@ public final class LyricsLocalRomanizationDownloads {
     public static boolean[] chosen() {
         final String stored = Settings.LYRICS_LOCAL_DICTIONARIES.get();
         if (stored != null && !stored.isBlank()) {
-            final boolean[] picked = new boolean[5];
+            final boolean[] picked = new boolean[4];
             for (String token : stored.split(",")) {
                 switch (token.trim().toLowerCase(Locale.ROOT)) {
                     case "sudachi" -> picked[SUDACHI] = true;
                     case "unidict" -> picked[UNIDICT] = true;
                     case "pinyin" -> picked[PINYIN] = true;
                     case "cldr" -> picked[CLDR] = true;
-                    case "bopomofo" -> picked[BOPOMOFO] = true;
                     // A dev build stored the languages this provider split covers. The Cantonese
                     // word table became the Rime Wordlist provider, which fetches the character
                     // tables it needs itself, so "yue" is no longer a choice here either.
@@ -95,7 +92,7 @@ public final class LyricsLocalRomanizationDownloads {
             }
             return picked;
         }
-        return new boolean[5];
+        return new boolean[4];
     }
 
     /** A copy that never chose gets an empty checklist rather than one inferred for it. */
@@ -107,12 +104,8 @@ public final class LyricsLocalRomanizationDownloads {
     /** Stores the user's choice. Providers that were on and are now off are deleted, so nothing
      * unused lingers; pinyin keeps UniDict on, since it reads the rest of a line from the
      * character tables. */
-    static void saveChoice(boolean sudachi, boolean unidict, boolean pinyin, boolean cldr,
-                           boolean bopomofo) {
+    static void saveChoice(boolean sudachi, boolean unidict, boolean pinyin, boolean cldr) {
         if (pinyin) {
-            unidict = true;
-        }
-        if (bopomofo) {
             unidict = true;
         }
         final boolean[] before = chosen();
@@ -127,9 +120,6 @@ public final class LyricsLocalRomanizationDownloads {
         }
         if (!cldr && before[CLDR]) {
             CldrTransformsStore.delete();
-        }
-        if (!bopomofo && before[BOPOMOFO]) {
-            BopomofoDictStore.delete();
         }
         final StringBuilder value = new StringBuilder();
         if (sudachi) {
@@ -147,10 +137,6 @@ public final class LyricsLocalRomanizationDownloads {
             if (value.length() > 0) value.append(',');
             value.append("cldr");
         }
-        if (bopomofo) {
-            if (value.length() > 0) value.append(',');
-            value.append("bopomofo");
-        }
         // Kept distinct from blank, which is a copy that never chose.
         Settings.LYRICS_LOCAL_DICTIONARIES.save(value.length() == 0 ? NONE : value.toString());
     }
@@ -162,20 +148,18 @@ public final class LyricsLocalRomanizationDownloads {
         final boolean needsUniDict = picked[UNIDICT];
         final boolean needsPinyin = picked[PINYIN];
         final boolean needsCldr = picked[CLDR];
-        final boolean needsBopomofo = picked[BOPOMOFO];
 
-        if (!needsSudachi && !needsUniDict && !needsPinyin && !needsCldr && !needsBopomofo) {
+        if (!needsSudachi && !needsUniDict && !needsPinyin && !needsCldr) {
             return;
         }
         if (!started) {
             if ((!needsSudachi || JapaneseDictStore.isReady())
                     && (!needsUniDict || UniDictStore.isReady())
                     && (!needsPinyin || PinyinDictStore.isComplete())
-                    && (!needsCldr || CldrTransformsStore.isReady())
-                    && (!needsBopomofo || BopomofoDictStore.isComplete())) {
+                    && (!needsCldr || CldrTransformsStore.isReady())) {
                 return;
             }
-            start(needsSudachi, needsUniDict, needsPinyin, needsCldr, needsBopomofo);
+            start(needsSudachi, needsUniDict, needsPinyin, needsCldr);
             return;
         }
         // Reattach in case runtime setup replaced the settings listeners.
@@ -190,9 +174,6 @@ public final class LyricsLocalRomanizationDownloads {
         }
         if (needsCldr) {
             CldrTransformsStore.ensure(listener(CLDR));
-        }
-        if (needsBopomofo) {
-            BopomofoDictStore.ensure(listener(BOPOMOFO));
         }
     }
 
@@ -209,7 +190,6 @@ public final class LyricsLocalRomanizationDownloads {
         progress[UNIDICT] = new Progress();
         progress[PINYIN] = new Progress();
         progress[CLDR] = new Progress();
-        progress[BOPOMOFO] = new Progress();
     }
 
     /** Whether every provider the choice needs is ready. */
@@ -227,7 +207,7 @@ public final class LyricsLocalRomanizationDownloads {
         if (picked[CLDR] && !CldrTransformsStore.isReady()) {
             return false;
         }
-        return !picked[BOPOMOFO] || BopomofoDictStore.isComplete();
+        return true;
     }
 
     /** Whether a fetch the user asked for is running and not finished yet. */
@@ -268,8 +248,7 @@ public final class LyricsLocalRomanizationDownloads {
         }
     }
 
-    private static void start(boolean sudachi, boolean unidict, boolean pinyin, boolean cldr,
-                              boolean bopomofo) {
+    private static void start(boolean sudachi, boolean unidict, boolean pinyin, boolean cldr) {
         started = true;
         if (!startAnnounced) {
             startAnnounced = true;
@@ -295,11 +274,6 @@ public final class LyricsLocalRomanizationDownloads {
             CldrTransformsStore.ensure(listener(CLDR));
         } else {
             progress[CLDR].done = true;
-        }
-        if (bopomofo) {
-            BopomofoDictStore.ensure(listener(BOPOMOFO));
-        } else {
-            progress[BOPOMOFO].done = true;
         }
     }
 
@@ -360,14 +334,12 @@ public final class LyricsLocalRomanizationDownloads {
             return;
         }
         if (!progress[SUDACHI].done || !progress[UNIDICT].done
-                || !progress[PINYIN].done || !progress[CLDR].done
-                || !progress[BOPOMOFO].done) {
+                || !progress[PINYIN].done || !progress[CLDR].done) {
             return;
         }
         announced = true;
         final int total = progress[SUDACHI].entries + progress[UNIDICT].entries
-                + progress[PINYIN].entries + progress[CLDR].entries
-                + progress[BOPOMOFO].entries;
+                + progress[PINYIN].entries + progress[CLDR].entries;
         Utils.runOnMainThread(() -> Utils.showToastShort(
                 str("morphe_music_lyrics_local_romanization_dict_ready", total)));
     }

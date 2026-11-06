@@ -32,7 +32,6 @@ import app.morphe.extension.music.settings.Settings;
  */
 public final class LocalRomanizer {
     private static final String PINYIN = "UniDict, pinyin-pro";
-    private static final String BOPOMOFO = "UniDict, McBopomofo";
     private static final String RULE = "Built-in Romanization";
     private static final String JAPANESE = "SudachiDict";
     /** No syllables at all, and a word said with none of them. */
@@ -459,11 +458,6 @@ public final class LocalRomanizer {
                     return RimeDictStore.isReady()
                             ? new Read(RimeRomanizer.romanize(text),
                             "UniDict, " + RimeDictStore.dictionaryName())
-                            : new Read(text, null);
-                }
-                if ("BOPOMOFO".equalsIgnoreCase(Settings.LYRICS_ROMANIZE_LANGUAGE.get())) {
-                    return BopomofoDictStore.isReady()
-                            ? new Read(BopomofoRomanizer.romanize(text), BOPOMOFO)
                             : new Read(text, null);
                 }
                 return PinyinDictStore.isReady()
