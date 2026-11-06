@@ -756,8 +756,7 @@ public final class FeedVideoCardsPatch {
      * so what is drawn on the thumbnail of a full width card is drawn on it.
      *
      * @return The host of the thumbnail at the start side of a card shaped like that: as tall as the card,
-     *         16:9 and as wide as a full width card, so small thumbnails, such as of the rows of a playlist,
-     *         are not used. Null if the card is not shaped like that.
+     *         16:9 and at least {@link #MIN_SIDE_THUMBNAIL_WIDTH_DP} wide. Null if the card is not shaped like that.
      */
     @Nullable
     public static ComponentHost findSideThumbnail(ComponentHost root) {
@@ -781,7 +780,7 @@ public final class FeedVideoCardsPatch {
                 continue;
             }
             if (child.getHeight() >= root.getHeight() - 2 * inset
-                    && child.getWidth() >= MIN_WIDTH_DP * density && child.getWidth() <= width / 2
+                    && child.getWidth() >= MIN_SIDE_THUMBNAIL_WIDTH_DP * density && child.getWidth() <= width / 2
                     && Math.abs(child.getWidth() * THUMBNAIL_RATIO - child.getHeight())
                     <= child.getHeight() * SIDE_THUMBNAIL_RATIO_TOLERANCE) {
                 return child;
@@ -795,6 +794,12 @@ public final class FeedVideoCardsPatch {
         }
         return null;
     }
+
+    /**
+     * Smallest thumbnail beside the texts, such as of the rows of a list on phones,
+     * which fits the compact like count next to the duration.
+     */
+    private static final int MIN_SIDE_THUMBNAIL_WIDTH_DP = 120;
 
     /** How far the height of a thumbnail beside the texts may differ from 16:9, relative to its height. */
     private static final float SIDE_THUMBNAIL_RATIO_TOLERANCE = 0.1f;
