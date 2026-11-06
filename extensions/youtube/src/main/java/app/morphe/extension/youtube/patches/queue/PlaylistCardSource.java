@@ -15,11 +15,13 @@ import androidx.annotation.Nullable;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 
+import java.net.URI;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass;
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
@@ -162,6 +164,12 @@ public final class PlaylistCardSource {
                 return new Selection("", false);
             }
             var command = PlaylistQueueRenderer.ElementsCommand.parseFrom(data.getOnTap()).getInnertubeCommand();
+            if (collectionCard && thumbnail.getIsMix() && !command.hasWatchEndpoint()
+                    && !command.hasAlternateWatchEndpoint() && !command.hasWatchPlaylistEndpoint()) {
+                // Some Mix taps wrap a dialog/watch choice instead of exposing Watch directly.
+                // The selected Mix's own drag URL identifies the list without choosing a branch.
+                return new Selection(mixPlaylistId(data.getVideoData().getUrl()), true);
+            }
             if (!countedPlaylist && (!command.hasWatchEndpoint() || !isMixStart(command.getWatchEndpoint()))) {
                 return new Selection("", false);
             }
@@ -172,6 +180,48 @@ public final class PlaylistCardSource {
         }
         String id = collectionCard ? fromNavigation(bytes) : "";
         return new Selection(id, collectionCard);
+    }
+
+    /** Only an unindexed native Mix watch link can supply a missing collection target. */
+    private static String mixPlaylistId(String url) {
+        URI uri;
+        try {
+            uri = URI.create(url);
+        } catch (IllegalArgumentException ex) {
+            Logger.printDebug(() -> "Invalid native Mix card URL", ex);
+            return "";
+        }
+        String host = uri.getHost();
+        String query = uri.getRawQuery();
+        if (!"https".equals(uri.getScheme()) || host == null
+                || !(host.equals("youtube.com") || host.endsWith(".youtube.com"))
+                || !"/watch".equals(uri.getRawPath()) || query == null) {
+            return "";
+        }
+        String videoId = "";
+        String playlistId = "";
+        // YouTube's generated video and playlist IDs are already URL-safe.
+        for (String part : query.split("&")) {
+            String[] pair = part.split("=", 2);
+            switch (pair[0]) {
+                case "index" -> {
+                    return "";
+                }
+                case "v" -> {
+                    if (!videoId.isEmpty() || pair.length != 2 || !PlaylistQueue.isVideoId(pair[1])) {
+                        return "";
+                    }
+                    videoId = pair[1];
+                }
+                case "list" -> {
+                    if (!playlistId.isEmpty() || pair.length != 2 || !pair[1].startsWith("RD") || !isPlaylistId(pair[1])) {
+                        return "";
+                    }
+                    playlistId = pair[1];
+                }
+            }
+        }
+        return videoId.isEmpty() ? "" : playlistId;
     }
 
     @Nullable
