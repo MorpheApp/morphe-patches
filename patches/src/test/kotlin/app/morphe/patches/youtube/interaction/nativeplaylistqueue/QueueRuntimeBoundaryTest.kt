@@ -179,6 +179,10 @@ class QueueRuntimeBoundaryTest {
     @Test
     fun `metadata uses the app locale and rejects a result after it changes`() = withFixture("metadataLocale")
 
+    @Test
+    fun `rebuilt queue rows retain native theme palettes and text captures do not erase them`() =
+        withFixture("nativeRowPalettes")
+
     // NativePlaylistQueuePatch depends on Android settings, scheduling and UI classes.
     // Isolate those boundaries while executing its actual compiled coordinator.
     private fun withFixture(scenario: String) {
@@ -632,6 +636,30 @@ class QueueRuntimeBoundaryTest {
                         clears = 0; Logger.errors = 0; QueueFullscreenActions.refreshes = 0;
                         return queue;
                     }
+                    public static void nativeRowPalettes() throws Exception {
+                        var light = PlaylistQueueRenderer.ColorPalette.newBuilder().setSection2Color(0xffeeddcc).setSection4Color(0xffddccbb)
+                            .setPrimaryTitleColor(0xff111111).setSecondaryTitleColor(0xff333333).build();
+                        var dark = PlaylistQueueRenderer.ColorPalette.newBuilder().setSection2Color(0xff332211).setSection4Color(0xff221100)
+                            .setPrimaryTitleColor(0xffffeeee).setSecondaryTitleColor(0xffccaaaa).build();
+                        var metadata = new VideoMetadata("abcdefghijk", "abcdefghijk", "", "", "1:00",
+                            false, false, light, dark);
+                        var cache = (Map<String, VideoMetadata>) field("metadataCache").get(null);
+                        cache.put(metadata.videoId(), metadata);
+                        var remember = owner.getDeclaredMethod("rememberChannel", String.class, String.class, String.class);
+                        remember.setAccessible(true);
+                        remember.invoke(null, metadata.videoId(), "Title", "Channel");
+                        var candidate = new PlaylistQueue(metadata.videoId(), "Title").playLast("ZZZZZZZZZZZ");
+                        var renderer = owner.getDeclaredMethod("renderer", PlaylistQueue.class);
+                        renderer.setAccessible(true);
+                        var panel = PlaylistQueueRenderer.Panel.parseFrom((byte[]) renderer.invoke(null, candidate));
+                        require(panel.getItems(0).getVideo().getSelected(), "Current row must remain selected");
+                        require(panel.getItems(0).getVideo().getLightColorPalette().equals(light)
+                            && panel.getItems(0).getVideo().getDarkColorPalette().equals(dark),
+                            "Rebuilt row must carry the native background and text colors for both themes");
+                        require(!panel.getItems(1).getVideo().hasLightColorPalette()
+                            && !panel.getItems(1).getVideo().hasDarkColorPalette(),
+                            "A row without native colors must retain the native theme fallback");
+                    }
                     public static void metadataLocale() throws Exception {
                         var previous = Locale.getDefault();
                         var locale = Locale.forLanguageTag("en-IN");
@@ -744,7 +772,8 @@ class QueueRuntimeBoundaryTest {
                         var controller = new Controller(new Playback());
                         controller.playlist = mix ? "RD-mix" : "PL-account";
                         controller.playingPanel = ordinaryWindow(controller.playlist);
-                        PlaylistPages.attach(new PageSource());
+                        controller.pageSource = new PageSource();
+                        PlaylistPages.attach(controller.pageSource);
                         controller.playback.local = false;
                         field("controllerRef").set(null, new WeakReference<>(controller));
                         field("observingPlayer").setBoolean(null, true);
@@ -977,6 +1006,7 @@ class QueueRuntimeBoundaryTest {
                     }
                     static class Controller implements NativePlaylistQueuePatch.PlaylistController {
                         final Playback playback;
+                        PageSource pageSource;
                         final Object row = (NativePlaylistQueuePatch.QueueRow) () -> true;
                         final Object panel = (NativePlaylistQueuePatch.QueuePanel) () -> true;
                         boolean attached = true;
