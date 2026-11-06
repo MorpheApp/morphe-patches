@@ -794,6 +794,17 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Dokunarak sardırmayı etkinleştir</string>
   <string name="morphe_tap_to_seek_summary">Sardırma çubuğunda sürüklemek yerine herhangi bir yere dokunarak oraya atlayın</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Özel sarma çubuğu imleci (Thumb)</string>
+  <string name="morphe_custom_seekbar_thumb_title">Özel sarma çubuğu imlecini etkinleştir</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Sarma çubuğu topunu galeriden seçeceğiniz bir resim veya hareketli GIF ile değiştirir</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">İmleç resmi / GIF seç</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Cihaz hafızasından bir PNG veya hareketli GIF seçin</string>
+  <string name="morphe_custom_seekbar_thumb_file_selected">Seçilen: %s</string>
+  <string name="morphe_custom_seekbar_thumb_invalid_file">Lütfen geçerli bir PNG veya GIF dosyası seçin</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">İmleç boyutu ölçekleme</string>
+  <string name="morphe_custom_seekbar_thumb_scale_fit_seekbar">Çubuğa sığdır (Özel boyut)</string>
+  <string name="morphe_custom_seekbar_thumb_scale_original">Orijinal boyut</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Sola kaydırma hareketi</string>
   <string name="morphe_swipe_right_zone_title">Sağa kaydırma hareketi</string>

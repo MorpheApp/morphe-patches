@@ -742,6 +742,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SLIDE_TO_SEEK = new BooleanSetting("morphe_slide_to_seek", FALSE, true);
     public static final BooleanSetting TAP_TO_SEEK = new BooleanSetting("morphe_tap_to_seek", FALSE);
     public static final BooleanSetting THUMBNAIL_PREVIEW = new BooleanSetting("morphe_seekbar_thumbnail_preview", TRUE);
+    public static final BooleanSetting CUSTOM_SEEKBAR_THUMB = new BooleanSetting("morphe_custom_seekbar_thumb", FALSE);
+    public static final StringSetting CUSTOM_SEEKBAR_THUMB_FILE_PATH = new StringSetting("morphe_custom_seekbar_thumb_file", "", false, parent(CUSTOM_SEEKBAR_THUMB));
+    public static final StringSetting CUSTOM_SEEKBAR_THUMB_SCALE_TYPE = new StringSetting("morphe_custom_seekbar_thumb_scale_type", "fit_seekbar", false, parent(CUSTOM_SEEKBAR_THUMB));
 
     // Snackbar
     public static final BooleanSetting HIDE_SNACKBAR = new BooleanSetting("morphe_hide_snackbar", FALSE, true);
