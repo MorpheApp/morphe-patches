@@ -804,6 +804,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting NICONICO_COMMENTS_OPACITY = new IntegerSetting("morphe_niconico_comments_opacity", 100, parent(NICONICO_COMMENTS));
     public static final IntegerSetting NICONICO_COMMENTS_TRAVEL_DURATION = new IntegerSetting("morphe_niconico_comments_travel_duration", 7, parent(NICONICO_COMMENTS));
     public static final IntegerSetting NICONICO_COMMENTS_DISPLAY_AREA = new IntegerSetting("morphe_niconico_comments_display_area", 100, parent(NICONICO_COMMENTS));
+    public static final BooleanSetting NICONICO_COMMENTS_HIDE_CROWDED = new BooleanSetting("morphe_niconico_comments_hide_crowded", FALSE, parent(NICONICO_COMMENTS));
     /** Max comment length slider value that shows all comments. */
     public static final int NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT = 100;
     public static final IntegerSetting NICONICO_COMMENTS_MAX_LENGTH = new IntegerSetting("morphe_niconico_comments_max_length", NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT, parent(NICONICO_COMMENTS));

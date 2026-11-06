@@ -1940,6 +1940,8 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_travel_duration_summary">How many seconds comments take to cross the screen. Lower values move faster</string>
     <string name="morphe_niconico_comments_display_area_title">Display area</string>
     <string name="morphe_niconico_comments_display_area_summary">How much of the player, from the top, the comments use. Lower values keep the lower part of the video clear</string>
+    <string name="morphe_niconico_comments_hide_crowded_title">Hide comments that would overlap</string>
+    <string name="morphe_niconico_comments_hide_crowded_summary">When the display area is full, new comments are hidden instead of overlapping other comments</string>
     <string name="morphe_niconico_comments_max_length_title">Max comment length</string>
     <string name="morphe_niconico_comments_max_length_summary">Hides comments with more characters than this. Each emoji counts as one character</string>
     <string name="morphe_niconico_comments_max_length_no_limit">No limit</string>
