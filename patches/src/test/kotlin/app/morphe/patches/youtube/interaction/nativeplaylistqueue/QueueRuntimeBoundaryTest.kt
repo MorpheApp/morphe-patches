@@ -48,6 +48,15 @@ class QueueRuntimeBoundaryTest {
         withFixture("closedRestoreInlineLifetime")
 
     @Test
+    fun `first video startup blocks an active feed preview until its player is accepted`() = withFixture("videoPreviewStart")
+
+    @Test
+    fun `playlist and Mix startup block feed previews through Next and Last`() = withFixture("playlistPreviewStart")
+
+    @Test
+    fun `fresh startup releases feed protection on failure timeout and supersession`() = withFixture("previewStartLifetime")
+
+    @Test
     fun `new playback and provider handoff invalidate closed player Undo`() = withFixture("closedPlayerSuperseded")
 
     @Test
@@ -396,6 +405,7 @@ class QueueRuntimeBoundaryTest {
                     public static String url;
                     public interface PlayerInterface { void patch_dismissPlayer(); }
                     public static int opens, blocks, releases, activeBlock, dismissals;
+                    public static boolean previewPlaying, failOpen;
                     public static PlayerInterface getPlayerInterface() { return () -> dismissals++; }
                     public static int blockInlinePlaybackUntilPlayerOpens() {
                         return activeBlock = ++blocks;
@@ -404,9 +414,15 @@ class QueueRuntimeBoundaryTest {
                         if (token != 0 && token == activeBlock) { activeBlock = 0; releases++; }
                     }
                     public static void openVideoIntent(String value, boolean dismiss) {
-                        if (dismiss) throw new AssertionError("Undo must not dismiss a replacement player");
-                        if (value.contains("&t=") && activeBlock == 0)
-                            throw new AssertionError("Block inline playback before dispatching a closed queue restore");
+                        if (dismiss) {
+                            throw new AssertionError("Queue startup must not dismiss a replacement player");
+                        }
+                        if ((previewPlaying || value.contains("&t=")) && activeBlock == 0) {
+                            throw new AssertionError("Block the active feed preview before dispatching a queue watch");
+                        }
+                        if (failOpen) {
+                            throw new IllegalStateException("Watch dispatch failed");
+                        }
                         opens++; url = value;
                     }
                 }
@@ -1867,12 +1883,93 @@ class QueueRuntimeBoundaryTest {
                         call("releaseNativeQueue");
                         require(LoadVideoPatch.activeBlock == replacementBlock,
                             "Cancelling queue restore must not release a newer Reload operation's block");
-                        var start = owner.getDeclaredMethod("startQueue", QueueStart.class); start.setAccessible(true);
+                    }
+                    static void beginPreviewStart() throws Exception {
+                        VideoInformation.id = "abcdefghijk";
+                        app.morphe.extension.youtube.shared.PlayerType.current =
+                            app.morphe.extension.youtube.shared.PlayerType.INLINE_MINIMAL;
+                        LoadVideoPatch.previewPlaying = true;
+                        NativePlaylistQueuePatch.getFlyoutQueueAction("ZYXWVUTSRQP", false).run();
+                    }
+                    static void acceptPreviewStart() throws Exception {
+                        var start = (QueueStart) field("pendingQueueStart").get(null);
+                        String requested = start.candidate().currentEntry().videoId();
+                        call("tryStartQueue");
+                        require(field("queue").get(null) == null && LoadVideoPatch.activeBlock != 0,
+                            "A feed preview cannot attach the queue or release its protection");
+                        var watch = playlistWatch(requested, "");
+                        require(Boolean.TRUE.equals(NativePlaylistQueuePatch.prepareQueueStartContext(watch, Map.of())
+                            .get("start_watch_minimized")), "The requested watch still opens minimized");
+                        VideoInformation.id = requested;
+                        app.morphe.extension.youtube.shared.PlayerType.current =
+                            app.morphe.extension.youtube.shared.PlayerType.WATCH_WHILE_MINIMIZED;
+                        var controller = new Controller(new Playback());
+                        field("controllerRef").set(null, new WeakReference<>(controller));
+                        call("tryStartQueue");
+                        var queue = (PlaylistQueue) field("queue").get(null);
+                        require(queue != null && queue.currentEntry().videoId().equals(requested)
+                                && controller.playback.attaches == 1 && LoadVideoPatch.activeBlock == 0,
+                            "Only accepted playback publishes the queue and releases the feed block");
+                    }
+                    public static void videoPreviewStart() throws Exception {
+                        beginPreviewStart();
+                        require(LoadVideoPatch.url.equals("https://www.youtube.com/watch?v=ZYXWVUTSRQP")
+                                && LoadVideoPatch.activeBlock != 0 && LoadVideoPatch.releases == 0,
+                            "Protect the selected video before native dispatch without dismissing a player");
+                        acceptPreviewStart();
                         int blocks = LoadVideoPatch.blocks;
-                        start.invoke(null, new QueueStart(new PlaylistQueue("abcdefghijk", "New queue"), "ZYXWVUTSRQP"));
-                        call("releasePanel");
-                        require(LoadVideoPatch.blocks == blocks && LoadVideoPatch.activeBlock == replacementBlock,
-                            "Ordinary first-queue navigation must not acquire or release a restore block");
+                        int opens = LoadVideoPatch.opens;
+                        NativePlaylistQueuePatch.getFlyoutQueueAction("0123456789_", false).run();
+                        require(LoadVideoPatch.blocks == blocks && LoadVideoPatch.opens == opens,
+                            "Adding to attached playback must not acquire another block or reopen the player");
+                    }
+                    public static void playlistPreviewStart() throws Exception {
+                        for (String playlist : List.of("WL", "RDZYXWVUTSRQP")) {
+                            for (boolean last : List.of(false, true)) {
+                                call("releaseNativeQueue");
+                                VideoInformation.id = "abcdefghijk";
+                                app.morphe.extension.youtube.shared.PlayerType.current =
+                                    app.morphe.extension.youtube.shared.PlayerType.INLINE_MINIMAL;
+                                LoadVideoPatch.previewPlaying = true;
+                                var source = new PageSource(); PlaylistPages.attach(source);
+                                MixPlaylistRequest.result = List.of(
+                                    new VideoMetadata("ZYXWVUTSRQP", "Seed", "Channel", "", "1:00", false));
+                                int opens = LoadVideoPatch.opens;
+                                NativePlaylistQueuePatch.getPlaylistQueueAction(playlist, last).run();
+                                require(LoadVideoPatch.opens == opens, "Fetch the initial batch before opening playback");
+                                Utils.drainBackground(); Utils.drain();
+                                require(LoadVideoPatch.opens == opens + 1 && LoadVideoPatch.activeBlock != 0,
+                                    "Both collection types and insertion actions protect their initial watch");
+                                acceptPreviewStart();
+                            }
+                        }
+                    }
+                    public static void previewStartLifetime() throws Exception {
+                        beginPreviewStart();
+                        Utils.advanceBy(9999);
+                        require(LoadVideoPatch.activeBlock != 0, "Keep protection while startup is still pending");
+                        Utils.advanceBy(1);
+                        require(field("pendingQueueStart").get(null) == null && LoadVideoPatch.activeBlock == 0,
+                            "Timeout must release an unaccepted start's feed block");
+                        beginPreviewStart();
+                        int previous = LoadVideoPatch.activeBlock;
+                        Utils.advanceBy(5000);
+                        NativePlaylistQueuePatch.getFlyoutQueueAction("0123456789_", false).run();
+                        int replacement = LoadVideoPatch.activeBlock;
+                        require(replacement != 0 && replacement != previous, "A replacement start owns a fresh block");
+                        Utils.advanceBy(5000);
+                        require(field("pendingQueueStart").get(null) != null && LoadVideoPatch.activeBlock == replacement,
+                            "The old startup deadline cannot cancel or unblock its replacement");
+                        int newerReload = LoadVideoPatch.blockInlinePlaybackUntilPlayerOpens();
+                        call("releaseNativeQueue");
+                        require(field("pendingQueueStart").get(null) == null && LoadVideoPatch.activeBlock == newerReload,
+                            "Queue cancellation cannot release a newer Reload operation's protection");
+                        LoadVideoPatch.releaseInlinePlaybackBlock(newerReload);
+                        LoadVideoPatch.failOpen = true;
+                        beginPreviewStart();
+                        require(field("pendingQueueStart").get(null) == null && field("queue").get(null) == null
+                                && LoadVideoPatch.activeBlock == 0,
+                            "A failed watch dispatch must release its block without publishing a queue");
                     }
                     public static void closedPlayerSuperseded() throws Exception {
                         var controller = new Controller(new Playback()); installOwned(controller);

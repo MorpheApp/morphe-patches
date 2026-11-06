@@ -2887,10 +2887,9 @@ public final class NativePlaylistQueuePatch {
             OpenVideosFullscreenHookPatch.keepVideoMinimized(null);
         }, NAVIGATION_TIMEOUT_MILLISECONDS);
 
-        // A focused feed preview must not take ownership of closed-player Undo.
-        if (start.restoresClosedPlayer()) {
-            pendingQueueStartInlinePlaybackBlockId = LoadVideoPatch.blockInlinePlaybackUntilPlayerOpens();
-        }
+        // Fresh starts and Undo both open from the feed, whose preview can otherwise
+        // replace the requested video's playback before the queue attaches.
+        pendingQueueStartInlinePlaybackBlockId = LoadVideoPatch.blockInlinePlaybackUntilPlayerOpens();
 
         try {
             LoadVideoPatch.openVideoIntent(start.watchUrl(), false);
