@@ -186,17 +186,19 @@ public final class FeedVideoCardsPatch {
             .createSizeRestrictedMap(MAX_LIVE_VIDEOS, true);
 
     /**
-     * Root host -> video of the card, of the cards laid out last, and host of the thumbnail beside the texts
-     * -> video of its card, see {@link #findSideThumbnail(ComponentHost)}. Used only on the main thread.
+     * Root host -> video of the card, of the cards laid out last, and card inside a root host -> its video,
+     * see {@link #innerCards}. Used only on the main thread.
      */
     private static final Map<ComponentHost, String> cardVideoIds = Collections.synchronizedMap(
             new WeakHashMap<>());
 
     /**
-     * Root host -> host of its thumbnail beside the texts that the like count is drawn on,
-     * see {@link #findSideThumbnail(ComponentHost)}. Used only on the main thread.
+     * Root host that is not shaped like a full width card -> the hosts inside it that the like count is drawn on:
+     * the host of a thumbnail beside the texts (see {@link #findSideThumbnail(ComponentHost)}), or the cards
+     * of a row of a grid, such as the shelves of a channel on tablets, which are shaped like full width cards.
+     * Used only on the main thread.
      */
-    private static final Map<ComponentHost, ComponentHost> sideThumbnails = new WeakHashMap<>();
+    private static final Map<ComponentHost, List<ComponentHost>> innerCards = new WeakHashMap<>();
 
     static {
         if (ENABLED) {
@@ -1018,7 +1020,7 @@ public final class FeedVideoCardsPatch {
      *         Must be called on the main thread.
      */
     public static boolean isRetryPending(ComponentHost host) {
-        // The host can be the thumbnail of a card, see findSideThumbnail().
+        // The host can be a card inside the root host, see innerCards.
         return pendingRetries.containsKey(findRootHost(host));
     }
 
@@ -1069,15 +1071,47 @@ public final class FeedVideoCardsPatch {
                     continue;
                 }
                 String videoId = findVideoId(root);
-                ComponentHost sideThumbnail = isVideoShaped(root) ? null : findSideThumbnail(root);
-                if (NOT_READY.equals(videoId)
-                        || (videoId == null && (isVideoShaped(root) || sideThumbnail != null)
-                        && !hasHorizontalList(root))
+                final boolean fullWidthCard = isVideoShaped(root);
+                boolean retry = NOT_READY.equals(videoId)
+                        || (videoId == null && fullWidthCard && !hasHorizontalList(root))
                         // A card that enters from the top of the list shows its texts before the
                         // duration of its thumbnail, so it looks like a mix until its top is shown.
+                        || (PLAYLIST.equals(videoId) && fullWidthCard
+                        && (!root.getLocalVisibleRect(visibleRect) || visibleRect.top > 0));
+
+                // The like count of a card with the thumbnail beside the texts is drawn on the host of
+                // the thumbnail, and the like count of the cards of a row of a grid on each card. They are
+                // shaped like full width cards. The other features use the shape of a full width card,
+                // so they are given the root host as before.
+                List<ComponentHost> cards = new ArrayList<>();
+                List<String> cardIds = new ArrayList<>();
+                if (!fullWidthCard && !hasHorizontalList(root)) {
+                    ComponentHost sideThumbnail = findSideThumbnail(root);
+                    if (sideThumbnail != null) {
+                        cards.add(sideThumbnail);
+                        cardIds.add(videoId);
                         // A thumbnail beside the texts can show its duration after the texts are shown.
-                        || (PLAYLIST.equals(videoId) && (sideThumbnail != null
-                        || !root.getLocalVisibleRect(visibleRect) || visibleRect.top > 0))) {
+                        retry |= videoId == null || PLAYLIST.equals(videoId);
+                    } else {
+                        for (int i = 0, count = root.getChildCount(); i < count; i++) {
+                            if (root.getChildAt(i) instanceof ComponentHost child
+                                    && child.getVisibility() == View.VISIBLE && isVideoShaped(child)) {
+                                cards.add(child);
+                            }
+                        }
+                        if (cards.size() < 2) {
+                            cards.clear();
+                        }
+                        for (ComponentHost card : cards) {
+                            String cardId = findVideoId(card);
+                            cardIds.add(cardId);
+                            retry |= NOT_READY.equals(cardId) || cardId == null
+                                    || (PLAYLIST.equals(cardId)
+                                    && (!card.getLocalVisibleRect(visibleRect) || visibleRect.top > 0));
+                        }
+                    }
+                }
+                if (retry) {
                     scheduleRetry(root);
                 } else {
                     retries.remove(root);
@@ -1092,28 +1126,33 @@ public final class FeedVideoCardsPatch {
                 }
                 final String cardVideoId = PLAYLIST.equals(videoId) ? null : videoId;
 
-                // The like count of a card with the thumbnail beside the texts is drawn on the host
-                // of the thumbnail, which is shaped like a full width card. The other features use
-                // the shape of a full width card, so they are given the card as before.
-                ComponentHost previousSideThumbnail = sideThumbnail != null
-                        ? sideThumbnails.put(root, sideThumbnail)
-                        : sideThumbnails.remove(root);
-                // Litho reuses the hosts, so the previous host of the thumbnail can be in another card now,
-                // which draws on it.
-                if (previousSideThumbnail != null && previousSideThumbnail != sideThumbnail
-                        && findRootHost(previousSideThumbnail) == root) {
-                    cardVideoIds.remove(previousSideThumbnail);
-                    FeedEngagementCountsPatch.onCardLaidOut(previousSideThumbnail, null);
-                }
-                if (sideThumbnail != null) {
-                    if (videoId == null) {
-                        cardVideoIds.remove(sideThumbnail);
-                    } else {
-                        cardVideoIds.put(sideThumbnail, videoId);
+                List<ComponentHost> previousCards = cards.isEmpty()
+                        ? innerCards.remove(root)
+                        : innerCards.put(root, cards);
+                if (previousCards != null) {
+                    for (ComponentHost previous : previousCards) {
+                        // Litho reuses the hosts, so a previous card can be in another root host now,
+                        // which draws on it.
+                        if (!cards.contains(previous) && findRootHost(previous) == root) {
+                            cardVideoIds.remove(previous);
+                            FeedEngagementCountsPatch.onCardLaidOut(previous, null);
+                        }
                     }
-                    FeedEngagementCountsPatch.onCardLaidOut(sideThumbnail, cardVideoId);
                 }
-                final String fullWidthCardVideoId = sideThumbnail == null ? cardVideoId : null;
+                for (int i = 0; i < cards.size(); i++) {
+                    final ComponentHost card = cards.get(i);
+                    final String cardId = cardIds.get(i);
+                    if (NOT_READY.equals(cardId)) {
+                        continue;
+                    }
+                    if (cardId == null) {
+                        cardVideoIds.remove(card);
+                    } else {
+                        cardVideoIds.put(card, cardId);
+                    }
+                    FeedEngagementCountsPatch.onCardLaidOut(card, PLAYLIST.equals(cardId) ? null : cardId);
+                }
+                final String fullWidthCardVideoId = cards.isEmpty() ? cardVideoId : null;
                 FeedEngagementCountsPatch.onCardLaidOut(root, fullWidthCardVideoId);
                 FeedViewCountPatch.onCardLaidOut(root, fullWidthCardVideoId);
                 FeedVideoActionsPatch.onCardLaidOut(root, fullWidthCardVideoId);
@@ -1149,7 +1188,7 @@ public final class FeedVideoCardsPatch {
      * Must be called on the main thread.
      */
     public static void requestUpdate(ComponentHost host) {
-        // The host can be the thumbnail of a card, see findSideThumbnail().
+        // The host can be a card inside the root host, see innerCards.
         ComponentHost root = findRootHost(host);
         // A new layout can show another video, which is checked again as many times.
         retries.remove(root);
