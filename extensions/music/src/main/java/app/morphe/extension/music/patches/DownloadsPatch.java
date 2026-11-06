@@ -95,6 +95,12 @@ public final class DownloadsPatch {
      */
     private static final ByteArrayFilterGroup PREMIUM_UPSELL_COMMAND =
             new ByteArrayFilterGroup(null, "premium_upsell");
+    /**
+     * A long press resolves the menu of the item, whose command holds the Download command
+     * of the item instead of being the Download command itself.
+     */
+    private static final ByteArrayFilterGroup MENU_COMMAND =
+            new ByteArrayFilterGroup(null, "panel_header.", "tile_button_carousel.");
     /** Field of the renderer of a native song row that holds the command of a tap on the row. */
     private static final int ROW_TAP_COMMAND = 5;
     /** Extension of a command that holds the watch endpoint, with the video ID in its field 1. */
@@ -469,6 +475,7 @@ public final class DownloadsPatch {
                 return true;
             }
             if (!insideDialog && premiumUpsell
+                    && !MENU_COMMAND.check(commandBytes).isFiltered()
                     && !isViewInsideActionBar(map.get(ELEMENTS_SENDER_VIEW))) {
                 String playlistId = PlaylistPageFilter.getPagePlaylistId();
                 if (playlistId != null && isActionButtonOverridden()) {
