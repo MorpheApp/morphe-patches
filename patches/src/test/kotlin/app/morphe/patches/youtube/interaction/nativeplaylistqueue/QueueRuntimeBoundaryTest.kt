@@ -176,6 +176,9 @@ class QueueRuntimeBoundaryTest {
     @Test
     fun `single video Last preserves every row of a playing playlist`() = withFixture("playingVideoLast")
 
+    @Test
+    fun `metadata uses the app locale and rejects a result after it changes`() = withFixture("metadataLocale")
+
     // NativePlaylistQueuePatch depends on Android settings, scheduling and UI classes.
     // Isolate those boundaries while executing its actual compiled coordinator.
     private fun withFixture(scenario: String) {
@@ -303,6 +306,13 @@ class QueueRuntimeBoundaryTest {
                     public static java.util.Map<String, String> getRequestHeader() { return java.util.Map.of("account", account); }
                 }
             """,
+            "Requester" to """
+                package app.morphe.extension.shared.requests;
+                public class Requester {
+                    public static java.util.Locale locale = java.util.Locale.getDefault();
+                    public static java.util.Locale getAppLocale() { return locale; }
+                }
+            """,
             "MixPlaylistRequest" to """
                 package app.morphe.extension.youtube.patches.queue;
                 public class MixPlaylistRequest {
@@ -316,9 +326,12 @@ class QueueRuntimeBoundaryTest {
             "PlaylistMetadataRequest" to """
                 package app.morphe.extension.youtube.patches.queue;
                 public class PlaylistMetadataRequest {
+                    static java.util.Locale requestedLocale;
+                    static VideoMetadata result;
                     static VideoMetadata fetch(String video, String title, java.util.Locale locale) {
                         app.morphe.extension.shared.Utils.verifyOffMainThread();
-                        return null;
+                        requestedLocale = locale;
+                        return result;
                     }
                 }
             """,
@@ -618,6 +631,31 @@ class QueueRuntimeBoundaryTest {
                         field("pendingUndo").set(null, create.newInstance("token", queue, new WeakReference<>(playback), null));
                         clears = 0; Logger.errors = 0; QueueFullscreenActions.refreshes = 0;
                         return queue;
+                    }
+                    public static void metadataLocale() throws Exception {
+                        var previous = Locale.getDefault();
+                        var locale = Locale.forLanguageTag("en-IN");
+                        try {
+                            Locale.setDefault(Locale.US);
+                            app.morphe.extension.shared.requests.Requester.locale = locale;
+                            field("queue").set(null, new PlaylistQueue("abcdefghijk", "Playing"));
+                            PlaylistMetadataRequest.result = new VideoMetadata("abcdefghijk", "Playing", "Channel",
+                                "108 crore", "1:00", true);
+                            call("completeMetadata"); Utils.drainBackground();
+                            require(locale.equals(PlaylistMetadataRequest.requestedLocale),
+                                "Metadata request must use the app locale rather than the system locale");
+                            app.morphe.extension.shared.requests.Requester.locale = Locale.US;
+                            Utils.drain();
+                            var cache = (Map<?, ?>) field("metadataCache").get(null);
+                            require(!cache.containsKey("abcdefghijk"), "Reject results after an app-language change");
+                            app.morphe.extension.shared.requests.Requester.locale = locale;
+                            call("completeMetadata"); Utils.drainBackground(); Utils.drain();
+                            require(cache.get("abcdefghijk") instanceof VideoMetadata metadata
+                                    && metadata.videoInfo().equals("108 crore"),
+                                "Keep YouTube's regional view text unchanged");
+                        } finally {
+                            Locale.setDefault(previous);
+                        }
                     }
                     public static void stockQueueRouting() throws Exception {
                         int[] originals = {0};

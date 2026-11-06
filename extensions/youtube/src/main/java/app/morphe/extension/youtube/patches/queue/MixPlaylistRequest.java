@@ -37,7 +37,7 @@ final class MixPlaylistRequest {
         Utils.verifyOffMainThread();
         HttpURLConnection connection = null;
         try {
-            byte[] body = PlaylistRoutes.getSetVideoIdBody(seedVideoId, playlistId);
+            byte[] body = PlaylistRoutes.getSetVideoIdBody(seedVideoId, playlistId, Requester.getAppLocale());
             connection = PlaylistRoutes.getConnection(new Route(Route.Method.POST, MIX_PATH).compile(), headers);
             connection.setFixedLengthStreamingMode(body.length);
             try (var output = connection.getOutputStream()) {

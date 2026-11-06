@@ -40,6 +40,7 @@ import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.utils.AuthUtils;
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
@@ -2999,7 +3000,7 @@ public final class NativePlaylistQueuePatch {
             if (metadata != null && metadata.isComplete()) {
                 continue;
             }
-            Locale locale = Locale.getDefault();
+            Locale locale = Requester.getAppLocale();
             String key = entry.videoId() + ":" + locale.toLanguageTag();
             if (!pendingMetadata.add(key)) {
                 continue;
@@ -3011,7 +3012,7 @@ public final class NativePlaylistQueuePatch {
                 VideoMetadata fetched = PlaylistMetadataRequest.fetch(entry.videoId(), searchTitle, locale);
                 Utils.runOnMainThread(() -> {
                     pendingMetadata.remove(key);
-                    if (fetched == null || !Locale.getDefault().equals(locale)) {
+                    if (fetched == null || !Requester.getAppLocale().equals(locale)) {
                         return;
                     }
                     metadataCache.compute(entry.videoId(), (videoId, previous) ->
@@ -3143,7 +3144,7 @@ public final class NativePlaylistQueuePatch {
             }
             MixChoice choice = new MixChoice(UUID.randomUUID().toString(), watch.getPlaylistId(), watch.getVideoId(),
                     new WeakReference<>(controller), new WeakReference<>(playback),
-                    Map.copyOf(AuthUtils.getRequestHeader()), Locale.getDefault());
+                    Map.copyOf(AuthUtils.getRequestHeader()), Requester.getAppLocale());
             pendingMixChoice = choice;
             intercepted = true;
             controller.patch_showQueueFeedback(QueueMixActions.dialog(command, choice.token(),
@@ -3167,7 +3168,7 @@ public final class NativePlaylistQueuePatch {
                 && queue != null && controller != null && controller == readyController()
                 && isQueuePlayback(controller, playback) && playbackFor(controller) == playback
                 && queue.currentEntry().videoId().equals(VideoInformation.getVideoId())
-                && choice.headers().equals(AuthUtils.getRequestHeader()) && choice.locale().equals(Locale.getDefault());
+                && choice.headers().equals(AuthUtils.getRequestHeader()) && choice.locale().equals(Requester.getAppLocale());
     }
 
     /** If the controller shows our published model, played by our local native queue. */

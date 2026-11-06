@@ -10,6 +10,7 @@ package app.morphe.extension.youtube.patches.utils.requests;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -63,16 +64,16 @@ public final class ChannelIdRoutes {
     }
 
     public static byte[] createBody(String videoId) {
-        return createBody("videoId", videoId);
+        return createBody("videoId", videoId, null);
     }
 
-    public static byte[] createSearchBody(String query) {
-        return createBody("query", query);
+    public static byte[] createSearchBody(String query, Locale locale) {
+        return createBody("query", query, locale);
     }
 
-    private static byte[] createBody(String parameter, String value) {
+    private static byte[] createBody(String parameter, String value, @Nullable Locale locale) {
         try {
-            JSONObject context = getJsonObject();
+            JSONObject context = getJsonObject(locale);
 
             JSONObject innerTubeBody = new JSONObject();
             innerTubeBody.put("context", context);
@@ -89,7 +90,7 @@ public final class ChannelIdRoutes {
     }
 
     @NonNull
-    private static JSONObject getJsonObject() throws JSONException {
+    private static JSONObject getJsonObject(@Nullable Locale locale) throws JSONException {
         JSONObject client = new JSONObject();
         client.put("clientName", "ANDROID");
         client.put("clientVersion", CLIENT_VERSION);
@@ -98,9 +99,10 @@ public final class ChannelIdRoutes {
         client.put("osName", "Android");
         client.put("osVersion", Build.VERSION.RELEASE);
         client.put("androidSdkVersion", Build.VERSION.SDK_INT);
-        Locale localeDefault = Locale.getDefault();
-        client.put("hl", localeDefault.getLanguage());
-        client.put("gl", localeDefault.getCountry());
+        Locale requestLocale = locale == null ? Locale.getDefault() : locale;
+        // Display metadata needs the regional language too (en-IN uses lakh/crore).
+        client.put("hl", locale == null ? requestLocale.getLanguage() : requestLocale.toLanguageTag());
+        client.put("gl", requestLocale.getCountry());
 
         JSONObject context = new JSONObject();
         context.put("client", client);
