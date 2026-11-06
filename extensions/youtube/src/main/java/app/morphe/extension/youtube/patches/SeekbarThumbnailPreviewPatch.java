@@ -20,20 +20,26 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.MotionEvent;
+import android.view.SurfaceView;
+import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.view.ViewParent;
+import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -545,6 +551,49 @@ public class SeekbarThumbnailPreviewPatch {
     public static boolean disableBigBoardUpdate() {
         // Swipe to seek keeps the large preview of the app, as the finger is not on the seekbar.
         return Settings.THUMBNAIL_PREVIEW.get() && !SwipeSeekController.isSwipeSeeking();
+    }
+
+    /**
+     * Injection point.
+     * Called when the full screen seek preview is shown.
+     * <p>
+     * The app fits the preview in the player, so the sides of a video zoomed to fill the screen
+     * stay visible next to it. Scale the preview to the size of the video instead.
+     */
+    public static void setBigBoardScale(@Nullable ImageView preview) {
+        if (preview == null) return;
+
+        // The preview is laid out after it is shown the first time, and after the screen rotates.
+        preview.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                preview.getViewTreeObserver().removeOnPreDrawListener(this);
+                try {
+                    float scale = 1;
+                    // The app crops the preview of vertical videos to their zoom itself.
+                    if (preview.getScaleType() == ImageView.ScaleType.FIT_CENTER) {
+                        View playerView = preview.getRootView().findViewById(ResourceUtils.getIdIdentifier("player_view"));
+                        View video = playerView instanceof ViewGroup group
+                                ? Utils.getChildView(group, true, view -> view instanceof SurfaceView || view instanceof TextureView)
+                                : null;
+
+                        final int width = preview.getWidth();
+                        final int height = preview.getHeight();
+                        if (video != null && width > 0 && height > 0 && video.getHeight() > 0) {
+                            // Width of the video when it fits in the preview.
+                            final float fitWidth = Math.min(width, (float) height * video.getWidth() / video.getHeight());
+                            scale = Math.max(1, video.getWidth() / fitWidth);
+                        }
+                    }
+
+                    preview.setScaleX(scale);
+                    preview.setScaleY(scale);
+                } catch (Exception ex) {
+                    Logger.printException(() -> "setBigBoardScale failure", ex);
+                }
+                return true;
+            }
+        });
     }
 
     /**
