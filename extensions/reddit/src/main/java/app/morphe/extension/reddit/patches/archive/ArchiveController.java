@@ -149,11 +149,13 @@ public final class ArchiveController {
             int priorNative = -1;
             for (ArchiveMerge.Entry entry : merged) {
                 if (entry.nativeIndex >= 0) priorNative = entry.nativeIndex;
-                if (entry.archiveIndex >= 0) {
+                if (entry.archiveIndex >= 0) RecoveryPatch.seed(items.get(entry.archiveIndex));
+                if (entry.archiveIndex >= 0 && entry.nativeIndex < 0) {
                     ArchiveSnapshot.Row row = rows.get(entry.archiveIndex);
                     String rowKey = key + ArchiveMerge.fullname(row.item);
                     result.add(new ArchiveSection(this, new ArchiveSnapshot.Row(rowKey, ArchiveSnapshot.CARD,
-                            row.itemIndex, row.item, row.details, "", false, false, entry.status)));
+                            row.itemIndex, row.item, row.details, "", false, false,
+                            entry.status.equals("Deleted") || entry.status.equals("Removed") ? "Undeleted" : entry.status)));
                     archiveIndices.put(rowKey, row.itemIndex);
                     if (priorNative >= 0) mapNative(rowKey, priorNative, original);
                 } else {

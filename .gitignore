@@ -41,6 +41,7 @@ node_modules/
 
 # Local toolchains, original APK inputs, and reverse-engineering output.
 .local/
+.kotlin/
 .codex-remote-attachments/
 dist/
 *.apkm

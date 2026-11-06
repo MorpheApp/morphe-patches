@@ -15,6 +15,7 @@ public final class ArchiveFixture {
     public static volatile boolean holdPreviews = true;
     public static volatile int searches, previews, cancellations;
     public static Object transport() {
+        if (app.morphe.test.ArchiveProbe.recovery) return RecoveryFixture.transport();
         return (ArchiveClient.Transport) (url, token) -> {
             try {
                 Uri uri = Uri.parse(url.toString());

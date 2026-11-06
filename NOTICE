@@ -27,3 +27,8 @@ GPLv3 Section 7e: Declining Grant of Trademark Rights
 This License does not grant any rights or permission under trademark law
 to use the name "Morphe" or any of the Program's trade names, trademarks,
 service marks, or logos.
+
+RedditApp automatic text recovery includes commonmark-java 0.32.0
+(https://github.com/commonmark/commonmark-java), copyright (c) 2015,
+Atlassian Pty Ltd, under the BSD 2-Clause license. Its full license is
+included in patches/src/main/resources/license/COMMONMARK_LICENSE.txt.

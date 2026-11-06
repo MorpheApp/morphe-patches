@@ -265,13 +265,20 @@ internal fun installProfileMerge(sectionInterface: String, sectionContent: Metho
     """)
     val count = converter.implementation!!.registerCount
     val returns = converter.implementation!!.instructions.withIndex().filter { it.value.opcode == Opcode.RETURN_OBJECT }
-    val (converted, shifted) = converter.addFreeRegisters(2)
-    converted.addInstructions(shifted, "move-object/16 v${count + 1}, v${count - 1}")
+    val (converted, shifted) = converter.addFreeRegisters(3)
+    converted.addInstructions(shifted, """
+        move-object/16 v${count + 1}, v${count - 1}
+        move-object/16 v${count + 2}, v${count - 2}
+    """)
     returns.reversed().forEach { (at, instruction) ->
         val result = (instruction as OneRegisterInstruction).registerA
-        converted.addInstructionsAtControlFlowLabel(at + shifted + 1, """
+        converted.addInstructionsAtControlFlowLabel(at + shifted + 2, """
             move-object/16 v$count, v$result
             invoke-static/range { v$count .. v${count + 1} }, $ARCHIVE_CLASS->converted(Ljava/lang/Object;Ljava/lang/Object;)V
+            invoke-static/range { v$count .. v${count + 2} }, $RECOVERY->wrap(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+            move-result-object v$count
+            check-cast v$count, ${converter.returnType}
+            move-object/16 v$result, v$count
         """)
     }
 
@@ -368,6 +375,8 @@ internal fun installProfileMerge(sectionInterface: String, sectionContent: Metho
         """
     }
     replaceArchiveBridge("captureStatus", 3, statusBodies.joinToString("\n") + "\nreturn-void")
+
+    installNativeRecovery(sectionInterface, sectionContent, sectionKey, converter)
 
     mutableClassDefBy(NATIVE_SECTION).interfaces.add(sectionInterface)
     addNativeMethod(NATIVE_SECTION, sectionKey, "invoke-virtual { p0 }, $NATIVE_SECTION->key()Ljava/lang/String;\nmove-result-object v0\nreturn-object v0")

@@ -49,10 +49,10 @@ public final class ProfileArchivePatch {
     static Object newState(Object initial) { throw new UnsupportedOperationException(); }
     static Object readState(Object state) { throw new UnsupportedOperationException(); }
     static void writeState(Object state, Object value) { throw new UnsupportedOperationException(); }
-    private static void begin(Object composer) { throw new UnsupportedOperationException(); }
-    private static Object remembered(Object composer) { throw new UnsupportedOperationException(); }
-    private static void remember(Object composer, Object value) { throw new UnsupportedOperationException(); }
-    private static void end(Object composer) { throw new UnsupportedOperationException(); }
+    static void begin(Object composer) { throw new UnsupportedOperationException(); }
+    static Object remembered(Object composer) { throw new UnsupportedOperationException(); }
+    static void remember(Object composer, Object value) { throw new UnsupportedOperationException(); }
+    static void end(Object composer) { throw new UnsupportedOperationException(); }
     private static String visibleKey(Object item) { throw new UnsupportedOperationException(); }
     static void androidView(Function1<Context, View> factory, Function1<View, Unit> update,
                             Object composer) { throw new UnsupportedOperationException(); }
@@ -149,6 +149,7 @@ public final class ProfileArchivePatch {
         if (category != null && !category.name().equals("UNKNOWN__"))
             status = category.name().equals("AUTHOR") || category.name().equals("DELETED") ? "Deleted" : "Removed";
         boolean readable = body != null && !body.isBlank() && ArchiveNativeItem.status(body).isEmpty();
+        RecoveryPatch.evidence(id, body, !status.isEmpty());
         POSTS.put(id, new ArchiveNativeItem(id, time.getEpochSecond(), pinned, status, !readable && !status.isEmpty()));
         trimPosts();
     }
@@ -172,7 +173,9 @@ public final class ProfileArchivePatch {
         }
         if (item != null) SECTIONS.put(section, item);
     }
-    static synchronized ArchiveNativeItem nativeItem(Object section) { return SECTIONS.get(section); }
+    static synchronized ArchiveNativeItem nativeItem(Object section) {
+        return SECTIONS.get(section instanceof RecoverySection ? ((RecoverySection) section).original : section);
+    }
     static boolean emptySection(Object section) { return sectionModel(section) != null; }
 
     /** Called inside the host's feed-state composition, before it publishes sections. */

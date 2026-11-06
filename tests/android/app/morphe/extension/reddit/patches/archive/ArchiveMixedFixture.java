@@ -55,6 +55,13 @@ public final class ArchiveMixedFixture {
         return lastSections.stream().anyMatch(x -> x instanceof ArchiveSection && ((ArchiveSection)x).row.provenance.equals(value));
     }
     public static boolean hasIndicator() { return lastSections.stream().anyMatch(x -> x instanceof ArchiveSection && ((ArchiveSection)x).row.kind == ArchiveSnapshot.INDICATOR); }
+    public static boolean hasNativePlaceholder() {
+        return lastSections.stream().anyMatch(x -> x instanceof ArchiveNativeSection &&
+            isPlaceholder(((ArchiveNativeSection)x).original));
+    }
+    private static boolean isPlaceholder(Object section) {
+        ArchiveNativeItem item = ProfileArchivePatch.nativeItem(section); return item != null && item.placeholder;
+    }
     public static void verifyIdentityAndMapping() {
         java.util.Set<String> unique = new java.util.HashSet<>();
         Object factory;
@@ -124,7 +131,7 @@ public final class ArchiveMixedFixture {
             Object indicators = construct("kxp", 9, id, id, false, null, 0, List.of(), false, false, List.of());
             Object flair = construct("ly20", 5, id, id, false, null, ProfileArchivePatch.immutableList(List.of()));
             element = construct("os8", 33, id, id, false, null, "", null, "r/ArchiveTest", "2h", "Two hours ago", null,
-                    indicators, "Native post " + index, false, null, flair, List.of(), List.of(), null, null,
+                    indicators, index == 6 ? "[deleted]" : "Native post " + index, false, null, flair, List.of(), List.of(), null, null,
                     false, true, false, false, enumValue("com.reddit.feeds.model.PostTranslationIndicatorState", "None"),
                     enumValue("com.reddit.feeds.caching.data.DataSourceType", "FRESH_FROM_REMOTE"), false,
                     enumValue("com.reddit.useridentity.ProfileVerificationStatus", "NOT_VERIFIED"), null, false,

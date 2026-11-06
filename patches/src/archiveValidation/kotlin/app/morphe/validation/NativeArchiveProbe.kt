@@ -20,6 +20,18 @@ private const val ARCHIVE = "Lapp/morphe/extension/reddit/patches/archive/"
 context(context: BytecodePatchContext)
 fun installNativeProbe() = with(context) {
     fun bridge(name: String, registers: Int, code: String) = replaceArchiveBridge(name, registers, code, PROBE)
+    val recoveryOwners = sortedSetOf<String>()
+    classDefForEach { owner -> if (!owner.type.startsWith("Lapp/morphe/")) owner.methods.forEach { m ->
+        if (m.implementation?.instructions?.any { ins ->
+                ((ins as? ReferenceInstruction)?.reference as? MethodReference)?.let {
+                    it.definingClass == "${ARCHIVE}RecoveryPatch;" && it.name in setOf("recover", "recoverProfile", "wrap")
+                } == true } == true) recoveryOwners.add(owner.type.removePrefix("L").removeSuffix(";").replace('/', '.'))
+    } }
+    replaceArchiveBridge("hookOwners", 3, buildString {
+        appendLine("const/16 v0, ${recoveryOwners.size}\nnew-array v0, v0, [Ljava/lang/String;")
+        recoveryOwners.forEachIndexed { i, name -> appendLine("const/16 v1, $i\nconst-string v2, \"$name\"\naput-object v2, v0, v1") }
+        appendLine("return-object v0")
+    }, "${ARCHIVE}RecoveryFixture;")
     val unit = classDefBy("Lkotlin/Unit;").fields.single { it.type == "Lkotlin/Unit;" }
     bridge("unit", 1, "sget-object v0, $unit\nreturn-object v0")
     listOf("newState", "readState", "writeState", "sectionModel").forEach { name ->

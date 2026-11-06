@@ -137,6 +137,54 @@ public final class ArchiveClient implements ArchivePager.Source {
         return records.get(0);
     }
 
+    /** ID recovery does not know the author: Reddit may have replaced it with [deleted]. */
+    public Map<String, ArchiveItem> records(List<String> ids, boolean comments, Cancellation cancellation) throws IOException {
+        return parseRecords(request(recordsUrl(ids, comments), cancellation), new LinkedHashSet<>(ids), comments);
+    }
+
+    static URL recordsUrl(List<String> ids, boolean comments) throws IOException {
+        if (ids.isEmpty() || ids.size() > 8 || new LinkedHashSet<>(ids).size() != ids.size())
+            throw new IOException("Invalid recovery batch.");
+        for (String value : ids) if (value == null || !value.matches("[a-z0-9]{1,16}"))
+            throw new IOException("Invalid recovery ID.");
+        return new URL(ORIGIN + "/api/" + (comments ? "comments" : "posts") + "/ids?ids=" + String.join(",", ids));
+    }
+
+    static Map<String, ArchiveItem> parseRecords(String body, Set<String> requested, boolean comments) throws IOException {
+        try {
+            JSONArray rows = new JSONObject(body).getJSONArray("data");
+            if (rows.length() > requested.size()) throw new JSONException("Unexpected recovery batch size");
+            Map<String, ArchiveItem> result = new LinkedHashMap<>();
+            for (int i = 0; i < rows.length(); i++) {
+                JSONObject row = rows.getJSONObject(i);
+                String value = id(row.getString("id"), comments ? "t1_" : "t3_");
+                String fullname = (comments ? "t1_" : "t3_") + value;
+                if (!requested.contains(value) || result.containsKey(fullname)) throw new JSONException("Unexpected recovery ID");
+                long time = row.getLong("created_utc");
+                if (time <= 0 || time > 4102444800L) throw new JSONException("Unexpected recovery date");
+                String author = recoveryText(row, "author");
+                if (!author.isEmpty() && !ArchiveRecovery.placeholder(author)
+                        && !author.matches("[A-Za-z0-9_-]{1,64}")) throw new JSONException("Invalid recovery author");
+                String link = comments ? id(row.getString("link_id"), "t3_") : "";
+                result.put(fullname, new ArchiveItem(value, author, recoveryText(row, "subreddit"), time,
+                        recoveryText(row, "title"), recoveryText(row, comments ? "body" : "selftext"),
+                        link, "", null, comments));
+            }
+            return java.util.Collections.unmodifiableMap(result);
+        } catch (JSONException | IllegalArgumentException error) {
+            throw new IOException("Archive returned an invalid recovery response.", error);
+        }
+    }
+
+    private static String recoveryText(JSONObject row, String key) throws JSONException {
+        if (row.isNull(key)) return "";
+        Object value = row.get(key);
+        if (!(value instanceof String)) throw new JSONException("Invalid recovery text");
+        String text = (String) value;
+        if (text.length() > 100000) throw new JSONException("Recovery text is too large");
+        return text;
+    }
+
     static URL detailsUrl(List<String> ids) throws IOException {
         if (ids.isEmpty() || ids.size() > 8) throw new IOException("Invalid preview batch.");
         for (String value : ids) {

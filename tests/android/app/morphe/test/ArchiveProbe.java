@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import app.morphe.extension.reddit.patches.archive.ArchiveFixture;
 import app.morphe.extension.reddit.patches.archive.ArchiveMixedFixture;
+import app.morphe.extension.reddit.patches.archive.RecoveryFixture;
 import app.morphe.extension.reddit.patches.archive.ProfileArchivePatch;
 import java.util.List;
 import kotlin.Unit;
@@ -28,6 +29,8 @@ public final class ArchiveProbe extends Instrumentation {
     public static boolean nativeExclusionsVerified;
     public static int wrapperDepth = 1;
     public static boolean mixed;
+    public static boolean recovery;
+    public static boolean recoveryFailure;
     private static List<?> lastVisible;
     private Activity activity;
     private volatile Activity latestReader;
@@ -46,6 +49,8 @@ public final class ArchiveProbe extends Instrumentation {
             tab = args.getString("tab", tab); theme = args.getString("theme", theme);
             wrapperDepth = Integer.parseInt(args.getString("wrapperDepth", "1"));
             mixed = args.getString("mode", "hidden").equals("mixed");
+            recovery = args.getString("mode", "hidden").startsWith("recovery");
+            recoveryFailure = args.getString("mode", "hidden").equals("recovery_failure");
         }
         start();
     }
@@ -60,11 +65,13 @@ public final class ArchiveProbe extends Instrumentation {
             activity = startActivitySync(new Intent().setClassName(getTargetContext().getPackageName(),
                     "app.morphe.test.ArchiveProbe$ProbeActivity").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
             app.morphe.extension.reddit.settings.Settings.PROFILE_ARCHIVE.save(true);
+            if (recovery) RecoveryFixture.prepare();
             if (mixed) {
                 ArchiveMixedFixture.verifyProjection();
                 ArchiveFixture.slow = true;
             }
             runOnMainSync(() -> { revision = newState(0); lazyState = newLazyState(); mount(activity); running = true; tracker.run(); });
+            if (recovery) { runRecovery(result); return; }
             if (mixed) { runMixed(result); return; }
             await(() -> controller() != null && ArchiveFixture.count(controller()) == 25, 20000, "First page composed");
             settle();
@@ -119,10 +126,60 @@ public final class ArchiveProbe extends Instrumentation {
             result.putString("stream", assertions + " native runtime assertions passed for " + tab + "; QSF wrapper depth=" + wrapperDepth + "; drag/fling, paging, previews, cancellation, empty/error/retry.");
             result.putInt("assertions", assertions); finish(Activity.RESULT_OK, result);
         } catch (Throwable error) {
+            if (recovery && activity != null) try { screenshot("recovery-failure"); } catch (Throwable ignored) {}
             result.putString("stream", android.util.Log.getStackTraceString(error)); finish(Activity.RESULT_CANCELED, result);
         } finally { running = false; handler.removeCallbacks(tracker); }
     }
     private Object controller() { return ArchiveFixture.controller(username, tab.equals("VISITOR_COMMENT")); }
+    private String screenText() {
+        android.view.accessibility.AccessibilityNodeInfo root = getUiAutomation().getRootInActiveWindow();
+        StringBuilder result = new StringBuilder();
+        java.util.ArrayDeque<android.view.accessibility.AccessibilityNodeInfo> queue = new java.util.ArrayDeque<>();
+        if (root != null) queue.add(root);
+        while (!queue.isEmpty()) {
+            android.view.accessibility.AccessibilityNodeInfo node = queue.remove();
+            // UiAutomation caches Compose nodes even after a text-only redraw.
+            // Refresh each node so assertions describe the current screen.
+            if (!node.refresh()) continue;
+            if (node.getText() != null) result.append(node.getText()).append('\n');
+            for (int i = 0; i < node.getChildCount(); i++) { var child = node.getChild(i); if (child != null) queue.add(child); }
+        }
+        return result.toString();
+    }
+    private void runRecovery(Bundle result) throws Exception {
+        await(() -> RecoveryFixture.requests > 0, 10000, "Direct native models start ID lookup");
+        check(!RecoveryFixture.ready(), "Delayed archive leaves native input usable");
+        if (recoveryFailure) {
+            RecoveryFixture.fail = true; RecoveryFixture.hold = false;
+            await(() -> RecoveryFixture.failuresReceived >= 3, 15000, "Rate-limited lookups finish without replacing native content");
+            check(!RecoveryFixture.ready() && !screenText().contains("Undeleted"), "Archive failure has no success tag");
+            check(screenText().contains("[deleted]"), "Native profile remains readable after rate limit");
+            check(RecoveryFixture.requests == 1, "Shared provider backoff prevents further transport requests");
+            result.putString("stream", (assertions + RecoveryFixture.assertions) + " runtime failure assertions passed; native content remains usable after HTTP 429.");
+            finish(Activity.RESULT_OK, result); return;
+        }
+        int[] anchor = position();
+        RecoveryFixture.hold = false;
+        await(RecoveryFixture::ready, 20000, "Post and nested comment update without tapping or refreshing");
+        awaitUi(() -> screenText().contains("Undeleted"), 15000, "Native profile preview publishes recovered text and tag automatically");
+        check(screenText().contains("Restored bold text"), "Native profile preview strips Markdown and stays readable");
+        check(screenText().split("Undeleted", -1).length == 2, "One native metadata tag");
+        check(position()[0] == anchor[0] && Math.abs(position()[1] - anchor[1]) <= 2, "Delayed recovery preserves native scroll anchor");
+        RecoveryFixture.verify(); screenshot("recovery");
+        runOnMainSync(() -> app.morphe.extension.reddit.settings.Settings.PROFILE_ARCHIVE.save(false));
+        await(() -> !RecoveryFixture.ready(), 5000, "Disable automatically invalidates composed recovery");
+        RecoveryFixture.verifyDisabled();
+        awaitUi(() -> !screenText().contains("Undeleted"), 5000, "Disabled feature removes metadata tag");
+        runOnMainSync(() -> app.morphe.extension.reddit.settings.Settings.PROFILE_ARCHIVE.save(true));
+        await(RecoveryFixture::ready, 20000, "Re-enable starts new observed lookup");
+        runOnMainSync(() -> { RecoveryFixture.shown = false; bump(); }); settle();
+        check(!screenText().contains("Restored bold text"), "Departed screen no longer receives native content");
+        runOnMainSync(() -> { RecoveryFixture.shown = true; bump(); });
+        awaitUi(() -> screenText().contains("Undeleted"), 5000, "Returning screen reuses cached recovery");
+        result.putInt("assertions", assertions + RecoveryFixture.assertions);
+        result.putString("stream", (assertions + RecoveryFixture.assertions) + " recovery runtime assertions passed; native profile renderer, direct post/comment projections, native Markdown parsing, delayed updates, stable anchor, disable/re-enable and navigation. Signed-in feed/discussion acceptance remains separate.");
+        finish(Activity.RESULT_OK, result);
+    }
     private void runMixed(Bundle result) throws Exception {
         boolean comments = tab.equals("VISITOR_COMMENT");
         await(() -> ArchiveMixedFixture.liveCount() > 0, 5000, "Live cards render before archive response");
@@ -139,7 +196,8 @@ public final class ArchiveProbe extends Instrumentation {
         check(beforeKey[0].equals(afterKey[0]) && Math.abs(before[1] - after[1]) <= 2, "Late insertion retains native visible key and offset");
         check(ArchiveMixedFixture.liveCount() > 0 && ArchiveMixedFixture.recoveredCount() > 0, "Real native and archive cards share one list");
         runOnMainSync(ArchiveMixedFixture::verifyIdentityAndMapping);
-        check(ArchiveMixedFixture.hasStatus("Deleted"), "Explicit deleted placeholder gets recovered provenance");
+        check(ArchiveMixedFixture.hasNativePlaceholder(), "Deleted placeholder retains its native section and identity");
+        check(ArchiveMixedFixture.hasStatus("Archived"), "Archive-only entries retain distinct provenance");
         check(!ArchiveMixedFixture.hasIndicator(), "Ordinary profiles do not show hidden-history notice");
         screenshot("mixed"); checkRows();
         ArchiveFixture.holdPreviews = false;
@@ -160,11 +218,14 @@ public final class ArchiveProbe extends Instrumentation {
             runOnMainSync(() -> { ArchiveMixedFixture.sortChanged("NEW"); bump(); });
             await(() -> ArchiveMixedFixture.recoveredCount() > 0, 20000, "Switching back to New resumes recovery");
         }
+        settle(); // Wait for the sort's new list to complete layout before recording its anchor.
         int[] readerAnchor = position();
+        String[] readerKey = {null};
+        runOnMainSync(() -> readerKey[0] = ArchiveMixedFixture.firstKey(readerAnchor[0]));
         ActivityMonitor monitor = addMonitor("app.morphe.extension.reddit.patches.archive.ArchiveReaderActivity", null, false);
         runOnMainSync(() -> ArchiveMixedFixture.openReader(activity));
         Activity reader = waitForMonitorWithTimeout(monitor, 10000);
-        check(reader != null, "Recovered-card navigation opens private reader");
+        check(reader != null, "Legacy reader remains callable for compatibility");
         settle();
         android.widget.ScrollView[] readerScroll = {null};
         runOnMainSync(() -> readerScroll[0] = findScroll(reader.getWindow().getDecorView()));
@@ -180,7 +241,12 @@ public final class ArchiveProbe extends Instrumentation {
         android.widget.ScrollView[] rotatedScroll = {null}; runOnMainSync(() -> rotatedScroll[0] = findScroll(rotated.getWindow().getDecorView()));
         check(Math.abs(rotatedScroll[0].getScrollY() - readerOffset) <= 2, "Reader retains its scroll offset");
         runOnMainSync(rotated::finish); removeMonitor(monitor); settle();
-        check(position()[0] == readerAnchor[0] && Math.abs(position()[1] - readerAnchor[1]) <= 2, "Reader Back retains profile position");
+        int[] returnedAnchor = position();
+        String[] returnedKey = {null};
+        runOnMainSync(() -> returnedKey[0] = ArchiveMixedFixture.firstKey(returnedAnchor[0]));
+        check(readerKey[0].equals(returnedKey[0]) && Math.abs(returnedAnchor[1] - readerAnchor[1]) <= 2,
+                "Reader Back retains profile key and offset: " + readerKey[0] + "/" + readerAnchor[1]
+                        + " -> " + returnedKey[0] + "/" + returnedAnchor[1]);
         Object old = controller();
         runOnMainSync(() -> { ArchiveMixedFixture.refresh(username, comments); bump(); });
         await(() -> controller() != old && ArchiveMixedFixture.recoveredCount() > 0, 20000, "Refresh replaces archive generation");
@@ -228,6 +294,15 @@ public final class ArchiveProbe extends Instrumentation {
     }
     private void bump() { writeState(revision, ((Integer) readState(revision)) + 1); }
     private interface Condition { boolean get(); }
+    private void awaitUi(Condition condition, int timeout, String message) {
+        // Accessibility queries must run off the app's main thread, which services them.
+        long end = SystemClock.uptimeMillis() + timeout;
+        while (SystemClock.uptimeMillis() < end) {
+            if (condition.get()) { assertions++; return; }
+            SystemClock.sleep(100);
+        }
+        throw new AssertionError(message + ": " + screenText());
+    }
     private void await(Condition condition, int timeout, String message) {
         long end = SystemClock.uptimeMillis() + timeout; boolean[] value = {false};
         while (SystemClock.uptimeMillis() < end) {
@@ -337,6 +412,10 @@ public final class ArchiveProbe extends Instrumentation {
     public static final class Content implements Function2<Object, Integer, Unit> {
         public Unit invoke(Object composer, Integer flags) {
             readState(revision);
+            if (recovery) {
+                RecoveryFixture.observe(composer);
+                lazyColumn(lazyState, new Builder(RecoveryFixture.sections(), composer), composer); return unit();
+            }
             if (mixed) {
                 Object feed = ArchiveMixedFixture.decorate(username, tab.equals("VISITOR_COMMENT"), visible, composer);
                 lazyColumn(lazyState, new Builder(sections(feed), composer), composer); return unit();

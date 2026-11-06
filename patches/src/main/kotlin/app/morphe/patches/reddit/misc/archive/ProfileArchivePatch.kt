@@ -80,7 +80,7 @@ fun replaceArchiveBridge(name: String, registers: Int, code: String, type: Strin
 @Suppress("unused")
 val profileArchivePatch = bytecodePatch(
     name = "Archived public profile history",
-    description = "Merges archived public posts and comments into profiles using Arctic Shift, including hidden history and recoverable deleted content. Sends the viewed username to that service. Coverage may be incomplete or outdated.",
+    description = "Automatically restores archived deleted or removed text in feeds, profiles and discussions, and adds archived profile history. Sends viewed usernames and post/comment IDs to Arctic Shift. Coverage may be incomplete or outdated.",
     default = false
 ) {
     compatibleWith(Compatibility(

@@ -49,7 +49,8 @@ public final class ArchiveRowView extends LinearLayout {
         if (kind == ArchiveSnapshot.CARD) {
             card = new ArchiveCardView(getContext(), theme, new ArchiveCardView.Navigation() {
                 public void open(ArchiveItem item) {
-                    ArchiveReaderActivity.open(getContext(), item, section.row.details, section.row.provenance);
+                    RecoveryPatch.seed(item);
+                    ArchiveRowView.this.open(item);
                 }
                 public void original(ArchiveItem item) { ArchiveRowView.this.open(item); }
             }); addView(card, new LayoutParams(-1, -2));

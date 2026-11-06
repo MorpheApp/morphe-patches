@@ -135,20 +135,41 @@ private fun auditArchiveDex(apk: File, probe: Boolean) {
     check(observer.methods.all { signature -> controller.methods.any { it.name == signature.name && it.parameterTypes.isEmpty() } }) {
         "Native controller lifecycle is incomplete"
     }
-    fun hostCalls(name: String) = classes.values.filter { !it.type.startsWith("Lapp/morphe/") }.sumOf { owner ->
-        owner.methods.sumOf { method -> method.implementation?.instructions?.count {
+    val hookCalls = mutableMapOf<String, Int>()
+    classes.values.filter { !it.type.startsWith("Lapp/morphe/") }.forEach { owner ->
+        owner.methods.forEach { method -> method.implementation?.instructions?.forEach {
             val ref = (it as? ReferenceInstruction)?.reference as? MethodReference
-            ref?.definingClass == "${archive}ProfileArchivePatch;" && ref.name == name
-        } ?: 0 }
+            if (ref != null && ref.definingClass.startsWith(archive)) {
+                val key = ref.definingClass.substringAfterLast('/') + ref.name
+                hookCalls[key] = (hookCalls[key] ?: 0) + 1
+            }
+        } }
     }
+    fun hostCalls(name: String) = hookCalls["ProfileArchivePatch;$name"] ?: 0
     check(hostCalls("decorateHost") == 1 && hostCalls("mapVisible") == 1) { "Expected one native feed hook and one visibility hook" }
     check(hostCalls("bindHost") == 2 && hostCalls("captureRequest") == 2 && hostCalls("stableKey") == 1) {
         "Missing profile context, refresh or final-key hooks"
     }
     check(sectionInterface.type in classes.getValue("${archive}ArchiveNativeSection;").interfaces)
+    check(sectionInterface.type in classes.getValue("${archive}RecoverySection;").interfaces)
+    check(observer.type in classes.getValue("${archive}RecoveryBinding;").interfaces)
+    check(hookCalls["RecoveryPatch;recover"] == 18 && hookCalls["RecoveryPatch;recoverProfile"] == 1 &&
+        (hookCalls["RecoveryPatch;wrap"] ?: 0) >= 1) { "Missing feed, post, profile-preview or comment recovery hooks: $hookCalls" }
+    val recovery = classes.getValue("${archive}RecoveryPatch;")
+    recovery.methods.forEach { method -> method.implementation?.instructions?.forEach { ins ->
+        val ref = (ins as? ReferenceInstruction)?.reference as? MethodReference
+        if (ref != null && ref.definingClass.startsWith(archive)) check(classes.getValue(ref.definingClass).methods.any {
+            it.name == ref.name && it.parameterTypes == ref.parameterTypes && it.returnType == ref.returnType
+        }) { "Generated recovery call does not resolve: $ref in $method" }
+    } }
+    listOf("describe", "copy", "profileTarget", "convert", "render", "key", "richElements").forEach { name ->
+        check(recovery.methods.single { it.name == name }.implementation!!.instructions.none { it.opcode == Opcode.THROW }) {
+            "Unpatched recovery bridge: $name"
+        }
+    }
     check(classes.getValue("${archive}ArchiveReaderActivity;").superclass == "Landroid/app/Activity;")
     if (!probe) {
-        check(classes.keys.none { it.startsWith("Lapp/morphe/test/") || it.startsWith("${archive}ArchiveFixture") || it.startsWith("${archive}ArchiveMixedFixture") }) {
+        check(classes.keys.none { it.startsWith("Lapp/morphe/test/") || it.startsWith("${archive}ArchiveFixture") || it.startsWith("${archive}ArchiveMixedFixture") || it.startsWith("${archive}RecoveryFixture") }) {
             "Test fixture leaked into release"
         }
     }
