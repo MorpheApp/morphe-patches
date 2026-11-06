@@ -78,35 +78,32 @@ public final class PlaylistPageFilter extends Filter {
     public boolean isFiltered(ContextInterface contextInterface, String identifier, String accessibility,
                               CharSequence path, byte[] buffer, BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
-        try {
-            if (!DownloadsPatch.isFlyoutMenuOverridden()
-                    || contentIndex != 0 || Utils.indexOf(path, ".e", identifier.length()) >= 0) {
-                return false;
-            }
-
-            if (matchedGroup == pageHeader) {
-                FilterGroupResult result = downloadButton.check(buffer);
-                if (!result.isFiltered()) return false;
-
-                String playlistId = findPlaylistId(buffer,
-                        result.getMatchedIndex() + result.getMatchedLength());
-                if (!Objects.equals(playlistId, pagePlaylistId)) {
-                    Logger.printDebug(() -> "Playlist page: " + playlistId);
-                    pagePlaylistId = playlistId;
-                }
-            } else if (matchedGroup == menuHeader) {
-                // Each menu starts with its header, and the carousel with the ID is optional.
-                menuPlaylistId = null;
-            } else {
-                String playlistId = findPlaylistId(buffer, 1);
-                if (playlistId != null && !playlistId.equals(menuPlaylistId)) {
-                    Logger.printDebug(() -> "Playlist menu: " + playlistId);
-                    menuPlaylistId = playlistId;
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "isFiltered failure", ex);
+        if (!DownloadsPatch.isFlyoutMenuOverridden()
+                || contentIndex != 0 || Utils.indexOf(path, ".e", identifier.length()) >= 0) {
+            return false;
         }
+
+        if (matchedGroup == pageHeader) {
+            FilterGroupResult result = downloadButton.check(buffer);
+            if (!result.isFiltered()) return false;
+
+            String playlistId = findPlaylistId(buffer,
+                    result.getMatchedIndex() + result.getMatchedLength());
+            if (!Objects.equals(playlistId, pagePlaylistId)) {
+                Logger.printDebug(() -> "Playlist page: " + playlistId);
+                pagePlaylistId = playlistId;
+            }
+        } else if (matchedGroup == menuHeader) {
+            // Each menu starts with its header, and the carousel with the ID is optional.
+            menuPlaylistId = null;
+        } else {
+            String playlistId = findPlaylistId(buffer, 1);
+            if (playlistId != null && !playlistId.equals(menuPlaylistId)) {
+                Logger.printDebug(() -> "Playlist menu: " + playlistId);
+                menuPlaylistId = playlistId;
+            }
+        }
+        
         return false;
     }
 

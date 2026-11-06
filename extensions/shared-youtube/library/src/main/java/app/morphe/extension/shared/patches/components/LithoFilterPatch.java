@@ -151,21 +151,27 @@ public final class LithoFilterPatch {
             for (CharSequence pattern : group.filters) {
                 pathSearchTree.addPattern(pattern, (textSearched, matchedStartIndex,
                                                     matchedLength, callbackParameter) -> {
-                            if (!group.isEnabled()) return false;
+                            try {
+                                if (!group.isEnabled()) return false;
 
-                            LithoFilterParameters parameters = (LithoFilterParameters) callbackParameter;
-                            final boolean isFiltered = filter.isFiltered(parameters.contextInterface,
-                                    parameters.identifier, parameters.accessibility, parameters.path,
-                                    parameters.buffer, parameters.asciiStrings,
-                                    group, type, matchedStartIndex);
+                                LithoFilterParameters parameters = (LithoFilterParameters) callbackParameter;
+                                final boolean isFiltered = filter.isFiltered(parameters.contextInterface,
+                                        parameters.identifier, parameters.accessibility, parameters.path,
+                                        parameters.buffer, parameters.asciiStrings,
+                                        group, type, matchedStartIndex);
 
-                            if (isFiltered && BaseSettings.DEBUG.get()) {
-                                Logger.printDebug(() -> type == Filter.FilterContentType.IDENTIFIER
-                                        ? filterSimpleName + " filtered identifier: " + parameters.identifier
-                                        : filterSimpleName + " filtered path: " + parameters.path);
+                                if (isFiltered && BaseSettings.DEBUG.get()) {
+                                    Logger.printDebug(() -> type == Filter.FilterContentType.IDENTIFIER
+                                            ? filterSimpleName + " filtered identifier: " + parameters.identifier
+                                            : filterSimpleName + " filtered path: " + parameters.path);
+                                }
+
+                                return isFiltered;
+                            } catch (Exception ex) {
+                                // Returning false continues the search with the other filters.
+                                Logger.printException(() -> filterSimpleName + " isFiltered failure", ex);
+                                return false;
                             }
-
-                            return isFiltered;
                         }
                 );
             }
