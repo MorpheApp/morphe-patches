@@ -26,26 +26,31 @@ import java.util.Map;
  *                      translation. {@code null} when the source ships none.
  * @param romanization  Legacy single-language romanization, kept for backward compatibility.
  * @param romanizations Multi-language romanizations keyed by BCP-47 language tag.
- * @param songwriters   Songwriter/credits names extracted from TTML metadata.
+ * @param songwriters   Songwriter names extracted from TTML metadata or provider API.
+ * @param credits       Credit lines extracted from the lyrics body, such as the lyricist and the
+ *                      composer, and non-standard metadata fields without a TTML equivalent.
  * @param rawFormat     Decrypted raw lyrics text in the provider's original format (e.g. LRC, QRC, TTML).
  * @param formatType    File extension for the raw format (e.g. {@code "lrc"}, {@code "qrc"}, {@code "ttml"}).
  * @param sourceUrl     Optional URL to the song page on the provider's platform, opened when the
  *                      source label is clicked.
  * @param about         Song description, shown under the credits on the info line.
+ * @param agentNames    Agent ID to display name map, parsed from TTML head {@code <ttm:agent>}.
  */
 public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced,
                      @Nullable List<LyricsLine> romanization,
                      @Nullable Map<String, List<LyricsLine>> translations,
                      @Nullable Map<String, List<LyricsLine>> romanizations,
                      @Nullable List<String> songwriters,
+                     @Nullable List<String> credits,
                      @Nullable String rawFormat,
                      @Nullable String formatType,
                      @Nullable String sourceUrl,
-                     @Nullable String about) {
+                     @Nullable String about,
+                     @Nullable Map<String, String> agentNames) {
 
     /** Marker for a track that was looked up successfully but has no lyrics anywhere. */
     public static final Lyrics NOT_FOUND = new Lyrics(Collections.emptyList(), "", false,
-            null, null, null, null, null, null, null);
+            null, null, null, null, null, null, null, null, null);
     public static final String CAPTIONS_PROVIDER = "Captions";
 
     /** Every provider but Genius ships no description, so most call sites keep the shorter form. */
@@ -58,7 +63,22 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
                   @Nullable String formatType,
                   @Nullable String sourceUrl) {
         this(lines, providerName, synced, romanization, translations, romanizations,
-                songwriters, rawFormat, formatType, sourceUrl, null);
+                songwriters, null, rawFormat, formatType, sourceUrl, null, null);
+    }
+
+    /** Convenience for callers that supply about/agentNames but no credits. */
+    public Lyrics(List<LyricsLine> lines, String providerName, boolean synced,
+                  @Nullable List<LyricsLine> romanization,
+                  @Nullable Map<String, List<LyricsLine>> translations,
+                  @Nullable Map<String, List<LyricsLine>> romanizations,
+                  @Nullable List<String> songwriters,
+                  @Nullable String rawFormat,
+                  @Nullable String formatType,
+                  @Nullable String sourceUrl,
+                  @Nullable String about,
+                  @Nullable Map<String, String> agentNames) {
+        this(lines, providerName, synced, romanization, translations, romanizations,
+                songwriters, null, rawFormat, formatType, sourceUrl, about, agentNames);
     }
 
     public Lyrics {
@@ -66,12 +86,7 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
         romanization = (romanization == null) ? null : Collections.unmodifiableList(romanization);
         translations = (translations == null) ? null : unmodifiableTranslations(translations);
         romanizations = (romanizations == null) ? null : unmodifiableTranslations(romanizations);
-    }
-
-    public Lyrics withLines(List<LyricsLine> newLines) {
-        return new Lyrics(newLines, providerName(), synced(), romanization(),
-                translations(), romanizations(), songwriters(), rawFormat(), formatType(),
-                sourceUrl(), about());
+        credits = (credits == null) ? null : Collections.unmodifiableList(credits);
     }
 
     public static List<ScoredLyrics> sortScoredByScore(List<ScoredLyrics> scored) {
@@ -219,6 +234,12 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
             }
         }
         return Collections.unmodifiableList(out);
+    }
+
+    public Lyrics withLines(List<LyricsLine> newLines) {
+        return new Lyrics(newLines, providerName(), synced(), romanization(),
+                translations(), romanizations(), songwriters(), credits(), rawFormat(),
+                formatType(), sourceUrl(), about(), agentNames());
     }
 
     public boolean isEmpty() {

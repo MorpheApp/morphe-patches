@@ -27,6 +27,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.settings.Settings;
@@ -106,14 +107,7 @@ public final class MusixmatchProvider extends ScoredSongProvider {
         if (lyrics == null || copyright == null || copyright.isEmpty()) {
             return lyrics;
         }
-        final List<String> songwriters = new ArrayList<>();
-        if (lyrics.songwriters() != null) {
-            songwriters.addAll(lyrics.songwriters());
-        }
-        songwriters.add(copyright);
-        return new Lyrics(lyrics.lines(), lyrics.providerName(), lyrics.synced(), null,
-                lyrics.translations(), null, songwriters, lyrics.rawFormat(),
-                lyrics.formatType(), lyrics.sourceUrl());
+        return LyricsMerge.addCredit(lyrics, "Copyright: " + copyright);
     }
 
     private static String stripTrackingParams(String url) {

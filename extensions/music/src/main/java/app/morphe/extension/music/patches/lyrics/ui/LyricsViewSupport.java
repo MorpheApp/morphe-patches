@@ -41,6 +41,7 @@ import java.util.Collections;
 import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.settings.preference.LyricsTargetLanguagePreference;
 import app.morphe.extension.shared.ui.Dim;
@@ -185,7 +186,8 @@ final class LyricsViewSupport {
         combined.addAll(lineTimings);
         for (LyricsSpanBuilder.WordTiming span : readingSpans) {
             combined.add(new LyricsSpanBuilder.WordTiming(
-                    span.start() + shift, span.end() + shift, span.startMs(), span.endMs(), null));
+                    span.start() + shift, span.end() + shift, span.startMs(), span.endMs(),
+                    null, span.hasTrailingSpace(), null, span.averaged()));
         }
         return combined;
     }
@@ -390,7 +392,7 @@ final class LyricsViewSupport {
 
     static CharSequence sourceText(String providerName, boolean translated,
                                    boolean translatedFromGoogle, boolean translatedFromAI, @Nullable String translatedAiModel,
-                                   boolean romanized, boolean romanizedFromGoogle, boolean romanizedFromAI,
+                                   boolean romanized, boolean romanizedFromGoogle, boolean romanizedFromAI, boolean romanizedFromEmbedded,
                                    @Nullable String romanizedAiModel, LyricsPanelView.OnlyMode onlyMode,
                                    @Nullable String romanizedLocalDictionary,
                                    @Nullable Runnable onTranslationLanguage,
@@ -408,17 +410,32 @@ final class LyricsViewSupport {
                         translatedAiModel), true, onTranslationLanguage);
             }
         }
-        if (onlyMode != LyricsPanelView.OnlyMode.TRANS && romanized) {
-            if (romanizedFromGoogle) {
-                appendLink(text, str("morphe_music_lyrics_romanized_by_google"),
-                        false, onRomanizationLanguage);
-            } else if (romanizedFromAI && romanizedAiModel != null) {
-                appendLink(text, String.format(str("morphe_music_lyrics_romanized_by_ai"),
-                        romanizedAiModel), false, onRomanizationLanguage);
-            } else if (romanizedLocalDictionary != null) {
-                // Named and nothing more: the licences are in the About row.
-                appendLink(text, String.format(str("morphe_music_lyrics_romanized_by_local"),
-                        romanizedLocalDictionary), false, onRomanizationLanguage);
+        if (onlyMode != LyricsPanelView.OnlyMode.TRANS) {
+            final String rubyProvider = LyricsTargetLanguagePreference.rubyProviderLabel();
+            String source = null;
+            if (LyricsRequests.isRomanizationOff()) {
+                // No romanization, so the ruby takes its place.
+                if (rubyProvider != null) {
+                    source = String.format(str("morphe_music_lyrics_romanized_by_local"), rubyProvider);
+                }
+            } else if (romanized) {
+                if (romanizedFromGoogle) {
+                    source = str("morphe_music_lyrics_romanized_by_google");
+                } else if (romanizedFromAI && romanizedAiModel != null) {
+                    source = String.format(str("morphe_music_lyrics_romanized_by_ai"), romanizedAiModel);
+                } else if (romanizedLocalDictionary != null) {
+                    // Named and nothing more: the licences are in the licenses dialog.
+                    source = String.format(str("morphe_music_lyrics_romanized_by_local"),
+                            romanizedLocalDictionary);
+                } else if (romanizedFromEmbedded && rubyProvider != null) {
+                    source = String.format(str("morphe_music_lyrics_romanized_by_local"), rubyProvider);
+                }
+                if (source != null && rubyProvider != null && !source.contains(rubyProvider)) {
+                    source = str("morphe_music_lyrics_with_ruby_provider", source, rubyProvider);
+                }
+            }
+            if (source != null) {
+                appendLink(text, source, false, onRomanizationLanguage);
             }
         }
         return text;

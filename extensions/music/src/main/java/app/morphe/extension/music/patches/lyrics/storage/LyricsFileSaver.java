@@ -24,11 +24,13 @@ import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import app.morphe.extension.music.patches.lyrics.model.CreditInfo;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
+import app.morphe.extension.music.patches.lyrics.parsers.TTMLGenerator;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 
@@ -42,9 +44,15 @@ public final class LyricsFileSaver {
     }
 
     @Nullable
-    public static String save(Context context, TrackInfo track, Lyrics lyrics) {
+    public static String save(Context context, TrackInfo track, Lyrics lyrics,
+                              @Nullable CreditInfo creditInfo,
+                              @Nullable List<String> translatedLines,
+                              @Nullable List<LyricsLine> romanizedLines,
+                              @Nullable String translatedLang,
+                              @Nullable String romanizedLang) {
         try {
-            return saveUnchecked(context, track, lyrics);
+            return saveUnchecked(context, track, lyrics, creditInfo,
+                    translatedLines, romanizedLines, translatedLang, romanizedLang);
         } catch (Exception ex) {
             Logger.printException(() -> "save failure", ex);
             return null;
@@ -52,7 +60,27 @@ public final class LyricsFileSaver {
     }
 
     @Nullable
-    private static String saveUnchecked(Context context, TrackInfo track, Lyrics lyrics) {
+    private static String saveUnchecked(Context context, TrackInfo track, Lyrics lyrics,
+                                        @Nullable CreditInfo creditInfo,
+                                        @Nullable List<String> translatedLines,
+                                        @Nullable List<LyricsLine> romanizedLines,
+                                        @Nullable String translatedLang,
+                                        @Nullable String romanizedLang) {
+        String primaryPath = saveSource(context, track, lyrics);
+        if (primaryPath == null) {
+            return null;
+        }
+
+        String ttmlContent = TTMLGenerator.generate(lyrics, track, creditInfo,
+                translatedLines, romanizedLines, translatedLang, romanizedLang);
+        if (ttmlContent != null && !ttmlContent.isEmpty()) {
+            writeFile(context, track, lyrics, ttmlContent, "ttml", true);
+        }
+
+        return primaryPath;
+    }
+
+    private static String saveSource(Context context, TrackInfo track, Lyrics lyrics) {
         String content = lyrics.rawFormat();
         String formatType = lyrics.formatType();
 
@@ -81,7 +109,17 @@ public final class LyricsFileSaver {
             formatType = "txt";
         }
 
-        String fileName = fileName(track, lyrics, formatType);
+        return writeFile(context, track, lyrics, content, formatType, false);
+    }
+
+    @Nullable
+    private static String writeFile(Context context, TrackInfo track, Lyrics lyrics,
+                                    String content, String formatType, boolean isGenerated) {
+        if (content == null || content.isEmpty()) {
+            return null;
+        }
+
+        String fileName = fileName(track, lyrics, formatType, isGenerated);
 
         ContentResolver resolver = context.getContentResolver();
         ContentValues values = new ContentValues();
@@ -231,9 +269,14 @@ public final class LyricsFileSaver {
         return name.replaceAll("[\\\\/:*?\"<>|]", "_").replaceAll("\\s+", " ").trim();
     }
 
-    private static String fileName(TrackInfo track, Lyrics lyrics, String formatType) {
+    private static String fileName(TrackInfo track, Lyrics lyrics, String formatType, boolean isGenerated) {
         String name = sanitizeFileName(track.artist() + " - " + track.title());
-        String provider = sanitizeFileName(lyrics.providerName());
+        String provider;
+        if (isGenerated && "ttml".equals(formatType)) {
+            provider = "Morphe";
+        } else {
+            provider = sanitizeFileName(lyrics.providerName());
+        }
         if (!provider.isEmpty()) {
             name += " [" + provider + "]";
         }

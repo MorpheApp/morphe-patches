@@ -37,7 +37,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
-import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
+import app.morphe.extension.music.patches.lyrics.utils.CharactersConverter;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -102,6 +102,19 @@ public final class LyricsRequests {
         return "DEFAULT".equalsIgnoreCase(language)
                 ? deviceLanguage()
                 : language.toLowerCase(Locale.ROOT);
+    }
+
+    /** The resolved ruby language for reading/ruby prompts. */
+    public static String rubyLanguage() {
+        String language = Settings.LYRICS_RUBY_LANGUAGE.get();
+        return "DEFAULT".equalsIgnoreCase(language)
+                ? deviceLanguage()
+                : language.toLowerCase(Locale.ROOT);
+    }
+
+    /** Whether the user turned the romanization off, which leaves only the ruby. */
+    public static boolean isRomanizationOff() {
+        return "NONE".equalsIgnoreCase(Settings.LYRICS_ROMANIZE_LANGUAGE.get());
     }
 
     /** Whether romanization is left on "Automatic", which reads the lyrics instead. */

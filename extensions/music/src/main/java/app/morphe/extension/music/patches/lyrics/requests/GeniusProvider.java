@@ -753,7 +753,7 @@ public final class GeniusProvider implements LyricsProvider {
 
         return FetchResult.of(
                 new Lyrics(lines, "Genius", false, null, translations, null,
-                        credits, text, "txt", url, null),
+                        null, credits, text, "txt", url, null, null),
                 title, artist, 0L, track);
     }
 

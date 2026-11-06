@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics.romanizers;
+package app.morphe.extension.music.patches.lyrics.derive;
 
 import androidx.annotation.Nullable;
 
@@ -14,6 +14,7 @@ import java.util.Map;
 
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
+import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 
 /**
  * Skips the translation and romanization requests when the lyrics are already written in the

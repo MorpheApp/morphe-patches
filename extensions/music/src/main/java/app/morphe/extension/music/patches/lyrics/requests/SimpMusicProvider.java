@@ -113,7 +113,7 @@ public final class SimpMusicProvider implements LyricsProvider {
     }
 
     private static Lyrics withContributor(@Nullable Lyrics lyrics, @Nullable String contributor) {
-        return LyricsMerge.addSongwriter(lyrics,
+        return LyricsMerge.addCredit(lyrics,
                 contributor == null ? null : "Submitted by " + contributor);
     }
 
@@ -227,7 +227,7 @@ public final class SimpMusicProvider implements LyricsProvider {
         }
         return new Lyrics(lines, name(), true,
                 null, null, null,
-                result.creditLines.isEmpty() ? null : result.creditLines,
-                sanitized, "lrc", sourceUrl(videoId));
+                null, result.creditLines.isEmpty() ? null : result.creditLines,
+                sanitized, "lrc", sourceUrl(videoId), null, null);
     }
 }

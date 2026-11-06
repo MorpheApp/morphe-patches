@@ -1159,9 +1159,9 @@ public final class CaptionsFetcher {
                         outcome.translationLyrics.lines());
                 result = new Lyrics(result.lines(), result.providerName(), result.synced(),
                         result.romanization(), translations,
-                        result.romanizations(), result.songwriters(),
+                        result.romanizations(), result.songwriters(), result.credits(),
                         result.rawFormat(), result.formatType(),
-                        result.sourceUrl());
+                        result.sourceUrl(), result.about(), result.agentNames());
             }
 
             return FetchResult.of(result);

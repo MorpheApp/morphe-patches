@@ -69,7 +69,10 @@ public final class MiniLyricsTimeline {
 
             long end = i + 1 < lines.size() ? lines.get(i + 1).startTimeMs() : durationMs;
             if (end <= line.startTimeMs()) end = line.endTimeMs();
-            if (end > line.startTimeMs()) {
+            // Only a silence long enough to read as a break shows the note, the same floor the
+            // panel's breathing light uses.
+            if (end > line.startTimeMs()
+                    && end - line.startTimeMs() >= SectionDotsMotion.MIN_GAP_MS) {
                 classified.add(new SectionDotsMotion.Gap(i, line.startTimeMs(), end));
             }
         }
@@ -130,7 +133,11 @@ public final class MiniLyricsTimeline {
         for (SectionDotsMotion.Gap gap : classified) {
             long from = Math.max(start, gap.gapStartMs());
             long to = Math.min(end, gap.gapEndMs());
-            if (from < to) gaps.add(new Gap(from, to, previous));
+            // A gap narrower than the breathing light's floor is just a pause between lines, not an
+            // instrumental break: the previous line stays up instead of the note appearing.
+            if (from < to && to - from >= SectionDotsMotion.MIN_GAP_MS) {
+                gaps.add(new Gap(from, to, previous));
+            }
         }
     }
 

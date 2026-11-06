@@ -14,22 +14,27 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Lists the software bundled with the patches. Picking one opens its notices in
+ * Lists the software bundled with the patches or downloaded by them. Picking one opens its notices in
  * {@link LicenseTextDialog}, which is full screen because the texts run to hundreds of lines.
  */
 class LicensesDialog extends AboutWebViewDialog {
 
-    // Licenses for all software bundled with Morphe MPP Patches.
+    // Licenses for all software bundled with Morphe MPP Patches, or downloaded by a patch.
     private static final List<License> dependencies = List.of(
             new License("Android Hidden API Bypass", LicenseContent.APACHE_2),
             new License("AndroidX Annotation", LicenseContent.APACHE_2),
             new License("AndroidX Core", LicenseContent.APACHE_2),
             new License("AndroidX JavaScriptEngine", LicenseContent.APACHE_2),
+            new License("CLDR", List.of(LicenseContent.CLDR_NOTICE, LicenseContent.UNICODE_3)),
             new License("Google Material Design icons", LicenseContent.APACHE_2),
             new License("Gson", LicenseContent.APACHE_2),
             new License("Guava", LicenseContent.APACHE_2),
             new License("Morphe", List.of(LicenseContent.MORPHE_NOTICE, LicenseContent.MORPHE_LICENSE)),
-            new License("Protocol Buffers", LicenseContent.PROTOCOL_BUFFERS)
+            new License("pinyin-pro-data", LicenseContent.PINYIN_PRO_DATA),
+            new License("Protocol Buffers", LicenseContent.PROTOCOL_BUFFERS),
+            new License("rime-cantonese", LicenseContent.RIME_CANTONESE),
+            new License("SudachiDict", List.of(LicenseContent.SUDACHI_NOTICE, LicenseContent.APACHE_2)),
+            new License("Unicode Han Database", List.of(LicenseContent.UNIHAN_NOTICE, LicenseContent.UNICODE_3))
     );
 
     record License(String name, List<LicenseContent> staticContent) {
@@ -948,6 +953,124 @@ record LicenseContent(String title, String content) {
                of Your accepting any such warranty or additional liability.
             
             END OF TERMS AND CONDITIONS
+            """);
+
+    static final LicenseContent CLDR_NOTICE = new LicenseContent("NOTICE", """
+            CLDR transliteration rules
+            https://www.unicode.org/cldr/
+            
+            The rules stored by the lyrics patch are the literal letter-to-letter rules of
+            CLDR transform files, with the combining marks of the standard dropped and a few
+            readings a lyric wants replacing the standard's where they differ.
+            """);
+
+    static final LicenseContent PINYIN_PRO_DATA = new LicenseContent("MIT License", """
+            pinyin-pro word readings
+            https://github.com/chinese-data/pinyin-pro-data
+            
+            MIT License
+            
+            Copyright (c) 2024 Chinese-Data
+            
+            Permission is hereby granted, free of charge, to any person obtaining a copy
+            of this software and associated documentation files (the "Software"), to deal
+            in the Software without restriction, including without limitation the rights
+            to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+            copies of the Software, and to permit persons to whom the Software is
+            furnished to do so, subject to the following conditions:
+            
+            The above copyright notice and this permission notice shall be included in all
+            copies or substantial portions of the Software.
+            
+            THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+            IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+            FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+            AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+            LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+            OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+            SOFTWARE.
+            
+            What the lyrics patch stores is the reading of each word, taken from
+            data/complete.json, with the erhua suffix folded into the syllable before it.
+            """);
+
+    static final LicenseContent RIME_CANTONESE = new LicenseContent("Creative Commons Attribution 4.0", """
+            Rime Cantonese word readings
+            https://github.com/rime/rime-cantonese
+            
+            Licence: Creative Commons Attribution 4.0 International (CC BY 4.0)
+            https://creativecommons.org/licenses/by/4.0/legalcode
+            
+            Creator: CanCLID, the Cantonese Linguistics Infrastructure Development Group
+            https://github.com/CanCLID/rime-cantonese-upstream
+            
+            The work is provided as-is and the contributors make no warranties of any kind
+            concerning it.
+            
+            What the lyrics patch stores is the Jyutping reading of each word, taken from
+            jyut6ping3.words.dict.yaml.
+            """);
+
+    static final LicenseContent SUDACHI_NOTICE = new LicenseContent("NOTICE", """
+            SudachiDict reading data
+            https://github.com/WorksApplications/SudachiDict
+            
+            As its authors state, this project includes UniDic and a part of Neologd, and is
+            distributed under the Apache License, Version 2.0. UniDic is additionally
+            available under the BSD 3-Clause licence.
+            
+            What the lyrics patch stores is a table of surface forms and their katakana
+            readings, derived from these files.
+            """);
+
+    static final LicenseContent UNIHAN_NOTICE = new LicenseContent("NOTICE", """
+            Unicode Han Database readings
+            https://www.unicode.org/charts/unihan.html
+            
+            What the lyrics patch stores is the kMandarin and kCantonese reading of
+            each character, taken from Unihan_Readings.txt.
+            """);
+
+    static final LicenseContent UNICODE_3 = new LicenseContent("Unicode License V3", """
+            UNICODE LICENSE V3
+            
+            COPYRIGHT AND PERMISSION NOTICE
+            
+            Copyright © 1991-2026 Unicode, Inc.
+            
+            NOTICE TO USER: Carefully read the following legal agreement. BY
+            DOWNLOADING, INSTALLING, COPYING OR OTHERWISE USING DATA FILES, AND/OR
+            SOFTWARE, YOU UNEQUIVOCALLY ACCEPT, AND AGREE TO BE BOUND BY, ALL OF THE
+            TERMS AND CONDITIONS OF THIS AGREEMENT. IF YOU DO NOT AGREE, DO NOT
+            DOWNLOAD, INSTALL, COPY, DISTRIBUTE OR USE THE DATA FILES OR SOFTWARE.
+            
+            Permission is hereby granted, free of charge, to any person obtaining a
+            copy of data files and any associated documentation (the "Data Files") or
+            software and any associated documentation (the "Software") to deal in the
+            Data Files or Software without restriction, including without limitation
+            the rights to use, copy, modify, merge, publish, distribute, and/or sell
+            copies of the Data Files or Software, and to permit persons to whom the
+            Data Files or Software are furnished to do so, provided that either (a)
+            this copyright and permission notice appear with all copies of the Data
+            Files or Software, or (b) this copyright and permission notice appear in
+            associated Documentation.
+            
+            THE DATA FILES AND SOFTWARE ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+            KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+            MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF
+            THIRD PARTY RIGHTS.
+            
+            IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS INCLUDED IN THIS NOTICE
+            BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT OR CONSEQUENTIAL DAMAGES,
+            OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+            WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
+            ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THE DATA
+            FILES OR SOFTWARE.
+            
+            Except as contained in this notice, the name of a copyright holder shall
+            not be used in advertising or otherwise to promote the sale, use or other
+            dealings in these Data Files or Software without prior written
+            authorization of the copyright holder.
             """);
 
     static final LicenseContent PROTOCOL_BUFFERS = new LicenseContent("LICENSE", """

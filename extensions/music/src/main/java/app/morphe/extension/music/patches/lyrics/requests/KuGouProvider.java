@@ -441,8 +441,8 @@ public final class KuGouProvider implements LyricsProvider {
         }
 
         return new Lyrics(decoded.lines(), name(), true, decoded.attachedRomanization(),
-                decoded.translations(), null, decoded.creditLines(), decoded.rawFormat(),
-                decoded.formatType(), sourceUrl);
+                decoded.translations(), null, null, decoded.creditLines(), decoded.rawFormat(),
+                decoded.formatType(), sourceUrl, null, null);
     }
 
     @Nullable
