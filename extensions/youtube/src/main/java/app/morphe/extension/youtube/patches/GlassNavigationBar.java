@@ -973,8 +973,21 @@ public final class GlassNavigationBar {
                 // buttons or gesture handle. The capsule holds the whole height of the buttons
                 // and reaches only slightly into that room, so it floats above the gesture handle.
                 final int bottomRoom = host.getPaddingBottom();
-                final float bottom = bounds.bottom - bottomRoom
+                float bottom = bounds.bottom - bottomRoom
                         + Math.max(0, Math.min(bottomRoom - FLOATING_ROOM, MAX_MARGIN_BOTTOM));
+                // Some accounts lay the slim status bar ("No connection", "You're incognito") out over the room
+                // below the buttons, and it is drawn over the bar. The capsule then does not reach into the room
+                // the slim status bar covers, or its edge is cut. The bar's own translation is left out,
+                // so the capsule keeps its size while the bar is moved behind the slim status bar to hide it.
+                View slimStatusBar = host.getParent() instanceof ViewGroup container
+                        ? container.findViewById(NavigationBarPatch.SLIM_STATUS_BAR)
+                        : null;
+                if (slimStatusBar != null && slimStatusBar.getParent() == host.getParent()
+                        && slimStatusBar.getVisibility() == View.VISIBLE) {
+                    final float slimStatusBarTop = bounds.top + slimStatusBar.getTop()
+                            + slimStatusBar.getTranslationY() - host.getTop();
+                    bottom = Math.min(bottom, Math.max(bounds.bottom - bottomRoom, slimStatusBarTop));
+                }
                 // The capsule ends at the edges of the buttons. The narrow buttons don't fill the bar,
                 // and are in the middle of it.
                 float left = bounds.left + host.getPaddingLeft();
