@@ -6,6 +6,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
@@ -65,5 +66,40 @@ internal object TabLayoutTextFingerprint : Fingerprint(
         methodCall(
             name = "getVisibility"
         )
+    )
+)
+
+/**
+ * Matches the onMeasure method of the watch-while layout, which gives the view the pages are in
+ * its height, the height of the layout without the height of the navigation bar.
+ * The height is the third argument of the first static call that takes a view and two sizes
+ * after the log of a navigation bar without height.
+ */
+internal object WatchWhileLayoutOnMeasureFingerprint : Fingerprint(
+    definingClass = "WatchWhileLayout;",
+    name = "onMeasure",
+    returnType = "V",
+    parameters = listOf("I", "I"),
+    filters = listOf(
+        string("visiblePivotBarHeight is 0"),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            returnType = "V",
+            parameters = listOf("Landroid/view/View;", "I", "I")
+        )
+    )
+)
+
+/**
+ * The feature flag of the floating miniplayer, a rounded card with room on its sides and below it.
+ */
+internal const val FLOATING_MINIPLAYER_FEATURE_FLAG = 45823962L
+
+/**
+ * Matches every method that reads the feature flag of the floating miniplayer.
+ */
+internal object FloatingMiniplayerFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(FLOATING_MINIPLAYER_FEATURE_FLAG)
     )
 )

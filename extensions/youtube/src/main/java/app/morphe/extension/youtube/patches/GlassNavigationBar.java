@@ -7,35 +7,18 @@
 
 package app.morphe.extension.youtube.patches;
 
-import android.animation.ValueAnimator;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.LinearGradient;
 import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.Shader;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.TextView;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
@@ -46,8 +29,9 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
-import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.shared.ui.glass.GlassCapsuleDrawable;
+import app.morphe.extension.shared.ui.glass.GlassNavigationBarLayout;
 import app.morphe.extension.youtube.patches.NavigationBarPatch.NavigationBarStyle;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -89,7 +73,7 @@ public final class GlassNavigationBar {
     /**
      * The drawable of the navigation bar currently on screen.
      */
-    private static WeakReference<GlassDrawable> currentDrawable = new WeakReference<>(null);
+    private static WeakReference<GlassCapsuleDrawable> currentDrawable = new WeakReference<>(null);
 
     /**
      * The navigation bar the glass was last applied to.
@@ -102,7 +86,7 @@ public final class GlassNavigationBar {
                 selectedButton = button;
                 Logger.printDebug(() -> "Glass selected tab: " + button);
                 Utils.runOnMainThread(() -> {
-                    GlassDrawable drawable = currentDrawable.get();
+                    GlassCapsuleDrawable drawable = currentDrawable.get();
                     if (drawable != null) {
                         drawable.onSelectedTabChanged();
                     }
@@ -150,22 +134,6 @@ public final class GlassNavigationBar {
     private static final int BUTTON_SPACING = Dim.dp(SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_BUTTON_SPACING));
 
     /**
-     * The least width of a button, the size of a touch target.
-     */
-    private static final int MIN_BUTTON_WIDTH = Dim.dp48;
-
-    /**
-     * The least room between the content of two buttons. With less room, the buttons that do not fit
-     * in the width of the bar are hidden.
-     */
-    private static final int MIN_BUTTON_SPACING = Dim.dp8;
-
-    /**
-     * The least room above and below the content of the buttons in the capsule.
-     */
-    private static final int MIN_VERTICAL_PADDING = Dim.dp4;
-
-    /**
      * Views of a button that hold its content, the icon and the label. Other views of the button,
      * such as the badge of the new content count, are left out. Also used by the preview in the settings.
      */
@@ -183,32 +151,6 @@ public final class GlassNavigationBar {
      * Less than zero if the capsule is lower.
      */
     private static volatile int heightDelta;
-
-    /**
-     * The usual content width (the median) and the content height of the buttons of the last bar, and the height
-     * the app gives the bar, so the preview in the settings shows the buttons as they are.
-     */
-    public static volatile int lastContentWidth;
-    public static volatile int lastContentHeight;
-    public static volatile int lastBaseHeight;
-    /**
-     * The width the app gives each button at least, such as on tablets, where the app gives the buttons
-     * a minimum width and centers them, instead of sharing the width of the bar between them.
-     */
-    public static volatile int lastMinButtonWidth;
-
-    /**
-     * The buttons of the last bar, also the buttons hidden because they do not fit, so the preview in the settings
-     * shows their icons and labels.
-     */
-    public static volatile List<WeakReference<View>> lastButtons = Collections.emptyList();
-
-    /**
-     * @return The alpha scaled by the opacity slider, at most fully opaque.
-     */
-    private static float scaledAlpha(float alpha) {
-        return Math.max(0, Math.min(1, alpha * OPACITY_SCALE));
-    }
 
     private static boolean floatingRoomLogged;
 
@@ -381,7 +323,7 @@ public final class GlassNavigationBar {
 
         try {
             final int width = navigationBar.getWidth();
-            if (width > 0 && !isHorizontalBottomBar(navigationBar)) return room;
+            if (width > 0 && !GlassNavigationBarLayout.isHorizontalBottomBar(navigationBar)) return room;
 
             if (!floatingRoomLogged) {
                 floatingRoomLogged = true;
@@ -407,8 +349,8 @@ public final class GlassNavigationBar {
         // Only the translucent tint, not a solid bar color.
         if (alpha <= 0 || alpha >= 255) return;
 
-        final int newAlpha = Math.round(255 * scaledAlpha(
-                Utils.isDarkModeEnabled() ? DARK_BLUR_TINT_ALPHA : LIGHT_BLUR_TINT_ALPHA));
+        final int newAlpha = Math.round(255 * GlassCapsuleDrawable.scaledAlpha(
+                Utils.isDarkModeEnabled() ? DARK_BLUR_TINT_ALPHA : LIGHT_BLUR_TINT_ALPHA, OPACITY_SCALE));
         if (alpha != newAlpha) {
             Logger.printDebug(() -> "Glass navigation bar blur tint alpha: " + alpha + " -> " + newAlpha);
             tint.setAlpha(newAlpha);
@@ -447,7 +389,8 @@ public final class GlassNavigationBar {
         if (pivotBar == null || pivotBar == currentPivotBar.get()) return;
         currentPivotBar = new WeakReference<>(pivotBar);
 
-        GlassDrawable glass = new GlassDrawable(pivotBar);
+        CapsuleHost capsuleHost = new CapsuleHost(pivotBar);
+        GlassCapsuleDrawable glass = new GlassCapsuleDrawable(pivotBar, capsuleHost, OPACITY_SCALE);
         currentDrawable = new WeakReference<>(glass);
 
         // The height the app gives the bar, without the room below the buttons.
@@ -474,7 +417,7 @@ public final class GlassNavigationBar {
             boolean layoutChanged = false;
             try {
                 Drawable background = pivotBar.getBackground();
-                if (isHorizontalBottomBar(pivotBar)) {
+                if (GlassNavigationBarLayout.isHorizontalBottomBar(pivotBar)) {
                     if (background != glass) {
                         appBackground[0] = background;
                         pivotBar.setBackground(glass);
@@ -518,92 +461,43 @@ public final class GlassNavigationBar {
                     // of the bar are hidden.
                     if (pivotBar instanceof ViewGroup bar && bar.getChildCount() > 0
                             && bar.getChildAt(0) instanceof ViewGroup tabs) {
-                        // The content of every button, also of the buttons hidden because they do not fit,
-                        // so hiding them does not change how many buttons fit.
-                        List<View> buttons = new ArrayList<>(tabs.getChildCount());
-                        int[] contentWidths = new int[tabs.getChildCount()];
-                        int contentTop = Integer.MAX_VALUE;
-                        int contentBottom = 0;
-                        for (int i = 0, count = tabs.getChildCount(); i < count; i++) {
-                            View button = tabs.getChildAt(i);
-                            if (button.getVisibility() == View.GONE && !hiddenButtons.contains(button)) continue;
-                            if (!(button instanceof ViewGroup content)) continue;
+                        GlassNavigationBarLayout.Buttons buttons = GlassNavigationBarLayout.measureButtons(
+                                tabs, BUTTON_ICON, BUTTON_LABEL, hiddenButtons);
+                        final int contentWidth = buttons.contentWidth;
+                        final int contentTop = buttons.contentTop;
 
-                            final boolean laidOut = button.getVisibility() == View.VISIBLE;
-                            int buttonContentWidth = 0;
-                            for (int j = 0, contentCount = content.getChildCount(); j < contentCount; j++) {
-                                View child = content.getChildAt(j);
-                                final int id = child.getId();
-                                if (child.getVisibility() != View.VISIBLE
-                                        || (BUTTON_ICON != 0 && BUTTON_LABEL != 0 && id != BUTTON_ICON && id != BUTTON_LABEL)) {
-                                    continue;
-                                }
-                                // The whole label, also if the button is narrower and the label is cut.
-                                buttonContentWidth = Math.max(buttonContentWidth, child instanceof TextView label
-                                        ? (int) Math.ceil(label.getPaint().measureText(label.getText().toString()))
-                                                + label.getPaddingLeft() + label.getPaddingRight()
-                                        : child.getWidth());
-                                if (laidOut && child.getHeight() > 0) {
-                                    contentTop = Math.min(contentTop, child.getTop());
-                                    contentBottom = Math.max(contentBottom, child.getBottom());
-                                }
-                            }
-                            contentWidths[buttons.size()] = buttonContentWidth;
-                            buttons.add(button);
-                        }
-
-                        // A long label, which the app cuts, does not make every button wider.
-                        Arrays.sort(contentWidths, 0, buttons.size());
-                        final int contentWidth = buttons.isEmpty() ? 0 : contentWidths[buttons.size() / 2];
-
-                        if (contentWidth > 0 && contentBottom > contentTop) {
-                            // The buttons are never narrower than the app allows, or they are wider than
-                            // the capsule, which then cuts the first and the last button.
-                            int minButtonWidth = 0;
-                            for (View button : buttons) {
-                                minButtonWidth = Math.max(minButtonWidth, button.getMinimumWidth());
-                            }
-                            final int[] layout = getButtonsLayout(pivotBar.getWidth(), buttons.size(),
-                                    contentWidth, minButtonWidth, WIDTH_PERCENT, BUTTON_SPACING);
+                        if (buttons.isValid()) {
+                            final int[] layout = GlassNavigationBarLayout.getButtonsLayout(pivotBar.getWidth(),
+                                    buttons.views.size(), contentWidth, buttons.minWidth, WIDTH_PERCENT, BUTTON_SPACING);
                             final int shown = layout[0];
 
                             // The buttons that do not fit are hidden from the end, but never the selected one.
-                            View selected = getSelectedTabView();
-                            final int selectedIndex = buttons.indexOf(selected);
-                            final int lastShown = selectedIndex >= shown ? shown - 2 : shown - 1;
-                            for (int i = 0, count = buttons.size(); i < count; i++) {
-                                View button = buttons.get(i);
-                                if (i <= lastShown || i == selectedIndex) {
-                                    if (hiddenButtons.remove(button)) {
-                                        button.setVisibility(View.VISIBLE);
-                                        layoutChanged = true;
-                                    }
-                                } else if (hiddenButtons.add(button)) {
-                                    button.setVisibility(View.GONE);
-                                    layoutChanged = true;
-                                }
+                            if (GlassNavigationBarLayout.fitButtons(buttons.views, shown,
+                                    getSelectedTabView(), hiddenButtons)) {
+                                layoutChanged = true;
                             }
-                            if (buttons.size() > shown && !logged[1]) {
+                            if (buttons.views.size() > shown && !logged[1]) {
                                 logged[1] = true;
                                 Logger.printDebug(() -> "Glass navigation bar buttons shown: " + shown
-                                        + " of " + buttons.size());
+                                        + " of " + buttons.views.size());
                             }
 
                             // The content is in the middle of the capsule. The bar is laid out taller or lower,
                             // so the pages laid out behind it follow the height of the capsule.
-                            final int contentHeight = contentBottom - contentTop;
-                            final int capsuleHeight = getCapsuleHeight(baseHeight, contentHeight, HEIGHT_PERCENT);
+                            final int contentHeight = buttons.contentHeight();
+                            final int capsuleHeight = GlassNavigationBarLayout.getCapsuleHeight(
+                                    baseHeight, contentHeight, HEIGHT_PERCENT);
                             final int shift = (capsuleHeight - contentHeight) / 2 - contentTop;
                             final int paddingTop = Math.max(0, shift);
-                            glass.capsuleTop = Math.max(0, -shift);
-                            final int delta = baseHeight > 0 ? capsuleHeight + glass.capsuleTop - baseHeight : 0;
+                            capsuleHost.capsuleTop = Math.max(0, -shift);
+                            final int delta = baseHeight > 0 ? capsuleHeight + capsuleHost.capsuleTop - baseHeight : 0;
                             if (delta != heightDelta) {
                                 heightDelta = delta;
                                 pivotBar.requestLayout();
                                 layoutChanged = true;
                             }
 
-                            final int horizontalPadding = Math.max(GlassDrawable.MARGIN_HORIZONTAL,
+                            final int horizontalPadding = Math.max(GlassNavigationBarLayout.MARGIN_HORIZONTAL,
                                     (pivotBar.getWidth() - shown * layout[1]) / 2);
                             if (pivotBar.getPaddingLeft() != horizontalPadding || pivotBar.getPaddingRight() != horizontalPadding
                                     || pivotBar.getPaddingTop() != paddingTop) {
@@ -615,22 +509,11 @@ public final class GlassNavigationBar {
                                 layoutChanged = true;
                             }
 
-                            lastContentWidth = contentWidth;
-                            lastMinButtonWidth = minButtonWidth;
-                            lastContentHeight = contentHeight;
-                            lastBaseHeight = baseHeight;
-                            List<WeakReference<View>> seenButtons = lastButtons;
-                            boolean buttonsChanged = seenButtons.size() != buttons.size();
-                            for (int i = 0, count = buttons.size(); i < count && !buttonsChanged; i++) {
-                                buttonsChanged = seenButtons.get(i).get() != buttons.get(i);
-                            }
-                            if (buttonsChanged) {
-                                List<WeakReference<View>> references = new ArrayList<>(buttons.size());
-                                for (View button : buttons) {
-                                    references.add(new WeakReference<>(button));
-                                }
-                                lastButtons = references;
-                            }
+                            GlassNavigationBarLayout.lastContentWidth = contentWidth;
+                            GlassNavigationBarLayout.lastMinButtonWidth = buttons.minWidth;
+                            GlassNavigationBarLayout.lastContentHeight = contentHeight;
+                            GlassNavigationBarLayout.lastBaseHeight = baseHeight;
+                            GlassNavigationBarLayout.setLastButtons(buttons.views);
                         }
                     }
                 } else if (background == glass) {
@@ -638,12 +521,9 @@ public final class GlassNavigationBar {
                     pivotBar.setBackground(appBackground[0]);
                     pivotBar.setPadding(appPadding[0], appPadding[1],
                             appPadding[2], pivotBar.getPaddingBottom());
-                    for (View button : hiddenButtons) {
-                        button.setVisibility(View.VISIBLE);
-                    }
-                    hiddenButtons.clear();
+                    GlassNavigationBarLayout.showHiddenButtons(hiddenButtons);
                     heightDelta = 0;
-                    glass.capsuleTop = 0;
+                    capsuleHost.capsuleTop = 0;
                 }
             } catch (Exception ex) {
                 Logger.printException(() -> "Glass navigation bar pre draw failure", ex);
@@ -661,75 +541,13 @@ public final class GlassNavigationBar {
     }
 
     /**
-     * The buttons that fit in the capsule and their width. Also used by the preview in the settings.
-     *
-     * @param barWidth     The width of the navigation bar.
-     * @param buttons      The number of buttons.
-     * @param contentWidth The usual width of the content of the buttons (the icon or the label), the median,
-     *                     so a long label that the app cuts does not make every button wider.
-     * @param appMinWidth  The width the app gives each button at least, see {@link #lastMinButtonWidth}.
-     * @param widthPercent The most width of the capsule, in percent of the width of the bar.
-     * @param spacing      The room between the content of two buttons.
-     * @return The number of buttons shown, and the width of each button.
+     * Where the capsule is drawn in the navigation bar.
      */
-    public static int[] getButtonsLayout(int barWidth, int buttons, int contentWidth, int appMinWidth,
-                                         int widthPercent, int spacing) {
-        final int maxWidth = Math.max(0, (barWidth - 2 * GlassDrawable.MARGIN_HORIZONTAL) * widthPercent / 100);
-        final int minWidth = Math.max(MIN_BUTTON_WIDTH, appMinWidth);
-        final int minButtonWidth = Math.max(minWidth, contentWidth + MIN_BUTTON_SPACING);
-        final int shown = Math.max(1, Math.min(buttons, maxWidth / minButtonWidth));
-        // With less room, the buttons share the most width of the capsule, but never less than the app allows.
-        final int buttonWidth = Math.min(Math.max(minWidth, contentWidth + spacing), maxWidth / shown);
-        return new int[]{shown, buttonWidth};
-    }
-
-    /**
-     * The height of the capsule. Also used by the preview in the settings.
-     *
-     * @param baseHeight    The height the app gives the bar, without the room below the buttons.
-     * @param contentHeight The height of the content of the buttons, the icon and the label.
-     * @param heightPercent The height of the capsule, in percent of the height the app gives the bar,
-     *                      or of the height the buttons need if they need more, such as with a larger font.
-     */
-    public static int getCapsuleHeight(int baseHeight, int contentHeight, int heightPercent) {
-        final int minHeight = contentHeight + 2 * MIN_VERTICAL_PADDING;
-        return Math.max(minHeight, Math.round(Math.max(baseHeight, minHeight) * heightPercent / 100f));
-    }
-
-    /**
-     * @return If the navigation bar is the bar along the bottom of the screen,
-     *         not a navigation rail along the side.
-     */
-    private static boolean isHorizontalBottomBar(View pivotBar) {
-        final int width = pivotBar.getWidth();
-        final int height = pivotBar.getHeight();
-        return width > 0 && height > 0 && width > 2 * height;
-    }
-
-    @ColorInt
-    private static int withAlpha(@ColorInt int color, float alpha) {
-        return (color & 0x00FFFFFF) | (Math.round(alpha * 255) << 24);
-    }
-
-    @ColorInt
-    private static int blend(@ColorInt int from, @ColorInt int to, float fraction) {
-        final float inverse = 1 - fraction;
-        return Color.rgb(
-                Math.round(Color.red(from) * inverse + Color.red(to) * fraction),
-                Math.round(Color.green(from) * inverse + Color.green(to) * fraction),
-                Math.round(Color.blue(from) * inverse + Color.blue(to) * fraction)
-        );
-    }
-
-    private static final class GlassDrawable extends Drawable {
-        private static final int STYLE_UNKNOWN = -1;
-        private static final int STYLE_LIGHT = 0;
-        private static final int STYLE_DARK = 1;
-        private static final int STYLE_SHORTS = 2;
-
-        private static final int SHADOW_LAYERS = 3;
-
-        private static final long INDICATOR_ANIMATION_MILLISECONDS = 200;
+    private static final class CapsuleHost implements GlassCapsuleDrawable.Host {
+        /**
+         * How far the capsule reaches into the room below the buttons.
+         */
+        private static final int MAX_MARGIN_BOTTOM = Dim.dp4;
 
         private final View host;
 
@@ -739,411 +557,54 @@ public final class GlassNavigationBar {
          */
         int capsuleTop;
 
-        static final int MARGIN_HORIZONTAL = Dim.dp12;
-        /**
-         * How far the capsule reaches into the room below the buttons.
-         */
-        private static final int MAX_MARGIN_BOTTOM = Dim.dp4;
-        private static final int INDICATOR_INSET = Dim.dp4;
-        private static final int INDICATOR_MAX_WIDTH = Dim.dp(96);
-        private static final float STROKE_WIDTH = Dim.dp1;
-        /**
-         * The rim of the capsule, lit from outside, and the dark line inside it, which give the glass its thickness.
-         */
-        private static final float RIM_WIDTH = Dim.dp(1.5f);
-        private static final float BEVEL_WIDTH = Dim.dp1;
-
-        private final Paint shadowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final Paint fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final Paint sheenPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final Paint strokePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final Paint rimPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final Paint bevelPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final Paint indicatorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-
-        private final RectF capsule = new RectF();
-        private final Path capsulePath = new Path();
-
-        /**
-         * The blurred background of the app, drawn inside the capsule, or null if the app
-         * gave the bar a plain color.
-         */
-        @Nullable
-        private Drawable appBackground;
-
-        /**
-         * If drawing the background of the app failed, so it is no longer drawn.
-         */
-        private static boolean appBackgroundFailed;
-
-        private final Drawable.Callback appBackgroundCallback = new Drawable.Callback() {
-            @Override
-            public void invalidateDrawable(@NonNull Drawable who) {
-                invalidateSelf();
-            }
-
-            @Override
-            public void scheduleDrawable(@NonNull Drawable who, @NonNull Runnable what, long when) {
-                scheduleSelf(what, when);
-            }
-
-            @Override
-            public void unscheduleDrawable(@NonNull Drawable who, @NonNull Runnable what) {
-                unscheduleSelf(what);
-            }
-        };
-        private final RectF scratch = new RectF();
-
-        private int style = STYLE_UNKNOWN;
-        private int shadowAlpha;
-        @ColorInt
-        private int sheenTopColor;
-        @ColorInt
-        private int strokeTopColor;
-        @ColorInt
-        private int strokeBottomColor;
-        /**
-         * The rim is brightest at the rounded ends of the capsule, where the light hits the edge.
-         */
-        @ColorInt
-        private int rimEndColor;
-        @ColorInt
-        private int rimMiddleColor;
-
-        /**
-         * The vertical edges of the capsule the gradients were made for.
-         */
-        private float shaderTop = Float.NaN;
-        private float shaderBottom = Float.NaN;
-        private float shaderLeft = Float.NaN;
-        private float shaderRight = Float.NaN;
-
-        @ColorInt
-        private int fillColor;
-        /**
-         * There is no fill over the blurred background of the app, which has its own tint.
-         */
-        private boolean fillOverBlur;
-
-        private final ValueAnimator indicatorAnimator = ValueAnimator.ofFloat(0, 1);
-        private float animationFromLeft;
-        private float animationFromRight;
-        private boolean animationFromValid;
-
-        /**
-         * The horizontal edges of the selected tab indicator in the last frame.
-         */
-        private float lastIndicatorLeft;
-        private float lastIndicatorRight;
-        private boolean lastIndicatorValid;
-
-        GlassDrawable(View host) {
+        CapsuleHost(View host) {
             this.host = host;
-
-            fillPaint.setStyle(Paint.Style.FILL);
-            sheenPaint.setStyle(Paint.Style.FILL);
-            shadowPaint.setStyle(Paint.Style.FILL);
-            shadowPaint.setColor(Color.BLACK);
-            strokePaint.setStyle(Paint.Style.STROKE);
-            strokePaint.setStrokeWidth(STROKE_WIDTH);
-            rimPaint.setStyle(Paint.Style.STROKE);
-            rimPaint.setStrokeWidth(RIM_WIDTH);
-            bevelPaint.setStyle(Paint.Style.STROKE);
-            bevelPaint.setStrokeWidth(BEVEL_WIDTH);
-            indicatorPaint.setStyle(Paint.Style.FILL);
-
-            indicatorAnimator.setDuration(INDICATOR_ANIMATION_MILLISECONDS);
-            indicatorAnimator.setInterpolator(new DecelerateInterpolator());
-            indicatorAnimator.addUpdateListener(animation -> invalidateSelf());
-
-            updateStyle();
-        }
-
-        /**
-         * Updates the colors if the theme changed or the Shorts player was opened or closed.
-         */
-        void updateStyle() {
-            final int newStyle = ShortsPlayerState.isOpen()
-                    ? STYLE_SHORTS
-                    : Utils.isDarkModeEnabled() ? STYLE_DARK : STYLE_LIGHT;
-            if (newStyle == style) return;
-            style = newStyle;
-
-            switch (newStyle) {
-                case STYLE_SHORTS -> {
-                    // The Shorts player is always dark, whatever the app theme.
-                    fillColor = withAlpha(Color.BLACK, scaledAlpha(0.45f));
-                    sheenTopColor = withAlpha(Color.WHITE, 0.06f);
-                    strokeTopColor = withAlpha(Color.WHITE, 0.20f);
-                    strokeBottomColor = withAlpha(Color.WHITE, 0.05f);
-                    rimEndColor = withAlpha(Color.WHITE, 0.45f);
-                    rimMiddleColor = withAlpha(Color.WHITE, 0.10f);
-                    bevelPaint.setColor(withAlpha(Color.BLACK, 0.35f));
-                    indicatorPaint.setColor(withAlpha(Color.WHITE, 0.15f));
-                    shadowAlpha = Math.round(0.10f * 255);
-                }
-                case STYLE_DARK -> {
-                    final int background = ThemeUtils.getAppBackgroundColor();
-                    fillColor = withAlpha(blend(background, Color.WHITE, 0.14f), scaledAlpha(0.50f));
-                    sheenTopColor = withAlpha(Color.WHITE, 0.10f);
-                    strokeTopColor = withAlpha(Color.WHITE, 0.30f);
-                    strokeBottomColor = withAlpha(Color.WHITE, 0.06f);
-                    rimEndColor = withAlpha(Color.WHITE, 0.50f);
-                    rimMiddleColor = withAlpha(Color.WHITE, 0.12f);
-                    bevelPaint.setColor(withAlpha(Color.BLACK, 0.35f));
-                    indicatorPaint.setColor(withAlpha(Color.WHITE, 0.15f));
-                    shadowAlpha = Math.round(0.10f * 255);
-                }
-                default -> {
-                    final int background = ThemeUtils.getAppBackgroundColor();
-                    fillColor = withAlpha(blend(background, Color.WHITE, 0.6f), scaledAlpha(0.50f));
-                    sheenTopColor = withAlpha(Color.WHITE, 0.35f);
-                    strokeTopColor = withAlpha(Color.WHITE, 0.95f);
-                    strokeBottomColor = withAlpha(Color.BLACK, 0.07f);
-                    rimEndColor = withAlpha(Color.WHITE, 0.95f);
-                    rimMiddleColor = withAlpha(Color.WHITE, 0.50f);
-                    bevelPaint.setColor(withAlpha(Color.BLACK, 0.08f));
-                    indicatorPaint.setColor(withAlpha(Color.BLACK, 0.08f));
-                    shadowAlpha = Math.round(0.05f * 255);
-                }
-            }
-
-            fillPaint.setColor(fillOverBlur ? Color.TRANSPARENT : fillColor);
-
-            // The gradients are made again with the new colors.
-            shaderTop = Float.NaN;
-            invalidateSelf();
-        }
-
-        /**
-         * @param background The background the app gave the navigation bar.
-         */
-        void setAppBackground(@Nullable Drawable background) {
-            if (appBackground != null && appBackground != background) {
-                appBackground.setCallback(null);
-            }
-
-            // A plain color or an opaque background is the solid bar of the app, such as in
-            // the Shorts player, and is left out so the capsule stays translucent.
-            appBackground = background == null || appBackgroundFailed
-                    || background instanceof ColorDrawable
-                    || background.getOpacity() == PixelFormat.OPAQUE
-                    ? null
-                    : background;
-            if (appBackground != null) {
-                appBackground.setCallback(appBackgroundCallback);
-                appBackground.setVisible(true, false);
-                appBackground.setBounds(getBounds());
-            }
-            invalidateSelf();
         }
 
         @Override
-        protected void onBoundsChange(@NonNull Rect bounds) {
-            if (appBackground != null) {
-                appBackground.setBounds(bounds);
+        public void getCapsule(Rect bounds, RectF capsule) {
+            // The bottom padding of the navigation bar is the room for the system navigation
+            // buttons or gesture handle. The capsule holds the whole height of the buttons
+            // and reaches only slightly into that room, so it floats above the gesture handle.
+            final int bottomRoom = host.getPaddingBottom();
+            float bottom = bounds.bottom - bottomRoom
+                    + Math.max(0, Math.min(bottomRoom - FLOATING_ROOM, MAX_MARGIN_BOTTOM));
+            // Some accounts lay the slim status bar ("No connection", "You're incognito") out over the room
+            // below the buttons, and it is drawn over the bar. The capsule then does not reach into the room
+            // the slim status bar covers, or its edge is cut. The bar's own translation is left out,
+            // so the capsule keeps its size while the bar is moved behind the slim status bar to hide it.
+            View slimStatusBar = host.getParent() instanceof ViewGroup container
+                    ? container.findViewById(NavigationBarPatch.SLIM_STATUS_BAR)
+                    : null;
+            if (slimStatusBar != null && slimStatusBar.getParent() == host.getParent()
+                    && slimStatusBar.getVisibility() == View.VISIBLE) {
+                final float slimStatusBarTop = bounds.top + slimStatusBar.getTop()
+                        + slimStatusBar.getTranslationY() - host.getTop();
+                bottom = Math.min(bottom, Math.max(bounds.bottom - bottomRoom, slimStatusBarTop));
             }
-        }
-
-        void onSelectedTabChanged() {
-            animationFromValid = lastIndicatorValid;
-            animationFromLeft = lastIndicatorLeft;
-            animationFromRight = lastIndicatorRight;
-
-            indicatorAnimator.cancel();
-            if (animationFromValid) {
-                indicatorAnimator.start();
-            } else {
-                invalidateSelf();
-            }
-        }
-
-        private void updateShaders() {
-            if (capsule.top == shaderTop && capsule.bottom == shaderBottom
-                    && capsule.left == shaderLeft && capsule.right == shaderRight) return;
-            shaderTop = capsule.top;
-            shaderBottom = capsule.bottom;
-            shaderLeft = capsule.left;
-            shaderRight = capsule.right;
-
-            final float radius = capsule.height() / 2;
-            capsulePath.reset();
-            capsulePath.addRoundRect(capsule, radius, radius, Path.Direction.CW);
-
-            // Only made again when the size of the capsule or the colors change, not on every frame.
-            sheenPaint.setShader(new LinearGradient(0, capsule.top, 0, capsule.bottom,
-                    sheenTopColor, Color.TRANSPARENT, Shader.TileMode.CLAMP));
-            strokePaint.setShader(new LinearGradient(0, capsule.top, 0, capsule.bottom,
-                    strokeTopColor, strokeBottomColor, Shader.TileMode.CLAMP));
-            final float end = Math.min(0.5f, radius / capsule.width());
-            rimPaint.setShader(new LinearGradient(capsule.left, 0, capsule.right, 0,
-                    new int[]{rimEndColor, rimMiddleColor, rimMiddleColor, rimEndColor},
-                    new float[]{0, end, 1 - end, 1}, Shader.TileMode.CLAMP));
-        }
-
-        @Override
-        public void draw(@NonNull Canvas canvas) {
-            try {
-                Rect bounds = getBounds();
-                // The bottom padding of the navigation bar is the room for the system navigation
-                // buttons or gesture handle. The capsule holds the whole height of the buttons
-                // and reaches only slightly into that room, so it floats above the gesture handle.
-                final int bottomRoom = host.getPaddingBottom();
-                float bottom = bounds.bottom - bottomRoom
-                        + Math.max(0, Math.min(bottomRoom - FLOATING_ROOM, MAX_MARGIN_BOTTOM));
-                // Some accounts lay the slim status bar ("No connection", "You're incognito") out over the room
-                // below the buttons, and it is drawn over the bar. The capsule then does not reach into the room
-                // the slim status bar covers, or its edge is cut. The bar's own translation is left out,
-                // so the capsule keeps its size while the bar is moved behind the slim status bar to hide it.
-                View slimStatusBar = host.getParent() instanceof ViewGroup container
-                        ? container.findViewById(NavigationBarPatch.SLIM_STATUS_BAR)
-                        : null;
-                if (slimStatusBar != null && slimStatusBar.getParent() == host.getParent()
-                        && slimStatusBar.getVisibility() == View.VISIBLE) {
-                    final float slimStatusBarTop = bounds.top + slimStatusBar.getTop()
-                            + slimStatusBar.getTranslationY() - host.getTop();
-                    bottom = Math.min(bottom, Math.max(bounds.bottom - bottomRoom, slimStatusBarTop));
-                }
-                // The capsule ends at the edges of the buttons. The narrow buttons don't fill the bar,
-                // and are in the middle of it.
-                float left = bounds.left + host.getPaddingLeft();
-                float right = bounds.right - host.getPaddingRight();
-                View tab = getSelectedTabView();
-                if (tab != null && tab.getParent() instanceof View tabs && tabs.getParent() == host
-                        && tabs.getWidth() > 0) {
-                    left = Math.max(left, tabs.getLeft() + tabs.getTranslationX());
-                    right = Math.min(right, tabs.getRight() + tabs.getTranslationX());
-                }
-                capsule.set(left, bounds.top + capsuleTop, right, bottom);
-                if (capsule.width() <= 0 || capsule.height() <= 0) return;
-
-                final float radius = capsule.height() / 2;
-                updateShaders();
-
-                // The Shorts player ends above the navigation bar, so the background of the window
-                // would show around the capsule, which is white with the light theme.
-                // The Shorts player is always dark, so the bar is kept black around the capsule.
-                if (style == STYLE_SHORTS) {
-                    canvas.drawColor(Color.BLACK);
-                }
-
-                // Soft shadow below the capsule.
-                for (int i = SHADOW_LAYERS; i >= 1; i--) {
-                    scratch.set(capsule);
-                    scratch.inset(-i * 0.5f * STROKE_WIDTH, -i * 0.5f * STROKE_WIDTH);
-                    scratch.offset(0, i * STROKE_WIDTH);
-                    shadowPaint.setAlpha(shadowAlpha / i);
-                    final float shadowRadius = scratch.height() / 2;
-                    canvas.drawRoundRect(scratch, shadowRadius, shadowRadius, shadowPaint);
-                }
-
-                final boolean overBlur = appBackground != null && style != STYLE_SHORTS;
-                if (overBlur != fillOverBlur) {
-                    fillOverBlur = overBlur;
-                    fillPaint.setColor(overBlur ? Color.TRANSPARENT : fillColor);
-                }
-                if (overBlur) {
-                    // The blurred background of the app, only inside the capsule.
-                    final int saveCount = canvas.save();
-                    try {
-                        canvas.clipPath(capsulePath);
-                        appBackground.draw(canvas);
-                    } catch (Exception ex) {
-                        // The background of the app may expect to be drawn by the bar itself.
-                        Logger.printException(() -> "Glass navigation bar app background failure", ex);
-                        appBackgroundFailed = true;
-                        setAppBackground(null);
-                    } finally {
-                        canvas.restoreToCount(saveCount);
-                    }
-                }
-
-                if (Color.alpha(fillPaint.getColor()) != 0) {
-                    canvas.drawRoundRect(capsule, radius, radius, fillPaint);
-                }
-                canvas.drawRoundRect(capsule, radius, radius, sheenPaint);
-
-                drawIndicator(canvas);
-
-                // The dark line inside the rim.
-                scratch.set(capsule);
-                scratch.inset(RIM_WIDTH + BEVEL_WIDTH / 2, RIM_WIDTH + BEVEL_WIDTH / 2);
-                final float bevelRadius = scratch.height() / 2;
-                canvas.drawRoundRect(scratch, bevelRadius, bevelRadius, bevelPaint);
-
-                // The rim lit from outside, brighter at the top.
-                scratch.set(capsule);
-                scratch.inset(RIM_WIDTH / 2, RIM_WIDTH / 2);
-                final float rimRadius = scratch.height() / 2;
-                canvas.drawRoundRect(scratch, rimRadius, rimRadius, rimPaint);
-                canvas.drawRoundRect(scratch, rimRadius, rimRadius, strokePaint);
-            } catch (Exception ex) {
-                Logger.printException(() -> "Glass navigation bar draw failure", ex);
-            }
-        }
-
-        private void drawIndicator(Canvas canvas) {
-            lastIndicatorValid = false;
-
+            // The capsule ends at the edges of the buttons. The narrow buttons don't fill the bar,
+            // and are in the middle of it.
+            float left = bounds.left + host.getPaddingLeft();
+            float right = bounds.right - host.getPaddingRight();
             View tab = getSelectedTabView();
-            if (tab == null || tab.getVisibility() != View.VISIBLE || tab.getWidth() <= 0) return;
-
-            // The position of the tab inside the navigation bar.
-            float tabLeft = 0;
-            View view = tab;
-            while (view != host) {
-                tabLeft += view.getLeft() + view.getTranslationX();
-                ViewParent parent = view.getParent();
-                if (!(parent instanceof View parentView) || view.getVisibility() != View.VISIBLE) {
-                    return;
-                }
-                view = parentView;
+            if (tab != null && tab.getParent() instanceof View tabs && tabs.getParent() == host
+                    && tabs.getWidth() > 0) {
+                left = Math.max(left, tabs.getLeft() + tabs.getTranslationX());
+                right = Math.min(right, tabs.getRight() + tabs.getTranslationX());
             }
+            capsule.set(left, bounds.top + capsuleTop, right, bottom);
+        }
 
-            final float minLeft = capsule.left + INDICATOR_INSET;
-            final float maxRight = capsule.right - INDICATOR_INSET;
-            float targetLeft = tabLeft + INDICATOR_INSET;
-            float targetRight = tabLeft + tab.getWidth() - INDICATOR_INSET;
-            if (targetRight - targetLeft > INDICATOR_MAX_WIDTH) {
-                final float center = (targetLeft + targetRight) / 2;
-                targetLeft = center - INDICATOR_MAX_WIDTH / 2f;
-                targetRight = center + INDICATOR_MAX_WIDTH / 2f;
-            }
-            targetLeft = Math.max(targetLeft, minLeft);
-            targetRight = Math.min(targetRight, maxRight);
-
-            float left = targetLeft;
-            float right = targetRight;
-            if (animationFromValid && indicatorAnimator.isRunning()) {
-                final float fraction = (float) indicatorAnimator.getAnimatedValue();
-                left = animationFromLeft + (targetLeft - animationFromLeft) * fraction;
-                right = animationFromRight + (targetRight - animationFromRight) * fraction;
-            }
-            if (right - left <= 0) return;
-
-            scratch.set(left, capsule.top + INDICATOR_INSET, right, capsule.bottom - INDICATOR_INSET);
-            if (scratch.height() <= 0) return;
-            final float radius = scratch.height() / 2;
-            canvas.drawRoundRect(scratch, radius, radius, indicatorPaint);
-
-            lastIndicatorLeft = left;
-            lastIndicatorRight = right;
-            lastIndicatorValid = true;
+        @Nullable
+        @Override
+        public View getSelectedTabView() {
+            return GlassNavigationBar.getSelectedTabView();
         }
 
         @Override
-        public void setAlpha(int alpha) {
-            // The glass keeps its own translucency.
-        }
-
-        @Override
-        public void setColorFilter(@Nullable ColorFilter colorFilter) {
-            // The colors come from the theme.
-        }
-
-        @Override
-        public int getOpacity() {
-            return PixelFormat.TRANSLUCENT;
+        public boolean isOverDarkPlayer() {
+            // The Shorts player is always dark, whatever the app theme.
+            return ShortsPlayerState.isOpen();
         }
     }
 
