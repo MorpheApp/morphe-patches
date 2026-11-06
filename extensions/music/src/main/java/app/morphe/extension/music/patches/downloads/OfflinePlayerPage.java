@@ -26,6 +26,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
+import android.util.SparseIntArray;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -137,9 +138,8 @@ final class OfflinePlayerPage {
     private float dragGrabOffset;
     private final int[] queueLocation = new int[2];
 
-    /** The row the dragged row just moved past, which slides over to its new place. */
-    private int shiftedPosition = -1;
-    private float shiftDistance;
+    /** How far from their place the rows just moved past start to slide, by position. */
+    private final SparseIntArray slidingRows = new SparseIntArray();
 
     OfflinePlayerPage(LocalDownloadsFragment host, Activity activity, OfflineUi ui) {
         this.host = host;
@@ -525,17 +525,42 @@ final class OfflinePlayerPage {
             queueList.scrollListBy(ui.dp(scrollUp ? -AUTO_SCROLL_STEP_DP : AUTO_SCROLL_STEP_DP));
         }
 
-        // The row being dragged is hidden, so this finds nothing while the finger is over it.
-        final int target = queueList.pointToPosition(queueList.getWidth() / 2, top + dragRowHeight / 2);
+        final int target = queuePositionAt(top + dragRowHeight / 2);
         if (target == AdapterView.INVALID_POSITION || target == draggedPosition) return;
 
         final int from = draggedPosition;
-        draggedPosition = target;
         // Rows passing by on a scrolling list would overlap the rows that slide.
-        shiftedPosition = scrollUp || scrollDown ? -1 : from;
-        shiftDistance = (target - from) * dragRowHeight;
+        if (!scrollUp && !scrollDown) slideRowsBetween(from, target);
+        draggedPosition = target;
         OfflinePlaybackService.moveQueueItem(from, target);
         refreshQueue(false);
+    }
+
+    /**
+     * The position of the row laid out at a height of the list. A sliding row must not count as
+     * being where it is drawn: the row that just made room is still under the finger, and would
+     * be swapped back.
+     */
+    private int queuePositionAt(int y) {
+        for (int i = queueList.getChildCount() - 1; i >= 0; i--) {
+            View child = queueList.getChildAt(i);
+            if (y >= child.getTop() && y < child.getBottom()) {
+                return queueList.getFirstVisiblePosition() + i;
+            }
+        }
+        return AdapterView.INVALID_POSITION;
+    }
+
+    /** Each row between the two positions takes the place next to it, from where it is drawn. */
+    private void slideRowsBetween(int from, int target) {
+        final int firstVisible = queueList.getFirstVisiblePosition();
+        final int step = target > from ? 1 : -1;
+        for (int position = from; position != target; position += step) {
+            View incoming = queueList.getChildAt(position + step - firstVisible);
+            if (incoming != null && queueList.getChildAt(position - firstVisible) != null) {
+                slidingRows.put(position, step * dragRowHeight + (int) incoming.getTranslationY());
+            }
+        }
     }
 
     /**
@@ -581,6 +606,8 @@ final class OfflinePlayerPage {
         final LinearLayout row = ui.trackRow();
         final OfflineUi.TrackInfoViews info = ui.createTrackInfo(row);
         int position;
+        @Nullable
+        String path;
         boolean highlighted;
 
         @SuppressLint("ClickableViewAccessibility")
@@ -599,13 +626,20 @@ final class OfflinePlayerPage {
         }
 
         void bind(int position) {
+            final String newPath = queuePaths.get(position);
+            // Every row is bound again for each move of a drag, and this one is not affected.
+            final boolean keepSliding = position == this.position && newPath.equals(path)
+                    && row.getTranslationY() != 0f;
             this.position = position;
-            row.animate().cancel();
-            row.setTranslationX(0f);
-            row.setTranslationY(0f);
+            path = newPath;
+            if (!keepSliding) {
+                row.animate().cancel();
+                row.setTranslationX(0f);
+                row.setTranslationY(0f);
+            }
             row.setVisibility(position == draggedPosition ? View.INVISIBLE : View.VISIBLE);
 
-            ui.bindTrackInfo(info, host.trackFor(queuePaths.get(position)));
+            ui.bindTrackInfo(info, host.trackFor(newPath));
 
             final boolean current = position == queueIndex;
             if (highlighted != current) {
@@ -614,9 +648,10 @@ final class OfflinePlayerPage {
             }
             row.setAlpha(rowAlpha(position));
 
-            if (position == shiftedPosition) {
-                shiftedPosition = -1;
-                row.setTranslationY(shiftDistance);
+            final int slideDistance = slidingRows.get(position);
+            if (slideDistance != 0) {
+                slidingRows.delete(position);
+                row.setTranslationY(slideDistance);
                 row.animate().translationY(0f).setDuration(DRAG_ANIMATION_MILLISECONDS).start();
             }
         }
