@@ -2,6 +2,7 @@ package app.morphe.patches.reddit.misc.archive
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.literal
 import app.morphe.patcher.string
 import app.morphe.patcher.patch.PatchException
@@ -17,6 +18,7 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -55,13 +57,19 @@ context(context: BytecodePatchContext)
 fun replaceArchiveBridge(name: String, registers: Int, code: String, type: String = ARCHIVE_CLASS) {
     val owner = context.mutableClassDefBy(type)
     val old = owner.methods.single { it.name == name }
-    val replacement = ImmutableMethod(old.definingClass, old.name, old.parameters, old.returnType,
-        old.accessFlags, old.annotations, old.hiddenApiRestrictions,
-        MutableMethodImplementation(registers)).toMutable()
-    replacement.addInstructions(0, code)
+    val replacement = archiveBridge(old, registers, code)
     owner.methods.remove(old)
     owner.methods.add(replacement)
 }
+
+internal fun archiveBridge(old: Method, registers: Int, code: String) =
+    ImmutableMethod(old.definingClass, old.name, old.parameters, old.returnType,
+        old.accessFlags, old.annotations, old.hiddenApiRestrictions,
+        MutableMethodImplementation(registers)).toMutable().apply {
+        // Bind internal labels to this method. Plain addInstructions retains the
+        // assembler's locations, so later patch insertions leave stale jump offsets.
+        addInstructionsWithLabels(0, code)
+    }
 
 @Suppress("unused")
 val profileArchivePatch = bytecodePatch(
