@@ -18,19 +18,21 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/CustomSeekbarThumb;"
 
 val customSeekbarThumbPatch = patch(
-    name = "Custom seekbar thumb",
     description = "Adds an option to customize the seekbar thumb with a custom image or animated GIF."
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch
     )
+
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.SEEKBAR.addPreferences(
