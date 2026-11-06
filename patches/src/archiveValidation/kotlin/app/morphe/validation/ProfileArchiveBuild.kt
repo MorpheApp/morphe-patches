@@ -141,9 +141,14 @@ private fun auditArchiveDex(apk: File, probe: Boolean) {
             ref?.definingClass == "${archive}ProfileArchivePatch;" && ref.name == name
         } ?: 0 }
     }
-    check(hostCalls("decorate") == 1 && hostCalls("onVisibleItems") == 1) { "Expected one native feed hook and one visibility hook" }
+    check(hostCalls("decorateHost") == 1 && hostCalls("mapVisible") == 1) { "Expected one native feed hook and one visibility hook" }
+    check(hostCalls("bindHost") == 2 && hostCalls("captureRequest") == 2 && hostCalls("stableKey") == 1) {
+        "Missing profile context, refresh or final-key hooks"
+    }
+    check(sectionInterface.type in classes.getValue("${archive}ArchiveNativeSection;").interfaces)
+    check(classes.getValue("${archive}ArchiveReaderActivity;").superclass == "Landroid/app/Activity;")
     if (!probe) {
-        check(classes.keys.none { it.startsWith("Lapp/morphe/test/") || it.startsWith("${archive}ArchiveFixture") }) {
+        check(classes.keys.none { it.startsWith("Lapp/morphe/test/") || it.startsWith("${archive}ArchiveFixture") || it.startsWith("${archive}ArchiveMixedFixture") }) {
             "Test fixture leaked into release"
         }
     }

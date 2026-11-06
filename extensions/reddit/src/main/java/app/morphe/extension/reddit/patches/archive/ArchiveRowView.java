@@ -35,7 +35,7 @@ public final class ArchiveRowView extends LinearLayout {
                 || current.surface != theme.surface || current.secondary != theme.secondary || current.divider != theme.divider;
         if (kind != next.row.kind || changed) { theme = current; rebuild(next.row.kind); }
         setTag(next.row.key);
-        if (card != null) card.bind(next.row.item, next.row.details);
+        if (card != null) card.bind(next.row.item, next.row.details, next.row.provenance);
         if (kind == ArchiveSnapshot.STATUS) {
             status.setText(next.row.message); status.setVisibility(next.row.message.isEmpty() ? GONE : VISIBLE);
             progress.setVisibility(next.row.loading ? VISIBLE : GONE); retry.setVisibility(next.row.retry ? VISIBLE : GONE);
@@ -47,7 +47,18 @@ public final class ArchiveRowView extends LinearLayout {
         removeAllViews(); card = null; status = null; retry = null; progress = null;
         kind = nextKind; setPadding(0, 0, 0, 0); setBackgroundColor(theme.background);
         if (kind == ArchiveSnapshot.CARD) {
-            card = new ArchiveCardView(getContext(), theme, this::open); addView(card, new LayoutParams(-1, -2));
+            card = new ArchiveCardView(getContext(), theme, new ArchiveCardView.Navigation() {
+                public void open(ArchiveItem item) {
+                    ArchiveReaderActivity.open(getContext(), item, section.row.details, section.row.provenance);
+                }
+                public void original(ArchiveItem item) { ArchiveRowView.this.open(item); }
+            }); addView(card, new LayoutParams(-1, -2));
+        } else if (kind == ArchiveSnapshot.SORT) {
+            TextView notice = theme.text(12, theme.secondary, theme.semibold);
+            notice.setText("Archived items are available in New  ›"); notice.setMinHeight(theme.dp(48));
+            notice.setGravity(Gravity.CENTER_VERTICAL); notice.setPadding(theme.dp(16), 0, theme.dp(16), 0);
+            notice.setBackground(theme.ripple(theme.background, 0)); notice.setOnClickListener(view -> section.controller.selectNew());
+            addView(notice, new LayoutParams(-1, -2));
         } else if (kind == ArchiveSnapshot.INDICATOR) {
             TextView indicator = theme.text(12, theme.secondary, theme.semibold);
             indicator.setText("Unhidden · Archived history"); indicator.setGravity(Gravity.CENTER_VERTICAL);

@@ -52,8 +52,8 @@ public final class ArchiveFixture {
         String id = Integer.toString(1000 + index, 36);
         return new JSONObject().put("id", id).put("author", author).put("subreddit", "ArchiveTest")
                 .put("created_utc", 1790000000L - index * 60).put("score", 42).put("num_comments", 12)
-                .put("title", "Archive fixture row " + index).put("selftext", "A stable text card for native scrolling.")
-                .put("body", "Comment " + index + ": a stable text card for native scrolling.")
+                .put("title", "Archive fixture row " + index).put("selftext", "A stable text card for native scrolling. ".repeat(index == 1 ? 150 : 1))
+                .put("body", ("Comment " + index + ": a stable text card for native scrolling. ").repeat(index == 1 ? 150 : 1))
                 .put("post_hint", "self").put("link_id", "t3_" + id);
     }
     public static Object field(Object owner, String name) {

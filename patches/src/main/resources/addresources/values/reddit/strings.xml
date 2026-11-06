@@ -16,7 +16,7 @@ Second \"item\" text"</string>
 -->
 <resources>
     <string name="morphe_profile_archive_title">Archived public profile history</string>
-    <string name="morphe_profile_archive_summary">Automatically load public archives for hidden profile tabs. Sends the username to Arctic Shift. Coverage may be incomplete or outdated.</string>
+    <string name="morphe_profile_archive_summary">Include recoverable archived posts and comments in profiles sorted by New, including hidden history. Sends the username to Arctic Shift. Coverage may be incomplete or outdated.</string>
     <string name="reddit_privacy_policy">Reddit privacy policy</string>
     <string name="morphe_google_signin_not_available_toast">Google login not available. Use email to login</string>
 

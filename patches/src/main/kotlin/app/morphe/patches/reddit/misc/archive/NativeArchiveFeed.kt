@@ -7,6 +7,7 @@ import app.morphe.patcher.string
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.util.addFreeRegisters
+import app.morphe.patcher.util.addInstructionsAtControlFlowLabel
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -54,7 +55,7 @@ internal fun constructorFields(constructor: Method): List<FieldReference> {
 }
 
 context(context: BytecodePatchContext)
-private fun addNativeMethod(owner: String, signature: Method, code: String) {
+internal fun addNativeMethod(owner: String, signature: Method, code: String) {
     val method = ImmutableMethod(owner, signature.name,
         signature.parameterTypes.map { ImmutableMethodParameter(it.toString(), emptySet(), null) },
         signature.returnType, AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
@@ -223,9 +224,14 @@ internal fun installNativeArchiveFeed(modelType: String, renderer: Method, compo
     val visible = feedToString.findFieldFromToString("isScreenVisible=")
     if (feedFields.first() != sections || visible.type != "Z" || feedFields.size != 11)
         throw PatchException("Unexpected native feed model shape")
-    replaceArchiveBridge("feedSections", 1, """
+    replaceArchiveBridge("feedSections", 2, """
+        instance-of v0, p0, $feedType
+        if-eqz v0, :none
         check-cast p0, $feedType
         iget-object p0, p0, $sections
+        return-object p0
+        :none
+        const/4 p0, 0x0
         return-object p0
     """)
     replaceArchiveBridge("feedVisible", 1, """
@@ -252,28 +258,92 @@ internal fun installNativeArchiveFeed(modelType: String, renderer: Method, compo
         appendLine("return-object v0")
     })
 
-    // Transform before the feed is handed to the lazy list, inside its existing composition group.
+    val emptyModel = Fingerprint(name = "toString", filters = listOf(string("Empty(isRefreshing="))).classDef
+    val emptyRefreshing = constructorFields(emptyModel.methods.single { it.name == "<init>" }).single()
+    val scrollConstructor = classDefBy(feedFields[5].type).methods.single { it.name == "<init>" }
+    val transitionConstructor = classDefBy(feedFields[10].type).methods.single { it.name == "<init>" }
+    val isVisible = hostCalls.last { it.definingClass != "Ljava/lang/Boolean;" && it.parameterTypes.isEmpty() && it.returnType == "Z" }
+    replaceArchiveBridge("normalizeFeed", 14, """
+        instance-of v0, p0, $feedType
+        if-nez v0, :unchanged
+        instance-of v0, p0, ${emptyModel.type}
+        if-eqz v0, :none
+        check-cast p0, ${emptyModel.type}
+        iget-boolean v0, p0, $emptyRefreshing
+        if-nez v0, :none
+        check-cast p1, ${stateMethod.definingClass}
+        new-instance v0, $feedType
+        invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
+        move-result-object v1
+        invoke-static { v1 }, $immutable
+        move-result-object v1
+        const/4 v2, 0x0
+        const/4 v3, 0x0
+        const/4 v4, 0x0
+        const/4 v5, 0x0
+        new-instance v6, ${feedFields[5].type}
+        const/4 v7, -0x1
+        invoke-direct { v6, v7 }, $scrollConstructor
+        const/4 v7, 0x0
+        const/4 v8, 0x0
+        invoke-static { p1 }, $ARCHIVE_CLASS->hostSort(Ljava/lang/Object;)Ljava/lang/Object;
+        move-result-object v9
+        check-cast v9, ${feedFields[8].type}
+        invoke-virtual { p1 }, $isVisible
+        move-result v10
+        new-instance v11, ${feedFields[10].type}
+        invoke-direct { v11, v3, v4 }, $transitionConstructor
+        invoke-direct/range { v0 .. v11 }, $feedConstructor
+        return-object v0
+        :unchanged
+        return-object p0
+        :none
+        const/4 p0, 0x0
+        return-object p0
+    """)
+
+    // Use the common state branch so loading/error transitions dispose remembered work too.
     val oldCount = stateMethod.implementation!!.registerCount
-    val constructorCall = stateMethod.implementation!!.instructions.withIndex().single {
-        ((it.value as? ReferenceInstruction)?.reference as? MethodReference)?.toString() == feedConstructor.toString()
+    val publishCall = stateMethod.implementation!!.instructions.withIndex().single {
+        ((it.value as? ReferenceInstruction)?.reference as? MethodReference)?.let { ref ->
+            ref.definingClass == stateMethod.definingClass && ref.parameterTypes == listOf(stateMethod.returnType, composerInterface, "I")
+        } == true
     }
-    val receiver = when (val instruction = constructorCall.value) {
-        is RegisterRangeInstruction -> instruction.startRegister
-        is FiveRegisterInstruction -> instruction.registerC
+    val receiver = when (val instruction = publishCall.value) {
+        is RegisterRangeInstruction -> instruction.startRegister + 1
+        is FiveRegisterInstruction -> instruction.registerD
         else -> throw PatchException("Unexpected feed constructor opcode")
     }
-    val (patched, shift) = stateMethod.addFreeRegisters(2)
-    patched.addInstructions(constructorCall.index + shift + 1, """
-        move-object/16 v$oldCount, v$receiver
+    installProfileMerge(sectionInterface, sectionContent, sectionKeySignature)
+    val (patched, shift) = stateMethod.addFreeRegisters(3)
+    patched.addInstructions(shift, """
         move-object/16 v${oldCount + 1}, v${oldCount - 1}
-        invoke-static/range { v$oldCount .. v${oldCount + 1} }, $ARCHIVE_CLASS->decorate(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        move-object/16 v${oldCount + 2}, v${oldCount - 2}
+    """)
+    patched.addInstructionsAtControlFlowLabel(publishCall.index + shift + 2, """
+        move-object/16 v$oldCount, v$receiver
+        invoke-static/range { v$oldCount .. v${oldCount + 2} }, $ARCHIVE_CLASS->decorateHost(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
         move-result-object v$oldCount
-        check-cast v$oldCount, $feedType
+        check-cast v$oldCount, ${stateMethod.returnType}
         move-object/16 v$receiver, v$oldCount
     """)
 
     val visibleInfo = Fingerprint(name = "toString", filters = listOf(string("VisibleItemInfo(index="))).classDef
     val visibleKeyField = visibleInfo.fields.single { it.type == "Ljava/lang/String;" }
+    val visibleConstructor = visibleInfo.methods.single { it.name == "<init>" }
+    val visibleFields = constructorFields(visibleConstructor)
+    val heightPx = visibleFields[2]
+    val heightDp = visibleFields[3]
+    replaceArchiveBridge("copyVisible", 8, """
+        check-cast p0, ${visibleInfo.type}
+        new-instance v0, ${visibleInfo.type}
+        move-object v1, p2
+        move v2, p1
+        iget v3, p0, $heightPx
+        iget v4, p0, $heightDp
+        invoke-direct { v0, v1, v2, v3, v4 }, $visibleConstructor
+        return-object v0
+    """)
     replaceArchiveBridge("visibleKey", 2, """
         instance-of v0, p0, ${visibleInfo.type}
         if-eqz v0, :none
@@ -287,6 +357,7 @@ internal fun installNativeArchiveFeed(modelType: String, renderer: Method, compo
     val visibleEvent = Fingerprint(name = "toString", filters = listOf(string("VisibleItemsChangedEvent(items="))).classDef
     val eventConstructor = mutableClassDefBy(visibleEvent.type).methods.single { it.name == "<init>" && it.parameterTypes == listOf("Ljava/util/ArrayList;") }
     eventConstructor.addInstructions(0, """
-        invoke-static/range { p1 .. p1 }, $ARCHIVE_CLASS->onVisibleItems(Ljava/util/List;)V
+        invoke-static/range { p1 .. p1 }, $ARCHIVE_CLASS->mapVisible(Ljava/util/ArrayList;)Ljava/util/ArrayList;
+        move-result-object p1
     """)
 }

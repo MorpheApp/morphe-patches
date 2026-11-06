@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import app.morphe.extension.reddit.patches.archive.ArchiveFixture;
+import app.morphe.extension.reddit.patches.archive.ArchiveMixedFixture;
 import app.morphe.extension.reddit.patches.archive.ProfileArchivePatch;
 import java.util.List;
 import kotlin.Unit;
@@ -26,8 +27,10 @@ public final class ArchiveProbe extends Instrumentation {
     public static Object lazyState, revision;
     public static boolean nativeExclusionsVerified;
     public static int wrapperDepth = 1;
+    public static boolean mixed;
     private static List<?> lastVisible;
     private Activity activity;
+    private volatile Activity latestReader;
     private final Handler handler = new Handler(Looper.getMainLooper());
     private boolean running;
     private int assertions;
@@ -42,8 +45,13 @@ public final class ArchiveProbe extends Instrumentation {
         if (args != null) {
             tab = args.getString("tab", tab); theme = args.getString("theme", theme);
             wrapperDepth = Integer.parseInt(args.getString("wrapperDepth", "1"));
+            mixed = args.getString("mode", "hidden").equals("mixed");
         }
         start();
+    }
+    @Override public void callActivityOnCreate(Activity activity, Bundle state) {
+        super.callActivityOnCreate(activity, state);
+        if (activity.getClass().getName().endsWith(".ArchiveReaderActivity")) latestReader = activity;
     }
     @Override public void onStart() {
         Bundle result = new Bundle();
@@ -52,7 +60,12 @@ public final class ArchiveProbe extends Instrumentation {
             activity = startActivitySync(new Intent().setClassName(getTargetContext().getPackageName(),
                     "app.morphe.test.ArchiveProbe$ProbeActivity").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
             app.morphe.extension.reddit.settings.Settings.PROFILE_ARCHIVE.save(true);
+            if (mixed) {
+                ArchiveMixedFixture.verifyProjection();
+                ArchiveFixture.slow = true;
+            }
             runOnMainSync(() -> { revision = newState(0); lazyState = newLazyState(); mount(activity); running = true; tracker.run(); });
+            if (mixed) { runMixed(result); return; }
             await(() -> controller() != null && ArchiveFixture.count(controller()) == 25, 20000, "First page composed");
             settle();
             check(nativeExclusionsVerified, "Native owner, ordinary-empty, flair and invalid-name exclusions");
@@ -110,6 +123,91 @@ public final class ArchiveProbe extends Instrumentation {
         } finally { running = false; handler.removeCallbacks(tracker); }
     }
     private Object controller() { return ArchiveFixture.controller(username, tab.equals("VISITOR_COMMENT")); }
+    private void runMixed(Bundle result) throws Exception {
+        boolean comments = tab.equals("VISITOR_COMMENT");
+        await(() -> ArchiveMixedFixture.liveCount() > 0, 5000, "Live cards render before archive response");
+        check(ArchiveMixedFixture.recoveredCount() == 0, "Archive loading leaves native cards usable");
+        settle();
+        swipe(.82f, .25f, 600); settle();
+        int[] before = position();
+        String[] beforeKey = {null}; runOnMainSync(() -> beforeKey[0] = ArchiveMixedFixture.firstKey(before[0]));
+        ArchiveFixture.slow = false;
+        await(() -> controller() != null && ArchiveMixedFixture.recoveredCount() > 0, 20000, "Archive cards merge into native feed");
+        settle();
+        int[] after = position(); String[] afterKey = {null};
+        runOnMainSync(() -> afterKey[0] = ArchiveMixedFixture.firstKey(after[0]));
+        check(beforeKey[0].equals(afterKey[0]) && Math.abs(before[1] - after[1]) <= 2, "Late insertion retains native visible key and offset");
+        check(ArchiveMixedFixture.liveCount() > 0 && ArchiveMixedFixture.recoveredCount() > 0, "Real native and archive cards share one list");
+        runOnMainSync(ArchiveMixedFixture::verifyIdentityAndMapping);
+        check(ArchiveMixedFixture.hasStatus("Deleted"), "Explicit deleted placeholder gets recovered provenance");
+        check(!ArchiveMixedFixture.hasIndicator(), "Ordinary profiles do not show hidden-history notice");
+        screenshot("mixed"); checkRows();
+        ArchiveFixture.holdPreviews = false;
+        for (int page = 2; page <= 3; page++) {
+            int nextPage = page;
+            runOnMainSync(() -> { ArchiveMixedFixture.page = nextPage; bump(); });
+            for (int count = 0; count < 8; count++) { swipe(.85f, .20f, 160); settle(); }
+        }
+        await(() -> ArchiveFixture.count(controller()) == 73, 20000, "Three mixed pages reach archive-only tail");
+        runOnMainSync(ArchiveMixedFixture::verifyIdentityAndMapping);
+        check(ArchiveMixedFixture.recoveredCount() > 45, "Archive tail survives native exhaustion");
+        int distance = distance(position()); swipe(.25f, .80f, 500); settle();
+        check(distance(position()) < distance, "Mixed feed reverses immediately");
+        if (!comments) {
+            runOnMainSync(() -> { ArchiveMixedFixture.sortChanged("TOP"); bump(); }); settle();
+            check(ArchiveMixedFixture.recoveredCount() == 0, "Other sorts keep native cards and suppress archive results");
+            runOnMainSync(ArchiveMixedFixture::verifyIdentityAndMapping);
+            runOnMainSync(() -> { ArchiveMixedFixture.sortChanged("NEW"); bump(); });
+            await(() -> ArchiveMixedFixture.recoveredCount() > 0, 20000, "Switching back to New resumes recovery");
+        }
+        int[] readerAnchor = position();
+        ActivityMonitor monitor = addMonitor("app.morphe.extension.reddit.patches.archive.ArchiveReaderActivity", null, false);
+        runOnMainSync(() -> ArchiveMixedFixture.openReader(activity));
+        Activity reader = waitForMonitorWithTimeout(monitor, 10000);
+        check(reader != null, "Recovered-card navigation opens private reader");
+        settle();
+        android.widget.ScrollView[] readerScroll = {null};
+        runOnMainSync(() -> readerScroll[0] = findScroll(reader.getWindow().getDecorView()));
+        check(readerScroll[0] != null && hasSelectableText(reader.getWindow().getDecorView()), "Reader contains selectable archived text");
+        runOnMainSync(() -> readerScroll[0].scrollTo(0, 100));
+        SystemClock.sleep(200);
+        int readerOffset = readerScroll[0].getScrollY();
+        check(readerOffset > 0, "Long archived text scrolls in reader");
+        runOnMainSync(reader::recreate);
+        await(() -> latestReader != null && latestReader != reader, 10000, "Reader recreates after configuration change");
+        Activity rotated = latestReader;
+        check(rotated != reader, "Reader recreates after configuration change"); settle();
+        android.widget.ScrollView[] rotatedScroll = {null}; runOnMainSync(() -> rotatedScroll[0] = findScroll(rotated.getWindow().getDecorView()));
+        check(Math.abs(rotatedScroll[0].getScrollY() - readerOffset) <= 2, "Reader retains its scroll offset");
+        runOnMainSync(rotated::finish); removeMonitor(monitor); settle();
+        check(position()[0] == readerAnchor[0] && Math.abs(position()[1] - readerAnchor[1]) <= 2, "Reader Back retains profile position");
+        Object old = controller();
+        runOnMainSync(() -> { ArchiveMixedFixture.refresh(username, comments); bump(); });
+        await(() -> controller() != old && ArchiveMixedFixture.recoveredCount() > 0, 20000, "Refresh replaces archive generation");
+        runOnMainSync(() -> { username = "error_mixed"; ArchiveMixedFixture.page = 1; ArchiveFixture.fail = true; bump(); });
+        await(() -> controller() != null && ArchiveFixture.field(controller(), "error") != null, 20000, "Archive failure delivered");
+        check(ArchiveMixedFixture.liveCount() > 0, "Archive failure leaves native cards on screen");
+        runOnMainSync(() -> { ArchiveFixture.fail = false; ArchiveFixture.retry(controller()); });
+        await(() -> ArchiveMixedFixture.recoveredCount() > 0, 20000, "Mixed-feed Retry recovers");
+        runOnMainSync(() -> { ArchiveMixedFixture.empty = true; ArchiveMixedFixture.page = 3; username = "empty_native"; bump(); });
+        await(() -> controller() != null && "empty_native".equals(ArchiveFixture.field(controller(), "username"))
+                && ArchiveMixedFixture.recoveredCount() > 0, 20000, "Confirmed empty native feed shows archive records");
+        check(ArchiveMixedFixture.liveCount() == 0, "Empty native feed uses archive-only rows");
+        result.putString("stream", assertions + " mixed native runtime assertions passed for " + tab + "; QSF depth=" + wrapperDepth);
+        result.putInt("assertions", assertions); finish(Activity.RESULT_OK, result);
+    }
+    private static android.widget.ScrollView findScroll(View view) {
+        if (view instanceof android.widget.ScrollView scroll) return scroll;
+        if (view instanceof ViewGroup group) for (int i = 0; i < group.getChildCount(); i++) {
+            android.widget.ScrollView found = findScroll(group.getChildAt(i)); if (found != null) return found;
+        }
+        return null;
+    }
+    private static boolean hasSelectableText(View view) {
+        if (view instanceof android.widget.TextView text && text.isTextSelectable()) return true;
+        if (view instanceof ViewGroup group) for (int i = 0; i < group.getChildCount(); i++) if (hasSelectableText(group.getChildAt(i))) return true;
+        return false;
+    }
     private void verifyWrappedModels() {
         int saved = wrapperDepth;
         wrapperDepth = 0;
@@ -239,6 +337,10 @@ public final class ArchiveProbe extends Instrumentation {
     public static final class Content implements Function2<Object, Integer, Unit> {
         public Unit invoke(Object composer, Integer flags) {
             readState(revision);
+            if (mixed) {
+                Object feed = ArchiveMixedFixture.decorate(username, tab.equals("VISITOR_COMMENT"), visible, composer);
+                lazyColumn(lazyState, new Builder(sections(feed), composer), composer); return unit();
+            }
             Object[] excluded = {
                 fixtureFeed("OWNER_POST", username, true, true, false),
                 fixtureFeed("OWNER_COMMENT", username, true, true, false),

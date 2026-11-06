@@ -128,6 +128,15 @@ public final class ArchiveClient implements ArchivePager.Source {
         return parseDetails(request(url, cancellation), new LinkedHashSet<>(ids));
     }
 
+    public ArchiveItem record(String username, String id, boolean comments, Cancellation cancellation) throws IOException {
+        if (ArchiveEligibility.username(username, "VISITOR_POST", true, false, true) == null
+                || username.contains("/") || id == null || !id.matches("[a-z0-9]{1,16}")) throw new IOException("Invalid archive record.");
+        List<ArchiveItem> records = parse(request(new URL(ORIGIN + "/api/" + (comments ? "comments" : "posts")
+                + "/ids?ids=" + id), cancellation), username, comments, 1);
+        if (records.size() != 1 || !records.get(0).id.equals(id)) throw new IOException("This archived item is no longer available.");
+        return records.get(0);
+    }
+
     static URL detailsUrl(List<String> ids) throws IOException {
         if (ids.isEmpty() || ids.size() > 8) throw new IOException("Invalid preview batch.");
         for (String value : ids) {

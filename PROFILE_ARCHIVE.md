@@ -2,22 +2,22 @@
 
 Local custom downstream of [Morphe Patches v2.0.0](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.0.0), upstream commit `6cb8e6b6ee425eda8a854e026507286359f38a32`.
 
-The patch automatically replaces Reddit's explicit hidden-public-history message with archived posts or comments in that tab. It uses [Arctic Shift's public API](https://github.com/ArthurHeitmann/arctic_shift/blob/master/api/README.md). It does not embed Rosint or a browser.
+The patch merges recoverable archived posts and comments into visitor profiles, including ordinary and hidden-history profiles. It uses [Arctic Shift's public API](https://github.com/ArthurHeitmann/arctic_shift/blob/master/api/README.md), without a browser, account credentials, or a separate backend. PullPush is not a dependency.
 
 **Supported input:** official Reddit Android `com.reddit.frontpage`, **2026.40.0**, version code **2640091**. The patch deliberately advertises no other Reddit versions.
 
-**Version .5:** fixes the .4 activation regression when Reddit wraps its hidden-history section in a QSF tracking container. The patch now recognizes the verified container and the original section inside it. Archive cards remain individual keyed items in Reddit's existing feed, with the .3 card appearance and discussion actions.
+**Version .6:** ordinary visitor feeds combine live and archived items in Reddit's existing scrolling list. Readable live cards take precedence; recovered placeholders keep their item identity. Posts starts in New for the profile session. Recovered cards open a private native archived reader with selectable text and available image/gallery previews.
 
-**Device comparison:** S26 Ultra / Android 17 verification on u/literatemice is pending user testing. Emulator fixture results do not establish parity with Reddit's complete profile header and horizontal pager. The supplied .3 APK was inspected as a diagnostic baseline; all .5 builds use the clean supported APKM.
+**Device comparison:** signed-in S26 Ultra / Android 17 verification is pending user testing. Emulator fixture results do not establish parity with Reddit's complete profile header and horizontal pager. Follow [the device acceptance checklist](PROFILE_ARCHIVE_ACCEPTANCE.md) before claiming seamless parity. All .6 builds use the clean supported APKM.
 
 ## Install with Morphe Manager
 
-1. Copy `patches-2.0.0-profile-archive.5.mpp` and your unmodified Reddit **2026.40.0 APKM** to your phone. If upgrading from `.4` or earlier, import this new bundle and patch the original APKM again; importing a bundle alone does not update the installed Reddit app. Keep your existing Manager signing key to install as an update.
+1. Copy `patches-2.0.0-profile-archive.6.mpp` and your unmodified Reddit **2026.40.0 APKM** to your phone. Import this new bundle and patch the original APKM again; importing a bundle alone does not update the installed Reddit app. Keep your existing Manager signing key to install as an update.
 2. In Morphe Manager, open **Sources**, tap **+**, choose **Local**, and import the `.mpp`. The source is named **RedditApp custom patches**. See the [official local-source guide](https://github.com/MorpheApp/morphe-manager/blob/main/docs/patch-sources.md).
 3. Use **only this custom source for Reddit**. On Manager's home screen, long-press Reddit, tap **Patch sources**, untick **Morphe Patches**, and leave **RedditApp custom patches** ticked. This bundle already includes the standard upstream patches. This per-app choice leaves other apps' patch sources unchanged.
 4. Enable Expert mode if needed and select **Archived public profile history**. It is deliberately opt-in in the patch list. Its in-app setting starts enabled once the patch is selected. Select the unmodified APKM and patch it.
 5. Install the resulting APK through Manager. A patched APK has a different signing key from the official app; Android may require replacing an existing official installation. Preserve any local settings you need before doing that.
-6. Open a profile whose public Posts or Comments history is hidden. Archived results load automatically, with more history loading near the end of the list. A small **Unhidden · Archived history** row appears above the first restored item and scrolls away with the list. Tap it for source details. Tap a card, action, or preview to open its original Reddit discussion for voting, replying, sharing, or full media.
+6. Open another user's Posts or Comments. Recoverable content loads automatically alongside live cards. Archived cards have a subtle **Archived**, **Deleted**, or **Removed** label. A recovered card opens the archived reader; **Open original discussion** and card action buttons open Reddit for voting, replying, sharing, and video playback. Hidden profiles retain their scrolling **Unhidden · Archived history** notice.
 
 Toggle the feature in **Morphe settings → Miscellaneous → Archived public profile history**. Reopen the profile after turning it off to return to Reddit's ordinary view.
 
@@ -33,11 +33,14 @@ If the same error persists, confirm the new error report lists only **RedditApp 
 
 ## Behavior and limits
 
-- Activates only for a visitor's filtered Posts/Comments state. Ordinary empty tabs, the owner's tabs, flair-filtered views, invalid usernames, and the disabled setting return to Reddit's existing code.
+- Activates for ordinary and hidden visitor Posts/Comments. A confirmed empty native response may show archived results. Owner/saved feeds, flair-filtered views, invalid usernames, and the disabled setting keep Reddit's existing behavior.
+- Posts starts in **New** once for a bound profile session, without writing global sort preferences. Explicit sort changes are respected. Other sorts show native content with an **Archived items are available in New** action. Comments remain chronological.
+- Deduplicates by Reddit fullname, keeping readable live content and native actions. Only explicit Reddit deletion/removal evidence produces a **Deleted** or **Removed** label; absence from a loaded page is labeled **Archived**. Native pinned cards stay above chronological content. Non-content sections and QSF tracking wrappers are preserved.
+- Archive records older than the loaded native time range are buffered while Reddit has more pages, including the timestamp boundary. Once Reddit ends, archives continue paging. A separate archive failure/Retry row never replaces usable live content. Refresh, sort/filter changes, and profile changes invalidate old requests.
 - Does not add a fallback for blocked, suspended, or deleted accounts. Archive coverage can be incomplete, delayed, or outdated; private messages and private community access are not provided.
 - Sends the viewed username to Arctic Shift. No Reddit account token, authenticated API client, or session headers are copied. Requests use HTTPS, reject redirects, and have timeouts and a response-size bound.
-- Uses Reddit's bundled Reddit Sans fonts, native icons, and active theme resources for post and comment cards, relative timestamps, flair, archived scores/counts, and action rows. The profile header and tabs remain Reddit's own. Text previews remain plain text and are truncated in the feed. The only archive heading is the scrolling **Unhidden · Archived history** indicator; it is absent during initial loading, empty results, and initial errors.
-- Enriches visible posts and comment parent context using batches of at most eight full archive records. Image previews, gallery covers/counts, and video posters are optional and never block readable text. Voting, replying, sharing, gallery browsing, and video playback happen in the original discussion; the archive rows do not change votes. Discussion links are constructed from validated IDs.
+- Uses Reddit's bundled Reddit Sans fonts, native icons, and active theme resources for post and comment cards, relative timestamps, flair, archived scores/counts, and action rows. The profile header and tabs remain Reddit's own. Plain-text feed previews are truncated; the archived reader shows full captured text. Only hidden profiles show the scrolling **Unhidden · Archived history** heading.
+- Enriches visible posts and comment parent context using batches of at most eight full archive records. The non-exported archived-reader activity shows full selectable text, provenance, available images and gallery previews, and explicit unavailable states. It preserves scroll/gallery state on recreation and uses the profile's colors. Videos show posters and open the original discussion for playback. Discussion links are constructed from validated IDs.
 - Preview images are fetched without account credentials from HTTPS `i.redd.it`, `preview.redd.it`, or `external-preview.redd.it` only. Redirects are rejected; each download is limited to 6 MiB, decoded images to approximately 1.2 million pixels, and the shared image cache to 8 MiB. Spoiler/NSFW media stays masked in the archive view and opens in Reddit. Missing or failed images retain a usable media placeholder.
 - Loads 25 records per page, newest first, when Reddit reports visible items within three archive records of the end. Stable profile/tab/item keys preserve native lazy-list anchors during page additions and enrichment; Reddit owns scrolling and each tab's scroll state. Loading/error/Retry/end states are scrolling footer content. A failed page pauses automatic loading until Retry. Before advancing the timestamp cursor, it resolves ties in the oldest second and deduplicates IDs. If 100 records fill a single-second query, it explicitly stops with a warning instead of silently skipping records.
 - Handles loading, empty archives, retryable errors, and rate limits. At most one automatic retry is used. The provider's rate-limit headers apply across profile tabs.
@@ -57,7 +60,7 @@ $env:GRADLE_USER_HOME = "$PWD\.local\gradle"
 .\scripts\test-profile-archive.ps1
 ```
 
-Bundle output: `patches/build/libs/patches-2.0.0-profile-archive.5.mpp`.
+Bundle output: `patches/build/libs/patches-2.0.0-profile-archive.6.mpp`.
 
 Apply source code to a local APK/APKM and perform Android SDK checks:
 
@@ -71,7 +74,7 @@ Validate the actual packaged bundle instead of loose build outputs:
 .\gradlew.bat :patches:validateProfileArchiveBundle `
   '-PredditApk=C:/path/reddit-2026.40.0.apkm' `
   '-PredditOutput=.local/output/reddit-from-bundle-unsigned.apk' `
-  '-PredditBundle=patches/build/libs/patches-2.0.0-profile-archive.5.mpp'
+  '-PredditBundle=patches/build/libs/patches-2.0.0-profile-archive.6.mpp'
 ```
 
 For a compatibility check against another prepared local Patcher checkout, add
@@ -80,13 +83,29 @@ For a compatibility check against another prepared local Patcher checkout, add
 The APK output is unsigned. Use Manager for normal installation/signing. For emulator testing only, pass `-Probe` to the build script. This adds a dedicated activity and deterministic transport from `tests/android`, using Reddit's own Compose lazy-list runtime and section interface. Sign this test APK with a local test key and install it on a disposable emulator:
 
 ```powershell
-adb -s emulator-5582 shell am instrument -w -e tab VISITOR_POST `
+adb -s emulator-5580 shell am instrument -w -e tab VISITOR_POST `
   com.reddit.frontpage/app.morphe.test.ArchiveProbe
-adb -s emulator-5582 shell am instrument -w -e tab VISITOR_COMMENT `
+adb -s emulator-5580 shell am instrument -w -e tab VISITOR_COMMENT `
+  com.reddit.frontpage/app.morphe.test.ArchiveProbe
+adb -s emulator-5580 shell am instrument -w -e mode mixed -e tab VISITOR_POST -e wrapperDepth 2 `
+  com.reddit.frontpage/app.morphe.test.ArchiveProbe
+adb -s emulator-5580 shell am instrument -w -e mode mixed -e tab VISITOR_COMMENT -e theme dark `
   com.reddit.frontpage/app.morphe.test.ArchiveProbe
 ```
 
 The fixture constructs Reddit's real QSF section container, including its delivery context, around the hidden-history section by default. Pass `-e wrapperDepth 0` for the direct section or `-e wrapperDepth 2` for nested containers. It also checks both models at depths zero, one, and two before rendering. The fixture injects real MotionEvent drags/flings and feeds actual lazy-layout positions into Reddit's visible-item event constructor. Its header is a synthetic lazy item, not the complete Reddit profile shell. Fixture network responses cover three pages, delayed previews, cancellation, empty results, error and retry. It never contacts the archive service. Release builds contain neither these fixtures nor the transport replacement.
+
+## Ordinary-profile merge .6 verification recorded on 2026-11-05
+
+- **Core:** eligibility checks, **254 core assertions**, **22 native-item assertions**, and **2,105 merge assertions** pass. New coverage includes live precedence, recoverable placeholders, explicit provenance, duplicate fullnames, timestamp ties, pins, unloaded native boundaries, empty profiles, full reader text, and gallery ordering.
+- **Mixed Posts:** **37 runtime assertions** pass with nested QSF containers in light theme. Checks exercise real native section rendering, late insertion above the viewport, final Reddit lazy keys, native visibility-index translation, three mixed pages, archive-only tails, reverse scrolling, explicit sort changes, reader recreation and Back position, refresh, archive failure/Retry, and confirmed empty native feeds. A duplicate pinned-row key found during Top-sort testing was corrected and the test passes.
+- **Mixed Comments:** **35 runtime assertions** pass with direct native sections in dark theme at **1.6× font scale**, including three mixed pages, late-insertion anchors, reader state, and failure/Retry. The existing wrapped hidden-history Comments fixture also passes **39 assertions** at the same text scale, covering drag/fling/reverse gestures, delayed-preview anchors, cancellation, stale-result rejection, and empty/error states. Runs use the disposable read-only Pixel 10 Pro Fold emulator, API 37, 1080 × 2340 / 420 dpi.
+- **Bundle:** `:patches:buildAndroid` and `:patches:checkStringResources` pass. The packaged `.6` bundle applies to the clean 2026.40.0 APKM. SDK DEX checks report the same **30 stock optional-SDK findings**, with no additional findings. Packaged auditing verifies the context/refresh/final-key hooks and excludes test fixtures and the legacy nested scroller. The compiled manifest registers the reader with `exported=false`.
+- **Release launch:** the APK produced from the packaged bundle installs and opens Reddit's ordinary welcome screen on the emulator, with an empty crash log. No signed-in account was used for this check.
+
+The mixed fixture uses real ClassicPostElement and profile-comment sections, with direct and QSF-wrapped cases. Its synthetic shell does not supply the complete post-card composition or Reddit's complete Compose theme provider. Screenshots support inspection of archive typography and layout; they do **not** establish visual parity with complete signed-in native cards, collapsing headers, or horizontal tab gestures. Those checks remain in [the S26 Ultra acceptance checklist](PROFILE_ARCHIVE_ACCEPTANCE.md).
+
+Bundle SHA-256: `B91A16A0287E554105CA91DC3E6F59612AFA17396EDB3AAA7B2C5EEE19D6DCCC`.
 
 ## Hidden-history activation .5 verification recorded on 2026-11-05
 

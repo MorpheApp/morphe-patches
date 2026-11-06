@@ -9,6 +9,7 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.Compatibility
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
 import app.morphe.patches.reddit.misc.settings.settingsPatch
@@ -32,6 +33,18 @@ internal val profileModel = Fingerprint(
     name = "toString", returnType = "Ljava/lang/String;", parameters = emptyList(),
     filters = listOf(string("ProfileEmptyFeedPresentationModel(targetFeed="))
 )
+
+private val archiveReaderResources = resourcePatch {
+    execute {
+        document("AndroidManifest.xml").use { doc ->
+            val activity = doc.createElement("activity")
+            activity.setAttribute("android:name", "app.morphe.extension.reddit.patches.archive.ArchiveReaderActivity")
+            activity.setAttribute("android:exported", "false")
+            activity.setAttribute("android:theme", "@android:style/Theme.Material.Light.NoActionBar")
+            doc.getElementsByTagName("application").item(0).appendChild(activity)
+        }
+    }
+}
 
 // These are Compose AndroidView's actual factory/update parameters, discovered in the APK.
 // No obfuscated class or method names are embedded in the runtime extension.
@@ -67,7 +80,7 @@ fun replaceArchiveBridge(name: String, registers: Int, code: String, type: Strin
 @Suppress("unused")
 val profileArchivePatch = bytecodePatch(
     name = "Archived public profile history",
-    description = "Shows archived public posts and comments in hidden profile tabs using Arctic Shift. Sends the viewed username to that service. Coverage may be incomplete or outdated.",
+    description = "Merges archived public posts and comments into profiles using Arctic Shift, including hidden history and recoverable deleted content. Sends the viewed username to that service. Coverage may be incomplete or outdated.",
     default = false
 ) {
     compatibleWith(Compatibility(
@@ -76,7 +89,7 @@ val profileArchivePatch = bytecodePatch(
         apkFileType = COMPATIBILITY_REDDIT.apkFileType,
         targets = COMPATIBILITY_REDDIT.targets.filter { it.version == "2026.40.0" }
     ))
-    dependsOn(settingsPatch)
+    dependsOn(settingsPatch, archiveReaderResources)
 
     execute {
         // The runtime resolves these host resources by name. Fail while patching if the

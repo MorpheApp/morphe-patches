@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 /** Recyclable profile post/comment row, using Reddit's own fonts, theme and icon drawables. */
 final class ArchiveCardView extends LinearLayout {
-    interface Navigation { void open(ArchiveItem item); }
+    interface Navigation { void open(ArchiveItem item); default void original(ArchiveItem item) { open(item); } }
     final ArchiveTheme theme;
     private final TextView community, time, title, body, flair, context, score, replies, share, overflow;
     private final FrameLayout media;
@@ -48,7 +48,7 @@ final class ArchiveCardView extends LinearLayout {
         overflow.setCompoundDrawables(theme.icon("icon_overflow_horizontal", 20, theme.secondary), null, null, null);
         overflow.setGravity(Gravity.CENTER); overflow.setPadding(theme.dp(14), 0, 0, 0);
         overflow.setBackground(theme.ripple(Color.TRANSPARENT, 24));
-        overflow.setOnClickListener(view -> open()); overflow.setContentDescription("Open original discussion for more actions");
+        overflow.setOnClickListener(view -> original()); overflow.setContentDescription("Open original discussion for more actions");
         metadata.addView(overflow, new LayoutParams(theme.dp(48), theme.dp(48)));
         addView(metadata, new LayoutParams(-1, -2));
         this.context = theme.text(12, theme.secondary, theme.regular);
@@ -100,18 +100,21 @@ final class ArchiveCardView extends LinearLayout {
         view.setCompoundDrawablesRelative(theme.icon(icon, 20, theme.foreground), null, null, null);
         // 32dp visual pill inside a 48dp touch target.
         view.setBackground(new android.graphics.drawable.InsetDrawable(theme.ripple(theme.surface, 20), 0, theme.dp(8), 0, theme.dp(8)));
-        view.setOnClickListener(v -> open()); return view;
+        view.setOnClickListener(v -> original()); return view;
     }
 
     void bind(ArchiveItem item, ArchivePostDetails details) {
+        bind(item, details, "Archived");
+    }
+    void bind(ArchiveItem item, ArchivePostDetails details, String provenance) {
         this.item = item; this.details = details;
         String name = item.subreddit.isEmpty() ? "u/" + item.author : "r/" + item.subreddit;
         android.text.SpannableString metadata = new android.text.SpannableString(name + " · "
-                + ArchiveDisplay.age(item.createdUtc, System.currentTimeMillis() / 1000));
+                + ArchiveDisplay.age(item.createdUtc, System.currentTimeMillis() / 1000) + " · " + provenance);
         metadata.setSpan(new android.text.style.ForegroundColorSpan(theme.secondary), name.length(), metadata.length(), 0);
         metadata.setSpan(new android.text.style.TypefaceSpan(theme.regular), name.length(), metadata.length(), 0);
         community.setText(metadata); time.setVisibility(GONE);
-        community.setContentDescription(name + ". " + android.text.format.DateUtils.formatDateTime(getContext(), item.createdUtc * 1000,
+        community.setContentDescription(name + ". " + provenance + ". " + android.text.format.DateUtils.formatDateTime(getContext(), item.createdUtc * 1000,
                 android.text.format.DateUtils.FORMAT_SHOW_DATE | android.text.format.DateUtils.FORMAT_SHOW_YEAR));
         context.setVisibility(item.comments ? VISIBLE : GONE); context.setText("u/" + item.author + " commented");
         String titleText = item.comments ? (details == null ? "" : details.title) : item.title;
@@ -184,4 +187,5 @@ final class ArchiveCardView extends LinearLayout {
     @Override protected void onAttachedToWindow() { super.onAttachedToWindow(); resumeImage(); }
     @Override protected void onDetachedFromWindow() { cancelImage(); super.onDetachedFromWindow(); }
     private void open() { if (item != null) navigation.open(item); }
+    private void original() { if (item != null) navigation.original(item); }
 }

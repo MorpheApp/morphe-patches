@@ -16,6 +16,7 @@ public final class ArchiveCoreTest {
     public static void main(String[] args) throws Exception {
         parsingAndLinks();
         previewMetadata();
+        readerRecords();
         pagination();
         cancellationAndRetry();
         rateHeaders();
@@ -87,6 +88,11 @@ public final class ArchiveCoreTest {
                 + "\"second\":{\"s\":{\"u\":\"https://i.redd.it/second.jpg\",\"x\":600,\"y\":800}}}}";
         ArchivePostDetails album = ArchiveClient.parseDetails("{\"data\":[" + gallery + "]}", Set.of("abc")).get("abc");
         check(album.galleryCount == 2 && album.preview.url.endsWith("second.jpg"), "Gallery cover follows gallery order, not object order");
+        check(album.gallery.size() == 2 && album.gallery.get(0).url.endsWith("second.jpg")
+                && album.gallery.get(1).url.endsWith("first.jpg"), "Reader gallery preserves every image in order");
+        String partialGallery = gallery.replace("\"media_id\":\"second\"", "\"media_id\":\"missing\"");
+        ArchivePostDetails partial = ArchiveClient.parseDetails("{\"data\":[" + partialGallery + "]}", Set.of("abc")).get("abc");
+        check(partial.gallery.size() == 2 && partial.gallery.get(0) == null && partial.gallery.get(1) != null, "Missing gallery images keep their positions");
         String video = "{\"id\":\"abc\",\"is_video\":true,\"thumbnail\":\"https://i.redd.it/poster.jpg\",\"thumbnail_width\":140,\"thumbnail_height\":100}";
         ArchivePostDetails poster = ArchiveClient.parseDetails("{\"data\":[" + video + "]}", Set.of("abc")).get("abc");
         check(poster.video && poster.preview.url.endsWith("poster.jpg"), "Video uses poster, not playback stream");
@@ -106,6 +112,25 @@ public final class ArchiveCoreTest {
         check(fake.details(List.of("abc"), new ArchiveClient.Cancellation()).get("abc").preview != null && calls.get() == 1, "Enrichment uses shared transport");
         ArchiveClient.Cancellation cancelled = new ArchiveClient.Cancellation(); cancelled.cancel();
         check(fails(() -> fake.details(List.of("abc"), cancelled)) instanceof InterruptedIOException && calls.get() == 1, "Cancelled enrichment never reaches transport");
+    }
+    private static void readerRecords() throws Exception {
+        String fullText = "Archived text. ".repeat(3000);
+        String row = new org.json.JSONObject().put("id", "abc").put("author", "some_user")
+                .put("created_utc", 1700000000).put("selftext", fullText).put("body", fullText).put("link_id", "t3_def").toString();
+        List<String> routes = new ArrayList<>();
+        ArchiveClient client = new ArchiveClient((url, cancel) -> {
+            routes.add(url.toString()); return new ArchiveClient.Response(200, "{\"data\":[" + row + "]}", Map.of());
+        });
+        check(client.record("some_user", "abc", false, new ArchiveClient.Cancellation()).text.equals(fullText), "Reader recovery keeps full archived post text");
+        check(client.record("some_user", "abc", true, new ArchiveClient.Cancellation()).text.equals(fullText), "Reader recovery keeps full comment text");
+        check(routes.get(0).endsWith("/posts/ids?ids=abc") && routes.get(1).endsWith("/comments/ids?ids=abc"), "Reader uses correct credential-free ID routes");
+        fails(() -> client.record("other_user", "abc", false, new ArchiveClient.Cancellation()));
+        fails(() -> client.record("some_user", "different", false, new ArchiveClient.Cancellation()));
+        int before = routes.size();
+        fails(() -> client.record("some_user", "abc&ids=other", false, new ArchiveClient.Cancellation()));
+        ArchiveClient.Cancellation cancelled = new ArchiveClient.Cancellation(); cancelled.cancel();
+        fails(() -> client.record("some_user", "abc", false, cancelled));
+        check(routes.size() == before, "Invalid or cancelled reader recovery does not reach transport");
     }
     private static ArchivePager.Source source(List<ArchiveItem> data, AtomicInteger calls) {
         return (user, comments, before, after, limit, cancellation) -> {

@@ -16,14 +16,20 @@ final class ArchiveTheme {
     final Typeface regular, semibold, bold;
 
     ArchiveTheme(Context context) {
+        this(context, null);
+    }
+
+    ArchiveTheme(Context context, int[] colors) {
         this.context = context;
-        background = attribute("rdt_ds_color_rpl_neutral_background", color("neutral_background"));
-        foreground = attribute("rdt_body_text_color", color("rdt_content_strong_neutral"));
-        secondary = attribute("rdt_meta_text_color", color("rdt_content_weak_neutral"));
-        surface = color("rdt_background_weak_neutral");
-        divider = attribute("rdt_line_color", secondary & 0x00ffffff | 0x33000000);
+        boolean inherited = colors != null && colors.length == 5;
+        background = inherited ? colors[0] : attribute("rdt_ds_color_rpl_neutral_background", color("neutral_background"));
+        foreground = inherited ? colors[1] : attribute("rdt_body_text_color", color("rdt_content_strong_neutral"));
+        secondary = inherited ? colors[2] : attribute("rdt_meta_text_color", color("rdt_content_weak_neutral"));
+        surface = inherited ? colors[3] : color("rdt_background_weak_neutral");
+        divider = inherited ? colors[4] : attribute("rdt_line_color", secondary & 0x00ffffff | 0x33000000);
         regular = font("reddit_sans_regular"); semibold = font("reddit_sans_semi_bold"); bold = font("reddit_sans_bold");
     }
+    int[] colors() { return new int[] {background, foreground, secondary, surface, divider}; }
 
     int dp(float value) { return Math.round(value * context.getResources().getDisplayMetrics().density); }
     private int id(String name, String type) { return context.getResources().getIdentifier(name, type, context.getPackageName()); }

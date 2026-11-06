@@ -29,7 +29,19 @@ public final class ArchiveController {
     private static final LinkedHashMap<String, Cached> CACHE = new LinkedHashMap<>(8, .75f, true);
     private static final List<WeakReference<ArchiveController>> ACTIVE = new ArrayList<>();
     final String username, key;
+    final String sessionIdentity;
     final boolean comments;
+    private ArchiveProfileContext profile;
+    private int profileGeneration;
+    private boolean nativeMore;
+    private boolean mixedMode;
+    private boolean renderedChronological;
+    private boolean nativeVisible;
+    boolean includeNativeIndex;
+    private boolean archiveNeeded;
+    private final Map<String, Integer> originalIndices = new LinkedHashMap<>();
+    private final Map<String, String> originalKeys = new LinkedHashMap<>();
+    private final Map<String, Integer> archiveIndices = new LinkedHashMap<>();
     private final Object state;
     private final ArchiveClient client = new ArchiveClient();
     private final ArrayList<ArchiveItem> items = new ArrayList<>();
@@ -49,7 +61,19 @@ public final class ArchiveController {
     private List<?> renderedSections;
 
     ArchiveController(String username, boolean comments) {
+        this(username, comments, ArchiveSnapshot.prefix(username, comments));
+    }
+    ArchiveController(ArchiveProfileContext profile, String identity) {
+        this(profile.username, profile.comments, identity); this.profile = profile;
+        profileGeneration = profile.generation;
+        if (profile.generation > 0) {
+            items.clear(); details.clear(); pager = new ArchivePager(); loaded = false; more = true; notice = "";
+            CACHE.remove(key); publish();
+        }
+    }
+    private ArchiveController(String username, boolean comments, String identity) {
         this.username = username; this.comments = comments; key = ArchiveSnapshot.prefix(username, comments);
+        sessionIdentity = identity;
         Cached cached = CACHE.get(key);
         if (cached != null && SystemClock.elapsedRealtime() - cached.savedAt < 120000) {
             items.addAll(cached.items); details.putAll(cached.details); pager = cached.pager.copy();
@@ -76,15 +100,119 @@ public final class ArchiveController {
         // A background result is rejected immediately; work/state updates run after composition.
         MAIN.removeCallbacks(applyVisibility); MAIN.post(applyVisibility);
     }
+    void nativeVisibility(boolean next) { nativeVisible = next; }
     private void applyVisibility() {
         if (!active()) { cancel(); return; }
         if (error == null && (!loaded || lastVisible >= items.size() - 3)) load();
         scheduleEnrichment();
     }
-    private boolean active() { return remembered && visible && Settings.PROFILE_ARCHIVE.get(); }
+    private boolean current() { return remembered && Settings.PROFILE_ARCHIVE.get()
+            && (profile == null || !profile.flairFiltered && profile.generation == profileGeneration); }
+    private boolean active() { return current() && visible; }
+
+    static void invalidate(ArchiveProfileContext profile) {
+        MAIN.post(() -> {
+            for (WeakReference<ArchiveController> reference : ACTIVE) {
+                ArchiveController owner = reference.get();
+                if (owner != null && owner.profile == profile && !owner.active()) owner.cancel();
+            }
+        });
+    }
     private boolean accepts(int request) { return request == generation && active(); }
 
+    List<?> mixedSections(List<?> original, boolean hasMore, boolean chronological) {
+        mixedMode = true;
+        ArchiveSnapshot observed = (ArchiveSnapshot) ProfileArchivePatch.readState(state);
+        if (renderedOriginal == original && renderedSnapshot == observed && nativeMore == hasMore && renderedChronological == chronological) return renderedSections;
+        nativeMore = hasMore;
+        renderedChronological = chronological;
+        originalIndices.clear(); originalKeys.clear(); archiveIndices.clear();
+        List<ArchiveNativeItem> nativeItems = new ArrayList<>();
+        for (Object section : original) nativeItems.add(ProfileArchivePatch.nativeItem(section));
+        archiveNeeded = needsCatchup(nativeItems);
+        ArrayList<Object> result = new ArrayList<>();
+        if (!chronological) {
+            result.add(new ArchiveSection(this, new ArchiveSnapshot.Row(key + "sort", ArchiveSnapshot.SORT, -1,
+                    null, null, "Archived items are available in New", false, false)));
+            Set<String> used = new HashSet<>();
+            for (int i = 0; i < original.size(); i++) {
+                Object section = original.get(i); ArchiveNativeItem item = nativeItems.get(i);
+                String rowKey = nativeKey(section, item, i);
+                if (!used.add(rowKey)) rowKey += "|duplicate|" + i;
+                result.add(new ArchiveNativeSection(this, section, rowKey)); mapNative(rowKey, i, original);
+            }
+        } else {
+            Map<Integer, ArchiveSnapshot.Row> rows = new LinkedHashMap<>();
+            for (ArchiveSnapshot.Row row : observed.rows) if (row.itemIndex >= 0) rows.put(row.itemIndex, row);
+            List<ArchiveMerge.Entry> merged = ArchiveMerge.merge(nativeItems, items, hasMore, true);
+            boolean recovered = merged.stream().anyMatch(entry -> entry.archiveIndex >= 0);
+            int priorNative = -1;
+            for (ArchiveMerge.Entry entry : merged) {
+                if (entry.nativeIndex >= 0) priorNative = entry.nativeIndex;
+                if (entry.archiveIndex >= 0) {
+                    ArchiveSnapshot.Row row = rows.get(entry.archiveIndex);
+                    String rowKey = key + ArchiveMerge.fullname(row.item);
+                    result.add(new ArchiveSection(this, new ArchiveSnapshot.Row(rowKey, ArchiveSnapshot.CARD,
+                            row.itemIndex, row.item, row.details, "", false, false, entry.status)));
+                    archiveIndices.put(rowKey, row.itemIndex);
+                    if (priorNative >= 0) mapNative(rowKey, priorNative, original);
+                } else {
+                    Object section = original.get(entry.nativeIndex);
+                    if (recovered && ProfileArchivePatch.emptySection(section)) continue;
+                    ArchiveNativeItem item = nativeItems.get(entry.nativeIndex);
+                    String rowKey = nativeKey(section, item, entry.nativeIndex);
+                    result.add(new ArchiveNativeSection(this, section, rowKey));
+                    mapNative(rowKey, entry.nativeIndex, original);
+                }
+            }
+            for (ArchiveSnapshot.Row row : observed.rows) if (row.kind == ArchiveSnapshot.STATUS) {
+                String message = row.message;
+                if (loaded && items.isEmpty() && error == null || !more && error == null && notice.isEmpty()) message = "";
+                result.add(new ArchiveSection(this, new ArchiveSnapshot.Row(key + "status", ArchiveSnapshot.STATUS,
+                        -1, null, null, message, row.loading, row.retry)));
+            }
+        }
+        renderedOriginal = original; renderedSnapshot = observed;
+        renderedSections = ProfileArchivePatch.immutableList(result);
+        // Keep filling the observed native time range even when the archive page contained only duplicates.
+        if (chronological && visible && archiveNeeded && !loading && error == null) MAIN.post(this::load);
+        return renderedSections;
+    }
+    private boolean needsCatchup(List<ArchiveNativeItem> nativeItems) {
+        if (!more || !loaded || items.isEmpty()) return false;
+        long oldest = Long.MAX_VALUE;
+        for (ArchiveNativeItem item : nativeItems) if (item != null && !item.pinned && item.createdUtc > 0) oldest = Math.min(oldest, item.createdUtc);
+        return oldest != Long.MAX_VALUE && items.get(items.size() - 1).createdUtc >= oldest;
+    }
+    private void mapNative(String key, int index, List<?> original) {
+        originalIndices.put(key, index); originalKeys.put(key, ProfileArchivePatch.sectionKey(original.get(index)));
+    }
+    private String nativeKey(Object section, ArchiveNativeItem item, int index) {
+        return key + (item == null ? "native|" + ProfileArchivePatch.sectionKey(section) + "|" + index : item.fullname);
+    }
+    void selectNew() { if (profile != null && profile.host.get() != null) ProfileArchivePatch.selectNew(profile.host.get()); }
+    static int originalIndex(String visibleKey) {
+        for (WeakReference<ArchiveController> ref : ACTIVE) {
+            ArchiveController owner = ref.get();
+            if (owner == null || owner.profile == null || !owner.current() || !owner.nativeVisible) continue;
+            for (Map.Entry<String, Integer> entry : owner.originalIndices.entrySet())
+                if (ArchiveSnapshot.matches(visibleKey, entry.getKey())) return entry.getValue();
+        }
+        return -1;
+    }
+    static String originalKey(String visibleKey) {
+        for (WeakReference<ArchiveController> ref : ACTIVE) {
+            ArchiveController owner = ref.get();
+            if (owner == null || owner.profile == null || !owner.current() || !owner.nativeVisible) continue;
+            for (Map.Entry<String, String> entry : owner.originalKeys.entrySet())
+                if (ArchiveSnapshot.matches(visibleKey, entry.getKey())) return entry.getValue()
+                        + (owner.includeNativeIndex ? "_" + owner.originalIndices.get(entry.getKey()) : "");
+        }
+        return null;
+    }
+
     List<?> sections(List<?> original, int replacedIndex) {
+        mixedMode = false;
         ArchiveSnapshot observed = (ArchiveSnapshot) ProfileArchivePatch.readState(state);
         if (renderedOriginal == original && renderedSnapshot == observed) return renderedSections;
         ArrayList<Object> result = new ArrayList<>(original.size() + observed.rows.size());
@@ -107,15 +235,29 @@ public final class ArchiveController {
             ArchiveController controller = reference.get();
             if (controller == null || !controller.active()) continue;
             int first = Integer.MAX_VALUE, last = -1;
+            boolean mixedEnd = false;
             for (String nativeKey : nativeKeys) {
                 if (nativeKey == null || !nativeKey.startsWith(controller.key)) continue;
-                for (ArchiveSnapshot.Row row : controller.snapshot.rows) {
+                if (controller.mixedMode && controller.renderedSections != null) {
+                    for (int i = 0; i < controller.renderedSections.size(); i++) {
+                        Object section = controller.renderedSections.get(i);
+                        String rowKey = section instanceof ArchiveSection ? ((ArchiveSection) section).key()
+                                : section instanceof ArchiveNativeSection ? ((ArchiveNativeSection) section).key() : null;
+                        if (rowKey != null && ArchiveSnapshot.matches(nativeKey, rowKey)) {
+                            mixedEnd |= i >= controller.renderedSections.size() - 4;
+                        }
+                    }
+                }
+                if (controller.mixedMode) {
+                    Integer index = controller.archiveIndices.get(nativeKey);
+                    if (index != null) { first = Math.min(first, index); last = Math.max(last, index); }
+                } else for (ArchiveSnapshot.Row row : controller.snapshot.rows)
                     if (row.itemIndex >= 0 && ArchiveSnapshot.matches(nativeKey, row.key)) {
                         first = Math.min(first, row.itemIndex); last = Math.max(last, row.itemIndex); break;
                     }
-                }
             }
             // Other feeds can emit visibility events too; they must not clear this feed's range.
+            if (mixedEnd && controller.error == null && !controller.loading) MAIN.post(controller::load);
             if (last < 0) continue;
             boolean changed = controller.firstVisible != first || controller.lastVisible != last;
             controller.firstVisible = first; controller.lastVisible = last;
@@ -129,6 +271,7 @@ public final class ArchiveController {
     void retry() { if (active() && !loading) { error = null; load(); } }
     private void load() {
         if (!active() || loading || !more || error != null) return;
+        if (mixedMode && loaded && nativeMore && !archiveNeeded) return;
         final int request = generation;
         final ArchivePager next = pager.copy();
         final ArchiveClient.Cancellation token = new ArchiveClient.Cancellation();

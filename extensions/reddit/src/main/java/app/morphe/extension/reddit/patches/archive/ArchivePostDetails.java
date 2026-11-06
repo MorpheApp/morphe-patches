@@ -5,6 +5,9 @@ import org.json.JSONObject;
 
 import java.net.URI;
 import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /** Optional presentation data. A malformed preview never makes the text feed unusable. */
 public final class ArchivePostDetails {
@@ -14,18 +17,21 @@ public final class ArchivePostDetails {
     public final boolean nsfw, spoiler, video;
     public final int galleryCount;
     public final Preview preview;
+    public final List<Preview> gallery;
 
-    private ArchivePostDetails(JSONObject row, Preview preview, int galleryCount) {
+    private ArchivePostDetails(JSONObject row, Preview preview, int galleryCount, List<Preview> gallery) {
         title = text(row, "title"); author = text(row, "author"); subreddit = text(row, "subreddit");
         flair = text(row, "link_flair_text"); commentCount = count(row, "num_comments");
         nsfw = row.optBoolean("over_18"); spoiler = row.optBoolean("spoiler");
         video = row.optBoolean("is_video") || text(row, "post_hint").contains("video");
         this.preview = preview; this.galleryCount = galleryCount;
+        this.gallery = Collections.unmodifiableList(gallery);
     }
 
     static ArchivePostDetails parse(JSONObject row) {
         Preview preview = null;
         int galleryCount = 0;
+        List<Preview> galleryPreviews = new ArrayList<>();
         JSONObject gallery = row.optJSONObject("gallery_data"), metadata = row.optJSONObject("media_metadata");
         JSONArray galleryItems = gallery == null ? null : gallery.optJSONArray("items");
         if (galleryItems != null) {
@@ -34,6 +40,11 @@ public final class ArchivePostDetails {
             JSONObject first = galleryItems.optJSONObject(0);
             JSONObject media = first == null || metadata == null ? null : metadata.optJSONObject(first.optString("media_id"));
             if (media != null) preview = choose(media.optJSONArray("p"), media.optJSONObject("s"), "u", "x", "y");
+            for (int i = 0; i < galleryCount; i++) {
+                JSONObject entry = galleryItems.optJSONObject(i);
+                JSONObject image = entry == null || metadata == null ? null : metadata.optJSONObject(entry.optString("media_id"));
+                galleryPreviews.add(image == null ? null : choose(image.optJSONArray("p"), image.optJSONObject("s"), "u", "x", "y"));
+            }
         }
         if (preview == null) {
             JSONObject previews = row.optJSONObject("preview");
@@ -49,7 +60,7 @@ public final class ArchivePostDetails {
             String url = imageUrl(text(row, "url"));
             if (url != null) preview = new Preview(url, 0, 0);
         }
-        return new ArchivePostDetails(row, preview, galleryCount);
+        return new ArchivePostDetails(row, preview, galleryCount, galleryPreviews);
     }
 
     private static Preview choose(JSONArray variants, JSONObject source, String urlKey, String widthKey, String heightKey) {
@@ -101,7 +112,11 @@ public final class ArchivePostDetails {
         return value instanceof String ? ((String) value).substring(0, Math.min(((String) value).length(), 4096)) : "";
     }
 
-    public int characters() { return title.length() + author.length() + subreddit.length() + flair.length() + (preview == null ? 0 : preview.url.length()); }
+    public int characters() {
+        int size = title.length() + author.length() + subreddit.length() + flair.length() + (preview == null ? 0 : preview.url.length());
+        for (Preview image : gallery) if (image != null) size += image.url.length();
+        return size;
+    }
 
     public static final class Preview {
         public final String url;

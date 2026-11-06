@@ -8,7 +8,7 @@ import java.util.Map;
 
 /** Immutable, keyed items for Reddit's own lazy feed. No view or scroll state lives here. */
 final class ArchiveSnapshot {
-    static final int INDICATOR = 0, CARD = 1, STATUS = 2;
+    static final int INDICATOR = 0, CARD = 1, STATUS = 2, SORT = 3;
     final List<Row> rows;
     final int itemCount;
 
@@ -60,11 +60,17 @@ final class ArchiveSnapshot {
         final ArchiveItem item;
         final ArchivePostDetails details;
         final String message;
+        final String provenance;
         final boolean loading, retry;
         Row(String key, int kind, int itemIndex, ArchiveItem item, ArchivePostDetails details,
             String message, boolean loading, boolean retry) {
+            this(key, kind, itemIndex, item, details, message, loading, retry, "Archived");
+        }
+        Row(String key, int kind, int itemIndex, ArchiveItem item, ArchivePostDetails details,
+            String message, boolean loading, boolean retry, String provenance) {
             this.key = key; this.kind = kind; this.itemIndex = itemIndex; this.item = item;
             this.details = details; this.message = message; this.loading = loading; this.retry = retry;
+            this.provenance = provenance;
         }
     }
 }
