@@ -4,6 +4,7 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.fileprovider.fileProviderPatch
 import app.morphe.patches.music.misc.gms.Constants.MORPHE_MUSIC_PACKAGE_NAME
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
+import app.morphe.patches.music.misc.playservice.is_9_45_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -21,6 +22,7 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
     mainActivityOnCreateFingerprint = MusicActivityOnCreateFingerprint,
     extensionPatch = sharedExtensionPatch,
     gmsCoreSupportResourcePatchFactory = ::gmsCoreSupportResourcePatch,
+    useLegacyGnpFingerprint = { !is_9_45_or_greater },
     executeBlock = {
         allowCastingToAudioOnlyDevices()
         hidePlayServicesCastRoutes()
