@@ -341,11 +341,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">কীৱৰ্ডটোৰ সংঘাতময় ঘোষণা আছে: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">কীৱৰ্ডটো অতি চুটি আৰু ইয়াত ক’টৰ প্ৰয়োজন: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">কিৱৰ্ডটোৱে সকলো ভিডিঅ\' লুকুৱাই পেলাব: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• হোম: %s
-• চাবস্ক্ৰিপচন: %s
-• সন্ধান: %s
-• মন্তব্য: %s
-• মুঠ: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• হোম: %1$s
+• চাবস্ক্ৰিপচন: %2$s
+• সন্ধান: %3$s
+• মন্তব্য: %4$s
+• মুঠ: %5$s"</string>
   <string name="morphe_hide_stats_category_title">ষ্টাটছ</string>
   <string name="morphe_hide_stats_hidden_24h_title">ভিডিঅ’সমূহ লুকুৱাইছে, শেষ ২৪ ঘণ্টা</string>
   <string name="morphe_hide_stats_hidden_all_title">ভিডিঅ’সমূহ লুকুৱাইছে, সকলো সময়ৰ</string>
@@ -357,9 +357,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_warnlist_category_title">ৱাৰ্নLIST: মধ্যম আত্মবিশ্বাস</string>
   <string name="morphe_hide_aislist_hide_home_title">Home-ত ভিডিঅ\'বোৰ লুকুৱাওক</string>
   <string name="morphe_hide_aislist_hide_search_title">সন্ধানত ভিডিঅ\'বোৰ লুকুৱাওক</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• হোম: %s
-• সন্ধান: %s
-• মুঠত: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• হোম: %1$s
+• সন্ধান: %2$s
+• মুঠ: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">ব্লক লিষ্ট চেনেলসমূহ</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">ৱাৰ্ন লিষ্ট চেনেলসমূহ</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">চেনেলসমূহ লোড কৰিবলৈ এটা ফিল্টাৰ সক্ৰিয় কৰক</string>
@@ -562,7 +562,7 @@ Ask বুটাম থকা এটা ভিডিঅ' এবাৰ খোল�
   <string name="morphe_export_download_folder_missing">এক্সপৰ্ট ফোল্ডাৰ %s বিচাৰি পোৱা নগ\'ল</string>
   <string name="morphe_export_download_flyout_title">ডিভাইসলৈ এক্সপৰ্ট কৰক</string>
   <string name="morphe_export_download_started">ভিডিঅ\' এক্সপৰ্ট কৰা হৈছে</string>
-  <string name="morphe_export_download_progress">ভিডিঅ\' এক্সপৰ্ট কৰা হৈছে: %d%%</string>
+  <string name="morphe_export_download_progress">ভিডিঅ\' এক্সপৰ্ট কৰা হৈছে: %s%%</string>
   <string name="morphe_export_download_notification_channel">ভিডিঅ\' এক্সপৰ্ট</string>
   <string name="morphe_export_download_saved">ভিডিঅ\'টো %s ত এক্সপৰ্ট কৰা হৈছে</string>
   <string name="morphe_export_download_failed">ভিডিঅ\'টো এক্সপৰ্ট কৰিব পৰা নগ\'ল</string>
@@ -1013,7 +1013,7 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_navigation_bar_glass_size_height">উচ্চতা</string>
   <string name="morphe_navigation_bar_glass_size_width">সৰ্বোচ্চ প্ৰস্থ</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">বাটন স্পেচিং</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">দেখুৱাই থকা বাটন: %2$d ৰ ভিতৰত %1$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">দেখুওৱা বুটাম: %2$s ৰ ভিতৰত %1$s</string>
   <string name="morphe_toolbar_screen_title">টুলবাৰ</string>
   <string name="morphe_toolbar_screen_summary">টুলবাৰত কোনবোৰ উপাদান দেখা যাব তাৰ বাবে বাছনি কৰক</string>
   <string name="morphe_hide_toolbar_chat_button_title">চ্যাট বুটামটো লুকুৱাই থওক</string>
@@ -1667,7 +1667,7 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকেত্ বাধ�
   <string name="morphe_series_tracker_identity_unavailable">ইনকগনিটোত অথবা YouTube-এ বৰ্তমানৰ একাউণ্টৰ অৱস্থা লোড কৰাৰ আগতে ট্ৰেকিং সক্ৰিয় কৰিব নোৱাৰি। হোম লৈ উভতি আহক আৰু পুনৰ চেষ্টা কৰক। কোনো ছাইন-ইনৰ প্ৰয়োজন নাই</string>
   <string name="morphe_series_tracker_enable">স্থানীয় ট্ৰেকিং সক্ৰিয় কৰক</string>
   <string name="morphe_series_tracker_tracking_paused">প্ৰগতি ৰেকৰ্ডিং বন্ধ হৈ আছে</string>
-  <string name="morphe_series_tracker_resume_at">%1$s ত পুনৰ আৰম্ভ কৰক</string>
+  <string name="morphe_series_tracker_resume_at">%s ত পুনৰ আৰম্ভ কৰক</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s খন এপিসোড চোৱা হৈছে</string>
   <string name="morphe_series_tracker_episode_position">এপিসোড %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">%3$s খনৰ ভিতৰত এপিসোড %1$s-%2$s</string>
@@ -1677,7 +1677,7 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকেত্ বাধ�
   <string name="morphe_series_tracker_plan_changed">এটা এপিসোড বাছনি কৰক</string>
   <string name="morphe_series_tracker_plan_caught_up">সৰ্বশেষ আপডেট</string>
   <string name="morphe_series_tracker_plan_none">কোনো playable এপিসোড নাই</string>
-  <string name="morphe_series_tracker_saved_position">সংৰক্ষিত ভিডিঅ\' · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">সংৰক্ষিত ভিডিঅ\' · %s</string>
   <string name="morphe_series_tracker_follow">চিৰিজটো অনুসৰণ কৰক</string>
   <string name="morphe_series_tracker_view_series">চিৰিজটো চাওক</string>
   <string name="morphe_series_tracker_continue">আৰু আগবাঢ়ক</string>
@@ -1688,7 +1688,7 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকেত্ বাধ�
   <string name="morphe_series_tracker_undo">বাতিল কৰক</string>
   <string name="morphe_series_tracker_enable_short">সক্ৰিয় কৰক</string>
   <string name="morphe_series_tracker_new_episode">১ টা নতুন এপিসোড</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s টা নতুন এপিসোড</string>
+  <string name="morphe_series_tracker_new_episodes">%s নতুন এপিসোড</string>
   <string name="morphe_series_tracker_record_short">এই ডিভাইচত প্ৰগতি ৰেকৰ্ড কৰক</string>
   <string name="morphe_series_tracker_follow_consent">"আপোনাৰ ছিৰিজ আৰু প্ৰগতি এই ডিভাইচটোত থাকিব, যিবোৰ বিভিন্ন YouTube একাউণ্টৰ মাজত ভাগ কৰি লোৱা হয়। YouTube ইতিহাস নিয়ন্ত্ৰকবোৰে ইয়াক সলনি নকৰে। ছিৰিজ মেনুৰ পৰা প্ৰগতি মুছক।
 
@@ -1718,12 +1718,12 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকেত্ বাধ�
   <string name="morphe_series_tracker_hide_watched">চাবুৰকৈ দেখাটো লুকুৱাই থওক</string>
   <string name="morphe_series_tracker_watched_on_advance">পিছৰ এপিসোডলৈ যাওঁতে চাইছে বুলি চিন্ কৰক</string>
   <string name="morphe_series_tracker_watch_previous">পূৰ্বৰ এপিসোডবোৰ দেখা বুলি চিনাক্ত কৰক</string>
-  <string name="morphe_series_tracker_order_starts_with">আৰম্ভ হয়: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">আৰম্ভ হয়: %s</string>
   <string name="morphe_series_tracker_episode_order">এপিসোডৰ ক্ৰম</string>
   <string name="morphe_series_tracker_playlist_order">প্লেলিষ্টৰ ক্ৰম</string>
   <string name="morphe_series_tracker_reverse_order">প্লেলিষ্টৰ ক্ৰম সলনি কৰক</string>
-  <string name="morphe_series_tracker_view_count">%1$s ভিউ</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s ভিউ</string>
+  <string name="morphe_series_tracker_view_count">%s ভিউ</string>
+  <string name="morphe_series_tracker_view_count_one">%s ভিউ</string>
   <string name="morphe_series_tracker_completion_title">এপিসোডসমূহ দেখা বুলি চিহ্নিত কৰক</string>
   <string name="morphe_series_tracker_completion_summary">পৰিসীমাৰ অন্তৰালত অন্ততঃ %1$s%% চাইছে আৰু সৰ্বোচ্চ ৯০ ছেকেণ্ড বাকী আছে, অথবা %2$s ছেকেণ্ড বাকী আছে</string>
   <string name="morphe_series_tracker_completion_explanation">যিকোনো এটা সীমাৰ পিছত এপিসোডটো স্বয়ংক্ৰিয়ভাৱে চাইছে বুলি চিহ্নিত কৰক। শতাংশৰ নিয়মটোৰ বাবে ৯০ ছেকেণ্ডতকৈ অধিক বাকী থাকিব নালাগে, যাতে দীঘল এপিসোডৰ শেষৰ অংশটো বাদ নিযায়। বাকী থকা সময়ৰ নিয়মটো এক মিনিটতকৈ অধিক দীঘল ভিডিঅ\'ৰ ক্ষেত্ৰত প্ৰযোজ্য হয়; ইয়াক নিষ্ক্ৰীয় কৰিবলৈ ০ কৰক। পৰিৱৰ্তনবোৰ ভৱিষ্যতৰ প্ৰগতিৰ আপডেটৰ ক্ষেত্ৰত প্ৰযোজ্য হ\'ব। ম্যানুৱেলভাৱে চাইছে/চৈ নাথাকে বুলি লোৱা পছন্দবোৰ ৰখা হ\'ব</string>
@@ -1743,7 +1743,7 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকেত্ বাধ�
   <string name="morphe_series_tracker_backup_restore">ব keepsake বৰ্তাই আনক</string>
   <string name="morphe_series_tracker_backup_preview">%1$s ছিৰিজ যোগ কৰক। আপোনাৰ লাইব্ৰেৰীত ইতিমধ্যে থকা %2$s ছিৰিজ ৰখা হৈছে। বিদ্যমান ভিডিঅ\' প্ৰগতি ৰখা হৈছে</string>
   <string name="morphe_series_tracker_backup_saved">চিৰিজ বেকআপ সংৰক্ষিত হৈছে</string>
-  <string name="morphe_series_tracker_backup_restored">%1$s ছিৰিজ পুনৰুদ্ধাৰ কৰা হৈছে</string>
+  <string name="morphe_series_tracker_backup_restored">%s ছিৰিজ পুনৰুদ্ধাৰ কৰা হৈছে</string>
   <string name="morphe_series_tracker_error_backup_invalid">এই ফাইলটো এটা সমৰ্থিত ছিৰিজ বেকআপ নহয়, অথবা ই অতি ডাঙৰ। আপোনাৰ লাইব্ৰেৰীটো সলনি কৰা হোৱা নাই</string>
   <string name="morphe_series_tracker_error_backup_write">বেকআপটো সংৰক্ষণ কৰিব নোৱাৰিল। অন্য স্থান চেষ্টা কৰক</string>
   <string name="morphe_series_tracker_removed">চিৰিজটো আঁতৰাই দিয়া হৈছে</string>
@@ -1753,7 +1753,7 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকেত্ বাধ�
   <string name="morphe_series_tracker_recovery_choose">আপুনি তলত যিকোনো এপিসোডো বাছনি কৰিব পাৰে। আগৰ এপিসোডবোৰ সলনি কৰা হোৱা নাই</string>
   <string name="morphe_series_tracker_playback_changed">এই প্লেলিষ্টটো সলনি হৈছে। ক’ৰ পৰা আগবাঢ়িব বিচাৰে সেইটো বাছনি কৰিবলৈ ছিৰিজটো খোলক</string>
   <string name="morphe_series_tracker_playback_boundary">এই দিশত আৰু কোনো এপিসোড নাই</string>
-  <string name="morphe_series_tracker_continue_series">%1$s অব্যাহত ৰাখক</string>
+  <string name="morphe_series_tracker_continue_series">%s চলাই যাওক</string>
   <string name="morphe_series_tracker_search_series">ছিৰিজ খোজোৱা</string>
   <string name="morphe_series_tracker_clear_search">খোজোৱা মচি পেলাওক</string>
   <string name="morphe_series_tracker_no_search_results">কোনো ছিৰিজ পোৱা নাগিল</string>
@@ -1782,6 +1782,10 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকেত্ বাধ�
   <string name="morphe_niconico_comments_live_premieres_summary">প্ৰিমিয়াৰবোৰ চলি থকাৰ সময়ত</string>
   <string name="morphe_niconico_comments_ended_premieres_title">শেষ হোৱা প্ৰিমিয়াৰত দেখুৱাওক</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">শেষ হোৱা প্ৰিমিয়াৰৰ চেট ৰিপ্লে</string>
+  <string name="morphe_niconico_comments_timed_comments_title">সময়ানুযায়ী মন্তব্যসমূহ দেখুৱাওক</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">চ্যাট নথকা ভিডিঅ’ৰ ক্ষেত্ৰত, ১:২৩ ৰ দৰে সময় উল্লেখ থকা শীৰ্ষ মন্তব্যসমূহ সেই সময়ত দেখুওৱা হয়</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">চ্যাট ৰিপ্লেৰ সৈতে সময়নিৰ্দিষ্ট মন্তব্যসমূহ দেখুৱাওক</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">লাইভ ষ্ট্ৰীম আৰু প্ৰিমিয়াৰৰ ৰিপ্লেত, চেটৰ সৈতে সময়নিৰ্দিষ্ট মন্তব্যসমূহো দেখুওৱা হয়</string>
   <string name="morphe_live_chat_translate_screen_title">লাইভ চেট অনুবাদ</string>
   <string name="morphe_live_chat_translate_screen_summary">লাইভ চেট আৰু লাইভ চেট ৰিপ্লে মেছেজসমূহ অনুবাদ কৰক</string>
   <string name="morphe_live_chat_translate_title">লাইভ চেট অনুবাদ কৰক</string>

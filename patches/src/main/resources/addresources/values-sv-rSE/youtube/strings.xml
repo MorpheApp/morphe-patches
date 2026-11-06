@@ -341,11 +341,11 @@ Begränsningar:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Nyckelordet har motstridiga deklarationer: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Nyckelordet är för kort och kräver citattecken: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Nyckelordet döljer alla videor: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Hem: %s
-• Prenumerationer: %s
-• Sök: %s
-• Kommentarer: %s
-• Totalt: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Hem: %1$s
+• Prenumerationer: %2$s
+• Sök: %3$s
+• Kommentarer: %4$s
+• Totalt: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Statistik</string>
   <string name="morphe_hide_stats_hidden_24h_title">Dolda videor, senaste 24 timmarna</string>
   <string name="morphe_hide_stats_hidden_all_title">Dolda videor, alla tider</string>
@@ -357,9 +357,9 @@ Begränsningar:
   <string name="morphe_hide_aislist_warnlist_category_title">Varningslista: Måttlig tillförlitlighet</string>
   <string name="morphe_hide_aislist_hide_home_title">Dölj videor i Hem</string>
   <string name="morphe_hide_aislist_hide_search_title">Dölj videor i sökning</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Hem: %s
-• Sök: %s
-• Totalt: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Hem: %1$s
+• Sök: %2$s
+• Totalt: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Kanaler i blockeringslistan</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Kanaler i varningslistan</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Aktivera ett filter för att läsa in kanaler</string>
@@ -562,7 +562,7 @@ Exportmapp: %s"</string>
   <string name="morphe_export_download_folder_missing">Kunde inte hitta exportmappen %s</string>
   <string name="morphe_export_download_flyout_title">Exportera till enhet</string>
   <string name="morphe_export_download_started">Exporterar video</string>
-  <string name="morphe_export_download_progress">Exporterar video: %d%%</string>
+  <string name="morphe_export_download_progress">Exporterar video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Videoexporter</string>
   <string name="morphe_export_download_saved">Video exporterad till %s</string>
   <string name="morphe_export_download_failed">Kunde inte exportera videon</string>
@@ -1013,7 +1013,7 @@ För att komma åt Inställningar, aktivera knappen Inställningar via Allmänt 
   <string name="morphe_navigation_bar_glass_size_height">Höjd</string>
   <string name="morphe_navigation_bar_glass_size_width">Maximal bredd</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Knappavstånd</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Visade knappar: %1$d av %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Knappar som visas: %1$s av %2$s</string>
   <string name="morphe_toolbar_screen_title">Verktygsfält</string>
   <string name="morphe_toolbar_screen_summary">Välj vilka komponenter som visas i verktygsfältet</string>
   <string name="morphe_hide_toolbar_chat_button_title">Dölj knappen Chatta</string>
@@ -1667,7 +1667,7 @@ Automatisk inspelning stoppas i inkognito-läge, när kontots identitet inte är
   <string name="morphe_series_tracker_identity_unavailable">Spårning kan inte aktiveras i inkognito-läge eller innan YouTube har läst in aktuellt kontostatus. Gå tillbaka till Startsida och försök igen. Inget inloggning krävs</string>
   <string name="morphe_series_tracker_enable">Aktivera lokal spårning</string>
   <string name="morphe_series_tracker_tracking_paused">Framstegsregistrering är av</string>
-  <string name="morphe_series_tracker_resume_at">Fortsätt vid %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Återsamla vid %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s avsnitt visade</string>
   <string name="morphe_series_tracker_episode_position">Avsnitt %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Avsnitt %1$s-%2$s av %3$s</string>
@@ -1677,7 +1677,7 @@ Automatisk inspelning stoppas i inkognito-läge, när kontots identitet inte är
   <string name="morphe_series_tracker_plan_changed">Välj ett avsnitt</string>
   <string name="morphe_series_tracker_plan_caught_up">Uppdaterat</string>
   <string name="morphe_series_tracker_plan_none">Inga spelbara avsnitt</string>
-  <string name="morphe_series_tracker_saved_position">Sparad video · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Sparad video · %s</string>
   <string name="morphe_series_tracker_follow">Följ serie</string>
   <string name="morphe_series_tracker_view_series">Visa serie</string>
   <string name="morphe_series_tracker_continue">Fortsätt</string>
@@ -1688,7 +1688,7 @@ Automatisk inspelning stoppas i inkognito-läge, när kontots identitet inte är
   <string name="morphe_series_tracker_undo">Ångra</string>
   <string name="morphe_series_tracker_enable_short">Aktivera</string>
   <string name="morphe_series_tracker_new_episode">1 nytt avsnitt</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s nya avsnitt</string>
+  <string name="morphe_series_tracker_new_episodes">%s nya avsnitt</string>
   <string name="morphe_series_tracker_record_short">Registrera framsteg på den här enheten</string>
   <string name="morphe_series_tracker_follow_consent">"Dina serier och framsteg finns kvar på den här enheten, delade mellan YouTube-konton. YouTube:s historikkontroller ändrar dem inte. Rensa framsteg från Seriemyn.
 
@@ -1718,12 +1718,12 @@ Automatisk inspelning är valfri. Den stoppas i inkognito-läge eller när konto
   <string name="morphe_series_tracker_hide_watched">Dölj sedda</string>
   <string name="morphe_series_tracker_watched_on_advance">Markera som sedd när du går till nästa avsnitt</string>
   <string name="morphe_series_tracker_watch_previous">Markera tidigare avsnitt som sedda</string>
-  <string name="morphe_series_tracker_order_starts_with">Börjar med: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Börjar med: %s</string>
   <string name="morphe_series_tracker_episode_order">Avsnittsordning</string>
   <string name="morphe_series_tracker_playlist_order">Spellisteordning</string>
   <string name="morphe_series_tracker_reverse_order">Omvänd spellisteordning</string>
-  <string name="morphe_series_tracker_view_count">%1$s visningar</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s visning</string>
+  <string name="morphe_series_tracker_view_count">%s visningar</string>
+  <string name="morphe_series_tracker_view_count_one">%s visning</string>
   <string name="morphe_series_tracker_completion_title">Markera avsnitt som sedda</string>
   <string name="morphe_series_tracker_completion_summary">Minst %1$s%% tittat med högst 90 sekunder kvar, eller %2$s sekunder kvar pluralForm\":\"other</string>
   <string name="morphe_series_tracker_completion_explanation">Markera automatiskt ett avsnitt som tittat efter någon av trösklarna. Procentregeln kräver också att högst 90 sekunder finns kvar, så slutet på långa avsnitt hoppas inte över. Regeln för återstående tid gäller för videor längre än en minut; ange 0 för att inaktivera den. Ändringar gäller för framtida framstegsuppdateringar. Manuella val för tittat/otittat behålls</string>
@@ -1743,7 +1743,7 @@ Automatisk inspelning är valfri. Den stoppas i inkognito-läge eller när konto
   <string name="morphe_series_tracker_backup_restore">Återställ säkerhetskopia</string>
   <string name="morphe_series_tracker_backup_preview">Lägg till %1$s serier. %2$s serier som redan finns i ditt bibliotek behålls. Existerande videoframsteg behålls</string>
   <string name="morphe_series_tracker_backup_saved">Seriekopia sparad</string>
-  <string name="morphe_series_tracker_backup_restored">Återställer %1$s serier</string>
+  <string name="morphe_series_tracker_backup_restored">Återställde %s serier</string>
   <string name="morphe_series_tracker_error_backup_invalid">Denna fil är inte en seriebackup som stöds, eller är för stor. Ditt bibliotek ändrades inte</string>
   <string name="morphe_series_tracker_error_backup_write">Kunde inte spara backupen. Försök med en annan plats</string>
   <string name="morphe_series_tracker_removed">Serie borttagen</string>
@@ -1753,7 +1753,7 @@ Automatisk inspelning är valfri. Den stoppas i inkognito-läge eller när konto
   <string name="morphe_series_tracker_recovery_choose">Du kan också välja vilket avsnitt nedan som helst. Tidigare avsnitt ändras inte</string>
   <string name="morphe_series_tracker_playback_changed">Denna spellista ändrades. Öppna serien för att välja var du ska fortsätta</string>
   <string name="morphe_series_tracker_playback_boundary">Inga fler avsnitt i denna riktning</string>
-  <string name="morphe_series_tracker_continue_series">Fortsätt %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Fortsätt %s</string>
   <string name="morphe_series_tracker_search_series">Sök serier</string>
   <string name="morphe_series_tracker_clear_search">Rensa sökning</string>
   <string name="morphe_series_tracker_no_search_results">Inga serier hittades</string>
@@ -1782,6 +1782,10 @@ Automatisk inspelning är valfri. Den stoppas i inkognito-läge eller när konto
   <string name="morphe_niconico_comments_live_premieres_summary">Premiärer medan de spelas upp</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Visa på avslutade premiärer</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Chattreplay för premiärer som har avslutats</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Visa tidskodade kommentarer</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">För videor utan chatt visas toppkommentarer som innehåller en tidpunkt, till exempel 1:23, vid den tidpunkten</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Visa tidsbestämda kommentarer med chattåtergivning</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Vid återgivningar av livestreams och premiärer visas även tidsbestämda kommentarer tillsammans med chatten</string>
   <string name="morphe_live_chat_translate_screen_title">Översättning av livechatt</string>
   <string name="morphe_live_chat_translate_screen_summary">Översätt meddelanden i livechatt och uppspelning av livechatt</string>
   <string name="morphe_live_chat_translate_title">Översätt livechatt</string>

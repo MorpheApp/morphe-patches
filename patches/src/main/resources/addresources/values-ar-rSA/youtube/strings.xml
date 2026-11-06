@@ -79,7 +79,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_dislike_button_summary">مع التخطيط المفروض، يُترك فراغ الزر</string>
   <string name="morphe_hide_post_comment_button_title">إخفاء زر التعليق</string>
   <string name="morphe_hide_post_comments_preview_title">إخفاء تعليقات المعاينة</string>
-  <string name="morphe_hide_post_comments_preview_summary">يُخفي معاينة التعليقات أسفل المنشورات</string>
+  <string name="morphe_hide_post_comments_preview_summary">يُخفي تعليقات المعاينة أسفل المنشورات</string>
   <string name="morphe_hide_post_share_button_title">إخفاء زر مشاركة</string>
   <string name="morphe_hide_post_share_button_summary">زر تنزيل صور المنشور مرسوم بجانب زر مشاركة، لذلك فهو مخفي أيضًا</string>
   <string name="morphe_hide_compact_banner_title">إخفاء اللافتات المصغرة</string>
@@ -341,11 +341,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">الكلمة المفتاحية بها تعريفات متعارضة: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">الكلمة المفتاحية قصيرة جدًا وتتطلب اقتباسات: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">الكلمة المفتاحية سوف تخفي جميع الفيديوهات: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• الرئيسية: %s
-• الاشتراكات: %s
-• البحث: %s
-• التعليقات: %s
-• الإجمالي: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• الصفحة الرئيسية: %1$s
+• الاشتراكات: %2$s
+• البحث: %3$s
+• التعليقات: %4$s
+• الإجمالي: %5$s"</string>
   <string name="morphe_hide_stats_category_title">إحصائيات</string>
   <string name="morphe_hide_stats_hidden_24h_title">الفيديوهات المخفية، آخر 24 ساعة</string>
   <string name="morphe_hide_stats_hidden_all_title">الفيديوهات المخفية، طوال الوقت</string>
@@ -357,9 +357,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_warnlist_category_title">قائمة التحذير: ثقة متوسطة</string>
   <string name="morphe_hide_aislist_hide_home_title">إخفاء الفيديوهات في الصفحة الرئيسية</string>
   <string name="morphe_hide_aislist_hide_search_title">إخفاء الفيديوهات في البحث</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• الصفحة الرئيسية: %s
-• البحث: %s
-• الإجمالي: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• الصفحة الرئيسية: %1$s
+• البحث: %2$s
+• الإجمالي: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">قنوات القائمة المحظورة</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">قنوات قائمة التحذير</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">تمكين فلتر لتحميل القنوات</string>
@@ -562,7 +562,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">تعذر العثور على مجلد التصدير %s</string>
   <string name="morphe_export_download_flyout_title">تصدير إلى جهاز</string>
   <string name="morphe_export_download_started">جارٍ تصدير الفيديو</string>
-  <string name="morphe_export_download_progress">تصدير الفيديو: %d%%</string>
+  <string name="morphe_export_download_progress">تصدير الفيديو: %s%%</string>
   <string name="morphe_export_download_notification_channel">تصدير الفيديو</string>
   <string name="morphe_export_download_saved">تم تصدير الفيديو إلى %s</string>
   <string name="morphe_export_download_failed">تعذر تصدير الفيديو</string>
@@ -1017,7 +1017,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_navigation_bar_glass_size_height">الارتفاع</string>
   <string name="morphe_navigation_bar_glass_size_width">أقصى عرض</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">تباعد الزر</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">الأزرار المعروضة: %1$d من %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">الأزرار المعروضة: %1$s من %2$s</string>
   <string name="morphe_toolbar_screen_title">شريط الأدوات</string>
   <string name="morphe_toolbar_screen_summary">اختر المكونات التي تظهر في شريط الأدوات</string>
   <string name="morphe_hide_toolbar_chat_button_title">إخفاء زر دردشة</string>
@@ -1671,7 +1671,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_identity_unavailable">لا يمكن تمكين التتبع في وضع التصفح المتخفي أو قبل أن يتم تحميل YouTube لحالة الحساب الحالي. عد إلى الصفحة الرئيسية وحاول مرة أخرى. لا يلزم تسجيل الدخول</string>
   <string name="morphe_series_tracker_enable">تمكين التتبع المحلي</string>
   <string name="morphe_series_tracker_tracking_paused">تسجيل التقدّم متوقف</string>
-  <string name="morphe_series_tracker_resume_at">الاستمرار من %1$s</string>
+  <string name="morphe_series_tracker_resume_at">الاستمرار من %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s حلقات تمت مشاهدتها</string>
   <string name="morphe_series_tracker_episode_position">الحلقة %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">الحلقات %1$s-%2$s من %3$s</string>
@@ -1681,7 +1681,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_plan_changed">اختر حلقة</string>
   <string name="morphe_series_tracker_plan_caught_up">محدث</string>
   <string name="morphe_series_tracker_plan_none">لا توجد حلقات قابلة للتشغيل</string>
-  <string name="morphe_series_tracker_saved_position">فيديو محفوظ · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">فيديو محفوظ · %s</string>
   <string name="morphe_series_tracker_follow">تابع السلسلة</string>
   <string name="morphe_series_tracker_view_series">عرض السلسلة</string>
   <string name="morphe_series_tracker_continue">استمرار</string>
@@ -1692,7 +1692,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_undo">تراجع</string>
   <string name="morphe_series_tracker_enable_short">تمكين</string>
   <string name="morphe_series_tracker_new_episode">1 حلقة واحدة</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s حلقات جديدة</string>
+  <string name="morphe_series_tracker_new_episodes">%s حلقات جديدة</string>
   <string name="morphe_series_tracker_record_short">تسجيل التقدم على هذا الجهاز</string>
   <string name="morphe_series_tracker_follow_consent">"يبقي سلسلاتك وتقدمك على هذا الجهاز، وتتم مشاركتها عبر حسابات YouTube. أدوات سجل YouTube لا تغيرهما. مسح التقدم من قائمة السلسلة.
 
@@ -1722,12 +1722,12 @@ AVC (H.264)
   <string name="morphe_series_tracker_hide_watched">إخفاء التي تمت مشاهدتها</string>
   <string name="morphe_series_tracker_watched_on_advance">تحديد كـ تمت مشاهدتها عند الانتقال إلى الحلقة التالية</string>
   <string name="morphe_series_tracker_watch_previous">وضع الحلقات السابقة كـ تمت مشاهدتها</string>
-  <string name="morphe_series_tracker_order_starts_with">يبدأ بـ: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">يبدأ بـ: %s</string>
   <string name="morphe_series_tracker_episode_order">ترتيب الحلقات</string>
   <string name="morphe_series_tracker_playlist_order">ترتيب قائمة التشغيل</string>
   <string name="morphe_series_tracker_reverse_order">عكس ترتيب قائمة التشغيل</string>
-  <string name="morphe_series_tracker_view_count">%1$s مشاهدة</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s مشاهدة</string>
+  <string name="morphe_series_tracker_view_count">%s مشاهدة</string>
+  <string name="morphe_series_tracker_view_count_one">%s مشاهدة</string>
   <string name="morphe_series_tracker_completion_title">وضع الحلقات كـ تمت مشاهدتها</string>
   <string name="morphe_series_tracker_completion_summary">على الأقل %1$s%% تمت مشاهدتها مع الأكثر 90 ثانية متبقية، أو %2$s ثانية متبقية</string>
   <string name="morphe_series_tracker_completion_explanation">وضع علامة تلقائية على الحلقة كـ تمت مشاهدتها بعد أي من الحدين. تتطلب قاعدة النسبة المئوية أيضًا ألا يتبقى أكثر من 90 ثانية، حتى لا يتم تخطي نهاية الحلقات الطويلة. تنطبق قاعدة الوقت المتبقي على الفيديوهات الأطول من دقيقة واحدة؛ اضبطها على 0 لتعطيلها. التغييرات تطبق على تحديثات التقدم المستقبلية. يتم الاحتفاظ بالخيارات اليدوية للمشاهدة/عدم المشاهدة</string>
@@ -1747,7 +1747,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_backup_restore">استعادة النسخة الاحتياطية</string>
   <string name="morphe_series_tracker_backup_preview">إضافة %1$s سلسلة. تم الاحتفاظ بـ %2$s سلسلة موجودة بالفعل في مكتبتك. يتم الاحتفاظ بتقدم الفيديو الموجود</string>
   <string name="morphe_series_tracker_backup_saved">تم حفظ النسخة الاحتياطية للسلسلة</string>
-  <string name="morphe_series_tracker_backup_restored">تم استعادة %1$s سلسلة</string>
+  <string name="morphe_series_tracker_backup_restored">تم استعادة %s سلسلة</string>
   <string name="morphe_series_tracker_error_backup_invalid">هذا الملف ليس نسخة احتياطية لسلسلة مدعومة، أو أنه كبير جدًا. لم تتغير مكتبتك</string>
   <string name="morphe_series_tracker_error_backup_write">تعذّر حفظ النسخة الاحتياطية. جرّب موقعًا آخر</string>
   <string name="morphe_series_tracker_removed">تمت إزالة السلسلة</string>
@@ -1757,7 +1757,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_recovery_choose">يمكنك أيضًا اختيار أي حلقة أدناه. لا تتغير الحلقات السابقة</string>
   <string name="morphe_series_tracker_playback_changed">تغيرت قائمة التشغيل هذه. افتح السلسلة لاختيار حيث تستمر</string>
   <string name="morphe_series_tracker_playback_boundary">لا توجد حلقات أخرى في هذا الاتجاه</string>
-  <string name="morphe_series_tracker_continue_series">استمرار %1$s</string>
+  <string name="morphe_series_tracker_continue_series">استمرار %s</string>
   <string name="morphe_series_tracker_search_series">البحث في السلسلات</string>
   <string name="morphe_series_tracker_clear_search">مسح سجل البحث</string>
   <string name="morphe_series_tracker_no_search_results">لم يتم العثور على سلسلات</string>
@@ -1786,6 +1786,10 @@ AVC (H.264)
   <string name="morphe_niconico_comments_live_premieres_summary">العرض الأول بينما يتم تشغيلها</string>
   <string name="morphe_niconico_comments_ended_premieres_title">عرض على عروض البث الأولى المنتهية</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">إعادة المحادثة لعروض البث الأولى التي انتهت</string>
+  <string name="morphe_niconico_comments_timed_comments_title">عرض التعليقات الموقوتة</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">في الفيديوهات التي لا تحتوي على محادثة، يتم عرض التعليقات العلوية التي تحتوي على وقت مثل 1:23 في ذلك الوقت</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">إظهار التعليقات الموقوتة مع إعادة تشغيل الدردشة</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">في عمليات إعادة تشغيل البث المباشر والعروض الأولى، تظهر التعليقات المحددة بوقت أيضًا مع الدردشة</string>
   <string name="morphe_live_chat_translate_screen_title">ترجمة المحادثة المباشرة</string>
   <string name="morphe_live_chat_translate_screen_summary">ترجمة رسائل المحادثة المباشرة وإعادة تشغيل المحادثة المباشرة</string>
   <string name="morphe_live_chat_translate_title">ترجمة المحادثة المباشرة</string>

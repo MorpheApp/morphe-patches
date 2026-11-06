@@ -341,11 +341,11 @@ Limitações:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">A palavra-chave tem declarações conflitantes: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">A palavra-chave é muito curta e requer aspas: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">A palavra-chave irá ocultar todos os vídeos: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Início: %s
-• Assinaturas: %s
-• Pesquisa: %s
-• Comentários: %s
-• Total: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Início: %1$s
+• Inscrições: %2$s
+• Pesquisa: %3$s
+• Comentários: %4$s
+• Total: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Estatísticas</string>
   <string name="morphe_hide_stats_hidden_24h_title">Vídeos ocultos, últimas 24 horas</string>
   <string name="morphe_hide_stats_hidden_all_title">Vídeos ocultos, todos os tempos</string>
@@ -357,9 +357,9 @@ Limitações:
   <string name="morphe_hide_aislist_warnlist_category_title">Lista de alertas: confiança moderada</string>
   <string name="morphe_hide_aislist_hide_home_title">Ocultar vídeos na página inicial</string>
   <string name="morphe_hide_aislist_hide_search_title">Ocultar vídeos na pesquisa</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Página inicial: %s
-• Pesquisa: %s
-• Total: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Início: %1$s
+• Pesquisa: %2$s
+• Total: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Canais na lista de bloqueio</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Canais na lista de avisos</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Ativar um filtro para carregar canais</string>
@@ -562,7 +562,7 @@ Pasta de exportação: %s"</string>
   <string name="morphe_export_download_folder_missing">Não foi possível encontrar a pasta de exportação %s</string>
   <string name="morphe_export_download_flyout_title">Exportar para o dispositivo</string>
   <string name="morphe_export_download_started">Exportando vídeo</string>
-  <string name="morphe_export_download_progress">Exportando vídeo: %d%%</string>
+  <string name="morphe_export_download_progress">Exportando vídeo: %s%%</string>
   <string name="morphe_export_download_notification_channel">Exportações de vídeos</string>
   <string name="morphe_export_download_saved">Vídeo exportado para %s</string>
   <string name="morphe_export_download_failed">Não foi possível exportar o vídeo</string>
@@ -1013,7 +1013,7 @@ Para acessar as Configurações, ative o botão Configurações via Geral → Ba
   <string name="morphe_navigation_bar_glass_size_height">Altura</string>
   <string name="morphe_navigation_bar_glass_size_width">Largura máxima</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Espaçamento dos botões</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Botões exibidos: %1$d de %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Botões exibidos: %1$s de %2$s</string>
   <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
   <string name="morphe_toolbar_screen_summary">Escolha quais componentes aparecem na barra de ferramentas</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ocultar botão Chat</string>
@@ -1666,7 +1666,7 @@ A gravação automática é interrompida no modo anônimo, quando a identidade d
   <string name="morphe_series_tracker_identity_unavailable">O rastreamento não pode ser habilitado no modo anônimo ou antes que o YouTube tenha carregado o estado da conta atual. Retorne à Tela inicial e tente novamente. Não é necessário fazer login</string>
   <string name="morphe_series_tracker_enable">Habilitar rastreamento local</string>
   <string name="morphe_series_tracker_tracking_paused">O registro de progresso está desligado</string>
-  <string name="morphe_series_tracker_resume_at">Retomar em %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Retomar em %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s episódios vistos</string>
   <string name="morphe_series_tracker_episode_position">Episódio %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Episódios %1$s-%2$s de %3$s</string>
@@ -1676,7 +1676,7 @@ A gravação automática é interrompida no modo anônimo, quando a identidade d
   <string name="morphe_series_tracker_plan_changed">Escolha um episódio</string>
   <string name="morphe_series_tracker_plan_caught_up">Em dia</string>
   <string name="morphe_series_tracker_plan_none">Sem episódios reproduzíveis</string>
-  <string name="morphe_series_tracker_saved_position">Vídeo salvo · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Vídeo salvo · %s</string>
   <string name="morphe_series_tracker_follow">Seguir série</string>
   <string name="morphe_series_tracker_view_series">Ver série</string>
   <string name="morphe_series_tracker_continue">Continuar</string>
@@ -1687,7 +1687,7 @@ A gravação automática é interrompida no modo anônimo, quando a identidade d
   <string name="morphe_series_tracker_undo">Desfazer</string>
   <string name="morphe_series_tracker_enable_short">Ativar</string>
   <string name="morphe_series_tracker_new_episode">1 novo episódio</string>
-  <string name="morphe_series_tracker_new_episodes">Novos episódios: %1$s</string>
+  <string name="morphe_series_tracker_new_episodes">%s novos episódios</string>
   <string name="morphe_series_tracker_record_short">Registrar progresso neste dispositivo</string>
   <string name="morphe_series_tracker_follow_consent">"Suas séries e o progresso ficam neste dispositivo, compartilhados entre contas do YouTube. Os controles de histórico do YouTube não os alteram. Limpe o progresso no menu Séries.
 
@@ -1717,12 +1717,12 @@ A gravação automática é opcional. Ela é interrompida no modo anônimo ou qu
   <string name="morphe_series_tracker_hide_watched">Ocultar assistidos</string>
   <string name="morphe_series_tracker_watched_on_advance">Marcar como assistido ao avançar para o próximo episódio</string>
   <string name="morphe_series_tracker_watch_previous">Marcar episódios anteriores como assistidos</string>
-  <string name="morphe_series_tracker_order_starts_with">Começa com: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Começa com: %s</string>
   <string name="morphe_series_tracker_episode_order">Ordem dos episódios</string>
   <string name="morphe_series_tracker_playlist_order">Ordem da lista de reprodução</string>
   <string name="morphe_series_tracker_reverse_order">Inverter ordem da lista de reprodução</string>
-  <string name="morphe_series_tracker_view_count">%1$s visualizações</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s visualização</string>
+  <string name="morphe_series_tracker_view_count">%s visualizações</string>
+  <string name="morphe_series_tracker_view_count_one">%s visualização</string>
   <string name="morphe_series_tracker_completion_title">Marcar episódios como assistidos</string>
   <string name="morphe_series_tracker_completion_summary">Pelo menos %1$s%% visto com no máximo 90 segundos restantes, ou %2$s segundos restantes</string>
   <string name="morphe_series_tracker_completion_explanation">Marque automaticamente um episódio como visto após qualquer um dos limites. A regra de porcentagem também exige que não haja mais de 90 segundos restantes, para que o final de episódios longos não seja pulado. A regra de tempo restante aplica-se a vídeos com mais de um minuto; defina como 0 para desativá-la. As alterações aplicam-se às atualizações futuras de progresso. As escolhas manuais de visto/não visto são mantidas</string>
@@ -1742,7 +1742,7 @@ A gravação automática é opcional. Ela é interrompida no modo anônimo ou qu
   <string name="morphe_series_tracker_backup_restore">Restaurar backup</string>
   <string name="morphe_series_tracker_backup_preview">Adicionar %1$s série. %2$s séries já existentes em sua biblioteca são mantidas. O progresso de vídeo existente é mantido</string>
   <string name="morphe_series_tracker_backup_saved">Backup da série salvo</string>
-  <string name="morphe_series_tracker_backup_restored">Restaurada %1$s série</string>
+  <string name="morphe_series_tracker_backup_restored">%s séries restauradas</string>
   <string name="morphe_series_tracker_error_backup_invalid">Este arquivo não é um backup de série compatível ou é muito grande. Sua biblioteca não foi alterada</string>
   <string name="morphe_series_tracker_error_backup_write">Não foi possível salvar o backup. Tente outro local</string>
   <string name="morphe_series_tracker_removed">Série removida</string>
@@ -1752,7 +1752,7 @@ A gravação automática é opcional. Ela é interrompida no modo anônimo ou qu
   <string name="morphe_series_tracker_recovery_choose">Você também pode escolher qualquer episódio abaixo. Episódios anteriores não são alterados</string>
   <string name="morphe_series_tracker_playback_changed">Esta playlist mudou. Abra a série para escolher onde continuar</string>
   <string name="morphe_series_tracker_playback_boundary">Não há mais episódios nesta direção</string>
-  <string name="morphe_series_tracker_continue_series">Continuar %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Continuar %s</string>
   <string name="morphe_series_tracker_search_series">Pesquisar séries</string>
   <string name="morphe_series_tracker_clear_search">Limpar pesquisa</string>
   <string name="morphe_series_tracker_no_search_results">Nenhuma série encontrada</string>
@@ -1781,6 +1781,10 @@ A gravação automática é opcional. Ela é interrompida no modo anônimo ou qu
   <string name="morphe_niconico_comments_live_premieres_summary">Estreias enquanto estiverem sendo exibidas</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Mostrar em Estreias encerradas</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Reprodução do chat de Estreias que foram encerradas</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Mostrar comentários com marcação de tempo</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Em vídeos sem chat, os principais comentários que contenham um tempo, como 1:23, são exibidos nesse momento</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Mostrar comentários com marca temporal no replay do chat</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Em replays de transmissões ao vivo e Estreias, os comentários com marca temporal também são exibidos com o chat</string>
   <string name="morphe_live_chat_translate_screen_title">Tradução de chat ao vivo</string>
   <string name="morphe_live_chat_translate_screen_summary">Traduz mensagens de chat ao vivo e de reproduções de chat ao vivo</string>
   <string name="morphe_live_chat_translate_title">Traduzir chat ao vivo</string>

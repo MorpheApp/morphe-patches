@@ -100,7 +100,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">เปิดการบันทึกการแก้ไขข้อบกพร่อง</string>
   <string name="morphe_debug_stacktrace_title">การติดตามสแต็กบันทึกการแก้ไขข้อบกพร่อง</string>
   <string name="morphe_debug_stacktrace_summary">รวมการติดตามสแต็กในบันทึกการแก้ไขข้อบกพร่องเพื่อช่วยระบุข้อผิดพลาด</string>
-  <string name="morphe_debug_toast_on_error_title">แสดง toast เมื่อเกิดข้อผิดพลาดของ Morphe</string>
+  <string name="morphe_debug_toast_on_error_title">แสดงข้อความแจ้งเตือนชั่วคราวเมื่อเกิดข้อผิดพลาดของ Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"การปิดข้อความแจ้งเตือนข้อผิดพลาดจะซ่อนการแจ้งเตือนข้อผิดพลาดทั้งหมดของ Morphe
 
 คุณจะไม่ได้รับแจ้งเกี่ยวกับเหตุการณ์ไม่คาดฝันใดๆ"</string>
@@ -181,16 +181,16 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG ยังไม่ได้ติดตั้ง โปรดติดตั้ง</string>
   <string name="gms_core_dialog_title">ต้องดำเนินการ</string>
-  <string name="gms_core_dialog_outdated_message">"MicroG v%1s ที่ติดตั้งไว้ล้าสมัยและอาจทำให้เกิดปัญหา
+  <string name="gms_core_dialog_outdated_message">"MicroG v%1$s ของคุณล้าสมัยและอาจทำให้เกิดปัญหาได้
 
-กรุณาอัปเดต MicroG เป็นเวอร์ชันล่าสุด v%2s"</string>
+โปรดอัปเดต MicroG เป็นเวอร์ชันล่าสุด v%2$s"</string>
   <string name="gms_core_dialog_update_text">อัปเดต</string>
   <string name="gms_core_dialog_ignore_text">ไม่สนใจ</string>
-  <string name="gms_core_dialog_conflict_message">"MicroG ที่ติดตั้งไม่ใช่คำแนะนำของ Morphe:
+  <string name="gms_core_dialog_conflict_message">"MicroG ที่ติดตั้งไว้ไม่ได้รับคำแนะนำจาก Morphe:
 
-%1s
+%s
 
-แตะเพื่อถอนการติดตั้ง จากนั้นเปิดแอปนี้ใหม่ และติดตั้ง MicroG RE"</string>
+แตะเพื่อถอนการติดตั้ง จากนั้นให้เปิดแอปนี้อีกครั้งและติดตั้ง MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">ถอนการติดตั้ง</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG ไม่มีสิทธิ์รันในพื้นหลัง

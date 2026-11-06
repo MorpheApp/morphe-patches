@@ -181,14 +181,14 @@ Tabia hiyo ilitoweka mapema katika utafutaji, hivyo inawezekana bendera zaidi ya
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG haijasakinishwa. Isakinishe</string>
   <string name="gms_core_dialog_title">Hatua inahitajika</string>
-  <string name="gms_core_dialog_outdated_message">"MicroG v%1s yako imepitwa na wakati na inaweza kusababisha matatizo.
+  <string name="gms_core_dialog_outdated_message">"MicroG v%1$s yako imepitwa na wakati na inaweza kusababisha matatizo.
 
-Tafadhali sasisha MicroG hadi toleo jipya v%2s"</string>
+Tafadhali sasisha MicroG hadi toleo jipya zaidi v%2$s"</string>
   <string name="gms_core_dialog_update_text">Sasisha</string>
   <string name="gms_core_dialog_ignore_text">Puuza</string>
   <string name="gms_core_dialog_conflict_message">"MicroG iliyosakinishwa haipendekezwi na Morphe:
 
-%1s
+%s
 
 Gusa ili kuiondoa, kisha fungua tena programu hii na usakinishe MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Ondoa programu</string>

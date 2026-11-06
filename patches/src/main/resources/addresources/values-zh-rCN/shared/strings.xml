@@ -181,16 +181,16 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">未安装 MicroG。请安装</string>
   <string name="gms_core_dialog_title">需要采取措施</string>
-  <string name="gms_core_dialog_outdated_message">"您的 MicroG v%1s 版本过旧，可能会导致问题。
+  <string name="gms_core_dialog_outdated_message">"您的 MicroG v%1$s 版本过低，可能会导致问题。
 
-请将 MicroG 更新至最新版本 v%2s"</string>
+请将 MicroG 更新至最新版本 v%2$s"</string>
   <string name="gms_core_dialog_update_text">更新</string>
   <string name="gms_core_dialog_ignore_text">忽略</string>
-  <string name="gms_core_dialog_conflict_message">"已安装的 MicroG 不受 Morphe 推荐：
+  <string name="gms_core_dialog_conflict_message">"已安装的 MicroG 不被 Morphe 推荐：
 
-%1s
+%s
 
-点击以卸载它，然后重新打开此应用并安装 MicroG RE"</string>
+点击卸载它，然后重新打开此应用并安装 MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">卸载</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG 没有权限在后台运行。

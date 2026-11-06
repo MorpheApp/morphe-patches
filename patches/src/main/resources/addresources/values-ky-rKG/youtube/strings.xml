@@ -341,11 +341,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Ачкыч сөздүн карама-каршы declarations есть: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ачкыч сөз өтө кыска жана тырмакчаларды талап кылат: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ачкыч сөз бардык видеолорду жашырат: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Башкы бет: %s
-• Жазылуулар: %s
-• Издөө: %s
-• Комментарийлер: %s
-• Жалпы: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Башкы бет: %1$s
+• Жазылуулар: %2$s
+• Издөө: %3$s
+• Комментарийлер: %4$s
+• Жалпы: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Статистика</string>
   <string name="morphe_hide_stats_hidden_24h_title">Жашырылган видеолор, акыркы 24 саат</string>
   <string name="morphe_hide_stats_hidden_all_title">Жашырылган видеолор, бардык убакыт</string>
@@ -357,9 +357,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_warnlist_category_title">Эскертүү тизмеси: Орточо ишенимдүүлүк</string>
   <string name="morphe_hide_aislist_hide_home_title">Баштапкы беттеги видеолорду жашыруу</string>
   <string name="morphe_hide_aislist_hide_search_title">Издөөдөгү видеолорду жашыруу</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Башкы бет: %s
-• Издөө: %s
-• Жалпы: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Башкы бет: %1$s
+• Издөө: %2$s
+• Жалпы: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Блокко алынган каналдар</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Эскертүү тизмесиндеги каналдар</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Каналдарды жүктөө үчүн чыпканы иштетиңиз</string>
@@ -562,7 +562,7 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <string name="morphe_export_download_folder_missing">Экспорттоо папкасын таптыруу мүмкүн болбоду %s</string>
   <string name="morphe_export_download_flyout_title">Түзмөктке экспорттоо</string>
   <string name="morphe_export_download_started">Видео экспорттолууда</string>
-  <string name="morphe_export_download_progress">Видео экспорттолууда: %d%%</string>
+  <string name="morphe_export_download_progress">Видео экспорттолуп жатат: %s%%</string>
   <string name="morphe_export_download_notification_channel">Видео экспорттору</string>
   <string name="morphe_export_download_saved">Видео %s жерге экспорттолду</string>
   <string name="morphe_export_download_failed">Видеону экспорттоого мүмкүн болгон жок</string>
@@ -915,7 +915,7 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_captions_screen_summary">Автоматтык субтитрлерди жана субтитр кукилерини башкаруу</string>
   <string name="morphe_captions_languages_title">Тил жана котормо</string>
   <string name="morphe_captions_presentation_title">Сырткы көрүнүшү жана жүрүм-туруму</string>
-  <string name="morphe_captions_advanced_title">Жашыруун</string>
+  <string name="morphe_captions_advanced_title">Өркүндөтүлгөн</string>
   <string name="morphe_captions_advanced_summary">Cookie жана транскрипт опциялары</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Автоматтык субтитрлердин көрүнүүсү</string>
@@ -1013,6 +1013,7 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_navigation_bar_glass_size_height">Бийиктиги</string>
   <string name="morphe_navigation_bar_glass_size_width">Максималдуу туурасы</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Баскычтардын аралыгы</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Көрсөтүлгөн баскычтар: %2$s ичинен %1$s</string>
   <string name="morphe_toolbar_screen_title">Куралдар панели</string>
   <string name="morphe_toolbar_screen_summary">Куралдар панелинде кайсы компоненттер пайда болорун тандаңыз</string>
   <string name="morphe_hide_toolbar_chat_button_title">Чат баскычын жашыруу</string>
@@ -1666,7 +1667,7 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_series_tracker_identity_unavailable">Көзөөнү инкогнито режиминде же YouTube учурдагы аккаунттун абалын жүктөөдөн мурун иштетүү мүмкүн эмес. Башкы бетке кайтып, кайра аракет кылыңыз. Кирүү талап кылынбайт</string>
   <string name="morphe_series_tracker_enable">Жергиликтүү көзөмөлдү күйгүзүү</string>
   <string name="morphe_series_tracker_tracking_paused">Прогрессти жаздыруу өчүрулгөн</string>
-  <string name="morphe_series_tracker_resume_at">%1$s жерден улантуу</string>
+  <string name="morphe_series_tracker_resume_at">%s жерден улантуу</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s эпизод каралды</string>
   <string name="morphe_series_tracker_episode_position">Эпизод %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">%3$s эпизоддун %1$s-%2$s эпизоддору</string>
@@ -1676,7 +1677,7 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_series_tracker_plan_changed">Эпизодду тандаңыз</string>
   <string name="morphe_series_tracker_plan_caught_up">Актуалдуу</string>
   <string name="morphe_series_tracker_plan_none">Ойното турган эпизоддор жок</string>
-  <string name="morphe_series_tracker_saved_position">Сакталган видео · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Сакталган видео · %s</string>
   <string name="morphe_series_tracker_follow">Сериалды theo кылуу</string>
   <string name="morphe_series_tracker_view_series">Сериалды көрүү</string>
   <string name="morphe_series_tracker_continue">Улантуу</string>
@@ -1686,7 +1687,7 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_series_tracker_marked">Эпизоддор көрүлдү деп белгиленди</string>
   <string name="morphe_series_tracker_undo">Артка кайтаруу</string>
   <string name="morphe_series_tracker_enable_short">Ишке киргизүү</string>
-  <string name="morphe_series_tracker_new_episode">{one} 1 жаңы серия</string>
+  <string name="morphe_series_tracker_new_episode">1 жаңы эпизод</string>
   <string name="morphe_series_tracker_record_short">Прогрессти ушул түзүлүштө жаздоо</string>
   <string name="morphe_series_tracker_follow_consent">"Сиздин серияларыңыз жана прогрессиңиз ушул түзүлүштө сакталат жана YouTube аккаунттары арасында бөлүштүрүлөт. YouTube тарыхынын башкаруу器лары аларды өзгөртпөйт. Прогрессти Сериялар менюсунан тазалаңыз.
 
@@ -1716,12 +1717,12 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_series_tracker_hide_watched">Көрүлгөндөрдү жашыруу</string>
   <string name="morphe_series_tracker_watched_on_advance">Кийинки эпизодго өткөндө көргөн деп белгилөө</string>
   <string name="morphe_series_tracker_watch_previous">Мурунку эпизоддорду көрүлдү деп белгилөө</string>
-  <string name="morphe_series_tracker_order_starts_with">Башталышы: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Башталышы: %s</string>
   <string name="morphe_series_tracker_episode_order">Эпизоддордун тартиби</string>
   <string name="morphe_series_tracker_playlist_order">Плейлисттин тартиби</string>
   <string name="morphe_series_tracker_reverse_order">Плейлисттин тартибин тескери кылуу</string>
-  <string name="morphe_series_tracker_view_count">%1$s көрүүлүү</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s көрүүлүү</string>
+  <string name="morphe_series_tracker_view_count">%s көрүүлгөн</string>
+  <string name="morphe_series_tracker_view_count_one">%s көрүүлгөн</string>
   <string name="morphe_series_tracker_completion_title">Эпизоддорду көрүлдү деп белгилөө</string>
   <string name="morphe_series_tracker_completion_summary">Кеминде %1$s%% көрүлдү жана максималдуу 90 секунд калды, же %2$s секунд калды</string>
   <string name="morphe_series_tracker_completion_explanation">Эпизодду белгиленген чектен кийин автоматтык түрдө көрүлдү деп белгилөө. Пайыздык эреже ошондой эле 90 секунддан көп убакыт калбашын талап кылат, ошентип узун эпизоддордун аягы өткөрүлүп кетпейт. Калган убакыт эрежеси бир мүнөттөн узун видеолорго колдонулат; аны өчүрүү үчүн 0 деп коюңуз. Өзгөртүүлөр келечектеги прогресс жаңыртууларына колдонулат. Кол менен белгиленген көрүлдү/көрүлгөн жок тандоолору сакталат</string>
@@ -1741,7 +1742,7 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_series_tracker_backup_restore">Резервдик көчүрмөнү калыбына келтирүү</string>
   <string name="morphe_series_tracker_backup_preview">%1$s сериалды кошуу. Китепканаңыздагы %2$s сериал сакталат. Видеонун учурдагы прогресси сакталат</string>
   <string name="morphe_series_tracker_backup_saved">Сериялардын резервдик көчүрмөсү сакталды</string>
-  <string name="morphe_series_tracker_backup_restored">%1$s сериал калыбына келтирилди</string>
+  <string name="morphe_series_tracker_backup_restored">%s сериал калыбына келтирилди</string>
   <string name="morphe_series_tracker_error_backup_invalid">Бул файл колдоого алынбаган сериалдын резервдик көчүрмөсү же өтө чоң. Сиздин китепканаңыз өзгөргөн жок</string>
   <string name="morphe_series_tracker_error_backup_write">Резервдик көчүрмөнү сактоо мүмкүн болбоду. Башка жайды байкап көрүңүз</string>
   <string name="morphe_series_tracker_removed">Серия өчүрүлдү</string>
@@ -1751,7 +1752,7 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_series_tracker_recovery_choose">Төмөндөгү каалаган эпизодду да тандасаңыз болот. Мурдагы эпизоддор өзгөрбөйт</string>
   <string name="morphe_series_tracker_playback_changed">Бул плейлист өзгөрдү. Кайсы жерден улантууну тандоо үчүн сериалды ачыңыз</string>
   <string name="morphe_series_tracker_playback_boundary">Бул багытта башка эпизоддор жок</string>
-  <string name="morphe_series_tracker_continue_series">%1$s улантуу</string>
+  <string name="morphe_series_tracker_continue_series">%s улантуу</string>
   <string name="morphe_series_tracker_search_series">Серияларды издөө</string>
   <string name="morphe_series_tracker_clear_search">Издөөнү тазалоо</string>
   <string name="morphe_series_tracker_no_search_results">Сериялар табылган жок</string>
@@ -1780,6 +1781,10 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_niconico_comments_live_premieres_summary">Премьералар ойноп жаткан учурда</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Аяктаган Премьераларда көрсөтүү</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Аяктаган Премьералардын чат кайталоосу</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Убактысы белгиленген комментарийлерди көрсөтүү</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Чат жок видеолордо, 1:23 сыяктуу убактысы көрсөтүлгөн эң популярдуу комментарийлер ошол убакытта көрсөтүлөт</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Убакыттык комментарийлерди чат кайталануусу менен көрсөтүү</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Түз эфирлердин жана Премьералардын кайталанууларында убакыттык комментарийлер чат менен чогуу көрсөтүлөт</string>
   <string name="morphe_live_chat_translate_screen_title">Түз эфирдеги чаттын котормосу</string>
   <string name="morphe_live_chat_translate_screen_summary">Түз эфирдеги чатты жана түз эфирдеги чаттын кайталоо билдирүүлөрүн которуу</string>
   <string name="morphe_live_chat_translate_title">Түз эфирдеги чатты которуу</string>

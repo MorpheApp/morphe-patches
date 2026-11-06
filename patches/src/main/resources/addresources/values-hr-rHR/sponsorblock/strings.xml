@@ -42,7 +42,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_duration_7s">7 sekunde</string>
   <string name="morphe_sb_duration_8s">8 sekunde</string>
   <string name="morphe_sb_duration_9s">9 sekunde</string>
-  <string name="morphe_sb_duration_10s">%s sekunde</string>
+  <string name="morphe_sb_duration_10s">10 sekundi</string>
   <string name="morphe_sb_video_length_without_segments_title">Prikaži duljinu videa bez segmenata</string>
   <string name="morphe_sb_video_length_without_segments_summary">Oduzima sve segmente iz ukupnog trajanja videa prikazanog na traci napretka</string>
   <string name="morphe_sb_create_segment_category_title">Stvaranje novih segmenata</string>
@@ -92,7 +92,7 @@ To uključuje vaš privatni korisnički ID. Obavezno ovo mudro podijelite"</stri
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Vaše postavke sadrže privatni SponsorBlock korisnički ID.
 
 Vaš korisnički ID je poput lozinke i nikada se ne smije dijeliti"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Nije moguće podesati segment: %1$d %2$s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Ne prikazuj ponovno</string>
   <string name="morphe_sb_diff_segments_title">Promijeni ponašanje segmenata</string>
   <string name="morphe_sb_segments_sponsor">Sponzor</string>
   <string name="morphe_sb_segments_sponsor_summary">Plaćena promocija, plaćeni preporuči i izravni oglasi. Ne za samopromociju ili besplatne pozdrave uzrokima / kreatorima / web stranicama / proizvodima koji im se sviđaju</string>

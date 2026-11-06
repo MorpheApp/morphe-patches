@@ -181,16 +181,16 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG इंस्टॉल केलेले नाही. ते इंस्टॉल करा</string>
   <string name="gms_core_dialog_title">कृती आवश्यक</string>
-  <string name="gms_core_dialog_outdated_message">"तुमचे MicroG v%1s जुने झाले आहे आणि त्यामुळे समस्या येऊ शकतात.
+  <string name="gms_core_dialog_outdated_message">"तुमचे MicroG v%1$s जुने झाले आहे आणि त्यामुळे समस्या येऊ शकतात.
 
-कृपया MicroG नवीनतम आवृत्ती v%2s मध्ये अपडेट करा"</string>
+कृपया MicroG नवीनतम आवृत्ती v%2$s वर अपडेट करा"</string>
   <string name="gms_core_dialog_update_text">अपडेट करा</string>
   <string name="gms_core_dialog_ignore_text">दुर्लक्ष करा</string>
-  <string name="gms_core_dialog_conflict_message">"इन्स्टॉल केलेले MicroG Morphe द्वारे शिफारस केलेले नाही:
+  <string name="gms_core_dialog_conflict_message">"इन्स्टॉल केलेले MicroG हे Morphe द्वारे शिफारसित नाही:
 
-%1s
+%s
 
-ते अनइन्स्टॉल करण्यासाठी टॅप करा, त्यानंतर हे अॅप पुन्हा उघडा आणि MicroG RE इन्स्टॉल करा"</string>
+ते अनइन्स्टॉल करण्यासाठी टॅप करा, त्यानंतर हे ॲप पुन्हा उघडा आणि MicroG RE इन्स्टॉल करा"</string>
   <string name="gms_core_dialog_uninstall_text">अनइन्स्टॉल करा</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG ला बॅकग्राउंडमध्ये चालण्याची परवानगी नाही.

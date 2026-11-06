@@ -181,14 +181,14 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">ບໍ່ໄດ້ຕິດຕັ້ງ MicroG. ກະລຸນາຕິດຕັ້ງ</string>
   <string name="gms_core_dialog_title">ຕ້ອງດຳເນີນການ</string>
-  <string name="gms_core_dialog_outdated_message">"MicroG v%1s ຂອງທ່ານເກົ່າເກີນໄປ ແລະ ອາດເຮັດໃຫ້ເກີດບັນຫາ.
+  <string name="gms_core_dialog_outdated_message">"MicroG v%1$s ຂອງທ່ານເກົ່າເກີນໄປ ແລະ ອາດຈະເຮັດໃຫ້ເກີດບັນຫາ.
 
-ກະລຸນາອັບເດດ MicroG ເປັນເວີຊັນຫຼ້າສຸດ v%2s"</string>
+ກະລຸນາອັບເດດ MicroG ເປັນເວີຊັນຫຼ້າສຸດ v%2$s"</string>
   <string name="gms_core_dialog_update_text">ອັບເດດ</string>
   <string name="gms_core_dialog_ignore_text">ເມີນເສີຍ</string>
   <string name="gms_core_dialog_conflict_message">"MicroG ທີ່ຕິດຕັ້ງໄວ້ບໍ່ໄດ້ຮັບການແນະນຳໂດຍ Morphe:
 
-%1s
+%s
 
 ແຕະເພື່ອຖອນການຕິດຕັ້ງ, ຈາກນັ້ນເປີດແອັບນີ້ຄືນໃໝ່ ແລະ ຕິດຕັ້ງ MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">ຖອນການຕິດຕັ້ງ</string>

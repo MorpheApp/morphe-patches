@@ -341,11 +341,11 @@ Beperkingen:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Keyword heeft tegenstrijdige verklaringen: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Keyword is te kort en vereist aanhalingstekens: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Keyword verbergt alle video\'s: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Home: %s
-• Subscriptions: %s
-• Search: %s
-• Comments: %s
-• Total: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Home: %1$s
+• Abonnementen: %2$s
+• Zoeken: %3$s
+• Reacties: %4$s
+• Totaal: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Statistieken</string>
   <string name="morphe_hide_stats_hidden_24h_title">Video\'s verborgen, afgelopen 24 uur</string>
   <string name="morphe_hide_stats_hidden_all_title">Video\'s verborgen, ooit</string>
@@ -357,9 +357,9 @@ Beperkingen:
   <string name="morphe_hide_aislist_warnlist_category_title">Warnlist: Gemiddelde betrouwbaarheid</string>
   <string name="morphe_hide_aislist_hide_home_title">Video\'s verbergen in Home</string>
   <string name="morphe_hide_aislist_hide_search_title">Video\'s verbergen in zoeken</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Home: %s
-• Zoeken: %s
-• Totaal: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Home: %1$s
+• Zoeken: %2$s
+• Totaal: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Geblokkeerde kanalen</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Waarschuwingslijst kanalen</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Schakel een filter in om kanalen te laden</string>
@@ -562,7 +562,7 @@ Exportmap: %s"</string>
   <string name="morphe_export_download_folder_missing">Exportmap %s kon niet worden gevonden</string>
   <string name="morphe_export_download_flyout_title">Exporteren naar apparaat</string>
   <string name="morphe_export_download_started">Video exporteren</string>
-  <string name="morphe_export_download_progress">Video exporteren: %d%%</string>
+  <string name="morphe_export_download_progress">Video exporteren: %s%%</string>
   <string name="morphe_export_download_notification_channel">Video-exports</string>
   <string name="morphe_export_download_saved">Video geëxporteerd naar %s</string>
   <string name="morphe_export_download_failed">Kon de video niet exporteren</string>
@@ -1011,7 +1011,7 @@ Om toegang te krijgen tot Instellingen, schakel de Instellingen-knop in via Alge
   <string name="morphe_navigation_bar_glass_size_height">Hoogte</string>
   <string name="morphe_navigation_bar_glass_size_width">Maximale breedte</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Knopafstand</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Getoonde knoppen: %1$d van %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Getoonde knoppen: %1$s van %2$s</string>
   <string name="morphe_toolbar_screen_title">Werkbalk</string>
   <string name="morphe_toolbar_screen_summary">Kies welke componenten in de werkbalk verschijnen</string>
   <string name="morphe_hide_toolbar_chat_button_title">Verberg Chat-knop</string>
@@ -1665,7 +1665,7 @@ Automatische registratie stopt in incognito-modus wanneer de accountidentiteit n
   <string name="morphe_series_tracker_identity_unavailable">Tracking kan niet worden ingeschakeld in incognito-modus of voordat YouTube de status van het huidige account heeft geladen. Ga terug naar Startpagina en probeer het opnieuw. Er is geen aanmelding vereist</string>
   <string name="morphe_series_tracker_enable">Lokale tracking inschakelen</string>
   <string name="morphe_series_tracker_tracking_paused">Vorderingregistratie is uitgeschakeld</string>
-  <string name="morphe_series_tracker_resume_at">Hervatten op %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Hervatten bij %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s afleveringen bekeken</string>
   <string name="morphe_series_tracker_episode_position">Aflevering %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Afleveringen %1$s-%2$s van %3$s</string>
@@ -1675,7 +1675,7 @@ Automatische registratie stopt in incognito-modus wanneer de accountidentiteit n
   <string name="morphe_series_tracker_plan_changed">Een aflevering kiezen</string>
   <string name="morphe_series_tracker_plan_caught_up">Up-to-date</string>
   <string name="morphe_series_tracker_plan_none">Geen speelbare afleveringen</string>
-  <string name="morphe_series_tracker_saved_position">Opgeslagen video · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Opgeslagen video · %s</string>
   <string name="morphe_series_tracker_follow">Serie volgen</string>
   <string name="morphe_series_tracker_view_series">Serie bekijken</string>
   <string name="morphe_series_tracker_continue">Doorgaan</string>
@@ -1686,7 +1686,6 @@ Automatische registratie stopt in incognito-modus wanneer de accountidentiteit n
   <string name="morphe_series_tracker_undo">Ona</string>
   <string name="morphe_series_tracker_enable_short">Inschakelen</string>
   <string name="morphe_series_tracker_new_episode">1 nieuwe aflevering</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s nieuwe afleveringen</string>
   <string name="morphe_series_tracker_record_short">Vordering op dit apparaat registreren</string>
   <string name="morphe_series_tracker_follow_consent">"Je series en voortgang blijven op dit apparaat, gedeeld over YouTube-accounts. YouTube-geschiedenisbesturingselementen veranderen hier niets aan. Wis de voortgang via het menu Serie.
 
@@ -1716,12 +1715,11 @@ Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een 
   <string name="morphe_series_tracker_hide_watched">Bekeken items verbergen</string>
   <string name="morphe_series_tracker_watched_on_advance">Markeer als bekeken bij overgaan naar de volgende aflevering</string>
   <string name="morphe_series_tracker_watch_previous">Vorige afleveringen markeren als bekeken</string>
-  <string name="morphe_series_tracker_order_starts_with">Begint met: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Begint met: %s</string>
   <string name="morphe_series_tracker_episode_order">Aflevering volgorde</string>
   <string name="morphe_series_tracker_playlist_order">Afspeellijstvolgorde</string>
   <string name="morphe_series_tracker_reverse_order">Afspeellijstvolgorde omkeren</string>
-  <string name="morphe_series_tracker_view_count">%1$s keer bekeken</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s keer bekeken</string>
+  <string name="morphe_series_tracker_view_count_one">%s weergave</string>
   <string name="morphe_series_tracker_completion_title">Afleveringen markeren als bekeken</string>
   <string name="morphe_series_tracker_completion_summary">Ten minste %1$s%% bekeken met maximaal 90 seconden te gaan, of %2$s seconden resterend</string>
   <string name="morphe_series_tracker_completion_explanation">Markeer automatisch een aflevering als bekeken na either drempel. De procentregel vereist ook niet meer dan 90 seconden te gaan, zodat het einde van lange afleveringen niet wordt overgeslagen. De regel voor resterende tijd geldt voor video\'s langer dan één minuut; stel dit in op 0 om het uit te schakelen. Wijzigingen komen van toepassing op toekomstige voortgangsupdates. Handmatige keuzes voor bekeken/niet bekeken worden behouden</string>
@@ -1741,7 +1739,7 @@ Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een 
   <string name="morphe_series_tracker_backup_restore">Back-up herstellen</string>
   <string name="morphe_series_tracker_backup_preview">%1$s series toevoegen. %2$s series die al in je bibliotheek zitten, worden bewaard. Bestaande video-voortgang wordt bewaard</string>
   <string name="morphe_series_tracker_backup_saved">Seriesback-up opgeslagen</string>
-  <string name="morphe_series_tracker_backup_restored">%1$s series hersteld</string>
+  <string name="morphe_series_tracker_backup_restored">%s series hersteld</string>
   <string name="morphe_series_tracker_error_backup_invalid">Dit bestand is geen ondersteunde serieback-up, of is te groot. Je bibliotheek is niet gewijzigd</string>
   <string name="morphe_series_tracker_error_backup_write">De back-up kon niet worden opgeslagen. Probeer een andere locatie</string>
   <string name="morphe_series_tracker_removed">Series verwijderd</string>
@@ -1751,7 +1749,7 @@ Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een 
   <string name="morphe_series_tracker_recovery_choose">Je kunt ook elke aflevering hieronder kiezen. Eerdere afleveringen worden niet gewijzigd</string>
   <string name="morphe_series_tracker_playback_changed">Deze afspeellijst is gewijzigd. Open de serie om te kiezen waar je verder gaat</string>
   <string name="morphe_series_tracker_playback_boundary">Geen afleveringen meer in deze richting</string>
-  <string name="morphe_series_tracker_continue_series">Doorgaan met %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Doorgaan %s</string>
   <string name="morphe_series_tracker_search_series">Series zoeken</string>
   <string name="morphe_series_tracker_clear_search">Zoeking wissen</string>
   <string name="morphe_series_tracker_no_search_results">Geen series gevonden</string>
@@ -1780,6 +1778,10 @@ Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een 
   <string name="morphe_niconico_comments_live_premieres_summary">Premières terwijl ze worden afgespeeld</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Tonen bij beëindigde premières</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Chat-replay van beëindigde premières</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Toon getimede reacties</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Bij video\'s zonder chat worden topreacties die een tijdstip bevatten, zoals 1:23, op dat moment getoond</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Toon tijdgebonden reacties bij chat-terugspoeling</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Bij terugspoelingen van livestreams en premières worden tijdgebonden reacties ook samen met de chat getoond</string>
   <string name="morphe_live_chat_translate_screen_title">Vertaling livechat</string>
   <string name="morphe_live_chat_translate_screen_summary">Vertaal livechat- en livechat-replayberichten</string>
   <string name="morphe_live_chat_translate_title">Livechat vertalen</string>

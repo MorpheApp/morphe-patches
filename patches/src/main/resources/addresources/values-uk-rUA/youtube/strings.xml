@@ -69,19 +69,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">Приховати кнопки каналу</string>
   <string name="morphe_hide_channel_buttons_summary">Приховує кнопки, такі як \"Підписатися\", \"Переглянути канал\", \"Спільнота\" та YouTube Music, у профілях каналів у результатах пошуку</string>
   <string name="morphe_hide_community_posts_title">Приховати публікації спільноти</string>
-  <string name="morphe_post_buttons_screen_title">Кнопки публікації</string>
-  <string name="morphe_post_buttons_screen_summary">Виберіть макет кнопок під дописами спільноти та те, які кнопки приховати</string>
+  <string name="morphe_post_buttons_screen_title">Кнопки допису</string>
+  <string name="morphe_post_buttons_screen_summary">Виберіть макет кнопок під дописами спільноти та кнопки, які потрібно приховати</string>
   <string name="morphe_post_buttons_layout_title">Макет кнопок допису</string>
   <string name="morphe_post_buttons_layout_entry_1">Сервер</string>
   <string name="morphe_post_buttons_layout_entry_2">Примусовий</string>
   <string name="morphe_hide_post_like_dislike_buttons_title">Приховати кнопки \"Лайк\" та \"Дизлайк\"</string>
   <string name="morphe_hide_post_dislike_button_title">Приховати кнопку \"Дизлайк\"</string>
-  <string name="morphe_hide_post_dislike_button_summary">У примусовому макеті місце для кнопки залишається</string>
+  <string name="morphe_hide_post_dislike_button_summary">У примусовому макеті місце кнопки залишається</string>
   <string name="morphe_hide_post_comment_button_title">Приховати кнопку \"Коментарі\"</string>
   <string name="morphe_hide_post_comments_preview_title">Приховати попередній перегляд коментарів</string>
   <string name="morphe_hide_post_comments_preview_summary">Приховує попередній перегляд коментарів під дописами</string>
   <string name="morphe_hide_post_share_button_title">Приховати кнопку \"Поділитися\"</string>
-  <string name="morphe_hide_post_share_button_summary">Кнопка завантаження зображень допису відображається поруч із кнопкою \"Поділитися\", тому вона також прихована</string>
+  <string name="morphe_hide_post_share_button_summary">Кнопка завантаження зображень допису розташована поруч із кнопкою \"Поділитися\", тому вона також прихована</string>
   <string name="morphe_hide_compact_banner_title">Приховати компактні банери</string>
   <string name="morphe_hide_compact_banner_summary">Приховує компактні банери та відступи між деякими компонентами</string>
   <string name="morphe_hide_expandable_card_title">Розгортувані картки під відео</string>
@@ -341,11 +341,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Ключове слово має конфліктні оголошення: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключове слово занадто коротке і потребує лапок: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ключове слово приховає всі відео: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Головна: %s
-• Підписки: %s
-• Пошук: %s
-• Коментарі: %s
-• Всього: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Головна: %1$s
+• Підписки: %2$s
+• Пошук: %3$s
+• Коментарі: %4$s
+• Усього: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Статистика</string>
   <string name="morphe_hide_stats_hidden_24h_title">Прихованих відео за останні 24 години</string>
   <string name="morphe_hide_stats_hidden_all_title">Прихованих відео за весь час</string>
@@ -357,9 +357,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_warnlist_category_title">Список попереджень: помірна впевненість</string>
   <string name="morphe_hide_aislist_hide_home_title">Приховати відео на головній</string>
   <string name="morphe_hide_aislist_hide_search_title">Приховати відео в пошуку</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Головна: %s
-• Пошук: %s
-• Всього: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Головна: %1$s
+• Пошук: %2$s
+• Всього: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Каналів в списку блокування</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Каналів в списку попереджень</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Увімкніть фільтр, щоб завантажити канали</string>
@@ -402,7 +402,7 @@ Second \"item\" text"</string>
   <string name="morphe_snackbar_screen_title">Спливаючі повідомлення</string>
   <string name="morphe_snackbar_screen_summary">Приховати спливаючі повідомлення або змінити їхні кольори та форму</string>
   <string name="morphe_hide_snackbar_title">Приховати спливаюче повідомлення</string>
-  <string name="morphe_custom_snackbar_theme_title">Спеціальне спливаюче повідомлення</string>
+  <string name="morphe_custom_snackbar_theme_title">Власне спливаюче повідомлення</string>
   <string name="morphe_custom_snackbar_theme_summary">Спливаючі повідомлення використовують наведені нижче кольори та радіус кутів замість кольорів протилежної теми</string>
   <string name="morphe_custom_snackbar_color_dark_title">Колір фону темної теми</string>
   <string name="morphe_custom_snackbar_color_dark_summary">Колір фону спливаючих повідомлень у темній темі. Текст буде чорним або білим, залежно від того, що легше читати</string>
@@ -411,7 +411,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_snackbar_stroke_color_title">Колір рамки</string>
   <string name="morphe_custom_snackbar_stroke_color_summary">Колір рамки навколо спливаючих повідомлень. Прозорий колір означає відсутність рамки</string>
   <string name="morphe_custom_snackbar_corner_radius_title">Радіус кутів</string>
-  <string name="morphe_custom_snackbar_corner_radius_summary">Радіус кутів snackbar-повідомлень у dp</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Радіус кутів спливаючих повідомлень у dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Білий список каналів для реклами</string>
   <string name="morphe_ads_channel_whitelist_summary">Відео з каналів у білому списку відтворюються з рекламою, тому їхні автори отримують оплату. Реклама залишається заблокованою на всіх інших каналах</string>
@@ -562,7 +562,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">Не вдалося знайти теку експорту %s</string>
   <string name="morphe_export_download_flyout_title">Експортувати на пристрій</string>
   <string name="morphe_export_download_started">Експорт відео</string>
-  <string name="morphe_export_download_progress">Експорт відео: %d%%</string>
+  <string name="morphe_export_download_progress">Експорт відео: %s%%</string>
   <string name="morphe_export_download_notification_channel">Експорт відео</string>
   <string name="morphe_export_download_saved">Відео експортовано до %s</string>
   <string name="morphe_export_download_failed">Не вдалося експортувати відео</string>
@@ -989,7 +989,7 @@ Second \"item\" text"</string>
 
 Щоб отримати доступ до налаштувань, увімкніть кнопку налаштувань через Загальні → Панель інструментів → Показувати кнопку \"Налаштування\""</string>
   <string name="morphe_narrow_navigation_buttons_title">Увімкнути вузькі кнопки навігації</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Зменшує горизонтальний відступ між кнопками. Недоступно для скляної панелі навігації, яка має власний відступ кнопок</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Зменшує горизонтальний відступ між кнопками. Недоступно для скляної панелі навігації, яка має власний відступ між кнопками</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Вимкнути кнопки навігації без підписів</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Показує кнопки навігації з підписами, якщо YouTube надсилає їх без підписів</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Вимкнути вкладки навігації на панелі інструментів</string>
@@ -1009,10 +1009,11 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Непрозорість скла</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Налаштовує рівень прозорості скляної панелі навігації (0 - прозора, 100 - непрозора)</string>
   <string name="morphe_navigation_bar_glass_size_title">Розмір скляної панелі навігації</string>
-  <string name="morphe_navigation_bar_glass_size_summary">Налаштуйте висоту, ширину та відступ кнопок скляної панелі навігації з попереднім переглядом. Кнопки, що не поміщаються в ширину екрана, приховано</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Налаштуйте висоту, ширину та відступ між кнопками скляної панелі навігації з попереднім переглядом. Кнопки, які не вміщуються в ширину екрана, приховуються</string>
   <string name="morphe_navigation_bar_glass_size_height">Висота</string>
   <string name="morphe_navigation_bar_glass_size_width">Максимальна ширина</string>
-  <string name="morphe_navigation_bar_glass_size_button_spacing">Відступ кнопок</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Відступ між кнопками</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Показано кнопок: %1$s із %2$s</string>
   <string name="morphe_toolbar_screen_title">Панель інструментів</string>
   <string name="morphe_toolbar_screen_summary">Виберіть, які компоненти будуть показуватися на панелі інструментів</string>
   <string name="morphe_hide_toolbar_chat_button_title">Приховати кнопку \"Чат\"</string>
@@ -1665,7 +1666,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_identity_unavailable">Відстеження не можна увімкнути в режимі анонімного перегляду або до того, як YouTube завантажить стан поточного облікового запису. Поверніться на вкладку \"Головна\" та спробуйте знову. Вхід в обліковий запис не потрібен</string>
   <string name="morphe_series_tracker_enable">Увімкнути локальне відстеження</string>
   <string name="morphe_series_tracker_tracking_paused">Запис прогресу вимкнено</string>
-  <string name="morphe_series_tracker_resume_at">Продовжити з %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Продовжити з %s</string>
   <string name="morphe_series_tracker_watched_count">Переглянуто %1$s / %2$s епізодів</string>
   <string name="morphe_series_tracker_episode_position">Епізод %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Епізоди %1$s-%2$s з %3$s</string>
@@ -1675,7 +1676,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_plan_changed">Виберіть епізод</string>
   <string name="morphe_series_tracker_plan_caught_up">Актуально</string>
   <string name="morphe_series_tracker_plan_none">Немає епізодів для відтворення</string>
-  <string name="morphe_series_tracker_saved_position">Збережене відео · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Збережене відео · %s</string>
   <string name="morphe_series_tracker_follow">Стежити за серіалом</string>
   <string name="morphe_series_tracker_view_series">Переглянути серіал</string>
   <string name="morphe_series_tracker_continue">Продовжити</string>
@@ -1686,7 +1687,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_undo">Скасувати</string>
   <string name="morphe_series_tracker_enable_short">Увімкнути</string>
   <string name="morphe_series_tracker_new_episode">1 новий епізод</string>
-  <string name="morphe_series_tracker_new_episodes">Нових епізодів: %1$s</string>
+  <string name="morphe_series_tracker_new_episodes">Нових епізодів: %s</string>
   <string name="morphe_series_tracker_record_short">Записувати прогрес на цьому пристрої</string>
   <string name="morphe_series_tracker_follow_consent">"Ваші серіали та прогрес залишаються на цьому пристрої та є спільними для всіх облікових записів YouTube. Елементи керування історією YouTube на них не впливають. Очистити прогрес можна в меню \"Серіали\".
 
@@ -1714,14 +1715,14 @@ AVC (H.264)
   <string name="morphe_series_tracker_discovery_unavailable">Не вдалося знайти список відтворення</string>
   <string name="morphe_series_tracker_no_available_episodes">Немає доступних епізодів</string>
   <string name="morphe_series_tracker_hide_watched">Приховати переглянуті</string>
-  <string name="morphe_series_tracker_watched_on_advance">Позначати як переглянуте при переході до наступної серії</string>
+  <string name="morphe_series_tracker_watched_on_advance">Позначати як переглянуте під час переходу до наступної серії</string>
   <string name="morphe_series_tracker_watch_previous">Позначити попередні епізоди переглянутими</string>
-  <string name="morphe_series_tracker_order_starts_with">Починається з: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Починається з: %s</string>
   <string name="morphe_series_tracker_episode_order">Порядок епізодів</string>
   <string name="morphe_series_tracker_playlist_order">Порядок у списку відтворення</string>
   <string name="morphe_series_tracker_reverse_order">Зворотний порядок у списку відтворення</string>
-  <string name="morphe_series_tracker_view_count">%1$s переглядів</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s перегляд</string>
+  <string name="morphe_series_tracker_view_count">%s переглядів</string>
+  <string name="morphe_series_tracker_view_count_one">%s перегляд</string>
   <string name="morphe_series_tracker_completion_title">Позначити епізоди переглянутими</string>
   <string name="morphe_series_tracker_completion_summary">Переглянуто щонайменше %1$s%% із залишком не більше 90 секунд, або залишилося %2$s секунд</string>
   <string name="morphe_series_tracker_completion_explanation">Автоматично позначати епізод переглянутим після досягнення будь-якого з порогів. Правило відсотка також вимагає, щоб залишалося не більше 90 секунд, тому кінцівка довгих епізодів не пропускається. Правило залишку часу застосовується до відео довших за одну хвилину; встановіть 0, щоб вимкнути його. Зміни застосовуються до майбутніх оновлень прогресу. Ручні позначки \"переглянуто\" / \"не переглянуто\" зберігаються</string>
@@ -1741,7 +1742,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_backup_restore">Відновити резервну копію</string>
   <string name="morphe_series_tracker_backup_preview">Додати серіалів: %1$s. Серіалів, які вже є у вашій бібліотеці, залишається: %2$s. Наявний прогрес відео зберігається</string>
   <string name="morphe_series_tracker_backup_saved">Резервну копію серіалу збережено</string>
-  <string name="morphe_series_tracker_backup_restored">Відновлено серіалів: %1$s</string>
+  <string name="morphe_series_tracker_backup_restored">Відновлено серіалів: %s</string>
   <string name="morphe_series_tracker_error_backup_invalid">Цей файл не є підтримуваною резервною копією серіалів або завеликий. Вашу бібліотеку не змінено</string>
   <string name="morphe_series_tracker_error_backup_write">Не вдалося зберегти резервну копію. Спробуйте інше розташування</string>
   <string name="morphe_series_tracker_removed">Серіал видалено</string>
@@ -1751,7 +1752,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_recovery_choose">Ви також можете вибрати будь-який епізод нижче. Попередні епізоди не змінюються</string>
   <string name="morphe_series_tracker_playback_changed">Цей список відтворення змінився. Відкрийте серіал, щоб вибрати, звідки продовжити</string>
   <string name="morphe_series_tracker_playback_boundary">Більше немає епізодів у цьому напрямку</string>
-  <string name="morphe_series_tracker_continue_series">Продовжити %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Продовжити %s</string>
   <string name="morphe_series_tracker_search_series">Пошук серіалів</string>
   <string name="morphe_series_tracker_clear_search">Очистити пошук</string>
   <string name="morphe_series_tracker_no_search_results">Серіалів не знайдено</string>
@@ -1773,13 +1774,17 @@ AVC (H.264)
   <string name="morphe_niconico_comments_max_length_summary">Приховує коментарі з більшою кількістю символів, ніж це значення. Кожне емодзі враховується як один символ</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без обмежень</string>
   <string name="morphe_niconico_comments_max_refresh_rate_title">Макс. частота оновлення</string>
-  <string name="morphe_niconico_comments_max_refresh_rate_summary">Найвища частота оновлення дисплея, що використовується під час руху коментарів. Нижчі значення споживають менше заряду акумулятора</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">Найвища частота оновлення екрана, що використовується під час руху коментарів. Нижчі значення менше розряджають акумулятор</string>
   <string name="morphe_niconico_comments_live_streams_title">Показувати в прямих трансляціях</string>
   <string name="morphe_niconico_comments_live_streams_summary">Прямі трансляції та їхні повтори</string>
   <string name="morphe_niconico_comments_live_premieres_title">Показувати в прем\'єрах</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Прем\'єри, які зараз відтворюються</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Показувати в завершених прем\'єрах</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Повтор чату завершених прем\'єр</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Показувати коментарі з позначками часу</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">У відео без чату найпопулярніші коментарі, що містять час, наприклад 1:23, показуються в цей момент</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Показувати коментарі з позначками часу разом із повтором чату</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Під час повторів прямих трансляцій і прем\'єр коментарі з позначками часу також показуються разом із чатом</string>
   <string name="morphe_live_chat_translate_screen_title">Переклад живого чату</string>
   <string name="morphe_live_chat_translate_screen_summary">Перекладати повідомлення живого чату та повтору чату</string>
   <string name="morphe_live_chat_translate_title">Перекладати живий чат</string>

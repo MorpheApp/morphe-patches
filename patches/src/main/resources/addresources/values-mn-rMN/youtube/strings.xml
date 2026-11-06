@@ -341,11 +341,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Түлхүүр үг зөрчилтэй тодорхойлолттой байна: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Түлхүүр үг хэтэрхий богино тул хашилт шаардлагатай: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Түлхүүр үг бүх видеог нуух болно: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Нүүр: %s
-• Бүртгэлүүд: %s
-• Хайлт: %s
-• Сэтгэгдэл: %s
-• Нийт: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Нүүр: %1$s
+• Бүртгэлтэй: %2$s
+• Хайлт: %3$s
+• Сэтгэгдэл: %4$s
+• Нийт: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Статистик</string>
   <string name="morphe_hide_stats_hidden_24h_title">Сүүлийн 24 цагт нуугдсан видеонууд</string>
   <string name="morphe_hide_stats_hidden_all_title">Бүх цаг үеийн нуугдсан видеонууд</string>
@@ -357,9 +357,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_warnlist_category_title">Анхааруулга жагсаалт: Дундаж итгэлцэлтэй</string>
   <string name="morphe_hide_aislist_hide_home_title">Нүүр хуудасны видеог нуух</string>
   <string name="morphe_hide_aislist_hide_search_title">Хайлт дахь видеог нуух</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Нүүр: %s
-• Хайлт: %s
-• Нийт: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Нүүр: %1$s
+• Хайлт: %2$s
+• Нийт: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Хар жагсаалтын сувгууд</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Анхааруулгын жагсаалтын сувгууд</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Сувгуудыг ачаалахын тулд шүүлтүүрийг идэвхжүүлнэ үү</string>
@@ -562,7 +562,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">Экспортыг хийх хавтас %s-ийг олж чадсангүй</string>
   <string name="morphe_export_download_flyout_title">Төхөөрөмж рүү экспортлох</string>
   <string name="morphe_export_download_started">Видеог экспортлож байна</string>
-  <string name="morphe_export_download_progress">Видео гаргаж байна: %d%%</string>
+  <string name="morphe_export_download_progress">Видео гаргаж байна: %s%%</string>
   <string name="morphe_export_download_notification_channel">Видео гаргалт</string>
   <string name="morphe_export_download_saved">Видеог %s руу гаргалаа</string>
   <string name="morphe_export_download_failed">Видеог гаргаж чадсангүй</string>
@@ -1013,7 +1013,7 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_navigation_bar_glass_size_height">Өндөр</string>
   <string name="morphe_navigation_bar_glass_size_width">Хамгийн их өргөн</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Товчнуудын зай</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Харагдаж буй товчнууд: %2$d-аас %1$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Харагдаж буй товчлуур: %2$s-аас %1$s</string>
   <string name="morphe_toolbar_screen_title">Баруун дээд хэсгийн цэс</string>
   <string name="morphe_toolbar_screen_summary">Хэрэгсэлний мөрөнд (toolbar) аль бүрэлдэхүүн хэсгүүдийг харуулахыг сонгоно уу</string>
   <string name="morphe_hide_toolbar_chat_button_title">Чат товчийг нуух</string>
@@ -1667,7 +1667,7 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_series_tracker_identity_unavailable">Нууц горимд эсвэл YouTube одоогийн бүртгэлийн төлөвийг ачаалаагүй үед хяналтыг идэвхжүүлэх боломжгүй. Нүүр хуудас руу буцаж дахин оролдоно уу. Нэвтрэх шаардлагагүй.</string>
   <string name="morphe_series_tracker_enable">Дотоод хяналтыг идэвхжүүлэх</string>
   <string name="morphe_series_tracker_tracking_paused">Прогрессийн бүртгэл унтарсан байна</string>
-  <string name="morphe_series_tracker_resume_at">%1$s хэсгээс үргэлжлүүлэх</string>
+  <string name="morphe_series_tracker_resume_at">%s хэсгээс үргэлжлүүлэх</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s анги үзсэн</string>
   <string name="morphe_series_tracker_episode_position">%1$s-р анги · %2$s</string>
   <string name="morphe_series_tracker_episode_range">%3$s-ын %1$s-%2$s ангиуд</string>
@@ -1677,7 +1677,7 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_series_tracker_plan_changed">Анги сонгоно уу</string>
   <string name="morphe_series_tracker_plan_caught_up">Шинэчлэгдсэн</string>
   <string name="morphe_series_tracker_plan_none">Үзэх боломжтой анги байхгүй байна</string>
-  <string name="morphe_series_tracker_saved_position">Хадгалагдсан видео · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Хадгалагдсан видео · %s</string>
   <string name="morphe_series_tracker_follow">Цувралыг дагах</string>
   <string name="morphe_series_tracker_view_series">Цувралыг үзэх</string>
   <string name="morphe_series_tracker_continue">Үргэлжлүүлэх</string>
@@ -1687,7 +1687,7 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_series_tracker_marked">Эпизодуудыг үзсэн гэж тэмдэглэсэн</string>
   <string name="morphe_series_tracker_undo">Буцаах</string>
   <string name="morphe_series_tracker_enable_short">Идэвхжүүлэх</string>
-  <string name="morphe_series_tracker_new_episode">{one}1 шинэ ан{,} {other}%d шинэ ан</string>
+  <string name="morphe_series_tracker_new_episode">1 шинэ анги</string>
   <string name="morphe_series_tracker_record_short">Энэ төхөөрөмж дээр явцыг тэмдэглэх</string>
   <string name="morphe_series_tracker_follow_consent">"Таны цуврал болон ахиц дэвшил энэ төхөөрөмж дээр хадгалагдах бөгөөд YouTube-ийн бүртгэлүүдээр хуваалдانا. YouTube-ийн түүхийллийн хяналт тэдгээрийг өөрчлөхгүй. Цувралын цэснээс ахиц дэвшилээ устгаж болно.
 
@@ -1717,12 +1717,12 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_series_tracker_hide_watched">Үзсэнийг нуух</string>
   <string name="morphe_series_tracker_watched_on_advance">Дараагийн анги руу шилжих үед үзсэн гэж тэмдэглэх</string>
   <string name="morphe_series_tracker_watch_previous">Өмнөх ангиудыг үзсэн гэж тэмдэглэх</string>
-  <string name="morphe_series_tracker_order_starts_with">Эхлэх хэсэг: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Эхлэл: %s</string>
   <string name="morphe_series_tracker_episode_order">Ангийн дараалал</string>
   <string name="morphe_series_tracker_playlist_order">Тоглолтын жагсаалтын дараалал</string>
   <string name="morphe_series_tracker_reverse_order">Жагсаалтын дарааллыг эргүүлэх</string>
-  <string name="morphe_series_tracker_view_count">%1$s үзэлттэй</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s үзэлт</string>
+  <string name="morphe_series_tracker_view_count">%s үзэлт</string>
+  <string name="morphe_series_tracker_view_count_one">%s үзэлт</string>
   <string name="morphe_series_tracker_completion_title">Үзсэн цувралуудыг тэмдэглэх</string>
   <string name="morphe_series_tracker_completion_summary">Дэнслэлт нь %1$s%%-иас багагүй үзсэн бөгөөд хамгийн ихдээ 90 секунд үлдсэн, эсвэл %2$s секунд үлдсэн</string>
   <string name="morphe_series_tracker_completion_explanation">Аль нэг босго үзүүлэлтэд хүрэхэд цуврааг автоматаар үзсэн гэж тэмдэглэнэ. Хувийн дүрэм нь 90 секундаас илүү үлдэхгүй байх шаардлагатай бөгөөд ингэснээр урт цуврааны төгсгөлийг алгасахгүй. Үлдсэн хугацааны дүрэм нь нэг минутаас урт видеонуудад хамаарна; идэвхгүй болгохын тулд 0 гэж тохируулна. Өөрчлөлтүүд нь ирээдүйн явцад хамаарна. Гар аргаар үзсэн/үзээгүй гэж сонгосон тохиргоо хэвээр үлдэнэ</string>
@@ -1742,7 +1742,7 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_series_tracker_backup_restore">Нөөцлөлтийг сэргээх</string>
   <string name="morphe_series_tracker_backup_preview">%1$s цуврал нэмэх. Таны санд байгаа %2$s цуврал хэвээр үлдэнэ. Видеоны одоогийн явц хэвээр үлдэнэ</string>
   <string name="morphe_series_tracker_backup_saved">Цувралын нөөцлөлт хадгалагдлаа</string>
-  <string name="morphe_series_tracker_backup_restored">%1$s цувралыг сэргээв</string>
+  <string name="morphe_series_tracker_backup_restored">%s цувралыг сэргээлээ</string>
   <string name="morphe_series_tracker_error_backup_invalid">Энэ файл нь дэмжигдээгүй цувралын нөөцлөлт эсвэл хэтэрхий том байна. Таны сан өөрчлөгдөөгүй</string>
   <string name="morphe_series_tracker_error_backup_write">Нөөц хуулбарыг хадгалах боломжгүй боллоо. Өөр байршил сонгоно уу</string>
   <string name="morphe_series_tracker_removed">Цувралыг устгалаа</string>
@@ -1752,7 +1752,7 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_series_tracker_recovery_choose">Та доорх дурын ангийг сонгох боломжтой. Өмнөх ангиудад өөрчлөлт орохгүй</string>
   <string name="morphe_series_tracker_playback_changed">Энэхүү тоглолтын жагсаалт өөрчлөгдсөн байна. Хаанаас үргэлжлүүлэхээ сонгохын тулд цувралыг нээнэ үү</string>
   <string name="morphe_series_tracker_playback_boundary">Энэ чиглэлд дахин цуврал байхгүй байна</string>
-  <string name="morphe_series_tracker_continue_series">%1$s-ийг үргэлжлүүлэх</string>
+  <string name="morphe_series_tracker_continue_series">%s-ийг үргэлжлүүлэх</string>
   <string name="morphe_series_tracker_search_series">Цуврал хайх</string>
   <string name="morphe_series_tracker_clear_search">Хайлт цэвэрлэх</string>
   <string name="morphe_series_tracker_no_search_results">Цуврал олдсонгүй</string>
@@ -1781,6 +1781,10 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_niconico_comments_live_premieres_summary">Нээлттүүд тоглогдож байх үед</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Дууссан нээлт дээр харуулах</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Дууссан нээлттүүдийн чатын давталт</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Хугацаатай сэтгэгдлүүдийг харуулах</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Чатгүй видеонууд дээр 1:23 гэх мэт цаг хугацааг агуулсан шилдэг сэтгэгдлүүдийг тухайн хугацаанд нь харуулна</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Чатны давталтын үеэр хугацаагаар тохируулсан сэтгэгдлийг харуулах</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Шууд дамжуулалт болон Нэвтрүүлгэтийн давталтын үеэр хугацаагаар тохируулсан сэтгэгдлүүд чаттай хамт харагдана</string>
   <string name="morphe_live_chat_translate_screen_title">Шууд чатын орчуулга</string>
   <string name="morphe_live_chat_translate_screen_summary">Шууд чат болон шууд чатын давтлага дээрх зурвасуудыг орчуулах</string>
   <string name="morphe_live_chat_translate_title">Шууд чатыг орчуулах</string>

@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_04_general_title">Genel</string>
   <string name="morphe_settings_screen_05_player_title">Oynatıcı</string>
   <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
-  <string name="morphe_settings_screen_07_seekbar_title">İlerleme çubuğu</string>
+  <string name="morphe_settings_screen_07_seekbar_title">Sardırma çubuğu</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Kaydırma denetimleri</string>
   <string name="morphe_settings_screen_11_misc_title">Çeşitli</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Eski YouTube ayarlar ekranını geri yükle</string>
-  <string name="morphe_native_snackbar_title">Mesajları YouTube bildirim çubuğunda göster</string>
-  <string name="morphe_native_snackbar_summary">Bir oynatıcı düğmesinin onay bildirimi gibi Morphe mesajları, açılır pencere yerine YouTube bildirim çubuğunda gösterilir</string>
+  <string name="morphe_native_snackbar_title">Mesajları YouTube snackbarda göster</string>
+  <string name="morphe_native_snackbar_summary">Bir oynatıcı düğmesinin onay bildirimi gibi Morphe mesajları, açılır pencere yerine YouTube snackbarında gösterilir</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Arka planda oynatma kısıtlamalarını kaldır</string>
   <string name="morphe_shorts_disable_background_playback_title">Arka planda oynatmayı devre dışı bırak</string>
@@ -70,7 +70,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_channel_buttons_title">Kanal düğmelerini gizle</string>
   <string name="morphe_hide_channel_buttons_summary">Arama sonuçlarında kanal profillerindeki Abone Ol, Kanalı Görüntüle, Topluluk ve YouTube Music gibi düğmeleri gizler</string>
   <string name="morphe_hide_community_posts_title">Topluluk gönderilerini gizle</string>
-  <string name="morphe_post_buttons_screen_title">Sonraki düğmeler</string>
+  <string name="morphe_post_buttons_screen_title">Gönderi düğmeleri</string>
   <string name="morphe_post_buttons_screen_summary">Topluluk gönderilerinin altındaki düğmelerin düzenini ve hangi düğmelerin gizleneceğini seçin</string>
   <string name="morphe_post_buttons_layout_title">Gönderi düğmeleri düzeni</string>
   <string name="morphe_post_buttons_layout_entry_1">Sunucu</string>
@@ -79,8 +79,8 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_post_dislike_button_title">Beğenmeme düğmesini gizle</string>
   <string name="morphe_hide_post_dislike_button_summary">Zorunlu düzen ile düğme alanı boş bırakılır</string>
   <string name="morphe_hide_post_comment_button_title">Yorumlar düğmesini gizle</string>
-  <string name="morphe_hide_post_comments_preview_title">Yorum önizlemesini gizle</string>
-  <string name="morphe_hide_post_comments_preview_summary">Gönderilerin altındaki yorumların önizlemesini gizler</string>
+  <string name="morphe_hide_post_comments_preview_title">Yorum ön izlemesini gizle</string>
+  <string name="morphe_hide_post_comments_preview_summary">Gönderilerin altındaki yorumların ön izlemesini gizler</string>
   <string name="morphe_hide_post_share_button_title">Paylaş düğmesini gizle</string>
   <string name="morphe_hide_post_share_button_summary">Gönderi görsellerinin indirme düğmesi paylaş düğmesinin yanına çizildiği için o da gizlenir</string>
   <string name="morphe_hide_compact_banner_title">Kompakt afişleri gizle</string>
@@ -342,11 +342,11 @@ Sınırlamalar:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Anahtar kelimede çelişki var: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kelime kısa, tırnak içine alın: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kelime bütün videoları gizler: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Ana Sayfa: %s
-• Abonelikler: %s
-• Arama: %s
-• Yorumlar: %s
-• Toplam: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Ana Sayfa: %1$s
+• Abonelikler: %2$s
+• Arama: %3$s
+• Yorumlar: %4$s
+• Toplam: %5$s"</string>
   <string name="morphe_hide_stats_category_title">İstatistikler</string>
   <string name="morphe_hide_stats_hidden_24h_title">Son 24 saatte gizlenen videolar</string>
   <string name="morphe_hide_stats_hidden_all_title">Tüm zamanlarda gizlenen videolar</string>
@@ -358,9 +358,9 @@ Sınırlamalar:
   <string name="morphe_hide_aislist_warnlist_category_title">Uyarı Listesi: Orta güven</string>
   <string name="morphe_hide_aislist_hide_home_title">Videoları Ana sayfada gizle</string>
   <string name="morphe_hide_aislist_hide_search_title">Videoları aramada gizle</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Ana Sayfa: %s
-• Arama: %s
-• Toplam: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Ana Sayfa: %1$s
+• Arama: %2$s
+• Toplam: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Engellenen kanallar</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Uyarı listesindeki kanallar</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Kanalları yüklemek için bir filtre etkinleştirin</string>
@@ -400,19 +400,19 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_aislist_submit_failed_rejected">AiSList raporu reddetti.</string>
   <string name="morphe_aislist_submit_failed">Rapor gönderilemedi, bağlantınızı kontrol edin.</string>
   <!-- layout.snackbar.snackbarPatch -->
-  <string name="morphe_snackbar_screen_title">Bildirim çubuğu</string>
-  <string name="morphe_snackbar_screen_summary">Bildirim çubuklarını gizleyin veya renklerini ve şeklini değiştirin</string>
+  <string name="morphe_snackbar_screen_title">Snackbar</string>
+  <string name="morphe_snackbar_screen_summary">Snackbarları gizleyin veya renklerini ve şeklini değiştirin</string>
   <string name="morphe_hide_snackbar_title">Snackbar\'ı gizle</string>
-  <string name="morphe_custom_snackbar_theme_title">Özel bildirim çubuğu</string>
-  <string name="morphe_custom_snackbar_theme_summary">Bildirim çubukları ters tema renkleri yerine aşağıdaki renkleri ve köşe yarıçapını kullanır</string>
+  <string name="morphe_custom_snackbar_theme_title">Özel snackbar</string>
+  <string name="morphe_custom_snackbar_theme_summary">Snackbarlar ters tema renkleri yerine aşağıdaki renkleri ve köşe yarıçapını kullanır</string>
   <string name="morphe_custom_snackbar_color_dark_title">Koyu tema arka plan rengi</string>
-  <string name="morphe_custom_snackbar_color_dark_summary">Bildirim çubuklarının koyu temadaki arka plan rengi. Metin, okuması kolay olacak şekilde siyah veya beyazdır</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Snackbarların koyu temadaki arka plan rengi. Metin, okuması kolay olacak şekilde siyah veya beyazdır</string>
   <string name="morphe_custom_snackbar_color_light_title">Açık tema arka plan rengi</string>
-  <string name="morphe_custom_snackbar_color_light_summary">Bildirim çubuklarının açık temadaki arka plan rengi. Metin, okuması kolay olacak şekilde siyah veya beyazdır</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Snackbarların açık temadaki arka plan rengi. Metin, okuması kolay olacak şekilde siyah veya beyazdır</string>
   <string name="morphe_custom_snackbar_stroke_color_title">Kenarlık rengi</string>
-  <string name="morphe_custom_snackbar_stroke_color_summary">Bildirim çubuklarının etrafındaki kenarlık rengi. Şeffaf renk kenarlık göstermez</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Snackbarların etrafındaki kenarlık rengi. Şeffaf renk kenarlık göstermez</string>
   <string name="morphe_custom_snackbar_corner_radius_title">Köşe yarıçapı</string>
-  <string name="morphe_custom_snackbar_corner_radius_summary">Dp cinsinden bildirim çubuğu köşe yarıçapı</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Dp cinsinden snackbar köşe yarıçapı</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Kanal reklam beyaz listesi</string>
   <string name="morphe_ads_channel_whitelist_summary">Beyaz listedeki kanalların videoları reklamlarla oynatılır, böylece içerik üreticilerine ödeme yapılır. Diğer tüm kanallarda reklamlar engellenmeye devam eder.</string>
@@ -563,7 +563,7 @@ Dışa aktarma klasörü: %s"</string>
   <string name="morphe_export_download_folder_missing">Dışa aktarma klasörü %s bulunamadı</string>
   <string name="morphe_export_download_flyout_title">Cihaza dışa aktar</string>
   <string name="morphe_export_download_started">Video dışa aktarılıyor</string>
-  <string name="morphe_export_download_progress">Video dışa aktarılıyor: %d%%</string>
+  <string name="morphe_export_download_progress">Video dışa aktarılıyor: %s%%</string>
   <string name="morphe_export_download_notification_channel">Video dışa aktarımları</string>
   <string name="morphe_export_download_saved">Video %s konumuna dışa aktarıldı</string>
   <string name="morphe_export_download_failed">Video dışa aktarılamadı</string>
@@ -624,7 +624,7 @@ API anahtarınız asla paylaşılmamalıdır. Ona erişimi olan herkes OpenRoute
   <!-- interaction.watchlater.watchLaterPatch -->
   <string name="morphe_watch_later_wide_drag_handles_title">Daha sonra izle sürükleme tutamaçlarını genişlet</string>
   <string name="morphe_watch_later_wide_drag_handles_summary">Daha sonra izle videolarının sürükleme tutamaçlarını tutması daha kolaydır</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_title">Daha sonra izle\'den kaldırma bildirim çubuğunu gizle</string>
+  <string name="morphe_watch_later_hide_removal_snackbar_title">Daha sonra izle\'den kaldırma snackbarını gizle</string>
   <string name="morphe_watch_later_hide_removal_snackbar_summary">Daha sonra izle\'den bir video kaldırıldığında onay bildirimi gösterilmez</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Videoyu döngüye almayı etkinleştir</string>
@@ -770,12 +770,12 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Kanal avatarına dokunulduğunda canlı yayının açılmasını engeller</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Hassas sardırma hareketini devre dışı bırak</string>
-  <string name="morphe_disable_precise_seeking_gesture_summary">İlerleme çubuğu yukarı kaydırıldığında etkinleşen hassas sarma modunu devre dışı bırakır</string>
+  <string name="morphe_disable_precise_seeking_gesture_summary">Sardırma çubuğunu yukarı çekince etkinleşen hassas sardırma modunu devre dışı bırakır</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
   <string name="morphe_live_stream_dvr_title">Canlı yayın DVR özelliğini etkinleştir</string>
   <string name="morphe_live_stream_dvr_summary">Normalde buna izin vermeyenler de dahil olmak üzere tüm canlı yayınlarda oynatma konumunu değiştirmeyi sağlar.</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
-  <string name="morphe_seekbar_thumbnail_preview_title">İlerleme çubuğu küçük resimlerini etkinleştir</string>
+  <string name="morphe_seekbar_thumbnail_preview_title">Sardırma çubuğu küçük resimlerini etkinleştir</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Arama çubuğunu sürüklerken video küçük resmini gösterir</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">En çok tekrar oynatılan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
@@ -1014,7 +1014,7 @@ Ayarlara erişmek için, Ayarlar düğmesini şuradan etkinleştirin: Genel → 
   <string name="morphe_navigation_bar_glass_size_height">Yükseklik</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimum genişlik</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Düğme boşluğu</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Gösterilen düğmeler: %2$d düğmeden %1$d tanesi</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Gösterilen düğmeler: %2$s üzerinden %1$s</string>
   <string name="morphe_toolbar_screen_title">Araç Çubuğu</string>
   <string name="morphe_toolbar_screen_summary">Araç çubuğunda hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sohbet düğmesini gizle</string>
@@ -1669,7 +1669,7 @@ Gizli moddayken, hesap kimliği kullanılamadığında veya farklı bir hesaba g
   <string name="morphe_series_tracker_identity_unavailable">Gizli modda veya YouTube mevcut hesap durumunu yüklemeden önce izleme özelliği etkinleştirilemez. Ana Sayfa\'ya dönüp tekrar deneyin. Oturum açmanız gerekmez</string>
   <string name="morphe_series_tracker_enable">Yerel izlemeyi etkinleştir</string>
   <string name="morphe_series_tracker_tracking_paused">İlerleme kaydı kapalı</string>
-  <string name="morphe_series_tracker_resume_at">%1$s noktasından devam et</string>
+  <string name="morphe_series_tracker_resume_at">%s noktasından devam et</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s bölümler izlendi</string>
   <string name="morphe_series_tracker_episode_position">Bölüm %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">%3$s dizisinin %1$s-%2$s bölümleri</string>
@@ -1679,7 +1679,7 @@ Gizli moddayken, hesap kimliği kullanılamadığında veya farklı bir hesaba g
   <string name="morphe_series_tracker_plan_changed">Bir bölüm seç</string>
   <string name="morphe_series_tracker_plan_caught_up">Güncel</string>
   <string name="morphe_series_tracker_plan_none">Oynatılabilir bölüm yok</string>
-  <string name="morphe_series_tracker_saved_position">Kaydedilen video · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Kaydedilen video · %s</string>
   <string name="morphe_series_tracker_follow">Seriyi takip et</string>
   <string name="morphe_series_tracker_view_series">Dizileri görüntüle</string>
   <string name="morphe_series_tracker_continue">Devam et</string>
@@ -1690,7 +1690,7 @@ Gizli moddayken, hesap kimliği kullanılamadığında veya farklı bir hesaba g
   <string name="morphe_series_tracker_undo">Geri al</string>
   <string name="morphe_series_tracker_enable_short">Etkinleştir</string>
   <string name="morphe_series_tracker_new_episode">1 yeni bölüm</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s yeni bölüm</string>
+  <string name="morphe_series_tracker_new_episodes">%s yeni bölüm</string>
   <string name="morphe_series_tracker_record_short">İlerlemeyi bu cihazda kaydet</string>
   <string name="morphe_series_tracker_follow_consent">"Dizileriniz ve ilerleme durumunuz bu cihazda saklanır ve YouTube hesapları arasında paylaşılır. YouTube geçmişi ayarları bunları değiştirmez. İlerleme durumunu Dizi menüsünden silebilirsiniz.
 
@@ -1720,12 +1720,12 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_series_tracker_hide_watched">İzlenenleri gizle</string>
   <string name="morphe_series_tracker_watched_on_advance">Sonraki bölüme geçerken izlendi olarak işaretle</string>
   <string name="morphe_series_tracker_watch_previous">Önceki bölümleri izlendi olarak işaretle</string>
-  <string name="morphe_series_tracker_order_starts_with">Şuradan başlat: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Şuradan başlat: %s</string>
   <string name="morphe_series_tracker_episode_order">Bölüm sıralaması</string>
   <string name="morphe_series_tracker_playlist_order">Çalma listesi sırası</string>
   <string name="morphe_series_tracker_reverse_order">Çalma listesi sırasını tersine çevir</string>
-  <string name="morphe_series_tracker_view_count">%1$s görüntüleme</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s görünüm</string>
+  <string name="morphe_series_tracker_view_count">%s görüntüleme</string>
+  <string name="morphe_series_tracker_view_count_one">%s görünüm</string>
   <string name="morphe_series_tracker_completion_title">Bölümleri izlendi olarak işaretle</string>
   <string name="morphe_series_tracker_completion_summary">En az %1$s%% izlendiğinde ve en fazla 90 saniye kaldığında veya %2$s saniye kaldığında</string>
   <string name="morphe_series_tracker_completion_explanation">Belirlenen eşiklerden herhangi birine ulaşıldığında, bölüm otomatik olarak izlenmiş olarak işaretlenir. Yüzde kuralı ayrıca bölümün bitimine en fazla 90 saniye kalmış olmasını gerektirir; böylece uzun bölümlerin son kısımları atlanmamış olur. Kalan süre kuralı, bir dakikadan uzun videolar için geçerlidir; devre dışı bırakmak için bu değeri 0 olarak ayarlayın. Yapılan değişiklikler, bundan sonraki izleme ilerlemesi güncellemeleri için geçerli olacaktır. Manuel olarak yapılan \"izlendi/izlenmedi\" seçimleri korunur</string>
@@ -1745,7 +1745,7 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_series_tracker_backup_restore">Yedeği geri yükle</string>
   <string name="morphe_series_tracker_backup_preview">%1$s dizi ekleyin. Kitaplığınızda halihazırda bulunan %2$s dizi korunur. Mevcut video ilerleme durumu korunur</string>
   <string name="morphe_series_tracker_backup_saved">Seri yedeği kaydedildi</string>
-  <string name="morphe_series_tracker_backup_restored">%1$s serisi yeniden yüklendi</string>
+  <string name="morphe_series_tracker_backup_restored">%s serisi yeniden yüklendi</string>
   <string name="morphe_series_tracker_error_backup_invalid">Bu dosya desteklenen bir seri yedeği değil ya da boyutu çok büyük. Kitaplığınızda herhangi bir değişiklik yapılmadı</string>
   <string name="morphe_series_tracker_error_backup_write">Yedekleme kaydedilemedi. Başka bir konum deneyin</string>
   <string name="morphe_series_tracker_removed">Diziler kaldırıldı</string>
@@ -1755,7 +1755,7 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_series_tracker_recovery_choose">Ayrıca aşağıdan dilediğiniz bölümü seçebilirsiniz. Daha önceki bölümler değiştirilmemiştir</string>
   <string name="morphe_series_tracker_playback_changed">Bu oynatma listesi değişti. Nereden devam edeceğinizi seçmek için seriyi açın</string>
   <string name="morphe_series_tracker_playback_boundary">Bu doğrultuda başka bölüm yok.</string>
-  <string name="morphe_series_tracker_continue_series">%1$s ile devam et</string>
+  <string name="morphe_series_tracker_continue_series">%s ile devam et</string>
   <string name="morphe_series_tracker_search_series">Dizileri ara</string>
   <string name="morphe_series_tracker_clear_search">Aramayı temizle</string>
   <string name="morphe_series_tracker_no_search_results">Dizi bulunamadı</string>
@@ -1784,6 +1784,10 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_niconico_comments_live_premieres_summary">Aktif olarak gerçekleşen ilk gösterimler</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Bitmiş İlk gösterimlerde göster</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Bitmiş İlk gösterimlerin sohbet tekrarı</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Zamanlanmış yorumları göster</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Sohbeti olmayan videolarda, 1:23 gibi bir zaman içeren üst yorumlar o zamanda gösterilir</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Zamanlanmış yorumları sohbet tekrarıyla göster</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Canlı yayın ve Premiere tekrarlarında, zamanlanmış yorumlar da sohbetle birlikte gösterilir</string>
   <string name="morphe_live_chat_translate_screen_title">Canlı sohbet çevirisi</string>
   <string name="morphe_live_chat_translate_screen_summary">Canlı sohbeti ve sohbet tekrar mesajlarını çevir</string>
   <string name="morphe_live_chat_translate_title">Canlı sohbeti çevir</string>

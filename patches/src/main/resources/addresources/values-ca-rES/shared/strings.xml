@@ -181,16 +181,16 @@ El comportament ha desaparegut abans a la cerca, per la qual cosa és possible q
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG no està instal·lat. Instal·la\'l</string>
   <string name="gms_core_dialog_title">Cal realitzar una acció</string>
-  <string name="gms_core_dialog_outdated_message">"La versió %1s de MicroG està desactualitzada i pot causar problemes.
+  <string name="gms_core_dialog_outdated_message">"La teva versió de MicroG v%1$s està desactualitzada i pot causar problemes.
 
-Si us plau, actualitzeu MicroG a l'última versió v%2s"</string>
+Si us plau, actualitza MicroG a l'última versió v%2$s"</string>
   <string name="gms_core_dialog_update_text">Actualitzar</string>
   <string name="gms_core_dialog_ignore_text">Ignorar</string>
   <string name="gms_core_dialog_conflict_message">"El MicroG instal·lat no és recomanat per Morphe:
 
-%1s
+%s
 
-Toca per desinstal·lar-lo, torna a obrir aquesta aplicació i instal·la MicroG RE"</string>
+Toca per desinstal·lar-lo, després torna a obrir aquesta aplicació i instal·la MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Desinstal·lar</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG no té permís per s'executar en segon pla.

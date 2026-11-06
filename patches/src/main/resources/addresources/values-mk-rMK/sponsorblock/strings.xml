@@ -137,23 +137,23 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skipped_highlight">Прикажи во лентата за премотување</string>
   <string name="morphe_sb_skipped_intro_beginning">Оневозможи</string>
   <string name="morphe_sb_skipped_intro_middle">Прескокната пауза</string>
-  <string name="morphe_sb_skipped_intro_end">Не може да се достави сегмент: %s</string>
+  <string name="morphe_sb_skipped_intro_end">Прескокнат прекин</string>
   <string name="morphe_sb_skipped_outro">Пропуштен излез</string>
   <string name="morphe_sb_skipped_hook">Пропуштен вовед</string>
   <string name="morphe_sb_skipped_preview_beginning">Пропуштен преглед</string>
   <string name="morphe_sb_skipped_preview_middle">Пропуштен преглед</string>
   <string name="morphe_sb_skipped_preview_end">Пропуштен рекапитулација</string>
-  <string name="morphe_sb_skipped_filler">Не може да се гласа за сегмент: %s</string>
+  <string name="morphe_sb_skipped_filler">Прескокната дигресија</string>
   <string name="morphe_sb_skipped_nomusic">Гласај за</string>
   <string name="morphe_sb_skipped_unsubmitted">Гласај против</string>
   <string name="morphe_sb_skipped_multiple_segments">Промени категорија</string>
   <string name="morphe_sb_skip_automatically">Нема сегменти за гласање</string>
-  <string name="morphe_sb_skip_automatically_once">%1$s до %2$s</string>
+  <string name="morphe_sb_skip_automatically_once">Прескокни автоматски еднаш</string>
   <string name="morphe_sb_skip_showbutton">Избери категорија за сегментот</string>
   <string name="morphe_sb_skip_seekbaronly">Прикажи на лентата за потрага</string>
   <string name="morphe_sb_skip_ignore">Нов сегмент на SponsorBlock</string>
   <string name="morphe_sb_submit_failed_invalid">Неуспешно поднесување на сегментот: %s</string>
-  <string name="morphe_sb_submit_failed_timeout">Почеток</string>
+  <string name="morphe_sb_submit_failed_timeout">SponsorBlock е привремено недостапен</string>
   <string name="morphe_sb_submit_failed_unknown_error">Неуспешно поднесување на сегментот (статус: %1$s %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Неуспешно поднесување на сегментот. Ограничување на стапката (премногу од ист корисник или IP)</string>
   <string name="morphe_sb_submit_failed_forbidden">Не може да се испрати сегментот: %s</string>
@@ -173,15 +173,15 @@ Second \"item\" text"</string>
   <string name="morphe_sb_vote_no_segments">Нема сегменти за гласање</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
   <string name="morphe_sb_vote_segment_time_to_from">%1$s до %2$s</string>
-  <string name="morphe_sb_new_segment_choose_category">Не може да се промени корисничкото име: Статус: %1$d %2$s</string>
+  <string name="morphe_sb_new_segment_choose_category">Изберете ја категоријата на сегментот</string>
   <string name="morphe_sb_new_segment_disabled_category">Категоријата е оневозможена во поставките. Овозможете ја категоријата за да поднесете</string>
   <string name="morphe_sb_new_segment_title">Нов сегмент на SponsorBlock</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">Поставете %s како почеток или крај на нов сегмент?</string>
-  <string name="morphe_sb_new_segment_mark_start">Табела на водечки спонзори SponsorBlock</string>
+  <string name="morphe_sb_new_segment_mark_start">Почеток</string>
   <string name="morphe_sb_new_segment_mark_end">Крај</string>
   <string name="morphe_sb_new_segment_now">Сега</string>
   <string name="morphe_sb_new_segment_time_start">Време кога сегментот почнува</string>
-  <string name="morphe_sb_new_segment_time_end">%1$s часа %2$s минути</string>
+  <string name="morphe_sb_new_segment_time_end">Време на завршување на сегментот</string>
   <string name="morphe_sb_new_segment_confirm_title">Дали времињата се точни?</string>
   <string name="morphe_sb_new_segment_confirm_content">"Сегментот е од
 
@@ -195,7 +195,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_new_segment_confirm_submit">Испрати</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Почетокот мора да биде пред крајот</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Прво означете локација на лентата со време</string>
-  <string name="morphe_sb_new_segment_preview_segment_first">За</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">Прегледајте го сегментот и проверете дали се прескокнува непречено</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Редектирајте го времето на сегментот рачно</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Дали сакате да ја уредите временската рамка за почеток или крај на сегментот?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Основен</string>
@@ -220,7 +220,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_submissions_summary">Преглед на сегменти за тркачи</string>
   <string name="morphe_sb_stats_saved_zero">Табела на рекорди на SponsorBlock</string>
   <string name="morphe_sb_stats_saved">Заштедивте луѓе од &lt;b&gt;%s&lt;/b&gt; сегменти</string>
-  <string name="morphe_sb_stats_saved_summary_zero">Преглед на сефа</string>
+  <string name="morphe_sb_stats_saved_summary_zero">Допрете тука за да ги видите глобалните статистики и најдобрите соработници</string>
   <string name="morphe_sb_stats_saved_summary">Тоа се &lt;b&gt;%s&lt;/b&gt;.&lt;br&gt;Притиснете овде за да се прегледува лидербордот</string>
   <string name="morphe_sb_stats_self_saved">Прескокнавте &lt;b&gt;%s&lt;/b&gt; сегменти</string>
   <string name="morphe_sb_stats_self_saved_summary">Тоа се &lt;b&gt;%s&lt;/b&gt;</string>

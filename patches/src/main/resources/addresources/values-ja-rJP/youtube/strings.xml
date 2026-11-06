@@ -341,11 +341,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">矛盾する宣言があるキーワード: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">短すぎて引用符が必要なキーワード: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">全動画を除外するキーワード: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• ホーム: %s
-• 登録チャンネル: %s
-• 検索結果: %s
-• コメント: %s
-• 合計: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• ホーム: %1$s
+• 登録チャンネル: %2$s
+• 検索結果: %3$s
+• コメント: %4$s
+• 合計: %5$s"</string>
   <string name="morphe_hide_stats_category_title">統計</string>
   <string name="morphe_hide_stats_hidden_24h_title">直近 24 時間の除外動画数</string>
   <string name="morphe_hide_stats_hidden_all_title">全期間の除外動画数</string>
@@ -357,9 +357,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_warnlist_category_title">要注意リスト (信頼度: 中)</string>
   <string name="morphe_hide_aislist_hide_home_title">ホームの動画をリストで除外</string>
   <string name="morphe_hide_aislist_hide_search_title">検索結果の動画をリストで除外</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• ホーム: %s
-• 検索結果: %s
-• 合計: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• ホーム: %1$s
+• 検索結果: %2$s
+• 合計: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">ブロックリストに登録中のチャンネル</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">要注意リストに登録中のチャンネル</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">リストに登録されているチャンネルを読み込むには、いずれかのフィルタ機能を有効にしてください</string>
@@ -563,7 +563,7 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_export_download_folder_missing">書き出しフォルダ %s が見つかりませんでした</string>
   <string name="morphe_export_download_flyout_title">デバイスにエクスポート</string>
   <string name="morphe_export_download_started">ビデオをエクスポート中</string>
-  <string name="morphe_export_download_progress">ビデオをエクスポート中: %d%%</string>
+  <string name="morphe_export_download_progress">ビデオを書き出し中: %s%%</string>
   <string name="morphe_export_download_notification_channel">ビデオのエクスポート</string>
   <string name="morphe_export_download_saved">ビデオを %s にエクスポートしました</string>
   <string name="morphe_export_download_failed">ビデオをエクスポートできませんでした</string>
@@ -1014,7 +1014,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_navigation_bar_glass_size_height">高さ</string>
   <string name="morphe_navigation_bar_glass_size_width">最大幅</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">ボタンの間隔</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">表示ボタン: %2$d 個中 %1$d 個</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">表示ボタン: %2$s 個中 %1$s 個</string>
   <string name="morphe_toolbar_screen_title">ツールバー</string>
   <string name="morphe_toolbar_screen_summary">ツールバーに表示するコンポーネントを設定します</string>
   <string name="morphe_hide_toolbar_chat_button_title">チャットボタンを非表示</string>
@@ -1668,7 +1668,7 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_identity_unavailable">シークレット モードが有効の場合、または YouTube が現在のアカウント状態を読み込むまでは、追跡機能を有効にすることはできません。ホーム画面に戻って、もう一度お試しください。ログインは不要です</string>
   <string name="morphe_series_tracker_enable">ローカル追跡を有効にする</string>
   <string name="morphe_series_tracker_tracking_paused">進捗記録はオフです</string>
-  <string name="morphe_series_tracker_resume_at">%1$s で再開</string>
+  <string name="morphe_series_tracker_resume_at">%s から再開</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s エピソード視聴済み</string>
   <string name="morphe_series_tracker_episode_position">エピソード %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">エピソード %1$s-%2$s of %3$s</string>
@@ -1678,7 +1678,7 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_plan_changed">エピソードを選択</string>
   <string name="morphe_series_tracker_plan_caught_up">最新の状態です</string>
   <string name="morphe_series_tracker_plan_none">再生可能なエピソードがありません</string>
-  <string name="morphe_series_tracker_saved_position">保存された動画 · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">保存済みビデオ · %s</string>
   <string name="morphe_series_tracker_follow">シリーズを追跡</string>
   <string name="morphe_series_tracker_view_series">シリーズを表示</string>
   <string name="morphe_series_tracker_continue">続行</string>
@@ -1689,7 +1689,7 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_undo">取り消し</string>
   <string name="morphe_series_tracker_enable_short">有効化</string>
   <string name="morphe_series_tracker_new_episode">新作エピソード1個</string>
-  <string name="morphe_series_tracker_new_episodes">新エピソード %1$s</string>
+  <string name="morphe_series_tracker_new_episodes">%s 件の新しいエピソード</string>
   <string name="morphe_series_tracker_record_short">このデバイスでの進捗記録</string>
   <string name="morphe_series_tracker_follow_consent">"シリーズと進捗状況は、このデバイスに保存され、YouTube アカウント間で共有されます。YouTube の履歴コントロールでは、これらの情報は変更されません。「シリーズ」メニューから進捗状況をクリアしてください。
 
@@ -1719,12 +1719,12 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_hide_watched">視聴済みを非表示</string>
   <string name="morphe_series_tracker_watched_on_advance">次のエピソードに進む際に視聴済みとしてマークする</string>
   <string name="morphe_series_tracker_watch_previous">前のエピソードを視聴済みとしてマーク</string>
-  <string name="morphe_series_tracker_order_starts_with">～で始まる: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">開始: %s</string>
   <string name="morphe_series_tracker_episode_order">エピソード順</string>
   <string name="morphe_series_tracker_playlist_order">プレイリスト順</string>
   <string name="morphe_series_tracker_reverse_order">プレイリスト順序を逆にする</string>
-  <string name="morphe_series_tracker_view_count">%1$s 回視聴</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s 回視聴</string>
+  <string name="morphe_series_tracker_view_count">%s 回視聴</string>
+  <string name="morphe_series_tracker_view_count_one">%s 回視聴</string>
   <string name="morphe_series_tracker_completion_title">エピソードを視聴済みとしてマーク</string>
   <string name="morphe_series_tracker_completion_summary">最低 %1$s%% 視聴かつ残り 90 秒以下、または残り %2$s 秒の時点</string>
   <string name="morphe_series_tracker_completion_explanation">いずれかの基準を満たすと、エピソードを自動的に視聴済みとしてマークします。パーセント基準では残り時間が 90 秒以内であることも必要となるため、長編エピソードの最後部分はスキップされません。残り時間の基準は 1 分以上の動画に適用されます。無効にするには 0 に設定します。変更は今後の進捗状況更新に適用されます。手動での視聴済み/未視聴の選択は保持されます</string>
@@ -1744,7 +1744,7 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_backup_restore">バックアップを復元</string>
   <string name="morphe_series_tracker_backup_preview">シリーズ %1$s を追加します。ライブラリに含まれている %2$s シリーズは保持されます。既存の動画進捗は保持されます</string>
   <string name="morphe_series_tracker_backup_saved">シリーズのバックアップが保存されました</string>
-  <string name="morphe_series_tracker_backup_restored">シリーズ %1$s を復元しました</string>
+  <string name="morphe_series_tracker_backup_restored">%s 件のシリーズを復元しました</string>
   <string name="morphe_series_tracker_error_backup_invalid">このファイルはサポートされているシリーズバックアップではないか、大きすぎます。ライブラリは変更されていません</string>
   <string name="morphe_series_tracker_error_backup_write">バックアップを保存できませんでした。別の場所をお試しください</string>
   <string name="morphe_series_tracker_removed">シリーズが削除されました</string>
@@ -1754,7 +1754,7 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_recovery_choose">以下の任意のエピソードを選択することもできます。過去のエピソードは変更されません</string>
   <string name="morphe_series_tracker_playback_changed">プレイリストが変更されました。シリーズを開いて継続する場所を選択してください</string>
   <string name="morphe_series_tracker_playback_boundary">この方向にはもうエピソードがありません</string>
-  <string name="morphe_series_tracker_continue_series">%1$s を続行</string>
+  <string name="morphe_series_tracker_continue_series">%s を継続</string>
   <string name="morphe_series_tracker_search_series">シリーズを検索</string>
   <string name="morphe_series_tracker_clear_search">検索をクリア</string>
   <string name="morphe_series_tracker_no_search_results">シリーズが見つかりません</string>
@@ -1783,6 +1783,10 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_niconico_comments_live_premieres_summary">プレミア公開中の動画</string>
   <string name="morphe_niconico_comments_ended_premieres_title">終了したプレミア公開で表示</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">終了したプレミア公開のチャットリプレイ</string>
+  <string name="morphe_niconico_comments_timed_comments_title">タイムスタンプ付きコメントを表示</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">チャットのない動画では、「1:23」のように時間が含まれている上位コメントが、その時間に表示されます</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">チャットのリプレイでタイムスタンプ付きコメントを表示</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">ライブ配信やプレミア公開のリプレイでは、タイムスタンプ付きコメントもチャットと共に表示されます</string>
   <string name="morphe_live_chat_translate_screen_title">ライブチャット翻訳</string>
   <string name="morphe_live_chat_translate_screen_summary">ライブチャットとライブチャットのリプレイメッセージを翻訳します</string>
   <string name="morphe_live_chat_translate_title">ライブチャットを翻訳</string>

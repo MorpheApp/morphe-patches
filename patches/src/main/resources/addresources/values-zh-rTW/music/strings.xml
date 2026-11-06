@@ -150,6 +150,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_previous">上一首</string>
   <string name="morphe_music_downloads_next">下一首</string>
   <string name="morphe_music_downloads_pause">暫停</string>
+  <string name="morphe_music_downloads_shuffle">隨機播放</string>
+  <string name="morphe_music_downloads_repeat">重複播放</string>
+  <string name="morphe_music_downloads_minimize">最小化</string>
   <string name="morphe_music_downloads_close">關閉</string>
   <string name="morphe_music_downloads_delete">刪除</string>
   <string name="morphe_music_downloads_delete_track">刪除下載的內容</string>
@@ -220,6 +223,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_download_no_network">沒有網路連線</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">正在等待網路……</string>
   <string name="morphe_music_downloads_playlist_download_stopped">在 %2$s 首中下載了 %1$s 首後停止。請再次點擊「下載」以繼續</string>
+  <string name="morphe_music_downloads_mark_title">標記已下載歌曲</string>
+  <string name="morphe_music_downloads_mark_summary">已下載的歌曲在播放清單、專輯和搜尋結果的詳細資訊前會顯示標記</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">關於</string>
@@ -340,6 +345,43 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">將選取的曲目新增至佇列</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">已新增至佇列</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">播放清單標籤</string>
+  <string name="morphe_music_playlist_tags_screen_summary">為播放清單添加標籤，並透過標籤篩選音樂庫</string>
+  <string name="morphe_music_playlist_tags_title">啟用播放清單標籤</string>
+  <string name="morphe_music_playlist_tags_summary">在播放清單選單中新增「標籤」項目，並在音樂庫排序按鈕旁新增「標籤」篩選按鈕</string>
+  <string name="morphe_music_playlist_tags_manage_title">管理播放清單標籤</string>
+  <string name="morphe_music_playlist_tags_manage_summary">建立、重新命名和刪除標籤，並為音樂庫中的播放清單添加標籤</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">標籤</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">無標籤</string>
+  <string name="morphe_music_playlist_tags_filter_button">標籤</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">標籤：%s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">標籤（已隱藏 %s 個）</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">%s 的標籤</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">新標籤</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 個播放清單</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s 個播放清單</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">名稱為 %s 的標籤已存在</string>
+  <string name="morphe_music_playlist_tags_filter_title">按標籤篩選</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">僅顯示</string>
+  <string name="morphe_music_playlist_tags_filter_all">所有播放清單</string>
+  <string name="morphe_music_playlist_tags_filter_visible">可見標籤</string>
+  <string name="morphe_music_playlist_tags_manage">管理</string>
+  <string name="morphe_music_playlist_tags_none">尚未有標籤。長按播放清單並選擇「標籤」來建立標籤</string>
+  <string name="morphe_music_playlist_tags_section_tags">標籤</string>
+  <string name="morphe_music_playlist_tags_section_playlists">播放清單</string>
+  <string name="morphe_music_playlist_tags_no_playlists">請先開啟一次音樂庫，以便您的播放清單顯示在此處</string>
+  <string name="morphe_music_playlist_tags_new_tag">新標籤</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">編輯標籤</string>
+  <string name="morphe_music_playlist_tags_rename">重新命名</string>
+  <string name="morphe_music_playlist_tags_delete">刪除</string>
+  <string name="morphe_music_playlist_tags_hidden">已隱藏</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">隱藏投放按鈕</string>
   <string name="morphe_music_hide_history_button_title">隱藏歷史記錄按鈕</string>
@@ -508,6 +550,49 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_scrobbling_about_summary">"聆聽記錄會自動將您的 YouTube Music 使用情況與您的 Last.fm 或 ListenBrainz 個人資料同步
 
 為了確保在背景播放期間同步聆聽記錄，請確保 YouTube Music 的應用程式電池使用量設定為「無限制」。"</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">跳過社群回報為 AI 的藝人曲目</string>
+  <string name="morphe_music_soundproof_show_button_title">顯示 SoundProof 按鈕</string>
+  <string name="morphe_music_soundproof_show_button_summary">在播放器的頂端列中顯示一個按鈕，用於查看並對目前藝人進行社群投票</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">跳過 AI 藝人</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">自動跳過藝人達到下方 AI 閾值的曲目</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">顯示跳過通知</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">當曲目被自動跳過時顯示通知</string>
+  <string name="morphe_music_soundproof_threshold_title">偵測閾值</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">最低 AI 票數百分比</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">當藝人的 AI 票數比例至少達到此數值時，將被判定為 AI</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">最低票數</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">票數低於此數值的藝人絕不會被跳過</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">已跳過 %1$s（AI, %2$s%%）</string>
+  <string name="morphe_music_soundproof_button_description">SoundProof 對此藝人的投票</string>
+  <string name="morphe_music_soundproof_sheet_verified">已驗證</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% 真人</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 票</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s 票</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s 真人</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s AI</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">該藝人尚未有投票紀錄</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">SoundProof 資料庫目前無法使用</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">系統正在背景下載中。在可用之前，不會跳過任何曲目。</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">來自 SoundProof 資料庫的社群投票</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">人類</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">投票已結束：SoundProof 管理員已核對該藝人</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">無法連線至 SoundProof。投票數據來自每日資料庫，目前無法投票。</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">SoundProof 投票失敗</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"藝人數據來自 SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps)，每天下載一次。跳過不會發送任何關於您播放內容的資訊。開啟 SoundProof 表格會將目前的藝人名稱發送到 SoundProof 伺服器，以顯示最新投票並進行投票。伺服器透過 IP 地址區分投票者，因此您的投票在另一個網路上的顯示方式可能會有所不同。
+
+該資料庫採用 ODC 開放資料庫許可證 (ODbL) 授權。來自 xoundbyte 的 Soul Over AI 條目採用 CC BY 4.0 授權。與 SoundProof 或 Soul Over AI 無關且未獲得其認可。"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">使用第三方歌詞</string>
   <string name="morphe_music_lyrics_enabled_summary">從第三方服務顯示歌詞，若找不到則改用內建歌詞</string>
@@ -548,17 +633,17 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_lyrics_rime_dict_bad_code">代碼必須是兩到三個字母，例如 hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">地址必須以 https:// 開頭</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">名稱和地址不能包含豎直條</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s 已有詞表</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s 由內建羅馬拼音處理，無法使用詞表</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s 已有詞表</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s 由內建羅馬化工具讀取，無法使用詞表</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">未使用：此語言已有其 own 發音，因此取消勾選即可移除</string>
-  <string name="morphe_music_lyrics_rime_dict_added">已新增 %1$s - 勾選並點擊保存以下載</string>
+  <string name="morphe_music_lyrics_rime_dict_added">已新增 %s - 請勾選並點擊「儲存」以進行下載</string>
   <string name="morphe_music_lyrics_rime_dict_ready">詞表就緒</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">詞表就緒（%1$d 項）</string>
-  <string name="morphe_music_lyrics_rime_dict_building">正在生成發音詞表：%1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">詞表已準備就緒（%s 個項目）</string>
+  <string name="morphe_music_lyrics_rime_dict_building">正在讀取詞表：%s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">詞表下載失敗 - 再次點擊保存以重試</string>
   <string name="morphe_music_lyrics_clear_cache_title">清除儲存的歌詞</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">刪除此設備上保留的 %1$s MB 歌詞緩存</string>
-  <string name="morphe_music_lyrics_clear_cache_done">已清除 %1$s MB</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">刪除此裝置上保留的 %s MB 歌詞</string>
+  <string name="morphe_music_lyrics_clear_cache_done">已清除 %s MB</string>
   <string name="morphe_music_token_dialog_get_token">取得權杖</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"貼上來自 music.apple.com 的 media-user-token Cookie
@@ -591,7 +676,7 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer：arl 已儲存</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Could not romanize the lyrics</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer：arl 無效 — 請檢查並重試</string>
-  <string name="morphe_music_musixmatch_token_title">Musixmatch：[…] 複製「token」的值</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">僅在要使用您自己的帳戶時才新增權杖。此權杖必須來自 Musixmatch Android 應用程式：從 musixmatch.com 複製的權杖屬於已停用的桌面用戶端，API 會拒絕這些權杖。</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch 不需要權杖也能運作，因此此欄位可以留空。</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">使用者Token</string>
@@ -624,14 +709,14 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">允許來自歌詞來源的非拉丁文發音；關閉時，僅保留拉丁字母、帶音符號字母和聲調數字</string>
   <string name="morphe_music_lyrics_local_romanization_summary">讀取時間同步歌詞（字級同步開啟）的每個詞；韓語無需下載；十四種腳本共用一個 CLDR 下載；當 Rime 詞表的詞表涵蓋該語言時，漢字由 Rime 詞表讀取</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">正在下載閱讀字典……</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">讀音就緒 (%1$d 個條目)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">讀音已準備就緒（%s 個項目）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">下載失敗 - 關閉並重新開啟此選項以重試</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">離線字典</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">日語（SudachiDict，約 75 MB）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">中文和粵文字符（UniDict，約 8 MB）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">漢語詞彙（pinyin-pro，約 17 MB）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">希臘語、斯拉夫語西里爾字母（包括俄語、烏克蘭語、保加利亞語、塞爾維亞語、白俄羅斯語、馬其頓語）、格魯吉亞語、亞美尼亞語、希伯來語、阿拉伯語、阿姆哈拉語和敘利亞語轉寫（CLDR，約 0.5 MB）</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">正在建立讀音 %1$s：%2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">正在讀取 %1$s：%2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">顯示重新整理按鈕</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">輕觸切換至下一個歌詞候選項目；長按依歌曲標題及藝人搜尋歌詞</string>
   <string name="morphe_music_lyrics_search_dialog_title">搜尋歌詞</string>
@@ -782,7 +867,7 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">設置不完整或被提供者拒絕</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">正在驗證連線…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s：已連接！（%2$s）</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s：連接失敗。請檢查設置。</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s：連線失敗。請檢查設定。</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">請先輸入 API 金鑰</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">測試連線</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">正在獲取模型…</string>

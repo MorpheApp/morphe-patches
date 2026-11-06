@@ -69,7 +69,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">채널 버튼 숨기기</string>
   <string name="morphe_hide_channel_buttons_summary">검색 결과의 채널 프로필에서 구독, 채널 보기, 커뮤니티, YouTube Music 등의 버튼을 숨깁니다</string>
   <string name="morphe_hide_community_posts_title">커뮤니티 게시물 숨기기</string>
-  <string name="morphe_post_buttons_screen_title">게시 버튼</string>
+  <string name="morphe_post_buttons_screen_title">게시물 버튼</string>
   <string name="morphe_post_buttons_screen_summary">커뮤니티 게시물 아래 버튼의 레이아웃과 숨길 버튼을 선택하세요</string>
   <string name="morphe_post_buttons_layout_title">게시물 버튼 레이아웃</string>
   <string name="morphe_post_buttons_layout_entry_1">서버</string>
@@ -341,11 +341,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">키워드에 충돌하는 선언이 있습니다: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">키워드가 너무 짧아서 따옴표가 필요합니다: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">키워드가 모든 동영상을 숨길 것입니다: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• 홈: %s
-• 구독: %s
-• 검색: %s
-• 댓글: %s
-• 합계: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• 홈: %1$s
+• 구독: %2$s
+• 검색: %3$s
+• 댓글: %4$s
+• 합계: %5$s"</string>
   <string name="morphe_hide_stats_category_title">통계</string>
   <string name="morphe_hide_stats_hidden_24h_title">지난 24시간 동안 숨겨진 동영상</string>
   <string name="morphe_hide_stats_hidden_all_title">전체 시간 동안 숨겨진 동영상</string>
@@ -357,9 +357,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_warnlist_category_title">경고 목록: 보통 신뢰도</string>
   <string name="morphe_hide_aislist_hide_home_title">홈에서 동영상 숨기기</string>
   <string name="morphe_hide_aislist_hide_search_title">검색에서 동영상 숨기기</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• 홈: %s
-• 검색: %s
-• 합계: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• 홈: %1$s
+• 검색: %2$s
+• 합계: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">차단 목록 채널</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">경고 목록 채널</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">필터를 활성화하여 채널을 불러옵니다</string>
@@ -402,7 +402,7 @@ Second \"item\" text"</string>
   <string name="morphe_snackbar_screen_title">스낵바</string>
   <string name="morphe_snackbar_screen_summary">스낵바를 숨기거나 색상 및 모양을 변경하세요</string>
   <string name="morphe_hide_snackbar_title">스낵바 (팝업 메시지바) 숨기기</string>
-  <string name="morphe_custom_snackbar_theme_title">커스텀 스낵바</string>
+  <string name="morphe_custom_snackbar_theme_title">사용자 정의 스낵바</string>
   <string name="morphe_custom_snackbar_theme_summary">스낵바는 반대 테마의 색상 대신 아래의 색상과 모서리 반경을 사용합니다</string>
   <string name="morphe_custom_snackbar_color_dark_title">어두운 테마 배경 색상</string>
   <string name="morphe_custom_snackbar_color_dark_summary">다크 테마에서 스낵바의 배경색입니다. 텍스트는 가독성이 더 좋은 검은색 또는 흰색으로 표시됩니다</string>
@@ -548,11 +548,11 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_video">동영상</string>
   <string name="morphe_external_downloader_quick_audio">오디오</string>
   <string name="morphe_external_downloader_quick_options">모든 옵션</string>
-  <string name="morphe_shorts_download_flyout_button_title">Shorts 메뉴에 다운로드 표시하기</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Shorts 플레이어 메뉴에 다운로드 항목을 추가합니다</string>
-  <string name="morphe_shorts_download_flyout_title">다운로드</string>
+  <string name="morphe_shorts_download_flyout_button_title">Shorts 메뉴에 \'오프라인 저장\' 표시하기</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Shorts 플레이어 메뉴에 \'오프라인 저장\' 항목을 추가합니다</string>
+  <string name="morphe_shorts_download_flyout_title">오프라인 저장</string>
   <string name="morphe_export_download_folder_title">저장된 동영상 내보내기</string>
-  <string name="morphe_export_download_folder_summary">"앱 내 다운로드 메뉴를 사용하여 앱에 저장된 동영상을 기기 저장소로 내보낼 수 있습니다. 내보내기 폴더를 변경하려면 여기를 탭하세요
+  <string name="morphe_export_download_folder_summary">"앱 내 '오프라인 저장' 메뉴를 사용하여 앱에 저장된 동영상을 기기 저장소로 내보낼 수 있습니다. 내보내기 폴더를 변경하려면 여기를 탭하세요
 
 내보내기 폴더: %s"</string>
   <string name="morphe_export_download_folder_dialog_title">내보내기 폴더</string>
@@ -562,7 +562,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">내보내기 폴더 \'%s\'를 찾을 수 없습니다</string>
   <string name="morphe_export_download_flyout_title">기기로 내보내기</string>
   <string name="morphe_export_download_started">동영상을 내보내는 중</string>
-  <string name="morphe_export_download_progress">동영상을 내보내는 중: %d%%</string>
+  <string name="morphe_export_download_progress">동영상을 내보내는 중: %s%%</string>
   <string name="morphe_export_download_notification_channel">동영상 내보내기</string>
   <string name="morphe_export_download_saved">동영상을 \'%s\'로 내보냈습니다</string>
   <string name="morphe_export_download_failed">동영상을 내보낼 수 없습니다</string>
@@ -1015,7 +1015,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_navigation_bar_glass_size_height">높이</string>
   <string name="morphe_navigation_bar_glass_size_width">최대 너비</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">버튼 간격</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">표시된 버튼: %2$d개 중 %1$d개</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">표시된 버튼: %2$s개 중 %1$s개</string>
   <string name="morphe_toolbar_screen_title">툴바</string>
   <string name="morphe_toolbar_screen_summary">툴바에 표시할 구성 요소를 설정할 수 있습니다</string>
   <string name="morphe_hide_toolbar_chat_button_title">메시지 버튼 숨기기</string>
@@ -1668,7 +1668,7 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_series_tracker_identity_unavailable">시크릿 모드에서는 추적 기능을 활성화할 수 없습니다. 또한 YouTube에서 현재 계정 상태를 불러오기 전에도 활성화할 수 없습니다. 홈으로 돌아가서 다시 시도하세요. 로그인은 필요하지 않습니다</string>
   <string name="morphe_series_tracker_enable">로컬 추적 활성화하기</string>
   <string name="morphe_series_tracker_tracking_paused">진행 기록이 비활성화되어 있음</string>
-  <string name="morphe_series_tracker_resume_at">%1$s에서 계속하기</string>
+  <string name="morphe_series_tracker_resume_at">%s에서 재개</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s 에피소드 시청 완료</string>
   <string name="morphe_series_tracker_episode_position">에피소드 %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">%3$s 중 에피소드 %1$s-%2$s</string>
@@ -1678,7 +1678,7 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_series_tracker_plan_changed">에피소드 선택</string>
   <string name="morphe_series_tracker_plan_caught_up">최신 버전</string>
   <string name="morphe_series_tracker_plan_none">재생 가능한 에피소드가 없습니다</string>
-  <string name="morphe_series_tracker_saved_position">저장된 동영상 · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">저장된 동영상 · %s</string>
   <string name="morphe_series_tracker_follow">시리즈 팔로우</string>
   <string name="morphe_series_tracker_view_series">시리즈 보기</string>
   <string name="morphe_series_tracker_continue">계속</string>
@@ -1689,7 +1689,7 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_series_tracker_undo">실행 취소</string>
   <string name="morphe_series_tracker_enable_short">활성화</string>
   <string name="morphe_series_tracker_new_episode">1개의 새 에피소드</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s 개의 새 에피소드</string>
+  <string name="morphe_series_tracker_new_episodes">%s 개의 새 에피소드</string>
   <string name="morphe_series_tracker_record_short">이 기기에서 진행 상황 기록</string>
   <string name="morphe_series_tracker_follow_consent">"시리즈와 시청 진행 상황은 이 기기에 저장되며 YouTube 계정 간에 공유됩니다. YouTube 시청 기록 설정은 여기에 영향을 주지 않습니다. 시청 진행 상황을 삭제하려면 시리즈 메뉴에서 삭제하세요
 
@@ -1719,12 +1719,12 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_series_tracker_hide_watched">시청 완료 항목 숨기기</string>
   <string name="morphe_series_tracker_watched_on_advance">다음 에피소드로 이동할 때 시청 완료로 표시</string>
   <string name="morphe_series_tracker_watch_previous">시청한 이전 에피소드 표시</string>
-  <string name="morphe_series_tracker_order_starts_with">시작 에피소드: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">시작 에피소드: %s</string>
   <string name="morphe_series_tracker_episode_order">에피소드 순서</string>
   <string name="morphe_series_tracker_playlist_order">재생목록 순서</string>
   <string name="morphe_series_tracker_reverse_order">재생목록 역순</string>
-  <string name="morphe_series_tracker_view_count">조회수 %1$s</string>
-  <string name="morphe_series_tracker_view_count_one">조회수 %1$s</string>
+  <string name="morphe_series_tracker_view_count">조회수 %s</string>
+  <string name="morphe_series_tracker_view_count_one">조회수 %s</string>
   <string name="morphe_series_tracker_completion_title">시청한 에피소드 표시하기</string>
   <string name="morphe_series_tracker_completion_summary">최소 %1$s%% 시청하고 남은 시간이 90초 이하이거나, 남은 시간이 %2$s초 이하인 경우에 시청한 에피소드로 표시합니다</string>
   <string name="morphe_series_tracker_completion_explanation">두 가지 기준 중 하나라도 충족하면 에피소드를 자동으로 시청 완료 처리합니다. 시청 비율 기준은 남은 시간이 90초 이하여야 적용되므로 긴 에피소드의 결말을 건너뛰지 않습니다. 남은 시간 기준은 동영상 길이가 1분을 초과하는 경우에 적용되며, 0으로 설정하면 비활성화됩니다. 변경 사항은 이후의 시청 진행 상황 업데이트부터 적용됩니다. 수동으로 시청 완료 또는 미시청으로 설정한 항목은 그대로 유지됩니다</string>
@@ -1744,7 +1744,7 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_series_tracker_backup_restore">백업 복원</string>
   <string name="morphe_series_tracker_backup_preview">%1$s 개의 시리즈를 추가합니다. 보관함에 이미 있는 %2$s 개의 시리즈는 유지됩니다. 기존 동영상 진행 상황은 유지됩니다</string>
   <string name="morphe_series_tracker_backup_saved">시리즈 백업이 저장되었습니다</string>
-  <string name="morphe_series_tracker_backup_restored">%1$s개의 시리즈 복원됨</string>
+  <string name="morphe_series_tracker_backup_restored">%s 시리즈 복원됨</string>
   <string name="morphe_series_tracker_error_backup_invalid">이 파일은 지원되는 시리즈 백업이 아니거나 너무 큽니다. 라이브러리가 변경되지 않았습니다</string>
   <string name="morphe_series_tracker_error_backup_write">백업을 저장할 수 없습니다. 다른 위치를 시도하세요</string>
   <string name="morphe_series_tracker_removed">시리즈 제거됨</string>
@@ -1754,7 +1754,7 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_series_tracker_recovery_choose">아래의 모든 에피소드를 선택할 수도 있습니다. 이전 에피소드는 변경되지 않습니다</string>
   <string name="morphe_series_tracker_playback_changed">재생목록이 변경되었습니다. 시리즈를 열어 계속할 위치를 선택하세요</string>
   <string name="morphe_series_tracker_playback_boundary">이 방향의 에피소드가 더 이상 없습니다</string>
-  <string name="morphe_series_tracker_continue_series">%1$s 계속하기</string>
+  <string name="morphe_series_tracker_continue_series">%s 계속하기</string>
   <string name="morphe_series_tracker_search_series">시리즈 검색</string>
   <string name="morphe_series_tracker_clear_search">검색 지우기</string>
   <string name="morphe_series_tracker_no_search_results">시리즈를 찾을 수 없습니다</string>
@@ -1783,6 +1783,10 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_niconico_comments_live_premieres_summary">Premieres 동영상이 진행되는 동안 표시합니다</string>
   <string name="morphe_niconico_comments_ended_premieres_title">종료된 Premieres 동영상에서 표시하기</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">종료된 Premieres 동영상의 채팅 다시보기에서 표시합니다</string>
+  <string name="morphe_niconico_comments_timed_comments_title">시간 지정 댓글 표시하기</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">채팅이 없는 동영상에서 1:23과 같이 특정 재생 시간을 포함한 인기 댓글은 해당 시간에 맞춰 표시합니다</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">채팅 재생과 함께 시간 설정 댓글 표시</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">라이브 스트림 및 최초 공개의 재생 시 시간 설정 댓글이 채팅과 함께 표시됩니다</string>
   <string name="morphe_live_chat_translate_screen_title">실시간 채팅 번역</string>
   <string name="morphe_live_chat_translate_screen_summary">실시간 채팅과 실시간 채팅 다시보기 메시지를 번역할 수 있습니다</string>
   <string name="morphe_live_chat_translate_title">실시간 채팅 번역하기</string>

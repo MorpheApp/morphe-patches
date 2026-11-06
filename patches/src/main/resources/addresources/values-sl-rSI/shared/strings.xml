@@ -181,16 +181,16 @@ Vedenje je med iskanjem izginilo že prej, zato je lahko vpletenih več zastavic
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG ni nameščen. Namestite ga</string>
   <string name="gms_core_dialog_title">Akcija potrebna</string>
-  <string name="gms_core_dialog_outdated_message">"Vaša MicroG v%1s je zastarela in lahko povzroči težave.
+  <string name="gms_core_dialog_outdated_message">"Vaša različica MicroG v%1$s je zastarela in lahko povzroči težave.
 
-Posodobite MicroG na najnovejšo različico v%2s"</string>
+Prosimo, posodobite MicroG na najnovejšo različico v%2$s"</string>
   <string name="gms_core_dialog_update_text">Posodobi</string>
   <string name="gms_core_dialog_ignore_text">Prezri</string>
-  <string name="gms_core_dialog_conflict_message">"Nameščeni MicroG ni priporočljiv s strani Morphe:
+  <string name="gms_core_dialog_conflict_message">"Nameščeni MicroG ni priporočen s strani Morphe:
 
-%1s
+%s
 
-Tapnite za odstranitev, nato znova odprite to aplikacijo in namestite MicroG RE"</string>
+Kliknite za raznameščanje, nato ponovno odprite to aplikacijo in namestite MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Odstrani</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG nima dovoljenja za delovanje v ozadju.

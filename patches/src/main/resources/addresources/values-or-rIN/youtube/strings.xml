@@ -51,6 +51,11 @@ Second \"item\" text"</string>
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• ହୋମ୍: %1$s
+• ସବସ୍କ୍ରିପସନ୍: %2$s
+• ସର୍ଚ୍ଚ: %3$s
+• କମେଣ୍ଟସ୍: %4$s
+• ମୋଟ: %5$s"</string>
   <!-- layout.snackbar.snackbarPatch -->
   <!-- ad.hideAdsPatch -->
   <!-- layout.flyout.flyoutPatch -->

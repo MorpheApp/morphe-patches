@@ -181,14 +181,14 @@ Käitumine kadus otsingu käigus, seega võib olla kaasatud rohkem kui üks lipp
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG ei ole installitud. Installige see</string>
   <string name="gms_core_dialog_title">Vajalik tegevus</string>
-  <string name="gms_core_dialog_outdated_message">"Teie MicroG versioon %1s on aegunud ja võib põhjustada tõrkeid.
+  <string name="gms_core_dialog_outdated_message">"Sinu MicroG versioon v%1$s on aegunud ja võib põhjustada probleeme.
 
-Palun uuendage MicroG uusimale versioonile %2s"</string>
+Palun uuenda MicroG uusimale versioonile v%2$s"</string>
   <string name="gms_core_dialog_update_text">Uuenda</string>
   <string name="gms_core_dialog_ignore_text">Ignoreeri</string>
   <string name="gms_core_dialog_conflict_message">"Installitud MicroG versioon ei ole Morphe poolt soovitata:
 
-%1s
+%s
 
 Puudutage, et see eemaldada, avage seejärel see rakendus uuesti ja installige MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Desinstalleeri</string>

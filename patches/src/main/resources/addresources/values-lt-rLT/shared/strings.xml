@@ -181,16 +181,16 @@ Elgesys išnyko anksčiau paieškos metu, todėl gali būti susijusios kelios v�
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">„MicroG“ nie instaliuotas. Jis turi būti suinstaliuotas</string>
   <string name="gms_core_dialog_title">Reikalingas veiksmas</string>
-  <string name="gms_core_dialog_outdated_message">"„MicroG“ v%1s yra pasenusi ir gali kelti problemų.
+  <string name="gms_core_dialog_outdated_message">"Jūsų MicroG v%1$s versija yra pasenusi ir gali sukelti problemų.
 
-Atnaujinkite „MicroG“ į naujausią versiją v%2s"</string>
+Atnaujinkite MicroG iki naujausios v%2$s versijos"</string>
   <string name="gms_core_dialog_update_text">Naujinti</string>
   <string name="gms_core_dialog_ignore_text">Ignoruoti</string>
-  <string name="gms_core_dialog_conflict_message">"Įdiegta „MicroG“ versija nėra rekomenduojama „Morphe“:
+  <string name="gms_core_dialog_conflict_message">"Įdiegtos MicroG versijos „Morphe“ nerekomenduoja:
 
-%1s
+%s
 
-Spustelėkite, kad pašalintumėte, tada iš naujo atidarykite šį programėlę ir įdiekite „MicroG RE“"</string>
+Bakstelėkite, kad pašalintumėte ją, tada vėl atidarykite šią programėlę ir įdiegkite MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Išdiegti</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"„MicroG“ neturi leidimo veikti fone.

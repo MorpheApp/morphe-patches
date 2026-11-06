@@ -181,16 +181,16 @@ Uzvedība izspyra agrāk meklēšanas procesā, tāpēc var būt iesaistīti vai
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG nav instalēts. Instalējiet to</string>
   <string name="gms_core_dialog_title">Nepieciešama rīcība</string>
-  <string name="gms_core_dialog_outdated_message">"Jūsu MicroG v%1s versija ir novecotēja un var radīt problēmas.
+  <string name="gms_core_dialog_outdated_message">"Jūsu MicroG v%1$s versija ir novecojusi un var izraisīt problēmas.
 
-Lūdzu, atjauniniet MicroG līdz jaunākajai versijai v%2s"</string>
+Lūdzu, atjauniniet MicroG līdz jaunākajai v%2$s versijai"</string>
   <string name="gms_core_dialog_update_text">Atjaunināt</string>
   <string name="gms_core_dialog_ignore_text">Ignorēt</string>
-  <string name="gms_core_dialog_conflict_message">"Instalēto MicroG neiesaka Morphe:
+  <string name="gms_core_dialog_conflict_message">"Morphe nerekomendē instalēto MicroG:
 
-%1s
+%s
 
-pieskarieties, lai to deinstalētu, pēc tam atvēriet šo lietotni vēlreiz un instalējiet MicroG RE"</string>
+Kāpiniet, lai to atinstalētu, pēc tam atsakļaujiet šo lietotni un instalējiet MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Atinstalēt</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG nav atļaujas darboties fonā.

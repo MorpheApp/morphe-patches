@@ -69,19 +69,19 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_channel_buttons_title">Folaigh cnaipí cainéal</string>
   <string name="morphe_hide_channel_buttons_summary">Folaíonn sé cnaipí ar nós Liostáil, Féach ar an gcainéal, Pobal, agus YouTube Music ó phróifílí cainéal i dtorthaí cuardaigh</string>
   <string name="morphe_hide_community_posts_title">Folaigh poist phobail</string>
-  <string name="morphe_post_buttons_screen_title">Cnaippi iarbhgeführt</string>
-  <string name="morphe_post_buttons_screen_summary">Roghnaigh leआउट na cnaipí faoi phostáil an phobail agus cnaipí cnaipí nach bhfuil isteach le feiceáil</string>
-  <string name="morphe_post_buttons_layout_title">Leआउट cnaipí postála</string>
-  <string name="morphe_post_buttons_layout_entry_1">Freastalóir</string>
-  <string name="morphe_post_buttons_layout_entry_2">Foréirithe</string>
-  <string name="morphe_hide_post_like_dislike_buttons_title">Folaigh cnaipí Is maith liom agus Ní maith liom</string>
-  <string name="morphe_hide_post_dislike_button_title">Folaigh cnaipe Ní maith liom</string>
-  <string name="morphe_hide_post_dislike_button_summary">Le leआउट Foréirithe, fágfar spás an cnaip</string>
-  <string name="morphe_hide_post_comment_button_title">Folaigh cnaipe tráchtanna</string>
-  <string name="morphe_hide_post_comments_preview_title">Folaigh réamhéimsíú tráchta</string>
-  <string name="morphe_hide_post_comments_preview_summary">Folaíonn sé réamhéimsíú na tráchtaí faoi na postálacha</string>
-  <string name="morphe_hide_post_share_button_title">Folaigh an cnaipe Comhroinnte</string>
-  <string name="morphe_hide_post_share_button_summary">Tá cnaipe íoslódála do íomhánna an phost tarraingte in aice leis an gcnaipe comhroinnte, mar sin tá sé folaithe freisin</string>
+  <string name="morphe_post_buttons_screen_title">Cnaipí postála</string>
+  <string name="morphe_post_buttons_screen_summary">Roghnaigh leagan amach na gcnaipe faoi bhun na bpostálacha pobail, agus roghnaigh cé na cnaipí ar cheart iad a cheilt</string>
+  <string name="morphe_post_buttons_layout_title">Leagan amach cnaipí an phoist</string>
+  <string name="morphe_post_buttons_layout_entry_1">Freastalaí</string>
+  <string name="morphe_post_buttons_layout_entry_2">Forfheidhmithe</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Folaigh cnaipí is maith liom agus nach maith liom</string>
+  <string name="morphe_hide_post_dislike_button_title">Folaigh an cnaipe ní maith liom</string>
+  <string name="morphe_hide_post_dislike_button_summary">Leis an leagan amach forfheidhmithe, fágtar spás an chnaipe</string>
+  <string name="morphe_hide_post_comment_button_title">Cnaipe chun trácht a cheilt</string>
+  <string name="morphe_hide_post_comments_preview_title">Folaigh réamhamharc na dtuairimí</string>
+  <string name="morphe_hide_post_comments_preview_summary">Folaíonn sé réamhamharc na dtuairimí faoi bhun na bpostálacha</string>
+  <string name="morphe_hide_post_share_button_title">Folaigh an cnaipe comhroinnte</string>
+  <string name="morphe_hide_post_share_button_summary">Tá an cnaipe íoslódála do na híomhánna sa phost tarraingthe in aice leis an gcnaipe comhroinnte, mar sin tá sé sin i bhfolach freisin.</string>
   <string name="morphe_hide_compact_banner_title">Folaigh meirgí dlúth</string>
   <string name="morphe_hide_compact_banner_summary">Folaíonn sé meirgí dlútha agus spásáil idir roinnt comhpháirteanna</string>
   <string name="morphe_hide_expandable_card_title">Cártaí inleathnaithe faoi fhíseáin</string>
@@ -341,11 +341,11 @@ Teorainneacha:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Tá dearbhuithe contrártha ag an eochairfhocal: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Tá an eochairfhocal ró-ghearr agus tá comharthaí athfhriotail ag teastáil: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Folóidh an eochairfhocal na físeáin go léir: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Baile: %s
-• Síntiúis: %s
-• Cuardach: %s
-• Tráchtanna: %s
-• Iomlán: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Baile: %1$s
+• Síntiúis: %2$s
+• Cuardach: %3$s
+• Tráchtanna: %4$s
+• Iomlán: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Staitisticí</string>
   <string name="morphe_hide_stats_hidden_24h_title">Físeáin i bhfolach, 24 uair an chloig caite</string>
   <string name="morphe_hide_stats_hidden_all_title">Físeáin i bhfolach, i gcónaí</string>
@@ -357,9 +357,9 @@ Teorainneacha:
   <string name="morphe_hide_aislist_warnlist_category_title">Liosta rabhaidh: Muinín mheasartha</string>
   <string name="morphe_hide_aislist_hide_home_title">Folaigh físeáin sa Bhaile</string>
   <string name="morphe_hide_aislist_hide_search_title">Folaigh físeáin sa chuardach</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Baile: %s
-• Cuardaigh: %s
-• Iomlán: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Baile: %1$s
+• Cuardaigh: %2$s
+• Iomlán: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Cainéil blocáilte</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Cainéil liosta rabhaidh</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Cumasaigh scagaire chun bealaí a luchtú</string>
@@ -399,19 +399,19 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_aislist_submit_failed_rejected">Dhiúltaigh AiSList don gearán</string>
   <string name="morphe_aislist_submit_failed">Theip ar an gearán, seiceáil do nasc</string>
   <!-- layout.snackbar.snackbarPatch -->
-  <string name="morphe_snackbar_screen_title">Snackbar</string>
-  <string name="morphe_snackbar_screen_summary">Folaigh barraí sneaiceanna nó athraigh a dathanna agus a shaol</string>
+  <string name="morphe_snackbar_screen_title">Barra sneaiceanna</string>
+  <string name="morphe_snackbar_screen_summary">Folaigh barraí sneaiceanna nó athraigh a ndathanna agus a gcruth</string>
   <string name="morphe_hide_snackbar_title">Folaigh an barra sneaiceanna</string>
-  <string name="morphe_custom_snackbar_theme_title">Barra sneaiceanna pearsanaí</string>
-  <string name="morphe_custom_snackbar_theme_summary">Úsáideann Snackbar na dathanna agus tráthán gach cúinne thíos in ionad dathanna an téama opposite</string>
-  <string name="morphe_custom_snackbar_color_dark_title">Dath cúlra téama dorcha</string>
-  <string name="morphe_custom_snackbar_color_dark_summary">Dath cúlra snackbars sa téama dorcha. Tá an téacs dubh nó bán, ciamhrí na bhfuil sé níos éasca a léamh</string>
+  <string name="morphe_custom_snackbar_theme_title">Bár sneaiceanna saincheaptha</string>
+  <string name="morphe_custom_snackbar_theme_summary">Úsáideann barraí sneaiceanna na dathanna agus ga na gcúinní thíos, in áit dhathanna na téama os coinne.</string>
+  <string name="morphe_custom_snackbar_color_dark_title">Dath cúlra an téama dhorcha</string>
+  <string name="morphe_custom_snackbar_color_dark_summary">Dath cúlra na mbarraí sneaiceanna sa téama dorcha. Bíonn an téacs dubh nó bán, cibé acu is fusa a léamh.</string>
   <string name="morphe_custom_snackbar_color_light_title">Dath cúlra téama éadrom</string>
-  <string name="morphe_custom_snackbar_color_light_summary">Dath cúlra snackbars sa téama solais. Tá an téacs dubh nó bán, ciamhrí na bhfuil sé níos éasca a léamh</string>
-  <string name="morphe_custom_snackbar_stroke_color_title">Dath an chruinnithe</string>
-  <string name="morphe_custom_snackbar_stroke_color_summary">Dath an chruinnithe thimpeall ar snackbars. Ní thaispeánann dath tránsparente aon chruinnithe</string>
-  <string name="morphe_custom_snackbar_corner_radius_title">Tráthán gach cúinne</string>
-  <string name="morphe_custom_snackbar_corner_radius_summary">Tráthán gach cúinne snackbars i dp</string>
+  <string name="morphe_custom_snackbar_color_light_summary">Dath cúlra na mbarraí sneaiceanna sa téama éadrom. Bíonn an téacs dubh nó bán, cibé acu is éasca a léamh.</string>
+  <string name="morphe_custom_snackbar_stroke_color_title">Dath na teorann</string>
+  <string name="morphe_custom_snackbar_stroke_color_summary">Dath an teorainn timpeall ar bharraí sneaiceanna. Ní thaispeántar aon imlíne má roghnaítear dath trédhearcach.</string>
+  <string name="morphe_custom_snackbar_corner_radius_title">Ga an chúinne</string>
+  <string name="morphe_custom_snackbar_corner_radius_summary">Ga cúinne na mbarraí sneaiceanna i dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Liosta bán fógraí cainéil</string>
   <string name="morphe_ads_channel_whitelist_summary">Bíonn fógraí le feiceáil i bhfíseáin ó chainéil atá ar an liosta bán, mar sin íoctar a gcruthaitheoirí. Fanann fógraí blocáilte ar gach cainéal eile.</string>
@@ -562,7 +562,7 @@ Fillteán easpórtála: %s"</string>
   <string name="morphe_export_download_folder_missing">Níorbh fhéidir an fillteán onnmhairithe %s a aimsiú</string>
   <string name="morphe_export_download_flyout_title">Easpórtáil chuig gléas</string>
   <string name="morphe_export_download_started">Ag easpórtáil físeáin</string>
-  <string name="morphe_export_download_progress">Ag easpórtáil físeáin: %d%%</string>
+  <string name="morphe_export_download_progress">Ag easpórtáil físeáin: %s%%</string>
   <string name="morphe_export_download_notification_channel">Easpórtálacha físeáin</string>
   <string name="morphe_export_download_saved">Físeán easpórtáilte chuig %s</string>
   <string name="morphe_export_download_failed">Níorbh fhéidir an físeán a easpórtáil</string>
@@ -797,10 +797,10 @@ Chun é seo a shocrú, cuir 'Spoof video streams' ar siúl agus athraigh an 'Cli
   <string name="morphe_swipe_left_zone_title">Gotha svaidhpeála ar chlé</string>
   <string name="morphe_swipe_right_zone_title">Gotha svaidhpeála ar dheis</string>
   <string name="morphe_swipe_top_zone_title">Gotha svaidhpeála barr</string>
-  <string name="morphe_swipe_seek_title">Svaidhpeáil le curdsú</string>
-  <string name="morphe_swipe_seek_summary">Svaidhpeáil ar chlé ਜਾਂ ar dheis ar an seirbhísíseála scáileán iomlán chun an barra curdsú a bhogadh, agus scaoil le curdsú</string>
-  <string name="morphe_swipe_seek_sensitivity_title">Íogaireacht swipeála curdsú</string>
-  <string name="morphe_swipe_seek_sensitivity_summary">Cé chomh hír féidir leis an barra curdsú bogadh le gach swipe</string>
+  <string name="morphe_swipe_seek_title">Svaidhpeáil chun cuardach a dhéanamh</string>
+  <string name="morphe_swipe_seek_summary">Svaidhpeáil ar chlé nó ar dheis ar an seinnteoir lánscáileáin chun an barra nascleanúna a bhogadh, agus scaoil chun dul go dtí pointe eile.</string>
+  <string name="morphe_swipe_seek_sensitivity_title">Íogaireacht an scuabtha a shocrú</string>
+  <string name="morphe_swipe_seek_sensitivity_summary">An fad a ghluaiseann an barra cuardaigh le gach swipe</string>
   <string name="morphe_swipe_zone_width_title">Leithead crios clé/deas</string>
   <string name="morphe_swipe_zone_width_summary">Céatadán de gach imeall scáileáin atá curtha in áirithe do ghluaiseachtaí svaidhpeála ar chlé agus ar dheis (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Gile</string>
@@ -989,7 +989,7 @@ Ní mór 'fianáin fotheidil' a sholáthar."</string>
 
 Chun rochtain a fháil ar na Socruithe, cuir an cnaipe Socruithe ar chumas trí Ginearálta → Barra Uirlisí → Taispeáin cnaipe Socruithe"</string>
   <string name="morphe_narrow_navigation_buttons_title">Cumasaigh cnaipí nascleanúna caola</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Laghdáíonn sé an spás i gcobhartha idir cnaippi. Níl sé ar fáil leis an mbarra nascleanúna gloine, a bhfuil a spás cnaipe féin aici</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Laghdaíonn sé an spásáil chothrománach idir cnaipí. Níl sé seo ar fáil leis an mbarra nascleanúna gloine, a bhfuil a spásáil chnaipí féin aige.</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Díchumasaigh cnaipí nascleanúna gan lipéid</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Taispeánann sé na cnaipí nascleanúna le lipéid, má sheolann YouTube iad gan lipéid</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Díchumasaigh cluaisíní nascleanúna barra uirlisí</string>
@@ -1009,10 +1009,11 @@ Chun rochtain a fháil ar na Socruithe, cuir an cnaipe Socruithe ar chumas trí 
   <string name="morphe_navigation_bar_glass_opacity_title">Teimhneacht ghloine</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Coigeartaigh leibhéal trédhearcachta barra nascleanúna gloine (is é 0 trédhearcach, is é 100 teimhneach)</string>
   <string name="morphe_navigation_bar_glass_size_title">Méid an bharra nascleanúna gloine</string>
-  <string name="morphe_navigation_bar_glass_size_summary">Déan coigealtú ar airde, ar leathanas agus ar spás cnaipe an bharra nascleanúna gloine, le léargas. Cuirtear cnaippi a chaillín leathanas an scréine i bhfolach</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Coigeartaigh airde, leithead agus spásáil cnaipí an bharra nascleanúna ghloine, agus féach ar réamhamharc. Déantar cnaipí nach n-oireann laistigh de leithead an scáileáin a cheilt.</string>
   <string name="morphe_navigation_bar_glass_size_height">Airde</string>
-  <string name="morphe_navigation_bar_glass_size_width">Leathanas uasach</string>
-  <string name="morphe_navigation_bar_glass_size_button_spacing">Spás cnaipe</string>
+  <string name="morphe_navigation_bar_glass_size_width">Leithead uasta</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Spásáil cnaipí</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Cnaipí ar taispeáint: %1$s as %2$s</string>
   <string name="morphe_toolbar_screen_title">Barra Uirlisí</string>
   <string name="morphe_toolbar_screen_summary">Roghnaigh cé na comhpháirteanna a thaispeántar sa bharra uirlisí</string>
   <string name="morphe_hide_toolbar_chat_button_title">Folaigh cnaipe Comhrá</string>
@@ -1666,7 +1667,7 @@ Stopann an taifeadadh uathoibríoch i mód incognito, nuair nach bhfuil sonraí 
   <string name="morphe_series_tracker_identity_unavailable">Ní féidir rianú a chumasú i mód incognito, ná sula mbeidh staid reatha an chuntais luchtaithe ag YouTube. Téigh ar ais go dtí an Baile agus bain triail as arís. Ní gá síniú isteach.</string>
   <string name="morphe_series_tracker_enable">Cumasaigh rianú áitiúil</string>
   <string name="morphe_series_tracker_tracking_paused">Tá taifeadadh dul chun cinn as</string>
-  <string name="morphe_series_tracker_resume_at">Athosaigh ag %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Athosaigh ag %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s eipeasóid féachtha</string>
   <string name="morphe_series_tracker_episode_position">Eipeasóid %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Eipeasóidí %1$s-%2$s de %3$s</string>
@@ -1676,7 +1677,7 @@ Stopann an taifeadadh uathoibríoch i mód incognito, nuair nach bhfuil sonraí 
   <string name="morphe_series_tracker_plan_changed">Roghnaigh eipeasóid</string>
   <string name="morphe_series_tracker_plan_caught_up">Suas chun dáta</string>
   <string name="morphe_series_tracker_plan_none">Gan eipeasóidí in-sheinnte</string>
-  <string name="morphe_series_tracker_saved_position">Físeán sábháilte · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Físeán sábháilte · %s</string>
   <string name="morphe_series_tracker_follow">Lean an tsraith</string>
   <string name="morphe_series_tracker_view_series">Féach sraith</string>
   <string name="morphe_series_tracker_continue">Lean ar aghaidh</string>
@@ -1687,7 +1688,7 @@ Stopann an taifeadadh uathoibríoch i mód incognito, nuair nach bhfuil sonraí 
   <string name="morphe_series_tracker_undo">Cuir ar ceal</string>
   <string name="morphe_series_tracker_enable_short">Cumasaigh</string>
   <string name="morphe_series_tracker_new_episode">1 eipeasóid nua</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s eipeasóid nua</string>
+  <string name="morphe_series_tracker_new_episodes">%s eipeasóid nua</string>
   <string name="morphe_series_tracker_record_short">Taifead dul chun cinn ar an ngléas seo</string>
   <string name="morphe_series_tracker_follow_consent">"Fanann do shraitheanna agus do dhul chun cinn ar an ngléas seo, agus iad roinnte thar chuntais YouTube éagsúla. Ní dhéanann rialuithe staire YouTube aon athrú orthu. Is féidir dul chun cinn a ghlanadh tríd an roghchlár Sraitheanna.
 
@@ -1715,14 +1716,14 @@ Tá taifeadadh uathoibríoch roghnach. Stopann sé i mód incognito nó nuair a 
   <string name="morphe_series_tracker_discovery_unavailable">Níorbh fhéidir seinmliosta a aimsiú</string>
   <string name="morphe_series_tracker_no_available_episodes">Níl aon eipeasóid ar fáil</string>
   <string name="morphe_series_tracker_hide_watched">Folaigh an méid a breathnaíodh</string>
-  <string name="morphe_series_tracker_watched_on_advance">Marcaigh mar fhéachtha nuair a bhogtar go dtí an chéad eipisód eile</string>
+  <string name="morphe_series_tracker_watched_on_advance">Marcáil mar rud a breathnaíodh agus tú ag bogadh ar aghaidh go dtí an chéad eipeasóid eile</string>
   <string name="morphe_series_tracker_watch_previous">Marcáil eipeasóidí roimhe seo mar a bhí feicthe</string>
-  <string name="morphe_series_tracker_order_starts_with">Tosaíonn le: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Tosaíonn le: %s</string>
   <string name="morphe_series_tracker_episode_order">Ord na n-eipeasóidí</string>
   <string name="morphe_series_tracker_playlist_order">Ord an liosta seinm</string>
   <string name="morphe_series_tracker_reverse_order">Aisiompaigh ord an seinmliosta</string>
-  <string name="morphe_series_tracker_view_count">%1$s radharc</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s radharc</string>
+  <string name="morphe_series_tracker_view_count">%s radharc</string>
+  <string name="morphe_series_tracker_view_count_one">%s radharc</string>
   <string name="morphe_series_tracker_completion_title">Marcáil eipeasóidí mar a bhí feicthe</string>
   <string name="morphe_series_tracker_completion_summary">Bhreathnaigh %1$s%% ar a laghad nuair nach raibh ach 90 soicind fágtha ar a mhéad, nó %2$s soicind fágtha</string>
   <string name="morphe_series_tracker_completion_explanation">Marcáil go huathoibríoch eipeasóid a breathnaíodh tar éis ceachtar tairseach. Éilíonn an riail céatadáin nach mó ná 90 soicind fágtha, mar sin ní scipeáiltear deireadh eipeasóidí fada. Baineann an riail maidir leis an am atá fágtha le físeáin atá níos faide ná nóiméad amháin; socraigh é go 0 chun é a dhíchumasú. Baineann athruithe le nuashonruithe dul chun cinn amach anseo. Coinnítear roghanna láimhe breathnaithe/neamhbreathnaithe</string>
@@ -1742,7 +1743,7 @@ Tá taifeadadh uathoibríoch roghnach. Stopann sé i mód incognito nó nuair a 
   <string name="morphe_series_tracker_backup_restore">Athchóirigh cúltaca</string>
   <string name="morphe_series_tracker_backup_preview">Cuir sraith %1$s leis. Coinnítear sraitheanna %2$s atá i do leabharlann cheana féin. Coinnítear an dul chun cinn atá déanta cheana ar fhíseáin</string>
   <string name="morphe_series_tracker_backup_saved">Sábháladh cúltaca sraithe</string>
-  <string name="morphe_series_tracker_backup_restored">Sraith %1$s athchóirithe</string>
+  <string name="morphe_series_tracker_backup_restored">Sraith %s athchóirithe</string>
   <string name="morphe_series_tracker_error_backup_invalid">Ní cúltaca sraithe tacaithe é an comhad seo, nó tá sé ró-mhór. Ní dhearnadh aon athrú ar do leabharlann</string>
   <string name="morphe_series_tracker_error_backup_write">Níorbh fhéidir an cúltaca a shábháil. Bain triail as suíomh eile</string>
   <string name="morphe_series_tracker_removed">Sraith bainte</string>
@@ -1752,7 +1753,7 @@ Tá taifeadadh uathoibríoch roghnach. Stopann sé i mód incognito nó nuair a 
   <string name="morphe_series_tracker_recovery_choose">Is féidir leat aon eipeasóid thíos a roghnú freisin. Níor athraíodh na heipeasóidí níos luaithe</string>
   <string name="morphe_series_tracker_playback_changed">Tá athrú tagtha ar an seinmliosta seo. Oscail an tsraith chun a roghnú cá háit ar cheart leanúint ar aghaidh</string>
   <string name="morphe_series_tracker_playback_boundary">Níl tuilleadh eipeasóid sa treo seo</string>
-  <string name="morphe_series_tracker_continue_series">Lean ar aghaidh %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Lean ar aghaidh %s</string>
   <string name="morphe_series_tracker_search_series">Cuardaigh sraitheanna</string>
   <string name="morphe_series_tracker_clear_search">Glan an cuardach</string>
   <string name="morphe_series_tracker_no_search_results">Níor aimsíodh aon tsraith</string>
@@ -1768,19 +1769,23 @@ Tá taifeadadh uathoibríoch roghnach. Stopann sé i mód incognito nó nuair a 
   <string name="morphe_niconico_comments_opacity_summary">Teimhneacht théacs na dtráchtanna agus na gcúlraí</string>
   <string name="morphe_niconico_comments_travel_duration_title">Fad an turais</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Cé mhéad soicind a thógann sé ar thráchtanna an scáileán a thrasnú. Bogann luachanna níos ísle níos tapúla.</string>
-  <string name="morphe_niconico_comments_display_area_title">Area taispeána</string>
-  <string name="morphe_niconico_comments_display_area_summary">Cé mhéid den imleoraí, ó bharr, a úsáideann na tráchtanna. Coinníonn luachanna íseacha an chuid íseach den fhíseán glan</string>
+  <string name="morphe_niconico_comments_display_area_title">Limistéar taispeána</string>
+  <string name="morphe_niconico_comments_display_area_summary">An méid den imreoir, ón mbarr anuas, a úsáideann na tráchtanna. Fágann luachanna níos ísle an chuid íochtarach den fhíseán saor.</string>
   <string name="morphe_niconico_comments_max_length_title">Uasfhad tráchtaireachta</string>
   <string name="morphe_niconico_comments_max_length_summary">Folaíonn sé tuairimí a bhfuil níos mó carachtar iontu ná an méid seo. Áirítear gach emoji mar charachtar amháin</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Gan teorainn</string>
-  <string name="morphe_niconico_comments_max_refresh_rate_title">Ráta athnuachana uasach</string>
-  <string name="morphe_niconico_comments_max_refresh_rate_summary">An ráta athnuachan taispeána is airde a úsáidtear agus go mbíonn tráchtanna ag bogadh. Úsáideann luachanna íseacha níos mó bataraí</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_title">Uasráta athnuachana</string>
+  <string name="morphe_niconico_comments_max_refresh_rate_summary">An ráta athnuachana taispeána is airde a úsáidtear agus tráchtanna ag gluaiseacht. Úsáideann luachanna níos ísle níos lú cumhachta ceallraí.</string>
   <string name="morphe_niconico_comments_live_streams_title">Taispeáin ar shruthanna beo</string>
   <string name="morphe_niconico_comments_live_streams_summary">Sruthanna beo agus a n-athsheinmí</string>
   <string name="morphe_niconico_comments_live_premieres_title">Taispeáin ar Chéadtaiscpeántais</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Céadléirithe agus iad ag seinm</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Taispeáin ar Chéadtaibhithe críochnaithe</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Athsheinm comhrá de thaispeántais chéaduaire atá críochnaithe</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Taispeáin tráchtanna aimsí</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Ar fhíseáin gan comhrá, taispeánfar tráchtanna barr a bhfuil am ann, cosúil le 1:23, ag an am sin</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Taispean commenting timed le athseomhain chat</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Ar athseomhain sruthanna beatha agus Príomhseomhain, taispeaintear commenting timed leis an chat freisin</string>
   <string name="morphe_live_chat_translate_screen_title">Aistriúchán comhrá beo</string>
   <string name="morphe_live_chat_translate_screen_summary">Aistrigh teachtaireachtaí comhrá beo agus athsheinm comhrá beo</string>
   <string name="morphe_live_chat_translate_title">Aistrigh comhrá beo</string>

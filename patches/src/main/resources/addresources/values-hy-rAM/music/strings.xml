@@ -150,6 +150,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_previous">Նախորդ</string>
   <string name="morphe_music_downloads_next">Հաջորդ</string>
   <string name="morphe_music_downloads_pause">Դադարեցնել</string>
+  <string name="morphe_music_downloads_shuffle">Խառնել</string>
+  <string name="morphe_music_downloads_repeat">Կրկնել</string>
+  <string name="morphe_music_downloads_minimize">Փոքրացնել</string>
   <string name="morphe_music_downloads_close">Փակել</string>
   <string name="morphe_music_downloads_delete">Ջնջել</string>
   <string name="morphe_music_downloads_delete_track">Ջնջել ներբեռնումը</string>
@@ -220,6 +223,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_download_no_network">Ցանցային կապ չկա</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">Սպասում է ցանցին…</string>
   <string name="morphe_music_downloads_playlist_download_stopped">Կանգ առավ %1$s-ից %2$s-ի։ Շարունակելու համար նորից սեղմեք «Ներբեռնել»</string>
+  <string name="morphe_music_downloads_mark_title">Նշել ներբեռնված երգերը</string>
+  <string name="morphe_music_downloads_mark_summary">Արդեն ներբեռնված երգերի մանրամասների առջև ցուցադրվում է նշան՝ and הפլեյլիստերում, ալբոմներում և որոնման արդյունքներում</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Morphe-ի մասին</string>
@@ -279,7 +284,7 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_250ms">250 միլիվայրկյան</string>
   <string name="morphe_crossfade_duration_500ms">500 միլիվայրկյան</string>
   <string name="morphe_crossfade_duration_750ms">750 միլիվայրկյան</string>
-  <string name="morphe_crossfade_duration_1000ms">{one, 1 վայրկյան, other, {count} վայրկյան}</string>
+  <string name="morphe_crossfade_duration_1000ms">1 վայրկյան</string>
   <string name="morphe_crossfade_duration_2000ms">2 վայրկյան</string>
   <string name="morphe_crossfade_duration_3000ms">3 վայրկյան</string>
   <string name="morphe_crossfade_duration_4000ms">4 վայրկյան</string>
@@ -340,6 +345,43 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Ավելացնել ընտրված տրեկը հերթի մեջ</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">Ավելացված է հերթի մեջ</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">Պլեյլիստների թեգեր</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Թեգավորեք պլեյլիստները և զտեք Գրադարանը ըստ թեգի</string>
+  <string name="morphe_music_playlist_tags_title">Միացնել պլեյլիստների թեգերը</string>
+  <string name="morphe_music_playlist_tags_summary">Ավելացնում է «Թեգեր» կետը պլեյլիստների մենյուին և թեգերի զտման կոճիրը՝ Գրադարանի տեսակման կոճիրի կողքին</string>
+  <string name="morphe_music_playlist_tags_manage_title">Կառավարել պլեյլիստների թեգերը</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Ստեղծեք, վերանվացրեք և ջնջեք թեգեր, ինչպես նաև թեգավորեք ձեր Գրադարանում առկա պլեյլիստները</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">Թեգեր</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">Չկան թեգեր</string>
+  <string name="morphe_music_playlist_tags_filter_button">Թեգեր</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">Թեգ՝ %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">Թեգեր (%s-ը թաքցված է)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">Թեգեր %s-ի համար</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">Նոր թեգ</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 պլեյլիստ</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s պլեյլիստ</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">%s անունով թեգն արդեն գոյություն ունի</string>
+  <string name="morphe_music_playlist_tags_filter_title">Զտել ըստ թեգի</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">Ցույց տալ միայն</string>
+  <string name="morphe_music_playlist_tags_filter_all">Բոլոր պլեյլիստները</string>
+  <string name="morphe_music_playlist_tags_filter_visible">Տեսանելի թեգեր</string>
+  <string name="morphe_music_playlist_tags_manage">Կառավարել</string>
+  <string name="morphe_music_playlist_tags_none">Թեգեր դեռ չկան: Երկար սեղմեք պլեյլիստի վրա և ընտրեք «Թեգեր»՝ նորը ստեղծելու համար</string>
+  <string name="morphe_music_playlist_tags_section_tags">Թեգեր</string>
+  <string name="morphe_music_playlist_tags_section_playlists">Պլեյլիստներ</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Բացեք Գրադարանը մեկ անգամ, որպեսզի ձեր պլեյլիստները հայտնվեն այստեղ</string>
+  <string name="morphe_music_playlist_tags_new_tag">Նոր թեգ</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">Խմբագրել թեգը</string>
+  <string name="morphe_music_playlist_tags_rename">Վերանվացնել</string>
+  <string name="morphe_music_playlist_tags_delete">Ջնջել</string>
+  <string name="morphe_music_playlist_tags_hidden">Թաքցված</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Թաքցնել Cast կոճակը</string>
   <string name="morphe_music_hide_history_button_title">Թաքցնել Պատմության կոճակը</string>
@@ -508,6 +550,49 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling-ն ավտոմատ կերպով սինխրոնացնում է ձեր YouTube Music-ի օգտագործումը ձեր Last.fm կամ ListenBrainz պրոֆիլի հետ
 
 Որպեսզի scrobbling-ը սինխրոնացվի ֆոնային ընտացքի ժամանակ, համոզվեք, որ YouTube Music հավելվածի մարտկոցի օգտագործումը սահմանված է որպես \"Սահմանափակում չկա\""</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">Բաց թողնել այն արտիստների թրեքները, որոնց համայնքը նշել է որպես AI</string>
+  <string name="morphe_music_soundproof_show_button_title">Ցուցադրել SoundProof կոճակը</string>
+  <string name="morphe_music_soundproof_show_button_summary">Ցուցադրում է կոճակ նվագարկիչի վերին տողում՝ ընթացիկ արտիստի համար համայնքի ձայները տեսնելու և ձայլելու համար</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">Բաց թողնել AI արտիստներին</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">Ավտոմատ կերպով բաց է թողնում այն թրեկները, որոնց կատարողը հասնում է ստորև նշված AI շեմին</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">Ցույց տալ բաց թողնելու ծանուցում</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">Ցույց է տալիս ծանուցում, երբ թրեկն ավտոմատ կերպով բաց է թողնվում</string>
+  <string name="morphe_music_soundproof_threshold_title">Հայտնաբերման շեմ</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">AI ձայների նվազագույն քանակ</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Կատարողը համարվում է AI, եթե նրա ձայների առնվազն այս մասն է նշում AI-ի մասին</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">Ձայների նվազագույն քանակ</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">Այն կատարողները, ովքեր ունեն ավելի քիչ ձայներ, քան սա, երբեք չեն բաց թողնվում</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">Բաց թողնվեց %1$s-ը (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">SoundProof-ի ձայներ այս արտիստի համար</string>
+  <string name="morphe_music_soundproof_sheet_verified">Հաստատված</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% մարդ</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 ձայն</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s ձայն</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s մարդ</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s AI</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">Այս արտիստի համար դեռ ձայներ չկան</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">SoundProof տվյալների բազան դեռ հասանելի չէ</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">Այն ներբեռնվում է հետին պլանում: Ոչ մի տրեկ չի բաց թողնվի, մինչև այն հասանելի դառնա:</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">Համայնքի ձայները SoundProof տվյալների բազայից</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">Մարդ</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">ԱՐ</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">Քվեարկությունը փակ է. SoundProof-ի մոդերատորը ստուգել է այս արտիստին</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">Չհաջողվեց կապն established SoundProof-ի հետ: Ձայները վերցված են ամենօրյա տվյալների բազայից, և քվեարկությունը հասանելի չէ:</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">SoundProof քվեարկությունը ձախցել է</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"Արվեստների տվյալները ստացվում են SoundProof-Dumps-ից (github.com/NuclearBlox/SoundProof-Dumps), որը ներբեռնվում է օրական մեկ անգամ: Բաց թողնելը նշանակում է, որ ոչինչ չի ուղարկվի ձեր լսած երգերի մասին: SoundProof աղյուսակի բացումը ուղարկում է արտիստի ընթացիկ անունը SoundProof սերվերին՝ թարմ ձայներ ցուցադրելու և քվեարկելու համար: Սերվերը տարբերակում է քվեարկողներին IP հասցեով, ուստի ձեր ձայնը կարող է տարբեր կերպ արտացոլվել մեկ այլ ցանցում:
+
+Տվյալների բազան լիցենզավորված է ODC Open Database License (ODbL)-ով: xoundbyte-ի Soul Over AI-ից վերցված գրառումները լիցենզավորված են CC BY 4.0-ով: Կապված չէ և չի հավաստիացվի SoundProof-ի կամ Soul Over AI-ի կողմից:"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Օգտագործել երրորդ կողմի բառերը</string>
   <string name="morphe_music_lyrics_enabled_summary">Ցուցադրում է բառերը երրորդ կողմի ծառայությունից, անցում է ներկառուցված բառերին, եթե ոչինչ չի գտնվել</string>
@@ -548,17 +633,17 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_rime_dict_bad_code">Կոդը պետք է լինի երկու կամ երեք տառից, օրինակ՝ hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">Հասցեն պետք է սկսվի https://-ով</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">Անվանումը և հասցեն չեն կարող պարունակել ուղղահայաց գիծ</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s-ն արդեն ունի բառերի աղյուսակ</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s-ն կարդացվում է ներկառուցված ռոմանիզատորի կողմից և չի կարող ընդունել բառերի ցուցակ</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s-ն արդեն ունի բառերի աղյուսակ</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s-ն ընթերցվում է ներկառուցված ռոմանիզատորի կողմից և չի կարող ընդունել բառերի ցուցակ</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">Չի օգտագործվում. այս լեզուն արդեն ունի իր ընթերցումը, ուստի հանեք նշումը դրա համար</string>
-  <string name="morphe_music_lyrics_rime_dict_added">Ավելացված է %1$s. նշեք այն և սեղմեք «Պահպանել»՝ ներբեռնելու համար</string>
+  <string name="morphe_music_lyrics_rime_dict_added">Ավելացված է %s. նշեք այն և սեղմեք «Պահպանել»՝ ներբեռնելու համար</string>
   <string name="morphe_music_lyrics_rime_dict_ready">Բառերի ցուցակները պատրաստ են</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">Բառերի ցուցակները պատրաստ են (%1$d գրառում)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">Բառերի ցուցակի ընթերցում. %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Բառերի ցուցակները պատրաստ են (%s գրառում)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Բառերի ցուցակի ընթերցում՝ %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">Բառերի ցուցակի ներբեռնումը ձախողվեց. կրկին սեղմեք «Պահպանել»՝ փորձելու համար</string>
   <string name="morphe_music_lyrics_clear_cache_title">Մաքրել պահպանված տեքստերը</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Ջնջել այս սարքի վրա պահպանված %1$s ՄԲ տեքստերը</string>
-  <string name="morphe_music_lyrics_clear_cache_done">Մաքրված է %1$s ՄԲ</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Ջնջել այս սարքում պահված %s ՄԲ տեքստերը</string>
+  <string name="morphe_music_lyrics_clear_cache_done">Մաքրվեց %s ՄԲ</string>
   <string name="morphe_music_token_dialog_get_token">Ստանալ թոքեն</string>
   <string name="morphe_music_apple_music_token_title">Apple Music-ի մեդիա օգտատիրոջ տոկեն</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Տեղադրեք media-user-token քուքին music.apple.com կայքից
@@ -624,14 +709,14 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_allow_transliteration_summary">Թույլատրել ոչ լատինական ընթերցումները տեքստի աղբյուրից. անջատված լինելու դեպքում կպահպանվեն միայն լատինական տառերը, շեշտադրված տառերը և տոնային թվերը</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Կարդում է ժամանակագրված երգի յուրաքանչյուր բառը (բառերի սինխրոնացումը միացված է)․ կորեերենի համար ներբեռնում պետք չէ․ տասնչորս գրերի համակարգեր օգտագործում են մեկ CLDR ներբեռնում․ հան նիշերը կարդացվում են Rime Wordlist-ի կողմից, երբ դրա բառերի աղյուսակը ընդգրկում է տվյալ լեզուն</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">Կարդալու բառարանների ներբեռնում...</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Կարդոմները պատրաստ են (%1$d գրառում)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Ընթերցումները պատրաստ են (%s գրառում)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Ներբեռնումը ձախողվեց. անջատեք և նորից միացրեք սա՝ կրկնելու համար</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Օֆլայն բառարան</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">Ճապոներեն (SudachiDict, ~75 ՄԲ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Չինարեն և կանտոներեն նիշեր (UniDict, ~8 ՄԲ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Չինարեն բառեր (pinyin-pro, ~17 ՄԲ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Հունարեն, սլավոնական կիրիլիցա (ներառյալ՝ ռուսերեն, ուկրաիներեն, բուլղարերեն, սերբերեն, բելառուսերեն, մակեդոներեն), վրացերեն, հայերեն, եբրայերեն, արաբերեն, ամհարերեն և սյրիական տառադարձություն (CLDR, ~0.5 ՄԲ)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Կարդացվում է %1$s-ը՝ %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Ընթերցում %1$s՝ %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Ցույց տալ Refresh կոճակը</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Հպեք՝ հաջորդ տեքստի տարբերակին անցնելու համար. սեղմեք երկար՝ ըստ երգի վերնագրի և կատարողի տեքստեր փնտրելու համար</string>
   <string name="morphe_music_lyrics_search_dialog_title">Փնտրել տեքստերը</string>
@@ -782,7 +867,7 @@ Lyrics-ները տրամադրվում են երրորդ կողմի ծառայո
   <string name="morphe_music_lyrics_ai_config_status_invalid">Կարգավորումները թերի են կամ մերժվել են մատակարարի կողմից</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Կապի ստուգում...</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Միացված է: (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Միացումը ձախողվեց: Ստուգեք կարգավորումները:</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s. Միացումը ձախողվեց: Ստուգեք կարգավորումները:</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Նախ մուտքագրեք API բանալին</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Ստուգել կապը</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Մոդելների բեռնում…</string>

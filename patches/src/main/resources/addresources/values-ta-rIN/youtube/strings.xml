@@ -73,6 +73,14 @@ Second \"item\" text"</string>
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• முகப்பு: %1$s
+• சந்தாக்கள்: %2$s
+• தேடல்: %3$s
+• கருத்துகள்: %4$s
+• மொத்தம்: %5$s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• முகப்பு: %1$s
+• தேடல்: %2$s
+• மொத்தம்: %3$s"</string>
   <!-- layout.snackbar.snackbarPatch -->
   <string name="morphe_snackbar_screen_title">ஸ்நாக் பார்</string>
   <string name="morphe_snackbar_screen_summary">Snackbar-களை மறைக்கவும் அல்லது அவற்றின் நிறங்கள் மற்றும் வடிவத்தை மாற்றவும்</string>
@@ -137,7 +145,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">ஏற்றுமதி கோப்புறை %s ஐக் கண்டறிய முடியவில்லை</string>
   <string name="morphe_export_download_flyout_title">சாதனத்திற்கு ஏற்றுமதி செய்</string>
   <string name="morphe_export_download_started">வீடியோ ஏற்றுமதி செய்யப்படுகிறது</string>
-  <string name="morphe_export_download_progress">வீடியோ ஏற்றுமதி செய்யப்படுகிறது: %d%%</string>
+  <string name="morphe_export_download_progress">வீடியோ ஏற்றுமதி செய்யப்படுகிறது: %s%%</string>
   <string name="morphe_export_download_notification_channel">வீடியோ ஏற்றுமதிகள்</string>
   <string name="morphe_export_download_saved">வீடியோ %s-க்கு ஏற்றுமதி செய்யப்பட்டது</string>
   <string name="morphe_export_download_failed">வீடியோவை ஏற்றுமதி செய்ய முடியவில்லை</string>
@@ -254,7 +262,7 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_navigation_bar_glass_size_height">உயரம்</string>
   <string name="morphe_navigation_bar_glass_size_width">அதிகபட்ச அகலம்</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">பொத்தான் இடைவெளி</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">காட்டப்படும் பொத்தான்கள்: %2$d இல் %1$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">காட்டப்படும் பொத்தான்கள்: %2$s இல் %1$s</string>
   <string name="morphe_toolbar_buttons_order_title">கருவிப்பட்டை பொத்தான்களின் வரிசை</string>
   <string name="morphe_toolbar_buttons_order_summary">கருவிப்பட்டையில் பொத்தான்களின் வரிசையை மாற்ற அவற்றை இழுக்கவும்</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -377,8 +385,16 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_video_action_bar_layout_user_dialog_message">கட்டுப்பாடு: கிளாசிக் லேஅவுட்கள் பழைய பாணி \'கூடுதல் வீடியோக்கள்\' ஓவர்லேக்குத் திரும்பும்</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_resume_at">%s இல் தொடரவும்</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s எபிசோட்கள் பார்க்கப்பட்டன</string>
+  <string name="morphe_series_tracker_saved_position">சேமிக்கப்பட்ட வீடியோ · %s</string>
+  <string name="morphe_series_tracker_new_episodes">%s புதிய எபிசோட்கள்</string>
   <string name="morphe_series_tracker_watched_on_advance">அடுத்த பகுதிக்கு நகரும்போது பார்த்ததாகக் குறிக்கவும்</string>
+  <string name="morphe_series_tracker_order_starts_with">இதனுடன் தொடங்குகிறது: %s</string>
+  <string name="morphe_series_tracker_view_count">%s பார்வைகள்</string>
+  <string name="morphe_series_tracker_view_count_one">%s பார்வை</string>
+  <string name="morphe_series_tracker_backup_restored">%s தொடர்கள் மீட்டெடுக்கப்பட்டன</string>
+  <string name="morphe_series_tracker_continue_series">%s தொடரவும்</string>
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
   <string name="morphe_niconico_comments_display_area_title">காட்சிப் பகுதி</string>
   <string name="morphe_niconico_comments_display_area_summary">பிளேயரின் மேல் பகுதியிலிருந்து, கருத்துகள் எவ்வளவு இடத்தை எடுத்துக்கொள்ள வேண்டும் என்பதைக் குறிக்கிறது. குறைந்த மதிப்புகள் வீடியோவின் கீழ் பகுதியைத் தெளிவாக வைத்திருக்கும்</string>
@@ -390,6 +406,10 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_niconico_comments_live_premieres_summary">முன்னோட்டங்கள் இயங்கிக் கொண்டிருக்கும்போது</string>
   <string name="morphe_niconico_comments_ended_premieres_title">முடிவடைந்த பிரீமியர்களில் காண்பி</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">முடிவடைந்த Premiere-களின் சேட் ரீப்ளே</string>
+  <string name="morphe_niconico_comments_timed_comments_title">நேரக் குறிப்புடன் கூடிய கருத்துகளைக் காட்டு</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">சாட் இல்லாத வீடியோக்களில், 1:23 போன்ற நேரத்தைக் கொண்ட சிறந்த கருத்துகள் அந்த நேரத்தில் காட்டப்படும்</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">சாட் ரீப்ளேவுடன் நேரக் குறிப்புகளைக் காட்டு</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">நேரடி ஒளிபரப்புகள் மற்றும் பிரீமியர்களின் ரீப்ளேக்களில், நேரக் குறிப்புகள் சாட் உடன் காட்டப்படும்</string>
   <string name="morphe_live_chat_translate_screen_title">நேரலை அரட்டை மொழிபெயர்ப்பு</string>
   <string name="morphe_live_chat_translate_screen_summary">நேரலை அரட்டை மற்றும் நேரலை அரட்டை மறுஇயக்க செய்திகளை மொழிபெயர்க்கவும்</string>
   <string name="morphe_live_chat_translate_title">நேரலை அரட்டையை மொழிபெயர்க்கவும்</string>

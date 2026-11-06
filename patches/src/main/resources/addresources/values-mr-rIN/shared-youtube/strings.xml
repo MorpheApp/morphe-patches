@@ -35,7 +35,7 @@ Second \"item\" text"</string>
   <!-- layout.theme.baseThemePatch -->
   <string name="morphe_theme_color_dark_title">गडद थीमची पार्श्वभूमी</string>
   <string name="morphe_theme_color_dark_entry_2">शुद्ध काळा</string>
-  <string name="morphe_theme_color_dark_entry_3">Material You (शुद्ध काळा) ,\"key\":\"morphe_theme_color_dark_entry_3\",\"context\":\"morphe_theme_color_dark_entry_3\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30530,\"plurals\":\"\" ,\"text\":\"Material You (तटस्थ)\",\"key\":\"morphe_theme_color_entry_4\",\"context\":\"morphe_theme_color_entry_4\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30532,\"text\":\"Material You (प्राथमिक)\",\"key\":\"morphe_theme_color_entry_5\",\"context\":\"morphe_theme_color_entry_5\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30534,\"text\":\"Material You (दुय्यम)\",\"key\":\"morphe_theme_color_entry_6\",\"context\":\"morphe_theme_color_entry_6\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30536,\"text\":\"Material You (तृतीय)\",\"key\":\"morphe_theme_color_entry_7\",\"context\":\"morphe_theme_color_entry_7\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30538,\"text\":\"क्लासिक YouTube\",\"key\":\"morphe_theme_color_dark_entry_9\",\"context\":\"morphe_theme_color_dark_entry_9\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[{\"source\":\"YouTube\",\"translatable\":false,\"translation\":\"YouTube\",\"partOfSpeech\":\"PROPN\"}]},{\"id\":30542,\"text\":\"गडद गुलाबी\",\"key\":\"morphe_theme_color_dark_entry_10\",\"context\":\"morphe_theme_color_dark_entry_10\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30544,\"text\":\"गडद निळा\",\"key\":\"morphe_theme_color_dark_entry_11\",\"context\":\"morphe_theme_color_dark_entry_11\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30546,\"text\":\"गडद हिरवा\",\"key\":\"morphe_theme_color_dark_entry_12\",\"context\":\"morphe_theme_color_dark_entry_12\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30548,\"text\":\"गडद पिवळा\",\"key\":\"morphe_theme_color_dark_entry_13\",\"context\":\"morphe_theme_color_dark_entry_13\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30550,\"text\":\"गडद नारिंगी\",\"key\":\"morphe_theme_color_dark_entry_14\",\"context\":\"morphe_theme_color_dark_entry_14\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30552,\"text\":\"गडद लाल\",\"key\":\"morphe_theme_color_dark_entry_15\",\"context\":\"morphe_theme_color_dark_entry_15\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30558,\"text\":\"सानुकूल\",\"key\":\"morphe_theme_color_dark_entry_16\",\"context\":\"morphe_theme_color_dark_entry_16\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]}]}```Here is the translated JSON array: ```json [{</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (शुद्ध काळा)</string>
   <string name="morphe_theme_color_dark_entry_9">क्लासिक YouTube</string>
   <string name="morphe_theme_color_dark_entry_10">गडद गुलाबी</string>
   <string name="morphe_theme_color_dark_entry_11">गडद निळा</string>
@@ -59,14 +59,14 @@ Second \"item\" text"</string>
   <string name="morphe_download_mode_entry_external">बाह्य डाउनलोडर</string>
   <string name="morphe_external_downloader_name_title">डाउनलोडर ॲपचे पॅकेज नाव</string>
   <string name="morphe_external_downloader_name_summary">आपल्या इन्स्टॉल केलेल्या बाह्य डाउनलोडर ॲपचे पॅकेज नाव</string>
-  <string name="morphe_external_downloader_other_item_hint">\u092a\u093f\u0915\u093f\u091c\u093e \u0928\u093e\u0935 \u092a\u094d\u0926\u094d\u0928\u093f</string>
+  <string name="morphe_external_downloader_other_item_hint">पॅकेजचे नाव प्रविष्ट करा</string>
   <string name="morphe_external_downloader_other_item">इतर</string>
   <string name="morphe_external_downloader_not_found_title">ॲप इन्स्टॉल केलेले नाही</string>
   <string name="morphe_external_downloader_not_installed_warning">%s इंस्टॉल केलेले नाही. कृपया ते इंस्टॉल करा</string>
   <string name="morphe_external_downloader_package_not_found_warning">"पॅकेज नावाचे ॲप इन्स्टॉल केलेले आढळले नाही: %s
 
 पॅकेज नाव बरोबर आहे आणि ॲप इन्स्टॉल केलेले आहे का ते तपासा."</string>
-  <string name="morphe_external_downloader_empty_warning">\u092a\u093f\u0915\u093f\u091c\u093e \u0928\u093e\u0935 \u0930\u093e\u0915\u093e\u0928\u093f \u0935\u0939\u0932\u094d</string>
+  <string name="morphe_external_downloader_empty_warning">पॅकेजचे नाव रिकामे असू शकत नाही</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">सानुकूल</string>
   <string name="morphe_custom_branding_icon_title">ॲप चिन्ह</string>

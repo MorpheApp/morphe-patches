@@ -341,11 +341,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Ключавое слова мае супярэчлівыя дэкларацыі: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключавое слова занадта кароткае і патрабуе лапак: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ключавое слова скрое ўсе відэа: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Галоўная: %s
-• Падпіскі: %s
-• Пошук: %s
-• Каментары: %s
-• Усяго: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Галоўная: %1$s
+• Падпіскі: %2$s
+• Пошук: %3$s
+• Каментары: %4$s
+• Усяго: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Статыстыка</string>
   <string name="morphe_hide_stats_hidden_24h_title">Схаваныя відэа, за апошнія 24 гадзіны</string>
   <string name="morphe_hide_stats_hidden_all_title">Схаваныя відэа, за ўвесь час</string>
@@ -357,9 +357,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_warnlist_category_title">Спіс папярэджанняў: Срэдняя давернасць</string>
   <string name="morphe_hide_aislist_hide_home_title">Схаваць відэа на Галоўнай</string>
   <string name="morphe_hide_aislist_hide_search_title">Схаваць відэа ў пошуку</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Галоўная: %s
-• Пошук: %s
-• Усяго: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Галоўная: %1$s
+• Пошук: %2$s
+• Усяго: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Каналы з чорнага спіса</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Каналы са спіса папярэджанняў</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Уключыце фільтр, каб загрузіць каналы</string>
@@ -562,7 +562,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">Не ўдалося знайсці папку экспарту %s</string>
   <string name="morphe_export_download_flyout_title">Экспартаваць на прыладу</string>
   <string name="morphe_export_download_started">Экспартаванне відэа</string>
-  <string name="morphe_export_download_progress">Экспартаванне відэа: %d%%</string>
+  <string name="morphe_export_download_progress">Экспарт відэа: %s%%</string>
   <string name="morphe_export_download_notification_channel">Экспарт відэа</string>
   <string name="morphe_export_download_saved">Відэа экспартавана ў %s</string>
   <string name="morphe_export_download_failed">Не удалося экспартаваць відэа</string>
@@ -1013,7 +1013,7 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_height">Вышыня</string>
   <string name="morphe_navigation_bar_glass_size_width">Максімальная шырыня</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Інтэрвал паміж кнопкамі</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Паказаны кнопкі: %1$d з %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Паказаных кнопак: %1$s з %2$s</string>
   <string name="morphe_toolbar_screen_title">Панэль інструментаў</string>
   <string name="morphe_toolbar_screen_summary">Выберыце, якія кампаненты будуць адлюстроўвацца ў панэлі інструментаў</string>
   <string name="morphe_hide_toolbar_chat_button_title">Схаваць кнопку чата</string>
@@ -1667,7 +1667,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_identity_unavailable">Адсочванне немагчыма ўключаць у рэжыме інкагніто або да таго, як YouTube загрузіць бягучы стан уліхоўкага запісу. Вярніцеся на Гаўную старонку і паспрабуйце зноў. Уваход у сістэму не патрабуецца</string>
   <string name="morphe_series_tracker_enable">Уключыць лакальнае адсочванне</string>
   <string name="morphe_series_tracker_tracking_paused">Запіс прагрэсу выключаны</string>
-  <string name="morphe_series_tracker_resume_at">Рэзумаваць на %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Працягнуць на %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s прагледнах серый</string>
   <string name="morphe_series_tracker_episode_position">Эпізод %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Эпізоды %1$s-%2$s з %3$s</string>
@@ -1677,7 +1677,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_plan_changed">Выберыце эпізод</string>
   <string name="morphe_series_tracker_plan_caught_up">Усё праглядзена</string>
   <string name="morphe_series_tracker_plan_none">Няма даступных эпізодаў</string>
-  <string name="morphe_series_tracker_saved_position">Захаванае відэа · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Захаванае відэа · %s</string>
   <string name="morphe_series_tracker_follow">Следзіць за серыялам</string>
   <string name="morphe_series_tracker_view_series">Праглядзець серыялы</string>
   <string name="morphe_series_tracker_continue">Працягнуць</string>
@@ -1688,7 +1688,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_undo">Скасаваць</string>
   <string name="morphe_series_tracker_enable_short">Уключыць</string>
   <string name="morphe_series_tracker_new_episode">1 новы эпізод</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s новых серый</string>
+  <string name="morphe_series_tracker_new_episodes">%s новых эпізодаў</string>
   <string name="morphe_series_tracker_record_short">Запісвайце прагрэс на гэтай прыладзе</string>
   <string name="morphe_series_tracker_follow_consent">"Вашы серыялы і прагрэс застаюцца на гэтай прыладзе і будуць сумеснымі для розных улікоў YouTube. Спрыміяныя налады гісторыі YouTube не ўплываюць на іх. Ачысціце прагрэс у меню «Серыялы».
 
@@ -1718,12 +1718,12 @@ AVC (H.264)
   <string name="morphe_series_tracker_hide_watched">Схаваць праглядзенае</string>
   <string name="morphe_series_tracker_watched_on_advance">Пазначаць як праглянутае пры пераходзе да наступнага эпізода</string>
   <string name="morphe_series_tracker_watch_previous">Пазначыць папярэднія эпізоды як праглядзеныя</string>
-  <string name="morphe_series_tracker_order_starts_with">Пачынаецца з: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Пачынаецца з: %s</string>
   <string name="morphe_series_tracker_episode_order">Порадак эпізодаў</string>
   <string name="morphe_series_tracker_playlist_order">Порадак плэйліста</string>
   <string name="morphe_series_tracker_reverse_order">Змяніць парадак плэйліста на адваротны</string>
-  <string name="morphe_series_tracker_view_count">%1$s праглядаў</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s прагляд</string>
+  <string name="morphe_series_tracker_view_count">%s праглядаў</string>
+  <string name="morphe_series_tracker_view_count_one">%s прагляд</string>
   <string name="morphe_series_tracker_completion_title">Пазначыць эпізоды як праглядзеныя</string>
   <string name="morphe_series_tracker_completion_summary">Праглядзена прынаймені %1$s%% пры ўмове, што засталося не больш за 90 секунд, альбо засталося %2$s секунд</string>
   <string name="morphe_series_tracker_completion_explanation">Аўтаматычна пазначаць эпізод як праглядзены пасля дасягнення любога з парогаў. Правіла працэнта таксама патрабуе, каб засталося не больш за 90 секунд, каб завяршэнне доўгіх эпізодаў не прапускалася. Правіла застатку часу прымяняецца да відэа даўжэйшых за адну хвіліну; усталюйце 0, каб выключаць яе. Змены прымяняюцца да будучых абнаўленняў прагрэсу. Ручны выбар \"праглядзена/не праглядзена\" застаецца</string>
@@ -1743,7 +1743,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_backup_restore">Аднавіць рэзервовую копію</string>
   <string name="morphe_series_tracker_backup_preview">Дадаць %1$s серыялаў. %2$s серыялаў, якія ўжо ёсць у вашай бібліятэцы, застануцца. Існуючы прагрэс відэа захаваны</string>
   <string name="morphe_series_tracker_backup_saved">Рэзэрвовая копія серыялаў захавана</string>
-  <string name="morphe_series_tracker_backup_restored">Відновлена серыйялаў: %1$s</string>
+  <string name="morphe_series_tracker_backup_restored">Адновлена серыяў: %s</string>
   <string name="morphe_series_tracker_error_backup_invalid">Гэты файл не з\'яўляецца падтрымаваным рэзервовым копіяй серыялаў або з\'яўляецца занадта вялікім. Ваша бібліятэка не была зменена</string>
   <string name="morphe_series_tracker_error_backup_write">Не ўдалося захаваць рэзервовую копію. Паспрабуйце іншае месца</string>
   <string name="morphe_series_tracker_removed">Серыял выдалены</string>
@@ -1753,7 +1753,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_recovery_choose">Вы таксама можаце выбраць любы эпізод ніжэй. Ранейшыя эпізоды не змяняюцца</string>
   <string name="morphe_series_tracker_playback_changed">Гэты плэйліст змяніўся. Адкрыйце серыял, каб выбраць, дзе працягнуць</string>
   <string name="morphe_series_tracker_playback_boundary">Больш няма серый у гэтым кірунку</string>
-  <string name="morphe_series_tracker_continue_series">Працягнуць %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Працягнуць %s</string>
   <string name="morphe_series_tracker_search_series">Пошук серыялаў</string>
   <string name="morphe_series_tracker_clear_search">Ачысціць пошук</string>
   <string name="morphe_series_tracker_no_search_results">Серыялаў не знойдзена</string>
@@ -1782,6 +1782,10 @@ AVC (H.264)
   <string name="morphe_niconico_comments_live_premieres_summary">Прэм\'еры падчас іх прагляду</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Паказваць на завяршаных прэм\'ерах</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Паўтор чата прэм\'ер, якія скончыліся</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Паказваць часовыя каментары</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">У відэа без чата верхнія каментары, якія ўтрымліваюць час, напрыклад 1:23, паказваюцца ў гэты момант</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Паказваць часовыя каментары з паўторам чата</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">У паўторах прамых трансляцый і прэм\'ераў часовыя каментары таксама паказваюцца разам з чатам</string>
   <string name="morphe_live_chat_translate_screen_title">Пераклад жывога чата</string>
   <string name="morphe_live_chat_translate_screen_summary">Перакладаць паведамленні жывога чата і паўтораў жывога чата</string>
   <string name="morphe_live_chat_translate_title">Перакласці жывы чат</string>

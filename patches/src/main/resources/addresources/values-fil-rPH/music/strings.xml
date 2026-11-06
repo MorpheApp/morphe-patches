@@ -150,6 +150,9 @@ Lalabas dito ang mga na-download na track"</string>
   <string name="morphe_music_downloads_previous">Nakaraan</string>
   <string name="morphe_music_downloads_next">Sunod</string>
   <string name="morphe_music_downloads_pause">I-pause</string>
+  <string name="morphe_music_downloads_shuffle">I-shuffle</string>
+  <string name="morphe_music_downloads_repeat">Ulitin</string>
+  <string name="morphe_music_downloads_minimize">I-minimize</string>
   <string name="morphe_music_downloads_close">Isara</string>
   <string name="morphe_music_downloads_delete">Burahin</string>
   <string name="morphe_music_downloads_delete_track">Tanggalin ang download</string>
@@ -220,6 +223,8 @@ I-da-download ang mga ito nang isa-isa, na maaaring magtagal at nangangailangan 
   <string name="morphe_music_downloads_playlist_download_no_network">Walang koneksyon sa network</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">Naghihintay para sa network…</string>
   <string name="morphe_music_downloads_playlist_download_stopped">Tumigil pagkatapos ng %1$s ng %2$s. I-tap muli ang Download para magpatuloy</string>
+  <string name="morphe_music_downloads_mark_title">Markahan ang mga na-download na kanta</string>
+  <string name="morphe_music_downloads_mark_summary">Ang mga kantang na-download na ay magpapakita ng marka bago ang kanilang mga detalye sa mga playlist, album at resulta ng paghahanap</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Tungkol sa</string>
@@ -340,6 +345,43 @@ Pag-playback ng SABR (Naka-off ang pag-spoof ng mga video stream)"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Idagdag ang napiling track sa queue</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">Idinagdag sa queue</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">Mga tag ng playlist</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Lagyan ng tag ang mga playlist at i-filter ang Library gamit ang tag</string>
+  <string name="morphe_music_playlist_tags_title">I-enable ang mga tag ng playlist</string>
+  <string name="morphe_music_playlist_tags_summary">Nagdaragdag ng item na Tags sa menu ng mga playlist, at isang filter button na Tags sa tabi ng sort button ng Library</string>
+  <string name="morphe_music_playlist_tags_manage_title">Pamahalaan ang mga tag ng playlist</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Gumawa, magpalitan ng pangalan at magbura ng mga tag, at lagyan ng tag ang mga playlist na makikita sa iyong Library</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">Mga tag</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">Walang mga tag</string>
+  <string name="morphe_music_playlist_tags_filter_button">Mga tag</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">Tag: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">Mga tag (%s ang nakatago)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">Mga tag para sa %s</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">Bagong tag</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 talatugtugin</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s playlist</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">Mayroon na ng tag na pinangalanang %s</string>
+  <string name="morphe_music_playlist_tags_filter_title">I-filter gamit ang tag</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">Ipakita lamang</string>
+  <string name="morphe_music_playlist_tags_filter_all">Lahat ng playlist</string>
+  <string name="morphe_music_playlist_tags_filter_visible">Mga nakikitang tag</string>
+  <string name="morphe_music_playlist_tags_manage">Pamahalaan</string>
+  <string name="morphe_music_playlist_tags_none">Wala pang mga tag. I-long press ang isang playlist at piliin ang Tags para gumawa</string>
+  <string name="morphe_music_playlist_tags_section_tags">Mga tag</string>
+  <string name="morphe_music_playlist_tags_section_playlists">Talatugtugin</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Buksan ang Library nang isang beses para lumitaw dito ang iyong mga playlist</string>
+  <string name="morphe_music_playlist_tags_new_tag">Bagong tag</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">I-edit ang tag</string>
+  <string name="morphe_music_playlist_tags_rename">Palitan</string>
+  <string name="morphe_music_playlist_tags_delete">Burahin</string>
+  <string name="morphe_music_playlist_tags_hidden">Nakatago</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Itago ang Cast button</string>
   <string name="morphe_music_hide_history_button_title">Itago ang kasaysayan na button</string>
@@ -508,6 +550,49 @@ Pag-playback ng SABR (Naka-off ang pag-spoof ng mga video stream)"</string>
   <string name="morphe_music_scrobbling_about_summary">"Awtomatikong sini-sync ng Scrobbling ang iyong paggamit ng YouTube Music sa iyong profile ng Last.fm o ListenBrainz.
 
 Para matiyak na naka-sync ang scrobbling habang nagpe-play sa background, siguraduhing ang paggamit ng baterya ng app ng YouTube Music ay nakatakda sa \"Walang Pagbabawal\"."</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">Laktawan ang mga track ng mga artist na iniulat ng komunidad bilang AI</string>
+  <string name="morphe_music_soundproof_show_button_title">Ipakita ang button ng SoundProof</string>
+  <string name="morphe_music_soundproof_show_button_summary">Nagpapakita ng button sa top bar ng player para makita at makapag-cast ng mga boto ng komunidad para sa kasalukuyang artist</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">Laktawan ang mga AI artist</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">Awtomatikong nilalaktawan ang mga track na ang artist ay umabot sa AI threshold sa ibaba</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">Ipakita ang notification ng paglaktaw</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">Nagpapakita ng notification kapag ang isang track ay awtomatikong nilaktawan</string>
+  <string name="morphe_music_soundproof_threshold_title">Threshold ng deteksiyon</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">Minimum na AI votes</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Ang isang artist ay AI kapag hindi bababa sa bahaging ito ng mga boto nito ay nagsasabing AI</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">Minimum na bilang ng mga boto</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">Ang mga artist na may mas kaunting boto kaysa rito ay hindi kailanman nilalaktawan</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">Linalampasan si %1$s (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">Mga boto ng SoundProof para sa artist na ito</string>
+  <string name="morphe_music_soundproof_sheet_verified">Beripikado</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% tao</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 boto</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s boto</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s tao</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s AI</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">Wala pang mga boto para sa artist na ito</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">Hindi pa available ang SoundProof database</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">I-dinownload ito sa background. Walang track na lalaktawan hanggang sa maging available ito.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">Mga boto ng community mula sa SoundProof database</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">Tao</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">Sarado na ang pagboto: sinuri ng isang SoundProof moderator ang artist na ito</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">Hindi maabot ang SoundProof. Ang mga boto ay mula sa daily database, at hindi available ang pagboto.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">Bigo ang SoundProof vote</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"Ang data ng artist ay galing sa SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), na dina-download minsan sa isang araw. Ang pag-skip ay walang ipapadalang impormasyon tungkol sa iyong pinapatugtog. Ang pagbubukas ng SoundProof sheet ay nagpapadala ng kasalukuyang pangalan ng artist sa SoundProof server upang ipakita ang mga bagong boto at para makaboto. Kinikilala ng server ang mga botante sa pamamagitan ng IP address, kaya ang iyong boto ay maaaring magpakita nang magkaiba sa ibang network.
+
+Ang database ay lisensyado sa ilalim ng ODC Open Database License (ODbL). Ang mga entry mula sa Soul Over AI ni xoundbyte ay lisensyado sa ilalim ng CC BY 4.0. Hindi kaakibat o hindi sinusuportahan ng SoundProof o Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Gumamit ng mga liriko mula sa third-party</string>
   <string name="morphe_music_lyrics_enabled_summary">Nagpapakita ng mga liriko mula sa isang third-party service, babalik sa mga built-in na liriko kapag walang nakita</string>
@@ -548,17 +633,17 @@ Ang unang kolunma ay ang salita, ang pangalawa ay ang pagbasa nito; karagdagang 
   <string name="morphe_music_lyrics_rime_dict_bad_code">Dapat dalawa o tatlong letters ang code, gaya ng hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">Dapat simulan sa https:// ang address</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">Hindi pwedeng maglaman ng vertical bar ang pangalan at address</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">Mayroon nang table ng word ang %1$s</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">Binabasa ang %1$s ng built-in romanizer at hindi pwedeng kunin ang listang word</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">Ang %s ay mayroon na ng word table</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">Ang %s ay binabasa ng built-in romanizer at hindi maaaring tumanggap ng word list</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">Hindi ginagamit: may sariling pagbasa na ang wikang ito, kaya tanggalin mo ito sa pamamagitan ng hindi pagtandaan</string>
-  <string name="morphe_music_lyrics_rime_dict_added">Idinagdag ang %1$s - tandaan mo ito at i-tap ang Save para i-download</string>
+  <string name="morphe_music_lyrics_rime_dict_added">Idinagdag ang %s - i-check ito at i-tap ang Save para i-download</string>
   <string name="morphe_music_lyrics_rime_dict_ready">Handa na ang mga listang word</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">Handa na ang mga listang word (%1$d entries)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">Pagbabasa ng listang word: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Handa na ang mga word list (%s entry)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Binabasa ang word list: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">Nabigo ang download ng listang word - i-tap muli ang Save para subukan ulit</string>
   <string name="morphe_music_lyrics_clear_cache_title">Linisin ang naka-store na lyrics</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Burahin ang %1$s MB ng mga lyrics na naka-save sa device na ito</string>
-  <string name="morphe_music_lyrics_clear_cache_done">Na-linisan na %1$s MB</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Burahin ang %s MB ng mga liriko na nakaimbak sa device na ito</string>
+  <string name="morphe_music_lyrics_clear_cache_done">Nalinis ang %s MB</string>
   <string name="morphe_music_token_dialog_get_token">Kumuha ng token</string>
   <string name="morphe_music_apple_music_token_title">Token ng Media-user ng Apple Music</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"I-paste ang media-user-token cookie mula sa music.apple.com
@@ -577,11 +662,11 @@ Mga hakbang:
 1. Mag-sign in sa open.spotify.com
 2. Buksan ang DevTools → Application → Cookies → open.spotify.com
 3. Kopyahin ang halaga ng \"sp_dc\""</string>
-  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Kung wala ito, ang Lyrically ang gagamitin bilang fallback.</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: nai-save ang sp_dc</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: na-clear ang sp_dc</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: hindi wasto ang sp_dc - pakiusap suriin at subukan muli</string>
   <string name="morphe_music_apple_token_optional_hint">Ang Apple Music token ay opsyonal. Kung wala ito, gagamitin ang Lyrically bilang fallback.</string>
-  <string name="morphe_music_deezer_arl_title">Deezer […] Kopyahin ang halaga ng \"arl\".</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"I-paste ang arl cookie mula sa Deezer.
 
 Mga hakbang:
@@ -591,10 +676,10 @@ Mga hakbang:
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: nai-save ang arl</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: invalid ang arl — pakisubukang muli.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: hindi wasto ang arl - pakiusap suriin at subukan muli</string>
-  <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopyahin ang halaga ng user token.</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Magdagdag ng token para lang magamit ang iyong sariling account. Dapat itong manggaling sa Musixmatch Android app: ang mga token na kinopya mula sa musixmatch.com ay kabilang sa retiradong desktop client at tinatanggihan ng API ang mga ito.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Gumagana ang Musixmatch kahit walang token, kaya maaaring manatiling walang laman ang field na ito.</string>
-  <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: invalid ang user token — pakisubukang muli.</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">user token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: na-save ang user token</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: na-clear ang user token</string>
   <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: hindi wasto ang user token - pakiusap suriin at subukan muli</string>
@@ -619,14 +704,14 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_allow_transliteration_summary">Hayaan ang non-Latin readings mula sa lyrics source; kapag off, panatilihing Latin letters, accented letters at tone digits lang</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Binabasa ang bawat salita ng timed lyric (word sync on); Walang kailangang download para sa Korean; sampung scripts ang naghihigugupit ng CLDR download; Ang Han characters ay binabasa ng Rime Wordlist kapag ang word table nito ay sakop ang wika</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">Nagde-download ng mga dictionary para sa pagbasa…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Handa na ang mga basihan (%1$d na pagsunod)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Handa na ang mga pagbabasa (%s entry)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Nabigo ang pag-download - patayin at buuin ito muli upang subukan muli</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Offline Dictionary</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japanese (SudachiDict, ~75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Mga character na Chinese at Cantonese (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Mga salitang Chinese (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliteration para sa Greek, Slavic Cyrillic (kasama ang Russian, Ukrainian, Bulgarian, Serbian, Belarusian, Macedonian), Georgian, Armenian, Hebrew, Arabic, Amharic at Syriac (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Pagbabasa %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Binabasa ang %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Ipakita ang button na Refresh</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Pindutin para lumipat sa susunod na lyrics candidate; long-press para maghanap ng lyrics gamit ang pamagat ng kanta at artist</string>
   <string name="morphe_music_lyrics_search_dialog_title">Maghanap ng lyrics</string>
@@ -644,7 +729,7 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_hide_played_title">Itago ang linyang na-play na.</string>
   <string name="morphe_music_lyrics_hide_played_summary">Itago ang mga linya ng lyrics sa itaas ng linyang kasalukuyang pinapatugtog</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Itago ang mga lyrics na hindi pa na-play.</string>
-  <string name="morphe_music_lyrics_hide_unplayed_summary">Itago ang mga linya ng lyrics sa ibaba ng screen ng kasalukuyang nagpe-play […].</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">Itago ang mga linya ng lyrics sa ibaba ng kasalukuyang nagpe-play na linya</string>
   <string name="morphe_music_lyrics_dynamic_background_title">Dynamic na background</string>
   <string name="morphe_music_lyrics_dynamic_background_summary">Magpakita ng blurred na background mula sa album art sa likod ng mga liriko</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_title">I-animate ang dynamic na background</string>
@@ -682,7 +767,7 @@ Nalalapat sa parehong limitasyon. Sa 1.75, ang apat na full-width character ay m
   <string name="morphe_music_lyrics_text_filter_title">Regex ng filter ng lyrics</string>
   <string name="morphe_music_lyrics_text_filter_summary">Ang regular expression ay inilalapat lamang sa orihinal na teksto ng lyrics (hindi sa mga pagsasalin o romanisasyon). Iwanang blangko upang i-disable.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Mga marker ng linya ng impormasyon</string>
-  <string name="morphe_music_lyrics_credit_line_regex_summary">Kung ang mga lyrics ay hindi wastong na-filter sa ibaba, ayusin o i-clear ito. […] Iwanang blangko upang i-disable.</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">Kung ang mga lyrics ay hindi wastong na-filter sa ibaba, ayusin o i-clear ito. Mga marker na pinaghihiwalay ng kuwit: ang mga linyang may marker na sinusundan ng tutuldok ay ipinapakita bilang credit info sa ibaba. Iwanang blangko upang i-disable.</string>
   <string name="morphe_music_lyrics_force_capitalize_title">Gawing malaking titik ang unang letra</string>
   <string name="morphe_music_lyrics_force_capitalize_summary">Ginagawang malaking titik ang unang letra ng bawat linya ng liriko</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Alisin ang huling bantas</string>
@@ -690,7 +775,7 @@ Nalalapat sa parehong limitasyon. Sa 1.75, ang apat na full-width character ay m
   <string name="morphe_music_lyrics_text_size_title">Laki ng teksto</string>
   <string name="morphe_music_lyrics_text_size_summary">Laki ng teksto ng lyrics</string>
   <string name="morphe_music_lyrics_offset_ms_title">Pandaigdigang offset ng timing</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">Ang naka-sync na lyrics ay sumusunod sa playback. Kung lumilihis ang mga ito, ayusin ang timing offset. […] Gumamit ng positibong halaga kung ang lyrics ay nauuna sa kanta.</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Ang naka-sync na lyrics ay sumusunod sa playback. Kung lumilihis ang mga ito, ayusin ang timing offset. Ilipat ang naka-sync na lyrics pasulong o paatras. Gumamit ng positibong halaga kung ang lyrics ay nauuna sa kanta.</string>
   <string name="morphe_music_lyrics_sb_matching_title">Gamitin ang mga segment ng SponsorBlock para sa offset ng liriko</string>
   <string name="morphe_music_lyrics_sb_matching_summary">Itugma nang wala ang mga segment na nilalaktawan ng SponsorBlock at ilipat ang liriko sa inilabas na audio. Binabalewala ng Off ang SponsorBlock nang buo</string>
   <string name="morphe_music_lyrics_sb_no_video">Walang video id ang track na ito para isumite</string>
@@ -777,7 +862,7 @@ Ang mga lyrics ay galing sa mga third-party services na walang koneksyon, hindi 
   <string name="morphe_music_lyrics_ai_config_status_invalid">Hindi kumpleto ang settings o tinanggihan ng provider</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Tinitignan ang koneksyon…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Nakakonekta! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Nabigo ang koneksyon. Tingnan ang settings.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Nabigo ang koneksyon. I-check ang mga setting.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Ilagay muna ang API key</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">I-test ang koneksyon</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Kukuha ng mga modelo…</string>

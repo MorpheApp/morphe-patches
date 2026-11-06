@@ -341,11 +341,11 @@ Beperkings:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Sleutelwoord het botsende definisies: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Sleutelwoord is te kort en vereis aanhalingstekens: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Sleutelwoord sal alle video\'s verberg: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Tuisskerm: %s
-• Subskripsies: %s
-• Soek: %s
-• Kommentare: %s
-• Totaal: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Tuis: %1$s
+• Inskrywings: %2$s
+• Soek: %3$s
+• Kommentare: %4$s
+• Totaal: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Statistiek</string>
   <string name="morphe_hide_stats_hidden_24h_title">Video\'s versteek, laaste 24 uur</string>
   <string name="morphe_hide_stats_hidden_all_title">Video\'s versteek, altyd</string>
@@ -357,9 +357,9 @@ Beperkings:
   <string name="morphe_hide_aislist_warnlist_category_title">Waarskuwingslys: Matige selfvertroue</string>
   <string name="morphe_hide_aislist_hide_home_title">Wys nie video\'s in Home nie</string>
   <string name="morphe_hide_aislist_hide_search_title">Wys nie video\'s in soek nie</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Home: %s
-• Soek: %s
-• Totaal: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Tuis: %1$s
+• Soek: %2$s
+• Totaal: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Bloklys-kanale</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Waarskuwingslys-kanale</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Aktiveer \'n filter om kanale te laai</string>
@@ -562,7 +562,7 @@ Uitvoer-ouer: %s"</string>
   <string name="morphe_export_download_folder_missing">Kon nie uitvoergouer %s vind nie</string>
   <string name="morphe_export_download_flyout_title">Voer uit na toestel</string>
   <string name="morphe_export_download_started">Voer video uit</string>
-  <string name="morphe_export_download_progress">Voer video uit: %d%%</string>
+  <string name="morphe_export_download_progress">Video word uitgevoer: %s%%</string>
   <string name="morphe_export_download_notification_channel">Video-uitvoere</string>
   <string name="morphe_export_download_saved">Video uitgevoer na %s</string>
   <string name="morphe_export_download_failed">Kon nie die video uitvoer nie</string>
@@ -975,7 +975,7 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_show_watch_later_button_title">Wys \'Kyk later\'-knoppie</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">Kyk later</string>
-  <string name="morphe_show_settings_button_title">When enabled, tap opens Morphe settings and long press opens YouTube settings, disable to swap</string>
+  <string name="morphe_show_settings_button_title">Wys Instellings-knoppie</string>
   <string name="morphe_show_settings_button_type_title">Instellings-knoppie aksie</string>
   <string name="morphe_show_settings_button_type_summary">Animates transitions when switching between tabs</string>
   <string name="morphe_navigation_buttons_order_title">Navigasieknoppies se volgorde</string>
@@ -1013,13 +1013,13 @@ Om toegang tot Instellings te kry, aktiveer die Instellings-knoppie via Algemeen
   <string name="morphe_navigation_bar_glass_size_height">Hoogte</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimum breedte</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Knoppiespasiëring</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Knoppies gewys: %1$d van %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Knoppies gewys: %1$s van %2$s</string>
   <string name="morphe_toolbar_screen_title">Wenkbalk</string>
   <string name="morphe_toolbar_screen_summary">Kies watter komponente in die lêertooskassie vertoon moet word</string>
   <string name="morphe_hide_toolbar_chat_button_title">Verberg Chat-knoppie</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Hide Captions menu</string>
   <string name="morphe_hide_toolbar_search_button_title">Hide Captions menu header</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Hide \'Loop video\' menu</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary">Wanneer geaktiveer, maak tik Morphe-instellings oop en lang druk maak YouTube-instellings oop; deaktiveer om om te ruil</string>
   <string name="morphe_toolbar_buttons_order_title">Gereedskapbalkknoppies se volgorde</string>
   <string name="morphe_toolbar_buttons_order_summary">Sleep die knoppies om hul volgorde in die gereedskapbalk te verander</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -1481,7 +1481,7 @@ Video's word met 'n kort voorvoegsel van die gehashte video-ID aangevra, sodat d
   <string name="morphe_video_delay_dialog_input_hint">Vertraaging in millisekondes</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Onthou video kwaliteit veranderings</string>
+  <string name="morphe_video_quality_default_entry_1">Outomaties</string>
   <string name="morphe_remember_video_quality_last_selected_title">Onthou videokwaliteit</string>
   <string name="morphe_remember_video_quality_last_selected_summary">Pas jou handmatige kwaliteitseleksie toe op alle toekomstige video\'s</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">Kwaliteitveranderingskennisgewings</string>
@@ -1667,7 +1667,7 @@ Automaties opname stop in incognito, wanneer rekeningidentiteit onbeskikbaar is,
   <string name="morphe_series_tracker_identity_unavailable">Opsporing kan nie in incognito of voor YouTube die huidige rekeningstatus gelaai het, geaktiveer word nie. Gaan terug na Tuisblad en probeer weer. Geen aanmelding is nodig nie</string>
   <string name="morphe_series_tracker_enable">Aktiveer plaaslike opsporing</string>
   <string name="morphe_series_tracker_tracking_paused">Vordingsteuning is af</string>
-  <string name="morphe_series_tracker_resume_at">Hervat teen %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Hervat by %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s episode gekyk</string>
   <string name="morphe_series_tracker_episode_position">Episode %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Episodes %1$s-%2$s van %3$s</string>
@@ -1677,7 +1677,7 @@ Automaties opname stop in incognito, wanneer rekeningidentiteit onbeskikbaar is,
   <string name="morphe_series_tracker_plan_changed">Kies \'n aflaai</string>
   <string name="morphe_series_tracker_plan_caught_up">Op datum</string>
   <string name="morphe_series_tracker_plan_none">Geen speelbare aflae</string>
-  <string name="morphe_series_tracker_saved_position">Gestoorde video · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Klaar-gestoorde video · %s</string>
   <string name="morphe_series_tracker_follow">Volg reeks</string>
   <string name="morphe_series_tracker_view_series">Sien reeks</string>
   <string name="morphe_series_tracker_continue">Gaan voort</string>
@@ -1688,7 +1688,7 @@ Automaties opname stop in incognito, wanneer rekeningidentiteit onbeskikbaar is,
   <string name="morphe_series_tracker_undo">Ontdoen</string>
   <string name="morphe_series_tracker_enable_short">Aktiveer</string>
   <string name="morphe_series_tracker_new_episode">1 nuwe aflaai</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s nuwe episodes</string>
+  <string name="morphe_series_tracker_new_episodes">%s nuwe episodes</string>
   <string name="morphe_series_tracker_record_short">Teeken vordering op hierdie toestel</string>
   <string name="morphe_series_tracker_follow_consent">"Jou reekse en voortgang bly op daardie toestel, oor YouTube-rekonge gedeel. YouTube-geskiedenisbeheerders verander dit nie. Wis voortgang vanuit die Reeks-menu.
 
@@ -1718,12 +1718,12 @@ Automaties opname is opsioneel. Dit stop in incognito of wanneer die rekening ve
   <string name="morphe_series_tracker_hide_watched">Verbreek bekyk</string>
   <string name="morphe_series_tracker_watched_on_advance">Merk as gekyk wanneer daar na die volgende episode beweeg word</string>
   <string name="morphe_series_tracker_watch_previous">Merk vorige aflae bekyk</string>
-  <string name="morphe_series_tracker_order_starts_with">Begin met: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Begin met: %s</string>
   <string name="morphe_series_tracker_episode_order">Aflaivolgorde</string>
   <string name="morphe_series_tracker_playlist_order">Afspeellysvolgorde</string>
   <string name="morphe_series_tracker_reverse_order">Omkeer afspeellysvolgorde</string>
-  <string name="morphe_series_tracker_view_count">%1$s aansigte</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s aansig</string>
+  <string name="morphe_series_tracker_view_count">%s kyke</string>
+  <string name="morphe_series_tracker_view_count_one">%s kyke</string>
   <string name="morphe_series_tracker_completion_title">Merk aflae bekyk</string>
   <string name="morphe_series_tracker_completion_summary">Ten minste %1$s%% gekyk met maksimum 90 sekondes oorgebly, of %2$s sekondes oorgebly</string>
   <string name="morphe_series_tracker_completion_explanation">Markeer outomaties \'n episode as gekyk nadat een van die drempels bereik is. Die persentasie-reël vereis ook nie meer as 90 sekondes oorgebly nie, sodat die einde van lang episodes nie oorgeslaan word nie. Die oorblywende tyd-reël geld vir video\'s langer as een minuut; stel dit op 0 om dit af te skakel. Veranderinge geld vir toekomstige voortschringsvernuwing. Handmatige gekyk/niet-kiek kiesse word gehou</string>
@@ -1743,7 +1743,7 @@ Automaties opname is opsioneel. Dit stop in incognito of wanneer die rekening ve
   <string name="morphe_series_tracker_backup_restore">Herstel rugsteun</string>
   <string name="morphe_series_tracker_backup_preview">Voeg %1$s reekse by. %2$s reekse reeds in jou biblioteek word behou. Bestaande video-voortgang word behou</string>
   <string name="morphe_series_tracker_backup_saved">Reeksrugsteun gestoor</string>
-  <string name="morphe_series_tracker_backup_restored">%1$s reekse herstel</string>
+  <string name="morphe_series_tracker_backup_restored">%s reeks herstel</string>
   <string name="morphe_series_tracker_error_backup_invalid">Hierdie lêer is nie \'n ondersteunde reeks-back-up nie, of is te groot. Jou biblioteek is nie verander nie</string>
   <string name="morphe_series_tracker_error_backup_write">Kon nie die back-up stoor nie. Probeer \'n ander lokasie</string>
   <string name="morphe_series_tracker_removed">Reeks verwyder</string>
@@ -1753,7 +1753,7 @@ Automaties opname is opsioneel. Dit stop in incognito of wanneer die rekening ve
   <string name="morphe_series_tracker_recovery_choose">Jy kan ook enige episode hieronder kies. Vroeëre episodes word nie verander nie</string>
   <string name="morphe_series_tracker_playback_changed">Hierdie spellys het verander. Maak die reeks oop om te kies waar om voort te gaan</string>
   <string name="morphe_series_tracker_playback_boundary">Geen meer aflae in hierdie rigting nie</string>
-  <string name="morphe_series_tracker_continue_series">Ga voort met %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Gaan voort met %s</string>
   <string name="morphe_series_tracker_search_series">Soek reekse</string>
   <string name="morphe_series_tracker_clear_search">Wis soektog</string>
   <string name="morphe_series_tracker_no_search_results">Geen reekse gevind nie</string>
@@ -1782,6 +1782,10 @@ Automaties opname is opsioneel. Dit stop in incognito of wanneer die rekening ve
   <string name="morphe_niconico_comments_live_premieres_summary">Premières terwyl hulle speel</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Wys op beëindigde Premières</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Kletsherhaling van Premières wat geëindig het</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Wys tydgebonden kommentaar</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Op video\'s sonder \'n klets, word topkommentaar wat \'n tyd soos 1:23 bevat, op daardie tyd gewys</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Wys tydbeperkte kommentare met kletsherhaling</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Op herhalings van regstroom-uitsendings en Premières word tydbeperkte kommentare ook saam met die klets gewys</string>
   <string name="morphe_live_chat_translate_screen_title">Lewendige geselsvertaling</string>
   <string name="morphe_live_chat_translate_screen_summary">Vertaal lewendige gesels- en terugspelboodskappe</string>
   <string name="morphe_live_chat_translate_title">Vertaal lewendige gesels</string>

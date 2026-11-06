@@ -341,11 +341,11 @@ Limitacions:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">La paraula clau té declaracions contradictoryes: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">La paraula clau és massa curta i requereix cometes: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">La paraula clau ocultarà tots els vídeos: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Inici: %s
-• Subscripcions: %s
-• Cerca: %s
-• Comentaris: %s
-• Total: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Inici: %1$s
+• Subscripcions: %2$s
+• Cerca: %3$s
+• Comentaris: %4$s
+• Total: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Estadístiques</string>
   <string name="morphe_hide_stats_hidden_24h_title">Vídeos ocults, últimes 24 hores</string>
   <string name="morphe_hide_stats_hidden_all_title">Vídeos ocults, tot el temps</string>
@@ -357,9 +357,9 @@ Limitacions:
   <string name="morphe_hide_aislist_warnlist_category_title">Llista d\'advertència: Confiança moderada</string>
   <string name="morphe_hide_aislist_hide_home_title">Ocultar vídeos a l\'Inici</string>
   <string name="morphe_hide_aislist_hide_search_title">Ocultar vídeos a la cerca</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Inici: %s
-• Cerca: %s
-• Total: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Inici: %1$s
+• Cerca: %2$s
+• Total: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Canals de la llista negra</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Canals de la llista d\'advertència</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Habilita un filtre per carregar els canals</string>
@@ -562,7 +562,7 @@ Carpeta d'exportació: %s"</string>
   <string name="morphe_export_download_folder_missing">No s\'ha pogut trobar la carpeta d\'exportació %s</string>
   <string name="morphe_export_download_flyout_title">Exporta al dispositiu</string>
   <string name="morphe_export_download_started">Exportant el vídeo</string>
-  <string name="morphe_export_download_progress">Exportant el vídeo: %d%%</string>
+  <string name="morphe_export_download_progress">Exportant el vídeo: %s%%</string>
   <string name="morphe_export_download_notification_channel">Exportacions de vídeos</string>
   <string name="morphe_export_download_saved">Vídeo exportat a %s</string>
   <string name="morphe_export_download_failed">No s\'ha pogut exportar el vídeo</string>
@@ -1013,7 +1013,7 @@ Per accedir a la Configuració, activeu el botó de Configuració a través de G
   <string name="morphe_navigation_bar_glass_size_height">Alçada</string>
   <string name="morphe_navigation_bar_glass_size_width">Amplada màxima</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Espaiat dels botons</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Botons mostrados: %1$d de %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Botons mostrados: %1$s de %2$s</string>
   <string name="morphe_toolbar_screen_title">Barra d\'eines</string>
   <string name="morphe_toolbar_screen_summary">Trieu quins components apareixen a la barra d\'eines</string>
   <string name="morphe_hide_toolbar_chat_button_title">Oculta el botó de Xat</string>
@@ -1667,7 +1667,7 @@ El registre automàtic s'atura en mode incògnit, quan la identitat del compte n
   <string name="morphe_series_tracker_identity_unavailable">El seguiment no es pot activar en mode incògnit o abans que YouTube hagi carregat l\'estat actual del compte. Torna a l\'Inici i torna-ho a intentar. No cal iniciar sessió</string>
   <string name="morphe_series_tracker_enable">Habilitar el seguiment local</string>
   <string name="morphe_series_tracker_tracking_paused">El registre del progrés està desactivat</string>
-  <string name="morphe_series_tracker_resume_at">Reprèn a %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Reprèn a %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s episodis vistos</string>
   <string name="morphe_series_tracker_episode_position">Episodi %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Episodis %1$s-%2$s de %3$s</string>
@@ -1677,7 +1677,7 @@ El registre automàtic s'atura en mode incògnit, quan la identitat del compte n
   <string name="morphe_series_tracker_plan_changed">Trieu un episodi</string>
   <string name="morphe_series_tracker_plan_caught_up">Actualitzat</string>
   <string name="morphe_series_tracker_plan_none">No hi ha episodis reproduïbles</string>
-  <string name="morphe_series_tracker_saved_position">Vídeo desat · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Vídeo desat · %s</string>
   <string name="morphe_series_tracker_follow">Seguir sèrie</string>
   <string name="morphe_series_tracker_view_series">Veure sèries</string>
   <string name="morphe_series_tracker_continue">Continuar</string>
@@ -1688,7 +1688,7 @@ El registre automàtic s'atura en mode incògnit, quan la identitat del compte n
   <string name="morphe_series_tracker_undo">Desfer</string>
   <string name="morphe_series_tracker_enable_short">Habilitar</string>
   <string name="morphe_series_tracker_new_episode">1 episodi</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s episodi</string>
+  <string name="morphe_series_tracker_new_episodes">%s episodi</string>
   <string name="morphe_series_tracker_record_short">Registrar el progrés en aquest dispositiu</string>
   <string name="morphe_series_tracker_follow_consent">"Les teves sèries i el teu progrés es mantenen en aquest dispositiu, compartits entre comptes de YouTube. Els controls de l'historial de YouTube no els modifiquen. Esborra el progrés des del menú de Sèries.
 
@@ -1718,12 +1718,12 @@ El registre automàtic és opcional. S'atura en mode incògnit o quan canvia el 
   <string name="morphe_series_tracker_hide_watched">Ocultar els vistos</string>
   <string name="morphe_series_tracker_watched_on_advance">Marcar com a vist en passar al següent episodi</string>
   <string name="morphe_series_tracker_watch_previous">Marcar els episodis anteriors com a vistos</string>
-  <string name="morphe_series_tracker_order_starts_with">Comença per: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Comença per: %s</string>
   <string name="morphe_series_tracker_episode_order">Ordre dels episodis</string>
   <string name="morphe_series_tracker_playlist_order">Ordre de la llista de reproducció</string>
   <string name="morphe_series_tracker_reverse_order">Invertir l\'ordre de la llista de reproducció</string>
-  <string name="morphe_series_tracker_view_count">%1$s visualitzacions</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s visada</string>
+  <string name="morphe_series_tracker_view_count">%s visualitzacions</string>
+  <string name="morphe_series_tracker_view_count_one">%s visualització</string>
   <string name="morphe_series_tracker_completion_title">Marcar episodis com a vistos</string>
   <string name="morphe_series_tracker_completion_summary">Almenys un %1$s%% vist amb un màxim de 90 segons restants, o %2$s segons restants</string>
   <string name="morphe_series_tracker_completion_explanation">Marca automàticament un episodi com a vist després de qualsevol dels dos llindors. La regla del percentatge també requereix que no restin més de 90 segons, perquè no es salti el final dels episodis llargs. La regla del temps restant s\'aplica a vídeos de més d\'un minut; estableix-la a 0 per desactivar-la. Els canvis s\'aplicaran a les futures actualitzacions del progrés. Es mantenen les opcions manuals de vist/no vist</string>
@@ -1743,7 +1743,7 @@ El registre automàtic és opcional. S'atura en mode incògnit o quan canvia el 
   <string name="morphe_series_tracker_backup_restore">Restaura la còpia de seguretat</string>
   <string name="morphe_series_tracker_backup_preview">Afegeix %1$s sèries. Es mantenen les %2$s sèries que ja són part de la teva biblioteca. Es manté el progrés del vídeo existent</string>
   <string name="morphe_series_tracker_backup_saved">Còpia de seguretat de la sèrie desada</string>
-  <string name="morphe_series_tracker_backup_restored">S\'han restaurat %1$s sèries</string>
+  <string name="morphe_series_tracker_backup_restored">S\'han restaurat %s sèries</string>
   <string name="morphe_series_tracker_error_backup_invalid">Aquest fitxer no és una còpia de seguretat de sèrie compatible, o és massa gran. La vostra biblioteca no s\'ha modificat</string>
   <string name="morphe_series_tracker_error_backup_write">No s\'ha pogut desar la còpia de seguretat. Proveu una altra ubicació</string>
   <string name="morphe_series_tracker_removed">Sèries eliminades</string>
@@ -1753,7 +1753,7 @@ El registre automàtic és opcional. S'atura en mode incògnit o quan canvia el 
   <string name="morphe_series_tracker_recovery_choose">També podeu triar qualsevol episodi a continuació. Els episodis anteriors no s\'han modificat</string>
   <string name="morphe_series_tracker_playback_changed">Aquesta llista de reproducció ha canviat. Obriu la sèrie per triar on continuar</string>
   <string name="morphe_series_tracker_playback_boundary">No hi ha més episodis en aquesta direcció</string>
-  <string name="morphe_series_tracker_continue_series">Continua %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Continua %s</string>
   <string name="morphe_series_tracker_search_series">Cercar sèries</string>
   <string name="morphe_series_tracker_clear_search">Netejar cerca</string>
   <string name="morphe_series_tracker_no_search_results">No s\'han trobat sèries</string>
@@ -1782,6 +1782,10 @@ El registre automàtic és opcional. S'atura en mode incògnit o quan canvia el 
   <string name="morphe_niconico_comments_live_premieres_summary">Estrenes mentre s\'estan reproduint</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Mostrar en els Estrens finalitzats</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Repetició del xat de les Estrenes que han acabat</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Mostrar comentaris temporitzats</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">En els vídeos sense xat, els comentaris superiors que contenen una hora com 1:23 es mostren en aquest moment</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Mostra els comentaris temporitzats amb la reproducció del xat</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">En les reproduccions de fluxos en directe i Estrenes, els comentaris temporitzats també s\'estrenen amb el xat</string>
   <string name="morphe_live_chat_translate_screen_title">Traducció del xat en directe</string>
   <string name="morphe_live_chat_translate_screen_summary">Traduïu els missatges del xat en directe i les reproduccions del xat en directe</string>
   <string name="morphe_live_chat_translate_title">Traduïu el xat en directe</string>

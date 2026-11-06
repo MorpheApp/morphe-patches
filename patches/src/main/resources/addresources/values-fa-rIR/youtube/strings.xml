@@ -341,11 +341,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">کلمهٔ کلیدی اعلان‌های متناقض دارد: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">کلمهٔ کلیدی خیلی کوتاه است و به گیومه نیاز دارد: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">کلمهٔ کلیدی همهٔ ویدئوها را پنهان می‌کند: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• خانه: %s
-• اشتراک‌ها: %s
-• جست‌وجو: %s
-• دیدگاه‌ها: %s
-• مجموع: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• خانه: %1$s
+• اشتراک‌ها: %2$s
+• جست‌وجو: %3$s
+• دیدگاه‌ها: %4$s
+• مجموع: %5$s"</string>
   <string name="morphe_hide_stats_category_title">آمار</string>
   <string name="morphe_hide_stats_hidden_24h_title">ویدئوهای پنهان‌شده در ۲۴ ساعت گذشته</string>
   <string name="morphe_hide_stats_hidden_all_title">ویدئوهای پنهان‌شده در همهٔ زمان‌ها</string>
@@ -357,9 +357,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_warnlist_category_title">فهرست هشدار: اطمینان متوسط</string>
   <string name="morphe_hide_aislist_hide_home_title">پنهان‌کردن ویدئوها در خانه</string>
   <string name="morphe_hide_aislist_hide_search_title">پنهان‌کردن ویدئوها در جست‌وجو</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• خانه: %s
-• جست‌وجو: %s
-• مجموع: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• خانه: %1$s
+• جست‌وجو: %2$s
+• مجموع: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">کانال‌های فهرست مسدودشده</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">کانال‌های فهرست هشدار</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">برای بارگذاری کانال‌ها، یک فیلتر را فعال کنید</string>
@@ -562,7 +562,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">پوشه خروجی %s یافت نشد</string>
   <string name="morphe_export_download_flyout_title">صادرکردن به دستگاه</string>
   <string name="morphe_export_download_started">در حال خروجی گرفتن از ویدیو</string>
-  <string name="morphe_export_download_progress">در حال صادرکردن ویدیو: %d%%</string>
+  <string name="morphe_export_download_progress">در حال خروجی گرفتن از ویدیو: %s%%</string>
   <string name="morphe_export_download_notification_channel">صادر کردن ویدیوها</string>
   <string name="morphe_export_download_saved">ویدیو در %s صادر شد</string>
   <string name="morphe_export_download_failed">صادر کردن ویدیو امکان‌پذیر نبود</string>
@@ -1013,7 +1013,7 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_height">ارتفاع</string>
   <string name="morphe_navigation_bar_glass_size_width">حداکثر عرض</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">فاصله‌ی دکمه‌ها</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">دکمه‌های نمایش داده شده: %1$d از %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">دکمه‌های نمایش داده شده: %1$s از %2$s</string>
   <string name="morphe_toolbar_screen_title">نوار ابزار</string>
   <string name="morphe_toolbar_screen_summary">انتخاب کنید کدام مؤلفه‌ها در نوار ابزار نمایش داده شوند</string>
   <string name="morphe_hide_toolbar_chat_button_title">پنهان‌کردن دکمهٔ گفت‌وگو</string>
@@ -1666,7 +1666,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_identity_unavailable">پیگیری در حالت ناشناس یا قبل از اینکه YouTube وضعیت حساب فعلی را بارگذاری کند، قابل فعال‌سازی نیست. به صفحه اصلی برگردید و دوباره تلاش کنید. ورود لازم نیست</string>
   <string name="morphe_series_tracker_enable">فعال‌سازی ردیابی محلی</string>
   <string name="morphe_series_tracker_tracking_paused">ثبت پیشرفت غیرفعال است</string>
-  <string name="morphe_series_tracker_resume_at">ادامه از %1$s</string>
+  <string name="morphe_series_tracker_resume_at">ادامه در %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s قسمت تماشا شده</string>
   <string name="morphe_series_tracker_episode_position">قسمت %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">قسمت‌های %1$s-%2$s از %3$s</string>
@@ -1676,7 +1676,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_plan_changed">انتخاب یک قسمت</string>
   <string name="morphe_series_tracker_plan_caught_up">به‌روز است</string>
   <string name="morphe_series_tracker_plan_none">هیچ قسمت قابل پخش</string>
-  <string name="morphe_series_tracker_saved_position">ویدئوی ذخیره‌شده · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">ویدیوی ذخیره شده · %s</string>
   <string name="morphe_series_tracker_follow">دنبال کردن سریال</string>
   <string name="morphe_series_tracker_view_series">مشاهده سریال</string>
   <string name="morphe_series_tracker_continue">ادامه</string>
@@ -1687,7 +1687,6 @@ AVC (H.264)
   <string name="morphe_series_tracker_undo">بازگردانی</string>
   <string name="morphe_series_tracker_enable_short">فعال‌کردن</string>
   <string name="morphe_series_tracker_new_episode">۱ قسمت جدید</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s قسمت جدید</string>
   <string name="morphe_series_tracker_record_short">تنها پیشرفت روی این دستگاه ثبت شود</string>
   <string name="morphe_series_tracker_follow_consent">"مجموعه‌ها و پیشرفت شما روی این دستگاه می‌مانند و بین حساب‌های YouTube به اشتراک گذاشته می‌شوند. کنترل‌های تاریخچه YouTube آن‌ها را تغییر نمی‌دهند. پیشرفت را از منوی Series پاک کنید.
 
@@ -1717,12 +1716,12 @@ AVC (H.264)
   <string name="morphe_series_tracker_hide_watched">مخفی کردن تماشا شده</string>
   <string name="morphe_series_tracker_watched_on_advance">هنگام رفتن به قسمت بعدی، به عنوان تماشا شده علامت‌گذاری شود</string>
   <string name="morphe_series_tracker_watch_previous">قسمت‌های قبلی را به عنوان تماشا شده علامت‌گذاری کنید</string>
-  <string name="morphe_series_tracker_order_starts_with">شروع با: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">شروع با: %s</string>
   <string name="morphe_series_tracker_episode_order">ترتیب قسمت‌ها</string>
   <string name="morphe_series_tracker_playlist_order">ترتیب فهرست پخش</string>
   <string name="morphe_series_tracker_reverse_order">معکوس کردن ترتیب فهرست پخش</string>
-  <string name="morphe_series_tracker_view_count">%1$s بازدید</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s بازدید</string>
+  <string name="morphe_series_tracker_view_count">%s بازدید</string>
+  <string name="morphe_series_tracker_view_count_one">%s بازدید</string>
   <string name="morphe_series_tracker_completion_title">علامت‌گذاری قسمت‌ها به عنوان تماشا شده</string>
   <string name="morphe_series_tracker_completion_summary">حداقل %1$s%% تماشا شده با حداکثر 90 ثانیه زمان باقی‌مانده، یا %2$s ثانیه باقی مانده</string>
   <string name="morphe_series_tracker_completion_explanation">به طور خودکار یک قسمت را پس از رسیدن به هر یک از آستانه‌ها تماشا شده علامت بزنید. قانون درصد نیز نیازمند این است که بیش از 90 ثانیه باقی نمانده باشد، بنابراین پایان قسمت‌های بلند رد نمی‌شود. قانون زمان باقی‌مانده برای ویدئوهای بیشتر از یک دقیقه اعمال می‌شود; آن را روی 0 تنظیم کنید تا غیرفعال شود. تغییرات بر به‌روزرسانی‌های پیشرفت آینده اعمال می‌شوند. انتخاب‌های دستی تماشا شده/تماشا نشده حفظ می‌شوند</string>
@@ -1742,7 +1741,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_backup_restore">بازیابی پشتیبان</string>
   <string name="morphe_series_tracker_backup_preview">%1$s مجموعه اضافه کنید. %2$s مجموعه که قبلاً در کتابخانه شما هستند حفظ می‌شوند. پیشرفت ویدئوهای موجود حفظ می‌شود</string>
   <string name="morphe_series_tracker_backup_saved">پشتیبان سریال ذخیره شد</string>
-  <string name="morphe_series_tracker_backup_restored">%1$s مجموعه بازیابی شد</string>
+  <string name="morphe_series_tracker_backup_restored">%s سریال بازیابی شد</string>
   <string name="morphe_series_tracker_error_backup_invalid">این فایل یک پشتیبان سریال پشتیبانی شده نیست، یا بسیار بزرگ است. کتابخانه شما تغییر نکرد</string>
   <string name="morphe_series_tracker_error_backup_write">پشتیبان ذخیره نشد. مکان دیگری را امتحان کنید</string>
   <string name="morphe_series_tracker_removed">سریال حذف شد</string>
@@ -1752,7 +1751,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_recovery_choose">می‌توانید هر قسمت زیر را نیز انتخاب کنید. قسمت‌های قدیمی‌تر تغییر نمی‌کنند</string>
   <string name="morphe_series_tracker_playback_changed">این فهرست پخش تغییر کرده است. مجموعه را باز کنید تا انتخاب کنید از کجا ادامه دهید</string>
   <string name="morphe_series_tracker_playback_boundary">دیگر قسمتی در این جهت وجود ندارد</string>
-  <string name="morphe_series_tracker_continue_series">ادامه %1$s</string>
+  <string name="morphe_series_tracker_continue_series">ادامه %s</string>
   <string name="morphe_series_tracker_search_series">جست‌وجوی سریال</string>
   <string name="morphe_series_tracker_clear_search">پاک‌سازی جست‌وجو</string>
   <string name="morphe_series_tracker_no_search_results">هیچ سریالی پیدا نشد</string>
@@ -1781,6 +1780,10 @@ AVC (H.264)
   <string name="morphe_niconico_comments_live_premieres_summary">اولین نمایش‌ها در هنگام پخش</string>
   <string name="morphe_niconico_comments_ended_premieres_title">نمایش در پخش‌های اولیه به پایان رسیده</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">بازپخش چت پخش‌های اولیه‌ای که به پایان رسیده‌اند</string>
+  <string name="morphe_niconico_comments_timed_comments_title">نمایش نظرات زمان‌بندی شده</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">در ویدیوهای بدون چت، نظرات برتری که حاوی زمانی مانند 1:23 هستند، در همان زمان نمایش داده می‌شوند</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">نمایش نظرات زمان‌بندی شده با بازپخش چت</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">در بازپخش‌های پخش زنده و پیش‌مرگ‌ها، نظرات زمان‌بندی شده همچنین همراه با چت نمایش داده می‌شوند</string>
   <string name="morphe_live_chat_translate_screen_title">ترجمهٔ چت زنده</string>
   <string name="morphe_live_chat_translate_screen_summary">ترجمهٔ پیام‌های چت زنده و بازپخش چت زنده</string>
   <string name="morphe_live_chat_translate_title">ترجمهٔ چت زنده</string>

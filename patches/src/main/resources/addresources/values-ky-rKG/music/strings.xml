@@ -150,6 +150,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_previous">Мурунку</string>
   <string name="morphe_music_downloads_next">Кийинки</string>
   <string name="morphe_music_downloads_pause">Токтотуу</string>
+  <string name="morphe_music_downloads_shuffle">Аралаштыруу</string>
+  <string name="morphe_music_downloads_repeat">Кайталоо</string>
+  <string name="morphe_music_downloads_minimize">Кичирейтүү</string>
   <string name="morphe_music_downloads_close">Жабуу</string>
   <string name="morphe_music_downloads_delete">Өчүрүү</string>
   <string name="morphe_music_downloads_delete_track">Жүктүрүлгөн файлды өчүрүү</string>
@@ -220,6 +223,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_download_no_network">Тармак менен байланыш жок</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">Тармак күтүлүүдө…</string>
   <string name="morphe_music_downloads_playlist_download_stopped">%2$s бөлүгүнүн %1$s жүктөлгөндөн кийин токтотулду. Улантуу үчүн Жүктөө баскычын кайра басыңыз</string>
+  <string name="morphe_music_downloads_mark_title">Жүктөлгөн ырларды белгилөө</string>
+  <string name="morphe_music_downloads_mark_summary">Жүктөлгөн ырлардын алдында плейлисттерде, альбомдордо жана издөө натыйжаларында белги көрүнөт</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Маалымат</string>
@@ -279,7 +284,7 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_250ms">250 миллисекунд</string>
   <string name="morphe_crossfade_duration_500ms">500 миллисекунд</string>
   <string name="morphe_crossfade_duration_750ms">750 миллисекунда</string>
-  <string name="morphe_crossfade_duration_1000ms">{\"one\":\"1 секунд\",\"other\":\"{} секунд\"}</string>
+  <string name="morphe_crossfade_duration_1000ms">1 секунд</string>
   <string name="morphe_crossfade_duration_2000ms">2 секунд</string>
   <string name="morphe_crossfade_duration_3000ms">3 секунд</string>
   <string name="morphe_crossfade_duration_4000ms">4 секунд</string>
@@ -340,6 +345,43 @@ SABR ойнотуусу (Видео агымдарын имитациялоо ө
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Тандалган тректи кезекке кошуу</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">Кезекке кошулду</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">Плейлисттин тегдери</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Плейлисттерге тегдерди белгилеңиз жана Китепкананы тег боюнча чыпкалаңыз</string>
+  <string name="morphe_music_playlist_tags_title">Плейлисттин тегдерин күйгүзүү</string>
+  <string name="morphe_music_playlist_tags_summary">Плейлисттердин менюсуна Тегдер пунктун жана Китепкананын сүзүү баскычынын жанына Тегдер чыпкасын кошот</string>
+  <string name="morphe_music_playlist_tags_manage_title">Плейлисттин тегдерин башкаруу</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Тегдерди түзүңүз, аталын өзгөртүңүз жана өчүрүңүз, ошондой эле Китепканада көрүнгөн плейлисттерге тегдерди белгилеңиз</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">Тегдер</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">Тегдер жок</string>
+  <string name="morphe_music_playlist_tags_filter_button">Тегдер</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">Тег: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">Тегдер (%s жашыруун)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">%s үчүн тегдер</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">Жаңы тег</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 плейлист</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s плейлист</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">%s аттуу тег буга чейин түзүлгөн</string>
+  <string name="morphe_music_playlist_tags_filter_title">Тег боюнча чыпкалоо</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">Жалгыз көрсөтүү</string>
+  <string name="morphe_music_playlist_tags_filter_all">Бардык плейлисттер</string>
+  <string name="morphe_music_playlist_tags_filter_visible">Көрүнүп турган тегдер</string>
+  <string name="morphe_music_playlist_tags_manage">Башкаруу</string>
+  <string name="morphe_music_playlist_tags_none">Азырынча тегдер жок. Түзүү үчүн плейлистти узак басып, Тегдерди тандаңыз</string>
+  <string name="morphe_music_playlist_tags_section_tags">Тегдер</string>
+  <string name="morphe_music_playlist_tags_section_playlists">Плейлисттер</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Плейлисттериңиз бул жерде көрүнүшү үчүн Китепкананы бир жолу ачыңыз</string>
+  <string name="morphe_music_playlist_tags_new_tag">Жаңы тег</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">Тегди оңдоо</string>
+  <string name="morphe_music_playlist_tags_rename">Атын өзгөртүү</string>
+  <string name="morphe_music_playlist_tags_delete">Өчүрүү</string>
+  <string name="morphe_music_playlist_tags_hidden">Жашыруун</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Cast баскычын жашыруу</string>
   <string name="morphe_music_hide_history_button_title">Тарых баскычын жашыруу</string>
@@ -508,6 +550,49 @@ SABR ойнотуусу (Видео агымдарын имитациялоо ө
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling сиздин YouTube Music колдонууңузду Last.fm же ListenBrainz профилиңиз менен автоматтык түрдө синхрондойт
 
 Фондук ойнотуу учурунда scrobbling синхрондолгонун камсыз кылуу үчүн, YouTube Music колдонмосунун батареяны колдонуу жөндөөлөрү \"Чектөөсүз\" деп коюлганын текшериңиз"</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">Коомчулук тарабынан AI деп билдирилген артисттердин тректерин өткөрүп жиберүү</string>
+  <string name="morphe_music_soundproof_show_button_title">SoundProof баскычын көрсөтүү</string>
+  <string name="morphe_music_soundproof_show_button_summary">Учурдагы артистке карата коомчулуктун добуштарын көрүү жана добуш берүү үчүн плеердин жогорку панелинде баскычты көрсөтөт</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">AI артисттерди өткөрүп жиберүү</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">Артисти төмөндөгү AI чегине жеткен тректерди автоматтык түрдө аттап өткөрөт</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">Аттап өткөрүү билдирүүсүн көрсөтүү</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">Трек автоматтык түрдө аттап өткөрүлгөндө билдирүүнү көрсөтөт</string>
+  <string name="morphe_music_soundproof_threshold_title">Аныктоо чеги</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">Минималдуу AI үндөрү</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Үндөрдүн кеминде ушул үлүгү AI деп белгиленгенде, артист AI деп табылат</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">Үндөрдүн минималдуу саны</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">Үндөрлөрү ушундан аз болгон артисттер эч качан аттап өткөрүлбөйт</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">%1$s өткөрүлүп кетти (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">SoundProof бул артистке добуш берет</string>
+  <string name="morphe_music_soundproof_sheet_verified">Тастыкталган</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% ЖИ</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% адам</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 добуш</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s добуш</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s адам</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s ЖИ</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">Бул артист үчүн азырынча добуштар жок</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">SoundProof маалымат базасы азырынча жеткиликсиз</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">Ал фондо жүктөлүүдө. Жеткиликтүү болгонго чейин эч бир трек аттап өтүлбөйт.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">SoundProof маалымат базасынан коомчулуктун добуштары</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">Адам</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">Жасалма интеллект</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">Добуш берүү жабылды: SoundProof модератору бул артистти текшерди</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">SoundProof менен байланышуу мүмкүн болгон жок. Добуштар күнүмдүк маалымат базасынан алынган жана добуш берүү жеткиликсиз.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">SoundProof добуш берүү катасы</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"Сүрөтчүлөрдүн маалыматтары SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) баракчасынан күнүнө бир жолу жүктөлөт. Аткарууну өткөрүү сиз эмне угуп жатканыңыз жөнүндө эч кандай маалымат жөнөтпөйт. SoundProof баракчасын ачуу, жаңы үндөшүүлөрдү көрсөтүү жана добуш берүү үчүн учурдагы сүрөтчүнүн атын SoundProof серверине жөнөтөт. Сервер добуш бергендерди IP-дарек боюнча айырмалайт, ошондуктан сиздин добушуңуз башка тармакта башкача көрүнүшү мүмкүн.
+
+Маалымат базасы ODC Open Database License (ODbL) лицензиясы менен берилген. xoundbyte тарабынан Soul Over AI баракчасынан алынган жазуулар CC BY 4.0 лицензиясы менен берилген. SoundProof же Soul Over AI менен байланышы жок жана алар тарабынан колдоолбогон."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Үчүнчү тараптын тексттерин колдонуу</string>
   <string name="morphe_music_lyrics_enabled_summary">Үчүнчү тараптын кызматынан тексттерди көрсөтөт, эгерде табылмаса, орнотулган тексттерге кайтарылат</string>
@@ -548,17 +633,17 @@ Rime Wordlist окуусу керек болгон тизмелерди белг
   <string name="morphe_music_lyrics_rime_dict_bad_code">Код hak сыяктуу эки же үч тамгадан турушу керек</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">Дарек https:// менен башталышы керек</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">Аты жана дареги вертикалдык сызыкты камтыбашы керек</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s үчүн сөздөр таблицасы буга чейин түзүлгөн</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s камтылган романизатор тарабынан окулат жана сөздөр тизмесин кабыл албайт</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s үчүн сөз таблицасы буга чейин бар</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s камтылган романайзер аркылуу окулат жана сөз тизмесин кабыл ала албайт</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">Колдонулбайт: бул тилдин өзүнүн окуу ыкмасы бар, ошондуктан аны алып салуу үчүн белгисин алып салыңыз</string>
-  <string name="morphe_music_lyrics_rime_dict_added">%1$s кошулду - аны жүктөп алуу үчүн белгилеп, Сактоо баскычын басыңыз</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%s кошулду - аны белгилеп, жүктөө үчүн Сактоо баскычын басыңыз</string>
   <string name="morphe_music_lyrics_rime_dict_ready">Сөздөр тизмеси даяр</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">Сөздөр тизмеси даяр (%1$d жазуу)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">Сөздөр тизмеси окулууда: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Сөз тизмелери даяр (%s запись)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Сөз тизмесин окуу: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">Сөздөр тизмесин жүктөө мүмкүн болбоду - кайра аракет кылуу үчүн Сактоо баскычын басыңыз</string>
   <string name="morphe_music_lyrics_clear_cache_title">Сакталган ырларды тазалоо</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Бул түзүлүштө сакталган %1$s MB ыр тексттерин өчүрүү</string>
-  <string name="morphe_music_lyrics_clear_cache_done">%1$s МБ тазаланды</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Бул түзүлүштө сакталган %s МБ ыр тексттерин өчүрүү</string>
+  <string name="morphe_music_lyrics_clear_cache_done">%s МБ тазаланды</string>
   <string name="morphe_music_token_dialog_get_token">Токенди алуу</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Paste the media-user-token cookie from music.apple.com
@@ -624,14 +709,14 @@ Steps:
   <string name="morphe_music_lyrics_allow_transliteration_summary">Ыр тексттеринин булагынан латын эмес окууларга уруксат берүү; өчүрүлгөндө, латын тамгалары, акценттүү тамгалар жана тон цифрлары гана калат</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Убактысы белгиленген лириканын ар бир сөзүн окуйт (сөздөрдү синхрондоо күйүк); корей тили үчүн жүктөө талап кылынбайт; он төрт жазуу бир CLDR жүктөөнү колдонот; Хан белгилери, эгер анын сөз таблицасы тилди камтыса, Rime Wordlist тарабынан окулат</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">Окуу сөздүктөрү жүктөлүүдө…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Окуулар даяр (%1$d жазуу)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Окуулар даяр (%s запись)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Жүктөө катасы - кайра аракет кылуу үчүн аны өчүрүп, кайра күйгүзүңүз</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Оффлайн сөздүк</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">Жапон тили (SudachiDict, ~75 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Кытай жана кантон белгилери (UniDict, ~8 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Кытай сөздөрү (pinyin-pro, ~17 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Грек, славян кириллицасы (анын ичинде орус, украин, болгар, серб, белорус, македон тилдери), грузин, армян, иврит, араб, амхара жана сирияк транслитерациясы (CLDR, ~0.5 МБ)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Окулуп жатат %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s окулууда: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Жаңыртуу баскычын көрсөтүү</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Кийинки ыр варианттарына өтүү үчүн басыңыз; ырдын аталышы жана artisti боюнча издөө үчүн узак басыңыз</string>
   <string name="morphe_music_lyrics_search_dialog_title">Сөздөрдү издөө</string>
@@ -782,7 +867,7 @@ Steps:
   <string name="morphe_music_lyrics_ai_config_status_invalid">Жөндөөлөр толук эмес же провайдер тарабынан четке кагылды</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Байланыш текшерилүүдө…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Туташтырылды! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Туташуу мүмкүн болгон жок. Жөндөөлөрдү текшериңиз.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Байланыш түзүлгөн жок. Жөндөөлөрдү текшериңиз.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Алгач API ачкычын киргизиңиз</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Байланышты текшерүү</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Моделдер алынууда…</string>

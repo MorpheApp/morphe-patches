@@ -150,6 +150,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_previous">ກ່ອນໜ້ານີ້</string>
   <string name="morphe_music_downloads_next">ຖັດໄປ</string>
   <string name="morphe_music_downloads_pause">ຢຸດຊົ່ວຄາວ</string>
+  <string name="morphe_music_downloads_shuffle">ສຸ່ມ</string>
+  <string name="morphe_music_downloads_repeat">ຫຼິ້ນຊ້ຳ</string>
+  <string name="morphe_music_downloads_minimize">ຫຍໍ້ໜ້າຈໍ</string>
   <string name="morphe_music_downloads_close">ປິດ</string>
   <string name="morphe_music_downloads_delete">ລຶບ</string>
   <string name="morphe_music_downloads_delete_track">ລຶບໄຟລ໌ທີ່ດາວໂຫຼດ</string>
@@ -220,6 +223,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_download_no_network">ບໍ່ມີການເຊື່ອມຕໍ່ເຄືອຂ່າຍ</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">ກຳລັງລໍຖ້າເຄືອຂ່າຍ…</string>
   <string name="morphe_music_downloads_playlist_download_stopped">ຢຸດຫຼັງຈາກ %1$s ຈາກ %2$s. ແຕະ ດາວໂຫຼດ ອີກຄັ້ງເພື່ອດຳເນີນການຕໍ່</string>
+  <string name="morphe_music_downloads_mark_title">ໝາຍເພງທີ່ດາວໂຫຼດແລ້ວ</string>
+  <string name="morphe_music_downloads_mark_summary">ເພງທີ່ດາວໂຫຼດແລ້ວຈະສະແດງເຄື່ອງໝາຍກ່ອນລາຍລະອຽດໃນລາຍການເພງ, ອາລະບຳ ແລະ ຜົນການຄົ້ນຫາ</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">ກ່ຽວກັບ Morphe</string>
@@ -340,6 +345,43 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">ເພີ່ມແທຣັກທີ່ເລືອກລົງໃນຄິວ</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">ເພີ່ມລົງໃນຄິວແລ້ວ</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">ແທັກຂອງລາຍການເພງ</string>
+  <string name="morphe_music_playlist_tags_screen_summary">ຕິດແທັກລາຍການເພງ ແລະ ກັ່ນกรອງຄັງເພງດ້ວຍແທັກ</string>
+  <string name="morphe_music_playlist_tags_title">ເປີດໃຊ້ງານແທັກຂອງລາຍການເພງ</string>
+  <string name="morphe_music_playlist_tags_summary">ເພີ່ມລາຍການແທັກເຂົ້າໃນເມນູຂອງລາຍການເພງ, ແລະ ປຸ່ມກັ່ນกรອງແທັກ ຖັດຈາກປຸ່ມຈັດລຽງຂອງຄັງເພງ</string>
+  <string name="morphe_music_playlist_tags_manage_title">ຈັດການແທັກຂອງລາຍການເພງ</string>
+  <string name="morphe_music_playlist_tags_manage_summary">ສ້າງ, ປ່ຽນຊື່ ແລະ ລຶບແທັກ, ແລະ ຕິດແທັກໃຫ້ກັບລາຍການເພງທີ່ປະກົດໃນຄັງເພງຂອງທ່ານ</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">ແທັກ</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">ບໍ່ມີແທັກ</string>
+  <string name="morphe_music_playlist_tags_filter_button">ແທັກ</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">ແທັກ: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">ແທັກ (ເຊື່ອງ %s)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">ແທັກສຳລັບ %s</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">ແທັກໃໝ່</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 ລາຍການເພງ</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s ລາຍການເພງ</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">ມີແທັກຊື່ %s ຢູ່ແລ້ວ</string>
+  <string name="morphe_music_playlist_tags_filter_title">ກັ່ນกรອງດ້ວຍແທັກ</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">ສະແດງສະເພາະ</string>
+  <string name="morphe_music_playlist_tags_filter_all">ທຸກລາຍການເພງ</string>
+  <string name="morphe_music_playlist_tags_filter_visible">ແທັກທີ່ເຫັນໄດ້</string>
+  <string name="morphe_music_playlist_tags_manage">ຈັດການ</string>
+  <string name="morphe_music_playlist_tags_none">ຍັງບໍ່ມີແທັກ. ໃຫ້ກົດຄ້າງທີ່ລາຍການເພງ ແລ້ວເລືອກ ແທັກ ເພື່ອສ້າງ</string>
+  <string name="morphe_music_playlist_tags_section_tags">ແທັກ</string>
+  <string name="morphe_music_playlist_tags_section_playlists">ລາຍການເພງ</string>
+  <string name="morphe_music_playlist_tags_no_playlists">ເປີດຄັງເພງໜຶ່ງຄັ້ງ ເພື່ອໃຫ້ລາຍການເພງຂອງທ່ານປະກົດຂຶ້ນທີ່ນີ້</string>
+  <string name="morphe_music_playlist_tags_new_tag">ແທັກໃໝ່</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">ແກ້ໄຂແທັກ</string>
+  <string name="morphe_music_playlist_tags_rename">ປ່ຽນຊື່</string>
+  <string name="morphe_music_playlist_tags_delete">ລຶບ</string>
+  <string name="morphe_music_playlist_tags_hidden">ເຊື່ອງ</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">ເຊື່ອງປຸ່ມ Cast</string>
   <string name="morphe_music_hide_history_button_title">ເຊື່ອງປຸ່ມປະຫວັດ</string>
@@ -508,6 +550,49 @@ Second \"item\" text"</string>
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling ຈະຊິງຄ໌ການນຳໃຊ້ YouTube Music ຂອງທ່ານກັບໂປຣໄຟລ໌ Last.fm ຫຼື ListenBrainz ໂດຍອັດຕະໂນມັດ
 
 ເພື່ອໃຫ້ແນ່ໃຈວ່າ scrobbling ຖືກຊິງຄ໌ໃນລະຫວ່າງການຫຼິ້ນໃນພື້ນຫຼັງ, ໃຫ້ກວດສອບວ່າການນຳໃຊ້ແບັດເຕີຣີຂອງແອັບ YouTube Music ຖືກຕັ້ງຄ່າເປັນ \"ບໍ່ຈຳກັດ\""</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">ຂ້າມແທຣັກຂອງສິລະປິນທີ່ຊຸມຊົນລາຍງານວ່າເປັນ AI</string>
+  <string name="morphe_music_soundproof_show_button_title">ສະແດງປຸ່ມ SoundProof</string>
+  <string name="morphe_music_soundproof_show_button_summary">ສະແດງປຸ່ມໃນແຖບດ້ານເທິງຂອງເຄື່ອງຫຼິ້ນ ເພື່ອເບິ່ງ ແລະ ລົງຄະແນນສຽງຂອງຊຸມຊົນສຳລັບສິລະປິນໃນປັດຈຸບັນ</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">ຂ້າມສິລະປິນ AI</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">ຂ້າມແທຣັກທີ່ສິລະປິນບັນລຸເກນ AI ດ້ານລຸ່ມໂດຍອັດຕະໂນມັດ</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">ສະແດງການແຈ້ງເຕືອນການຂ້າມ</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">ສະແດງການແຈ້ງເຕືອນເມື່ອແທຣັກຖືກຂ້າມໂດຍອັດຕະໂນມັດ</string>
+  <string name="morphe_music_soundproof_threshold_title">ເກນການກວດຈັບ</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">ຄະແນນສຽງ AI ຕ່ຳສຸດ</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">ສິລະປິນຈະຖືກຖືວ່າເປັນ AI ເມື່ອມີສັດສ່ວນຂອງຄະແນນສຽງທີ່ບອກວ່າເປັນ AI ຢ່າງໜ້ອຍໃນລະດັບນີ້</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">ຈຳນວນຄະແນນສຽງຕ່ຳສຸດ</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">ສິລະປິນທີ່ມີຄະແນນສຽງໜ້ອຍກວ່ານີ້ຈະບໍ່ຖືກຂ້າມຢ່າງເດັດຂາດ</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">ຂ້າມ %1$s (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">SoundProof ໂຫວດໃຫ້ສິລະປິນຄົນນີ້</string>
+  <string name="morphe_music_soundproof_sheet_verified">ຢືນຢັນແລ້ວ</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">AI %s%%</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">ມະນຸດ %s%%</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 ໂຫວດ</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s ໂວດ</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">ມະນຸດ %s</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">AI %s</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">ຍັງບໍ່ມີການໂຫວດໃຫ້ສິລະປິນຄົນນີ້</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">ຖານຂໍ້ມູນ SoundProof ຍັງບໍ່ທັນພ້ອມໃຊ້ງານ</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">ມັນກຳລັງຖືກດາວໂຫຼດຢູ່ໃນພື້ນຫຼັງ. ຈະບໍ່ມີແທຣັກໃດຖືກຂ້າມຈົນກວ່າຈະພ້ອມໃຊ້ງານ.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">ການລົງຄະແນນສຽງຈາກຊຸມຊົນຈາກຖານຂໍ້ມູນ SoundProof</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">ມະນຸດ</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">ການລົງຄະແນນສຽງຖືກປິດແລ້ວ: ຜູ້ຄວບຄຸມ SoundProof ໄດ້ກວດສອບສິລະປິນຜູ້ນີ້ແລ້ວ</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">ບໍ່ສາມາດເຊື່ອມຕໍ່ກັບ SoundProof ໄດ້. ຄະແນນສຽງແມ່ນມາຈາກຖານຂໍ້ມູນປະຈຳວັນ, ແລະ ການລົງຄະແນນສຽງບໍ່ສາມາດນຳໃຊ້ໄດ້.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">ການລົງຄະແນນສຽງ SoundProof ລົ້ມເຫຼວ</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"ຂໍ້ມູນສິລະປິນມາຈາກ SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), ເຊິ່ງຖືກດາວໂຫຼດມື້ລະຄັ້ງ. ການຂ້າມຈະບໍ່ສົ່ງຂໍ້ມູນຫຍັງກ່ຽວກັບສິ່ງທີ່ທ່ານກຳລັງຫຼິ້ນ. ການເປີດແຜ່ນ SoundProof ຈະສົ່ງຊື່ສິລະປິນປັດຈຸບັນໄປຍັງເຊີເວີ SoundProof ເພື່ອສະແດງຜົນໂຫວດຫຼ້າສຸດ ແລະ ເພື່ອໂຫວດ. ເຊີເວີຈະແຍກຜູ້ໂຫວດດ້ວຍທີ່ຢູ່ IP, ດັ່ງນັ້ນການໂຫວດຂອງທ່ານອາດຈະສະແດງຜົນແຕກຕ່າງກັນໃນເຄືອຂ່າຍອື່ນ.
+
+ຖານຂໍ້ມູນນີ້ໄດ້ຮັບອະນຸຍາດພາຍໃຕ້ ODC Open Database License (ODbL). ລາຍການຈາກ Soul Over AI ໂດຍ xoundbyte ໄດ້ຮັບອະນຸຍາດພາຍໃຕ້ CC BY 4.0. ບໍ່ມີສ່ວນກ່ຽວຂ້ອງ ຫຼື ໄດ້ຮັບການຮັບຮອງໂດຍ SoundProof ຫຼື Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">ໃຊ້ເນື້ອເພງຈາກບຸກຄົນທີສາມ</string>
   <string name="morphe_music_lyrics_enabled_summary">ສະແດງເນື້ອເພງຈາກບໍລິການຂອງບຸກຄົນທີສາມ, ໂດຍຈະກັບໄປໃຊ້ເນື້ອເພງທີ່ຕິດຕັ້ງມາໃນຕົວເຄື່ອງເມື່ອບໍ່ພົບເນື້ອເພງ</string>
@@ -548,17 +633,17 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_rime_dict_bad_code">ລະຫັດຕ້ອງມີສອງ ຫຼື ສາມຕົວອັກສອນ, ເຊັ່ນ hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">ທີ່ຢູ່ຕ້ອງເລີ່ມດ້ວຍ https://</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">ຊື່ ແລະ ທີ່ຢູ່ ບໍ່ສາມາດມີເຄື່ອງໝາຍຂີດຕັ້ງໄດ້</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s ມີຕາຕະລາງຄຳສັບຢູ່ແລ້ວ</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s ຖືກອ່ານໂດຍ romanizer ທີ່ຕິດຕັ້ງມາໃນຕົວ ແລະ ບໍ່ສາມາດໃຊ້ລາຍການຄຳສັບໄດ້</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s ມີຕາຕະລາງຄຳສັບຢູ່ແລ້ວ</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s ຖືກອ່ານໂດຍ Romanizer ທີ່ຕິດຕັ້ງມາ ແລະ ບໍ່ສາມາດໃຊ້ລາຍການຄຳສັບໄດ້</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">ບໍ່ໄດ້ໃຊ້: ພາສານີ້ມີການອ່ານຂອງມັນເອງຢູ່ແລ້ວ, ດັ່ງນັ້ນ ໃຫ້ຍົກເລີກການໝາຍຕິກເພື່ອລຶບມັນອອກ</string>
-  <string name="morphe_music_lyrics_rime_dict_added">ເພີ່ມ %1$s ແລ້ວ - ໝາຍຕິກ ແລະ ແຕະ ບັນທຶກ ເພື່ອດາວໂຫຼດ</string>
+  <string name="morphe_music_lyrics_rime_dict_added">ເພີ່ມ %s ແລ້ວ - ໃຫ້ໝາຍຕິກ ແລະ ແຕະ ບັນທຶກ ເພື່ອດາວໂຫຼດ</string>
   <string name="morphe_music_lyrics_rime_dict_ready">ລາຍການຄຳສັບພ້ອມແລ້ວ</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">ລາຍການຄຳສັບພ້ອມແລ້ວ (%1$d ລາຍການ)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">ກຳລັງອ່ານລາຍການຄຳສັບ: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">ລາຍການຄຳສັບພ້ອມແລ້ວ (%s ລາຍການ)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">ກຳລັງອ່ານລາຍການຄຳສັບ: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">ການດາວໂຫຼດລາຍການຄຳສັບລົ້ມເຫຼວ - ແຕະ ບັນທຶກ ອີກຄັ້ງເພື່ອລອງໃໝ່</string>
   <string name="morphe_music_lyrics_clear_cache_title">ລຶບເນື້ອເພງທີ່ບັນທຶກໄວ້</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">ລຶບເນື້ອເພງຂະໜາດ %1$s MB ທີ່ເກັບໄວ້ໃນອຸປະກອນນີ້</string>
-  <string name="morphe_music_lyrics_clear_cache_done">ລຶບແລ້ວ %1$s MB</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">ລຶບເນື້ອເພງຂະໜາດ %s MB ທີ່ເກັບໄວ້ໃນອຸປະກອນນີ້</string>
+  <string name="morphe_music_lyrics_clear_cache_done">ລຶບແລ້ວ %s MB</string>
   <string name="morphe_music_token_dialog_get_token">ຮັບໂທເຄັນ</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"ວາງຄຸກກີ້ media-user-token ຈາກ music.apple.com
@@ -624,14 +709,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">ອະນຸຍາດໃຫ້ມີການອ່ານທີ່ບໍ່ແມ່ນອັກສອນລະຕິນຈາກແຫຼ່ງເນື້ອເພງ; ເມື່ອປິດ, ຈະເກັບໄວ້ສະເພາະຕົວອັກສອນລະຕິນ, ຕົວອັກສອນທີ່ມີເຄື່ອງໝາຍກຳກັບ ແລະ ຕົວເລກບອກສຽງວັນນະຍຸດ</string>
   <string name="morphe_music_lyrics_local_romanization_summary">ອ່ານແຕ່ລະຄຳຂອງເນື້ອເພງແບບກຳນົດເວລາ (ເປີດການຊິງຄ໌ຄຳ); ພາສາເກົາຫຼີບໍ່ຈຳເປັນຕ້ອງດາວໂຫຼດ; ສິບສີ່ລະບົບການຂຽນໃຊ້ການດາວໂຫຼດ CLDR ຮ່ວມກັນ; ຕົວອັກສອນ Han ຖືກອ່ານໂດຍ Rime Wordlist ເມື່ອຕາຕະລາງຄຳສັບຂອງມັນຄອບຄຸມພາສານັ້ນ</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">ກຳລັງດາວໂຫຼດວັດຈະນານຸກົມການອ່ານ…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">ການອ່ານພ້ອມແລ້ວ (%1$d ລາຍການ)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">ການອ່ານພ້ອມແລ້ວ (%s ລາຍການ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">ການດາວໂຫລດລົ້ມເຫຼວ - ໃຫ້ປິດ ແລະ ເປີດສິ່ງນີ້ອີກຄັ້ງເພື່ອລອງໃໝ່</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">ວັດຈະນານຸກົມແບບອອຟລາຍ</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">ພາສາຢີ່ປຸ່ນ (SudachiDict, ~75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">ຕົວອັກສອນຈີນ ແລະ ກວາງຕຸ້ງ (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">ຄຳສັບພາສາຈີນ (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">ການທັບສັບພາສາກຣີກ, ສະລາວິກ ຊີຣິລລິກ (ລວມທັງ ຣັດເຊຍ, ຢູເຄຣນ, ບູນກາຣີ, ເຊີບີບີອາ, ເບລາຣູສ, ມາເຊໂດເນຍ), 喬ージຍາ, ອາກເມນຍາ, ເຮບຣູ, ອາຣັບ, ອຳဟာຣິກ ແລະ ຊີຣີອັກ (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">ກຳລັງອ່ານ %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">ກຳລັງອ່ານ %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">ສະແດງປຸ່ມ Refresh</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">ແຕະເພື່ອປ່ຽນໄປຫາເນື້ອເພງອື່ນທີ່ເປັນໄປໄດ້; ແຕະຄ້າງໄວ້ເພື່ອຄົ້ນຫາເນື້ອເພງຕາມຊື່ເພງ ແລະ ສິລະປິນ</string>
   <string name="morphe_music_lyrics_search_dialog_title">ຄົ້ນຫາເນື້ອເພງ</string>
@@ -782,7 +867,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">ການຕັ້ງຄ່າບໍ່ສົມບູນ ຫຼື ຖືກປະຕິເສດໂດຍຜູ້ໃຫ້ບໍລິການ</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">ກຳລັງກວດສອບການເຊື່ອມຕໍ່…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: ເຊື່ອມຕໍ່ແລ້ວ! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: ການເຊື່ອມຕໍ່ລົ້ມເຫຼວ. ກະລຸນາກວດສອບການຕັ້ງຄ່າ.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: ການເຊື່ອມຕໍ່ລົ້ມເຫຼວ. ກະລຸນາກວດສອບການຕັ້ງຄ່າ.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">ກະລຸນາປ້ອນ API key ກ່ອນ</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">ທົດສອບການເຊື່ອມຕໍ່</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">ກຳລັງດຶງຂໍ້ມູນໂມເດລ…</string>

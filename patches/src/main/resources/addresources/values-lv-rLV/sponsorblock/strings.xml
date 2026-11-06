@@ -33,8 +33,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_toast_on_skip_summary">Rāda paziņojumu, ja segments tiek izlaists automātiski</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Izlaišanas paziņojuma ilgums</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Iestatiet, cik ilgi atsauksmes paziņojums paliek redzams</string>
-  <string name="morphe_sb_duration_1s">{zero:0 sekunde,one:1 sekunde,other:sekundes}</string>
-  <string name="morphe_sb_duration_2s">{zero:0 sekunde,one:1 sekunde,other:sekundes}</string>
+  <string name="morphe_sb_duration_1s">1 sekunde</string>
+  <string name="morphe_sb_duration_2s">2 sekundes</string>
   <string name="morphe_sb_duration_3s">3 sekundes</string>
   <string name="morphe_sb_duration_4s">4 sekundes</string>
   <string name="morphe_sb_duration_5s">5 sekundes</string>

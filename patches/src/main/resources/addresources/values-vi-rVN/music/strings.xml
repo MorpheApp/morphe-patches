@@ -150,6 +150,9 @@ Các bài hát đã tải sẽ xuất hiện ở đây"</string>
   <string name="morphe_music_downloads_previous">Trước</string>
   <string name="morphe_music_downloads_next">Tiếp</string>
   <string name="morphe_music_downloads_pause">Tạm dừng</string>
+  <string name="morphe_music_downloads_shuffle">Phát ngẫu nhiên</string>
+  <string name="morphe_music_downloads_repeat">Lặp lại</string>
+  <string name="morphe_music_downloads_minimize">Thu nhỏ</string>
   <string name="morphe_music_downloads_close">Đóng</string>
   <string name="morphe_music_downloads_delete">Xoá</string>
   <string name="morphe_music_downloads_delete_track">Xóa bản tải xuống</string>
@@ -220,6 +223,8 @@ Chúng sẽ được tải về lần lượt, việc này có thể mất nhi�
   <string name="morphe_music_downloads_playlist_download_no_network">Không có kết nối mạng</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">Đang chờ kết nối mạng…</string>
   <string name="morphe_music_downloads_playlist_download_stopped">Đã dừng sau %1$s trên %2$s. Nhấn Tải về lần nữa để tiếp tục</string>
+  <string name="morphe_music_downloads_mark_title">Đánh dấu các bài hát đã tải xuống</string>
+  <string name="morphe_music_downloads_mark_summary">Các bài hát đã được tải xuống sẽ hiển thị dấu đánh dấu trước chi tiết của chúng trong danh sách phát, album và kết quả tìm kiếm</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Giới thiệu</string>
@@ -340,6 +345,43 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Thêm bài hát đã chọn vào hàng đợi</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">Đã thêm vào hàng đợi</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">Thẻ danh sách phát</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Gắn thẻ danh sách phát và lọc Thư viện theo thẻ</string>
+  <string name="morphe_music_playlist_tags_title">Bật thẻ danh sách phát</string>
+  <string name="morphe_music_playlist_tags_summary">Thêm mục Thẻ vào menu của danh sách phát và nút lọc Thẻ bên cạnh nút sắp xếp của Thư viện</string>
+  <string name="morphe_music_playlist_tags_manage_title">Quản lý thẻ danh sách phát</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Tạo, đổi tên và xóa thẻ, cũng như gắn thẻ cho các danh sách phát trong Thư viện của bạn</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">Thẻ</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">Không có thẻ</string>
+  <string name="morphe_music_playlist_tags_filter_button">Thẻ</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">Thẻ: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">Thẻ (%s bị ẩn)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">Thẻ cho %s</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">Thẻ mới</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 danh sách phát</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s danh sách phát</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">Thẻ có tên %s đã tồn tại</string>
+  <string name="morphe_music_playlist_tags_filter_title">Lọc theo thẻ</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">Chỉ hiển thị</string>
+  <string name="morphe_music_playlist_tags_filter_all">Tất cả danh sách phát</string>
+  <string name="morphe_music_playlist_tags_filter_visible">Các thẻ hiển thị</string>
+  <string name="morphe_music_playlist_tags_manage">Quản lý</string>
+  <string name="morphe_music_playlist_tags_none">Chưa có thẻ nào. Nhấn giữ một danh sách phát và chọn Thẻ để tạo mới</string>
+  <string name="morphe_music_playlist_tags_section_tags">Thẻ</string>
+  <string name="morphe_music_playlist_tags_section_playlists">Danh sách phát</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Hãy mở Thư viện một lần để các danh sách phát xuất hiện ở đây</string>
+  <string name="morphe_music_playlist_tags_new_tag">Thẻ mới</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">Chỉnh sửa thẻ</string>
+  <string name="morphe_music_playlist_tags_rename">Đổi tên</string>
+  <string name="morphe_music_playlist_tags_delete">Xoá</string>
+  <string name="morphe_music_playlist_tags_hidden">Đã ẩn</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Ẩn nút Truyền</string>
   <string name="morphe_music_hide_history_button_title">Ẩn nút Lịch sử</string>
@@ -508,6 +550,49 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_scrobbling_about_summary">"Scrobble giúp tự động đồng bộ lịch sử nghe nhạc từ YouTube Music lên Last.fm hoặc ListenBrainz
 
 Để đảm bảo scrobbling vẫn được đồng bộ hóa khi phát nhạc trong nền, hãy đặt mức sử dụng pin của YouTube Music thành \"Không hạn chế\""</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">Bỏ qua các bản nhạc của những nghệ sĩ mà cộng đồng báo cáo là AI</string>
+  <string name="morphe_music_soundproof_show_button_title">Hiển thị nút SoundProof</string>
+  <string name="morphe_music_soundproof_show_button_summary">Hiển thị một nút trên thanh trên cùng của trình phát để xem và bình chọn cùng cộng đồng cho nghệ sĩ hiện tại</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">Bỏ qua nghệ sĩ AI</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">Tự động bỏ qua các bản nhạc có nghệ sĩ đạt ngưỡng AI bên dưới</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">Hiện thông báo bỏ qua</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">Hiển thị thông báo khi một bản nhạc bị tự động bỏ qua</string>
+  <string name="morphe_music_soundproof_threshold_title">Ngưỡng phát hiện</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">Số phiếu AI tối thiểu</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Một nghệ sĩ được coi là AI khi có ít nhất tỷ lệ phiếu bầu này cho rằng là AI</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">Số phiếu bầu tối thiểu</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">Các nghệ sĩ có ít lượt bình chọn hơn mức này sẽ không bao giờ bị bỏ qua</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">Đã bỏ qua %1$s (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">Số lượt bình chọn SoundProof cho nghệ sĩ này</string>
+  <string name="morphe_music_soundproof_sheet_verified">Đã xác minh</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% con người</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 lượt bình chọn</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s lượt bình chọn</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s con người</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s AI</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">Chưa có lượt bình chọn nào cho nghệ sĩ này</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">Cơ sở dữ liệu SoundProof hiện chưa khả dụng</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">Dữ liệu đang được tải xuống trong nền. Không có bản nhạc nào bị bỏ qua cho đến khi dữ liệu khả dụng.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">Bình chọn từ cộng đồng từ cơ sở dữ liệu SoundProof</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">Người</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">Bình chọn đã đóng: điều phối viên SoundProof đã kiểm tra nghệ sĩ này</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">Không thể kết nối với SoundProof. Các lượt bình chọn được lấy từ cơ sở dữ liệu hàng ngày và hiện không thể bình chọn.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">Bình chọn SoundProof thất bại</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"Dữ liệu nghệ sĩ đến từ SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), được tải xuống một lần mỗi ngày. Việc bỏ qua sẽ không gửi bất kỳ thông tin nào về nội dung bạn đang phát. Khi mở trang SoundProof, tên nghệ sĩ hiện tại sẽ được gửi đến máy chủ SoundProof để hiển thị các lượt bình chọn mới nhất và để bình chọn. Máy chủ phân biệt người bình chọn bằng địa chỉ IP, vì vậy lượt bình chọn của bạn có thể hiển thị khác nhau trên một mạng khác.
+
+Cơ sở dữ liệu được cấp phép theo Giấy phép Cơ sở Dữ liệu Mở ODC (ODbL). Các mục từ Soul Over AI của xoundbyte được cấp phép theo CC BY 4.0. Không liên kết với hoặc được xác nhận bởi SoundProof hoặc Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Dùng lời nhạc từ bên thứ ba</string>
   <string name="morphe_music_lyrics_enabled_summary">Hiển thị lời bài hát từ dịch vụ bên thứ ba. Nếu không thấy, lời bài hát có sẵn sẽ được hiển thị</string>
@@ -548,27 +633,29 @@ Cột đầu tiên là từ, cột thứ hai là cách đọc; các cột và d�
   <string name="morphe_music_lyrics_rime_dict_bad_code">Mã phải là hai hoặc ba chữ cái, như hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">Địa chỉ phải bắt đầu bằng https://</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">Tên và địa chỉ không được chứa gạch dọc</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s đã có bảng từ</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s được đọc bởi bộ latin hóa tích hợp và không thể nhận danh sách từ</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s đã có bảng từ</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s được đọc bởi trình romanize tích hợp và không thể nhận danh sách từ</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">Không sử dụng: ngôn ngữ này đã có âm đọc riêng, vì vậy hãy bỏ chọn nó để xóa</string>
-  <string name="morphe_music_lyrics_rime_dict_added">Đã thêm %1$s - hãy đánh dấu nó và nhấn Lưu để tải xuống</string>
+  <string name="morphe_music_lyrics_rime_dict_added">Đã thêm %s - hãy tick vào và nhấn Lưu để tải xuống</string>
   <string name="morphe_music_lyrics_rime_dict_ready">Danh sách từ đã sẵn sàng</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">Danh sách từ đã sẵn sàng (%1$d mục)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">Xây dựng danh sách từ: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Danh sách từ đã sẵn sàng (%s mục)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Đang đọc danh sách từ: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">Tải xuống danh sách từ thất bại - hãy nhấn Lưu lại để thử lại</string>
   <string name="morphe_music_lyrics_clear_cache_title">Xóa lời đã lưu</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Xóa %1$s MB lời bài hát được giữ trên thiết bị này</string>
-  <string name="morphe_music_lyrics_clear_cache_done">Đã xóa %1$s MB</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Xóa %s MB lời bài hát được lưu trên thiết bị này</string>
+  <string name="morphe_music_lyrics_clear_cache_done">Đã xóa %s MB</string>
   <string name="morphe_music_token_dialog_get_token">Lấy mã truy cập</string>
   <string name="morphe_music_apple_music_token_title">Mã thông tin người dùng Apple Music</string>
-  <string name="morphe_music_apple_music_token_dialog_instruction">"Dán cookie media-user-token từ music.apple.com
+  <string name="morphe_music_apple_music_token_dialog_instruction">"Dán cookie media-user-token từ music.apple.com.
 
 Các bước:
-1. […] Sao chép giá trị của \"media-user-token\""</string>
+1. Đăng nhập tại music.apple.com
+2. Mở DevTools → Application → Cookies → music.apple.com
+3. Sao chép giá trị của \"media-user-token\""</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: đã lưu media-user-token</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: đã xóa media-user-token</string>
   <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: token media-user không hợp lệ - vui lòng kiểm tra và thử lại</string>
-  <string name="morphe_music_spotify_token_title">Spotify […] Sao chép giá trị \"sp_dc\"</string>
+  <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Dán cookie sp_dc từ Spotify.
 
 Các bước:
@@ -576,10 +663,10 @@ Các bước:
 2. Mở DevTools → Application → Cookies → open.spotify.com
 3. Sao chép giá trị của \"sp_dc\""</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: đã lưu sp_dc</string>
-  <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc […] Nếu không có, Lyrically sẽ được dùng làm phương án dự phòng.</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify: đã xóa sp_dc</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc không hợp lệ - vui lòng kiểm tra và thử lại</string>
   <string name="morphe_music_apple_token_optional_hint">Token Apple Music là tùy chọn. Nếu không có nó, Lyrically sẽ được dùng làm phương án dự phòng.</string>
-  <string name="morphe_music_deezer_arl_title">Deezer […] Sao chép giá trị \"arl\"</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Dán cookie arl từ Deezer.
 
 Các bước:
@@ -589,15 +676,22 @@ Các bước:
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: đã lưu arl</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl không hợp lệ — vui lòng thử lại</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl không hợp lệ - vui lòng kiểm tra và thử lại</string>
-  <string name="morphe_music_musixmatch_token_title">Musixmatch […] Sao chép giá trị token người dùng</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Chỉ thêm token để sử dụng tài khoản của riêng bạn. Token phải lấy từ ứng dụng Musixmatch Android: các token sao chép từ musixmatch.com thuộc về trình khách máy tính để bàn đã ngừng hoạt động và API sẽ từ chối chúng.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch hoạt động mà không cần token, vì vậy trường này có thể để trống.</string>
-  <string name="morphe_music_musixmatch_token_dialog_hint">Token người dùng không hợp lệ — vui lòng thử lại</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">token người dùng</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: đã lưu token người dùng</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: đã xóa token người dùng</string>
   <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: token người dùng không hợp lệ - vui lòng kiểm tra và thử lại</string>
-  <string name="morphe_music_youtube_cookies_title">YouTube Music […] Sao chép giá trị \"cookie\"</string>
-  <string name="morphe_music_youtube_cookies_dialog_instruction">"cookie"</string>
+  <string name="morphe_music_youtube_cookies_title">Cookie YouTube</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"Dán cookie YouTube của bạn để truy vấn phụ đề và văn bản định giờ từ YouTube.
+
+Các bước:
+1. Mở youtube.com trong trình duyệt và đăng nhập
+2. Mở DevTools (F12) → Application → Cookies → youtube.com
+3. Sao chép toàn bộ chuỗi cookie (các cặp khóa=giá trị phân tách bằng dấu chấm phẩy)
+
+Cookie bắt buộc: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">cookie không hợp lệ — vui lòng thử lại</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: đã xóa cookie</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: cookies không hợp lệ - vui lòng kiểm tra và thử lại</string>
@@ -615,14 +709,14 @@ Các bước:
   <string name="morphe_music_lyrics_allow_transliteration_summary">Cho phép các âm đọc không phải La-tinh từ nguồn lời bài hát; khi tắt, chỉ giữ lại các chữ cái La-tinh, chữ cái có dấu thanh và chữ số thanh</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Đọc từng từ của lời bài hát có thời gian (đồng bộ từ trên); tiếng Hàn không cần tải xuống; mười bốn kịch bản chia sẻ một lần tải xuống CLDR; ký tự Hán được đọc bởi Danh sách từ Rime khi bảng từ của nó bao phủ ngôn ngữ đó</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">Đang tải xuống từ điển âm đọc…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Đã sẵn sàng (%1$d mục)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Cách đọc đã sẵn sàng (%s mục)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Tải xuống thất bại - hãy tắt và bật lại để thử lại</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Từ điển ngoại tuyến</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">Tiếng Nhật (SudachiDict, ~75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Ký tự Trung Quốc và Quảng Đông (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Từ tiếng Trung (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Phiên âm ngôn ngữ Hy Lạp, Cyrillic Slavơ (bao gồm Nga, Ukraina, Bungari, Serbia, Belarus, Macedonia), Georgia, Armenia, Hebrew, Ả Rập, Amharic và Syriac (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Đang đọc %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Đang đọc %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Hiển thị nút Làm mới</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Chạm để chuyển sang ứng viên lời tiếp theo; nhấn giữ để tìm kiếm lời theo tên bài hát và nghệ sĩ</string>
   <string name="morphe_music_lyrics_search_dialog_title">Tìm kiếm lời bài hát</string>
@@ -773,7 +867,7 @@ Lời bài hát đến từ các dịch vụ bên thứ ba không liên quan, t�
   <string name="morphe_music_lyrics_ai_config_status_invalid">Cài đặt chưa đầy đủ hoặc bị nhà cung cấp từ chối</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Đang kiểm tra kết nối…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Đã kết nối! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Kết nối thất bại. Hãy kiểm tra cài đặt.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Kết nối thất bại. Hãy kiểm tra cài đặt.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Nhập khóa API trước</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Kiểm tra kết nối</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Đang tải các mô hình…</string>

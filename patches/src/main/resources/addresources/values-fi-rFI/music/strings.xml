@@ -150,6 +150,9 @@ Ladatut kappaleet näkyvät tässä"</string>
   <string name="morphe_music_downloads_previous">Edellinen</string>
   <string name="morphe_music_downloads_next">Seuraava</string>
   <string name="morphe_music_downloads_pause">Keskeytä</string>
+  <string name="morphe_music_downloads_shuffle">Sekoita</string>
+  <string name="morphe_music_downloads_repeat">Toista</string>
+  <string name="morphe_music_downloads_minimize">Pienennä</string>
   <string name="morphe_music_downloads_close">Sulje</string>
   <string name="morphe_music_downloads_delete">Poista</string>
   <string name="morphe_music_downloads_delete_track">Poista lataus</string>
@@ -220,6 +223,8 @@ Ne ladataan yksi kerrallaan, mikä voi kestää kauan ja vaatii noin %3$s vapaat
   <string name="morphe_music_downloads_playlist_download_no_network">Ei verkkoyhteyttä</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">Odotetaan verkkoyhteyttä…</string>
   <string name="morphe_music_downloads_playlist_download_stopped">Pysähtyi kohdassa %1$s / %2$s. Napauta Lataa jatkaaksesi</string>
+  <string name="morphe_music_downloads_mark_title">Merkitse ladatut kappaleet</string>
+  <string name="morphe_music_downloads_mark_summary">Jo ladatut kappaleet on merkitty soittolistoissa, albumeissa ja hakutuloksissa</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Tietoja</string>
@@ -340,6 +345,43 @@ SABR-toisto (videovirtojen huijaus pois päältä)"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Lisää valittu kappale jonoon</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">Lisätty jonoon</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">Soittolistojen tunnisteet</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Tunnista soittolistoja ja suodata kirjastoa tunnisteiden avulla</string>
+  <string name="morphe_music_playlist_tags_title">Ota soittolistojen tunnisteet käyttöön</string>
+  <string name="morphe_music_playlist_tags_summary">Lisää Tunnisteet-kohta soittolistojen valikkoon ja Tunnisteet-suodatuspainike kirjaston lajittelupainikkeen viereen</string>
+  <string name="morphe_music_playlist_tags_manage_title">Hallitse soittolistojen tunnisteita</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Luo, nimeä uudelleen ja poista tunnisteita sekä merkitse kirjastossasi näkyviä soittolistoja</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">Tunnisteet</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">Ei tunnisteita</string>
+  <string name="morphe_music_playlist_tags_filter_button">Tunnisteet</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">Tunniste: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">Tunnisteet (%s piilotettu)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">Tunnisteet kohteelle %s</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">Uusi tunniste</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 soittolista</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s soittolistaa</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">Tunniste nimeltä %s on jo olemassa</string>
+  <string name="morphe_music_playlist_tags_filter_title">Suodata tunnisteen mukaan</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">Näytä vain</string>
+  <string name="morphe_music_playlist_tags_filter_all">Kaikki soittolistat</string>
+  <string name="morphe_music_playlist_tags_filter_visible">Näkyvät tunnisteet</string>
+  <string name="morphe_music_playlist_tags_manage">Hallitse</string>
+  <string name="morphe_music_playlist_tags_none">Ei vielä tunnisteita. Paina soittolistaa pitkään ja valitse Tunnisteet luodaksesi sellaisen</string>
+  <string name="morphe_music_playlist_tags_section_tags">Tunnisteet</string>
+  <string name="morphe_music_playlist_tags_section_playlists">Soittolistat</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Avaa kirjasto kerran, jotta soittolistasi näkyvät tässä</string>
+  <string name="morphe_music_playlist_tags_new_tag">Uusi tunniste</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">Muokkaa tunnistetta</string>
+  <string name="morphe_music_playlist_tags_rename">Nimeä uudelleen</string>
+  <string name="morphe_music_playlist_tags_delete">Poista</string>
+  <string name="morphe_music_playlist_tags_hidden">Piilotettu</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Piilota Cast-painike</string>
   <string name="morphe_music_hide_history_button_title">Piilota historia-painike</string>
@@ -508,6 +550,49 @@ SABR-toisto (videovirtojen huijaus pois päältä)"</string>
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling synkronoi YouTube Music -käyttösi automaattisesti Last.fm- tai ListenBrainz-profiiliisi.
 
 Varmistaaksesi, että scrobbling synkronoidaan taustatoiston aikana, varmista, että YouTube Musiikin sovelluksen akun käyttö on asetettu arvoon \"Rajoittamaton\"."</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">Ohita sellaisten artistien kappaleet, jotka yhteisö on raportoinut tekoälyksi</string>
+  <string name="morphe_music_soundproof_show_button_title">Näytä SoundProof-painike</string>
+  <string name="morphe_music_soundproof_show_button_summary">Näyttää soittimen yläpalkissa painikkeen, jolla voi tarkastella ja antaa yhteisön ääniä nykyiselle artistille</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">Ohita tekoälyartistit</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">Ohittaa automaattisesti kappaleet, joiden artisti saavuttaa alla olevan tekoäly-kynnysarvon</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">Näytä ohitusilmoitus</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">Näyttää ilmoituksen, kun kappale ohitetaan automaattisesti</string>
+  <string name="morphe_music_soundproof_threshold_title">Tunnistuskynnys</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">Vähimmäismäärä tekoälyääniä</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Artisti luokitellaan tekoälyksi, kun vähintään tämä osuus äänistä on tekoälyä</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">Äänten vähimmäismäärä</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">Artisteja, joilla on vähemmän ääniä kuin tämä, ei koskaan ohiteta</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">Ohitettu %1$s (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">SoundProof-äänet tälle artistille</string>
+  <string name="morphe_music_soundproof_sheet_verified">Vahvistettu</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% tekoäly</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% ihminen</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 ääni</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s ääntä</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s ihminen</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s tekoäly</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">Tälle artistille ei ole vielä annettu ääniä</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">SoundProof-tietokanta ei ole vielä saatavilla</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">Sitä ladataan taustalla. Mitään kappaletta ei ohiteta, ennen kuin se on saatavilla.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">Yhteisön äänet SoundProof-tietokannasta</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">Ihminen</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">Äänestys on suljettu: SoundProof-moderaattori on tarkistanut tämän artistin</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">Yhteys SoundProofiin ei onnistunut. Äänet ovat päivittäisestä tietokannasta, eikä äänestäminen ole käytettävissä.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">SoundProof-äänestys epäonnistui</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"Artistitiedot tulevat SoundProof-Dumps-palvelusta (github.com/NuclearBlox/SoundProof-Dumps), josta tiedot ladataan kerran päivässä. Ohittaminen ei lähetä tietoja siitä, mitä kuuntelet. SoundProof-taulukon avaaminen lähettää nykyisen artistin nimen SoundProof-palvelimelle tuoreiden äänien näyttämiseksi ja äänestämistä varten. Palvelin tunnistaa äänestäjät IP-osoitteen perusteella, joten äänesi voi näkyä eri tavalla toisessa verkossa.
+
+Tietokanta on lisensoitu ODC Open Database License (ODbL) -lisenssillä. xoundbyten Soul Over AI -merkinnät on lisensoitu CC BY 4.0 -lisenssillä. Ei liity SoundProofiin tai Soul Over AI:hin, eikä niillä ole tämän tukea."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Käytä kolmannen osapuolen lyriikoita</string>
   <string name="morphe_music_lyrics_enabled_summary">Näyttää lyriikoita kolmannen osapuolen palvelusta. Jos lyriikoita ei löydy, käytetään sisäänrakennettuja lyriikoita.</string>
@@ -548,17 +633,17 @@ Ensimmäinen sarake on sana, toinen sen ääntäminen; ylimääräiset sarakkeet
   <string name="morphe_music_lyrics_rime_dict_bad_code">Koodin tulee olla kaksi tai kolme kirjainta, kuten hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">Osoitteen tulee alkaa https://</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">Nimessä ja osoitteessa ei saa olla pystyviivaa</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s: Sanataulukko on jo olemassa</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s: Sisäinen romanisaatio käyttää tätä eikä se voi vastaanottaa sanaluetteloa</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s:lla on jo sanataulukko</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">Sisäänrakennettu romanisoija lukee %s:n, eikä se voi ottaa sanalistaa</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">Ei käytössä: tällä kielellä on jo oma lukemansa, joten voit poistaa sen valinnasta</string>
-  <string name="morphe_music_lyrics_rime_dict_added">Lisätty %1$s – valitse se ja napauta Tallenna datan lataamiseksi</string>
+  <string name="morphe_music_lyrics_rime_dict_added">Lisätty %s - valitse se ja napauta Tallenna ladataksesi sen</string>
   <string name="morphe_music_lyrics_rime_dict_ready">Sanaluettelot ovat valmiita</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">Sanaluettelot valmiit (%1$d kpl)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">Lukemien luominen: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Sanalistat valmiit (%s merkintää)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Luetaan sanalistaa: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">Sanaluettelon lataus epäonnistui – yritä uudelleen napauttamalla Tallenna</string>
   <string name="morphe_music_lyrics_clear_cache_title">Tyhjennä tallennetut sanat</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Poista laitteella säilytetyt %1$s Mt sanoituksia välimuistista</string>
-  <string name="morphe_music_lyrics_clear_cache_done">Vapautettu %1$s Mt</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Poista tälle laitteelle tallennetut %s MB sanoituksia</string>
+  <string name="morphe_music_lyrics_clear_cache_done">Tyhjennetty %s MB</string>
   <string name="morphe_music_token_dialog_get_token">Hae tunnus.</string>
   <string name="morphe_music_apple_music_token_title">Apple Music -median käyttäjätunnus</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Liitä media-user-token-eväste music.apple.comista.
@@ -577,11 +662,11 @@ Vaiheet:
 1. Kirjaudu sisään osoitteessa open.spotify.com
 2. Avaa DevTools → Sovellus → Evästeet → open.spotify.com
 3. Kopioi \"sp_dc\":n arvo"</string>
-  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Ilman sitä Lyricallyä käytetään varavaihtoehtona.</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc tallennettu.</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc tyhjennetty</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: virhetön sp_dc - tarkista ja yritä uudelleen</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Music -token on valinnainen. Ilman sitä käytetään Lyricallyä varavaihtoehtona.</string>
-  <string name="morphe_music_deezer_arl_title">Deezer […] Kopioi \"arl\"-arvo.</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Liitä arl-eväste Deezeristä.
 
 Vaiheet:
@@ -591,17 +676,22 @@ Vaiheet:
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl tallennettu.</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Virheellinen ARL, yritä uudelleen.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: virhetön arl - tarkista ja yritä uudelleen</string>
-  <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopioi käyttäjätunnuksen arvo.</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Lisää token vain käyttääksesi omaa tiliäsi. Sen on oltava peräisin Musixmatchin Android-sovelluksesta: musixmatch.com-sivustolta kopioidut tokenit kuuluvat käytöstä poistetulle työpöytäsovellukselle, eikä API hyväksy niitä.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch toimii ilman tokenia, joten tämä kenttä voidaan jättää tyhjäksi.</string>
-  <string name="morphe_music_musixmatch_token_dialog_hint">Virheellinen käyttäjätunnus, yritä uudelleen.</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">käyttäjätunnus</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: käyttäjäntunnus tallennettu</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: käyttäjäntunnus tyhjennetty</string>
   <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: virhetön käyttäjätunnus - tarkista ja yritä uudelleen</string>
   <string name="morphe_music_youtube_cookies_title">YouTuben evästeet.</string>
-  <string name="morphe_music_youtube_cookies_dialog_instruction">"Liitä […] Kopioi koko evästerivi (avain=arvo-parit puolipisteillä erotettuina)
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"Liitä YouTube-evästeesi, jotta tekstitykset ja ajastettu teksti voidaan hakea YouTubesta.
 
-Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO."</string>
+Vaiheet:
+1. Avaa youtube.com selaimessa ja kirjaudu sisään
+2. Avaa DevTools (F12) → Application → Cookies → youtube.com
+3. Kopioi koko evästerivi (avain=arvo-parit puolipisteillä erotettuina)
+
+Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: evästeet tallennettu.</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: evästeet tyhjennetty.</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: virheelliset evästeet - tarkista ja yritä uudelleen</string>
@@ -619,15 +709,15 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_allow_transliteration_summary">Salli latinankirjaimisten ulkopuoliset lukemat sanoituslähteestä; jos pois päältä, pidä vain latinan aakkoset, aksentit äänneasut ja tonivärit</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Lukee ajastetun sanoituksen jokaisen sanan (sanarytmitys käytössä); Koreaa ei tarvitse ladata; neljäntoista kirjoitusjärjestelmän yhteinen CLDR-lataus; Han-merkit lukee Rime-sanaluettelo, kun sen sanataulukko kattaa kielen</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">Ladataan lukemisanastoja…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Lukemiset valmiit (%1$d merkkiä)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Lukuohjeet valmiit (%s merkintää)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Lataus epäonnistui - kytke tämä pois päältä ja kytkä uudelleen yrittääksesi uudelleen</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Offline-sanasto</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japani (SudachiDict, n. 75 Mt)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Kiina ja kantoni (UniDict, n. 8 Mt)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kiinan sanat (pinyin-pro, n. 17 Mt)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Kreikka, slaavilaiset kyrilliset (myös venäjä, ukrainaksi, bulgariksi, serbiaksi, belorussiksi, makedoniksi), georgia, armenia, heprea, arabia, amhara ja syrian transkriptio (CLDR, n. 0,5 Mt)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Äänteet %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_show_refresh_button_title">Napauta vaihtaaksesi seuraavaan sanoitusehdotukseen; pitkä painallus päivittää.</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Luetaan %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_show_refresh_button_title">Näytä Päivitä-painike</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Napauta vaihtaaksesi seuraavaan sanojen ehdokkaaseen; Paina pitkänä hakeaksesi sanoja kappaleen nimen ja artistin mukaan</string>
   <string name="morphe_music_lyrics_search_dialog_title">Hae sanoituksia</string>
   <string name="morphe_music_lyrics_search_title_hint">Kappaleen nimi</string>
@@ -777,7 +867,7 @@ Laulutekstit tulevat kolmannen osapuolen palveluista, jotka eivät ole Morphen a
   <string name="morphe_music_lyrics_ai_config_status_invalid">Asetukset ovat puutteellisia tai provider hylkäsi ne</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Tarkistetaan yhteyttä…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Yhdistetty! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Yhteys epäonnistui. Tarkista asetukset.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Yhteys epäonnistui. Tarkista asetukset.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Syötä API-avaime ensiksi</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Testaa yhteys</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Haetaan malleja…</string>

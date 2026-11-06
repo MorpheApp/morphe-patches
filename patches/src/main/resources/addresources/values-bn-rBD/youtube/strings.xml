@@ -341,11 +341,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">কিওয়ার্ডের দ্বন্দ্বপূর্ণ ঘোষণা আছে: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">কিওয়ার্ড খুব ছোট এবং উদ্ধৃতি প্রয়োজন: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">কিওয়ার্ড সমস্ত ভিডিও লুকিয়ে রাখবে: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• الرئيسية: %s
-• الاشتراكات: %s
-• البحث: %s
-• التعليقات: %s
-• الإجمالي: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• হোম: %1$s
+• সাবস্ক্রিপশন: %2$s
+• সার্চ: %3$s
+• কমেন্ট: %4$s
+• মোট: %5$s"</string>
   <string name="morphe_hide_stats_category_title">إحصائيات</string>
   <string name="morphe_hide_stats_hidden_24h_title">مقاطع الفيديو المخفية، آخر 24 ساعة</string>
   <string name="morphe_hide_stats_hidden_all_title">مقاطع الفيديو المخفية، على الإطلاق</string>
@@ -357,9 +357,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_warnlist_category_title">ওয়ার্ন লিস্ট: মাঝারি আত্মবিশ্বাস</string>
   <string name="morphe_hide_aislist_hide_home_title">হোমে ভিডিও লুকান</string>
   <string name="morphe_hide_aislist_hide_search_title">অনুসন্ধানে ভিডিও লুকান</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• হোম: %s
-• অনুসন্ধান: %s
-• মোট: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• হোম: %1$s
+• সার্চ: %2$s
+• মোট: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">ব্লকlist চ্যানেল</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">ওয়ার্নlist চ্যানেল</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">চ্যানেল লোড করার জন্য একটি ফিল্টার সক্রিয় করুন</string>
@@ -562,7 +562,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">এক্সপোর্ট ফোল্ডার %s পাওয়া যায়নি</string>
   <string name="morphe_export_download_flyout_title">ডিভাইসে এক্সপোর্ট করুন</string>
   <string name="morphe_export_download_started">ভিডিও এক্সপোর্ট করা হচ্ছে</string>
-  <string name="morphe_export_download_progress">ভিডিও এক্সপোর্ট করা হচ্ছে: %d%%</string>
+  <string name="morphe_export_download_progress">ভিডিও এক্সপোর্ট করা হচ্ছে: %s%%</string>
   <string name="morphe_export_download_notification_channel">ভিডিও এক্সপোর্ট</string>
   <string name="morphe_export_download_saved">ভিডিওটি %s-এ এক্সপোর্ট করা হয়েছে</string>
   <string name="morphe_export_download_failed">ভিডিওটি এক্সপোর্ট করা সম্ভব হয়নি</string>
@@ -1013,7 +1013,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_navigation_bar_glass_size_height">উচ্চতা</string>
   <string name="morphe_navigation_bar_glass_size_width">সর্বোচ্চ প্রস্থ</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">বাটন স্পেসিং</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">প্রদর্শিত বাটন: %2$d এর মধ্যে %1$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">বোতাম দেখানো হয়েছে: %2$s এর মধ্যে %1$s</string>
   <string name="morphe_toolbar_screen_title">টুলবার</string>
   <string name="morphe_toolbar_screen_summary">টুলবারে কোন উপাদানগুলো প্রদর্শিত হবে তা নির্বাচন করুন</string>
   <string name="morphe_hide_toolbar_chat_button_title">চ্যাট বাটন লুকিয়ে রাখুন</string>
@@ -1667,7 +1667,7 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_series_tracker_identity_unavailable">Incognito মোডে বা YouTube বর্তমান অ্যাকাউন্ট অবস্থা লোড করার আগে ট্র্যাকিং সক্রিয় করা যাবে না। Home তে ফিরে যান এবং আবার চেষ্টা করুন। সাইন-ইনের কোনো প্রয়োজন নেই</string>
   <string name="morphe_series_tracker_enable">স্থানীয় ট্র্যাকিং সক্রিয় করুন</string>
   <string name="morphe_series_tracker_tracking_paused">অগ্রগতি রেকর্ডিং বন্ধ আছে</string>
-  <string name="morphe_series_tracker_resume_at">%1$s তে রিজুম করুন</string>
+  <string name="morphe_series_tracker_resume_at">%s এ পুনরায় শুরু করুন</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s এপিসোড দেখা হয়েছে</string>
   <string name="morphe_series_tracker_episode_position">এপিসোড %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">%3$s এর মধ্যে এপিসোড %1$s-%2$s</string>
@@ -1677,7 +1677,7 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_series_tracker_plan_changed">একটি অধ্যায় নির্বাচন করুন</string>
   <string name="morphe_series_tracker_plan_caught_up">আপডেটেড</string>
   <string name="morphe_series_tracker_plan_none">কোনো প্লেযোগ্য অধ্যায় নেই</string>
-  <string name="morphe_series_tracker_saved_position">সংরক্ষিত ভিডিও · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">সংরক্ষিত ভিডিও · %s</string>
   <string name="morphe_series_tracker_follow">সিরিজ অনুসরণ করুন</string>
   <string name="morphe_series_tracker_view_series">সিরিজ দেখুন</string>
   <string name="morphe_series_tracker_continue">এগিয়ে যান</string>
@@ -1688,7 +1688,7 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_series_tracker_undo">পূর্বাবস্থা</string>
   <string name="morphe_series_tracker_enable_short">সক্রিয় করুন</string>
   <string name="morphe_series_tracker_new_episode">১টি নতুন অধ্যায়</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s নতুন এপিসোড</string>
+  <string name="morphe_series_tracker_new_episodes">%s টি নতুন এপিসোড</string>
   <string name="morphe_series_tracker_record_short">এই ডিভাইসে অগ্রগতি রেকর্ড করুন</string>
   <string name="morphe_series_tracker_follow_consent">"আপনার সিরিজ এবং অগ্রগতি এই ডিভাইসে স্থায়ী হয়, YouTube অ্যাকাউন্ট জুড়ে শেয়ার করা হয়। YouTube ইতিহাসের নিয়ন্ত্রণ এদের পরিবর্তন করে না। সিরিজ মেনু থেকে অগ্রগতি মুছে ফেলুন।
 
@@ -1718,12 +1718,12 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_series_tracker_hide_watched">দেখা হয়েছে লুকান</string>
   <string name="morphe_series_tracker_watched_on_advance">পরবর্তী এপিসোডে যাওয়ার সময় দেখা হয়েছে হিসেবে চিহ্নিত করুন</string>
   <string name="morphe_series_tracker_watch_previous">পূর্ববর্তী অধ্যায়গুলো দেখা হয়েছে হিসাবে চিহ্নিত করুন</string>
-  <string name="morphe_series_tracker_order_starts_with">শুরু হয়: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">শুরু হয়: %s</string>
   <string name="morphe_series_tracker_episode_order">অধ্যায়ের ক্রম</string>
   <string name="morphe_series_tracker_playlist_order">প্লেলিস্টের ক্রম</string>
   <string name="morphe_series_tracker_reverse_order">প্লেলিস্টের ক্রম উল্টো করুন</string>
-  <string name="morphe_series_tracker_view_count">%1$s ভিউ</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s ভিউ</string>
+  <string name="morphe_series_tracker_view_count">%s বার দেখা হয়েছে</string>
+  <string name="morphe_series_tracker_view_count_one">%s বার দেখা হয়েছে</string>
   <string name="morphe_series_tracker_completion_title">অধ্যায়গুলো দেখা হয়েছে হিসাবে চিহ্নিত করুন</string>
   <string name="morphe_series_tracker_completion_summary">সর্বোচ্চ ৯০ সেকেন্ড অবশিষ্ট থাকলে অন্তত %1$s%% দেখা হয়েছে, অথবা %2$s সেকেন্ড অবশিষ্ট</string>
   <string name="morphe_series_tracker_completion_explanation">থ্রেশহোল্ডের যেকোনোর পরে স্বয়ংক্রিয়ভাবে এপিসোডটি দেখা হয়েছে হিসাবে চিহ্নিত করুন। শতাংশের নিয়মের জন্য আরও ৯০ সেকেন্ড অবশিষ্ট থাকা উচিত নয়, তাই দীর্ঘ এপিসোডের শেষ অংশ বাদ দেওয়া হয় না। অবশিষ্ট-সময়ের নিয়ম এক মিনিটের বেশি সময়ের ভিডিওগুলির জন্য প্রযোজ্য; এটি নিষ্ক্রিয় করতে এটি 0 তে সেট করুন। পরিবর্তনগুলি ভবিষ্যতের অগ্রগতি আপডেটগুলিতে প্রযোজ্য। ম্যানুয়াল দেখা হয়েছে/অদৃশ্য চয়েজ ধরে রাখা হবে</string>
@@ -1743,7 +1743,7 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_series_tracker_backup_restore">ব্যাকআপ পুনরুদ্ধার করুন</string>
   <string name="morphe_series_tracker_backup_preview">%1$s সিরিজ যোগ করুন। আপনার লাইব্রেরিতে already থাকা %2$s সিরিজ ধরে রাখা হবে। বিদ্যমান ভিডিও অগ্রগতি ধরে রাখা হবে</string>
   <string name="morphe_series_tracker_backup_saved">সিরিজ ব্যাকআপ সংরক্ষিত হয়েছে</string>
-  <string name="morphe_series_tracker_backup_restored">%1$s সিরিজ পুনরুদ্ধার করা হয়েছে</string>
+  <string name="morphe_series_tracker_backup_restored">%s টি সিরিজ পুনরুদ্ধার করা হয়েছে</string>
   <string name="morphe_series_tracker_error_backup_invalid">এই ফাইলটি একটি সমর্থিত সিরিজ ব্যাকআপ নয়, অথবা এটি খুব বড়। আপনার লাইব্রেরি পরিবর্তন করা হয়নি</string>
   <string name="morphe_series_tracker_error_backup_write">ব্যাকআপ সংরক্ষণ করা যায়নি। অন্য একটি স্থান চেষ্টা করুন</string>
   <string name="morphe_series_tracker_removed">সিরিজ সরানো হয়েছে</string>
@@ -1753,7 +1753,7 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_series_tracker_recovery_choose">আপনি নীচের যেকোনো এপিসোডটিও বেছে নিতে পারেন। আগের এপিসোডগুলি পরিবর্তন করা হবে না</string>
   <string name="morphe_series_tracker_playback_changed">এই প্লেলিস্টটি পরিবর্তন হয়েছে। কোথা থেকে চালিয়ে যেতে হবে তা বেছে নিতে সিরিজটি খুলুন</string>
   <string name="morphe_series_tracker_playback_boundary">এই দিকে আর কোনো অধ্যায় নেই</string>
-  <string name="morphe_series_tracker_continue_series">%1$s চালিয়ে যান</string>
+  <string name="morphe_series_tracker_continue_series">%s এগিয়ে যান</string>
   <string name="morphe_series_tracker_search_series">সিরিজ অনুসন্ধান করুন</string>
   <string name="morphe_series_tracker_clear_search">অনুসন্ধান পরিষ্কার করুন</string>
   <string name="morphe_series_tracker_no_search_results">কোনো সিরিজ পাওয়া যায়নি</string>
@@ -1782,6 +1782,10 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_niconico_comments_live_premieres_summary">প্রিমিয়ারগুলো যখন চলছে</string>
   <string name="morphe_niconico_comments_ended_premieres_title">শেষ হয়ে যাওয়া প্রিমিয়ারে দেখান</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">শেষ হয়ে যাওয়া প্রিমিয়ারগুলোর চ্যাট রিপ্লে</string>
+  <string name="morphe_niconico_comments_timed_comments_title">সময়নির্ধারিত মন্তব্যগুলো দেখান</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">চ্যাট নেই এমন ভিডিওতে, যে সমস্ত শীর্ষ মন্তব্যে ১:২৩ এর মতো সময় উল্লেখ থাকে, সেগুলো সেই সময়ে দেখানো হয়</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">চ্যাট রিপ্লে-র সাথে টাইমড কমেন্টগুলি দেখান</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">লাইভ স্ট্রিম এবং প্রিমিয়ারের রিপ্লে-তে, চ্যাটের সাথে টাইমড কমেন্টগুলিও দেখানো হয়</string>
   <string name="morphe_live_chat_translate_screen_title">লাইভ চ্যাট অনুবাদ</string>
   <string name="morphe_live_chat_translate_screen_summary">লাইভ চ্যাট এবং লাইভ চ্যাট রিপ্লে মেসেজ অনুবাদ করুন</string>
   <string name="morphe_live_chat_translate_title">লাইভ চ্যাট অনুবাদ করুন</string>

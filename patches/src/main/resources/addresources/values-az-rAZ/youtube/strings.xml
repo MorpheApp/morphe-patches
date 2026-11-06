@@ -70,18 +70,18 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_channel_buttons_summary">Axtarış nəticələrindəki kanal profillərindən Abunə ol, Kanala Bax, İcma və YouTube Music kimi düymələri gizlədir</string>
   <string name="morphe_hide_community_posts_title">İcma postlarını gizlət</string>
   <string name="morphe_post_buttons_screen_title">Post düymələri</string>
-  <string name="morphe_post_buttons_screen_summary">İcma postlarının altındakı düymələrin düzənini və hansı düymələrin gizlədiləcəyini seçin</string>
-  <string name="morphe_post_buttons_layout_title">Post düymələrinin düzəni</string>
+  <string name="morphe_post_buttons_screen_summary">İcma postları altındakı düymələrin tərtibatını və hansı düymələrin gizlədiləcəyini seç</string>
+  <string name="morphe_post_buttons_layout_title">Post düymələri tərtibatı</string>
   <string name="morphe_post_buttons_layout_entry_1">Server</string>
   <string name="morphe_post_buttons_layout_entry_2">Məcburi</string>
-  <string name="morphe_hide_post_like_dislike_buttons_title">Bəyənmə və Bəyənməmə düymələrini gizlət</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Bəyənmə və bəyənməmə düymələrini gizlət</string>
   <string name="morphe_hide_post_dislike_button_title">Bəyənməmə düyməsini gizlət</string>
-  <string name="morphe_hide_post_dislike_button_summary">Məcburi düzən ilə düymənin boşluğu saxlanılır</string>
+  <string name="morphe_hide_post_dislike_button_summary">Məcburi tərtibat ilə düymənin boşluğu qalır</string>
   <string name="morphe_hide_post_comment_button_title">Şərhlər düyməsini gizlət</string>
   <string name="morphe_hide_post_comments_preview_title">Şərhlərin önizləməsini gizlət</string>
   <string name="morphe_hide_post_comments_preview_summary">Postların altındakı şərhlərin önizləməsini gizlədir</string>
   <string name="morphe_hide_post_share_button_title">Paylaş düyməsini gizlət</string>
-  <string name="morphe_hide_post_share_button_summary">Post şəkillərinin yükləmə düyməsi paylaş düyməsinin yanında yerləşdiyi üçün o da gizlədilir</string>
+  <string name="morphe_hide_post_share_button_summary">Post şəkillərinin yükləmə düyməsi paylaş düyməsi ilə yanaşı olduğu üçün o da gizlədilir</string>
   <string name="morphe_hide_compact_banner_title">Yığcam afişaları gizlət</string>
   <string name="morphe_hide_compact_banner_summary">Sıx panelləri və bəzi elementlər arası boşluğu gizlədir</string>
   <string name="morphe_hide_expandable_card_title">Videoların aşağısında genişlənən kartlar</string>
@@ -272,7 +272,7 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_comments_screen_title">Şərhlər</string>
   <string name="morphe_comments_screen_summary">Şərhlər bölməsində hansı elementlər görünür seç</string>
   <string name="morphe_hide_comments_carousel_title">Şərhləri sürüşdürmə filtrini aktivləşdir</string>
-  <string name="morphe_hide_comments_carousel_summary">"​• Açar söz və ya tam ad daxil edin (məsələn: Soruş, İcma, Hayp et, Dinləyin)
+  <string name="morphe_hide_comments_carousel_summary">"• Açar söz və ya tam ad daxil edin (məsələn: Soruş, İcma, Hayp et, Dinləyin)
 • Bütün elementlərin gizlədilməsi şərh bölməsini tamamilə gizlədir"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Şərhləri sürüşdürmə filtri</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Yeni cərgələrlə ayrılan, çeşidləmək üçün şərhləri sürüşdürmə adlarını qeyd et</string>
@@ -341,11 +341,11 @@ Məhdudiyyətlər:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Açar sözün ziddiyyətli hissəcikləri var: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Açar söz çox qısadır və dırnaq işarəsi tələb edir: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Açar söz bütün videoları gizlədəcək: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Ev: %s
-• Abunəliklər: %s
-• Axtarış: %s
-• Şərhlər: %s
-• Ümumi: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Ev: %1$s
+• Abunəliklər: %2$s
+• Axtarış: %3$s
+• Şərhlər: %4$s
+• Ümumi: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Statistika</string>
   <string name="morphe_hide_stats_hidden_24h_title">Son 24 saatda gizlədilən videolar</string>
   <string name="morphe_hide_stats_hidden_all_title">Bütün zamanlar üzrə gizlədilən videolar</string>
@@ -357,9 +357,9 @@ Məhdudiyyətlər:
   <string name="morphe_hide_aislist_warnlist_category_title">Xəbərdarlıq siyahısı: Orta dərəcədə etibarlılıq</string>
   <string name="morphe_hide_aislist_hide_home_title">Videoları Ev səhifəsində gizlət</string>
   <string name="morphe_hide_aislist_hide_search_title">Videoları axtarışda gizlət</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Ev: %s
-• Axtarış: %s
-• Ümumi: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Ev: %1$s
+• Axtarış: %2$s
+• Ümumi: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Bloklanma siyahısı kanalları</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Xəbərdarlıq siyahısı kanalları</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Kanalları yükləmək üçün filtri aktivləşdir</string>
@@ -562,7 +562,7 @@ Məhdudiyyətlər:
   <string name="morphe_export_download_folder_missing">%s ixrac qovluğu tapılmadı</string>
   <string name="morphe_export_download_flyout_title">Cihaza köçür</string>
   <string name="morphe_export_download_started">Videonu ixrac edir</string>
-  <string name="morphe_export_download_progress">İxrac olunan video: %d%%</string>
+  <string name="morphe_export_download_progress">İxrac olunan video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Video köçürmələri</string>
   <string name="morphe_export_download_saved">Video %s ünvanına ixrac edildi</string>
   <string name="morphe_export_download_failed">Videonu ixrac etmək olmadı</string>
@@ -989,7 +989,7 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
 
 Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimləmələri Göstər vasitəsilə Ayarlar düyməsini aktivləşdir"</string>
   <string name="morphe_narrow_navigation_buttons_title">Sıx fəaliyyət düymələrini aktivləşdir</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Düymələr arasındakı üfüqi məsafəni azaldır. Öz düymə məsafələri olan şüşə naviqasiya cərgəsi ilə əlçatan deyil</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Düymələr arasındakı üfüqi boşluğu azaldır. Öz düymə boşluğu olan şüşə fəaliyyət zolağı ilə əlçatan deyil</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Etiketsiz fəaliyyət düymələrini qapat</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTube etiketsiz göndərirsə, fəaliyyət düymələrini etiketlərlə göstərir</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Alət cərgəsi fəaliyyət səhifələrini qapat</string>
@@ -1008,12 +1008,12 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <string name="morphe_navigation_bar_glass_summary">Fəaliyyət cərgəsini üzən, dairəvi və yarımşəffaf kapsul şəklində göstərir. Tutqun fəaliyyət cərgəsi üslubu ilə əlçatan deyil</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Şüşə tutqunluğu</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Şüşə fəaliyyət cərgəsinin şəffaflıq dərəcəsini tənzimlə (0 şəffaf, 100 qeyri-şəffaf)</string>
-  <string name="morphe_navigation_bar_glass_size_title">Şüşə naviqasiya cərgəsinin ölçüsü</string>
-  <string name="morphe_navigation_bar_glass_size_summary">Şüşə naviqasiya cərgəsinin hündürlüyünü, enini və düymə məsafələrini ön baxışla tənzimləyin. Ekranın eninə sığmayan düymələr gizlədilir</string>
+  <string name="morphe_navigation_bar_glass_size_title">Şüşə fəaliyyət zolağının ölçüsü</string>
+  <string name="morphe_navigation_bar_glass_size_summary">Şüşə fəaliyyət zolağının hündürlüyünü, enini və düymə boşluğunu önizləmə ilə tənzimlə. Ekranın eninə uyuşmayan düymələr gizlədilir</string>
   <string name="morphe_navigation_bar_glass_size_height">Hündürlük</string>
-  <string name="morphe_navigation_bar_glass_size_width">Maksimum en</string>
-  <string name="morphe_navigation_bar_glass_size_button_spacing">Düymə məsafəsi</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Göstərilən düymələr: %2$d düymədən %1$d-i</string>
+  <string name="morphe_navigation_bar_glass_size_width">Ən yüksək en</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Düymə boşluğu</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Göstərilən düymələr: %2$s ədəddən %1$s \'si</string>
   <string name="morphe_toolbar_screen_title">Alət cərgəsi</string>
   <string name="morphe_toolbar_screen_summary">Alətlər zolağında hansı elementlər görünür seç</string>
   <string name="morphe_hide_toolbar_chat_button_title">Söhbət düyməsin gizlət</string>
@@ -1667,7 +1667,7 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_series_tracker_identity_unavailable">İzləmə gizli rejimdə və ya YouTube cari hesab vəziyyətini yükləməzdən əvvəl aktivləşdirilə bilməz. Əsas səhifəyə qayıdın və təkrar cəhd edin. Daxil olmaq tələb olunmur</string>
   <string name="morphe_series_tracker_enable">Yerli izləməni aktivləşdir</string>
   <string name="morphe_series_tracker_tracking_paused">Gedişatı qeydəalma qapadılıb</string>
-  <string name="morphe_series_tracker_resume_at">%1$s mövqeyindən davam et</string>
+  <string name="morphe_series_tracker_resume_at">%s mövqeyindən davam et</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s epizod izlənildi</string>
   <string name="morphe_series_tracker_episode_position">Epizod %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">%3$s-dən %1$s-%2$s epizodları</string>
@@ -1677,7 +1677,7 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_series_tracker_plan_changed">Epizodu seç</string>
   <string name="morphe_series_tracker_plan_caught_up">Yenilənib</string>
   <string name="morphe_series_tracker_plan_none">Oynadıla bilən epizodlar yoxdur</string>
-  <string name="morphe_series_tracker_saved_position">Saxlanılan video · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Saxlanılan video · %s</string>
   <string name="morphe_series_tracker_follow">Seriyanı izlə</string>
   <string name="morphe_series_tracker_view_series">Seriyaya bax</string>
   <string name="morphe_series_tracker_continue">Davam et</string>
@@ -1688,7 +1688,7 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_series_tracker_undo">Geri qaytar</string>
   <string name="morphe_series_tracker_enable_short">Aktivləşdir</string>
   <string name="morphe_series_tracker_new_episode">1 yeni epizod</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s yeni epizod</string>
+  <string name="morphe_series_tracker_new_episodes">%s yeni epizod</string>
   <string name="morphe_series_tracker_record_short">Bu cihazda gedişatı qeydə al</string>
   <string name="morphe_series_tracker_follow_consent">"Seriyalarınız və gedişatınız bu cihazda qalır, YouTube hesabları arasında paylaşılır. YouTube tarixçə idarəetmələri onları dəyişdirmir. Gedişatı Seriya menyusundan təmizləyin.
 
@@ -1718,12 +1718,12 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_series_tracker_hide_watched">İzlənilənləri gizlət</string>
   <string name="morphe_series_tracker_watched_on_advance">Növbəti epizoda keçərkən baxılmış qeyd et</string>
   <string name="morphe_series_tracker_watch_previous">Əvvəlki epizodları baxılmış qeyd et</string>
-  <string name="morphe_series_tracker_order_starts_with">Başlayır: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Başlayır: %s</string>
   <string name="morphe_series_tracker_episode_order">Epizod sırası</string>
   <string name="morphe_series_tracker_playlist_order">Pleylist sırası</string>
   <string name="morphe_series_tracker_reverse_order">Pleylist sırasını tərs çevir</string>
-  <string name="morphe_series_tracker_view_count">%1$s baxış</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s baxış</string>
+  <string name="morphe_series_tracker_view_count">%s baxış</string>
+  <string name="morphe_series_tracker_view_count_one">%s baxış</string>
   <string name="morphe_series_tracker_completion_title">Epizodları baxılmış qeyd et</string>
   <string name="morphe_series_tracker_completion_summary">Ən çox 90 saniyə qalmaqla ən azı %1$s%% izlənilib və ya %2$s saniyə qalıb</string>
   <string name="morphe_series_tracker_completion_explanation">Epizod hər hansı həddə çatdıqdan sonra avtomatik olaraq baxılmış qeyd edilsin. Faiz qaydası həmçinin ən çox 90 saniyə qalmasını tələb edir ki, uzun epizodların sonu ötürülməsin. Qalan vaxt qaydası bir dəqiqədən uzun videolara tətbiq olunur; qapatmaq üçün 0-a təyin et. Dəyişikliklər gələcək gedişat yeniləmələrinə tətbiq edilir. Əllə edilən baxıldı/baxılmadı seçimləri saxlanılır</string>
@@ -1743,7 +1743,7 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_series_tracker_backup_restore">Nüsxəni bərpa et</string>
   <string name="morphe_series_tracker_backup_preview">%1$s seriyası əlavə et. Kitabxananızda artıq olan %2$s seriyası saxlanılır. Mövcud video gedişatı saxlanılır</string>
   <string name="morphe_series_tracker_backup_saved">Seriya nüsxəsi saxlanıldı</string>
-  <string name="morphe_series_tracker_backup_restored">%1$s seriya bərpa edildi</string>
+  <string name="morphe_series_tracker_backup_restored">%s seriya bərpa edildi</string>
   <string name="morphe_series_tracker_error_backup_invalid">Bu fayl dəstəklənən seriya nüsxəsi deyil və ya həddən artıq böyükdür. Kitabxananız dəyişdirilmədi</string>
   <string name="morphe_series_tracker_error_backup_write">Nüsxəni saxlamaq olmadı. Başqa bir yeri sınayın</string>
   <string name="morphe_series_tracker_removed">Seriyalar silindi</string>
@@ -1753,7 +1753,7 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_series_tracker_recovery_choose">Aşağıda istənilən epizodu da seçə bilərsiniz. Əvvəlki epizodlar dəyişdirilmir</string>
   <string name="morphe_series_tracker_playback_changed">Bu pleylist dəyişdirildi. Harada davam edəcəyini seçmək üçün seriyanı aç</string>
   <string name="morphe_series_tracker_playback_boundary">Bu istiqamətdə başqa epizod yoxdur</string>
-  <string name="morphe_series_tracker_continue_series">%1$s-a davam et</string>
+  <string name="morphe_series_tracker_continue_series">%s-a davam et</string>
   <string name="morphe_series_tracker_search_series">Seriya axtar</string>
   <string name="morphe_series_tracker_clear_search">Axtarışı təmizlə</string>
   <string name="morphe_series_tracker_no_search_results">Seriya tapılmadı</string>
@@ -1770,7 +1770,7 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_niconico_comments_travel_duration_title">Səyahət müddəti</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Şərhlərin ekrandan keçməsi üçün tələb olunan saniyə dəyəri. Kiçik dəyərlər daha sürətli hərəkət edir</string>
   <string name="morphe_niconico_comments_display_area_title">Ekran sahəsi</string>
-  <string name="morphe_niconico_comments_display_area_summary">Şərhlərin pleyerin yuxarı hissəsindən nə qədər yer tutacağını təyin edir. Aşağı qiymətlər videonun aşağı hissəsini boş saxlayır</string>
+  <string name="morphe_niconico_comments_display_area_summary">Şərhlərin yuxarıdan oynadıcının nə qədər hissəsini tutduğu. Daha aşağı dəyərlər videonun aşağı hissəsini təmiz saxlayır</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimum şərh uzunluğu</string>
   <string name="morphe_niconico_comments_max_length_summary">Bundan çox simvolu olan şərhləri gizlədir. Hər bir emoji bir simvol kimi sayılır</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Limitsiz</string>
@@ -1782,6 +1782,8 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Oynadılan zaman premyeralar</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Sonlanmış Premyeralarda göstər</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Sonlanmış Premyeraların söhbət təkrarı</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Zamanlanmış şərhləri göstər</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Söhbəti olmayan videolarda 1:23 kimi vaxtı olan ən yaxşı şərhlər həmin vaxtda göstərilir</string>
   <string name="morphe_live_chat_translate_screen_title">Canlı söhbət tərcüməsi</string>
   <string name="morphe_live_chat_translate_screen_summary">Canlı söhbət və canlı söhbətin təkrar mesajlarını tərcümə et</string>
   <string name="morphe_live_chat_translate_title">Canlı söhbəti tərcümə et</string>

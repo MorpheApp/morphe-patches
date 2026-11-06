@@ -150,6 +150,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_previous">قبلی</string>
   <string name="morphe_music_downloads_next">بعدی</string>
   <string name="morphe_music_downloads_pause">مکث</string>
+  <string name="morphe_music_downloads_shuffle">پخش تصادفی</string>
+  <string name="morphe_music_downloads_repeat">تکرار</string>
+  <string name="morphe_music_downloads_minimize">بستن</string>
   <string name="morphe_music_downloads_close">بستن</string>
   <string name="morphe_music_downloads_delete">حذف</string>
   <string name="morphe_music_downloads_delete_track">حذف دانلود</string>
@@ -220,6 +223,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_download_no_network">عدم اتصال به شبکه</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">در انتظار شبکه…</string>
   <string name="morphe_music_downloads_playlist_download_stopped">پس از %1$s از %2$s متوقف شد. برای ادامه دوباره روی دانلود ضرب کنید</string>
+  <string name="morphe_music_downloads_mark_title">علامت‌گذاری آهنگ‌های دانلود شده</string>
+  <string name="morphe_music_downloads_mark_summary">آهنگ‌هایی که قبلاً دانلود شده‌اند، در لیست‌های پخش، آلبوم‌ها و نتایج جستجو، پیش از جزئیات خود یک علامت نمایش می‌دهند</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">درباره</string>
@@ -340,6 +345,43 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">افزودن آهنگ انتخاب‌شده به صف</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">به صف اضافه شد</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">برچسب‌های فهرست پخش</string>
+  <string name="morphe_music_playlist_tags_screen_summary">برچسب‌گذاری فهرست‌های پخش و فیلتر کردن کتابخانه بر اساس برچسب</string>
+  <string name="morphe_music_playlist_tags_title">فعال‌سازی برچسب‌های فهرست پخش</string>
+  <string name="morphe_music_playlist_tags_summary">یک مورد «برچسب‌ها» به منوی فهرست‌های پخش و یک دکمه فیلتر برچسب در کنار دکمه مرتب‌سازی کتابخانه اضافه می‌کند</string>
+  <string name="morphe_music_playlist_tags_manage_title">مدیریت برچسب‌های فهرست پخش</string>
+  <string name="morphe_music_playlist_tags_manage_summary">ایجاد، تغییر نام و حذف برچسب‌ها، و برچسب‌گذاری فهرست‌های پخش موجود در کتابخانه شما</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">برچسب‌ها</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">بدون برچسب</string>
+  <string name="morphe_music_playlist_tags_filter_button">برچسب‌ها</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">برچسب: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">برچسب‌ها (%s پنهان)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">برچسب‌های %s</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">برچسب جدید</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">۱ فهرست پخش</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s فهرست پخش</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">برچسبی با نام %s از قبل وجود دارد</string>
+  <string name="morphe_music_playlist_tags_filter_title">فیلتر بر اساس برچسب</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">فقط نمایش</string>
+  <string name="morphe_music_playlist_tags_filter_all">همه فهرست‌های پخش</string>
+  <string name="morphe_music_playlist_tags_filter_visible">برچسب‌های قابل مشاهده</string>
+  <string name="morphe_music_playlist_tags_manage">مدیریت</string>
+  <string name="morphe_music_playlist_tags_none">هنوز برچسبی وجود ندارد. برای ایجاد برچسب، روی یک فهرست پخش فشار طولانی دهید و «برچسب‌ها» را انتخاب کنید</string>
+  <string name="morphe_music_playlist_tags_section_tags">برچسب‌ها</string>
+  <string name="morphe_music_playlist_tags_section_playlists">فهرست‌های پخش</string>
+  <string name="morphe_music_playlist_tags_no_playlists">یک بار کتابخانه را باز کنید تا فهرست‌های پخش شما در اینجا ظاهر شوند</string>
+  <string name="morphe_music_playlist_tags_new_tag">برچسب جدید</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">ویرایش برچسب</string>
+  <string name="morphe_music_playlist_tags_rename">تغییر نام</string>
+  <string name="morphe_music_playlist_tags_delete">حذف</string>
+  <string name="morphe_music_playlist_tags_hidden">پنهان‌شده</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">پنهان‌کردن دکمهٔ ارسال</string>
   <string name="morphe_music_hide_history_button_title">پنهان‌کردن دکمهٔ سابقه</string>
@@ -508,6 +550,49 @@ Second \"item\" text"</string>
   <string name="morphe_music_scrobbling_about_summary">"اسکروبلینگ استفادهٔ شما از YouTube Music را به‌طور خودکار با نمایهٔ Last.fm یا ListenBrainz همگام می‌کند
 
 برای اطمینان از همگام‌شدن اسکروبلینگ هنگام پخش در پس‌زمینه، مصرف باتری برنامهٔ YouTube Music را روی «بدون محدودیت» تنظیم کنید"</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">رد کردن قطعات هنرمندانی که جامعه به عنوان AI گزارش کرده‌اند</string>
+  <string name="morphe_music_soundproof_show_button_title">نمایش دکمهٔ SoundProof</string>
+  <string name="morphe_music_soundproof_show_button_summary">نمایش دکمه‌ای در نوار بالای پخش‌کننده برای مشاهده و ثبت آرای جامعه برای هنرمند فعلی</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">رد کردن هنرمندان AI</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">به‌طور خودکار آهنگ‌هایی را که هنرمند آن‌ها به آستانه هوش مصنوعی زیر می‌رسد، رد می‌کند</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">نمایش اعلان ردکردن</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">وقتی آهنگی به‌طور خودکار رد شود، اعلانی نمایش می‌دهد</string>
+  <string name="morphe_music_soundproof_threshold_title">آستانه تشخیص</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">حداقل آرای هوش مصنوعی</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">یک هنرمند زمانی AI محسوب می‌شود که حداقل این سهم از آرای آن، AI باشد</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">حداقل تعداد آرا</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">هنرمندانی که آرای آن‌ها کمتر از این مقدار باشد، هرگز رد نمی‌شوند</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">رد شد %1$s (هوش مصنوعی، %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">رأی‌های SoundProof برای این هنرمند</string>
+  <string name="morphe_music_soundproof_sheet_verified">تأیید شده</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% هوش مصنوعی</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% انسان</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">۱ رای</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s رأی</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s انسان</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s هوش مصنوعی</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">هنوز هیچ رأیی برای این هنرمند ثبت نشده است</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">پایگاه داده SoundProof هنوز در دسترس نیست</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">در پس‌زمینه در حال دانلود است. تا زمانی که در دسترس قرار نگیرد، هیچ آهنگی رد نمی‌شود.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">رأی‌های جامعه از پایگاه داده SoundProof</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">انسان</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">هوش مصنوعی</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">رای‌گیری بسته شده است: یکی از مدیران SoundProof این هنرمند را بررسی کرده است</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">اتصال به SoundProof برقرار نشد. آرا از دیتابیس روزانه هستند و رای‌گیری در دسترس نیست.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">رای‌گیری SoundProof با خطا مواجه شد</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"داده‌های هنرمند از SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) تامین شده و هر روز یک بار دانلود می‌شوند. حالت Skipping هیچ اطلاعاتی درباره آنچه پخش می‌کنید ارسال نمی‌کند. باز کردن صفحه SoundProof نام هنرمند فعلی را به سرور SoundProof ارسال می‌کند تا آرا به‌روز نمایش داده شوند و امکان رای دادن فراهم شود. سرور رای‌دهندگان را از طریق آدرس IP تشخیص می‌دهد، بنابراین رای شما ممکن است در شبکه‌های دیگر متفاوت نمایش داده شود.
+
+این دیتابیس تحت مجوز ODC Open Database License (ODbL) است. ورودی‌های Soul Over AI توسط xoundbyte تحت مجوز CC BY 4.0 هستند. این بخش وابسته به SoundProof یا Soul Proof AI نیست و توسط آن‌ها تایید نشده است."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">استفاده از متن آهنگ شخص ثالث</string>
   <string name="morphe_music_lyrics_enabled_summary">متن آهنگ را از سرویس شخص ثالث نشان می‌دهد و اگر چیزی پیدا نشود به متن داخلی برمی‌گردد</string>
@@ -548,17 +633,17 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_rime_dict_bad_code">کد باید دو یا سه حرف باشد، مانند hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">آدرس باید با https:// شروع شود</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">نام و آدرس نمی‌توانند شامل خط عمودی باشند</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s از قبل یک جدول واژه دارد</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s توسط رومنایزر داخلی خوانده می‌شود و نمی‌تواند لیست کلمات داشته باشد</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s از قبل دارای جدول کلمات است</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s توسط رومنایزر داخلی خوانده می‌شود و نمی‌تواند لیست کلمات دریافت کند</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">استفاده نشده: این زبان از قبل خوانش خود را دارد، بنابراین برای حذف آن تیک آن را بردارید</string>
-  <string name="morphe_music_lyrics_rime_dict_added">%1$s اضافه شد - آن را انتخاب کرده و روی ذخیره ضربه بزنید تا دانلود شود</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%s اضافه شد - آن را تیک بزنید و روی ذخیره ضرب کنید تا دانلود شود</string>
   <string name="morphe_music_lyrics_rime_dict_ready">لیست‌های کلمات آماده هستند</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">لیست‌های کلمات آماده (%1$d مورد)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">در حال ساخت لیست خوانش: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">لیست‌های کلمات آماده است (%s ورودی)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">در حال خواندن لیست کلمات: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">دانلود لیست کلمات ناموفق بود - برای تلاش مجدد روی ذخیره ضربه بزنید</string>
   <string name="morphe_music_lyrics_clear_cache_title">پاک کردن حافظه پنهان ترانه‌ها</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">حذف %1$s مگابایت متن ترانه نگهداری شده بر روی این دستگاه</string>
-  <string name="morphe_music_lyrics_clear_cache_done">%1$s مگابایت پاک شد</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">حذف %s مگابایت از متن ترانه‌های ذخیره شده در این دستگاه</string>
+  <string name="morphe_music_lyrics_clear_cache_done">پاک شد %s مگابایت</string>
   <string name="morphe_music_token_dialog_get_token">دریافت توکن</string>
   <string name="morphe_music_apple_music_token_title">توکن Apple Music Media-user-token</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"کوکی media-user-token را از music.apple.com جای‌گذاری کنید
@@ -624,14 +709,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">اجازه دادن به خوانش‌های غیرلاتین از منبع ترانه؛ وقتی خاموش است، فقط حروف لاتین، حروف با علامت diacritic و ارقام تن صدا نگه داشته می‌شوند</string>
   <string name="morphe_music_lyrics_local_romanization_summary">هر واژه از یک ترانه زمان‌بندی شده را می‌خواند (همگام‌سازی واژه روشن است)؛ کره‌ای نیاز به دانلود ندارد؛ چهارده اسکریپت یک دانلود CLDR مشترک دارند؛ کاراکترهای Han توسط لیست کلمات Rime زمانی که جدول واژه آن زبان را پوشش می‌دهد خوانده می‌شود</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">دانلود دیکشنری‌های خوانش…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">آماده برای خواندن (%1$d مورد)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">خوانش‌ها آماده است (%s ورودی)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">دانلود ناموفق - برای تلاش مجدد، این گزینه را خاموش و روشن کنید</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">لغت‌نامه آفلاین</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">ژاپنی (SudachiDict، ~75 مگابایت)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">کاراکترهای چینی و کانتونی (UniDict، ~8 مگابایت)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">واژه‌های چینی (pinyin-pro، ~17 مگابایت)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">روتین یونانی، سریلیک اسلاو (شامل روسی، اوکراینی، بلغاری، صربی، بلاروسی، مقدونی)، گرجی، ارمنی، عبری، عربی، آمهرایی و سورانی انتقال (CLDR، ~0.5 مگابایت)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">خوانش %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">در حال خواندن %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">نمایش دکمهٔ تازه‌سازی</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">برای رفتن به نامزد بعدی ترانه ضربه بزنید؛ برای جستجوی ترانه بر اساس عنوان آهنگ و هنرمند، لمس طولانی انجام دهید</string>
   <string name="morphe_music_lyrics_search_dialog_title">جستجوی متن ترانه</string>
@@ -782,7 +867,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">تنظیمات ناقص است یا توسط ارائه‌دهنده رد شده است</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">در حال بررسی اعتبار اتصال…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: متصل! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: اتصال ناموفق بود. تنظیمات را بررسی کنید.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: اتصال شکست خورد. تنظیمات را بررسی کنید.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">ابتدا کلید API را وارد کنید</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">تست اتصال</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">در حال دریافت مدل‌ها…</string>

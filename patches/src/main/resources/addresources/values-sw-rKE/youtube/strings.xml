@@ -341,11 +341,11 @@ Vikwazo:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Neno kuu lina matamko yanayopingana: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Neno kuu ni fupi mno na linahitaji alama za nukuu: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Neno muhimu litaficha video zote: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Nyumbani: %s
-• Usajili: %s
-• Tafuta: %s
-• Maoni: %s
-• Jumla: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Nyumbani: %1$s
+• Usajili: %2$s
+• Tafuta: %3$s
+• Maoni: %4$s
+• Jumla: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Takwimu</string>
   <string name="morphe_hide_stats_hidden_24h_title">Video zilizofichwa, saa 24 zilizopita</string>
   <string name="morphe_hide_stats_hidden_all_title">Video zilizofichwa, muda wote</string>
@@ -357,9 +357,9 @@ Vikwazo:
   <string name="morphe_hide_aislist_warnlist_category_title">Orodha ya onyo: Uhakika wa wastani</string>
   <string name="morphe_hide_aislist_hide_home_title">Ficha video kwenye Nyumbani</string>
   <string name="morphe_hide_aislist_hide_search_title">Ficha video kwenye utafutaji</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Nyumbani: %s
-• Utafutaji: %s
-• Jumla: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Nyumbani: %1$s
+• Tafuta: %2$s
+• Jumla: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Chaneli za orodha ya kuzuia</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Chaneli za orodha ya onyo</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Washa kichujio ili kupakia chaneli</string>
@@ -562,7 +562,7 @@ Folda ya uhamishaji: %s"</string>
   <string name="morphe_export_download_folder_missing">Imeshindwa kupata folda ya kuhamisha %s</string>
   <string name="morphe_export_download_flyout_title">Export kwenda kwenye kifaa</string>
   <string name="morphe_export_download_started">Inasafirisha video</string>
-  <string name="morphe_export_download_progress">Inasafirisha video: %d%%</string>
+  <string name="morphe_export_download_progress">Inasafirisha video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Usafirishaji wa video</string>
   <string name="morphe_export_download_saved">Video imesafirishwa kwenda %s</string>
   <string name="morphe_export_download_failed">Hakuwezekana kusafirisha video</string>
@@ -1013,7 +1013,7 @@ Ili kufikia Mipangilio, wezesha kitufe cha Mipangilio kupitia General → Toolba
   <string name="morphe_navigation_bar_glass_size_height">Urefu</string>
   <string name="morphe_navigation_bar_glass_size_width">Upana wa juu</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Nafasi ya vitufe</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Vitufe vinavyoonekana: %1$d kati ya %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Vifungo vinavyoonekana: %1$s kati ya %2$s</string>
   <string name="morphe_toolbar_screen_title">Upau wa zana</string>
   <string name="morphe_toolbar_screen_summary">Chagua ni vipengele gani vionekane kwenye baa ya zana</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ficha kitufe cha Chat</string>
@@ -1667,7 +1667,7 @@ Kurekodi kiotomatiki kunasimama katika hali ya incognito, wakati utambulisho wa 
   <string name="morphe_series_tracker_identity_unavailable">Ufuatiliaji hauwezi kuwashwa katika hali ya siri au kabla ya YouTube kupakia hali ya sasa ya akaunti. Rudi Nyumbani na ujaribu tena. Hakuna hitaji la kuingia</string>
   <string name="morphe_series_tracker_enable">Washa ufuatiliaji wa ndani</string>
   <string name="morphe_series_tracker_tracking_paused">Kurekodi maendeleo kuzimwa</string>
-  <string name="morphe_series_tracker_resume_at">Endelea kwenye %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Endelea katika %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s vipindi vimetazamwa</string>
   <string name="morphe_series_tracker_episode_position">Kipindi %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Vipindi %1$s-%2$s kati ya %3$s</string>
@@ -1677,7 +1677,7 @@ Kurekodi kiotomatiki kunasimama katika hali ya incognito, wakati utambulisho wa 
   <string name="morphe_series_tracker_plan_changed">Chagua kipindi</string>
   <string name="morphe_series_tracker_plan_caught_up">Imekamilika</string>
   <string name="morphe_series_tracker_plan_none">Hakuna sehemu zinazoweza kuchezwa</string>
-  <string name="morphe_series_tracker_saved_position">Video iliyohifadhiwa · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Video iliyohifadhiwa · %s</string>
   <string name="morphe_series_tracker_follow">Fuata mfululizo</string>
   <string name="morphe_series_tracker_view_series">Tazama mfululizo</string>
   <string name="morphe_series_tracker_continue">Endelea</string>
@@ -1688,7 +1688,6 @@ Kurekodi kiotomatiki kunasimama katika hali ya incognito, wakati utambulisho wa 
   <string name="morphe_series_tracker_undo">Ondoa</string>
   <string name="morphe_series_tracker_enable_short">Washa</string>
   <string name="morphe_series_tracker_new_episode">kipindi 1 kipya</string>
-  <string name="morphe_series_tracker_new_episodes">{%1$s} vipindi vipya</string>
   <string name="morphe_series_tracker_record_short">Rekodi maendeleo kwenye kifaa hiki</string>
   <string name="morphe_series_tracker_follow_consent">"Mfululizo na maendeleo yako yanabaki kwenye kifaa hiki, yakishirikishwa katika akaunti za YouTube. Vidhibiti vya historia ya YouTube havibadilishi mambo haya. Futa maendeleo kutoka kwenye menyu ya Mfululizo.
 
@@ -1718,12 +1717,12 @@ Kurekodi kiotomatiki ni hiari. Inasimama katika hali ya siri au wakati akaunti i
   <string name="morphe_series_tracker_hide_watched">Ficha vilivyoonekana</string>
   <string name="morphe_series_tracker_watched_on_advance">Weka alama ya imetazamwa unapohamia kipindi kinachofuata</string>
   <string name="morphe_series_tracker_watch_previous">Weka alama vipindi vya awali vimetazamwa</string>
-  <string name="morphe_series_tracker_order_starts_with">Inaanza na: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Inaanza na: %s</string>
   <string name="morphe_series_tracker_episode_order">Mpangilio wa vipindi</string>
   <string name="morphe_series_tracker_playlist_order">Mpangilio wa orodha ya nyimbo</string>
   <string name="morphe_series_tracker_reverse_order">Geuza mpangilio wa orodha ya nyimbo</string>
-  <string name="morphe_series_tracker_view_count">%1$s mtazamo</string>
-  <string name="morphe_series_tracker_view_count_one">tazama %1$s</string>
+  <string name="morphe_series_tracker_view_count">mitazamo %s</string>
+  <string name="morphe_series_tracker_view_count_one">mtazamo %s</string>
   <string name="morphe_series_tracker_completion_title">Weka alama ya vipindi vilivyotazamwa</string>
   <string name="morphe_series_tracker_completion_summary">Angalau %1$s%% imetazamwa kukiwa na sekunde zisizozidi 90 zilizobaki, au sekunde %2$s zimebaki</string>
   <string name="morphe_series_tracker_completion_explanation">Weka alama ya kipindi kama kilichotazamwa kiotomatiki baada ya kufikia kiwango chochote. Sheria ya asilimia pia inahitaji kusiwe na zaidi ya sekunde 90 zilizobaki, ili mwisho wa vipindi virefu usirukwe. Sheria ya muda uliobaki inatumika kwa video ndefu kuliko dakika moja; iweke 0 ili kuizima. Mabadiliko yanatumika kwa sasisho za maendeleo za baadaye. Chaguzi za mwongozo za kutazamwa/kutotazamwa zinahifadhiwa</string>
@@ -1743,7 +1742,7 @@ Kurekodi kiotomatiki ni hiari. Inasimama katika hali ya siri au wakati akaunti i
   <string name="morphe_series_tracker_backup_restore">Rejesha nakala</string>
   <string name="morphe_series_tracker_backup_preview">Ongeza mfululizo %1$s. Mfululizo %2$s uliokuwepo tayari kwenye maktaba yako umehifadhiwa. Maendeleo ya video yaliyopo yamehifadhiwa</string>
   <string name="morphe_series_tracker_backup_saved">Nakala ya mfululizo imehifadhiwa</string>
-  <string name="morphe_series_tracker_backup_restored">Imerejesha mfululizo %1$s</string>
+  <string name="morphe_series_tracker_backup_restored">Imerejesha mfululizo %s</string>
   <string name="morphe_series_tracker_error_backup_invalid">Faili hili si nakala ya usalama ya mfululizo inayokubalika, au ni kubwa mno. Maktaba yako haikubadilishwa</string>
   <string name="morphe_series_tracker_error_backup_write">Hakuwezekana kuhifadhi nakala ya usalama. Jaribu eneo lingine</string>
   <string name="morphe_series_tracker_removed">Mfululizo umeondolewa</string>
@@ -1753,7 +1752,7 @@ Kurekodi kiotomatiki ni hiari. Inasimama katika hali ya siri au wakati akaunti i
   <string name="morphe_series_tracker_recovery_choose">Pia unaweza kuchagua kipindi chochote hapa chini. Vipindi vya awali havibadilishwi</string>
   <string name="morphe_series_tracker_playback_changed">Orodha hii ya nyimbo imebadilika. Fungua mfululizo ili kuchagua mahali pa kuendelea</string>
   <string name="morphe_series_tracker_playback_boundary">Hakuna vipindi zaidi katika upande huu</string>
-  <string name="morphe_series_tracker_continue_series">Endelea %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Endelea %s</string>
   <string name="morphe_series_tracker_search_series">Tafuta mfululizo</string>
   <string name="morphe_series_tracker_clear_search">Futa utafutaji</string>
   <string name="morphe_series_tracker_no_search_results">Hakuna mfululizo uliopatikana</string>
@@ -1782,6 +1781,10 @@ Kurekodi kiotomatiki ni hiari. Inasimama katika hali ya siri au wakati akaunti i
   <string name="morphe_niconico_comments_live_premieres_summary">Uzinduzi wa awali wakati zinachezwa</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Onyesha kwenye Premieres zilizomalizika</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Rudia soga ya Premieres zilizokwisha</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Onyesha maoni yenye muda</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Kwenye video zisizo na soga, maoni ya juu yenye muda kama 1:23 huonyeshwa wakati huo</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Onyesha maoni ya muda na urudishaji wa soga</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Katika urudishaji wa mirutubisho ya moja kwa moja na Premieres, maoni ya muda pia huonyeshwa pamoja na soga</string>
   <string name="morphe_live_chat_translate_screen_title">Tafsiri ya soga ya moja kwa moja</string>
   <string name="morphe_live_chat_translate_screen_summary">Tafsiri ujumbe wa soga ya moja kwa moja na urejeshaji wa soga ya moja kwa moja</string>
   <string name="morphe_live_chat_translate_title">Tafsiri soga ya moja kwa moja</string>

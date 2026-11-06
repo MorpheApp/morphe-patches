@@ -106,9 +106,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notify_me_button_title">Fela \"Láttu mig vita\" hnappinn</string>
   <string name="morphe_hide_notify_me_button_summary">Fela áminningahnappinn fyrir fyrirframskipaðum beinum streymingum og úrvinnuvídeókum</string>
   <string name="morphe_hide_playables_title">Fela Playables</string>
-  <string name="morphe_hide_playables_summary">Hyl komstu</string>
+  <string name="morphe_hide_playables_summary">Leynir viðeigandi eiginleika sem gerir þér kleift að spila leiki</string>
   <string name="morphe_hide_search_term_thumbnails_title">Fela leitarniðurstöðum</string>
-  <string name="morphe_hide_search_term_thumbnails_summary">Hyl stjórnstikur</string>
+  <string name="morphe_hide_search_term_thumbnails_summary">Leynir litum smámyndum í sjálfvirknileikardrópinu</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Fela \'Sýna meira\' hnappinn</string>
@@ -331,11 +331,11 @@ Takmörk:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Leitarorð hefur andstæðar skilgreiningar: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Leitarorð er of stutt og þarf gæsafótur: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Leitarorð mun fela öll vídeó: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Heimili: %s
-• Áskriftir: %s
-• Leit: %s
-• Athugasemdir: %s
-• Samanlagt: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Rásir: %1$s
+• Áskriftir: %2$s
+• Leiting: %3$s
+• Athugasemdir: %4$s
+• Samtaleiki: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Tölfræði</string>
   <string name="morphe_hide_stats_hidden_24h_title">Vídeó falin, síðasta sólarhringur</string>
   <string name="morphe_hide_stats_hidden_all_title">Vídeó falin, alls</string>
@@ -347,9 +347,9 @@ Takmörk:
   <string name="morphe_hide_aislist_warnlist_category_title">Vara listi: Miðlungs áreiðanleiki</string>
   <string name="morphe_hide_aislist_hide_home_title">Fela myndbönd á Heim</string>
   <string name="morphe_hide_aislist_hide_search_title">Fela myndbönd í leitar</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Heim: %s
-• Leitar: %s
-• Heild: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Rásir: %1$s
+• Leiting: %2$s
+• Samtaleiki: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Lokaðar rásir</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Viðvörunarrásir</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Virkaðu síu til að hlaða rásir</string>
@@ -552,7 +552,7 @@ Eftir að myndband með Ask hnappi hefur verið opnað einu sinni, virkar eiginl
   <string name="morphe_export_download_folder_missing">Gat ekki fundið útflutningsmöppuna %s</string>
   <string name="morphe_export_download_flyout_title">Flytja á tæki</string>
   <string name="morphe_export_download_started">Að flytja myndband</string>
-  <string name="morphe_export_download_progress">Að flytja myndband: %d%%</string>
+  <string name="morphe_export_download_progress">Útleiðing á myndbandi: %s%%</string>
   <string name="morphe_export_download_notification_channel">Myndbandsútfærslur</string>
   <string name="morphe_export_download_saved">Myndband flutt á %s</string>
   <string name="morphe_export_download_failed">Gat ekki flutt myndbandið</string>
@@ -666,7 +666,7 @@ API lykillinn þinn ætti aldrei að deila. Allir með aðgang að honum geta no
   <string name="morphe_play_all_button_type_entry_10">Upplýsingar fyrir meðlimi</string>
   <string name="morphe_play_all_button_type_entry_11">Upplýsingar fyrir meðlimi Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Upplýsingar fyrir meðlimi streymiviðdiol</string>
-  <string name="morphe_play_all_button_not_available_toast">Ekki fá spilun</string>
+  <string name="morphe_play_all_button_not_available_toast">Ekki hægt að búa til spilalesta vegna misbreytingar rásar auðkennis</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Sýnir Endurhlaða vídeó hnappinn</string>
   <string name="morphe_dismiss_player_not_available_toast">Vídeó er ekki fundin. Vinsamlega endurhalaðu</string>
@@ -919,7 +919,7 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_auto_translate_additional_languages_title">Aukmál fyrir sjálfvirka þýðingu</string>
   <string name="morphe_auto_translate_additional_languages_summary">Bætir fleiri tungumálum í menyrnina fyrir sjálfvirka þýðingu</string>
   <!-- layout.captions.captionCookiesPatch -->
-  <string name="morphe_set_caption_cookies_title">Stilltu kökkurnar sem þurfa að vera stilltar á Timed Text API (Gögn kökkurdreifur)</string>
+  <string name="morphe_set_caption_cookies_title">Stilltu kex fyrir texta</string>
   <string name="morphe_set_caption_cookies_summary">"Lagfærir innbyggða YouTube villu þar sem sjálfvirku þýðingartextarnir gætu ekki verið tiltækir vegna vantaðra smákaka
 
 'Texta smákökur' verða að vera gefnar"</string>
@@ -1001,7 +1001,7 @@ Til að fá aðgang að Stillingum, virkjaðu stillingahnappinn í gegnum Almenn
   <string name="morphe_navigation_bar_glass_size_height">Hæð</string>
   <string name="morphe_navigation_bar_glass_size_width">Hámarksbreidd</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Hnappabil</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Sýnir hnappa: %1$d af %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Sýndir hnappar: %1$s af %2$s</string>
   <string name="morphe_toolbar_screen_title">Tólaborð</string>
   <string name="morphe_toolbar_screen_summary">Veldu hvaða þættir birtast á verkfærastikunni</string>
   <string name="morphe_hide_toolbar_chat_button_title">Fela chat á hnappinn</string>
@@ -1371,7 +1371,7 @@ Stillingar → Spilun (eða Sjálfvædd spilun) → Sjálfvædd næsta myndband"
   <string name="morphe_header_logo_entry_5">Sérstakt</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Umfarð myndaðsvernd</string>
-  <string name="morphe_bypass_image_region_restrictions_summary">Leitarstöðvar umferðarstaða</string>
+  <string name="morphe_bypass_image_region_restrictions_summary">Beina thumbnail beiðnir á annan netþjón til að laga vantar myndir á takmörkuðum svæðum</string>
   <!-- layout.dearrow.deArrowPatch -->
   <!-- "DeArrow" must be kept untranslated. -->
   <string name="morphe_dearrow_titles_title">DeArrow titlar</string>
@@ -1633,7 +1633,7 @@ Myndbandsspilun með AV1 getur hrickast eða skotið ramma"</string>
   <string name="morphe_series_tracker_identity_unavailable">Eftirfylgi getur ekki verið virkjað í incognito eða áður en YouTube hefur hlaðið núverandi reikningsstöðu. Farðu heim og reyndu aftur. Engin innskráning er nauðsynleg</string>
   <string name="morphe_series_tracker_enable">Kveikja á staðbundnum rekstri</string>
   <string name="morphe_series_tracker_tracking_paused">Framvundurupptaka er slökkt</string>
-  <string name="morphe_series_tracker_resume_at">Halda áfram við %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Halda áfram við %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s episódur hafa verið skoðaðar</string>
   <string name="morphe_series_tracker_episode_position">Episódus %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Episódu %1$s-%2$s af %3$s</string>
@@ -1643,7 +1643,7 @@ Myndbandsspilun með AV1 getur hrickast eða skotið ramma"</string>
   <string name="morphe_series_tracker_plan_changed"> Veldu episóða </string>
   <string name="morphe_series_tracker_plan_caught_up"> Á dagskrá </string>
   <string name="morphe_series_tracker_plan_none"> Engir spilanlegir episóður </string>
-  <string name="morphe_series_tracker_saved_position"> Vistað myndband · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Vistað myndband · %s</string>
   <string name="morphe_series_tracker_follow"> Fylgja röð </string>
   <string name="morphe_series_tracker_view_series"> Sjá röð </string>
   <string name="morphe_series_tracker_continue">Halda áfram</string>
@@ -1654,7 +1654,7 @@ Myndbandsspilun með AV1 getur hrickast eða skotið ramma"</string>
   <string name="morphe_series_tracker_undo">Afturkalla</string>
   <string name="morphe_series_tracker_enable_short">Virkja</string>
   <string name="morphe_series_tracker_new_episode"> 1 ný episóða </string>
-  <string name="morphe_series_tracker_new_episodes">%1$s nýir þættir</string>
+  <string name="morphe_series_tracker_new_episodes">%s nýjar þætti</string>
   <string name="morphe_series_tracker_record_short"> Taka upp framvindu á þessu tæki </string>
   <string name="morphe_series_tracker_follow_consent">"Seríurnar þínar og framvinda þínar eru á þessu tæki, deild á milli YouTube reikninga. YouTube ferillstýringar breyta þeim ekki. Hreinsu framvindu úr Seríuvalmyndinni. \n\nSjálfvirk skráning er valfrjáls. Hún stoppar í incognito eða þegar reikningurinn breytist"</string>
   <string name="morphe_series_tracker_follow_unavailable">Ekki var hægt að hlaða episóðum. Þú getur vistat safnvísunina sem merkingu</string>
@@ -1682,12 +1682,12 @@ Myndbandsspilun með AV1 getur hrickast eða skotið ramma"</string>
   <string name="morphe_series_tracker_hide_watched"> Fela skoðað </string>
   <string name="morphe_series_tracker_watched_on_advance">Merkja sem horfið á þegar farið er í næsta þátt</string>
   <string name="morphe_series_tracker_watch_previous"> Merkja fyrrari episóður sem skoðaðar </string>
-  <string name="morphe_series_tracker_order_starts_with"> Byrjar með : %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Hefist á: %s</string>
   <string name="morphe_series_tracker_episode_order"> Röð episóða </string>
   <string name="morphe_series_tracker_playlist_order"> Rósa spillunnarlista </string>
   <string name="morphe_series_tracker_reverse_order"> Öfug röð spilunarlista </string>
-  <string name="morphe_series_tracker_view_count">%1$s sýningar</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s sýning</string>
+  <string name="morphe_series_tracker_view_count">%s skoðanir</string>
+  <string name="morphe_series_tracker_view_count_one">%s skoðun</string>
   <string name="morphe_series_tracker_completion_title"> Merkja episóður sem skoðaðar </string>
   <string name="morphe_series_tracker_completion_summary">A.m.k. %1$s%% skoðað með mest 90 sekúndum eftir, eða %2$s sekúndum eftir</string>
   <string name="morphe_series_tracker_completion_explanation">Merkja sjálfkrafa episódus sem skoðað eftir hvora þröskuld. Prsentreglan krefst einnig að minnst 90 sekúndum eftir, svo lok langa episóða er ekki sleppt. Reglan um eftirstandandi tíma gildir um myndbönd lengri en eina mínútu; settu 0 til að gera óvirkt. Breytingar gilda fyrir framtíð framvindupfærslur. Handvirk skoðað/ooskoðað val eru haldin</string>
@@ -1707,7 +1707,7 @@ Myndbandsspilun með AV1 getur hrickast eða skotið ramma"</string>
   <string name="morphe_series_tracker_backup_restore"> Endurheimta afskrift </string>
   <string name="morphe_series_tracker_backup_preview">Bættu við %1$s seríum. %2$s seríur þegar í safninu þínu eru haldnar. Eining mydbands framvinda er haldin</string>
   <string name="morphe_series_tracker_backup_saved"> Afskrift röðar vistuð </string>
-  <string name="morphe_series_tracker_backup_restored">Endurstilla %1$s seríur</string>
+  <string name="morphe_series_tracker_backup_restored">Endurkallað %s röðir</string>
   <string name="morphe_series_tracker_error_backup_invalid">Þetta skjal er ekki stytt seríubakvistun, eða of stórt. Safnið þitt var ekki breytt</string>
   <string name="morphe_series_tracker_error_backup_write">Gat ekki vistut bakvistun. Reindu annan stað</string>
   <string name="morphe_series_tracker_removed"> Röð fjarlægð </string>
@@ -1717,7 +1717,7 @@ Myndbandsspilun með AV1 getur hrickast eða skotið ramma"</string>
   <string name="morphe_series_tracker_recovery_choose">Þú getur einnig valið hvaða episódus hér að neðan. Eldri episóðus eru ekki breytt</string>
   <string name="morphe_series_tracker_playback_changed">Þessi safnvísun breytti. Opnaðu seríuna til að velja hvar áframhaldast</string>
   <string name="morphe_series_tracker_playback_boundary"> Engir fleiri episóður í þessa átt </string>
-  <string name="morphe_series_tracker_continue_series"> Halda áfram %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Halda áfram með %s</string>
   <string name="morphe_series_tracker_search_series"> Leita að röðum </string>
   <string name="morphe_series_tracker_clear_search"> Hreinsa leit </string>
   <string name="morphe_series_tracker_no_search_results"> Engar raddir fundust </string>
@@ -1746,6 +1746,10 @@ Myndbandsspilun með AV1 getur hrickast eða skotið ramma"</string>
   <string name="morphe_niconico_comments_live_premieres_summary">Frumframsýningar á meðan þær spilast</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Sýna í endaðum úrvinnuvídeókum</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Spilun aftur á spjalli fyrir úrvinnuðar frumsýningar</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Sýna tímabundnar athugasemdir</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Á myndblendum án spjalli eru efstu athugasemdir sem innihalda tíma, eins og 1:23, sýndar á því tímasnúni</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Sýna tímaskráða athugasemdir með endspilun spjalls</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Í endspilunum af beinum streymingum og úrvinnuðum sýningum eru tímaskráðar athugasemdir einnig sýndar með spjallinu</string>
   <string name="morphe_live_chat_translate_screen_title">Þýðing á beinsendum spjallum</string>
   <string name="morphe_live_chat_translate_screen_summary">Þýðir skilaboð í beinsendum spjallum og endspilunum þeirra</string>
   <string name="morphe_live_chat_translate_title">Þýða beinsenda spjall</string>

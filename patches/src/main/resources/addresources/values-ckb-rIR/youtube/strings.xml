@@ -341,11 +341,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">دەستەواژە ڕاگەیاندنی ناکۆکی هەیە: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">دەستەواژە زۆر کورتە و پێویستی بە کۆتەیشن هەیە: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">دەستەواژە هەموو ڤیدیۆکان دەشارێتەوە: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• سێوە: %s
-• بەشدارکێرییەکان: %s
-• گەڕان: %s
-• کۆمێنتەکان: %s
-• کۆی گشتی: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• سەرەتا: %1$s
+• بەشدارییەکان: %2$s
+• گەڕان: %3$s
+• کۆمێنتەکان: %4$s
+• کۆی گشتی: %5$s"</string>
   <string name="morphe_hide_stats_category_title">دۆخ</string>
   <string name="morphe_hide_stats_hidden_24h_title">ڤیدیۆکانی شاراوە، ٢٤ کاتژمێری ڕابردوو</string>
   <string name="morphe_hide_stats_hidden_all_title">ڤیدیۆکانی شاراوە، هەموو کات</string>
@@ -357,9 +357,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_warnlist_category_title">لیستی ئاگادارکردنەوە: متمانەی مامناوەند</string>
   <string name="morphe_hide_aislist_hide_home_title">شاردنەوەی ڤیدیۆکان لە سەرەتا</string>
   <string name="morphe_hide_aislist_hide_search_title">شاردنەوەی ڤیدیۆکان لە گەڕان</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• سەرەتا: %s
-• گەڕان: %s
-• کۆی گشتی: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• سەرەتا: %1$s
+• گەڕان: %2$s
+• کۆی گشتی: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">کەناڵەکانی لیستی بلۆککراو</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">کەناڵەکانی لیستی ئاگادارکردنەوە</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">فلتەرێک چالاک بکە بۆ بارکردنی کەناڵەکان</string>
@@ -563,7 +563,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">نەتوانرا فۆڵدەری هەناردانی %s بدۆزرێتەوە</string>
   <string name="morphe_export_download_flyout_title">گواستنەوە بۆ ئامێر</string>
   <string name="morphe_export_download_started">هەناردەکردنی ڤیدیۆ</string>
-  <string name="morphe_export_download_progress">هەناردەکردنی ڤیدیۆ: %d%%</string>
+  <string name="morphe_export_download_progress">دەرکردنی ڤیدیۆ: %s%%</string>
   <string name="morphe_export_download_notification_channel">هەناردەکردنی ڤیدیۆکان</string>
   <string name="morphe_export_download_saved">ڤیدیۆکە گوازرایەوە بۆ %s</string>
   <string name="morphe_export_download_failed">نەتوانرا ڤیدیۆکە بگوازرێتەوە</string>
@@ -1014,7 +1014,7 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_height">بەرزی</string>
   <string name="morphe_navigation_bar_glass_size_width">زۆرترین پانی</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">بۆشایی دوگمەکان</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">دوگمەکانی نمایشدراو: %1$d لە %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">دوگمەکانی پیشاندراو: %1$s لە %2$s</string>
   <string name="morphe_toolbar_screen_title">بەڵتە</string>
   <string name="morphe_toolbar_screen_summary">دیاری بکە کام پێکهاتەکان لە شریتی ئامرازەکاندا دەربکەون</string>
   <string name="morphe_hide_toolbar_chat_button_title">دوگمەی چات بشارەوە</string>
@@ -1666,7 +1666,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_identity_unavailable">ناتوانرێت بەدواداچوون لە شێوەی incognito یان پێش ئەوەی YouTube دۆخی هەژماری ئێستا باربکات چالاک بکرێت. بگەڕێوە بۆ سەرەتا و دووبارە هەوڵ بدەرەوە. پێویست بە چوونەژوور نییە</string>
   <string name="morphe_series_tracker_enable">بەدواداچوونی خۆی چالاک بکە</string>
   <string name="morphe_series_tracker_tracking_paused">تۆمارکردنی پێشکەوتن بەستراوە</string>
-  <string name="morphe_series_tracker_resume_at">دووبارە دەستپێبکەرەوە لە %1$s</string>
+  <string name="morphe_series_tracker_resume_at">بەردەوامبە لە %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s ئەڵقە بینراوە</string>
   <string name="morphe_series_tracker_episode_position">ئەڵقەی %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">ئەڵقەکانی %1$s-%2$s لە %3$s</string>
@@ -1676,7 +1676,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_plan_changed">ئەپیزۆدێک هەڵبژێرە</string>
   <string name="morphe_series_tracker_plan_caught_up">نوێکراوەتەوە</string>
   <string name="morphe_series_tracker_plan_none">هیچ ئەپیزۆدێکی قابل بە لایەنەوە نییە</string>
-  <string name="morphe_series_tracker_saved_position">ڤیدیۆی پاشکەوتکراو · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">ڤیدیۆی پاشکەوتکراو · %s</string>
   <string name="morphe_series_tracker_follow">بەدواداچوونی زنجیرەکە</string>
   <string name="morphe_series_tracker_view_series">بینینی زنجیرە</string>
   <string name="morphe_series_tracker_continue">بەردەوامبوون</string>
@@ -1686,8 +1686,8 @@ AVC (H.264)
   <string name="morphe_series_tracker_marked">ئەڵقە بینراوەکانی نیشانە کراوە</string>
   <string name="morphe_series_tracker_undo">گەڕانەوە</string>
   <string name="morphe_series_tracker_enable_short">چالاککردن</string>
-  <string name="morphe_series_tracker_new_episode">{\"one\":\"١ ئەپیزۆدی نوێ\",\"other\":\"{0} ئەپیزۆدی نوێ\"}</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s ئەپیزۆدی نوێ</string>
+  <string name="morphe_series_tracker_new_episode">1 beşa nû</string>
+  <string name="morphe_series_tracker_new_episodes">%s ئەڵقەی نوێ</string>
   <string name="morphe_series_tracker_record_short">تۆمارکردنی پێشکەوتن لەسەر ئەم ئامێرە</string>
   <string name="morphe_series_tracker_follow_consent">"زنجیرەکان و پێشکەوتنەکەت لەسەر ئەم ئامێرە دەمێننەوە، و لە نێوان هەژمارەکانی YouTube دابەش دەبن. کۆنترۆڵەکانی مێژووی YouTube گۆڕانکارییان تێدا ناکەن. پێشکەوتنەکان لە مینیووی زنجیرەکان پاککەرەوە
 
@@ -1717,12 +1717,12 @@ AVC (H.264)
   <string name="morphe_series_tracker_hide_watched">شاردنەوەی بینراوەکان</string>
   <string name="morphe_series_tracker_watched_on_advance">وەک بینراو نیشان بدە لە کاتی گواستنەوە بۆ ئەڵقەی داهاتوو</string>
   <string name="morphe_series_tracker_watch_previous">نیشانەکردنی ئەڵقەکانی پێشوو وەک بینراو</string>
-  <string name="morphe_series_tracker_order_starts_with">دەست پێ دەکات بە: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">دەست پێ دەکات بە: %s</string>
   <string name="morphe_series_tracker_episode_order">ڕیزبەندی ئەڵقەکان</string>
   <string name="morphe_series_tracker_playlist_order">ڕیزبەندی لیستی دەنگوگۆ</string>
   <string name="morphe_series_tracker_reverse_order">پێچەوانەکردنی ڕیزبەندی لیستی دەنگوگۆ</string>
-  <string name="morphe_series_tracker_view_count">%1$s بینین</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s بینین</string>
+  <string name="morphe_series_tracker_view_count">%s بینین</string>
+  <string name="morphe_series_tracker_view_count_one">%s بینین</string>
   <string name="morphe_series_tracker_completion_title">نیشانەدانی ئەڵقە بینراوەکان</string>
   <string name="morphe_series_tracker_completion_summary">لانی کەم %1$s%% بینراوە و زۆترینما ٩٠ چرکەی ماوە، یان %2$s چرکەی تری ماوە</string>
   <string name="morphe_series_tracker_completion_explanation">بە شێوەیەکی ئۆتۆماتیکی ئەڵقەیەک وەک بینراو نیشانە بدە دوای گەیشتن بە هەر یەکێک لە هەردوو ڕێژەکە. یاسای ڕێژەی سەدی هەروەها داوا دەکات کە زیاتر لە ٩٠ چرکە نەمێنێت، بۆ ئەوەی کۆتایی ئەڵقە درێژەکان لێیان نەپەڕێت. یاسای کاتی ماوەوە بۆ ئەو ڤیدیۆیانەیە کە زیاتر لە یەک خولەک بن؛ بۆ ڕایاندان دایبنێ بە ٠. گۆڕانکارییەکان بۆ نوێکردنەوەی پێشکەوتنەکانی داهاتوو جێبەجێ دەبن. هەڵبژاردنە دەستییەکانی بینراو/نەبینراو دەمێننەوە</string>
@@ -1742,7 +1742,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_backup_restore">گەڕانەوەی پشتپشتی</string>
   <string name="morphe_series_tracker_backup_preview">زیادکردنی %1$s زنجیرە. %2$s زنجیرە کە پێشتر لە کتێبخانەکەتدا بوون دەمێننەوە. پێشکەوتنی ڤیدیۆکانی ئێستا دەمێننەوە</string>
   <string name="morphe_series_tracker_backup_saved">پشتپشتی زنجیرەکە پاشکەوت کرا</string>
-  <string name="morphe_series_tracker_backup_restored">گەڕانەوەی %1$s زنجیرە</string>
+  <string name="morphe_series_tracker_backup_restored">%s زنجیرەی گەڕێندراوە</string>
   <string name="morphe_series_tracker_error_backup_invalid">ئەم فایلە پشتەباکی زنجیرەیەکی پشتگیرنەکراو نییە، یان زۆر گەورەیە. کتێبخانەکەت گۆڕانکاری تێدا نەکرا</string>
   <string name="morphe_series_tracker_error_backup_write">نەتوانرا پشتەباکەکە پاشکەوت بکرێت. شوێنێکی تر تاقیبکەرەوە</string>
   <string name="morphe_series_tracker_removed">زنجیرەکە لابروا</string>
@@ -1752,7 +1752,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_recovery_choose">دەتوانی هەر ئەپیزۆدێک لە خوارەوە هەڵبژێریت. ئەپیزۆدەکانی پێشوو دەستکاری نەکراون</string>
   <string name="morphe_series_tracker_playback_changed">ئەم لیستەپەیڵستەیە گۆڕاوە. زنجیرەکە بکەرەوە بۆ ئەوەی هەڵبژێریت لە کوێوە بەردەوام بیت</string>
   <string name="morphe_series_tracker_playback_boundary">هیچ ئەڵقەیەکی تر لەم ئاراستەیەدا نییە</string>
-  <string name="morphe_series_tracker_continue_series">بەردەوام بە لە %1$s</string>
+  <string name="morphe_series_tracker_continue_series">بەردەوام بە لە %s</string>
   <string name="morphe_series_tracker_search_series">گەڕان بۆ زنجیرەکان</string>
   <string name="morphe_series_tracker_clear_search">پاککردنەوەی گەڕان</string>
   <string name="morphe_series_tracker_no_search_results">هیچ زنجیرەیەک نەدۆزرایەوە</string>
@@ -1781,6 +1781,10 @@ AVC (H.264)
   <string name="morphe_niconico_comments_live_premieres_summary">پێشسەنگەکان کاتێک دەلەکەن</string>
   <string name="morphe_niconico_comments_ended_premieres_title">نیشاندان لەو پریمێرایانەی کۆتاییان هاتووە</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">دووبارە لایەنی چاتەکەی ئەو پریمێرایانەی کۆتاییان هاتووە</string>
+  <string name="morphe_niconico_comments_timed_comments_title">پیشاندانی کۆمێنتە کاتدارەکان</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">لە ڤیدیۆکانی بێ چات، ئەو کۆمێنتە سەرەکییانەی کە کاتێکیان تێدایە وەک 1:23 لەو کاتەدا پیشان دەدرێن</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">کۆمێنتە کاتدیارەکان پیشان بدە لەگەڵ دووبارە لایەنی چاتەکە</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">لە دووبارە لایەنی ستریمە ڕاستەوخۆکان و پریمێرەکاندا، کۆمێنتە کاتدیارەکانیش لەگەڵ چاتەکە پیشان دەدرێن</string>
   <string name="morphe_live_chat_translate_screen_title">وەرگێڕانی چاتی ڕاشکاو</string>
   <string name="morphe_live_chat_translate_screen_summary">وەرگێڕانی نامەکانی چاتی ڕاشکاو و دووبارە لایەنی چاتی ڕاشکاو</string>
   <string name="morphe_live_chat_translate_title">وەرگێڕانی چاتی ڕاشکاو</string>

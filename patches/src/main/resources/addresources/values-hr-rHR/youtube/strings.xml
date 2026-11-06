@@ -131,7 +131,7 @@ Second \"item\" text"</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Sakrij oznake na videozapisima</string>
   <string name="morphe_hide_video_labels_summary">Sakriva oznake poput \'Automatski sinkronizirano\' / \'Sinkronizirano\', \'Zarađuje proviziju\', \'Razvikano\', \'Ljudi su gledali i ovo\', \'proizvod(i)\' i \'Možda će vam se svidjeti i ovo\'</string>
-  <string name="morphe_hide_view_count_title">Dodajte navlake za koristiti ključ: %s</string>
+  <string name="morphe_hide_view_count_title">Sakrij broj pregleda</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Ograničenja:
 • Shorts police, stranice kanala i rezultati pretraživanja možda će i dalje prikazivati broj pregleda
@@ -207,7 +207,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_title">Sakrij tipku \'Pretplati se\'</string>
   <string name="morphe_hide_transcript_section_title">Sakrij odjeljak transkripta</string>
   <string name="morphe_hide_video_details_section_title">Sakrij odjeljak \'Video detalji\'</string>
-  <string name="morphe_hide_filter_bar_screen_title">Sakrij ili prikaži filter bar u feedovima, videoz, pretraživanjima i povratku</string>
+  <string name="morphe_hide_filter_bar_screen_title">Traka s filtrima</string>
   <string name="morphe_hide_filter_bar_screen_summary">Odaberite gdje sakriti kliznu traku filtra</string>
   <string name="morphe_hide_filter_bar_in_channel_page_title">Sakrij na stranici kanala</string>
   <string name="morphe_hide_filter_bar_in_comments_title">Sakrij u komentarima</string>
@@ -331,11 +331,11 @@ Ograničenja:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Kljjuč ima proturke izjave: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kljjuč je prekrato kratak i mora imati navlake: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kljjuč će skriveni sve videozapise: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Početna: %s
-• Pretplate: %s
-• Pretraživanje: %s
-• Komentari: %s
-• Ukupno: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Početna: %1$s
+• Pretplate: %2$s
+• Pretraživanje: %3$s
+• Komentari: %4$s
+• Ukupno: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Statistike</string>
   <string name="morphe_hide_stats_hidden_24h_title">Sakriveni videozapisi, zadnjih 24 sata</string>
   <string name="morphe_hide_stats_hidden_all_title">Sakriveni videozapisi, ukupno</string>
@@ -347,9 +347,9 @@ Ograničenja:
   <string name="morphe_hide_aislist_warnlist_category_title">Lista upozorenja: Umjereno povjerenje</string>
   <string name="morphe_hide_aislist_hide_home_title">Sakrij videozapise na Početnoj</string>
   <string name="morphe_hide_aislist_hide_search_title">Sakrij videozapise u pretraživanju</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Početna: %s
-• Pretraživanje: %s
-• Ukupno: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Početna: %1$s
+• Pretraživanje: %2$s
+• Ukupno: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Kanali na listi blokiranja</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Kanali na listi upozorenja</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Omogućite filtar za učitavanje kanala</string>
@@ -552,7 +552,7 @@ Mapa za izvoz: %s"</string>
   <string name="morphe_export_download_folder_missing">Mapa za izvoz %s nije pronađena</string>
   <string name="morphe_export_download_flyout_title">Izvezi na uređaj</string>
   <string name="morphe_export_download_started">Izvoz videozapisa</string>
-  <string name="morphe_export_download_progress">Izvoz videozapisa: %d%%</string>
+  <string name="morphe_export_download_progress">Izvoz videa: %s%%</string>
   <string name="morphe_export_download_notification_channel">Izvozi videozapisa</string>
   <string name="morphe_export_download_saved">Videozapis izvezen u %s</string>
   <string name="morphe_export_download_failed">Nije bilo moguće izvesti videozapis</string>
@@ -597,7 +597,7 @@ Dodirnite ovdje za otvaranje OpenRouter.ai"</string>
   <string name="morphe_vot_http_error_message">"Usluga prijevoda vratila je HTTP pogrešku %s. Vaša IP adresa je vjerojatno ograničena na do 24 sata.
 
 Za nastavak korištenja prijevoda, prebacite se na drugog davatelja prijevoda u postavkama ili koristite VPN"</string>
-  <string name="morphe_vot_do_not_show_again">Nije moguće podesati segment: %1$d %2$s</string>
+  <string name="morphe_vot_do_not_show_again">Ne prikazuj ponovno</string>
   <string name="morphe_vot_export_api_key_warning">"Vaše postavke sadrže OpenRouter API ključ.
 
 Vaš API ključ nikada ne smijete dijeliti. Bilo tko s pristupom njemu može koristiti vaše OpenRouter kredite"</string>
@@ -1003,7 +1003,7 @@ Za pristup Postavkama omogućite gumb Postavke putem Općenito → Alatna traka 
   <string name="morphe_navigation_bar_glass_size_height">Visina</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimalna širina</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Razmak između tipki</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Prikazane tipke: %1$d od %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Prikazani gumbi: %1$s od %2$s</string>
   <string name="morphe_toolbar_screen_title">Traka</string>
   <string name="morphe_toolbar_screen_summary">Odaberite koje komponente se pojavljuju u traci s alatima</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sakrij tipku Chat </string>
@@ -1651,7 +1651,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_identity_unavailable">Praćenje se ne može omogućiti u incognito načinu rada ili prije nego što YouTube učita stanje trenutnog računa. Vrati se na Početnu stranicu i pokušaj ponovo. Prijava nije potrebna</string>
   <string name="morphe_series_tracker_enable">Omogući lokalno praćenje</string>
   <string name="morphe_series_tracker_tracking_paused">Snimanje napretka je isključeno</string>
-  <string name="morphe_series_tracker_resume_at">Nastavi na %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Nastavi na %s</string>
   <string name="morphe_series_tracker_watched_count"><b>%1$s</b> / <b>%2$s</b> prikazane epizode</string>
   <string name="morphe_series_tracker_episode_position">Epizoda %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Epizode %1$s-%2$s od %3$s</string>
@@ -1661,7 +1661,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_plan_changed">Odaberite epizodu</string>
   <string name="morphe_series_tracker_plan_caught_up">Ažurno</string>
   <string name="morphe_series_tracker_plan_none">Nema epizoda za reprodukciju</string>
-  <string name="morphe_series_tracker_saved_position">Spremljeni video · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Spremljeni video · %s</string>
   <string name="morphe_series_tracker_follow">Prati seriju</string>
   <string name="morphe_series_tracker_view_series">Pogledaj seriju</string>
   <string name="morphe_series_tracker_continue">Nastavi</string>
@@ -1672,7 +1672,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_undo">Poništi</string>
   <string name="morphe_series_tracker_enable_short">Omogući</string>
   <string name="morphe_series_tracker_new_episode">1 nova epizoda</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s nove epizode</string>
+  <string name="morphe_series_tracker_new_episodes">%s nove epizode</string>
   <string name="morphe_series_tracker_record_short">Snimanje napretka na ovom uređaju</string>
   <string name="morphe_series_tracker_follow_consent">"Vaše serije i napredak ostaju na ovom uređaju, dijeleći se između YouTube računa. Kontrola povijesti YouTuba ne mijenja te podatke. Očistite napredak iz izbornika Serije.\n\nAutomatsko snimanje je opcionalno. Zaustavlja se u incognito načinu rada ili kada se račun promijeni"</string>
   <string name="morphe_series_tracker_follow_unavailable">Epizode nisu mogle biti učitane. Playlistu možete spremiti kao oznaku</string>
@@ -1700,12 +1700,12 @@ AVC (H.264)
   <string name="morphe_series_tracker_hide_watched">Sakrij gledano</string>
   <string name="morphe_series_tracker_watched_on_advance">Označi kao pogledano pri prelasku na sljedeću epizodu</string>
   <string name="morphe_series_tracker_watch_previous">Obilježi prethodne epizode kao gledane</string>
-  <string name="morphe_series_tracker_order_starts_with">Počinje s: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Započinje s: %s</string>
   <string name="morphe_series_tracker_episode_order">Redoslijed epizoda</string>
   <string name="morphe_series_tracker_playlist_order">Redoslijed playliste</string>
   <string name="morphe_series_tracker_reverse_order">Obrnuti redoslijed playliste</string>
-  <string name="morphe_series_tracker_view_count">%1$s pregleda</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s pregled</string>
+  <string name="morphe_series_tracker_view_count">%s pregleda</string>
+  <string name="morphe_series_tracker_view_count_one">%s pregled</string>
   <string name="morphe_series_tracker_completion_title">Obilježi epizode kao gledane</string>
   <string name="morphe_series_tracker_completion_summary">Najmanje %1$s%% gledano/s gledana/s gledano/s s najviše 90 sekundi preostalo, ili %2$s sekundi preostalo</string>
   <string name="morphe_series_tracker_completion_explanation">Automatski označite epizodu kao gledanu nakon jednog od pragova. Pravilo postotka također zahtijeva najviše 90 sekundi preostalo, tako da kraj dugih epizoda nije preskočen. Pravilo preostalog vremena primjenjuje se na videozapise duže od jedne minute; postavite ga na 0 da biste ga onemogućili. Promjene se primjenjuju na buduće ažuriranja napretka. Ručni izborovi gledanja/ne-pregledavanja se čuvaju</string>
@@ -1725,7 +1725,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_backup_restore">Vrati backup</string>
   <string name="morphe_series_tracker_backup_preview">Dodajte %1$s seriju/serija/serija. Već postojeće %2$s serije/serije/serija u vašoj knjižnici se čuvaju. Postojeći napredak videozapisa se čuva</string>
   <string name="morphe_series_tracker_backup_saved">Backup serija spremljen</string>
-  <string name="morphe_series_tracker_backup_restored">Vraćeno %1$s serija/serija/serija</string>
+  <string name="morphe_series_tracker_backup_restored">Vraćeno %s serija</string>
   <string name="morphe_series_tracker_error_backup_invalid">Ova datoteka nije podržana sigurnosna kopija serije ili je prevelika. Vaša knjižnica nije promijenjena</string>
   <string name="morphe_series_tracker_error_backup_write">Sigurnosnu kopiju nije moguće spremiti. Pokušajte drugu lokaciju</string>
   <string name="morphe_series_tracker_removed">Serija je uklonjena</string>
@@ -1735,7 +1735,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_recovery_choose">Možete odabrati i bilo koju epizodu ispod. Ranije epizode se ne mijenjaju</string>
   <string name="morphe_series_tracker_playback_changed">Ova playlista se promijenila. Otvorite seriju kako biste odabrali gdje nastaviti</string>
   <string name="morphe_series_tracker_playback_boundary">Nema više epizoda u ovom smjeru</string>
-  <string name="morphe_series_tracker_continue_series">Nastavi %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Nastavite %s</string>
   <string name="morphe_series_tracker_search_series">Pretraži serije</string>
   <string name="morphe_series_tracker_clear_search">Obriši pretragu</string>
   <string name="morphe_series_tracker_no_search_results">Nije pronađena serija</string>
@@ -1764,6 +1764,10 @@ AVC (H.264)
   <string name="morphe_niconico_comments_live_premieres_summary">Premiere dok se reproduciraju</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Prikaži na završenim premierama</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Ponovnica chata premijera koje su završile</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Pokaži vremenski označene komentare</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Na videozapisima bez chata, vrhunski komentari koji sadrže vrijeme kao što je 1:23 prikazuju se u tom trenutku</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Prikaži vremenski označene komentare uz ponovnu reprodukciju chata</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Pri ponovnim reprodukcijama prijenosa uživo i premijera, vremenski označeni komentari također se prikazuju uz chat</string>
   <string name="morphe_live_chat_translate_screen_title">Prijevod chata uživo</string>
   <string name="morphe_live_chat_translate_screen_summary">Prevedi poruke chata uživo i ponovnice chata uživo</string>
   <string name="morphe_live_chat_translate_title">Prevedi chat uživo</string>

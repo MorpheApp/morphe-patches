@@ -150,6 +150,9 @@ Feictear rianta íoslódáilte anseo"</string>
   <string name="morphe_music_downloads_previous">Roimhe seo</string>
   <string name="morphe_music_downloads_next">Ar Aghaidh</string>
   <string name="morphe_music_downloads_pause">Sos</string>
+  <string name="morphe_music_downloads_shuffle">Meascair</string>
+  <string name="morphe_music_downloads_repeat">Athdhéan</string>
+  <string name="morphe_music_downloads_minimize">Minimigh</string>
   <string name="morphe_music_downloads_close">Dún</string>
   <string name="morphe_music_downloads_delete">Scrios</string>
   <string name="morphe_music_downloads_delete_track">Scrios an íoslódáil</string>
@@ -201,25 +204,27 @@ Feictear rianta íoslódáilte anseo"</string>
   <string name="morphe_music_downloads_complete">Íoslódáil críochnaithe</string>
   <string name="morphe_music_downloads_failed">Theip ar an íoslódáil</string>
   <string name="morphe_music_downloads_playlist_download_title">Íoslódáil seinmliosta</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Ag liostáil traiciaí…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s liostáilte…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Níorbh fhéidir traiciaí an seinmliosta a liostáil</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Íoslódáilte cheana féin: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s sa seinmliosta seo, %2$s nach bhfuil íoslódáilte fós.
+  <string name="morphe_music_downloads_playlist_download_listing">Ag liostú rianta…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">%s liostaithe…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Níorbh fhéidir rianta an seinmliosta a liostú</string>
+  <string name="morphe_music_downloads_playlist_download_all_saved">Íoslódáilte cheana: %s</string>
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s sa seinmliosta seo; níl %2$s íoslódáilte go fóill.
 
-Íoslódáiltear iad aon focal i gcónaí, rud a d'fháil go leandúnach agus a theastaíonn thart ar %3$s spáis saor"</string>
+Íoslódáiltear iad ceann ar cheann; d’fhéadfadh sé sin a lán ama a thógáil, agus tá thart ar %3$s de spás saor ag teastáil."</string>
   <string name="morphe_music_downloads_playlist_download_confirm_button">Íoslódáil</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Ag íoslódáil traicean %1$s as %2$s</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Ag íoslódáil rian %1$s as %2$s</string>
   <string name="morphe_music_downloads_playlist_download_complete">%s íoslódáilte</string>
   <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s íoslódáilte, níorbh fhéidir %2$s a íoslódáil</string>
   <string name="morphe_music_downloads_playlist_download_already_running">Íoslódáil seinmliosta ar siúl cheana féin</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Níl d\'acáunt aitheach fós. Bain iomtaigh arís i bhfad amach</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">Níl d’chuntas ar eolas go fóill. Bain triail as arís i gceann nóiméid.</string>
   <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s liostáilte, gach ceann íoslódáilte cheana féin</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Níorbh fhéidir ach cuid amháin den seinmliosta a liostáil. Tapáil Íoslódáil arís níos déanaí chun an faimse a fháil</string>
-  <string name="morphe_music_downloads_playlist_download_started">Ag íoslódáil %s sa cúltaigh</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Gan nasc líonraithe</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Níorbh fhéidir ach cuid amháin den seinmliosta a liostáil. Tapáil Íoslódáil arís níos déanaí chun an chuid eile a fháil.</string>
+  <string name="morphe_music_downloads_playlist_download_started">Ag íoslódáil %s sa chúlra</string>
+  <string name="morphe_music_downloads_playlist_download_no_network">Gan nasc líonra</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">Ag fanacht ar an líonra…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Stopadh tar éis %1$s as %2$s. Tapáil Íoslódáil arís chun leanúint</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">Stoptha tar éis %1$s as %2$s. Tapáil Íoslódáil arís chun leanúint ar aghaidh</string>
+  <string name="morphe_music_downloads_mark_title">Marcáil amhráin íoslódáilte</string>
+  <string name="morphe_music_downloads_mark_summary">Taispeánann amhráin atá íoslódáilte cheana féin marc roimh a shonraí i liostaí amhrán, albaim agus torthaí cuardaigh</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Maidir</string>
@@ -340,6 +345,42 @@ Athsheinm SABR (sruthanna físeáin bréagaithe as)"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Cuir an rian roghnaithe leis an scuaine</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">Cuireadh leis an scuaine</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">Tagaí seinmliosta</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Tagaí seinmliostaí agus scagair an Leabharlann araon taga</string>
+  <string name="morphe_music_playlist_tags_title">Cuir tagaí seinmliosta i bhbláth</string>
+  <string name="morphe_music_playlist_tags_summary">Cuireann sé item Tagaí sa rhizosphere seinmliostaí, agus cnaipe scagairt Tagaí in aice le cnaipe sorthála sa Leabharlann</string>
+  <string name="morphe_music_playlist_tags_manage_title">Baincáil tagaí seinmliosta</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Cruthaigh, athainmnigh agus scrios tagaí, agus cuir tagaí ar na seinmliostaí a fheictear i do Leabharlann</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">Tagaí</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">Níl aon tagaí</string>
+  <string name="morphe_music_playlist_tags_filter_button">Tagaí</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">Tag: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">Tagaí (%s i bhfolach)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">Tagaí do %s</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">Tag nua</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 seinmliosta</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">Tá tag darbh ainm %s ann cheana féin</string>
+  <string name="morphe_music_playlist_tags_filter_title">Scagair araon tag</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">Taispeáin amháin</string>
+  <string name="morphe_music_playlist_tags_filter_all">Gach seinmliosta</string>
+  <string name="morphe_music_playlist_tags_filter_visible">Tagaí visible</string>
+  <string name="morphe_music_playlist_tags_manage">Bainistigh</string>
+  <string name="morphe_music_playlist_tags_none">Níl aon tagaí ann go henüz. Brúigh go fada ar seinmliosta agus roghnaigh Tagaí chun ceann a chruthú</string>
+  <string name="morphe_music_playlist_tags_section_tags">Tagaí</string>
+  <string name="morphe_music_playlist_tags_section_playlists">Seinmliostaí</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Oscail an Leabharlann uair amháin ionas go bhfeicfear do seinmliostaí anseo</string>
+  <string name="morphe_music_playlist_tags_new_tag">Tag nua</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">Cuir tag i bhfoirm</string>
+  <string name="morphe_music_playlist_tags_rename">Athainmnigh</string>
+  <string name="morphe_music_playlist_tags_delete">Scrios</string>
+  <string name="morphe_music_playlist_tags_hidden">I bhfolach</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Folaigh an cnaipe Cast</string>
   <string name="morphe_music_hide_history_button_title">Cnaipe Folaigh Stair</string>
@@ -508,6 +549,46 @@ Athsheinm SABR (sruthanna físeáin bréagaithe as)"</string>
   <string name="morphe_music_scrobbling_about_summary">"Sincronóireann scrobbling do úsáid YouTube Music le do phróifíl Last.fm or ListenBrainz go huathoimatic
 
 Chun a chinntiú go bhfuil scrobbling i gcóir le linn imirt san chúlra, déan cinnte go bhfuil úsáid batáire aipe YouTube Music socraithe go \"Gan teorainn\""</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">Scaip trácaí ealaíontóirí a thuairnigh an phobal mar AI</string>
+  <string name="morphe_music_soundproof_show_button_title">Taispeáin cnaipe SoundProof</string>
+  <string name="morphe_music_soundproof_show_button_summary">Taispeánann cnaipe sa bharr an tíosaithe chun vótáil an phobail a fheiceáil agus vótáil don ealaíontóir reatha</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">Scaip ealaíontóirí AI</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">Sceipeann riananna go huathoibríoch whose artist reaches the AI threshold below</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">Taispeáin an tósta cealaithe scipeáilte</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">Taispeántar fógra nuair a shceipear rian go huathoibríoch</string>
+  <string name="morphe_music_soundproof_threshold_title">Eascaill aimsithe</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">Íosvótáil AI</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Is AI an t-artist nuair a bhíonn an comhpháirt seo ar a aisleasth óta óta óta óta óta</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">Ísealnúimear vótálacha</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">Ní shceipear artists a bhfuil níos &lt;-vótáil ná seo</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">Scipeáladh %1$s (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">Vótálacha SoundProof don ealaíontóir seo</string>
+  <string name="morphe_music_soundproof_sheet_verified">Fíoraithe</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% daonna</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 vóta</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_no_votes_title">Níl aon vótanna don ealaínire seo fós</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">Níl anDATABASE SoundProof ar fáil fós</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">Tá sé á íoslódáil sa chúlra. Ní leapfaí aon rian go dtí go mbeidh sé ar fáil.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">Vótáil an phobail óDATABASE SoundProof</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">Daorán</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">Intleacht Shaorga</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">Tá an vótáil dúnta: shearchailigh módarátór SoundProof an t-artist seo</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">Ní raith SoundProof. Tá na vótáil ó an database laethúil, agus ní féidir vótáil faoi láthair.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">Éirigh vótáil SoundProof amach</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"Tagann sonraí an artist ó SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), íoslódáilte aon uair in every lá. Nuair a shkipálann tú, ní sheolann sé aon rud faoi cad an bhfuil tú ag seinn. Nuair a osclaíonn tú an bhile SoundProof, seolann sé ainm an artist reatha chuig freastalóir SoundProof chun vótáil úr a thaispeáint agus chun vótáil. Deingníonn an freastalóir vótálaithe trí seoladh IP, mar sin is féidir le do vótáil a bheith difriúil ar líonra eile.
+
+Tá an database faoi cheadú ODC Open Database License (ODbL). Tá eintréisí ó Soul Over AI ag xoundbyte faoi cheadú CC BY 4.0. Níl aon nasc leis nó tacú ó SoundProof nó Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Úsáid liricí tríú páirtí</string>
   <string name="morphe_music_lyrics_enabled_summary">Taispeánann sé liricí ó sheirbhís tríú páirtí, ag úsáid na liricí ionsuite nuair nach bhfaightear aon cheann.</string>
@@ -548,17 +629,17 @@ Is é an chéad cholún an focal, is é an dara ceann a léitheoireacht; déanta
   <string name="morphe_music_lyrics_rime_dict_bad_code">The code must be two or three letters, as in hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">Ní mór an seoladh tosú le https://</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">Ní féidir leis an n-ainm agus an seoladh barra díreach a chur san áit</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">Tá liosta focal cheana féin ag %1$s</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">Léitear %1$s ag an romanizeoir bunaithe agus ní féidir liosta focal a ghlacadh</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">Tá liosta focal cheana féin ag %s</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">Léitear %s ag an romanizeoir bunaithe agus ní féidir liosta focal a ghlacadh</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">Níl sé úsáidte: Tá a léamh féin ag an teanga seo cheana, mar sin bain tic uaidh chun é a bhaint as</string>
-  <string name="morphe_music_lyrics_rime_dict_added">Cuireadh %1$s leis - tic é agus cliceáil Save chun é a íoslódáil</string>
+  <string name="morphe_music_lyrics_rime_dict_added">Cuireadh %s leis - tic é agus cliceáil Save chun é a íoslódáil</string>
   <string name="morphe_music_lyrics_rime_dict_ready">Liostaí focal réidh</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">Liostaí focal réidh (%1$d iontráil)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">Liosta focal á léamh: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Liostaí focal réidh (%s iontráil)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Liosta focal á léamh: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">Theip ar íoslódáil an liosta focal – tapáil Sábháil arís chun triail eile a bhaint as</string>
   <string name="morphe_music_lyrics_clear_cache_title">Glan na liricí stóráilte</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Scrios an %1$s MB de liricí atá stóráilte ar an ngléas seo</string>
-  <string name="morphe_music_lyrics_clear_cache_done">Glanadh %1$s MB</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Scrios an %s MB de liricí atá stóráilte ar an ngléas seo</string>
+  <string name="morphe_music_lyrics_clear_cache_done">Glanadh %s MB</string>
   <string name="morphe_music_token_dialog_get_token">Faigh comhartha</string>
   <string name="morphe_music_apple_music_token_title">Comhartha úsáideora meán Apple Music</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Greamaigh an fianán \"media-user-token\" ó music.apple.com
@@ -624,14 +705,14 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_allow_transliteration_summary">Ceadaigh léamha neamh-Laidineacha ón bhfoinse liricí; nuair atá sé seo díchumasaithe, coinnigh litreacha Laidineacha, litreacha le haicinn, agus digití tonacha amháin.</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Léitear gach focal de liricí a bhfuil uainiú ag gabháil leo (sioncronú focal curtha ar siúl); ní gá aon rud a íoslódáil don Chóiréais; roinneann ceóthar script déag íoslódáil amháin de chuid CLDR; léann an córas \'Rime Wordlist\' carachtair Han nuair a chuimsíonn a thábla focal an teanga sin.</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">Ag íoslódáil foclóirí léitheoireachta…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Léamha réidh (%1$d iontráil)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Léamha réidh (%s iontráil)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Theip ar an íoslódáil — múch é agus athshocraigh chun iarracht eile a dhéanamh</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Foclóir as Líne</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">Seapáinis (SudachiDict, ~75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Carachtair Shíneacha agus Chantainéiseacha (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Focail Shíneacha (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Traslitriú na Gréigise, na hAibítre Coireallaí Slávaí (lena n-áirítear an Rúisis, an Úcráinis, an Bhulgáiris, an tSeirbis, an Bhealarúisis, an Mhacadóinis), na Seoirsis, na hAirméinise, na hEabhraise, na hAraibise, na hAmharaise agus na Siriaise (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Á léamh %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Á léamh %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Taispeáin an cnaipe athnuachana</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Beartaigh chun aistriú go dtí an chéad rogha eile d’fhocail amhráin; brúigh fada chun cuardach a dhéanamh ar fhocail amhráin de réir theideal an amhráin agus an ealaíontóra</string>
   <string name="morphe_music_lyrics_search_dialog_title">Cuardaigh liricí</string>
@@ -782,7 +863,7 @@ Tagann liricí ó sheirbhísí tríú páirtí nach bhfuil cleamhnaithe le, urra
   <string name="morphe_music_lyrics_ai_config_status_invalid">Socruithe neamhiomlána nó diúltaithe ag an soláthraí</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Ag fíorú na nascachta…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Ceangailte! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Theip ar an nasc. Seiceáil na socruithe.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Theip ar an nasc. Seiceáil na socruithe.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Cuir isteach an eochair API ar dtús</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Tástáil an naisc</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Ag fáil samhlacha…</string>

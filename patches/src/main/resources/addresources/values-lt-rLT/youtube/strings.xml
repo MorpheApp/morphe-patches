@@ -341,11 +341,11 @@ Apribojimai:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Raktinis žodis turi prieštaringas deklaracijas: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Raktinis žodis per trumpas ir reikalauja kabučių: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Raktinis žodis paslėps visus vaizdo įrašus: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Pagrindinis: %s
-• Prenumeratos: %s
-• Paieška: %s
-• Komentarai: %s
-• Iš viso: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Pagrindinis: %1$s
+• Prenumeratos: %2$s
+• Paieška: %3$s
+• Komentarai: %4$s
+• Iš viso: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Statistika</string>
   <string name="morphe_hide_stats_hidden_24h_title">Paslėpta vaizdo įrašų per paskutines 24 valandas</string>
   <string name="morphe_hide_stats_hidden_all_title">Paslėpta vaizdo įrašų per visą laiką</string>
@@ -357,9 +357,9 @@ Apribojimai:
   <string name="morphe_hide_aislist_warnlist_category_title">Įspėjimų sąrašas: vidutinis patikimumas</string>
   <string name="morphe_hide_aislist_hide_home_title">Slėpti vaizdo įrašus puslapyje „Pradžia“</string>
   <string name="morphe_hide_aislist_hide_search_title">Slėpti vaizdo įrašus paieškoje</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Pradžia: %s
-• Paieška: %s
-• Iš viso: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Pagrindinis: %1$s
+• Paieška: %2$s
+• Iš viso: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Blokavimo sąrašo kanalai</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Įspėjimų sąrašo kanalai</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Įjunkite filtrą, kad kanalai būtų įkelti</string>
@@ -562,7 +562,7 @@ Eksportavimo aplankas: %s"</string>
   <string name="morphe_export_download_folder_missing">Nepavyko rasti eksporto aplanko %s</string>
   <string name="morphe_export_download_flyout_title">Eksportuoti į įrenginį</string>
   <string name="morphe_export_download_started">Vaizdo įrašas eksportuojamas</string>
-  <string name="morphe_export_download_progress">Vaizdo įrašas eksportuojamas: %d%%</string>
+  <string name="morphe_export_download_progress">Vaizdo įrašo eksportavimas: %s%%</string>
   <string name="morphe_export_download_notification_channel">Vaizdo įrašų eksportavimas</string>
   <string name="morphe_export_download_saved">Vaizdo įrašas eksportuotas į %s</string>
   <string name="morphe_export_download_failed">Nepavyko eksportuoti vaizdo įrašo</string>
@@ -1013,7 +1013,7 @@ Norėdami pasiekti Nustatymus, įjunkite Nustatymų mygtuką per Bendri → Įra
   <string name="morphe_navigation_bar_glass_size_height">Aukštis</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimalus plotis</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Mygtukų tarpas</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Rodymi mygtukai: %1$d iš %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Rodomų mygtukų: %1$s iš %2$s</string>
   <string name="morphe_toolbar_screen_title">Įrankių juosta</string>
   <string name="morphe_toolbar_screen_summary">Pasirinkite, kurie komponentai rodomi įrankių juostoje</string>
   <string name="morphe_hide_toolbar_chat_button_title">Paslėpti Pokalbių mygtuką</string>
@@ -1667,7 +1667,7 @@ Automatinis įrašymas sustabdomas slaptojo režimo metu, kai neprieinama paskyr
   <string name="morphe_series_tracker_identity_unavailable">Slaptojo režime arba prieš „YouTube“ užkraunant dabartinės paskyros būseną seimas negalima įgalinti. Grįžkite į Pradžios ekraną ir bandykite dar kartą. Prisijungti nėra būtina</string>
   <string name="morphe_series_tracker_enable">Įjungti vietinį sekimą</string>
   <string name="morphe_series_tracker_tracking_paused">Eigos registracija išjungta</string>
-  <string name="morphe_series_tracker_resume_at">Tęsti nuo %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Atnaujinti nuosekliai %s</string>
   <string name="morphe_series_tracker_watched_count">Peržiūrėti epizodai: %1$s / %2$s</string>
   <string name="morphe_series_tracker_episode_position">Epizodas %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Epizodai %1$s–%2$s iš %3$s</string>
@@ -1677,7 +1677,7 @@ Automatinis įrašymas sustabdomas slaptojo režimo metu, kai neprieinama paskyr
   <string name="morphe_series_tracker_plan_changed">Pasirinkite epizodą</string>
   <string name="morphe_series_tracker_plan_caught_up">Atnaujinta</string>
   <string name="morphe_series_tracker_plan_none">Nėra grojamų epizodų</string>
-  <string name="morphe_series_tracker_saved_position">Išsaugotas vaizdo įrašas · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Išsaugotas vaizdo įrašas · %s</string>
   <string name="morphe_series_tracker_follow">Stebėti seriją</string>
   <string name="morphe_series_tracker_view_series">Peržiūrėti seriją</string>
   <string name="morphe_series_tracker_continue">Tęsti</string>
@@ -1688,7 +1688,6 @@ Automatinis įrašymas sustabdomas slaptojo režimo metu, kai neprieinama paskyr
   <string name="morphe_series_tracker_undo">Anuliuoti</string>
   <string name="morphe_series_tracker_enable_short">Įjungti</string>
   <string name="morphe_series_tracker_new_episode">1 naujas epizodas</string>
-  <string name="morphe_series_tracker_new_episodes">Naujų epizodų: %1$s</string>
   <string name="morphe_series_tracker_record_short">Fiksuoti eiga šiame įrenginyje</string>
   <string name="morphe_series_tracker_follow_consent">"Jūsų serijos ir progresas lieka šiame įrenginyje, bendrinami tarp YouTube paskyrų. YouTube istorijos valdymo priemonės to nekeičia. Progresą išvalykite iš Paslaugos meniu.
 
@@ -1718,12 +1717,11 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_series_tracker_hide_watched">Slėpti peržiūrėtus</string>
   <string name="morphe_series_tracker_watched_on_advance">Pažymėti kaip peržiūrėtą pereikiant prie kitos epizodo</string>
   <string name="morphe_series_tracker_watch_previous">Pažymėti ankstesnius epizodus kaip peržiūrėtus</string>
-  <string name="morphe_series_tracker_order_starts_with">Pradedama nuo: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Prisideda nuo: %s</string>
   <string name="morphe_series_tracker_episode_order">Epizodų tvarka</string>
   <string name="morphe_series_tracker_playlist_order">Grojaraščio tvarka</string>
   <string name="morphe_series_tracker_reverse_order">Grįžti grojaraščio tvarką</string>
-  <string name="morphe_series_tracker_view_count">Peržiūros %1$s</string>
-  <string name="morphe_series_tracker_view_count_one">Peržiūra %1$s</string>
+  <string name="morphe_series_tracker_view_count_one">%s peržiūra</string>
   <string name="morphe_series_tracker_completion_title">Pažymėti epizodus peržiūrėtais</string>
   <string name="morphe_series_tracker_completion_summary">Mažiausiai %1$s%% peržiūrėta, likus ne daugiau kaip 90 sekundžių, arba liko %2$s sekundžių</string>
   <string name="morphe_series_tracker_completion_explanation">Automatiškai pažymėkite epizodą kaip peržiūrėtą pasiekus vieną iš ribų. Procentų taisyklė taip pat reikalauja, kad liktų ne daugiau kaip 90 sekundžių, todėl ilgų epizodų pabaiga nėra praleidžiama. Likusių laiko taisyklė taikoma vaizdo įrašams, ilgesniems nei vieną minutę; nustatykite 0, kad ją išjungtumėte. Pakeitimai taikomi būsimiems progreso atnaujinimams. Rankiniai peržiūrėto/neperžiūrėto pasirinkimai išsaugomi</string>
@@ -1743,7 +1741,7 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_series_tracker_backup_restore">Atstatyti atsarginę kopiją</string>
   <string name="morphe_series_tracker_backup_preview">Pridėti %1$s serijas. Jūsų bibliotekoje jau esančios %2$s serijos išlaikytos. Egzistuojantis vaizdo įrašų progresas išlaikytas</string>
   <string name="morphe_series_tracker_backup_saved">Serijų atsarginė kopija išsaugota</string>
-  <string name="morphe_series_tracker_backup_restored">Atstatyta %1$s serijų</string>
+  <string name="morphe_series_tracker_backup_restored">Atkurta %s serija</string>
   <string name="morphe_series_tracker_error_backup_invalid">Šis failas nėra palaikoma serijų atsarginė kopija arba jis per didelis. Jūsų biblioteka nebuvo pakeista</string>
   <string name="morphe_series_tracker_error_backup_write">Nepavyko išsaugoti atsarginės kopijos. Bandykite kitą vietą</string>
   <string name="morphe_series_tracker_removed">Serijos pašalintos</string>
@@ -1753,7 +1751,7 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_series_tracker_recovery_choose">Taip pat galite pasirinkti bet kurį žemiau esantį epizodą. Ankstesni epizodai nekeičiami</string>
   <string name="morphe_series_tracker_playback_changed">Sąrašas pasikeitė. Atidarykite seriją, kad pasirinktumėte, kur tęsti</string>
   <string name="morphe_series_tracker_playback_boundary">Šia kryptimi epizodų nebėra</string>
-  <string name="morphe_series_tracker_continue_series">Tęsti %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Tęsti %s</string>
   <string name="morphe_series_tracker_search_series">Ieškoti serijos</string>
   <string name="morphe_series_tracker_clear_search">Išvalyti paiešką</string>
   <string name="morphe_series_tracker_no_search_results">Jokių serijų nerasta</string>
@@ -1782,6 +1780,10 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_niconico_comments_live_premieres_summary">Premjeros jų demonstravimo metu</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Rodyti pasibaigusiose pirmosiose peržiūrose</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Pasibaigusių pirmųjų transliucijų pokalbių atkūrimas</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Rodyti komentarus pagal laiką</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Vaizdo įrašuose be pokalbių viršutiniai komentarai, kuriuose nurodytas laikas, pvz., 1:23, rodomi tame konkrečiame laike</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Rodyti laiko komentarus su pokalbių atkartojimu</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Tiesioginių transliucijų ir pirmųjų pasirodymų atkartojimuose laiko komentarai taip pat rodomi kartu su pokalbiu</string>
   <string name="morphe_live_chat_translate_screen_title">Gyvo čato vertimas</string>
   <string name="morphe_live_chat_translate_screen_summary">Vertinkite gyvo čato ir gyvo čato atkūrimo žinutes</string>
   <string name="morphe_live_chat_translate_title">Vertinti gyvą čatą</string>

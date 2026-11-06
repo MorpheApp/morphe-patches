@@ -150,6 +150,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_previous">הקודם</string>
   <string name="morphe_music_downloads_next">הבא</string>
   <string name="morphe_music_downloads_pause">השהה</string>
+  <string name="morphe_music_downloads_shuffle">סבב</string>
+  <string name="morphe_music_downloads_repeat">חזור</string>
+  <string name="morphe_music_downloads_minimize">מזער</string>
   <string name="morphe_music_downloads_close">סגור</string>
   <string name="morphe_music_downloads_delete">מחק</string>
   <string name="morphe_music_downloads_delete_track">מחק הורדה</string>
@@ -220,6 +223,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_download_no_network">אין חיבור לרשת</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">ממתין לרשת...</string>
   <string name="morphe_music_downloads_playlist_download_stopped">נעצר לאחר %1$s מתוך %2$s. הקש שוב על הורדה כדי להמשיך</string>
+  <string name="morphe_music_downloads_mark_title">סמן שירים שהורדו</string>
+  <string name="morphe_music_downloads_mark_summary">שירים שכבר הורדו יציגו סימון לפני פרטיהם ברשימות השמעה, באלבומים ובתוצאות חיפוש</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">אודות</string>
@@ -340,6 +345,42 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">הוסף את השיר שנבחר לתור</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">נוסף לתור</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">תגיות פלייליסט</string>
+  <string name="morphe_music_playlist_tags_screen_summary">תייגו פלייליסטים וסננו את הספרייה לפי תגית</string>
+  <string name="morphe_music_playlist_tags_title">הפעל תגיות פלייליסט</string>
+  <string name="morphe_music_playlist_tags_summary">מוסיף פריט \"תגיות\" לתפריט הפלייליסטים, וכפתור סינון תגיות לצד כפתור המיון של הספרייה</string>
+  <string name="morphe_music_playlist_tags_manage_title">ניהול תגיות פלייליסט</string>
+  <string name="morphe_music_playlist_tags_manage_summary">צרו, שנו ושמרו תגיות, ותייגו את הפלייליסטים המופיעים בספרייה שלכם</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">תגיות</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">אין תגיות</string>
+  <string name="morphe_music_playlist_tags_filter_button">תגיות</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">תגית: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">תגיות (%s מוסתרים)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">תגיות עבור %s</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">תגית חדשה</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">פלייליסט 1</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">תגית בשם %s כבר קיימת</string>
+  <string name="morphe_music_playlist_tags_filter_title">סנן לפי תגית</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">הצג רק</string>
+  <string name="morphe_music_playlist_tags_filter_all">כל הפלייליסטים</string>
+  <string name="morphe_music_playlist_tags_filter_visible">תגיות גלויות</string>
+  <string name="morphe_music_playlist_tags_manage">ניהול</string>
+  <string name="morphe_music_playlist_tags_none">אין עדיין תגיות. לחיצה ארוכה על פלייליסט ובחירה ב\"תגיות\" תאפשר ליצור אחת</string>
+  <string name="morphe_music_playlist_tags_section_tags">תגיות</string>
+  <string name="morphe_music_playlist_tags_section_playlists">פלייליסטים</string>
+  <string name="morphe_music_playlist_tags_no_playlists">פתחו את הספרייה פעם אחת כדי שהפלייליסטים שלכם יופיעו כאן</string>
+  <string name="morphe_music_playlist_tags_new_tag">תגית חדשה</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">עריכת תגית</string>
+  <string name="morphe_music_playlist_tags_rename">שנה שם</string>
+  <string name="morphe_music_playlist_tags_delete">מחק</string>
+  <string name="morphe_music_playlist_tags_hidden">מוסתר</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">הסתר לחצן שידור</string>
   <string name="morphe_music_hide_history_button_title">הסתר לחצן היסטוריה</string>
@@ -508,6 +549,46 @@ Second \"item\" text"</string>
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling מסנכרן באופן אוטומטי את השימוש שלך ב-YouTube Music עם פרופיל ה-Last.fm או ListenBrainz שלך.
 
 כדי להבטיח שה-scrobbling יסונכרן במהלך הפעלה ברקע, ודא ששימוש הסוללה של אפליקציית YouTube Music מוגדר ל\"ללא הגבלה\""</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">דלג על רצועות של אמנים שהקהילה דיווחה עליהם כ-AI</string>
+  <string name="morphe_music_soundproof_show_button_title">הצג כפתור SoundProof</string>
+  <string name="morphe_music_soundproof_show_button_summary">מציג כפתור בסרגל העליון של הנגן כדי לראות ולהשפיע על הצבעות הקהילה עבור האמן הנוכחי</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">דלג על אמני AI</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">מדלג באופן אוטומטי על רצועות שהאמן שלהן מגיע לסף ה-AI שמוגדר למטה</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">הצג הודעת דילוג</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">מציג הודעה כאשר רצועה מדלגת באופן אוטומטי</string>
+  <string name="morphe_music_soundproof_threshold_title">סף זיהוי</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">מינימום הצבעות AI</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">אמן נחשב ל-AI כאשר לפחות חלק זה מההצבעות עבורו מצביעות על AI</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">מספר מינימלי של הצבעות</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">אמנים עם פחות הצבעות ממספר זה לא ידולגו לעולם</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">דלג על %1$s (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">הצבעות SoundProof עבור אמן זה</string>
+  <string name="morphe_music_soundproof_sheet_verified">מאומת</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% אנושי</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">הצבעה אחת</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_no_votes_title">עדיין אין הצבעות לאמן זה</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">מסד הנתונים של SoundProof עדיין לא זמין</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">הוא יורד ברקע. אף רצועה לא תדלג עד שיהיה זמין.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">הצבעות קהילה ממסד הנתונים של SoundProof</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">בן אדם</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">בינה מלאכותית</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">ההצבעה סגורה: מנחה של SoundProof בדק את האמן הזה</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">לא ניתן להגיע ל-SoundProof. ההצבעות הן ממסד הנתונים היומי, וההצבעה אינה זמינה.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">ההצבעה ל-SoundProof נכשלה</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"נתוני האמנים מגיעים מ-SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), ומוורדים פעם ביום. דילוג אינו שולח מידע על מה שאתה משמיע. פתיחת גיליון ה-SoundProof שולחת את שם האמן הנוכחי לשרת של SoundProof כדי להציג הצבעות עדכניות ולאפשר הצבעה. השרת מבדיל בין מצביעים לפי כתובת IP, לכן ההצבעה שלך עשויה להופיע באופן שונה ברשת אחרת.
+
+מסד הנתונים מוגן תחת רישיון ODC Open Database License (ODbL). רשומות מ-Soul Over AI מאת xoundbyte מוגנות תחת רישיון CC BY 4.0. לא קשור ל-SoundProof או ל-Soul Over AI ולא נתמך על ידיהם."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">השתמש במילות שירים של צד שלישי</string>
   <string name="morphe_music_lyrics_enabled_summary">מציג מילים משירות צד שלישי, עם מעבר למילים המובנות כאשר לא נמצאו מילים</string>
@@ -548,17 +629,17 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_rime_dict_bad_code">הקוד חייב להיות שתי או שלוש אותיות, כמו b-hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">הכתובת חייבת להתחיל ב-https://</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">השם והכתובת לא יכולים להכיל פס אנכי</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s כבר יש לו טבלת מילים</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s מבוטא על ידי הרומניזר הבנוי ולא יכול לקחת רשימת מילים</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">ל%s כבר יש טבלת מילים</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s נקרא על ידי הרומניזר המובנה ולא יכול לקבל רשימת מילים</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">לא משמש: השפה הזו כבר יש לה את ההגייה שלה עצמה, כך שתבטל את הסימון שלה כדי להסיר אותו</string>
-  <string name="morphe_music_lyrics_rime_dict_added">נוסף %1$s - סמן אותו ולחץ על שמור להוריד אותו</string>
+  <string name="morphe_music_lyrics_rime_dict_added">נוסף %s - סמנו אותו והקישו על שמירה כדי להורידו</string>
   <string name="morphe_music_lyrics_rime_dict_ready">רשימות מילים מוכנות</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">רשימות המילים מוכנות (%1$d רשומות)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">קורא רשימת מילים: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">רשימות מילים מוכנות (%s רשומות)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">קריאת רשימת מילים: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">הורדת רשימת המילים נכשלה - לחץ על שמור שוב כדי לנסות שוב</string>
   <string name="morphe_music_lyrics_clear_cache_title">נקה שיריות מאוחסנות</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">מחק את %1$s MB של המילים שנשמרו במכשיר זה</string>
-  <string name="morphe_music_lyrics_clear_cache_done">נוקו %1$s MB</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">מחק את ה-%s MB של המילים שנשמרו במכשיר זה</string>
+  <string name="morphe_music_lyrics_clear_cache_done">נוקה %s MB</string>
   <string name="morphe_music_token_dialog_get_token">קבל טוקן</string>
   <string name="morphe_music_apple_music_token_title">אסימון משתמש מדיה של Apple Music</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"הדבק את עוגיית ה-media-user-token מאתר music.apple.com
@@ -581,7 +662,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc נוקה</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc לא תקין - אנא בדוק ונסה שוב</string>
   <string name="morphe_music_apple_token_optional_hint">טוקן Apple Music הוא אופציונלי. בלעדיו, Lyrically ישמש כגיבוי</string>
-  <string name="morphe_music_deezer_arl_title">Deezer […] העתק את הערך של \"arl\"</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"הדבק את עוגיית arl מ-Deezer.
 
 שלבים:
@@ -591,7 +672,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl נשמר</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl לא תקין, נסה שוב</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl לא תקין - אנא בדוק ונסה שוב</string>
-  <string name="morphe_music_musixmatch_token_title">Musixmatch […] העתק את הערך של טוקן המשתמש</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">הוסף טוקן רק כדי להשתמש בחשבון שלך. הוא חייב להגיע מאפליקציית Musixmatch לאנדרואיד: טוקנים שהועתקו מ-musixmatch.com שייכים ללקוח השולחני שהוצא משימוש וה-API דוחה אותם.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch עובד ללא טוקן, כך ששדה זה יכול להישאר ריק.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">טוקן המשתמש לא תקין, נסה שוב</string>
@@ -624,14 +705,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">אפשר הגיות שאינן לטיניות ממקור המילים; כאשר הוא מכובה, שמור רק על אותיות לטיניות, אותיות עם ניבים ומספרי הצלילות</string>
   <string name="morphe_music_lyrics_local_romanization_summary">קורא כל מילה של מילים מזומנות (סינכרון מילים פעיל); קוריאנית אינה דורשת הורדה; ארבעה עשר סקיפטים חולקים הורדה CLDR אחת; תווים Han מבוטאים על ידי רשימת מילים של Rime כאשר טבלת המילים שלה מכסה את השפה</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">מוריד מילונים להגייה...</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">קריאות מוכנות (%1$d ערכים)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">קריאות מוכנות (%s רשומות)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">ההורדה נכשלה - כבה הדלק מחדש כדי לנסות שוב</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">מילון חינתי</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">יפנית (SudachiDict, ~75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">תווים סיניים וקנטונזיים (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">מילים סיניות (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">יוונית, סלאביים קיריליים (כולל רוסי, אוקראיני, בולגרי, סרבי, בלארוסי, מקדוני), גיאורגי, ארמני, עברי, ערבית, אמארית וסורית האברה (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">קריאה %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">קריאת %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">הצג את כפתור הרענון</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">לחץ כדי לעבור למועמד השירים הבא; לחיצה ארוכה לחפש שיריות לפי שם השיר ואמן</string>
   <string name="morphe_music_lyrics_search_dialog_title">חפש מילים</string>
@@ -782,7 +863,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">הגדרות חסרות או נדחו על ידי הספק</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">מאמת חיבור…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: מחובר! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: חיבור נכשל. בדוק את ההגדרות.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: החיבור נכשל. בדקו את ההגדרות.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">הזן את מפתח ה-API קודם</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">בדיקת חיבור</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">מביא מודלים...</string>

@@ -181,16 +181,16 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG সংস্থাপন কৰা হোৱা নাই। ইয়াক সংস্থাপন কৰক</string>
   <string name="gms_core_dialog_title">কাৰ্যৰ প্ৰয়োজন</string>
-  <string name="gms_core_dialog_outdated_message">"আপোনাৰ MicroG v%1s পুৰণি আৰু ই সমস্যাৰ সৃষ্টি কৰিব পাৰে।
+  <string name="gms_core_dialog_outdated_message">"আপোনাৰ MicroG v%1$s সংস্কৰণটো পুৰণি হৈছে আৰু ইয়াৰ ফলত সমস্যাৰ সৃষ্টি হ'ব পাৰে।
 
-অনুগ্ৰহ কৰি MicroG-ক শেহতীয়া সংস্কৰণ v%2s লৈ আপডেট কৰক"</string>
+অনুগ্ৰহ কৰি MicroG-ক শেহতীয়া সংস্কৰণ v%2$s-লৈ আপডেট কৰক"</string>
   <string name="gms_core_dialog_update_text">আপডেট কৰক</string>
   <string name="gms_core_dialog_ignore_text">অৱহেলা কৰক</string>
-  <string name="gms_core_dialog_conflict_message">"সংস্থাপন কৰা MicroG-টো Morphe-ৰ দ্বাৰা পৰামৰ্শ দিয়া হোৱা নাই:
+  <string name="gms_core_dialog_conflict_message">"ইনষ্টল কৰা MicroG-টো Morphe-ৰ দ্বাৰা পৰামৰ্শ দিয়া হোৱা নাই:
 
-%1s
+%s
 
-ইয়াক আন-ইনষ্টল কৰিবলৈ ট্যাপ কৰক, তাৰপিছত এই এপটো পুনৰ খোলক আৰু MicroG RE সংস্থাপন কৰক"</string>
+ইয়াক আন-ইনষ্টল কৰিবলৈ টেপ কৰক, তাৰ পিছত এই এপটো পুনৰ খোলক আৰু MicroG RE ইনষ্টল কৰক"</string>
   <string name="gms_core_dialog_uninstall_text">আন-ইনষ্টল কৰক</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG-ক পটভূমিত চলিবলৈ অনুমতি নাই।

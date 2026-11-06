@@ -150,6 +150,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_previous">ቀድሞው</string>
   <string name="morphe_music_downloads_next">ቀጣዩ</string>
   <string name="morphe_music_downloads_pause">አቁም</string>
+  <string name="morphe_music_downloads_shuffle">ዘፈኖችን አቀያይር</string>
+  <string name="morphe_music_downloads_repeat">ድገም</string>
+  <string name="morphe_music_downloads_minimize">አሳንስ</string>
   <string name="morphe_music_downloads_close">ዝጋ</string>
   <string name="morphe_music_downloads_delete">ሰርዝ</string>
   <string name="morphe_music_downloads_delete_track">የወረደውን ፋይል ሰርዝ</string>
@@ -220,6 +223,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_download_no_network">የኔትወርክ ግንኙነት የለም</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">ኔትወርክ እየተጠበቀ ነው…</string>
   <string name="morphe_music_downloads_playlist_download_stopped">ከ%2$s ውስጥ %1$s ላይ ተቋርጧል። ለመቀጠል እንደገና Download የሚለውን ይጫኑ</string>
+  <string name="morphe_music_downloads_mark_title">የተጫኑ ዘፈኖችን ምልክት አድርግ</string>
+  <string name="morphe_music_downloads_mark_summary">ቀድሞ የተጫኑ ዘፈኖች በዝርዝሮች፣ በአልበሞች እና በፍለጋ ውጤቶች ውስጥ ከዝርዝሮቻቸው በፊት ምልክት ያሳያሉ</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">ስለ Morphe</string>
@@ -340,6 +345,43 @@ SABR የመጫወቻ ሂደት (የቪዲዮ ስትሪሞች ማስመሰል ተ
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">የተመረጠውን ትራክ ወደ ተረኛ ዝርዝር አክል</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">ወደ ተራው ተጨምሯል</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">የሙዚቃ ዝርዝር ታጎች</string>
+  <string name="morphe_music_playlist_tags_screen_summary">የሙዚቃ ዝርዝሮችን ታግ ያድርጉ እና ቤተ-መጻሕፍቱን በታግ ይለዩ</string>
+  <string name="morphe_music_playlist_tags_title">የሙዚቃ ዝርዝር ታጎችን ያብሩ</string>
+  <string name="morphe_music_playlist_tags_summary">በሙዚቃ ዝርዝሮች ሜኑ ውስጥ የታጎች ንጥል እና በቤተ-መጻሕፍት የቅደም ተከተል ቁልፍ አጠገብ የታጎች ማጣሪያ ቁልፍ ይጨምራል</string>
+  <string name="morphe_music_playlist_tags_manage_title">የሙዚቃ ዝርዝር ታጎችን ያስተዳድሩ</string>
+  <string name="morphe_music_playlist_tags_manage_summary">ታጎችን ይፍጠሩ፣ ስማቸውን ይቀይሩ እና ያጥፉ፣ እንዲሁም በቤተ-መጻሕፍትዎ ውስጥ የሚታዩ የሙዚቃ ዝርዝሮችን ታግ ያድርጉ</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">ታጎች</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">ምንም ታጎች የሉም</string>
+  <string name="morphe_music_playlist_tags_filter_button">ታጎች</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">ታግ: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">ታጎች (%s ተደብቀዋል)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">ለ %s ታጎች</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">አዲስ ታግ</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 የሙዚቃ ዝርዝር</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s የሙዚቃ ዝርዝሮች</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">%s የሚል ታግ ቀድሞውኑ አለ</string>
+  <string name="morphe_music_playlist_tags_filter_title">በታግ ያጣሩ</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">ብቻ አሳዩ</string>
+  <string name="morphe_music_playlist_tags_filter_all">ሁሉንም የሙዚቃ ዝርዝሮች</string>
+  <string name="morphe_music_playlist_tags_filter_visible">የሚታዩ ታጎች</string>
+  <string name="morphe_music_playlist_tags_manage">አስተዳድር</string>
+  <string name="morphe_music_playlist_tags_none">እስካሁን ምንም ታጎች የሉም። አንዱን የሙዚቃ ዝርዝር ተጭነው በመያዝ ታጎችን በመምረጥ ይፍጠሩ</string>
+  <string name="morphe_music_playlist_tags_section_tags">ታጎች</string>
+  <string name="morphe_music_playlist_tags_section_playlists">የሙዚቃ ዝርዝሮች</string>
+  <string name="morphe_music_playlist_tags_no_playlists">የሙዚቃ ዝርዝሮችዎ እዚህ እንዲታዩ ቤተ-መጻሕፍቱን አንድ ጊዜ ይክፈቱ</string>
+  <string name="morphe_music_playlist_tags_new_tag">አዲስ ታግ</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">ታግ አርም</string>
+  <string name="morphe_music_playlist_tags_rename">ስም ቀይር</string>
+  <string name="morphe_music_playlist_tags_delete">አጥፋ</string>
+  <string name="morphe_music_playlist_tags_hidden">ተደብቋል</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">የCast ቁልፍን ደብቅ</string>
   <string name="morphe_music_hide_history_button_title">የHistory ቁልፍን ደብቅ</string>
@@ -508,6 +550,49 @@ SABR የመጫወቻ ሂደት (የቪዲዮ ስትሪሞች ማስመሰል ተ
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling የ YouTube Music አጠቃቀምዎን ከ Last.fm ወይም ListenBrainz ፕሮፋይልዎ ጋር በራስ-ሰር ያመሳምራል
 
 በስተጀርባ በሚደረግ ስርጭት ወቅት scrobbling መመሳሰሉን ለማረጋገጥ፣ የ YouTube Music የባትሪ አጠቃቀም \"Unrestricted\" መሆኑን ያረጋግጡ"</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">ማህበረሰቡ በAI ተሰርተዋል ብለው ሪፖርት ያደረጓቸውን የጥበብ ሰዎች ሙዚቃዎች ዝለል</string>
+  <string name="morphe_music_soundproof_show_button_title">የSoundProof ቁልፍን አሳይ</string>
+  <string name="morphe_music_soundproof_show_button_summary">ለአሁኑ የጥበብ ሰው የማህበረሰቡን ድምጾች ለማየት እና ድምጽ ለመስጠት በተጫዋቹ የላይኛው አሞሌ ላይ ቁልፍን ያሳያል</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">የAI የጥበብ ሰዎችን ዝለል</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">የአርቲስቱ የAI ስርአተ-ወሰን ከታች የሚደርሱ ትራኮችን በራስ-ሰር ይዘላል</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">የማለፊያ ማሳወቂያን አሳይ</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">አንድ ትራክ በራስ-ሰር ሲዘለል ማሳወቂያ ያሳያል</string>
+  <string name="morphe_music_soundproof_threshold_title">የመለያ ስርአተ-ወሰን</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">ዝቅተኛው የAI ድምጾች</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">ቢያንስ ይህ የድምጾች መጠን AI ሲል አንድ አርቲስት እንደ AI ይቆጠራል</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">ዝቅተኛው የድምጾች ብዛት</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">ከዚህ ያነሰ ድምጽ ያላቸው አርቲስቶች በጭራሽ አይዘለሉም</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">%1$s ተለይቷል (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">SoundProof ለዚህ አርቲስት የሚሰጣቸው ድምጾች</string>
+  <string name="morphe_music_soundproof_sheet_verified">የተረጋገጠ</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% ሰው</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 ድምጽ</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s ድምጾች</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s ሰው</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s AI</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">ለዚህ አርቲስት እስካሁን የተሰጠ ድምጽ የለም</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">የSoundProof ዳታቤዝ ገና ዝግጁ አይደለም</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">በጀርባ በኩል እየተጫነ ነው። እስኪዘጋጅ ድረስ ምንም አይነት ትራክ አይዘለሉም።</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">ከSoundProof ዳታቤዝ የተገኙ የማህበረሰብ ድምጾች</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">ሰው</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">ድምጽ አሰጣጥ ተዘግቷል፡ የSoundProof ሞዴሬተር ይህንን አርቲስት አረጋግጧል</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">SoundProof ማግኘት አልተቻለም። ድምጾቹ ከዕለታዊው ዳታቤዝ የተገኙ ናቸው፣ እና ድምጽ መስጠት አይቻልም።</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">የSoundProof ድምጽ አሰጣጥ አልተሳካም</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"የአርቲስት መረጃዎች የሚመጡት ከ SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) ሲሆን በቀን አንድ ጊዜ ይወርዳል። ማለፍ (Skipping) የሚጫወቱትን ምንም ዓይነት መረጃ አይልክም። የ SoundProof ሰንጠረዥን መክፈት አዳዲስ ድምጾችን ለማሳየት እና ለመምረጥ አሁን ያለውን የአርቲስት ስም ወደ SoundProof ሰርቨር ይልካል። ሰርቨሩ መራጮችን የሚለየው በ IP አድራሻ ስለሆነ፣ የእርስዎ ምርጫ በሌላ ኔትወርክ ላይ የተለየ ሆኖ ሊታይ ይችላል።
+
+የመረጃ ቋቱ በ ODC Open Database License (ODbL) ፈቃድ የተሰጠው ነው። በ xoundbyte የተዘጋጁት የ Soul Over AI መግቢያዎች በ CC BY 4.0 ፈቃድ የተሰጡ ናቸው። ከ SoundProof ወይም ከ Soul Over AI ጋር ግንኙነት የሌለው ወይም በነሱ የማይደገፍ ነው።"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">የሶስተኛ ወገን ግጥሞችን ተጠቀም</string>
   <string name="morphe_music_lyrics_enabled_summary">ከሶስተኛ ወገን አገልግሎት ግጥሞችን ያሳያል፣ ምንም ካልተገኘ ግን ወደ ተገነባው ግጥም ይመለሳል</string>
@@ -548,17 +633,17 @@ Rime Wordlist ሊያነባቸው የሚገቡትን ዝርዝሮች ምልክት
   <string name="morphe_music_lyrics_rime_dict_bad_code">ኮዱ እንደ hak ሁሉ ሁለት ወይም ሶስት ፊደላት መሆን አለበት</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">አድራሻው በ https:// መጀመር አለበት</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">ስሙ እና አድራሻው የቨርቲካል ባር ሊያካትቱ አይችሉም</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s ቀድሞውኑ የቃላት ሰንጠረዥ አለው</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s በውስጥ በሚገኘው ሮማናይዘር የሚነበብ ነው እና የቃላት ዝርዝር ሊኖረው አይችልም</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s ቀድሞውኑ የቃላት ሰንጠረዥ አለው</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s በውስጥ በተገነባው romanizer ስለሚነበብ የቃላት ዝርዝርን ሊቀበል አይችልም</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">ጥቅም ላይ የሌለ፡ ይህ ቋንቋ የራሱ የንባብ ዘዴ ስላለው፣ ለማስወገድ ምልክቱን ያጥፉት</string>
-  <string name="morphe_music_lyrics_rime_dict_added">%1$s ተጨምሯል - ለማውረድ ምልክቱን ያድርጉ እና \"Save\" የሚለውን ይጫኑ</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%s ተጨምሯል - ለማውረድ ምልክት ያድርጉበት እና Save የሚለውን ይጫኑ</string>
   <string name="morphe_music_lyrics_rime_dict_ready">የቃላት ዝርዝሮች ተዘጋጅተዋል</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">የቃላት ዝርዝሮች ተዘጋጅተዋል (%1$d መዝገቦች)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">የቃላት ዝርዝርን በማንበብ ላይ፡ %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">የቃላት ዝርዝሮች ዝግጁ ናቸው (%s መዝገቦች)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">የቃላት ዝርዝርን በማንበብ ላይ: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">የቃላት ዝርዝር ማውረድ አልተሳካም - እንደገና ለመሞከር Save የሚለውን ይጫኑ</string>
   <string name="morphe_music_lyrics_clear_cache_title">የተቀመጡ ግጥሞችን አጥፋ</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">በዚህ መሳሪያ ላይ የተቀመጡትን %1$s MB ግጥሞች ያጥፉ</string>
-  <string name="morphe_music_lyrics_clear_cache_done">%1$s MB ተሰርዟል</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">በዚህ መሳሪያ ላይ የተቀመጡትን %s MB ግጥሞች ያጥፉ</string>
+  <string name="morphe_music_lyrics_clear_cache_done">%s MB ተጠርጊቷል</string>
   <string name="morphe_music_token_dialog_get_token">ቶክን ያግኙ</string>
   <string name="morphe_music_apple_music_token_title">የApple Music ሚዲያ-ተጠቃሚ-ቶክን</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"የmedia-user-token ኩኪን ከ music.apple.com ይቅዱ
@@ -624,14 +709,14 @@ Rime Wordlist ሊያነባቸው የሚገቡትን ዝርዝሮች ምልክት
   <string name="morphe_music_lyrics_allow_transliteration_summary">ከግጥሞቹ ምንጭ የላቲን ያልሆኑ ንባቦችን ይፍቀዱ፤ ሲጠፋ የላቲን ፊደላትን፣ የድምፅ ምልክት ያላቸውን ፊደላት እና የድምፅ አሃዞችን ብቻ ያስቀራል</string>
   <string name="morphe_music_lyrics_local_romanization_summary">የተወሰነ ጊዜ ያላቸውን ግጥሞች እያንዳንዱን ቃል ያነባል (የቃል ቅንብር በር ተክፍቷል)፤ ለኮሪያኛ ምንም ዓይነት አውርዶ ስርጭት አያስፈልግም፤ አሥራ አራት ስክሪፕቶች አንድ የ CLDR አውርዶ ስርጭትን ይጠቀማሉ፤ የ Han ቁምፊዎች በ Rime Wordlist የቃላት ሰንጠረዥ ቋንቋውን በሚሸፍንበት ጊዜ ይነበባሉ</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">የንባብ መዝገበ ቃላት እየተወረዱ ነው…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">ንባቦች ዝግጁ ናቸው (%1$d ዝርዝሮች)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">ንባቦች ዝግጁ ናቸው (%s መዝገቦች)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">የማውረድ ሙከራ አልተሳካም - እንደገና ለመሞከር ይህንን አጥፍተው ያብሩት</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">የመስመር ውጭ መዝገበ ቃላት</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">ጃፓናዊ (SudachiDict, ~75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">የቻይንኛ እና የካንቶኒዝ ቁምፊዎች (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">የቻይንኛ ቃላት (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">የግሪክ፣ የስላቪክ ሲሪሊክ (ሩሲያዊ፣ ዩክሬናዊ፣ ቡልጋሪያዊ፣ ሰርቢያዊ፣ ቤላሩሲያዊ፣ ማቄዶንያዊን ጨምሮ)፣ የጆርጂያዊ፣ የአርመንያዊ፣ የዕብራይስጥ፣ የአረብኛ፣ የአማርኛ እና የሶርያ ትራንስሊትሬሽን (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s በመነበብ ላይ ነው: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$sን በማንበብ ላይ: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">የማደሻ በተን አሳይ</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">ወደ ቀጣዩ የሊሪክስ እጩ ለመቀየር ይጫኑ፤ በዘፈን ርዕስ እና በድምፃዊ ስም ሊሪክስ ለመፈለግ ለረጅም ጊዜ ይጫኑ</string>
   <string name="morphe_music_lyrics_search_dialog_title">ግጥሞችን ፈልግ</string>
@@ -782,7 +867,7 @@ Rime Wordlist ሊያነባቸው የሚገቡትን ዝርዝሮች ምልክት
   <string name="morphe_music_lyrics_ai_config_status_invalid">ቅንብሮች ያልተሟሉ ወይም በአቅራቢው ውድቅ የተደረጉ ናቸው</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">ግንኙነት እየተረጋገጠ ነው…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: ተገናኝቷል! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: ግንኙነቱ አልተሳካም። እባክዎ ቅንብሮችን ያረጋግጡ።</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: ግንኙነት አልተሳካም። እባክዎን ቅንብሩን ያረጋግጡ።</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">እባክዎ መጀመሪያ የ API ቁልፉን ያስገቡ</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">ግንኙነቱን ይሞክሩ</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">ሞዴሎች እየተፈለጉ ነው…</string>

@@ -342,11 +342,11 @@ Mugaak:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Gako-hitzak deklarazio kontradoak ditu: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Gako-hitza laburregia da eta aipatzea behar du: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Gako-hitzak bideo guztiak ezkutuko ditu: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Hasiera: %s
-• Iz Harpidedunak: %s
-• Bilaketa: %s
-• Komentarioak: %s
-• Guztira: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Home: %1$s
+• Harpidurak: %2$s
+• Bilaketa: %3$s
+• Komentariuetan: %4$s
+• Guztira: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Estatistikak</string>
   <string name="morphe_hide_stats_hidden_24h_title">Bideo ezkutatuak, azken 24 orduetan</string>
   <string name="morphe_hide_stats_hidden_all_title">Bideo ezkutatuak, guztira</string>
@@ -358,9 +358,9 @@ Mugaak:
   <string name="morphe_hide_aislist_warnlist_category_title">Ohartuteko zerrenda: Konfidantzia moderatua</string>
   <string name="morphe_hide_aislist_hide_home_title">Bideoak ezkutatu Hasieran</string>
   <string name="morphe_hide_aislist_hide_search_title">Bideoak ezkutatu bilaketan</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Homea: %s
-• Bilaketa: %s
-• Guztira: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Home: %1$s
+• Bilaketa: %2$s
+• Guztira: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Blokeatze-zerrendako kanalak</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Ohartutze-zerrendako kanalak</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Gaitu iragazki bat kanalak kargatzeko</string>
@@ -563,7 +563,7 @@ Exportazio folderra: %s"</string>
   <string name="morphe_export_download_folder_missing">%s exportazio folder-a ez da aurkitu</string>
   <string name="morphe_export_download_flyout_title">Gailuera exportatu</string>
   <string name="morphe_export_download_started">Bideoa exportatzen</string>
-  <string name="morphe_export_download_progress">Bideoa exportatzen: %d%%</string>
+  <string name="morphe_export_download_progress">Bideoa esportatzen ari da: %s%%</string>
   <string name="morphe_export_download_notification_channel">Bideo exportazioak</string>
   <string name="morphe_export_download_saved">Bideoa %s ra exportatuta</string>
   <string name="morphe_export_download_failed">Bideoa ezin izan da exportatu</string>
@@ -1014,7 +1014,7 @@ Konfiguraziora sartzeko, aktibatu Konfigurazio botoia Orokorra → Barra nagusia
   <string name="morphe_navigation_bar_glass_size_height">Altitudea</string>
   <string name="morphe_navigation_bar_glass_size_width">Zabalera maximoa</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Botoien arteko espazioa</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Botoiak erakutsita: %1$d %2$d-tik</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Botoiak agertzen dira: %1$s %2$s-tik</string>
   <string name="morphe_toolbar_screen_title">Barra tresnak</string>
   <string name="morphe_toolbar_screen_summary">Aukeratu toolbarran zein komponentak agerti nahi diren</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ezkutatu Txat botoia</string>
@@ -1668,7 +1668,7 @@ Grabaketa automatikoa gelditu egiten da inkognito moduan, kontuen identitatea es
   <string name="morphe_series_tracker_identity_unavailable">Jarraipena ezin da aktibatu inkognito moduan edo YouTube-ek kontu egungo egoera kargatu aurretik. Itzali Home-ra eta saiatu berriro. Ez da saioa hasi beharko</string>
   <string name="morphe_series_tracker_enable">Gaitu jarraipen lokala</string>
   <string name="morphe_series_tracker_tracking_paused">Aurrerapen grabaketa tx tắt dago</string>
-  <string name="morphe_series_tracker_resume_at">Jarraitu %1$s-en</string>
+  <string name="morphe_series_tracker_resume_at">Berraktu %s-en</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s episodioak ikusia</string>
   <string name="morphe_series_tracker_episode_position">%1$s. Episodioa · %2$s</string>
   <string name="morphe_series_tracker_episode_range">%3$s-ko %1$s-%2$s episodioak</string>
@@ -1678,7 +1678,7 @@ Grabaketa automatikoa gelditu egiten da inkognito moduan, kontuen identitatea es
   <string name="morphe_series_tracker_plan_changed">Aukeratu episodio bat</string>
   <string name="morphe_series_tracker_plan_caught_up">Eguneratuta</string>
   <string name="morphe_series_tracker_plan_none">Ez da playable episodorik</string>
-  <string name="morphe_series_tracker_saved_position">Gorde duten bideoa · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Bideoa gordetak · %s</string>
   <string name="morphe_series_tracker_follow">Jarraitu saila</string>
   <string name="morphe_series_tracker_view_series">Ikusi saila</string>
   <string name="morphe_series_tracker_continue">Jarraitu</string>
@@ -1689,7 +1689,7 @@ Grabaketa automatikoa gelditu egiten da inkognito moduan, kontuen identitatea es
   <string name="morphe_series_tracker_undo">Utzi</string>
   <string name="morphe_series_tracker_enable_short">Gaitu</string>
   <string name="morphe_series_tracker_new_episode">one episodio berri</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s episodico berri</string>
+  <string name="morphe_series_tracker_new_episodes">%s episodico berri</string>
   <string name="morphe_series_tracker_record_short">Grabatu progresua gailu honetan</string>
   <string name="morphe_series_tracker_follow_consent">"Zure sailak eta progresua gaildu honetan geratzen dira, YouTube kontu guztien artean partekatuz. YouTube historiako kontrolak ez dituzte aldatzen. Series menutik garbitu progresua.
 
@@ -1719,12 +1719,12 @@ Automatiko grabaketa aukeratua da. Inkognito moduan edo kontua aldatzean gelditu
   <string name="morphe_series_tracker_hide_watched">Ezagutuenak ezkutatu</string>
   <string name="morphe_series_tracker_watched_on_advance">Markatu ikusia hurrengo episodora pasatzean</string>
   <string name="morphe_series_tracker_watch_previous">Markatu aurreko episodak ikusitako gisa</string>
-  <string name="morphe_series_tracker_order_starts_with">Hasi: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Hauzalea: %s</string>
   <string name="morphe_series_tracker_episode_order">Episoduen ordena</string>
   <string name="morphe_series_tracker_playlist_order">Playlistaren ordena</string>
   <string name="morphe_series_tracker_reverse_order">Playlistaren ordena alderaka</string>
-  <string name="morphe_series_tracker_view_count">%1$s bisita</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s ikusitzea</string>
+  <string name="morphe_series_tracker_view_count">%s bisitak</string>
+  <string name="morphe_series_tracker_view_count_one">%s bisita</string>
   <string name="morphe_series_tracker_completion_title">Markatu ikusi diren episodoak</string>
   <string name="morphe_series_tracker_completion_summary">Gutxienez %1$s%% ikusia, gehienez 90 segundu bakarrik geratzen direnean, edo %2$s segundu geratzen direnean</string>
   <string name="morphe_series_tracker_completion_explanation">Markatu automatikoki episodio bat ikusia tauparen bati iristean. Percentajearen arauak 90 segundutik gutxiago geratzea eskatzen du, episodic luzeen amaiera ez saltzeko. Geratzen den denboraren araua minutu bat baino luzagoak diren bideoei aplikatzen zaie; 0-an jarri desaktibatzeko. Aldaketak etorkizuneko progresu eguneratzeei aplikatzen zaizakizkie. Eskuz markatutako ikusi/ikusi gabe aukerak mantentzen dira</string>
@@ -1744,7 +1744,7 @@ Automatiko grabaketa aukeratua da. Inkognito moduan edo kontua aldatzean gelditu
   <string name="morphe_series_tracker_backup_restore">Berakutu bakupa</string>
   <string name="morphe_series_tracker_backup_preview">%1$s saile gehitu. Zure bibliotekan dagoen %2$s saile mantentzen dira. Bideoen progresu existentea mantentzen da</string>
   <string name="morphe_series_tracker_backup_saved">Serieen bakupa gorde da</string>
-  <string name="morphe_series_tracker_backup_restored">%1$s saile berreskuratu dira</string>
+  <string name="morphe_series_tracker_backup_restored">%s serieberak berakurtuta</string>
   <string name="morphe_series_tracker_error_backup_invalid">Fitxamen hau ez da onartzen den sailen kopia seguru bat, edo handia egon. Zure liburutegia ez da aldatu</string>
   <string name="morphe_series_tracker_error_backup_write">Kopia segurua ezin da gordetakoa izan. Saiatu kokapen batean</string>
   <string name="morphe_series_tracker_removed">Saila kenduta</string>
@@ -1754,7 +1754,7 @@ Automatiko grabaketa aukeratua da. Inkognito moduan edo kontua aldatzean gelditu
   <string name="morphe_series_tracker_recovery_choose">Beheko edozein episodio ere aukera dezakezu. Aurreko episodioak ez dira aldatu</string>
   <string name="morphe_series_tracker_playback_changed">Zerrenda hau aldatu da. Ireki saila non jarraitu duen aukeratzeko</string>
   <string name="morphe_series_tracker_playback_boundary">Ez dau gehiago episodiorik norabide honetan</string>
-  <string name="morphe_series_tracker_continue_series">Jarraitu %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Jarraitu %s</string>
   <string name="morphe_series_tracker_search_series">Bilatu sailak</string>
   <string name="morphe_series_tracker_clear_search">Garbitu bilaketa</string>
   <string name="morphe_series_tracker_no_search_results">Ez da sailik aurkitu</string>
@@ -1783,6 +1783,10 @@ Automatiko grabaketa aukeratua da. Inkognito moduan edo kontua aldatzean gelditu
   <string name="morphe_niconico_comments_live_premieres_summary">Estretuak erreproduzitzen ari diren bitartean</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Erakutsi amaitutako Estrenetan</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Amaiutako Premieren txat-berrakuntza</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Ikusi iruzkin tematikoak</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">Txatik gabeko bideoetan, 1:23 bezalako ordua duten goiko iruzkinak ordu horretan agertzen dira</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Ikusi komenatariu sinkronizatuak txat-berpasatzearekin</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Zuzeneko emitaisak eta Premiere-tak berpasatzen direnean, komenatariu sinkronizatuak txat-esan txat-ean ere agertzen dira</string>
   <string name="morphe_live_chat_translate_screen_title">Zirbilizko txatko itzulpena</string>
   <string name="morphe_live_chat_translate_screen_summary">Zirbilizko txatko eta zirbilizko txatko playback mezuak itzuli</string>
   <string name="morphe_live_chat_translate_title">Zirbilizko txatkoa itzuli</string>

@@ -181,16 +181,16 @@ Het gedrag verdween eerder in de zoektocht, dus er kan meer dan één flag bij b
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG is niet geïnstalleerd. Installeer het</string>
   <string name="gms_core_dialog_title">Actie vereist</string>
-  <string name="gms_core_dialog_outdated_message">"Je MicroG v%1s is verouderd en kan problemen veroorzaken.
+  <string name="gms_core_dialog_outdated_message">"Je MicroG v%1$s is verouderd en kan problemen veroorzaken.
 
-Werk MicroG bij naar de nieuwste versie v%2s"</string>
+Update MicroG naar de nieuwste versie v%2$s"</string>
   <string name="gms_core_dialog_update_text">Update</string>
   <string name="gms_core_dialog_ignore_text">Negeren</string>
   <string name="gms_core_dialog_conflict_message">"De geïnstalleerde MicroG wordt niet aanbevolen door Morphe:
 
-%1s
+%s
 
-Tik om het te verwijderen, open deze app opnieuw en installeer MicroG RE"</string>
+Tik om deze te verwijderen, open dan deze app opnieuw en installeer MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Uninstall</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG heeft geen toestemming om op de achtergrond te draaien.

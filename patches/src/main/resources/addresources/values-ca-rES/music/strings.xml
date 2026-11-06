@@ -150,6 +150,9 @@ Les pistes descarregades apareixen aquí"</string>
   <string name="morphe_music_downloads_previous">Anterior</string>
   <string name="morphe_music_downloads_next">Següent</string>
   <string name="morphe_music_downloads_pause">Pausa</string>
+  <string name="morphe_music_downloads_shuffle">Aleatori</string>
+  <string name="morphe_music_downloads_repeat">Repetir</string>
+  <string name="morphe_music_downloads_minimize">Minimitzar</string>
   <string name="morphe_music_downloads_close">Tanca</string>
   <string name="morphe_music_downloads_delete">Eliminar</string>
   <string name="morphe_music_downloads_delete_track">Eliminar descàrrega</string>
@@ -220,6 +223,8 @@ Es descarreguen una per una, cosa que pot trigar molt de temps i requereix uns %
   <string name="morphe_music_downloads_playlist_download_no_network">No hi ha connexió a la xarxa</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">Esperant la xarxa…</string>
   <string name="morphe_music_downloads_playlist_download_stopped">Aturat després de %1$s de %2$s. Toca Descarregar novament per continuar</string>
+  <string name="morphe_music_downloads_mark_title">Marcar cançons descarregades</string>
+  <string name="morphe_music_downloads_mark_summary">Les cançons ja descarregades mostren una marca abans dels seus detalls a les llistes de reproducció, els àlbums i els resultats de la cerca</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Sobre Morphe</string>
@@ -276,9 +281,9 @@ Es descarreguen una per una, cosa que pot trigar molt de temps i requereix uns %
   <string name="morphe_music_crossfade_curve_preview_outgoing">Sortida</string>
   <string name="morphe_music_crossfade_curve_preview_incoming">Entrada</string>
   <string name="morphe_music_crossfade_duration_title">Durada del crossfade</string>
-  <string name="morphe_crossfade_duration_250ms">{one, 250 mil·lisegons, other, 250 mil·lisegons}</string>
+  <string name="morphe_crossfade_duration_250ms">250 mil·lisegons</string>
   <string name="morphe_crossfade_duration_500ms">{one, 500 mil·lisegons, other, 500 mil·lisegons}</string>
-  <string name="morphe_crossfade_duration_750ms">{one, 750 mil·lisegons, other, 750 mil·lisegons}</string>
+  <string name="morphe_crossfade_duration_750ms">750 mil·lisegons</string>
   <string name="morphe_crossfade_duration_1000ms">1 segon</string>
   <string name="morphe_crossfade_duration_2000ms">2 segons</string>
   <string name="morphe_crossfade_duration_3000ms">3 segons</string>
@@ -340,6 +345,43 @@ Reproducció SABR (fluxos de vídeo simulats desactivats)"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Afegeix la pista seleccionada a la cua</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">S\'ha afegit a la cua</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">Etiquetes de llista de reproducció</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Etiqueta llistes de reproducció i filtra la Biblioteca per etiqueta</string>
+  <string name="morphe_music_playlist_tags_title">Habilita les etiquetes de llista de reproducció</string>
+  <string name="morphe_music_playlist_tags_summary">Afegeix un element d\'Etiquetes al menú de les llistes de reproducció i un botó de filtre d\'Etiquetes al costat del botó d\'ordenació de la Biblioteca</string>
+  <string name="morphe_music_playlist_tags_manage_title">Gestiona les etiquetes de llista de reproducció</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Crea, canvia el nom i elimina etiquetes, i etiqueta les llistes de reproducció que apareixen a la teva Biblioteca</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">Etiquetes</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">Sense etiquetes</string>
+  <string name="morphe_music_playlist_tags_filter_button">Etiquetes</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">Etiqueta: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">Etiquetes (%s ocultes)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">Etiquetes per a %s</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">Nova etiqueta</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 llista de reproducció</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s llistes de reproducció</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">Ja existeix una etiqueta anomenada %s</string>
+  <string name="morphe_music_playlist_tags_filter_title">Filtra per etiqueta</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">Mostra només</string>
+  <string name="morphe_music_playlist_tags_filter_all">Totes les llistes de reproducció</string>
+  <string name="morphe_music_playlist_tags_filter_visible">Etiquetes visibles</string>
+  <string name="morphe_music_playlist_tags_manage">Gestiona</string>
+  <string name="morphe_music_playlist_tags_none">Encara no hi ha etiquetes. Manté premuda una llista de reproducció i tria Etiquetes per crear-ne una</string>
+  <string name="morphe_music_playlist_tags_section_tags">Etiquetes</string>
+  <string name="morphe_music_playlist_tags_section_playlists">Llistes de reproducció</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Obre la Biblioteca una vegada perquè les teves llistes de reproducció apareguin aquí</string>
+  <string name="morphe_music_playlist_tags_new_tag">Nova etiqueta</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">Edita l\'etiqueta</string>
+  <string name="morphe_music_playlist_tags_rename">Canvia el nom</string>
+  <string name="morphe_music_playlist_tags_delete">Eliminar</string>
+  <string name="morphe_music_playlist_tags_hidden">Ocult</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Amaga el botó de Cast</string>
   <string name="morphe_music_hide_history_button_title">Amaga el botó d\'Historial</string>
@@ -508,6 +550,49 @@ Reproducció SABR (fluxos de vídeo simulats desactivats)"</string>
   <string name="morphe_music_scrobbling_about_summary">"El scrobbling sincronitza automàticament el vostre ús de YouTube Music amb el vostre perfil de Last.fm o ListenBrainz
 
 Per assegurar que el scrobbling es sincronitzi durant la reproducció en segon pla, assegureu-vos que l'ús de la bateria de l'aplicació de YouTube Music estigui configurat com a \"Sense restriccions\""</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">Salta les cançons d\'artistes que la comunitat ha reportat com a IA</string>
+  <string name="morphe_music_soundproof_show_button_title">Mostra el botó SoundProof</string>
+  <string name="morphe_music_soundproof_show_button_summary">Mostra un botó a la barra superior del reproductor per veure i emetre vots de la comunitat per a l\'artista actual</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">Salta els artistes de IA</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">Salta automàticament les pistes dels artistes que superen el llindar de IA indicat a continuació</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">Mostrar notificació de salt</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">Mostra una notificació quan es salta una pista automàticament</string>
+  <string name="morphe_music_soundproof_threshold_title">Llindar de detecció</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">Vots mínims de IA</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Un artista es considera de IA quan almenys aquesta proporció dels seus vots diuen IA</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">Nombre mínim de vots</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">Els artistes amb menys vots que aquest no es saltaran mai</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">S\'ha omitut %1$s (IA, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">Vots de SoundProof per a aquest artista</string>
+  <string name="morphe_music_soundproof_sheet_verified">Verificat</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% IA</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% humà</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 vot</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s vots</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s humans</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s IA</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">Encara no hi ha vots per a aquest artista</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">La base de dades de SoundProof encara no està disponible</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">S\'està descarregant en segon pla. No es saltarà cap pista fins que estigui disponible.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">Vots de la comunitat de la base de dades SoundProof</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">Humà</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">IA</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">La votació està tancada: un moderador de SoundProof ha revisat aquest artista</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">No s\'ha pogut connectar amb SoundProof. Els vots provenen de la base de dades diària i la votació no està disponible.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">Error en el vot de SoundProof</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"Les dades de l'artista provenen de SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), descarregades una vegada al dia. Omitir l'opció no envia res sobre el que escoltes. Obrir la fulla de SoundProof envia el nom de l'artista actual al servidor de SoundProof per mostrar vots actuals i per votar. El servidor diferencia els votants per l'adreça IP, per la qual cosa el teu vot pot aparèixer de manera diferent en una altra xarxa.
+
+La base de dades està llicenciada sota la llicència ODC Open Database License (ODbL). Les entrades de Soul Over AI de xoundbyte estan llicenciades sota CC BY 4.0. No està afiliat ni recolzat per SoundProof o Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Utilitzar letres de tercers</string>
   <string name="morphe_music_lyrics_enabled_summary">Mostra les letres d\'un servei de tercers, revertint a les letres integrades quan no se\'n troba cap</string>
@@ -548,17 +633,17 @@ La primera columna és la paraula i la segona la seva lectura; les columnes addi
   <string name="morphe_music_lyrics_rime_dict_bad_code">El codi ha de tenir dues o tres lletres, com ara hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">L\'adreça ha de començar per https://</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">El nom i l\'adreça no poden contenir una barra vertical</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s ja té una taula de paraules</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s és llegit pel romanitzador integrat i no pot acceptar una llista de paraules</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s ja té una taula de paraules</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s és llegit pel romanitzador integrat i no pot acceptar una llista de paraules</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">No s\'utilitza: aquest idioma ja té la seva pròpia lectura, així que desmarca\'l per eliminar-lo</string>
-  <string name="morphe_music_lyrics_rime_dict_added">S\'ha afegit %1$s - marca\'l i toca Desar per descarregar-lo</string>
+  <string name="morphe_music_lyrics_rime_dict_added">S\'ha afegit %s; marca\'l i toca Desa per descarregar-lo</string>
   <string name="morphe_music_lyrics_rime_dict_ready">Llistes de paraules llestes</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">Llistes de paraules llestes (%1$d entrades)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">Llegint la llista de paraules: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Llistes de paraules llestes (%s entrades)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Llegint llista de paraules: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">Error en la descàrrega de la llista de paraules - torna a tocar Desar per reintentar-ho</string>
   <string name="morphe_music_lyrics_clear_cache_title">Esborrar les lets guardades</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Elimina els %1$s MB de lets guardats en aquest dispositiu</string>
-  <string name="morphe_music_lyrics_clear_cache_done">S\'han esborrat %1$s MB</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Elimina els %s MB de lletres conservades en aquest dispositiu</string>
+  <string name="morphe_music_lyrics_clear_cache_done">S\'han alliberat %s MB</string>
   <string name="morphe_music_token_dialog_get_token">Obté el token</string>
   <string name="morphe_music_apple_music_token_title">Token d\'usuari de mitjans d\'Apple Music</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Enganxa la cookie media-user-token de music.apple.com
@@ -624,14 +709,14 @@ Cookies requerides: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_allow_transliteration_summary">Permet lectures no llatines de la font de les lets; quan està desactivat, manté només les lletres llatines, les lletres amb accent i els dígits de tons</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Llegeix cada paraula d\'una lletra sincronitzada (sincronització de paraules activada); el coreà no requereix descàrrega; catorze sistemes d\'escriptura comparteixen una descàrrega de CLDR; els caràcters Han són llegits per Rime Wordlist quan la seva taula de paraules cobreix l\'idioma</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">Descarregant diccionaris de lectura…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">{0, plural, one {Lectures llistes (1 entrada)} other {Lectures llistes (%1$d entrades)}}</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Lectures llestes (%s entrades)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Error de descàrrega: desactivi i torni a activar aquesta opció per reintentar-ho</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Diccionari fora de línia</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japonès (SudachiDict, ~75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Caracteres xinesos i cantonèss (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Paraules xineses (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliteració de grec, ciríllic eslav (inclòs rus, ucraïnès, búlgar, serbi, belarús, macedoni), georgià, armeni, hebreu, àrab, amhàric i siriac (CLDR, ~0,5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Llegint %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Llegint %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Mostrar botó d\'actualització</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Toca per canviar al següent candidat de lletres; manté premut per buscar lletres pel títol de la cançó i l\'artista</string>
   <string name="morphe_music_lyrics_search_dialog_title">Cerca lets</string>
@@ -782,7 +867,7 @@ Les lletres provenen de serveis de tercers que no estan afiliats, patrocinats ni
   <string name="morphe_music_lyrics_ai_config_status_invalid">Configuració incompleta o rebutjada pel proveïdor</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Validant la connexió…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Connectat! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Error de connexió. Comprova la configuració.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Error de connexió. Comprova la configuració.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Introdueix primer la clau de l\'API</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Provar connexió</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Obtint models…</string>

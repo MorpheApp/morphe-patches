@@ -181,16 +181,16 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG орнатылмаған. Оны орнатыңыз</string>
   <string name="gms_core_dialog_title">Әрекет қажет</string>
-  <string name="gms_core_dialog_outdated_message">"Сіздің MicroG v%1s нұсқасы ескірген және мәселелер тудыруы мүмкін.
+  <string name="gms_core_dialog_outdated_message">"Сіздің MicroG v%1$s нұсқаңыз ескірген және бұл мәселелер тудыруы мүмкін.
 
-MicroG-ді соңғы v%2s нұсқасына жаңартыңыз"</string>
+MicroG-ні соңғы v%2$s нұсқасына дейін жаңартыңыз"</string>
   <string name="gms_core_dialog_update_text">Жаңарту</string>
   <string name="gms_core_dialog_ignore_text">Елемеу</string>
-  <string name="gms_core_dialog_conflict_message">"Орнатылған MicroG Morphe тарапынан ұсынылмаған:
+  <string name="gms_core_dialog_conflict_message">"Орнатылған MicroG нұсқасын Morphe ұсынбайды:
 
-%1s
+%s
 
-Оны жою үшін басыңыз, содан кейін осы қолданбаны қайта ашып, MicroG RE орнатыңыз"</string>
+Оны жою үшін басыңыз, содан кейін осы қолданбаны қайта ашып, MicroG RE нұсқасын орнатыңыз"</string>
   <string name="gms_core_dialog_uninstall_text">Жою</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG қолданбасында фондық режимде жұмыс істеуге рұқсат жоқ.

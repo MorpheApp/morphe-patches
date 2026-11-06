@@ -341,11 +341,11 @@ Begrensninger:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Nøkkelord har motstridende deklarasjoner: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Nøkkelordet er for kort og krever anførselstegn: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Nøkkelordet vil skjule alle videoer: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Hjem: %s
-• Abonnementer: %s
-• Søk: %s
-• Kommentarer: %s
-• Totalt: %s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Hjem: %1$s
+• Abonnementer: %2$s
+• Søk: %3$s
+• Kommentarer: %4$s
+• Totalt: %5$s"</string>
   <string name="morphe_hide_stats_category_title">Statistikk</string>
   <string name="morphe_hide_stats_hidden_24h_title">Videoer skjult, siste 24 timer</string>
   <string name="morphe_hide_stats_hidden_all_title">Videoer skjult, totalt</string>
@@ -357,9 +357,9 @@ Begrensninger:
   <string name="morphe_hide_aislist_warnlist_category_title">Advarselsliste: Moderat sikkerhet</string>
   <string name="morphe_hide_aislist_hide_home_title">Skjul videoer i Hjem</string>
   <string name="morphe_hide_aislist_hide_search_title">Skjul videoer i søk</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Hjem: %s
-• Søk: %s
-• Totalt: %s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Hjem: %1$s
+• Søk: %2$s
+• Totalt: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Blokkerte kanaler</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">Advarselsliste-kanaler</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">Aktiver et filter for å laste inn kanaler</string>
@@ -562,7 +562,7 @@ Eksportermappe: %s"</string>
   <string name="morphe_export_download_folder_missing">Kunne ikke finne eksportmappen %s</string>
   <string name="morphe_export_download_flyout_title">Eksporter til enhet</string>
   <string name="morphe_export_download_started">Eksporterer video</string>
-  <string name="morphe_export_download_progress">Eksporterer video: %d%%</string>
+  <string name="morphe_export_download_progress">Eksporterer video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Videoeksport</string>
   <string name="morphe_export_download_saved">Video eksportert til %s</string>
   <string name="morphe_export_download_failed">Kunne ikke eksportere videoen</string>
@@ -1013,7 +1013,7 @@ For å få tilgang til Innstillinger, aktiver Innstillinger-knappen via Generelt
   <string name="morphe_navigation_bar_glass_size_height">Høyde</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimal bredde</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Knappavstand</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Knapper vist: %1$d av %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Knapper vist: %1$s av %2$s</string>
   <string name="morphe_toolbar_screen_title">Verktøylinje</string>
   <string name="morphe_toolbar_screen_summary">Velg hvilke komponenter som vises i popup-menyen</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skjul chat-knapp</string>
@@ -1667,7 +1667,7 @@ Automatisk opptak stopper i inkognito-modus når kontoidentiteten er utilgjengel
   <string name="morphe_series_tracker_identity_unavailable">Sporing kan ikke aktiveres i inkognito-modus eller før YouTube har lastet gjeldende kontostatus. Gå tilbake til Hjem og prøv igjen. Ingen pålogging er nødvendig</string>
   <string name="morphe_series_tracker_enable">Aktivér lokal sporing</string>
   <string name="morphe_series_tracker_tracking_paused">Framgangsregistrering er deaktivert</string>
-  <string name="morphe_series_tracker_resume_at">Fortsett ved %1$s</string>
+  <string name="morphe_series_tracker_resume_at">Gjenoppta ved %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s episoder sett</string>
   <string name="morphe_series_tracker_episode_position">Episode %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Episoder %1$s-%2$s av %3$s</string>
@@ -1677,7 +1677,7 @@ Automatisk opptak stopper i inkognito-modus når kontoidentiteten er utilgjengel
   <string name="morphe_series_tracker_plan_changed">Velg en episode</string>
   <string name="morphe_series_tracker_plan_caught_up">Opplagt</string>
   <string name="morphe_series_tracker_plan_none">Ingen spillebare episoder</string>
-  <string name="morphe_series_tracker_saved_position">Lagret video · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">Lagret video · %s</string>
   <string name="morphe_series_tracker_follow">Følg serie</string>
   <string name="morphe_series_tracker_view_series">Vis serie</string>
   <string name="morphe_series_tracker_continue">Fortsett</string>
@@ -1688,7 +1688,7 @@ Automatisk opptak stopper i inkognito-modus når kontoidentiteten er utilgjengel
   <string name="morphe_series_tracker_undo">Angre</string>
   <string name="morphe_series_tracker_enable_short">Aktivér</string>
   <string name="morphe_series_tracker_new_episode">1 ny episode</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s nye episoder</string>
+  <string name="morphe_series_tracker_new_episodes">%s nye episoder</string>
   <string name="morphe_series_tracker_record_short">Registrer fremgang på denne enheten</string>
   <string name="morphe_series_tracker_follow_consent">"Serien din og fremgangen blir liggende på denne enheten, delt på tvers av YouTube-kontoer. YouTubes historikkkontroller endrer dem ikke. Slett fremgang fra Serien-menyen.
 
@@ -1718,12 +1718,12 @@ Automatisk opptak er valgfritt. Det stoppes i inkognito-modus eller når kontoen
   <string name="morphe_series_tracker_hide_watched">Skjul sette</string>
   <string name="morphe_series_tracker_watched_on_advance">Marker som sett når du går til neste episode</string>
   <string name="morphe_series_tracker_watch_previous">Marker tidligere episoder som sett</string>
-  <string name="morphe_series_tracker_order_starts_with">Begynner med: %1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">Starter med: %s</string>
   <string name="morphe_series_tracker_episode_order">Episoderrekkefølge</string>
   <string name="morphe_series_tracker_playlist_order">Spillelisterekkefølge</string>
   <string name="morphe_series_tracker_reverse_order">Omvendt spillelisterekkefølge</string>
-  <string name="morphe_series_tracker_view_count">%1$s visninger</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s visning</string>
+  <string name="morphe_series_tracker_view_count">%s visninger</string>
+  <string name="morphe_series_tracker_view_count_one">%s visning</string>
   <string name="morphe_series_tracker_completion_title">Marker episoder sett</string>
   <string name="morphe_series_tracker_completion_summary">Minst %1$s%% sett med maksimalt 90 sekunder igjen, eller %2$s sekunder igjen</string>
   <string name="morphe_series_tracker_completion_explanation">Marker automatisk en episode som sett etter hver av tersklene. Prosentregelen krever også at det ikke er mer enn 90 sekunder igjen, så slutten av lange episoder hoppes ikke over. Regelen for gjenværende tid gjelder for videoer som er lengre enn ett minutt; sett den til 0 for å deaktivere den. Endringer gjelder for fremtidige fremgangsoppdateringer. Manuelle valg for sett/uset beholdes</string>
@@ -1743,7 +1743,7 @@ Automatisk opptak er valgfritt. Det stoppes i inkognito-modus eller når kontoen
   <string name="morphe_series_tracker_backup_restore">Gjenopprett sikkerhetskopi</string>
   <string name="morphe_series_tracker_backup_preview">Legg til %1$s serier. %2$s serier som allerede er i biblioteket ditt beholdes. Eksisterende videofremgang beholdes</string>
   <string name="morphe_series_tracker_backup_saved">Seriesikkerhetskopi lagret</string>
-  <string name="morphe_series_tracker_backup_restored">Restaurerte %1$s serier</string>
+  <string name="morphe_series_tracker_backup_restored">Gjenopprettet %s serier</string>
   <string name="morphe_series_tracker_error_backup_invalid">Denne filen er ikke en støttet seriebackup, eller er for stor. Biblioteket ditt ble ikke endret</string>
   <string name="morphe_series_tracker_error_backup_write">Kunne ikke lagre sikkerhetskopien. Prøv et annet sted</string>
   <string name="morphe_series_tracker_removed">Serie fjernet</string>
@@ -1753,7 +1753,7 @@ Automatisk opptak er valgfritt. Det stoppes i inkognito-modus eller når kontoen
   <string name="morphe_series_tracker_recovery_choose">Du kan også velge enhver episode nedenfor. Tidligere episoder endres ikke</string>
   <string name="morphe_series_tracker_playback_changed">Spillelisten har endret seg. Åpne serien for å velge hvor du skal fortsette</string>
   <string name="morphe_series_tracker_playback_boundary">Ingen flere episoter i denne retningen</string>
-  <string name="morphe_series_tracker_continue_series">Fortsett %1$s</string>
+  <string name="morphe_series_tracker_continue_series">Fortsett %s</string>
   <string name="morphe_series_tracker_search_series">Søk etter serier</string>
   <string name="morphe_series_tracker_clear_search">Tøm søk</string>
   <string name="morphe_series_tracker_no_search_results">Ingen serier funnet</string>
@@ -1782,6 +1782,10 @@ Automatisk opptak er valgfritt. Det stoppes i inkognito-modus eller når kontoen
   <string name="morphe_niconico_comments_live_premieres_summary">Premierer mens de spilles av</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Vis på avsluttede premierer</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Chat-avspilling av premierer som er avsluttet</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Vis tidsbestemte kommentarer</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">På videoer uten chat vises toppkommentarer som inneholder et tidspunkt, som 1:23, på det tidspunktet</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Vis tidsstemplede kommentarer med chat-avspilling</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Ved avspilling av livestreams og premierer vises tidsstemplede kommentarer også sammen med chatten</string>
   <string name="morphe_live_chat_translate_screen_title">Oversettelse av live-chat</string>
   <string name="morphe_live_chat_translate_screen_summary">Oversett meldinger fra live-chat og avspilling av live-chat</string>
   <string name="morphe_live_chat_translate_title">Oversett live-chat</string>

@@ -341,11 +341,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">關鍵字存在衝突宣告：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">關鍵字過短，需要加上引號：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">關鍵字將隱藏所有影片：%s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• 首頁：%s
-• 訂閱：%s
-• 搜尋：%s
-• 留言：%s
-• 總計：%s"</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• 首頁：%1$s
+• 訂閱：%2$s
+• 搜尋：%3$s
+• 評論：%4$s
+• 總計：%5$s"</string>
   <string name="morphe_hide_stats_category_title">統計</string>
   <string name="morphe_hide_stats_hidden_24h_title">已隱藏影片，過去 24 小時</string>
   <string name="morphe_hide_stats_hidden_all_title">已隱藏影片，所有時間</string>
@@ -357,9 +357,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_warnlist_category_title">警告清單：中等信度</string>
   <string name="morphe_hide_aislist_hide_home_title">在「首頁」中隱藏影片</string>
   <string name="morphe_hide_aislist_hide_search_title">在搜尋結果中隱藏影片</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• 首頁：%s
-• 搜尋：%s
-• 總計：%s"</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• 首頁：%1$s
+• 搜尋：%2$s
+• 總計：%3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">封鎖頻道</string>
   <string name="morphe_hide_aislist_stats_warnlist_channels_title">警告頻道</string>
   <string name="morphe_hide_aislist_stats_channels_disabled_summary">啟用篩選器以載入頻道</string>
@@ -562,7 +562,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">找不到匯出資料夾 %s</string>
   <string name="morphe_export_download_flyout_title">匯出到裝置</string>
   <string name="morphe_export_download_started">正在匯出影片</string>
-  <string name="morphe_export_download_progress">匯出影片進度： %d%%</string>
+  <string name="morphe_export_download_progress">匯出影片進度： %s%%</string>
   <string name="morphe_export_download_notification_channel">匯出影片</string>
   <string name="morphe_export_download_saved">影片匯出進度 %s</string>
   <string name="morphe_export_download_failed">無法匯出影片</string>
@@ -1013,7 +1013,7 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_height">高度</string>
   <string name="morphe_navigation_bar_glass_size_width">最大寬度</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">按鈕間距</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">顯示按鈕：%1$d / %2$d</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">顯示按鈕：%1$s / %2$s</string>
   <string name="morphe_toolbar_screen_title">工具列</string>
   <string name="morphe_toolbar_screen_summary">選擇工具列中顯示的元件</string>
   <string name="morphe_hide_toolbar_chat_button_title">隱藏聊天按鈕</string>
@@ -1483,7 +1483,7 @@ Second \"item\" text"</string>
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">自動</string>
   <string name="morphe_remember_video_quality_last_selected_title">將您的手動畫質選擇套用至所有未來的影片</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">畫質變更通知</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">將你手動選擇的畫質套用到之後的所有影片</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">在變更預設影片畫質時顯示通知</string>
   <string name="morphe_remember_video_quality_last_selected_toast_summary">儲存新的預設畫質時顯示通知</string>
   <string name="morphe_video_quality_default_wifi_title">使用 Wi-Fi 時的預設影片畫質</string>
@@ -1513,10 +1513,10 @@ Second \"item\" text"</string>
   <string name="morphe_custom_playback_speeds_parse_exception">自訂播放速度格式不正確</string>
   <string name="morphe_custom_playback_speeds_auto">自動</string>
   <string name="morphe_speed_tap_and_hold_title">設定按住螢幕時的速度乘數，設定為 0 以停用</string>
-  <string name="morphe_speed_tap_and_hold_summary">記住播放速度</string>
+  <string name="morphe_speed_tap_and_hold_summary">設定按住畫面時的速度倍數，設為 0 可停用</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">將您的手動速度選擇套用至所有未來的影片</string>
-  <string name="morphe_remember_playback_speed_last_selected_summary">速度變更通知</string>
+  <string name="morphe_remember_playback_speed_last_selected_summary">將你手動選擇的速度套用到之後的所有影片</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">在變更預設播放速度時顯示通知</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">變更預設播放速度時會顯示提示</string>
   <string name="morphe_playback_speed_default_title">預設播放速度</string>
@@ -1666,7 +1666,7 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_series_tracker_identity_unavailable">在無痕模式下或 YouTube 尚未載入目前帳戶狀態之前，無法啟用追蹤功能。請返回主頁並再試一次。無需登入</string>
   <string name="morphe_series_tracker_enable">啟用本機追蹤功能</string>
   <string name="morphe_series_tracker_tracking_paused">進度記錄已關閉</string>
-  <string name="morphe_series_tracker_resume_at">於 %1$s 繼續</string>
+  <string name="morphe_series_tracker_resume_at">從 %s 恢復播放</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s 集已看</string>
   <string name="morphe_series_tracker_episode_position">第 %1$s 集 · %2$s</string>
   <string name="morphe_series_tracker_episode_range">共 %3$s 集中的第 %1$s-%2$s 集</string>
@@ -1676,7 +1676,7 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_series_tracker_plan_changed">選取一集</string>
   <string name="morphe_series_tracker_plan_caught_up">追平了</string>
   <string name="morphe_series_tracker_plan_none">沒有可播放的集數</string>
-  <string name="morphe_series_tracker_saved_position">已儲存的影片 · %1$s</string>
+  <string name="morphe_series_tracker_saved_position">已儲存影片 · %s</string>
   <string name="morphe_series_tracker_follow">追蹤系列</string>
   <string name="morphe_series_tracker_view_series">檢視系列</string>
   <string name="morphe_series_tracker_continue">繼續</string>
@@ -1687,7 +1687,7 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_series_tracker_undo">復原</string>
   <string name="morphe_series_tracker_enable_short">啟用</string>
   <string name="morphe_series_tracker_new_episode">1 集新內容</string>
-  <string name="morphe_series_tracker_new_episodes">%1$s 集新內容</string>
+  <string name="morphe_series_tracker_new_episodes">%s 個新集數</string>
   <string name="morphe_series_tracker_record_short">在此裝置上記錄進度</string>
   <string name="morphe_series_tracker_follow_consent">"您的追劇記錄和進度保存在本裝置上，並跨 YouTube 帳戶共用。YouTube 歷史記錄控制項不會更改它們。從追劇選單清除進度。
 
@@ -1717,12 +1717,12 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_series_tracker_hide_watched">隱藏已觀看</string>
   <string name="morphe_series_tracker_watched_on_advance">跳至下一集時標記為已觀看</string>
   <string name="morphe_series_tracker_watch_previous">標記之前的集數為已觀看</string>
-  <string name="morphe_series_tracker_order_starts_with">開頭為：%1$s</string>
+  <string name="morphe_series_tracker_order_starts_with">開始於：%s</string>
   <string name="morphe_series_tracker_episode_order">集數順序</string>
   <string name="morphe_series_tracker_playlist_order">播放清單順序</string>
   <string name="morphe_series_tracker_reverse_order">反轉播放清單順序</string>
-  <string name="morphe_series_tracker_view_count">%1$s 次觀看</string>
-  <string name="morphe_series_tracker_view_count_one">%1$s 次觀看</string>
+  <string name="morphe_series_tracker_view_count">%s 次觀看</string>
+  <string name="morphe_series_tracker_view_count_one">%s 次觀看</string>
   <string name="morphe_series_tracker_completion_title">標記集數為已觀看</string>
   <string name="morphe_series_tracker_completion_summary">至少觀看 %1$s%% 且剩餘時間不超過 90 秒，或剩餘 %2$s 秒</string>
   <string name="morphe_series_tracker_completion_explanation">達到任一閾值後自動標記為已看。百分比規則還要求剩餘時間不超過 90 秒，因此不會跳過長集的結尾。剩餘時間規則適用於超過一分鐘的影片；設為 0 可停用此規則。變更將應用於未來的進度更新。手動選擇的已看/未看狀態將保留</string>
@@ -1742,7 +1742,7 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_series_tracker_backup_restore">還原備份</string>
   <string name="morphe_series_tracker_backup_preview">新增 %1$s 個追劇集。圖書館中已存在的 %2$s 個追劇集將保留。現有影片進度將保留</string>
   <string name="morphe_series_tracker_backup_saved">系列備份已儲存</string>
-  <string name="morphe_series_tracker_backup_restored">已還原 %1$s 個追劇集</string>
+  <string name="morphe_series_tracker_backup_restored">已恢復 %s 部劇集</string>
   <string name="morphe_series_tracker_error_backup_invalid">此檔案不是支援的劇集備份，或檔案過大。圖書館未作任何變更</string>
   <string name="morphe_series_tracker_error_backup_write">無法儲存備份。請選擇其他位置</string>
   <string name="morphe_series_tracker_removed">系列已移除</string>
@@ -1752,7 +1752,7 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_series_tracker_recovery_choose">您也可以選擇以下任何劇集。之前的劇集不會被更改</string>
   <string name="morphe_series_tracker_playback_changed">播放清單已變更。開啟劇集以選擇從何處繼續</string>
   <string name="morphe_series_tracker_playback_boundary">這個方向沒有更多集數了</string>
-  <string name="morphe_series_tracker_continue_series">繼續 %1$s</string>
+  <string name="morphe_series_tracker_continue_series">繼續 %s</string>
   <string name="morphe_series_tracker_search_series">搜尋系列</string>
   <string name="morphe_series_tracker_clear_search">清除搜尋</string>
   <string name="morphe_series_tracker_no_search_results">找不到任何系列</string>
@@ -1781,6 +1781,10 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_niconico_comments_live_premieres_summary">首播播放時顯示</string>
   <string name="morphe_niconico_comments_ended_premieres_title">在「已結束的首播」影片中顯示</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">已結束的首播聊天室回放</string>
+  <string name="morphe_niconico_comments_timed_comments_title">顯示定時評論</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">在沒有聊天室的影片中，包含時間（例如 1:23）的頂級評論將在該時間點顯示</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">在聊天回放中顯示定時評論</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">在直播和首播的回放中，定時評論也會與聊天內容一同顯示</string>
   <string name="morphe_live_chat_translate_screen_title">直播聊天翻譯</string>
   <string name="morphe_live_chat_translate_screen_summary">翻譯直播聊天與直播重播訊息</string>
   <string name="morphe_live_chat_translate_title">翻譯直播聊天</string>

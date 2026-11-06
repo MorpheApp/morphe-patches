@@ -182,14 +182,14 @@ Le comportement a disparu plus tôt au cours de la recherche, donc plusieurs ind
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG n\'est pas installé. Installez-le</string>
   <string name="gms_core_dialog_title">Action nécessaire</string>
-  <string name="gms_core_dialog_outdated_message">"Votre version de MicroG v%1s est obsolète et peut entraîner des problèmes.
+  <string name="gms_core_dialog_outdated_message">"Votre version de MicroG v%1$s est obsolète et peut entraîner des problèmes.
 
-Veuillez mettre à jour MicroG vers la dernière version v%2s"</string>
+Veuillez mettre à jour MicroG vers la dernière version v%2$s"</string>
   <string name="gms_core_dialog_update_text">Mettre à jour</string>
   <string name="gms_core_dialog_ignore_text">Ignorer</string>
   <string name="gms_core_dialog_conflict_message">"Le MicroG installé n'est pas recommandé par Morphe :
 
-%1s
+%s
 
 Appuyez pour le désinstaller, puis rouvrez cette application et installez MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Désinstaller</string>

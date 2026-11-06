@@ -150,6 +150,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_previous">前の曲</string>
   <string name="morphe_music_downloads_next">次の曲</string>
   <string name="morphe_music_downloads_pause">一時停止</string>
+  <string name="morphe_music_downloads_shuffle">シャッフル</string>
+  <string name="morphe_music_downloads_repeat">リピート</string>
+  <string name="morphe_music_downloads_minimize">最小化</string>
   <string name="morphe_music_downloads_close">閉じる</string>
   <string name="morphe_music_downloads_delete">削除</string>
   <string name="morphe_music_downloads_delete_track">ダウンロードを削除</string>
@@ -220,6 +223,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_download_no_network">ネットワーク接続がありません</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">ネットワークを待機中…</string>
   <string name="morphe_music_downloads_playlist_download_stopped">%2$s 件中 %1$s 件で停止しました。再開するには再度ダウンロードをタップしてください</string>
+  <string name="morphe_music_downloads_mark_title">ダウンロード済みの曲にマークを付ける</string>
+  <string name="morphe_music_downloads_mark_summary">ダウンロード済みの曲は、プレイリスト、アルバム、検索結果の詳細の前にマークが表示されます</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Morphe について</string>
@@ -340,6 +345,43 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">選択したトラックをキューに追加する</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">キューに追加しました</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">再生リストのタグ</string>
+  <string name="morphe_music_playlist_tags_screen_summary">再生リストにタグを付け、タグでライブラリをフィルタリングします</string>
+  <string name="morphe_music_playlist_tags_title">再生リストのタグを有効にする</string>
+  <string name="morphe_music_playlist_tags_summary">再生リストのメニューに「タグ」項目を、ライブラリのソートボタンの横に「タグ」フィルタボタンを追加します</string>
+  <string name="morphe_music_playlist_tags_manage_title">再生リストのタグを管理</string>
+  <string name="morphe_music_playlist_tags_manage_summary">タグの作成、名前変更、削除を行い、ライブラリに表示される再生リストにタグを付けます</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">タグ</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">タグなし</string>
+  <string name="morphe_music_playlist_tags_filter_button">タグ</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">タグ: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">タグ (%s 個を非表示)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">%s のタグ</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">新しいタグ</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">再生リスト 1 件</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">再生リスト %s 件</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">%s という名前のタグは既に存在します</string>
+  <string name="morphe_music_playlist_tags_filter_title">タグでフィルタリング</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">のみ表示</string>
+  <string name="morphe_music_playlist_tags_filter_all">すべての再生リスト</string>
+  <string name="morphe_music_playlist_tags_filter_visible">表示中のタグ</string>
+  <string name="morphe_music_playlist_tags_manage">管理</string>
+  <string name="morphe_music_playlist_tags_none">タグがまだありません。再生リストを長押しして「タグ」を選択して作成してください</string>
+  <string name="morphe_music_playlist_tags_section_tags">タグ</string>
+  <string name="morphe_music_playlist_tags_section_playlists">再生リスト</string>
+  <string name="morphe_music_playlist_tags_no_playlists">再生リストをここに表示させるために、一度ライブラリを開いてください</string>
+  <string name="morphe_music_playlist_tags_new_tag">新しいタグ</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">タグを編集</string>
+  <string name="morphe_music_playlist_tags_rename">名前変更</string>
+  <string name="morphe_music_playlist_tags_delete">削除</string>
+  <string name="morphe_music_playlist_tags_hidden">非表示</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">キャストボタンを非表示</string>
   <string name="morphe_music_hide_history_button_title">履歴ボタンを非表示</string>
@@ -508,6 +550,49 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_scrobbling_about_summary">"Scrobble は、YouTube Music で再生した楽曲を Last.fm または ListenBrainz のプロフィールに記録する機能です
 
 バックグラウンドで再生した楽曲を Scrobble するには、デバイスの設定で YouTube Music を「バックグラウンド実行時に電池を使用可能」にしてください"</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">コミュニティによってAIであると報告されたアーティストのトラックをスキップします</string>
+  <string name="morphe_music_soundproof_show_button_title">SoundProofボタンを表示</string>
+  <string name="morphe_music_soundproof_show_button_summary">プレイヤーの上部バーに、現在のアーティストに対するコミュニティの投票を確認し、投票するためのボタンを表示します</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">AIアーティストをスキップ</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">アーティストが以下のAIしきい値に達したトラックを自動的にスキップします</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">スキップ通知を表示</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">トラックが自動的にスキップされたときに通知を表示します</string>
+  <string name="morphe_music_soundproof_threshold_title">検出しきい値</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">最小AI投票率</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">投票の少なくともこの割合がAIである場合、そのアーティストはAIとみなされます</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">最小投票数</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">投票数がこれより少ないアーティストはスキップされません</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">%1$s をスキップしました (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">このアーティストに対する SoundProof の投票</string>
+  <string name="morphe_music_soundproof_sheet_verified">検証済み</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% 人間</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 票</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s 票</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s 人間</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s AI</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">このアーティストへの投票はまだありません</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">SoundProof データベースはまだ利用できません</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">バックグラウンドでダウンロードしています。利用可能になるまでトラックはスキップされません。</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">SoundProof データベースによるコミュニティ投票</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">人間</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">投票は締め切られました：SoundProof モデレーターがこのアーティストを確認しました</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">SoundProofに接続できませんでした。投票結果は日次データベースからのものであり、投票は利用できません。</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">SoundProofの投票に失敗しました</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"アーティストデータは、1日に1回ダウンロードされるSoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps)から提供されています。スキップしても、再生内容に関する情報は送信されません。SoundProofシートを開くと、最新の投票結果の表示および投票のために、現在のアーティスト名がSoundProofサーバーに送信されます。サーバーはIPアドレスで投票者を識別するため、別のネットワークでは投票状況が異なる場合があります。
+
+データベースはODC Open Database License (ODbL)の下でライセンスされています。xoundbyteによるSoul Over AIからのエントリはCC BY 4.0の下でライセンスされています。SoundProofまたはSoul Over AIとの提携や承認を受けているものではありません。"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">外部サービスの歌詞を使用</string>
   <string name="morphe_music_lyrics_enabled_summary">外部の歌詞配信サービスから歌詞を取得して表示します。見つからない場合は、アプリの歌詞を表示します</string>
@@ -548,17 +633,17 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_lyrics_rime_dict_bad_code">コードはhakのように2〜3文字である必要があります</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">アドレスは https:// で始まる必要があります</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">名称とアドレスには縦棒を含めることはできません</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s は既に単語テーブルを持っています</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s は組み込みのローマ字変換器によって処理され、語彙リストを取ることができません</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s には既に単語テーブルが存在します</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s は組み込みのローマ字変換機能で読み込まれるため、単語リストを設定できません</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">未使用：この言語は既に独自の読みを持っているため、チェックを外して削除してください</string>
-  <string name="morphe_music_lyrics_rime_dict_added">%1$s を追加しました - チェックして保存をタップしてダウンロードしてください</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%s を追加しました。チェックを入れて「保存」をタップしてダウンロードしてください</string>
   <string name="morphe_music_lyrics_rime_dict_ready">語彙リスト準備完了</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">語彙リスト準備完了（%1$d エントリ）</string>
-  <string name="morphe_music_lyrics_rime_dict_building">読取中: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">単語リストの準備完了 (%s エントリ)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">単語リストを読み込み中: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">語彙リストのダウンロードに失敗しました - 再試行するには保存をもう一度タップしてください</string>
   <string name="morphe_music_lyrics_clear_cache_title">保存された歌詞を消去</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">このデバイスに保持されている歌詞の %1$s MB を削除します</string>
-  <string name="morphe_music_lyrics_clear_cache_done">%1$s MB を消去しました</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">このデバイスに保存されている %s MB の歌詞を削除します</string>
+  <string name="morphe_music_lyrics_clear_cache_done">%s MB を消去しました</string>
   <string name="morphe_music_token_dialog_get_token">トークンを取得</string>
   <string name="morphe_music_apple_music_token_title">Apple Music media-user-token</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"music.apple.com の media-user-token Cookie を貼り付けてください。
@@ -570,7 +655,7 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token を保存しました</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token を消去しました</string>
   <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: 無効なmedia-user-tokenです - 確認してもう一度お試しください</string>
-  <string name="morphe_music_spotify_token_title">Spotify […] \"sp_dc\" の値をコピーしてください</string>
+  <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Spotify の sp_dc Cookie を貼り付けてください。
 
 手順:
@@ -578,10 +663,10 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
 2. DevTools → Application → Cookies → open.spotify.com を開きます
 3. 「sp_dc」の値をコピーします"</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc を保存しました</string>
-  <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc […] これがない場合、Lyrically がフォールバックとして使用されます</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc 削除済み</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: 無効なsp_dcです - 確認してもう一度お試しください</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Music のトークンは必須ではありません。このトークンがない場合は、代替として Lyrically を使用します</string>
-  <string name="morphe_music_deezer_arl_title">Deezer […] \"arl\" の値をコピーしてください</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Deezer の arl Cookie を貼り付けてください。
 
 手順:
@@ -591,7 +676,7 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl を保存しました</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl が無効です。もう一度お試しください</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: 無効なarlです - 確認してもう一度お試しください</string>
-  <string name="morphe_music_musixmatch_token_title">Musixmatch […] ユーザートークンの値をコピーしてください</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">トークンを追加するのは、自分のアカウントを使用する場合のみです。これは Musixmatch Android アプリから取得する必要があります: musixmatch.com からコピーしたトークンは廃止されたデスクトップクライアント用であり、API はそれらを拒否します</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch はトークンなしでも動作するため、このフィールドは空のままで構いません</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">ユーザートークンが無効です。もう一度お試しください</string>
@@ -599,7 +684,14 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: user token 削除済み</string>
   <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: 無効なユーザートークンです - 確認してもう一度お試しください</string>
   <string name="morphe_music_youtube_cookies_title">YouTube</string>
-  <string name="morphe_music_youtube_cookies_dialog_instruction">"YouTube の値をコピーしてください"</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"YouTube から字幕やタイムテキストを取得するために、YouTube の Cookie を貼り付けてください
+
+手順:
+1. ブラウザで youtube.com を開いてサインイン
+2. DevTools（F12）を開く → [Application] → [Cookies] → [youtube.com]
+3. Cookie 文字列全体（セミコロン区切りの key=value 形式）をコピー
+
+必要な Cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube を保存しました</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: 無効なクッキーです - 確認してもう一度お試しください</string>
@@ -617,14 +709,14 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_lyrics_allow_transliteration_summary">歌詞ソースからの非ラテン文字の読みを許可します；無効にすると、ラテン文字、アクセント付き文字、声調数字のみを残します</string>
   <string name="morphe_music_lyrics_local_romanization_summary">タイマー歌詞（ワード同期オン）の各単語を読み取ります；韓国語にはダウンロード不要；14種類のスクリプトで1つのCLDRダウンロードを共有します；漢字は、Rime語彙リストの単語テーブルが対象言語をカバーしている場合に読み取られます</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">読取辞書をダウンロードしています…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">読みデータ準備完了 (%1$d エントリ)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">読みデータの準備完了 (%s エントリ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">ダウンロードに失敗しました。再試行するにはこの設定を一旦オフにしてから再度オンにしてください</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">オフライン辞書</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">日本語（SudachiDict、約75 MB）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">中国語・広東語文字（UniDict、約8 MB）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">中国語単語（pinyin-pro、約17 MB）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">ギリシャ語、スラヴ系キリル文字（ロシア語、ウクライナ語、ブルガリア語、セルビア語、ベラルーシ語、マケドニア語を含む）、ジョージア語、アルメニア語、ヘブライ語、アラビア語、アムハラ語、シリア語の翻記（CLDR、約0.5 MB）</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s を読み込み中: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s を読み込み中: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">更新ボタンを表示</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">タップして次の歌詞候補に切り替え、長押しで曲名とアーティストから歌詞を検索</string>
   <string name="morphe_music_lyrics_search_dialog_title">歌詞を検索</string>
@@ -688,7 +780,7 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_lyrics_text_size_title">文字サイズ</string>
   <string name="morphe_music_lyrics_text_size_summary">歌詞の文字サイズ</string>
   <string name="morphe_music_lyrics_offset_ms_title">全体のタイミングオフセット</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">再生中に現在の行をハイライトする</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">同期歌詞は楽曲の再生に追従します。ズレが生じる場合はタイミングオフセットを調整してください。歌詞の表示タイミングを前後に変更できます。歌詞が曲より先に進んでしまう場合は、正の値を入力してください</string>
   <string name="morphe_music_lyrics_sb_matching_title">歌詞オフセットにSponsorBlockのセグメントを使用</string>
   <string name="morphe_music_lyrics_sb_matching_summary">SponsorBlockがスキップするセグメントを除いてマッチングし、歌詞をリリース版のオーディオに合わせます。オフにするとSponsorBlockを完全に無視します</string>
   <string name="morphe_music_lyrics_sb_no_video">このトラックには送信する動画IDがありません</string>
@@ -714,7 +806,7 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_lyrics_romanize_hide">歌詞が見つかりません</string>
   <string name="morphe_romanize_language_DEFAULT">自動</string>
   <string name="morphe_music_lyrics_romanizing">ロード中</string>
-  <string name="morphe_music_lyrics_romanize_failed">[…] をローマ字化できませんでした</string>
+  <string name="morphe_music_lyrics_romanize_failed">歌詞をローマ字化できませんでした</string>
   <string name="morphe_music_lyrics_translate_only">翻訳のみ</string>
   <string name="morphe_music_lyrics_romanize_only">ローマ字のみ</string>
   <string name="morphe_music_lyrics_dual_only">デュアルモード</string>
@@ -775,7 +867,7 @@ Rime 単語リストが読み取るリストにチェックを入れ、[保存] 
   <string name="morphe_music_lyrics_ai_config_status_invalid">設定が不完全またはプロバイダーによって拒否されました</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">接続を確認中…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s：接続済み！（%2$s）</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s：接続に失敗しました。設定を確認してください。</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: 接続に失敗しました。設定を確認してください。</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">まず API キーを入力してください</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">接続テスト</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">モデルを取得中…</string>

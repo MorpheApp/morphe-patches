@@ -181,14 +181,14 @@ Tingkah laku tersebut hilang lebih awal dalam carian, jadi lebih daripada satu b
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG tidak dipasang. Pasangnya</string>
   <string name="gms_core_dialog_title">Tindakan diperlukan</string>
-  <string name="gms_core_dialog_outdated_message">"MicroG v%1s anda sudah lapuk dan mungkin menyebabkan masalah.
+  <string name="gms_core_dialog_outdated_message">"MicroG v%1$s anda sudah lapuk dan mungkin menyebabkan masalah.
 
-Sila kemas kini MicroG ke versi terbaru v%2s"</string>
+Sila kemas kini MicroG kepada versi terkini v%2$s"</string>
   <string name="gms_core_dialog_update_text">Kemas kini</string>
   <string name="gms_core_dialog_ignore_text">Abaikan</string>
   <string name="gms_core_dialog_conflict_message">"MicroG yang dipasang tidak disyorkan oleh Morphe:
 
-%1s
+%s
 
 Ketik untuk menyahpasangnya, kemudian buka semula aplikasi ini dan pasang MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Nyahpasang</string>

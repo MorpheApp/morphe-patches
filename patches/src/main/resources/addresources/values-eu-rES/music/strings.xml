@@ -150,6 +150,9 @@ Deskargatutako pisteak hemen agertuko dira"</string>
   <string name="morphe_music_downloads_previous">Aurrekoa</string>
   <string name="morphe_music_downloads_next">Hurrekoa</string>
   <string name="morphe_music_downloads_pause">Pause</string>
+  <string name="morphe_music_downloads_shuffle">Nahasi</string>
+  <string name="morphe_music_downloads_repeat">Errepikatu</string>
+  <string name="morphe_music_downloads_minimize">Txikitu</string>
   <string name="morphe_music_downloads_close">Itxi</string>
   <string name="morphe_music_downloads_delete">Ezabitu</string>
   <string name="morphe_music_downloads_delete_track">Ezabitu deskarga</string>
@@ -220,6 +223,8 @@ Bat bat deskargatzen dira, eta horrek denbora asko hartu dezake eta %3$s espazio
   <string name="morphe_music_downloads_playlist_download_no_network">Sare konexioik ez dago</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">Sarea zain...</string>
   <string name="morphe_music_downloads_playlist_download_stopped">%2$s tracketako %1$s ondoren gelditu da. Sakatu berriro Deskargatu jarraitzeko</string>
+  <string name="morphe_music_downloads_mark_title">Markatu deskargatutako abestuak</string>
+  <string name="morphe_music_downloads_mark_summary">Jada deskargatutako abestuek marka bat erakutsiko dute playlistetan, albumeetan eta bilaketa emaitzetan, hauen xehetasunen aurretik</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Morphe לגain</string>
@@ -340,6 +345,43 @@ SABR errejentzea (Bideo stream-en imitazioa desaktibatuta)"</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Hautatutako tracka hurrengoen zerrendara gehitu</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">Hurrengoen zerrendara gehituta</string>
+  <!-- layout.playlisttags.playlistTagsPatch -->
+  <string name="morphe_music_playlist_tags_screen_title">Playlisten etiketak</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Etiketu playlistak eta filtrar Liburutegia etiketa bidez</string>
+  <string name="morphe_music_playlist_tags_title">Gaitu playlisten etiketak</string>
+  <string name="morphe_music_playlist_tags_summary">Etiketak elementu bat gehitu playlisten menuan, eta Etiketak filter botoi bat Liburutegiko ordena botoiaren ondoan</string>
+  <string name="morphe_music_playlist_tags_manage_title">Kudeatu playlisten etiketak</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Sortu, biziztu eta ezbatu etiketak, eta etiketu Liburutegian agertzen diren playlistak</string>
+  <!-- Title of the row added to the menu of a playlist. -->
+  <string name="morphe_music_playlist_tags_menu_item">Etiketak</string>
+  <string name="morphe_music_playlist_tags_menu_item_none">Ez dago etiketarik</string>
+  <string name="morphe_music_playlist_tags_filter_button">Etiketak</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_filter_button_only">Etiketa: %s</string>
+  <!-- %s is the number of hidden tags. -->
+  <string name="morphe_music_playlist_tags_filter_button_hidden">Etiketak (%s ezkututa)</string>
+  <!-- %s is the name of the playlist. -->
+  <string name="morphe_music_playlist_tags_assign_title">%s rakok etiketak</string>
+  <string name="morphe_music_playlist_tags_new_tag_hint">Etiketa berria</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 playlista</string>
+  <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s playlist</string>
+  <!-- %s is the name of the tag. -->
+  <string name="morphe_music_playlist_tags_tag_exists">%s izeneko etiketa batez jada existitzen dugu</string>
+  <string name="morphe_music_playlist_tags_filter_title">Filtratu etiketa bidez</string>
+  <string name="morphe_music_playlist_tags_filter_show_only">Erakutsi bakarrik</string>
+  <string name="morphe_music_playlist_tags_filter_all">Playlist guztiak</string>
+  <string name="morphe_music_playlist_tags_filter_visible">Etiketa ikusgarriak</string>
+  <string name="morphe_music_playlist_tags_manage">Kudeatu</string>
+  <string name="morphe_music_playlist_tags_none">Ez dago oraindik etiketarik. Lutsatu playlist bat eta aukeratu Etiketak bat sortzeko</string>
+  <string name="morphe_music_playlist_tags_section_tags">Etiketak</string>
+  <string name="morphe_music_playlist_tags_section_playlists">Playlistak</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Ireki Liburutegia behin zure playlistak hemen agertzeko</string>
+  <string name="morphe_music_playlist_tags_new_tag">Etiketa berria</string>
+  <string name="morphe_music_playlist_tags_edit_tag_title">Editatu etiketa</string>
+  <string name="morphe_music_playlist_tags_rename">Biziztu</string>
+  <string name="morphe_music_playlist_tags_delete">Ezbatu</string>
+  <string name="morphe_music_playlist_tags_hidden">Ezkututa</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Ezkutatu Cast botoia</string>
   <string name="morphe_music_hide_history_button_title">Ezkutatu Historia botoia</string>
@@ -508,6 +550,49 @@ SABR errejentzea (Bideo stream-en imitazioa desaktibatuta)"</string>
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling-ak automatikoki sinkronizatzen du zure YouTube Music erabilerak zure Last.fm edo ListenBrainz profilarekin
 
 Atzealdean erreproduktu duten bitartean scrobbling-a sinkronizatua dagoela ziurtatzeko, ziurtatu YouTube Music aplikazioaren bateria-erabilera \"Muga gabe\" konfiguratuta dagoela"</string>
+  <!-- interaction.soundproof.soundProofPatch -->
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_screen_summary">Komunitateak AI gisa saldatu dituen artistaen kantuak saltatu</string>
+  <string name="morphe_music_soundproof_show_button_title">Erakutsi SoundProof botoia</string>
+  <string name="morphe_music_soundproof_show_button_summary">Esperatzailearen goiko barran botoi bat erakutsi, gaur egungo artistari komunitateak eman dioen botoiak ikusteko eta botoatzeko</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">Saltatu AI artistak</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">Automatiki salto egiten dio artistak beheko AI ataria lortzen dituen trackei</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">Erakutsi salto jakinlaguna</string>
+  <string name="morphe_music_soundproof_toast_on_skip_summary">Jakinlagun bat erakusten du track bat automatikoki saltzen denean</string>
+  <string name="morphe_music_soundproof_threshold_title">Detekzio ataria</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_title">AI boto minimumak</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Artista bat AI dela hartzen da bere botoen irtenera gutxienez irabazi hau AI dela esaten denean</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">Botoen kopuru minimuma</string>
+  <string name="morphe_music_soundproof_minimum_votes_summary">Honek baino boto gutxiago duten artistak ez dira inoiz saltzen</string>
+  <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
+  <string name="morphe_music_soundproof_skipped_toast">%1$s saltatu da (AI, %2$s%%)</string>
+  <string name="morphe_music_soundproof_button_description">SoundProof botoak artista honentzat</string>
+  <string name="morphe_music_soundproof_sheet_verified">Berifikatuta</string>
+  <!-- Share of the votes on the majority side. Example: 93% AI -->
+  <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
+  <!-- Share of the votes on the majority side. Example: 92% human -->
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% gizona</string>
+  <string name="morphe_music_soundproof_sheet_one_vote">1 boto</string>
+  <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s boto</string>
+  <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s gizona</string>
+  <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s AI</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">Oraindik ez da botoik artista honentzat</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_title">SoundProof databaserik ez dago eskuragarri orain</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">Atzean deskargatzen ari da. Ez da inolorko pista saltatuko eskuragarri egon arte.</string>
+  <!-- 'SoundProof' must be kept untranslated -->
+  <string name="morphe_music_soundproof_sheet_source">Komunitatearen botoak SoundProof databasetik</string>
+  <string name="morphe_music_soundproof_sheet_vote_human">Humana</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
+  <string name="morphe_music_soundproof_sheet_voting_locked">Botozak itxita daude: SoundProof moderadore batek artista hau egiaztatu du</string>
+  <string name="morphe_music_soundproof_sheet_live_failed">Ezin izan da SoundProof-era konektatu. Botoak eguneroko databasetik dira, eta botozak eskuragarri ez dira.</string>
+  <string name="morphe_music_soundproof_vote_failed_toast">SoundProof botoa huts egin du</string>
+  <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <string name="morphe_music_soundproof_about_summary">"Artistaen datuak SoundProof-Dumps-tik datoz (github.com/NuclearBlox/SoundProof-Dumps), eguneko behin deskargatuz. Saltzeak ez du zerbait bidaltzen zure jokoari buruz. SoundProof orria irekitzeak gaur egungo artista izena bidaltzen du SoundProof zerbitzari boto berriak ikusteko eta botatzeko. Zerbitzariak botoatzaileak IP helbidearen bidez differentiated ditu, beraz zure botoa beste sare batean ezberdin agertu daiteke.
+
+Databasea ODC Open Database License (ODbL) lizentziapean dago. xoundbyte-ren Soul Over AI-ko sarrerak CC BY 4.0 lizentziapean daude. Ez dago SoundProof edo Soul Over AI-rekin lotura edo babesik."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Hirugarren partyren letrak erabili</string>
   <string name="morphe_music_lyrics_enabled_summary">Hirugarren partyren zerbitzuko letrak erakusten ditu; bat ere ez bada aurkitzen, integratutako letrak erabiltzen ditu</string>
@@ -548,17 +633,17 @@ Lehen zutabea hitza da, bigarrena beraren irakurketa; zutabe gehigarriak eta tab
   <string name="morphe_music_lyrics_rime_dict_bad_code">Kodea bi edo hiru letra izan behar ditu, hak bezala</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">Helbideak https:// rezumekin hasi behar du</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">Izenak eta helbideak ezin dute barra bertikal bat izan</string>
-  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s-ek hitz-taula jada dauka</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s romanizatzaile integratuak irakurtzen du eta ezin du hitz-zerrenda hartu</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%s jada du hitz-taula bat</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s barneko romanizatzaileak irakurtzen du eta ezin du hitz-zerrenda bat hartu</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">Ez da erabiltzen: hizkuntza honek bere irakurketa jada dauka, beraz, desmarkatu ezbotzeko</string>
-  <string name="morphe_music_lyrics_rime_dict_added">%1$s gehituta - markatu eta sakatu Gorde deskargatzeko</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%s gehituta - markatu eta sakatu Gorde deskargatzeko</string>
   <string name="morphe_music_lyrics_rime_dict_ready">Hitz-zerrendak prest</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">Hitz-zerrendak prest (%1$d entries)</string>
-  <string name="morphe_music_lyrics_rime_dict_building">Hitz-zerrenda irakurtzen: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Hitz-zerrendak prest (%s entrada)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Hitz-zerrenda irakurtzen: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">Hitz-zerrenaren deskarga huts egin du - sakatu berriro Gorde saiatu berriz</string>
   <string name="morphe_music_lyrics_clear_cache_title">Garbitu gorde diren letrak</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Ezabatu gailu honetan gordetako %1$s MB-ko letraak</string>
-  <string name="morphe_music_lyrics_clear_cache_done">%1$s MB garbituta</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Ezbatu gailu honetan gordetako %s MB letra</string>
+  <string name="morphe_music_lyrics_clear_cache_done">%s MB garbituta</string>
   <string name="morphe_music_token_dialog_get_token">Tokena lortu</string>
   <string name="morphe_music_apple_music_token_title">Apple Music-en Media-user-tokena</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Itsartu music.apple.com-en dagoen media-user-token cookie-a
@@ -624,14 +709,14 @@ Cookie beharrezkoak: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_allow_transliteration_summary">Permititu letra-iturritik datozen irakurketa ez-latineak; desaktibatuta dagoenean, letra latineak, axentsu duten letrak eta tonu-digitoak bakarrik gordetzen dira</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Irakurtzen ditu letra sinkronizatuen hitz bakoitza (hitzen sinkronizazioa aktibatuta); koreerak ez du deskarga behar; hamalau scriptuek CLDR deskarga bat partekatzen dute; Han bilaketak Rime Wordlist-ek irakurtzen ditu haren hitz-taulak hizkuntza hori jasotzen badu</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">Irakurtze-hiztegteak deskargatzen ari zara…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Irakurketa prest (%1$d entradak)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Irakurraktzak prest (%s entrada)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Deskarga huts egin du - desaktibatu eta aktibatu berriro saiatzeko</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Hiztegte Offline</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japonieraz (SudachiDict, ~75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Tzinerazko eta kantoneserazko bilaketak (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Tzinerazko hitzak (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grezierazko, eslavia ziriloazko (errusiera, ukrainera, bulgara, serbia, bielorrusia eta mazedoniera barne), georgierazko, armeniarazko, hebreaerazko, arabierazko, amharazko eta siriakozko transliterazioak (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s irakurtzen: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s irakurtzen: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Aktualizatzeko botoia erakutsi</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Sakatu hurrengo letra kandidatora aldatzeko; sakatu luze abestuaren izenaren eta artistaren arabera letra bilatzeko</string>
   <string name="morphe_music_lyrics_search_dialog_title">Bilatu letraak</string>
@@ -782,7 +867,7 @@ Letak Morphe-rekin lotura, patroinatu edo onartuta ez dauden hirugarren party ze
   <string name="morphe_music_lyrics_ai_config_status_invalid">Konfigurazioa incomplete dago edo hornitzaileak bazatu du</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Konexioa egiaztatzen...</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Konektatuta! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Konexioa huts egin du. Egiaztatu konfigurazioa.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Konexioa huts egin du. Egiaztatu konfigurazioa.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Sartu lehenik API gakoa</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Konexioa probatu</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Modeluak eskatzen ari zahiz...</string>
