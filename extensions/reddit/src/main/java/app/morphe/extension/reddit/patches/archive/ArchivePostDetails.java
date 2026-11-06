@@ -11,7 +11,8 @@ import java.util.List;
 
 /** Optional presentation data. A malformed preview never makes the text feed unusable. */
 public final class ArchivePostDetails {
-    private static final Set<String> IMAGE_HOSTS = Set.of("i.redd.it", "preview.redd.it", "external-preview.redd.it");
+    private static final Set<String> IMAGE_HOSTS = Set.of("i.redd.it", "preview.redd.it", "external-preview.redd.it",
+            "styles.redditmedia.com", "www.redditstatic.com");
     public final String title, author, subreddit, flair;
     public final Long commentCount;
     public final boolean nsfw, spoiler, video;

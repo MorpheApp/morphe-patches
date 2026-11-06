@@ -171,9 +171,18 @@ internal fun installNativeArchiveFeed(modelType: String, renderer: Method, compo
         return-object v0
     """)
     addNativeMethod(SECTION, sectionContent, """
-        invoke-virtual { p0, p2 }, $SECTION->render(Ljava/lang/Object;)V
+        invoke-virtual { p0, p1, p2 }, $SECTION->render(Ljava/lang/Object;Ljava/lang/Object;)V
         return-void
     """)
+    val events = classDefBy(sectionContent.parameterTypes.first().toString()).fields.single {
+        it.type == "Lkotlin/jvm/functions/Function1;" && AccessFlags.PUBLIC.isSet(it.accessFlags)
+    }
+    replaceArchiveBridge("dispatch", 2, """
+        check-cast p0, ${events.definingClass}
+        iget-object p0, p0, $events
+        invoke-interface { p0, p1 }, Lkotlin/jvm/functions/Function1;->invoke(Ljava/lang/Object;)Ljava/lang/Object;
+        return-void
+    """, "Lapp/morphe/extension/reddit/patches/archive/NativeArchiveActions;")
 
     // Reuse the host snapshot state and remember lifecycle. Do not ship a second Compose runtime.
     val newState = Fingerprint(definingClass = "Landroidx/compose/runtime/", isStatic = true,

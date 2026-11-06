@@ -1,6 +1,6 @@
 package app.morphe.extension.reddit.patches.archive;
 
-/** Pure policy shared by the runtime hook and desktop regression tests. */
+/** Eligibility policy for public visitor profile history. */
 public final class ArchiveEligibility {
     private ArchiveEligibility() {}
 

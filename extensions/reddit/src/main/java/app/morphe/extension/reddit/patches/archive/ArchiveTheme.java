@@ -6,41 +6,32 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
-import android.util.TypedValue;
 import android.widget.TextView;
 
-/** Uses the host APK's resources and current theme, not the device's Material defaults. */
+/** Host fonts and icons, with colors captured from Reddit's active Compose palette. */
 final class ArchiveTheme {
     final Context context;
-    final int background, foreground, secondary, surface, divider;
+    final int background, foreground, secondary, surface, divider, outline, action, upvote, downvote, content;
     final Typeface regular, semibold, bold;
-
-    ArchiveTheme(Context context) {
-        this(context, null);
-    }
 
     ArchiveTheme(Context context, int[] colors) {
         this.context = context;
-        boolean inherited = colors != null && colors.length == 5;
-        background = inherited ? colors[0] : attribute("rdt_ds_color_rpl_neutral_background", color("neutral_background"));
-        foreground = inherited ? colors[1] : attribute("rdt_body_text_color", color("rdt_content_strong_neutral"));
-        secondary = inherited ? colors[2] : attribute("rdt_meta_text_color", color("rdt_content_weak_neutral"));
-        surface = inherited ? colors[3] : color("rdt_background_weak_neutral");
-        divider = inherited ? colors[4] : attribute("rdt_line_color", secondary & 0x00ffffff | 0x33000000);
-        regular = font("reddit_sans_regular"); semibold = font("reddit_sans_semi_bold"); bold = font("reddit_sans_bold");
+        background = colors[0];
+        foreground = colors[1];
+        secondary = colors[2];
+        surface = colors[3];
+        divider = colors[4];
+        outline = colors[5];
+        action = colors[6];
+        upvote = colors[7]; downvote = colors[8];
+        content = colors[9];
+        regular = font("roboto_regular"); semibold = font("roboto_medium"); bold = font("roboto_bold");
     }
-    int[] colors() { return new int[] {background, foreground, secondary, surface, divider}; }
 
     int dp(float value) { return Math.round(value * context.getResources().getDisplayMetrics().density); }
+    int sp(float value) { return Math.round(value * context.getResources().getDisplayMetrics().scaledDensity); }
     private int id(String name, String type) { return context.getResources().getIdentifier(name, type, context.getPackageName()); }
-    private int color(String name) { return context.getColor(id(name, "color")); }
     private Typeface font(String name) { return context.getResources().getFont(id(name, "font")); }
-    private int attribute(String name, int fallback) {
-        TypedValue value = new TypedValue();
-        if (!context.getTheme().resolveAttribute(id(name, "attr"), value, true)) return fallback;
-        if (value.resourceId != 0) return context.getColor(value.resourceId);
-        return value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT ? value.data : fallback;
-    }
 
     Drawable icon(String name, int size, int tint) {
         Drawable icon = context.getDrawable(id(name, "drawable")).mutate();
@@ -57,6 +48,13 @@ final class ArchiveTheme {
     Drawable ripple(int color, int radius) {
         return new RippleDrawable(ColorStateList.valueOf((foreground & 0x00ffffff) | 0x20000000),
                 shape(color, radius), shape(0xffffffff, radius));
+    }
+
+    Drawable outlined(boolean interactive) {
+        GradientDrawable border = shape(android.graphics.Color.TRANSPARENT, 16);
+        border.setStroke(dp(1), outline);
+        return interactive ? new RippleDrawable(ColorStateList.valueOf((action & 0x00ffffff) | 0x20000000),
+                border, shape(0xffffffff, 16)) : border;
     }
 
     TextView text(int size, int color, Typeface face) {

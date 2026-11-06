@@ -1,5 +1,3 @@
-> **Local custom downstream:** this checkout adds archived public Reddit profile history to Morphe v2.0.0. See [PROFILE_ARCHIVE.md](PROFILE_ARCHIVE.md) for the bundle, installation, verification results, and current limitations. This is not an official Morphe release.
-
 <div align="center"> 
 <picture>
     <source

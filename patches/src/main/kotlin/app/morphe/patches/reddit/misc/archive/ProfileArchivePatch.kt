@@ -2,14 +2,12 @@ package app.morphe.patches.reddit.misc.archive
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.literal
 import app.morphe.patcher.string
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.Compatibility
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
 import app.morphe.patches.reddit.misc.settings.settingsPatch
@@ -33,18 +31,6 @@ internal val profileModel = Fingerprint(
     name = "toString", returnType = "Ljava/lang/String;", parameters = emptyList(),
     filters = listOf(string("ProfileEmptyFeedPresentationModel(targetFeed="))
 )
-
-private val archiveReaderResources = resourcePatch {
-    execute {
-        document("AndroidManifest.xml").use { doc ->
-            val activity = doc.createElement("activity")
-            activity.setAttribute("android:name", "app.morphe.extension.reddit.patches.archive.ArchiveReaderActivity")
-            activity.setAttribute("android:exported", "false")
-            activity.setAttribute("android:theme", "@android:style/Theme.Material.Light.NoActionBar")
-            doc.getElementsByTagName("application").item(0).appendChild(activity)
-        }
-    }
-}
 
 // These are Compose AndroidView's actual factory/update parameters, discovered in the APK.
 // No obfuscated class or method names are embedded in the runtime extension.
@@ -89,17 +75,16 @@ val profileArchivePatch = bytecodePatch(
         apkFileType = COMPATIBILITY_REDDIT.apkFileType,
         targets = COMPATIBILITY_REDDIT.targets.filter { it.version == "2026.40.0" }
     ))
-    dependsOn(settingsPatch, archiveReaderResources)
+    dependsOn(settingsPatch)
 
     execute {
         // The runtime resolves these host resources by name. Fail while patching if the
         // supported APK cannot supply them, rather than crash when opening a profile.
         mapOf(
-            ResourceType.FONT to listOf("reddit_sans_regular", "reddit_sans_semi_bold", "reddit_sans_bold"),
-            ResourceType.COLOR to listOf("neutral_background", "rdt_content_strong_neutral",
-                "rdt_content_weak_neutral", "rdt_background_weak_neutral"),
-            ResourceType.DRAWABLE to listOf("icon_info", "icon_community_fill", "icon_overflow_horizontal",
-                "icon_upvote", "icon_downvote", "icon_comment", "icon_share", "icon_play")
+            ResourceType.FONT to listOf("roboto_regular", "roboto_medium", "roboto_bold"),
+            ResourceType.DRAWABLE to listOf("icon_info", "community_default", "icon_overflow_vertical",
+                "icon_upvote", "icon_downvote", "icon_upvote_fill", "icon_downvote_fill", "icon_rotate",
+                "icon_comment", "icon_share", "icon_play")
         ).forEach { (type, names) -> names.forEach { resourceId(type, it) } }
         val model = profileModel.method
         val modelType = model.definingClass
@@ -153,6 +138,8 @@ val profileArchivePatch = bytecodePatch(
         """)
 
         installNativeArchiveFeed(modelType, renderer, bridge.parameterTypes[3].toString())
+        installNativeArchiveTheme(bridge.parameterTypes[3].toString())
+        installNativeArchiveActions()
         setExtensionIsPatchIncluded(ARCHIVE_CLASS)
     }
 }

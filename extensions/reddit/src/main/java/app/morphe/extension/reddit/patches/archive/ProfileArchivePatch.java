@@ -46,6 +46,7 @@ public final class ProfileArchivePatch {
     private static Object copyFeed(Object feed, List<?> sections) { throw new UnsupportedOperationException(); }
     static List<?> immutableList(List<?> rows) { throw new UnsupportedOperationException(); }
     static Unit unit() { throw new UnsupportedOperationException(); }
+    static int[] themeColors(Object composer) { throw new UnsupportedOperationException(); }
     static Object newState(Object initial) { throw new UnsupportedOperationException(); }
     static Object readState(Object state) { throw new UnsupportedOperationException(); }
     static void writeState(Object state, Object value) { throw new UnsupportedOperationException(); }

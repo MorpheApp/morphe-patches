@@ -9,19 +9,24 @@ import kotlin.jvm.functions.Function1;
 public final class ArchiveSection {
     final ArchiveController controller;
     final ArchiveSnapshot.Row row;
+    Object eventContext;
     ArchiveSection(ArchiveController controller, ArchiveSnapshot.Row row) { this.controller = controller; this.row = row; }
     public String key() { return row.key; }
-    public void render(Object composer) {
-        ProfileArchivePatch.androidView(new Factory(this), new Update(this), composer);
+    public void render(Object eventContext, Object composer) {
+        this.eventContext = eventContext;
+        int[] colors = ProfileArchivePatch.themeColors(composer);
+        ProfileArchivePatch.androidView(new Factory(this, colors), new Update(this, colors), composer);
     }
     private static final class Factory implements Function1<Context, View> {
         private final ArchiveSection section;
-        Factory(ArchiveSection section) { this.section = section; }
-        @Override public View invoke(Context context) { return new ArchiveRowView(context, section); }
+        private final int[] colors;
+        Factory(ArchiveSection section, int[] colors) { this.section = section; this.colors = colors; }
+        @Override public View invoke(Context context) { return new ArchiveRowView(context, section, colors); }
     }
     private static final class Update implements Function1<View, Unit> {
         private final ArchiveSection section;
-        Update(ArchiveSection section) { this.section = section; }
-        @Override public Unit invoke(View view) { ((ArchiveRowView) view).bind(section); return ProfileArchivePatch.unit(); }
+        private final int[] colors;
+        Update(ArchiveSection section, int[] colors) { this.section = section; this.colors = colors; }
+        @Override public Unit invoke(View view) { ((ArchiveRowView) view).bind(section, colors); return ProfileArchivePatch.unit(); }
     }
 }

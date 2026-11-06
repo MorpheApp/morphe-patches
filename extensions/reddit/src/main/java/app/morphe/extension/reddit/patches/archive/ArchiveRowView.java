@@ -5,7 +5,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.content.res.Configuration;
 import android.net.Uri;
 import android.view.Gravity;
 import android.view.View;
@@ -23,16 +22,18 @@ public final class ArchiveRowView extends LinearLayout {
     private ProgressBar progress;
     private int kind = -1;
 
-    ArchiveRowView(Context context, ArchiveSection section) {
+    ArchiveRowView(Context context, ArchiveSection section, int[] colors) {
         super(context); setOrientation(VERTICAL);
         setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-        bind(section);
+        bind(section, colors);
     }
-    void bind(ArchiveSection next) {
+    void bind(ArchiveSection next, int[] colors) {
         section = next;
-        ArchiveTheme current = new ArchiveTheme(getContext());
+        ArchiveTheme current = new ArchiveTheme(getContext(), colors);
         boolean changed = theme == null || current.background != theme.background || current.foreground != theme.foreground
-                || current.surface != theme.surface || current.secondary != theme.secondary || current.divider != theme.divider;
+                || current.surface != theme.surface || current.secondary != theme.secondary || current.divider != theme.divider
+                || current.outline != theme.outline || current.action != theme.action
+                || current.upvote != theme.upvote || current.downvote != theme.downvote || current.content != theme.content;
         if (kind != next.row.kind || changed) { theme = current; rebuild(next.row.kind); }
         setTag(next.row.key);
         if (card != null) card.bind(next.row.item, next.row.details, next.row.provenance);
@@ -53,7 +54,10 @@ public final class ArchiveRowView extends LinearLayout {
                     ArchiveRowView.this.open(item);
                 }
                 public void original(ArchiveItem item) { ArchiveRowView.this.open(item); }
+                public Object events() { return section.eventContext; }
             }); addView(card, new LayoutParams(-1, -2));
+            View divider = new View(getContext()); divider.setBackgroundColor(theme.divider);
+            addView(divider, new LayoutParams(-1, Math.max(1, theme.dp(1))));
         } else if (kind == ArchiveSnapshot.SORT) {
             TextView notice = theme.text(12, theme.secondary, theme.semibold);
             notice.setText("Archived items are available in New  ›"); notice.setMinHeight(theme.dp(48));
@@ -69,7 +73,7 @@ public final class ArchiveRowView extends LinearLayout {
             indicator.setContentDescription("Unhidden. Archived history. Tap for source and limitations");
             indicator.setOnClickListener(view -> new AlertDialog.Builder(getContext()).setTitle("Unhidden · Archived history")
                     .setMessage("Public history restored from Arctic Shift. Content and counts may be incomplete or outdated. "
-                            + "Open the original discussion to vote, reply, share, or view full media.")
+                            + "Vote here when Reddit allows it, open comments to reply, or share the original link. Open the discussion for full media.")
                     .setPositiveButton("Got it", null).show());
             addView(indicator, new LayoutParams(-1, -2));
         } else {
@@ -84,9 +88,6 @@ public final class ArchiveRowView extends LinearLayout {
             retry.setBackground(theme.ripple(theme.surface, 24)); retry.setOnClickListener(view -> section.controller.retry());
             addView(retry, new LayoutParams(-2, -2));
         }
-    }
-    @Override protected void onConfigurationChanged(Configuration configuration) {
-        super.onConfigurationChanged(configuration); theme = null; if (section != null) bind(section);
     }
     @Override protected void onWindowVisibilityChanged(int visibility) {
         super.onWindowVisibilityChanged(visibility);
