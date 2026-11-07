@@ -67,6 +67,33 @@ public class PlaylistQueuePagingTest {
     }
 
     @Test
+    public void playbackWindowUsesTheOriginalOccurrenceAfterQueueEdits() {
+        var original = queue().select(2);
+        var edited = original.playNext("abcdefghijk").move(2, 0).remove(2);
+        assertEquals(0, edited.selectedIndex());
+        assertEquals(2, edited.playbackAnchor().index());
+        assertEquals("entry2", edited.playbackAnchor().entryId());
+        var extended = edited.appendPage(page(5, 2, 3, 4), false);
+        assertSame(original.currentEntry(), extended.currentEntry());
+        assertEquals(2, extended.playbackAnchor().index());
+        assertEquals(3, extended.select(3).playbackAnchor().index());
+        assertNull(extended.select(2).playbackAnchor());
+    }
+
+    @Test
+    public void anotherCopyOfTheSamePlaylistCannotRefreshTheUnfinishedSource() {
+        var incoming = queue().appendPage(page(5, 2, 3, 4), true);
+        var next = queue().addPlaylist(incoming, false);
+        assertNull(next.select(1).playbackAnchor());
+        assertEquals(1, next.select(6).playbackAnchor().index());
+
+        var last = incoming.addPlaylist(queue(), true);
+        assertNull(last.playbackAnchor());
+        assertEquals(0, last.select(5).playbackAnchor().index());
+        assertNull(last.appendPage(page(5, 2, 3, 4), true).playbackAnchor());
+    }
+
+    @Test
     public void movingToLastLoadedRowDoesNotMoveTheUnloadedTailBeforeIt() {
         var moved = queue().move(0, 2);
         var extended = moved.appendPage(page(5, 2, 3, 4), true);

@@ -132,6 +132,19 @@ class QueueRuntimeBoundaryTest {
     fun `idle playlist startup loads one window and only its native list requests another`() = withFixture("idlePlaylistPaging")
 
     @Test
+    fun `default playback windows extend around the playing source position without scroll fetching`() =
+        withFixture("playbackWindowGrowth", fetchOnScroll = false)
+
+    @Test
+    fun `playback window completion follows the latest confirmed selection`() = withFixture("playbackWindowSelection", fetchOnScroll = false)
+
+    @Test
+    fun `enabling scroll loading and clearing reject pending playback windows`() = withFixture("playbackWindowLifetime", fetchOnScroll = false)
+
+    @Test
+    fun `boundary navigation takes priority over playback window loading`() = withFixture("playbackWindowBoundary", fetchOnScroll = false)
+
+    @Test
     fun `playlist requests cancel on leave and reject an account change before delivery`() = withFixture("playlistRequestLifetime")
 
     @Test
@@ -189,7 +202,7 @@ class QueueRuntimeBoundaryTest {
 
     // NativePlaylistQueuePatch depends on Android settings, scheduling and UI classes.
     // Isolate those boundaries while executing its actual compiled coordinator.
-    private fun withFixture(scenario: String) {
+    private fun withFixture(scenario: String, fetchOnScroll: Boolean = true) {
         val root = generateSequence(File("").absoluteFile) { it.parentFile }
             .first { File(it, "extensions/youtube/src/main/proto").isDirectory }
         val classes = File(root,
@@ -565,6 +578,16 @@ class QueueRuntimeBoundaryTest {
                 public class Settings {
                     public static final app.morphe.extension.shared.settings.EnumSetting<QueueType> QUEUE_TYPE =
                         new app.morphe.extension.shared.settings.EnumSetting<>(QueueType.NATIVE);
+                    public static final app.morphe.extension.shared.settings.BooleanSetting NATIVE_QUEUE_FETCH_ON_SCROLL =
+                        new app.morphe.extension.shared.settings.BooleanSetting();
+                }
+            """,
+            "BooleanSetting" to """
+                package app.morphe.extension.shared.settings;
+                public class BooleanSetting {
+                    public final String key = "morphe_native_queue_fetch_on_scroll";
+                    public boolean value;
+                    public Boolean get() { return value; }
                 }
             """,
             "LocalQueuePatch" to """
@@ -616,6 +639,9 @@ class QueueRuntimeBoundaryTest {
                     }
                     static void require(boolean value, String message) {
                         if (!value) throw new AssertionError(message);
+                    }
+                    public static void setFetchOnScroll(boolean enabled) {
+                        Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.value = enabled;
                     }
                     static int clears;
                     static NativePlaylistQueuePatch.NativePlayback backend(boolean local, boolean clearSucceeds) {
@@ -1138,8 +1164,11 @@ class QueueRuntimeBoundaryTest {
                         public NativePlaylistQueuePatch.LoadingView patch_getPlaylistLoadingView() { return loadingView; }
                     }
                     static PageSource startIdlePlaylist() throws Exception {
+                        return startIdlePlaylist(new PageSource());
+                    }
+                    static PageSource startIdlePlaylist(PageSource source) throws Exception {
                         app.morphe.extension.youtube.shared.PlayerType.current = app.morphe.extension.youtube.shared.PlayerType.NONE;
-                        var source = new PageSource(); PlaylistPages.attach(source);
+                        PlaylistPages.attach(source);
                         Runnable action = NativePlaylistQueuePatch.getPlaylistQueueAction("WL", false);
                         require(action != null, "Offer a collection action without playback");
                         action.run();
@@ -1174,6 +1203,98 @@ class QueueRuntimeBoundaryTest {
                         var queue = (PlaylistQueue) field("queue").get(null);
                         require(source.calls == 2 && queue.entries().size() == 5, "Coalesce native scroll triggers into one page");
                         require(queue.entries().get(4).metadata() != null && Logger.errors == 0, "Preserve native row metadata");
+                    }
+                    static class WindowSource extends PageSource {
+                        int requestedIndex = -1;
+                        public java.util.concurrent.Future<?> patch_requestPlaylistPage(String playlist, String video, int index,
+                                String params, String entry, byte[] tracking, PlaylistPage.Account expected) {
+                            Utils.verifyOffMainThread(); calls++;
+                            require(playlist.equals("WL") && account.equals(expected), "Keep native source identity");
+                            if (video != null) {
+                                require(video.equals(String.format(java.util.Locale.ROOT, "%011d", index))
+                                        && entry.equals("entry" + index), "Use the original source occurrence");
+                                requestedIndex = index;
+                            }
+                            return java.util.concurrent.CompletableFuture.completedFuture(window(0, Math.min(index + 2, 4), index));
+                        }
+                    }
+                    public static void playbackWindowGrowth() throws Exception {
+                        var source = new WindowSource(); startIdlePlaylist(source); var controller = acceptIdlePlaylist();
+                        NativePlaylistQueuePatch.onNativeQueueSelection(); Utils.drain(); Utils.drainBackground(); Utils.drain();
+                        require(source.calls == 2, "Default off follows the native playback window");
+                        NativePlaylistQueuePatch.onNativeQueueSelection();
+                        Utils.drain(); Utils.drainBackground(); Utils.drain();
+                        var queue = (PlaylistQueue) field("queue").get(null);
+                        require(source.calls == 2 && queue.entries().size() == 3 && queue.source() != null,
+                            "An unchanged playback window neither duplicates rows nor proves EOF");
+                        for (int index = 1; index <= 2; index++) {
+                            controller.playback.selection = index;
+                            VideoInformation.id = String.format(java.util.Locale.ROOT, "%011d", index);
+                            NativePlaylistQueuePatch.onVideoChanged(VideoInformation.id);
+                            NativePlaylistQueuePatch.onNativeQueueSelection(); Utils.drain();
+                            NativePlaylistQueuePatch.onNativePlaylistScroll(controller.list);
+                            Utils.drainBackground(); Utils.drain();
+                            queue = (PlaylistQueue) field("queue").get(null);
+                            require(source.calls == index + 2 && source.requestedIndex == index
+                                    && queue.entries().size() == index + 3 && queue.selectedIndex() == index,
+                                "Each transition merges only the newly supplied tail and ignores scroll fetching");
+                        }
+                        require(LoadVideoPatch.opens == 1 && Logger.errors == 0, "Do not reopen or block playback");
+                    }
+                    public static void playbackWindowSelection() throws Exception {
+                        var source = new WindowSource(); startIdlePlaylist(source); var controller = acceptIdlePlaylist();
+                        Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.value = false;
+                        controller.playback.selection = 1; VideoInformation.id = "00000000001";
+                        NativePlaylistQueuePatch.onNativeQueueSelection(); Utils.drain(); Utils.drainBackground();
+                        controller.playback.selection = 2; VideoInformation.id = "00000000002";
+                        Utils.drain();
+                        require(((PlaylistQueue) field("queue").get(null)).entries().size() == 3,
+                            "An older playback response cannot publish before native selection is synchronized");
+                        Utils.drainBackground(); Utils.drain();
+                        var queue = (PlaylistQueue) field("queue").get(null);
+                        require(source.requestedIndex == 2 && queue.selectedIndex() == 2 && queue.entries().size() == 5,
+                            "Coalesce rapid transitions and refresh the latest confirmed occurrence");
+                        require(Logger.errors == 0, "Stale playback completion is an expected transition");
+                    }
+                    public static void playbackWindowLifetime() throws Exception {
+                        var source = new WindowSource(); startIdlePlaylist(source); var controller = acceptIdlePlaylist();
+                        Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.value = false;
+                        controller.attached = false;
+                        controller.playback.selection = 1; VideoInformation.id = "00000000001";
+                        NativePlaylistQueuePatch.onNativeQueueSelection(); Utils.drain(); Utils.drainBackground(); Utils.drain();
+                        require(source.calls == 1, "A detached view cannot publish an automatic window");
+                        controller.attached = true;
+                        field("observingPlayer").setBoolean(null, true);
+                        NativePlaylistQueuePatch.onControllerUpdated(controller); Utils.drainBackground();
+                        require(source.requestedIndex == 1, "Reattaching catches up without another video-ID change");
+                        int toasts = Utils.toasts;
+                        Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.value = true;
+                        listener().onSharedPreferenceChanged(null, Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.key); Utils.drain();
+                        require(((PlaylistQueue) field("queue").get(null)).entries().size() == 3 && Utils.toasts == toasts,
+                            "Enabling scroll loading rejects an in-flight playback window silently");
+                        NativePlaylistQueuePatch.onNativePlaylistScroll(controller.list);
+                        Utils.drainBackground(); Utils.drain();
+                        require(((PlaylistQueue) field("queue").get(null)).entries().size() == 5,
+                            "Enabling the setting allows scroll loading");
+                        Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.value = false;
+                        controller.playback.selection = 2; VideoInformation.id = "00000000002";
+                        NativePlaylistQueuePatch.onNativeQueueSelection(); Utils.drain(); Utils.drainBackground();
+                        call("releaseNativeQueue"); Utils.drain();
+                        require(field("queue").get(null) == null && field("playlistRequestToken").get(null) == null
+                                && field("playlistWindowEntry").get(null) == null,
+                            "Clear releases source-window state and rejects late completion");
+                    }
+                    public static void playbackWindowBoundary() throws Exception {
+                        var source = new WindowSource(); startIdlePlaylist(source); var controller = acceptIdlePlaylist();
+                        Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.value = false;
+                        controller.playback.selection = 2; VideoInformation.id = "00000000002";
+                        NativePlaylistQueuePatch.onNativeQueueSelection(); Utils.drain();
+                        Object request = new Object();
+                        require(NativePlaylistQueuePatch.deferPlaylistNavigation(controller.navigator, request), "Keep native intent");
+                        Utils.drain(); Utils.drainBackground(); Utils.drain();
+                        require(source.calls == 2 && controller.resumes == 1 && controller.resumed == request,
+                            "Cancel speculative work and resume the exact navigation after loading the boundary");
+                        require(Logger.errors == 0, "Boundary priority must not produce an automatic-loading error");
                     }
                     public static void playlistRequestLifetime() throws Exception {
                         app.morphe.extension.youtube.shared.PlayerType.current = app.morphe.extension.youtube.shared.PlayerType.NONE;
@@ -2257,8 +2378,10 @@ class QueueRuntimeBoundaryTest {
                 "-d", output.path, *stubs.map { it.path }.toTypedArray(), fixture.path))
             URLClassLoader(arrayOf(output.toURI().toURL(), classes.toURI().toURL()),
                 GeneratedMessageLite::class.java.classLoader).use { loader ->
-                loader.loadClass("app.morphe.extension.youtube.patches.queue.RuntimeFixture")
-                    .getMethod(scenario).invoke(null)
+                val runtime = loader.loadClass("app.morphe.extension.youtube.patches.queue.RuntimeFixture")
+                // Existing paging scenarios exercise scroll loading; window scenarios use the default mode.
+                runtime.getMethod("setFetchOnScroll", Boolean::class.javaPrimitiveType).invoke(null, fetchOnScroll)
+                runtime.getMethod(scenario).invoke(null)
             }
         } finally {
             output.deleteRecursively()
