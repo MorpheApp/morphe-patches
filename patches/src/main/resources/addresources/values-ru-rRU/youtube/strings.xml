@@ -796,7 +796,6 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">Включить перемотку нажатием</string>
   <string name="morphe_tap_to_seek_summary">Нажмите в любом месте полосы прокрутки, чтобы мгновенно перейти к этому моменту вместо перетаскивания</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Кастомный ползунок полосы прогресса</string>
   <string name="morphe_custom_seekbar_thumb_title">Включить кастомный ползунок полосы прогресса</string>
   <string name="morphe_custom_seekbar_thumb_summary">Замените ползунок полосы прогресса на кастомное изображение или анимированный GIF</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Изображение ползунка</string>
@@ -1734,6 +1733,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_episode_order">Порядок эпизодов</string>
   <string name="morphe_series_tracker_playlist_order">Порядок плейлиста</string>
   <string name="morphe_series_tracker_reverse_order">Обратить порядок плейлиста</string>
+  <string name="morphe_series_tracker_view_count">%s просмотры</string>
   <string name="morphe_series_tracker_view_count_one">%s просмотр</string>
   <string name="morphe_series_tracker_completion_title">Отметить эпизоды как просмотренные</string>
   <string name="morphe_series_tracker_completion_summary">Просмотрено по крайней мере %1$s%% с оставшимся временем не более 90 секунд или осталось %2$s секунд</string>
