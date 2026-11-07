@@ -9,7 +9,14 @@ package app.morphe.extension.youtube.patches;
 
 import android.os.SystemClock;
 
+import androidx.annotation.Nullable;
+
+import org.json.JSONObject;
+
 import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -19,6 +26,7 @@ import app.morphe.extension.youtube.videoplayer.LoopCountFlyoutButton;
 
 /**
  * Limits how many times the app's own loop video plays a video, then lets the app play the next video.
+ * In a playlist, the loop count is saved for each video of the playlist.
  */
 @SuppressWarnings("unused")
 public class LoopCountPatch {
@@ -37,6 +45,9 @@ public class LoopCountPatch {
     /** Lowest loop count. A video that plays once does not loop. */
     public static final int MIN_LOOP_COUNT = 2;
     public static final int MAX_LOOP_COUNT = 99;
+
+    /** Maximum number of saved loop counts. The oldest saved count is removed first. */
+    private static final int MAX_SAVED_LOOP_COUNTS = 500;
 
     /** Ads also report the ended state, so the video only ended if it played to this close to its end. */
     private static final long END_OF_VIDEO_TOLERANCE_MILLISECONDS = 5000;
@@ -70,7 +81,25 @@ public class LoopCountPatch {
     /** If the video that ended has played as many times as its loop count, so it must not play again. */
     private static volatile boolean loopCountReached;
 
-    /** Video that has a loop count, and its loop count. This loop count is not saved. */
+    /**
+     * The video that the saved loop count already turned on loop video for, so it is turned on only once
+     * when the video starts and the user can still turn it off.
+     */
+    private static String loopVideoTurnedOnVideoId = "";
+
+    /**
+     * If loop video must be turned on for the saved loop count, but the app did not give the navigator yet.
+     */
+    private static volatile boolean loopVideoTurnOnPending;
+
+    /**
+     * Loop counts of the videos of playlists, by playlist and video, so the same video can have
+     * a different loop count in each playlist. Iteration order is oldest first.
+     */
+    @Nullable
+    private static Map<String, Integer> savedLoopCounts;
+
+    /** Video that is not in a playlist, and its loop count. This loop count is not saved. */
     private static String unsavedLoopCountVideoId = "";
     private static int unsavedLoopCount;
 
@@ -176,6 +205,20 @@ public class LoopCountPatch {
     public static void setNavigator(Navigator navigator) {
         if (navigatorRef.get() != navigator) {
             navigatorRef = new WeakReference<>(navigator);
+            Logger.printDebug(() -> "Navigator: " + navigator.getClass().getName());
+        }
+        if (loopVideoTurnOnPending) {
+            loopVideoTurnOnPending = false;
+            // After the app is done with the navigator.
+            Utils.runOnMainThread(LoopCountPatch::turnOnPendingLoopVideo);
+        }
+    }
+
+    private static synchronized void turnOnPendingLoopVideo() {
+        try {
+            onVideoPlaying();
+        } catch (Exception ex) {
+            Logger.printException(() -> "turnOnPendingLoopVideo failure", ex);
         }
     }
 
@@ -206,6 +249,7 @@ public class LoopCountPatch {
         // so the plays of the video are counted again even if it's the same video.
         if (!"AUTOPLAY".equals(navigationIntent.name())) {
             countedVideoId = "";
+            loopVideoTurnedOnVideoId = "";
         }
         return false;
     }
@@ -221,14 +265,46 @@ public class LoopCountPatch {
             final boolean ended = playerStatus != null && "ENDED".equals(playerStatus.name());
             final boolean wasEnded = videoEnded;
             videoEnded = ended;
+            final String statusName = playerStatus == null ? "" : playerStatus.name();
             if (ended && !wasEnded) {
                 onVideoEnded();
+            } else if ("PLAYBACK_PENDING".equals(statusName) && !ShortsPlayerState.isOpen()) {
+                // The app loads a video, even the same video again, so a saved loop count can turn on loop video.
+                loopVideoTurnedOnVideoId = "";
+                loopVideoTurnOnPending = false;
+            } else if ("VIDEO_PLAYING".equals(statusName)) {
+                onVideoPlaying();
             }
 
             // The menu that shows the loop count can stay open while the app plays the next video.
             Utils.runOnMainThreadNowOrLater(LoopCountFlyoutButton::onPlayerStatusChanged);
         } catch (Exception ex) {
             Logger.printException(() -> "onPlayerStatus failure", ex);
+        }
+    }
+
+    /**
+     * The app turns off loop video when a playlist plays another video,
+     * so a saved loop count turns it on again when the video starts to play.
+     */
+    private static void onVideoPlaying() {
+        if (!Settings.LOOP_COUNT.get() || Settings.LOOP_VIDEO.get() || ShortsPlayerState.isOpen()) {
+            return;
+        }
+
+        final String videoId = VideoInformation.getVideoId();
+        final String playlistId = VideoInformation.getPlaylistId();
+        if (videoId.isEmpty() || videoId.equals(loopVideoTurnedOnVideoId)
+                || !isLoopCountSaved(playlistId) || getLoopCount(playlistId, videoId) <= 0) {
+            return;
+        }
+
+        if (repeatMode == REPEAT_MODE_VIDEO || setAppRepeatMode(REPEAT_MODE_VIDEO)) {
+            Logger.printDebug(() -> "Loop video is on for the saved loop count of video: " + videoId);
+            loopVideoTurnedOnVideoId = videoId;
+        } else {
+            // The app gives the navigator when the player checks if it can play another video.
+            loopVideoTurnOnPending = true;
         }
     }
 
@@ -247,7 +323,8 @@ public class LoopCountPatch {
         }
 
         final String videoId = VideoInformation.getVideoId();
-        final int loopCount = getLoopCount(videoId);
+        final String playlistId = VideoInformation.getPlaylistId();
+        final int loopCount = getLoopCount(playlistId, videoId);
         if (videoId.isEmpty() || loopCount <= 0) {
             countedVideoId = "";
             return;
@@ -280,24 +357,94 @@ public class LoopCountPatch {
         return loopCountReached;
     }
 
-    /**
-     * @return How many times the video plays, or 0 if no loop count is set for the video.
-     */
-    public static synchronized int getLoopCount(String videoId) {
-        return videoId.equals(unsavedLoopCountVideoId) ? unsavedLoopCount : 0;
+    private static Map<String, Integer> getSavedLoopCounts() {
+        if (savedLoopCounts == null) {
+            savedLoopCounts = loadSavedLoopCounts();
+        }
+        return savedLoopCounts;
+    }
+
+    private static Map<String, Integer> loadSavedLoopCounts() {
+        Map<String, Integer> map = new LinkedHashMap<>();
+        String raw = Settings.LOOP_COUNT_PLAYLIST_COUNTS.get();
+        if (raw.isEmpty()) {
+            return map;
+        }
+
+        try {
+            JSONObject json = new JSONObject(raw);
+            Iterator<String> keys = json.keys();
+            while (keys.hasNext()) {
+                String key = keys.next();
+                final int count = json.optInt(key, 0);
+                if (count > 0) {
+                    map.put(key, count);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to load saved loop counts", ex);
+            Settings.LOOP_COUNT_PLAYLIST_COUNTS.resetToDefault();
+            map.clear();
+        }
+        return map;
     }
 
     /**
-     * Sets how many times a video plays.
-     *
-     * @param count How many times the video plays. 0 or less removes the loop count.
+     * @return If the loop count of a video is saved, so it applies again every time the playlist plays the video.
      */
-    public static synchronized void setLoopCount(String videoId, int count) {
+    private static boolean isLoopCountSaved(String playlistId) {
+        return !playlistId.isEmpty() && Settings.LOOP_COUNT_PLAYLISTS.get();
+    }
+
+    private static String getSavedLoopCountKey(String playlistId, String videoId) {
+        return playlistId + '/' + videoId;
+    }
+
+    /**
+     * @param playlistId The playlist the video plays in, or an empty string if it is not in a playlist.
+     * @return How many times the video plays, or 0 if no loop count is set for the video.
+     */
+    public static synchronized int getLoopCount(String playlistId, String videoId) {
+        if (!isLoopCountSaved(playlistId)) {
+            return videoId.equals(unsavedLoopCountVideoId) ? unsavedLoopCount : 0;
+        }
+
+        Integer count = getSavedLoopCounts().get(getSavedLoopCountKey(playlistId, videoId));
+        return count == null ? 0 : count;
+    }
+
+    /**
+     * Sets how many times a video plays. In a playlist, the loop count is saved for the video
+     * in that playlist if that setting is on, so it applies again every time the playlist plays the video.
+     *
+     * @param playlistId The playlist the video plays in, or an empty string if it is not in a playlist.
+     * @param count      How many times the video plays. 0 or less removes the loop count.
+     */
+    public static synchronized void setLoopCount(String playlistId, String videoId, int count) {
         if (videoId.isEmpty()) {
             return;
         }
 
-        unsavedLoopCountVideoId = videoId;
-        unsavedLoopCount = Math.max(count, 0);
+        if (!isLoopCountSaved(playlistId)) {
+            unsavedLoopCountVideoId = videoId;
+            unsavedLoopCount = Math.max(count, 0);
+            return;
+        }
+
+        final String key = getSavedLoopCountKey(playlistId, videoId);
+        Map<String, Integer> map = getSavedLoopCounts();
+        // Remove first so the loop count is moved to the newest position.
+        map.remove(key);
+        if (count > 0) {
+            map.put(key, count);
+
+            Iterator<String> oldest = map.keySet().iterator();
+            while (map.size() > MAX_SAVED_LOOP_COUNTS) {
+                oldest.next();
+                oldest.remove();
+            }
+        }
+
+        Settings.LOOP_COUNT_PLAYLIST_COUNTS.save(new JSONObject(map).toString());
     }
 }

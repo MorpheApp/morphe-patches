@@ -15,6 +15,7 @@ import app.morphe.patcher.patch.classDefByOrNull
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.addBridgeMethod
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.layout.playlistautoplay.NativeNavigationStateFingerprint
@@ -40,7 +41,7 @@ private const val EXTENSION_NAVIGATOR_INTERFACE =
 val loopCountPatch = patch(
     name = "Loop count",
     description = "Adds a player settings menu item to choose how many times the app loops a video, " +
-            "before it plays the next video.",
+            "before it plays the next video. In a playlist, the loop count is remembered for each video.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -53,7 +54,11 @@ val loopCountPatch = patch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_loop_count", summary = true)
+            // Keeps the setting of the saved loop counts below the loop count setting it depends on.
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_loop_count", summary = true),
+                SwitchPreference("morphe_loop_count_playlists", summary = true)
+            )
         )
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
@@ -129,6 +134,8 @@ val loopCountPatch = patch(
 
         // After the navigation hook, as the hook can replace the navigation methods.
         // Each navigator gives itself to the extension before the navigation hook of this patch runs.
+        val setNavigatorInstruction = "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
+                "setNavigator($EXTENSION_NAVIGATOR_INTERFACE)V"
         val navigatorTypes = mutableSetOf<String>()
         Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -139,6 +146,15 @@ val loopCountPatch = patch(
             val setRepeatMode = findSetRepeatModeMethod(navigatorClass) ?: return@forEach
 
             if (navigatorTypes.add(navigatorClass.type)) {
+                // The player checks if the navigator can play another video when the video starts,
+                // long before the navigator plays another video.
+                navigatorClass.methods.filter { method ->
+                    method.implementation != null && method.returnType == "Z" &&
+                            method.parameterTypes.map { it.toString() } == listOf(wrapperType)
+                }.forEach { method ->
+                    method.addInstruction(0, setNavigatorInstruction)
+                }
+
                 navigatorClass.interfaces.add(EXTENSION_NAVIGATOR_INTERFACE)
                 navigatorClass.addBridgeMethod(
                     "patch_setNavigatorRepeatMode",
@@ -152,11 +168,7 @@ val loopCountPatch = patch(
                 )
             }
 
-            match.method.addInstruction(
-                0,
-                "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
-                        "setNavigator($EXTENSION_NAVIGATOR_INTERFACE)V"
-            )
+            match.method.addInstruction(0, setNavigatorInstruction)
         }
 
         check(navigatorTypes.isNotEmpty()) { "Loop count: No navigator found" }
