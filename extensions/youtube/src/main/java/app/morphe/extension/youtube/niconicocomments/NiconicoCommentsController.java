@@ -327,6 +327,7 @@ public final class NiconicoCommentsController {
         view.setCommentOpacityPercent(SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_OPACITY));
         view.setTravelDurationSeconds(SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_TRAVEL_DURATION));
         view.setDisplayAreaPercent(SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_DISPLAY_AREA));
+        view.setHideCrowdedComments(Settings.NICONICO_COMMENTS_HIDE_CROWDED.get());
         view.setMaxRefreshRate(SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_MAX_REFRESH_RATE));
         view.setOverlayActive(Settings.NICONICO_COMMENTS_SHOWN.get()
                 && playerVisible && !currentVideoId.isEmpty());

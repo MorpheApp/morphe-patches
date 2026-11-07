@@ -103,6 +103,7 @@ val niconicoCommentsPatch = patch(
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
                         selectable = true
                     ),
+                    SwitchPreference("morphe_niconico_comments_hide_crowded", summary = true),
                     NonInteractivePreference(
                         "morphe_niconico_comments_max_length",
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
