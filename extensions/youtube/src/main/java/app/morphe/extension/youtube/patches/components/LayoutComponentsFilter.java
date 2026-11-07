@@ -117,6 +117,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup chipBar;
     private final StringFilterGroup communityPosts;
     private final StringFilterGroup compactChannel;
+    private final StringFilterGroup compactChannelMusicBanner;
+    private final ByteArrayFilterGroup youtubeMusicChannelLink;
     private final StringFilterGroup compactChannelBarInner;
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
@@ -316,6 +318,18 @@ public final class LayoutComponentsFilter extends Filter {
         compactChannel = new StringFilterGroup(
                 Settings.HIDE_CHANNEL_BUTTONS,
                 "compact_channel.e"
+        );
+
+        // With some device layouts, such as Automotive, the YouTube Music button of a channel
+        // in the search results is a banner below the channel instead of a button of the channel.
+        compactChannelMusicBanner = new StringFilterGroup(
+                Settings.HIDE_CHANNEL_BUTTONS,
+                "button_banner.e"
+        );
+
+        youtubeMusicChannelLink = new ByteArrayFilterGroup(
+                null,
+                "vnd.youtube.music://music.youtube.com/channel/"
         );
 
         final var compactChannelBar = new StringFilterGroup(
@@ -525,6 +539,7 @@ public final class LayoutComponentsFilter extends Filter {
                 compactBanner,
                 compactChannelBar,
                 compactChannel,
+                compactChannelMusicBanner,
                 compactChannelBarInner,
                 communityPosts,
                 crowdfundingBox,
@@ -667,6 +682,10 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == compactChannel) {
             return Utils.contains(path, "button.e");
+        }
+
+        if (matchedGroup == compactChannelMusicBanner) {
+            return youtubeMusicChannelLink.check(buffer).isFiltered();
         }
 
         if (matchedGroup == compactChannelBarInner) {
