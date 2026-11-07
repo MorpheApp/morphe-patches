@@ -49,6 +49,7 @@ import app.morphe.extension.youtube.patches.ChangePipActionsPatch.PipAction;
 import app.morphe.extension.youtube.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.youtube.patches.ClassicSubscriptionsLayoutPatch;
 import app.morphe.extension.youtube.patches.CustomSeekbarThumbPatch.ThumbScaleType;
+import app.morphe.extension.youtube.patches.DisableVideoCodecsPatch;
 import app.morphe.extension.youtube.patches.DisableVideoCodecsPatch.VideoCodec;
 import app.morphe.extension.youtube.patches.ExitFullscreenPatch.FullscreenMode;
 import app.morphe.extension.youtube.patches.FeedCardLayoutPatch.FeedCardLayout;
@@ -119,7 +120,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting ADVANCED_VIDEO_QUALITY_MENU = new BooleanSetting("morphe_advanced_video_quality_menu", TRUE);
     public static final BooleanSetting DISABLE_HDR_VIDEO = new BooleanSetting("morphe_disable_hdr_video", FALSE);
     public static final BooleanSetting FORCE_HDR_VIDEO = new BooleanSetting("morphe_force_hdr_video", FALSE, true, "morphe_force_hdr_video_user_dialog_message", parentNot(DISABLE_HDR_VIDEO));
-    public static final EnumSetting<VideoCodec> VIDEO_CODEC = new EnumSetting<>("morphe_video_codec", VideoCodec.DEFAULT, true, "morphe_video_codec_user_dialog_message");
+    public static final EnumSetting<VideoCodec> VIDEO_CODEC = new EnumSetting<>("morphe_video_codec", DisableVideoCodecsPatch.getDefaultVideoCodec(), true, "morphe_video_codec_user_dialog_message");
     public static final BooleanSetting HIDE_PREMIUM_VIDEO_QUALITY = new BooleanSetting("morphe_hide_premium_video_quality", TRUE, true);
     public static final BooleanSetting VIDEO_QUALITY_PRIORITIZE = new BooleanSetting("morphe_video_quality_prioritize", TRUE, true, "morphe_video_quality_prioritize_dialog");
     public static final IntegerSetting VIDEO_QUALITY_DEFAULT_WIFI = new IntegerSetting("morphe_video_quality_default_wifi", -2);
