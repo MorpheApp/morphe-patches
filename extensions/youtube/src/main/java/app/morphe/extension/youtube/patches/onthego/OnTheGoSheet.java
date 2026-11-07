@@ -40,12 +40,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
-import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.misc.MediaTime;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
@@ -382,19 +382,7 @@ final class OnTheGoSheet {
     }
 
     private void setTimeText(long time, long length) {
-        setTextIfChanged(timeView, formatTime(time) + " / " + formatTime(length));
-    }
-
-    /**
-     * @return The time as the player shows it, such as 0:05, 12:34 or 1:02:03.
-     */
-    private static String formatTime(long milliseconds) {
-        final long seconds = milliseconds / 1000;
-        final long hours = seconds / 3600;
-        final long minutes = (seconds / 60) % 60;
-        return hours > 0
-                ? String.format(Locale.US, "%d:%02d:%02d", hours, minutes, seconds % 60)
-                : String.format(Locale.US, "%d:%02d", minutes, seconds % 60);
+        setTextIfChanged(timeView, MediaTime.format(time) + " / " + MediaTime.format(length));
     }
 
     private static void setTextIfChanged(TextView view, String text) {

@@ -14,7 +14,6 @@ import static app.morphe.extension.youtube.series.TrackerModels.Series;
 import androidx.annotation.Nullable;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -141,18 +140,6 @@ public final class ResumePlanner {
             last = e.videoId;
         }
         return false;
-    }
-
-    public static String time(long ms) {
-        final long seconds = Math.max(0, ms) / 1000;
-        return seconds >= 3600
-                ? String.format(
-                        Locale.ROOT,
-                        "%d:%02d:%02d",
-                        seconds / 3600,
-                        seconds / 60 % 60,
-                        seconds % 60)
-                : String.format(Locale.ROOT, "%d:%02d", seconds / 60, seconds % 60);
     }
 
     private ResumePlanner() {}

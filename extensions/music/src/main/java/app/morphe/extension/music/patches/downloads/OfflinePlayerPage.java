@@ -54,6 +54,7 @@ import app.morphe.extension.music.patches.downloads.OfflinePlaybackService.Repea
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.misc.MediaTime;
 
 /**
  * Full screen page of the downloads screen, with the cover and controls of the playing track and
@@ -246,10 +247,10 @@ final class OfflinePlayerPage {
         }
 
         seekBar.setMax(Math.max(1, duration));
-        totalTimeView.setText(formatMillis(duration));
+        totalTimeView.setText(MediaTime.format(duration));
         if (!userSeeking) {
             seekBar.setProgress(position, true);
-            currentTimeView.setText(formatMillis(position));
+            currentTimeView.setText(MediaTime.format(position));
         }
         updateShuffleAndRepeat();
 
@@ -357,7 +358,7 @@ final class OfflinePlayerPage {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int value, boolean fromUser) {
-                if (fromUser) currentTimeView.setText(formatMillis(value));
+                if (fromUser) currentTimeView.setText(MediaTime.format(value));
             }
         });
         return bar;
@@ -367,10 +368,10 @@ final class OfflinePlayerPage {
         LinearLayout row = new LinearLayout(activity);
         row.setPadding(ui.dp(20), 0, ui.dp(20), ui.dp(4));
 
-        currentTimeView = ui.text(formatMillis(0), 12, secondary());
+        currentTimeView = ui.text(MediaTime.format(0), 12, secondary());
         row.addView(currentTimeView, new LinearLayout.LayoutParams(0, -2, 1));
 
-        totalTimeView = ui.text(formatMillis(0), 12, secondary());
+        totalTimeView = ui.text(MediaTime.format(0), 12, secondary());
         row.addView(totalTimeView, new LinearLayout.LayoutParams(-2, -2));
         return row;
     }
@@ -461,11 +462,6 @@ final class OfflinePlayerPage {
 
     private float rowAlpha(int position) {
         return position < queueIndex ? PLAYED_ROW_ALPHA : 1f;
-    }
-
-    private static String formatMillis(int millis) {
-        String formatted = OfflineUi.formatDuration(millis / 1000);
-        return formatted.isEmpty() ? "0:00" : formatted;
     }
 
     /**
