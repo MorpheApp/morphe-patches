@@ -70,6 +70,9 @@ public final class FeedVideoCardsPatch {
     private static final boolean ENABLED = FeedEngagementCountsPatch.ENABLED
             || FeedViewCountPatch.ENABLED
             || Settings.FEED_WATCH_LATER_BUTTON.get()
+            // FeedVideoActionsPatch is given every card, so its long press also works
+            // when its own features are the only ones on.
+            || Settings.FEED_LONG_PRESS_MENU.get()
             || PostImageDownloadPatch.ENABLED
             || PostTranslatePatch.ENABLED;
 
