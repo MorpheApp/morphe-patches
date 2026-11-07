@@ -489,11 +489,15 @@ public final class NavigationBarPatch {
      * the player moves, such as when it is slowly dragged down to the miniplayer
      * (<a href="https://github.com/MorpheApp/morphe-patches/pull/3684#issuecomment-6322984709">...</a>).
      * With {@link NavigationBarStyle#TRANSPARENT} and {@link NavigationBarStyle#OPAQUE} the copy
-     * is not drawn, so the bar keeps its translucent color, without the blur.
+     * is not drawn either, so the bar keeps its translucent color, without the blur.
      *
      * @param hardwareAccelerated If the canvas is hardware accelerated, which the blur is drawn for.
      */
     public static boolean useNavigationBarBlur(boolean hardwareAccelerated) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            return false;
+        }
+
         return hardwareAccelerated && !(translucentNavigationBarBackgroundForced
                 && (NAVIGATION_BAR_STYLE == NavigationBarStyle.TRANSPARENT
                 || NAVIGATION_BAR_STYLE == NavigationBarStyle.OPAQUE));
