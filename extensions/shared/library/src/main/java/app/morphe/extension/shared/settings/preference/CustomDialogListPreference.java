@@ -10,6 +10,8 @@
 
 package app.morphe.extension.shared.settings.preference;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -35,6 +37,7 @@ import java.util.function.IntConsumer;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
@@ -253,6 +256,19 @@ public class CustomDialogListPreference extends ListPreference {
 
     public CustomDialogListPreference(Context context) {
         super(context);
+    }
+
+    /**
+     * Uses the title and entry arrays declared for the setting key.
+     */
+    public CustomDialogListPreference(Context context, Setting<?> setting) {
+        this(context);
+
+        String key = setting.key;
+        setKey(key);
+        setTitle(str(key + "_title"));
+        setEntries(ResourceUtils.getStringArray(key + "_entries"));
+        setEntryValues(ResourceUtils.getStringArray(key + "_entry_values"));
     }
 
     /**
