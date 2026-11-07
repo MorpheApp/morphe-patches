@@ -41,7 +41,8 @@ public final class PlaylistPageFilter extends Filter {
 
     private final StringFilterGroup pageHeader = new StringFilterGroup(
             null,
-            "music_page_header."
+            "music_page_header.",
+            "music_blurred_background_header."
     );
 
     private final StringFilterGroup menuHeader = new StringFilterGroup(
