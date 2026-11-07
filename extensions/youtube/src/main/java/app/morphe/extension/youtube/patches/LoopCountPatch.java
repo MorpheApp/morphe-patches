@@ -1,8 +1,8 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4516
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.youtube.patches;
@@ -387,6 +387,22 @@ public class LoopCountPatch {
             map.clear();
         }
         return map;
+    }
+
+    /**
+     * @return How many videos of playlists have a saved loop count.
+     */
+    public static synchronized int getSavedLoopCountsSize() {
+        return getSavedLoopCounts().size();
+    }
+
+    /**
+     * Removes the saved loop count of every video of every playlist.
+     */
+    public static synchronized void clearSavedLoopCounts() {
+        getSavedLoopCounts().clear();
+        Settings.LOOP_COUNT_PLAYLIST_COUNTS.resetToDefault();
+        Logger.printDebug(() -> "Saved loop counts cleared");
     }
 
     /**
