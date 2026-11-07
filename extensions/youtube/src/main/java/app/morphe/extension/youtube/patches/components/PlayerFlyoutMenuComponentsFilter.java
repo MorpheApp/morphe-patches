@@ -257,6 +257,23 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                         Settings.HIDE_PLAYER_FLYOUT_WATCH_IN_VR,
                         "yt_outline_vr_",
                         "yt_outline_experimental_vr_"
+                ),
+                // 21.x: The icon is not always a name in the buffer,
+                // so these items are also found by the field of their command.
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS,
+                        // Command that opens the submenu (field 469660771).
+                        new byte[]{(byte) 0x9A, (byte) 0xC6, (byte) 0xCE, (byte) 0xFF, 0x0D}
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_AMBIENT_MODE,
+                        // Ambient mode toggle command (field 456628506).
+                        new byte[]{(byte) 0xD2, (byte) 0x91, (byte) 0xF3, (byte) 0xCD, 0x0D}
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_STABLE_VOLUME,
+                        // Stable volume toggle command (field 449823757).
+                        new byte[]{(byte) 0xEA, (byte) 0xC0, (byte) 0xF8, (byte) 0xB3, 0x0D}
                 )
         );
     }
