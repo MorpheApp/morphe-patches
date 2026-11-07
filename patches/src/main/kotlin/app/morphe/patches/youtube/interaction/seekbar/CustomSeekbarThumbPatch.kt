@@ -12,9 +12,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -36,18 +35,14 @@ val customSeekbarThumbPatch = patch(
 
     execute {
         PreferenceScreen.SEEKBAR.addPreferences(
-            PreferenceCategory(
-                key = "morphe_custom_seekbar_thumb_category",
-                sorting = Sorting.UNSORTED,
-                preferences = setOf(
-                    SwitchPreference("morphe_custom_seekbar_thumb", summary = true),
-                    NonInteractivePreference(
-                        key = "morphe_custom_seekbar_thumb_file",
-                        tag = "app.morphe.extension.youtube.settings.preference.CustomSeekbarThumbPreference",
-                        selectable = true
-                    ),
-                    ListPreference("morphe_custom_seekbar_thumb_scale_type")
-                )
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_custom_seekbar_thumb", summary = true),
+                NonInteractivePreference(
+                    key = "morphe_custom_seekbar_thumb_file",
+                    tag = "app.morphe.extension.youtube.settings.preference.CustomSeekbarThumbPreference",
+                    selectable = true
+                ),
+                ListPreference("morphe_custom_seekbar_thumb_scale_type")
             )
         )
 

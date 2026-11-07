@@ -861,7 +861,6 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_tap_to_seek_summary">Tap anywhere on the seekbar to jump to that position instead of dragging</string>
 
     <!-- interaction.seekbar.customSeekbarThumbPatch -->
-    <string name="morphe_custom_seekbar_thumb_category_title">Custom seekbar thumb</string>
     <string name="morphe_custom_seekbar_thumb_title">Enable custom seekbar thumb</string>
     <string name="morphe_custom_seekbar_thumb_summary">Replace the seekbar thumb with a custom image or animated GIF</string>
     <string name="morphe_custom_seekbar_thumb_file_title">Thumb image</string>
