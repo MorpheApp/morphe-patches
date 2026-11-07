@@ -25,7 +25,15 @@ public final class PlaylistQueue {
 
     private static final Pattern VIDEO_ID = Pattern.compile("[A-Za-z0-9_-]{11}");
 
-    public record Entry(String videoId, String title, @Nullable VideoMetadata metadata) {
+    /** Original source occurrence, independent of edits to the local queue order. */
+    record SourcePosition(PlaylistPage.Anchor anchor, Object origin) {}
+
+    public record Entry(String videoId, String title, @Nullable VideoMetadata metadata,
+                        @Nullable SourcePosition sourcePosition) {
+        public Entry(String videoId, String title, @Nullable VideoMetadata metadata) {
+            this(videoId, title, metadata, null);
+        }
+
         public Entry(String videoId, String title) {
             this(videoId, title, null);
         }
@@ -76,7 +84,8 @@ public final class PlaylistQueue {
     static PlaylistQueue fromPage(PlaylistPage page, @Nullable Source source) {
         List<Entry> entries = new ArrayList<>();
         for (var row : page.rows()) {
-            entries.add(new Entry(row.entry().videoId(), row.entry().title(), row.metadata()));
+            entries.add(new Entry(row.entry().videoId(), row.entry().title(), row.metadata(),
+                    source == null ? null : new SourcePosition(row.anchor(), source.origin())));
         }
         final boolean complete = source == null || page.rows().get(0).anchor().index() == 0 && page.totalCount() == entries.size();
         return new PlaylistQueue(entries, 0, REPEAT_OFF, complete ? null
@@ -109,7 +118,8 @@ public final class PlaylistQueue {
         List<Entry> updated = new ArrayList<>(entries);
         int boundary = source.boundary();
         for (var row : page.rows().subList(anchor + 1, page.rows().size())) {
-            updated.add(boundary++, new Entry(row.entry().videoId(), row.entry().title(), row.metadata()));
+            updated.add(boundary++, new Entry(row.entry().videoId(), row.entry().title(), row.metadata(),
+                    new SourcePosition(row.anchor(), source.origin())));
         }
         int selection = selectedIndex >= source.boundary() ? selectedIndex + boundary - source.boundary() : selectedIndex;
         return new PlaylistQueue(updated, selection, repeatMode, end ? null
@@ -122,6 +132,13 @@ public final class PlaylistQueue {
     @Nullable
     Source source() {
         return source;
+    }
+
+    /** Only the unfinished source can extend its window during playback. */
+    @Nullable
+    PlaylistPage.Anchor playbackAnchor() {
+        var position = currentEntry().sourcePosition();
+        return source != null && position != null && position.origin() == source.origin() ? position.anchor() : null;
     }
 
     int totalCount() {

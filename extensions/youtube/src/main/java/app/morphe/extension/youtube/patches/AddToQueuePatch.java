@@ -82,6 +82,18 @@ public final class AddToQueuePatch {
         }
     }
 
+    public static final class NativeQueueAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return Settings.QUEUE_TYPE.get() == QueueType.NATIVE;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.QUEUE_TYPE);
+        }
+    }
+
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }

@@ -251,12 +251,18 @@ public final class NativePlaylistQueuePatch {
     // SharedPreferences holds listeners weakly. Retain ours for the installed patch's lifetime.
     private static final SharedPreferences.OnSharedPreferenceChangeListener QUEUE_SETTING_LISTENER =
             (preferences, key) -> {
-                if (Settings.QUEUE_TYPE.key.equals(key)) {
+                if (Settings.QUEUE_TYPE.key.equals(key) || Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.key.equals(key)) {
                     // Let the setting cache update before checking the chosen provider.
                     Utils.runOnMainThread(() -> {
                         try {
                             if (!AddToQueuePatch.isNativeQueueEnabled()) {
                                 releaseNativeQueue();
+                            } else if (Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.key.equals(key)) {
+                                if (NativePlaylistQueuePatch.playlistRequestToken instanceof PlaylistWindow) {
+                                    cancelPlaylistRequest();
+                                }
+                                playlistWindowEntry = null;
+                                loadPlaylistWindow();
                             }
                         } catch (Exception ex) {
                             Logger.printException(() -> "Queue type setting change failure", ex);
@@ -319,6 +325,9 @@ public final class NativePlaylistQueuePatch {
     private static Future<?> playlistRequest;
     @Nullable
     private static Object playlistRequestToken;
+    private record PlaylistWindow(PlaylistQueue.Entry playing) {}
+    @Nullable
+    private static PlaylistQueue.Entry playlistWindowEntry;
     private record PlaylistConversion(WeakReference<PlaylistController> controller, WeakReference<NativePlayback> playback,
                                       WeakReference<Object> model, String videoId, String playlistId,
                                       @Nullable Map<String, String> headers) {}
@@ -747,7 +756,7 @@ public final class NativePlaylistQueuePatch {
      * Runs inside YouTube's native near-end scroll branch, with its exact list owner.
      */
     public static void onNativePlaylistScroll(Object list) {
-        if (!AddToQueuePatch.isNativeQueueEnabled() || !Utils.isCurrentlyOnMainThread()
+        if (!AddToQueuePatch.isNativeQueueEnabled() || !Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.get() || !Utils.isCurrentlyOnMainThread()
                 || queue == null || queue.source() == null || playlistRequestToken != null || dragSession != null || publishing) {
             return;
         }
@@ -789,6 +798,44 @@ public final class NativePlaylistQueuePatch {
         });
     }
 
+    /** Native playback windows overlap; request around the playing source row, not the local queue index. */
+    private static void loadPlaylistWindow() {
+        if (!AddToQueuePatch.isNativeQueueEnabled() || Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.get()
+                || queue == null || queue.source() == null || queue.currentEntry() == playlistWindowEntry
+                || playlistRequestToken != null || playlistAddition != null && playlistAddition.playLast()
+                || publishing || dragSession != null || pendingSelection != null || isQueueSuspended()) {
+            return;
+        }
+        try {
+            PlaylistPage.Anchor anchor = queue.playbackAnchor();
+            PlaylistPages.Source owner = PlaylistPages.current();
+            PlaylistController controller = readyController();
+            if (anchor == null || owner == null || controller == null || !isQueuePlayback(controller, nativePlaybackRef.get())
+                    || !queue.currentEntry().videoId().equals(VideoInformation.getVideoId())) {
+                return;
+            }
+            PlaylistQueue.Source source = queue.source();
+            var token = new PlaylistWindow(queue.currentEntry());
+            playlistWindowEntry = token.playing();
+            playlistRequestToken = token;
+            playlistRequest = Utils.submitOnBackgroundThread(() -> {
+                PlaylistPages.Result page = null;
+                try {
+                    page = PlaylistPages.window(owner, source, anchor);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Could not refresh native queue playlist window", ex);
+                }
+                PlaylistPages.Result result = page;
+                Utils.runOnMainThread(() -> completePlaylistPage(token, owner, source, result));
+                return null;
+            });
+        } catch (Exception ex) {
+            Logger.printException(() -> "loadPlaylistWindow failure", ex);
+        }
+    }
+
     private static void completePlaylistPage(Object token, PlaylistPages.Source owner, PlaylistQueue.Source source,
                                               @Nullable PlaylistPages.Result result) {
         if (playlistRequestToken != token) {
@@ -796,6 +843,7 @@ public final class NativePlaylistQueuePatch {
         }
         playlistRequestToken = null;
         playlistRequest = null;
+        final boolean playbackWindow = token instanceof PlaylistWindow;
         try {
             if (!AddToQueuePatch.isNativeQueueEnabled() || queue == null || queue.source() == null
                     || queue.source().origin() != source.origin()
@@ -810,13 +858,25 @@ public final class NativePlaylistQueuePatch {
                 playlistNavigation = null;
                 return;
             }
-            if (result == null) {
-                playlistNavigation = null;
-                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+            syncNativeSelection(controller.patch_getVideoId());
+            if (playbackWindow && (Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.get()
+                    || ((PlaylistWindow) token).playing() != queue.currentEntry())) {
                 return;
             }
-            syncNativeSelection(controller.patch_getVideoId());
-            if (publish(controller, queue.appendPage(result.page(), result.end()), true)) {
+            if (result == null) {
+                playlistNavigation = null;
+                if (!playbackWindow) {
+                    Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+                }
+                return;
+            }
+            if (playbackWindow && !result.end()) {
+                int boundary = result.page().find(source.anchor());
+                if (boundary < 0 || boundary + 1 == result.page().rows().size()) {
+                    return;
+                }
+            }
+            if (publish(controller, queue.appendPage(result.page(), result.end()), !playbackWindow)) {
                 continuePlaylistNavigation();
             } else {
                 playlistNavigation = null;
@@ -824,7 +884,12 @@ public final class NativePlaylistQueuePatch {
         } catch (Exception ex) {
             playlistNavigation = null;
             Logger.printException(() -> "completePlaylistPage failure", ex);
-            Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+            if (!playbackWindow) {
+                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+            }
+        } finally {
+            // Playback may have advanced again while this request was in flight.
+            loadPlaylistWindow();
         }
     }
 
@@ -832,6 +897,7 @@ public final class NativePlaylistQueuePatch {
         playlistNavigation = null;
         playlistOperation = null;
         playlistRequestToken = null;
+        playlistWindowEntry = null;
         Future<?> request = playlistRequest;
         playlistRequest = null;
         if (request != null && !request.isDone()) {
@@ -1032,6 +1098,11 @@ public final class NativePlaylistQueuePatch {
                         return;
                     }
                     syncNativeSelection(navigator.patch_getVideoId());
+                    // Boundary navigation takes priority over a speculative playback window.
+                    if (playlistRequestToken instanceof PlaylistWindow) {
+                        cancelPlaylistRequest();
+                        playlistWindowEntry = pending.playing();
+                    }
                     playlistNavigation = pending;
                     if (!isPlaylistBoundary(queue, playback.patch_getSelectedIndex(), navigator.patch_getPlaylistIntent(request),
                             playback.patch_getRepeatMode())) {
@@ -1186,6 +1257,7 @@ public final class NativePlaylistQueuePatch {
                 }
 
                 updateController(controller);
+                loadPlaylistWindow();
             } catch (Exception ex) {
                 Logger.printException(() -> "onControllerUpdated failure", ex);
             }
@@ -1344,6 +1416,7 @@ public final class NativePlaylistQueuePatch {
         Utils.runOnMainThreadNowOrLater(() -> {
             try {
                 updatePlaybackContext();
+                loadPlaylistWindow();
             } catch (Exception ex) {
                 Logger.printException(() -> "onPlaybackContextChanged failure", ex);
             }
@@ -1623,6 +1696,7 @@ public final class NativePlaylistQueuePatch {
                 if (selectionNeedsPublishing) {
                     refreshOwnedPanel(VideoInformation.getVideoId());
                 }
+                loadPlaylistWindow();
             } catch (Exception ex) {
                 Logger.printException(() -> "onNativeQueueSelection failure", ex);
             }
@@ -2643,6 +2717,7 @@ public final class NativePlaylistQueuePatch {
                 updateController(returningController);
             }
         }
+        loadPlaylistWindow();
     }
 
     /** Captures the eligible native menu action for the selected video. */

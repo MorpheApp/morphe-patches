@@ -61,16 +61,30 @@ public final class PlaylistPages {
     }
 
     static Result next(Source owner, PlaylistQueue.Source expected) throws Exception {
-        Utils.verifyOffMainThread();
         var anchor = expected.anchor();
         if (anchor == null) {
             throw new IllegalArgumentException("Missing playlist boundary");
         }
+        return window(owner, expected, anchor);
+    }
+
+    /** Refresh around the playing source occurrence, rather than the loaded tail. */
+    static Result window(Source owner, PlaylistQueue.Source expected, PlaylistPage.Anchor anchor) throws Exception {
+        Utils.verifyOffMainThread();
+        if (expected.anchor() == null || !expected.playlistId().equals(anchor.playlistId())) {
+            throw new IllegalArgumentException("Playing occurrence belongs to another playlist");
+        }
         Object response = request(owner, expected, anchor.videoId(), anchor.index(),
                 anchor.params(), anchor.entryId(), anchor.tracking().toByteArray());
         PlaylistPage page = page(owner, expected, response, "next page");
-        int position = position(page, anchor);
-        if (position + 1 < page.rows().size()) {
+        position(page, anchor);
+        int position = page.find(expected.anchor());
+        if (position >= 0 && position + 1 < page.rows().size()) {
+            return new Result(page, false);
+        }
+        if (!anchor.equals(expected.anchor())) {
+            // An earlier playback window can end before the already loaded tail.
+            // No new rows does not prove that the playlist has ended.
             return new Result(page, false);
         }
         if (page.selectedIndex() != position) {
