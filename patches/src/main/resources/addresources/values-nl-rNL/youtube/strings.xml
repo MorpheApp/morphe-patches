@@ -793,6 +793,17 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Tikken om te zoeken inschakelen</string>
   <string name="morphe_tap_to_seek_summary">Tik overal op de zoekbalk om naar die positie te springen in plaats van te slepen</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Aangepaste knop van de zoekbalk</string>
+  <string name="morphe_custom_seekbar_thumb_title">Aangepaste knop van de zoekbalk inschakelen</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Vervang de knop van de zoekbalk door een aangepaste afbeelding of geanimeerde GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Afbeelding van de knop</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Selecteer een afbeelding of geanimeerde GIF uit het apparaatopslag</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Het geselecteerde bestand is geen ondersteunde afbeelding</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Aangepaste afbeelding voor seekbar-thumb niet gevonden</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Thumb-grootte</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Pas aan seekbar</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Originele grootte</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Veeggebaar naar links</string>
   <string name="morphe_swipe_right_zone_title">Veeggebaar naar rechts</string>
@@ -1767,6 +1778,8 @@ Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een 
   <string name="morphe_niconico_comments_travel_duration_summary">Hoeveel seconden reacties erover doen om het scherm te kruisen. Lagere waarden bewegen sneller</string>
   <string name="morphe_niconico_comments_display_area_title">Weergavegebied</string>
   <string name="morphe_niconico_comments_display_area_summary">Hoeveel van de speler, vanaf de bovenkant, de reacties gebruiken. Lagere waarden houden het onderste deel van de video vrij</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Verberg reacties die zouden overlappen</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Wanneer het weergavegebied vol is, worden nieuwe reacties verborgen in plaats van andere reacties te overlappen</string>
   <string name="morphe_niconico_comments_max_length_title">Maximale commentlengte</string>
   <string name="morphe_niconico_comments_max_length_summary">Verbergt comments met meer tekens dan dit. Elke emoji telt als één teken</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Geen limiet</string>

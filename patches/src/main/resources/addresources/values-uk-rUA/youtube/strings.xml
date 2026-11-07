@@ -793,6 +793,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Увімкнути перемотування дотиком</string>
   <string name="morphe_tap_to_seek_summary">Натисніть будь-де на смузі відтворення, щоб перейти до цієї позиції замість перетягування</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Користувацький повзунок смуги перемотування</string>
+  <string name="morphe_custom_seekbar_thumb_title">Увімкнути власний повзунок смуги перемотування</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Замініть повзунок смуги перемотування на власне зображення або анімований GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Зображення повзунка</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Виберіть зображення або анімований GIF із пам\'яті пристрою</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Вибраний файл не є підтримуваним зображенням</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Зображення користувацького повзунка смуги перемотування не знайдено</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Розмір повзунка</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Підігнати під смугу перемотування</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Оригінальний розмір</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Жест свайпом ліворуч</string>
   <string name="morphe_swipe_right_zone_title">Жест свайпом праворуч</string>
@@ -1770,6 +1781,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">За скільки секунд коментарі перетинають екран. Менші значення означають швидший рух</string>
   <string name="morphe_niconico_comments_display_area_title">Область відображення</string>
   <string name="morphe_niconico_comments_display_area_summary">Яку частину плеєра від верхнього краю використовують коментарі. Менші значення залишають нижню частину відео вільною</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Приховати коментарі, що перекривають одне одного</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Коли область відображення заповнена, нові коментарі приховуються замість того, щоб перекривати інші коментарі</string>
   <string name="morphe_niconico_comments_max_length_title">Максимальна довжина коментаря</string>
   <string name="morphe_niconico_comments_max_length_summary">Приховує коментарі з більшою кількістю символів, ніж це значення. Кожне емодзі враховується як один символ</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без обмежень</string>

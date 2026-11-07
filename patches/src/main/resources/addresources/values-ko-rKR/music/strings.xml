@@ -702,7 +702,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_show_section_title">섹션 태그 표시하기</string>
   <string name="morphe_music_lyrics_show_section_summary">가사에 절 또는 후렴과 같은 작은 태그를 붙여 각 새로운 섹션을 표시합니다.</string>
   <string name="morphe_music_lyrics_show_copy_button_title">복사 버튼 표시하기</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">버튼을 탭하여 원본 가사를 일반 텍스트로 복사할 수 있고, 길게 탭하면 원본 가사 소스 파일을 다운로드에 저장할 수 있습니다</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">탭하여 원본 가사를 일반 텍스트로 복사하고, 길게 눌러 원본 가사 소스 파일과 변환된 TTML 파일을 다운로드에 저장하세요</string>
   <string name="morphe_music_lyrics_show_translate_button_title">번역 버튼 표시하기</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">번역을 켜거나 끄려면 탭하세요; 번역만 표시하려면 길게 탭하세요. 활성화된 번역 제공자를 설정된 순서대로 사용합니다</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">로마자 표기 또는 음역 버튼 표시하기</string>
@@ -718,7 +718,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">중국 및 광둥어 문자 (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">중국 단어 (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">그리스어, 슬라브어 키릴 문자 (러시아, 우크라이나, 불가리아, 세르비아, 벨라루시, 마케도니아 포함), 조지아어, 아르메니아어, 히브리어, 아랍어, 암하라어, 시리아어 음차 (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s 읽는 중: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s 읽는 중: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">새로고침 버튼 표시하기</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">버튼을 탭하여 다음 우선순위의 가사 제공자로 전환할 수 있고, 길게 탭하면 노래 제목과 아티스트로 가사를 검색할 수 있습니다</string>
   <string name="morphe_music_lyrics_search_dialog_title">가사 검색</string>
@@ -727,6 +727,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_search_empty">노래 제목과 아티스트를 입력하세요</string>
   <string name="morphe_music_lyrics_search_no_providers">활성화된 제공자 중 다른 노래를 검색할 수 있는 곳이 없습니다</string>
   <string name="morphe_music_lyrics_saved">저장됨</string>
+  <string name="morphe_music_lyrics_written_by">작성자: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">동기화된 단어 또는 음절 강조 표시하기</string>
   <string name="morphe_music_lyrics_word_sync_summary">가능한 경우 단어 단위로 표시되는 가사를 우선합니다. 가사에 단어별 타이밍 정보가 포함되어 있으면, 음악에 맞춰 각 단어 음절을 순서대로 강조 표시합니다</string>
   <string name="morphe_music_lyrics_line_scale_title">비활성 가사 줄 축소하기</string>
@@ -742,7 +743,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_title">동적 배경 애니메이션</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">음악을 재생하는 중에 배경이 움직이고, YouTube Music에 마이크 권한이 허용되어 있으면 음악에 맞춰 배경이 반응합니다. 배터리 소모를 줄이려면 이 기능을 비활성화하세요. 그러면 배경이 움직이지 않고 고정됩니다</string>
   <string name="morphe_music_lyrics_mediasession_title">잠금 화면에 MediaSession 가사 표시하기</string>
-  <string name="morphe_music_lyrics_mediasession_summary">잠금 화면, Android Auto 및 블루투스에서 현재 가사 줄을 표시합니다. Android 11 이상이 필요합니다</string>
+  <string name="morphe_music_lyrics_mediasession_summary">잠금 화면, Android Auto 및 블루투스에서 현재 재생 중인 가사를 표시합니다</string>
   <string name="morphe_music_lyrics_miniplayer_title">미니 플레이어 가사 표시하기</string>
   <string name="morphe_music_lyrics_miniplayer_summary">미니 플레이어에 현재 가사 줄을 표시하고, 노래 정보를 제목 하단으로 이동합니다</string>
   <string name="morphe_music_lyrics_mini_track_format_title">노래 제목/아티스트 형식</string>
@@ -779,6 +780,8 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_force_capitalize_summary">각 가사 줄의 첫 글자를 대문자로 표시합니다</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">끝 문장 부호 제거하기</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">가사 줄 끝에 있는 마침표, 쉼표, 콜론 및 세미콜론을 제거합니다. 물음표, 느낌표, 말줄임표, 따옴표 및 괄호는 유지됩니다</string>
+  <string name="morphe_music_lyrics_han_form_title">중국어 간체/번체 변환</string>
+  <string name="morphe_music_lyrics_han_form_summary">이 기능을 활성화하면 번역 대상 언어에 맞춰 가사를 중국어 간체 또는 번체로 변환합니다</string>
   <string name="morphe_music_lyrics_text_size_title">텍스트 크기</string>
   <string name="morphe_music_lyrics_text_size_summary">가사 텍스트 크기</string>
   <string name="morphe_music_lyrics_offset_ms_title">전역 타이밍 오프셋</string>
@@ -794,6 +797,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_translated_by_ai">%s에 의해 번역됨</string>
   <string name="morphe_music_lyrics_romanized_by_ai">%s에 의해 로마자 표기됨</string>
   <string name="morphe_music_lyrics_romanized_by_local">%s에 의해 로마자 표기됨</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s 포함)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Rime에 의해 로마자 표기됨 (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">번역됨</string>
@@ -809,6 +813,8 @@ LOGIN_INFO"</string>
   <string name="morphe_romanize_language_DEFAULT">자동</string>
   <string name="morphe_music_lyrics_romanizing">로마자 표기 중…</string>
   <string name="morphe_music_lyrics_romanize_failed">가사를 로마자로 표기할 수 없습니다</string>
+  <string name="morphe_music_lyrics_romanize_language_none">없음</string>
+  <string name="morphe_music_lyrics_ruby_language_title">루비 대상</string>
   <string name="morphe_music_lyrics_translate_only">번역만</string>
   <string name="morphe_music_lyrics_romanize_only">로마자 표기만</string>
   <string name="morphe_music_lyrics_dual_only">듀얼 모드</string>
@@ -839,7 +845,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_hide_info_title">크레딧 라인 숨기기</string>
   <string name="morphe_music_lyrics_hide_info_summary">가사 아래에 표시되는 크레딧 라인을 숨깁니다</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">번역과 로마자 표기 위치 바꾸기</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">가사 아래의 번역과 로마자 표기 표시 순서를 바꿉니다</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">번역을 가사 위에 표시합니다; 독음과 로마자 표기는 아래에 유지됩니다</string>
   <string name="morphe_music_lyrics_force_center_title">항상 가사 가운데 정렬하기</string>
   <string name="morphe_music_lyrics_force_center_summary">활성화하면 듀엣 파트의 좌우 배치를 포함하여 원본 정렬 설정을 무시하고 모든 가사를 가운데에 표시합니다. 비활성화하면 가사에 지정된 정렬 방식을 유지합니다</string>
   <string name="morphe_music_lyrics_providers_keep_one">최소 하나의 제공자가 활성화되어 있어야 합니다</string>
@@ -847,14 +853,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">로마자 표기 또는 음역</string>
   <string name="morphe_music_lyrics_romanization_provider_local">오프라인 사전</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime 단어 목록</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">루비</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">오프라인 사전</string>
-  <string name="morphe_music_lyrics_ruby_style_title">루비 스크립트</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">히라가나 (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">카타카나 (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">루비 버튼 표시하기</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">버튼을 탭하여 가사 위에 루비 읽기 표시를 켜거나 끌 수 있습니다. 길게 누르면 히라가나와 가타카나가 전환됩니다. 활성화된 루비 제공자를 설정된 순서대로 사용합니다</string>
-  <string name="morphe_music_lyrics_ruby_generating">루비를 생성하는 중…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU 음역기</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI로 섹션 감지하기</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">제공자가 후렴이나 절과 같은 섹션 레이블을 제공하지 않는 경우에만 사용되며, 이때 OpenAI 호환 모델이 해당 구간을 자동으로 감지합니다. 해당 행을 편집하면 프롬프트도 함께 열립니다</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API 엔드포인트 URL (예시: https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -877,6 +876,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">모델 선택</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">모델을 가져올 수 없습니다. API 키 또는 연결을 확인하세요</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">프롬프트</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">루비 프롬프트 (카나)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">모델</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">기본 URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">서비스 프리셋</string>

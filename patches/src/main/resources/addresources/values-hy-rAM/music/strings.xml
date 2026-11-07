@@ -700,7 +700,7 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_show_section_title">Ցուցադրել բաժնի պիտակները</string>
   <string name="morphe_music_lyrics_show_section_summary">Նշել լիրիկայի յուրաքանչյուր նոր բաժին փոքր պիտակով, օրինակ՝ Տուն կամ Կրկներ</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Ցույց տալ պատճենման կոճակը</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Սեղմեք՝ բնօրինակ տեքստը որպես սովորական տեքստ պատճենելու համար, երկար սեղմեք՝ տեքստի աղբյուր ֆայլը Ներբեռնումներ պապկայում պահպանելու համար</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Հպեք’՝ բնօրինակ տեքստը պատճենելու համար որպես սովորական տեքստ. երկար սեղմեք’՝ տեքստի աղբյուր ֆայլը և փոխակերպված TTML ֆայլը «Ներբեռնումներ» թղթապանակում պահպանելու համար</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Ցույց տալ թարգմանության կոճակը</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Սեղմեք թարգմանությունը միացնելու/անջատելու համար. երկար սեղմեք՝ միայն թարգմանության համար: Օգտագործվում են միացված թարգմանչի ծառայությունները՝ ըստ նշված հերթականության</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Ցույց տալ ռոմանիզացիայի կամ տառադարձման կոճակը</string>
@@ -716,7 +716,7 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Չինարեն և կանտոներեն նիշեր (UniDict, ~8 ՄԲ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Չինարեն բառեր (pinyin-pro, ~17 ՄԲ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Հունարեն, սլավոնական կիրիլիցա (ներառյալ՝ ռուսերեն, ուկրաիներեն, բուլղարերեն, սերբերեն, բելառուսերեն, մակեդոներեն), վրացերեն, հայերեն, եբրայերեն, արաբերեն, ամհարերեն և սյրիական տառադարձություն (CLDR, ~0.5 ՄԲ)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Ընթերցում %1$s՝ %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Կարդացվում է %1$s-ը. %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Ցույց տալ Refresh կոճակը</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Հպեք՝ հաջորդ տեքստի տարբերակին անցնելու համար. սեղմեք երկար՝ ըստ երգի վերնագրի և կատարողի տեքստեր փնտրելու համար</string>
   <string name="morphe_music_lyrics_search_dialog_title">Փնտրել տեքստերը</string>
@@ -725,6 +725,7 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_search_empty">Մուտքագրեք երգի վերնագիրը և արտիստին</string>
   <string name="morphe_music_lyrics_search_no_providers">Ակտիվացված մատակարարներից ոչ մեկը չի կարող փնտրել այլ երգեր</string>
   <string name="morphe_music_lyrics_saved">Պահպանված է</string>
+  <string name="morphe_music_lyrics_written_by">Գրված է՝ %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Ընդգծել սինխրոնացված բառերը կամ վանկերը</string>
   <string name="morphe_music_lyrics_word_sync_summary">Առաջնահերթություն տալ բառ առ բառ տեքստերին, երբ դրանք հասանելի են: Երբ տեքստերը ունեն բառերի ժամանակային տվյալներ, ընդգծվում է յուրաքանչյուր բառ կամ վանկ՝ համահունչ երաժշտությանը</string>
   <string name="morphe_music_lyrics_line_scale_title">Փոքրացնել ոչ ակտիվ տողերը</string>
@@ -740,7 +741,7 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Անիմացիայի դինամիկ ֆոն</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Շարժեք ֆոնը նվագման ժամանակ և պուլսացրեք այն երաժշտության հետ, եթե YouTube Music-ը ունի միկրոֆոնի թույլտվություն: Անջատեք՝ անշարժ ֆոնի համար, որն ավելի քիչ է ծախսում մարտկոցը</string>
   <string name="morphe_music_lyrics_mediasession_title">Ցուցադրել MediaSession-ի տեքստերը կողպված էկրանին</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Ցուցադրում է ընթացիկ տողը կողպելու էկրանին, Android Auto-ում և Bluetooth-ի միջոցով: Պահանջվում է Android 11 կամ ավելի նոր տարբերակ</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Ցուցադրում է ընթացիկ տողը կողպելու էկրանին, Android Auto-ում և Bluetooth-ով</string>
   <string name="morphe_music_lyrics_miniplayer_title">Ցուցադրել մինի-նվագարկիչի տեքստերը</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Ցուցադրում է ընթացիկ տողը մինիպլայերում, իսկ թրեքը տեղափոխվում է ենթավերնագրի տող</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Երգի վերնագիր/կատարողի ձևաչափ</string>
@@ -777,6 +778,8 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_force_capitalize_summary">Մեծատառով է դարձնում լիրիկայի յուրաքանչյուր տողի առաջին տառը</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Հեռացնել վերջնակետային նշանները</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Հեռացնում է վերջակետները, ստորակետները, երկչնակները և կիսավերջակետները երգի տողերի վերջից: Հարցականները, բացականչական նշանները, ellipsis-ները, չակերտները և փակագծերը պահպանվում են:</string>
+  <string name="morphe_music_lyrics_han_form_title">Չինարենի ձևի փոխակերպում</string>
+  <string name="morphe_music_lyrics_han_form_summary">Միացված լինելիս հետևում է թարգմանության թիրախ լեզվին՝ լիրիկան պարզեցված և ավանդական գրության միջև փոխակերպելու համար</string>
   <string name="morphe_music_lyrics_text_size_title">Տեքստի չափը</string>
   <string name="morphe_music_lyrics_text_size_summary">Բառերի տեքստի չափը</string>
   <string name="morphe_music_lyrics_offset_ms_title">Ժամանակային գլոբալ շեղում</string>
@@ -792,6 +795,7 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_translated_by_ai">Թարգմանված է %s-ի կողմից</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Տրանսլիտերացված է %s-ի կողմից</string>
   <string name="morphe_music_lyrics_romanized_by_local">Ռոմանիզացված է %s-ի կողմից</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s-ի միջոցով)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Ռոմանիզացված է Rime-ի կողմից (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Թարգմանված</string>
@@ -807,6 +811,8 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_romanize_language_DEFAULT">Ավտոմատ</string>
   <string name="morphe_music_lyrics_romanizing">Ռոմանիզացվում է...</string>
   <string name="morphe_music_lyrics_romanize_failed">Չհաջողվեց ռոմանիզացնել տեքստերը</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Ոչինչ</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Ruby-ի թիրախ</string>
   <string name="morphe_music_lyrics_translate_only">Միայն թարգմանված</string>
   <string name="morphe_music_lyrics_romanize_only">Միայն տառադարձում</string>
   <string name="morphe_music_lyrics_dual_only">Երկակի ռեժիմ</string>
@@ -837,7 +843,7 @@ Lyrics-ները տրամադրվում են երրորդ կողմի ծառայո
   <string name="morphe_music_lyrics_hide_info_title">Թաքցնել հեղինակության տողը</string>
   <string name="morphe_music_lyrics_hide_info_summary">Թաքցնել տեքստի ներքևում ցուցադրվող հեղինակության տողը</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Փոխել թարգմանության և տառադարձման տեղերը</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Փոխում է թարգմանության և ռոմանիզացիայի ցուցադրման հերթականությունը տեքստի ներքևում</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Տեղափոխում է թարգմանությունը լիրիկայի վերև; ընթերցումը և ռոմանիզացիան մնում են ներքևում</string>
   <string name="morphe_music_lyrics_force_center_title">Միշտ կենտրոնացնել երգի տեքստը</string>
   <string name="morphe_music_lyrics_force_center_summary">ՄԻԱՑՎԱԾ վիճակում յուրաքանչյուր տողը տեղադրվում է կենտրոնում և անտեսվում է սկզբնական հավասարեցումը, ներառյալ դուետի կողմերը, իսկ ԱՆՋԱՏՎԱԾ վիճակում պահպանվում է երգի տեքստի համար նախատեսված հավասարեցումը</string>
   <string name="morphe_music_lyrics_providers_keep_one">Առնվազն մեկ մատակարար պետք է մնա միացված</string>
@@ -845,14 +851,7 @@ Lyrics-ները տրամադրվում են երրորդ կողմի ծառայո
   <string name="morphe_music_lyrics_romanization_provider_title">Ռոմանիզացիա կամ տրանսլիտերացիա</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Անցանցային բառարան</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime բառերի ցուցակ</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Օֆլայն բառարան</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Ruby սկրիպտ</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Հիրագանա (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Կատականա (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Ցույց տալ Ruby կոճակը</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Հպեք՝ տեքստի վերևում ruby ընթերցումները միացնելու կամ անջատելու համար. երկար սեղմեք՝ հիրագանայի և կատականայի միջև անցում կատարելու համար: Օգտագործում է միացված ruby պրովայդերները նշված հերթականությամբ</string>
-  <string name="morphe_music_lyrics_ruby_generating">Գեներացվում է ruby-ն…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU տրանսլիտերատոր</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Հայտնաբերել հատվածները AI-ի միջոցով</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Օգտագործվում է միայն այն դեպքում, երբ մատակարարը չի տրամադրում հատվածների պիտակներ, ինչպիսիք են Կրկներգը կամ Տունը, որոնք այնուհետև հայտնաբերվում են ձեր OpenAI-နှင့် համատեղելի մոդելի կողմից: Տողի խմբագրումը նաև բացում է դրա հուշումը</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint-ի URL-ը (օրինակ՝ https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +874,7 @@ Lyrics-ները տրամադրվում են երրորդ կողմի ծառայո
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Ընտրեք մոդելը</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Չհաջողվեց բեռնել մոդելները: Ստուգեք API բանալին կամ կապը:</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Հուշում</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby հուշում (Կանա)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Մոդել</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Հիմնական URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Ծառայության նախադրված կարգավորումները</string>

@@ -793,6 +793,17 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Aktiver trykk for å søke</string>
   <string name="morphe_tap_to_seek_summary">Trykk hvor som helst på fremdriftslinjen for å hoppe til den posisjonen i stedet for å dra</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Egendefinert søkelinje-indikator</string>
+  <string name="morphe_custom_seekbar_thumb_title">Aktiver egendefinert søkelinje-indikator</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Erstatt søkelinje-indikatoren med et egendefinert bilde eller animert GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Bilde av indikator</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Velg et bilde eller animert GIF fra enhetens lagring</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Den valgte filen er ikke et støttet bilde</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Egendefinert bilde for søkelinje-indikator ble ikke funnet</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Indikatorstørrelse</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Tilpass søkelinje</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Original størrelse</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Left swipe gesture</string>
   <string name="morphe_swipe_right_zone_title">Right swipe gesture</string>
@@ -1771,6 +1782,8 @@ Automatisk opptak er valgfritt. Det stoppes i inkognito-modus eller når kontoen
   <string name="morphe_niconico_comments_travel_duration_summary">Hvor mange sekunder kommentarene bruker på å krysse skjermen. Lavere verdier beveger seg raskere</string>
   <string name="morphe_niconico_comments_display_area_title">Visningsområde</string>
   <string name="morphe_niconico_comments_display_area_summary">Hvor mye av spilleren, fra toppen, kommentarene skal bruke. Lavere verdier holder den nedre delen av videoen klar</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Skjul kommentarer som ville overlappet</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Når visningsområdet er fullt, blir nye kommentarer skjult i stedet for å overlappe andre kommentarer</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimal kommentarlengde</string>
   <string name="morphe_niconico_comments_max_length_summary">Skjuler kommentarer som har flere tegn enn dette. Hvert emoji teller som ett tegn</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Ingen grense</string>

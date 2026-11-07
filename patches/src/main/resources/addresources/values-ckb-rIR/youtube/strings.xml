@@ -794,6 +794,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">دەست لێدان بۆ گەڕان چالاک بکە</string>
   <string name="morphe_tap_to_seek_summary">لە هەر شوێنێکی seekbar-ەکە دابگرە بۆ ئەوەی ڕاستەوخۆ بچیتە ئەو شوێنە لەجیاتی ڕاکێشانی</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">پەنجەی تایبەتی شریتی پێشکەوتن</string>
+  <string name="morphe_custom_seekbar_thumb_title">چالاندانی پەنجەی تایبەتی شریتی پێشکەوتن</string>
+  <string name="morphe_custom_seekbar_thumb_summary">گۆڕینی پەنجەی شریتی پێشکەوتن بە وێنەیەکی تایبەت یان GIFـێکی جوڵاو</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">وێنەی پەنجە</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">وێنەیەک یان GIFـێکی جوڵاو هەڵبژێرە لە کۆگای ئامێرەکەوە</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">پەڕگەی دیاریکراو وێنەیەکی پشتگیریکراو نییە</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">وێنەی پەنجەی تایبەتی شریتی پێشکەوتن نەدۆزرایەوە</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">قەبارەی پەنجە</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">گونجاندنی لەگەڵ شریتی پێشکەوتن</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">قەبارەی ڕەسەن</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">ئاماژەی سوایپی چەپ</string>
   <string name="morphe_swipe_right_zone_title">ئاماژەی سوایپی ڕاست</string>
@@ -1770,6 +1781,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">چەند چرکە کۆمێنتەکان پێ دەوێت بۆ بڕینی شاشەکە. نرخە نزمەکان خێراتر دەجولێن</string>
   <string name="morphe_niconico_comments_display_area_title">ناوچەی پیشاندان</string>
   <string name="morphe_niconico_comments_display_area_summary">بڕی ئەو بەشەی پلەیەرەکە لە سەرەوە کە کۆمێنتەکان بەکاری دەهێنن. بەها نزمەکان بەشی خوارەوەی ڤیدیۆکە پاک دەهێڵنەوە</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">شاردنەوەی کۆمێنتۆکانی کە تێکەڵ دەبن</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">کاتێک ناوچەی نیشاندان پڕ دەبێت، کۆمێنتی نوێ دەشاردرێنەوە لەبری ئەوەی کەسەر بەسەری کۆمێنتی تردا بن</string>
   <string name="morphe_niconico_comments_max_length_title">درێژترین کۆمێنت</string>
   <string name="morphe_niconico_comments_max_length_summary">ئەو کۆمێنتانە دەشارێتەوە کە ژمارەی پیتەکانیان لەم بڕە زیاتر بێت. هەر ئیمۆجییەک وەک یەک پیت هەژمار دەکرێت</string>
   <string name="morphe_niconico_comments_max_length_no_limit">بێ سنوور</string>

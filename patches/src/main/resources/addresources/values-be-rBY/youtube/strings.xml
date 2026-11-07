@@ -793,6 +793,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Уключаць партак для перамоткі</string>
   <string name="morphe_tap_to_seek_summary">Націсніце ў любым месцы палосы пракруткі, каб скакаць да гэтай пазіцыі замест перацягвання</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Кастомны бегунок seekbar</string>
+  <string name="morphe_custom_seekbar_thumb_title">Уключыць кастомны бегунок seekbar</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Замяніць бегунок seekbar кастомным выявам або анімаваным GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Выява бегунка</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Выбраць выяву або анімаваны GIF з памяci прылады</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Выбраны файл не з\'яўляецца падтрымліваным выяўленнем</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Выяўленне для пазначвальніка шукальніка не знойдзена</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Памер пазначвальніка</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Падагнаць пад шукальнік</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Арыгінальны памер</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Жэст працягвання ўлева</string>
   <string name="morphe_swipe_right_zone_title">Жэст працягнення ўправа</string>
@@ -1771,6 +1782,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">Колькі секунды патрабуюцца каментарам, каб перасячціць экран. Меншыя значэнні робяць рух хутчэйшым</string>
   <string name="morphe_niconico_comments_display_area_title">Вобласць адлюстравання</string>
   <string name="morphe_niconico_comments_display_area_summary">Якую частку плеера, пачынаючы з верхняга краю, займаюць каментарыі. Меншыя значэнні пакідаюць ніжнюю частку відэа вольнай</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Схаваць каментары, якія накладваюцца адзін на аднога</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Калі вобласць адлюстроўвання запоўнена, новыя каментары схаваны замест таго, каб накладвацца на іншыя каментары</string>
   <string name="morphe_niconico_comments_max_length_title">Максимальная даўжыня каментара</string>
   <string name="morphe_niconico_comments_max_length_summary">Схаваць каментары, у якіх больш сімвалаў, чым гэтая колькасць. Кожны эмодзі лічыцца за адзін сімвал</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без абмежавання</string>

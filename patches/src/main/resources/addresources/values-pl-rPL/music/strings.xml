@@ -72,9 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">Aktualizowanie Jam…</string>
   <string name="morphe_music_jam_finding_host">Szukanie gospodarza przez Wi-Fi…</string>
   <string name="morphe_music_jam_waiting_people">Oczekiwanie na uczestników</string>
-  <string name="morphe_music_jam_one_connected">%s połączona osoba</string>
-  <string name="morphe_music_jam_many_connected">%s połączonych osób</string>
-  <string name="morphe_music_jam_code_expires">Wprowadź ten kod na pobliskim urządzeniu. Wi-Fi Aware działa między osobnymi sieciami LAN, jeśli jest obsługiwane. Wygasa za %s min</string>
+  <string name="morphe_music_jam_one_connected">Połączono: %s osoba</string>
+  <string name="morphe_music_jam_many_connected">Połączone osoby: %s</string>
+  <string name="morphe_music_jam_code_expires">Wprowadź ten kod na pobliskim urządzeniu. Wi-Fi Aware działa między osobnymi sieciami LAN, jeśli jest obsługiwane. Wygasa za %s min.</string>
   <string name="morphe_music_jam_seek_to">Przewinąć do %s?</string>
   <string name="morphe_music_jam_edits_open">Edycja odblokowana</string>
   <string name="morphe_music_jam_edits_locked">Edycja zablokowana</string>
@@ -133,7 +133,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_empty">"Brak pobranych
 Tutaj pojawią się pobrane utwory"</string>
   <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s utw. • %2$s MB</string>
+  <string name="morphe_music_downloads_summary">Utwory: %1$s • %2$s MB</string>
   <string name="morphe_music_downloads_search_hint">Szukaj w pobranych</string>
   <string name="morphe_music_downloads_sort">Sortuj</string>
   <string name="morphe_music_downloads_sort_artist">Sortuj według wykonawcy</string>
@@ -150,8 +150,8 @@ Tutaj pojawią się pobrane utwory"</string>
   <string name="morphe_music_downloads_previous">Poprzedni</string>
   <string name="morphe_music_downloads_next">Następny</string>
   <string name="morphe_music_downloads_pause">Wstrzymaj</string>
-  <string name="morphe_music_downloads_shuffle">Losuj</string>
-  <string name="morphe_music_downloads_repeat">Powtórz</string>
+  <string name="morphe_music_downloads_shuffle">Odtwarzaj losowo</string>
+  <string name="morphe_music_downloads_repeat">Powtarzaj</string>
   <string name="morphe_music_downloads_minimize">Zminimalizuj</string>
   <string name="morphe_music_downloads_close">Zamknij</string>
   <string name="morphe_music_downloads_delete">Usuń</string>
@@ -177,7 +177,7 @@ Tutaj pojawią się pobrane utwory"</string>
   <string name="morphe_music_downloads_playlist_name_hint">Nazwa playlisty</string>
   <string name="morphe_music_downloads_playlist_name_empty">Nazwa playlisty nie może być pusta</string>
   <string name="morphe_music_downloads_playlist_save_failed">Nie udało się zapisać playlisty</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s utworów</string>
+  <string name="morphe_music_downloads_playlist_track_count">Utwory: %s</string>
   <string name="morphe_music_downloads_playlist_track_count_one">1 utwór</string>
   <string name="morphe_music_downloads_playlist_no_tracks">Brak utworów na tej playliście</string>
   <string name="morphe_music_downloads_playlist_play">Odtwórz playlistę</string>
@@ -208,13 +208,13 @@ Tutaj pojawią się pobrane utwory"</string>
   <string name="morphe_music_downloads_playlist_download_listed">Wczytano %s…</string>
   <string name="morphe_music_downloads_playlist_download_listing_failed">Nie udało się pobrać listy utworów z playlisty</string>
   <string name="morphe_music_downloads_playlist_download_all_saved">Już pobrano: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s utworów na tej playliście, %2$s jeszcze nie pobrano.
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"Na tej playliście - %1$s (jeszcze nie pobrano: %2$s).
 
 Utwory są pobierane pojedynczo, co może zająć dużo czasu i wymaga około %3$s wolnego miejsca"</string>
   <string name="morphe_music_downloads_playlist_download_confirm_button">Pobierz</string>
   <string name="morphe_music_downloads_playlist_download_progress">Pobieranie utworu %1$s z %2$s</string>
   <string name="morphe_music_downloads_playlist_download_complete">Pobrano %s</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s pobrano, %2$s nie udało się pobrać</string>
+  <string name="morphe_music_downloads_playlist_download_complete_with_failures">Pobrano: %1$s, nie udało się pobrać: %2$s</string>
   <string name="morphe_music_downloads_playlist_download_already_running">Pobieranie playlisty już trwa</string>
   <string name="morphe_music_downloads_playlist_download_needs_account">Nie rozpoznano jeszcze Twojego konta. Spróbuj ponownie za chwilę</string>
   <string name="morphe_music_downloads_playlist_download_listed_all_saved">Wczytano %s, wszystkie już pobrano</string>
@@ -347,9 +347,9 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <string name="morphe_music_playlist_track_tap_added_to_queue">Utwór został dodany do kolejki</string>
   <!-- layout.playlisttags.playlistTagsPatch -->
   <string name="morphe_music_playlist_tags_screen_title">Tagi playlist</string>
-  <string name="morphe_music_playlist_tags_screen_summary">Oznaczaj playlisty tagami i filtruj Bibliotekę według tagu</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Oznaczaj playlisty tagami i filtruj Bibliotekę według tagów</string>
   <string name="morphe_music_playlist_tags_title">Włącz tagi playlist</string>
-  <string name="morphe_music_playlist_tags_summary">Dodaje element Tagi do menu playlist oraz przycisk filtra Tagi obok przycisku sortowania w Bibliotece</string>
+  <string name="morphe_music_playlist_tags_summary">Dodaje pozycję \"Tagi\" do menu playlist oraz przycisk filtrowania według tagów obok przycisku sortowania w Bibliotece</string>
   <string name="morphe_music_playlist_tags_manage_title">Zarządzaj tagami playlist</string>
   <string name="morphe_music_playlist_tags_manage_summary">Twórz, zmieniaj nazwy i usuwaj tagi oraz przypisuj je do playlist widocznych w Bibliotece</string>
   <!-- Title of the row added to the menu of a playlist. -->
@@ -359,13 +359,13 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <!-- %s is the name of the tag. -->
   <string name="morphe_music_playlist_tags_filter_button_only">Tag: %s</string>
   <!-- %s is the number of hidden tags. -->
-  <string name="morphe_music_playlist_tags_filter_button_hidden">Tagi (ukryto %s)</string>
+  <string name="morphe_music_playlist_tags_filter_button_hidden">Tagi (ukryte: %s)</string>
   <!-- %s is the name of the playlist. -->
-  <string name="morphe_music_playlist_tags_assign_title">Tagi dla %s</string>
+  <string name="morphe_music_playlist_tags_assign_title">Tagi dla: %s</string>
   <string name="morphe_music_playlist_tags_new_tag_hint">Nowy tag</string>
   <string name="morphe_music_playlist_tags_playlist_count_one">1 playlista</string>
   <!-- %s is the number of playlists that have the tag. -->
-  <string name="morphe_music_playlist_tags_playlist_count">%s playlist</string>
+  <string name="morphe_music_playlist_tags_playlist_count">Playlisty: %s</string>
   <!-- %s is the name of the tag. -->
   <string name="morphe_music_playlist_tags_tag_exists">Tag o nazwie %s już istnieje</string>
   <string name="morphe_music_playlist_tags_filter_title">Filtruj według tagu</string>
@@ -373,15 +373,15 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <string name="morphe_music_playlist_tags_filter_all">Wszystkie playlisty</string>
   <string name="morphe_music_playlist_tags_filter_visible">Widoczne tagi</string>
   <string name="morphe_music_playlist_tags_manage">Zarządzaj</string>
-  <string name="morphe_music_playlist_tags_none">Brak tagów. Przytrzymaj playlistę i wybierz Tagi, aby utworzyć nowy</string>
+  <string name="morphe_music_playlist_tags_none">Brak tagów. Przytrzymaj playlistę i wybierz \"Tagi\", aby utworzyć pierwszy</string>
   <string name="morphe_music_playlist_tags_section_tags">Tagi</string>
   <string name="morphe_music_playlist_tags_section_playlists">Playlisty</string>
-  <string name="morphe_music_playlist_tags_no_playlists">Otwórz Bibliotekę choć raz, aby Twoje playlisty pojawiły się tutaj</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Otwórz raz Bibliotekę, aby Twoje playlisty pojawiły się tutaj</string>
   <string name="morphe_music_playlist_tags_new_tag">Nowy tag</string>
   <string name="morphe_music_playlist_tags_edit_tag_title">Edytuj tag</string>
   <string name="morphe_music_playlist_tags_rename">Zmień nazwę</string>
   <string name="morphe_music_playlist_tags_delete">Usuń</string>
-  <string name="morphe_music_playlist_tags_hidden">Ukryte</string>
+  <string name="morphe_music_playlist_tags_hidden">Ukryty</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Ukryj przycisk Przesyłaj</string>
   <string name="morphe_music_hide_history_button_title">Ukryj przycisk Historia</string>
@@ -638,7 +638,7 @@ Pierwsza kolumna to słowo, a druga to jego transkrypcja. Dodatkowe kolumny oraz
   <string name="morphe_music_lyrics_rime_dict_reserved_row">Nieużywane: ten język ma już własną obsługę transkrypcji. Odznacz go, aby usunąć wpis</string>
   <string name="morphe_music_lyrics_rime_dict_added">Dodano %s. Zaznacz go i dotknij Zapisz, aby pobrać</string>
   <string name="morphe_music_lyrics_rime_dict_ready">Słowniki gotowe</string>
-  <string name="morphe_music_lyrics_rime_dict_ready_toast">Słowniki gotowe (%s wpisów)</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Słowniki gotowe (wpisy: %s)</string>
   <string name="morphe_music_lyrics_rime_dict_building">Wczytywanie słownika: %s%%</string>
   <string name="morphe_music_lyrics_rime_dict_failed">Nie udało się pobrać słownika. Dotknij ponownie Zapisz, aby ponowić</string>
   <string name="morphe_music_lyrics_clear_cache_title">Wyczyść zapisane teksty</string>
@@ -700,7 +700,7 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_section_title">Pokaż etykiety sekcji</string>
   <string name="morphe_music_lyrics_show_section_summary">Oznacza każdą nową sekcję tekstu małą etykietą, taką jak Zwrotka lub Refren</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Pokaż przycisk Kopiuj</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Dotknij, aby skopiować oryginalny tekst jako zwykły tekst. Przytrzymaj, aby zapisać surowy plik źródłowy tekstu w folderze Pobrane</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Dotknij, aby skopiować oryginalny tekst utworu jako zwykły tekst. Przytrzymaj, aby zapisać surowy plik źródłowy tekstu oraz przekonwertowany plik TTML w folderze Pobrane</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Pokaż przycisk Przetłumacz</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Dotknij, aby przełączyć tłumaczenie. Przytrzymaj, aby wyświetlić samo tłumaczenie. Używa włączonych dostawców tłumaczeń w kolejności z listy</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Pokaż przycisk Romanizacja lub Transliteracja</string>
@@ -709,14 +709,14 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_allow_transliteration_summary">Zezwala na transkrypcję w alfabetach niełacińskich ze źródła tekstu. Gdy wyłączone, zachowywane są tylko litery łacińskie, litery ze znakami diakrytycznymi oraz cyfry tonów</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Transkrybuje każde słowo zsynchronizowanego tekstu (gdy synchronizacja słów jest włączona). Koreański nie wymaga pobierania. Czternaście pism współdzieli jeden pakiet CLDR. Znaki Han są odczytywane przez słownik Rime, o ile obsługuje on dany język</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">Pobieranie słowników transkrypcji…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Dane wymowy gotowe (%s wpisów)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Dane wymowy gotowe (wpisy: %s)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Pobieranie się nie powiodło. Wyłącz i włącz tę opcję ponownie, aby ponowić próbę</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Słownik offline</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japoński (SudachiDict, ok. 75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Znaki chińskie i kantońskie (UniDict, ok. 8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Słowa chińskie (pinyin-pro, ok. 17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliteracja alfabetu greckiego, cyrylicy słowiańskiej (w tym rosyjskiego, ukraińskiego, bułgarskiego, serbskiego, białoruskiego i macedońskiego), gruzińskiego, ormiańskiego, hebrajskiego, arabskiego, amharskiego oraz syryjskiego (CLDR, ok. 0,5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Wczytywanie %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Wczytywanie %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Pokaż przycisk Odśwież</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Dotknij, aby przełączyć na następną propozycję tekstu. Przytrzymaj, aby wyszukać tekst według tytułu utworu i wykonawcy</string>
   <string name="morphe_music_lyrics_search_dialog_title">Wyszukaj tekst</string>
@@ -725,6 +725,7 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_search_empty">Wprowadź tytuł utworu i wykonawcę</string>
   <string name="morphe_music_lyrics_search_no_providers">Żaden z włączonych dostawców nie obsługuje wyszukiwania innych utworów</string>
   <string name="morphe_music_lyrics_saved">Zapisano</string>
+  <string name="morphe_music_lyrics_written_by">Tekst: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Podświetlaj zsynchronizowane słowa lub sylaby</string>
   <string name="morphe_music_lyrics_word_sync_summary">Nadaje priorytet tekstom synchronizowanym słowo po słowie, o ile są dostępne. Gdy tekst zawiera znaczniki czasu, podświetla każde słowo lub sylabę w rytm muzyki</string>
   <string name="morphe_music_lyrics_line_scale_title">Pomniejszaj nieaktywne wersy</string>
@@ -740,7 +741,7 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Animuj dynamiczne tło</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Porusza tłem podczas odtwarzania i pulsuje nim w rytm muzyki, jeśli YouTube Music ma uprawnienia do mikrofonu. Wyłącz, aby uzyskać statyczne tło zużywające mniej baterii</string>
   <string name="morphe_music_lyrics_mediasession_title">Pokaż teksty MediaSession na ekranie blokady</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Wyświetla bieżący wers na ekranie blokady, w Android Auto i przez Bluetooth. Wymaga systemu Android 11 lub nowszego</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Wyświetla bieżący wers na ekranie blokady, w Android Auto i przez Bluetooth</string>
   <string name="morphe_music_lyrics_miniplayer_title">Pokaż teksty w miniodtwarzaczu</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Wyświetla bieżący wers w miniodtwarzaczu, przenosząc nazwę utworu do podtytułu</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Format tytułu i wykonawcy utworu</string>
@@ -777,6 +778,8 @@ Dotyczy obu limitów. Przy wartości 1.75 cztery znaki pełnej szerokości licz�
   <string name="morphe_music_lyrics_force_capitalize_summary">Zmienia pierwszą literę każdego wersu tekstu na wielką</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Usuń końcową interpunkcję</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Usuwa kropki, przecinki, dwukropki i średniki na końcu wersów tekstu. Znaki zapytania, wykrzykniki, wielokropki, cudzysłowy oraz nawiasy są zachowywane</string>
+  <string name="morphe_music_lyrics_han_form_title">Konwersja pisma chińskiego</string>
+  <string name="morphe_music_lyrics_han_form_summary">Po włączeniu konwertuje tekst utworu między pismem uproszczonym a tradycyjnym zgodnie z wybranym językiem docelowym tłumaczenia</string>
   <string name="morphe_music_lyrics_text_size_title">Rozmiar tekstu</string>
   <string name="morphe_music_lyrics_text_size_summary">Rozmiar tekstu utworu</string>
   <string name="morphe_music_lyrics_offset_ms_title">Globalne przesunięcie czasowe</string>
@@ -792,6 +795,7 @@ Dotyczy obu limitów. Przy wartości 1.75 cztery znaki pełnej szerokości licz�
   <string name="morphe_music_lyrics_translated_by_ai">Przetłumaczone przez %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Zromanizowane przez %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Zromanizowane przez %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (z %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Zromanizowane przez Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Przetłumaczone</string>
@@ -807,6 +811,8 @@ Dotyczy obu limitów. Przy wartości 1.75 cztery znaki pełnej szerokości licz�
   <string name="morphe_romanize_language_DEFAULT">Automatyczny</string>
   <string name="morphe_music_lyrics_romanizing">Romanizowanie…</string>
   <string name="morphe_music_lyrics_romanize_failed">Nie udało się zromanizować tekstu</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Brak</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Język docelowy ruby</string>
   <string name="morphe_music_lyrics_translate_only">Tylko tłumaczenie</string>
   <string name="morphe_music_lyrics_romanize_only">Tylko romanizacja</string>
   <string name="morphe_music_lyrics_dual_only">Tryb podwójny</string>
@@ -837,7 +843,7 @@ Teksty pochodzą z zewnętrznych usług, które nie są powiązane z Morphe, prz
   <string name="morphe_music_lyrics_hide_info_title">Ukryj informacje o twórcach</string>
   <string name="morphe_music_lyrics_hide_info_summary">Ukrywa informacje o twórcach wyświetlane pod tekstem</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Zamień miejscami tłumaczenie i romanizację</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Zamienia kolejność wyświetlania tłumaczenia i romanizacji pod tekstem utworu</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Przenosi tłumaczenie nad tekst utworu. Transkrypcja oraz romanizacja pozostają pod spodem</string>
   <string name="morphe_music_lyrics_force_center_title">Zawsze wyśrodkowuj tekst</string>
   <string name="morphe_music_lyrics_force_center_summary">WŁ.: wyśrodkowuje każdy wers i ignoruje wyrównanie ze źródła, w tym podział na strony w duetach. WYŁ.: zachowuje oryginalne wyrównanie tekstu</string>
   <string name="morphe_music_lyrics_providers_keep_one">Co najmniej jeden dostawca musi pozostać włączony</string>
@@ -845,14 +851,7 @@ Teksty pochodzą z zewnętrznych usług, które nie są powiązane z Morphe, prz
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizacja lub transliteracja</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Słownik offline</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Słownik Rime</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Słownik offline</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Pismo ruby</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Pokaż przycisk Ruby</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Dotknij, aby przełączyć transkrypcję ruby nad tekstem. Przytrzymaj, aby przełączyć między hiraganą a katakaną. Korzysta z włączonych dostawców ruby w podanej kolejności</string>
-  <string name="morphe_music_lyrics_ruby_generating">Generowanie ruby…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">Transliterator ICU</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Wykrywaj sekcje za pomocą AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Używane tylko wtedy, gdy dostawca nie udostępnia oznaczeń sekcji (takich jak Refren czy Zwrotka), wówczas wykrywa je Twój model zgodny z OpenAI. Edycja tego wiersza otwiera również przypisane mu polecenie</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">Adres API (np. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +874,7 @@ Teksty pochodzą z zewnętrznych usług, które nie są powiązane z Morphe, prz
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Wybierz model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Nie udało się pobrać modeli. Sprawdź klucz API lub połączenie.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Polecenie</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Polecenie Ruby (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Bazowy adres URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Gotowe konfiguracje usług</string>

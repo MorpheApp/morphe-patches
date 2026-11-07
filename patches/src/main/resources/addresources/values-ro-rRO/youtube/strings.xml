@@ -793,6 +793,17 @@ Pentru a remedia, activează 'Falsifică fluxurile video' și schimbă 'clientul
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Activează atingerea pentru a căuta</string>
   <string name="morphe_tap_to_seek_summary">Atingeți oriunde pe bara de progres pentru a sări la acea poziție în loc de glisare</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Indicator personalizat al barei de căutare</string>
+  <string name="morphe_custom_seekbar_thumb_title">Activează indicatorul personalizat al barei de căutare</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Înlocuiește indicatorul barei de căutare cu o imagine personalizată sau un GIF animat</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Imagine indicator</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Selectează o imagine sau un GIF animat din stocarea dispozitivului</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Fișierul selectat nu este o imagine suportată</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Imaginea indicatorului personalizat al barei de căutare nu a fost găsită</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Mărime indicator</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Ajustare bară de căutare</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Mărime originală</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gest de glisare stânga</string>
   <string name="morphe_swipe_right_zone_title">Gest de glisare dreapta</string>
@@ -1771,6 +1782,8 @@ Această bibliotecă este stocată pe acest dispozitiv și partajată între con
   <string name="morphe_niconico_comments_travel_duration_summary">Câte secunde durează ca comentariile să traverseze ecranul. Valorile mai mici se deplasează mai rapid</string>
   <string name="morphe_niconico_comments_display_area_title">Zona de afișare</string>
   <string name="morphe_niconico_comments_display_area_summary">Cât din player, începând de sus, este utilizat pentru comentarii. Valorile mai mici mențin partea de jos a videoclipului liberă</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Ascunde comentariile care s-ar suprapune</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Când zona de afișare este plină, noile comentarii sunt ascunse în loc să se suprapună peste alte comentarii</string>
   <string name="morphe_niconico_comments_max_length_title">Lungimea maximă a comentariului</string>
   <string name="morphe_niconico_comments_max_length_summary">Ascunde comentariile care conțin mai multe caractere decât această valoare. Fiecare emoji se numără ca un caracter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Fără limită</string>

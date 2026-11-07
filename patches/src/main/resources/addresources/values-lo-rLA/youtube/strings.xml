@@ -793,6 +793,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">ເປີດໃຊ້ງານການແຕະເພື່ອຊອກຫາ</string>
   <string name="morphe_tap_to_seek_summary">ແຕະບ່ອນໃດກໍໄດ້ໃນແຖບເລື່ອນ ເພື່ອຂ້າມໄປຫາຕຳແໜ່ງນັ້ນ ແທນທີ່ຈະລາກ</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">ປຸ່ມເລື່ອນ seekbar ແບບກຳນົດເອງ</string>
+  <string name="morphe_custom_seekbar_thumb_title">ເປີດໃຊ້ງານປຸ່ມເລື່ອນ seekbar ແບບກຳນົດເອງ</string>
+  <string name="morphe_custom_seekbar_thumb_summary">ປ່ຽນປຸ່ມເລື່ອນ seekbar ດ້ວຍຮູບພາບກຳນົດເອງ ຫຼື GIF ທີ່ເຄື່ອນໄຫວໄດ້</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">ຮູບພາບປຸ່ມເລື່ອນ</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">ເລືອກຮູບພາບ ຫຼື GIF ທີ່ເຄື່ອນໄຫວໄດ້ ຈາກບ່ອນເກັບຂໍ້ມູນຂອງອຸປະກອນ</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">ໄຟລ໌ທີ່ເລືອກບໍ່ແມ່ນຮູບພາບທີ່ຮອງຮັບ</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">ບໍ່ພົບຮູບພາບປຸ່ມເລື່ອນ seekbar ແບບກຳນົດເອງ</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">ຂະໜາດປຸ່ມເລື່ອນ</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">ປັບໃຫ້ພໍດີກັບ seekbar</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">ຂະໜາດດັ້ງເດີມ</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">ທ່າທາງການປັດໄປທາງຊ້າຍ</string>
   <string name="morphe_swipe_right_zone_title">ທ່າທາງການປັດໄປທາງຂວາ</string>
@@ -1771,6 +1782,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">ຈຳນວນວິນາທີທີ່ຄຳຄິດເຫັນໃຊ້ໃນການເລື່ອນຜ່ານໜ້າຈໍ. ຄ່າທີ່ຕ່ຳກວ່າຈະເຄື່ອນທີ່ໄວຂຶ້ນ</string>
   <string name="morphe_niconico_comments_display_area_title">ພື້ນທີ່ສະແດງຜົນ</string>
   <string name="morphe_niconico_comments_display_area_summary">ຄອມເມັ້ນຈະໃຊ້ພື້ນທີ່ຂອງເຄື່ອງຫຼິ້ນຫຼາຍປານໃດ ໂດຍນັບຈາກດ້ານເທິງ. ຄ່າທີ່ຕ່ຳກວ່າຈະເຮັດໃຫ້ສ່ວນລຸ່ມຂອງວິດີໂອວ່າງ</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">ເຊື່ອງຄຳເຫັນທີ່ທັບຊ້ອນກັນ</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">ເມື່ອພື້ນທີ່ສະແດງຜົນເຕັມ, ຄຳເຫັນໃໝ່ຈະຖືກເຊື່ອງໄວ້ ແທນທີ່ຈະໄປທັບຊ້ອນກັບຄຳເຫັນອື່ນໆ</string>
   <string name="morphe_niconico_comments_max_length_title">ຄວາມຍາວສູງສຸດຂອງຄຳຄິດເຫັນ</string>
   <string name="morphe_niconico_comments_max_length_summary">ເຊື່ອງຄຳຄິດເຫັນທີ່ມີຕົວອັກສອນຫຼາຍກວ່ານີ້. ແຕ່ລະ emoji ຖືກນັບເປັນໜຶ່ງຕົວອັກສອນ</string>
   <string name="morphe_niconico_comments_max_length_no_limit">ບໍ່ມີຂີດຈຳກັດ</string>

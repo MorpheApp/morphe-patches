@@ -43,11 +43,11 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Megjelenés frissítések letiltása</string>
   <string name="morphe_disable_layout_updates_summary">Megakadályozza, hogy a szerver frissítse az alkalmazás megjelenését</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Alkalmazás-elrendezés visszatér ahhoz az elrendezéshez, amely a telepítés első pillanatában volt.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Az alkalmazás-elrendezés visszatér ahhoz az elrendezéshez, amely a telepítés első pillanatában volt.
 
 Néhány szerveroldali elrendezés esetében előfordulhat, hogy a visszaállítás nem történik meg.
 
-A változások a következőket tartalmazzák:
+A változások ezeket tartalmazzák:
 • A lejátszó felugró menüjének elemei (vagy a kapcsolódó beállítások) nem működhetnek.
 • A pörgő számok animációja megszűnik.
 • Megjelenik a Könyvtár lap.
@@ -74,14 +74,14 @@ A változások a következőket tartalmazzák:
   <string name="morphe_post_buttons_layout_title">Bejegyzés gombjai elrendezése</string>
   <string name="morphe_post_buttons_layout_entry_1">Szerver</string>
   <string name="morphe_post_buttons_layout_entry_2">Kényszerített</string>
-  <string name="morphe_hide_post_like_dislike_buttons_title">Tetszik és nem tetszik elrejtése</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Tetszik és nem tetszik gombok elrejtése</string>
   <string name="morphe_hide_post_dislike_button_title">Nem tetszik gomb elrejtése</string>
   <string name="morphe_hide_post_dislike_button_summary">A kényszerített elrendezésnél a gomb helye üres marad</string>
   <string name="morphe_hide_post_comment_button_title">Hozzászólások gomb elrejtése</string>
   <string name="morphe_hide_post_comments_preview_title">Kommentek előnézetének elrejtése</string>
   <string name="morphe_hide_post_comments_preview_summary">Elrejti a bejegyzések alatti kommentek előnézetét</string>
   <string name="morphe_hide_post_share_button_title">Megosztás gomb elrejtése</string>
-  <string name="morphe_hide_post_share_button_summary">A bejegyzés képeinek letöltés gombja a megosztás gomb mellett jelenik meg, így ez is rejtve lesz</string>
+  <string name="morphe_hide_post_share_button_summary">A bejegyzés képeinek letöltő gombja a megosztás gomb mellett jelenik meg, így ez is rejtve lesz</string>
   <string name="morphe_hide_compact_banner_title">Kompakt szalaghirdetések elrejtése</string>
   <string name="morphe_hide_compact_banner_summary">Kompakt szalagképek és az egyes összetevők közötti térköz elrejtése</string>
   <string name="morphe_hide_expandable_card_title">Kibontható kártyák a videók alatt</string>
@@ -130,7 +130,7 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_surveys_summary">Értékelési felmérések és javaslatok elrejtése a hírcsatorna pontosságával kapcsolatban</string>
   <string name="morphe_hide_ticket_shelf_title">Jegyértékesítési polc elrejtése</string>
   <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
-  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Elrejtés az „Az elérhetetlen videók rejtve vannak” sávő</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">„Az elérhetetlen videók rejtve vannak” sáv elrejtése</string>
   <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Elrejti az „Az elérhetetlen videók rejtve vannak” sávot a lejátszási listákban</string>
   <string name="morphe_hide_upload_time_title">Feltöltési idő elrejtése</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
@@ -371,7 +371,7 @@ Korlátozások:
 • Néhány AI videó még megjelenhet"</string>
   <string name="morphe_hide_aislist_attribution_summary">"AiSList egy nyílt forráskódú lista YouTube-csatornákról, amelyek AI-generált tartalmat tesznek közzé, önkéntesek karbantartják. A csatornákat a felhasználók jelentik, és a hozzáadás előtt felülvizsgálják azokat.
 
-A lista a GitHubról töltődik le, és a videók az eszközödön kerülnek szűrésre.}{"</string>
+A lista a GitHubról töltődik le, és a videók az eszközödön kerülnek szűrésre."</string>
   <string name="morphe_aislist_submit_category_title">AI-csatornák jelentése</string>
   <string name="morphe_aislist_submit_flyout_menu_title">Jelentés menüpont hozzáadása a videómenühöz</string>
   <string name="morphe_aislist_submit_flyout_menu_summary">Menüpont hozzáadása a videómenühöz, amely a videó csatornáját jelenti az AiSListnek.</string>
@@ -422,7 +422,7 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_hide_general_ads_title">Általános hirdetések elrejtése</string>
   <string name="morphe_hide_merchandise_banners_title">Áruszalaghirdetések elrejtése</string>
   <string name="morphe_hide_paid_promotion_labels_title">Fizetett promóció címkéinek elrejtése</string>
-  <string name="morphe_hide_player_popup_ads_title">Elrejtés a lejátszó előugró reklámok</string>
+  <string name="morphe_hide_player_popup_ads_title">Előugró reklámok elrejtése a lejátszóban</string>
   <string name="morphe_hide_self_sponsor_ads_title">Önpromóciós kártyák elrejtése</string>
   <string name="morphe_hide_shopping_links_title">Vásárlási hivatkozások elrejtése</string>
   <string name="morphe_hide_video_ads_title">Videóhirdetések elrejtése</string>
@@ -448,7 +448,7 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_channel_search_failed">Nem sikerült keresni ezen a csatornán</string>
   <string name="morphe_channel_search_videos">Videók</string>
   <string name="morphe_channel_search_posts">Bejegyzések</string>
-  <string name="morphe_channel_search_no_posts">Nincs egybeezlető bejegyzés ezen a csatornán</string>
+  <string name="morphe_channel_search_no_posts">Nincs egyező bejegyzés ezen a csatornán</string>
   <string name="morphe_channel_search_sort_relevance">Relevancia</string>
   <string name="morphe_channel_search_sort_most_viewed">Legnézettebb</string>
   <string name="morphe_channel_search_sort_least_viewed">Legkevésbé nézett</string>
@@ -479,7 +479,7 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_feed_long_press_menu_title">Koppints és nyomd meg hosszan a videómenü megnyitásához</string>
   <string name="morphe_feed_long_press_menu_summary">A posztfolyamat videóján bárhol koppintás és hosszú nyomás nyitja meg annak menüt</string>
   <string name="morphe_feed_watch_later_button_title">Mutassa a Néssebb később gombot a képkockákon</string>
-  <string name="morphe_feed_watch_later_button_summary">A hírfolyam videóinak thumbnailjein megjelenik egy Később megnézem gomb, pipával, ha a videó mentve van. A rákoppintás menti vagy eltávolítja a videót, a hosszú nyomás pedig megnyitja a Leházrolistába mentés lehetőséget</string>
+  <string name="morphe_feed_watch_later_button_summary">A hírfolyam videóinak bélyegképein megjelenik egy Később megnézem gomb, pipával, ha a videó mentve van. A rákoppintás menti vagy eltávolítja a videót, a hosszú nyomás pedig megnyitja a Lejátszási listába mentés lehetőséget</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Bejegyzési képek letöltése</string>
   <string name="morphe_post_image_download_summary">A képekkel vagy GIF-ekkel rendelkező bejegyzések Megosztás gombja mellett megjelenik egy letöltés gomb, és a menüjükhez egy letöltési elem kerül hozzá</string>
@@ -793,6 +793,17 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Érintésre keresés engedélyezése</string>
   <string name="morphe_tap_to_seek_summary">Koppintson a lejátszási sáv bármelyik részére az adott pozícióba való ugráshoz a húzás helyett</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Egyéni keresősáv jelző</string>
+  <string name="morphe_custom_seekbar_thumb_title">Egyéni keresősáv jelző engedélyezése</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Cserélje le a keresősáv jelzőjét egy egyéni képre vagy animált GIF-re</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Jelző kép</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Válasszon egy képet vagy egy animált GIF-et a készülék tárolójából</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">A kiválasztott fájl nem egy támogatott kép</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Egyéni keresősáv jelző kép nem található</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Jelző mérete</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Keresősávhoz igazítva</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Eredeti méret</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Balra törölés gesztus</string>
   <string name="morphe_swipe_right_zone_title">Jobbra törölés gesztus</string>
@@ -1771,6 +1782,8 @@ A automatikus rögzítés opcionális. Inkognitó módban vagy a fiókváltás s
   <string name="morphe_niconico_comments_travel_duration_summary">Hány másodperc alatt haladjanak át a kommentek a képernyőn. Az alacsonyabb értékek gyorsabb mozgást jelentenek</string>
   <string name="morphe_niconico_comments_display_area_title">Megjelenítési terület</string>
   <string name="morphe_niconico_comments_display_area_summary">Hogy a lejátszó mennyi részét használják a kommentek a felső résztől számítva. Az alacsonyabb értékek tisztán tartják a videó alsó részét</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Overlapő kommentekre vonatkozó ehrlichítés</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Amikor a megjelenítési terület megtelik, az új kommentek elrejtők instead of that overlap other comments</string>
   <string name="morphe_niconico_comments_max_length_title">Maximális kommenthossz</string>
   <string name="morphe_niconico_comments_max_length_summary">Rejtőzi a kommenteket, amelyek több karakterből állnak, mint ez. Minden emoji egy karakternek számít</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Nincs korlát</string>

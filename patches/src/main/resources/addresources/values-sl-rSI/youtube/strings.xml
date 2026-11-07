@@ -793,6 +793,17 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Omogoči iskanje z dotikom</string>
   <string name="morphe_tap_to_seek_summary">Tapnite kateri koli deli vrtečke za iskanje, da preskočite na tisti položaj namesto vlečenja</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Kepec vrstice za iskanje po meri</string>
+  <string name="morphe_custom_seekbar_thumb_title">Omogoči kepec vrstice za iskanje po meri</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Zastopi kepec vrstice za iskanje znočno sliko ali animiranim GIF-om</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Slika kepca</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Izberi sliko ali animirani GIF iz pomnilnika naprave</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Izbrana datoteka ni podprta slika</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Slika kepca vrstice za iskanje po meri ni našena</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Velikost kepca</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Prilagodi vrstici za iskanje</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Izvirna velikost</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Žestika s povlekom vlevo</string>
   <string name="morphe_swipe_right_zone_title">Žestika s povlekom desno</string>
@@ -1769,6 +1780,8 @@ Samodejni zapis je opcijski. Ustavi se v zasebnem načinu ali ob spremembi raču
   <string name="morphe_niconico_comments_travel_duration_summary">Koliko sekund komentarji potrebujejo za preсеkanje zaslona. Nižje vrednosti pomenijo hitrejše premikanje</string>
   <string name="morphe_niconico_comments_display_area_title">Področje prikaza</string>
   <string name="morphe_niconico_comments_display_area_summary">Koliko površine predvajalnika od vrha navzgor uporabljajo komentarji. Nižje vrednosti pustijo spodnji del videa čist</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Skrij komentarje, ki bi se prekrivali</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Ko je prikazovalno območje polno, so novi komentarji skriti, namesto da bi prekrivali druge komentarje</string>
   <string name="morphe_niconico_comments_max_length_title">Največja dolžina komentarja</string>
   <string name="morphe_niconico_comments_max_length_summary">Skrije komentarje, ki imajo več znakov kot ta vrednost. Vsak emoji se šteje za en znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Brez omejitev</string>

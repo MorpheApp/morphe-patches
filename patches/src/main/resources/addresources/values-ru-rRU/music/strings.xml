@@ -700,7 +700,7 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_show_section_title">Показывать теги секций</string>
   <string name="morphe_music_lyrics_show_section_summary">Помечать каждую новую секцию текста песни небольшим тегом, например, «Куплет» или «Припев»</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Показать кнопку копирования</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Нажмите, чтобы скопировать исходный текст песни в виде простого текста; нажмите и удерживайте, чтобы сохранить исходный файл текста песни в папке \"Загрузки\"</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Нажмите, чтобы скопировать исходный текст песни в виде простого текста; нажмите и удерживайте, чтобы сохранить исходный файл текста песни и сконвертированный файл TTML в папке \"Загрузки\"</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Показать кнопку перевода</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Нажмите для включения/выключения перевода; длительное нажатие показывает только перевод. Использует включенных провайдеров перевода в порядке их перечисления</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Показать кнопку романзации или транслитерации</string>
@@ -716,7 +716,7 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Китайские и кантонийские символы (UniDict, ~8 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Китайские слова (pinyin-pro, ~17 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Греческий, славянский кириллический (включая русский, украинский, болгарский, сербский, белорусский, македонский), грузинский, армянский, еврейский, арабский, амхарский и сирийский транслитерация (CLDR, ~0,5 МБ)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Чтение %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Чтение %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Показывать кнопку «Обновить»</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Нажмите, чтобы перейти к следующему варианту текста песни; нажмите и удерживайте, чтобы выполнить поиск текста по названию песни и исполнителю</string>
   <string name="morphe_music_lyrics_search_dialog_title">Поиск текста песни</string>
@@ -725,6 +725,7 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_search_empty">Введите название песни и исполнителя</string>
   <string name="morphe_music_lyrics_search_no_providers">Ни один из включённых провайдеров не может искать другие песни</string>
   <string name="morphe_music_lyrics_saved">Сохранено</string>
+  <string name="morphe_music_lyrics_written_by">Автор: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Подсвечивать синхронизированные слова по мере воспроизведения, если доступно</string>
   <string name="morphe_music_lyrics_word_sync_summary">Отдавать приоритет посекундному тексту, когда он доступен. Когда в тексте есть тайминги слов, подсвечивать каждое слово или слог в такт музыке.</string>
   <string name="morphe_music_lyrics_line_scale_title">Сжимать неактивные строки</string>
@@ -740,7 +741,7 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Анимировать динамический фон</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Двигать фон во время воспроизведения и пульсировать в такт музыке, если у YouTube Music есть разрешение на использование микрофона. Выключите для статичного фона, чтобы сэкономить заряд батареи</string>
   <string name="morphe_music_lyrics_mediasession_title">Показывать текст MediaSession на экране блокировки</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Отображает текущую строку на экране блокировки, в Android Auto и при подключении по Bluetooth. Требуется Android 11 или более поздней версии</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Отображает текущую строку на экране блокировки, в Android Auto и при подключении по Bluetooth</string>
   <string name="morphe_music_lyrics_miniplayer_title">Показывать тексты в мини-плеере</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Отображает текущую строку в мини плеере, при этом трек перемещается к соответствующему субтитру</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Формат названия песни/исполнителя</string>
@@ -777,6 +778,8 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_force_capitalize_summary">Делает первую букву каждой строки текста песни заглавной</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Удалять конечные знаки препинания</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Удаляет точки, запятые, двоеточия и точки с запятой в конце строк текста песни. Вопросительные, восклицательные знаки, многоточия, кавычки и скобки сохраняются</string>
+  <string name="morphe_music_lyrics_han_form_title">Преобразование форм китайского языка</string>
+  <string name="morphe_music_lyrics_han_form_summary">Если включено, используется целевой язык перевода для преобразования текстов песен между упрощенным и традиционным письмом</string>
   <string name="morphe_music_lyrics_text_size_title">Размер текста</string>
   <string name="morphe_music_lyrics_text_size_summary">Размер текста песни</string>
   <string name="morphe_music_lyrics_offset_ms_title">Глобальное смещение тайминга</string>
@@ -792,6 +795,7 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_translated_by_ai">Переведено с помощью %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Транслитерировано с помощью %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Романизировано пользователем %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (с %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Романизировано через Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Перевод</string>
@@ -807,6 +811,8 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_romanize_language_DEFAULT">Автоматически</string>
   <string name="morphe_music_lyrics_romanizing">Романизация…</string>
   <string name="morphe_music_lyrics_romanize_failed">Не удалось романизировать текст</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Нет</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Целевой язык Ruby</string>
   <string name="morphe_music_lyrics_translate_only">Только перевод</string>
   <string name="morphe_music_lyrics_romanize_only">Только романизированный</string>
   <string name="morphe_music_lyrics_dual_only">Только двойной режим</string>
@@ -837,7 +843,7 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_hide_info_title">Скрыть строку с указанием авторства</string>
   <string name="morphe_music_lyrics_hide_info_summary">Скрывать строку с указанием авторства под текстом</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Поменять местами перевод и романизацию</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Меняет порядок отображения перевода и романизации под текстом песни</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Переносит перевод над текстом песни; чтение и романизация остаются внизу</string>
   <string name="morphe_music_lyrics_force_center_title">Всегда центрировать текст песни</string>
   <string name="morphe_music_lyrics_force_center_summary">ВКЛ ставит каждую строку в центр и игнорирует исходное выравнивание, включая дуэтные стороны; ВЫКЛ сохраняет выравнивание, запрошенное в тексте песни</string>
   <string name="morphe_music_lyrics_providers_keep_one">Хотя бы один провайдер должен быть включен</string>
@@ -845,14 +851,7 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_romanization_provider_title">Романизация или транслитерация</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Офлайн-словарь</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Список слов Rime</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Офлайн-словарь</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Руби-скрипт</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хирагана (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Показать кнопку руби</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Нажмите, чтобы переключить отображение руби над текстом песни; удерживайте для переключения между хираганой и катаканой. Используются включенные провайдеры руби в указанном порядке</string>
-  <string name="morphe_music_lyrics_ruby_generating">Генерация руби…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">Транслитератор ICU</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Обнаруживать секции с помощью ИИ</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Используется только когда у провайдера нет меток секций, таких как Припев или Куплет, которые тогда обнаруживает ваша модель, совместимая с OpenAI. Редактирование строки также открывает её подсказку</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL конечной точки API (например, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +874,7 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Выберите модель</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Не удалось загрузить модели. Проверьте API-ключ или соединение.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Подсказка</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Подсказка Ruby (Кана)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Модель</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Базовый URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Пресеты сервиса</string>

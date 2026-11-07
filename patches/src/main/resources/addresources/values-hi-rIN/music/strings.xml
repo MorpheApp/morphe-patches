@@ -695,7 +695,7 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_show_section_title">अनुभाग टैग दिखाएँ</string>
   <string name="morphe_music_lyrics_show_section_summary">गीत के प्रत्येक नए अनुभाग को एक छोटे टैग से चिह्नित करें, जैसे अंतरा या कोरस</string>
   <string name="morphe_music_lyrics_show_copy_button_title">कॉपी बटन दिखाएं</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">मूल लिरिक्स को सादे पाठ के रूप में कॉपी करने के लिए टैप करें; डाउनलोड में कच्चे लिरिक्स स्रोत फाइल को सहेजने के लिए लॉन्ग-प्रैस करें</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">मूल लिरिक्स को प्लेन टेक्स्ट के रूप में कॉपी करने के लिए टैप करें; रॉ लिरिक्स सोर्स फ़ाइल और कनवर्टेड TTML फ़ाइल को डाउनलोड्स में सेव करने के लिए लॉन्ग-प्रेस करें</string>
   <string name="morphe_music_lyrics_show_translate_button_title">अनुवाद बटन दिखाएं</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">अनुवाद टॉगल करने के लिए टैप करें; केवल अनुवाद के लिए लंबे समय तक दबाएं। सक्षम अनुवाद प्रदाताओं का उपयोग उन की सूचीबद्ध क्रम में करता है</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">रोमाइज़ या ट्रान्सलिटरेशन बटन दिखाएं</string>
@@ -711,7 +711,7 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">चीनी और कैंटोनी अक्षर (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">चीनी शब्द (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">यूनानी, स्लाविक सिरिलिक (इसे शामिल है, रूसी, यूक्रेनियाई, बुल्गारियन, सर्बियाई, बेलाarusian, मैसेडोनियन), ज्यॉर्जियन, आर्मनियाई, हिब्रू, अरबी, अहमारिक और सीरियाई ट्रान्सलिटरेशन (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s पढ़ा जा रहा है: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">पढ़ रहा है %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">रिफ़्रेश बटन दिखाएँ</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">आगे के बोल उम्मीदवार पर जाने के लिए टैप करें; गाने के नाम और कलाकार से बोल खोजने के लिए देर तक दबाएं</string>
   <string name="morphe_music_lyrics_search_dialog_title">लिरिक्स खोजें</string>
@@ -720,6 +720,7 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_search_empty">गाने का नाम और आर्टिस्ट डालें</string>
   <string name="morphe_music_lyrics_search_no_providers">चालू किए गए प्रोवाइडर्स में से कोई भी दूसरे गाने नहीं खोज सकता</string>
   <string name="morphe_music_lyrics_saved">सहेजा गया</string>
+  <string name="morphe_music_lyrics_written_by">लेखक: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">सिंक किए गए शब्दों या अक्षरों को हाइलाइट करें</string>
   <string name="morphe_music_lyrics_word_sync_summary">जब उपलब्ध हों तो शब्द-दर-शब्द गीतों को प्राथमिकता दें। जब गीतों में शब्द टाइमिंग होती है, तो संगीत के साथ समय पर प्रत्येक शब्द या अक्षर को हाइलाइट करता है</string>
   <string name="morphe_music_lyrics_line_scale_title">निष्क्रिय रेखाओं को संकुचित करें</string>
@@ -735,7 +736,7 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_dynamic_background_animated_title">डायनामिक बैकग्राउंड को एनिमेट करें</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">चलाते समय बैकग्राउंड को मूव करें, और यदि YouTube Music के पास माइक्रोफ़ोन अनुमति है तो इसे संगीत के साथ पल्स करें। कम बैटरी उपयोग करने वाले स्थिर बैकग्राउंड के लिए इसे बंद करें</string>
   <string name="morphe_music_lyrics_mediasession_title">लॉक स्क्रीन पर MediaSession गीत दिखाएँ</string>
-  <string name="morphe_music_lyrics_mediasession_summary">ब्लूटूथ, Android Auto और लॉक स्क्रीन पर वर्तमान पंक्ति दिखाता है। Android 11 या उससे नया चाहिए</string>
+  <string name="morphe_music_lyrics_mediasession_summary">लॉक स्क्रीन, Android Auto और ब्लूटूथ पर वर्तमान पंक्ति दिखाता है</string>
   <string name="morphe_music_lyrics_miniplayer_title">मिनीप्लेयर गीत दिखाएँ</string>
   <string name="morphe_music_lyrics_miniplayer_summary">न्यूक्लेस पर ट्रैक उपशीर्षक पर स्थानांतरित करके, मिनीप्लेयर में वर्तमान पंक्ति दिखाता है</string>
   <string name="morphe_music_lyrics_mini_track_format_title">गाने का शीर्षक/कलाकार प्रारूप</string>
@@ -772,6 +773,8 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_force_capitalize_summary">गीत की प्रत्येक पंक्ति के पहले अक्षर को बड़ा करता है</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">अंत के विराम चिह्नों को हटाएँ</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">गीत की पंक्तियों के अंत में पूर्ण विराम, अल्पविराम, कोलन और सेमीकोलन को हटाता है। प्रश्न चिह्न, विस्मयादिबोधक चिह्न, एलिप्सिस, उद्धरण चिह्न और ब्रैकेट रखे जाते हैं</string>
+  <string name="morphe_music_lyrics_han_form_title">चीनी रूप रूपांतरण</string>
+  <string name="morphe_music_lyrics_han_form_summary">चालू होने पर, सरलीकृत और पारंपरिक लेखन के बीच लिरिक्स को बदलने के लिए आपकी अनुवाद लक्ष्य भाषा का पालन करता है</string>
   <string name="morphe_music_lyrics_text_size_title">टेक्स्ट का आकार</string>
   <string name="morphe_music_lyrics_text_size_summary">गीत टेक्स्ट का आकार</string>
   <string name="morphe_music_lyrics_offset_ms_title">वैश्विक समय ऑफ़सेट</string>
@@ -787,6 +790,7 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_translated_by_ai">%s द्वारा अनुवादित</string>
   <string name="morphe_music_lyrics_romanized_by_ai">%s द्वारा रोमनकृत</string>
   <string name="morphe_music_lyrics_romanized_by_local">रोमनाइज़ किया: %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s के साथ)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">राइम द्वारा रोमाइज़ed (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">अनुवादित</string>
@@ -802,6 +806,8 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_romanize_language_DEFAULT">स्वचालित</string>
   <string name="morphe_music_lyrics_romanizing">रोमनीकृत किया जा रहा है…</string>
   <string name="morphe_music_lyrics_romanize_failed">गीतों को रोमनीकृत नहीं किया जा सका</string>
+  <string name="morphe_music_lyrics_romanize_language_none">कोई नहीं</string>
+  <string name="morphe_music_lyrics_ruby_language_title">रूबी लक्ष्य</string>
   <string name="morphe_music_lyrics_translate_only">केवल अनुवाद</string>
   <string name="morphe_music_lyrics_romanize_only">केवल रोमनकृत</string>
   <string name="morphe_music_lyrics_dual_only">द्वैत मोड</string>
@@ -832,7 +838,7 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_hide_info_title">क्रेडिट लाइन छिपाएँ</string>
   <string name="morphe_music_lyrics_hide_info_summary">गीतों के नीचे दिखाई जाने वाली क्रेडिट लाइन छिपाएँ</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">अनुवाद और रोमनीकरण आपस में बदलें</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">लिरिक्स के नीचे अनुवाद और रोमनकरण के डिस्प्ले क्रम को बदलें</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">अनुवाद को लिरिक्स के ऊपर ले जाता है; पठन और रोमनकरण नीचे रहते हैं</string>
   <string name="morphe_music_lyrics_force_center_title">हमेशा लिरिक्स को केंद्रित रखें</string>
   <string name="morphe_music_lyrics_force_center_summary">ON प्रत्येक रेखा को मध्य में रखता है और स्रोत अनुपालन को नजरअंदाज़ करता है, ड्यूलेट पक्षों सहित; OFF लिरिक्स द्वारा मांगे गए अनुपालन को रखता है</string>
   <string name="morphe_music_lyrics_providers_keep_one">कम से कम एक प्रदाता चालू रहना चाहिए</string>
@@ -840,14 +846,7 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_romanization_provider_title">रोमाइज़ेशन या ट्रान्सलिटरेशन</string>
   <string name="morphe_music_lyrics_romanization_provider_local">ऑफ़लाइन शब्दकोष</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">राइम शब्द सूची</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">रूबी</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">ऑफ़लाइन डिक्शनरी</string>
-  <string name="morphe_music_lyrics_ruby_style_title">रूबी स्क्रिप्ट</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">हिरागाना (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">काताकाना (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">रूबी बटन दिखाएँ</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">लिरिक्स के ऊपर रूबी रीडिंग टॉगल करने के लिए टैप करें; हिरागाना और काताकाना के बीच स्विच करने के लिए लॉन्ग-प्रेस करें। यह सक्षम रूबी प्रोवाइडर्स का उनके सूचीबद्ध क्रम में उपयोग करता है</string>
-  <string name="morphe_music_lyrics_ruby_generating">रूबी जेनरेट हो रहा है…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU ट्रांसलिटरेटर</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI के साथ अनुभागों का पता लगाएं</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">केवल तभी उपयोग किया जाता है जब प्रदाता किसी अनुभाग लेबल जैसे कि कोरस या वर्स नहीं भेजता, जिसका आपका OpenAI-अनुकूल मॉडेल तब पता लगाता है। पंक्ति को संपादित करना भी इसके प्रॉम्प्ट को खोलता है</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (उदाहरण के लिए https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -870,6 +869,7 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">एक मॉडल चुनें</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">मॉडल लाने में विफल। API कुंजी या कनेक्शन की जाँच करें।</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">प्रॉम्प्ट</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">रूबी प्रॉम्प्ट (काना)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">मॉडल</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">बेस URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">सर्विस प्रीसेट्स</string>

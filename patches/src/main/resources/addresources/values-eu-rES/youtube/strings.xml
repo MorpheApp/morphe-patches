@@ -794,6 +794,17 @@ Hona konponduz, aktibu 'Bideo-emisioak imitatzea' eta alda 'Beherako bezeroa' 'T
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Gaitu ukitu eta bilatu aukera</string>
   <string name="morphe_tap_to_seek_summary">Sakatu bilaketa-barran edozein lekutan posizio hura joateko, arrastatzearen ordez</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Seekbar-ren thumb pertsonalizatua</string>
+  <string name="morphe_custom_seekbar_thumb_title">Gaitu seekbar-ren thumb pertsonalizatua</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Sustitu seekbar-ren thumb-a irudi pertsonalizatu batez edo GIF animatu batez</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Thumb-en irudia</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Aukeratu gailuko bilteginetatik irudi bat edo GIF animatu bat</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Auterritako fitxategia ez da onartzen den irudi bat</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Bilatzailearen marka pertsonalizatutako irudiak ez dira aurkitu</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Markaren neurria</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Bilatzaileari egoki</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Neurri originala</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Ezkerreko irrasteko gesturea</string>
   <string name="morphe_swipe_right_zone_title">Eskuineko irrasteko gesturea</string>
@@ -1772,6 +1783,8 @@ Automatiko grabaketa aukeratua da. Inkognito moduan edo kontua aldatzean gelditu
   <string name="morphe_niconico_comments_travel_duration_summary">Segundu zenbatz behar duten komentarioek pantaila zehar mugitzeko. Balio txikiagoek azkarrago mugitzen dute</string>
   <string name="morphe_niconico_comments_display_area_title">Ikusgungunea</string>
   <string name="morphe_niconico_comments_display_area_summary">Atariak goiztik behera zein espazio erabiliko duten komentarioek. Balio baxuagoek bideoaren beheko partea garbi mantentzen dute</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Gainez jarrekin litezkeen iruzkinak ezkutatu</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Pantaila eremua beteta dagoenean, iruzkin berriak ezkutatzen dira beste iruzkinen gainetik pasatu behinbekide</string>
   <string name="morphe_niconico_comments_max_length_title">Iruzkinen luzera maximoa</string>
   <string name="morphe_niconico_comments_max_length_summary">Honek baino karakterak gehiago dituzten iruzkinak ezkutatzen ditu. Emoji bakoitzak karaktera bat kontatzen du</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Mugaik gabe</string>

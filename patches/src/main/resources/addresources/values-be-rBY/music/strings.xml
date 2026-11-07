@@ -700,7 +700,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_section_title">Паказваць тэгі секцый</string>
   <string name="morphe_music_lyrics_show_section_summary">Пазначайце кожную новую секцыю тэксту песні невялікім тэгам, напрыклад, «Куплет» або «Прыспеў»</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Паказваць кнопку «Капіяваць»</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Націсніце, каб скапіяваць арыгінальны тэкст як звычайны тэкст; зацісніце, каб захаваць выходны файл тэксту ў Загрузкі</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Націсніце, каб скапіяваць арыгінальны тэкст як звычайны тэкст; націсніце і ўтрымлівайце, каб захаваць выходны файл тэксту і канвертаваны файл TTML у папку «Загрузкі»</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Паказваць кнопку «Перакласці»</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Націсніце, каб пераключаць пераклад; доўгае націсканне — толькі для перакладу. Выкарыстоўваюць уключаныя пастаўшчыкі перакладу ў паслядоўнасці іх спісу</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Паказваць кнопку раманізацыі або транслітарацыі</string>
@@ -716,7 +716,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Кітайскія і кантонскія іерогліфы (UniDict, ~8 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Кітайскія словы (pinyin-pro, ~17 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Транслітарацыя грэцкай, славянскай кірыліцы (уключаючы рускую, ўкраінскую, балгарскую, сербскую, беларусскую, македонскую), грузінскай, армянскай, габрэйскай, арабскай, амхарскай і сірыйскай моў (CLDR, ~0,5 МБ)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Чытанне %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Чытанне %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Паказваць кнопку абнаўлення</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Націсніце, каб пераключыцца на наступны варыянт тэксту; доўгае націсканне — каб пашукаць тэкст па назве песні і выканаўцы</string>
   <string name="morphe_music_lyrics_search_dialog_title">Пошук тэкстаў песень</string>
@@ -725,6 +725,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_search_empty">Увядзіце назву песні і выканаўцу</string>
   <string name="morphe_music_lyrics_search_no_providers">Ні адзін з уключаных пастаўшчыкаў не можа шукаць іншыя песні</string>
   <string name="morphe_music_lyrics_saved">Захавана</string>
+  <string name="morphe_music_lyrics_written_by">Напісаў: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Выдзяляць сінхранізаваныя словы або склады</string>
   <string name="morphe_music_lyrics_word_sync_summary">Аддаваць прыярытэт тэксту па словах, калі ён даступны. Калі тэкст мае часовыя меткі для слоў, кожнае слова або склад будзе выдзяляцца ў такт з музыкай</string>
   <string name="morphe_music_lyrics_line_scale_title">Сціснуць неактыўныя радкі</string>
@@ -740,7 +741,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Анімацыя дынамічнага фона</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Рухаць фон падчас прайгравання і пульсаваць яго у такт музыцы, калі YouTube Music мае дазвол на выкарыстанне мікрафона. Выключайце для статычнага фона, які спатрэбляе менш зарада батарэі</string>
   <string name="morphe_music_lyrics_mediasession_title">Паказваць тэксты MediaSession на экране блакіроўкі</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Паказвае бягучы радок на экране блакіроўкі, у Android Auto і Bluetooth. Патрабуецца Android 11 або новее</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Паказваць бягучы радок на экране блакіроўкі, Android Auto і Bluetooth</string>
   <string name="morphe_music_lyrics_miniplayer_title">Паказваць тэксты ў мініплэеры</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Паказвае бягучы радок у мініплэеры, пры гэтым трэк пераносіцца ў субтытры</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Фармат назвы песні/выканаўцы</string>
@@ -777,6 +778,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_force_capitalize_summary">Піша першую літару кожнага радка тэксту з вялікай</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Выдаліць прыканцавую пунктуацыю</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Выдаляе кропкі, коскі, двукропкі і паўкропкі ў канцы радкоў тэксту. Знакі пытання, клічнікі, троекрап\'я, цытаты і дужкі застаюцца</string>
+  <string name="morphe_music_lyrics_han_form_title">Канвертацыя кітайскіх формаў</string>
+  <string name="morphe_music_lyrics_han_form_summary">Калі ўключана, выкарыстоўваецца ваша мэтавая мова перакладу для канвертацыі тэкстаў паміж спрошчаным і традыцыйным пісьмом</string>
   <string name="morphe_music_lyrics_text_size_title">Памер тэксту</string>
   <string name="morphe_music_lyrics_text_size_summary">Памер тэксту песень</string>
   <string name="morphe_music_lyrics_offset_ms_title">Глабальны зсуў часу</string>
@@ -792,6 +795,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_ai">Перакладзена %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Раманізавана %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Раманізавана %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (з %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Раманізавана Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Перакладзена</string>
@@ -807,6 +811,8 @@ Second \"item\" text"</string>
   <string name="morphe_romanize_language_DEFAULT">Аўтаматычна</string>
   <string name="morphe_music_lyrics_romanizing">Раманізацыя…</string>
   <string name="morphe_music_lyrics_romanize_failed">Не удалось раманізаваць тэкст песні</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Няма</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Мэта Ruby</string>
   <string name="morphe_music_lyrics_translate_only">Толькі пераклад</string>
   <string name="morphe_music_lyrics_romanize_only">Толькі раманізацыя</string>
   <string name="morphe_music_lyrics_dual_only">Двойны рэжым</string>
@@ -837,7 +843,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">Схаваць інфармацыю аб аўтарах</string>
   <string name="morphe_music_lyrics_hide_info_summary">Схаваць інфармацыю аб аўтарах, якая паказваецца пад тэкстам песні</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Паменять месцамі пераклад і раманізацыю</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Змяняе парадак адлюстравання перакладу і раманізацыі пад тэкстам песні</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Пераносіць пераклад вышэй тэксту песні; чытанне і раманізацыя застаюцца ніжэй</string>
   <string name="morphe_music_lyrics_force_center_title">Заўсёды цэнтраваць тэкст</string>
   <string name="morphe_music_lyrics_force_center_summary">ON размяшчае кожную лінію па цэнтры і ігнаруе арыгінальнае выраўніванне, уключаючы бакі дуэтаў; OFF захаўвае выраўніванне, пазначанае ў тэкстах песень</string>
   <string name="morphe_music_lyrics_providers_keep_one">Павінна застацца ўключанай прынаймені адна служба</string>
@@ -845,14 +851,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Раманізацыя або транслітарацыя</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Афлайн-слованік</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Спіс слоў Rime</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Афлайн-слованік</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Ruby-скрыпт</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хірагана (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Кнопка паказу ruby</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Націсніце, каб уключаць/выключаць ruby-чытанні над тэкстам песень; утрымайце для пераключэння паміж хіраганай і катаканай. Выкарыстоўваюцца ўключаныя ruby-правайдэры ў паэкірадковай последоўнасці</string>
-  <string name="morphe_music_lyrics_ruby_generating">Генерацыя ruby…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">Транслітаратар ICU</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Вызначэнне секцый з дапамогай AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Выкарыстоўваецца толькі ў выпадку, калі служба не пасылае пазначэнні секцый, такія як Прыспеў або Куплет, якія затым вызначае ваша сумяшчальная з OpenAI мадэль. Рэдагаванне радка таксама адкрывае яго прампт</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-адрас API endpoint (напрыклад, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +874,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Выберыце мадэль</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Не удалось атрымаць спіс мадэляў. Праверце API-ключ або падключэнне.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Промпт</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby-падказка (кана)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Мадэль</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Базавы URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Прэсэты сэрвісаў</string>

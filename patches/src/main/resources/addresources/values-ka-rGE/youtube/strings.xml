@@ -793,6 +793,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">ჩართეთ გადახვევა შეხებით</string>
   <string name="morphe_tap_to_seek_summary">დააჭირეთ სლაიდერის ნებისმიერ ადგილს იმ პოზიციაზე გადასასვლელად გადატაცების ნაცვლად</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Seekbar-ის მორგებული სლაიდერი</string>
+  <string name="morphe_custom_seekbar_thumb_title">გახსენით Seekbar-ის მორგებული სლაიდერი</string>
+  <string name="morphe_custom_seekbar_thumb_summary">შეცვალეთ Seekbar-ის სლაიდერი მორგებული სურათით ან ანიმირებული GIF-ით</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">სლაიდერის სურათი</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">აირჩიეთ სურათი ან ანიმირებული GIF მოწყობილობის მეხსიერებიდან</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">არჩეული ფაილი არ არის მხარდაჭერილი სურათი</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Seekbar-ის მორგებული სლაიდერის სურათი ვერ მოიძებნა</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">სლაიდერის ზომა</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">მორგება Seekbar-ს</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">ორიგინალი ზომა</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">მარცხნივ სვაიპის ჟესტი</string>
   <string name="morphe_swipe_right_zone_title">მარჯვნივ სვაიპის ჟესტი</string>
@@ -1771,6 +1782,8 @@ AV1-ით ვიდეოს უკუკვევა შესაძლოა 
   <string name="morphe_niconico_comments_travel_duration_summary">რამდენ წამს χρειდება კომენტარებს ეკრანის გადაკვეთისთვის. დაბალი მნიშვნელობები უფრო სწრაფად მოძრაობენ</string>
   <string name="morphe_niconico_comments_display_area_title">გამოჩენის არეა</string>
   <string name="morphe_niconico_comments_display_area_summary">რამდენს იკავებს კომენტარები პლეერის ზედა ნაწილიდან. დაბალი მნიშვნელობები ვიდეოს ქვედა ნაწილს თავისუფალს ტოვებს</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">დაფარეთ კომენტარები, რომლებიც ერთმანეთს გადაფარავენ</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">როდესაც საჩვენებელი არეალი სავსეა, ახალი კომენტარები იმალება სხვა კომენტარების გადაფარვის ნაცვლად</string>
   <string name="morphe_niconico_comments_max_length_title">კომენტარის მაქსიმალური სიგრძე</string>
   <string name="morphe_niconico_comments_max_length_summary">მალავს კომენტარებს, რომელთაც ამაზე მეტი სიმბოლო აქვთ. თითოეული ემოჯი ითვლება როგორც ერთი სიმბოლო</string>
   <string name="morphe_niconico_comments_max_length_no_limit">შეზღუდვის გარეშე</string>

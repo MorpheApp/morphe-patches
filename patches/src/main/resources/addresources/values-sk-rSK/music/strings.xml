@@ -696,7 +696,7 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_section_title">Zobraziť tagy sekcií</string>
   <string name="morphe_music_lyrics_show_section_summary">Označte každú novú sekciu textu piesne malým tagom, napríklad Sloka alebo Refrén</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Zobraziť tlačidlo Kopírovať</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Klepnutím skopírujete originálne texty ako čistý text; dlhým podržím uložíte zdrojový súbor surových textov do priečinka Downloads</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Ťuknutím skopírujte pôvodný text piesne ako čistý text; dlhým stlačením uložte zdrojový súbor s textom piesne a konvertovaný súbor TTML do priečinka Zऱ्याdy</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Zobraziť tlačidlo Preložiť</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Klepnutím prepnete preklad; dlhým stlačením zobrazíte len preklad. Používa povolené poskytovateľov prekladu v poradí uvedenom v zozname</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Zobraziť tlačidlo Transliterácia</string>
@@ -712,7 +712,7 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Čínske kantonské znaky (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Čínske slová (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliterácia gréčtiny, slovanských cyrilík (vrátane ruštiny, ukrajinčiny, bulharčiny, srbčiny, bielorumčiny, macedónčiny), gruzínčiny, arménčiny, hebrejčiny, arabčiny, amharčiny a syriáčiny (CLDR, ~0,5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Čítanie %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Čítanie %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Preložiť text piesne</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Klepnutím prepnite na ďalší kandidát na text; dlhým podržím hľadajte texty podľa názvu pesničky a interpreta</string>
   <string name="morphe_music_lyrics_search_dialog_title">Vyhľadávanie textov</string>
@@ -721,6 +721,7 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_search_empty">Zadajte názov skladby a interpreta.</string>
   <string name="morphe_music_lyrics_search_no_providers">Žiadny z povolených poskytovateľov nevie vyhľadávať iné skladby.</string>
   <string name="morphe_music_lyrics_saved">Uložené</string>
+  <string name="morphe_music_lyrics_written_by">Text napísal: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Kopírovať pôvodný text piesne</string>
   <string name="morphe_music_lyrics_word_sync_summary">Uprednostniť text po slovách, ak je k dispozícii. Ak text obsahuje časovanie slov, zvýrazňuje každé slovo alebo slabiku v rytme hudby</string>
   <string name="morphe_music_lyrics_line_scale_title">Zmenšiť neaktívne riadky</string>
@@ -736,7 +737,7 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Animovať dynamické pozadie</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Počas prehrávania pohýba pozadím a pulzuje ho podľa hudby, ak má YouTube Music povolenie na prístup k mikrofónu. Vypnite pre statické pozadie, ktoré spotrebuje menej batérie</string>
   <string name="morphe_music_lyrics_mediasession_title">Kopírovanie zlyhalo</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Zobrazuje aktuálny riadok na zamknutej obrazovke, Android Auto a Bluetooth. Vyžaduje Android 11 alebo novší</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Zobrazuje aktuálny riadok na uzamknutej obrazovke, v Android Auto a cez Bluetooth</string>
   <string name="morphe_music_lyrics_miniplayer_title">Zobraziť text piesne v mini prehrávači</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Zobrazuje aktuálny riadok v mini prehrávači, so stopou presunutou do titulkov</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Formát názvu skladby/umelca</string>
@@ -773,6 +774,8 @@ Platí pre oba limity. Pri hodnote 1,75 sa štyri znaky plnej šírky započíta
   <string name="morphe_music_lyrics_force_capitalize_summary">Zapíše prvé písmeno každého riadku textu piesne veľkým písmenom</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Odstrániť interpunkciu na konci</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Odstraňuje bodky, čiarky, dvojbodky a polobodky na konci riadkov textu piesne. Otazníky, výkričníky, trojbodkovia, úvodzovky a zátvorky zostávajú</string>
+  <string name="morphe_music_lyrics_han_form_title">Konverzia čínskych znakov</string>
+  <string name="morphe_music_lyrics_han_form_summary">Ak je zapnuté, sleduje váš cieľový jazyk prekladov pri konverzii textov snov medzi zjednodušeným a tradičným písmom</string>
   <string name="morphe_music_lyrics_text_size_title">Veľkosť textu</string>
   <string name="morphe_music_lyrics_text_size_summary">Veľkosť textu piesne</string>
   <string name="morphe_music_lyrics_offset_ms_title">Globálny časový posun</string>
@@ -788,6 +791,7 @@ Platí pre oba limity. Pri hodnote 1,75 sa štyri znaky plnej šírky započíta
   <string name="morphe_music_lyrics_translated_by_ai">Preložené pomocou %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizované pomocou %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Latinizované pomocou %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (s %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Transkribované Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Skryť romanizáciu</string>
@@ -803,6 +807,8 @@ Platí pre oba limity. Pri hodnote 1,75 sa štyri znaky plnej šírky započíta
   <string name="morphe_romanize_language_DEFAULT">Automaticky</string>
   <string name="morphe_music_lyrics_romanizing">Žiadna romanizácia</string>
   <string name="morphe_music_lyrics_romanize_failed">Zobraziť prepis</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Žiadna</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Cieľ Ruby</string>
   <string name="morphe_music_lyrics_translate_only">Iba preklad</string>
   <string name="morphe_music_lyrics_romanize_only">Iba romanizované</string>
   <string name="morphe_music_lyrics_dual_only">Duálny režim</string>
@@ -833,7 +839,7 @@ Texty piesní pochádzajú zo služieb tretích strán, ktoré nie sú spojené,
   <string name="morphe_music_lyrics_hide_info_title">Nahlásiť problém s prekladom</string>
   <string name="morphe_music_lyrics_hide_info_summary">Nahlásiť problém s textom piesne</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Problém bol nahlásený</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Zmení poradie zobrazenia prekladu a romanizácie pod textom piesne</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Presunie preklad nad text piesne; čítanie a romanizácia zostanú pod ním</string>
   <string name="morphe_music_lyrics_force_center_title">Vždy strediť texty piesní</string>
   <string name="morphe_music_lyrics_force_center_summary">ZAPNUTÉ umiestni každý riadok doprostred a ignoruje zarovnanie zdroja vrátane strán duet; VYPNUTÉ zachová zarovnanie, ktoré požadujú texty piesní</string>
   <string name="morphe_music_lyrics_providers_keep_one">Aspoň jeden poskytovateľ musí zostať zapnutý</string>
@@ -841,14 +847,7 @@ Texty piesní pochádzajú zo služieb tretích strán, ktoré nie sú spojené,
   <string name="morphe_music_lyrics_romanization_provider_title">Transkripcia alebo transliterácia</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Offline slovník</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Zoznam slov Rime</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Ofline slovník</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Ruby skript</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Zobraziť tlačidlo Ruby</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Ťuknutím prepnete zobrazenie ruby nad textom piesne; dlhým stlačením prepnete medzi hiraganou a katakanou. Používa povolených poskytovateľov ruby v uvedenom poradí</string>
-  <string name="morphe_music_lyrics_ruby_generating">Generovanie ruby…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU transliterator</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Detekovať sekcie pomocou AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Používa sa len vtedy, keď poskytovateľ neposkytuje štítky sekcií ako Refrén alebo Sloha, ktoré následne deteguje váš kompatibilný model OpenAI. Úprava riadku tiež otvorí jeho výzvu</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL koncového bodu API (napr. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -871,6 +870,7 @@ Texty piesní pochádzajú zo služieb tretích strán, ktoré nie sú spojené,
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Vyberte model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Nepodarilo sa načítať modely. Skontrolujte API kľúč alebo pripojenie.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Výzva</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby prompt (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Základná URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Prednastavenia služby</string>

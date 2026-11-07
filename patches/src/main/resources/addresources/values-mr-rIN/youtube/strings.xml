@@ -793,6 +793,17 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">टॅप टू सीक सक्षम करा</string>
   <string name="morphe_tap_to_seek_summary">ड्रॅग करण्याऐवजी त्या पोझिशनवर जाण्यासाठी सीकबारवर कुठेही टॅप करा</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">कस्टम सीकबार थम्ब</string>
+  <string name="morphe_custom_seekbar_thumb_title">कस्टम सीकबार थम्ब सक्षम करा</string>
+  <string name="morphe_custom_seekbar_thumb_summary">सीकबार थम्बला कस्टम इमेज किंवा अ‍ॅनिमेटेड GIF ने बदला</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">थम्ब इमेज</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">डिव्हाइस स्टोरेजमधून इमेज किंवा अ‍ॅनिमेटेड GIF निवडा</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">निवडलेली फाईल समर्थित इमेज नाही</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">कस्टम सीकबार थम्ब इमेज सापडली नाही</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">थम्ब आकार</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">सीकबारला फिट करा</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">मूळ आकार</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">डावीकडे स्वाइप करण्याची कृती</string>
   <string name="morphe_swipe_right_zone_title">उजवीकडे स्वाइप करण्याची कृती</string>
@@ -1688,6 +1699,7 @@ AV1 सह व्हिडिओ प्लेबॅक अडखळू शकत
   <string name="morphe_series_tracker_undo">रद्द करा</string>
   <string name="morphe_series_tracker_enable_short">सक्षम करा</string>
   <string name="morphe_series_tracker_new_episode">१ नवीन भाग</string>
+  <string name="morphe_series_tracker_new_episodes">%s नवीन भाग</string>
   <string name="morphe_series_tracker_record_short">या डिव्हाइसवर प्रगती नोंदवा</string>
   <string name="morphe_series_tracker_follow_consent">"तुमची मालिका आणि प्रगती या डिव्हाइसवर राहतात, ज्या YouTube खात्यांमध्ये सामायिक केल्या जातात. YouTube इतिहास नियंत्रणे त्या बदलत नाहीत. सिरीज मेनूमधून प्रगती क्लियर करा.
 
@@ -1770,6 +1782,8 @@ AV1 सह व्हिडिओ प्लेबॅक अडखळू शकत
   <string name="morphe_niconico_comments_travel_duration_summary">टिप्पण्यांना स्क्रीन ओलांडण्यासाठी किती सेकंद लागतात. कमी मूल्ये अधिक वेगाने हलतात</string>
   <string name="morphe_niconico_comments_display_area_title">प्रदर्शन क्षेत्र</string>
   <string name="morphe_niconico_comments_display_area_summary">प्लेयरच्या वरच्या भागापासून कमेंट्स किती जागा वापरतात. कमी मूल्ये व्हिडिओचा खालचा भाग मोकळा ठेवतात</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">ओव्हरलॅप होणाऱ्या कमेंट्स लपा</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">जेव्हा डिस्प्ले एरिया पूर्ण भरलेला असतो, तेव्हा इतर कमेंट्सवर ओव्हरलॅप होण्याऐवजी नवीन कमेंट्स लपवल्या जातात</string>
   <string name="morphe_niconico_comments_max_length_title">कमेंटची कमाल लांबी</string>
   <string name="morphe_niconico_comments_max_length_summary">यापेक्षा जास्त अक्षरे असलेल्या कमेंट्स लपवते. प्रत्येक इमोजी एक अक्षर मानला जातो</string>
   <string name="morphe_niconico_comments_max_length_no_limit">कोणतीही मर्यादा नाही</string>

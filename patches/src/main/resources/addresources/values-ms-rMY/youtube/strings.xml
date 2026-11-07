@@ -793,6 +793,17 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Dayakan ketik untuk cari</string>
   <string name="morphe_tap_to_seek_summary">Ketik di mana-mana sahaja pada bar carian untuk melompat ke kedudukan tersebut berbanding menyeret</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Kekunci seekbar tersuai</string>
+  <string name="morphe_custom_seekbar_thumb_title">Dayakan kekunci seekbar tersuai</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Gantikan kekunci seekbar dengan imej tersuai atau GIF animasi</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Imej kekunci</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Pilih imej atau GIF animasi daripada storan peranti</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Fail yang dipilih bukanlah imej yang disokong</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Imej kekunci seekbar tersuai tidak ditemui</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Saiz kekunci</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Muatkan seekbar</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Saiz asal</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gerakan leret kiri</string>
   <string name="morphe_swipe_right_zone_title">Gerakan leret kanan</string>
@@ -1771,6 +1782,8 @@ Rakaman automatik adalah pilihan. Ia terhenti dalam mod inkognito atau apabila a
   <string name="morphe_niconico_comments_travel_duration_summary">Berapa saat yang diambil oleh komen untuk melintasi skrin. Nilai yang lebih rendah bergerak lebih pantas</string>
   <string name="morphe_niconico_comments_display_area_title">Kawasan paparan</string>
   <string name="morphe_niconico_comments_display_area_summary">Berapa banyak bahagian pemain, dari atas, yang digunakan oleh komen. Nilai yang lebih rendah memastikan bahagian bawah video kekal jelas</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Sembunyikan komen yang akan bertindih</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Apabila kawasan paparan penuh, komen baharu akan disembunyikan daripada bertindih dengan komen lain</string>
   <string name="morphe_niconico_comments_max_length_title">Panjang komen maksimum</string>
   <string name="morphe_niconico_comments_max_length_summary">Sembunyikan komen dengan aksara yang lebih banyak daripada ini. Setiap emoji dikira sebagai satu aksara</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Tiada had</string>

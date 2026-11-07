@@ -700,7 +700,7 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_show_section_title">Wys afdeling-etikette</string>
   <string name="morphe_music_lyrics_show_section_summary">Etiketteer elke nuwe afdeling van die lirieke met \'n klein etiket, soos Vers of Refrein</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Wys Kopièer knoppie</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Klik om oorspronklike lirieke as plat teks te kopieer; hou ingedruk om ruwe lirieke-bronlêer na Aflaais te stuur</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Tik om oorspronklike lirieke as gewone teks te kopieer; hou lank gedruk om die rou lirieke-bronlêer en \'n omgesette TTML-lêer na Afrigoudings te stoor</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Wys Vertaal knoppie</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Tik om vertaling te skakel; lang druk vir slegs vertaling. Gebruik die aktiveringsvertaalverskaffers in hul lysvolgorde</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Vertoon Romaniseer of Translitereer-knoppie</string>
@@ -716,7 +716,7 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Chinese en Kantonese karakters (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Chineesse woorde (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grieks, Slawiese Cyrillies (insluitend Russies, Oekraïens, Bulgaars, Serwies, Wit-Russies, Masedonies), Georgies, Armeens, Hebreeus, Arabies, Amharaties en Sirië transliterasie (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Lees %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Lees %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Wys verfris-knoppie</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Klik om na die volgende liriekkandidaat te skakel; hou ingedruk om lirieke deur titel en kunstenaar soek</string>
   <string name="morphe_music_lyrics_search_dialog_title">Soek lirieke</string>
@@ -725,6 +725,7 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_search_empty">Voer \'n liedtitel en \'n kunstenaar in</string>
   <string name="morphe_music_lyrics_search_no_providers">Geen van die geaktiveerde verskaffers kan na ander liedjies soek nie</string>
   <string name="morphe_music_lyrics_saved">Gestoor</string>
+  <string name="morphe_music_lyrics_written_by">Geskryf deur: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Raak aan ▲/▼ om die prioriteitsorde te stel, en die blokkie om elke verskaffer te aktiveer of deaktiveer.</string>
   <string name="morphe_music_lyrics_word_sync_summary">Alle verskaffers gedeaktiveer — ingeboude lirieke en ingebedde lirieke.</string>
   <string name="morphe_music_lyrics_line_scale_title">Krimp onaktiewe lyne</string>
@@ -740,7 +741,7 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Animeer dinamiiese agtergrond</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Beweeg die agtergrond terwyl dit speel, en laat dit pols saam met die musiek as YouTube Music die mikrofoontoestemming het. Skakel af vir \'n stil agtergrond wat minder battery gebruik</string>
   <string name="morphe_music_lyrics_mediasession_title">Wys MediaSession-lirieke op die sluitskerm</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Wys die huidige lyn op die sluitingsskerm, Android Auto en Bluetooth. Benodig Android 11 of nuwer</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Wys die huidige reël op die sluitskerm, Android Auto en Bluetooth</string>
   <string name="morphe_music_lyrics_miniplayer_title">Wys romaniseer-knoppie</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Wys die huidige lyn in die minispeler, met die snit na die onderskrif verskuif</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Liedtitel/kunstenaar-formaat</string>
@@ -777,6 +778,8 @@ Daar word op beide limiete toegepas. By 1.75 tel vier volbreedte-karakters as 7.
   <string name="morphe_music_lyrics_force_capitalize_summary">Maak die eerste letter van elke liriekreël \'n hoofletter</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Verwyder leuensteken aan die einde</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Verwyder punte, kommas, dubbelpunte en puntkommas aan die einde van liriekreëls. Vraagtekens, uitroeptekens, ellipses, aanhalingstekens en hakies word behou</string>
+  <string name="morphe_music_lyrics_han_form_title">Chinese vorm-omskakeling</string>
+  <string name="morphe_music_lyrics_han_form_summary">Wanneer dit aan is, volg dit jou vertalingsdoeltaal om lirieke tussen Vereenvoudigde en Tradisionele skrif om te skakel</string>
   <string name="morphe_music_lyrics_text_size_title">Teks grootte</string>
   <string name="morphe_music_lyrics_text_size_summary">Grootte van die lirieke teks</string>
   <string name="morphe_music_lyrics_offset_ms_title">Globale tydverskuiwing</string>
@@ -792,6 +795,7 @@ Daar word op beide limiete toegepas. By 1.75 tel vier volbreedte-karakters as 7.
   <string name="morphe_music_lyrics_translated_by_ai">Vertaal deur %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Geromaniseer deur %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Gromaniseer deur %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (met %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Romaniseer deur Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Vertaal</string>
@@ -807,6 +811,8 @@ Daar word op beide limiete toegepas. By 1.75 tel vier volbreedte-karakters as 7.
   <string name="morphe_romanize_language_DEFAULT">Outomaties</string>
   <string name="morphe_music_lyrics_romanizing">Romaniseer tans…</string>
   <string name="morphe_music_lyrics_romanize_failed">Gereedskapsafdelings?</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Geen</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Ruby-teiken</string>
   <string name="morphe_music_lyrics_translate_only">Slegs vertaal.</string>
   <string name="morphe_music_lyrics_romanize_only">Slegs geromaniseer</string>
   <string name="morphe_music_lyrics_dual_only">Dubbele modus</string>
@@ -837,7 +843,7 @@ Liriek kom van derdeparty diensverskaffers wat nie aan Morphe gelink, gesponsord
   <string name="morphe_music_lyrics_hide_info_title">Lirieke-bron?</string>
   <string name="morphe_music_lyrics_hide_info_summary">Versteek die kredietreël onder die lirieke</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Lirieke-bron?</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Ruil die vertoningsvolgorde van vertaling en romanisering onder die lirieke om</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Skuif die vertaling bo die lirieke; die leeswyse en romanisering bly onder</string>
   <string name="morphe_music_lyrics_force_center_title">Altyd lirieke sentreer</string>
   <string name="morphe_music_lyrics_force_center_summary">AAN plaas elke lyn in die middel en ignoreer die bronuitligting, insluitend duet-sye; UIT hou die uitligging wat die lirieke versoek</string>
   <string name="morphe_music_lyrics_providers_keep_one">Ten minste een verskaffer moet aan bly</string>
@@ -845,14 +851,7 @@ Liriek kom van derdeparty diensverskaffers wat nie aan Morphe gelink, gesponsord
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisering of transliterasie</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Afvalwoordeboek</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime-Woordlys</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Vanlyn-woordeboek</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Ruby-skrif</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Wys Ruby-knoppie</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Tik om ruby-leesings bo lirieke te wissel; hou lank gedruk om tussen hiragana en katakana te wissel. Gebruik die geaktiveerde ruby-verskaffers in hul gelyste volgorde</string>
-  <string name="morphe_music_lyrics_ruby_generating">Genereer ruby…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU-transliterator</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Detecteer afdelings met AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Slegs gebruik wanneer die verskaffer geen sektorlabelle soos Refrein of Strofe stuur nie, wat jou OpenAI-kompatibele model dan detecteer. Die redigering van die ry open ook sy spoortjie</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-eindpunt-URL (bv. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +874,7 @@ Liriek kom van derdeparty diensverskaffers wat nie aan Morphe gelink, gesponsord
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Kies \'n Model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Kon nie modelle ophaal nie. Gaan API-sleutel of konneksie na.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Spoortjie</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby-opdrag (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Basis-URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Diensvoorkeure</string>

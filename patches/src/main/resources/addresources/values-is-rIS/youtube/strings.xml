@@ -781,6 +781,17 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Virkja snertu til að leita</string>
   <string name="morphe_tap_to_seek_summary">Snertu hvar sem er á leitarstikunni til að hoppa beint í það staðsetningu í stað þess að draga</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Sérsniðin vísir á tímalínu</string>
+  <string name="morphe_custom_seekbar_thumb_title">Virkja sérsniðinn vísir á tímalínu</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Skiptu vísir tímalínunnar út fyrir sérsniðna mynd eða hreyfimynd GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Mynd fyrir vísir</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Veldu mynd eða hreyfimynd GIF úr geymslu tækis</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Valda skýrsluna er ekki studnum myndformati</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Sérsniðin mynd fyrir vísir tímalínunnar fannst ekki</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Stærð vísara</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Passa við tímalínu</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Upprunaleg stærð</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Hnigun til vinstra</string>
   <string name="morphe_swipe_right_zone_title">Hægri sveifluherðing</string>
@@ -1735,6 +1746,8 @@ Myndbandsspilun með AV1 getur hrickast eða skotið ramma"</string>
   <string name="morphe_niconico_comments_travel_duration_summary">Hversu margar sekúndur tekur athugasemdum að fara yfir skjáinn. Lægri gildi hreyfast hraðar</string>
   <string name="morphe_niconico_comments_display_area_title">Sýningarsvæði</string>
   <string name="morphe_niconico_comments_display_area_summary">Hversu stór hluti spilarans, frá toppinum, að kommentunum er notaður. Lágari gildi halda neðra hluta myndbandisins hreinan</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Fela athugasemdir sem myndu skera hverja öðru</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Þegar sýningarsvæðið er fullt eru nýjar athugasemdir falanar í stað þess að skera yfir aðrar athugasemdir</string>
   <string name="morphe_niconico_comments_max_length_title">Hámarks lengd athugasemdar</string>
   <string name="morphe_niconico_comments_max_length_summary">Fela athugasemdir sem innihalda fleiri staf en þetta. Hver tiltekni tákn taldist eins og einn stafur</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Engin takmörkun</string>

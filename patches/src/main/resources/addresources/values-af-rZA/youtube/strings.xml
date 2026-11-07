@@ -793,6 +793,17 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Skakel tik om te soek in</string>
   <string name="morphe_tap_to_seek_summary">Tik enige plek op die soekbalk om na daardie posisie te spring in plaas daarvan om te sleep</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Pasgemaakte seekbar-duim</string>
+  <string name="morphe_custom_seekbar_thumb_title">Aktiveer pasgemaakte seekbar-duim</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Vervang die seekbar-duim met \'n pasgemaakte beeld of geanimeerde GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Duimbeeld</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Kies \'n beeld of geanimeerde GIF vanaf toestelstoorplek</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Die geselekteerde lêer is nie \'n ondersteunde beeld nie</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Gepasmaakte soekbalk-duimbeeld nie gevind nie</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Duimgrootte</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Pas by soekbalk</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Oorspronklike grootte</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Linker swiepgebaar</string>
   <string name="morphe_swipe_right_zone_title">Regter swiepgebaar</string>
@@ -1771,6 +1782,8 @@ Automaties opname is opsioneel. Dit stop in incognito of wanneer die rekening ve
   <string name="morphe_niconico_comments_travel_duration_summary">Hoeveel sekondes dit neem vir kommentaar om oor die skerm te beweeg. Laer waardes beweeg vinniger</string>
   <string name="morphe_niconico_comments_display_area_title">Vertoonarea</string>
   <string name="morphe_niconico_comments_display_area_summary">Hoeveel van die speler, vanaf die bo, die kommentaar gebruik. Laer waardes hou die onderste deel van die video skoon</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Steek kommentaar steek weg wat sou overlap</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Wanneer die vertoonarea vol is, word nuwe kommentaar versteek in plaas daarvan om ander kommentaar te overlap</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimum kommentarlengte</string>
   <string name="morphe_niconico_comments_max_length_summary">Steek kommentaar weg met meer karakters as hierdie. Elke emoji tel as een karakter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Geen limiet</string>

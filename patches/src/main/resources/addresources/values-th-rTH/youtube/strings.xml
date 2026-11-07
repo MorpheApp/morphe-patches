@@ -793,6 +793,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">เปิดใช้งานแตะเพื่อค้นหา</string>
   <string name="morphe_tap_to_seek_summary">แตะที่ใดก็ได้บนแถบเลื่อนเพื่อข้ามไปยังตำแหน่งนั้นแทนการลาก</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">ปุ่มเลื่อน seekbar แบบกำหนดเอง</string>
+  <string name="morphe_custom_seekbar_thumb_title">เปิดใช้งานปุ่มเลื่อน seekbar แบบกำหนดเอง</string>
+  <string name="morphe_custom_seekbar_thumb_summary">แทนที่ปุ่มเลื่อน seekbar ด้วยรูปภาพแบบกำหนดเองหรือ GIF เคลื่อนไหว</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">รูปภาพปุ่มเลื่อน</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">เลือกรูปภาพหรือ GIF เคลื่อนไหวจากที่เก็บข้อมูลในอุปกรณ์</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">ไฟล์ที่เลือกไม่ใช่รูปภาพที่รองรับ</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">ไม่พบรูปภาพปุ่มเลื่อน seekbar แบบกำหนดเอง</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">ขนาดปุ่มเลื่อน</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">ปรับให้พอดีกับ seekbar</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">ขนาดต้นฉบับ</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">ท่าทางปัดไปทางซ้าย</string>
   <string name="morphe_swipe_right_zone_title">ท่าทางปัดไปทางขวา</string>
@@ -1771,6 +1782,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">จำนวนวินาทีที่ความคิดเห็นใช้ในการเลื่อนผ่านหน้าจอ ค่าที่น้อยกว่าจะเคลื่อนที่เร็วกว่า</string>
   <string name="morphe_niconico_comments_display_area_title">พื้นที่แสดงผล</string>
   <string name="morphe_niconico_comments_display_area_summary">ความกว้างของพื้นที่แสดงความคิดเห็นโดยวัดจากด้านบนของโปรแกรมเล่น ยิ่งค่าน้อย ส่วนล่างของวิดีโอจะยิ่งว่างมากขึ้น</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">ซ่อนความคิดเห็นที่ซ้อนทับกัน</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">เมื่อพื้นที่แสดงผลเต็ม ความคิดเห็นใหม่จะถูกซ่อนไว้แทนที่จะไปซ้อนทับกับความคิดเห็นอื่น</string>
   <string name="morphe_niconico_comments_max_length_title">ความยาวคอมเมนต์สูงสุด</string>
   <string name="morphe_niconico_comments_max_length_summary">ซ่อนคอมเมนต์ที่มีตัวอักษรมากกว่าจำนวนนี้ แต่ละอิโมจิจะนับเป็นหนึ่งตัวอักษร</string>
   <string name="morphe_niconico_comments_max_length_no_limit">ไม่มีขีดจำกัด</string>

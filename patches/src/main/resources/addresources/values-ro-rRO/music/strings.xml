@@ -695,7 +695,7 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_section_title">Afișează etichetele secțiunilor</string>
   <string name="morphe_music_lyrics_show_section_summary">Etichetează fiecare secțiune nouă a versurilor cu o etichetă mică, cum ar fi Strofă sau Refren</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Arată butonul de copiere</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Atinge pentru a copia versurile originale ca text simplu; apasă lung pentru a salva fișierul sursă al versurilor brute în Descărcări</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Atingeți pentru a copia versurile originale ca text simplu; apăsați lung pentru a salva fișierul sursă cu versurile brute și un fișier TTML convertit în Descărcări</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Arată butonul de traducere</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Atingeți pentru a comuta traducerea; apăsare lungă doar pentru traducere. Folosește furnizorii de traducere activati în ordinea listată</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Afișați butonul Romanizare sau Transliterare</string>
@@ -711,7 +711,7 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Caractere chinezești și cantoneze (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Cuvinte chinezești (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliterare greacă, slavă chirilică (inclusiv rusă, ucraineană, bulgară, sârbă, belarusă, macedoneană), georgiană, armeană, ebraică, arabă, amharică și siriacă (CLDR, ~0,5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Citire %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Citire %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Afișați butonul Reîmprospătare.</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Atinge pentru a comuta la candidatul următor pentru versuri; apasă lung pentru a căuta versurile după titlu și artist</string>
   <string name="morphe_music_lyrics_search_dialog_title">Căutare versuri</string>
@@ -720,6 +720,7 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_search_empty">Introduceți un titlu de melodie și un artist</string>
   <string name="morphe_music_lyrics_search_no_providers">Niciunul dintre furnizorii activați nu poate căuta alte melodii</string>
   <string name="morphe_music_lyrics_saved">Salvat</string>
+  <string name="morphe_music_lyrics_written_by">Scris de: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Evidențiați cuvintele sau silabele sincronizate</string>
   <string name="morphe_music_lyrics_word_sync_summary">Nu s-a putut face romanizarea versurilor.</string>
   <string name="morphe_music_lyrics_line_scale_title">Micșorați liniile inactive</string>
@@ -735,7 +736,7 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Animarea fundalului dinamic</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Mișcă fundalul în timpul redării și fă-l să pulseze în ritmul muzicii dacă YouTube Music are permisiunea pentru microfon. Dezactivează pentru un fundal static care consumă mai puțină baterie</string>
   <string name="morphe_music_lyrics_mediasession_title">Afișați versurile MediaSession pe ecranul de blocare.</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Afișează linia curentă pe ecranul de blocare, Android Auto și Bluetooth. Necesită Android 11 sau versiuni mai noi</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Afișează linia curentă pe ecranul de blocare, Android Auto și Bluetooth</string>
   <string name="morphe_music_lyrics_miniplayer_title">Afișați versurile miniplayer.</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Afișează linia curentă în miniplayer, cu piesa mutată în subtitlu</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Format titlu piesă/artist</string>
@@ -772,6 +773,8 @@ Se aplică ambelor limite. La 1,75, patru caractere cu lățime completă sunt c
   <string name="morphe_music_lyrics_force_capitalize_summary">Transformă prima literă a fiecărei linii de versuri în majusculă</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Elimină punctuația de la final</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Elimină punctele, virgulele, două puncte și punctele și virgulele de la sfârșitul liniilor de versuri. Semnele de întrebare, semnele exclamative, punctele de suspensie, ghilimelele și parantezele sunt păstrate</string>
+  <string name="morphe_music_lyrics_han_form_title">Conversia formelor chinezești</string>
+  <string name="morphe_music_lyrics_han_form_summary">Când este activat, urmează limba țintă a traducerii pentru a converti versurile între scrierea simplificată și cea tradițională</string>
   <string name="morphe_music_lyrics_text_size_title">Dimensiune text</string>
   <string name="morphe_music_lyrics_text_size_summary">Dimensiunea textului versurilor</string>
   <string name="morphe_music_lyrics_offset_ms_title">Decalaj global de sincronizare</string>
@@ -787,6 +790,7 @@ Se aplică ambelor limite. La 1,75, patru caractere cu lățime completă sunt c
   <string name="morphe_music_lyrics_translated_by_ai">Tradus de %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizat de %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Romanaizat de %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (cu %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Romanizat de Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Redare reluată.</string>
@@ -802,6 +806,8 @@ Se aplică ambelor limite. La 1,75, patru caractere cu lățime completă sunt c
   <string name="morphe_romanize_language_DEFAULT">Automat</string>
   <string name="morphe_music_lyrics_romanizing">Se romanizează…</string>
   <string name="morphe_music_lyrics_romanize_failed">Nu s-a putut face romanizarea versurilor.</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Niciunul</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Ținta Ruby</string>
   <string name="morphe_music_lyrics_translate_only">Doar traducerea</string>
   <string name="morphe_music_lyrics_romanize_only">Doar romanizat</string>
   <string name="morphe_music_lyrics_dual_only">Mod dual</string>
@@ -832,7 +838,7 @@ Versurile provin de la servicii terțe care nu sunt afiliate, sponsorizate sau e
   <string name="morphe_music_lyrics_hide_info_title">Redare în curs pe acest dispozitiv.</string>
   <string name="morphe_music_lyrics_hide_info_summary">Redare în curs pe un alt dispozitiv.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Redare în curs pe acest dispozitiv.</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Schimbă ordinea de afișare a traducerii și a romanizării sub versuri</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Mută traducerea deasupra versurilor; lectura și romanizarea rămân dedesubt</string>
   <string name="morphe_music_lyrics_force_center_title">Centrare forțată a versurilor</string>
   <string name="morphe_music_lyrics_force_center_summary">ON plasează fiecare linie în mijloc și ignora aliniamentul sursei, inclusiv părțile duetului; OFF păstrează aliniamentul cerut de versuri</string>
   <string name="morphe_music_lyrics_providers_keep_one">Cel puțin un furnizor trebuie să rămână activ</string>
@@ -840,14 +846,7 @@ Versurile provin de la servicii terțe care nu sunt afiliate, sponsorizate sau e
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizare sau transliterare</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Dicționar Offline</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Lista de cuvinte Rime</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Dicționar offline</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Script Ruby</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Buton Afișare Ruby</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Apasă pentru a comuta citirile ruby deasupra versurilor; apasă lung pentru a comuta între hiragana și katakana. Utilizează furnizorii ruby activați în ordinea listată</string>
-  <string name="morphe_music_lyrics_ruby_generating">Generare ruby…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">Transliterator ICU</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Detectarea secțiunilor cu AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Utilizat doar atunci când furnizorul nu furnizează etichete de secțiuni precum Refren sau Vers, pe care modelul compatibil OpenAI le detectează. Editarea rândului deschide și promptul său</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-ul endpoint-ului API (de ex. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -870,6 +869,7 @@ Versurile provin de la servicii terțe care nu sunt afiliate, sponsorizate sau e
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Selectați un model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Eșec la preluarea modelelor. Verificați cheia API sau conexiunea.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Solicitare</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Prompt Ruby (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL de bază</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Presete serviciu</string>

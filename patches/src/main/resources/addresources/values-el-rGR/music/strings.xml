@@ -695,7 +695,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_section_title">Εμφάνιση ετικετών ενοτήτων</string>
   <string name="morphe_music_lyrics_show_section_summary">Επισήμανση κάθε νέας ενότητας των στίχων με μια μικρή ετικέτα, όπως Κουπλέ ή Ρεφρέν</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Εμφάνιση κουμπιού αντιγραφής</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Πατήστε για αντιγραφή των αρχικών στίχων ως απλό κείμενο· παρατεταμένο πάτημα για αποθήκευση του αρχείου πηγής ακατέργαστων στίχων στις Λήψεις</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Πατήστε για αντιγραφή των αρχικών στίχων ως απλό κείμενο — κρατήστε πατημένο για αποθήκευση του αρχείου πηγής των στίχων και ενός μετατρεπόμενου αρχείου TTML στα Λήψεις</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Εμφάνιση κουμπιού μετάφρασης</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Πιέστε για εναλλαγή μετάφρασης· πατήστε παρατεταμένα για μόνο μετάφραση. Χρησιμοποιεί τους ενεργοποιημένους παρόχους μετάφρασης με τη σειρά που αναφέρονται</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Εμφάνιση κουμπιού Ρωμαϊσμού ή Μεταγραφής</string>
@@ -711,7 +711,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Χαρακτήρες Κινέζικα και Καντονέζικα (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Λέξεις Κινέζικα (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Ρωμαϊσμός/Μεταγραφή Ελληνικά, Σλαβικά Κυριλλικά (περ. Ρωσική, Ουκρανική, Βουλγαρική, Σερβική, Λευκορωσική, Μακεδονική), Γεωργιανά, Αρμενικά, Εβραϊκά, Αραβικά, Αμχαρικά και Συριακά (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Ανάγνωση %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Ανάγνωση %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Εμφάνιση κουμπιού ανανέωσης</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Πατήστε για εναλλαγή στον επόμενο υποψήφιο στίχο· παρατεταμένο πάτημα για αναζήτηση στίχων με τίτλο τραγουδιού και καλλιτέχνη</string>
   <string name="morphe_music_lyrics_search_dialog_title">Αναζήτηση στίχων</string>
@@ -720,6 +720,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_search_empty">Εισαγάγετε τίτλο τραγουδιού και καλλιτέχνη</string>
   <string name="morphe_music_lyrics_search_no_providers">Κανένας από τους ενεργοποιημένους παρόχους δεν μπορεί να αναζητήσει άλλα τραγούδια</string>
   <string name="morphe_music_lyrics_saved">Αποθηκεύτηκε</string>
+  <string name="morphe_music_lyrics_written_by">Γράφτηκε από: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Επισήμανση συγχρονισμένων λέξεων ή συλλαβών</string>
   <string name="morphe_music_lyrics_word_sync_summary">Δώστε προτεραιότητα στους στίχους λέξη-λέξη όταν είναι διαθέσιμοι. Όταν οι στίχοι έχουν χρονισμό λέξεων, επισημαίνεται κάθε λέξη ή συλλαβή σε συγχρονισμό με τη μουσική.</string>
   <string name="morphe_music_lyrics_line_scale_title">Συστολή αδρανών γραμμών</string>
@@ -735,7 +736,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Κινούμενο δυναμικό φόντο</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Μετακίνηση του φόντου κατά την αναπαραγωγή και παλμική κίνηση με τη μουσική εάν το YouTube Music έχει άδεια χρήσης του μικροφώνου. Απενεργοποιήστε το για ένα στατικό φόντο που καταναλώνει λιγότερη μπαταρία</string>
   <string name="morphe_music_lyrics_mediasession_title">Εμφάνιση στίχων MediaSession στην οθόνη κλειδώματος</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Εμφάνιση της τρέχουσας γραμμής στην οθόνη κλειδώματος, στο Android Auto και στο Bluetooth. Απαιτείται Android 11 ή νεότερο</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Εμφανίζει την τρέχουσα γραμμή στην οθόνη κλειδώματος, στο Android Auto και στο Bluetooth</string>
   <string name="morphe_music_lyrics_miniplayer_title">Εμφάνιση στίχων στο Miniplayer.</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Εμφάνιση της τρέχουσας γραμμής στο μίνι παίκτη, με την κομμάτι να μεταφέρεται στα υπότιτλα</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Μορφή τίτλου τραγουδιού/καλλιτέχνη</string>
@@ -772,6 +773,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_force_capitalize_summary">Κεφαλαιοποιεί το πρώτο γράμμα κάθε γραμμής των στίχων</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Αφαίρεση τελικής στίξης</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Αφαιρεί τελείες, κόμματα, δύο τελείες και ερωτηματικά στο τέλος των γραμμών των στίχων. Τα ερωτηματικά, τα θαυμαστικά, οι πολύ τελείες, τα εισαγωγικά και οι παρενθέσεις διατηρούνται</string>
+  <string name="morphe_music_lyrics_han_form_title">Μετατροπή κινεζικής μορφής</string>
+  <string name="morphe_music_lyrics_han_form_summary">Όταν είναι ενεργό, ακολουθεί τη γλώσσα-στόχο της μετάφρασής σας για να μετατρέψει τους στίχους μεταξύ Απλοποιημένης και Παραδοσιακής γραφής</string>
   <string name="morphe_music_lyrics_text_size_title">Μέγεθος κειμένου</string>
   <string name="morphe_music_lyrics_text_size_summary">Μέγεθος κειμένου των στίχων</string>
   <string name="morphe_music_lyrics_offset_ms_title">Καθολική χρονική μετατόπιση</string>
@@ -787,6 +790,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_ai">Μεταφράστηκε από %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Μεταγράφηκε σε λατινικούς χαρακτήρες από %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Ρωμαιοποιήθηκε από %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (με %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Ρωμανισμένο από το Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Μεταφρασμένο</string>
@@ -802,6 +806,8 @@ Second \"item\" text"</string>
   <string name="morphe_romanize_language_DEFAULT">Αυτόματο</string>
   <string name="morphe_music_lyrics_romanizing">Μεταγραφή…</string>
   <string name="morphe_music_lyrics_romanize_failed">Δεν ήταν δυνατή η μεταγραφή των στίχων.</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Κανένα</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Στόχος Ruby</string>
   <string name="morphe_music_lyrics_translate_only">Μόνο μετάφραση</string>
   <string name="morphe_music_lyrics_romanize_only">Μόνο σε λατινική γραφή</string>
   <string name="morphe_music_lyrics_dual_only">Διπλή λειτουργία</string>
@@ -832,7 +838,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">Απόκρυψη γραμμής πιστώσεων.</string>
   <string name="morphe_music_lyrics_hide_info_summary">Απόκρυψη της γραμμής πιστώσεων που εμφανίζεται κάτω από τους στίχους.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Εναλλαγή μετάφρασης και μεταγραφής.</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Ανταλλαγή της σειράς εμφάνισης της μετάφρασης και της ρωμανιзации κάτω από τους στίχους</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Μετακινεί τη μετάφραση πάνω από τους στίχους· η ανάγνωση και η ρωμαϊκή μεταγραφή παραμένουν από κάτω</string>
   <string name="morphe_music_lyrics_force_center_title">Κεντράρεμα στίχων πάντα</string>
   <string name="morphe_music_lyrics_force_center_summary">Το ON βάζει κάθε γραμμή στο κέντρο και αγνοεί την ευθυγράμμιση της πηγής, συμπεριλαμβανομένων των πλευρών duet· Το OFF διατηρεί την ευθυγράμμιση που ζητούν οι στίχοι</string>
   <string name="morphe_music_lyrics_providers_keep_one">Πρέπει να παραμείνει ενεργός τουλάχιστον ένας πάροχος</string>
@@ -840,14 +846,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Ρωμαϊσμός ή μεταγραφή</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Λεξικό Εκτός Γραμμής</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Λεξιλόγιο Rime</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Αποφύλτο Λεξικό</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Σενάριο Ruby</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Εμφάνιση κουμπιού Ruby</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Πατήστε για να ενεργοποιήσετε/απενεργοποιήσετε τις αναγνώσεις ruby πάνω από τους στίχους — κρατήστε πατημένο για να εναλλάξετε μεταξύ hiragana και katakana. Χρησιμοποιεί τους ενεργοποιημένους παρόχους ruby στη σειρά που αναφέρονται</string>
-  <string name="morphe_music_lyrics_ruby_generating">Δημιουργία ruby…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU Transliterator</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Ανίχνευση τμημάτων με AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Χρησιμοποιείται μόνο όταν ο πάροχος δεν παρέχει ετικέτες τμημάτων όπως Refrain ή Στροφή, τις οποίες τότε εντοπίζει το μοντέλο συμβατό με OpenAI. Η επεξεργασία της γραμμής ανοίγει επίσης το prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL τελικού σημείου API (π.χ. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -870,6 +869,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Επίλεξε ένα Μοντέλο</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Αποτυχία ανάκτησης μοντέλων. Έλεγξε το API key ή τη σύνδεση.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Προτροπή Ruby (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Μοντέλο</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Βασική διεύθυνση URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Προεπιλογές υπηρεσίας</string>

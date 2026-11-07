@@ -793,6 +793,17 @@ Ukuze ulungise lokhu, vula 'Spoof video streams' bese ushintsha 'Default client'
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Vumela ukuthinta ukuze ufune</string>
   <string name="morphe_tap_to_seek_summary">Thinta noma kuphi kubha yokufuna ukuze ugxume kulelo khona esikhundleni sokukwehlela</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">I-thumb yeseekbar eyisipesheli</string>
+  <string name="morphe_custom_seekbar_thumb_title">Vula i-thumb yeseekbar eyisipesheli</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Thatha indawo ye-thumb yeseekbar ngesithombe esisipesheli noma i-GIF enyakazayo</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Isithombe se-thumb</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Khetha isithombe noma i-GIF enyakazayo kusayidizivayisi yakho</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Ifayela elikhethiwe akusona isithombe esisekelwe</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Isithombe se-thumb yeseekbar eyisipesheli asitholakale</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Usayizi we-thumb</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Lungisa isseekbar</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Usayizi wokuqala</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Isenzo sokuswayipha kwesobunxele</string>
   <string name="morphe_swipe_right_zone_title">Isenzo sokuswayipha kwesobunxele</string>
@@ -1771,6 +1782,8 @@ Ukuqopha ngokuzenzakalelayo kuyinketho. Kuyama ku-incognito noma lapho i-account
   <string name="morphe_niconico_comments_travel_duration_summary">Imizuzwana embalwa imibhalo ithatha ukundiza esikrinini. Amanani aphansi ahamba ngokushesha</string>
   <string name="morphe_niconico_comments_display_area_title">Indawo yokubonisa</string>
   <string name="morphe_niconico_comments_display_area_summary">Ukuba yimalini yomdlali, kusukela phezulu, imibhalo isebenzisa yona. Amanani aphansi agcina ingxenye engezansi yevidiyo icwebile</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Fihla imibono engingahlangana</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Uma indawo yokubonisa igcwele, imibono emisha ifihliwe esikhundleni sokugubuzela eminye imibono</string>
   <string name="morphe_niconico_comments_max_length_title">Ubude obukhulu bembhalo</string>
   <string name="morphe_niconico_comments_max_length_summary">Ifihla imibhalo enezinhlamu ezingaphezu kwalena. I-emoji ngayinye ibalwa njengohlamvu olulodwa</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Alikho unyamezelo</string>

@@ -793,6 +793,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Прецизно сваляне на позиция е включено</string>
   <string name="morphe_tap_to_seek_summary">Докоснете където угодно върху лентата за търсене, за да скочите до тази позиция вместо да плъзгате</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Персонализиран плъзгач на лентата за търсене</string>
+  <string name="morphe_custom_seekbar_thumb_title">Разрежи персонализиран плъзгач на лентата за търсене</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Заменете плъзгача на лентата за търсене с персонализирано изображение или анимация GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Изображение на плъзгача</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Изберете изображение или анимация GIF от паметта на устройството</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Избраният файл не е поддържана изображение</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Персонализираното изображение на плъзгача не е намерено</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Размер на плъзгача</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Съвпаднати с лентата за прегледване</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Оригинален размер</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Жест за плъзгане наляво</string>
   <string name="morphe_swipe_right_zone_title">Жест за плъзгане надясно</string>
@@ -1771,6 +1782,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">Колко секунди отнема на коментарите да пресекат екрана. По-ниските стойности се движат по-бързо</string>
   <string name="morphe_niconico_comments_display_area_title">Област на показване</string>
   <string name="morphe_niconico_comments_display_area_summary">Колко от плейъра, считано от горната част, използват коментарите. По-ниските стойности оставят долната част на видеото чиста</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Скрий коментарите, които се застъпват</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Когато зоната за показване е пълна, новите коментари се крият вместо да се застъпват с други коментари</string>
   <string name="morphe_niconico_comments_max_length_title">Максимална дължина на коментара</string>
   <string name="morphe_niconico_comments_max_length_summary">Скрива коментари с повече знаци от посочения брой. Всеки емоджи се брои за един знак</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без ограничение</string>

@@ -793,6 +793,17 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">ট্যাপ কৰি বিচাৰক সক্ৰিয় কৰক</string>
   <string name="morphe_tap_to_seek_summary">ড্ৰেগ কৰাৰ পৰিৱৰ্তে সেই স্থানলৈ যাবলৈ ছিকবাৰৰ যিকোনো ঠাইতে টেপ কৰক</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">কাষ্টম seekbar thumb</string>
+  <string name="morphe_custom_seekbar_thumb_title">কাষ্টম seekbar thumb সক্ৰিয় কৰক</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Seekbar thumb টো এটা কাষ্টম ছবি বা এনিমেটেড GIF ৰ সৈতে সলনি কৰক</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Thumb ছবি</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">ডিভাইচ ষ্টোরেজৰ পৰা এটা ছবি বা এনিমেটেড GIF নিৰ্বাচন কৰক</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">নিৰ্বাচিত ফাইলটো এটা সমৰ্থিত ছবি নহয়</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">কষ্টম seekbar thumb ছবিটো বিচাৰিব পৰা নাই</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Thumb আকাৰ</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Seekbar-ৰ সৈতে মিলাওক</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">আসল আকাৰ</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">বাওঁফালৰ সোৱাইপ জেসচাৰ</string>
   <string name="morphe_swipe_right_zone_title">সোঁফালৰ সোৱাইপ জেসচাৰ</string>
@@ -1771,6 +1782,8 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকেত্ বাধ�
   <string name="morphe_niconico_comments_travel_duration_summary">মন্তব্যসমূহে স্ক্ৰীনখন পাৰ হ’বলৈ কিমান ছেকেণ্ড সময় লয়। কম মানৰ বাবে অধিক দ্ৰুতগতিত চলে</string>
   <string name="morphe_niconico_comments_display_area_title">প্ৰদৰ্শন এলেকা</string>
   <string name="morphe_niconico_comments_display_area_summary">প্লেয়াৰৰ ওপৰৰ পৰা মন্তব্যসমূহে কিমান অংশ ব্যৱহাৰ কৰিব। কম মানৰ বাবে ভিডিঅ\'ৰ তলৰ অংশটো খালী থাকে</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">একে ওপৰত পৰিব পৰা মন্তব্যসমূহৰ ক্ষেত্ৰত সেইবোৰ লুকুৱাই থওক</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">যেতিয়া প্ৰদৰ্শনৰ ঠাই সম্পূৰ্ণ হয়, অন্য মন্তব্যৰ ওপৰত পৰাৰ পৰিৱৰ্তে নতুন মন্তব্যবোৰ লুকুৱাই থোৱা হয়</string>
   <string name="morphe_niconico_comments_max_length_title">মন্তব্যৰ সৰ্বোচ্চ দৈৰ্ঘ্য</string>
   <string name="morphe_niconico_comments_max_length_summary">ইয়াতকৈ অধিক আখৰ থকা মন্তব্যবোৰ লুকুৱাই ৰাখে। প্ৰতিটো ইমোজিক এটা আখৰ হিচাপে গণ্য কৰা হয়</string>
   <string name="morphe_niconico_comments_max_length_no_limit">কোনো সীমা নাই</string>

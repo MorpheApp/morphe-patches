@@ -793,6 +793,17 @@ Ji bo çareserkirina vê, 'Spozîkirina streaming-ên vîdyoyê' vekirin û 'Kl�
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Kilika lêkirinê veşêre</string>
   <string name="morphe_tap_to_seek_summary">Li her derê ya seekbarê bitikîne da ku li şûna xişandinê, tu rasterast herî wê pozîsyonê</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Tîrêya seekbar a taybet</string>
+  <string name="morphe_custom_seekbar_thumb_title">Tîrêya seekbar a taybet etkin bike</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Tîrêya seekbar bi wêneyekî taybet an GIFekî animated biguherîne</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Wêneyê tîrêyê</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Ji storagea ampirê wêneyekî an GIFekî animated hilbijêre</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Fayla hatî hilbijartin ne wêneyekî destekirî ye</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Wêneyê tîrêya seekbar a taybet nehat dîtin</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Qebasî tîrêyê</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Li gorî seekbaran bikeve</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Qebasa orjînal</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Tevgera kişandinê ya çepê</string>
   <string name="morphe_swipe_right_zone_title">Tevgera kişandinê ya rastê</string>
@@ -1772,6 +1783,8 @@ Tomarkirina otomatîk di moda incognito de, gava nasnameya hesabê tune be, yan 
   <string name="morphe_niconico_comments_travel_duration_summary">Çend saniye tên girtin da ku komentaran ekranê derbas bikin. Nirxên kêm zûtir diçin</string>
   <string name="morphe_niconico_comments_display_area_title">Qada nîşandanê</string>
   <string name="morphe_niconico_comments_display_area_summary">Ka çend ji playerê, ji jor ve, şîroveyên wê bikar tîne. Nirxên kêm beşê jêrîn a vîdyoyê paqij dihilatin</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Komentên ku li ser hev dikevin veşêre</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Gava qendaxa nîşandan tijî dibe, komentên nû li şûma ku li ser komentên din bikevin, tên veşartin</string>
   <string name="morphe_niconico_comments_max_length_title">Dirêjiya herî zêde ya komentan</string>
   <string name="morphe_niconico_comments_max_length_summary">Komentên ku ji vê hejmarê karakteran zêdetir bin veşerîne. Her emoji wekî yek karakter tê hesabkirin</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Tu sînor nînîn</string>

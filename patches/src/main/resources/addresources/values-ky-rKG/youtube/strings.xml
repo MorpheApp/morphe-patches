@@ -793,6 +793,17 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Издөө үчүн басууну күйгүзүү</string>
   <string name="morphe_tap_to_seek_summary">Сүйрөөnүн ордуна, ошол позицияга өтүү үчүн издөө панелинин каалаган жерине басыңыз</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Seekbar\'дын жекечеленген берилмеси</string>
+  <string name="morphe_custom_seekbar_thumb_title">Seekbar\'дын жекечеленген берилмесин күйгүзүү</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Seekbar берилмесин жеке сүрөт же анимацияланган GIF менен алмаштырыңыз</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Берилме сүрөтү</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Түзүлүштүн эс тутумунан сүрөт же анимацияланган GIF тандаңыз</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Тандалган файл колдоого алынбаган сүрөт</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Seekbar\'дын жекечеленген берилме сүрөтү табылган жок</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Берилменин өлчөмү</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Seekbar\'га ылайыкташтыруу</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Түпкү өлчөмү</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Солго сыдыруу жести</string>
   <string name="morphe_swipe_right_zone_title">Оңго сыдыруу жести</string>
@@ -1770,6 +1781,8 @@ AV1 менен видео ойнотулганда катырылыштар бо
   <string name="morphe_niconico_comments_travel_duration_summary">Комментарлар экранды кесип өтүү үчүн канча секунд керектелет. Төмөнкү маанилер тезирээк кыймылдатат</string>
   <string name="morphe_niconico_comments_display_area_title">Көрүнүү аймагы</string>
   <string name="morphe_niconico_comments_display_area_summary">Комментарийлер плеердин жогору жагынан канчалык бөлүгүн ээлейт. Төмөн маанилер видеонун төмөнкү бөлүгүн бош калтырат</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Кабатталып кала турган комментарийлерди жашыруу</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Көрүнүүчү аймак толгондо, жаңы комментарийлер башка комментарийлердин үстүнө жабышпай, жашырылат</string>
   <string name="morphe_niconico_comments_max_length_title">Комментардын максималдуу узундугу</string>
   <string name="morphe_niconico_comments_max_length_summary">Бул жердегиден көп белгиси бар комментарларды жашырат. Ар бир эмодзи бир белги катары эсептелет</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Чектелбеген</string>

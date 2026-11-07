@@ -793,6 +793,17 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Povolit klepnutím přejít na</string>
   <string name="morphe_tap_to_seek_summary">Klepnutím kamkoli na posuvník přeskočte na danou pozici místo přetahování</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Vlastní posuvník seekbaru</string>
+  <string name="morphe_custom_seekbar_thumb_title">Povolit vlastní jezdec posuvníku</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Nahraďte jezdec posuvníku vlastním obrázkem nebo animovaným GIFem</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Obrázek jezdce</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Vyberte obrázek nebo animovaný GIF z úložiště zařízení</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Vybraný soubor není podporovaný obrázek</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Obrazek pro posuvník nebyl nalezen</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Velikost ukazatele</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Přizpůsobit posuvníku</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Původní velikost</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gesto svisku doleva</string>
   <string name="morphe_swipe_right_zone_title">Gesto svisku doprava</string>
@@ -1768,6 +1779,8 @@ Automatické nahrávání je volitelné. Zastavuje se v anonymním režimu nebo 
   <string name="morphe_niconico_comments_travel_duration_summary">Kolik sekund komentářům trvá překročit obrazovku. Nižší hodnoty znamenají rychlejší pohyb</string>
   <string name="morphe_niconico_comments_display_area_title">Oblast zobrazení</string>
   <string name="morphe_niconico_comments_display_area_summary">Kolik prostoru přehrávače od horního okraje komentáře zaberou. Nižší hodnoty ponechají spodní část videa prázdnou</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Skrýt překrývající se komentáře</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Když je zobrazení plné, nové komentáře jsou místo překrývání ostatních komentářů skryty</string>
   <string name="morphe_niconico_comments_max_length_title">Maximální délka komentáře</string>
   <string name="morphe_niconico_comments_max_length_summary">Skryje komentáře, které mají více znaků než tato hodnota. Každý emoji se počítá jako jeden znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Bez limitu</string>

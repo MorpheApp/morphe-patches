@@ -700,7 +700,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_show_section_title">Бөлім тегтерін көрсету</string>
   <string name="morphe_music_lyrics_show_section_summary">Лириканың әрбір жаңа бөлімін «Куплет» немесе «Қайырмасы» сияқты кішігірім тегпен белгілеу</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Көшіру түймесін көрсету</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Түпнұсқа мәтінді қарапайым мәтін ретінде көшіру үшін басыңыз; мәтіннің бастапқы дереккөзі файлын «Жүктеулер» бөліміне сақтау үшін ұзақ басыңыз</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Түпнұсқа мәтінді қарапайым мәтін ретінде көшіру үшін түртіңіз; мәтіннің бастапқы файлды және түрлендірілген TTML файлын «Жүктемелер» бөліміне сақтау үшін ұзақ басып тұрыңыз</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Аудару түймесін көрсету</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Аударманы қосу/өшіру үшін басыңыз; тек аударманы көрсету үшін ұзақ басыңыз. Тізімдегі реттілік бойынша қосулы аударма провайдерлері қолданылады</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Романизация немесе транслитерация түймесін көрсету</string>
@@ -716,7 +716,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Қытай және кантондық таңбалар (UniDict, ~8 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Қытай сөздері (pinyin-pro, ~17 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Грек, славян кириллицасы (соның ішінде орыс, украин, болгар, серб, белорус, македон тілдері), грузин, армян, иврит, араб, амхара және сирияк транслитерациясы (CLDR, ~0.5 МБ)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s оқу: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Оқылуы %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Жаңарту түймесін көрсету</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Келесі мәтін нұсқасына ауысу үшін түртіңіз; ән атауы мен орындаушы бойынша мәтінді іздеу үшін ұзақ басыңыз</string>
   <string name="morphe_music_lyrics_search_dialog_title">Мәтіндерді іздеу</string>
@@ -725,6 +725,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_search_empty">Ән атауы мен орындаушыны енгізіңіз</string>
   <string name="morphe_music_lyrics_search_no_providers">Қосылған провайдерлердің ешқайсысы басқа әндерді іздей алмайды</string>
   <string name="morphe_music_lyrics_saved">Сақталды</string>
+  <string name="morphe_music_lyrics_written_by">Жазған: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Синхрондалған сөздерді немесе буындарды ерекшелеу</string>
   <string name="morphe_music_lyrics_word_sync_summary">Мүмкіндігі болған жағдайда сөздік мәтінге басымдық беру. Мәтінде сөздердің уақыты көрсетілгенде, әр сөз немесе буын музыкамен үйлесімді түрде ерекшеленеді</string>
   <string name="morphe_music_lyrics_line_scale_title">Белсенді емес жолдарды кішірейту</string>
@@ -740,7 +741,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Динамикалық фонды анимациялау</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Ойнату кезінде фонды қозғалту және егер YouTube Music-те микрофонға рұқсат болса, оны музыкамен бірге пульсациялау. Батареяны аз жұмсау үшін статикалық фонды қолдану үшін өшіріңіз</string>
   <string name="morphe_music_lyrics_mediasession_title">Бұғатталған экранда MediaSession мәтінін көрсету</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Бұғаттау экранында, Android Auto және Bluetooth-та ағымдағы жолды көрсетеді. Android 11 немесе одан жоғары нұсқасы қажет</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Блоктау экранында, Android Auto және Bluetooth-та ағымдағы жолды көрсетеді</string>
   <string name="morphe_music_lyrics_miniplayer_title">Миниплеер мәтіндерін көрсету</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Миниплеерде ағымдағы жолды көрсетеді, ал трек субтитрге ауысады</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Ән атауының/орындаушысының форматы</string>
@@ -777,6 +778,8 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_force_capitalize_summary">Мәтін жолдарының әрқайсысының бірінші әріптерін бас әріппен жазады</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Соңғы тыныс белгілерін жою</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Лирика жолдарының соңындағы нүктелерді, үтірлерді, қос нүктелерді және нүктелі үтірлерді жояды. Сұрақ белгілері, леп белгілері, көп нүктелер, тырнақшалар мен жақшалар сақталады</string>
+  <string name="morphe_music_lyrics_han_form_title">Қытай формасын түрлендіру</string>
+  <string name="morphe_music_lyrics_han_form_summary">Қосылып тұрғанда, мәтінді оңайлатылған және дәстүрлі жазу арасында түрлендіру үшін аударманың нысаналы тілін қолданады</string>
   <string name="morphe_music_lyrics_text_size_title">Мәтін өлшемі</string>
   <string name="morphe_music_lyrics_text_size_summary">Ән мәтінінің өлшемі</string>
   <string name="morphe_music_lyrics_offset_ms_title">Жалпы уақытты ығыстыру</string>
@@ -792,6 +795,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_translated_by_ai">%s аударды</string>
   <string name="morphe_music_lyrics_romanized_by_ai">%s романизациялады</string>
   <string name="morphe_music_lyrics_romanized_by_local">Романизациясы: %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s-пен)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Rime арқылы романизацияланды (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Аударылды</string>
@@ -807,6 +811,8 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_romanize_language_DEFAULT">Автоматты</string>
   <string name="morphe_music_lyrics_romanizing">Романизациялау...</string>
   <string name="morphe_music_lyrics_romanize_failed">Мәтінді романизациялау мүмкін болмады</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Жоқ</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Ruby нысанасы</string>
   <string name="morphe_music_lyrics_translate_only">Тек аударылған</string>
   <string name="morphe_music_lyrics_romanize_only">Тек романизация</string>
   <string name="morphe_music_lyrics_dual_only">Қос режим</string>
@@ -837,7 +843,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_hide_info_title">Кредит жолын жасыру</string>
   <string name="morphe_music_lyrics_hide_info_summary">Мәтін төменінде көрсетілген кредит жолын жасыру</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Аударма мен романизацияны алмастыру</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Мәтіндердің астындағы аударма мен романизацияның көрсету ретін ауыстырады</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Аударманы мәтіннен жоғары жылжытады; оқу және романизация төменде қалады</string>
   <string name="morphe_music_lyrics_force_center_title">Мәтінді әрдайым ортаға қою</string>
   <string name="morphe_music_lyrics_force_center_summary">ҚОСЫЛДЫ күйінде әр жол ортаға қойылады және бастапқы тегістеу (соның ішінде дуэт жақтары) ескерілмейді; ӨШІРІЛДІ күйінде мәтінде көрсетілген тегістеу сақталады</string>
   <string name="morphe_music_lyrics_providers_keep_one">Кеміnde бір провайдер қосулы болуы керек</string>
@@ -845,14 +851,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_romanization_provider_title">Романизация немесе транслитерация</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Офлайн сөздік</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime сөздер тізімі</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Офлайн сөздік</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Руби скрипті</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хирагана (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Рубиді көрсету түймесі</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Мәтін үстіндегі руби оқуларын ауыстыру үшін түртіңіз; хирагана мен катакана арасында ауысу үшін ұзақ басыңыз. Тізімдегі реттілік бойынша қосулы руби провайдерлерін қолданады</string>
-  <string name="morphe_music_lyrics_ruby_generating">Руби жасалуда…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU транслитераторы</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Бөлімдерді AI арқылы анықтау</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Тек провайдер Припев немесе Шумақ сияқты бөлім белгілерін жібермеген жағдайда қолданылады, оларды OpenAI-мен үйлесімді моделіңіз анықтайды. Жолды өңдеу оның промптын ашады</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (мысалы, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +874,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Модельді таңдаңыз</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Модельдерді алу сәтсіз аяқталды. API кілтін немесе байланысты тексеріңіз.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Промпт</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby нұсқауы (Кана)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Модель</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Базалық URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Сервис алдын ала баптаулары</string>

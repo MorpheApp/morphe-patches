@@ -793,6 +793,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">啟用輕觸以跳轉</string>
   <string name="morphe_tap_to_seek_summary">點擊進度條上的任何位置即可跳到該位置，無需拖曳。</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">自訂跳轉列滑桿</string>
+  <string name="morphe_custom_seekbar_thumb_title">啟用自訂跳轉列滑桿</string>
+  <string name="morphe_custom_seekbar_thumb_summary">將跳轉列滑桿替換為自訂圖片或動畫 GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">滑桿圖片</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">從裝置儲存空間選擇圖片或動畫 GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">選取的檔案不是支援的圖片</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">找不到自訂跳轉列滑桿圖片</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">滑桿大小</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">適配跳轉列</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">原始大小</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">向左滑動手勢</string>
   <string name="morphe_swipe_right_zone_title">向右滑動手勢</string>
@@ -1770,6 +1781,8 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_niconico_comments_travel_duration_summary">評論橫跨螢幕所需秒數。數值越低，移動速度越快</string>
   <string name="morphe_niconico_comments_display_area_title">顯示區域</string>
   <string name="morphe_niconico_comments_display_area_summary">註解從播放器頂部開始使用的範圍。較低的值可保持影片底部清晰</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">隱藏會重疊的評論</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">當顯示區域滿時，新評論將被隱藏而不會與其他評論重疊</string>
   <string name="morphe_niconico_comments_max_length_title">最大評論長度</string>
   <string name="morphe_niconico_comments_max_length_summary">隱藏字數超過此限制的評論。每個表情符號計為一個字元</string>
   <string name="morphe_niconico_comments_max_length_no_limit">無限制</string>
