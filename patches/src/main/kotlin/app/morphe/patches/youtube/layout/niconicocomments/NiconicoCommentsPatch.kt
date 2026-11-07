@@ -152,8 +152,8 @@ val niconicoCommentsPatch = patch(
                         )
                     ),
                     PreferenceCategory(
-                        key = "morphe_niconico_comments_videos_category",
-                        titleKey = "morphe_niconico_comments_videos_title",
+                        key = "morphe_niconico_comments_video_types_category",
+                        titleKey = "morphe_niconico_comments_video_types_title",
                         sorting = Sorting.UNSORTED,
                         preferences = setOf(
                             SwitchPreference("morphe_niconico_comments_live_streams", summary = true),
