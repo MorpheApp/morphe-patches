@@ -1119,9 +1119,7 @@ final class YouTubeChatSource implements Runnable {
         if (renderer == null) {
             renderer = item.optJSONObject("liveChatMembershipItemRenderer");
         }
-        if (renderer == null) {
-            renderer = item.optJSONObject("liveChatViewerEngagementMessageRenderer");
-        }
+        // Chat status messages, such as "Welcome to live chat!", are not comments.
         return renderer;
     }
 
